@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAFn//vQw\u003d",
+        "filename": "host_interface/ec_command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-10-20T21:13:47Z",
+      "side": 1,
+      "message": "Not sure why this is a union?",
+      "revId": "1204b685ab737249c76f9754a1cfe9edbe5ecc2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFn//vQs\u003d",
+        "filename": "host_interface/ec_command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-10-20T21:13:47Z",
+      "side": 1,
+      "message": "Prefix all constants with EC_COMMAND_ (or maybe EC_CMD_) so there\u0027s no collision with other constants",
+      "revId": "1204b685ab737249c76f9754a1cfe9edbe5ecc2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFn//vQ4\u003d",
+        "filename": "host_interface/ec_command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-10-20T21:13:47Z",
+      "side": 1,
+      "message": "THM -\u003e THERMAL\n\n(and elsewhere; don\u0027t use abbreviations unless we hit max symbol length limits)",
+      "revId": "1204b685ab737249c76f9754a1cfe9edbe5ecc2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
