@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAFn//vB8\u003d",
+        "filename": "host_interface/ec_command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2011-10-21T04:06:22Z",
+      "side": 1,
+      "message": "Considered that the EC may not be faster enough to set the busy bit (to indicate the EC has taken the command compared to EC is busy in higher priority jobs), I union the command and status byte. See the example code below.",
+      "parentUuid": "AAAAFn//vQw\u003d",
+      "revId": "1204b685ab737249c76f9754a1cfe9edbe5ecc2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAFn//vQs\u003d",
         "filename": "host_interface/ec_command.h",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAFn//vCE\u003d",
+        "filename": "host_interface/ec_command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2011-10-21T04:06:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAFn//vQs\u003d",
+      "revId": "1204b685ab737249c76f9754a1cfe9edbe5ecc2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAFn//vQ4\u003d",
         "filename": "host_interface/ec_command.h",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2011-10-20T21:13:47Z",
       "side": 1,
       "message": "THM -\u003e THERMAL\n\n(and elsewhere; don\u0027t use abbreviations unless we hit max symbol length limits)",
+      "revId": "1204b685ab737249c76f9754a1cfe9edbe5ecc2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFn//vCA\u003d",
+        "filename": "host_interface/ec_command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2011-10-21T04:06:22Z",
+      "side": 1,
+      "message": "Done. Also expand other categories too.",
+      "parentUuid": "AAAAFn//vQ4\u003d",
       "revId": "1204b685ab737249c76f9754a1cfe9edbe5ecc2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
