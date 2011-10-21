@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAFn//vCc\u003d",
+        "filename": "chip_interface/keyboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2011-10-21T03:35:22Z",
+      "side": 1,
+      "message": "Done. Hm... let\u0027s define 8x16 for short term needs.",
+      "parentUuid": "AAAAFn//vRA\u003d",
+      "revId": "ee336dde82022959513325f4b919b186209b9afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAFn//vRM\u003d",
         "filename": "chip_interface/keyboard.h",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAFn//vCg\u003d",
+        "filename": "chip_interface/keyboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2011-10-21T03:35:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAFn//vRM\u003d",
+      "revId": "ee336dde82022959513325f4b919b186209b9afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAFn//vRY\u003d",
         "filename": "chip_interface/keyboard.h",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2011-10-20T21:10:50Z",
       "side": 1,
       "message": "Should return a raw bit array which is cols bytes long (since we know that rows \u003c\u003d 8).\n\nThis is easier, particularly if many keys are pressed.",
+      "revId": "ee336dde82022959513325f4b919b186209b9afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFn//vCk\u003d",
+        "filename": "chip_interface/keyboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2011-10-21T03:35:22Z",
+      "side": 1,
+      "message": "I knew your point, but the rows may exceed 8 one day. Or may not happen.\n\nOkay, let\u0027s simplify the design here. Will use a bit array.",
+      "parentUuid": "AAAAFn//vRY\u003d",
       "revId": "ee336dde82022959513325f4b919b186209b9afd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
