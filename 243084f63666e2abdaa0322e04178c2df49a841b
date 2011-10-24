@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAFn//t8c\u003d",
+        "filename": "chip_interface/keyboard.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-10-24T23:15:46Z",
+      "side": 1,
+      "message": "Not needed; included by ec_common.h",
+      "revId": "243084f63666e2abdaa0322e04178c2df49a841b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFn//t8Y\u003d",
+        "filename": "chip_interface/keyboard.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-10-24T23:15:46Z",
+      "side": 1,
+      "message": "row,col or col,row?  Need to make sure we\u0027re consistent across all keyboard interfaces.  (and probably should reorder the #defines above if you\u0027re going to use col,row, so that col is always first.",
+      "revId": "243084f63666e2abdaa0322e04178c2df49a841b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFn//t8s\u003d",
+        "filename": "chip_interface/keyboard.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-10-24T23:15:46Z",
+      "side": 1,
+      "message": "EcKeyboardRegisterCallback",
+      "revId": "243084f63666e2abdaa0322e04178c2df49a841b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFn//t8g\u003d",
+        "filename": "chip_interface/keyboard.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-10-24T23:15:46Z",
+      "side": 1,
+      "message": "Sets bit_array to a debounced array of which keys are currently pressed, where a 1-bit means the key is pressed.  For example, if only col\u003d2 row\u003d3 is pressed, it would set bit_array to {0, 0, 0x08, 0, ...}\n\nbit_array must be at least MAX_KEYBOARD_MATRIX_COLS bytes long.",
+      "revId": "243084f63666e2abdaa0322e04178c2df49a841b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
