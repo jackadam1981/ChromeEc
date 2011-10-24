@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAFn//uUQ\u003d",
+        "filename": "chip_interface/keyboard.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-10-24T03:47:05Z",
+      "side": 1,
+      "message": "EcKeyboardCallback",
+      "revId": "102dfbde2c60731fd65dc88ef1d1547b761e00e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFn//uUM\u003d",
+        "filename": "chip_interface/keyboard.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-10-24T03:47:05Z",
+      "side": 1,
+      "message": "Registers.\n\nAlso note that passing NULL removes any previously registered callback.",
+      "revId": "102dfbde2c60731fd65dc88ef1d1547b761e00e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFn//uUU\u003d",
+        "filename": "chip_interface/keyboard.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-10-24T03:47:05Z",
+      "side": 1,
+      "message": "I\u0027ve been using Ec for the prefix.  See ec_uart.h",
+      "revId": "102dfbde2c60731fd65dc88ef1d1547b761e00e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
