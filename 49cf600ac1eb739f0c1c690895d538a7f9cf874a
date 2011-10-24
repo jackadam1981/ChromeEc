@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAFn//t84\u003d",
+        "filename": "host_interface/ec_command.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-10-24T23:08:44Z",
+      "side": 1,
+      "message": "For a range endpoint, status byte is not part of the range; it\u0027s in a different block of I/O space.\n\nWe may want to declare a pair of I/O ranges, one for host-\u003eEC and one for EC-\u003ehost, and then we don\u0027t have to worry about arbitration.",
+      "revId": "49cf600ac1eb739f0c1c690895d538a7f9cf874a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFn//t88\u003d",
+        "filename": "host_interface/ec_command.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-10-24T23:08:44Z",
+      "side": 1,
+      "message": "Note that error code is in different bits for single endpoint vs. range endpoint.",
+      "revId": "49cf600ac1eb739f0c1c690895d538a7f9cf874a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
