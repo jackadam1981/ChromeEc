@@ -32,7 +32,7 @@ static int wait_idle(int port)
 		LM4_I2C_MIMR(port) = 0x03;
 		wait_msg = task_wait_msg(1000000);
 		LM4_I2C_MIMR(port) = 0x00;
-		task_waiting_on_port[port] = -1;
+		task_waiting_on_port[port] = TASK_ID_INVALID;
 		if (wait_msg == 1 << TASK_ID_TIMER)
 			return EC_ERROR_TIMEOUT;
 
@@ -56,7 +56,7 @@ int i2c_read16(int port, int slave_addr, int offset, int* data)
 
 	/* Transmit the offset address to the slave; leave the master in
 	 * transmit state. */
-	LM4_I2C_MSA(port) = (slave_addr & 0xff) | 0x00;
+	LM4_I2C_MSA(port) = slave_addr & 0xff;
 	LM4_I2C_MDR(port) = offset & 0xff;
 	LM4_I2C_MCS(port) = 0x03;
 
@@ -98,7 +98,7 @@ int i2c_write16(int port, int slave_addr, int offset, int data)
 	/* Transmit the offset address to the slave; leave the master in
 	 * transmit state. */
 	LM4_I2C_MDR(port) = offset & 0xff;
-	LM4_I2C_MSA(port) = (slave_addr & 0xff) | 0x00;
+	LM4_I2C_MSA(port) = slave_addr & 0xff;
 	LM4_I2C_MCS(port) = 0x03;
 
 	rv = wait_idle(port);
@@ -126,6 +126,61 @@ int i2c_write16(int port, int slave_addr, int offset, int data)
 	return wait_idle(port);
 }
 
+/* FIXME: combine 8-bit and 16-bit functions into one to save space */
+
+int i2c_read8(int port, int slave_addr, int offset, int* data)
+{
+	int rv;
+
+	*data = 0;
+
+	/* Transmit the offset address to the slave; leave the master in
+	 * transmit state. */
+	LM4_I2C_MSA(port) = slave_addr & 0xff;
+	LM4_I2C_MDR(port) = offset & 0xff;
+	LM4_I2C_MCS(port) = 0x03;
+
+	rv = wait_idle(port);
+	if (rv)
+		return rv;
+
+	/* Send repeated start followed by receive and stop */
+	LM4_I2C_MSA(port) = (slave_addr & 0xff) | 0x01;
+	LM4_I2C_MCS(port) = 0x07;	/* NOTE: datasheet suggests 0x0b, but
+					 * 0x07 with the change in direction
+					 * flips it to a RECEIVE and STOP.
+					 * I think.
+					 */
+	rv = wait_idle(port);
+	if (rv)
+		return rv;
+
+	/* Read the byte */
+	*data = LM4_I2C_MDR(port) & 0xff;
+
+	return EC_SUCCESS;
+}
+
+int i2c_write8(int port, int slave_addr, int offset, int data)
+{
+	int rv;
+
+	/* Transmit the offset address to the slave; leave the master in
+	 * transmit state. */
+	LM4_I2C_MDR(port) = offset & 0xff;
+	LM4_I2C_MSA(port) = slave_addr & 0xff;
+	LM4_I2C_MCS(port) = 0x03;
+
+	rv = wait_idle(port);
+	if (rv)
+		return rv;
+
+	/* Send repeated start followed by transmit and stop */
+	LM4_I2C_MDR(port) = data & 0xff;
+	LM4_I2C_MCS(port) = 0x05;
+
+	return wait_idle(port);
+}
 
 /*****************************************************************************/
 /* Interrupt handlers */
@@ -239,6 +294,67 @@ static int command_i2cread(int argc, char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(i2cread, command_i2cread);
+
+
+static int command_lightsaber(int argc, char **argv)
+{
+	static int addr = 0x54;		/* FIXME: 54 and 56 are valid */
+	int port, reg;
+	char *e;
+	int rv;
+	int d, i;
+        int reglist[] = { 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
+			  0x08, 0x09, 0x0a,                         0x0f,
+			  0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17,
+			  0x18, 0x19, 0x1a };
+
+	port = 5;			/* FIXME(wfrichar): target-specific */
+
+	if (1 == argc) {		/* dump 'em all */
+		uart_printf("addr %02x:\n", addr);
+		for( i=0; i<sizeof(reglist)/sizeof(reglist[0]); i++ ) {
+			reg = reglist[i];
+			rv = i2c_read8(port, addr, reg, &d);
+			if (rv)
+				return rv;
+			uart_printf("reg %02x = %02x\n", reg, d);
+		}
+		return EC_SUCCESS;
+	} else if (2 == argc ) {	/* read just one */
+		reg = strtoi(argv[1], &e, 16);
+		if (*e) {
+			uart_puts("Invalid reg\n");
+			return EC_ERROR_INVAL;
+		}
+		rv = i2c_read8(port, addr, reg, &d);
+		if (rv)
+			return rv;
+		uart_printf("0x%02x\n", d);
+		return EC_SUCCESS;
+	} else if (3 == argc) {		/* write one */
+		if (!strcasecmp(argv[1],"addr")) {
+			addr = strtoi(argv[2], &e, 16);
+			uart_printf("addr now %02x\n", addr);
+			return EC_SUCCESS;
+		}
+		reg = strtoi(argv[1], &e, 16);
+		if (*e) {
+			uart_puts("Invalid reg\n");
+			return EC_ERROR_INVAL;
+		}
+		d = strtoi(argv[2], &e, 16);
+		if (*e) {
+			uart_puts("Invalid data\n");
+			return EC_ERROR_INVAL;
+		}
+		return i2c_write8(port, addr, reg, d);
+	}
+
+	uart_printf("Usage:  %s [<reg> [<val]]\n", argv[0]);
+	uart_printf("        %s addr <ADDR>\n", argv[0]);
+	return EC_ERROR_INVAL;
+}
+DECLARE_CONSOLE_COMMAND(foo, command_lightsaber);
 
 
 static int command_scan(int argc, char **argv)
