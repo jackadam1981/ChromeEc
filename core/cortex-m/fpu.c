@@ -10,17 +10,17 @@
 void enable_fpu(void)
 {
 	interrupt_disable();
-	asm("mrs r0, control\n"
-	    "orr r0, r0, #(1 << 2)\n"
-	    "msr control, r0\n"
-	    "isb");
+	asm volatile("mrs r0, control;"
+		     "orr r0, r0, #(1 << 2);"
+		     "msr control, r0;"
+		     "isb;");
 }
 
 void disable_fpu(void)
 {
-	asm("mrs r0, control\n"
-	    "bic r0, r0, #(1 << 2)\n"
-	    "msr control, r0\n"
-	    "isb");
+	asm volatile("mrs r0, control;"
+		     "bic r0, r0, #(1 << 2);"
+		     "msr control, r0;"
+		     "isb;");
 	interrupt_enable();
 }
