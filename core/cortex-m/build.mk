@@ -6,6 +6,7 @@
 #
 
 # CPU specific compilation flags
-CFLAGS_CPU=-mcpu=cortex-m4 -mthumb -Os -mno-sched-prolog
+CFLAGS_CPU=-mcpu=cortex-m4 -mthumb -Os -mno-sched-prolog -mfpu=fpv4-sp-d16\
+           -mfloat-abi=hard
 
-core-y=init.o panic.o switch.o task.o timer.o
+core-y=init.o panic.o switch.o task.o timer.o fpu.o
