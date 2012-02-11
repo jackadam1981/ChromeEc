@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//vzM\u003d",
+        "filename": "chip/lm4/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-11T00:40:51Z",
+      "side": 1,
+      "message": "Use ARRAY_SIZE macro from util.h",
+      "revId": "b58b63a98fa07840f3613f8952f22506dece8938",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vzU\u003d",
+        "filename": "chip/lm4/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-11T00:40:51Z",
+      "side": 1,
+      "message": "Please call command \"lightsaber\" or something similarly descriptive.\n\nAlso, good to move this to its own source file (compiled in with config option), instead of dropping it in the i2c module.",
+      "revId": "b58b63a98fa07840f3613f8952f22506dece8938",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
