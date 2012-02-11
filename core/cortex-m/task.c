@@ -100,6 +100,19 @@ static inline task_ *__task_id_to_ptr(task_id_t id)
 	return tasks + id;
 }
 
+/* Disables CPU interrupt bit. This might break the system so think really hard
+ * before using these. There are usually better ways of accomplishing this. */
+void interrupt_disable(void)
+{
+	asm("cpsid i");
+}
+
+/* Enables CPU interrupt bit. */
+void interrupt_enable(void)
+{
+	asm("cpsie i");
+}
+
 
 inline int in_interrupt_context(void)
 {

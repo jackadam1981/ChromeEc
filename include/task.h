@@ -11,6 +11,12 @@
 #include "common.h"
 #include "task_id.h"
 
+/* Disables CPU interrupt */
+void interrupt_disable(void);
+
+/* Enables CPU interrupt */
+void interrupt_enable(void);
+
 /**
  * Return true if we are in interrupt context
  */
