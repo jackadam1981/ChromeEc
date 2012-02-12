@@ -32,15 +32,9 @@ int temp_sensor_read(enum temp_sensor_id id)
 
 int temp_sensor_tmp006_read_die_temp(const struct temp_sensor_t* sensor)
 {
-	int traw, t;
-	int rv;
-	int addr = sensor->addr;
+	int idx = (sensor->data[8] - 1) & 0x3;
 
-	rv = i2c_read16(TMP006_PORT(addr), TMP006_REG(addr), 0x01, &traw);
-	if (rv)
-		return -1;
-	t = (int)(int16_t)traw / 128;
-	return t + 273;
+	return sensor->data[idx << 1] / 100;
 }
 
 /* Calculate the remote object temperature.
@@ -84,22 +78,42 @@ int temp_sensor_tmp006_calculate_object_temp(int Tdie_i, int Vobj_i, int S0_i)
 
 int temp_sensor_tmp006_read_object_temp(const struct temp_sensor_t* sensor)
 {
+	int idx = (sensor->data[8] - 1) & 0x3;
+	int t = sensor->data[idx << 1];
+	int v = sensor->data[(idx << 1) + 1];
+
+	return temp_sensor_tmp006_calculate_object_temp(t, v, 6400) / 100;
+}
+
+int temp_sensor_tmp006_poll(const struct temp_sensor_t* sensor)
+{
 	int traw, t;
 	int vraw, v;
 	int rv;
 	int addr = sensor->addr;
+	int idx;
 
 	rv = i2c_read16(TMP006_PORT(addr), TMP006_REG(addr), 0x01, &traw);
 	if (rv)
-		return -1;
-	t = (int)(int16_t)traw / 128 + 273;
+		return EC_ERROR_UNKNOWN;
+	t = ((int)(int16_t)traw * 100) / 128 + 27300;
 
 	rv = i2c_read16(TMP006_PORT(addr), TMP006_REG(addr), 0x00, &vraw);
 	if (rv)
-		return -1;
+		return EC_ERROR_UNKNOWN;
 	v = ((int)(int16_t)vraw * 15625) / 100;
 
-	return temp_sensor_tmp006_calculate_object_temp(t * 100, v, 6400);
+	idx = sensor->data[8];
+	sensor->data[idx << 1] = t;
+	sensor->data[(idx << 1) + 1] = v;
+	sensor->data[8] = (idx + 1) & 0x3;
+#if 0
+	uart_printf("Updating %s:", sensor->name);
+	for (idx = 0; idx < 9; ++idx)
+		uart_printf(" %d", sensor->data[idx]);
+	uart_puts("\n");
+#endif
+	return EC_SUCCESS;
 }
 
 void temp_sensor_tmp006_config(const struct temp_sensor_t* sensor)
@@ -146,6 +160,26 @@ int temp_sensor_tmp006_print(const struct temp_sensor_t* sensor)
 
 	return EC_SUCCESS;
 }
+
+void poll_all_sensors(void)
+{
+	int i;
+	for (i = 0; i < TEMP_SENSOR_COUNT; ++i) {
+		const struct temp_sensor_t *sensor = temp_sensors + i;
+		if (sensor->poll)
+			sensor->poll(sensor);
+	}
+}
+
+void temp_sensor_task(void)
+{
+	while (1) {
+		poll_all_sensors();
+		/* Wait 1s */
+		task_wait_msg(1000000);
+	}
+}
+
 /*****************************************************************************/
 /* Console commands */
 

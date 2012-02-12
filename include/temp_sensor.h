@@ -22,6 +22,11 @@ struct temp_sensor_t {
 	int (*read)(const struct temp_sensor_t* self);
 	/* Print debug info on console. */
 	int (*print)(const struct temp_sensor_t* self);
+	/* Poll sensor value */
+	int (*poll)(const struct temp_sensor_t* self);
+	/* Data region for storing polled data. The size of this region should
+	 * be taken care of in board_temp_sensor.c. */
+	int32_t *data;
 };
 
 /* Dummy value to put in "addr" field in temp_sensor_t if we don't need to
@@ -33,6 +38,11 @@ struct temp_sensor_t {
  * function for a sensor.
  */
 #define TEMP_SENSOR_NO_PRINT 0
+
+/* Dummy value to put in "poll" field in temp_sensor_t if we don't poll that
+ * sensor.
+ */
+#define TEMP_SENSOR_NO_POLL 0
 
 /* Initializes the module. */
 int temp_sensor_init(void);
@@ -57,5 +67,8 @@ void temp_sensor_tmp006_config(const struct temp_sensor_t* sensor);
 
 /* Print debug messages for TMP006. */
 int temp_sensor_tmp006_print(const struct temp_sensor_t* sensor);
+
+/* Poll TMP006 and store voltage and die temperature. */
+int temp_sensor_tmp006_poll(const struct temp_sensor_t* sensor);
 
 #endif  /* __CROS_EC_TEMP_SENSOR_H */

@@ -122,6 +122,7 @@ enum gpio_signal {
 enum temp_sensor_id {
   TEMP_SENSOR_EC_INTERNAL = 0, /* EC internal temperature sensor */
   TEMP_SENSOR_CASE_DIE,
+  TEMP_SENSOR_OBJECT,
 
   TEMP_SENSOR_COUNT
 };

@@ -167,12 +167,20 @@ enum gpio_signal {
 enum temp_sensor_id {
 	/* I2C die temperature sensor near CPU */
 	TEMP_SENSOR_I2C_DIE_NEAR_CPU = 0,
-	/* PCH temperature sensor */
+	/* I2C object temperature sensor near CPU */
+	TEMP_SENSOR_I2C_CPU,
+	/* I2C die temperature sensor near PCH */
 	TEMP_SENSOR_I2C_DIE_NEAR_PCH,
-	/* DDR memory temperature sensor */
+	/* I2C object temperature sensor near PCH */
+	TEMP_SENSOR_I2C_PCH,
+	/* I2C die temperature sensor near DDR memory */
 	TEMP_SENSOR_I2C_DIE_NEAR_DDR,
-	/* Battery charger temperature sensor */
+	/* I2C object temperature sensor near CPU */
+	TEMP_SENSOR_I2C_DDR,
+	/* I2C die temperature sensor near battery charger */
 	TEMP_SENSOR_I2C_DIE_NEAR_CHARGER,
+	/* I2C object temperature sensor near CPU */
+	TEMP_SENSOR_I2C_CHARGER,
 	/* EC internal temperature sensor */
 	TEMP_SENSOR_EC_INTERNAL,
 	/* CPU die temperature via PECI */
