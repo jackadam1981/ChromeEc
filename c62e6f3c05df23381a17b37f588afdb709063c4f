@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//vhY\u003d",
+        "filename": "core/cortex-m/init.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-02-13T05:45:57Z",
+      "side": 1,
+      "message": "As not all Cortex-M cores have FPU, it would be nice to guard that code with something such as #ifdef CONFIG_FPU",
+      "revId": "c62e6f3c05df23381a17b37f588afdb709063c4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vhg\u003d",
+        "filename": "core/cortex-m/init.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-02-13T05:45:57Z",
+      "side": 1,
+      "message": "imo ldr.w is ARM syntax. You can just write ldr r0, \u003d0x... in gnu syntax.",
+      "revId": "c62e6f3c05df23381a17b37f588afdb709063c4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vhc\u003d",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-02-13T05:45:57Z",
+      "side": 1,
+      "message": "I had removed those functions to prevent anyone abusing them and breaking the system.\nEven if it looks clean, I would put that code directly in enable_fpu / disable_fpu.",
+      "revId": "c62e6f3c05df23381a17b37f588afdb709063c4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
