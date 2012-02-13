@@ -50,6 +50,24 @@
       "revId": "c62e6f3c05df23381a17b37f588afdb709063c4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vas\u003d",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-13T17:45:14Z",
+      "side": 1,
+      "message": "Perhaps just comment with \"Think really hard before using these.  There are usually better ways of accomplishing this.\"  I\u0027d rather have them present and discouraged than hidden in multiple places (clock.c, fpu.c, etc.)",
+      "parentUuid": "AAAAHn//vhc\u003d",
+      "revId": "c62e6f3c05df23381a17b37f588afdb709063c4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
