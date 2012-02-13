@@ -16,6 +16,23 @@
       "revId": "0d021e28522436ae934c92cf8e99c80ba480873e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vag\u003d",
+        "filename": "common/temp_sensor.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-13T17:46:59Z",
+      "side": 1,
+      "message": "This is much more readable than the fixed-point version.  (The fixed-point version is also tricky since underflows/overflows are hard to test and track.)",
+      "revId": "0d021e28522436ae934c92cf8e99c80ba480873e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
