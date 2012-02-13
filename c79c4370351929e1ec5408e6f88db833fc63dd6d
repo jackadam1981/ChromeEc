@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//vaY\u003d",
+        "filename": "common/temp_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-13T17:48:10Z",
+      "side": 1,
+      "message": "No, he does.  If we read 4 temp sensors and the 2nd is bad, we want to return the error code from the 2nd sensor, not the success code from the 4th sensor.",
+      "parentUuid": "AAAAHn//vdY\u003d",
+      "revId": "c79c4370351929e1ec5408e6f88db833fc63dd6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//vdI\u003d",
         "filename": "common/temp_sensor.c",
         "patchSetId": 1
