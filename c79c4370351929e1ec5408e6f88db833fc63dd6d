@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//vdY\u003d",
+        "filename": "common/temp_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-02-13T17:15:09Z",
+      "side": 1,
+      "message": "You don\u0027t need rv1;",
+      "revId": "c79c4370351929e1ec5408e6f88db833fc63dd6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vdI\u003d",
+        "filename": "common/temp_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-02-13T17:15:09Z",
+      "side": 1,
+      "message": "Keep original return rv;",
+      "revId": "c79c4370351929e1ec5408e6f88db833fc63dd6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vdU\u003d",
+        "filename": "common/temp_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-02-13T17:15:09Z",
+      "side": 1,
+      "message": "Just return rv;",
+      "revId": "c79c4370351929e1ec5408e6f88db833fc63dd6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
