@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//uqM\u003d",
+        "filename": "core/cortex-m/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-02-14T15:05:33Z",
+      "side": 1,
+      "message": "the configuration seems to be commented out",
+      "revId": "a28aa9c251e6738a1969e6c6731db4281e33f95b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//uqE\u003d",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-02-14T15:05:33Z",
+      "side": 1,
+      "message": "maybe the big fat warning should be in task.h",
+      "revId": "a28aa9c251e6738a1969e6c6731db4281e33f95b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
