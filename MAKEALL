@@ -1,0 +1,17 @@
+#!/bin/bash
+
+for filename in board/*; do
+	target=$(basename $filename)
+	# important, make clean first
+	BOARD="$target" make clean > /dev/null 2>&1
+	# get make exit value, and parse warnings
+	OUTPUT=$(BOARD="$target" make -j 4 2>&1)
+	ERR=$?
+	WARN=$(echo $OUTPUT | grep "warning:")
+	if [ "$ERR" -ne "0" -o ! -z "$WARN" ]; then
+		echo "$target build test failed"
+	fi
+	# make clean again
+	BOARD="$target" make clean > /dev/null 2>&1
+done
+
