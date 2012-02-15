@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//tl8\u003d",
+        "filename": "common/temp_sensor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-15T21:13:08Z",
+      "side": 1,
+      "message": "Why are we making this volatile?\n\nIf we\u0027re doing it to ensure a delay before disable_fpu(), it\u0027d be better to put another dummy volatile read explicitly for that purpose (and in any case, it should be commented as to why it\u0027s volatile, or someone later will take it out without realizing why it\u0027s there)",
+      "revId": "2a009cd03d7eb08d4d4e8d43c7b4dd3561c5a0ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
