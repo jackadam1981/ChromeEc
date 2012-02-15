@@ -11,9 +11,10 @@
 #include "util.h"
 #include "console.h"
 #include "board.h"
+#include "peci.h"
+#include "tmp006.h"
 #include "task.h"
-#include "fpu.h"
-#include "math.h"
+#include "chip_temp_sensor.h"
 
 /* Defined in board_temp_sensor.c. Must be in the same order as
  * in enum temp_sensor_id.
@@ -27,11 +28,12 @@ int temp_sensor_read(enum temp_sensor_id id)
 	if (id < 0 || id >= TEMP_SENSOR_COUNT)
 		return -1;
 	sensor = temp_sensors + id;
-	return sensor->read(sensor);
+	return sensor->read(sensor->idx);
 }
 
-int temp_sensor_tmp006_read_die_temp(const struct temp_sensor_t* sensor)
+void poll_all_sensors(void)
 {
+<<<<<<< HEAD
 	int traw, t;
 	int rv;
 	int addr = sensor->addr;
@@ -146,52 +148,28 @@ int temp_sensor_tmp006_read_object_temp(const struct temp_sensor_t* sensor)
 	v = ((int)(int16_t)vraw * 15625) / 100;
 
 	return temp_sensor_tmp006_calculate_object_temp(t * 100, v, 6400);
+=======
+#ifdef CONFIG_TMP006
+	tmp006_poll();
+#endif
+#ifdef CONFIG_PECI
+	peci_temp_sensor_poll();
+#endif
+#ifdef CHIP_lm4
+	chip_temp_sensor_poll();
+#endif
+>>>>>>> 6f0d78b... Temperature polling and temporal correction
 }
 
-void temp_sensor_tmp006_config(const struct temp_sensor_t* sensor)
+void temp_sensor_task(void)
 {
-	int addr = sensor->addr;
-
-	/* Configure the sensor:
-	 * 0x7000 = bits 14:12 = continuous conversion
-	 * 0x0400 = bits 11:9  = ADC conversion rate (1/sec)
-	 * 0x0100 = bit 8      = DRDY pin enabled */
-
-	/* TODO: support shutdown mode for power-saving? */
-	i2c_write16(TMP006_PORT(addr), TMP006_REG(addr), 0x02, 0x7500);
+	while (1) {
+		poll_all_sensors();
+		/* Wait 1s */
+		task_wait_msg(1000000);
+	}
 }
 
-int temp_sensor_tmp006_print(const struct temp_sensor_t* sensor)
-{
-	int vraw, v;
-	int traw, t;
-	int rv;
-	int d;
-	int addr = sensor->addr;
-
-	uart_printf("Debug data from %s:\n", sensor->name);
-	rv = i2c_read16(TMP006_PORT(addr), TMP006_REG(addr), 0xfe, &d);
-	if (rv)
-		return rv;
-	uart_printf("  Manufacturer ID: 0x%04x\n", d);
-
-	rv = i2c_read16(TMP006_PORT(addr), TMP006_REG(addr), 0xff, &d);
-	uart_printf("  Device ID:       0x%04x\n", d);
-
-	rv = i2c_read16(TMP006_PORT(addr), TMP006_REG(addr), 0x02, &d);
-	uart_printf("  Config:          0x%04x\n", d);
-
-	rv = i2c_read16(TMP006_PORT(addr), TMP006_REG(addr), 0x00, &vraw);
-	v = ((int)(int16_t)vraw * 15625) / 100;
-	uart_printf("  Voltage:         0x%04x = %d nV\n", vraw, v);
-
-	rv = i2c_read16(TMP006_PORT(addr), TMP006_REG(addr), 0x01, &traw);
-	t = ((int)(int16_t)traw * 100) / 128;
-	uart_printf("  Temperature:     0x%04x = %d.%02d C\n",
-		    traw, t / 100, t > 0 ? t % 100 : 100 - (t % 100));
-
-	return EC_SUCCESS;
-}
 /*****************************************************************************/
 /* Console commands */
 
@@ -220,65 +198,6 @@ static int command_temps(int argc, char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(temps, command_temps);
-
-static int command_sensor_info(int argc, char **argv)
-{
-	int i;
-	int rv, rv1;
-	const struct temp_sensor_t* sensor;
-
-	rv1 = EC_SUCCESS;
-	for (i = 0; i < TEMP_SENSOR_COUNT; ++i) {
-		sensor = temp_sensors + i;
-		if (sensor->print == TEMP_SENSOR_NO_PRINT)
-			continue;
-		rv = sensor->print(sensor);
-		if (rv != EC_SUCCESS)
-			rv1 = rv;
-	}
-
-	return rv1;
-}
-DECLARE_CONSOLE_COMMAND(tempsinfo, command_sensor_info);
-
-/* TMP006 object temperature calculation command.
- * TODO: This command is only for debugging. Remove it when temporal correciton
- *       is done.
- */
-static int command_sensor_remote(int argc, char **argv)
-{
-	char *e;
-	int32_t Td2, Vobj9, Sm03;
-
-	if (argc != 4) {
-		uart_puts("Usage: tempcorrect <Tdie*100> <Vobj*10^9> <S0*10^11>\n");
-		return EC_ERROR_UNKNOWN;
-	}
-
-	Td2 = strtoi(argv[1], &e, 0);
-	if (e && *e) {
-		uart_puts("Bad Tdie.\n");
-		return EC_ERROR_UNKNOWN;
-	}
-
-	Vobj9 = strtoi(argv[2], &e, 0);
-	if (e && *e) {
-		uart_puts("Bad Vobj.\n");
-		return EC_ERROR_UNKNOWN;
-	}
-
-	Sm03 = strtoi(argv[3], &e, 0);
-	if (e && *e) {
-		uart_puts("Bad S0.\n");
-		return EC_ERROR_UNKNOWN;
-	}
-
-	uart_printf("%d\n",
-		temp_sensor_tmp006_calculate_object_temp(Td2, Vobj9, Sm03));
-
-	return EC_SUCCESS;
-}
-DECLARE_CONSOLE_COMMAND(tempremote, command_sensor_remote);
 
 /*****************************************************************************/
 /* Initialization */
