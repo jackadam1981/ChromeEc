@@ -10,6 +10,9 @@
 
 struct temp_sensor_t;
 
+/* Temperature polling function. */
+int chip_temp_sensor_poll(const struct temp_sensor_t* sensor);
+
 /* Temperature reading function. Input pointer to a sensor in temp_sensors.
  * Return temperature in K.
  */

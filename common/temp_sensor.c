@@ -32,15 +32,8 @@ int temp_sensor_read(enum temp_sensor_id id)
 
 int temp_sensor_tmp006_read_die_temp(const struct temp_sensor_t* sensor)
 {
-	int traw, t;
-	int rv;
-	int addr = sensor->addr;
-
-	rv = i2c_read16(TMP006_PORT(addr), TMP006_REG(addr), 0x01, &traw);
-	if (rv)
-		return -1;
-	t = (int)(int16_t)traw / 128;
-	return t + 273;
+	int idx = (sensor->data[5] - 1) & 0x3;
+	return sensor->data[idx] / 100;
 }
 
 /* Calculate the remote object temperature.
@@ -82,24 +75,64 @@ int temp_sensor_tmp006_calculate_object_temp(int Tdie_i, int Vobj_i, int S0_i)
 	return Tobj_i;
 }
 
+/* Temporal Correction
+ * Parameters:
+ *     T1-T4: Four die temperature readings separated by 1s in 1/100K.
+ *     v:     Voltage read from register 0. In nV.
+ * Return:
+ *     Corrected object voltage in 1/100K.
+ */
+int temp_sensor_tmp006_correct_object_voltage(int T1,
+					      int T2,
+					      int T3,
+					      int T4,
+					      int Vobj)
+{
+	int Tslope = 3 * T1 + T2 - T3 - 3 * T4;
+	return Vobj + 296 * Tslope;
+}
+
 int temp_sensor_tmp006_read_object_temp(const struct temp_sensor_t* sensor)
+{
+	int idx = (sensor->data[5] - 1) & 0x3;
+	int t = sensor->data[idx];
+	int v = sensor->data[4];
+
+	v = temp_sensor_tmp006_correct_object_voltage(
+		sensor->data[idx],
+		sensor->data[(idx + 3) & 3],
+		sensor->data[(idx + 2) & 3],
+		sensor->data[(idx + 1) & 3],
+		v);
+
+	/* TODO: Calibrate the sensitivity factor. */
+	return temp_sensor_tmp006_calculate_object_temp(t, v, 6400) / 100;
+}
+
+int temp_sensor_tmp006_poll(const struct temp_sensor_t* sensor)
 {
 	int traw, t;
 	int vraw, v;
 	int rv;
 	int addr = sensor->addr;
+	int idx;
 
 	rv = i2c_read16(TMP006_PORT(addr), TMP006_REG(addr), 0x01, &traw);
 	if (rv)
-		return -1;
-	t = (int)(int16_t)traw / 128 + 273;
+		return EC_ERROR_UNKNOWN;
+	t = ((int)(int16_t)traw * 100) / 128 + 27300;
 
 	rv = i2c_read16(TMP006_PORT(addr), TMP006_REG(addr), 0x00, &vraw);
 	if (rv)
-		return -1;
+		return EC_ERROR_UNKNOWN;
 	v = ((int)(int16_t)vraw * 15625) / 100;
 
-	return temp_sensor_tmp006_calculate_object_temp(t * 100, v, 6400);
+	idx = sensor->data[5];
+	sensor->data[idx] = t;
+	sensor->data[4] = v;
+	sensor->data[5] = (idx + 1) & 3;
+
+	return EC_SUCCESS;
 }
 
 void temp_sensor_tmp006_config(const struct temp_sensor_t* sensor)
@@ -146,6 +179,28 @@ int temp_sensor_tmp006_print(const struct temp_sensor_t* sensor)
 
 	return EC_SUCCESS;
 }
+
+void poll_all_sensors(void)
+{
+	int i;
+	for (i = 0; i < TEMP_SENSOR_COUNT; ++i) {
+		const struct temp_sensor_t *sensor = temp_sensors + i;
+		if (sensor->poll)
+			sensor->poll(sensor);
+	}
+}
+
+void temp_sensor_task(void)
+{
+	while (1) {
+#ifdef CONFIG_POLL_TEMP
+		poll_all_sensors();
+#endif
+		/* Wait 1s */
+		task_wait_msg(1000000);
+	}
+}
+
 /*****************************************************************************/
 /* Console commands */
 

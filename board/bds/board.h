@@ -8,6 +8,9 @@
 #ifndef __BOARD_H
 #define __BOARD_H
 
+/* Config flags */
+#define CONFIG_POLL_TEMP
+
 /* 66.667 Mhz clock frequency */
 #define CPU_CLOCK  66666667
 
@@ -125,6 +128,7 @@ enum gpio_signal {
 enum temp_sensor_id {
   TEMP_SENSOR_EC_INTERNAL = 0, /* EC internal temperature sensor */
   TEMP_SENSOR_CASE_DIE,
+  TEMP_SENSOR_OBJECT,
 
   TEMP_SENSOR_COUNT
 };
