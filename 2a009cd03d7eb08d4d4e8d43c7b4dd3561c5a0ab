@@ -16,6 +16,24 @@
       "revId": "2a009cd03d7eb08d4d4e8d43c7b4dd3561c5a0ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//tl0\u003d",
+        "filename": "common/temp_sensor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2012-02-15T21:15:08Z",
+      "side": 1,
+      "message": "We are making this volatile because compiler would try to optimize the code and do some floating point operation just before returning. Given we already disabled FPU at that point, it causes HardFault. Making this volatile forces compiler to finish the operation on assignment.",
+      "parentUuid": "AAAAHn//tl8\u003d",
+      "revId": "2a009cd03d7eb08d4d4e8d43c7b4dd3561c5a0ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
