@@ -10,6 +10,15 @@
 
 /* Optional features */
 #define CONFIG_PECI
+#define CONFIG_FAN_EXTRA_CMD
+#define CONFIG_THERMAL_EXTRA_CMD
+#define CONFIG_FLASH_EXTRA_CMD
+#define CONFIG_TIME_EXTRA_CMD
+#define CONFIG_KB_EXTRA_CMD
+#define CONFIG_BATTERY_EXTRA_CMD
+#define CONFIG_PWR_EXTRA_CMD
+#define CONFIG_EE_EXTRA_CMD
+#define CONFIG_MEM_EXTRA_CMD
 
 /* 66.667 Mhz clock frequency */
 #define CPU_CLOCK  66666667
