@@ -20,6 +20,7 @@
 .section .image.A, "ax"
 .incbin FW_IMAGE(A)
 
-/* Read Write firmware copy B */
-.section .image.B, "ax"
-.incbin FW_IMAGE(B)
+/* Read Write firmware copy B. Currently removed due to code size limit.
+   TODO: Add it back when we can. */
+/* .section .image.B, "ax"
+   .incbin FW_IMAGE(B) */
