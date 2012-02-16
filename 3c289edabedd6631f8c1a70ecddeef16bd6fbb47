@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//sbI\u003d",
+        "filename": "chip/lm4/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-02-16T22:04:43Z",
+      "side": 1,
+      "message": "AFAIK the next boards will have 256kB chips. so we might want to use 60kB unconditionally here.\nAnd just remove CONFIG_NO_RW_B when the next batch arrives.",
+      "revId": "3c289edabedd6631f8c1a70ecddeef16bd6fbb47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//sbM\u003d",
+        "filename": "common/firmware_image.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-02-16T22:04:43Z",
+      "side": 1,
+      "message": "let\u0027s put 2012 here.",
+      "revId": "3c289edabedd6631f8c1a70ecddeef16bd6fbb47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
