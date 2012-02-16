@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//tCk\u003d",
+        "filename": "chip/stm32l/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-02-16T04:31:17Z",
+      "side": 1,
+      "message": "AFAIK the prototype is already in gpio.h (and implemented on LM4F) that\u0027s why I\u0027m using that one.",
+      "parentUuid": "AAAAHn//tD0\u003d",
+      "revId": "c9cb9bd6f3d8da7400cffd8840f3fbd46512c993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//tDk\u003d",
         "filename": "chip/stm32l/gpio.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2012-02-16T04:02:00Z",
       "side": 1,
       "message": "Minor nit: Make mask a uint16_t, or do \"half \u003d (mask \u003e\u003e 8) \u0026 0xff\" for the upper half.",
+      "revId": "c9cb9bd6f3d8da7400cffd8840f3fbd46512c993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//tCg\u003d",
+        "filename": "chip/stm32l/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-02-16T04:31:17Z",
+      "side": 1,
+      "message": "I won\u0027t modify the LM4 code now. I will add the mask",
+      "parentUuid": "AAAAHn//tDk\u003d",
       "revId": "c9cb9bd6f3d8da7400cffd8840f3fbd46512c993",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
