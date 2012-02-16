@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//tRc\u003d",
+        "filename": "common/temp_sensor.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-16T00:22:37Z",
+      "side": 1,
+      "message": "Might be better to hide this in disable_fpu()\n\nIf you pass the final result to disable_fpu(), then the code will look cleaner here:\n\ndisable_fpu(Tobj_i)\n\n(and we\u0027ll be able to more easily reuse the barrier code other places we use FP)",
+      "revId": "103c9df839cc73dbc3436263137b08868d95cf89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//tRQ\u003d",
+        "filename": "core/cortex-m/fpu.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-16T00:22:37Z",
+      "side": 1,
+      "message": "(so here, just put your barrier instruction inside asm volatile() block below...)\n\n...and change fpu.h to note that you should pass in the final FP result.",
+      "revId": "103c9df839cc73dbc3436263137b08868d95cf89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
