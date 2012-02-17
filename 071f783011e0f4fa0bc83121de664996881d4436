@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//rio\u003d",
+        "filename": "board/link/board_temp_sensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-17T17:25:09Z",
+      "side": 1,
+      "message": "This seems fragile.  board_temp_sensor.c now needs to keep up with any changes in temp_sensor_tmp006 implementation.\n\nIt\u0027d be better to have the array of data for each sensor live in that sensor\u0027s .c file.",
+      "revId": "071f783011e0f4fa0bc83121de664996881d4436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//rik\u003d",
+        "filename": "common/temp_sensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-17T17:25:09Z",
+      "side": 1,
+      "message": "This will read each TMP006 twice - once for die temp and once for object temp.\n\nI think the polling for the TMP006\u0027s needs to live in its own .c file; we can still call it from here, though.",
+      "revId": "071f783011e0f4fa0bc83121de664996881d4436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//rjM\u003d",
+        "filename": "include/temp_sensor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-17T17:25:09Z",
+      "side": 1,
+      "message": "NULL, since it\u0027s a pointer",
+      "revId": "071f783011e0f4fa0bc83121de664996881d4436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
