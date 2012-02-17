@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//ric\u003d",
+        "filename": "board/discovery/board.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-02-17T17:35:52Z",
+      "side": 1,
+      "message": "you don\u0027t need the extern qualifier for your prototype",
+      "revId": "81dea0da569fcaafd7e7e9f557f6cf37836a8437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//riY\u003d",
+        "filename": "board/discovery/ec.tasklist",
+        "patchSetId": 9
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-02-17T17:35:52Z",
+      "side": 1,
+      "message": "on other platform, the keyboard task was lower priority than the console",
+      "revId": "81dea0da569fcaafd7e7e9f557f6cf37836a8437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//riQ\u003d",
+        "filename": "chip/stm32l/keyboard_scan.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-02-17T17:35:52Z",
+      "side": 1,
+      "message": "this is already done in board configuration",
+      "revId": "81dea0da569fcaafd7e7e9f557f6cf37836a8437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//riM\u003d",
+        "filename": "chip/stm32l/keyboard_scan.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-02-17T17:35:52Z",
+      "side": 1,
+      "message": "this should be done by the GPIO declaration in board.c.\nif some properties (open drain ...) are missing,we should fix it there.",
+      "revId": "81dea0da569fcaafd7e7e9f557f6cf37836a8437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//riI\u003d",
+        "filename": "chip/stm32l/keyboard_scan.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-02-17T17:35:52Z",
+      "side": 1,
+      "message": "ditto, should be done by the GPIO declaration in board.c",
+      "revId": "81dea0da569fcaafd7e7e9f557f6cf37836a8437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//rhU\u003d",
+        "filename": "chip/stm32l/keyboard_scan.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-02-17T17:35:52Z",
+      "side": 1,
+      "message": "this is done by the common GPIO interrupt handler",
+      "revId": "81dea0da569fcaafd7e7e9f557f6cf37836a8437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
