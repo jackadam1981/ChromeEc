@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//rHY\u003d",
+        "filename": "board/link/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-17T22:01:39Z",
+      "side": 1,
+      "message": "CONFIG_TASK_TEMPSENSOR",
+      "revId": "439b3fcde79c654536ec7f78b2b32c161ac798ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//rHU\u003d",
+        "filename": "board/link/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-17T22:01:39Z",
+      "side": 1,
+      "message": "Comment what this is",
+      "revId": "439b3fcde79c654536ec7f78b2b32c161ac798ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//rHc\u003d",
+        "filename": "chip/lm4/chip_temp_sensor.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-17T22:01:39Z",
+      "side": 1,
+      "message": "static",
+      "revId": "439b3fcde79c654536ec7f78b2b32c161ac798ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//rHk\u003d",
+        "filename": "chip/lm4/peci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-17T22:01:39Z",
+      "side": 1,
+      "message": "static",
+      "revId": "439b3fcde79c654536ec7f78b2b32c161ac798ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//rHg\u003d",
+        "filename": "chip/lm4/peci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-17T22:01:39Z",
+      "side": 1,
+      "message": "last_temp_val?",
+      "revId": "439b3fcde79c654536ec7f78b2b32c161ac798ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//rG8\u003d",
+        "filename": "common/tmp006.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-17T22:01:39Z",
+      "side": 1,
+      "message": "static",
+      "revId": "439b3fcde79c654536ec7f78b2b32c161ac798ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//rG4\u003d",
+        "filename": "common/tmp006.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-17T22:01:39Z",
+      "side": 1,
+      "message": "comment what the fields are.  I assume idx is the index into t, but would be good to call it tidx then.",
+      "revId": "439b3fcde79c654536ec7f78b2b32c161ac798ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//rGw\u003d",
+        "filename": "common/tmp006.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-17T22:01:39Z",
+      "side": 1,
+      "message": "2 blank lines between top-level funcs",
+      "revId": "439b3fcde79c654536ec7f78b2b32c161ac798ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//rHA\u003d",
+        "filename": "include/tmp006.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-17T22:01:39Z",
+      "side": 1,
+      "message": "Seems like you could make the even indices die temps and odd indices object temps, and get rid of the void *param everywhere.",
+      "revId": "439b3fcde79c654536ec7f78b2b32c161ac798ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
