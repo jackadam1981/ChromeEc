@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAAHn//rWw\u003d",
+        "filename": "board/discovery/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-02-17T20:39:09Z",
+      "side": 1,
+      "message": "Note: Handler function renamed to \"matrix_interrupt\" to avoid \u003e80 here.",
+      "revId": "81dea0da569fcaafd7e7e9f557f6cf37836a8437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//ric\u003d",
         "filename": "board/discovery/board.h",
         "patchSetId": 9
@@ -13,6 +30,24 @@
       "writtenOn": "2012-02-17T17:35:52Z",
       "side": 1,
       "message": "you don\u0027t need the extern qualifier for your prototype",
+      "revId": "81dea0da569fcaafd7e7e9f557f6cf37836a8437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//rWg\u003d",
+        "filename": "board/discovery/board.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-02-17T20:39:09Z",
+      "side": 1,
+      "message": "gone. also, i renamed it to \"matrix_interrupt\" since the \"keyboard_matrix_interrupt\" was causing line length issues (and is too verbose anyway) and to be more consistent with the lm4 naming.",
+      "parentUuid": "AAAAHn//ric\u003d",
       "revId": "81dea0da569fcaafd7e7e9f557f6cf37836a8437",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -36,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//rUU\u003d",
+        "filename": "board/discovery/ec.tasklist",
+        "patchSetId": 9
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-02-17T20:39:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//riY\u003d",
+      "revId": "81dea0da569fcaafd7e7e9f557f6cf37836a8437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//riQ\u003d",
         "filename": "chip/stm32l/keyboard_scan.c",
         "patchSetId": 9
@@ -53,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//rUM\u003d",
+        "filename": "chip/stm32l/keyboard_scan.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-02-17T20:39:09Z",
+      "side": 1,
+      "message": "Yep -- I think that was just a stale comment.",
+      "parentUuid": "AAAAHn//riQ\u003d",
+      "revId": "81dea0da569fcaafd7e7e9f557f6cf37836a8437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//riM\u003d",
         "filename": "chip/stm32l/keyboard_scan.c",
         "patchSetId": 9
@@ -64,6 +135,24 @@
       "writtenOn": "2012-02-17T17:35:52Z",
       "side": 1,
       "message": "this should be done by the GPIO declaration in board.c.\nif some properties (open drain ...) are missing,we should fix it there.",
+      "revId": "81dea0da569fcaafd7e7e9f557f6cf37836a8437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//rOs\u003d",
+        "filename": "chip/stm32l/keyboard_scan.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-02-17T20:39:09Z",
+      "side": 1,
+      "message": "SGTM. I did a little initial investigation into this but it seems like the common GPIO code will need a couple new flags (and code to process them). Can we put a TODO here and do the refactoring in separate CL after necessary changes have been made to the common GPIO code?",
+      "parentUuid": "AAAAHn//riM\u003d",
       "revId": "81dea0da569fcaafd7e7e9f557f6cf37836a8437",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -98,6 +187,24 @@
       "writtenOn": "2012-02-17T17:35:52Z",
       "side": 1,
       "message": "this is done by the common GPIO interrupt handler",
+      "revId": "81dea0da569fcaafd7e7e9f557f6cf37836a8437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//rRc\u003d",
+        "filename": "chip/stm32l/keyboard_scan.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-02-17T20:39:09Z",
+      "side": 1,
+      "message": "Ok. The wait_for_interrupt() function above is another area where pending interrupts are cleared outside the common GPIO interrupt handler. The reason is because asserting the outputs (columns) can inadvertently trigger interrupts which need to be cleared before re-enabling interrupts. So I tried to make that function a little smarter about clearing interrupts that are a result of asserting the outputs.",
+      "parentUuid": "AAAAHn//rhU\u003d",
       "revId": "81dea0da569fcaafd7e7e9f557f6cf37836a8437",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
