@@ -16,6 +16,24 @@
       "revId": "9d314a1429b94a2ea39b473ffbaec99d24bced77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//qu8\u003d",
+        "filename": "chip/stm32l/keyboard_scan.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-02-18T04:37:38Z",
+      "side": 1,
+      "message": "Ah, I see what you mean. I\u0027ve moved this to board.c for discovery (All GPIOs were enabled for normal run-mode anyway, so OR\u0027ing AHBENR was redundant)",
+      "parentUuid": "AAAAHn//q08\u003d",
+      "revId": "9d314a1429b94a2ea39b473ffbaec99d24bced77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
