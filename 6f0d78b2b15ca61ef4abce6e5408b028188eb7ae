@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//q2E\u003d",
+        "filename": "chip/lm4/peci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-18T00:56:06Z",
+      "side": 1,
+      "message": "It occurs to me we probably should only update last_temp_val when the read was successful.  (On proto0 it fails about 10% of the time).",
+      "revId": "6f0d78b2b15ca61ef4abce6e5408b028188eb7ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
