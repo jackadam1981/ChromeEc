@@ -375,7 +375,7 @@ int uart_puts(const char *outstr)
 			break;
 	}
 
-	if (was_empty)
+	if (was_empty || uart_tx_stopped())
 		uart_tx_start();
 
 	/* Successful if we consumed all output */
@@ -510,7 +510,7 @@ int uart_printf(const char *format, ...)
 	}
 	va_end(args);
 
-	if (was_empty)
+	if (was_empty || uart_tx_stopped())
 		uart_tx_start();
 
 	/* Successful if we consumed all output */
