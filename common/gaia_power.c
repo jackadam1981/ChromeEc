@@ -37,6 +37,9 @@ static int ap_on;
 static int force_signal = -1;
 static int force_value;
 
+/* Signal information from board.c in order to get GPIO names. */
+extern const struct gpio_info gpio_list[GPIO_COUNT];
+
 /* Wait for GPIO "signal" to reach level "value".
  * Returns EC_ERROR_TIMEOUT if timeout before reaching the desired state.
  */
@@ -56,7 +59,8 @@ static int wait_in_signal(enum gpio_signal signal, int value, int timeout)
 		if ((now.val >= deadline.val) ||
 			(task_wait_event(deadline.val - now.val) ==
 			 TASK_EVENT_TIMER)) {
-			uart_printf("Timeout waiting for GPIO %d\n", signal);
+			uart_printf("Timeout waiting for GPIO %d/%s\n", signal,
+				    gpio_list[signal].name);
 			return EC_ERROR_TIMEOUT;
 		}
 	}
@@ -69,18 +73,19 @@ static int wait_in_signal(enum gpio_signal signal, int value, int timeout)
  * It can be either a long power button press or a shutdown triggered from the
  * AP and detected by reading XPSHOLD.
  */
-static void wait_for_power_off(void)
+static void wait_for_power_off(int no_xpshold)
 {
 	timestamp_t deadline, now;
 
 	while (1) {
 		/* wait for power button press or XPSHOLD falling edge */
 		while ((gpio_get_level(GPIO_EC_PWRON) == 0) &&
-			(gpio_get_level(GPIO_SOC1V8_XPSHOLD) == 1)) {
-				task_wait_event(-1);
+				(gpio_get_level(GPIO_SOC1V8_XPSHOLD) == 1 ||
+				no_xpshold)) {
+			task_wait_event(-1);
 		}
 		/* XPSHOLD released by AP : shutdown immediatly */
-		if (gpio_get_level(GPIO_SOC1V8_XPSHOLD) == 0)
+		if ((gpio_get_level(GPIO_SOC1V8_XPSHOLD) == 0) && !no_xpshold)
 			return;
 
 		/* check if power button is pressed for 8s */
@@ -138,6 +143,8 @@ int chipset_in_state(enum chipset_state in_state)
 
 void gaia_power_task(void)
 {
+	int xpshold;
+
 	gaia_power_init();
 
 	while (1) {
@@ -167,19 +174,21 @@ void gaia_power_task(void)
 		/* wait for the Application Processor to take control of the
 		 * PMIC.
 		 */
-		wait_in_signal(GPIO_SOC1V8_XPSHOLD, 1, FAIL_TIMEOUT);
-		/* release PMIC startup signal */
-		gpio_set_level(GPIO_PMIC_ACOK, 1);
+		xpshold = wait_in_signal(GPIO_SOC1V8_XPSHOLD, 1, FAIL_TIMEOUT);
+		/* release PMIC startup signal if AP controls it */
+		if (xpshold == EC_SUCCESS)
+			gpio_set_level(GPIO_PMIC_ACOK, 1);
 
 		/* Power ON state */
 		ap_on = 1;
 		uart_printf("AP running ...\n");
 
 		/* Wait for power off from AP or long power button press */
-		wait_for_power_off();
+		wait_for_power_off(xpshold);
 		/* switch off all rails */
 		gpio_set_level(GPIO_EN_PP3300, 0);
 		gpio_set_level(GPIO_EN_PP1350, 0);
+		gpio_set_level(GPIO_PMIC_ACOK, 1);
 		gpio_set_level(GPIO_EN_PP5000, 0);
 		uart_printf("Shutdown complete.\n");
 
