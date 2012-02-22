@@ -48,5 +48,10 @@ void configure_board(void)
 	STM32L_RCC_AHBENR |= 0x3f;
 
 	/* Select Alternate function for USART2 on pins PA2/PA3 */
-        gpio_set_alternate_function(GPIO_A, (1<<2) | (1<<3), GPIO_ALT_USART);
+	gpio_set_alternate_function(GPIO_A, (1<<2) | (1<<3), GPIO_ALT_USART);
+
+	/* I2C2 SCL/SDA on pins PB10/PB11 */
+	STM32L_GPIO_PUPDR_OFF(GPIO_B) &= ~(0xF << (2*10)); /* no pullup/down */
+	STM32L_GPIO_OTYPER_OFF(GPIO_B) |= (0x3 << 10); /* open-drain */
+	gpio_set_alternate_function(GPIO_B, (1<<10) | (1<<11), GPIO_ALT_I2C);
 }
