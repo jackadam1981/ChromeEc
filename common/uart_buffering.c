@@ -327,8 +327,10 @@ void uart_process(void)
 
 			/* Echo characters directly to the transmit FIFO so we
 			 * don't interfere with the transmit buffer. */
-			if (c == '\n')
+			if (c == '\n') {
 				uart_write_char('\r');
+				while (!uart_tx_ready()) ;
+			}
 			uart_write_char(c);
 
 			/* Handle backspace if we can */
