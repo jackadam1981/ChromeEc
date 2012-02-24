@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//mek\u003d",
+        "filename": "chip/lm4/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-24T18:57:16Z",
+      "side": 1,
+      "message": "This should be in the temperature sensor module, not the LPC module.  It\u0027s the temperature sensor task which polls the sensors and updates the memmap space, which it can get via lpc_get_memmap_range()",
+      "revId": "43aa25931cbe18d2d031bd0697c22c88609cb03f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//meY\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-24T18:57:16Z",
+      "side": 1,
+      "message": "Make 0x900 a #defined constant, the way we do for the other addresses.",
+      "revId": "43aa25931cbe18d2d031bd0697c22c88609cb03f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//meQ\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-24T18:57:16Z",
+      "side": 1,
+      "message": "200 should be something like EC_LPC_TEMP_SENSOR_OFFSET, used in both EC code and ectool",
+      "revId": "43aa25931cbe18d2d031bd0697c22c88609cb03f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
