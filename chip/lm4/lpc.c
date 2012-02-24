@@ -16,6 +16,7 @@
 #include "task.h"
 #include "timer.h"
 #include "uart.h"
+#include "temp_sensor.h"
 
 
 /* Configures GPIOs for module. */
@@ -291,3 +292,31 @@ static void lpc_interrupt(void)
 }
 
 DECLARE_IRQ(LM4_IRQ_LPC, lpc_interrupt, 2);
+
+
+static void lpc_memmap_update_temperature(void)
+{
+	int i, t;
+	uint8_t *mapped = lpc_get_memmap_range();
+
+	for (i = 0; i < TEMP_SENSOR_COUNT && i < 16; ++i) {
+		t = temp_sensor_read(i);
+		if (t == -1)
+			mapped[i] = 0xff;
+		else
+			mapped[i] = t - 200;
+	}
+
+	for (i = TEMP_SENSOR_COUNT; i < 16; ++i)
+		mapped[i] = 0xff;
+}
+
+
+void lpc_task(void)
+{
+	while (1) {
+		lpc_memmap_update_temperature();
+		/* Wait 1s */
+		task_wait_msg(1000000);
+	}
+}
