@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//mTM\u003d",
+        "filename": "chip/lm4/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-24T20:14:44Z",
+      "side": 1,
+      "message": "no longer needed",
+      "revId": "91ca4ea28d7713e08aee2a4b8906a08fd125488c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//mTI\u003d",
+        "filename": "common/temp_sensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-24T20:14:44Z",
+      "side": 1,
+      "message": "Memset the whole range to 0xff at init time; then you only need to set the sensors which exist in this func.",
+      "revId": "91ca4ea28d7713e08aee2a4b8906a08fd125488c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//mS8\u003d",
+        "filename": "include/lpc_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-24T20:14:44Z",
+      "side": 1,
+      "message": "Use EC_LPC_MEMMAP_* instead of OFFSET, since otherwise  EC_LPC_OFFSET_TEMP_SENSOR and EC_LPC_TEMP_SENSOR_OFFSET are too easy to get confused.",
+      "revId": "91ca4ea28d7713e08aee2a4b8906a08fd125488c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//mS0\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-24T20:14:44Z",
+      "side": 1,
+      "message": "read_mapped_mem8()\n\nsince I suspect we\u0027ll have 16 and 32 bit variants for fan/battery/etc.",
+      "revId": "91ca4ea28d7713e08aee2a4b8906a08fd125488c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
