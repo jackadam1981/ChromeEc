@@ -16,6 +16,7 @@
 #include "task.h"
 #include "timer.h"
 #include "uart.h"
+#include "temp_sensor.h"
 
 
 /* Configures GPIOs for module. */
