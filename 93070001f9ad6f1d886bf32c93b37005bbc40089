@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//lzU\u003d",
+        "filename": "chip/lm4/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-25T01:37:47Z",
+      "side": 1,
+      "message": "Just make this a uint16_t * and typecast it.  We can assume little-endian (and we do in other LPC messages).",
+      "revId": "93070001f9ad6f1d886bf32c93b37005bbc40089",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
