@@ -16,6 +16,40 @@
       "revId": "93070001f9ad6f1d886bf32c93b37005bbc40089",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//lys\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-25T01:40:46Z",
+      "side": 1,
+      "message": "use inw()\n\nsee sys/io.h",
+      "revId": "93070001f9ad6f1d886bf32c93b37005bbc40089",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//lyg\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-25T01:40:46Z",
+      "side": 1,
+      "message": "inl()",
+      "revId": "93070001f9ad6f1d886bf32c93b37005bbc40089",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
