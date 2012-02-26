@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//lX8\u003d",
+        "filename": "chip/lm4/pwm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-26T19:26:11Z",
+      "side": 1,
+      "message": "Might be better to do this as a for-loop to set each entry to 0xffff; it\u0027s more readable to indicate that 0xffff \u003d fan not present.",
+      "revId": "2c00ff6144e1406e708bcf5b82b28a5e7ae3e524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
