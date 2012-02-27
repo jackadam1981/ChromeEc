@@ -225,7 +225,7 @@ static int set_wp_range(int start, int nblock)
 	return EC_SUCCESS;
 }
 
-int flash_get_write_protect_range(int *offset, int *size)
+int flash_get_write_protect_range(uint32_t *offset, uint32_t *size)
 {
 	int start, nblock;
 	int rv;
@@ -234,18 +234,17 @@ int flash_get_write_protect_range(int *offset, int *size)
 	if (rv)
 		return rv;
 
-	*size = nblock * FLASH_PROTECT_BYTES;
-	*offset = start * FLASH_PROTECT_BYTES;
+	*size = (uint32_t)((nblock * FLASH_PROTECT_BYTES) & UINT32_MAX);
+	*offset = (uint32_t)((start * FLASH_PROTECT_BYTES) & UINT32_MAX);
 	return EC_SUCCESS;
 }
 
-int flash_set_write_protect_range(int offset, int size)
+int flash_set_write_protect_range(uint32_t offset, uint32_t size)
 {
 	int start, nblock;
 	int rv;
 
-	if ((offset < 0) || (size < 0) || ((offset + size) >
-			(LM4_FLASH_FSIZE * FLASH_PROTECT_BYTES)))
+	if ((offset + size) > (LM4_FLASH_FSIZE * FLASH_PROTECT_BYTES))
 		return EC_ERROR_UNKNOWN; /* Invalid range */
 
 	rv = flash_get_write_protect_status();
