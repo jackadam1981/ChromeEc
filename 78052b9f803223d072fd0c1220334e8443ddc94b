@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//kmw\u003d",
+        "filename": "chip/lm4/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-02-27T23:13:25Z",
+      "side": 1,
+      "message": "IMO it would be better to fix get_wp_range prototype to return uint32_t",
+      "revId": "78052b9f803223d072fd0c1220334e8443ddc94b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
