@@ -19,6 +19,7 @@
 	TASK(PWM, pwm_task, NULL) \
 	TASK(KEYSCAN, keyboard_scan_task, NULL) \
 	TASK(POWERBTN, power_button_task, NULL) \
+	TASK(THERMAL, thermal_task, NULL) \
 	TASK(X86POWER, x86_power_task, NULL) \
 	TASK(CONSOLE, console_task, NULL) \
 	TASK(HOSTCMD, host_command_task, NULL) \

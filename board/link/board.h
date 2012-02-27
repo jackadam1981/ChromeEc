@@ -11,6 +11,7 @@
 /* Optional features */
 #define CONFIG_PECI
 #define CONFIG_TMP006
+#define CONFIG_THERMAL_ENGINE
 
 /* 66.667 Mhz clock frequency */
 #define CPU_CLOCK  66666667
