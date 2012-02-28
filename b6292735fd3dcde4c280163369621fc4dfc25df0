@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//jhM\u003d",
+        "filename": "board/link/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-28T23:50:15Z",
+      "side": 1,
+      "message": "(remove)",
+      "revId": "b6292735fd3dcde4c280163369621fc4dfc25df0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//jhQ\u003d",
+        "filename": "board/link/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-28T23:50:15Z",
+      "side": 1,
+      "message": "CONFIG_TASK_THERMAL",
+      "revId": "b6292735fd3dcde4c280163369621fc4dfc25df0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//jhU\u003d",
+        "filename": "common/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-28T23:50:15Z",
+      "side": 1,
+      "message": "CONFIG_TASK_THERMAL",
+      "revId": "b6292735fd3dcde4c280163369621fc4dfc25df0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//jYo\u003d",
+        "filename": "common/thermal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-28T23:50:15Z",
+      "side": 1,
+      "message": "Alphabetical order, please",
+      "revId": "b6292735fd3dcde4c280163369621fc4dfc25df0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//jhI\u003d",
+        "filename": "common/thermal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-28T23:50:15Z",
+      "side": 1,
+      "message": "static?",
+      "revId": "b6292735fd3dcde4c280163369621fc4dfc25df0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//jhE\u003d",
+        "filename": "common/thermal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-28T23:50:15Z",
+      "side": 1,
+      "message": "static?",
+      "revId": "b6292735fd3dcde4c280163369621fc4dfc25df0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//jaA\u003d",
+        "filename": "common/thermal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-28T23:50:15Z",
+      "side": 1,
+      "message": "newline between section and first function in it.",
+      "revId": "b6292735fd3dcde4c280163369621fc4dfc25df0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//jZ0\u003d",
+        "filename": "common/thermal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-28T23:50:15Z",
+      "side": 1,
+      "message": "Just uart_puts() directly in the command below.",
+      "revId": "b6292735fd3dcde4c280163369621fc4dfc25df0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//jZs\u003d",
+        "filename": "common/thermal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-28T23:50:15Z",
+      "side": 1,
+      "message": "nit: 2 blank lines between top-level functions",
+      "revId": "b6292735fd3dcde4c280163369621fc4dfc25df0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//jZg\u003d",
+        "filename": "common/thermal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-28T23:50:15Z",
+      "side": 1,
+      "message": "Remove (no need for init if all you\u0027re doing is returning success)",
+      "revId": "b6292735fd3dcde4c280163369621fc4dfc25df0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
