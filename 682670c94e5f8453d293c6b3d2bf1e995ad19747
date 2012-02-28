@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//jwE\u003d",
+        "filename": "common/pstore_commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2012-02-28T20:52:52Z",
+      "side": 1,
+      "message": "space after while",
+      "revId": "682670c94e5f8453d293c6b3d2bf1e995ad19747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//jvQ\u003d",
+        "filename": "common/pstore_commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2012-02-28T20:52:52Z",
+      "side": 1,
+      "message": "PSTORE_EEPROM_BLOCK_START + PSTORE_EEPROM_BLOCK_COUNT?",
+      "revId": "682670c94e5f8453d293c6b3d2bf1e995ad19747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//ju8\u003d",
+        "filename": "common/pstore_commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2012-02-28T20:52:52Z",
+      "side": 1,
+      "message": "space after while",
+      "revId": "682670c94e5f8453d293c6b3d2bf1e995ad19747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//jvA\u003d",
+        "filename": "common/pstore_commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2012-02-28T20:52:52Z",
+      "side": 1,
+      "message": "PSTORE_EEPROM_BLOCK_START + PSTORE_EEPROM_BLOCK_COUNT?",
+      "revId": "682670c94e5f8453d293c6b3d2bf1e995ad19747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//juI\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2012-02-28T20:52:52Z",
+      "side": 1,
+      "message": "fclose(f) before reutrning",
+      "revId": "682670c94e5f8453d293c6b3d2bf1e995ad19747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
