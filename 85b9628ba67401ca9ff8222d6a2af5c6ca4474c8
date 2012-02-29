@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//ipo\u003d",
+        "filename": "common/thermal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-29T19:30:57Z",
+      "side": 1,
+      "message": "EC_ERROR_INVAL",
+      "revId": "85b9628ba67401ca9ff8222d6a2af5c6ca4474c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//ipk\u003d",
+        "filename": "common/thermal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-29T19:30:57Z",
+      "side": 1,
+      "message": "EC_SUCCESS",
+      "revId": "85b9628ba67401ca9ff8222d6a2af5c6ca4474c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//io4\u003d",
+        "filename": "common/thermal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-29T19:30:57Z",
+      "side": 1,
+      "message": "Just pass through the return code from pwm_set_fan_target_rpm()",
+      "revId": "85b9628ba67401ca9ff8222d6a2af5c6ca4474c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//ipg\u003d",
+        "filename": "common/thermal_commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-29T19:30:57Z",
+      "side": 1,
+      "message": "2 lines before top-level func",
+      "revId": "85b9628ba67401ca9ff8222d6a2af5c6ca4474c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//ipc\u003d",
+        "filename": "common/thermal_commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-29T19:30:57Z",
+      "side": 1,
+      "message": "If r-\u003evalue \u003d\u003d -1, shouldn\u0027t you return error?",
+      "revId": "85b9628ba67401ca9ff8222d6a2af5c6ca4474c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//inI\u003d",
+        "filename": "common/thermal_commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-29T19:30:57Z",
+      "side": 1,
+      "message": "Sending this command turns on auto fan control.\n\nSending the PWM_SET_FAN_TARGET_RPM command turns off auto fan control (and sets the requested fan target RPM).\n\nThen there\u0027s no need for a parameter.",
+      "revId": "85b9628ba67401ca9ff8222d6a2af5c6ca4474c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//ipA\u003d",
+        "filename": "include/lpc_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-29T19:30:57Z",
+      "side": 1,
+      "message": "Also please update the table here:\n\nhttps://docs.google.com/a/google.com/document/d/1UZwgsYGkSLvIoPnTsRur3daFAlWOmaKXbUphxwjcD1Q/edit#heading\u003dh.8l1mftjxecdk",
+      "revId": "85b9628ba67401ca9ff8222d6a2af5c6ca4474c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//io8\u003d",
+        "filename": "include/thermal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-29T19:30:57Z",
+      "side": 1,
+      "message": "Returns -1 on error.",
+      "revId": "85b9628ba67401ca9ff8222d6a2af5c6ca4474c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//im8\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 924,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-29T19:30:57Z",
+      "side": 1,
+      "message": "autofancontrol (no need for \u0027toggle\u0027 since we\u0027ll make this always turn auto fan control on)",
+      "revId": "85b9628ba67401ca9ff8222d6a2af5c6ca4474c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
