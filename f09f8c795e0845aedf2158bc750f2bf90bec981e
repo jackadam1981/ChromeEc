@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//ifk\u003d",
+        "filename": "common/thermal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-29T20:46:51Z",
+      "side": 1,
+      "message": "Just remove this, so turning off auto fan control leaves the fan where it is.",
+      "revId": "f09f8c795e0845aedf2158bc750f2bf90bec981e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
