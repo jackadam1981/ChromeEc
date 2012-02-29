@@ -28,6 +28,43 @@ static int8_t ot_count[TEMP_SENSOR_COUNT][THRESHOLD_COUNT];
  * are reached (since we can disable any threshold.) */
 static int8_t overheated[THRESHOLD_COUNT];
 
+int fan_ctrl_on = 1;
+
+
+int thermal_set_threshold(int sensor_id, int threshold_id, int value)
+{
+	if (sensor_id < 0 || sensor_id >= TEMP_SENSOR_COUNT)
+		return -1;
+	if (threshold_id < 0 || threshold_id >= THRESHOLD_COUNT)
+		return -1;
+	if (value < 0)
+		return -1;
+
+	thermal_config[sensor_id].thresholds[threshold_id] = value;
+
+	return 0;
+}
+
+
+int thermal_get_threshold(int sensor_id, int threshold_id)
+{
+	if (sensor_id < 0 || sensor_id >= TEMP_SENSOR_COUNT)
+		return -1;
+	if (threshold_id < 0 || threshold_id >= THRESHOLD_COUNT)
+		return -1;
+
+	return thermal_config[sensor_id].thresholds[threshold_id];
+}
+
+
+int thermal_toggle_auto_fan_ctrl(int auto_fan_on)
+{
+	fan_ctrl_on = auto_fan_on;
+	if (!auto_fan_on)
+		pwm_set_fan_target_rpm(-1);
+	return 0;
+}
+
 
 static void smi_overheated_warning(void)
 {
@@ -56,12 +93,14 @@ static void overheated_action(void)
 			smi_overheated_warning();
 	}
 
-	if (overheated[THRESHOLD_FAN_HI])
-		pwm_set_fan_target_rpm(-1); /* Max RPM. */
-	else if (overheated[THRESHOLD_FAN_LO])
-		pwm_set_fan_target_rpm(6000);
-	else
-		pwm_set_fan_target_rpm(0);
+	if (fan_ctrl_on) {
+		if (overheated[THRESHOLD_FAN_HI])
+			pwm_set_fan_target_rpm(-1); /* Max RPM. */
+		else if (overheated[THRESHOLD_FAN_LO])
+			pwm_set_fan_target_rpm(6000);
+		else
+			pwm_set_fan_target_rpm(0);
+	}
 }
 
 
