@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//ie8\u003d",
+        "filename": "include/system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-29T20:51:57Z",
+      "side": 1,
+      "message": "probably want to pass a copy param in here too, like system_get_version().",
+      "revId": "3b01961f19856d19fab2754001c58cd244ff0bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//ifU\u003d",
+        "filename": "include/version.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-29T20:51:57Z",
+      "side": 1,
+      "message": "1) Is 32 chars still enough?\n2) Use build info instead?",
+      "revId": "3b01961f19856d19fab2754001c58cd244ff0bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
