@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//htI\u003d",
+        "filename": "include/system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-03-01T16:08:35Z",
+      "side": 1,
+      "message": "not sure it worths the added complexity : you need build_info if you are using a local build, in that case you have probably flashed a full firmware.",
+      "parentUuid": "AAAAHn//ie8\u003d",
+      "revId": "3b01961f19856d19fab2754001c58cd244ff0bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//ifU\u003d",
         "filename": "include/version.h",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2012-02-29T20:51:57Z",
       "side": 1,
       "message": "1) Is 32 chars still enough?\n2) Use build info instead?",
+      "revId": "3b01961f19856d19fab2754001c58cd244ff0bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//hs0\u003d",
+        "filename": "include/version.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-03-01T16:08:35Z",
+      "side": 1,
+      "message": "1) as we are using git-style short hash, it is unless you are unlucky (and you have a short hash collision), in that case it can  be up to 58 chars (but we can safely cut at 32, I might add that trimming  in the version generation since at the moment we are failing the compilation in that case)\n\n2) as explained above, IMO it\u0027s not needed and information overload but we can discuss it.",
+      "parentUuid": "AAAAHn//ifU\u003d",
       "revId": "3b01961f19856d19fab2754001c58cd244ff0bc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
