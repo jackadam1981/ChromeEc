@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//iKs\u003d",
+        "filename": "chip/lm4/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-01T00:22:39Z",
+      "side": 1,
+      "message": "fanduty (below) should too",
+      "revId": "79db7561afd2e03994c7891cc6e94386a1c92ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//iKk\u003d",
+        "filename": "include/thermal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-01T00:22:39Z",
+      "side": 1,
+      "message": "Get actually does return -1, doesn\u0027t it?",
+      "revId": "79db7561afd2e03994c7891cc6e94386a1c92ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
