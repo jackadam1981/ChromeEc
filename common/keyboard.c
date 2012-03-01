@@ -26,6 +26,15 @@
       } \
     } while (0)
 
+
+/* Macros for de-ghost */
+#define POS(r,c) ((c << 3) | r)  /* compose key_down[] index */
+#define ROW(n) (n & 7)
+#define COL(n) (n >> 3)
+/* BS(): Black Sheep. Return the different one. */
+#define BS(a, b, c) ((a == b) ? c :  \
+                     (a == c) ? b : a)
+
 /*
  * i8042 global settings.
  */
@@ -39,6 +48,8 @@ static uint8_t controller_ram[0x20] = {
   /* 0x01 - 0x1f are controller RAM */
 };
 static int power_button_pressed = 0;
+static uint8_t key_down[10];
+static int num_key_down = 0;
 
 /*
  * Scancode settings
@@ -123,18 +134,12 @@ static enum scancode_set_list acting_code_set(enum scancode_set_list set) {
 static enum ec_error_list matrix_callback(
     int8_t row, int8_t col, int8_t pressed,
     enum scancode_set_list code_set, uint8_t *scan_code, int32_t* len) {
-
   uint16_t make_code;
-
-  ASSERT(scan_code);
-  ASSERT(len);
 
   if (row > CROS_ROW_NUM ||
       col > CROS_COL_NUM) {
     return EC_ERROR_INVAL;
   }
-
-  *len = 0;
 
   code_set = acting_code_set(code_set);
 
@@ -159,6 +164,13 @@ static enum ec_error_list matrix_callback(
 #endif
     return EC_ERROR_UNIMPLEMENTED;
   }
+
+  if (!scan_code || !len) {
+    /* Caller just wants to check if this is a physical key position. */
+    return make_code ? EC_SUCCESS : EC_ERROR_INVAL;
+  }
+
+  *len = 0;  /* reset output length */
 
   /* Output the make code (from table) */
   if (make_code >= 0x0100) {
@@ -205,7 +217,55 @@ static void reset_rate_and_delay(void) {
 
 
 static void clean_underlying_buffer(void) {
+  num_key_down = 0;
   i8042_init();
+}
+
+
+/* Returns true if the given 3 points are corners of a square, which means
+ * a right triangle, e.g.
+ *
+ *     A +---- C     B |                / B
+ *       |  /          |\             / |
+ *       | /           | \          /   |
+ *     B |/          C +--- A     A-----+ C    ... etc
+ */
+static int form_a_square(uint8_t A, uint8_t B, uint8_t C) {
+  return (ROW(A) == ROW(B) && COL(B) == COL(C)) ||
+         (ROW(A) == ROW(C) && COL(B) == COL(C)) ||
+         (ROW(B) == ROW(C) && COL(A) == COL(B)) ||
+         (ROW(B) == ROW(C) && COL(A) == COL(C)) ||
+         (ROW(A) == ROW(C) && COL(A) == COL(B)) ||
+         (ROW(A) == ROW(B) && COL(A) == COL(C));
+}
+
+
+/* Given the new key from scanner, iterate with any 2 keys in key_down[].
+ * If they are 3 corners of a square, then check the 4th corner.
+ * If it is a physical key, then there is ghost key.
+ * If not a physical key, the new key is safe to add into key_down[].
+ */
+static int ghost(int row, int col) {
+  int b, c;
+  uint8_t ghost_pos;
+
+  for (b = 0; b < num_key_down; ++b) {
+    for (c = b + 1; c < num_key_down; ++c) {
+      if (form_a_square(POS(row, col), key_down[b], key_down[c])) {
+        ghost_pos = POS(BS(row, ROW(key_down[b]), ROW(key_down[c])),
+                        BS(col, COL(key_down[b]), COL(key_down[c])));
+        if (matrix_callback(ROW(ghost_pos), COL(ghost_pos), 1,
+                            scancode_set, NULL, NULL) == EC_SUCCESS) {
+#if KEYBOARD_DEBUG >= 1
+          uart_printf("Cannot tell ghost key between (%d,%d) and (%d,%d).\n",
+                      row, col, ROW(ghost_pos), COL(ghost_pos));
+#endif
+          return 1;
+        }
+      }
+    }
+  }
+  return 0;
 }
 
 
@@ -223,11 +283,33 @@ void keyboard_state_changed(int row, int col, int is_pressed) {
   if (ret == EC_SUCCESS) {
     ASSERT(len > 0);
 
-    i8042_send_to_host(len, scan_code);
+    if (is_pressed) {
+      if (!ghost(row, col) &&
+          num_key_down < sizeof(key_down)/sizeof(key_down[0])) {
+        /* add mew key to key_down[]. */
+        key_down[num_key_down++] = POS(row, col);
+        i8042_send_to_host(len, scan_code);
+      }
+    } else {
+      /* remove from the key_down[] */
+      int i, j;
+
+      for (i = 0; i < num_key_down; ++i) {
+        if (key_down[i] == POS(row, col)) {
+          for (j = i + 1; j < num_key_down; ++j) {
+            key_down[j - 1] = key_down[j];
+          }
+          --num_key_down;
+          i8042_send_to_host(len, scan_code);
+          break;
+        }
+      }
+    }
   } else {
-    /* FIXME: long-term solution is to ignore this key. However, keep
-     *        assertion in the debug stage. */
-    ASSERT(ret == EC_SUCCESS);
+#if KEYBOARD_DEBUG >= 1
+    uart_printf("Ghost key? Ignore it. row=%d col=%d is_pressed=%d.\n",
+                row, col, is_pressed);
+#endif
   }
 }
 
