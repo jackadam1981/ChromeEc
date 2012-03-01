@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//hDc\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2012-03-01T22:46:04Z",
+      "side": 1,
+      "message": "Using uint32_t might cause problem when the offset range 2D-2F is assigned to something in the future. Change to uint8_t?",
+      "revId": "84cdb098208ab3ed810b745a262e187f69feff54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
