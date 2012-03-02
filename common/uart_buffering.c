@@ -385,7 +385,7 @@ int uart_printf(const char *format, ...)
 {
 	static const char int_chars[] = "0123456789abcdef";
 	static const char error_str[] = "ERROR";
-	char intbuf[21];  /* Longest uint64 */
+	char intbuf[33];  /* Longest uint64 */
 	int dropped_chars = 0;
 	int is_left;
 	int pad_zero;
@@ -468,8 +468,11 @@ int uart_printf(const char *format, ...)
 				break;
 			case 'x':
 			case 'p':
-					base = 16;
-			break;
+				base = 16;
+				break;
+			case 'b':
+				base = 2;
+				break;
 			default:
 				format = error_str;
 			}
