@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//gu0\u003d",
+        "filename": "common/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-02T05:24:09Z",
+      "side": 1,
+      "message": "Can put this .o on the previous line",
+      "revId": "cf0665f4325b657e610180706d3e8cef63cd53e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//gug\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-02T05:24:09Z",
+      "side": 1,
+      "message": "coding style nit: POWER_STATE should be lowercase",
+      "revId": "cf0665f4325b657e610180706d3e8cef63cd53e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//guw\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-02T05:24:09Z",
+      "side": 1,
+      "message": "just print_binary, since it\u0027s not in the uart module.\n\nnote that in uart_printf(), if you change intbuf[21] to [33], you can add %b as a format code for binary - just look where we handle %x and add %b with base \u003d 2.",
+      "revId": "cf0665f4325b657e610180706d3e8cef63cd53e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//gus\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-02T05:24:09Z",
+      "side": 1,
+      "message": "Doesn\u0027t this print the bits backwards?  If my number is 0b1000, it\u0027ll output the characters 0 0 0 1.",
+      "revId": "cf0665f4325b657e610180706d3e8cef63cd53e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//guo\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-02T05:24:09Z",
+      "side": 1,
+      "message": "remove backslash",
+      "revId": "cf0665f4325b657e610180706d3e8cef63cd53e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//guc\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-02T05:24:09Z",
+      "side": 1,
+      "message": "Move up next to where you define power state, so it\u0027s more likely to stay in sync if states are changed",
+      "revId": "cf0665f4325b657e610180706d3e8cef63cd53e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
