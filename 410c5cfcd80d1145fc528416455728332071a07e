@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//gCw\u003d",
+        "filename": "chip/lm4/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2012-03-02T21:42:28Z",
+      "side": 1,
+      "message": "Standard rules for GPIOs in Intel chipsets:\n\n1) S0-S1 state: the GPI inputs are sampled at 33 MHz, so the signal only needs to be active for about 60 ns to be latched.\n\n2) S3–S5 state: the GPI inputs are sampled at 32.768 kHz, and thus must be active for at least 61 microseconds to be latched.\n\nI don\u0027t imagine the host should care about these events while we\u0027re asleep so we are probably good with the 4us you have. (in theory even less)",
+      "revId": "410c5cfcd80d1145fc528416455728332071a07e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//gCI\u003d",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2012-03-02T21:42:28Z",
+      "side": 1,
+      "message": "Extra tab?",
+      "revId": "410c5cfcd80d1145fc528416455728332071a07e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//gCA\u003d",
+        "filename": "include/lpc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2012-03-02T21:42:28Z",
+      "side": 1,
+      "message": "Might not be a bad idea to declare some constants for SMI\u003d0 SCI\u003d1 so there is less confusion when reading other parts of the source.",
+      "revId": "410c5cfcd80d1145fc528416455728332071a07e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
