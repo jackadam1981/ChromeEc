@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//gfU\u003d",
+        "filename": "common/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-03-02T11:38:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//gu0\u003d",
+      "revId": "cf0665f4325b657e610180706d3e8cef63cd53e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//gug\u003d",
         "filename": "common/charge_state.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2012-03-02T05:24:09Z",
       "side": 1,
       "message": "coding style nit: POWER_STATE should be lowercase",
+      "revId": "cf0665f4325b657e610180706d3e8cef63cd53e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//ggE\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-03-02T11:38:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//gug\u003d",
       "revId": "cf0665f4325b657e610180706d3e8cef63cd53e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//gf4\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-03-02T11:38:09Z",
+      "side": 1,
+      "message": "Ok. I will add %b format to common/uart_buffering.c in another CL. Current CL will change to %x format temporarily.",
+      "parentUuid": "AAAAHn//guw\u003d",
+      "revId": "cf0665f4325b657e610180706d3e8cef63cd53e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//gus\u003d",
         "filename": "common/charge_state.c",
         "patchSetId": 3
@@ -64,6 +118,24 @@
       "writtenOn": "2012-03-02T05:24:09Z",
       "side": 1,
       "message": "Doesn\u0027t this print the bits backwards?  If my number is 0b1000, it\u0027ll output the characters 0 0 0 1.",
+      "revId": "cf0665f4325b657e610180706d3e8cef63cd53e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//gf0\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-03-02T11:38:09Z",
+      "side": 1,
+      "message": "Ok. Will be done correctly in another CL.",
+      "parentUuid": "AAAAHn//gus\u003d",
       "revId": "cf0665f4325b657e610180706d3e8cef63cd53e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//gfw\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-03-02T11:38:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//guo\u003d",
+      "revId": "cf0665f4325b657e610180706d3e8cef63cd53e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//guc\u003d",
         "filename": "common/charge_state.c",
         "patchSetId": 3
@@ -98,6 +188,24 @@
       "writtenOn": "2012-03-02T05:24:09Z",
       "side": 1,
       "message": "Move up next to where you define power state, so it\u0027s more likely to stay in sync if states are changed",
+      "revId": "cf0665f4325b657e610180706d3e8cef63cd53e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//gfc\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-03-02T11:38:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//guc\u003d",
       "revId": "cf0665f4325b657e610180706d3e8cef63cd53e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
