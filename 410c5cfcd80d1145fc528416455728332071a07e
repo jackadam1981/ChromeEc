@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//f+U\u003d",
+        "filename": "chip/lm4/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-02T22:31:03Z",
+      "side": 1,
+      "message": "We might care about battery-running-out in S3.  I\u0027ll bump up the delay to 65us - which is still plenty fast given that these events should be infrequent.",
+      "parentUuid": "AAAAHn//gCw\u003d",
+      "revId": "410c5cfcd80d1145fc528416455728332071a07e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//gCI\u003d",
         "filename": "common/host_command.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//f+k\u003d",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-02T22:31:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//gCI\u003d",
+      "revId": "410c5cfcd80d1145fc528416455728332071a07e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//gCA\u003d",
         "filename": "include/lpc.h",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2012-03-02T21:42:28Z",
       "side": 1,
       "message": "Might not be a bad idea to declare some constants for SMI\u003d0 SCI\u003d1 so there is less confusion when reading other parts of the source.",
+      "revId": "410c5cfcd80d1145fc528416455728332071a07e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//f+g\u003d",
+        "filename": "include/lpc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-02T22:31:03Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s coming in the next CL.  I\u0027ll define them in lpc_commands.h so they\u0027re shared with ectool.",
+      "parentUuid": "AAAAHn//gCA\u003d",
       "revId": "410c5cfcd80d1145fc528416455728332071a07e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
