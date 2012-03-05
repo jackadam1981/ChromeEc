@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//edc\u003d",
+        "filename": "common/battery_commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-05T22:11:20Z",
+      "side": 1,
+      "message": "sizeof(r-\u003etext) is better (below, too).",
+      "revId": "9947d20d2acf5a2f6d8f4efc83c0f9ba453c77fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//ecg\u003d",
+        "filename": "include/lpc_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-05T22:11:20Z",
+      "side": 1,
+      "message": "EC_LPC_BATT_TEXT_MAX",
+      "revId": "9947d20d2acf5a2f6d8f4efc83c0f9ba453c77fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//eds\u003d",
+        "filename": "include/lpc_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-05T22:11:20Z",
+      "side": 1,
+      "message": "designed or design?  (if \u0027designed\u0027 is correct, please change the battery.h interface to use \u0027designed\u0027)",
+      "revId": "9947d20d2acf5a2f6d8f4efc83c0f9ba453c77fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//edk\u003d",
+        "filename": "include/lpc_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-05T22:11:20Z",
+      "side": 1,
+      "message": "Add comment that type, model number, serial number, OEM all use lpc_response_battery_text.\n\nIs 32 bytes the actual maximum size?  (Compare with the console commands which only print 16 bytes).",
+      "revId": "9947d20d2acf5a2f6d8f4efc83c0f9ba453c77fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//edo\u003d",
+        "filename": "include/lpc_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-05T22:11:20Z",
+      "side": 1,
+      "message": "Move to battery info command.",
+      "revId": "9947d20d2acf5a2f6d8f4efc83c0f9ba453c77fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
