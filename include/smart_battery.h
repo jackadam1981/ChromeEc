@@ -242,5 +242,27 @@ int battery_time_at_rate(int rate, int *minutes);
 /* Read manufacturer date */
 int battery_manufacturer_date(int *year, int *month, int *day);
 
+/* Read manufacturer name */
+static inline int battery_manufacturer_name(char *manufacturer_name,
+	int buf_size)
+{
+	return i2c_readblock(I2C_PORT_BATTERY, BATTERY_ADDR,
+		SB_MANUFACTURER_NAME, manufacturer_name, buf_size);
+}
+
+/* Read device name */
+static inline int battery_device_name(char *device_name, int buf_size)
+{
+	return i2c_readblock(I2C_PORT_BATTERY, BATTERY_ADDR,
+		SB_DEVICE_NAME, device_name, buf_size);
+}
+
+/* Read battery type/chemistry */
+static inline int battery_device_chemistry(char *device_chemistry, int buf_size)
+{
+	return i2c_readblock(I2C_PORT_BATTERY, BATTERY_ADDR,
+		SB_DEVICE_CHEMISTRY, device_chemistry, buf_size);
+}
+
 #endif /* __CROS_EC_SMART_BATTERY_H */
 
