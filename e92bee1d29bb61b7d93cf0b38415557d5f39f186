@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//ec8\u003d",
+        "filename": "common/smart_battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-05T22:07:12Z",
+      "side": 1,
+      "message": "You used 32 bytes in the LPC command.  What\u0027s the actual max size?",
+      "revId": "e92bee1d29bb61b7d93cf0b38415557d5f39f186",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//edA\u003d",
+        "filename": "common/smart_battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-05T22:07:12Z",
+      "side": 1,
+      "message": "I don\u0027t think this guarantees null-termination if battery_device_name() fails partway through filling the output buffer.  Better to do:\n\nuart_printf(\"Foo: %s\\n\", battery_manufacturer_name(text, sizeof(text)) \u003d\u003d EC_SUCCCESS ? text : \"(error)\")",
+      "revId": "e92bee1d29bb61b7d93cf0b38415557d5f39f186",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
