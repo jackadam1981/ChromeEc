@@ -36,4 +36,14 @@ int i2c_read8(int port, int slave_addr, int offset, int* data);
  * space. */
 int i2c_write8(int port, int slave_addr, int offset, int data);
 
+/* SMBus read block protocol.
+ * Read bytestream from <slaveaddr>:<offset> with format:
+ *     [length_N] [byte_0] [byte_1] ... [byte_N-1]
+ *
+ * <len>      : the max length of receving buffer
+ * <len> == 0 : buffer size > 255
+ */
+int i2c_readblock(int port, int slave_addr, int offset, uint8_t *data,
+			int len);
+
 #endif  /* __CROS_EC_I2C_H */
