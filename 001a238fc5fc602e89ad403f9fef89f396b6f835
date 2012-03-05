@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//ee8\u003d",
+        "filename": "chip/lm4/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-05T21:54:12Z",
+      "side": 1,
+      "message": "A comment describing the input params would be helpful.\n\n(Well, at least the start and stop params; the others are pretty self-explanatory)",
+      "revId": "001a238fc5fc602e89ad403f9fef89f396b6f835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//eew\u003d",
+        "filename": "chip/lm4/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-05T21:54:12Z",
+      "side": 1,
+      "message": "...unless we\u0027re receiving data.  Then don\u0027t, so we can send a repeated start below.",
+      "revId": "001a238fc5fc602e89ad403f9fef89f396b6f835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//ee0\u003d",
+        "filename": "chip/lm4/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-05T21:54:12Z",
+      "side": 1,
+      "message": "Just to confirm: started doesn\u0027t depend on anything done by if (transmit_data)?",
+      "revId": "001a238fc5fc602e89ad403f9fef89f396b6f835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//eeg\u003d",
+        "filename": "chip/lm4/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-05T21:54:12Z",
+      "side": 1,
+      "message": "Is this null-termination part of the SMBus bytestream protocol, or is it there because we\u0027re only currently using this to read ASCII strings?\n\nEither way, it\u0027d be good to note this in the declaration in i2c.h (that if you want to read a block of N bytes of binary data, you\u0027d better pass a len\u003eN buffer)",
+      "revId": "001a238fc5fc602e89ad403f9fef89f396b6f835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//eec\u003d",
+        "filename": "include/i2c.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-05T21:54:12Z",
+      "side": 1,
+      "message": "...including a terminating 0-byte that i2c_readblock() always appends to the received bytestream.",
+      "revId": "001a238fc5fc602e89ad403f9fef89f396b6f835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
