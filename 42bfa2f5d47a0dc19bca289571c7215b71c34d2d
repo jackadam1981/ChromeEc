@@ -16,6 +16,24 @@
       "revId": "42bfa2f5d47a0dc19bca289571c7215b71c34d2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//erQ\u003d",
+        "filename": "common/keyboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-05T18:19:16Z",
+      "side": 1,
+      "message": "Discovery build doesn\u0027t include the keyboard module.\n(tested: build BOARD\u003ddiscovery succeeds)",
+      "parentUuid": "AAAAHn//es8\u003d",
+      "revId": "42bfa2f5d47a0dc19bca289571c7215b71c34d2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
