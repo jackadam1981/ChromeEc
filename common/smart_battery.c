@@ -113,6 +113,7 @@ static int command_battery(int argc, char **argv)
 	int rv;
 	int d;
 	int hour, minute;
+	char text[16] = {0};
 	const char *unit;
 
 	uart_puts("Reading battery...\n");
@@ -122,6 +123,18 @@ static int command_battery(int argc, char **argv)
 		return rv;
 	uart_printf("  Temperature:            0x%04x = %d x 0.1K (%d C)\n",
 		    d, d, (d-2731)/10);
+
+	battery_manufacturer_name(text, sizeof(text));
+	uart_printf("  Manufacturer:           %s\n", text);
+	text[0] = 0;
+
+	battery_device_name(text, sizeof(text));
+	uart_printf("  Device:                 %s\n", text);
+	text[0] = 0;
+
+	battery_device_chemistry(text, sizeof(text));
+	uart_printf("  Chemistry:              %s\n", text);
+	text[0] = 0;
 
 	battery_serial_number(&d);
 	uart_printf("  Serial number:          0x%04x\n", d);
