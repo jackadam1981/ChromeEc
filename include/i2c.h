@@ -36,4 +36,10 @@ int i2c_read8(int port, int slave_addr, int offset, int* data);
  * space. */
 int i2c_write8(int port, int slave_addr, int offset, int data);
 
+/* Writes a block of raw bytes <transmit_data> with length <transmit_size>
+ * to the slave at 8-bit slave address <slaveaddr>, without assign offset.
+ * Then read raw bytes to <receive_data> with length <receive_size> back.
+ */
+int i2c_transmit_receive(int port, int slave_addr, uint8_t *transmit_data,
+		int transmit_size, uint8_t *receive_data, int receive_size);
 #endif  /* __CROS_EC_I2C_H */
