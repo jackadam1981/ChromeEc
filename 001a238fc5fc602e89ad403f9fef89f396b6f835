@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//eI0\u003d",
+        "filename": "chip/lm4/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-03-06T02:19:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//ee8\u003d",
+      "revId": "001a238fc5fc602e89ad403f9fef89f396b6f835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//eew\u003d",
         "filename": "chip/lm4/i2c.c",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//eIw\u003d",
+        "filename": "chip/lm4/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-03-06T02:19:00Z",
+      "side": 1,
+      "message": "Done\nYes. I added more comments to make it clear.",
+      "parentUuid": "AAAAHn//eew\u003d",
+      "revId": "001a238fc5fc602e89ad403f9fef89f396b6f835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//ee0\u003d",
         "filename": "chip/lm4/i2c.c",
         "patchSetId": 3
@@ -47,6 +83,24 @@
       "writtenOn": "2012-03-05T21:54:12Z",
       "side": 1,
       "message": "Just to confirm: started doesn\u0027t depend on anything done by if (transmit_data)?",
+      "revId": "001a238fc5fc602e89ad403f9fef89f396b6f835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//eGg\u003d",
+        "filename": "chip/lm4/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-03-06T02:19:00Z",
+      "side": 1,
+      "message": "Done\nNo it doesn\u0027t. The started condition is only for \u0027transmit\u0027 substate or \u0027receive\u0027 substate. LM4 spec requires the MCS_START bit to be set when change direction. Comment added in \u0027started\u0027 flag.",
+      "parentUuid": "AAAAHn//ee0\u003d",
       "revId": "001a238fc5fc602e89ad403f9fef89f396b6f835",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -81,6 +135,24 @@
       "writtenOn": "2012-03-05T21:54:12Z",
       "side": 1,
       "message": "...including a terminating 0-byte that i2c_readblock() always appends to the received bytestream.",
+      "revId": "001a238fc5fc602e89ad403f9fef89f396b6f835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//eCE\u003d",
+        "filename": "include/i2c.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-03-06T02:19:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//eec\u003d",
       "revId": "001a238fc5fc602e89ad403f9fef89f396b6f835",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
