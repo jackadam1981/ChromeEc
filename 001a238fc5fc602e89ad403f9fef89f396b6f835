@@ -124,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//d5k\u003d",
+        "filename": "chip/lm4/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-03-06T03:26:25Z",
+      "side": 1,
+      "message": "Done\nNo. I changed the function name to i2c_read_string(). The read block protocol have one byte length in the front, no null termination.",
+      "parentUuid": "AAAAHn//eeg\u003d",
+      "revId": "001a238fc5fc602e89ad403f9fef89f396b6f835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//eec\u003d",
         "filename": "include/i2c.h",
         "patchSetId": 3
