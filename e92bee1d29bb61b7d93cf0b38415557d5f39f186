@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//d88\u003d",
+        "filename": "common/smart_battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-03-06T02:49:53Z",
+      "side": 1,
+      "message": "Done, 16 was for max len test. Changed it back to 32.\nI set it to a shorter length to verify i2c_read_string() maximum length function. There\u0027s no maximum size in smart battery specification. I saw different values from different vendors, from 4, 7, 11 to 21 bytes. Current 32 bytes should be OK.",
+      "parentUuid": "AAAAHn//ec8\u003d",
+      "revId": "e92bee1d29bb61b7d93cf0b38415557d5f39f186",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//edA\u003d",
         "filename": "common/smart_battery.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2012-03-05T22:07:12Z",
       "side": 1,
       "message": "I don\u0027t think this guarantees null-termination if battery_device_name() fails partway through filling the output buffer.  Better to do:\n\nuart_printf(\"Foo: %s\\n\", battery_manufacturer_name(text, sizeof(text)) \u003d\u003d EC_SUCCCESS ? text : \"(error)\")",
+      "revId": "e92bee1d29bb61b7d93cf0b38415557d5f39f186",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//d8s\u003d",
+        "filename": "common/smart_battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-03-06T02:49:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//edA\u003d",
       "revId": "e92bee1d29bb61b7d93cf0b38415557d5f39f186",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
