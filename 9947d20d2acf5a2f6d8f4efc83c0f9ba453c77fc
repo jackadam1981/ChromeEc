@@ -89,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//d9s\u003d",
+        "filename": "include/lpc_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-03-06T02:42:47Z",
+      "side": 1,
+      "message": "The \u0027design_abc\u0027 without \u0027ed\u0027 was came from smart battery specification. Although I personally think \u0027designed_\u0027 one is correct naming. I want to change that in battery.h, if you also consider that is OK.\n\nWill do that in another CL.",
+      "parentUuid": "AAAAHn//eds\u003d",
+      "revId": "9947d20d2acf5a2f6d8f4efc83c0f9ba453c77fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//edk\u003d",
         "filename": "include/lpc_commands.h",
         "patchSetId": 1
