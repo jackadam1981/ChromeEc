@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//d5g\u003d",
+        "filename": "chip/lm4/i2c.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-03-06T03:36:53Z",
+      "side": 1,
+      "message": "Set initial value here to reduce code line below.\n\nint started \u003d start ? 0 : 1;",
+      "revId": "e4dd08505de90188b3c011346c765040c274d694",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//d5U\u003d",
+        "filename": "chip/lm4/i2c.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-03-06T03:36:53Z",
+      "side": 1,
+      "message": "This line can be removed once moved to above declare line.",
+      "revId": "e4dd08505de90188b3c011346c765040c274d694",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//d5A\u003d",
+        "filename": "chip/lm4/i2c.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-03-06T03:36:53Z",
+      "side": 1,
+      "message": "The else statement can be removed since it has been set in declare line.",
+      "revId": "e4dd08505de90188b3c011346c765040c274d694",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
