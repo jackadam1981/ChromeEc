@@ -10,6 +10,14 @@
 
 #include <stdint.h>
 
+
+/* FIXME: This is a serious security hole and should be removed in mass
+ *        production. We add this to allow manual firmware update.
+ *        Once we complete the vboot and autoupdate, we should remove this.
+ */
+#define CONFIG_REBOOT_EC
+
+
 /* List of common error codes that can be returned */
 enum ec_error_list {
 	/* Success - no error */

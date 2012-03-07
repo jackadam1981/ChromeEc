@@ -9,6 +9,19 @@
 #include <sys/io.h>
 #include <unistd.h>
 
+/* FIXME: This is a serious security hole and should be removed in mass
+ *        production. We add this to allow manual firmware update.
+ *        Once we complete the vboot and autoupdate, we should remove this.
+ */
+#define CONFIG_REBOOT_EC
+/* System images */
+enum system_image_copy_t {
+        SYSTEM_IMAGE_UNKNOWN = 0,
+        SYSTEM_IMAGE_RO,
+        SYSTEM_IMAGE_RW_A,
+        SYSTEM_IMAGE_RW_B
+};
+
 #include "lpc_commands.h"
 
 #define ARRAY_SIZE(x) (sizeof(x) / sizeof((x)[0]))
@@ -58,6 +71,10 @@ const char help_str[] =
 	"      Set keyboard backlight in percent\n"
 	"  usbchargemode <port> <mode>\n"
 	"      Set USB charging mode\n"
+#ifdef CONFIG_REBOOT_EC
+	"  reboot_ec <RO|RW_A|RW_B>\n"
+	"      Reboot EC to RO or RW A/B\n"
+#endif
 	"\n"
 	"Not working for you?  Make sure LPC I/O is configured:\n"
 	"  pci_write32 0 0x1f 0 0x88 0x00fc0801\n"
@@ -330,6 +347,35 @@ int cmd_read_test(int argc, char *argv[])
 		printf("Found %d errors\n", errors);
 		return -1;
 	}
+
+	printf("done.\n");
+	return 0;
+}
+
+int cmd_reboot_ec(int argc, char *argv[])
+{
+	struct lpc_params_reboot_ec p;
+	int rv;
+
+	if (argc < 1) {
+		fprintf(stderr, "Please specify the target.\n");
+		return -1;
+	}
+
+	if (!strcmp(argv[0], "RO")) {
+		p.target = SYSTEM_IMAGE_RO;
+	} else if (!strcmp(argv[0], "RW_A")) {
+		p.target = SYSTEM_IMAGE_RW_A;
+	} else if (!strcmp(argv[0], "RW_B")) {
+		p.target = SYSTEM_IMAGE_RW_B;
+	} else {
+		fprintf(stderr, "Not supported firmware copy: %s\n", argv[0]);
+		return -1;
+	}
+
+	rv = ec_command(EC_LPC_COMMAND_REBOOT_EC, &p, sizeof(p), NULL, 0);
+	if (rv)
+		return rv;
 
 	printf("done.\n");
 	return 0;
@@ -897,6 +943,9 @@ const struct command commands[] = {
 	{"pwmsetfanrpm", cmd_pwm_set_fan_rpm},
 	{"pwmsetkblight", cmd_pwm_set_keyboard_backlight},
 	{"readtest", cmd_read_test},
+#ifdef CONFIG_REBOOT_EC
+	{"reboot_ec", cmd_reboot_ec},
+#endif
 	{"sertest", cmd_serial_test},
 	{"temps", cmd_temperature},
 	{"thermalget", cmd_thermal_get_threshold},

@@ -338,4 +338,11 @@ struct lpc_response_thermal_get_threshold {
 /* Toggling automatic fan control */
 #define EC_LPC_COMMAND_THERMAL_AUTO_FAN_CTRL 0x52
 
+#ifdef CONFIG_REBOOT_EC
+#define EC_LPC_COMMAND_REBOOT_EC 0xfd
+struct lpc_params_reboot_ec {
+	uint8_t target;  /* reboot to <enum system_image_copy_t> */
+} __attribute__ ((packed));
+#endif /* CONFIG_REBOOT_EC */
+
 #endif  /* __CROS_EC_LPC_COMMANDS_H */
