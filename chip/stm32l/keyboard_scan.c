@@ -65,15 +65,22 @@ enum COL_INDEX {
 	/* 0 ~ 12 for the corresponding column */
 };
 
-#define POLLING_MODE_TIMEOUT 1000000  /* 1 sec */
-#define SCAN_LOOP_DELAY 10000         /* 10 ms */
+//#define POLLING_MODE_TIMEOUT 1000000  /* 1 sec */
+//#define SCAN_LOOP_DELAY 10000         /* 10 ms */
+#define POLLING_MODE_TIMEOUT 1000  /* 1 sec */
+#define SCAN_LOOP_DELAY 10         /* 10 ms */
 
 #define KB_COLS 13
 
 /* 15:14, 12:8, 2 */
 #define IRQ_MASK 0xdf04
 
-static uint8_t raw_state[KB_COLS];
+/* initialize since host keyboard driver may request keyboard state
+ * before a key has been pressed (e.g. during driver init) */
+static uint8_t raw_state[KB_COLS] = { 0x00, 0x00, 0x00, 0x00,
+                                      0x00, 0x00, 0x00, 0x00,
+                                      0x00, 0x00, 0x00, 0x00,
+                                      0x00 };
 
 /* Mask with 1 bits only for keys that actually exist */
 static const uint8_t *actual_key_mask;
@@ -309,13 +316,11 @@ void wait_for_interrupt(void)
 	STM32L_EXTI_IMR |= IRQ_MASK;	/* 1: unmask interrupt */
 }
 
-
 void enter_polling_mode(void)
 {
 	STM32L_EXTI_IMR &= ~IRQ_MASK;	/* 0: mask interrupts */
 	select_column(COL_TRI_STATE_ALL);
 }
-
 
 /* Returns 1 if any key is still pressed. 0 if no key is pressed. */
 static int check_keys_changed(void)
@@ -330,7 +335,7 @@ static int check_keys_changed(void)
 
 		/* Select column, then wait a bit for it to settle */
 		select_column(c);
-		udelay(100);
+		udelay(50);
 
 		r = 0;
 #if defined(BOARD_daisy) || defined(BOARD_discovery) || defined(BOARD_adv)
@@ -374,6 +379,7 @@ static int check_keys_changed(void)
 
 		/* Check for changes */
 		if (r != raw_state[c]) {
+#if 0
 			int i;
 			for (i = 0; i < 8; ++i) {
 				uint8_t prev = (raw_state[c] >> i) & 1;
@@ -382,6 +388,7 @@ static int check_keys_changed(void)
 					/* TODO: implement this */
 					; //keyboard_state_changed(i, c, now);
 			}
+#endif
 			raw_state[c] = r;
 			change = 1;
 		}
@@ -395,6 +402,7 @@ static int check_keys_changed(void)
 	}
 
 	if (change) {
+		kb_send(&raw_state[0], KB_COLS);
 		uart_printf("[%d keys pressed: ", num_press);
 		for (c = 0; c < KB_COLS; c++) {
 			if (raw_state[c])
@@ -406,12 +414,13 @@ static int check_keys_changed(void)
 	}
 
 	return num_press ? 1 : 0;
+//	return change ? 1 : 0;
 }
 
 
 void keyboard_scan_task(void)
 {
-	int key_press_timer = 0;
+//	int key_press_timer = 0;
 
 	/* Enable interrupts for keyboard rows */
 	gpio_enable_interrupt(KB_COL00);
@@ -429,6 +438,19 @@ void keyboard_scan_task(void)
 
 		enter_polling_mode();
 		/* Busy polling keyboard state. */
+		usleep(50);	/* debounce */
+		check_keys_changed();
+
+#if 0
+		if (check_keys_changed()) {
+			kb_send(&raw_state[0], KB_COLS);
+			gpio_set_level(GPIO_EC_INT, 0);
+			gpio_set_level(GPIO_EC_INT, 1);
+			task_send_msg(TASK_ID_I2C_WORK, TASK_ID_I2C_WORK, 0);
+		}
+#endif
+		
+#if 0
 		while (1) {
 			/* sleep for debounce. */
 			usleep(SCAN_LOOP_DELAY);
@@ -443,6 +465,7 @@ void keyboard_scan_task(void)
 				}
 			}
 		}
+#endif
 		/* TODO: (crosbug.com/p/7484) A race condition here.
 		 *       If a key state is changed here (before interrupt is
 		 *       enabled), it will be lost.
