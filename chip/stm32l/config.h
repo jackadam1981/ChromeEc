@@ -35,5 +35,8 @@
 /* build with assertions and debug messages */
 #define CONFIG_DEBUG
 
+/* i2c */
+#define CONFIG_I2C
+
 /* Compile for running from RAM instead of flash */
 /* #define COMPILE_FOR_RAM */
