@@ -65,8 +65,8 @@ enum COL_INDEX {
 	/* 0 ~ 12 for the corresponding column */
 };
 
-#define POLLING_MODE_TIMEOUT 1000000  /* 1 sec */
-#define SCAN_LOOP_DELAY 10000         /* 10 ms */
+#define POLLING_MODE_TIMEOUT 100000   /* 100 ms */
+#define SCAN_LOOP_DELAY 10000         /*  10 ms */
 
 #define KB_COLS 13
 
@@ -216,6 +216,11 @@ int keyboard_scan_init(void)
 
 	uart_printf("[kbscan %s()] initializing keyboard...\n", __func__);
 
+	/* initialize raw state since host may request it before
+	 * a key has been pressed (e.g. during keyboard driver init) */
+	for (i = 0; i < ARRAY_SIZE(raw_state); i++)
+		raw_state[i] = 0x00;
+
 	/* initialize outputs (pull-up, open-drain)
 	 * TODO: this should be done via GPIO declaration in board.c */
 	for (i = 0; i < ARRAY_SIZE(ports); i++) {
@@ -309,13 +314,11 @@ void wait_for_interrupt(void)
 	STM32L_EXTI_IMR |= IRQ_MASK;	/* 1: unmask interrupt */
 }
 
-
 void enter_polling_mode(void)
 {
 	STM32L_EXTI_IMR &= ~IRQ_MASK;	/* 0: mask interrupts */
 	select_column(COL_TRI_STATE_ALL);
 }
-
 
 /* Returns 1 if any key is still pressed. 0 if no key is pressed. */
 static int check_keys_changed(void)
@@ -330,7 +333,7 @@ static int check_keys_changed(void)
 
 		/* Select column, then wait a bit for it to settle */
 		select_column(c);
-		udelay(100);
+		udelay(50);
 
 		r = 0;
 #if defined(BOARD_daisy) || defined(BOARD_discovery) || defined(BOARD_adv)
@@ -374,6 +377,7 @@ static int check_keys_changed(void)
 
 		/* Check for changes */
 		if (r != raw_state[c]) {
+#if 0
 			int i;
 			for (i = 0; i < 8; ++i) {
 				uint8_t prev = (raw_state[c] >> i) & 1;
@@ -382,6 +386,7 @@ static int check_keys_changed(void)
 					/* TODO: implement this */
 					; //keyboard_state_changed(i, c, now);
 			}
+#endif
 			raw_state[c] = r;
 			change = 1;
 		}
@@ -395,6 +400,7 @@ static int check_keys_changed(void)
 	}
 
 	if (change) {
+		kb_send(&raw_state[0], KB_COLS);
 		uart_printf("[%d keys pressed: ", num_press);
 		for (c = 0; c < KB_COLS; c++) {
 			if (raw_state[c])
@@ -429,6 +435,20 @@ void keyboard_scan_task(void)
 
 		enter_polling_mode();
 		/* Busy polling keyboard state. */
+#if 0
+		usleep(50);	/* debounce */
+		check_keys_changed();
+#endif
+
+#if 0
+		if (check_keys_changed()) {
+			kb_send(&raw_state[0], KB_COLS);
+			gpio_set_level(GPIO_EC_INT, 0);
+			gpio_set_level(GPIO_EC_INT, 1);
+			task_send_msg(TASK_ID_I2C_WORK, TASK_ID_I2C_WORK, 0);
+		}
+#endif
+
 		while (1) {
 			/* sleep for debounce. */
 			usleep(SCAN_LOOP_DELAY);
