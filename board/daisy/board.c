@@ -8,6 +8,7 @@
 #include "common.h"
 #include "gpio.h"
 #include "registers.h"
+#include "timer.h"
 #include "util.h"
 
 /* GPIO interrupt handlers prototypes */
@@ -48,5 +49,47 @@ void configure_board(void)
 	STM32L_RCC_AHBENR |= 0x3f;
 
 	/* Select Alternate function for USART1 on pins PA9/PA10 */
-        gpio_set_alternate_function(GPIO_A, (1<<9) | (1<<10), GPIO_ALT_USART);
+	gpio_set_alternate_function(GPIO_A, (1<<9) | (1<<10), GPIO_ALT_USART);
+
+	/* I2C2 SCL/SDA on pins PB10/PB11 */
+	STM32L_GPIO_PUPDR_OFF(GPIO_B) &= ~(0xF << (2*10)); /* no pullup/down */
+	STM32L_GPIO_OTYPER_OFF(GPIO_B) |= (0x3 << 10); /* open-drain */
+	gpio_set_alternate_function(GPIO_B, (1<<10) | (1<<11), GPIO_ALT_I2C);
+
+	/* EC_INT is output, open-drain */
+	STM32L_GPIO_OTYPER_OFF(GPIO_B) |= (1<<9);
+	STM32L_GPIO_PUPDR_OFF(GPIO_B) &= ~(0x3 << (2*9));
+	STM32L_GPIO_MODER_OFF(GPIO_B) &= ~(0x3 << (2*9));
+	STM32L_GPIO_MODER_OFF(GPIO_B) |= 0x1 << (2*9);
+}
+
+/* add all bytes to produce checksum */
+static uint8_t rolling8_csum(void *buf, int len)
+{
+	int i;
+	uint8_t sum = 0;
+	uint8_t *data = buf;
+
+	for (i = 0; i < len; i++)
+		sum += data[i];
+
+	return sum;
+}
+
+uint8_t kb_packet[KB_COLS + 1];
+int kb_packet_len = KB_COLS + 1;
+void kb_send(uint8_t kb_state[], int len)
+{
+	int i;
+
+	for (i = 0; i < len; i++)
+		kb_packet[i] = kb_state[i];
+	kb_packet[len] = rolling8_csum(kb_state, len);
+
+	/* interrupt host */
+	gpio_set_level(GPIO_EC_INT, 0);
+	/* AP should now interrupt EC with I2C read command */
+	usleep(1000);	/* FIXME: tweak this */
+	/* put EC_INT back into Hi-Z state */
+	gpio_set_level(GPIO_EC_INT, 1);
 }

@@ -14,11 +14,6 @@ int eeprom_init(void)
 	return EC_SUCCESS;
 }
 
-int i2c_init(void)
-{
-	return EC_SUCCESS;
-}
-
 int power_button_init(void)
 {
 	return EC_SUCCESS;
