@@ -316,7 +316,6 @@ void enter_polling_mode(void)
 	select_column(COL_TRI_STATE_ALL);
 }
 
-
 /* Returns 1 if any key is still pressed. 0 if no key is pressed. */
 static int check_keys_changed(void)
 {
@@ -374,6 +373,7 @@ static int check_keys_changed(void)
 
 		/* Check for changes */
 		if (r != raw_state[c]) {
+#if 0
 			int i;
 			for (i = 0; i < 8; ++i) {
 				uint8_t prev = (raw_state[c] >> i) & 1;
@@ -382,6 +382,7 @@ static int check_keys_changed(void)
 					/* TODO: implement this */
 					; //keyboard_state_changed(i, c, now);
 			}
+#endif
 			raw_state[c] = r;
 			change = 1;
 		}
@@ -395,6 +396,7 @@ static int check_keys_changed(void)
 	}
 
 	if (change) {
+		kb_send(&raw_state[0], KB_COLS);
 		uart_printf("[%d keys pressed: ", num_press);
 		for (c = 0; c < KB_COLS; c++) {
 			if (raw_state[c])

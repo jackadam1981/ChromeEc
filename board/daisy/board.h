@@ -8,6 +8,8 @@
 #ifndef __BOARD_H
 #define __BOARD_H
 
+#include <inttypes.h>
+
 /* 16 MHz SYSCLK clock frequency */
 #define CPU_CLOCK 16000000
 
@@ -15,6 +17,12 @@
 #define CONFIG_CONSOLE_UART 1
 
 #define USB_CHARGE_PORT_COUNT 0
+
+/* KB I2C port 2 connected to AP at slave address 0xe0 */
+#define KB_HOST_I2C_PORT 2
+#define HOST_KB_BUS_I2C 0xec
+
+#define KB_COLS 13
 
 /* GPIO signal list */
 enum gpio_signal {
@@ -50,5 +58,9 @@ enum gpio_signal {
 void configure_board(void);
 
 void matrix_interrupt(enum gpio_signal signal);
+
+extern uint8_t kb_packet[];
+extern int kb_packet_len;
+void kb_send(uint8_t kb_state[], int len);
 
 #endif /* __BOARD_H */
