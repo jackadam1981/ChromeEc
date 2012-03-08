@@ -16,6 +16,40 @@
       "revId": "c12a0594559e4b923a5661d21722a72882d087c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//a1M\u003d",
+        "filename": "include/lpc_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-08T18:41:44Z",
+      "side": 1,
+      "message": "This should actually still be a uint8_t, since the size of \u0027enum\u0027 may vary between firmware and host.\n\n(We use an enum because the symbols show up better in the debugger than individual #defines)",
+      "revId": "c12a0594559e4b923a5661d21722a72882d087c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//a1I\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-08T18:41:44Z",
+      "side": 1,
+      "message": "Not quite what I meant.  \n\nIf argc \u003c 1, use existing EC_LPC_COMMAND_REBOOT, which reboots the EC inside the LPC interrupt handler.\n\nIf argc \u003d\u003d 1, use your new command to reboot to a specific image.",
+      "revId": "c12a0594559e4b923a5661d21722a72882d087c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
