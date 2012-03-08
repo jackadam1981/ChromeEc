@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//bRE\u003d",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-03-08T05:40:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//b8g\u003d",
+      "revId": "37ce39b424f001f6d3f5394f71c0748cf2aaf7b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//b8c\u003d",
         "filename": "include/lpc_commands.h",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2012-03-07T18:45:11Z",
       "side": 1,
       "message": "Please use 0xd2, since that\u0027s next to the other reboot command (0xd1)",
+      "revId": "37ce39b424f001f6d3f5394f71c0748cf2aaf7b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//bRA\u003d",
+        "filename": "include/lpc_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-03-08T05:40:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//b8c\u003d",
       "revId": "37ce39b424f001f6d3f5394f71c0748cf2aaf7b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//bQ8\u003d",
+        "filename": "include/lpc_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-03-08T05:40:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//b8I\u003d",
+      "revId": "37ce39b424f001f6d3f5394f71c0748cf2aaf7b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//b8E\u003d",
         "filename": "util/ectool.c",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2012-03-07T18:45:11Z",
       "side": 1,
       "message": "Adding this to ectool isn\u0027t a security hole, as long as the EC ignores the request.",
+      "revId": "37ce39b424f001f6d3f5394f71c0748cf2aaf7b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//bQs\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-03-08T05:40:55Z",
+      "side": 1,
+      "message": "Done. Removed this flag since we can always compile the code in ectool.",
+      "parentUuid": "AAAAHn//b8E\u003d",
       "revId": "37ce39b424f001f6d3f5394f71c0748cf2aaf7b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//bQw\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-03-08T05:40:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//b74\u003d",
+      "revId": "37ce39b424f001f6d3f5394f71c0748cf2aaf7b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//b7w\u003d",
         "filename": "util/ectool.c",
         "patchSetId": 1
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//bQo\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-03-08T05:40:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//b7w\u003d",
+      "revId": "37ce39b424f001f6d3f5394f71c0748cf2aaf7b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//b7o\u003d",
         "filename": "util/ectool.c",
         "patchSetId": 1
@@ -115,6 +223,24 @@
       "writtenOn": "2012-03-07T18:45:11Z",
       "side": 1,
       "message": "Just use \"A\" and \"B\", so they match what\u0027s displayed by the version command.",
+      "revId": "37ce39b424f001f6d3f5394f71c0748cf2aaf7b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//bQk\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-03-08T05:40:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//b7o\u003d",
       "revId": "37ce39b424f001f6d3f5394f71c0748cf2aaf7b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
