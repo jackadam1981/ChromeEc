@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//aOA\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-03-09T01:50:43Z",
+      "side": 1,
+      "message": "Done. Not exactly. 8391 is a reminder to *remove* this. :-)",
+      "parentUuid": "AAAAHn//bDs\u003d",
+      "revId": "c12a0594559e4b923a5661d21722a72882d087c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//a1M\u003d",
         "filename": "include/lpc_commands.h",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//aP0\u003d",
+        "filename": "include/lpc_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-03-09T01:50:43Z",
+      "side": 1,
+      "message": "Done. Good point.",
+      "parentUuid": "AAAAHn//a1M\u003d",
+      "revId": "c12a0594559e4b923a5661d21722a72882d087c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//a1I\u003d",
         "filename": "util/ectool.c",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2012-03-08T18:41:44Z",
       "side": 1,
       "message": "Not quite what I meant.  \n\nIf argc \u003c 1, use existing EC_LPC_COMMAND_REBOOT, which reboots the EC inside the LPC interrupt handler.\n\nIf argc \u003d\u003d 1, use your new command to reboot to a specific image.",
+      "revId": "c12a0594559e4b923a5661d21722a72882d087c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//aOI\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-03-09T01:50:43Z",
+      "side": 1,
+      "message": "Done. So that argc\u003c1 would boot as normal reset. Good.",
+      "parentUuid": "AAAAHn//a1I\u003d",
       "revId": "c12a0594559e4b923a5661d21722a72882d087c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
