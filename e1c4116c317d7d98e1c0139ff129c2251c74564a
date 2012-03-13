@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//W+g\u003d",
+        "filename": "common/keyboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-13T20:10:11Z",
+      "side": 1,
+      "message": "I think we can just get rid of the todo; lots of places assume there are no more than 8 rows.",
+      "parentUuid": "AAAAHn//Xf8\u003d",
+      "revId": "e1c4116c317d7d98e1c0139ff129c2251c74564a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//Xf4\u003d",
         "filename": "common/keyboard.c",
         "patchSetId": 1
@@ -47,6 +65,24 @@
       "writtenOn": "2012-03-13T11:53:58Z",
       "side": 1,
       "message": "p \u003d !!p;",
+      "revId": "e1c4116c317d7d98e1c0139ff129c2251c74564a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//W9U\u003d",
+        "filename": "common/keyboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-13T20:10:11Z",
+      "side": 1,
+      "message": "Not needed at all if he adds the check above.  And since he\u0027s shifting p below, it\u0027d be more correct (and readable) to use p\u003d1 than p\u003d!!p.",
+      "parentUuid": "AAAAHn//Xf0\u003d",
       "revId": "e1c4116c317d7d98e1c0139ff129c2251c74564a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
