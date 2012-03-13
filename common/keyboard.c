@@ -14,6 +14,7 @@
 #include "timer.h"
 #include "uart.h"
 #include "util.h"
+#include "x86_power.h"
 
 
 #define KEYBOARD_DEBUG 1
@@ -497,6 +498,10 @@ int handle_keyboard_command(uint8_t command, uint8_t *output) {
 
   case I8042_SEND_TO_MOUSE:
     data_port_state = STATE_SEND_TO_MOUSE;
+    break;
+
+  case I8042_SYSTEM_RESET:
+    x86_power_reset();
     break;
 
   default:
