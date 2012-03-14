@@ -98,7 +98,7 @@ static void overheated_action(void)
 		else if (overheated[THRESHOLD_FAN_LO])
 			pwm_set_fan_target_rpm(6000);
 		else
-			pwm_set_fan_target_rpm(0);
+			pwm_set_fan_target_rpm(4000);
 	}
 }
 
