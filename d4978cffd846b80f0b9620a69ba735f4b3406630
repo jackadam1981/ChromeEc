@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//UrY\u003d",
+        "filename": "common/thermal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-15T16:36:39Z",
+      "side": 1,
+      "message": "Seems like \u003e\u003d 10 would be safer.\n\nOtherwise we ignore over-temp for the next 10 readings, even if temperature exceeds the threshold by 3 degrees during that period.",
+      "revId": "d4978cffd846b80f0b9620a69ba735f4b3406630",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
