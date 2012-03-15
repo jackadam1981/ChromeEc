@@ -176,14 +176,14 @@ void x86_power_force_shutdown(void)
 
 void x86_power_reset(void)
 {
-	/* Ignore if RCINn is already low */
-	if (gpio_get_level(GPIO_PCH_RCINn) == 0)
+	/* Ignore if PWROK is already low */
+	if (gpio_get_level(GPIO_PCH_PWROK) == 0)
 		return;
 
-	/* Pulse must be at least 16 PCI clocks long = 500ns */
-	gpio_set_level(GPIO_PCH_RCINn, 0);
-	udelay(10);
-	gpio_set_level(GPIO_PCH_RCINn, 1);
+	/* Tried 100us, works. But not sure if it is long enough. */
+	gpio_set_level(GPIO_PCH_PWROK, 0);
+	udelay(100);
+	gpio_set_level(GPIO_PCH_PWROK, 1);
 }
 
 /*****************************************************************************/
