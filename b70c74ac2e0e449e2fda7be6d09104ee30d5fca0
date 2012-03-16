@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//Tc8\u003d",
+        "filename": "common/power_led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-16T18:03:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//Ths\u003d",
+      "revId": "b70c74ac2e0e449e2fda7be6d09104ee30d5fca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//Tho\u003d",
         "filename": "include/power_led.h",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2012-03-16T17:00:51Z",
       "side": 1,
       "message": "So name it POWERLED_NUMBER_OF_COLORS",
+      "revId": "b70c74ac2e0e449e2fda7be6d09104ee30d5fca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//Tcg\u003d",
+        "filename": "include/power_led.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-16T18:03:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//Tho\u003d",
       "revId": "b70c74ac2e0e449e2fda7be6d09104ee30d5fca0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
