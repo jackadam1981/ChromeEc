@@ -27,6 +27,7 @@ typedef union {
 	struct {
 		uint32_t sp;       /* saved stack pointer for context switch */
 		uint32_t events;   /* bitmaps of received events */
+		uint32_t guard;    /* Guard value to detect stack overflow */
 		uint8_t stack[0];  /* task stack */
 	};
 	uint32_t context[TASK_SIZE/4];
@@ -61,10 +62,16 @@ static void task_exit_trap(void)
 }
 
 
+#define GUARD_VALUE 0x12345678
 
-/* declare and fill the contexts for all the tasks */
+/* Declare and fill the contexts for all tasks. Note that while it would be
+ * more readable to use the struct fields (.sp, .guard) where applicable, gcc
+ * can't mix initializing some fields on one side of the union and some fields
+ * on the other, so we have to use .context for all initialization.
+ */
 #define TASK(n, r, d)  {						\
 	.context[0] = (uint32_t)(tasks + TASK_ID_##n + 1) - 64,	        \
+	.context[2] = GUARD_VALUE,					\
 	.context[TASK_SIZE/4 - 8/*r0*/] = (uint32_t)d,                  \
 	.context[TASK_SIZE/4 - 3/*lr*/] = (uint32_t)task_exit_trap,     \
 	.context[TASK_SIZE/4 - 2/*pc*/] = (uint32_t)r,                  \
@@ -76,7 +83,7 @@ static task_ tasks[] __attribute__((section(".data.tasks")))
 	CONFIG_TASK_LIST
 };
 #undef TASK
-/* reserve space to discard context on first context switch */
+/* Reserve space to discard context on first context switch. */
 uint32_t scratchpad[17] __attribute__((section(".data.tasks")));
 
 /* context switch at the next exception exit if needed */
@@ -170,6 +177,10 @@ void svc_handler(int desched, task_id_t resched)
 	asm volatile("cpsid f\n"
 		     "isb\n");
 	current = __get_task_scheduled();
+#ifdef CONFIG_OVERFLOW_DETECT
+	ASSERT(current->guard == GUARD_VALUE);
+#endif
+
 	if (desched && !current->events) {
 		/* Remove our own ready bit */
 		tasks_ready &= ~(1 << (current-tasks));
@@ -417,6 +428,10 @@ DECLARE_CONSOLE_COMMAND(taskready, command_task_ready);
 
 int task_pre_init(void)
 {
+	/* Fill in guard value in scratchpad to prevent stack overflow
+	 * detection failure on the first context switch. */
+	((task_ *)scratchpad)->guard = GUARD_VALUE;
+
 	/* sanity checks about static task invariants */
 	BUILD_ASSERT(TASK_ID_COUNT <= sizeof(unsigned) * 8);
 	BUILD_ASSERT(TASK_ID_COUNT < (1 << (sizeof(task_id_t) * 8)));
