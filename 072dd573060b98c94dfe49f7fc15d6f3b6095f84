@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//TlA\u003d",
+        "filename": "common/keyboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-16T16:05:00Z",
+      "side": 1,
+      "message": "I think you can set the host event all the time.  It\u0027ll only be unmasked by the host on the way down to suspend.",
+      "revId": "072dd573060b98c94dfe49f7fc15d6f3b6095f84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
