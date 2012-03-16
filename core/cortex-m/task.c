@@ -27,6 +27,9 @@ typedef union {
 	struct {
 		uint32_t sp;       /* saved stack pointer for context switch */
 		uint32_t events;   /* bitmaps of received events */
+#ifdef CONFIG_OVERFLOW_DETECT
+		uint32_t guard;    /* Guard value to detect stack overflow */
+#endif
 		uint8_t stack[0];  /* task stack */
 	};
 	uint32_t context[TASK_SIZE/4];
@@ -65,6 +68,9 @@ static void task_exit_trap(void)
 /* declare and fill the contexts for all the tasks */
 #define TASK(n, r, d)  {						\
 	.context[0] = (uint32_t)(tasks + TASK_ID_##n + 1) - 64,	        \
+#ifdef CONFIG_OVERFLOW_DETECT						\
+	.context[2] = 0x12345678,					\
+#endif									\
 	.context[TASK_SIZE/4 - 8/*r0*/] = (uint32_t)d,                  \
 	.context[TASK_SIZE/4 - 3/*lr*/] = (uint32_t)task_exit_trap,     \
 	.context[TASK_SIZE/4 - 2/*pc*/] = (uint32_t)r,                  \
@@ -170,6 +176,11 @@ void svc_handler(int desched, task_id_t resched)
 	asm volatile("cpsid f\n"
 		     "isb\n");
 	current = __get_task_scheduled();
+#ifdef CONFIG_OVERFLOW_DETECT
+	if (current - tasks < TASK_ID_COUNT)
+		ASSERT(current->guard == 0x12345678);
+#endif
+
 	if (desched && !current->events) {
 		/* Remove our own ready bit */
 		tasks_ready &= ~(1 << (current-tasks));
