@@ -1,0 +1,35 @@
+#!/usr/bin/env python
+#
+# Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+#
+# Generate task ID list from task list XML
+
+from parse_task import find_name
+from parse_task import find_name_iter
+from parse_task import get_attr
+import sys
+from xml.dom import minidom
+
+doc = minidom.parse(sys.argv[1])
+
+tasklist = find_name(doc, "tasklist")
+assert tasklist is not None
+
+print '/* enumerate all tasks in the priority order */'
+
+print 'enum {'
+print '\tTASK_ID_IDLE,'
+for n in find_name_iter(tasklist, "task"):
+  print '\tTASK_ID_%s,' % get_attr(n, "name")
+print '''
+	/* Number of tasks */
+	TASK_ID_COUNT,
+	/* Special task identifiers */
+	TASK_ID_MUTEX   = 0x1e, /* signal mutex unlocking */
+	TASK_ID_TIMER   = 0x1f, /* message from an expired timer */
+	TASK_ID_CURRENT = 0xfe, /* the currently running task */
+	TASK_ID_INVALID = 0xff  /* unable to find the task */
+};
+'''
