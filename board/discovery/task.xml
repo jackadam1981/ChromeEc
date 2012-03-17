@@ -1,0 +1,17 @@
+<tasklist>
+	<task>
+		<name>WATCHDOG</name>
+		<routine>watchdog_task</routine>
+		<arg>NULL</arg>
+	</task>
+	<task>
+		<name>KEYSCAN</name>
+		<routine>keyboard_scan_task</routine>
+		<arg>NULL</arg>
+	</task>
+	<task>
+		<name>CONSOLE</name>
+		<routine>console_task</routine>
+		<arg>NULL</arg>
+	</task>
+</tasklist>
