@@ -15,7 +15,10 @@
 #define CONFIG_PECI
 #define CONFIG_POWER_LED
 #define CONFIG_PSTORE
+
+#ifdef CONFIG_TASK_TEMPSENSOR
 #define CONFIG_TMP006
+#endif
 
 /* 66.667 Mhz clock frequency */
 #define CPU_CLOCK  66666667

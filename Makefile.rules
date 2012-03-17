@@ -36,6 +36,8 @@ cmd_c_to_host = $(HOSTCC) $(HOST_CFLAGS) -MMD -MF $@.d $< -o $@
 cmd_qemu = ./util/run_qemu_test --image=build/$(BOARD)/$*/$*.bin test/$*.py \
 	   $(silent)
 cmd_version = ./util/getversion.sh > $@
+cmd_tasklist = ./util/parse_task.py $^ > $@
+cmd_task_id = ./util/task_id.py $^ > $@
 
 
 .PHONY: all tests utils
@@ -51,7 +53,7 @@ $(test-targets): test-%:
 	@set -e ; \
 	echo "  BUILD   $(out)/$*" ; \
 	$(MAKE) --no-print-directory BOARD=$(BOARD) PROJECT=$* \
-	        V=$(V) out=$(out)/$*
+	        TASKFILE=test/$*.task.xml V=$(V) out=$(out)/$*
 
 $(qemu-test-targets): qemu-%: test-%
 	$(call quiet,qemu,TEST   )
@@ -95,6 +97,16 @@ $(build-utils): $(out)/%:%.c
 
 $(host-utils): $(out)/%:%.c
 	$(call quiet,c_to_host,HOSTCC )
+
+$(out)/core/$(CORE)/task.o: $(out)/tasklist-impl.h $(out)/task_id-impl.h
+
+$(out)/core/$(CORE)/timer.o: $(out)/task_id-impl.h
+
+$(out)/tasklist-impl.h: $(TASKFILE)
+	$(call quiet,tasklist,TASK   )
+
+$(out)/task_id-impl.h: $(TASKFILE)
+	$(call quiet,task_id,TASK   )
 
 .PHONY: clean
 clean:

@@ -1,0 +1,46 @@
+<!--
+Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+-->
+
+<!--
+List of enabled tasks in the priority order
+
+The first one has the lowest priority.
+
+For each task, define a <task> node with child nodes:
+  'name' contains the name of the task
+  'routine' contains the main routine of the task
+  'arg' contains an opaque parameter passed to the routine at startup
+-->
+<tasklist>
+	<task>
+		<name>WATCHDOG</name>
+		<routine>watchdog_task</routine>
+	</task>
+	<task>
+		<name>CONSOLE</name>
+		<routine>console_task</routine>
+	</task>
+	<task>
+		<name>TMRA</name>
+		<routine>TaskTimer</routine>
+		<arg>(void *)1234</arg>
+	</task>
+	<task>
+		<name>TMRB</name>
+		<routine>TaskTimer</routine>
+		<arg>(void *)5678</arg>
+	</task>
+	<task>
+		<name>TMRC</name>
+		<routine>TaskTimer</routine>
+		<arg>(void *)8462</arg>
+	</task>
+	<task>
+		<name>TMRD</name>
+		<routine>TaskTimer</routine>
+		<arg>(void *)3719</arg>
+	</task>
+</tasklist>
