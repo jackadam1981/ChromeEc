@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//SXs\u003d",
+        "filename": "include/task_id.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-18T17:52:29Z",
+      "side": 1,
+      "message": "2012",
+      "revId": "0a3716090b6aeb46d160b1ac07ae774f7ed8d897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//SYM\u003d",
+        "filename": "include/task_id.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-18T17:52:29Z",
+      "side": 1,
+      "message": "TASK_ID_?",
+      "revId": "0a3716090b6aeb46d160b1ac07ae774f7ed8d897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//SXo\u003d",
+        "filename": "util/parse_task.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-18T17:52:29Z",
+      "side": 1,
+      "message": "Take an optional 3rd parameter which is the default if attr isn\u0027t found\n\nget_attr(task, attr, default\u003dNone)",
+      "revId": "0a3716090b6aeb46d160b1ac07ae774f7ed8d897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//SXk\u003d",
+        "filename": "util/parse_task.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-18T17:52:29Z",
+      "side": 1,
+      "message": "That way, \"arg\" can default to \"NULL\", and we don\u0027t need to specify it in most of the XML files.",
+      "revId": "0a3716090b6aeb46d160b1ac07ae774f7ed8d897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
