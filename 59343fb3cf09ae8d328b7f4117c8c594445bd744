@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAAHn//SQw\u003d",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-03-18T22:39:43Z",
+      "side": 1,
+      "message": "you don\u0027t need to put #ifdef guard here\n(whether or not you want to spend time detecting stack issue you can put that here)",
+      "revId": "59343fb3cf09ae8d328b7f4117c8c594445bd744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//SQs\u003d",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-03-18T22:39:43Z",
+      "side": 1,
+      "message": "same thing here : just remove the #ifdef",
+      "revId": "59343fb3cf09ae8d328b7f4117c8c594445bd744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//SYU\u003d",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 1
@@ -13,6 +47,40 @@
       "writtenOn": "2012-03-18T17:27:38Z",
       "side": 1,
       "message": "Use .guard instead of .context[2].\nIf we end up inserting something before guard, that\u0027ll stay aligned.  Seems like we ought to fix .context[0] to .sp at the same time.",
+      "revId": "59343fb3cf09ae8d328b7f4117c8c594445bd744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//SQo\u003d",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-03-18T22:39:43Z",
+      "side": 1,
+      "message": "I don\u0027t think you need to test this condition.\nIMO if it is false, something else is broken and you don\u0027t mind triggering the assert or a panic.",
+      "revId": "59343fb3cf09ae8d328b7f4117c8c594445bd744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//SQk\u003d",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-03-18T22:39:43Z",
+      "side": 1,
+      "message": "triggering the assert inside the exception context is probably not the place where you will get the easiest trace to debug.",
       "revId": "59343fb3cf09ae8d328b7f4117c8c594445bd744",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
