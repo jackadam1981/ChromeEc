@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//SYU\u003d",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-18T17:27:38Z",
+      "side": 1,
+      "message": "Use .guard instead of .context[2].\nIf we end up inserting something before guard, that\u0027ll stay aligned.  Seems like we ought to fix .context[0] to .sp at the same time.",
+      "revId": "59343fb3cf09ae8d328b7f4117c8c594445bd744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
