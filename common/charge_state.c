@@ -14,6 +14,7 @@
 #include "gpio.h"
 #include "lpc.h"
 #include "lpc_commands.h"
+#include "power_led.h"
 #include "smart_battery.h"
 #include "timer.h"
 #include "uart.h"
@@ -98,6 +99,36 @@ struct power_state_context {
 static inline int get_ac(void)
 {
 	return gpio_get_level(GPIO_AC_PRESENT);
+}
+
+/* Blink power LED with period msec*2 millisecond
+ *
+ *  |  msec  |
+ *
+ *           +-------+
+ *           |       |
+ *  +--------+       +--------+
+ *   color1   color2
+ */
+static void blink_led(uint32_t msec, enum powerled_color color1,
+			enum powerled_color color2)
+{
+	static enum powerled_color prev_color;
+	uint32_t usec = msec * 1000;
+
+	if (((uint32_t)get_time().val % (2 * usec)) > usec) {
+		/* color 2 */
+		if (prev_color != color2) {
+			powerled_set(color2);
+			prev_color = color2;
+		}
+	} else {
+		/* color 1 */
+		if (prev_color != color1) {
+			powerled_set(color1);
+			prev_color = color1;
+		}
+	}
 }
 
 /* Common handler for charging states.
@@ -430,6 +461,9 @@ void charge_state_machine_task(void)
 			new_state = state_charge(&ctx);
 			break;
 		case PWR_STATE_ERROR:
+			/* Error, blink the red at 500ms cycle*/
+			blink_led(500, POWERLED_OFF, POWERLED_RED);
+
 			new_state = state_error(&ctx);
 			break;
 		default:
@@ -452,6 +486,10 @@ void charge_state_machine_task(void)
 			batt_flags &= ~EC_BATT_FLAG_CHARGING;
 			batt_flags &= ~EC_BATT_FLAG_DISCHARGING;
 			*ctx.memmap_batt_flags = batt_flags;
+
+			/* Charge done */
+			powerled_set(POWERLED_GREEN);
+
 			sleep_usec = POLL_PERIOD_LONG;
 			break;
 		case PWR_STATE_DISCHARGE:
@@ -466,6 +504,10 @@ void charge_state_machine_task(void)
 			batt_flags |= EC_BATT_FLAG_CHARGING;
 			batt_flags &= ~EC_BATT_FLAG_DISCHARGING;
 			*ctx.memmap_batt_flags = batt_flags;
+
+			/* Charging */
+			powerled_set(POWERLED_YELLOW);
+
 			sleep_usec = POLL_PERIOD_CHARGE;
 			break;
 		default:
