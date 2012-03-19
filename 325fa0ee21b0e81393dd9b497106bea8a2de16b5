@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//Q6A\u003d",
+        "filename": "common/keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-19T23:25:27Z",
+      "side": 1,
+      "message": "Actually, other headers which require it should directly include it.  Some configs are defined in board.h as well.",
+      "revId": "325fa0ee21b0e81393dd9b497106bea8a2de16b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//Q54\u003d",
+        "filename": "common/keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-19T23:25:27Z",
+      "side": 1,
+      "message": "Should be harmless to include header files for non-config\u0027d modules.  See main.c, which includes them all.",
+      "revId": "325fa0ee21b0e81393dd9b497106bea8a2de16b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
