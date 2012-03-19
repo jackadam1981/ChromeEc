@@ -282,6 +282,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//R6Q\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-03-19T08:02:55Z",
+      "side": 1,
+      "message": "I may miss that. I cannot find it in power_state_context.",
+      "parentUuid": "AAAAHn//R7I\u003d",
+      "revId": "05fbdea80a48ab8544b9f41aea92f3d9646ce34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//SHM\u003d",
         "filename": "common/charge_state.c",
         "patchSetId": 3
