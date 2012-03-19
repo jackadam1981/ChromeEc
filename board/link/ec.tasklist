@@ -13,6 +13,7 @@
  * 'r' in the main routine of the task
  * 'd' in an opaque parameter passed to the routine at startup
  */
+
 #define CONFIG_TASK_LIST \
 	TASK(WATCHDOG, watchdog_task, NULL) \
 	TASK(TEMPSENSOR, temp_sensor_task, NULL) \
