@@ -1,0 +1,361 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//SGw\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-03-19T05:49:12Z",
+      "side": 1,
+      "message": "missing F_BATTERY_STATE_OF_CHARGE?",
+      "revId": "05fbdea80a48ab8544b9f41aea92f3d9646ce34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//SEo\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-03-19T05:49:12Z",
+      "side": 1,
+      "message": "missing F_CHARGER_INIT?",
+      "revId": "05fbdea80a48ab8544b9f41aea92f3d9646ce34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//SCQ\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-03-19T05:49:12Z",
+      "side": 1,
+      "message": "Actually I would like to vote for keeping debug print since the battery debug is always hard and this will be very helpful in the future.  :-)",
+      "revId": "05fbdea80a48ab8544b9f41aea92f3d9646ce34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//SCM\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-03-19T05:49:12Z",
+      "side": 1,
+      "message": "style: remove the leading underline.",
+      "revId": "05fbdea80a48ab8544b9f41aea92f3d9646ce34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//SDg\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-03-19T05:49:12Z",
+      "side": 1,
+      "message": "\"unchanged\",\n\nnull looks misleading to a null pointer.",
+      "revId": "05fbdea80a48ab8544b9f41aea92f3d9646ce34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//SHY\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-03-19T05:49:12Z",
+      "side": 1,
+      "message": "crosbug.com/p/7937",
+      "revId": "05fbdea80a48ab8544b9f41aea92f3d9646ce34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//SFg\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-03-19T05:49:12Z",
+      "side": 1,
+      "message": "Not sure if I am correct. If any of the get function is failed, shall we set both voltage and current to zero since it doesn\u0027t make sense to have either one is zero but another is non-zero?",
+      "revId": "05fbdea80a48ab8544b9f41aea92f3d9646ce34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//SBA\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-03-19T05:49:12Z",
+      "side": 1,
+      "message": "Shall we add a TODO here to handle the endian issue between host?",
+      "revId": "05fbdea80a48ab8544b9f41aea92f3d9646ce34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//SHM\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-03-19T05:49:12Z",
+      "side": 1,
+      "message": "remove the unnecessary space.",
+      "revId": "05fbdea80a48ab8544b9f41aea92f3d9646ce34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//SE8\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-03-19T05:49:12Z",
+      "side": 1,
+      "message": "why do you check error here instead of at end of this function?",
+      "revId": "05fbdea80a48ab8544b9f41aea92f3d9646ce34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//SE4\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-03-19T05:49:12Z",
+      "side": 1,
+      "message": "Properly related to my previous question. Why not use curr-\u003eerror here?",
+      "revId": "05fbdea80a48ab8544b9f41aea92f3d9646ce34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//SFE\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-03-19T05:49:12Z",
+      "side": 1,
+      "message": "style:\nif (...) {\n  ...\n} else {",
+      "revId": "05fbdea80a48ab8544b9f41aea92f3d9646ce34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//SDs\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-03-19T05:49:12Z",
+      "side": 1,
+      "message": "How about comment like this: \"If AC is not present, we are in discharging state.\"",
+      "revId": "05fbdea80a48ab8544b9f41aea92f3d9646ce34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//SBI\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-03-19T05:49:12Z",
+      "side": 1,
+      "message": "Add comment for V/I constrains.",
+      "revId": "05fbdea80a48ab8544b9f41aea92f3d9646ce34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//SCs\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-03-19T05:49:12Z",
+      "side": 1,
+      "message": "Is this safer if we move this block prior to the above 2 blocks (desired_V/I)?",
+      "revId": "05fbdea80a48ab8544b9f41aea92f3d9646ce34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//SBs\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-03-19T05:49:12Z",
+      "side": 1,
+      "message": "if (ctx-\u003ecurr.ac)  ?   (without not)",
+      "revId": "05fbdea80a48ab8544b9f41aea92f3d9646ce34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//SCg\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-03-19T05:49:12Z",
+      "side": 1,
+      "message": "ctx.prev.state should be inited to PWR_STATE_INIT, otherwise this could lead a potential bug in the switch (ctx.prev.state) since 0 means PWR_STATE_UNCHANGE.",
+      "revId": "05fbdea80a48ab8544b9f41aea92f3d9646ce34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//SCU\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-03-19T05:49:12Z",
+      "side": 1,
+      "message": "How about adding a ASSERT() or print error message here? So that we know we have problem in code (or memory corrupt).",
+      "revId": "05fbdea80a48ab8544b9f41aea92f3d9646ce34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//SBk\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-03-19T05:49:12Z",
+      "side": 1,
+      "message": "I am worried there will be race condition here. Within a moment the host can read the charging flag is cleared but discharging is not. I would recommend the atomic operation:\n\n*ctx.memmap_batt_flags \u0026\u003d ~(EC_BATT_FLAG_CHARGING | EC_BATT_FLAG_DISCHARGING);",
+      "revId": "05fbdea80a48ab8544b9f41aea92f3d9646ce34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//SBg\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-03-19T05:49:12Z",
+      "side": 1,
+      "message": "Same as above. My recommendation is:\n\n*ctx.memmap_batt_flags \u003d (*ctx.memmap_batt_flags \u0026 ~EC_BATT_FLAG_CHARGING) | EC_BATT_FLAG_DISCHARGING;",
+      "revId": "05fbdea80a48ab8544b9f41aea92f3d9646ce34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//SBc\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-03-19T05:49:12Z",
+      "side": 1,
+      "message": "Similar to above.",
+      "revId": "05fbdea80a48ab8544b9f41aea92f3d9646ce34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
