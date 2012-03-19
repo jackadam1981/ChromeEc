@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//Q5o\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-03-19T23:27:51Z",
+      "side": 1,
+      "message": "Just turn LED on solid red.  Blinking will use a lot of EC CPU because one-wire is bit-banged.",
+      "revId": "029d107ba6833ce1e67a35190b18c0da071c3684",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
