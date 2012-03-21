@@ -57,6 +57,26 @@ enum system_image_copy_t system_get_image_copy(void)
 }
 
 
+/* Returns true if the given range is overlapped with the active image.
+ *
+ * We only care the runtime code since the EC is running over it.
+ * We don't care about the vector table, FMAP, and init code.
+ * Read core/$CORE/ec.lds.S about the below extern symbols.
+ */
+int system_unsafe_to_overwrite(uint32_t offset, uint32_t size) {
+	int copy = ((uint32_t)system_unsafe_to_overwrite - CONFIG_FLASH_BASE) /
+	           CONFIG_FW_IMAGE_SIZE;
+	uint32_t r_offset = copy * CONFIG_FW_IMAGE_SIZE;
+	uint32_t r_size = CONFIG_FW_IMAGE_SIZE;
+
+	if ((offset >= r_offset && offset < (r_offset + r_size)) ||
+	    (r_offset >= offset && r_offset < (offset + size)))
+		return 1;
+	else
+		return 0;
+}
+
+
 const char *system_get_image_copy_string(void)
 {
 	static const char * const copy_descs[] = {"unknown", "RO", "A", "B"};
