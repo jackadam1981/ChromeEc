@@ -18,11 +18,13 @@ MEMORY
 SECTIONS
 {
     .text : {
+        __vecttable = .;
         OUTDIR/core/CORE/init.o (.text.vecttable)
         . = ALIGN(4);
         *(.rodata.ver)
         . = ALIGN(4);
         OUTDIR/core/CORE/init.o (.text)
+        __runtime = .;
         *(.text*)
 #ifdef COMPILE_FOR_RAM
     } > IRAM
@@ -52,6 +54,7 @@ SECTIONS
     __ro_end = . ;
     .data : AT(ADDR(.rodata) + SIZEOF(.rodata)) {
 #endif
+        __runtime_end = .;
         . = ALIGN(4);
         __data_start = .;
         *(.data.tasks)
