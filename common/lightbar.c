@@ -7,6 +7,7 @@
 
 #include "board.h"
 #include "console.h"
+#include "gpio.h"
 #include "i2c.h"
 #include "timer.h"
 #include "uart.h"
@@ -61,8 +62,9 @@ static const struct {
 /* Shut down the driver chips, so everything is off. */
 void lightbar_off(void)
 {
-	/* FIXME: nRST is attached to a GPIO on link, so just assert it. For
-	 * now we'll just put the drivers into standby, but won't reset. */
+	/* put the drivers into standby,
+	 * we could instead put them under reset but the pull-up would consume
+	 * more power. */
 	i2c_write8(I2C_PORT_LIGHTBAR, DRIVER_FUN, 0x01, 0x00);
 	i2c_write8(I2C_PORT_LIGHTBAR, DRIVER_SMART, 0x01, 0x00);
 }
@@ -71,7 +73,7 @@ void lightbar_off(void)
 void lightbar_on(void)
 {
 	int i;
-	/* FIXME: If nRST is asserted, deassert it. */
+	gpio_set_level(GPIO_LIGHTBAR_RESETn, 1);
 	for (i = 0; i < ARRAY_SIZE(ready_vals); i++) {
 		i2c_write8(I2C_PORT_LIGHTBAR, DRIVER_FUN, ready_vals[i].reg,
 			   ready_vals[i].val);
