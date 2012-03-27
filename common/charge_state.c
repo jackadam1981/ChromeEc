@@ -19,6 +19,7 @@
 #include "timer.h"
 #include "uart.h"
 #include "util.h"
+#include "x86_power.h"
 
 /* Stop charge when state of charge reaches this percentage */
 #define STOP_CHARGE_THRESHOLD 100
@@ -28,6 +29,9 @@
 #define POLL_PERIOD_CHARGE      250000
 #define POLL_PERIOD_SHORT       100000
 #define MIN_SLEEP_USEC          50000
+
+/* charger update period in usec */
+#define CHARGER_UPDATE_PERIOD   1000000
 
 /* Power state error flags */
 #define F_CHARGER_INIT        (1 << 0) /* Charger initialization */
@@ -93,6 +97,8 @@ struct power_state_context {
 	uint32_t *memmap_batt_rate;
 	uint32_t *memmap_batt_cap;
 	uint8_t *memmap_batt_flags;
+	/* Charger update timestamp */
+	timestamp_t charger_update_time;
 };
 
 /* helper function(s) */
@@ -316,12 +322,14 @@ static enum power_state state_charge(struct power_state_context *ctx)
 		return PWR_STATE_IDLE;
 	}
 
-	if (ctx->curr.batt.desired_voltage != ctx->curr.charging_voltage)
-		if (charger_set_voltage(ctx->curr.batt.desired_voltage))
+	if ((ctx->curr.batt.desired_voltage != ctx->curr.charging_voltage) ||
+	    (ctx->curr.batt.desired_current != ctx->curr.charging_current) ||
+	    (ctx->curr.ts.val - ctx->charger_update_time.val >
+						CHARGER_UPDATE_PERIOD)) {
+		if (charger_set_voltage(ctx->curr.batt.desired_voltage) ||
+		    charger_set_current(ctx->curr.batt.desired_current))
 			return PWR_STATE_ERROR;
-	if (ctx->curr.batt.desired_current != ctx->curr.charging_current)
-		if (charger_set_current(ctx->curr.batt.desired_current))
-			return PWR_STATE_ERROR;
+	}
 
 	return PWR_STATE_UNCHANGE;
 }
@@ -337,6 +345,47 @@ static enum power_state state_discharge(struct power_state_context *ctx)
 
 	if (ctx->curr.error)
 		return PWR_STATE_ERROR;
+
+	/* Prevent deep discharge
+	 * TODO(rong): move this threshold to battery pack
+	 */
+	if (ctx->curr.batt.state_of_charge == 0 ||
+			ctx->curr.batt.voltage <= 6500) {
+		/* Shutdown the main processor
+		 * TODO(rong): remove platform dependent code
+		 *     use host_force_shutdown() instead
+		 */
+		x86_power_force_shutdown();
+
+		/* power_force_shutdown() was not implemented yet.
+		 * TODO(rong): remove following code block after
+		 * crosbug.com/p/8242
+		 */
+		uart_puts("[battery low - x86 forcing G3]\n");
+		gpio_set_level(GPIO_PCH_PWROK, 0);
+		gpio_set_level(GPIO_ENABLE_VCORE, 0);
+		gpio_set_level(GPIO_PCH_RCINn, 0);
+		gpio_set_level(GPIO_ENABLE_VS, 0);
+		gpio_set_level(GPIO_ENABLE_TOUCHPAD, 0);
+		gpio_set_level(GPIO_TOUCHSCREEN_RESETn, 0);
+		gpio_set_level(GPIO_ENABLE_1_5V_DDR, 0);
+		gpio_set_level(GPIO_SHUNT_1_5V_DDR, 1);
+		gpio_set_level(GPIO_PCH_RSMRSTn, 0);
+
+		/* TODO(rong): battery deep sleep
+		 *    pause charging task
+		 *    put battery in deep sleep
+		 *    shutdown ec
+		 */
+
+		/* Proto1 workaround */
+		while (!get_ac()) {
+			/* Check ac_present every 5 seconds */
+			usleep(5000000);
+		}
+		return PWR_STATE_INIT;
+	}
+
 
 	/* TODO(rong): crosbug.com/p/8451
 	 * handle overtemp in discharge mode
