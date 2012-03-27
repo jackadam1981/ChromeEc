@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//KIA\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-03-27T19:26:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//KMk\u003d",
+      "revId": "791b2e13f7eb9bc8ad90eb7c84760b777520e265",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//KNE\u003d",
         "filename": "common/charge_state.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2012-03-27T18:47:36Z",
       "side": 1,
       "message": "#ifdef CONFIG_TASK_X86POWER",
+      "revId": "791b2e13f7eb9bc8ad90eb7c84760b777520e265",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//KH8\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-03-27T19:26:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//KNE\u003d",
       "revId": "791b2e13f7eb9bc8ad90eb7c84760b777520e265",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
