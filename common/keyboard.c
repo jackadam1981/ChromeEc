@@ -307,8 +307,11 @@ enum {
   STATE_NORMAL = 0,
   STATE_SCANCODE,
   STATE_SETLEDS,
+  STATE_EX_SETLEDS_1,  /* expect 2-byte parameter coming */
+  STATE_EX_SETLEDS_2,
   STATE_WRITE_CMD_BYTE,
   STATE_ECHO_MOUSE,
+  STATE_SETREP,
   STATE_SEND_TO_MOUSE,
 } data_port_state = STATE_NORMAL;
 
@@ -319,7 +322,7 @@ int handle_keyboard_data(uint8_t data, uint8_t *output) {
   int i;
 
 #if KEYBOARD_DEBUG >= 5
-  uart_printf("[%d] Recv data:[0x%02x]\n", get_time().le.lo, data);
+  uart_printf("Recv data:[0x%02x]\n", data);
 #endif
 
   switch (data_port_state) {
@@ -348,6 +351,22 @@ int handle_keyboard_data(uint8_t data, uint8_t *output) {
     data_port_state = STATE_NORMAL;
     break;
 
+  case STATE_EX_SETLEDS_1:
+#if KEYBOARD_DEBUG >= 5
+    uart_printf("Eaten by STATE_EX_SETLEDS_1\n");
+#endif
+    output[out_len++] = I8042_RET_ACK;
+    data_port_state = STATE_EX_SETLEDS_2;
+    break;
+
+  case STATE_EX_SETLEDS_2:
+#if KEYBOARD_DEBUG >= 5
+    uart_printf("Eaten by STATE_EX_SETLEDS_2\n");
+#endif
+    output[out_len++] = I8042_RET_ACK;
+    data_port_state = STATE_NORMAL;
+    break;
+
   case STATE_WRITE_CMD_BYTE:
 #if KEYBOARD_DEBUG >= 5
     uart_printf("Eaten by STATE_WRITE_CMD_BYTE: 0x%02x\n", data);
@@ -366,6 +385,22 @@ int handle_keyboard_data(uint8_t data, uint8_t *output) {
     data_port_state = STATE_NORMAL;
     break;
 
+  case STATE_SETREP:
+#if KEYBOARD_DEBUG >= 5
+    uart_printf("Eaten by STATE_SETREP: 0x%02x\n", data);
+#endif
+    typematic_value_from_host = data;
+    refill_first_delay = counter_first_delay + counter_inter_delay;
+    refill_first_delay = ((typematic_value_from_host & 0x60) >> 5) * 250;
+    refill_inter_delay = 1000 *  /* ms */
+                         (1 << ((typematic_value_from_host & 0x18) >> 3)) *
+                         ((typematic_value_from_host & 0x7) + 8) /
+                         240;
+
+    output[out_len++] = I8042_RET_ACK;
+    data_port_state = STATE_NORMAL;
+    break;
+
   case STATE_SEND_TO_MOUSE:
 #if KEYBOARD_DEBUG >= 5
     uart_printf("Eaten by STATE_SEND_TO_MOUSE: 0x%02x\n", data);
@@ -380,11 +415,15 @@ int handle_keyboard_data(uint8_t data, uint8_t *output) {
         data_port_state = STATE_SCANCODE;
         break;
 
-      case I8042_CMD_SETLEDS:  /* fall-thru */
-      case I8042_CMD_EX_SETLEDS:
-        /* We use screen indicator. Do thing in keyboard controller. */
+      case I8042_CMD_SETLEDS:
+        /* We use screen indicator. Do nothing in keyboard controller. */
         output[out_len++] = I8042_RET_ACK;
         data_port_state = STATE_SETLEDS;
+        break;
+
+      case I8042_CMD_EX_SETLEDS:
+        output[out_len++] = I8042_RET_ACK;
+        data_port_state = STATE_EX_SETLEDS_1;
         break;
 
       case I8042_CMD_DIAG_ECHO:
@@ -401,13 +440,7 @@ int handle_keyboard_data(uint8_t data, uint8_t *output) {
 
       case I8042_CMD_SETREP:
         output[out_len++] = I8042_RET_ACK;
-        typematic_value_from_host = data;
-        refill_first_delay = counter_first_delay + counter_inter_delay;
-        refill_first_delay = ((typematic_value_from_host & 0x60) >> 5) * 250;
-        refill_inter_delay = 1000 *  /* ms */
-                             (1 << ((typematic_value_from_host & 0x18) >> 3)) *
-                             ((typematic_value_from_host & 0x7) + 8) /
-                             240;
+        data_port_state = STATE_SETREP;
         break;
 
       case I8042_CMD_ENABLE:
@@ -479,7 +512,7 @@ int handle_keyboard_command(uint8_t command, uint8_t *output) {
   int out_len = 0;
 
 #if KEYBOARD_DEBUG >= 5
-  uart_printf("[%d] Recv cmd:[0x%02x]\n", get_time().le.lo, command);
+  uart_printf("Recv cmd:[0x%02x]\n", command);
 #endif
   switch (command) {
   case I8042_READ_CMD_BYTE:
