@@ -57,4 +57,56 @@ void configure_board(void)
 	STM32L_GPIO_PUPDR_OFF(GPIO_B) &= ~(0xF << (2*10)); /* no pullup/down */
 	STM32L_GPIO_OTYPER_OFF(GPIO_B) |= (0x3 << 10); /* open-drain */
 	gpio_set_alternate_function(GPIO_B, (1<<10) | (1<<11), GPIO_ALT_I2C);
+
+	/* EC_INT is output, open-drain */
+	STM32L_GPIO_OTYPER_OFF(GPIO_B) |= (1<<9);
+	STM32L_GPIO_PUPDR_OFF(GPIO_B) &= ~(0x3 << (2*9));
+	STM32L_GPIO_MODER_OFF(GPIO_B) &= ~(0x3 << (2*9));
+	STM32L_GPIO_MODER_OFF(GPIO_B) |= 0x1 << (2*9);
+	/* put GPIO in Hi-Z state */
+	gpio_set_level(GPIO_EC_INT, 1);
+}
+
+/* add all bytes to produce checksum */
+static uint8_t rolling8_csum(void *buf, int len)
+{
+	int i;
+	uint8_t sum = 0;
+	uint8_t *data = buf;
+
+	for (i = 0; i < len; i++)
+		sum += data[i];
+
+	return sum;
+}
+
+/* globally visible keyboard packet */
+int kb_packet_len = KB_COLS + 1;
+uint8_t kb_packet[KB_COLS + 1];
+
+/*
+ * Daisy keyboard summary:
+ * 1. KEYSCAN task woken up via GPIO external interrupt when a key is pressed.
+ * 2. The task scans the keyboard matrix for changes. If key state has
+ *    changed, the board-specific kb_send() function is called.
+ * 3. For Daisy, the EC is connected via I2C and acts as a slave, so the AP
+ *    must initiate all transactions. EC_INT is driven low to interrupt AP when
+ *    new data becomes available.
+ * 4. When the AP is interrupted, it initiates two i2c transactions:
+ *    1. 1-byte write: AP writes 0x01 to make EC send keyboard state.
+ *    2. 14-byte read: AP reads 1 keyboard packet (13 byte keyboard state +
+ *       1-byte checksum).
+ */
+void kb_send(uint8_t kb_state[], int len)
+{
+	int i;
+
+	for (i = 0; i < KB_COLS; i++)
+		kb_packet[i] = kb_state[i];
+
+	kb_packet[kb_packet_len - 1] = rolling8_csum(kb_state, len);
+
+	/* interrupt host by toggling EC_INT */
+	gpio_set_level(GPIO_EC_INT, 0);
+	gpio_set_level(GPIO_EC_INT, 1);
 }

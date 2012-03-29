@@ -40,6 +40,7 @@ static unsigned int rx_byte_count;
    read transaction */
 static enum {
 	MODE_DUMMY	= 0,	/* send dummy byte */
+	MODE_KB_SEND	= 1,	/* send keyboard state */
 } i2c_xmit_mode[NUM_PORTS] = { 0, 0 };
 
 static void wait_rx(int port)
@@ -115,6 +116,9 @@ void i2c2_work_task(void)
 						__func__);
 #endif
 				i2c_write_raw(I2C2, &dummy, 1);
+				break;
+			case MODE_KB_SEND:
+				i2c_write_raw(I2C2, kb_packet, kb_packet_len);
 				break;
 			default:
 				uart_printf("%s: unexpected mode %u\n",
