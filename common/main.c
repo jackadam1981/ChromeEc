@@ -26,6 +26,7 @@
 #include "power_button.h"
 #include "powerdemo.h"
 #include "pwm.h"
+#include "spi.h"
 #include "system.h"
 #include "task.h"
 #include "temp_sensor.h"
@@ -82,6 +83,7 @@ int main(void)
 	 * by tasks.) */
 	watchdog_init(1100);
 #endif
+	spi_init(0, 0);
 
 	/* Initialize timer.  Everything after this can be benchmarked.
 	 * get_time() and udelay() may now be used.  usleep() requires task

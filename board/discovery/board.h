@@ -32,6 +32,8 @@ enum gpio_signal {
 	KB_COL05,
 	KB_COL06,
 	KB_COL07,
+	/* SPI */
+/*	SPI1_NSS,*/
 	/* Other inputs */
 	/* Outputs */
 	GPIO_BLUE_LED,            /* Blue debug LED */
