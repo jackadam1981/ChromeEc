@@ -50,7 +50,6 @@ const struct gpio_info gpio_list[GPIO_COUNT] = {
 	{"KB_IN07",     GPIO_D, (1<<2),  GPIO_KB_INPUT, matrix_interrupt},
 	/* Other inputs */
 	{"SPI1_NSS",    GPIO_A, (1<<4), GPIO_INT_RISING, NULL},
-
 	/* Outputs */
 	{"EN_PP1350",   GPIO_A, (1<<2),  GPIO_OUT_LOW, NULL},
 	{"EN_PP5000",   GPIO_A, (1<<3),  GPIO_OUT_LOW, NULL},
@@ -72,6 +71,10 @@ const struct gpio_info gpio_list[GPIO_COUNT] = {
 	{"KB_OUT10",    GPIO_C, (1<<5),  GPIO_KB_OUTPUT, NULL},
 	{"KB_OUT11",    GPIO_C, (1<<6),  GPIO_KB_OUTPUT, NULL},
 	{"KB_OUT12",    GPIO_C, (1<<7),  GPIO_KB_OUTPUT, NULL},
+
+	/* bi-directional, but initialized as hi-Z until alt. function is set */
+	{"I2C_SCL",     GPIO_B, (1<<10), GPIO_HI_Z, NULL},
+	{"I2C_SDA",     GPIO_B, (1<<11), GPIO_HI_Z, NULL},
 };
 
 void configure_board(void)
@@ -115,6 +118,9 @@ void configure_board(void)
 	STM32L_GPIO_MODER_OFF(GPIO_B) |= 0x1 << (2*9);
 	/* put GPIO in Hi-Z state */
 	gpio_set_level(GPIO_EC_INT, 1);
+
+	/* I2C2 SCL/SDA on pins PB10/PB11 - no internal pullup/down */
+	gpio_set_alternate_function(GPIO_B, (1<<10) | (1<<11), GPIO_ALT_I2C);
 }
 
 void board_keyboard_scan_ready(void)
