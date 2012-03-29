@@ -6,8 +6,10 @@
 
 #include "board.h"
 #include "common.h"
+#include "dma.h"
 #include "gpio.h"
 #include "registers.h"
+#include "spi.h"
 #include "util.h"
 
 /* GPIO interrupt handlers prototypes */
@@ -49,6 +51,10 @@ void configure_board(void)
 	 * TODO: more fine-grained enabling for power saving
 	 */
 	STM32L_RCC_AHBENR |= 0x3f;
+	dma_init();
+	/* Required to configure external IRQ lines (SYSCFG_EXTICRn) */
+	STM32L_RCC_APB2ENR |= (1<<12);
+	/*| (1 << 0);*/
 
 	/* Select Alternate function for USART1 on pins PA9/PA10 */
 	gpio_set_alternate_function(GPIO_A, (1<<9) | (1<<10), GPIO_ALT_USART);
@@ -57,6 +63,21 @@ void configure_board(void)
 	STM32L_GPIO_PUPDR_OFF(GPIO_B) &= ~(0xF << (2*10)); /* no pullup/down */
 	STM32L_GPIO_OTYPER_OFF(GPIO_B) |= (0x3 << 10); /* open-drain */
 	gpio_set_alternate_function(GPIO_B, (1<<10) | (1<<11), GPIO_ALT_I2C);
+
+	/* SPI1 on pins PA4-7 (push-pull, no pullup/down, 10MHz) */
+	STM32L_GPIO_PUPDR_OFF(GPIO_A) &= ~((2 << (7 * 2)) |
+					(2 << (6 * 2)) |
+					(2 << (5 * 2)) |
+					(2 << (4 * 2)));
+	STM32L_GPIO_OTYPER_OFF(GPIO_A) &= ~((1 << 7) |
+					(1 << 6) |
+					(1 << 5) |
+					(1 << 4));
+	gpio_set_alternate_function(GPIO_A, (1<<7) |
+					(1<<6) |
+					(1<<5) |
+					(1<<4), GPIO_ALT_SPI);
+	STM32L_GPIO_OSPEEDR_OFF(GPIO_A) |= 0xff00;
 
 	/* EC_INT is output, open-drain */
 	STM32L_GPIO_OTYPER_OFF(GPIO_B) |= (1<<9);

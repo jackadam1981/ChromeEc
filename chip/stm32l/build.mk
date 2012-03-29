@@ -10,4 +10,4 @@ CORE:=cortex-m
 
 chip-y=clock.o dma.o gpio.o hwtimer.o i2c.o jtag.o system.o uart.o
 chip-$(CONFIG_TASK_WATCHDOG)+=watchdog.o
-chip-$(CONFIG_TASK_KEYSCAN)+=keyboard_scan.o
+chip-$(CONFIG_TASK_KEYSCAN)+=keyboard_scan.o spi.o

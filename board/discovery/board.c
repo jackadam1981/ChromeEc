@@ -21,6 +21,9 @@ const struct gpio_info gpio_list[GPIO_COUNT] = {
 	{"KB_COL05",    GPIO_C, (1<<14), GPIO_INT_BOTH, matrix_interrupt},
 	{"KB_COL06",    GPIO_C, (1<<15), GPIO_INT_BOTH, matrix_interrupt},
 	{"KB_COL07",    GPIO_D, (1<<2),  GPIO_INT_BOTH, matrix_interrupt},
+
+/*	{"SPI1_NSS",    GPIO_A, (1<<15), GPIO_OUT_LOW, NULL},*/
+
 	/* Other inputs */
 	/* Outputs */
 	{"BLUE_LED",    GPIO_B, (1<<6), GPIO_OUT_LOW, NULL},
@@ -34,6 +37,7 @@ void configure_board(void)
 	 * TODO: more fine-grained enabling for power saving
 	 */
 	STM32L_RCC_AHBENR |= 0x3f;
+	STM32L_RCC_APB2ENR |= 1 << 12;
 	STM32L_RCC_AHBLPENR |= 0x0e;
 
 #if CONFIG_CONSOLE_UART == 1
@@ -43,4 +47,22 @@ void configure_board(void)
 	/* Select Alternate function for USART3 on pins PB10/PB11 */
         gpio_set_alternate_function(GPIO_B, (1<<10) | (1<<11), GPIO_ALT_USART);
 #endif
+
+	/*
+	 * SPI1 on pins PA15, PA12, PA11, PB3 (push-pull, no pullup/down,
+	 * 10MHz)
+	 */
+	STM32L_GPIO_PUPDR_OFF(GPIO_A) &= ~(((1 << 15) * 2) |
+						((1 << 12) * 2) |
+						((1 << 11) * 2));
+	STM32L_GPIO_OTYPER_OFF(GPIO_A) &= ~((1 << 15) |
+						(1 << 12) |
+						(1 << 11));
+	gpio_set_alternate_function(GPIO_A, (1<<15) | (1<<12) | (1<<11),
+				    GPIO_ALT_SPI);
+
+	STM32L_GPIO_PUPDR_OFF(GPIO_B) &= ~((1 << 3) * 2);
+	STM32L_GPIO_OTYPER_OFF(GPIO_B) &= ~0x0008;
+	gpio_set_alternate_function(GPIO_B, (1<<3), GPIO_ALT_SPI);
+
 }
