@@ -15,6 +15,7 @@
 #define CONFIG_CONSOLE_UART 1
 
 #define CONFIG_SPI
+#define CONFIG_I2C
 
 #define USB_CHARGE_PORT_COUNT 0
 

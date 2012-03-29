@@ -99,6 +99,11 @@ void configure_board(void)
 	STM32L_GPIO_MODER_OFF(GPIO_B) |= 0x1 << (2*9);
 	/* put GPIO in Hi-Z state */
 	gpio_set_level(GPIO_EC_INT, 1);
+
+	/* I2C2 SCL/SDA on pins PB10/PB11 - no pullup/down */
+	STM32L_GPIO_PUPDR_OFF(GPIO_B) &= ~(0xf << (2 * 10));
+	STM32L_GPIO_OTYPER_OFF(GPIO_B) |= (0x3 << 10); /* open-drain */
+	gpio_set_alternate_function(GPIO_B, (1<<10) | (1<<11), GPIO_ALT_I2C);
 }
 
 void board_keyboard_scan_ready(void)
