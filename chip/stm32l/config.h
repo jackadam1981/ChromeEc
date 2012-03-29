@@ -29,6 +29,8 @@
 #define CONFIG_UART_SR_OFFSET  0x00
 #define CONFIG_UART_SR_TXEMPTY 0x80
 
+#define CONFIG_I2C
+
 /* System stack size */
 #define CONFIG_STACK_SIZE 1024
 
