@@ -8,6 +8,8 @@
 #ifndef __BOARD_H
 #define __BOARD_H
 
+#include <inttypes.h>
+
 /* 16 MHz SYSCLK clock frequency */
 #define CPU_CLOCK 16000000
 
@@ -49,6 +51,12 @@ enum gpio_signal {
 
 void configure_board(void);
 
+#ifndef KB_COLS
+#define KB_COLS 13
+#endif
 void matrix_interrupt(enum gpio_signal signal);
+extern uint8_t kb_packet[];
+extern int kb_packet_len;
+extern void kb_send(uint8_t raw_state[], int len);
 
 #endif /* __BOARD_H */
