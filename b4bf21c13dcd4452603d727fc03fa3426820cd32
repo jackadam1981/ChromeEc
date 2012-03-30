@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAH3///v0\u003d",
+        "filename": "board/daisy/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2012-03-30T23:07:43Z",
+      "side": 1,
+      "message": "Something else might define this?  By mistake?",
+      "revId": "b4bf21c13dcd4452603d727fc03fa3426820cd32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAH3///v8\u003d",
+        "filename": "chip/stm32l/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2012-03-30T23:07:43Z",
+      "side": 1,
+      "message": "Describe side effects?",
+      "revId": "b4bf21c13dcd4452603d727fc03fa3426820cd32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAH3///wI\u003d",
+        "filename": "chip/stm32l/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2012-03-30T23:07:43Z",
+      "side": 1,
+      "message": "Is this name misleading?  You are checking if any keys are down, not if any keys have changed state.",
+      "revId": "b4bf21c13dcd4452603d727fc03fa3426820cd32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
