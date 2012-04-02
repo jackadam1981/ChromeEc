@@ -56,6 +56,7 @@ int strcasecmp(const char *s1, const char *s2);
 int strlen(const char *s);
 int strtoi(const char *nptr, char **endptr, int base);
 char *strzcpy(char *dest, const char *src, int len);
+char itoh(int n);
 int tolower(int c);
 
 #endif  /* __UTIL_H */
