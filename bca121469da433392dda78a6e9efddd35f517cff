@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAH3///PY\u003d",
+        "filename": "common/flash_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-04-02T17:03:33Z",
+      "side": 1,
+      "message": "Not a bug yet: ... |\u003d newflag?",
+      "revId": "bca121469da433392dda78a6e9efddd35f517cff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAH3///Q0\u003d",
+        "filename": "include/flash.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-04-02T17:03:33Z",
+      "side": 1,
+      "message": "flash_lock_protect()?",
+      "revId": "bca121469da433392dda78a6e9efddd35f517cff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAH3///QA\u003d",
+        "filename": "include/flash.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-04-02T17:03:33Z",
+      "side": 1,
+      "message": "Just curious what this is used for? I don\u0027t see the caller in CL.",
+      "revId": "bca121469da433392dda78a6e9efddd35f517cff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
