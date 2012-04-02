@@ -8,6 +8,7 @@
 #include "cpu.h"
 #include "registers.h"
 #include "system.h"
+#include "util.h"
 
 
 static int wait_for_hibctl_wc(void)
@@ -181,4 +182,37 @@ int system_set_scratchpad(uint32_t value)
 uint32_t system_get_scratchpad(void)
 {
 	return LM4_HIBERNATE_HIBDATA;
+}
+
+
+const char *system_get_chip_vendor(void)
+{
+	return "ti";
+}
+
+const char *system_get_chip_name(void)
+{
+	if ((LM4_SYSTEM_DID1 & 0xffff0000) == 0x10e20000) {
+		return "lm4fsxhh5bb";
+	} else if ((LM4_SYSTEM_DID1 & 0xffff0000) == 0x10e30000) {
+		return "lm4fs232h5bb";
+	} else if ((LM4_SYSTEM_DID1 & 0xffff0000) == 0x10e40000) {
+		return "lm4fs99h5bb";
+	} else if ((LM4_SYSTEM_DID1 & 0xffff0000) == 0x10e60000) {
+		return "lm4fs1ah5bb";
+	} else {
+		return "";
+	}
+}
+
+const char *system_get_chip_revision(void)
+{
+	static char rev[4 + 1];
+  int i, n = 0;
+
+  /* Extract the major[15:8] and minor[7:0] revisions. */
+	for (i = 3; i >= 0; --i) rev[n++] = itoh((LM4_SYSTEM_DID0 >> (i * 4)) & 0xf);
+	rev[n++] = 0;
+
+	return rev;
 }

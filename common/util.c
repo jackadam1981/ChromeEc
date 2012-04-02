@@ -155,3 +155,10 @@ char *strzcpy(char *dest, const char *src, int len)
 	*d = '\0';
 	return dest;
 }
+
+/* integer to hex. 0 <= n <= 15. */
+char itoh(int n)
+{
+	n &= 0xf;
+	return (n <= 9) ? n + '0' : n - 10 + 'a';
+}
