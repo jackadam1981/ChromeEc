@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAH3///Mg\u003d",
+        "filename": "common/flash_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-04-02T17:56:23Z",
+      "side": 1,
+      "message": "No, because then we\u0027d be unable to clear the flag if enable\u003d0.\nStill, I can make this clearer.",
+      "parentUuid": "AAAAH3///PY\u003d",
+      "revId": "bca121469da433392dda78a6e9efddd35f517cff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAH3///Q0\u003d",
         "filename": "include/flash.h",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAH3///Mo\u003d",
+        "filename": "include/flash.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-04-02T17:56:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAH3///Q0\u003d",
+      "revId": "bca121469da433392dda78a6e9efddd35f517cff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAH3///QA\u003d",
         "filename": "include/flash.h",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2012-04-02T17:03:33Z",
       "side": 1,
       "message": "Just curious what this is used for? I don\u0027t see the caller in CL.",
+      "revId": "bca121469da433392dda78a6e9efddd35f517cff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAH3///MY\u003d",
+        "filename": "include/flash.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-04-02T17:56:23Z",
+      "side": 1,
+      "message": "Will be used by verified boot to ensure the code to be executed is protected.",
+      "parentUuid": "AAAAH3///QA\u003d",
       "revId": "bca121469da433392dda78a6e9efddd35f517cff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
