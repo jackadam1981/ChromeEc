@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAH3//+nQ\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-04-03T15:11:56Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we end up in RO if we use Power+ESC+Reload?",
+      "revId": "aa6322c0ee3fde335b889f30adab53d62628470e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAH3//+nM\u003d",
+        "filename": "common/system_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-04-03T15:11:56Z",
+      "side": 1,
+      "message": "I don\u0027t understand this comment. Why does the order matter?",
+      "revId": "aa6322c0ee3fde335b889f30adab53d62628470e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
