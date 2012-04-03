@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAH3//+v8\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-04-03T03:50:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAH3///aM\u003d",
+      "revId": "7628d85fa4c4056202eebbca75cc13b1c9ea4c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAH3///aI\u003d",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2012-04-02T09:29:31Z",
       "side": 1,
       "message": "Would you mind to give more example for how you tested this command (the exact args and sample output)",
+      "revId": "7628d85fa4c4056202eebbca75cc13b1c9ea4c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAH3//+wA\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-04-03T03:50:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAH3///aI\u003d",
       "revId": "7628d85fa4c4056202eebbca75cc13b1c9ea4c46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAH3//+v0\u003d",
+        "filename": "chip/lm4/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-04-03T03:50:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAH3///CM\u003d",
+      "revId": "7628d85fa4c4056202eebbca75cc13b1c9ea4c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAH3///CI\u003d",
         "filename": "chip/lm4/system.c",
         "patchSetId": 1
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAH3//+vk\u003d",
+        "filename": "chip/lm4/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-04-03T03:50:12Z",
+      "side": 1,
+      "message": "Done. Refined to return major[15:8] and minor[7:0]. Note that since this revision info format is chip-specific, I would like to keep it as string, which should be generic enough for most cases.",
+      "parentUuid": "AAAAH3///CI\u003d",
+      "revId": "7628d85fa4c4056202eebbca75cc13b1c9ea4c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAH3///CY\u003d",
         "filename": "include/system.h",
         "patchSetId": 1
@@ -81,6 +153,24 @@
       "writtenOn": "2012-04-02T21:26:27Z",
       "side": 1,
       "message": "const char *",
+      "revId": "7628d85fa4c4056202eebbca75cc13b1c9ea4c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAH3//+vA\u003d",
+        "filename": "include/system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-04-03T03:50:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAH3///CY\u003d",
       "revId": "7628d85fa4c4056202eebbca75cc13b1c9ea4c46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
