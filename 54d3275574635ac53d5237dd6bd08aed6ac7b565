@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAH3//9tQ\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-04-04T17:04:33Z",
+      "side": 1,
+      "message": "platform-independent interface is in chipset.h\n\nchipset_force_state(CHIPSET_STATE_SOFT_OFF)\n\n(yes, that function doesn\u0027t exist yet...)",
+      "revId": "54d3275574635ac53d5237dd6bd08aed6ac7b565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAH3//9tU\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-04-04T17:04:33Z",
+      "side": 1,
+      "message": "You\u0027re forcing S5, not G3.",
+      "revId": "54d3275574635ac53d5237dd6bd08aed6ac7b565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAH3//9tY\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-04-04T17:04:33Z",
+      "side": 1,
+      "message": "I\u0027m implementing EC deep sleep whenever we\u0027re in S5.  So you shouldn\u0027t need to do anything extra for that here.",
+      "revId": "54d3275574635ac53d5237dd6bd08aed6ac7b565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
