@@ -16,6 +16,24 @@
       "revId": "e881236a72fa6ce750cfc8db8eafcb6f9a81ba7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAH3//960\u003d",
+        "filename": "common/lightbar.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-04-04T01:07:48Z",
+      "side": 1,
+      "message": "Because nothing else brings the lightbar out of reset, so the next two writes won\u0027t do anything if the first command is \"lightbar off\". It should really go into a lightbar_init() function, but I haven\u0027t put one in yet. I will, when I add the task-based stuff.",
+      "parentUuid": "AAAAH3//968\u003d",
+      "revId": "e881236a72fa6ce750cfc8db8eafcb6f9a81ba7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
