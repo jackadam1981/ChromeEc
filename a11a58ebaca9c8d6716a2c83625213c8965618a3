@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAH3//9tE\u003d",
+        "filename": "common/lightbar.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-04-04T17:10:02Z",
+      "side": 1,
+      "message": "static?",
+      "revId": "a11a58ebaca9c8d6716a2c83625213c8965618a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAH3//9so\u003d",
+        "filename": "include/lpc_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-04-04T17:10:02Z",
+      "side": 1,
+      "message": "Please add these to the list in the EC LPC spec (I\u0027ve reserved 0x28 - 0x2F for lightbar)",
+      "revId": "a11a58ebaca9c8d6716a2c83625213c8965618a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAH3//9s8\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-04-04T17:10:02Z",
+      "side": 1,
+      "message": "kernel style flips the comparison (strcmp() \u003d\u003d 0), I believe",
+      "revId": "a11a58ebaca9c8d6716a2c83625213c8965618a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAH3//9s0\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 859,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-04-04T17:10:02Z",
+      "side": 1,
+      "message": "\"unknown lightbar command\"\n\n(not sure \"huh\" would make sense to the factory workers...)",
+      "revId": "a11a58ebaca9c8d6716a2c83625213c8965618a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
