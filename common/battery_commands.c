@@ -9,11 +9,7 @@
 #include "host_command.h"
 #include "smart_battery.h"
 #include "battery.h"
-
-static inline uint8_t hex2asc(uint8_t hex)
-{
-	return hex + ((hex > 9) ? 'A' : '0');
-}
+#include "util.h"
 
 enum lpc_status battery_command_get_info(uint8_t *data)
 {

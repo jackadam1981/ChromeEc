@@ -38,16 +38,24 @@
 
 #define EC_LPC_ADDR_MEMMAP       0x900
 #define EC_LPC_MEMMAP_SIZE         256
+#define EC_LPC_MEMMAP_STRING_LEN   8  /* Size of a string in the memory map */
 
 /* The offset address of each type of data in mapped memory. */
 #define EC_LPC_MEMMAP_TEMP_SENSOR 0x00
 #define EC_LPC_MEMMAP_FAN         0x10
-#define EC_LPC_MEMMAP_BATT_VOLT   0x20
-#define EC_LPC_MEMMAP_BATT_RATE   0x24
-#define EC_LPC_MEMMAP_BATT_CAP    0x28
-#define EC_LPC_MEMMAP_BATT_FLAG   0x2c
+#define EC_LPC_MEMMAP_BATT_VOLT   0x20 /* Battery Present Voltage */
+#define EC_LPC_MEMMAP_BATT_RATE   0x24 /* Battery Present Rate */
+#define EC_LPC_MEMMAP_BATT_CAP    0x28 /* Battery Remaining Capacity */
+#define EC_LPC_MEMMAP_BATT_FLAG   0x2c /* Battery State, defined below */
 #define EC_LPC_MEMMAP_SWITCHES    0x30
 #define EC_LPC_MEMMAP_HOST_EVENTS 0x34
+#define EC_LPC_MEMMAP_BATT_DCAP   0x38 /* Battery Design Capacity */
+#define EC_LPC_MEMMAP_BATT_DVLT   0x3c /* Battery Design Voltage */
+#define EC_LPC_MEMMAP_BATT_LFCC   0x40 /* Battery Last Full Charge Capacity */
+#define EC_LPC_MEMMAP_BATT_CCNT   0x44 /* Battery Cycle Count */
+#define EC_LPC_MEMMAP_BATT_MFGR   0x48 /* Battery Manufacturer String */
+#define EC_LPC_MEMMAP_BATT_MODEL  0x50 /* Battery Model Number String */
+#define EC_LPC_MEMMAP_BATT_SERIAL 0x58 /* Battery Serial Number String */
 
 /* Battery bit flags at EC_LPC_MEMMAP_BATT_FLAG. */
 #define EC_BATT_FLAG_AC_PRESENT   0x01
