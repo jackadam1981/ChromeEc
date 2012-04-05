@@ -11,30 +11,41 @@
 #include "common.h"
 #include "task_id.h"
 
-/* Disables CPU interrupt bit. This might break the system so think really hard
+/* Task event bitmasks */
+#define TASK_EVENT_CUSTOM(x) (x & 0x1fffffff)
+#define TASK_EVENT_WAKE   (1 << 29)  /* task_wake() called on task */
+#define TASK_EVENT_MUTEX  (1 << 30)  /* Mutex unlocking */
+#define TASK_EVENT_TIMER  (1 << 31)  /* Timer expired.  For example,
+				      * task_wait_event() timed out before
+				      * receiving another event. */
+
+/* Disable CPU interrupt bit. This might break the system so think really hard
  * before using these. There are usually better ways of accomplishing this. */
 void interrupt_disable(void);
 
-/* Enables CPU interrupt */
+/* Enable CPU interrupt bit. */
 void interrupt_enable(void);
 
-/**
- * Return true if we are in interrupt context
- */
+/* Return true if we are in interrupt context. */
 inline int in_interrupt_context(void);
 
-/**
- * Send a message to a task and wake it up if it is higher priority than us
+/* Set an event for task <tskid> and wake it up if it is higher priority than
+ * the calling task.
  *
- * tskid : identifier of the receiver task
- * from : identifier of the sender of the message
- * wait : after sending, de-schedule the calling task to wait for the answer
+ * event : event bitmap to set (TASK_EVENT_*)
  *
- * returns the bitmap of events which have occured.
+ * If wait!=0, after setting the event, de-schedule the calling task to wait
+ * for a response event, then return the bitmap of events which have occured
+ * (same as task_wait_event()).  Ignored in interrupt context.
+ *
+ * If wait==0, returns 0.
  *
  * Can be called both in interrupt context and task context.
  */
-uint32_t task_send_msg(task_id_t tskid, task_id_t from, int wait);
+uint32_t task_set_event(task_id_t tskid, uint32_t event, int wait);
+
+/* Wake a task.  This sends it the TASK_EVENT_WAKE event. */
+void task_wake(task_id_t tskid);
 
 /**
  * Return the identifier of the task currently running
@@ -49,27 +60,27 @@ task_id_t task_get_current(void);
 uint32_t *task_get_event_bitmap(task_id_t tsk);
 
 /**
- * Waits for the incoming next message.
+ * Waits for the next event.
  *
- * if an event is already pending, it returns it immediatly, else it
- * de-schedules the calling task and wake up the next one in the priority order
+ * If one or more events are already pending, it returns it immediatly, else it
+ * de-schedules the calling task and wakes up the next one in the priority
+ * order.
  *
- * if timeout_us > 0, it also sets a timer to produce an event after the
- * specified micro-second duration.
+ * If timeout_us > 0, it also sets a timer to produce the TASK_EVENT_TIMER
+ * event after the specified micro-second duration.
  *
- * returns the bitmap of received events (and clear it atomically).
+ * Returns the bitmap of received events (and clears it atomically).
  */
-uint32_t task_wait_msg(int timeout_us);
+uint32_t task_wait_event(int timeout_us);
 
-/**
- * Changes the task scheduled after returning from the exception.
+/* Change the task scheduled after returning from the exception.
  *
- * If task_send_msg has been called and has set need_resched flag,
- * we re-compute which task is running and eventually swap the context
+ * If task_send_event() has been called and has set need_resched flag,
+ * re-computes which task is running and eventually swaps the context
  * saved on the process stack to restore the new one at exception exit.
  *
- * it must be called from interrupt context !
- * and it is designed to be the last call of the interrupt handler.
+ * This must be called from interrupt context(!) and is designed to be the
+ * last call of the interrupt handler.
  */
 void task_resched_if_needed(void *excep_return);
 

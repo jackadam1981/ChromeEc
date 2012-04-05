@@ -123,7 +123,7 @@ void pwm_task(void)
 	while (1) {
 		update_lpc_mapped_memory();
 		/* Wait 1s */
-		task_wait_msg(1000000);
+		task_wait_event(1000000);
 	}
 }
 
