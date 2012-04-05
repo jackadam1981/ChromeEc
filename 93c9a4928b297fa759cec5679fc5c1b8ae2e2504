@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAH3//87U\u003d",
+        "filename": "include/lpc_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-04-05T18:09:34Z",
+      "side": 1,
+      "message": "Can you get these via EC_LPC_COMMAND_BATTERY_INFO?  (That is, do we need to have this data accessible from both the memory map and a separate LPC command?)\n\nIf you can only practically get these via the memory map, we should remove EC_LPC_COMMAND_BATTERY_INFO (and the other related commands which return the strings).\n\nIf memory-mapped data is where we\u0027re going with this, please start at offset 0x40, and update the table in the doc:\nhttps://docs.google.com/a/google.com/document/d/1UZwgsYGkSLvIoPnTsRur3daFAlWOmaKXbUphxwjcD1Q/edit#heading\u003dh.8l1mftjxecdk",
+      "revId": "93c9a4928b297fa759cec5679fc5c1b8ae2e2504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
