@@ -38,6 +38,7 @@ const struct gpio_info gpio_list[GPIO_COUNT] = {
 	{"ENTERING_RW", GPIO_B, (1<<1),  GPIO_OUT_LOW, NULL},
 	{"CHARGER_EN",  GPIO_B, (1<<2),  GPIO_OUT_LOW, NULL},
 	{"EC_INT",      GPIO_B, (1<<9),  GPIO_OUT_LOW, NULL},
+	{"CODEC_INT",   GPIO_H, (1<<1),  GPIO_OUT_LOW, NULL},
 };
 
 void configure_board(void)
@@ -49,4 +50,12 @@ void configure_board(void)
 
 	/* Select Alternate function for USART1 on pins PA9/PA10 */
         gpio_set_alternate_function(GPIO_A, (1<<9) | (1<<10), GPIO_ALT_USART);
+
+	/* CODEC_INT is output, open-drain */
+	STM32L_GPIO_OTYPER_OFF(GPIO_H) |= (1<<1);
+	STM32L_GPIO_PUPDR_OFF(GPIO_H) &= ~(0x3 << (2*1));
+	STM32L_GPIO_MODER_OFF(GPIO_H) &= ~(0x3 << (2*1));
+	STM32L_GPIO_MODER_OFF(GPIO_H) |= 0x1 << (2*1);
+	/* put GPIO in Hi-Z state */
+	gpio_set_level(GPIO_CODEC_INT, 1);
 }
