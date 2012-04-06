@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAH3//7+k\u003d",
+        "filename": "chip/lm4/power_button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2012-04-06T21:50:25Z",
+      "side": 1,
+      "message": "Oops looks like this function has disappeared and I need to change to using task_wake() instead.",
+      "revId": "bb498153bd3c9dd38371f658f6452ace8c91877a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
