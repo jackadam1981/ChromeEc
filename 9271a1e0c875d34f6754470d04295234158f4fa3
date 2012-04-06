@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAH3//8VU\u003d",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-04-06T15:57:10Z",
+      "side": 1,
+      "message": "with current toolchain and build options, this will add one call indirection on every use.\nIt might be better to declare as static inline in the task.h header.",
+      "revId": "9271a1e0c875d34f6754470d04295234158f4fa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAH3//8VI\u003d",
+        "filename": "include/task.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-04-06T15:57:10Z",
+      "side": 1,
+      "message": "actually it\u0027s not always the \"calling\" task since we can be in interrupt context. It\u0027s the \"current\" running task.",
+      "revId": "9271a1e0c875d34f6754470d04295234158f4fa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
