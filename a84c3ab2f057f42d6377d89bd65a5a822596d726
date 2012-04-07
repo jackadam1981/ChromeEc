@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAH3//728\u003d",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2012-04-07T03:18:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAH3//8Vc\u003d",
+      "revId": "a84c3ab2f057f42d6377d89bd65a5a822596d726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAH3//8Vg\u003d",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2012-04-06T15:47:32Z",
       "side": 1,
       "message": "Just initialize it in task_pre_init() instead of here.\n\nThen you can cast scratchpad to a task_*, and explicitly set .guard.",
+      "revId": "a84c3ab2f057f42d6377d89bd65a5a822596d726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAH3//724\u003d",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2012-04-07T03:18:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAH3//8Vg\u003d",
       "revId": "a84c3ab2f057f42d6377d89bd65a5a822596d726",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
