@@ -175,18 +175,23 @@
 #define STM32L_I2C1_BASE             0x40005400
 #define STM32L_I2C2_BASE             0x40005800
 
-#define STM32L_I2C_REG(n, offset) \
-		REG16(STM32L_CAT(STM32L_I2C, n, _BASE) + (offset))
+#define STM32L_I2C1_PORT             0
+#define STM32L_I2C2_PORT             1
 
-#define STM32L_I2C_CR1(n)            STM32L_I2C_REG(n, 0x00)
-#define STM32L_I2C_CR2(n)            STM32L_I2C_REG(n, 0x04)
-#define STM32L_I2C_OAR1(n)           STM32L_I2C_REG(n, 0x08)
-#define STM32L_I2C_OAR2(n)           STM32L_I2C_REG(n, 0x0C)
-#define STM32L_I2C_DR(n)             STM32L_I2C_REG(n, 0x10)
-#define STM32L_I2C_SR1(n)            STM32L_I2C_REG(n, 0x14)
-#define STM32L_I2C_SR2(n)            STM32L_I2C_REG(n, 0x18)
-#define STM32L_I2C_CCR(n)            STM32L_I2C_REG(n, 0x1C)
-#define STM32L_I2C_TRISE(n)          STM32L_I2C_REG(n, 0x20)
+static inline uint16_t *stm32l_i2c_reg(int port, int offset)
+{
+	return (uint16_t *)((STM32L_I2C1_BASE + (port * 0x400)) + offset);
+}
+
+#define STM32L_I2C_CR1(n)            REG16(stm32l_i2c_reg(n, 0x00))
+#define STM32L_I2C_CR2(n)            REG16(stm32l_i2c_reg(n, 0x04))
+#define STM32L_I2C_OAR1(n)           REG16(stm32l_i2c_reg(n, 0x08))
+#define STM32L_I2C_OAR2(n)           REG16(stm32l_i2c_reg(n, 0x0C))
+#define STM32L_I2C_DR(n)             REG16(stm32l_i2c_reg(n, 0x10))
+#define STM32L_I2C_SR1(n)            REG16(stm32l_i2c_reg(n, 0x14))
+#define STM32L_I2C_SR2(n)            REG16(stm32l_i2c_reg(n, 0x18))
+#define STM32L_I2C_CCR(n)            REG16(stm32l_i2c_reg(n, 0x1C))
+#define STM32L_I2C_TRISE(n)          REG16(stm32l_i2c_reg(n, 0x20))
 
 /* --- Power / Reset / Clocks --- */
 #define STM32L_PWR_BASE              0x40007000
@@ -251,6 +256,34 @@
 #define STM32L_RTC_TAFCR             REG32(STM32L_RTC_BASE + 0x40)
 #define STM32L_RTC_BACKUP(n)         REG32(STM32L_RTC_BASE + 0x50 + 4 * (n))
 
+/* --- SPI --- */
+#define STM32L_SPI1_BASE             0x40013000
+#define STM32L_SPI2_BASE             0x40003800
+
+#define STM32L_SPI1_PORT             0
+#define STM32L_SPI2_PORT             1
+
+static inline uint32_t stm32l_spi_addr(int port, int offset)
+{
+	uint32_t ret = 0;
+
+	if (port == 0)
+		ret = STM32L_SPI1_BASE + offset;
+	else if (port == 1)
+		ret = STM32L_SPI2_BASE + offset;
+
+	return ret;
+}
+
+#define STM32L_SPI_REG16(p, l)       REG16(stm32l_spi_addr((p), l))
+#define STM32L_SPI_CR1(p)            STM32L_SPI_REG16((p), 0x00)
+#define STM32L_SPI_CR2(p)            STM32L_SPI_REG16((p), 0x04)
+#define STM32L_SPI_SR(p)             STM32L_SPI_REG16((p), 0x08)
+#define STM32L_SPI_DR(p)             STM32L_SPI_REG16((p), 0x0c)
+#define STM32L_SPI_CRCPR(p)          STM32L_SPI_REG16((p), 0x10)
+#define STM32L_SPI_RXCRCR(p)         STM32L_SPI_REG16((p), 0x14)
+#define STM32L_SPI_TXCRCR(p)         STM32L_SPI_REG16((p), 0x18)
+
 /* --- Debug --- */
 
 #define STM32L_DBGMCU_BASE           0xE0042000
@@ -283,8 +316,6 @@
 #define STM32L_ADC_BASE              0x40012700
 #define STM32L_COMP_BASE             0x40007C00
 #define STM32L_DAC_BASE              0x40007400
-#define STM32L_SPI1_BASE             0x40013000
-#define STM32L_SPI2_BASE             0x40003800
 #define STM32L_CRC_BASE              0x40023000
 #define STM32L_LCD_BASE              0x40002400
 #define STM32L_DMA1_BASE             0x40026000
