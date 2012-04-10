@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAIH//+1s\u003d",
+        "filename": "chip/stm32l/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-04-10T19:00:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAIH///aU\u003d",
+      "revId": "1c4d5329f5eb2fe2c38c289633d64d4e9434c46c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAIH///ac\u003d",
         "filename": "common/main.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2012-04-09T23:29:11Z",
       "side": 1,
       "message": "Needs #ifdef CONFIG_SPI",
+      "revId": "1c4d5329f5eb2fe2c38c289633d64d4e9434c46c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAIH//+1o\u003d",
+        "filename": "common/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-04-10T19:00:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAIH///ac\u003d",
       "revId": "1c4d5329f5eb2fe2c38c289633d64d4e9434c46c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
