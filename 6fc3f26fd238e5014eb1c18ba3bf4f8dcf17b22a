@@ -16,6 +16,24 @@
       "revId": "6fc3f26fd238e5014eb1c18ba3bf4f8dcf17b22a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAIH//+uY\u003d",
+        "filename": "board/daisy/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-04-10T20:45:37Z",
+      "side": 1,
+      "message": "No, it is needed by a later commit. I will remove it until needed",
+      "parentUuid": "AAAAIH//+u4\u003d",
+      "revId": "6fc3f26fd238e5014eb1c18ba3bf4f8dcf17b22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
