@@ -8,6 +8,8 @@
 #ifndef __BOARD_H
 #define __BOARD_H
 
+#include "common.h"
+
 /* 16 MHz SYSCLK clock frequency */
 #define CPU_CLOCK 16000000
 
