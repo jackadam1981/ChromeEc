@@ -52,6 +52,16 @@ int gpio_pre_init(void)
 			}
 		}
 
+		if (g->flags & GPIO_PUSHPULL)
+			STM32L_GPIO_OTYPER_OFF(g->port) &= ~g->mask;
+		else if (g->flags & GPIO_OPENDRAIN)
+			STM32L_GPIO_OTYPER_OFF(g->port) |= g->mask;
+
+		if (g->flags & GPIO_PULLUP) /* Pull Up = 01 */
+			STM32L_GPIO_PUPDR_OFF(g->port) |= 0x55555555 & mask2;
+		else if (g->flags & GPIO_PULLDOWN) /* Pull Down = 10 */
+			STM32L_GPIO_PUPDR_OFF(g->port) |= 0xaaaaaaaa & mask2;
+
 		/* Set up interrupts if necessary */
 		ASSERT(!(g->flags & GPIO_INT_LEVEL));
 		if (g->flags & (GPIO_INT_RISING | GPIO_INT_BOTH))
