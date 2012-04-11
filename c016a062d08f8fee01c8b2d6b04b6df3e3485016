@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAIH//99E\u003d",
+        "filename": "common/message.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-04-11T17:30:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAIH//+mE\u003d",
+      "revId": "c016a062d08f8fee01c8b2d6b04b6df3e3485016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAIH//+kw\u003d",
         "filename": "common/message.c",
         "patchSetId": 1
@@ -54,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAIH//99I\u003d",
+        "filename": "common/message.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-04-11T17:30:21Z",
+      "side": 1,
+      "message": "Added comment",
+      "parentUuid": "AAAAIH//9/w\u003d",
+      "revId": "c016a062d08f8fee01c8b2d6b04b6df3e3485016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAIH//+lI\u003d",
         "filename": "common/message.c",
         "patchSetId": 1
@@ -65,6 +101,24 @@
       "writtenOn": "2012-04-10T22:08:19Z",
       "side": 1,
       "message": "Descriptive comment would be nice.",
+      "revId": "c016a062d08f8fee01c8b2d6b04b6df3e3485016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAIH//988\u003d",
+        "filename": "common/message.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-04-11T17:30:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAIH//+lI\u003d",
       "revId": "c016a062d08f8fee01c8b2d6b04b6df3e3485016",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -88,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAIH//984\u003d",
+        "filename": "common/message.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-04-11T17:30:21Z",
+      "side": 1,
+      "message": "Would prefer to do the masking at the end, since it is potentially more efficient for the compiler. ARM does not have 8-bit registers.",
+      "parentUuid": "AAAAIH//+c0\u003d",
+      "revId": "c016a062d08f8fee01c8b2d6b04b6df3e3485016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAIH//+ls\u003d",
         "filename": "common/message.c",
         "patchSetId": 1
@@ -99,6 +171,24 @@
       "writtenOn": "2012-04-10T22:08:19Z",
       "side": 1,
       "message": "\u0026\u0026 msg_len \u003c\u003d 0xffff, since you\u0027re storing it in a uint16 in your buffer...",
+      "revId": "c016a062d08f8fee01c8b2d6b04b6df3e3485016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAIH//980\u003d",
+        "filename": "common/message.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-04-11T17:30:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAIH//+ls\u003d",
       "revId": "c016a062d08f8fee01c8b2d6b04b6df3e3485016",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -122,6 +212,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAIH//98w\u003d",
+        "filename": "common/message.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-04-11T17:30:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAIH//+lc\u003d",
+      "revId": "c016a062d08f8fee01c8b2d6b04b6df3e3485016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAIH//+c4\u003d",
         "filename": "common/message.c",
         "patchSetId": 1
@@ -133,6 +241,24 @@
       "writtenOn": "2012-04-11T01:34:43Z",
       "side": 1,
       "message": "Is that right? Maybe do this instead: (MSG_HEADER + out_msg[1] + out_msg[2]) \u0026 0xff",
+      "revId": "c016a062d08f8fee01c8b2d6b04b6df3e3485016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAIH//98k\u003d",
+        "filename": "common/message.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-04-11T17:30:21Z",
+      "side": 1,
+      "message": "Well the sum can be calculated at full 32-bit width, and then masked down right at the end. This saves masking at every step (code side)",
+      "parentUuid": "AAAAIH//+c4\u003d",
       "revId": "c016a062d08f8fee01c8b2d6b04b6df3e3485016",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -156,6 +282,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAIH//98g\u003d",
+        "filename": "common/message.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-04-11T17:30:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAIH//+lQ\u003d",
+      "revId": "c016a062d08f8fee01c8b2d6b04b6df3e3485016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAIH//+dk\u003d",
         "filename": "include/message.h",
         "patchSetId": 1
@@ -167,6 +311,24 @@
       "writtenOn": "2012-04-11T01:34:43Z",
       "side": 1,
       "message": "Do we care that the message is being passed over SPI?",
+      "revId": "c016a062d08f8fee01c8b2d6b04b6df3e3485016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAIH//99Y\u003d",
+        "filename": "include/message.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-04-11T17:30:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAIH//+dk\u003d",
       "revId": "c016a062d08f8fee01c8b2d6b04b6df3e3485016",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -190,6 +352,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAIH//99U\u003d",
+        "filename": "include/message.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-04-11T17:30:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAIH//+dE\u003d",
+      "revId": "c016a062d08f8fee01c8b2d6b04b6df3e3485016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAIH//+dU\u003d",
         "filename": "include/message.h",
         "patchSetId": 1
@@ -207,6 +387,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAIH//99Q\u003d",
+        "filename": "include/message.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-04-11T17:30:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAIH//+dU\u003d",
+      "revId": "c016a062d08f8fee01c8b2d6b04b6df3e3485016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAIH//+dM\u003d",
         "filename": "include/message.h",
         "patchSetId": 1
@@ -218,6 +416,24 @@
       "writtenOn": "2012-04-11T01:34:43Z",
       "side": 1,
       "message": "s/reqiured/required",
+      "revId": "c016a062d08f8fee01c8b2d6b04b6df3e3485016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAIH//99M\u003d",
+        "filename": "include/message.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-04-11T17:30:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAIH//+dM\u003d",
       "revId": "c016a062d08f8fee01c8b2d6b04b6df3e3485016",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
