@@ -38,7 +38,7 @@ const struct gpio_info gpio_list[GPIO_COUNT] = {
 	{"PMIC_ACOK",   GPIO_A, (1<<12), GPIO_OUT_HIGH, NULL},
 	{"ENTERING_RW", GPIO_B, (1<<1),  GPIO_OUT_LOW, NULL},
 	{"CHARGER_EN",  GPIO_B, (1<<2),  GPIO_OUT_LOW, NULL},
-	{"EC_INT",      GPIO_B, (1<<9),  GPIO_OUT_LOW, NULL},
+	{"EC_INT",      GPIO_B, (1<<9),  GPIO_OUTPUT | GPIO_OPENDRAIN, NULL},
 };
 
 void configure_board(void)
@@ -52,4 +52,7 @@ void configure_board(void)
 
 	/* Select Alternate function for USART1 on pins PA9/PA10 */
         gpio_set_alternate_function(GPIO_A, (1<<9) | (1<<10), GPIO_ALT_USART);
+
+	/* put EC_INT in Hi-Z state */
+	gpio_set_level(GPIO_EC_INT, 1);
 }
