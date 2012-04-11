@@ -53,6 +53,23 @@
     },
     {
       "key": {
+        "uuid": "AAAAIH//+c0\u003d",
+        "filename": "common/message.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-04-11T01:34:43Z",
+      "side": 1,
+      "message": "Should sum be a uint8_t? (assuming you\u0027re adding the value of each byte to produce the checksum byte)",
+      "revId": "c016a062d08f8fee01c8b2d6b04b6df3e3485016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAIH//+ls\u003d",
         "filename": "common/message.c",
         "patchSetId": 1
@@ -87,6 +104,23 @@
     },
     {
       "key": {
+        "uuid": "AAAAIH//+c4\u003d",
+        "filename": "common/message.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-04-11T01:34:43Z",
+      "side": 1,
+      "message": "Is that right? Maybe do this instead: (MSG_HEADER + out_msg[1] + out_msg[2]) \u0026 0xff",
+      "revId": "c016a062d08f8fee01c8b2d6b04b6df3e3485016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAIH//+lQ\u003d",
         "filename": "common/message.c",
         "patchSetId": 1
@@ -98,6 +132,74 @@
       "writtenOn": "2012-04-10T22:08:19Z",
       "side": 1,
       "message": "sum \u0026 0xff",
+      "revId": "c016a062d08f8fee01c8b2d6b04b6df3e3485016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAIH//+dk\u003d",
+        "filename": "include/message.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-04-11T01:34:43Z",
+      "side": 1,
+      "message": "Do we care that the message is being passed over SPI?",
+      "revId": "c016a062d08f8fee01c8b2d6b04b6df3e3485016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAIH//+dE\u003d",
+        "filename": "include/message.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-04-11T01:34:43Z",
+      "side": 1,
+      "message": "May as well be 0xec?",
+      "revId": "c016a062d08f8fee01c8b2d6b04b6df3e3485016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAIH//+dU\u003d",
+        "filename": "include/message.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-04-11T01:34:43Z",
+      "side": 1,
+      "message": "Suggest making this comment more generic by getting rid of the references to I2C/SPI and keyboard scanning. Just say the data must be ready immediately and that the function can be called in interrupt context.",
+      "revId": "c016a062d08f8fee01c8b2d6b04b6df3e3485016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAIH//+dM\u003d",
+        "filename": "include/message.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-04-11T01:34:43Z",
+      "side": 1,
+      "message": "s/reqiured/required",
       "revId": "c016a062d08f8fee01c8b2d6b04b6df3e3485016",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
