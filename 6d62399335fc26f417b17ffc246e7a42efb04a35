@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAIH//98c\u003d",
+        "filename": "board/daisy/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-04-11T17:34:00Z",
+      "side": 1,
+      "message": "I think this needs to happen after clock enable (the next line): There\u0027s a DMA1EN bit in the RCC_AHBENR register and DMA{1,2}LPEN in RCC_AHBLPENR.",
+      "revId": "6d62399335fc26f417b17ffc246e7a42efb04a35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
