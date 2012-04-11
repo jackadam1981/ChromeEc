@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAAIH//+es\u003d",
+        "filename": "chip/stm32l/dma.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-04-11T00:27:24Z",
+      "side": 1,
+      "message": "Update or remove the last line in this comment",
+      "revId": "912be75337926408bb9cf17cc2d74f8931c2dc57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAIH//+mM\u003d",
         "filename": "chip/stm32l/dma.c",
         "patchSetId": 3
@@ -13,6 +30,23 @@
       "writtenOn": "2012-04-10T21:57:32Z",
       "side": 1,
       "message": "CONFIG_DMA_TEST sounds safer.",
+      "revId": "912be75337926408bb9cf17cc2d74f8931c2dc57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAIH//+eo\u003d",
+        "filename": "chip/stm32l/dma.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-04-11T00:27:24Z",
+      "side": 1,
+      "message": "Maybe \"DMA1_NUM_CHANNELS\" and \"DMA2_NUM_CHANNELS\" ? Either way is cool w/ me.",
       "revId": "912be75337926408bb9cf17cc2d74f8931c2dc57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
