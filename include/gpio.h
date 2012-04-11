@@ -23,11 +23,17 @@
 #define GPIO_INT_BOTH    0x0040  /* Interrupt on both edges */
 #define GPIO_INT_LOW     0x0080  /* Interrupt on low level */
 #define GPIO_INT_HIGH    0x0100  /* Interrupt on high level */
+
+#define GPIO_INPUT       0x0200  /* Input */
+#define GPIO_PUSH_PULL   0x0400  /* Output type is push-pull */
+#define GPIO_OPEN_DRAIN  0x0800  /* Output type is open-drain */
+
 /* Common flag combinations */
 #define GPIO_OUT_LOW     GPIO_OUTPUT
 #define GPIO_OUT_HIGH    (GPIO_OUTPUT | GPIO_HIGH)
 #define GPIO_PULL_DOWN   GPIO_PULL
 #define GPIO_PULL_UP     (GPIO_PULL | GPIO_HIGH)
+#define GPIO_HI_Z        (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_HIGH)
 #define GPIO_INT_EDGE    (GPIO_INT_RISING | GPIO_INT_FALLING | GPIO_INT_BOTH)
 #define GPIO_INT_LEVEL   (GPIO_INT_LOW | GPIO_INT_HIGH)
 #define GPIO_INT_ANY     (GPIO_INT_EDGE | GPIO_INT_LEVEL)
