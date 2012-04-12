@@ -16,6 +16,24 @@
       "revId": "e41b3f0df8638dabd277fedd34132959e847abac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAIH//8Vk\u003d",
+        "filename": "include/gpio.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-04-12T23:08:35Z",
+      "side": 1,
+      "message": "The GPIO_PULLUP and GPIO_PULLDOWN #defines were really just meant as a band-aid to avoid interfering with current codepaths until more testing can be done, but could probably be removed in favor of GPIO_PULL_UP and GPIO_PULL_DOWN. The ultimate goal is to make the GPIO definitions more straight-forward and easier to process in gpio_pre_init() routines. So for example, activating a pull-up on an input and an output:\n\nBefore: GPIO_PULL_UP and GPIO_OUTPUT | GPIO_PULL_UP\n\nAfter: GPIO_INPUT | GPIO_PULLUP and GPIO_OUTPUT | GPIO_PULLUP\n\nIn the first example, direction is not actually mentioned for the input case but is explicit in the output case. The second example takes the guess work out of the meaning of PULL_UP and doesn\u0027t rely on chip-specific defaults.\n\nFor gpio_pre_init() for both LM4 and STM32L, the code manipulates pull-up/down in the input case, but not the output case. It should activate pull-up/down resistors separately from direction-setting logic, but it seems the current scheme has implications that should not be there.",
+      "parentUuid": "AAAAIH//8ZI\u003d",
+      "revId": "e41b3f0df8638dabd277fedd34132959e847abac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
