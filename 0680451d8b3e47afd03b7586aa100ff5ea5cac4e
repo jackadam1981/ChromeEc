@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAIH//80o\u003d",
+        "filename": "common/lightbar.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-04-12T17:31:46Z",
+      "side": 1,
+      "message": "initializing val \u003d 0 will at least give you consistent data on a i2c read failure.",
+      "revId": "0680451d8b3e47afd03b7586aa100ff5ea5cac4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAIH//80c\u003d",
+        "filename": "common/lightbar.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-04-12T17:31:46Z",
+      "side": 1,
+      "message": "Async output should be in [] so it\u0027s easier to strip out of console logs by testing software.  So\n\n\"[%s()]\\n\"",
+      "revId": "0680451d8b3e47afd03b7586aa100ff5ea5cac4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAIH//80Y\u003d",
+        "filename": "common/lightbar.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-04-12T17:31:46Z",
+      "side": 1,
+      "message": "Should this perhaps pulse the reset?  eg.\n\nset_level(..., 0)\nudelay(100)\nset_level(..., 1)",
+      "revId": "0680451d8b3e47afd03b7586aa100ff5ea5cac4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAIH//8z4\u003d",
+        "filename": "common/lightbar.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-04-12T17:31:46Z",
+      "side": 1,
+      "message": "Might be handy here (and elsewhere) to have:\n\n#define NUM_LEDS 4\n\nand then \n\nled_to_ctrl[NUM_LEDS]\n\n(Besides, this\u0027ll make it easier when they decide to give us 16 LEDs... :)",
+      "revId": "0680451d8b3e47afd03b7586aa100ff5ea5cac4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAIH//80M\u003d",
+        "filename": "common/lightbar.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-04-12T17:31:46Z",
+      "side": 1,
+      "message": "Use inline func:\n\nstatic inline uint8_t scale_abs(int val, int max)\n\n(I\u0027ve verified gcc generates equivalent code to the macro, and this is type/macro-expansion safe)",
+      "revId": "0680451d8b3e47afd03b7586aa100ff5ea5cac4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAIH//8zs\u003d",
+        "filename": "common/lightbar.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-04-12T17:31:46Z",
+      "side": 1,
+      "message": "4 -\u003e NUM_LEDS",
+      "revId": "0680451d8b3e47afd03b7586aa100ff5ea5cac4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAIH//8yI\u003d",
+        "filename": "common/lightbar.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-04-12T17:31:46Z",
+      "side": 1,
+      "message": "const char *\n\n(and probably cmd or cmdname rather than prog)",
+      "revId": "0680451d8b3e47afd03b7586aa100ff5ea5cac4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAIH//8yE\u003d",
+        "filename": "common/lightbar.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-04-12T17:31:46Z",
+      "side": 1,
+      "message": "dump_regs",
+      "revId": "0680451d8b3e47afd03b7586aa100ff5ea5cac4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
