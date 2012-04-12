@@ -25,6 +25,9 @@
 #define LM4_WATCHDOG_MAGIC_WORD  0x1ACCE551
 
 #define WATCHDOG_PERIOD_MS 1100  /* Watchdog period in ms */
+#define WATCHDOG_RELOAD_MS 500   /* Interval in ms between reloads of the
+				  * watchdog timer.  Should be less than half
+				  * of the watchdog period. */
 
 static uint32_t watchdog_period;     /* Watchdog counter initial value */
 
@@ -63,6 +66,7 @@ void watchdog_trace(uint32_t excep_lr, uint32_t excep_sp)
 	            stack[6], stack[5], psp);
 	/* ensure this debug message is always flushed to the UART */
 	uart_emergency_flush();
+
 	/* if we are blocked in a high priority IT handler, the following
 	 * debug messages might not appear but they are useless in that
 	 * situation.
@@ -89,24 +93,30 @@ const struct irq_priority IRQ_BUILD_NAME(prio_, LM4_IRQ_WATCHDOG, )
 		= {LM4_IRQ_WATCHDOG, 0}; /* put the watchdog at the highest
 					    priority */
 
+#include "cpu.h"
+
 void watchdog_reload(void)
 {
 	uint32_t status = LM4_WATCHDOG_RIS(0);
 
-	/* unlock watchdog registers */
+	/* Unlock watchdog registers */
 	LM4_WATCHDOG_LOCK(0) = LM4_WATCHDOG_MAGIC_WORD;
 
-	/* As we reboot only on the second time-out,
-	 * if we have already reached 1 time-out
-	 * we need to reset the interrupt bit.
-	 */
-	if (status)
+	/* As we reboot only on the second timeout, if we have already reached
+	 * the first timeout we need to reset the interrupt bit. */
+	if (status) {
 		LM4_WATCHDOG_ICR(0) = status;
+		/* That doesn't seem to unpend the watchdog interrupt (even if
+		 * we do dummy writes to force the write to be committed, so
+		 * explicitly unpend the interrupt before re-enabling it. */
+		task_clear_pending_irq(LM4_IRQ_WATCHDOG);
+		task_enable_irq(LM4_IRQ_WATCHDOG);
+	}
 
-	/* reload the watchdog counter */
+	/* Reload the watchdog counter */
 	LM4_WATCHDOG_LOAD(0) = watchdog_period;
 
-	/* re-lock watchdog registers */
+	/* Re-lock watchdog registers */
 	LM4_WATCHDOG_LOCK(0) = 0xdeaddead;
 }
 
@@ -134,12 +144,11 @@ int watchdog_init(void)
 	watchdog_clock_changed(clock_get_freq());
 	LM4_WATCHDOG_LOAD(0) = watchdog_period;
 
-	/* de-activate the watchdog when the JTAG stops the CPU */
+	/* De-activate the watchdog when the JTAG stops the CPU */
 	LM4_WATCHDOG_TEST(0) |= 1 << 8;
 
-	/* reset after 2 time-out,
-	 * activate the watchdog and lock the control register
-	 */
+	/* Reset after 2 time-out, activate the watchdog and lock the control
+	 * register. */
 	LM4_WATCHDOG_CTL(0) = 0x3;
 
 	/* Reset watchdog interrupt bits */
@@ -154,6 +163,7 @@ int watchdog_init(void)
 	return EC_SUCCESS;
 }
 
+
 /* Low priority task to reload the watchdog */
 void watchdog_task(void)
 {
@@ -166,12 +176,12 @@ void watchdog_task(void)
 #ifdef BOARD_bds
 		gpio_set_level(GPIO_DEBUG_LED, 1);
 #endif
-		usleep(500000);
+		usleep(WATCHDOG_RELOAD_MS * 1000);
 		watchdog_reload();
 #ifdef BOARD_bds
 		gpio_set_level(GPIO_DEBUG_LED, 0);
 #endif
-		usleep(500000);
+		usleep(WATCHDOG_RELOAD_MS * 1000);
 		watchdog_reload();
 	}
 }
