@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAIH//8XI\u003d",
+        "filename": "include/spi.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-04-12T22:28:41Z",
+      "side": 1,
+      "message": "2012",
+      "revId": "1da63c0661240b4671d895c48f55ee10f220d0e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAIH//8XE\u003d",
+        "filename": "include/spi.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-04-12T22:28:41Z",
+      "side": 1,
+      "message": "Why does spi_init() take argc/argv?  It doesn\u0027t use them, and none of the other modules\u0027 init functions take params.",
+      "revId": "1da63c0661240b4671d895c48f55ee10f220d0e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
