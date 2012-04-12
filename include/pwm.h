@@ -26,6 +26,9 @@ int pwm_get_fan_target_rpm(void);
 /* Sets the target fan RPM.  Pass -1 to set fan to maximum. */
 int pwm_set_fan_target_rpm(int rpm);
 
+/* Enables/disables the keyboard backlight. */
+int pwm_enable_keyboard_backlight(int enable);
+
 /* Gets the keyboard backlight percentage (0=off, 100=max). */
 int pwm_get_keyboard_backlight(void);
 
