@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAAIH//8gA\u003d",
+        "filename": "chip/stm32l/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-04-12T21:07:26Z",
+      "side": 1,
+      "message": "For whatever reason, our toolchain is substandard and generate a function everytime you are using this inline function.\n\nthat\u0027s why I have not used inline stuff in the registers definition.",
+      "revId": "8051a499c88335d6c491a4f0da790c86a6186c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAIH//8gs\u003d",
         "filename": "chip/stm32l/spi.c",
         "patchSetId": 2
