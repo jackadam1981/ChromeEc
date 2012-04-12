@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAIH//88Q\u003d",
+        "filename": "chip/stm32l/registers.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-04-12T15:57:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAIH//9wM\u003d",
+      "revId": "fe1853ccc0c55ef0689ad47365946cb04874c51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAIH//9v0\u003d",
         "filename": "chip/stm32l/spi.c",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2012-04-11T19:31:58Z",
       "side": 1,
       "message": "Now that we know the message protocol overhead, should these be 32 + MSG_PROTO_BYTES?",
+      "revId": "fe1853ccc0c55ef0689ad47365946cb04874c51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAIH//88M\u003d",
+        "filename": "chip/stm32l/spi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-04-12T15:57:07Z",
+      "side": 1,
+      "message": "Done.\n\nReally just a placeholder for now until we see what other messages we need.",
+      "parentUuid": "AAAAIH//9v0\u003d",
       "revId": "fe1853ccc0c55ef0689ad47365946cb04874c51a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
