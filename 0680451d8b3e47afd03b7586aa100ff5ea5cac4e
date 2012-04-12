@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAIH//8pg\u003d",
+        "filename": "common/lightbar.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-04-12T20:40:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAIH//80o\u003d",
+      "revId": "0680451d8b3e47afd03b7586aa100ff5ea5cac4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAIH//80c\u003d",
         "filename": "common/lightbar.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAIH//8o8\u003d",
+        "filename": "common/lightbar.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-04-12T20:40:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAIH//80c\u003d",
+      "revId": "0680451d8b3e47afd03b7586aa100ff5ea5cac4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAIH//80Y\u003d",
         "filename": "common/lightbar.c",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2012-04-12T17:31:46Z",
       "side": 1,
       "message": "Should this perhaps pulse the reset?  eg.\n\nset_level(..., 0)\nudelay(100)\nset_level(..., 1)",
+      "revId": "0680451d8b3e47afd03b7586aa100ff5ea5cac4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAIH//8ok\u003d",
+        "filename": "common/lightbar.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-04-12T20:40:49Z",
+      "side": 1,
+      "message": "No, it\u0027s really an enable. Let\u0027s just turn it on once when the EC boots and leave it on.",
+      "parentUuid": "AAAAIH//80Y\u003d",
       "revId": "0680451d8b3e47afd03b7586aa100ff5ea5cac4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +141,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAIH//8lI\u003d",
+        "filename": "common/lightbar.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-04-12T20:40:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAIH//80M\u003d",
+      "revId": "0680451d8b3e47afd03b7586aa100ff5ea5cac4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAIH//8zs\u003d",
         "filename": "common/lightbar.c",
         "patchSetId": 1
@@ -98,6 +170,24 @@
       "writtenOn": "2012-04-12T17:31:46Z",
       "side": 1,
       "message": "4 -\u003e NUM_LEDS",
+      "revId": "0680451d8b3e47afd03b7586aa100ff5ea5cac4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAIH//8lE\u003d",
+        "filename": "common/lightbar.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-04-12T20:40:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAIH//8zs\u003d",
       "revId": "0680451d8b3e47afd03b7586aa100ff5ea5cac4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -121,6 +211,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAIH//8k8\u003d",
+        "filename": "common/lightbar.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-04-12T20:40:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAIH//8yI\u003d",
+      "revId": "0680451d8b3e47afd03b7586aa100ff5ea5cac4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAIH//8yE\u003d",
         "filename": "common/lightbar.c",
         "patchSetId": 1
@@ -132,6 +240,24 @@
       "writtenOn": "2012-04-12T17:31:46Z",
       "side": 1,
       "message": "dump_regs",
+      "revId": "0680451d8b3e47afd03b7586aa100ff5ea5cac4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAIH//8lA\u003d",
+        "filename": "common/lightbar.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-04-12T20:40:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAIH//8yE\u003d",
       "revId": "0680451d8b3e47afd03b7586aa100ff5ea5cac4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
