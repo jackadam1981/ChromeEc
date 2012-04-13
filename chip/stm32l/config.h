@@ -3,12 +3,21 @@
  * found in the LICENSE file.
  */
 
+#include "ec.h"
+
 /* Memory mapping */
 #define CONFIG_FLASH_BASE       0x08000000
-#define CONFIG_FLASH_SIZE       0x00020000
-#define CONFIG_FLASH_BANK_SIZE  0x1000
 #define CONFIG_RAM_BASE         0x20000000
-#define CONFIG_RAM_SIZE         0x00004000
+#define CONFIG_FLASH_BANK_SIZE  0x1000
+#if defined(EC_STM32F100R8) /* 8KB RAM / 64KB flash */
+#define CONFIG_FLASH_SIZE       0x00020000
+#define CONFIG_RAM_SIZE         0x00002000
+#elif defined(EC_STM32L151R8) /* 10KB RAM / 64KB flash */
+#define CONFIG_FLASH_SIZE       0x00020000
+#define CONFIG_RAM_SIZE         0x00002800
+#else
+#error "must define an stm32 variant"
+#endif
 
 /* Size of one firmware image in flash */
 #define CONFIG_FW_IMAGE_SIZE    (32 * 1024)
@@ -17,7 +26,11 @@
 #define CONFIG_FW_B_OFF         (2 * CONFIG_FW_IMAGE_SIZE)
 
 /* Number of IRQ vectors on the NVIC */
+#if defined(EC_STM32F100R8)
+#define CONFIG_IRQ_COUNT 61
+#elif defined(EC_STM32L151R8)
 #define CONFIG_IRQ_COUNT 45
+#endif
 
 /* Debug UART parameters for panic message */
 #ifdef BOARD_adv
