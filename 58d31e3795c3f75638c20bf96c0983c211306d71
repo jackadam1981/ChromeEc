@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAJX///hA\u003d",
+        "filename": "chip/stm32l/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-04-13T19:27:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAJX///hU\u003d",
+      "revId": "58d31e3795c3f75638c20bf96c0983c211306d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAJX///hM\u003d",
         "filename": "chip/stm32l/i2c.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2012-04-13T19:21:48Z",
       "side": 1,
       "message": "minor nit: we\u0027ve used lower case for hex address so far in the EC codebase: 0xec",
+      "revId": "58d31e3795c3f75638c20bf96c0983c211306d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJX///g4\u003d",
+        "filename": "chip/stm32l/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-04-13T19:27:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAJX///hM\u003d",
       "revId": "58d31e3795c3f75638c20bf96c0983c211306d71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
