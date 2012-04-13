@@ -90,6 +90,7 @@ void configure_board(void)
 	 * TODO: more fine-grained enabling for power saving
 	 */
 	STM32L_RCC_AHBENR |= 0x3f;
+	STM32L_RCC_APB2ENR |= 0x01;
 
 	/* Enable SPI */
 	STM32L_RCC_APB2ENR |= (1<<12);
