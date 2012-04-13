@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAJX///qY\u003d",
+        "filename": "include/gpio.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-04-13T17:04:06Z",
+      "side": 1,
+      "message": "Input is just the lack of the GPIO_OUTPUT flag.  You can define GPIO_IN as 0x0000 if you want in the common flag combinations below...",
+      "revId": "5d0a5ca59b67675c36b6e811fbeb92930fce9cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJX///qU\u003d",
+        "filename": "include/gpio.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-04-13T17:04:06Z",
+      "side": 1,
+      "message": "push-pull is just the lack of the GPIO_OPEN_DRAIN flag.",
+      "revId": "5d0a5ca59b67675c36b6e811fbeb92930fce9cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJX///pw\u003d",
+        "filename": "include/gpio.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-04-13T17:04:06Z",
+      "side": 1,
+      "message": "(suggest moving this to 0x0008)",
+      "revId": "5d0a5ca59b67675c36b6e811fbeb92930fce9cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
