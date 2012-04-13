@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAJX///ok\u003d",
+        "filename": "include/gpio.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-04-13T17:43:20Z",
+      "side": 1,
+      "message": "Done. But be advised that that input is 1 of 4 possibilities -- input, output, alt. function, and analog mode. The lack of GPIO_OUTPUT does not accurately imply being an input.",
+      "parentUuid": "AAAAJX///qY\u003d",
+      "revId": "5d0a5ca59b67675c36b6e811fbeb92930fce9cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAJX///qU\u003d",
         "filename": "include/gpio.h",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAJX///n4\u003d",
+        "filename": "include/gpio.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-04-13T17:43:20Z",
+      "side": 1,
+      "message": "Good call -- This one is bimodal.",
+      "parentUuid": "AAAAJX///qU\u003d",
+      "revId": "5d0a5ca59b67675c36b6e811fbeb92930fce9cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAJX///pw\u003d",
         "filename": "include/gpio.h",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2012-04-13T17:04:06Z",
       "side": 1,
       "message": "(suggest moving this to 0x0008)",
+      "revId": "5d0a5ca59b67675c36b6e811fbeb92930fce9cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJX///n0\u003d",
+        "filename": "include/gpio.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-04-13T17:43:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAJX///pw\u003d",
       "revId": "5d0a5ca59b67675c36b6e811fbeb92930fce9cad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
