@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAKn///DY\u003d",
+        "filename": "board/link/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-04-17T09:21:00Z",
+      "side": 1,
+      "message": "Should change to 3.0A. http://crosbug.com/p/8905",
+      "revId": "46913ca3a5a46405e81fa04cae95b00247384be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn///DQ\u003d",
+        "filename": "common/battery_atl706486.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-04-17T09:21:00Z",
+      "side": 1,
+      "message": "8000mAh? or 8500mAh?",
+      "revId": "46913ca3a5a46405e81fa04cae95b00247384be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn///DU\u003d",
+        "filename": "common/battery_atl706486.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-04-17T09:21:00Z",
+      "side": 1,
+      "message": "1.0C discharging temperature range: 25 ~ 45",
+      "revId": "46913ca3a5a46405e81fa04cae95b00247384be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn///Cw\u003d",
+        "filename": "common/battery_precharge.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-04-17T09:21:00Z",
+      "side": 1,
+      "message": "Testing result showed that 16 works far better than 8.",
+      "revId": "46913ca3a5a46405e81fa04cae95b00247384be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn///DM\u003d",
+        "filename": "common/battery_precharge.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-04-17T09:21:00Z",
+      "side": 1,
+      "message": "/* Increase/decrease charging voltage one step */",
+      "revId": "46913ca3a5a46405e81fa04cae95b00247384be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn///C8\u003d",
+        "filename": "common/battery_precharge.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-04-17T09:21:00Z",
+      "side": 1,
+      "message": "/* Chemical reaction lags behind the charging voltage change */",
+      "revId": "46913ca3a5a46405e81fa04cae95b00247384be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn///C0\u003d",
+        "filename": "common/battery_precharge.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-04-17T09:21:00Z",
+      "side": 1,
+      "message": "/* 4 hours should be enough to do a extremely slow 5mA pre-charge, that rises an 8000mAh battery from 5.5V to 6.0V */",
+      "revId": "46913ca3a5a46405e81fa04cae95b00247384be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
