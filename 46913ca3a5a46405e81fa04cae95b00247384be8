@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAKn///Cg\u003d",
+        "filename": "board/link/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-04-17T09:39:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAKn///DY\u003d",
+      "revId": "46913ca3a5a46405e81fa04cae95b00247384be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAKn///DQ\u003d",
         "filename": "common/battery_atl706486.c",
         "patchSetId": 3
@@ -47,6 +65,24 @@
       "writtenOn": "2012-04-17T09:21:00Z",
       "side": 1,
       "message": "1.0C discharging temperature range: 25 ~ 45",
+      "revId": "46913ca3a5a46405e81fa04cae95b00247384be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn///Cc\u003d",
+        "filename": "common/battery_atl706486.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-04-17T09:39:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAKn///DU\u003d",
       "revId": "46913ca3a5a46405e81fa04cae95b00247384be8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +123,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAKn///CY\u003d",
+        "filename": "common/battery_precharge.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-04-17T09:39:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAKn///DM\u003d",
+      "revId": "46913ca3a5a46405e81fa04cae95b00247384be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAKn///C8\u003d",
         "filename": "common/battery_precharge.c",
         "patchSetId": 3
@@ -98,6 +152,24 @@
       "writtenOn": "2012-04-17T09:21:00Z",
       "side": 1,
       "message": "/* Chemical reaction lags behind the charging voltage change */",
+      "revId": "46913ca3a5a46405e81fa04cae95b00247384be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn///CU\u003d",
+        "filename": "common/battery_precharge.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-04-17T09:39:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAKn///C8\u003d",
       "revId": "46913ca3a5a46405e81fa04cae95b00247384be8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
