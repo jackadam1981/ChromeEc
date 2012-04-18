@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAKn//94c\u003d",
+        "filename": "common/battery_precharge.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-04-18T16:54:28Z",
+      "side": 1,
+      "message": "Done\ntime_after() means \u0027\u003e\u0027 only.",
+      "parentUuid": "AAAAKn//9+k\u003d",
+      "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAKn//96U\u003d",
         "filename": "common/battery_precharge.c",
         "patchSetId": 9
@@ -30,6 +48,24 @@
       "writtenOn": "2012-04-18T14:23:40Z",
       "side": 1,
       "message": "I don\u0027t see any possibility that curr-\u003eac is true but prev.ac is false (if prev is false, then it never goes to state_charge()). But I guess I missed some background.",
+      "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//94A\u003d",
+        "filename": "common/battery_precharge.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-04-18T16:54:28Z",
+      "side": 1,
+      "message": "Done\nYou\u0027re right. The (!curr-\u003eac) block can be removed. I will remove that in another CL, after verify the state machine again.",
+      "parentUuid": "AAAAKn//96U\u003d",
       "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAKn//900\u003d",
+        "filename": "common/battery_precharge.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-04-18T16:54:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAKn//9+g\u003d",
+      "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAKn//9+c\u003d",
         "filename": "common/battery_precharge.c",
         "patchSetId": 9
@@ -64,6 +118,24 @@
       "writtenOn": "2012-04-18T14:23:40Z",
       "side": 1,
       "message": "Shall we return PWR_STATE_ERROR since the battery I2C is dead?\n\nAlso, why not check charger I2C error?",
+      "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//930\u003d",
+        "filename": "common/battery_precharge.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-04-18T16:54:28Z",
+      "side": 1,
+      "message": "Done.\nActually, charger state and battery state are always verified in state_common(). This error check shall be removed in another CL.",
+      "parentUuid": "AAAAKn//9+c\u003d",
       "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAKn//90s\u003d",
+        "filename": "common/battery_precharge.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-04-18T16:54:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAKn//9+A\u003d",
+      "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAKn//99g\u003d",
         "filename": "common/battery_precharge.c",
         "patchSetId": 9
@@ -98,6 +188,24 @@
       "writtenOn": "2012-04-18T14:23:40Z",
       "side": 1,
       "message": "Could you add a short description here to explain what the 105% voltage means? I guess it meansthe battery has exited the pre-charge mode.\n\nIf so, there are 2 way to exit pre-charge: desired_current \u003e current_min and voltage \u003e voltage_min * 1.05. Could you add this in the function comment?",
+      "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//90o\u003d",
+        "filename": "common/battery_precharge.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-04-18T16:54:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAKn//99g\u003d",
       "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAKn//90k\u003d",
+        "filename": "common/battery_precharge.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-04-18T16:54:28Z",
+      "side": 1,
+      "message": "Done.\nKeep \u0027\u003e\u0027. Reformat code.",
+      "parentUuid": "AAAAKn//990\u003d",
+      "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAKn//9+E\u003d",
         "filename": "common/battery_precharge.c",
         "patchSetId": 9
@@ -132,6 +258,24 @@
       "writtenOn": "2012-04-18T14:23:40Z",
       "side": 1,
       "message": "Please comment this is the end-of-precharge mode.",
+      "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//90U\u003d",
+        "filename": "common/battery_precharge.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-04-18T16:54:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAKn//9+E\u003d",
       "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -155,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAKn//90Q\u003d",
+        "filename": "common/battery_precharge.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-04-18T16:54:28Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "AAAAKn//99I\u003d",
+      "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAKn//98U\u003d",
         "filename": "common/battery_precharge.c",
         "patchSetId": 9
@@ -166,6 +328,24 @@
       "writtenOn": "2012-04-18T14:23:40Z",
       "side": 1,
       "message": "hm... what do above 2 lines do?",
+      "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//90M\u003d",
+        "filename": "common/battery_precharge.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-04-18T16:54:28Z",
+      "side": 1,
+      "message": "Done.\nThe kick charging sets charging voltage to desired_voltage. After 5 seconds, if the desired current doesn\u0027t go up, change the voltage back to trickle charging.",
+      "parentUuid": "AAAAKn//98U\u003d",
       "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -189,6 +369,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAKn//90A\u003d",
+        "filename": "common/battery_precharge.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-04-18T16:54:28Z",
+      "side": 1,
+      "message": "Done.\nNormally, battery vendor provides a trickle charging current value. Our code uses a simplified linear estimation of charging voltage. Hence the current change will reflect voltage change after several seconds. This code block prevents the actual battery current go higher than vendor\u0027s limit.",
+      "parentUuid": "AAAAKn//97c\u003d",
+      "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAKn//98E\u003d",
         "filename": "common/battery_precharge.c",
         "patchSetId": 9
@@ -200,6 +398,24 @@
       "writtenOn": "2012-04-18T14:23:40Z",
       "side": 1,
       "message": "V_batt?",
+      "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//9z0\u003d",
+        "filename": "common/battery_precharge.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-04-18T16:54:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAKn//98E\u003d",
       "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -223,6 +439,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAKn//9zw\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-04-18T16:54:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAKn//9+Y\u003d",
+      "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAKn//97Q\u003d",
         "filename": "common/charge_state.c",
         "patchSetId": 9
@@ -234,6 +468,24 @@
       "writtenOn": "2012-04-18T14:23:40Z",
       "side": 1,
       "message": "Does this mean we don\u0027t power off system if we fail to get the state_of_charge (and batt-\u003evoltage)? This sounds horrible to me because once the battery goes too low and the battery uP cannot response i2c, we would NEVER power off the host. But, I don\u0027t have a good answer either.",
+      "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//9zs\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-04-18T16:54:28Z",
+      "side": 1,
+      "message": "Done.\nThe \u0027batt-\u003e\u0027 values will be meaningful only when I2C signals are good. Yes, you mentioned a good point that I didn\u0027t take care. Will file an issue and do that in another CL.",
+      "parentUuid": "AAAAKn//97Q\u003d",
       "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -257,6 +509,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAKn//9zg\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-04-18T16:54:28Z",
+      "side": 1,
+      "message": "Done.\nChange back to 0. 500 is a experiment result for faster startup time, but 0 will also work fine.",
+      "parentUuid": "AAAAKn//9+Q\u003d",
+      "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAKn//96E\u003d",
         "filename": "common/charge_state.c",
         "patchSetId": 9
@@ -274,6 +544,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAKn//9zY\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-04-18T16:54:28Z",
+      "side": 1,
+      "message": "Done.\n\nThe state_common() reads AC state but doesn\u0027t do the state change. Hence we do this AC check here. But the battery chip shutdown condition has been processed in state_common(). So the error should check first.",
+      "parentUuid": "AAAAKn//96E\u003d",
+      "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAKn//99M\u003d",
         "filename": "common/charge_state.c",
         "patchSetId": 9
@@ -285,6 +573,24 @@
       "writtenOn": "2012-04-18T14:23:40Z",
       "side": 1,
       "message": "hm...  I am not sure if state_pf_charge is a good idea to judge the battery is in pre-charge mode. Can we check ctx-\u003etrickle_charging_time.val since we clear this to zero every time we exit pre-charge mode?",
+      "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//9zI\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-04-18T16:54:28Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "AAAAKn//99M\u003d",
       "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
