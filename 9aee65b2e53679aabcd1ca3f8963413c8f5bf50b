@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAKn//+E0\u003d",
+        "filename": "board/link/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-04-18T08:47:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAKn//+Jk\u003d",
+      "revId": "9aee65b2e53679aabcd1ca3f8963413c8f5bf50b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAKn//+Jg\u003d",
         "filename": "common/battery_atl706486.c",
         "patchSetId": 6
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAKn//+Ew\u003d",
+        "filename": "common/battery_atl706486.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-04-18T08:47:20Z",
+      "side": 1,
+      "message": "Done\n8400mAh was the design capacity of previous prototype battery. New batteries came with 8500mAh.",
+      "parentUuid": "AAAAKn//+Jg\u003d",
+      "revId": "9aee65b2e53679aabcd1ca3f8963413c8f5bf50b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAKn//+Jc\u003d",
         "filename": "common/battery_atl706486.c",
         "patchSetId": 6
@@ -47,6 +83,24 @@
       "writtenOn": "2012-04-18T08:24:18Z",
       "side": 1,
       "message": "Just curious, where are we using voltage_normal and voltage_min?",
+      "revId": "9aee65b2e53679aabcd1ca3f8963413c8f5bf50b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//+Es\u003d",
+        "filename": "common/battery_atl706486.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-04-18T08:47:20Z",
+      "side": 1,
+      "message": "Done\nWe\u0027re using voltage_min to calculate battery pre-charge voltage. And voltage_normal was added here for future table based charging algorithms.",
+      "parentUuid": "AAAAKn//+Jc\u003d",
       "revId": "9aee65b2e53679aabcd1ca3f8963413c8f5bf50b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
