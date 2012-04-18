@@ -1,0 +1,293 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAKn//9+k\u003d",
+        "filename": "common/battery_precharge.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-04-18T14:23:40Z",
+      "side": 1,
+      "message": "\u003e\u003d ?",
+      "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//96U\u003d",
+        "filename": "common/battery_precharge.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-04-18T14:23:40Z",
+      "side": 1,
+      "message": "I don\u0027t see any possibility that curr-\u003eac is true but prev.ac is false (if prev is false, then it never goes to state_charge()). But I guess I missed some background.",
+      "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//9+g\u003d",
+        "filename": "common/battery_precharge.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-04-18T14:23:40Z",
+      "side": 1,
+      "message": "is *long* enough",
+      "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//9+c\u003d",
+        "filename": "common/battery_precharge.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-04-18T14:23:40Z",
+      "side": 1,
+      "message": "Shall we return PWR_STATE_ERROR since the battery I2C is dead?\n\nAlso, why not check charger I2C error?",
+      "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//9+A\u003d",
+        "filename": "common/battery_precharge.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-04-18T14:23:40Z",
+      "side": 1,
+      "message": "typo: drops.\n\nBut my question is why current drops to 0 means go next level?",
+      "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//99g\u003d",
+        "filename": "common/battery_precharge.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-04-18T14:23:40Z",
+      "side": 1,
+      "message": "Could you add a short description here to explain what the 105% voltage means? I guess it meansthe battery has exited the pre-charge mode.\n\nIf so, there are 2 way to exit pre-charge: desired_current \u003e current_min and voltage \u003e voltage_min * 1.05. Could you add this in the function comment?",
+      "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//990\u003d",
+        "filename": "common/battery_precharge.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-04-18T14:23:40Z",
+      "side": 1,
+      "message": "\u003e\u003d ?  and how about move batt-\u003evoltage to next line?",
+      "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//9+E\u003d",
+        "filename": "common/battery_precharge.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-04-18T14:23:40Z",
+      "side": 1,
+      "message": "Please comment this is the end-of-precharge mode.",
+      "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//99I\u003d",
+        "filename": "common/battery_precharge.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-04-18T14:23:40Z",
+      "side": 1,
+      "message": "ctx-\u003etrickle_charging_time.val \u003d 0;\n\nOtherwise we have potential bug on charging_progress() estimation because this timestamp is very old and never gets updated in the case that trickle_charge() is called from state_charge().",
+      "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//98U\u003d",
+        "filename": "common/battery_precharge.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-04-18T14:23:40Z",
+      "side": 1,
+      "message": "hm... what do above 2 lines do?",
+      "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//97c\u003d",
+        "filename": "common/battery_precharge.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-04-18T14:23:40Z",
+      "side": 1,
+      "message": "To be honest, I don\u0027t understand the over current protection code (is it used in pre-charge or normal charge mode?). But I would trust you know what you are doing.",
+      "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//98E\u003d",
+        "filename": "common/battery_precharge.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-04-18T14:23:40Z",
+      "side": 1,
+      "message": "V_batt?",
+      "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//9+Y\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-04-18T14:23:40Z",
+      "side": 1,
+      "message": "move to below (alphabet order).",
+      "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//97Q\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-04-18T14:23:40Z",
+      "side": 1,
+      "message": "Does this mean we don\u0027t power off system if we fail to get the state_of_charge (and batt-\u003evoltage)? This sounds horrible to me because once the battery goes too low and the battery uP cannot response i2c, we would NEVER power off the host. But, I don\u0027t have a good answer either.",
+      "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//9+Q\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-04-18T14:23:40Z",
+      "side": 1,
+      "message": "Could you comment about the \u0027500\u0027?",
+      "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//96E\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-04-18T14:23:40Z",
+      "side": 1,
+      "message": "I don\u0027t see any reason to move this from begin of function to here. Are you going to clear the ctx-\u003etrickle_charging_time.val in trickle_charge()? I think this related to the logic of line 101 of trickle_charge(). I\u0027d like to recommend:\n\n{ // begin of function\n  if (!ctx-\u003ecurr.ac) {\n    ctx-\u003etrickle_charging_time.val \u003d 0;\n    return PWR_STATE_INIT;\n  }\n  \n  if (ctx-\u003ecurr.error) ...\n}",
+      "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//99M\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-04-18T14:23:40Z",
+      "side": 1,
+      "message": "hm...  I am not sure if state_pf_charge is a good idea to judge the battery is in pre-charge mode. Can we check ctx-\u003etrickle_charging_time.val since we clear this to zero every time we exit pre-charge mode?",
+      "revId": "3e91c098f625a07545aa6698a9c3cded8ad641d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
