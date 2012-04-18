@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAKn//+G0\u003d",
+        "filename": "common/battery_precharge.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-04-18T07:00:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAKn//+Is\u003d",
+      "revId": "9aee65b2e53679aabcd1ca3f8963413c8f5bf50b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAKn//+IM\u003d",
         "filename": "common/battery_precharge.c",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2012-04-18T04:28:43Z",
       "side": 1,
       "message": "The name charging_resistance is a bit misleading. Maybe turn_on_voltage or something similar?",
+      "revId": "9aee65b2e53679aabcd1ca3f8963413c8f5bf50b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//+Gw\u003d",
+        "filename": "common/battery_precharge.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-04-18T07:00:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAKn//+IM\u003d",
       "revId": "9aee65b2e53679aabcd1ca3f8963413c8f5bf50b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
