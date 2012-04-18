@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAAKn//+Jk\u003d",
+        "filename": "board/link/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-04-18T08:24:18Z",
+      "side": 1,
+      "message": "Would you mind adding more meaningful comment on this flag like when to undef this and what value to assign. Thanks.",
+      "revId": "9aee65b2e53679aabcd1ca3f8963413c8f5bf50b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//+Jg\u003d",
+        "filename": "common/battery_atl706486.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-04-18T08:24:18Z",
+      "side": 1,
+      "message": "C changed from 8400 to 8500. Is this intentional?",
+      "revId": "9aee65b2e53679aabcd1ca3f8963413c8f5bf50b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//+Jc\u003d",
+        "filename": "common/battery_atl706486.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-04-18T08:24:18Z",
+      "side": 1,
+      "message": "Just curious, where are we using voltage_normal and voltage_min?",
+      "revId": "9aee65b2e53679aabcd1ca3f8963413c8f5bf50b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAKn//+Is\u003d",
         "filename": "common/battery_precharge.c",
         "patchSetId": 6
@@ -66,6 +117,23 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "AAAAKn//+IM\u003d",
+      "revId": "9aee65b2e53679aabcd1ca3f8963413c8f5bf50b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//+JI\u003d",
+        "filename": "common/charge_state.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-04-18T08:24:18Z",
+      "side": 1,
+      "message": "Good expression!   A minor suggestion: how about (500 * MSEC) for more readable?",
       "revId": "9aee65b2e53679aabcd1ca3f8963413c8f5bf50b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
