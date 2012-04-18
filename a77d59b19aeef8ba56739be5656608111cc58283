@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAKn//9sk\u003d",
+        "filename": "common/keyboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-04-18T17:29:28Z",
+      "side": 1,
+      "message": "Host is not alive during any of these reboots.\n\nYou\u0027re causing this to enable the keyboard IRQ during nearly all boots - which isn\u0027t what you want.",
+      "revId": "a77d59b19aeef8ba56739be5656608111cc58283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
