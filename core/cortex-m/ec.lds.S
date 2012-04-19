@@ -50,9 +50,14 @@ SECTIONS
         __hooks_init = .;
         *(.rodata.HOOK_INIT)
         __hooks_init_end = .;
+
         __hooks_freq_change = .;
         *(.rodata.HOOK_FREQ_CHANGE)
         __hooks_freq_change_end = .;
+
+        __hooks_sysjump = .;
+        *(.rodata.HOOK_SYSJUMP)
+        __hooks_sysjump_end = .;
 
         . = ALIGN(4);
         *(.rodata*)
@@ -79,6 +84,7 @@ SECTIONS
         *(.bss)
         . = ALIGN(4);
         __bss_end = .;
+	__shared_mem_buf = .;
     } > IRAM
     /DISCARD/ : { *(.ARM.*) }
 }
