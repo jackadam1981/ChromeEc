@@ -13,10 +13,12 @@
 enum hook_priority {
 	HOOK_PRIO_FIRST = 1,       /* Highest priority */
 	HOOK_PRIO_DEFAULT = 5000,  /* Default priority */
-	HOOK_PRIO_LAST = 9999      /* Lowest priority */
+	HOOK_PRIO_LAST = 9999,     /* Lowest priority */
 };
 
+
 enum hook_type {
+	HOOK_INIT,         /* System init */
 	HOOK_FREQ_CHANGE,  /* System clock changed frequency */
 };
 
