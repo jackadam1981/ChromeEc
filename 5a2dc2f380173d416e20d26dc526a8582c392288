@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAKn//7Do\u003d",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-04-20T20:33:01Z",
+      "side": 1,
+      "message": "(v \u0026 (1ULL \u003c\u003c 63))",
+      "revId": "5a2dc2f380173d416e20d26dc526a8582c392288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//7Dc\u003d",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-04-20T20:33:01Z",
+      "side": 1,
+      "message": "\"v \u003d -v\" won\u0027t work if v \u003d\u003d 0x80000000\n\nThis seems suspiciously wrong.",
+      "revId": "5a2dc2f380173d416e20d26dc526a8582c392288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//7DI\u003d",
+        "filename": "common/util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-04-20T20:33:01Z",
+      "side": 1,
+      "message": "1ULL, or just 0x8000000000000000 ?",
+      "revId": "5a2dc2f380173d416e20d26dc526a8582c392288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
