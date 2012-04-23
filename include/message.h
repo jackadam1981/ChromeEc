@@ -8,6 +8,9 @@
 
 #include <common.h>
 
+/* protocol version message length */
+#define PROTO_VER_LEN	4
+
 /* Command interface between EC and AP */
 
 enum {
@@ -27,9 +30,11 @@ enum {
 
 /* The command codes that we understand */
 enum message_cmd_t {
-	CMDC_NOP,	/* No operation / ping */
-	CMDC_ID,	/* Read EC ID */
-	CMDC_KEY_STATE,	/* Read key state */
+	/* control and status messages */
+	CMDC_PROTO_VER = 0,	/* Protocol version */
+	CMDC_NOP,		/* No operation / ping */
+	CMDC_ID,		/* Read EC ID */
+	CMDC_KEY_STATE,		/* Read key state */
 };
 
 

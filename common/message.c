@@ -13,6 +13,9 @@
 #include "keyboard_scan.h"
 #include "util.h"
 
+/* Protocol version, least-significant digit in lowest byte */
+static const unsigned char proto_ver[PROTO_VER_LEN] = { 1, 0, 0, 0 };
+
 /* Our ID message - Matrix KeyBoard Protocol */
 static const char proto_id[] = "Google Chrome MKBP v1";
 
@@ -35,6 +38,9 @@ static int message_get_response(int cmd, uint8_t **buffp, int max_len)
 	 * bytes.
 	 */
 	switch (cmd & MSG_CMD_MASK) {
+	case CMDC_PROTO_VER:
+		*buffp = (char *)proto_ver;
+		return PROTO_VER_LEN;
 	case CMDC_NOP:
 		return 0;
 	case CMDC_ID:
@@ -61,6 +67,14 @@ int message_process_cmd(int cmd, uint8_t *out_msg, int max_len)
 	msg = out_msg + MSG_HEADER_BYTES;
 	msg_len = message_get_response(cmd, &msg, max_len - MSG_PROTO_BYTES);
 	if (msg_len < 0)
+		return msg_len;
+
+	/*
+	 * The protocol version must be known to decode a message, therefore
+	 * the protocol version message is treated as a special case and
+	 * transferred in raw format.
+	 */
+	if (cmd == CMDC_PROTO_VER)
 		return msg_len;
 
 	/*
