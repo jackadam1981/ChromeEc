@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAKn//5rg\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-04-23T23:45:39Z",
+      "side": 1,
+      "message": "Put the signed-off-by line further down in the commit message. git will report the first line in the change summary, and that\u0027s not very descriptive.",
+      "revId": "5784b8acda80c762234f6a44bbe80337f41e8d6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
