@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAKn//5yc\u003d",
+        "filename": "core/cortex-m/switch.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-04-23T22:50:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAKn//56Y\u003d",
+      "revId": "8feeb36cd4630dc040b64cc22ac9b534e381d5de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAKn//5zw\u003d",
         "filename": "core/cortex-m/switch.S",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2012-04-23T22:22:55Z",
       "side": 1,
       "message": "if we are writing assembly, at least we should properly optimize it. you need to schedule that mov before.",
+      "revId": "8feeb36cd4630dc040b64cc22ac9b534e381d5de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//5xM\u003d",
+        "filename": "core/cortex-m/switch.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-04-23T22:50:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAKn//5zw\u003d",
       "revId": "8feeb36cd4630dc040b64cc22ac9b534e381d5de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAKn//5xI\u003d",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-04-23T22:50:01Z",
+      "side": 1,
+      "message": "Was used for debugging; not needed.",
+      "parentUuid": "AAAAKn//5zc\u003d",
+      "revId": "8feeb36cd4630dc040b64cc22ac9b534e381d5de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAKn//5zU\u003d",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2012-04-23T22:22:55Z",
       "side": 1,
       "message": "that\u0027s what this variable used to be.\ndid this change ?",
+      "revId": "8feeb36cd4630dc040b64cc22ac9b534e381d5de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//5xE\u003d",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-04-23T22:50:01Z",
+      "side": 1,
+      "message": "It was previously set by task_set_event(), but never cleared anywhere, so it effectively transitioned 0-\u003e1 on the first task_set_event()\n\nI changed it to transition 0-\u003e1 in task_start(), rather than in every call to task_set_event().",
+      "parentUuid": "AAAAKn//5zU\u003d",
       "revId": "8feeb36cd4630dc040b64cc22ac9b534e381d5de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
