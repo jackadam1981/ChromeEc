@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAKn//6TI\u003d",
+        "filename": "common/keyboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-04-23T09:57:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAKn//6tM\u003d",
+      "revId": "105b0260ceb4ecbeb3926b94344fdeb06d6f993e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAKn//6s0\u003d",
         "filename": "common/keyboard.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2012-04-21T01:50:41Z",
       "side": 1,
       "message": "If init is called during the normal boot process, there won\u0027t be any data to restore, since data only gets saved pre-sysjump.  That\u0027s not really an error.\n\n(We currently ignore the return codes from hooks so this doesn\u0027t hurt anything yet, but someday we may pay attention to them.)\n\nSuggest changing this to:\n\nif (prev \u0026\u0026 version \u003d\u003d KB_HOOK_VERSION \u0026\u0026 size \u003d\u003d sizeof(*prev)) {\n   // Coming back from a sysjump, so restore settings\n   ...\n}\n\nreturn EC_SUCCESS;",
+      "revId": "105b0260ceb4ecbeb3926b94344fdeb06d6f993e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//6TE\u003d",
+        "filename": "common/keyboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-04-23T09:57:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAKn//6s0\u003d",
       "revId": "105b0260ceb4ecbeb3926b94344fdeb06d6f993e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
