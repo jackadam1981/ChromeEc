@@ -28,6 +28,8 @@
 #define STOP_CHARGE_THRESHOLD 100
 
 static const char * const state_name[] = POWER_STATE_NAME_TABLE;
+static struct power_state_context *pwr_ctx;
+static enum power_state force_state;
 
 /* helper function(s) */
 static inline int get_ac(void)
@@ -414,7 +416,7 @@ static enum power_state state_error(struct power_state_context *ctx)
 
 	/* Debug output */
 	if (ctx->curr.error != logged_error) {
-		uart_printf("[Charge error: flag[%08b -> %08b], ac %d, "
+		uart_printf("[charge error: flag[%08b -> %08b], ac %d, "
 			" charger %s, battery %s\n",
 			logged_error, ctx->curr.error, ctx->curr.ac,
 			(ctx->curr.error & F_CHARGER_MASK) ?
@@ -428,6 +430,19 @@ static enum power_state state_error(struct power_state_context *ctx)
 	return PWR_STATE_UNCHANGE;
 }
 
+static enum power_state state_force_idle(struct power_state_context *ctx)
+{
+	return PWR_STATE_UNCHANGE;
+}
+
+static enum power_state state_pause(struct power_state_context *ctx)
+{
+	while (ctx->curr.state == PWR_STATE_PAUSE)
+		usleep(SECOND);
+
+	return PWR_STATE_INIT;
+}
+
 static void charging_progress(struct power_state_context *ctx)
 {
 	int seconds, minutes;
@@ -439,7 +454,7 @@ static void charging_progress(struct power_state_context *ctx)
 		else
 			battery_time_to_empty(&minutes);
 
-		uart_printf("[Battery %3d%% / %dh:%d]\n",
+		uart_printf("[battery %3d%% / %dh:%d]\n",
 			ctx->curr.batt.state_of_charge,
 			minutes / 60, minutes % 60);
 		return;
@@ -455,7 +470,7 @@ static void charging_progress(struct power_state_context *ctx)
 		seconds = (int)(get_time().val -
 				ctx->trickle_charging_time.val) / (int)SECOND;
 		minutes = seconds / 60;
-		uart_printf("[Precharge CHG(%dmV) BATT(%dmV %dmA) "
+		uart_printf("[precharge CHG(%dmV) BATT(%dmV %dmA) "
 			"%dh:%d]\n", ctx->curr.charging_voltage,
 			ctx->curr.batt.voltage, ctx->curr.batt.current,
 			minutes / 60, minutes % 60);
@@ -476,6 +491,7 @@ void charge_state_machine_task(void)
 	ctx.trickle_charging_time.val = 0;
 	ctx.battery = battery_get_info();
 	ctx.charger = charger_get_info();
+	pwr_ctx = &ctx;
 
 	/* Setup LPC direct memmap */
 	ctx.memmap_batt_volt  = (uint32_t *)(lpc_get_memmap_range() +
@@ -507,6 +523,12 @@ void charge_state_machine_task(void)
 		case PWR_STATE_ERROR:
 			new_state = state_error(&ctx);
 			break;
+		case PWR_STATE_FORCE_IDLE:
+			new_state = state_force_idle(&ctx);
+			break;
+		case PWR_STATE_PAUSE:
+			new_state = state_pause(&ctx);
+			break;
 		default:
 			uart_printf("[Undefined charging state %d]\n",
 					ctx.curr.state);
@@ -514,11 +536,12 @@ void charge_state_machine_task(void)
 			new_state = PWR_STATE_ERROR;
 		}
 
-		if (new_state) {
-			ctx.curr.state = new_state;
-			uart_printf("[Charge state %s -> %s]\n",
+		if (force_state || new_state) {
+			ctx.curr.state = force_state ? force_state : new_state;
+			force_state = 0;
+			uart_printf("[charging state %s -> %s]\n",
 				state_name[ctx.prev.state],
-				state_name[new_state]);
+				state_name[ctx.curr.state]);
 		}
 
 		switch (new_state) {
@@ -556,6 +579,15 @@ void charge_state_machine_task(void)
 			powerled_set(POWERLED_RED);
 
 			sleep_usec = POLL_PERIOD_CHARGE;
+			break;
+		case PWR_STATE_FORCE_IDLE:
+			powerled_set(POWERLED_GREEN);
+			sleep_usec = POLL_PERIOD_LONG;
+			break;
+		case PWR_STATE_PAUSE:
+			powerled_set(POWERLED_OFF);
+			sleep_usec = POLL_PERIOD_LONG;
+			break;
 		default:
 			sleep_usec = POLL_PERIOD_SHORT;
 		}
@@ -575,4 +607,45 @@ void charge_state_machine_task(void)
 		usleep(sleep_usec);
 	}
 }
+
+/*****************************************************************************/
+/* Console commnands */
+
+static int command_charging_state(int argc, char **argv)
+{
+	struct power_state_data *curr;
+	struct batt_params *batt;
+	int i;
+
+	if (pwr_ctx == NULL) {
+		uart_puts("Charging task doesn't start.\n");
+		return EC_SUCCESS;
+	}
+
+	curr = &pwr_ctx->curr;
+	batt = &curr->batt;
+
+	if (argc == 1) {
+		uart_printf("Charging state  : %s\n", state_name[curr->state]);
+		uart_printf("Battery temp    : %d C (%d.%d K)\n",
+			(batt->temperature - 2731) / 10,
+			batt->temperature / 10, batt->temperature % 10);
+		uart_printf("Battery current : %4d mA / %4d mA\n",
+			batt->current, batt->desired_current);
+		uart_printf("Battery voltage : %4d mV / %4d mV\n",
+			batt->voltage, batt->desired_voltage);
+		uart_printf("Charger         : %4d mV , %4d mA\n",
+			curr->charging_voltage, curr->charging_current);
+		return EC_SUCCESS;
+	}
+
+	for (i = 0; state_name[i]; i++) {
+		if (strcasecmp(argv[1], state_name[i]) == 0) {
+			force_state = i;
+			break;
+		}
+	}
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(charging_state, command_charging_state);
 

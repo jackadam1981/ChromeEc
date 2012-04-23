@@ -52,7 +52,9 @@ enum power_state {
 	PWR_STATE_IDLE,
 	PWR_STATE_DISCHARGE,
 	PWR_STATE_CHARGE,
-	PWR_STATE_ERROR
+	PWR_STATE_ERROR,
+	PWR_STATE_FORCE_IDLE,
+	PWR_STATE_PAUSE
 };
 
 /* Debugging constants, in the same order as enum power_state. This string
@@ -65,7 +67,10 @@ enum power_state {
 		"idle",		\
 		"discharge",	\
 		"charge",	\
-		"error"		\
+		"error",	\
+		"force_idle",	\
+		"pause",	\
+		0		\
 	}
 	/* End of POWER_STATE_NAME_TABLE macro */
 
