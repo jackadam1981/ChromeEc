@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAKn//4+g\u003d",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-04-24T18:18:10Z",
+      "side": 1,
+      "message": "I prefer my former name :-P)\nthe fact we are switching to software interrupt mode here is a deep implement detail to workaround atomicity issue whe nre-scheduling.",
+      "revId": "c70a1802dbebf60d1d9e6dd5c588f013ef4ee1c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
