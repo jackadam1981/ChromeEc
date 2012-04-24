@@ -6,6 +6,7 @@
 /* USB charging control module for Chrome EC */
 
 #include "board.h"
+#include "chipset.h"
 #include "console.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -43,6 +44,22 @@ static void usb_charge_set_ilim(int port_id, int sel)
 		gpio_set_level(GPIO_USB1_ILIM_SEL, sel);
 	else
 		gpio_set_level(GPIO_USB2_ILIM_SEL, sel);
+}
+
+
+int usb_charge_update_mode(void)
+{
+	if (chipset_in_state(CHIPSET_STATE_SOFT_OFF)) {
+		usb_charge_set_mode(0, USB_CHARGE_MODE_DISABLED);
+		usb_charge_set_mode(1, USB_CHARGE_MODE_DISABLED);
+	}
+	else if (chipset_in_state(CHIPSET_STATE_SUSPEND) ||
+		 chipset_in_state(CHIPSET_STATE_ON)) {
+		usb_charge_set_mode(0, USB_CHARGE_MODE_DOWNSTREAM_500MA);
+		usb_charge_set_mode(1, USB_CHARGE_MODE_DOWNSTREAM_500MA);
+	}
+
+	return EC_SUCCESS;
 }
 
 
