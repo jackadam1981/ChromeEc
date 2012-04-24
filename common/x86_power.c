@@ -17,6 +17,7 @@
 #include "task.h"
 #include "timer.h"
 #include "uart.h"
+#include "usb_charge.h"
 #include "util.h"
 #include "x86_power.h"
 
@@ -302,6 +303,8 @@ void x86_power_task(void)
 	while (1) {
 		uart_printf("[%T x86 power state %d = %s, in 0x%04x]\n",
 			    state, state_names[state], in_signals);
+
+		usb_charge_update_mode();
 
 		switch (state) {
 		case X86_G3:
