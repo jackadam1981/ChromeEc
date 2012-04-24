@@ -14,6 +14,9 @@
  * enables the power supply to the fan. */
 int pwm_enable_fan(int enable);
 
+/* Return whether the fan is enabled. */
+int pwm_fan_enabled(void);
+
 /* Get the current fan RPM. */
 int pwm_get_fan_rpm(void);
 

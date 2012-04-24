@@ -103,6 +103,13 @@ static void smi_sensor_failure_warning(void)
 }
 
 
+static void smi_fan_failure_warning(void)
+{
+	lpc_set_host_events(
+		EC_LPC_HOST_EVENT_MASK(EC_LPC_HOST_EVENT_THERMAL));
+}
+
+
 static void overheated_action(void)
 {
 	if (overheated[THRESHOLD_POWER_DOWN]) {
@@ -190,9 +197,24 @@ static void thermal_process(void)
 }
 
 
+static void check_fan_failure(void)
+{
+	if (pwm_fan_enabled() &&
+	    pwm_get_fan_target_rpm() != 0 &&
+	    pwm_get_fan_rpm() == 0) {
+		/* Fan stalled. Issue warning. As we have thermal shutdown
+		 * threshold, issuing warning should be safe enough.
+		 */
+		smi_fan_failure_warning();
+		uart_printf("[Fan stalled!]\n");
+	}
+}
+
+
 void thermal_task(void)
 {
 	while (1) {
+		check_fan_failure();
 		thermal_process();
 		usleep(1000000);
 	}

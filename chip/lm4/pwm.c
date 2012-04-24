@@ -60,6 +60,12 @@ int pwm_enable_fan(int enable)
 }
 
 
+int pwm_fan_enabled(void)
+{
+	return LM4_FAN_FANCTL & (1 << FAN_CH_CPU);
+}
+
+
 int pwm_get_fan_rpm(void)
 {
 	return (LM4_FAN_FANCST(FAN_CH_CPU) & MAX_RPM) * CPU_FAN_SCALE;
