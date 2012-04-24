@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAKn//5E4\u003d",
+        "filename": "chip/lm4/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-04-24T16:33:00Z",
+      "side": 1,
+      "message": "Use FANSTS register to check for fan stall (if fan is enabled).\n\nDo the checking in pwm_task().",
+      "revId": "d7209f9a10f0280f8008d6162ab9c94dd48b9518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//5E8\u003d",
+        "filename": "common/thermal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-04-24T16:33:00Z",
+      "side": 1,
+      "message": "Why not do this in pwm_task()?  Then you don\u0027t need to expose new fan APIs.",
+      "revId": "d7209f9a10f0280f8008d6162ab9c94dd48b9518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
