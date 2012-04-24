@@ -58,12 +58,13 @@ static uint64_t task_start_time; /* Time task scheduling started */
 static uint64_t exc_start_time;  /* Time of task->exception transition */
 static uint64_t exc_end_time;    /* Time of exception->task transition */
 static uint64_t exc_total_time;  /* Total time in exceptions */
-static uint32_t svc_calls;       /* Service calls */
+static uint32_t svc_calls;       /* Number of service calls */
+static uint32_t task_switches;   /* Number of times active task changed */
 static uint32_t irq_dist[CONFIG_IRQ_COUNT];  /* Distribution of IRQ calls */
 #endif
 
 extern void __switchto(task_ *from, task_ *to);
-extern int __task_start(int *need_resched);
+extern int __task_start(int *irq_to_svc);
 
 /* Idle task.  Executed when no tasks are ready to be scheduled. */
 void __idle(void)
@@ -109,12 +110,16 @@ static task_ tasks[] __attribute__((section(".data.tasks")))
 /* Reserve space to discard context on first context switch. */
 uint32_t scratchpad[17] __attribute__((section(".data.tasks")));
 
-/* Has task context switching been enabled? */
-/* TODO: (crosbug.com/p/9274) this currently gets enabled at tast start time
- * and never cleared.  We should optimize when we need to call svc_handler()
- * so we don't waste time calling it if we're not profiling and no event has
- * occurred. */
-static int need_resched = 0;
+/* Should IRQs chain to svc_handler()?  This should be set if either of the
+ * following is true:
+ *
+ * 1) Task scheduling has started, and task profiling is enabled.  Task
+ * profiling does its tracking in svc_handler().
+ *
+ * 2) An event was set by an interrupt; this could result in a higher-priority
+ * task unblocking.  After checking for a task switch, svc_handler() will clear
+ * the flag (unless profiling is also enabled). */
+static int irq_to_svc = 0;
 
 /**
  * bitmap of all tasks ready to be run
@@ -247,12 +252,20 @@ void svc_handler(int desched, task_id_t resched)
 	 * and the start of this one. */
 	current->runtime += (exc_start_time - exc_end_time);
 	exc_end_time = t;
+#else
+	/* Don't chain here from interrupts until the next time an interrupt
+	 * sets an event. */
+	irq_to_svc = 0;
 #endif
 
 	/* Nothing to do */
 	if (next == current)
 		return;
 
+	/* Switch to new task */
+#ifdef CONFIG_TASK_PROFILING
+	task_switches++;
+#endif
 	__switchto(current, next);
 }
 
@@ -261,9 +274,8 @@ void __schedule(int desched, int resched)
 {
 	register int p0 asm("r0") = desched;
 	register int p1 asm("r1") = resched;
-	/* TODO remove hardcoded opcode
-	 * SWI not compiled properly for ARMv7-M on our current chroot toolchain
-	 */
+	/* TODO: remove hardcoded opcode.  SWI is not compiled properly for
+	 * ARMv7-M on our current chroot toolchain. */
 	asm(".hword 0xdf00 @swi 0"::"r"(p0),"r"(p1));
 }
 
@@ -284,7 +296,7 @@ void task_start_irq_handler(void *excep_return)
 	/* Continue iff a rescheduling event happened and we are not called
 	 * from another exception (this must match the logic for when we chain
 	 * to svc_handler() below). */
-	if (!need_resched || (((uint32_t)excep_return & 0xf) == 1))
+	if (!irq_to_svc || (((uint32_t)excep_return & 0xf) == 1))
 		return;
 
 	exc_start_time = t;
@@ -296,7 +308,7 @@ void task_resched_if_needed(void *excep_return)
 {
 	/* Continue iff a rescheduling event happened and we are not called
 	 * from another exception. */
-	if (!need_resched || (((uint32_t)excep_return & 0xf) == 1))
+	if (!irq_to_svc || (((uint32_t)excep_return & 0xf) == 1))
 		return;
 
 	svc_handler(0, 0);
@@ -335,13 +347,16 @@ uint32_t task_set_event(task_id_t tskid, uint32_t event, int wait)
 	task_ *receiver = __task_id_to_ptr(tskid);
 	ASSERT(receiver);
 
-	/* set the event bit in the receiver message bitmap */
+	/* Set the event bit in the receiver message bitmap */
 	atomic_or(&receiver->events, event);
 
 	/* Re-schedule if priorities have changed */
 	if (in_interrupt_context()) {
-		/* the receiver might run again */
+		/* The receiver might run again */
 		atomic_or(&tasks_ready, 1 << tskid);
+#ifndef CONFIG_TASK_PROFILING
+		irq_to_svc = 1;
+#endif
 	} else {
 		if (wait)
 			return __wait_evt(-1, tskid);
@@ -470,21 +485,10 @@ void mutex_unlock(struct mutex *mtx)
 
 int command_task_info(int argc, char **argv)
 {
-	int i;
-
 #ifdef CONFIG_TASK_PROFILING
-	uart_printf("Task switching started: %10ld us\n", task_start_time);
-	uart_printf("Time in tasks:          %10ld us\n",
-		    get_time().val - task_start_time);
-	uart_printf("Time in exceptions:     %10ld us\n", exc_total_time);
-	uart_flush_output();
-	uart_printf("Service calls:          %10d\n", svc_calls);
-	uart_puts("IRQ counts by type:\n");
-	for (i = 0; i < ARRAY_SIZE(irq_dist); i++) {
-		if (irq_dist[i])
-			uart_printf("%4d %8d\n", i, irq_dist[i]);
-	}
+	int total = 0;
 #endif
+	int i;
 
 	uart_puts("Task Ready Name         Events    Time (us)\n");
 
@@ -494,6 +498,25 @@ int command_task_info(int argc, char **argv)
 			    task_names[i], tasks[i].events, tasks[i].runtime);
 		uart_flush_output();
 	}
+
+#ifdef CONFIG_TASK_PROFILING
+	uart_puts("IRQ counts by type:\n");
+	uart_flush_output();
+	for (i = 0; i < ARRAY_SIZE(irq_dist); i++) {
+		if (irq_dist[i]) {
+			uart_printf("%4d %8d\n", i, irq_dist[i]);
+			total += irq_dist[i];
+		}
+	}
+	uart_printf("Service calls:          %10d\n", svc_calls);
+	uart_printf("Total exceptions:       %10d\n", total + svc_calls);
+	uart_printf("Task switches:          %10d\n", task_switches);
+	uart_printf("Task switching started: %10ld us\n", task_start_time);
+	uart_printf("Time in tasks:          %10ld us\n",
+		    get_time().val - task_start_time);
+	uart_printf("Time in exceptions:     %10ld us\n", exc_total_time);
+#endif
+
 
 
 	return EC_SUCCESS;
@@ -540,5 +563,5 @@ int task_start(void)
 	task_start_time = exc_end_time = get_time().val;
 #endif
 
-	return __task_start(&need_resched);
+	return __task_start(&irq_to_svc);
 }
