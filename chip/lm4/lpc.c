@@ -6,6 +6,7 @@
 /* LPC module for Chrome EC */
 
 #include "board.h"
+#include "console.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
@@ -375,6 +376,50 @@ static void lpc_post_sysjump(void)
 	memcpy(event_mask, prev_mask, sizeof(event_mask));
 	update_host_event_status();
 }
+
+
+static int command_write_memmap(int argc, char **argv)
+{
+	volatile uint32_t *address;
+	uint32_t value;
+
+	if (argc != 3) {
+		uart_puts("Usage: wwmemmap <address> <value>\n");
+		return EC_ERROR_UNKNOWN;
+	}
+	address = (uint32_t*)(lpc_get_memmap_range() +
+		  strtoi(argv[1], NULL, 0));
+	value = strtoi(argv[2], NULL, 0);
+
+	uart_printf("write word to memmap 0x%p = 0x%08x\n", address, value);
+	uart_flush_output();
+
+	*address = value;
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(wwmemmap, command_write_memmap);
+
+
+static int command_read_memmap(int argc, char **argv)
+{
+	volatile uint32_t *address;
+	uint32_t value;
+
+	if (argc != 2) {
+		uart_puts("Usage: rwmemmap <address>\n");
+		return EC_ERROR_UNKNOWN;
+	}
+	address = (uint32_t*)(lpc_get_memmap_range() +
+		  strtoi(argv[1], NULL, 0));
+	value = *address;
+
+	uart_printf("read word memmap 0x%p = 0x%08x\n", address, value);
+	uart_flush_output();
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(rwmemmap, command_read_memmap);
 
 
 static int lpc_init(void)
