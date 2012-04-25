@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAKn//3aU\u003d",
+        "filename": "chip/lm4/pwm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-04-25T21:25:30Z",
+      "side": 1,
+      "message": "Please use cputs()\n\n(You\u0027ll need to define a new CC_PWM console channel too)",
+      "revId": "d2557262a9ccaa3b5d25b490426f672f77c68ad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
