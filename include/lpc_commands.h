@@ -347,15 +347,11 @@ struct lpc_params_pwm_set_keyboard_backlight {
 /*****************************************************************************/
 /* Lightbar commands */
 
-#define EC_LPC_COMMAND_LIGHTBAR_RESET 0x28
-/* No params needed */
-
-#define EC_LPC_COMMAND_LIGHTBAR_TEST 0x29
-struct lpc_params_lightbar_test {
-	uint8_t tbd;
+#define EC_LPC_COMMAND_LIGHTBAR_CMD 0x28
+struct lpc_params_lightbar_cmd {
+	uint8_t cmd;
+	uint8_t buf[EC_LPC_PARAM_SIZE];	/* params vary */
 } __attribute__ ((packed));
-
-
 
 /*****************************************************************************/
 /* USB charging control commands */

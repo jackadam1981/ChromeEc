@@ -582,7 +582,7 @@ struct lightbar_cmd_t {
 	uint32_t (*sequence)(void);
 };
 
-#define LBMSG(state) { #state, sequence_##state },
+#define LBMSG(state) { #state, sequence_##state }
 #include "lightbar_msg_list.h"
 static struct lightbar_cmd_t lightbar_cmds[] = {
 	LIGHTBAR_MSG_LIST
@@ -652,24 +652,135 @@ void lightbar_sequence(enum lightbar_sequence num)
 
 
 /****************************************************************************/
+/* Generic command-handling (should work the same for both console & LPC) */
+/****************************************************************************/
+
+static const uint8_t dump_reglist[] = {
+	0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
+	0x08, 0x09, 0x0a,                         0x0f,
+	0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17,
+	0x18, 0x19, 0x1a
+};
+
+const struct lightbar_command_paramcount_s
+lightbar_command_paramcount[LIGHTBAR_NUM_CMDS] = {
+	{ 0, ARRAY_SIZE(dump_reglist) * 3 }, /* DUMP => N * (reg val0 val1) */
+	{ 0, 0 },			     /* OFF */
+	{ 0, 0 },			     /* ON */
+	{ 0, 0 },			     /* INIT */
+	{ 1, 0 },			     /* BRIGHTNESS <= NUM*/
+	{ 1, 0 },			     /* SEQUENCE <= NUM */
+	{ 3, 0 },			     /* REGISTER <= CTRL REG VAL */
+	{ 4, 0 },			     /* RGB <= LED RED GREEN BLUE */
+};
+
+
+static void do_cmd_dump(uint8_t *inptr, uint8_t *outptr)
+{
+	int i;
+	uint8_t reg;
+	CPRINTF("HEY: %s(%p, %p)\n", __func__, inptr, outptr);
+	for (i = 0; i < ARRAY_SIZE(dump_reglist); i++) {
+		reg = dump_reglist[i];
+		*outptr++ = reg;
+		*outptr++ = controller_read(0, reg);
+		*outptr++ = controller_read(1, reg);
+	}
+}
+
+static void do_cmd_off(uint8_t *inptr, uint8_t *outptr)
+{
+	lightbar_off();
+}
+
+static void do_cmd_on(uint8_t *inptr, uint8_t *outptr)
+{
+	lightbar_on();
+}
+
+static void do_cmd_init(uint8_t *inptr, uint8_t *outptr)
+{
+	lightbar_init_vals();
+}
+
+static void do_cmd_brightness(uint8_t *inptr, uint8_t *outptr)
+{
+	lightbar_brightness(*inptr);
+}
+
+static void do_cmd_sequence(uint8_t *inptr, uint8_t *outptr)
+{
+	lightbar_sequence(*inptr);
+}
+
+static void do_cmd_register(uint8_t *inptr, uint8_t *outptr)
+{
+	controller_write(inptr[0], inptr[1], inptr[2]);
+}
+
+static void do_cmd_rgb(uint8_t *inptr, uint8_t *outptr)
+{
+	uint8_t led = inptr[0];
+	uint8_t red = inptr[1];
+	uint8_t green = inptr[2];
+	uint8_t blue = inptr[3];
+	int i;
+
+	if (led >= NUM_LEDS)
+		for (i = 0; i < NUM_LEDS; i++)
+			lightbar_setrgb(i, red, green, blue);
+	else
+		lightbar_setrgb(led, red, green, blue);
+}
+
+
+/****************************************************************************/
 /* Host commands via LPC bus */
 /****************************************************************************/
 
-/* FIXME(wfrichar): provide the same functions as the EC console */
-
-static enum lpc_status lpc_cmd_reset(uint8_t *data)
+static enum lpc_status lpc_cmd_lightbar(uint8_t *data)
 {
-	lightbar_init_vals();
+	struct lpc_params_lightbar_cmd *ptr =
+		(struct lpc_params_lightbar_cmd *)data;
+	CPRINTF("[%s(%p/%d).%p %p:%02x %02x %02x %02x ...]\n", __func__,
+		ptr, ptr->cmd, ptr->buf, data,
+		data[0], data[1], data[2], data[3]);
+	switch (ptr->cmd) {
+	case LIGHTBAR_CMD_DUMP:
+		do_cmd_dump(ptr->buf, data);
+		break;
+	case LIGHTBAR_CMD_OFF:
+		do_cmd_off(ptr->buf, data);
+		break;
+	case LIGHTBAR_CMD_ON:
+		do_cmd_on(ptr->buf, data);
+		break;
+	case LIGHTBAR_CMD_INIT:
+		do_cmd_init(ptr->buf, data);
+		break;
+	case LIGHTBAR_CMD_BRIGHTNESS:
+		do_cmd_brightness(ptr->buf, data);
+		break;
+	case LIGHTBAR_CMD_SEQUENCE:
+		do_cmd_sequence(ptr->buf, data);
+		break;
+	case LIGHTBAR_CMD_REGISTER:
+		do_cmd_register(ptr->buf, data);
+		break;
+	case LIGHTBAR_CMD_RGB:
+		do_cmd_rgb(ptr->buf, data);
+		break;
+	default:
+		return EC_LPC_RESULT_INVALID_PARAM;
+	}
+
+	CPRINTF("[leaving %s() with %p:%02x %02x %02x %02x ...]\n", __func__,
+		data[0], data[1], data[2], data[3]);
+
 	return EC_LPC_RESULT_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_LPC_COMMAND_LIGHTBAR_RESET, lpc_cmd_reset);
 
-static enum lpc_status lpc_cmd_test(uint8_t *data)
-{
-	lightbar_sequence(LIGHTBAR_TEST);
-	return EC_LPC_RESULT_SUCCESS;
-}
-DECLARE_HOST_COMMAND(EC_LPC_COMMAND_LIGHTBAR_TEST, lpc_cmd_test);
+DECLARE_HOST_COMMAND(EC_LPC_COMMAND_LIGHTBAR_CMD, lpc_cmd_lightbar);
 
 
 /****************************************************************************/
@@ -678,46 +789,34 @@ DECLARE_HOST_COMMAND(EC_LPC_COMMAND_LIGHTBAR_TEST, lpc_cmd_test);
 
 static int help(const char *cmd)
 {
-	ccprintf("Usage:  %s\n", cmd);
-	ccprintf("        %s off\n", cmd);
-	ccprintf("        %s init\n", cmd);
-	ccprintf("        %s on\n", cmd);
-	ccprintf("        %s msg NUM\n", cmd);
-	ccprintf("        %s brightness NUM\n", cmd);
-	ccprintf("        %s CTRL REG VAL\n", cmd);
-	ccprintf("        %s LED RED GREEN BLUE\n", cmd);
-	return EC_ERROR_UNKNOWN;
+	ccprintf("Usage:\n");
+	ccprintf("  %s                       - dump all regs\n", cmd);
+	ccprintf("  %s off                   - enter standby\n", cmd);
+	ccprintf("  %s init                  - load default vals\n", cmd);
+	ccprintf("  %s on                    - leave standby\n", cmd);
+	ccprintf("  %s seq [NUM|SEQUENCE]    - run given pattern"
+		 " (no arg for list)\n", cmd);
+	ccprintf("  %s brightness NUM        - set intensity (0-ff)\n", cmd);
+	ccprintf("  %s CTRL REG VAL          - set LED controller regs\n", cmd);
+	ccprintf("  %s LED RED GREEN BLUE    - set color manually"
+		 " (LED=4 for all)\n", cmd);
+	return EC_SUCCESS;
 }
 
-static void dump_regs(void)
+static uint8_t find_msg_by_name(const char *str)
 {
-	int reg, d1, d2, i;
-	int reglist[] = { 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
-			  0x08, 0x09, 0x0a,                         0x0f,
-			  0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17,
-			  0x18, 0x19, 0x1a };
-	for (i = 0; i < ARRAY_SIZE(reglist); i++) {
-		reg = reglist[i];
-		d1 = controller_read(0, reg);
-		d2 = controller_read(1, reg);
-		ccprintf(" %02x     %02x     %02x\n", reg, d1, d2);
-	}
-}
-
-static int find_msg_by_name(const char *str)
-{
-	int i;
+	uint8_t i;
 	for (i = 0; i < LIGHTBAR_NUM_SEQUENCES; i++)
 		if (!strcasecmp(str, lightbar_cmds[i].string))
 			return i;
 
-	return LIGHTBAR_ERROR;
+	return LIGHTBAR_NUM_SEQUENCES;
 }
 
 static void show_msg_names(void)
 {
 	int i;
-	ccprintf("message names: ");
+	ccprintf("sequence names:");
 	for (i = 0; i < LIGHTBAR_NUM_SEQUENCES; i++)
 		ccprintf(" %s", lightbar_cmds[i].string);
 	ccprintf("\n");
@@ -725,69 +824,71 @@ static void show_msg_names(void)
 
 static int command_lightbar(int argc, char **argv)
 {
-	int i;
+	int i, j;
+	uint8_t buf[128];
 
 	if (1 == argc) {		/* no args = dump 'em all */
-		dump_regs();
+		do_cmd_dump(0, buf);
+		for (i = j = 0; i < ARRAY_SIZE(dump_reglist); i++, j += 3) {
+			ccprintf(" %02x     %02x     %02x\n",
+				 buf[j], buf[j+1], buf[j+2]);
+		}
 		return EC_SUCCESS;
 	}
 
 	if (argc == 2 && !strcasecmp(argv[1], "init")) {
-		lightbar_init_vals();
+		do_cmd_init(0, 0);
 		return EC_SUCCESS;
 	}
 
 	if (argc == 2 && !strcasecmp(argv[1], "off")) {
-		lightbar_off();
+		do_cmd_off(0, 0);
 		return EC_SUCCESS;
 	}
 
 	if (argc == 2 && !strcasecmp(argv[1], "on")) {
-		lightbar_on();
+		do_cmd_on(0, 0);
 		return EC_SUCCESS;
 	}
 
 	if (argc == 3 && !strcasecmp(argv[1], "brightness")) {
 		char *e;
-		int num = strtoi(argv[2], &e, 16);
-		lightbar_brightness(num);
+		buf[0] = 0xff & strtoi(argv[2], &e, 16);
+		do_cmd_brightness(buf, 0);
 		return EC_SUCCESS;
 	}
 
-	if (argc >= 2 && !strcasecmp(argv[1], "msg")) {
+	if (argc >= 2 && !strcasecmp(argv[1], "seq")) {
 		char *e;
-		int num;
 		if (argc == 2) {
 			show_msg_names();
 			return EC_SUCCESS;
 		}
-		num = strtoi(argv[2], &e, 16);
+		buf[0] = 0xff & strtoi(argv[2], &e, 16);
 		if (e && *e)
-			num = find_msg_by_name(argv[2]);
-		lightbar_sequence(num);
+			buf[0] = find_msg_by_name(argv[2]);
+		if (buf[0] >= LIGHTBAR_NUM_SEQUENCES)
+			return EC_ERROR_INVAL;
+		do_cmd_sequence(buf, 0);
 		return EC_SUCCESS;
 	}
 
 	if (argc == 4) {
 		char *e;
-		int ctrl = strtoi(argv[1], &e, 16);
-		int reg = strtoi(argv[2], &e, 16);
-		int val = strtoi(argv[3], &e, 16);
-		controller_write(ctrl, reg, val);
+		buf[0] = 0xff & strtoi(argv[1], &e, 16);
+		buf[1] = 0xff & strtoi(argv[2], &e, 16);
+		buf[2] = 0xff & strtoi(argv[3], &e, 16);
+		do_cmd_register(buf, 0);
 		return EC_SUCCESS;
 	}
 
 	if (argc == 5) {
 		char *e;
-		int led = strtoi(argv[1], &e, 16);
-		int red = strtoi(argv[2], &e, 16);
-		int green = strtoi(argv[3], &e, 16);
-		int blue = strtoi(argv[4], &e, 16);
-		if (led >= NUM_LEDS)
-			for (i = 0; i < NUM_LEDS; i++)
-				lightbar_setrgb(i, red, green, blue);
-		else
-			lightbar_setrgb(led, red, green, blue);
+		buf[0] = strtoi(argv[1], &e, 16);
+		buf[1] = strtoi(argv[2], &e, 16);
+		buf[2] = strtoi(argv[3], &e, 16);
+		buf[3] = strtoi(argv[4], &e, 16);
+		do_cmd_rgb(buf, 0);
 		return EC_SUCCESS;
 	}
 
