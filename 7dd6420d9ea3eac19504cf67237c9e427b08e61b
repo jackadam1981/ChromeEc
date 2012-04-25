@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAKn//3Zc\u003d",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-04-25T21:37:10Z",
+      "side": 1,
+      "message": "you are relying on the compiler implementation of enum to clip the high bits ?\nI\u0027m not sure this is a good idea.",
+      "revId": "7dd6420d9ea3eac19504cf67237c9e427b08e61b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
