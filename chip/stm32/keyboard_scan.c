@@ -66,7 +66,7 @@ struct kbc_gpio {
 	int pin;
 };
 
-#if defined(BOARD_daisy) || defined(BOARD_adv)
+#if defined(BOARD_daisy) || defined(BOARD_adv) || defined(BOARD_snow)
 static const uint32_t ports[] = { GPIO_B, GPIO_C, GPIO_D };
 #elif defined(BOARD_discovery)
 static const uint32_t ports[] = { GPIO_A, GPIO_B, GPIO_C, GPIO_D };
@@ -183,7 +183,6 @@ static int check_keys_changed(void)
 		udelay(50);
 
 		r = 0;
-#if defined(BOARD_daisy) || defined(BOARD_discovery) || defined(BOARD_adv)
 		tmp = STM32_GPIO_IDR(C);
 		/* KB_COL00:04 = PC8:12 */
 		if (tmp & (1 << 8))
@@ -209,9 +208,6 @@ static int check_keys_changed(void)
 
 		/* Invert it so 0=not pressed, 1=pressed */
 		r ^= 0xff;
-#else
-#error "Key scanning unsupported on this board"
-#endif
 		/* Mask off keys that don't exist so they never show
 		 * as pressed */
 		r &= actual_key_mask[c];
