@@ -1,0 +1,15 @@
+# Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+#
+# STM32F chip specific files build
+#
+
+# STM32F SoC family has a Cortex-M3 ARM core
+CORE:=cortex-m
+
+chip-y=clock.o dma.o gpio.o hwtimer.o jtag.o system.o uart.o
+chip-$(CONFIG_SPI)+=spi.o
+chip-$(CONFIG_I2C)+=i2c.o
+chip-$(CONFIG_TASK_WATCHDOG)+=watchdog.o
+chip-$(CONFIG_TASK_KEYSCAN)+=keyboard_scan.o
