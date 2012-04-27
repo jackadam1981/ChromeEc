@@ -468,11 +468,15 @@ struct lpc_response_host_event_mask {
  * reboot command is processed at interrupt level.  Note that when the EC
  * reboots, the host will reboot too, so there is no response to this
  * command. */
-#define EC_LPC_COMMAND_REBOOT 0xd1  /* Think "die" */
+#define EC_LPC_COMMAND_REBOOT 0xd1  /* Think "die" or maybe "die and rise" */
 
 #define EC_LPC_COMMAND_REBOOT_EC 0xd2
+#define EC_LPC_COMMAND_REBOOT_BIT_RECOVERY (1 << 0)
+#define EC_LPC_COMMAND_REBOOT_BIT_START_UP (1 << 1)
+
 struct lpc_params_reboot_ec {
 	uint8_t target;  /* enum lpc_current_image */
+	uint8_t reboot_flags;  /* enum lpc_current_image */
 } __attribute__ ((packed));
 
 #endif  /* !__ACPI__ */
