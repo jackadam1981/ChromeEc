@@ -57,6 +57,12 @@ int system_common_pre_init(void);
  * the cause is not known. */
 enum system_reset_cause_t system_get_reset_cause(void);
 
+/* returns a Boolean indicating if BIOS should come up in recovery mode */
+int system_get_recovery_required(void);
+
+/* returns a Boolean indicating if BIOS shoud be started up immediately */
+int system_get_startup_required(void);
+
 /* Record the cause of the last reset. */
 void system_set_reset_cause(enum system_reset_cause_t cause);
 
@@ -94,7 +100,9 @@ int system_unsafe_to_overwrite(uint32_t offset, uint32_t size);
 const char *system_get_image_copy_string(void);
 
 /* Jumps to the specified image copy.  Only works from RO firmware. */
-int system_run_image_copy(enum system_image_copy_t copy);
+int system_run_image_copy(enum system_image_copy_t copy,
+			  int recovery_request,
+			  int startup_request);
 
 /* Returns the version string for an image copy, or an empty string if
  * error.  If copy==SYSTEM_IMAGE_UNKNOWN, returns the version for the
@@ -134,5 +142,8 @@ void system_hibernate(uint32_t seconds, uint32_t microseconds);
 
 /* minimum duration to get proper hibernation */
 #define SYSTEM_HIB_MINIMUM_DURATION 0, 1000
+
+/* Simulate a brief (100 ms) power button press */
+void pulse_power_button(void);
 
 #endif  /* __CROS_EC_SYSTEM_H */

@@ -10,6 +10,7 @@
 #include "task.h"
 #include "uart.h"
 #include "util.h"
+#include "system.h"
 
 #define MAX_ARGS_PER_COMMAND 10
 
@@ -167,6 +168,9 @@ static int console_init(void)
 	uart_set_console_mode(1);
 	ccprintf("Console is enabled; type HELP for help.\n");
 	ccputs(PROMPT);
+
+	if (system_get_startup_required())
+		pulse_power_button();
 
 	/* TODO: restore channel list from EEPROM */
 
