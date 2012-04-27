@@ -18,7 +18,9 @@
 #define CPRINTF(format, args...) cprintf(CC_I2C, format, ## args)
 
 /* 8-bit I2C slave address */
-#define I2C_ADDRESS 0xec
+/* FIXME: This was changed from 0xec to 0x3c to avoid issues with incompatible
+   updates to host<-->EC message protocol. */
+#define I2C_ADDRESS 0x3c
 
 /* I2C bus frequency */
 #define I2C_FREQ 100000 /* Hz */
