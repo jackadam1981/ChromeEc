@@ -63,6 +63,8 @@ enum COLUMN_INDEX {
 
 #define KB_COLS 13
 
+
+static int enable_scanning = 1;
 static uint8_t raw_state[KB_COLS];
 static uint8_t raw_state_at_boot[KB_COLS];
 static int recovery_key_pressed;
@@ -401,6 +403,7 @@ void keyboard_scan_task(void)
 
 	/* Enable interrupts */
 	task_enable_irq(KB_SCAN_ROW_IRQ);
+	enable_scanning = 1;
 
 	while (1) {
 		wait_for_interrupt();
@@ -422,10 +425,9 @@ void keyboard_scan_task(void)
 				}
 			}
 		}
-		/* TODO: (crosbug.com/p/7484) A race condition here.
-		 *       If a key state is changed here (before interrupt is
-		 *       enabled), it will be lost.
-		 */
+		while (!enable_scanning) {
+			usleep(SCAN_LOOP_DELAY);
+		}
 	}
 }
 
@@ -463,4 +465,18 @@ void keyboard_put_char(uint8_t chr, int send_irq)
 int keyboard_get_scan(uint8_t **buffp, int max_bytes)
 {
 	return -1;
+}
+
+
+void keyboard_enable_scanning(int enable)
+{
+	enable_scanning = enable;
+	if (enable) {
+		/* A power button press had tri-staged all columns (see the
+		 * 'else' statement below), we need a wake-up to unlock
+		 * the task_wait_event() loop after wait_for_interrupt(). */
+		task_wake(TASK_ID_KEYSCAN);
+	} else {
+		select_column(COLUMN_TRI_STATE_ALL);
+	}
 }
