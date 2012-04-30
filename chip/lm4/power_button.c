@@ -204,6 +204,7 @@ static void power_button_changed(uint64_t tnow)
 		 * power button was released. */
 		CPRINTF("[%T PB released after keyboard reset]\n");
 		pwrbtn_state = PWRBTN_STATE_STOPPED;
+		keyboard_enable_scanning(1);
 	} else {
 		/* Power button released normally (outside of a
 		 * keyboard-controlled reset) */
@@ -212,6 +213,7 @@ static void power_button_changed(uint64_t tnow)
 		tnext_state = tnow;
 		*memmap_switches &= ~EC_LPC_SWITCH_POWER_BUTTON_PRESSED;
 		keyboard_set_power_button(0);
+		keyboard_enable_scanning(1);
 	}
 }
 
@@ -272,6 +274,7 @@ void power_button_interrupt(enum gpio_signal signal)
 		break;
 	case GPIO_POWER_BUTTONn:
 		tdebounce_pwr = get_time().val + PWRBTN_DEBOUNCE_US;
+		keyboard_enable_scanning(0);
 		break;
 	case GPIO_PCH_BKLTEN:
 		update_backlight();
