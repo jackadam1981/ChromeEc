@@ -63,6 +63,8 @@ enum COLUMN_INDEX {
 
 #define KB_COLS 13
 
+
+static int enable_scanning = 1;
 static uint8_t raw_state[KB_COLS];
 static uint8_t raw_state_at_boot[KB_COLS];
 static int recovery_key_pressed;
@@ -96,6 +98,7 @@ static void select_column(int col)
 {
 #ifdef BOARD_link
 	if (col == COLUMN_ASSERT_ALL) {
+		if (!enable_scanning) return;
 		LM4_GPIO_DIR(LM4_GPIO_P) = 0xff;
 		LM4_GPIO_DIR(LM4_GPIO_Q) |= 0x1f;
 		LM4_GPIO_DATA(LM4_GPIO_P, 0xff) = 0;
@@ -103,7 +106,9 @@ static void select_column(int col)
 	} else {
 		LM4_GPIO_DIR(LM4_GPIO_P) = 0;
 		LM4_GPIO_DIR(LM4_GPIO_Q) &= ~0x1f;
-		if (col < 8) {
+		if (!enable_scanning) return;
+
+		if (col >= 0 && col < 8) {
 			LM4_GPIO_DIR(LM4_GPIO_P) |= 1 << col;
 			LM4_GPIO_DATA(LM4_GPIO_P, 1 << col) = 0;
 		} else if (col != COLUMN_TRI_STATE_ALL) {
@@ -401,6 +406,7 @@ void keyboard_scan_task(void)
 
 	/* Enable interrupts */
 	task_enable_irq(KB_SCAN_ROW_IRQ);
+	enable_scanning = 1;
 
 	while (1) {
 		wait_for_interrupt();
@@ -422,10 +428,9 @@ void keyboard_scan_task(void)
 				}
 			}
 		}
-		/* TODO: (crosbug.com/p/7484) A race condition here.
-		 *       If a key state is changed here (before interrupt is
-		 *       enabled), it will be lost.
-		 */
+		while (!enable_scanning) {
+			usleep(SCAN_LOOP_DELAY);
+		}
 	}
 }
 
@@ -463,4 +468,21 @@ void keyboard_put_char(uint8_t chr, int send_irq)
 int keyboard_get_scan(uint8_t **buffp, int max_bytes)
 {
 	return -1;
+}
+
+
+/* The actuall implementation is controlling the enable_scanning variable,
+ * then that controls whether select_column() can pull-down columns or not.
+ */
+void keyboard_enable_scanning(int enable)
+{
+	enable_scanning = enable;
+	if (enable) {
+		/* A power button press had tri-staged all columns (see the
+		 * 'else' statement below), we need a wake-up to unlock
+		 * the task_wait_event() loop after wait_for_interrupt(). */
+		task_wake(TASK_ID_KEYSCAN);
+	} else {
+		select_column(COLUMN_TRI_STATE_ALL);
+	}
 }
