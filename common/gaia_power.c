@@ -183,6 +183,8 @@ void gaia_power_task(void)
 
 		/* if PP1800_LDO2 did not come up (e.g. PMIC_TIMEOUT was
 		 * reached), turn off 5v rail and start over */
+		 /* FIXME(frh): Get more accurate estimate for this delay */
+		usleep(17000);
 		if (gpio_get_level(GPIO_PP1800_LDO2) == 0) {
 			gpio_set_level(GPIO_EN_PP5000, 0);
 			usleep(DELAY_5V_SETUP);
