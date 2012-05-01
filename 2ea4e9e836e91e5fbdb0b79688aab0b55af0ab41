@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAKn//yIY\u003d",
+        "filename": "chip/stm32/config-stm32f100.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-05-01T23:40:04Z",
+      "side": 1,
+      "message": "Should this be renamed config-stm32f100r8? We may add support for other variants with different RAM/flash size...",
+      "revId": "2ea4e9e836e91e5fbdb0b79688aab0b55af0ab41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
