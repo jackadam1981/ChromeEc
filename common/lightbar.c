@@ -645,7 +645,7 @@ void lightbar_task(void)
 /* Function to request a preset sequence from the lightbar task. */
 void lightbar_sequence(enum lightbar_sequence num)
 {
-	CPRINTF("[%s(%d)]\n", __func__, num);
+	CPRINTF("[%s(%d) - task %d]\n", __func__, num, task_get_current());
 	if (num && num < LIGHTBAR_NUM_SEQUENCES)
 		task_set_event(TASK_ID_LIGHTBAR,
 			       TASK_EVENT_WAKE | TASK_EVENT_CUSTOM(num), 0);
@@ -856,3 +856,15 @@ static int command_lightbar(int argc, char **argv)
 	return help(argv[0]);
 }
 DECLARE_CONSOLE_COMMAND(lightbar, command_lightbar);
+
+
+static int command_foo(int argc, char **argv)
+{
+
+	lightbar_sequence(LIGHTBAR_STOP);
+	lightbar_sequence(LIGHTBAR_S3);
+	lightbar_sequence(LIGHTBAR_S0);
+
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(foo, command_foo);
