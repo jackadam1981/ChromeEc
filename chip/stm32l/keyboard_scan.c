@@ -127,8 +127,6 @@ int keyboard_scan_init(void)
 {
 	int i;
 
-	CPRINTF("[kbscan %s()] initializing keyboard...\n", __func__);
-
 	/* Tri-state (put into Hi-Z) the outputs */
 	select_column(COL_TRI_STATE_ALL);
 
@@ -239,7 +237,7 @@ static int check_keys_changed(void)
 	if (change) {
 		memcpy(saved_state, raw_state, sizeof(saved_state));
 		board_keyboard_scan_ready();
-
+#if 0
 		CPRINTF("[%d keys pressed: ", num_press);
 		for (c = 0; c < KB_COLS; c++) {
 			if (raw_state[c])
@@ -248,6 +246,7 @@ static int check_keys_changed(void)
 				CPUTS(" --");
 		}
 		CPUTS("]\n");
+#endif
 	}
 
 	return num_press ? 1 : 0;
