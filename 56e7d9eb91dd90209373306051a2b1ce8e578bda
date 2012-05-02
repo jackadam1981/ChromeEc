@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAKn//xbw\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-05-02T16:44:26Z",
+      "side": 1,
+      "message": "we are already waiting 100ms (aka PMIC TIMEOUT) for LDO2 input to be 1. \nyou are trying to add a delay between which events ?",
+      "revId": "56e7d9eb91dd90209373306051a2b1ce8e578bda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//xcA\u003d",
+        "filename": "common/gaia_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-05-02T16:44:26Z",
+      "side": 1,
+      "message": "it seems this comment should be after the usleep",
+      "revId": "56e7d9eb91dd90209373306051a2b1ce8e578bda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//xcE\u003d",
+        "filename": "common/gaia_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-05-02T16:44:26Z",
+      "side": 1,
+      "message": "you should add a DELAY_ constant at the top of this file with the other ones.",
+      "revId": "56e7d9eb91dd90209373306051a2b1ce8e578bda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
