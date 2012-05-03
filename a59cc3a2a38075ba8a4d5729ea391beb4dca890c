@@ -33,6 +33,24 @@
       "revId": "a59cc3a2a38075ba8a4d5729ea391beb4dca890c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//wEI\u003d",
+        "filename": "common/gaia_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-05-03T16:55:59Z",
+      "side": 1,
+      "message": "Yes that\u0027s true. It is conceptually simpler I think, since it allows checking for expriry without looking inside the type.\n\nThe bug I was seeing was that it would expire even if timeout \u003c0. I think it might be because it was expiring on any timer event.",
+      "parentUuid": "AAAAKn//wHA\u003d",
+      "revId": "a59cc3a2a38075ba8a4d5729ea391beb4dca890c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
