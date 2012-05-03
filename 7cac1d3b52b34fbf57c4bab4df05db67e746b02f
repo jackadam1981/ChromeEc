@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAKn//wP8\u003d",
+        "filename": "common/system_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2012-05-03T13:59:21Z",
+      "side": 1,
+      "message": "it might have been  more robust to have a structure for the tags table (including the size in the structure) and have a pointer to the tags table included in jdata.\n\nNot worth changing at this phase of course.",
+      "revId": "7cac1d3b52b34fbf57c4bab4df05db67e746b02f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
