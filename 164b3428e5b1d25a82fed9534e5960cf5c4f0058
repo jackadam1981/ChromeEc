@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAKn//uJQ\u003d",
+        "filename": "chip/lm4/openocd/lm4x_cmds.tcl",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2012-05-04T20:37:12Z",
+      "side": 1,
+      "message": "tried some other name - please suggest your variant if you don\u0027t like this either",
+      "parentUuid": "AAAAKn//uKI\u003d",
+      "revId": "164b3428e5b1d25a82fed9534e5960cf5c4f0058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAKn//uKA\u003d",
         "filename": "chip/lm4/openocd/lm4x_cmds.tcl",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2012-05-04T20:05:05Z",
       "side": 1,
       "message": "it would be better to use :\n flash_lm4 $firmware_image 0 262144\ninstead of duplicating everything.",
+      "revId": "164b3428e5b1d25a82fed9534e5960cf5c4f0058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//uI4\u003d",
+        "filename": "chip/lm4/openocd/lm4x_cmds.tcl",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2012-05-04T20:37:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAKn//uKA\u003d",
       "revId": "164b3428e5b1d25a82fed9534e5960cf5c4f0058",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
