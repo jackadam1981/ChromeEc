@@ -19,6 +19,41 @@
     },
     {
       "key": {
+        "uuid": "AAAAKn//vPI\u003d",
+        "filename": "common/gaia_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-05-04T00:48:58Z",
+      "side": 1,
+      "message": "As I understand (please jump if I\u0027m wrong, Simon), the idea here is that behavior for 8s for AP shutdown is unchanged but power-on is modified to allow enough time U-Boot to be updated via USB (which takes about 10sec).\n\nSo after power button is pressed:\n- Normal case: User releases power button and gaia_power_task() goes into the inner loop, waiting for next event to occur (power button press or XPSHOLD \u003d\u003d 0).\n- U-Boot updating: User presses and holds power button. EC does not check XPSHOLD, and waits up to 16sec for an event. If no event occurs within 16sec, EC powers off AP.",
+      "parentUuid": "AAAAKn//wEo\u003d",
+      "revId": "fff0761ea7d7dfd56b7e7da6fd53cfa25db3cf6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//voU\u003d",
+        "filename": "common/gaia_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-05-04T00:48:58Z",
+      "side": 1,
+      "message": "extra tab",
+      "revId": "fff0761ea7d7dfd56b7e7da6fd53cfa25db3cf6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAKn//wBg\u003d",
         "filename": "common/gaia_power.c",
         "patchSetId": 1
