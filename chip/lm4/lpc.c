@@ -27,6 +27,9 @@
 
 #define LPC_SYSJUMP_TAG 0x4c50  /* "LP" */
 
+/* TO Host bit in LPCCH?ST) */
+#define TOH (1 << 0)
+
 static uint32_t host_events;     /* Currently pending SCI/SMI events */
 static uint32_t event_mask[3];   /* Event masks for each type */
 
@@ -154,15 +157,23 @@ void lpc_send_host_response(int slot, int result)
 
 /* Return true if the TOH is still set */
 int lpc_keyboard_has_char(void) {
-	return (LM4_LPC_ST(LPC_CH_KEYBOARD) & (1 << 0 /* TOH */)) ? 1 : 0;
+	return (LM4_LPC_ST(LPC_CH_KEYBOARD) & TOH) ? 1 : 0;
 }
 
 
+/* Put a char to host buffer and send IRQ if specified. */
 void lpc_keyboard_put_char(uint8_t chr, int send_irq) {
 	LPC_POOL_KEYBOARD[1] = chr;
 	if (send_irq) {
 		lpc_manual_irq(1);  /* IRQ#1 */
 	}
+}
+
+
+/* Clean the keyboard buffer. */
+void lpc_keyboard_clean_buffer(void)
+{
+	LM4_LPC_ST(LPC_CH_KEYBOARD) &= ~TOH;
 }
 
 

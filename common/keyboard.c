@@ -272,7 +272,8 @@ void keyboard_state_changed(int row, int col, int is_pressed)
 			      &len);
 	if (ret == EC_SUCCESS) {
 		ASSERT(len > 0);
-		i8042_send_to_host(len, scan_code);
+		if (keyboard_enabled)
+			i8042_send_to_host(len, scan_code);
 	}
 
 	if (is_pressed) {
@@ -325,13 +326,16 @@ void update_ctl_ram(uint8_t addr, uint8_t data)
 		 addr, data, orig);
 
 	if (addr == 0x00) {  /* the controller RAM */
+		/* Enable IRQ before enable keyboard (queue chars to host) */
+		if (!(orig & I8042_ENIRQ1) && (data & I8042_ENIRQ1))
+			i8042_enable_keyboard_irq();
+
 		/* Handle the I8042_KBD_DIS bit */
 		keyboard_enable(!(data & I8042_KBD_DIS));
 
-		/* Handle the I8042_ENIRQ1 bit */
-		if (!(orig & I8042_ENIRQ1) && (data & I8042_ENIRQ1))
-			i8042_enable_keyboard_irq();
-		else if ((orig & I8042_ENIRQ1) && !(data & I8042_ENIRQ1))
+		/* Disable IRQ after disable keyboard so that every char
+		 * must have informed the host. */
+		if ((orig & I8042_ENIRQ1) && !(data & I8042_ENIRQ1))
 			i8042_disable_keyboard_irq();
 	}
 }
@@ -462,6 +466,7 @@ int handle_keyboard_data(uint8_t data, uint8_t *output)
 		case I8042_CMD_ENABLE:
 			output[out_len++] = I8042_RET_ACK;
 			keyboard_enable(1);
+			clean_underlying_buffer();
 			break;
 
 		case I8042_CMD_RESET_DIS:
@@ -478,8 +483,9 @@ int handle_keyboard_data(uint8_t data, uint8_t *output)
 			break;
 
 		case I8042_CMD_RESET_BAT:
+			reset_rate_and_delay();
+			clean_underlying_buffer();
 			output[out_len++] = I8042_RET_ACK;
-			keyboard_enable(0);
 			output[out_len++] = I8042_RET_BAT;
 			output[out_len++] = I8042_RET_BAT;
 			break;
@@ -644,10 +650,12 @@ void keyboard_set_power_button(int pressed)
 		return;
 
 	code_set = acting_code_set(scancode_set);
-	ret = i8042_send_to_host(
-		 (code_set == SCANCODE_SET_2 && !pressed) ? 3 : 2,
-		 code[code_set - SCANCODE_SET_1][pressed]);
-	ASSERT(ret == EC_SUCCESS);
+	if (keyboard_enabled) {
+		ret = i8042_send_to_host(
+			 (code_set == SCANCODE_SET_2 && !pressed) ? 3 : 2,
+			 code[code_set - SCANCODE_SET_1][pressed]);
+		ASSERT(ret == EC_SUCCESS);
+	}
 }
 
 
@@ -662,8 +670,9 @@ void keyboard_typematic_task(void)
 
 			if (typematic_delay <= 0) {
 				/* re-send to host */
-				i8042_send_to_host(typematic_len,
-						   typematic_scan_code);
+				if (keyboard_enabled)
+					i8042_send_to_host(typematic_len,
+							   typematic_scan_code);
 				typematic_delay = refill_inter_delay * 1000;
 			}
 		}
@@ -716,6 +725,7 @@ static int command_codeset(int argc, char **argv)
 		ccprintf("Current scancode set: %d\n", scancode_set);
 		ccprintf("I8042_XLATE: %d\n",
 		            controller_ram[0] & I8042_XLATE ? 1 : 0);
+
 	} else if (argc == 2) {
 		set = strtoi(argv[1], NULL, 0);
 		switch (set) {

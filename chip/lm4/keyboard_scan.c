@@ -443,7 +443,11 @@ DECLARE_IRQ(KB_SCAN_ROW_IRQ, matrix_interrupt, 3);
 int keyboard_has_char()
 {
 #if defined(HOST_KB_BUS_LPC)
-	return lpc_keyboard_has_char();
+	/* If there is already a char in buffer, send IRQ to host again. */
+	int rc = lpc_keyboard_has_char();
+	if (rc)
+		lpc_manual_irq(1);
+	return rc;
 #else
 #error "keyboard_scan needs to know what bus to use for keyboard interface"
 #endif
@@ -454,6 +458,15 @@ void keyboard_put_char(uint8_t chr, int send_irq)
 {
 #if defined(HOST_KB_BUS_LPC)
 	lpc_keyboard_put_char(chr, send_irq);
+#else
+#error "keyboard_scan needs to know what bus to use for keyboard interface"
+#endif
+}
+
+void keyboard_clean_buffer(void)
+{
+#if defined(HOST_KB_BUS_LPC)
+	lpc_keyboard_clean_buffer();
 #else
 #error "keyboard_scan needs to know what bus to use for keyboard interface"
 #endif

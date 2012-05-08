@@ -49,6 +49,7 @@ static int i8042_irq_enabled = 0;
 void i8042_init()
 {
 	head_to_buffer = tail_to_buffer = 0;
+	keyboard_clean_buffer();
 }
 
 
