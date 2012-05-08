@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAKn//r3k\u003d",
+        "filename": "chip/lm4/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-05-08T16:04:30Z",
+      "side": 1,
+      "message": "please put return; on separate line from if()",
+      "revId": "c1f298756f788615494adb70412a8cc927727860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//r24\u003d",
+        "filename": "chip/lm4/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-05-08T16:04:30Z",
+      "side": 1,
+      "message": "while(enable_scanning)",
+      "revId": "c1f298756f788615494adb70412a8cc927727860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//r20\u003d",
+        "filename": "chip/lm4/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-05-08T16:04:30Z",
+      "side": 1,
+      "message": "tri-stated",
+      "revId": "c1f298756f788615494adb70412a8cc927727860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
