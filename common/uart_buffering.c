@@ -549,6 +549,8 @@ int uart_printf(const char *format, ...)
 	va_end(args);
 	return rv;
 }
+void VbExDebug(const char *format, ...)
+	__attribute__((weak, alias("uart_printf")));
 
 
 void uart_flush_output(void)
