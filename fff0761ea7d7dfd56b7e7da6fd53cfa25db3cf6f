@@ -143,6 +143,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAKn//rYo\u003d",
+        "filename": "common/gaia_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-05-08T20:18:50Z",
+      "side": 1,
+      "message": "You can do something like that to avoid using open coded timer event and the associated race condition :\n--- a/common/gaia_power.c\n+++ b/common/gaia_power.c\n@@ -156,8 +156,8 @@ static int check_for_power_off_event(void)\n                        power_off_deadline.val \u003d now.val + DELAY_FORCE_SHUTDOWN;\n                        CPRINTF(\"Waiting for long power press %u\\n\",\n                                power_off_deadline.le.lo);\n-                       timer_arm(power_off_deadline, TASK_ID_GAIAPOWER);\n                } else if (timestamp_expired(power_off_deadline)) {\n+                       power_off_deadline.val \u003d 0;\n                        CPRINTF(\"Power off after long power press now\u003d%u, %u\\n\",\n                                now.le.lo, power_off_deadline.le.lo);\n                        return 1;\n@@ -307,7 +307,6 @@ static void set_pwron_timer(void)\n        pwron_deadline \u003d get_time();\n        pwron_deadline.val +\u003d DELAY_RELEASE_PWRON;\n        CPRINTF(\"Setting pwron timer\\n\");\n-       timer_arm(pwron_deadline, TASK_ID_GAIAPOWER);\n        pwron_released \u003d 0;\n }\n \n@@ -315,11 +314,24 @@ static void check_pwron_release(void)\n {\n        if (!pwron_released \u0026\u0026 timestamp_expired(pwron_deadline)) {\n                pwron_released \u003d 1;\n+               pwron_deadline.val \u003d 0;\n                gpio_set_level(GPIO_PMIC_PWRON_L, 1);\n                CPRINTF(\"Releasing pwron\\n\");\n        }\n }\n \n+/*\n+ * Returns the delay in microseconds to the next time we have to check\n+ * for the power button, and returns -1 if there is no such an event.\n+ */\n+static int next_pwr_event(void)\n+{\n+       if (!pwron_deadline.val \u0026\u0026 !power_off_deadline.val)\n+               return -1;\n+       return (pwron_deadline.val ? pwron_deadline.val\n+               : power_off_deadline.val) - get_time().val;\n+}\n+\n /*****************************************************************************/\n \n void gaia_power_task(void)\n@@ -343,7 +355,7 @@ void gaia_power_task(void)\n                        set_pwron_timer();\n                        while (!check_for_power_off_event()) {\n                                check_pwron_release();\n-                               task_wait_event(-1);\n+                               task_wait_event(next_pwr_event());\n                        }\n                }\n                power_off();",
+      "parentUuid": "AAAAKn//uvQ\u003d",
+      "revId": "fff0761ea7d7dfd56b7e7da6fd53cfa25db3cf6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAKn//wEs\u003d",
         "filename": "common/gaia_power.c",
         "patchSetId": 1
