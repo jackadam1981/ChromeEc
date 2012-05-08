@@ -14,6 +14,9 @@
 /* Use USART1 as console serial port */
 #define CONFIG_CONSOLE_UART 1
 
+/* By default, enable all console messages except keyboard */
+#define CC_DEFAULT	(CC_ALL & ~CC_MASK(CC_KEYSCAN))
+
 #define USB_CHARGE_PORT_COUNT 0
 
 /* GPIO signal list */
