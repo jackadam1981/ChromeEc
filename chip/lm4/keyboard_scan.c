@@ -372,11 +372,14 @@ int keyboard_scan_init(void)
 	/* Copy to the state at boot */
 	memcpy(raw_state_at_boot, raw_state, sizeof(raw_state_at_boot));
 
-	/* If we're booting due to a reset-pin-caused reset, check if the
-	 * recovery key is pressed. */
+	/* If we're booting due to a reset-pin-caused reset, check if both
+	 * recovery keys are pressed. */
 	if (system_get_reset_cause() == SYSTEM_RESET_RESET_PIN) {
-		recovery_key_pressed = check_boot_key(MASK_INDEX_REFRESH,
-						      MASK_VALUE_REFRESH);
+		recovery_key_pressed =
+			(check_boot_key(MASK_INDEX_REFRESH,
+					MASK_VALUE_REFRESH) &&
+			 check_boot_key(MASK_INDEX_ESC, MASK_VALUE_ESC));
+
 
 #ifdef CONFIG_FAKE_DEV_SWITCH
 		/* Turn fake dev switch on if D pressed, off if F pressed. */
