@@ -16,6 +16,10 @@
 
 #define MAX_SCAN_CODE_LEN 4
 
+/* Log the traffic between EC and host. For debug. This would increase about
+ * 1KB of RAM footprint. */
+#undef KB_LOG
+
 enum scancode_set_list {
   SCANCODE_GET_SET = 0,
   SCANCODE_SET_1,
@@ -49,6 +53,13 @@ int handle_keyboard_command(uint8_t command, uint8_t *output);
 /* Send make/break code of power button to host.
  */
 void keyboard_set_power_button(int pressed);
+
+
+#ifdef KB_LOG
+void kblog_put(char type, uint8_t byte);
+#else
+#define kblog_put(type, byte) do {} while (0)
+#endif
 
 
 /* Register the board-specific keyboard matrix translation function.
@@ -91,10 +102,17 @@ enum ec_error_list keyboard_register_callback(keyboard_callback cb);
  */
 enum ec_error_list keyboard_get_state(uint8_t *bit_array);
 
-/* Return true if the TOH is still set */
+/* Returns true if the to-host-buffer is non-empty. */
 int keyboard_has_char(void);
 
+/* Sends a char to host and triggers IRQ if specified. */
 void keyboard_put_char(uint8_t chr, int send_irq);
 
+/* Cleans the keyboard buffer to host. */
+void keyboard_clean_buffer(void);
+
+/* Host just resumes the interrupt. Sends an interrupt if buffer is non-empty.
+ */
+void keyboard_resume_interrupt(void);
 
 #endif  /* __INCLUDE_KEYBOARD_H */
