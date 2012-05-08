@@ -179,6 +179,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAKn//rV0\u003d",
+        "filename": "common/gaia_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-05-08T20:32:22Z",
+      "side": 1,
+      "message": "I\u0027m not coding the timer, I\u0027m computing the next deadline. This removes the race condition when using timer_arm and all the pitfalls of possibly trying to set several timers at the same time.\n\nsure, we can support whatever complex feature we want but the resulting code will be either slower or larger. We did this trade off back in december because having a fixed number of timers greatly reduces the overall latency of the system and 1 per task looks enough as you can always know what is the nearest deadline for your task.",
+      "parentUuid": "AAAAKn//rX4\u003d",
+      "revId": "fff0761ea7d7dfd56b7e7da6fd53cfa25db3cf6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAKn//wEs\u003d",
         "filename": "common/gaia_power.c",
         "patchSetId": 1
