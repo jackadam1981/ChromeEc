@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAKn//oMM\u003d",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-05-10T22:49:22Z",
+      "side": 1,
+      "message": "Might be tidier to define it in console.c and mask it based on the CC_VBOOT channel, but this is ok for now.  If vboot sprays too much debug output and annoys us, we can fix it later.",
+      "revId": "58242b5d2394520d2cd82806695b45da57bc0220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//oMU\u003d",
+        "filename": "common/vboot.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-05-10T22:49:22Z",
+      "side": 1,
+      "message": "Nit: Missing ]",
+      "revId": "58242b5d2394520d2cd82806695b45da57bc0220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
