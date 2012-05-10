@@ -718,7 +718,7 @@ static void do_cmd_rgb(uint8_t led,
 /* Host commands via LPC bus */
 /****************************************************************************/
 
-static enum lpc_status lpc_cmd_lightbar(uint8_t *data)
+static int lpc_cmd_lightbar(uint8_t *data, int *resp_size)
 {
 	struct lpc_params_lightbar_cmd *ptr =
 		(struct lpc_params_lightbar_cmd *)data;
