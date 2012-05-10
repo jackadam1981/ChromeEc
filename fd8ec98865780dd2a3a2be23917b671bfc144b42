@@ -177,6 +177,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAKn//oVs\u003d",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-05-10T21:31:05Z",
+      "side": 1,
+      "message": "A: No. The compiler complains and the manual says the alias has to appear in the same place where the original symbol is defined.",
+      "parentUuid": "AAAAKn//oYk\u003d",
+      "revId": "fd8ec98865780dd2a3a2be23917b671bfc144b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAKn//ocU\u003d",
         "filename": "common/vboot.c",
         "patchSetId": 1
