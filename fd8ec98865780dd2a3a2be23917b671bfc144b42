@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAKn//oVQ\u003d",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-05-10T21:31:47Z",
+      "side": 1,
+      "message": "makes sense",
+      "parentUuid": "AAAAKn//oZk\u003d",
+      "revId": "fd8ec98865780dd2a3a2be23917b671bfc144b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAKn//oeA\u003d",
         "filename": "Makefile.rules",
         "patchSetId": 1
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "It\u0027s already in there. vbutil_ec (and the VBOOT_SOURCE directory) is part of the host-side vboot_reference ebuild, which is in hard-host-depends. The chroot gets updated every time vboot_reference is bumped.",
       "parentUuid": "AAAAKn//oeA\u003d",
+      "revId": "fd8ec98865780dd2a3a2be23917b671bfc144b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//oVc\u003d",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-05-10T21:31:47Z",
+      "side": 1,
+      "message": "Ok I missed that part was host side.",
+      "parentUuid": "AAAAKn//oZg\u003d",
       "revId": "fd8ec98865780dd2a3a2be23917b671bfc144b42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -107,6 +143,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAKn//oVU\u003d",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-05-10T21:31:47Z",
+      "side": 1,
+      "message": "it was just to compile EC out of chroot but as you want it\u0027s not important",
+      "parentUuid": "AAAAKn//oZM\u003d",
+      "revId": "fd8ec98865780dd2a3a2be23917b671bfc144b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAKn//odk\u003d",
         "filename": "board/bds/build.mk",
         "patchSetId": 1
@@ -136,6 +190,24 @@
       "side": 1,
       "message": "This is a magic string to tell Emacs that it should be using the makefile-mode when editing this file (start lines with tabs, etc.)",
       "parentUuid": "AAAAKn//odk\u003d",
+      "revId": "fd8ec98865780dd2a3a2be23917b671bfc144b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//oV8\u003d",
+        "filename": "board/bds/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-05-10T21:31:47Z",
+      "side": 1,
+      "message": "ok you have guessed I\u0027m using a competing editor starting by v",
+      "parentUuid": "AAAAKn//oY8\u003d",
       "revId": "fd8ec98865780dd2a3a2be23917b671bfc144b42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -224,6 +296,24 @@
       "side": 1,
       "message": "If you mean using \"uint8_t* key_data\" instead of \"uint8_t *key_data)\", then no. The presubmit hook enforces kernel coding style. That may be valid for C++, but it\u0027s not for C, since this:\n\n  int* a, b;\n\nis misleading. The type for b is \"int\", not \"pointer to int\".",
       "parentUuid": "AAAAKn//ocU\u003d",
+      "revId": "fd8ec98865780dd2a3a2be23917b671bfc144b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//oWM\u003d",
+        "filename": "common/vboot.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-05-10T21:31:47Z",
+      "side": 1,
+      "message": "sorry I just meant the CamelCase function name.",
+      "parentUuid": "AAAAKn//oYA\u003d",
       "revId": "fd8ec98865780dd2a3a2be23917b671bfc144b42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
