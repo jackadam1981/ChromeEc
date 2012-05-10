@@ -718,7 +718,7 @@ static void do_cmd_rgb(uint8_t led,
 /* Host commands via LPC bus */
 /****************************************************************************/
 
-static enum lpc_status lpc_cmd_lightbar(uint8_t *data)
+static int lpc_cmd_lightbar(uint8_t *data)
 {
 	struct lpc_params_lightbar_cmd *ptr =
 		(struct lpc_params_lightbar_cmd *)data;
@@ -758,7 +758,7 @@ static enum lpc_status lpc_cmd_lightbar(uint8_t *data)
 		break;
 	default:
 		CPRINTF("[invalid lightbar cmd 0x%x]\n", ptr->in.cmd);
-		return EC_LPC_RESULT_INVALID_PARAM;
+		return -EC_LPC_RESULT_INVALID_PARAM;
 	}
 
 	return EC_LPC_RESULT_SUCCESS;

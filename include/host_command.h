@@ -15,14 +15,27 @@
 struct host_command {
 	/* Command code. */
 	int command;
-	/* Handler for the command; data points to parameters/response. */
-	enum lpc_status (*handler)(uint8_t *data);
+	/* Handler for the command; data points to parameters/response.
+         * returns negative error code if case of failure (using EC_LPC_STATUS
+         * codes) or the size of the answer. */
+	int (*handler)(uint8_t *data);
 };
 
 
 /* Called by LPC module when a command is written to one of the
    command slots (0=kernel, 1=user). */
 void host_command_received(int slot, int command);
+
+/* Send a result code to a host command.  <slot> is 0 for kernel-originated
+ * commands, 1 for usermode-originated commands.
+ * <data> is the buffer with the response payload. */
+void host_send_response(int slot, int result, uint8_t *data);
+
+/* Return a pointer to the host command data buffer.  This buffer must
+ * only be accessed between a notification to host_command_received()
+ * and a subsequent call to lpc_SendHostResponse().  <slot> is 0 for
+ * kernel-originated commands, 1 for usermode-originated commands. */
+uint8_t *host_get_buffer(int slot);
 
 /* Register a host command handler */
 #define DECLARE_HOST_COMMAND(command, routine)				\

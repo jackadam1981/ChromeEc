@@ -543,7 +543,7 @@ DECLARE_CONSOLE_COMMAND(reboot, command_reboot);
 /*****************************************************************************/
 /* Host commands */
 
-static enum lpc_status host_command_get_version(uint8_t *data)
+static int host_command_get_version(uint8_t *data)
 {
 	struct lpc_response_get_version *r =
 			(struct lpc_response_get_version *)data;
@@ -570,12 +570,12 @@ static enum lpc_status host_command_get_version(uint8_t *data)
 		break;
 	}
 
-	return EC_LPC_RESULT_SUCCESS;
+	return sizeof(struct lpc_response_get_version);
 }
 DECLARE_HOST_COMMAND(EC_LPC_COMMAND_GET_VERSION, host_command_get_version);
 
 
-static enum lpc_status host_command_build_info(uint8_t *data)
+static int host_command_build_info(uint8_t *data)
 {
 	struct lpc_response_get_build_info *r =
 			(struct lpc_response_get_build_info *)data;
@@ -583,12 +583,12 @@ static enum lpc_status host_command_build_info(uint8_t *data)
 	strzcpy(r->build_string, system_get_build_info(),
 		sizeof(r->build_string));
 
-	return EC_LPC_RESULT_SUCCESS;
+	return sizeof(struct lpc_response_get_build_info);
 }
 DECLARE_HOST_COMMAND(EC_LPC_COMMAND_GET_BUILD_INFO, host_command_build_info);
 
 
-static enum lpc_status host_command_get_chip_info(uint8_t *data)
+static int host_command_get_chip_info(uint8_t *data)
 {
 	struct lpc_response_get_chip_info *r =
 			(struct lpc_response_get_chip_info *)data;
@@ -597,7 +597,7 @@ static enum lpc_status host_command_get_chip_info(uint8_t *data)
 	strzcpy(r->name, system_get_chip_name(), sizeof(r->name));
 	strzcpy(r->revision, system_get_chip_revision(), sizeof(r->revision));
 
-	return EC_LPC_RESULT_SUCCESS;
+	return sizeof(struct lpc_response_get_chip_info);
 }
 DECLARE_HOST_COMMAND(EC_LPC_COMMAND_GET_CHIP_INFO, host_command_get_chip_info);
 
@@ -605,12 +605,12 @@ DECLARE_HOST_COMMAND(EC_LPC_COMMAND_GET_CHIP_INFO, host_command_get_chip_info);
 #ifdef CONFIG_REBOOT_EC
 static void clean_busy_bits(void) {
 #ifdef CONFIG_LPC
-	lpc_send_host_response(0, EC_LPC_RESULT_SUCCESS);
-	lpc_send_host_response(1, EC_LPC_RESULT_SUCCESS);
+	host_send_response(0, EC_LPC_RESULT_SUCCESS, NULL);
+	host_send_response(1, EC_LPC_RESULT_SUCCESS, NULL);
 #endif
 }
 
-enum lpc_status host_command_reboot(uint8_t *data)
+int host_command_reboot(uint8_t *data)
 {
 	enum system_image_copy_t copy;
 
@@ -634,7 +634,7 @@ enum lpc_status host_command_reboot(uint8_t *data)
 		copy = SYSTEM_IMAGE_RW_B;
 		break;
 	default:
-		return EC_LPC_RESULT_ERROR;
+		return -EC_LPC_RESULT_ERROR;
 	}
 
 	clean_busy_bits();
@@ -647,7 +647,7 @@ enum lpc_status host_command_reboot(uint8_t *data)
 	 *
 	 * If we DO get down here, something went wrong in the reboot, so
 	 * return error. */
-	return EC_LPC_RESULT_ERROR;
+	return -EC_LPC_RESULT_ERROR;
 }
 DECLARE_HOST_COMMAND(EC_LPC_COMMAND_REBOOT_EC, host_command_reboot);
 #endif /* CONFIG_REBOOT_EC */

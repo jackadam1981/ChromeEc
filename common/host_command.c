@@ -34,7 +34,7 @@ void host_command_received(int slot, int command)
 	if (command == EC_LPC_COMMAND_REBOOT) {
 		system_reset(1);
 		/* Reset should never return; if it does, post an error */
-		lpc_send_host_response(slot, EC_LPC_RESULT_ERROR);
+		host_send_response(slot, -EC_LPC_RESULT_ERROR, NULL);
 		return;
 	}
 
@@ -45,8 +45,18 @@ void host_command_received(int slot, int command)
 	task_set_event(TASK_ID_HOSTCMD, TASK_EVENT_SLOT(slot), 0);
 }
 
+static int host_command_proto_version(uint8_t *data)
+{
+	struct lpc_response_proto_version *r = (struct lpc_response_proto_version *)data;
 
-static enum lpc_status host_command_hello(uint8_t *data)
+	r->version = EC_LPC_PROTO_VERSION;
+
+	return sizeof(struct lpc_response_proto_version);
+}
+DECLARE_HOST_COMMAND(EC_LPC_COMMAND_PROTO_VERSION,
+		     host_command_proto_version);
+
+static int host_command_hello(uint8_t *data)
 {
 	struct lpc_params_hello *p = (struct lpc_params_hello *)data;
 	struct lpc_response_hello *r = (struct lpc_response_hello *)data;
@@ -66,12 +76,12 @@ static enum lpc_status host_command_hello(uint8_t *data)
 	CPUTS("[LPC sending hello back]\n");
 
 	r->out_data = d + 0x01020304;
-	return EC_LPC_RESULT_SUCCESS;
+	return sizeof(struct lpc_response_hello);
 }
 DECLARE_HOST_COMMAND(EC_LPC_COMMAND_HELLO, host_command_hello);
 
 
-static enum lpc_status host_command_read_test(uint8_t *data)
+static int host_command_read_test(uint8_t *data)
 {
 	struct lpc_params_read_test *p = (struct lpc_params_read_test *)data;
 	struct lpc_response_read_test *r =
@@ -82,12 +92,12 @@ static enum lpc_status host_command_read_test(uint8_t *data)
 	int i;
 
 	if (size > ARRAY_SIZE(r->data))
-		return EC_LPC_RESULT_ERROR;
+		return -EC_LPC_RESULT_ERROR;
 
 	for (i = 0; i < size; i++)
 		r->data[i] = offset + i;
 
-	return EC_LPC_RESULT_SUCCESS;
+	return sizeof(struct lpc_response_read_test);
 }
 DECLARE_HOST_COMMAND(EC_LPC_COMMAND_READ_TEST, host_command_read_test);
 
@@ -95,7 +105,7 @@ DECLARE_HOST_COMMAND(EC_LPC_COMMAND_READ_TEST, host_command_read_test);
 /* ACPI query event handler.  Note that the returned value is NOT actually
  * an EC_LPC_RESULT enum; it's 0 if no event was pending, or the 1-based
  * index of the lowest bit which was set. */
-static enum lpc_status host_command_acpi_query_event(uint8_t *data)
+static int host_command_acpi_query_event(uint8_t *data)
 {
 	uint32_t events = lpc_get_host_events();
 	int i;
@@ -103,12 +113,12 @@ static enum lpc_status host_command_acpi_query_event(uint8_t *data)
 	for (i = 0; i < 32; i++) {
 		if (events & (1 << i)) {
 			lpc_clear_host_events(1 << i);
-			return (enum lpc_status)(i + 1);
+			return -(i + 1);
 		}
 	}
 
 	/* No events pending */
-	return (enum lpc_status)0;
+	return 0;
 }
 DECLARE_HOST_COMMAND(EC_LPC_COMMAND_ACPI_QUERY_EVENT,
 		     host_command_acpi_query_event);
@@ -133,15 +143,15 @@ static const struct host_command *find_host_command(int command)
 static void command_process(int slot)
 {
 	int command = host_command[slot];
-	uint8_t *data = lpc_get_host_range(slot);
+	uint8_t *data = host_get_buffer(slot);
 	const struct host_command *cmd = find_host_command(command);
 
 	CPRINTF("[hostcmd%d 0x%02x]\n", slot, command);
 
 	if (cmd)
-		lpc_send_host_response(slot, cmd->handler(data));
+		host_send_response(slot, cmd->handler(data), data);
 	else
-		lpc_send_host_response(slot, EC_LPC_RESULT_INVALID_COMMAND);
+		host_send_response(slot, -EC_LPC_RESULT_INVALID_COMMAND, NULL);
 }
 
 /*****************************************************************************/

@@ -114,7 +114,7 @@ static void lpc_generate_sci(void)
 }
 
 
-uint8_t *lpc_get_host_range(int slot)
+uint8_t *host_get_buffer(int slot)
 {
 	return (uint8_t *)LPC_POOL_CMD_DATA + EC_LPC_PARAM_SIZE * slot;
 }
@@ -126,10 +126,12 @@ uint8_t *lpc_get_memmap_range(void)
 }
 
 
-void lpc_send_host_response(int slot, int result)
+void host_send_response(int slot, int result, uint8_t *data)
 {
 	int ch = slot ? LPC_CH_USER : LPC_CH_KERNEL;
 
+	/* negative result contains the error code, positive one the size */
+	result = result >= 0 ? EC_LPC_RESULT_SUCCESS : -result;
 	/* Write result to the data byte.  This sets the TOH bit in the
 	 * status byte and triggers an IRQ on the host so the host can read
 	 * the result. */

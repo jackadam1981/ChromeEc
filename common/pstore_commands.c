@@ -11,7 +11,7 @@
 #include "util.h"
 
 
-enum lpc_status pstore_command_get_info(uint8_t *data)
+int pstore_command_get_info(uint8_t *data)
 {
 	struct lpc_response_pstore_info *r =
 			(struct lpc_response_pstore_info *)data;
@@ -21,12 +21,12 @@ enum lpc_status pstore_command_get_info(uint8_t *data)
 
 	r->pstore_size = EEPROM_BLOCK_COUNT_PSTORE * eeprom_get_block_size();
 	r->access_size = sizeof(uint32_t);
-	return EC_LPC_RESULT_SUCCESS;
+	return sizeof(struct lpc_response_pstore_info);
 }
 DECLARE_HOST_COMMAND(EC_LPC_COMMAND_PSTORE_INFO, pstore_command_get_info);
 
 
-enum lpc_status pstore_command_read(uint8_t *data)
+int pstore_command_read(uint8_t *data)
 {
 	struct lpc_params_pstore_read *p =
 			(struct lpc_params_pstore_read *)data;
@@ -39,7 +39,7 @@ enum lpc_status pstore_command_read(uint8_t *data)
 	int bytes_left = p->size;
 
 	if (p->size > sizeof(r->data))
-		return EC_LPC_RESULT_ERROR;
+		return -EC_LPC_RESULT_ERROR;
 
 	while (bytes_left) {
 		/* Read what we can from the current block */
@@ -47,10 +47,10 @@ enum lpc_status pstore_command_read(uint8_t *data)
 
 		if (block >=
 		    EEPROM_BLOCK_START_PSTORE + EEPROM_BLOCK_COUNT_PSTORE)
-			return EC_LPC_RESULT_ERROR;
+			return -EC_LPC_RESULT_ERROR;
 
 		if (eeprom_read(block, offset, bytes_this, dest))
-			return EC_LPC_RESULT_ERROR;
+			return -EC_LPC_RESULT_ERROR;
 
 		/* Continue to the next block if necessary */
 		offset = 0;
@@ -59,12 +59,12 @@ enum lpc_status pstore_command_read(uint8_t *data)
 		dest += bytes_this;
 	}
 
-	return EC_LPC_RESULT_SUCCESS;
+	return sizeof(struct lpc_response_pstore_read);
 }
 DECLARE_HOST_COMMAND(EC_LPC_COMMAND_PSTORE_READ, pstore_command_read);
 
 
-enum lpc_status pstore_command_write(uint8_t *data)
+int pstore_command_write(uint8_t *data)
 {
 	struct lpc_params_pstore_write *p =
 			(struct lpc_params_pstore_write *)data;
@@ -76,7 +76,7 @@ enum lpc_status pstore_command_write(uint8_t *data)
 	int bytes_left = p->size;
 
 	if (p->size > sizeof(p->data))
-		return EC_LPC_RESULT_ERROR;
+		return -EC_LPC_RESULT_ERROR;
 
 	while (bytes_left) {
 		/* Write what we can to the current block */
@@ -84,10 +84,10 @@ enum lpc_status pstore_command_write(uint8_t *data)
 
 		if (block >=
 		    EEPROM_BLOCK_START_PSTORE + EEPROM_BLOCK_COUNT_PSTORE)
-			return EC_LPC_RESULT_ERROR;
+			return -EC_LPC_RESULT_ERROR;
 
 		if (eeprom_write(block, offset, bytes_this, src))
-			return EC_LPC_RESULT_ERROR;
+			return -EC_LPC_RESULT_ERROR;
 
 		/* Continue to the next block if necessary */
 		offset = 0;
