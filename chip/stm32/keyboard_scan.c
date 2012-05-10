@@ -42,7 +42,7 @@ enum COL_INDEX {
 static uint8_t raw_state[KB_COLS];
 
 /* The keyboard state we will return when requested */
-static uint8_t saved_state[KB_COLS];
+//static uint8_t saved_state[KB_COLS];
 
 /* Mask with 1 bits only for keys that actually exist */
 static const uint8_t *actual_key_mask;
@@ -77,6 +77,181 @@ void __board_keyboard_scan_ready(void)
 
 void board_keyboard_scan_ready(void)
 		__attribute__((weak, alias("__board_keyboard_scan_ready")));
+
+/*
+ * keyboard state FIFO (ring buffer)
+ */
+#define KB_FIFO_DEPTH	8	/* FIXME: this is pretty huge */
+static uint8_t kb_fifo[KB_FIFO_DEPTH][KB_COLS];
+static int kb_fifo_start;	/* first entry */
+static int kb_fifo_end;		/* last entry */
+static int kb_fifo_entries;	/* number of existing entries */
+static struct mutex kb_fifo_mutex;
+
+void keyboard_fifo_lock(void)
+{
+	mutex_lock(&kb_fifo_mutex);
+}
+
+void keyboard_fifo_unlock(void)
+{
+	mutex_unlock(&kb_fifo_mutex);
+}
+
+int keyboard_fifo_empty(void)
+{
+	return kb_fifo_entries ? 0 : 1;
+}
+
+/* clear keyboard state variables */
+void keyboard_clear_state(void)
+{
+	int i;
+
+	CPRINTF("clearing keyboard fifo\n");
+	kb_fifo_start = 0;
+	kb_fifo_end = 0;
+	kb_fifo_entries = 0;
+	for (i = 0; i < KB_FIFO_DEPTH; i++)
+		memset(kb_fifo[i], 0, KB_COLS);
+}
+
+/**
+  * Push keyboard state into FIFO
+  *
+  * @return EC error code
+  */
+static int kb_push(uint8_t *buffp)
+{
+//	CPRINTF("kb_push (before), start: %d, end: %d, entries: %d\n",
+//			kb_fifo_start, kb_fifo_end, kb_fifo_entries);
+//	keyboard_fifo_lock();
+	if (kb_fifo_entries == KB_FIFO_DEPTH) {
+		CPRINTF("%s: FIFO depth reached\n", __func__);
+		return EC_ERROR_OVERFLOW;
+	}
+
+	memcpy(kb_fifo[kb_fifo_end], buffp, KB_COLS);
+
+	if (kb_fifo_end == KB_FIFO_DEPTH - 1)
+		kb_fifo_end = 0;
+	else
+		kb_fifo_end++;
+
+	kb_fifo_entries++;
+//	CPRINTF("kb_push (after), new start: %d, end: %d, entries: %d\n",
+//			kb_fifo_start, kb_fifo_end, kb_fifo_entries);
+
+//	keyboard_fifo_unlock();
+	return EC_SUCCESS;
+}
+
+/**
+  * Pop keyboard state from FIFO
+  *
+  * @return EC_SUCCESS if entry popped, EC_ERROR_UNKNOWN if FIFO is empty
+  */
+static int kb_pop(uint8_t *buffp)
+{
+//	CPRINTF("kb_pop (before): start: %d, end: %d, entries: %d\n",
+//			kb_fifo_start, kb_fifo_end, kb_fifo_entries);
+//	keyboard_fifo_lock();
+	if (!kb_fifo_entries) {
+		CPRINTF("%s: No entries remaining in FIFO\n", __func__);
+		/* return empty state */
+		memset(buffp, 0, KB_COLS);
+		return EC_ERROR_UNKNOWN;
+	}
+
+	memcpy(buffp, kb_fifo[kb_fifo_start], KB_COLS);
+
+	if (kb_fifo_start ==  KB_FIFO_DEPTH - 1)
+		kb_fifo_start = 0;
+	else
+		kb_fifo_start++;
+
+	kb_fifo_entries--;
+//	CPRINTF("kb_pop (after), new start: %d, end: %d, entries: %d\n",
+//			kb_fifo_start, kb_fifo_end, kb_fifo_entries);
+//	keyboard_fifo_unlock();
+	return EC_SUCCESS;
+}
+
+static int command_kb_clear(int argc, char **argv)
+{
+	keyboard_clear_state();
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(kb_clear, command_kb_clear);
+
+static int command_kb_status(int argc, char **argv)
+{
+	int i;
+
+	CPRINTF("kb_fifo_start: %d\n", kb_fifo_start);
+	CPRINTF("kb_fifo_end: %d\n", kb_fifo_end);
+	CPRINTF("kb_fifo_entries: %d\n", kb_fifo_entries);
+
+	for (i = 0; i < KB_FIFO_DEPTH; i++) {
+		int j;
+		CPRINTF("kb_fifo[%d]: ", i);
+		for (j = 0; j < KB_COLS; j++) {
+			CPRINTF("%02x ", kb_fifo[i][j]);
+		}
+		CPRINTF("\n");
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(kb_status, command_kb_status);
+
+static int command_kb_inject(int argc, char **argv)
+{
+	uint8_t buf[KB_COLS];
+	int num_presses, row, col;
+	int i;
+
+	if (argc != 4) {
+		CPRINTF("usage: kb_inject <row> <col> <num_presses>\n");
+		return EC_ERROR_UNKNOWN;
+	}
+
+	row = atoi(argv[1]);
+	col = atoi(argv[2]);
+	num_presses = atoi(argv[3]);
+
+	if ((col < 0) || (col > KB_COLS)) {
+		CPRINTF("column must be within 0-%d\n", KB_COLS);
+		return EC_ERROR_UNKNOWN;
+	}
+
+	if ((row < 0) || (row > 7)) {
+		CPRINTF("row must be within 0-7\n");
+		return EC_ERROR_UNKNOWN;
+	}
+
+	CPRINTF("injecting %d keystrokes (r%d c%d, byte %02x)\n",
+	        num_presses, row, col, 1 << row);
+	for (i = 0; i < num_presses; i++) {
+		/* press */
+		memset(buf, 0, KB_COLS);
+		buf[col] |= 1 << row;
+		keyboard_fifo_lock();
+		kb_push(buf);
+		keyboard_fifo_unlock();
+		board_interrupt_host();
+
+		/* release */
+		memset(buf, 0, KB_COLS);
+		keyboard_fifo_lock();
+		kb_push(buf);
+		keyboard_fifo_unlock();
+		board_interrupt_host();
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(kb_inject, command_kb_inject);
 
 
 static void select_column(int col)
@@ -227,9 +402,6 @@ static int check_keys_changed(void)
 	}
 
 	if (change) {
-		memcpy(saved_state, raw_state, sizeof(saved_state));
-		board_keyboard_scan_ready();
-
 		CPRINTF("[%d keys pressed: ", num_press);
 		for (c = 0; c < KB_COLS; c++) {
 			if (raw_state[c])
@@ -238,6 +410,13 @@ static int check_keys_changed(void)
 				CPUTS(" --");
 		}
 		CPUTS("]\n");
+
+		if (kb_push(raw_state) == EC_ERROR_OVERFLOW) {
+			CPRINTF("dropped keystroke\n");
+		} else {
+			board_keyboard_scan_ready();
+			board_interrupt_host();
+		}
 	}
 
 	return num_press ? 1 : 0;
@@ -278,6 +457,7 @@ void keyboard_scan_task(void)
 				}
 			}
 		}
+
 		/* TODO: (crosbug.com/p/7484) A race condition here.
 		 *       If a key state is changed here (before interrupt is
 		 *       enabled), it will be lost.
@@ -308,8 +488,14 @@ int keyboard_scan_recovery_pressed(void)
 	return 0;
 }
 
+static uint8_t tmp[KB_COLS];
 int keyboard_get_scan(uint8_t **buffp, int max_bytes)
 {
+#if 0
 	*buffp = saved_state;
 	return sizeof(saved_state);
+#endif
+	kb_pop(tmp);
+	*buffp = tmp;
+	return KB_COLS;
 }
