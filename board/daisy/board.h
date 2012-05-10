@@ -18,7 +18,8 @@
 #define CONFIG_FLASH
 
 /* By default, enable all console messages except keyboard */
-#define CC_DEFAULT	(CC_ALL & ~CC_MASK(CC_KEYSCAN))
+//#define CC_DEFAULT	(CC_ALL & ~CC_MASK(CC_KEYSCAN))
+#define CC_DEFAULT	CC_ALL
 
 #define USB_CHARGE_PORT_COUNT 0
 
@@ -73,5 +74,8 @@ void matrix_interrupt(enum gpio_signal signal);
 
 /* Signal to the AP that keyboard scan data is available */
 void board_keyboard_scan_ready(void);
+
+/* Signal to AP that there are messages waiting */
+void board_interrupt_host(void);
 
 #endif /* __BOARD_H */
