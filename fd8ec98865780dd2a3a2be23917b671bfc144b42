@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAKn//oZk\u003d",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-05-10T21:23:34Z",
+      "side": 1,
+      "message": "I didn\u0027t, because the Makefile uses $(dirs) in the \"includes\" paths added to CFLAGS and all I wanted here is to create the $(out)/vboot/ directories. The vboot headers stay where they are.",
+      "parentUuid": "AAAAKn//oeI\u003d",
+      "revId": "fd8ec98865780dd2a3a2be23917b671bfc144b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAKn//oeA\u003d",
         "filename": "Makefile.rules",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2012-05-10T21:03:04Z",
       "side": 1,
       "message": "do you have a CL to add a dependency to the EC ebuild ?",
+      "revId": "fd8ec98865780dd2a3a2be23917b671bfc144b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//oZg\u003d",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-05-10T21:23:34Z",
+      "side": 1,
+      "message": "It\u0027s already in there. vbutil_ec (and the VBOOT_SOURCE directory) is part of the host-side vboot_reference ebuild, which is in hard-host-depends. The chroot gets updated every time vboot_reference is bumped.",
+      "parentUuid": "AAAAKn//oeA\u003d",
       "revId": "fd8ec98865780dd2a3a2be23917b671bfc144b42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAKn//oZM\u003d",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-05-10T21:23:34Z",
+      "side": 1,
+      "message": "That path is already hard-coded in other places (make_dev_ssd.sh, for example).",
+      "parentUuid": "AAAAKn//od8\u003d",
+      "revId": "fd8ec98865780dd2a3a2be23917b671bfc144b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAKn//odk\u003d",
         "filename": "board/bds/build.mk",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2012-05-10T21:03:04Z",
       "side": 1,
       "message": "mainly for my personal culture, what is the gris-gris used for ?",
+      "revId": "fd8ec98865780dd2a3a2be23917b671bfc144b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//oY8\u003d",
+        "filename": "board/bds/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-05-10T21:23:34Z",
+      "side": 1,
+      "message": "This is a magic string to tell Emacs that it should be using the makefile-mode when editing this file (start lines with tabs, etc.)",
+      "parentUuid": "AAAAKn//odk\u003d",
       "revId": "fd8ec98865780dd2a3a2be23917b671bfc144b42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAKn//oYk\u003d",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-05-10T21:23:34Z",
+      "side": 1,
+      "message": "Probably. I\u0027ll try it.",
+      "parentUuid": "AAAAKn//ocs\u003d",
+      "revId": "fd8ec98865780dd2a3a2be23917b671bfc144b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAKn//ocU\u003d",
         "filename": "common/vboot.c",
         "patchSetId": 1
@@ -98,6 +188,24 @@
       "writtenOn": "2012-05-10T21:03:04Z",
       "side": 1,
       "message": "we should follow EC coding convention here ?",
+      "revId": "fd8ec98865780dd2a3a2be23917b671bfc144b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//oYA\u003d",
+        "filename": "common/vboot.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-05-10T21:23:34Z",
+      "side": 1,
+      "message": "If you mean using \"uint8_t* key_data\" instead of \"uint8_t *key_data)\", then no. The presubmit hook enforces kernel coding style. That may be valid for C++, but it\u0027s not for C, since this:\n\n  int* a, b;\n\nis misleading. The type for b is \"int\", not \"pointer to int\".",
+      "parentUuid": "AAAAKn//ocU\u003d",
       "revId": "fd8ec98865780dd2a3a2be23917b671bfc144b42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAKn//oX8\u003d",
+        "filename": "common/vboot.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-05-10T21:23:34Z",
+      "side": 1,
+      "message": "okay.",
+      "parentUuid": "AAAAKn//ocA\u003d",
+      "revId": "fd8ec98865780dd2a3a2be23917b671bfc144b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAKn//ob4\u003d",
         "filename": "common/vboot.c",
         "patchSetId": 1
@@ -138,6 +264,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAKn//oX4\u003d",
+        "filename": "common/vboot.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-05-10T21:23:34Z",
+      "side": 1,
+      "message": "okay.",
+      "parentUuid": "AAAAKn//ob4\u003d",
+      "revId": "fd8ec98865780dd2a3a2be23917b671bfc144b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAKn//obc\u003d",
         "filename": "common/vboot_stub.c",
         "patchSetId": 1
@@ -149,6 +293,24 @@
       "writtenOn": "2012-05-10T21:03:04Z",
       "side": 1,
       "message": "are the allocations varying depending on the run / board ?\nor can we do something even more hardcoded (ie simply having preallocated blocks of the right size and just asserting/reserving them at allocation ?",
+      "revId": "fd8ec98865780dd2a3a2be23917b671bfc144b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//oXc\u003d",
+        "filename": "common/vboot_stub.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-05-10T21:23:34Z",
+      "side": 1,
+      "message": "The sequence is repeatable for a particular algorithm, so if we never want to do anything except RSA4096/SHA256, we could hard-code all the pointers in advance. I can experiment to see how much time it would save. This implementation supports all algorithms, subject to memory constraints.",
+      "parentUuid": "AAAAKn//obc\u003d",
       "revId": "fd8ec98865780dd2a3a2be23917b671bfc144b42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
