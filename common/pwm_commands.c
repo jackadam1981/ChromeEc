@@ -12,49 +12,49 @@
 
 int pwm_command_get_fan_rpm(uint8_t *data)
 {
-	struct lpc_response_pwm_get_fan_rpm *r =
-			(struct lpc_response_pwm_get_fan_rpm *)data;
+	struct ec_response_pwm_get_fan_rpm *r =
+			(struct ec_response_pwm_get_fan_rpm *)data;
 
 	r->rpm = pwm_get_fan_target_rpm();
-	return sizeof(struct lpc_response_pwm_get_fan_rpm);
+	return sizeof(struct ec_response_pwm_get_fan_rpm);
 }
-DECLARE_HOST_COMMAND(EC_LPC_COMMAND_PWM_GET_FAN_RPM, pwm_command_get_fan_rpm);
+DECLARE_HOST_COMMAND(EC_CMD_PWM_GET_FAN_RPM, pwm_command_get_fan_rpm);
 
 
 int pwm_command_set_fan_target_rpm(uint8_t *data)
 {
-	struct lpc_params_pwm_set_fan_target_rpm *p =
-			(struct lpc_params_pwm_set_fan_target_rpm *)data;
+	struct ec_params_pwm_set_fan_target_rpm *p =
+			(struct ec_params_pwm_set_fan_target_rpm *)data;
 
 #ifdef CONFIG_TASK_THERMAL
 	thermal_toggle_auto_fan_ctrl(0);
 #endif
 	pwm_set_fan_target_rpm(p->rpm);
-	return EC_LPC_RESULT_SUCCESS;
+	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_LPC_COMMAND_PWM_SET_FAN_TARGET_RPM,
+DECLARE_HOST_COMMAND(EC_CMD_PWM_SET_FAN_TARGET_RPM,
 		     pwm_command_set_fan_target_rpm);
 
 
 int pwm_command_get_keyboard_backlight(uint8_t *data)
 {
-	struct lpc_response_pwm_get_keyboard_backlight *r =
-			(struct lpc_response_pwm_get_keyboard_backlight *)data;
+	struct ec_response_pwm_get_keyboard_backlight *r =
+			(struct ec_response_pwm_get_keyboard_backlight *)data;
 
 	r->percent = pwm_get_keyboard_backlight();
-	return sizeof(struct lpc_response_pwm_get_keyboard_backlight);
+	return sizeof(struct ec_response_pwm_get_keyboard_backlight);
 }
-DECLARE_HOST_COMMAND(EC_LPC_COMMAND_PWM_GET_KEYBOARD_BACKLIGHT,
+DECLARE_HOST_COMMAND(EC_CMD_PWM_GET_KEYBOARD_BACKLIGHT,
 		     pwm_command_get_keyboard_backlight);
 
 
 int pwm_command_set_keyboard_backlight(uint8_t *data)
 {
-	struct lpc_params_pwm_set_keyboard_backlight *p =
-			(struct lpc_params_pwm_set_keyboard_backlight *)data;
+	struct ec_params_pwm_set_keyboard_backlight *p =
+			(struct ec_params_pwm_set_keyboard_backlight *)data;
 
 	pwm_set_keyboard_backlight(p->percent);
-	return EC_LPC_RESULT_SUCCESS;
+	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_LPC_COMMAND_PWM_SET_KEYBOARD_BACKLIGHT,
+DECLARE_HOST_COMMAND(EC_CMD_PWM_SET_KEYBOARD_BACKLIGHT,
 		     pwm_command_set_keyboard_backlight);

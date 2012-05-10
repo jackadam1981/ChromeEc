@@ -13,25 +13,25 @@
 
 int pstore_command_get_info(uint8_t *data)
 {
-	struct lpc_response_pstore_info *r =
-			(struct lpc_response_pstore_info *)data;
+	struct ec_response_pstore_info *r =
+			(struct ec_response_pstore_info *)data;
 
 	ASSERT(EEPROM_BLOCK_START_PSTORE + EEPROM_BLOCK_COUNT_PSTORE <=
 	       eeprom_get_block_count());
 
 	r->pstore_size = EEPROM_BLOCK_COUNT_PSTORE * eeprom_get_block_size();
 	r->access_size = sizeof(uint32_t);
-	return sizeof(struct lpc_response_pstore_info);
+	return sizeof(struct ec_response_pstore_info);
 }
-DECLARE_HOST_COMMAND(EC_LPC_COMMAND_PSTORE_INFO, pstore_command_get_info);
+DECLARE_HOST_COMMAND(EC_CMD_PSTORE_INFO, pstore_command_get_info);
 
 
 int pstore_command_read(uint8_t *data)
 {
-	struct lpc_params_pstore_read *p =
-			(struct lpc_params_pstore_read *)data;
-	struct lpc_response_pstore_read *r =
-			(struct lpc_response_pstore_read *)data;
+	struct ec_params_pstore_read *p =
+			(struct ec_params_pstore_read *)data;
+	struct ec_response_pstore_read *r =
+			(struct ec_response_pstore_read *)data;
 	char *dest = r->data;
 	int block_size = eeprom_get_block_size();
 	int block = p->offset / block_size + EEPROM_BLOCK_COUNT_PSTORE;
@@ -39,7 +39,7 @@ int pstore_command_read(uint8_t *data)
 	int bytes_left = p->size;
 
 	if (p->size > sizeof(r->data))
-		return -EC_LPC_RESULT_ERROR;
+		return -EC_RES_ERROR;
 
 	while (bytes_left) {
 		/* Read what we can from the current block */
@@ -47,10 +47,10 @@ int pstore_command_read(uint8_t *data)
 
 		if (block >=
 		    EEPROM_BLOCK_START_PSTORE + EEPROM_BLOCK_COUNT_PSTORE)
-			return -EC_LPC_RESULT_ERROR;
+			return -EC_RES_ERROR;
 
 		if (eeprom_read(block, offset, bytes_this, dest))
-			return -EC_LPC_RESULT_ERROR;
+			return -EC_RES_ERROR;
 
 		/* Continue to the next block if necessary */
 		offset = 0;
@@ -59,15 +59,15 @@ int pstore_command_read(uint8_t *data)
 		dest += bytes_this;
 	}
 
-	return sizeof(struct lpc_response_pstore_read);
+	return sizeof(struct ec_response_pstore_read);
 }
-DECLARE_HOST_COMMAND(EC_LPC_COMMAND_PSTORE_READ, pstore_command_read);
+DECLARE_HOST_COMMAND(EC_CMD_PSTORE_READ, pstore_command_read);
 
 
 int pstore_command_write(uint8_t *data)
 {
-	struct lpc_params_pstore_write *p =
-			(struct lpc_params_pstore_write *)data;
+	struct ec_params_pstore_write *p =
+			(struct ec_params_pstore_write *)data;
 
 	const char *src = p->data;
 	int block_size = eeprom_get_block_size();
@@ -76,7 +76,7 @@ int pstore_command_write(uint8_t *data)
 	int bytes_left = p->size;
 
 	if (p->size > sizeof(p->data))
-		return -EC_LPC_RESULT_ERROR;
+		return -EC_RES_ERROR;
 
 	while (bytes_left) {
 		/* Write what we can to the current block */
@@ -84,10 +84,10 @@ int pstore_command_write(uint8_t *data)
 
 		if (block >=
 		    EEPROM_BLOCK_START_PSTORE + EEPROM_BLOCK_COUNT_PSTORE)
-			return -EC_LPC_RESULT_ERROR;
+			return -EC_RES_ERROR;
 
 		if (eeprom_write(block, offset, bytes_this, src))
-			return -EC_LPC_RESULT_ERROR;
+			return -EC_RES_ERROR;
 
 		/* Continue to the next block if necessary */
 		offset = 0;
@@ -96,6 +96,6 @@ int pstore_command_write(uint8_t *data)
 		src += bytes_this;
 	}
 
-	return EC_LPC_RESULT_SUCCESS;
+	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_LPC_COMMAND_PSTORE_WRITE, pstore_command_write);
+DECLARE_HOST_COMMAND(EC_CMD_PSTORE_WRITE, pstore_command_write);

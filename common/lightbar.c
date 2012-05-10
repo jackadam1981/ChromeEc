@@ -685,7 +685,7 @@ static const uint8_t dump_reglist[] = {
 	0x18, 0x19, 0x1a
 };
 
-static void do_cmd_dump(struct lpc_params_lightbar_cmd *ptr)
+static void do_cmd_dump(struct ec_params_lightbar_cmd *ptr)
 {
 	int i;
 	uint8_t reg;
@@ -720,8 +720,8 @@ static void do_cmd_rgb(uint8_t led,
 
 static int lpc_cmd_lightbar(uint8_t *data)
 {
-	struct lpc_params_lightbar_cmd *ptr =
-		(struct lpc_params_lightbar_cmd *)data;
+	struct ec_params_lightbar_cmd *ptr =
+		(struct ec_params_lightbar_cmd *)data;
 
 	switch (ptr->in.cmd) {
 	case LIGHTBAR_CMD_DUMP:
@@ -758,13 +758,13 @@ static int lpc_cmd_lightbar(uint8_t *data)
 		break;
 	default:
 		CPRINTF("[invalid lightbar cmd 0x%x]\n", ptr->in.cmd);
-		return -EC_LPC_RESULT_INVALID_PARAM;
+		return -EC_RES_INVALID_PARAM;
 	}
 
-	return EC_LPC_RESULT_SUCCESS;
+	return EC_RES_SUCCESS;
 }
 
-DECLARE_HOST_COMMAND(EC_LPC_COMMAND_LIGHTBAR_CMD, lpc_cmd_lightbar);
+DECLARE_HOST_COMMAND(EC_CMD_LIGHTBAR_CMD, lpc_cmd_lightbar);
 
 
 /****************************************************************************/
@@ -811,7 +811,7 @@ static int command_lightbar(int argc, char **argv)
 {
 	int i;
 	uint8_t num;
-	struct lpc_params_lightbar_cmd params;
+	struct ec_params_lightbar_cmd params;
 
 	if (1 == argc) {		/* no args = dump 'em all */
 		do_cmd_dump(&params);
