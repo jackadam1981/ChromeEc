@@ -11,7 +11,6 @@
 #include "dma.h"
 #include "gpio.h"
 #include "hooks.h"
-#include "message.h"
 #include "registers.h"
 #include "spi.h"
 #include "task.h"
@@ -33,8 +32,6 @@ enum {
 };
 
 /*
- * Since message.c no longer supports our protocol, we must do it all here.
- *
  * We allow a preamble and a header byte so that SPI can function at all.
  * We also add a 16-bit length so that we can tell that we got the whole
  * message, since the master decides how many bytes to read.
