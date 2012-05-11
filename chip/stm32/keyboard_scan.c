@@ -12,6 +12,7 @@
 #include "board.h"
 #include "console.h"
 #include "gpio.h"
+#include "host_command.h"
 #include "keyboard.h"
 #include "keyboard_scan.h"
 #include "registers.h"
@@ -308,8 +309,20 @@ int keyboard_scan_recovery_pressed(void)
 	return 0;
 }
 
-int keyboard_get_scan(uint8_t **buffp, int max_bytes)
+static int keyboard_get_scan(uint8_t *data)
 {
-	*buffp = saved_state;
+	memcpy(data, saved_state, sizeof(saved_state));
 	return sizeof(saved_state);
 }
+DECLARE_HOST_COMMAND(EC_CMD_MKBP_STATE, keyboard_get_scan);
+
+static int keyboard_get_info(uint8_t *data)
+{
+	struct ec_response_mkbp_info *r = (struct ec_response_mkbp_info *)data;
+
+	r->rows = 8;
+	r->cols = KB_COLS;
+
+	return sizeof(struct ec_response_mkbp_info);
+}
+DECLARE_HOST_COMMAND(EC_CMD_MKBP_INFO, keyboard_get_info);
