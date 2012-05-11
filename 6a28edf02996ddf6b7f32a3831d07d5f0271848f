@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAKn//nF0\u003d",
+        "filename": "chip/lm4/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-05-11T23:48:46Z",
+      "side": 1,
+      "message": "LPC ignores the data param?\n\nShould check if data \u003d\u003d host_get_buffer(), and if not, memcpy() it to the destination buffer.\n\nAlso, suggest breaking this down into 2 functions:\n\n   host_send_result (slot, result) \n   // errors, and success results with no response data\n\n   host_send_response(slot, data, size)\n   // success results with response data\n\nUnless we\u0027re thinking that we\u0027ll have error responses which DO contain data (AFAIK we don\u0027t).",
+      "revId": "6a28edf02996ddf6b7f32a3831d07d5f0271848f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//nGE\u003d",
+        "filename": "include/host_command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-05-11T23:48:46Z",
+      "side": 1,
+      "message": "This seems VERY typo-prone.  That is, all I need to do is drop the \u0027-\u0027 when passing an error return code and it\u0027ll be interpreted as a valid size.\n\nIt\u0027s safer to pass a second param where the handler stores the response size:\n\n    int *response_size_ptr;\n\nThe host command handler should initialize that to 0 before calling the handler, so that only handlers which return data need touch it.\n\nHaven\u0027t decided whether we should restructure the LPC protocol to pass the parameters size somehow, so that handlers can ensure they got all their data.  While we\u0027re doing that, do we want a checksum/CRC for the parameter data so we can ensure integrity?",
+      "revId": "6a28edf02996ddf6b7f32a3831d07d5f0271848f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//nF4\u003d",
+        "filename": "include/host_command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-05-11T23:48:46Z",
+      "side": 1,
+      "message": "const uint8_t *data",
+      "revId": "6a28edf02996ddf6b7f32a3831d07d5f0271848f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
