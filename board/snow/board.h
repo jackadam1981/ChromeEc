@@ -14,6 +14,9 @@
 /* Use USART1 as console serial port */
 #define CONFIG_CONSOLE_UART 1
 
+/* use I2C for host communication */
+#define CONFIG_I2C
+
 #define USB_CHARGE_PORT_COUNT 0
 
 /* EC drives 13 outputs to keyboard matrix */
@@ -67,6 +70,6 @@ void configure_board(void);
 void matrix_interrupt(enum gpio_signal signal);
 
 /* Signal to AP that data is waiting */
-void board_interrupt_host(void);
+void board_interrupt_host(int level);
 
 #endif /* __BOARD_H */

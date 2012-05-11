@@ -17,6 +17,9 @@
 /* support programming on-chip flash */
 #define CONFIG_FLASH
 
+/* use I2C for host communication */
+#define CONFIG_I2C
+
 /* By default, enable all console messages except keyboard */
 #define CC_DEFAULT	(CC_ALL & ~CC_MASK(CC_KEYSCAN))
 
@@ -78,6 +81,6 @@ void matrix_interrupt(enum gpio_signal signal);
 void board_keyboard_suppress_noise(void);
 
 /* Signal to AP that data is waiting */
-void board_interrupt_host(void);
+void board_interrupt_host(int level);
 
 #endif /* __BOARD_H */
