@@ -54,6 +54,18 @@ int strcasecmp(const char *s1, const char *s2)
 }
 
 
+int strncasecmp(const char *s1, const char *s2, int size)
+{
+	int diff;
+	do {
+		diff = tolower(*s1) - tolower(*s2);
+		if (diff)
+			return diff;
+	} while (*(s1++) && *(s2++) && --size);
+	return 0;
+}
+
+
 int atoi(const char *nptr)
 {
 	int result = 0;
