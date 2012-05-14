@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAKn//ltQ\u003d",
+        "filename": "common/keyboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-05-14T23:37:04Z",
+      "side": 1,
+      "message": "You can use the shared_mem buffer, if you make the console command have options:\n\nkblog on --\u003e start logging (calls shared_mem_acquire())\n\nkblog off --\u003e stop logging (calls shared_mem_free() and sets kblog\u003dNULL)\n\nkblog -\u003e print",
+      "revId": "c43062fb56c172605f7604e57be1312dbef8179a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//ltA\u003d",
+        "filename": "include/keyboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-05-14T23:37:04Z",
+      "side": 1,
+      "message": "clean -\u003e clear?",
+      "revId": "c43062fb56c172605f7604e57be1312dbef8179a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//ls4\u003d",
+        "filename": "include/lpc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-05-14T23:37:04Z",
+      "side": 1,
+      "message": "clean -\u003e clear?",
+      "revId": "c43062fb56c172605f7604e57be1312dbef8179a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
