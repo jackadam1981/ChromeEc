@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAKn//lxg\u003d",
+        "filename": "common/console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-05-14T23:14:23Z",
+      "side": 1,
+      "message": "Stack is small, so use shared_mem_acquire() to get a buffer to use for indices[], then shared_mem_release() when done.",
+      "revId": "6c5252ceb943eed2ac5a11424c136fbe92ba3a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
