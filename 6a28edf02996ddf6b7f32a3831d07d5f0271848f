@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAKn//l5w\u003d",
+        "filename": "chip/lm4/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-05-14T22:05:27Z",
+      "side": 1,
+      "message": "API updated",
+      "parentUuid": "AAAAKn//nF0\u003d",
+      "revId": "6a28edf02996ddf6b7f32a3831d07d5f0271848f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAKn//nGE\u003d",
         "filename": "include/host_command.h",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAKn//l54\u003d",
+        "filename": "include/host_command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-05-14T22:05:27Z",
+      "side": 1,
+      "message": "That\u0027s the interface of one portion of the glibc (e.g. file I/O function), but ok I have reworked the interface.\n\nFor the checksum, we are doing it on the i2c interface for ARM. we can factor out that code afterwards.",
+      "parentUuid": "AAAAKn//nGE\u003d",
+      "revId": "6a28edf02996ddf6b7f32a3831d07d5f0271848f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAKn//nF4\u003d",
         "filename": "include/host_command.h",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2012-05-11T23:48:46Z",
       "side": 1,
       "message": "const uint8_t *data",
+      "revId": "6a28edf02996ddf6b7f32a3831d07d5f0271848f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//l50\u003d",
+        "filename": "include/host_command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-05-14T22:05:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAKn//nF4\u003d",
       "revId": "6a28edf02996ddf6b7f32a3831d07d5f0271848f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
