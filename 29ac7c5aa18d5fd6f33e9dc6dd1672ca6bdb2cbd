@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAKn//mFE\u003d",
+        "filename": "common/console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-05-14T20:13:00Z",
+      "side": 1,
+      "message": "Note that all commands must now have unique prefixes.  That is, if there are commands \"foo\" and \"foobar\", there\u0027s no way to execute \"foo\".\n\nFor example, this breaks the \"ch\" command, which shares a prefix with \"charger\".\n\nWe could either:\n  1) Prefer an exact match over a partial match (potentially messy)\nor\n  2) Require all commands to have unique prefixes (in which case, please document this somewhere and come up with sensible new names for the \"ch\" and \"thermal\" commands)",
+      "revId": "29ac7c5aa18d5fd6f33e9dc6dd1672ca6bdb2cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//mFk\u003d",
+        "filename": "common/util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-05-14T20:13:00Z",
+      "side": 1,
+      "message": "What if size\u003d0?  Seems like you need a check for that before do {",
+      "revId": "29ac7c5aa18d5fd6f33e9dc6dd1672ca6bdb2cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
