@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAKn//mEU\u003d",
+        "filename": "common/console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2012-05-14T20:41:17Z",
+      "side": 1,
+      "message": "good point. modified two existing commands not to match other commands, and added a comment to the command macro definition.",
+      "parentUuid": "AAAAKn//mFE\u003d",
+      "revId": "29ac7c5aa18d5fd6f33e9dc6dd1672ca6bdb2cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAKn//mFk\u003d",
         "filename": "common/util.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2012-05-14T20:13:00Z",
       "side": 1,
       "message": "What if size\u003d0?  Seems like you need a check for that before do {",
+      "revId": "29ac7c5aa18d5fd6f33e9dc6dd1672ca6bdb2cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//mEE\u003d",
+        "filename": "common/util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2012-05-14T20:41:17Z",
+      "side": 1,
+      "message": "well, I thought about it and decided it was not strictly necessary - who would call this with size zero? But just in case, fixed this now to return equality in case size is zero.",
+      "parentUuid": "AAAAKn//mFk\u003d",
       "revId": "29ac7c5aa18d5fd6f33e9dc6dd1672ca6bdb2cbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
