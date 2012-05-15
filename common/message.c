@@ -40,6 +40,9 @@ static int message_get_response(int cmd, uint8_t **buffp, int max_len)
 	switch (cmd) {
 	case CMDC_PROTO_VER:
 		*buffp = (uint8_t *)proto_ver;
+#ifdef CONFIG_TASK_KEYSCAN
+		keyboard_clear_state();
+#endif
 		return sizeof(proto_ver);
 	case CMDC_NOP:
 		return 0;
@@ -89,5 +92,7 @@ int message_process_cmd(int cmd, uint8_t *out_msg, int max_len)
 	}
 	out_msg[i] = sum;
 
+	/* give the caller a chance to do work before fifo task kicks in */
+	keyboard_fifo_work_in_progress();
 	return msg_len + MSG_PROTO_BYTES;
 }
