@@ -33,6 +33,11 @@ enum COL_INDEX {
 #define POLLING_MODE_TIMEOUT 100000   /* 100 ms */
 #define SCAN_LOOP_DELAY 10000         /*  10 ms */
 
+/* dropping keys is very bad, so we'll allow a lot of time for a
+   FIFO slot to become available */
+#define KEYBOARD_FIFO_PUSH_DELAY	10000	/* 10ms* */
+#define KEYBOARD_FIFO_PUSH_TRIES	25
+
 /* 15:14, 12:8, 2 */
 #define IRQ_MASK 0xdf04
 
@@ -224,9 +229,9 @@ static int check_keys_changed(void)
 	}
 
 	if (change) {
-		memcpy(saved_state, raw_state, sizeof(saved_state));
+		int tries = KEYBOARD_FIFO_PUSH_TRIES;
+
 		board_keyboard_suppress_noise();
-		board_interrupt_host();
 
 		CPRINTF("[%d keys pressed: ", num_press);
 		for (c = 0; c < KB_COLS; c++) {
@@ -236,6 +241,18 @@ static int check_keys_changed(void)
 				CPUTS(" --");
 		}
 		CPUTS("]\n");
+
+		while (tries) {
+			if (keyboard_fifo_push(raw_state) == EC_SUCCESS)
+				break;
+			tries--;
+			usleep(KEYBOARD_FIFO_PUSH_DELAY);
+		}
+
+		if (!tries)
+			CPRINTF("dropped keystroke\n");
+		else
+			board_interrupt_host();
 	}
 
 	return num_press ? 1 : 0;
@@ -276,6 +293,7 @@ void keyboard_scan_task(void)
 				}
 			}
 		}
+
 		/* TODO: (crosbug.com/p/7484) A race condition here.
 		 *       If a key state is changed here (before interrupt is
 		 *       enabled), it will be lost.
@@ -308,6 +326,7 @@ int keyboard_scan_recovery_pressed(void)
 
 int keyboard_get_scan(uint8_t **buffp, int max_bytes)
 {
+	keyboard_fifo_pop(saved_state);
 	*buffp = saved_state;
-	return sizeof(saved_state);
+	return KB_COLS;
 }
