@@ -61,8 +61,6 @@ enum COLUMN_INDEX {
 #define SCAN_LOOP_DELAY 10000         /* 10 ms */
 #define COLUMN_CHARGE_US 40           /* Column charge time in usec */
 
-#define KB_COLS 13
-
 static uint8_t raw_state[KB_COLS];
 static uint8_t raw_state_at_boot[KB_COLS];
 static int recovery_key_pressed;

@@ -33,8 +33,6 @@ enum COL_INDEX {
 #define POLLING_MODE_TIMEOUT 100000   /* 100 ms */
 #define SCAN_LOOP_DELAY 10000         /*  10 ms */
 
-#define KB_COLS 13
-
 /* 15:14, 12:8, 2 */
 #define IRQ_MASK 0xdf04
 
