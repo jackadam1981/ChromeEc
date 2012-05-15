@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAKn//lmY\u003d",
+        "filename": "common/console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-05-15T01:13:43Z",
+      "side": 1,
+      "message": "I think the \u0027rows\u0027 value is incorrect (e.g. for 5N+1 commands).\nIMO the right one is probably :\nrows \u003d (ncmds + cols - 1) / cols;",
+      "revId": "336944e9519ee90a523398b497328d353f8cef4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
