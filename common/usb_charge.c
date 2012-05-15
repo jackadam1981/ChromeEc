@@ -10,8 +10,19 @@
 #include "console.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "system.h"
 #include "usb_charge.h"
 #include "util.h"
+
+
+#define USB_SYSJUMP_TAG 0x5550 /* "UP" - Usb Port */
+#define USB_HOOK_VERSION 1
+/* The previous USB port state before sys jump */
+struct usb_state {
+	uint8_t port1_mode;
+	uint8_t port2_mode;
+	uint8_t pad[2]; /* Pad to 4 bytes for system_add_jump_tag(). */
+};
 
 
 static void usb_charge_set_control_mode(int port_id, int mode)
@@ -29,6 +40,19 @@ static void usb_charge_set_control_mode(int port_id, int mode)
 }
 
 
+static int usb_charge_get_control_mode(int port_id)
+{
+	if (port_id == 0)
+		return (gpio_get_level(GPIO_USB1_CTL1) << 2) +
+		       (gpio_get_level(GPIO_USB1_CTL2) << 1) +
+		       (gpio_get_level(GPIO_USB1_CTL3));
+	else
+		return (gpio_get_level(GPIO_USB2_CTL1) << 2) +
+		       (gpio_get_level(GPIO_USB2_CTL2) << 1) +
+		       (gpio_get_level(GPIO_USB2_CTL3));
+}
+
+
 static void usb_charge_set_enabled(int port_id, int en)
 {
 	if (port_id == 0)
@@ -38,12 +62,30 @@ static void usb_charge_set_enabled(int port_id, int en)
 }
 
 
+static int usb_charge_get_enabled(int port_id)
+{
+	if (port_id == 0)
+		return gpio_get_level(GPIO_USB1_ENABLE);
+	else
+		return gpio_get_level(GPIO_USB2_ENABLE);
+}
+
+
 static void usb_charge_set_ilim(int port_id, int sel)
 {
 	if (port_id == 0)
 		gpio_set_level(GPIO_USB1_ILIM_SEL, sel);
 	else
 		gpio_set_level(GPIO_USB2_ILIM_SEL, sel);
+}
+
+
+static int usb_charge_get_ilim(int port_id)
+{
+	if (port_id == 0)
+		return gpio_get_level(GPIO_USB1_ILIM_SEL);
+	else
+		return gpio_get_level(GPIO_USB2_ILIM_SEL);
 }
 
 
@@ -98,6 +140,30 @@ int usb_charge_set_mode(int port_id, enum usb_charge_mode mode)
 	return EC_SUCCESS;
 }
 
+
+int usb_charge_get_mode(int port_id)
+{
+	int mode = usb_charge_get_control_mode(port_id);
+
+	if (port_id >= USB_CHARGE_PORT_COUNT)
+		return EC_ERROR_INVAL;
+
+	if (usb_charge_get_enabled(port_id) == 0)
+		return USB_CHARGE_MODE_DISABLED;
+
+	if (mode == 1)
+		return USB_CHARGE_MODE_CHARGE_AUTO;
+	else if (mode == 4)
+		return USB_CHARGE_MODE_CHARGE_BC12;
+	else if (mode == 2) {
+		if (usb_charge_get_ilim(port_id) == 1)
+			return USB_CHARGE_MODE_DOWNSTREAM_1500MA;
+		else
+			return USB_CHARGE_MODE_DOWNSTREAM_500MA;
+	}
+	return -1;
+}
+
 /*****************************************************************************/
 /* Console commands */
 
@@ -137,12 +203,32 @@ DECLARE_CONSOLE_COMMAND(usbchargemode, command_set_mode);
 /*****************************************************************************/
 /* Hooks */
 
+static int usb_charge_preserve_state(void)
+{
+	struct usb_state state;
+
+	state.port1_mode = usb_charge_get_mode(0);
+	state.port2_mode = usb_charge_get_mode(1);
+
+	system_add_jump_tag(USB_SYSJUMP_TAG, USB_HOOK_VERSION,
+			    sizeof(state), &state);
+	return EC_SUCCESS;
+}
+DECLARE_HOOK(HOOK_SYSJUMP, usb_charge_preserve_state, HOOK_PRIO_DEFAULT);
+
 static int usb_charge_init(void)
 {
-	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
-		usb_charge_all_ports_off();
+	const struct usb_state *prev;
+	int version, size;
+
+	prev = (const struct usb_state *)system_get_jump_tag(USB_SYSJUMP_TAG,
+							     &version, &size);
+	if (prev && version == USB_HOOK_VERSION && size == sizeof(*prev)) {
+		usb_charge_set_mode(0, prev->port1_mode);
+		usb_charge_set_mode(1, prev->port2_mode);
+	}
 	else
-		usb_charge_all_ports_on();
+		usb_charge_all_ports_off();
 
 	return EC_SUCCESS;
 }
