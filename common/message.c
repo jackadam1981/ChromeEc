@@ -40,6 +40,11 @@ static int message_get_response(int cmd, uint8_t **buffp, int max_len)
 	switch (cmd) {
 	case CMDC_PROTO_VER:
 		*buffp = (uint8_t *)proto_ver;
+#ifdef CONFIG_TASK_KEYSCAN
+		/* if protocol version is requested, assume system is
+		   initializing and clear any keyboard state (FIFO, etc) */
+		keyboard_clear_state();
+#endif
 		return sizeof(proto_ver);
 	case CMDC_NOP:
 		return 0;
@@ -48,6 +53,8 @@ static int message_get_response(int cmd, uint8_t **buffp, int max_len)
 		return sizeof(ec_id) - 1;
 #ifdef CONFIG_TASK_KEYSCAN
 	case CMDC_KEY_STATE:
+		/* delay FIFO task to avoid excessive AP interrupts */
+		keyboard_fifo_work_in_progress();
 		return keyboard_get_scan(buffp, max_len);
 #endif
 	default:
