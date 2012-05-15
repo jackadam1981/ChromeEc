@@ -10,9 +10,6 @@
 
 #include "common.h"
 
-/* Chrome OS keyboard has 13 columns which are driven by the EC */
-#define KB_COLS 13
-
 /* Initializes the module. */
 int keyboard_scan_init(void);
 

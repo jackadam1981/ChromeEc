@@ -16,6 +16,9 @@
 
 #define USB_CHARGE_PORT_COUNT 0
 
+/* EC has 13 outputs to the keyboard (logical rows) */
+#define KB_OUTPUTS 13
+
 /* GPIO signal list */
 enum gpio_signal {
 	/* Inputs with interrupt handlers are first for efficiency */
@@ -63,7 +66,7 @@ void configure_board(void);
 
 void matrix_interrupt(enum gpio_signal signal);
 
-/* Signal to the AP that keyboard scan data is available */
-void board_keyboard_scan_ready(void);
+/* Signal to AP that data is waiting */
+void board_interrupt_host(void);
 
 #endif /* __BOARD_H */

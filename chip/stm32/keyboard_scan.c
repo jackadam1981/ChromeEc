@@ -37,10 +37,10 @@ enum COL_INDEX {
 #define IRQ_MASK 0xdf04
 
 /* The keyboard state from the last read */
-static uint8_t raw_state[KB_COLS];
+static uint8_t raw_state[KB_OUTPUTS];
 
 /* The keyboard state we will return when requested */
-static uint8_t saved_state[KB_COLS];
+static uint8_t saved_state[KB_OUTPUTS];
 
 /* Mask with 1 bits only for keys that actually exist */
 static const uint8_t *actual_key_mask;
@@ -48,7 +48,7 @@ static const uint8_t *actual_key_mask;
 /* All actual key masks (todo: move to keyboard matrix definition) */
 /* TODO: (crosbug.com/p/7485) fill in real key mask with 0-bits for coords that
    aren't keys */
-static const uint8_t actual_key_masks[4][KB_COLS] = {
+static const uint8_t actual_key_masks[4][KB_OUTPUTS] = {
 	{0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
 	 0xff, 0xff, 0xff, 0xff, 0xff, 0xff},
 	{0},
@@ -69,13 +69,12 @@ static const uint32_t ports[] = { GPIO_B, GPIO_C, GPIO_D };
 #endif
 
 /* Provide a default function in case the board doesn't have one */
-void __board_keyboard_scan_ready(void)
+void __board_keyboard_suppress_noise(void)
 {
 }
 
-void board_keyboard_scan_ready(void)
-		__attribute__((weak, alias("__board_keyboard_scan_ready")));
-
+void board_keyboard_suppress_noise(void)
+		__attribute__((weak, alias("__board_keyboard_suppress_noise")));
 
 static void select_column(int col)
 {
@@ -167,7 +166,7 @@ static int check_keys_changed(void)
 	int change = 0;
 	int num_press = 0;
 
-	for (c = 0; c < KB_COLS; c++) {
+	for (c = 0; c < KB_OUTPUTS; c++) {
 		uint16_t tmp;
 
 		/* Select column, then wait a bit for it to settle */
@@ -219,17 +218,18 @@ static int check_keys_changed(void)
 	select_column(COL_TRI_STATE_ALL);
 
 	/* Count number of key pressed */
-	for (c = 0; c < KB_COLS; c++) {
+	for (c = 0; c < KB_OUTPUTS; c++) {
 		if (raw_state[c])
 			++num_press;
 	}
 
 	if (change) {
 		memcpy(saved_state, raw_state, sizeof(saved_state));
-		board_keyboard_scan_ready();
+		board_keyboard_suppress_noise();
+		board_interrupt_host();
 
 		CPRINTF("[%d keys pressed: ", num_press);
-		for (c = 0; c < KB_COLS; c++) {
+		for (c = 0; c < KB_OUTPUTS; c++) {
 			if (raw_state[c])
 				CPRINTF(" %02x", raw_state[c]);
 			else
