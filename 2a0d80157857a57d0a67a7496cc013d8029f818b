@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAKn//lko\u003d",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2012-05-15T01:38:39Z",
+      "side": 1,
+      "message": "can you make this\n\n *(SORT(.rodata.cmds.*))\n\n(note the extra dot) to be consistent.",
+      "revId": "2a0d80157857a57d0a67a7496cc013d8029f818b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//lks\u003d",
+        "filename": "include/console.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2012-05-15T01:38:39Z",
+      "side": 1,
+      "message": "this is a neat trick!",
+      "revId": "2a0d80157857a57d0a67a7496cc013d8029f818b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
