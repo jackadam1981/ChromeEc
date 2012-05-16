@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAKn//kD0\u003d",
+        "filename": "chip/stm32/keyboard_fifo.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-05-16T20:20:58Z",
+      "side": 1,
+      "message": "I think we can actually get rid of the lock/unlock stuff. Originally I was planning to make the FIFO useful for other messages and envisioned more producers/consumers, but that didn\u0027t really pan out. So now that we\u0027re back to a single producer/consumer, we can get rid of the locking stuff.",
+      "parentUuid": "AAAAKn//ksI\u003d",
+      "revId": "98586a01a8d9aefdc4e567c51be7f8b24401a0b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAKn//krA\u003d",
         "filename": "chip/stm32/keyboard_fifo.c",
         "patchSetId": 8
@@ -47,6 +65,24 @@
       "writtenOn": "2012-05-16T15:59:41Z",
       "side": 1,
       "message": "Should this be NUM_KB_OUTPUT_BYTES?",
+      "revId": "98586a01a8d9aefdc4e567c51be7f8b24401a0b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//kEI\u003d",
+        "filename": "chip/stm32/keyboard_fifo.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-05-16T20:20:58Z",
+      "side": 1,
+      "message": "Nah... KB_OUTPUTS is what we use in other parts of the code as well to describe the number of outputs in a generic sense. Let\u0027s stick with the constants we already have #defined.",
+      "parentUuid": "AAAAKn//krA\u003d",
       "revId": "98586a01a8d9aefdc4e567c51be7f8b24401a0b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +123,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAKn//kGo\u003d",
+        "filename": "chip/stm32/keyboard_fifo.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-05-16T20:20:58Z",
+      "side": 1,
+      "message": "SGTM.",
+      "parentUuid": "AAAAKn//kqU\u003d",
+      "revId": "98586a01a8d9aefdc4e567c51be7f8b24401a0b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAKn//kqE\u003d",
         "filename": "chip/stm32/keyboard_fifo.c",
         "patchSetId": 8
@@ -98,6 +152,24 @@
       "writtenOn": "2012-05-16T15:59:41Z",
       "side": 1,
       "message": "Ach, UNKNOWN?  Not allowed to add another error?  (underflow)",
+      "revId": "98586a01a8d9aefdc4e567c51be7f8b24401a0b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//kFI\u003d",
+        "filename": "chip/stm32/keyboard_fifo.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-05-16T20:20:58Z",
+      "side": 1,
+      "message": "Given the existing list of errors, it\u0027s unknown ;-) We can add underflow in a follow-up CL. (Added a TODO in the meantime).",
+      "parentUuid": "AAAAKn//kqE\u003d",
       "revId": "98586a01a8d9aefdc4e567c51be7f8b24401a0b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -121,6 +193,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAKn//kE8\u003d",
+        "filename": "chip/stm32/keyboard_fifo.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-05-16T20:20:58Z",
+      "side": 1,
+      "message": "Ok, we\u0027ll put that on the TODO list.",
+      "parentUuid": "AAAAKn//kTI\u003d",
+      "revId": "98586a01a8d9aefdc4e567c51be7f8b24401a0b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAKn//kRw\u003d",
         "filename": "chip/stm32/keyboard_scan.c",
         "patchSetId": 8
@@ -138,6 +228,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAKn//kKg\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-05-16T20:20:58Z",
+      "side": 1,
+      "message": "Yep, this is sort of redundant to having a lengthy enough queue. So let\u0027s nix it.",
+      "parentUuid": "AAAAKn//kRw\u003d",
+      "revId": "98586a01a8d9aefdc4e567c51be7f8b24401a0b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAKn//kRs\u003d",
         "filename": "chip/stm32/keyboard_scan.c",
         "patchSetId": 8
@@ -149,6 +257,24 @@
       "writtenOn": "2012-05-16T15:59:41Z",
       "side": 1,
       "message": "Oh, so you are actually delaying the next keyboard poll in this case?  So you may lose events that way, no?",
+      "revId": "98586a01a8d9aefdc4e567c51be7f8b24401a0b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//kJQ\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-05-16T20:20:58Z",
+      "side": 1,
+      "message": "Yes, it would remain in this task for longer period of time, and could thus postpone re-enablement of the matrix interrupts (which is done in keyboard_scan_task()).\n\nThe original idea was that it\u0027s best to try to strictly register all keypresses in order, even if it means ignoring new ones. But as mentioned in the above comment, this bit of added complexity doesn\u0027t buy us anything that increasing the queue depth by 1 wouldn\u0027t do.",
+      "parentUuid": "AAAAKn//kRs\u003d",
       "revId": "98586a01a8d9aefdc4e567c51be7f8b24401a0b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
