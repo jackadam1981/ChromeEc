@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAKn//j6s\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-05-16T20:47:34Z",
+      "side": 1,
+      "message": "you have an atomicity problem on kb_fifo_entries.\nyou can have the following sequence :\n---\u003e matrix scan event (add one entry)\nKEYSCAN: read kb_fifo_entries  \u003d\u003e N\n----\u003e reading coming from host (remove one entry)\nHOSTCMD: read kb_fifo_entries  \u003d\u003e N\nHOSTCMD: write kb_fifo_entries  \u003d\u003e N-1\nKEYSCAN: write kb_fifo_entries  \u003d\u003e N+1\n\u003d\u003e kb_fifo_entries is N+1 instead of N\n\nyou can use :\natomic_add(\u0026kb_fifo_entries, 1);",
+      "revId": "2404146dabe68037df4ae86aa4e892fc1de4b3a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//j7E\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-05-16T20:47:34Z",
+      "side": 1,
+      "message": "we should send the last one which is the actual state of the keyboard.",
+      "revId": "2404146dabe68037df4ae86aa4e892fc1de4b3a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//j6o\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-05-16T20:47:34Z",
+      "side": 1,
+      "message": "same atomicity issue",
+      "revId": "2404146dabe68037df4ae86aa4e892fc1de4b3a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//j6Y\u003d",
+        "filename": "common/message.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-05-16T20:47:34Z",
+      "side": 1,
+      "message": "I would prefer you put that in an init hook.\ne.g. DECLARE_HOOK(HOOK_INIT, keyboard_clear_state, HOOK_PRIO_DEFAULT);",
+      "revId": "2404146dabe68037df4ae86aa4e892fc1de4b3a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
