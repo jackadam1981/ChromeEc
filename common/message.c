@@ -40,6 +40,14 @@ static int message_get_response(int cmd, uint8_t **buffp, int max_len)
 	switch (cmd) {
 	case CMDC_PROTO_VER:
 		*buffp = (uint8_t *)proto_ver;
+#ifdef CONFIG_TASK_KEYSCAN
+		/*
+		 * If protocol version is requested, clear keyboard state.
+		 * This helps to ensure stale keyboard state is cleared in the
+		 * event of an AP hang or warm reboot.
+		 */
+		keyboard_clear_state();
+#endif
 		return sizeof(proto_ver);
 	case CMDC_NOP:
 		return 0;
