@@ -76,6 +76,85 @@ void __board_keyboard_suppress_noise(void)
 void board_keyboard_suppress_noise(void)
 		__attribute__((weak, alias("__board_keyboard_suppress_noise")));
 
+
+#define KB_FIFO_DEPTH		16	/* FIXME: this is pretty huge */
+static int kb_fifo_start;		/* first entry */
+static int kb_fifo_end;			/* last entry */
+static int kb_fifo_entries;		/* number of existing entries */
+static uint8_t kb_fifo[KB_FIFO_DEPTH][KB_OUTPUTS];
+
+/* clear keyboard state variables */
+void keyboard_clear_state(void)
+{
+	int i;
+
+	CPRINTF("clearing keyboard fifo\n");
+	kb_fifo_start = 0;
+	kb_fifo_end = 0;
+	kb_fifo_entries = 0;
+	for (i = 0; i < KB_FIFO_DEPTH; i++)
+		memset(kb_fifo[i], 0, KB_OUTPUTS);
+}
+
+/**
+  * Add keyboard state into FIFO
+  *
+  * @return EC_SUCCESS if entry added, EC_ERROR_OVERFLOW if FIFO is full
+  */
+static int kb_fifo_add(uint8_t *buffp)
+{
+	int ret = EC_SUCCESS;
+
+	if (kb_fifo_entries == KB_FIFO_DEPTH) {
+		CPRINTF("%s: FIFO depth reached\n", __func__);
+		ret = EC_ERROR_OVERFLOW;
+		goto kb_fifo_push_done;
+	}
+
+	memcpy(kb_fifo[kb_fifo_end], buffp, KB_OUTPUTS);
+
+	if (kb_fifo_end == KB_FIFO_DEPTH - 1)
+		kb_fifo_end = 0;
+	else
+		kb_fifo_end++;
+
+	kb_fifo_entries++;
+
+kb_fifo_push_done:
+	return ret;
+}
+
+/**
+  * Pop keyboard state from FIFO
+  *
+  * @return EC_SUCCESS if entry popped, EC_ERROR_UNKNOWN if FIFO is empty
+  */
+static int kb_fifo_remove(uint8_t *buffp)
+{
+	int ret = EC_SUCCESS;
+
+	if (!kb_fifo_entries) {
+		CPRINTF("%s: No entries remaining in FIFO\n", __func__);
+		/* return empty state */
+		memset(buffp, 0, KB_OUTPUTS);
+		/* TODO: add underflow error type */
+		ret = EC_ERROR_UNKNOWN;
+		goto kb_fifo_remove_done;
+	}
+
+	memcpy(buffp, kb_fifo[kb_fifo_start], KB_OUTPUTS);
+
+	if (kb_fifo_start ==  KB_FIFO_DEPTH - 1)
+		kb_fifo_start = 0;
+	else
+		kb_fifo_start++;
+
+	kb_fifo_entries--;
+
+kb_fifo_remove_done:
+	return ret;
+}
+
 static void select_column(int col)
 {
 	int i, done = 0;
@@ -224,9 +303,7 @@ static int check_keys_changed(void)
 	}
 
 	if (change) {
-		memcpy(saved_state, raw_state, sizeof(saved_state));
 		board_keyboard_suppress_noise();
-		board_interrupt_host();
 
 		CPRINTF("[%d keys pressed: ", num_press);
 		for (c = 0; c < KB_OUTPUTS; c++) {
@@ -236,6 +313,11 @@ static int check_keys_changed(void)
 				CPUTS(" --");
 		}
 		CPUTS("]\n");
+
+		if (kb_fifo_add(raw_state) == EC_SUCCESS)
+			board_interrupt_host();
+		else
+			CPRINTF("dropped keystroke\n");
 	}
 
 	return num_press ? 1 : 0;
@@ -308,6 +390,7 @@ int keyboard_scan_recovery_pressed(void)
 
 int keyboard_get_scan(uint8_t **buffp, int max_bytes)
 {
+	kb_fifo_remove(saved_state);
 	*buffp = saved_state;
-	return sizeof(saved_state);
+	return KB_OUTPUTS;
 }
