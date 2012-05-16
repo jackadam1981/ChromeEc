@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAKn//ksM\u003d",
+        "filename": "chip/stm32/keyboard_fifo.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2012-05-16T15:59:41Z",
+      "side": 1,
+      "message": "Is it really huge?  What\u0027s the typical queue length for other keyboards?",
+      "revId": "98586a01a8d9aefdc4e567c51be7f8b24401a0b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//ksI\u003d",
+        "filename": "chip/stm32/keyboard_fifo.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2012-05-16T15:59:41Z",
+      "side": 1,
+      "message": "Does the EC compiler inline these or should you add the \"inline\" keyword?",
+      "revId": "98586a01a8d9aefdc4e567c51be7f8b24401a0b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//krA\u003d",
+        "filename": "chip/stm32/keyboard_fifo.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2012-05-16T15:59:41Z",
+      "side": 1,
+      "message": "Should this be NUM_KB_OUTPUT_BYTES?",
+      "revId": "98586a01a8d9aefdc4e567c51be7f8b24401a0b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//kqU\u003d",
+        "filename": "chip/stm32/keyboard_fifo.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2012-05-16T15:59:41Z",
+      "side": 1,
+      "message": "I didn\u0027t know you push and pop in a FIFO.  That\u0027s more like for a stack.  Maybe add/remove?",
+      "revId": "98586a01a8d9aefdc4e567c51be7f8b24401a0b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//kqQ\u003d",
+        "filename": "chip/stm32/keyboard_fifo.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2012-05-16T15:59:41Z",
+      "side": 1,
+      "message": "I didn\u0027t know you push and pop in a FIFO.  That\u0027s more like for a stack.  Maybe add/remove?",
+      "revId": "98586a01a8d9aefdc4e567c51be7f8b24401a0b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//kqE\u003d",
+        "filename": "chip/stm32/keyboard_fifo.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2012-05-16T15:59:41Z",
+      "side": 1,
+      "message": "Ach, UNKNOWN?  Not allowed to add another error?  (underflow)",
+      "revId": "98586a01a8d9aefdc4e567c51be7f8b24401a0b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//kTI\u003d",
+        "filename": "chip/stm32/keyboard_fifo.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2012-05-16T15:59:41Z",
+      "side": 1,
+      "message": "As mentioned, it would be nice to also have an injection delay, but it can wait for a later CL.",
+      "revId": "98586a01a8d9aefdc4e567c51be7f8b24401a0b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//kRw\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2012-05-16T15:59:41Z",
+      "side": 1,
+      "message": "This comment is unclear.  Is this what we discussed, about waiting this long for the FIFO to have room?  Then, as we discussed, this may be equivalent to having an extra element in the FIFO, and not waiting.  (Right, what happens if a new key event comes in while you wait?)",
+      "revId": "98586a01a8d9aefdc4e567c51be7f8b24401a0b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//kRs\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2012-05-16T15:59:41Z",
+      "side": 1,
+      "message": "Oh, so you are actually delaying the next keyboard poll in this case?  So you may lose events that way, no?",
+      "revId": "98586a01a8d9aefdc4e567c51be7f8b24401a0b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
