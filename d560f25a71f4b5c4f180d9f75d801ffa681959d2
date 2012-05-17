@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAKn//iGc\u003d",
+        "filename": "chip/lm4/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-05-17T22:09:53Z",
+      "side": 1,
+      "message": "Technically could CPUTS since there are no params.",
+      "revId": "d560f25a71f4b5c4f180d9f75d801ffa681959d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
