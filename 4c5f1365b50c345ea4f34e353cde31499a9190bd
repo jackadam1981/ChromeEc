@@ -16,6 +16,24 @@
       "revId": "4c5f1365b50c345ea4f34e353cde31499a9190bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//hR0\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-05-18T18:47:57Z",
+      "side": 1,
+      "message": "actually if the host reads more bytes, the i2c driver is already filling the packet with dummy value (e.g. 0xec)",
+      "parentUuid": "AAAAKn//hVo\u003d",
+      "revId": "4c5f1365b50c345ea4f34e353cde31499a9190bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
