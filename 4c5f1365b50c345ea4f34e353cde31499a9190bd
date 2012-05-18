@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAKn//hVo\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-05-18T18:42:24Z",
+      "side": 1,
+      "message": "I think we may need to send a payload anyway (filled with dummy bytes?) to satisfy cases like I2C where the host expects a fixed-length response.",
+      "revId": "4c5f1365b50c345ea4f34e353cde31499a9190bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
