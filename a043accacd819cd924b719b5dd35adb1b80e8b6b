@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAKn//hD4\u003d",
+        "filename": "chip/stm32/gpio-stm32f100.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-05-18T21:31:11Z",
+      "side": 1,
+      "message": "This ought to work. Perhaps it could be more generalized to simply check if STM32_RCC_APB2ENR !\u003d 0, since the reset value is 0 for this register.",
+      "revId": "a043accacd819cd924b719b5dd35adb1b80e8b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//hDA\u003d",
+        "filename": "chip/stm32/gpio-stm32l15x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-05-18T21:31:11Z",
+      "side": 1,
+      "message": "minor nit: maybe just check for ~0x00008000?",
+      "revId": "a043accacd819cd924b719b5dd35adb1b80e8b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
