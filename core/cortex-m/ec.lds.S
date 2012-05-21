@@ -85,11 +85,21 @@ SECTIONS
         . = ALIGN(4);
 #ifdef COMPILE_FOR_RAM
     } > IRAM
-    __ro_end = . ;
-    .data : {
 #else
     } > FLASH
+#endif
     __ro_end = . ;
+    .bss : {
+        . = ALIGN(4);
+        __bss_start = .;
+        *(.bss.tasks)
+        *(.bss)
+        . = ALIGN(4);
+        __bss_end = .;
+    } > IRAM
+#ifdef COMPILE_FOR_RAM
+    .data : {
+#else
     .data : AT(ADDR(.rodata) + SIZEOF(.rodata)) {
 #endif
         . = ALIGN(4);
@@ -100,6 +110,10 @@ SECTIONS
         *(.iram.text)
         . = ALIGN(4);
         __data_end = .;
+
+	/* Shared memory buffer must be at the end of preallocated RAM, so it
+	 * can expand to use all the remaining RAM. */
+	__shared_mem_buf = .;
     } > IRAM
 #if defined(SECTION_IS_RO) && defined(CONFIG_VBOOT)
     .google CONFIG_FMAP_BASE(SECTION) : AT(CONFIG_FMAP_BASE(SECTION)) {
@@ -110,17 +124,6 @@ SECTIONS
               *(.google)
               }
 #endif
-    .bss : {
-        . = ALIGN(4);
-        __bss_start = .;
-        *(.bss)
-        . = ALIGN(4);
-        __bss_end = .;
-
-	/* Shared memory buffer must be at the end of preallocated RAM, so it
-	 * can expand to use all the remaining RAM. */
-	__shared_mem_buf = .;
-    } > IRAM
 
     /DISCARD/ : { *(.ARM.*) }
 }
