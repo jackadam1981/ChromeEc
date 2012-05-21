@@ -16,6 +16,24 @@
       "revId": "faf022f115e20b06a0f9da4fe9e63b1f74ff5488",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//gLU\u003d",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-05-21T19:41:18Z",
+      "side": 1,
+      "message": "Nope. That symbol is stripped during build, but with it there I can say\n\n  objdump -t build/link/ec.*.elf  | grep hey\n\nand see exactly how much flash I\u0027ve used so far. I left it in to help us economize when we\u0027re down to the last handful of bytes.",
+      "parentUuid": "AAAAKn//gMk\u003d",
+      "revId": "faf022f115e20b06a0f9da4fe9e63b1f74ff5488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
