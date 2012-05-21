@@ -219,7 +219,7 @@ static uint32_t sequence_S5(void)
 	/* Do something short to indicate S5. We might see it. */
 	lightbar_on();
 	for (i = 0; i < NUM_LEDS; i++)
-		lightbar_setrgb(i, 255, 0, 0);
+		lightbar_setrgb(i, 0, 0, 0);
 	WAIT_OR_RET(2000000);
 
 	/* Then just wait forever. */
@@ -244,7 +244,7 @@ static uint32_t sequence_S5S3(void)
 	 * We might see it. */
 	lightbar_on();
 	for (i = 0; i < NUM_LEDS; i++)
-		lightbar_setrgb(i, 255, 255, 255);
+		lightbar_setrgb(i, 0, 255, 0);
 	WAIT_OR_RET(500000);
 
 	return 0;
@@ -253,24 +253,11 @@ static uint32_t sequence_S5S3(void)
 /* CPU is fully on */
 static uint32_t sequence_S0(void)
 {
-	int l = 0;
-	int n = 0;
-
 	CPRINTF("[%s()]\n", __func__);
 	lightbar_on();
 
-	while (1) {
-		l = l % NUM_LEDS;
-		n = n % 5;
-		if (n == 4)
-			lightbar_setrgb(l, 0, 0, 0);
-		else
-			lightbar_setrgb(l, testy[n].r,
-					  testy[n].g, testy[n].b);
-		l++;
-		n++;
-		WAIT_OR_RET(50000);
-	}
+	lightbar_setrgb(NUM_LEDS, 255, 255, 255);
+	WAIT_OR_RET(-1);
 
 	return 0;
 }
@@ -280,11 +267,6 @@ static uint32_t sequence_S0S3(void)
 {
 	CPRINTF("[%s()]\n", __func__);
 	lightbar_on();
-	lightbar_setrgb(0, 0, 0, 255);
-	lightbar_setrgb(1, 255, 0, 0);
-	lightbar_setrgb(2, 255, 255, 0);
-	lightbar_setrgb(3, 0, 255, 0);
-	WAIT_OR_RET(200000);
 	lightbar_setrgb(0, 0, 0, 0);
 	WAIT_OR_RET(200000);
 	lightbar_setrgb(1, 0, 0, 0);
@@ -298,23 +280,17 @@ static uint32_t sequence_S0S3(void)
 /* CPU is sleeping */
 static uint32_t sequence_S3(void)
 {
-	int i = 0;
 	CPRINTF("[%s()]\n", __func__);
 	lightbar_off();
 	lightbar_init_vals();
-	lightbar_setrgb(0, 0, 0, 0);
-	lightbar_setrgb(1, 0, 0, 0);
-	lightbar_setrgb(2, 0, 0, 0);
-	lightbar_setrgb(3, 0, 0, 0);
+	lightbar_setrgb(NUM_LEDS, 0, 0, 0);
 	while (1) {
 		WAIT_OR_RET(3000000);
 		lightbar_on();
-		i = i % NUM_LEDS;
 		/* FIXME: indicate battery level? */
-		lightbar_setrgb(i, testy[i].r, testy[i].g, testy[i].b);
+		lightbar_setrgb(NUM_LEDS, 255, 255, 255);
 		WAIT_OR_RET(100000);
-		lightbar_setrgb(i, 0, 0, 0);
-		i++;
+		lightbar_setrgb(NUM_LEDS, 0, 0, 0);
 		lightbar_off();
 	}
 
@@ -324,17 +300,15 @@ static uint32_t sequence_S3(void)
 /* CPU is waking from sleep */
 static uint32_t sequence_S3S0(void)
 {
+	int i;
+
 	CPRINTF("[%s()]\n", __func__);
 	lightbar_init_vals();
 	lightbar_on();
-	lightbar_setrgb(0, 0, 0, 255);
-	WAIT_OR_RET(200000);
-	lightbar_setrgb(1, 255, 0, 0);
-	WAIT_OR_RET(200000);
-	lightbar_setrgb(2, 255, 255, 0);
-	WAIT_OR_RET(200000);
-	lightbar_setrgb(3, 0, 255, 0);
-	WAIT_OR_RET(200000);
+	for (i = 0; i < NUM_LEDS; i++) {
+		lightbar_setrgb(i, 255, 255, 255);
+		WAIT_OR_RET(200000);
+	}
 	return 0;
 }
 
@@ -349,7 +323,7 @@ static uint32_t sequence_S3S5(void)
 	 * We might see it. */
 	lightbar_on();
 	for (i = 0; i < NUM_LEDS; i++)
-		lightbar_setrgb(i, 0, 0, 255);
+		lightbar_setrgb(i, 255, 0, 0);
 	WAIT_OR_RET(500000);
 
 	return 0;
@@ -609,10 +583,9 @@ void lightbar_task(void)
 	 * reset than out of reset. */
 	lightbar_init_vals();
 	lightbar_off();
+	lightbar_brightness(0x40);		/* default brightness */
 
-	/* FIXME: What to do first? For now, nothing, followed by more
-	   nothing. */
-	current_state = LIGHTBAR_STOP;
+	current_state = LIGHTBAR_S5;
 	previous_state = LIGHTBAR_S5;
 
 	while (1) {
