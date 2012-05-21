@@ -73,7 +73,7 @@ int thermal_get_threshold(enum temp_sensor_type type, int threshold_id)
 {
 	if (threshold_id < 0 ||
 	    threshold_id >= THRESHOLD_COUNT + THERMAL_FAN_STEPS)
-		return EC_ERROR_INVAL;
+		return -1;
 
 	return thermal_config[type].thresholds[threshold_id];
 }

@@ -46,7 +46,7 @@ struct thermal_config_t {
 	int16_t thresholds[THRESHOLD_COUNT + THERMAL_FAN_STEPS];
 };
 
-/* Set the threshold temperature value. Return -1 on error. */
+/* Set the threshold temperature value. Return EC_ERROR_INVAL on error. */
 int thermal_set_threshold(enum temp_sensor_type type, int threshold_id, int value);
 
 /* Get the threshold temperature value. Return -1 on error. */
