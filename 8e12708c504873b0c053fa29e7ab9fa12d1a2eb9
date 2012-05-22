@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAKn//fC4\u003d",
+        "filename": "common/vboot.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-05-22T20:10:55Z",
+      "side": 1,
+      "message": "I\u0027d tend to call it host_cmd_vboot(), since we may reuse on Daisy",
+      "revId": "8e12708c504873b0c053fa29e7ab9fa12d1a2eb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
