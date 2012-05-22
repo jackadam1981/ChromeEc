@@ -13,6 +13,7 @@
 #include "i2c.h"
 #include "registers.h"
 #include "task.h"
+#include "timer.h"
 #include "util.h"
 
 /* Console output macros */
@@ -28,6 +29,9 @@
 /* Clock divider for I2C controller */
 #define I2C_CCR (CPU_CLOCK/(2 * I2C_FREQ))
 
+/* Transmit timeout in microseconds */
+#define I2C_TX_TIMEOUT 10000 /* us */
+
 #define NUM_PORTS 2
 #define I2C1      STM32_I2C1_PORT
 #define I2C2      STM32_I2C2_PORT
@@ -42,11 +46,16 @@ static uint8_t host_buffer[EC_PARAM_SIZE + 2];
 static int rx_index;
 
 
-static void wait_tx(int port)
+static int wait_tx(int port)
 {
-	/* TODO: Add timeouts and error checking for safety */
-	while (!(STM32_I2C_SR1(port) & (1 << 7)))
+	static timestamp_t deadline;
+
+	deadline.val = get_time().val + I2C_TX_TIMEOUT;
+	/* wait for TxE or errors (Timeout, STOP, BERR, AF) */
+	while (!(STM32_I2C_SR1(port) & 0x4590) &&
+	       (get_time().val < deadline.val))
 		;
+	return !(STM32_I2C_SR1(port) & (1 << 7));
 }
 
 static int i2c_write_raw(int port, void *buf, int len)
@@ -56,7 +65,10 @@ static int i2c_write_raw(int port, void *buf, int len)
 
 	for (i = 0; i < len; i++) {
 		STM32_I2C_DR(port) = data[i];
-		wait_tx(port);
+		if (wait_tx(port)) {
+			CPRINTF("TX failed\n");
+			break;
+		}
 	}
 
 	return len;
