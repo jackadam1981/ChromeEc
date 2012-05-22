@@ -59,7 +59,7 @@ static struct jump_data * const jdata =
 	(struct jump_data *)(CONFIG_RAM_BASE + CONFIG_RAM_SIZE
 			     - sizeof(struct jump_data));
 
-static const char * const image_names[] = {"unknown", "RO", "A", "B"};
+static const char * const image_names[] = {"A", "B", "RO", "unknown" };
 static enum system_reset_cause_t reset_cause = SYSTEM_RESET_UNKNOWN;
 static int jumped_to_image;
 
