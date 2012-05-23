@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAKn//em4\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-05-23T00:35:16Z",
+      "side": 1,
+      "message": "STOPF, BERR, and AF will trigger interrupts that will clear those bits. Maybe we should have a state variable, something like:\n\nstatic int abort_transaction; /* indicates if a wait loop should abort */\n\nstatic int (wait_tx(int port)\n{\n        abort_transaction \u003d 0;\n        while (!abort_transaction \u0026\u0026 (get_time().val \u003c deadline.val))\n                ;\n        return !(STM32_I2C_SR1(port) \u0026 (1 \u003c\u003c 7));\n}\n\nand then have abort_transaction get set in i2c_event_handler and i2c_error_handler",
+      "revId": "a3e344407f9207296b1604196a14f44cb8fcf1b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
