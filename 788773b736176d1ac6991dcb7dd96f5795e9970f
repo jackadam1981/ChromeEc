@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAK3///20\u003d",
+        "filename": "chip/lm4/keyboard_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-05-23T18:01:33Z",
+      "side": 1,
+      "message": "Seems like you could just do this right at the beginning:\n\nif (!enable_scanning)\n  col \u003d COLUMN_TRI_STATE_ALL;",
+      "revId": "788773b736176d1ac6991dcb7dd96f5795e9970f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3///2s\u003d",
+        "filename": "chip/lm4/keyboard_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-05-23T18:01:33Z",
+      "side": 1,
+      "message": "Rather than usleep, do:\n\ntask_wait_msg(-1)",
+      "revId": "788773b736176d1ac6991dcb7dd96f5795e9970f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
