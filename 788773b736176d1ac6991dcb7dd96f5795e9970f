@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAK3///Ko\u003d",
+        "filename": "chip/lm4/keyboard_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-05-24T05:32:17Z",
+      "side": 1,
+      "message": "No, I cannot because the line 107\u0026108 (for TRI-STATE)  need to be executed. Added a comment for this.",
+      "parentUuid": "AAAAK3///20\u003d",
+      "revId": "788773b736176d1ac6991dcb7dd96f5795e9970f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAK3///2s\u003d",
         "filename": "chip/lm4/keyboard_scan.c",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2012-05-23T18:01:33Z",
       "side": 1,
       "message": "Rather than usleep, do:\n\ntask_wait_msg(-1)",
+      "revId": "788773b736176d1ac6991dcb7dd96f5795e9970f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3///Jg\u003d",
+        "filename": "chip/lm4/keyboard_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-05-24T05:32:17Z",
+      "side": 1,
+      "message": "Adding a task_wait_event() here has a side effect that the another pressed key (for example, \u0027g\u0027 in my test case) will be considered pressed after power button is released because there is another task_wait_event() before enter_polling_mode(). So this requires another press and another release to remove the \u0027g\u0027 press state.",
+      "parentUuid": "AAAAK3///2s\u003d",
       "revId": "788773b736176d1ac6991dcb7dd96f5795e9970f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
