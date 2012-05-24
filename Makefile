@@ -19,6 +19,7 @@ include board/$(BOARD)/build.mk
 
 # Transform the configuration into make variables
 includes=include core/$(CORE)/include $(dirs) $(out)
+CPPFLAGS+=$(foreach d,$(shell echo "$$ADDITIONAL_FLAG"),-D$(d))
 _tsk_lst:=$(shell echo "CONFIG_TASK_LIST" | $(CPP) -P -Iboard/$(BOARD) -Itest \
 	  -D"TASK(n, r, d)=n" -imacros $(PROJECT).tasklist)
 _tsk_cfg:=$(foreach t,$(_tsk_lst),CONFIG_TASK_$(t))
