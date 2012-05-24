@@ -583,6 +583,7 @@ DECLARE_CONSOLE_COMMAND(powerbtn, command_powerbtn);
 static int command_lidopen(int argc, char **argv)
 {
 	lid_switch_open(get_time().val);
+	update_backlight();
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(lidopen, command_lidopen);
@@ -591,6 +592,7 @@ DECLARE_CONSOLE_COMMAND(lidopen, command_lidopen);
 static int command_lidclose(int argc, char **argv)
 {
 	lid_switch_close(get_time().val);
+	update_backlight();
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(lidclose, command_lidclose);
