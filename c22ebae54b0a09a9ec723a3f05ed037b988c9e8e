@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAK3//9bo\u003d",
+        "filename": "common/switch_commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-05-25T16:06:36Z",
+      "side": 1,
+      "message": "Suggest taking flags to enable WLAN and BT separately\n\n0x01 \u003d WLAN radio\n0x02 \u003d BT radio",
+      "revId": "c22ebae54b0a09a9ec723a3f05ed037b988c9e8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//9bk\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-05-25T16:06:36Z",
+      "side": 1,
+      "message": "\"WLAN/Bluetooth radio\"\n\nto distinguish it from enabling/disabling WLAN module power",
+      "revId": "c22ebae54b0a09a9ec723a3f05ed037b988c9e8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//9bg\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1379,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-05-25T16:06:36Z",
+      "side": 1,
+      "message": "\u003cmask\u003e --\u003e \u003c0 | 1\u003e or maybe \u003con | off\u003e",
+      "revId": "c22ebae54b0a09a9ec723a3f05ed037b988c9e8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
