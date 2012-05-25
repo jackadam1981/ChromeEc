@@ -9,7 +9,9 @@
 #define __BOARD_H
 
 /* Optional features */
+#define CONFIG_BACKLIGHT_CONTROL
 #define CONFIG_BATTERY_ATL706486
+#define CONFIG_BLUETOOTH
 #define CONFIG_CHARGER
 #define CONFIG_CHARGER_BQ24725
 #define CONFIG_CONSOLE_CMDHELP
@@ -22,6 +24,7 @@
 #define CONFIG_TASK_PROFILING
 #define CONFIG_TMP006
 #define CONFIG_USB_CHARGE
+#define CONFIG_WLAN
 
 /* Enable the fake developer switch.  See crosbug.com/p/8884 */
 #define CONFIG_FAKE_DEV_SWITCH
