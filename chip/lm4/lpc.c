@@ -114,7 +114,7 @@ static void lpc_generate_sci(void)
 }
 
 
-uint8_t *host_get_buffer(int slot)
+static uint8_t *get_buffer_for_slot(int slot)
 {
 	return (uint8_t *)LPC_POOL_CMD_DATA + EC_PARAM_SIZE * slot;
 }
@@ -154,13 +154,14 @@ static void send_result(int slot, enum ec_status result)
 void host_send_response(int slot, enum ec_status result, const uint8_t *data,
 			int size)
 {
-	uint8_t *out = host_get_buffer(slot);
-
-	/* Fail if response doesn't fit in the param buffer */
+	/*
+	 * Fail if response doesn't fit in the param buffer. The data should
+	 * already be in the right place
+	 */
 	if (size < 0 || size > EC_PARAM_SIZE)
 		result = EC_RES_ERROR;
-	else if (data != out)
-		memcpy(out, data, size);
+	else
+		ASSERT(!size || data == get_buffer_for_slot(slot));
 
 	send_result(slot, result);
 }
@@ -334,7 +335,7 @@ static void lpc_interrupt(void)
 		/* Read the command byte and pass to the host command handler.
 		 * This clears the FRMH bit in the status byte. */
 		host_command_received(0, LPC_POOL_KERNEL[0],
-				host_get_buffer(0), EC_PARAM_SIZE,
+				get_buffer_for_slot(0), EC_PARAM_SIZE,
 				EC_PARAM_SIZE);
 
 		/* ACPI 5.0-12.6.1: Generate SCI for Input Buffer Empty
@@ -348,7 +349,7 @@ static void lpc_interrupt(void)
 		/* Read the command byte and pass to the host command handler.
 		 * This clears the FRMH bit in the status byte. */
 		host_command_received(1, LPC_POOL_USER[0],
-				host_get_buffer(1), EC_PARAM_SIZE,
+				get_buffer_for_slot(1), EC_PARAM_SIZE,
 				      EC_PARAM_SIZE);
 	}
 #endif

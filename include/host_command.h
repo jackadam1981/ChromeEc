@@ -62,12 +62,6 @@ void host_command_received(int slot, int command, uint8_t *buffer,
 void host_send_response(int slot, enum ec_status result, const uint8_t *data,
 			int size);
 
-/* Return a pointer to the host command data buffer.  This buffer must
- * only be accessed between a notification to host_command_received()
- * and a subsequent call to lpc_SendHostResponse().  <slot> is 0 for
- * kernel-originated commands, 1 for usermode-originated commands. */
-uint8_t *host_get_buffer(int slot);
-
 /* Register a host command handler */
 #define DECLARE_HOST_COMMAND(command, routine)				\
 	const struct host_command __host_cmd_##command			\
