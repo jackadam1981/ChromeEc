@@ -333,7 +333,9 @@ static void lpc_interrupt(void)
 
 		/* Read the command byte and pass to the host command handler.
 		 * This clears the FRMH bit in the status byte. */
-		host_command_received(0, LPC_POOL_KERNEL[0]);
+		host_command_received(0, LPC_POOL_KERNEL[0],
+				host_get_buffer(0), EC_PARAM_SIZE,
+				EC_PARAM_SIZE);
 
 		/* ACPI 5.0-12.6.1: Generate SCI for Input Buffer Empty
 		 * condition on the kernel channel. */
@@ -345,7 +347,9 @@ static void lpc_interrupt(void)
 
 		/* Read the command byte and pass to the host command handler.
 		 * This clears the FRMH bit in the status byte. */
-		host_command_received(1, LPC_POOL_USER[0]);
+		host_command_received(1, LPC_POOL_USER[0],
+				host_get_buffer(1), EC_PARAM_SIZE,
+				      EC_PARAM_SIZE);
 	}
 #endif
 

@@ -21,11 +21,22 @@
 
 #define TASK_EVENT_SLOT(n) TASK_EVENT_CUSTOM(1 << n)
 
-static int host_command[2];
+/* Holds information about an incoming command on a particular slow */
+struct host_command_slot {
+	int command;		/* The command (EC_CMD_...) */
+	uint8_t *buffer;	/* Buffer containing the parameters */
+	int size;		/* Number of bytes of parameters */
+	int maxsize;		/* Maximum size of buffer */
+};
+
+static struct host_command_slot command_slot[2];
 
 
-void host_command_received(int slot, int command)
+void host_command_received(int slot, int command, uint8_t *buffer,
+			   int size, int maxsize)
 {
+	struct host_command_slot *cmd_slot = &command_slot[slot];
+
 	/* TODO: should warn if we already think we're in a command */
 
 	/* If this is the reboot command, reboot immediately.  This gives
@@ -38,8 +49,11 @@ void host_command_received(int slot, int command)
 		return;
 	}
 
-	/* Save the command */
-	host_command[slot] = command;
+	/* Save the command for later processing */
+	cmd_slot->command = command;
+	cmd_slot->buffer = buffer;
+	cmd_slot->size = size;
+	cmd_slot->maxsize = maxsize;
 
 	/* Wake up the task to handle the command for the slot */
 	task_set_event(TASK_ID_HOSTCMD, TASK_EVENT_SLOT(slot), 0);
@@ -150,22 +164,24 @@ enum ec_status host_command_process(int slot, int command, uint8_t *data,
 /* Handle a host command */
 static void command_process(int slot)
 {
+	struct host_command_slot *cmd_slot = &command_slot[slot];
 	int size;
 	int res;
 
-	CPRINTF("[hostcmd%d 0x%02x]\n", slot, host_command[slot]);
+	CPRINTF("[hostcmd%d 0x%02x]\n", slot, cmd_slot->command);
 
-	res = host_command_process(slot, host_command[slot],
-				   host_get_buffer(slot), &size);
+	res = host_command_process(slot, cmd_slot->command,
+				   cmd_slot->buffer, &size);
+	ASSERT(size <= cmd_slot->maxsize);
 
-	host_send_response(slot, res, host_get_buffer(slot), size);
+	host_send_response(slot, res, cmd_slot->buffer, size);
 }
 /*****************************************************************************/
 /* Initialization / task */
 
 static int host_command_init(void)
 {
-	host_command[0] = host_command[1] = -1;
+	command_slot[0].command = command_slot[1].command = -1;
 
 	return EC_SUCCESS;
 }

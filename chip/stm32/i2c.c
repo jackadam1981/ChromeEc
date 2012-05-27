@@ -180,7 +180,9 @@ static void i2c_event_handler(int port)
 		if (port == I2C2) { /* AP is waiting for EC response */
 			if (rx_index) {
 				/* we have an available command : execute it */
-				host_command_received(0, host_buffer[0]);
+				host_command_received(0, host_buffer[0],
+					host_buffer + 1, rx_index - 1,
+					sizeof(host_buffer) - 1);
 				/* reset host buffer after end of transfer */
 				rx_index = 0;
 			} else {

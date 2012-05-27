@@ -27,17 +27,30 @@ struct host_command {
  * @param slot		is 0 for kernel-originated commands,
  *			1 for usermode-originated commands.
  * @param command	The command code
- * @param data		Buffer holding the command, and used for the
- * 			response payload.
+ * @param data		Buffer holding the command parameters, and used for
+ *			the response payload.
  * @param response_size	Returns the size of the response
  * @return resulting status
  */
 enum ec_status host_command_process(int slot, int command, uint8_t *data,
 				    int *response_size);
 
-/* Called by LPC module when a command is written to one of the
-   command slots (0=kernel, 1=user). */
-void host_command_received(int slot, int command);
+/**
+ * Queue up a host command to process later
+ *
+ * When we do get around to processing it, we will use the buffer to put
+ * the response.
+ *
+ * @param slot		is 0 for kernel-originated commands,
+ *			1 for usermode-originated commands.
+ * @param command	The command code
+ * @param buffer	Buffer holding the command parameters, and used for
+ *			the response payload.
+ * @param size		Size of the command parameters, in bytes (-1=unknown)
+ * @param maxsize	Maximum size of buffer (used for response)
+ */
+void host_command_received(int slot, int command, uint8_t *buffer,
+			   int size, int maxsize);
 
    // success results with response data
 /* Send a successful result code along with response data to a host command.
