@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAK3//8SU\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-05-28T08:56:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAK3//9P4\u003d",
+      "revId": "986894333288342a232a6c0fd51224e499e7713a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAK3//9PU\u003d",
         "filename": "chip/stm32/i2c.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2012-05-25T21:53:31Z",
       "side": 1,
       "message": "Reading SR1 and then SR2 will clear ADDR if it is set. Maybe you can reverse the order of the SR1/SR2 reads and add a comment?",
+      "revId": "986894333288342a232a6c0fd51224e499e7713a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//8SQ\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-05-28T08:56:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAK3//9PU\u003d",
       "revId": "986894333288342a232a6c0fd51224e499e7713a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAK3//8SM\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-05-28T08:56:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAK3//85Y\u003d",
+      "revId": "986894333288342a232a6c0fd51224e499e7713a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAK3//800\u003d",
         "filename": "chip/stm32/i2c.c",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2012-05-25T21:53:31Z",
       "side": 1,
       "message": "maybe call this \"i2c_master_transmit\" since it has some functionality that is unique to master mode?",
+      "revId": "986894333288342a232a6c0fd51224e499e7713a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//8SI\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-05-28T08:56:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAK3//800\u003d",
       "revId": "986894333288342a232a6c0fd51224e499e7713a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAK3//8SE\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-05-28T08:56:13Z",
+      "side": 1,
+      "message": "Yes sure. That needs to move the mutex lock to the caller. Since the current code is stable and I don\u0027t want to break the I2C slave driver too quickly. I will do that in a later change.",
+      "parentUuid": "AAAAK3//81E\u003d",
+      "revId": "986894333288342a232a6c0fd51224e499e7713a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAK3//8y0\u003d",
         "filename": "chip/stm32/i2c.c",
         "patchSetId": 1
@@ -98,6 +188,24 @@
       "writtenOn": "2012-05-25T21:53:31Z",
       "side": 1,
       "message": "if i2c_write_raw is used, then this wait_status() can go away.",
+      "revId": "986894333288342a232a6c0fd51224e499e7713a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//8Ro\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-05-28T08:56:13Z",
+      "side": 1,
+      "message": "Done\n\nA TODO added against this.",
+      "parentUuid": "AAAAK3//8y0\u003d",
       "revId": "986894333288342a232a6c0fd51224e499e7713a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -138,6 +246,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAK3//8RI\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-05-28T08:56:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAK3//8yA\u003d",
+      "revId": "986894333288342a232a6c0fd51224e499e7713a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAK3//8vw\u003d",
         "filename": "chip/stm32/i2c.c",
         "patchSetId": 1
@@ -149,6 +275,24 @@
       "writtenOn": "2012-05-25T21:53:31Z",
       "side": 1,
       "message": "Do you need to wait for BUSY or SB before calling master_stop?\n\nI suspect there may be a race condition here. The documentation says: \"1: Stop generation after the current byte transfer or after the current Start condition is sent.\"\n\nSo you might need to ensure that the slave has a chance to ACK before calling master_stop().",
+      "revId": "986894333288342a232a6c0fd51224e499e7713a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//8RE\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-05-28T08:56:13Z",
+      "side": 1,
+      "message": "Done\n\nThis is single byte receive condition. And it should be ok to raise STOP bit here, right after master_start().",
+      "parentUuid": "AAAAK3//8vw\u003d",
       "revId": "986894333288342a232a6c0fd51224e499e7713a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
