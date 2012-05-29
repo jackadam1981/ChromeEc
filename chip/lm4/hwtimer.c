@@ -97,9 +97,11 @@ int __hw_clock_source_init(uint32_t start_t)
 	LM4_TIMER_TAILR(6) = 0xffffffff;
 	/* Starts counting in timer A */
 	LM4_TIMER_CTL(6) |= 0x1;
+#ifndef CONFIG_TEST_WORKAROUND
 	/* Override the count with the start value now that counting has
 	 * started. */
 	LM4_TIMER_TAV(6) = 0xffffffff - start_t;
+#endif
 
 	/* Enable interrupt */
 	task_enable_irq(LM4_IRQ_TIMERW0A);
