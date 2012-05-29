@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAK3//7yg\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-05-29T10:25:48Z",
+      "side": 1,
+      "message": "Should wait for STOPF after master_stop().",
+      "revId": "5d48221ace89ba72335e88ae7d84fe82c5733e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
