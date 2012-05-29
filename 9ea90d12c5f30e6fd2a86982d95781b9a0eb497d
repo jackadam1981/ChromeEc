@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAK3//8CE\u003d",
+        "filename": "board/daisy/ec.tasklist",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2012-05-29T05:05:25Z",
+      "side": 1,
+      "message": "Maybe change this to TASK(PMU_TPS65090, pmu_65090_task, NULL) and then you can replace all CONFIG_PMU_TPS65090 with CONFIG_TASK_PMU_TPS65090? So that you don\u0027t have two config flag.",
+      "revId": "9ea90d12c5f30e6fd2a86982d95781b9a0eb497d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//8Bs\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2012-05-29T05:05:25Z",
+      "side": 1,
+      "message": "I am not so sure if I am correct here. Do you mean \"safety\"?",
+      "revId": "9ea90d12c5f30e6fd2a86982d95781b9a0eb497d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
