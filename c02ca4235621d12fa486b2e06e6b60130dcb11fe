@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAK3//7lU\u003d",
+        "filename": "util/comm-lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-05-29T15:41:55Z",
+      "side": 1,
+      "message": "I think you meant \"remain\" not \"remind\".",
+      "revId": "c02ca4235621d12fa486b2e06e6b60130dcb11fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//7jA\u003d",
+        "filename": "util/comm-lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-05-29T15:41:55Z",
+      "side": 1,
+      "message": "sys/param.h defines MIN/MAX macros\n\nusleep(MIN(delay, timeout_usec - i));",
+      "revId": "c02ca4235621d12fa486b2e06e6b60130dcb11fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//7lE\u003d",
+        "filename": "util/comm-lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-05-29T15:41:55Z",
+      "side": 1,
+      "message": "delay \u003d MIN(delay * 2, MAXIMUM_UDELAY);",
+      "revId": "c02ca4235621d12fa486b2e06e6b60130dcb11fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
