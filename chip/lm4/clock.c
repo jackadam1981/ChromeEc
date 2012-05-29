@@ -256,6 +256,13 @@ int clock_init(void)
 	 * 32.768KHz hibernate clock, unless we've already done so.  This is
 	 * only necessary on A2 silicon as on BDS; A3 silicon is all
 	 * factory-trimmed. */
+#ifdef CONFIG_TEST_WORKAROUND
+	/* Reading PIOSCSTAT when running on QEMU crashes. Let's not read it
+	 * here. */
+	LM4_SYSTEM_PIOSCCAL = 0x80000000;
+	LM4_SYSTEM_PIOSCCAL = 0x80000200;
+	clock_wait_cycles(512 * 1024);
+#else
 	if ((LM4_SYSTEM_PIOSCSTAT & 0x300) != 0x100) {
 		/* Start calibration */
 		LM4_SYSTEM_PIOSCCAL = 0x80000000;
@@ -265,6 +272,7 @@ int clock_init(void)
 		while (!(LM4_SYSTEM_PIOSCSTAT & 0x300))
 			;
 	}
+#endif
 #else
 	/* Only BDS has an external crystal; other boards don't have one, and
 	 * can disable main oscillator control to reduce power consumption. */
