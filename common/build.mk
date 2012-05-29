@@ -12,6 +12,7 @@ common-y+=gpio_commands.o version.o
 common-$(CONFIG_SMART_BATTERY)+=smart_battery.o
 common-$(CONFIG_BATTERY_ATL706486)+=battery_atl706486.o
 common-$(CONFIG_CHARGER_BQ24725)+=charger_bq24725.o
+common-$(CONFIG_PMU_TPS65090)+=pmu_tps65090.o
 common-$(CONFIG_EOPTION)+=eoption.o
 common-$(CONFIG_FLASH)+=flash_common.o flash_commands.o
 common-$(CONFIG_LPC)+=port80.o host_event_commands.o
