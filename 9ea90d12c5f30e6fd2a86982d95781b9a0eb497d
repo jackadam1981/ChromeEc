@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAK3//7yM\u003d",
+        "filename": "board/daisy/ec.tasklist",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-05-29T10:35:25Z",
+      "side": 1,
+      "message": "Done\nI need two configs to make the driver work without smart battery charging logic. One for pmu driver and one for the charging task.",
+      "parentUuid": "AAAAK3//8CE\u003d",
+      "revId": "9ea90d12c5f30e6fd2a86982d95781b9a0eb497d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAK3//8Bs\u003d",
         "filename": "common/pmu_tps65090.c",
         "patchSetId": 2
