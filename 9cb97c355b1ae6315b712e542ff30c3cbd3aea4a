@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAK3//8Dg\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-05-29T06:11:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAK3//8EU\u003d",
+      "revId": "9cb97c355b1ae6315b712e542ff30c3cbd3aea4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAK3//8EI\u003d",
         "filename": "common/pmu_tps65090.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2012-05-29T04:10:33Z",
       "side": 1,
       "message": "How about define those 2 bit-masks, like pmu_set_fastcharge_safty_timer?",
+      "revId": "9cb97c355b1ae6315b712e542ff30c3cbd3aea4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//8Dc\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-05-29T06:11:41Z",
+      "side": 1,
+      "message": "Done\nI changed this to one bit enable.",
+      "parentUuid": "AAAAK3//8EI\u003d",
       "revId": "9cb97c355b1ae6315b712e542ff30c3cbd3aea4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAK3//8DY\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-05-29T06:11:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAK3//8EE\u003d",
+      "revId": "9cb97c355b1ae6315b712e542ff30c3cbd3aea4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAK3//8D8\u003d",
         "filename": "common/pmu_tps65090.c",
         "patchSetId": 1
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAK3//8DU\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-05-29T06:11:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAK3//8D8\u003d",
+      "revId": "9cb97c355b1ae6315b712e542ff30c3cbd3aea4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAK3//8Eg\u003d",
         "filename": "common/pmu_tps65090.c",
         "patchSetId": 1
@@ -81,6 +153,24 @@
       "writtenOn": "2012-05-29T04:10:33Z",
       "side": 1,
       "message": "Use a const (or define) for 2731?",
+      "revId": "9cb97c355b1ae6315b712e542ff30c3cbd3aea4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//8DQ\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-05-29T06:11:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAK3//8Eg\u003d",
       "revId": "9cb97c355b1ae6315b712e542ff30c3cbd3aea4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
