@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAK3//6Lo\u003d",
+        "filename": "common/switch_commands.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-05-30T16:17:42Z",
+      "side": 1,
+      "message": "That\u0027s a lot of #ifdef\u0027s for one file.\n\nSuggest moving this handler into chip/lm4/power_button.c, since that\u0027s the only other source file that uses GPIO_ENABLE_BACKLIGHT.",
+      "revId": "6ab372c73945e54de588ed42da0b22ebaae86d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//6Lg\u003d",
+        "filename": "common/switch_commands.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-05-30T16:17:42Z",
+      "side": 1,
+      "message": "And put this one in common/x86_power, which is the only file to reference GPIO_RADIO_*",
+      "revId": "6ab372c73945e54de588ed42da0b22ebaae86d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
