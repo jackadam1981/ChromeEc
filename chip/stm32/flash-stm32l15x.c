@@ -251,10 +251,13 @@ int flash_physical_erase(int offset, int size)
 {
 	uint32_t *address;
 	int res = EC_SUCCESS;
+	uint32_t *data;
+	int tries = 0;
 
 	if (unlock(PRG_LOCK) != EC_SUCCESS)
 		return EC_ERROR_UNKNOWN;
 
+retry_erase:
 	/* Clear previous error status */
 	STM32_FLASH_SR = 0xf00;
 
@@ -294,6 +297,20 @@ int flash_physical_erase(int offset, int size)
 			goto exit_er;
 		}
 	}
+
+	/* verify flash content */
+	for (data = (uint32_t *)(CONFIG_FLASH_BASE + offset) ;
+	     size > 0; size -= sizeof(uint32_t), data++)
+		if (*data != 0x00000000) {
+			ccprintf("Flash badly erased at %08x (%d)\n",
+				 (uint32_t)data, tries);
+			if (tries++ < 2) {
+				goto retry_erase;
+			} else {
+				res = EC_ERROR_UNKNOWN;
+				goto exit_er;
+			}
+		}
 
 exit_er:
 	lock();
