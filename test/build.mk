@@ -6,7 +6,7 @@
 # on-board test binaries build
 #
 
-test-list=hello pingpong timer_calib timer_dos mutex
+test-list=hello pingpong timer_calib timer_dos mutex thermal
 #disable: powerdemo
 
 pingpong-y=pingpong.o
@@ -14,3 +14,4 @@ powerdemo-y=powerdemo.o
 timer_calib-y=timer_calib.o
 timer_dos-y=timer_dos.o
 mutex-y=mutex.o
+thermal-y=thermal_x86power.o thermal_temp_sensor.o thermal_pwm.o

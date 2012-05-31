@@ -40,6 +40,13 @@ enum gpio_signal {
  * enabling the boot loader, simply to prove we can program it. */
 #define BOOTCFG_VALUE 0xfffffdfe
 
+enum temp_sensor_id {
+	TEMP_SENSOR_MOCK0 = 0,
+	TEMP_SENSOR_MOCK1,
+
+	TEMP_SENSOR_COUNT
+};
+
 void configure_board(void);
 
 #endif /* __BOARD_H */
