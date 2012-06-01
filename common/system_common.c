@@ -735,6 +735,9 @@ int host_command_reboot(uint8_t *data, int *resp_size)
 	/* Clean busy bits on host */
 	host_send_result(0, EC_RES_SUCCESS);
 	host_send_result(1, EC_RES_SUCCESS);
+#elif defined CONFIG_I2C
+	/* Send response code to host in slot 0 only */
+	host_send_result(0, EC_RES_SUCCESS);
 #endif
 
 	CPUTS("[Executing host reboot command]\n");
