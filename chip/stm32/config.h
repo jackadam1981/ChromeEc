@@ -15,6 +15,9 @@
 #error "Unsupported chip variant"
 #endif
 
+/* Which irq is used for watchdog on this chip? */
+#define IRQ_WATCHDOG		STM32_IRQ_WWDG
+
 /* System stack size */
 #define CONFIG_STACK_SIZE 1024
 

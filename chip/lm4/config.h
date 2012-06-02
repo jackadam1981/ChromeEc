@@ -12,6 +12,9 @@
 /* Number of IRQ vectors on the NVIC */
 #define CONFIG_IRQ_COUNT 132
 
+/* Which irq is used for watchdog on this chip? */
+#define IRQ_WATCHDOG		LM4_IRQ_WATCHDOG
+
 /* Debug UART parameters for panic message */
 #define CONFIG_UART_ADDRESS    0x4000c000
 #define CONFIG_UART_DR_OFFSET  0x00

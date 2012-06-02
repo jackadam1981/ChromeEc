@@ -40,7 +40,7 @@ void watchdog_trace(uint32_t excep_lr, uint32_t excep_sp)
 	 * watchdog_reload(), or reset will be triggered if we don't call that
 	 * by the next watchdog period.  Instead, de-activate the interrupt in
 	 * the NVIC, so the watchdog trace will only be printed once. */
-	task_disable_irq(LM4_IRQ_WATCHDOG);
+	task_disable_irq(IRQ_WATCHDOG);
 
 	asm("mrs %0, psp":"=r"(psp));
 	if ((excep_lr & 0xf) == 1) {
@@ -69,8 +69,8 @@ void watchdog_trace(uint32_t excep_lr, uint32_t excep_sp)
 }
 
 
-void IRQ_HANDLER(LM4_IRQ_WATCHDOG)(void) __attribute__((naked));
-void IRQ_HANDLER(LM4_IRQ_WATCHDOG)(void)
+void IRQ_HANDLER(IRQ_WATCHDOG)(void) __attribute__((naked));
+void IRQ_HANDLER(IRQ_WATCHDOG)(void)
 {
 	/* Naked call so we can extract raw LR and SP */
 	asm volatile("mov r0, lr\n"
@@ -83,9 +83,9 @@ void IRQ_HANDLER(LM4_IRQ_WATCHDOG)(void)
 		     "pop {r0, lr}\n"
 		     "b task_resched_if_needed\n");
 }
-const struct irq_priority IRQ_BUILD_NAME(prio_, LM4_IRQ_WATCHDOG, )
+const struct irq_priority IRQ_BUILD_NAME(prio_, IRQ_WATCHDOG, )
 	__attribute__((section(".rodata.irqprio")))
-		= {LM4_IRQ_WATCHDOG, 0}; /* put the watchdog at the highest
+		= {IRQ_WATCHDOG, 0}; /* put the watchdog at the highest
 					    priority */
 
 void watchdog_reload(void)
@@ -102,8 +102,8 @@ void watchdog_reload(void)
 		/* That doesn't seem to unpend the watchdog interrupt (even if
 		 * we do dummy writes to force the write to be committed), so
 		 * explicitly unpend the interrupt before re-enabling it. */
-		task_clear_pending_irq(LM4_IRQ_WATCHDOG);
-		task_enable_irq(LM4_IRQ_WATCHDOG);
+		task_clear_pending_irq(IRQ_WATCHDOG);
+		task_enable_irq(IRQ_WATCHDOG);
 	}
 
 	/* Reload the watchdog counter */
@@ -156,7 +156,7 @@ int watchdog_init(void)
 	LM4_WATCHDOG_LOCK(0) = 0xdeaddead;
 
 	/* Enable watchdog interrupt */
-	task_enable_irq(LM4_IRQ_WATCHDOG);
+	task_enable_irq(IRQ_WATCHDOG);
 
 	return EC_SUCCESS;
 }
