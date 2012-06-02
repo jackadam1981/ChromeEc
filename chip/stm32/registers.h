@@ -340,6 +340,9 @@ static inline uint16_t *stm32_i2c_reg(int port, int offset)
 #define STM32_IWDG_RLR              REG32(STM32_IWDG_BASE + 0x08)
 #define STM32_IWDG_SR               REG32(STM32_IWDG_BASE + 0x0C)
 
+/* Which irq is used for watchdog on this chip? */
+#define IRQ_WATCHDOG                STM32_IRQ_WWDG
+
 /* --- Real-Time Clock --- */
 
 #define STM32_RTC_BASE              0x40002800
