@@ -114,11 +114,6 @@ static int command_sleep(int argc, char **argv)
 		clock = strtoi(argv[2], NULL, 10);
 	}
 
-#ifdef BOARD_bds
-	/* remove LED current sink  */
-	gpio_set_level(GPIO_DEBUG_LED, 0);
-#endif
-
 	ccprintf("Going to sleep : level %d clock %d...\n", level, clock);
 	cflush();
 
