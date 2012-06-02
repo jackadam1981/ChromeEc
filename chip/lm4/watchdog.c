@@ -127,7 +127,7 @@ static int watchdog_freq_changed(void)
 DECLARE_HOOK(HOOK_FREQ_CHANGE, watchdog_freq_changed, HOOK_PRIO_DEFAULT);
 
 
-int watchdog_init(int ignored)
+int watchdog_init(void)
 {
 	volatile uint32_t scratch  __attribute__((unused));
 

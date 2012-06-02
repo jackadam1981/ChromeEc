@@ -18,7 +18,7 @@
 
 /* Initialize the watchdog.  This will cause the CPU to reboot if it has been
  * more than 2 watchdog periods since watchdog_reload() has been called. */
-int watchdog_init(int period_ms);
+int watchdog_init(void);
 
 /* Reload the watchdog counter */
 void watchdog_reload(void);
