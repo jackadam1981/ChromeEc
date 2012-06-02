@@ -537,4 +537,7 @@ static inline int lm4_watchdog_addr(int num, int offset)
 #define LM4_WATCHDOG_TEST(n)            LM4WDTREG(n, 0x418)
 #define LM4_WATCHDOG_LOCK(n)            LM4WDTREG(n, 0xc00)
 
+/* Which irq is used for watchdog on this chip? */
+#define IRQ_WATCHDOG			LM4_IRQ_WATCHDOG
+
 #endif /* __LM4_REGISTERS */
