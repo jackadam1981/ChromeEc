@@ -34,6 +34,12 @@ void watchdog_reload(void)
 }
 
 
+void watchdog_check(uint32_t excep_lr, uint32_t excep_sp)
+{
+	/* This is not actually called for now, since we reset instead */
+}
+
+
 int watchdog_init(void)
 {
 	uint32_t watchdog_period;
