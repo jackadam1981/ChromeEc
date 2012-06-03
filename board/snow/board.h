@@ -17,6 +17,8 @@
 /* use I2C for host communication */
 #define CONFIG_I2C
 
+#define CONFIG_PANIC_HELP
+
 /* Allow dangerous commands all the time, since we don't have a write protect
  * switch. */
 /* TODO: (crosbug.com/p/9986) This is a serious security hole and should be
