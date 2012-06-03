@@ -41,4 +41,7 @@ enum {
 	CPU_NVIC_HFSR_VECTTBL		= 1 << 1,
 };
 
+/* Set up the cpu to detect faults */
+void cpu_init(void);
+
 #endif /* __CPU_H */

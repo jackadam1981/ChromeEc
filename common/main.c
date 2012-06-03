@@ -6,6 +6,7 @@
  */
 
 #include "clock.h"
+#include "cpu.h"
 #include "config.h"
 #include "eeprom.h"
 #include "eoption.h"
@@ -68,6 +69,7 @@ int main(void)
 
 	/* Initialize UART.  uart_printf(), etc. may now be used. */
 	uart_init();
+	cpu_init();
 	if (system_jumped_to_this_image())
 		uart_printf("[%T UART initialized after sysjump]\n");
 	else {
