@@ -24,3 +24,12 @@ by Google. See below diagram for architecture.
   |   driverlib.       |
   +--------------------+
 
+
+Build Options
+=============
+
+- CONFIG_PANIC_NEW_STACK
+
+	When reporting a panic, change to a completely new stack. This might
+	help get a useful trace out a situation where the stack or stack
+	pointer has been corrupted.
