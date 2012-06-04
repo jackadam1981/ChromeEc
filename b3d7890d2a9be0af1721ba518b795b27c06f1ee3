@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAK3//25k\u003d",
+        "filename": "chip/lm4/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-06-04T20:32:57Z",
+      "side": 1,
+      "message": "same remark as I did for this nasty trick on stm32, FLASH_WRITE_BYTES is the minimum write block. 4 is probably the right value.\n\nIf flashrom has a bug and pick it as the maximum transfer size. It would be better to fix flashrom.",
+      "revId": "b3d7890d2a9be0af1721ba518b795b27c06f1ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
