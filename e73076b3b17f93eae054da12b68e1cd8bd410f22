@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAK3//2p8\u003d",
+        "filename": "common/watchdog.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-06-04T22:46:25Z",
+      "side": 1,
+      "message": "Is this comment still true now that this is in common?",
+      "revId": "e73076b3b17f93eae054da12b68e1cd8bd410f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//2p0\u003d",
+        "filename": "common/watchdog.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-06-04T22:46:25Z",
+      "side": 1,
+      "message": "With naked assembly, this code belongs in core/cortex-m rather than common.",
+      "revId": "e73076b3b17f93eae054da12b68e1cd8bd410f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
