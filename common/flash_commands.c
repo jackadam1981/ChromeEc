@@ -194,7 +194,8 @@ int flash_command_get_info(uint8_t *data, int *resp_size)
 			(struct ec_response_flash_info *)data;
 
 	r->flash_size = flash_get_size();
-	r->write_block_size = flash_get_write_block_size();
+	r->write_block_size = MIN(EC_FLASH_SIZE_MAX,
+				  flash_get_write_block_size());
 	r->erase_block_size = flash_get_erase_block_size();
 	r->protect_block_size = flash_get_protect_block_size();
 	*resp_size = sizeof(struct ec_response_flash_info);

@@ -11,7 +11,7 @@
 #include "util.h"
 #include "watchdog.h"
 
-#define FLASH_WRITE_BYTES      4
+#define FLASH_WRITE_BYTES     32
 #define FLASH_FWB_WORDS       32
 #define FLASH_FWB_BYTES (FLASH_FWB_WORDS * 4)
 #define FLASH_ERASE_BYTES   1024
