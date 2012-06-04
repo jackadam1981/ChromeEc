@@ -16,6 +16,24 @@
       "revId": "b3d7890d2a9be0af1721ba518b795b27c06f1ee3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//21U\u003d",
+        "filename": "chip/lm4/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-06-04T21:14:28Z",
+      "side": 1,
+      "message": "Agree with Vincent.  This is the minimum size, not the recommended or max size.",
+      "parentUuid": "AAAAK3//25k\u003d",
+      "revId": "b3d7890d2a9be0af1721ba518b795b27c06f1ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
