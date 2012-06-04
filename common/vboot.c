@@ -10,7 +10,7 @@
 #include "eoption.h"
 #include "gpio.h"
 #include "host_command.h"
-#include "keyboard_scan.h"
+#include "power_button.h"
 #include "system.h"
 #include "timer.h"
 #include "util.h"
@@ -96,7 +96,7 @@ static int maybe_jump_to_other_image(void)
 
 #ifdef CONFIG_TASK_KEYSCAN
 	/* Don't jump if recovery requested */
-	if (keyboard_scan_recovery_pressed()) {
+	if (power_recovery_pressed()) {
 		CPUTS("[Vboot staying in RO because recovery key pressed]\n");
 		return 0;
 	}
