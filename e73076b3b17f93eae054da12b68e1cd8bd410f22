@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAK3//2mM\u003d",
+        "filename": "common/watchdog.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-06-04T23:10:35Z",
+      "side": 1,
+      "message": "Only for LM4 really, for STM32 it is a bit different. I will move this comment to LM4.",
+      "parentUuid": "AAAAK3//2p8\u003d",
+      "revId": "e73076b3b17f93eae054da12b68e1cd8bd410f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAK3//2p0\u003d",
         "filename": "common/watchdog.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2012-06-04T22:46:25Z",
       "side": 1,
       "message": "With naked assembly, this code belongs in core/cortex-m rather than common.",
+      "revId": "e73076b3b17f93eae054da12b68e1cd8bd410f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//2mQ\u003d",
+        "filename": "common/watchdog.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-06-04T23:10:35Z",
+      "side": 1,
+      "message": "Yes, good point.",
+      "parentUuid": "AAAAK3//2p0\u003d",
       "revId": "e73076b3b17f93eae054da12b68e1cd8bd410f22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
