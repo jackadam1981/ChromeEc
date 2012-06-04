@@ -367,6 +367,7 @@ int cmd_reboot_ec(int argc, char *argv[])
 int cmd_flash_info(int argc, char *argv[])
 {
 	struct ec_response_flash_info r;
+	struct ec_response_flash_burst_info burst;
 	int rv;
 
 	rv = ec_command(EC_CMD_FLASH_INFO, NULL, 0, &r, sizeof(r));
@@ -376,6 +377,18 @@ int cmd_flash_info(int argc, char *argv[])
 	printf("FlashSize %d\nWriteSize %d\nEraseSize %d\nProtectSize %d\n",
 	       r.flash_size, r.write_block_size, r.erase_block_size,
 	       r.protect_block_size);
+
+	rv = ec_command(EC_CMD_FLASH_BURST_INFO,
+			NULL, 0, &burst, sizeof(burst));
+	if (rv == EC_RES_INVALID_COMMAND) {
+		printf("Burst info are not provided from EC.\n");
+		return 0;
+	} else if (rv) {
+		return rv;
+	} else {
+		printf("Read burst size %d\nWrite burst size %d\n",
+		       burst.read_burst_size, burst.write_burst_size);
+	}
 
 	return 0;
 }

@@ -13,6 +13,9 @@
 #include "system.h"
 #include "util.h"
 
+#define BURST_READ_SIZE  EC_FLASH_SIZE_MAX
+#define BURST_WRITE_SIZE EC_FLASH_SIZE_MAX
+
 /* Parse offset and size from command line argv[shift] and argv[shift+1]
  *
  * Default values: If argc<=shift, leaves offset unchanged, returning error if
@@ -53,11 +56,13 @@ static int command_flash_info(int argc, char **argv)
 	int banks = flash_get_size() / flash_get_protect_block_size();
 	int i;
 
-	ccprintf("Physical:%4d KB\n", flash_physical_size() / 1024);
-	ccprintf("Usable:  %4d KB\n", flash_get_size() / 1024);
-	ccprintf("Write:   %4d B\n", flash_get_write_block_size());
-	ccprintf("Erase:   %4d B\n", flash_get_erase_block_size());
-	ccprintf("Protect: %4d B\n", flash_get_protect_block_size());
+	ccprintf("Physical:   %4d KB\n", flash_physical_size() / 1024);
+	ccprintf("Usable:     %4d KB\n", flash_get_size() / 1024);
+	ccprintf("Write:      %4d B\n", flash_get_write_block_size());
+	ccprintf("Erase:      %4d B\n", flash_get_erase_block_size());
+	ccprintf("Burst read: %4d B\n", BURST_READ_SIZE);
+	ccprintf("Burst write:%4d B\n", BURST_WRITE_SIZE);
+	ccprintf("Protect:    %4d B\n", flash_get_protect_block_size());
 
 	i = flash_get_protect_lock();
 	ccprintf("Lock:    %s%s\n",
@@ -369,3 +374,17 @@ int flash_command_wp_get_range(uint8_t *data, int *resp_size)
 }
 DECLARE_HOST_COMMAND(EC_CMD_FLASH_WP_GET_RANGE,
 		     flash_command_wp_get_range);
+
+
+int flash_command_flash_burst_info(uint8_t *data, int *resp_size)
+{
+	struct ec_response_flash_burst_info *r =
+			(struct ec_response_flash_burst_info *)data;
+
+	r->read_burst_size = BURST_READ_SIZE;
+	r->write_burst_size = BURST_WRITE_SIZE;
+	*resp_size = sizeof(struct ec_response_flash_burst_info);
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FLASH_BURST_INFO,
+		     flash_command_flash_burst_info);
