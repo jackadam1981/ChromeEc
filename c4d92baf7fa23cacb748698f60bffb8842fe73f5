@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAK3//248\u003d",
+        "filename": "chip/lm4/power_button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-06-04T20:46:09Z",
+      "side": 1,
+      "message": "This feels like a side effect. I suppose this function is called once at startup so this is safe?",
+      "revId": "c4d92baf7fa23cacb748698f60bffb8842fe73f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//25I\u003d",
+        "filename": "common/vboot.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-06-04T20:46:09Z",
+      "side": 1,
+      "message": "Do you think you should still have this ifdef?\n\nIn principle I suppose power_recovery_pressed() would just return 0 if there is no keyscan, since no one would ever set the flag.",
+      "revId": "c4d92baf7fa23cacb748698f60bffb8842fe73f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
