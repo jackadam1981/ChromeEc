@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAK3//2oA\u003d",
+        "filename": "common/i8042.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-06-04T23:01:01Z",
+      "side": 1,
+      "message": "Mutex is only used for the to-host queue, so just declare it separately, rather than building it into all circular buffers.",
+      "revId": "260fcacc61604db0401f047d7b84903b19021fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//2nI\u003d",
+        "filename": "common/i8042.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-06-04T23:01:01Z",
+      "side": 1,
+      "message": "Suggest renaming to queue and moving all of this to common/queue.c.",
+      "revId": "260fcacc61604db0401f047d7b84903b19021fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//2pA\u003d",
+        "filename": "common/i8042.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-06-04T23:01:01Z",
+      "side": 1,
+      "message": "Why does this take a len if it\u0027s only enqueueing one?",
+      "revId": "260fcacc61604db0401f047d7b84903b19021fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//2o8\u003d",
+        "filename": "common/i8042.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-06-04T23:01:01Z",
+      "side": 1,
+      "message": "queue, len?",
+      "revId": "260fcacc61604db0401f047d7b84903b19021fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//2pE\u003d",
+        "filename": "common/i8042.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-06-04T23:01:01Z",
+      "side": 1,
+      "message": "typo: sends",
+      "revId": "260fcacc61604db0401f047d7b84903b19021fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
