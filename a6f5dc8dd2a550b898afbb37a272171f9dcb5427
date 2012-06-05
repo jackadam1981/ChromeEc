@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAK3//2E8\u003d",
+        "filename": "common/flash_commands.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-06-05T09:10:32Z",
+      "side": 1,
+      "message": "While we\u0027re at it, let\u0027s move these #defines to the chip\u0027s flash modules and/or put #ifndef around these.\n\n(note: i think we should eventually rename EC_FLASH_SIZE_MAX, but that can happen in another CL)",
+      "revId": "a6f5dc8dd2a550b898afbb37a272171f9dcb5427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
