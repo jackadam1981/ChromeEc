@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAK3//2HE\u003d",
+        "filename": "common/flash_commands.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-06-05T07:25:36Z",
+      "side": 1,
+      "message": "Do we need to check that BURST_*_SIZE is no bigger than the data payload size for read and write commands?",
+      "revId": "0e4fbe04d342b500a59952260dc2c28f3a8e8d1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
