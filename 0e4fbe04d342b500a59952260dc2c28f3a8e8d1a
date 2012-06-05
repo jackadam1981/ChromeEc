@@ -16,6 +16,24 @@
       "revId": "0e4fbe04d342b500a59952260dc2c28f3a8e8d1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//2Gc\u003d",
+        "filename": "common/flash_commands.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-06-05T07:42:40Z",
+      "side": 1,
+      "message": "Done. Actually the BURST_*_SIZE is defined to exactly EC_FLASH_SIZE_MAX. But worth to add assertions.",
+      "parentUuid": "AAAAK3//2HE\u003d",
+      "revId": "0e4fbe04d342b500a59952260dc2c28f3a8e8d1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
