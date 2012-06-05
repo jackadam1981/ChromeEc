@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAK3//2GQ\u003d",
+        "filename": "common/i8042.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-06-05T08:17:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAK3//2oA\u003d",
+      "revId": "260fcacc61604db0401f047d7b84903b19021fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAK3//2nI\u003d",
         "filename": "common/i8042.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2012-06-04T23:01:01Z",
       "side": 1,
       "message": "Suggest renaming to queue and moving all of this to common/queue.c.",
+      "revId": "260fcacc61604db0401f047d7b84903b19021fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//2GM\u003d",
+        "filename": "common/i8042.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-06-05T08:17:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAK3//2nI\u003d",
       "revId": "260fcacc61604db0401f047d7b84903b19021fbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAK3//2GI\u003d",
+        "filename": "common/i8042.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-06-05T08:17:23Z",
+      "side": 1,
+      "message": "Because the data from host could contain more than 1 byte: a type to indicate data/command, and a byte byte to store that data/command. But you have a good point. I changed this function to enqueue multiple units instead of one.",
+      "parentUuid": "AAAAK3//2pA\u003d",
+      "revId": "260fcacc61604db0401f047d7b84903b19021fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAK3//2o8\u003d",
         "filename": "common/i8042.c",
         "patchSetId": 1
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAK3//2F8\u003d",
+        "filename": "common/i8042.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-06-05T08:17:23Z",
+      "side": 1,
+      "message": "hm.... the 2nd parameter is actually the \u0027count\u0027 (of unit). But you mentioned a good point. I\u0027ve also changed the enqueue_one() to eneueue() (for multiple units) to reduce the confusions.",
+      "parentUuid": "AAAAK3//2o8\u003d",
+      "revId": "260fcacc61604db0401f047d7b84903b19021fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAK3//2pE\u003d",
         "filename": "common/i8042.c",
         "patchSetId": 1
@@ -81,6 +153,24 @@
       "writtenOn": "2012-06-04T23:01:01Z",
       "side": 1,
       "message": "typo: sends",
+      "revId": "260fcacc61604db0401f047d7b84903b19021fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//2F4\u003d",
+        "filename": "common/i8042.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-06-05T08:17:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAK3//2pE\u003d",
       "revId": "260fcacc61604db0401f047d7b84903b19021fbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
