@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAK3//0xs\u003d",
+        "filename": "common/x86_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-06-06T16:36:43Z",
+      "side": 1,
+      "message": "Seems like all this does is the equivalent of a few GPIOSETs; not sure it\u0027s worth its own command.\n\nIt might be worthwhile if we changed this command to use/report logical state (wlan_power\u003d[on/off], wlan_radio\u003d[on/off], bt_radio\u003d[on/off]).",
+      "revId": "d5c04351bbb908fb4a68f7176f3625d2db8862de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
