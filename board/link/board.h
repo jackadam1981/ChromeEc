@@ -148,7 +148,7 @@ enum gpio_signal {
 	GPIO_ENABLE_TOUCHPAD,     /* Enable touchpad power */
 	GPIO_ENABLE_VCORE,        /* Enable +CPU_CORE and +VGFX_CORE */
 	GPIO_ENABLE_VS,           /* Enable VS power supplies */
-	GPIO_ENABLE_WLAN,         /* Enable WLAN module power (+3VS_WLAN) */
+	GPIO_ENABLE_3VS_WLAN,     /* Enable WLAN module power (+3VS_WLAN) */
 	GPIO_ENTERING_RW,         /* Indicate when EC is entering RW code */
 	GPIO_LIGHTBAR_RESETn,     /* Reset lightbar controllers (Proto1+) */
 	GPIO_PCH_A20GATE,         /* A20GATE signal to PCH */
@@ -165,8 +165,8 @@ enum gpio_signal {
 	GPIO_PCH_SMIn,            /* System management interrupt to PCH */
 	GPIO_PCH_SRTCRSTn,        /* Reset PCH ME RTC well */
 	GPIO_PCH_SUSACKn,         /* Acknowledge PCH SUSWARN# signal */
-	GPIO_RADIO_ENABLE_WLAN,   /* Enable WLAN radio */
-	GPIO_RADIO_ENABLE_BT,     /* Enable bluetooth radio */
+	GPIO_RADIO_ENABLE_WLANn,  /* Enable WLAN radio */
+	GPIO_RADIO_ENABLE_BTn,    /* Enable bluetooth radio */
 	GPIO_SPI_CSn,             /* SPI chip select */
 	GPIO_TOUCHSCREEN_RESETn,  /* Reset touch screen (Proto1+) */
 	GPIO_USB1_CTL1,           /* USB charger port 1 CTL1 output */

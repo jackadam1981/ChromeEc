@@ -494,9 +494,9 @@ void x86_power_task(void)
 			gpio_set_level(GPIO_ENABLE_VS, 1);
 
 			/* Enable WLAN */
-			gpio_set_level(GPIO_ENABLE_WLAN, 1);
-			gpio_set_level(GPIO_RADIO_ENABLE_WLAN, 1);
-			gpio_set_level(GPIO_RADIO_ENABLE_BT, 1);
+			gpio_set_level(GPIO_ENABLE_3VS_WLAN, 1);
+			gpio_set_level(GPIO_RADIO_ENABLE_WLANn, 0);
+			gpio_set_level(GPIO_RADIO_ENABLE_BTn, 0);
 
 			/* Make sure touchscreen is out if reset (even if the
 			 * lid is still closed); it may have been turned off if
@@ -540,9 +540,10 @@ void x86_power_task(void)
 			gpio_set_level(GPIO_ENABLE_VCORE, 0);
 
 			/* Disable WLAN */
-			gpio_set_level(GPIO_ENABLE_WLAN, 0);
-			gpio_set_level(GPIO_RADIO_ENABLE_WLAN, 0);
-			gpio_set_level(GPIO_RADIO_ENABLE_BT, 0);
+			gpio_set_level(GPIO_ENABLE_3VS_WLAN, 0);
+			/* Don't put 3V on control lines when power is off! */
+			gpio_set_level(GPIO_RADIO_ENABLE_WLANn, 0);
+			gpio_set_level(GPIO_RADIO_ENABLE_BTn, 0);
 
 			/* Deassert prochot since CPU is off and we're about
 			 * to drop +VCCP. */
@@ -608,6 +609,39 @@ DECLARE_CONSOLE_COMMAND(x86reset, command_x86reset,
 			"Issue x86 reset",
 			NULL);
 
+
+static int command_wireless(int argc, char **argv)
+{
+	char *e;
+	int v, b, w;
+
+	switch (argc) {
+	case 4:
+		v = strtoi(argv[1], &e, 16);
+		b = strtoi(argv[2], &e, 16);
+		w = strtoi(argv[3], &e, 16);
+		gpio_set_level(GPIO_ENABLE_3VS_WLAN, v);
+		gpio_set_level(GPIO_RADIO_ENABLE_WLANn, w);
+		gpio_set_level(GPIO_RADIO_ENABLE_BTn, b);
+		/* fall through */
+	case 1:
+		v = gpio_get_level(GPIO_ENABLE_3VS_WLAN);
+		w = gpio_get_level(GPIO_RADIO_ENABLE_WLANn);
+		b = gpio_get_level(GPIO_RADIO_ENABLE_BTn);
+		CPRINTF("3vs_wlan=%d enable_bt#=%d enable_wlan#=%d\n", v, b, w);
+		return EC_SUCCESS;
+		break;
+	}
+
+	return EC_ERROR_INVAL;
+}
+DECLARE_CONSOLE_COMMAND(wireless, command_wireless,
+			"[3vs_wlan enable_bt# enable_wlan#]",
+			"Display or set radio power",
+			NULL);
+
+
+
 /*****************************************************************************/
 /* Host commands */
 
@@ -615,10 +649,10 @@ int switch_command_enable_wireless(uint8_t *data, int *resp_size)
 {
 	struct ec_params_switch_enable_wireless *p =
 			(struct ec_params_switch_enable_wireless *)data;
-	gpio_set_level(GPIO_RADIO_ENABLE_WLAN,
-		       p->enabled & EC_WIRELESS_SWITCH_WLAN);
-	gpio_set_level(GPIO_RADIO_ENABLE_BT,
-		       p->enabled & EC_WIRELESS_SWITCH_BLUETOOTH);
+	gpio_set_level(GPIO_RADIO_ENABLE_WLANn,
+		       !(p->enabled & EC_WIRELESS_SWITCH_WLAN));
+	gpio_set_level(GPIO_RADIO_ENABLE_BTn,
+		       !(p->enabled & EC_WIRELESS_SWITCH_BLUETOOTH));
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_SWITCH_ENABLE_WIRELESS,
