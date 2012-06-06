@@ -494,9 +494,9 @@ void x86_power_task(void)
 			gpio_set_level(GPIO_ENABLE_VS, 1);
 
 			/* Enable WLAN */
-			gpio_set_level(GPIO_ENABLE_WLAN, 1);
-			gpio_set_level(GPIO_RADIO_ENABLE_WLAN, 1);
-			gpio_set_level(GPIO_RADIO_ENABLE_BT, 1);
+			gpio_set_level(GPIO_ENABLE_3VS_WLAN, 1);
+			gpio_set_level(GPIO_RADIO_ENABLE_WLANn, 0);
+			gpio_set_level(GPIO_RADIO_ENABLE_BTn, 0);
 
 			/* Make sure touchscreen is out if reset (even if the
 			 * lid is still closed); it may have been turned off if
@@ -540,9 +540,10 @@ void x86_power_task(void)
 			gpio_set_level(GPIO_ENABLE_VCORE, 0);
 
 			/* Disable WLAN */
-			gpio_set_level(GPIO_ENABLE_WLAN, 0);
-			gpio_set_level(GPIO_RADIO_ENABLE_WLAN, 0);
-			gpio_set_level(GPIO_RADIO_ENABLE_BT, 0);
+			gpio_set_level(GPIO_ENABLE_3VS_WLAN, 0);
+			/* Don't put 3V on control lines when power is off! */
+			gpio_set_level(GPIO_RADIO_ENABLE_WLANn, 0);
+			gpio_set_level(GPIO_RADIO_ENABLE_BTn, 0);
 
 			/* Deassert prochot since CPU is off and we're about
 			 * to drop +VCCP. */
@@ -626,10 +627,10 @@ int switch_command_enable_wireless(uint8_t *data, int *resp_size)
 {
 	struct ec_params_switch_enable_wireless *p =
 			(struct ec_params_switch_enable_wireless *)data;
-	gpio_set_level(GPIO_RADIO_ENABLE_WLAN,
-		       p->enabled & EC_WIRELESS_SWITCH_WLAN);
-	gpio_set_level(GPIO_RADIO_ENABLE_BT,
-		       p->enabled & EC_WIRELESS_SWITCH_BLUETOOTH);
+	gpio_set_level(GPIO_RADIO_ENABLE_WLANn,
+		       !(p->enabled & EC_WIRELESS_SWITCH_WLAN));
+	gpio_set_level(GPIO_RADIO_ENABLE_BTn,
+		       !(p->enabled & EC_WIRELESS_SWITCH_BLUETOOTH));
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_SWITCH_ENABLE_WIRELESS,
