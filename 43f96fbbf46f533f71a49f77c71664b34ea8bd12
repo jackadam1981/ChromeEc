@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAK3//1AQ\u003d",
+        "filename": "common/i8042.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-06-06T07:11:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAK3//1EM\u003d",
+      "revId": "43f96fbbf46f533f71a49f77c71664b34ea8bd12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAK3//1EU\u003d",
         "filename": "common/queue.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2012-06-06T01:04:40Z",
       "side": 1,
       "message": "I\u0027d probably do:\n\nconst uint8_t *src \u003d (const uint8_t *)bytes;\n\nfor (count *\u003d queue-\u003eunit; count; count--) {\n  queue-\u003ebuf[queue-\u003etail++] \u003d *(src++);\n  queue-\u003etail %\u003d queue-\u003esize;\n}",
+      "revId": "43f96fbbf46f533f71a49f77c71664b34ea8bd12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//1AA\u003d",
+        "filename": "common/queue.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-06-06T07:11:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAK3//1EU\u003d",
       "revId": "43f96fbbf46f533f71a49f77c71664b34ea8bd12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAK3//0/4\u003d",
+        "filename": "common/queue.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-06-06T07:11:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAK3//1EQ\u003d",
+      "revId": "43f96fbbf46f533f71a49f77c71664b34ea8bd12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAK3//1FQ\u003d",
         "filename": "include/queue.h",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2012-06-06T01:04:40Z",
       "side": 1,
       "message": "common.h (which includes stdint.h)",
+      "revId": "43f96fbbf46f533f71a49f77c71664b34ea8bd12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//0/0\u003d",
+        "filename": "include/queue.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-06-06T07:11:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAK3//1FQ\u003d",
       "revId": "43f96fbbf46f533f71a49f77c71664b34ea8bd12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAK3//0/w\u003d",
+        "filename": "include/queue.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-06-06T07:11:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAK3//1Ek\u003d",
+      "revId": "43f96fbbf46f533f71a49f77c71664b34ea8bd12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAK3//1E8\u003d",
         "filename": "include/queue.h",
         "patchSetId": 2
@@ -98,6 +188,24 @@
       "writtenOn": "2012-06-06T01:04:40Z",
       "side": 1,
       "message": "buf_bytes",
+      "revId": "43f96fbbf46f533f71a49f77c71664b34ea8bd12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//0/s\u003d",
+        "filename": "include/queue.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-06-06T07:11:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAK3//1E8\u003d",
       "revId": "43f96fbbf46f533f71a49f77c71664b34ea8bd12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAK3//0/o\u003d",
+        "filename": "include/queue.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-06-06T07:11:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAK3//1E4\u003d",
+      "revId": "43f96fbbf46f533f71a49f77c71664b34ea8bd12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAK3//1Fc\u003d",
         "filename": "include/queue.h",
         "patchSetId": 2
@@ -132,6 +258,24 @@
       "writtenOn": "2012-06-06T01:04:40Z",
       "side": 1,
       "message": "Comments to describe functions, please.",
+      "revId": "43f96fbbf46f533f71a49f77c71664b34ea8bd12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//078\u003d",
+        "filename": "include/queue.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-06-06T07:11:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAK3//1Fc\u003d",
       "revId": "43f96fbbf46f533f71a49f77c71664b34ea8bd12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -155,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAK3//0/k\u003d",
+        "filename": "include/queue.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-06-06T07:11:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAK3//1FY\u003d",
+      "revId": "43f96fbbf46f533f71a49f77c71664b34ea8bd12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAK3//1FE\u003d",
         "filename": "include/queue.h",
         "patchSetId": 2
@@ -166,6 +328,24 @@
       "writtenOn": "2012-06-06T01:04:40Z",
       "side": 1,
       "message": "queue_has_space(const struct queue *q, int unit_count);",
+      "revId": "43f96fbbf46f533f71a49f77c71664b34ea8bd12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//0/g\u003d",
+        "filename": "include/queue.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-06-06T07:11:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAK3//1FE\u003d",
       "revId": "43f96fbbf46f533f71a49f77c71664b34ea8bd12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -189,6 +369,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAK3//0/Y\u003d",
+        "filename": "include/queue.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-06-06T07:11:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAK3//1FM\u003d",
+      "revId": "43f96fbbf46f533f71a49f77c71664b34ea8bd12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAK3//1FA\u003d",
         "filename": "include/queue.h",
         "patchSetId": 2
@@ -200,6 +398,24 @@
       "writtenOn": "2012-06-06T01:04:40Z",
       "side": 1,
       "message": "queue_remove_unit(struct queue *q, void *dest);",
+      "revId": "43f96fbbf46f533f71a49f77c71664b34ea8bd12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//074\u003d",
+        "filename": "include/queue.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-06-06T07:11:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAK3//1FA\u003d",
       "revId": "43f96fbbf46f533f71a49f77c71664b34ea8bd12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
