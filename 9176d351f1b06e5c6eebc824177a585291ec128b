@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAK3//0Lg\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-06-07T04:40:41Z",
+      "side": 1,
+      "message": "Gosh, that is much better!",
+      "revId": "9176d351f1b06e5c6eebc824177a585291ec128b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//0Lc\u003d",
+        "filename": "common/printf.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-06-07T04:40:41Z",
+      "side": 1,
+      "message": "do you need this?",
+      "revId": "9176d351f1b06e5c6eebc824177a585291ec128b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//0LY\u003d",
+        "filename": "common/printf.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-06-07T04:40:41Z",
+      "side": 1,
+      "message": "Would it be useful to return the number of characters sent? Perhaps not",
+      "revId": "9176d351f1b06e5c6eebc824177a585291ec128b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//0LU\u003d",
+        "filename": "common/printf.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-06-07T04:40:41Z",
+      "side": 1,
+      "message": "size \u003c 1?",
+      "revId": "9176d351f1b06e5c6eebc824177a585291ec128b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//0LQ\u003d",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-06-07T04:40:41Z",
+      "side": 1,
+      "message": "Should these unrelated whitespace changes go in another CL?",
+      "revId": "9176d351f1b06e5c6eebc824177a585291ec128b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//0LM\u003d",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-06-07T04:40:41Z",
+      "side": 1,
+      "message": "\u0026\u0026 rv is not error?",
+      "revId": "9176d351f1b06e5c6eebc824177a585291ec128b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//0K8\u003d",
+        "filename": "include/printf.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-06-07T04:40:41Z",
+      "side": 1,
+      "message": "Not sure about comment style here - if following the kernel then the */ should be on the next line\n\nAlso, perhaps document each parameter explicitly?",
+      "revId": "9176d351f1b06e5c6eebc824177a585291ec128b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//0K4\u003d",
+        "filename": "include/printf.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-06-07T04:40:41Z",
+      "side": 1,
+      "message": "Not sure if you need two blank lines between functions in header.\n\nActually maybe you should tell me the style for the EC, as it has a few differences that I have leaned mostly by osmosis!",
+      "revId": "9176d351f1b06e5c6eebc824177a585291ec128b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
