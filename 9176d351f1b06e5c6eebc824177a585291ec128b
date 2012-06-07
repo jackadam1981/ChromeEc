@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAK3//0KQ\u003d",
+        "filename": "common/printf.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-06-07T04:59:56Z",
+      "side": 1,
+      "message": "Yes, for %T",
+      "parentUuid": "AAAAK3//0Lc\u003d",
+      "revId": "9176d351f1b06e5c6eebc824177a585291ec128b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAK3//0LY\u003d",
         "filename": "common/printf.c",
         "patchSetId": 2
@@ -47,6 +65,24 @@
       "writtenOn": "2012-06-07T04:40:41Z",
       "side": 1,
       "message": "Would it be useful to return the number of characters sent? Perhaps not",
+      "revId": "9176d351f1b06e5c6eebc824177a585291ec128b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//0KE\u003d",
+        "filename": "common/printf.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-06-07T04:59:56Z",
+      "side": 1,
+      "message": "That would be more compatible with std C snprintf().  I don\u0027t think we ever check the return code anywhere in the EC codebase; if so this is a reasonable change.",
+      "parentUuid": "AAAAK3//0LY\u003d",
       "revId": "9176d351f1b06e5c6eebc824177a585291ec128b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -104,6 +140,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAK3//0J8\u003d",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-06-07T04:59:56Z",
+      "side": 1,
+      "message": "No, because rv could indicate overflow - in which case we definitely need to get transmitting started!",
+      "parentUuid": "AAAAK3//0LM\u003d",
+      "revId": "9176d351f1b06e5c6eebc824177a585291ec128b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAK3//0K8\u003d",
         "filename": "include/printf.h",
         "patchSetId": 2
@@ -121,6 +175,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAK3//0JY\u003d",
+        "filename": "include/printf.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-06-07T04:59:56Z",
+      "side": 1,
+      "message": "If following strict kernel style, there should be a blank /* on the first line, too.\n\nOf course, we do that basically nowhere in the EC codebase.  We should, though; the goal is to use Linux kernel style. \n\nFiled crosbug.com/p/10231.",
+      "parentUuid": "AAAAK3//0K8\u003d",
+      "revId": "9176d351f1b06e5c6eebc824177a585291ec128b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAK3//0K4\u003d",
         "filename": "include/printf.h",
         "patchSetId": 2
@@ -132,6 +204,24 @@
       "writtenOn": "2012-06-07T04:40:41Z",
       "side": 1,
       "message": "Not sure if you need two blank lines between functions in header.\n\nActually maybe you should tell me the style for the EC, as it has a few differences that I have leaned mostly by osmosis!",
+      "revId": "9176d351f1b06e5c6eebc824177a585291ec128b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//0Iw\u003d",
+        "filename": "include/printf.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-06-07T04:59:56Z",
+      "side": 1,
+      "message": "We don\u0027t; that\u0027s a copy/paste error...\n\nEC should be using kernel style ala http://www.kernel.org/doc/Documentation/CodingStyle, simply because otherwise we\u0027d need to maintain our own style guide and this minimizes the learning curve.\n\n(What are we doing differently other than multi-line comments?)",
+      "parentUuid": "AAAAK3//0K4\u003d",
       "revId": "9176d351f1b06e5c6eebc824177a585291ec128b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
