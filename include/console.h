@@ -8,7 +8,6 @@
 #ifndef __CROS_EC_CONSOLE_H
 #define __CROS_EC_CONSOLE_H
 
-#include "board.h"
 #include "common.h"
 
 /* Console command; used by DECLARE_CONSOLE_COMMAND macro. */
@@ -17,12 +16,6 @@ struct console_command {
 	const char *name;
 	/* Handler for the command.  argv[0] will be the command name. */
 	int (*handler)(int argc, char **argv);
-#ifdef CONFIG_CONSOLE_CMDHELP
-	/* Description of args */
-	const char *argdesc;
-	/* Short help for command */
-	const char *shorthelp;
-#endif
 };
 
 
@@ -87,18 +80,10 @@ void console_has_input(void);
  * Register a console command handler. Note that `name' must never be a
  * beginning of another existing command name.
  */
-#ifdef CONFIG_CONSOLE_CMDHELP
-#define DECLARE_CONSOLE_COMMAND(name, routine, argdesc, shorthelp, longhelp) \
-	static const char __con_cmd_label_##name[] = #name;		\
-	const struct console_command __con_cmd_##name			\
-	__attribute__((section(".rodata.cmds." #name)))			\
-	     = {__con_cmd_label_##name, routine, argdesc, shorthelp}
-#else
-#define DECLARE_CONSOLE_COMMAND(name, routine, argdesc, shorthelp, longhelp) \
-	static const char __con_cmd_label_##name[] = #name;		\
-	const struct console_command __con_cmd_##name			\
-	__attribute__((section(".rodata.cmds." #name)))			\
-	     = {__con_cmd_label_##name, routine}
-#endif
+#define DECLARE_CONSOLE_COMMAND(name, routine)			\
+	static const char __con_cmd_label_##name[] = #name;	\
+	const struct console_command __con_cmd_##name		\
+		__attribute__((section(".rodata.cmds." #name)))	\
+		= {__con_cmd_label_##name, routine}
 
 #endif  /* __CROS_EC_CONSOLE_H */

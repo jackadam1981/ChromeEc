@@ -160,8 +160,7 @@ static int tmp006_read_object_temp(int idx)
 		v);
 
 	/* TODO: Calibrate the sensitivity factor. */
-	return tmp006_calculate_object_temp(t, v,
-			tmp006_sensors[idx].sens) / 100;
+	return tmp006_calculate_object_temp(t, v, 6400) / 100;
 }
 
 static int tmp006_poll_sensor(int sensor_id)
@@ -292,7 +291,4 @@ static int command_sensor_info(int argc, char **argv)
 
 	return rv1;
 }
-DECLARE_CONSOLE_COMMAND(tmp006, command_sensor_info,
-			NULL,
-			"Print TMP006 sensors",
-			NULL);
+DECLARE_CONSOLE_COMMAND(tmp006, command_sensor_info);

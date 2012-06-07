@@ -90,12 +90,6 @@ int pwm_enable_keyboard_backlight(int enable)
 }
 
 
-int pwm_get_keyboard_backlight_enabled(void)
-{
-	return (LM4_FAN_FANCTL & (1 << FAN_CH_KBLIGHT)) ? 1 : 0;
-}
-
-
 int pwm_get_keyboard_backlight(void)
 {
 	return ((LM4_FAN_FANCMD(FAN_CH_KBLIGHT) >> 16) * 100 +
@@ -174,10 +168,7 @@ static int command_fan_info(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(faninfo, command_fan_info,
-			NULL,
-			"Print fan info",
-			NULL);
+DECLARE_CONSOLE_COMMAND(faninfo, command_fan_info);
 
 
 static int command_fan_set(int argc, char **argv)
@@ -186,11 +177,11 @@ static int command_fan_set(int argc, char **argv)
 	char *e;
 
 	if (argc < 2)
-		return EC_ERROR_PARAM_COUNT;
+		return EC_ERROR_INVAL;
 
 	rpm = strtoi(argv[1], &e, 0);
 	if (*e)
-		return EC_ERROR_PARAM1;
+		return EC_ERROR_INVAL;
 
         /* Move the fan to automatic control */
         if (LM4_FAN_FANCH(FAN_CH_CPU) & 0x0001) {
@@ -207,10 +198,7 @@ static int command_fan_set(int argc, char **argv)
 
 	return pwm_set_fan_target_rpm(rpm);
 }
-DECLARE_CONSOLE_COMMAND(fanset, command_fan_set,
-			"rpm",
-			"Set fan speed",
-			NULL);
+DECLARE_CONSOLE_COMMAND(fanset, command_fan_set);
 
 
 #ifdef CONSOLE_COMMAND_FANDUTY
@@ -221,11 +209,12 @@ static int command_fan_duty(int argc, char **argv)
 	char *e;
 
 	if (argc < 2)
-		return EC_ERROR_PARAM_COUNT;
+		return EC_ERROR_INVAL;
 
 	d = strtoi(argv[1], &e, 0);
-	if (*e)
-		return EC_ERROR_PARAM1;
+	if (*e) {
+		return EC_ERROR_INVAL;
+	}
 
         pwm = (MAX_PWM * d) / 100;
 	ccprintf("Setting fan duty cycle to %d%% = 0x%x...\n", d, pwm);
@@ -248,10 +237,7 @@ static int command_fan_duty(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(fanduty, command_fan_duty,
-			"percent",
-			"Set fan duty cycle",
-			NULL);
+DECLARE_CONSOLE_COMMAND(fanduty, command_fan_duty);
 #endif
 
 
@@ -263,17 +249,14 @@ static int command_kblight(int argc, char **argv)
 		char *e;
 		int i = strtoi(argv[1], &e, 0);
 		if (*e)
-			return EC_ERROR_PARAM1;
+			return EC_ERROR_INVAL;
 		rv = pwm_set_keyboard_backlight(i);
 	}
 
 	ccprintf("Keyboard backlight: %d%%\n", pwm_get_keyboard_backlight());
 	return rv;
 }
-DECLARE_CONSOLE_COMMAND(kblight, command_kblight,
-			"percent",
-			"Set keyboard backlight",
-			NULL);
+DECLARE_CONSOLE_COMMAND(kblight, command_kblight);
 
 /*****************************************************************************/
 /* Initialization */

@@ -832,10 +832,10 @@ static int command_lightbar(int argc, char **argv)
 			return 0;
 		}
 		num = 0xff & strtoi(argv[2], &e, 16);
-		if (*e)
+		if (e && *e)
 			num = find_msg_by_name(argv[2]);
 		if (num >= LIGHTBAR_NUM_SEQUENCES)
-			return EC_ERROR_PARAM2;
+			return EC_ERROR_INVAL;
 		lightbar_sequence(num);
 		return EC_SUCCESS;
 	}
@@ -867,7 +867,4 @@ static int command_lightbar(int argc, char **argv)
 
 	return EC_ERROR_INVAL;
 }
-DECLARE_CONSOLE_COMMAND(lightbar, command_lightbar,
-			"[on | off | init | brightness | seq] | [ctrl reg val]",
-			"Get/set lightbar state",
-			NULL);
+DECLARE_CONSOLE_COMMAND(lightbar, command_lightbar);

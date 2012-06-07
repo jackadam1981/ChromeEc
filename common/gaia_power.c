@@ -402,7 +402,4 @@ static int command_force_power(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(forcepower, command_force_power,
-			NULL,
-			"Force power on",
-			NULL);
+DECLARE_CONSOLE_COMMAND(forcepower, command_force_power);

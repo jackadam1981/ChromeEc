@@ -234,30 +234,29 @@ static int print_info(void)
 static int command_charger(int argc, char **argv)
 {
 	int d;
-	char *e;
+	char *endptr;
 
 	if (argc != 3)
 		return print_info();
 
 	if (strcasecmp(argv[1], "input") == 0) {
-		d = strtoi(argv[2], &e, 0);
-		if (*e)
-			return EC_ERROR_PARAM2;
+		d = strtoi(argv[2], &endptr, 0);
+		if (*endptr)
+			return EC_ERROR_INVAL;
 		return charger_set_input_current(d);
 	} else if (strcasecmp(argv[1], "current") == 0) {
-		d = strtoi(argv[2], &e, 0);
-		if (*e)
-			return EC_ERROR_PARAM2;
+		d = strtoi(argv[2], &endptr, 0);
+		if (*endptr)
+			return EC_ERROR_INVAL;
 		return charger_set_current(d);
 	} else if (strcasecmp(argv[1], "voltage") == 0) {
-		d = strtoi(argv[2], &e, 0);
-		if (*e)
-			return EC_ERROR_PARAM2;
+		d = strtoi(argv[2], &endptr, 0);
+		if (*endptr) {
+			return EC_ERROR_INVAL;
+		}
 		return charger_set_voltage(d);
 	} else
-		return EC_ERROR_PARAM1;
+		return EC_ERROR_INVAL;
 }
-DECLARE_CONSOLE_COMMAND(charger, command_charger,
-			"[input | current | voltage] [newval]",
-			"Get or set charger param(s)",
-			NULL);
+DECLARE_CONSOLE_COMMAND(charger, command_charger);
+

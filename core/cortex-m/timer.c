@@ -138,13 +138,6 @@ int timer_cancel(task_id_t tskid)
 void usleep(unsigned us)
 {
 	uint32_t evt = 0;
-
-	/* If task scheduling has not started, just delay */
-	if (!task_start_called()) {
-		udelay(us);
-		return;
-	}
-
 	ASSERT(us);
 	do {
 		evt |= task_wait_event(us);
@@ -196,24 +189,14 @@ void timer_print_info(void)
 
 static int command_wait(int argc, char **argv)
 {
-	char *e;
-	int i;
-
 	if (argc < 2)
-		return EC_ERROR_PARAM_COUNT;
+		return EC_ERROR_INVAL;
 
-	i = strtoi(argv[1], &e, 0);
-	if (*e)
-		return EC_ERROR_PARAM1;
-
-	udelay(i * 1000);
+	udelay(atoi(argv[1]) * 1000);
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(waitms, command_wait,
-			"msec",
-			"Busy-wait for msec",
-			NULL);
+DECLARE_CONSOLE_COMMAND(waitms, command_wait);
 
 
 static int command_get_time(int argc, char **argv)
@@ -223,10 +206,7 @@ static int command_get_time(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(gettime, command_get_time,
-			NULL,
-			"Print current time",
-			NULL);
+DECLARE_CONSOLE_COMMAND(gettime, command_get_time);
 
 
 int command_timer_info(int argc, char **argv)
@@ -234,10 +214,7 @@ int command_timer_info(int argc, char **argv)
 	timer_print_info();
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(timerinfo, command_timer_info,
-			NULL,
-			"Print timer info",
-			NULL);
+DECLARE_CONSOLE_COMMAND(timerinfo, command_timer_info);
 
 
 #define TIMER_SYSJUMP_TAG 0x4d54  /* "TM" */

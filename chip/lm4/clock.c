@@ -197,10 +197,7 @@ static int command_sleep(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(sleep, command_sleep,
-			"[level [clock]]",
-			"Drop into sleep",
-			NULL);
+DECLARE_CONSOLE_COMMAND(sleep, command_sleep);
 
 
 static int command_pll(int argc, char **argv)
@@ -218,7 +215,7 @@ static int command_pll(int argc, char **argv)
 			char *e;
 			div = strtoi(argv[1], &e, 10);
 			if (*e)
-				return EC_ERROR_PARAM1;
+				return EC_ERROR_INVAL;
 
 			LM4_SYSTEM_RCC = LM4_SYSTEM_RCC_SYSDIV(div - 1) |
 				LM4_SYSTEM_RCC_BYPASS |
@@ -240,10 +237,7 @@ static int command_pll(int argc, char **argv)
 	ccprintf("Clock:   %d Hz\n", clock_get_freq());
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(pll, command_pll,
-			"[ on | off | <div> ]",
-			"Get/set PLL state",
-			NULL);
+DECLARE_CONSOLE_COMMAND(pll, command_pll);
 
 /*****************************************************************************/
 /* Initialization */

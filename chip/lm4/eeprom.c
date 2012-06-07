@@ -124,10 +124,7 @@ static int command_eeprom_info(int argc, char **argv)
 		 LM4_EEPROM_EEHIDE);
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(eeinfo, command_eeprom_info,
-			NULL,
-			"Print EEPROM info",
-			NULL);
+DECLARE_CONSOLE_COMMAND(eeinfo, command_eeprom_info);
 
 
 static int command_eeprom_read(int argc, char **argv)
@@ -139,16 +136,16 @@ static int command_eeprom_read(int argc, char **argv)
 	uint32_t d;
 
 	if (argc < 2)
-		return EC_ERROR_PARAM_COUNT;
+		return EC_ERROR_INVAL;
 
 	block = strtoi(argv[1], &e, 0);
 	if (*e)
-		return EC_ERROR_PARAM1;
+		return EC_ERROR_INVAL;
 
 	if (argc > 2) {
 		offset = strtoi(argv[2], &e, 0);
 		if (*e)
-			return EC_ERROR_PARAM2;
+			return EC_ERROR_INVAL;
 	}
 
 	rv = eeprom_read(block, offset, sizeof(d), (char *)&d);
@@ -156,10 +153,7 @@ static int command_eeprom_read(int argc, char **argv)
 		ccprintf("%d:%d = 0x%08x\n", block, offset, d);
 	return rv;
 }
-DECLARE_CONSOLE_COMMAND(eeread, command_eeprom_read,
-			"block [offset]",
-			"Read a word of EEPROM",
-			NULL);
+DECLARE_CONSOLE_COMMAND(eeread, command_eeprom_read);
 
 
 static int command_eeprom_write(int argc, char **argv)
@@ -170,25 +164,22 @@ static int command_eeprom_write(int argc, char **argv)
 	uint32_t d;
 
 	if (argc < 4)
-		return EC_ERROR_PARAM_COUNT;
+		return EC_ERROR_INVAL;
 
 	block = strtoi(argv[1], &e, 0);
 	if (*e)
-		return EC_ERROR_PARAM1;
+		return EC_ERROR_INVAL;
 	offset = strtoi(argv[2], &e, 0);
 	if (*e)
-		return EC_ERROR_PARAM2;
+		return EC_ERROR_INVAL;
 	d = strtoi(argv[3], &e, 0);
 	if (*e)
-		return EC_ERROR_PARAM3;
+		return EC_ERROR_INVAL;
 
 	ccprintf("Writing 0x%08x to %d:%d...\n", d, block, offset);
 	return eeprom_write(block, offset, sizeof(d), (char *)&d);
 }
-DECLARE_CONSOLE_COMMAND(eewrite, command_eeprom_write,
-			"block offset value",
-			"Write a word of EEPROM",
-			NULL);
+DECLARE_CONSOLE_COMMAND(eewrite, command_eeprom_write);
 
 
 #ifdef CONSOLE_COMMAND_EEHIDE
@@ -198,19 +189,16 @@ static int command_eeprom_hide(int argc, char **argv)
 	char *e;
 
 	if (argc < 2)
-		return EC_ERROR_PARAM_COUNT;
+		return EC_ERROR_INVAL;
 
 	block = strtoi(argv[1], &e, 0);
 	if (*e)
-		return EC_ERROR_PARAM1;
+		return EC_ERROR_INVAL;
 
 	ccprintf("Hiding block %d\n", block);
 	return eeprom_hide(block);
 }
-DECLARE_CONSOLE_COMMAND(eehide, command_eeprom_hide,
-			"block",
-			"Hide a block of EEPROM",
-			NULL);
+DECLARE_CONSOLE_COMMAND(eehide, command_eeprom_hide);
 #endif
 
 

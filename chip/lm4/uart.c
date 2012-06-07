@@ -254,7 +254,4 @@ static int command_comxtest(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(comxtest, command_comxtest,
-			"[string]",
-			"Write test data to COMx uart",
-			NULL);
+DECLARE_CONSOLE_COMMAND(comxtest, command_comxtest);

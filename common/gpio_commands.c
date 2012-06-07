@@ -58,7 +58,7 @@ static int command_gpio_get(int argc, char **argv)
 	if (argc == 2) {
 		i = find_signal_by_name(argv[1]);
 		if (i == GPIO_COUNT)
-			return EC_ERROR_PARAM1;
+			return EC_ERROR_INVAL;
 		g = gpio_list + i;
 		v = gpio_get_level(i);
 		changed = last_val_changed(i, v);
@@ -82,10 +82,7 @@ static int command_gpio_get(int argc, char **argv)
 	}
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(gpioget, command_gpio_get,
-			"[name]",
-			"Read GPIO value(s)",
-			NULL);
+DECLARE_CONSOLE_COMMAND(gpioget, command_gpio_get);
 
 
 static int command_gpio_set(int argc, char **argv)
@@ -95,26 +92,23 @@ static int command_gpio_set(int argc, char **argv)
 	int v, i;
 
 	if (argc < 3)
-		return EC_ERROR_PARAM_COUNT;
+		return EC_ERROR_INVAL;
 
 	i = find_signal_by_name(argv[1]);
 	if (i == GPIO_COUNT)
-		return EC_ERROR_PARAM1;
+		return EC_ERROR_INVAL;
 	g = gpio_list + i;
 
 	if (!g->mask)
-		return EC_ERROR_PARAM1;
+		return EC_ERROR_INVAL;
 
 	if (!(g->flags & GPIO_OUTPUT))
-		return EC_ERROR_PARAM1;
+		return EC_ERROR_INVAL;
 
 	v = strtoi(argv[2], &e, 0);
 	if (*e)
-		return EC_ERROR_PARAM2;
+		return EC_ERROR_INVAL;
 
 	return gpio_set_level(i, v);
 }
-DECLARE_CONSOLE_COMMAND(gpioset, command_gpio_set,
-			"name <0 | 1>",
-			"Set a GPIO",
-			NULL);
+DECLARE_CONSOLE_COMMAND(gpioset, command_gpio_set);

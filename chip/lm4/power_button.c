@@ -569,7 +569,7 @@ static int command_powerbtn(int argc, char **argv)
 	if (argc > 1) {
 		ms = strtoi(argv[1], &e, 0);
 		if (*e)
-			return EC_ERROR_PARAM1;
+			return EC_ERROR_INVAL;
 	}
 
 	ccprintf("Simulating %d ms power button press.\n", ms);
@@ -586,10 +586,7 @@ static int command_powerbtn(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(powerbtn, command_powerbtn,
-			"[msec]",
-			"Simulate power button press",
-			NULL);
+DECLARE_CONSOLE_COMMAND(powerbtn, command_powerbtn);
 
 
 static int command_lidopen(int argc, char **argv)
@@ -597,10 +594,7 @@ static int command_lidopen(int argc, char **argv)
 	lid_switch_open(get_time().val);
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(lidopen, command_lidopen,
-			NULL,
-			"Simulate lid open",
-			NULL);
+DECLARE_CONSOLE_COMMAND(lidopen, command_lidopen);
 
 
 static int command_lidclose(int argc, char **argv)
@@ -608,32 +602,4 @@ static int command_lidclose(int argc, char **argv)
 	lid_switch_close(get_time().val);
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(lidclose, command_lidclose,
-			NULL,
-			"Simulate lid close",
-			NULL);
-
-static int command_mmapinfo(int argc, char **argv)
-{
-	uint8_t *memmap_switches = lpc_get_memmap_range() + EC_MEMMAP_SWITCHES;
-	uint8_t val = *memmap_switches;
-	int i;
-	const char *explanation[] = {
-		"lid_open",
-		"powerbtn",
-		"wp_off",
-		"kbd_rec",
-		"gpio_rec",
-		"fake_dev",
-	};
-	ccprintf("memmap switches = 0x%x\n", val);
-	for (i = 0; i < ARRAY_SIZE(explanation); i++)
-		if (val & (1 << i))
-			ccprintf(" %s\n", explanation[i]);
-
-	return EC_SUCCESS;
-}
-DECLARE_CONSOLE_COMMAND(mmapinfo, command_mmapinfo,
-			NULL,
-			"Print memmap switch state",
-			NULL);
+DECLARE_CONSOLE_COMMAND(lidclose, command_lidclose);

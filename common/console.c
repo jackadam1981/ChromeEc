@@ -124,8 +124,8 @@ static int split_words(char *input, int max_argc, int *argc, char **argv)
 }
 
 
-/* Find a command by name.  Returns the command structure, or NULL if no match
- * found. */
+/* Finds a command by name.  Returns the command structure, or NULL if
+ * no match found. */
 static const struct console_command *find_command(char *name)
 {
 	const struct console_command *cmd, *match = NULL;
@@ -143,14 +143,14 @@ static const struct console_command *find_command(char *name)
 }
 
 
-/* Handle a line of input containing a single command.  Modifies the input
- * string during parsing. */
+/* Handles a line of input containing a single command.
+ *
+ * Modifies the input string during parsing. */
 static int handle_command(char *input)
 {
 	const struct console_command *cmd;
 	char *argv[MAX_ARGS_PER_COMMAND];
 	int argc = 0;
-	int rv;
 
 	/* Split input into words.  Ignore words past our limit. */
 	split_words(input, MAX_ARGS_PER_COMMAND, &argc, argv);
@@ -160,32 +160,11 @@ static int handle_command(char *input)
 		return EC_SUCCESS;
 
 	cmd = find_command(argv[0]);
-	if (!cmd) {
-		ccprintf("Command '%s' not found or ambiguous.\n", argv[0]);
-		return EC_ERROR_UNKNOWN;
-	}
+	if (cmd)
+		return cmd->handler(argc, argv);
 
-	rv = cmd->handler(argc, argv);
-	if (rv == EC_SUCCESS)
-		return rv;
-
-	/* Print more info for errors */
-	if (rv == EC_ERROR_INVAL)
-		ccputs("Command usage/param invalid.\n");
-	else if (rv == EC_ERROR_PARAM_COUNT)
-		ccputs("Wrong number of params.\n");
-	else if (rv >= EC_ERROR_PARAM1 && rv <= EC_ERROR_PARAM9)
-		ccprintf("Parameter %d invalid.\n", rv - EC_ERROR_PARAM1 + 1);
-	else if (rv != EC_SUCCESS) {
-		ccprintf("Command returned error %d\n", rv);
-		return rv;
-	}
-
-#ifdef CONFIG_CONSOLE_CMDHELP
-	if (cmd->argdesc)
-		ccprintf("Usage: %s %s\n", cmd->name, cmd->argdesc);
-#endif
-	return rv;
+	ccprintf("Command '%s' not found or ambiguous.\n", argv[0]);
+	return EC_ERROR_UNKNOWN;
 }
 
 
@@ -205,11 +184,20 @@ static int console_init(void)
 /* handle a console command */
 static void console_process(void)
 {
+        int rv;
+
 	/* Process all the pending commands.  Need to do this all at once
 	 * since our interrupt may have been triggered multiple times. */
+	/* TODO: Go to sleep briefly between commands to give lower
+	 * priority tasks a chance to run? */
 	while (uart_peek('\n') >= 0) {
 		uart_gets(input_buf, sizeof(input_buf));
-		handle_command(input_buf);
+
+		rv = handle_command(input_buf);
+		if (rv == EC_ERROR_INVAL)
+			ccputs("Command usage/param invalid.\n");
+		else if (rv != EC_SUCCESS)
+			ccprintf("Command returned error %d\n", rv);
 		ccputs(PROMPT);
 	}
 }
@@ -228,7 +216,7 @@ void console_task(void)
 
 	while (1) {
 		console_process();
-		/* Wait for the next command message */
+		/* wait for the next command message */
 		task_wait_event(-1);
 	}
 }
@@ -245,35 +233,8 @@ static int command_help(int argc, char **argv)
 	const int rows = (ncmds + cols - 1) / cols;
 	int i, j;
 
-#ifdef CONFIG_CONSOLE_CMDHELP
-	if (argc == 2) {
-		const struct console_command *cmd;
-
-		if (!strcasecmp(argv[1], "list")) {
-			ccputs("Known commands:\n");
-			for (i = 0; i < ncmds; i++) {
-				ccprintf("  %-15s%s\n",
-					 __cmds[i].name, __cmds[i].shorthelp);
-				cflush();
-			}
-			ccputs("HELP CMD = help on CMD.\n");
-			return EC_SUCCESS;
-		}
-		cmd = find_command(argv[1]);
-		if (!cmd) {
-			ccprintf("Command '%s' not found or ambiguous.\n",
-				 argv[1]);
-			return EC_ERROR_UNKNOWN;
-		}
-		ccprintf("Usage: %s %s\n", cmd->name,
-			 (cmd->argdesc ? cmd->argdesc : ""));
-		if (cmd->shorthelp)
-			ccprintf("%s\n", cmd->shorthelp);
-		return EC_SUCCESS;
-	}
-#endif
-
 	ccputs("Known commands:\n");
+
 	for (i = 0; i < rows; i++) {
 		ccputs("  ");
 		for (j = 0; j < cols; j++) {
@@ -286,17 +247,9 @@ static int command_help(int argc, char **argv)
 		cflush();
 	}
 
-#ifdef CONFIG_CONSOLE_CMDHELP
-	ccputs("HELP LIST = more info; ");
-	ccputs("HELP CMD = help on CMD.\n");
-#endif
-
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(help, command_help,
-			"[ list | <name> ]",
-			"Print command help",
-			NULL);
+DECLARE_CONSOLE_COMMAND(help, command_help);
 
 
 /* Set active channels */
@@ -309,7 +262,7 @@ static int command_ch(int argc, char **argv)
 	if (argc == 2) {
 		int m = strtoi(argv[1], &e, 0);
 		if (*e)
-			return EC_ERROR_PARAM1;
+			return EC_ERROR_INVAL;
 
 		/* No disabling the command output channel */
 		channel_mask = m | CC_MASK(CC_COMMAND);
@@ -330,7 +283,4 @@ static int command_ch(int argc, char **argv)
 	}
 	return EC_SUCCESS;
 };
-DECLARE_CONSOLE_COMMAND(chan, command_ch,
-			"[mask]",
-			"Get or set console channel mask",
-			NULL);
+DECLARE_CONSOLE_COMMAND(chan, command_ch);

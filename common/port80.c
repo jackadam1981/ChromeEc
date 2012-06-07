@@ -55,7 +55,4 @@ static int command_port80(int argc, char **argv)
 	ccputs(" <--new\n");
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(port80, command_port80,
-			"[scroll]",
-			"Print port80 writes or toggle port80 scrolling",
-			NULL);
+DECLARE_CONSOLE_COMMAND(port80, command_port80);

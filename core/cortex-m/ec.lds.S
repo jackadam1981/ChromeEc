@@ -96,21 +96,11 @@ SECTIONS
 #endif
 #ifdef COMPILE_FOR_RAM
     } > IRAM
-#else
-    } > FLASH
-#endif
     __ro_end = . ;
-    .bss : {
-        . = ALIGN(4);
-        __bss_start = .;
-        *(.bss.tasks)
-        *(.bss)
-        . = ALIGN(4);
-        __bss_end = .;
-    } > IRAM
-#ifdef COMPILE_FOR_RAM
     .data : {
 #else
+    } > FLASH
+    __ro_end = . ;
     .data : AT(ADDR(.rodata) + SIZEOF(.rodata)) {
 #endif
         . = ALIGN(4);
@@ -121,10 +111,6 @@ SECTIONS
         *(.iram.text)
         . = ALIGN(4);
         __data_end = .;
-
-	/* Shared memory buffer must be at the end of preallocated RAM, so it
-	 * can expand to use all the remaining RAM. */
-	__shared_mem_buf = .;
     } > IRAM
     /* The linker won't notice if the .data section is too big to fit,
      * apparently because we're sending it into IRAM, not FLASH. The following
@@ -141,6 +127,17 @@ SECTIONS
               *(.google)
               }
 #endif
+    .bss : {
+        . = ALIGN(4);
+        __bss_start = .;
+        *(.bss)
+        . = ALIGN(4);
+        __bss_end = .;
+
+	/* Shared memory buffer must be at the end of preallocated RAM, so it
+	 * can expand to use all the remaining RAM. */
+	__shared_mem_buf = .;
+    } > IRAM
 
     /DISCARD/ : { *(.ARM.*) }
 }

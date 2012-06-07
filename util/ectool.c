@@ -749,10 +749,7 @@ int cmd_pwm_get_keyboard_backlight(int argc, char *argv[])
 	if (rv)
 		return rv;
 
-	if (r.enabled == 1)
-		printf("Current keyboard backlight percent: %d\n", r.percent);
-	else
-		printf("Keyboard backlight disabled.\n");
+	printf("Current keyboard backlight percent: %d\n", r.percent);
 
 	return 0;
 }

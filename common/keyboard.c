@@ -727,10 +727,7 @@ static int command_typematic(int argc, char **argv)
 	ccputs("\n");
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(typematic, command_typematic,
-			"[first] [inter]",
-			"Get/set typematic delays",
-			NULL);
+DECLARE_CONSOLE_COMMAND(typematic, command_typematic);
 
 
 static int command_codeset(int argc, char **argv)
@@ -743,7 +740,7 @@ static int command_codeset(int argc, char **argv)
 			scancode_set = set;
 			break;
 		default:
-			return EC_ERROR_PARAM1;
+			return EC_ERROR_INVAL;
 		}
 	}
 
@@ -751,10 +748,7 @@ static int command_codeset(int argc, char **argv)
 	ccprintf("I8042_XLATE: %d\n", controller_ram[0] & I8042_XLATE ? 1 : 0);
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(codeset, command_codeset,
-			"[set]",
-			"Get/set keyboard codeset",
-			NULL);
+DECLARE_CONSOLE_COMMAND(codeset, command_codeset);
 
 
 static int command_controller_ram(int argc, char **argv)
@@ -762,11 +756,11 @@ static int command_controller_ram(int argc, char **argv)
 	int index;
 
 	if (argc < 2)
-		return EC_ERROR_PARAM_COUNT;
+		return EC_ERROR_INVAL;
 
 	index = strtoi(argv[1], NULL, 0);
 	if (index >= 0x20)
-		return EC_ERROR_PARAM1;
+		return EC_ERROR_INVAL;
 
 	if (argc >= 3)
 		update_ctl_ram(index, strtoi(argv[2], NULL, 0));
@@ -774,10 +768,7 @@ static int command_controller_ram(int argc, char **argv)
 	ccprintf("%d = 0x%02x\n", index, controller_ram[index]);
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(ctrlram, command_controller_ram,
-			"index [value]",
-			"Get/set keyboard controller RAM",
-			NULL);
+DECLARE_CONSOLE_COMMAND(ctrlram, command_controller_ram);
 
 
 static int command_keyboard_press(int argc, char **argv)
@@ -800,15 +791,15 @@ static int command_keyboard_press(int argc, char **argv)
 
 		c = strtoi(argv[1], &e, 0);
 		if (*e || c < 0 || c >= CROS_COL_NUM)
-			return EC_ERROR_PARAM1;
+			return EC_ERROR_INVAL;
 
 		r = strtoi(argv[2], &e, 0);
 		if (*e || r < 0 || r >= CROS_ROW_NUM)
-			return EC_ERROR_PARAM2;
+			return EC_ERROR_INVAL;
 
 		p = strtoi(argv[3], &e, 0);
 		if (*e || p < 0 || p > 1)
-			return EC_ERROR_PARAM3;
+			return EC_ERROR_INVAL;
 
 		if ((simulated_key[c] & (1 << r)) == (p << r))
 			return EC_SUCCESS;
@@ -820,10 +811,7 @@ static int command_keyboard_press(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(kbpress, command_keyboard_press,
-			"[col] [row] [0 | 1]",
-			"Simulate keypress",
-			NULL);
+DECLARE_CONSOLE_COMMAND(kbpress, command_keyboard_press);
 
 
 static int command_keyboard_log(int argc, char **argv)
@@ -853,14 +841,11 @@ static int command_keyboard_log(int argc, char **argv)
 			shared_mem_release(kblog);
 		kblog = NULL;
 	} else
-		return EC_ERROR_PARAM1;
+		return EC_ERROR_INVAL;
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(kblog, command_keyboard_log,
-			"[on | off]",
-			"Print or toggle keyboard event log",
-			NULL);
+DECLARE_CONSOLE_COMMAND(kblog, command_keyboard_log);
 
 
 /* Preserves the states of keyboard controller to keep the initialized states

@@ -241,12 +241,18 @@ static int command_thermal_config(int argc, char **argv)
 	char *e;
 	int sensor_type, threshold_id, value;
 
-	if (argc != 2 && argc != 4)
-		return EC_ERROR_PARAM_COUNT;
+	if (argc != 2 && argc != 4) {
+		ccputs("Usage: thermalconf <sensor_type> "
+		       "[<threshold_id> <value>]\n");
+		return EC_ERROR_UNKNOWN;
+	}
 
 	sensor_type = strtoi(argv[1], &e, 0);
-	if (*e || sensor_type < 0 || sensor_type >= TEMP_SENSOR_TYPE_COUNT)
-		return EC_ERROR_PARAM1;
+	if ((e && *e) || sensor_type < 0 ||
+	    sensor_type >= TEMP_SENSOR_TYPE_COUNT) {
+		ccputs("Bad sensor type ID.\n");
+		return EC_ERROR_UNKNOWN;
+	}
 
 	if (argc == 2) {
 		print_thermal_config(sensor_type);
@@ -254,12 +260,16 @@ static int command_thermal_config(int argc, char **argv)
 	}
 
 	threshold_id = strtoi(argv[2], &e, 0);
-	if (*e || threshold_id < 0 || threshold_id >= THRESHOLD_COUNT)
-		return EC_ERROR_PARAM2;
+	if ((e && *e) || threshold_id < 0 || threshold_id >= THRESHOLD_COUNT) {
+		ccputs("Bad threshold ID.\n");
+		return EC_ERROR_UNKNOWN;
+	}
 
 	value = strtoi(argv[3], &e, 0);
-	if (*e || value < 0)
-		return EC_ERROR_PARAM3;
+	if ((e && *e) || value < 0) {
+		ccputs("Bad threshold value.\n");
+		return EC_ERROR_UNKNOWN;
+	}
 
 	thermal_config[sensor_type].thresholds[threshold_id] = value;
 	ccprintf("Setting threshold %d of sensor type %d to %d\n",
@@ -267,10 +277,7 @@ static int command_thermal_config(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(thermalconf, command_thermal_config,
-			"sensortype [threshold_id temp]",
-			"Get/set thermal threshold temp",
-			NULL);
+DECLARE_CONSOLE_COMMAND(thermalconf, command_thermal_config);
 
 
 static int command_fan_config(int argc, char **argv)
@@ -278,13 +285,18 @@ static int command_fan_config(int argc, char **argv)
 	char *e;
 	int sensor_type, stepping_id, value;
 
-	if (argc != 2 && argc != 4)
-		return EC_ERROR_PARAM_COUNT;
+	if (argc != 2 && argc != 4) {
+		ccputs("Usage: thermalfan <sensor_type> "
+		       "[<stepping_id> <value>]\n");
+		return EC_ERROR_UNKNOWN;
+	}
 
 	sensor_type = strtoi(argv[1], &e, 0);
 	if ((e && *e) || sensor_type < 0 ||
-	    sensor_type >= TEMP_SENSOR_TYPE_COUNT)
-		return EC_ERROR_PARAM1;
+	    sensor_type >= TEMP_SENSOR_TYPE_COUNT) {
+		ccputs("Bad sensor type ID.\n");
+		return EC_ERROR_UNKNOWN;
+	}
 
 	if (argc == 2) {
 		print_fan_stepping(sensor_type);
@@ -292,12 +304,16 @@ static int command_fan_config(int argc, char **argv)
 	}
 
 	stepping_id = strtoi(argv[2], &e, 0);
-	if ((e && *e) || stepping_id < 0 || stepping_id >= THERMAL_FAN_STEPS)
-		return EC_ERROR_PARAM2;
+	if ((e && *e) || stepping_id < 0 || stepping_id >= THERMAL_FAN_STEPS) {
+		ccputs("Bad stepping ID.\n");
+		return EC_ERROR_UNKNOWN;
+	}
 
 	value = strtoi(argv[3], &e, 0);
-	if (*e || value < 0)
-		return EC_ERROR_PARAM3;
+	if ((e && *e) || value < 0) {
+		ccputs("Bad threshold value.\n");
+		return EC_ERROR_UNKNOWN;
+	}
 
 	thermal_config[sensor_type].thresholds[THRESHOLD_COUNT + stepping_id] =
 		value;
@@ -306,17 +322,11 @@ static int command_fan_config(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(thermalfan, command_fan_config,
-			"sensortype [threshold_id rpm]",
-			"Get/set thermal threshold fan rpm",
-			NULL);
+DECLARE_CONSOLE_COMMAND(thermalfan, command_fan_config);
 
 
 static int command_thermal_auto_fan_ctrl(int argc, char **argv)
 {
 	return thermal_toggle_auto_fan_ctrl(1);
 }
-DECLARE_CONSOLE_COMMAND(autofan, command_thermal_auto_fan_ctrl,
-			NULL,
-			"Enable thermal fan control",
-			NULL);
+DECLARE_CONSOLE_COMMAND(autofan, command_thermal_auto_fan_ctrl);
