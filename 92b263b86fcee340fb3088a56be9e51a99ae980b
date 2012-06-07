@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAK3//zuc\u003d",
+        "filename": "common/x86_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-06-07T18:26:23Z",
+      "side": 1,
+      "message": "Maybe should update the function docs in the header file with info that it can be called before tasks are set up.",
+      "revId": "92b263b86fcee340fb3088a56be9e51a99ae980b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
