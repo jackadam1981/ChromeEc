@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAK3//zXo\u003d",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-06-07T23:12:39Z",
+      "side": 1,
+      "message": "this is not used in this code",
+      "revId": "f56a460ccf58522566f790dab6a31757b3d317ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//zVU\u003d",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-06-07T23:12:39Z",
+      "side": 1,
+      "message": "this is at least half wrong.\n\nthis statement will generate something such as :\nldr rX, [pc, #NNN]\nmov r0, rX\nin addition of being suboptimal, I\u0027m not sure the rule to choose rX is even defined for a \"naked\" function.",
+      "revId": "f56a460ccf58522566f790dab6a31757b3d317ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
