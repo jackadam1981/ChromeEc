@@ -16,6 +16,24 @@
       "revId": "6443e6c3ace6d5ce379b36957cb909d3cfb3ccd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//0IU\u003d",
+        "filename": "chip/lm4/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-06-07T05:08:56Z",
+      "side": 1,
+      "message": "Should be fine without it, since we just checked that col \u003c 8 above and this is a static function, not a public API",
+      "parentUuid": "AAAAK3//0Ks\u003d",
+      "revId": "6443e6c3ace6d5ce379b36957cb909d3cfb3ccd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
