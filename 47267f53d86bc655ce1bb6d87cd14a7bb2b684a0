@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAK3//0OM\u003d",
+        "filename": "board/link/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-06-07T03:52:05Z",
+      "side": 1,
+      "message": "should be GPIO_OUT_HIGH by default ?\n(to be off in G3 at board startup)",
+      "revId": "47267f53d86bc655ce1bb6d87cd14a7bb2b684a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
