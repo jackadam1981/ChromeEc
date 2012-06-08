@@ -251,7 +251,7 @@ DECLARE_CONSOLE_COMMAND(pll, command_pll,
 int clock_init(void)
 {
 
-#ifdef BOARD_bds
+#if (defined(BOARD_bds) || defined(BOARD_qemulm4))
 	/* Perform an auto calibration of the internal oscillator using the
 	 * 32.768KHz hibernate clock, unless we've already done so.  This is
 	 * only necessary on A2 silicon as on BDS; A3 silicon is all
