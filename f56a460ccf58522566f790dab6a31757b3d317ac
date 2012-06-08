@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAK3//yyE\u003d",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-06-08T16:51:24Z",
+      "side": 1,
+      "message": "Done - moved to next CL",
+      "parentUuid": "AAAAK3//zXo\u003d",
+      "revId": "f56a460ccf58522566f790dab6a31757b3d317ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAK3//zVU\u003d",
         "filename": "core/cortex-m/panic.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2012-06-07T23:12:39Z",
       "side": 1,
       "message": "this is at least half wrong.\n\nthis statement will generate something such as :\nldr rX, [pc, #NNN]\nmov r0, rX\nin addition of being suboptimal, I\u0027m not sure the rule to choose rX is even defined for a \"naked\" function.",
+      "revId": "f56a460ccf58522566f790dab6a31757b3d317ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//yyA\u003d",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-06-08T16:51:24Z",
+      "side": 1,
+      "message": "I did check this...I am by no means a fan of or expert ingcc inline assembler, but it seems to do what I want.\n\nDo we want to avoid the ldr [pc]?\n\n08000518 \u003cexception_panic\u003e:\n 8000518:\t4b06      \tldr\tr3, [pc, #24]\t; (8000534 \u003cexception_panic+0x1c\u003e)\n 800051a:\t4618      \tmov\tr0, r3\n 800051c:\tf3ef 8109 \tmrs\tr1, PSP\n 8000520:\tf3ef 8205 \tmrs\tr2, IPSR\n 8000524:\t4673      \tmov\tr3, lr\n 8000526:\te880 0ffe \tstmia.w\tr0, {r1, r2, r3, r4, r5, r6, r7, r8, r9, sl, fp}\n 800052a:\t4601      \tmov\tr1, r0\n 800052c:\tf04f 0000 \tmov.w\tr0, #0\n 8000530:\te706      \tb.n\t8000340 \u003creport_panic\u003e\n 8000532:\tbf00      \tnop\n 8000534:\t20001048 \tandcs\tr1, r0, r8, asr #32",
+      "parentUuid": "AAAAK3//zVU\u003d",
       "revId": "f56a460ccf58522566f790dab6a31757b3d317ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
