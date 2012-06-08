@@ -69,6 +69,24 @@
       "revId": "f56a460ccf58522566f790dab6a31757b3d317ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//yv0\u003d",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-06-08T17:30:29Z",
+      "side": 1,
+      "message": "What you actually want is :\nldr r0, [pc, #24]\ninstead of :\nldr\tr3, [pc, #24]\nmov\tr0, r3\n\nelse how do you ensure that GCC will pick the \"right\" register for  \"r3\" ?",
+      "parentUuid": "AAAAK3//yyA\u003d",
+      "revId": "f56a460ccf58522566f790dab6a31757b3d317ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
