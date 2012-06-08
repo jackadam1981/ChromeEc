@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAK3//y0o\u003d",
+        "filename": "chip/lm4/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-06-08T15:58:40Z",
+      "side": 1,
+      "message": "you don\u0027t really want to perform the calibration on the emulated board (even though I have now stubbed it)\nIs the other path (ie setting MOSCCTL) currently failing on QEMU ?",
+      "revId": "22c3032e507827388380f6020a5d4aaedd0170d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
