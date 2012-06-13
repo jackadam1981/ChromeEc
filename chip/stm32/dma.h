@@ -57,6 +57,7 @@ enum {
 };
 
 #define DMA_MINC_MASK		(1 << 7)
+#define DMA_CIRC_MASK		(1 << 5)
 #define DMA_DIR_FROM_MEM_MASK	(1 << 4)
 #define DMA_EN			(1 << 0)
 
