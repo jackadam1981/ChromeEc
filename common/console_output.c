@@ -15,31 +15,6 @@
 #endif
 static uint32_t channel_mask = CC_DEFAULT;
 
-/* List of channel names; must match enum console_channel. */
-/* TODO: move this to board.c */
-static const char *channel_names[CC_CHANNEL_COUNT] = {
-	"command",
-	"charger",
-	"chipset",
-	"dma",
-	"gpio",
-	"hostcmd",
-	"i2c",
-	"i8042",
-	"keyboard",
-	"keyscan",
-	"lightbar",
-	"lpc",
-	"port80",
-	"powerbtn",
-	"pwm",
-	"spi",
-	"system",
-	"task",
-	"usbcharge",
-	"vboot",
-};
-
 /*****************************************************************************/
 /* Channel-based console output */
 
@@ -77,6 +52,33 @@ void cflush(void)
 /*****************************************************************************/
 /* Console commands */
 
+#ifdef CONFIG_TASK_CONSOLE
+
+/* List of channel names; must match enum console_channel. */
+/* TODO: move this to board.c */
+static const char *channel_names[CC_CHANNEL_COUNT] = {
+	"command",
+	"charger",
+	"chipset",
+	"dma",
+	"gpio",
+	"hostcmd",
+	"i2c",
+	"i8042",
+	"keyboard",
+	"keyscan",
+	"lightbar",
+	"lpc",
+	"port80",
+	"powerbtn",
+	"pwm",
+	"spi",
+	"system",
+	"task",
+	"usbcharge",
+	"vboot",
+};
+
 /* Set active channels */
 static int command_ch(int argc, char **argv)
 {
@@ -112,3 +114,5 @@ DECLARE_CONSOLE_COMMAND(chan, command_ch,
 			"[mask]",
 			"Get or set console channel mask",
 			NULL);
+
+#endif  /* CONFIG_TASK_CONSOLE */

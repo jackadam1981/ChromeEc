@@ -47,6 +47,8 @@ static int charger_set_input_current(int input_current)
 		CURRENT_TO_REG(input_current, R_AC));
 }
 
+#ifdef CONFIG_TASK_CONSOLE
+
 static int charger_get_input_current(int *input_current)
 {
 	int rv;
@@ -70,6 +72,8 @@ static int charger_device_id(int *id)
 {
 	return sbc_read(BQ24725_DEVICE_ID, id);
 }
+
+#endif  /* CONFIG_TASK_CONSOLE */
 
 static int charger_get_option(int *option)
 {
@@ -176,6 +180,8 @@ int charger_post_init(void)
 /*****************************************************************************/
 /* Console commands */
 
+#ifdef CONFIG_TASK_CONSOLE
+
 static int print_info(void)
 {
 	int rv;
@@ -261,3 +267,5 @@ DECLARE_CONSOLE_COMMAND(charger, command_charger,
 			"[input | current | voltage] [newval]",
 			"Get or set charger param(s)",
 			NULL);
+
+#endif  /* CONFIG_TASK_CONSOLE */

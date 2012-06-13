@@ -350,9 +350,11 @@ void uart_process(void)
 
 		insert_char(c);
 
+#ifdef CONFIG_TASK_CONSOLE
 		/* Call console callback on newline, if in console mode */
 		if (console_mode && c == '\n')
 			console_has_input();
+#endif  /* CONFIG_TASK_CONSOLE */
 	}
 
 	/* Copy output from buffer until TX fifo full or output buffer empty */

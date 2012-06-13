@@ -708,6 +708,10 @@ void keyboard_typematic_task(void)
 	}
 }
 
+/*****************************************************************************/
+/* Console commands */
+
+#ifdef CONFIG_TASK_CONSOLE
 
 static int command_typematic(int argc, char **argv)
 {
@@ -866,6 +870,10 @@ DECLARE_CONSOLE_COMMAND(kblog, command_keyboard_log,
 			"Print or toggle keyboard event log",
 			NULL);
 
+#endif  /* CONFIG_TASK_CONSOLE */
+
+/*****************************************************************************/
+/* Host commands */
 
 static int mkbp_command_simulate_key(uint8_t *data, int *resp_size)
 {
@@ -883,6 +891,8 @@ static int mkbp_command_simulate_key(uint8_t *data, int *resp_size)
 }
 DECLARE_HOST_COMMAND(EC_CMD_MKBP_SIMULATE_KEY, mkbp_command_simulate_key);
 
+/*****************************************************************************/
+/* Hooks */
 
 /* Preserves the states of keyboard controller to keep the initialized states
  * between reboot_ec commands. Saving info include:

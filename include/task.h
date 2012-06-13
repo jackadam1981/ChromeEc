@@ -75,9 +75,9 @@ uint32_t *task_get_event_bitmap(task_id_t tsk);
  * Returns the bitmap of received events (and clears it atomically). */
 uint32_t task_wait_event(int timeout_us);
 
-/* Prints the list of tasks using the command output channel.  This may be
+/* Prints the list of tasks using the specified output channel.  This may be
  * called from interrupt level. */
-void task_print_list(void);
+void task_print_list(int channel);
 
 #ifdef CONFIG_TASK_PROFILING
 /* Start tracking an interrupt.

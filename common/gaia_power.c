@@ -404,6 +404,8 @@ void gaia_power_task(void)
 /*****************************************************************************/
 /* Console debug command */
 
+#ifdef CONFIG_TASK_CONSOLE
+
 static int command_force_power(int argc, char **argv)
 {
 	/* simulate power button pressed */
@@ -423,3 +425,5 @@ DECLARE_CONSOLE_COMMAND(forcepower, command_force_power,
 			NULL,
 			"Force power on",
 			NULL);
+
+#endif  /* CONFIG_TASK_CONSOLE */

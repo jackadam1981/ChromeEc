@@ -744,8 +744,9 @@ DECLARE_HOST_COMMAND(EC_CMD_LIGHTBAR_CMD, lpc_cmd_lightbar);
 
 
 /****************************************************************************/
-/* EC console commands */
-/****************************************************************************/
+/* Console commands */
+
+#ifdef CONFIG_TASK_CONSOLE
 
 #ifdef CONSOLE_COMMAND_LIGHTBAR_HELP
 static int help(const char *cmd)
@@ -871,3 +872,5 @@ DECLARE_CONSOLE_COMMAND(lightbar, command_lightbar,
 			"[on | off | init | brightness | seq] | [ctrl reg val]",
 			"Get/set lightbar state",
 			NULL);
+
+#endif  /* CONFIG_TASK_CONSOLE */

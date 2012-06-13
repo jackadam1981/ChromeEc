@@ -514,8 +514,51 @@ void task_print_list(void)
 }
 
 
-#ifdef CONFIG_DEBUG
+int task_pre_init(void)
+{
+	int i;
 
+	/* fill the task memory with initial values */
+	for (i = 0; i < TASK_ID_COUNT; i++) {
+		tasks[i].sp = (uint32_t)(tasks + i + 1) - 64;
+		tasks[i].guard = GUARD_VALUE;
+		/* initial context on stack */
+		tasks[i].context[TASK_SIZE/4 - 8/*r0*/] = tasks_init[i].r0;
+		tasks[i].context[TASK_SIZE/4 - 3/*lr*/] =
+			(uint32_t)task_exit_trap;
+		tasks[i].context[TASK_SIZE/4 - 2/*pc*/] = tasks_init[i].pc;
+		tasks[i].context[TASK_SIZE/4 - 1/*psr*/] = 0x01000000;
+	}
+
+	/* Fill in guard value in scratchpad to prevent stack overflow
+	 * detection failure on the first context switch. */
+	((task_ *)scratchpad)->guard = GUARD_VALUE;
+
+	/* sanity checks about static task invariants */
+	BUILD_ASSERT(TASK_ID_COUNT <= sizeof(unsigned) * 8);
+	BUILD_ASSERT(TASK_ID_COUNT < (1 << (sizeof(task_id_t) * 8)));
+
+	/* Initialize IRQs */
+	__nvic_init_irqs();
+
+	return EC_SUCCESS;
+}
+
+
+int task_start(void)
+{
+#ifdef CONFIG_TASK_PROFILING
+	task_start_time = exc_end_time = get_time().val;
+#endif
+	start_called = 1;
+
+	return __task_start(&need_resched_or_profiling);
+}
+
+/*****************************************************************************/
+/* Console commands */
+
+#ifdef CONFIG_TASK_CONSOLE
 
 int command_task_info(int argc, char **argv)
 {
@@ -570,46 +613,4 @@ DECLARE_CONSOLE_COMMAND(taskready, command_task_ready,
 			NULL);
 
 
-#endif  /* CONFIG_DEBUG */
-
-
-int task_pre_init(void)
-{
-	int i;
-
-	/* fill the task memory with initial values */
-	for (i = 0; i < TASK_ID_COUNT; i++) {
-		tasks[i].sp = (uint32_t)(tasks + i + 1) - 64;
-		tasks[i].guard = GUARD_VALUE;
-		/* initial context on stack */
-		tasks[i].context[TASK_SIZE/4 - 8/*r0*/] = tasks_init[i].r0;
-		tasks[i].context[TASK_SIZE/4 - 3/*lr*/] =
-			(uint32_t)task_exit_trap;
-		tasks[i].context[TASK_SIZE/4 - 2/*pc*/] = tasks_init[i].pc;
-		tasks[i].context[TASK_SIZE/4 - 1/*psr*/] = 0x01000000;
-	}
-
-	/* Fill in guard value in scratchpad to prevent stack overflow
-	 * detection failure on the first context switch. */
-	((task_ *)scratchpad)->guard = GUARD_VALUE;
-
-	/* sanity checks about static task invariants */
-	BUILD_ASSERT(TASK_ID_COUNT <= sizeof(unsigned) * 8);
-	BUILD_ASSERT(TASK_ID_COUNT < (1 << (sizeof(task_id_t) * 8)));
-
-	/* Initialize IRQs */
-	__nvic_init_irqs();
-
-	return EC_SUCCESS;
-}
-
-
-int task_start(void)
-{
-#ifdef CONFIG_TASK_PROFILING
-	task_start_time = exc_end_time = get_time().val;
-#endif
-	start_called = 1;
-
-	return __task_start(&need_resched_or_profiling);
-}
+#endif  /* CONFIG_TASK_CONSOLE */

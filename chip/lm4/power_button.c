@@ -591,6 +591,8 @@ void power_button_interrupt(enum gpio_signal signal)
 /*****************************************************************************/
 /* Console commands */
 
+#ifdef CONFIG_TASK_CONSOLE
+
 static int command_powerbtn(int argc, char **argv)
 {
 	int ms = PWRBTN_INITIAL_US / 1000;  /* Press duration in ms */
@@ -667,6 +669,8 @@ DECLARE_CONSOLE_COMMAND(mmapinfo, command_mmapinfo,
 			NULL,
 			"Print memmap switch state",
 			NULL);
+
+#endif  /* CONFIG_TASK_CONSOLE */
 
 /*****************************************************************************/
 /* Host commands */

@@ -331,6 +331,8 @@ DECLARE_IRQ(LM4_IRQ_I2C5, i2c5_interrupt, 2);
 /*****************************************************************************/
 /* Console commands */
 
+#ifdef CONFIG_TASK_CONSOLE
+
 static void scan_bus(int port, const char *desc)
 {
 	int rv;
@@ -433,6 +435,7 @@ DECLARE_CONSOLE_COMMAND(i2cscan, command_scan,
 			"Scan I2C ports for devices",
 			NULL);
 
+#endif  /* CONFIG_TASK_CONSOLE */
 
 /*****************************************************************************/
 /* Initialization */

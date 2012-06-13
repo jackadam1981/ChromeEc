@@ -89,7 +89,10 @@ void console_has_input(void);
  * Register a console command handler. Note that `name' must never be a
  * beginning of another existing command name.
  */
-#ifdef CONFIG_CONSOLE_CMDHELP
+#ifndef CONFIG_TASK_CONSOLE
+/* No interactive console */
+#define DECLARE_CONSOLE_COMMAND(name, routine, argdesc, shorthelp, longhelp)
+#elif defined(CONFIG_CONSOLE_CMDHELP)
 #define DECLARE_CONSOLE_COMMAND(name, routine, argdesc, shorthelp, longhelp) \
 	static const char __con_cmd_label_##name[] = #name;		\
 	const struct console_command __con_cmd_##name			\

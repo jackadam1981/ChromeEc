@@ -87,9 +87,10 @@ int clock_get_freq(void)
 	return freq;
 }
 
-
 /*****************************************************************************/
 /* Console commands */
+
+#ifdef CONFIG_TASK_CONSOLE
 
 /* Function to measure baseline for power consumption.
  *
@@ -244,6 +245,8 @@ DECLARE_CONSOLE_COMMAND(pll, command_pll,
 			"[ on | off | <div> ]",
 			"Get/set PLL state",
 			NULL);
+
+#endif  /* CONFIG_TASK_CONSOLE */
 
 /*****************************************************************************/
 /* Initialization */

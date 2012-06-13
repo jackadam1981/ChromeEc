@@ -586,6 +586,8 @@ void x86_power_task(void)
 /*****************************************************************************/
 /* Console commands */
 
+#ifdef CONFIG_TASK_CONSOLE
+
 static int command_x86reset(int argc, char **argv)
 {
 	int is_cold = 1;
@@ -615,6 +617,8 @@ DECLARE_CONSOLE_COMMAND(powerinfo, command_powerinfo,
 			"",
 			"Show current power state",
 			NULL);
+
+#endif  /* CONFIG_TASK_CONSOLE */
 
 /*****************************************************************************/
 /* Host commands */

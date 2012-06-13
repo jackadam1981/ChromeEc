@@ -7,8 +7,8 @@
 #
 
 common-y=main.o util.o console_output.o uart_buffering.o
-common-y+=memory_commands.o shared_mem.o system_common.o hooks.o
-common-y+=gpio_commands.o version.o printf.o queue.o
+common-y+=shared_mem.o system_common.o hooks.o
+common-y+=version.o printf.o queue.o
 common-$(CONFIG_BATTERY_ATL706486)+=battery_atl706486.o
 common-$(CONFIG_CHARGER_BQ24725)+=charger_bq24725.o
 common-$(CONFIG_PMU_TPS65090)+=pmu_tps65090.o
@@ -18,7 +18,7 @@ common-$(CONFIG_LPC)+=port80.o host_event_commands.o
 common-$(CONFIG_POWER_LED)+=power_led.o
 common-$(CONFIG_PSTORE)+=pstore_commands.o
 common-$(CONFIG_SMART_BATTERY)+=smart_battery.o
-common-$(CONFIG_TASK_CONSOLE)+=console.o
+common-$(CONFIG_TASK_CONSOLE)+=console.o memory_commands.o gpio_commands.o
 common-$(CONFIG_TASK_GAIAPOWER)+=gaia_power.o
 common-$(CONFIG_TASK_HOSTCMD)+=host_command.o
 common-$(CONFIG_TASK_I8042CMD)+=i8042.o keyboard.o

@@ -177,6 +177,8 @@ DECLARE_IRQ(LM4_IRQ_ADC0_SS3, ss3_interrupt, 2);
 /*****************************************************************************/
 /* Console commands */
 
+#ifdef CONFIG_TASK_CONSOLE
+
 #ifdef CONSOLE_COMMAND_ECTEMP
 static int command_ectemp(int argc, char **argv)
 {
@@ -205,6 +207,8 @@ DECLARE_CONSOLE_COMMAND(adc, command_adc,
 			NULL,
 			"Print ADC channels",
 			NULL);
+
+#endif  /* CONFIG_TASK_CONSOLE */
 
 /*****************************************************************************/
 /* Initialization */

@@ -491,6 +491,8 @@ int system_common_pre_init(void)
 /*****************************************************************************/
 /* Console commands */
 
+#ifdef CONFIG_TASK_CONSOLE
+
 static int command_sysinfo(int argc, char **argv)
 {
 	ccprintf("Last reset: %d (%s)\n",
@@ -627,6 +629,8 @@ DECLARE_CONSOLE_COMMAND(reboot, command_reboot,
 			"[hard]",
 			"Reboot the EC",
 			NULL);
+
+#endif  /* CONFIG_TASK_CONSOLE */
 
 /*****************************************************************************/
 /* Host commands */

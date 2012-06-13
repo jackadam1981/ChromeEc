@@ -34,6 +34,8 @@ void port_80_write(int data)
 /*****************************************************************************/
 /* Console commands */
 
+#ifdef CONFIG_TASK_CONSOLE
+
 static int command_port80(int argc, char **argv)
 {
 	int h = head;
@@ -59,3 +61,5 @@ DECLARE_CONSOLE_COMMAND(port80, command_port80,
 			"[scroll]",
 			"Print port80 writes or toggle port80 scrolling",
 			NULL);
+
+#endif  /* CONFIG_TASK_CONSOLE */

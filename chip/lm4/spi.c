@@ -134,6 +134,8 @@ DECLARE_HOOK(HOOK_INIT, spi_init, HOOK_PRIO_DEFAULT);
 /*****************************************************************************/
 /* Console commands */
 
+#ifdef CONFIG_TASK_CONSOLE
+
 static int printrx(const char *desc, const uint8_t *txdata, int txlen,
 		   int rxlen)
 {
@@ -177,3 +179,5 @@ DECLARE_CONSOLE_COMMAND(spirom, command_spirom,
 			NULL,
 			"Test reading SPI EEPROM",
 			NULL);
+
+#endif  /* CONFIG_TASK_CONSOLE */

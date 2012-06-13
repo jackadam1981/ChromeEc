@@ -202,15 +202,6 @@ int uart_init(void)
 /*****************************************************************************/
 /* COMx functions */
 
-/* Write a character to COMx, waiting for space in the output buffer if
- * necessary. */
-static void uart_comx_putc_wait(int c)
-{
-		while (!uart_comx_putc_ok()) {}
-		uart_comx_putc(c);
-}
-
-
 void uart_comx_enable(void)
 {
 	task_enable_irq(LM4_IRQ_UART1);
@@ -239,6 +230,17 @@ void uart_comx_putc(int c)
 /*****************************************************************************/
 /* Console commands */
 
+#ifdef CONFIG_TASK_CONSOLE
+
+/* Write a character to COMx, waiting for space in the output buffer if
+ * necessary. */
+static void uart_comx_putc_wait(int c)
+{
+		while (!uart_comx_putc_ok()) {}
+		uart_comx_putc(c);
+}
+
+
 static int command_comxtest(int argc, char **argv)
 {
 	/* Put characters to COMX port */
@@ -258,3 +260,5 @@ DECLARE_CONSOLE_COMMAND(comxtest, command_comxtest,
 			"[string]",
 			"Write test data to COMx uart",
 			NULL);
+
+#endif  /* CONFIG_TASK_CONSOLE */

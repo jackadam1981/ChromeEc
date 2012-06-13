@@ -13,6 +13,8 @@
 #include "system.h"
 #include "util.h"
 
+#ifdef CONFIG_TASK_CONSOLE
+
 /* Parse offset and size from command line argv[shift] and argv[shift+1]
  *
  * Default values: If argc<=shift, leaves offset unchanged, returning error if
@@ -369,3 +371,5 @@ static int flash_command_wp_get_range(uint8_t *data, int *resp_size)
 }
 DECLARE_HOST_COMMAND(EC_CMD_FLASH_WP_GET_RANGE,
 		     flash_command_wp_get_range);
+
+#endif  /* CONFIG_TASK_CONSOLE */

@@ -15,6 +15,8 @@
 #include "task.h"
 #include "timer.h"
 
+#define TIMER_SYSJUMP_TAG 0x4d54  /* "TM" */
+
 /* high word of the 64-bit timestamp counter  */
 static volatile uint32_t clksrc_high;
 
@@ -194,6 +196,43 @@ void timer_print_info(void)
 }
 
 
+/* Preserve time across a sysjump */
+static int timer_sysjump(void)
+{
+	timestamp_t ts = get_time();
+	system_add_jump_tag(TIMER_SYSJUMP_TAG, 1, sizeof(ts), &ts);
+
+	return EC_SUCCESS;
+}
+DECLARE_HOOK(HOOK_SYSJUMP, timer_sysjump, HOOK_PRIO_DEFAULT);
+
+
+int timer_init(void)
+{
+	const timestamp_t *ts;
+	int size, version;
+
+	BUILD_ASSERT(TASK_ID_COUNT < sizeof(timer_running) * 8);
+
+	/* Restore time from before sysjump */
+	ts = (const timestamp_t *)system_get_jump_tag(TIMER_SYSJUMP_TAG,
+						      &version, &size);
+	if (ts && version == 1 && size == sizeof(timestamp_t)) {
+		clksrc_high = ts->le.hi;
+		timer_irq = __hw_clock_source_init(ts->le.lo);
+	} else {
+		clksrc_high = 0;
+		timer_irq = __hw_clock_source_init(0);
+	}
+
+	return EC_SUCCESS;
+}
+
+/*****************************************************************************/
+/* Console commands */
+
+#ifdef CONFIG_TASK_CONSOLE
+
 static int command_wait(int argc, char **argv)
 {
 	char *e;
@@ -239,38 +278,4 @@ DECLARE_CONSOLE_COMMAND(timerinfo, command_timer_info,
 			"Print timer info",
 			NULL);
 
-
-#define TIMER_SYSJUMP_TAG 0x4d54  /* "TM" */
-
-
-/* Preserve time across a sysjump */
-static int timer_sysjump(void)
-{
-	timestamp_t ts = get_time();
-	system_add_jump_tag(TIMER_SYSJUMP_TAG, 1, sizeof(ts), &ts);
-
-	return EC_SUCCESS;
-}
-DECLARE_HOOK(HOOK_SYSJUMP, timer_sysjump, HOOK_PRIO_DEFAULT);
-
-
-int timer_init(void)
-{
-	const timestamp_t *ts;
-	int size, version;
-
-	BUILD_ASSERT(TASK_ID_COUNT < sizeof(timer_running) * 8);
-
-	/* Restore time from before sysjump */
-	ts = (const timestamp_t *)system_get_jump_tag(TIMER_SYSJUMP_TAG,
-						      &version, &size);
-	if (ts && version == 1 && size == sizeof(timestamp_t)) {
-		clksrc_high = ts->le.hi;
-		timer_irq = __hw_clock_source_init(ts->le.lo);
-	} else {
-		clksrc_high = 0;
-		timer_irq = __hw_clock_source_init(0);
-	}
-
-	return EC_SUCCESS;
-}
+#endif  /* CONFIG_TASK_CONSOLE */

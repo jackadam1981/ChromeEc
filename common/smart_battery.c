@@ -108,6 +108,8 @@ int battery_manufacturer_date(int *year, int *month, int *day)
 /*****************************************************************************/
 /* Console commands */
 
+#ifdef CONFIG_TASK_CONSOLE
+
 static int command_battery(int argc, char **argv)
 {
 	int rv;
@@ -254,3 +256,4 @@ DECLARE_CONSOLE_COMMAND(sb, command_sb,
 			"Read/write smart battery data",
 			NULL);
 
+#endif  /* CONFIG_TASK_CONSOLE */

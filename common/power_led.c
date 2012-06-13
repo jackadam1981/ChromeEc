@@ -74,6 +74,8 @@ int powerled_set(enum powerled_color color)
 /*****************************************************************************/
 /* Console commands */
 
+#ifdef CONFIG_TASK_CONSOLE
+
 static int command_powerled(int argc, char **argv)
 {
 	int i;
@@ -89,3 +91,5 @@ DECLARE_CONSOLE_COMMAND(powerled, command_powerled,
 			"<off | red | yellow | green>",
 			"Set power LED color",
 			NULL);
+
+#endif  /* CONFIG_TASK_CONSOLE */

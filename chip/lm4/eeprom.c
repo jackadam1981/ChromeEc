@@ -124,9 +124,10 @@ int eeprom_hide(int block)
 	return EC_SUCCESS;
 }
 
-
 /*****************************************************************************/
 /* Console commands */
+
+#ifdef CONFIG_TASK_CONSOLE
 
 static int command_eeprom_info(int argc, char **argv)
 {
@@ -224,10 +225,10 @@ DECLARE_CONSOLE_COMMAND(eehide, command_eeprom_hide,
 			NULL);
 #endif
 
+#endif  /* CONFIG_TASK_CONSOLE */
 
 /*****************************************************************************/
 /* Initialization */
-
 
 int eeprom_init(void)
 {

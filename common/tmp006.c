@@ -204,6 +204,37 @@ static int tmp006_poll_sensor(int sensor_id)
 }
 
 
+int tmp006_get_val(int idx)
+{
+	/* Check the low bit to determine which temperature to read. */
+	if ((idx & 0x1) == 0)
+		return tmp006_read_die_temp(idx >> 1);
+	else
+		return tmp006_read_object_temp(idx >> 1);
+}
+
+
+int tmp006_poll(void)
+{
+	int i;
+	int rv;
+	int rv1 = EC_SUCCESS;
+
+	for (i = 0; i < TMP006_COUNT; ++i) {
+		rv = tmp006_poll_sensor(i);
+		if (rv != EC_SUCCESS)
+			rv1 = rv;
+	}
+
+	return rv1;
+}
+
+
+/*****************************************************************************/
+/* Console commands */
+
+#ifdef CONFIG_TASK_CONSOLE
+
 /* Print temperature info for a sensor; used by console command. */
 static int tmp006_print(int idx)
 {
@@ -248,35 +279,6 @@ static int tmp006_print(int idx)
 }
 
 
-int tmp006_get_val(int idx)
-{
-	/* Check the low bit to determine which temperature to read. */
-	if ((idx & 0x1) == 0)
-		return tmp006_read_die_temp(idx >> 1);
-	else
-		return tmp006_read_object_temp(idx >> 1);
-}
-
-
-int tmp006_poll(void)
-{
-	int i;
-	int rv;
-	int rv1 = EC_SUCCESS;
-
-	for (i = 0; i < TMP006_COUNT; ++i) {
-		rv = tmp006_poll_sensor(i);
-		if (rv != EC_SUCCESS)
-			rv1 = rv;
-	}
-
-	return rv1;
-}
-
-
-/*****************************************************************************/
-/* Console commands */
-
 static int command_sensor_info(int argc, char **argv)
 {
 	int i;
@@ -296,3 +298,5 @@ DECLARE_CONSOLE_COMMAND(tmp006, command_sensor_info,
 			NULL,
 			"Print TMP006 sensors",
 			NULL);
+
+#endif  /* CONFIG_TASK_CONSOLE */

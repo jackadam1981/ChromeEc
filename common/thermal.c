@@ -210,6 +210,8 @@ void thermal_task(void)
 /*****************************************************************************/
 /* Console commands */
 
+#ifdef CONFIG_TASK_CONSOLE
+
 static void print_thermal_config(enum temp_sensor_type type)
 {
 	const struct thermal_config_t *config = thermal_config + type;
@@ -321,3 +323,5 @@ DECLARE_CONSOLE_COMMAND(autofan, command_thermal_auto_fan_ctrl,
 			NULL,
 			"Enable thermal fan control",
 			NULL);
+
+#endif  /* CONFIG_TASK_CONSOLE */

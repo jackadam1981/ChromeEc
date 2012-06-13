@@ -116,6 +116,8 @@ int usb_charge_set_mode(int port_id, enum usb_charge_mode mode)
 /*****************************************************************************/
 /* Console commands */
 
+#ifdef CONFIG_TASK_CONSOLE
+
 static int command_set_mode(int argc, char **argv)
 {
 	int port_id = -1;
@@ -144,6 +146,7 @@ DECLARE_CONSOLE_COMMAND(usbchargemode, command_set_mode,
 			"       3=Downstream. Max 500mA.\n"
 			"       4=Downstream. Max 1.5A.\n");
 
+#endif  /* CONFIG_TASK_CONSOLE */
 
 /*****************************************************************************/
 /* Hooks */

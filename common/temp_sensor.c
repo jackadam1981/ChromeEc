@@ -101,6 +101,8 @@ void temp_sensor_task(void)
 /*****************************************************************************/
 /* Console commands */
 
+#ifdef CONFIG_TASK_CONSOLE
+
 static int command_temps(int argc, char **argv)
 {
 	int i;
@@ -123,3 +125,5 @@ DECLARE_CONSOLE_COMMAND(temps, command_temps,
 			NULL,
 			"Print temp sensors",
 			NULL);
+
+#endif  /* CONFIG_TASK_CONSOLE */

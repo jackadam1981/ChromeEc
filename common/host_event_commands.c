@@ -13,6 +13,8 @@
 /*****************************************************************************/
 /* Console commands */
 
+#ifdef CONFIG_TASK_CONSOLE
+
 static int command_host_event(int argc, char **argv)
 {
 	/* Handle sub-commands */
@@ -50,6 +52,8 @@ DECLARE_CONSOLE_COMMAND(hostevent, command_host_event,
 			"[set | clear | smi | sci | wake] [mask]",
 			"Print / set host event state",
 			NULL);
+
+#endif  /* CONFIG_TASK_CONSOLE */
 
 /*****************************************************************************/
 /* Host commands */

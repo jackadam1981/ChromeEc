@@ -80,24 +80,6 @@ int eoption_set_bool(enum eoption_bool opt, int value)
 	return write32(d->offset, v);
 }
 
-
-/* Find an option by name.  Returns the option index, or -1 if no match. */
-static int find_option_by_name(const char *name,
-			       const struct eoption_bool_data *d)
-{
-	int i;
-
-	if (!name || !*name)
-		return -1;
-
-	for (i = 0; d->name; i++, d++) {
-		if (!strcasecmp(name, d->name))
-			return i;
-	}
-
-	return -1;
-}
-
 /*****************************************************************************/
 /* Initialization */
 
@@ -131,6 +113,26 @@ int eoption_init(void)
 
 /*****************************************************************************/
 /* Console commands */
+
+#ifdef CONFIG_TASK_CONSOLE
+
+/* Find an option by name.  Returns the option index, or -1 if no match. */
+static int find_option_by_name(const char *name,
+			       const struct eoption_bool_data *d)
+{
+	int i;
+
+	if (!name || !*name)
+		return -1;
+
+	for (i = 0; d->name; i++, d++) {
+		if (!strcasecmp(name, d->name))
+			return i;
+	}
+
+	return -1;
+}
+
 
 static int command_eoption_get(int argc, char **argv)
 {
@@ -185,3 +187,5 @@ DECLARE_CONSOLE_COMMAND(optset, command_eoption_set,
 			"name value",
 			"Set EC option",
 			NULL);
+
+#endif  /* CONFIG_TASK_CONSOLE */

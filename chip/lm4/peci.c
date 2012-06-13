@@ -97,6 +97,8 @@ DECLARE_HOOK(HOOK_FREQ_CHANGE, peci_freq_changed, HOOK_PRIO_DEFAULT - 1);
 /*****************************************************************************/
 /* Console commands */
 
+#ifdef CONFIG_TASK_CONSOLE
+
 static int command_peci_temp(int argc, char **argv)
 {
 	int t = peci_get_cpu_temp();
@@ -111,6 +113,8 @@ DECLARE_CONSOLE_COMMAND(pecitemp, command_peci_temp,
 			NULL,
 			"Print CPU temperature",
 			NULL);
+
+#endif  /* CONFIG_TASK_CONSOLE */
 
 /*****************************************************************************/
 /* Initialization */

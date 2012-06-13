@@ -612,6 +612,8 @@ int i2c_read_string(int port, int slave_addr, int offset, uint8_t *data,
 /*****************************************************************************/
 /* Console commands */
 
+#ifdef CONFIG_TASK_CONSOLE
+
 static int command_i2c(int argc, char **argv)
 {
 	int rw = 0;
@@ -698,3 +700,4 @@ DECLARE_CONSOLE_COMMAND(i2c, command_i2c,
 			"Read write i2c",
 			NULL);
 
+#endif  /* CONFIG_TASK_CONSOLE */

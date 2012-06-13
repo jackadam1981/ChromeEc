@@ -7,10 +7,10 @@
 
 #include "board.h"
 #include "console.h"
+#include "ec_commands.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "lpc.h"
-#include "ec_commands.h"
 #include "pwm.h"
 #include "registers.h"
 #include "task.h"
@@ -158,6 +158,8 @@ void pwm_task(void)
 /*****************************************************************************/
 /* Console commands */
 
+#ifdef CONFIG_TASK_CONSOLE
+
 static int command_fan_info(int argc, char **argv)
 {
 	ccprintf("Actual: %4d rpm\n", pwm_get_fan_rpm());
@@ -274,6 +276,8 @@ DECLARE_CONSOLE_COMMAND(kblight, command_kblight,
 			"percent",
 			"Set keyboard backlight",
 			NULL);
+
+#endif  /* CONFIG_TASK_CONSOLE */
 
 /*****************************************************************************/
 /* Initialization */
