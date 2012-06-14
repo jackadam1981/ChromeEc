@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAK3//vJI\u003d",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-06-14T05:16:09Z",
+      "side": 1,
+      "message": "as mentioned in my comment, I would write it like that :\n\nobjs_from_dir\u003d$(foreach obj,$($(2)-y), $(out)/$(1)/$(firstword $($(2)-mock-$(PROJECT)-$(obj)) $(obj)))\n\nand just remove the -y on all the lines you have modified below.",
+      "revId": "c1b23107c8ba3060d8cc09474891a83ec7323951",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
