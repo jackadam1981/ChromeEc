@@ -30,6 +30,9 @@
 #define CONFIG_VBOOT
 #define CONFIG_VBOOT_HASH
 
+/* use STOP mode when we have nothing to do */
+#define CONFIG_LOW_POWER_IDLE
+
 #ifndef __ASSEMBLER__
 
 /* By default, enable all console messages except keyboard */
