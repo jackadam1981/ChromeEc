@@ -15,7 +15,7 @@
 #define HISTORY_LEN 16
 
 static uint8_t history[HISTORY_LEN];
-static int head;  /* Next index to use / oldest previous entry */
+static int writes;  /* Number of port 80 writes so far */
 static int scroll;
 
 
@@ -27,8 +27,8 @@ void port_80_write(int data)
 	 * data and cprintf() doesn't block. */
 	CPRINTF("%c[%T Port 80: 0x%02x]", scroll ? '\n' : '\r', data);
 
-	history[head] = data;
-	head = (head + 1) & (HISTORY_LEN - 1);
+	history[writes % HISTORY_LEN] = data;
+	writes++;
 }
 
 /*****************************************************************************/
@@ -36,7 +36,7 @@ void port_80_write(int data)
 
 static int command_port80(int argc, char **argv)
 {
-	int h = head;
+	int h = writes % HISTORY_LEN;
 	int i;
 
 	/* 'port80 scroll' toggles whether port 80 output begins with a newline
@@ -47,10 +47,15 @@ static int command_port80(int argc, char **argv)
 		return EC_SUCCESS;
 	}
 
-	/* Technically, if a port 80 write comes in while we're printing this,
+	/*
+	 * Print the port 80 writes so far, clipped to the length of our
+	 * history buffer.
+	 *
+	 * Technically, if a port 80 write comes in while we're printing this,
 	 * we could print an incorrect history.  Probably not worth the
-	 * complexity to work around that. */
-	for (i = 0; i < HISTORY_LEN; i++)
+	 * complexity to work around that.
+	 */
+	for (i = (writes < 16 ? HISTORY_LEN - writes : 0); i < HISTORY_LEN; i++)
 		ccprintf(" %02x", history[(h + i) & (HISTORY_LEN - 1)]);
 	ccputs(" <--new\n");
 	return EC_SUCCESS;
