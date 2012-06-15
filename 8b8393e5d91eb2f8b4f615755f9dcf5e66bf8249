@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALH///ME\u003d",
+        "filename": "core/cortex-m/cpu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-06-15T20:57:38Z",
+      "side": 1,
+      "message": "this directory (and this code) is not M3 specific, it should work at least on M4F\n(and soon on M0)",
+      "revId": "8b8393e5d91eb2f8b4f615755f9dcf5e66bf8249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
