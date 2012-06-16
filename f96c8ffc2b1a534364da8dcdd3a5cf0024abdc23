@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALH//+8A\u003d",
+        "filename": "common/port80.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2012-06-16T00:02:41Z",
+      "side": 1,
+      "message": "a nit: here and below I would say % sizeof(history) just in case a different #define is used in the future",
+      "revId": "f96c8ffc2b1a534364da8dcdd3a5cf0024abdc23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//+7w\u003d",
+        "filename": "common/port80.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2012-06-16T00:02:41Z",
+      "side": 1,
+      "message": "should this 16 be HISTORY_LEN? Also, I would really appreciate if you could add some parens so that there is no need remember operator precedence.\n\nAlso, I am not sure this is correct - shouldn\u0027t i start always at 0 if writes is  less then 16? And when writes is 16 or more shouldn\u0027t i start at writes % HISTORY_LEN?",
+      "revId": "f96c8ffc2b1a534364da8dcdd3a5cf0024abdc23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
