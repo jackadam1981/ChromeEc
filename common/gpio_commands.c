@@ -10,6 +10,7 @@
 #include "gpio.h"
 #include "util.h"
 
+#include "uart.h"
 
 static uint8_t last_val[(GPIO_COUNT + 7) / 8];
 
