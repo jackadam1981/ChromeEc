@@ -16,6 +16,24 @@
       "revId": "823f72c4bea4a0c5ed052b61de66a72b77751723",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//+gY\u003d",
+        "filename": "board/daisy/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-06-17T23:36:59Z",
+      "side": 1,
+      "message": "Yes please!\n\nMaybe take TPS65090_I2C_ADDR out of the driver and into a header file?\n\nIn fact it would probably be better to put the guts of this function in that driver, maybe pmu_is_present(int bus_num). Then you can call it from here if CONFIG_PMU_TPS65090 is defined.\n\nOr maybe you should just move the whole function into the driver?",
+      "parentUuid": "AAAALH//+h0\u003d",
+      "revId": "823f72c4bea4a0c5ed052b61de66a72b77751723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
