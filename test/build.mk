@@ -6,7 +6,7 @@
 # on-board test binaries build
 #
 
-test-list=hello pingpong timer_calib timer_dos mutex thermal
+test-list=hello pingpong timer_calib timer_dos mutex thermal power_button
 #disable: powerdemo
 
 pingpong-y=pingpong.o
@@ -20,3 +20,10 @@ chip-mock-thermal-lpc.o=mock_lpc.o
 chip-mock-thermal-pwm.o=mock_pwm.o
 common-mock-thermal-x86_power.o=mock_x86_power.o
 common-mock-thermal-temp_sensor.o=mock_temp_sensor.o
+
+# Mock modules for 'power_button'
+chip-mock-power_button-gpio.o=mock_gpio.o
+chip-mock-power_button-pwm.o=mock_pwm.o
+common-mock-power_button-x86_power.o=mock_x86_power.o
+common-mock-power_button-keyboard.o=mock_keyboard.o
+common-mock-power_button-i8042.o=mock_i8042.o

@@ -45,6 +45,20 @@ void chipset_throttle_cpu(int throttle)
 }
 
 
+void chipset_exit_hard_off(void)
+{
+	/* Not implemented */
+	return;
+}
+
+
+int chipset_in_state(int state_mask)
+{
+	/* Always powered on */
+	return state_mask == CHIPSET_STATE_ON;
+}
+
+
 void x86_power_interrupt(enum gpio_signal signal)
 {
 	/* Not implemented */
