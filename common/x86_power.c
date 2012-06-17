@@ -172,13 +172,27 @@ static int wait_in_signals(uint32_t want)
 
 void x86_power_cpu_overheated(int too_hot)
 {
-	/* TODO: crosbug.com/p/8242 - real implementation */
+	static int overheat_count;
+
+	if (too_hot) {
+		overheat_count++;
+		/* Warm reset EC to drop all power when cpu stays in
+		 * overheated state. System will be restarted in S5 and
+		 * go into G3 silently.
+		 */
+		if (overheat_count > 3)
+			system_reset(0);
+	} else {
+		if (overheat_count > 0)
+			overheat_count--;
+	}
 }
 
 
 void x86_power_force_shutdown(void)
 {
-	/* TODO: crosbug.com/p/8242 - real implementation */
+	/* Warm reset EC to shutdown x86 power */
+	system_reset(0);
 }
 
 
