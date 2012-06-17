@@ -7,6 +7,7 @@
 #include "board.h"
 #include "common.h"
 #include "dma.h"
+#include "i2c.h"
 #include "gpio.h"
 #include "registers.h"
 #include "spi.h"
@@ -81,6 +82,28 @@ const struct gpio_info gpio_list[GPIO_COUNT] = {
 	{"KB_OUT11",    GPIO_C, (1<<6),  GPIO_KB_OUTPUT, NULL},
 	{"KB_OUT12",    GPIO_C, (1<<7),  GPIO_KB_OUTPUT, NULL},
 };
+
+/* Auto detect I2C host port
+ * Daisy board has two I2C ports, I2C1(0) and I2C2(1), that can be configured
+ * as host. PMU chip is connected directly to the EC, and hence can be used
+ * for port detection
+ */
+#ifdef CONFIG_I2C_HOST_AUTO
+static int i2c_host_port = -1;
+
+int board_i2c_host_port(void)
+{
+	int d;
+
+	/* Default I2C host configuration is I2C1(0).
+	 * If PMU doesn't ack on I2C2(1), set the host port to 0.
+	 */
+	if (i2c_host_port == -1)
+		i2c_host_port = i2c_read8(1, 0x90, 0x4, &d) ? 0 : 1;
+
+	return i2c_host_port;
+}
+#endif /* CONFIG_I2C_HOST_AUTO */
 
 void configure_board(void)
 {
