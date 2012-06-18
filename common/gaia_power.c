@@ -26,6 +26,7 @@
 #include "board.h"
 #include "chipset.h"  /* This module implements chipset functions too */
 #include "console.h"
+#include "ec_commands.h"
 #include "gpio.h"
 #include "keyboard_scan.h"
 #include "task.h"
@@ -87,6 +88,9 @@ static int force_value;
 
 /* 1 if the power button was pressed last time we checked */
 static char power_button_was_pressed;
+
+/* Records the reason why we turned on */
+static enum ec_power_on_reason_t power_on_reason;
 
 /* time where we will power off, if power button still held down */
 static timestamp_t power_off_deadline;
@@ -227,6 +231,25 @@ void chipset_exit_hard_off(void)
 
 /*****************************************************************************/
 
+static enum ec_power_on_reason_t scan_power_on_gpios(void)
+{
+	power_on_reason = POWER_ON_NONE;
+
+	/* power on requested at EC startup for recovery */
+	if (auto_power_on) {
+		auto_power_on = 0;
+		return POWER_ON_AUTO;
+	}
+
+	if (!gpio_get_level(GPIO_KB_PWR_ON_L)) {
+		udelay(KB_PWR_ON_DEBOUNCE);
+		if (!gpio_get_level(GPIO_KB_PWR_ON_L))
+			return POWER_ON_PWR_BUT;
+	}
+
+	return POWER_ON_NONE;
+}
+
 /**
  * Check if there has been a power-on event
  *
@@ -241,17 +264,16 @@ static int check_for_power_on_event(void)
 	if (gpio_get_level(GPIO_EN_PP3300))
 		return 1;
 
-	/* power on requested at EC startup for recovery */
-	if (auto_power_on) {
-		auto_power_on = 0;
-		return 1;
-	}
+	/* Wait until we get a power-on reason */
+	do {
+		power_on_reason = scan_power_on_gpios();
+		if (power_on_reason)
+			break;
 
-	/* wait for Power button press */
-	wait_in_signal(GPIO_KB_PWR_ON_L, 0, -1);
+		task_wait_event(-1);
+	} while (1);
 
-	udelay(KB_PWR_ON_DEBOUNCE);
-	return gpio_get_level(GPIO_KB_PWR_ON_L) == 0;
+	return 1;
 }
 
 /**
