@@ -248,6 +248,9 @@ static enum ec_power_on_reason_t scan_power_on_gpios(void)
 			return POWER_ON_PWR_BUT;
 	}
 
+	if (gpio_get_level(GPIO_ACOK))
+		return POWER_ON_AC_PWR;
+
 	return POWER_ON_NONE;
 }
 
