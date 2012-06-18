@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALH//+QI\u003d",
+        "filename": "board/daisy/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-06-18T15:07:48Z",
+      "side": 1,
+      "message": "This is the same GPIO as PMIC_PWRON_L 4 lines below,\nbut with conflicting settings.",
+      "revId": "1b939a769cb901f14e315e6b7d5c01178ff65509",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
