@@ -51,6 +51,7 @@ enum gpio_signal {
 	GPIO_KB_IN07,
 	/* Other inputs */
 	GPIO_SPI1_NSS,
+	GPIO_ACOK,
 	/* Outputs */
 	GPIO_EN_PP1350,        /* DDR 1.35v rail enable */
 	GPIO_EN_PP5000,        /* 5.0v rail enable */
