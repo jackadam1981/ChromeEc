@@ -28,6 +28,7 @@
 #include "console.h"
 #include "ec_commands.h"
 #include "gpio.h"
+#include "host_command.h"
 #include "keyboard_scan.h"
 #include "task.h"
 #include "timer.h"
@@ -445,3 +446,16 @@ DECLARE_CONSOLE_COMMAND(forcepower, command_force_power,
 			NULL,
 			"Force power on",
 			NULL);
+
+static int cmd_power_on_reason(uint8_t *data, int *resp_size)
+{
+	struct ec_response_power_on_reason *ptr =
+		(struct ec_response_power_on_reason *)data;
+
+	ptr->power_on_reason = power_on_reason;
+	*resp_size = sizeof(*ptr);
+
+	return EC_RES_SUCCESS;
+}
+
+DECLARE_HOST_COMMAND(EC_CMD_GET_POWER_ON_REASON, cmd_power_on_reason);
