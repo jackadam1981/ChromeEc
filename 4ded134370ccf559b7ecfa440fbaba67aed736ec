@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALH//9rY\u003d",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-06-18T22:51:13Z",
+      "side": 1,
+      "message": "/* CONFIG_PANIC_HELP */",
+      "revId": "4ded134370ccf559b7ecfa440fbaba67aed736ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//9qk\u003d",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-06-18T22:51:13Z",
+      "side": 1,
+      "message": "If help is disabled we\u0027re probably short on space; might as well leave this out.",
+      "revId": "4ded134370ccf559b7ecfa440fbaba67aed736ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
