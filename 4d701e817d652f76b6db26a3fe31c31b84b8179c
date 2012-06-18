@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALH//+O4\u003d",
+        "filename": "chip/lm4/mock_lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-06-18T16:03:46Z",
+      "side": 1,
+      "message": "not sure we really want those \"physical\" accesses in our mock.\nCan we just stub them ?",
+      "revId": "4d701e817d652f76b6db26a3fe31c31b84b8179c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
