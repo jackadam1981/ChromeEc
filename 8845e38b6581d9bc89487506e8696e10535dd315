@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALH//+LE\u003d",
+        "filename": "chip/lm4/mock_gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-06-18T16:56:42Z",
+      "side": 1,
+      "message": "I\u0027m under the impression we don\u0027t need this.\nWe can just emulate GPIO_COUNT gpios without dealing with the hardware specific concept of banks.\nall the following code would be simpler ?",
+      "revId": "8845e38b6581d9bc89487506e8696e10535dd315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//+Lg\u003d",
+        "filename": "chip/lm4/mock_gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-06-18T16:56:42Z",
+      "side": 1,
+      "message": "you can just remove the HOOK and the gpio_init function",
+      "revId": "8845e38b6581d9bc89487506e8696e10535dd315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//+LQ\u003d",
+        "filename": "common/gpio_commands.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-06-18T16:56:42Z",
+      "side": 1,
+      "message": "why do we need this header ?",
+      "revId": "8845e38b6581d9bc89487506e8696e10535dd315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
