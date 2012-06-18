@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALH//9m4\u003d",
+        "filename": "common/x86_power.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-06-18T23:23:08Z",
+      "side": 1,
+      "message": "No, just deassert DPWROK and assert RSMRST#:\n\n/* Force x86 off.  This condition will reset once the state machine transitions to G3. */\ngpio_set_level(GPIO_PCH_DPWROK, 0);\ngpio_set_level(GPIO_PCH_RSMRSTn, 0);\n\nThis will force the CPU to shut down.  It will also let the x86_power state machine tidily go through the S0-\u003eS3-\u003eS5-\u003eG3 states.",
+      "revId": "eb8be08234b9bb6886ad2c8d0d7a5054f775ced6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
