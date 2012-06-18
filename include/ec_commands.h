@@ -249,6 +249,21 @@ struct ec_params_board_version {
 	uint16_t board_version;  /* A monotonously incrementing number. */
 } __attribute__ ((packed));
 
+enum ec_power_on_reason_t {
+	POWER_ON_NONE,		/* No obvious reason */
+	POWER_ON_PWR_BUT,	/* Power button was pressed */
+	POWER_ON_AC_PWR,	/* AC power was applied */
+	POWER_ON_LID,		/* Lid was opened */
+	POWER_ON_AUTO,		/* Automatic power on - recovery mode */
+};
+
+/* Get power on reason */
+#define EC_CMD_GET_POWER_ON_REASON 0x07
+struct ec_response_power_on_reason {
+	/* Reason for last power on */
+	enum ec_power_on_reason_t power_on_reason;
+} __attribute__ ((packed));
+
 
 /*****************************************************************************/
 /* Flash commands */
