@@ -34,6 +34,42 @@
       "revId": "823f72c4bea4a0c5ed052b61de66a72b77751723",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//+To\u003d",
+        "filename": "board/daisy/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-06-18T13:22:47Z",
+      "side": 1,
+      "message": "Done\n\nThe slave address of TPS65090 was fixed to 0x48(7-bit addr). So I didn\u0027t put it in a configurable macro. I am pretty sure we will revert this change after finalize daisy i2c design.\n\npmu_tps65090 is under a heavy rework. So I just clean this change a little bit but keep all extra code in a same condition macro.",
+      "parentUuid": "AAAALH//+gY\u003d",
+      "revId": "823f72c4bea4a0c5ed052b61de66a72b77751723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//+Ts\u003d",
+        "filename": "board/daisy/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-06-18T13:22:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAALH//+h0\u003d",
+      "revId": "823f72c4bea4a0c5ed052b61de66a72b77751723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
