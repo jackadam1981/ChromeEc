@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALH//8GY\u003d",
+        "filename": "chip/lm4/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-06-20T08:25:04Z",
+      "side": 1,
+      "message": "Move this note to keyboard_scan_stub.c",
+      "revId": "9ff04acd455e513553cabf8f41b9121d1e73a748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//8GU\u003d",
+        "filename": "chip/lm4/keyboard_scan_stub.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-06-20T08:25:04Z",
+      "side": 1,
+      "message": "Functions",
+      "revId": "9ff04acd455e513553cabf8f41b9121d1e73a748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//8GQ\u003d",
+        "filename": "chip/lm4/keyboard_scan_stub.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-06-20T08:25:04Z",
+      "side": 1,
+      "message": "Add one more line:\n\nAbstracted from keyboard_scan.c for stub.",
+      "revId": "9ff04acd455e513553cabf8f41b9121d1e73a748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
