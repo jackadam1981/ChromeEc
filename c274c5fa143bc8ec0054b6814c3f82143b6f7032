@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALH//8UQ\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-06-20T00:30:24Z",
+      "side": 1,
+      "message": "Do you have to know the current state to get the next state? How does this work when you first start up and don\u0027t know the state of the system?",
+      "revId": "c274c5fa143bc8ec0054b6814c3f82143b6f7032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//8UM\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-06-20T00:30:24Z",
+      "side": 1,
+      "message": "Better variable name?",
+      "revId": "c274c5fa143bc8ec0054b6814c3f82143b6f7032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//8UI\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-06-20T00:30:24Z",
+      "side": 1,
+      "message": "Maybe all this code and the task should go into a file separate from the actual driver?",
+      "revId": "c274c5fa143bc8ec0054b6814c3f82143b6f7032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
