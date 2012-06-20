@@ -1,0 +1,242 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALH//8Fc\u003d",
+        "filename": "test/power_button.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-06-20T08:53:15Z",
+      "side": 1,
+      "message": "Refer to section 1.3 Power Button of https://sites.google.com/a/google.com/chromeos-partners/pages/tech-docs/firmware/ec-specification-v119",
+      "revId": "27a25e57d77ea74154c9d4ef973c5eca327184ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//8F0\u003d",
+        "filename": "test/power_button.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-06-20T08:53:15Z",
+      "side": 1,
+      "message": "us -\u003e ms",
+      "revId": "27a25e57d77ea74154c9d4ef973c5eca327184ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//8Eg\u003d",
+        "filename": "test/power_button.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-06-20T08:53:15Z",
+      "side": 1,
+      "message": "SHORTER_THAN_T0 \u003d 0.01",
+      "revId": "27a25e57d77ea74154c9d4ef973c5eca327184ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//8Ec\u003d",
+        "filename": "test/power_button.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-06-20T08:53:15Z",
+      "side": 1,
+      "message": "LONGER_THAN_T0 \u003d 0.05",
+      "revId": "27a25e57d77ea74154c9d4ef973c5eca327184ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//8Fg\u003d",
+        "filename": "test/power_button.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-06-20T08:53:15Z",
+      "side": 1,
+      "message": "# expect shown once only",
+      "revId": "27a25e57d77ea74154c9d4ef973c5eca327184ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//8FU\u003d",
+        "filename": "test/power_button.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-06-20T08:53:15Z",
+      "side": 1,
+      "message": "10ms",
+      "revId": "27a25e57d77ea74154c9d4ef973c5eca327184ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//8FA\u003d",
+        "filename": "test/power_button.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-06-20T08:53:15Z",
+      "side": 1,
+      "message": "Expect PB is treated as hold (ignoring the release bounce).",
+      "revId": "27a25e57d77ea74154c9d4ef973c5eca327184ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//8E4\u003d",
+        "filename": "test/power_button.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-06-20T08:53:15Z",
+      "side": 1,
+      "message": "move to line 62.",
+      "revId": "27a25e57d77ea74154c9d4ef973c5eca327184ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//8Ew\u003d",
+        "filename": "test/power_button.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-06-20T08:53:15Z",
+      "side": 1,
+      "message": "When system is off, hold down ...",
+      "revId": "27a25e57d77ea74154c9d4ef973c5eca327184ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//8E0\u003d",
+        "filename": "test/power_button.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-06-20T08:53:15Z",
+      "side": 1,
+      "message": "When system is off, hold down ...",
+      "revId": "27a25e57d77ea74154c9d4ef973c5eca327184ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//8EY\u003d",
+        "filename": "test/power_button.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-06-20T08:53:15Z",
+      "side": 1,
+      "message": "LONGER_THAN_T0",
+      "revId": "27a25e57d77ea74154c9d4ef973c5eca327184ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//8Es\u003d",
+        "filename": "test/power_button.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-06-20T08:53:15Z",
+      "side": 1,
+      "message": "helper.wait_output(\"i8042 SEND\", timeout\u003d1);  // expect make code",
+      "revId": "27a25e57d77ea74154c9d4ef973c5eca327184ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//8Ek\u003d",
+        "filename": "test/power_button.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-06-20T08:53:15Z",
+      "side": 1,
+      "message": "// expect release code",
+      "revId": "27a25e57d77ea74154c9d4ef973c5eca327184ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//8EU\u003d",
+        "filename": "test/power_button.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-06-20T08:53:15Z",
+      "side": 1,
+      "message": "LONGER_THAN_T1 \u003d 5",
+      "revId": "27a25e57d77ea74154c9d4ef973c5eca327184ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
