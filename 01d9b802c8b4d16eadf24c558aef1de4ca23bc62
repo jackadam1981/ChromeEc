@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALH//7tI\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-06-20T21:00:30Z",
+      "side": 1,
+      "message": "Comment style if we are following kernel - should use\n\n/*\n * blah blah\n */\n\nfor multi-line. Perhaps put it before the line?",
+      "revId": "01d9b802c8b4d16eadf24c558aef1de4ca23bc62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//7sg\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-06-20T21:00:30Z",
+      "side": 1,
+      "message": "Should you parse flags after the command in case this is confusing for someone who gets it completely wrong?",
+      "revId": "01d9b802c8b4d16eadf24c558aef1de4ca23bc62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
