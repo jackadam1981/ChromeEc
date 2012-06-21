@@ -196,17 +196,122 @@ static int ir357x_check(void)
 	return !!diff;
 }
 
+static void ir357x_telemetry(void)
+{
+	uint8_t vin_supply = ir357x_read(0x94);
+	uint8_t v3_supply = ir357x_read(0x95);
+	uint8_t vaux_supply = ir357x_read(0x96);
+	uint8_t l1_vout = ir357x_read(0x97);
+	uint8_t l2_vout = ir357x_read(0x98);
+	uint8_t l1_iout = ir357x_read(0x99);
+	uint8_t l2_iout = ir357x_read(0x9a);
+	uint8_t temp1 = ir357x_read(0x9b);
+	uint8_t temp2 = ir357x_read(0x9c);
+	uint8_t l1_iin = ir357x_read(0xae);
+	uint8_t l2_iin = ir357x_read(0xaf);
+
+	if (temp1 == 0xee && temp2 == 0xee) {
+		ccprintf("cannot communicate with IR chip. not powered ?\n");
+		return;
+	}
+
+	ccprintf("Voltages:\n");
+	ccprintf("supply Vin %5d mV   V33 %5d mV Vaux %5d mV\n",
+		 (unsigned)vin_supply * 125, (unsigned)v3_supply * 5000 / 256,
+		 (unsigned)vaux_supply * 1024 * 14 / 5);
+	ccprintf("Vout loop1 %5d mV loop2 %5d mV\n",
+		 (unsigned)l1_vout * 1000 / 128,
+		 (unsigned)l2_vout * 1000 / 128);
+	ccprintf("Currents:\n");
+	ccprintf("Iout loop1 %5d mA loop2 %5d mA\n",
+		 (unsigned)l1_iout * 2000, (unsigned)l2_iout * 500);
+	ccprintf("Iin  loop1 %5d mA loop2 %5d mA\n",
+		 (unsigned)l1_iin * 125, (unsigned)l2_iin * 125 / 2);
+	ccprintf("Power: (computed)\n");
+	ccprintf("out  loop1 %5d mW loop2 %5d mW\n",
+		 (unsigned)l1_iout * 2000 * (unsigned)l1_vout / 128,
+		 (unsigned)l2_iout * 500 * (unsigned)l2_vout / 128);
+	ccprintf("in   loop1 %5d mW loop2 %5d mW\n",
+		 (unsigned)l1_iin * 125 * (unsigned)vin_supply * 125 / 1000,
+		 (unsigned)l2_iin * 125 * (unsigned)vin_supply * 125 / 2000);
+	ccprintf("Temperatures:\n");
+	ccprintf("loop1 %3d C loop2 %3d C\n", temp1, temp2);
+}
+
+static void ir357x_mtp(void)
+{
+	uint8_t user_ptr = ir357x_read(0xa7) & 0xf;
+	uint8_t manufact_ptr = ir357x_read(0xa6) & 0x7;
+	uint8_t user_next = (user_ptr + 1) & 0xf;
+	uint8_t manufact_next = (manufact_ptr + 1) & 0x7;
+	int user_remain = 9 - (int)user_next;
+	int manufact_remain = 3 - (int)manufact_next;
+	timestamp_t deadline;
+	int version = ir357x_get_version();
+
+	if (version != IR357x_SUPPORTED_CHIP) {
+		ccprintf("Unsupported chip IR %d. Skip programming !\n",
+			 version);
+		return;
+	}
+
+	ccprintf("user ptr %d next %d remain %d\n",
+	       user_ptr, user_next, user_remain);
+	ccprintf("manufacturer ptr %d next %d remain %d\n",
+	       manufact_ptr, manufact_next, manufact_remain);
+
+	if (user_remain < 0 || manufact_remain < 0) {
+		ccprintf("no more MTP cycle\n");
+		return;
+	}
+	/* Unlock protected registers */
+	ir357x_write(0xe4, 0); /* Vmax reg */
+#if 0
+	ir357x_write(0xe5, 0); /* PMBus and SVID address reg */
+#endif
+	/* write configuration */
+	ir357x_prog();
+	/* Enable programming clock */
+	ir357x_write(0x71, ir357x_read(0x71) | 4);
+
+	/* User section write / 200ms timeout */
+	ir357x_write(0xd0, 0x40 | user_next);
+	deadline.val = get_time().val + 200000;
+	while ((ir357x_read(0xd0) & 0xe0) && (get_time().val < deadline.val))
+		;
+	if (ir357x_read(0xd0) & 0xe0) {
+		ccprintf("timeout while writing user MTP\n");
+		return;
+	}
+
+	/* Manufacturer section write / 100ms timeout */
+	ir357x_write(0xd0, 0x58 | manufact_next);
+	deadline.val = get_time().val + 100000;
+	while ((ir357x_read(0xd0) & 0xe0) && (get_time().val < deadline.val))
+		;
+	if (ir357x_read(0xd0) & 0xe0) {
+		ccprintf("timeout while writing manufacturer MTP\n");
+		return;
+	}
+}
+
 static int command_ir357x(int argc, char **argv)
 {
 	int reg, val;
 	char *rem;
 
-	if (1 == argc) { /* dump all registers */
-		ir357x_dump();
+	if (1 == argc) {
+		ir357x_telemetry();
 		return EC_SUCCESS;
 	} else if (2 == argc) {
-		if (!strcasecmp(argv[1], "check")) {
+		if (!strcasecmp(argv[1], "prog")) {
+			if (ir357x_check())
+				ir357x_mtp();
+		} else if (!strcasecmp(argv[1], "check")) {
 			ir357x_check();
+		} else if (!strcasecmp(argv[1], "dump")) {
+			/* dump all registers */
+			ir357x_dump();
 		} else { /* read one register */
 			reg = strtoi(argv[1], &rem, 16);
 			if (*rem) {
@@ -235,7 +340,7 @@ static int command_ir357x(int argc, char **argv)
 	return EC_ERROR_INVAL;
 }
 DECLARE_CONSOLE_COMMAND(ir357x, command_ir357x,
-			"[check|write]",
+			"[prog|check|dump]",
 			"IR357x core regulator control",
 			NULL);
 
