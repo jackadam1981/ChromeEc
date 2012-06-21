@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALH//7bQ\u003d",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-06-21T05:40:57Z",
+      "side": 1,
+      "message": "/*\n * An ES1 workaround...\n */\n\nAlso please describe what this function does",
+      "revId": "341c461c61ef510440b4dcc2df0e7203a403234e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//7bM\u003d",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-06-21T05:40:57Z",
+      "side": 1,
+      "message": "Please add a short comment on each of these functions",
+      "revId": "341c461c61ef510440b4dcc2df0e7203a403234e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//7bI\u003d",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-06-21T05:40:57Z",
+      "side": 1,
+      "message": "celsius",
+      "revId": "341c461c61ef510440b4dcc2df0e7203a403234e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//7bE\u003d",
+        "filename": "include/pmu_tpschrome.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-06-21T05:40:57Z",
+      "side": 1,
+      "message": "Comments on these?",
+      "revId": "341c461c61ef510440b4dcc2df0e7203a403234e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
