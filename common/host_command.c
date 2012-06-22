@@ -117,6 +117,25 @@ DECLARE_HOST_COMMAND(EC_CMD_ACPI_QUERY_EVENT, host_command_acpi_query_event);
 #endif
 
 
+static int host_command_vbnvstor(uint8_t *data, int *resp_size)
+{
+	static uint8_t vbnv_block[VBNV_BLOCK_SIZE];
+
+	struct ec_params_vbnvstor *p = (struct ec_params_vbnvstor *)data;
+	struct ec_response_vbnvstor *r = (struct ec_response_vbnvstor *)data;
+
+	if (p->direction) {
+		memcpy(vbnv_block, p->vbnv_block, VBNV_BLOCK_SIZE);
+	} else {
+		memcpy(r->vbnv_block, vbnv_block, VBNV_BLOCK_SIZE);
+		*resp_size = sizeof(struct ec_response_vbnvstor);
+	}
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_VBNVSTOR, host_command_vbnvstor);
+
+
 /* Finds a command by command number.  Returns the command structure, or NULL if
  * no match found. */
 static const struct host_command *find_host_command(int command)

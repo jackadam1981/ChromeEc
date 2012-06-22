@@ -337,6 +337,16 @@ struct ec_response_flash_wp_gpio {
 	uint32_t value;
 } __attribute__ ((packed));
 
+#define EC_CMD_VBNVSTOR 0x1a
+#define VBNV_BLOCK_SIZE 16  /* Size of NV storage block in bytes */
+struct ec_params_vbnvstor {
+	uint8_t direction;
+	uint8_t vbnv_block[VBNV_BLOCK_SIZE];
+} __attribute__ ((packed));
+struct ec_response_vbnvstor {
+	uint8_t vbnv_block[VBNV_BLOCK_SIZE];
+} __attribute__ ((packed));
+
 #ifdef SUPPORT_CHECKSUM
 /* Checksum a range of flash datq */
 #define EC_CMD_FLASH_CHECKSUM 0x1f
