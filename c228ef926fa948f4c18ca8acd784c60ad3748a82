@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALH//6Fk\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-06-22T13:04:28Z",
+      "side": 1,
+      "message": "on Link, the plan is to switch to hibernate the EC after 24 hours.\nOn LM4 platform there is no SRAM retention in hibernate.\n(and this variable is not preserved across EC \"sysjump\" in the current implementation)",
+      "revId": "c228ef926fa948f4c18ca8acd784c60ad3748a82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
