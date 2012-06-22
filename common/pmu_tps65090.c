@@ -82,7 +82,7 @@ static int pmu_get_event(int *event)
 int pmu_is_charger_alarm(void)
 {
 	int status;
-	if (pmu_read(CG_STATUS1, &status) || (status & CHARGER_ALARM))
+	if (!pmu_read(CG_STATUS1, &status) && (status & CHARGER_ALARM))
 		return 1;
 	return 0;
 }
@@ -123,5 +123,3 @@ void pmu_init(void)
 	 */
 	pmu_write(CG_CTRL3, 0xbb);
 }
-
-

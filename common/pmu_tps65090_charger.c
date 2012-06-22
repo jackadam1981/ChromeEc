@@ -246,7 +246,7 @@ static int calc_next_state(int state)
 			}
 		}
 		/* Check discharging alarm */
-		if (battery_status(&alarm) || (alarm & ALARM_DISCHARGING)) {
+		if (!battery_status(&alarm) && (alarm & ALARM_DISCHARGING)) {
 			CPRINTF("[pmu] discharging: battery alarm %016b\n",
 					alarm);
 			return system_off();
@@ -278,4 +278,3 @@ void pmu_charger_task(void)
 		}
 	}
 }
-
