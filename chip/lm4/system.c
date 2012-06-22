@@ -396,6 +396,16 @@ const char *system_get_chip_name(void)
 	}
 }
 
+int system_get_vbnvcontext(uint8_t *block)
+{
+	return 1; /* NOT IMPLEMENTED */
+}
+
+int system_set_vbnvcontext(const uint8_t *block)
+{
+	return 1; /* NOT IMPLEMENTED */
+}
+
 const char *system_get_chip_revision(void)
 {
 	static char rev[3];

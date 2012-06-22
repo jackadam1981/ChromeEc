@@ -553,6 +553,24 @@ struct ec_response_flash_region_info {
 	uint32_t size;
 } __packed;
 
+/* Read/write VbNvContext */
+#define EC_CMD_VBNVCONTEXT 0x17
+#define EC_VER_VBNVCONTEXT 1
+#define EC_VBNV_BLOCK_SIZE 16
+
+enum ec_vbnvcontext_op {
+	EC_VBNVCONTEXT_OP_READ,
+	EC_VBNVCONTEXT_OP_WRITE,
+};
+
+struct ec_params_vbnvcontext {
+	uint32_t op;
+	uint8_t block[EC_VBNV_BLOCK_SIZE];
+} __packed;
+
+struct ec_response_vbnvcontext {
+	uint8_t block[EC_VBNV_BLOCK_SIZE];
+} __packed;
 
 /*****************************************************************************/
 /* PWM commands */

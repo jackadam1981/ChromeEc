@@ -802,6 +802,32 @@ DECLARE_HOST_COMMAND(EC_CMD_GET_BOARD_VERSION,
 		     host_command_get_board_version,
 		     EC_VER_MASK(0));
 
+int host_command_vbnvcontext(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_vbnvcontext *p = args->params;
+	struct ec_response_vbnvcontext *r = args->response;
+
+	switch (p->op) {
+	case EC_VBNVCONTEXT_OP_READ:
+		if (system_get_vbnvcontext(r->block))
+			return EC_RES_ERROR;
+		break;
+	case EC_VBNVCONTEXT_OP_WRITE:
+		if (system_set_vbnvcontext(p->block))
+			return EC_RES_ERROR;
+		memcpy(r->block, p->block, EC_VBNV_BLOCK_SIZE);
+		break;
+	default:
+		return EC_RES_ERROR;
+	}
+
+	args->response_size = sizeof(*r);
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_VBNVCONTEXT,
+		     host_command_vbnvcontext,
+		     EC_VER_MASK(EC_VER_VBNVCONTEXT));
+
 int host_command_reboot(struct host_cmd_handler_args *args)
 {
 	struct ec_params_reboot_ec p;

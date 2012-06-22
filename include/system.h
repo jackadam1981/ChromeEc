@@ -172,6 +172,10 @@ const char *system_get_chip_vendor(void);
 const char *system_get_chip_name(void);
 const char *system_get_chip_revision(void);
 
+/* Get/Set VbNvContext in non-volatile storage. */
+int system_get_vbnvcontext(uint8_t *block);
+int system_set_vbnvcontext(const uint8_t *block);
+
 /**
  * Put the EC in hibernate (lowest EC power state).
  *
