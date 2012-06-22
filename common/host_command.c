@@ -185,6 +185,22 @@ DECLARE_HOST_COMMAND(EC_CMD_GET_CMD_VERSIONS,
 		     host_command_get_cmd_versions,
 		     EC_VER_MASK(0));
 
+static int host_command_vbnvstor(struct host_cmd_handler_args *args)
+{
+	static uint8_t vbnv_block[EC_VBNV_BLOCK_SIZE];
+
+	const struct ec_params_vbnvstor *p = args->params;
+	struct ec_response_vbnvstor *r = args->response;
+
+	if (!p->op_read)
+		memcpy(vbnv_block, p->vbnv_block, EC_VBNV_BLOCK_SIZE);
+	memcpy(r->vbnv_block, vbnv_block, EC_VBNV_BLOCK_SIZE);
+	args->response_size = sizeof(*r);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_VBNVSTOR, host_command_vbnvstor, EC_VER_MASK(0));
+
 enum ec_status host_command_process(struct host_cmd_handler_args *args)
 {
 	const struct host_command *cmd = find_host_command(args->command);
