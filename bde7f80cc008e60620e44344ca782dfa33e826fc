@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALH//5Ew\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-06-23T02:40:08Z",
+      "side": 1,
+      "message": "might as well do a blank line after\n\nI suggest a comment here, saying that if your can\u0027t access the pmu, you don\u0027t want to take any drastic action.",
+      "revId": "bde7f80cc008e60620e44344ca782dfa33e826fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
