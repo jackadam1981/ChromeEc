@@ -10,13 +10,22 @@
 #include "board.h"
 #include "common.h"
 #include "hwtimer.h"
+#include "panic.h"
 #include "registers.h"
 #include "task.h"
+#include "watchdog.h"
 
 #define US_PER_SECOND 1000000
 
 /* Divider to get microsecond for the clock */
 #define CLOCKSOURCE_DIVIDER (CPU_CLOCK/US_PER_SECOND)
+
+#define TIM_WD_IRQ	STM32_IRQ_TIM4
+
+enum {
+	TIM_WD		= 4,	/* Timer to use for watchdog */
+	TIM_WD_BASE	= STM32_TIM4_BASE,
+};
 
 static uint32_t last_deadline;
 
@@ -144,4 +153,84 @@ int __hw_clock_source_init(uint32_t start_t)
 	task_enable_irq(STM32_IRQ_TIM3);
 
 	return STM32_IRQ_TIM3;
+}
+
+void watchdog_check(uint32_t excep_lr, uint32_t excep_sp)
+{
+	struct timer_ctlr *timer = (struct timer_ctlr *)TIM_WD_BASE;
+
+	/* clear status */
+	timer->sr = 0;
+
+	watchdog_trace(excep_lr, excep_sp);
+}
+
+void IRQ_HANDLER(TIM_WD_IRQ)(void) __attribute__((naked));
+void IRQ_HANDLER(TIM_WD_IRQ)(void)
+{
+	/* Naked call so we can extract raw LR and SP */
+	asm volatile("mov r0, lr\n"
+		     "mov r1, sp\n"
+		     /* Must push registers in pairs to keep 64-bit aligned
+		      * stack for ARM EABI.  This also conveninently saves
+		      * R0=LR so we can pass it to task_resched_if_needed. */
+		     "push {r0, lr}\n"
+		     "bl watchdog_check\n"
+		     "pop {r0, lr}\n"
+		     "b task_resched_if_needed\n");
+}
+const struct irq_priority IRQ_BUILD_NAME(prio_, TIM_WD_IRQ, )
+	__attribute__((section(".rodata.irqprio")))
+		= {TIM_WD_IRQ, 0}; /* put the watchdog at the highest
+					    priority */
+
+void hwtimer_setup_watchdog(void)
+{
+	struct timer_ctlr *timer = (struct timer_ctlr *)TIM_WD_BASE;
+
+	/* Enable clock */
+	STM32_RCC_APB1ENR |= 1 << (TIM_WD - 2);
+
+	/*
+	 * Timer configuration : Down counter, counter disabled, update
+	 * event only on overflow.
+	 */
+	timer->cr1 = 0x0014 | (1 << 7);
+	timer->cr2 = 0x0000;
+	/* TIM (slave mode) uses ITR2 as internal trigger */
+	timer->smcr = 0x0027;
+
+	/*
+	 * The auto-reload value is based on the period between rollovers
+	 * for TIM3. Since TIM3 runs at 1MHz, it will overflow in 65.536ms.
+	 * We divide our required watchdog period by this amount to obtain
+	 * the number of times TIM3 can overflow before we generate an
+	 * interrupt.
+	 */
+	timer->arr = WATCHDOG_PERIOD_MS * 1000 / (1 << 16);
+	/* count on every TIM3 overflow */
+	timer->psc = 0;
+
+	/* Reload the pre-scaler */
+	timer->egr = 0x0000;
+
+	/* setup the overflow interrupt */
+	timer->dier = 0x0001;
+
+	/* Override the count with the start value now that counting has
+	 * started. */
+	timer->cnt = 16;
+
+	/* Start counting */
+	timer->cr1 |= 1;
+
+	/* Enable timer interrupts */
+	task_enable_irq(TIM_WD_IRQ);
+}
+
+void hwtimer_reset_watchdog(void)
+{
+	struct timer_ctlr *timer = (struct timer_ctlr *)TIM_WD_BASE;
+
+	timer->cnt = 16;
 }
