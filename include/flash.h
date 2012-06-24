@@ -24,6 +24,19 @@ int flash_get_protect_block_size(void);
 /* Return the physical size of flash in bytes */
 int flash_physical_size(void);
 
+/**
+ * Get the physical memory address of a flash offset
+ *
+ * This is used for direct flash access. We assume that the flash is
+ * contiguous from this start address through to the end of the usable
+ * flash.
+ *
+ * @param offset	Flash offset to get address of
+ * @param dataptrp	Returns pointer to memory address of flash offset
+ * @return 0 if ok, else ES_RES_...
+ */
+int flash_physical_dataptr(int offset, char **dataptrp);
+
 /* Read <size> bytes of data from offset <offset> into <data>. */
 int flash_physical_read(int offset, int size, char *data);
 
@@ -49,6 +62,20 @@ int flash_pre_init(void);
 /* Returns the usable size of flash in bytes.  Note that this is
  * smaller than the actual flash size, */
 int flash_get_size(void);
+
+/**
+ * Get the physical memory address of a flash offset
+ *
+ * This is used for direct flash access. We assume that the flash is
+ * contiguous from this start address through to the end of the usable
+ * flash.
+ *
+ * @param offset	Flash offset to get address of
+ * @param dataptrp	Returns pointer to memory address of flash offset
+ * @param sizep		Returns amount of flash available at this memory addr
+ * @return 0 if ok, else ES_RES_...
+ */
+int flash_dataptr(int offset, char **dataptrp, int *sizep);
 
 /* Reads <size> bytes of data from offset <offset> into <data>. */
 int flash_read(int offset, int size, char *data);

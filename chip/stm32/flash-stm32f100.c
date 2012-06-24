@@ -71,6 +71,14 @@ int flash_physical_read(int offset, int size, char *data)
 	return EC_SUCCESS;
 }
 
+
+int flash_physical_dataptr(int offset, char **dataptrp)
+{
+	*dataptrp = (char *)offset;
+	return EC_SUCCESS;
+}
+
+
 static int unlock(int locks)
 {
 	/* unlock CR if needed */

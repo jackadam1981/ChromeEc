@@ -80,6 +80,13 @@ int flash_physical_size(void)
 }
 
 
+int flash_physical_dataptr(int offset, char **dataptrp)
+{
+	*dataptrp = (char *)offset;
+	return EC_SUCCESS;
+}
+
+
 int flash_physical_read(int offset, int size, char *data)
 {
 	/* Just read the flash from its memory window. */

@@ -146,6 +146,16 @@ int flash_read(int offset, int size, char *data)
 }
 
 
+int flash_dataptr(int offset, char **dataptrp, int *sizep)
+{
+	if (offset < 0 || offset > usable_flash_size)
+		return EC_ERROR_UNKNOWN;  /* Invalid range */
+	*sizep = usable_flash_size - offset;
+
+	return flash_physical_dataptr(offset, dataptrp);
+}
+
+
 int flash_write(int offset, int size, const char *data)
 {
 	if (size < 0 || offset > usable_flash_size ||
