@@ -324,6 +324,11 @@ void report_panic(const char *msg, uint32_t *lregs)
 #ifdef CONFIG_PANIC_HELP
 		panic_show_extra();
 #endif
+		panic_putc('\n');
+		timer_print_info();
+		uart_emergency_flush();
+		task_print_list();
+		uart_emergency_flush();
 	}
 
 	panic_reboot();
