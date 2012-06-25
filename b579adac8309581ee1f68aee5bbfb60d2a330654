@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAALH//4ko\u003d",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-06-25T18:31:07Z",
+      "side": 1,
+      "message": "We\u0027re not worried yet.\n\nPerhaps we should add a bool type:\n\ntypedef uint8_t bool;\n#define false 0\n#define true (!false)",
+      "parentUuid": "AAAALH//4qQ\u003d",
+      "revId": "b579adac8309581ee1f68aee5bbfb60d2a330654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAALH//4qM\u003d",
         "filename": "common/vboot_hash.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2012-06-25T16:54:15Z",
       "side": 1,
       "message": "Function comment...can this be static?",
+      "revId": "b579adac8309581ee1f68aee5bbfb60d2a330654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//4kk\u003d",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-06-25T18:31:07Z",
+      "side": 1,
+      "message": "Yes.  (and a few other functions can, too)",
+      "parentUuid": "AAAALH//4qM\u003d",
       "revId": "b579adac8309581ee1f68aee5bbfb60d2a330654",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAALH//4kQ\u003d",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-06-25T18:31:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAALH//4rU\u003d",
+      "revId": "b579adac8309581ee1f68aee5bbfb60d2a330654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAALH//4rI\u003d",
         "filename": "common/vboot_hash.c",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2012-06-25T16:54:15Z",
       "side": 1,
       "message": "Do we have a function around for this somewhere? If not, maybe create one in util?",
+      "revId": "b579adac8309581ee1f68aee5bbfb60d2a330654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//4kc\u003d",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-06-25T18:31:07Z",
+      "side": 1,
+      "message": "I\u0027m pondering adding a hex-string format type to vfnprintf.  Needs to support space between \"ab cd ef\" and no space \"abcdef\".  And probably needs \u0027*\u0027 modifier to accept length from the variable arg list.",
+      "parentUuid": "AAAALH//4rI\u003d",
       "revId": "b579adac8309581ee1f68aee5bbfb60d2a330654",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "AAAALH//4kU\u003d",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-06-25T18:31:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAALH//4rM\u003d",
+      "revId": "b579adac8309581ee1f68aee5bbfb60d2a330654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAALH//4q0\u003d",
         "filename": "common/vboot_hash.c",
         "patchSetId": 1
@@ -98,6 +188,24 @@
       "writtenOn": "2012-06-25T16:54:15Z",
       "side": 1,
       "message": "Do we want this sort of comment style?",
+      "revId": "b579adac8309581ee1f68aee5bbfb60d2a330654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//4kI\u003d",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-06-25T18:31:07Z",
+      "side": 1,
+      "message": "I\u0027d like some sort of section divider in the file, since it helps keep all the commands/hooks/host commands together.  I\u0027m not picky about exact format.",
+      "parentUuid": "AAAALH//4q0\u003d",
       "revId": "b579adac8309581ee1f68aee5bbfb60d2a330654",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -138,6 +246,24 @@
     },
     {
       "key": {
+        "uuid": "AAAALH//4jI\u003d",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-06-25T18:31:07Z",
+      "side": 1,
+      "message": "Otherwise ectool needs to poll the EC to find out when the hash is done.\n\nFor better or worse, we\u0027ve gone the direction of commands-with-subcommands (see lightbar, vboot) instead of lots of single-function commands.",
+      "parentUuid": "AAAALH//4qo\u003d",
+      "revId": "b579adac8309581ee1f68aee5bbfb60d2a330654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAALH//4qk\u003d",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -149,6 +275,24 @@
       "writtenOn": "2012-06-25T16:54:15Z",
       "side": 1,
       "message": "Remove one of the comments?",
+      "revId": "b579adac8309581ee1f68aee5bbfb60d2a330654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//4lI\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-06-25T18:31:07Z",
+      "side": 1,
+      "message": "One\u0027s a section header; the other is for Bill\u0027s verified boot command.",
+      "parentUuid": "AAAALH//4qk\u003d",
       "revId": "b579adac8309581ee1f68aee5bbfb60d2a330654",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -172,6 +316,24 @@
     },
     {
       "key": {
+        "uuid": "AAAALH//4k0\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-06-25T18:31:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAALH//4qg\u003d",
+      "revId": "b579adac8309581ee1f68aee5bbfb60d2a330654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAALH//4qY\u003d",
         "filename": "util/ectool.c",
         "patchSetId": 1
@@ -183,6 +345,24 @@
       "writtenOn": "2012-06-25T16:54:15Z",
       "side": 1,
       "message": "Comment style",
+      "revId": "b579adac8309581ee1f68aee5bbfb60d2a330654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//4kw\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1663,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-06-25T18:31:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAALH//4qY\u003d",
       "revId": "b579adac8309581ee1f68aee5bbfb60d2a330654",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
