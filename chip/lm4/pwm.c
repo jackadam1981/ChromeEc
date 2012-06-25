@@ -347,3 +347,11 @@ static int pwm_suspend(void)
 	return EC_SUCCESS;
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, pwm_suspend, HOOK_PRIO_DEFAULT);
+
+
+static int pwm_shutdown(void)
+{
+	pwm_enable_keyboard_backlight(0);
+	return EC_SUCCESS;
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, pwm_shutdown, HOOK_PRIO_DEFAULT);
