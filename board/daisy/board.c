@@ -6,11 +6,13 @@
 
 #include "board.h"
 #include "common.h"
+#include "console.h"
 #include "dma.h"
 #include "i2c.h"
 #include "gpio.h"
 #include "registers.h"
 #include "spi.h"
+#include "timer.h"
 #include "util.h"
 
 /*
