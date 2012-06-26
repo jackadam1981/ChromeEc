@@ -49,6 +49,23 @@ static int rx_index;
 /* indicates if a wait loop should abort */
 static volatile int abort_transaction;
 
+int __board_i2c_claim(int port)
+{
+	return 0;
+}
+
+int board_i2c_claim(int port)
+	__attribute__((weak, alias("__board_i2c_claim")));
+
+
+void __board_i2c_release(int port)
+{
+}
+
+void board_i2c_release(int port)
+	__attribute__((weak, alias("__board_i2c_release")));
+
+
 static int wait_tx(int port)
 {
 	static timestamp_t deadline;
@@ -528,11 +545,15 @@ static int i2c_xfer(int port, int slave_addr, uint8_t *out, int out_bytes,
 	mutex_lock(&i2c_mutex);
 	disable_i2c_interrupt(port);
 
+	if (board_i2c_claim(port))
+		return EC_ERROR_BUSY;
+
 	rv = i2c_master_transmit(port, slave_addr, out, out_bytes,
 				 in_bytes ? 0 : 1);
 	if (!rv && in_bytes)
 		rv = i2c_master_receive(port, slave_addr, in, in_bytes);
 	handle_i2c_error(port, rv);
+	board_i2c_release(port);
 
 	enable_i2c_interrupt(port);
 	mutex_unlock(&i2c_mutex);
