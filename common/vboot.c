@@ -24,7 +24,7 @@
 #define CPUTS(outstr) cputs(CC_VBOOT, outstr)
 #define CPRINTF(format, args...) cprintf(CC_VBOOT, format, ## args)
 
-/****************************************************************************/
+#ifdef CONFIG_VBOOT_SIG
 
 enum howgood {
 	IMAGE_IS_BAD,
@@ -85,8 +85,6 @@ static enum howgood good_image(uint8_t *key_data,
 	return IMAGE_IS_GOOD;
 }
 
-/****************************************************************************/
-
 /* Might I want to jump to one of the RW images? */
 static int maybe_jump_to_other_image(void)
 {
@@ -121,6 +119,8 @@ static int maybe_jump_to_other_image(void)
 	return 1;
 }
 
+#endif  /* CONFIG_VBOOT_SIG */
+
 /*****************************************************************************/
 /* Initialization */
 
@@ -132,6 +132,7 @@ int vboot_pre_init(void)
 
 int vboot_init(void)
 {
+#ifdef CONFIG_VBOOT_SIG
 	enum howgood r;
 	timestamp_t ts1, ts2;
 
@@ -198,6 +199,11 @@ bad:
 	CPRINTF("[Staying in RO mode]\n");
 	CPRINTF("[FIXME: How to trigger recovery mode?]\n");
 	return EC_ERROR_UNKNOWN;
+
+#else   /* CONFIG_VBOOT_SIG */
+	CPRINTF("[%T Vboot staying in RO]\n");
+	return EC_SUCCESS;
+#endif  /* CONFIG_VBOOT_SIG */
 }
 
 /****************************************************************************/
