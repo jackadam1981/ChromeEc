@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALH//3Ck\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-06-26T23:41:31Z",
+      "side": 1,
+      "message": "nit: maybe remove .",
+      "revId": "348956a59545bea033fcbb0f6ee753a917b73148",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//3CI\u003d",
+        "filename": "chip/lm4/power_button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-06-26T23:41:31Z",
+      "side": 1,
+      "message": "normally put {} around else if the if() has it",
+      "revId": "348956a59545bea033fcbb0f6ee753a917b73148",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
