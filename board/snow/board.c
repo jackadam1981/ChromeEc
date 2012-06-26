@@ -6,11 +6,13 @@
 
 #include "board.h"
 #include "common.h"
+#include "console.h"
 #include "dma.h"
 #include "gpio.h"
 #include "i2c.h"
 #include "registers.h"
 #include "spi.h"
+#include "timer.h"
 #include "util.h"
 
 #define GPIO_KB_INPUT  (GPIO_INPUT | GPIO_PULL_UP | GPIO_INT_BOTH)
@@ -158,4 +160,55 @@ void board_interrupt_host(int active)
 {
 	/* interrupt host by using active low EC_INT signal */
 	gpio_set_level(GPIO_EC_INT, !active);
+}
+
+enum {
+	/* Time between requesting bus and deciding that we have it */
+	BUS_SLEW_DELAY_US	= 10,
+
+	/* Time between retrying to see if the AP has released the bus */
+	BUS_WAIT_RETRY_US	= 2000,
+
+	/* Time to wait until the bus becomes free */
+	BUS_WAIT_FREE_US	= 50 * 1000,
+};
+
+#define GPIO_CLAIM_EC	GPIO_SPI1_MISO
+#define GPIO_CLAIM_AP	GPIO_SPI1_NSS
+
+int board_i2c_claim(int port)
+{
+	timestamp_t deadline;
+
+	if (port == STM32_I2C2_PORT)
+		return 0;
+
+	ASSERT(port == STM32_I2C1_PORT);
+
+	/* Indicate that we want to claim the bus */
+	gpio_set_level(GPIO_CLAIM_EC, 0);
+	deadline = get_time();
+	deadline.val += BUS_WAIT_FREE_US;
+	usleep(BUS_SLEW_DELAY_US);
+
+	/* Wait for the AP to release it */
+	while (!gpio_get_level(GPIO_CLAIM_AP)) {
+		usleep(BUS_WAIT_RETRY_US);
+		if (timestamp_expired(deadline, NULL)) {
+			/* Give up, release our claim */
+			gpio_set_level(GPIO_CLAIM_EC, 1);
+			cputs(CC_I2C, "I2C: Could not claim bus\n");
+			return -1;
+		}
+	}
+
+	return 0;
+}
+
+void board_i2c_release(int port)
+{
+	if (port == STM32_I2C1_PORT) {
+		/* Release the bus */
+		gpio_set_level(GPIO_CLAIM_EC, 1);
+	}
 }
