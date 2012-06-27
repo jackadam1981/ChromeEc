@@ -28,6 +28,7 @@
 #include "console.h"
 #include "gpio.h"
 #include "keyboard_scan.h"
+#include "pmu_tpschrome.h"
 #include "task.h"
 #include "timer.h"
 #include "util.h"
@@ -358,6 +359,11 @@ static int power_on(void)
 	ap_on = 1;
 	set_power_led(POWER_LED_ON);
 	CPUTS("AP running ...\n");
+
+	/* Enable backlight power */
+	pmu_enable_fet(FET_BACKLIGHT, 1, NULL);
+	/* Enable lcd panel power */
+	pmu_enable_fet(FET_LCD_PANEL, 1, NULL);
 	return 0;
 }
 
