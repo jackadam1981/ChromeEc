@@ -16,6 +16,24 @@
       "revId": "c56ec1d7030344a73984826efa5771e462d93b4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//21o\u003d",
+        "filename": "include/hwtimer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-06-27T02:26:47Z",
+      "side": 1,
+      "message": "OK I will move it.\n\nI noticed a code size penalty from using the constant values everywhere, so went with this struct approach. I don\u0027t think the penalty is large though - will take another look.",
+      "parentUuid": "AAAALH//2/w\u003d",
+      "revId": "c56ec1d7030344a73984826efa5771e462d93b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
