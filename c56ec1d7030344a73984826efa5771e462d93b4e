@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALH//2/w\u003d",
+        "filename": "include/hwtimer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-06-27T00:10:05Z",
+      "side": 1,
+      "message": "this is STM32 specific register definitions,\nthis should go in chip/stm32/registers.h\nand we are not using this struct style of definitions.",
+      "revId": "c56ec1d7030344a73984826efa5771e462d93b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
