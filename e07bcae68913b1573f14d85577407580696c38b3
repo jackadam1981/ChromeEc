@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALH//2L0\u003d",
+        "filename": "board/daisy/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-06-27T22:56:32Z",
+      "side": 1,
+      "message": "Since MISO is reconfigured, and gpio_pre_init() will clobber any changes made here anyway, perhaps now\u0027s a good time to get rid of this manual configuration.",
+      "revId": "e07bcae68913b1573f14d85577407580696c38b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
