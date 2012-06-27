@@ -28,6 +28,9 @@
 #define CG_CTRL5 0x09
 #define CG_STATUS1 0x0a
 #define CG_STATUS2 0x0b
+#define FET1_CTRL 0x0f
+
+#define FET_CTRL_BASE (FET1_CTRL - 1)
 
 /* IRQ events */
 #define EVENT_VACG    (1 <<  1)
@@ -35,6 +38,11 @@
 
 /* Charger alarm */
 #define CHARGER_ALARM 3
+
+/* FET control register bits */
+#define FET_CTRL_ENFET   (1 << 0)
+#define FET_CTRL_ADENFET (1 << 1)
+#define FET_CTRL_PGFET   (1 << 4)
 
 /* Read/write tps65090 register */
 static inline int pmu_read(int reg, int *value)
@@ -104,6 +112,35 @@ int pmu_get_power_source(int *ac_good, int *battery_good)
 		*ac_good = event & EVENT_VACG;
 	if (battery_good)
 		*battery_good = event & EVENT_VBATG;
+
+	return EC_SUCCESS;
+}
+
+int pmu_enable_fet(int fet_id, int enable, int *power_good)
+{
+	int rv, reg;
+	int reg_offset;
+
+	reg_offset = FET_CTRL_BASE + fet_id;
+
+	rv = pmu_read(reg_offset, &reg);
+	if (rv)
+		return rv;
+	if (enable)
+		reg |= FET_CTRL_ADENFET | FET_CTRL_ENFET;
+	else
+		reg &= ~FET_CTRL_ENFET;
+
+	rv = pmu_write(reg_offset, reg);
+	if (rv)
+		return rv;
+
+	if (power_good) {
+		rv = pmu_read(reg_offset, &reg);
+		if (rv)
+			return rv;
+		*power_good = reg & FET_CTRL_PGFET;
+	}
 
 	return EC_SUCCESS;
 }

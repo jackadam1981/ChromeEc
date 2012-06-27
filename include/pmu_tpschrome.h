@@ -8,9 +8,12 @@
 #ifndef __CROS_EC_TPSCHROME_H
 #define __CROS_EC_TPSCHROME_H
 
+#define FET_BACKLIGHT 1
+#define FET_LCD_PANEL 6
 
 int pmu_is_charger_alarm(void);
 int pmu_get_power_source(int *ac_good, int *battery_good);
+int pmu_enable_fet(int fet_id, int enable, int *power_good);
 void pmu_init(void);
 
 #endif /* __CROS_EC_TPSCHROME_H */
