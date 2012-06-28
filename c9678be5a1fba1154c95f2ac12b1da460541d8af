@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALH//1Jk\u003d",
+        "filename": "include/timer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-06-28T16:20:10Z",
+      "side": 1,
+      "message": "1. please comment declaration.\n2. just call it time_since()\n3. it\u0027s a one-liner; just make it an inline?\n4. with no saturation check (for \u003e32-bit delta), you might as well do:\n\nstatic inline unsigned time_since(timestamp_t start)\n{\n    return get_time().le.lo - start.le.lo;\n}",
+      "revId": "c9678be5a1fba1154c95f2ac12b1da460541d8af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
