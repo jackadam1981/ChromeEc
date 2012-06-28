@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALH//0eI\u003d",
+        "filename": "util/comm-i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-06-28T23:32:47Z",
+      "side": 1,
+      "message": "-ve here?",
+      "revId": "0a6c0aeb8dd5dfbdc9ea17cc4e615deb78696652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//0eA\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-06-28T23:32:47Z",
+      "side": 1,
+      "message": "not return rv? Same at various sites below",
+      "revId": "0a6c0aeb8dd5dfbdc9ea17cc4e615deb78696652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//0d8\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1248,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-06-28T23:32:47Z",
+      "side": 1,
+      "message": "{} around else when if() has it",
+      "revId": "0a6c0aeb8dd5dfbdc9ea17cc4e615deb78696652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
