@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALH//0fk\u003d",
+        "filename": "chip/stm32/dma.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-06-28T23:22:43Z",
+      "side": 1,
+      "message": "s/nunber/number",
+      "revId": "694d023fa509204a54ae8ba79177bf8c8a0f19c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//0ec\u003d",
+        "filename": "chip/stm32/dma.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-06-28T23:22:43Z",
+      "side": 1,
+      "message": "Maybe call it \"dma_bytes_done\" ? That sounds a bit more generic IMHO for the two use cases you mention at the top of the comment.\n\nYour call, since you probably already have some use cases in mind.",
+      "revId": "694d023fa509204a54ae8ba79177bf8c8a0f19c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
