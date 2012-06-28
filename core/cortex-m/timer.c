@@ -49,6 +49,14 @@ int timestamp_expired(timestamp_t deadline, const timestamp_t *now)
 	return ((int64_t)(now->val - deadline.val) >= 0);
 }
 
+unsigned timestamp_since32(timestamp_t start)
+{
+	timestamp_t now;
+
+	now = get_time();
+	return (unsigned)(now.val - start.val);
+}
+
 void process_timers(int overflow)
 {
 	uint32_t check_timer, running_t0;

@@ -39,6 +39,8 @@ int timer_cancel(task_id_t tskid);
  */
 int timestamp_expired(timestamp_t deadline, const timestamp_t *now);
 
+unsigned timestamp_since32(timestamp_t start);
+
 /* Busy-wait the selected number of microseconds.  Note that calling this
  * with us>1000 may impact system performance; use usleep for longer delays. */
 void udelay(unsigned us);
