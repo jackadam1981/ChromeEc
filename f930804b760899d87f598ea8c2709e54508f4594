@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAALH//z/k\u003d",
+        "filename": "util/burn_my_ec.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-06-29T16:20:46Z",
+      "side": 1,
+      "message": "I\u0027ll change get_version() to take a dest ptr and return an error code.  Currently it just returns the image enum.",
+      "parentUuid": "AAAALH//0JY\u003d",
+      "revId": "f930804b760899d87f598ea8c2709e54508f4594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAALH//0JU\u003d",
         "filename": "util/burn_my_ec.c",
         "patchSetId": 4
@@ -47,6 +65,24 @@
       "writtenOn": "2012-06-29T01:55:25Z",
       "side": 1,
       "message": "Why is this one not -ve?",
+      "revId": "f930804b760899d87f598ea8c2709e54508f4594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//z/c\u003d",
+        "filename": "util/comm-i2c.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-06-29T16:20:46Z",
+      "side": 1,
+      "message": "See, this is why I don\u0027t like returning -ERROR.  Fixed.",
+      "parentUuid": "AAAALH//0WU\u003d",
       "revId": "f930804b760899d87f598ea8c2709e54508f4594",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
