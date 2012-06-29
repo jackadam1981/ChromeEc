@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAALH//0JY\u003d",
+        "filename": "util/burn_my_ec.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-06-29T13:58:14Z",
+      "side": 1,
+      "message": "EC_IMAGE_UNKNOWN is actually 0, which confuses to success. How about return -EC_RES_ERROR?",
+      "revId": "f930804b760899d87f598ea8c2709e54508f4594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//0JU\u003d",
+        "filename": "util/burn_my_ec.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-06-29T13:58:14Z",
+      "side": 1,
+      "message": "Same as above.",
+      "revId": "f930804b760899d87f598ea8c2709e54508f4594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAALH//0WU\u003d",
         "filename": "util/comm-i2c.c",
         "patchSetId": 4
