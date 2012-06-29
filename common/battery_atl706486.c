@@ -89,6 +89,7 @@ void battery_vendor_params(struct batt_params *batt)
 	    batt->temperature <= info.temp_charge_min) {
 		batt->desired_voltage = 0;
 		batt->desired_current = 0;
+		return;
 	}
 
 	/* Vendor provided charging method
