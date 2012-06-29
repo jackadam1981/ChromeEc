@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALH//0Wo\u003d",
+        "filename": "chip/stm32/power_led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-06-29T01:53:05Z",
+      "side": 1,
+      "message": "Maybe move to top of file?",
+      "revId": "2568afe95470c629cf8053a343868035c4c5061c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//0Wk\u003d",
+        "filename": "chip/stm32/power_led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-06-29T01:53:05Z",
+      "side": 1,
+      "message": "Not sure about the code style here. Maybe use dir \u003d 1 or -1, then \n\npower_led_percent +\u003d dir * LED_STEP_PERCENT\n\nat the bottom",
+      "revId": "2568afe95470c629cf8053a343868035c4c5061c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//0Wc\u003d",
+        "filename": "chip/stm32/power_led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-06-29T01:53:05Z",
+      "side": 1,
+      "message": "/*\n * Decreases...\n */",
+      "revId": "2568afe95470c629cf8053a343868035c4c5061c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//0Wg\u003d",
+        "filename": "chip/stm32/power_led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-06-29T01:53:05Z",
+      "side": 1,
+      "message": "Perhaps bracket this code with CONFIG_CMD_POWERLED\n\nThat way we can reduce code size if needed without losing essential functions",
+      "revId": "2568afe95470c629cf8053a343868035c4c5061c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
