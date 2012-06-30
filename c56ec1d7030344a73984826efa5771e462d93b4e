@@ -2,6 +2,91 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAALH//zUA\u003d",
+        "filename": "chip/stm32/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-06-30T00:14:45Z",
+      "side": 1,
+      "message": "As per our off-line chat, let\u0027s use TIM5 for this timer. That way we\u0027ll keep the 32-bit timer logically chained to 3 and 4 instead of 3 and 5.",
+      "revId": "c56ec1d7030344a73984826efa5771e462d93b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//zYA\u003d",
+        "filename": "chip/stm32/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-06-30T00:14:45Z",
+      "side": 1,
+      "message": "out of place comment?",
+      "revId": "c56ec1d7030344a73984826efa5771e462d93b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//zYk\u003d",
+        "filename": "chip/stm32/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-06-30T00:14:45Z",
+      "side": 1,
+      "message": "Should this be below the \"Reload the pre-scaler\" comment?",
+      "revId": "c56ec1d7030344a73984826efa5771e462d93b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//zaU\u003d",
+        "filename": "chip/stm32/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-06-30T00:14:45Z",
+      "side": 1,
+      "message": "Bit 0 needs to be set to force an update event if you want to reload the shadow registers.\n\nI also suspect some of these assignments aren\u0027t necessary. According to the datasheet (section 13.4.6): Note that the prescaler counter is cleared too (anyway the prescaler ratio is not affected). The counter is cleared if the center-aligned mode is selected or if DIR\u003d0 (upcounting), else it takes the auto-reload\nvalue (TIMx_ARR) if DIR\u003d1 (downcounting).",
+      "revId": "c56ec1d7030344a73984826efa5771e462d93b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//zZU\u003d",
+        "filename": "chip/stm32/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-06-30T00:14:45Z",
+      "side": 1,
+      "message": "The counting hasn\u0027t started yet (it starts a couple lines down)",
+      "revId": "c56ec1d7030344a73984826efa5771e462d93b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAALH//2/w\u003d",
         "filename": "include/hwtimer.h",
         "patchSetId": 1
@@ -31,6 +116,58 @@
       "side": 1,
       "message": "OK I will move it.\n\nI noticed a code size penalty from using the constant values everywhere, so went with this struct approach. I don\u0027t think the penalty is large though - will take another look.",
       "parentUuid": "AAAALH//2/w\u003d",
+      "revId": "c56ec1d7030344a73984826efa5771e462d93b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//zT0\u003d",
+        "filename": "include/hwtimer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-06-30T00:14:45Z",
+      "side": 1,
+      "message": "Would be interesting to see if this approach saves us a significant amount of space. I\u0027ve been having to experiment with a larger firmware image size :-(\n\n(i prefer this style anyway, but don\u0027t have a strong opinion versus using contants everywhere)",
+      "parentUuid": "AAAALH//21o\u003d",
+      "revId": "c56ec1d7030344a73984826efa5771e462d93b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//zeY\u003d",
+        "filename": "include/hwtimer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-06-30T00:14:45Z",
+      "side": 1,
+      "message": "s/realy/real",
+      "revId": "c56ec1d7030344a73984826efa5771e462d93b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//zeU\u003d",
+        "filename": "include/hwtimer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-06-30T00:14:45Z",
+      "side": 1,
+      "message": "s/warning/warn",
       "revId": "c56ec1d7030344a73984826efa5771e462d93b4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
