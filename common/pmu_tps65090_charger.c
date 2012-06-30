@@ -55,6 +55,8 @@ static void enable_charging(int enable)
 	enable = enable ? 1 : 0;
 	if (gpio_get_level(GPIO_CHARGER_EN) != enable)
 		gpio_set_level(GPIO_CHARGER_EN, enable);
+
+	pmu_enable_charger(enable);
 }
 
 
@@ -168,43 +170,58 @@ static int notify_battery_low(void)
 
 static int calc_next_state(int state)
 {
-	int batt_temp, alarm, capacity;
+	int batt_temp, alarm, capacity, charge;
 
 	switch (state) {
 	case ST_IDLE:
-		/* Turn off charger */
-		enable_charging(0);
 
 		/* Check AC and chiset state */
 		if (!get_ac()) {
 			if (chipset_in_state(CHIPSET_STATE_ON))
 				return ST_DISCHARGING;
-			return ST_IDLE;
+
+			/* Enable charging and wait ac on */
+			enable_charging(1);
+			return wait_t1_idle();
 		}
 
 		/* Enable charging when battery doesn't respond */
-		if (battery_temperature(&batt_temp))
+		if (battery_temperature(&batt_temp)) {
+			enable_charging(1);
+			wait_t1_idle();
 			return ST_PRE_CHARGING;
+		}
 
-		if (!battery_start_charging_range(batt_temp))
-			return wait_t1_idle();
-
-		if (battery_status(&alarm) || (alarm & ALARM_CHARGING)) {
-			if (!(alarm & ALARM_TERMINATE_CHARGE))
-				CPRINTF("[pmu] idle %016b\n", alarm);
+		/* Turn off charger when battery temperature is out
+		 * of the start charging range.
+		 */
+		if (!battery_start_charging_range(batt_temp)) {
+			enable_charging(0);
 			return wait_t1_idle();
 		}
 
-		enable_charging(1);
-		return ST_CHARGING;
+		/* Turn off charger on battery charging alarm */
+		if (battery_status(&alarm) || (alarm & ALARM_CHARGING)) {
+			if (!(alarm & ALARM_TERMINATE_CHARGE))
+				CPRINTF("[pmu] idle %016b\n", alarm);
+			enable_charging(0);
+			return wait_t1_idle();
+		}
+
+		/* Start charging only when battery charge lower than 100% */
+		if (!battery_state_of_charge(&charge) && charge < 100) {
+			enable_charging(1);
+			wait_t1_idle();
+			return ST_CHARGING;
+		}
+
+		return wait_t1_idle();
 
 	case ST_PRE_CHARGING:
 		if (!get_ac())
 			return wait_t1_idle();
 
 		if (!gpio_get_level(GPIO_CHARGER_EN)) {
-			CPUTS("[pmu] try charging\n");
-			enable_charging(1);
 		}
 
 		/* If the battery goes online after enable the charger,
