@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAALH//zSc\u003d",
+        "filename": "chip/stm32/power_led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-06-30T01:38:25Z",
+      "side": 1,
+      "message": "Done. Also changed to \"int\" (uint32_t doesn\u0027t seem necessary).",
+      "parentUuid": "AAAALH//0Wo\u003d",
+      "revId": "2568afe95470c629cf8053a343868035c4c5061c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAALH//0Wk\u003d",
         "filename": "chip/stm32/power_led.c",
         "patchSetId": 2
@@ -36,6 +54,23 @@
     },
     {
       "key": {
+        "uuid": "AAAALH//zRs\u003d",
+        "filename": "chip/stm32/power_led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-06-30T01:38:25Z",
+      "side": 1,
+      "message": "Done. That will save us an if-else, too.",
+      "revId": "2568afe95470c629cf8053a343868035c4c5061c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAALH//0Wc\u003d",
         "filename": "chip/stm32/power_led.c",
         "patchSetId": 2
@@ -47,6 +82,41 @@
       "writtenOn": "2012-06-29T01:53:05Z",
       "side": 1,
       "message": "/*\n * Decreases...\n */",
+      "revId": "2568afe95470c629cf8053a343868035c4c5061c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//zRo\u003d",
+        "filename": "chip/stm32/power_led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-06-30T01:38:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAALH//0Wc\u003d",
+      "revId": "2568afe95470c629cf8053a343868035c4c5061c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//zRk\u003d",
+        "filename": "chip/stm32/power_led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-06-30T01:38:25Z",
+      "side": 1,
+      "message": "fixed this up and added a comment to explain why the percent is changed after the duty cycle is set.",
       "revId": "2568afe95470c629cf8053a343868035c4c5061c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
