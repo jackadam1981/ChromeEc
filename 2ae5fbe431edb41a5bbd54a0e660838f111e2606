@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALn///ls\u003d",
+        "filename": "chip/lm4/peci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-02T17:09:51Z",
+      "side": 1,
+      "message": "Should make this match the software polling rate.",
+      "revId": "2ae5fbe431edb41a5bbd54a0e660838f111e2606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn///lk\u003d",
+        "filename": "chip/lm4/peci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-02T17:09:51Z",
+      "side": 1,
+      "message": "These are the delays that I guessed at.  They\u0027re probably sub-optimal.",
+      "revId": "2ae5fbe431edb41a5bbd54a0e660838f111e2606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
