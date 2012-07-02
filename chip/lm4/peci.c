@@ -20,7 +20,7 @@
 #define PECI_TJMAX 105
 
 /* Initial PECI baud rate */
-#define PECI_BAUD_RATE 150000
+#define PECI_BAUD_RATE 100000
 
 /* Polling interval for PECI, in ms */
 #define PECI_POLL_INTERVAL_MS 200
@@ -29,7 +29,9 @@
 #define PECI_TD_FET_NS 25  /* Guess; TODO: what is real delay */
 #define PECI_TD_INT_NS 80
 
-static int last_temp_val;
+#define TEMP_AVG_LENGTH 4  /* Should be power of 2 */
+static int temp_vals[TEMP_AVG_LENGTH];
+static int temp_idx = 0;
 
 /* Configures the GPIOs for the PECI module. */
 static void configure_gpios(void)
@@ -55,18 +57,29 @@ int peci_get_cpu_temp(void)
 
 int peci_temp_sensor_poll(void)
 {
-	last_temp_val = peci_get_cpu_temp();
-
-	if (last_temp_val > 0)
-		return EC_SUCCESS;
-	else
-		return EC_ERROR_UNKNOWN;
+	temp_vals[temp_idx] = peci_get_cpu_temp();
+	temp_idx = (temp_idx + 1) & (TEMP_AVG_LENGTH - 1);
+	return EC_SUCCESS;
 }
 
 
 int peci_temp_sensor_get_val(int idx)
 {
-	return last_temp_val;
+	int sum = 0;
+	int success_cnt = 0;
+	int i;
+
+	for (i = 0; i < TEMP_AVG_LENGTH; ++i) {
+		if (temp_vals[i] >= 0) {
+			success_cnt++;
+			sum += temp_vals[i];
+		}
+	}
+
+	if (success_cnt)
+		return sum / success_cnt;
+	else
+		return -1;
 }
 
 
