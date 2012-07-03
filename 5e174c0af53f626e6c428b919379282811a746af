@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAALn//+Qo\u003d",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-07-03T20:29:45Z",
+      "side": 1,
+      "message": "s/slow/slot",
+      "revId": "5e174c0af53f626e6c428b919379282811a746af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAALn//+e4\u003d",
         "filename": "common/host_command.c",
         "patchSetId": 1
@@ -47,6 +64,24 @@
       "writtenOn": "2012-07-03T19:36:33Z",
       "side": 1,
       "message": "Not completely sure, but I do see it more, yes.",
+      "parentUuid": "AAAALn//+fI\u003d",
+      "revId": "5e174c0af53f626e6c428b919379282811a746af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//+Q4\u003d",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-07-03T20:29:45Z",
+      "side": 1,
+      "message": "Not sure about the preferred style in the kernel (both are present there afaict), but to toss in my $0.02...\n\nI personally like using array notation when dealing with a chunk of memory logically divided into homogeneous sections, and use arithmetic notation when such division is not present or not important. The former is clearer w.r.t. type handling IMHO, so for this use case I\u0027d leave as-is.\n\nNo strong feelings about it either way.",
       "parentUuid": "AAAALn//+fI\u003d",
       "revId": "5e174c0af53f626e6c428b919379282811a746af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
