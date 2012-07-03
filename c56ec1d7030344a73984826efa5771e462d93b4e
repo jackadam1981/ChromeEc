@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAALn///h4\u003d",
+        "filename": "chip/stm32/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-07-03T00:17:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAALH//zUA\u003d",
+      "revId": "c56ec1d7030344a73984826efa5771e462d93b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAALH//zYA\u003d",
         "filename": "chip/stm32/hwtimer.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2012-06-30T00:14:45Z",
       "side": 1,
       "message": "out of place comment?",
+      "revId": "c56ec1d7030344a73984826efa5771e462d93b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn///h0\u003d",
+        "filename": "chip/stm32/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-07-03T00:17:26Z",
+      "side": 1,
+      "message": "I think this should say TIM4, the LS 16-bits of the 32-bit counter",
+      "parentUuid": "AAAALH//zYA\u003d",
       "revId": "c56ec1d7030344a73984826efa5771e462d93b4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAALn///g8\u003d",
+        "filename": "chip/stm32/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-07-03T00:17:26Z",
+      "side": 1,
+      "message": "I think this is just that we want to count down on every overflow of TIM4.",
+      "parentUuid": "AAAALH//zYk\u003d",
+      "revId": "c56ec1d7030344a73984826efa5771e462d93b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAALH//zaU\u003d",
         "filename": "chip/stm32/hwtimer.c",
         "patchSetId": 1
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "AAAALn///hE\u003d",
+        "filename": "chip/stm32/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-07-03T00:17:26Z",
+      "side": 1,
+      "message": "OK I have changed it to automatically reset when we get a timer interrupt.",
+      "parentUuid": "AAAALH//zaU\u003d",
+      "revId": "c56ec1d7030344a73984826efa5771e462d93b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAALH//zZU\u003d",
         "filename": "chip/stm32/hwtimer.c",
         "patchSetId": 1
@@ -81,6 +153,24 @@
       "writtenOn": "2012-06-30T00:14:45Z",
       "side": 1,
       "message": "The counting hasn\u0027t started yet (it starts a couple lines down)",
+      "revId": "c56ec1d7030344a73984826efa5771e462d93b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn///hM\u003d",
+        "filename": "chip/stm32/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-07-03T00:17:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAALH//zZU\u003d",
       "revId": "c56ec1d7030344a73984826efa5771e462d93b4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -140,6 +230,24 @@
     },
     {
       "key": {
+        "uuid": "AAAALn///fI\u003d",
+        "filename": "include/hwtimer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-07-03T00:17:26Z",
+      "side": 1,
+      "message": "It doesn\u0027t save a lot of space, but given that it is a cheap win it seems worth it to me.",
+      "parentUuid": "AAAALH//zT0\u003d",
+      "revId": "c56ec1d7030344a73984826efa5771e462d93b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAALH//zeY\u003d",
         "filename": "include/hwtimer.h",
         "patchSetId": 1
@@ -157,6 +265,24 @@
     },
     {
       "key": {
+        "uuid": "AAAALn///e8\u003d",
+        "filename": "include/hwtimer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-07-03T00:17:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAALH//zeY\u003d",
+      "revId": "c56ec1d7030344a73984826efa5771e462d93b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAALH//zeU\u003d",
         "filename": "include/hwtimer.h",
         "patchSetId": 1
@@ -168,6 +294,24 @@
       "writtenOn": "2012-06-30T00:14:45Z",
       "side": 1,
       "message": "s/warning/warn",
+      "revId": "c56ec1d7030344a73984826efa5771e462d93b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn///e4\u003d",
+        "filename": "include/hwtimer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-07-03T00:17:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAALH//zeU\u003d",
       "revId": "c56ec1d7030344a73984826efa5771e462d93b4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
