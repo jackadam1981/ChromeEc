@@ -280,20 +280,29 @@ static int calc_next_state(int state)
 	return wait_t1_idle();
 }
 
+int charger_enable_request;
+
 void pmu_charger_task(void)
 {
 	int state = ST_IDLE;
 	int next_state;
-
-	pmu_init();
+	int enabled = 0;
 
 	while (1) {
-		next_state = calc_next_state(state);
-		if (next_state != state) {
-			CPRINTF("[batt] state %s -> %s\n",
-				state_list[state],
-				state_list[next_state]);
-			state = next_state;
+		if (enabled != charger_enable_request) {
+			enabled = charger_enable_request;
+			if (enabled)
+				pmu_init();
+		}
+
+		if (enabled) {
+			next_state = calc_next_state(state);
+			if (next_state != state) {
+				CPRINTF("[batt] state %s -> %s\n",
+					state_list[state],
+					state_list[next_state]);
+				state = next_state;
+			}
 		}
 	}
 }
