@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALn//9vw\u003d",
+        "filename": "common/gaia_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-07-04T04:37:12Z",
+      "side": 1,
+      "message": "Do you actually need this variable or could you just use similar code to that for the power button below? It doesn\u0027t seem like the variable does much.",
+      "revId": "c1fe9fdc723205e38738b4a1ac138933b43ddf57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
