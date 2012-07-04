@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALn//9x4\u003d",
+        "filename": "util/comm-i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-07-04T02:54:27Z",
+      "side": 1,
+      "message": "perhaps s/p/req/ ?\n\nor something a little longer than p?",
+      "revId": "bf471291241b65c674b75819ef4d9d44ee908b1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//9xs\u003d",
+        "filename": "util/comm-i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-07-04T02:54:27Z",
+      "side": 1,
+      "message": "It seems a bit off to use the memmap region for strings...",
+      "revId": "bf471291241b65c674b75819ef4d9d44ee908b1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//9x0\u003d",
+        "filename": "util/comm-i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-07-04T02:54:27Z",
+      "side": 1,
+      "message": "Here you return the string length",
+      "revId": "bf471291241b65c674b75819ef4d9d44ee908b1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//9xw\u003d",
+        "filename": "util/comm-i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-07-04T02:54:27Z",
+      "side": 1,
+      "message": "and here the string length + 1",
+      "revId": "bf471291241b65c674b75819ef4d9d44ee908b1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
