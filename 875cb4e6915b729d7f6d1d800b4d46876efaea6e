@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALn//9gI\u003d",
+        "filename": "chip/lm4/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-04T15:36:38Z",
+      "side": 1,
+      "message": "Swap fan_en and fan_rpm so the 16-bit value goes first; happier for struct packing.",
+      "revId": "875cb4e6915b729d7f6d1d800b4d46876efaea6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//9gE\u003d",
+        "filename": "chip/lm4/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-04T15:36:38Z",
+      "side": 1,
+      "message": "pwm_get_fan_enabled()",
+      "revId": "875cb4e6915b729d7f6d1d800b4d46876efaea6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//9gA\u003d",
+        "filename": "chip/lm4/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-04T15:36:38Z",
+      "side": 1,
+      "message": "here too",
+      "revId": "875cb4e6915b729d7f6d1d800b4d46876efaea6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
