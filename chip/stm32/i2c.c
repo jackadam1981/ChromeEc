@@ -137,7 +137,9 @@ void host_send_response(int slot, enum ec_status result, const uint8_t *data,
 	*out++ = sum & 0xff;
 
 	/* send the answer to the AP */
+	mutex_lock(&i2c_mutex);
 	i2c_write_raw(I2C2, host_buffer, out - host_buffer);
+	mutex_unlock(&i2c_mutex);
 }
 
 uint8_t *host_get_buffer(int slot)
