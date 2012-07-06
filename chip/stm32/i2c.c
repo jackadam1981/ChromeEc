@@ -27,6 +27,9 @@
 /* I2C bus frequency */
 #define I2C_FREQ 100000 /* Hz */
 
+/* I2C bit period in microseconds */
+#define I2C_PERIOD_US	(1000000 / I2C_FREQ)
+
 /* Clock divider for I2C controller */
 #define I2C_CCR (CPU_CLOCK/(2 * I2C_FREQ))
 
@@ -37,6 +40,10 @@
 #define I2C1      STM32_I2C1_PORT
 #define I2C2      STM32_I2C2_PORT
 
+enum {
+	/* A stop condition should take two clocks, so allow four */
+	TIMEOUT_STOP_SENT_US	= I2C_PERIOD_US * 4,
+};
 
 static uint16_t i2c_sr1[NUM_PORTS];
 static struct mutex i2c_mutex;
@@ -213,6 +220,10 @@ static void i2c_error_handler(int port)
 static void i2c2_error_interrupt(void) { i2c_error_handler(I2C2); }
 DECLARE_IRQ(STM32_IRQ_I2C2_ER, i2c2_error_interrupt, 2);
 
+/*
+ * TODO(sjg@chromium.org): Duplicated code here. Should be a function whcih takes
+ * the port as a parameter.
+ */
 static int i2c_init2(void)
 {
 	/* enable I2C2 clock */
@@ -399,14 +410,42 @@ static void master_stop(int port)
 	STM32_I2C_CR1(port) |= (1 << 9);
 }
 
+static int wait_until_stop_sent(int port)
+{
+	timestamp_t deadline;
+
+	deadline = get_time();
+	deadline.val += TIMEOUT_STOP_SENT_US;
+
+	while (STM32_I2C_CR1(port) & (1 >> 9)) {
+		if (timestamp_expired(deadline, NULL)) {
+			ccprintf("Stop event deadline passed: cr1=%#x\n",
+				 STM32_I2C_CR1(port));
+			return EC_ERROR_TIMEOUT;
+		}
+	}
+
+	return EC_SUCCESS;
+}
+
+/**
+ * Clean up after a master transaction, making sure the bus is ok and back
+ * into slave mode
+ *
+ * @param port	Port number to clean up (STM32_I2Cx_PORT)
+ * @param rv	Return vaule received from previous i2c transactions
+ */
 static void handle_i2c_error(int port, int rv)
 {
 	timestamp_t t1, t2;
 	uint32_t r;
+	int loop;
 
 	/* we have not used the bus, just exit */
-	if (rv == EC_ERROR_BUSY)
+	if (rv == EC_ERROR_BUSY) {
+		panic_puts("<not used> ");
 		return;
+	}
 
 	if (rv)
 		dump_i2c_reg(port);
@@ -418,15 +457,17 @@ static void handle_i2c_error(int port, int rv)
 	r = STM32_I2C_SR2(port);
 	/* Clear busy state */
 	t1 = get_time();
-	while (r & 2) {
+	for (loop = 0; r & 2; loop++) {
 		t2 = get_time();
-		if (t2.val - t1.val > 1000000) {
+		if (t2.val - t1.val > 100000) {
 			dump_i2c_reg(port);
+			panic_printf("Gave up waiting for bus\n");
 			goto cr_cleanup;
 		}
 		/* Send stop */
-		master_stop(port);
-		usleep(10000);
+		if (loop)
+			master_stop(port);
+		usleep(50);
 		r = STM32_I2C_SR2(port);
 	}
 cr_cleanup:
@@ -541,7 +582,7 @@ static int i2c_master_receive(int port, int slave_addr, uint8_t *data,
 		data[0] = STM32_I2C_DR(port);
 	}
 
-	return EC_SUCCESS;
+	return wait_until_stop_sent(port);
 }
 
 /**
