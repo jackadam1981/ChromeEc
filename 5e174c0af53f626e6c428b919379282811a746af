@@ -86,6 +86,24 @@
       "revId": "5e174c0af53f626e6c428b919379282811a746af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//8oE\u003d",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-07T23:01:53Z",
+      "side": 1,
+      "message": "SGTM.  One more syntax item to add to the list for code cleanup elsewhere.",
+      "parentUuid": "AAAALn//+Q4\u003d",
+      "revId": "5e174c0af53f626e6c428b919379282811a746af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
