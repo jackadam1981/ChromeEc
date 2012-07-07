@@ -7,14 +7,20 @@
 
 #include <stdarg.h>
 
+#include "common.h"
 #include "console.h"
+#include "printf.h"
 #include "task.h"
 #include "uart.h"
 #include "util.h"
-#include "printf.h"
 
 /* Buffer sizes; should be power of 2 */
+#ifdef BOARD_link
+#define TX_BUF_SIZE 1024
+#else
 #define TX_BUF_SIZE 512
+#endif
+
 #define RX_BUF_SIZE 128  /* suggest larger than 80 to copy&paste script. */
 #define HISTORY_SIZE 8
 
