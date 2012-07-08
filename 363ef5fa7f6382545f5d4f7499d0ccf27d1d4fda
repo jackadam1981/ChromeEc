@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALn//8kU\u003d",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-07-08T01:28:39Z",
+      "side": 1,
+      "message": "How about adding a CONFIG, like\n\n#ifndef CONFIG_UART_TX_BUF_SIZE\n#define CONFIG_UART_TX_BUF_SIZE 512\n#endif\n\nso that link can just put this in its config file?",
+      "revId": "363ef5fa7f6382545f5d4f7499d0ccf27d1d4fda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
