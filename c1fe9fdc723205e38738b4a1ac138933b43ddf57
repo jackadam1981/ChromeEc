@@ -16,6 +16,24 @@
       "revId": "c1fe9fdc723205e38738b4a1ac138933b43ddf57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//8jg\u003d",
+        "filename": "common/gaia_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-07-08T02:03:41Z",
+      "side": 1,
+      "message": "Yes, otherwise the machine will turn back on after the user does a keyboard power off because the while loop in gaia_power_task() will iterate and call check_for_power_on_event(). That will then return 1 since the lid must have been opened at the time if the the keyboard was used to power off.\n\nSo basically we want to ensure that the only time the lid switch impacts the power state machine is when a change has been detected *and* the current state is \"open,\" implying a closed --\u003e open transition.",
+      "parentUuid": "AAAALn//9vw\u003d",
+      "revId": "c1fe9fdc723205e38738b4a1ac138933b43ddf57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
