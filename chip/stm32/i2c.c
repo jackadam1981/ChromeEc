@@ -140,9 +140,8 @@ void host_send_response(int slot, enum ec_status result, const uint8_t *data,
 	i2c_write_raw(I2C2, host_buffer, out - host_buffer);
 }
 
-uint8_t *host_get_buffer(int slot)
+uint8_t *host_get_buffer(void)
 {
-	ASSERT(slot == 0);
 	return host_buffer + 1 /* skip room for error code */;
 }
 
