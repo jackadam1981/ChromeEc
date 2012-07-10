@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALn//6yA\u003d",
+        "filename": "include/vboot.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-07-10T21:05:27Z",
+      "side": 1,
+      "message": "s/VBOOT_FLAGS_IGNORE/VBOOT_FLAGS_UNUSED/\n\nWhen I see \"Ignore\", I think it\u0027s telling me to ignore something else.",
+      "revId": "4fa060482c2f871dd75548d1209039a5fcf9afd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
