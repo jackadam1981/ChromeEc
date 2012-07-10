@@ -27,8 +27,6 @@ const char help_str[] =
 	"Commands:\n"
 	"  autofanctrl <on>\n"
 	"      Turn on automatic fan speed control.\n"
-	"  backlight <enabled>\n"
-	"      Enable/disable LCD backlight\n"
 	"  battery\n"
 	"      Prints battery info\n"
 	"  chipinfo\n"
@@ -61,6 +59,10 @@ const char help_str[] =
 	"      Reads from EC flash to a file\n"
 	"  flashwrite <offset> <infile>\n"
 	"      Writes to EC flash from a file\n"
+	"  gpioget <GPIO name>\n"
+	"      Get the value of GPIO signal\n"
+	"  gpioset <GPIO name>\n"
+	"      Set the value of GPIO signal\n"
 	"  hello\n"
 	"      Checks for basic communication with EC\n"
 	"  kbpress\n"
@@ -105,8 +107,6 @@ const char help_str[] =
 	"      Get or set vboot flags\n"
 	"  version\n"
 	"      Prints EC version\n"
-	"  wireless <mask>\n"
-	"      Enable/disable WLAN/Bluetooth radio\n"
 	"\n"
 	"Not working for you?  Make sure LPC I/O is configured:\n"
 	"  pci_write32 0 0x1f 0 0x88 0x00fc0801\n"
@@ -1425,56 +1425,54 @@ int cmd_switches(int argc, char *argv[])
 }
 
 
-int cmd_wireless(int argc, char *argv[])
+int cmd_gpio_get(int argc, char *argv[])
 {
-	struct ec_params_switch_enable_wireless p;
-	char *e;
+	struct ec_params_gpio_get p;
+	struct ec_response_gpio_get r;
 	int rv;
 
 	if (argc != 2) {
-		fprintf(stderr, "Usage: %s <mask>\n", argv[0]);
-		fprintf(stderr, "  0x1 = WLAN\n"
-				"  0x2 = Bluetooth\n");
-		return -1;
-	}
-	p.enabled = strtol(argv[1], &e, 0);
-	if (e && *e) {
-		fprintf(stderr, "Bad value.\n");
+		fprintf(stderr, "Usage: %s <GPIO name>\n", argv[0]);
 		return -1;
 	}
 
-	rv = ec_command(EC_CMD_SWITCH_ENABLE_WIRELESS,
-			&p, sizeof(p), NULL, 0);
+	strcpy(p.name, argv[1]);
+
+	rv = ec_command(EC_CMD_GPIO_GET,
+			&p, sizeof(p), &r, sizeof(r));
 	if (rv < 0)
 		return rv;
 
-	printf("Success.\n");
+	printf("GPIO %s = %d\n", p.name, r.val);
 	return 0;
 }
 
 
-int cmd_lcd_backlight(int argc, char *argv[])
+int cmd_gpio_set(int argc, char *argv[])
 {
-	struct ec_params_switch_enable_backlight p;
+	struct ec_params_gpio_set p;
 	char *e;
 	int rv;
 
-	if (argc != 2) {
-		fprintf(stderr, "Usage: %s <0|1>\n", argv[0]);
+	if (argc != 3) {
+		fprintf(stderr, "Usage: %s <GPIO name> <0 | 1>\n", argv[0]);
 		return -1;
 	}
-	p.enabled = strtol(argv[1], &e, 0);
+
+	strcpy(p.name, argv[1]);
+
+	p.val = strtol(argv[2], &e, 0);
 	if (e && *e) {
 		fprintf(stderr, "Bad value.\n");
 		return -1;
 	}
 
-	rv = ec_command(EC_CMD_SWITCH_ENABLE_BKLIGHT,
+	rv = ec_command(EC_CMD_GPIO_SET,
 			&p, sizeof(p), NULL, 0);
 	if (rv < 0)
 		return rv;
 
-	printf("Success.\n");
+	printf("GPIO %s set to %d\n", p.name, p.val);
 	return 0;
 }
 
@@ -1685,7 +1683,6 @@ struct command {
 /* NULL-terminated list of commands */
 const struct command commands[] = {
 	{"autofanctrl", cmd_thermal_auto_fan_ctrl},
-	{"backlight", cmd_lcd_backlight},
 	{"battery", cmd_battery},
 	{"chipinfo", cmd_chipinfo},
 	{"echash", cmd_ec_hash},
@@ -1702,6 +1699,8 @@ const struct command commands[] = {
 	{"flashread", cmd_flash_read},
 	{"flashwrite", cmd_flash_write},
 	{"flashinfo", cmd_flash_info},
+	{"gpioget", cmd_gpio_get},
+	{"gpioset", cmd_gpio_set},
 	{"hello", cmd_hello},
 	{"kbpress", cmd_kbpress},
 	{"lightbar", cmd_lightbar},
@@ -1724,7 +1723,6 @@ const struct command commands[] = {
 	{"thermalset", cmd_thermal_set_threshold},
 	{"usbchargemode", cmd_usb_charge_set_mode},
 	{"version", cmd_version},
-	{"wireless", cmd_wireless},
 	{NULL, NULL}
 };
 
