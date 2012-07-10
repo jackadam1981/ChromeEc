@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALn//7FY\u003d",
+        "filename": "common/gpio_commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-10T15:49:04Z",
+      "side": 1,
+      "message": "EC_RES_ACCESS_DENIED",
+      "revId": "e71cb81c6f2fbe12069bc8b9e60e60313afda436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//7FU\u003d",
+        "filename": "common/gpio_commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-10T15:49:04Z",
+      "side": 1,
+      "message": "EC_RES_ACCESS_DENIED",
+      "revId": "e71cb81c6f2fbe12069bc8b9e60e60313afda436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//7Fg\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-10T15:49:04Z",
+      "side": 1,
+      "message": "Please comment that these are only available on EC if write protect has been disabled.",
+      "revId": "e71cb81c6f2fbe12069bc8b9e60e60313afda436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//7Fk\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-10T15:49:04Z",
+      "side": 1,
+      "message": "Use 32 bytes.  Otherwise at some point we\u0027ll make a 20-character GPIO name and be unable to set it.",
+      "revId": "e71cb81c6f2fbe12069bc8b9e60e60313afda436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//7Fc\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1439,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-10T15:49:04Z",
+      "side": 1,
+      "message": "possible overflow if strlen(argv[1]) + 1 \u003e sizeof(p.name)",
+      "revId": "e71cb81c6f2fbe12069bc8b9e60e60313afda436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
