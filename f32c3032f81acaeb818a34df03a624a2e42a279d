@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALn//7F0\u003d",
+        "filename": "chip/lm4/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-10T15:42:14Z",
+      "side": 1,
+      "message": "LPC_STATUS_MASK_TOH, for consistency",
+      "revId": "f32c3032f81acaeb818a34df03a624a2e42a279d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//7Fw\u003d",
+        "filename": "chip/lm4/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-10T15:42:14Z",
+      "side": 1,
+      "message": "Since this is init, I think you should set the entire ST register to an initial state (all 0?), the way we do for LPC_CH_KEYBOARD.",
+      "revId": "f32c3032f81acaeb818a34df03a624a2e42a279d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
