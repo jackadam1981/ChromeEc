@@ -5,14 +5,15 @@
 
 /* LPC module for Chrome EC */
 
-#include "board.h"
+#include "atomic.h"
+#include "common.h"
 #include "console.h"
+#include "ec_commands.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
 #include "i8042.h"
 #include "lpc.h"
-#include "ec_commands.h"
 #include "port80.h"
 #include "registers.h"
 #include "system.h"
@@ -283,7 +284,7 @@ void lpc_set_host_events(uint32_t mask)
 	if ((host_events & mask) == mask)
 		return;
 
-	host_events |= mask;
+	atomic_or(&host_events, mask);
 	CPRINTF("[%T event set 0x%08x -> %08x]\n", mask, host_events);
 	update_host_event_status();
 }
@@ -294,7 +295,7 @@ void lpc_clear_host_events(uint32_t mask)
 	if (!(host_events & mask))
 		return;
 
-	host_events &= ~mask;
+	atomic_clear(&host_events, mask);
 	CPRINTF("[%T event clear 0x%08x -> %08x]\n", mask, host_events);
 	update_host_event_status();
 }
