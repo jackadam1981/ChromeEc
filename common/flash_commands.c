@@ -186,42 +186,44 @@ DECLARE_CONSOLE_COMMAND(flashwp, command_flash_wp,
 /*****************************************************************************/
 /* Host commands */
 
-static int flash_command_get_info(uint8_t *data, int *resp_size)
+static int flash_command_get_info(struct host_cmd_handler_args *args)
 {
 	struct ec_response_flash_info *r =
-			(struct ec_response_flash_info *)data;
+		(struct ec_response_flash_info *)args->response;
 
 	r->flash_size = flash_get_size();
 	r->write_block_size = flash_get_write_block_size();
 	r->erase_block_size = flash_get_erase_block_size();
 	r->protect_block_size = flash_get_protect_block_size();
-	*resp_size = sizeof(struct ec_response_flash_info);
+	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_FLASH_INFO, flash_command_get_info);
+DECLARE_HOST_COMMAND(EC_CMD_FLASH_INFO,
+		     flash_command_get_info,
+		     EC_VER_MASK(0));
 
-static int flash_command_read(uint8_t *data, int *resp_size)
+static int flash_command_read(struct host_cmd_handler_args *args)
 {
 	struct ec_params_flash_read *p =
-			(struct ec_params_flash_read *)data;
-	struct ec_response_flash_read *r =
-			(struct ec_response_flash_read *)data;
+		(struct ec_params_flash_read *)args->params;
 
-	if (p->size > sizeof(r->data))
+	if (p->size > EC_PARAM_SIZE)
 		return EC_RES_ERROR;
 
-	if (flash_read(p->offset, p->size, r->data))
+	if (flash_read(p->offset, p->size, args->response))
 		return EC_RES_ERROR;
 
-	*resp_size = sizeof(struct ec_response_flash_read);
+	args->response_size = p->size;
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_FLASH_READ, flash_command_read);
+DECLARE_HOST_COMMAND(EC_CMD_FLASH_READ,
+		     flash_command_read,
+		     EC_VER_MASK(0));
 
-static int flash_command_write(uint8_t *data, int *resp_size)
+static int flash_command_write(struct host_cmd_handler_args *args)
 {
 	struct ec_params_flash_write *p =
-			(struct ec_params_flash_write *)data;
+		(struct ec_params_flash_write *)args->params;
 
 	if (p->size > sizeof(p->data))
 		return EC_RES_ERROR;
@@ -234,12 +236,14 @@ static int flash_command_write(uint8_t *data, int *resp_size)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_FLASH_WRITE, flash_command_write);
+DECLARE_HOST_COMMAND(EC_CMD_FLASH_WRITE,
+		     flash_command_write,
+		     EC_VER_MASK(0));
 
-static int flash_command_erase(uint8_t *data, int *resp_size)
+static int flash_command_erase(struct host_cmd_handler_args *args)
 {
 	struct ec_params_flash_erase *p =
-			(struct ec_params_flash_erase *)data;
+		(struct ec_params_flash_erase *)args->params;
 
 	if (system_unsafe_to_overwrite(p->offset, p->size))
 		return EC_RES_ACCESS_DENIED;
@@ -249,51 +253,60 @@ static int flash_command_erase(uint8_t *data, int *resp_size)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_FLASH_ERASE, flash_command_erase);
+DECLARE_HOST_COMMAND(EC_CMD_FLASH_ERASE,
+		     flash_command_erase,
+		     EC_VER_MASK(0));
 
-static int flash_command_wp_enable(uint8_t *data, int *resp_size)
+static int flash_command_wp_enable(struct host_cmd_handler_args *args)
 {
 	struct ec_params_flash_wp_enable *p =
-			(struct ec_params_flash_wp_enable *)data;
+		(struct ec_params_flash_wp_enable *)args->params;
 
 	return flash_lock_protect(p->enable_wp ? 1 : 0);
 }
-DECLARE_HOST_COMMAND(EC_CMD_FLASH_WP_ENABLE, flash_command_wp_enable);
+DECLARE_HOST_COMMAND(EC_CMD_FLASH_WP_ENABLE,
+		     flash_command_wp_enable,
+		     EC_VER_MASK(0));
 
-static int flash_command_wp_get_state(uint8_t *data, int *resp_size)
+static int flash_command_wp_get_state(struct host_cmd_handler_args *args)
 {
-	struct ec_response_flash_wp_enable *p =
-			(struct ec_response_flash_wp_enable *)data;
+	struct ec_response_flash_wp_enable *r =
+		(struct ec_response_flash_wp_enable *)args->params;
 
 	if (flash_get_protect_lock() & FLASH_PROTECT_LOCK_SET)
-		p->enable_wp = 1;
+		r->enable_wp = 1;
 	else
-		p->enable_wp = 0;
+		r->enable_wp = 0;
 
-	*resp_size = sizeof(struct ec_response_flash_wp_enable);
+	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_FLASH_WP_GET_STATE, flash_command_wp_get_state);
+DECLARE_HOST_COMMAND(EC_CMD_FLASH_WP_GET_STATE,
+		     flash_command_wp_get_state,
+		     EC_VER_MASK(0));
 
-static int flash_command_wp_set_range(uint8_t *data, int *resp_size)
+static int flash_command_wp_set_range(struct host_cmd_handler_args *args)
 {
 	struct ec_params_flash_wp_range *p =
-			(struct ec_params_flash_wp_range *)data;
-	enum ec_status ret;
+		(struct ec_params_flash_wp_range *)args->params;
 
+	/*
+	 * TODO: this is wrong; needs to translate return code to EC_RES_*.
+	 * But since this command is going away entirely, no rush.
+	 */
 	if (p->size)
-		ret = flash_set_protect(p->offset, p->size, 1);
+		return flash_set_protect(p->offset, p->size, 1);
 	else
-		ret = flash_set_protect(0, flash_get_size(), 0);
-
-	return ret;
+		return flash_set_protect(0, flash_get_size(), 0);
 }
-DECLARE_HOST_COMMAND(EC_CMD_FLASH_WP_SET_RANGE, flash_command_wp_set_range);
+DECLARE_HOST_COMMAND(EC_CMD_FLASH_WP_SET_RANGE,
+		     flash_command_wp_set_range,
+		     EC_VER_MASK(0));
 
-static int flash_command_wp_get_range(uint8_t *data, int *resp_size)
+static int flash_command_wp_get_range(struct host_cmd_handler_args *args)
 {
-	struct ec_response_flash_wp_range *p =
-			(struct ec_response_flash_wp_range *)data;
+	struct ec_response_flash_wp_range *r =
+		(struct ec_response_flash_wp_range *)args->response;
 	int pbsize = flash_get_protect_block_size();
 	int banks = flash_get_size() / pbsize;
 	const uint8_t *blocks;
@@ -320,14 +333,16 @@ static int flash_command_wp_get_range(uint8_t *data, int *resp_size)
 	/* TODO(crosbug.com/p/9492): return multiple region of ranges(). */
 	if (min == -1) {
 		/* None of bank is protected. */
-		p->offset = 0;
-		p->size = 0;
+		r->offset = 0;
+		r->size = 0;
 	} else {
-		p->offset = min * pbsize;
-		p->size = (max - min + 1) * pbsize;
+		r->offset = min * pbsize;
+		r->size = (max - min + 1) * pbsize;
 	}
 
-	*resp_size = sizeof(struct ec_response_flash_wp_range);
+	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_FLASH_WP_GET_RANGE, flash_command_wp_get_range);
+DECLARE_HOST_COMMAND(EC_CMD_FLASH_WP_GET_RANGE,
+		     flash_command_wp_get_range,
+		     EC_VER_MASK(0));
