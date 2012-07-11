@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAALn//53c\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-07-11T13:13:11Z",
+      "side": 1,
+      "message": "Sure.",
+      "parentUuid": "AAAALn//55w\u003d",
+      "revId": "070cc1738b9dffd44153b83710a3065e66a88476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAALn//55s\u003d",
         "filename": "chip/stm32/i2c.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2012-07-11T11:42:32Z",
       "side": 1,
       "message": "I wonder if we can put i2c host in a separate file? It seems almost completely separate from the slave part.",
+      "revId": "070cc1738b9dffd44153b83710a3065e66a88476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//53Y\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-07-11T13:13:11Z",
+      "side": 1,
+      "message": "Not sure. Since we\u0027re using host/device switching on the same bus. We might need a common interrupt handler. And a common error handler.",
+      "parentUuid": "AAAALn//55s\u003d",
       "revId": "070cc1738b9dffd44153b83710a3065e66a88476",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAALn//53U\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-07-11T13:13:11Z",
+      "side": 1,
+      "message": "Yes. This seems to be a common error. I will handle it in wait_status().",
+      "parentUuid": "AAAALn//55E\u003d",
+      "revId": "070cc1738b9dffd44153b83710a3065e66a88476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAALn//55I\u003d",
         "filename": "chip/stm32/i2c.c",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2012-07-11T11:42:32Z",
       "side": 1,
       "message": "Should we detect this and reset somehow?",
+      "revId": "070cc1738b9dffd44153b83710a3065e66a88476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//53Q\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-07-11T13:13:11Z",
+      "side": 1,
+      "message": "I didn\u0027t find this happen in current flow. This can be handled with ARLO bit.",
+      "parentUuid": "AAAALn//55I\u003d",
       "revId": "070cc1738b9dffd44153b83710a3065e66a88476",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "AAAALn//53M\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-07-11T13:13:11Z",
+      "side": 1,
+      "message": "I don\u0027t think we should wait till this happen. 25ms is too long. And we didn\u0027t enable PEC, so that should be ignored.\n\nwait_status() timeout will be changed to 10ms, same as i2c slave mode. Experiments on snow/daisy showed that most communication event latency is less than 2ms.",
+      "parentUuid": "AAAALn//55A\u003d",
+      "revId": "070cc1738b9dffd44153b83710a3065e66a88476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAALn//55U\u003d",
         "filename": "chip/stm32/i2c.c",
         "patchSetId": 1
@@ -98,6 +188,24 @@
       "writtenOn": "2012-07-11T11:42:32Z",
       "side": 1,
       "message": "What is this for? Does it ever happen?",
+      "revId": "070cc1738b9dffd44153b83710a3065e66a88476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//53I\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-07-11T13:13:11Z",
+      "side": 1,
+      "message": "Yes. This means i2c_claim_port() failed. Since we didn\u0027t touch any I2C registers, it is safe to return from here without touch hardware.",
+      "parentUuid": "AAAALn//55U\u003d",
       "revId": "070cc1738b9dffd44153b83710a3065e66a88476",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "AAAALn//53E\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-07-11T13:13:11Z",
+      "side": 1,
+      "message": "You\u0027re right. I will pick that CL.",
+      "parentUuid": "AAAALn//55g\u003d",
+      "revId": "070cc1738b9dffd44153b83710a3065e66a88476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAALn//55Q\u003d",
         "filename": "chip/stm32/i2c.c",
         "patchSetId": 1
@@ -132,6 +258,24 @@
       "writtenOn": "2012-07-11T11:42:32Z",
       "side": 1,
       "message": "What about using dma?",
+      "revId": "070cc1738b9dffd44153b83710a3065e66a88476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//53A\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-07-11T13:13:11Z",
+      "side": 1,
+      "message": "We should. I will spend some time to look into this.",
+      "parentUuid": "AAAALn//55Q\u003d",
       "revId": "070cc1738b9dffd44153b83710a3065e66a88476",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -155,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "AAAALn//524\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-07-11T13:13:11Z",
+      "side": 1,
+      "message": "I didn\u0027t see that in specification. In theory, yes.",
+      "parentUuid": "AAAALn//55M\u003d",
+      "revId": "070cc1738b9dffd44153b83710a3065e66a88476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAALn//55c\u003d",
         "filename": "chip/stm32/i2c.c",
         "patchSetId": 1
@@ -172,6 +334,24 @@
     },
     {
       "key": {
+        "uuid": "AAAALn//520\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-07-11T13:13:11Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "AAAALn//55c\u003d",
+      "revId": "070cc1738b9dffd44153b83710a3065e66a88476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAALn//55Y\u003d",
         "filename": "chip/stm32/i2c.c",
         "patchSetId": 1
@@ -183,6 +363,24 @@
       "writtenOn": "2012-07-11T11:42:32Z",
       "side": 1,
       "message": "Seems like this should be above all the host code above, instead.",
+      "revId": "070cc1738b9dffd44153b83710a3065e66a88476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//52w\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-07-11T13:13:11Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "AAAALn//55Y\u003d",
       "revId": "070cc1738b9dffd44153b83710a3065e66a88476",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
