@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALn//56I\u003d",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-07-11T11:28:07Z",
+      "side": 1,
+      "message": "/*\n * Detect",
+      "revId": "fb877c2b649f1a44bceccc92f1f4109f07027fc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//56E\u003d",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-07-11T11:28:07Z",
+      "side": 1,
+      "message": "TODO(email@...)",
+      "revId": "fb877c2b649f1a44bceccc92f1f4109f07027fc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//56A\u003d",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-07-11T11:28:07Z",
+      "side": 1,
+      "message": "Why do you check KB_PWR_ON_L as well here?\n\nPlease can you add an explanation of this?",
+      "revId": "fb877c2b649f1a44bceccc92f1f4109f07027fc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
