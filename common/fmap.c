@@ -18,6 +18,12 @@
 #define FMAP_VER_MAJOR 1
 #define FMAP_VER_MINOR 0
 
+/*
+ * For address containing CONFIG_FLASH_BASE (symbols in *.lds.S and variable),
+ * this computes the offset to the start of flash.
+ */
+#define RELATED(addr) ((addr) - CONFIG_FLASH_BASE)
+
 typedef struct _FmapHeader {
 	char        fmap_signature[FMAP_SIGNATURE_SIZE];
 	uint8_t     fmap_ver_major;
@@ -82,9 +88,9 @@ const struct _ec_fmap {
 			/* RO firmware version ID. Must be NULL terminated
 			 * ASCIIZ, and padded with \0. */
 			.area_name = "RO_FRID",
-			.area_offset = CONFIG_FW_RO_OFF +
+			.area_offset = RELATED(
 				(uint32_t)__version_struct_offset +
-				offsetof(struct version_struct,  version),
+				offsetof(struct version_struct,  version)),
 			.area_size = sizeof(version_data.version),
 			.area_flags = FMAP_AREA_STATIC | FMAP_AREA_RO,
 		},
@@ -92,7 +98,7 @@ const struct _ec_fmap {
 		/* Other RO stuff: FMAP, WP, KEYS, etc. */
 		{
 			.area_name = "FMAP",
-			.area_offset = (uint32_t)&ec_fmap,
+			.area_offset = RELATED((uint32_t)&ec_fmap),
 			.area_size = sizeof(ec_fmap),
 			.area_flags = FMAP_AREA_STATIC | FMAP_AREA_RO,
 		},
@@ -126,9 +132,9 @@ const struct _ec_fmap {
 			/* RW firmware version ID. Must be NULL terminated
 			 * ASCIIZ, and padded with \0. */
 			.area_name = "RW_FWID",
-			.area_offset = CONFIG_FW_RW_OFF +
+			.area_offset = RELATED(
 				(uint32_t)__version_struct_offset +
-				offsetof(struct version_struct,  version),
+				offsetof(struct version_struct,  version)),
 			.area_size = sizeof(version_data.version),
 			.area_flags = FMAP_AREA_STATIC,
 		},
