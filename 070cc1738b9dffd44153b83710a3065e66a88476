@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALn//55w\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-07-11T11:42:32Z",
+      "side": 1,
+      "message": "This function is almost the same as i2c_init1(). Can we have an i2c_init_port(int port) which handles both?",
+      "revId": "070cc1738b9dffd44153b83710a3065e66a88476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//55s\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-07-11T11:42:32Z",
+      "side": 1,
+      "message": "I wonder if we can put i2c host in a separate file? It seems almost completely separate from the slave part.",
+      "revId": "070cc1738b9dffd44153b83710a3065e66a88476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//55E\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-07-11T11:42:32Z",
+      "side": 1,
+      "message": "These two seem bad - should we detect and reset somehow?",
+      "revId": "070cc1738b9dffd44153b83710a3065e66a88476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//55I\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-07-11T11:42:32Z",
+      "side": 1,
+      "message": "Should we detect this and reset somehow?",
+      "revId": "070cc1738b9dffd44153b83710a3065e66a88476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//55A\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-07-11T11:42:32Z",
+      "side": 1,
+      "message": "and these two?",
+      "revId": "070cc1738b9dffd44153b83710a3065e66a88476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//55U\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-07-11T11:42:32Z",
+      "side": 1,
+      "message": "What is this for? Does it ever happen?",
+      "revId": "070cc1738b9dffd44153b83710a3065e66a88476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//55g\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-07-11T11:42:32Z",
+      "side": 1,
+      "message": "This will happen most of the time. Will it send a second stop bit? The datasheet says that this might happen.\n\nSee https://gerrit.chromium.org/gerrit/#patch,sidebyside,26832,1,chip/stm32/i2c.c\n\nI think we need a way of knowing that we have already sent a stop bit, and so don\u0027t send another one until a timeout has expired, or perhaps until the second time around the loop.",
+      "revId": "070cc1738b9dffd44153b83710a3065e66a88476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//55Q\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-07-11T11:42:32Z",
+      "side": 1,
+      "message": "What about using dma?",
+      "revId": "070cc1738b9dffd44153b83710a3065e66a88476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//55M\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-07-11T11:42:32Z",
+      "side": 1,
+      "message": "Would using dma allow us to avoid all this?",
+      "revId": "070cc1738b9dffd44153b83710a3065e66a88476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//55c\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-07-11T11:42:32Z",
+      "side": 1,
+      "message": "Should this wait until we have sent the stop bit?",
+      "revId": "070cc1738b9dffd44153b83710a3065e66a88476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//55Y\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-07-11T11:42:32Z",
+      "side": 1,
+      "message": "Seems like this should be above all the host code above, instead.",
+      "revId": "070cc1738b9dffd44153b83710a3065e66a88476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
