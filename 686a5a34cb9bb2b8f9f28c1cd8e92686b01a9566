@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALn//5zA\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-11T15:34:55Z",
+      "side": 1,
+      "message": "Let\u0027s put these at 0x92 / 0x93 so we don\u0027t fragment the command space as much.",
+      "revId": "686a5a34cb9bb2b8f9f28c1cd8e92686b01a9566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//5y8\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1506,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-11T15:34:55Z",
+      "side": 1,
+      "message": "either \"GPIO name too long\" or use %d and sizeof(p.name)-1 so it\u0027s correct if the struct changes.  (\"too long\" is sufficient, and easier)",
+      "revId": "686a5a34cb9bb2b8f9f28c1cd8e92686b01a9566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
