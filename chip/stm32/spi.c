@@ -192,11 +192,12 @@ static void spi_interrupt(int port)
 	args.params_size = sizeof(out_msg) - SPI_MSG_PROTO_BYTES;
 	/* TODO: use a different initial buffer for params vs. response */
 	args.response = args.params;
+	args.response_max = sizeof(out_msg) - SPI_MSG_PROTO_BYTES;
 	args.response_size = 0;
 
 	status = host_command_process(&args);
 
-	if (args.response_size < 0 || args.response_size > EC_PARAM_SIZE)
+	if (args.response_size < 0 || args.response_size > args.response_max)
 		status = EC_RES_INVALID_RESPONSE;
 	else if (args.response != args.params)
 		memcpy(args.response, args.params, args.response_size);

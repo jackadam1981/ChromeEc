@@ -33,13 +33,18 @@
 /* Command version mask */
 #define EC_VER_MASK(version) (1UL << (version))
 
-/* I/O addresses for LPC commands */
+/* I/O addresses for ACPI commands */
 #define EC_LPC_ADDR_ACPI_DATA  0x62
 #define EC_LPC_ADDR_ACPI_CMD   0x66
-#define EC_LPC_ADDR_USER_DATA  0x200
-#define EC_LPC_ADDR_USER_CMD   0x204
-#define EC_LPC_ADDR_USER_PARAM 0x880
-#define EC_PARAM_SIZE          128  /* Size of param area in bytes */
+
+/* I/O addressses for host commands */
+#define EC_LPC_ADDR_HOST_DATA  0x200
+#define EC_LPC_ADDR_HOST_CMD   0x204
+#define EC_LPC_ADDR_HOST_ARGS  0x800
+#define EC_LPC_ADDR_HOST_PARAM 0x804
+#define EC_HOST_PARAM_SIZE     0x0fc  /* Size of param area in bytes */
+#define EC_LPC_ADDR_OLD_PARAM  0x880  /* Offset of old param area */
+#define EC_OLD_PARAM_SIZE      0x080  /* Size of old param area in bytes */
 
 /* EC command register bit functions */
 #define EC_LPC_CMDR_DATA	(1 << 0)
@@ -356,8 +361,8 @@ struct ec_params_flash_write {
 	uint32_t offset;   /* Byte offset to write */
 	uint32_t size;     /* Size to write in bytes */
 	/*
-	 * Data to write.  Could really use EC_PARAM_SIZE - 8, but tidiest to
-	 * use a power of 2 so writes stay aligned.
+	 * Data to write.  Could really use EC_HOST_PARAM_SIZE - 8, but tidiest
+	 * to use a power of 2 so writes stay aligned.
 	 */
 	uint8_t data[64];
 } __packed;
