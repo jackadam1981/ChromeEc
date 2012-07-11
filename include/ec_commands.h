@@ -701,7 +701,7 @@ struct ec_response_host_event_mask {
 #define EC_CMD_HOST_EVENT_SET_WAKE_MASK 0x8e
 
 /*****************************************************************************/
-/* GPIO switch commands */
+/* Switch commands */
 
 /* Enable/disable LCD backlight */
 #define EC_CMD_SWITCH_ENABLE_BKLIGHT 0x90
@@ -715,6 +715,27 @@ struct ec_params_switch_enable_backlight {
 
 struct ec_params_switch_enable_wireless {
 	uint8_t enabled;
+} __packed;
+
+/*****************************************************************************/
+/* GPIO commands. Only available on EC if write protect has been disabled. */
+
+/* Set GPIO output value */
+#define EC_CMD_GPIO_SET 0x92
+
+struct ec_params_gpio_set {
+	char name[32];
+	uint8_t val;
+} __packed;
+
+/* Get GPIO value */
+#define EC_CMD_GPIO_GET 0x93
+
+struct ec_params_gpio_get {
+	char name[32];
+} __packed;
+struct ec_response_gpio_get {
+	uint8_t val;
 } __packed;
 
 /*****************************************************************************/
