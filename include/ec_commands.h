@@ -741,6 +741,12 @@ struct ec_params_switch_enable_wireless {
 } __packed;
 
 /*****************************************************************************/
+/* Charge state commands. Only available when flash write protect unlocked. */
+
+/* Force charge state machine to stop in idle mode */
+#define EC_CMD_CHARGE_FORCE_IDLE 0x96
+
+/*****************************************************************************/
 /* System commands */
 
 /*
