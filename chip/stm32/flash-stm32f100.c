@@ -33,10 +33,18 @@
 #define KEY1    0x45670123
 #define KEY2    0xCDEF89AB
 
-/* Lock bits*/
+/* Lock bits for FLASH_CR register */
+#define PG       (1<<0)
+#define PER      (1<<1)
+#define OPTPG    (1<<4)
+#define OPTER    (1<<5)
+#define STRT     (1<<6)
 #define CR_LOCK  (1<<7)
 #define PRG_LOCK 0
 #define OPT_LOCK (1<<9)
+
+static void write_optb(int byte, uint8_t value);
+
 
 int flash_get_write_block_size(void)
 {
@@ -72,6 +80,13 @@ int flash_physical_read(int offset, int size, char *data)
 }
 
 
+static void wait_busy(void)
+{
+	while (STM32_FLASH_SR & (1 << 0))
+		;
+}
+
+
 static int unlock(int locks)
 {
 	/* unlock CR if needed */
@@ -97,26 +112,67 @@ static void lock(void)
 static uint8_t read_optb(int byte)
 {
 	return *(uint8_t *)(STM32_OPTB_BASE + byte);
+}
 
+static void erase_optb(void)
+{
+	if (unlock(OPT_LOCK) != EC_SUCCESS)
+		return;
+
+	/* Must be set in 2 separate 2 lines. */
+	STM32_FLASH_CR |= OPTER;
+	STM32_FLASH_CR |= STRT;
+
+	wait_busy();
+	lock();
+}
+
+/*
+ * Since the option byte erase is WHOLE erase, this function is to keep
+ * rest of bytes, but make this byte 0xff.
+ * Note that this could make a recursive call to write_optb().
+ */
+static void preserve_optb(int byte)
+{
+	int i;
+	uint8_t optb[8];
+
+	if (*(uint8_t *)(STM32_OPTB_BASE + byte) == 0xff)
+		return;
+
+	for (i = 0; i < ARRAY_SIZE(optb); ++i)
+		optb[i] = read_optb(i);
+
+	optb[byte] = 0xff;
+
+	erase_optb();
+	for (i = 0; i < ARRAY_SIZE(optb); ++i)
+		write_optb(byte, optb[i]);
 }
 
 static void write_optb(int byte, uint8_t value)
 {
 	volatile int16_t *hword = (uint16_t *)(STM32_OPTB_BASE + byte);
 
+	/* The target byte is the value we want to write. */
+	if (*(uint8_t *)hword == value)
+		return;
+
+	/* Try to erase that byte back to 0xff. */
+	preserve_optb(byte);
+
 	if (unlock(OPT_LOCK) != EC_SUCCESS)
 		return;
 
 	/* set OPTPG bit */
-	STM32_FLASH_CR |= (1<<4);
-
-	/*TODO: how do we manage erasing (aka OPTER) ? */
+	STM32_FLASH_CR |= OPTPG;
 
 	*hword = value ;
 
 	/* reset OPTPG bit */
-	STM32_FLASH_CR |= (1<<4);
+	STM32_FLASH_CR |= OPTPG;
 
+	wait_busy();
 	lock();
 }
 
@@ -135,7 +191,7 @@ int flash_physical_write(int offset, int size, const char *data)
 	STM32_FLASH_SR = 0x34;
 
 	/* set PG bit */
-	STM32_FLASH_CR |= (1<<0);
+	STM32_FLASH_CR |= PG;
 
 
 	for ( ; size > 0; size -= sizeof(uint16_t)) {
@@ -174,7 +230,7 @@ int flash_physical_write(int offset, int size, const char *data)
 
 exit_wr:
 	/* Disable PG bit */
-	STM32_FLASH_CR &= ~(1<<0);
+	STM32_FLASH_CR &= ~PG;
 
 	lock();
 
@@ -194,7 +250,7 @@ int flash_physical_erase(int offset, int size)
 	STM32_FLASH_SR = 0x34;
 
 	/* set PER bit */
-	STM32_FLASH_CR |= (1<<1);
+	STM32_FLASH_CR |= PER;
 
 	for (address = CONFIG_FLASH_BASE + offset ;
 	     size > 0; size -= FLASH_ERASE_BYTES,
@@ -205,7 +261,7 @@ int flash_physical_erase(int offset, int size)
 		STM32_FLASH_AR = address;
 
 		/* set STRT bit : start erase */
-		STM32_FLASH_CR |= (1<<6);
+		STM32_FLASH_CR |= STRT;
 #ifdef CONFIG_TASK_WATCHDOG
 		/* Reload the watchdog timer in case the erase takes long time
 		 * so that erasing many flash pages
@@ -234,7 +290,7 @@ int flash_physical_erase(int offset, int size)
 
 exit_er:
 	/* reset PER bit */
-	STM32_FLASH_CR &= ~(1<<1);
+	STM32_FLASH_CR &= ~PER;
 
 	lock();
 
@@ -245,15 +301,13 @@ exit_er:
 int flash_physical_get_protect(int block)
 {
 	uint8_t val = read_optb(STM32_OPTB_WRP_OFF(block/8));
-	return val & (1 << (block % 8));
+	return !(val & (1 << (block % 8)));
 }
 
 
 void flash_physical_set_protect(int block)
 {
-	if (0) { /* TODO: crosbug.com/p/9849 verify WP */
 	int byte_off = STM32_OPTB_WRP_OFF(block/8);
-	uint8_t val = read_optb(byte_off) | (1 << (block % 8));
+	uint8_t val = read_optb(byte_off) & ~(1 << (block % 8));
 	write_optb(byte_off, val);
-	}
 }
