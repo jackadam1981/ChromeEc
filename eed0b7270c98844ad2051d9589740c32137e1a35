@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALn//3t8\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-07-13T08:30:45Z",
+      "side": 1,
+      "message": "Can the debounce_ts be moved into ctx since it is one of context.",
+      "revId": "eed0b7270c98844ad2051d9589740c32137e1a35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
