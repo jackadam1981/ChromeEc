@@ -27,9 +27,12 @@ def xor_sum(size, seed, mult, add):
         seed = seed * mult + add
     return ret
 
-def test_erase(helper, offset, size):
+def test_erase(helper, offset, size, expect_fail=False):
     helper.ec_command("hcflasherase %d %d" % (offset, size))
-    helper.wait_output("Flash erase at %x size %x" % (offset, size))
+    if expect_fail:
+        helper.wait_output("Command returned error")
+    else:
+        helper.wait_output("Flash erase at %x size %x" % (offset, size))
 
 def _get_read_ref(helper, offset, size):
     ret = []
@@ -38,7 +41,7 @@ def _get_read_ref(helper, offset, size):
     while size > 0:
         helper.ec_command("rw %d" % offset)
         h = helper.wait_output("read.*=\s+0x(?P<h>[0-9a-f]+)", use_re=True)["h"]
-	# Change endianess here
+        # Change endianess here
         retsub.append(re.sub('(..)(..)(..)(..)', r'\4\3\2\1', h))
         if len(retsub) == 8:
             ret.append(''.join(retsub))

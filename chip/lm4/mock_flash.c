@@ -94,5 +94,6 @@ int flash_physical_get_protect(int block)
 
 void flash_physical_set_protect(int block)
 {
+	uart_printf("Protect block %d\n", block);
 	mock_protect[block] = 1;
 }

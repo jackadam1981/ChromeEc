@@ -8,7 +8,7 @@
 
 test-list=hello pingpong timer_calib timer_dos timer_jump mutex thermal
 test-list+=power_button kb_deghost kb_debounce scancode typematic charging
-test-list+=flash_overwrite flash_rw_erase
+test-list+=flash_overwrite flash_rw_erase flash_wp
 #disable: powerdemo
 
 pingpong-y=pingpong.o
@@ -18,6 +18,7 @@ timer_dos-y=timer_dos.o
 mutex-y=mutex.o
 flash_overwrite-y=flash.o
 flash_rw_erase-y=flash.o
+flash_wp-y=flash.o
 
 # Mock modules for 'thermal'
 chip-mock-thermal-lpc.o=mock_lpc.o
@@ -55,7 +56,10 @@ common-mock-charging-charger_bq24725.o=mock_charger.o
 
 # Mock modules for 'flash_overwrite'
 chip-mock-flash_overwrite-flash.o=mock_flash.o
-chip-mock-flash_overwrite-gpio.o=mock_gpio.o
 
 # Mock modules for 'flash_rw_erase'
 chip-mock-flash_rw_erase-flash.o=mock_flash.o
+
+# Mock modules for 'flash_wp'
+chip-mock-flash_wp-flash.o=mock_flash.o
+chip-mock-flash_wp-gpio.o=mock_gpio.o
