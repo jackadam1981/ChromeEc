@@ -41,8 +41,8 @@
 static uint16_t i2c_sr1[NUM_PORTS];
 static struct mutex i2c_mutex;
 
-/* buffer for host commands (including error code and checksum) */
-static uint8_t host_buffer[EC_HOST_PARAM_SIZE + 2];
+/* buffer for host commands (including version, error code and checksum) */
+static uint8_t host_buffer[EC_HOST_PARAM_SIZE + 4];
 static struct host_cmd_handler_args host_cmd_args;
 
 /* current position in host buffer for reception */
@@ -129,6 +129,14 @@ static void i2c_send_response(struct host_cmd_handler_args *args)
 	uint8_t *out = host_buffer;
 	int sum, i;
 
+	/*
+	 * Optimization: if the input command had a version byte, then we
+	 * will have suggested that the response starts two bytes into the
+	 * buffer instead of 1 byte. Adjust our output similarlly to avoid
+	 * copying the data in this case.
+	 */
+	if (data == out + 2)
+		out++;
 	*out++ = args->result;
 	for (i = 0, sum = 0; i < size; i++, data++, out++) {
 		if (data != out)
@@ -144,15 +152,27 @@ static void i2c_send_response(struct host_cmd_handler_args *args)
 /* Process the command in the i2c host buffer */
 static void i2c_process_command(void)
 {
+	char *buff = host_buffer;
+	int cmd;
+
+	cmd = *buff++;
+	if (cmd >= EC_CMD_VERSION0) {
+		/* First byte indicates version */
+		host_cmd_args.version = cmd - EC_CMD_VERSION0;
+		cmd = *buff++;
+	} else {
+		/* Old style command */
+		host_cmd_args.version = 0;
+	}
+
 	/* we have an available command : execute it */
-	host_cmd_args.command = host_buffer[0];
+	host_cmd_args.command = cmd;
 	host_cmd_args.result = EC_RES_SUCCESS;
 	host_cmd_args.send_response = i2c_send_response;
-	host_cmd_args.version = 0;
-	host_cmd_args.params = host_buffer + 1;
+	host_cmd_args.params = buff;
 	host_cmd_args.params_size = EC_HOST_PARAM_SIZE;
-	/* skip room for error code */
-	host_cmd_args.response = host_buffer + 1;
+	/* skip room for error code and possibly version */
+	host_cmd_args.response = buff;
 	host_cmd_args.response_max = EC_HOST_PARAM_SIZE;
 	host_cmd_args.response_size = 0;
 	host_command_received(&host_cmd_args);
