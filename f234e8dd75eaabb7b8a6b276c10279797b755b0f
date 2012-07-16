@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALn//1/M\u003d",
+        "filename": "common/thermal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-16T22:41:13Z",
+      "side": 1,
+      "message": "Use the chipset output channel, with a timestamp:\n\ncprintf(CC_CHIPSET, \"[%T critical temperature; shutting down]\\n\");",
+      "revId": "f234e8dd75eaabb7b8a6b276c10279797b755b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//1/I\u003d",
+        "filename": "common/x86_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-16T22:41:13Z",
+      "side": 1,
+      "message": "Bonus points for using %T to get a timestamp (it also makes the debug output line up more nicely)",
+      "revId": "f234e8dd75eaabb7b8a6b276c10279797b755b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
