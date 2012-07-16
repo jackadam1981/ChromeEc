@@ -52,6 +52,24 @@
       "revId": "4bebfcefc2d295274ebf11f6bfd3b04da64e4f46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//2X8\u003d",
+        "filename": "board/snow/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-07-16T18:14:02Z",
+      "side": 1,
+      "message": "Yes, in gaia_power.c .\nEC use gpio_suspend_l to detect suspend. The inteot work, but gpio value is correct. This CL can read correct suspend state.",
+      "parentUuid": "AAAALn//2kw\u003d",
+      "revId": "4bebfcefc2d295274ebf11f6bfd3b04da64e4f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
