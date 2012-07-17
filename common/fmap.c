@@ -40,7 +40,16 @@ typedef struct _FmapAreaHeader {
 } __packed FmapAreaHeader;
 
 
-#define NUM_EC_FMAP_AREAS 17
+#ifdef CONFIG_RW_B
+# define NUM_EC_FMAP_AREAS       (5 + 8)
+# define CONFIG_SECTION_RW_SIZE  (CONFIG_SECTION_A_SIZE + CONFIG_SECTION_B_SIZE)
+#else
+# define NUM_EC_FMAP_AREAS       (5 + 1)
+# define CONFIG_SECTION_RW_SIZE  (CONFIG_SECTION_A_SIZE)
+#endif
+
+#define CONFIG_SECTION_RW_OFF   CONFIG_SECTION_A_OFF
+
 const struct _ec_fmap {
 	FmapHeader header;
 	FmapAreaHeader area[NUM_EC_FMAP_AREAS];
@@ -56,34 +65,33 @@ const struct _ec_fmap {
 		.fmap_nareas = NUM_EC_FMAP_AREAS,
 	},
 
+	/* Area Definition */
 	{
-	/* RO Firmware */
+		/* RO Firmware */
 		{
-			.area_name = "RO_SECTION",
+			/* Range of RO firmware to be updated and verified by
+			 * hash. Does not have volatile data (ex, calibration
+			 * results). */
+			.area_name = "EC_RO",
 			.area_offset = CONFIG_SECTION_RO_OFF,
 			.area_size = CONFIG_SECTION_RO_SIZE,
 			.area_flags = FMAP_AREA_STATIC | FMAP_AREA_RO,
 		},
 		{
-			.area_name = "BOOT_STUB",
-			.area_offset = CONFIG_FW_RO_OFF,
-			.area_size = CONFIG_FW_RO_SIZE,
+			/* The range for write protection, for factory
+			 * finalization. Should include (or identical to) EC_RO
+			 * area and is aligned to hardware specification. */
+			.area_name = "WP_RO",
+			.area_offset = CONFIG_SECTION_RO_OFF,
+			.area_size = CONFIG_SECTION_RO_SIZE,
 			.area_flags = FMAP_AREA_STATIC | FMAP_AREA_RO,
 		},
 		{
-			.area_name = "RO_FRID",	/* FIXME: Where is it? */
+			.area_name = "RO_FRID",
 			.area_offset = CONFIG_FW_RO_OFF +
 				(uint32_t)__version_struct_offset +
 				offsetof(struct version_struct,  version),
 			.area_size = sizeof(version_data.version),
-			.area_flags = FMAP_AREA_STATIC | FMAP_AREA_RO,
-		},
-
-		/* Other RO stuff: FMAP, GBB, etc. */
-		{
-			.area_name = "ROOT_KEY",
-			.area_offset = CONFIG_VBOOT_ROOTKEY_OFF,
-			.area_size = CONFIG_VBOOT_ROOTKEY_SIZE,
 			.area_flags = FMAP_AREA_STATIC | FMAP_AREA_RO,
 		},
 		{
@@ -92,38 +100,17 @@ const struct _ec_fmap {
 			.area_size = sizeof(ec_fmap),
 			.area_flags = FMAP_AREA_STATIC | FMAP_AREA_RO,
 		},
+
+		/* RW Firmware */
 		{
-			/* A dummy region to identify it as EC firmware */
-			.area_name = "EC_IMAGE",
-			.area_offset = CONFIG_SECTION_RO_OFF,
-			.area_size = 0, /* Always zero */
-			.area_flags = FMAP_AREA_STATIC | FMAP_AREA_RO,
-		},
-		{
-			/* The range for write protect, for lagecy firmware
-			 * updater. Should be identical to 'WP_RO'. */
-			.area_name = "EC_RO",
-			.area_offset = CONFIG_SECTION_RO_OFF,
-			.area_size = CONFIG_SECTION_RO_SIZE,
-			.area_flags = FMAP_AREA_STATIC | FMAP_AREA_RO,
-		},
-		{
-			/* The range for autoupdate to update A/B at once. */
+			/* The range of RW firmware to be auto-updated. */
 			.area_name = "EC_RW",
-			.area_offset = CONFIG_SECTION_A_OFF,
-			.area_size = CONFIG_SECTION_A_SIZE
-					+ CONFIG_SECTION_B_SIZE,
-			.area_flags = FMAP_AREA_STATIC | FMAP_AREA_RO,
-		},
-		{
-			/* The range for write protect, for factory finalize
-			 * test case. Should be identical to 'EC_RO'. */
-			.area_name = "WP_RO",
-			.area_offset = CONFIG_SECTION_RO_OFF,
-			.area_size = CONFIG_SECTION_RO_SIZE,
+			.area_offset = CONFIG_SECTION_RW_OFF,
+			.area_size = CONFIG_SECTION_RW_SIZE,
 			.area_flags = FMAP_AREA_STATIC | FMAP_AREA_RO,
 		},
 
+#ifdef CONFIG_RW_B
 		/* Firmware A */
 		{
 			.area_name = "RW_SECTION_A",
@@ -138,7 +125,7 @@ const struct _ec_fmap {
 			.area_flags = FMAP_AREA_STATIC,
 		},
 		{
-			.area_name = "RW_FWID_A", /* FIXME: Where is it? */
+			.area_name = "RW_FWID_A",
 			.area_offset = CONFIG_FW_A_OFF +
 				(uint32_t)__version_struct_offset +
 				offsetof(struct version_struct,  version),
@@ -151,8 +138,6 @@ const struct _ec_fmap {
 			.area_size = CONFIG_VBLOCK_SIZE,
 			.area_flags = FMAP_AREA_STATIC,
 		},
-
-#ifdef CONFIG_RW_B
 		/* Firmware B */
 		{
 			.area_name = "RW_SECTION_B",
@@ -167,7 +152,7 @@ const struct _ec_fmap {
 			.area_flags = FMAP_AREA_STATIC,
 		},
 		{
-			.area_name = "RW_FWID_B", /* FIXME: Where is it? */
+			.area_name = "RW_FWID_B",
 			.area_offset = CONFIG_FW_B_OFF +
 				(uint32_t)__version_struct_offset +
 				offsetof(struct version_struct,  version),
@@ -180,6 +165,15 @@ const struct _ec_fmap {
 			.area_size = CONFIG_VBLOCK_SIZE,
 			.area_flags = FMAP_AREA_STATIC,
 		},
-#endif /* CONFIG_RW_B */
+#else
+		{
+			.area_name = "RW_FWID",
+			.area_offset = CONFIG_FW_A_OFF +
+				(uint32_t)__version_struct_offset +
+				offsetof(struct version_struct,  version),
+			.area_size = sizeof(version_data.version),
+			.area_flags = FMAP_AREA_STATIC,
+		},
+#endif  /* CONFIG_RW_B */
 	}
 };
