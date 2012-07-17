@@ -8,8 +8,8 @@
 #include "config.h"
 #include "console.h"
 #include "flash.h"
-#include "gpio.h"
 #include "host_command.h"
+#include "power_button.h"
 #include "registers.h"
 #include "shared_mem.h"
 #include "system.h"
@@ -40,7 +40,6 @@ int stuck_locked;  /* Is physical flash stuck protected? */
 
 static struct persist_state pstate; /* RAM copy of pstate data */
 
-
 /* Return non-zero if the write protect pin is asserted */
 static int wp_pin_asserted(void)
 {
@@ -48,7 +47,7 @@ static int wp_pin_asserted(void)
 	/* TODO (vpalatin) : write protect scheme for stm32 */
 	return 0; /* always disable write protect */
 #else
-	return gpio_get_level(GPIO_WRITE_PROTECT);
+	return write_protect_asserted();
 #endif
 }
 
