@@ -3,8 +3,7 @@
  * found in the LICENSE file.
  */
 
-#include "board.h"
-#include "config.h"
+#include "common.h"
 
 OUTPUT_FORMAT("elf32-littlearm", "elf32-littlearm", "elf32-littlearm")
 OUTPUT_ARCH(arm)
@@ -21,7 +20,9 @@ SECTIONS
     . = ALIGN(CONFIG_FLASH_BANK_SIZE);
     .image.RW : AT(CONFIG_FLASH_BASE + CONFIG_SECTION_RW_OFF) {
         *(.image.RW)
+#ifdef CONFIG_VBOOT_SIG
         BYTE(0xEA)                      /* Mark end explicitly */
+#endif
     } > FLASH =0xff
     .padding : AT(CONFIG_FLASH_BASE + CONFIG_FLASH_SIZE - 1) {
         BYTE(0xff);

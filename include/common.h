@@ -8,7 +8,9 @@
 #ifndef __CROS_EC_COMMON_H
 #define __CROS_EC_COMMON_H
 
+#ifndef __ASSEMBLER__
 #include <stdint.h>
+#endif
 
 /*
  * Define __packed if someone hasn't beat us to it.  Linux kernel style
@@ -26,6 +28,8 @@
  */
 #include "board.h"
 #include "config.h"
+
+#ifndef __ASSEMBLER__
 
 /* List of common error codes that can be returned */
 enum ec_error_list {
@@ -61,5 +65,7 @@ enum ec_error_list {
 	EC_ERROR_INTERNAL_FIRST = 0x10000,
 	EC_ERROR_INTERNAL_LAST =  0x1FFFF
 };
+
+#endif /* !__ASSEMBLER__ */
 
 #endif  /* __CROS_EC_COMMON_H */
