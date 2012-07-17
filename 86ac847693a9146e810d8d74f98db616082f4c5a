@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAALn//1qA\u003d",
+        "filename": "chip/stm32/flash-stm32f100.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-07-17T09:28:51Z",
+      "side": 1,
+      "message": "Done. Also done in write_optb().",
+      "parentUuid": "AAAALn//2ME\u003d",
+      "revId": "86ac847693a9146e810d8d74f98db616082f4c5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAALn//2Mg\u003d",
         "filename": "chip/stm32/flash-stm32f100.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAALn//1qE\u003d",
+        "filename": "chip/stm32/flash-stm32f100.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-07-17T09:28:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAALn//2Mg\u003d",
+      "revId": "86ac847693a9146e810d8d74f98db616082f4c5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAALn//2Lc\u003d",
         "filename": "chip/stm32/flash-stm32f100.c",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2012-07-16T20:23:19Z",
       "side": 1,
       "message": "Should this clear OPTPG using \"\u0026\u003d ~OPTPG\"?",
+      "revId": "86ac847693a9146e810d8d74f98db616082f4c5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//1p8\u003d",
+        "filename": "chip/stm32/flash-stm32f100.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-07-17T09:28:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAALn//2Lc\u003d",
       "revId": "86ac847693a9146e810d8d74f98db616082f4c5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
