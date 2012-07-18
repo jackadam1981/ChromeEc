@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALn//y3U\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-18T23:04:41Z",
+      "side": 1,
+      "message": "I\u0027d rather see this done via functions.\n\nI\u0027ve implemented some for you:\nhttps://gerrit.chromium.org/gerrit/27830",
+      "revId": "4e55db471b19804f41c317fbb04bb6186d570e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//y2w\u003d",
+        "filename": "common/lightbar.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-18T23:04:41Z",
+      "side": 1,
+      "message": "Use constants from battery.h.  Add new one for battery percent 40.\n\nAnd move this there too...\n\ncommon/battery_precharge.c:#define POWERLED_GREEN_THRESHOLD 90\n\nThat way, lightbar will match the power adapter.",
+      "revId": "4e55db471b19804f41c317fbb04bb6186d570e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
