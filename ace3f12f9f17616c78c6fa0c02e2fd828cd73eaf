@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALn//y/Y\u003d",
+        "filename": "include/flash.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-07-18T22:21:51Z",
+      "side": 1,
+      "message": "Please specify in the comments why they are different.\nIs \"physical size\" the size that flashrom is told, or the actual size on the EC? When do we care about each one?",
+      "revId": "ace3f12f9f17616c78c6fa0c02e2fd828cd73eaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
