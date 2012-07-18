@@ -39,4 +39,8 @@ enum lightbar_command {
 	LIGHTBAR_NUM_CMDS
 };
 
+/* Some variables that we'd like to have updated by the battery charger */
+extern int battery_is_charging;
+extern int battery_percent;
+
 #endif  /* __CROS_EC_LIGHTBAR_H */
