@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALn//z2Q\u003d",
+        "filename": "test/flash_wp.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-18T15:43:45Z",
+      "side": 1,
+      "message": "Sorry, I\u0027ve just changed these commands out from underneath you.  The good news is they\u0027re simpler now.  Just\n\nflashwp enable\nflashwp disable\n\nwith no range to set (it automatically protects the RO code)",
+      "revId": "4c7a5d69170b0305dd5c20f265e29b72eaaaeb2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
