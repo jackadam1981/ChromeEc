@@ -14,6 +14,7 @@
 #include "console.h"
 #include "gpio.h"
 #include "host_command.h"
+#include "lightbar.h"
 #include "power_button.h"
 #include "power_led.h"
 #include "printf.h"
@@ -479,6 +480,12 @@ static enum power_state state_error(struct power_state_context *ctx)
 static void charging_progress(struct power_state_context *ctx)
 {
 	int seconds, minutes;
+
+#ifdef CONFIG_TASK_LIGHTBAR
+	/* Export some values for use by the lightbar task. */
+	battery_is_charging = ctx->curr.ac;
+	battery_percent = ctx->curr.batt.state_of_charge;
+#endif
 
 	if (ctx->curr.batt.state_of_charge !=
 	    ctx->prev.batt.state_of_charge) {
