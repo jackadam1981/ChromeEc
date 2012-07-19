@@ -11,7 +11,7 @@
 #include "common.h"
 
 enum feature_code {
-	EC_FEATURE_EXAMPLE = 1,
+	EC_FEATURE_I8042 = 1,
 };
 
 #define EC_FEATURE_MASK(feature_code) (1UL << ((feature_code) - 1))
