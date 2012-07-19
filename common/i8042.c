@@ -32,6 +32,7 @@
 #endif
 
 
+static int i8042_enabled;
 static int i8042_irq_enabled;
 
 
@@ -109,6 +110,27 @@ void i8042_disable_keyboard_irq(void) {
 	i8042_irq_enabled = 0;
 }
 
+/* Hook notified when feature changes. */
+static int i8042_feature_change(void)
+{
+	int old_state;
+
+	if (!features_are_supported(EC_FEATURE_MASK(EC_FEATURE_I8042)))
+		return EC_SUCCESS;
+
+	old_state = i8042_enabled;
+	i8042_enabled =
+		features_are_enabled(EC_FEATURE_MASK(EC_FEATURE_I8042)) ? 1 : 0;
+
+	if (i8042_enabled != old_state && i8042_enabled) {
+		i8042_flush_buffer();
+		task_wake(TASK_ID_I8042CMD);
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_HOOK(HOOK_FEATURE_CHANGE, i8042_feature_change, HOOK_PRIO_DEFAULT);
+
 
 static void i8042_handle_from_host(void)
 {
@@ -130,9 +152,15 @@ static void i8042_handle_from_host(void)
 
 void i8042_command_task(void)
 {
+	if (!features_are_supported(EC_FEATURE_MASK(EC_FEATURE_I8042)))
+		i8042_enabled = 1;
+
 	while (1) {
 		/* Either a new byte to host or host picking up can un-block. */
 		task_wait_event(-1);
+
+		if (!i8042_enabled)
+			continue;
 
 		while (1) {
 			uint8_t chr;
