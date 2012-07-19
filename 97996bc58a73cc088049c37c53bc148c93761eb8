@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAL3///T0\u003d",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-19T19:26:33Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this also be #ifdef CHIP_VARIANT_stm32f100?",
+      "revId": "97996bc58a73cc088049c37c53bc148c93761eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAL3///Tw\u003d",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-19T19:26:33Z",
+      "side": 1,
+      "message": "Setting -\u003e Set",
+      "revId": "97996bc58a73cc088049c37c53bc148c93761eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
