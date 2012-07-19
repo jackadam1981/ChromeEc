@@ -897,6 +897,31 @@ struct ec_params_reboot_ec {
 } __packed;
 
 /*****************************************************************************/
+/* Feature commands */
+
+/*
+ * Feature mask params and response structures, shared by all of the fearure
+ * commands below.
+ */
+struct ec_params_feature_mask {
+	uint32_t mask;
+} __packed;
+
+struct ec_response_feature_mask {
+	uint32_t mask;
+} __packed;
+
+#define EC_CMD_FEATURE_LOCK          0x97
+
+/* These all use ec_response_fearure_mask */
+#define EC_CMD_FEATURE_GET_SUPPORTED 0x98
+#define EC_CMD_FEATURE_GET_ENABLED   0x99
+
+/* These all use ec_params_feature_mask and ec_response_fearure_mask */
+#define EC_CMD_FEATURE_ENABLE        0x9a
+#define EC_CMD_FEATURE_DISABLE       0x9b
+
+/*****************************************************************************/
 /*
  * Special commands
  *

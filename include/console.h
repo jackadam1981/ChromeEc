@@ -50,6 +50,7 @@ enum console_channel {
 	CC_TASK,
 	CC_USBCHARGE,
 	CC_VBOOT,
+	CC_FEATURES,
 	/* Channel count; not itself a channel */
 	CC_CHANNEL_COUNT
 };
