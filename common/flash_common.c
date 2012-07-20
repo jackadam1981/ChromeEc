@@ -20,13 +20,12 @@
 #define PHYSICAL_BANKS (CONFIG_FLASH_PHYSICAL_SIZE / CONFIG_FLASH_BANK_SIZE)
 
 /* Persistent protection state flash offset / size / bank */
-#define PSTATE_OFFSET (CONFIG_SECTION_FLASH_PSTATE_OFF - CONFIG_FLASH_BASE)
+#define PSTATE_OFFSET CONFIG_SECTION_FLASH_PSTATE_OFF
 #define PSTATE_SIZE   CONFIG_SECTION_FLASH_PSTATE_SIZE
 #define PSTATE_BANK   (PSTATE_OFFSET / CONFIG_FLASH_BANK_SIZE)
 
 /* Read-only firmware offset and size in units of flash banks */
-#define RO_BANK_OFFSET ((CONFIG_SECTION_RO_OFF - CONFIG_FLASH_BASE) \
-			/ CONFIG_FLASH_BANK_SIZE)
+#define RO_BANK_OFFSET (CONFIG_SECTION_RO_OFF / CONFIG_FLASH_BANK_SIZE)
 #define RO_BANK_COUNT  (CONFIG_SECTION_RO_SIZE / CONFIG_FLASH_BANK_SIZE)
 
 
@@ -50,7 +49,10 @@ static int wp_pin_asserted(void)
 {
 #ifdef BOARD_link
 	return write_protect_asserted();
-#elif defined(CHIP_stm32)
+#elif defined(CHIP_VARIANT_stm32f100)
+	/* Fake write protect pin */
+	return write_protect_asserted();
+#elif defined(CHIP_STM32)
 	/* TODO (vpalatin) : write protect scheme for stm32 */
 	/*
 	 * Always enable write protect until we have WP pin.  For developer to
@@ -67,7 +69,7 @@ static int wp_pin_asserted(void)
 /* Read persistent state into pstate. */
 static int read_pstate(void)
 {
-#ifdef CHIP_stm32
+#ifdef NOTDEFINED /* CHIP_stm32*/
 	memset(&pstate, 0, sizeof(pstate));
 	pstate.version = PERSIST_STATE_VERSION;
 	return EC_SUCCESS;
@@ -90,7 +92,7 @@ static int read_pstate(void)
 /* Write persistent state from pstate, erasing if necessary. */
 static int write_pstate(void)
 {
-#ifdef CHIP_stm32
+#ifdef NOTDEFINED /*CHIP_stm32*/
 	return EC_SUCCESS;
 #else
 	int rv;
