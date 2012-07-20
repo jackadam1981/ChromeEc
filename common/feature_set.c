@@ -10,6 +10,7 @@
 #include "console.h"
 #include "feature_set.h"
 #include "host_command.h"
+#include "hooks.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_FEATURES, outstr)
@@ -40,6 +41,10 @@ static uint32_t enable_features(uint32_t mask)
 		CPRINTF("[%T feature set 0x%08x]\n", mask);
 
 	atomic_or(&features, mask);
+
+	/* Call hooks now that features changed */
+	hook_notify(HOOK_FEATURE_CHANGE, 0);
+
 	return features;
 }
 
@@ -50,6 +55,10 @@ static uint32_t disable_features(uint32_t mask)
 		CPRINTF("[%T feature clear 0x%08x]\n", mask);
 
 	atomic_clear(&features, mask);
+
+	/* Call hooks now that features changed */
+	hook_notify(HOOK_FEATURE_CHANGE, 0);
+
 	return features;
 }
 
