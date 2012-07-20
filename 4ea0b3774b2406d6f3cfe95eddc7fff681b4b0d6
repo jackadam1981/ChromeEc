@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAL3//+Wg\u003d",
+        "filename": "include/host_command.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-20T15:50:14Z",
+      "side": 1,
+      "message": "This is I2C protocol specific.  Rename to i2c_old_response or move it to a static variable inside i2c.c.",
+      "revId": "4ea0b3774b2406d6f3cfe95eddc7fff681b4b0d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
