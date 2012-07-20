@@ -549,8 +549,28 @@ int cmd_temperature(int argc, char *argv[])
 	char *e;
 
 	if (argc != 2) {
-		fprintf(stderr, "Usage: %s <sensorid>\n", argv[0]);
+		fprintf(stderr, "Usage: %s <sensorid> | all\n", argv[0]);
 		return -1;
+	}
+
+	if (strcmp(argv[1], "all") == 0) {
+		for (id = 0; id < 16; id++) {
+			rv = read_mapped_mem8(EC_MEMMAP_TEMP_SENSOR + id);
+			switch (rv) {
+			case 0xff:
+				break;
+			case 0xfe:
+				fprintf(stderr, "Sensor %d error\n", id);
+				break;
+			case 0xfd:
+				fprintf(stderr, "Sensor %d disabled\n", id);
+				break;
+			default:
+				printf("%d: %d\n", id,
+				       rv + EC_TEMP_SENSOR_OFFSET);
+			}
+		}
+		return 0;
 	}
 
 	id = strtol(argv[1], &e, 0);
@@ -562,20 +582,21 @@ int cmd_temperature(int argc, char *argv[])
 	/* Currently we only store up to 16 temperature sensor data in
 	 * mapped memory. */
 	if (id >= 16) {
-		printf("Sensor with ID greater than 16 unsupported.\n");
+		fprintf(stderr, "Invalid sensor ID\n");
 		return -1;
 	}
 
 	printf("Reading temperature...");
 	rv = read_mapped_mem8(EC_MEMMAP_TEMP_SENSOR + id);
+
 	if (rv == 0xff) {
 		printf("Sensor not present\n");
 		return -1;
 	} else if (rv == 0xfe) {
-		printf("Error\n");
+		fprintf(stderr, "Sensor error\n");
 		return -1;
 	} else if (rv == 0xfd) {
-		printf("Sensor disabled/unpowered\n");
+		fprintf(stderr, "Sensor disabled/unpowered\n");
 		return -1;
 	} else {
 		printf("%d\n", rv + EC_TEMP_SENSOR_OFFSET);
@@ -592,8 +613,20 @@ int cmd_temp_sensor_info(int argc, char *argv[])
 	char *e;
 
 	if (argc != 2) {
-		fprintf(stderr, "Usage: %s <sensorid>\n", argv[0]);
+		fprintf(stderr, "Usage: %s <sensorid> | all\n", argv[0]);
 		return -1;
+	}
+
+	if (strcmp(argv[1], "all") == 0) {
+		for (p.id = 0; p.id < 16; p.id++) {
+			rv = ec_command(EC_CMD_TEMP_SENSOR_GET_INFO,
+					&p, sizeof(p), &r, sizeof(r));
+			if (rv < 0)
+				continue;
+			printf("%d: %d %s\n", p.id, r.sensor_type,
+			       r.sensor_name);
+		}
+		return 0;
 	}
 
 	p.id = strtol(argv[1], &e, 0);
