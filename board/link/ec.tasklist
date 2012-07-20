@@ -28,3 +28,13 @@
 	TASK(CONSOLE, console_task, NULL) \
 	TASK(POWERBTN, power_button_task, NULL) \
 	TASK(KEYSCAN, keyboard_scan_task, NULL)
+
+/**
+ * List of supported features
+ *
+ * For each task, use the macro FEATURE(n, d) where :
+ * 'n' in the name of the feature, defined in include/feature_set.h
+ * 'd' in the default enabled value, either 0 or 1
+ */
+#define CONFIG_FEATURE_LIST \
+	FEATURE(I8042, 1)
