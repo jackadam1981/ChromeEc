@@ -23,6 +23,14 @@ static uint32_t features;
 /* Boolean to lock all the features at onetime. Not support bitwise lock. */
 static int features_locked;
 
+#define FEATURE_SYSJUMP_TAG 0x4654  /* "FT" */
+#define FEATURE_HOOK_VERSION 1
+
+/* Previous feature state before sysjump */
+struct feature_state {
+	uint32_t features;
+	uint32_t features_locked;
+};
 
 uint32_t features_are_supported(uint32_t mask)
 {
@@ -155,3 +163,22 @@ DECLARE_HOST_COMMAND(EC_CMD_FEATURE_DISABLE,
 		     host_cmd_feature_disable,
 		     EC_VER_MASK(0));
 
+/*****************************************************************************/
+/* Hooks */
+
+static int feature_initialize(void)
+{
+#define FEATURE(n, d) EC_FEATURE_MASK(EC_FEATURE_##n) |
+	supported_features = CONFIG_FEATURE_LIST 0;
+#undef FEATURE
+
+#define FEATURE(n, d) (d ? EC_FEATURE_MASK(EC_FEATURE_##n) : 0) |
+	features = CONFIG_FEATURE_LIST 0;
+#undef FEATURE
+
+	/* Call feature change hooks for notification */
+	hook_notify(HOOK_FEATURE_CHANGE, 0);
+
+	return EC_SUCCESS;
+}
+DECLARE_HOOK(HOOK_INIT, feature_initialize, HOOK_PRIO_DEFAULT);

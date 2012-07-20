@@ -9,6 +9,16 @@
 #define __CROS_EC_FEATURE_SET_H
 
 #include "common.h"
+#include "task.h"
+
+/*
+ * The supported and default-enabled features are defined in
+ * CONFIG_FEATURE_LIST which is in the board-specific tasklist file.
+ * If it is no defined, define an empty one in order not to break the build.
+ */
+#ifndef CONFIG_FEATURE_LIST
+#define CONFIG_FEATURE_LIST
+#endif
 
 enum feature_code {
 	EC_FEATURE_I8042 = 1,
