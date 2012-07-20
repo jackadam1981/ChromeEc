@@ -11,6 +11,7 @@
 #include "feature_set.h"
 #include "host_command.h"
 #include "hooks.h"
+#include "system.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_FEATURES, outstr)
@@ -166,6 +167,42 @@ DECLARE_HOST_COMMAND(EC_CMD_FEATURE_DISABLE,
 /*****************************************************************************/
 /* Hooks */
 
+/*
+ * Preserves the states of feature flags to keep their current states
+ * across a sysjump. It keeps keyboard still functional during a
+ * factory-style firmware update.
+ */
+static int feature_preserve_state(void)
+{
+	struct feature_state state;
+
+	state.features = features;
+	state.features_locked = features_locked;
+
+	system_add_jump_tag(FEATURE_SYSJUMP_TAG, FEATURE_HOOK_VERSION,
+			    sizeof(state), &state);
+
+	return EC_SUCCESS;
+}
+DECLARE_HOOK(HOOK_SYSJUMP, feature_preserve_state, HOOK_PRIO_DEFAULT);
+
+/* Restores the feature states after reboot_ec command. See above function. */
+static int feature_restore_state(void)
+{
+	const struct feature_state *prev;
+	int version, size;
+
+	prev = (const struct feature_state *)system_get_jump_tag(
+			FEATURE_SYSJUMP_TAG, &version, &size);
+	if (prev && version == FEATURE_HOOK_VERSION && size == sizeof(*prev)) {
+		/* Coming back from a sysjump, so restore settings. */
+		features = prev->features;
+		features_locked = prev->features_locked;
+	}
+
+	return EC_SUCCESS;
+}
+
 static int feature_initialize(void)
 {
 #define FEATURE(n, d) EC_FEATURE_MASK(EC_FEATURE_##n) |
@@ -175,6 +212,8 @@ static int feature_initialize(void)
 #define FEATURE(n, d) (d ? EC_FEATURE_MASK(EC_FEATURE_##n) : 0) |
 	features = CONFIG_FEATURE_LIST 0;
 #undef FEATURE
+
+	feature_restore_state();
 
 	/* Call feature change hooks for notification */
 	hook_notify(HOOK_FEATURE_CHANGE, 0);
