@@ -27,6 +27,7 @@
 #include "chipset.h"  /* This module implements chipset functions too */
 #include "console.h"
 #include "gpio.h"
+#include "feature_set.h"
 #include "hooks.h"
 #include "keyboard_scan.h"
 #include "power_led.h"
@@ -340,6 +341,9 @@ static int check_for_power_on_event(void)
  */
 static int power_on(void)
 {
+	/* Unlock all features on AP startup */
+	unlock_features();
+
 	/* Enable 5v power rail */
 	gpio_set_level(GPIO_EN_PP5000, 1);
 	/* wait to have stable power */

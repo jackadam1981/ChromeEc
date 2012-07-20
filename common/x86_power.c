@@ -9,6 +9,7 @@
 #include "chipset.h"
 #include "console.h"
 #include "gpio.h"
+#include "feature_set.h"
 #include "hooks.h"
 #include "host_command.h"
 #include "power_button.h"
@@ -521,6 +522,9 @@ void x86_power_task(void)
 			break;
 
 		case X86_S3S0:
+			/* Unlock all features on AP startup */
+			unlock_features();
+
 			/* Turn on power rails */
 			gpio_set_level(GPIO_ENABLE_VS, 1);
 
