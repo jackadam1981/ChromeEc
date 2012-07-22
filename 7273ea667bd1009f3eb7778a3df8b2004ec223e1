@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAL3//9Hk\u003d",
+        "filename": "chip/lm4/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-22T19:07:21Z",
+      "side": 1,
+      "message": "change line to:\n\nlpc_host_args-\u003eversion + lpc_host_args-\u003edata_size\n\nThat matches the other implementations.",
+      "revId": "7273ea667bd1009f3eb7778a3df8b2004ec223e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
