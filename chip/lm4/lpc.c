@@ -157,7 +157,7 @@ static void lpc_send_response(struct host_cmd_handler_args *args)
 		lpc_host_args->data_size = size;
 
 		csum = args->command + lpc_host_args->flags +
-			args->version + args->params_size;
+			args->version + args->response_size;
 
 		for (i = 0; i < size; i++)
 			csum += args->response[i];
