@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAL3//8tI\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-23T15:44:55Z",
+      "side": 1,
+      "message": "Make this\n\nEC_FLASH_REGION_INFO \n\nand take an enum for which region to return info on:\n\nenum ec_flash_region {\n  EC_FLASH_REGION_RO,\n  EC_FLASH_REGION_RW\n}\n\nand then flashrom can use it to find out how big the RO size is if you want.\n\nAlso,\n\n#define EC_VER_FLASH_REGION_INFO 1\n\nso all callers know the command is at version 1.\n\nAnd if you use version 1, you can use 0x16 for the command code, so it\u0027s contiguous with the other flash commands.",
+      "revId": "da925ef0955f6be55f97a6056a759e7b0ed1d744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
