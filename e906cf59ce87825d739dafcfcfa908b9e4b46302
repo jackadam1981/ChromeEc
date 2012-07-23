@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAL3//8+Y\u003d",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2012-07-23T06:04:55Z",
+      "side": 1,
+      "message": "This will produce a lot of characters to output. Can we do something like:\n\nuart_write_char(0x1B);\nuart_write_char(\u0027[\u0027);\n/* print (rx_cur_buf_head - rx_cur_buf_ptr) to UART here. */\nuart_write_char(\u0027C\u0027);\n\nSo that when console line is very long we don\u0027t corrupt our console display when moving cursor to the end.",
+      "revId": "e906cf59ce87825d739dafcfcfa908b9e4b46302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
