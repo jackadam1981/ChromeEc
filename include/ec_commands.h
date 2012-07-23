@@ -501,6 +501,15 @@ struct ec_response_flash_protect {
  * write protect.  These commands may be reused with version > 0.
  */
 
+/* Get the RW offset */
+#define EC_CMD_FLASH_RW_OFFSET 0x1a
+
+struct ec_response_flash_rw_offset {
+	uint32_t offset;
+	uint32_t size;
+} __packed;
+
+
 /*****************************************************************************/
 /* PWM commands */
 
