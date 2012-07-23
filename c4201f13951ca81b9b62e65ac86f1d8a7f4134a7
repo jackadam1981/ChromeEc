@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAL3//8sw\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-23T15:55:02Z",
+      "side": 1,
+      "message": "Should only skip for 0xff.  Errors are worth seeing.",
+      "revId": "c4201f13951ca81b9b62e65ac86f1d8a7f4134a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAL3//8sk\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-23T15:55:02Z",
+      "side": 1,
+      "message": "I think I reworded this just to \"invalid sensor ID\", since we now support up to 24.",
+      "revId": "c4201f13951ca81b9b62e65ac86f1d8a7f4134a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
