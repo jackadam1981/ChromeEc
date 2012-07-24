@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAMH///Xw\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-24T15:48:03Z",
+      "side": 1,
+      "message": "Please use #defined constants (as now done below; I added those after your initial patchset)  e.g. EC_TEMP_SENSOR_NOT_PRESENT",
+      "revId": "52fd95a3f1f0b82d9dfbfc4cecf2a1f890b27c71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAMH///Xo\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-24T15:48:03Z",
+      "side": 1,
+      "message": "Would \"%d: error\"  or \"%d: disabled\" be easier to parse, since the valid temp sensors print \"%d: %d\"?",
+      "revId": "52fd95a3f1f0b82d9dfbfc4cecf2a1f890b27c71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
