@@ -113,8 +113,15 @@ static void vboot_hash_init(void)
 		data_size = tag->size;
 	} else {
 		/* Start computing the hash of firmware A */
+		uint8_t *end = (uint8_t *)(CONFIG_FW_RW_OFF +
+					   CONFIG_FW_RW_SIZE - 1);
+		/* EC image is followed by an 0xea byte */
+		while (*end != 0xea)
+			end--;
+
 		vboot_hash_start(CONFIG_FW_RW_OFF - CONFIG_FLASH_BASE,
-				 CONFIG_FW_RW_SIZE, NULL, 0);
+				 (uint32_t)end - CONFIG_FW_RW_OFF,
+				 NULL, 0);
 	}
 }
 
