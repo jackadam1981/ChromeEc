@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAMH///YY\u003d",
+        "filename": "common/flash_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-24T15:40:22Z",
+      "side": 1,
+      "message": "default:\n  return EC_RES_INVALID_PARAM;",
+      "revId": "95b88241269c3940d9916e0ba7c5de5bef1ffd90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAMH///Yk\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-24T15:40:22Z",
+      "side": 1,
+      "message": "EC_CMD_FLASH_REGION_INFO",
+      "revId": "95b88241269c3940d9916e0ba7c5de5bef1ffd90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAMH///Yo\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-24T15:40:22Z",
+      "side": 1,
+      "message": "Descriptions here would be good.  That is,\n\n...RO  /* Read-only firmware image */\n...RW /* Rewritable firmware image */\n...WP_RO /* Flash which is write-protected at factory */",
+      "revId": "95b88241269c3940d9916e0ba7c5de5bef1ffd90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
