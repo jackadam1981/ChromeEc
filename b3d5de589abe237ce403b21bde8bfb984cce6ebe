@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAMH///W8\u003d",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-07-24T15:57:59Z",
+      "side": 1,
+      "message": "IMO the long-standing bug is here, we don\u0027t mind the file having the \"x\" permission. \"-r\" would be nice",
+      "revId": "b3d5de589abe237ce403b21bde8bfb984cce6ebe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAMH///W4\u003d",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-07-24T15:57:59Z",
+      "side": 1,
+      "message": "That was not the intended behavior when I wrote that script\nas my EC binary files often have suffixes.\nbut we can modify the behavior.",
+      "revId": "b3d5de589abe237ce403b21bde8bfb984cce6ebe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
