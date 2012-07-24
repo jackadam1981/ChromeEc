@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAMX////E\u003d",
+        "filename": "util/temp_metrics.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000108
+      },
+      "writtenOn": "2012-07-24T23:10:22Z",
+      "side": 1,
+      "message": "nit:  no blank line here",
+      "revId": "4920de10d515a175fff56f4dba0e891c59842ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAMX////M\u003d",
+        "filename": "util/temp_metrics.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000108
+      },
+      "writtenOn": "2012-07-24T23:10:22Z",
+      "side": 1,
+      "message": "This should be spelled \"system-services\"\n\nDoes this job need to specify respawn?",
+      "revId": "4920de10d515a175fff56f4dba0e891c59842ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAMX////I\u003d",
+        "filename": "util/temp_metrics.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000108
+      },
+      "writtenOn": "2012-07-24T23:10:22Z",
+      "side": 1,
+      "message": "nit: indent \u0027script ... end-script\u0027 contents by two spaces.",
+      "revId": "4920de10d515a175fff56f4dba0e891c59842ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
