@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAMH///R0\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2012-07-24T17:29:36Z",
+      "side": 1,
+      "message": "Yes, sorry about that, fixing now.",
+      "parentUuid": "AAAAMH///Xw\u003d",
+      "revId": "52fd95a3f1f0b82d9dfbfc4cecf2a1f890b27c71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAMH///Xo\u003d",
         "filename": "util/ectool.c",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2012-07-24T15:48:03Z",
       "side": 1,
       "message": "Would \"%d: error\"  or \"%d: disabled\" be easier to parse, since the valid temp sensors print \"%d: %d\"?",
+      "revId": "52fd95a3f1f0b82d9dfbfc4cecf2a1f890b27c71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAMH///Ro\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2012-07-24T17:29:36Z",
+      "side": 1,
+      "message": "Actually, I was completely avoiding that issue by using printf() for the valid sensors and fprintf(stderr) for the invalid ones.  So the logic is slightly different from the \"temps \u003cid\u003e\" code below, for which it may make more sense to use printfs since you\u0027re specifically requesting that sensor.  That\u0027s also why I didn\u0027t try to merge that code.\n\nThere are of course many other ways of thinking about it.",
+      "parentUuid": "AAAAMH///Xo\u003d",
       "revId": "52fd95a3f1f0b82d9dfbfc4cecf2a1f890b27c71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
