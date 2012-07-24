@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAMH//+/c\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-07-24T21:21:11Z",
+      "side": 1,
+      "message": "if we are reading one of the \"SENSOR_B\" values, are we really reading at the right address ?",
+      "revId": "bcbbcd053292fa6337a5a08c223918e8c23716fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
