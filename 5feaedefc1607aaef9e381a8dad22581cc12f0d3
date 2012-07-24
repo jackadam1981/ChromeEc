@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAMH///QM\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-24T17:39:01Z",
+      "side": 1,
+      "message": "Whups, one more change.\n16 -\u003e EC_TEMP_SENSOR_ENTRIES + EC_TEMP_SENSOR_B_ENTRIES",
+      "revId": "5feaedefc1607aaef9e381a8dad22581cc12f0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAMH///QI\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-24T17:39:01Z",
+      "side": 1,
+      "message": "and here too",
+      "revId": "5feaedefc1607aaef9e381a8dad22581cc12f0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
