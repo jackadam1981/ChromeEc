@@ -42,7 +42,7 @@ function ec_image() {
 		if [ ! -x "${FLAGS_image}" ]; then
 			die "Invalid image path : ${FLAGS_image}"
 		fi
-		echo "${FLAGS_image}"
+		echo "${FLAGS_image}/${EC_FILE}"
 		return
 	else
 		if [ -x "${LOCAL_BUILD}" ]; then
