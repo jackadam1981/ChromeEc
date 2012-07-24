@@ -16,6 +16,24 @@
       "revId": "da925ef0955f6be55f97a6056a759e7b0ed1d744",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAMH///ug\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-07-24T03:35:43Z",
+      "side": 1,
+      "message": "Done. Added EC_FLASH_REGION_WP_RO to return write-protected area.",
+      "parentUuid": "AAAAL3//8tI\u003d",
+      "revId": "da925ef0955f6be55f97a6056a759e7b0ed1d744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
