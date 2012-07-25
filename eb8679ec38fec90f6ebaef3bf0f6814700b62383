@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAMX//++E\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-07-25T18:56:32Z",
+      "side": 1,
+      "message": "when are we calling select_column with col!\u003dCOL_TRI_STATE_ALL and scanning disabled ?\nis it just when a power key press happens in the middle of the keyboard scanning ?",
+      "revId": "eb8679ec38fec90f6ebaef3bf0f6814700b62383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAMX//++Y\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-07-25T18:56:32Z",
+      "side": 1,
+      "message": "why are we polling that event ?\n(given we seem to do a task_wake when the state changes)",
+      "revId": "eb8679ec38fec90f6ebaef3bf0f6814700b62383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAMX///Iw\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-07-25T18:56:32Z",
+      "side": 1,
+      "message": "IMO we don\u0027t want this accessor, just read the \"enable_scanning\" variable when you need it that\u0027s simple and efficient.",
+      "revId": "eb8679ec38fec90f6ebaef3bf0f6814700b62383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAMX///Ig\u003d",
+        "filename": "include/keyboard_scan.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-07-25T18:56:32Z",
+      "side": 1,
+      "message": "don\u0027t forget to remove the accessor if you remove that one.",
+      "revId": "eb8679ec38fec90f6ebaef3bf0f6814700b62383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
