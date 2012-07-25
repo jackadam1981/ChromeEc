@@ -43,4 +43,7 @@ void keyboard_clear_state(void);
 /* Enables/disables keyboard matrix scan. */
 void keyboard_enable_scanning(int enable);
 
+/* Returns 1 if scanning is currently enabled, 0 otherwise */
+int keyboard_get_scanning_enabled(void);
+
 #endif  /* __CROS_EC_KEYBOARD_SCAN_H */

@@ -228,6 +228,9 @@ void gaia_suspend_event(enum gpio_signal signal)
 
 void gaia_power_event(enum gpio_signal signal)
 {
+	/* Disabling keyboard scanning whenever the power button is down */
+	keyboard_enable_scanning(gpio_get_level(GPIO_KB_PWR_ON_L));
+
 	/* Wake up the task */
 	task_wake(TASK_ID_GAIAPOWER);
 }
