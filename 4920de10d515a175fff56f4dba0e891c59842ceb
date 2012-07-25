@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAMX///8I\u003d",
+        "filename": "util/temp_metrics.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2012-07-25T19:54:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAMX////E\u003d",
+      "revId": "4920de10d515a175fff56f4dba0e891c59842ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAMX////M\u003d",
         "filename": "util/temp_metrics.conf",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2012-07-24T23:10:22Z",
       "side": 1,
       "message": "This should be spelled \"system-services\"\n\nDoes this job need to specify respawn?",
+      "revId": "4920de10d515a175fff56f4dba0e891c59842ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAMX///8Q\u003d",
+        "filename": "util/temp_metrics.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2012-07-25T19:54:53Z",
+      "side": 1,
+      "message": "Ah, that\u0027s why it didn\u0027t start :P (\u003c--- self-deprecating).\n\nSure, respawn won\u0027t hurt.",
+      "parentUuid": "AAAAMX////M\u003d",
       "revId": "4920de10d515a175fff56f4dba0e891c59842ceb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAMX///8M\u003d",
+        "filename": "util/temp_metrics.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2012-07-25T19:54:53Z",
+      "side": 1,
+      "message": "Cool!",
+      "parentUuid": "AAAAMX////I\u003d",
+      "revId": "4920de10d515a175fff56f4dba0e891c59842ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAMX///5g\u003d",
         "filename": "util/temp_metrics.conf",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2012-07-24T23:37:57Z",
       "side": 1,
       "message": "what are we doing if the temperature read returns an error ?",
+      "revId": "4920de10d515a175fff56f4dba0e891c59842ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAMX///1c\u003d",
+        "filename": "util/temp_metrics.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2012-07-25T19:54:53Z",
+      "side": 1,
+      "message": "The command \"ectool temps all\" writes only valid sensor temperatures to stdout.  Errors go to stderr (probably nowhere in this case).",
+      "parentUuid": "AAAAMX///5g\u003d",
       "revId": "4920de10d515a175fff56f4dba0e891c59842ceb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
