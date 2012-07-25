@@ -19,6 +19,41 @@
     },
     {
       "key": {
+        "uuid": "AAAAMX//+5k\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-07-25T20:25:29Z",
+      "side": 1,
+      "message": "If we\u0027re doing everything right in the keyboard_scan_task() and keyboard_enable_scanning(), then I don\u0027t think this should be necessary (plz correct me if there\u0027s a reason I\u0027m not seeing).\n\nI\u0027d prefer to keep this function as simple as possible and keep enable/disable logic elsewhere.",
+      "parentUuid": "AAAAMX//++E\u003d",
+      "revId": "eb8679ec38fec90f6ebaef3bf0f6814700b62383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAMX//+3o\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-07-25T20:25:29Z",
+      "side": 1,
+      "message": "I think you can get rid of the keyboard_get_scanning_enabled() call in the while-loop condition. The one in the if-statement here is redundant, but you should probably keep this in case scanning is disabled during the usleep().",
+      "revId": "eb8679ec38fec90f6ebaef3bf0f6814700b62383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAMX//++Y\u003d",
         "filename": "chip/stm32/keyboard_scan.c",
         "patchSetId": 1
@@ -47,6 +82,24 @@
       "writtenOn": "2012-07-25T18:56:32Z",
       "side": 1,
       "message": "IMO we don\u0027t want this accessor, just read the \"enable_scanning\" variable when you need it that\u0027s simple and efficient.",
+      "revId": "eb8679ec38fec90f6ebaef3bf0f6814700b62383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAMX//+48\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-07-25T20:25:29Z",
+      "side": 1,
+      "message": "agreed... outside functions in gaia_power should only ever enable or disable keyboard scanning via keyboard_enable_scanning(), but don\u0027t need to poll its current value. So we can get rid of this accessor.",
+      "parentUuid": "AAAAMX///Iw\u003d",
       "revId": "eb8679ec38fec90f6ebaef3bf0f6814700b62383",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
