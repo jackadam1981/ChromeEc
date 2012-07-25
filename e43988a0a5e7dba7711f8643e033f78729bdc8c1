@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAMX///PQ\u003d",
+        "filename": "util/temp_metrics.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000108
+      },
+      "writtenOn": "2012-07-25T15:41:51Z",
+      "side": 1,
+      "message": "Note that I\u0027m skeptical of this comment, because a) I don\u0027t\nanticipate this will be very temporary (I\u0027d be glad to be wrong), and b) I\u0027m not convinced that metrics_daemon is the right\ncode to own the charter for platform specific temperature\nmonitoring.",
+      "revId": "e43988a0a5e7dba7711f8643e033f78729bdc8c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
