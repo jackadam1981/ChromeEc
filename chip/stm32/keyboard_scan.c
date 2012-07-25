@@ -39,6 +39,9 @@ enum COL_INDEX {
 /* 15:14, 12:8, 2 */
 #define IRQ_MASK 0xdf04
 
+/* Initially enabling keyboard scanning for boot up */
+static int scanning_enabled = 1;
+
 /* The keyboard state from the last read */
 static uint8_t raw_state[KB_OUTPUTS];
 
@@ -169,12 +172,12 @@ static void select_column(int col)
 			if (gpio_list[j].port != ports[i])
 				continue;
 
-			if (col == COL_ASSERT_ALL) {
-				/* drive low (clear output data) */
-				bsrr |= gpio_list[j].mask << 16;
-			} else if (col == COL_TRI_STATE_ALL) {
+			if (col == COL_TRI_STATE_ALL || !scanning_enabled) {
 				/* put column in hi-Z state (set output data) */
 				bsrr |= gpio_list[j].mask;
+			} else if (col == COL_ASSERT_ALL) {
+				/* drive low (clear output data) */
+				bsrr |= gpio_list[j].mask << 16;
 			} else {
 				/* drive specified column low, others => hi-Z */
 				if (j - GPIO_KB_OUT00 == col) {
@@ -385,7 +388,7 @@ void keyboard_scan_task(void)
 			/* sleep for debounce. */
 			usleep(SCAN_LOOP_DELAY);
 			/* Check for keys down */
-			if (check_keys_changed()) {
+			if (scanning_enabled && check_keys_changed()) {
 				key_press_timer = 0;
 			} else {
 				if (++key_press_timer >=
@@ -454,3 +457,12 @@ static int keyboard_get_info(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_MKBP_INFO,
 		     keyboard_get_info,
 		     EC_VER_MASK(0));
+
+void keyboard_enable_scanning(int enable)
+{
+	scanning_enabled = enable;
+	if (enable)
+		task_wake(TASK_ID_KEYSCAN);
+	else
+		select_column(COL_TRI_STATE_ALL);
+}
