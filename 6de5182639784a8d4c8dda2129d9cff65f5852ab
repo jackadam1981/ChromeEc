@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAMX//+Xo\u003d",
+        "filename": "common/gaia_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-26T00:26:44Z",
+      "side": 1,
+      "message": "return EC_ERROR_PARAM1\n\nis preferred, since then console handler prints the message.",
+      "revId": "6de5182639784a8d4c8dda2129d9cff65f5852ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
