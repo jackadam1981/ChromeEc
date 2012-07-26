@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAMX//94E\u003d",
+        "filename": "common/gaia_power.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-26T15:30:42Z",
+      "side": 1,
+      "message": "You can remove the ccputs.  console.c will print \"invalid param 1\" for you.",
+      "revId": "35966a027133734747f69ae944693e377f275332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
