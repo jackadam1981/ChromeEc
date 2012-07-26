@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAMX//+eA\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-07-26T00:04:50Z",
+      "side": 1,
+      "message": "Hmmm, I think this change hides a problem in our keyboard_scan_task() -- We call wait_for_interrupt() which calls select_column(COL_ASSERT_ALL) immediately before suspending the task.\n\nMaybe we can fix it there instead (see comments further down).",
+      "revId": "9feabd9c72a4b4e6bd2185c5392977acd9a27f70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAMX//+bE\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-07-26T00:04:50Z",
+      "side": 1,
+      "message": "What if we do:\nif (scanning_enabled)\n        wait_for_interrupt();\nelse\n        select_column(COL_TRI_STATE_ALL);\n\nThe way the code seems to work now is that the change in select_column alters the behavior of wait_for_interrupt() in a non-obvious way.",
+      "revId": "9feabd9c72a4b4e6bd2185c5392977acd9a27f70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
