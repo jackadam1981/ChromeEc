@@ -33,6 +33,24 @@
       "revId": "9feabd9c72a4b4e6bd2185c5392977acd9a27f70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAMX//+XM\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-07-26T00:34:45Z",
+      "side": 1,
+      "message": "Yeah, I agree it\u0027s kind of weird to do in select_column, but it seems like this way there\u0027s still a pretty big window for the interrupt to come after \"task_wait_event(-1)\" and before \"check_keys_changed()\"\n\nSince check_keys_changed() drives each column low in turn, I think that that would cause a reset if you hit the power button in that gap.  However, I\u0027m been unable to make it happen, so I might be wrong, or the gap may be just so tiny that it will virtually never happen.\n\nIt seems like this works, and it does seem more readable, (the else is unnessicary since the power interrupt tri-states them all, and everything else does when it\u0027s done, so if scanning is disabled they should already be in hi-z)\n\nAlso, sorry I didn\u0027t realise I had to release my comments, I thought they would go automatically when I committed.",
+      "parentUuid": "AAAAMX//+bE\u003d",
+      "revId": "9feabd9c72a4b4e6bd2185c5392977acd9a27f70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
