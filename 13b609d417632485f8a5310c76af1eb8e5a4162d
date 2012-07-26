@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAMX//9oY\u003d",
+        "filename": "common/gaia_power.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-07-26T19:33:38Z",
+      "side": 1,
+      "message": "Get rid of the \"pressed\" variable here and just use\nif (!power_button_was_pressed)\n        keyboard_enable_scanning(0);",
+      "revId": "13b609d417632485f8a5310c76af1eb8e5a4162d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAMX//9i8\u003d",
+        "filename": "common/gaia_power.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-07-26T19:33:38Z",
+      "side": 1,
+      "message": "Do we need to call keyboard_enable_scanning(1) here to ensure key scanning gets enabled after wait_for_power_button_release()? Or does it get enabled elsewhere after the user does a transition from on to off and then back to on?",
+      "revId": "13b609d417632485f8a5310c76af1eb8e5a4162d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
