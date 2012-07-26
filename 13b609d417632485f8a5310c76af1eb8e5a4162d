@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAMX//9co\u003d",
+        "filename": "common/gaia_power.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-07-26T20:38:58Z",
+      "side": 1,
+      "message": "I\u0027m pretty sure that\u0027ll cause some problems.  I\u0027ve changed the comment here to maybe make it a little more clear what\u0027s happening.\n\nThe conditional is checking the old state of the button against the current one, since you only want to enable/disable scanning when the button is first pressed or released.  With the flag it\u0027d be okay to do it over and over again, but you can\u0027t repeatedly call mutex_lock without hanging.  Once it established the button was just pressed or released, then it sets the scanning state accordingly (!pressed \u003d on when the button is released, off when it\u0027s pressed).",
+      "parentUuid": "AAAAMX//9oY\u003d",
+      "revId": "13b609d417632485f8a5310c76af1eb8e5a4162d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAMX//9i8\u003d",
         "filename": "common/gaia_power.c",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2012-07-26T19:33:38Z",
       "side": 1,
       "message": "Do we need to call keyboard_enable_scanning(1) here to ensure key scanning gets enabled after wait_for_power_button_release()? Or does it get enabled elsewhere after the user does a transition from on to off and then back to on?",
+      "revId": "13b609d417632485f8a5310c76af1eb8e5a4162d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAMX//9c8\u003d",
+        "filename": "common/gaia_power.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-07-26T20:38:58Z",
+      "side": 1,
+      "message": "It jumps immediatly into check_for_power_off_event() where I added the logic to handle the locking, so you don\u0027t really need it here.  Note, that it manually sets to previous state (power_button_was_pressed) to 0, and since we just waited for them to release the button, we know it\u0027ll be 1, so the keyboard should get re-enabled.\n\nI think I see what you\u0027re saying though in conjunction with your other comment.  If you changed it up above, you\u0027d need to add some code here, but I think it makes it a little more complicated.",
+      "parentUuid": "AAAAMX//9i8\u003d",
       "revId": "13b609d417632485f8a5310c76af1eb8e5a4162d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
