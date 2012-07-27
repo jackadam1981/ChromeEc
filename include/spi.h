@@ -19,4 +19,12 @@ int spi_enable(int enable);
 int spi_transaction(const uint8_t *txdata, int txlen,
 		    uint8_t *rxdata, int rxlen);
 
+/**
+ * Called when the NSS level changes, signalling the start or end of a SPI
+ * transaction.
+ *
+ * @param signal	GPIO signal that changed
+ */
+void spi_event(enum gpio_signal signal);
+
 #endif  /* __CROS_EC_SPI_H */
