@@ -46,6 +46,8 @@
 #define EC_LPC_ADDR_HOST_PARAM 0x804
 #define EC_HOST_PARAM_SIZE     0x0fc  /* Size of param area in bytes */
 
+#define EC_HOST_PARAM_SIZE_MIN 0x070  /* Same but for smaller IRAM */
+
 /* I/O addresses for host command params, old interface */
 #define EC_LPC_ADDR_OLD_PARAM  0x880
 #define EC_OLD_PARAM_SIZE      0x080  /* Size of param area in bytes */
