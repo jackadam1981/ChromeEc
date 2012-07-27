@@ -418,6 +418,17 @@ static inline uint16_t *stm32_i2c_reg(int port, int offset)
 #define STM32_SPI_RXCRCR(p)         STM32_SPI_REG16((p), 0x14)
 #define STM32_SPI_TXCRCR(p)         STM32_SPI_REG16((p), 0x18)
 
+/* The SPI controller registers */
+struct spi_ctlr {
+	unsigned ctrl1;
+	unsigned ctrl2;
+	unsigned stat;
+	unsigned data;
+	unsigned crcp;
+	unsigned rxcrc;
+	unsigned txcrc;
+};
+
 /* --- Debug --- */
 
 #define STM32_DBGMCU_BASE           0xE0042000
