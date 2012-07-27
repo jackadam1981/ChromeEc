@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAMX//8C8\u003d",
+        "filename": "util/temp_metrics.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2012-07-27T23:18:42Z",
+      "side": 1,
+      "message": "Blank comment line if you don\u0027t mind (start with #) for easier comment reformatting.",
+      "revId": "e0be7c613d6d877ae48cec3aa94e3df9a37a5002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAMX//8C4\u003d",
+        "filename": "util/temp_metrics.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2012-07-27T23:18:42Z",
+      "side": 1,
+      "message": "Typo.",
+      "revId": "e0be7c613d6d877ae48cec3aa94e3df9a37a5002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAMX//8Ck\u003d",
+        "filename": "util/temp_metrics.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2012-07-27T23:18:42Z",
+      "side": 1,
+      "message": "What are the final hashes for?",
+      "revId": "e0be7c613d6d877ae48cec3aa94e3df9a37a5002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAMX//8B8\u003d",
+        "filename": "util/temp_metrics.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2012-07-27T23:18:42Z",
+      "side": 1,
+      "message": "You could say\n\nmax_steps\u003d$(echo \"$all_steps\" | wc -l)\n\nif you think the table may change.",
+      "revId": "e0be7c613d6d877ae48cec3aa94e3df9a37a5002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAMX//8B0\u003d",
+        "filename": "util/temp_metrics.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2012-07-27T23:18:42Z",
+      "side": 1,
+      "message": "Oh I see.  You should always quote \"$all_steps\" to preserve the newlines.\n\nAlso, you don\u0027t need to use -v, just use double quotes for the awk command so that variables are expanded, and use $row directly in there.",
+      "revId": "e0be7c613d6d877ae48cec3aa94e3df9a37a5002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAMX//8Bs\u003d",
+        "filename": "util/temp_metrics.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2012-07-27T23:18:42Z",
+      "side": 1,
+      "message": "Same as above, except it\u0027s \"{print \\$$1}\".  And you need double quotes around $2 as well.",
+      "revId": "e0be7c613d6d877ae48cec3aa94e3df9a37a5002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAMX//8Bo\u003d",
+        "filename": "util/temp_metrics.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2012-07-27T23:18:42Z",
+      "side": 1,
+      "message": "Best to use double quotes everywhere, unless you explicitly want to split one string into multiple strings (at whitespace).",
+      "revId": "e0be7c613d6d877ae48cec3aa94e3df9a37a5002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAMX//8Bk\u003d",
+        "filename": "util/temp_metrics.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2012-07-27T23:18:42Z",
+      "side": 1,
+      "message": "There is TEMP_OFFSET if you want, but 273 is enough of a universal constant...",
+      "revId": "e0be7c613d6d877ae48cec3aa94e3df9a37a5002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAMX//8Bg\u003d",
+        "filename": "util/temp_metrics.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2012-07-27T23:18:42Z",
+      "side": 1,
+      "message": "If you are sure the string has no spaces, double quotes are not really needed.",
+      "revId": "e0be7c613d6d877ae48cec3aa94e3df9a37a5002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
