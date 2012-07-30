@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAOn///hg\u003d",
+        "filename": "util/temp_metrics.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000030
+      },
+      "writtenOn": "2012-07-30T18:12:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAMX//8C8\u003d",
+      "revId": "e0be7c613d6d877ae48cec3aa94e3df9a37a5002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAMX//8C4\u003d",
         "filename": "util/temp_metrics.conf",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2012-07-27T23:18:42Z",
       "side": 1,
       "message": "Typo.",
+      "revId": "e0be7c613d6d877ae48cec3aa94e3df9a37a5002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAOn///hc\u003d",
+        "filename": "util/temp_metrics.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000030
+      },
+      "writtenOn": "2012-07-30T18:12:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAMX//8C4\u003d",
       "revId": "e0be7c613d6d877ae48cec3aa94e3df9a37a5002",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAOn///hY\u003d",
+        "filename": "util/temp_metrics.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000030
+      },
+      "writtenOn": "2012-07-30T18:12:22Z",
+      "side": 1,
+      "message": "The final hashes were used as delimiter. Now changed to newlines.",
+      "parentUuid": "AAAAMX//8Ck\u003d",
+      "revId": "e0be7c613d6d877ae48cec3aa94e3df9a37a5002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAMX//8B8\u003d",
         "filename": "util/temp_metrics.conf",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2012-07-27T23:18:42Z",
       "side": 1,
       "message": "You could say\n\nmax_steps\u003d$(echo \"$all_steps\" | wc -l)\n\nif you think the table may change.",
+      "revId": "e0be7c613d6d877ae48cec3aa94e3df9a37a5002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAOn///hM\u003d",
+        "filename": "util/temp_metrics.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000030
+      },
+      "writtenOn": "2012-07-30T18:12:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAMX//8B8\u003d",
       "revId": "e0be7c613d6d877ae48cec3aa94e3df9a37a5002",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAOn///hI\u003d",
+        "filename": "util/temp_metrics.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000030
+      },
+      "writtenOn": "2012-07-30T18:12:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAMX//8B0\u003d",
+      "revId": "e0be7c613d6d877ae48cec3aa94e3df9a37a5002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAMX//8Bs\u003d",
         "filename": "util/temp_metrics.conf",
         "patchSetId": 1
@@ -98,6 +188,24 @@
       "writtenOn": "2012-07-27T23:18:42Z",
       "side": 1,
       "message": "Same as above, except it\u0027s \"{print \\$$1}\".  And you need double quotes around $2 as well.",
+      "revId": "e0be7c613d6d877ae48cec3aa94e3df9a37a5002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAOn///hE\u003d",
+        "filename": "util/temp_metrics.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000030
+      },
+      "writtenOn": "2012-07-30T18:12:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAMX//8Bs\u003d",
       "revId": "e0be7c613d6d877ae48cec3aa94e3df9a37a5002",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAOn///g8\u003d",
+        "filename": "util/temp_metrics.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000030
+      },
+      "writtenOn": "2012-07-30T18:12:22Z",
+      "side": 1,
+      "message": "In this case we do want individual fields not strings.",
+      "parentUuid": "AAAAMX//8Bo\u003d",
+      "revId": "e0be7c613d6d877ae48cec3aa94e3df9a37a5002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAMX//8Bk\u003d",
         "filename": "util/temp_metrics.conf",
         "patchSetId": 1
@@ -138,6 +264,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAOn///g4\u003d",
+        "filename": "util/temp_metrics.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000030
+      },
+      "writtenOn": "2012-07-30T18:12:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAMX//8Bk\u003d",
+      "revId": "e0be7c613d6d877ae48cec3aa94e3df9a37a5002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAMX//8Bg\u003d",
         "filename": "util/temp_metrics.conf",
         "patchSetId": 1
@@ -149,6 +293,24 @@
       "writtenOn": "2012-07-27T23:18:42Z",
       "side": 1,
       "message": "If you are sure the string has no spaces, double quotes are not really needed.",
+      "revId": "e0be7c613d6d877ae48cec3aa94e3df9a37a5002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAOn///gs\u003d",
+        "filename": "util/temp_metrics.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000030
+      },
+      "writtenOn": "2012-07-30T18:12:22Z",
+      "side": 1,
+      "message": "Double quotes not needed here since we are extracting and returning a numeric value.",
+      "parentUuid": "AAAAMX//8Bg\u003d",
       "revId": "e0be7c613d6d877ae48cec3aa94e3df9a37a5002",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
