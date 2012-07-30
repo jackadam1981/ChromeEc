@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAOn///UI\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-07-30T21:27:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAOn///Ug\u003d",
+      "revId": "8b0e481e1b7df7d88831c34f5673893df5f0f9c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAOn///W0\u003d",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2012-07-30T21:18:14Z",
       "side": 1,
       "message": "This is an API contract between EC and AP firmware.  Can\u0027t just delete fields from it, or the EC won\u0027t set switches to anything and will return the wrong amount of data to the AP.\n\n(So, switches needs to stay, just without the recovery bit set)",
+      "revId": "8b0e481e1b7df7d88831c34f5673893df5f0f9c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAOn///UM\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-07-30T21:27:20Z",
+      "side": 1,
+      "message": "Gotcha, I didn\u0027t see it getting used anywhere else so I didn\u0027t think it would be an issue.\n\nDone.",
+      "parentUuid": "AAAAOn///W0\u003d",
       "revId": "8b0e481e1b7df7d88831c34f5673893df5f0f9c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
