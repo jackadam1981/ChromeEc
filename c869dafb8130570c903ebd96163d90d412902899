@@ -16,6 +16,24 @@
       "revId": "c869dafb8130570c903ebd96163d90d412902899",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAOn///dI\u003d",
+        "filename": "util/temp_metrics.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000030
+      },
+      "writtenOn": "2012-07-30T18:53:08Z",
+      "side": 1,
+      "message": "This is needed for the general case where we tweak the min_freq as well.  In that case writing the max_freq to lower than min_freq will cause failures.\n\n(if we cared about performance, I could read or remember the current settings and apply the max/min freq in the right order but not needed  at this point.)",
+      "parentUuid": "AAAAOn///dk\u003d",
+      "revId": "c869dafb8130570c903ebd96163d90d412902899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
