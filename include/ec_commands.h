@@ -779,7 +779,6 @@ struct ec_response_thermal_get_threshold {
 struct ec_response_mkbp_info {
 	uint32_t rows;
 	uint32_t cols;
-	uint8_t switches;
 } __packed;
 
 /* Simulate key press */

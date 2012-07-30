@@ -28,6 +28,7 @@
 #include "console.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "host_command.h"
 #include "keyboard_scan.h"
 #include "power_led.h"
 #include "system.h"
@@ -258,7 +259,8 @@ int gaia_power_init(void)
 		auto_power_on = 0;
 
 	/* Auto power on if the recovery combination was pressed */
-	if (keyboard_scan_recovery_pressed())
+	if (host_get_events() &
+	EC_HOST_EVENT_MASK(EC_HOST_EVENT_KEYBOARD_RECOVERY))
 		auto_power_on = 1;
 
 	return EC_SUCCESS;
