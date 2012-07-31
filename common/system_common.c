@@ -101,6 +101,8 @@ int system_is_locked(void)
 
 	/* If WP pin is asserted and lock is applied, we're locked */
 	return 1;
+#elif defined(BOARD_snow)
+	return !gpio_get_level(GPIO_WRITE_PROTECTn);
 #else
 	/* Other configs are locked by default */
 	return 1;
