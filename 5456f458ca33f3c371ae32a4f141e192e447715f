@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPH///Dg\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-08-01T15:45:15Z",
+      "side": 1,
+      "message": "this will send a STOP byte in the middle of the message.",
+      "revId": "5456f458ca33f3c371ae32a4f141e192e447715f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
