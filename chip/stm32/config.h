@@ -27,4 +27,7 @@
 /* Compile for running from RAM instead of flash */
 /* #define COMPILE_FOR_RAM */
 
+/* There is no physical recovery GPIO pin. Use fake recovery mode. */
+#define CONFIG_FAKE_RECOVERY
+
 #endif /* __CROS_EC_CHIP_CONFIG_H */

@@ -728,6 +728,31 @@ DECLARE_CONSOLE_COMMAND(syslock, command_system_lock,
 			"Lock the system, even if WP is disabled",
 			NULL);
 
+#ifdef CONFIG_FAKE_RECOVERY
+static int command_fake_recovery(int argc, char **argv)
+{
+	int val, rv;
+	char *e;
+
+	if (argc >= 2) {
+		val = strtoi(argv[1], &e, 0);
+		if (*e)
+			return EC_ERROR_PARAM1;
+
+		rv = system_set_fake_rec_mode(val);
+		if (rv)
+			return rv;
+	}
+	ccprintf("Fake recovery mode = %d\n",
+			system_get_fake_rec_mode());
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(fakerec, command_fake_recovery,
+			"[0 | 1]",
+			"Set/get fake recovery mode state",
+			NULL);
+#endif
 /*****************************************************************************/
 /* Host commands */
 

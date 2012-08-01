@@ -116,6 +116,13 @@ static int maybe_jump_to_other_image(void)
 	}
 #endif
 
+#ifdef CONFIG_FAKE_RECOVERY
+	if (system_get_fake_rec_mode() == 1) {
+		CPUTS("[Vboot staying in RO due to fake recovery switch]\n");
+		return 0;
+	}
+#endif
+
 	/* Okay, we might want to jump to a RW image. */
 	return 1;
 }

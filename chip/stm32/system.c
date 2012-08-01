@@ -6,6 +6,8 @@
 /* System module for Chrome EC : hardware specific implementation */
 
 #include "cpu.h"
+#include "ec_commands.h"
+#include "host_command.h"
 #include "registers.h"
 #include "system.h"
 #include "task.h"
@@ -17,6 +19,7 @@ enum bkpdata_index {
 	BKPDATA_INDEX_WAKE,		/* Wake reasons for hibernate */
 	BKPDATA_INDEX_SAVED_RESET_FLAGS,/* Saved reset flags */
 	BKPDATA_INDEX_FLASH_RW_AT_BOOT, /* Flash protect RW at boot flag */
+	BKPDATA_INDEX_FAKE_REC_MODE,    /* Fake recovery switch */
 	BKPDATA_INDEX_FAKE_WP,		/* Fake write-protect pin */
 					/* TODO: Remove this when we have real
 					 *       write protect pin.
@@ -182,6 +185,18 @@ void system_hibernate(uint32_t seconds, uint32_t microseconds)
 }
 
 
+/* Returns non-zero if fake recovery mode has been set. */
+static int check_fake_recovery(void)
+{
+	if (!system_get_fake_rec_mode())
+		return 0;
+
+	host_set_single_event(EC_HOST_EVENT_KEYBOARD_RECOVERY);
+
+	return 1;
+}
+
+
 int system_pre_init(void)
 {
 	/* enable clock on Power module */
@@ -216,6 +231,8 @@ int system_pre_init(void)
 #endif
 
 	check_reset_cause();
+
+	check_fake_recovery();
 
 	return EC_SUCCESS;
 }
@@ -308,4 +325,16 @@ int system_set_flash_rw_at_boot(int val)
 int system_get_flash_rw_at_boot(void)
 {
 	return bkpdata_read(BKPDATA_INDEX_FLASH_RW_AT_BOOT);
+}
+
+
+int system_set_fake_rec_mode(int val)
+{
+	return bkpdata_write(BKPDATA_INDEX_FAKE_REC_MODE, (uint16_t)val);
+}
+
+
+int system_get_fake_rec_mode(void)
+{
+	return bkpdata_read(BKPDATA_INDEX_FAKE_REC_MODE);
 }

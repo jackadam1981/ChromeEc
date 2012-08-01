@@ -179,4 +179,10 @@ void system_hibernate(uint32_t seconds, uint32_t microseconds);
 /* Minimum duration to get proper hibernation */
 #define SYSTEM_HIB_MINIMUM_DURATION 0, 1000
 
+/* Set fake recovery mode */
+int system_set_fake_rec_mode(int enabled);
+
+/* Get fake recovery mode */
+int system_get_fake_rec_mode(void);
+
 #endif  /* __CROS_EC_SYSTEM_H */
