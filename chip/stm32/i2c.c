@@ -40,6 +40,7 @@
 #define I2C1      STM32_I2C1_PORT
 #define I2C2      STM32_I2C2_PORT
 
+#define I2C_READ_BLOCK_MAXIMUM_SIZE 32
 enum {
 	/* A stop condition should take 2 clocks, so allow 8 */
 	TIMEOUT_STOP_SENT_US	= I2C_PERIOD_US * 8,
@@ -701,14 +702,37 @@ int i2c_write8(int port, int slave_addr, int offset, int data)
 }
 
 int i2c_read_string(int port, int slave_addr, int offset, uint8_t *data,
-	int len)
+		    int len)
 {
-	/* TODO: implement i2c_read_block and i2c_read_string */
+	int rv;
+	uint8_t reg, block_length, data_buffer[I2C_READ_BLOCK_MAXIMUM_SIZE];
+	ASSERT(data || !len);
 
-	if (len && data)
-		*data = 0;
+	reg = offset;
 
-	return EC_SUCCESS;
+	/* read length of block */
+	rv = i2c_xfer(port, slave_addr, &reg, 1, &block_length, 1);
+	if (rv) {
+		ccprintf("i2c command failed\n", rv);
+		return rv;
+	}
+
+	if (len && block_length > (len - 1))
+		block_length = len - 1;
+	if (block_length > I2C_READ_BLOCK_MAXIMUM_SIZE - 1)
+		block_length = I2C_READ_BLOCK_MAXIMUM_SIZE - 1;
+
+	/* read length of block and block data */
+	rv = i2c_xfer(port, slave_addr, &reg, 1, data_buffer, block_length + 1);
+	if (rv) {
+		ccprintf("i2c command failed\n", rv);
+		return rv;
+	}
+
+	/* data_buffer[0] == block_length */
+	memcpy(data, data_buffer + 1, block_length);
+	data[block_length] = 0;
+	return rv;
 }
 
 /*****************************************************************************/
