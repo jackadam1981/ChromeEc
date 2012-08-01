@@ -701,14 +701,27 @@ int i2c_write8(int port, int slave_addr, int offset, int data)
 }
 
 int i2c_read_string(int port, int slave_addr, int offset, uint8_t *data,
-	int len)
+		    int len)
 {
-	/* TODO: implement i2c_read_block and i2c_read_string */
+	int rv;
+	uint8_t reg, block_length;
+	ASSERT(data || !len);
 
-	if (len && data)
-		*data = 0;
+	reg = offset;
+	/* read to fill the input data buffer */
+	rv = i2c_xfer(port, slave_addr, &reg, 1, data, len);
+	if (rv) {
+		ccprintf("i2c command failed\n", rv);
+		return rv;
+	}
+	block_length = data[0];
+	if (len && block_length > (len - 1))
+		block_length = len - 1;
 
-	return EC_SUCCESS;
+	/* data_buffer[0] == block_length */
+	memcpy(data, data + 1, block_length);
+	data[block_length] = 0;
+	return rv;
 }
 
 /*****************************************************************************/
