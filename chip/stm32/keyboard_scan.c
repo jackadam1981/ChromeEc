@@ -449,10 +449,20 @@ DECLARE_HOST_COMMAND(EC_CMD_MKBP_STATE,
 static int keyboard_get_info(struct host_cmd_handler_args *args)
 {
 	struct ec_response_mkbp_info *r = args->response;
+	uint32_t events;
 
 	r->rows = 8;
 	r->cols = KB_OUTPUTS;
 	r->switches = 0;
+
+	/* translate host events to switch flags */
+	events = host_get_events();
+	if (events & EC_HOST_EVENT_MASK(EC_HOST_EVENT_LID_OPEN))
+		r->switches |= EC_SWITCH_LID_OPEN;
+	if (events & EC_HOST_EVENT_MASK(EC_HOST_EVENT_POWER_BUTTON))
+		r->switches |= EC_SWITCH_POWER_BUTTON_PRESSED;
+	if (events & EC_HOST_EVENT_MASK(EC_HOST_EVENT_KEYBOARD_RECOVERY))
+		r->switches |= EC_SWITCH_KEYBOARD_RECOVERY;
 
 	args->response_size = sizeof(*r);
 
