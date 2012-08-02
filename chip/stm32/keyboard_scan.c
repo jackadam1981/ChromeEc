@@ -47,6 +47,9 @@ static uint8_t raw_state[KB_OUTPUTS];
 /* Mask with 1 bits only for keys that actually exist */
 static const uint8_t *actual_key_mask;
 
+/* Switch state */
+static uint8_t switches;
+
 /* All actual key masks (todo: move to keyboard matrix definition) */
 /* TODO: (crosbug.com/p/7485) fill in real key mask with 0-bits for coords that
    aren't keys */
@@ -336,6 +339,8 @@ static int check_recovery_key(void)
 
 	host_set_single_event(EC_HOST_EVENT_KEYBOARD_RECOVERY);
 
+	switches |= EC_SWITCH_KEYBOARD_RECOVERY;
+
 	return 1;
 }
 
@@ -452,7 +457,10 @@ static int keyboard_get_info(struct host_cmd_handler_args *args)
 
 	r->rows = 8;
 	r->cols = KB_OUTPUTS;
-	r->switches = 0;
+	r->switches = switches;
+
+	/* Drop recovery switch to 0. Otherwise it will be sticky. */
+	switches &= ~EC_SWITCH_KEYBOARD_RECOVERY;
 
 	args->response_size = sizeof(*r);
 
@@ -508,4 +516,26 @@ static int command_keyboard_press(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(kbpress, command_keyboard_press,
 			"[col] [row] [0 | 1]",
 			"Simulate keypress",
+			NULL);
+
+static int command_mkbp_switches(int argc, char **argv)
+{
+	int m;
+	char *e;
+
+	if (argc >= 2) {
+		m = strtoi(argv[1], &e, 0);
+		if (e && *e)
+			return EC_ERROR_PARAM1;
+
+		switches = m;
+	}
+
+	ccprintf("Switch state = 0x%x\n", switches);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(switches, command_mkbp_switches,
+			"[new switches state]",
+			"Set or get switch state",
 			NULL);
