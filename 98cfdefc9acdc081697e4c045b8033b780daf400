@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPH//7/M\u003d",
+        "filename": "chip/stm32/flash-stm32f100.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-08-05T18:02:09Z",
+      "side": 1,
+      "message": "this mechanism looks a bit scary\n(among other things, if an interrupt happens, it is handled with this infinite retry on bus fault).\n\nIf you really want to ignore faults, it might be better to just temporarily elevate your priority above the faults.\nYou shoud be able to do that by setting FAULTMASK, e.g. :\n//Temporarily disable faults\nasm volatile(\"cpsid f\");\n//Re-enable faults\nasm volatile(\"cpsie f\");",
+      "revId": "98cfdefc9acdc081697e4c045b8033b780daf400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
