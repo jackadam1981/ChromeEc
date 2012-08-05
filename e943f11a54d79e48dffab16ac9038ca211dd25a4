@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPH//7/o\u003d",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-08-05T17:50:18Z",
+      "side": 1,
+      "message": "either AP or the full name : application processor",
+      "revId": "e943f11a54d79e48dffab16ac9038ca211dd25a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//7/k\u003d",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-08-05T17:50:18Z",
+      "side": 1,
+      "message": "battery remaining charge ? remaining capacity ?",
+      "revId": "e943f11a54d79e48dffab16ac9038ca211dd25a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//7/g\u003d",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-08-05T17:50:18Z",
+      "side": 1,
+      "message": "when AC is unplugged\nrather than \"ac change\" ?",
+      "revId": "e943f11a54d79e48dffab16ac9038ca211dd25a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//7/c\u003d",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-08-05T17:50:18Z",
+      "side": 1,
+      "message": "or access error ?",
+      "revId": "e943f11a54d79e48dffab16ac9038ca211dd25a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//7/Y\u003d",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-08-05T17:50:18Z",
+      "side": 1,
+      "message": "AC plugged ?",
+      "revId": "e943f11a54d79e48dffab16ac9038ca211dd25a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
