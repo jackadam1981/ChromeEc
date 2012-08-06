@@ -19,12 +19,16 @@
 
 /* Debug features */
 #define CONFIG_PANIC_HELP
-#define CONFIG_PANIC_NEW_STACK
+#undef  CONFIG_PANIC_NEW_STACK
 #define CONFIG_ASSERT_HELP
 #define CONFIG_CONSOLE_CMDHELP
 
-#define CONFIG_TASK_PROFILING
+#undef  CONFIG_TASK_PROFILING
 #define CONFIG_WATCHDOG_HELP
+
+/* compute RW firmware hash at startup */
+#define CONFIG_VBOOT
+#define CONFIG_VBOOT_HASH
 
 #ifndef __ASSEMBLER__
 
