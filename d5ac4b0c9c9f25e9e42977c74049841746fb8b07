@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPH//7l4\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-08-06T17:37:28Z",
+      "side": 1,
+      "message": "if we receive less than len bytes, isn\u0027t i2c_master_receive returning an error code ?\n(and not properly doing the end of sequence : e.g. STOP ...)",
+      "revId": "d5ac4b0c9c9f25e9e42977c74049841746fb8b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
