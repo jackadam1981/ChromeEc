@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPH//77o\u003d",
+        "filename": "common/battery_link.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-08-06T04:21:47Z",
+      "side": 1,
+      "message": "It is a current unit in battery. 1C \u003d the current to charge a battery in 1 hour. For a 8000mAh battery, 1C \u003d 8000mA.",
+      "parentUuid": "AAAAPH//78s\u003d",
+      "revId": "c19dc5b95c060b53505d0551628b12afe14d6a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPH//78k\u003d",
         "filename": "common/battery_link.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPH//77g\u003d",
+        "filename": "common/battery_link.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-08-06T04:21:47Z",
+      "side": 1,
+      "message": "Done. Unused macros should be moved to comments.\n\nThese are common charging current limits.\nTrickle charging - 0.01C\nFast charging - 0.7C or 0.5C\nnormal charging - 0.2C\nslow charging - 0.1C\n\nThe current table was changed from C_05 to 4000mA to match battery spec change.",
+      "parentUuid": "AAAAPH//78k\u003d",
+      "revId": "c19dc5b95c060b53505d0551628b12afe14d6a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPH//78o\u003d",
         "filename": "common/battery_link.c",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2012-08-06T03:41:46Z",
       "side": 1,
       "message": "in other location, the max temp seems 55 C not 50",
+      "revId": "c19dc5b95c060b53505d0551628b12afe14d6a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//77Q\u003d",
+        "filename": "common/battery_link.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-08-06T04:21:47Z",
+      "side": 1,
+      "message": "Done. Should be 50. 55 is the battery hardware termination temperature.",
+      "parentUuid": "AAAAPH//78o\u003d",
       "revId": "c19dc5b95c060b53505d0551628b12afe14d6a7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
