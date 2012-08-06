@@ -113,7 +113,7 @@ static void vboot_hash_init(void)
 		data_size = tag->size;
 	} else {
 		/* Start computing the hash of firmware A */
-		vboot_hash_start(CONFIG_FW_RW_OFF - CONFIG_FLASH_BASE,
+		vboot_hash_start(CONFIG_FW_RW_OFF,
 				 system_get_image_used(SYSTEM_IMAGE_RW),
 				 NULL, 0);
 	}
