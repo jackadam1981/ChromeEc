@@ -40,6 +40,7 @@
 #define I2C1      STM32_I2C1_PORT
 #define I2C2      STM32_I2C2_PORT
 
+
 enum {
 	/* A stop condition should take 2 clocks, so allow 8 */
 	TIMEOUT_STOP_SENT_US	= I2C_PERIOD_US * 8,
@@ -381,6 +382,7 @@ enum wait_t {
 	WAIT_RX_NE_STOP,
 	WAIT_RX_NE_STOP_SIZE2,
 };
+enum wait_t i2c_last_wait_status;
 
 static int wait_status(int port, uint32_t mask, enum wait_t wait)
 {
@@ -388,16 +390,11 @@ static int wait_status(int port, uint32_t mask, enum wait_t wait)
 	timestamp_t t1, t2;
 
 	t1 = t2 = get_time();
+	i2c_last_wait_status = wait;
 	r = STM32_I2C_SR1(port);
 	while (mask ? ((r & mask) != mask) : r) {
 		t2 = get_time();
 		if (t2.val - t1.val > I2C_TX_TIMEOUT) {
-#ifdef CONFIG_DEBUG_I2C
-			CPRINTF(" m %016b\n", mask);
-			CPRINTF(" - %016b\n", r);
-#endif /* CONFIG_DEBUG_I2C */
-			CPRINTF("i2c wait_status timeout type %d, %d us\n",
-				wait, (unsigned)t2.val - (unsigned)t1.val);
 			return EC_ERROR_TIMEOUT;
 		} else if (t2.val - t1.val > 150) {
 			usleep(100);
@@ -405,6 +402,7 @@ static int wait_status(int port, uint32_t mask, enum wait_t wait)
 		r = STM32_I2C_SR1(port);
 	}
 
+	i2c_last_wait_status = WAIT_NONE;
 	return EC_SUCCESS;
 }
 
@@ -470,6 +468,11 @@ static void handle_i2c_error(int port, int rv)
 	if (rv == EC_ERROR_BUSY)
 		return;
 
+
+#ifdef CONFIG_DEBUG_I2C
+	if (rv == EC_ERROR_TIMEOUT && i2c_last_wait_status != WAIT_NONE)
+		CPRINTF("Last wait_status: %d", i2c_last_wait_status);
+#endif
 	if (rv)
 		dump_i2c_reg(port);
 
