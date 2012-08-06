@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPH//7n0\u003d",
+        "filename": "chip/stm32/flash-stm32f100.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-08-06T17:25:34Z",
+      "side": 1,
+      "message": "This should be picked up from a header file.  Create panic.h if you need it.\n\nMagic externs in C files make code maintenance harder.",
+      "revId": "2b24319ccbed3ae3df53718a77d0d8da5b13911b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
