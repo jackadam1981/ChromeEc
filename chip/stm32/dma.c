@@ -14,7 +14,9 @@
 #define CPUTS(outstr) cputs(CC_DMA, outstr)
 #define CPRINTF(format, args...) cprintf(CC_DMA, format, ## args)
 
-
+/* Note, you must decrement the channel value by 1 from what is specified
+ * in the datasheets, as they index from 1 and this indexes from 0!
+ */
 struct dma_channel *dma_get_channel(int channel)
 {
 	struct dma_channel *chan;
@@ -188,4 +190,43 @@ void dma_init(void)
 {
 	/* Enable DMA1, we don't support DMA2 yet */
 	STM32_RCC_AHBENR |= RCC_AHBENR_DMA1EN;
+}
+
+int dma_wait(int channel)
+{
+	void *dma_isr;
+	uint32_t mask, isr;
+	timestamp_t t1, t2;
+
+	ASSERT(channel < DMA_NUM_CHANNELS);
+	if (channel < DMA1_NUM_CHANNELS)
+		dma_isr = (void *)&(((struct dma_ctlr *)STM32_DMA1_BASE)->isr);
+	else
+		dma_isr = (void *)&(((struct dma_ctlr *)STM32_DMA2_BASE)->isr);
+
+	mask = DMA_TCIF(channel);
+	t1 = t2 = get_time();
+	isr = REG32(dma_isr);
+	while ((isr & mask) != mask) {
+		t2 = get_time();
+		if (t2.val - t1.val > DMA_TRANSFER_TIMEOUT)
+			return DMA_ERROR_TIMEOUT;
+		else
+			usleep(DMA_POLLING_INTERVAL);
+		isr = REG32(dma_isr);
+	}
+	return DMA_SUCCESS;
+}
+
+void dma_clear_isr(int dma)
+{
+	void *isr;
+
+	ASSERT(dma == 1 || dma == 2);
+	if (dma == 1)
+		isr = (void *)&(((struct dma_ctlr *)STM32_DMA1_BASE)->isr);
+	else
+		isr = (void *)&(((struct dma_ctlr *)STM32_DMA2_BASE)->isr);
+
+	REG32(isr + 0x4) |= 0xffffffff;
 }

@@ -15,7 +15,8 @@
  *
  * Note: The STM datasheet tends to number things from 1. We should ask
  * the European elevator engineers to talk to MCU engineer counterparts
- * about this.
+ * about this.  This means that if the datasheet refers to channel n,
+ * you need to use n-1 in the code.
  */
 enum {
 	DMAC_ADC,
@@ -23,6 +24,8 @@ enum {
 	DMAC_SPI1_TX,
 	DMAC_SPI2_RX,
 	DMAC_SPI2_TX,
+	DMAC_I2C_RX = 4,
+	DMAC_I2C_TX = 3,
 
 	/* DMA1 has 7 channels, DMA2 has 5 */
 	DMA1_NUM_CHANNELS = 7,
@@ -59,6 +62,14 @@ enum {
 #define DMA_MINC_MASK		(1 << 7)
 #define DMA_DIR_FROM_MEM_MASK	(1 << 4)
 #define DMA_EN			(1 << 0)
+#define DMA_TCIF(channel)	(1 << (1 + 4 * channel))
+
+#define DMA_POLLING_INTERVAL	100	/* us */
+#define DMA_TRANSFER_TIMEOUT	100000	/* us */
+enum {
+	DMA_SUCCESS,
+	DMA_ERROR_TIMEOUT,
+};
 
 /*
  * Certain DMA channels must be used for certain peripherals and transfer
@@ -161,5 +172,19 @@ void dma_test(void);
  * Init DMA peripheral ready for use
  */
 void dma_init(void);
+
+/**
+ * Wait for the DMA transfer to complete
+ *
+ * @param channel	Channel number to wait on (DMAC_...)
+ */
+int dma_wait(int channel);
+
+/**
+ * Clear the DMA interrupt/event flags
+ *
+ * @param dma	Which dma's isr to clear (1 or 2)
+ */
+void dma_clear_isr(int dma);
 
 #endif
