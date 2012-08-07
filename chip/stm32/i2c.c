@@ -8,6 +8,7 @@
 #include "clock.h"
 #include "common.h"
 #include "console.h"
+#include "dma.h"
 #include "ec_commands.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -48,6 +49,14 @@
 #define NUM_PORTS 2
 #define I2C1      STM32_I2C1_PORT
 #define I2C2      STM32_I2C2_PORT
+
+/* DMA Channel numbers for I2C transfers. */
+/* They have -1's since the datasheets index from 1 */
+#define I2X_RX_DMA_CHAN (5 - 1)
+#define I2C_TX_DMA_CHAN (4 - 1)
+
+#define I2C_CR2_DMAEN (1 << 11)
+#define I2C_TCIF(channel) (1 << (1 + 4 * channel))
 
 enum {
 	/* A stop condition should take 2 clocks, so allow 8 */
@@ -389,15 +398,16 @@ enum wait_t {
 	WAIT_RX_NE_FINAL,
 	WAIT_RX_NE_STOP,
 	WAIT_RX_NE_STOP_SIZE2,
+	WAIT_XMIT_DMA_TC,
 };
 
-static int wait_status(int port, uint32_t mask, enum wait_t wait)
+static int wait_status(void *reg, uint32_t mask, enum wait_t wait)
 {
 	uint32_t r;
 	timestamp_t t1, t2;
 
 	t1 = t2 = get_time();
-	r = STM32_I2C_SR1(port);
+	r = REG32(reg);
 	while (mask ? ((r & mask) != mask) : r) {
 		t2 = get_time();
 		if (t2.val - t1.val > I2C_TX_TIMEOUT_MASTER) {
@@ -405,10 +415,15 @@ static int wait_status(int port, uint32_t mask, enum wait_t wait)
 		} else if (t2.val - t1.val > 150) {
 			usleep(100);
 		}
-		r = STM32_I2C_SR1(port);
+		r = REG32(reg);
 	}
 
 	return EC_SUCCESS;
+}
+
+static inline int wait_status_sr1(int port, uint32_t mask, enum wait_t wait)
+{
+	return wait_status((void *)&STM32_I2C_SR1(port), mask, wait);
 }
 
 static inline uint32_t read_clear_status(int port)
@@ -427,13 +442,13 @@ static int master_start(int port, int slave_addr)
 	/* Change to master send mode, reset stop bit, send start bit */
 	STM32_I2C_CR1(port) = (STM32_I2C_CR1(port) & ~(1 << 9)) | (1 << 8);
 	/* Wait for start bit sent event */
-	rv = wait_status(port, SR1_SB, WAIT_MASTER_START);
+	rv = wait_status_sr1(port, SR1_SB, WAIT_MASTER_START);
 	if (rv)
 		return rv;
 	/* Send address */
 	STM32_I2C_DR(port) = slave_addr;
 	/* Wait for addr ready */
-	rv = wait_status(port, SR1_ADDR, WAIT_ADDR_READY);
+	rv = wait_status_sr1(port, SR1_ADDR, WAIT_ADDR_READY);
 	if (rv)
 		return rv;
 	read_clear_status(port);
@@ -512,30 +527,43 @@ cr_cleanup:
 static int i2c_master_transmit(int port, int slave_addr, uint8_t *data,
 	int size, int stop)
 {
-	int rv, i;
+	int rv;
+	struct dma_channel *chan;
+	void *dma_isr;
 
 	disable_ack(port);
+
+	/* Configuring DMA1 channel I2C_TX_DMA_CHAN */
+	chan = dma_get_channel(I2C_TX_DMA_CHAN);
+	dma_prepare_tx(chan, size, (void *)&STM32_I2C_DR(port), data);
+	dma_go(chan);
+
+	/* Configuring i2c2 */
+	STM32_I2C_CR2(port) |= I2C_CR2_DMAEN;
+
+	/* Initialise i2c communication by sending START and ADDR */
 	rv = master_start(port, slave_addr);
 	if (rv)
 		return rv;
 
-	/* TODO: use common i2c_write_raw instead */
-	for (i = 0; i < size; i++) {
-		rv = wait_status(port, SR1_TxE, WAIT_XMIT_TXE);
-		if (rv)
-			return rv;
-		STM32_I2C_DR(port) = data[i];
-	}
-	rv = wait_status(port, SR1_TxE, WAIT_XMIT_FINAL_TXE);
-	if (rv)
-		return rv;
-	rv = wait_status(port, SR1_BTF, WAIT_XMIT_BTF);
+	/* Wait for the dma to transfer all the data */
+	dma_isr = (void *)&(((struct dma_ctlr *)STM32_DMA1_BASE)->isr);
+	rv = wait_status(dma_isr, I2C_TCIF(I2C_TX_DMA_CHAN), WAIT_XMIT_DMA_TC);
+
+	/* Disable, and clear the DMA transfer complete flag */
+	dma_disable(I2C_TX_DMA_CHAN);
+	REG32(dma_isr) |= I2C_TCIF(I2C_TX_DMA_CHAN);
+
+	/* Turn off i2c's DMA flag */
+	STM32_I2C_CR2(port) &= ~I2C_CR2_DMAEN;
+
+	rv = wait_status_sr1(port, SR1_BTF, WAIT_XMIT_BTF);
 	if (rv)
 		return rv;
 
 	if (stop) {
 		master_stop(port);
-		return wait_status(port, 0, WAIT_XMIT_STOP);
+		return wait_status_sr1(port, 0, WAIT_XMIT_STOP);
 	}
 
 	return EC_SUCCESS;
@@ -573,7 +601,7 @@ static int i2c_master_receive(int port, int slave_addr, uint8_t *data,
 
 	if (size >= 2) {
 		for (i = 0; i < (size - 2); i++) {
-			rv = wait_status(port, SR1_RxNE, WAIT_RX_NE);
+			rv = wait_status_sr1(port, SR1_RxNE, WAIT_RX_NE);
 			if (rv)
 				return rv;
 
@@ -590,7 +618,7 @@ static int i2c_master_receive(int port, int slave_addr, uint8_t *data,
 		 *   => wait rx ready
 		 *   => read [n-1]
 		 */
-		rv = wait_status(port, SR1_RxNE, WAIT_RX_NE_FINAL);
+		rv = wait_status_sr1(port, SR1_RxNE, WAIT_RX_NE_FINAL);
 		if (rv)
 			return rv;
 
@@ -599,7 +627,7 @@ static int i2c_master_receive(int port, int slave_addr, uint8_t *data,
 
 		data[i] = STM32_I2C_DR(port);
 
-		rv = wait_status(port, SR1_RxNE, WAIT_RX_NE_STOP);
+		rv = wait_status_sr1(port, SR1_RxNE, WAIT_RX_NE_STOP);
 		if (rv)
 			return rv;
 
@@ -607,7 +635,7 @@ static int i2c_master_receive(int port, int slave_addr, uint8_t *data,
 		data[i] = STM32_I2C_DR(port);
 	} else {
 		master_stop(port);
-		rv = wait_status(port, SR1_RxNE, WAIT_RX_NE_STOP_SIZE2);
+		rv = wait_status_sr1(port, SR1_RxNE, WAIT_RX_NE_STOP_SIZE2);
 		if (rv)
 			return rv;
 		data[0] = STM32_I2C_DR(port);

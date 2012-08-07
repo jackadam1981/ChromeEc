@@ -14,7 +14,9 @@
 #define CPUTS(outstr) cputs(CC_DMA, outstr)
 #define CPRINTF(format, args...) cprintf(CC_DMA, format, ## args)
 
-
+/* Note, you must decrement the channel value by 1 from what is specified
+ * in the datasheets, as they index from 1 and this indexes from 0!
+ */
 struct dma_channel *dma_get_channel(int channel)
 {
 	struct dma_channel *chan;
