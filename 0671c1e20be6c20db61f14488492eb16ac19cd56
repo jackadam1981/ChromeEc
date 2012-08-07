@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPH//6q0\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-07T04:37:15Z",
+      "side": 1,
+      "message": "Would be nice if we could remove this variable",
+      "revId": "0671c1e20be6c20db61f14488492eb16ac19cd56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//6q4\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-07T04:37:15Z",
+      "side": 1,
+      "message": "Would it be possible to return this value instead?\n\nMaybe we could change the function to return a WAIT_... value instead of the current EC_SUCCESS?",
+      "revId": "0671c1e20be6c20db61f14488492eb16ac19cd56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
