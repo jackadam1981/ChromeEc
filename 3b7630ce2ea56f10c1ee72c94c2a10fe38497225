@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPH//6aA\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-07T16:39:12Z",
+      "side": 1,
+      "message": "nit: space after each",
+      "revId": "3b7630ce2ea56f10c1ee72c94c2a10fe38497225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//6aM\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-07T16:39:12Z",
+      "side": 1,
+      "message": "Do you mean | instead of \u0026 ?",
+      "revId": "3b7630ce2ea56f10c1ee72c94c2a10fe38497225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//6aQ\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-07T16:39:12Z",
+      "side": 1,
+      "message": "extra blank line here\n\nHow about a little comment saying that timeout errors have a code indicating where in the i2c transaction they happened?",
+      "revId": "3b7630ce2ea56f10c1ee72c94c2a10fe38497225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
