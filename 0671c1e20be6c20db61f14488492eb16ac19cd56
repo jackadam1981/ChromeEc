@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPH//6io\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-08-07T15:30:42Z",
+      "side": 1,
+      "message": "Yea, this would cause the problem.  It\u0027s *more* prone to cause the problem without arbitration, but it\u0027s a little harder to test that way because you\u0027ll run into other errors too, since the EC and the AP will be stepping on eachother\u0027s toes on the bus the whole time, so it\u0027s a little harder to tell.  I change this description to include that",
+      "parentUuid": "AAAAPH//6j4\u003d",
+      "revId": "0671c1e20be6c20db61f14488492eb16ac19cd56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPH//6q0\u003d",
         "filename": "chip/stm32/i2c.c",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPH//6h0\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-08-07T15:30:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPH//6q0\u003d",
+      "revId": "0671c1e20be6c20db61f14488492eb16ac19cd56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPH//6q4\u003d",
         "filename": "chip/stm32/i2c.c",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2012-08-07T04:37:15Z",
       "side": 1,
       "message": "Would it be possible to return this value instead?\n\nMaybe we could change the function to return a WAIT_... value instead of the current EC_SUCCESS?",
+      "revId": "0671c1e20be6c20db61f14488492eb16ac19cd56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//6h4\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-08-07T15:30:42Z",
+      "side": 1,
+      "message": "I wanted to do that as well, but as the higher levels of the i2c function calls all bubble up their return values, the wait_t enum will overlap with different error codes and cause confusion.  Since the wait_status() function is called many times in various places, adding special code to handle a different set of error codes for it in each of those places would be cumbersome.\n\nI\u0027ve come up with a solution that may fix both problems by ORing the wait_t code with the EC_ERROR_TIMEOUT error code as it returns it.",
+      "parentUuid": "AAAAPH//6q4\u003d",
       "revId": "0671c1e20be6c20db61f14488492eb16ac19cd56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
