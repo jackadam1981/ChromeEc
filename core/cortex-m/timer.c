@@ -155,6 +155,12 @@ void usleep(unsigned us)
 			  evt & ~TASK_EVENT_TIMER);
 }
 
+timestamp_t get_deadline(int delay)
+{
+	timestamp_t deadline = get_time();
+	deadline.val += delay;
+	return deadline;
+}
 
 timestamp_t get_time(void)
 {

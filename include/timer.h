@@ -53,6 +53,9 @@ void usleep(unsigned us);
 /* Get the current timestamp from the system timer. */
 timestamp_t get_time(void);
 
+/* Get a timestamp "delay" microseconds in the future */
+timestamp_t get_deadline(int delay);
+
 /* Force the current value of the system timer.
  *
  * This function is for the power management implementation which wants to fix
