@@ -16,6 +16,23 @@
       "revId": "4ed5fab90006d7b4e9ff48af21fce1b6bf8052ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//5J8\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-08-08T17:39:53Z",
+      "side": 1,
+      "message": "This will be very wasteful (basically using 50% CPU on the snow EC)\nOriginally I put usleep(2000) here.\n\nRong modified it (as per commit e904d1a) with the following rationale :\n\ncommit e904d1a78a1cadfb8e4f4924c04dd82b89d72ae8\nAuthor: Rong Chang \u003crongchang@chromium.org\u003e\nDate:   Wed Jul 11 18:32:27 2012 +0800\n\n    Change STM32 I2C master wait status timeout from 100ms to 10ms\n    \n    This change shorten the timeout period to 10ms.\n    \n    Experiments showed that most master mode communication status bit\n    changed within 2000us. Hence 10ms timeout is much reasonable than\n    the original value.\n\nIMO if we go back to 100ms, we should either revert this value or do some kind of exponential backoff.",
+      "revId": "4ed5fab90006d7b4e9ff48af21fce1b6bf8052ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
