@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPH//38o\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2172,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-08-09T15:56:12Z",
+      "side": 1,
+      "message": "Still need to release the lock down here.  Might be tidier to acquire the lock just before line 2162 (that is, just before calling the command handler).",
+      "revId": "4b56b3d09366f81f62f015dee617697af328c7fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
