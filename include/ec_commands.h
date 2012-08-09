@@ -171,10 +171,18 @@
 
 /*
  * EC is busy.  This covers both the EC processing a command, and the host has
- * written a new command but the EC hasn't picked it up yet.
+ * written a new command but the EC hasn't picked it up yet or is still
+ * processing it.
  */
 #define EC_LPC_STATUS_BUSY_MASK \
 	(EC_LPC_STATUS_FROM_HOST | EC_LPC_STATUS_PROCESSING)
+
+/*
+ * EC is occuppied by someone else. The TO_HOST is cleared after all args
+ * are picked up.
+ */
+#define EC_LPC_STATUS_OCCUPIED_MASK \
+	(EC_LPC_STATUS_BUSY_MASK | EC_LPC_STATUS_TO_HOST)
 
 /* Host command response codes */
 enum ec_status {

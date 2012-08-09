@@ -828,6 +828,7 @@ int host_command_reboot(struct host_cmd_handler_args *args)
 #ifdef CONFIG_TASK_HOSTCMD
 	/* Clean busy bits on host */
 	args->result = EC_RES_SUCCESS;
+	/* TODO: could response twice if handle_pending_reboot() returns. */
 	args->send_response(args);
 #endif
 

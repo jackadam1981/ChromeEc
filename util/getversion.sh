@@ -29,7 +29,7 @@ else
 	ver="no_version"
 fi
 echo "#ifdef SHIFT_CODE_FOR_TEST"
-echo "#define VERSION \"${ver}_shift\""
+echo "#define VERSION \"${ver}_s\""
 echo "#else"
 echo "#define VERSION \"${ver}\""
 echo "#endif"
