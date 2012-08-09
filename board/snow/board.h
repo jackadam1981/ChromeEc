@@ -50,6 +50,7 @@
 #define CONFIG_ARBITRATE_I2C I2C_PORT_HOST
 
 #define CONFIG_CMD_PMU
+#define CONFIG_CMD_POWERLED	/* FIXME: remove this */
 
 /* GPIO signal list */
 enum gpio_signal {
@@ -83,6 +84,7 @@ enum gpio_signal {
 	GPIO_CHARGER_EN,
 	GPIO_EC_INT,
 	GPIO_CODEC_INT,        /* To audio codec (KB noise cancellation) */
+	GPIO_LED_POWER_L,      /* Keyboard power LED */
 	GPIO_KB_OUT00,
 	GPIO_KB_OUT01,
 	GPIO_KB_OUT02,

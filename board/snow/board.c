@@ -12,6 +12,7 @@
 #include "gpio.h"
 #include "i2c.h"
 #include "pmu_tpschrome.h"
+#include "power_led.h"
 #include "registers.h"
 #include "spi.h"
 #include "timer.h"
@@ -66,6 +67,7 @@ const struct gpio_info gpio_list[GPIO_COUNT] = {
 	{"CHARGER_EN",  GPIO_B, (1<<2),  GPIO_OUT_LOW, NULL},
 	{"EC_INT",      GPIO_B, (1<<9),  GPIO_HI_Z, NULL},
 	{"CODEC_INT",   GPIO_D, (1<<1),  GPIO_HI_Z, NULL},
+	{"LED_POWER_L", GPIO_B, (1<<3),  GPIO_HI_Z, NULL},
 	{"KB_OUT00",    GPIO_B, (1<<0),  GPIO_KB_OUTPUT, NULL},
 	{"KB_OUT01",    GPIO_B, (1<<8),  GPIO_KB_OUTPUT, NULL},
 	{"KB_OUT02",    GPIO_B, (1<<12), GPIO_KB_OUTPUT, NULL},
@@ -106,11 +108,6 @@ void configure_board(void)
 	STM32_GPIO_AFIO_MAPR = (STM32_GPIO_AFIO_MAPR & ~(0x3 << 8))
 			       | (1 << 8);
 
-	/* set power LED to alternate function to be driven by TIM2/PWM */
-	val = STM32_GPIO_CRL_OFF(GPIO_B) & ~0x0000f000;
-	val |= 0x00009000;
-	STM32_GPIO_CRL_OFF(GPIO_B) = val;
-
 	/*
 	 * I2C SCL/SDA on PB10-11 and PB6-7, bi-directional, no pull-up/down,
 	 * initialized as hi-Z until alt. function is set
@@ -149,6 +146,41 @@ void board_keyboard_suppress_noise(void)
 	/* notify audio codec of keypress for noise suppression */
 	gpio_set_level(GPIO_CODEC_INT, 0);
 	gpio_set_level(GPIO_CODEC_INT, 1);
+}
+
+void board_power_led_drive(enum powerled_driver driver)
+{
+	uint32_t val;
+	uint32_t orig;
+
+	orig = STM32_GPIO_CRL_OFF(GPIO_B);
+	val = orig & ~0x0000f000;
+
+	/* (re-)configure GPIO */
+	if (driver == POWERLED_DRIVER_PWM)
+		val |= 0x00009000;	/* alt. function (TIM2/PWM) */
+	else
+		val |= 0x00005000;	/* general purpose output, open-drain */
+
+	if (val != orig)
+		STM32_GPIO_CRL_OFF(GPIO_B) = val;
+
+	/* FIXME: superfluous debug print */
+	ccprintf("%s: driver: %d, orig: 0x%08x, val: 0x%08x\n",
+		 __func__, driver, orig, val);
+}
+
+void board_power_led_state(enum powerled_state state)
+{
+	board_power_led_drive(POWERLED_DRIVER_MANUAL);
+
+	if (state == POWERLED_STATE_OFF)
+		gpio_set_level(GPIO_LED_POWER_L, 1);	/* hi-Z */
+	else if (state == POWERLED_STATE_ON)
+		gpio_set_level(GPIO_LED_POWER_L, 0);
+
+	/* FIXME: superfluous debug print */
+	ccprintf("%s: state: %d\n",  __func__, state);
 }
 
 enum {
