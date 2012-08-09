@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPH//3NE\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-08-09T23:07:00Z",
+      "side": 1,
+      "message": "instead of overloading this function, why not implementing a dma_wait function in dma.c ?",
+      "revId": "b8f27c9aabe91f243234f84a8885474db4d346a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
