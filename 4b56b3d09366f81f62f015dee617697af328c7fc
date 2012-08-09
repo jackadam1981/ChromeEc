@@ -16,6 +16,24 @@
       "revId": "4b56b3d09366f81f62f015dee617697af328c7fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//35w\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2172,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-08-09T16:28:11Z",
+      "side": 1,
+      "message": "Done. Actually the comm_init() would open i2c on ARM, thus we need to lock before it. But for this line, I changed the code in patchset 2. Please review. Thanks.",
+      "parentUuid": "AAAAPH//38o\u003d",
+      "revId": "4b56b3d09366f81f62f015dee617697af328c7fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
