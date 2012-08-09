@@ -8,8 +8,10 @@
 #include "board.h"
 #include "console.h"
 #include "common.h"
+#include "hooks.h"
 #include "i2c.h"
 #include "pmu_tpschrome.h"
+#include "task.h"
 #include "timer.h"
 #include "util.h"
 
@@ -215,6 +217,11 @@ int pmu_low_current_charging(int enable)
 	return pmu_write(CG_CTRL5, reg_val);
 }
 
+void pmu_irq_handler(enum gpio_signal signal)
+{
+	CPRINTF("Charger IRQ received.\n");
+}
+
 void pmu_init(void)
 {
 #ifdef CONFIG_PMU_BOARD_INIT
@@ -233,11 +240,20 @@ void pmu_init(void)
 	 */
 	pmu_write(CG_CTRL3, 0xbb);
 #endif
-	/* Enable interrupt mask */
+	/* Enable interrupts */
+	pmu_clear_irq();
 	pmu_write(IRQ1MASK, 0xff);
 	pmu_write(IRQ2MASK, 0xff);
-
 }
+
+/* Initializes PMU when power is turned on.  This is necessary because the TPS'
+ * 3.3V rail is not powered until the power is turned on. */
+static int pmu_chipset_startup(void)
+{
+	pmu_init();
+	return 0;
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, pmu_chipset_startup, HOOK_PRIO_DEFAULT);
 
 #ifdef CONFIG_CMD_PMU
 static int print_pmu_info(void)
