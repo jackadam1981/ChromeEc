@@ -7,7 +7,9 @@
  * Keyboard power button LED state machine.
  *
  * This sets up TIM2 to drive the power button LED so that the duty cycle
- * can range from 0-100%.
+ * can range from 0-100%. When the lid is closed or turned off, then the
+ * power LED must be reconfigured as an open-drain output and put into
+ * impedence state as to minimize leakage voltage.
  *
  * In suspend mode, duty cycle transitions progressively slower from 0%
  * to 100%, and progressively faster from 100% back down to 0%. This
@@ -25,8 +27,9 @@
 #define LED_HOLD_TIME		330000	/* hold for 330ms at min/max */
 #define LED_STEP_PERCENT	4	/* incremental value of each step */
 
-static enum powerled_state led_state;
-static int power_led_percent;
+static enum powerled_state led_state = POWERLED_STATE_ON;
+static enum powerled_config led_config = POWERLED_CONFIG_MANUAL_OFF;
+static int power_led_percent = 100;
 
 void powerled_set_state(enum powerled_state new_state)
 {
@@ -35,8 +38,19 @@ void powerled_set_state(enum powerled_state new_state)
 	task_wake(TASK_ID_POWERLED);
 }
 
-static void power_led_timer_init(void)
+/* set board-level power LED config options (e.g. manual off/on, PWM) */
+void board_power_led_config(enum powerled_state config)
+		__attribute__((weak, alias("__board_power_led_config")));
+
+/* Provide a default function in case the board doesn't have one */
+void __board_power_led_config(enum powerled_config config)
 {
+}
+
+static void power_led_drive_pwm(void)
+{
+	board_power_led_config(POWERLED_CONFIG_PWM);
+
 	/* enable TIM2 clock */
 	STM32_RCC_APB1ENR |= 0x1;
 
@@ -66,6 +80,24 @@ static void power_led_timer_init(void)
 
 	/* enable auto-reload preload, start counting */
 	STM32_TIM_CR1(2) |= (1 << 7) | (1 << 0);
+
+	led_config = POWERLED_CONFIG_PWM;
+	/* FIXME: debug print */
+	ccprintf("%s: powerled set to PWM\n", __func__);
+}
+
+static void power_led_manual_off(void)
+{
+	/* disable counter */
+	STM32_TIM_CR1(2) &= ~0x1;
+
+	/* disable TIM2 clock */
+	STM32_RCC_APB1ENR &= ~0x1;
+
+	board_power_led_config(POWERLED_CONFIG_MANUAL_OFF);
+	led_config = POWERLED_CONFIG_MANUAL_OFF;
+	/* FIXME: debug print */
+	ccprintf("%s: powerled set to full off\n", __func__);
 }
 
 static void power_led_set_duty(int percent)
@@ -109,21 +141,31 @@ static int power_led_step(void)
 
 void power_led_task(void)
 {
-	power_led_timer_init();
-
 	while (1) {
 		int state_timeout = -1;
 
 		switch (led_state) {
 		case POWERLED_STATE_ON:
+			/*
+			 * "ON" implies driving the LED using the PWM with a
+			 * duty duty cycle of 100%. This provides a much gentler
+			 * brightness than simply setting the GPIO to solid ON.
+			 */
+			if (led_config != POWERLED_CONFIG_PWM)
+				power_led_drive_pwm();
 			power_led_set_duty(100);
 			state_timeout = -1;
 			break;
 		case POWERLED_STATE_OFF:
-			power_led_set_duty(0);
+			/* drive as GP output and turn fully off */
+			if (led_config != POWERLED_CONFIG_MANUAL_OFF)
+				power_led_manual_off();
 			state_timeout = -1;
 			break;
 		case POWERLED_STATE_SUSPEND:
+			/* drive using PWM with variable duty cycle */
+			if (led_config != POWERLED_CONFIG_PWM)
+				power_led_drive_pwm();
 			state_timeout = power_led_step();
 			break;
 		default:
