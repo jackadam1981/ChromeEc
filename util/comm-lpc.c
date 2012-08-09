@@ -37,13 +37,15 @@ int comm_init(void)
 	 * be 0.
 	 */
 	byte &= inb(EC_LPC_ADDR_HOST_CMD);
-	byte &= inb(EC_LPC_ADDR_HOST_DATA);
+	/*
+	 * Don't read EC_LPC_ADDR_HOST_DATA here. Reading it would unlock the
+	 * EC_LPC_STATUS_OCCUPIED_MASK.
+	 */
 	for (i = 0; i < EC_OLD_PARAM_SIZE && byte == 0xff; ++i)
 		byte &= inb(EC_LPC_ADDR_OLD_PARAM + i);
 	if (byte == 0xff) {
-		fprintf(stderr, "Port 0x%x,0x%x,0x%x-0x%x are all 0xFF.\n",
-			EC_LPC_ADDR_HOST_CMD, EC_LPC_ADDR_HOST_DATA,
-			EC_LPC_ADDR_OLD_PARAM,
+		fprintf(stderr, "Port 0x%x,0x%x-0x%x are all 0xFF.\n",
+			EC_LPC_ADDR_HOST_CMD, EC_LPC_ADDR_OLD_PARAM,
 			EC_LPC_ADDR_OLD_PARAM + EC_OLD_PARAM_SIZE - 1);
 		fprintf(stderr,
 			"Very likely this board doesn't have a Chromium EC.\n");
@@ -71,10 +73,12 @@ int comm_init(void)
  * Wait for the EC to be unbusy.  Returns 0 if unbusy, non-zero if
  * timeout.
  */
-static int wait_for_ec(int status_addr, int timeout_usec)
+static int wait_for_ec(int status_addr, int timeout_usec, int check_occupied)
 {
 	int i;
 	int delay = INITIAL_UDELAY;
+	int mask = (check_occupied) ? EC_LPC_STATUS_OCCUPIED_MASK :
+				      EC_LPC_STATUS_BUSY_MASK;
 
 	for (i = 0; i < timeout_usec; i += delay) {
 		/*
@@ -87,7 +91,7 @@ static int wait_for_ec(int status_addr, int timeout_usec)
 		 */
 		usleep(MIN(delay, timeout_usec - i));
 
-		if (!(inb(status_addr) & EC_LPC_STATUS_BUSY_MASK))
+		if (!(inb(status_addr) & mask))
 			return 0;
 
 		/* Increase the delay interval after a few rapid checks */
@@ -112,7 +116,7 @@ static int ec_command_old(int command, const void *indata, int insize,
 	if (outsize > EC_OLD_PARAM_SIZE)
 		outsize = EC_OLD_PARAM_SIZE;
 
-	if (wait_for_ec(EC_LPC_ADDR_HOST_CMD, 1000000)) {
+	if (wait_for_ec(EC_LPC_ADDR_HOST_CMD, 1000000, 1)) {
 		fprintf(stderr, "Timeout waiting for EC ready\n");
 		return -EC_RES_ERROR;
 	}
@@ -124,10 +128,15 @@ static int ec_command_old(int command, const void *indata, int insize,
 
 	outb(command, EC_LPC_ADDR_HOST_CMD);
 
-	if (wait_for_ec(EC_LPC_ADDR_HOST_CMD, 1000000)) {
+	if (wait_for_ec(EC_LPC_ADDR_HOST_CMD, 1000000, 0)) {
 		fprintf(stderr, "Timeout waiting for EC response\n");
 		return -EC_RES_ERROR;
 	}
+
+	/* Read data, if any */
+	/* TODO: optimized copy using outl() */
+	for (i = 0, d = (uint8_t *)outdata; i < outsize; i++, d++)
+		*d = inb(EC_LPC_ADDR_OLD_PARAM + i);
 
 	/* Check result */
 	i = inb(EC_LPC_ADDR_HOST_DATA);
@@ -135,11 +144,6 @@ static int ec_command_old(int command, const void *indata, int insize,
 		fprintf(stderr, "EC returned error result code %d\n", i);
 		return -i;
 	}
-
-	/* Read data, if any */
-	/* TODO: optimized copy using outl() */
-	for (i = 0, d = (uint8_t *)outdata; i < outsize; i++, d++)
-		*d = inb(EC_LPC_ADDR_OLD_PARAM + i);
 
 	/*
 	 * LPC protocol doesn't have a way to communicate the true output
@@ -170,6 +174,12 @@ int ec_command(int command, int version, const void *indata, int insize,
 	/* Initialize checksum */
 	csum = command + args.flags + args.command_version + args.data_size;
 
+	/* Ensure the EC is ready to accept the next command. */
+	if (wait_for_ec(EC_LPC_ADDR_HOST_CMD, 1000000, 1)) {
+		fprintf(stderr, "Timeout waiting for EC ready\n");
+		return -EC_RES_ERROR;
+	}
+
 	/* Write data and update checksum */
 	for (i = 0, d = (uint8_t *)indata; i < insize; i++, d++) {
 		outb(*d, EC_LPC_ADDR_HOST_PARAM + i);
@@ -183,9 +193,24 @@ int ec_command(int command, int version, const void *indata, int insize,
 
 	outb(command, EC_LPC_ADDR_HOST_CMD);
 
-	if (wait_for_ec(EC_LPC_ADDR_HOST_CMD, 1000000)) {
+	/* reboot is special because it doesn't response anything. */
+	if (command == EC_CMD_REBOOT)
+		return EC_RES_SUCCESS;
+
+	if (wait_for_ec(EC_LPC_ADDR_HOST_CMD, 1000000, 0)) {
 		fprintf(stderr, "Timeout waiting for EC response\n");
 		return -EC_RES_ERROR;
+	}
+
+	/* Read back args */
+	for (i = 0, dout = (uint8_t *)&args; i < sizeof(args); i++, dout++)
+		*dout = inb(EC_LPC_ADDR_HOST_ARGS + i);
+
+	/* Read response and update checksum */
+	for (i = 0, dout = (uint8_t *)outdata; i < args.data_size;
+	     i++, dout++) {
+		*dout = inb(EC_LPC_ADDR_HOST_PARAM + i);
+		csum += *dout;
 	}
 
 	/* Check result */
@@ -194,10 +219,6 @@ int ec_command(int command, int version, const void *indata, int insize,
 		fprintf(stderr, "EC returned error result code %d\n", i);
 		return -i;
 	}
-
-	/* Read back args */
-	for (i = 0, dout = (uint8_t *)&args; i < sizeof(args); i++, dout++)
-		*dout = inb(EC_LPC_ADDR_HOST_ARGS + i);
 
 	/*
 	 * If EC didn't modify args flags, then somehow we sent a new-style
@@ -216,13 +237,6 @@ int ec_command(int command, int version, const void *indata, int insize,
 
 	/* Start calculating response checksum */
 	csum = command + args.flags + args.command_version + args.data_size;
-
-	/* Read response and update checksum */
-	for (i = 0, dout = (uint8_t *)outdata; i < args.data_size;
-	     i++, dout++) {
-		*dout = inb(EC_LPC_ADDR_HOST_PARAM + i);
-		csum += *dout;
-	}
 
 	/* Verify checksum */
 	if (args.checksum != (uint8_t)csum) {
