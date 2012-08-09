@@ -322,6 +322,8 @@ void pmu_charger_task(void)
 	pmu_init();
 
 	while (1) {
+		pmu_clear_irq();
+
 		next_state = calc_next_state(state);
 		if (next_state != state) {
 			CPRINTF("[batt] state %s -> %s\n",
@@ -331,6 +333,6 @@ void pmu_charger_task(void)
 		}
 
 		/* TODO(sjg@chromium.org): root cause crosbug.com/p/11285 */
-		usleep(5000 * 1000);
+		task_wait_event(5000 * 1000);
 	}
 }
