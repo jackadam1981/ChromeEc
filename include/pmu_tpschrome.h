@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_TPSCHROME_H
 #define __CROS_EC_TPSCHROME_H
 
+#include "gpio.h"
+
 enum TPS_TEMPERATURE_RANGE {
 	RANGE_T01,
 	RANGE_T12,		/* low charging temperature range */
@@ -125,6 +127,13 @@ int pmu_set_term_voltage(enum TPS_TEMPERATURE_RANGE range,
  * @param enable         enable/disable low current charging
  */
 int pmu_low_current_charging(int enable);
+
+/**
+ * Handles interrupts from tpschrome
+ *
+ * @param signal         Indicates signal type.
+ */
+void pmu_irq_handler(enum gpio_signal signal);
 
 /**
  *  * Initialize pmu
