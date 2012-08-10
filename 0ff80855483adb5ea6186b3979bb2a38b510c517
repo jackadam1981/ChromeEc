@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPH//2Mk\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-08-10T23:13:03Z",
+      "side": 1,
+      "message": "I don\u0027t really see the benefit of this change but other people might view it differently :\nyou are replacing 1 line of C by 7 lines\n            using 20 more bytes of stack\n            using 16 more bytes of flash\nfor the same thing",
+      "revId": "0ff80855483adb5ea6186b3979bb2a38b510c517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
