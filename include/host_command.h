@@ -134,6 +134,28 @@ uint32_t host_get_events(void);
  */
 void host_command_received(struct host_cmd_handler_args *args);
 
+/*
+ * Check if there is a pending host command
+ *
+ * @return 1 if busy, 0 if not
+ */
+int host_command_busy(void);
+
+/**
+ * Wake up the host command processor when a command is ready
+ */
+void host_command_wakeup(void);
+
+/**
+ * Return the number of host commands processed so far
+ *
+ * This is used for testing. The AP can send 1000 commands and then check
+ * that the EC saw them all.
+ *
+ * @return number of commands processed
+ */
+int host_command_count(void);
+
 /* Register a host command handler */
 #define DECLARE_HOST_COMMAND(command, routine, version_mask)		\
 	const struct host_command __host_cmd_##command			\

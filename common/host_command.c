@@ -39,6 +39,9 @@ uint8_t *host_get_memmap(int offset)
 #endif
 }
 
+static uint8_t inited;		/* 1 if we are ready to process commands */
+static unsigned int cmd_count;	/* number of commands we have processed */
+
 void host_command_received(struct host_cmd_handler_args *args)
 {
 	/* TODO: should warn if we already think we're in a command */
@@ -62,8 +65,15 @@ void host_command_received(struct host_cmd_handler_args *args)
 		pending_args = args;
 
 		/* Wake up the task to handle the command */
-		task_set_event(TASK_ID_HOSTCMD, TASK_EVENT_CMD_PENDING, 0);
+		host_command_wakeup();
 	}
+}
+
+void host_command_wakeup(void)
+{
+	/* Wake up the task to handle the command */
+	if (inited && pending_args)
+		task_set_event(TASK_ID_HOSTCMD, TASK_EVENT_CMD_PENDING, 0);
 }
 
 const struct host_command *host_command_find(int command)
@@ -187,6 +197,8 @@ enum ec_status host_command_process(struct host_cmd_handler_args *args)
 	else
 		CPRINTF("[%T HC 0x%02x]\n", args->command);
 
+	cmd_count++;
+
 	if (!cmd)
 		rv = EC_RES_INVALID_COMMAND;
 	else if (!(EC_VER_MASK(args->version) & cmd->version_mask))
@@ -218,8 +230,19 @@ static int host_command_init(void)
 
 	host_set_single_event(EC_HOST_EVENT_INTERFACE_READY);
 	CPRINTF("[%T hostcmd init 0x%x]\n", host_get_events());
+	inited = 1;
 
 	return EC_SUCCESS;
+}
+
+int host_command_busy(void)
+{
+	return pending_args != NULL;
+}
+
+int host_command_count(void)
+{
+	return cmd_count;
 }
 
 void host_command_task(void)
