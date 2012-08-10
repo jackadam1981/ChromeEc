@@ -76,6 +76,22 @@ struct host_command {
 uint8_t *host_get_memmap(int offset);
 
 /**
+ * Find a host command
+ *
+ * Look up a command number in the table and return the host command.
+ * This function uses a linear search.
+ *
+ * TODO(sjg@chromium.org): Use a hash or lookup table to speed this up?
+ * It is on the critical path for host command execution which may be done
+ * under interrupt.
+ *
+ * @param command       Command number to look up
+ *
+ * @return pointer to the command structure, or NULL if no match found.
+ */
+const struct host_command *host_command_find(int command);
+
+/**
  * Process a host command and return its response
  *
  * @param args	        Command handler args

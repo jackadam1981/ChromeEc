@@ -66,11 +66,7 @@ void host_command_received(struct host_cmd_handler_args *args)
 	}
 }
 
-/*
- * Find a command by command number.  Returns the command structure, or NULL if
- * no match found.
- */
-static const struct host_command *find_host_command(int command)
+const struct host_command *host_command_find(int command)
 {
 	const struct host_command *cmd;
 
@@ -165,7 +161,7 @@ static int host_command_get_cmd_versions(struct host_cmd_handler_args *args)
 	const struct ec_params_get_cmd_versions *p = args->params;
 	struct ec_response_get_cmd_versions *r = args->response;
 
-	const struct host_command *cmd = find_host_command(p->cmd);
+	const struct host_command *cmd = host_command_find(p->cmd);
 
 	if (!cmd)
 		return EC_RES_INVALID_PARAM;
@@ -182,7 +178,7 @@ DECLARE_HOST_COMMAND(EC_CMD_GET_CMD_VERSIONS,
 
 enum ec_status host_command_process(struct host_cmd_handler_args *args)
 {
-	const struct host_command *cmd = find_host_command(args->command);
+	const struct host_command *cmd = host_command_find(args->command);
 	enum ec_status rv;
 
 	if (hcdebug && args->params_size)
