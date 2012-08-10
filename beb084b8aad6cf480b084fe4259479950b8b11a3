@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPH//2Ug\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-08-10T20:47:01Z",
+      "side": 1,
+      "message": "so you want to remove the other pmu_init call in pmu_tps65090_charge.c ?",
+      "revId": "beb084b8aad6cf480b084fe4259479950b8b11a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
