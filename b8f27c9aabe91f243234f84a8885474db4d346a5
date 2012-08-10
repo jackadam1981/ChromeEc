@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPH//2vs\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-08-10T17:36:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPH//3AQ\u003d",
+      "revId": "b8f27c9aabe91f243234f84a8885474db4d346a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPH//3AA\u003d",
         "filename": "chip/stm32/i2c.c",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPH//2oE\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-08-10T17:36:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPH//3AA\u003d",
+      "revId": "b8f27c9aabe91f243234f84a8885474db4d346a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPH//3AI\u003d",
         "filename": "chip/stm32/i2c.c",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2012-08-10T02:05:58Z",
       "side": 1,
       "message": "uint32_t * ?",
+      "revId": "b8f27c9aabe91f243234f84a8885474db4d346a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//2n4\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-08-10T17:36:54Z",
+      "side": 1,
+      "message": "I think it makes more sense to have a separate dma_wait, like Vincent suggested, so these problems all got reverted",
+      "parentUuid": "AAAAPH//3AI\u003d",
       "revId": "b8f27c9aabe91f243234f84a8885474db4d346a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -104,6 +158,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPH//2og\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-08-10T17:36:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPH//3NE\u003d",
+      "revId": "b8f27c9aabe91f243234f84a8885474db4d346a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPH//2/8\u003d",
         "filename": "chip/stm32/i2c.c",
         "patchSetId": 2
@@ -115,6 +187,24 @@
       "writtenOn": "2012-08-10T02:05:58Z",
       "side": 1,
       "message": "Here is a question:\n\ndo we actually need to wait around for this transmit? Could we in fact return immediately and let the transmit complete in its own time? Since i2c is extremely slow, we are locking out the cpu for up to 35ms here.",
+      "revId": "b8f27c9aabe91f243234f84a8885474db4d346a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//2nU\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-08-10T17:36:54Z",
+      "side": 1,
+      "message": "Sadly, yes.  We have to wait so we can send the stop bit, etc.  However, since we don\u0027t have to poll for every bit sent anymore, this should be eased up by this change.  the dma_wait function I just added, immediately usleeps whenever it\u0027s not done instead of polling hard right out of the gate, since it\u0027s likely it is longer before the DMA returns.  It still uses some cpu time, but it should be a little better.\n\nLater, it is possible to switch this over to an interrupt, so we could have the ISR deal with sending the stop bit, but I\u0027d like to get everything switched over to DMA and be sure it\u0027s working before adding that additional complication.",
+      "parentUuid": "AAAAPH//2/8\u003d",
       "revId": "b8f27c9aabe91f243234f84a8885474db4d346a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
