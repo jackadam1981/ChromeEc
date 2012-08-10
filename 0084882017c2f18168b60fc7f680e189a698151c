@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPH//2XE\u003d",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-08-10T22:32:10Z",
+      "side": 1,
+      "message": "Good idea, that makes this way clearer",
+      "parentUuid": "AAAAPH//2e8\u003d",
+      "revId": "0084882017c2f18168b60fc7f680e189a698151c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPH//2eo\u003d",
         "filename": "chip/stm32/dma.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2012-08-10T18:25:33Z",
       "side": 1,
       "message": "Maybe could do\n\nt1 \u003d get_time()\nt1.val +\u003d DMA_TRANSFER_TIMEOUT;\n...\nif (timestamp_expired(\u0026t1, NULL))\n   return...\n\n\nIt would be nice to have something like get_deadline(int delay) which returns a time in th future, as I see this sort of thing a lot in the code.",
+      "revId": "0084882017c2f18168b60fc7f680e189a698151c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//2RQ\u003d",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-08-10T22:32:10Z",
+      "side": 1,
+      "message": "Done,\nI added a little get_deadline() fn to timer, too.",
+      "parentUuid": "AAAAPH//2eo\u003d",
       "revId": "0084882017c2f18168b60fc7f680e189a698151c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPH//2X4\u003d",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-08-10T22:32:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPH//2fE\u003d",
+      "revId": "0084882017c2f18168b60fc7f680e189a698151c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPH//2eU\u003d",
         "filename": "chip/stm32/dma.c",
         "patchSetId": 3
@@ -64,6 +118,24 @@
       "writtenOn": "2012-08-10T18:25:33Z",
       "side": 1,
       "message": "Similar here, better to get a pointer to the controller from a function\n\nAlso, why not pass a channel number in here?",
+      "revId": "0084882017c2f18168b60fc7f680e189a698151c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//2WM\u003d",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-08-10T22:32:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPH//2eU\u003d",
       "revId": "0084882017c2f18168b60fc7f680e189a698151c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPH//2QI\u003d",
+        "filename": "chip/stm32/dma.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-08-10T22:32:10Z",
+      "side": 1,
+      "message": "Yep, it threw me for a loop trying to get this working, but these are certainly the right values.  They share channels with SPI2 due to the way that the DMA is wired, and then the datasheet is weird about the numbering, so everything is off by one.",
+      "parentUuid": "AAAAPH//2eQ\u003d",
+      "revId": "0084882017c2f18168b60fc7f680e189a698151c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPH//2fY\u003d",
         "filename": "chip/stm32/dma.h",
         "patchSetId": 3
@@ -98,6 +188,24 @@
       "writtenOn": "2012-08-10T18:25:33Z",
       "side": 1,
       "message": "Perhaps put _US on the end of these so it is clear",
+      "revId": "0084882017c2f18168b60fc7f680e189a698151c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//2QA\u003d",
+        "filename": "chip/stm32/dma.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-08-10T22:32:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPH//2fY\u003d",
       "revId": "0084882017c2f18168b60fc7f680e189a698151c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPH//2P4\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-08-10T22:32:10Z",
+      "side": 1,
+      "message": "Yeah, with those other changes to dma.c/h this is unnecessary.",
+      "parentUuid": "AAAAPH//2do\u003d",
+      "revId": "0084882017c2f18168b60fc7f680e189a698151c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPH//2dk\u003d",
         "filename": "chip/stm32/i2c.c",
         "patchSetId": 3
@@ -132,6 +258,24 @@
       "writtenOn": "2012-08-10T18:25:33Z",
       "side": 1,
       "message": "Is this new? Is it still needed for non-dma case?",
+      "revId": "0084882017c2f18168b60fc7f680e189a698151c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//2Pw\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-08-10T22:32:10Z",
+      "side": 1,
+      "message": "You\u0027re right, this is redundant for the non-dma case.  I\u0027ve moved it up into the if-statement.",
+      "parentUuid": "AAAAPH//2dk\u003d",
       "revId": "0084882017c2f18168b60fc7f680e189a698151c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
