@@ -51,6 +51,28 @@ struct host_cmd_handler_args {
 	enum ec_status result;
 };
 
+/*
+ * Flags for host commands.
+ *
+ * Slow commands are always queued for later execution. Fast commands may be
+ * executed under interrupt if required.
+ *
+ * Raw commands bypass the full link protocol. They are used to give the
+ * command full control over the link reply for this protocol. SPI flash
+ * emulation uses this to implement the SPI flash protocol without the
+ * additional length/checksum overhead which a SPI flash driver would not
+ * understand.
+ *
+ * A polled command can be called repeatedly with the expectation that it
+ * will eventually return a different value. This is used for polling status
+ * bytes, for example.
+ */
+enum {
+	HOST_COMMANDF_SLOW	= 1 << 0,	/* Can't run under interrupt */
+	HOST_COMMANDF_RAW	= 1 << 1,	/* Use raw protocol format */
+	HOST_COMMANDF_POLLED	= 1 << 2,	/* A polled command */
+};
+
 /* Host command */
 struct host_command {
 	/* Command code */
@@ -62,6 +84,9 @@ struct host_command {
 	int (*handler)(struct host_cmd_handler_args *args);
 	/* Mask of supported versions */
 	int version_mask;
+#ifdef CONFIG_EXTRA_HC_FLAGS
+	uint8_t flags;		/* HOST_COMMANDF_... */
+#endif
 };
 
 /**
@@ -161,5 +186,17 @@ int host_command_count(void);
 	const struct host_command __host_cmd_##command			\
 	__attribute__((section(".rodata.hcmds")))			\
 	     = {command, routine, version_mask}
+
+#ifdef CONFIG_EXTRA_HC_FLAGS
+#define DECLARE_HOST_COMMAND_FULL(command, routine, version_mask, flags) \
+	const struct host_command __host_cmd_##command			\
+	__attribute__((section(".rodata.hcmds")))			\
+	     = {command, routine, version_mask, flags}
+#else
+#define DECLARE_HOST_COMMAND_FULL(command, routine, version_mask, flags) \
+	const struct host_command __host_cmd_##command			\
+	__attribute__((section(".rodata.hcmds")))			\
+	     = {command, routine, version_mask}
+#endif
 
 #endif  /* __CROS_EC_HOST_COMMAND_H */
