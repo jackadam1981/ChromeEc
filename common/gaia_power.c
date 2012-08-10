@@ -347,6 +347,21 @@ static int check_for_power_on_event(void)
 	return 0;
 }
 
+/* board-specific callbacks for 3.3V rail */
+void __board_pp3300_pre_enable(void)
+{
+}
+
+void board_pp3300_pre_enable(void)
+		__attribute__((weak, alias("__board_pp3300_pre_enable")));
+
+void __board_pp3300_post_disable(void)
+{
+}
+
+void board_pp3300_post_disable(void)
+		__attribute__((weak, alias("__board_pp3300_post_disable")));
+
 /**
  * Power on the AP
  *
@@ -379,7 +394,7 @@ static int power_on(void)
 	gpio_set_level(GPIO_EN_PP1350, 1);
 	/* wait to avoid large inrush current */
 	usleep(DELAY_RAIL_STAGGERING);
-	/* Enable 3.3v power rail */
+	board_pp3300_pre_enable();	/* FIXME: should this go here? */
 	gpio_set_level(GPIO_EN_PP3300, 1);
 	ap_on = 1;
 	disable_sleep(SLEEP_MASK_AP_RUN);
@@ -420,6 +435,8 @@ static void power_off(void)
 	hook_notify(HOOK_CHIPSET_SHUTDOWN, 0);
 	/* switch off all rails */
 	gpio_set_level(GPIO_EN_PP3300, 0);
+	/* FIXME: should this go elsewhere? */
+	board_pp3300_post_disable();
 	gpio_set_level(GPIO_EN_PP1350, 0);
 	gpio_set_level(GPIO_PMIC_PWRON_L, 1);
 	gpio_set_level(GPIO_EN_PP5000, 0);

@@ -54,10 +54,12 @@ const struct gpio_info gpio_list[GPIO_COUNT] = {
 	{"KB_IN07",     GPIO_D, (1<<2),  GPIO_KB_INPUT, matrix_interrupt},
 	/* Other inputs */
 	{"AC_PWRBTN_L", GPIO_A, (1<<0), GPIO_INT_BOTH, NULL},
-	{"SPI1_NSS",    GPIO_A, (1<<4), GPIO_PULL_UP, NULL},
+//	{"SPI1_NSS",    GPIO_A, (1<<4), GPIO_PULL_UP, NULL},
+	{"SPI1_NSS",    GPIO_A, (1<<4),  GPIO_INPUT, NULL},
 
 	/* Outputs */
-	{"SPI1_MISO",   GPIO_A, (1<<6), GPIO_OUT_HIGH, NULL},
+//	{"SPI1_MISO",   GPIO_A, (1<<6), GPIO_OUT_HIGH, NULL},
+	{"SPI1_MISO",   GPIO_A, (1<<6),  GPIO_INPUT, NULL},
 	{"EN_PP1350",   GPIO_A, (1<<2),  GPIO_OUT_LOW, NULL},
 	{"EN_PP5000",   GPIO_A, (1<<11),  GPIO_OUT_LOW, NULL},
 	{"EN_PP3300",   GPIO_A, (1<<8),  GPIO_OUT_LOW, NULL},
@@ -214,6 +216,52 @@ int board_i2c_claim(int port)
 	panic_puts("Unable to access I2C bus (arbitration timeout)\n");
 	return EC_ERROR_BUSY;
 }
+
+/* stuff that must be done after disabling 3.3V rail */
+void board_pp3300_post_disable(void)
+{
+	uint32_t val, orig;
+
+	/*
+	 * AP is off so we can re-configure the arbitration GPIOs to
+	 * reduce voltage leakage:
+	 * - Re-configure PA6/GPIO_{SPI1_MISO,EC_CLAIM} from push-pull
+	 *   output to floating input
+	 * - Re-configure PA4/GPIO_{SPI1_NSS,AP_CLAIM} from PU/PD input to
+	 *   floating input
+	 */
+
+	orig = STM32_GPIO_CRL_OFF(GPIO_A);
+	val = (orig & ~0x0f0f0000) | 0x04040000;
+	if (val != orig)
+		STM32_GPIO_CRL_OFF(GPIO_A) = val;
+
+	/* FIXME: remove this debug print */
+	ccprintf("%s: orig: 0x%08x, val: 0x%08x, CRL: 0x%08x\n",
+			__func__, orig, val, STM32_GPIO_CRL_OFF(GPIO_A));
+}
+
+/* stuff that must be done prior to enabling 3.3V rail */
+void board_pp3300_pre_enable(void)
+{
+	uint32_t val, orig;
+
+	/*
+	 * Undo the pp3300_post_disable() steps:
+	 * - Re-configure PA6/GPIO_{SPI1_MISO,EC_CLAIM} as output (push-pull)
+	 * - Re-enable PU/PD on PA4/GPIO_{SPI1_NSS,AP_CLAIM}
+	 */
+
+	orig = STM32_GPIO_CRL_OFF(GPIO_A);
+	val = (orig & ~0x0f0f0000) | 0x01080000;
+	if (val != orig)
+		STM32_GPIO_CRL_OFF(GPIO_A) = val;
+
+	/* FIXME: remove this debug print */
+	ccprintf("%s: orig: 0x%08x, val: 0x%08x, CRL: 0x%08x\n",
+			__func__, orig, val, STM32_GPIO_CRL_OFF(GPIO_A));
+}
+
 
 void board_i2c_release(int port)
 {
