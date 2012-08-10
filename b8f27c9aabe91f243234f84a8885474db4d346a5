@@ -2,6 +2,91 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAAPH//3AQ\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-10T02:05:58Z",
+      "side": 1,
+      "message": "Please can you add to and use DMAC_ in dma.h?",
+      "revId": "b8f27c9aabe91f243234f84a8885474db4d346a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//3AA\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-10T02:05:58Z",
+      "side": 1,
+      "message": "While you are here, please can you add a comment for this function, with args",
+      "revId": "b8f27c9aabe91f243234f84a8885474db4d346a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//3AI\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-10T02:05:58Z",
+      "side": 1,
+      "message": "uint32_t * ?",
+      "revId": "b8f27c9aabe91f243234f84a8885474db4d346a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//3AM\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-10T02:05:58Z",
+      "side": 1,
+      "message": "These are REG16 in i2c.h so should probably stick with that. Although I\u0027m not sure why...",
+      "revId": "b8f27c9aabe91f243234f84a8885474db4d346a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//3AE\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-10T02:05:58Z",
+      "side": 1,
+      "message": "Please comment this function",
+      "revId": "b8f27c9aabe91f243234f84a8885474db4d346a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPH//3NE\u003d",
         "filename": "chip/stm32/i2c.c",
         "patchSetId": 2
@@ -13,6 +98,23 @@
       "writtenOn": "2012-08-09T23:07:00Z",
       "side": 1,
       "message": "instead of overloading this function, why not implementing a dma_wait function in dma.c ?",
+      "revId": "b8f27c9aabe91f243234f84a8885474db4d346a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//2/8\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-10T02:05:58Z",
+      "side": 1,
+      "message": "Here is a question:\n\ndo we actually need to wait around for this transmit? Could we in fact return immediately and let the transmit complete in its own time? Since i2c is extremely slow, we are locking out the cpu for up to 35ms here.",
       "revId": "b8f27c9aabe91f243234f84a8885474db4d346a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
