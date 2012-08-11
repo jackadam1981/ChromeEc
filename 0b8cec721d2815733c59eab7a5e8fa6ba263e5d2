@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPH//2KI\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1000434
+      },
+      "writtenOn": "2012-08-11T00:26:23Z",
+      "side": 1,
+      "message": "you are still calling pmu_init() twice.\nIs that intended ?",
+      "revId": "0b8cec721d2815733c59eab7a5e8fa6ba263e5d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
