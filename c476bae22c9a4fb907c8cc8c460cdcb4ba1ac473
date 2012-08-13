@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPH//1f8\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-08-13T21:08:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPH//1g4\u003d",
+      "revId": "c476bae22c9a4fb907c8cc8c460cdcb4ba1ac473",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPH//1go\u003d",
         "filename": "chip/stm32/i2c.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2012-08-13T21:00:30Z",
       "side": 1,
       "message": "Could this common line be outside the if(), i.e. turn this inside out?",
+      "revId": "c476bae22c9a4fb907c8cc8c460cdcb4ba1ac473",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//1gA\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-08-13T21:08:47Z",
+      "side": 1,
+      "message": "I think this is the most consice way to do this.  Basically there are 2 signals that I\u0027m checking, and you have to do something different for them based on if you\u0027re a receiver or transmitter.\n\nThis line is just checking if you\u0027re a receiver or transmitter, if you put it outside, there would need to be a duplicated if statement inside, checking for which signal we\u0027re handling.\n\nSince there is some work that needs to be done for both transmitting and receiving based on the signal, I think it makes more sense to have this configuration than the other way around.",
+      "parentUuid": "AAAAPH//1go\u003d",
       "revId": "c476bae22c9a4fb907c8cc8c460cdcb4ba1ac473",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
