@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAAPH//2Js\u003d",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-13T15:38:11Z",
+      "side": 1,
+      "message": "please consider s/isr/REG16(\u0026dma-\u003eisr)/\n\nSorry, I\u0027m not completely sure about this, but it might be important, and it seems to be how other access is done. It is probably safer to have some sort of accessor for registers.\n\nIf so, then save for line 224 below",
+      "revId": "0ff80855483adb5ea6186b3979bb2a38b510c517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPH//2Mk\u003d",
         "filename": "chip/stm32/i2c.c",
         "patchSetId": 4
@@ -13,6 +30,24 @@
       "writtenOn": "2012-08-10T23:13:03Z",
       "side": 1,
       "message": "I don\u0027t really see the benefit of this change but other people might view it differently :\nyou are replacing 1 line of C by 7 lines\n            using 20 more bytes of stack\n            using 16 more bytes of flash\nfor the same thing",
+      "revId": "0ff80855483adb5ea6186b3979bb2a38b510c517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//130\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-13T15:38:11Z",
+      "side": 1,
+      "message": "The 7 lines is in a function with a nice API which doesn\u0027t require the caller to look inside the type (if the intent is for the type to be opaque)\n\nIf such a thing were used everywhere then it would save flash space, but not stack space. \n\nAlthough our compiler seems to make a real hash of this, so perhaps something to punt until we can figure out why.",
+      "parentUuid": "AAAAPH//2Mk\u003d",
       "revId": "0ff80855483adb5ea6186b3979bb2a38b510c517",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
