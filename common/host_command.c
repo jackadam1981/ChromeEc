@@ -368,3 +368,17 @@ DECLARE_CONSOLE_COMMAND(hcdebug, command_hcdebug,
 			"hcdebug [on | off]",
 			"Toggle extra host command debug output",
 			NULL);
+
+static int host_command_get_status(struct host_cmd_handler_args *args)
+{
+	struct ec_response_get_status *r = args->response;
+
+	r->flags = host_command_busy() ? EC_COMMS_STATUS_PROCESSING : 0;
+	args->response_size = sizeof(*r);
+
+	return EC_SUCCESS;
+}
+
+DECLARE_HOST_COMMAND(EC_CMD_GET_STATUS,
+		     host_command_get_status,
+		     EC_VER_MASK(0));
