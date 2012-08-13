@@ -87,6 +87,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPH//1ug\u003d",
+        "filename": "chip/stm32/dma.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-13T17:18:17Z",
+      "side": 1,
+      "message": "OK, I see. Please add a llittle comment that these channels are shared and cannot be used at the same time. Don\u0027t won\u0027t someone getting tripped up on this.",
+      "parentUuid": "AAAAPH//1uo\u003d",
+      "revId": "98f0551ed62ee9a3d388e0ad32b0f53a04b950b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPH//1us\u003d",
         "filename": "chip/stm32/i2c.c",
         "patchSetId": 7
