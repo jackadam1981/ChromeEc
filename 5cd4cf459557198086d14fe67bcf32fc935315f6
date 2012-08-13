@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPH//12k\u003d",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-08-13T16:05:58Z",
+      "side": 1,
+      "message": "Oops, I forgot there was a call down here too.",
+      "parentUuid": "AAAAPH//13s\u003d",
+      "revId": "5cd4cf459557198086d14fe67bcf32fc935315f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPH//13Q\u003d",
         "filename": "chip/stm32/dma.c",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2012-08-13T15:51:48Z",
       "side": 1,
       "message": "Had to read this a few times and look at dma_get_ctlr() before I realized there are only 2 DMA channels.",
+      "revId": "5cd4cf459557198086d14fe67bcf32fc935315f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//12c\u003d",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-08-13T16:05:58Z",
+      "side": 1,
+      "message": "I added a comment that hopefully makes that a little clearer",
+      "parentUuid": "AAAAPH//13Q\u003d",
       "revId": "5cd4cf459557198086d14fe67bcf32fc935315f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
