@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAAPH//1u8\u003d",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-13T17:13:35Z",
+      "side": 1,
+      "message": "nit: comment style should really be\n\n/*\n * Note, ....",
+      "revId": "98f0551ed62ee9a3d388e0ad32b0f53a04b950b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPH//1z8\u003d",
         "filename": "chip/stm32/dma.c",
         "patchSetId": 7
@@ -30,6 +47,57 @@
       "writtenOn": "2012-08-13T16:27:32Z",
       "side": 1,
       "message": "Here as well",
+      "revId": "98f0551ed62ee9a3d388e0ad32b0f53a04b950b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//1u4\u003d",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-13T17:13:35Z",
+      "side": 1,
+      "message": "suggest adding brackets around the (4 * channel) rather than the outer brackets, which aren\u0027t really needed",
+      "revId": "98f0551ed62ee9a3d388e0ad32b0f53a04b950b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//1uo\u003d",
+        "filename": "chip/stm32/dma.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-13T17:13:35Z",
+      "side": 1,
+      "message": "Sorry I have only just figured out what you mean here. I think the original intent was for the dma channels to follow on sequentially, so controller 1 has its 7, channels and the first channel of controller 2 would be value 8. Is that easy to do?",
+      "revId": "98f0551ed62ee9a3d388e0ad32b0f53a04b950b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//1us\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-13T17:13:35Z",
+      "side": 1,
+      "message": "@return ...",
       "revId": "98f0551ed62ee9a3d388e0ad32b0f53a04b950b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
