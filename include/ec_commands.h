@@ -178,14 +178,31 @@
 
 /* Host command response codes */
 enum ec_status {
+	/* Command succeeded */
 	EC_RES_SUCCESS = 0,
+	/* Command not supported */
 	EC_RES_INVALID_COMMAND = 1,
+	/* General error */
 	EC_RES_ERROR = 2,
+	/* Invalid parameter specified */
 	EC_RES_INVALID_PARAM = 3,
+	/* Access denied.  Command is disabled for security, or attempted to
+	 * access a protected location (for example, writing to read-only flash
+	 * memory). */
 	EC_RES_ACCESS_DENIED = 4,
+	/* Response from EC is invalid.  For example, EC response is bigger
+	 * than supported by the communication protocol. */
 	EC_RES_INVALID_RESPONSE = 5,
+	/* Command version not supported.  EC supports that command, but not
+	 * in the requested version. */
 	EC_RES_INVALID_VERSION = 6,
+	/* Command parameters (to EC) or response (from EC) contained an
+	 * invalid checksum. */
 	EC_RES_INVALID_CHECKSUM = 7,
+	/* No response available */
+	EC_RES_UNAVAILABLE = 8,
+	/* Timeout waiting for response */
+	EC_RES_TIMEOUT = 9,
 };
 
 /*
@@ -1053,16 +1070,29 @@ struct ec_params_reboot_ec {
 #define EC_CMD_REBOOT 0xd1  /* Think "die" */
 
 /*
- * This header byte on a command indicate version 0. Any header byte less
+ * Resend last response (I2C only).
+ *
+ * Returns EC_RES_UNAVAILABLE if there is no response available - for example,
+ * there was no previous command, or the previous command's response was too
+ * big to save.
+ */
+#define EC_CMD_RESEND_RESPONSE 0xdb
+
+/*
+ * This header byte on a command indicates version 0. Any header byte less
  * than this means that we are talking to an old EC which doesn't support
  * versioning. In that case, we assume version 0.
  *
  * Header bytes greater than this indicate a later version. For example,
  * EC_CMD_VERSION0 + 1 means we are using version 1.
  *
- * The old EC interface must not use commands 0dc or higher.
+ * Applies only to I2C and SPI protocols; not used by LPC.
+ *
+ * The old EC interface must not use commands 0xdc or higher.
  */
-#define EC_CMD_VERSION0 0xdc
+#define EC_CMD_VERSION0  0xdc
+/* ... */
+#define EC_CMD_VERSION31 0xfb
 
 #endif  /* !__ACPI__ */
 

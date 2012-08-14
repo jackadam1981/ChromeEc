@@ -65,6 +65,11 @@ static struct host_cmd_handler_args host_cmd_args;
 /* Flag indicating if a command is currently in the buffer*/
 static uint8_t rx_pending;
 
+/* Saved response */
+static uint8_t saved_response_buf[16];
+static uint8_t saved_response_size;
+static uint8_t saved_response_result = EC_RES_UNAVAILABLE;
+
 static inline void disable_i2c_interrupt(int port)
 {
 	STM32_I2C_CR2(port) &= ~(3 << 8);
@@ -140,6 +145,19 @@ static void i2c_send_response(struct host_cmd_handler_args *args)
 	uint8_t *out = host_buffer;
 	int sum = 0, i;
 
+	/* Save response if we're not already resending the previous one */
+	if (args->command != EC_CMD_RESEND_RESPONSE) {
+		saved_response_result = args->result;
+		saved_response_size = args->response_size;
+		if (args->result == EC_RES_SUCCESS) {
+			if (args->response_size <= sizeof(saved_response_buf))
+				memcpy(saved_response_buf, args->response,
+				       args->response_size);
+			else
+				saved_response_result = EC_RES_UNAVAILABLE;
+		}
+	}
+
 	*out++ = args->result;
 	if (!args->i2c_old_response) {
 		*out++ = size;
@@ -186,6 +204,15 @@ static void i2c_process_command(void)
 		args->params_size = EC_HOST_PARAM_SIZE;	/* unknown */
 		buff++;
 		args->i2c_old_response = 1;
+	}
+
+	/* Handle resending response */
+	if (args->command == EC_CMD_RESEND_RESPONSE) {
+		args->result = saved_response_result;
+		args->response_size = saved_response_size;
+		args->response = saved_response_buf;
+		i2c_send_response(args);
+		return;
 	}
 
 	/* we have an available command : execute it */
