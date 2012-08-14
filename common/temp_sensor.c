@@ -107,11 +107,30 @@ void temp_sensor_task(void)
 {
 	int i;
 
-	/* Initialize memory-mapped data */
-	memset(host_get_memmap(EC_MEMMAP_TEMP_SENSOR),
-	       EC_TEMP_SENSOR_NOT_PRESENT, EC_TEMP_SENSOR_ENTRIES);
-	memset(host_get_memmap(EC_MEMMAP_TEMP_SENSOR_B),
-	       EC_TEMP_SENSOR_NOT_PRESENT, EC_TEMP_SENSOR_B_ENTRIES);
+	/*
+	 * Initialize memory-mapped data. We initialize valid sensors to 23 C
+	 * so that if a temperature value is read before we actually poll the
+	 * sensors, we don't end up with an insane value.
+	 */
+	if (TEMP_SENSOR_COUNT < EC_TEMP_SENSOR_ENTRIES) {
+		memset(host_get_memmap(EC_MEMMAP_TEMP_SENSOR),
+		       0x60 /* 23 C */, TEMP_SENSOR_COUNT);
+		memset(host_get_memmap(EC_MEMMAP_TEMP_SENSOR) +
+		       TEMP_SENSOR_COUNT, EC_TEMP_SENSOR_NOT_PRESENT,
+		       EC_TEMP_SENSOR_ENTRIES - TEMP_SENSOR_COUNT);
+		memset(host_get_memmap(EC_MEMMAP_TEMP_SENSOR_B),
+		       EC_TEMP_SENSOR_NOT_PRESENT, EC_TEMP_SENSOR_B_ENTRIES);
+	} else {
+		memset(host_get_memmap(EC_MEMMAP_TEMP_SENSOR),
+		       0x60 /* 23 C */, EC_TEMP_SENSOR_ENTRIES);
+		memset(host_get_memmap(EC_MEMMAP_TEMP_SENSOR_B),
+		       0x60 /* 23 C */, TEMP_SENSOR_COUNT -
+		       EC_TEMP_SENSOR_ENTRIES);
+		memset(host_get_memmap(EC_MEMMAP_TEMP_SENSOR_B) +
+		       TEMP_SENSOR_COUNT - EC_TEMP_SENSOR_ENTRIES,
+		       EC_TEMP_SENSOR_NOT_PRESENT, EC_TEMP_SENSOR_B_ENTRIES +
+		       EC_TEMP_SENSOR_ENTRIES - TEMP_SENSOR_COUNT);
+	}
 
 	/* Temp sensor data is present, with B range supported. */
 	*host_get_memmap(EC_MEMMAP_THERMAL_VERSION) = 2;
