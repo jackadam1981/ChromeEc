@@ -6,6 +6,7 @@
  */
 
 #include "board.h"
+#include "clock.h"
 #include "console.h"
 #include "common.h"
 #include "hooks.h"
@@ -219,9 +220,10 @@ int pmu_low_current_charging(int enable)
 
 void pmu_irq_handler(enum gpio_signal signal)
 {
-	CPRINTF("Charger IRQ received.\n");
+	disable_sleep(SLEEP_MASK_CHARGING);
 	gpio_set_level(GPIO_AC_STATUS, pmu_get_ac());
 	task_wake(TASK_ID_PMU_TPS65090_CHARGER);
+	CPRINTF("Charger IRQ received.\n");
 }
 
 int pmu_get_ac(void)
@@ -264,10 +266,21 @@ void pmu_init(void)
 	 */
 	pmu_write(CG_CTRL3, 0xbb);
 #endif
-	/* Enable interrupts */
+	/*
+	 * Enable interrupts
+	 *   VACG  - AC voltage good
+	 *   VSYSG - system voltage good
+	 *   VBATG - battery voltage good
+	 *   CGACT - charging activate
+	 *   CGCPL - charging complete
+	 */
+	pmu_write(IRQ1MASK, 0x3e);
+	pmu_write(IRQ2MASK, 0);
 	pmu_clear_irq();
-	pmu_write(IRQ1MASK, 0xff);
-	pmu_write(IRQ2MASK, 0xff);
+
+	/* Enable charger interrupt. */
+	gpio_enable_interrupt(GPIO_CHARGER_INT);
+
 }
 
 /* Initializes PMU when power is turned on.  This is necessary because the TPS'
@@ -304,6 +317,7 @@ static int command_pmu(int argc, char **argv)
 	int repeat = 1;
 	int rv = 0;
 	int loop;
+	int value;
 	char *e;
 
 	if (argc > 1) {
@@ -318,6 +332,12 @@ static int command_pmu(int argc, char **argv)
 		rv = print_pmu_info();
 		usleep(1000);
 	}
+
+	rv = pmu_read(IRQ1_REG, &value);
+	if (rv)
+		return rv;
+	CPRINTF("pmu events b%08b\n", value);
+	CPRINTF("ac gpio    %d\n", pmu_get_ac());
 
 	if (rv)
 		ccprintf("Failed - error %d\n", rv);
