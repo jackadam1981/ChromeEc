@@ -354,13 +354,20 @@ static int check_for_power_on_event(void)
  */
 static int power_on(void)
 {
+	uint32_t flags = system_get_reset_flags();
+
 	/* Enable 5v power rail */
 	gpio_set_level(GPIO_EN_PP5000, 1);
 	/* wait to have stable power */
 	usleep(DELAY_5V_SETUP);
 
-	/* Startup PMIC */
-	gpio_set_level(GPIO_PMIC_PWRON_L, 0);
+	/*
+	 * Skip PMIC startup after sysjump to avoid accidentally triggering
+	 * an event on AP side (crosbug.com/p/12650).
+	 */
+	if (!(flags & RESET_FLAG_SYSJUMP))
+		gpio_set_level(GPIO_PMIC_PWRON_L, 0);
+
 	/* wait for all PMIC regulators to be ready */
 	wait_in_signal(GPIO_PP1800_LDO2, 1, PMIC_TIMEOUT);
 
