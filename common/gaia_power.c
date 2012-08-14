@@ -359,8 +359,15 @@ static int power_on(void)
 	/* wait to have stable power */
 	usleep(DELAY_5V_SETUP);
 
-	/* Startup PMIC */
-	gpio_set_level(GPIO_PMIC_PWRON_L, 0);
+	/*
+	 * Assert PMIC_PWRON_L only if keyboard power button is pressed to
+	 * avoid accidentally triggering a keyboard power event on AP side.
+	 */
+	if (gpio_get_level(GPIO_KB_PWR_ON_L) == 0)
+		gpio_set_level(GPIO_PMIC_PWRON_L, 0);
+	else
+		CPRINTF("skipping PMIC startup\n");
+
 	/* wait for all PMIC regulators to be ready */
 	wait_in_signal(GPIO_PP1800_LDO2, 1, PMIC_TIMEOUT);
 
