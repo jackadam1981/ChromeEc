@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPH//0JQ\u003d",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-08-14T20:28:36Z",
+      "side": 1,
+      "message": "Hopefully that\u0027ll never happen, but it\u0027s better safe than sorry.  I used TASK_ID_INVALID from task_id.h",
+      "parentUuid": "AAAAPH//0LM\u003d",
+      "revId": "e524920263dbf6f52f50b89fb4dc66887cad6957",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPH//0LU\u003d",
         "filename": "chip/stm32/dma.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2012-08-14T19:40:31Z",
       "side": 1,
       "message": "Is this change intended?",
+      "revId": "e524920263dbf6f52f50b89fb4dc66887cad6957",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//0KE\u003d",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-08-14T20:28:36Z",
+      "side": 1,
+      "message": "Yes, I realised that I was clearing an extra set of interrupt flags for the adjacent dma channel as well.  This is what we really want, especially now that we\u0027re actually firing interrupts instead of just checking the flags.",
+      "parentUuid": "AAAAPH//0LU\u003d",
       "revId": "e524920263dbf6f52f50b89fb4dc66887cad6957",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPH//0J0\u003d",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-08-14T20:28:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPH//0LE\u003d",
+      "revId": "e524920263dbf6f52f50b89fb4dc66887cad6957",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPH//0Kk\u003d",
         "filename": "chip/stm32/dma.h",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2012-08-14T19:40:31Z",
       "side": 1,
       "message": "Do you ever need to use this bitmap mask? If not, maybe just have a simplier function which only enables the one interrupt you use.",
+      "revId": "e524920263dbf6f52f50b89fb4dc66887cad6957",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//0JA\u003d",
+        "filename": "chip/stm32/dma.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-08-14T20:28:36Z",
+      "side": 1,
+      "message": "In my usage of it for this function I don\u0027t, but I was thinking that if the DMA gets used for something else, it might be nice to have.  Of course, if it comes to that, I suppose it\u0027d be easy to fix, or just add another function that enables the interrupt you want since there\u0027s only three.",
+      "parentUuid": "AAAAPH//0Kk\u003d",
       "revId": "e524920263dbf6f52f50b89fb4dc66887cad6957",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
