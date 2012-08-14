@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPH//zwM\u003d",
+        "filename": "common/gaia_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-14T23:51:33Z",
+      "side": 1,
+      "message": "Don\u0027t we know why are starting up? Maybe there should be a parameter to this function to indicate the reason for the power on. If it is due to the power button, then we should do this, else we should skip it.\n\nIt seems that this code is second-guessing its caller. Maybe add a reason argument to this function\n\nSorry I I misunderstand...",
+      "revId": "40305be97f951bca136fd4b95ff5d8e2b4623429",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
