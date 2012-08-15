@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPH//ziw\u003d",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-08-15T02:43:06Z",
+      "side": 1,
+      "message": "should be initialized to TASK_ID_INVALID ?",
+      "revId": "4aa491359c4f6147e2b1fd55d32ad5a196e160bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//zis\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-08-15T02:43:06Z",
+      "side": 1,
+      "message": "if master_start() fails and the error code contains the TASK_EVENT_WAKE we are going to take the wrong path ?",
+      "revId": "4aa491359c4f6147e2b1fd55d32ad5a196e160bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//zio\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-08-15T02:43:06Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "4aa491359c4f6147e2b1fd55d32ad5a196e160bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
