@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPH//zeU\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-08-15T05:19:29Z",
+      "side": 1,
+      "message": "Done. Will remove.",
+      "parentUuid": "AAAAPH//zgI\u003d",
+      "revId": "d2d965d19e8d998409cf85f0649032decb52c627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPH//zf0\u003d",
         "filename": "common/pmu_tps65090_charger.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2012-08-15T04:35:55Z",
       "side": 1,
       "message": "we should be able to charge even in stop mode.",
+      "revId": "d2d965d19e8d998409cf85f0649032decb52c627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//zeI\u003d",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-08-15T05:19:29Z",
+      "side": 1,
+      "message": "TPSCHROME can. But we\u0027re not able to check battery alarm in STOP mode. Current flow disables sleep mask when AC plugged. Since we have AC power, we don\u0027t need to sleep.",
+      "parentUuid": "AAAAPH//zf0\u003d",
       "revId": "d2d965d19e8d998409cf85f0649032decb52c627",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
