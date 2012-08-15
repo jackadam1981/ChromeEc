@@ -50,6 +50,7 @@
 #define CONFIG_ARBITRATE_I2C I2C_PORT_HOST
 
 #define CONFIG_CMD_PMU
+#define CONFIG_CMD_POWERLED
 
 /* GPIO signal list */
 enum gpio_signal {
