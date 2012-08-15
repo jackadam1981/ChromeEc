@@ -65,6 +65,12 @@ static struct host_cmd_handler_args host_cmd_args;
 /* Flag indicating if a command is currently in the buffer*/
 static uint8_t rx_pending;
 
+/* Indicates that a command is in progress */
+static uint8_t command_pending;
+
+/* The result of the last 'slow' operation */
+static uint8_t saved_result = EC_RES_UNAVAILABLE;
+
 static inline void disable_i2c_interrupt(int port)
 {
 	STM32_I2C_CR2(port) &= ~(3 << 8);
@@ -141,6 +147,28 @@ static void i2c_send_response(struct host_cmd_handler_args *args)
 	uint8_t *out = host_buffer;
 	int sum = 0, i;
 
+	/*
+	 * The logic here is a little painful since we are avoiding changing
+	 * host_command. If we got an 'in progress' previously, then this
+	 * must be the completion of that command, so stash the result
+	 * code. We can't send it back to the host now since we already sent
+	 * the in-progress response and the host is on to other thinsg now.
+	 *
+	 * When a EC_CMD_RESEND_RESPONSE arrives we will supply the response
+	 * to that command.
+	 *
+	 * We don't support stashing response data, so mark the response as
+	 * unavailable in that case.
+	 */
+	if (command_pending) {
+		if (args->response_size != 0)
+			saved_result = EC_RES_UNAVAILABLE;
+		else
+			saved_result = args->result;
+		command_pending = 0;
+		return;
+	}
+
 	*out++ = args->result;
 	if (!args->i2c_old_response) {
 		*out++ = size;
@@ -155,6 +183,8 @@ static void i2c_send_response(struct host_cmd_handler_args *args)
 
 	/* send the answer to the AP */
 	i2c_write_raw_slave(I2C2, host_buffer, out - host_buffer);
+
+	command_pending = (args->result == EC_RES_IN_PROGRESS);
 }
 
 /* Process the command in the i2c host buffer */
@@ -345,6 +375,38 @@ static int i2c_init(void)
 	return rc;
 }
 DECLARE_HOOK(HOOK_INIT, i2c_init, HOOK_PRIO_DEFAULT);
+
+
+/* Returns current command status (busy or not) */
+static int host_command_get_status(struct host_cmd_handler_args *args)
+{
+	struct ec_response_get_status *r = args->response;
+
+	r->flags = command_pending ? EC_COMMS_STATUS_PROCESSING : 0;
+	args->response_size = sizeof(*r);
+
+	return EC_SUCCESS;
+}
+
+DECLARE_HOST_COMMAND(EC_CMD_GET_STATUS,
+		     host_command_get_status,
+		     EC_VER_MASK(0));
+
+/* Resend the last saved response */
+static int host_command_resend_response(struct host_cmd_handler_args *args)
+{
+	/* Handle resending response */
+	args->result = saved_result;
+	args->response_size = 0;
+
+	saved_result = EC_RES_UNAVAILABLE;
+
+	return EC_SUCCESS;
+}
+
+DECLARE_HOST_COMMAND(EC_CMD_RESEND_RESPONSE,
+		     host_command_resend_response,
+		     EC_VER_MASK(0));
 
 
 /*****************************************************************************/

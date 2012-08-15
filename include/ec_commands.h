@@ -187,6 +187,7 @@ enum ec_status {
 	EC_RES_INVALID_VERSION = 6,
 	EC_RES_INVALID_CHECKSUM = 7,
 	EC_RES_IN_PROGRESS = 8,		/* Accepted, command in progress */
+	EC_RES_UNAVAILABLE = 9,		/* No response available */
 };
 
 /*
@@ -388,6 +389,19 @@ struct ec_response_get_cmd_versions {
 	 */
 	uint32_t version_mask;
 } __packed;
+
+/* Check EC communcations status (busy) */
+#define EC_CMD_GET_STATUS	0x09
+
+/* Avoid using ec_status which is for return values */
+enum ec_comms_status {
+	EC_COMMS_STATUS_PROCESSING	= 1 << 0,	/* Processing cmd */
+};
+
+struct ec_response_get_status {
+	uint32_t flags;		/* Mask of enum ec_comms_status */
+} __packed;
+
 
 /*****************************************************************************/
 /* Flash commands */
@@ -1052,6 +1066,15 @@ struct ec_params_reboot_ec {
  * Use EC_CMD_REBOOT_EC to reboot the EC more politely.
  */
 #define EC_CMD_REBOOT 0xd1  /* Think "die" */
+
+/*
+ * Resend last response (not LPC).
+ *
+ * Returns EC_RES_UNAVAILABLE if there is no response available - for example,
+ * there was no previous command, or the previous command's response was too
+ * big to save.
+ */
+#define EC_CMD_RESEND_RESPONSE 0xdb
 
 /*
  * This header byte on a command indicate version 0. Any header byte less
