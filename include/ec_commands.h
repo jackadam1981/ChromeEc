@@ -186,6 +186,10 @@ enum ec_status {
 	EC_RES_INVALID_RESPONSE = 5,
 	EC_RES_INVALID_VERSION = 6,
 	EC_RES_INVALID_CHECKSUM = 7,
+	/* No response available */
+	EC_RES_UNAVAILABLE = 8,
+	/* Timeout waiting for response */
+	EC_RES_TIMEOUT = 9,
 };
 
 /*
@@ -1051,6 +1055,15 @@ struct ec_params_reboot_ec {
  * Use EC_CMD_REBOOT_EC to reboot the EC more politely.
  */
 #define EC_CMD_REBOOT 0xd1  /* Think "die" */
+
+/*
+ * Resend last response (not LPC).
+ *
+ * Returns EC_RES_UNAVAILABLE if there is no response available - for example,
+ * there was no previous command, or the previous command's response was too
+ * big to save.
+ */
+#define EC_CMD_RESEND_RESPONSE 0xdb
 
 /*
  * This header byte on a command indicate version 0. Any header byte less

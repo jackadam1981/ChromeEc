@@ -24,6 +24,11 @@
 
 static struct host_cmd_handler_args *pending_args;
 
+/* Saved response */
+static uint8_t saved_response_buf[16];
+static uint8_t saved_response_size;
+static uint8_t saved_response_result = EC_RES_UNAVAILABLE;
+
 #ifndef CONFIG_LPC
 static uint8_t host_memmap[EC_MEMMAP_SIZE];
 #endif
@@ -54,16 +59,11 @@ void host_command_received(struct host_cmd_handler_args *args)
 		args->result = EC_RES_ERROR;
 	}
 
-	/* If the driver has signalled an error, send the response now */
-	if (args->result) {
-		args->send_response(args);
-	} else {
-		/* Save the command */
-		pending_args = args;
+	/* Save the command */
+	pending_args = args;
 
-		/* Wake up the task to handle the command */
-		task_set_event(TASK_ID_HOSTCMD, TASK_EVENT_CMD_PENDING, 0);
-	}
+	/* Wake up the task to handle the command */
+	task_set_event(TASK_ID_HOSTCMD, TASK_EVENT_CMD_PENDING, 0);
 }
 
 /*
@@ -200,6 +200,7 @@ enum ec_status host_command_process(struct host_cmd_handler_args *args)
 
 	if (rv != EC_RES_SUCCESS) {
 		CPRINTF("[%T HC err %d]\n", rv);
+		args->response_size = 0;	/* Should we assert instead? */
 	} else if (hcdebug && args->response_size) {
 		CPRINTF("[%T HC resp:%.*h]\n",
 			args->response_size, args->response);
@@ -226,6 +227,36 @@ static int host_command_init(void)
 	return EC_SUCCESS;
 }
 
+static void save_response(struct host_cmd_handler_args *args)
+{
+	/* Save response if we're not already resending the previous one */
+	if (args->command != EC_CMD_RESEND_RESPONSE &&
+			args->response_size <= sizeof(saved_response_buf)) {
+		memcpy(saved_response_buf, args->response,
+			args->response_size);
+		saved_response_result = args->result;
+		saved_response_size = args->response_size;
+	}
+}
+
+/**
+ * Process a pending command and send the response
+ *
+ * @param args	Command to process
+ */
+static void process_pending_command(struct host_cmd_handler_args *args)
+{
+	/* Clear our saved response, since this command will provide it */
+	if (args->command != EC_CMD_RESEND_RESPONSE)
+		saved_response_result = EC_RES_UNAVAILABLE;
+
+	/* If driver has signalled an error, don't process the command */
+	if (!args->result)
+		args->result = host_command_process(args);
+	save_response(args);
+	args->send_response(args);
+}
+
 void host_command_task(void)
 {
 	host_command_init();
@@ -235,9 +266,8 @@ void host_command_task(void)
 		int evt = task_wait_event(-1);
 		/* process it */
 		if ((evt & TASK_EVENT_CMD_PENDING) && pending_args) {
-			pending_args->result =
-					host_command_process(pending_args);
-			pending_args->send_response(pending_args);
+			process_pending_command(pending_args);
+			pending_args = NULL;
 		}
 	}
 }
@@ -349,3 +379,19 @@ DECLARE_CONSOLE_COMMAND(hcdebug, command_hcdebug,
 			"hcdebug [on | off]",
 			"Toggle extra host command debug output",
 			NULL);
+
+static int host_command_resend_response(struct host_cmd_handler_args *args)
+{
+	/* Handle resending response */
+	args->result = saved_response_result;
+	args->response_size = saved_response_size;
+	args->response = saved_response_buf;
+
+	saved_response_result = EC_RES_UNAVAILABLE;
+
+	return EC_SUCCESS;
+}
+
+DECLARE_HOST_COMMAND(EC_CMD_RESEND_RESPONSE,
+		     host_command_resend_response,
+		     EC_VER_MASK(0));
