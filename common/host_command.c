@@ -46,21 +46,28 @@ void host_send_response(struct host_cmd_handler_args *args)
 
 void host_command_received(struct host_cmd_handler_args *args)
 {
+	int send_now = 0;
+
 	/* TODO: should warn if we already think we're in a command */
 
 	/*
 	 * If this is the reboot command, reboot immediately.  This gives the
 	 * host processor a way to unwedge the EC even if it's busy with some
 	 * other command.
+	 *
+	 * TODO(sjg@chromium.org): Should we just call host_command_process()?
 	 */
 	if (args->command == EC_CMD_REBOOT) {
 		system_reset(SYSTEM_RESET_HARD);
 		/* Reset should never return; if it does, post an error */
 		args->result = EC_RES_ERROR;
+	} else if (args->command == EC_CMD_GET_STATUS) {
+		args->result = host_command_process(args);
+		send_now = 1;
 	}
 
 	/* If the driver has signalled an error, send the response now */
-	if (args->result) {
+	if (args->result || send_now) {
 		host_send_response(args);
 	} else {
 		/* Save the command */
