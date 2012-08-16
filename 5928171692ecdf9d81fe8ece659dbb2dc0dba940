@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPH//yew\u003d",
+        "filename": "common/flash_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-08-16T01:22:21Z",
+      "side": 1,
+      "message": "Do we need the ifdef here?  It\u0027s inside a host command handler, after all...",
+      "revId": "5928171692ecdf9d81fe8ece659dbb2dc0dba940",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
