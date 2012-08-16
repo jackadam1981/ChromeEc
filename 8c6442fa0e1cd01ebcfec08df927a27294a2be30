@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPH//yg0\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-08-16T01:20:24Z",
+      "side": 1,
+      "message": "typo: things",
+      "revId": "8c6442fa0e1cd01ebcfec08df927a27294a2be30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//ygs\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-08-16T01:20:24Z",
+      "side": 1,
+      "message": "the -\u003e this",
+      "revId": "8c6442fa0e1cd01ebcfec08df927a27294a2be30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//ygM\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-08-16T01:20:24Z",
+      "side": 1,
+      "message": "Any reason we wouldn\u0027t want to let the result be resent repeatedly?  I\u0027m thinking of the case where the host wants the result resent to correct a checksum error in the response.",
+      "revId": "8c6442fa0e1cd01ebcfec08df927a27294a2be30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//yhA\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-08-16T01:20:24Z",
+      "side": 1,
+      "message": "Please comment: I2C/SPI only; LPC must read the status from the command register.  Attempting this on LPC will overwrite the args/parameter space and corrupt its data.",
+      "revId": "8c6442fa0e1cd01ebcfec08df927a27294a2be30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//yg8\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1071,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-08-16T01:20:24Z",
+      "side": 1,
+      "message": "not LPC -\u003e not supported on LPC",
+      "revId": "8c6442fa0e1cd01ebcfec08df927a27294a2be30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
