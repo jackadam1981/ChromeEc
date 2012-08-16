@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPH//xs0\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-16T18:23:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPH//yg0\u003d",
+      "revId": "8c6442fa0e1cd01ebcfec08df927a27294a2be30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPH//ygs\u003d",
         "filename": "chip/stm32/i2c.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2012-08-16T01:20:24Z",
       "side": 1,
       "message": "the -\u003e this",
+      "revId": "8c6442fa0e1cd01ebcfec08df927a27294a2be30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//xsw\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-16T18:23:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPH//ygs\u003d",
       "revId": "8c6442fa0e1cd01ebcfec08df927a27294a2be30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPH//xsY\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-16T18:23:46Z",
+      "side": 1,
+      "message": "Not sure about this - let\u0027s discuss once this is in.",
+      "parentUuid": "AAAAPH//yac\u003d",
+      "revId": "8c6442fa0e1cd01ebcfec08df927a27294a2be30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPH//yhA\u003d",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -82,6 +136,24 @@
       "writtenOn": "2012-08-16T01:20:24Z",
       "side": 1,
       "message": "Please comment: I2C/SPI only; LPC must read the status from the command register.  Attempting this on LPC will overwrite the args/parameter space and corrupt its data.",
+      "revId": "8c6442fa0e1cd01ebcfec08df927a27294a2be30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//xrU\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-16T18:23:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPH//yhA\u003d",
       "revId": "8c6442fa0e1cd01ebcfec08df927a27294a2be30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
