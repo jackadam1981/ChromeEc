@@ -16,6 +16,24 @@
       "revId": "40305be97f951bca136fd4b95ff5d8e2b4623429",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//yig\u003d",
+        "filename": "common/gaia_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-08-16T00:55:28Z",
+      "side": 1,
+      "message": "Good point -- We do know why we\u0027re starting up via system_get_reset_flags(). There are quite a few reset causes where it seems we\u0027d want to run this, though, so it might be easiest to skip this if RESET_FLAG_SYSJUMP is set, rather than white listing the valid causes. I made that change in the follow-up patch set and it seemed to do the trick.\n\nI think the caller wants to call power_on() after sysjump since, for better or worse, we do quite a bit of work in this function aside from just bringing up power (setting ap_on, enabling charger interrupt, calling hooks, etc). But since PMIC_PWRON_L seems to be the only outlier case, I\u0027m not sure it\u0027s worth making changes elsewhere to get around this outlier case.",
+      "parentUuid": "AAAAPH//zwM\u003d",
+      "revId": "40305be97f951bca136fd4b95ff5d8e2b4623429",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
