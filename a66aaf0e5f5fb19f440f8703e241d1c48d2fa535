@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPH//xZ0\u003d",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-08-16T21:22:03Z",
+      "side": 1,
+      "message": "No, because the whole point of EC_CMD_REBOOT is to reboot if the host command processing engine is hosed.",
+      "revId": "a66aaf0e5f5fb19f440f8703e241d1c48d2fa535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//xZg\u003d",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-08-16T21:22:03Z",
+      "side": 1,
+      "message": "I\u0027d move this directly into i2c and call the get_status command handler directly.  That saves you the lookup time, and keeps host_command_process() from needing to be re-entrant.\n\nthat is, get-status bypasses the host command module entirely.  it\u0027s not a generic host command; it\u0027s just a static function in the driver.",
+      "revId": "a66aaf0e5f5fb19f440f8703e241d1c48d2fa535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
