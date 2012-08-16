@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPH//yGQ\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-08-16T08:10:51Z",
+      "side": 1,
+      "message": "bit 1: VACG  - AC voltage good\n\nbit 2: VSYSG - system voltage good\n\n...",
+      "revId": "0eedab4bd6059cb9e76d0b2ac5228ab84f058913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
