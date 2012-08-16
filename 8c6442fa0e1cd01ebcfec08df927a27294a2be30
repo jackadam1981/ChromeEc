@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPH//yac\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-08-16T03:08:40Z",
+      "side": 1,
+      "message": "Interesting idea, but I\u0027m wondering if that can create a race condition with new commands (possibly sent by another program entirely). I think it\u0027s reasonable if the host must always re-send a command if the first non-EC_RES_UNAVAILABLE response code gives some unexpected result.",
+      "parentUuid": "AAAAPH//ygM\u003d",
+      "revId": "8c6442fa0e1cd01ebcfec08df927a27294a2be30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPH//yhA\u003d",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
