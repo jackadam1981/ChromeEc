@@ -16,6 +16,24 @@
       "revId": "5928171692ecdf9d81fe8ece659dbb2dc0dba940",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//xgU\u003d",
+        "filename": "common/flash_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-16T20:22:54Z",
+      "side": 1,
+      "message": "This file seems to be included elsewhere:\n\nbuild/bds/common/flash_common.o: In function `flash_command_erase\u0027:\n/home/sjg/trunk/src/platform/ec/common/flash_common.c:271: undefined reference to `host_send_response\u0027\nbuild/bds/common/flash_common.o: In function `flash_command_erase\u0027:\n/home/sjg/trunk/src/platform/ec/common/flash_common.c:271: undefined reference to `host_send_response\u0027",
+      "parentUuid": "AAAAPH//yew\u003d",
+      "revId": "5928171692ecdf9d81fe8ece659dbb2dc0dba940",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
