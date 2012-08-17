@@ -16,6 +16,24 @@
       "revId": "8cc1b14f88ce2b3e30666d224f0415b855ff33d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPX//+So\u003d",
+        "filename": "board/snow/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-08-17T22:12:44Z",
+      "side": 1,
+      "message": "Agreed -- The GPIO API can certainly use some improvements. I went ahead and broke out some existing GPIO config logic here: https://gerrit.chromium.org/gerrit/#/c/30762/\n\nand I have updated this CL to use it. The idea was to provide similar functionality as lm4\u0027s gpio_set_flag() function.",
+      "parentUuid": "AAAAPX///XU\u003d",
+      "revId": "8cc1b14f88ce2b3e30666d224f0415b855ff33d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
