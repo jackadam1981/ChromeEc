@@ -47,7 +47,6 @@
 #define LPC_CH_CMD_DATA 2  /* Data for host commands (args/params/response) */
 #define LPC_CH_KEYBOARD 3  /* 8042 keyboard emulation */
 #define LPC_CH_CMD      4  /* Host commands */
-#define LPC_CH_MEMMAP   5  /* Memory-mapped data */
 #define LPC_CH_COMX     7  /* UART emulation */
 /* LPC pool offsets */
 #define LPC_POOL_OFFS_ACPI       0  /* ACPI commands - 0=in, 1=out */

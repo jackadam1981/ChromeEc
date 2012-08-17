@@ -630,15 +630,16 @@ static int lpc_init(void)
 	/* Unmask interrupt for host data writes */
 	LM4_LPC_LPCIM |= LM4_LPC_INT_MASK(LPC_CH_PORT80, 2);
 
-	/*
-	 * Set LPC channel 2 to I/O address 0x880, range endpoint,
-	 * arbitration disabled, pool bytes 512-639.  To access this from
-	 * x86, use the following command to set GEN_LPC2:
+
+	/* Set LPC channel 2 to I/O address 0x800, range endpoint,
+	 * arbitration disabled, pool bytes 512-1023.  To access this from
+	 * x86, use the following commands to set GEN_LPC2 and GEN_LPC3:
 	 *
 	 *   pci_write32 0 0x1f 0 0x88 0x007c0801
+	 *   pci_write32 0 0x1f 0 0x8c 0x007c0901
 	 */
-	LM4_LPC_ADR(LPC_CH_CMD_DATA) = EC_LPC_ADDR_HOST_ARGS;
-	LM4_LPC_CTL(LPC_CH_CMD_DATA) = 0x8019 |
+	LM4_LPC_ADR(LPC_CH_CMD_DATA) = 0x800;
+	LM4_LPC_CTL(LPC_CH_CMD_DATA) = 0x801D |
 		(LPC_POOL_OFFS_CMD_DATA << (5 - 1));
 
 	/*
@@ -664,20 +665,8 @@ static int lpc_init(void)
 	/* Unmask interrupt for host command writes */
 	LM4_LPC_LPCIM |= LM4_LPC_INT_MASK(LPC_CH_CMD, 4);
 
-	/*
-	 * Set LPC channel 5 to I/O address 0x900, range endpoint,
-	 * arbitration enabled, pool bytes 768-1023.  To access this from
-	 * x86, use the following command to set GEN_LPC3:
-	 *
-	 *   pci_write32 0 0x1f 0 0x8c 0x007c0901
-	 */
-	LM4_LPC_ADR(LPC_CH_MEMMAP) = EC_LPC_ADDR_MEMMAP;
-	LM4_LPC_CTL(LPC_CH_MEMMAP) = 0x0019 | (LPC_POOL_OFFS_MEMMAP << (5 - 1));
-
-	/*
-	 * Set LPC channel 7 to COM port I/O address.  Note that channel 7
-	 * ignores the TYPE bit and is always an 8-byte range.
-	 */
+	/* Set LPC channel 7 to COM port I/O address.  Note that channel 7
+	 * ignores the TYPE bit and is always an 8-byte range. */
 	LM4_LPC_ADR(LPC_CH_COMX) = LPC_COMX_ADDR;
 	/*
 	 * TODO: could configure IRQSELs and set IRQEN2/CX, and then the host
@@ -707,30 +696,7 @@ static int lpc_init(void)
 		(1 << LPC_CH_CMD_DATA) |
 		(1 << LPC_CH_KEYBOARD) |
 		(1 << LPC_CH_CMD) |
-		(1 << LPC_CH_MEMMAP) |
 		(1 << LPC_CH_COMX);
-
-	/*
-	 * Ensure the EC (slave) has control of the memory-mapped I/O space.
-	 * Once the EC has won arbtration for the memory-mapped space, it will
-	 * keep control of it until it writes the last byte in the space.
-	 * (That never happens; we can't use the last byte in the space because
-	 * ACPI can't see it anyway.)
-	 */
-	while (!(LM4_LPC_ST(LPC_CH_MEMMAP) & 0x10)) {
-		/* Clear HW1ST */
-		LM4_LPC_ST(LPC_CH_MEMMAP) &= ~0x40;
-		/* Do a dummy slave write; this should cause SW1ST to be set */
-		*LPC_POOL_MEMMAP = *LPC_POOL_MEMMAP;
-	}
-
-	/* Initialize host args and memory map to all zero */
-	memset(lpc_host_args, 0, sizeof(*lpc_host_args));
-	memset(lpc_get_memmap_range(), 0, EC_MEMMAP_SIZE);
-
-	/* We support LPC args */
-	*(lpc_get_memmap_range() + EC_MEMMAP_HOST_CMD_FLAGS) =
-		EC_HOST_CMD_FLAG_LPC_ARGS_SUPPORTED;
 
 	/* Enable LPC interrupt */
 	task_enable_irq(LM4_IRQ_LPC);

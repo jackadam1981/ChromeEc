@@ -7,7 +7,7 @@
 
 #include "clock.h"
 #include "common.h"
-#include "cpu.h"
+#include "config.h"
 #include "eeprom.h"
 #include "eoption.h"
 #include "flash.h"
@@ -71,7 +71,6 @@ int main(void)
 	timer_init();
 
 	/* Main initialization stage.  Modules may enable interrupts here. */
-	cpu_init();
 
 	/* Initialize UART.  uart_printf(), etc. may now be used. */
 	uart_init();

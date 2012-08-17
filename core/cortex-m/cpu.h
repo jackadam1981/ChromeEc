@@ -47,7 +47,4 @@ enum {
 	CPU_NVIC_SHCSR_USGFAULTENA	= 1 << 18,
 };
 
-/* Set up the cpu to detect faults */
-void cpu_init(void);
-
 #endif /* __CPU_H */
