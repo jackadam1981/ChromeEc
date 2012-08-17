@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPX///WA\u003d",
+        "filename": "test/flash_test_util.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-08-17T08:42:05Z",
+      "side": 1,
+      "message": "I would write that sligthly differently, but that\u0027s fairly subjective :\n\nimport struct\n\ndef hex_to_byte(text):\n   return \u0027\u0027.join( [\"%c\" % chr( int ( text[i:i+2],16 ) ) for i in range(0, len( text ), 2) ] )\n\n[...]\n   return struct.unpack(\"IIII\", hex_to_byte(resp))",
+      "revId": "95a291d89fe9feec14b53c132a6d0d8c64a3054a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPX///YY\u003d",
+        "filename": "test/flash_test_util.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-08-17T08:42:05Z",
+      "side": 1,
+      "message": "nit: you can remove this line",
+      "revId": "95a291d89fe9feec14b53c132a6d0d8c64a3054a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPX///Vo\u003d",
+        "filename": "test/flash_test_util.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-08-17T08:42:05Z",
+      "side": 1,
+      "message": "same here:\n\npayload \u003d byte_to_hex(struct.pack(\"II\",offset,size))\nhelper.ec_command(\"hostcmd 0x12 0 %s%s\" % (payload,data))",
+      "revId": "95a291d89fe9feec14b53c132a6d0d8c64a3054a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
