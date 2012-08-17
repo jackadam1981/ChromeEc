@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPX//+OI\u003d",
+        "filename": "chip/stm32/gpio-stm32f100.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-08-17T22:56:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPX//+P8\u003d",
+      "revId": "3c103986e932be80a4955555e80e1f66a8c0541e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPX//+P4\u003d",
         "filename": "chip/stm32/gpio-stm32f100.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2012-08-17T22:43:09Z",
       "side": 1,
       "message": "Does this go in a header file somewhere?",
+      "revId": "3c103986e932be80a4955555e80e1f66a8c0541e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPX//+OE\u003d",
+        "filename": "chip/stm32/gpio-stm32f100.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-08-17T22:56:11Z",
+      "side": 1,
+      "message": "It is actually already in include/gpio.h and is used for LM4. It was just never exposed for STM32 since all the GPIO config logic lived in gpio_pre_init() previously.",
+      "parentUuid": "AAAAPX//+P4\u003d",
       "revId": "3c103986e932be80a4955555e80e1f66a8c0541e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
