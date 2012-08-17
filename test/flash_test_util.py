@@ -11,9 +11,26 @@ import re
 # Fixed random seed.
 random.seed(1234)
 
+def reverse_byte(x):
+    r = 0
+    for i in xrange(4):
+        r = r * 256 + (x & 255)
+        x = x / 256
+    return r
+
+def enc(x):
+    return "%08x" % reverse_byte(x)
+
+def get_flash_info(helper):
+    helper.ec_command("hostcmd 0x10 0 00")
+    resp = helper.wait_output("Response: (?P<r>.{32,32})", use_re=True)["r"]
+    return (reverse_byte(int(resp[0:8], 16)),
+            reverse_byte(int(resp[8:16], 16)),
+            reverse_byte(int(resp[16:24], 16)),
+            reverse_byte(int(resp[24:32], 16)))
+
 def get_flash_size(helper):
-    helper.ec_command("hcflashinfo")
-    return int(helper.wait_output("flash_size = (?P<f>\d+)", use_re=True)["f"])
+    return get_flash_info(helper)[0]
 
 def get_ro_size(helper):
     helper.ec_command("rosize")
@@ -28,7 +45,7 @@ def xor_sum(size, seed, mult, add):
     return ret
 
 def test_erase(helper, offset, size):
-    helper.ec_command("hcflasherase %d %d" % (offset, size))
+    helper.ec_command("hostcmd 0x13 0 %s%s" % (enc(offset), enc(size)))
     helper.wait_output("Flash erase at %x size %x" % (offset, size))
 
 def _get_read_ref(helper, offset, size):
@@ -51,18 +68,27 @@ def _get_read_ref(helper, offset, size):
 
 def test_read(helper, offset, size):
     ref = _get_read_ref(helper, offset, size)
-    helper.ec_command("hcflashread %d %d" % (offset, size))
+    helper.ec_command("hostcmd 0x11 0 %s%s" % (enc(offset), enc(size)))
+    #helper.ec_command("hcflashread %d %d" % (offset, size))
     for line in ref:
         helper.wait_output(line)
 
+def _gen_data(size, seed, mult, add):
+    data = []
+    for i in xrange(size):
+        data.append("%02x" % (seed & 255))
+        seed = (seed * mult + add) & 4294967295;
+    return ''.join(data)
+
 def test_write(helper, offset, size, expect_fail=False):
+    assert size <= 16
     seed = random.randint(2, 10000)
     mult = random.randint(2, 10000)
     add  = random.randint(2, 10000)
-    helper.ec_command("hcflashwrite %d %d %d %d %d" %
-                      (offset, size, seed, mult, add))
+    data = _gen_data(size, seed, mult, add)
+    helper.ec_command("hostcmd 0x12 0 %s%s%s" % (enc(offset), enc(size), data))
     if expect_fail:
-        helper.wait_output("Command returned error")
+        helper.wait_output("Command returned \d+", use_re=True)
     else:
         expected_sum = xor_sum(size, seed, mult, add)
         helper.wait_output("Flash write at %x size %x XOR %x" %
