@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPX//9aU\u003d",
+        "filename": "common/flash_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-08-20T14:56:37Z",
+      "side": 1,
+      "message": "this is broken :\n  on stm32l151, the erased flash pattern is not 0xffffffff",
+      "revId": "6206126739e1af5b116656b97782918748e58a26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
