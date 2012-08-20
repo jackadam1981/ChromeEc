@@ -235,6 +235,12 @@ int flash_physical_erase(int offset, int size)
 	     address += CONFIG_FLASH_ERASE_SIZE / sizeof(uint32_t)) {
 		timestamp_t deadline;
 
+		/*
+		 * TODO(sjg@chromium.org): We can't do the flash_is_erased()
+		 * trick on stm32l since apparently bits do not always erase
+		 * to 1!
+		 */
+
 		/* Start erase */
 		*address = 0x00000000;
 
