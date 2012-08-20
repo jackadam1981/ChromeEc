@@ -32,6 +32,15 @@ static inline char *flash_physical_dataptr(int offset)
 }
 
 /**
+ * Check if a region of flash is erased
+ *
+ * @param address	Address of start of flash region (word-aligned)
+ * @param size		Number of bytes to check (word-aligned)
+ * @return 1 if erased, 0 if not erased
+ */
+int flash_is_erased(uint32_t address, int size);
+
+/**
  * Write to physical flash.
  *
  * Offset and size must be a multiple of CONFIG_FLASH_WRITE_SIZE.

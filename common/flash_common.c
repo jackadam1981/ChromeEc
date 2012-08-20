@@ -26,6 +26,18 @@ int flash_dataptr(int offset, int size_req, int align, char **ptrp)
 	return CONFIG_FLASH_SIZE - offset;
 }
 
+int flash_is_erased(uint32_t address, int size)
+{
+	uint32_t *ptr = (uint32_t *)address;
+
+	size /= sizeof(uint32_t);
+	for (; size > 0; size -= 4, ptr++)
+		if (*ptr != -1U)
+			return 0;
+
+	return 1;
+}
+
 int flash_write(int offset, int size, const char *data)
 {
 	if (flash_dataptr(offset, size, CONFIG_FLASH_WRITE_SIZE, NULL) < 0)

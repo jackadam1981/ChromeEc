@@ -235,6 +235,11 @@ int flash_physical_erase(int offset, int size)
 	     address += CONFIG_FLASH_ERASE_SIZE / sizeof(uint32_t)) {
 		timestamp_t deadline;
 
+		/* Do nothing if already erased */
+		if (flash_is_erased((uint32_t)address,
+				CONFIG_FLASH_ERASE_SIZE))
+			continue;
+
 		/* Start erase */
 		*address = 0x00000000;
 

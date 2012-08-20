@@ -366,6 +366,10 @@ int flash_physical_erase(int offset, int size)
 	     address += CONFIG_FLASH_ERASE_SIZE) {
 		timestamp_t deadline;
 
+		/* Do nothing if already erased */
+		if (flash_is_erased(address, CONFIG_FLASH_ERASE_SIZE))
+			continue;
+
 		/* select page to erase */
 		STM32_FLASH_AR = address;
 
