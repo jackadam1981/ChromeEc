@@ -16,6 +16,24 @@
       "revId": "ffd5585dd52d950d5cb4402a66feddb3b1224a3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPX//8N4\u003d",
+        "filename": "board/snow/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000214
+      },
+      "writtenOn": "2012-08-21T14:59:20Z",
+      "side": 1,
+      "message": "Schematic looks like an external pullup on the line so it should be high when the AP is off.\n\nAlthough the CL I\u0027m referencing isn\u0027t changing that behavior so if something was broken with arbitration that this code was needed when the AP was off before it wouldn\u0027t have changed.",
+      "parentUuid": "AAAAPX//8eM\u003d",
+      "revId": "ffd5585dd52d950d5cb4402a66feddb3b1224a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
