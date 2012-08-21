@@ -16,6 +16,24 @@
       "revId": "eaf43026aed00a90137f4f46cd57b26f4be44b54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPX//8Mg\u003d",
+        "filename": "board/snow/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000214
+      },
+      "writtenOn": "2012-08-21T15:31:39Z",
+      "side": 1,
+      "message": "Looking closer at the schematics, the power rail the pullups are on may be powered down when the AP us shut down.  I don\u0027t know if the EC has internal pullups, so if not this check would still be needed.",
+      "parentUuid": "AAAAPX//8NE\u003d",
+      "revId": "eaf43026aed00a90137f4f46cd57b26f4be44b54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
