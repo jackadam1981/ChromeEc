@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPX//8NE\u003d",
+        "filename": "board/snow/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-21T15:18:33Z",
+      "side": 1,
+      "message": "Yes I understand the reason for this logic, but still hoping to avoid it.\n\nIf the EC has a pullup on GPIO_AP_CLAIM then we should be able to remove the power on check. It was in fact added for the suspend case - when I originally set this up I don\u0027t think it was needed.\n\nIf we have to have it, then ok, but the less of this sort of power logic, the better.",
+      "revId": "eaf43026aed00a90137f4f46cd57b26f4be44b54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
