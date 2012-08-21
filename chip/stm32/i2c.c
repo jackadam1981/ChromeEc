@@ -57,8 +57,8 @@
 #define I2C2      STM32_I2C2_PORT
 
 enum {
-	/* A stop condition should take 2 clocks, so allow 8 */
-	TIMEOUT_STOP_SENT_US	= I2C_PERIOD_US * 8,
+	/* A stop should only take 2 clocks, but needs more time if preempted */
+	TIMEOUT_STOP_SENT_US	= 2000,
 };
 
 static uint16_t i2c_sr1[NUM_PORTS];
@@ -333,9 +333,9 @@ static void i2c_error_handler(int port)
 		/* ACK failed (NACK); expected when AP reads final byte.
 		 * Software must clear AF bit. */
 	} else {
-		CPRINTF("%s: I2C_SR1(%s): 0x%04x\n",
+		CPRINTF("%s: I2C_SR1(%d): 0x%04x\n",
 			__func__, port, i2c_sr1[port]);
-		CPRINTF("%s: I2C_SR2(%s): 0x%04x\n",
+		CPRINTF("%s: I2C_SR2(%d): 0x%04x\n",
 			__func__, port, STM32_I2C_SR2(port));
 	}
 
@@ -573,16 +573,20 @@ static void master_stop(int port)
 static int wait_until_stop_sent(int port)
 {
 	timestamp_t deadline;
+	int i = 1;
 
 	deadline = get_time();
 	deadline.val += TIMEOUT_STOP_SENT_US;
 
 	while (STM32_I2C_CR1(port) & (1 << 9)) {
 		if (timestamp_expired(deadline, NULL)) {
-			ccprintf("Stop event deadline passed: CR1=%016b\n",
-				 STM32_I2C_CR1(port));
+			ccprintf("Stop event deadline passed:\ttask=%d"
+							"\tCR1=%016b\n",
+				(int)task_get_current(), STM32_I2C_CR1(port));
+			task_print_list();
 			return EC_ERROR_TIMEOUT;
 		}
+		usleep(5 * i++);
 	}
 
 	return EC_SUCCESS;
