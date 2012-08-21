@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPX//8eM\u003d",
+        "filename": "board/snow/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-21T03:54:52Z",
+      "side": 1,
+      "message": "If the lines are floating high, then you can remove this logic altogether I hope.\n\nSame in board_i2c_release()",
+      "revId": "ffd5585dd52d950d5cb4402a66feddb3b1224a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
