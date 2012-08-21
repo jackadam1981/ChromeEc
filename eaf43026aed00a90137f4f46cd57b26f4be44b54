@@ -34,6 +34,24 @@
       "revId": "eaf43026aed00a90137f4f46cd57b26f4be44b54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPX//8L0\u003d",
+        "filename": "board/snow/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-21T15:38:03Z",
+      "side": 1,
+      "message": "We are enabling internal pullups in board.c",
+      "parentUuid": "AAAAPX//8Mg\u003d",
+      "revId": "eaf43026aed00a90137f4f46cd57b26f4be44b54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
