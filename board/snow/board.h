@@ -18,6 +18,7 @@
 #define CONFIG_I2C
 
 #define CONFIG_CONFIGURE_BOARD_LATE
+#define CONFIG_COMMS_STATUS
 
 /* Debug features */
 #define CONFIG_PANIC_HELP
