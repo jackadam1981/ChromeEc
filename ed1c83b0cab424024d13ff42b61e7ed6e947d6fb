@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn///eA\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-08-22T16:07:52Z",
+      "side": 1,
+      "message": "pmu_irq_handler calls pmu_get_ac in interrupt context,\nso you cannot do an I2C request here.",
+      "revId": "ed1c83b0cab424024d13ff42b61e7ed6e947d6fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
