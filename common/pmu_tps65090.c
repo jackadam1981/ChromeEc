@@ -236,18 +236,25 @@ int pmu_get_ac(void)
 	 * On daisy and snow, there's no single gpio signal to detect AC.
 	 *   GPIO_AC_PWRBTN_L provides AC on and PWRBTN release.
 	 *   GPIO_KB_PWR_ON_L provides PWRBTN release.
-	 * Hence the ac state can be logical OR of these two signal line.
+	 *
+	 * When AC plugged, both GPIOs will be high.
 	 *
 	 * One drawback of this detection is, when press-and-hold power
-	 * button. AC state will be unknown. The implementation below treats
-	 * that condition as AC off.
+	 * button. AC state will be unknown. This function will fallback
+	 * to PMU VACG.
 	 *
 	 * TODO(rongchang): move board related function to board/ and common
 	 * interface to system_get_ac()
 	 */
 
-	return gpio_get_level(GPIO_AC_PWRBTN_L) &&
-			gpio_get_level(GPIO_KB_PWR_ON_L);
+	int ac_good = 0, battery_good = 0;
+
+	if (gpio_get_level(GPIO_KB_PWR_ON_L))
+		return gpio_get_level(GPIO_AC_PWRBTN_L);
+
+	/* Check PMU VACG */
+	pmu_get_power_source(&ac_good, &battery_good);
+	return ac_good;
 }
 
 void pmu_init(void)
