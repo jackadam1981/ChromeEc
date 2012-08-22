@@ -16,6 +16,24 @@
       "revId": "ed1c83b0cab424024d13ff42b61e7ed6e947d6fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn///cs\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-22T16:24:19Z",
+      "side": 1,
+      "message": "Actually that feature is no longer needed.\n\nThe AP is going to read the info directly, so could just remove that call to this function if you like.",
+      "parentUuid": "AAAAPn///eA\u003d",
+      "revId": "ed1c83b0cab424024d13ff42b61e7ed6e947d6fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
