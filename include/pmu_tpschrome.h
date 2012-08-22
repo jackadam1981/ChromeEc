@@ -155,6 +155,21 @@ void pmu_irq_handler(enum gpio_signal signal);
 int pmu_get_ac(void);
 
 /**
+ * Set temperature threshold
+ *
+ * @param temp_n          1 ~ 4
+ * @param value           0b000 ~ 0b111, temperature threshold
+ */
+int pmu_set_temp_threshold(int temp_n, int value);
+
+/**
+ * Force charger into error state and blinks its led
+ *
+ * @param enable          true to blink
+ */
+void pmu_blink_led(int enable);
+
+/**
  *  * Initialize pmu
  *   */
 void pmu_init(void);

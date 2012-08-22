@@ -46,6 +46,7 @@ enum charging_state {
 	ST_IDLE,
 	ST_PRE_CHARGING,
 	ST_CHARGING,
+	ST_CHARGING_ERROR,
 	ST_DISCHARGING,
 };
 
@@ -155,6 +156,10 @@ static int calc_next_state(int state)
 			return ST_IDLE;
 		}
 
+		/* Stay in idle mode if charger overtemp */
+		if (pmu_is_charger_alarm())
+			return ST_IDLE;
+
 		/* Enable charging when battery doesn't respond */
 		if (battery_temperature(&batt_temp)) {
 			if (config_low_current_charging(0))
@@ -218,7 +223,7 @@ static int calc_next_state(int state)
 			CPRINTF("[pmu] charging: temperature out of range "
 				"%dC\n",
 				battery_temperature_celsius(batt_temp));
-			return ST_IDLE;
+			return ST_CHARGING_ERROR;
 		}
 
 		/*
@@ -226,8 +231,13 @@ static int calc_next_state(int state)
 		 *   - over temperature
 		 *   - over current
 		 */
-		if (battery_status(&alarm) || (alarm & ALARM_CHARGING)) {
+		if (battery_status(&alarm))
+			return ST_IDLE;
+
+		if (alarm & ALARM_CHARGING) {
 			CPUTS("[pmu] charging: battery alarm\n");
+			if (alarm & ALARM_OVER_TEMP)
+				return ST_CHARGING_ERROR;
 			return ST_IDLE;
 		}
 
@@ -242,6 +252,33 @@ static int calc_next_state(int state)
 		}
 
 		return ST_CHARGING;
+
+	case ST_CHARGING_ERROR:
+		/*
+		 * This state indicates AC is plugged but the battery is not
+		 * charging. The conditions to exit this state:
+		 *   - battery detected
+		 *   - battery temperature is in start charging range
+		 *   - no battery alarm
+		 */
+		if (pmu_get_ac()) {
+			if (battery_status(&alarm))
+				return ST_CHARGING_ERROR;
+
+			if (alarm & ALARM_OVER_TEMP)
+				return ST_CHARGING_ERROR;
+
+			if (battery_temperature(&batt_temp))
+				return ST_CHARGING_ERROR;
+
+			if (!battery_charging_range(batt_temp))
+				return ST_CHARGING_ERROR;
+
+			return ST_CHARGING;
+		}
+
+		return ST_IDLE;
+
 
 	case ST_DISCHARGING:
 		/* Go back to idle state when AC is plugged */
@@ -319,8 +356,16 @@ void pmu_charger_task(void)
 			CPRINTF("[batt] state %s -> %s\n",
 				state_list[state],
 				state_list[next_state]);
+
+			if (next_state == ST_CHARGING_ERROR)
+				pmu_blink_led(1);
+			else
+				pmu_blink_led(0);
+
 			state = next_state;
-			if (state == ST_PRE_CHARGING || state == ST_CHARGING)
+			if (state == ST_PRE_CHARGING ||
+			    state == ST_CHARGING     ||
+			    state == ST_CHARGING_ERROR)
 				enable_charging(1);
 			else
 				enable_charging(0);
@@ -328,6 +373,7 @@ void pmu_charger_task(void)
 
 		switch (state) {
 		case ST_CHARGING:
+		case ST_CHARGING_ERROR:
 			wait_time = T2_USEC;
 			break;
 		case ST_DISCHARGING:
