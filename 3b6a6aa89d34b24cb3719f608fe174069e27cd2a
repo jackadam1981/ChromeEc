@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn///hY\u003d",
+        "filename": "common/gaia_power.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-22T14:22:20Z",
+      "side": 1,
+      "message": "Sorry for not looking at this earlier.\n\nI actually think a043acca had a mistake is this area., hence this bug This change further papers over the crack I think.\n\nIMO gaia_power_task() should check whether power is already on. If it is, it should not call check_for_power_on_event() or power_on(), since these have already been done. The last bits of power_on() should perhaps be in a separately-called function called when we find we are already on.\n\nHowever, I am going to LGTM this anyway, since it fixes the bug, and we can tidy this up later.",
+      "revId": "3b6a6aa89d34b24cb3719f608fe174069e27cd2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
