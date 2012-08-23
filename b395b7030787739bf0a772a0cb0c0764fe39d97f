@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//+Eg\u003d",
+        "filename": "chip/lm4/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-08-23T18:13:38Z",
+      "side": 1,
+      "message": "Minor nit: blank line between this and the #ifdef",
+      "revId": "b395b7030787739bf0a772a0cb0c0764fe39d97f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//+EY\u003d",
+        "filename": "chip/stm32/flash-stm32l15x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-08-23T18:13:38Z",
+      "side": 1,
+      "message": "Please file a bug and include the crosbug link in the first line of the TODO comment.",
+      "revId": "b395b7030787739bf0a772a0cb0c0764fe39d97f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//+EM\u003d",
+        "filename": "common/flash_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-08-23T18:13:38Z",
+      "side": 1,
+      "message": "Since this is wrong on the one STM chip, please don\u0027t compile it for that chip.\n\n(Better to have it generate a compile error if used than silently generate an incorrect result.)",
+      "revId": "b395b7030787739bf0a772a0cb0c0764fe39d97f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
