@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//9lk\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-23T22:14:32Z",
+      "side": 1,
+      "message": "gen: power:",
+      "revId": "222077d14aac6a5d842b23350225692e60224ff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//9lY\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-23T22:14:32Z",
+      "side": 1,
+      "message": "How about a const table with a for() loop - you only have a single register missing (1)",
+      "revId": "222077d14aac6a5d842b23350225692e60224ff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
