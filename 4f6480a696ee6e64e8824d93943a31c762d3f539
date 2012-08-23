@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//+NA\u003d",
+        "filename": "chip/stm32/flash-stm32l15x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-08-23T17:05:44Z",
+      "side": 1,
+      "message": "please fix the comment, the stm32l151 always erase the flash bits to 0",
+      "revId": "4f6480a696ee6e64e8824d93943a31c762d3f539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
