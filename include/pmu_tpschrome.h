@@ -184,5 +184,11 @@ int pmu_blink_led(int enable);
  *   */
 void pmu_init(void);
 
+/**
+ * Fill all of the pmu registers with known good values, this allows the
+ * pmu to recover by rebooting the system if its registers were trashed.
+ */
+void pmu_init_registers(void);
+
 #endif /* __CROS_EC_TPSCHROME_H */
 
