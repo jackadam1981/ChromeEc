@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//9eM\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-08-23T23:07:21Z",
+      "side": 1,
+      "message": "can you do something human readable for the values ?\nie\nconst struct {\n  uint8_t index;\n  uint8_t value\n} regs[] \u003d {\n   { 0x02, 0x0c},\n   { 0x03, 0x0d},\n  /* ... */\n};",
+      "revId": "062a7a4c93ffb25c54587aa3049b5fb40cdd2af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
