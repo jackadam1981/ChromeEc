@@ -103,6 +103,8 @@ static int command_flash_info(int argc, char **argv)
 		ccputs(" STUCK");
 	if (i & EC_FLASH_PROTECT_ERROR_INCONSISTENT)
 		ccputs(" INCONSISTENT");
+	if (i & EC_FLASH_PROTECT_ENTIRE_NOW)
+		ccputs(" entire_now");
 	ccputs("\n");
 
 	ccputs("Protected now:");
@@ -325,9 +327,15 @@ static int flash_command_protect(struct host_cmd_handler_args *args)
 		r->writable_flags |= EC_FLASH_PROTECT_RW_NOW;
 
 #elif defined(CHIP_stm32)
-	/* RW protection can only be changed at boot */
-	r->valid_flags |= EC_FLASH_PROTECT_RW_AT_BOOT;
-	r->writable_flags |= EC_FLASH_PROTECT_RW_AT_BOOT;
+	/*
+	 * TODO: remove EC_FLASH_PROTECT_RW_NOW. It is for u-boot to be
+	 *       compatible with old EC. We shall remove RW_NOW flag one
+	 *       day in the future.
+	 */
+	r->valid_flags |= EC_FLASH_PROTECT_RW_NOW |
+			  EC_FLASH_PROTECT_ENTIRE_NOW;
+	r->writable_flags |= EC_FLASH_PROTECT_RW_NOW |
+			     EC_FLASH_PROTECT_ENTIRE_NOW;
 #endif
 
 	args->response_size = sizeof(*r);

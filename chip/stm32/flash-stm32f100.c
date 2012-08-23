@@ -587,8 +587,14 @@ uint32_t flash_get_protect(void)
 	if (pstate.flags & PERSIST_FLAG_PROTECT_RO)
 		flags |= EC_FLASH_PROTECT_RO_AT_BOOT;
 
-	if (entire_flash_locked)
-		flags |= EC_FLASH_PROTECT_RW_NOW;
+	if (entire_flash_locked) {
+		/*
+		 * TODO: remove EC_FLASH_PROTECT_RW_NOW. It is for u-boot to be
+		 *       compatible with old EC. We shall remove RW_NOW flag one
+		 *       day in the future.
+		 */
+		flags |= EC_FLASH_PROTECT_RW_NOW | EC_FLASH_PROTECT_ENTIRE_NOW;
+	}
 
 	/* Scan flash protection */
 	for (i = 0; i < PHYSICAL_BANKS; i++) {
@@ -638,7 +644,13 @@ int flash_set_protect(uint32_t mask, uint32_t flags)
 				      EC_FLASH_PROTECT_RO_AT_BOOT))
 		return retval;
 
-	if (mask & EC_FLASH_PROTECT_RW_NOW) {
+	/*
+	 * TODO: remove EC_FLASH_PROTECT_RW_NOW. It is for u-boot to be
+	 *       compatible with old EC. We shall remove RW_NOW flag one day
+	 *       in the future.
+	 */
+	if ((mask & EC_FLASH_PROTECT_RW_NOW) ||
+	    (mask & EC_FLASH_PROTECT_ENTIRE_NOW)) {
 		/*
 		 * Since RO is already protected, protecting entire flash
 		 * is effectively protecting RW.

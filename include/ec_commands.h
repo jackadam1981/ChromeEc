@@ -504,6 +504,12 @@ struct ec_params_flash_erase {
 #define EC_FLASH_PROTECT_ERROR_INCONSISTENT (1 << 5)
 /* RW flash code protected when the EC boots */
 #define EC_FLASH_PROTECT_RW_AT_BOOT         (1 << 6)
+/*
+ * Whole chip protected now, until reboot - this is slightly different to
+ * the result of (RO_NOW | RW_NOW) if there is a region in the flash, but
+ * NOT included in RO and RW. This is to lock the WHOLE chip.
+ */
+#define EC_FLASH_PROTECT_ENTIRE_NOW         (1 << 7)
 
 struct ec_params_flash_protect {
 	uint32_t mask;   /* Bits in flags to apply */
