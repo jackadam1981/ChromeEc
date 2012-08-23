@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//+Z8\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-23T12:40:12Z",
+      "side": 1,
+      "message": "Could you put these in a uint8_t table? Perhaps do the shift in the code below?",
+      "revId": "acefaa2a4bf94f178adee48c261636dfe6b1733b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//+Zw\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-23T12:40:12Z",
+      "side": 1,
+      "message": "You might consider making this argument 0-3 instead of 1-4, and making it unsigned to simplify the checking below.",
+      "revId": "acefaa2a4bf94f178adee48c261636dfe6b1733b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//+Z0\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-23T12:40:12Z",
+      "side": 1,
+      "message": "This could become a for loop if you use a table; in each iteration either write 0 or the value from the table",
+      "revId": "acefaa2a4bf94f178adee48c261636dfe6b1733b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//+Zs\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-23T12:40:12Z",
+      "side": 1,
+      "message": "You should check return values here I think, and return an error from this function if something goes wrong",
+      "revId": "acefaa2a4bf94f178adee48c261636dfe6b1733b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//+Zg\u003d",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-23T12:40:12Z",
+      "side": 1,
+      "message": "Why not put this after the \u0027state \u003d\u0027 assignment in line 365 and s/next_state/state/",
+      "revId": "acefaa2a4bf94f178adee48c261636dfe6b1733b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//+Zc\u003d",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-23T12:40:12Z",
+      "side": 1,
+      "message": "And wondering if this should become a switch()",
+      "revId": "acefaa2a4bf94f178adee48c261636dfe6b1733b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//+aE\u003d",
+        "filename": "include/pmu_tpschrome.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-23T12:40:12Z",
+      "side": 1,
+      "message": "Actually it controls this function, on or off",
+      "revId": "acefaa2a4bf94f178adee48c261636dfe6b1733b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
