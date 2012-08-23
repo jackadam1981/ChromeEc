@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//9r4\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-08-23T22:03:05Z",
+      "side": 1,
+      "message": "I think the comment may need clarification here. Is this intended to be defined in terms of absolute microseconds? It sounds like it should be defined in terms of clocks.\n\nIt might also be good to put that 150us delay in here as an enum, say, STOP_SENT_RETRY_US and then consolidate the comment here to describe how the timeouts relate. If I understand, it would look something like:\n\n/*\n * A stop condition should take 2 clocks. We will poll the STOP bit repeatedly\n * for 8 clocks, then back off and poll every STOP_SENT_RETRY_US until \n * TIMEOUT_STOP_SENT_US has been reached.\n */",
+      "revId": "e8f2ec93ecbc1ef527d008b1c63ed3283131341d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//9sE\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-08-23T22:03:05Z",
+      "side": 1,
+      "message": "Save some get_time() overhead: deadline \u003d slow_cutoff \u003d get_time();",
+      "revId": "e8f2ec93ecbc1ef527d008b1c63ed3283131341d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//9sc\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-08-23T22:03:05Z",
+      "side": 1,
+      "message": "s/it/is",
+      "revId": "e8f2ec93ecbc1ef527d008b1c63ed3283131341d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
