@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//9bs\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-08-23T23:23:37Z",
+      "side": 1,
+      "message": "IMO\nadd \"static\" keyword, push it up before pmu_init\nand remove the declaration in the header",
+      "revId": "b7c0e85c9931b4a1a0e1776b9f09a9551e202bdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//9bo\u003d",
+        "filename": "include/pmu_tpschrome.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-08-23T23:23:37Z",
+      "side": 1,
+      "message": "are other modules supposed to use it ?",
+      "revId": "b7c0e85c9931b4a1a0e1776b9f09a9551e202bdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
