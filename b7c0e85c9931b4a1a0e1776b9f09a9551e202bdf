@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//9a8\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2012-08-23T23:35:51Z",
+      "side": 1,
+      "message": "Are you sure this shouldn\u0027t be:\n\n num_reg \u003d sizeof(reg) / sizeof(reg[0]);\n for (i \u003d 0; i \u003c num_reg; i++)",
+      "revId": "b7c0e85c9931b4a1a0e1776b9f09a9551e202bdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//9bo\u003d",
         "filename": "include/pmu_tpschrome.h",
         "patchSetId": 3
