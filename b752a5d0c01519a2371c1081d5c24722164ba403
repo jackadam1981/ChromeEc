@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//9bY\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-08-23T23:29:01Z",
+      "side": 1,
+      "message": "Start out with a blank line at the top (Linux style for multi-line comments):\n\n/*\n * A stop condition...",
+      "revId": "b752a5d0c01519a2371c1081d5c24722164ba403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
