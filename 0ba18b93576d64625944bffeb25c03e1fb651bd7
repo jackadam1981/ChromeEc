@@ -16,6 +16,24 @@
       "revId": "0ba18b93576d64625944bffeb25c03e1fb651bd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//94g\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-08-23T19:34:19Z",
+      "side": 1,
+      "message": "No. But one of the battery provider mentioned that we should do this retry.\n\nI checked the charging flow and consider this is the right place to do that. We need to turn on CHARGER_EN in this error state to get right LED. Although we have the protection mechanism in charging task that turns off charger, and to retry this setting in next event/timeout, but the latency will be long (10 seconds).",
+      "parentUuid": "AAAAPn//95s\u003d",
+      "revId": "0ba18b93576d64625944bffeb25c03e1fb651bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
