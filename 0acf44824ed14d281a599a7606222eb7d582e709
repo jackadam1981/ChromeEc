@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//9a0\u003d",
+        "filename": "chip/stm32/gpio-stm32f100.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-08-23T23:43:19Z",
+      "side": 1,
+      "message": "Should just be \"flags\" here since that\u0027s what we\u0027re trying to set. g-\u003eflags comes from the pre-defined gpio_list from the board\u0027s board.c file and is passed in as \"flags\" by gpio_pre_init() when the EC is booting.\n\n(it\u0027s a bit confusing since the stm32l version of this file still does all gpio setup in gpio_pre_init() while this one was recently refactored to split gpio_set_flags() out into its own function to make post-init gpio config easier)",
+      "revId": "0acf44824ed14d281a599a7606222eb7d582e709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//9aw\u003d",
+        "filename": "chip/stm32/gpio-stm32f100.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-08-23T23:43:19Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "0acf44824ed14d281a599a7606222eb7d582e709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
