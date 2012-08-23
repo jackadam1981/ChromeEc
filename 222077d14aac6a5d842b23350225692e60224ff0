@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//9jE\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-23T22:35:13Z",
+      "side": 1,
+      "message": "Sorry!",
+      "parentUuid": "AAAAPn//9jM\u003d",
+      "revId": "222077d14aac6a5d842b23350225692e60224ff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//9lY\u003d",
         "filename": "common/pmu_tps65090.c",
         "patchSetId": 1
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "That was my initial approach, but I thought this was actually easier to read, but either is fine.  I\u0027ll code up the list-approach and we\u0027ll see what looks better",
       "parentUuid": "AAAAPn//9lY\u003d",
+      "revId": "222077d14aac6a5d842b23350225692e60224ff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//9is\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-23T22:35:13Z",
+      "side": 1,
+      "message": "OK, up to you. Check out code size also.",
+      "parentUuid": "AAAAPn//9lE\u003d",
       "revId": "222077d14aac6a5d842b23350225692e60224ff0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
