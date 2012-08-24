@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//8hA\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-08-24T21:47:31Z",
+      "side": 1,
+      "message": "Good point, I\u0027ll move it so it\u0027s the last thing it does, after everything is shut down.",
+      "parentUuid": "AAAAPn//8nY\u003d",
+      "revId": "26542990b9228681477e6e0efbf8793405f4b5c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//8ss\u003d",
         "filename": "common/pmu_tps65090.c",
         "patchSetId": 4
@@ -48,6 +66,24 @@
       "writtenOn": "2012-08-24T18:57:35Z",
       "side": 1,
       "message": "nit: please remove the num_reg variable and use the ARRAYSIZE value directly in your loop",
+      "revId": "26542990b9228681477e6e0efbf8793405f4b5c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//8g8\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-08-24T21:47:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPn//8ss\u003d",
       "revId": "26542990b9228681477e6e0efbf8793405f4b5c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
