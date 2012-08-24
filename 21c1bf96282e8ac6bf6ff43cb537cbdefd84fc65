@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//9UE\u003d",
+        "filename": "common/gaia_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-08-24T02:08:54Z",
+      "side": 0,
+      "message": "While we\u0027re changing things here, I think we should just call this pmic_pwron or pmic_pwron_status or something to indicate that it pertains to the PMIC instead of keyboard or lid or other power-on event.\n\nUp to you.",
+      "revId": "21c1bf96282e8ac6bf6ff43cb537cbdefd84fc65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
