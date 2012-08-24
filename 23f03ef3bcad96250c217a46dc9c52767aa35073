@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//9DQ\u003d",
+        "filename": "chip/lm4/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-08-24T07:27:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPn//9Dc\u003d",
+      "revId": "23f03ef3bcad96250c217a46dc9c52767aa35073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//9Dg\u003d",
         "filename": "common/flash_common.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2012-08-24T07:19:42Z",
       "side": 1,
       "message": "entire flash protection",
+      "revId": "23f03ef3bcad96250c217a46dc9c52767aa35073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//9DM\u003d",
+        "filename": "common/flash_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-08-24T07:27:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPn//9Dg\u003d",
       "revId": "23f03ef3bcad96250c217a46dc9c52767aa35073",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//9DI\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-08-24T07:27:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPn//9Do\u003d",
+      "revId": "23f03ef3bcad96250c217a46dc9c52767aa35073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//9Dk\u003d",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2012-08-24T07:19:42Z",
       "side": 1,
       "message": "Here too",
+      "revId": "23f03ef3bcad96250c217a46dc9c52767aa35073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//9DE\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-08-24T07:27:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPn//9Dk\u003d",
       "revId": "23f03ef3bcad96250c217a46dc9c52767aa35073",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
