@@ -16,6 +16,24 @@
       "revId": "bbbf8a42cec4f7053168a1ab8dfd1da7735b1027",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//80c\u003d",
+        "filename": "board/snow/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000182
+      },
+      "writtenOn": "2012-08-24T18:10:28Z",
+      "side": 1,
+      "message": "Checked with Frank; the spec doesn\u0027t say much about the requirements for this.  For now we are going to stay with both EC and PMIC driving things to the off state.  The only change he suggests is delaying the 5V rail a bit.  Will do that in a separate CL.",
+      "parentUuid": "AAAAPn//9U0\u003d",
+      "revId": "bbbf8a42cec4f7053168a1ab8dfd1da7735b1027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

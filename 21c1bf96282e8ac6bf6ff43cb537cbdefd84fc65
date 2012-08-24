@@ -16,6 +16,24 @@
       "revId": "21c1bf96282e8ac6bf6ff43cb537cbdefd84fc65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//8yQ\u003d",
+        "filename": "common/gaia_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000182
+      },
+      "writtenOn": "2012-08-24T18:10:28Z",
+      "side": 0,
+      "message": "the pmic_pwron structures are all deleted",
+      "parentUuid": "AAAAPn//9UE\u003d",
+      "revId": "21c1bf96282e8ac6bf6ff43cb537cbdefd84fc65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
