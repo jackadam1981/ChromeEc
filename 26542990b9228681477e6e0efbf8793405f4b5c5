@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//8sw\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-08-24T18:57:35Z",
+      "side": 1,
+      "message": "the HOOK_CHIPSET_SHUTDOWN hook is called before any EC action for the power off sequence, is that the right sequencing ?",
+      "revId": "26542990b9228681477e6e0efbf8793405f4b5c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//8ss\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-08-24T18:57:35Z",
+      "side": 1,
+      "message": "nit: please remove the num_reg variable and use the ARRAYSIZE value directly in your loop",
+      "revId": "26542990b9228681477e6e0efbf8793405f4b5c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
