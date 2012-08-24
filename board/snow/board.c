@@ -10,6 +10,7 @@
 #include "console.h"
 #include "dma.h"
 #include "gpio.h"
+#include "hooks.h"
 #include "i2c.h"
 #include "pmu_tpschrome.h"
 #include "power_led.h"
@@ -20,6 +21,9 @@
 
 #define GPIO_KB_INPUT  (GPIO_INPUT | GPIO_PULL_UP | GPIO_INT_BOTH)
 #define GPIO_KB_OUTPUT (GPIO_OUTPUT | GPIO_OPEN_DRAIN)
+
+#define INT_BOTH_FLOATING	(GPIO_INPUT | GPIO_INT_BOTH)
+#define INT_BOTH_PULL_UP	(GPIO_INPUT | GPIO_PULL_UP | GPIO_INT_BOTH)
 
 /* GPIO interrupt handlers prototypes */
 #ifndef CONFIG_TASK_GAIAPOWER
@@ -43,7 +47,7 @@ const struct gpio_info gpio_list[GPIO_COUNT] = {
 	{"XPSHOLD",     GPIO_A, (1<<3),  GPIO_INT_BOTH, gaia_power_event},
 	{"CHARGER_INT", GPIO_C, (1<<4),  GPIO_INT_FALLING, pmu_irq_handler},
 	{"LID_OPEN",    GPIO_C, (1<<13), GPIO_INT_RISING, gaia_lid_event},
-	{"SUSPEND_L",   GPIO_A, (1<<7),  GPIO_INT_BOTH, gaia_suspend_event},
+	{"SUSPEND_L",   GPIO_A, (1<<7),  INT_BOTH_FLOATING, gaia_suspend_event},
 	{"WP_L",        GPIO_B, (1<<4),  GPIO_INPUT, NULL},
 	{"KB_IN00",     GPIO_C, (1<<8),  GPIO_KB_INPUT, matrix_interrupt},
 	{"KB_IN01",     GPIO_C, (1<<9),  GPIO_KB_INPUT, matrix_interrupt},
@@ -185,6 +189,31 @@ void board_power_led_config(enum powerled_config config)
 		break;
 	}
 }
+
+static int board_ap_suspend_pull_up(void)
+{
+	/*
+	 * SUSPEND_L is driven from an open-drain buffer, so it will reliably
+	 * be driven low when asserted but will float otherwise. Thus, enable
+	 * the pull-up resistor when the AP is suspended so that we reliably
+	 * see the signal change as it goes from asserted to de-asserted.
+	 */
+	gpio_set_flags(GPIO_SUSPEND_L, INT_BOTH_PULL_UP);
+	return 0;
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_ap_suspend_pull_up, HOOK_PRIO_DEFAULT);
+
+static int board_ap_suspend_float(void)
+{
+	/*
+	 * Make SUSPEND_L a floating input to prevent leakage when we're
+	 * not waiting for a suspend --> resume transition.
+	 */
+	gpio_set_flags(GPIO_SUSPEND_L, INT_BOTH_FLOATING);
+	return 0;
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_ap_suspend_float, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_ap_suspend_float, HOOK_PRIO_DEFAULT);
 
 enum {
 	/* Time between requesting bus and deciding that we have it */
