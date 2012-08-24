@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//9Dc\u003d",
+        "filename": "chip/lm4/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-08-24T07:19:42Z",
+      "side": 1,
+      "message": "Need one additional check.  if flags \u0026 ALL_NOW but not flags \u0026 RO_NOW, add inconsistent.\n\nThat is, ALL_NOW requires RO_NOW.",
+      "revId": "23f03ef3bcad96250c217a46dc9c52767aa35073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//9Dg\u003d",
+        "filename": "common/flash_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-08-24T07:19:42Z",
+      "side": 1,
+      "message": "entire flash protection",
+      "revId": "23f03ef3bcad96250c217a46dc9c52767aa35073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//9Do\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-08-24T07:19:42Z",
+      "side": 1,
+      "message": "Fix comment",
+      "revId": "23f03ef3bcad96250c217a46dc9c52767aa35073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//9Dk\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-08-24T07:19:42Z",
+      "side": 1,
+      "message": "Here too",
+      "revId": "23f03ef3bcad96250c217a46dc9c52767aa35073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
