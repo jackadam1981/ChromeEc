@@ -21,6 +21,9 @@
 #define GPIO_KB_INPUT  (GPIO_INPUT | GPIO_PULL_UP | GPIO_INT_BOTH)
 #define GPIO_KB_OUTPUT (GPIO_OUTPUT | GPIO_OPEN_DRAIN)
 
+/* AP suspend signal interrupts on both edges and has pull-up enabled */
+#define GPIO_AP_SUSPEND GPIO_KB_INPUT
+
 /* GPIO interrupt handlers prototypes */
 #ifndef CONFIG_TASK_GAIAPOWER
 #define gaia_power_event NULL
@@ -43,7 +46,7 @@ const struct gpio_info gpio_list[GPIO_COUNT] = {
 	{"XPSHOLD",     GPIO_A, (1<<3),  GPIO_INT_RISING, gaia_power_event},
 	{"CHARGER_INT", GPIO_C, (1<<4),  GPIO_INT_FALLING, pmu_irq_handler},
 	{"LID_OPEN",    GPIO_C, (1<<13), GPIO_INT_RISING, gaia_lid_event},
-	{"SUSPEND_L",   GPIO_A, (1<<7),  GPIO_INT_BOTH, gaia_suspend_event},
+	{"SUSPEND_L",   GPIO_A, (1<<7),  GPIO_AP_SUSPEND, gaia_suspend_event},
 	{"WP_L",        GPIO_B, (1<<4),  GPIO_INPUT, NULL},
 	{"KB_IN00",     GPIO_C, (1<<8),  GPIO_KB_INPUT, matrix_interrupt},
 	{"KB_IN01",     GPIO_C, (1<<9),  GPIO_KB_INPUT, matrix_interrupt},
