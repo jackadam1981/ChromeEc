@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//8nY\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2012-08-24T20:23:44Z",
+      "side": 1,
+      "message": "I don\u0027t think that the order is critical, but it does seem slightly better to do this after.",
+      "parentUuid": "AAAAPn//8sw\u003d",
+      "revId": "26542990b9228681477e6e0efbf8793405f4b5c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//8ss\u003d",
         "filename": "common/pmu_tps65090.c",
         "patchSetId": 4
