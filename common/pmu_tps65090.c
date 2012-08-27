@@ -77,6 +77,13 @@
 /* Charger alarm */
 #define CHARGER_ALARM 3
 
+void __board_hard_reset(void)
+{
+	CPRINTF("This board is not capable of a hard reset.\n");
+}
+void board_hard_reset(void)
+	__attribute__((weak, alias("__board_hard_reset")));
+
 /* Charger temperature threshold table */
 static const uint8_t const pmu_temp_threshold[] = {
 	1, /* 0b001,  0 degree C */
@@ -420,7 +427,7 @@ int pmu_shutdown(void)
  * Fill all of the pmu registers with known good values, this allows the
  * pmu to recover by rebooting the system if its registers were trashed.
  */
-static void pmu_init_registers(void)
+static int pmu_init_registers(void)
 {
 	const struct {
 		uint8_t index;
@@ -448,15 +455,21 @@ static void pmu_init_registers(void)
 		{IRQ1_REG, 0x00}
 	};
 
-	uint8_t i;
-	for (i = 0; i < ARRAY_SIZE(reg); i++)
-		pmu_write(reg[i].index, reg[i].value);
+	uint8_t i, rv;
+	for (i = 0; i < ARRAY_SIZE(reg); i++) {
+		rv = pmu_write(reg[i].index, reg[i].value);
+		if (rv)
+			return rv;
+	}
+
+	return EC_SUCCESS;
 }
 
 void pmu_init(void)
 {
 	/* Reset everything to default, safe values */
-	pmu_init_registers();
+	if (pmu_init_registers())
+		board_hard_reset();
 
 #ifdef CONFIG_PMU_BOARD_INIT
 	board_pmu_init();
@@ -532,6 +545,9 @@ static int command_pmu(int argc, char **argv)
 	if (argc > 1) {
 		repeat = strtoi(argv[1], &e, 0);
 		if (*e) {
+			if (strlen(argv[1]) >= 1 && argv[1][0] == 'r')
+				board_hard_reset();
+
 			ccputs("Invalid repeat count\n");
 			return EC_ERROR_INVAL;
 		}
@@ -554,7 +570,7 @@ static int command_pmu(int argc, char **argv)
 	return rv ? EC_ERROR_UNKNOWN : EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(pmu, command_pmu,
-			"<repeat_count>",
-			"Print PMU info",
+			"<repeat_count|reset>",
+			"Print PMU info or force a hard reset",
 			NULL);
 #endif

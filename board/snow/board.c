@@ -64,6 +64,7 @@ const struct gpio_info gpio_list[GPIO_COUNT] = {
 	{"EN_PP5000",   GPIO_A, (1<<11),  GPIO_OUT_LOW, NULL},
 	{"EN_PP3300",   GPIO_A, (1<<8),  GPIO_OUT_LOW, NULL},
 	{"PMIC_PWRON_L",GPIO_A, (1<<12), GPIO_OUT_HIGH, NULL},
+	{"PMIC_RESET",  GPIO_A, (1<<15), GPIO_OUT_LOW, NULL},
 	{"ENTERING_RW", GPIO_D, (1<<0),  GPIO_OUT_LOW, NULL},
 	{"CHARGER_EN",  GPIO_B, (1<<2),  GPIO_OUT_LOW, NULL},
 	{"EC_INT",      GPIO_B, (1<<9),  GPIO_HI_Z, NULL},
@@ -267,6 +268,19 @@ void board_i2c_release(int port)
 	}
 }
 #endif /* CONFIG_ARBITRATE_I2C */
+
+/*
+ * Force the pmic to reset completely.  This forces an entire system reset,
+ * and therefore should never return
+ */
+void board_hard_reset(void)
+{
+	/* Force a hard reset of tps Chrome */
+	gpio_set_level(GPIO_PMIC_RESET, 1);
+	/* Hang until the power is cut */
+	while (1)
+		;
+}
 
 #ifdef CONFIG_PMU_BOARD_INIT
 /**
