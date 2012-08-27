@@ -347,6 +347,23 @@ int pmu_get_ac(void)
 	return ac_good;
 }
 
+/*
+ * Force the pmic to reset completely.  This forces an entire system reset,
+ * and therefore should never return
+ */
+static void pmu_hard_reset(void)
+{
+#ifdef PMIC_RESET_ENABLED
+	/* Force a hard reset of tps Chrome */
+	gpio_set_level(GPIO_PMIC_RESET, 1);
+	/* Hang until the power is cut */
+	while (1)
+		;
+#else
+	CPRINTF("This board can NOT force a hard PMIC reset.\n");
+#endif
+}
+
 int pmu_shutdown(void)
 {
 	int offset, rv = 0;
@@ -360,6 +377,8 @@ int pmu_shutdown(void)
 	/* Clearing AD controls/status */
 	rv |= pmu_write(AD_CTRL, 0x00);
 
+	if (rv)
+		pmu_hard_reset();
 	return rv ? EC_ERROR_UNKNOWN : EC_SUCCESS;
 }
 
@@ -397,7 +416,8 @@ static void pmu_init_registers(void)
 
 	uint8_t i;
 	for (i = 0; i < ARRAY_SIZE(reg); i++)
-		pmu_write(reg[i].index, reg[i].value);
+		if (pmu_write(reg[i].index, reg[i].value))
+			pmu_hard_reset();
 }
 
 void pmu_init(void)
@@ -479,6 +499,9 @@ static int command_pmu(int argc, char **argv)
 	if (argc > 1) {
 		repeat = strtoi(argv[1], &e, 0);
 		if (*e) {
+			if (strlen(argv[1]) >= 1 && argv[1][0] == 'r')
+				pmu_hard_reset();
+
 			ccputs("Invalid repeat count\n");
 			return EC_ERROR_INVAL;
 		}
@@ -501,7 +524,7 @@ static int command_pmu(int argc, char **argv)
 	return rv ? EC_ERROR_UNKNOWN : EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(pmu, command_pmu,
-			"<repeat_count>",
-			"Print PMU info",
+			"<repeat_count|reset>",
+			"Print PMU info or force a hard reset",
 			NULL);
 #endif

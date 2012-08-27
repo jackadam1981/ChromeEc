@@ -31,6 +31,9 @@
 /* compute RW firmware hash at startup */
 #define CONFIG_VBOOT
 
+/* This board can force a hard reset of its pmic */
+#define PMIC_RESET_ENABLED
+
 /* use STOP mode when we have nothing to do */
 #define CONFIG_LOW_POWER_IDLE
 
@@ -85,6 +88,7 @@ enum gpio_signal {
 	GPIO_EN_PP5000,        /* 5.0v rail enable */
 	GPIO_EN_PP3300,        /* 3.3v rail enable */
 	GPIO_PMIC_PWRON_L,     /* 5v rail ready */
+	GPIO_PMIC_RESET,       /* Force hard reset of the pmic */
 	GPIO_EC_ENTERING_RW,   /* EC is R/W mode for the kbc mux */
 	GPIO_CHARGER_EN,
 	GPIO_EC_INT,
