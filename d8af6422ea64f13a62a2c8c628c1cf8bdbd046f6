@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//71s\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1933,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-08-27T16:28:13Z",
+      "side": 1,
+      "message": "Do you mean:\n\nIf the system is on battery power, it should have shut down and you will not see this message.  If the system is on AC power, the command was ignored (the battery cut out and was immediately reconnected).\n\nIf that\u0027s the case, should you check that AC power is absent before running the disconnect command?  (And fail if AC is present?)",
+      "revId": "d8af6422ea64f13a62a2c8c628c1cf8bdbd046f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//72E\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2156,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-08-27T16:28:13Z",
+      "side": 1,
+      "message": "batterycutoff matches the convention of the other commands (no underscores)",
+      "revId": "d8af6422ea64f13a62a2c8c628c1cf8bdbd046f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
