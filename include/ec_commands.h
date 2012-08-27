@@ -914,6 +914,28 @@ struct ec_params_force_idle {
 } __packed;
 
 /*****************************************************************************/
+/* Console commands. Only available when flash write protect is unlocked. */
+
+/* Snapshot console output buffer for use by EC_CMD_CONSOLE_READ. */
+#define EC_CMD_CONSOLE_SNAPSHOT 0x97
+
+/*
+ * Read next chunk of data from saved snapshot.
+ *
+ * Response is null-terminated string.  Empty string, if there is no more
+ * remaining output.
+ */
+#define EC_CMD_CONSOLE_READ 0x98
+
+/*
+ * Cut off battery power output if the battery supports.
+ *
+ * For unsupported battery, just don't implement this command and lets EC
+ * return EC_RES_INVALID_COMMAND.
+ */
+#define EC_CMD_BATTERY_CUT_OFF 0x99
+
+/*****************************************************************************/
 /* System commands */
 
 /*
