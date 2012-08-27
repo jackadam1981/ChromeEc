@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//75E\u003d",
+        "filename": "board/snow/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-08-27T14:32:02Z",
+      "side": 1,
+      "message": "I don\u0027t know the battery. But shall we define meaningful constant names for those values? I assume it would be something like:\n\n  #define PMU_CMD_SET_TIMEOUT 0x04\n  #define FAST_CHARGE_TIMEOUT 0x12  // unit: 20 mins\n\n  pmu_write(PMU_CMD_SET_TIMEOUT, FAST_CHARGE_TIMEOUT);",
+      "revId": "befa4c444f0624855b8f79b8aa63583de82f57f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
