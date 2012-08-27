@@ -216,14 +216,16 @@ void gaia_suspend_event(enum gpio_signal signal)
 	ap_suspended = !gpio_get_level(GPIO_SUSPEND_L);
 
 	if (ap_suspended) {
+#if 0
 		if (gpio_get_level(GPIO_LID_OPEN))
 			powerled_set_state(POWERLED_STATE_SUSPEND);
 		else
 			powerled_set_state(POWERLED_STATE_OFF);
+#endif
 		/* Call hooks here since we don't know it prior to AP suspend */
 		hook_notify(HOOK_CHIPSET_SUSPEND, 0);
 	} else {
-		powerled_set_state(POWERLED_STATE_ON);
+//		powerled_set_state(POWERLED_STATE_ON);
 		hook_notify(HOOK_CHIPSET_RESUME, 0);
 	}
 }
@@ -265,6 +267,24 @@ int gaia_power_init(void)
 /*****************************************************************************/
 /* Chipset interface */
 
+static enum chipset_state_mask get_chipset_state(void)
+{
+	enum chipset_state_mask mask = 0;
+	int xpshold, pp1800_ldo2;
+
+	xpshold = gpio_get_level(GPIO_SOC1V8_XPSHOLD);
+	pp1800_ldo2 = gpio_get_level(GPIO_PP1800_LDO2);
+
+	if (!xpshold)
+		mask = CHIPSET_STATE_ANY_OFF;
+	else if (xpshold && !pp1800_ldo2)
+		mask = CHIPSET_STATE_SUSPEND;
+	else if (xpshold && pp1800_ldo2)
+		mask = CHIPSET_STATE_ON;
+
+	return mask;
+}
+
 int chipset_in_state(int state_mask)
 {
 	/*
@@ -272,7 +292,8 @@ int chipset_in_state(int state_mask)
 	 * gaia_suspend_event() doesn't work. get ap_suspended
 	 * again.
 	 */
-	ap_suspended = !gpio_get_level(GPIO_SUSPEND_L);
+//	ap_suspended = !gpio_get_level(GPIO_SUSPEND_L);
+	ap_suspended = get_chipset_state() & CHIPSET_STATE_SUSPEND;
 
 	/* If AP is off, match any off state for now */
 	if ((state_mask & CHIPSET_STATE_ANY_OFF) && !ap_on)
@@ -382,7 +403,7 @@ static int power_on(void)
 	gpio_set_level(GPIO_EN_PP3300, 1);
 	ap_on = 1;
 	disable_sleep(SLEEP_MASK_AP_RUN);
-	powerled_set_state(POWERLED_STATE_ON);
+	update_power_led();
 
 	/* Call hooks now that AP is running */
 	hook_notify(HOOK_CHIPSET_STARTUP, 0);
@@ -445,7 +466,7 @@ static void power_off(void)
 	ap_on = 0;
 	lid_changed = 0;
 	enable_sleep(SLEEP_MASK_AP_RUN);
-	powerled_set_state(POWERLED_STATE_OFF);
+	update_power_led();
 	CPUTS("Shutdown complete.\n");
 }
 
@@ -464,6 +485,21 @@ static int next_pwr_event(void)
 	return power_off_deadline.val - get_time().val;
 }
 
+static void update_power_led(void)
+{
+	enum chipset_state_mask mask = get_chipset_state()
+
+	if (mask & CHIPSET_STATE_ANY_OFF) {
+		powerled_set_state(POWERLED_STATE_OFF);
+	} else if (mask & CHIPSET_STATE_SUSPEND) {
+		if (gpio_get_level(GPIO_LID_OPEN))
+			powerled_set_state(POWERLED_STATE_SUSPEND);
+		else
+			powerled_set_state(POWERLED_STATE_OFF);
+	} else if (mask & CHIPSET_STATE_ON) {
+		powerled_set_state(POWERLED_STATE_ON);
+	}
+}
 
 /*****************************************************************************/
 
@@ -496,8 +532,10 @@ void gaia_power_task(void)
 			}
 			if (continue_power) {
 				power_button_was_pressed = 0;
-				while (!(value = check_for_power_off_event()))
+				while (!(value = check_for_power_off_event())) {
+					update_power_led();
 					task_wait_event(next_pwr_event());
+				}
 				CPRINTF("%T ending loop %d\n", value);
 			}
 		}
