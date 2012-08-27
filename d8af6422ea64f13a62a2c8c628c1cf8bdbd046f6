@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//7y0\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1933,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-08-27T17:00:45Z",
+      "side": 1,
+      "message": "Yes, that\u0027s the case. However, I don\u0027t want to mix up the AC power and battery cut-off here because:\n\n1. Factory could run this command with AC power. It expects it is no harm, and returns success. In this case, the operator will push the physical button on the battery to cut-off before packing. Thus we don\u0027t prepare 2 factory images for different processes (one needs to ignore the AC unplug error). \n\n2. I am not sure if all batteries ignore the cut-off if AC power is plugged. Maybe other kinds of batteries would enter cut-off even the AC power is connected and then the system loses power after the AC power is removed. Just don\u0027t want to make assumption here.\n\nI think a warning message here is good enough for factory process. Not necessary an error return.",
+      "parentUuid": "AAAAPn//71s\u003d",
+      "revId": "d8af6422ea64f13a62a2c8c628c1cf8bdbd046f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//72E\u003d",
         "filename": "util/ectool.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2012-08-27T16:28:13Z",
       "side": 1,
       "message": "batterycutoff matches the convention of the other commands (no underscores)",
+      "revId": "d8af6422ea64f13a62a2c8c628c1cf8bdbd046f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//7zQ\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2156,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-08-27T17:00:45Z",
+      "side": 1,
+      "message": "Done. Thanks.",
+      "parentUuid": "AAAAPn//72E\u003d",
       "revId": "d8af6422ea64f13a62a2c8c628c1cf8bdbd046f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
