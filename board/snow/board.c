@@ -74,6 +74,10 @@ const struct gpio_info gpio_list[GPIO_COUNT] = {
 	{"EC_INT",      GPIO_B, (1<<9),  GPIO_HI_Z, NULL},
 	{"CODEC_INT",   GPIO_D, (1<<1),  GPIO_HI_Z, NULL},
 	{"LED_POWER_L", GPIO_B, (1<<3),  GPIO_INPUT, NULL},
+	{"I2C1_SCL",    GPIO_B, (1<<6),  GPIO_HI_Z, NULL},
+	{"I2C1_SDA",    GPIO_B, (1<<7),  GPIO_HI_Z, NULL},
+	{"I2C2_SCL",    GPIO_B, (1<<10), GPIO_HI_Z, NULL},
+	{"I2C2_SDA",    GPIO_B, (1<<11), GPIO_HI_Z, NULL},
 	{"KB_OUT00",    GPIO_B, (1<<0),  GPIO_KB_OUTPUT, NULL},
 	{"KB_OUT01",    GPIO_B, (1<<8),  GPIO_KB_OUTPUT, NULL},
 	{"KB_OUT02",    GPIO_B, (1<<12), GPIO_KB_OUTPUT, NULL},
@@ -115,20 +119,6 @@ void configure_board(void)
 			       | (1 << 8);
 
 	/*
-	 * I2C SCL/SDA on PB10-11 and PB6-7, bi-directional, no pull-up/down,
-	 * initialized as hi-Z until alt. function is set
-	 */
-	val = STM32_GPIO_CRH_OFF(GPIO_B) & ~0x0000ff00;
-	val |= 0x0000dd00;
-	STM32_GPIO_CRH_OFF(GPIO_B) = val;
-
-	val = STM32_GPIO_CRL_OFF(GPIO_B) & ~0xff000000;
-	val |= 0xdd000000;
-	STM32_GPIO_CRL_OFF(GPIO_B) = val;
-
-	STM32_GPIO_BSRR_OFF(GPIO_B) |= (1<<11) | (1<<10) | (1<<7) | (1<<6);
-
-	/*
 	 * Set alternate function for USART1. For alt. function input
 	 * the port is configured in either floating or pull-up/down
 	 * input mode (ref. section 7.1.4 in datasheet RM0041):
@@ -147,6 +137,25 @@ void configure_board(void)
 	STM32_GPIO_CRH_OFF(GPIO_B) = val;
 	/* put GPIO in Hi-Z state */
 	gpio_set_level(GPIO_EC_INT, 1);
+}
+
+/* GPIO configuration to be done after I2C module init */
+void board_i2c_post_init(int port)
+{
+	uint32_t val;
+
+	/* enable alt. function (open-drain) */
+	if (port == STM32_I2C1_PORT) {
+		/* I2C1 is on PB6-7 */
+		val = STM32_GPIO_CRL_OFF(GPIO_B) & ~0xff000000;
+		val |= 0xdd000000;
+		STM32_GPIO_CRL_OFF(GPIO_B) = val;
+	} else if (port == STM32_I2C2_PORT) {
+		/* I2C2 is on PB10-11 */
+		val = STM32_GPIO_CRH_OFF(GPIO_B) & ~0x0000ff00;
+		val |= 0x0000dd00;
+		STM32_GPIO_CRH_OFF(GPIO_B) = val;
+	}
 }
 
 void configure_board_late(void)
