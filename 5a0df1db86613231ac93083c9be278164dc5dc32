@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//6nc\u003d",
+        "filename": "board/snow/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-08-28T16:07:49Z",
+      "side": 1,
+      "message": "One question here :\nif the PMU i2c interface is stuck and we hit the timeout for all those I2C transfers, are we going to get the EC watchdog before actually triggering the PMU reset ?",
+      "revId": "5a0df1db86613231ac93083c9be278164dc5dc32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
