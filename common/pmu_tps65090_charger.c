@@ -21,6 +21,13 @@
 #define CPUTS(outstr) cputs(CC_CHARGER, outstr)
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
 
+#define DO_SPEW
+#ifdef DO_SPEW
+#define SPEW(format, args...) cprintf(CC_CHARGER, format, ## args)
+#else
+#define SPEW(format, args...)
+#endif
+
 /* Charging and discharging alarms */
 #define ALARM_DISCHARGING (ALARM_TERMINATE_DISCHARGE | ALARM_OVER_TEMP)
 #define ALARM_CHARGING (ALARM_TERMINATE_CHARGE | \
@@ -148,67 +155,97 @@ static int calc_next_state(int state)
 
 	switch (state) {
 	case ST_IDLE:
+		SPEW("%s: Current state: ST_IDLE.\n", __func__);
 		/* Check AC and chiset state */
 		if (!pmu_get_ac()) {
-			if (chipset_in_state(CHIPSET_STATE_ON))
+			SPEW("\t[ST_IDLE] AC not plugged in\n", __func__);
+			if (chipset_in_state(CHIPSET_STATE_ON)) {
+				SPEW("\t[ST_IDLE] No AC, chipset on, going to discharge\n");
 				return ST_DISCHARGING;
+			}
+			SPEW("\t[ST_IDLE] No AC, chipset off, going to idle\n");
 			return ST_IDLE;
 		}
 
 		/* Stay in idle mode if charger overtemp */
-		if (pmu_is_charger_alarm())
+		if (pmu_is_charger_alarm()) {
+			SPEW("\t[ST_IDLE] pmu_is_charger_alarm != 0, going to idle\n");
 			return ST_IDLE;
+		}
 
 		/* Enable charging when battery doesn't respond */
 		if (battery_temperature(&batt_temp)) {
-			if (config_low_current_charging(0))
+			if (config_low_current_charging(0)) {
+				SPEW("\t[ST_IDLE] Doing low current charge, going to idle\n");
 				return ST_IDLE;
+			}
+			SPEW("\t[ST_IDLE] Going to pre-charge\n");
 			return ST_PRE_CHARGING;
 		}
 
 		/* Turn off charger when battery temperature is out
 		 * of the start charging range.
 		 */
-		if (!battery_start_charging_range(batt_temp))
+		if (!battery_start_charging_range(batt_temp)) {
+			SPEW("\t[ST_IDLE] Cannot start charging because temp too high, going to idle\n");
 			return ST_IDLE;
+		}
 
 		/* Turn off charger on battery charging alarm */
-		if (battery_status(&alarm) || (alarm & ALARM_CHARGING))
+		if (battery_status(&alarm) || (alarm & ALARM_CHARGING)) {
+			SPEW("\t[ST_IDLE] Charger alarm, going to idle\n");
 			return ST_IDLE;
+		}
 
 		/* Start charging only when battery charge lower than 100% */
 		if (!battery_state_of_charge(&charge)) {
 			config_low_current_charging(charge);
-			if (charge < 100)
+			if (charge < 100) {
+				SPEW("\t[ST_IDLE] Charge: %d, going to charge\n", charge);
 				return ST_CHARGING;
+			}
+			SPEW("\t[ST_IDLE] Charge: %d, not charging\n", charge);
 		}
 
+		SPEW("\t[ST_IDLE] Continuing to idle\n");
 		return ST_IDLE;
 
 	case ST_PRE_CHARGING:
-		if (!pmu_get_ac())
+		SPEW("%s: Current state: ST_PRE_CHARGING.\n", __func__);
+		if (!pmu_get_ac()) {
+			SPEW("\t[ST_PRE_CHARGING] AC not plugged in, going to idle\n", __func__);
 			return ST_IDLE;
+		}
 
 		/* If the battery goes online after enable the charger,
 		 * go into charging state.
 		 */
 		if (battery_temperature(&batt_temp) == EC_SUCCESS) {
-			if (!battery_start_charging_range(batt_temp))
+			SPEW("\t[ST_PRE_CHARGING] Able to read battery temp\n");
+			if (!battery_start_charging_range(batt_temp)) {
+				SPEW("\t[ST_PRE_CHARGING] Cannot start charging because temp too high, going to idle\n");
 				return ST_IDLE;
-			if (!battery_state_of_charge(&charge)) {
+			} if (!battery_state_of_charge(&charge)) {
 				config_low_current_charging(charge);
-				if (charge >= 100)
+				if (charge >= 100) {
+					SPEW("\t[ST_PRE_CHARGING] Charge: %d, going to idle\n", charge);
 					return ST_IDLE;
+				}
 			}
+			SPEW("\t[ST_PRE_CHARGING] Going to charge\n");
 			return ST_CHARGING;
 		}
 
+		SPEW("\t[ST_PRE_CHARGING] Continuing pre-charge\n");
 		return ST_PRE_CHARGING;
 
 	case ST_CHARGING:
+		SPEW("%s: Current state: ST_CHARGING.\n", __func__);
 		/* Go back to idle state when AC is unplugged */
-		if (!pmu_get_ac())
+		if (!pmu_get_ac()) {
+			SPEW("\t[ST_CHARGING] AC unplugged, going to idle\n");
 			return ST_IDLE;
+		}
 
 		/*
 		 * Disable charging on battery access error, or charging
@@ -230,13 +267,18 @@ static int calc_next_state(int state)
 		 *   - over temperature
 		 *   - over current
 		 */
-		if (battery_status(&alarm))
+		if (battery_status(&alarm)) {
+			SPEW("\t[ST_CHARGING] Cannot get battery status, going to idle\n");
 			return ST_IDLE;
+		}
 
 		if (alarm & ALARM_CHARGING) {
 			CPUTS("[pmu] charging: battery alarm\n");
-			if (alarm & ALARM_OVER_TEMP)
+			if (alarm & ALARM_OVER_TEMP) {
+				SPEW("\t[ST_CHARGING] Battery over temp, error\n");
 				return ST_CHARGING_ERROR;
+			}
+			SPEW("\t[ST_CHARGING] going to idle\n");
 			return ST_IDLE;
 		}
 
@@ -250,9 +292,11 @@ static int calc_next_state(int state)
 			return ST_IDLE;
 		}
 
+		SPEW("\t[ST_CHARGING] Continuing charging\n");
 		return ST_CHARGING;
 
 	case ST_CHARGING_ERROR:
+		SPEW("%s: Current state: ST_CHARGING_ERROR.\n", __func__);
 		/*
 		 * This state indicates AC is plugged but the battery is not
 		 * charging. The conditions to exit this state:
@@ -261,32 +305,48 @@ static int calc_next_state(int state)
 		 *   - no battery alarm
 		 */
 		if (pmu_get_ac()) {
-			if (battery_status(&alarm))
+			SPEW("\t[ST_CHARGING_ERROR] AC plugged in\n");
+			if (battery_status(&alarm)) {
+				SPEW("\t[ST_CHARGING_ERROR] Cannot get battery status\n");
 				return ST_CHARGING_ERROR;
+			}
 
-			if (alarm & ALARM_OVER_TEMP)
+			if (alarm & ALARM_OVER_TEMP) {
+				SPEW("\t[ST_CHARGING_ERROR] Over temperature (alarm)\n");
 				return ST_CHARGING_ERROR;
+			}
 
-			if (battery_temperature(&batt_temp))
+			if (battery_temperature(&batt_temp)) {
+				SPEW("\t[ST_CHARGING_ERROR] Cannot read temperature\n");
 				return ST_CHARGING_ERROR;
+			}
 
-			if (!battery_charging_range(batt_temp))
+			if (!battery_charging_range(batt_temp)) {
+				SPEW("\t[ST_CHARGING_ERROR] Temperature out of range\n");
 				return ST_CHARGING_ERROR;
+			}
 
+			SPEW("\t[ST_CHARGING_ERROR] Charging.\n");
 			return ST_CHARGING;
 		}
 
+		SPEW("\t[ST_CHARGING_ERROR] AC not plugged in, going to idle.\n");
 		return ST_IDLE;
 
 
 	case ST_DISCHARGING:
+		SPEW("%s: Current state: ST_DISCHARGING.\n", __func__);
 		/* Go back to idle state when AC is plugged */
-		if (pmu_get_ac())
+		if (pmu_get_ac()) {
+			SPEW("\t[ST_DISCHARGING] AC not plugged in, going to idle.\n");
 			return ST_IDLE;
+		}
 
 		/* Prepare EC sleep after system stopped discharging */
-		if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+		if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
+			SPEW("\t[ST_DISCHARGING] Chipset off, idling.\n");
 			return ST_IDLE;
+		}
 
 		/* Check battery discharging temperature range */
 		if (battery_temperature(&batt_temp) == 0) {
@@ -306,16 +366,20 @@ static int calc_next_state(int state)
 		/* Check remaining charge % */
 		if (battery_state_of_charge(&capacity) == 0) {
 			if (capacity < 3) {
+				SPEW("\t[ST_DISCHARGING] Capacity < 3 percent, turning off system and idling.\n");
 				system_off();
 				return ST_IDLE;
 			} else if (capacity < 10) {
+				SPEW("\t[ST_DISCHARGING] Capacity < 10 percent\n");
 				notify_battery_low();
 			}
 		}
 
+		SPEW("\t[ST_DISCHARGING] Discharging\n");
 		return ST_DISCHARGING;
 	}
 
+	SPEW("%s: Nothing to do in state %d, idling...\n", __func__, state);
 	return ST_IDLE;
 }
 
