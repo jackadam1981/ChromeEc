@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//6bk\u003d",
+        "filename": "common/gaia_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 1000030
+      },
+      "writtenOn": "2012-08-28T17:36:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPn//6mc\u003d",
+      "revId": "b9fc868cf3d7baf359cf4e4911b33b1886f0cad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//6mI\u003d",
         "filename": "common/gaia_power.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2012-08-28T16:25:05Z",
       "side": 1,
       "message": "this should be part of command_reboot in common/system_common.c\n\nbut maybe using the generic path is too complex. I let you judge what is the best option.",
+      "revId": "b9fc868cf3d7baf359cf4e4911b33b1886f0cad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//6bU\u003d",
+        "filename": "common/gaia_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1000030
+      },
+      "writtenOn": "2012-08-28T17:36:21Z",
+      "side": 1,
+      "message": "Let me pick this up when I make the link changes.",
+      "parentUuid": "AAAAPn//6mI\u003d",
       "revId": "b9fc868cf3d7baf359cf4e4911b33b1886f0cad6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
