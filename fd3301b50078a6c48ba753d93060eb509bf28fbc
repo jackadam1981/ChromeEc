@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//7K8\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-08-28T00:41:36Z",
+      "side": 1,
+      "message": "I\u0027m not sure if this is the best way to do this.  I added the GPIO_PMIC_RESET pin definition to board/snow/board.h, so if this code runs on another board that doesn\u0027t have a gpio that resets the pmic it will compile, but just not do anything.",
+      "revId": "fd3301b50078a6c48ba753d93060eb509bf28fbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
