@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//6aI\u003d",
+        "filename": "common/gaia_power.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-08-28T17:53:50Z",
+      "side": 1,
+      "message": "I miss that one :\nit\u0027s not an interactive command, you need to send the output to the \"chipset\" trace channel not to the console one.\nPlease replace ccprintf by CPRINTF",
+      "revId": "1abde2607eab4f5443d1e194bc1a474388a4eb4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
