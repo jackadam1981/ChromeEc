@@ -16,6 +16,24 @@
       "revId": "5a0df1db86613231ac93083c9be278164dc5dc32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//6m4\u003d",
+        "filename": "board/snow/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-08-28T16:20:18Z",
+      "side": 1,
+      "message": "I looked through the code and (at the absolute max) these calls can take almost 1/3 of a second each, so this is a possibility.  \n\nI\u0027ll add in some code to abort and return as soon as it finds an error.  It\u0027s silly to keep trying anyway if it\u0027s all-or-nothing, so this seems like a good idea",
+      "parentUuid": "AAAAPn//6nc\u003d",
+      "revId": "5a0df1db86613231ac93083c9be278164dc5dc32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
