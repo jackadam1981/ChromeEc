@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//6uQ\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-08-28T15:05:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPn//7Lw\u003d",
+      "revId": "fd3301b50078a6c48ba753d93060eb509bf28fbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//7K8\u003d",
         "filename": "common/pmu_tps65090.c",
         "patchSetId": 1
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//6uo\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-08-28T15:05:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPn//7Ks\u003d",
+      "revId": "fd3301b50078a6c48ba753d93060eb509bf28fbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//7Lo\u003d",
         "filename": "common/pmu_tps65090.c",
         "patchSetId": 1
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//6us\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-08-28T15:05:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPn//7Lo\u003d",
+      "revId": "fd3301b50078a6c48ba753d93060eb509bf28fbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//7J8\u003d",
         "filename": "common/pmu_tps65090.c",
         "patchSetId": 1
@@ -81,6 +135,24 @@
       "writtenOn": "2012-08-28T00:50:12Z",
       "side": 1,
       "message": "You might consider returning an error here and having the caller deal with it, by calling board_hard_reset() or whatever. However it looks like the caller here is the battery driver, so it\u0027s not really any better than just calling it here.\n\nIn principle it is nice if drivers fail and return to their callers.\n\nI suggest you add a return code and error checking to board_pmu_init() also\n\nFinally, I wonder if (due to i2c flakeyness) all this setup code is currently partially failing sometimes, perhaps in a non-critical way and so unnoticed. If so your change may through this up. However from what I can tell this cal is only called in the init stage when the AP is off, so should be safe enough. Right?",
+      "revId": "fd3301b50078a6c48ba753d93060eb509bf28fbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//6sQ\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-08-28T15:05:13Z",
+      "side": 1,
+      "message": "I agree about the return codes, but I\u0027m not sure about it in this exact instance.  Like you said, it\u0027s getting called from another driver, etc.  However it\u0027s also getting called when the chipset turns on, so we\u0027d have to duplicate code there since there\u0027s no other reasonable thing to do when your pmic is all screwed up.  Since there\u0027s nothing else reasonable you\u0027d ever want to do, it seems like it should stay bundled in with it to me.\n\nIt\u0027s possible that one or more of these writes fail and go unnoticed, but it should be very unlikely the reason you stated.  Additionally, if the pmu isn\u0027t responding over i2c then, that will be detected before board_pmu_init, when it\u0027s trying to run pmu_init_registers and reset the whole board, so it shouldn\u0027t really happen, I don\u0027t think,",
+      "parentUuid": "AAAAPn//7J8\u003d",
       "revId": "fd3301b50078a6c48ba753d93060eb509bf28fbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
