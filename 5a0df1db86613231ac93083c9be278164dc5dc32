@@ -34,6 +34,58 @@
       "revId": "5a0df1db86613231ac93083c9be278164dc5dc32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//6mo\u003d",
+        "filename": "board/snow/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-28T16:23:59Z",
+      "side": 1,
+      "message": "It might be possible. Perhaps you could add a few\n\nif (failure)\n   return EC_ERROR_UNKNOWN\n\nin this function?",
+      "parentUuid": "AAAAPn//6nc\u003d",
+      "revId": "5a0df1db86613231ac93083c9be278164dc5dc32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//6mk\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-28T16:23:59Z",
+      "side": 1,
+      "message": "move this line back one line",
+      "revId": "5a0df1db86613231ac93083c9be278164dc5dc32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//6mQ\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-28T16:23:59Z",
+      "side": 1,
+      "message": "I know this is efficient to code but I suggest you check each one individually so that we don\u0027t progress unless the previous step was ok.\n\nYou could perhaps use\n\nif (!failure)\n   failure \u003d ...\nif (!failure)\n   failure \u003d ...\nif (!failure)\n   failure \u003d ...\n\nThis fixes Vincent\u0027s concern, and also mine that we are continuing to init when we know things are not going to work.",
+      "revId": "5a0df1db86613231ac93083c9be278164dc5dc32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
