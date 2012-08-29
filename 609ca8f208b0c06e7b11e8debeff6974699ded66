@@ -16,6 +16,24 @@
       "revId": "609ca8f208b0c06e7b11e8debeff6974699ded66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//6Ek\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-08-29T00:09:21Z",
+      "side": 1,
+      "message": "Hmmm, I must\u0027ve miscopied something in there. The charger IRQ should not happen unless AC is inserted/removed, so running powerd_suspend shouldn\u0027t have any effect there.\n\nIn any case, I think this was a lousy test methodology. The original idea was that the charger logic uses chipset_in_state() in several places, but that\u0027s sort of an indirect way of testing. The \"power\" EC console command is more direct, so I\u0027ve updated the testing notes using it instead.",
+      "parentUuid": "AAAAPn//6Gc\u003d",
+      "revId": "609ca8f208b0c06e7b11e8debeff6974699ded66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
