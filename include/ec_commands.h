@@ -88,6 +88,8 @@
 #define EC_MEMMAP_BATT_MODEL       0x68 /* Battery Model Number String */
 #define EC_MEMMAP_BATT_SERIAL      0x70 /* Battery Serial Number String */
 #define EC_MEMMAP_BATT_TYPE        0x78 /* Battery Type String */
+#define EC_MEMMAP_TEMP_PRECISION   0x80 /* precision measurements from temp sensors */
+#define EC_MEMMAP_RAW_TMP006       0xe0 /* raw tmp 006 value */
 
 /* Number of temp sensors at EC_MEMMAP_TEMP_SENSOR */
 #define EC_TEMP_SENSOR_ENTRIES     16

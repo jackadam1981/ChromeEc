@@ -57,7 +57,7 @@ int peci_get_cpu_temp(void)
 	if (v >= 0x8000 && v <= 0x8fff)
 		return -1;
 
-	return v >> 6;
+	return (v * 100) >> 6;
 }
 
 

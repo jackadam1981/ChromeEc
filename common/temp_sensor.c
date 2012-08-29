@@ -33,6 +33,17 @@ int temp_sensor_read(enum temp_sensor_id id)
 	if (id < 0 || id >= TEMP_SENSOR_COUNT)
 		return -1;
 	sensor = temp_sensors + id;
+	return sensor->read(sensor->idx) / 100;
+}
+
+
+int temp_sensor_read_hi_precision(enum temp_sensor_id id)
+{
+	const struct temp_sensor_t *sensor;
+
+	if (id < 0 || id >= TEMP_SENSOR_COUNT)
+		return -1;
+	sensor = temp_sensors + id;
 	return sensor->read(sensor->idx);
 }
 
@@ -77,6 +88,7 @@ static void update_mapped_memory(void)
 {
 	int i, t;
 	uint8_t *mptr = host_get_memmap(EC_MEMMAP_TEMP_SENSOR);
+	uint32_t *mptr32;
 
 	for (i = 0; i < TEMP_SENSOR_COUNT; i++, mptr++) {
 		/*
@@ -99,6 +111,20 @@ static void update_mapped_memory(void)
 			*mptr = EC_TEMP_SENSOR_ERROR;
 		else
 			*mptr = t - EC_TEMP_SENSOR_OFFSET;
+	}
+
+	mptr32 = (uint32_t *)host_get_memmap(EC_MEMMAP_TEMP_PRECISION);
+	for (i = 0; i < TEMP_SENSOR_COUNT; i++, mptr32++) {
+		if (!temp_sensor_powered(i)) {
+			*mptr32 = EC_TEMP_SENSOR_NOT_POWERED;
+			continue;
+		}
+
+		t = temp_sensor_read_hi_precision(i);
+		if (t == -1)
+			*mptr32 = EC_TEMP_SENSOR_ERROR;
+		else
+			*mptr32 = t;
 	}
 }
 
@@ -152,15 +178,19 @@ static int command_temps(int argc, char **argv)
 	int i;
 	int rv = EC_SUCCESS;
 	int t;
+	int t100;
 
 	for (i = 0; i < TEMP_SENSOR_COUNT; ++i) {
 		ccprintf("  %-20s: ", temp_sensors[i].name);
 		t = temp_sensor_read(i);
+		t100 = temp_sensor_read_hi_precision(i);
+		t100 = t100 - 27315;
 		if (t < 0) {
 			ccprintf("Error\n");
 			rv = EC_ERROR_UNKNOWN;
 		} else
-			ccprintf("%d K = %d C\n", t, t - 273);
+			ccprintf("%d K = %d C (%d.%02d C)\n", t, t - 273,
+				 t100 / 100, t100 % 100);
 	}
 
 	return rv;

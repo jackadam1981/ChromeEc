@@ -11,6 +11,7 @@
 #include "fpu.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "host_command.h"
 #include "i2c.h"
 #include "math.h"
 #include "task.h"
@@ -39,7 +40,7 @@ static int tmp006_read_die_temp(int idx)
 	int pidx = (tmp006_data[idx].tidx - 1) & 0x3;
 	if (tmp006_data[idx].fail == 1)
 		return -1;
-	return tmp006_data[idx].t[pidx] / 100;
+	return tmp006_data[idx].t[pidx];
 }
 
 /* Calculate the remote object temperature.
@@ -162,7 +163,7 @@ static int tmp006_read_object_temp(int idx)
 
 	/* TODO: Calibrate the sensitivity factor. */
 	return tmp006_calculate_object_temp(t, v,
-			tmp006_sensors[idx].sens) / 100;
+			tmp006_sensors[idx].sens);
 }
 
 static int tmp006_poll_sensor(int sensor_id)
@@ -172,7 +173,9 @@ static int tmp006_poll_sensor(int sensor_id)
 	int rv;
 	int addr = tmp006_sensors[sensor_id].addr;
 	int idx;
+	uint16_t *mptr = (uint16_t*)host_get_memmap(EC_MEMMAP_RAW_TMP006);
 
+        mptr += sensor_id * 2;
 	/* TODO: For now, all TMP006 sensors are powered by VS. Modify this
 	 *       if we have different design.
 	 */
@@ -187,6 +190,7 @@ static int tmp006_poll_sensor(int sensor_id)
 		return EC_ERROR_UNKNOWN;
 	}
 	t = ((int)(int16_t)traw * 100) / 128 + 27300;
+	*mptr++ = traw;
 
 	rv = i2c_read16(TMP006_PORT(addr), TMP006_REG(addr), 0x00, &vraw);
 	if (rv) {
@@ -194,6 +198,7 @@ static int tmp006_poll_sensor(int sensor_id)
 		return EC_ERROR_UNKNOWN;
 	}
 	v = ((int)(int16_t)vraw * 15625) / 100;
+	*mptr++ = vraw;
 
 	idx = tmp006_data[sensor_id].tidx;
 	tmp006_data[sensor_id].t[idx] = t;
