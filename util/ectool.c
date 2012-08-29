@@ -694,7 +694,7 @@ int read_mapped_temperature(int id)
 
 int cmd_temperature(int argc, char *argv[])
 {
-	int rv;
+	int rv, rv2;
 	int id;
 	char *e;
 
@@ -725,6 +725,34 @@ int cmd_temperature(int argc, char *argv[])
 		return 0;
 	}
 
+	if (strcmp(argv[1], "precision") == 0) {
+		for (id = 0;
+		     id < EC_TEMP_SENSOR_ENTRIES + EC_TEMP_SENSOR_B_ENTRIES;
+		     id++) {
+			rv = read_mapped_mem32(EC_MEMMAP_TEMP_PRECISION + 4*id);
+			switch (rv) {
+			case EC_TEMP_SENSOR_NOT_PRESENT:
+				break;
+			case EC_TEMP_SENSOR_ERROR:
+				fprintf(stderr, "Sensor %d error\n", id);
+				break;
+			case EC_TEMP_SENSOR_NOT_POWERED:
+				fprintf(stderr, "Sensor %d disabled\n", id);
+				break;
+			default:
+				printf("%d: %d.%02d C\n",
+					id, rv / 100, rv % 100);
+			}
+		}
+		for (id = 0; id < 8; id++) {
+			rv = read_mapped_mem16(EC_MEMMAP_RAW_TMP006 + 4*id);
+			rv2 = read_mapped_mem16(EC_MEMMAP_RAW_TMP006 + 4*id
+						+ 2);
+			printf("%d: traw %04x vraw %04x\n",
+				id, (uint16_t)rv, (uint16_t)rv2);
+		}
+		return 0;
+	}
 	id = strtol(argv[1], &e, 0);
 	if (e && *e) {
 		fprintf(stderr, "Bad sensor ID.\n");
