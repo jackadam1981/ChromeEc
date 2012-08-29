@@ -70,7 +70,7 @@ static int tmp006_read_die_temp(const struct tmp006_data_t *tdata,
 		return EC_ERROR_UNKNOWN;
 
 	/* Return previous die temperature */
-	*temp_ptr = tdata->t[(tdata->tidx - 1) & 0x3] / 100;
+	*temp_ptr = tdata->t[(tdata->tidx - 1) & 0x3];
 	return EC_SUCCESS;
 }
 
@@ -145,7 +145,7 @@ static int tmp006_read_object_temp(const struct tmp006_data_t *tdata,
 		tdata->t[(pidx + 1) & 3],
 		v);
 
-	*temp_ptr = tmp006_calculate_object_temp(t, v, tdata) / 100;
+	*temp_ptr = tmp006_calculate_object_temp(t, v, tdata);
 
 	return EC_SUCCESS;
 }
@@ -158,7 +158,9 @@ static int tmp006_poll_sensor(int sensor_id)
 	int rv;
 	int addr = tmp006_sensors[sensor_id].addr;
 	int idx;
+	uint16_t *mptr = (uint16_t *)host_get_memmap(EC_MEMMAP_RAW_TMP006);
 
+	mptr += sensor_id * 2;
 	if (!tmp006_has_power(sensor_id)) {
 		tdata->fail |= FAIL_POWER;
 		return EC_ERROR_UNKNOWN;
@@ -184,6 +186,7 @@ static int tmp006_poll_sensor(int sensor_id)
 
 	/* Convert temperature from raw to 1/100 K */
 	t = ((int)(int16_t)traw * 100) / 128 + 27300;
+	*mptr++ = traw;
 
 	rv = i2c_read16(TMP006_PORT(addr), TMP006_REG(addr), 0x00, &vraw);
 	if (rv) {
@@ -193,6 +196,7 @@ static int tmp006_poll_sensor(int sensor_id)
 
 	/* Convert voltage from raw to nV */
 	v = ((int)(int16_t)vraw * 15625) / 100;
+	*mptr++ = vraw;
 
 	/*
 	 * If last read failed, set the entire temperature history to the

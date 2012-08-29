@@ -125,7 +125,7 @@ const struct adc_t adc_channels[ADC_CH_COUNT] = {
 	 * 273 + (295 - 450 * ADC_VALUE / ADC_READ_MAX) / 2
 	 * = -225 * ADC_VALUE / ADC_READ_MAX + 420.5
 	 */
-	{"ECTemp", LM4_ADC_SEQ0, -225, ADC_READ_MAX, 420,
+	{"ECTemp", LM4_ADC_SEQ0, -225 * 100, ADC_READ_MAX, 420 * 100,
 	 LM4_AIN_NONE, 0x0e /* TS0 | IE0 | END0 */},
 
 	/* Charger current is mapped from 0~4000mA to 0~1.6V.
