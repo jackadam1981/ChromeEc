@@ -349,6 +349,8 @@ static int check_for_power_on_event(void)
  */
 static int power_on(void)
 {
+	hook_notify(HOOK_CHIPSET_PRE_INIT, 0);
+
 	/* Enable 5v power rail */
 	gpio_set_level(GPIO_EN_PP5000, 1);
 	/* wait to have stable power */
