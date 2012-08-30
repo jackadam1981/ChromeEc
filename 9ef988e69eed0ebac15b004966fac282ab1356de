@@ -16,6 +16,24 @@
       "revId": "9ef988e69eed0ebac15b004966fac282ab1356de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//34g\u003d",
+        "filename": "board/snow/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-08-30T21:01:59Z",
+      "side": 1,
+      "message": "Correct, we do not strictly need those. However I would like to keep these because:\n\n1) These will likely be used if we add a patch to bit bang I2C during init, e.g. \"gpio_set_level(GPIO_I2C_SCL, level)\"\n\n2) It serves as a useful reference for people wondering what GPIOs are used on this board.\n\n3) Eventually it would be nice to clean up board_i2c_post_init() and other functions that set alternate functions so they do something like \"gpio_set_alternate_function(I2C1_SCL)\".",
+      "parentUuid": "AAAAPn//4oo\u003d",
+      "revId": "9ef988e69eed0ebac15b004966fac282ab1356de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
