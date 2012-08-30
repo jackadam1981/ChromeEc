@@ -16,6 +16,74 @@
       "revId": "59474f91d10e8ce200c2d829c42915179e260654",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//31k\u003d",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-08-30T21:23:11Z",
+      "side": 1,
+      "message": "This won\u0027t persist across a sysjump or cold reset, so EC software sync or keyboard recovery will wipe it out.\n\nUse RTC-well registers (hibernate regs on LM4, RTC regs on STM32).  Add system_get_nvcontext() and system_set_nvcontext() methods, implemented in the chip-specific system.c.\n\nThen move this implementation to system_common.c...",
+      "revId": "59474f91d10e8ce200c2d829c42915179e260654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//32Q\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-08-30T21:23:11Z",
+      "side": 1,
+      "message": "Suggest a more verbose name\n\nEC_CMD_VBNVSTORAGE\n\nNeed to set EC_VER_VBNVSTORAGE\u003d1, because version 0 of command 0x17 was used by old WP commands.",
+      "revId": "59474f91d10e8ce200c2d829c42915179e260654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//32M\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-08-30T21:23:11Z",
+      "side": 1,
+      "message": "Define an enum for the subcommand (like enum ec_vboot_hash_cmd) rather than a boolean op_read.  Harder to get an enum backwards accidentally.",
+      "revId": "59474f91d10e8ce200c2d829c42915179e260654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//314\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-08-30T21:23:11Z",
+      "side": 1,
+      "message": "just call it data or block, since the struct type always includes \"vbnv\".",
+      "revId": "59474f91d10e8ce200c2d829c42915179e260654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
