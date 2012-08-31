@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//3IY\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000627
+      },
+      "writtenOn": "2012-08-31T15:39:34Z",
+      "side": 1,
+      "message": "The error was - \nerror: \u0027event\u0027 may be used uninitialized in this function [-Werror\u003dmaybe-uninitialized]\n\nAlthough this is not a true warning (\"event\" gets calculated in pmu_get_event), gcc 4.7 complains about it, let\u0027s get it fixed.",
+      "revId": "16aed2427b348ad4dac620046d3ad9476817852c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
