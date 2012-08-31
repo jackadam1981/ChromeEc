@@ -399,17 +399,25 @@ void exception_panic(void)
 {
 	/* Naked call so we can extract raw LR and IPSR */
 
-#ifdef CONFIG_PANIC_NEW_STACK
+	/*
+	 * Set a new stack pointer at the end of RAM, before the saved
+	 * exception data.
+	 */
 	asm volatile(
 		/*
 		 * This instruction will generate ldr rx, [pc, #offset]
 		 * followed by a mov sp, rx.  See below for more explanation.
+		 *
+		 * Oddly, gcc is able to add 4 to the value loaded here to
+		 * compute [pregs] below if the asm blocks are separate, but if
+		 * they are merged it uses two temporary registers and two
+		 * immediate values.
 		 */
 		"mov sp, %[pstack]\n" : :
 			[pstack] "r" (pstack_addr)
 		);
-#endif
 
+	/* Save registers and branch directly to panic handler */
 	asm volatile(
 		/*
 		 * This instruction will generate ldr rx, [pc, #offset]
