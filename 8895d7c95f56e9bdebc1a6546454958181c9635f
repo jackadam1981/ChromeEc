@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//22I\u003d",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-31T20:20:26Z",
+      "side": 1,
+      "message": "Do you think new commands (from now on) should be bracketed to make it easier to reduce code side?\n\n#define CONFIG_CMD_CRASH",
+      "revId": "8895d7c95f56e9bdebc1a6546454958181c9635f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//22M\u003d",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-31T20:20:26Z",
+      "side": 1,
+      "message": "I think panic already flushes, but ok.",
+      "revId": "8895d7c95f56e9bdebc1a6546454958181c9635f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//22E\u003d",
+        "filename": "include/panic.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-31T20:20:26Z",
+      "side": 1,
+      "message": "comment style - should probably put this comment on the previous line",
+      "revId": "8895d7c95f56e9bdebc1a6546454958181c9635f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
