@@ -19,6 +19,40 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//2yg\u003d",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-08-31T21:14:39Z",
+      "side": 1,
+      "message": "Suggest masking off the top bit of the scratchpad instead.  We already have 14 bits of reset flags, so using the top bit is likely to cause a hard-to-find bug later.",
+      "revId": "01e223d1af688d3d035af18e9fb7fa7b17fe905a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//2yU\u003d",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-08-31T21:14:39Z",
+      "side": 1,
+      "message": "...either that, or ASSERT(!(system_get_reset_flags() \u0026 0x8000)) here so that you\u0027ll know if a collision occurred.",
+      "revId": "01e223d1af688d3d035af18e9fb7fa7b17fe905a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//27s\u003d",
         "filename": "chip/stm32/system.c",
         "patchSetId": 1
