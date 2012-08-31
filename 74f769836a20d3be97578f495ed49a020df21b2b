@@ -19,6 +19,58 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//20A\u003d",
+        "filename": "chip/lm4/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-08-31T20:59:47Z",
+      "side": 1,
+      "message": "(agree with Simon)",
+      "parentUuid": "AAAAPn//23s\u003d",
+      "revId": "74f769836a20d3be97578f495ed49a020df21b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//2zc\u003d",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-08-31T20:59:47Z",
+      "side": 1,
+      "message": "Just typecast block to a uint16_t * and loop over it below.",
+      "revId": "74f769836a20d3be97578f495ed49a020df21b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//2zY\u003d",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-08-31T20:59:47Z",
+      "side": 1,
+      "message": "Here too.",
+      "revId": "74f769836a20d3be97578f495ed49a020df21b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//23g\u003d",
         "filename": "common/system_common.c",
         "patchSetId": 2
@@ -36,6 +88,41 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//20E\u003d",
+        "filename": "common/system_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-08-31T20:59:47Z",
+      "side": 1,
+      "message": "Right, no need to set response size for write.",
+      "parentUuid": "AAAAPn//23g\u003d",
+      "revId": "74f769836a20d3be97578f495ed49a020df21b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//20M\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-08-31T20:59:47Z",
+      "side": 1,
+      "message": "Nit: VBNV_CONTEXT would be more consistent with VBNV_BLOCK_SIZE below.",
+      "revId": "74f769836a20d3be97578f495ed49a020df21b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//23o\u003d",
         "filename": "include/system.h",
         "patchSetId": 2
@@ -47,6 +134,24 @@
       "writtenOn": "2012-08-31T20:08:08Z",
       "side": 1,
       "message": "Please document fully, with @return also",
+      "revId": "74f769836a20d3be97578f495ed49a020df21b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//2zs\u003d",
+        "filename": "include/system.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-08-31T20:59:47Z",
+      "side": 1,
+      "message": "...most importantly, that the block is 16 bytes long.",
+      "parentUuid": "AAAAPn//23o\u003d",
       "revId": "74f769836a20d3be97578f495ed49a020df21b2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
