@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//20c\u003d",
+        "filename": "common/system_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-08-31T20:58:13Z",
+      "side": 1,
+      "message": "so, on Snow, if you have panic data, your jump data are in the middle of the global variables.\nIs that really working properly ?",
+      "revId": "183c751494bb46570613ace2817c8d606f6cee6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
