@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//23s\u003d",
+        "filename": "chip/lm4/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-31T20:08:08Z",
+      "side": 1,
+      "message": "Maybe return EC_ERROR_UNIMPLEMENTED?\n\nand below",
+      "revId": "74f769836a20d3be97578f495ed49a020df21b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//23o\u003d",
+        "filename": "include/system.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-08-31T20:08:08Z",
+      "side": 1,
+      "message": "Please document fully, with @return also",
+      "revId": "74f769836a20d3be97578f495ed49a020df21b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
