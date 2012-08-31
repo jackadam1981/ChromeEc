@@ -25,6 +25,8 @@
 #define INT_BOTH_FLOATING	(GPIO_INPUT | GPIO_INT_BOTH)
 #define INT_BOTH_PULL_UP	(GPIO_INPUT | GPIO_PULL_UP | GPIO_INT_BOTH)
 
+#define HARD_RESET_TIMEOUT_MS 5
+
 /* GPIO interrupt handlers prototypes */
 #ifndef CONFIG_TASK_GAIAPOWER
 #define gaia_power_event NULL
@@ -303,11 +305,17 @@ void board_i2c_release(int port)
  */
 void board_hard_reset(void)
 {
+	int timeout;
+
 	/* Force a hard reset of tps Chrome */
 	gpio_set_level(GPIO_PMIC_RESET, 1);
+
 	/* Hang until the power is cut */
-	while (1)
-		;
+	for (timeout = HARD_RESET_TIMEOUT_MS; timeout > 0; timeout--)
+		udelay(1000);
+
+	/* Shouldn't get here unless the board doesn't have this capability */
+	panic_puts("Hard reset failed! (this board may not be capable)\n");
 }
 
 #ifdef CONFIG_PMU_BOARD_INIT
