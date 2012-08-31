@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//278\u003d",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2012-08-31T18:37:20Z",
+      "side": 1,
+      "message": "read -\u003e real",
+      "revId": "01e223d1af688d3d035af18e9fb7fa7b17fe905a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//27s\u003d",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2012-08-31T18:37:20Z",
+      "side": 1,
+      "message": "change to uint16_t and you don\u0027t need the type cast below.",
+      "revId": "01e223d1af688d3d035af18e9fb7fa7b17fe905a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
