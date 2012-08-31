@@ -389,14 +389,69 @@ static int i2c_init2(void)
 	task_enable_irq(STM32_IRQ_I2C2_EV);
 	task_enable_irq(STM32_IRQ_I2C2_ER);
 
-	board_i2c_post_init(I2C2);
+//	board_i2c_post_init(I2C2);
 
 	CPUTS("done\n");
 	return EC_SUCCESS;
 }
 
+static void unwedge_i2c_bus(int port)
+{
+	enum gpio_signal sda, scl;
+	int i, delay_us = 16;
+
+	ASSERT(port == I2C1 || port == I2C2);
+
+	CPRINTF("%s: starting unwedge sequence on port ", __func__);
+	if (port == I2C1) {
+		CPRINTF("I2C1\n");
+		sda = GPIO_I2C1_SDA;
+		scl = GPIO_I2C1_SCL;
+	} else if (port == I2C2) {
+		CPRINTF("I2C2\n");
+		sda = GPIO_I2C2_SDA;
+		scl = GPIO_I2C2_SCL;
+	}
+
+	/* check if a transaction is in progress */
+	/* wait for a 65KHz period (~16us) for the signal to go high */
+//	wait_in_signal(GPIO_I2C1_SCL, 1, 16);
+	gpio_set_flags(scl, GPIO_OUTPUT);
+	gpio_set_flags(sda, GPIO_OUTPUT);
+
+	for (i = 0; i < 8; i++) {
+		gpio_set_level(scl, 1);
+		gpio_set_level(sda, 1);
+		usleep(delay_us);
+
+		gpio_set_level(scl, 0);
+		gpio_set_level(sda, 0);
+		usleep(delay_us);
+	}
+
+	gpio_set_level(scl, 1);
+	gpio_set_level(sda, 1);
+	gpio_set_flags(scl, GPIO_INPUT);
+	gpio_set_flags(sda, GPIO_INPUT);
+
+}
+
+static int command_doit(int argc, char **argv)
+{
+	unwedge_i2c_bus(I2C1);
+	board_i2c_post_init(I2C1);
+	usleep(1000000);
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(doit, command_doit, "doit", NULL, NULL);
+
+#error "FIXME: left off here thinking that I should disable the i2c1 init "
+	"and the charger task to just try the bitbanging code"
 static int i2c_init1(void)
 {
+	if (board_i2c_claim(I2C1) == EC_SUCCESS)
+		unwedge_i2c_bus(I2C1);
+
 	/* enable clock */
 	STM32_RCC_APB1ENR |= 1 << 21;
 
