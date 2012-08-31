@@ -59,6 +59,8 @@
 
 #define CONFIG_CMD_PMU
 
+#define CONFIG_FORCE_CONSOLE_RESUME
+
 /* Battery */
 #define CONFIG_BATTERY_BQ20Z453
 

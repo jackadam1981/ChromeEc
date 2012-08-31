@@ -163,10 +163,6 @@ void configure_board_late(void)
 #ifdef CONFIG_AC_POWER_STATUS
 	gpio_set_flags(GPIO_AC_STATUS, GPIO_OUT_HIGH);
 #endif
-#ifdef CONFIG_ARBITRATE_I2C
-	gpio_set_flags(GPIO_AP_CLAIM, GPIO_PULL_UP);
-	gpio_set_flags(GPIO_EC_CLAIM, GPIO_OUT_HIGH);
-#endif
 }
 
 void board_interrupt_host(int active)
@@ -211,6 +207,16 @@ void board_power_led_config(enum powerled_config config)
 	}
 }
 
+static int board_pre_init_hook(void)
+{
+#ifdef CONFIG_ARBITRATE_I2C
+	gpio_set_flags(GPIO_AP_CLAIM, GPIO_PULL_UP);
+	gpio_set_flags(GPIO_EC_CLAIM, GPIO_OUT_HIGH);
+#endif
+	return 0;
+}
+DECLARE_HOOK(HOOK_CHIPSET_PRE_INIT, board_pre_init_hook, HOOK_PRIO_DEFAULT);
+
 static int board_startup_hook(void)
 {
 	gpio_set_flags(GPIO_SUSPEND_L, INT_BOTH_PULL_UP);
@@ -222,6 +228,11 @@ static int board_shutdown_hook(void)
 {
 	/* Disable pull-up on SUSPEND_L during shutdown to prevent leakage */
 	gpio_set_flags(GPIO_SUSPEND_L, INT_BOTH_FLOATING);
+
+#ifdef CONFIG_ARBITRATE_I2C
+	gpio_set_flags(GPIO_AP_CLAIM, GPIO_INPUT);
+	gpio_set_flags(GPIO_EC_CLAIM, GPIO_INPUT);
+#endif
 	return 0;
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_shutdown_hook, HOOK_PRIO_DEFAULT);
@@ -247,10 +258,8 @@ int board_i2c_claim(int port)
 		return EC_SUCCESS;
 
 	/* If AP is off, we have the bus */
-	if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
-		gpio_set_level(GPIO_EC_CLAIM, 0);
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
 		return EC_SUCCESS;
-	}
 
 	/* Start a round of trying to claim the bus */
 	start = get_time();
