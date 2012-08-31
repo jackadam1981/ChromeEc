@@ -395,6 +395,115 @@ static int i2c_init2(void)
 	return EC_SUCCESS;
 }
 
+static void unwedge_i2c_bus(int port)
+{
+	enum gpio_signal sda, scl;
+	int i, delay_us = 5;
+
+	ASSERT(port == I2C1 || port == I2C2);
+
+	CPRINTF("%s: starting unwedge sequence on port ", __func__);
+	if (port == I2C1) {
+		CPRINTF("I2C1\n");
+		sda = GPIO_I2C1_SDA;
+		scl = GPIO_I2C1_SCL;
+	} else if (port == I2C2) {
+		//uint32_t val;
+		CPRINTF("I2C2\n");
+
+		gpio_set_level(GPIO_LED_POWER_L, 1);
+		udelay(1000);
+		gpio_set_level(GPIO_LED_POWER_L, 0);
+		udelay(1000);
+		gpio_set_level(GPIO_LED_POWER_L, 1);
+		udelay(1000);
+		gpio_set_level(GPIO_LED_POWER_L, 0);
+
+
+		//val = STM32_GPIO_CRH_OFF(GPIO_B) & ~0x00000f00; /* 10 */
+		//val |= 0x00000500;
+		//STM32_GPIO_CRH_OFF(GPIO_B) = val;
+		//
+		//gpio_set_level(GPIO_I2C2_SCL, 0);
+		//udelay(1000);
+		//gpio_set_level(GPIO_I2C2_SCL, 1);
+		//udelay(1000);
+		//
+		//val = STM32_GPIO_CRH_OFF(GPIO_B) & ~0x00000f00; /* 10 */
+		//val |= 0x00000d00;
+		//STM32_GPIO_CRH_OFF(GPIO_B) = val;
+
+		//
+		//STM32_GPIO_BRR_OFF(GPIO_B) = (1 << 6);
+		//udelay(1000);
+		//STM32_GPIO_BSRR_OFF(GPIO_B) = (1 << 6);
+		//udelay(1000);
+
+
+
+		sda = GPIO_I2C2_SDA;
+		scl = GPIO_I2C2_SCL;
+	}
+
+	gpio_set_level(scl, 1);
+	gpio_set_level(sda, 1);
+
+	gpio_set_flags(scl, GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_HIGH);
+	gpio_set_flags(sda, GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_HIGH);
+
+	/* If the i2c bus was high we can try sending a stop bit. */
+	if (gpio_get_level(scl) && gpio_get_level(sda)) {
+		CPRINTF("DOUG: Init stop bit\n");
+		/*
+		 * As long as we keep scl high we can just get a stop bit
+		 * as a low to high transition of sda while scl is high.
+		 *
+		 * We need to make sda low, first, though...
+		 */
+		gpio_set_level(sda, 0);
+		usleep(delay_us);
+		gpio_set_level(sda, 1);
+		usleep(delay_us);
+	}
+
+	/* Now clock 9 times without touching data to clear out anything */
+	for (i = 0; i < 9; i++) {
+		gpio_set_level(scl, 0);
+		usleep(delay_us);
+		gpio_set_level(scl, 1);
+		usleep(delay_us);
+	}
+
+	/* One last try at a stop bit */
+	if (gpio_get_level(scl) && gpio_get_level(sda)) {
+		CPRINTF("DOUG: Final stop bit\n");
+		/*
+		 * As long as we keep scl high we can just get a stop bit
+		 * as a low to high transition of sda while scl is high.
+		 *
+		 * We need to make sda low, first, though...
+		 */
+		gpio_set_level(sda, 0);
+		usleep(delay_us);
+		gpio_set_level(sda, 1);
+		usleep(delay_us);
+	}
+
+	gpio_set_level(scl, 1);
+	gpio_set_level(sda, 1);
+	gpio_set_flags(scl, GPIO_INPUT);
+	gpio_set_flags(sda, GPIO_INPUT);
+}
+
+static int command_doit(int argc, char **argv)
+{
+	unwedge_i2c_bus(I2C2);
+	board_i2c_post_init(I2C2);
+	usleep(1000000);
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(doit, command_doit, "doit", NULL, NULL);
+
 static int i2c_init1(void)
 {
 	/* enable clock */
@@ -430,6 +539,9 @@ static int i2c_init1(void)
 static int i2c_init(void)
 {
 	int rc = 0;
+
+	if (board_i2c_claim(I2C2) == EC_SUCCESS)
+		unwedge_i2c_bus(I2C2);
 
 	/* FIXME: Add #defines to determine which channels to init */
 	rc |= i2c_init2();

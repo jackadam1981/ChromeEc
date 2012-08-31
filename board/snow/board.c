@@ -82,7 +82,7 @@ const struct gpio_info gpio_list[GPIO_COUNT] = {
 	{"CHARGER_EN",  GPIO_B, (1<<2),  GPIO_OUT_LOW, NULL},
 	{"EC_INT",      GPIO_B, (1<<9),  GPIO_HI_Z, NULL},
 	{"CODEC_INT",   GPIO_D, (1<<1),  GPIO_HI_Z, NULL},
-	{"LED_POWER_L", GPIO_B, (1<<3),  GPIO_INPUT, NULL},
+	{"LED_POWER_L", GPIO_B, (1<<3),  GPIO_OUT_LOW, NULL},
 	{"KB_OUT00",    GPIO_B, (1<<0),  GPIO_KB_OUTPUT, NULL},
 	{"KB_OUT01",    GPIO_B, (1<<8),  GPIO_KB_OUTPUT, NULL},
 	{"KB_OUT02",    GPIO_B, (1<<12), GPIO_KB_OUTPUT, NULL},
@@ -187,6 +187,8 @@ void board_keyboard_suppress_noise(void)
 void board_power_led_config(enum powerled_config config)
 {
 	uint32_t val;
+
+	return;
 
 	switch (config) {
 	case POWERLED_CONFIG_PWM:
