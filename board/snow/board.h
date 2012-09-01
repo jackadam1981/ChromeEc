@@ -57,6 +57,7 @@
 #define GPIO_EC_CLAIM	GPIO_SPI1_MISO	/* EC claims bus */
 
 #define CONFIG_CMD_PMU
+#define CONFIG_FORCE_CONSOLE_RESUME
 
 /* Battery */
 #define CONFIG_BATTERY_BQ20Z453
