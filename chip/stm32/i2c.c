@@ -1011,6 +1011,20 @@ static int command_i2c(int argc, char **argv)
 	char *e;
 	int rv = 0;
 
+	if (strcasecmp(argv[1], "loop") == 0 && argc > 2) {
+		slave_addr = strtoi(argv[2], &e, 0);
+
+		CPRINTF("looping 0x%02x\n", slave_addr);
+		while (1)
+			i2c_read8(I2C_PORT_HOST, slave_addr, 0, &value);
+	} else if (strcasecmp(argv[1], "loopw") == 0 && argc > 2) {
+		slave_addr = strtoi(argv[2], &e, 0);
+
+		CPRINTF("looping write 0x%02x\n", slave_addr);
+		while (1)
+			i2c_write8(I2C_PORT_HOST, slave_addr, 0, 0);
+	}
+
 	if (argc < 4) {
 		ccputs("Usage: i2c r/r16/w/w16 slave_addr offset [value]\n");
 		return EC_ERROR_UNKNOWN;
