@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//2WA\u003d",
+        "filename": "board/snow/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-09-03T15:35:44Z",
+      "side": 1,
+      "message": "Be careful here - I think this might be re-introducing the same bug we had earlier. If the EC claims the bus while the AP is off, then turns the AP on, the AP will not see the bus claim line and will think it can use the bus.",
+      "revId": "8a26252fce8dd70800f3aed3387e4fa5412c02d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
