@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//14w\u003d",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1000146
+      },
+      "writtenOn": "2012-09-04T21:38:18Z",
+      "side": 1,
+      "message": "Can\u0027t do that. Will have byte alignment problem, making EC crash.",
+      "parentUuid": "AAAAPn//2zc\u003d",
+      "revId": "74f769836a20d3be97578f495ed49a020df21b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//2zY\u003d",
         "filename": "chip/stm32/system.c",
         "patchSetId": 2
