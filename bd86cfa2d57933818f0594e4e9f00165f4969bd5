@@ -16,6 +16,40 @@
       "revId": "bd86cfa2d57933818f0594e4e9f00165f4969bd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//1wo\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2012-09-04T23:55:21Z",
+      "side": 1,
+      "message": "Add a comment indicating that we haven\u0027t actually seen this case\n\nAlso: you don\u0027t need the mask here.  Above code already sets rv to exactly EC_ERROR_TIMEOUT",
+      "revId": "bd86cfa2d57933818f0594e4e9f00165f4969bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//1w4\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2012-09-04T23:55:21Z",
+      "side": 1,
+      "message": "Not convinced calling the init() functions is a good idea.  Won\u0027t it re-enable interrupts?  That seems like it might be bad since you\u0027re still going to set STM32_I2C_CR1 after this.",
+      "revId": "bd86cfa2d57933818f0594e4e9f00165f4969bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
