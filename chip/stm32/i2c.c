@@ -282,10 +282,13 @@ static void i2c_process_command(void)
 
 static void i2c_event_handler(int port)
 {
-
 	/* save and clear status */
 	i2c_sr1[port] = STM32_I2C_SR1(port);
 	STM32_I2C_SR1(port) = 0;
+
+	/* Confirm that you are not in master mode */
+	if (STM32_I2C_SR2(port) & (1 << 0))
+		return;
 
 	/* transfer matched our slave address */
 	if (i2c_sr1[port] & (1 << 1)) {
@@ -650,10 +653,22 @@ static void handle_i2c_error(int port, int rv)
 	r = STM32_I2C_SR2(port);
 	/* Clear busy state */
 	t1 = get_time();
+
+	/**
+	 * If the BUSY bit is faulty, send a stop bit just to be sure.  It
+	 * seems that this can be happen very briefly while sending a 1.
+	 * We've not actually seen this happen, but we just want to be safe.
+	 */
+	if (rv == EC_ERROR_TIMEOUT)
+		master_stop(port);
+
+	/* Try to send stop bits until the bus becomes idle */
 	while (r & 2) {
 		t2 = get_time();
 		if (t2.val - t1.val > I2C_TX_TIMEOUT_MASTER) {
 			dump_i2c_reg(port);
+			/* Reset the i2c periph to get it back to slave mode */
+			STM32_I2C_CR1(port) |= (1 << 15);
 			goto cr_cleanup;
 		}
 		/* Send stop */
