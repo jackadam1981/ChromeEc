@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//0rU\u003d",
+        "filename": "common/gaia_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-09-05T22:51:02Z",
+      "side": 1,
+      "message": "why not keeping the original loop instead of this complicated do {} while ?",
+      "revId": "318e1e0e0becd4bf0e00beded2ddfabcfba7147b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
