@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//1T8\u003d",
+        "filename": "board/snow/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-09-05T17:40:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPn//138\u003d",
+      "revId": "3331cef03d4da727c7f7f4a8289ebd767539669f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//14Q\u003d",
         "filename": "common/host_command.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2012-09-04T21:47:41Z",
       "side": 1,
       "message": "Not really.  It indicates that a \u0027slow\u0027 command has sent EC_RES_IN_PROGRESS but hasn\u0027t sent a final status.\n\nFast commands can be in progress without setting this.",
+      "revId": "3331cef03d4da727c7f7f4a8289ebd767539669f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//1Tc\u003d",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-09-05T17:40:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPn//14Q\u003d",
       "revId": "3331cef03d4da727c7f7f4a8289ebd767539669f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//1SQ\u003d",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-09-05T17:40:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPn//14M\u003d",
+      "revId": "3331cef03d4da727c7f7f4a8289ebd767539669f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//14I\u003d",
         "filename": "common/host_command.c",
         "patchSetId": 1
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//1SY\u003d",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-09-05T17:40:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPn//14I\u003d",
+      "revId": "3331cef03d4da727c7f7f4a8289ebd767539669f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//14E\u003d",
         "filename": "common/host_command.c",
         "patchSetId": 1
@@ -81,6 +153,24 @@
       "writtenOn": "2012-09-04T21:47:41Z",
       "side": 1,
       "message": "else",
+      "revId": "3331cef03d4da727c7f7f4a8289ebd767539669f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//1SU\u003d",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-09-05T17:40:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPn//14E\u003d",
       "revId": "3331cef03d4da727c7f7f4a8289ebd767539669f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
