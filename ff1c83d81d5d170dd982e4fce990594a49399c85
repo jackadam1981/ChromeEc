@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//1I4\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2012-09-05T19:20:32Z",
+      "side": 1,
+      "message": "Right.  Lines are either driven low or floating high.  ...so we can only send a stop bit if someone else isn\u0027t driving the pin (AKA holding it low).  ...so I think we\u0027re on the same page?",
+      "parentUuid": "AAAAPn//1Jg\u003d",
+      "revId": "ff1c83d81d5d170dd982e4fce990594a49399c85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//1JY\u003d",
         "filename": "chip/stm32/i2c.c",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2012-09-05T19:11:20Z",
       "side": 1,
       "message": "Rather than setting the line high here I wonder if it would be better to let it float high by changing the line to an input. Still, I suppose if this works, then it is ok.",
+      "revId": "ff1c83d81d5d170dd982e4fce990594a49399c85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//1I0\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2012-09-05T19:20:32Z",
+      "side": 1,
+      "message": "Well, it\u0027s already an input.  I guess I assumed that \"gpio_set_level\" wouldn\u0027t do anything in that case.\n\n...and it doesn\u0027t appear to.  It just sets the STM32_GPIO_BSRR_OFF register, which ought to be ignored if we are still an input.\n\nMy hope was to avoid glitching the lines.  Generally when you switch from input to output you want to put a value into the set register _before_ changing direction.\n\n\nAlso note that once I turn it to an output I turn it to an \"open drain\" output.  I believe that means to let the line float high when you set its value to \"1\".",
+      "parentUuid": "AAAAPn//1JY\u003d",
       "revId": "ff1c83d81d5d170dd982e4fce990594a49399c85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//1Is\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2012-09-05T19:20:32Z",
+      "side": 1,
+      "message": "Will do that if I end up needing to respin.",
+      "parentUuid": "AAAAPn//1JU\u003d",
+      "revId": "ff1c83d81d5d170dd982e4fce990594a49399c85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//1JQ\u003d",
         "filename": "chip/stm32/i2c.c",
         "patchSetId": 4
@@ -64,6 +118,24 @@
       "writtenOn": "2012-09-05T19:11:20Z",
       "side": 1,
       "message": "Do we have any indication of success or failure here? If failure then perhaps we could call board_hard_reset() ?",
+      "revId": "ff1c83d81d5d170dd982e4fce990594a49399c85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//1Iw\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2012-09-05T19:20:32Z",
+      "side": 1,
+      "message": "We could try.  ...though generally calling a hard reset in the case that a peripheral is wedged is a bit of an overkill.  Maybe i2c is special case?\n\nI\u0027d rather rely on the fact that later i2c communications will fail and that will trigger the pmic code to reset everything.",
+      "parentUuid": "AAAAPn//1JQ\u003d",
       "revId": "ff1c83d81d5d170dd982e4fce990594a49399c85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
