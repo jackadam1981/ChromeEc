@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//1vc\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-09-05T00:42:29Z",
+      "side": 1,
+      "message": "True, moved to after the ACK.\n\nDoes anyone think we should reset the i2c peripheral here, too?  I was trying to think of what should happen in this case, and it\u0027s so messed up it\u0027s not obvious what to do.  I worry that if it just bails out, the interrupts might continue to arrive forever.\n\nOn the other hand, if this is a stray error, in the middle of otherwise good transactions, resetting might blow it, and just ignoring the random error would be better.  The real problem this error causes (dumping 0xec onto the bus out of turn) is prevented by just returning, and this approach doesn\u0027t mess with other functionally nearly as much.\n\nRight now, I\u0027m inclined to just ignore the interrupt, but both seem reasonable, so I thought I\u0027d put this in here in case one of you had a good argument for one or the other.",
+      "parentUuid": "AAAAPn//1xE\u003d",
+      "revId": "bd86cfa2d57933818f0594e4e9f00165f4969bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//1wo\u003d",
         "filename": "chip/stm32/i2c.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//1vI\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-09-05T00:42:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPn//1wo\u003d",
+      "revId": "bd86cfa2d57933818f0594e4e9f00165f4969bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//1w4\u003d",
         "filename": "chip/stm32/i2c.c",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2012-09-04T23:55:21Z",
       "side": 1,
       "message": "Not convinced calling the init() functions is a good idea.  Won\u0027t it re-enable interrupts?  That seems like it might be bad since you\u0027re still going to set STM32_I2C_CR1 after this.",
+      "revId": "bd86cfa2d57933818f0594e4e9f00165f4969bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//1u4\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-09-05T00:42:29Z",
+      "side": 1,
+      "message": "You\u0027re right, I forgot it enabled interrupts down there.  I\u0027ll just flip the one SWRST bit and leave everything else alone.",
+      "parentUuid": "AAAAPn//1w4\u003d",
       "revId": "bd86cfa2d57933818f0594e4e9f00165f4969bd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
