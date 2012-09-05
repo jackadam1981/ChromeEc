@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//1ck\u003d",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-09-05T13:52:08Z",
+      "side": 1,
+      "message": "How about putting all this in a function which returns the error, so there is only one call to shared_mem_release()?\n\nOr perhaps use goto?",
+      "revId": "3bd5817da311c17a88c11ed1ddd08ecfecc0b5f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
