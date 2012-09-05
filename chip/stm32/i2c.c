@@ -417,6 +417,16 @@ static void unwedge_i2c_bus(int port)
 		sda = GPIO_I2C1_SDA;
 		scl = GPIO_I2C1_SCL;
 	} else {
+		CPRINTF("I2C2\n");
+
+		gpio_set_level(GPIO_LED_POWER_L, 1);
+		udelay(1000);
+		gpio_set_level(GPIO_LED_POWER_L, 0);
+		udelay(1000);
+		gpio_set_level(GPIO_LED_POWER_L, 1);
+		udelay(1000);
+		gpio_set_level(GPIO_LED_POWER_L, 0);
+
 		sda = GPIO_I2C2_SDA;
 		scl = GPIO_I2C2_SCL;
 	}
@@ -439,6 +449,8 @@ static void unwedge_i2c_bus(int port)
 		udelay(I2C_BITBANG_DELAY_US);
 		gpio_set_level(sda, 1);
 		udelay(I2C_BITBANG_DELAY_US);
+	} else {
+		CPRINTF("******** DOUG: low at boot\n");
 	}
 
 	/*
