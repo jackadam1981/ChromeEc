@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//1ss\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2012-09-05T01:11:59Z",
+      "side": 1,
+      "message": "I think you also need to clear the reset bit after you set it.",
+      "revId": "ead50d0c93a946c8fb2b11ed0222a7bc646d3d3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
