@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//0vY\u003d",
+        "filename": "common/system_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-09-05T22:31:25Z",
+      "side": 1,
+      "message": "Copy it into the output buffer with strzcpy() so it truncates if the build info is longer than EC_HOST_PARAM_SIZE.  Then version.c doesn\u0027t need the dependency on ec_commands.\n\nstrzcpy(args-\u003eresponse, system_get_build_info(), EC_HOST_PARAM_SIZE);",
+      "revId": "c22fe8f25c207f4c085cd90a002a63ca1ea565aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
