@@ -778,7 +778,7 @@ static int host_command_build_info(struct host_cmd_handler_args *args)
 	const char *info = system_get_build_info();
 
 	args->response = (uint8_t *)info;
-	args->response_size = strlen(info) + 1;
+	args->response_size = EC_HOST_PARAM_SIZE;
 
 	return EC_RES_SUCCESS;
 }

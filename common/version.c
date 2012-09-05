@@ -6,6 +6,7 @@
 /* Embed firmware version number in the binary */
 
 #include <stdint.h>
+#include "ec_commands.h"
 #include "ec_version.h"
 #include "version.h"
 
@@ -16,5 +17,5 @@ const struct version_struct version_data
 	CROS_EC_VERSION_COOKIE2
 };
 
-const char build_info[] __attribute__((section(".rodata.buildinfo")))  =
-	CROS_EC_BUILD_INFO;
+const char build_info[EC_HOST_PARAM_SIZE] __attribute__
+	      ((section(".rodata.buildinfo")))  = CROS_EC_BUILD_INFO;
