@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//1c0\u003d",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-09-05T13:50:14Z",
+      "side": 1,
+      "message": "Maybe we should memset() it? This is fine too.",
+      "revId": "c6d3ac3345452b05430466f8ac25cb784228e8ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//1cw\u003d",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-09-05T13:50:14Z",
+      "side": 1,
+      "message": "You could just set args-\u003eresponse to point to pdata_ptr",
+      "revId": "c6d3ac3345452b05430466f8ac25cb784228e8ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//1cs\u003d",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-09-05T13:50:14Z",
+      "side": 1,
+      "message": "Except for this line, where I presume you want the command to return the old flag value.\n\nSo never mind :-)",
+      "revId": "c6d3ac3345452b05430466f8ac25cb784228e8ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
