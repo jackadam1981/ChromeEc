@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//1Jg\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-09-05T19:11:20Z",
+      "side": 1,
+      "message": "Generally lines are either driven low or allowed to float high. So I think you mean that someone is holding the line low",
+      "revId": "ff1c83d81d5d170dd982e4fce990594a49399c85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//1JY\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-09-05T19:11:20Z",
+      "side": 1,
+      "message": "Rather than setting the line high here I wonder if it would be better to let it float high by changing the line to an input. Still, I suppose if this works, then it is ok.",
+      "revId": "ff1c83d81d5d170dd982e4fce990594a49399c85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//1JU\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-09-05T19:11:20Z",
+      "side": 1,
+      "message": "You could perhaps create a function\n\nvoid toggle_line(int gpio)\n\nwhich toggles the line low, delays, toggles it high, then delays\n\nYou could use that function throughout",
+      "revId": "ff1c83d81d5d170dd982e4fce990594a49399c85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//1JQ\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-09-05T19:11:20Z",
+      "side": 1,
+      "message": "Do we have any indication of success or failure here? If failure then perhaps we could call board_hard_reset() ?",
+      "revId": "ff1c83d81d5d170dd982e4fce990594a49399c85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
