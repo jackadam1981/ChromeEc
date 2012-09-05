@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//1X8\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2012-09-05T16:42:03Z",
+      "side": 1,
+      "message": "NOPE!\n\nport \u003d\u003d 1 is port 2.  Yup.  Really.\n\nUse I2C1",
+      "revId": "fc3347df6461f801708b92ca646308f54bc1e730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
