@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAAPn//1bk\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2012-09-05T14:57:09Z",
+      "side": 1,
+      "message": "This is one place where logging might not hurt.",
+      "revId": "ead50d0c93a946c8fb2b11ed0222a7bc646d3d3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//1bo\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2012-09-05T14:57:09Z",
+      "side": 1,
+      "message": "Note that I think this already acts as logging here...",
+      "revId": "ead50d0c93a946c8fb2b11ed0222a7bc646d3d3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//1ss\u003d",
         "filename": "chip/stm32/i2c.c",
         "patchSetId": 2
@@ -31,6 +65,24 @@
       "side": 1,
       "message": "It actually get cleared right after the \"goto cr_cleanup\", when it resets the i2c to the default state.",
       "parentUuid": "AAAAPn//1ss\u003d",
+      "revId": "ead50d0c93a946c8fb2b11ed0222a7bc646d3d3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//1bs\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2012-09-05T14:57:09Z",
+      "side": 1,
+      "message": "Ah!  Good call.  OK, thanks.  :)",
+      "parentUuid": "AAAAPn//1cE\u003d",
       "revId": "ead50d0c93a946c8fb2b11ed0222a7bc646d3d3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
