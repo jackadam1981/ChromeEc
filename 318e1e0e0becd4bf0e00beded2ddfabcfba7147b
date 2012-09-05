@@ -16,6 +16,24 @@
       "revId": "318e1e0e0becd4bf0e00beded2ddfabcfba7147b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//0rM\u003d",
+        "filename": "common/gaia_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-09-05T22:52:35Z",
+      "side": 1,
+      "message": "I am trying to avoid\n\nwhile (value \u003d check_for_power_on_event(), !value)\n\nor is there some other construct you have in mind?",
+      "parentUuid": "AAAAPn//0rU\u003d",
+      "revId": "318e1e0e0becd4bf0e00beded2ddfabcfba7147b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
