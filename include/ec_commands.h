@@ -841,6 +841,15 @@ struct ec_params_mkbp_simulate_key {
 	uint8_t pressed;
 } __packed;
 
+/* Send (part of) a bytecode program for keystroke simulation */
+#define EC_CMD_MKBP_SEND_PROGRAM 0x63
+
+/* Clear existing bytecode program */
+#define EC_CMD_MKBP_CLEAR_PROGRAM 0x64
+
+/* Start downloaded program */
+#define EC_CMD_MKBP_START_PROGRAM 0x65
+
 /*****************************************************************************/
 /* Temperature sensor commands */
 

@@ -80,6 +80,15 @@ struct kbc_gpio {
 	int pin;
 };
 
+/* Globals for key event emulation */
+
+static uint8_t bc_memory[100];
+static uint8_t bc_running;
+static int bc_length;
+static int bc_next_delay;
+
+static void bc_run_emulation(void);
+
 #if defined(BOARD_daisy) || defined(BOARD_snow)
 static const uint32_t ports[] = { GPIO_B, GPIO_C, GPIO_D };
 #else
@@ -96,7 +105,7 @@ void board_keyboard_suppress_noise(void)
 
 #define KB_FIFO_DEPTH		16	/* FIXME: this is pretty huge */
 static uint32_t kb_fifo_start;		/* first entry */
-static uint32_t kb_fifo_end;			/* last entry */
+static uint32_t kb_fifo_end;		/* last entry */
 static uint32_t kb_fifo_entries;	/* number of existing entries */
 static uint8_t kb_fifo[KB_FIFO_DEPTH][KB_OUTPUTS];
 
@@ -406,6 +415,12 @@ void keyboard_scan_task(void)
 
 		task_wait_event(-1);
 
+		if (bc_running) {
+			bc_run_emulation();
+			bc_running = 0;
+			continue;
+		}
+
 		enter_polling_mode();
 		/* Busy polling keyboard state. */
 		while (1) {
@@ -457,6 +472,17 @@ int keyboard_scan_recovery_pressed(void)
 	EC_HOST_EVENT_MASK(EC_HOST_EVENT_KEYBOARD_RECOVERY);
 }
 
+static int bc_add_program(const uint8_t *bytecodes, int length)
+{
+	/* Copy to program memory if there is enough room */
+	if (length + bc_length <= sizeof(bc_memory)) {
+		memcpy(bc_memory + bc_length, bytecodes, length);
+		return EC_RES_SUCCESS;
+	} else {
+		return EC_RES_ERROR;
+	}
+}
+
 static int keyboard_get_scan(struct host_cmd_handler_args *args)
 {
 	kb_fifo_remove(args->response);
@@ -469,6 +495,135 @@ static int keyboard_get_scan(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_MKBP_STATE,
 		     keyboard_get_scan,
+		     EC_VER_MASK(0));
+
+static int bc_start_program(void)
+{
+	if (bc_length > 0) {
+		bc_running = 1;
+		task_wake(TASK_ID_KEYSCAN);
+		return EC_RES_SUCCESS;
+	} else {
+		return EC_RES_ERROR;
+	}
+}
+
+void send_emulated_event(void)
+{
+	if (bc_next_delay == 0)
+		bc_next_delay = 333000;
+	usleep(bc_next_delay);
+	bc_next_delay = 0;
+	if (kb_fifo_add(raw_state) == EC_SUCCESS)
+		board_interrupt_host(1);
+	else
+		CPRINTF("dropped emulated keystroke");
+}
+
+static const int bc_delays[] = {1000, 2000, 3000, 4000,
+				6000, 8000, 11000, 16000,
+				23000, 32000, 45000, 64000,
+				90000, 128000, 181000, 256000};
+
+/* Executes one instruction and advances IP.
+ *
+ * Byte codes:
+ *
+ * 0RRRCCCC - toggle state of key at row R and column C
+ *
+ * 1000XXXX - pause for f(x) milliseconds where f(x) = round(sqrt(2)**(x+1))
+ * (use the repeat codes below for longer delays)
+ *
+ * 1001SSTT - prefix: repeat the following S+1 instructions T+2 times
+ *
+ * Before running out of opcodes, leave a few for two-byte opcodes.
+ */
+
+static void bc_execute(int *pip);
+static void bc_execute(int *pip)
+{
+	uint8_t instruction;
+
+	if (*pip > bc_length) {
+		CPRINTF("instruction pointer overflow\n");
+		return;
+	}
+
+	instruction = bc_memory[*pip];
+
+	if ((instruction & 0x80) == 0) {
+		/* key toggle event */
+		int row = (instruction & 0x70) >> 4;
+		int column = instruction & 0xf;
+		uint8_t bit = 1 << row;
+		raw_state[column] ^= bit;
+		send_emulated_event();
+		(*pip)++;
+	} else {
+		switch (instruction & 0xf0) {
+		case 0x80:
+			bc_next_delay += bc_delays[(instruction & 0xf)];
+			(*pip)++;
+			break;
+		case 0x90: {
+			int n = (instruction & 0x6) >> 2;
+			int times = instruction & 0x3;
+			int i, j, oip;
+			for (i = 0; i <= times; i++) {
+				oip = *pip;
+				for (j = 0; j < n; j++)
+					bc_execute(&oip);
+			}
+			*pip = oip;
+			break;
+		}
+		default:
+			CPRINTF("unknown instruction 0x%02x\n", instruction);
+			(*pip)++;
+			break;
+		}
+	}
+}
+
+static void bc_run_emulation(void)
+{
+	int ip;
+
+	memset(raw_state, 0, sizeof(raw_state));
+	send_emulated_event();
+	usleep(500 * 1000);
+
+	for (ip = 0; ip < bc_length;)
+		bc_execute(&ip);
+}
+
+/* EC receives a keyboard emulation request from the AP.  The program is the
+ * concatenation of multiple bytecode sequences, each sent with this command.
+ */
+static int keyboard_send_program(struct host_cmd_handler_args *args)
+{
+	int rv = bc_add_program(args->params, args->params_size);
+	return rv;
+}
+DECLARE_HOST_COMMAND(EC_CMD_MKBP_SEND_PROGRAM,
+		     keyboard_send_program,
+		     EC_VER_MASK(0));
+
+static int keyboard_clear_program(struct host_cmd_handler_args *args)
+{
+	bc_length = 0;
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_MKBP_CLEAR_PROGRAM,
+		     keyboard_clear_program,
+		     EC_VER_MASK(0));
+
+static int keyboard_start_program(struct host_cmd_handler_args *args)
+{
+	return bc_start_program();
+}
+DECLARE_HOST_COMMAND(EC_CMD_MKBP_START_PROGRAM,
+		     keyboard_start_program,
 		     EC_VER_MASK(0));
 
 static int keyboard_get_info(struct host_cmd_handler_args *args)
