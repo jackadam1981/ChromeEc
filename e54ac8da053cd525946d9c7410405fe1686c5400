@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//0OQ\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1000018
+      },
+      "writtenOn": "2012-09-06T04:31:05Z",
+      "side": 1,
+      "message": "Can you dump some status to EC terminal if you detect some of these conditions?\n\n(a) The pins should initially read scl,sda \u003d (1,1), on boot (after configuring as high-level open-drain outputs.   Anything else should be logged as an anomaly.  Of the three remaining cases, (1,0) should be recoverable since it probably indicates that a device is driving 0 onto SDA and waiting for a next clock.\n\n(b) (0,0) and (0,1) are more serious, since a slave is holding the clock low.  It is possible that the slave is in the middle of a \u0027clock stretch\u0027, in which case, all we can do is out wait the slave.\n\n(c) For completeness, you can check that sda really does go low during your \u0027pseudo-stop bit\u0027.  This can detect if the i2c port is being actively driven high for some reason (shouldn\u0027t happen, but hey, we are error checking here, anyway).\n\nFor testing, you can use similar \"bit-banged I2C\" routines to clock out partial reads/writes, to the various devices that you are concerned about.  Then use this \"unwedge_i2c_bus\" function to confirm that it does indeed unwedge the bus in each case.  Should be more reproducible than relying on timing.\n\nFor all of the i2c devices that we care about, if you send a STOP when it is (a) in the middle of sending a byte and (b) is currently outputting a \u00271\u0027 bit, does it detect either (a) the loss of arbitration or (b) the STOP itself, and abort its current transaction?",
+      "revId": "e54ac8da053cd525946d9c7410405fe1686c5400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//0OM\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1000018
+      },
+      "writtenOn": "2012-09-06T04:31:05Z",
+      "side": 1,
+      "message": "Perhaps:\n s/pseudo-stop bit/start-stop sequence",
+      "revId": "e54ac8da053cd525946d9c7410405fe1686c5400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//0OU\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1000018
+      },
+      "writtenOn": "2012-09-06T04:31:05Z",
+      "side": 1,
+      "message": "If it was scl that was low, this doesn\u0027t do anything; at best this is waiting for a device, that is clock-stretching, to release scl.  Of course, since we also drive the clock low here, we won\u0027t see this until after we release SCL.\n\nInstead, I suggest if scl is low here, that we log the condition, and poll scl pin while waiting some max \u0027device clock stretching time\u0027.  And, if it is still low, then all we can do is log an error message, and limp along w/out i2c.",
+      "revId": "e54ac8da053cd525946d9c7410405fe1686c5400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//0QY\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1000018
+      },
+      "writtenOn": "2012-09-06T04:31:05Z",
+      "side": 1,
+      "message": "Technically, to deal with device clock stretching, whenever clocking data, always check that scl actually went high, and only then start the \"clock high duration timer\".",
+      "revId": "e54ac8da053cd525946d9c7410405fe1686c5400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//0Mo\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1000018
+      },
+      "writtenOn": "2012-09-06T04:31:05Z",
+      "side": 1,
+      "message": "Is this necessary?\n\nDo the slaves not detect arbitration lost / STOP bit in the middle of a byte?",
+      "revId": "e54ac8da053cd525946d9c7410405fe1686c5400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//0Mw\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1000018
+      },
+      "writtenOn": "2012-09-06T04:31:05Z",
+      "side": 1,
+      "message": "Again, I would log an error here if scl/sda are not both 1.",
+      "revId": "e54ac8da053cd525946d9c7410405fe1686c5400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//0Ng\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1000018
+      },
+      "writtenOn": "2012-09-06T04:31:05Z",
+      "side": 1,
+      "message": "These two are redundant; in all cases, both are already 1.",
+      "revId": "e54ac8da053cd525946d9c7410405fe1686c5400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//0NE\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1000018
+      },
+      "writtenOn": "2012-09-06T04:31:05Z",
+      "side": 1,
+      "message": "Quick Qs:\n\nWhat is the difference between init1 \u0026 init2?\n\nDoes the EC use two physical i2c busses?\n\nIs the EC a master and a slave on both of them, or just the one connected to the AP?\n\nIf only the AP, then only that ones needs i2c_ claim/release, right?",
+      "revId": "e54ac8da053cd525946d9c7410405fe1686c5400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
