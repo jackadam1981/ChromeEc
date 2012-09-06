@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//0iE\u003d",
+        "filename": "common/system_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-09-06T00:21:56Z",
+      "side": 1,
+      "message": "I don\u0027t think strzcpy() is going to work in this case since the the build info itself is not necessarily terminated:\n#define CROS_EC_BUILD_INFO CROS_EC_VERSION \" \" DATE \" \" BUILDER\n\nmemcpy() does the trick, though. The rest of the buffer is zeroed-out with memset so that the checksum (and wave output) makes sense. I updated the CL with under the assumption that truncation is the desired behavior if the build info is too long, but alternatively we could return EC_RES_ERROR.",
+      "parentUuid": "AAAAPn//0vY\u003d",
+      "revId": "c22fe8f25c207f4c085cd90a002a63ca1ea565aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//0rE\u003d",
         "filename": "common/version.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2012-09-05T22:55:19Z",
       "side": 1,
       "message": "Do we need this change? Is it so you can more easily find the information in the image?",
+      "revId": "c22fe8f25c207f4c085cd90a002a63ca1ea565aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//0h8\u003d",
+        "filename": "common/version.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-09-06T00:21:56Z",
+      "side": 1,
+      "message": "Nope, don\u0027t need this change (as per Randall\u0027s comment)",
+      "parentUuid": "AAAAPn//0rE\u003d",
       "revId": "c22fe8f25c207f4c085cd90a002a63ca1ea565aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
