@@ -866,6 +866,19 @@ struct ec_params_mkbp_simulate_key {
 	uint8_t pressed;
 } __packed;
 
+/* Program the EC for keyboard emulation */
+#define EC_CMD_MKBP_PROGRAM 0x63
+
+/* Keyboard emulation commands.  These are in the first byte of the payload for
+ * EC_CMD_MKBP_PROGRAM.
+ */
+#define EC_MKBP_PROGRAM_CLEAR 0
+#define EC_MKBP_PROGRAM_SEND  1
+#define EC_MKBP_PROGRAM_START 2
+
+/* Maximum length of a bytecode sequence */
+#define EC_MKBP_PROGRAM_MAX_LENGTH 100
+
 /*****************************************************************************/
 /* Temperature sensor commands */
 

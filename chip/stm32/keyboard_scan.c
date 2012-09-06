@@ -80,6 +80,15 @@ struct kbc_gpio {
 	int pin;
 };
 
+/* Globals for key event emulation */
+
+static uint8_t bc_memory[EC_MKBP_PROGRAM_MAX_LENGTH];
+static uint8_t bc_running;
+static int bc_length;
+static int bc_next_delay;
+
+static void bc_run_emulation(void);
+
 #if defined(BOARD_daisy) || defined(BOARD_snow) || defined(BOARD_spring)
 static const uint32_t ports[] = { GPIO_B, GPIO_C, GPIO_D };
 #else
@@ -96,7 +105,7 @@ void board_keyboard_suppress_noise(void)
 
 #define KB_FIFO_DEPTH		16	/* FIXME: this is pretty huge */
 static uint32_t kb_fifo_start;		/* first entry */
-static uint32_t kb_fifo_end;			/* last entry */
+static uint32_t kb_fifo_end;		/* last entry */
 static uint32_t kb_fifo_entries;	/* number of existing entries */
 static uint8_t kb_fifo[KB_FIFO_DEPTH][KB_OUTPUTS];
 
@@ -409,6 +418,12 @@ void keyboard_scan_task(void)
 
 		task_wait_event(-1);
 
+		if (bc_running) {
+			bc_run_emulation();
+			bc_running = 0;
+			continue;
+		}
+
 		enter_polling_mode();
 		/* Busy polling keyboard state. */
 		while (1) {
@@ -537,3 +552,165 @@ DECLARE_CONSOLE_COMMAND(kbpress, command_keyboard_press,
 			"[col] [row] [0 | 1]",
 			"Simulate keypress",
 			NULL);
+
+
+/* Keyboard emulation.
+ *
+ * NOTE: this raises the stack requirement for the keyboard scan thread from
+ * 256 to 512 bytes.
+ */
+
+static int bc_add_program(const uint8_t *bytecodes, int length)
+{
+	/* Copy to program memory if there is enough room */
+	if (length + bc_length <= sizeof(bc_memory)) {
+		memcpy(bc_memory + bc_length, bytecodes, length);
+		bc_length += length;
+		return EC_RES_SUCCESS;
+	} else {
+		CPRINTF("[%T bytecode overflow]\n");
+		return EC_RES_ERROR;
+	}
+}
+
+static int bc_start_program(void)
+{
+	if (bc_length > 0) {
+		bc_running = 1;
+		task_wake(TASK_ID_KEYSCAN);
+		return EC_RES_SUCCESS;
+	} else {
+		CPRINTF("[%T empty program]\n");
+		return EC_RES_ERROR;
+	}
+}
+
+void send_emulated_event(void)
+{
+	if (bc_next_delay > 0)
+		usleep(bc_next_delay);
+	bc_next_delay = 0;
+	if (kb_fifo_add(raw_state) == EC_SUCCESS)
+		board_interrupt_host(1);
+	else
+		CPRINTF("dropped emulated keystroke\n");
+}
+
+static const int bc_delays[] = {
+	/* Delays in microseconds.  These are roughly exponential, with the
+	 * first element used for stress testing.  It's not clear that we need
+	 * the large numbers.
+	 */
+	0,
+	1000,		2000,		5000,
+	10000,		20000,		50000,
+	100000,		200000,		500000,
+	1000000,	2000000,	5000000,
+	10000000,	20000000,	50000000
+};
+
+/* Executes one instruction and advances IP.  Returns 1 on success, 0 on
+ * failure.
+ *
+ * Byte codes:
+ *
+ * 0RRRCCCC - toggle state of key at row R and column C
+ *
+ * 1000XXXX - pause for f(x) milliseconds where f(x) is roughly 2^(x-1) (see
+ * bc_delays table), but f(0) = 0 for stress testing.
+ *
+ * 1001SSTT - prefix: repeat the following S+1 instructions T+2 times
+ *
+ * Before running out of opcodes, leave a few for two-byte opcodes.
+ */
+
+static int bc_execute(int *pip);
+static int bc_execute(int *pip)
+{
+	uint8_t instruction;
+
+	if (*pip >= bc_length) {
+		CPRINTF("[%T IP overflow]\n");
+		return 0;
+	}
+	CPRINTF("executing %2x at %d\n", bc_memory[*pip], *pip);
+
+	instruction = bc_memory[*pip];
+
+	if ((instruction & 0x80) == 0) {
+		/* key toggle event */
+		int row = (instruction & 0x70) >> 4;
+		int column = instruction & 0xf;
+		uint8_t bit = 1 << row;
+		raw_state[column] ^= bit;
+		send_emulated_event();
+		(*pip)++;
+		return 1;
+	} else {
+		switch (instruction & 0xf0) {
+		case 0x80:
+			/* pause event */
+			bc_next_delay += bc_delays[instruction & 0xf];
+			(*pip)++;
+			return 1;
+		case 0x90: {
+			/* repeat instruction */
+			int n = ((instruction & 0xc) >> 2) + 1;
+			int times = (instruction & 0x3) + 2;
+			int i, j, oip;
+			for (i = 0; i < times; i++) {
+				oip = *pip + 1;
+				for (j = 0; j < n; j++) {
+					if (!bc_execute(&oip))
+						return 0;
+				}
+			}
+			*pip = oip;
+			return 1;
+		}
+		default:
+			CPRINTF("[%T unknown bytecode 0x%02x]\n", instruction);
+			(*pip)++;
+			return 1;
+		}
+	}
+}
+
+static void bc_run_emulation(void)
+{
+	int ip;
+
+	memset(raw_state, 0, sizeof(raw_state));
+	send_emulated_event();
+	usleep(500 * 1000);
+
+	for (ip = 0; ip < bc_length;) {
+		if (!bc_execute(&ip))
+			break;
+	}
+}
+
+/* Through this command the AP can download bytecode sequences
+ * and execute them to emulate keyboard events.
+ */
+static int keyboard_program(struct host_cmd_handler_args *args)
+{
+	switch (((unsigned char *)args->params)[0]) {
+
+	case EC_MKBP_PROGRAM_CLEAR:
+		bc_length = 0;
+		return EC_RES_SUCCESS;
+
+	case EC_MKBP_PROGRAM_SEND:
+		return bc_add_program(args->params + 1, args->params_size - 1);
+
+	case EC_MKBP_PROGRAM_START:
+		return bc_start_program();
+	}
+
+	return EC_RES_ERROR;
+}
+DECLARE_HOST_COMMAND(EC_CMD_MKBP_PROGRAM,
+		     keyboard_program,
+		     EC_VER_MASK(0));
+

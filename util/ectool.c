@@ -86,6 +86,9 @@ const char help_str[] =
 	"      Checks for basic communication with EC\n"
 	"  kbpress\n"
 	"      Simulate key press\n"
+	"  kbprogram <program>\n"
+	"      Send keystroke sequence emulation request\n"
+	"      <program> is a hex number (e.g. 094a12)\n"
 	"  i2cread\n"
 	"      Read I2C bus\n"
 	"  i2cwrite\n"
@@ -1270,6 +1273,52 @@ int cmd_kbpress(int argc, char *argv[])
 }
 
 
+int cmd_kbprogram(int argc, char *argv[])
+{
+	uint8_t buffer[EC_MKBP_PROGRAM_MAX_LENGTH];
+	uint8_t params[sizeof(buffer) + 1];
+	int rv;
+	int i;
+
+	if (argc != 2) {
+		fprintf(stderr, "Usage: %s <program>\n", argv[0]);
+		return -1;
+	}
+	for (i = 0; i < sizeof(buffer); i++) {
+		char a = argv[1][2 * i];
+		char b;
+		if (a == '\0')
+			break;
+		b = argv[1][2 * i + 1];
+		if (b == '\0') {
+			fprintf(stderr, "odd length of hex program\n");
+			return -1;
+		}
+		if (!isxdigit(a) || !isxdigit(b)) {
+			fprintf(stderr, "non-hex character in program\n");
+			return -1;
+		}
+		buffer[i] =
+			((isdigit(a) ? a - '0' : tolower(a) - 'a' + 10) << 4) +
+			(isdigit(b) ? b - '0' : tolower(b) - 'a' + 10);
+	}
+
+	params[0] = EC_MKBP_PROGRAM_CLEAR;
+	rv = ec_command(EC_CMD_MKBP_PROGRAM, 0, params, 1, NULL, 0);
+	if (rv < 0)
+		return rv;
+
+	params[0] = EC_MKBP_PROGRAM_SEND;
+	memcpy(params + 1, buffer, i);
+	rv = ec_command(EC_CMD_MKBP_PROGRAM, 0, params, i + 1, NULL, 0);
+	if (rv < 0)
+		return rv;
+
+	params[0] = EC_MKBP_PROGRAM_START;
+	return ec_command(EC_CMD_MKBP_PROGRAM, 0, params, 1, NULL, 0);
+}
+
+
 int cmd_pstore_info(int argc, char *argv[])
 {
 	struct ec_response_pstore_info r;
@@ -1604,7 +1653,7 @@ int cmd_switches(int argc, char *argv[])
 {
 	uint8_t s = read_mapped_mem8(EC_MEMMAP_SWITCHES);
 	printf("Current switches:   0x%02x\n", s);
-	printf("Lid switch:         %s\n",
+	printf("Lid switch:	 %s\n",
 	       (s & EC_SWITCH_LID_OPEN ? "OPEN" : "CLOSED"));
 	printf("Power button:       %s\n",
 	       (s & EC_SWITCH_POWER_BUTTON_PRESSED ? "DOWN" : "UP"));
@@ -1894,25 +1943,25 @@ int cmd_battery(int argc, char *argv[])
 	rv = read_mapped_string(EC_MEMMAP_BATT_MFGR, batt_text);
 	if (rv < 0 || !is_string_printable(batt_text))
 		goto cmd_error;
-	printf("  OEM name:               %s\n", batt_text);
+	printf("  OEM name:	       %s\n", batt_text);
 
 	rv = read_mapped_string(EC_MEMMAP_BATT_MODEL, batt_text);
 	if (rv < 0 || !is_string_printable(batt_text))
 		goto cmd_error;
-	printf("  Model number:           %s\n", batt_text);
+	printf("  Model number:	   %s\n", batt_text);
 
 	rv = read_mapped_string(EC_MEMMAP_BATT_TYPE, batt_text);
 	if (rv < 0 || !is_string_printable(batt_text))
 		goto cmd_error;
-	printf("  Chemistry   :           %s\n", batt_text);
+	printf("  Chemistry   :	   %s\n", batt_text);
 
 	rv = read_mapped_string(EC_MEMMAP_BATT_SERIAL, batt_text);
-	printf("  Serial number:          %s\n", batt_text);
+	printf("  Serial number:	  %s\n", batt_text);
 
 	val = read_mapped_mem32(EC_MEMMAP_BATT_DCAP);
 	if (!is_battery_range(val))
 		goto cmd_error;
-	printf("  Design capacity:        %u mAh\n", val);
+	printf("  Design capacity:	%u mAh\n", val);
 
 	val = read_mapped_mem32(EC_MEMMAP_BATT_LFCC);
 	if (!is_battery_range(val))
@@ -1935,7 +1984,7 @@ int cmd_battery(int argc, char *argv[])
 	val = read_mapped_mem32(EC_MEMMAP_BATT_CCNT);
 	if (!is_battery_range(val))
 		goto cmd_error;
-	printf("  Cycle count             %u\n", val);
+	printf("  Cycle count	     %u\n", val);
 
 	return 0;
 cmd_error:
@@ -1988,8 +2037,8 @@ int cmd_chipinfo(int argc, char *argv[])
 static int ec_hash_help(const char *cmd)
 {
 	printf("Usage:\n");
-	printf("  %s                        - get last hash\n", cmd);
-	printf("  %s abort                  - abort hashing\n", cmd);
+	printf("  %s			- get last hash\n", cmd);
+	printf("  %s abort		  - abort hashing\n", cmd);
 	printf("  %s start [<offset> <size> [<nonce>]] - start hashing\n", cmd);
 	printf("  %s recalc [<offset> <size> [<nonce>]] - sync rehash\n", cmd);
 	printf("\n"
@@ -2239,6 +2288,7 @@ const struct command commands[] = {
 	{"gpioset", cmd_gpio_set},
 	{"hello", cmd_hello},
 	{"kbpress", cmd_kbpress},
+	{"kbprogram", cmd_kbprogram},
 	{"i2cread", cmd_i2c_read},
 	{"i2cwrite", cmd_i2c_write},
 	{"lightbar", cmd_lightbar},
