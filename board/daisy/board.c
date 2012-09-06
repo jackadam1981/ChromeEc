@@ -165,7 +165,7 @@ void configure_board(void)
 	STM32_GPIO_MODER_OFF(GPIO_B) |= (1 << (11*2)) | (1 << (10*2)) |
 					(1 << (7*2)) | (1 << (6*2));
 	STM32_GPIO_OTYPER_OFF(GPIO_B) |= (1<<11) | (1<<10) | (1<<7) | (1<<6);
-	STM32_GPIO_BSRR_OFF(GPIO_B) |= (1<<11) | (1<<10) | (1<<7) | (1<<6);
+	STM32_GPIO_BSRR_OFF(GPIO_B) = (1<<11) | (1<<10) | (1<<7) | (1<<6);
 	gpio_set_alternate_function(GPIO_B, (1<<11) |
 					(1<<10) |
 					(1<<7)  |

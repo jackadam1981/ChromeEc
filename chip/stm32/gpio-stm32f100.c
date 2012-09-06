@@ -77,7 +77,7 @@ int gpio_set_flags(enum gpio_signal signal, int flags)
 		 * input mode, see Table 16 (datasheet rm0041) */
 		if ((flags & GPIO_PULL_UP) == GPIO_PULL_UP) {
 			mask |= 0x88888888 & cnf;
-			STM32_GPIO_BSRR_OFF(g->port) |= g->mask;
+			STM32_GPIO_BSRR_OFF(g->port) = g->mask;
 			gpio_set_level(signal, 1);
 		} else if ((flags & GPIO_PULL_DOWN) == GPIO_PULL_DOWN) {
 			mask |= 0x88888888 & cnf;
