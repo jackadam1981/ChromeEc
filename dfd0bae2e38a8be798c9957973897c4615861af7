@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//zxQ\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-09-06T17:42:18Z",
+      "side": 1,
+      "message": "and suspend_l",
+      "revId": "dfd0bae2e38a8be798c9957973897c4615861af7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//zxw\u003d",
+        "filename": "board/snow/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-09-06T17:42:18Z",
+      "side": 1,
+      "message": "Can you use char to maybe save space?",
+      "revId": "dfd0bae2e38a8be798c9957973897c4615861af7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//zxY\u003d",
+        "filename": "board/snow/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-09-06T17:42:18Z",
+      "side": 1,
+      "message": "Do we need this pull-up, or does the AP drive it anyway?\n\nIf we don\u0027t need it, then we could just make this a floating input always",
+      "revId": "dfd0bae2e38a8be798c9957973897c4615861af7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//zxo\u003d",
+        "filename": "board/snow/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-09-06T17:42:18Z",
+      "side": 1,
+      "message": "Probably should be\n\nport !\u003d CONFIG_ARBITRATE_I2C\n\nand below. Not that important though.",
+      "revId": "dfd0bae2e38a8be798c9957973897c4615861af7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//zxU\u003d",
+        "filename": "board/snow/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-09-06T17:42:18Z",
+      "side": 1,
+      "message": "I don\u0027t think you want this line - your flag should only be for the correct port",
+      "revId": "dfd0bae2e38a8be798c9957973897c4615861af7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
