@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//zr0\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-09-06T18:26:47Z",
+      "side": 1,
+      "message": "er--SUSPEND_L was actually changed in another CL, but gerrit showed it as changed since it shifted a few lines (see comment in board.c).",
+      "parentUuid": "AAAAPn//zxQ\u003d",
+      "revId": "dfd0bae2e38a8be798c9957973897c4615861af7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//zxw\u003d",
         "filename": "board/snow/board.c",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2012-09-06T17:42:18Z",
       "side": 1,
       "message": "Can you use char to maybe save space?",
+      "revId": "dfd0bae2e38a8be798c9957973897c4615861af7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//zws\u003d",
+        "filename": "board/snow/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-09-06T18:26:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPn//zxw\u003d",
       "revId": "dfd0bae2e38a8be798c9957973897c4615861af7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//zwA\u003d",
+        "filename": "board/snow/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-09-06T18:26:47Z",
+      "side": 1,
+      "message": "Yes, this one needs to be a pull-up since it comes in from an open-drain buffer and we were seeing flaky behavior. It was actually set up that way in https://gerrit.chromium.org/gerrit/31627 , but gerrit decided to mark this line as changed when I moved the bus delay enums up... Sorry \u0027bout the confusion :-(",
+      "parentUuid": "AAAAPn//zxY\u003d",
+      "revId": "dfd0bae2e38a8be798c9957973897c4615861af7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//zxo\u003d",
         "filename": "board/snow/board.c",
         "patchSetId": 4
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//zr8\u003d",
+        "filename": "board/snow/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-09-06T18:26:47Z",
+      "side": 1,
+      "message": "Hmmm, I looked around at usage of CONFIG_ARBITRATE_I2C and I2C_PORT_HOST... The former aliases the latter, but it I2C_PORT_HOST is used at runtime in chip/stm32/i2c.c as well. For the sake of consistency let\u0027s keep as-is for now.",
+      "parentUuid": "AAAAPn//zxo\u003d",
+      "revId": "dfd0bae2e38a8be798c9957973897c4615861af7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//zxU\u003d",
         "filename": "board/snow/board.c",
         "patchSetId": 4
@@ -81,6 +153,24 @@
       "writtenOn": "2012-09-06T17:42:18Z",
       "side": 1,
       "message": "I don\u0027t think you want this line - your flag should only be for the correct port",
+      "revId": "dfd0bae2e38a8be798c9957973897c4615861af7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//zvw\u003d",
+        "filename": "board/snow/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-09-06T18:26:47Z",
+      "side": 1,
+      "message": "d\u0027oh, nice catch!",
+      "parentUuid": "AAAAPn//zxU\u003d",
       "revId": "dfd0bae2e38a8be798c9957973897c4615861af7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
