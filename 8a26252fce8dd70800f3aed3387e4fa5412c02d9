@@ -16,6 +16,24 @@
       "revId": "8a26252fce8dd70800f3aed3387e4fa5412c02d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//0sU\u003d",
+        "filename": "board/snow/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-09-06T00:40:57Z",
+      "side": 1,
+      "message": "Ah, thanks for pointing that out! I had a bad feeling about this part...\n\nHow about this: Since the GPIO will be disabled, let\u0027s use a variable to keep track of EC_CLAIM status. This will be checked during chipset pre-init so that we can set the GPIO accordingly before bringing up the AP.\n\nI\u0027ve uploaded a new patch set to implement this, LMK what you think.",
+      "parentUuid": "AAAAPn//2WA\u003d",
+      "revId": "8a26252fce8dd70800f3aed3387e4fa5412c02d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
