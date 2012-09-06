@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//zyU\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-09-06T17:35:18Z",
+      "side": 1,
+      "message": "How about i2c_init_port(...)",
+      "revId": "37d7b8b5212a231017354b9c530150a0cbf01365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//zyY\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-09-06T17:35:18Z",
+      "side": 1,
+      "message": "There is an implicit assumption here that I2C1 is 0 and I2C2 is 1. Maybe you should add to the ASSERT something like \u0027port \u003c 2\u0027 and make port unsigned?",
+      "revId": "37d7b8b5212a231017354b9c530150a0cbf01365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//zyI\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-09-06T17:35:18Z",
+      "side": 1,
+      "message": "Then you can keep this as i2c_init()",
+      "revId": "37d7b8b5212a231017354b9c530150a0cbf01365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
