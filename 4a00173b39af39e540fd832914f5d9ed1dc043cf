@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//yS4\u003d",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-09-07T23:08:23Z",
+      "side": 1,
+      "message": "stack[0] doesn\u0027t need to be aligned since it\u0027s the bottom of the stack",
+      "parentUuid": "AAAAPn//yTs\u003d",
+      "revId": "4a00173b39af39e540fd832914f5d9ed1dc043cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//yZw\u003d",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 2
