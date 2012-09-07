@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//yas\u003d",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-09-07T22:03:57Z",
+      "side": 1,
+      "message": "what this padding is used for ?",
+      "revId": "4a00173b39af39e540fd832914f5d9ed1dc043cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//yZw\u003d",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-09-07T22:03:57Z",
+      "side": 1,
+      "message": "do we still need that guard  ?\nsince the stack is already filled with a pattern we can just use it and remove the guard field.",
+      "revId": "4a00173b39af39e540fd832914f5d9ed1dc043cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
