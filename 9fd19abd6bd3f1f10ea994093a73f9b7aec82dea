@@ -16,6 +16,24 @@
       "revId": "9fd19abd6bd3f1f10ea994093a73f9b7aec82dea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//y14\u003d",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-09-07T14:53:28Z",
+      "side": 1,
+      "message": "Yes, but I want to optimize the code in the driver. It is faster to have a pointer to the base of the registers and access it through offsets, and I am moving the driver towards that model.\n\nIf you like I could finish the conversion and get rid of the above defintions?",
+      "parentUuid": "AAAAPn//zwI\u003d",
+      "revId": "9fd19abd6bd3f1f10ea994093a73f9b7aec82dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
