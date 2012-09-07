@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//ywQ\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-09-07T17:16:54Z",
+      "side": 1,
+      "message": "Please add commit msg",
+      "revId": "d13f06fd65424a930bcb7ac04a22f425d06a1f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//ywU\u003d",
+        "filename": "chip/lm4/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-09-07T17:16:54Z",
+      "side": 1,
+      "message": "Would it be better to return the key value (or BOOT_KEY_OTHER) and assign it here?\n\n\nboot_key_value \u003d keyboard_scan_check_boot_key();",
+      "revId": "d13f06fd65424a930bcb7ac04a22f425d06a1f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
