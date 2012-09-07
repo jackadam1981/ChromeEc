@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//yVw\u003d",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-09-07T22:47:21Z",
+      "side": 1,
+      "message": "STACK_SIZE \u003d TASK_SIZE - sizeof(task_);",
+      "revId": "9e0a92726192e14567e19f13211d5cb938bd1a20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
