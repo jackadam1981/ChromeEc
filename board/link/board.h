@@ -11,6 +11,7 @@
 /* Debug features */
 #define CONFIG_PANIC_HELP
 #define CONFIG_ASSERT_HELP
+#define CONFIG_OVERFLOW_DETECT
 
 /* Optional features */
 #define CONFIG_SMART_BATTERY
