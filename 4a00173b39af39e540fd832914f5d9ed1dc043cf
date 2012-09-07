@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//yTs\u003d",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-09-07T23:04:06Z",
+      "side": 1,
+      "message": "To make stack[0] 64-bit aligned.\n\n(This all goes away in subsequent CLs)",
+      "parentUuid": "AAAAPn//yas\u003d",
+      "revId": "4a00173b39af39e540fd832914f5d9ed1dc043cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//yZw\u003d",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2012-09-07T22:03:57Z",
       "side": 1,
       "message": "do we still need that guard  ?\nsince the stack is already filled with a pattern we can just use it and remove the guard field.",
+      "revId": "4a00173b39af39e540fd832914f5d9ed1dc043cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//yTo\u003d",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-09-07T23:04:06Z",
+      "side": 1,
+      "message": "Agreed.  I do that in a follow-up CL.",
+      "parentUuid": "AAAAPn//yZw\u003d",
       "revId": "4a00173b39af39e540fd832914f5d9ed1dc043cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
