@@ -52,6 +52,24 @@
       "revId": "9fd19abd6bd3f1f10ea994093a73f9b7aec82dea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//yKA\u003d",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-09-08T02:03:03Z",
+      "side": 1,
+      "message": "IIRC Simon played with this when writing the DMA code and found using macros actually generated larger code or had some other drawback as a consequence how the compiler was handling this. Simon -- do you remember what was up with that?",
+      "parentUuid": "AAAAPn//yzM\u003d",
+      "revId": "9fd19abd6bd3f1f10ea994093a73f9b7aec82dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
