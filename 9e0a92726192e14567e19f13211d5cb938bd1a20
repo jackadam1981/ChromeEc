@@ -16,6 +16,24 @@
       "revId": "9e0a92726192e14567e19f13211d5cb938bd1a20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//x8o\u003d",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-09-09T17:05:00Z",
+      "side": 1,
+      "message": "In this change the stacks are no longer part of the task_ union, so STACK_SIZE doesn\u0027t have this dependency.\n\nBoth STACK_SIZE and TASK_SIZE go away in the next CL.",
+      "parentUuid": "AAAAPn//yVw\u003d",
+      "revId": "9e0a92726192e14567e19f13211d5cb938bd1a20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
