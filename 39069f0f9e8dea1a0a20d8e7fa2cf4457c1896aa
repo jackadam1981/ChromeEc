@@ -16,6 +16,24 @@
       "revId": "39069f0f9e8dea1a0a20d8e7fa2cf4457c1896aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//xIQ\u003d",
+        "filename": "include/util.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-09-10T21:49:04Z",
+      "side": 1,
+      "message": "struc, actually, since it\u0027s a macro param and not the \"struct\" keyword.",
+      "parentUuid": "AAAAPn//xWo\u003d",
+      "revId": "39069f0f9e8dea1a0a20d8e7fa2cf4457c1896aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
