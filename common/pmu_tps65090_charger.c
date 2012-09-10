@@ -305,7 +305,7 @@ static int calc_next_state(int state)
 		}
 		/* Check remaining charge % */
 		if (battery_state_of_charge(&capacity) == 0) {
-			if (capacity < 3) {
+			if (capacity < 2) {
 				system_off();
 				return ST_IDLE;
 			} else if (capacity < 10) {
