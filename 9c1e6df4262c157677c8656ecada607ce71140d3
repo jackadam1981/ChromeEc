@@ -51,6 +51,24 @@
       "revId": "9c1e6df4262c157677c8656ecada607ce71140d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//xN0\u003d",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-09-10T20:56:08Z",
+      "side": 1,
+      "message": "Yes. If the moving average is 2.5%, it will be rounded to 3.\n  For values \u003e\u003d 2.5, it returns 3.\n  For values \u003c 2.5, it returns 2.\n\nI agree this is not clear in the code. But making this fix point number might be an over kill.",
+      "parentUuid": "AAAAPn//xQo\u003d",
+      "revId": "9c1e6df4262c157677c8656ecada607ce71140d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
