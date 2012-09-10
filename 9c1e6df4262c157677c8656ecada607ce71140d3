@@ -104,6 +104,24 @@
       "revId": "9c1e6df4262c157677c8656ecada607ce71140d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//xEE\u003d",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-09-10T22:32:14Z",
+      "side": 1,
+      "message": "The maximum discharging speed at full CPU+GPU+USB load is 2200mA, 3% per minute. Sampling frequency is 0.1 Hz, hence maximum diff between samples will be 0.5%.\n\nWorst case of a continuous run will be [4 3 3 2] \u003d\u003d\u003e [3 3 2 2] \u003d\u003d\u003e [3 2 2 1]. System will be shutdown at 1.5%.\n\nAnd worst case of multiple days of power off is: [100, 100, 100, 0]. It will take 30 seconds to know battery is too low.",
+      "parentUuid": "AAAAPn//xMY\u003d",
+      "revId": "9c1e6df4262c157677c8656ecada607ce71140d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
