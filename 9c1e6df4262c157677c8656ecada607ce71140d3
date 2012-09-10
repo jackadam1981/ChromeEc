@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//xOE\u003d",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000030
+      },
+      "writtenOn": "2012-09-10T20:59:59Z",
+      "side": 1,
+      "message": "Ah, I see that in the function description now. Might be more useful to have the comment here itself, but no big deal.",
+      "parentUuid": "AAAAPn//xP8\u003d",
+      "revId": "9c1e6df4262c157677c8656ecada607ce71140d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//xQo\u003d",
         "filename": "common/pmu_tps65090_charger.c",
         "patchSetId": 2
