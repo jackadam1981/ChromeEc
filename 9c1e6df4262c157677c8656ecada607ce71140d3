@@ -87,6 +87,23 @@
       "revId": "9c1e6df4262c157677c8656ecada607ce71140d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//xMY\u003d",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-09-10T21:25:40Z",
+      "side": 1,
+      "message": "How frequently is this branch taken? I am worried that this might behave in unexpected ways under different loads, depending on how fast the battery is discharging.\n\nFor example, if we are discharging and we reach 2% charge, then the moving average may look like { 4, 3, 3, 2 }, which produces an average of 3, so this will not be taken.\n\nAlso, what if the AP is off (we are not in ST_DISCHARGING) and power leaks for multiple days? Can you end up with a large moving average that will break this algorithm, such as { 10, 9, 8, 2 } ?",
+      "revId": "9c1e6df4262c157677c8656ecada607ce71140d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
