@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//xQw\u003d",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000030
+      },
+      "writtenOn": "2012-09-10T20:36:01Z",
+      "side": 1,
+      "message": "hmm, moving_average is always getting initialized to 2. Is that the intent?",
+      "revId": "9c1e6df4262c157677c8656ecada607ce71140d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//xQo\u003d",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1000030
+      },
+      "writtenOn": "2012-09-10T20:36:01Z",
+      "side": 1,
+      "message": "The check below is for 3%, though.",
+      "revId": "9c1e6df4262c157677c8656ecada607ce71140d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
