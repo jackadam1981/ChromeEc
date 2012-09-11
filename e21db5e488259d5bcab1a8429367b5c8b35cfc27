@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//w2E\u003d",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-09-11T00:43:44Z",
+      "side": 1,
+      "message": "This CL doesn\u0027t include reseting window on state change. Working on it right now.",
+      "parentUuid": "AAAAPn//w64\u003d",
+      "revId": "e21db5e488259d5bcab1a8429367b5c8b35cfc27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//w50\u003d",
         "filename": "common/pmu_tps65090_charger.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2012-09-11T00:08:07Z",
       "side": 1,
       "message": "that\u0027s more ARRAY_SIZE(rsoc) than sizeof(rsoc)\nbut it\u0027s nitpicking since we are using uint8_t",
+      "revId": "e21db5e488259d5bcab1a8429367b5c8b35cfc27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//w2A\u003d",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2012-09-11T00:43:44Z",
+      "side": 1,
+      "message": "Will be fixed in next CL.",
+      "parentUuid": "AAAAPn//w50\u003d",
       "revId": "e21db5e488259d5bcab1a8429367b5c8b35cfc27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
