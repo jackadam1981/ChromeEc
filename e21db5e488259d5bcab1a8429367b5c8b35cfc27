@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//w64\u003d",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000434
+      },
+      "writtenOn": "2012-09-11T00:08:07Z",
+      "side": 1,
+      "message": "if we do the following scenario :\n discharge -\u003e charge -\u003e discharge\nit will not behave the same during the second discharge since the second time, index won\u0027t be -1",
+      "revId": "e21db5e488259d5bcab1a8429367b5c8b35cfc27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//w50\u003d",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000434
+      },
+      "writtenOn": "2012-09-11T00:08:07Z",
+      "side": 1,
+      "message": "that\u0027s more ARRAY_SIZE(rsoc) than sizeof(rsoc)\nbut it\u0027s nitpicking since we are using uint8_t",
+      "revId": "e21db5e488259d5bcab1a8429367b5c8b35cfc27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//w5s\u003d",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000434
+      },
+      "writtenOn": "2012-09-11T00:08:07Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "e21db5e488259d5bcab1a8429367b5c8b35cfc27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//w5o\u003d",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000434
+      },
+      "writtenOn": "2012-09-11T00:08:07Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "e21db5e488259d5bcab1a8429367b5c8b35cfc27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//w5k\u003d",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000434
+      },
+      "writtenOn": "2012-09-11T00:08:07Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "e21db5e488259d5bcab1a8429367b5c8b35cfc27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
