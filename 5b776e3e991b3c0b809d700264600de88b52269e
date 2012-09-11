@@ -16,6 +16,24 @@
       "revId": "5b776e3e991b3c0b809d700264600de88b52269e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//v90\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-09-11T20:21:20Z",
+      "side": 1,
+      "message": "From the AP side, the arbitration lines float, so the EC can\u0027t use their signal to determine the state of the bus.  However, the EC doesn\u0027t let it\u0027s \"claim\" line float, so it still needs to assert it.",
+      "parentUuid": "AAAAPn//wCQ\u003d",
+      "revId": "5b776e3e991b3c0b809d700264600de88b52269e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
