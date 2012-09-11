@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//wJM\u003d",
+        "filename": "board/snow/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-09-11T18:25:13Z",
+      "side": 1,
+      "message": "Come to think of it, do we need to assert GPIO_EC_CLAIM in the suspend case? E.g.\n\nif (chipset_in_state(CHIPSET_STATE_ANY_OFF)\n        /* Arbitration GPIOs should be inputs now */\n        i2c_claimed_by_ec \u003d 1;\n        return EC_SUCCESS;\n} else if (chipset_in_state(CHIPSET_STATE_SUSPEND)) {\n        gpio_set_level(GPIO_EC_CLAIM, 0);\n        i2c_claimed_by_ec \u003d 1;\n        return EC_SUCCESS;\n}",
+      "revId": "7d78985146f52558d8160f316292a5cfdae1fa28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
