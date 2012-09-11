@@ -16,6 +16,24 @@
       "revId": "7d78985146f52558d8160f316292a5cfdae1fa28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//wGY\u003d",
+        "filename": "board/snow/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-09-11T18:50:25Z",
+      "side": 1,
+      "message": "Actually, I think you\u0027re probably right.\n\nI looks like that hook doesn\u0027t get asserted by the suspend event handler, so the line is still functional.\n\nGood catch",
+      "parentUuid": "AAAAPn//wJM\u003d",
+      "revId": "7d78985146f52558d8160f316292a5cfdae1fa28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
