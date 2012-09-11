@@ -269,7 +269,8 @@ int board_i2c_claim(int port)
 		return EC_SUCCESS;
 
 	/* If AP is off, we have the bus */
-	if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF |
+				CHIPSET_STATE_SUSPEND)) {
 		i2c_claimed_by_ec = 1;
 		return EC_SUCCESS;
 	}
