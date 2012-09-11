@@ -272,6 +272,10 @@ int board_i2c_claim(int port)
 	if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
 		i2c_claimed_by_ec = 1;
 		return EC_SUCCESS;
+	} else if (chipset_in_state(CHIPSET_STATE_SUSPEND)) {
+		gpio_set_level(GPIO_EC_CLAIM, 0);
+		i2c_claimed_by_ec = 1;
+		return EC_SUCCESS;
 	}
 
 	/* Start a round of trying to claim the bus */
@@ -315,7 +319,8 @@ void board_i2c_release(int port)
 {
 	if (port == I2C_PORT_HOST) {
 		/* Release our claim */
-		gpio_set_level(GPIO_EC_CLAIM, 1);
+		if (!chipset_in_state(CHIPSET_STATE_ANY_OFF))
+			gpio_set_level(GPIO_EC_CLAIM, 1);
 		usleep(BUS_SLEW_DELAY_US);
 		i2c_claimed_by_ec = 0;
 	}
