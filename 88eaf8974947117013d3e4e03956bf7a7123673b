@@ -16,6 +16,24 @@
       "revId": "88eaf8974947117013d3e4e03956bf7a7123673b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//ubE\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-09-12T22:04:47Z",
+      "side": 1,
+      "message": "Yes, trying to avoid API change.\n\nThe new field would need to be a tri-state field (0\u003duse offset/size, 1\u003duse RO, 2 \u003d use RW).  Which then looks just like the offset field does now.",
+      "parentUuid": "AAAAPn//ueA\u003d",
+      "revId": "88eaf8974947117013d3e4e03956bf7a7123673b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
