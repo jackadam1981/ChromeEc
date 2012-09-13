@@ -16,6 +16,40 @@
       "revId": "fc25ee7fdea64a864a95cf0d162e36a8c3f6379a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//tvw\u003d",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-09-13T15:40:40Z",
+      "side": 1,
+      "message": "why are we doing the deadline initilization in the loop ?\ninstead of just putting it here :\ndeadline.val \u003d get_time().val + SPI_CMD_RX_TIMEOUT_US;",
+      "revId": "fc25ee7fdea64a864a95cf0d162e36a8c3f6379a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//tvc\u003d",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-09-13T15:40:40Z",
+      "side": 1,
+      "message": "most of this setup doesn\u0027t seem to be board dependant, excepted the port number ?",
+      "revId": "fc25ee7fdea64a864a95cf0d162e36a8c3f6379a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
