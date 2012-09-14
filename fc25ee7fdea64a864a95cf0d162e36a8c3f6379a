@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//sD0\u003d",
+        "filename": "board/snow/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-09-14T23:03:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPn//uSA\u003d",
+      "revId": "fc25ee7fdea64a864a95cf0d162e36a8c3f6379a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//tvw\u003d",
         "filename": "chip/stm32/spi.c",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//sDw\u003d",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-09-14T23:03:03Z",
+      "side": 1,
+      "message": "Because in all likelihood we will be done as soon as we get in here. Since it takes time to call get_time(), we do it later to speed up operation.",
+      "parentUuid": "AAAAPn//tvw\u003d",
+      "revId": "fc25ee7fdea64a864a95cf0d162e36a8c3f6379a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//tvc\u003d",
         "filename": "chip/stm32/spi.c",
         "patchSetId": 3
@@ -47,6 +83,24 @@
       "writtenOn": "2012-09-13T15:40:40Z",
       "side": 1,
       "message": "most of this setup doesn\u0027t seem to be board dependant, excepted the port number ?",
+      "revId": "fc25ee7fdea64a864a95cf0d162e36a8c3f6379a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//sDo\u003d",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-09-14T23:03:03Z",
+      "side": 1,
+      "message": "OK, I\u0027ll just remove it and add a CONFIG",
+      "parentUuid": "AAAAPn//tvc\u003d",
       "revId": "fc25ee7fdea64a864a95cf0d162e36a8c3f6379a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
