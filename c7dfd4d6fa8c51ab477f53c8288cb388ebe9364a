@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//rKM\u003d",
+        "filename": "common/gaia_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-09-18T00:01:57Z",
+      "side": 1,
+      "message": "This is fine, or\n\nwhile (pmu_shutdown_retries-- \u003e 0 \u0026\u0026 pmu_shutdown())\n   ;",
+      "revId": "c7dfd4d6fa8c51ab477f53c8288cb388ebe9364a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//rKQ\u003d",
+        "filename": "common/gaia_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-09-18T00:01:57Z",
+      "side": 1,
+      "message": "Do you mean if (!pmu_shutdown()) ?",
+      "revId": "c7dfd4d6fa8c51ab477f53c8288cb388ebe9364a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//rJg\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-09-18T00:01:57Z",
+      "side": 1,
+      "message": "Could be do {} while (failure \u0026\u0026 retries_remaining--);\n\nDo you think it would be better to put the body in a function? \n\nI had imagined that we would put the retry in the i2c host function, so that we retry on all accesses (e.g. battery), not just pmu. But your change is better I think - since it is safer and more limited in scope.",
+      "revId": "c7dfd4d6fa8c51ab477f53c8288cb388ebe9364a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
