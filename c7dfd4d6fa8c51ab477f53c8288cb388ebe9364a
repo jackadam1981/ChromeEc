@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//rJE\u003d",
+        "filename": "common/gaia_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-09-18T00:10:20Z",
+      "side": 1,
+      "message": "Same thinking as the other do {} while.  I can change it if that\u0027s the standard.",
+      "parentUuid": "AAAAPn//rKM\u003d",
+      "revId": "c7dfd4d6fa8c51ab477f53c8288cb388ebe9364a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//rKQ\u003d",
         "filename": "common/gaia_power.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//rJY\u003d",
+        "filename": "common/gaia_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-09-18T00:10:20Z",
+      "side": 1,
+      "message": "Oooh, yes I very much do",
+      "parentUuid": "AAAAPn//rKQ\u003d",
+      "revId": "c7dfd4d6fa8c51ab477f53c8288cb388ebe9364a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//rJg\u003d",
         "filename": "common/pmu_tps65090.c",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2012-09-18T00:01:57Z",
       "side": 1,
       "message": "Could be do {} while (failure \u0026\u0026 retries_remaining--);\n\nDo you think it would be better to put the body in a function? \n\nI had imagined that we would put the retry in the i2c host function, so that we retry on all accesses (e.g. battery), not just pmu. But your change is better I think - since it is safer and more limited in scope.",
+      "revId": "c7dfd4d6fa8c51ab477f53c8288cb388ebe9364a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//rJI\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1001923
+      },
+      "writtenOn": "2012-09-18T00:10:20Z",
+      "side": 1,
+      "message": "I had it initially using do {} while\u0027s but I find they make the code a little harder to read since you can\u0027t tell what the loop is doing until you get to the bottom.  I agree it\u0027s a little nicer looking, but I think it\u0027s probably clearer like this.  If do {} while\u0027s are common here though I\u0027d be happy to change it, I just haven\u0027t ran into many so far.\n\nIt seems like putting it in a function won\u0027t accomplish much, it\u0027s not going to get used anywhere else and it\u0027s not sure long/complex.\n\nI didn\u0027t want to add anything to the lower-level calls for fear of side effects in other parts since we don\u0027t have a ton of time to test stuff here anymore either.  Plus the other systems *should* already handle failed i2c messages.",
+      "parentUuid": "AAAAPn//rJg\u003d",
       "revId": "c7dfd4d6fa8c51ab477f53c8288cb388ebe9364a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
