@@ -255,13 +255,20 @@ int gaia_power_init(void)
 	gpio_enable_interrupt(GPIO_SOC1V8_XPSHOLD);
 	gpio_enable_interrupt(GPIO_SUSPEND_L);
 
-	/* Leave power off only if requested by reset flags */
-	if (!(system_get_reset_flags() & RESET_FLAG_AP_OFF))
+	/* Leave power off if requested by reset flags or just jumped */
+	if (!(system_get_reset_flags() & RESET_FLAG_AP_OFF) &&
+	    !system_jumped_to_this_image()) {
+		CPRINTF("[%T auto_power_on is set due to reset_flag 0x%x]\n",
+			system_get_reset_flags());
 		auto_power_on = 1;
+	}
 
 	/* Auto power on if the recovery combination was pressed */
-	if (keyboard_scan_recovery_pressed())
+	if (keyboard_scan_recovery_pressed()) {
+		CPRINTF("[%T auto_power_on is set due to "
+			"keyboard_scan_recovery_pressed() ...]\n");
 		auto_power_on = 1;
+	}
 
 	return EC_SUCCESS;
 }
@@ -424,10 +431,10 @@ static int react_to_xpshold(unsigned int timeout_us)
 	wait_in_signal(GPIO_SOC1V8_XPSHOLD, 1, timeout_us);
 
 	if (gpio_get_level(GPIO_SOC1V8_XPSHOLD) == 0) {
-		CPUTS("XPSHOLD not seen in time\n");
+		CPUTS("[%T XPSHOLD not seen in time]\n");
 		return -1;
 	}
-	CPRINTF("%T XPSHOLD seen\n");
+	CPRINTF("[%T XPSHOLD seen]\n");
 	gpio_set_level(GPIO_PMIC_PWRON_L, 1);
 	return 0;
 }
