@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//qFo\u003d",
+        "filename": "common/gaia_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-09-19T14:57:00Z",
+      "side": 1,
+      "message": "the comment is actually very misleading, it took me 10 min to understand why this is correct.\nWhen we sysjump, we actually want to keep the power *on* not off, the issue here is :\n we have a shortcut in check_for_power_on_event and we exit there  without resetting auto_power_on in that case (when testing EN_PP3300)",
+      "revId": "2ab09a529717ee4dcebd6c7dee6dc750fbc972d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
