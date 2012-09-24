@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//mkQ\u003d",
+        "filename": "common/lightbar.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-09-24T15:36:48Z",
+      "side": 1,
+      "message": "Why\u0027s this called \"testy\"?  colors[] might be more descriptive...",
+      "revId": "d503737247878e08277844c52cd9034321f6c231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//mkU\u003d",
+        "filename": "common/lightbar.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-09-24T15:36:48Z",
+      "side": 1,
+      "message": "We could delay the S3-\u003eS5 transition in x86_power.c, but since reboots and shutdowns look the same to the EC it\u0027d slow down the reboot process.",
+      "revId": "d503737247878e08277844c52cd9034321f6c231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
