@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//l1Y\u003d",
+        "filename": "chip/stm32/adc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-09-25T15:12:25Z",
+      "side": 1,
+      "message": "SQR1 ?",
+      "revId": "3194ab09e25d5bd0b6109945fcd7be0996ac56f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//l1s\u003d",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-09-25T15:12:25Z",
+      "side": 1,
+      "message": "it\u0027s safer with need more parenthesis :\n((n)\u00263)",
+      "revId": "3194ab09e25d5bd0b6109945fcd7be0996ac56f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//l1o\u003d",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-09-25T15:12:25Z",
+      "side": 1,
+      "message": "ditto : ((n)\u00263)",
+      "revId": "3194ab09e25d5bd0b6109945fcd7be0996ac56f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
