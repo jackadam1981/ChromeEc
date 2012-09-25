@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//lUA\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-09-25T22:40:49Z",
+      "side": 1,
+      "message": "No : we probably don\u0027t want this CL in the Snow branch.\nWe only push there really safe and critical features for a possible EC/RW update.",
+      "revId": "373f24e8619a600c5f52f5211900aa5626e6ef7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//lT4\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-09-25T22:40:49Z",
+      "side": 1,
+      "message": "in the past, the \"reboot\" command has raised critical issue in flashrom flow, it would nice to test it.",
+      "revId": "373f24e8619a600c5f52f5211900aa5626e6ef7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
