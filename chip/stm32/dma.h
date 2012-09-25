@@ -72,6 +72,14 @@ enum {
 #define DMA_MINC_MASK		(1 << 7)
 #define DMA_TCIF(channel)	(1 << (1 + 4 * channel))
 
+#define DMA_MSIZE_BYTE		(0 << 10)
+#define DMA_MSIZE_HALF_WORD	(1 << 10)
+#define DMA_MSIZE_WORD		(2 << 10)
+
+#define DMA_PSIZE_BYTE		(0 << 8)
+#define DMA_PSIZE_HALF_WORD	(1 << 8)
+#define DMA_PSIZE_WORD		(2 << 8)
+
 #define DMA_POLLING_INTERVAL_US	100	/* us */
 #define DMA_TRANSFER_TIMEOUT_US	100000	/* us */
 
@@ -107,10 +115,12 @@ struct dma_channel *dma_get_channel(int channel);
  * @param count		Number of bytes to transfer
  * @param periph	Pointer to peripheral data register
  * @param memory	Pointer to memory address
+ * @param flags		DMA flags for the control register. Normally used
+ *				to select between byte/half-word/word
  * @return pointer to prepared channel
  */
 void dma_prepare_tx(struct dma_channel *chan, unsigned count,
-		    void *periph, const void *memory);
+		    void *periph, const void *memory, unsigned flags);
 
 /**
  * Start a DMA transfer to receive data to memory from a peripheral
@@ -119,9 +129,11 @@ void dma_prepare_tx(struct dma_channel *chan, unsigned count,
  * @param count		Number of bytes to transfer
  * @param periph	Pointer to peripheral data register
  * @param memory	Pointer to memory address
+ * @param flags		DMA flags for the control register. Normally used
+ *				to select between byte/half-word/word
  */
 int dma_start_rx(unsigned channel, unsigned count, void *periph,
-		 const void *memory);
+		 const void *memory, unsigned flags);
 
 /**
  * Stop a DMA transfer on a channel

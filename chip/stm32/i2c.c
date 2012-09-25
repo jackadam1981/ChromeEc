@@ -128,7 +128,8 @@ static int i2c_write_raw_slave(int port, void *buf, int len)
 	/* Configuring DMA1 channel DMAC_I2X_TX */
 	enable_ack(port);
 	chan = dma_get_channel(DMAC_I2C_TX);
-	dma_prepare_tx(chan, len, (void *)&STM32_I2C_DR(port), buf);
+	dma_prepare_tx(chan, len, (void *)&STM32_I2C_DR(port), buf,
+		       DMA_MSIZE_BYTE | DMA_PSIZE_HALF_WORD);
 
 	/* Start the DMA */
 	dma_go(chan);
@@ -238,7 +239,8 @@ static void i2c_event_handler(int port)
 		/* If it's a receiver slave */
 		if (!(STM32_I2C_SR2(port) & (1 << 2))) {
 			dma_start_rx(DMAC_I2C_RX, sizeof(host_buffer),
-				(void *)&STM32_I2C_DR(port), host_buffer);
+				(void *)&STM32_I2C_DR(port), host_buffer,
+				DMA_MSIZE_BYTE | DMA_PSIZE_HALF_WORD);
 
 			STM32_I2C_CR2(port) |= (1 << 11);
 			rx_pending = 1;
@@ -720,7 +722,8 @@ static int i2c_master_transmit(int port, int slave_addr, uint8_t *data,
 
 	/* Configuring DMA1 channel DMAC_I2X_TX */
 	chan = dma_get_channel(DMAC_I2C_TX);
-	dma_prepare_tx(chan, size, (void *)&STM32_I2C_DR(port), data);
+	dma_prepare_tx(chan, size, (void *)&STM32_I2C_DR(port), data,
+		       DMA_MSIZE_BYTE | DMA_PSIZE_HALF_WORD);
 	dma_enable_tc_interrupt(DMAC_I2C_TX);
 
 	/* Start the DMA */
@@ -769,7 +772,7 @@ static int i2c_master_receive(int port, int slave_addr, uint8_t *data,
 	if (size > 1) {
 		enable_ack(port);
 		dma_start_rx(DMAC_I2C_RX, size, (void *)&STM32_I2C_DR(port),
-			data);
+			data, DMA_MSIZE_BYTE | DMA_PSIZE_HALF_WORD);
 
 		dma_enable_tc_interrupt(DMAC_I2C_RX);
 
