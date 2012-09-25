@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//mD8\u003d",
+        "filename": "board/spring/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2012-09-25T07:11:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPn//mg8\u003d",
+      "revId": "e51d979e1d9542c4b460cae854ee105a33056842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//mgo\u003d",
         "filename": "board/spring/board.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2012-09-24T17:24:57Z",
       "side": 1,
       "message": "we also want ADCs on USB_DP_SNS and USB_DN_SNS\non 2 and 4",
+      "revId": "e51d979e1d9542c4b460cae854ee105a33056842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//l9Q\u003d",
+        "filename": "board/spring/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2012-09-25T07:11:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPn//mgo\u003d",
       "revId": "e51d979e1d9542c4b460cae854ee105a33056842",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//l9M\u003d",
+        "filename": "chip/stm32/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2012-09-25T07:11:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPn//mgQ\u003d",
+      "revId": "e51d979e1d9542c4b460cae854ee105a33056842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//mfI\u003d",
         "filename": "chip/stm32/adc.c",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2012-09-24T17:24:57Z",
       "side": 1,
       "message": "I think Tconv is 1.75us.\nAs per my remark below, ADCCLK is probably 8Mhz.\nTconv \u003d (1.5+12.5) x Tadc \u003d 14/fADC \u003d 14 / 8000000\n      \u003d 1.75us",
+      "revId": "e51d979e1d9542c4b460cae854ee105a33056842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//mEM\u003d",
+        "filename": "chip/stm32/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2012-09-25T07:11:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPn//mfI\u003d",
       "revId": "e51d979e1d9542c4b460cae854ee105a33056842",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//mEI\u003d",
+        "filename": "chip/stm32/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2012-09-25T07:11:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPn//mfA\u003d",
+      "revId": "e51d979e1d9542c4b460cae854ee105a33056842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//mf4\u003d",
         "filename": "chip/stm32/adc.c",
         "patchSetId": 1
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//mEQ\u003d",
+        "filename": "chip/stm32/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2012-09-25T07:11:13Z",
+      "side": 1,
+      "message": "You\u0027re right. I assumed prescaler\u003d00 means /1, which should be /2. Thanks!",
+      "parentUuid": "AAAAPn//mf4\u003d",
+      "revId": "e51d979e1d9542c4b460cae854ee105a33056842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//mgU\u003d",
         "filename": "chip/stm32/registers.h",
         "patchSetId": 1
@@ -115,6 +223,24 @@
       "writtenOn": "2012-09-24T17:24:57Z",
       "side": 1,
       "message": "I think it would be better to call them STM32_ADC_ (without the 1)\nthe ADC1 in the base address just mean it\u0027s the first ADC on a total of 1.",
+      "revId": "e51d979e1d9542c4b460cae854ee105a33056842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//mEA\u003d",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2012-09-25T07:11:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPn//mgU\u003d",
       "revId": "e51d979e1d9542c4b460cae854ee105a33056842",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
