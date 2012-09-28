@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQH///aE\u003d",
+        "filename": "util/temp_metrics.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2012-09-28T17:37:23Z",
+      "side": 1,
+      "message": "error checking.  Looks like sensors return this on error,\n\n  Reading temperature...Error\n\nwhich will make return -273",
+      "revId": "f19207b980e24bb539f006d0053103c2494296b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH///Zg\u003d",
+        "filename": "util/temp_metrics.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2012-09-28T17:37:23Z",
+      "side": 1,
+      "message": "Error checking?  If all temp sensors fail to read this value will be 0.",
+      "revId": "f19207b980e24bb539f006d0053103c2494296b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH///Z0\u003d",
+        "filename": "util/temp_metrics.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2012-09-28T17:37:23Z",
+      "side": 1,
+      "message": "nit, define the integers below",
+      "revId": "f19207b980e24bb539f006d0053103c2494296b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH///Y4\u003d",
+        "filename": "util/temp_metrics.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2012-09-28T17:37:23Z",
+      "side": 1,
+      "message": "Nit, consider including old -\u003e new\n\n    log_message \"Setting fan RPM $last_rpm -\u003e $rpm\"",
+      "revId": "f19207b980e24bb539f006d0053103c2494296b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
