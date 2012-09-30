@@ -105,6 +105,31 @@ static struct ec_mkbp_config config = {
 	.fifo_max_depth = KB_FIFO_DEPTH,
 };
 
+#ifdef CONFIG_KEYSCAN_SEQ
+struct keyscan_item {
+	timestamp_t time;	/* timestamp to present this item */
+	uint16_t beat;		/* beat number to present this item */
+	uint8_t done;		/* 1 if we managed to present this */
+	uint8_t scan[KB_OUTPUTS];
+};
+
+enum {
+	/* Maximum number of scans we can quue up */
+	KEYSCAN_MAX_LENGTH		= 25,
+
+	/* Delay after 'start' request before we start emitting scans */
+	KEYSCAN_SEQ_START_DELAY_US	= 10000,
+};
+
+static uint8_t keyscan_seq_count;
+static int8_t keyscan_seq_upto = -1;
+static struct keyscan_item keyscan_items[KEYSCAN_MAX_LENGTH];
+struct keyscan_item *keyscan_seq_cur;
+#else
+#define keyscan_seq_upto	(-1)
+#define keyscan_seq_get_next()	NULL
+#endif
+
 /* clear keyboard state variables */
 void keyboard_clear_state(void)
 {
@@ -244,6 +269,52 @@ static int check_warm_reboot_keys(void)
 	return 0;
 }
 
+#ifdef CONFIG_KEYSCAN_SEQ
+/**
+ * Get the current item in the keyscan sequence
+ *
+ * This looks at the current time, and returns the correct key scan for that
+ * time.
+ *
+ * @return pointer to keyscan item, or NULL if none
+ */
+static const struct keyscan_item *keyscan_seq_get(void)
+{
+	struct keyscan_item *ksi;
+
+	if (keyscan_seq_upto == -1)
+		return NULL;
+
+	ksi = &keyscan_items[keyscan_seq_upto];
+	while (keyscan_seq_upto < keyscan_seq_count) {
+		/*
+		 * If we haven't reached the time for the next one, return
+		 * this one.
+		 */
+// 		ccprintf("%T: test upto=%d, now=%u, ksi->time=%u\n",
+// 			 keyscan_seq_upto, get_time().le.lo,
+// 			 ksi->time.le.lo);
+		if (!timestamp_expired(ksi->time, NULL)) {
+// 			ccprintf("%T: keyscan_seq upto=%u\n",
+// 				 keyscan_seq_upto);
+			/* Yippee, we get to present this one! */
+			if (keyscan_seq_cur)
+				keyscan_seq_cur->done = 1;
+			return keyscan_seq_cur;
+		}
+
+		keyscan_seq_cur = ksi;
+		keyscan_seq_upto++;
+		ksi++;
+	}
+
+	ccprintf("%T: keyscan_seq done, upto=%d\n", keyscan_seq_upto);
+	keyscan_seq_upto = -1;
+	return NULL;
+}
+
+#endif /* CONFIG_KEYSCAN_SEQ */
+
 /* Returns 1 if any key is still pressed. 0 if no key is pressed. */
 static int check_keys_changed(void)
 {
@@ -251,6 +322,7 @@ static int check_keys_changed(void)
 	uint8_t r;
 	int change = 0;
 	int num_press = 0;
+	const struct keyscan_item *item;
 
 	for (c = 0; c < KB_OUTPUTS; c++) {
 		uint16_t tmp;
@@ -283,8 +355,13 @@ static int check_keys_changed(void)
 		if (tmp & (1 << 2))
 			r |= 1 << 7;
 
+		/* Use simulated keyscan sequence instead if active */
+		item = keyscan_seq_get();
+
 		/* Invert it so 0=not pressed, 1=pressed */
 		r ^= 0xff;
+		if (item)
+			r = item->scan[c];
 
 #ifdef OR_WITH_CURRENT_STATE_FOR_TESTING
 		/* KLUDGE - or current state in, so we can make sure
@@ -396,7 +473,8 @@ static void scan_keyboard(void)
 	mutex_unlock(&scanning_enabled);
 
 	/* Wait until we get an interrupt */
-	task_wait_event(-1);
+	if (keyscan_seq_upto == -1)
+		task_wait_event(-1);
 
 	enter_polling_mode();
 
@@ -555,6 +633,102 @@ DECLARE_CONSOLE_COMMAND(kbpress, command_keyboard_press,
 			"[col] [row] [0 | 1]",
 			"Simulate keypress",
 			NULL);
+
+#ifdef CONFIG_KEYSCAN_SEQ
+static void keyscan_seq_start(int beat_us)
+{
+	timestamp_t start;
+	int i;
+
+	start = get_time();
+	start.val += KEYSCAN_SEQ_START_DELAY_US;
+// 	ccprintf("seq_start %u\n", start.le.lo);
+	for (i = 0; i < keyscan_seq_count; i++) {
+		struct keyscan_item *ksi = &keyscan_items[i];
+
+		ksi->time = start;
+		ksi->time.val += ksi->beat * beat_us;
+// 		ccprintf("%d: %d, %u\n", i, ksi->beat, ksi->time.le.lo);
+	}
+
+	keyscan_seq_upto = 0;
+	keyscan_seq_cur = NULL;
+	task_wake(TASK_ID_KEYSCAN);
+}
+
+static int keyscan_seq_collect(struct ec_result_keyscan_seq_ctrl *resp)
+{
+	struct keyscan_item *ksi;
+	int i;
+
+	resp->num_items = keyscan_seq_count;
+
+	for (i = 0, ksi = keyscan_items; i < keyscan_seq_count; i++, ksi++)
+		resp->done[i] = ksi->done;
+
+	return sizeof(*resp) + keyscan_seq_count;
+}
+
+static int keyscan_seq_ctrl(struct host_cmd_handler_args *args)
+{
+	struct ec_params_keyscan_seq_ctrl req;
+
+	/* For now we must do our own alignment */
+	memcpy(&req, args->params, sizeof(req));
+// 	ccprintf("cmd=%d, beat=%u\n", req.cmd, req.beat_us);
+
+	switch (req.cmd) {
+	case EC_KEYSCAN_SEQ_CLEAR:
+		keyscan_seq_count = 0;
+		break;
+	case EC_KEYSCAN_SEQ_START:
+		keyscan_seq_start(req.beat_us);
+		break;
+	case EC_KEYSCAN_SEQ_COLLECT:
+		args->response_size = keyscan_seq_collect(
+			(struct ec_result_keyscan_seq_ctrl *)args->response);
+		break;
+	default:
+		return EC_RES_INVALID_COMMAND;
+	}
+
+	return EC_RES_SUCCESS;
+}
+
+DECLARE_HOST_COMMAND(EC_CMD_KEYSCAN_SEQ_CTRL,
+		     keyscan_seq_ctrl,
+		     EC_VER_MASK(0));
+
+static int keyscan_seq_add(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_keyscan_seq_add *req = args->params;
+	int i;
+
+// 	ccprintf("num_items=%d\n", req->num_items);
+	for (i = 0; i < req->num_items; i++) {
+		const struct ec_params_keyscan_seq_item *item = &req->item[i];
+		struct keyscan_item *ksi = &keyscan_items[keyscan_seq_count];
+		uint8_t *beatp;
+
+		if (keyscan_seq_count == KEYSCAN_MAX_LENGTH)
+			return EC_RES_OVERFLOW;
+
+		beatp = (uint8_t *)&item->beat;
+		ksi->beat = *beatp + (beatp[1] << 8);
+		ksi->done = 0;
+		ksi->time.val = 0;
+		memcpy(ksi->scan, item->scan, sizeof(item->scan));
+		keyscan_seq_count++;
+	}
+// 	ccprintf("keyscan_seq_count=%d\n", keyscan_seq_count);
+
+	return 0;
+}
+
+DECLARE_HOST_COMMAND(EC_CMD_KEYSCAN_SEQ_ADD,
+		     keyscan_seq_add,
+		     EC_VER_MASK(0));
+#endif /* CONFIG_KEYSCAN_SEQ */
 
 /**
  * Copy keyscan configuration from one place to another according to flags
