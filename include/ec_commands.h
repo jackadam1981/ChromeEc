@@ -189,6 +189,7 @@ enum ec_status {
 	EC_RES_IN_PROGRESS = 8,		/* Accepted, command in progress */
 	EC_RES_UNAVAILABLE = 9,		/* No response available */
 	EC_RES_TIMEOUT = 10,		/* We got a timeout */
+	EC_RES_OVERFLOW = 11,		/* Table / data overflow */
 };
 
 /*
@@ -882,6 +883,32 @@ struct ec_params_mkbp_simulate_key {
 
 /* Maximum length of a bytecode sequence */
 #define EC_MKBP_PROGRAM_MAX_LENGTH 100
+
+/* Program the EC for key scan emulation sequence */
+#define EC_CMD_KEYSCAN_SEQ_ADD 0x64
+
+struct ec_params_keyscan_seq_item {
+	uint8_t beat;
+	uint8_t scan[13];
+} __packed;
+
+struct ec_params_keyscan_seq_add {
+	uint8_t num_items;
+	struct ec_params_keyscan_seq_item item[0];
+} __packed;
+
+/* Run the key scan emulation */
+#define EC_CMD_KEYSCAN_SEQ_CTRL 0x65
+
+enum ec_keyscan_seq_cmd {
+	EC_CMD_KEYSCAN_SEQ_CLEAR = 0,
+	EC_CMD_KEYSCAN_SEQ_START = 1,
+};
+
+struct ec_params_keyscan_seq_ctrl {
+	uint32_t beat_us;	/* Beat length in microseconds */
+	uint8_t cmd;	/* Command to send (enum ec_keyscan_seq_cmd) */
+};
 
 /*****************************************************************************/
 /* Temperature sensor commands */
