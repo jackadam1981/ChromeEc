@@ -189,6 +189,7 @@ enum ec_status {
 	EC_RES_IN_PROGRESS = 8,		/* Accepted, command in progress */
 	EC_RES_UNAVAILABLE = 9,		/* No response available */
 	EC_RES_TIMEOUT = 10,		/* We got a timeout */
+	EC_RES_OVERFLOW = 11,		/* Table / data overflow */
 };
 
 /*
@@ -878,6 +879,75 @@ struct ec_params_mkbp_simulate_key {
 
 /* Maximum length of a bytecode sequence */
 #define EC_MKBP_PROGRAM_MAX_LENGTH 100
+
+/* Program the EC for key scan emulation sequence (fold into 0x65?) */
+#define EC_CMD_KEYSCAN_SEQ_ADD 0x64
+
+struct ec_params_keyscan_seq_item {
+	uint16_t beat;
+	uint8_t scan[13];
+} __packed;
+
+struct ec_params_keyscan_seq_add {
+	uint8_t num_items;
+	struct ec_params_keyscan_seq_item item[0];
+} __packed;
+
+/* Run the key scan emulation */
+#define EC_CMD_KEYSCAN_SEQ_CTRL 0x65
+
+enum ec_keyscan_seq_cmd {
+	EC_KEYSCAN_SEQ_CLEAR = 0,
+	EC_KEYSCAN_SEQ_START = 1,
+	EC_KEYSCAN_SEQ_COLLECT = 2,
+};
+
+struct ec_params_keyscan_seq_ctrl {
+	uint32_t beat_us;	/* Beat length in microseconds */
+	uint8_t cmd;	/* Command to send (enum ec_keyscan_seq_cmd) */
+} __packed;
+
+/* Optional reponse (only used for collect) */
+struct ec_result_keyscan_seq_ctrl {
+	uint8_t num_items;
+	uint8_t done[0];
+} __packed;
+
+/* Configure keyboard scanning */
+#define EC_CMD_MKBP_CONFIG 0x66
+
+/* flags */
+enum mkbp_config_flags {
+	EC_MKBP_FLAGS_ENABLE = 1,	/* Enable keyboard scanning */
+};
+
+/* Configuration for our key scanning loop */
+struct ec_mkbp_config {
+	/* revert to interrupt mode after no activity for this long */
+	uint32_t poll_timeout_us;
+	uint16_t scan_period_us;	/* period between scans */
+	uint16_t pre_scan_us;		/* time between irq and first scan */
+	uint16_t post_scan_relax_us;	/* minimum post-scan relax time */
+	/* delay between setting up column and waiting for it to settle */
+	uint16_t column_settle_us;
+	uint16_t debounce_down_us;	/* time for debounce on key down */
+	uint16_t debounce_up_us;	/* time for debounce on key up */
+	uint16_t disable_wait_us;	/* time to wait when disabled */
+	uint8_t flags;		/* some flags (enum mkbp_config_flags) */
+	/* maximum depth to allow for fifo (0 = disable) */
+	uint8_t fifo_max_depth;
+	uint8_t key_mask[16];	/* valid key mask - all 0xff to not use */
+} __packed;
+
+enum ec_mkbp_config_cmd {
+	EC_MKBP_CONFIG_GET = 0,		/* Get config */
+	EC_MKBP_CONFIG_SET = 1,		/* Set config */
+};
+
+struct ec_params_mkbp_config {
+	uint8_t cmd;		/* command (enum ec_mkbp_config_cmd) */
+	struct ec_mkbp_config config;
+} __packed;
 
 /*****************************************************************************/
 /* Temperature sensor commands */

@@ -168,6 +168,14 @@ timestamp_t get_time(void)
 	return ts;
 }
 
+timestamp_t time_get_future(unsigned int delay_us)
+{
+	timestamp_t ts;
+
+	ts = get_time();
+	ts.val += delay_us;
+	return ts;
+}
 
 void force_time(timestamp_t ts)
 {

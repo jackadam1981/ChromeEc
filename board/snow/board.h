@@ -37,13 +37,16 @@
 #ifndef __ASSEMBLER__
 
 /* By default, enable all console messages except keyboard */
-/* #define CC_DEFAULT	(CC_ALL & ~CC_MASK(CC_KEYSCAN)) */
+// #define CC_DEFAULT	(CC_ALL & ~CC_MASK(CC_KEYSCAN))
 #define CC_DEFAULT	CC_ALL
 
 #define USB_CHARGE_PORT_COUNT 0
 
 /* EC drives 13 outputs to keyboard matrix */
 #define KB_OUTPUTS 13
+
+/* Enable EC keyscan test */
+#define CONFIG_KEYSCAN_SEQ
 
 /* Charging */
 #define CONFIG_SMART_BATTERY
