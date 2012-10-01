@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQH//+Zg\u003d",
+        "filename": "board/snow/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-10-01T23:24:27Z",
+      "side": 1,
+      "message": "The default should still mask keyscan events.\n\nOr maybe we can use another #define for enabling this whole system and then change the CC_DEFAULT based on that so only enable keyboard spew when we are debugging keyboard stuff.",
+      "revId": "a5fcbf9cd01b4766242c6856a45d8a0139836f70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH//+Zc\u003d",
+        "filename": "board/snow/ec.tasklist",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-10-01T23:24:27Z",
+      "side": 1,
+      "message": "Hmm, can we also add a #ifdef around this so we only increase stack size if keyboard emulation is enabled?\n\nOr maybe just add a comment explaining why the keyboard_scan_task has such a large stack size set.",
+      "revId": "a5fcbf9cd01b4766242c6856a45d8a0139836f70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH//+Y8\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-10-01T23:24:27Z",
+      "side": 1,
+      "message": "don\u0027t need this",
+      "revId": "a5fcbf9cd01b4766242c6856a45d8a0139836f70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
