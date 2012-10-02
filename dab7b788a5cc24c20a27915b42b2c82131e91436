@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQH//9x0\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-10-02T22:20:44Z",
+      "side": 1,
+      "message": "nit: add a /* fallthrough */ comment here, so we know the lack of \u0027break\u0027 is intentional.",
+      "revId": "dab7b788a5cc24c20a27915b42b2c82131e91436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
