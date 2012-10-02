@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQH//+KM\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-10-02T15:08:50Z",
+      "side": 1,
+      "message": "Have you tested the panic path ?",
+      "revId": "67b30079d9eda435fb6350f24357c0ba94b407e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH//+Kc\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-10-02T15:08:50Z",
+      "side": 1,
+      "message": "it used to be measurable given you de-activate slow debug options.\nbut maybe too much cruft has piled up on that path.",
+      "revId": "67b30079d9eda435fb6350f24357c0ba94b407e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH//+KY\u003d",
+        "filename": "chip/lm4/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-10-02T15:08:50Z",
+      "side": 1,
+      "message": "is there any rational for the value of the stack size increase ?\nwe are adding 72 bytes to the context and 24 bytes to the stack ?",
+      "revId": "67b30079d9eda435fb6350f24357c0ba94b407e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
