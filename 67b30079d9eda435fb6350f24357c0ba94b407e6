@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAQH//+G0\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-10-02T16:49:00Z",
+      "side": 1,
+      "message": "Yes, using the \"crash\" command. It crashes, prints the expected register dump, reboots.",
+      "parentUuid": "AAAAQH//+KM\u003d",
+      "revId": "67b30079d9eda435fb6350f24357c0ba94b407e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAQH//+Kc\u003d",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -47,6 +65,24 @@
       "writtenOn": "2012-10-02T15:08:50Z",
       "side": 1,
       "message": "is there any rational for the value of the stack size increase ?\nwe are adding 72 bytes to the context and 24 bytes to the stack ?",
+      "revId": "67b30079d9eda435fb6350f24357c0ba94b407e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH//+GA\u003d",
+        "filename": "chip/lm4/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-10-02T16:49:00Z",
+      "side": 1,
+      "message": "No, it\u0027s pretty arbitrary. The high-water usage mostly depends on the number and format of debug messages, plus some slight differences in generated code. Empirically the stack usage increases only by 72 bytes (one FP state). Not all threads are affected equally, though. I just picked nice round numbers.\n\nHere\u0027s comparison, taken from \"taskinfo\" before and after this CL:\n\n\n                          Previously       Now\n  Task   Name              StkUsed       StkUsed\n     0   \u003c\u003c idle \u003e\u003e        232/320       304/384\n     1   WATCHDOG          136/256       192/256\n     2   VBOOTHASH         464/512       536/640\n     3   LIGHTBAR          360/488       432/512\n     4   POWERSTATE        344/488       408/512\n     5   TEMPSENSOR        320/488       376/512\n     6   THERMAL           220/488       200/512\n     7   PWM               128/488       200/512\n     8   TYPEMATIC         144/488       184/512\n     9   X86POWER          360/488       432/512\n    10   I8042CMD          288/488       328/512\n    11   HOSTCMD           264/488       336/512\n    12   CONSOLE           332/488       332/640\n    13   POWERBTN          276/488       296/512\n    14   KEYSCAN           300/488       312/512",
+      "parentUuid": "AAAAQH//+KY\u003d",
       "revId": "67b30079d9eda435fb6350f24357c0ba94b407e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
