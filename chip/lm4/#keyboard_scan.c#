@@ -168,6 +168,10 @@ static void check_runtime_keys(const uint8_t *state)
 		/* R = reboot */
 		CPRINTF("[%T KB warm reboot]\n");
 		x86_power_reset(0);
+	} else if (state[MASK_INDEX_KEY_H] == MASK_VALUE_KEY_H) {
+		/* H = hibernate */
+		CPRINTF("[%T KB hibernate]\n");
+		system_hibernate(0, 0);
 	}
 }
 
@@ -322,6 +326,7 @@ static enum boot_key keyboard_scan_check_boot_key(const uint8_t *state)
 	return BOOT_KEY_OTHER;
 }
 
+>>>>>>> 66dda89... link: Pass keyboard state array as a parameter
 enum boot_key keyboard_scan_get_boot_key(void)
 {
 	return boot_key_value;
@@ -344,12 +349,32 @@ int keyboard_scan_init(void)
 	/* Initialize raw state */
 	update_key_state(raw_state);
 
+<<<<<<< HEAD
+	/*
+	 * If we're booting due to a reset-pin-caused reset, check what other
+	 * single key is held down (if any).
+	 */
+	if ((system_get_reset_flags() & RESET_FLAG_RESET_PIN) &&
+	    !system_jumped_to_this_image()) {
+		const struct boot_key_entry *k = boot_key_list;
+		int i;
+
+		for (i = 0; i < ARRAY_SIZE(boot_key_list); i++, k++) {
+			if (check_key(k->mask_index, k->mask_value)) {
+				CPRINTF("[%T KB boot key %d]\n", i);
+				boot_key_value = i;
+				break;
+			}
+		}
+=======
 	/* Check for keys held down at boot */
 	boot_key_value = keyboard_scan_check_boot_key(raw_state);
+>>>>>>> 66dda89... link: Pass keyboard state array as a parameter
 
-	/* Trigger event if recovery key was pressed */
-	if (boot_key_value == BOOT_KEY_ESC)
-		host_set_single_event(EC_HOST_EVENT_KEYBOARD_RECOVERY);
+		/* Trigger event if recovery key was pressed */
+		if (boot_key_value == BOOT_KEY_ESC)
+			host_set_single_event(EC_HOST_EVENT_KEYBOARD_RECOVERY);
+	}
 
 	return EC_SUCCESS;
 }
