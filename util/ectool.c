@@ -2251,6 +2251,130 @@ int cmd_port_80_flood(int argc, char *argv[])
 	return 0;
 }
 
+struct param_info {
+	const char *name;	/* name of this parameter */
+	int size;		/* size in bytes */
+	int offset;		/* offset within structure */
+};
+
+#define FIELD(fname, field) \
+	{ \
+		.name = fname, \
+		.size = sizeof(((struct ec_mkbp_config *)NULL)->field), \
+		.offset = __builtin_offsetof(struct ec_mkbp_config, field), \
+	}
+
+static const struct param_info keyconfig_params[] = {
+	FIELD("poll_timeout", poll_timeout_us),
+	FIELD("scan_period", scan_period_us),
+	FIELD("pre_scan", pre_scan_us),
+	FIELD("post_scan_relax", post_scan_relax_us),
+	FIELD("column_settle", column_settle_us),
+	FIELD("debounce_down", debounce_down_us),
+	FIELD("debounce_up", debounce_up_us),
+	FIELD("disable_wait", disable_wait_us),
+	FIELD("flags", flags),
+	FIELD("fifo_max_depth", fifo_max_depth),
+};
+
+static const struct param_info *find_field(const struct param_info *params,
+				     int count, const char *name)
+{
+	const struct param_info *param;
+	int i;
+
+	for (i = 0, param = params; i < count; i++, param++) {
+		if (0 == strcmp(params->name, name))
+			return params;
+	}
+
+	fprintf(stderr, "Unknown parameter '%s'\n", name);
+	return NULL;
+}
+
+static int get_value(const struct param_info *param, const char *config)
+{
+	const char *field;
+
+	field = config + param->offset;
+	switch (param->size) {
+	case 1:
+		return *(uint8_t *)field;
+	case 2:
+		return *(uint16_t *)field;
+	case 4:
+		return *(uint32_t *)field;
+	default:
+		fprintf(stderr, "Internal error: unknown size %d\n",
+			param->size);
+	}
+
+	return -1;
+}
+
+static int cmd_keyconfig(int argc, char *argv[])
+{
+	struct ec_params_mkbp_config req;
+	enum ec_mkbp_config_cmd cmd;
+	int rv;
+
+	if (argc < 2) {
+		fprintf(stderr, "Usage: %s get [<param>] - print params\n"
+"	%s set [<param>> <value>]\n"
+"   Available params are: (all time values are in microseconds)\n"
+"	poll_timeout	revert to irq mode after no activity for this long\n"
+"	scan_period	period between scans\n"
+"	pre_scan	time between irq and first scan\n"
+"	post_scan_relax	minimum post-scan relax time\n"
+"	column_settle	delay to wait for column to settle\n"
+"	debounce_down	time for debounce on key down\n"
+"	debounce_up	time for debounce on key up\n"
+"	disable_wait	time to wait when disabled\n"
+"	flags		0 to disable scanning, 1 to enable\n"
+"	fifo_max_depth	maximum depth to allow for fifo (0 = disable)\n",
+			argv[0], argv[0]);
+		return -1;
+	}
+
+	/* Get the command */
+	if (0 == strcmp(argv[1], "get")) {
+		cmd = EC_MKBP_CONFIG_GET;
+	} else if (0 == strcmp(argv[1], "set")) {
+		cmd = EC_MKBP_CONFIG_SET;
+	} else {
+		fprintf(stderr, "Invalid command '%s\n", argv[1]);
+		return -1;
+	}
+
+	/* Read the existing config */
+	req.cmd = EC_MKBP_CONFIG_GET;
+	rv = ec_command(EC_CMD_MKBP_CONFIG, 0, &req, sizeof(req),
+			&req, sizeof(req));
+	if (rv < 0)
+		return rv;
+
+	argc -= 2;
+	argv += 2;
+	while (argc > 0) {
+		const struct param_info *field;
+
+		/* TODO(sjg@chromium.org): Maybe we should support key_mask */
+		field = find_field(keyconfig_params,
+				   ARRAY_SIZE(keyconfig_params), argv[0]);
+		if (!field)
+			return -1;
+
+		if (cmd == EC_MKBP_CONFIG_GET) {
+			printf("%-20s%u\n", field->name,
+			       get_value(field, (char *)&req.config));
+			argc--;
+			argv++;
+		}
+	}
+
+	return 0;
+}
+
 struct command {
 	const char *name;
 	int (*handler)(int argc, char *argv[]);
@@ -2292,6 +2416,7 @@ const struct command commands[] = {
 	{"i2cread", cmd_i2c_read},
 	{"i2cwrite", cmd_i2c_write},
 	{"lightbar", cmd_lightbar},
+	{"keyconfig", cmd_keyconfig},
 	{"pstoreinfo", cmd_pstore_info},
 	{"pstoreread", cmd_pstore_read},
 	{"pstorewrite", cmd_pstore_write},

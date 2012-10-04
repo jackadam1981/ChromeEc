@@ -879,6 +879,9 @@ struct ec_params_mkbp_simulate_key {
 /* Maximum length of a bytecode sequence */
 #define EC_MKBP_PROGRAM_MAX_LENGTH 100
 
+/* Configure keyboard scanning */
+#define EC_CMD_MKBP_CONFIG 0x64
+
 /* flags */
 enum mkbp_config_flags {
 	EC_MKBP_FLAGS_ENABLE = 1,	/* Enable keyboard scanning */
@@ -900,6 +903,16 @@ struct ec_mkbp_config {
 	/* maximum depth to allow for fifo (0 = disable) */
 	uint8_t fifo_max_depth;
 	uint8_t key_mask[16];	/* valid key mask - all 0xff to not use */
+} __packed;
+
+enum ec_mkbp_config_cmd {
+	EC_MKBP_CONFIG_GET = 0,		/* Get config */
+	EC_MKBP_CONFIG_SET = 1,		/* Set config */
+};
+
+struct ec_params_mkbp_config {
+	uint8_t cmd;		/* command (enum ec_mkbp_config_cmd) */
+	struct ec_mkbp_config config;
 } __packed;
 
 /*****************************************************************************/

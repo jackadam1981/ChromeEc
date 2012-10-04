@@ -740,3 +740,37 @@ DECLARE_HOST_COMMAND(EC_CMD_MKBP_PROGRAM,
 		     keyboard_program,
 		     EC_VER_MASK(0));
 
+
+static int host_command_mkbp_config(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_mkbp_config *req = args->params;
+	struct ec_params_mkbp_config *resp = args->response;
+
+	switch (req->cmd) {
+	case EC_MKBP_CONFIG_GET:
+		resp->cmd = req->cmd;
+		memcpy(&resp->config, &config, sizeof(config));
+		args->response_size = sizeof(*resp);
+		break;
+	case EC_MKBP_CONFIG_SET:
+		memcpy(&config, &req->config, sizeof(config));
+
+		/*
+		 * Do some sanity checks that could cause bad things to
+		 * happen.
+		 */
+		if (config.fifo_max_depth < 1)
+			config.fifo_max_depth = 1;
+		else if (config.fifo_max_depth > KB_FIFO_DEPTH)
+			config.fifo_max_depth = KB_FIFO_DEPTH;
+		break;
+	default:
+		return EC_RES_INVALID_COMMAND;
+	}
+
+	return EC_RES_SUCCESS;
+}
+
+DECLARE_HOST_COMMAND(EC_CMD_MKBP_CONFIG,
+		     host_command_mkbp_config,
+		     EC_VER_MASK(0));
