@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAQH//7Vs\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-10-04T23:36:58Z",
+      "side": 1,
+      "message": "I was experimenting with that for Snow and I think it helps. A trivial version looks like:\n\tif (((STM32_GPIO_IDR(C) \u0026 0xdf00) \u003d\u003d 0xdf00) || ((STM32_GPIO_IDR(D) \u0026 0x0004) \u003d\u003d 0x0004))",
+      "parentUuid": "AAAAQH//7cM\u003d",
+      "revId": "1b7f4c222b43e8ffdcda01ec7dc6b663c3e42861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAQH//7bo\u003d",
         "filename": "chip/stm32/keyboard_scan.c",
         "patchSetId": 5
