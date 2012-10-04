@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAQH//7ys\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-04T20:02:54Z",
+      "side": 1,
+      "message": "OK I will create a patch to update it - the name just seems confusing to me as it is not waiting for anything.",
+      "parentUuid": "AAAAQH//79s\u003d",
+      "revId": "972e56aca97a5d6322c8334b4a6cea62ce51964e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAQH//76A\u003d",
         "filename": "chip/stm32/keyboard_scan.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2012-10-04T19:24:40Z",
       "side": 1,
       "message": "stray debug print",
+      "revId": "972e56aca97a5d6322c8334b4a6cea62ce51964e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH//7yo\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-04T20:02:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAQH//76A\u003d",
       "revId": "972e56aca97a5d6322c8334b4a6cea62ce51964e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAQH//7yk\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-04T20:02:54Z",
+      "side": 1,
+      "message": "Yes, have added a new parameter and redone this.",
+      "parentUuid": "AAAAQH//74E\u003d",
+      "revId": "972e56aca97a5d6322c8334b4a6cea62ce51964e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAQH//74Q\u003d",
         "filename": "chip/stm32/keyboard_scan.c",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2012-10-04T19:24:40Z",
       "side": 1,
       "message": "Do we need to check that wait_time \u003e 0?",
+      "revId": "972e56aca97a5d6322c8334b4a6cea62ce51964e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH//7yc\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-04T20:02:54Z",
+      "side": 1,
+      "message": "Well if it is less than config.post_scan_relax_us then we should catch it that way.",
+      "parentUuid": "AAAAQH//74Q\u003d",
       "revId": "972e56aca97a5d6322c8334b4a6cea62ce51964e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAQH//7yM\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-04T20:02:54Z",
+      "side": 1,
+      "message": "Done, I think?",
+      "parentUuid": "AAAAQH//734\u003d",
+      "revId": "972e56aca97a5d6322c8334b4a6cea62ce51964e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAQH//72o\u003d",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAQH//7yA\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 893,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-04T20:02:54Z",
+      "side": 1,
+      "message": "That seems confusing also, since we have a scan_period_us. It is the minimum time between finishing a scan and starting the next, so isn\u0027t really a period in the repeating sense.\n\nI don\u0027t like this name either though. Maybe post_scan_min_us?",
+      "parentUuid": "AAAAQH//72o\u003d",
+      "revId": "972e56aca97a5d6322c8334b4a6cea62ce51964e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAQH//72Y\u003d",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -115,6 +223,24 @@
       "writtenOn": "2012-10-04T19:24:40Z",
       "side": 1,
       "message": "I think this is another place where abandoning the column/row nomenclature would make things clearer -- It\u0027s easier to conceptualize asserting an output requiring a delay. Maybe rename this to output_settle_us?",
+      "revId": "972e56aca97a5d6322c8334b4a6cea62ce51964e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH//7x8\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 895,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-04T20:02:54Z",
+      "side": 1,
+      "message": "Yes, I will update that.",
+      "parentUuid": "AAAAQH//72Y\u003d",
       "revId": "972e56aca97a5d6322c8334b4a6cea62ce51964e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
