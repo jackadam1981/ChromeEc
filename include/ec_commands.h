@@ -879,6 +879,29 @@ struct ec_params_mkbp_simulate_key {
 /* Maximum length of a bytecode sequence */
 #define EC_MKBP_PROGRAM_MAX_LENGTH 100
 
+/* flags */
+enum mkbp_config_flags {
+	EC_MKBP_FLAGS_ENABLE = 1,	/* Enable keyboard scanning */
+};
+
+/* Configuration for our key scanning algorithm */
+struct ec_mkbp_config {
+	/* revert to interrupt mode after no activity for this long */
+	uint32_t poll_timeout_us;
+	uint16_t scan_period_us;	/* period between scans */
+	uint16_t pre_scan_us;		/* time between irq and first scan */
+	uint16_t post_scan_relax_us;	/* minimum post-scan relax time */
+	/* delay between setting up column and waiting for it to settle */
+	uint16_t column_settle_us;
+	uint16_t debounce_down_us;	/* time for debounce on key down */
+	uint16_t debounce_up_us;	/* time for debounce on key up */
+	uint16_t disable_wait_us;	/* time to wait when disabled */
+	uint8_t flags;		/* some flags (enum mkbp_config_flags) */
+	/* maximum depth to allow for fifo (0 = disable) */
+	uint8_t fifo_max_depth;
+	uint8_t key_mask[16];	/* valid key mask - all 0xff to not use */
+} __packed;
+
 /*****************************************************************************/
 /* Temperature sensor commands */
 

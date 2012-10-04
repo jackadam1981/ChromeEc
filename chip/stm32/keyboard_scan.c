@@ -44,20 +44,6 @@ static struct mutex scanning_enabled;
 /* The keyboard state from the last read */
 static uint8_t raw_state[KB_OUTPUTS];
 
-/* Mask with 1 bits only for keys that actually exist */
-static const uint8_t *actual_key_mask;
-
-/* All actual key masks (todo: move to keyboard matrix definition) */
-/* TODO: (crosbug.com/p/7485) fill in real key mask with 0-bits for coords that
-   aren't keys */
-static const uint8_t actual_key_masks[4][KB_OUTPUTS] = {
-	{0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-	 0xff, 0xff, 0xff, 0xff, 0xff, 0xff},
-	{0},
-	{0},
-	{0},
-	};
-
 /* Key masks for special boot keys */
 #define MASK_INDEX_ESC     1
 #define MASK_VALUE_ESC     0x02
@@ -109,6 +95,21 @@ static uint32_t kb_fifo_end;		/* last entry */
 static uint32_t kb_fifo_entries;	/* number of existing entries */
 static uint8_t kb_fifo[KB_FIFO_DEPTH][KB_OUTPUTS];
 
+/*
+ * Our configuration. The debounce parameters are not yet supported.
+ */
+static struct ec_mkbp_config config = {
+	.poll_timeout_us = 100 * 1000,
+	.scan_period_us = 10000,
+	.pre_scan_us = 10000,
+	.post_scan_relax_us = 1000,
+	.column_settle_us = 50,
+	.disable_wait_us = 10 * 1000,
+	.flags = EC_MKBP_FLAGS_ENABLE,
+	.fifo_max_depth = KB_FIFO_DEPTH,
+	/* key_mask is set to 0xff on start-up */
+};
+
 /* clear keyboard state variables */
 void keyboard_clear_state(void)
 {
@@ -131,8 +132,9 @@ static int kb_fifo_add(uint8_t *buffp)
 {
 	int ret = EC_SUCCESS;
 
-	if (kb_fifo_entries == KB_FIFO_DEPTH) {
-		CPRINTF("%s: FIFO depth reached\n", __func__);
+	if (kb_fifo_entries == config.fifo_max_depth) {
+		CPRINTF("%s: FIFO depth %d reached\n", __func__,
+			config.fifo_max_depth);
 		ret = EC_ERROR_OVERFLOW;
 		goto kb_fifo_push_done;
 	}
@@ -214,8 +216,8 @@ static void select_column(int col)
 	}
 }
 
-
-void wait_for_interrupt(void)
+/* Set up columns so that we will get an interrupt when any key changed */
+void setup_interrupts(void)
 {
 	uint32_t pr_before, pr_after;
 
@@ -260,7 +262,7 @@ static int check_keys_changed(void)
 
 		/* Select column, then wait a bit for it to settle */
 		select_column(c);
-		udelay(50);
+		udelay(config.column_settle_us);
 
 		r = 0;
 		tmp = STM32_GPIO_IDR(C);
@@ -290,7 +292,7 @@ static int check_keys_changed(void)
 		r ^= 0xff;
 		/* Mask off keys that don't exist so they never show
 		 * as pressed */
-		r &= actual_key_mask[c];
+		r &= config.key_mask[c];
 
 #ifdef OR_WITH_CURRENT_STATE_FOR_TESTING
 		/* KLUDGE - or current state in, so we can make sure
@@ -382,10 +384,6 @@ int keyboard_scan_init(void)
 	/* Tri-state (put into Hi-Z) the outputs */
 	select_column(COL_TRI_STATE_ALL);
 
-	/* TODO: method to set which keyboard we have, so we set the actual
-	 * key mask properly */
-	actual_key_mask = actual_key_masks[0];
-
 	/* Initialize raw state */
 	check_keys_changed();
 
@@ -395,11 +393,70 @@ int keyboard_scan_init(void)
 	return EC_SUCCESS;
 }
 
+/* Scan the keyboard until all keys are released */
+static void scan_keyboard(void)
+{
+	timestamp_t poll_deadline, start;
+	int keys_changed = 1;
+
+	mutex_lock(&scanning_enabled);
+	setup_interrupts();
+	mutex_unlock(&scanning_enabled);
+
+	/* Wait until we get an interrupt */
+	task_wait_event(-1);
+
+#ifdef CONFIG_KEY_EVENT_EMUL
+	if (bc_running) {
+		bc_run_emulation();
+		bc_running = 0;
+		return;
+	}
+#endif
+
+	enter_polling_mode();
+
+	usleep(config.pre_scan_us);
+	ccprintf("%s: %d\n", __func__, __LINE__);
+
+	/* Busy polling keyboard state. */
+	start = get_time();
+	do {
+		int wait_time;
+
+		/* If we saw any keys pressed, reset deadline */
+		if (keys_changed)
+			poll_deadline.val = start.val + config.poll_timeout_us;
+
+		/*
+		 * Scan immediately, with no delay. We don't seem
+		 * to see switch bounce on snow.
+		 */
+		mutex_lock(&scanning_enabled);
+		keys_changed = check_keys_changed();
+		mutex_unlock(&scanning_enabled);
+
+		/* wait a bit before scanning again */
+		wait_time = config.scan_period_us -
+				(get_time().val - start.val);
+		if (wait_time < config.post_scan_relax_us) {
+			CPRINTF("Key scan relax time enforced\n");
+			wait_time = config.post_scan_relax_us;
+		}
+		usleep(wait_time);
+		start = get_time();
+	} while (!timestamp_expired(poll_deadline, &start)
+		&& (config.flags & EC_MKBP_FLAGS_ENABLE));
+	/* TODO: (crosbug.com/p/7484) A race condition here.
+	 *       If a key state is changed here (before interrupt is
+	 *       enabled), it will be lost.
+	 */
+}
 
 void keyboard_scan_task(void)
 {
-	int key_press_timer = 0;
-	uint8_t keys_changed = 0;
+	/* to start, allow all keys */
+	memset(config.key_mask, 0xff, sizeof(config.key_mask));
 
 	/* Enable interrupts for keyboard matrix inputs */
 	gpio_enable_interrupt(GPIO_KB_IN00);
@@ -411,44 +468,13 @@ void keyboard_scan_task(void)
 	gpio_enable_interrupt(GPIO_KB_IN06);
 	gpio_enable_interrupt(GPIO_KB_IN07);
 
-	while (1) {
-		mutex_lock(&scanning_enabled);
-		wait_for_interrupt();
-		mutex_unlock(&scanning_enabled);
-
-		task_wait_event(-1);
-
-		if (bc_running) {
-			bc_run_emulation();
-			bc_running = 0;
-			continue;
+	for (;;) {
+		if (config.flags & EC_MKBP_FLAGS_ENABLE) {
+			scan_keyboard();
+		} else {
+			select_column(COL_TRI_STATE_ALL);
+			usleep(config.disable_wait_us);
 		}
-
-		enter_polling_mode();
-		/* Busy polling keyboard state. */
-		while (1) {
-			/* sleep for debounce. */
-			usleep(SCAN_LOOP_DELAY);
-			/* Check for keys down */
-
-			mutex_lock(&scanning_enabled);
-			keys_changed = check_keys_changed();
-			mutex_unlock(&scanning_enabled);
-
-			if (keys_changed) {
-				key_press_timer = 0;
-			} else {
-				if (++key_press_timer >=
-				    (POLLING_MODE_TIMEOUT / SCAN_LOOP_DELAY)) {
-					key_press_timer = 0;
-					break;  /* exit the while loop */
-				}
-			}
-		}
-		/* TODO: (crosbug.com/p/7484) A race condition here.
-		 *       If a key state is changed here (before interrupt is
-		 *       enabled), it will be lost.
-		 */
 	}
 }
 
