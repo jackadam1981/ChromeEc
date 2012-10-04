@@ -33,8 +33,8 @@ enum COL_INDEX {
 	/* 0 ~ 12 for the corresponding column */
 };
 
-#define POLLING_MODE_TIMEOUT 100000   /* 100 ms */
-#define SCAN_LOOP_DELAY 10000         /*  10 ms */
+/* delay before scanning the matrix */
+#define PRE_SCAN_DELAY	3000	/* 3ms */
 
 /* 15:14, 12:8, 2 */
 #define IRQ_MASK 0xdf04
@@ -43,6 +43,9 @@ static struct mutex scanning_enabled;
 
 /* The keyboard state from the last read */
 static uint8_t raw_state[KB_OUTPUTS];
+
+/* Number of keys currently pressed */
+static int num_keys_pressed;
 
 /* Mask with 1 bits only for keys that actually exist */
 static const uint8_t *actual_key_mask;
@@ -244,7 +247,6 @@ static int check_keys_changed(void)
 	int c;
 	uint8_t r;
 	int change = 0;
-	int num_press = 0;
 
 	for (c = 0; c < KB_OUTPUTS; c++) {
 		uint16_t tmp;
@@ -298,15 +300,15 @@ static int check_keys_changed(void)
 	select_column(COL_TRI_STATE_ALL);
 
 	/* Count number of key pressed */
-	for (c = 0; c < KB_OUTPUTS; c++) {
+	for (c = 0, num_keys_pressed = 0; c < KB_OUTPUTS; c++) {
 		if (raw_state[c])
-			++num_press;
+			++num_keys_pressed;
 	}
 
 	if (change) {
 		board_keyboard_suppress_noise();
 
-		CPRINTF("[%d keys pressed: ", num_press);
+		CPRINTF("[%d keys pressed: ", num_keys_pressed);
 		for (c = 0; c < KB_OUTPUTS; c++) {
 			if (raw_state[c])
 				CPRINTF(" %02x", raw_state[c]);
@@ -315,7 +317,7 @@ static int check_keys_changed(void)
 		}
 		CPUTS("]\n");
 
-		if (num_press == 3) {
+		if (num_keys_pressed == 3) {
 			if (check_warm_reboot_keys()) {
 				keyboard_clear_state();
 				system_warm_reboot();
@@ -323,13 +325,11 @@ static int check_keys_changed(void)
 			}
 		}
 
-		if (kb_fifo_add(raw_state) == EC_SUCCESS)
-			board_interrupt_host(1);
-		else
+		if (kb_fifo_add(raw_state) != EC_SUCCESS)
 			CPRINTF("dropped keystroke\n");
 	}
 
-	return num_press ? 1 : 0;
+	return change;
 }
 
 
@@ -386,11 +386,20 @@ int keyboard_scan_init(void)
 	return EC_SUCCESS;
 }
 
+/* check to see if any inputs are asserted */
+static int key_is_pressed(void)
+{
+	select_column(COL_ASSERT_ALL);
+	usleep(50);
+	if (((STM32_GPIO_IDR(C) & 0xdf00) != 0xdf00) ||
+		((STM32_GPIO_IDR(D) & 0x0004) != 0x0004))
+		return 1;
+	return 0;
+}
 
 void keyboard_scan_task(void)
 {
-	int key_press_timer = 0;
-	uint8_t keys_changed = 0;
+	int keys_changed = 0;
 
 	/* Enable interrupts for keyboard matrix inputs */
 	gpio_enable_interrupt(GPIO_KB_IN00);
@@ -403,37 +412,34 @@ void keyboard_scan_task(void)
 	gpio_enable_interrupt(GPIO_KB_IN07);
 
 	while (1) {
-		mutex_lock(&scanning_enabled);
-		wait_for_interrupt();
-		mutex_unlock(&scanning_enabled);
+		if (keys_changed)
+			board_interrupt_host(1);
 
-		task_wait_event(-1);
+		if (num_keys_pressed == 0) {
+			/* unmask keyboard interrupts */
+			mutex_lock(&scanning_enabled);
+			wait_for_interrupt();
+			mutex_unlock(&scanning_enabled);
 
-		enter_polling_mode();
-		/* Busy polling keyboard state. */
-		while (1) {
-			/* sleep for debounce. */
-			usleep(SCAN_LOOP_DELAY);
-			/* Check for keys down */
+			task_wait_event(-1);
 
+			/* mask keyboard interrupts */
+			enter_polling_mode();
+		}
+
+		/*
+		 * Check if a key is pressed after scanning the matrix so
+		 * that key releases are detected.
+		 */
+		do {
+			usleep(PRE_SCAN_DELAY);
 			mutex_lock(&scanning_enabled);
 			keys_changed = check_keys_changed();
 			mutex_unlock(&scanning_enabled);
 
-			if (keys_changed) {
-				key_press_timer = 0;
-			} else {
-				if (++key_press_timer >=
-				    (POLLING_MODE_TIMEOUT / SCAN_LOOP_DELAY)) {
-					key_press_timer = 0;
-					break;  /* exit the while loop */
-				}
-			}
-		}
-		/* TODO: (crosbug.com/p/7484) A race condition here.
-		 *       If a key state is changed here (before interrupt is
-		 *       enabled), it will be lost.
-		 */
+			if (keys_changed)
+				break;
+		} while (key_is_pressed());
 	}
 }
 
