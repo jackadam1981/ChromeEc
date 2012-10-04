@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQH//7cY\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-10-04T22:47:40Z",
+      "side": 1,
+      "message": "\u003e\u003d, to be safe if max depth is changed",
+      "revId": "1b7f4c222b43e8ffdcda01ec7dc6b663c3e42861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH//7cM\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-10-04T22:47:40Z",
+      "side": 1,
+      "message": "The way around this is to check if any keys are down just before task_wait_event() above, and if so, don\u0027t wait.  I\u0027ll have a link-side patch to do that imminently.",
+      "revId": "1b7f4c222b43e8ffdcda01ec7dc6b663c3e42861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH//7bo\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-10-04T22:47:40Z",
+      "side": 1,
+      "message": "nit: while(1) is used elsewhere.  don\u0027t suppose kernel style expresses a preference...",
+      "revId": "1b7f4c222b43e8ffdcda01ec7dc6b663c3e42861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
