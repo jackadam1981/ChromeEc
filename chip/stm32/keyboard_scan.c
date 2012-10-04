@@ -66,6 +66,7 @@ struct kbc_gpio {
 	int pin;
 };
 
+#ifdef CONFIG_KEY_EVENT_EMUL
 /* Globals for key event emulation */
 
 static uint8_t bc_memory[EC_MKBP_PROGRAM_MAX_LENGTH];
@@ -74,6 +75,7 @@ static int bc_length;
 static int bc_next_delay;
 
 static void bc_run_emulation(void);
+#endif
 
 #if defined(BOARD_daisy) || defined(BOARD_snow) || defined(BOARD_spring)
 static const uint32_t ports[] = { GPIO_B, GPIO_C, GPIO_D };
@@ -580,6 +582,7 @@ DECLARE_CONSOLE_COMMAND(kbpress, command_keyboard_press,
 			NULL);
 
 
+#ifdef CONFIG_KEY_EVENT_EMUL
 /* Keyboard emulation.
  *
  * NOTE: this raises the stack requirement for the keyboard scan thread from
@@ -739,7 +742,7 @@ static int keyboard_program(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_MKBP_PROGRAM,
 		     keyboard_program,
 		     EC_VER_MASK(0));
-
+#endif /* CONFIG_KEY_EVENT_EMUL */
 
 static int host_command_mkbp_config(struct host_cmd_handler_args *args)
 {

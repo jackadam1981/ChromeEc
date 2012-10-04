@@ -66,3 +66,10 @@ Build Options
 	the AP indicating this state. The GPIO will be driven low when
 	AC power is not connected, and high when it is connected. This
 	uses GPIO_AC_STATUS for this purpose.
+
+- CONFIG_KEY_EVENT_EMUL
+
+	Enable key event emulation through a program received from a host
+	message. This uses a small amount of SRAM space. It is only
+	implemented for STM32 at present.
+
