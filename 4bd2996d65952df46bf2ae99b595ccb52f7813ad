@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQH//7ck\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-10-04T22:33:14Z",
+      "side": 1,
+      "message": "Probably want 2000 when you port over keyboard debouncing.",
+      "revId": "4bd2996d65952df46bf2ae99b595ccb52f7813ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
