@@ -100,8 +100,8 @@ static uint8_t kb_fifo[KB_FIFO_DEPTH][KB_OUTPUTS];
  */
 static struct ec_mkbp_config config = {
 	.poll_timeout_us = 100 * 1000,
-	.scan_period_us = 10000,
-	.pre_scan_us = 10000,
+	.scan_period_us = 3000,
+	.pre_scan_us = 3000,
 	.post_scan_relax_us = 1000,
 	.column_settle_us = 50,
 	.disable_wait_us = 10 * 1000,
