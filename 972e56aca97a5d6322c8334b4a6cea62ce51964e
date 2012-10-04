@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQH//79s\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-10-04T19:24:40Z",
+      "side": 1,
+      "message": "A lot of these names were left \"as-is\" when porting from the LM4 code for the sake of consistency. Maybe we should update the naming used in the LM4 code as well?",
+      "revId": "972e56aca97a5d6322c8334b4a6cea62ce51964e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH//76A\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-10-04T19:24:40Z",
+      "side": 1,
+      "message": "stray debug print",
+      "revId": "972e56aca97a5d6322c8334b4a6cea62ce51964e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH//74E\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-10-04T19:24:40Z",
+      "side": 1,
+      "message": "This seems a little suspicious... I think we should always give it at least one delay period to be safe. Maybe problems didn\u0027t surface for your testing due to the delay caused by the debug print above?",
+      "revId": "972e56aca97a5d6322c8334b4a6cea62ce51964e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH//74Q\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-10-04T19:24:40Z",
+      "side": 1,
+      "message": "Do we need to check that wait_time \u003e 0?",
+      "revId": "972e56aca97a5d6322c8334b4a6cea62ce51964e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH//734\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-10-04T19:24:40Z",
+      "side": 1,
+      "message": "scan_keyboard() does a whole lot more than just scanning the keyboard... The interrupt and task management stuff (lines  402-417) should move back down here.",
+      "revId": "972e56aca97a5d6322c8334b4a6cea62ce51964e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH//72o\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 893,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-10-04T19:24:40Z",
+      "side": 1,
+      "message": "I think it would be clearer to call this a minimum delay period between scans... scan_period_min_us, perhaps?",
+      "revId": "972e56aca97a5d6322c8334b4a6cea62ce51964e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH//72Y\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 895,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-10-04T19:24:40Z",
+      "side": 1,
+      "message": "I think this is another place where abandoning the column/row nomenclature would make things clearer -- It\u0027s easier to conceptualize asserting an output requiring a delay. Maybe rename this to output_settle_us?",
+      "revId": "972e56aca97a5d6322c8334b4a6cea62ce51964e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
