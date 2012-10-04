@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQH//7T8\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-10-04T23:48:06Z",
+      "side": 1,
+      "message": "typo: valid",
+      "revId": "1e3b14e71a0405e477cfd743169d1ffda82bf3b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH//7T0\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-10-04T23:48:06Z",
+      "side": 1,
+      "message": "Key scanning is high prio, so probably want to require at least 100us min delay.  Otherwise, setting this to 0 will cause watchdog events.",
+      "revId": "1e3b14e71a0405e477cfd743169d1ffda82bf3b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH//7T4\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-10-04T23:48:06Z",
+      "side": 1,
+      "message": "Do this to req-\u003econfig before copying, since otherwise there\u0027s a race condition with a new key event coming in.\n\nOr better, sanity-check in keyscan_copy_config() itself, if you want to preserve const req here.",
+      "revId": "1e3b14e71a0405e477cfd743169d1ffda82bf3b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
