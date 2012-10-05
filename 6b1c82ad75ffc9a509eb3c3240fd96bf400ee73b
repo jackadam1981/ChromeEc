@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAAQH//6oA\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-10-05T18:58:52Z",
+      "side": 1,
+      "message": "This makes the scan_time array of uint32\u0027s quite large... Not sure if there\u0027s a way around that though.",
+      "revId": "6b1c82ad75ffc9a509eb3c3240fd96bf400ee73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH//6nM\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-10-05T18:58:52Z",
+      "side": 1,
+      "message": "Do we need to keep track of the outputs here? We really only care about the inputs as far as obtaining a reading goes. \n\nPerhaps we could simplify and reduce the size of this by adding a single usleep at the end of select_column(). We can still use different debounce times for key press/release when we examine the inputs.\n\n(probably too big of a change to make now, but worth investigating for the future)",
+      "revId": "6b1c82ad75ffc9a509eb3c3240fd96bf400ee73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAQH//6y4\u003d",
         "filename": "chip/stm32/keyboard_scan.c",
         "patchSetId": 3
@@ -66,6 +100,23 @@
       "side": 1,
       "message": "I didn\u0027t check.",
       "parentUuid": "AAAAQH//6yg\u003d",
+      "revId": "6b1c82ad75ffc9a509eb3c3240fd96bf400ee73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH//6os\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-10-05T18:58:52Z",
+      "side": 1,
+      "message": "In my patch I realized a couple optimizations that came from recognizing the difference between a change versus a key being held (--\u003e whether or not to interrupt the host) and keeping track of the number of keys held down (--\u003e determine whether to re-enable interrupts).\n\nMaybe some of those can carry over to increase efficiency of this version, but that can be done in a follow-up.",
       "revId": "6b1c82ad75ffc9a509eb3c3240fd96bf400ee73b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
