@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAQH//7HE\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-05T05:39:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAQH//7cY\u003d",
+      "revId": "1b7f4c222b43e8ffdcda01ec7dc6b663c3e42861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAQH//7cM\u003d",
         "filename": "chip/stm32/keyboard_scan.c",
         "patchSetId": 5
@@ -54,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAQH//7G8\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-05T05:39:19Z",
+      "side": 1,
+      "message": "Which task_wait_event do you mean? If the first one then that\u0027s what I though, if not, then I am confused. I thought this was about coming back in, re-enabling interrupts to wait for an edge, but the state has already changed (and the edge occurred), and so we will never see the edge.\n\nSo I figured we needed to put a check in the task_wait_event(-1) line 399, but will leave this to you.",
+      "parentUuid": "AAAAQH//7Vs\u003d",
+      "revId": "1b7f4c222b43e8ffdcda01ec7dc6b663c3e42861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAQH//7bo\u003d",
         "filename": "chip/stm32/keyboard_scan.c",
         "patchSetId": 5
@@ -65,6 +101,24 @@
       "writtenOn": "2012-10-04T22:47:40Z",
       "side": 1,
       "message": "nit: while(1) is used elsewhere.  don\u0027t suppose kernel style expresses a preference...",
+      "revId": "1b7f4c222b43e8ffdcda01ec7dc6b663c3e42861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH//7G4\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-05T05:39:19Z",
+      "side": 1,
+      "message": "Ooops, yes.",
+      "parentUuid": "AAAAQH//7bo\u003d",
       "revId": "1b7f4c222b43e8ffdcda01ec7dc6b663c3e42861",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
