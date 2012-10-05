@@ -149,8 +149,7 @@ static inline int battery_voltage(int *voltage)
 	{ return sb_read(SB_VOLTAGE, voltage); }
 
 /* Relative state of charge in percent */
-static inline int battery_state_of_charge(int *percent)
-	{ return sb_read(SB_RELATIVE_STATE_OF_CHARGE, percent); }
+int battery_state_of_charge(int *percent);
 
 /* Absolute state of charge in percent */
 static inline int battery_state_of_charge_abs(int *percent)

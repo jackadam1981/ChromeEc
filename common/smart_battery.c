@@ -105,6 +105,19 @@ int battery_manufacturer_date(int *year, int *month, int *day)
 	return EC_SUCCESS;
 }
 
+static int fake_charge_percent = -1;
+
+/* Relative state of charge in percent */
+int battery_state_of_charge(int *percent)
+{
+	if (fake_charge_percent != -1) {
+		*percent = fake_charge_percent;
+		return EC_SUCCESS;
+	}
+
+	return sb_read(SB_RELATIVE_STATE_OF_CHARGE, percent);
+}
+
 /*****************************************************************************/
 /* Console commands */
 
@@ -278,3 +291,32 @@ DECLARE_CONSOLE_COMMAND(sb, command_sb,
 			"Read/write smart battery data",
 			NULL);
 
+static int command_battfake(int argc, char **argv)
+{
+	int percent = -1;
+	char *e;
+
+	if (argc == 2) {
+		percent = strtoi(argv[1], &e, 0);
+		if (*e || percent < -1 || percent > 100)
+			return EC_ERROR_PARAM1;
+	}
+
+	if (percent == -1)
+		ccprintf("Returning to normal state of charge\n");
+	else
+		ccprintf("Faking battery charge %d%%\n", percent);
+
+	fake_charge_percent = percent;
+
+	/*
+	 * TODO: To simulate this more accurately, it should also override
+	 * the absolute state of and remaining capacity.
+	 */
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(battfake, command_battfake,
+			"[-1 | <percent>]",
+			"Simulate battery charge percentage",
+			NULL);
