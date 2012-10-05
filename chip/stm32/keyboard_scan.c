@@ -359,7 +359,6 @@ static int read_matrix(uint8_t *state)
  */
 static int check_keys_changed(uint8_t *state)
 {
-	int any_pressed = 0;
 	int c, i;
 	int any_change = 0;
 	uint8_t new_state[KB_OUTPUTS];
@@ -371,7 +370,7 @@ static int check_keys_changed(uint8_t *state)
 	scan_time[scan_time_index] = tnow;
 
 	/* Read the raw key state */
-	any_pressed = read_matrix(new_state);
+	read_matrix(new_state);
 
 	/* Check for changes between previous scan and this one */
 	for (c = 0; c < KB_OUTPUTS; c++) {
@@ -436,13 +435,27 @@ static int check_keys_changed(uint8_t *state)
 
 		check_runtime_keys(state);
 
-		if (kb_fifo_add(state) == EC_SUCCESS)
-			board_interrupt_host(1);
-		else
+		if (kb_fifo_add(state) != EC_SUCCESS)
 			CPRINTF("dropped keystroke\n");
 	}
 
-	return any_pressed;
+	return any_change;
+}
+
+int count_keys_pressed(const uint8_t *state)
+{
+	int i, n = 0;
+
+	for (i = 0; i < KB_OUTPUTS; i++) {
+		uint8_t u = state[i];
+
+		while (u) {
+			u &= (u - 1);
+			n++;
+		}
+	}
+
+	return n;
 }
 
 /*
@@ -486,7 +499,6 @@ static int check_recovery_key(const uint8_t *state)
 	return 1;
 }
 
-
 int keyboard_scan_init(void)
 {
 	/* Tri-state (put into Hi-Z) the outputs */
@@ -502,56 +514,23 @@ int keyboard_scan_init(void)
 	return EC_SUCCESS;
 }
 
-/* Scan the keyboard until all keys are released */
-static void scan_keyboard(void)
+/* check to see if any inputs are asserted (key is pressed down) */
+static int kb_input_asserted(void)
 {
-	timestamp_t poll_deadline, start;
-	int keys_changed = 1;
-
-	mutex_lock(&scanning_enabled);
-	setup_interrupts();
-	mutex_unlock(&scanning_enabled);
-
-	/* Wait until we get an interrupt */
-	task_wait_event(-1);
-
-	enter_polling_mode();
-
-	/* Busy polling keyboard state. */
-	while (1) {
-		int wait_time;
-
-		if (!(config.flags & EC_MKBP_FLAGS_ENABLE))
-			break;
-
-		/* If we saw any keys pressed, reset deadline */
-		start = get_time();
-		if (keys_changed)
-			poll_deadline.val = start.val + config.poll_timeout_us;
-		else if (timestamp_expired(poll_deadline, &start))
-			break;
-
-		/* Scan immediately, with no delay */
-		mutex_lock(&scanning_enabled);
-		keys_changed = check_keys_changed(debounced_state);
-		mutex_unlock(&scanning_enabled);
-
-		/* Wait a bit before scanning again */
-		wait_time = config.scan_period_us -
-				(get_time().val - start.val);
-		if (wait_time < config.min_post_scan_delay_us)
-			wait_time = config.min_post_scan_delay_us;
-		task_wait_event(wait_time);
-	}
-	/*
-	 * TODO: (crosbug.com/p/7484) A race condition here.
-	 *       If a key state is changed here (before interrupt is
-	 *       enabled), it will be lost.
-	 */
+	select_column(COL_ASSERT_ALL);
+	usleep(config.output_settle_us);
+	/* FIXME(dhendrix): make this less board-specific */
+	if (((STM32_GPIO_IDR(C) & 0xdf00) != 0xdf00) ||
+		((STM32_GPIO_IDR(D) & 0x0004) != 0x0004))
+		return 1;
+	return 0;
 }
 
 void keyboard_scan_task(void)
 {
+	int keys_changed = 0, num_keys_pressed = 0;
+	int wait_time = 0;
+
 	/* Enable interrupts for keyboard matrix inputs */
 	gpio_enable_interrupt(GPIO_KB_IN00);
 	gpio_enable_interrupt(GPIO_KB_IN01);
@@ -565,12 +544,58 @@ void keyboard_scan_task(void)
 	print_state(debounced_state, "init state");
 
 	while (1) {
-		if (config.flags & EC_MKBP_FLAGS_ENABLE) {
-			scan_keyboard();
-		} else {
-			select_column(COL_TRI_STATE_ALL);
-			task_wait_event(-1);
+		if (keys_changed)
+			board_interrupt_host(1);
+
+		if (num_keys_pressed == 0) {
+			/* unmask keyboard interrupts */
+			mutex_lock(&scanning_enabled);
+			setup_interrupts();
+			mutex_unlock(&scanning_enabled);
+
+			/*
+			 * Check inputs once again to reduce possibility of
+			 * missing a keypress. Key releases should not be
+			 * a problem since num_keys_pressed will remain >0
+			 * until the release is detected by the scan loop.
+			 */
+			if (!kb_input_asserted())
+				task_wait_event(-1);
+
+			if (!(config.flags & EC_MKBP_FLAGS_ENABLE))
+				continue;
+
+			/* mask keyboard interrupts */
+			enter_polling_mode();
+
+			/* scan immediately */
+			wait_time = 0;
 		}
+
+		/*
+		 * Check if a key is pressed after scanning the matrix so
+		 * that key releases are detected.
+		 */
+		do {
+			timestamp_t start = get_time();
+
+			if (wait_time)
+				task_wait_event(wait_time);
+
+			mutex_lock(&scanning_enabled);
+			keys_changed = check_keys_changed(debounced_state);
+			mutex_unlock(&scanning_enabled);
+
+			num_keys_pressed = count_keys_pressed(debounced_state);
+
+			if (keys_changed)
+				break;
+
+			wait_time = config.scan_period_us -
+					(get_time().val - start.val);
+			if (wait_time < config.min_post_scan_delay_us)
+				wait_time = config.min_post_scan_delay_us;
+		} while (num_keys_pressed > 0);
 	}
 }
 
