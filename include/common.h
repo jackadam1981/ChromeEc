@@ -62,4 +62,17 @@ enum ec_error_list {
 	EC_ERROR_INTERNAL_LAST =  0x1FFFF
 };
 
+/*
+ * General Purpose Utilities
+ */
+#define min(X, Y)				\
+	({ typeof (X) __x = (X);		\
+		typeof (Y) __y = (Y);		\
+		(__x < __y) ? __x : __y; })
+
+#define max(X, Y)				\
+	({ typeof (X) __x = (X);		\
+		typeof (Y) __y = (Y);		\
+		(__x > __y) ? __x : __y; })
+
 #endif  /* __CROS_EC_COMMON_H */
