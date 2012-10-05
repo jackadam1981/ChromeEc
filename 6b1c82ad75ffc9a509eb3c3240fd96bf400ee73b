@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAQH//6xc\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-05T17:09:24Z",
+      "side": 1,
+      "message": "Yes, we should use that, but given our minimum scan period that is only 2 scans.\n\nWill that work? If so, let\u0027s change it.",
+      "parentUuid": "AAAAQH//6y4\u003d",
+      "revId": "6b1c82ad75ffc9a509eb3c3240fd96bf400ee73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAQH//6yg\u003d",
         "filename": "chip/stm32/keyboard_scan.c",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAQH//6xY\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-05T17:09:24Z",
+      "side": 1,
+      "message": "I didn\u0027t check.",
+      "parentUuid": "AAAAQH//6yg\u003d",
+      "revId": "6b1c82ad75ffc9a509eb3c3240fd96bf400ee73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAQH//6yM\u003d",
         "filename": "chip/stm32/keyboard_scan.c",
         "patchSetId": 3
@@ -47,6 +83,24 @@
       "writtenOn": "2012-10-05T17:03:49Z",
       "side": 1,
       "message": "It\u0027ll work fine until someone hits a key on the actual keyboard - at which point it\u0027ll get overwritten.",
+      "revId": "6b1c82ad75ffc9a509eb3c3240fd96bf400ee73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH//6xU\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-05T17:09:24Z",
+      "side": 1,
+      "message": "Yes, probably ok for testing.",
+      "parentUuid": "AAAAQH//6yM\u003d",
       "revId": "6b1c82ad75ffc9a509eb3c3240fd96bf400ee73b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
