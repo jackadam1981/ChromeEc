@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQH//7GI\u003d",
+        "filename": "chip/lm4/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-05T06:12:48Z",
+      "side": 1,
+      "message": "You will use run-time config for these right?",
+      "revId": "b481018383e5e10d7f8a7fc0d72c85dca2209941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH//7GE\u003d",
+        "filename": "chip/lm4/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-05T06:12:48Z",
+      "side": 1,
+      "message": "Wondering if this would be better as a array of (struct with 4 members)",
+      "revId": "b481018383e5e10d7f8a7fc0d72c85dca2209941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH//7GA\u003d",
+        "filename": "chip/lm4/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-05T06:12:48Z",
+      "side": 1,
+      "message": "Can I suggest we rename this function to:\n\nchip_read_raw_row_state()\n\nor similar? Then we can use the same name for stm32, and this function can become common, right?",
+      "revId": "b481018383e5e10d7f8a7fc0d72c85dca2209941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH//7F8\u003d",
+        "filename": "chip/lm4/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-05T06:12:48Z",
+      "side": 1,
+      "message": "Similar here, perhaps chip_select_column(), better if we can get keyscan into the name.",
+      "revId": "b481018383e5e10d7f8a7fc0d72c85dca2209941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH//7Fw\u003d",
+        "filename": "chip/lm4/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-05T06:12:48Z",
+      "side": 1,
+      "message": "Perhaps the presence of ghosting detection should be controlled by i8042, or perhaps by the mkbp config?",
+      "revId": "b481018383e5e10d7f8a7fc0d72c85dca2209941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH//7Fs\u003d",
+        "filename": "chip/lm4/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-05T06:12:48Z",
+      "side": 1,
+      "message": "blank line after",
+      "revId": "b481018383e5e10d7f8a7fc0d72c85dca2209941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH//7Fo\u003d",
+        "filename": "chip/lm4/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-05T06:12:48Z",
+      "side": 1,
+      "message": "Should we have a constant for the 8?",
+      "revId": "b481018383e5e10d7f8a7fc0d72c85dca2209941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH//7Fk\u003d",
+        "filename": "chip/lm4/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-05T06:12:48Z",
+      "side": 1,
+      "message": "blank line after",
+      "revId": "b481018383e5e10d7f8a7fc0d72c85dca2209941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH//7FU\u003d",
+        "filename": "chip/lm4/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-05T06:12:48Z",
+      "side": 1,
+      "message": "And really I feel that this function (keyboard_scan_task() should be identical for both chips. Should we just do this now? It seems like a pain to be adding code in lm4 which we have to copy to stm32.",
+      "revId": "b481018383e5e10d7f8a7fc0d72c85dca2209941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
