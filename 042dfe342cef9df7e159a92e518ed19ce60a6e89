@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQH//5jI\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-08T19:15:55Z",
+      "side": 1,
+      "message": "should this be checking debounced_state or state?",
+      "revId": "042dfe342cef9df7e159a92e518ed19ce60a6e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH//5jE\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-08T19:15:55Z",
+      "side": 1,
+      "message": "Perhaps this should be a local variable, with the value returned by check_keys_changed()? Or just a separate function call immediately after  the call to check_keys_changed() below?",
+      "revId": "042dfe342cef9df7e159a92e518ed19ce60a6e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH//5jg\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-08T19:15:55Z",
+      "side": 1,
+      "message": "This isn\u0027t quite equivalent - the original code uses this as a minimum delay between the end of one scan and the start of the next. This new code is always waiting for the min time, so the scan period will never be honored.",
+      "revId": "042dfe342cef9df7e159a92e518ed19ce60a6e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH//5jA\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-08T19:15:55Z",
+      "side": 1,
+      "message": "Does this function return values that don\u0027t correspond to num_keys_pressed?",
+      "revId": "042dfe342cef9df7e159a92e518ed19ce60a6e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
