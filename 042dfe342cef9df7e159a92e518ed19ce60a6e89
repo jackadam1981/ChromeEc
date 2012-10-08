@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAQH//5ac\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-10-08T22:25:08Z",
+      "side": 1,
+      "message": "Yeah, the variable name is a bit misleading. For our purposes it didn\u0027t really matter, but for the new patch I added a population count that will give us an actual count.",
+      "parentUuid": "AAAAQH//5dI\u003d",
+      "revId": "042dfe342cef9df7e159a92e518ed19ce60a6e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAQH//5jI\u003d",
         "filename": "chip/stm32/keyboard_scan.c",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2012-10-08T19:15:55Z",
       "side": 1,
       "message": "should this be checking debounced_state or state?",
+      "revId": "042dfe342cef9df7e159a92e518ed19ce60a6e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH//5i0\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-10-08T22:25:08Z",
+      "side": 1,
+      "message": "Let\u0027s go with state since that\u0027s the argument that gets passed in.",
+      "parentUuid": "AAAAQH//5jI\u003d",
       "revId": "042dfe342cef9df7e159a92e518ed19ce60a6e89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -71,6 +107,42 @@
     },
     {
       "key": {
+        "uuid": "AAAAQH//5aY\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-10-08T22:25:08Z",
+      "side": 1,
+      "message": "I\u0027ll add a count_keys_pressed() function. keys_changed() should be used simply to tell whether or not the state has changed.",
+      "parentUuid": "AAAAQH//5jE\u003d",
+      "revId": "042dfe342cef9df7e159a92e518ed19ce60a6e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH//5co\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-10-08T22:25:08Z",
+      "side": 1,
+      "message": "The loop below breaks whenever a change is detected, even if num_keys_pressed \u003e 0. Right now the call to board_interrupt_host() is awkwardly nested inside the scan loop, so this allows us to move it to the outermost part.\n\nThis benefits the key release case since we won\u0027t fall back into the scan loop when num_keys_pressed \u003d\u003d 0.",
+      "parentUuid": "AAAAQH//5jE\u003d",
+      "revId": "042dfe342cef9df7e159a92e518ed19ce60a6e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAQH//5jg\u003d",
         "filename": "chip/stm32/keyboard_scan.c",
         "patchSetId": 5
@@ -88,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAQH//5as\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-10-08T22:25:08Z",
+      "side": 1,
+      "message": "D\u0027oh, I somehow mistook the scan_period_us for a minimum delay before scanning. I updated this to look like your version which compares the total time spent and min_post_scan_delay_us to determine delay between scans.",
+      "parentUuid": "AAAAQH//5jg\u003d",
+      "revId": "042dfe342cef9df7e159a92e518ed19ce60a6e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAQH//5jA\u003d",
         "filename": "chip/stm32/keyboard_scan.c",
         "patchSetId": 5
@@ -99,6 +189,24 @@
       "writtenOn": "2012-10-08T19:15:55Z",
       "side": 1,
       "message": "Does this function return values that don\u0027t correspond to num_keys_pressed?",
+      "revId": "042dfe342cef9df7e159a92e518ed19ce60a6e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH//5iU\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-10-08T22:25:08Z",
+      "side": 1,
+      "message": "They are not quite the same, though the idea is similar. kb_input_asserted() is intended as a quick snapshot of the state of the inputs while num_keys_pressed reflects the result of a full scan.\n\nSince this is a do-while loop and the scan is executed before the condition is checked, num_keys_pressed can be used. Now that you mention it, num_keys_pressed seems like a better choice since it\u0027s just a variable and doesn\u0027t need to do everything kb_input_asserted() does.\n\nkb_input_asserted() is better suited for use immediately before we put the task to sleep.",
+      "parentUuid": "AAAAQH//5jA\u003d",
       "revId": "042dfe342cef9df7e159a92e518ed19ce60a6e89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
