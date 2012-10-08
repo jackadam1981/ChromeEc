@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAAQH//5dI\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-10-08T20:42:00Z",
+      "side": 1,
+      "message": "Technically, number of columns with keys pressed.  Two keys pressed in the same column are counted as one non-zero column.",
+      "revId": "042dfe342cef9df7e159a92e518ed19ce60a6e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAQH//5jI\u003d",
         "filename": "chip/stm32/keyboard_scan.c",
         "patchSetId": 5
@@ -30,6 +47,24 @@
       "writtenOn": "2012-10-08T19:15:55Z",
       "side": 1,
       "message": "Perhaps this should be a local variable, with the value returned by check_keys_changed()? Or just a separate function call immediately after  the call to check_keys_changed() below?",
+      "revId": "042dfe342cef9df7e159a92e518ed19ce60a6e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH//5cw\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-10-08T20:42:00Z",
+      "side": 1,
+      "message": "(kb_input_asserted()\u003d\u003d0) \u003d\u003d (num_key_pressed\u003d\u003d0)\n\nSo this code is always executed.  Don\u0027t need this if().",
+      "parentUuid": "AAAAQH//5jE\u003d",
       "revId": "042dfe342cef9df7e159a92e518ed19ce60a6e89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
