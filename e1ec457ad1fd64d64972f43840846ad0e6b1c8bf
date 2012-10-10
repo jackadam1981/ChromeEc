@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQX///6g\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-10T16:08:37Z",
+      "side": 1,
+      "message": "Should probably change this var to keys_pressed, since that it was it returns",
+      "revId": "e1ec457ad1fd64d64972f43840846ad0e6b1c8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQX///6U\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-10T16:08:37Z",
+      "side": 1,
+      "message": "So this is different from keys_changed in that it looks at debounced_state., whereas keys_changes looks at the raw state. Is that what you intend? It\u0027s arguable which one we want I think. But it seems a bit inconsistent to use both, since we use key_changed to break out of this loop, and num_keys_pressed to decide whether to go back to interrupt mode.\n\nWhat if the debounce supresses a key release then we break out, re-enable interrupts and now will never see that release and will be stuck in interrupt?",
+      "revId": "e1ec457ad1fd64d64972f43840846ad0e6b1c8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQX///58\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-10T16:08:37Z",
+      "side": 1,
+      "message": "I wonder whether this should be something else. I believe this is just checking the raw key scan and will break if there are any keys pressed. The var name is misleading.",
+      "revId": "e1ec457ad1fd64d64972f43840846ad0e6b1c8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQX///6M\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-10T16:08:37Z",
+      "side": 1,
+      "message": "You are calculating this here, but there is more processing (e.g. board_interrupt_host()) before you actually use this value. I think you should calculate it just before starting the scan, not here.",
+      "revId": "e1ec457ad1fd64d64972f43840846ad0e6b1c8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
