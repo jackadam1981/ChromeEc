@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQX///iE\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-10-10T18:58:43Z",
+      "side": 1,
+      "message": "this looks broken when CONFIG_KEYSCAN_SEQ is not defined.",
+      "revId": "d52eb8b8dbbe57ad6a32a0891ce7713791ebb9e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
