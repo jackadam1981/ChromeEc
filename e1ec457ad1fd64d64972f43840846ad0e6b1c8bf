@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAQX///vo\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-10-10T19:17:40Z",
+      "side": 1,
+      "message": "Actually I changed check_keys_changed() to tell us if keys have changed, not just if they are pressed. The reason was to move board_interrupt_host() so it\u0027s no longer nested in the scan loop.\n\nThe idea was to avoid interrupting the host while we\u0027re in the scan loop, but in practice it only helps the case when all keys are released since any keys held will cause us to re-enter the loop.",
+      "parentUuid": "AAAAQX///6g\u003d",
+      "revId": "e1ec457ad1fd64d64972f43840846ad0e6b1c8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAQX///6U\u003d",
         "filename": "chip/stm32/keyboard_scan.c",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2012-10-10T16:08:37Z",
       "side": 1,
       "message": "So this is different from keys_changed in that it looks at debounced_state., whereas keys_changes looks at the raw state. Is that what you intend? It\u0027s arguable which one we want I think. But it seems a bit inconsistent to use both, since we use key_changed to break out of this loop, and num_keys_pressed to decide whether to go back to interrupt mode.\n\nWhat if the debounce supresses a key release then we break out, re-enable interrupts and now will never see that release and will be stuck in interrupt?",
+      "revId": "e1ec457ad1fd64d64972f43840846ad0e6b1c8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQX///n0\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-10-10T19:17:40Z",
+      "side": 1,
+      "message": "Both look at the debounced state in this patch. I think the confusion here stems from changing the return value of check_keys_changed(). In this patch, the return value indicates whether or not the debounced state has changed.\n\nSo there are really two distinct values at work here -- the number of keys which have changed since the last scan (if \u003e0 we\u0027ll interrupt the host), and the total number of keys pressed (if \u003e0 we\u0027ll do another scan).\n\nIf a key release has yet to be detected, num_keys_pressed will be \u003e0 and we\u0027ll always do another scan, even if a previous change (ie keypress) caused the loop to break to notify the host. Then when the key release shows up in the debounced state, check_keys_changed() returns 1 and num_keys_pressed will be set to 0. So we\u0027ll break out, interrupt the host, and re-enable keyboard interrupts.",
+      "parentUuid": "AAAAQX///6U\u003d",
       "revId": "e1ec457ad1fd64d64972f43840846ad0e6b1c8bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAQX///mw\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-10-10T19:17:40Z",
+      "side": 1,
+      "message": "Yep, the name was misleading beforehand. Hopefully it makes more sense now.",
+      "parentUuid": "AAAAQX///58\u003d",
+      "revId": "e1ec457ad1fd64d64972f43840846ad0e6b1c8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAQX///6M\u003d",
         "filename": "chip/stm32/keyboard_scan.c",
         "patchSetId": 6
@@ -64,6 +118,24 @@
       "writtenOn": "2012-10-10T16:08:37Z",
       "side": 1,
       "message": "You are calculating this here, but there is more processing (e.g. board_interrupt_host()) before you actually use this value. I think you should calculate it just before starting the scan, not here.",
+      "revId": "e1ec457ad1fd64d64972f43840846ad0e6b1c8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQX///i4\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2012-10-10T19:17:40Z",
+      "side": 1,
+      "message": "Oh, nice catch! In this code if we break to interrupt the host, then we don\u0027t delay before doing another scan. That\u0027s broken.\n\nI think the right solution is to calculate wait_time before breaking if (keys_changed). That way:\n- If we enter the loop as a result of a keyboard interrupt, we scan immediately.\n- If a change is seen and we break to interrupt the host, then we delay when we fall back into the loop.\n\nLMK what you think",
+      "parentUuid": "AAAAQX///6M\u003d",
       "revId": "e1ec457ad1fd64d64972f43840846ad0e6b1c8bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
