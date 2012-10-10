@@ -16,6 +16,7 @@
 #include "host_command.h"
 #include "keyboard.h"
 #include "keyboard_scan.h"
+#include "keyboard_test.h"
 #include "registers.h"
 #include "system.h"
 #include "task.h"
@@ -282,7 +283,16 @@ static void print_state(const uint8_t *state, const char *msg)
 	CPUTS("]\n");
 }
 
-static uint8_t read_raw_row_state(void)
+/**
+ * Read the raw row state for the currently selected column
+ *
+ * It is assumed that the column is already selected by the scanning
+ * hardware. The column number is only used by test code.
+ *
+ * @param column	Column number to read (-1 for all)
+ * @return row state
+ */
+static uint8_t read_raw_row_state(int column)
 {
 	uint16_t tmp;
 	uint8_t r = 0;
@@ -317,6 +327,9 @@ static uint8_t read_raw_row_state(void)
 	/* Invert it so 0=not pressed, 1=pressed */
 	r ^= 0xff;
 
+	/* Use simulated keyscan sequence instead if active */
+	r = keyscan_seq_get_scan(column, r);
+
 	return r;
 }
 
@@ -341,7 +354,7 @@ static int read_matrix(uint8_t *state)
 		select_column(c);
 		udelay(config.output_settle_us);
 
-		r = read_raw_row_state();
+		r = read_raw_row_state(c);
 
 #ifdef OR_WITH_CURRENT_STATE_FOR_TESTING
 		/* KLUDGE - or current state in, so we can make sure
@@ -524,7 +537,7 @@ static void scan_keyboard(void)
 	 * re-start immediatly polling instead of waiting
 	 * for the next interrupt.
 	 */
-	if (!read_raw_row_state())
+	if (!read_raw_row_state(-1) && !keyscan_seq_is_active())
 		task_wait_event(-1);
 
 	enter_polling_mode();
@@ -773,3 +786,4 @@ DECLARE_HOST_COMMAND(EC_CMD_MKBP_SET_CONFIG,
 DECLARE_HOST_COMMAND(EC_CMD_MKBP_GET_CONFIG,
 		     host_command_mkbp_get_config,
 		     EC_VER_MASK(0));
+
