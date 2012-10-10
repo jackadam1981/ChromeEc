@@ -44,6 +44,9 @@
 /* EC drives 13 outputs to keyboard matrix */
 #define KB_OUTPUTS 13
 
+/* Enable EC keyscan test */
+#define CONFIG_KEYSCAN_SEQ
+
 /* Charging */
 #define CONFIG_SMART_BATTERY
 #define CONFIG_PMU_TPS65090
