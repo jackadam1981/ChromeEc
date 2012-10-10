@@ -190,6 +190,7 @@ enum ec_status {
 	EC_RES_IN_PROGRESS = 8,		/* Accepted, command in progress */
 	EC_RES_UNAVAILABLE = 9,		/* No response available */
 	EC_RES_TIMEOUT = 10,		/* We got a timeout */
+	EC_RES_OVERFLOW = 11,		/* Table / data overflow */
 };
 
 /*
@@ -979,6 +980,39 @@ struct ec_params_mkbp_set_config {
 
 struct ec_response_mkbp_get_config {
 	struct ec_mkbp_config config;
+} __packed;
+
+/* Run the key scan emulation */
+#define EC_CMD_KEYSCAN_SEQ_CTRL 0x66
+
+enum ec_keyscan_seq_cmd {
+	EC_KEYSCAN_SEQ_CLEAR = 0,	/* Clear sequence */
+	EC_KEYSCAN_SEQ_ADD = 1,		/* Add item to sequence */
+	EC_KEYSCAN_SEQ_START = 2,	/* Start running sequence */
+	EC_KEYSCAN_SEQ_COLLECT = 3,	/* Collect sequence summary data */
+};
+
+struct ec_params_keyscan_seq_ctrl {
+	uint8_t cmd;	/* Command to send (enum ec_keyscan_seq_cmd) */
+	union {
+		struct {
+			uint16_t beat;		/* Beat number for this data */
+			uint8_t scan[0];	/* keyscan data */
+		} add;
+		struct {
+			/* Beat length in microseconds */
+			uint32_t beat_us;
+		} start;
+	};
+} __packed;
+
+struct ec_result_keyscan_seq_ctrl {
+	union {
+		struct {
+			uint8_t num_items;	/* Number of items */
+			uint8_t done[0];	/* Data for each item */
+		} collect;
+	};
 } __packed;
 
 /*****************************************************************************/
