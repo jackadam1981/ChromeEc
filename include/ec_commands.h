@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_COMMANDS_H
 #define __CROS_EC_COMMANDS_H
 
+#include "lightbar.h"
+
 /*
  * Protocol overview
  *
@@ -625,7 +627,7 @@ struct ec_params_lightbar {
 	union {
 		struct {
 			/* no args */
-		} dump, off, on, init, get_seq;
+		} dump, off, on, init, get_seq, get_params;
 
 		struct num {
 			uint8_t num;
@@ -638,6 +640,8 @@ struct ec_params_lightbar {
 		struct rgb {
 			uint8_t led, red, green, blue;
 		} rgb;
+
+		struct lightbar_params set_params;
 	};
 } __packed;
 
@@ -655,24 +659,28 @@ struct ec_response_lightbar {
 			uint8_t num;
 		} get_seq;
 
+		struct lightbar_params get_params;
+
 		struct {
 			/* no return params */
-		} off, on, init, brightness, seq, reg, rgb, demo;
+		} off, on, init, brightness, seq, reg, rgb, demo, set_params;
 	};
 } __packed;
 
 /* Lightbar commands */
 enum lightbar_command {
 	LIGHTBAR_CMD_DUMP = 0,
-	LIGHTBAR_CMD_OFF = 1,
-	LIGHTBAR_CMD_ON = 2,
-	LIGHTBAR_CMD_INIT = 3,
-	LIGHTBAR_CMD_BRIGHTNESS = 4,
-	LIGHTBAR_CMD_SEQ = 5,
-	LIGHTBAR_CMD_REG = 6,
-	LIGHTBAR_CMD_RGB = 7,
-	LIGHTBAR_CMD_GET_SEQ = 8,
-	LIGHTBAR_CMD_DEMO = 9,
+	LIGHTBAR_CMD_OFF,			/* 1 */
+	LIGHTBAR_CMD_ON,			/* 2 */
+	LIGHTBAR_CMD_INIT,			/* 3 */
+	LIGHTBAR_CMD_BRIGHTNESS,		/* 4 */
+	LIGHTBAR_CMD_SEQ,			/* 5 */
+	LIGHTBAR_CMD_REG,			/* 6 */
+	LIGHTBAR_CMD_RGB,			/* 7 */
+	LIGHTBAR_CMD_GET_SEQ ,			/* 8 */
+	LIGHTBAR_CMD_DEMO,			/* 9 */
+	LIGHTBAR_CMD_GET_PARAMS,		/* 10 */
+	LIGHTBAR_CMD_SET_PARAMS,		/* 11 */
 	LIGHTBAR_NUM_CMDS
 };
 

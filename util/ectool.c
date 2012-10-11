@@ -4,6 +4,7 @@
  */
 
 #include <ctype.h>
+#include <errno.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -145,7 +146,7 @@ const char help_str[] =
 /* Note: depends on enum system_image_copy_t */
 static const char * const image_names[] = {"unknown", "RO", "RW"};
 
-/* Write a buffer to the file.  Return non-zero if error. */
+/* Write a buffer to the file.	Return non-zero if error. */
 static int write_file(const char *filename, const char *buf, int size)
 {
 	FILE *f;
@@ -648,7 +649,7 @@ int cmd_flash_protect(int argc, char *argv[])
 
 	/* Print returned flags */
 	print_flash_protect_flags("Flash protect flags:", r.flags);
-	print_flash_protect_flags("Valid flags:        ", r.valid_flags);
+	print_flash_protect_flags("Valid flags:	       ", r.valid_flags);
 	print_flash_protect_flags("Writable flags:     ", r.writable_flags);
 
 	/* Check if we got all the flags we asked for */
@@ -1052,24 +1053,28 @@ static const struct {
 	LB_SIZES(reg),
 	LB_SIZES(rgb),
 	LB_SIZES(get_seq),
-	LB_SIZES(demo)
+	LB_SIZES(demo),
+	LB_SIZES(get_params),
+	LB_SIZES(set_params),
 };
 #undef LB_SIZES
 
 static int lb_help(const char *cmd)
 {
 	printf("Usage:\n");
-	printf("  %s                       - dump all regs\n", cmd);
-	printf("  %s off                   - enter standby\n", cmd);
-	printf("  %s on                    - leave standby\n", cmd);
-	printf("  %s init                  - load default vals\n", cmd);
-	printf("  %s brightness NUM        - set intensity (0-ff)\n", cmd);
-	printf("  %s seq [NUM|SEQUENCE]    - run given pattern"
+	printf("  %s			   - dump all regs\n", cmd);
+	printf("  %s off		   - enter standby\n", cmd);
+	printf("  %s on			   - leave standby\n", cmd);
+	printf("  %s init		   - load default vals\n", cmd);
+	printf("  %s brightness NUM	   - set intensity (0-ff)\n", cmd);
+	printf("  %s seq [NUM|SEQUENCE]	   - run given pattern"
 		 " (no arg for list)\n", cmd);
-	printf("  %s CTRL REG VAL          - set LED controller regs\n", cmd);
-	printf("  %s LED RED GREEN BLUE    - set color manually"
+	printf("  %s CTRL REG VAL	   - set LED controller regs\n", cmd);
+	printf("  %s LED RED GREEN BLUE	   - set color manually"
 		 " (LED=4 for all)\n", cmd);
-	printf("  %s demo 0|1              - turn demo mode on & off\n", cmd);
+	printf("  %s demo 0|1		   - turn demo mode on & off\n", cmd);
+	printf("  %s params [setfile]	   - get params"
+	       " (or set from file)\n", cmd);
 	return 0;
 }
 
@@ -1115,6 +1120,140 @@ static int lb_show_msg_names(void)
 	return 0;
 }
 
+static int lb_read_params_from_file(const char *filename,
+				    struct lightbar_params *p)
+{
+	FILE *fp;
+	char buf[80];
+	int val[4];
+	int r = 1;
+	int line = 0;
+	int want, got;
+	int i;
+
+	fp = fopen(filename, "rb");
+	if (!fp) {
+		fprintf(stderr, "Can't open %s: %s\n",
+			filename, strerror(errno));
+		return 1;
+	}
+
+	/* We must read the correct number of params from each line */
+#define READ(N) do {							\
+		line++;							\
+		want = (N);						\
+		got = -1;						\
+		if (!fgets(buf, sizeof(buf), fp))			\
+			goto done;					\
+		got = sscanf(buf, "%i %i %i %i",			\
+			     &val[0], &val[1], &val[2], &val[3]);	\
+		if (want != got)					\
+			goto done;					\
+	} while (0)
+
+
+	/* Do it */
+	READ(1); p->google_ramp_up = val[0];
+	READ(1); p->google_ramp_down = val[0];
+	READ(1); p->s3s0_ramp_up = val[0];
+	READ(1); p->s0_tick_delay[0] = val[0];
+	READ(1); p->s0_tick_delay[1] = val[0];
+	READ(1); p->s0s3_ramp_down = val[0];
+	READ(1); p->s3_sleep_for = val[0];
+	READ(1); p->s3_tick_delay = val[0];
+	READ(1); p->w_ofs = val[0];
+
+	READ(2);
+	p->bright_bl_off_fixed[0] = val[0];
+	p->bright_bl_off_fixed[1] = val[1];
+
+	READ(2);
+	p->bright_bl_on_min[0] = val[0];
+	p->bright_bl_on_min[1] = val[1];
+
+	READ(2);
+	p->bright_bl_on_max[0] = val[0];
+	p->bright_bl_on_max[1] = val[1];
+
+	READ(4);
+	p->s0_idx[0][0] = val[0];
+	p->s0_idx[0][1] = val[1];
+	p->s0_idx[0][2] = val[2];
+	p->s0_idx[0][3] = val[3];
+
+	READ(4);
+	p->s0_idx[1][0] = val[0];
+	p->s0_idx[1][1] = val[1];
+	p->s0_idx[1][2] = val[2];
+	p->s0_idx[1][3] = val[3];
+
+	READ(4);
+	p->s3_idx[0][0] = val[0];
+	p->s3_idx[0][1] = val[1];
+	p->s3_idx[0][2] = val[2];
+	p->s3_idx[0][3] = val[3];
+
+	READ(4);
+	p->s3_idx[1][0] = val[0];
+	p->s3_idx[1][1] = val[1];
+	p->s3_idx[1][2] = val[2];
+	p->s3_idx[1][3] = val[3];
+
+	for (i = 0; i < ARRAY_SIZE(p->color); i++) {
+		READ(3);
+		p->color[i].r = val[0];
+		p->color[i].g = val[1];
+		p->color[i].b = val[2];
+	}
+
+	/* Yay */
+	r = 0;
+done:
+	if (r)
+		fprintf(stderr, "problem with line %d: wanted %d, got %d\n",
+			line, want, got);
+	fclose(fp);
+	return r;
+}
+
+static void lb_show_params(const struct lightbar_params *p)
+{
+	int i;
+
+	printf("%d\t\t# .google_ramp_up\n", p->google_ramp_up);
+	printf("%d\t\t# .google_ramp_down\n", p->google_ramp_down);
+	printf("%d\t\t# .s3s0_ramp_up\n", p->s3s0_ramp_up);
+	printf("%d\t\t# .s0_tick_delay (battery)\n", p->s0_tick_delay[0]);
+	printf("%d\t\t# .s0_tick_delay (AC)\n", p->s0_tick_delay[1]);
+	printf("%d\t\t# .s0s3_ramp_down\n", p->s0s3_ramp_down);
+	printf("%d\t# .s3_sleep_for\n", p->s3_sleep_for);
+	printf("%d\t\t# .s3_tick_delay\n", p->s3_tick_delay);
+	printf("%d\t\t# .w_ofs\n", p->w_ofs);
+	printf("0x%02x 0x%02x\t# .bright_bl_off_fixed (battery, AC)\n",
+	       p->bright_bl_off_fixed[0], p->bright_bl_off_fixed[1]);
+	printf("0x%02x 0x%02x\t# .bright_bl_on_min (battery, AC)\n",
+	       p->bright_bl_on_min[0], p->bright_bl_on_min[1]);
+	printf("0x%02x 0x%02x\t# .bright_bl_on_max (battery, AC)\n",
+	       p->bright_bl_on_max[0], p->bright_bl_on_max[1]);
+	printf("%d %d %d %d\t\t# .s0_idx[] (battery)\n",
+	       p->s0_idx[0][0], p->s0_idx[0][1],
+	       p->s0_idx[0][2], p->s0_idx[0][3]);
+	printf("%d %d %d %d\t\t# .s0_idx[] (AC)\n",
+	       p->s0_idx[1][0], p->s0_idx[1][1],
+	       p->s0_idx[1][2], p->s0_idx[1][3]);
+	printf("%d %d %d %d\t# .s3_idx[] (battery)\n",
+	       p->s3_idx[0][0], p->s3_idx[0][1],
+	       p->s3_idx[0][2], p->s3_idx[0][3]);
+	printf("%d %d %d %d\t# .s3_idx[] (AC)\n",
+	       p->s3_idx[1][0], p->s3_idx[1][1],
+	       p->s3_idx[1][2], p->s3_idx[1][3]);
+	for (i = 0; i < ARRAY_SIZE(p->color); i++)
+		printf("0x%02x 0x%02x 0x%02x\t# color[%d]\n",
+		       p->color[i].r,
+		       p->color[i].g,
+		       p->color[i].b, i);
+}
+
 static int cmd_lightbar(int argc, char **argv)
 {
 	int i, r;
@@ -1126,7 +1265,7 @@ static int cmd_lightbar(int argc, char **argv)
 		if (r)
 			return r;
 		for (i = 0; i < ARRAY_SIZE(resp.dump.vals); i++) {
-			printf(" %02x     %02x     %02x\n",
+			printf(" %02x	  %02x	   %02x\n",
 			       resp.dump.vals[i].reg,
 			       resp.dump.vals[i].ic0,
 			       resp.dump.vals[i].ic1);
@@ -1142,6 +1281,21 @@ static int cmd_lightbar(int argc, char **argv)
 
 	if (argc == 2 && !strcasecmp(argv[1], "on"))
 		return lb_do_cmd(LIGHTBAR_CMD_ON, &param, &resp);
+
+	if (!strcasecmp(argv[1], "params")) {
+		if (argc > 2) {
+			r = lb_read_params_from_file(argv[2],
+						     &param.set_params);
+			if (r)
+				return r;
+			return lb_do_cmd(LIGHTBAR_CMD_SET_PARAMS,
+					 &param, &resp);
+		}
+		r = lb_do_cmd(LIGHTBAR_CMD_GET_PARAMS, &param, &resp);
+		if (!r)
+			lb_show_params(&resp.get_params);
+		return r;
+	}
 
 	if (argc == 3 && !strcasecmp(argv[1], "brightness")) {
 		char *e;
@@ -1606,11 +1760,11 @@ int cmd_switches(int argc, char *argv[])
 {
 	uint8_t s = read_mapped_mem8(EC_MEMMAP_SWITCHES);
 	printf("Current switches:   0x%02x\n", s);
-	printf("Lid switch:         %s\n",
+	printf("Lid switch:	    %s\n",
 	       (s & EC_SWITCH_LID_OPEN ? "OPEN" : "CLOSED"));
-	printf("Power button:       %s\n",
+	printf("Power button:	    %s\n",
 	       (s & EC_SWITCH_POWER_BUTTON_PRESSED ? "DOWN" : "UP"));
-	printf("Write protect:      %sABLED\n",
+	printf("Write protect:	    %sABLED\n",
 	       (s & EC_SWITCH_WRITE_PROTECT_DISABLED ? "DIS" : "EN"));
 	printf("Keyboard recovery:  %sABLED\n",
 	       (s & EC_SWITCH_KEYBOARD_RECOVERY ? "EN" : "DIS"));
@@ -1896,66 +2050,66 @@ int cmd_battery(int argc, char *argv[])
 	rv = read_mapped_string(EC_MEMMAP_BATT_MFGR, batt_text);
 	if (rv < 0 || !is_string_printable(batt_text))
 		goto cmd_error;
-	printf("  OEM name:               %s\n", batt_text);
+	printf("  OEM name:		  %s\n", batt_text);
 
 	rv = read_mapped_string(EC_MEMMAP_BATT_MODEL, batt_text);
 	if (rv < 0 || !is_string_printable(batt_text))
 		goto cmd_error;
-	printf("  Model number:           %s\n", batt_text);
+	printf("  Model number:		  %s\n", batt_text);
 
 	rv = read_mapped_string(EC_MEMMAP_BATT_TYPE, batt_text);
 	if (rv < 0 || !is_string_printable(batt_text))
 		goto cmd_error;
-	printf("  Chemistry   :           %s\n", batt_text);
+	printf("  Chemistry   :		  %s\n", batt_text);
 
 	rv = read_mapped_string(EC_MEMMAP_BATT_SERIAL, batt_text);
-	printf("  Serial number:          %s\n", batt_text);
+	printf("  Serial number:	  %s\n", batt_text);
 
 	val = read_mapped_mem32(EC_MEMMAP_BATT_DCAP);
 	if (!is_battery_range(val))
 		goto cmd_error;
-	printf("  Design capacity:        %u mAh\n", val);
+	printf("  Design capacity:	  %u mAh\n", val);
 
 	val = read_mapped_mem32(EC_MEMMAP_BATT_LFCC);
 	if (!is_battery_range(val))
 		goto cmd_error;
-	printf("  Last full charge:       %u mAh\n", val);
+	printf("  Last full charge:	  %u mAh\n", val);
 
 	val = read_mapped_mem32(EC_MEMMAP_BATT_DVLT);
 	if (!is_battery_range(val))
 		goto cmd_error;
-	printf("  Design output voltage   %u mV\n", val);
+	printf("  Design output voltage	  %u mV\n", val);
 
 	val = read_mapped_mem32(EC_MEMMAP_BATT_DCAP);
 	if (!is_battery_range(val))
 		goto cmd_error;
 	printf("  Design capacity warning %u mAh\n",
 		val * BATTERY_LEVEL_WARNING / 100);
-	printf("  Design capacity low     %u mAh\n",
+	printf("  Design capacity low	  %u mAh\n",
 		val * BATTERY_LEVEL_LOW / 100);
 
 	val = read_mapped_mem32(EC_MEMMAP_BATT_CCNT);
 	if (!is_battery_range(val))
 		goto cmd_error;
-	printf("  Cycle count             %u\n", val);
+	printf("  Cycle count		  %u\n", val);
 
 	val = read_mapped_mem32(EC_MEMMAP_BATT_VOLT);
 	if (!is_battery_range(val))
 		goto cmd_error;
-	printf("  Present voltage         %u mV\n", val);
+	printf("  Present voltage	  %u mV\n", val);
 
 	val = read_mapped_mem32(EC_MEMMAP_BATT_RATE);
 	if (!is_battery_range(val))
 		goto cmd_error;
-	printf("  Present current         %u mA\n", val);
+	printf("  Present current	  %u mA\n", val);
 
 	val = read_mapped_mem32(EC_MEMMAP_BATT_CAP);
 	if (!is_battery_range(val))
 		goto cmd_error;
-	printf("  Remaining capacity      %u mAh\n", val);
+	printf("  Remaining capacity	  %u mAh\n", val);
 
 	val = read_mapped_mem8(EC_MEMMAP_BATT_FLAG);
-	printf("  Flags                   0x%02x", val);
+	printf("  Flags			  0x%02x", val);
 	if (val & EC_BATT_FLAG_AC_PRESENT)
 		printf(" AC_PRESENT");
 	if (val & EC_BATT_FLAG_BATT_PRESENT)
@@ -2009,7 +2163,7 @@ int cmd_chipinfo(int argc, char *argv[])
 	if (rv < 0)
 		return rv;
 	printf("  vendor:    %s\n", info.vendor);
-	printf("  name:      %s\n", info.name);
+	printf("  name:	     %s\n", info.name);
 	printf("  revision:  %s\n", info.revision);
 
 	return 0;
@@ -2019,8 +2173,8 @@ int cmd_chipinfo(int argc, char *argv[])
 static int ec_hash_help(const char *cmd)
 {
 	printf("Usage:\n");
-	printf("  %s                        - get last hash\n", cmd);
-	printf("  %s abort                  - abort hashing\n", cmd);
+	printf("  %s			    - get last hash\n", cmd);
+	printf("  %s abort		    - abort hashing\n", cmd);
 	printf("  %s start [<offset> <size> [<nonce>]] - start hashing\n", cmd);
 	printf("  %s recalc [<offset> <size> [<nonce>]] - sync rehash\n", cmd);
 	printf("\n"
@@ -2036,26 +2190,26 @@ static int ec_hash_print(const struct ec_response_vboot_hash *r)
 	int i;
 
 	if (r->status == EC_VBOOT_HASH_STATUS_BUSY) {
-		printf("status:  busy\n");
+		printf("status:	 busy\n");
 		return 0;
 	} else if (r->status == EC_VBOOT_HASH_STATUS_NONE) {
-		printf("status:  unavailable\n");
+		printf("status:	 unavailable\n");
 		return 0;
 	} else if (r->status != EC_VBOOT_HASH_STATUS_DONE) {
-		printf("status:  %d\n", r->status);
+		printf("status:	 %d\n", r->status);
 		return 0;
 	}
 
-	printf("status:  done\n");
+	printf("status:	 done\n");
 	if (r->hash_type == EC_VBOOT_HASH_TYPE_SHA256)
-		printf("type:    SHA-256\n");
+		printf("type:	 SHA-256\n");
 	else
-		printf("type:    %d\n", r->hash_type);
+		printf("type:	 %d\n", r->hash_type);
 
-	printf("offset:  0x%08x\n", r->offset);
-	printf("size:    0x%08x\n", r->size);
+	printf("offset:	 0x%08x\n", r->offset);
+	printf("size:	 0x%08x\n", r->size);
 
-	printf("hash:    ");
+	printf("hash:	 ");
 	for (i = 0; i < r->digest_size; i++)
 		printf("%02x", r->hash_digest[i]);
 	printf("\n");
@@ -2213,7 +2367,7 @@ int cmd_console(int argc, char *argv[])
 			return rv;
 
 		if (rv == 0)
-			break;  /* Empty response means done */
+			break;	/* Empty response means done */
 
 		/* Make sure output is null-terminated, then dump it */
 		out[sizeof(out) - 1] = '\0';
@@ -2329,7 +2483,7 @@ static int show_fields(struct ec_mkbp_config *config, int argc, char *argv[])
 	param = keyconfig_params;
 	for (i = 0; i < ARRAY_SIZE(keyconfig_params); i++, param++) {
 		if (mask & (1 << i)) {
-			fprintf(stderr, "%-12s   %u\n", param->name,
+			fprintf(stderr, "%-12s	 %u\n", param->name,
 				get_value(param, (char *)config));
 		}
 	}
@@ -2354,7 +2508,7 @@ static int cmd_keyconfig(int argc, char *argv[])
 
 		param = keyconfig_params;
 		for (i = 0; i < ARRAY_SIZE(keyconfig_params); i++, param++) {
-			fprintf(stderr, "%-12s   %s\n", param->name,
+			fprintf(stderr, "%-12s	 %s\n", param->name,
 				param->name);
 		}
 		return -1;
