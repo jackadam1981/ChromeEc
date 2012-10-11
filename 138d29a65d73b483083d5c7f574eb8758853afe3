@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQn///0Y\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 923,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-10-11T16:45:25Z",
+      "side": 1,
+      "message": "What does \u0027beat\u0027 do?  Is it the # of beats after the previous message, or an absolute count?",
+      "revId": "138d29a65d73b483083d5c7f574eb8758853afe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQn///0c\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 924,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-10-11T16:45:25Z",
+      "side": 1,
+      "message": "This is the only place MKBP specifies the # of cols.  Shouldn\u0027t it be variable, like MKBP_STATE?",
+      "revId": "138d29a65d73b483083d5c7f574eb8758853afe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQn///0U\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 927,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-10-11T16:45:25Z",
+      "side": 1,
+      "message": "Just add one item at a time?  Then you can fold seq_item into this struct.",
+      "revId": "138d29a65d73b483083d5c7f574eb8758853afe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQn///0Q\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 943,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-10-11T16:45:25Z",
+      "side": 1,
+      "message": "Switch beat_us and cmd; that way, only need to specify beat_us for start command.\n\nIf you do it this way, you can use a union like Bill does with the lightbar command, and fold SEQ_ADD into the same command.",
+      "revId": "138d29a65d73b483083d5c7f574eb8758853afe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQn///0M\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-10-11T16:45:25Z",
+      "side": 1,
+      "message": "What does collect do?  Sample the keyboard and accumulate data?",
+      "revId": "138d29a65d73b483083d5c7f574eb8758853afe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
