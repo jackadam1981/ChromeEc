@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAQn//+ug\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 923,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-12T16:46:02Z",
+      "side": 1,
+      "message": "Absolute beat number, added comment.",
+      "parentUuid": "AAAAQn///0Y\u003d",
+      "revId": "138d29a65d73b483083d5c7f574eb8758853afe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAQn///0c\u003d",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2012-10-11T16:45:25Z",
       "side": 1,
       "message": "This is the only place MKBP specifies the # of cols.  Shouldn\u0027t it be variable, like MKBP_STATE?",
+      "revId": "138d29a65d73b483083d5c7f574eb8758853afe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQn//+uU\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 924,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-12T16:46:02Z",
+      "side": 1,
+      "message": "I would prefer that we define a maximum, but I will go with variable. It does complicate the client code a bit.",
+      "parentUuid": "AAAAQn///0c\u003d",
       "revId": "138d29a65d73b483083d5c7f574eb8758853afe3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAQn//+uQ\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 927,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-12T16:46:02Z",
+      "side": 1,
+      "message": "Er OK.",
+      "parentUuid": "AAAAQn///0U\u003d",
+      "revId": "138d29a65d73b483083d5c7f574eb8758853afe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAQn///0Q\u003d",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAQn//+uM\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 943,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-12T16:46:02Z",
+      "side": 1,
+      "message": "Will go with a union",
+      "parentUuid": "AAAAQn///0Q\u003d",
+      "revId": "138d29a65d73b483083d5c7f574eb8758853afe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAQn///0M\u003d",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -81,6 +153,24 @@
       "writtenOn": "2012-10-11T16:45:25Z",
       "side": 1,
       "message": "What does collect do?  Sample the keyboard and accumulate data?",
+      "revId": "138d29a65d73b483083d5c7f574eb8758853afe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQn//+uk\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-12T16:46:02Z",
+      "side": 1,
+      "message": "It returns information about the result of each keyscan you sent to the EC - at present just whether or not it was actually processed.",
+      "parentUuid": "AAAAQn///0M\u003d",
       "revId": "138d29a65d73b483083d5c7f574eb8758853afe3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
