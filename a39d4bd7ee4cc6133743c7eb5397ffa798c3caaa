@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQn//+Yg\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 997,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-10-12T21:34:03Z",
+      "side": 1,
+      "message": "If you want to use this uint8 for other flags now, why not call it \u0027flags\u0027 now and define (1\u003c\u003c0) as KEYSCAN_SEQ_FLAG_DONE",
+      "revId": "a39d4bd7ee4cc6133743c7eb5397ffa798c3caaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQn//+Y0\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1010,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-10-12T21:34:03Z",
+      "side": 1,
+      "message": "...relative to start of sequence",
+      "revId": "a39d4bd7ee4cc6133743c7eb5397ffa798c3caaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
