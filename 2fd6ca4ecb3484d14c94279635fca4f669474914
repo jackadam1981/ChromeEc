@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQn//+rw\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-10-12T17:35:23Z",
+      "side": 1,
+      "message": "Are all items the same size?\n\nuint8_t item_size?\n\nI\u0027m guessing this is a series of scan arrays, but it\u0027s unclear.  But then why is it called done[]?\n\nNeed more comments here.",
+      "revId": "2fd6ca4ecb3484d14c94279635fca4f669474914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
