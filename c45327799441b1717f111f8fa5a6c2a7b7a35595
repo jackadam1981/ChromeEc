@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQn//9nc\u003d",
+        "filename": "common/thermal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000030
+      },
+      "writtenOn": "2012-10-15T16:37:02Z",
+      "side": 1,
+      "message": "While we are at it, can we change this as well?  My understanding is that the first three values are warning, cpu  down, and  power down.  The last 5 are fan RPM thresholds.\n\nI would suggest changing the first one (warning) to 100C (373K).  This is the one that asserts prochot line.\n\nThe second one should be set to Tjmax 105C (378K).\n\nThe third one, I am not sure where that value comes from but 383K SGTM.",
+      "revId": "c45327799441b1717f111f8fa5a6c2a7b7a35595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
