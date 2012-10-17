@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAQn//7Y0\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2012-10-17T20:56:34Z",
+      "side": 1,
+      "message": "This is a good point - let\u0027s test this fix in the setup which is known to generate three or four failures a day and see what happens.",
+      "parentUuid": "AAAAQn//7ao\u003d",
+      "revId": "05ef2eed26d618e4bad422f37abcc2529aa0590a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAQn//7aQ\u003d",
         "filename": "chip/lm4/lpc.c",
         "patchSetId": 1
