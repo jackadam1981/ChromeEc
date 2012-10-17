@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQn//7ao\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-17T20:54:09Z",
+      "side": 1,
+      "message": "How does this test that this CL fixes the failure? Do you need to disable the interrupt perhaps. or run in the lab for 24 hours?",
+      "revId": "05ef2eed26d618e4bad422f37abcc2529aa0590a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQn//7aQ\u003d",
+        "filename": "chip/lm4/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-17T20:54:09Z",
+      "side": 1,
+      "message": "I presume we still need this do handling fast port 80 writes?",
+      "revId": "05ef2eed26d618e4bad422f37abcc2529aa0590a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQn//7Zc\u003d",
+        "filename": "chip/lm4/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-17T20:54:09Z",
+      "side": 1,
+      "message": "Is there not a status bit for this one?",
+      "revId": "05ef2eed26d618e4bad422f37abcc2529aa0590a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
