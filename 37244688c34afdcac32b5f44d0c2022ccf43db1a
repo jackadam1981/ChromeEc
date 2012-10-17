@@ -16,6 +16,24 @@
       "revId": "37244688c34afdcac32b5f44d0c2022ccf43db1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQn//7XU\u003d",
+        "filename": "chip/lm4/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-10-17T21:04:13Z",
+      "side": 1,
+      "message": "Long-term I\u0027d like to define a bool.\n\nThis is link-only, and we\u0027ve got ~8KB unused RAM at present, so not a problem here.",
+      "parentUuid": "AAAAQn//7bs\u003d",
+      "revId": "37244688c34afdcac32b5f44d0c2022ccf43db1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
