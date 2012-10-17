@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAQn//7V0\u003d",
+        "filename": "chip/lm4/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-10-17T21:10:35Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "AAAAQn//7aQ\u003d",
+      "revId": "05ef2eed26d618e4bad422f37abcc2529aa0590a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAQn//7Zc\u003d",
         "filename": "chip/lm4/lpc.c",
         "patchSetId": 1
@@ -65,6 +83,24 @@
       "writtenOn": "2012-10-17T20:54:09Z",
       "side": 1,
       "message": "Is there not a status bit for this one?",
+      "revId": "05ef2eed26d618e4bad422f37abcc2529aa0590a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQn//7U0\u003d",
+        "filename": "chip/lm4/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-10-17T21:10:35Z",
+      "side": 1,
+      "message": "Different register - we still uses the interrupt status for host reads, since we only want to wake the task on the edge where the host has just done a read.\n\n(The i8042 task will also get called the next time a key is pressed, so it can\u0027t get stuck the same way host commands can).",
+      "parentUuid": "AAAAQn//7Zc\u003d",
       "revId": "05ef2eed26d618e4bad422f37abcc2529aa0590a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
