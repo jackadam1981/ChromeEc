@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQn//66c\u003d",
+        "filename": "chip/lm4/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2012-10-18T00:55:14Z",
+      "side": 1,
+      "message": "could you ever have different sized parameters in this buffer? I think a better fix would be to access the buffer through alignment invariant accessors.",
+      "revId": "0acf0138cc74c23f46aef26a74c2eeb56844fbdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
