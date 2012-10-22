@@ -190,6 +190,10 @@ static int board_startup_hook(void)
 	pmu_enable_fet(FET_LCD_PANEL, 1, NULL);
 	/* Enable backlight power */
 	pmu_enable_fet(FET_BACKLIGHT, 1, NULL);
+	/* Try a second time the lcd panel power enable as the first one
+	 * sometimes fail.
+	 */
+	pmu_enable_fet(FET_LCD_PANEL, 1, NULL);
 	return 0;
 #endif /* CONFIG_PMU_FORCE_FET */
 }
@@ -217,12 +221,14 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_shutdown_hook, HOOK_PRIO_DEFAULT);
  */
 void board_hard_reset(void)
 {
+#if 0 /* Disable PMIC hard reset on error */
 	/* Force a hard reset of tps Chrome */
 	gpio_set_level(GPIO_PMIC_RESET, 1);
 
 	/* Delay while the power is cut */
 	udelay(HARD_RESET_TIMEOUT_MS * 1000);
 
+#endif
 	/* Shouldn't get here unless the board doesn't have this capability */
 	panic_puts("Hard reset failed! (this board may not be capable)\n");
 }
