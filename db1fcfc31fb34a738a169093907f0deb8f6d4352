@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAQn//17U\u003d",
+        "filename": "common/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-10-24T18:14:18Z",
+      "side": 1,
+      "message": "Just tried that.  Doesn\u0027t reduce code size.",
+      "parentUuid": "AAAAQn//1+I\u003d",
+      "revId": "db1fcfc31fb34a738a169093907f0deb8f6d4352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAQn//1+M\u003d",
         "filename": "common/console.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2012-10-24T17:41:10Z",
       "side": 1,
       "message": "comment style",
+      "revId": "db1fcfc31fb34a738a169093907f0deb8f6d4352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQn//17Q\u003d",
+        "filename": "common/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-10-24T18:14:18Z",
+      "side": 1,
+      "message": "It\u0027s technically two comments.  Though since there\u0027s no current need to send #, I can remove the todo.",
+      "parentUuid": "AAAAQn//1+M\u003d",
       "revId": "db1fcfc31fb34a738a169093907f0deb8f6d4352",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
