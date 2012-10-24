@@ -19,7 +19,7 @@
 #include "util.h"
 #include "watchdog.h"
 
-#define PLL_CLOCK 66666667  /* System clock = 200MHz PLL/3 = 66.667MHz */
+#define PLL_CLOCK 33333333  /* System clock = 200MHz PLL/6 = 33.333MHz */
 
 static int freq;
 
@@ -46,7 +46,7 @@ static void enable_pll(void)
 
 	/* Enable the PLL (PWRDN is no longer set) and set divider.  PLL is
 	 * still bypassed, since it hasn't locked yet. */
-	LM4_SYSTEM_RCC = LM4_SYSTEM_RCC_SYSDIV(2) |
+	LM4_SYSTEM_RCC = LM4_SYSTEM_RCC_SYSDIV(5) |
 		LM4_SYSTEM_RCC_USESYSDIV |
 		LM4_SYSTEM_RCC_BYPASS |
 		LM4_SYSTEM_RCC_OSCSRC(1) |
