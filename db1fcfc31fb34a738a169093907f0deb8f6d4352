@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQn//1+I\u003d",
+        "filename": "common/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-24T17:41:10Z",
+      "side": 1,
+      "message": "Could return argc or -1 instead? Might save a bit of code space",
+      "revId": "db1fcfc31fb34a738a169093907f0deb8f6d4352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQn//1+M\u003d",
+        "filename": "common/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-24T17:41:10Z",
+      "side": 1,
+      "message": "comment style",
+      "revId": "db1fcfc31fb34a738a169093907f0deb8f6d4352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
