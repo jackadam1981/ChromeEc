@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQn//1XY\u003d",
+        "filename": "chip/stm32/flash-stm32f100.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-25T00:36:34Z",
+      "side": 1,
+      "message": "comment style",
+      "revId": "7ba6950e4056b463cb5d41974c5900403c4bac50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQn//1XU\u003d",
+        "filename": "chip/stm32/flash-stm32l15x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-25T00:36:34Z",
+      "side": 1,
+      "message": "Perhaps just /* since this isn\u0027t actually a function doc",
+      "revId": "7ba6950e4056b463cb5d41974c5900403c4bac50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
