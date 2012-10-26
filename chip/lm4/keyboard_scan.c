@@ -24,7 +24,7 @@
 #define CPRINTF(format, args...) cprintf(CC_KEYSCAN, format, ## args)
 
 /* Time constants */
-#define POLLING_MODE_TIMEOUT 1000000  /* Max time to poll if no keys are down */
+#define POLLING_MODE_TIMEOUT  SECOND  /* Max time to poll if no keys are down */
 #define DEBOUNCE_UP_US         30000  /* Debounce time for key-up */
 #define DEBOUNCE_DOWN_US        6000  /* Debounce time for key-down */
 #define SCAN_LOOP_DELAY         1000  /* Delay in scan loop */

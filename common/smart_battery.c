@@ -79,7 +79,7 @@ int battery_time_at_rate(int rate, int *minutes)
 			return EC_SUCCESS;
 		} else {
 			/* wait 10ms for AT_RATE_OK */
-			usleep(10000);
+			usleep(10 * MSEC);
 		}
 	}
 	return EC_ERROR_TIMEOUT;
