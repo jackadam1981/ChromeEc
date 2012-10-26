@@ -193,14 +193,10 @@ void timer_print_info(void)
 			ccprintf("  Tsk %2d  0x%016lx -> %11.6ld\n", tskid,
 				 timer_deadline[tskid].val,
 				 timer_deadline[tskid].val - t);
-			if (in_interrupt_context())
-				uart_emergency_flush();
-			else
-				cflush();
+			cflush();
 		}
 	}
 }
-
 
 static int command_wait(int argc, char **argv)
 {

@@ -6,6 +6,7 @@
 /* Console output module for Chrome EC */
 
 #include "console.h"
+#include "task.h"
 #include "uart.h"
 #include "util.h"
 
@@ -71,7 +72,10 @@ int cprintf(enum console_channel channel, const char *format, ...)
 
 void cflush(void)
 {
-	uart_flush_output();
+	if (in_interrupt_context())
+		panic_flush();
+	else
+		uart_flush_output();
 }
 
 /*****************************************************************************/

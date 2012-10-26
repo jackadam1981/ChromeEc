@@ -534,35 +534,6 @@ int uart_printf(const char *format, ...)
 	return rv;
 }
 
-/**
- * Add a character directly to the UART buffer.
- */
-static int emergency_txchar(void *format, int c)
-{
-	/* Wait for space */
-	while (!uart_tx_ready())
-		;
-
-	/* Write the character */
-	uart_write_char(c);
-	return 0;
-}
-
-int uart_emergency_printf(const char *format, ...)
-{
-	int rv;
-	va_list args;
-
-	va_start(args, format);
-	rv = vfnprintf(emergency_txchar, NULL, format, args);
-	va_end(args);
-
-	/* Wait for transmit FIFO empty */
-	uart_tx_flush();
-
-	return rv;
-}
-
 void uart_flush_output(void)
 {
 	/* Wait for buffer to empty */
@@ -582,23 +553,6 @@ void uart_flush_output(void)
 
 	/* Wait for transmit FIFO empty */
 	uart_tx_flush();
-}
-
-void uart_emergency_flush(void)
-{
-	do {
-		/*
-		 * Copy output from buffer until TX fifo full or output buffer
-		 * empty.
-		 */
-		while (uart_tx_ready() &&
-		       (tx_buf_head != tx_buf_tail)) {
-			uart_write_char(tx_buf[tx_buf_tail]);
-			tx_buf_tail = TX_BUF_NEXT(tx_buf_tail);
-		}
-		/* Wait for transmit FIFO empty */
-		uart_tx_flush();
-	} while (tx_buf_head != tx_buf_tail);
 }
 
 void uart_flush_input(void)
@@ -713,6 +667,76 @@ int uart_gets(char *dest, int size)
 
 	/* Return the length we got */
 	return got;
+}
+
+/*****************************************************************************/
+/* Panic-mode output */
+
+void panic_flush(void)
+{
+	do {
+		/*
+		 * Copy output from buffer until TX fifo full or output buffer
+		 * empty.
+		 */
+		while (uart_tx_ready() &&
+		       (tx_buf_head != tx_buf_tail)) {
+			uart_write_char(tx_buf[tx_buf_tail]);
+			tx_buf_tail = TX_BUF_NEXT(tx_buf_tail);
+		}
+		/* Wait for transmit FIFO empty */
+		uart_tx_flush();
+	} while (tx_buf_head != tx_buf_tail);
+}
+
+/**
+ * Add a character directly to the UART buffer.
+ *
+ * @param context	Context; ignored.
+ * @param c		Character to write.
+ * @return 0 if the character was transmitted, 1 if it was dropped.
+ */
+static int panic_txchar(void *context, int c)
+{
+	if (c == '\n')
+		panic_txchar(context, '\r');
+
+	/* Wait for space in transmit FIFO */
+	while (!uart_tx_ready())
+		;
+
+	/* Write the character directly to the transmit FIFO */
+	uart_write_char(c);
+
+	return 0;
+}
+
+void panic_puts(const char *outstr)
+{
+	/* Flush the output buffer */
+	panic_flush();
+
+	/* Put all characters in the output buffer */
+	while (*outstr)
+		panic_txchar(NULL, *outstr++);
+
+	/* Flush the transmit FIFO */
+	uart_tx_flush();
+}
+
+void panic_printf(const char *format, ...)
+{
+	va_list args;
+
+	/* Flush the output buffer */
+	panic_flush();
+
+	va_start(args, format);
+	vfnprintf(panic_txchar, NULL, format, args);
+	va_end(args);
+
+	/* Flush the transmit FIFO */
+	uart_tx_flush();
 }
 
 /*****************************************************************************/
