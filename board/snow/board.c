@@ -17,6 +17,7 @@
 #include "spi.h"
 #include "task.h"
 #include "timer.h"
+#include "uart.h"
 #include "util.h"
 
 #define GPIO_KB_INPUT  (GPIO_INPUT | GPIO_PULL_UP | GPIO_INT_BOTH)
@@ -316,7 +317,7 @@ int board_i2c_claim(int port)
 	usleep(BUS_SLEW_DELAY_US);
 	i2c_claimed_by_ec = 0;
 
-	panic_puts("Unable to access I2C bus (arbitration timeout)\n");
+	uart_emergency_puts("Unable to access I2C bus (arbitration timeout)\n");
 	return EC_ERROR_BUSY;
 }
 
@@ -344,7 +345,8 @@ void board_hard_reset(void)
 	udelay(HARD_RESET_TIMEOUT_MS * 1000);
 
 	/* Shouldn't get here unless the board doesn't have this capability */
-	panic_puts("Hard reset failed! (this board may not be capable)\n");
+	uart_emergency_puts("Hard reset failed! "
+			    "(this board may not be capable)\n");
 }
 
 #ifdef CONFIG_PMU_BOARD_INIT

@@ -48,11 +48,17 @@ void uart_flush_output(void);
  * interrupt context. */
 void uart_emergency_flush(void);
 
+/* Like uart_puts(), but bypasses the transmit buffer.
+ *
+ * Blocks until UART has transmitted the formatted output, even in a high
+ * priority interrupt context. */
+void uart_emergency_puts(const char *outstr);
+
 /* Like uart_printf(), but bypasses the transmit buffer.
  *
  * Blocks until UART has transmitted the formatted output, even in a high
  * priority interrupt context. */
-int uart_emergency_printf(const char *format, ...);
+void uart_emergency_printf(const char *format, ...);
 
 /*****************************************************************************/
 /* Input functions
