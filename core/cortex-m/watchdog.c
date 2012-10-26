@@ -5,15 +5,12 @@
 
 /* Watchdog common code */
 
-#include "board.h"
 #include "common.h"
-#include "config.h"
 #include "registers.h"
 #include "task.h"
 #include "timer.h"
 #include "uart.h"
 #include "watchdog.h"
-
 
 void watchdog_trace(uint32_t excep_lr, uint32_t excep_sp)
 {
@@ -45,7 +42,6 @@ void watchdog_trace(uint32_t excep_lr, uint32_t excep_sp)
 	task_print_list();
 	uart_emergency_flush();
 }
-
 
 /* Low priority task to reload the watchdog */
 void watchdog_task(void)
