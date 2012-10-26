@@ -15,12 +15,12 @@
  * 's' is the stack size in bytes; must be a multiple of 8
  */
 #define CONFIG_TASK_LIST \
-  TASK(WATCHDOG, watchdog_task, NULL, TASK_STACK_SIZE) \
-  TASK(VBOOTHASH, vboot_hash_task, NULL, TASK_STACK_SIZE) \
-  TASK(HOSTCMD, host_command_task, NULL, TASK_STACK_SIZE) \
-  TASK(CONSOLE, console_task, NULL, TASK_STACK_SIZE) \
-  TASK(MTX3C, mutex_random_task, NULL, TASK_STACK_SIZE) \
-  TASK(MTX3B, mutex_random_task, NULL, TASK_STACK_SIZE) \
-  TASK(MTX3A, mutex_random_task, NULL, TASK_STACK_SIZE) \
-  TASK(MTX2, mutex_second_task, NULL, TASK_STACK_SIZE) \
-  TASK(MTX1, mutex_main_task, NULL, TASK_STACK_SIZE)
+	TASK(TICK, hook_task, NULL, TASK_STACK_SIZE) \
+	TASK(VBOOTHASH, vboot_hash_task, NULL, TASK_STACK_SIZE) \
+	TASK(HOSTCMD, host_command_task, NULL, TASK_STACK_SIZE) \
+	TASK(CONSOLE, console_task, NULL, TASK_STACK_SIZE) \
+	TASK(MTX3C, mutex_random_task, NULL, TASK_STACK_SIZE) \
+	TASK(MTX3B, mutex_random_task, NULL, TASK_STACK_SIZE) \
+	TASK(MTX3A, mutex_random_task, NULL, TASK_STACK_SIZE) \
+	TASK(MTX2, mutex_second_task, NULL, TASK_STACK_SIZE) \
+	TASK(MTX1, mutex_main_task, NULL, TASK_STACK_SIZE)
