@@ -363,7 +363,7 @@ static void handle_acpi_write(int is_cmd)
 		case EC_ACPI_MEM_TEST_COMPLIMENT:
 			result = 0xff - acpi_mem_test;
 			break;
-#ifdef CONFIG_TASK_PWM
+#ifdef CONFIG_PWM
 		case EC_ACPI_MEM_KEYBOARD_BACKLIGHT:
 			/*
 			 * TODO: not very satisfying that LPC knows directly
@@ -389,7 +389,7 @@ static void handle_acpi_write(int is_cmd)
 		case EC_ACPI_MEM_TEST:
 			acpi_mem_test = data;
 			break;
-#ifdef CONFIG_TASK_PWM
+#ifdef CONFIG_PWM
 		case EC_ACPI_MEM_KEYBOARD_BACKLIGHT:
 			pwm_set_keyboard_backlight(data);
 			break;
@@ -798,15 +798,13 @@ static void lpc_resume(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, lpc_resume, HOOK_PRIO_DEFAULT);
 
-void lpc_task(void)
+static void lpc_tick(void)
 {
-	while (1) {
-		msleep(250);
-		/*
-		 * Make sure pending LPC interrupts have been processed.
-		 * This works around a LM4 bug where host writes sometimes
-		 * don't trigger interrupts.  See crosbug.com/p/13965.
-		 */
-		task_trigger_irq(LM4_IRQ_LPC);
-	}
+	/*
+	 * Make sure pending LPC interrupts have been processed.
+	 * This works around a LM4 bug where host writes sometimes
+	 * don't trigger interrupts.  See crosbug.com/p/13965.
+	 */
+	task_trigger_irq(LM4_IRQ_LPC);
 }
+DECLARE_HOOK(HOOK_TICK, lpc_tick, HOOK_PRIO_DEFAULT);

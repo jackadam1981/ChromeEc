@@ -24,11 +24,17 @@
 /* Default task stack size */
 #define TASK_STACK_SIZE 488
 
+/* Interval between HOOK_TICK notifications */
+#define HOOK_TICK_INTERVAL (500 * MSEC)
+
 /* support programming on-chip flash */
 #define CONFIG_FLASH
 
 /* build with assertions and debug messages */
 #define CONFIG_DEBUG
+
+/* Enable watchdog timer */
+#define CONFIG_WATCHDOG
 
 /* Compile for running from RAM instead of flash */
 /* #define COMPILE_FOR_RAM */
