@@ -536,31 +536,53 @@ int uart_printf(const char *format, ...)
 
 /**
  * Add a character directly to the UART buffer.
+ *
+ * @param context	Context; ignored.
+ * @param c		Character to write.
+ * @return 0 if the character was transmitted, 1 if it was dropped.
+
  */
-static int emergency_txchar(void *format, int c)
+static int emergency_txchar(void *context, int c)
 {
-	/* Wait for space */
+	if (c == '\n')
+		emergency_txchar(context, '\r');
+
+	/* Wait for space in transmit FIFO */
 	while (!uart_tx_ready())
 		;
 
-	/* Write the character */
+	/* Write the character directly to the transmit FIFO */
 	uart_write_char(c);
+
 	return 0;
 }
 
-int uart_emergency_printf(const char *format, ...)
+void uart_emergency_puts(const char *outstr)
 {
-	int rv;
+	/* Flush the output buffer */
+	uart_emergency_flush();
+
+	/* Put all characters in the output buffer */
+	while (*outstr)
+		emergency_txchar(NULL, *outstr++);
+
+	/* Flush the transmit FIFO */
+	uart_tx_flush();
+}
+
+void uart_emergency_printf(const char *format, ...)
+{
 	va_list args;
 
+	/* Flush the output buffer */
+	uart_emergency_flush();
+
 	va_start(args, format);
-	rv = vfnprintf(emergency_txchar, NULL, format, args);
+	vfnprintf(emergency_txchar, NULL, format, args);
 	va_end(args);
 
-	/* Wait for transmit FIFO empty */
+	/* Flush the transmit FIFO */
 	uart_tx_flush();
-
-	return rv;
 }
 
 void uart_flush_output(void)

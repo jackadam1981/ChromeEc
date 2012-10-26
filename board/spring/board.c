@@ -16,6 +16,7 @@
 #include "registers.h"
 #include "stm32_adc.h"
 #include "timer.h"
+#include "uart.h"
 #include "util.h"
 
 #define GPIO_KB_INPUT  (GPIO_INPUT | GPIO_PULL_UP | GPIO_INT_BOTH)
@@ -220,7 +221,8 @@ void board_hard_reset(void)
 	udelay(HARD_RESET_TIMEOUT_MS * 1000);
 
 	/* Shouldn't get here unless the board doesn't have this capability */
-	panic_puts("Hard reset failed! (this board may not be capable)\n");
+	uart_emergency_puts("Hard reset failed! "
+			    "(this board may not be capable)\n");
 }
 
 #ifdef CONFIG_PMU_BOARD_INIT
