@@ -11,6 +11,7 @@
 #include "console.h"
 #include "gpio.h"
 #include "i2c.h"
+#include "hooks.h"
 #include "host_command.h"
 #include "peci.h"
 #include "task.h"
@@ -85,7 +86,7 @@ static void update_mapped_memory(void)
 	}
 }
 
-void temp_sensor_task(void)
+static void temp_sensor_init(void)
 {
 	int i;
 	uint8_t *base, *base_b;
@@ -116,16 +117,21 @@ void temp_sensor_task(void)
 
 	/* Temp sensor data is present, with B range supported. */
 	*host_get_memmap(EC_MEMMAP_THERMAL_VERSION) = 2;
+}
+DECLARE_HOOK(HOOK_INIT, temp_sensor_init, HOOK_PRIO_DEFAULT);
 
-	while (1) {
-		for (i = 0; i < 4; ++i) {
-			usleep(250 * MSEC);
-			poll_fast_sensors();
-		}
+static void temp_sensor_tick(void)
+{
+	static int i;
+
+	poll_fast_sensors();
+
+	if (!(i++ & 3)) {
 		poll_slow_sensors();
 		update_mapped_memory();
 	}
 }
+DECLARE_HOOK(HOOK_TICK, temp_sensor_tick, HOOK_PRIO_DEFAULT);
 
 /*****************************************************************************/
 /* Console commands */
