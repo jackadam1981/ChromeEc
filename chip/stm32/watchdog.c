@@ -5,9 +5,7 @@
 
 /* Watchdog driver */
 
-#include "board.h"
 #include "common.h"
-#include "config.h"
 #include "registers.h"
 #include "gpio.h"
 #include "hwtimer.h"
@@ -56,6 +54,7 @@ void watchdog_reload(void)
 	hwtimer_reset_watchdog();
 #endif
 }
+DECLARE_HOOK(HOOK_TICK, watchdog_reload, HOOK_PRIO_DEFAULT);
 
 int watchdog_init(void)
 {
