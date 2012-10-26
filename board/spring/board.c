@@ -16,6 +16,7 @@
 #include "registers.h"
 #include "stm32_adc.h"
 #include "timer.h"
+#include "uart.h"
 #include "util.h"
 
 #define GPIO_KB_INPUT  (GPIO_INPUT | GPIO_PULL_UP | GPIO_INT_BOTH)

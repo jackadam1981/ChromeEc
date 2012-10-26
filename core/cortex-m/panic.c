@@ -3,9 +3,7 @@
  * found in the LICENSE file.
  */
 
-#include <stdarg.h>
-
-#include "config.h"
+#include "common.h"
 #include "console.h"
 #include "cpu.h"
 #include "host_command.h"
@@ -32,85 +30,6 @@ static struct panic_data * const pdata_ptr =
 /* Preceded by stack, rounded down to nearest 64-bit-aligned boundary */
 static const uint32_t pstack_addr = (CONFIG_RAM_BASE + CONFIG_RAM_SIZE
 				     - sizeof(struct panic_data)) & ~7;
-
-void panic_putc(int ch)
-{
-	uart_emergency_flush();
-	if (ch == '\n')
-		panic_putc('\r');
-	uart_write_char(ch);
-	uart_tx_flush();
-}
-
-void panic_puts(const char *s)
-{
-	while (*s)
-		panic_putc(*s++);
-}
-
-void panic_vprintf(const char *format, va_list args)
-{
-	int pad_width;
-
-	while (*format) {
-		int c = *format++;
-
-		/* Copy normal characters */
-		if (c != '%') {
-			panic_putc(c);
-			continue;
-		}
-
-		/* Get first format character */
-		c = *format++;
-
-		/* Handle %c */
-		if (c == 'c') {
-			c = va_arg(args, int);
-			panic_putc(c);
-			continue;
-		}
-
-		/* Count padding length (only supported for hex) */
-		pad_width = 0;
-		while (c >= '0' && c <= '9') {
-			pad_width = (10 * pad_width) + c - '0';
-			c = *format++;
-		}
-
-		if (c == 's') {
-			char *vstr;
-
-			vstr = va_arg(args, char *);
-			panic_puts(vstr ? vstr : "(null)");
-		} else { /* assume 'x' */
-			uint32_t v, shift;
-			int i;
-
-			v = va_arg(args, uint32_t);
-			if (!pad_width)
-				pad_width = 8;
-			shift = pad_width * 4 - 4;
-			for (i = 0; i < pad_width; i++) {
-				int ch = '0' + ((v >> shift) & 0xf);
-
-				if (ch > '9')
-					ch += 'a' - '9' - 1;
-				panic_putc(ch);
-				shift -= 4;
-			}
-		}
-	}
-}
-
-void panic_printf(const char *format, ...)
-{
-	va_list args;
-
-	va_start(args, format);
-	panic_vprintf(format, args);
-	va_end(args);
-}
 
 /**
  * Print the name and value of a register
@@ -143,10 +62,10 @@ static void print_reg(int regnum, const uint32_t *regs, int index)
 	name = regnum < 10 ? rname : &regname[(regnum - 10) * 3];
 	panic_printf("%c%c%c:", name[0], name[1], name[2]);
 	if (regs)
-		panic_printf("%8x", regs[index]);
+		panic_printf("%08x", regs[index]);
 	else
 		panic_puts("        ");
-	panic_putc((regnum & 3) == 3 ? '\n' : ' ');
+	panic_puts((regnum & 3) == 3 ? "\n" : " ");
 }
 
 #ifdef CONFIG_PANIC_HELP
@@ -269,14 +188,12 @@ static void panic_show_extra(const struct panic_data *pdata)
 		panic_printf(", bfar = %x", pdata->bfar);
 	if (pdata->mmfs & CPU_NVIC_MMFS_MFARVALID)
 		panic_printf(", mfar = %x", pdata->mfar);
-	panic_putc('\n');
-	panic_printf("mmfs = %x, ", pdata->mmfs);
+	panic_printf("\nmmfs = %x, ", pdata->mmfs);
 	panic_printf("shcsr = %x, ", pdata->shcsr);
 	panic_printf("hfsr = %x, ", pdata->hfsr);
 	panic_printf("dfsr = %x\n", pdata->dfsr);
 }
 #endif /* CONFIG_PANIC_HELP */
-
 
 /**
  * Display a message and reboot
@@ -299,7 +216,7 @@ static void panic_print(const struct panic_data *pdata)
 	if (pdata->flags & PANIC_DATA_FLAG_FRAME_VALID)
 		sregs = pdata->frame;
 
-	panic_printf("\n=== EXCEPTION: %2x ====== xPSR: %8x ===========\n",
+	panic_printf("\n=== EXCEPTION: %02x ====== xPSR: %08x ===========\n",
 		     lregs[1] & 7, sregs ? sregs[7] : -1);
 	for (i = 0; i < 4; i++)
 		print_reg(i, sregs, i);
@@ -415,8 +332,8 @@ void ignore_bus_fault(int ignored)
 void panic_assert_fail(const char *msg, const char *func, const char *fname,
 		       int linenum)
 {
-	panic_printf("\nASSERTION FAILURE '%s' in %s() at %s:%d\n", msg, func,
-		     fname, linenum);
+	panic_printf("\nASSERTION FAILURE '%s' in %s() at %s:%d\n",
+		     msg, func, fname, linenum);
 
 	panic_reboot();
 }

@@ -194,7 +194,7 @@ void timer_print_info(void)
 				 timer_deadline[tskid].val,
 				 timer_deadline[tskid].val - t);
 			if (in_interrupt_context())
-				uart_emergency_flush();
+				panic_flush();
 			else
 				cflush();
 		}

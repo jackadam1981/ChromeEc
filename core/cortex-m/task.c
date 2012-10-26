@@ -498,7 +498,7 @@ void task_print_list(void)
 			 task_names[i], tasks[i].events, tasks[i].runtime,
 			 stackused, tasks_init[i].stack_size);
 		if (in_interrupt_context())
-			uart_emergency_flush();
+			panic_flush();
 		else
 			cflush();
 	}
