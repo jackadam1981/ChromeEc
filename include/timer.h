@@ -11,6 +11,12 @@
 #include "common.h"
 #include "task_id.h"
 
+/* Time units */
+#define MSEC         1000
+#define SECOND    1000000
+#define MINUTE   60000000
+#define HOUR   3600000000ull  /* Too big to fit in a signed int */
+
 /* Microsecond timestamp. */
 typedef union {
 	uint64_t val;
@@ -20,15 +26,25 @@ typedef union {
 	} le /* little endian words */;
 } timestamp_t;
 
-/* Initializes the Timer module. */
-int timer_init(void);
+/**
+ * Initialize the timer module.
+ */
+void timer_init(void);
 
-/* Launch a one-shot timer for task <tskid> which expires at timestamp
- * <tstamp>. */
+/**
+ * Launch a one-shot timer for a task.
+ *
+ * @param tstamp	Expiration timestamp for timer
+ * @param tskid		Task to set timer for
+ *
+ * @return EC_SUCCESS, or non-zero if error.
+ */
 int timer_arm(timestamp_t tstamp, task_id_t tskid);
 
-/* Cancel a running timer for the specified task id. */
-int timer_cancel(task_id_t tskid);
+/**
+ * Cancel a running timer for the specified task id.
+ */
+void timer_cancel(task_id_t tskid);
 
 /**
  * Check if a timestamp has passed / expired
@@ -39,30 +55,45 @@ int timer_cancel(task_id_t tskid);
  */
 int timestamp_expired(timestamp_t deadline, const timestamp_t *now);
 
-/* Busy-wait the selected number of microseconds.  Note that calling this
- * with us>1000 may impact system performance; use usleep for longer delays. */
+/**
+ * Busy-wait.
+ *
+ * Note that calling this with us>1000 may impact system performance; use
+ * usleep() for longer delays.
+ *
+ * @param us		Number of microseconds to delay.
+ */
 void udelay(unsigned us);
 
-/* Sleep during the selected number of microseconds.  The current task will be
- * de-scheduled until the delay expires.
+/**
+ * Sleep.
  *
- * Note: if an event happens before the end of sleep, the function will return.
+ * The current task will be de-scheduled until the delay expires.
+ *
+ * @param us		Number of microseconds to sleep.
  */
 void usleep(unsigned us);
 
-/* Get the current timestamp from the system timer. */
+/**
+ * Get the current timestamp from the system timer.
+ */
 timestamp_t get_time(void);
 
-/* Force the current value of the system timer.
+/**
+ * Force the current value of the system timer.
  *
  * This function is for the power management implementation which wants to fix
  * the system time when waking up from a mode with clocks turned off.
+ *
  * Note: must be called with interrupts disabled.
  */
 void force_time(timestamp_t ts);
 
-/* Print the current timer information using the command output channel.  This
- * may be called from interrupt level. */
+/**
+ * Print the current timer information using the command output channel.
+ *
+ * This may be called from interrupt level.
+ */
 void timer_print_info(void);
 
 /**
