@@ -26,7 +26,6 @@
 
 /* non-standard task stack sizes */
 #define IDLE_TASK_STACK_SIZE        384
-#define WATCHDOG_TASK_STACK_SIZE    256
 #define LARGER_TASK_STACK_SIZE      640
 
 /* Default task stack size */
@@ -86,6 +85,7 @@
 #define CONFIG_FLASH
 #define CONFIG_FPU
 #define CONFIG_I2C
+#define CONFIG_WATCHDOG
 
 /* Compile for running from RAM instead of flash */
 /* #define COMPILE_FOR_RAM */
