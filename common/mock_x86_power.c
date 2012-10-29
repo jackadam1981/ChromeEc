@@ -15,7 +15,7 @@
 
 static int mock_power_on = 0;
 
-void x86_power_cpu_overheated(int too_hot)
+void chipset_cpu_overheated(int too_hot)
 {
 	/* Print transitions */
 	static int last_val = 0;
@@ -29,14 +29,14 @@ void x86_power_cpu_overheated(int too_hot)
 }
 
 
-void x86_power_force_shutdown(void)
+void chipset_force_shutdown(void)
 {
 	uart_puts("Force shutdown\n");
 	mock_power_on = 0;
 }
 
 
-void x86_power_reset(int cold_reset)
+void chipset_reset(int cold_reset)
 {
 	uart_printf("X86 Power %s reset\n", cold_reset ? "cold" : "warm");
 }
