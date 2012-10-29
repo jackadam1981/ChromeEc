@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAQ3//+5Y\u003d",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-10-29T16:45:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAQ3///BU\u003d",
+      "revId": "3a58c3b2c819431f6686500c5fd35e0184a1ca95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAQ3///Bg\u003d",
         "filename": "common/uart_buffering.c",
         "patchSetId": 9
@@ -47,6 +65,24 @@
       "writtenOn": "2012-10-29T13:36:40Z",
       "side": 1,
       "message": "Should we have a sleep in this loop?",
+      "revId": "3a58c3b2c819431f6686500c5fd35e0184a1ca95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQ3//+5U\u003d",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-10-29T16:45:29Z",
+      "side": 1,
+      "message": "No; this may be called from interrupt level.  (And at 10KB/sec, the entire buffer will flush before the watchdog trips anyway.)",
+      "parentUuid": "AAAAQ3///Bg\u003d",
       "revId": "3a58c3b2c819431f6686500c5fd35e0184a1ca95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
