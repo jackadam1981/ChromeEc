@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQ3//+bU\u003d",
+        "filename": "chip/stm32/hwtimer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-29T22:33:41Z",
+      "side": 1,
+      "message": "space around /",
+      "revId": "53caf10cd83cc3a2fd36fbdf2ae779f958affff7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQ3//+Zk\u003d",
+        "filename": "common/mock_x86_power.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-29T22:33:41Z",
+      "side": 1,
+      "message": "We really should have a sleep() and msleep() !",
+      "revId": "53caf10cd83cc3a2fd36fbdf2ae779f958affff7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQ3//+Zg\u003d",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-29T22:33:41Z",
+      "side": 1,
+      "message": "s/waked/waken/",
+      "revId": "53caf10cd83cc3a2fd36fbdf2ae779f958affff7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQ3//+bg\u003d",
+        "filename": "core/cortex-m/timer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-29T22:33:41Z",
+      "side": 1,
+      "message": "-1ull?",
+      "revId": "53caf10cd83cc3a2fd36fbdf2ae779f958affff7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQ3//+bc\u003d",
+        "filename": "core/cortex-m/timer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-29T22:33:41Z",
+      "side": 1,
+      "message": "blank line after",
+      "revId": "53caf10cd83cc3a2fd36fbdf2ae779f958affff7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQ3//+b8\u003d",
+        "filename": "include/timer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-29T22:33:41Z",
+      "side": 1,
+      "message": "Time units in microseconds?",
+      "revId": "53caf10cd83cc3a2fd36fbdf2ae779f958affff7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQ3//+b4\u003d",
+        "filename": "include/timer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-29T22:33:41Z",
+      "side": 1,
+      "message": "(60 * SECOND)?",
+      "revId": "53caf10cd83cc3a2fd36fbdf2ae779f958affff7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQ3//+bw\u003d",
+        "filename": "include/timer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-29T22:33:41Z",
+      "side": 1,
+      "message": "While you are here, perhaps mention that only one timer can be active for a task at once?",
+      "revId": "53caf10cd83cc3a2fd36fbdf2ae779f958affff7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQ3//+bs\u003d",
+        "filename": "include/timer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-29T22:33:41Z",
+      "side": 1,
+      "message": "Do we guarantee that the delay will not be less? More?",
+      "revId": "53caf10cd83cc3a2fd36fbdf2ae779f958affff7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
