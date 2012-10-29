@@ -17,7 +17,6 @@
 #include "thermal.h"
 #include "timer.h"
 #include "util.h"
-#include "x86_power.h"
 
 /*
  * Temperature threshold configuration. Must be in the same order as in enum
@@ -106,15 +105,12 @@ static void overheated_action(void)
 	if (overheated[THRESHOLD_POWER_DOWN]) {
 		cprintf(CC_CHIPSET,
 			"[%T critical temperature; shutting down]\n");
-		x86_power_force_shutdown();
+		chipset_force_shutdown();
 		host_set_single_event(EC_HOST_EVENT_THERMAL_SHUTDOWN);
 		return;
 	}
 
-	if (overheated[THRESHOLD_CPU_DOWN])
-		x86_power_cpu_overheated(1);
-	else
-		x86_power_cpu_overheated(0);
+	chipset_cpu_overheated(overheated[THRESHOLD_CPU_DOWN]);
 
 	if (overheated[THRESHOLD_WARNING]) {
 		smi_overheated_warning();

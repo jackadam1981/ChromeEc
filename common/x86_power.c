@@ -190,7 +190,10 @@ static int wait_in_signals(uint32_t want)
 	return EC_SUCCESS;
 }
 
-void x86_power_cpu_overheated(int too_hot)
+/*****************************************************************************/
+/* Chipset interface */
+
+void chipset_cpu_overheated(int too_hot)
 {
 	static int overheat_count;
 
@@ -198,7 +201,7 @@ void x86_power_cpu_overheated(int too_hot)
 		overheat_count++;
 		if (overheat_count > 3) {
 			CPRINTF("[%T overheated; shutting down]\n");
-			x86_power_force_shutdown();
+			chipset_force_shutdown();
 			host_set_single_event(EC_HOST_EVENT_THERMAL_SHUTDOWN);
 		}
 	} else {
@@ -206,9 +209,9 @@ void x86_power_cpu_overheated(int too_hot)
 	}
 }
 
-void x86_power_force_shutdown(void)
+void chipset_force_shutdown(void)
 {
-	CPRINTF("[%T x86 power force shutdown]\n");
+	CPRINTF("[%T chipset force shutdown]\n");
 
 	/*
 	 * Force x86 off. This condition will reset once the state machine
@@ -218,7 +221,7 @@ void x86_power_force_shutdown(void)
 	gpio_set_level(GPIO_PCH_RSMRSTn, 0);
 }
 
-void x86_power_reset(int cold_reset)
+void chipset_reset(int cold_reset)
 {
 	if (cold_reset) {
 		/*
@@ -251,9 +254,6 @@ void x86_power_reset(int cold_reset)
 		gpio_set_level(GPIO_PCH_RCINn, 1);
 	}
 }
-
-/*****************************************************************************/
-/* Chipset interface */
 
 int chipset_in_state(int state_mask)
 {
@@ -676,7 +676,7 @@ static int command_x86reset(int argc, char **argv)
 
 	/* Force the x86 to reset */
 	ccprintf("Issuing x86 %s reset...\n", is_cold ? "cold" : "warm");
-	x86_power_reset(is_cold);
+	chipset_reset(is_cold);
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(x86reset, command_x86reset,
@@ -702,7 +702,7 @@ DECLARE_CONSOLE_COMMAND(powerinfo, command_powerinfo,
 
 static int command_x86shutdown(int argc, char **argv)
 {
-	x86_power_force_shutdown();
+	chipset_force_shutdown();
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(x86shutdown, command_x86shutdown,
