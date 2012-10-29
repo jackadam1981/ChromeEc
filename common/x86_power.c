@@ -11,7 +11,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
-#include "power_button.h"
+#include "switch.h"
 #include "system.h"
 #include "task.h"
 #include "timer.h"
@@ -333,7 +333,7 @@ DECLARE_HOOK(HOOK_LID_CHANGE, x86_lid_change, HOOK_PRIO_DEFAULT);
 
 static void x86_power_ac_change(void)
 {
-	if (power_ac_present()) {
+	if (is_ac_present()) {
 		CPRINTF("[%T x86 AC on]\n");
 	} else {
 		CPRINTF("[%T x86 AC off]\n");
@@ -431,7 +431,7 @@ void x86_power_task(void)
 			}
 
 			in_want = 0;
-			if (power_ac_present())
+			if (is_ac_present())
 				task_wait_event(-1);
 			else {
 				uint64_t target_time = last_shutdown_time +
@@ -476,8 +476,7 @@ void x86_power_task(void)
 			 * power usage.  If lid is open, take touchscreen out
 			 * of reset so it can wake the processor.
 			 */
-			gpio_set_level(GPIO_TOUCHSCREEN_RESETn,
-				       power_lid_open_debounced());
+			gpio_set_level(GPIO_TOUCHSCREEN_RESETn, is_lid_open());
 
 			/* Check for state transitions */
 			if (gpio_get_level(GPIO_PCH_SLP_S3n) == 1) {
@@ -749,7 +748,7 @@ static int command_hibernation_delay(int argc, char **argv)
 
 	/* Print the current setting */
 	ccprintf("Hibernation delay: %d s\n", hibernate_delay);
-	if (state == X86_G3 && !power_ac_present()) {
+	if (state == X86_G3 && !is_ac_present()) {
 		ccprintf("Time G3: %d s\n", time_g3);
 		ccprintf("Time left: %d s\n", hibernate_delay - time_g3);
 	}
