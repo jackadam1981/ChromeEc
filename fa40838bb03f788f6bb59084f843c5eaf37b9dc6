@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAQ3//9UA\u003d",
+        "filename": "chip/lm4/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-10-30T20:43:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAQ3//9tY\u003d",
+      "revId": "fa40838bb03f788f6bb59084f843c5eaf37b9dc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAQ3//9tI\u003d",
         "filename": "chip/lm4/switch.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAQ3//9Uo\u003d",
+        "filename": "chip/lm4/switch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-10-30T20:43:31Z",
+      "side": 1,
+      "message": "The code acts like a switch; when the GPIO updates, we need respond to the edge interrupt and call a hook from our task.\n\nIf we put it in another module we\u0027d need to create another task for it.  We can\u0027t reuse the CHARGER task because it has long sleep()\u0027s in it.",
+      "parentUuid": "AAAAQ3//9tI\u003d",
+      "revId": "fa40838bb03f788f6bb59084f843c5eaf37b9dc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAQ3//9tA\u003d",
         "filename": "test/power_button.tasklist",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2012-10-30T17:05:18Z",
       "side": 1,
       "message": "You have to wonder if these files could not be common-ized somehow",
+      "revId": "fa40838bb03f788f6bb59084f843c5eaf37b9dc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQ3//9WI\u003d",
+        "filename": "test/power_button.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-10-30T20:43:31Z",
+      "side": 1,
+      "message": "Yes, you do.  We could register tasks the same way we do hooks if we didn\u0027t care about their relative ordering.",
+      "parentUuid": "AAAAQ3//9tA\u003d",
       "revId": "fa40838bb03f788f6bb59084f843c5eaf37b9dc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
