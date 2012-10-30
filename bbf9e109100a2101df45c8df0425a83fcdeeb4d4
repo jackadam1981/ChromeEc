@@ -16,6 +16,24 @@
       "revId": "bbf9e109100a2101df45c8df0425a83fcdeeb4d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQ3//9nY\u003d",
+        "filename": "common/x86_power.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-10-30T17:40:47Z",
+      "side": 1,
+      "message": "This is used in only one place in the thermal module, so on second look it makes more sense to move the logic there and ditch the function entirely...",
+      "parentUuid": "AAAAQ3//9v0\u003d",
+      "revId": "bbf9e109100a2101df45c8df0425a83fcdeeb4d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
