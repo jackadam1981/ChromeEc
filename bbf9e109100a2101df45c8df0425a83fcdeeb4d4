@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQ3//9v0\u003d",
+        "filename": "common/x86_power.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-30T16:41:50Z",
+      "side": 1,
+      "message": "Perhaps chipset_set_cpu_overheated() would be a better name, since it may or may not be overheated.",
+      "revId": "bbf9e109100a2101df45c8df0425a83fcdeeb4d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
