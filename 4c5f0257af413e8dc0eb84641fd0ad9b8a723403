@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQ3//9u4\u003d",
+        "filename": "chip/lm4/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-30T16:52:06Z",
+      "side": 1,
+      "message": "Feels like this should go elsewhere, and the function should have a set_outputs parameter to control whether outputs are initialized",
+      "revId": "4c5f0257af413e8dc0eb84641fd0ad9b8a723403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQ3//9vA\u003d",
+        "filename": "chip/lm4/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-30T16:52:06Z",
+      "side": 1,
+      "message": "remove blank line",
+      "revId": "4c5f0257af413e8dc0eb84641fd0ad9b8a723403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQ3//9u0\u003d",
+        "filename": "chip/lm4/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-30T16:52:06Z",
+      "side": 1,
+      "message": "Are these sequential? for() loop?",
+      "revId": "4c5f0257af413e8dc0eb84641fd0ad9b8a723403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
