@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQ3//9sA\u003d",
+        "filename": "chip/lm4/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-30T17:12:59Z",
+      "side": 1,
+      "message": "CONFIG_HOOK_TICK_INTERVAL?",
+      "revId": "d8d1c1e27ba479348f13976a28efc5da08cc5e7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQ3//9r4\u003d",
+        "filename": "common/hooks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-30T17:12:59Z",
+      "side": 1,
+      "message": "This calls the hook immediately on start-up - is that correct or do you want to wait first?",
+      "revId": "d8d1c1e27ba479348f13976a28efc5da08cc5e7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
