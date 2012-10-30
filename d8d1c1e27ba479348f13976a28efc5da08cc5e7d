@@ -33,6 +33,24 @@
       "revId": "d8d1c1e27ba479348f13976a28efc5da08cc5e7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQ3//9rc\u003d",
+        "filename": "common/hooks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-10-30T17:16:57Z",
+      "side": 1,
+      "message": "Yes, we do want to call it right at startup.",
+      "parentUuid": "AAAAQ3//9r4\u003d",
+      "revId": "d8d1c1e27ba479348f13976a28efc5da08cc5e7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
