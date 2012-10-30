@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQ3//9tY\u003d",
+        "filename": "chip/lm4/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-30T17:05:18Z",
+      "side": 1,
+      "message": "switch_is_lid_open()",
+      "revId": "fa40838bb03f788f6bb59084f843c5eaf37b9dc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQ3//9tI\u003d",
+        "filename": "chip/lm4/switch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-30T17:05:18Z",
+      "side": 1,
+      "message": "Why is this in switch? It seems like this should be in board.c or similar? Or is the GPIO always the same? If so, perhaps power.c?",
+      "revId": "fa40838bb03f788f6bb59084f843c5eaf37b9dc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQ3//9tA\u003d",
+        "filename": "test/power_button.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-10-30T17:05:18Z",
+      "side": 1,
+      "message": "You have to wonder if these files could not be common-ized somehow",
+      "revId": "fa40838bb03f788f6bb59084f843c5eaf37b9dc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
