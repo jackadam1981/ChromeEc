@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQ3//8RM\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2085,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-10-31T17:02:10Z",
+      "side": 1,
+      "message": "Better to check EC_MEMMAP_BATTERY_VERSION \u003e\u003d 1.",
+      "revId": "b1dea780a7fc68d0a336450090b1343520c98caa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
