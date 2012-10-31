@@ -2082,6 +2082,7 @@ int cmd_gpio_set(int argc, char *argv[])
 
 int cmd_battery(int argc, char *argv[])
 {
+#ifdef CONFIG_LPC
 	char batt_text[EC_MEMMAP_TEXT_MAX];
 	int rv, val;
 
@@ -2166,6 +2167,10 @@ int cmd_battery(int argc, char *argv[])
 cmd_error:
 	fprintf(stderr, "Bad battery info value. Check protocol version.");
 	return -1;
+#else
+	printf("Command does not support non-LPC bus.\n");
+	return -1;
+#endif
 }
 
 int cmd_battery_cut_off(int argc, char *argv[])
