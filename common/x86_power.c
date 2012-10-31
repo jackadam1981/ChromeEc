@@ -445,10 +445,11 @@ void x86_power_task(void)
 					CPRINTF("[%T x86 hibernating]\n");
 					system_hibernate(0, 0);
 				}
-				else {
-					/* Wait for a message */
+				/* Wait for a message */
+				if (target_time - time_now > 2000 * 1000000ull)
+					task_wait_event(2000 * 1000000ull);
+				else
 					task_wait_event(target_time - time_now);
-				}
 			}
 
 			break;
