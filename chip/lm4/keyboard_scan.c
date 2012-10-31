@@ -83,6 +83,7 @@ static int print_state_changes;
 #define MASK_INDEX_KEY_H	6
 #define MASK_VALUE_KEY_H	0x02
 
+#if 0
 static void enable_interrupt(void)
 {
 	CPRINTF("[%T KB wait]\n");
@@ -94,6 +95,7 @@ static void enable_interrupt(void)
 
 	lm4_enable_matrix_interrupt();
 }
+#endif
 
 static void enter_polling_mode(void)
 {
@@ -137,13 +139,14 @@ static int read_matrix(uint8_t *state)
 		 * as pressed */
 		r &= actual_key_mask[c];
 
-		state[c] = r;
+		//state[c] = r;
 		pressed |= r;
 	}
 
 	lm4_select_column(COLUMN_TRI_STATE_ALL);
 
-	return pressed ? 1 : 0;
+	//return pressed ? 1 : 0;
+	return 1;
 }
 
 /**
@@ -440,6 +443,7 @@ void keyboard_scan_task(void)
 	task_enable_irq(KB_SCAN_ROW_IRQ);
 
 	while (1) {
+#if 0
 		/* Enable all outputs */
 		enable_interrupt();
 
@@ -455,6 +459,7 @@ void keyboard_scan_task(void)
 			    !is_scanning_enabled())
 				task_wait_event(-1);
 		} while (!is_scanning_enabled());
+#endif
 
 		enter_polling_mode();
 		/* Busy polling keyboard state. */
@@ -478,6 +483,8 @@ void keyboard_scan_task(void)
 static void matrix_interrupt(void)
 {
 	uint32_t ris = lm4_clear_matrix_interrupt_status();
+
+	ccputs("***MI\n");
 
 	if (ris)
 		task_wake(TASK_ID_KEYSCAN);

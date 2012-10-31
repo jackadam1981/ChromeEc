@@ -93,6 +93,9 @@ static int hibdata_write(enum hibdata_index index, uint32_t value)
 	return wait_for_hibctl_wc();
 }
 
+static uint32_t orig_hibris, orig_resc, orig_hibwake, orig_saved;
+
+
 static void check_reset_cause(void)
 {
 	uint32_t hib_status = LM4_HIBERNATE_HIBRIS;
@@ -105,6 +108,10 @@ static void check_reset_cause(void)
 	wait_for_hibctl_wc();
 	LM4_HIBERNATE_HIBIC = hib_status;
 	hibdata_write(HIBDATA_INDEX_WAKE, 0);
+
+	orig_hibris = hib_status;
+	orig_resc = raw_reset_cause;
+	orig_hibwake = hib_wake_flags;
 
 	if (raw_reset_cause & 0x02) {
 		/*
@@ -160,6 +167,7 @@ static void check_reset_cause(void)
 
 	/* Restore then clear saved reset flags */
 	flags |= hibdata_read(HIBDATA_INDEX_SAVED_RESET_FLAGS);
+	orig_saved = hibdata_read(HIBDATA_INDEX_SAVED_RESET_FLAGS);
 	hibdata_write(HIBDATA_INDEX_SAVED_RESET_FLAGS, 0);
 
 	system_set_reset_flags(flags);
@@ -462,6 +470,11 @@ static int command_system_rtc(int argc, char **argv)
 {
 	uint32_t rtc;
 	uint32_t rtcss;
+
+	ccprintf("HIBRIS  was %08x\n", orig_hibris);
+	ccprintf("RESC    was %08x\n", orig_resc);
+	ccprintf("HIBWAKE was %08x\n", orig_hibwake);
+	ccprintf("SAVED   was %08x\n", orig_saved);
 
 	if (argc == 3 && !strcasecmp(argv[1], "set")) {
 		char *e;

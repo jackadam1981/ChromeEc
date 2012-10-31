@@ -963,13 +963,15 @@ static struct lightbar_cmd_t lightbar_cmds[] = {
 
 void lightbar_task(void)
 {
-	uint32_t msg;
+	//uint32_t msg;
 
 	CPRINTF("[%T LB task starting]\n");
 
-	lb_restore_state();
+	if (0)
+		lb_restore_state();
 
 	while (1) {
+#if 0
 		CPRINTF("[%T LB task %d = %s]\n",
 			st.cur_seq, lightbar_cmds[st.cur_seq].string);
 		msg = lightbar_cmds[st.cur_seq].sequence();
@@ -1003,6 +1005,9 @@ void lightbar_task(void)
 				break;
 			}
 		}
+#else
+		msleep(1000);
+#endif
 	}
 }
 

@@ -496,12 +496,14 @@ void x86_power_task(void)
 			break;
 
 		case X86_S0:
+			// KLUDGE - stick here
+#if 0
 			if (gpio_get_level(GPIO_PCH_SLP_S3n) == 0) {
 				/* Power down to next state */
 				state = X86_S0S3;
 				break;
 			}
-
+#endif
 			/* Otherwise, steady state; wait for a message */
 			in_want = 0;
 			task_wait_event(-1);
@@ -515,8 +517,8 @@ void x86_power_task(void)
 			msleep(10);
 
 			/* Assert DPWROK, deassert RSMRST# */
-			gpio_set_level(GPIO_PCH_DPWROK, 1);
-			gpio_set_level(GPIO_PCH_RSMRSTn, 1);
+			//gpio_set_level(GPIO_PCH_DPWROK, 1);
+			//gpio_set_level(GPIO_PCH_RSMRSTn, 1);
 
 			/* Wait 5ms for SUSCLK to stabilize */
 			msleep(5);
@@ -525,6 +527,10 @@ void x86_power_task(void)
 			break;
 
 		case X86_S5S3:
+			// KLUDGE - leave all rails off
+			state = X86_S0;
+			break;
+
 			/* Switch on +5V always-on */
 			gpio_set_level(GPIO_ENABLE_5VALW, 1);
 			/* Wait for the always-on rails to be good */
