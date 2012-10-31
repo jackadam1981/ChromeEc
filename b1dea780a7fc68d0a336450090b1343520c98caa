@@ -16,6 +16,24 @@
       "revId": "b1dea780a7fc68d0a336450090b1343520c98caa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQ3//8RE\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2085,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-10-31T17:03:03Z",
+      "side": 1,
+      "message": "(assuming, of course, that snow doesn\u0027t initialize that to 1... if it does, that\u0027s a bug too...)",
+      "parentUuid": "AAAAQ3//8RM\u003d",
+      "revId": "b1dea780a7fc68d0a336450090b1343520c98caa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
