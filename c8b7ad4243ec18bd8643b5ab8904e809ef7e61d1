@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQ3//5Bs\u003d",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-11-05T20:02:35Z",
+      "side": 1,
+      "message": "this script is supposed to restore servo parameters after flashing. by just setting this, we will let people with dangling settings.\nwe need to record openocd outcome and return it at the end of the script.",
+      "revId": "c8b7ad4243ec18bd8643b5ab8904e809ef7e61d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
