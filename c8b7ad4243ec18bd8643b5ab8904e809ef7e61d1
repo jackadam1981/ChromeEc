@@ -16,6 +16,24 @@
       "revId": "c8b7ad4243ec18bd8643b5ab8904e809ef7e61d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQ3//5BA\u003d",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2012-11-05T20:22:48Z",
+      "side": 1,
+      "message": "added a cleanup function, verified that it gets invoked on errors and interruptions",
+      "parentUuid": "AAAAQ3//5Bs\u003d",
+      "revId": "c8b7ad4243ec18bd8643b5ab8904e809ef7e61d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

@@ -16,6 +16,24 @@
       "revId": "4f410f5468c1ce813450485753ae6f77bca8b7cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQ3//5Bg\u003d",
+        "filename": "chip/lm4/openocd/lm4x_cmds.tcl",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2012-11-05T20:22:48Z",
+      "side": 0,
+      "message": "I am just removing the argument which is not used anymore, this is mentioned in the CL description. I\u0027ll try to make it clearer.",
+      "parentUuid": "AAAAQ3//5Bo\u003d",
+      "revId": "4f410f5468c1ce813450485753ae6f77bca8b7cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
