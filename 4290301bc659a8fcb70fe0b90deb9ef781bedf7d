@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQ3//4TQ\u003d",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-11-06T17:13:12Z",
+      "side": 1,
+      "message": "good idea, but this will break at least STM32 based board :\nthe cold reset used to be done after restoring the boot mode , now it will be done before. So the CPU will be in monitor mode instead of normal mode.\n\nWe can probably workaround this by adding  \"cold_reset:off\" to the saved servo settings\nand putting the board in cold_reset at the end of flashing",
+      "revId": "4290301bc659a8fcb70fe0b90deb9ef781bedf7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
