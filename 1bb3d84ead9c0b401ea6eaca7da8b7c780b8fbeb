@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQ3//3dM\u003d",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-11-07T16:51:02Z",
+      "side": 1,
+      "message": "the original \"-r\" was better IMO\nif the user has a permission issue.",
+      "revId": "1bb3d84ead9c0b401ea6eaca7da8b7c780b8fbeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQ3//3c8\u003d",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-11-07T16:51:02Z",
+      "side": 1,
+      "message": "those binaries do have executable permissions,\nbut as you want, that might be better.",
+      "revId": "1bb3d84ead9c0b401ea6eaca7da8b7c780b8fbeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
