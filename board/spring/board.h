@@ -55,6 +55,9 @@
 /* Battery */
 #define CONFIG_BATTERY_BQ20Z453
 
+/* Charger/accessories detection */
+#define CONFIG_TSU6721
+
 /* ADC signal */
 #define CONFIG_ADC
 enum adc_channel {
