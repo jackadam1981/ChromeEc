@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQ3//tlE\u003d",
+        "filename": "chip/lm4/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-11-21T19:37:24Z",
+      "side": 1,
+      "message": "How about CLKTO and BUSBSY for 0xc0?",
+      "revId": "1a8b8ceaf426ef56eabfdd884b722ae24869eb26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQ3//tlA\u003d",
+        "filename": "chip/lm4/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-11-21T19:37:24Z",
+      "side": 1,
+      "message": "How about MFE?",
+      "revId": "1a8b8ceaf426ef56eabfdd884b722ae24869eb26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQ3//tk8\u003d",
+        "filename": "chip/lm4/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-11-21T19:37:24Z",
+      "side": 1,
+      "message": "CLKTO, BUSBSY, ERROR?",
+      "revId": "1a8b8ceaf426ef56eabfdd884b722ae24869eb26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQ3//tkg\u003d",
+        "filename": "common/tmp006.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-11-21T19:37:24Z",
+      "side": 1,
+      "message": "reset tdata-\u003efail \u003d FAIL_INIT ?",
+      "revId": "1a8b8ceaf426ef56eabfdd884b722ae24869eb26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
