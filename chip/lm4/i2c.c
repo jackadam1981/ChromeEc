@@ -97,6 +97,16 @@ static int i2c_transmit_receive(int port, int slave_addr,
 	if (transmit_size == 0 && receive_size == 0)
 		return EC_SUCCESS;
 
+	if (!started && (LM4_I2C_MCS(port) & 0xc0)) {
+		/*
+		 * Previous clock timeout or bus-busy.  Bounce the master to
+		 * clear these error states.
+		 */
+		LM4_I2C_MCR(port) = 0;
+		usleep(100000);
+		LM4_I2C_MCR(port) = 0x10;
+	}
+
 	if (transmit_data) {
 		LM4_I2C_MSA(port) = slave_addr & 0xff;
 		for (i = 0; i < transmit_size; i++) {
@@ -160,6 +170,10 @@ static int i2c_transmit_receive(int port, int slave_addr,
 			receive_data[i] = LM4_I2C_MDR(port) & 0xff;
 		}
 	}
+
+	/* Check for error conditions */
+	if (LM4_I2C_MCS(port) & 0xc2)
+		return EC_ERROR_UNKNOWN;
 
 	return EC_SUCCESS;
 }
