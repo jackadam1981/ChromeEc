@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQ3//r1U\u003d",
+        "filename": "chip/lm4/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-11-27T01:18:49Z",
+      "side": 1,
+      "message": "Wait is fine. Per datasheet, looking PRI2C may be better. Put a TODO here?",
+      "revId": "78a8d570b4b31feedd62144385113cfd6acebf8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQ3//rz8\u003d",
+        "filename": "chip/lm4/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-11-27T01:18:49Z",
+      "side": 1,
+      "message": "Shall we put a TODO here to reset all slaves on the same bus? This doesn\u0027t help Link, but could help future models.",
+      "revId": "78a8d570b4b31feedd62144385113cfd6acebf8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
