@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAARH//+84\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000030
+      },
+      "writtenOn": "2012-11-28T19:42:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAARH//++M\u003d",
+      "revId": "127a41f38ff5fbab936ad720f410ceb6d20d47f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAARH//+9k\u003d",
         "filename": "util/temp_metrics.conf",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAARH//+70\u003d",
+        "filename": "util/temp_metrics.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000030
+      },
+      "writtenOn": "2012-11-28T19:42:02Z",
+      "side": 1,
+      "message": "This script starts on system-services so should be safe. Empirical data also indicates this is ok -- this USB device shows up around the 5 second mark while temp_metrics.conf runs around the 8 second mark.",
+      "parentUuid": "AAAARH//+9k\u003d",
+      "revId": "127a41f38ff5fbab936ad720f410ceb6d20d47f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAARH//+9g\u003d",
         "filename": "util/temp_metrics.conf",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2012-11-28T19:20:56Z",
       "side": 1,
       "message": "I don\u0027t know anything about variable scope in shell script.\nIs that correct ? (ie GPU_MIN_FREQ is defined here)",
+      "revId": "127a41f38ff5fbab936ad720f410ceb6d20d47f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARH//+7w\u003d",
+        "filename": "util/temp_metrics.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000030
+      },
+      "writtenOn": "2012-11-28T19:42:02Z",
+      "side": 1,
+      "message": "I am no shell script expert either, but this works :).  I can  define it as a global outside of this function if you prefer though.",
+      "parentUuid": "AAAARH//+9g\u003d",
       "revId": "127a41f38ff5fbab936ad720f410ceb6d20d47f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
