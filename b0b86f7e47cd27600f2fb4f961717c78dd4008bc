@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAARH//+18\u003d",
+        "filename": "util/temp_metrics.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2012-11-28T20:28:59Z",
+      "side": 1,
+      "message": "Nit, could we be clever and get this min from i915_ring_freq_table?",
+      "revId": "b0b86f7e47cd27600f2fb4f961717c78dd4008bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARH//+10\u003d",
+        "filename": "util/temp_metrics.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2012-11-28T20:28:59Z",
+      "side": 1,
+      "message": "Nit, bounds check that this is at least in i915_ring_freq_table",
+      "revId": "b0b86f7e47cd27600f2fb4f961717c78dd4008bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
