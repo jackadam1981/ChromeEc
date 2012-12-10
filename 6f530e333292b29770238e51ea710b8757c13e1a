@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAARn//7vI\u003d",
+        "filename": "chip/lm4/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-12-10T17:04:47Z",
+      "side": 1,
+      "message": "this condition is always true.\ndo you mean LM4REG(0x400fdff0) ?",
+      "revId": "6f530e333292b29770238e51ea710b8757c13e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
