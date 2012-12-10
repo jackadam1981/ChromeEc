@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAARn//7tE\u003d",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-12-10T18:06:33Z",
+      "side": 1,
+      "message": "Use the \u0027hash\u0027 pointer as indication of validity, as expected by comments:\n\nstatic const uint8_t *hash;   /* Hash, or NULL if not valid */\n\nWe might find a use for a valid zero-length hash (ie, \"true\") in some future situation.",
+      "revId": "ba2cf75e477800ed4d2d8f7699edd3f3a0122e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARn//7s8\u003d",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-12-10T18:06:33Z",
+      "side": 1,
+      "message": "Don\u0027t need \u0027\u0026\u0026 data_size\u0027.",
+      "revId": "ba2cf75e477800ed4d2d8f7699edd3f3a0122e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARn//7ss\u003d",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-12-10T18:06:33Z",
+      "side": 1,
+      "message": "Don\u0027t need \u0027\u0026\u0026 data_size\u0027 here, either.",
+      "revId": "ba2cf75e477800ed4d2d8f7699edd3f3a0122e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
