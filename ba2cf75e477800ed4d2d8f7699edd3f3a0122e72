@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAARn//7ms\u003d",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-12-10T19:28:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAARn//7tE\u003d",
+      "revId": "ba2cf75e477800ed4d2d8f7699edd3f3a0122e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAARn//7s8\u003d",
         "filename": "common/vboot_hash.c",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAARn//7mo\u003d",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-12-10T19:28:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAARn//7s8\u003d",
+      "revId": "ba2cf75e477800ed4d2d8f7699edd3f3a0122e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAARn//7ss\u003d",
         "filename": "common/vboot_hash.c",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2012-12-10T18:06:33Z",
       "side": 1,
       "message": "Don\u0027t need \u0027\u0026\u0026 data_size\u0027 here, either.",
+      "revId": "ba2cf75e477800ed4d2d8f7699edd3f3a0122e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARn//7mk\u003d",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-12-10T19:28:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAARn//7ss\u003d",
       "revId": "ba2cf75e477800ed4d2d8f7699edd3f3a0122e72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
