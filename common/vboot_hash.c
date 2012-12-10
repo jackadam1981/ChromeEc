@@ -80,11 +80,15 @@ static int vboot_hash_start(uint32_t offset, uint32_t size,
 	return EC_SUCCESS;
 }
 
-/* Abort hash currently in progress, if any. */
+/* Abort hash currently in progress, and invalidate any completed hash. */
 static void vboot_hash_abort(void)
 {
 	if (in_progress)
 		want_abort = 1;
+	else {
+		data_size = 0;
+		hash = NULL;
+	}
 }
 
 static void vboot_hash_init(void)
@@ -112,6 +116,26 @@ static void vboot_hash_init(void)
 	}
 }
 
+int vboot_hash_invalidate(int offset, int size)
+{
+	/* Don't invalidate if passed an invalid region */
+	if (offset < 0 || size <= 0 || offset + size < 0)
+		return 0;
+
+	/* Don't invalidate if hash is already invalid */
+	if (!data_size)
+		return 0;
+
+	/* No overlap if passed region is off either end of hashed region */
+	if (offset + size <= data_offset || offset >= data_offset + data_size)
+		return 0;
+
+	/* Invalidate the hash */
+	CPRINTF("[%T hash invalidated 0x%08x 0x%08x]\n", offset, size);
+	vboot_hash_abort();
+	return 1;
+}
+
 void vboot_hash_task(void)
 {
 	vboot_hash_init();
@@ -126,6 +150,7 @@ void vboot_hash_task(void)
 			data_size = 0;
 			want_abort = 0;
 			in_progress = 0;
+			hash = NULL;
 		} else {
 			/* Compute the next chunk of hash */
 			int size = MIN(CHUNK_SIZE, data_size - curr_pos);
@@ -191,8 +216,10 @@ static int command_hash(int argc, char **argv)
 		ccprintf("Digest: ");
 		if (in_progress)
 			ccprintf("(in progress)\n");
-		else
+		else if (hash && data_size)
 			ccprintf("%.*h\n", SHA256_DIGEST_SIZE, hash);
+		else
+			ccprintf("(invalid)\n");
 
 		return EC_SUCCESS;
 	}
@@ -248,7 +275,7 @@ static void fill_response(struct ec_response_vboot_hash *r)
 {
 	if (in_progress)
 		r->status = EC_VBOOT_HASH_STATUS_BUSY;
-	else if (hash) {
+	else if (hash && data_size) {
 		r->status = EC_VBOOT_HASH_STATUS_DONE;
 		r->hash_type = EC_VBOOT_HASH_TYPE_SHA256;
 		r->digest_size = SHA256_DIGEST_SIZE;
