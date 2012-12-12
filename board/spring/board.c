@@ -92,8 +92,7 @@ const struct gpio_info gpio_list[GPIO_COUNT] = {
 	{"KB_OUT10",    GPIO_C, (1<<5),  GPIO_KB_OUTPUT, NULL},
 	{"KB_OUT11",    GPIO_C, (1<<6),  GPIO_KB_OUTPUT, NULL},
 	{"KB_OUT12",    GPIO_C, (1<<7),  GPIO_KB_OUTPUT, NULL},
-	{"ILIM_1500",   GPIO_B, (1<<3),  GPIO_OUT_HIGH, NULL},
-	{"ILIM_500",    GPIO_B, (1<<4),  GPIO_OUT_LOW, NULL},
+	{"BOOST_EN",    GPIO_B, (1<<3),  GPIO_OUT_HIGH, NULL},
 };
 
 /* ADC channels */
@@ -105,6 +104,55 @@ const struct adc_t adc_channels[ADC_CH_COUNT] = {
 	/* Micro USB D- sense pin. Raw ADC value. */
 	[ADC_CH_USB_DN_SNS] = {"USB_DN_SNS", 1, 1, 0, STM32_AIN(4)},
 };
+
+static void board_configure_pwm(void)
+{
+	uint32_t val;
+
+	/* Config alt. function (TIM3/PWM) */
+	val = STM32_GPIO_CRL_OFF(GPIO_B) & ~0x000f0000;
+	val |= 0x00090000;
+	STM32_GPIO_CRL_OFF(GPIO_B) = val;
+
+	/* Enable TIM3 clock */
+	STM32_RCC_APB1ENR |= 0x2;
+
+	/* Disable counter during setup */
+	STM32_TIM_CR1(3) = 0x0000;
+
+	/*
+	 * CPU_CLOCK / PSC determines how fast the counter operates.
+	 * ARR determines the wave period, CCRn determines duty cycle.
+	 * Thus, frequency = CPU_CLOCK / PSC / ARR.
+	 *
+	 * Assuming 16MHz clock, the following yields:
+	 * 16MHz / 1600 / 100 = 100Hz.
+	 */
+	STM32_TIM_PSC(3) = CPU_CLOCK / 10000;	/* pre-scaler */
+	STM32_TIM_ARR(3) = 100;			/* auto-reload value */
+	STM32_TIM_CCR1(3) = 100;		/* duty cycle */
+
+	/* CC1 configured as output, PWM mode 1, preload enable */
+	STM32_TIM_CCMR1(3) = (6 << 4) | (1 << 3);
+
+	/* CC1 output enable, active low */
+	STM32_TIM_CCER(3) = (1 << 0) | (1 << 1);
+
+	/* Generate update event to force loading of shadow registers */
+	STM32_TIM_EGR(3) |= 1;
+
+	/* Enable auto-reload preload, start counting */
+	STM32_TIM_CR1(3) |= (1 << 7) | (1 << 0);
+}
+
+static void board_pwm_duty_cycle(int percent)
+{
+	if (percent < 0)
+		percent = 0;
+	if (percent > 100)
+		percent = 100;
+	STM32_TIM_CCR1(3) = percent;
+}
 
 void configure_board(void)
 {
@@ -126,6 +174,13 @@ void configure_board(void)
 	 */
 	STM32_GPIO_AFIO_MAPR = (STM32_GPIO_AFIO_MAPR & ~(0x7 << 24))
 			       | (4 << 24);
+
+	/* remap TIM3_CH1 to PB4 */
+	STM32_GPIO_AFIO_MAPR = (STM32_GPIO_AFIO_MAPR & ~(0x3 << 10))
+			       | (2 << 10);
+
+	/* Set up PWM on TIM3 */
+	board_configure_pwm();
 
 	/*
 	 * Set alternate function for USART1. For alt. function input
@@ -277,3 +332,27 @@ int board_get_ac(void)
 	/* use TPSChrome VACG signal to detect AC state */
 	return gpio_get_level(GPIO_BCHGR_VACG);
 }
+
+/*
+ * Console command for debugging.
+ * TODO(victoryang): Remove after charging control is done.
+ */
+static int command_pwm(int argc, char **argv)
+{
+	char *e;
+	int percent;
+
+	if (argc >= 2) {
+		percent = strtoi(argv[1], &e, 0);
+		if (*e)
+			return EC_ERROR_PARAM1;
+		board_pwm_duty_cycle(percent);
+	}
+	ccprintf("PWM duty cycle set to %d%%\n", STM32_TIM_CCR1(3));
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(pwm, command_pwm,
+		"[percent]",
+		"Set or show ILIM duty cycle",
+		NULL);
