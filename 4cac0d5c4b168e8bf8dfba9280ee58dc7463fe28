@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAATH///80\u003d",
+        "filename": "board/spring/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2012-12-17T03:47:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAARn//6Xg\u003d",
+      "revId": "4cac0d5c4b168e8bf8dfba9280ee58dc7463fe28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAARn//6Xs\u003d",
         "filename": "board/spring/board.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2012-12-12T16:39:51Z",
       "side": 1,
       "message": "we are probably going to create a board file to deal with the USB charging policy (e.g board/spring/usb_charging.c), maybe we should move those new functions there.",
+      "revId": "4cac0d5c4b168e8bf8dfba9280ee58dc7463fe28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAATH///9I\u003d",
+        "filename": "board/spring/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2012-12-17T03:47:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAARn//6Xs\u003d",
       "revId": "4cac0d5c4b168e8bf8dfba9280ee58dc7463fe28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAATH///8w\u003d",
+        "filename": "board/spring/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2012-12-17T03:47:32Z",
+      "side": 1,
+      "message": "Will add this in another CL.",
+      "parentUuid": "AAAARn//6Xo\u003d",
+      "revId": "4cac0d5c4b168e8bf8dfba9280ee58dc7463fe28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAARn//6Xk\u003d",
         "filename": "board/spring/board.c",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2012-12-12T16:39:51Z",
       "side": 1,
       "message": "maybe call it \"ilim\" ?",
+      "revId": "4cac0d5c4b168e8bf8dfba9280ee58dc7463fe28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAATH///9E\u003d",
+        "filename": "board/spring/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2012-12-17T03:47:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAARn//6Xk\u003d",
       "revId": "4cac0d5c4b168e8bf8dfba9280ee58dc7463fe28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
