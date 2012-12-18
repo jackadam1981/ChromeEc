@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAATH///BQ\u003d",
+        "filename": "board/spring/usb_charging.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-12-18T20:57:46Z",
+      "side": 1,
+      "message": "that\u0027s Hertz ? not kHz.\nYou might add a comment about it.",
+      "revId": "c67f570722c899a2dd96554853035547ba82407d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAATH//+w8\u003d",
+        "filename": "board/spring/usb_charging.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-12-18T20:57:46Z",
+      "side": 1,
+      "message": "why active low ?\nGenerally speaking, ILIM is more active high ?",
+      "revId": "c67f570722c899a2dd96554853035547ba82407d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
