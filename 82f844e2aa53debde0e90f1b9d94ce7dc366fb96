@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAATn///0Q\u003d",
+        "filename": "board/link/userspace/etc/init/ec.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-12-19T23:25:56Z",
+      "side": 1,
+      "message": "Well, that\u0027s all it does now. It could do a lot of things.",
+      "parentUuid": "AAAATn///6A\u003d",
+      "revId": "82f844e2aa53debde0e90f1b9d94ce7dc366fb96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAATn///6s\u003d",
         "filename": "board/link/userspace/etc/init/ec.conf",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2012-12-19T22:28:05Z",
       "side": 1,
       "message": "\u0027task\u0027 isn\u0027t needed; you should probably omit it.",
+      "revId": "82f844e2aa53debde0e90f1b9d94ce7dc366fb96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAATn///0M\u003d",
+        "filename": "board/link/userspace/etc/init/ec.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-12-19T23:25:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAATn///6s\u003d",
       "revId": "82f844e2aa53debde0e90f1b9d94ce7dc366fb96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -81,6 +117,60 @@
       "writtenOn": "2012-12-19T22:53:44Z",
       "side": 1,
       "message": "One more thing:  Why test for lightbar_params.txt at all?\nAs currently constructed, this job can count on the file\u0027s\nexistence, and it seems reasonable to require that.",
+      "revId": "82f844e2aa53debde0e90f1b9d94ce7dc366fb96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAATn///z4\u003d",
+        "filename": "board/link/userspace/etc/init/ec.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-12-19T23:25:56Z",
+      "side": 1,
+      "message": "On Link, none. It uses inb() and outb().",
+      "parentUuid": "AAAATn///6E\u003d",
+      "revId": "82f844e2aa53debde0e90f1b9d94ce7dc366fb96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAATn///0I\u003d",
+        "filename": "board/link/userspace/etc/init/ec.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-12-19T23:25:56Z",
+      "side": 1,
+      "message": "Whoops! That\u0027s a typo. Thanks.",
+      "parentUuid": "AAAATn///6o\u003d",
+      "revId": "82f844e2aa53debde0e90f1b9d94ce7dc366fb96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAATn///zw\u003d",
+        "filename": "board/link/userspace/etc/init/ec.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-12-19T23:25:56Z",
+      "side": 1,
+      "message": "Yeah... I guess. I\u0027m thinking ahead, in case we wanted to modify ec.conf to do other things too (or instead).",
+      "parentUuid": "AAAATn///2w\u003d",
       "revId": "82f844e2aa53debde0e90f1b9d94ce7dc366fb96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
