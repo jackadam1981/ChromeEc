@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAATn///6s\u003d",
+        "filename": "board/link/userspace/etc/init/ec.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000108
+      },
+      "writtenOn": "2012-12-19T22:28:05Z",
+      "side": 1,
+      "message": "\u0027task\u0027 isn\u0027t needed; you should probably omit it.",
+      "revId": "82f844e2aa53debde0e90f1b9d94ce7dc366fb96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAATn///6o\u003d",
+        "filename": "board/link/userspace/etc/init/ec.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000108
+      },
+      "writtenOn": "2012-12-19T22:28:05Z",
+      "side": 1,
+      "message": "I think the redirection should be \u0027... \u003e/dev/null 2\u003e\u00261\u0027.\nThe line above opens /dev/null, and then closes it to\ndup fd1 to fd2.",
+      "revId": "82f844e2aa53debde0e90f1b9d94ce7dc366fb96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
