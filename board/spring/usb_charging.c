@@ -9,9 +9,16 @@
 #include "console.h"
 #include "gpio.h"
 #include "registers.h"
+#include "task.h"
+#include "timer.h"
+#include "tsu6721.h"
 #include "util.h"
 
 #define PWM_FREQUENCY 100 /* Hz */
+
+/* Console output macros */
+#define CPUTS(outstr) cputs(CC_USBCHARGE, outstr)
+#define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
 static enum ilim_config current_ilim_config = ILIM_CONFIG_MANUAL_OFF;
 
@@ -97,6 +104,65 @@ void board_pwm_duty_cycle(int percent)
 	if (percent > 100)
 		percent = 100;
 	STM32_TIM_CCR1(3) = (percent * STM32_TIM_ARR(3)) / 100;
+}
+
+void usb_charge_interrupt(enum gpio_signal signal)
+{
+	task_wake(TASK_ID_USB_CHARGE);
+}
+
+void usb_device_change(int dev_type)
+{
+	static int last_dev_type;
+
+	if (last_dev_type == dev_type)
+		return;
+	last_dev_type = dev_type;
+
+	CPRINTF("Attached: ");
+	if (dev_type == TSU6721_TYPE_NONE)
+		CPRINTF("Nothing\n");
+	else if (dev_type & TSU6721_TYPE_OTG)
+		CPRINTF("OTG\n");
+	else if (dev_type & TSU6721_TYPE_USB_HOST)
+		CPRINTF("USB Host\n");
+	else if (dev_type & TSU6721_TYPE_CHG12)
+		CPRINTF("Type 1/2 Charger\n");
+	else if (dev_type & TSU6721_TYPE_NON_STD_CHG)
+		CPRINTF("Non standard charger\n");
+	else if (dev_type & TSU6721_TYPE_VBUS_DEBOUNCED)
+		CPRINTF("Unknown with power\n");
+	else
+		CPRINTF("Unknown\n");
+}
+
+void usb_charge_task(void)
+{
+	int int_val;
+
+	/*
+	 * Somehow TSU6721 comes up slowly. Let's wait for a moment before
+	 * accessing it.
+	 * TODO(victoryang): Investigate slow init issue.
+	 */
+	usleep(500000);
+
+	tsu6721_init(); /* Init here until we can do with HOOK_INIT */
+
+	tsu6721_enable_interrupts(TSU6721_INT_ATTACH |
+				  TSU6721_INT_DETACH |
+				  TSU6721_INT_ADC_CHANGE |
+				  TSU6721_INT_VBUS);
+	gpio_enable_interrupt(GPIO_USB_CHG_INT);
+
+	while (1) {
+		int_val = tsu6721_get_interrupts();
+		if (int_val & TSU6721_INT_DETACH)
+			usb_device_change(TSU6721_TYPE_NONE);
+		else
+			usb_device_change(tsu6721_get_device_type());
+		task_wait_event(-1);
+	}
 }
 
 /*
