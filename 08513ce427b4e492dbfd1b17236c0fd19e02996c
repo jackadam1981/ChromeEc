@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAT3///AM\u003d",
+        "filename": "board/spring/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-12-21T11:23:45Z",
+      "side": 1,
+      "message": "I\u0027m surprised this new task fit in the memory.\n\nThe task purpose is there just to avoid doing the i2c transfer in interrupt context ?\n\nAnother option might be to integrate that with the PMU charger task.",
+      "revId": "08513ce427b4e492dbfd1b17236c0fd19e02996c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAT3///AI\u003d",
+        "filename": "board/spring/usb_charging.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2012-12-21T11:23:45Z",
+      "side": 1,
+      "message": "maybe we should move that to tsu6721_init ?",
+      "revId": "08513ce427b4e492dbfd1b17236c0fd19e02996c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
