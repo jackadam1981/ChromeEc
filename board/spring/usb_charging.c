@@ -20,6 +20,9 @@
 #define CPUTS(outstr) cputs(CC_USBCHARGE, outstr)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
+/* Devices that need VBUS power */
+#define POWERED_DEVICE_TYPE (TSU6721_TYPE_OTG)
+
 static enum ilim_config current_ilim_config = ILIM_CONFIG_MANUAL_OFF;
 
 static void board_ilim_use_gpio(void)
@@ -119,6 +122,13 @@ static void usb_device_change(int dev_type)
 		return;
 	last_dev_type = dev_type;
 
+	/* Supply VBUS if needed */
+	if (dev_type & POWERED_DEVICE_TYPE)
+		gpio_set_level(GPIO_BOOST_EN, 0);
+	else
+		gpio_set_level(GPIO_BOOST_EN, 1);
+
+	/* Log to console */
 	CPRINTF("[%T USB Attached: ");
 	if (dev_type == TSU6721_TYPE_NONE)
 		CPRINTF("Nothing]\n");
