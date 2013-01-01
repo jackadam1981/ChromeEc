@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAUn//+yk\u003d",
+        "filename": "board/spring/usb_charging.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-01-01T07:41:39Z",
+      "side": 1,
+      "message": "Analogix dongles can also be powered. We can sense VBUS before turning on power output but we cannot handle power input after dongle attached this way. Any suggestions on how to decide whether to turn on boost or not for this case?",
+      "parentUuid": "AAAAUn//+4Q\u003d",
+      "revId": "e76c53eb972b5532e14d4bc739e47203889ad8c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAUn//+4M\u003d",
         "filename": "board/spring/usb_charging.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2012-12-30T16:56:38Z",
       "side": 1,
       "message": "If I\u0027m plugging the machine to my workstation (to charge the former), is that condition working ?",
+      "revId": "e76c53eb972b5532e14d4bc739e47203889ad8c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAUn//+yg\u003d",
+        "filename": "board/spring/usb_charging.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-01-01T07:41:39Z",
+      "side": 1,
+      "message": "In this case the device type should be USB host or a charger and thus boost will be turned on to charge the battery.",
+      "parentUuid": "AAAAUn//+4M\u003d",
       "revId": "e76c53eb972b5532e14d4bc739e47203889ad8c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
