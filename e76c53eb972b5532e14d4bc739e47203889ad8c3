@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAUn//+x4\u003d",
+        "filename": "board/spring/usb_charging.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000094
+      },
+      "writtenOn": "2013-01-01T18:55:15Z",
+      "side": 1,
+      "message": "Vincent is correct, the MyDP dongle will need power. Vic is correct that they may be able to provide power, but you don\u0027t use ID to figure that out. Once you can talk to it on the DP Aux channel there is a register that tells you it can provide power and a setting to turn it on (speced in the latest revision of the DP spec). Then you must turn on the power to VBUS from the dongle and turn off the power to VBUS from the host.",
+      "parentUuid": "AAAAUn//+yY\u003d",
+      "revId": "e76c53eb972b5532e14d4bc739e47203889ad8c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAUn//+4M\u003d",
         "filename": "board/spring/usb_charging.c",
         "patchSetId": 3
