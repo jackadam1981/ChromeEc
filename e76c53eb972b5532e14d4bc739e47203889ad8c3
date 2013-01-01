@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAUn//+yY\u003d",
+        "filename": "board/spring/usb_charging.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-01-01T13:05:45Z",
+      "side": 1,
+      "message": "I was under the impression we should always turn on VBUS for myDP dongle (else we can probe vbus value before when we detect myDP dongle on the ID pin)\nBut that´s not mandatory for now.",
+      "parentUuid": "AAAAUn//+yk\u003d",
+      "revId": "e76c53eb972b5532e14d4bc739e47203889ad8c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAUn//+4M\u003d",
         "filename": "board/spring/usb_charging.c",
         "patchSetId": 3
