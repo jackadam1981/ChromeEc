@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAUn//+wQ\u003d",
+        "filename": "board/spring/usb_charging.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-01-02T02:25:31Z",
+      "side": 1,
+      "message": "Given that VBUS from the dongle won\u0027t be turned on automatically, I\u0027m adding it to the list to provide power when it\u0027s attached. I\u0027ll make a host interface for the AP to instruct the EC to turn off VBUS power for this.",
+      "parentUuid": "AAAAUn//+x4\u003d",
+      "revId": "e76c53eb972b5532e14d4bc739e47203889ad8c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAUn//+4M\u003d",
         "filename": "board/spring/usb_charging.c",
         "patchSetId": 3
