@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAVH//9cc\u003d",
+        "filename": "common/tsu6721.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-01-08T15:52:04Z",
+      "side": 1,
+      "message": "we should probably return the result of tsu6721_mux call (as it might fail if we have no VBUS)",
+      "revId": "a9c52f48f2023fc235409502c285d5d62cf7173f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
