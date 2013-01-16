@@ -624,15 +624,15 @@ void x86_power_task(void)
 			 */
 			gpio_set_level(GPIO_CPU_PROCHOT, 0);
 
-			/* Turn off power rails */
-			gpio_set_level(GPIO_ENABLE_VS, 0);
-
 			state = X86_S3;
 			break;
 
 		case X86_S3S5:
 			/* Call hooks before we remove power rails */
 			hook_notify(HOOK_CHIPSET_SHUTDOWN, 0);
+
+			/* Turn off power rails */
+			gpio_set_level(GPIO_ENABLE_VS, 0);
 
 			/* Disable touchpad power */
 			gpio_set_level(GPIO_ENABLE_TOUCHPAD, 0);
