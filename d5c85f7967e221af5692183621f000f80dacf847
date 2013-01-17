@@ -16,6 +16,24 @@
       "revId": "d5c85f7967e221af5692183621f000f80dacf847",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAVH//2qw\u003d",
+        "filename": "util/temp_metrics.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000030
+      },
+      "writtenOn": "2013-01-17T22:07:45Z",
+      "side": 1,
+      "message": "The set_gpu_max_freq function below has a check for GPU_MIN_FREQ and will not not set the GPU max frequency lower than GPU_MIN_FREQ.",
+      "parentUuid": "AAAAVH//2q8\u003d",
+      "revId": "d5c85f7967e221af5692183621f000f80dacf847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
