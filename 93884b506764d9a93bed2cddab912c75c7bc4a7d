@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAVH//1rc\u003d",
+        "filename": "common/smart_battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-01-19T16:17:28Z",
+      "side": 1,
+      "message": "Maybe change 32 to sizeof(struct ec_response_sb_rd_block)? This is not a big deal though.",
+      "revId": "93884b506764d9a93bed2cddab912c75c7bc4a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
