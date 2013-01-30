@@ -16,6 +16,24 @@
       "revId": "d270c20ce780e1bc66e1e6c1727c2a4933294a3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAVH//u8E\u003d",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-01-30T18:14:42Z",
+      "side": 1,
+      "message": "tcsetattr is reading back the actual values.\nif it fails before setting VTIME and VMIN,we need to exit.",
+      "parentUuid": "AAAAVH//u8c\u003d",
+      "revId": "d270c20ce780e1bc66e1e6c1727c2a4933294a3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
