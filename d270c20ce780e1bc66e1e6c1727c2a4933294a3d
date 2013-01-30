@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAVH//u8c\u003d",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2013-01-30T18:09:16Z",
+      "side": 1,
+      "message": "what\u0027s the point in checking the config values we just set?\n\nYour theory about the problem being due to submitting a config which is not being changed does not seem to make sense.\n\nBut let me try something else first...",
+      "revId": "d270c20ce780e1bc66e1e6c1727c2a4933294a3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
