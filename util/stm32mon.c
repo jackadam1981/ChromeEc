@@ -82,6 +82,7 @@ typedef struct {
 } payload_t;
 
 static int has_exterase;
+static void discard_input(int);
 
 #define MIN(a, b) ((a) < (b) ? (a) : (b))
 
@@ -105,8 +106,10 @@ int open_serial(const char *port)
 	}
 	cfmakeraw(&cfg);
 	cfsetspeed(&cfg, baudrate);
-	/* serial mode is 8e1 */
-	cfg.c_cflag |= PARENB;
+	if (strstr(port, "/dev/pts/") == 0) {
+		/* serial mode is 8e1, fails with servo conections */
+		cfg.c_cflag |= PARENB;
+	}
 	/* 200 ms timeout */
 	cfg.c_cc[VTIME] = 2;
 	cfg.c_cc[VMIN] = 0;
@@ -117,6 +120,7 @@ int open_serial(const char *port)
 		return -1;
 	}
 
+	discard_input(fd); /* in case were were invoked soon after reset */
 	return fd;
 }
 
@@ -530,6 +534,7 @@ int command_go(int fd, uint32_t address)
 	return 0;
 }
 
+/* Return zero on success, a negative error value on failures. */
 int read_flash(int fd, struct stm32_def *chip, const char *filename,
 	       uint32_t offset, uint32_t size)
 {
@@ -562,9 +567,10 @@ int read_flash(int fd, struct stm32_def *chip, const char *filename,
 
 	fclose(hnd);
 	free(buffer);
-	return res;
+	return (res < 0) ? res : 0;
 }
 
+/* Return zero on success, a negative error value on failures. */
 int write_flash(int fd, struct stm32_def *chip, const char *filename,
 		uint32_t offset)
 {
@@ -593,12 +599,14 @@ int write_flash(int fd, struct stm32_def *chip, const char *filename,
 	offset += chip->flash_start;
 	printf("Writing %d bytes at 0x%08x ", res, offset);
 	written = command_write_mem(fd, offset, res, buffer);
-	if (written != res)
+	if (written != res) {
 		fprintf(stderr, "Error writing to flash\n");
+		return -EIO;
+	}
 	printf("Done.\n");
 
 	free(buffer);
-	return written;
+	return 0;
 }
 
 static const struct option longopts[] = {
@@ -738,11 +746,18 @@ int main(int argc, char **argv)
 		}
 	}
 
-	if (input_filename)
-		read_flash(ser, chip, input_filename, 0, chip->flash_size);
+	if (input_filename) {
+		ret = read_flash(ser, chip, input_filename,
+				 0, chip->flash_size);
+		if (ret)
+			goto terminate;
+	}
 
-	if (output_filename)
-		write_flash(ser, chip, output_filename, 0);
+	if (output_filename) {
+		ret = write_flash(ser, chip, output_filename, 0);
+		if (ret)
+			goto terminate;
+	}
 
 	/* Run the program from flash */
 	if (flags & FLAG_GO)
