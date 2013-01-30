@@ -82,12 +82,13 @@ typedef struct {
 } payload_t;
 
 static int has_exterase;
+static void discard_input(int);
 
 #define MIN(a, b) ((a) < (b) ? (a) : (b))
 
 int open_serial(const char *port)
 {
-	int fd, res;
+	int fd, res, set_par_enable;
 	struct termios cfg;
 
 	fd = open(port, O_RDWR | O_NOCTTY);
@@ -103,20 +104,42 @@ int open_serial(const char *port)
 		close(fd);
 		return -1;
 	}
-	cfmakeraw(&cfg);
-	cfsetspeed(&cfg, baudrate);
-	/* serial mode is 8e1 */
-	cfg.c_cflag |= PARENB;
-	/* 200 ms timeout */
-	cfg.c_cc[VTIME] = 2;
-	cfg.c_cc[VMIN] = 0;
-	res = tcsetattr(fd, TCSANOW, &cfg);
-	if (res == -1) {
-		perror("Cannot set tty attributes");
-		close(fd);
-		return -1;
+
+	set_par_enable = 1;
+
+	while (1) {
+		cfmakeraw(&cfg);
+		cfsetspeed(&cfg, baudrate);
+
+		/*
+		 * Serial mode should be 8e1, but in some cases it is not
+		 * accepted by the driver, then we should try continue without
+		 * setting it explicitly.
+		 */
+		if (set_par_enable)
+			cfg.c_cflag |= PARENB;
+		else
+			cfg.c_cflag &= ~PARENB;
+
+		/* 200 ms timeout */
+		cfg.c_cc[VTIME] = 2;
+		cfg.c_cc[VMIN] = 0;
+		res = tcsetattr(fd, TCSANOW, &cfg);
+		if (!res)
+			break;
+
+		if (set_par_enable) {
+			perror("First attempt to set tty attributes failed");
+			fprintf(stderr, "Will try without enabling parity\n");
+		} else {
+			perror("Cannot set tty attributes\n");
+			close(fd);
+			return -1;
+		}
+		set_par_enable = !set_par_enable;
 	}
 
+	discard_input(fd); /* in case were were invoked soon after reset */
 	return fd;
 }
 
@@ -302,7 +325,6 @@ int init_monitor(int fd)
 		}
 		if (res < 0 && res != -ETIMEDOUT)
 			return -1;
-		printf(".");
 		fflush(stdout);
 	}
 	printf("Done.\n");
@@ -340,6 +362,14 @@ int command_get_commands(int fd)
 	return -1;
 }
 
+static int windex;
+static const char wheel[] = {'|', '/', '-', '\\' };
+static draw_spinner(void)
+{
+	printf("%c%c", 8, wheel[windex++]);
+	windex %= sizeof(wheel);
+}
+
 int command_read_mem(int fd, uint32_t address, uint32_t size, uint8_t *buffer)
 {
 	int res;
@@ -355,7 +385,7 @@ int command_read_mem(int fd, uint32_t address, uint32_t size, uint8_t *buffer)
 		cnt = (remaining > PAGE_SIZE) ? PAGE_SIZE - 1 : remaining - 1;
 		addr_be = htonl(address);
 
-		printf(".");
+		draw_spinner();
 		fflush(stdout);
 		res = send_command(fd, CMD_READMEM, loads, 2, buffer, cnt + 1);
 		if (res < 0)
@@ -388,7 +418,7 @@ int command_write_mem(int fd, uint32_t address, uint32_t size, uint8_t *buffer)
 		loads[1].size = cnt + 1;
 		memcpy(outbuf + 1, buffer, cnt);
 
-		printf(".");
+		draw_spinner();
 		fflush(stdout);
 		res = send_command(fd, CMD_WRITEMEM, loads, 2, NULL, 0);
 		if (res < 0)
@@ -530,6 +560,7 @@ int command_go(int fd, uint32_t address)
 	return 0;
 }
 
+/* Return zero on success, a negative error value on failures. */
 int read_flash(int fd, struct stm32_def *chip, const char *filename,
 	       uint32_t offset, uint32_t size)
 {
@@ -552,7 +583,7 @@ int read_flash(int fd, struct stm32_def *chip, const char *filename,
 	if (!size)
 		size = chip->flash_size;
 	offset += chip->flash_start;
-	printf("Reading %d bytes at 0x%08x ", size, offset);
+	printf("Reading %d bytes at 0x%08x  ", size, offset);
 	res = command_read_mem(fd, offset, size, buffer);
 	if (res > 0) {
 		if (fwrite(buffer, res, 1, hnd) != 1)
@@ -562,9 +593,10 @@ int read_flash(int fd, struct stm32_def *chip, const char *filename,
 
 	fclose(hnd);
 	free(buffer);
-	return res;
+	return (res < 0) ? res : 0;
 }
 
+/* Return zero on success, a negative error value on failures. */
 int write_flash(int fd, struct stm32_def *chip, const char *filename,
 		uint32_t offset)
 {
@@ -591,14 +623,16 @@ int write_flash(int fd, struct stm32_def *chip, const char *filename,
 	fclose(hnd);
 
 	offset += chip->flash_start;
-	printf("Writing %d bytes at 0x%08x ", res, offset);
+	printf("Writing %d bytes at 0x%08x  ", res, offset);
 	written = command_write_mem(fd, offset, res, buffer);
-	if (written != res)
+	if (written != res) {
 		fprintf(stderr, "Error writing to flash\n");
+		return -EIO;
+	}
 	printf("Done.\n");
 
 	free(buffer);
-	return written;
+	return 0;
 }
 
 static const struct option longopts[] = {
@@ -738,11 +772,18 @@ int main(int argc, char **argv)
 		}
 	}
 
-	if (input_filename)
-		read_flash(ser, chip, input_filename, 0, chip->flash_size);
+	if (input_filename) {
+		ret = read_flash(ser, chip, input_filename,
+				 0, chip->flash_size);
+		if (ret)
+			goto terminate;
+	}
 
-	if (output_filename)
-		write_flash(ser, chip, output_filename, 0);
+	if (output_filename) {
+		ret = write_flash(ser, chip, output_filename, 0);
+		if (ret)
+			goto terminate;
+	}
 
 	/* Run the program from flash */
 	if (flags & FLAG_GO)
