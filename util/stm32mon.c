@@ -112,9 +112,14 @@ int open_serial(const char *port)
 	cfg.c_cc[VMIN] = 0;
 	res = tcsetattr(fd, TCSANOW, &cfg);
 	if (res == -1) {
-		perror("Cannot set tty attributes");
-		close(fd);
-		return -1;
+		if ((errno == EINVAL) && (cfg.c_cc[VTIME] == 2) &&
+			 (cfg.c_cc[VMIN] == 0)) {
+			fprintf(stderr, "Cannot set even parity. ignoring.\n");
+		} else {
+			perror("Cannot set tty attributes");
+			close(fd);
+			return -1;
+		}
 	}
 
 	return fd;
