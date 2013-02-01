@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAVH//tN0\u003d",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-02-01T18:28:16Z",
+      "side": 1,
+      "message": "The current goobuntu man page says :\n\"\nRETURN VALUE\n[...]\nNote  that  tcsetattr() returns success if any of the requested changes could be successfully carried out.  Therefore, when making multiple changes it may be necessary to follow this call with a further call to tcgetattr() to check that all  changes  have  been   performed successfully.\n\"\n\nand I have tested that the command behaves accordingly on gPrecise.",
+      "parentUuid": "AAAAVH//tO4\u003d",
+      "revId": "eb5591f64105d06c23a0278f3082be68a15d813d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAVH//tPc\u003d",
         "filename": "util/stm32mon.c",
         "patchSetId": 4
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "I can remove this if you have a strong feeling, but in this case it does not erase random characters - it erases characters it just printed.\n\nOTOH the stream f dots causes the screen to scroll and information off the screen gets lost replaced with useless dots, I think avoiding it is a good thing.",
       "parentUuid": "AAAAVH//tPc\u003d",
+      "revId": "eb5591f64105d06c23a0278f3082be68a15d813d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAVH//tNs\u003d",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-02-01T18:28:16Z",
+      "side": 1,
+      "message": "No it doesn\u0027t \"erase characters it just printed\", it erases the last character printed on the console by whatever process.",
+      "parentUuid": "AAAAVH//tO0\u003d",
       "revId": "eb5591f64105d06c23a0278f3082be68a15d813d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
