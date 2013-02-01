@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAVH//tPY\u003d",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-02-01T17:42:25Z",
+      "side": 1,
+      "message": "I find this whole while(1) loop confusing.\nbut if you want ...",
+      "revId": "eb5591f64105d06c23a0278f3082be68a15d813d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAVH//tPQ\u003d",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-02-01T17:42:25Z",
+      "side": 1,
+      "message": "if *any* of your flag modification has been done successfully, this will return 0.\nSo this is still buggy : if VTIME is set but neither VMIN nor PARENB, the loop will exit successfully.",
+      "revId": "eb5591f64105d06c23a0278f3082be68a15d813d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAVH//tPc\u003d",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-02-01T17:42:25Z",
+      "side": 1,
+      "message": "I hate console programs eating random characters on my terminal.\nbut that\u0027s a question of personal taste",
+      "revId": "eb5591f64105d06c23a0278f3082be68a15d813d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAVH//tPs\u003d",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-02-01T17:42:25Z",
+      "side": 1,
+      "message": "memory leak ?",
+      "revId": "eb5591f64105d06c23a0278f3082be68a15d813d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
