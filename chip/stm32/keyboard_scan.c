@@ -38,9 +38,6 @@ enum COL_INDEX {
 
 #define SCAN_TIME_COUNT 32
 
-/* 15:14, 12:8, 2 */
-#define IRQ_MASK 0xdf04
-
 static struct mutex scanning_enabled;
 
 static uint8_t debounced_state[KB_OUTPUTS];   /* Debounced key matrix */
@@ -73,19 +70,18 @@ struct kbc_gpio {
 	int pin;
 };
 
+/* Board-specific stuff */
 #if defined(BOARD_daisy) || defined(BOARD_snow) || defined(BOARD_spring)
+#define IRQ_MASK 0xdf04		/* 15:14, 12:8, 2 */
 static const uint32_t ports[] = { GPIO_B, GPIO_C, GPIO_D };
+#elif defined(BOARD_mccroskey)
+#define IRQ_MASK 0xff00		/* 15:8 */
+static const uint32_t ports[] = { GPIO_B, GPIO_C };
+static void board_keyboard_suppress_noise(void) { };
+static void board_interrupt_host(int active) { };
 #else
-#error "Need to specify GPIO ports used by keyboard"
+#error "Need board-specific information"
 #endif
-
-/* Provide a default function in case the board doesn't have one */
-void __board_keyboard_suppress_noise(void)
-{
-}
-
-void board_keyboard_suppress_noise(void)
-		__attribute__((weak, alias("__board_keyboard_suppress_noise")));
 
 #define KB_FIFO_DEPTH		16	/* FIXME: this is pretty huge */
 static uint32_t kb_fifo_start;		/* first entry */
