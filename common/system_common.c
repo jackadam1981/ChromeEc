@@ -286,6 +286,12 @@ const char *system_get_image_copy_string(void)
 	return copy < ARRAY_SIZE(image_names) ? image_names[copy] : "?";
 }
 
+#ifndef GPIO_ENTERING_RW
+static inline void ec_jump_notify(void) { };
+#else
+static inline void ec_jump_notify(void) { gpio_set_level(GPIO_ENTERING_RW, 1) }
+#endif
+
 /**
  * Jump to what we hope is the init address of an image.
  *
@@ -302,7 +308,7 @@ static void jump_to_image(uint32_t init_addr)
 	 * EC is not in read-only firmware.  (This is not technically true if
 	 * jumping from RO -> RO, but that's not a meaningful use case...)
 	 */
-	gpio_set_level(GPIO_ENTERING_RW, 1);
+	ec_jump_notify();
 
 	/* Flush UART output unless the UART hasn't been initialized yet */
 	if (uart_init_done())
