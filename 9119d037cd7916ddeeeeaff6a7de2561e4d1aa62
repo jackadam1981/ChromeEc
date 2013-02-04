@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAVH//sas\u003d",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2013-02-04T19:24:12Z",
+      "side": 1,
+      "message": "who is \"we\"? This is a well and long supported C feature. But I\u0027ll change this just to avoid another bike shed color discussion.",
+      "parentUuid": "AAAAVH//seM\u003d",
+      "revId": "9119d037cd7916ddeeeeaff6a7de2561e4d1aa62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAVH//sd0\u003d",
         "filename": "util/stm32mon.c",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2013-02-04T19:01:46Z",
       "side": 1,
       "message": "is that comparison really working on the first run after plugging the servo on goobuntu host ?",
+      "revId": "9119d037cd7916ddeeeeaff6a7de2561e4d1aa62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAVH//sao\u003d",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2013-02-04T19:24:12Z",
+      "side": 1,
+      "message": "No, and in fact it fails inside chroot also. Maybe setting parity is not enabled for these interfaces and we were lucky inside chroot because other settings were getting accepted first?",
+      "parentUuid": "AAAAVH//sd0\u003d",
       "revId": "9119d037cd7916ddeeeeaff6a7de2561e4d1aa62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
