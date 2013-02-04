@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAVH//seM\u003d",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-02-04T19:01:46Z",
+      "side": 1,
+      "message": "we are usually not doing implicit copy of struct.\nYou should probably put a memcpy here if you want to do it.",
+      "revId": "9119d037cd7916ddeeeeaff6a7de2561e4d1aa62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAVH//sd0\u003d",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-02-04T19:01:46Z",
+      "side": 1,
+      "message": "is that comparison really working on the first run after plugging the servo on goobuntu host ?",
+      "revId": "9119d037cd7916ddeeeeaff6a7de2561e4d1aa62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
