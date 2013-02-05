@@ -353,7 +353,7 @@ static void x86_power_init(void)
 			CPRINTF("[%T x86 forcing G3]\n");
 			gpio_set_level(GPIO_PCH_PWROK, 0);
 			gpio_set_level(GPIO_ENABLE_VCORE, 0);
-			gpio_set_level(GPIO_ENABLE_VS, 0);
+			gpio_set_level(GPIO_ENABLE_VS, 1);
 			gpio_set_level(GPIO_ENABLE_TOUCHPAD, 0);
 			gpio_set_level(GPIO_TOUCHSCREEN_RESETn, 0);
 			gpio_set_level(GPIO_ENABLE_1_5V_DDR, 0);
@@ -605,7 +605,7 @@ void x86_power_task(void)
 			gpio_set_level(GPIO_CPU_PROCHOT, 0);
 
 			/* Turn off power rails */
-			gpio_set_level(GPIO_ENABLE_VS, 0);
+			gpio_set_level(GPIO_ENABLE_VS, 1);
 
 			state = X86_S3;
 			break;
