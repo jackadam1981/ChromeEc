@@ -16,6 +16,24 @@
       "revId": "049b6b572ec83804c8b9ccf689ddf135d21ed12b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAVH//rpA\u003d",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2013-02-05T16:15:39Z",
+      "side": 1,
+      "message": "I still do not understand this cryptic comment. \n\n\"you call stm32mon on a new tty because the kernel driver will set some bits\" seems badly lacking on clarity.\n\nCan you please explain what you think is the right thing to do here as opposed to repeating that something is badly/totally wrong? \n\nNote that the behavior of the app as far is setting the configuration is not being changed - it invokes tcsetattr() once, as before, with the same parameters as before, as you implemented it.\n\nAlso note that repetitive invocations of stm32mon behave the same - the parity setting is rejected, and it is the only discrepancy in the desired and actual configuration.\n\nI agree that the fact that parity enabling fails is bad, but it has been like that all along. I can try fixing it, but I am out of ideas, and since this works in our setup I would not worry about it for now.",
+      "parentUuid": "AAAAVH//rqs\u003d",
+      "revId": "049b6b572ec83804c8b9ccf689ddf135d21ed12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
