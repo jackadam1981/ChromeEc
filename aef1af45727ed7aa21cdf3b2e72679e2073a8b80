@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAVH//rpo\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-02-05T16:06:01Z",
+      "side": 1,
+      "message": "isn\u0027t that LED also used a power-on LED ?",
+      "revId": "aef1af45727ed7aa21cdf3b2e72679e2073a8b80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAVH//rps\u003d",
+        "filename": "board/spring/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-02-05T16:06:01Z",
+      "side": 1,
+      "message": "maybe we should use a slightly more optimal interface to reduce code size (get ride of that  switch statement):\ndefining the colors as part of the LP5562 API e.g. :\nCOLOR_GREEN    0x008000\nCOLOR_YELLOW  0x000080\nCOLOR_RED          0x800000\nand pass a single color parameter to lp5562_set_color :\nint lp5562_set_color(uint32_t rgb)",
+      "revId": "aef1af45727ed7aa21cdf3b2e72679e2073a8b80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAVH//rqE\u003d",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-02-05T16:06:01Z",
+      "side": 1,
+      "message": "maybe we should define this as a empty weak function instead of the ifdef",
+      "revId": "aef1af45727ed7aa21cdf3b2e72679e2073a8b80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
