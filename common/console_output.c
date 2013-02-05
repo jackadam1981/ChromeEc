@@ -11,7 +11,7 @@
 
 /* Default to all channels active */
 #ifndef CC_DEFAULT
-#define CC_DEFAULT CC_ALL
+#define CC_DEFAULT CC_MASK(CC_COMMAND)  // CC_ALL
 #endif
 static uint32_t channel_mask = CC_DEFAULT;
 

@@ -53,7 +53,7 @@ static void usb_charge_set_enabled(int port_id, int en)
 static void usb_charge_set_ilim(int port_id, int sel)
 {
 	if (port_id == 0)
-		gpio_set_level(GPIO_USB1_ILIM_SEL, sel);
+		do {} while (0);  // gpio_set_level(GPIO_USB1_ILIM_SEL, sel);
 	else
 		gpio_set_level(GPIO_USB2_ILIM_SEL, sel);
 }

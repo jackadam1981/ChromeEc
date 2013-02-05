@@ -408,7 +408,7 @@ static void handle_acpi_write(int is_cmd)
 			 * debug console.
 			 */
 			CPRINTF("\r[%T ACPI kblight %d]", data);
-			pwm_set_keyboard_backlight(data);
+			// pwm_set_keyboard_backlight(data);
 			break;
 #endif
 		default:

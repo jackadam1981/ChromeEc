@@ -336,9 +336,9 @@ DECLARE_HOST_COMMAND(EC_CMD_PWM_GET_KEYBOARD_BACKLIGHT,
 
 int pwm_command_set_keyboard_backlight(struct host_cmd_handler_args *args)
 {
-	const struct ec_params_pwm_set_keyboard_backlight *p = args->params;
+	// const struct ec_params_pwm_set_keyboard_backlight *p = args->params;
 
-	pwm_set_keyboard_backlight(p->percent);
+	// pwm_set_keyboard_backlight(p->percent);
 
 	return EC_RES_SUCCESS;
 }
@@ -401,12 +401,12 @@ static void pwm_init(void)
 		pwm_enable_fan(prev->fan_en);
 		pwm_set_fan_target_rpm(prev->fan_rpm);
 		pwm_enable_keyboard_backlight(prev->kblight_en);
-		pwm_set_keyboard_backlight(prev->kblight_percent);
+		// pwm_set_keyboard_backlight(prev->kblight_percent);
 	}
 	else {
 		/* Set initial fan speed to maximum, backlight off */
 		pwm_set_fan_target_rpm(-1);
-		pwm_set_keyboard_backlight(0);
+		// pwm_set_keyboard_backlight(0);
 
 		/*
 		 * Enable keyboard backlight.  Fan will be enabled later by
@@ -464,12 +464,12 @@ static void pwm_suspend(void)
 {
 	pwm_enable_fan(0);
 	pwm_set_fan_target_rpm(0);
-	pwm_set_keyboard_backlight(0);
+	// pwm_set_keyboard_backlight(0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, pwm_suspend, HOOK_PRIO_DEFAULT);
 
 static void pwm_shutdown(void)
 {
-	pwm_set_keyboard_backlight(0);
+	// pwm_set_keyboard_backlight(0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, pwm_shutdown, HOOK_PRIO_DEFAULT);

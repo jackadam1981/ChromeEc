@@ -21,6 +21,8 @@
 #define switch_interrupt NULL
 #endif
 
+void mic_interrupt(enum gpio_signal signal);
+
 /* GPIO signal list.  Must match order from enum gpio_signal. */
 const struct gpio_info gpio_list[GPIO_COUNT] = {
 	/* Inputs with interrupt handlers are first for efficiency */
@@ -29,7 +31,7 @@ const struct gpio_info gpio_list[GPIO_COUNT] = {
 	{"LID_SWITCHn",         LM4_GPIO_K, (1<<5), GPIO_INT_BOTH,
 	 switch_interrupt},
 	/* Other inputs */
-	{"THERMAL_DATA_READYn", LM4_GPIO_B, (1<<4), 0, NULL},
+	{"THERMAL_DATA_READYn", LM4_GPIO_B, (1<<4), 0, NULL}, /* AIN10 */
 	{"AC_PRESENT",          LM4_GPIO_H, (1<<3), GPIO_INT_BOTH,
 	 switch_interrupt},
 	{"BOARD_VERSION1",      LM4_GPIO_H, (1<<6), 0, NULL},
@@ -52,25 +54,25 @@ const struct gpio_info gpio_list[GPIO_COUNT] = {
 	{"PCH_SUSWARNn",        LM4_GPIO_G, (1<<2), GPIO_INT_BOTH,
 	 x86_power_interrupt},
 	{"PGOOD_1_5V_DDR",      LM4_GPIO_K, (1<<0), GPIO_INT_BOTH,
-	 x86_power_interrupt},
+	 x86_power_interrupt}, /* AIN16 */
 	{"PGOOD_1_5V_PCH",      LM4_GPIO_K, (1<<1), GPIO_INT_BOTH,
-	 x86_power_interrupt},
+	 x86_power_interrupt}, /* AIN17 */
 	{"PGOOD_1_8VS",         LM4_GPIO_K, (1<<3), GPIO_INT_BOTH,
-	 x86_power_interrupt},
+	 x86_power_interrupt}, /* AIN19 */
 	{"PGOOD_5VALW",         LM4_GPIO_H, (1<<0), GPIO_INT_BOTH,
 	 x86_power_interrupt},
 	{"PGOOD_CPU_CORE",      LM4_GPIO_M, (1<<3), GPIO_INT_BOTH,
 	 x86_power_interrupt},
 	{"PGOOD_VCCP",          LM4_GPIO_K, (1<<2), GPIO_INT_BOTH,
-	 x86_power_interrupt},
+	 x86_power_interrupt}, /* AIN18 */
 	{"PGOOD_VCCSA",         LM4_GPIO_H, (1<<1), GPIO_INT_BOTH,
 	 x86_power_interrupt},
 	{"PGOOD_VGFX_CORE",     LM4_GPIO_D, (1<<2), GPIO_INT_BOTH,
-	 x86_power_interrupt},
+	 x86_power_interrupt}, /* AIN13 */
 	{"RECOVERYn",           LM4_GPIO_H, (1<<7), GPIO_INT_BOTH,
 	 switch_interrupt},
-	{"USB1_STATUSn",        LM4_GPIO_E, (1<<7), 0, NULL},
-	{"USB2_STATUSn",        LM4_GPIO_E, (1<<1), 0, NULL},
+	{"USB1_STATUSn",        LM4_GPIO_E, (1<<7), 0, NULL}, /* AIN20 */
+	{"USB2_STATUSn",        LM4_GPIO_E, (1<<1), 0, NULL}, /* AIN2 */
 	{"WRITE_PROTECT",       LM4_GPIO_J, (1<<4), GPIO_INT_BOTH,
 	 switch_interrupt},
 	/* Outputs; all unasserted by default except for reset signals */
@@ -101,15 +103,15 @@ const struct gpio_info gpio_list[GPIO_COUNT] = {
 	{"PCH_SMIn",            LM4_GPIO_F, (1<<4), GPIO_OUT_HIGH, NULL},
 	{"PCH_SRTCRSTn",        LM4_GPIO_C, (1<<7), GPIO_HI_Z, NULL},
 	{"PCH_SUSACKn",         LM4_GPIO_F, (1<<3), GPIO_OUT_HIGH, NULL},
-	{"RADIO_ENABLE_WLAN",   LM4_GPIO_D, (1<<0), GPIO_OUT_LOW, NULL},
-	{"RADIO_ENABLE_BT",     LM4_GPIO_D, (1<<1), GPIO_OUT_LOW, NULL},
+	{"RADIO_ENABLE_WLAN",   LM4_GPIO_D, (1<<0), GPIO_OUT_LOW, NULL}, /* AIN15 */
+	{"RADIO_ENABLE_BT",     LM4_GPIO_D, (1<<1), GPIO_OUT_LOW, NULL}, /* AIN14 */
 	{"SPI_CSn",             LM4_GPIO_A, (1<<3), GPIO_HI_Z, NULL},
 	{"TOUCHSCREEN_RESETn",  LM4_GPIO_B, (1<<0), GPIO_OUT_LOW, NULL},
-	{"USB1_CTL1",           LM4_GPIO_E, (1<<2), GPIO_OUT_LOW, NULL},
+	{"USB1_CTL1",           LM4_GPIO_E, (1<<2), GPIO_OUT_LOW, NULL}, /* AIN1 */
 	{"USB1_CTL2",           LM4_GPIO_E, (1<<3), GPIO_OUT_LOW, NULL},
 	{"USB1_CTL3",           LM4_GPIO_E, (1<<4), GPIO_OUT_LOW, NULL},
 	{"USB1_ENABLE",         LM4_GPIO_E, (1<<5), GPIO_OUT_LOW, NULL},
-	{"USB1_ILIM_SEL",       LM4_GPIO_E, (1<<6), GPIO_OUT_LOW, NULL},
+	{"USB1_ILIM_SEL",       LM4_GPIO_E, (1<<6), GPIO_INT_RISING, mic_interrupt},
 	{"USB2_CTL1",           LM4_GPIO_D, (1<<4), GPIO_OUT_LOW, NULL},
 	{"USB2_CTL2",           LM4_GPIO_D, (1<<5), GPIO_OUT_LOW, NULL},
 	{"USB2_CTL3",           LM4_GPIO_D, (1<<6), GPIO_OUT_LOW, NULL},
