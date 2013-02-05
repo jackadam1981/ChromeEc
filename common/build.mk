@@ -29,6 +29,7 @@ common-$(CONFIG_TASK_GAIAPOWER)+=gaia_power.o
 common-$(CONFIG_TASK_HOSTCMD)+=host_command.o host_event_commands.o
 common-$(CONFIG_TASK_I8042CMD)+=i8042.o keyboard.o
 common-$(CONFIG_TASK_LIGHTBAR)+=lightbar.o
+common-$(CONFIG_TASK_MPU6050)+=mpu6050.o
 common-$(CONFIG_TASK_THERMAL)+=thermal.o
 common-$(CONFIG_TASK_VBOOTHASH)+=sha256.o vboot_hash.o
 common-$(CONFIG_TASK_X86POWER)+=x86_power.o
