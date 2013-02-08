@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAVH//o1I\u003d",
+        "filename": "board/spring/usb_charging.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-02-08T01:51:40Z",
+      "side": 1,
+      "message": "I\u0027ll deal with this in a following up CL. Probably going to set TSU6721 to only interrupt on VBUS change and ignore attach/detach events.",
+      "parentUuid": "AAAAVH//pXg\u003d",
+      "revId": "8822b565f622f81e2a6631c95e389739258624a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAVH//pYA\u003d",
         "filename": "board/spring/usb_charging.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2013-02-07T17:03:16Z",
       "side": 1,
       "message": "you can now remove the comment",
+      "revId": "8822b565f622f81e2a6631c95e389739258624a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAVH//o2E\u003d",
+        "filename": "board/spring/usb_charging.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-02-08T01:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAVH//pYA\u003d",
       "revId": "8822b565f622f81e2a6631c95e389739258624a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAVH//o2U\u003d",
+        "filename": "board/spring/usb_charging.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-02-08T01:51:40Z",
+      "side": 1,
+      "message": "I\u0027ve filed another bug (crosbug/p/17754) to track charger handling when EC starts up.\n\nILIM off \u003d not limiting current, and thus will not cut power. However, here we should limit current by default in case we fry a  low power charger. I\u0027m changing this to ILIM on.",
+      "parentUuid": "AAAAVH//pXs\u003d",
+      "revId": "8822b565f622f81e2a6631c95e389739258624a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAVH//pYU\u003d",
         "filename": "common/tsu6721.c",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2013-02-07T17:03:16Z",
       "side": 1,
       "message": "I would prefer using an unsigned type for mask to avoid all kind of traps when doing bit operations on it.\nuint16_t ?",
+      "revId": "8822b565f622f81e2a6631c95e389739258624a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAVH//o14\u003d",
+        "filename": "common/tsu6721.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-02-08T01:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAVH//pYU\u003d",
       "revId": "8822b565f622f81e2a6631c95e389739258624a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
