@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAVH//o0I\u003d",
+        "filename": "board/spring/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-02-08T02:26:05Z",
+      "side": 1,
+      "message": "According to Aaron measurements, you are limiting the input current to 116mA, so the boost output to 2mA : is that really enough ?\nhttps://code.google.com/p/chrome-os-partner/issues/detail?id\u003d17585#c4\n\nalso nit: spaces not tab here ?",
+      "revId": "e632c1ff7f12a6466ce443e7449cf9a6075e8557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
