@@ -196,44 +196,70 @@ static int ir357x_check(void)
 	return !!diff;
 }
 
+#define SAMPLE_COUNT 10
 static void ir357x_telemetry(void)
 {
-	uint8_t vin_supply = ir357x_read(0x94);
-	uint8_t v3_supply = ir357x_read(0x95);
-	uint8_t vaux_supply = ir357x_read(0x96);
-	uint8_t l1_vout = ir357x_read(0x97);
-	uint8_t l2_vout = ir357x_read(0x98);
-	uint8_t l1_iout = ir357x_read(0x99);
-	uint8_t l2_iout = ir357x_read(0x9a);
-	uint8_t temp1 = ir357x_read(0x9b);
-	uint8_t temp2 = ir357x_read(0x9c);
-	uint8_t l1_iin = ir357x_read(0xae);
-	uint8_t l2_iin = ir357x_read(0xaf);
+	uint32_t vin_supply = 0;
+	uint32_t v3_supply = 0;
+	uint32_t l1_vout = 0;
+	uint32_t l2_vout = 0;
+	uint32_t l1_iout = 0;
+	uint32_t l2_iout = 0;
+	uint32_t temp1 = 0;
+	uint32_t temp2 = 0;
+	uint32_t l1_iin = 0;
+	uint32_t l2_iin = 0;
+	int count = 0;
 
-	if (temp1 == 0xee && temp2 == 0xee) {
-		ccprintf("cannot communicate with IR chip. not powered ?\n");
-		return;
+	while (count < SAMPLE_COUNT) {
+		count++;
+
+		if (temp1 == 0xee && temp2 == 0xee) {
+			ccprintf("cannot communicate with IR chip. not powered ?\n");
+			return;
+		}
+
+		vin_supply += ir357x_read(0x98);
+		v3_supply += ir357x_read(0x99);
+		l1_vout += ir357x_read(0x9a);
+		l2_vout += ir357x_read(0x9b);
+		l1_iout += ir357x_read(0x9c);
+		l2_iout += ir357x_read(0x9d);
+		temp1 += ir357x_read(0x9e);
+		temp2 += ir357x_read(0x9f);
+		l1_iin += ir357x_read(0xcb);
+		l2_iin += ir357x_read(0xcc);
 	}
 
+	vin_supply = (vin_supply * 125) / count;
+	v3_supply = (v3_supply * 5000) / (256 * count);
+	l1_vout = (l1_vout * 1000) / (128 * count);
+	l2_vout = (l2_vout * 1000) / (128 * count);
+	l1_iout = (l1_iout * 2000) / count;
+	l2_iout = (l2_iout * 500) / count;
+	temp1 /= count;
+	temp2 /= count;
+	l1_iin = (l1_iin * 125) / count;
+	l2_iin = (l2_iin * 125) / (2 * count);
+
 	ccprintf("Voltages:\n");
-	ccprintf("supply Vin %5d mV   V33 %5d mV Vaux %5d mV\n",
-		 (unsigned)vin_supply * 125, (unsigned)v3_supply * 5000 / 256,
-		 (unsigned)vaux_supply * 1024 * 14 / 5);
+	ccprintf("supply Vin %5d mV V33 %5d mV\n",
+		 (unsigned)vin_supply, (unsigned)v3_supply);
 	ccprintf("Vout loop1 %5d mV loop2 %5d mV\n",
-		 (unsigned)l1_vout * 1000 / 128,
-		 (unsigned)l2_vout * 1000 / 128);
+		 (unsigned)l1_vout,
+		 (unsigned)l2_vout);
 	ccprintf("Currents:\n");
 	ccprintf("Iout loop1 %5d mA loop2 %5d mA\n",
-		 (unsigned)l1_iout * 2000, (unsigned)l2_iout * 500);
+		 (unsigned)l1_iout, (unsigned)l2_iout);
 	ccprintf("Iin  loop1 %5d mA loop2 %5d mA\n",
-		 (unsigned)l1_iin * 125, (unsigned)l2_iin * 125 / 2);
+		 (unsigned)l1_iin, (unsigned)l2_iin);
 	ccprintf("Power: (computed)\n");
 	ccprintf("out  loop1 %5d mW loop2 %5d mW\n",
-		 (unsigned)l1_iout * 2000 * (unsigned)l1_vout / 128,
-		 (unsigned)l2_iout * 500 * (unsigned)l2_vout / 128);
+		 (unsigned)l1_iout * (unsigned)l1_vout / 1000,
+		 (unsigned)l2_iout * (unsigned)l2_vout  / 1000);
 	ccprintf("in   loop1 %5d mW loop2 %5d mW\n",
-		 (unsigned)l1_iin * 125 * (unsigned)vin_supply * 125 / 1000,
-		 (unsigned)l2_iin * 125 * (unsigned)vin_supply * 125 / 2000);
+		 (unsigned)l1_iin * (unsigned)vin_supply / 1000,
+		 (unsigned)l2_iin * (unsigned)vin_supply / 1000);
 	ccprintf("Temperatures:\n");
 	ccprintf("loop1 %3d C loop2 %3d C\n", temp1, temp2);
 }
@@ -247,6 +273,7 @@ static void ir357x_mtp(void)
 	int user_remain = 9 - (int)user_next;
 	int manufact_remain = 3 - (int)manufact_next;
 	timestamp_t deadline;
+    /*
 	int version = ir357x_get_version();
 
 	if (version != IR357x_SUPPORTED_CHIP) {
@@ -254,6 +281,7 @@ static void ir357x_mtp(void)
 			 version);
 		return;
 	}
+    */
 
 	ccprintf("user ptr %d next %d remain %d\n",
 	       user_ptr, user_next, user_remain);
