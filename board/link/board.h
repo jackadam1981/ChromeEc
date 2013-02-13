@@ -27,6 +27,7 @@
 #define CONFIG_TEMP_SENSOR
 #define CONFIG_TMP006
 #define CONFIG_USB_CHARGE
+#define CONFIG_IR357x
 
 #ifndef __ASSEMBLER__
 
