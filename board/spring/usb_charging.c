@@ -8,9 +8,12 @@
 #include "adc.h"
 #include "board.h"
 #include "console.h"
+#include "hooks.h"
 #include "gpio.h"
 #include "lp5562.h"
+#include "pmu_tpschrome.h"
 #include "registers.h"
+#include "smart_battery.h"
 #include "stm32_adc.h"
 #include "task.h"
 #include "timer.h"
@@ -34,6 +37,17 @@
 #define I_LIMIT_2000MA  35
 #define I_LIMIT_2400MA  25
 #define I_LIMIT_3000MA  0
+
+/* PWM control loop parameters */
+#define PWM_CTRL_BEGIN_OFFSET	15
+#define PWM_CTRL_STEP_DOWN	1
+#define PWM_CTRL_STEP_UP	5
+#define PWM_CTRL_VBUS_LOW	4500
+#define PWM_CTRL_VBUS_HIGH	4900 /* Must be higher than 4.5V */
+
+static int last_dev_type = TSU6721_TYPE_NONE;
+static int nominal_pwm_duty;
+static int current_pwm_duty;
 
 static enum ilim_config current_ilim_config = ILIM_CONFIG_MANUAL_OFF;
 
@@ -149,6 +163,36 @@ void board_pwm_duty_cycle(int percent)
 	if (percent > 100)
 		percent = 100;
 	STM32_TIM_CCR1(3) = (percent * STM32_TIM_ARR(3)) / 100;
+	current_pwm_duty = percent;
+}
+
+static void board_pwm_tweak(void)
+{
+	int vbus, current;
+
+	if (current_ilim_config != ILIM_CONFIG_PWM)
+		return;
+
+	vbus = adc_read_channel(ADC_CH_USB_VBUS_SNS);
+	if (battery_current(&current))
+		return;
+	if (vbus < PWM_CTRL_VBUS_LOW &&
+	    current_pwm_duty < 100 &&
+	    current >= 0) {
+		board_pwm_duty_cycle(current_pwm_duty + PWM_CTRL_STEP_UP);
+		CPRINTF("[%T Tweaking PWM duty up %d%%]\n", current_pwm_duty);
+	} else if (vbus > PWM_CTRL_VBUS_HIGH &&
+		   current_pwm_duty > nominal_pwm_duty) {
+		board_pwm_duty_cycle(current_pwm_duty - PWM_CTRL_STEP_DOWN);
+		CPRINTF("[%T Tweaking PWM duty down %d%%]\n", current_pwm_duty);
+	}
+}
+DECLARE_HOOK(HOOK_SECOND, board_pwm_tweak, HOOK_PRIO_DEFAULT);
+
+void board_pwm_nominal_duty_cycle(int percent)
+{
+	board_pwm_duty_cycle(percent + PWM_CTRL_BEGIN_OFFSET);
+	nominal_pwm_duty = percent;
 }
 
 void usb_charge_interrupt(enum gpio_signal signal)
@@ -158,8 +202,6 @@ void usb_charge_interrupt(enum gpio_signal signal)
 
 static void usb_device_change(int dev_type)
 {
-	static int last_dev_type;
-
 	if (last_dev_type == dev_type)
 		return;
 	last_dev_type = dev_type;
@@ -181,7 +223,7 @@ static void usb_device_change(int dev_type)
 			   (dev_type & TSU6721_TYPE_DCP))
 			current_limit = I_LIMIT_1500MA;
 
-		board_pwm_duty_cycle(current_limit);
+		board_pwm_nominal_duty_cycle(current_limit);
 
 		/* Turns on battery LED */
 		lp5562_poweron();
@@ -263,3 +305,17 @@ DECLARE_CONSOLE_COMMAND(ilim, command_ilim,
 		"[percent | on | off]",
 		"Set or show ILIM duty cycle/GPIO value",
 		NULL);
+
+static int command_batdebug(int argc, char **argv)
+{
+	int current;
+	ccprintf("VBUS = %d mV\n", adc_read_channel(ADC_CH_USB_VBUS_SNS));
+	ccprintf("VAC = %d mV\n", pmu_adc_read(ADC_VAC) * 17000 / 1024);
+	ccprintf("IAC = %d mA\n", pmu_adc_read(ADC_IAC) * 20 * 33 / 1024);
+	ccprintf("PWM = %d%%\n", STM32_TIM_CCR1(3));
+	battery_current(&current);
+	ccprintf("Battery Current = %d mA\n", current);
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(batd, command_batdebug,
+			NULL, NULL, NULL);
