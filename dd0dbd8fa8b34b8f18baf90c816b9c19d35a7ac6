@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAVH//i68\u003d",
+        "filename": "chip/stm32/clock-stm32f10x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-02-19T16:08:17Z",
+      "side": 1,
+      "message": "why not using a symbolic link for this file instead of this include for this file and other identicals one ?\nI think it\u0027s easier to navigate for developers.",
+      "revId": "dd0dbd8fa8b34b8f18baf90c816b9c19d35a7ac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAVH//i64\u003d",
+        "filename": "chip/stm32/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-02-19T16:08:17Z",
+      "side": 1,
+      "message": "that\u0027s the same value as the constant above, I would define a new one for this platform and remvoe this ifdef",
+      "revId": "dd0dbd8fa8b34b8f18baf90c816b9c19d35a7ac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAVH//i60\u003d",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-02-19T16:08:17Z",
+      "side": 1,
+      "message": "I think it\u0027s not really helpful for code compactness and multiplatform support to have same constant with a slightly different name.\nlet\u0027s stick to the old one, that\u0027s OK IMO.",
+      "revId": "dd0dbd8fa8b34b8f18baf90c816b9c19d35a7ac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAVH//i6s\u003d",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-02-19T16:08:17Z",
+      "side": 1,
+      "message": "as USB_HP is already define above, I would call that STM32_IRQ_CAN_TX",
+      "revId": "dd0dbd8fa8b34b8f18baf90c816b9c19d35a7ac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAVH//i6o\u003d",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-02-19T16:08:17Z",
+      "side": 1,
+      "message": "same as ADC1_2 , I would prefer you skip that one",
+      "revId": "dd0dbd8fa8b34b8f18baf90c816b9c19d35a7ac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAVH//i6Y\u003d",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-02-19T16:08:17Z",
+      "side": 1,
+      "message": "you can always define them and just command they are f10x only.",
+      "revId": "dd0dbd8fa8b34b8f18baf90c816b9c19d35a7ac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
