@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAVH//i7I\u003d",
+        "filename": "board/spring/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-02-19T15:48:17Z",
+      "side": 1,
+      "message": "it would be nice to add at least the current limitation value \n(aka ilim). IMO the following approximation would be enough ilim_current \u003d  -29*ilim_pwm_duty+3012\nand also the charger type.\nSo we are all set for other interfaces which need charging info (e.g. bootloader low battery screen)",
+      "revId": "ebb8c7a27ee415723539684b07092628e36bd1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAVH//i7M\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-02-19T15:48:17Z",
+      "side": 1,
+      "message": "datasheet says 10ms, is the 20ms necessary ?",
+      "revId": "ebb8c7a27ee415723539684b07092628e36bd1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
