@@ -166,6 +166,15 @@ void board_pwm_duty_cycle(int percent)
 	current_pwm_duty = percent;
 }
 
+void board_pwm_init_limit(void)
+{
+	int dummy;
+
+	/* Shut off power input if battery is good. */
+	if (!battery_current(&dummy))
+		board_ilim_config(ILIM_CONFIG_MANUAL_ON);
+}
+
 static void board_pwm_tweak(void)
 {
 	int vbus, current;
@@ -199,7 +208,12 @@ DECLARE_HOOK(HOOK_SECOND, board_pwm_tweak, HOOK_PRIO_DEFAULT);
 
 void board_pwm_nominal_duty_cycle(int percent)
 {
-	board_pwm_duty_cycle(percent + PWM_CTRL_BEGIN_OFFSET);
+	int dummy;
+
+	if (battery_current(&dummy))
+		board_pwm_duty_cycle(percent);
+	else
+		board_pwm_duty_cycle(percent + PWM_CTRL_BEGIN_OFFSET);
 	nominal_pwm_duty = percent;
 }
 
