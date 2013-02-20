@@ -1287,11 +1287,13 @@ struct ec_params_sb_wr_word {
 } __packed;
 
 struct ec_response_sb_rd_block {
+	uint8_t length;
 	uint8_t data[32];
 } __packed;
 
 struct ec_params_sb_wr_block {
 	uint8_t reg;
+	uint8_t length;
 	uint16_t data[32];
 } __packed;
 

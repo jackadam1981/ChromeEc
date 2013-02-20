@@ -338,6 +338,7 @@ static int host_command_sb_read_block(struct host_cmd_handler_args *args)
 	if (rv)
 		return EC_RES_ERROR;
 
+	r->length = strlen(r->data);
 	args->response_size = sizeof(struct ec_response_sb_rd_block);
 
 	return EC_RES_SUCCESS;
