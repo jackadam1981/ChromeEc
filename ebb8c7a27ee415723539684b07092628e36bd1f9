@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAVH//iE8\u003d",
+        "filename": "board/spring/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-02-20T03:43:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAVH//i7I\u003d",
+      "revId": "ebb8c7a27ee415723539684b07092628e36bd1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAVH//i7M\u003d",
         "filename": "common/pmu_tps65090.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2013-02-19T15:48:17Z",
       "side": 1,
       "message": "datasheet says 10ms, is the 20ms necessary ?",
+      "revId": "ebb8c7a27ee415723539684b07092628e36bd1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAVH//iFU\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-02-20T03:43:33Z",
+      "side": 1,
+      "message": "I put 20ms only because repo is complaining about 10ms being too short. Given 10ms is also long enough that we want to use this only in few place (currently 2 cases: boot with low battery and debug with ectool), I assume 20ms is fine. Suggestion?",
+      "parentUuid": "AAAAVH//i7M\u003d",
       "revId": "ebb8c7a27ee415723539684b07092628e36bd1f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
