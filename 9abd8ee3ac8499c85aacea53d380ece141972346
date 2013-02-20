@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAVH//h40\u003d",
+        "filename": "board/spring/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-02-20T15:52:58Z",
+      "side": 1,
+      "message": "we should benchmark at some point how many ADC readings we are doing and maybe optimize them (ie do not turn off ref voltage)",
+      "revId": "9abd8ee3ac8499c85aacea53d380ece141972346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAVH//h4s\u003d",
+        "filename": "board/spring/usb_charging.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-02-20T15:52:58Z",
+      "side": 1,
+      "message": "it would be nice to use the analog watchdog feature of the ADC rather than polling. But this can be done in another CL.",
+      "revId": "9abd8ee3ac8499c85aacea53d380ece141972346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
