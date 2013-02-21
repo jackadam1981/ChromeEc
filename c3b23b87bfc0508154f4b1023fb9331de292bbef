@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAVH//gyM\u003d",
+        "filename": "board/spring/usb_charging.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-02-21T14:10:17Z",
+      "side": 1,
+      "message": "according to ame@ measurement, 90 means 414mA current limit on the input side, isn\u0027t that low ?\nis that accounting for losses in the cable.",
+      "revId": "c3b23b87bfc0508154f4b1023fb9331de292bbef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAVH//gyQ\u003d",
+        "filename": "board/spring/usb_charging.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-02-21T14:10:17Z",
+      "side": 1,
+      "message": "is that an ADC calibration issue (or ADC variation from board to board) ?",
+      "revId": "c3b23b87bfc0508154f4b1023fb9331de292bbef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
