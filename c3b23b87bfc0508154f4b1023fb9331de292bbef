@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAVH//gE8\u003d",
+        "filename": "board/spring/usb_charging.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-02-22T03:05:42Z",
+      "side": 1,
+      "message": "I don\u0027t think this is due to cable loss, but I did see charger over-current and shut off with previous limit. I\u0027m guessing this is due to some variation on current draw. The voltage drop is so fast that we cannot detect it before it happens and thus I\u0027d like a lower limit.\n\nGoing forward, if we don\u0027t mind the complexity added to the code, we can dynamically adjust the limit if we ever see charger shut off and come back within a second or two. That way we will be able to sense the current limit of the charger.",
+      "parentUuid": "AAAAVH//gyM\u003d",
+      "revId": "c3b23b87bfc0508154f4b1023fb9331de292bbef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAVH//gyQ\u003d",
         "filename": "board/spring/usb_charging.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2013-02-21T14:10:17Z",
       "side": 1,
       "message": "is that an ADC calibration issue (or ADC variation from board to board) ?",
+      "revId": "c3b23b87bfc0508154f4b1023fb9331de292bbef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAVH//gE0\u003d",
+        "filename": "board/spring/usb_charging.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-02-22T03:05:42Z",
+      "side": 1,
+      "message": "The original threshold is closer to low-power charger. When the AP is off, the voltage difference on D- is so small that we sometimes misdetect the charger type inevitably. I\u0027m moving this threshold higher so that we more likely misdetect high-power charger as a low-power one, and not vice versa.",
+      "parentUuid": "AAAAVH//gyQ\u003d",
       "revId": "c3b23b87bfc0508154f4b1023fb9331de292bbef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
