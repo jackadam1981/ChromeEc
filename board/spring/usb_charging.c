@@ -40,7 +40,10 @@
 
 /* PWM control loop parameters */
 #define PWM_CTRL_BEGIN_OFFSET	30
-#define PWM_CTRL_STEP_DOWN	1
+#define PWM_CTRL_OC_MARGIN	15
+#define PWM_CTRL_OC_DETECT_TIME	(800 * MSEC)
+#define PWM_CTRL_OC_BACK_OFF	3
+#define PWM_CTRL_STEP_DOWN	2
 #define PWM_CTRL_STEP_UP	5
 #define PWM_CTRL_VBUS_LOW	4500
 #define PWM_CTRL_VBUS_HIGH	4700 /* Must be higher than 4.5V */
@@ -48,6 +51,19 @@
 static int current_dev_type = TSU6721_TYPE_NONE;
 static int nominal_pwm_duty;
 static int current_pwm_duty;
+
+/*
+ * Last time we see a power source removed. Also records the power source
+ * type and PWM duty cycle at that moment.
+ * Index: 0 = Unknown power source.
+ *        1 = Recognized power source.
+ */
+static timestamp_t power_removed_time[2];
+static uint32_t power_removed_type[2];
+static int power_removed_pwm_duty[2];
+
+/* PWM duty cycle limit based on over current event */
+static int over_current_pwm_duty;
 
 static enum ilim_config current_ilim_config = ILIM_CONFIG_MANUAL_OFF;
 
@@ -204,7 +220,9 @@ static void board_pwm_tweak(void)
 		board_pwm_duty_cycle(current_pwm_duty + PWM_CTRL_STEP_UP);
 		CPRINTF("[%T PWM duty up %d%%]\n", current_pwm_duty);
 	} else if (vbus > PWM_CTRL_VBUS_HIGH &&
-		   current_pwm_duty > nominal_pwm_duty) {
+		   current_pwm_duty > nominal_pwm_duty - PWM_CTRL_OC_MARGIN &&
+		   current_pwm_duty > over_current_pwm_duty &&
+		   current_pwm_duty > 0) {
 		board_pwm_duty_cycle(current_pwm_duty - PWM_CTRL_STEP_DOWN);
 		CPRINTF("[%T PWM duty down %d%%]\n", current_pwm_duty);
 	}
@@ -234,6 +252,36 @@ static void usb_device_change(int dev_type)
 
 	if (current_dev_type == dev_type)
 		return;
+
+	over_current_pwm_duty = 0;
+
+	/*
+	 * When a power source is removed, record time, power source type,
+	 * and PWM duty cycle. Then when we see a power source, compare type
+	 * and calculate time difference to determine if we have just
+	 * encountered an over current event.
+	 */
+	if ((current_dev_type & TSU6721_TYPE_VBUS_DEBOUNCED) &&
+	    (dev_type == TSU6721_TYPE_NONE)) {
+		int idx = !(current_dev_type == TSU6721_TYPE_VBUS_DEBOUNCED);
+		power_removed_time[idx] = get_time();
+		power_removed_type[idx] = current_dev_type;
+		/*
+		 * Considering user may plug/unplug the charger too fast, we
+		 * don't limit current to lower than nominal current limit.
+		 */
+		power_removed_pwm_duty[idx] = MIN(current_pwm_duty,
+						  nominal_pwm_duty);
+	} else if (dev_type & TSU6721_TYPE_VBUS_DEBOUNCED) {
+		int idx = !(dev_type == TSU6721_TYPE_VBUS_DEBOUNCED);
+		timestamp_t now = get_time();
+		now.val -= power_removed_time[idx].val;
+		if (power_removed_type[idx] == dev_type &&
+		    now.val < PWM_CTRL_OC_DETECT_TIME) {
+			over_current_pwm_duty = power_removed_pwm_duty[idx] +
+						PWM_CTRL_OC_BACK_OFF;
+		}
+	}
 
 	/*
 	 * Supply VBUS if needed. If we toggle power output, wait for a moment,
