@@ -424,21 +424,68 @@ DECLARE_CONSOLE_COMMAND(ilim, command_ilim,
 
 static int command_batdebug(int argc, char **argv)
 {
-	int val;
-	ccprintf("VBUS = %d mV\n", adc_read_channel(ADC_CH_USB_VBUS_SNS));
-	ccprintf("VAC = %d mV\n", pmu_adc_read(ADC_VAC, ADC_FLAG_KEEP_ON)
-				  * 17000 / 1024);
-	ccprintf("IAC = %d mA\n", pmu_adc_read(ADC_IAC, ADC_FLAG_KEEP_ON)
-				  * 20 * 33 / 1024);
-	ccprintf("VBAT = %d mV\n", pmu_adc_read(ADC_VBAT, ADC_FLAG_KEEP_ON)
-				  * 17000 / 1024);
-	ccprintf("IBAT = %d mA\n", pmu_adc_read(ADC_IBAT, 0)
-				  * 50 * 40 / 1024);
-	ccprintf("PWM = %d%%\n", STM32_TIM_CCR1(3));
-	battery_current(&val);
-	ccprintf("Battery Current = %d mA\n", val);
-	battery_voltage(&val);
-	ccprintf("Battery Voltage= %d mV\n", val);
+	int vbus = adc_read_channel(ADC_CH_USB_VBUS_SNS);
+	int bat_volt, bat_cur;
+	int vac, iac, vbat, ibat;
+	int idcdc1, idcdc2, idcdc3;
+	int ifet1, ifet3, ifet6;
+	int ilim = board_get_usb_current_limit();
+	const char *chg_name = "nothing";
+	static const char * const chg_names[] = {
+		"", "", "USB Host", "UART",
+		"charger", "CDP", "DCP", "OTG",
+		"", "", "JIG UART ON", "",
+		"", "", "", "",
+		"", "Unknown with power", "Non standard charger", "",
+		"", "Apple charger", "U200", ""
+	};
+
+	if (current_dev_type)
+		chg_name = chg_names[31 - __builtin_clz(current_dev_type)];
+	ccprintf("USB input %5d mV limit %5d mA (%5d mW) type:%s\n",
+		 vbus, ilim, ilim * vbus / 1000, chg_name);
+	ccprintf("Battery   ");
+	if (battery_voltage(&bat_volt) || battery_current(&bat_cur)) {
+		ccprintf("???\n");
+	} else {
+		ccprintf("%5d mV       %5d mA (%5d mW)\n", bat_volt, bat_cur,
+			 bat_volt * bat_cur / 1000);
+	}
+
+	if (!gpio_get_level(GPIO_EN_PP5000)) {
+		ccprintf("TPSchr    powered off\n");
+		return EC_SUCCESS;
+	}
+
+	vac = pmu_adc_read(ADC_VAC, ADC_FLAG_KEEP_ON) * 17000 / 1024;
+	iac = pmu_adc_read(ADC_IAC, ADC_FLAG_KEEP_ON) * 20 * 33 / 1024;
+	vbat = pmu_adc_read(ADC_VBAT, ADC_FLAG_KEEP_ON) * 17000 / 1024;
+	ibat = pmu_adc_read(ADC_IBAT, ADC_FLAG_KEEP_ON) * 50 * 40 / 1024;
+	idcdc1 = pmu_adc_read(ADC_IDCDC1, ADC_FLAG_KEEP_ON) * 5000 / 1024;
+	idcdc2 = pmu_adc_read(ADC_IDCDC2, ADC_FLAG_KEEP_ON) * 5000 / 1024;
+	idcdc3 = pmu_adc_read(ADC_IDCDC3, ADC_FLAG_KEEP_ON) * 5000 / 1024;
+	ifet1 = pmu_adc_read(ADC_IFET1, ADC_FLAG_KEEP_ON) * 1100 / 1024;
+	ifet3 = pmu_adc_read(ADC_IFET3, ADC_FLAG_KEEP_ON) * 3300 / 1024;
+	ifet6 = pmu_adc_read(ADC_IFET6, ADC_FLAG_KEEP_ON) * 1100 / 1024;
+	ilim = board_get_usb_current_limit();
+
+	ccprintf("TPSchr AC %5d mV       %5d mA (%5d mW)\n",
+		 vac, iac, vac * iac / 1000);
+	ccprintf("      BAT %5d mV       %5d mA (%5d mW)\n",
+		 vbat, ibat, vbat * ibat / 1000);
+	ccprintf("       PP5000            %5d mA (%5d mW)\n",
+		 idcdc1, 5000 * idcdc1 / 1000);
+	ccprintf("       PP3300            %5d mA (%5d mW)\n",
+		 idcdc2, 3300 * idcdc2 / 1000);
+	ccprintf("       PP1350            %5d mA (%5d mW)\n",
+		 idcdc3, 1350 * idcdc3 / 1000);
+	ccprintf("    Backlight            %5d mA (%5d mW)\n",
+		 ifet1, vbat * ifet1 / 1000);
+	ccprintf("          LCD            %5d mA (%5d mW)\n",
+		 ifet6, 3300 * ifet6 / 1000);
+	ccprintf("     3G modem            %5d mA (%5d mW)\n",
+		 ifet3, 3300 * ifet3 / 1000);
+
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(batdebug, command_batdebug,
