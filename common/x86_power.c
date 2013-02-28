@@ -1,10 +1,11 @@
-/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
 
 /* X86 chipset power control module for Chrome EC */
 
+#include "charge_state.h"
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
@@ -680,6 +681,13 @@ void x86_power_task(void)
 			 */
 			gpio_set_level(GPIO_TOUCHSCREEN_RESETn, 0);
 			gpio_set_level(GPIO_LIGHTBAR_RESETn, 0);
+
+			/* Hibernate immediately if battery level is too low */
+			if (charge_want_shutdown()) {
+				CPRINTF("[%T x86 force EC hibernate after"
+					" shutdown due to low battery]\n");
+				system_hibernate(0, 0);
+			}
 
 			state = X86_S5;
 			break;
