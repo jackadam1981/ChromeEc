@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAVX//+bo\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-03-04T17:51:30Z",
+      "side": 1,
+      "message": "We don\u0027t want the \"not\" here ???",
+      "revId": "2e1340d512376c7474f3735d15b0a1ab8e4a9d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAVX//+bU\u003d",
+        "filename": "board/spring/usb_charging.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-03-04T17:51:30Z",
+      "side": 1,
+      "message": "can you add a comment ?\nsomething like : minimum current for dead battery\n(as the MAX is actually a min for current, the clarification will be welcome)",
+      "revId": "2e1340d512376c7474f3735d15b0a1ab8e4a9d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
