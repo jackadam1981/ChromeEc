@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAVX//+W8\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-03-04T18:38:21Z",
+      "side": 1,
+      "message": "we are following git/kernel convention :\ntitle\n\u003cblank line\u003e\ndescription",
+      "revId": "65c16977b97c490102752cb5c8690619d9feb91b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAVX//+YA\u003d",
+        "filename": "board/spring/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-03-04T18:38:21Z",
+      "side": 1,
+      "message": "please remove the function altogether.\nThere is a weak symbol for it and we are not using this feature.",
+      "revId": "65c16977b97c490102752cb5c8690619d9feb91b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
