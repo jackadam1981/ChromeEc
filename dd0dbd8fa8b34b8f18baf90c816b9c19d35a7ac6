@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAWH///gU\u003d",
+        "filename": "chip/stm32/clock-stm32f10x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2013-03-07T22:12:51Z",
+      "side": 1,
+      "message": "Done. I\u0027m not sure if git/repo handles symlinks well. Repo produces a nonsensical warning that should be safe to ignore:\n\nWARNING: adding a line without newline at end of file\n\n#27: FILE: chip/stm32/clock-stm32f10x.c:1:\n\n+clock-stm32f100.c",
+      "parentUuid": "AAAAVH//i68\u003d",
+      "revId": "dd0dbd8fa8b34b8f18baf90c816b9c19d35a7ac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAVH//i64\u003d",
         "filename": "chip/stm32/hwtimer.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2013-02-19T16:08:17Z",
       "side": 1,
       "message": "that\u0027s the same value as the constant above, I would define a new one for this platform and remvoe this ifdef",
+      "revId": "dd0dbd8fa8b34b8f18baf90c816b9c19d35a7ac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAWH///gs\u003d",
+        "filename": "chip/stm32/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2013-03-07T22:12:51Z",
+      "side": 1,
+      "message": "Removed the #ifdef. I\u0027m not sure what you mean by \"define a new one\" though. I think we can use the same definition, the #ifdef was due to the overly-pedantic naming used earlier.",
+      "parentUuid": "AAAAVH//i64\u003d",
       "revId": "dd0dbd8fa8b34b8f18baf90c816b9c19d35a7ac6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAWH///lo\u003d",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2013-03-07T22:12:51Z",
+      "side": 1,
+      "message": "Sounds good. I also left a comment to mention that the variable applies to ADC2 for STM32F10x.",
+      "parentUuid": "AAAAVH//i60\u003d",
+      "revId": "dd0dbd8fa8b34b8f18baf90c816b9c19d35a7ac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAVH//i6s\u003d",
         "filename": "chip/stm32/registers.h",
         "patchSetId": 3
@@ -64,6 +118,24 @@
       "writtenOn": "2013-02-19T16:08:17Z",
       "side": 1,
       "message": "as USB_HP is already define above, I would call that STM32_IRQ_CAN_TX",
+      "revId": "dd0dbd8fa8b34b8f18baf90c816b9c19d35a7ac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAWH///lY\u003d",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2013-03-07T22:12:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAVH//i6s\u003d",
       "revId": "dd0dbd8fa8b34b8f18baf90c816b9c19d35a7ac6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,41 @@
     },
     {
       "key": {
+        "uuid": "AAAAWH///lA\u003d",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2013-03-07T22:12:51Z",
+      "side": 1,
+      "message": "Done\n\nThis one begs the question, should we use the name with the least functionality exposed? E.g. use the new name (TIM1_BRK) and comment that it applies to TIM15 on STM32F100?",
+      "parentUuid": "AAAAVH//i6o\u003d",
+      "revId": "dd0dbd8fa8b34b8f18baf90c816b9c19d35a7ac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAWH///k8\u003d",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2013-03-07T22:12:51Z",
+      "side": 1,
+      "message": "done for this one as well.",
+      "revId": "dd0dbd8fa8b34b8f18baf90c816b9c19d35a7ac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAVH//i6Y\u003d",
         "filename": "chip/stm32/registers.h",
         "patchSetId": 3
@@ -98,6 +205,24 @@
       "writtenOn": "2013-02-19T16:08:17Z",
       "side": 1,
       "message": "you can always define them and just command they are f10x only.",
+      "revId": "dd0dbd8fa8b34b8f18baf90c816b9c19d35a7ac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAWH///k0\u003d",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2013-03-07T22:12:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAVH//i6Y\u003d",
       "revId": "dd0dbd8fa8b34b8f18baf90c816b9c19d35a7ac6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
