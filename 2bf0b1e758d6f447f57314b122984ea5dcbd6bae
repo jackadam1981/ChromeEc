@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAWH///eM\u003d",
+        "filename": "chip/stm32/config-stm32f10x.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2013-03-07T22:29:31Z",
+      "side": 1,
+      "message": "To respond to your comments in the follow-up code review: You\u0027re correct, it should be 64KB. The reason for 128KB is used is because 64KB is about 6KB too small to fit a RO + RW image. So I had to build the image for 128KB and assume only RO will be used.\n\nWe should only need RO for this device, but there did not seem to be an easy way to omit RW (common/firmware_image.ld.S has a .image.RW section). Perhaps I am missing something obvious?",
+      "revId": "2bf0b1e758d6f447f57314b122984ea5dcbd6bae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
