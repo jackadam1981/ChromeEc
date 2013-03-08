@@ -67,12 +67,6 @@ static uint8_t scan_edge_index[KB_OUTPUTS][KB_INPUTS];
 #define MASK_INDEX_LEFT_ALT	10
 #define MASK_VALUE_LEFT_ALT	0x40
 
-struct kbc_gpio {
-	int num;		/* logical row or column number */
-	uint32_t port;
-	int pin;
-};
-
 #if defined(BOARD_daisy) || defined(BOARD_snow) || defined(BOARD_spring)
 static const uint32_t ports[] = { GPIO_B, GPIO_C, GPIO_D };
 #else
