@@ -38,6 +38,9 @@
 /* EC drives 13 outputs to keyboard matrix */
 #define KB_OUTPUTS 13
 
+/* Number of GPIO ports with keyboard outputs */
+#define NUM_KB_OUT_PORTS 2
+
 /* Charging */
 #define CONFIG_SMART_BATTERY
 #define CONFIG_PMU_TPS65090
