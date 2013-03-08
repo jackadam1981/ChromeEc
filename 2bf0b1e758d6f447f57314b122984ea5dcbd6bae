@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAWH///G8\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2013-03-08T02:44:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAWH///Is\u003d",
+      "revId": "2bf0b1e758d6f447f57314b122984ea5dcbd6bae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAWH///eM\u003d",
         "filename": "chip/stm32/config-stm32f10x.h",
         "patchSetId": 5
