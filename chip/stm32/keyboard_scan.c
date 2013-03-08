@@ -69,11 +69,11 @@ struct kbc_gpio {
 	int pin;
 };
 
-#if defined(BOARD_daisy) || defined(BOARD_snow) || defined(BOARD_spring)
-static const uint32_t ports[] = { GPIO_B, GPIO_C, GPIO_D };
-#else
-#error "Need to specify GPIO ports used by keyboard"
-#endif
+/*
+ * GPIO ports with keyboard outputs. This is used when writing to BSRR
+ * registers to assert outputs during the scan loop.
+ */
+static unsigned int kb_out_ports[NUM_KB_OUT_PORTS];
 
 /* Provide a default function in case the board doesn't have one */
 void __board_keyboard_suppress_noise(void)
@@ -179,12 +179,12 @@ static void assert_output(int out)
 {
 	int i, done = 0;
 
-	for (i = 0; i < ARRAY_SIZE(ports); i++) {
+	for (i = 0; i < ARRAY_SIZE(kb_out_ports); i++) {
 		uint32_t bsrr = 0;
 		int j;
 
 		for (j = GPIO_KB_OUT00; j <= GPIO_KB_OUT12; j++) {
-			if (gpio_list[j].port != ports[i])
+			if (gpio_list[j].port != kb_out_ports[i])
 				continue;
 
 			if (out == OUTPUT_ASSERT_ALL) {
@@ -207,7 +207,7 @@ static void assert_output(int out)
 		}
 
 		if (bsrr)
-			STM32_GPIO_BSRR_OFF(ports[i]) = bsrr;
+			STM32_GPIO_BSRR_OFF(kb_out_ports[i]) = bsrr;
 
 		if (done)
 			break;
@@ -583,6 +583,29 @@ static void set_irq_mask(void)
 		irq_mask |= gpio_list[i].mask;
 }
 
+static void set_kb_out_ports(void)
+{
+	int i, j;
+	int first_empty_slot = 0;
+
+	for (i = GPIO_KB_OUT00; i < GPIO_KB_OUT00 + KB_OUTPUTS; i++) {
+		int found = 0;
+
+		for (j = 0; j < ARRAY_SIZE(kb_out_ports); j++) {
+			if (kb_out_ports[j] == gpio_list[i].port) {
+				found = 1;
+				break;
+			}
+		}
+
+		if (!found) {
+			ASSERT(first_empty_slot < ARRAY_SIZE(kb_out_ports));
+			kb_out_ports[first_empty_slot] = gpio_list[i].port;
+			first_empty_slot++;
+		}
+	}
+}
+
 void keyboard_scan_task(void)
 {
 	/* Enable interrupts for keyboard matrix inputs */
@@ -597,6 +620,9 @@ void keyboard_scan_task(void)
 
 	/* Determine EXTI_PR mask to use for the board */
 	set_irq_mask();
+
+	/* Determine which GPIO ports have keyboard outputs */
+	set_kb_out_ports();
 
 	print_state(debounced_state, "init state");
 
