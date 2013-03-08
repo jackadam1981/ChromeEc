@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAWH///J8\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-03-08T02:01:39Z",
+      "side": 1,
+      "message": "Yes I tried both. And also tried that after unplugging the dongle, ID detection for other things still works.",
+      "parentUuid": "AAAAWH///LM\u003d",
+      "revId": "4097aadc944714ff378f997c87dd85eacb94609d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAWH///ME\u003d",
         "filename": "board/spring/usb_charging.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2013-03-08T01:51:57Z",
       "side": 1,
       "message": "those timings seem really large. What is happening on the hardware side requiring such a delay ?",
+      "revId": "4097aadc944714ff378f997c87dd85eacb94609d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAWH///J0\u003d",
+        "filename": "board/spring/usb_charging.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-03-08T02:01:39Z",
+      "side": 1,
+      "message": "I\u0027m also surprised by the delay, but I did see 20ms failed in some cases. Although we can try some delay between 20ms and 30ms, I don\u0027t think the margin would be safe enough and also the performance gain wouldn\u0027t be that much.",
+      "parentUuid": "AAAAWH///ME\u003d",
       "revId": "4097aadc944714ff378f997c87dd85eacb94609d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
