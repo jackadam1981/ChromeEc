@@ -33,6 +33,24 @@
       "revId": "df7379d1c296ee3d7d5ca402369791af714569c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAWH///Qo\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2013-03-09T00:56:41Z",
+      "side": 1,
+      "message": "For IRQ_MASK, and ports[], I attempted to solve this in other CLs by doing everything more dynamically to remove hard-coded values.\n\nFor the empty functions -- I added back the weak symbol for board_keyboard_suppress_noise() and added an empty function in mccroskey\u0027s board.c for board_interrupt_host(). These are not used on mccroskey, but are benign. Maybe we can come up with a more elegant solution later on.",
+      "parentUuid": "AAAAVH//i6Q\u003d",
+      "revId": "df7379d1c296ee3d7d5ca402369791af714569c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
