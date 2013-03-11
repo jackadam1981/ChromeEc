@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAWH//83Y\u003d",
+        "filename": "common/keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2013-03-11T20:23:24Z",
+      "side": 1,
+      "message": "While this isn\u0027t necessary I was thinking it should be non-zero and mapped to the correct value in the unlikely event we decide passing KEY_BATTERY through to the input layer in the kernel is a good idea.",
+      "revId": "745369bb1aa2a4505bc0b2cd0f5ea112c0c561ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
