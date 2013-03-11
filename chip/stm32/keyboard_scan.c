@@ -678,6 +678,32 @@ void keyboard_enable_scanning(int enable)
 	}
 }
 
+#if defined(BOARD_spring)
+/* Changes to col,row here need to also be reflected in kernel.
+ * drivers/input/mkbp.c ... see KEY_BATTERY.
+ */
+#define BATTERY_KEY_COL 0
+#define BATTERY_KEY_ROW 7
+#define BATTERY_KEY_ROW_MASK (1 << BATTERY_KEY_ROW)
+
+void keyboard_send_battery_key()
+{
+	debounced_state[BATTERY_KEY_COL] |= BATTERY_KEY_ROW_MASK;
+	if (kb_fifo_add(debounced_state) != EC_SUCCESS) {
+		CPRINTF("dropped battery key press\n");
+		return;
+	}
+
+	debounced_state[BATTERY_KEY_COL] &= ~BATTERY_KEY_ROW_MASK;
+	if (kb_fifo_add(debounced_state) == EC_SUCCESS)
+		board_interrupt_host(1);
+	else
+		CPRINTF("dropped battery key release\n");
+}
+#else
+void keyboard_send_battery_key() {}
+#endif
+
 static int command_keyboard_press(int argc, char **argv)
 {
 	int r, c, p;
