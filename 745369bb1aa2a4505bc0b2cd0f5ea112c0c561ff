@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAWH//8hQ\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2013-03-12T19:09:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAWH//8tw\u003d",
+      "revId": "745369bb1aa2a4505bc0b2cd0f5ea112c0c561ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAWH//8ts\u003d",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2013-03-11T21:57:34Z",
       "side": 1,
       "message": "the branch has been created.\nthis should be now :\nBRANCH\u003dspring",
+      "revId": "745369bb1aa2a4505bc0b2cd0f5ea112c0c561ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAWH//8hM\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2013-03-12T19:09:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAWH//8ts\u003d",
       "revId": "745369bb1aa2a4505bc0b2cd0f5ea112c0c561ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAWH//8hE\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2013-03-12T19:09:51Z",
+      "side": 1,
+      "message": "It does grow EC binary for snow though as this is linked in as well.\n\nHappy to remove just thought I should be scrappy.",
+      "parentUuid": "AAAAWH//8uI\u003d",
+      "revId": "745369bb1aa2a4505bc0b2cd0f5ea112c0c561ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAWH//8uA\u003d",
         "filename": "chip/stm32/keyboard_scan.c",
         "patchSetId": 2
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAWH//7n8\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2013-03-12T19:09:51Z",
+      "side": 1,
+      "message": "Can you suggest something here ... or stop by and talk in person.",
+      "parentUuid": "AAAAWH//8uA\u003d",
+      "revId": "745369bb1aa2a4505bc0b2cd0f5ea112c0c561ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAWH//8t4\u003d",
         "filename": "chip/stm32/keyboard_scan.c",
         "patchSetId": 2
@@ -81,6 +153,24 @@
       "writtenOn": "2013-03-11T21:57:34Z",
       "side": 1,
       "message": "you are generating twice the event on the kernel side (press and release)\nmaybe you should toggle once.",
+      "revId": "745369bb1aa2a4505bc0b2cd0f5ea112c0c561ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAWH//7m4\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2013-03-12T19:09:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAWH//8t4\u003d",
       "revId": "745369bb1aa2a4505bc0b2cd0f5ea112c0c561ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -116,6 +206,24 @@
       "side": 1,
       "message": "The code is not used and not compiled on Spring, I would prefer we don\u0027t touch to avoid confusion.",
       "parentUuid": "AAAAWH//83Y\u003d",
+      "revId": "745369bb1aa2a4505bc0b2cd0f5ea112c0c561ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAWH//7m0\u003d",
+        "filename": "common/keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2013-03-12T19:09:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAWH//8uY\u003d",
       "revId": "745369bb1aa2a4505bc0b2cd0f5ea112c0c561ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
