@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAWH//7Sc\u003d",
+        "filename": "util/lbplay.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2013-03-12T22:18:32Z",
+      "side": 1,
+      "message": "doesn\u0027t look like a new issue, but if i\u0027m reading the locking code correctly, this is based on sysv ipc/shm, and if you hit CTRL+C at the wrong point, the semaphore will stay locked.",
+      "revId": "96828b1f978f2e599b360d11b77ceb2226a2c354",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
