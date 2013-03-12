@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAWH//7k8\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-03-12T20:37:33Z",
+      "side": 1,
+      "message": "let\u0027s say we will drop unused functions in the build process soon.",
+      "parentUuid": "AAAAWH//8hE\u003d",
+      "revId": "745369bb1aa2a4505bc0b2cd0f5ea112c0c561ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAWH//8uA\u003d",
         "filename": "chip/stm32/keyboard_scan.c",
         "patchSetId": 2
@@ -136,6 +154,24 @@
       "side": 1,
       "message": "Can you suggest something here ... or stop by and talk in person.",
       "parentUuid": "AAAAWH//8uA\u003d",
+      "revId": "745369bb1aa2a4505bc0b2cd0f5ea112c0c561ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAWH//7eY\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-03-12T20:37:33Z",
+      "side": 1,
+      "message": "the mutex solution you have implemented might work\n(if it is not triggering bad priority inversion)\nelse using atomic access to those memory words might be better",
+      "parentUuid": "AAAAWH//7n8\u003d",
       "revId": "745369bb1aa2a4505bc0b2cd0f5ea112c0c561ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
