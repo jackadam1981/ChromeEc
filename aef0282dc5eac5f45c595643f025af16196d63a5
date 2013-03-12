@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAWH//72Y\u003d",
+        "filename": "board/mccroskey/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-03-12T16:27:23Z",
+      "side": 1,
+      "message": "the prototype looks wrong :\nit should be \nvoid matrix_interrupt(enum gpio_signal signal);\n\nby the way, as other platforms you can also use: \n#define matrix_interrupt NULL\nso that\u0027s compiled out",
+      "revId": "aef0282dc5eac5f45c595643f025af16196d63a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
