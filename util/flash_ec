@@ -16,6 +16,8 @@ DEFINE_string offset "0" \
 	"Offset where to program the image from."
 DEFINE_integer port 9999 \
 	"Port to communicate to servo on."
+DEFINE_boolean force "${FLAGS_FALSE}" \
+	"Attempt to forcibly access EC UART pty if necessary."
 DEFINE_boolean ro "${FLAGS_FALSE}" \
 	"Write only the read-only partition"
 DEFINE_boolean unprotect "${FLAGS_FALSE}" \
@@ -104,6 +106,15 @@ function servo_restore() {
 	done
 }
 
+function free_pty() {
+	pids=$(lsof -F p 2>/dev/null -- $1 | cut -d'p' -f2)
+	if [ "${pids}" != "" ]; then
+		kill -9 ${pids}
+		info "You'll need to re-launch console on $1"
+		# needed sleep to allow for cleanup
+	fi
+}
+
 # Board specific flashing scripts
 
 function flash_daisy() {
@@ -127,6 +138,9 @@ function flash_daisy() {
 	# reset the EC
 	dut_control cold_reset:on
 	dut_control cold_reset:off
+        if [ "${FLAGS_force}" = ${FLAGS_TRUE} ] ; then
+            free_pty ${EC_UART}
+        fi
 	${STM32MON} -d ${EC_UART} -e -w ${IMG}
 }
 
