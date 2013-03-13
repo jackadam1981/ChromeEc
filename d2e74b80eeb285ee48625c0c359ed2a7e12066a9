@@ -33,6 +33,23 @@
       "revId": "d2e74b80eeb285ee48625c0c359ed2a7e12066a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAWX///gQ\u003d",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2013-03-13T18:58:21Z",
+      "side": 1,
+      "message": "shutting down minicom sometimes takes a while (and in the past it would just hang unless invoked with -HUP as the signal name). I think at worst it would force the operator to retry.",
+      "revId": "d2e74b80eeb285ee48625c0c359ed2a7e12066a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
