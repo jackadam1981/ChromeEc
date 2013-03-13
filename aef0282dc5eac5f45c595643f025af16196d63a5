@@ -16,6 +16,24 @@
       "revId": "aef0282dc5eac5f45c595643f025af16196d63a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAWX///Nw\u003d",
+        "filename": "board/mccroskey/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2013-03-13T22:21:07Z",
+      "side": 1,
+      "message": "Looking back at this, it makes no sense for McCroskey not to have a keyscan task. So this #ifndef isn\u0027t really needed.\n\nI can\u0027t remember why we added this for other boards we currently support. Maybe we thought Daisy/Snow would use the AP for scanning the keyboard?",
+      "parentUuid": "AAAAWH//72Y\u003d",
+      "revId": "aef0282dc5eac5f45c595643f025af16196d63a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
