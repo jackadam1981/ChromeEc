@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAWX///p4\u003d",
+        "filename": "chip/stm32/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-03-13T17:33:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAWX///0U\u003d",
+      "revId": "2721f0148753f423569ebabd6d675781b131f30f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAWX///zs\u003d",
         "filename": "chip/stm32/adc.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2013-03-13T15:30:08Z",
       "side": 1,
       "message": "we are never touching those 2 registers afterwards.\nmaybe we can re-shuffle a little bit the code and avoid the 2 globals watchdog_high and watchdog_low ?",
+      "revId": "2721f0148753f423569ebabd6d675781b131f30f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAWX///p0\u003d",
+        "filename": "chip/stm32/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-03-13T17:33:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAWX///zs\u003d",
       "revId": "2721f0148753f423569ebabd6d675781b131f30f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAWX///pw\u003d",
+        "filename": "chip/stm32/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-03-13T17:33:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAWX///0Y\u003d",
+      "revId": "2721f0148753f423569ebabd6d675781b131f30f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAWX///z8\u003d",
         "filename": "include/adc.h",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2013-03-13T15:30:08Z",
       "side": 1,
       "message": "is that function used externally ?\nelse I would prefer declaring it as static inside the ADC module for code optimization",
+      "revId": "2721f0148753f423569ebabd6d675781b131f30f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAWX///p8\u003d",
+        "filename": "include/adc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-03-13T17:33:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAWX///z8\u003d",
       "revId": "2721f0148753f423569ebabd6d675781b131f30f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
