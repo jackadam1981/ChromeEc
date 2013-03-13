@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAWX///cY\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2013-03-13T19:25:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAWX///g8\u003d",
+      "revId": "d2e74b80eeb285ee48625c0c359ed2a7e12066a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAWX///hA\u003d",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAWX///cU\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2013-03-13T19:25:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAWX///hA\u003d",
+      "revId": "d2e74b80eeb285ee48625c0c359ed2a7e12066a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAWX///gQ\u003d",
         "filename": "util/flash_ec",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2013-03-13T18:58:21Z",
       "side": 1,
       "message": "shutting down minicom sometimes takes a while (and in the past it would just hang unless invoked with -HUP as the signal name). I think at worst it would force the operator to retry.",
+      "revId": "d2e74b80eeb285ee48625c0c359ed2a7e12066a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAWX///dU\u003d",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2013-03-13T19:25:57Z",
+      "side": 1,
+      "message": "Removed comment.  Sleep went away w/ the addition of -9.\n\nIn my testing, minicom spent way too long hanging up for any reasonable sleep length.",
+      "parentUuid": "AAAAWX///gQ\u003d",
       "revId": "d2e74b80eeb285ee48625c0c359ed2a7e12066a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
