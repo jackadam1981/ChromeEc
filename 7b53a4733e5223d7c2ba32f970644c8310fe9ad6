@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAWX///pg\u003d",
+        "filename": "chip/stm32/adc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-03-13T17:36:47Z",
+      "side": 1,
+      "message": "if (restore_watchdog) ?\n\nmaybe we want a common error path and a goto ?",
+      "revId": "7b53a4733e5223d7c2ba32f970644c8310fe9ad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
