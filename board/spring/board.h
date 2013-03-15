@@ -28,7 +28,7 @@
 #define CONFIG_WATCHDOG_HELP
 
 /* DE-ACTIVATED: use STOP mode when we have nothing to do */
-#undef CONFIG_LOW_POWER_IDLE
+#define CONFIG_LOW_POWER_IDLE
 
 /* Smart battery and TPSchrome are on a private I2C bus behind the EC */
 #define CONFIG_I2C_PASSTHROUGH
