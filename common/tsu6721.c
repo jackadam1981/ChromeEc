@@ -86,6 +86,14 @@ int tsu6721_get_device_type(void)
 	       (tsu6721_read(TSU6721_REG_DEV_TYPE1));
 }
 
+void tsu6721_reset(void)
+{
+	tsu6721_write(TSU6721_REG_RESET, 0x1);
+	/* TSU6721 reset takes ~10ms. Let's wait for 15ms to be safe. */
+	msleep(15);
+	tsu6721_init();
+}
+
 int tsu6721_mux(enum tsu6721_mux sel)
 {
 	uint8_t id = tsu6721_read(TSU6721_REG_ADC);
