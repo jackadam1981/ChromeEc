@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAWX//6YY\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-03-19T16:44:40Z",
+      "side": 1,
+      "message": "when we have no charger, we don\u0027t need the boost even if the AP is on.",
+      "revId": "b5ab37a463025ea62ef880765b004d4590114a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAWX//6YQ\u003d",
+        "filename": "board/spring/usb_charging.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-03-19T16:44:40Z",
+      "side": 1,
+      "message": "AFAIK the AP is not directly using the boost, we don\u0027t need this condition.",
+      "revId": "b5ab37a463025ea62ef880765b004d4590114a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
