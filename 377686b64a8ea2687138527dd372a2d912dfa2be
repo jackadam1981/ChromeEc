@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAWX//6fQ\u003d",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-03-19T15:32:55Z",
+      "side": 1,
+      "message": "if the battery was drained, the EC has just started up when the charger was plugged. In that case (which is one of the most likely low battery case for us), might the battery reading fail because the battery is not ready yet (and leads us to start with extremely low battery) ?",
+      "revId": "377686b64a8ea2687138527dd372a2d912dfa2be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAWX//6fE\u003d",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-03-19T15:32:55Z",
+      "side": 1,
+      "message": "should we use \u003c\u003d here ?\nI wonder whether we have any remaining charge at all when the gas gauge is going to transition from remaining capacity equals to 1mAh to 0mAh",
+      "revId": "377686b64a8ea2687138527dd372a2d912dfa2be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
