@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAWX//6Sw\u003d",
+        "filename": "board/spring/usb_charging.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-03-19T17:46:19Z",
+      "side": 1,
+      "message": "why this type is not in the above known_dev_types table ?\nbecause the comparison below is using an AND ?\n(see my comment below)",
+      "revId": "81d321888227d1a3d21f2196695f6877ee37a098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAWX//6Ss\u003d",
+        "filename": "board/spring/usb_charging.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-03-19T17:46:19Z",
+      "side": 1,
+      "message": "you are using an AND operator, but you return after the first match, is that intended ?\nie I would either use \u003d and return after the first one, or use \u0026 and display several of them.",
+      "revId": "81d321888227d1a3d21f2196695f6877ee37a098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
