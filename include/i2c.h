@@ -48,32 +48,35 @@ int i2c_write8(int port, int slave_addr, int offset, int data);
 int i2c_read_string(int port, int slave_addr, int offset, uint8_t *data,
 			int len);
 
+#ifdef CONFIG_I2C_ARBITRATION
+
 /**
- * Claim an I2C port for use in master mode
+ * Claim an I2C port for use in master mode.
  *
- * If this function succeed, then you must later call board_i2c_release()
- * to release the claim.
+ * If this function succeeds, you must later call i2c_release() to release the
+ * claim.
  *
- * This function may optionally be implemented by a board file. If provided
- * then it should check the port number and arbitrate as needed.
- *
- * This function will not be called to claim an already-claimed port.
+ * This function must not be called to claim an already-claimed port.
  *
  * @param port	Port to claim (0 for first, 1 for second, etc.)
  * @return 0 if claimed successfully, -1 if it is in use
  */
-int board_i2c_claim(int port);
+int i2c_claim(int port);
 
 /**
  * Release an I2C port (after previously being claimed)
  *
- * This function may optionally be implemented by a board file. If provided
- * then it should check the port number and arbitrate as needed.
- *
- * This function will not be called to release an already-released port.
+ * This function must not be called to release an already-released port.
  *
  * @param port	Port to claim (0 for first, 1 for second, etc.)
  */
-void board_i2c_release(int port);
+void i2c_release(int port);
+
+#else
+
+static inline int i2c_claim(int port) { return EC_SUCCESS; }
+static inline void i2c_release(int port) {}
+
+#endif
 
 #endif  /* __CROS_EC_I2C_H */
