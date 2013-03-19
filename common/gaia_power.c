@@ -501,7 +501,9 @@ void gaia_power_task(void)
 			task_wait_event(-1);
 		CPRINTF("%T power on %d\n", value);
 
-		if (!power_on()) {
+		if (charge_keep_power_off()) {
+			CPRINTF("%T battery low. ignoring power on event.\n");
+		} else if (!power_on()) {
 			int continue_power = 0;
 
 			if (!react_to_xpshold(DELAY_RELEASE_PWRON)) {
