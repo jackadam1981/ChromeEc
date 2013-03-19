@@ -33,6 +33,24 @@
       "revId": "b5ab37a463025ea62ef880765b004d4590114a5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAWX//6I8\u003d",
+        "filename": "board/spring/usb_charging.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-03-19T19:46:15Z",
+      "side": 1,
+      "message": "Yes, the AP doesn\u0027t use boost directly, but we need to keep boost enabled so as to suppress AP VBUS output. This is to prevent electrical conflict if the user plugs in a charger.",
+      "parentUuid": "AAAAWX//6YQ\u003d",
+      "revId": "b5ab37a463025ea62ef880765b004d4590114a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
