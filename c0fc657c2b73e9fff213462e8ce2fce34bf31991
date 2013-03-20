@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAWX//5C4\u003d",
+        "filename": "common/gaia_power.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-03-20T17:50:59Z",
+      "side": 1,
+      "message": "I would prefer avoiding  to do the most important action here as a side effect of the printf.\nmaybe just move the printf before the reutnr of wait_for_power_on ?",
+      "revId": "c0fc657c2b73e9fff213462e8ce2fce34bf31991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
