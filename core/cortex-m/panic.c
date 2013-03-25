@@ -234,6 +234,9 @@ static void show_fault(uint32_t mmfs, uint32_t hfsr, uint32_t dfsr)
  */
 static void panic_show_extra(const struct panic_data *pdata)
 {
+	const uint32_t psp = pdata->regs[0] + 8 * sizeof(uint32_t);
+	int i;
+
 	show_fault(pdata->mmfs, pdata->hfsr, pdata->dfsr);
 	if (pdata->mmfs & CPU_NVIC_MMFS_BFARVALID)
 		panic_printf(", bfar = %x", pdata->bfar);
@@ -243,6 +246,15 @@ static void panic_show_extra(const struct panic_data *pdata)
 	panic_printf("shcsr = %x, ", pdata->shcsr);
 	panic_printf("hfsr = %x, ", pdata->hfsr);
 	panic_printf("dfsr = %x\n", pdata->dfsr);
+
+	/* Print stack contents stored above the exception frame */
+	panic_printf("\n=== Process Stack Contents ===\n");
+	for (i = 0; i < 16; i++) {
+		if (psp + i >= CONFIG_RAM_BASE + CONFIG_RAM_SIZE)
+			break;
+		panic_printf("%02x ", *(uint8_t *)(psp + i));
+	}
+	panic_printf("\n");
 }
 #endif /* CONFIG_PANIC_HELP */
 
@@ -299,7 +311,7 @@ void report_panic(void)
 
 	/* If stack is valid, save exception frame */
 	if (psp >= CONFIG_RAM_BASE &&
-	    psp <= CONFIG_RAM_BASE + CONFIG_RAM_SIZE + 8 * sizeof(uint32_t)) {
+	    psp <= CONFIG_RAM_BASE + CONFIG_RAM_SIZE - 8 * sizeof(uint32_t)) {
 		const uint32_t *sregs = (const uint32_t *)psp;
 		int i;
 
