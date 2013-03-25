@@ -226,6 +226,43 @@ static void show_fault(uint32_t mmfs, uint32_t hfsr, uint32_t dfsr)
 	}
 }
 
+/*
+ * Returns the last value of psp before the exception happened. It computes the
+ * size of the exception frame and adds it to psp if the exception happened in
+ * the process context. Otherwise (if it happened in the exception context), it
+ * returns psp as is.
+ *
+ * B1.5.7 "Stack alignment on exception entry" of ARM DDI 0403D has details.
+ * In short, the exception frame size can be either 0x20, 0x24, 0x68, or 0x6c
+ * depending on FPU context and padding for 8-byte alignment.
+ */
+static uint32_t get_process_stack_position(const struct panic_data *pdata)
+{
+	uint32_t psp = pdata->regs[0];
+	uint32_t exc_return = pdata->regs[2];
+
+	if ((exc_return & 0xf) == 1 || (exc_return & 0xf) == 9)
+		/* Exception frame was created on the handler stack. */
+		return psp;
+
+	/* base exception frame */
+	psp += 8 * sizeof(uint32_t);
+
+	/* CPU uses xPSR[9] to indicate whether it padded the stack for
+	 * alignment or not. */
+	if (pdata->frame[7] & (1 << 9))
+		psp += sizeof(uint32_t);
+
+#ifdef CONFIG_FPU
+	/* CPU uses EXC_RETURN[4] to indicate whether it stored extended
+	 * frame for FPU or not. */
+	if (!(exc_return & (1 << 4)))
+		psp += 18 * sizeof(uint32_t);
+#endif
+
+	return psp;
+}
+
 /**
  * Show extra information that might be useful to understand a panic()
  *
@@ -243,6 +280,26 @@ static void panic_show_extra(const struct panic_data *pdata)
 	panic_printf("shcsr = %x, ", pdata->shcsr);
 	panic_printf("hfsr = %x, ", pdata->hfsr);
 	panic_printf("dfsr = %x\n", pdata->dfsr);
+
+	/* Print process stack contents stored above the exception frame.
+	 * TODO: Dump main stack contents as well if the exception happened
+	 * in handler's context. */
+	panic_printf("\n=========== Process Stack Contents ===========");
+	if (pdata->flags & PANIC_DATA_FLAG_FRAME_VALID) {
+		uint32_t psp = get_process_stack_position(pdata);
+		int i;
+		for (i = 0; i < 16; i++) {
+			if (psp + sizeof(uint32_t) >
+			    CONFIG_RAM_BASE + CONFIG_RAM_SIZE)
+				break;
+			if (i % 4 == 0)
+				panic_printf("\n%08x:", psp);
+			panic_printf(" %08x", *(uint32_t *)psp);
+			psp += sizeof(uint32_t);
+		}
+	} else {
+		panic_printf("\nBad psp");
+	}
 }
 #endif /* CONFIG_PANIC_HELP */
 
@@ -268,7 +325,7 @@ static void panic_print(const struct panic_data *pdata)
 		sregs = pdata->frame;
 
 	panic_printf("\n=== EXCEPTION: %02x ====== xPSR: %08x ===========\n",
-		     lregs[1] & 7, sregs ? sregs[7] : -1);
+		     lregs[1] & 0xff, sregs ? sregs[7] : -1);
 	for (i = 0; i < 4; i++)
 		print_reg(i, sregs, i);
 	for (i = 4; i < 10; i++)
@@ -298,8 +355,8 @@ void report_panic(void)
 	pdata->reserved = 0;
 
 	/* If stack is valid, save exception frame */
-	if (psp >= CONFIG_RAM_BASE &&
-	    psp <= CONFIG_RAM_BASE + CONFIG_RAM_SIZE + 8 * sizeof(uint32_t)) {
+	if ((psp & 3) == 0 && psp >= CONFIG_RAM_BASE &&
+	    psp <= CONFIG_RAM_BASE + CONFIG_RAM_SIZE - 8 * sizeof(uint32_t)) {
 		const uint32_t *sregs = (const uint32_t *)psp;
 		int i;
 
