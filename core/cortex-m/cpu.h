@@ -37,6 +37,7 @@ enum {
 
 	CPU_NVIC_CCR_DIV_0_TRAP		= 1 << 4,
 	CPU_NVIC_CCR_UNALIGN_TRAP	= 1 << 3,
+	CPU_NVIC_CCR_STKALIGN		= 1 << 9,
 
 	CPU_NVIC_HFSR_DEBUGEVT		= 1UL << 31,
 	CPU_NVIC_HFSR_FORCED		= 1 << 30,
@@ -49,5 +50,16 @@ enum {
 
 /* Set up the cpu to detect faults */
 void cpu_init(void);
+
+/* Size of the Exception Stack Frame. */
+#ifdef CONFIG_FPU
+ /* Since HaveFPExt() returns true and CONTROL.FPCA is set, the CPU always
+  * creates extended exception frame (8 + 18 words). See B1.5.6 of ARM DDI 0403D
+  * for more information. */
+#define EXCEPTION_FRAME_SIZE ((8 + 18) * sizeof(uint32_t))
+#else
+/* Base only exception frame */
+#define EXCEPTION_FRAME_SIZE (8 * sizeof(uint32_t))
+#endif
 
 #endif /* __CPU_H */
