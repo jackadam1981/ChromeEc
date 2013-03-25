@@ -20,6 +20,7 @@ struct panic_data {
 
 	uint32_t regs[11];        /* psp, ipsr, lr, r4-r11 */
 	uint32_t frame[8];        /* r0-r3, r12, lr, pc, xPSR */
+	uint32_t frame_size;      /* Either 0x20, 0x24, 0x68, or 0x6c */
 
 	uint32_t mmfs;
 	uint32_t bfar;
