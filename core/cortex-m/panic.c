@@ -234,6 +234,9 @@ static void show_fault(uint32_t mmfs, uint32_t hfsr, uint32_t dfsr)
  */
 static void panic_show_extra(const struct panic_data *pdata)
 {
+	uint32_t psp = pdata->regs[0];
+	int i;
+
 	show_fault(pdata->mmfs, pdata->hfsr, pdata->dfsr);
 	if (pdata->mmfs & CPU_NVIC_MMFS_BFARVALID)
 		panic_printf(", bfar = %x", pdata->bfar);
@@ -243,6 +246,28 @@ static void panic_show_extra(const struct panic_data *pdata)
 	panic_printf("shcsr = %x, ", pdata->shcsr);
 	panic_printf("hfsr = %x, ", pdata->hfsr);
 	panic_printf("dfsr = %x\n", pdata->dfsr);
+
+	/* Print stack contents stored above the exception frame
+	 * TODO: Dump stack contents pointed by MSP as well. */
+	panic_printf("\n=========== Process Stack Contents ===========");
+	if (pdata->flags & PANIC_DATA_FLAG_FRAME_VALID) {
+		psp = psp + EXCEPTION_FRAME_SIZE;
+		/* An aligner is padded if STKALIGN bit of CCR is on.
+		 * See 2.5.7 and 3.5 of LM4F datasheet for details. */
+		if ((CPU_NVIC_CCR & CPU_NVIC_CCR_STKALIGN) && (psp & 4))
+			psp += sizeof(uint32_t);
+		for (i = 0; i < 16; i++) {
+			if (psp + sizeof(uint32_t) >
+			    CONFIG_RAM_BASE + CONFIG_RAM_SIZE)
+				break;
+			if (i % 4 == 0)
+				panic_printf("\n%08x:", psp);
+			panic_printf(" %08x", *(uint32_t *)psp);
+			psp += sizeof(uint32_t);
+		}
+	} else {
+		panic_printf("\nBad psp: %08x", psp);
+	}
 }
 #endif /* CONFIG_PANIC_HELP */
 
@@ -298,8 +323,9 @@ void report_panic(void)
 	pdata->reserved = 0;
 
 	/* If stack is valid, save exception frame */
-	if (psp >= CONFIG_RAM_BASE &&
-	    psp <= CONFIG_RAM_BASE + CONFIG_RAM_SIZE + 8 * sizeof(uint32_t)) {
+	if ((psp & 3) == 0 &&
+	    psp >= CONFIG_RAM_BASE &&
+	    psp <= CONFIG_RAM_BASE + CONFIG_RAM_SIZE - EXCEPTION_FRAME_SIZE) {
 		const uint32_t *sregs = (const uint32_t *)psp;
 		int i;
 
