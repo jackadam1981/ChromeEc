@@ -243,6 +243,25 @@ static void panic_show_extra(const struct panic_data *pdata)
 	panic_printf("shcsr = %x, ", pdata->shcsr);
 	panic_printf("hfsr = %x, ", pdata->hfsr);
 	panic_printf("dfsr = %x\n", pdata->dfsr);
+
+	/* Print stack contents stored above the exception frame
+	 * TODO: Dump stack contents pointed by MSP as well. */
+	panic_printf("\n=========== Process Stack Contents ===========");
+	if (pdata->flags & PANIC_DATA_FLAG_FRAME_VALID) {
+		uint32_t psp = pdata->regs[0] + pdata->frame_size;
+		int i;
+		for (i = 0; i < 16; i++) {
+			if (psp + sizeof(uint32_t) >
+			    CONFIG_RAM_BASE + CONFIG_RAM_SIZE)
+				break;
+			if (i % 4 == 0)
+				panic_printf("\n%08x:", psp);
+			panic_printf(" %08x", *(uint32_t *)psp);
+			psp += sizeof(uint32_t);
+		}
+	} else {
+		panic_printf("\nBad psp");
+	}
 }
 #endif /* CONFIG_PANIC_HELP */
 
@@ -268,7 +287,7 @@ static void panic_print(const struct panic_data *pdata)
 		sregs = pdata->frame;
 
 	panic_printf("\n=== EXCEPTION: %02x ====== xPSR: %08x ===========\n",
-		     lregs[1] & 7, sregs ? sregs[7] : -1);
+		     lregs[1] & 0xff, sregs ? sregs[7] : -1);
 	for (i = 0; i < 4; i++)
 		print_reg(i, sregs, i);
 	for (i = 4; i < 10; i++)
@@ -285,6 +304,27 @@ static void panic_print(const struct panic_data *pdata)
 #endif
 }
 
+/* Computes the size of the exception frame. See B1.5.7 "Stack alignment on
+ * exception entry" of ARM DDI 0403D for more information.
+ */
+static uint32_t get_exception_frame_size(const struct panic_data *pdata)
+{
+	uint32_t fs = 0;
+	/* base exception frame */
+	fs += 8 * sizeof(uint32_t);
+	/* CPU uses xPSR[9] to indicate whether it padded the stack for
+	 * alignment or not. */
+	if (pdata->frame[7] & 1 << 9)
+		fs += sizeof(uint32_t);
+#ifdef CONFIG_FPU
+	/* CPU uses EXC_RETURN[4] to indicate whether it stored extended
+	 * frame for FPU or not. */
+	if (!(pdata->regs[2] & 1 << 4))
+		fs += 18 * sizeof(uint32_t);
+#endif
+	return fs;
+}
+
 void report_panic(void)
 {
 	struct panic_data *pdata = pdata_ptr;
@@ -298,14 +338,15 @@ void report_panic(void)
 	pdata->reserved = 0;
 
 	/* If stack is valid, save exception frame */
-	if (psp >= CONFIG_RAM_BASE &&
-	    psp <= CONFIG_RAM_BASE + CONFIG_RAM_SIZE + 8 * sizeof(uint32_t)) {
+	if ((psp & 3) == 0 && psp >= CONFIG_RAM_BASE &&
+	    psp <= CONFIG_RAM_BASE + CONFIG_RAM_SIZE) {
 		const uint32_t *sregs = (const uint32_t *)psp;
 		int i;
 
 		for (i = 0; i < 8; i++)
 			pdata->frame[i] = sregs[i];
 		pdata->flags |= PANIC_DATA_FLAG_FRAME_VALID;
+		pdata->frame_size = get_exception_frame_size(pdata);
 	}
 
 	/* Save extra information */
