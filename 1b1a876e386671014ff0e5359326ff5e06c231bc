@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAW3//+kw\u003d",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-03-26T18:01:03Z",
+      "side": 1,
+      "message": "Check psp \u003e\u003d CONFIG_RAM_BASE before printing stack\n\nif (psp not in ram)\n   print \"psp invalid\"\nelif (psp \u0026 3)\n   print \"psp misaligned\nelse\n   (print stack)",
+      "revId": "1b1a876e386671014ff0e5359326ff5e06c231bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAW3//+lA\u003d",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-03-26T18:01:03Z",
+      "side": 1,
+      "message": "\u003e, not \u003e\u003d",
+      "revId": "1b1a876e386671014ff0e5359326ff5e06c231bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAW3//+ko\u003d",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-03-26T18:01:03Z",
+      "side": 1,
+      "message": "Good catch.",
+      "revId": "1b1a876e386671014ff0e5359326ff5e06c231bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
