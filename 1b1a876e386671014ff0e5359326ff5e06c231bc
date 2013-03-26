@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAW3//+eU\u003d",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-03-26T18:36:32Z",
+      "side": 1,
+      "message": "No, don\u0027t fail on psp \u0026 3 : those are control bits. Mask \u0027em off instead.",
+      "parentUuid": "AAAAW3//+kw\u003d",
+      "revId": "1b1a876e386671014ff0e5359326ff5e06c231bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAW3//+lA\u003d",
         "filename": "core/cortex-m/panic.c",
         "patchSetId": 3
