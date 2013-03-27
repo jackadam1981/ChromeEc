@@ -16,6 +16,24 @@
       "revId": "c5127abeee78a4084188e6b51b7ef6129abaaad1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAW3//9cw\u003d",
+        "filename": "common/gaia_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-03-27T17:08:15Z",
+      "side": 0,
+      "message": "Intentional.  The code in lines 260-264 sets auto_power_on\u003d1 by default (for software sync) unless we\u0027re explicitly forcing it not to (via power+refresh+downarrow).  \n\nSo there\u0027s no need to again set it to 1 in recovery.\n\nIf we fell through 260-264 without setting auto_power_on\u003d1, that\u0027d mean the user was pressing power+refresh+downarrow, which means they couldn\u0027t be pressing power+refresh+esc, so the only time this could make a 0-\u003e1 transition, it wouldn\u0027t be able to.",
+      "parentUuid": "AAAAW3//9rU\u003d",
+      "revId": "c5127abeee78a4084188e6b51b7ef6129abaaad1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
