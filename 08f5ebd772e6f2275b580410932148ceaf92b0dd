@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAW3//8wA\u003d",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-03-27T23:10:59Z",
+      "side": 1,
+      "message": "dst is MKBP-specific; it includes fields like protocol-enable and FIFO depth.  There are equivalent protocol-specific params on the 8042 protocol side, including typematic repeat rate.\n\nksc contains only the settings which directly apply to keyboard scanning.",
+      "parentUuid": "AAAAW3//864\u003d",
+      "revId": "08f5ebd772e6f2275b580410932148ceaf92b0dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAW3//86k\u003d",
         "filename": "common/keyboard_scan.c",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2013-03-27T22:03:47Z",
       "side": 1,
       "message": "Is this for link or snow...or both?",
+      "revId": "08f5ebd772e6f2275b580410932148ceaf92b0dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAW3//8vo\u003d",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-03-27T23:10:59Z",
+      "side": 1,
+      "message": "We use the same matrix on both.\n\nIt\u0027s tidiest to do deghosting in the EC keyboard scan task.  If you want to override this via MKBP, we can define a message to send the mask from host -\u003e EC.",
+      "parentUuid": "AAAAW3//86k\u003d",
       "revId": "08f5ebd772e6f2275b580410932148ceaf92b0dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
