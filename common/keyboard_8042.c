@@ -123,7 +123,7 @@ static enum scancode_set_list scancode_set = SCANCODE_SET_2;
  *   the inter-char delay = (2 ** B) * (D + 8) / 240 (sec)
  * Default: 500ms delay, 10.9 chars/sec.
  */
-#define DEFAULT_TYPEMATIC_VALUE ((1 << 6) || (1 << 3) || (3 << 0))
+#define DEFAULT_TYPEMATIC_VALUE ((1 << 5) | (1 << 3) | (3 << 0))
 static uint8_t typematic_value_from_host;
 static int typematic_first_delay;
 static int typematic_inter_delay;
@@ -898,7 +898,6 @@ void keyboard_typematic_task(void)
 	reset_rate_and_delay();
 
 	while (1) {
-		CPRINTF("[%T TYP sleep %d]\n", wait);
 		task_wait_event(wait);
 
 		t = get_time();
@@ -908,7 +907,6 @@ void keyboard_typematic_task(void)
 			wait = -1;
 		} else if (timestamp_expired(typematic_deadline, &t)) {
 			/* Ready for next typematic keystroke */
-			CPRINTF("[%T TYP send]\n");
 			if (keystroke_enabled)
 				i8042_send_to_host(typematic_len,
 						   typematic_scan_code);
