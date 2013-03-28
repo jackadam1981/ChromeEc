@@ -2,7 +2,7 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
- * Chrome OS EC keyboard common code.
+ * 8042 keyboard protocol
  */
 
 #include "chipset.h"
@@ -10,12 +10,12 @@
 #include "console.h"
 #include "hooks.h"
 #include "host_command.h"
-#include "i8042.h"
 #include "i8042_protocol.h"
 #include "keyboard_config.h"
 #include "keyboard_protocol.h"
 #include "lightbar.h"
 #include "lpc.h"
+#include "queue.h"
 #include "registers.h"
 #include "shared_mem.h"
 #include "system.h"
@@ -23,24 +23,30 @@
 #include "timer.h"
 #include "util.h"
 
-#define KEYBOARD_DEBUG 1
-
 /* Console output macros */
-#if KEYBOARD_DEBUG >= 1
 #define CPUTS(outstr) cputs(CC_KEYBOARD, outstr)
 #define CPRINTF(format, args...) cprintf(CC_KEYBOARD, format, ## args)
-#else
-#define CPUTS(outstr)
-#define CPRINTF(format, args...)
-#endif
 
-#if KEYBOARD_DEBUG >= 5
+#ifdef CONFIG_KEYBOARD_DEBUG_MORE
 #define CPUTS5(outstr) cputs(CC_KEYBOARD, outstr)
 #define CPRINTF5(format, args...) cprintf(CC_KEYBOARD, format, ## args)
 #else
 #define CPUTS5(outstr)
 #define CPRINTF5(format, args...)
 #endif
+
+static enum {
+	STATE_NORMAL = 0,
+	STATE_SCANCODE,
+	STATE_SETLEDS,
+	STATE_EX_SETLEDS_1,		/* Expect 2-byte parameter */
+	STATE_EX_SETLEDS_2,
+	STATE_WRITE_CMD_BYTE,
+	STATE_WRITE_OUTPUT_PORT,
+	STATE_ECHO_MOUSE,
+	STATE_SETREP,
+	STATE_SEND_TO_MOUSE,
+} data_port_state = STATE_NORMAL;
 
 enum scancode_set_list {
 	SCANCODE_GET_SET = 0,
@@ -50,10 +56,42 @@ enum scancode_set_list {
 	SCANCODE_MAX = SCANCODE_SET_3,
 };
 
+#define MAX_SCAN_CODE_LEN 4
 
 /*
- * i8042 global settings.
+ * Mutex to control write access to the to-host buffer head.  Don't need to
+ * mutex the tail because reads are only done in one place.
  */
+static struct mutex to_host_mutex;
+
+static uint8_t to_host_buffer[16];
+static struct queue to_host = {
+	.buf_bytes  = sizeof(to_host_buffer),
+	.unit_bytes = sizeof(uint8_t),
+	.buf        = to_host_buffer,
+};
+
+/* Queue command/data from the host */
+enum {
+	HOST_COMMAND = 0,
+	HOST_DATA,
+};
+struct host_byte {
+	uint8_t type;
+	uint8_t byte;
+};
+
+/* 4 is big enough for all i8042 commands */
+static uint8_t from_host_buffer[4 * sizeof(struct host_byte)];
+static struct queue from_host = {
+	.buf_bytes  = sizeof(from_host_buffer),
+	.unit_bytes = sizeof(struct host_byte),
+	.buf        = from_host_buffer,
+};
+
+static int i8042_irq_enabled;
+
+/* i8042 global settings */
 static int keyboard_enabled;	/* default the keyboard is disabled. */
 static int keystroke_enabled;	/* output keystrokes */
 static uint8_t resend_command[MAX_SCAN_CODE_LEN];
@@ -79,23 +117,19 @@ static enum scancode_set_list scancode_set = SCANCODE_SET_2;
  *    7     6     5     4     3     2     1     0
  * +-----+-----+-----+-----+-----+-----+-----+-----+
  * |un-  |   delay   |     B     |        D        |
- * | used|  0     1  |  0     1  |  0     1     1  |
+ * | used|  1     0  |  0     1  |  0     1     1  |
  * +-----+-----+-----+-----+-----+-----+-----+-----+
  * Formula:
  *   the inter-char delay = (2 ** B) * (D + 8) / 240 (sec)
  * Default: 500ms delay, 10.9 chars/sec.
  */
-#define DEFAULT_TYPEMATIC_VALUE ((1 << 5) || (1 << 3) || (3 << 0))
-#define DEFAULT_FIRST_DELAY 500
-#define DEFAULT_INTER_DELAY 91
-#define TYPEMATIC_DELAY_UNIT 1000  /* 1ms = 1000us */
-static uint8_t typematic_value_from_host = DEFAULT_TYPEMATIC_VALUE;
-static int refill_first_delay = DEFAULT_FIRST_DELAY;  /* unit: ms */
-static int refill_inter_delay = DEFAULT_INTER_DELAY;  /* unit: ms */
-static int typematic_delay;                           /* unit: us */
+#define DEFAULT_TYPEMATIC_VALUE ((1 << 6) || (1 << 3) || (3 << 0))
+static uint8_t typematic_value_from_host;
+static int typematic_first_delay;
+static int typematic_inter_delay;
 static int typematic_len;  /* length of typematic_scan_code */
 static uint8_t typematic_scan_code[MAX_SCAN_CODE_LEN];
-
+static timestamp_t typematic_deadline;
 
 #define KB_SYSJUMP_TAG 0x4b42  /* "KB" */
 #define KB_HOOK_VERSION 1
@@ -105,7 +139,6 @@ struct kb_state {
 	uint8_t ctlram;
 	uint8_t pad[2];  /* Pad to 4 bytes for system_add_jump_tag(). */
 };
-
 
 /* The standard Chrome OS keyboard matrix table. */
 static const uint16_t scancode_set1[KEYBOARD_ROWS][KEYBOARD_COLS] = {
@@ -146,32 +179,111 @@ static const uint16_t scancode_set2[KEYBOARD_ROWS][KEYBOARD_COLS] = {
 	 0x0044, 0x0000, 0xe075, 0xe06b},
 };
 
+/*****************************************************************************/
+/* Keyboard event log */
+
 /* Log the traffic between EC and host -- for debug only */
 #define MAX_KBLOG 512  /* Max events in keyboard log */
+
 struct kblog_t {
+	/*
+	 * Type:
+	 *
+	 * s = byte enqueued to send to host
+	 * t = to-host queue tail pointer before type='s' bytes enqueued
+	 *
+	 * d = data byte from host
+	 * c = command byte from host
+	 *
+	 * k = to-host queue head pointer before byte dequeued
+	 * K = byte actually sent to host via LPC
+	 */
 	uint8_t type;
 	uint8_t byte;
 };
-static struct kblog_t *kblog;  /* Log buffer, or NULL if not logging */
-static int kblog_len;          /* Current log length */
 
+static struct kblog_t *kblog_buf;	/* Log buffer; NULL if not logging */
+static int kblog_len;			/* Current log length */
+
+/**
+ * Add event to keyboard log.
+ */
+static void kblog_put(char type, uint8_t byte)
+{
+	if (kblog_buf && kblog_len < MAX_KBLOG) {
+		kblog_buf[kblog_len].type = type;
+		kblog_buf[kblog_len].byte = byte;
+		kblog_len++;
+	}
+}
+
+/*****************************************************************************/
+
+void keyboard_host_write(int data, int is_cmd)
+{
+	struct host_byte h;
+
+	h.type = is_cmd ? HOST_COMMAND : HOST_DATA;
+	h.byte = data;
+	queue_add_units(&from_host, &h, 1);
+	task_wake(TASK_ID_I8042CMD);
+}
+
+/**
+ * Enable keyboard IRQ generation.
+ *
+ * @param enable	Enable (!=0) or disable (0) IRQ generation.
+ */
+static void keyboard_enable_irq(int enable)
+{
+	i8042_irq_enabled = enable;
+	if (enable)
+		lpc_keyboard_resume_irq();
+}
+
+/**
+ * Send a scan code to the host.
+ *
+ * The EC lib will push the scan code bytes to host via port 0x60 and assert
+ * the IBF flag to trigger an interrupt.  The EC lib must queue them if the
+ * host cannot read the previous byte away in time.
+ *
+ * @param len		Number of bytes to send to the host
+ * @param to_host	Data to send
+ */
+static void i8042_send_to_host(int len, const uint8_t *bytes)
+{
+	int i;
+
+	for (i = 0; i < len; i++)
+		kblog_put('s', bytes[i]);
+
+	/* Enqueue output data if there's space */
+	mutex_lock(&to_host_mutex);
+	if (queue_has_space(&to_host, len)) {
+		kblog_put('t', to_host.tail);
+		queue_add_units(&to_host, bytes, len);
+	}
+	mutex_unlock(&to_host_mutex);
+
+	/* Wake up the task to move from queue to host */
+	task_wake(TASK_ID_I8042CMD);
+}
 
 /* Change to set 1 if the I8042_XLATE flag is set. */
 static enum scancode_set_list acting_code_set(enum scancode_set_list set)
 {
-	if (controller_ram[0] & I8042_XLATE) {
-		/* If the keyboard translation is enabled, then always
-		 * generates set 1. */
+	/* Always generate set 1 if keyboard translation is enabled */
+	if (controller_ram[0] & I8042_XLATE)
 		return SCANCODE_SET_1;
-	}
+
 	return set;
 }
-
 
 static enum ec_error_list matrix_callback(int8_t row, int8_t col,
 					  int8_t pressed,
 					  enum scancode_set_list code_set,
-					  uint8_t *scan_code, int32_t* len)
+					  uint8_t *scan_code, int32_t *len)
 {
 	uint16_t make_code;
 
@@ -227,12 +339,14 @@ static enum ec_error_list matrix_callback(int8_t row, int8_t col,
 		break;
 
 	case SCANCODE_SET_2:
-		/* insert the break byte, move back the last byte and insert a
-		 * 0xf0 byte before that. */
+		/*
+		 * Insert the break byte, move back the last byte and insert a
+		 * 0xf0 byte before that.
+		 */
 		if (!pressed) {
 			ASSERT(*len >= 1);
 			scan_code[*len] = scan_code[*len - 1];
-			scan_code[*len - 1] = 0xF0;
+			scan_code[*len - 1] = 0xf0;
 			*len += 1;
 		}
 		break;
@@ -243,18 +357,30 @@ static enum ec_error_list matrix_callback(int8_t row, int8_t col,
 	return EC_SUCCESS;
 }
 
+/**
+ * Set typematic delays based on host data byte.
+ */
+static void set_typematic_delays(uint8_t data)
+{
+	typematic_value_from_host = data;
+	typematic_first_delay = MSEC *
+		(((typematic_value_from_host & 0x60) >> 5) + 1) * 250;
+	typematic_inter_delay = SECOND *
+		(1 << ((typematic_value_from_host & 0x18) >> 3)) *
+		((typematic_value_from_host & 0x7) + 8) / 240;
+}
 
 static void reset_rate_and_delay(void)
 {
-	typematic_value_from_host = DEFAULT_TYPEMATIC_VALUE;
-	refill_first_delay = DEFAULT_FIRST_DELAY;
-	refill_inter_delay = DEFAULT_INTER_DELAY;
+	set_typematic_delays(DEFAULT_TYPEMATIC_VALUE);
 }
-
 
 void keyboard_clear_buffer(void)
 {
-	i8042_flush_buffer();
+	mutex_lock(&to_host_mutex);
+	queue_reset(&to_host);
+	mutex_unlock(&to_host_mutex);
+	lpc_keyboard_clear_buffer();
 }
 
 static void keyboard_wakeup(void)
@@ -268,8 +394,7 @@ void keyboard_state_changed(int row, int col, int is_pressed)
 	int32_t len;
 	enum ec_error_list ret;
 
-	CPRINTF5("[%T KB %s(): row=%d col=%d is_pressed=%d]\n",
-		 __func__, row, col, is_pressed);
+	CPRINTF5("[%T KB (%d,%d)=%d]\n", row, col, is_pressed);
 
 	ret = matrix_callback(row, col, is_pressed, scancode_set, scan_code,
 			      &len);
@@ -282,7 +407,8 @@ void keyboard_state_changed(int row, int col, int is_pressed)
 	if (is_pressed) {
 		keyboard_wakeup();
 
-		typematic_delay = refill_first_delay * 1000;
+		typematic_deadline.val = get_time().val + typematic_first_delay;
+
 		memcpy(typematic_scan_code, scan_code, len);
 		typematic_len = len;
 		task_wake(TASK_ID_TYPEMATIC);
@@ -290,7 +416,6 @@ void keyboard_state_changed(int row, int col, int is_pressed)
 		typematic_len = 0;
 	}
 }
-
 
 static void keyboard_enable(int enable)
 {
@@ -314,7 +439,6 @@ static void keystroke_enable(int enable)
 	keystroke_enabled = enable;
 }
 
-
 static uint8_t read_ctl_ram(uint8_t addr)
 {
 	if (addr < ARRAY_SIZE(controller_ram))
@@ -323,9 +447,11 @@ static uint8_t read_ctl_ram(uint8_t addr)
 		return 0;
 }
 
-
-/* Manipulate the controller_ram[]. Some bits change may trigger internal
- * state change. */
+/**
+ * Manipulate the controller_ram[].
+ *
+ * Some bits change may trigger internal state change.
+ */
 static void update_ctl_ram(uint8_t addr, uint8_t data)
 {
 	uint8_t orig;
@@ -338,37 +464,31 @@ static void update_ctl_ram(uint8_t addr, uint8_t data)
 	CPRINTF5("[%T KB set CTR_RAM(0x%02x)=0x%02x (old:0x%02x)]\n",
 		 addr, data, orig);
 
-	if (addr == 0x00) {  /* the controller RAM */
+	if (addr == 0x00) {
+		/* Keyboard enable/disable */
+
 		/* Enable IRQ before enable keyboard (queue chars to host) */
 		if (!(orig & I8042_ENIRQ1) && (data & I8042_ENIRQ1))
-			i8042_enable_keyboard_irq(1);
+			keyboard_enable_irq(1);
 
 		/* Handle the I8042_KBD_DIS bit */
 		keyboard_enable(!(data & I8042_KBD_DIS));
 
-		/* Disable IRQ after disable keyboard so that every char
-		 * must have informed the host. */
+		/*
+		 * Disable IRQ after disable keyboard so that every char must
+		 * have informed the host.
+		 */
 		if ((orig & I8042_ENIRQ1) && !(data & I8042_ENIRQ1))
-			i8042_enable_keyboard_irq(0);
+			keyboard_enable_irq(0);
 	}
 }
 
-
-static enum {
-	STATE_NORMAL = 0,
-	STATE_SCANCODE,
-	STATE_SETLEDS,
-	STATE_EX_SETLEDS_1,  /* expect 2-byte parameter coming */
-	STATE_EX_SETLEDS_2,
-	STATE_WRITE_CMD_BYTE,
-	STATE_WRITE_OUTPUT_PORT,
-	STATE_ECHO_MOUSE,
-	STATE_SETREP,
-	STATE_SEND_TO_MOUSE,
-} data_port_state = STATE_NORMAL;
-
-
-int handle_keyboard_data(uint8_t data, uint8_t *output)
+/**
+ * Handle the port 0x60 writes from host.
+ *
+ * This functions returns the number of bytes stored in *output buffer.
+ */
+static int handle_keyboard_data(uint8_t data, uint8_t *output)
 {
 	int out_len = 0;
 	int save_for_resend = 1;
@@ -431,13 +551,7 @@ int handle_keyboard_data(uint8_t data, uint8_t *output)
 
 	case STATE_SETREP:
 		CPRINTF5("[%T KB eaten by STATE_SETREP: 0x%02x]\n", data);
-		typematic_value_from_host = data;
-		refill_first_delay =
-			(((typematic_value_from_host & 0x60) >> 5) + 1) * 250;
-		refill_inter_delay = 1000 *  /* ms */
-			(1 << ((typematic_value_from_host & 0x18) >> 3)) *
-			((typematic_value_from_host & 0x7) + 8) /
-			240;
+		set_typematic_delays(data);
 
 		output[out_len++] = I8042_RET_ACK;
 		data_port_state = STATE_NORMAL;
@@ -457,8 +571,7 @@ int handle_keyboard_data(uint8_t data, uint8_t *output)
 			break;
 
 		case I8042_CMD_SETLEDS:
-			/* We use screen indicator. Do nothing in keyboard
-			 * controller. */
+			/* Chrome OS doesn't have keyboard LEDs, so ignore */
 			output[out_len++] = I8042_RET_ACK;
 			data_port_state = STATE_SETLEDS;
 			break;
@@ -518,13 +631,16 @@ int handle_keyboard_data(uint8_t data, uint8_t *output)
 				output[out_len++] = resend_command[i];
 			break;
 
-		/* u-boot hack */
-		case 0x60:  /* see CONFIG_USE_CPCIDVI in */
-		case 0x45:  /* third_party/u-boot/files/drivers/input/i8042.c */
-			/* just ignore, don't reply anything. */
+		case 0x60: /* fall-thru */
+		case 0x45:
+			/*
+			 * U-boot hack.  See CONFIG_USE_CPCIDVI in
+			 * third_party/u-boot/files/drivers/input/i8042.c.
+			 * Just ignore; don't reply.
+			 */
 			break;
 
-		case I8042_CMD_SETALL_MB:  /* fall-thru below */
+		case I8042_CMD_SETALL_MB:  /* fall-thru */
 		case I8042_CMD_SETALL_MBR:
 		case I8042_CMD_EX_ENABLE:
 		default:
@@ -547,8 +663,13 @@ int handle_keyboard_data(uint8_t data, uint8_t *output)
 	return out_len;
 }
 
-
-int handle_keyboard_command(uint8_t command, uint8_t *output)
+/**
+ * Handle the port 0x64 writes from host.
+ *
+ * This functions returns the number of bytes stored in *output buffer.
+ * BUT those bytes will appear at port 0x60.
+ */
+static int handle_keyboard_command(uint8_t command, uint8_t *output)
 {
 	int out_len = 0;
 
@@ -649,6 +770,21 @@ int handle_keyboard_command(uint8_t command, uint8_t *output)
 	return out_len;
 }
 
+static void i8042_handle_from_host(void)
+{
+	struct host_byte h;
+	int ret_len;
+	uint8_t output[MAX_SCAN_CODE_LEN];
+
+	while (queue_remove_unit(&from_host, &h)) {
+		if (h.type == HOST_COMMAND)
+			ret_len = handle_keyboard_command(h.byte, output);
+		else
+			ret_len = handle_keyboard_data(h.byte, output);
+
+		i8042_send_to_host(ret_len, output);
+	}
+}
 
 /* U U D D L R L R b a */
 static void keyboard_special(uint16_t k)
@@ -723,33 +859,64 @@ void keyboard_set_power_button(int pressed)
 	}
 }
 
-
-void kblog_put(char type, uint8_t byte)
+void i8042_command_task(void)
 {
-	if (kblog && kblog_len < MAX_KBLOG) {
-		kblog[kblog_len].type = type;
-		kblog[kblog_len].byte = byte;
-		kblog_len++;
+	while (1) {
+		/* Wait for next host read/write */
+		task_wait_event(-1);
+
+		while (1) {
+			uint8_t chr;
+
+			/* Handle command/data write from host */
+			i8042_handle_from_host();
+
+			/* Check if we have data to send to host */
+			if (queue_is_empty(&to_host))
+				break;
+
+			/* Host interface must have space */
+			if (lpc_keyboard_has_char())
+				break;
+
+			/* Get a char from buffer. */
+			kblog_put('k', to_host.head);
+			queue_remove_unit(&to_host, &chr);
+			kblog_put('K', chr);
+
+			/* Write to host. */
+			lpc_keyboard_put_char(chr, i8042_irq_enabled);
+		}
 	}
 }
 
-
 void keyboard_typematic_task(void)
 {
+	timestamp_t t;
+	int wait = -1;
+
+	reset_rate_and_delay();
+
 	while (1) {
-		task_wait_event(-1);
+		CPRINTF("[%T TYP sleep %d]\n", wait);
+		task_wait_event(wait);
 
-		while (typematic_len) {
-			usleep(TYPEMATIC_DELAY_UNIT);
-			typematic_delay -= TYPEMATIC_DELAY_UNIT;
+		t = get_time();
 
-			if (typematic_delay <= 0) {
-				/* re-send to host */
-				if (keystroke_enabled)
-					i8042_send_to_host(typematic_len,
-							   typematic_scan_code);
-				typematic_delay = refill_inter_delay * 1000;
-			}
+		if (!typematic_len) {
+			/* Typematic disabled; wait for enable */
+			wait = -1;
+		} else if (timestamp_expired(typematic_deadline, &t)) {
+			/* Ready for next typematic keystroke */
+			CPRINTF("[%T TYP send]\n");
+			if (keystroke_enabled)
+				i8042_send_to_host(typematic_len,
+						   typematic_scan_code);
+			typematic_deadline.val = t.val + typematic_inter_delay;
+			wait = typematic_inter_delay;
+		} else {
+			/* Woke up too soon; wait for remaining interval */
+			wait = typematic_deadline.val - t.val;
 		}
 	}
 }
@@ -762,14 +929,15 @@ static int command_typematic(int argc, char **argv)
 	int i;
 
 	if (argc == 3) {
-		refill_first_delay = strtoi(argv[1], NULL, 0);
-		refill_inter_delay = strtoi(argv[2], NULL, 0);
+		typematic_first_delay = strtoi(argv[1], NULL, 0) * MSEC;
+		typematic_inter_delay = strtoi(argv[2], NULL, 0) * MSEC;
 	}
 
 	ccprintf("From host:    0x%02x\n", typematic_value_from_host);
-	ccprintf("First delay: %d ms\n", refill_first_delay);
-	ccprintf("Inter delay: %d ms\n", refill_inter_delay);
-	ccprintf("Current:     %d ms\n", typematic_delay / 1000);
+	ccprintf("First delay: %d ms\n", typematic_first_delay / 1000);
+	ccprintf("Inter delay: %d ms\n", typematic_inter_delay / 1000);
+	ccprintf("Now:         %.6ld\n", get_time().val);
+	ccprintf("Deadline:    %.6ld\n", typematic_deadline.val);
 
 	ccputs("Repeat scan code:");
 	for (i = 0; i < typematic_len; ++i)
@@ -835,8 +1003,9 @@ static int command_keyboard_log(int argc, char **argv)
 
 	if (argc == 1) {
 		ccprintf("KBC log (len=%d):\n", kblog_len);
-		for (i = 0; kblog && i < kblog_len; ++i) {
-			ccprintf("%c.%02x ", kblog[i].type, kblog[i].byte);
+		for (i = 0; kblog_buf && i < kblog_len; ++i) {
+			ccprintf("%c.%02x ",
+				 kblog_buf[i].type, kblog_buf[i].byte);
 			if ((i & 15) == 15) {
 				ccputs("\n");
 				cflush();
@@ -844,21 +1013,23 @@ static int command_keyboard_log(int argc, char **argv)
 		}
 		ccputs("\n");
 	} else if (argc == 2 && !strcasecmp("on", argv[1])) {
-		if (!kblog) {
-			int rv = shared_mem_acquire(sizeof(*kblog) * MAX_KBLOG,
-						    (char **)&kblog);
+		if (!kblog_buf) {
+			int rv = shared_mem_acquire(
+				sizeof(*kblog_buf) * MAX_KBLOG,
+				(char **)&kblog_buf);
 			if (rv != EC_SUCCESS)
-				kblog = NULL;
+				kblog_buf = NULL;
 			kblog_len = 0;
 			return rv;
 		}
 	} else if (argc == 2 && !strcasecmp("off", argv[1])) {
 		kblog_len = 0;
-		if (kblog)
-			shared_mem_release(kblog);
-		kblog = NULL;
-	} else
+		if (kblog_buf)
+			shared_mem_release(kblog_buf);
+		kblog_buf = NULL;
+	} else {
 		return EC_ERROR_PARAM1;
+	}
 
 	return EC_SUCCESS;
 }
