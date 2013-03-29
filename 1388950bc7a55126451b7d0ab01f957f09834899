@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAW3//68g\u003d",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-03-29T17:43:56Z",
+      "side": 1,
+      "message": "Sorry, but I still don\u0027t get this - the function says it is supposed to copy config from one place to another. Aren\u0027t you breaking the meaning of this function by making it copy to global config?",
+      "revId": "1388950bc7a55126451b7d0ab01f957f09834899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAW3//68c\u003d",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-03-29T17:43:56Z",
+      "side": 1,
+      "message": "We should make ghosting a config option I think, since we don\u0027t want it with mkbp, right?",
+      "revId": "1388950bc7a55126451b7d0ab01f957f09834899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
