@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAW3//54A\u003d",
+        "filename": "core/cortex-m/cpu.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-04-01T16:52:57Z",
+      "side": 1,
+      "message": "The authoritative documentation source is ARMv7-M Architecture Reference Manual (aka DDI0403)\nfor that particular point, it\u0027s B1.5.6 Exception entry behavior.\n\nthe TI version is just a not always fully accurate copy.",
+      "revId": "ef6c5392fb0d8b5017cebd5ad94f4901053a4818",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAW3//538\u003d",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-04-01T16:52:57Z",
+      "side": 1,
+      "message": "This is not fully accurate : when the floating point is activated, STKALIGN doesn\u0027t care. The actual pseudo code is (from DDI0403 B1.5.6) :\nif HaveFPExt() \u0026\u0026 CONTROL.FPCA \u003d\u003d ‘1’ then\n  framesize \u003d 0x68;\n  forcealign \u003d ‘1’;\nelse\n  framesize \u003d 0x20;\n  forcealign \u003d CCR.STKALIGN;",
+      "revId": "ef6c5392fb0d8b5017cebd5ad94f4901053a4818",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
