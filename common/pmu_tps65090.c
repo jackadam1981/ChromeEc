@@ -6,11 +6,11 @@
  */
 
 #include "clock.h"
-#include "console.h"
 #include "common.h"
+#include "console.h"
 #include "extpower.h"
-#include "host_command.h"
 #include "hooks.h"
+#include "host_command.h"
 #include "i2c.h"
 #include "pmu_tpschrome.h"
 #include "task.h"
@@ -19,6 +19,8 @@
 
 #define CPUTS(outstr) cputs(CC_CHARGER, outstr)
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
+
+#define HARD_RESET_TIMEOUT_MS 5
 
 #define TPS65090_I2C_ADDR 0x90
 
@@ -67,7 +69,6 @@
 /* A temperature threshold to force charger hardware error */
 #define CG_TEMP_THRESHOLD_ERROR 0
 
-
 /* IRQ events */
 #define EVENT_VACG    (1 << 1) /* AC voltage good */
 #define EVENT_VSYSG   (1 << 2) /* System voltage good */
@@ -91,13 +92,6 @@
 #define AD_CTRL_ADEOC    (1 << 5)
 #define AD_CTRL_ADSTART  (1 << 6)
 
-void __board_hard_reset(void)
-{
-	CPRINTF("This board is not capable of a hard reset.\n");
-}
-void board_hard_reset(void)
-	__attribute__((weak, alias("__board_hard_reset")));
-
 /* Charger temperature threshold table */
 static const uint8_t const pmu_temp_threshold[] = {
 	1, /* 0b001,  0 degree C */
@@ -106,7 +100,60 @@ static const uint8_t const pmu_temp_threshold[] = {
 	7, /* 0b111, 60 degree C */
 };
 
-/* Read all tps65090 interrupt events */
+#ifdef CONFIG_PMU_HARD_RESET
+/**
+ * Force the pmic to reset completely.
+ *
+ * This forces an entire system reset, and therefore should never return.  The
+ * implementation is rather hacky; it simply shorts out the 3.3V rail to force
+ * the PMIC to panic.  We need this unfortunate hack because it's the only way
+ * to reset the I2C engine inside the PMU.
+ */
+static void pmu_hard_reset(void)
+{
+	/* Short out the 3.3V rail to force a hard reset of tps Chrome */
+	gpio_set_level(GPIO_PMIC_RESET, 1);
+
+	/* Delay while the power is cut */
+	udelay(HARD_RESET_TIMEOUT_MS * 1000);
+
+	/* Shouldn't get here unless the board doesn't have this capability */
+	panic_puts("pmu hard reset failed! (this board may not be capable)\n");
+}
+#else
+static void pmu_hard_reset(void)
+{
+	panic_puts("pmu hard reset unsupported!\n");
+}
+#endif
+
+/**
+ * Read pmu register.
+ *
+ * @param reg           register offset
+ * @param value         pointer to output value
+ * @return              return EC_SUCCESS on success, err code otherwise
+ */
+static int pmu_read(int reg, int *value)
+{
+	return i2c_read8(I2C_PORT_CHARGER, TPS65090_I2C_ADDR, reg, value);
+}
+
+/**
+ * Write pmu register.
+ *
+ * @param reg           register offset
+ * @param value         new register value
+ * @return              return EC_SUCCESS on success, err code otherwise
+ */
+static int pmu_write(int reg, int value)
+{
+	return i2c_write8(I2C_PORT_CHARGER, TPS65090_I2C_ADDR, reg, value);
+}
+
+/**
+ * Read all tps65090 interrupt events.
+ */
 static int pmu_get_event(int *event)
 {
 	static int prev_event;
@@ -132,28 +179,11 @@ static int pmu_get_event(int *event)
 	return EC_SUCCESS;
 }
 
-/* Clear tps65090 irq */
 int pmu_clear_irq(void)
 {
 	return pmu_write(IRQ1_REG, 0);
 }
 
-/* Read/write tps65090 register */
-int pmu_read(int reg, int *value)
-{
-	return i2c_read8(I2C_PORT_CHARGER, TPS65090_I2C_ADDR, reg, value);
-}
-
-int pmu_write(int reg, int value)
-{
-	return i2c_write8(I2C_PORT_CHARGER, TPS65090_I2C_ADDR, reg, value);
-}
-
-/**
- * Read tpschrome version
- *
- * @param version       output value of tpschrome version
- */
 int pmu_version(int *version)
 {
 	return pmu_read(TPSCHROME_VER, version);
@@ -163,8 +193,8 @@ int pmu_is_charger_alarm(void)
 {
 	int status;
 
-	/**
-	 * if the I2C access to the PMU fails, we consider the failure as
+	/*
+	 * If the I2C access to the PMU fails, we consider the failure as
 	 * non-critical and wait for the next read without send the alert.
 	 */
 	if (!pmu_read(CG_STATUS1, &status) && (status & CHARGER_ALARM))
@@ -188,13 +218,6 @@ int pmu_get_power_source(int *ac_good, int *battery_good)
 	return EC_SUCCESS;
 }
 
-/**
- * Enable charger's charging function
- *
- * When enable, charger ignores external control and charge the
- * battery directly. If EC wants to contorl charging, set the flag
- * to 0.
- */
 int pmu_enable_charger(int enable)
 {
 	int rv;
@@ -212,11 +235,6 @@ int pmu_enable_charger(int enable)
 	return pmu_write(CG_CTRL0, reg);
 }
 
-/**
- * Set external charge enable pin
- *
- * @param enable        boolean, set 1 to eanble external control
- */
 int pmu_enable_ext_control(int enable)
 {
 	int rv;
@@ -234,11 +252,6 @@ int pmu_enable_ext_control(int enable)
 	return pmu_write(CG_CTRL0, reg);
 }
 
-/**
- * Set fast charge timeout
- *
- * @param timeout         enum FASTCHARGE_TIMEOUT
- */
 int pmu_set_fastcharge(enum FASTCHARGE_TIMEOUT timeout)
 {
 	int rv;
@@ -254,15 +267,8 @@ int pmu_set_fastcharge(enum FASTCHARGE_TIMEOUT timeout)
 	return pmu_write(CG_CTRL0, reg);
 }
 
-/**
- * Set termination current for temperature ranges
- *
- * @param range           T01 T12 T23 T34 T40
- * @param current         enum termination current, I0250 == 25.0%:
- *                        I0000 I0250 I0375 I0500 I0625 I0750 I0875 I1000
- */
 int pmu_set_term_current(enum TPS_TEMPERATURE_RANGE range,
-		enum TPS_TERMINATION_CURRENT current)
+			 enum TPS_TERMINATION_CURRENT current)
 {
 	int rv;
 	int reg_val;
@@ -277,15 +283,8 @@ int pmu_set_term_current(enum TPS_TEMPERATURE_RANGE range,
 	return pmu_write(CG_CTRL1 + range, reg_val);
 }
 
-/**
- * Set termination voltage for temperature ranges
- *
- * @param range           T01 T12 T23 T34 T40
- * @param voltage         enum termination voltage, V2050 == 2.05V:
- *                        V2000 V2050 V2075 V2100
- */
 int pmu_set_term_voltage(enum TPS_TEMPERATURE_RANGE range,
-		enum TPS_TERMINATION_VOLTAGE voltage)
+			 enum TPS_TERMINATION_VOLTAGE voltage)
 {
 	int rv;
 	int reg_val;
@@ -300,12 +299,6 @@ int pmu_set_term_voltage(enum TPS_TEMPERATURE_RANGE range,
 	return pmu_write(CG_CTRL1 + range, reg_val);
 }
 
-/**
- * Set temperature threshold
- *
- * @param temp_n          TSET_T1 to TSET_T4
- * @param value           0b000 ~ 0b111, temperature threshold
- */
 int pmu_set_temp_threshold(enum TPS_TEMPERATURE temp_n, uint8_t value)
 {
 	int rv;
@@ -325,12 +318,6 @@ int pmu_set_temp_threshold(enum TPS_TEMPERATURE temp_n, uint8_t value)
 	return pmu_write(CG_CTRL1 + temp_n, reg_val);
 }
 
-/**
- * Force charger into error state, turn off charging and blinks charging LED
- *
- * @param enable          true to turn off charging and blink LED
- * @return                EC_SUCCESS for success
- */
 int pmu_blink_led(int enable)
 {
 	int rv;
@@ -355,11 +342,6 @@ int pmu_blink_led(int enable)
 	return EC_SUCCESS;
 }
 
-/**
- * Enable low current charging
- *
- * @param enable         enable/disable low current charging
- */
 int pmu_low_current_charging(int enable)
 {
 	int rv;
@@ -462,30 +444,55 @@ void pmu_irq_handler(enum gpio_signal signal)
 	CPRINTF("Charger IRQ received.\n");
 }
 
-int pmu_shutdown(void)
+/**
+ * Attempt shutdown.
+ */
+static int pmu_try_shutdown(void)
 {
-	int offset, failure = 0;
+	int offset;
 
 	/* Disable each of the DCDCs */
 	for (offset = DCDC1_CTRL; offset <= DCDC3_CTRL; offset++) {
-		if (!failure)
-			failure = pmu_write(offset, 0x0e);
+		if (pmu_write(offset, 0x0e))
+			return EC_ERROR_UNKNOWN;
 	}
 	/* Disable each of the FETs */
 	for (offset = FET1_CTRL; offset <= FET7_CTRL; offset++) {
-		if (!failure)
-			failure = pmu_write(offset, 0x02);
+		if (pmu_write(offset, 0x02))
+			return EC_ERROR_UNKNOWN;
 	}
-	/* Clearing AD controls/status */
-	if (!failure)
-		failure = pmu_write(AD_CTRL, 0x00);
 
-	return failure ? EC_ERROR_UNKNOWN : EC_SUCCESS;
+	/* Clear AD controls/status */
+	if (pmu_write(AD_CTRL, 0x00))
+		return EC_ERROR_UNKNOWN;
+
+	return EC_SUCCESS;
 }
 
-/*
- * Fill all of the pmu registers with known good values, this allows the
- * pmu to recover by rebooting the system if its registers were trashed.
+int pmu_shutdown(void)
+{
+	int pmu_shutdown_retries = 3;
+
+	/* Attempt shutdown */
+	while (--pmu_shutdown_retries >= 0) {
+		if (!pmu_try_shutdown())
+			return EC_SUCCESS;
+	}
+
+#ifdef CONFIG_PMU_HARD_RESET
+	/* We ran out of tries, so reset the board */
+	pmu_hard_reset();
+#endif
+
+	/* If we're still here, we couldn't shutdown OR reset */
+	return EC_ERROR_UNKNOWN;
+}
+
+/**
+ * Fill all of the pmu registers with known good values.
+ *
+ * This allows the pmu to recover by rebooting the system if its registers were
+ * trashed.
  */
 static void pmu_init_registers(void)
 {
@@ -527,63 +534,69 @@ DECLARE_HOOK(HOOK_CHIPSET_PRE_INIT, pmu_init_registers, HOOK_PRIO_DEFAULT);
 
 void pmu_init(void)
 {
-	int failure = 0, retries_remaining = 3;
+	int retries_remaining = 3;
 
 	while (--retries_remaining >= 0) {
-		failure = 0;
 #ifdef CONFIG_PMU_BOARD_INIT
-		if (!failure)
-			failure = pmu_board_init();
+		if (pmu_board_init())
+			continue;
 #else
-		/* Init configuration
+		/*
+		 * Init configuration
 		 *   Fast charge timer    : 2 hours
 		 *   Charger              : disable
 		 *   External pin control : enable
 		 *
 		 * TODO: move settings to battery pack specific init
 		 */
-		if (!failure)
-			failure = pmu_write(CG_CTRL0, 2);
-		/* Limit full charge current to 50%
+		if (pmu_write(CG_CTRL0, 2))
+			continue;
+
+		/*
+		 * Limit full charge current to 50%
 		 * TODO: remove this temporary hack.
 		 */
-		if (!failure)
-			failure = pmu_write(CG_CTRL3, 0xbb);
+		if (pmu_write(CG_CTRL3, 0xbb))
+			continue;
 #endif
 		/* Enable interrupts */
-		if (!failure) {
-			failure = pmu_write(IRQ1MASK,
-					EVENT_VACG  | /* AC voltage good */
-					EVENT_VSYSG | /* System voltage good */
-					EVENT_VBATG | /* Battery voltage good */
-					EVENT_CGACT | /* Charging status */
-					EVENT_CGCPL); /* Charging complete */
-		}
-		if (!failure)
-			failure = pmu_write(IRQ2MASK, 0);
-		if (!failure)
-			failure = pmu_clear_irq();
+		if (pmu_write(IRQ1MASK,
+			      EVENT_VACG  | /* AC voltage good */
+			      EVENT_VSYSG | /* System voltage good */
+			      EVENT_VBATG | /* Battery voltage good */
+			      EVENT_CGACT | /* Charging status */
+			      EVENT_CGCPL)) /* Charging complete */
+			continue;
+
+		if (pmu_write(IRQ2MASK, 0))
+			continue;
+
+		if (pmu_clear_irq())
+			continue;
 
 		/* Enable charger interrupt. */
-		if (!failure)
-			failure = gpio_enable_interrupt(GPIO_CHARGER_INT);
+		if (gpio_enable_interrupt(GPIO_CHARGER_INT))
+			continue;
 
 #ifdef CONFIG_AC_POWER_STATUS
-		if (!failure)
-			failure = gpio_set_flags(GPIO_AC_STATUS, GPIO_OUT_HIGH);
+		if (gpio_set_flags(GPIO_AC_STATUS, GPIO_OUT_HIGH))
+			continue;
 #endif
 
-		/* Exit the retry loop if there was no failure */
-		if (!failure)
-			break;
+		/* If we're still here, we were successful */
+		return;
 	}
 
-	if (failure)
-		board_hard_reset();
+	/* If we're still here, we failed to init.  Reset the board. */
+	pmu_hard_reset();
 }
 
-/* Initializes PMU when power is turned on.  This is necessary because the TPS'
- * 3.3V rail is not powered until the power is turned on. */
+/**
+ * Initialize PMU when power is turned on.
+ *
+ * This is necessary because the TPS' 3.3V rail is not powered until the power
+ * is turned on.
+ */
 static void pmu_chipset_startup(void)
 {
 	pmu_init();
@@ -625,7 +638,7 @@ static int command_pmu(int argc, char **argv)
 		repeat = strtoi(argv[1], &e, 0);
 		if (*e) {
 			if (strlen(argv[1]) >= 1 && argv[1][0] == 'r') {
-				board_hard_reset();
+				pmu_hard_reset();
 				/* If this returns, there was an error */
 				return EC_ERROR_UNKNOWN;
 			}
@@ -658,8 +671,8 @@ DECLARE_CONSOLE_COMMAND(pmu, command_pmu,
 #endif
 
 /*****************************************************************************/
-/* TPSchrome LDO pass-through
- */
+/* TPSchrome LDO pass-through */
+
 #ifdef CONFIG_I2C_PASSTHROUGH
 static int host_command_ldo_get(struct host_cmd_handler_args *args)
 {

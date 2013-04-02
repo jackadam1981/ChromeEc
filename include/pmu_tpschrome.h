@@ -101,24 +101,6 @@ enum FASTCHARGE_TIMEOUT {
 int pmu_clear_irq(void);
 
 /**
- * Read pmu register
- *
- * @param reg           register offset
- * @param value         pointer to output value
- * @return              return EC_SUCCESS on success, err code otherwise
- */
-int pmu_read(int reg, int *value);
-
-/**
- * Write pmu register
- *
- * @param reg           register offset
- * @param value         new register value
- * @return              return EC_SUCCESS on success, err code otherwise
- */
-int pmu_write(int reg, int value);
-
-/**
  * Read tpschrome version
  *
  * @param version       output tpschrome version info
@@ -153,7 +135,11 @@ int pmu_get_power_source(int *ac_good, int *battery_good);
 int pmu_enable_fet(int fet_id, int enable, int *power_good);
 
 /**
- * Enable/disable pmu internal charger force charging mode
+ * Enable/disable pmu internal charger force charging mode.
+ *
+ * When the charger is enabled, it ignores external control and charges the
+ * battery on its own.  When disabled, the EC can control charging via the
+ * external charge control pin.
  *
  * @param enable        0 to disable the charger, 1 to enable
  * @return              EC_SUCCESS if no I2C communication error
@@ -211,7 +197,7 @@ void pmu_irq_handler(enum gpio_signal signal);
 int pmu_set_temp_threshold(enum TPS_TEMPERATURE temp_n, uint8_t value);
 
 /**
- * Force charger into error state, turn off charging and blinks charging LED
+ * Force charger into error state, turn off charging and blink charging LED
  *
  * @param enable          true to turn off charging and blink LED
  * @return                EC_SUCCESS if ok
@@ -242,11 +228,6 @@ int pmu_enable_ext_control(int enable);
  * @param timeout         enum FASTCHARGE_TIMEOUT
  */
 int pmu_set_fastcharge(enum FASTCHARGE_TIMEOUT timeout);
-
-/**
- * Reset the entire board if it is capable
- */
-void board_hard_reset(void);
 
 /**
  * Wake TPS65090 charger task, but throttled to at most one call per tick
