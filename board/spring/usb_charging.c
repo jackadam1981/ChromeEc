@@ -11,6 +11,7 @@
 #include "clock.h"
 #include "console.h"
 #include "hooks.h"
+#include "host_command.h"
 #include "gpio.h"
 #include "keyboard_protocol.h"
 #include "pmu_tpschrome.h"
@@ -66,6 +67,7 @@
 static int current_dev_type = TSU6721_TYPE_NONE;
 static int nominal_pwm_duty;
 static int current_pwm_duty;
+static int user_pwm_duty = -1;
 
 static int pending_tsu6721_reset;
 
@@ -290,6 +292,13 @@ static void board_pwm_tweak(void)
 	vbus = adc_read_channel(ADC_CH_USB_VBUS_SNS);
 	if (battery_current(&current))
 		return;
+
+	if (user_pwm_duty >= 0) {
+		if (current_pwm_duty != user_pwm_duty)
+			board_pwm_duty_cycle(user_pwm_duty);
+		return;
+	}
+
 	/*
 	 * If VBUS voltage is too low:
 	 *   - If battery is discharging, throttling more is going to draw
@@ -630,3 +639,17 @@ DECLARE_CONSOLE_COMMAND(limitmode, command_current_limit_mode,
 			"[normal | aggressive]",
 			"Set current limit mode",
 			NULL);
+
+/*****************************************************************************/
+/* Host commands */
+
+static int ac_command_current_limit(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_current_limit *p = args->params;
+
+	user_pwm_duty = (3012 - (int)(p->limit)) / 29;
+
+	return EC_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_AC_CURRENT_LIMIT, ac_command_current_limit,
+		     EC_VER_MASK(0));
