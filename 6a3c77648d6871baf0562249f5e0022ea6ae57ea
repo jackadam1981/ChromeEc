@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAW3//5bs\u003d",
+        "filename": "common/lid_switch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-04-02T00:12:22Z",
+      "side": 1,
+      "message": "If the lid is bouncy, won\u0027t this cause the lid_change_deferred to be queued up multiple times? I\u0027d think we\u0027d want to just keep pushing it back until it actually fired.",
+      "revId": "6a3c77648d6871baf0562249f5e0022ea6ae57ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
