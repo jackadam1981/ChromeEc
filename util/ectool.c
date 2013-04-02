@@ -28,6 +28,8 @@ static inline int MIN(int a, int b) { return a < b ? a : b; }
 
 const char help_str[] =
 	"Commands:\n"
+	"  accurrentlimit\n"
+	"      Set the maximum AC current\n"
 	"  autofanctrl <on>\n"
 	"      Turn on automatic fan speed control.\n"
 	"  backlight <enabled>\n"
@@ -2026,6 +2028,29 @@ int cmd_lcd_backlight(int argc, char *argv[])
 }
 
 
+int cmd_ac_current_limit(int argc, char *argv[])
+{
+	struct ec_params_current_limit p;
+	int rv;
+	char *e;
+
+	if (argc != 2) {
+		fprintf(stderr, "Usage: %s <max_AC_mA>\n", argv[0]);
+		return -1;
+	}
+
+	p.limit = strtol(argv[1], &e, 0);
+	if (e && *e) {
+		fprintf(stderr, "Bad value.\n");
+		return -1;
+	}
+
+	rv = ec_command(EC_CMD_AC_CURRENT_LIMIT, 0, &p, sizeof(p),
+			NULL, 0);
+	return rv;
+}
+
+
 int cmd_charge_current_limit(int argc, char *argv[])
 {
 	struct ec_params_current_limit p;
@@ -2732,6 +2757,7 @@ struct command {
 
 /* NULL-terminated list of commands */
 const struct command commands[] = {
+	{"accurrentlimit", cmd_ac_current_limit},
 	{"autofanctrl", cmd_thermal_auto_fan_ctrl},
 	{"backlight", cmd_lcd_backlight},
 	{"battery", cmd_battery},
