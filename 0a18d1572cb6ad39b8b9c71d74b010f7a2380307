@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAW3//5G8\u003d",
+        "filename": "board/spring/usb_charging.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-04-02T15:03:10Z",
+      "side": 1,
+      "message": "it\u0027s the second time we are using those magic values, maybe we need to define constants for them.",
+      "revId": "0a18d1572cb6ad39b8b9c71d74b010f7a2380307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAW3//5HE\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1285,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-04-02T15:03:10Z",
+      "side": 1,
+      "message": "it\u0027s milliAmps ?",
+      "revId": "0a18d1572cb6ad39b8b9c71d74b010f7a2380307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
