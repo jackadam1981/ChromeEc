@@ -16,6 +16,24 @@
       "revId": "6a3c77648d6871baf0562249f5e0022ea6ae57ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAW3//5ZY\u003d",
+        "filename": "common/lid_switch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-04-02T00:26:44Z",
+      "side": 1,
+      "message": "Nope.  Calling multiple times just adjusts the trigger time; there\u0027s no queue.",
+      "parentUuid": "AAAAW3//5bs\u003d",
+      "revId": "6a3c77648d6871baf0562249f5e0022ea6ae57ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
