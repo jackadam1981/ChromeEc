@@ -13,6 +13,7 @@
 #include "hooks.h"
 #include "i2c.h"
 #include "pmu_tpschrome.h"
+#include "system.h"
 #include "task.h"
 #include "timer.h"
 #include "util.h"
@@ -90,13 +91,6 @@
 #define AD_CTRL_ENADREF  (1 << 4)
 #define AD_CTRL_ADEOC    (1 << 5)
 #define AD_CTRL_ADSTART  (1 << 6)
-
-void __board_hard_reset(void)
-{
-	CPRINTF("This board is not capable of a hard reset.\n");
-}
-void board_hard_reset(void)
-	__attribute__((weak, alias("__board_hard_reset")));
 
 /* Charger temperature threshold table */
 static const uint8_t const pmu_temp_threshold[] = {
@@ -579,7 +573,7 @@ void pmu_init(void)
 	}
 
 	if (failure)
-		board_hard_reset();
+		system_reset(SYSTEM_RESET_HARD);
 }
 
 /* Initializes PMU when power is turned on.  This is necessary because the TPS'
@@ -625,7 +619,7 @@ static int command_pmu(int argc, char **argv)
 		repeat = strtoi(argv[1], &e, 0);
 		if (*e) {
 			if (strlen(argv[1]) >= 1 && argv[1][0] == 'r') {
-				board_hard_reset();
+				system_reset(SYSTEM_RESET_HARD);
 				/* If this returns, there was an error */
 				return EC_ERROR_UNKNOWN;
 			}

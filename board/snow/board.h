@@ -18,6 +18,7 @@
 #define CONFIG_ASSERT_HELP
 #define CONFIG_CONSOLE_CMDHELP
 #define CONFIG_PANIC_HELP
+#undef  CONFIG_TASK_PROFILING
 #define CONFIG_WATCHDOG_HELP
 
 /* Optional features */
@@ -32,8 +33,8 @@
 #define CONFIG_KEYBOARD_SUPPRESS_NOISE
 #define CONFIG_PMU_BOARD_INIT
 #define CONFIG_PMU_TPS65090
+#define CONFIG_RESET_GPIO
 #define CONFIG_SMART_BATTERY
-#undef  CONFIG_TASK_PROFILING
 
 /* use STOP mode when we have nothing to do */
 #define CONFIG_LOW_POWER_IDLE
@@ -120,9 +121,6 @@ enum gpio_signal {
 void configure_board(void);
 
 void configure_board_late(void);
-
-/* Force the pmu to reset everything on the board */
-void board_hard_reset(void);
 
 #endif /* !__ASSEMBLER__ */
 

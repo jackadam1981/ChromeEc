@@ -15,17 +15,18 @@
 #define CONFIG_CONSOLE_UART 1
 
 /* Debug features */
-#define CONFIG_PANIC_HELP
 #define CONFIG_ASSERT_HELP
 #define CONFIG_CONSOLE_CMDHELP
+#define CONFIG_PANIC_HELP
+#undef  CONFIG_TASK_PROFILING
+#define CONFIG_WATCHDOG_HELP
 
 /* Optional features */
 #define CONFIG_CHIPSET_GAIA
 #define CONFIG_HOST_COMMAND_STATUS
 #define CONFIG_I2C
 #define CONFIG_KEYBOARD_PROTOCOL_MKBP
-#undef  CONFIG_TASK_PROFILING
-#define CONFIG_WATCHDOG_HELP
+#define CONFIG_RESET_GPIO
 
 /* use STOP mode when we have nothing to do */
 #define CONFIG_LOW_POWER_IDLE
@@ -147,9 +148,6 @@ enum ilim_config {
 enum charging_state;
 
 void configure_board(void);
-
-/* Force the pmu to reset everything on the board */
-void board_hard_reset(void);
 
 /* Set ILIM pin control type */
 void board_ilim_config(enum ilim_config config);

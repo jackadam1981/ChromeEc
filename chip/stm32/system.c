@@ -1,18 +1,22 @@
-/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
 
-/* System module for Chrome EC : hardware specific implementation */
+/* System module for Chrome EC : chip specific implementation */
 
 #include "console.h"
 #include "cpu.h"
+#include "gpio.h"
 #include "registers.h"
 #include "system.h"
 #include "task.h"
+#include "timer.h"
 #include "util.h"
 #include "version.h"
 #include "watchdog.h"
+
+#define HARD_RESET_TIMEOUT_MS 5
 
 /*
  * TODO: Fake WP is stored at most significant bit of saved reset flags to save
@@ -181,6 +185,17 @@ void system_reset(int flags)
 	bkpdata_write(BKPDATA_INDEX_SAVED_RESET_FLAGS, save_flags | fake_wp);
 
 	if (flags & SYSTEM_RESET_HARD) {
+
+#ifdef CONFIG_RESET_GPIO
+		/* Force a full-board hard reset via PMIC */
+		gpio_set_level(GPIO_PMIC_RESET, 1);
+
+		/* Delay while the power is cut */
+		udelay(HARD_RESET_TIMEOUT_MS * 1000);
+
+		/* If that fails, drop through to watchdog reboot */
+#endif
+
 		/* Ask the watchdog to trigger a hard reboot */
 		STM32_IWDG_KR = 0x5555;
 		STM32_IWDG_RLR = 0x1;

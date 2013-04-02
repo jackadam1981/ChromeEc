@@ -477,7 +477,7 @@ static void power_off(void)
 			break;
 	}
 	if (pmu_shutdown_retries < 0)
-		board_hard_reset();
+		system_reset(SYSTEM_RESET_HARD);
 	CPUTS("Shutdown complete.\n");
 }
 
