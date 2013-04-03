@@ -154,9 +154,13 @@ SECTIONS
         __data_start = .;
         *(.data.tasks)
         *(.data)
-        . = ALIGN(4);
+        . = ALIGN(32);
+        __iram_text_start = .;
         *(.iram.text)
-        . = ALIGN(4);
+        /* Acceptable alignment depends on the size of the code. It also has to
+         * be power of two because a MPU region will be created for it. */
+        . = ALIGN(32);
+        __iram_text_end = .;
         __data_end = .;
 
 	/* Shared memory buffer must be at the end of preallocated RAM, so it

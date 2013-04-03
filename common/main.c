@@ -17,6 +17,7 @@
 #include "hooks.h"
 #include "jtag.h"
 #include "keyboard_scan.h"
+#include "mpu.h"
 #include "system.h"
 #include "task.h"
 #include "timer.h"
@@ -29,6 +30,9 @@
 
 int main(void)
 {
+#ifdef CONFIG_MPU
+	int mpu_error;
+#endif
 	/*
 	 * Pre-initialization (pre-verified boot) stage.  Initialization at
 	 * this level should do as little as possible, because verified boot
@@ -38,6 +42,16 @@ int main(void)
 	 */
 #ifdef CONFIG_BOARD_PRE_INIT
 	board_config_pre_init();
+#endif
+
+#ifdef CONFIG_MPU
+	/* Lock down memory */
+	mpu_error = mpu_init();
+	if (mpu_error == EC_SUCCESS) {
+		mpu_error = mpu_protect_ram();
+		if (mpu_error == EC_SUCCESS)
+			mpu_enable();
+	}
 #endif
 
 	/* Configure the pin multiplexers and GPIOs */
@@ -85,6 +99,14 @@ int main(void)
 
 	/* Initialize UART.  Console output functions may now be used. */
 	uart_init();
+
+#ifdef CONFIG_MPU
+	if (mpu_error == EC_SUCCESS)
+		CPRINTF("RAM lock down successful.\n");
+	else
+		CPRINTF("RAM lock down failed. mpu_type:%08x. error:%d.\n",
+			mpu_get_type(), mpu_error);
+#endif
 
 	if (system_jumped_to_this_image()) {
 		CPRINTF("[%T UART initialized after sysjump]\n");
