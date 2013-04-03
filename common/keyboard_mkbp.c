@@ -33,6 +33,7 @@
 #define BATTERY_KEY_ROW 7
 #define BATTERY_KEY_ROW_MASK (1 << BATTERY_KEY_ROW)
 
+static int kb_battery;                  /* battery key */
 static uint32_t kb_fifo_start;		/* first entry */
 static uint32_t kb_fifo_end;		/* last entry */
 static uint32_t kb_fifo_entries;	/* number of existing entries */
@@ -136,6 +137,11 @@ int keyboard_fifo_add(const uint8_t *buffp)
 	atomic_add(&kb_fifo_entries, 1);
 	mutex_unlock(&fifo_mutex);
 
+	if (kb_battery) {
+		kb_battery = 0;
+		return ret;
+	}
+
 kb_fifo_push_done:
 
 	if (ret == EC_SUCCESS)
@@ -151,6 +157,7 @@ void keyboard_send_battery_key(void)
 	/* Copy debounced state and add battery pseudo-key */
 	memcpy(state, keyboard_scan_get_state(), sizeof(state));
 	state[BATTERY_KEY_COL] ^= BATTERY_KEY_ROW_MASK;
+	kb_battery = 1;
 
 	/* Add to FIFO */
 	keyboard_fifo_add(state);
