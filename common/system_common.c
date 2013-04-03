@@ -13,6 +13,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "lpc.h"
+#include "mpu.h"
 #include "panic.h"
 #include "system.h"
 #include "task.h"
@@ -210,7 +211,26 @@ const uint8_t *system_get_jump_tag(uint16_t tag, int *version, int *size)
 
 void system_disable_jump(void)
 {
+	int mpu_error;
+
 	disable_jump = 1;
+
+#ifdef CONFIG_MPU
+	/*
+	 * Lock down memory
+	 * TODO: Lock down other images (RO or RW) not running.
+	 */
+	mpu_error = mpu_protect_ram();
+	if (mpu_error == EC_SUCCESS) {
+		mpu_enable();
+		CPRINTF("RAM lock down successful, excluding %08x-%08x\n",
+			&__iram_text_start, &__iram_text_end);
+	} else {
+		CPRINTF("RAM lock down failed. mpu_type:%08x. error:%d.\n",
+			mpu_get_type(), mpu_error);
+	}
+#endif
+
 }
 
 enum system_image_copy_t system_get_image_copy(void)
