@@ -8,6 +8,7 @@
 #include "atomic.h"
 #include "chipset.h"
 #include "console.h"
+#include "gaia_power.h"
 #include "gpio.h"
 #include "host_command.h"
 #include "keyboard_config.h"
@@ -152,8 +153,9 @@ void keyboard_send_battery_key(void)
 	memcpy(state, keyboard_scan_get_state(), sizeof(state));
 	state[BATTERY_KEY_COL] ^= BATTERY_KEY_ROW_MASK;
 
-	/* Add to FIFO */
-	keyboard_fifo_add(state);
+	/* Add to FIFO if not in suspend */
+	if (!gaia_is_suspended())
+		keyboard_fifo_add(state);
 }
 
 /*****************************************************************************/
