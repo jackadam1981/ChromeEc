@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAXH///5s\u003d",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-04-03T15:44:43Z",
+      "side": 1,
+      "message": "this looks wrong, the padding is done at the top of the stack not at the bottom.",
+      "revId": "bc1b9b6da9a7d92a7ec0f2634b3199d8a5b9f552",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
