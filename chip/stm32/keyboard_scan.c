@@ -689,7 +689,9 @@ void keyboard_send_battery_key()
 {
 	mutex_lock(&scanning_enabled);
 	debounced_state[BATTERY_KEY_COL] ^= BATTERY_KEY_ROW_MASK;
-	if (kb_fifo_add(debounced_state) == EC_SUCCESS)
+	/* Add to FIFO only if AP is on or else it will wake from suspend */
+	if ((chipset_in_state(CHIPSET_STATE_ON)) &&
+	    kb_fifo_add(debounced_state) == EC_SUCCESS)
 		board_interrupt_host(1);
 	else
 		CPRINTF("dropped battery keystroke\n");
