@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAW3//6YE\u003d",
+        "filename": "common/hooks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-04-03T17:29:17Z",
+      "side": 1,
+      "message": "can we manage to convert that in a BUILD_ASSERT ?\n(else we can assert in the linker script)",
+      "revId": "7fc5c39c1d4e31e088440e5fc851f6f609f71a83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXH///yA\u003d",
+        "filename": "common/hooks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-04-03T17:29:17Z",
+      "side": 1,
+      "message": "you already check the same condition at line 105 given that stuff is bounded at link time ?",
+      "revId": "7fc5c39c1d4e31e088440e5fc851f6f609f71a83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXH///yw\u003d",
+        "filename": "common/hooks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-04-03T17:29:17Z",
+      "side": 1,
+      "message": "there is a race condition ?  the hook_task might be executing at that point.",
+      "revId": "7fc5c39c1d4e31e088440e5fc851f6f609f71a83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXH///0Q\u003d",
+        "filename": "common/hooks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-04-03T17:29:17Z",
+      "side": 1,
+      "message": "The condition looks broken :\n  we want  defer_until[i] \u003e\u003d t  don\u0027t we ?",
+      "revId": "7fc5c39c1d4e31e088440e5fc851f6f609f71a83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
