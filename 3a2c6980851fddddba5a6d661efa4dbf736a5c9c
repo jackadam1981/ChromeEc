@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAXH///OI\u003d",
+        "filename": "common/hooks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-04-03T22:52:45Z",
+      "side": 1,
+      "message": "do it in the linker script\n(see my remark there)\nyou will be saving memory and code space.",
+      "revId": "3a2c6980851fddddba5a6d661efa4dbf736a5c9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXH///Oo\u003d",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-04-03T22:52:45Z",
+      "side": 1,
+      "message": "you can declare a linker variable for the number of slots, e.g. :\n__defer_count \u003d (__deferred_funcs_end - __deferred_funcs) / 4;\n\nthen remove the static variable defer_count and its runtime assignment.",
+      "revId": "3a2c6980851fddddba5a6d661efa4dbf736a5c9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
