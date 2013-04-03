@@ -17,6 +17,7 @@
 #include "hooks.h"
 #include "jtag.h"
 #include "keyboard_scan.h"
+#include "mpu.h"
 #include "system.h"
 #include "task.h"
 #include "timer.h"
@@ -38,6 +39,10 @@ test_mockable int main(void)
 	 */
 #ifdef CONFIG_BOARD_PRE_INIT
 	board_config_pre_init();
+#endif
+
+#ifdef CONFIG_MPU
+	mpu_pre_init();
 #endif
 
 	/* Configure the pin multiplexers and GPIOs */
