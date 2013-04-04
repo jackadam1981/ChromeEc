@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAXH//+zg\u003d",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1001306
+      },
+      "writtenOn": "2013-04-04T20:42:56Z",
+      "side": 1,
+      "message": "As you wrote, if the exception happens in the handler context, the handler stack could be more relevant than the process stack. I already have TODO for that. Unfortunately, we currently don\u0027t save main sp. It\u0027s wiped out as soon as we enter the panic handler. I added a new TODO for that.",
+      "parentUuid": "AAAAXH//+4w\u003d",
+      "revId": "d3ebeb257119a0f41ef05039223e7ce136a5ce54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAXH//+44\u003d",
         "filename": "core/cortex-m/panic.c",
         "patchSetId": 10
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAXH//+zM\u003d",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1001306
+      },
+      "writtenOn": "2013-04-04T20:42:56Z",
+      "side": 1,
+      "message": "Exception frame is already dumped by panic_print. This CL is about dumping stuff before (placed higher in the address space) the exception frame. So, it only needs to know the size of the frame.",
+      "parentUuid": "AAAAXH//+44\u003d",
+      "revId": "d3ebeb257119a0f41ef05039223e7ce136a5ce54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAXH//+4s\u003d",
         "filename": "core/cortex-m/panic.c",
         "patchSetId": 10
@@ -47,6 +83,24 @@
       "writtenOn": "2013-04-04T13:47:40Z",
       "side": 1,
       "message": "the panicinfo command line can call this function after a reboot, in that case this will dump junk.",
+      "revId": "d3ebeb257119a0f41ef05039223e7ce136a5ce54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXH//+mE\u003d",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1001306
+      },
+      "writtenOn": "2013-04-04T20:42:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAXH//+4s\u003d",
       "revId": "d3ebeb257119a0f41ef05039223e7ce136a5ce54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
