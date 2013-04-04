@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAXH//+4w\u003d",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-04-04T13:47:40Z",
+      "side": 1,
+      "message": "It depends what is the goal of your stack dump, but that might not be the most optimal setting :\n  so you are working on the following scenario :\n     An exception happened when the CPU was already on the master stack (in exception context for us either to deal with an interrupt or due to another error exception).\n    In order to go from the thread context to the previous exception context, the CPU have piled a frame on this psp address (due the previous exception), so you will be dumping the frame rather than the task real stack.\n  By the way, in that case the exception happened elsewhere than in the task code, so maybe you need the content of the MSP to debug the exception.",
+      "revId": "d3ebeb257119a0f41ef05039223e7ce136a5ce54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXH//+44\u003d",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-04-04T13:47:40Z",
+      "side": 1,
+      "message": "You haven\u0027t addressed my comment in the previous version of the CL :\n why are we moving the bottom of the stack when the CPU has inserted a padding at the top of the stack ?",
+      "revId": "d3ebeb257119a0f41ef05039223e7ce136a5ce54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXH//+4s\u003d",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-04-04T13:47:40Z",
+      "side": 1,
+      "message": "the panicinfo command line can call this function after a reboot, in that case this will dump junk.",
+      "revId": "d3ebeb257119a0f41ef05039223e7ce136a5ce54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
