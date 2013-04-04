@@ -18,6 +18,7 @@ OBJDUMP=$(CROSS_COMPILE)objdump
 BUILDCC?=gcc
 HOSTCC?=$(HOST_CROSS_COMPILE)gcc
 
+CFLAGS_TEST=$(if $(TEST_BUILD),-DTEST_BUILD,)
 CFLAGS_WARN=-Wall -Werror -Wundef -Wstrict-prototypes -Wno-trigraphs      \
             -fno-strict-aliasing -fno-common                              \
             -Werror-implicit-function-declaration -Wno-format-security    \
@@ -26,10 +27,10 @@ CFLAGS_WARN=-Wall -Werror -Wundef -Wstrict-prototypes -Wno-trigraphs      \
 CFLAGS_DEBUG= -g
 CFLAGS_INCLUDE=$(foreach i,$(includes),-I$(i) )
 CFLAGS_DEFINE=-DOUTDIR=$(out) -DCHIP=$(CHIP) -DTASKFILE=$(PROJECT).tasklist \
-              -DBOARD=$(BOARD) -DBOARD_$(BOARD) -DCORE=$(CORE) -DCHIP_$(CHIP) \
-              -DCHIP_VARIANT=$(CHIP_VARIANT) -DCHIP_VARIANT_$(CHIP_VARIANT) \
-              -DPROJECT=$(PROJECT)
-CPPFLAGS=$(CFLAGS_DEFINE) $(CFLAGS_INCLUDE) $(EXTRA_CFLAGS)
+              -DBOARD_TASKFILE=ec.tasklist -DBOARD=$(BOARD) -DBOARD_$(BOARD)\
+              -DCORE=$(CORE) -DCHIP_$(CHIP) -DCHIP_VARIANT=$(CHIP_VARIANT)  \
+              -DCHIP_VARIANT_$(CHIP_VARIANT) -DPROJECT=$(PROJECT)
+CPPFLAGS=$(CFLAGS_DEFINE) $(CFLAGS_INCLUDE) $(CFLAGS_TEST) $(EXTRA_CFLAGS)
 CFLAGS=$(CPPFLAGS) $(CFLAGS_CPU) $(CFLAGS_DEBUG) $(CFLAGS_WARN) $(CFLAGS_y)
 BUILD_CFLAGS=$(CPPFLAGS) -O3 $(CFLAGS_DEBUG) $(CFLAGS_WARN)
 HOST_CFLAGS=$(CPPFLAGS) -O3 $(CFLAGS_DEBUG) $(CFLAGS_WARN)

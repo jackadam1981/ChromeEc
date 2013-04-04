@@ -33,16 +33,24 @@ typedef union {
 
 /* declare task routine prototypes */
 #define TASK(n, r, d, s) int r(void *);
-#include TASK_LIST
+#include BOARD_TASK_LIST
+#ifdef TEST_BUILD
+#include TEST_TASK_LIST
+#endif
 void __idle(void);
+CONFIG_TEST_TASK_LIST
 CONFIG_TASK_LIST
 #undef TASK
 
 /* Task names for easier debugging */
 #define TASK(n, r, d, s)  #n,
-#include TASK_LIST
+#include BOARD_TASK_LIST
+#ifdef TEST_BUILD
+#include TEST_TASK_LIST
+#endif
 static const char * const task_names[] = {
 	"<< idle >>",
+	CONFIG_TEST_TASK_LIST
 	CONFIG_TASK_LIST
 };
 #undef TASK
@@ -96,13 +104,17 @@ static void task_exit_trap(void)
 	.pc = (uint32_t)r,	\
 	.stack_size = s,	\
 },
-#include TASK_LIST
+#include BOARD_TASK_LIST
+#ifdef TEST_BUILD
+#include TEST_TASK_LIST
+#endif
 static const struct {
 	uint32_t r0;
 	uint32_t pc;
 	uint16_t stack_size;
 } const tasks_init[] = {
 	TASK(IDLE, __idle, 0, IDLE_TASK_STACK_SIZE)
+	CONFIG_TEST_TASK_LIST
 	CONFIG_TASK_LIST
 };
 #undef TASK
@@ -112,9 +124,13 @@ static task_ tasks[TASK_ID_COUNT];
 
 /* Stacks for all tasks */
 #define TASK(n, r, d, s)  + s
-#include TASK_LIST
+#include BOARD_TASK_LIST
+#ifdef TEST_BUILD
+#include TEST_TASK_LIST
+#endif
 uint8_t task_stacks[0
 		    TASK(IDLE, __idle, 0, IDLE_TASK_STACK_SIZE)
+		    CONFIG_TEST_TASK_LIST
 		    CONFIG_TASK_LIST
 ] __attribute__((aligned(8)));
 
