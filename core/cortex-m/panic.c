@@ -125,7 +125,7 @@ static void print_reg(int regnum, const uint32_t *regs, int index)
  *
  * See B1.5.8 "Exception return behavior" of ARM DDI 0403D for details.
  */
-static int is_exception_in_handler_context(const uint32_t exc_return)
+static int32_t is_exception_in_handler(const uint32_t exc_return)
 {
 	return (exc_return & 0xf) == 1 || (exc_return & 0xf) == 9;
 }
@@ -259,7 +259,7 @@ static uint32_t get_exception_frame_size(const struct panic_data *pdata)
 #ifdef CONFIG_FPU
 	/* CPU uses EXC_RETURN[4] to indicate whether it stored extended
 	 * frame for FPU or not. */
-	if (!(pdata->regs[2] & (1 << 4)))
+	if (!(pdata->regs[11] & (1 << 4)))
 		frame_size += 18 * sizeof(uint32_t);
 #endif
 
@@ -275,7 +275,7 @@ static uint32_t get_process_stack_position(const struct panic_data *pdata)
 {
 	uint32_t psp = pdata->regs[0];
 
-	if (!is_exception_in_handler_context(pdata->regs[2]))
+	if (!pdata->in_handler)
 		psp += get_exception_frame_size(pdata);
 
 	return psp;
@@ -298,7 +298,6 @@ static void panic_show_extra(const struct panic_data *pdata)
 	panic_printf("shcsr = %x, ", pdata->shcsr);
 	panic_printf("hfsr = %x, ", pdata->hfsr);
 	panic_printf("dfsr = %x\n", pdata->dfsr);
-	panic_printf("exc_return = %x\n", pdata->regs[2]);
 }
 
 /*
@@ -346,7 +345,8 @@ static void panic_print(const struct panic_data *pdata)
 	if (pdata->flags & PANIC_DATA_FLAG_FRAME_VALID)
 		sregs = pdata->frame;
 
-	panic_printf("\n=== EXCEPTION: %02x ====== xPSR: %08x ===========\n",
+	panic_printf("\n=== %s EXCEPTION: %02x ====== xPSR: %08x ===\n",
+		     pdata->in_handler ? "HANDLER" : "PROCESS",
 		     lregs[1] & 0xff, sregs ? sregs[7] : -1);
 	for (i = 0; i < 4; i++)
 		print_reg(i, sregs, i);
@@ -355,7 +355,7 @@ static void panic_print(const struct panic_data *pdata)
 	print_reg(10, lregs, 9);
 	print_reg(11, lregs, 10);
 	print_reg(12, sregs, 4);
-	print_reg(13, lregs, 0);
+	print_reg(13, lregs, pdata->in_handler ? 2 : 0);
 	print_reg(14, sregs, 5);
 	print_reg(15, sregs, 6);
 
@@ -367,7 +367,7 @@ static void panic_print(const struct panic_data *pdata)
 void report_panic(void)
 {
 	struct panic_data *pdata = pdata_ptr;
-	const uint32_t psp = pdata->regs[0];
+	uint32_t sp;
 
 	pdata->magic = PANIC_DATA_MAGIC;
 	pdata->struct_size = sizeof(*pdata);
@@ -375,13 +375,14 @@ void report_panic(void)
 	pdata->arch = PANIC_ARCH_CORTEX_M;
 	pdata->flags = 0;
 	pdata->reserved = 0;
+	pdata->in_handler = is_exception_in_handler(pdata->regs[11]);
 
+	sp = pdata->in_handler ? pdata->regs[2] : pdata->regs[0];
 	/* If stack is valid, save exception frame */
-	if (!is_exception_in_handler_context(pdata->regs[2]) &&
-	    (psp & 3) == 0 &&
-	    psp >= CONFIG_RAM_BASE &&
-	    psp <= CONFIG_RAM_BASE + CONFIG_RAM_SIZE - 8 * sizeof(uint32_t)) {
-		const uint32_t *sregs = (const uint32_t *)psp;
+	if ((sp & 3) == 0 &&
+	    sp >= CONFIG_RAM_BASE &&
+	    sp <= CONFIG_RAM_BASE + CONFIG_RAM_SIZE - 8 * sizeof(uint32_t)) {
+		const uint32_t *sregs = (const uint32_t *)sp;
 		int i;
 		for (i = 0; i < 8; i++)
 			pdata->frame[i] = sregs[i];
@@ -411,27 +412,6 @@ void exception_panic(void)
 {
 	/* Naked call so we can extract raw LR and IPSR */
 
-	/*
-	 * Set a new stack pointer at the end of RAM, before the saved
-	 * exception data.
-	 */
-	asm volatile(
-		/*
-		 * This instruction will generate ldr rx, [pc, #offset]
-		 * followed by a mov sp, rx.  See below for more explanation.
-		 *
-		 * Oddly, gcc is able to add 4 to the value loaded here to
-		 * compute [pregs] below if the asm blocks are separate, but if
-		 * they are merged it uses two temporary registers and two
-		 * immediate values.
-		 *
-		 * TODO: Save sp somewhere so that we can access exception frame
-		 * when exception happens in handler's context.
-		 */
-		"mov sp, %[pstack]\n" : :
-			[pstack] "r" (pstack_addr)
-		);
-
 	/* Save registers and branch directly to panic handler */
 	asm volatile(
 		/*
@@ -445,13 +425,31 @@ void exception_panic(void)
 		 * If you see a failure in the panic handler, please check
 		 * the final assembler output here.
 		 */
-		"mov r0, %[pregs]\n"
-		"mrs r1, psp\n"
-		"mrs r2, ipsr\n"
-		"mov r3, lr\n"
-		"stmia r0, {r1-r11}\n"
-		"b report_panic" : :
+		"mov r0, %[pregs];"
+		"mrs r1, psp;"
+		"mrs r2, ipsr;"
+		"mov r3, sp;"
+		"stmia r0, {r1-r11, lr};" : :
 			[pregs] "r" (pdata_ptr->regs)
+		);
+	/*
+	 * Set a new stack pointer at the end of RAM, before the saved
+	 * exception data.
+	 */
+	asm volatile(
+		/*
+		 * This instruction will generate ldr rx, [pc, #offset]
+		 * followed by a mov sp, rx.
+		 *
+		 * Oddly, gcc is able to reuse the same register as the one used
+		 * for [pregs] above to compute pstack (by substracting 4) if
+		 * this asm block is separated. If the blocks are merged, two
+		 * temporary registers are used, which increases the chance that
+		 * we lose values in r4-r11.
+		 */
+		"mov sp, %[pstack];"
+		"b report_panic;" : :
+			[pstack] "r" (pstack_addr)
 		);
 }
 
@@ -499,7 +497,6 @@ static int command_crash(int argc, char **argv)
 
 	if (!strcasecmp(argv[1], "divzero")) {
 		int a = 1, b = 0;
-
 		cflush();
 		ccprintf("%08x", a / b);
 	} else if (!strcasecmp(argv[1], "unaligned")) {
