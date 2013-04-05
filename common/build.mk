@@ -6,6 +6,13 @@
 # Common files build
 #
 
+config_and=$(subst yy,y,$(filter-out y,$(strip $(1))$(strip $(2))))
+
+CONFIG_MKBP=$(call config_and,$(CONFIG_KEYBOARD_PROTOCOL_MKBP),\
+			      $(CONFIG_TASK_KEYSCAN))
+CONFIG_8042=$(call config_and,$(CONFIG_KEYBOARD_PROTOCOL_8042),\
+			      $(CONFIG_TASK_KEYSCAN))
+
 common-y=main.o util.o console_output.o uart_buffering.o
 common-y+=memory_commands.o shared_mem.o system_common.o hooks.o
 common-y+=gpio_commands.o version.o printf.o queue.o
@@ -22,8 +29,8 @@ common-$(CONFIG_FLASH)+=flash_common.o fmap.o
 common-$(CONFIG_I2C)+=i2c_commands.o
 common-$(CONFIG_I2C_ARBITRATION)+=i2c_arbitration.o
 common-$(CONFIG_IR357x)+=ir357x.o
-common-$(CONFIG_KEYBOARD_PROTOCOL_8042)+=keyboard_8042.o
-common-$(CONFIG_KEYBOARD_PROTOCOL_MKBP)+=keyboard_mkbp.o
+common-$(CONFIG_8042)+=keyboard_8042.o
+common-$(CONFIG_MKBP)+=keyboard_mkbp.o
 common-$(CONFIG_KEYBOARD_TEST)+=keyboard_test.o
 common-$(CONFIG_LID_SWITCH)+=lid_switch.o
 common-$(CONFIG_LP5562)+=lp5562.o lp5562_battery_led.o
