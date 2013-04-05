@@ -18,7 +18,7 @@ struct panic_data {
 	uint8_t flags;            /* Flags (PANIC_DATA_FLAG_*) */
 	uint8_t reserved;         /* Reserved; set 0 */
 
-	uint32_t regs[11];        /* psp, ipsr, lr, r4-r11 */
+	uint32_t regs[12];        /* psp, ipsr, msp, r4-r11, lr(=exc_return) */
 	uint32_t frame[8];        /* r0-r3, r12, lr, pc, xPSR */
 
 	uint32_t mmfs;
@@ -27,6 +27,9 @@ struct panic_data {
 	uint32_t shcsr;
 	uint32_t hfsr;
 	uint32_t dfsr;
+
+	/* Indicates whether the exception happened in handler or process. */
+	int32_t  in_handler;
 
 	/*
 	 * These fields go at the END of the struct so we can find it at the
