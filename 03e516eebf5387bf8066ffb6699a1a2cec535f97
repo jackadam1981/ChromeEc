@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAXH//8Uw\u003d",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-04-08T17:10:02Z",
+      "side": 1,
+      "message": "I\u0027m pretty sure we can do better than all that ifdefery in task.c (as you are already modifying task_id.h and the Makefiles)",
+      "revId": "03e516eebf5387bf8066ffb6699a1a2cec535f97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXH//8U0\u003d",
+        "filename": "include/task_id.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-04-08T17:10:02Z",
+      "side": 1,
+      "message": "so TEST tasks have higher priorities than all other tasks, is that intended ?",
+      "revId": "03e516eebf5387bf8066ffb6699a1a2cec535f97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
