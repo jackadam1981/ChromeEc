@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAXH//8Z0\u003d",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-04-08T15:54:19Z",
+      "side": 1,
+      "message": "Move this to a set_keyscan_config() function like you did with get_keyscan_config().",
+      "revId": "bf56be684df247904129e41599bf41abf6615675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXH//8Zw\u003d",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-04-08T15:54:19Z",
+      "side": 1,
+      "message": "This goes in set_keyscan_config() too.\n\nCall set_keyscan_config() down here, so dst-\u003eflags is updated before the call.",
+      "revId": "bf56be684df247904129e41599bf41abf6615675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXH//8Z4\u003d",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-04-08T15:54:19Z",
+      "side": 1,
+      "message": "get_keyscan_config\n\n(naming nit: functions starting with \"keyscan_\" should be in keyboard scan module, so here we call it something else)\n\n...and move up next to set_keyscan_config() function, as soon as it exists.",
+      "revId": "bf56be684df247904129e41599bf41abf6615675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
