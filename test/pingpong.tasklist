@@ -14,12 +14,7 @@
  * 'd' in an opaque parameter passed to the routine at startup
  * 's' is the stack size in bytes; must be a multiple of 8
  */
-#define CONFIG_TASK_LIST \
-  TASK(HOOKS, hook_task, NULL, TASK_STACK_SIZE) \
-  TASK(VBOOTHASH, vboot_hash_task, NULL, TASK_STACK_SIZE) \
-  TASK(HOSTCMD, host_command_task, NULL, TASK_STACK_SIZE) \
-  TASK(CONSOLE, console_task, NULL, TASK_STACK_SIZE) \
-  TASK(TESTA, TaskAbc, (void *)'A', TASK_STACK_SIZE) \
-  TASK(TESTB, TaskAbc, (void *)'B', TASK_STACK_SIZE) \
-  TASK(TESTC, TaskAbc, (void *)'C', TASK_STACK_SIZE) \
-  TASK(TESTT, TaskTick, (void *)'T', TASK_STACK_SIZE)
+#define CONFIG_TEST_TASK_LIST \
+  TASK_TEST(TESTA, TaskAbc, (void *)'A', TASK_STACK_SIZE) \
+  TASK_TEST(TESTB, TaskAbc, (void *)'B', TASK_STACK_SIZE) \
+  TASK_TEST(TESTC, TaskAbc, (void *)'C', TASK_STACK_SIZE)

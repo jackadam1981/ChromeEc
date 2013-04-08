@@ -6,9 +6,10 @@
  */
 
 #include "common.h"
-#include "uart.h"
+#include "console.h"
 #include "task.h"
 #include "timer.h"
+#include "util.h"
 
 int TaskAbc(void *data)
 {
@@ -18,25 +19,22 @@ int TaskAbc(void *data)
 	if (next > TASK_ID_TESTC)
 		next = TASK_ID_TESTA;
 
-	uart_printf("\n[starting Task %c]\n", letter);
+	ccprintf("\n[starting Task %c]\n", letter);
+	task_wait_event(-1);
 
 	while (1) {
-		uart_puts(string);
-		uart_flush_output();
+		ccputs(string);
+		cflush();
 		task_set_event(next, TASK_EVENT_WAKE, 1);
 	}
 
 	return EC_SUCCESS;
 }
 
-int TaskTick(void *data)
+static int command_run_test(int argc, char **argv)
 {
-	uart_set_console_mode(1);
-	uart_printf("\n[starting Task T]\n");
-	/* Print T every tick */
-	while (1) {
-		/* Wait for timer interrupt message */
-		usleep(3000);
-		uart_puts("T\n");
-	}
+	task_wake(TASK_ID_TESTA);
+	return EC_SUCCESS;
 }
+DECLARE_CONSOLE_COMMAND(runtest, command_run_test,
+			NULL, NULL, NULL);
