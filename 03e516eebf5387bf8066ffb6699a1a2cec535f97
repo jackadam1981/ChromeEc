@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAXH//7d8\u003d",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-04-09T02:06:21Z",
+      "side": 1,
+      "message": "Turns out we don\u0027t need those #include anyway. (not sure why we needed them but code compiles fine without them.)",
+      "parentUuid": "AAAAXH//8Uw\u003d",
+      "revId": "03e516eebf5387bf8066ffb6699a1a2cec535f97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAXH//8U0\u003d",
         "filename": "include/task_id.h",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2013-04-08T17:10:02Z",
       "side": 1,
       "message": "so TEST tasks have higher priorities than all other tasks, is that intended ?",
+      "revId": "03e516eebf5387bf8066ffb6699a1a2cec535f97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXH//7eE\u003d",
+        "filename": "include/task_id.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-04-09T02:06:21Z",
+      "side": 1,
+      "message": "Yes, that\u0027s intended. This way you have better control of which task is holding control when writing a test. We can also have test tasks yielding control to normal tasks.",
+      "parentUuid": "AAAAXH//8U0\u003d",
       "revId": "03e516eebf5387bf8066ffb6699a1a2cec535f97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
