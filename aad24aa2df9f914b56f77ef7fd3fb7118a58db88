@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAXH//5i8\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2013-04-10T21:05:01Z",
+      "side": 0,
+      "message": "Should we also update this to avoid generating events on I2C1?",
+      "revId": "aad24aa2df9f914b56f77ef7fd3fb7118a58db88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
