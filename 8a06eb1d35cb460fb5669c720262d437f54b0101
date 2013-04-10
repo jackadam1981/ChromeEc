@@ -16,6 +16,24 @@
       "revId": "8a06eb1d35cb460fb5669c720262d437f54b0101",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXH//5+8\u003d",
+        "filename": "test/pingpong.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-04-10T13:58:02Z",
+      "side": 0,
+      "message": "Ah, that should be in the next CL which fixes this test and slightly changes how it works. It is going to be removed anyway so we can just remove it here.",
+      "parentUuid": "AAAAXH//5/I\u003d",
+      "revId": "8a06eb1d35cb460fb5669c720262d437f54b0101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
