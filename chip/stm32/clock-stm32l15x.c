@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -39,11 +39,11 @@ void clock_init(void)
 			;
 	}
 
-	/* Set the recommended flash settings for 16MHz clock.
+	/* Set the recommended flash settings for 16 MHz clock at VDD=1.8 V.
 	 *
-	 * The 3 bits must be programmed strictly sequentially,
-	 * but it is faster not to read-back the value of the ACR register
-	 * in the middle of the sequence so let's use a temporary variable.
+	 * The 3 bits must be programmed strictly sequentially, but it is
+	 * faster not to read-back the value of the ACR register in the middle
+	 * of the sequence so let's use a temporary variable.
 	 */
 	tmp_acr = STM32_FLASH_ACR;
 	/* Enable 64-bit access */

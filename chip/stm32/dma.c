@@ -228,11 +228,16 @@ int dma_wait(int channel)
 int dma_get_irq(int channel)
 {
 	ASSERT(channel < DMA_NUM_CHANNELS);
+
+#ifdef CHIP_FAMILY_stm32f
 	if (channel < DMA1_NUM_CHANNELS)
-		return STM32_IRQ_DMA_CHANNEL_1 + channel;
+		return STM32_IRQ_DMA1_CHANNEL_1 + channel;
 	else
 		return STM32_IRQ_DMA2_CHANNEL1 + channel -
 			DMA1_NUM_CHANNELS;
+#else
+	return STM32_IRQ_DMA1_CHANNEL_1 + channel;
+#endif
 }
 
 void dma_enable_tc_interrupt(int channel)
@@ -284,7 +289,7 @@ static void dma_event_interrupt_channel_4(void)
 	if (id[DMAC_I2C2_TX] != TASK_ID_INVALID)
 		task_wake(id[DMAC_I2C2_TX]);
 }
-DECLARE_IRQ(STM32_IRQ_DMA_CHANNEL_4, dma_event_interrupt_channel_4, 3);
+DECLARE_IRQ(STM32_IRQ_DMA1_CHANNEL_4, dma_event_interrupt_channel_4, 3);
 
 static void dma_event_interrupt_channel_5(void)
 {
@@ -292,7 +297,7 @@ static void dma_event_interrupt_channel_5(void)
 	if (id[DMAC_I2C2_RX] != TASK_ID_INVALID)
 		task_wake(id[DMAC_I2C2_RX]);
 }
-DECLARE_IRQ(STM32_IRQ_DMA_CHANNEL_5, dma_event_interrupt_channel_5, 3);
+DECLARE_IRQ(STM32_IRQ_DMA1_CHANNEL_5, dma_event_interrupt_channel_5, 3);
 
 static void dma_event_interrupt_channel_6(void)
 {
@@ -300,7 +305,7 @@ static void dma_event_interrupt_channel_6(void)
 	if (id[DMAC_I2C1_TX] != TASK_ID_INVALID)
 		task_wake(id[DMAC_I2C1_TX]);
 }
-DECLARE_IRQ(STM32_IRQ_DMA_CHANNEL_6, dma_event_interrupt_channel_6, 3);
+DECLARE_IRQ(STM32_IRQ_DMA1_CHANNEL_6, dma_event_interrupt_channel_6, 3);
 
 static void dma_event_interrupt_channel_7(void)
 {
@@ -308,4 +313,4 @@ static void dma_event_interrupt_channel_7(void)
 	if (id[DMAC_I2C1_RX] != TASK_ID_INVALID)
 		task_wake(id[DMAC_I2C1_RX]);
 }
-DECLARE_IRQ(STM32_IRQ_DMA_CHANNEL_7, dma_event_interrupt_channel_7, 3);
+DECLARE_IRQ(STM32_IRQ_DMA1_CHANNEL_7, dma_event_interrupt_channel_7, 3);

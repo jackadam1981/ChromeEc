@@ -117,35 +117,36 @@ void system_hibernate(uint32_t seconds, uint32_t microseconds)
 
 void system_pre_init(void)
 {
-	/* enable clock on Power module */
+	/* Enable clock on Power module */
 	STM32_RCC_APB1ENR |= 1 << 28;
-	/* enable backup registers */
+	/* Enable backup registers */
 	STM32_RCC_APB1ENR |= 1 << 27;
 	/* Enable access to RCC CSR register and RTC backup registers */
 	STM32_PWR_CR |= 1 << 8;
 
-	/* switch on LSI */
+	/* Switch on LSI */
 	STM32_RCC_CSR |= 1 << 0;
 	/* Wait for LSI to be ready */
 	while (!(STM32_RCC_CSR & (1 << 1)))
 		;
-	/* re-configure RTC if needed */
-#if defined(CHIP_VARIANT_stm32l15x)
-	if ((STM32_RCC_CSR & 0x00C30000) != 0x00420000) {
-		/* the RTC settings are bad, we need to reset it */
+
+	/* Reconfigure RTC if needed */
+#if defined(CHIP_FAMILY_stm32l)
+	if ((STM32_RCC_CSR & 0x00c30000) != 0x00420000) {
+		/* RTC settings are bad; we need to reset it */
 		STM32_RCC_CSR |= 0x00800000;
 		/* Enable RTC and use LSI as clock source */
-		STM32_RCC_CSR = (STM32_RCC_CSR & ~0x00C30000) | 0x00420000;
+		STM32_RCC_CSR = (STM32_RCC_CSR & ~0x00c30000) | 0x00420000;
 	}
-#elif defined(CHIP_VARIANT_stm32f100) || defined(CHIP_VARIANT_stm32f10x)
+#elif defined(CHIP_FAMILY_stm32f)
 	if ((STM32_RCC_BDCR & 0x00018300) != 0x00008200) {
-		/* the RTC settings are bad, we need to reset it */
+		/* RTC settings are bad; we need to reset it */
 		STM32_RCC_BDCR |= 0x00010000;
 		/* Enable RTC and use LSI as clock source */
 		STM32_RCC_BDCR = (STM32_RCC_BDCR & ~0x00018300) | 0x00008200;
 	}
 #else
-#error "Unsupported chip variant"
+#error "Unsupported chip family"
 #endif
 
 	check_reset_cause();

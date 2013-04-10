@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -6,15 +6,27 @@
 #ifndef __CROS_EC_CHIP_CONFIG_H
 #define __CROS_EC_CHIP_CONFIG_H
 
-/* use variant specific configuration for flash / UART / IRQ */
+/*
+ * Use variant specific configuration for flash / UART / IRQ.
+ *
+ * Also define CHIP_FAMILY_* constant for more convenient conditionals
+ * in registers.h.
+ */
+
 #if defined(CHIP_VARIANT_stm32l15x)
+#define CHIP_FAMILY_stm32l
 #include "config-stm32l15x.h"
+
 #elif defined(CHIP_VARIANT_stm32f100)
 /* STM32F100xx is currently the only outlier in the STM32F series */
+#define CHIP_FAMILY_stm32f
 #include "config-stm32f100.h"
+
 #elif defined(CHIP_VARIANT_stm32f10x)
 /* STM32F101xx, STM32F102xx, STM32F103xx, STM32F105xx, and STM32F107xx */
+#define CHIP_FAMILY_stm32f
 #include "config-stm32f10x.h"
+
 #else
 #error "Unsupported chip variant"
 #endif

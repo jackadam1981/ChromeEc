@@ -16,7 +16,7 @@
 /* Divider to get microsecond for the clock */
 #define CLOCKSOURCE_DIVIDER (CPU_CLOCK / SECOND)
 
-#define TIM_WD_IRQ	STM32_IRQ_TIM1_UP_TIM16
+#define TIM_WD_IRQ	STM32_IRQ_TIM1_UP
 #define TIM_WD		1	/* Timer to use for watchdog */
 
 /*
@@ -28,9 +28,11 @@
 #define IRQ_MSB IRQ_TIM(TIM_CLOCK_MSB)
 #define IRQ_LSB IRQ_TIM(TIM_CLOCK_LSB)
 
+#ifdef CHIP_FAMILY_stm32f
 enum {
 	TIM_WD_BASE	= STM32_TIM1_BASE,
 };
+#endif
 
 static uint32_t last_deadline;
 
@@ -185,11 +187,11 @@ int __hw_clock_source_init(uint32_t start_t)
 }
 
 /*
- * We don't have TIM1 on STM32L, so don't support this function for now.  TIM5
+ * We don't have TIM1 on STM32L, so we only support this on STM32F.  TIM5
  * doesn't appear to exist in either variant, and TIM9 cannot be triggered as a
  * slave from TIM4. We could perhaps use TIM9 as our fast counter on STM32L.
  */
-#ifndef CHIP_VARIANT_stm32l15x
+#ifdef CHIP_FAMILY_stm32f
 
 void watchdog_check(uint32_t excep_lr, uint32_t excep_sp)
 {

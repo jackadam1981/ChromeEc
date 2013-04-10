@@ -324,8 +324,8 @@ static void adc_watch_toad(void)
 {
 	/* Watch VBUS and interrupt if voltage goes under 3V. */
 	adc_enable_watchdog(STM32_AIN(5), 4095, 1800);
-	task_clear_pending_irq(STM32_IRQ_ADC_1);
-	task_enable_irq(STM32_IRQ_ADC_1);
+	task_clear_pending_irq(STM32_IRQ_ADC1);
+	task_enable_irq(STM32_IRQ_ADC1);
 	current_watchdog = ADC_WATCH_TOAD;
 }
 
@@ -583,11 +583,11 @@ static void adc_watchdog_interrupt(void)
 {
 	if (current_watchdog == ADC_WATCH_TOAD) {
 		pending_tsu6721_reset = 1;
-		task_disable_irq(STM32_IRQ_ADC_1);
+		task_disable_irq(STM32_IRQ_ADC1);
 		task_wake(TASK_ID_CHARGER);
 	}
 }
-DECLARE_IRQ(STM32_IRQ_ADC_1, adc_watchdog_interrupt, 2);
+DECLARE_IRQ(STM32_IRQ_ADC1, adc_watchdog_interrupt, 2);
 
 static void usb_boost_pwr_on_hook(void)
 {
