@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAXH//4Uw\u003d",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-04-11T18:01:49Z",
+      "side": 1,
+      "message": "should be PKG_CONFIG?\u003dpkg-config\nelse we are going to override the one passed by the ebuild and this will fail for the targets (e.g. pkg-config-daisy_spring)",
+      "revId": "f7e10d9889a912bf19ecb29c54d47d5e4b052d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
