@@ -53,30 +53,32 @@ void gpio_pre_init(void)
 		/* bitmask for registers with 2 bits per GPIO pin */
 		uint32_t mask2 = (g->mask * g->mask) | (g->mask * g->mask * 2);
 		uint32_t val;
+		stm32_gpio_port_t p = STM32_GPIO_PORT(g->port);
 
 		if (g->mask & GPIO_DEFAULT)
 			continue;
-		val = STM32_GPIO_PUPDR_OFF(g->port) & ~mask2;
+		val = p->pupdr & ~mask2;
+
 		if ((g->flags & GPIO_PULL_UP) == GPIO_PULL_UP)
 			/* Pull Up = 01 */
 			val |= 0x55555555 & mask2;
 		else if ((g->flags & GPIO_PULL_DOWN) == GPIO_PULL_DOWN)
 			/* Pull Down = 10 */
 			val |= 0xaaaaaaaa & mask2;
-		STM32_GPIO_PUPDR_OFF(g->port) = val;
+		p->pupdr = val;
 
 		if (g->flags & GPIO_OPEN_DRAIN)
-			STM32_GPIO_OTYPER_OFF(g->port) |= g->mask;
+			p->otyper |= g->mask;
 
 		/*
 		 * Set pin level after port has been set up as to avoid
 		 * potential damage, e.g. driving an open-drain output
 		 * high before it has been configured as such.
 		 */
-		val = STM32_GPIO_MODER_OFF(g->port) & ~mask2;
+		val = p->moder & ~mask2;
 		if (g->flags & GPIO_OUTPUT) { /* General purpose, MODE = 01 */
 			val |= 0x55555555 & mask2;
-			STM32_GPIO_MODER_OFF(g->port) = val;
+			p->moder = val;
 			/*
 			 * If this is a cold boot, set the level.  On a warm
 			 * reboot, leave things where they were or we'll shut
@@ -84,8 +86,9 @@ void gpio_pre_init(void)
 			 */
 			if (!is_warm)
 				gpio_set_level(i, g->flags & GPIO_HIGH);
-		} else if (g->flags & GPIO_INPUT) { /* Input, MODE=00 */
-			STM32_GPIO_MODER_OFF(g->port) = val;
+		} else if (g->flags & GPIO_INPUT) {
+			/* Input, MODE=00 */
+			p->moder = val;
 		}
 
 		/* Set up interrupts if necessary */
@@ -113,10 +116,11 @@ DECLARE_HOOK(HOOK_INIT, gpio_init, HOOK_PRIO_DEFAULT);
 
 void gpio_set_alternate_function(int port, int mask, int func)
 {
+	stm32_gpio_port_t p = STM32_GPIO_PORT(port);
 	int bit;
 	uint8_t half;
 	uint32_t afr;
-	uint32_t moder = STM32_GPIO_MODER_OFF(port);
+	uint32_t moder = p->moder;
 
 	if (func < 0) {
 		/* Return to normal GPIO function, defaulting to input. */
@@ -125,13 +129,13 @@ void gpio_set_alternate_function(int port, int mask, int func)
 			moder &= ~(0x3 << (bit * 2 + 16));
 			mask &= ~(1 << bit);
 		}
-		STM32_GPIO_MODER_OFF(port) = moder;
+		p->moder = moder;
 		return;
 	}
 
 	/* Low half of the GPIO bank */
 	half = mask & 0xff;
-	afr = STM32_GPIO_AFRL_OFF(port);
+	afr = p->afrl;
 	while (half) {
 		bit = 31 - __builtin_clz(half);
 		afr &= ~(0xf << (bit * 4));
@@ -140,11 +144,11 @@ void gpio_set_alternate_function(int port, int mask, int func)
 		moder |= 0x2 << (bit * 2 + 0);
 		half &= ~(1 << bit);
 	}
-	STM32_GPIO_AFRL_OFF(port) = afr;
+	p->afrl = afr;
 
 	/* High half of the GPIO bank */
 	half = mask >> 8;
-	afr = STM32_GPIO_AFRH_OFF(port);
+	afr = p->afrh;
 	while (half) {
 		bit = 31 - __builtin_clz(half);
 		afr &= ~(0xf << (bit * 4));
@@ -153,19 +157,19 @@ void gpio_set_alternate_function(int port, int mask, int func)
 		moder |= 0x2 << (bit * 2 + 16);
 		half &= ~(1 << bit);
 	}
-	STM32_GPIO_AFRH_OFF(port) = afr;
-	STM32_GPIO_MODER_OFF(port) = moder;
+	p->afrh = afr;
+	p->moder = moder;
 }
 
 int gpio_get_level(enum gpio_signal signal)
 {
-	return !!(STM32_GPIO_IDR_OFF(gpio_list[signal].port) &
+	return !!(STM32_GPIO_PORT(gpio_list[signal].port)->idr &
 		  gpio_list[signal].mask);
 }
 
 void gpio_set_level(enum gpio_signal signal, int value)
 {
-	STM32_GPIO_BSRR_OFF(gpio_list[signal].port) =
+	STM32_GPIO_PORT(gpio_list[signal].port)->bsrr =
 			gpio_list[signal].mask << (value ? 0 : 16);
 }
 
@@ -190,7 +194,7 @@ int gpio_enable_interrupt(enum gpio_signal signal)
 
 	group = bit / 4;
 	shift = (bit % 4) * 4;
-	bank = (g->port - STM32_GPIOA_BASE) / 0x400;
+	bank = (g->port - GPIO_A) / 0x400;
 	STM32_SYSCFG_EXTICR(group) = (STM32_SYSCFG_EXTICR(group) &
 			~(0xF << shift)) | (bank << shift);
 	STM32_EXTI_IMR |= g->mask;
