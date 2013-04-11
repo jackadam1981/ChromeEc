@@ -135,9 +135,9 @@ void board_config_pre_init(void)
 	 *
 	 * note: see crosbug.com/p/12223 for more info
 	 */
-	val = STM32_GPIO_CRH_OFF(GPIO_A) & ~0x00000ff0;
+	val = GPIO_PORT(GPIO_A)->crh & ~0x00000ff0;
 	val |= 0x00000890;
-	STM32_GPIO_CRH_OFF(GPIO_A) = val;
+	GPIO_PORT(GPIO_A)->crh = val;
 }
 
 /* GPIO configuration to be done after I2C module init */
@@ -148,9 +148,9 @@ void board_i2c_post_init(int port)
 	/* enable alt. function (open-drain) */
 	if (port == STM32_I2C1_PORT) {
 		/* I2C1 is on PB6-7 */
-		val = STM32_GPIO_CRL_OFF(GPIO_B) & ~0xff000000;
+		val = GPIO_PORT(GPIO_B)->crl & ~0xff000000;
 		val |= 0xdd000000;
-		STM32_GPIO_CRL_OFF(GPIO_B) = val;
+		GPIO_PORT(GPIO_B)->crl = val;
 	}
 }
 

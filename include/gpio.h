@@ -39,6 +39,7 @@
 /* GPIO signal definition structure, for use by board.c */
 struct gpio_info {
 	const char *name;
+	/* This could become gpio_port_t, which avoids lots of typecasts */
 	int port;         /* Port (LM4_GPIO_*) */
 	int mask;         /* Bitmask on that port (0x01 - 0x80; 0x00 =
 			   * signal not implemented) */
@@ -86,7 +87,7 @@ int gpio_get_level(enum gpio_signal signal);
  * @param mask		Mask value to use
  * @return pointer to register to read to get GPIO value
  */
-uint16_t *gpio_get_level_reg(enum gpio_signal signal, uint32_t *mask);
+volatile uint16_t *gpio_get_level_reg(enum gpio_signal signal, uint32_t *mask);
 
 /**
  * Return the name of a given GPIO signal.
