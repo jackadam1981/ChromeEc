@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -82,7 +82,7 @@ void gpio_set_flags(enum gpio_signal signal, int flags)
 		 */
 		if ((flags & GPIO_PULL_UP) == GPIO_PULL_UP) {
 			mask |= 0x88888888 & cnf;
-			STM32_GPIO_BSRR_OFF(g->port) |= g->mask;
+			GPIO_PORT(g->port)->bsrr |= g->mask;
 			gpio_set_level(signal, 1);
 		} else if ((flags & GPIO_PULL_DOWN) == GPIO_PULL_DOWN) {
 			mask |= 0x88888888 & cnf;
@@ -152,23 +152,23 @@ void gpio_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, gpio_init, HOOK_PRIO_DEFAULT);
 
-uint16_t *gpio_get_level_reg(enum gpio_signal signal, uint32_t *mask)
+volatile uint16_t *gpio_get_level_reg(enum gpio_signal signal, uint32_t *mask)
 {
 	*mask = gpio_list[signal].mask;
-	return (uint16_t *)&STM32_GPIO_IDR_OFF(gpio_list[signal].port);
+	return &(GPIO_PORT(gpio_list[signal].port)->idr);
 }
 
 
 int gpio_get_level(enum gpio_signal signal)
 {
-	return !!(STM32_GPIO_IDR_OFF(gpio_list[signal].port) &
+	return !!(GPIO_PORT(gpio_list[signal].port)->idr &
 		  gpio_list[signal].mask);
 }
 
 
 void gpio_set_level(enum gpio_signal signal, int value)
 {
-	STM32_GPIO_BSRR_OFF(gpio_list[signal].port) =
+	GPIO_PORT(gpio_list[signal].port)->bsrr =
 			gpio_list[signal].mask << (value ? 0 : 16);
 }
 
