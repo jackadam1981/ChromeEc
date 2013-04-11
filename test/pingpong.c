@@ -6,37 +6,48 @@
  */
 
 #include "common.h"
-#include "uart.h"
+#include "console.h"
 #include "task.h"
 #include "timer.h"
+#include "util.h"
+
+#define TEST_COUNT 3000
+
+static int wake_count[3];
 
 int TaskAbc(void *data)
 {
-	char letter = (char)(unsigned)data;
-	char string[2] = {letter, '\0' };
+	int myid = task_get_current() - TASK_ID_TESTA;
 	task_id_t next = task_get_current() + 1;
 	if (next > TASK_ID_TESTC)
 		next = TASK_ID_TESTA;
 
-	uart_printf("\n[starting Task %c]\n", letter);
+	task_wait_event(-1);
+
+	ccprintf("\n[starting Task %c]\n", ('A' + myid));
 
 	while (1) {
-		uart_puts(string);
-		uart_flush_output();
-		task_set_event(next, TASK_EVENT_WAKE, 1);
+		wake_count[myid]++;
+		if (myid == 2 && wake_count[myid] == TEST_COUNT) {
+			if (wake_count[0] == TEST_COUNT &&
+			    wake_count[1] == TEST_COUNT)
+				ccputs("Pass!\n");
+			else
+				ccputs("Fail!\n");
+			wake_count[0] = wake_count[1] = wake_count[2] = 0;
+			task_wait_event(-1);
+		} else {
+			task_set_event(next, TASK_EVENT_WAKE, 1);
+		}
 	}
 
 	return EC_SUCCESS;
 }
 
-int TaskTick(void *data)
+static int command_run_test(int argc, char **argv)
 {
-	uart_set_console_mode(1);
-	uart_printf("\n[starting Task T]\n");
-	/* Print T every tick */
-	while (1) {
-		/* Wait for timer interrupt message */
-		usleep(3000);
-		uart_puts("T\n");
-	}
+	task_wake(TASK_ID_TESTA);
+	return EC_SUCCESS;
 }
+DECLARE_CONSOLE_COMMAND(runtest, command_run_test,
+			NULL, NULL, NULL);
