@@ -16,6 +16,24 @@
       "revId": "aad24aa2df9f914b56f77ef7fd3fb7118a58db88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXH//4oY\u003d",
+        "filename": "chip/stm32/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-04-11T13:44:52Z",
+      "side": 0,
+      "message": "This doesn´t change the behavior if the global interrupt line is masked.",
+      "parentUuid": "AAAAXH//5i8\u003d",
+      "revId": "aad24aa2df9f914b56f77ef7fd3fb7118a58db88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
