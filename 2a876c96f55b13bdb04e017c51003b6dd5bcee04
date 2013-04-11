@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAXH//4SE\u003d",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-04-11T18:27:35Z",
+      "side": 1,
+      "message": "It keeps us from using the wrong constants on a platform where they\u0027re not available.  This is important to make sure I don\u0027t miss code I need to port from STM32F to STM32L.\n\nFor example, dma.c would happily let you set a DMA2 channel on STM32L, which doesn\u0027t support it.  Now that generates a build-time error instead of silently letting you do it.\n\nIf I hadn\u0027t gated out STM32F constants on STM32L, I wouldn\u0027t have found that bug.",
+      "parentUuid": "AAAAXH//4Sw\u003d",
+      "revId": "2a876c96f55b13bdb04e017c51003b6dd5bcee04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAXH//4Sk\u003d",
         "filename": "chip/stm32/registers.h",
         "patchSetId": 1
