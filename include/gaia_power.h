@@ -10,7 +10,7 @@
 
 #include "gpio.h"
 
-#ifdef CONFIG_CHIPSET_GAIA
+#if defined(CONFIG_CHIPSET_GAIA) && defined(CONFIG_TASK_CHIPSET)
 
 /**
  * Interrupt handlers for Gaia chipset GPIOs.

@@ -6,14 +6,19 @@
 # Common files build
 #
 
+config_and=$(subst yy,y,$(filter-out y,$(strip $(1))$(strip $(2))))
+
+CONFIG_GAIA=$(call config_and,$(CONFIG_CHIPSET_GAIA),$(CONFIG_TASK_CHIPSET))
+CONFIG_X86=$(call config_and,$(CONFIG_CHIPSET_X86),$(CONFIG_TASK_CHIPSET))
+
 common-y=main.o util.o console_output.o uart_buffering.o
 common-y+=memory_commands.o shared_mem.o system_common.o hooks.o
 common-y+=gpio_commands.o version.o printf.o queue.o
 common-$(CONFIG_BATTERY_BQ20Z453)+=battery_bq20z453.o
 common-$(CONFIG_BATTERY_LINK)+=battery_link.o charge_state.o battery_precharge.o
 common-$(CONFIG_CHARGER_BQ24725)+=charger_bq24725.o
-common-$(CONFIG_CHIPSET_GAIA)+=gaia_power.o
-common-$(CONFIG_CHIPSET_X86)+=x86_power.o
+common-$(CONFIG_GAIA)+=gaia_power.o
+common-$(CONFIG_X86)+=x86_power.o
 common-$(CONFIG_PMU_TPS65090)+=pmu_tps65090.o pmu_tps65090_charger.o
 common-$(CONFIG_EOPTION)+=eoption.o
 common-$(CONFIG_EXTPOWER_GPIO)+=extpower_gpio.o
