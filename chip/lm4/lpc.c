@@ -43,8 +43,6 @@ static int init_done;
 
 static uint8_t * const cmd_params = (uint8_t *)LPC_POOL_CMD_DATA +
 	EC_LPC_ADDR_HOST_PARAM - EC_LPC_ADDR_HOST_ARGS;
-static uint8_t * const old_params = (uint8_t *)LPC_POOL_CMD_DATA +
-	EC_LPC_ADDR_OLD_PARAM - EC_LPC_ADDR_HOST_ARGS;
 static struct ec_lpc_host_args * const lpc_host_args =
 	(struct ec_lpc_host_args *)LPC_POOL_CMD_DATA;
 
@@ -182,9 +180,7 @@ static void lpc_send_response(struct host_cmd_handler_args *args)
 		max_size = EC_HOST_PARAM_SIZE;
 	} else {
 		/* Old-style response */
-		lpc_host_args->flags = 0;
-		out = old_params;
-		max_size = EC_OLD_PARAM_SIZE;
+		args->result = EC_RES_INVALID_RESPONSE;
 	}
 
 	/* Fail if response doesn't fit in the param buffer */
@@ -510,13 +506,8 @@ static void handle_host_write(int is_cmd)
 				host_cmd_args.result = EC_RES_INVALID_CHECKSUM;
 		}
 	} else {
-		/* Old style command */
-		host_cmd_args.version = 0;
-		host_cmd_args.params = old_params;
-		host_cmd_args.params_size = EC_OLD_PARAM_SIZE;
-		host_cmd_args.response = old_params;
-		host_cmd_args.response_max = EC_OLD_PARAM_SIZE;
-		host_cmd_args.response_size = 0;
+		/* Old style command, now unsupported */
+		host_cmd_args.result = EC_RES_INVALID_COMMAND;
 	}
 
 	/* Hand off to host command handler */
