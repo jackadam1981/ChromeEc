@@ -16,6 +16,24 @@
       "revId": "9429d255c4c9d35bea71e50344eaf4bff3022ed6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXH//3hI\u003d",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-04-11T23:29:38Z",
+      "side": 1,
+      "message": "So long as the member placement doesn\u0027t leave any gaps, then I would expect this to work fine.",
+      "parentUuid": "AAAAXH//3l0\u003d",
+      "revId": "9429d255c4c9d35bea71e50344eaf4bff3022ed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
