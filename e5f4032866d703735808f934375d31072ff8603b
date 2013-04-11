@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAXH//4kE\u003d",
+        "filename": "test/pingpong.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-04-11T15:37:21Z",
+      "side": 0,
+      "message": "this task was not a leftover and was introducing some non-deterministic task switching.\ninstead of doing always the same ABC pattern, the T task asynchronously showed up from time tom time.",
+      "revId": "e5f4032866d703735808f934375d31072ff8603b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
