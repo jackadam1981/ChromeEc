@@ -181,6 +181,7 @@
 		REG16(STM32_CAT(STM32_GPIO, l, _BASE) + (offset))
 
 #if defined(CHIP_VARIANT_stm32l15x)
+
 #define STM32_GPIOA_BASE            0x40020000
 #define STM32_GPIOB_BASE            0x40020400
 #define STM32_GPIOC_BASE            0x40020800
@@ -188,27 +189,27 @@
 #define STM32_GPIOE_BASE            0x40021000
 #define STM32_GPIOH_BASE            0x40021400
 
-#define STM32_GPIO_MODER(l)         STM32_GPIO_REG32(l, 0x00)
-#define STM32_GPIO_OTYPER(l)        STM32_GPIO_REG16(l, 0x04)
-#define STM32_GPIO_OSPEEDR(l)       STM32_GPIO_REG32(l, 0x08)
-#define STM32_GPIO_PUPDR(l)         STM32_GPIO_REG32(l, 0x0C)
-#define STM32_GPIO_IDR(l)           STM32_GPIO_REG16(l, 0x10)
-#define STM32_GPIO_ODR(l)           STM32_GPIO_REG16(l, 0x14)
-#define STM32_GPIO_BSRR(l)          STM32_GPIO_REG32(l, 0x18)
-#define STM32_GPIO_LCKR(l)          STM32_GPIO_REG32(l, 0x1C)
-#define STM32_GPIO_AFRL(l)          STM32_GPIO_REG32(l, 0x20)
-#define STM32_GPIO_AFRH(l)          STM32_GPIO_REG32(l, 0x24)
+struct stm32_gpio_port_regs {
+	uint32_t moder;
+	uint16_t otyper;
+	uint16_t _pad0;
+	uint32_t ospeedr;
+	uint32_t pupdr;
+	uint16_t idr;
+	uint16_t _pad1;
+	uint16_t odr;
+	uint16_t _pad2;
+	uint32_t bsrr;
+	uint32_t lckr;
+	uint32_t afrl;
+	uint32_t afrh;
+};
+typedef volatile struct stm32_gpio_port_regs * const stm32_gpio_port_t;
 
-#define STM32_GPIO_MODER_OFF(b)     REG32((b) + 0x00)
-#define STM32_GPIO_OTYPER_OFF(b)    REG16((b) + 0x04)
-#define STM32_GPIO_OSPEEDR_OFF(b)   REG32((b) + 0x08)
-#define STM32_GPIO_PUPDR_OFF(b)     REG32((b) + 0x0C)
-#define STM32_GPIO_IDR_OFF(b)       REG16((b) + 0x10)
-#define STM32_GPIO_ODR_OFF(b)       REG16((b) + 0x14)
-#define STM32_GPIO_BSRR_OFF(b)      REG32((b) + 0x18)
-#define STM32_GPIO_LCKR_OFF(b)      REG32((b) + 0x1C)
-#define STM32_GPIO_AFRL_OFF(b)      REG32((b) + 0x20)
-#define STM32_GPIO_AFRH_OFF(b)      REG32((b) + 0x24)
+#define STM32_GPIO_PORT(base) ((stm32_gpio_port_t)(base))
+
+/* Do we want static pointers like this? */
+static stm32_gpio_port_t stm32_gpio_port_a = STM32_GPIO_PORT(STM32_GPIOA_BASE);
 
 #define GPIO_ALT_SYS                 0x0
 #define GPIO_ALT_TIM2                0x1
@@ -230,6 +231,23 @@
 #define STM32_GPIOE_BASE            0x40011800
 #define STM32_GPIOF_BASE            0x4001c000
 #define STM32_GPIOG_BASE            0x40012000
+
+struct stm32_gpio_port_regs {
+	uint32_t crl;
+	uint32_t crh;
+	uint16_t idr;
+	uint16_t _pad0;
+	uint16_t odr;
+	uint16_t _pad1;
+	uint32_t bsrr;
+	uint16_t brr;
+	uint16_t _pad2;
+	uint16_t lckr;
+	uint16_t _pad3;
+};
+typedef volatile struct stm32_gpio_port_regs * const stm32_gpio_port_t;
+
+#define STM32_GPIO_PORT(base) ((stm32_gpio_port_t)(base))
 
 #define STM32_GPIO_CRL(l)           STM32_GPIO_REG32(l, 0x00)
 #define STM32_GPIO_CRH(l)           STM32_GPIO_REG32(l, 0x04)

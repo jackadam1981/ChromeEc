@@ -39,6 +39,7 @@
 /* GPIO signal definition structure, for use by board.c */
 struct gpio_info {
 	const char *name;
+	/* This could become gpio_port_t, which avoids lots of typecasts */
 	int port;         /* Port (LM4_GPIO_*) */
 	int mask;         /* Bitmask on that port (0x01 - 0x80; 0x00 =
 			   * signal not implemented) */
