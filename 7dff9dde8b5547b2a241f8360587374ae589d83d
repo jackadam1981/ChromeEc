@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAXH//4NM\u003d",
+        "filename": "chip/stm32/clock-stm32f100.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000434
+      },
+      "writtenOn": "2013-04-11T18:39:55Z",
+      "side": 1,
+      "message": "this #ifdef and the next #elif are pretty misleading as they define settings for totally different clock trees.\nIf you put CPU_CLOCK \u003d\u003d 16Mhz on mccroskey, this will explode in your face.",
+      "revId": "7dff9dde8b5547b2a241f8360587374ae589d83d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
