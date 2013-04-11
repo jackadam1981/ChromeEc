@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAXH//4Sw\u003d",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-04-11T18:20:13Z",
+      "side": 1,
+      "message": "I fail to see why adding #ifdef where we avoided to do it on purpose, \"clean\" up the code.",
+      "revId": "2a876c96f55b13bdb04e017c51003b6dd5bcee04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXH//4Sk\u003d",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-04-11T18:20:13Z",
+      "side": 1,
+      "message": "ditto, this ifdef is not really useful",
+      "revId": "2a876c96f55b13bdb04e017c51003b6dd5bcee04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
