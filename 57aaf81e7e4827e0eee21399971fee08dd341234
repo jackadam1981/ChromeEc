@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAXH//22k\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2013-04-12T18:49:17Z",
+      "side": 1,
+      "message": "The pairs of macros for stm32 raises an interesting point. The struct pointer approach solves this consistently with C operators, ie \"gpio-\u003ecrl\" to get the value and \"\u0026gpio-\u003ecrl\" to get the address of the CRL register.",
+      "revId": "57aaf81e7e4827e0eee21399971fee08dd341234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXH//22Q\u003d",
+        "filename": "board/snow/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2013-04-12T18:49:17Z",
+      "side": 1,
+      "message": "What if we want the address of port A\u0027s CRH register? Put an address-of operator before the macro?\n\nI think this is more intuitive:\n\ngpio_port_t *p \u003d (gpio_port_t *)GPIO_A; /* typedef adds volatile keyword */\n\nval \u003d p-\u003ecrh \u0026 ~0x00000ff0;\n\nor if we want the address-of CRH:\n\nuint32_t *crh \u003d \u0026p-\u003ecrh; /* Bonus: compiler will complain if types are mismatched */",
+      "revId": "57aaf81e7e4827e0eee21399971fee08dd341234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXH//25U\u003d",
+        "filename": "include/gpio.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2013-04-12T18:49:17Z",
+      "side": 1,
+      "message": "Not sure if it\u0027s worthwhile for port (when is a port anything but an unsigned int?). But maybe it would be useful for the mask member if we need to worry about that being a different length than unsigned int.",
+      "revId": "57aaf81e7e4827e0eee21399971fee08dd341234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
