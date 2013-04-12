@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAXH//3fg\u003d",
+        "filename": "chip/stm32/gpio-stm32l15x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2013-04-12T00:18:07Z",
+      "side": 1,
+      "message": "like here, I\u0027d much rather see:\nstm32_gpio_port_t *p \u003d STM32_GPIO_PORT(g-\u003eport)\n\nThat makes the usage of \u0027p\u0027 below more consistent with normal semantics IMO.",
+      "revId": "28ce8517c7030e6ef54749535166316391c63a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXH//3f0\u003d",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2013-04-12T00:18:07Z",
+      "side": 1,
+      "message": "I don\u0027t like hiding * behind typedef. Let\u0027s keep usage semantics consistent with standard types;",
+      "revId": "28ce8517c7030e6ef54749535166316391c63a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
