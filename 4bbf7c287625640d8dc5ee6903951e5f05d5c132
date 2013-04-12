@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAXH//2j8\u003d",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2013-04-12T21:19:08Z",
+      "side": 1,
+      "message": "A little risky but does work.  I\u0027ll look to expose vid/pid/sid to client and refactor then.",
+      "revId": "4bbf7c287625640d8dc5ee6903951e5f05d5c132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXH//2kE\u003d",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2013-04-12T21:19:08Z",
+      "side": 1,
+      "message": "nit, TOAD -\u003e ${SERVO_TYPE}",
+      "revId": "4bbf7c287625640d8dc5ee6903951e5f05d5c132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
