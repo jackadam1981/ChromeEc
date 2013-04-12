@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAXH//3JY\u003d",
+        "filename": "test/utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-04-12T14:34:19Z",
+      "side": 1,
+      "message": "maybe it would be nice to set error_count to 0 here if we run several time the test command without resetting the EC",
+      "revId": "4691b86a30e0eab520fc0c0bde29382e1c21a0b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
