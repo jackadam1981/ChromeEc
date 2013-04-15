@@ -14,59 +14,6 @@
 #define INITIAL_UDELAY 5     /* 5 us */
 #define MAXIMUM_UDELAY 10000 /* 10 ms */
 
-int comm_init(void)
-{
-	int i;
-	int byte = 0xff;
-
-	/* Request I/O privilege */
-	if (iopl(3) < 0) {
-		perror("Error getting I/O privilege");
-		return -3;
-	}
-
-	/*
-	 * Test if the I/O port has been configured for Chromium EC LPC
-	 * interface.  If all the bytes are 0xff, very likely that Chromium EC
-	 * is not present.
-	 *
-	 * TODO: (crosbug.com/p/10963) Should only need to look at the command
-	 * byte, since we don't support ACPI burst mode and thus bit 4 should
-	 * be 0.
-	 */
-	byte &= inb(EC_LPC_ADDR_HOST_CMD);
-	byte &= inb(EC_LPC_ADDR_HOST_DATA);
-	for (i = 0; i < EC_HOST_PARAM_SIZE && byte == 0xff; ++i)
-		byte &= inb(EC_LPC_ADDR_HOST_PARAM + i);
-	if (byte == 0xff) {
-		fprintf(stderr, "Port 0x%x,0x%x,0x%x-0x%x are all 0xFF.\n",
-			EC_LPC_ADDR_HOST_CMD, EC_LPC_ADDR_HOST_DATA,
-			EC_LPC_ADDR_HOST_PARAM,
-			EC_LPC_ADDR_HOST_PARAM + EC_HOST_PARAM_SIZE - 1);
-		fprintf(stderr,
-			"Very likely this board doesn't have a Chromium EC.\n");
-		return -4;
-	}
-
-	/*
-	 * Test if LPC command args are supported.
-	 *
-	 * The cheapest way to do this is by looking for the memory-mapped
-	 * flag.  This is faster than sending a new-style 'hello' command and
-	 * seeing whether the EC sets the EC_HOST_ARGS_FLAG_FROM_HOST flag
-	 * in args when it responds.
-	 */
-	if (inb(EC_LPC_ADDR_MEMMAP + EC_MEMMAP_ID) != 'E' ||
-	    inb(EC_LPC_ADDR_MEMMAP + EC_MEMMAP_ID + 1) != 'C' ||
-	    !(inb(EC_LPC_ADDR_MEMMAP + EC_MEMMAP_HOST_CMD_FLAGS) &
-	      EC_HOST_CMD_FLAG_LPC_ARGS_SUPPORTED)) {
-		fprintf(stderr, "EC doesn't support command args.\n");
-		return -5;
-	}
-
-	return 0;
-}
-
 /*
  * Wait for the EC to be unbusy.  Returns 0 if unbusy, non-zero if
  * timeout.
@@ -97,9 +44,10 @@ static int wait_for_ec(int status_addr, int timeout_usec)
 	return -1;  /* Timeout */
 }
 
-int ec_command(int command, int version, const void *indata, int insize,
-	       void *outdata, int outsize) {
-
+static int ec_command_lpc(int command, int version,
+			  void *indata, int insize,
+			  void *outdata, int outsize)
+{
 	struct ec_lpc_host_args args;
 	const uint8_t *d;
 	uint8_t *dout;
@@ -179,22 +127,22 @@ int ec_command(int command, int version, const void *indata, int insize,
 }
 
 
-uint8_t read_mapped_mem8(uint8_t offset)
+static uint8_t read_mapped_mem8_lpc(uint8_t offset)
 {
 	return inb(EC_LPC_ADDR_MEMMAP + offset);
 }
 
-uint16_t read_mapped_mem16(uint8_t offset)
+static uint16_t read_mapped_mem16_lpc(uint8_t offset)
 {
 	return inw(EC_LPC_ADDR_MEMMAP + offset);
 }
 
-uint32_t read_mapped_mem32(uint8_t offset)
+static uint32_t read_mapped_mem32_lpc(uint8_t offset)
 {
 	return inl(EC_LPC_ADDR_MEMMAP + offset);
 }
 
-int read_mapped_string(uint8_t offset, char *buf)
+static int read_mapped_string_lpc(uint8_t offset, char *buf)
 {
 	int c;
 
@@ -206,4 +154,63 @@ int read_mapped_string(uint8_t offset, char *buf)
 
 	buf[EC_MEMMAP_TEXT_MAX - 1] = 0;
 	return EC_MEMMAP_TEXT_MAX - 1;
+}
+
+int comm_init_lpc(void)
+{
+	int i;
+	int byte = 0xff;
+
+	/* Request I/O privilege */
+	if (iopl(3) < 0) {
+		perror("Error getting I/O privilege");
+		return -3;
+	}
+
+	/*
+	 * Test if the I/O port has been configured for Chromium EC LPC
+	 * interface.  If all the bytes are 0xff, very likely that Chromium EC
+	 * is not present.
+	 *
+	 * TODO: (crosbug.com/p/10963) Should only need to look at the command
+	 * byte, since we don't support ACPI burst mode and thus bit 4 should
+	 * be 0.
+	 */
+	byte &= inb(EC_LPC_ADDR_HOST_CMD);
+	byte &= inb(EC_LPC_ADDR_HOST_DATA);
+	for (i = 0; i < EC_HOST_PARAM_SIZE && byte == 0xff; ++i)
+		byte &= inb(EC_LPC_ADDR_HOST_PARAM + i);
+	if (byte == 0xff) {
+		fprintf(stderr, "Port 0x%x,0x%x,0x%x-0x%x are all 0xFF.\n",
+			EC_LPC_ADDR_HOST_CMD, EC_LPC_ADDR_HOST_DATA,
+			EC_LPC_ADDR_HOST_PARAM,
+			EC_LPC_ADDR_HOST_PARAM + EC_HOST_PARAM_SIZE - 1);
+		fprintf(stderr,
+			"Very likely this board doesn't have a Chromium EC.\n");
+		return -4;
+	}
+
+	/*
+	 * Test if LPC command args are supported.
+	 *
+	 * The cheapest way to do this is by looking for the memory-mapped
+	 * flag.  This is faster than sending a new-style 'hello' command and
+	 * seeing whether the EC sets the EC_HOST_ARGS_FLAG_FROM_HOST flag
+	 * in args when it responds.
+	 */
+	if (inb(EC_LPC_ADDR_MEMMAP + EC_MEMMAP_ID) != 'E' ||
+	    inb(EC_LPC_ADDR_MEMMAP + EC_MEMMAP_ID + 1) != 'C' ||
+	    !(inb(EC_LPC_ADDR_MEMMAP + EC_MEMMAP_HOST_CMD_FLAGS) &
+	      EC_HOST_CMD_FLAG_LPC_ARGS_SUPPORTED)) {
+		fprintf(stderr, "EC doesn't support command args.\n");
+		return -5;
+	}
+
+	/* Okay, this works */
+	ec_command = ec_command_lpc;
+	read_mapped_mem8 = read_mapped_mem8_lpc;
+	read_mapped_mem16 = read_mapped_mem16_lpc;
+	read_mapped_mem32 = read_mapped_mem32_lpc;
+	read_mapped_string = read_mapped_string_lpc;
+	return 0;
 }

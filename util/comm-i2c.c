@@ -40,44 +40,6 @@
 
 static int i2c_fd = -1;
 
-int comm_init(void)
-{
-	char *file_path;
-	char buffer[64];
-	FILE *f;
-	int i;
-
-	/* find the device number based on the adapter name */
-	for (i = 0; i < I2C_MAX_ADAPTER; i++) {
-		if (asprintf(&file_path, I2C_ADAPTER_NODE, i) < 0)
-			return -1;
-		f = fopen(file_path, "r");
-		if (f) {
-			if (fgets(buffer, sizeof(buffer), f) &&
-			    !strncmp(buffer, I2C_ADAPTER_NAME, 6)) {
-				free(file_path);
-				break;
-			}
-			fclose(f);
-		}
-		free(file_path);
-	}
-	if (i == I2C_MAX_ADAPTER) {
-		fprintf(stderr, "Cannot find I2C adapter\n");
-		return -1;
-	}
-
-	if (asprintf(&file_path, I2C_NODE, i) < 0)
-		return -1;
-	debug("using I2C adapter %s\n", file_path);
-	i2c_fd = open(file_path, O_RDWR);
-	if (i2c_fd < 0)
-		fprintf(stderr, "Cannot open %s : %d\n", file_path, errno);
-
-	free(file_path);
-	return 0;
-}
-
 
 /*
  * Sends a command to the EC (protocol v2).  Returns the command status code, or
@@ -86,8 +48,9 @@ int comm_init(void)
  * Returns >= 0 for success, or negative if error.
  *
  */
-int ec_command(int command, int version, const void *indata, int insize,
-	       void *outdata, int outsize)
+static int ec_command_i2c(int command, int version,
+			  void *indata, int insize,
+			  void *outdata, int outsize)
 {
 	struct i2c_rdwr_ioctl_data data;
 	int ret = -1;
@@ -213,7 +176,7 @@ done:
 	return ret;
 }
 
-uint8_t read_mapped_mem8(uint8_t offset)
+static uint8_t read_mapped_mem8_i2c(uint8_t offset)
 {
 	struct ec_params_read_memmap p;
 	uint8_t val;
@@ -228,7 +191,7 @@ uint8_t read_mapped_mem8(uint8_t offset)
 	return val;
 }
 
-uint16_t read_mapped_mem16(uint8_t offset)
+static uint16_t read_mapped_mem16_i2c(uint8_t offset)
 {
 	struct ec_params_read_memmap p;
 	uint16_t val;
@@ -243,7 +206,7 @@ uint16_t read_mapped_mem16(uint8_t offset)
 	return val;
 }
 
-uint32_t read_mapped_mem32(uint8_t offset)
+static uint32_t read_mapped_mem32_i2c(uint8_t offset)
 {
 	struct ec_params_read_memmap p;
 	uint32_t val;
@@ -258,7 +221,7 @@ uint32_t read_mapped_mem32(uint8_t offset)
 	return val;
 }
 
-int read_mapped_string(uint8_t offset, char *buf)
+static int read_mapped_string_i2c(uint8_t offset, char *buf)
 {
 	struct ec_params_read_memmap p;
 	int c;
@@ -279,4 +242,48 @@ int read_mapped_string(uint8_t offset, char *buf)
 
 	buf[EC_MEMMAP_TEXT_MAX - 1] = 0;
 	return EC_MEMMAP_TEXT_MAX - 1;
+}
+
+int comm_init_i2c(void)
+{
+	char *file_path;
+	char buffer[64];
+	FILE *f;
+	int i;
+
+	/* find the device number based on the adapter name */
+	for (i = 0; i < I2C_MAX_ADAPTER; i++) {
+		if (asprintf(&file_path, I2C_ADAPTER_NODE, i) < 0)
+			return -1;
+		f = fopen(file_path, "r");
+		if (f) {
+			if (fgets(buffer, sizeof(buffer), f) &&
+			    !strncmp(buffer, I2C_ADAPTER_NAME, 6)) {
+				free(file_path);
+				break;
+			}
+			fclose(f);
+		}
+		free(file_path);
+	}
+	if (i == I2C_MAX_ADAPTER) {
+		fprintf(stderr, "Cannot find I2C adapter\n");
+		return -1;
+	}
+
+	if (asprintf(&file_path, I2C_NODE, i) < 0)
+		return -1;
+	debug("using I2C adapter %s\n", file_path);
+	i2c_fd = open(file_path, O_RDWR);
+	if (i2c_fd < 0)
+		fprintf(stderr, "Cannot open %s : %d\n", file_path, errno);
+
+	free(file_path);
+
+	ec_command = ec_command_i2c;
+	read_mapped_mem8 = read_mapped_mem8_i2c;
+	read_mapped_mem16 = read_mapped_mem16_i2c;
+	read_mapped_mem32 = read_mapped_mem32_i2c;
+	read_mapped_string = read_mapped_string_i2c;
+	return 0;
 }

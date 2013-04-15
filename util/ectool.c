@@ -2951,16 +2951,18 @@ int main(int argc, char *argv[])
 	if (argc < 2 || !strcasecmp(argv[1], "-?") ||
 	    !strcasecmp(argv[1], "help")) {
 		print_help(argv[0]);
-		return -2;
+		exit(1);
 	}
 
 	if (acquire_gec_lock(GEC_LOCK_TIMEOUT_SECS) < 0) {
 		fprintf(stderr, "Could not acquire GEC lock.\n");
-		return 1;
+		exit(1);
 	}
 
-	if (comm_init() < 0)
-		return -3;
+	if (comm_init() < 0) {
+		fprintf(stderr, "Couldn't find EC\n");
+		exit(1);
+	}
 
 	/* Handle commands */
 	for (cmd = commands; cmd->name; cmd++) {
@@ -2973,7 +2975,7 @@ int main(int argc, char *argv[])
 	/* If we're still here, command was unknown */
 	fprintf(stderr, "Unknown command '%s'\n\n", argv[1]);
 	print_help(argv[0]);
-	rv = -2;
+	exit(1);
 
 out:
 	release_gec_lock();
