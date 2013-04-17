@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAXX//9xQ\u003d",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2013-04-17T22:40:18Z",
+      "side": 1,
+      "message": "you can just run \"pkg-config libftdi1\" and check the exit code (it will be silent)...",
+      "revId": "7c06069001d32cba3ce0f5d041646d468dd69051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
