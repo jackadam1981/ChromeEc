@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAXX//+vI\u003d",
+        "filename": "common/gaia_power.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-04-17T07:27:55Z",
+      "side": 1,
+      "message": "Is it a typo or intended that you use \"pwrok\" here while the GPIO name is PWRON?",
+      "revId": "5f18b03e1b5429600cae87c42b70ec301e41dcd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
