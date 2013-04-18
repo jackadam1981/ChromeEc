@@ -1,0 +1,34 @@
+#!/usr/bin/env python
+
+# Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+import os
+import sys
+import commands
+
+def kb(sz):
+	return sz/1024.0
+
+SECTIONS=["FLASH","IRAM",".text",".data",".rodata",".bss",".google"]
+GREP_SECT=" ".join(['-e "^%s"' % s for s in SECTIONS])
+
+mapfile=os.path.join(os.path.dirname(sys.argv[0]),"../build",sys.argv[1],"ec.RO.map")
+CMDLINE="grep %s %s | sed 's/ \+/ /g' | cut -d' '  -f 1,3" % (GREP_SECT,mapfile)
+sizes=commands.getoutput(CMDLINE)
+
+section={}
+for l in sizes.split("\n"):
+	print l
+	try:
+		name, size = l.strip().split()
+		section[name]=int(size, 16)
+	except:
+		print "SKIP",l
+		pass
+
+flash_size = kb(section[".text"]+section[".rodata"]+section[".data"])
+ram_size = kb(section[".data"]+section[".bss"])
+print "FLASH %4.1fk / %4.1fk  [ text %4.1fk rodat %4.1fk data %4.1fk ]" % (flash_size, kb(section["FLASH"]), kb(section[".text"]), kb(section[".rodata"]), kb(section[".data"]))
+print "RAM   %4.1fk / %4.1fk  [ data %4.1fk bss   %4.1fk ]" % (ram_size, kb(section["IRAM"]), kb(section[".data"]),kb(section[".bss"]))
