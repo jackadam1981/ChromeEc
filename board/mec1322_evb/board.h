@@ -10,7 +10,7 @@
 
 /* Optional features */
 #define CONFIG_SYSTEM_UNLOCKED  /* Allow dangerous commands */
-#define CONFIG_WATCHDOG_HELP
+#define CONFIG_WATCHDOG_TRACE
 #define CONFIG_FANS 1
 #define CONFIG_ADC
 #define CONFIG_WAKE_PIN GPIO_S1

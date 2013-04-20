@@ -127,6 +127,7 @@
 #define CONFIG_PECI
 #define CONFIG_SWITCH
 #define CONFIG_MPU
+#define CONFIG_WATCHDOG_TRACE
 
 /* Compile for running from RAM instead of flash */
 /* #define COMPILE_FOR_RAM */

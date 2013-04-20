@@ -117,6 +117,13 @@ void panic(const char *msg);
 void panic_reboot(void);
 
 /**
+ * Display exception information stored at pdata
+ *
+ * @param pdata	Panic data
+ */
+void report_exception(struct panic_data *pdata);
+
+/**
  * Enable/disable bus fault handler
  *
  * @param ignored	Non-zero if ignoring bus fault

@@ -799,11 +799,14 @@
 #define CONFIG_WATCHDOG
 
 /*
- * Try to detect a watchdog that is about to fire, and print a trace.  This is
- * required on chips such as STM32 where the watchdog timer simply reboots the
+ * Try to detect a watchdog that is about to fire, and print a trace.
+ *
+ * Some chips such as LM4 fires an exception when WDT expires, thus, gives a
+ * chance to fix the issue and to dump a trace. For other chips such as STM32,
+ * we use TIM to emulate such behavior because the WDT simply reboots the
  * system without any early warning.
  */
-#undef CONFIG_WATCHDOG_HELP
+#undef CONFIG_WATCHDOG_TRACE
 
 /*****************************************************************************/
 

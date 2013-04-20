@@ -36,7 +36,7 @@ void watchdog_reload(void)
 	/* Reload the watchdog */
 	STM32_IWDG_KR = STM32_IWDG_KR_RELOAD;
 
-#ifdef CONFIG_WATCHDOG_HELP
+#ifdef CONFIG_WATCHDOG_TRACE
 	hwtimer_reset_watchdog();
 #endif
 }
@@ -57,7 +57,7 @@ int watchdog_init(void)
 	/* Start the watchdog (and re-lock registers) */
 	STM32_IWDG_KR = STM32_IWDG_KR_START;
 
-#ifdef CONFIG_WATCHDOG_HELP
+#ifdef CONFIG_WATCHDOG_TRACE
 	/* Use a harder timer to warn about an impending watchdog reset */
 	hwtimer_setup_watchdog();
 #endif

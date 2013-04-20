@@ -266,6 +266,7 @@ static void panic_show_process_stack(const struct panic_data *pdata)
 	} else {
 		panic_printf("\nBad psp");
 	}
+	panic_printf("\n==============================================\n");
 }
 #endif /* CONFIG_DEBUG_EXCEPTIONS */
 
@@ -302,9 +303,8 @@ void panic_data_print(const struct panic_data *pdata)
 #endif
 }
 
-void report_panic(void)
+void report_exception(struct panic_data *pdata)
 {
-	struct panic_data *pdata = pdata_ptr;
 	uint32_t sp;
 
 	pdata->magic = PANIC_DATA_MAGIC;
@@ -344,6 +344,11 @@ void report_panic(void)
 	 * exception happened in a handler's context.
 	 */
 #endif
+}
+
+void report_panic(void)
+{
+	report_exception(pdata_ptr);
 	panic_reboot();
 }
 

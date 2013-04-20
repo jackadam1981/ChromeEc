@@ -9,7 +9,7 @@
 #define __BOARD_H
 
 /* Optional features */
-#undef  CONFIG_WATCHDOG_HELP
+#undef  CONFIG_WATCHDOG_TRACE
 #undef CONFIG_LID_SWITCH
 
 /*

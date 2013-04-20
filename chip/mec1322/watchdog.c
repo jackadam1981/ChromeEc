@@ -20,7 +20,7 @@ void watchdog_reload(void)
 {
 	MEC1322_WDG_KICK = 1;
 
-#ifdef CONFIG_WATCHDOG_HELP
+#ifdef CONFIG_WATCHDOG_TRACE
 	/* Reload the auxiliary timer */
 	MEC1322_TMR16_CTL(0) &= ~(1 << 5);
 	MEC1322_TMR16_CNT(0) = AUX_TIMER_PERIOD_MS;
@@ -31,7 +31,7 @@ DECLARE_HOOK(HOOK_TICK, watchdog_reload, HOOK_PRIO_DEFAULT);
 
 int watchdog_init(void)
 {
-#ifdef CONFIG_WATCHDOG_HELP
+#ifdef CONFIG_WATCHDOG_TRACE
 	uint32_t val;
 
 	/*
@@ -78,28 +78,21 @@ int watchdog_init(void)
 	return EC_SUCCESS;
 }
 
-#ifdef CONFIG_WATCHDOG_HELP
-void watchdog_check(uint32_t excep_lr, uint32_t excep_sp)
+#ifdef CONFIG_WATCHDOG_TRACE
+void watchdog_check(struct panic_data *pdata)
 {
 	/* Clear status */
 	MEC1322_TMR16_STS(0) |= 1;
 
-	watchdog_trace(excep_lr, excep_sp);
+	watchdog_trace(pdata);
 }
 
 void IRQ_HANDLER(MEC1322_IRQ_TIMER16_0)(void) __attribute__((naked));
 void IRQ_HANDLER(MEC1322_IRQ_TIMER16_0)(void)
 {
-	/* Naked call so we can extract raw LR and SP */
-	asm volatile("mov r0, lr\n"
-		     "mov r1, sp\n"
-		     /* Must push registers in pairs to keep 64-bit aligned
-		      * stack for ARM EABI.  This also conveninently saves
-		      * R0=LR so we can pass it to task_resched_if_needed. */
-		     "push {r0, lr}\n"
-		     "bl watchdog_check\n"
-		     "pop {r0, lr}\n"
-		     "b task_resched_if_needed\n");
+	asm volatile(
+		"b watchdog_exception_handler\n"
+	);
 }
 const struct irq_priority IRQ_PRIORITY(MEC1322_IRQ_TIMER16_0)
 	__attribute__((section(".rodata.irqprio")))

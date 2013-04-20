@@ -53,7 +53,7 @@
  * timer fires.  This is needed on STM32, where the independent watchdog has no
  * early warning feature and the windowed watchdog has a very short period.
  */
-#define CONFIG_WATCHDOG_HELP
+#define CONFIG_WATCHDOG_TRACE
 
 /* Use DMA */
 #define CONFIG_DMA
