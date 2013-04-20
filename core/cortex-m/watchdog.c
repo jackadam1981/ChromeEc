@@ -15,6 +15,9 @@
 
 void watchdog_trace(uint32_t excep_lr, uint32_t excep_sp)
 {
+#ifdef CHIP_lm4
+	report_panic();
+#else
 	uint32_t psp;
 	uint32_t *stack;
 
@@ -33,7 +36,7 @@ void watchdog_trace(uint32_t excep_lr, uint32_t excep_sp)
 		panic_puts("(exc) ###\n");
 	else
 		panic_printf("(task %d) ###\n", task_get_current());
-
+#endif
 	/* If we are blocked in a high priority IT handler, the following debug
 	 * messages might not appear but they are useless in that situation. */
 	timer_print_info();

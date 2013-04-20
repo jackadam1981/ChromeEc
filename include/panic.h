@@ -86,6 +86,24 @@ void panic_assert_fail(const char *msg, const char *func, const char *fname,
 void panic(const char *msg);
 
 /**
+ * Display panic information stored at pdata_ptr
+ */
+void report_panic(void);
+
+/*
+ * Returns non-zero if the exception frame was created on the main stack, or
+ * zero if it's on the process stack.
+ *
+ * See B1.5.8 "Exception return behavior" of ARM DDI 0403D for details.
+ *
+ * @param exc_return	Value of EXC_RETURN
+ */
+int32_t is_frame_in_handler_stack(const uint32_t exc_return);
+
+extern struct panic_data * const pdata_ptr;
+extern const uint32_t pstack_addr;
+
+/**
  * Enable/disable bus fault handler
  *
  * @param ignored	Non-zero if ignoring bus fault
