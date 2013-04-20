@@ -24,12 +24,12 @@ static int bus_fault_ignored;
  * switch away from the panic handler before rebooting, and stacks and data
  * start at the beginning of RAM.
  */
-static struct panic_data * const pdata_ptr =
+struct panic_data * const pdata_ptr =
 	(struct panic_data *)(CONFIG_RAM_BASE + CONFIG_RAM_SIZE
 			     - sizeof(struct panic_data));
 
 /* Preceded by stack, rounded down to nearest 64-bit-aligned boundary */
-static const uint32_t pstack_addr = (CONFIG_RAM_BASE + CONFIG_RAM_SIZE
+const uint32_t pstack_addr = (CONFIG_RAM_BASE + CONFIG_RAM_SIZE
 				     - sizeof(struct panic_data)) & ~7;
 
 /**
@@ -125,7 +125,7 @@ static void print_reg(int regnum, const uint32_t *regs, int index)
  *
  * See B1.5.8 "Exception return behavior" of ARM DDI 0403D for details.
  */
-static int32_t is_frame_in_handler_stack(const uint32_t exc_return)
+int32_t is_frame_in_handler_stack(const uint32_t exc_return)
 {
 	return (exc_return & 0xf) == 1 || (exc_return & 0xf) == 9;
 }
@@ -327,7 +327,7 @@ static void panic_show_process_stack(const struct panic_data *pdata)
 /**
  * Display a message and reboot
  */
-static void panic_reboot(void)
+void panic_reboot(void)
 {
 	panic_puts("\n\nRebooting...\n");
 	system_reset(0);
@@ -405,7 +405,7 @@ void report_panic(void)
 	/* TODO: Dump main stack contents as well if the exception happened
 	 * in a handler's context. */
 #endif
-	panic_reboot();
+	//panic_reboot();
 }
 
 /* Default exception handler, which reports a panic.
@@ -421,7 +421,8 @@ void exception_panic(void)
 		"mov r3, sp\n"
 		"stmia r0, {r1-r11, lr}\n"
 		"mov sp, %[pstack]\n"
-		"b report_panic\n" : :
+		"bl report_panic\n"
+		"b panic_reboot\n" : :
 			[pregs] "r" (pdata_ptr->regs),
 			[pstack] "r" (pstack_addr) :
 			/* Constraints protecting these from being clobbered.

@@ -10,6 +10,7 @@
 #include "registers.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "panic.h"
 #include "task.h"
 #include "util.h"
 #include "watchdog.h"
@@ -27,26 +28,31 @@ static uint32_t watchdog_period;     /* Watchdog counter initial value */
 void IRQ_HANDLER(LM4_IRQ_WATCHDOG)(void) __attribute__((naked));
 void IRQ_HANDLER(LM4_IRQ_WATCHDOG)(void)
 {
-	/* Naked call so we can extract raw LR and SP */
-	asm volatile("mov r0, lr\n"
-		     "mov r1, sp\n"
-		     /* Must push registers in pairs to keep 64-bit aligned
-		      * stack for ARM EABI.  This also conveninently saves
-		      * R0=LR so we can pass it to task_resched_if_needed. */
-		     "push {r0, lr}\n"
+	asm volatile("mov r0, %[pregs]\n"
+		     "mrs r1, psp\n"
+		     "mrs r2, ipsr\n"
+		     "mov r3, sp\n"
+		     "stmia r0, {r1-r11, lr}\n"
+		     "mov sp, %[pstack]\n"  /* switch to panic stack */
+		     "mov r0, lr\n"
+		     "push {r0, r3}\n"
 		     "bl watchdog_trace\n"
-		      /* Do NOT reset the watchdog interrupt here; it will
-		       * be done in watchdog_reload(), or reset will be
-		       * triggered if we don't call that by the next watchdog
-		       * period.  Instead, de-activate the interrupt in the
-		       * NVIC, so the watchdog trace will only be printed
-		       * once.
-		       */
 		     "mov r0, %[irq]\n"
 		     "bl task_disable_irq\n"
-		     "pop {r0, lr}\n"
+		     "pop {r0, r3}\n"
+		     "mov lr, r0\n"
+		     "mov sp, r3\n"         /* switch back to exception stack */
 		     "b task_resched_if_needed\n"
-			: : [irq] "i" (LM4_IRQ_WATCHDOG));
+		     : :
+		     [pregs] "r" (pdata_ptr->regs),
+		     [pstack] "r" (pstack_addr),
+		     [irq] "i" (LM4_IRQ_WATCHDOG)
+		     :
+		     /* Constraints protecting these from being clobbered.
+		      * Gcc should be using r0 & r12 for pregs and pstack. */
+		     "r1", "r2", "r3", "r4", "r5", "r6", "r7", "r8", "r9",
+		     "r10", "r11", "cc", "memory"
+	);
 }
 const struct irq_priority IRQ_BUILD_NAME(prio_, LM4_IRQ_WATCHDOG, )
 	__attribute__((section(".rodata.irqprio")))

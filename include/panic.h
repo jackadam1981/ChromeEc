@@ -85,6 +85,11 @@ void panic_assert_fail(const char *msg, const char *func, const char *fname,
  */
 void panic(const char *msg);
 
+void report_panic(void);
+int32_t is_frame_in_handler_stack(const uint32_t exc_return);
+extern struct panic_data * const pdata_ptr;
+extern const uint32_t pstack_addr;
+
 /**
  * Enable/disable bus fault handler
  *
