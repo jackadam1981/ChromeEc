@@ -303,7 +303,7 @@ static void panic_show_extra(const struct panic_data *pdata)
 /*
  * Prints process stack contents stored above the exception frame.
  */
-static void panic_show_process_stack(const struct panic_data *pdata)
+static void panic_print_process_stack(const struct panic_data *pdata)
 {
 	panic_printf("\n=========== Process Stack Contents ===========");
 	if (pdata->flags & PANIC_DATA_FLAG_FRAME_VALID) {
@@ -365,9 +365,8 @@ static void panic_print(const struct panic_data *pdata)
 #endif
 }
 
-void report_panic(void)
+void report_exception(struct panic_data *pdata)
 {
-	struct panic_data *pdata = pdata_ptr;
 	uint32_t sp;
 
 	pdata->magic = PANIC_DATA_MAGIC;
@@ -401,10 +400,15 @@ void report_panic(void)
 
 	panic_print(pdata);
 #ifdef CONFIG_PANIC_HELP
-	panic_show_process_stack(pdata);
+	panic_print_process_stack(pdata);
 	/* TODO: Dump main stack contents as well if the exception happened
 	 * in a handler's context. */
 #endif
+}
+
+void report_panic(void)
+{
+	report_exception(pdata_ptr);
 	panic_reboot();
 }
 

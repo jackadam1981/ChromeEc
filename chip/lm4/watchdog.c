@@ -5,6 +5,7 @@
 
 /* Watchdog driver */
 
+#include <stddef.h>
 #include "clock.h"
 #include "common.h"
 #include "registers.h"
@@ -27,26 +28,27 @@ static uint32_t watchdog_period;     /* Watchdog counter initial value */
 void IRQ_HANDLER(LM4_IRQ_WATCHDOG)(void) __attribute__((naked));
 void IRQ_HANDLER(LM4_IRQ_WATCHDOG)(void)
 {
-	/* Naked call so we can extract raw LR and SP */
-	asm volatile("mov r0, lr\n"
-		     "mov r1, sp\n"
-		     /* Must push registers in pairs to keep 64-bit aligned
-		      * stack for ARM EABI.  This also conveninently saves
-		      * R0=LR so we can pass it to task_resched_if_needed. */
-		     "push {r0, lr}\n"
-		     "bl watchdog_trace\n"
-		      /* Do NOT reset the watchdog interrupt here; it will
-		       * be done in watchdog_reload(), or reset will be
-		       * triggered if we don't call that by the next watchdog
-		       * period.  Instead, de-activate the interrupt in the
-		       * NVIC, so the watchdog trace will only be printed
-		       * once.
-		       */
-		     "mov r0, %[irq]\n"
-		     "bl task_disable_irq\n"
-		     "pop {r0, lr}\n"
-		     "b task_resched_if_needed\n"
-			: : [irq] "i" (LM4_IRQ_WATCHDOG));
+	asm volatile(
+		"mov r3, sp\n"              /* save stack frame */
+		"sub sp, %[pdata_size]\n"   /* allocate panic_data on stack */
+		"mov r0, sp\n"
+		"add r0, %[pregs_offset]\n" /* seek to regs[0] of panic_data */
+		"mrs r1, psp\n"
+		"mrs r2, ipsr\n"
+		"stmia r0, {r1-r11, lr}\n"
+		"mov r0, sp\n"              /* arg0 for watchdog_trace */
+		"push {r3, lr}\n"
+		"bl watchdog_trace\n"
+		"mov r0, %[irq]\n"
+		"bl task_disable_irq\n"
+		"pop {r0, r3}\n"
+		"mov sp, r0\n"              /* restore stack frame */
+		"mov lr, r3\n"              /* restore EXC_RETURN */
+		"b task_resched_if_needed\n" : :
+			[pdata_size] "i" (sizeof(struct panic_data)),
+			[pregs_offset] "i" (offsetof(struct panic_data, regs)),
+			[irq] "i" (LM4_IRQ_WATCHDOG)
+	);
 }
 const struct irq_priority IRQ_BUILD_NAME(prio_, LM4_IRQ_WATCHDOG, )
 	__attribute__((section(".rodata.irqprio")))

@@ -6,13 +6,17 @@
 /* Watchdog common code */
 
 #include "common.h"
-#include "panic.h"
 #include "registers.h"
 #include "task.h"
 #include "timer.h"
 #include "uart.h"
 #include "watchdog.h"
 
+#ifdef CHIP_lm4
+void watchdog_trace(struct panic_data *pdata)
+{
+	report_exception(pdata);
+#else
 void watchdog_trace(uint32_t excep_lr, uint32_t excep_sp)
 {
 	uint32_t psp;
@@ -33,7 +37,7 @@ void watchdog_trace(uint32_t excep_lr, uint32_t excep_sp)
 		panic_puts("(exc) ###\n");
 	else
 		panic_printf("(task %d) ###\n", task_get_current());
-
+#endif
 	/* If we are blocked in a high priority IT handler, the following debug
 	 * messages might not appear but they are useless in that situation. */
 	timer_print_info();
