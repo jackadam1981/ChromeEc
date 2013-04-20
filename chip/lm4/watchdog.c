@@ -24,29 +24,24 @@
 
 static uint32_t watchdog_period;     /* Watchdog counter initial value */
 
+void watchdog_check(struct panic_data *pdata)
+{
+
+	watchdog_trace(pdata);
+	/* We do NOT reset the watchdog interrupt here; it will
+	 * be done in watchdog_reload(), or reset will be
+	 * triggered if we don't call that by the next watchdog
+	 * period.  Instead, de-activate the interrupt in the NVIC,
+	 * so the watchdog trace will only be printed once. */
+	task_disable_irq(LM4_IRQ_WATCHDOG);
+}
+
 void IRQ_HANDLER(LM4_IRQ_WATCHDOG)(void) __attribute__((naked));
 void IRQ_HANDLER(LM4_IRQ_WATCHDOG)(void)
 {
-	/* Naked call so we can extract raw LR and SP */
-	asm volatile("mov r0, lr\n"
-		     "mov r1, sp\n"
-		     /* Must push registers in pairs to keep 64-bit aligned
-		      * stack for ARM EABI.  This also conveninently saves
-		      * R0=LR so we can pass it to task_resched_if_needed. */
-		     "push {r0, lr}\n"
-		     "bl watchdog_trace\n"
-		      /* Do NOT reset the watchdog interrupt here; it will
-		       * be done in watchdog_reload(), or reset will be
-		       * triggered if we don't call that by the next watchdog
-		       * period.  Instead, de-activate the interrupt in the
-		       * NVIC, so the watchdog trace will only be printed
-		       * once.
-		       */
-		     "mov r0, %[irq]\n"
-		     "bl task_disable_irq\n"
-		     "pop {r0, lr}\n"
-		     "b task_resched_if_needed\n"
-			: : [irq] "i" (LM4_IRQ_WATCHDOG));
+	asm volatile(
+		"b watchdog_exception_handler\n"
+	);
 }
 const struct irq_priority IRQ_BUILD_NAME(prio_, LM4_IRQ_WATCHDOG, )
 	__attribute__((section(".rodata.irqprio")))

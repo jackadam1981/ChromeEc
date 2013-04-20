@@ -86,6 +86,13 @@ void panic_assert_fail(const char *msg, const char *func, const char *fname,
 void panic(const char *msg);
 
 /**
+ * Display exception information stored at pdata
+ *
+ * @param pdata	Panic data
+ */
+void report_exception(struct panic_data *pdata);
+
+/**
  * Enable/disable bus fault handler
  *
  * @param ignored	Non-zero if ignoring bus fault

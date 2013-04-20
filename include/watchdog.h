@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_WATCHDOG_H
 #define __CROS_EC_WATCHDOG_H
 
+#include "panic.h"
+
 /* Watchdog period in ms; must be at least twice HOOK_TICK_INTERVAL */
 #define WATCHDOG_PERIOD_MS 1100
 
@@ -29,9 +31,12 @@ int watchdog_init(void);
  * @param excep_lr	Value of lr to indicate caller return
  * @param excep_sp	Value of sp to indicate caller task id
  */
-void watchdog_trace(uint32_t excep_lr, uint32_t excep_sp);
+void watchdog_trace(struct panic_data *pdata);
 
 /* Reload the watchdog counter */
 void watchdog_reload(void);
+
+/* Common watchdog exception handling code */
+void watchdog_exception_handler(void);
 
 #endif /* __CROS_EC_WATCHDOG_H */
