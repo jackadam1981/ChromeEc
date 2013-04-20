@@ -189,15 +189,15 @@ void timer_print_info(void)
 		__hw_clock_event_get();
 	int tskid;
 
-	ccprintf("Time:     0x%016lx us\n"
-		 "Deadline: 0x%016lx -> %11.6ld s from now\n"
-		 "Active timers:\n",
+	ccprintf("\nTime:     0x%016lx us"
+		 "\nDeadline: 0x%016lx -> %11.6ld s from now"
+		 "\nActive timers:",
 		 t, deadline, deadline - t);
 	cflush();
 
 	for (tskid = 0; tskid < TASK_ID_COUNT; tskid++) {
 		if (timer_running & (1<<tskid)) {
-			ccprintf("  Tsk %2d  0x%016lx -> %11.6ld\n", tskid,
+			ccprintf("\n  Tsk %2d  0x%016lx -> %11.6ld", tskid,
 				 timer_deadline[tskid].val,
 				 timer_deadline[tskid].val - t);
 			cflush();
