@@ -191,29 +191,38 @@ int __hw_clock_source_init(uint32_t start_t)
  */
 #ifndef CHIP_VARIANT_stm32l15x
 
-void watchdog_check(uint32_t excep_lr, uint32_t excep_sp)
+void watchdog_check(struct panic_data *pdata)
 {
 	struct timer_ctlr *timer = (struct timer_ctlr *)TIM_WD_BASE;
 
 	/* clear status */
 	timer->sr = 0;
 
-	watchdog_trace(excep_lr, excep_sp);
+	watchdog_trace(pdata);
 }
 
 void IRQ_HANDLER(TIM_WD_IRQ)(void) __attribute__((naked));
 void IRQ_HANDLER(TIM_WD_IRQ)(void)
 {
 	/* Naked call so we can extract raw LR and SP */
-	asm volatile("mov r0, lr\n"
-		     "mov r1, sp\n"
-		     /* Must push registers in pairs to keep 64-bit aligned
-		      * stack for ARM EABI.  This also conveninently saves
-		      * R0=LR so we can pass it to task_resched_if_needed. */
-		     "push {r0, lr}\n"
-		     "bl watchdog_check\n"
-		     "pop {r0, lr}\n"
-		     "b task_resched_if_needed\n");
+	asm volatile(
+		"mov r3, sp\n"              /* save stack frame */
+		"sub sp, %[pdata_size]\n"   /* allocate panic_data on stack */
+		"mov r0, sp\n"
+		"add r0, %[pregs_offset]\n" /* seek to regs[0] of panic_data */
+		"mrs r1, psp\n"
+		"mrs r2, ipsr\n"
+		"stmia r0, {r1-r11, lr}\n"
+		"mov r0, sp\n"              /* arg0 for watchdog_trace */
+		"push {r3, lr}\n"
+		"bl watchdog_check\n"
+		"pop {r0, lr}\n"            /* restore EXC_RETURN */
+		"mov sp, r0\n"              /* restore stack frame */
+		"b task_resched_if_needed\n" : :
+			[pdata_size] "i" (sizeof(struct panic_data)),
+			[pregs_offset] "i" (__builtin_offsetof(
+						struct panic_data, regs))
+	);
 }
 const struct irq_priority IRQ_BUILD_NAME(prio_, TIM_WD_IRQ, )
 	__attribute__((section(".rodata.irqprio")))
