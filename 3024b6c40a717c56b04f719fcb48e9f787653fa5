@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAXX//4SI\u003d",
+        "filename": "chip/lm4/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-04-23T22:54:18Z",
+      "side": 1,
+      "message": "These are gonna be PG4:5 on Slippy and Bolt.\n\nUART0 is always the same, but maybe board.h needs to #define LART1_GPIO_PORT and UART1_GPIO_MASK?",
+      "revId": "3024b6c40a717c56b04f719fcb48e9f787653fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
