@@ -34,6 +34,24 @@
       "revId": "8be455c8f9fd28c3cdb9167501e3dfe8e1120866",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXX//5Tk\u003d",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-04-23T15:40:26Z",
+      "side": 1,
+      "message": "lid_is_open and CONFIG_LID_SWITCH are only for Link now. We need this for Spring until we unify how we handle lid switch. But since you mentioned is_scanning_enabled(), perhaps I should just move this \u0027if\u0027 there?",
+      "parentUuid": "AAAAXX//5Ts\u003d",
+      "revId": "8be455c8f9fd28c3cdb9167501e3dfe8e1120866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
