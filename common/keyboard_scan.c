@@ -301,6 +301,11 @@ static int check_keys_changed(uint8_t *state)
 	if (has_ghosting(new_state))
 		return any_pressed;
 
+#ifndef BOARD_mccroskey
+	if (gpio_get_level(GPIO_LID_OPEN) == 0)
+		return any_pressed;
+#endif
+
 	/* Check for changes between previous scan and this one */
 	for (c = 0; c < KEYBOARD_COLS; c++) {
 		int diff = new_state[c] ^ prev_state[c];
