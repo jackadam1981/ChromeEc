@@ -171,9 +171,11 @@ const struct temp_sensor_t temp_sensors[TEMP_SENSOR_COUNT] = {
 #endif
 };
 
+#ifdef CONFIG_TMP006
 const struct tmp006_t tmp006_sensors[TMP006_COUNT] = {
 	{"USB C", TEMP_USB_ADDR},
 	{"PCH D", TEMP_PCH_ADDR},
 	{"Hinge C", TEMP_HINGE_ADDR},
 	{"Charger D", TEMP_CHARGER_ADDR},
 };
+#endif
