@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAXX//5Uc\u003d",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-04-23T15:30:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAXX//5U4\u003d",
+      "revId": "4e68cc7d6ae342e99fb0c2ce9390077d4e816bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAXX//5VA\u003d",
         "filename": "common/uart_buffering.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2013-04-23T15:26:47Z",
       "side": 1,
       "message": "No!  This will hang, because tx_buf_head will never \u003d tx_buf_tail until bytes are transmitted!",
+      "revId": "4e68cc7d6ae342e99fb0c2ce9390077d4e816bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXX//5UU\u003d",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-04-23T15:30:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAXX//5VA\u003d",
       "revId": "4e68cc7d6ae342e99fb0c2ce9390077d4e816bfc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
