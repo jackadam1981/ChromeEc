@@ -16,6 +16,24 @@
       "revId": "8be455c8f9fd28c3cdb9167501e3dfe8e1120866",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXX//5Ts\u003d",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-04-23T15:36:56Z",
+      "side": 1,
+      "message": "Though you should actually never be able to get here; we don\u0027t even scan if the lid is closed.  So I\u0027m not sure we need this change at all.\n\nSee is_scanning_enabled() implementation above.",
+      "parentUuid": "AAAAXX//5T0\u003d",
+      "revId": "8be455c8f9fd28c3cdb9167501e3dfe8e1120866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
