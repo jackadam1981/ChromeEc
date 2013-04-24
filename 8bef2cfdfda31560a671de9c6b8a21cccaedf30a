@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAXX//4Dk\u003d",
+        "filename": "chip/lm4/watchdog.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-04-24T00:21:58Z",
+      "side": 1,
+      "message": "as mentioned on IM, the panic stack is NOT allocated in free RAM but over potentially used area (global variables)\nOn some platforms, the system will not recover properly when exiting this handler. That\u0027s acceptable for panic code (which will reboot) but not here.",
+      "revId": "8bef2cfdfda31560a671de9c6b8a21cccaedf30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXX//4DM\u003d",
+        "filename": "core/cortex-m/watchdog.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-04-24T00:21:58Z",
+      "side": 1,
+      "message": "what is the point of that #ifdef ?",
+      "revId": "8bef2cfdfda31560a671de9c6b8a21cccaedf30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
