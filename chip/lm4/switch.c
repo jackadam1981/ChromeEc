@@ -153,8 +153,10 @@ static void update_backlight(void)
 	else
 		gpio_set_level(GPIO_ENABLE_BACKLIGHT, 0);
 
+#ifdef CONFIG_PWM_KBLIGHT
 	/* Same with keyboard backlight */
 	pwm_enable_keyboard_backlight(lid_is_open());
+#endif
 }
 
 /**
@@ -548,12 +550,14 @@ DECLARE_HOST_COMMAND(EC_CMD_SWITCH_ENABLE_BKLIGHT,
 
 static int switch_command_enable_wireless(struct host_cmd_handler_args *args)
 {
+#ifdef BOARD_link				/* HEY: Slippy? */
 	const struct ec_params_switch_enable_wireless *p = args->params;
 
 	gpio_set_level(GPIO_RADIO_ENABLE_WLAN,
 		       p->enabled & EC_WIRELESS_SWITCH_WLAN);
 	gpio_set_level(GPIO_RADIO_ENABLE_BT,
 		       p->enabled & EC_WIRELESS_SWITCH_BLUETOOTH);
+#endif
 
 	return EC_RES_SUCCESS;
 }
