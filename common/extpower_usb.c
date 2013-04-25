@@ -531,7 +531,7 @@ void extpower_charge_update(int force_update)
 {
 	int int_val = 0;
 
-	if (pending_tsu6721_reset) {
+	if (pending_tsu6721_reset || (int_val & TSU6721_INT_DETACH)) {
 		current_watchdog = ADC_WATCH_NONE;
 		adc_disable_watchdog();
 		tsu6721_reset();
