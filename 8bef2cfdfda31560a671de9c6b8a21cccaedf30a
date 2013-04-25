@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAXX//2wM\u003d",
+        "filename": "chip/lm4/watchdog.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1001306
+      },
+      "writtenOn": "2013-04-25T01:31:37Z",
+      "side": 1,
+      "message": "Done. Switched to the main stack.",
+      "parentUuid": "AAAAXX//4Dk\u003d",
+      "revId": "8bef2cfdfda31560a671de9c6b8a21cccaedf30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAXX//4DM\u003d",
         "filename": "core/cortex-m/watchdog.c",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2013-04-24T00:21:58Z",
       "side": 1,
       "message": "what is the point of that #ifdef ?",
+      "revId": "8bef2cfdfda31560a671de9c6b8a21cccaedf30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXX//2wI\u003d",
+        "filename": "core/cortex-m/watchdog.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1001306
+      },
+      "writtenOn": "2013-04-25T01:31:37Z",
+      "side": 1,
+      "message": "stm32 has its own handler for watchdog exception and I didn\u0027t fix it because I don\u0027t have a device with it.",
+      "parentUuid": "AAAAXX//4DM\u003d",
       "revId": "8bef2cfdfda31560a671de9c6b8a21cccaedf30a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
