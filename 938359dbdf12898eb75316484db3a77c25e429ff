@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAXX//2CQ\u003d",
+        "filename": "common/lp5562_battery_led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-04-25T18:59:18Z",
+      "side": 1,
+      "message": "IMO the bug is more or less here, ST_IDLE in the charging state machine means a lot of stuff including : fully charged, waiting to get appropriate charging conditions ...\nOnly fully charged should be green.\nEither we need to add more states to the state machine or to do some complex condition here.",
+      "revId": "938359dbdf12898eb75316484db3a77c25e429ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
