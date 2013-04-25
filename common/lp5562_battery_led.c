@@ -19,6 +19,9 @@
 #define LED_COLOR_YELLOW LP5562_COLOR_BLUE
 #define LED_COLOR_RED    LP5562_COLOR_RED
 
+/* Delay for charge state to stabilize */
+#define CHARGE_STATE_WAIT_TIME 3 /* seconds */
+
 /* LED states */
 enum led_state_t {
 	LED_STATE_SOLID_RED,
@@ -162,6 +165,7 @@ static void battery_led_update(void)
 	int current;
 	int desired_current;
 	enum led_state_t state = LED_STATE_OFF;
+	static int power_on_count;
 
 	/* Current states and next states */
 	static int led_power = -1;
@@ -176,6 +180,7 @@ static void battery_led_update(void)
 			lp5562_engine_load(LP5562_ENG_SEL_1,
 					   breathing_prog,
 					   sizeof(breathing_prog));
+			power_on_count = 0;
 		} else {
 			lp5562_poweroff();
 			stablize_led(LED_STATE_OFF);
@@ -183,6 +188,12 @@ static void battery_led_update(void)
 	}
 	if (!new_led_power)
 		return;
+
+	if (power_on_count < CHARGE_STATE_WAIT_TIME) {
+		stablize_led(LED_STATE_SOLID_YELLOW);
+		++power_on_count;
+		return;
+	}
 
 	/*
 	 * LED power is controlled by accessory detection. We only
