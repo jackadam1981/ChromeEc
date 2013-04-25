@@ -48,6 +48,7 @@ struct pwm_state {
  */
 static void configure_gpios(void)
 {
+	/* HEY: these are for Link only! Need new ones for Slippy! */
 	/* PK6 alternate function 1 = channel 1 PWM */
 	gpio_set_alternate_function(LM4_GPIO_K, 0x40, 1);
 	/* PM6:7 alternate function 1 = channel 0 PWM/tach */

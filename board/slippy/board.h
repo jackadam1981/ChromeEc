@@ -15,35 +15,27 @@
 #define CONFIG_TASK_PROFILING
 
 /* Optional features */
-#define CONFIG_SMART_BATTERY
-#define CONFIG_BATTERY_LINK
-#define CONFIG_CHARGER
-#define CONFIG_CHARGER_BQ24725
-#ifdef HAS_TASK_CHIPSET
+/*HEY #define CONFIG_SMART_BATTERY */
+/*HEY #define CONFIG_BATTERY_LINK */
+/*HEY #define CONFIG_CHARGER_BQ24725 */
 #define CONFIG_CHIPSET_X86
-#endif
 #define CONFIG_CUSTOM_KEYSCAN
 #define CONFIG_EXTPOWER_GPIO
-#ifdef HAS_TASK_KEYPROTO
 #define CONFIG_KEYBOARD_PROTOCOL_8042
-#endif
 #define CONFIG_LID_SWITCH
 #define CONFIG_LPC
-#define CONFIG_ONEWIRE
-#define CONFIG_ONEWIRE_LED
 #define CONFIG_PECI
 #define CONFIG_PWM
 #define CONFIG_TEMP_SENSOR
-#define CONFIG_TMP006
 #define CONFIG_USB_CHARGE
 
 #ifndef __ASSEMBLER__
 
-/* Fan PWM channels */
-#define FAN_CH_CPU       0  /* CPU fan */
-#define FAN_CH_KBLIGHT   1  /* Keyboard backlight */
-#define FAN_CH_POWER_LED 5  /* Power adapter LED */
+/* PWM channels */
+#define FAN_CH_CPU         2  /* CPU fan */
+#define FAN_CH_BL_DISPLAY  4  /* LVDS backlight (from PCH, cleaned by EC) */
 
+/* HEY: Uhh... */
 enum adc_channel {
 	/* EC internal die temperature in degrees K. */
 	ADC_CH_EC_TEMP = 0,
@@ -53,22 +45,8 @@ enum adc_channel {
 	ADC_CH_COUNT
 };
 
-/* Charger module */
-/* Set charger input current limit
- * Note - this value should depend on external power adapter,
- *        designed charging voltage, and the maximum power of
- *        a running system.
- *        Following value 4032 mA is the maximum input limit
- *        on Link's design.
- */
-#define CONFIG_CHARGER_INPUT_CURRENT 4032
-#define CONFIG_BQ24725_R_SNS 10 /* 10 mOhm charge sense resistor */
-#define CONFIG_BQ24725_R_AC  20 /* 20 mOhm input current sense resistor */
+/* HEY: need charger values */
 
-/* Board specific charging current limit
- * The current constrant of all components on the charging path.
- */
-#define CONFIG_CHARGING_CURRENT_LIMIT 3000 /* PL102 inductor 3.0A(3.8A) */
 
 /* I2C ports */
 #define I2C_PORT_BATTERY 0
@@ -87,6 +65,7 @@ enum adc_channel {
 #define HOST_KB_BUS_LPC
 
 /* USB charge port */
+/* HEY: this should be simpler for Slippy - now it's just a switch, no mode */
 #define USB_CHARGE_PORT_COUNT 2
 
 /* GPIOs for second UART port */
@@ -189,7 +168,7 @@ enum temp_sensor_id {
 };
 
 /* The number of TMP006 sensor chips on the board. */
-#define TMP006_COUNT 4
+/* HEY #define TMP006_COUNT 4 */
 
 /* Target value for BOOTCFG. This is set to PE2/USB1_CTL1, which has an external
  * pullup. If this signal is pulled to ground when the EC boots, the EC will get
