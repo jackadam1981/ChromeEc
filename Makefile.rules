@@ -123,6 +123,14 @@ $(out)/util/burn_my_ec: $(out)/$(PROJECT).bin
 clean:
 	-rm -rf $(out)
 
+.PHONY: TAGS tags cscope cscope.files
+TAGS tags cscope cscope.files:
+	-@rm -f TAGS cscope.files cscope.out
+	@find chip/${CHIP} board/${BOARD} common core include -name '*.[chS]' \
+		-not -name '*test*' -not -name '*mock*' -not -name '*~*' \
+		> cscope.files
+	@etags $(shell cat cscope.files)
+
 .SECONDARY:
 
 -include $(deps)
