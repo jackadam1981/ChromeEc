@@ -27,14 +27,19 @@ int extpower_is_present(void)
 	 * to PMU VACG.
 	 */
 
-	int ac_good = 1, battery_good;
+	int ac_good = 1;
+#ifdef CONFIG_PMU
+	int battery_good;
+#endif
 
 	if (gpio_get_level(GPIO_KB_PWR_ON_L))
 		return gpio_get_level(GPIO_AC_PWRBTN_L);
 
+#ifdef CONFIG_PMU
 	/* Check PMU VACG */
 	if (!in_interrupt_context())
 		pmu_get_power_source(&ac_good, &battery_good);
+#endif
 
 	/*
 	 * Charging task only interacts with AP in discharging state. So

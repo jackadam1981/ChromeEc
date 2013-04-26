@@ -93,6 +93,8 @@ enum FASTCHARGE_TIMEOUT {
 /* do not turn off voltage reference */
 #define ADC_FLAG_KEEP_ON	0x1
 
+#ifdef CONFIG_PMU
+
 /**
  * Clear tps65090 IRQ register
  *
@@ -257,6 +259,12 @@ enum charging_state charge_get_state(void);
  * Return non-zero if battery is so low we want to keep AP off.
  */
 int charge_keep_power_off(void);
+
+#else
+static inline void pmu_irq_handler(enum gpio_signal signal)
+{
+}
+#endif
 
 #ifdef CONFIG_PMU_BOARD_INIT
 /**

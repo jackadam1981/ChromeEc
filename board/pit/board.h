@@ -21,7 +21,9 @@
 #undef  CONFIG_TASK_PROFILING
 
 /* Optional features */
+/*
 #define CONFIG_BATTERY_BQ20Z453
+*/
 #define CONFIG_BOARD_POST_GPIO_INIT
 #ifdef HAS_TASK_CHIPSET
 #define CONFIG_CHIPSET_GAIA
@@ -29,14 +31,18 @@
 #define CONFIG_CMD_PMU
 #define CONFIG_EXTPOWER_SNOW
 #define CONFIG_HOST_COMMAND_STATUS
+/*
 #define CONFIG_I2C
+*/
 #define CONFIG_KEYBOARD_PROTOCOL_MKBP
 #define CONFIG_LID_SWITCH
+/*
 #define CONFIG_PMU_BOARD_INIT
 #define CONFIG_PMU_HARD_RESET
+#define CONFIG_PMU
 #define CONFIG_PMU_TPS65090
 #define CONFIG_SMART_BATTERY
-
+*/
 
 #ifdef PORT_TO_PIT
 /* TODO(rspangler): enable these features when they compile */

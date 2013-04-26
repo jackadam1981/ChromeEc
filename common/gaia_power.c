@@ -512,7 +512,9 @@ static void power_off(void)
 	lid_opened = 0;
 	enable_sleep(SLEEP_MASK_AP_RUN);
 	powerled_set_state(POWERLED_STATE_OFF);
+#ifdef CONFIG_PMU
 	pmu_shutdown();
+#endif
 	CPUTS("Shutdown complete.\n");
 }
 
@@ -543,13 +545,14 @@ static int wait_for_power_on(void)
 			task_wait_event(-1);
 			continue;
 		}
-
+#ifdef CONFIG_PMU
 		if (charge_keep_power_off()) {
 			CPRINTF("%T battery low. ignoring power on event.\n");
 			if (value == 1) /* System already on */
 				power_off();
 			continue;
 		}
+#endif
 
 		CPRINTF("%T power on %d\n", value);
 		return value;
