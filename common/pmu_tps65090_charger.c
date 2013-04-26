@@ -45,8 +45,10 @@
 #define BATTERY_AP_OFF_LEVEL 0
 #endif
 
-static const char * const state_list[] = {
+static const char * const state_list[ST_NUM_STATES] = {
 	"idle",
+	"reinit",
+	"bad cond",
 	"pre-charging",
 	"charging",
 	"charging error",

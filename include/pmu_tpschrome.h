@@ -19,6 +19,9 @@ enum charging_state {
 	ST_CHARGING,
 	ST_CHARGING_ERROR,
 	ST_DISCHARGING,
+
+	/* Number of states */
+	ST_NUM_STATES
 };
 
 /* JEITA temperature threshold */
