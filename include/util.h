@@ -11,12 +11,7 @@
 #include "common.h"
 #include "config.h"
 #include "panic.h"
-
-/**
- * Trigger a compilation failure if the condition
- * is not verified at build time.
- */
-#define BUILD_ASSERT(cond) ((void)sizeof(char[1 - 2*!(cond)]))
+#include "tricks.h"
 
 /**
  * Trigger a debug exception if the condition
@@ -41,12 +36,6 @@
 
 
 /* Standard macros / definitions */
-#ifndef ARRAY_SIZE
-#define ARRAY_SIZE(x) (sizeof(x) / sizeof((x)[0]))
-#endif
-#ifndef OFFSET_OF
-#define OFFSET_OF(struc, field) ((uint32_t)&(((const struc * const)0)->field))
-#endif
 #ifndef MAX
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
 #endif
