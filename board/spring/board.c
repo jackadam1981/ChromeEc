@@ -274,6 +274,13 @@ int board_pmu_init(void)
 {
 	int failure = 0;
 
+	/* Tune charging parameters to fix cap ringing on DVT+ hardware */
+	failure |= pmu_set_term_current(RANGE_T01, TERM_I0875);
+	failure |= pmu_set_term_current(RANGE_T12, TERM_I0875);
+	failure |= pmu_set_term_current(RANGE_T23, TERM_I0875);
+	failure |= pmu_set_term_current(RANGE_T34, TERM_I0875);
+	failure |= pmu_set_term_current(RANGE_T40, TERM_I1000);
+
 	/* Set fast charging timeout to 6 hours*/
 	if (!failure)
 		failure = pmu_set_fastcharge(TIMEOUT_6HRS);
@@ -287,25 +294,6 @@ int board_pmu_init(void)
 	/* Set NOITERM bit */
 	if (!failure)
 		failure = pmu_low_current_charging(1);
-
-	/*
-	 * High temperature charging
-	 *   termination voltage: 2.1V
-	 *   termination current: 100%
-	 */
-	if (!failure)
-		failure = pmu_set_term_voltage(RANGE_T34, TERM_V2100);
-	if (!failure)
-		failure = pmu_set_term_current(RANGE_T34, TERM_I1000);
-	/*
-	 * Standard temperature charging
-	 *   termination voltage: 2.1V
-	 *   termination current: 100%
-	 */
-	if (!failure)
-		failure = pmu_set_term_voltage(RANGE_T23, TERM_V2100);
-	if (!failure)
-		failure = pmu_set_term_current(RANGE_T23, TERM_I1000);
 
 	return failure ? EC_ERROR_UNKNOWN : EC_SUCCESS;
 }
