@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAXX//zAE\u003d",
+        "filename": "common/i2c_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-04-29T18:23:53Z",
+      "side": 1,
+      "message": "Seems a bit ugly - perhaps the #ifdef should be in the header?",
+      "revId": "128736cbf0e205c80aabb372e516235230f20e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXX//y/c\u003d",
+        "filename": "common/i2c_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-04-29T18:23:53Z",
+      "side": 1,
+      "message": "I wonder if we should do this in both cases? Is there a problem with writing to address 0?",
+      "revId": "128736cbf0e205c80aabb372e516235230f20e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXX//y/Q\u003d",
+        "filename": "include/i2c.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-04-29T18:23:53Z",
+      "side": 1,
+      "message": "update start/stop params to flags?",
+      "revId": "128736cbf0e205c80aabb372e516235230f20e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
