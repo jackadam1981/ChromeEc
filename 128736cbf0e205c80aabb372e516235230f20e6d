@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAXX//y+s\u003d",
+        "filename": "common/i2c_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-04-29T18:27:55Z",
+      "side": 1,
+      "message": "The whole disable_sleep() / enable_sleep() interface is a bit clunky and should be cleaned up (later).",
+      "parentUuid": "AAAAXX//zAE\u003d",
+      "revId": "128736cbf0e205c80aabb372e516235230f20e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAXX//y/c\u003d",
         "filename": "common/i2c_common.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAXX//y+w\u003d",
+        "filename": "common/i2c_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-04-29T18:27:55Z",
+      "side": 1,
+      "message": "The right thing to do is not to write at all.",
+      "parentUuid": "AAAAXX//y/c\u003d",
+      "revId": "128736cbf0e205c80aabb372e516235230f20e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAXX//y/Q\u003d",
         "filename": "include/i2c.h",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2013-04-29T18:23:53Z",
       "side": 1,
       "message": "update start/stop params to flags?",
+      "revId": "128736cbf0e205c80aabb372e516235230f20e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXX//y+o\u003d",
+        "filename": "include/i2c.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-04-29T18:27:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAXX//y/Q\u003d",
       "revId": "128736cbf0e205c80aabb372e516235230f20e6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
