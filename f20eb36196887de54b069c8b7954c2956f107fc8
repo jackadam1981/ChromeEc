@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAXX//zV8\u003d",
+        "filename": "include/tricks.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-04-29T15:37:51Z",
+      "side": 1,
+      "message": "Maybe rename to compile_time_macros.h or something like that?\n\nOtherwise, I shudder to think what else will be classified as a \"trick\" in the future...",
+      "revId": "f20eb36196887de54b069c8b7954c2956f107fc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXX//zWQ\u003d",
+        "filename": "include/tricks.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-04-29T15:37:51Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we add OFFSET_OF() here too?",
+      "revId": "f20eb36196887de54b069c8b7954c2956f107fc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
