@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAXX//zUc\u003d",
+        "filename": "include/tricks.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-04-29T16:40:52Z",
+      "side": 1,
+      "message": "Hah. Good point.",
+      "parentUuid": "AAAAXX//zV8\u003d",
+      "revId": "f20eb36196887de54b069c8b7954c2956f107fc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAXX//zWQ\u003d",
         "filename": "include/tricks.h",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2013-04-29T15:37:51Z",
       "side": 1,
       "message": "Shouldn\u0027t we add OFFSET_OF() here too?",
+      "revId": "f20eb36196887de54b069c8b7954c2956f107fc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXX//zP0\u003d",
+        "filename": "include/tricks.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-04-29T16:40:52Z",
+      "side": 1,
+      "message": "It\u0027s not actually used anywhere, but okay.",
+      "parentUuid": "AAAAXX//zWQ\u003d",
       "revId": "f20eb36196887de54b069c8b7954c2956f107fc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
