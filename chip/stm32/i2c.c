@@ -730,7 +730,7 @@ cr_cleanup:
 	STM32_I2C_CR1(port) = (1 << 10) | (1 << 0);
 }
 
-static int i2c_master_transmit(int port, int slave_addr, uint8_t *data,
+static int i2c_master_transmit(int port, int slave_addr, const uint8_t *data,
 			       int size, int stop)
 {
 	int rv, rv_start;
@@ -835,7 +835,7 @@ static int i2c_master_receive(int port, int slave_addr, uint8_t *data,
  * @param in_bytes	Number of bytse to receive
  * @return 0 if ok, else ER_ERROR...
  */
-static int i2c_xfer(int port, int slave_addr, uint8_t *out, int out_bytes,
+static int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
 		    uint8_t *in, int in_bytes)
 {
 	int rv;
@@ -1032,4 +1032,166 @@ DECLARE_CONSOLE_COMMAND(i2c, command_i2c,
 			"Read write i2c",
 			NULL);
 
+/* TODO: remove temporary extra debugging for help host-side debugging */
+#ifdef CONFIG_I2C_DEBUG_PASSTHRU
+#define PTHRUPRINTF(format, args...) cprintf(CC_I2C, format, ## args)
+#else
+#define PTHRUPRINTF(format, args...)
+#endif
+
+/**
+ * Perform the voluminous checking required for this message
+ *
+ * @param args  Arguments
+ * @return 0 if OK, EC_RES_INVALID_PARAM on error
+ */
+static int check_i2c_params(const struct host_cmd_handler_args *args)
+{
+	const struct ec_params_i2c_passthru *params = args->params;
+	const struct ec_params_i2c_passthru_msg *msg;
+	int read_len = 0, write_len = 0;
+	unsigned int size;
+	int msgnum;
+
+	if (args->params_size < sizeof(*params)) {
+		PTHRUPRINTF("[%T i2c passthru no params, params_size=%d, need at least %d]\n",
+			args->params_size, sizeof(*params));
+		return EC_RES_INVALID_PARAM;
+	}
+	size = sizeof(*params) + params->num_msgs * sizeof(*msg);
+	if (args->params_size < size) {
+		PTHRUPRINTF("[%T i2c passthru params_size=%d, need at least %d]\n",
+			args->params_size, size);
+		return EC_RES_INVALID_PARAM;
+	}
+
+	if (params->port != I2C_PORT_HOST) {
+		PTHRUPRINTF("[%T i2c passthru invalid port %d]\n",
+			params->port);
+		return EC_RES_INVALID_PARAM;
+	}
+
+	/* Loop and process messages */;
+	for (msgnum = 0, msg = params->msg; msgnum < params->num_msgs;
+	msgnum++, msg++) {
+		unsigned int addr_flags = msg->addr_flags;
+
+		/* Parse slave address if necessary */
+		if (addr_flags & EC_I2C_FLAG_10BIT) {
+			/* 10-bit addressing not supported yet */
+			PTHRUPRINTF("[%T i2c passthru no 10-bit addressing]\n");
+			return EC_RES_INVALID_PARAM;
+		}
+
+		PTHRUPRINTF("[%T i2c passthru port=%d, %s, addr=0x%02x, len=0x%02x]\n",
+			params->port,
+			addr_flags & EC_I2C_FLAG_READ ? "read" : "write",
+			addr_flags & EC_I2C_ADDR_MASK,
+			msg->len);
+
+		if (addr_flags & EC_I2C_FLAG_READ)
+			read_len += msg->len;
+		else
+			write_len += msg->len;
+	}
+
+	/* Check there is room for the data */
+	if (args->response_max <
+			sizeof(struct ec_response_i2c_passthru) + read_len) {
+		PTHRUPRINTF("[%T i2c passthru overflow1]\n");
+		return EC_RES_INVALID_PARAM;
+	}
+
+	/* Must have bytes to write */
+	if (args->params_size < size + write_len) {
+		PTHRUPRINTF("[%T i2c passthru overflow2]\n");
+		return EC_RES_INVALID_PARAM;
+	}
+
+	return EC_RES_SUCCESS;
+}
+
+static int i2c_command_passthru(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_i2c_passthru *params = args->params;
+	const struct ec_params_i2c_passthru_msg *msg;
+	struct ec_response_i2c_passthru *resp = args->response;
+	const uint8_t *out, *xfer_out = NULL;
+	uint8_t *xfer_in = NULL;
+	int in_len, xfer_out_len = 0, xfer_in_len = 0;
+	unsigned int xfer_addr = 0;
+	int ret;
+	int rv;
+
+#ifdef CONFIG_I2C_PASSTHRU_RESTRICTED
+	if (system_is_locked())
+		return EC_RES_ACCESS_DENIED;
+#endif
+
+	ret = check_i2c_params(args);
+	if (ret)
+		return ret;
+
+	/* Loop and process messages */
+	resp->i2c_status = 0;
+	out = args->params + sizeof(*params) + params->num_msgs * sizeof(*msg);
+	in_len = 0;
+
+	for (resp->num_msgs = 0, msg = params->msg;
+	resp->num_msgs < params->num_msgs;
+	resp->num_msgs++, msg++) {
+		/* EC uses 8-bit slave address */
+		unsigned int addr = (msg->addr_flags & EC_I2C_ADDR_MASK) << 1;
+		int read_len = 0, write_len = 0;
+
+		if (msg->addr_flags & EC_I2C_FLAG_READ) {
+			read_len = msg->len;
+			xfer_in = &resp->data[in_len];
+			xfer_in_len = read_len;
+		} else {
+			write_len = msg->len;
+			xfer_out = out;
+			xfer_out_len = write_len;
+		}
+		xfer_addr = addr;
+
+		/* Transfer next message */
+		PTHRUPRINTF("[%T i2c passthru xfer port=%x, addr=%x, out=%p, write_len=%x, data=%p, read_len=%x]\n",
+			params->port, addr, out, write_len,
+			&resp->data[in_len], read_len);
+
+		in_len += read_len;
+		out += write_len;
+	}
+
+	/* Do the xfer as one operation here */
+	if (!xfer_out_len)
+		return EC_RES_INVALID_PARAM;
+
+	/*
+	 * The STM32F can't deal with sending 0 bytes, so we join up
+	 * the transfers into a single one here.
+	 */
+	PTHRUPRINTF("[%T i2c passthru doing port=%x, xfer_addr=%x, xfer_out=%p, xfer_out_len=%x, xfer_in=%p, xfer_in_len=%x]\n",
+		I2C_PORT_HOST, xfer_addr, xfer_out, xfer_out_len,
+		xfer_in, xfer_in_len);
+	rv = i2c_xfer(I2C_PORT_HOST, xfer_addr, xfer_out, xfer_out_len,
+		      xfer_in, xfer_in_len);
+	if (rv) {
+		/* Driver will have sent a stop bit here */
+		if (rv == EC_ERROR_TIMEOUT)
+			resp->i2c_status = EC_I2C_STATUS_TIMEOUT;
+		else
+			resp->i2c_status = EC_I2C_STATUS_NAK;
+	}
+	args->response_size = sizeof(*resp) + xfer_in_len;
+	PTHRUPRINTF("[%T i2c passthru response_size=%x\n", xfer_in_len);
+
+	/*
+	* Return success even if transfer failed so response is sent.  Host
+	* will check message status to determine the transfer result.
+	*/
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_I2C_PASSTHRU, i2c_command_passthru, EC_VER_MASK(0));
 #endif /* I2C_PORT_HOST */
