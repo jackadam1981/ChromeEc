@@ -1140,7 +1140,7 @@ struct ec_response_gpio_get {
 #define EC_CMD_I2C_READ 0x94
 
 struct ec_params_i2c_read {
-	uint16_t addr;
+	uint16_t addr; /* 8-bit address (7-bit shifted << 1) */
 	uint8_t read_size; /* Either 8 or 16. */
 	uint8_t port;
 	uint8_t offset;
@@ -1154,7 +1154,7 @@ struct ec_response_i2c_read {
 
 struct ec_params_i2c_write {
 	uint16_t data;
-	uint16_t addr;
+	uint16_t addr; /* 8-bit address (7-bit shifted << 1) */
 	uint8_t write_size; /* Either 8 or 16. */
 	uint8_t port;
 	uint8_t offset;
@@ -1252,6 +1252,124 @@ struct ec_response_power_info {
 	uint16_t current_system;
 	uint16_t usb_current_limit;
 } __packed;
+
+/*****************************************************************************/
+/* I2C passthru command */
+
+#define EC_CMD_I2C_PASSTHRU 0x9e
+
+/*
+ * Passthru command params are the I2C port number, followed by a byte array
+ * containing one or more messages.  Each message looks like this:
+ *
+ *  - Flags (EC_I2C_FLAG_*)
+ *  - Low 8 bits of slave address (if EC_I2C_FLAG_7BIT or EC_I2C_FLAG_10BIT)
+ *  - Upper 2 bits of slave address (if EC_I2C_FLAG_10BIT)
+ *  - Count of bytes to read (EC_I2C_FLAG_READ) or write
+ *  - Followed by bytes to write, if any
+ *
+ * For example, a command which writes 0x12 to slave address 0x0b on port 5 and
+ * then reads 2 bytes would be:
+ *
+ *  - 0x05			# Port number
+ *  - EC_I2C_FLAG_7BIT		# Flags (start of message 0)
+ *  - 0x0b			# Slave address
+ *  - 0x01			# Count of bytes to write
+ *  - 0x12			# Data to write
+ *  - EC_I2C_FLAG_READ		# Flags (start of message 1)
+ *  - 0x02			# Count of bytes to read
+ */
+
+/*
+ * Passthru command response is a byte array containing a status for each
+ * message of the command, possibly followed by a counted list of bytes
+ * read by the message.
+ *
+ *  - Status (EC_I2C_STATUS_*)
+ *  - Count of bytes actually read, if EC_I2C_STATUS_READ
+ *  - Followed by bytes read, if any
+ *
+ * For example, the response to the command above would be
+ *
+ *  - 0x00			# Message 0 succeeded (message 0 result)
+ *  - EC_I2C_STATUS_READ	# Message 1 succeeded and read data
+ *  - 0x02			# Count of bytes read
+ *  - 0xaa			# First byte read
+ *  - 0xbb			# Second byte read
+ */
+
+/*
+ * Examples of common commands:
+ *
+ * Send 8-bit internal address 0xNN to slave 0xMM on port 0xPP then read 1 byte:
+ *    Command:	{0xPP,
+ * 		 EC_I2C_FLAG_7BIT, 0xMM, 0x01, 0xNN,
+ *		 EC_I2C_FLAG_READ, 0x01}
+ *    Response: {0x00,
+ *		 EC_STATUS_READ, 0x01, 0xYY}
+ *
+ * Send 8-bit internal address 0xNN to slave 0xMM on port 0xPP then write 1
+ * byte 0xYY:
+ *    Command:	{0xPP,
+ *		 EC_I2C_FLAG_7BIT, 0xMM, 0x02, 0xNN, 0xYY}
+ *    Response: {0x00}
+ *
+ * Send 8-bit internal address 0xNN to slave 0xMM then read 2 bytes:
+ *    Command:	{0xPP,
+ *		 EC_I2C_FLAG_7BIT, 0xMM, 0x01, 0xNN,
+ *		 EC_I2C_FLAG_READ, 0x02}
+ *    Response: {0x00,
+ *		 EC_STATUS_READ, 0x02, 0xYY, 0xZZ}
+ *
+ * Send 8-bit internal address 0xNN to slave 0xMM then write 2 bytes 0xYY, 0xZZ:
+ *    Command:	{0xPP,
+ *		 EC_I2C_FLAG_7BIT, 0xMM, 0x02, 0xNN, 0xYY, 0xZZ}
+ *    Response: {0x00}
+ */
+
+/*
+ * Slave address is 10 (not 7) bit.  If this flag is present, the flags byte is
+ * followed by 2 bytes containing the 10-bit address, LSB first.  Otherwise,
+ * the last slave address is used.
+ */
+#define EC_I2C_FLAG_10BIT	(1 << 0)
+
+/*
+ * Send stop bit after this segment.  Note that regardless of this flag, a stop
+ * bit will be sent after the last message.
+ */
+#define EC_I2C_FLAG_STOP	(1 << 1)
+
+/* Read data; if not present, message is a write and data to write follows */
+#define EC_I2C_FLAG_READ	(1 << 2)
+
+#define EC_I2C_STATUS_ERROR	(1 << 0) /* Error (present for all errors) */
+#define EC_I2C_STATUS_TIMEOUT	(1 << 1) /* Timeout during transfer */
+#define EC_I2C_STATUS_NAK_ADDR	(1 << 2) /* Address didn't get ACK'd */
+#define EC_I2C_STATUS_NAK_WRITE	(1 << 3) /* Data write failed */
+#define EC_I2C_STATUS_NAK_READ	(1 << 4) /* Data read failed */
+
+struct ec_params_i2c_passthru_msg {
+	uint16_t addr;
+	uint16_t flags;
+	uint16_t len;
+} __packed;
+
+struct ec_params_i2c_passthru {
+	uint8_t port;		/* I2C port number */
+	uint8_t num_msgs;
+	struct ec_params_i2c_passthru_msg msg[];
+	/* Data follows */
+} __packed;
+
+struct ec_response_i2c_passthru {
+	uint8_t i2c_status;
+	uint8_t num_msgs;
+	uint16_t len;
+	uint8_t data[];		/* Data received for all messages */
+} __packed;
+
+
 
 /*****************************************************************************/
 /* Temporary debug commands. TODO: remove this crosbug.com/p/13849 */
