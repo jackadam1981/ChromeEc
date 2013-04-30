@@ -94,6 +94,8 @@ const char help_str[] =
 	"      Read I2C bus\n"
 	"  i2cwrite\n"
 	"      Write I2C bus\n"
+	"  i2cxfer <port> <slave_addr> <read_count> [write bytes...]\n"
+	"      Perform I2C transfer on EC's I2C bus\n"
 	"  keyscan <beat_us> <filename>\n"
 	"      Test low-level key scanning\n"
 	"  lightbar [CMDS]\n"
@@ -1933,6 +1935,10 @@ int cmd_i2c_read(int argc, char *argv[])
 		return -1;
 	}
 
+	/*
+	 * TODO: use I2C_XFER command if supported, then fall back to I2C_WRITE
+	 */
+
 	rv = ec_command(EC_CMD_I2C_READ, 0, &p, sizeof(p), &r, sizeof(r));
 
 	if (rv < 0)
@@ -1987,6 +1993,10 @@ int cmd_i2c_write(int argc, char *argv[])
 		return -1;
 	}
 
+	/*
+	 * TODO: use I2C_XFER command if supported, then fall back to I2C_WRITE
+	 */
+
 	rv = ec_command(EC_CMD_I2C_WRITE, 0, &p, sizeof(p), NULL, 0);
 
 	if (rv < 0)
@@ -1997,6 +2007,142 @@ int cmd_i2c_write(int argc, char *argv[])
 	return 0;
 }
 
+
+int cmd_i2c_xfer(int argc, char *argv[])
+{
+	uint8_t outbuf[EC_HOST_PARAM_SIZE];
+	uint8_t inbuf[EC_HOST_PARAM_SIZE];
+
+	char *e;
+	int port, addr, read_len, write_len;
+	int osize = 0, isize = 0, inext = 0;
+	int rv, i;
+
+	if (argc < 4) {
+		fprintf(stderr,
+			"Usage: %s <port> <slave_addr> <read_count> "
+			"[write bytes...]\n", argv[0]);
+		return -1;
+	}
+
+	port = strtol(argv[1], &e, 0);
+	if (e && *e) {
+		fprintf(stderr, "Bad port.\n");
+		return -1;
+	}
+	outbuf[osize++] = port;
+
+	addr = strtol(argv[2], &e, 0) & 0x7f;
+	if (e && *e) {
+		fprintf(stderr, "Bad slave address.\n");
+		return -1;
+	}
+
+	read_len = strtol(argv[3], &e, 0);
+	if (e && *e) {
+		fprintf(stderr, "Bad read length.\n");
+		return -1;
+	}
+
+	/* Skip over params to bytes to write */
+	argc -= 4;
+	argv += 4;
+	write_len = argc;
+
+/*
+ * Send 8-bit internal address 0xNN to slave 0xMM then read 2 bytes:
+ *    Command:	{0xPP,
+ *		 EC_I2C_FLAG_7BIT, 0xMM, 0x01, 0xNN,
+ *		 EC_I2C_FLAG_READ, 0x02}
+ *    Response: {0x00,
+ *		 EC_STATUS_READ, 0x02, 0xYY, 0xZZ}
+ *
+ * Send 8-bit internal address 0xNN to slave 0xMM then write 2 bytes 0xYY, 0xZZ:
+ *    Command:	{0xPP,
+ *		 EC_I2C_FLAG_7BIT, 0xMM, 0x02, 0xNN, 0xYY, 0xZZ}
+ *    Response: {0x00}
+ */
+	if (write_len) {
+
+		if (osize + write_len + 2 > sizeof(outbuf)) {
+			fprintf(stderr, "Params too large for buffer\n");
+			return -1;
+		}
+
+		outbuf[osize++] = EC_I2C_FLAG_7BIT;
+		outbuf[osize++] = addr;
+		outbuf[osize++] = write_len;
+		isize++;  /* 1-byte response to write message */
+
+		for (i = 0; i < argc; i++) {
+			outbuf[osize++] = strtol(argv[i], &e, 0);
+			if (e && *e) {
+				fprintf(stderr, "Bad write byte %d\n", i);
+				return -1;
+			}
+		}
+	}
+
+	if (read_len) {
+		if (osize + 3 > sizeof(outbuf)) {
+			fprintf(stderr, "Params too large for buffer\n");
+			return -1;
+		}
+
+		if (write_len) {
+			/* Already sent slave address */
+			outbuf[osize++] = EC_I2C_FLAG_READ;
+		} else {
+			outbuf[osize++] = EC_I2C_FLAG_READ | EC_I2C_FLAG_7BIT;
+			outbuf[osize++] = addr;
+		}
+
+		outbuf[osize++] = read_len;
+		isize += 2 + read_len;  /* Expected read response size */
+
+		if (isize > sizeof(inbuf)) {
+			fprintf(stderr, "Read length too big for buffer\n");
+			return -1;
+		}
+	}
+
+	rv = ec_command(EC_CMD_I2C_PASSTHRU, 0,	outbuf, osize, inbuf, isize);
+	if (rv < 0)
+		return rv;
+
+	/* Parse response */
+	while (inext < rv) {
+		if (inbuf[inext] & EC_I2C_STATUS_ERROR) {
+			fprintf(stderr, "Transfer failed with status=0x%x\n",
+				inbuf[inext]);
+			return -1;
+		}
+
+		if (inbuf[inext++] & EC_I2C_STATUS_READ) {
+			if (inext >= rv) {
+				fprintf(stderr, "Missing read count\n");
+				return -1;
+			}
+
+			read_len = inbuf[inext++];
+
+			if (rv - inext < read_len) {
+				fprintf(stderr, "Truncated read response\n");
+				return -1;
+			}
+
+			printf("Read bytes:");
+			for (i = 0; i < read_len; i++)
+				printf(" 0x%02x", inbuf[inext++]);
+			printf("\n");
+		} else {
+			printf("Write successful.\n");
+			continue;
+		}
+	}
+
+	return 0;
+}
 
 int cmd_lcd_backlight(int argc, char *argv[])
 {
@@ -2787,6 +2933,7 @@ const struct command commands[] = {
 	{"kbpress", cmd_kbpress},
 	{"i2cread", cmd_i2c_read},
 	{"i2cwrite", cmd_i2c_write},
+	{"i2cxfer", cmd_i2c_xfer},
 	{"lightbar", cmd_lightbar},
 	{"keyconfig", cmd_keyconfig},
 	{"keyscan", cmd_keyscan},
