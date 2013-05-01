@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAXX//wE0\u003d",
+        "filename": "common/i2c_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-05-01T17:30:09Z",
+      "side": 1,
+      "message": "When do we want to not restrict I2C host command? Also, you may want to define this for all current boards?",
+      "revId": "42efb1871abe706b0ad3159b3faebcdfb40a5691",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
