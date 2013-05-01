@@ -12,9 +12,6 @@
 #include "system.h"
 #include "task.h"
 #include "util.h"
-#include "watchdog.h"
-
-extern const struct i2c_port_t i2c_ports[I2C_PORTS_USED];
 
 static struct mutex port_mutex[I2C_PORT_COUNT];
 
@@ -159,62 +156,3 @@ static int i2c_command_write(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_I2C_WRITE, i2c_command_write, EC_VER_MASK(0));
-
-/*****************************************************************************/
-/* Console commands */
-
-static void scan_bus(int port, const char *desc)
-{
-	int a;
-	uint8_t tmp;
-
-	ccprintf("Scanning %d %s", port, desc);
-
-	/* Don't scan a busy port, since reads will just fail / time out */
-	a = i2c_get_line_levels(port);
-	if (a != I2C_LINE_IDLE) {
-		ccprintf(": port busy (SDA=%d, SCL=%d)\n",
-			 (a & I2C_LINE_SDA_HIGH) ? 1 : 0,
-			 (a & I2C_LINE_SCL_HIGH) ? 1 : 0);
-		return;
-	}
-
-	i2c_lock(port, 1);
-
-	for (a = 0; a < 0x100; a += 2) {
-		watchdog_reload();  /* Otherwise a full scan trips watchdog */
-		ccputs(".");
-
-#if defined(CHIP_VARIANT_stm32f100) || defined(CHIP_VARIANT_stm32f10x)
-		/*
-		 * Hope that address 0 exists, because the i2c_xfer()
-		 * implementation on STM32 can't read a byte without writing
-		 * one first.
-		 *
-		 * TODO: remove when that limitation is fixed.
-		 */
-		tmp = 0;
-		if (!i2c_xfer(port, a, &tmp, 1, &tmp, 1, I2C_XFER_SINGLE))
-#else
-		/* Do a single read */
-		if (!i2c_xfer(port, a, NULL, 0, &tmp, 1, I2C_XFER_SINGLE))
-#endif
-			ccprintf("\n  0x%02x", a);
-	}
-
-	i2c_lock(port, 0);
-	ccputs("\n");
-}
-
-static int command_scan(int argc, char **argv)
-{
-	int i;
-
-	for (i = 0; i < I2C_PORTS_USED; i++)
-		scan_bus(i2c_ports[i].port, i2c_ports[i].name);
-	return EC_SUCCESS;
-}
-DECLARE_CONSOLE_COMMAND(i2cscan, command_scan,
-			NULL,
-			"Scan I2C ports for devices",
-			NULL);
