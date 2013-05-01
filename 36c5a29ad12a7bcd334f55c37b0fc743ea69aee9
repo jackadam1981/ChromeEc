@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAXX//wmE\u003d",
+        "filename": "chip/lm4/watchdog.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-05-01T00:54:23Z",
+      "side": 1,
+      "message": "instead of including random stuffs,\nI would vote to just use directly\t__builtin_offsetof\n\nactually, our new compile_time_macros.h header defines this properly.",
+      "revId": "36c5a29ad12a7bcd334f55c37b0fc743ea69aee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXX//wn8\u003d",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-05-01T00:54:23Z",
+      "side": 1,
+      "message": "I\u0027m not a huge fan of changing the function names, for the sake of changing it ...",
+      "revId": "36c5a29ad12a7bcd334f55c37b0fc743ea69aee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXX//wno\u003d",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-05-01T00:54:23Z",
+      "side": 1,
+      "message": "now, a line feed seems to be missing when using the taskinfo command.\n\nwhat\u0027s the goal of moving all LF at the beginning of print statements ?",
+      "revId": "36c5a29ad12a7bcd334f55c37b0fc743ea69aee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXX//wnk\u003d",
+        "filename": "core/cortex-m/timer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-05-01T00:54:23Z",
+      "side": 1,
+      "message": "now, a line feed is missing at the end of the timerinfo command.",
+      "revId": "36c5a29ad12a7bcd334f55c37b0fc743ea69aee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXX//wng\u003d",
+        "filename": "core/cortex-m/watchdog.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-05-01T00:54:23Z",
+      "side": 1,
+      "message": "NO, there is no real reason to do 2 different implementations for the 2 platforms.\nChoose either one or the other.",
+      "revId": "36c5a29ad12a7bcd334f55c37b0fc743ea69aee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
