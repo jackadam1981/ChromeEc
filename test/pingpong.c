@@ -58,10 +58,15 @@ int TaskTick(void *data)
 	return EC_SUCCESS;
 }
 
-static int command_run_test(int argc, char **argv)
+void test_runner(void *d)
 {
 	task_wake(TASK_ID_TICK);
 	task_wake(TASK_ID_TESTA);
+}
+
+static int command_run_test(int argc, char **argv)
+{
+	test_runner(NULL);
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(runtest, command_run_test,
