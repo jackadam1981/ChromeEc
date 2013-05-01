@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAXn///9c\u003d",
+        "filename": "common/i2c_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-05-01T19:03:11Z",
+      "side": 1,
+      "message": "Passthru is required on Pit for AP to talk to PMU.",
+      "parentUuid": "AAAAXX//wE0\u003d",
+      "revId": "42efb1871abe706b0ad3159b3faebcdfb40a5691",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAXX//wAM\u003d",
         "filename": "common/i2c_common.c",
         "patchSetId": 3
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAXn///9Y\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1143,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-05-01T19:03:11Z",
+      "side": 1,
+      "message": "Well, it *should* have been that way.  But that horse has left the barn.\n\nThese commands will be going away on new platforms anyway.",
+      "parentUuid": "AAAAXX//v/4\u003d",
+      "revId": "42efb1871abe706b0ad3159b3faebcdfb40a5691",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAXX//v/w\u003d",
         "filename": "util/ectool.c",
         "patchSetId": 3
@@ -81,6 +117,24 @@
       "writtenOn": "2013-05-01T18:02:52Z",
       "side": 1,
       "message": "Can we not run the bytes together like\n\n1fe300\n\n?",
+      "revId": "42efb1871abe706b0ad3159b3faebcdfb40a5691",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn///9Q\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2027,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-05-01T19:03:11Z",
+      "side": 1,
+      "message": "Maybe in a subsequent enhancement",
+      "parentUuid": "AAAAXX//v/o\u003d",
       "revId": "42efb1871abe706b0ad3159b3faebcdfb40a5691",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
