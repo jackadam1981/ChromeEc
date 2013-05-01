@@ -76,7 +76,7 @@ static int test_uint64divmod(void)
 
 	TEST_CHECK(r == 5991285 && n == 156134415ULL);
 }
-
+#ifndef CONFIG_HOST_EMU
 static int test_shared_mem(void)
 {
 	int i, j;
@@ -99,8 +99,9 @@ static int test_shared_mem(void)
 
 	return EC_SUCCESS;
 }
+#endif
 
-static int command_run_test(int argc, char **argv)
+void test_runner(void *d)
 {
 	error_count = 0;
 
@@ -109,15 +110,21 @@ static int command_run_test(int argc, char **argv)
 	RUN_TEST(test_strncasecmp);
 	RUN_TEST(test_atoi);
 	RUN_TEST(test_uint64divmod);
+#ifndef CONFIG_HOST_EMU
 	RUN_TEST(test_shared_mem);
+#endif
 
 	if (error_count) {
 		ccprintf("Failed %d tests!\n", error_count);
-		return EC_ERROR_UNKNOWN;
 	} else {
 		ccprintf("Pass!\n");
-		return EC_SUCCESS;
 	}
+}
+
+static int command_run_test(int argc, char **argv)
+{
+	test_runner(NULL);
+	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(runtest, command_run_test,
 			NULL, NULL, NULL);

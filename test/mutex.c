@@ -30,6 +30,7 @@ int mutex_random_task(void *unused)
 	char letter = 'A'+(TASK_ID_MTX3A - task_get_current());
 	/* wait to be activated */
 
+	ccprintf("Task %c started\n", letter);
 	while (1) {
 		task_wait_event(0);
 		ccprintf("%c+\n", letter);
@@ -114,9 +115,15 @@ int mutex_main_task(void *unused)
 	return EC_SUCCESS;
 }
 
+void test_runner(void *d)
+{
+	ccprintf("Waking\n");
+	task_wake(TASK_ID_MTX1);
+}
+
 static int command_run_test(int argc, char **argv)
 {
-	task_wake(TASK_ID_MTX1);
+	test_runner(NULL);
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(runtest, command_run_test,

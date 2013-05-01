@@ -257,7 +257,7 @@ int lid_test(void)
 }
 #endif
 
-static int command_run_test(int argc, char **argv)
+void test_runner(void *d)
 {
 	error_count = 0;
 	lid_open = 1;
@@ -270,11 +270,15 @@ static int command_run_test(int argc, char **argv)
 
 	if (error_count == 0) {
 		ccprintf("Pass!\n");
-		return EC_SUCCESS;
 	} else {
 		ccprintf("Fail!\n");
-		return EC_ERROR_UNKNOWN;
 	}
+}
+
+static int command_run_test(int argc, char **argv)
+{
+	test_runner(NULL);
+	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(runtest, command_run_test,
 			NULL, NULL, NULL);

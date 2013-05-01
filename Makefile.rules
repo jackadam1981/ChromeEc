@@ -34,6 +34,7 @@ cmd_flat_to_obj = $(CC) -T $(out)/firmware_image.lds -nostdlib $(CPPFLAGS) \
 cmd_elf_to_flat = $(OBJCOPY) -O binary $^ $@
 cmd_elf_to_dis = $(OBJDUMP) -D $< > $@
 cmd_elf = $(LD) $(LDFLAGS) $(objs) -o $@ -T $< -Map $(out)/$*.map
+cmd_exe = $(CC) -T core/emu/emu_exe.lds -m32 $(objs) -o $@ -pthread
 cmd_c_to_o = $(CC) $(CFLAGS) -MMD -MF $@.d -c $< -o $@
 cmd_c_to_build = $(BUILDCC) $(BUILD_CFLAGS) $(BUILD_LDFLAGS) \
 	         -MMD -MF $@.d $< -o $@
@@ -47,8 +48,10 @@ cmd_extractrw-y = cd $(out) && \
 	mv RW_SECTION_A $(PROJECT).RW.bin
 cmd_copyrw-y = cd $(out) && cp $(PROJECT).RW.flat $(PROJECT).RW.bin
 
-.PHONY: all tests utils
+.PHONY: all tests utils emu
 all: $(out)/$(PROJECT).bin utils
+
+emu: $(out)/$(PROJECT).exe
 
 dis-y = $(out)/$(PROJECT).RO.dis $(out)/$(PROJECT).RW.dis
 dis: $(dis-y)
@@ -65,6 +68,13 @@ $(test-targets): test-%:
 	$(MAKE) --no-print-directory BOARD=$(BOARD) PROJECT=$* \
 	        V=$(V) out=$(out)/$* TEST_BUILD=y; \
 	cp $(out)/$*/$*.bin $(out)/test-$*.bin
+
+emu-%:
+	@set -e ; \
+	echo "  BUILD   emu - build/emu/$*" ; \
+	$(MAKE) --no-print-directory BOARD=emu PROJECT=$* \
+	        V=$(V) out=build/emu/$* TEST_BUILD=y EMU_BUILD=y \
+		CROSS_COMPILE= emu
 
 $(qemu-test-targets): qemu-%: test-%
 	$(call quiet,qemu,TEST   )
@@ -97,6 +107,10 @@ $(out)/%.flat: $(out)/%.elf
 
 $(out)/%.elf: $(out)/%.lds $(objs)
 	$(call quiet,elf,LD     )
+
+$(out)/$(PROJECT).exe: $(objs)
+	$(call quiet,exe,EMU    )
+	test/emu_tester.py $(PROJECT)
 
 $(out)/%.o:%.c
 	$(call quiet,c_to_o,CC     )

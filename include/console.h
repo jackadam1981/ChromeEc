@@ -61,6 +61,10 @@ enum console_channel {
 /* Max length of a single line of input */
 #define CONSOLE_INPUT_LINE_SIZE	80
 
+#ifdef EMU_BUILD
+#define cputs(chan, out) ccputs(out)
+#define cprintf(chan, format, args...) ccprintf(format, ## args)
+#else
 /**
  * Put a string to the console channel.
  *
@@ -80,12 +84,19 @@ int cputs(enum console_channel channel, const char *outstr);
  * @return non-zero if output was truncated.
  */
 int cprintf(enum console_channel channel, const char *format, ...);
+#endif
 
 /**
  * Flush the console output for all channels.
  */
 void cflush(void);
 
+#ifdef EMU_BUILD
+int printf(const char *format, ...);
+#define ccprintf printf
+int puts(const char *outstr);
+#define ccputs puts
+#else
 /* Convenience macros for printing to the command channel.
  *
  * Modules may define similar macros in their .c files for their own use; it is
@@ -94,6 +105,7 @@ void cflush(void);
 /* gcc allows variable arg lists in macros; see
  * http://gcc.gnu.org/onlinedocs/gcc/Variadic-Macros.html */
 #define ccprintf(format, args...) cprintf(CC_COMMAND, format, ## args)
+#endif
 
 /**
  * Called by UART when a line of input is pending.
