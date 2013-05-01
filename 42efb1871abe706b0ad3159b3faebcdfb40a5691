@@ -16,6 +16,91 @@
       "revId": "42efb1871abe706b0ad3159b3faebcdfb40a5691",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXX//wAM\u003d",
+        "filename": "common/i2c_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-01T18:02:52Z",
+      "side": 1,
+      "message": "Suggest updating README with documentation on this new option",
+      "revId": "42efb1871abe706b0ad3159b3faebcdfb40a5691",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXX//v/4\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1143,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-01T18:02:52Z",
+      "side": 1,
+      "message": "Why not a 7-bit address?\n\ni.e. why shift by 1?",
+      "revId": "42efb1871abe706b0ad3159b3faebcdfb40a5691",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXX//v/w\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2015,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-01T18:02:52Z",
+      "side": 1,
+      "message": "extra blank line?",
+      "revId": "42efb1871abe706b0ad3159b3faebcdfb40a5691",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXX//v/o\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2027,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-01T18:02:52Z",
+      "side": 1,
+      "message": "Can we not run the bytes together like\n\n1fe300\n\n?",
+      "revId": "42efb1871abe706b0ad3159b3faebcdfb40a5691",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXX//v/g\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2073,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-01T18:02:52Z",
+      "side": 1,
+      "message": "This is a bit vague - maybe add TODO to deal with other errors",
+      "revId": "42efb1871abe706b0ad3159b3faebcdfb40a5691",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
