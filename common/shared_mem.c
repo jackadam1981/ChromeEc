@@ -15,14 +15,23 @@
 static int buf_in_use;
 static int max_used;
 
+#ifdef EMU_BUILD
+#define SHARED_MEM_SIZE 512 /* bytes */
+static char __shared_mem_buf[SHARED_MEM_SIZE];
+#endif
+
 int shared_mem_size(void)
 {
+#ifdef EMU_BUILD
+	return SHARED_MEM_SIZE;
+#else
 	/*
 	 * Use all the RAM we can.  The shared memory buffer is the last thing
 	 * allocated from the start of RAM, so we can use everything up to the
 	 * jump data at the end of RAM.
 	 */
 	return system_usable_ram_end() - (uint32_t)__shared_mem_buf;
+#endif
 }
 
 int shared_mem_acquire(int size, char **dest_ptr)
