@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAXn///74\u003d",
+        "filename": "board/pit/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-05-01T19:09:19Z",
+      "side": 1,
+      "message": "No. If CONFIG_SPI isn\u0027t defined, spi_event will be NULL and interrupts won\u0027t happen.",
+      "parentUuid": "AAAAXX//v/Q\u003d",
+      "revId": "7a35f4c6af4d357ba42192d2e2b4e79be4f59d22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAXX//v/I\u003d",
         "filename": "board/pit/board.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2013-05-01T18:09:53Z",
       "side": 1,
       "message": "For later, I wonder if we can go to 25?",
+      "revId": "7a35f4c6af4d357ba42192d2e2b4e79be4f59d22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn///70\u003d",
+        "filename": "board/pit/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-05-01T19:09:19Z",
+      "side": 1,
+      "message": "Our choices are 10MHz and 40MHz.  But that\u0027s just the pin speed for filtering; the EC itself only runs at 16MHz.",
+      "parentUuid": "AAAAXX//v/I\u003d",
       "revId": "7a35f4c6af4d357ba42192d2e2b4e79be4f59d22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAXn///7o\u003d",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-05-01T19:09:19Z",
+      "side": 1,
+      "message": "This represents a small fraction of the total cycles in the loop; timestamp_expired() and the deadline.val check (which is true only the first time through the loop) are equally large.\n\nBenchmark, THEN optimize.",
+      "parentUuid": "AAAAXX//v+0\u003d",
+      "revId": "7a35f4c6af4d357ba42192d2e2b4e79be4f59d22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAXX//v+U\u003d",
         "filename": "chip/stm32/spi.c",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2013-05-01T18:09:53Z",
       "side": 1,
       "message": "Doing the register lookup each time slowed things down a lot. Can we keep this optimization, or at least benchmark the performance loss?",
+      "revId": "7a35f4c6af4d357ba42192d2e2b4e79be4f59d22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn///7E\u003d",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-05-01T19:09:19Z",
+      "side": 1,
+      "message": "This check is done once per transaction - not once per byte.  I find it hard to believe this causes problems.\n\ngpio_get_level() is pretty simple code - load base, load offset, read register.",
+      "parentUuid": "AAAAXX//v+U\u003d",
       "revId": "7a35f4c6af4d357ba42192d2e2b4e79be4f59d22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
