@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAXn//+n0\u003d",
+        "filename": "board/pit/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-02T12:42:31Z",
+      "side": 1,
+      "message": "OK good that is nicer than having an #ifdef here.",
+      "parentUuid": "AAAAXn///74\u003d",
+      "revId": "7a35f4c6af4d357ba42192d2e2b4e79be4f59d22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAXX//v/I\u003d",
         "filename": "board/pit/board.c",
         "patchSetId": 2
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "Our choices are 10MHz and 40MHz.  But that\u0027s just the pin speed for filtering; the EC itself only runs at 16MHz.",
       "parentUuid": "AAAAXX//v/I\u003d",
+      "revId": "7a35f4c6af4d357ba42192d2e2b4e79be4f59d22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//+nw\u003d",
+        "filename": "board/pit/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-02T12:42:31Z",
+      "side": 1,
+      "message": "Yes, I wonder if the filter will limit the bus speed. Let\u0027s see later.",
+      "parentUuid": "AAAAXn///70\u003d",
       "revId": "7a35f4c6af4d357ba42192d2e2b4e79be4f59d22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -107,6 +143,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAXn//+ns\u003d",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-02T12:42:31Z",
+      "side": 1,
+      "message": "Well this code was the result of benchmarking, and testing on a scope :-) It certainly was profiled pretty carefully. Previously I had the gpio_level_level() call but I found that it introduced a lag of several bytes.",
+      "parentUuid": "AAAAXn///7o\u003d",
+      "revId": "7a35f4c6af4d357ba42192d2e2b4e79be4f59d22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAXX//v+U\u003d",
         "filename": "chip/stm32/spi.c",
         "patchSetId": 2
@@ -136,6 +190,24 @@
       "side": 1,
       "message": "This check is done once per transaction - not once per byte.  I find it hard to believe this causes problems.\n\ngpio_get_level() is pretty simple code - load base, load offset, read register.",
       "parentUuid": "AAAAXX//v+U\u003d",
+      "revId": "7a35f4c6af4d357ba42192d2e2b4e79be4f59d22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//+nU\u003d",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-02T12:42:31Z",
+      "side": 1,
+      "message": "From memory this affected the reaction time between SPI transactions. The way the code was written we need to take an interrupt on noticing the level going high, setup for next transaction, then take an interrupt on noticing the level going low again.\n\nThere is already a delay required between transactions, but we should try to minimize it. When I looked at gpio_get_level() it was doing an array lookup and there was quite a bit of code, and my optimization had quite a large effect.\n\nIf you want to address performance later that\u0027s fine with me too, but I\u0027m nervous about removing code that was previously added to improve performance, in case we don\u0027t get back to it.\n\nI did write a ping test on daisy which measured the EC reaction time.",
+      "parentUuid": "AAAAXn///7E\u003d",
       "revId": "7a35f4c6af4d357ba42192d2e2b4e79be4f59d22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
