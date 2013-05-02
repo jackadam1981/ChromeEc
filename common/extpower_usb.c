@@ -768,11 +768,11 @@ static int command_batdebug(int argc, char **argv)
 	ccprintf("VAC = %d mV\n", pmu_adc_read(ADC_VAC, ADC_FLAG_KEEP_ON)
 				  * 17000 / 1024);
 	ccprintf("IAC = %d mA\n", pmu_adc_read(ADC_IAC, ADC_FLAG_KEEP_ON)
-				  * 20 * 33 / 1024);
+				  * 50 * 33 / 1024);
 	ccprintf("VBAT = %d mV\n", pmu_adc_read(ADC_VBAT, ADC_FLAG_KEEP_ON)
 				  * 17000 / 1024);
 	ccprintf("IBAT = %d mA\n", pmu_adc_read(ADC_IBAT, 0)
-				  * 50 * 40 / 1024);
+				  * 30 * 40 / 1024);
 	ccprintf("PWM = %d%%\n", STM32_TIM_CCR1(3));
 	battery_current(&val);
 	ccprintf("Battery Current = %d mA\n", val);
@@ -833,7 +833,7 @@ static int power_command_info(struct host_cmd_handler_args *args)
 	r->voltage_system = pmu_adc_read(ADC_VAC, ADC_FLAG_KEEP_ON)
 			  * 17000 / 1024;
 	r->current_system = pmu_adc_read(ADC_IAC, 0)
-			  * 20 * 33 / 1024;
+			  * 50 * 33 / 1024;
 	r->usb_dev_type = current_dev_type;
 
 	/* Approximate value by PWM duty cycle */
