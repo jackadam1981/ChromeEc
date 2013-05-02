@@ -161,6 +161,41 @@
     },
     {
       "key": {
+        "uuid": "AAAAXn//+dw\u003d",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-05-02T16:00:23Z",
+      "side": 1,
+      "message": "If we\u0027re that latency-sensitive, we probably should directly own the NSS I/O and interrupt, rather than going through the gpio layer at all.  That\u0027s what I did for one-wire communication on LM4.  \n\nSPI1_NSS is on EXTI4, so we can dedicate the EXTI4 interrupt to the SPI port and chop out another dozen clocks.\n\nHow about I detail all this in a \"profile the SPI interface\" bug and deal with it in a follow-up CL?",
+      "parentUuid": "AAAAXn//+ns\u003d",
+      "revId": "7a35f4c6af4d357ba42192d2e2b4e79be4f59d22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//+do\u003d",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-05-02T16:00:23Z",
+      "side": 1,
+      "message": "You could buy an instruction here by putting this check *inside* if(timestamp_expired()).  That is:\n\nif timestamp expired:\n\n  if no deadline, this is the first time through the loop; set deadline\n\n  else we really have a deadline, and we\u0027ve missed it.\n\nAlso, since the only place we use DMA on STM32L is for SPI, there may be room to optimize that too.",
+      "revId": "7a35f4c6af4d357ba42192d2e2b4e79be4f59d22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAXX//v+U\u003d",
         "filename": "chip/stm32/spi.c",
         "patchSetId": 2
@@ -208,6 +243,41 @@
       "side": 1,
       "message": "From memory this affected the reaction time between SPI transactions. The way the code was written we need to take an interrupt on noticing the level going high, setup for next transaction, then take an interrupt on noticing the level going low again.\n\nThere is already a delay required between transactions, but we should try to minimize it. When I looked at gpio_get_level() it was doing an array lookup and there was quite a bit of code, and my optimization had quite a large effect.\n\nIf you want to address performance later that\u0027s fine with me too, but I\u0027m nervous about removing code that was previously added to improve performance, in case we don\u0027t get back to it.\n\nI did write a ping test on daisy which measured the EC reaction time.",
       "parentUuid": "AAAAXn///7E\u003d",
+      "revId": "7a35f4c6af4d357ba42192d2e2b4e79be4f59d22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//+b0\u003d",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-05-02T16:00:23Z",
+      "side": 1,
+      "message": "That\u0027d be handy code to rejuvenate.  Was it done from u-boot?  I suppose I could get a similar effect simply by using sspi to send a fully-formed \u0027hello\u0027 command.",
+      "parentUuid": "AAAAXn//+nU\u003d",
+      "revId": "7a35f4c6af4d357ba42192d2e2b4e79be4f59d22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//+b8\u003d",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-05-02T16:00:23Z",
+      "side": 1,
+      "message": "TODO: add comment  /* Otherwise, NSS is low and we\u0027re now inside a transaction */",
       "revId": "7a35f4c6af4d357ba42192d2e2b4e79be4f59d22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
