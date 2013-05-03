@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAXn//9bs\u003d",
+        "filename": "common/x86_power_haswell.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-05-03T01:54:21Z",
+      "side": 1,
+      "message": "update_in_signals() is handy for debugging",
+      "revId": "5e82e3405e93c3d0f5ac5401224a84e27ff0f06a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//9bo\u003d",
+        "filename": "common/x86_power_haswell.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-05-03T01:54:21Z",
+      "side": 1,
+      "message": "So is printing the power state.\n\nReading GPIOs should be harmless.",
+      "revId": "5e82e3405e93c3d0f5ac5401224a84e27ff0f06a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
