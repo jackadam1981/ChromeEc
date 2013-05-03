@@ -151,7 +151,8 @@ int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
 	/* Clear start and stop bits */
 	STM32_I2C_CR1(port) &= ~(STM32_I2C_CR1_START | STM32_I2C_CR1_STOP);
 
-	if (out_bytes) {
+	/* No out bytes and no in bytes means just check for active */
+	if (out_bytes || !in_bytes) {
 		if (!started) {
 			rv = send_start(port, slave_addr);
 			if (rv)
