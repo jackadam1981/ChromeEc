@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAXn//7mo\u003d",
+        "filename": "common/i2c_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2013-05-06T17:02:33Z",
+      "side": 1,
+      "message": "It\u0027s not really a fixed size.  One specific case is the 10-bit address where the address field takes up two bytes.",
+      "parentUuid": "AAAAXn//7ws\u003d",
+      "revId": "12290092685a9fa783771a95dadaa944e59d5ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAXn//7wo\u003d",
         "filename": "common/i2c_common.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2013-05-06T12:03:54Z",
       "side": 1,
       "message": "Check failure?",
+      "revId": "12290092685a9fa783771a95dadaa944e59d5ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//7mk\u003d",
+        "filename": "common/i2c_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2013-05-06T17:02:33Z",
+      "side": 1,
+      "message": "...and do what with it?",
+      "parentUuid": "AAAAXn//7wo\u003d",
       "revId": "12290092685a9fa783771a95dadaa944e59d5ae2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAXn//7mY\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1140,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2013-05-06T17:02:33Z",
+      "side": 1,
+      "message": "Are these supported by anything anymore?",
+      "parentUuid": "AAAAXn//7wk\u003d",
+      "revId": "12290092685a9fa783771a95dadaa944e59d5ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAXn//7wg\u003d",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAXn//7mU\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1337,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2013-05-06T17:02:33Z",
+      "side": 1,
+      "message": "According to Randall if you want to change slave addresses mid-transaction you just specify the 7-bit or 10-bit again.  If you don\u0027t then it\u0027s assumed that the next chunk has the same address as the previous.\n\n...this is another instance of trying to be byte efficient.",
+      "parentUuid": "AAAAXn//7wg\u003d",
+      "revId": "12290092685a9fa783771a95dadaa944e59d5ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAXn//7wc\u003d",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -81,6 +153,24 @@
       "writtenOn": "2013-05-06T12:03:54Z",
       "side": 1,
       "message": "s/bit/condition/\n\n(I think?)",
+      "revId": "12290092685a9fa783771a95dadaa944e59d5ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//7mI\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1354,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2013-05-06T17:02:33Z",
+      "side": 1,
+      "message": "I think you\u0027re right.",
+      "parentUuid": "AAAAXn//7wc\u003d",
       "revId": "12290092685a9fa783771a95dadaa944e59d5ae2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
