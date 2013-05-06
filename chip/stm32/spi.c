@@ -289,7 +289,7 @@ void spi_event(enum gpio_signal signal)
 	}
 
 	/* Wait for parameters */
-	if (wait_for_bytes(rxdma, 3 + args.params_size)) {
+	if (wait_for_bytes(rxdma, 4 + args.params_size)) {
 		setup_for_transaction();
 		return;
 	}
