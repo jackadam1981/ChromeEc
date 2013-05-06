@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAXn//7sk\u003d",
+        "filename": "Makefile.rules",
+        "patchSetId": 11
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-05-06T18:14:12Z",
+      "side": 1,
+      "message": "maybe instead of /emu/, we should use /host/ \nmight be less confusing.\n\nYou are forcing 32 bit, because our code is not 64-bit compliant ?\nMaybe worth adding that detail in the commit description and opening a P3 bug about fixing types and other details (to get better type safety for free)",
+      "revId": "8122d263ebacbbab761132eee9a512fc352ef943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//7r8\u003d",
+        "filename": "chip/emu/system.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-05-06T18:14:12Z",
+      "side": 1,
+      "message": "we should probably have a emu specific header for that stuff and somewhat encapsulate it in a human readable function name.",
+      "revId": "8122d263ebacbbab761132eee9a512fc352ef943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//7r0\u003d",
+        "filename": "chip/emu/uart.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-05-06T18:14:12Z",
+      "side": 1,
+      "message": "we are printing both emu specific message and EC console on the same file descriptor.\nMaybe we should moved the emu specific printf to stderr.",
+      "revId": "8122d263ebacbbab761132eee9a512fc352ef943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//7lU\u003d",
+        "filename": "common/shared_mem.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-05-06T18:14:12Z",
+      "side": 1,
+      "message": "maybe we should just add __shared_mem_buf in our specific linker file rather than adding this not so nice special case ?",
+      "revId": "8122d263ebacbbab761132eee9a512fc352ef943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//7gk\u003d",
+        "filename": "core/emu/task.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-05-06T18:14:12Z",
+      "side": 1,
+      "message": "those variables should be static ?",
+      "revId": "8122d263ebacbbab761132eee9a512fc352ef943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//7go\u003d",
+        "filename": "core/emu/task.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-05-06T18:14:12Z",
+      "side": 1,
+      "message": "That\u0027s racy.\nyou probably need to use some pthread synchronization primitive.",
+      "revId": "8122d263ebacbbab761132eee9a512fc352ef943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//7hg\u003d",
+        "filename": "core/emu/task.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-05-06T18:14:12Z",
+      "side": 1,
+      "message": "can we use a pthread Thread Local Storage variable or key to store that id rather than this loop ?",
+      "revId": "8122d263ebacbbab761132eee9a512fc352ef943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//7h0\u003d",
+        "filename": "core/emu/timer.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-05-06T18:14:12Z",
+      "side": 1,
+      "message": "I would rather use clock_gettime(CLOCK_MONOTONIC, for that purpose.",
+      "revId": "8122d263ebacbbab761132eee9a512fc352ef943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//7hU\u003d",
+        "filename": "include/task_id.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-05-06T18:14:12Z",
+      "side": 1,
+      "message": "why do we need that id ?",
+      "revId": "8122d263ebacbbab761132eee9a512fc352ef943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
