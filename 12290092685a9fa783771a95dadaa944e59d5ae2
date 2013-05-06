@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAXn//7ws\u003d",
+        "filename": "common/i2c_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-06T12:03:54Z",
+      "side": 1,
+      "message": "I think it would be better to have a struct for the header instead of all this p[pnext++] stuff. The header seems to be a fixed size.\n\nSuggest also using 16 bits for the slave_addr so that if you support 10 bit addressing later you don\u0027t need to modify the header.\n\nYou can also check right at the top here that you have enough bytes for the whole header, which will reduce the number of checks below.",
+      "revId": "12290092685a9fa783771a95dadaa944e59d5ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//7wo\u003d",
+        "filename": "common/i2c_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-06T12:03:54Z",
+      "side": 1,
+      "message": "Check failure?",
+      "revId": "12290092685a9fa783771a95dadaa944e59d5ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//7wk\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1140,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-06T12:03:54Z",
+      "side": 1,
+      "message": "Should we rename this to I2C_LEGACY_READ or similar?",
+      "revId": "12290092685a9fa783771a95dadaa944e59d5ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//7wg\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1337,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-06T12:03:54Z",
+      "side": 1,
+      "message": "I think you should separate the flags differently.\n\n10BIT should be a flag indicating a 10-bit address\nNEW_SLAVE (or similar) should be a flag indicated that a slave address is provided.\n\nDo we want to support changing slave address mid-transaction? If we do, then perhaps we should require the slave address to be put at the beginning of each segment.",
+      "revId": "12290092685a9fa783771a95dadaa944e59d5ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//7wc\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1354,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-06T12:03:54Z",
+      "side": 1,
+      "message": "s/bit/condition/\n\n(I think?)",
+      "revId": "12290092685a9fa783771a95dadaa944e59d5ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//7wY\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2015,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-06T12:03:54Z",
+      "side": 1,
+      "message": "remove blank line",
+      "revId": "12290092685a9fa783771a95dadaa944e59d5ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//7wQ\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2035,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-06T12:03:54Z",
+      "side": 1,
+      "message": "Can / do we support hex for this? Decimal is a pain.",
+      "revId": "12290092685a9fa783771a95dadaa944e59d5ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//7wM\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2072,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-06T12:03:54Z",
+      "side": 1,
+      "message": "As mentioned earlier, I think a struct here would be nicer",
+      "revId": "12290092685a9fa783771a95dadaa944e59d5ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//7wI\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2078,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-06T12:03:54Z",
+      "side": 1,
+      "message": "Is this hex?",
+      "revId": "12290092685a9fa783771a95dadaa944e59d5ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//7wE\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2109,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-06T12:03:54Z",
+      "side": 1,
+      "message": "odd tab",
+      "revId": "12290092685a9fa783771a95dadaa944e59d5ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//7v8\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2118,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-06T12:03:54Z",
+      "side": 1,
+      "message": "This code stops printing at the first error, but the send/receive code collects multiple errors and returns them.\n\nSo I wonder what purpose there is for a transaction that partially succeeds? I guess it makes some sense to support this in the protocol.\n\nBut do we really want to continue on with later segments when an earlier segment fails?\n\nAnother option is:\n\n1. Stop on first error, don\u0027t try to send more segments\n2. Return error information and the segment number where it occurred\n\nThat way presumably both the pass-through code and this response parsing code become simpler, but there doesn\u0027t seem to be any down side.",
+      "revId": "12290092685a9fa783771a95dadaa944e59d5ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
