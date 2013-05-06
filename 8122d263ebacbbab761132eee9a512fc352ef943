@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAXn//7Sc\u003d",
+        "filename": "Makefile.rules",
+        "patchSetId": 11
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-05-06T20:20:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAXn//7sk\u003d",
+      "revId": "8122d263ebacbbab761132eee9a512fc352ef943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAXn//7r8\u003d",
         "filename": "chip/emu/system.c",
         "patchSetId": 11
@@ -30,6 +48,24 @@
       "writtenOn": "2013-05-06T18:14:12Z",
       "side": 1,
       "message": "we should probably have a emu specific header for that stuff and somewhat encapsulate it in a human readable function name.",
+      "revId": "8122d263ebacbbab761132eee9a512fc352ef943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//7UM\u003d",
+        "filename": "chip/emu/system.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-05-06T20:20:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAXn//7r8\u003d",
       "revId": "8122d263ebacbbab761132eee9a512fc352ef943",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAXn//7dk\u003d",
+        "filename": "chip/emu/uart.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-05-06T20:20:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAXn//7r0\u003d",
+      "revId": "8122d263ebacbbab761132eee9a512fc352ef943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAXn//7lU\u003d",
         "filename": "common/shared_mem.c",
         "patchSetId": 11
@@ -64,6 +118,24 @@
       "writtenOn": "2013-05-06T18:14:12Z",
       "side": 1,
       "message": "maybe we should just add __shared_mem_buf in our specific linker file rather than adding this not so nice special case ?",
+      "revId": "8122d263ebacbbab761132eee9a512fc352ef943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//7b0\u003d",
+        "filename": "common/shared_mem.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-05-06T20:20:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAXn//7lU\u003d",
       "revId": "8122d263ebacbbab761132eee9a512fc352ef943",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAXn//7Sw\u003d",
+        "filename": "core/emu/task.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-05-06T20:20:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAXn//7gk\u003d",
+      "revId": "8122d263ebacbbab761132eee9a512fc352ef943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAXn//7go\u003d",
         "filename": "core/emu/task.c",
         "patchSetId": 11
@@ -98,6 +188,24 @@
       "writtenOn": "2013-05-06T18:14:12Z",
       "side": 1,
       "message": "That\u0027s racy.\nyou probably need to use some pthread synchronization primitive.",
+      "revId": "8122d263ebacbbab761132eee9a512fc352ef943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//7S0\u003d",
+        "filename": "core/emu/task.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-05-06T20:20:39Z",
+      "side": 1,
+      "message": "This is not causing a race condition as run_lock is only held by one thread. In the future if we add interrupt emulation, we will probably make ISR hold the run_lock as well (so as not to run ISR and normal task simultaneously). So this is never going to be interrupted (as opposed to on real EC.)",
+      "parentUuid": "AAAAXn//7go\u003d",
       "revId": "8122d263ebacbbab761132eee9a512fc352ef943",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAXn//7TE\u003d",
+        "filename": "core/emu/task.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-05-06T20:20:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAXn//7hg\u003d",
+      "revId": "8122d263ebacbbab761132eee9a512fc352ef943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAXn//7h0\u003d",
         "filename": "core/emu/timer.c",
         "patchSetId": 11
@@ -138,6 +264,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAXn//7Tw\u003d",
+        "filename": "core/emu/timer.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-05-06T20:20:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAXn//7h0\u003d",
+      "revId": "8122d263ebacbbab761132eee9a512fc352ef943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAXn//7hU\u003d",
         "filename": "include/task_id.h",
         "patchSetId": 11
@@ -149,6 +293,24 @@
       "writtenOn": "2013-05-06T18:14:12Z",
       "side": 1,
       "message": "why do we need that id ?",
+      "revId": "8122d263ebacbbab761132eee9a512fc352ef943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//7Tg\u003d",
+        "filename": "include/task_id.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-05-06T20:20:39Z",
+      "side": 1,
+      "message": "This task serves as the dedicate thread for test routine. We can probably remove this when I get console input working.",
+      "parentUuid": "AAAAXn//7hU\u003d",
       "revId": "8122d263ebacbbab761132eee9a512fc352ef943",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
