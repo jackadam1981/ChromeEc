@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAXn//7Mk\u003d",
+        "filename": "chip/host/uart.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-05-06T21:36:07Z",
+      "side": 1,
+      "message": "maybe my previous remark was unclear but I would have done it the other way round :\nEC input/output on STDIO\nemulator messages on STDERR",
+      "revId": "e79efcb5ab4ae48821f3317674d63cd5633fbb58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//7MY\u003d",
+        "filename": "chip/host/uart.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-05-06T21:36:07Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s anyhow useful to flush stderr",
+      "revId": "e79efcb5ab4ae48821f3317674d63cd5633fbb58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//7Kc\u003d",
+        "filename": "core/host/link_defs.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-05-06T21:36:07Z",
+      "side": 1,
+      "message": "if we now have two similar copy of that file,\nmight be time soon to de-duplicate it",
+      "revId": "e79efcb5ab4ae48821f3317674d63cd5633fbb58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//7KY\u003d",
+        "filename": "core/host/task.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-05-06T21:36:07Z",
+      "side": 1,
+      "message": "isn\u0027t task_id_t a better type here ?",
+      "revId": "e79efcb5ab4ae48821f3317674d63cd5633fbb58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//7KA\u003d",
+        "filename": "core/host/timer.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-05-06T21:36:07Z",
+      "side": 1,
+      "message": "is that true on all platforms ?\nmaybe we need to get clock_getres result and build an assert ?",
+      "revId": "e79efcb5ab4ae48821f3317674d63cd5633fbb58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//7Jc\u003d",
+        "filename": "util/run_host_test",
+        "patchSetId": 12
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-05-06T21:36:07Z",
+      "side": 1,
+      "message": "build/host/ ?",
+      "revId": "e79efcb5ab4ae48821f3317674d63cd5633fbb58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//7Jo\u003d",
+        "filename": "util/run_host_test",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-05-06T21:36:07Z",
+      "side": 1,
+      "message": "I did not even know that syntax.\nI still prefer : sys.stderr.write(\u0027Test %s passed!\\n\u0027 % test_name)\nbut as you want",
+      "revId": "e79efcb5ab4ae48821f3317674d63cd5633fbb58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
