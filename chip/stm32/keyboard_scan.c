@@ -689,6 +689,8 @@ void keyboard_enable_scanning(int enable)
 
 void keyboard_send_battery_key()
 {
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+		return;
 	mutex_lock(&scanning_enabled);
 	debounced_state[BATTERY_KEY_COL] ^= BATTERY_KEY_ROW_MASK;
 	/* Add to FIFO only if AP is on or else it will wake from suspend */
