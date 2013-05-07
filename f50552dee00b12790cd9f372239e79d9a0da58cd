@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAXn//5aM\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-05-07T21:47:21Z",
+      "side": 1,
+      "message": "I think the right type is uintptr_t rather than size_t\n(you can even find very exotic platform/compiler where a pointer doesn\u0027t fit in a size_t variable ...)",
+      "revId": "f50552dee00b12790cd9f372239e79d9a0da58cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//5Zs\u003d",
+        "filename": "common/hooks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-05-07T21:47:21Z",
+      "side": 1,
+      "message": "isn\u0027t that line a complex way of writing :\n  count \u003d end - start ; ?",
+      "revId": "f50552dee00b12790cd9f372239e79d9a0da58cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//5XQ\u003d",
+        "filename": "common/memory_commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-05-07T21:47:21Z",
+      "side": 1,
+      "message": "that\u0027s awful ...\nwhy do you need to force cast from int to size_t ?",
+      "revId": "f50552dee00b12790cd9f372239e79d9a0da58cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//5W8\u003d",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-05-07T21:47:21Z",
+      "side": 1,
+      "message": "I don\u0027t think you want to include this\n(and uintptr_t just needs stdint.h afaik)",
+      "revId": "f50552dee00b12790cd9f372239e79d9a0da58cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//5Ww\u003d",
+        "filename": "include/flash.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-05-07T21:47:21Z",
+      "side": 1,
+      "message": "the actual pointer is not offset but CONFIG_FLASH_BASE,\nso the right syntax would be :\nreturn (char *)CONFIG_FLASH_BASE + offset; ?",
+      "revId": "f50552dee00b12790cd9f372239e79d9a0da58cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
