@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAXn//5N0\u003d",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-05-07T22:23:07Z",
+      "side": 1,
+      "message": "maybe we should refactor that a little bit :\nput \"if (!chipset_in_state(CHIPSET_STATE_ON))\" here\nand remove it from the condition 4 lines below",
+      "revId": "ee8a427855f492f586e7b56a9ed9bd9224670d20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
