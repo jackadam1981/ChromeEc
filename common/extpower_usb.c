@@ -52,6 +52,7 @@ enum ilim_config {
 #define I_LIMIT_500MA   90
 #define I_LIMIT_1000MA  75
 #define I_LIMIT_1500MA  60
+#define I_LIMIT_1800MA  55
 #define I_LIMIT_2000MA  50
 #define I_LIMIT_2400MA  35
 #define I_LIMIT_3000MA  0
@@ -254,6 +255,14 @@ static int apple_charger_current(void)
 		type |= 0x1;
 
 	return apple_charger_type[type];
+}
+
+static int dcp_current_limit(void)
+{
+	if (current_limit_mode == LIMIT_AGGRESSIVE)
+		return I_LIMIT_1800MA - PWM_CTRL_OC_MARGIN;
+	else
+		return I_LIMIT_1800MA;
 }
 
 static int probe_video(int device_type)
@@ -462,11 +471,12 @@ static void usb_update_ilim(int dev_type)
 		int current_limit = I_LIMIT_500MA;
 		if (dev_type & TSU6721_TYPE_CHG12)
 			current_limit = I_LIMIT_3000MA;
-		else if (dev_type & TSU6721_TYPE_APPLE_CHG) {
+		else if (dev_type & TSU6721_TYPE_APPLE_CHG)
 			current_limit = apple_charger_current();
-		} else if ((dev_type & TSU6721_TYPE_CDP) ||
-			   (dev_type & TSU6721_TYPE_DCP))
+		else if (dev_type & TSU6721_TYPE_CDP)
 			current_limit = I_LIMIT_1500MA;
+		else if (dev_type & TSU6721_TYPE_DCP)
+			current_limit = dcp_current_limit();
 
 		pwm_nominal_duty_cycle(current_limit);
 	} else {
