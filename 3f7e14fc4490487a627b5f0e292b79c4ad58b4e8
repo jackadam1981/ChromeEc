@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAXn//5bE\u003d",
+        "filename": "chip/stm32/adc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-05-07T21:26:01Z",
+      "side": 1,
+      "message": "you should use timestamp_expired() here",
+      "revId": "3f7e14fc4490487a627b5f0e292b79c4ad58b4e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//5bA\u003d",
+        "filename": "chip/stm32/adc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-05-07T21:26:01Z",
+      "side": 1,
+      "message": "if value is ADC_READ_ERROR, you end up with some wierd result ?",
+      "revId": "3f7e14fc4490487a627b5f0e292b79c4ad58b4e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
