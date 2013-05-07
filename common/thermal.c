@@ -129,9 +129,13 @@ static void overheated_action(void)
 
 	if (overheated[THRESHOLD_WARNING]) {
 		smi_overheated_warning();
+#if 0  // throttle
 		chipset_throttle_cpu(1);
+#endif
 	} else {
+#if 0  // throttle
 		chipset_throttle_cpu(0);
+#endif
 	}
 
 	if (fan_ctrl_on) {

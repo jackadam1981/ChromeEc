@@ -163,6 +163,8 @@ static int write_buffer(void)
 {
 	int t;
 
+	return EC_ERROR_UNKNOWN;
+
 	if (all_protected)
 		return EC_ERROR_ACCESS_DENIED;
 
@@ -235,6 +237,8 @@ int flash_physical_write(int offset, int size, const char *data)
 
 int flash_physical_erase(int offset, int size)
 {
+	return EC_ERROR_UNKNOWN;
+
 	if (all_protected)
 		return EC_ERROR_ACCESS_DENIED;
 
