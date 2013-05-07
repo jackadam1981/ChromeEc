@@ -14,6 +14,8 @@
 #include "timer.h"
 #include "util.h"
 
+#define ADC_SINGLE_READ_TIMEOUT 3000 /* 3 ms */
+
 struct mutex adc_lock;
 
 static int watchdog_ain_id;
@@ -170,6 +172,7 @@ int adc_read_channel(enum adc_channel ch)
 	const struct adc_t *adc = adc_channels + ch;
 	int value;
 	int restore_watchdog = 0;
+	timestamp_t st;
 
 	if (!adc_powered())
 		return EC_ERROR_UNKNOWN;
@@ -190,9 +193,14 @@ int adc_read_channel(enum adc_channel ch)
 	STM32_ADC_CR2 |= (1 << 0); /* ADON */
 
 	/* Wait for EOC bit set */
-	while (!adc_conversion_ended())
-		;
-	value = STM32_ADC_DR & ADC_READ_MAX;
+	st = get_time();
+	value = ADC_READ_ERROR;
+	do {
+		if (adc_conversion_ended()) {
+			value = STM32_ADC_DR & ADC_READ_MAX;
+			break;
+		}
+	} while (get_time().val - st.val < ADC_SINGLE_READ_TIMEOUT);
 
 	if (restore_watchdog)
 		adc_enable_watchdog_no_lock();
