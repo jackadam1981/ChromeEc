@@ -418,6 +418,7 @@ static int wait_for_power_button_release(unsigned int timeout_us)
 		return -1;
 	}
 	CPUTS("Power button released\n");
+	keyboard_enable_scanning(1);
 	return 0;
 }
 
