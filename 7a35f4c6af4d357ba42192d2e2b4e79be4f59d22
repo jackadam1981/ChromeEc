@@ -213,6 +213,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAXn//5a0\u003d",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-07T21:42:34Z",
+      "side": 1,
+      "message": "Remove",
+      "parentUuid": "AAAAXn//5uo\u003d",
+      "revId": "7a35f4c6af4d357ba42192d2e2b4e79be4f59d22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAXX//v+U\u003d",
         "filename": "chip/stm32/spi.c",
         "patchSetId": 2
