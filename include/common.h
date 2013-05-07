@@ -9,6 +9,7 @@
 #define __CROS_EC_COMMON_H
 
 #include <stdint.h>
+#include <stddef.h>
 
 /* Macros to access registers */
 #define REG32(addr) (*(volatile uint32_t *)(addr))
