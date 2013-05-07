@@ -196,6 +196,23 @@
     },
     {
       "key": {
+        "uuid": "AAAAXn//5uo\u003d",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2013-05-07T19:14:16Z",
+      "side": 1,
+      "message": "This line is a bit bizarre...  I understand the previous line is reading, but why put a constant into an unused local?",
+      "revId": "7a35f4c6af4d357ba42192d2e2b4e79be4f59d22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAXX//v+U\u003d",
         "filename": "chip/stm32/spi.c",
         "patchSetId": 2
