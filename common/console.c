@@ -165,15 +165,6 @@ void console_has_input(void)
 
 void console_task(void)
 {
-#ifdef CONFIG_CONSOLE_RESTRICTED_INPUT
-	/* the console is not available due to security restrictions */
-	if (system_is_locked()) {
-		ccprintf("Console is DISABLED (WP is ON).\n");
-		while (1)
-			task_wait_event(-1);
-	}
-#endif
-
 	console_init();
 
 	while (1) {

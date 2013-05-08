@@ -60,6 +60,7 @@ static int last_rx_was_cr;
 static int tx_snapshot_head;
 static int tx_snapshot_tail;
 static int uart_suspended;
+static int uart_rx_disabled;
 
 static enum {
 	ESC_OUTSIDE,   /* Not in escape code */
@@ -429,6 +430,10 @@ static void handle_esc(int c)
  */
 static void handle_console_char(int c)
 {
+	/* If RX is disabled, just consume the character */
+	if (uart_rx_disabled)
+		return;
+
 	/* Translate CR and CRLF to LF (newline) */
 	if (c == '\r') {
 		last_rx_was_cr = 1;
@@ -497,6 +502,11 @@ static void fill_tx_fifo(void)
 		uart_write_char(tx_buf[tx_buf_tail]);
 		tx_buf_tail = TX_BUF_NEXT(tx_buf_tail);
 	}
+}
+
+void uart_rx_enable(int enabled)
+{
+	uart_rx_disabled = !enabled;
 }
 
 /**

@@ -195,6 +195,11 @@ int uart_tx_stopped(void);
  */
 void uart_process(void);
 
+/**
+ * Enable/disable UART receive function.
+ */
+void uart_rx_enable(int enabled);
+
 /*
  * COMx functions
  */

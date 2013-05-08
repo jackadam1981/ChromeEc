@@ -23,6 +23,7 @@
 #include "task.h"
 #include "timer.h"
 #include "tsu6721.h"
+#include "uart.h"
 #include "util.h"
 
 #define PWM_FREQUENCY 32000 /* Hz */
@@ -43,7 +44,8 @@ enum ilim_config {
 #define POWERED_3300_DEVICE_TYPE (TSU6721_TYPE_JIG_UART_ON)
 
 /* Toad cable */
-#define TOAD_DEVICE_TYPE (TSU6721_TYPE_UART | TSU6721_TYPE_AUDIO3)
+#define TOAD_DEVICE_TYPE (TSU6721_TYPE_UART | TSU6721_TYPE_AUDIO3 | \
+			  TSU6721_TYPE_JIG_UART_OFF)
 
 /* Voltage threshold of D+ for video */
 #define VIDEO_ID_THRESHOLD	1335
@@ -489,6 +491,11 @@ static void usb_device_change(int dev_type)
 {
 	if (current_dev_type == dev_type)
 		return;
+
+#ifdef CONFIG_CONSOLE_RESTRICTED_INPUT
+	/* Disable console input for Toad when system is locked. */
+	uart_rx_enable(!((dev_type & TOAD_DEVICE_TYPE) && system_is_locked()));
+#endif
 
 	over_current_pwm_duty = 0;
 
