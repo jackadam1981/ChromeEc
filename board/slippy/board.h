@@ -64,22 +64,22 @@
 enum gpio_signal {
 	/* Inputs with interrupt handlers are first for efficiency */
 	GPIO_POWER_BUTTON_L = 0,   /* Power button */
-	GPIO_LID_OPEN,             /* Lid switch */
-	GPIO_AC_PRESENT,           /* AC power present */
-	GPIO_PCH_BKLTEN,           /* Backlight enable signal from PCH */
-	GPIO_PCH_SLP_S0_L,         /* SLP_S0# signal from PCH */
-	GPIO_PCH_SLP_S3_L,         /* SLP_S3# signal from PCH */
-	GPIO_PCH_SLP_S5_L,         /* SLP_S5# signal from PCH */
-	GPIO_PCH_SLP_SUS_L,        /* SLP_SUS# signal from PCH */
-	GPIO_PCH_SUSWARN_L,        /* SUSWARN# signal from PCH */
-	GPIO_PP1050_PGOOD,         /* Power good on 1.05V */
-	GPIO_PP1350_PGOOD,         /* Power good on 1.35V (DRAM) */
-	GPIO_PP5000_PGOOD,         /* Power good on 5V */
-	GPIO_VCORE_PGOOD,          /* Power good on core VR */
-	GPIO_CPU_PGOOD,            /* Power good on CPU */
-	GPIO_PCH_EDP_VDD_EN,       /* PCH wants EDP enabled */
-	GPIO_RECOVERY_L,           /* Recovery signal from servo */
-	GPIO_WRITE_PROTECT,        /* Write protect input */
+	GPIO_LID_OPEN       = 1,       /* Lid switch */
+	GPIO_AC_PRESENT     = 2,   /* AC power present */
+	GPIO_PCH_BKLTEN     = 3,   /* Backlight enable signal from PCH */
+	GPIO_PCH_SLP_S0_L   = 4,   /* SLP_S0# signal from PCH */
+	GPIO_PCH_SLP_S3_L   = 5,   /* SLP_S3# signal from PCH */
+	GPIO_PCH_SLP_S5_L   = 6,   /* SLP_S5# signal from PCH */
+	GPIO_PCH_SLP_SUS_L  = 7,   /* SLP_SUS# signal from PCH */
+	GPIO_PCH_SUSWARN_L  = 8,   /* SUSWARN# signal from PCH */
+	GPIO_PP1050_PGOOD   = 9,   /* Power good on 1.05V */
+	GPIO_PP1350_PGOOD  = 10,   /* Power good on 1.35V (DRAM) */
+	GPIO_PP5000_PGOOD  = 11,   /* Power good on 5V */
+	GPIO_VCORE_PGOOD   = 12,   /* Power good on core VR */
+	GPIO_CPU_PGOOD     = 13,   /* Power good on CPU */
+	GPIO_PCH_EDP_VDD_EN= 14,   /* PCH wants EDP enabled */
+	GPIO_RECOVERY_L    = 15,   /* Recovery signal from servo */
+	GPIO_WRITE_PROTECT = 16,   /* Write protect input */
 
 	/* Other inputs */
 	GPIO_FAN_ALERT_L,          /* From thermal sensor */
