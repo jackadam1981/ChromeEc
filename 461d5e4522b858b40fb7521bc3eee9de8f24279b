@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAX3///JU\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-09T19:44:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAX3///5Q\u003d",
+      "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAX3///5M\u003d",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAX3///JY\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-09T19:44:57Z",
+      "side": 1,
+      "message": "Well it should be, but I need to test it.",
+      "parentUuid": "AAAAX3///5M\u003d",
+      "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAX3///5U\u003d",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -47,6 +83,24 @@
       "writtenOn": "2013-05-09T00:16:38Z",
       "side": 1,
       "message": "Please add your SOB and ideally add a note that you rewrote it since it still shows author as Randall.",
+      "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAX3///JQ\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-09T19:44:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAX3///5U\u003d",
       "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -88,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAX3///JM\u003d",
+        "filename": "common/i2c_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-09T19:44:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAX3///k4\u003d",
+      "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAX3///Tg\u003d",
         "filename": "common/i2c_common.c",
         "patchSetId": 4
@@ -99,6 +171,24 @@
       "writtenOn": "2013-05-09T15:43:54Z",
       "side": 1,
       "message": "nitty nit: would slightly prefer -1 on error since errors are usually negative.\n\nEven better would be to return some sort of different errors and at least have _some_ non #ifdef-ed out print indicating the error number (it doesn\u0027t need to be verbose, but nice to see something in the EC log if there\u0027s a problem).",
+      "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAX3///Ig\u003d",
+        "filename": "common/i2c_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-09T19:44:57Z",
+      "side": 1,
+      "message": "EC uses EC_RES_SUCCESS and +ve error numbers!\n\nWeill return EC_RES_ACCESS_DENIED.",
+      "parentUuid": "AAAAX3///Tg\u003d",
       "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -122,6 +212,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAX3///JI\u003d",
+        "filename": "common/i2c_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-09T19:44:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAX3///Tc\u003d",
+      "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAX3///TU\u003d",
         "filename": "common/i2c_common.c",
         "patchSetId": 4
@@ -133,6 +241,24 @@
       "writtenOn": "2013-05-09T15:43:54Z",
       "side": 1,
       "message": "uint16_t just for consistency?\n\n...or at least unsigned int?",
+      "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAX3///Ic\u003d",
+        "filename": "common/i2c_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-09T19:44:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAX3///TU\u003d",
       "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -156,6 +282,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAX3///IM\u003d",
+        "filename": "common/i2c_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-09T19:44:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAX3///TE\u003d",
+      "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAX3///TI\u003d",
         "filename": "common/i2c_common.c",
         "patchSetId": 4
@@ -167,6 +311,24 @@
       "writtenOn": "2013-05-09T15:43:54Z",
       "side": 1,
       "message": "Comment doesn\u0027t seem right...",
+      "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAX3///II\u003d",
+        "filename": "common/i2c_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-09T19:44:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAX3///TI\u003d",
       "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -190,6 +352,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAX3///IE\u003d",
+        "filename": "common/i2c_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-09T19:44:57Z",
+      "side": 1,
+      "message": "Done, I think.",
+      "parentUuid": "AAAAX3///So\u003d",
+      "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAX3///Sc\u003d",
         "filename": "common/i2c_common.c",
         "patchSetId": 4
@@ -201,6 +381,24 @@
       "writtenOn": "2013-05-09T15:43:54Z",
       "side": 1,
       "message": "BUG: Missing brace",
+      "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAX3///H8\u003d",
+        "filename": "common/i2c_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-09T19:44:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAX3///Sc\u003d",
       "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -224,6 +422,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAX3///H4\u003d",
+        "filename": "common/i2c_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-09T19:44:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAX3///SY\u003d",
+      "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAX3///SQ\u003d",
         "filename": "common/i2c_common.c",
         "patchSetId": 4
@@ -241,6 +457,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAX3///Hw\u003d",
+        "filename": "common/i2c_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-09T19:44:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAX3///SQ\u003d",
+      "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAX3///SU\u003d",
         "filename": "common/i2c_common.c",
         "patchSetId": 4
@@ -252,6 +486,24 @@
       "writtenOn": "2013-05-09T15:43:54Z",
       "side": 1,
       "message": "Comment no longer right.",
+      "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAX3///Hs\u003d",
+        "filename": "common/i2c_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-09T19:44:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAX3///SU\u003d",
       "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -286,6 +538,24 @@
       "writtenOn": "2013-05-09T15:43:54Z",
       "side": 1,
       "message": "nit: NULL instead of 0 for out\n\n...but seems strange that this would be the right thing to do.  Shouldn\u0027t the i2c implementation handle this?  It sure seems like xfer_exit in i2c-stm32l15x.c is trying to send a stop in the case of an error, too.  Maybe we ought to remove this and fix drivers to handle better?",
+      "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAX3///Ew\u003d",
+        "filename": "common/i2c_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-09T19:44:57Z",
+      "side": 1,
+      "message": "Yes, let\u0027s require to clean up after itself. I suspect currently it doesn\u0027t but will test, and add a gross hack if required, then leave to Randall.",
+      "parentUuid": "AAAAX3///Rc\u003d",
       "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -345,6 +615,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAX3///Eo\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1268,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-09T19:44:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAX3///R0\u003d",
+      "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAX3///RQ\u003d",
         "filename": "include/ec_commands.h",
         "patchSetId": 4
@@ -356,6 +644,24 @@
       "writtenOn": "2013-05-09T15:43:54Z",
       "side": 1,
       "message": "We never use anything other than timeout.  Do we still want to keep the flags?",
+      "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAX3///Ek\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1275,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-09T19:44:57Z",
+      "side": 1,
+      "message": "Would be nice to remove.",
+      "parentUuid": "AAAAX3///RQ\u003d",
       "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -443,6 +749,24 @@
       "side": 1,
       "message": "Will add",
       "parentUuid": "AAAAX3///2w\u003d",
+      "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAX3///C0\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2095,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-09T19:44:57Z",
+      "side": 1,
+      "message": "Actually there is error printing in ec_command()",
+      "parentUuid": "AAAAX3///ks\u003d",
       "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
