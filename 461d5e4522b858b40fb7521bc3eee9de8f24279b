@@ -53,6 +53,23 @@
     },
     {
       "key": {
+        "uuid": "AAAAX3///k4\u003d",
+        "filename": "common/i2c_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-09T03:19:20Z",
+      "side": 1,
+      "message": "Probably can remove this now",
+      "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAX3///3g\u003d",
         "filename": "include/ec_commands.h",
         "patchSetId": 4
@@ -64,6 +81,24 @@
       "writtenOn": "2013-05-09T00:16:38Z",
       "side": 1,
       "message": "Do we even need this?  Only if I2C_FUNC_PROTOCOL_MANGLING",
+      "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAX3///k0\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1268,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-09T03:19:20Z",
+      "side": 1,
+      "message": "I\u0027ll be very happy to remove it :-)",
+      "parentUuid": "AAAAX3///3g\u003d",
       "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -104,6 +139,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAX3///kw\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2087,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-09T03:19:20Z",
+      "side": 1,
+      "message": "Yes that would be nicer",
+      "parentUuid": "AAAAX3///3I\u003d",
+      "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAX3///2w\u003d",
         "filename": "util/ectool.c",
         "patchSetId": 4
@@ -115,6 +168,24 @@
       "writtenOn": "2013-05-09T00:16:38Z",
       "side": 1,
       "message": "no print in this one error case?",
+      "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAX3///ks\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2095,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-09T03:19:20Z",
+      "side": 1,
+      "message": "Will add",
+      "parentUuid": "AAAAX3///2w\u003d",
       "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
