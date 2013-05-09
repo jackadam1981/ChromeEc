@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAX3//+yo\u003d",
+        "filename": "common/i2c_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2013-05-09T20:59:36Z",
+      "side": 1,
+      "message": "not \"or if requested\"",
+      "revId": "35fe84d7455f40afed458765f8aea1ce9225c341",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAX3//+ys\u003d",
+        "filename": "common/i2c_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2013-05-09T20:59:36Z",
+      "side": 1,
+      "message": "Drive \u003d\u003e Driver",
+      "revId": "35fe84d7455f40afed458765f8aea1ce9225c341",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAX3//+zA\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1939,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2013-05-09T20:59:36Z",
+      "side": 1,
+      "message": "I2C_READ",
+      "revId": "35fe84d7455f40afed458765f8aea1ce9225c341",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
