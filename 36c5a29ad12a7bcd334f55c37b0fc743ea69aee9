@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAXn//7os\u003d",
+        "filename": "chip/lm4/watchdog.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1001306
+      },
+      "writtenOn": "2013-05-09T01:23:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAXX//wmE\u003d",
+      "revId": "36c5a29ad12a7bcd334f55c37b0fc743ea69aee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAXX//wn8\u003d",
         "filename": "core/cortex-m/panic.c",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2013-05-01T00:54:23Z",
       "side": 1,
       "message": "I\u0027m not a huge fan of changing the function names, for the sake of changing it ...",
+      "revId": "36c5a29ad12a7bcd334f55c37b0fc743ea69aee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXn//7ok\u003d",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1001306
+      },
+      "writtenOn": "2013-05-09T01:23:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAXX//wn8\u003d",
       "revId": "36c5a29ad12a7bcd334f55c37b0fc743ea69aee9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAXn//7oI\u003d",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1001306
+      },
+      "writtenOn": "2013-05-09T01:23:21Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "AAAAXX//wno\u003d",
+      "revId": "36c5a29ad12a7bcd334f55c37b0fc743ea69aee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAXX//wnk\u003d",
         "filename": "core/cortex-m/timer.c",
         "patchSetId": 5
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAXn//7oA\u003d",
+        "filename": "core/cortex-m/timer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1001306
+      },
+      "writtenOn": "2013-05-09T01:23:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAXX//wnk\u003d",
+      "revId": "36c5a29ad12a7bcd334f55c37b0fc743ea69aee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAXX//wng\u003d",
         "filename": "core/cortex-m/watchdog.c",
         "patchSetId": 5
@@ -81,6 +153,24 @@
       "writtenOn": "2013-05-01T00:54:23Z",
       "side": 1,
       "message": "NO, there is no real reason to do 2 different implementations for the 2 platforms.\nChoose either one or the other.",
+      "revId": "36c5a29ad12a7bcd334f55c37b0fc743ea69aee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAX3///vs\u003d",
+        "filename": "core/cortex-m/watchdog.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001306
+      },
+      "writtenOn": "2013-05-09T01:23:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAXX//wng\u003d",
       "revId": "36c5a29ad12a7bcd334f55c37b0fc743ea69aee9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
