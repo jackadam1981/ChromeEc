@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAX3///O8\u003d",
+        "filename": "common/extpower_usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-05-09T16:15:19Z",
+      "side": 1,
+      "message": "if the cable is plugged and we reboot the EC, there is a window (100 to 600 ms) where the input is working ?",
+      "revId": "391cc8218d7a50add7bac800ca3f7cef00cc29c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAX3///N4\u003d",
+        "filename": "common/extpower_usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-05-09T16:15:19Z",
+      "side": 1,
+      "message": "what is happening if I detach and re-attach quickly the Toad (maybe by switching vbus on the workstation side) ?\nwe might get both detach and attach interrupts in the status register and let the uart rx on ?",
+      "revId": "391cc8218d7a50add7bac800ca3f7cef00cc29c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAX3///Ps\u003d",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-05-09T16:15:19Z",
+      "side": 1,
+      "message": "we have now an infinite loop here ?\n(when RX is disabled and characters are available)",
+      "revId": "391cc8218d7a50add7bac800ca3f7cef00cc29c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
