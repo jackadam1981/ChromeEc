@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAX3///5Q\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2013-05-09T00:16:38Z",
+      "side": 1,
+      "message": "Remove note?",
+      "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAX3///5M\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2013-05-09T00:16:38Z",
+      "side": 1,
+      "message": "Probably no longer true.",
+      "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAX3///5U\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2013-05-09T00:16:38Z",
+      "side": 1,
+      "message": "Please add your SOB and ideally add a note that you rewrote it since it still shows author as Randall.",
+      "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAX3///3g\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1268,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2013-05-09T00:16:38Z",
+      "side": 1,
+      "message": "Do we even need this?  Only if I2C_FUNC_PROTOCOL_MANGLING",
+      "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAX3///4w\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1939,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2013-05-09T00:16:38Z",
+      "side": 1,
+      "message": "fall back to I2C_READ?",
+      "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAX3///3I\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2087,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2013-05-09T00:16:38Z",
+      "side": 1,
+      "message": "nit: A little ugly / confusing why you don\u0027t need this in write_len.  Maybe just store addr in a temp variable and put it in both \"if\" statements?",
+      "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAX3///2w\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2095,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2013-05-09T00:16:38Z",
+      "side": 1,
+      "message": "no print in this one error case?",
+      "revId": "461d5e4522b858b40fb7521bc3eee9de8f24279b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
