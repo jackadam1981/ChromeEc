@@ -50,7 +50,11 @@ const struct gpio_info gpio_list[GPIO_COUNT] = {
 	{"AC_PWRBTN_L", GPIO_A, (1<<0),  GPIO_INT_BOTH, NULL},
 	{"WP_L",        GPIO_B, (1<<4),  GPIO_INPUT, NULL},
 	/* Outputs */
+#ifdef CONFIG_AC_POWER_STATUS
 	{"AC_STATUS",   GPIO_A, (1<<5),  GPIO_OUT_HIGH, NULL},
+#else
+	{"SPI1_CLK",   GPIO_A, (1<<5),  GPIO_OUT_LOW, NULL},
+#endif
 	{"AP_RESET_L",  GPIO_B, (1<<3),  GPIO_HI_Z, NULL},
 	{"CHARGER_EN",  GPIO_B, (1<<2),  GPIO_OUT_LOW, NULL},
 	{"EC_INT",      GPIO_B, (1<<9),  GPIO_HI_Z, NULL},
@@ -65,9 +69,7 @@ const struct gpio_info gpio_list[GPIO_COUNT] = {
 	{"LED_POWER_L", GPIO_A, (1<<2), GPIO_OUT_HIGH, NULL},
 	{"PMIC_PWRON",  GPIO_A, (1<<12), GPIO_OUT_LOW, NULL},
 	{"PMIC_RESET",  GPIO_A, (1<<15), GPIO_OUT_LOW, NULL},
-#ifndef CONFIG_SPI
-	{"SPI1_MISO",   GPIO_A, (1<<6),  GPIO_OUT_HIGH, NULL},
-#endif
+	{"SPI1_MISO",   GPIO_A, (1<<6),  GPIO_OUT_LOW, NULL},
  	{"KB_OUT00",    GPIO_B, (1<<0),  GPIO_KB_OUTPUT, NULL},
 	{"KB_OUT01",    GPIO_B, (1<<8),  GPIO_KB_OUTPUT, NULL},
 	{"KB_OUT02",    GPIO_B, (1<<12), GPIO_KB_OUTPUT, NULL},
