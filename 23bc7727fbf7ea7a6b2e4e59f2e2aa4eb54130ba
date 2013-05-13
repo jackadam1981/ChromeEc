@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAX3//8N0\u003d",
+        "filename": "chip/lm4/watchdog.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001306
+      },
+      "writtenOn": "2013-05-13T19:59:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAX3//86A\u003d",
+      "revId": "23bc7727fbf7ea7a6b2e4e59f2e2aa4eb54130ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAX3//854\u003d",
         "filename": "chip/lm4/watchdog.c",
         "patchSetId": 7
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAX3//8PA\u003d",
+        "filename": "chip/lm4/watchdog.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1001306
+      },
+      "writtenOn": "2013-05-13T19:59:36Z",
+      "side": 1,
+      "message": "it\u0027s populated in report_exception.",
+      "parentUuid": "AAAAX3//854\u003d",
+      "revId": "23bc7727fbf7ea7a6b2e4e59f2e2aa4eb54130ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAX3//86Y\u003d",
         "filename": "chip/stm32/hwtimer.c",
         "patchSetId": 7
@@ -47,6 +83,24 @@
       "writtenOn": "2013-05-11T00:58:28Z",
       "side": 1,
       "message": "all this assembly is exactly the same as the one in the previous file (excepted the bit to reset the irq)\nI\u0027m convinced we should duplicate all this difficult to maintain code.",
+      "revId": "23bc7727fbf7ea7a6b2e4e59f2e2aa4eb54130ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAX3//8FE\u003d",
+        "filename": "chip/stm32/hwtimer.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1001306
+      },
+      "writtenOn": "2013-05-13T19:59:36Z",
+      "side": 1,
+      "message": "Done. I put both in common watchdog.c.",
+      "parentUuid": "AAAAX3//86Y\u003d",
       "revId": "23bc7727fbf7ea7a6b2e4e59f2e2aa4eb54130ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
