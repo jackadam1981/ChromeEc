@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAX3//7ss\u003d",
+        "filename": "common/gaia_power.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-05-13T20:49:53Z",
+      "side": 1,
+      "message": "Computed values in macros must have () around them to avoid  operator precedence errors in the macro expansion.\n\nSo (2 * MSEC), not 2 * MSEC",
+      "revId": "0b112dc560f088c4a97e9c773f61ed4e068cba0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
