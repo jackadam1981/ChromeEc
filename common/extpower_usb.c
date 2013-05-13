@@ -489,6 +489,8 @@ static void usb_update_ilim(int dev_type)
 			current_limit = I_LIMIT_1500MA;
 		else if (dev_type & TSU6721_TYPE_DCP)
 			current_limit = dcp_current_limit();
+		else if (dev_type & TSU6721_TYPE_JIG_UART_ON)
+			current_limit = I_LIMIT_3000MA;
 
 		pwm_nominal_duty_cycle(current_limit);
 	} else {
@@ -687,10 +689,12 @@ static void power_tweak(void)
 
 	/* Check video power input change */
 	if (current_dev_type & TSU6721_TYPE_JIG_UART_ON) {
-		if (get_video_power() && vbus > 4000)
+		if (get_video_power() && vbus > 4000) {
 			set_video_power(0);
-		else if (!get_video_power() && vbus <= 4000)
+		} else if (!get_video_power() && vbus <= 4000) {
+			set_pwm_duty_cycle(100);
 			set_video_power(1);
+		}
 	}
 
 	if (battery_current(&current))
