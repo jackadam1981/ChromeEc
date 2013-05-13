@@ -162,6 +162,9 @@ void chipset_task(void)
 		gpio_set_level(GPIO_PP5000_EN, 1);
 		usleep(200000);
 
+		gpio_set_level(GPIO_PP3300_DX_EN, 1);
+		usleep(200000);
+
 		gpio_set_level(GPIO_PCH_DPWROK, 1);
 		usleep(200000);
 
@@ -178,6 +181,9 @@ void chipset_task(void)
 		usleep(200000);
 
 		gpio_set_level(GPIO_PP1350_EN, 1);
+		usleep(200000);
+
+		gpio_set_level(GPIO_VCORE_EN, 1);
 		usleep(200000);
 
 		gpio_set_level(GPIO_PCH_PWROK, 1);
