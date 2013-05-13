@@ -186,6 +186,9 @@ void chipset_task(void)
 		gpio_set_level(GPIO_VCORE_EN, 1);
 		usleep(200000);
 
+		gpio_set_level(GPIO_CPU_PGOOD, 1);
+		usleep(200000);
+
 		gpio_set_level(GPIO_PCH_PWROK, 1);
 		usleep(200000);
 

@@ -51,8 +51,6 @@ const struct gpio_info gpio_list[GPIO_COUNT] = {
 	 x86_power_interrupt},
 	{"VCORE_PGOOD",          LM4_GPIO_C, (1<<6), GPIO_INT_BOTH,
 	 x86_power_interrupt},
-	{"CPU_PGOOD",            LM4_GPIO_C, (1<<4), GPIO_INT_BOTH,
-	 x86_power_interrupt},
 	{"PCH_EDP_VDD_EN",       LM4_GPIO_J, (1<<1), GPIO_INT_BOTH,
 	 x86_power_interrupt},
 	{"RECOVERY_L",           LM4_GPIO_A, (1<<5), GPIO_PULL_UP|GPIO_INT_BOTH,
@@ -81,6 +79,7 @@ const struct gpio_info gpio_list[GPIO_COUNT] = {
 	{"SYS_PWROK",            LM4_GPIO_H, (1<<2), GPIO_OUT_LOW, NULL},
 	{"WLAN_OFF_L",           LM4_GPIO_J, (1<<4), GPIO_OUT_LOW, NULL},
 	{"CHARGE_L",             LM4_GPIO_E, (1<<6), GPIO_OUT_LOW, NULL},
+	{"CPU_PGOOD",            LM4_GPIO_C, (1<<4), GPIO_OUT_LOW, NULL},
 
 	{"ENABLE_BACKLIGHT",     LM4_GPIO_M, (1<<7), GPIO_OUT_LOW, NULL},
 	{"ENABLE_TOUCHPAD",      LM4_GPIO_N, (1<<1), GPIO_OUT_LOW, NULL},
