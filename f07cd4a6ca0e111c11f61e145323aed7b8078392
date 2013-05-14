@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAX3//6Po\u003d",
+        "filename": "common/gaia_power.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-05-14T15:44:07Z",
+      "side": 1,
+      "message": "Swap these around, so #ifdef BOARD_pit is first\n\nLGTM+2 after that.",
+      "revId": "f07cd4a6ca0e111c11f61e145323aed7b8078392",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
