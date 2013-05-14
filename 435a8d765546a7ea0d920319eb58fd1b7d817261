@@ -16,6 +16,24 @@
       "revId": "435a8d765546a7ea0d920319eb58fd1b7d817261",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAX3//6S0\u003d",
+        "filename": "util/run_host_test",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-05-14T15:02:13Z",
+      "side": 1,
+      "message": "Surprisingly, StringIO is a factory function...",
+      "parentUuid": "AAAAX3//6UY\u003d",
+      "revId": "435a8d765546a7ea0d920319eb58fd1b7d817261",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
