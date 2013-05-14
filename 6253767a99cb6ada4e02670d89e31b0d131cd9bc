@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAX3//7Ck\u003d",
+        "filename": "board/slippy/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-05-14T01:20:34Z",
+      "side": 1,
+      "message": "SUSACK and CATERR are the same pin. They were supposed to tie SUSACK and SUSWARN together and use the extra pin for CATERR, but it looks like they didn\u0027t. So you need to delete the CATERR line here (and in board.c), or make sure they\u0027re initialized and driven the same way.",
+      "revId": "6253767a99cb6ada4e02670d89e31b0d131cd9bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
