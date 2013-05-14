@@ -16,6 +16,24 @@
       "revId": "6253767a99cb6ada4e02670d89e31b0d131cd9bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAX3//7CE\u003d",
+        "filename": "board/slippy/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2013-05-14T01:24:38Z",
+      "side": 1,
+      "message": "Oops you are right, I didn\u0027t even notice it was the same as the line below it.\n\nIt does look like the caterr change didn\u0027t happen so I will delete it.",
+      "parentUuid": "AAAAX3//7Ck\u003d",
+      "revId": "6253767a99cb6ada4e02670d89e31b0d131cd9bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
