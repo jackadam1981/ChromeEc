@@ -27,7 +27,8 @@
  * temp_sensor_type. Threshold values for overheated action first (warning,
  * prochot, power-down), followed by fan speed stepping thresholds.
  */
-static struct thermal_config_t thermal_config[TEMP_SENSOR_TYPE_COUNT] = {
+test_export_static struct thermal_config_t
+		thermal_config[TEMP_SENSOR_TYPE_COUNT] = {
 	/* TEMP_SENSOR_TYPE_CPU */
 	{THERMAL_CONFIG_WARNING_ON_FAIL,
 	 {373, 378, 383, 327, 335, 343, 351, 359} } ,
@@ -38,8 +39,8 @@ static struct thermal_config_t thermal_config[TEMP_SENSOR_TYPE_COUNT] = {
 };
 
 /* Fan speed settings.  Real max RPM is about 9300. */
-static const int fan_speed[THERMAL_FAN_STEPS + 1] = {0, 3000, 4575, 6150,
-						     7725, -1};
+test_export_static const int fan_speed[THERMAL_FAN_STEPS + 1] =
+	{0, 3000, 4575, 6150, 7725, -1};
 
 /* Number of consecutive overheated events for each temperature sensor. */
 static int8_t ot_count[TEMP_SENSOR_COUNT][THRESHOLD_COUNT + THERMAL_FAN_STEPS];
@@ -165,7 +166,8 @@ static inline void update_and_check_stat(int temp,
 			ot_count[sensor_id][threshold_id] = delay;
 			overheated[threshold_id] = 1;
 		}
-	} else if (ot_count[sensor_id][threshold_id] >= delay &&
+	} else if (threshold > 0 &&
+		   ot_count[sensor_id][threshold_id] >= delay &&
 		   temp >= threshold - 3) {
 		/*
 		 * Once the threshold is reached, only deassert overheated if
