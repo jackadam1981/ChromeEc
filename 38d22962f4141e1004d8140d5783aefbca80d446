@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAYH///Ho\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-05-15T15:39:35Z",
+      "side": 1,
+      "message": "maybe worth mentioning we are putting DVT1 values",
+      "revId": "38d22962f4141e1004d8140d5783aefbca80d446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAYH///IE\u003d",
+        "filename": "common/extpower_usb.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-05-15T15:39:35Z",
+      "side": 1,
+      "message": "Ok that\u0027s DVT values, so the value will be wrong on current systems.",
+      "revId": "38d22962f4141e1004d8140d5783aefbca80d446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAYH///Hw\u003d",
+        "filename": "common/extpower_usb.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-05-15T15:39:35Z",
+      "side": 1,
+      "message": "I still don\u0027t really understand how we obtain the \"* 33\" from the datasheet information.",
+      "revId": "38d22962f4141e1004d8140d5783aefbca80d446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
