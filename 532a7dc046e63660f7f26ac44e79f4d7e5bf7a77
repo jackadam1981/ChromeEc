@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAYH//+5w\u003d",
+        "filename": "common/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-05-15T17:50:23Z",
+      "side": 1,
+      "message": "Put this case first, with if (threshold \u003c\u003d 0)?",
+      "revId": "532a7dc046e63660f7f26ac44e79f4d7e5bf7a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
