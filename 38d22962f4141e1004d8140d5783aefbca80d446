@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAYH///G8\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-05-15T15:49:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAYH///Ho\u003d",
+      "revId": "38d22962f4141e1004d8140d5783aefbca80d446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAYH///IE\u003d",
         "filename": "common/extpower_usb.c",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAYH///HM\u003d",
+        "filename": "common/extpower_usb.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-05-15T15:49:01Z",
+      "side": 1,
+      "message": "I\u0027m putting in DVT values so that we will have this during bring-up.",
+      "parentUuid": "AAAAYH///IE\u003d",
+      "revId": "38d22962f4141e1004d8140d5783aefbca80d446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAYH///Hw\u003d",
         "filename": "common/extpower_usb.c",
         "patchSetId": 3
@@ -47,6 +83,24 @@
       "writtenOn": "2013-05-15T15:39:35Z",
       "side": 1,
       "message": "I still don\u0027t really understand how we obtain the \"* 33\" from the datasheet information.",
+      "revId": "38d22962f4141e1004d8140d5783aefbca80d446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAYH///HA\u003d",
+        "filename": "common/extpower_usb.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-05-15T15:49:01Z",
+      "side": 1,
+      "message": "33 (and 40 below) is the measurement range specified in the datasheet (p. 6).",
+      "parentUuid": "AAAAYH///Hw\u003d",
       "revId": "38d22962f4141e1004d8140d5783aefbca80d446",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
