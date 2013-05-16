@@ -16,6 +16,24 @@
       "revId": "ebebb52ea879bb2df551d94e188372278775ab34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAYH//9Wo\u003d",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-05-16T15:19:37Z",
+      "side": 1,
+      "message": "It\u0027s kind of race conditiony; our processing of NSS and the DMA\u0027d data aren\u0027t tightly coupled.\n\nSPI transactions which start during the startup call will be lost anyway, so I\u0027ll move enabled\u003d1 to the end so it\u0027s at least more readable.",
+      "parentUuid": "AAAAYH//+JQ\u003d",
+      "revId": "ebebb52ea879bb2df551d94e188372278775ab34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
