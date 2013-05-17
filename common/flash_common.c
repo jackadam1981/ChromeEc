@@ -343,7 +343,10 @@ static int flash_command_protect(struct host_cmd_handler_args *args)
 		EC_FLASH_PROTECT_GPIO_ASSERTED |
 		EC_FLASH_PROTECT_ERROR_STUCK |
 		EC_FLASH_PROTECT_RO_AT_BOOT |
+#ifndef CHIP_VARIANT_stm32l15x
+		/* STM32L can only protect RO at boot */
 		EC_FLASH_PROTECT_RO_NOW |
+#endif
 		EC_FLASH_PROTECT_ALL_NOW |
 		EC_FLASH_PROTECT_ERROR_INCONSISTENT;
 	r->writable_flags = 0;
@@ -352,7 +355,10 @@ static int flash_command_protect(struct host_cmd_handler_args *args)
 	if (!(r->flags & EC_FLASH_PROTECT_RO_NOW))
 		r->writable_flags |= EC_FLASH_PROTECT_RO_AT_BOOT;
 
-#ifdef CHIP_lm4
+#if defined(CHIP_VARIANT_stm32f100) || defined(CHIP_VARIANT_stm32f10x)
+	r->valid_flags |= EC_FLASH_PROTECT_ALL_NOW;
+	r->writable_flags |= EC_FLASH_PROTECT_ALL_NOW;
+#else
 	/*
 	 * If entire flash isn't protected at this boot, it can be enabled if
 	 * the WP GPIO is asserted.
@@ -360,10 +366,6 @@ static int flash_command_protect(struct host_cmd_handler_args *args)
 	if (!(r->flags & EC_FLASH_PROTECT_ALL_NOW) &&
 	    (r->flags & EC_FLASH_PROTECT_GPIO_ASSERTED))
 		r->writable_flags |= EC_FLASH_PROTECT_ALL_NOW;
-
-#elif defined(CHIP_stm32)
-	r->valid_flags |= EC_FLASH_PROTECT_ALL_NOW;
-	r->writable_flags |= EC_FLASH_PROTECT_ALL_NOW;
 #endif
 
 	args->response_size = sizeof(*r);
