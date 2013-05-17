@@ -434,8 +434,14 @@ void exception_panic(void)
 void bus_fault_handler(void) __attribute__((naked));
 void bus_fault_handler(void)
 {
-	if (!bus_fault_ignored)
-		exception_panic();
+	/*
+	 * Return if bus faults are ignored.  This is a naked function, so
+	 * 'return;' does nothing, and we need to explicitly branch out.
+	 */
+	if (bus_fault_ignored)
+		asm volatile("bx lr\n");
+
+	exception_panic();
 }
 
 void ignore_bus_fault(int ignored)
