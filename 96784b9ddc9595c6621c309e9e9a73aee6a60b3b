@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAYH//7eo\u003d",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1000434
+      },
+      "writtenOn": "2013-05-17T22:06:54Z",
+      "side": 1,
+      "message": "keep it simple and just remove the naked attribute.",
+      "revId": "96784b9ddc9595c6621c309e9e9a73aee6a60b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
