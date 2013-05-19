@@ -61,6 +61,7 @@ int TaskTick(void *data)
 
 void run_test(void)
 {
+	msleep(50); /* Wait for other tasks to start if they haven't */
 	task_wake(TASK_ID_TICK);
 	task_wake(TASK_ID_TESTA);
 }
