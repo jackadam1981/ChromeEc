@@ -109,6 +109,18 @@ int test_get_error_count(void);
 int test_send_host_command(int command, int version, const void *params,
 			   int params_size, void *resp, int resp_size);
 
+void interrupt_generator(void);
+
+void task_trigger_test_interrupt(void (*isr)(void));
+
+void task_trigger_delayed_test_interrupt(void (*isr)(void), int delay_us);
+
+#ifdef EMU_BUILD
+void wait_for_task_started(void);
+#else
+#define wait_for_task_started() NULL
+#endif
+
 uint32_t prng(uint32_t seed);
 
 uint32_t prng_no_seed(void);
