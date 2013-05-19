@@ -26,10 +26,11 @@ test-list-$(BOARD_slippy)=
 
 # Emulator tests
 test-list-host=mutex pingpong utils kb_scan kb_mkbp lid_sw power_button hooks
-test-list-host+=thermal
+test-list-host+=thermal interrupt
 
 flash-y=flash.o
 hooks-y=hooks.o
+interrupt-y=interrupt.o
 kb_mkbp-y=kb_mkbp.o
 kb_scan-y=kb_scan.o
 lid_sw-y=lid_sw.o
