@@ -9,16 +9,11 @@
 #include "console.h"
 #include "common.h"
 #include "task.h"
+#include "test_util.h"
 #include "timer.h"
 #include "util.h"
 
 static struct mutex mtx;
-
-/* Linear congruential pseudo random number generator*/
-static uint32_t prng(uint32_t x)
-{
-	return 22695477 * x + 1;
-}
 
 /* period between 50us and 3.2ms */
 #define PERIOD_US(num) (((num % 64) + 1) * 50)
@@ -116,5 +111,6 @@ int mutex_main_task(void *unused)
 
 void run_test(void)
 {
+	msleep(50); /* Wait for other tasks to start if they haven't */
 	task_wake(TASK_ID_MTX1);
 }
