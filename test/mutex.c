@@ -116,5 +116,6 @@ int mutex_main_task(void *unused)
 
 void run_test(void)
 {
+	msleep(50); /* Wait for other tasks to start if they haven't */
 	task_wake(TASK_ID_MTX1);
 }
