@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAYX//9+k\u003d",
+        "filename": "chip/stm32/flash-stm32l15x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-21T23:05:53Z",
+      "side": 1,
+      "message": "Wondering if we still need this?",
+      "revId": "521cce9b05e81e0468267d1f6a973b57b1d2b061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAYX//9+U\u003d",
+        "filename": "chip/stm32/flash-stm32l15x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-21T23:05:53Z",
+      "side": 1,
+      "message": "blank line after",
+      "revId": "521cce9b05e81e0468267d1f6a973b57b1d2b061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAYX//998\u003d",
+        "filename": "common/flash_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-21T23:05:53Z",
+      "side": 1,
+      "message": "Is this risky? Perhaps keep the #ifdef CHIP_lm4 and have\n\n #else\n #error \"...\"\n\nalso?",
+      "revId": "521cce9b05e81e0468267d1f6a973b57b1d2b061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
