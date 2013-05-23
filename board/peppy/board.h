@@ -130,6 +130,12 @@ enum gpio_signal {
 	GPIO_PCH_RTCRST_L,         /* Not supposed to be here */
 	GPIO_PCH_SRTCRST_L,        /* Not supposed to be here */
 
+	/* HEY: Need daughter card schematic to differentiate LED colors. */
+	GPIO_BAT_LED0,             /* Battery charging LED */
+	GPIO_BAT_LED1,             /* Battery charging LED */
+	GPIO_PWR_LED0,             /* Power LED */
+	GPIO_PWR_LED1,             /* Power LED */
+
 	/* Number of GPIOs; not an actual GPIO */
 	GPIO_COUNT
 };
