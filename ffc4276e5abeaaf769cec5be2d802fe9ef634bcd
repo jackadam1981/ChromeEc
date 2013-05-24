@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAZH//+qc\u003d",
+        "filename": "util/comm-host.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-24T20:29:10Z",
+      "side": 1,
+      "message": "We should have the const still - please fix globally",
+      "revId": "ffc4276e5abeaaf769cec5be2d802fe9ef634bcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAZH//+qY\u003d",
+        "filename": "util/cros_ec_dev.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-24T20:29:10Z",
+      "side": 1,
+      "message": "Needs update to uint32_t",
+      "revId": "ffc4276e5abeaaf769cec5be2d802fe9ef634bcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
