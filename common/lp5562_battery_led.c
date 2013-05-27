@@ -255,12 +255,19 @@ static void battery_led_update(void)
 			break;
 		}
 
-		if (current < 0 && desired_current > 0) { /* Battery assist */
+		/*
+		 * Negative current means we are on battery assist. However,
+		 * when the battery is full, it sometimes leaks small current.
+		 * Therefore, we only consider current larger than 10 mA to be
+		 * discharging.
+		 */
+		if (current < -10) {
 			state = LED_STATE_BREATHING;
 			break;
 		}
 
-		if (current && desired_current)
+		/* If battery doesn't want any current, it's considered full. */
+		if (desired_current)
 			state = LED_STATE_SOLID_YELLOW;
 		else
 			state = LED_STATE_SOLID_GREEN;
