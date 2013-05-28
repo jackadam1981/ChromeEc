@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAZX//9+4\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-05-28T19:59:49Z",
+      "side": 1,
+      "message": "*which* LED?\n\nThere are many LEDs in the system across all our platforms - AC adapter, power button, power LED, etc.\n\nWould be a good idea to have an enum for which LED is being set, or else this command will end up meaning different things to each platform (\u003d unpredictable behavior from OS-side and harder to test)",
+      "revId": "87d8f8e5b1ced8647640eef710088d453d0f0e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAZX//9+0\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-05-28T19:59:49Z",
+      "side": 1,
+      "message": "What\u0027s this flag do?",
+      "revId": "87d8f8e5b1ced8647640eef710088d453d0f0e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAZX//9+c\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-05-28T19:59:49Z",
+      "side": 1,
+      "message": "We have R, G, Y LEDs on Spring?\n\nHow does the AP know whether there\u0027s a blue LED or not?\n\nI worry this command is terribly Spring-specific - which is ok, but then we shouldn\u0027t give it a generic name like \"LED set\".",
+      "revId": "87d8f8e5b1ced8647640eef710088d453d0f0e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
