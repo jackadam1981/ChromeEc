@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAZX//+eg\u003d",
+        "filename": "common/lp5562_battery_led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-05-28T16:05:40Z",
+      "side": 1,
+      "message": "I\u0027d say there seems to be no security concern about this command. But if you hold a different opinion, I can certainly block it when WP is on. Although leaving it as is gives us a way to easily verify if the LED is good when someone complains about system not recognizing the charger.",
+      "parentUuid": "AAAAZX//+ik\u003d",
+      "revId": "a97896713a125e81281c61923d53c40646ac82e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAZX//+gI\u003d",
         "filename": "util/ectool.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2013-05-28T15:54:58Z",
       "side": 1,
       "message": ".r .g.b are uninitialized.\nfuture toolchains will complain...",
+      "revId": "a97896713a125e81281c61923d53c40646ac82e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAZX//+eQ\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1422,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-05-28T16:05:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAZX//+gI\u003d",
       "revId": "a97896713a125e81281c61923d53c40646ac82e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
