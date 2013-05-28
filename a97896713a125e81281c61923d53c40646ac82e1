@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAZX//+ik\u003d",
+        "filename": "common/lp5562_battery_led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-05-28T15:54:58Z",
+      "side": 1,
+      "message": "do we want to check write-protect status here ?",
+      "revId": "a97896713a125e81281c61923d53c40646ac82e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAZX//+gI\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1422,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-05-28T15:54:58Z",
+      "side": 1,
+      "message": ".r .g.b are uninitialized.\nfuture toolchains will complain...",
+      "revId": "a97896713a125e81281c61923d53c40646ac82e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
