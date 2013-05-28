@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAZX//+a0\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-28T16:37:33Z",
+      "side": 1,
+      "message": "I have reopened the bug",
+      "parentUuid": "AAAAZX//+i0\u003d",
+      "revId": "674fd481332c6e133d7c948b934d71aa616145e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAZX//+fM\u003d",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2013-05-28T15:57:53Z",
       "side": 1,
       "message": "BRANCH\u003dspring",
+      "revId": "674fd481332c6e133d7c948b934d71aa616145e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAZX//+ak\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-28T16:37:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAZX//+fM\u003d",
       "revId": "674fd481332c6e133d7c948b934d71aa616145e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -65,6 +101,24 @@
       "side": 1,
       "message": "I would tend to agree.  It seems like we ought to port the tunnel driver back to 3.4 (shouldn\u0027t be too hard, I think) and then you can use the kernel to stress things out.",
       "parentUuid": "AAAAZX//+fY\u003d",
+      "revId": "674fd481332c6e133d7c948b934d71aa616145e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAZX//+as\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-28T16:37:33Z",
+      "side": 1,
+      "message": "My rationale here is that this it the EC implementation. I will put up the U-Boot implementation soon.\n\nAfter that I will do kernel. If I find bugs with the kernel implementation then I will deal with it then. But so far this is merely adding a new command to the EC, not switching anything to use it.\n\nIf anyone else wants to help with this work / testing, etc. please sing out!",
+      "parentUuid": "AAAAZX//+cA\u003d",
       "revId": "674fd481332c6e133d7c948b934d71aa616145e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
