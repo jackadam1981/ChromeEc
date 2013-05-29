@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAZX//8S4\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-05-29T19:18:51Z",
+      "side": 1,
+      "message": "Brightness range 0 means color channel not present?\n\nBrightness range 1 means LED is either off or on; no PWM control?",
+      "revId": "5470f2488867283b92d05965a7a5edb6f3f751bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
