@@ -632,6 +632,7 @@ DECLARE_HOOK(HOOK_SECOND, board_usb_monitor_detach, HOOK_PRIO_DEFAULT);
 void board_usb_charge_update(int force_update)
 {
 	int int_val = 0;
+	int dev_type;
 
 	if (pending_tsu6721_reset) {
 		current_watchdog = ADC_WATCH_NONE;
@@ -642,10 +643,11 @@ void board_usb_charge_update(int force_update)
 	} else
 		int_val = tsu6721_get_interrupts();
 
+	dev_type = tsu6721_get_device_type();
 	if (int_val & TSU6721_INT_DETACH)
 		usb_device_change(TSU6721_TYPE_NONE);
-	else if (int_val || force_update)
-		usb_device_change(tsu6721_get_device_type());
+	else if (force_update || current_dev_type != dev_type)
+		usb_device_change(dev_type);
 }
 
 int board_get_usb_dev_type(void)
