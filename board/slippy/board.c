@@ -9,6 +9,7 @@
 #include "common.h"
 #include "extpower.h"
 #include "gpio.h"
+#include "host_command.h"
 #include "i2c.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
@@ -165,4 +166,21 @@ void configure_fan_gpios(void)
 {
 	/* PN2:3 alternate function 1 = channel 0 PWM/tach */
 	gpio_set_alternate_function(LM4_GPIO_N, 0x0c, 1);
+}
+
+/**
+ * Perform necessary actions on host wake events.
+ */
+void board_process_wake_events(uint32_t active_wake_events)
+{
+	uint32_t power_button_mask;
+
+	power_button_mask = EC_HOST_EVENT_MASK(EC_HOST_EVENT_POWER_BUTTON);
+
+	/* If there are other events aside from the power button press drive
+	 * the wake pin. Otherwise ensure it is high. */
+	if (active_wake_events & ~power_button_mask)
+		gpio_set_level(GPIO_PCH_WAKE_L, 0);
+	else
+		gpio_set_level(GPIO_PCH_WAKE_L, 1);
 }
