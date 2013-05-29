@@ -63,9 +63,26 @@ static int set_led_color(enum led_state_t state)
 /*****************************************************************************/
 /* Host commands */
 
-static int led_command_set(struct host_cmd_handler_args *args)
+static int led_command_control(struct host_cmd_handler_args *args)
 {
-	const struct ec_params_led_set *p = args->params;
+	const struct ec_params_led_control *p = args->params;
+	struct ec_response_led_control *r = args->response;
+	int i;
+	uint8_t clipped[EC_LED_COLOR_COUNT];
+
+	/* Only support battery LED control */
+	if (p->led_id != EC_LED_ID_BATTERY_LED)
+		return EC_RES_INVALID_PARAM;
+
+	r->brightness_range[EC_LED_COLOR_RED] = 0x80;
+	r->brightness_range[EC_LED_COLOR_GREEN] = 0x80;
+	r->brightness_range[EC_LED_COLOR_BLUE] = 0x0;
+	r->brightness_range[EC_LED_COLOR_YELLOW] = 0x80;
+	r->brightness_range[EC_LED_COLOR_WHITE] = 0x0;
+	args->response_size = sizeof(struct ec_response_led_control);
+
+	if (p->flags & EC_LED_FLAGS_QUERY)
+		return EC_RES_SUCCESS;
 
 	if (p->flags & EC_LED_FLAGS_AUTO) {
 		if (!extpower_is_present())
@@ -73,18 +90,22 @@ static int led_command_set(struct host_cmd_handler_args *args)
 		last_state = LED_STATE_OFF;
 		led_auto_control = 1;
 	} else {
+		for (i = 0; i < EC_LED_COLOR_COUNT; ++i)
+			clipped[i] = MIN(p->brightness[i], 0x80);
 		led_auto_control = 0;
 		if (!extpower_is_present())
 			lp5562_poweron();
-		if (lp5562_set_color((p->r << 16) + (p->g << 8) + p->b))
+		if (lp5562_set_color((clipped[EC_LED_COLOR_RED] << 16) +
+				     (clipped[EC_LED_COLOR_GREEN] << 8) +
+				     clipped[EC_LED_COLOR_YELLOW]))
 			return EC_RES_ERROR;
 	}
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_LED_SET,
-		     led_command_set,
-		     EC_VER_MASK(0));
+DECLARE_HOST_COMMAND(EC_CMD_LED_CONTROL,
+		     led_command_control,
+		     EC_VER_MASK(1));
 
 /*****************************************************************************/
 /* Hooks */
