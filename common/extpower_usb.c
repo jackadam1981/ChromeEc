@@ -580,6 +580,7 @@ void extpower_charge_init(void)
 void extpower_charge_update(int force_update)
 {
 	int int_val = 0;
+	int dev_type;
 
 	if (pending_tsu6721_reset) {
 		current_watchdog = ADC_WATCH_NONE;
@@ -590,10 +591,11 @@ void extpower_charge_update(int force_update)
 	} else
 		int_val = tsu6721_get_interrupts();
 
+	dev_type = tsu6721_get_device_type();
 	if (int_val & TSU6721_INT_DETACH)
 		usb_device_change(TSU6721_TYPE_NONE);
-	else if (int_val || force_update)
-		usb_device_change(tsu6721_get_device_type());
+	else if (force_update || current_dev_type != dev_type)
+		usb_device_change(dev_type);
 }
 
 int extpower_charge_needs_update(void)
