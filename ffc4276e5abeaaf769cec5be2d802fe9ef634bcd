@@ -69,6 +69,24 @@
       "revId": "ffc4276e5abeaaf769cec5be2d802fe9ef634bcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAZX//9bs\u003d",
+        "filename": "util/cros_ec_dev.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-05-29T00:00:13Z",
+      "side": 1,
+      "message": "Yes, but we should not limit ourselves to this I think.\n\nThis will be the kernel interface for a long time, so I think it makes sense to use uint32_t where we can. It gives us expansion room!",
+      "parentUuid": "AAAAZX//9n4\u003d",
+      "revId": "ffc4276e5abeaaf769cec5be2d802fe9ef634bcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
