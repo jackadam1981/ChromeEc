@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAZn///j0\u003d",
+        "filename": "chip/host/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-05-30T10:05:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAZX//+lE\u003d",
+      "revId": "04ac1b305cf7b06ba7f00ab34e2067cf468f98d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAZX//+kk\u003d",
         "filename": "chip/host/flash.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2013-05-28T15:42:51Z",
       "side": 1,
       "message": "took me 5min to parse those 5 lines.\nplease add a comment about getting more coffee before reading them or ...\nrename bank_st/bank_ed to first_bank/last_bank\nand rewrite a bit bank_ed as advised below.",
+      "revId": "04ac1b305cf7b06ba7f00ab34e2067cf468f98d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAZn///jk\u003d",
+        "filename": "chip/host/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-05-30T10:05:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAZX//+kk\u003d",
       "revId": "04ac1b305cf7b06ba7f00ab34e2067cf468f98d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAZn///jg\u003d",
+        "filename": "chip/host/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-05-30T10:05:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAZX//+kM\u003d",
+      "revId": "04ac1b305cf7b06ba7f00ab34e2067cf468f98d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAZX//+lI\u003d",
         "filename": "chip/host/flash.c",
         "patchSetId": 2
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAZn///js\u003d",
+        "filename": "chip/host/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-05-30T10:05:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAZX//+lI\u003d",
+      "revId": "04ac1b305cf7b06ba7f00ab34e2067cf468f98d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAZX//+lk\u003d",
         "filename": "common/build.mk",
         "patchSetId": 2
@@ -81,6 +153,24 @@
       "writtenOn": "2013-05-28T15:42:51Z",
       "side": 1,
       "message": "why are you splitting since you are defining both of them ?",
+      "revId": "04ac1b305cf7b06ba7f00ab34e2067cf468f98d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAZn///jc\u003d",
+        "filename": "common/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-05-30T10:05:12Z",
+      "side": 1,
+      "message": "CONFIG_FMAP cannot be defined for emulator since the address of the flash in memory is not resolved when compiling (only when linking.) Splitting these two so that we can include flash_common but not fmap.",
+      "parentUuid": "AAAAZX//+lk\u003d",
       "revId": "04ac1b305cf7b06ba7f00ab34e2067cf468f98d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
