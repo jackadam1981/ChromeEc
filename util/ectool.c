@@ -2434,7 +2434,7 @@ int cmd_battery(int argc, char *argv[])
 
 	return 0;
 cmd_error:
-	fprintf(stderr, "Bad battery info value. Check protocol version.");
+	fprintf(stderr, "Bad battery info value. Check protocol version.\n");
 	return -1;
 }
 
@@ -2996,23 +2996,25 @@ const struct command commands[] = {
 int main(int argc, char *argv[])
 {
 	const struct command *cmd;
-	int rv;
+	int rv = 1;
 
 	BUILD_ASSERT(ARRAY_SIZE(lb_command_paramcount) == LIGHTBAR_NUM_CMDS);
 
 	if (argc < 2 || !strcasecmp(argv[1], "-?") ||
 	    !strcasecmp(argv[1], "help")) {
 		print_help(argv[0]);
-		return -2;
+		exit(1);
 	}
 
 	if (acquire_gec_lock(GEC_LOCK_TIMEOUT_SECS) < 0) {
 		fprintf(stderr, "Could not acquire GEC lock.\n");
-		return 1;
+		exit(1);
 	}
 
-	if (comm_init() < 0)
-		return -3;
+	if (comm_init() < 0) {
+		fprintf(stderr, "Couldn't find EC\n");
+		goto out;
+	}
 
 	/* Handle commands */
 	for (cmd = commands; cmd->name; cmd++) {
@@ -3025,9 +3027,8 @@ int main(int argc, char *argv[])
 	/* If we're still here, command was unknown */
 	fprintf(stderr, "Unknown command '%s'\n\n", argv[1]);
 	print_help(argv[0]);
-	rv = -2;
 
 out:
 	release_gec_lock();
-	return rv;
+	return !!rv;
 }
