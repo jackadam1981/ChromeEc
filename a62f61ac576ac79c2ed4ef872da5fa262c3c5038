@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAZn//8xU\u003d",
+        "filename": "board/spring/usb_charging.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-06-01T02:14:48Z",
+      "side": 1,
+      "message": "You need to exclude the case where current_dev_type \u003d\u003d TSU6721_TYPE_JIG_UART_ON. Otherwise this is going to break video dongle detection.",
+      "revId": "a62f61ac576ac79c2ed4ef872da5fa262c3c5038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
