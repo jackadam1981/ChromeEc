@@ -16,6 +16,10 @@
 #include "timer.h"
 #include "util.h"
 
+#include "printf.h"
+
+
+
 #define CPUTS(outstr) cputs(CC_I2C, outstr)
 #define CPRINTF(format, args...) cprintf(CC_I2C, format, ## args)
 
@@ -157,8 +161,10 @@ int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 			LM4_I2C_MCS(port) = reg_mcs;
 
 			rv = wait_idle(port);
-			if (rv)
+			if (rv) {
+				LM4_I2C_MCS(port) = LM4_I2C_MCS_STOP;
 				return rv;
+			}
 		}
 	}
 
@@ -189,8 +195,10 @@ int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 
 			LM4_I2C_MCS(port) = reg_mcs;
 			rv = wait_idle(port);
-			if (rv)
+			if (rv) {
+				LM4_I2C_MCS(port) = LM4_I2C_MCS_STOP;
 				return rv;
+			}
 			in[i] = LM4_I2C_MDR(port) & 0xff;
 		}
 	}
@@ -234,11 +242,18 @@ exit:
 }
 
 /**
- * Configure GPIOs for the module.
+ * Configure I2C GPIOs for the module.
  */
-static void configure_gpio(void)
+static void configure_i2c_gpios(void)
 {
-#ifdef BOARD_link				/* HEY: Slippy? */
+#ifdef BOARD_bds
+	/* PG6:7 = I2C5 SCL/SDA */
+	gpio_set_alternate_function(LM4_GPIO_G, 0xc0, 3);
+
+	/* Configure SDA as open-drain.  SCL should not be open-drain,
+	 * since it has an internal pull-up. */
+	LM4_GPIO_ODR(LM4_GPIO_G) |= 0x80;
+#else
 	/* PA6:7 = I2C1 SCL/SDA; PB2:3 = I2C0 SCL/SDA; PB6:7 = I2C5 SCL/SDA */
 	gpio_set_alternate_function(LM4_GPIO_A, 0xc0, 3);
 	gpio_set_alternate_function(LM4_GPIO_B, 0xcc, 3);
@@ -247,13 +262,6 @@ static void configure_gpio(void)
 	 * since it has an internal pull-up. */
 	LM4_GPIO_ODR(LM4_GPIO_A) |= 0x80;
 	LM4_GPIO_ODR(LM4_GPIO_B) |= 0x88;
-#else
-	/* PG6:7 = I2C5 SCL/SDA */
-	gpio_set_alternate_function(LM4_GPIO_G, 0xc0, 3);
-
-	/* Configure SDA as open-drain.  SCL should not be open-drain,
-	 * since it has an internal pull-up. */
-	LM4_GPIO_ODR(LM4_GPIO_G) |= 0x80;
 #endif
 }
 
@@ -305,7 +313,7 @@ static void i2c_init(void)
 	clock_wait_cycles(3);
 
 	/* Configure GPIOs */
-	configure_gpio();
+	configure_i2c_gpios();
 
 	/* No tasks are waiting on ports */
 	for (i = 0; i < I2C_PORT_COUNT; i++)
@@ -401,6 +409,7 @@ static int command_i2cread(int argc, char **argv)
 			LM4_I2C_MCS(port) = (i == count - 1 ? 0x05 : 0x09);
 		rv = wait_idle(port);
 		if (rv != EC_SUCCESS) {
+			LM4_I2C_MCS(port) = LM4_I2C_MCS_STOP;
 			i2c_lock(port, 0);
 			return rv;
 		}
@@ -415,4 +424,3 @@ DECLARE_CONSOLE_COMMAND(i2cread, command_i2cread,
 			"port addr [count]",
 			"Read from I2C",
 			NULL);
-
