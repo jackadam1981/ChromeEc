@@ -80,6 +80,8 @@ static const struct console_command *find_command(char *name)
 		if (!strncasecmp(name, cmd->name, match_length)) {
 			if (match)
 				return NULL;
+			if (match_length == strlen(cmd->name))
+				return cmd;
 			match = cmd;
 		}
 	}
