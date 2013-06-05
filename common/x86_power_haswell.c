@@ -35,26 +35,7 @@
 /* Timeout for dropping back from S5 to G3 */
 #define S5_INACTIVITY_TIMEOUT (10 * SECOND)
 
-enum x86_state {
-	X86_G3 = 0,                 /*
-				     * System is off (not technically all the
-				     * way into G3, which means totally
-				     * unpowered...)
-				     */
-	X86_S5,                     /* System is soft-off */
-	X86_S3,                     /* Suspend; RAM on, processor is asleep */
-	X86_S0,                     /* System is on */
-
-	/* Transitions */
-	X86_G3S5,                   /* G3 -> S5 (at system init time) */
-	X86_S5S3,                   /* S5 -> S3 */
-	X86_S3S0,                   /* S3 -> S0 */
-	X86_S0S3,                   /* S0 -> S3 */
-	X86_S3S5,                   /* S3 -> S5 */
-	X86_S5G3,                   /* S5 -> G3 */
-};
-
-static const char * const state_names[] = {
+static const char * const x86_state_names[] = {
 	"G3",
 	"S5",
 	"S3",
@@ -107,6 +88,14 @@ static int throttle_cpu;      /* Throttle CPU? */
 static uint64_t last_shutdown_time;
 /* Delay before go into hibernation in seconds*/
 static uint32_t hibernate_delay = 3600; /* 1 Hour */
+
+/**
+ * Return system power state.
+ */
+enum x86_state x86_power_get_state(void)
+{
+	return state;
+}
 
 /**
  * Update input signal state.
@@ -413,7 +402,7 @@ void chipset_task(void)
 
 	while (1) {
 		CPRINTF("[%T x86 power state %d = %s, in 0x%04x]\n",
-			state, state_names[state], in_signals);
+			state, x86_state_names[state], in_signals);
 
 		switch (state) {
 		case X86_G3:
@@ -686,7 +675,7 @@ static int command_powerinfo(int argc, char **argv)
 	 * used by FAFT tests, so must match exactly.
 	 */
 	ccprintf("[%T x86 power state %d = %s, in 0x%04x]\n",
-		 state, state_names[state], in_signals);
+		 state, x86_state_names[state], in_signals);
 
 	return EC_SUCCESS;
 }
