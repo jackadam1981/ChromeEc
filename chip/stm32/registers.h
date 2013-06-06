@@ -1121,6 +1121,18 @@ typedef volatile struct stm32_dma_regs stm32_dma_regs_t;
 #define STM32_CRC_CR_REV_IN_WORD    (3 << 5)
 #define STM32_CRC_CR_REV_OUT        (1 << 7)
 
+/* --- USB --- */
+#define STM32_USB_CAN_SRAM_BASE     0x40006000
+#define STM32_USB_FS_BASE           0x40005C00
+
+#define STM32_USB_EP(n)            REG16(STM32_USB_FS_BASE + (n) * 4)
+
+#define STM32_USB_CNTR             REG16(STM32_USB_FS_BASE + 0x40)
+#define STM32_USB_ISTR             REG16(STM32_USB_FS_BASE + 0x44)
+#define STM32_USB_FNR              REG16(STM32_USB_FS_BASE + 0x48)
+#define STM32_USB_DADDR            REG16(STM32_USB_FS_BASE + 0x4C)
+#define STM32_USB_BTABLE           REG16(STM32_USB_FS_BASE + 0x50)
+
 /* --- MISC --- */
 
 #define STM32_CEC_BASE              0x40007800 /* STM32F100 only */
@@ -1131,7 +1143,5 @@ typedef volatile struct stm32_dma_regs stm32_dma_regs_t;
 #define STM32_SDIO_BASE             0x40018000 /* STM32F10x only */
 #define STM32_BXCAN1_BASE           0x40006400 /* STM32F10x only */
 #define STM32_BXCAN2_BASE           0x40006800 /* STM32F10x only */
-#define STM32_USB_CAN_SRAM_BASE     0x40006000 /* STM32F10x only */
-#define STM32_USB_FS_BASE           0x40005C00 /* STM32F10x only */
 
 #endif /* __CROS_EC_REGISTERS_H */
