@@ -18,6 +18,7 @@ MEMORY
 {
     FLASH (rx) : ORIGIN = FW_OFF(SECTION), LENGTH = FW_SIZE(SECTION)
     IRAM (rw)  : ORIGIN = CONFIG_RAM_BASE, LENGTH = CONFIG_RAM_SIZE
+    USB_RAM (rw) : ORIGIN = CONFIG_USB_RAM_BASE, LENGTH = CONFIG_USB_RAM_SIZE
 }
 SECTIONS
 {
@@ -120,6 +121,14 @@ SECTIONS
         KEEP(*(.rodata.deferred))
         __deferred_funcs_end = .;
 
+        __usb_desc = .;
+        KEEP(*(.rodata.usb_desc_conf))
+        KEEP(*(SORT(.rodata.usb_desc*)))
+        . = ALIGN(2); /* USB transfers enjoy 16-bit aligned size */
+        __usb_desc_end = .;
+        . = ALIGN(4);
+        KEEP(*(.rodata.usb_ep))
+
         . = ALIGN(4);
         *(.rodata*)
 
@@ -197,6 +206,13 @@ SECTIONS
     ASSERT(FW_SIZE(SECTION) >
                  (LOADADDR(.data) + SIZEOF(.data) - FW_OFF(SECTION)),
                  "No room left in the flash")
+
+    .usb_ram (NOLOAD) : {
+        __usb_ram_start = .;
+        . = ALIGN(8);
+        *(.usb_ram.btable)
+        *(.usb_ram.data)
+    } > USB_RAM
 #if !(defined(SECTION_IS_RO) && defined(CONFIG_FLASH))
     /DISCARD/ : {
               *(.google)
