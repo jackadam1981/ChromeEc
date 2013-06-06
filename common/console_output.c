@@ -54,6 +54,7 @@ static const char * const channel_names[] = {
 	"system",
 	"task",
 	"thermal",
+	"usb",
 	"usbcharge",
 	"usbpd",
 	"vboot",
@@ -69,7 +70,6 @@ int cputs(enum console_channel channel, const char *outstr)
 	/* Filter out inactive channels */
 	if (!(CC_MASK(channel) & channel_mask))
 		return EC_SUCCESS;
-
 	return uart_puts(outstr);
 }
 

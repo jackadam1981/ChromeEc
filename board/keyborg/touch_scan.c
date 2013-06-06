@@ -219,7 +219,7 @@ void scan_column(uint8_t *data)
 
 void touch_scan_slave_start(void)
 {
-	int col, i, v;
+	int col, i, v, started = 0;
 	struct spi_comm_packet *resp = (struct spi_comm_packet *)buf;
 
 	if (fast_scan(scan_needed) != EC_SUCCESS)
@@ -228,7 +228,9 @@ void touch_scan_slave_start(void)
 	/* Discharge the panel */
 	discharge();
 
-	for (col = 0; col < COL_COUNT * 2; ++col) {
+	col = -1;
+	while (1) {
+		col = (col + 1) % (COL_COUNT * 2);
 		if (col < COL_COUNT) {
 			enable_col(col, 1);
 			STM32_PMSE_MCCR = mccr_list[col];
@@ -254,14 +256,17 @@ void touch_scan_slave_start(void)
 		resp->cmd_sts = EC_SUCCESS;
 
 		/* Flush the last response */
-		if (col != 0)
+		if (started)
 			spi_slave_send_response_flush();
+		else
+			started = 1;
 
-		if (master_slave_sync(40) != EC_SUCCESS)
+		if (master_slave_sync(1098) != EC_SUCCESS)
 			return;
 
 		/* Start sending the response for the current column */
-		spi_slave_send_response_async(resp);
+		if (spi_slave_send_response_async(resp) != EC_SUCCESS)
+			return;
 
 		/* Disable the current column and discharge */
 		if (col < COL_COUNT) {
@@ -279,6 +284,7 @@ int touch_scan_full_matrix(void)
 	struct spi_comm_packet cmd;
 	const struct spi_comm_packet *resp;
 	int col;
+	int started = 0;
 	timestamp_t st = get_time();
 	uint8_t *dptr = NULL, *last_dptr = NULL;
 
@@ -296,7 +302,9 @@ int touch_scan_full_matrix(void)
 	/* Discharge the panel */
 	discharge();
 
-	for (col = 0; col < COL_COUNT * 2; ++col) {
+	col = -1;
+	while (1) {
+		col = (col + 1) % (COL_COUNT * 2);
 		if (col >= COL_COUNT) {
 			enable_col(col - COL_COUNT, 1);
 			STM32_PMSE_MCCR = mccr_list[col - COL_COUNT];
@@ -313,7 +321,7 @@ int touch_scan_full_matrix(void)
 		else
 			memset(dptr + ROW_COUNT, 0, ROW_COUNT);
 
-		if (col > 0) {
+		if (started) {
 			/* Flush the data from the slave for the last column */
 			resp = spi_master_wait_response_done();
 			if (resp == NULL)
@@ -323,9 +331,11 @@ int touch_scan_full_matrix(void)
 			else
 				memset(last_dptr, 0, ROW_COUNT);
 			encode_add_column(last_dptr);
+		} else {
+			started = 1;
 		}
 
-		if (master_slave_sync(40) != EC_SUCCESS)
+		if (master_slave_sync(97) != EC_SUCCESS)
 			return EC_ERROR_UNKNOWN;
 
 		/* Start receiving data for the current column */
@@ -351,7 +361,7 @@ int touch_scan_full_matrix(void)
 
 	master_slave_sync(20);
 
-	debug_printf("Sampling took %d us\n", get_time().val - st.val);
+	debug_printf("Sampling took %d us\n", get_time().le.lo - st.le.lo);
 	encode_dump_matrix();
 
 	return EC_SUCCESS;
