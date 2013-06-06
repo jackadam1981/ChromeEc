@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAZ3//4jw\u003d",
+        "filename": "common/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-06-06T20:41:30Z",
+      "side": 1,
+      "message": "ARM boards also have a CHARGER task, but don\u0027t use charge_state.c or battery_precharge.c.\n\nSo this is gonna break the ARM boards.",
+      "revId": "ba4460340a1d7d648d7d0fddebc74d02c177aa95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
