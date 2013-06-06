@@ -27,8 +27,10 @@ static int wait_sync_signal(int mask, int v, int timeout_ms)
 	uint32_t start = get_time().val;
 
 	while ((!!(STM32_GPIO_IDR(GPIO_I) & mask)) != v) {
-		if ((get_time().val - start) >= timeout_ms * MSEC)
+		if ((get_time().val - start) >= timeout_ms * MSEC) {
+			debug_printf("Sync %d ms failed\n", timeout_ms);
 			return EC_ERROR_TIMEOUT;
+		}
 	}
 	return EC_SUCCESS;
 }

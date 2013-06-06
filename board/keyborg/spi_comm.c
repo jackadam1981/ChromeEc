@@ -145,7 +145,7 @@ int spi_master_wait_response_async(void)
 	stm32_spi_regs_t *spi = STM32_SPI1_REGS;
 	int size;
 
-	master_slave_sync(40);
+	master_slave_sync(96);
 	if (wait_for_signal(GPIO_A, 1 << 0, 1, 40 * MSEC))
 		goto err_wait_resp_async;
 
@@ -326,7 +326,7 @@ int spi_slave_send_response_async(struct spi_comm_packet *resp)
 	if (out_msg != (uint8_t *)resp)
 		memcpy(out_msg, resp, size);
 
-	master_slave_sync(100);
+	master_slave_sync(99);
 
 	if (spi->sr & STM32_SPI_SR_RXNE)
 		in_msg[0] = spi->dr;

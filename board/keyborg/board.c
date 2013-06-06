@@ -131,6 +131,19 @@ static const char *get_version(void)
 	return version_data.version;
 }
 
+void usb_init(void);
+int usb_write_raw(uint8_t *data, int size);
+
+int pending_scan;
+
+void console_handle_char(int c)
+{
+	if (c == 's') {
+		pending_scan++;
+	}
+	debug_printf("%c", c);
+}
+
 int main(void)
 {
 	int i = 0;
@@ -145,16 +158,30 @@ int main(void)
 
 	master_slave_sync(10);
 
-	if (master_slave_is_master())
+	if (master_slave_is_master()) {
 		spi_master_init();
-	else
+	} else {
 		spi_slave_init();
+	}
 
 	master_slave_sync(100);
 
+#if 1
+	if (master_slave_is_master()) {
+		STM32_GPIO_BSRR(GPIO_A) = 1 << 9;
+		usb_init();
+	}
+#endif
+
+
 	while (1) {
 		i++;
-		task_wait_event(SECOND);
+		task_wait_event(1000 * MSEC);
+		if (pending_scan) {
+			pending_scan--;
+			touch_scan_full_matrix();
+		}
+#if 0
 		if (master_slave_is_master()) {
 			debug_printf("Hello x 50...");
 			if (spi_hello_test(50) == EC_SUCCESS)
@@ -170,5 +197,6 @@ int main(void)
 				task_wait_event(-1);
 			}
 		}
+#endif
 	}
 }
