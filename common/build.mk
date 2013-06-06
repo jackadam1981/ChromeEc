@@ -12,6 +12,7 @@ common-y+=gpio_common.o version.o printf.o queue.o
 common-$(HAS_TASK_CHARGER)+=charge_state.o battery_precharge.o
 common-$(CONFIG_BATTERY_BQ20Z453)+=battery_bq20z453.o
 common-$(CONFIG_BATTERY_LINK)+=battery_link.o
+common-$(CONFIG_BATTERY_SLIPPY)+=battery_slippy.o
 common-$(CONFIG_BATTERY_SPRING)+=battery_spring.o
 common-$(CONFIG_CHARGER_BQ24725)+=charger_bq24725.o
 common-$(CONFIG_CHARGER_BQ24707A)+=charger_bq24707a.o
