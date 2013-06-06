@@ -833,6 +833,9 @@
 
 /*****************************************************************************/
 
+/* Compile chip support for the USB device controller */
+#undef CONFIG_USB
+
 /* Support simple control of power to the device's USB ports */
 #undef CONFIG_USB_PORT_POWER_DUMB
 
