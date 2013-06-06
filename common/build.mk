@@ -14,6 +14,7 @@ common-$(CONFIG_BATTERY_BQ20Z453)+=battery_bq20z453.o
 common-$(CONFIG_BATTERY_LINK)+=battery_link.o
 common-$(CONFIG_BATTERY_SPRING)+=battery_spring.o
 common-$(CONFIG_CHARGER_BQ24725)+=charger_bq24725.o
+common-$(CONFIG_CHARGER_BQ24707A)+=charger_bq24707a.o
 common-$(CONFIG_CHARGER_TPS65090)+=pmu_tps65090_charger.o
 common-$(CONFIG_CHIPSET_GAIA)+=gaia_power.o
 common-$(CONFIG_CHIPSET_X86_IVYBRIDGE)+=x86_power_ivybridge.o
