@@ -86,7 +86,7 @@ static int wait_bits(int nb)
 			&& get_time().val < deadline.val)
 			; /* optimized for latency, not CPU usage ... */
 		if (dma_bytes_done(rx, PD_MAX_RAW_SIZE) < nb) {
-			CPRINTF("TMOUT RX %d/%d\n",
+			CPRINTF("%T TMOUT RX %d/%d\n",
 				dma_bytes_done(rx, PD_MAX_RAW_SIZE), nb);
 			return -1;
 		}
@@ -157,8 +157,8 @@ int pd_find_preamble(void *ctxt)
 				!(STM32_TIM_SR(TIM_RX) & 4))
 				;
 			if (STM32_TIM_SR(TIM_RX) & 4) {
-				CPRINTF("TMOUT RX %d/%d\n",
-					PD_MAX_RAW_SIZE - rx->cndtr, bit);
+				//CPRINTF("%T TMOUT RX %d/%d\n",
+				//	PD_MAX_RAW_SIZE - rx->cndtr, bit);
 				return -1;
 			}
 		}
