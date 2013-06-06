@@ -131,6 +131,8 @@ static const char *get_version(void)
 	return version_data.version;
 }
 
+void usb_init(void);
+
 int main(void)
 {
 	int i = 0;
@@ -145,12 +147,21 @@ int main(void)
 
 	master_slave_sync(10);
 
-	if (master_slave_is_master())
+	if (master_slave_is_master()) {
 		spi_master_init();
-	else
+	} else {
 		spi_slave_init();
+	}
 
 	master_slave_sync(100);
+
+#if 1
+	if (master_slave_is_master()) {
+		STM32_GPIO_BSRR(GPIO_A) = 1 << 9;
+		usb_init();
+	}
+#endif
+
 
 	while (1) {
 		i++;
