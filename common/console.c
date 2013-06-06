@@ -375,7 +375,7 @@ static int handle_esc(int c)
 	return -1;
 }
 
-static void console_handle_char(int c)
+/*static*/ void console_handle_char(int c)
 {
 	/* Translate CR and CRLF to LF (newline) */
 	if (c == '\r') {
