@@ -5,6 +5,7 @@
 
 /* System module for Chrome EC : hardware specific implementation */
 
+#include "console.h"
 #include "cpu.h"
 #include "registers.h"
 #include "system.h"
@@ -99,10 +100,21 @@ static void check_reset_cause(void)
 	system_set_reset_flags(flags);
 }
 
-void system_hibernate(uint32_t seconds, uint32_t microseconds)
+void __no_hibernate(uint32_t seconds, uint32_t microseconds)
 {
 	while (1)
 		/* NOT IMPLEMENTED */;
+}
+
+void __enter_hibernate(uint32_t seconds, uint32_t microseconds)
+	__attribute__((weak, alias("__no_hibernate")));
+
+void system_hibernate(uint32_t seconds, uint32_t microseconds)
+{
+	/* Flush console before hibernating */
+	cflush();
+	/* chip specific standby mode */
+	__enter_hibernate(seconds, microseconds);
 }
 
 void system_pre_init(void)
