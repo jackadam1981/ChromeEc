@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAZ3//3W8\u003d",
+        "filename": "chip/host/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-06-07T16:20:23Z",
+      "side": 1,
+      "message": "you might want to buffer a little bit to avoid losing character if you have no cpu ?",
+      "revId": "136fced83af6a75eabc5371c57712aaddc5ef22e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAZ3//3XM\u003d",
+        "filename": "chip/host/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-06-07T16:20:23Z",
+      "side": 1,
+      "message": "what is the point of switching back to old settings here ?",
+      "revId": "136fced83af6a75eabc5371c57712aaddc5ef22e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
