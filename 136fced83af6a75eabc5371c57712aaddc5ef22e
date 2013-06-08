@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAZ3//2UQ\u003d",
+        "filename": "chip/host/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-06-08T13:53:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAZ3//3W8\u003d",
+      "revId": "136fced83af6a75eabc5371c57712aaddc5ef22e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAZ3//3XM\u003d",
         "filename": "chip/host/uart.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2013-06-07T16:20:23Z",
       "side": 1,
       "message": "what is the point of switching back to old settings here ?",
+      "revId": "136fced83af6a75eabc5371c57712aaddc5ef22e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAZ3//2UY\u003d",
+        "filename": "chip/host/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-06-08T13:53:43Z",
+      "side": 1,
+      "message": "This is to prevent that the console being left in a strange mode when the user press Ctrl-C (or even a SIGKILL) to terminate the emulator.",
+      "parentUuid": "AAAAZ3//3XM\u003d",
       "revId": "136fced83af6a75eabc5371c57712aaddc5ef22e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
