@@ -11,6 +11,12 @@
 
 int __test_error_count;
 
+#ifdef TEST_COVERAGE
+extern void __gcov_flush(void);
+#else
+static void __gcov_flush(void) {}
+#endif
+
 /* Weak reference function as an entry point for unit test */
 test_mockable void run_test(void) { }
 
@@ -19,8 +25,21 @@ void test_reset(void)
 	__test_error_count = 0;
 }
 
+void test_pass(void)
+{
+	__gcov_flush();
+	ccprintf("Pass!\n");
+}
+
+void test_fail(void)
+{
+	__gcov_flush();
+	ccprintf("Fail!\n");
+}
+
 void test_print_result(void)
 {
+	__gcov_flush();
 	if (__test_error_count)
 		ccprintf("Fail! (%d tests)\n", __test_error_count);
 	else

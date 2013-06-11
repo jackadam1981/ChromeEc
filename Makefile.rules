@@ -93,6 +93,18 @@ $(run-test-targets): run-%: host-%
 hosttests: $(host-test-targets)
 runtests: $(run-test-targets)
 
+.PHONY: coverage
+
+coverage:
+	@set -e ; \
+	$(MAKE) --no-print-directory clobber ; \
+	$(MAKE) --no-print-directory TEST_COVERAGE=y runtests ; \
+	for t in $(test-list-host); do \
+		lcov -o build/host/$$t.info -c -d build/host/$$t ; \
+	done ; \
+	genhtml -o coverage_rpt \
+		$(foreach t,$(test-list-host),build/host/$(t).info)
+
 $(out)/firmware_image.lds: common/firmware_image.lds.S
 	$(call quiet,lds,LDS    )
 $(out)/%.lds: core/$(CORE)/ec.lds.S

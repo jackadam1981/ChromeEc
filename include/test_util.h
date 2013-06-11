@@ -66,6 +66,10 @@ void run_test(void);
 
 void test_reset(void);
 
+void test_pass(void);
+
+void test_fail(void);
+
 void test_print_result(void);
 
 int test_get_error_count(void);
