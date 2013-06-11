@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAZ3//0fc\u003d",
+        "filename": "common/extpower_usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1002234
+      },
+      "writtenOn": "2013-06-11T00:27:20Z",
+      "side": 1,
+      "message": "Unfortunately, this change introduces a sign change in this logic.  Previously, the line would go high when the cable is disconnected.  After, the line will be ~1.8 before disconnection, and will go to ~0.0 after.\n\nI was expecting \u003c to change to \u003e.",
+      "revId": "71d448e7a044644a27c32ff946d2c4a79ba99ce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
