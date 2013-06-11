@@ -73,7 +73,7 @@
  * Mapping from PWM duty to current:
  *   Current = A + B * PWM_Duty
  */
-#define PWM_MAPPING_A 3012
+#define PWM_MAPPING_A 2958
 #define PWM_MAPPING_B (-29)
 
 static int current_dev_type = TSU6721_TYPE_NONE;
