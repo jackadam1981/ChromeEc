@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAZ3//0Xc\u003d",
+        "filename": "board/spring/usb_charging.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-06-11T02:40:21Z",
+      "side": 1,
+      "message": "Suggest also updating these:\n\nI_LIMIT_1500MA   55\n\nI_LIMIT_2000MA  40\n\nI_LIMIT_2400MA  25",
+      "revId": "7441fc595b121008f9fd57e26d4de217ea3f0430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
