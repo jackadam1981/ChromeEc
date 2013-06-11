@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAZ3//0Zk\u003d",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-06-11T03:20:28Z",
+      "side": 1,
+      "message": "Are we concerned about the race condition here? There\u0027s a small chance the RTC fires before we go back to hibernate.",
+      "revId": "b87bbc9074c35334cb3da907211b7e54494b0583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
