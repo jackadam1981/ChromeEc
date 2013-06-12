@@ -163,14 +163,21 @@ function flash_daisy() {
 	if [ "${SERVO_TYPE}" = "servo" ] ; then
 		dut_control ec_uart_en:on
 	fi
-	dut_control ec_uart_parity:even
+# jz
+#	dut_control ec_uart_parity:even
+# jz debug: seems only 'odd' works
+	dut_control ec_uart_parity:odd
 	dut_control ec_uart_baudrate:115200
 	# Force the EC to boot in serial monitor mode
 	ec_enable_boot0
 	# Reset the EC
+# jz, 'ec_reset' should be enabled for real venice board
 	ec_reset
 	# Unprotect flash, erase, and write
-	${STM32MON} -d ${EC_UART} -u -e -w ${IMG}
+# jz
+#	${STM32MON} -d ${EC_UART} -u -e -w ${IMG}
+# jz debug: seems '-u' is not supported for eval board
+	${STM32MON} -d ${EC_UART} -e -w ${IMG}
 }
 
 function flash_link() {
@@ -222,7 +229,7 @@ fi
 save="$(servo_save)"
 
 case "${BOARD}" in
-	daisy | snow | spring | pit ) flash_daisy ;;
+	puppy | daisy | snow | spring | pit ) flash_daisy ;;
 	link ) flash_link ;;
 	slippy | falco | peppy ) flash_slippy ;;
 	*) die "board ${BOARD} not supported" ;;

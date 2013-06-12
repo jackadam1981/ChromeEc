@@ -60,7 +60,8 @@ struct stm32_def {
 };
 
 #define DEFAULT_TIMEOUT 4 /* seconds */
-#define DEFAULT_BAUDRATE B38400
+//#define DEFAULT_BAUDRATE B38400
+#define DEFAULT_BAUDRATE B115200
 #define PAGE_SIZE 256
 
 /* store custom parameters */
@@ -106,11 +107,12 @@ int open_serial(const char *port)
 		return -1;
 	}
 	cfmakeraw(&cfg);
+//printf("jz: %s: set baudrate: %d\n", __func__, baudrate);
 	cfsetspeed(&cfg, baudrate);
 	/* serial mode should be 8e1 */
-	cfg.c_cflag |= PARENB;
+//	cfg.c_cflag |= PARENB;	// original
 	/* 200 ms timeout */
-	cfg.c_cc[VTIME] = 2;
+	cfg.c_cc[VTIME] = 2;	// original
 	cfg.c_cc[VMIN] = 0;
 	memcpy(&cfg_copy, &cfg, sizeof(cfg_copy));
 
@@ -127,6 +129,7 @@ int open_serial(const char *port)
 	}
 
 	if (memcmp(&cfg, &cfg_copy, sizeof(cfg))) {
+printf("jz: %s: cfg and cfg_copy are not same\n", __func__);
 		/*
 		 * On some systems the setting which does not come through is
 		 * the parity. We can try continuing without it when using
@@ -166,6 +169,25 @@ static void discard_input(int fd)
 		}
 	} while (res > 0);
 }
+
+static int loop_count = 0;
+void do_nothing(void)
+{
+	++loop_count;
+}
+
+int delay(int sec)
+{
+
+	time_t deadline = time(NULL) + sec;
+
+	while (time(NULL) < deadline) {
+		do_nothing();
+	}
+
+	return 0;
+}
+
 
 int wait_for_ack(int fd)
 {
@@ -322,6 +344,7 @@ int init_monitor(int fd)
 		if (res == 0)
 			break;
 		if (res == -EINVAL) {
+			printf("jz: NACKed in init_monitor.\n");
 			/* we got NACK'ed, the loader might be already started
 			 * let's ping it to check
 			 */
@@ -428,6 +451,8 @@ int command_write_mem(int fd, uint32_t address, uint32_t size, uint8_t *buffer)
 
 		draw_spinner(remaining, size);
 		fflush(stdout);
+//printf("Writing %d bytes at 0x%08x\n", cnt, address);
+delay(0);
 		res = send_command(fd, CMD_WRITEMEM, loads, 2, NULL, 0);
 		if (res < 0)
 			return -EIO;
@@ -460,9 +485,14 @@ int command_ext_erase(int fd, uint16_t count, uint16_t start)
 			pages[i+1] = htons(start + i);
 	}
 
+printf("%s: erase 0x%4x from 0x%4x\n", __func__, count, start);
+delay(0);
 	res = send_command(fd, CMD_EXTERASE, &load, 1, NULL, 0);
 	if (res >= 0)
-		printf("Flash erased.\n");
+		printf("Flash (ext) erased.\n");
+	else
+		printf("Flash (ext) erase failed.\n");
+
 
 	if (pages)
 		free(pages);
@@ -488,6 +518,8 @@ int command_erase(int fd, uint8_t count, uint8_t start)
 			pages[i+1] = start + i;
 	}
 
+printf("%s: erase 0x%4x from 0x%4x\n", __func__, count, start);
+delay(0);
 	res = send_command(fd, CMD_ERASE, &load, 1, NULL, 0);
 	if (res >= 0)
 		printf("Flash erased.\n");
@@ -537,11 +569,12 @@ int command_write_unprotect(int fd)
 	printf("Flash write unprotected.\n");
 
 	/* This commands triggers a reset */
+#if 0
 	if (init_monitor(fd) < 0) {
 		fprintf(stderr, "Cannot recover after WP reset\n");
 		return -EIO;
 	}
-
+#endif
 
 	return 0;
 }
@@ -680,6 +713,8 @@ speed_t parse_baudrate(const char *value)
 {
 	int rate = atoi(value);
 
+	printf("jz: baudrate: %d\n", rate);
+
 	switch (rate) {
 	case 9600:
 		return B9600;
@@ -758,10 +793,13 @@ int main(int argc, char **argv)
 	if (init_monitor(ser) < 0)
 		goto terminate;
 
+//printf("%s: before get_id\n",__func__);
 	chip = command_get_id(ser);
 	if (!chip)
 		goto terminate;
 
+//printf("%s: before get_commands\n",__func__);
+delay(0);
 	command_get_commands(ser);
 
 	if (flags & FLAG_READ_UNPROTECT)
@@ -773,16 +811,24 @@ int main(int argc, char **argv)
 		/* Mass erase is not supported on STM32L15xx */
 		/* command_ext_erase(ser, ERASE_ALL, 0); */
 		int i, page_count = chip->flash_size / chip->page_size;
+//printf("%s: before erase\n",__func__);
 		for (i = 0; i < page_count; i += 128) {
 			int count = MIN(128, page_count - i);
 			if (has_exterase)
+//{
+//printf("%s: ext erase: %d\n", __func__, count);
 				command_ext_erase(ser, count, i);
+//}
 			else
+//{
+//printf("%s: normal erase: %d\n", __func__, count);
 				command_erase(ser, count, i);
+//}
 		}
 	}
 
 	if (input_filename) {
+printf("%s: read from flash\n",__func__);
 		ret = read_flash(ser, chip, input_filename,
 				 0, chip->flash_size);
 		if (ret)
@@ -790,6 +836,7 @@ int main(int argc, char **argv)
 	}
 
 	if (output_filename) {
+printf("%s: write to flash\n",__func__);
 		ret = write_flash(ser, chip, output_filename, 0);
 		if (ret)
 			goto terminate;
@@ -797,7 +844,10 @@ int main(int argc, char **argv)
 
 	/* Run the program from flash */
 	if (flags & FLAG_GO)
+{
+printf("%s: run from flash (0x%08x)\n",__func__, chip->flash_start);
 		command_go(ser, chip->flash_start);
+}
 
 	/* Normal exit */
 	ret = 0;
