@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAZ3//yLU\u003d",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-06-12T16:06:45Z",
+      "side": 1,
+      "message": "I don\u0027t like this shell-script-hidden-in-my-makefile style,\ncan we try to do proper make rules ?\n\nsomething like that :\n##########\ncov-test-targets\u003d$(foreach t,$(test-list-host),build/host/$(t).info)\nbldversion\u003d$(shell (./util/getversion.sh ; echo VERSION) | $(CPP) -P)\n\ncmd_lcov\u003dlcov -q -o $@ -c -d build/host/$*\ncmd_report_cov\u003dgenhtml -q -o build/host/coverage_rpt -t \"EC Unittest \"$(bldversion) $^\n\nbuild/host/%.info: run-%\n        $(call quiet,lcov,COV    )\n\ncoverage: TEST_FLAG\u003dTEST_COVERAGE\u003dy\ncoverage: $(cov-test-targets)\n        $(call quiet,report_cov,REPORT )\n\n.PHONY: coverage\n####\nwith $(TEST_FLAG) added to the make commandline in the host-% rule \n\ngerrit will probably mangle my example, so the draft of the patch going on top of your CL is there : http://www.corp.google.com/~vpalatin/coverage_build.patch",
+      "revId": "922e8b081c3459feba66e0fb0e0fb93e8599c9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAZ3//yLQ\u003d",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-06-12T16:06:45Z",
+      "side": 1,
+      "message": "please do not use \"clobber\" (why clean is not good in that case ? and actually why do we even need to clean here ?)\nI was fine that Bill put this bad hack if he needs it, but I don\u0027t want all my build directory to disappear everytime I run a rule.",
+      "revId": "922e8b081c3459feba66e0fb0e0fb93e8599c9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAZ3//yLI\u003d",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-06-12T16:06:45Z",
+      "side": 1,
+      "message": "IMO the output should be in build/host/coverage_rpt rather than ROOT/coverage_rpt",
+      "revId": "922e8b081c3459feba66e0fb0e0fb93e8599c9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAZ3//yKc\u003d",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-06-12T16:06:45Z",
+      "side": 1,
+      "message": "this is not working reliably for me, version string is often empty.\nmaybe you can execute ./util/getversion.sh directly rather than relying on ec_version.h to be present when executing the macro expansion ?",
+      "revId": "922e8b081c3459feba66e0fb0e0fb93e8599c9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAZ3//yLk\u003d",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-06-12T16:06:45Z",
+      "side": 1,
+      "message": "nit: this line looks a bit long",
+      "revId": "922e8b081c3459feba66e0fb0e0fb93e8599c9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
