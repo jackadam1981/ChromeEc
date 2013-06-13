@@ -148,6 +148,7 @@ const struct i2c_port_t i2c_ports[I2C_PORTS_USED] = {
 /* Temperature sensors data; must be in same order as enum temp_sensor_id. */
 const struct temp_sensor_t temp_sensors[TEMP_SENSOR_COUNT] = {
 /* HEY: Need correct I2C addresses and read function for external sensor */
+/* I2C address for temp sensor is 0x4c */
 	{"ECInternal", TEMP_SENSOR_TYPE_BOARD, chip_temp_sensor_get_val, 0, 4},
 #ifdef CONFIG_PECI
 	{"PECI", TEMP_SENSOR_TYPE_CPU, peci_temp_sensor_get_val, 0, 2},
