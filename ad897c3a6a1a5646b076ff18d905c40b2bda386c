@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAZ3//wOM\u003d",
+        "filename": "Makefile.rules",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-06-13T21:26:01Z",
+      "side": 1,
+      "message": "if you no longer have a dependency for that rule, it somehow needs to be a PHONY target else it won\u0027t be rebuild everytime.",
+      "revId": "ad897c3a6a1a5646b076ff18d905c40b2bda386c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAZ3//wBM\u003d",
+        "filename": "Makefile.rules",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-06-13T21:26:01Z",
+      "side": 1,
+      "message": "yes because gcov is using files like \" core#host#timer.c.gcov\" which are conflicting between test",
+      "revId": "ad897c3a6a1a5646b076ff18d905c40b2bda386c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
