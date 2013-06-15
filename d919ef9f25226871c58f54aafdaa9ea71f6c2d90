@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAZ3//t0c\u003d",
+        "filename": "Makefile.rules",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-06-15T14:53:50Z",
+      "side": 1,
+      "message": "you need to move that comment above cmd_lcov\nand update the part about jobserver to mention flock instead",
+      "revId": "d919ef9f25226871c58f54aafdaa9ea71f6c2d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
