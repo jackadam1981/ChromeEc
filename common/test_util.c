@@ -9,6 +9,7 @@
 #include <stdlib.h>
 
 #include "console.h"
+#include "host_command.h"
 #include "test_util.h"
 #include "util.h"
 
@@ -62,6 +63,22 @@ void test_print_result(void)
 int test_get_error_count(void)
 {
 	return __test_error_count;
+}
+
+int test_send_host_command(int command, int version, const void *params,
+			   int params_size, void *resp, int resp_size)
+{
+	struct host_cmd_handler_args args;
+
+	args.version = version;
+	args.command = command;
+	args.params = params;
+	args.params_size = params_size;
+	args.response = resp;
+	args.response_max = resp_size;
+	args.response_size = 0;
+
+	return host_command_process(&args);
 }
 
 static int command_run_test(int argc, char **argv)
