@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAaH///tA\u003d",
+        "filename": "common/extpower_usb.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-06-17T13:54:37Z",
+      "side": 1,
+      "message": "typo: E is missing",
+      "revId": "21bef74c0f12e65107db720a3e3b6ba2b52123a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAaH///s4\u003d",
+        "filename": "common/extpower_usb.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-06-17T13:54:37Z",
+      "side": 1,
+      "message": "why are we resetting the TSU6721 here ?",
+      "revId": "21bef74c0f12e65107db720a3e3b6ba2b52123a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
