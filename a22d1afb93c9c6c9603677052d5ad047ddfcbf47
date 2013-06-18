@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAAaH//9H0\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-06-18T19:12:02Z",
+      "side": 1,
+      "message": "pit?",
+      "revId": "a22d1afb93c9c6c9603677052d5ad047ddfcbf47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAaH//9Fs\u003d",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-06-18T19:12:02Z",
+      "side": 1,
+      "message": "Can we not make this code common with the code at the end of this function? You seem to be repeating yourself.",
+      "revId": "a22d1afb93c9c6c9603677052d5ad047ddfcbf47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAaH//9SY\u003d",
         "filename": "common/host_command.c",
         "patchSetId": 2
