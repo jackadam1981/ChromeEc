@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAaH//9SY\u003d",
+        "filename": "common/host_command.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-06-18T18:27:43Z",
+      "side": 1,
+      "message": "Maybe put all this new stuff into a new file? host_command3.c, or something?",
+      "revId": "a22d1afb93c9c6c9603677052d5ad047ddfcbf47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAaH//9Rk\u003d",
+        "filename": "common/host_command.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-06-18T18:27:43Z",
+      "side": 1,
+      "message": "Change name to \u0027host_packet_received\u0027, to match verb tense of host_command_recieved ?",
+      "revId": "a22d1afb93c9c6c9603677052d5ad047ddfcbf47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAaH//9NQ\u003d",
+        "filename": "common/host_command.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-06-18T18:27:43Z",
+      "side": 1,
+      "message": "This never happens.  driver_result is set to EC_RES_SUCCESS immediately before calling host_packet_receive[d].",
+      "revId": "a22d1afb93c9c6c9603677052d5ad047ddfcbf47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
