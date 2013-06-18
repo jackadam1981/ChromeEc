@@ -17,6 +17,7 @@
 #include "spi.h"
 #include "timer.h"
 #include "util.h"
+#include "task.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_SPI, outstr)
@@ -86,6 +87,19 @@ static uint8_t active;
 static uint8_t enabled;
 static struct host_cmd_handler_args args;
 
+#define DS_SIZE	1024
+int debug_save_store[DS_SIZE];
+int ds_index;
+int ds_wrapped;
+
+void debug_save(int value)
+{
+	debug_save_store[ds_index++] = value;
+	if (ds_index >= DS_SIZE) {
+		ds_index = 0;
+		ds_wrapped = 1;
+	}
+}
 /**
  * Wait until we have received a certain number of bytes
  *
@@ -165,6 +179,10 @@ static void reply(struct dma_channel *txdma,
 	int sum, i;
 	int copy;
 
+	debug_save(0x33330000+msg_len);
+	for (i=0; i<msg_len; ++i) {
+		debug_save(msg_ptr[i]);
+	}
 	msg = out_msg;
 	copy = msg_ptr != msg + SPI_MSG_HEADER_LEN;
 
@@ -192,6 +210,10 @@ static void reply(struct dma_channel *txdma,
 	msg[msg_len - 1] = SPI_MSG_PREAMBLE_BYTE;
 	dma_prepare_tx(&dma_tx_option, msg_len, msg);
 
+	debug_save(0x33440000+msg_len);
+	for (i=0; i<msg_len; ++i) {
+		debug_save(msg[i]);
+	}
 	/* Kick off the DMA to send the data */
 	dma_go(txdma);
 }
@@ -209,6 +231,7 @@ static void setup_for_transaction(void)
 
 	/* We are no longer actively processing a transaction */
 	active = 0;
+	debug_save(0x1111eeee);
 
 	/* write 0xfd which will be our default output value */
 	spi->data = 0xfd;
@@ -233,8 +256,10 @@ static void spi_send_response(struct host_cmd_handler_args *args)
 	struct dma_channel *txdma;
 
 	/* If we are too late, don't bother */
-	if (!active)
+	if (!active) {
+		debug_save(0x1111ffff);
 		return;
+	}
 
 	if (args->response_size > EC_HOST_PARAM_SIZE)
 		result = EC_RES_INVALID_RESPONSE;
@@ -262,9 +287,15 @@ void spi_event(enum gpio_signal signal)
 	uint16_t *nss_reg;
 	uint32_t nss_mask;
 
+	debug_save(0x11110000);
+	debug_save(gpio_get_level(GPIO_SPI1_NSS));
+	debug_save(enabled);
+
 	/* If not enabled, ignore glitches on NSS */
 	if (!enabled)
 		return;
+
+	debug_save(0x11111234);
 
 	/*
 	 * If NSS is rising, we have finished the transaction, so prepare
@@ -273,6 +304,8 @@ void spi_event(enum gpio_signal signal)
 	nss_reg = gpio_get_level_reg(GPIO_SPI1_NSS, &nss_mask);
 	if (REG16(nss_reg) & nss_mask) {
 		setup_for_transaction();
+		debug_save(0x11111111);
+		debug_save(gpio_get_level(GPIO_SPI1_NSS));
 		return;
 	}
 
@@ -283,6 +316,7 @@ void spi_event(enum gpio_signal signal)
 	/* Wait for version, command, length bytes */
 	if (wait_for_bytes(rxdma, 3, nss_reg, nss_mask)) {
 		setup_for_transaction();
+		debug_save(0x11112222);
 		return;
 	}
 
@@ -302,7 +336,18 @@ void spi_event(enum gpio_signal signal)
 	/* Wait for parameters */
 	if (wait_for_bytes(rxdma, 3 + args.params_size, nss_reg, nss_mask)) {
 		setup_for_transaction();
+		debug_save(0x11113333);
 		return;
+	}
+
+	debug_save(0x11112345);
+	debug_save(in_msg[0]);
+	debug_save(in_msg[1]);
+	debug_save(in_msg[2]);
+	{
+		int i;
+		for (i=0; i<args.params_size; ++i)
+			debug_save(in_msg[3+i]);
 	}
 
 	/* Process the command and send the reply */
@@ -314,7 +359,9 @@ void spi_event(enum gpio_signal signal)
 	args.response_size = 0;
 	args.result = EC_RES_SUCCESS;
 
+	debug_save(0x11113456);
 	host_command_received(&args);
+	debug_save(0x11114567);
 }
 
 static void spi_init(void)
@@ -363,3 +410,64 @@ static void spi_chipset_shutdown(void)
 	gpio_set_alternate_function(GPIO_A, 0xf0, -1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, spi_chipset_shutdown, HOOK_PRIO_DEFAULT);
+
+#if 1
+static int command_dump_debug_save(int argc, char **argv)
+{
+	uint32_t count;
+	int i, j;
+	char *e;
+
+	if (argc == 1)
+		/* no count field entered, assume dumping all debug_save */
+		count = DS_SIZE;
+
+	if (argc == 2) {
+		count = strtoi(argv[1], &e, 0);
+		if (*e)
+			return EC_ERROR_PARAM1;
+	}
+
+	if (count > DS_SIZE)
+		ccprintf("Max count is %u\n", DS_SIZE);
+
+	if (count >= ds_index) {
+		if (!ds_wrapped) {
+			count = ds_index;
+		} else {
+			for (j = 0, i = ds_index; i < DS_SIZE; ++i, ++j) {
+				if ((j % 8) == 0)
+					ccprintf("\n%04x(@0x%08x): ", j, &debug_save_store[i]);
+				ccprintf("%08x ", debug_save_store[i]);
+				if ((j % 8) == 7)
+					task_wait_event(SECOND/10);
+			}
+			for (i = 0; i < ds_index; ++i, ++j) {
+				if ((j % 8) == 0)
+					ccprintf("\n%04x(@0x%08x): ", j, &debug_save_store[i]);
+				ccprintf("%08x ", debug_save_store[i]);
+				if ((j % 8) == 7)
+					task_wait_event(SECOND/10);
+			}
+		}
+	}
+
+	if (count <= ds_index) {
+		for (j = 0, i = ds_index-count; i < ds_index; ++i, ++j) {
+			if ((j % 8) == 0)
+					ccprintf("\n%04x(@0x%08x): ", j, &debug_save_store[i]);
+			ccprintf("%08x ", debug_save_store[i]);
+			if ((j % 8) == 7)
+				task_wait_event(SECOND/10);
+		}
+	}
+	ccprintf("\n");
+
+	return EC_SUCCESS;
+}
+
+DECLARE_CONSOLE_COMMAND(dump_ds, command_dump_debug_save,
+			"count",
+			"Dump DebugSave",
+			NULL);
+#endif
