@@ -565,8 +565,8 @@ static void usb_device_change(int dev_type)
 
 	if (dev_type != current_dev_type) {
 		usb_log_dev_type(dev_type);
-		keyboard_send_battery_key();
 		current_dev_type = dev_type;
+		keyboard_send_battery_key();
 	}
 
 	if (dev_type)
