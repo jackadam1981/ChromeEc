@@ -16,6 +16,24 @@
       "revId": "6dadf29b46745a69f829ced98495bb50dce66a83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAaH//9h4\u003d",
+        "filename": "test/kb_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-06-18T15:52:11Z",
+      "side": 1,
+      "message": "We already have system_hibernate() (partially) implemented in chip/host/system.c. I\u0027m planning to make it work like what we did for reboot. So this one here overrides the default one and is only for this test now.",
+      "parentUuid": "AAAAaH//9lE\u003d",
+      "revId": "6dadf29b46745a69f829ced98495bb50dce66a83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
