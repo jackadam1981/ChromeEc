@@ -16,6 +16,24 @@
       "revId": "02a600f4edd9209ce7af595dcf5320c1c2364893",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAaH//7sg\u003d",
+        "filename": "common/extpower_usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-06-19T05:35:27Z",
+      "side": 1,
+      "message": "I\u0027ve added comment to explain this tricky implication. Thanks!",
+      "parentUuid": "AAAAaH//7sw\u003d",
+      "revId": "02a600f4edd9209ce7af595dcf5320c1c2364893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
