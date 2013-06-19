@@ -279,7 +279,7 @@ static int apple_charger_current(void)
 static int hard_current_limit(int limit)
 {
 	if (current_limit_mode == LIMIT_AGGRESSIVE)
-		return limit - PWM_CTRL_OC_MARGIN;
+		return MIN(limit + PWM_CTRL_OC_MARGIN, 100);
 	else
 		return limit;
 }
@@ -524,6 +524,8 @@ static void usb_update_ilim(int dev_type)
 			current_limit = hard_current_limit(I_LIMIT_1500MA);
 		else if (dev_type & TSU6721_TYPE_JIG_UART_ON)
 			current_limit = hard_current_limit(I_LIMIT_2000MA);
+		else if (dev_type & TOAD_DEVICE_TYPE)
+			current_limit = hard_current_limit(I_LIMIT_500MA);
 
 		pwm_nominal_duty_cycle(current_limit);
 	} else {
