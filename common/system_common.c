@@ -842,7 +842,7 @@ int host_command_vbnvcontext(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_VBNV_CONTEXT,
 		     host_command_vbnvcontext,
-		     EC_VER_MASK(EC_VER_VBNV_CONTEXT));
+		     EC_VER_MASK(EC_VER_VBNV_CONTEXT) | EC_VER_MASK(0));
 
 int host_command_reboot(struct host_cmd_handler_args *args)
 {
