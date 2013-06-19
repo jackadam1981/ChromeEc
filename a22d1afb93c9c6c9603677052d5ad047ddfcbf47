@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAaH//8TI\u003d",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-06-19T23:45:47Z",
+      "side": 1,
+      "message": "Not really; processing the reply is different.",
+      "parentUuid": "AAAAaH//9Fs\u003d",
+      "revId": "a22d1afb93c9c6c9603677052d5ad047ddfcbf47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAaH//9SY\u003d",
         "filename": "common/host_command.c",
         "patchSetId": 2
@@ -70,6 +88,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAaH//8S8\u003d",
+        "filename": "common/host_command.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-06-19T23:45:47Z",
+      "side": 1,
+      "message": "I should change host_packet_received().  Function names are supposed to be actions.",
+      "parentUuid": "AAAAaH//9Rk\u003d",
+      "revId": "a22d1afb93c9c6c9603677052d5ad047ddfcbf47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAaH//9NQ\u003d",
         "filename": "common/host_command.c",
         "patchSetId": 2
@@ -81,6 +117,24 @@
       "writtenOn": "2013-06-18T18:27:43Z",
       "side": 1,
       "message": "This never happens.  driver_result is set to EC_RES_SUCCESS immediately before calling host_packet_receive[d].",
+      "revId": "a22d1afb93c9c6c9603677052d5ad047ddfcbf47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAaH//6Qg\u003d",
+        "filename": "common/host_command.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-06-19T23:45:47Z",
+      "side": 1,
+      "message": "LPC and I2C may pass in errors.  I\u0027ll add in a TODO to double-check this once that code\u0027s added.",
+      "parentUuid": "AAAAaH//9NQ\u003d",
       "revId": "a22d1afb93c9c6c9603677052d5ad047ddfcbf47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
