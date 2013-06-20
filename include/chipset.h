@@ -78,6 +78,7 @@ void chipset_throttle_cpu(int throttle);
  */
 void chipset_force_shutdown(void);
 
+#ifdef HAS_TASK_CHIPSET
 /**
  * Reset the CPU and/or chipset.
  *
@@ -85,5 +86,8 @@ void chipset_force_shutdown(void);
  *			if 0, just pulse the reset line to the CPU.
  */
 void chipset_reset(int cold_reset);
+#else
+static inline void chipset_reset(int cold_reset) { }
+#endif
 
 #endif  /* __CROS_EC_CHIPSET_H */
