@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAaH//6NM\u003d",
+        "filename": "common/system_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-06-20T00:05:09Z",
+      "side": 1,
+      "message": "Add \n\n/* TODO(crbug.com/239197) : This is a temporary workaround for a problem in the cros_ec driver.  Drop EC_VER_MASK(0) once cros_ec driver can send the correct version. */\n\nor something similar.",
+      "revId": "eeb7a01520ca092111c9ff52bf145e57da370336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
