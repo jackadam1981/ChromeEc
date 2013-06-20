@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAaH//5J4\u003d",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-06-20T15:48:18Z",
+      "side": 1,
+      "message": "Sanity-check: p-\u003eret_len \u003c min(sizeof(p-\u003ebuf), sizeof(r-\u003ebuf))\n\n(either return error or just truncate the copy)",
+      "revId": "934c41ee7c4091d078eb3bc33a87e301430fa3ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAaH//5Jo\u003d",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-06-20T15:48:18Z",
+      "side": 1,
+      "message": "Sanity-check: p-\u003eec_result !\u003d EC_RES_IN_PROGRESS",
+      "revId": "934c41ee7c4091d078eb3bc33a87e301430fa3ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
