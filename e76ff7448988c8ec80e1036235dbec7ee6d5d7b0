@@ -16,6 +16,24 @@
       "revId": "e76ff7448988c8ec80e1036235dbec7ee6d5d7b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAaH//2Jg\u003d",
+        "filename": "board/pit/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-06-21T23:49:32Z",
+      "side": 1,
+      "message": "Very, very few things are in the README.  Some of them aren\u0027t so - for example, that the code wraps the Blizzard driverlib.\n\nFixing the README to reflect reality is probably better done in a separate CL.",
+      "parentUuid": "AAAAaH//2bg\u003d",
+      "revId": "e76ff7448988c8ec80e1036235dbec7ee6d5d7b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
