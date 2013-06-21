@@ -478,12 +478,18 @@ static void board_adc_watchdog_interrupt(void)
 }
 DECLARE_IRQ(STM32_IRQ_ADC_1, board_adc_watchdog_interrupt, 2);
 
-static int usb_has_power_input(int dev_type)
+static int usb_maybe_power_input(int dev_type)
 {
 	if (dev_type & TSU6721_TYPE_JIG_UART_ON)
 		return 1;
 	return (dev_type & TSU6721_TYPE_VBUS_DEBOUNCED) &&
 	       !(dev_type & POWERED_5000_DEVICE_TYPE);
+}
+
+static int usb_has_power_input(int dev_type)
+{
+	return !!(usb_maybe_power_input(dev_type) &&
+		 (dev_type & TSU6721_TYPE_VBUS_DEBOUNCED));
 }
 
 static int usb_need_boost(int dev_type)
@@ -575,7 +581,7 @@ static int usb_manage_boost(int dev_type)
 /* Updates ILIM current limit according to device type. */
 static void usb_update_ilim(int dev_type)
 {
-	if (usb_has_power_input(dev_type)) {
+	if (usb_maybe_power_input(dev_type)) {
 		/* Limit USB port current. 500mA for not listed types. */
 		int current_limit = I_LIMIT_500MA;
 		if (dev_type & TSU6721_TYPE_CHG12)
@@ -604,6 +610,16 @@ static void usb_log_dev_type(int dev_type)
 		if (dev_type & known_dev_types[i].type)
 			CPRINTF(" %s", known_dev_types[i].name);
 	CPRINTF("]\n");
+}
+
+static void notify_dev_type_change(int dev_type)
+{
+	usb_log_dev_type(dev_type);
+	if (usb_has_power_input(current_dev_type) !=
+	    usb_has_power_input(dev_type))
+		hook_notify(HOOK_AC_CHANGE);
+	current_dev_type = dev_type;
+	keyboard_send_battery_key();
 }
 
 static void usb_device_change(int dev_type)
@@ -638,7 +654,6 @@ static void usb_device_change(int dev_type)
 		board_adc_watch_usb();
 
 	if (dev_type != current_dev_type) {
-		usb_log_dev_type(dev_type);
 		if ((dev_type & TSU6721_TYPE_NON_STD_CHG ||
 		     dev_type == TSU6721_TYPE_VBUS_DEBOUNCED) &&
 		    charger_need_redetect == NO_REDETECT) {
@@ -652,8 +667,7 @@ static void usb_device_change(int dev_type)
 			/* Not non-std charger. Disarm redetection timer. */
 			charger_need_redetect = NO_REDETECT;
 		}
-		current_dev_type = dev_type;
-		keyboard_send_battery_key();
+		notify_dev_type_change(dev_type);
 	}
 
 	if (dev_type)
@@ -690,13 +704,13 @@ static void board_usb_monitor_detach(void)
 	vbus = adc_read_channel(ADC_CH_USB_VBUS_SNS);
 	if (get_video_power() && vbus > 4000) {
 		set_video_power(0);
-		current_dev_type |= TSU6721_TYPE_VBUS_DEBOUNCED;
-		keyboard_send_battery_key();
+		notify_dev_type_change(current_dev_type |
+				       TSU6721_TYPE_VBUS_DEBOUNCED);
 	} else if  (!get_video_power() && vbus <= 4000) {
 		board_pwm_duty_cycle(100);
 		set_video_power(1);
-		current_dev_type &= ~TSU6721_TYPE_VBUS_DEBOUNCED;
-		keyboard_send_battery_key();
+		notify_dev_type_change(current_dev_type &
+				       ~TSU6721_TYPE_VBUS_DEBOUNCED);
 	}
 }
 DECLARE_HOOK(HOOK_SECOND, board_usb_monitor_detach, HOOK_PRIO_DEFAULT);
