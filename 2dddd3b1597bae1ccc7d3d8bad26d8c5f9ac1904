@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAaH//3EY\u003d",
+        "filename": "common/led_falco.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-06-21T15:35:15Z",
+      "side": 1,
+      "message": "Since setting the LED is just poking a GPIO or two, just do:\n\npwr_led_set_color(LED_OFF);\n\nThere\u0027s no harm in setting the GPIO to the same state it\u0027s already in.\n\nAnd then you can get rid of all the enum led_color vars in this function.\n\nIf setting the LED was slow on some similar-but-future platform, we could put the static current_color inside pwr_led_set_color() itself.",
+      "revId": "2dddd3b1597bae1ccc7d3d8bad26d8c5f9ac1904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
