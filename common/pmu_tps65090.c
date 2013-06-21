@@ -86,6 +86,7 @@
 #define FET_CTRL_ADENFET (1 << 1)
 #define FET_CTRL_WAIT    (3 << 2) /* Overcurrent timeout max : 3200 us */
 #define FET_CTRL_PGFET   (1 << 4)
+#define FET_CTRL_TOFET   (1 << 7)
 
 #define FET_CTRL_BASE (FET1_CTRL - 1)
 
@@ -672,6 +673,85 @@ static int command_pmu(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(pmu, command_pmu,
 			"<repeat_count|reset>",
 			"Print PMU info or force a hard reset",
+			NULL);
+
+#define FET1_ON_USECS 6000
+#define FET1_OFF_USECS 3000
+static int command_pmu_fet1(int argc, char **argv)
+{
+	int repeat = 1;
+	int rv = 0;
+	int loop;
+	int value = 0;
+	char *e;
+	int pass = 0;
+	int fail = 0;
+	int on_usecs = FET1_ON_USECS;
+	int off_usecs = FET1_OFF_USECS;
+
+	if (argc > 1) {
+		repeat = strtoi(argv[1], &e, 0);
+		if (*e) {
+			ccputs("Invalid REPEAT count\n");
+			return EC_ERROR_INVAL;
+		}
+	}
+	if (argc > 2) {
+		on_usecs = strtoi(argv[2], &e, 0);
+		if (*e) {
+			ccputs("Invalid ON microseconds\n");
+			return EC_ERROR_INVAL;
+		}
+	}
+	if (argc > 3) {
+		off_usecs = strtoi(argv[3], &e, 0);
+		if (*e) {
+			ccputs("Invalid OFF microseconds\n");
+			return EC_ERROR_INVAL;
+		}
+	}
+	CPRINTF("%T FET1 test: repeat:%d on_usecs:%d off_usecs:%d\n",
+		repeat, on_usecs, off_usecs);
+
+	for (loop = 1; loop <= repeat; loop++) {
+		/* Enable FET1 <0> */
+		rv = pmu_write(FET1_CTRL, 0xf);
+		if (rv)
+			goto cmd_error;
+		usleep(on_usecs);
+
+		/* Check timeout/overload or no pgood */
+		rv = pmu_read(FET1_CTRL, &value);
+		if (rv)
+			goto cmd_error;
+		if ((value & FET_CTRL_TOFET) || !(value & FET_CTRL_PGFET))
+			fail++;
+		else
+			pass++;
+
+		/* Disable FET1 <0> */
+		rv = pmu_write(FET1_CTRL, 0xe);
+		if (rv)
+			goto cmd_error;
+		usleep(off_usecs);
+
+		/* print status every 1024 iterations */
+		if (loop && !(loop % 0x400))
+			CPRINTF("%T FET1 test: pass:%d fail:%d loop:%d\n",
+				pass, fail, loop);
+	}
+	CPRINTF("%T FET1 test: pass:%d fail:%d total:%d\n",
+		pass, fail, repeat);
+	return 0;
+
+cmd_error:
+	CPRINTF("%T FET1 test: pass:%d fail:%d count:%d total:%d rv=%d\n",
+		pass, fail, loop, repeat, rv);
+	return rv;
+}
+DECLARE_CONSOLE_COMMAND(pmu_fet1, command_pmu_fet1,
+			"[<REPEAT_count> <ON_usecs> <OFF_usecs>]",
+			"overload test for FET1 and report stats periodically",
 			NULL);
 #endif
 
