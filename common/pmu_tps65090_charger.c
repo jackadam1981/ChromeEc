@@ -448,6 +448,7 @@ void pmu_charger_task(void)
 #endif
 
 	while (1) {
+		has_pending_event = 0;
 		last_waken = get_time();
 		pmu_clear_irq();
 
@@ -544,8 +545,6 @@ void pmu_charger_task(void)
 		if (!has_pending_event) {
 			task_wait_event(wait_time);
 			disable_sleep(SLEEP_MASK_CHARGING);
-		} else {
-			has_pending_event = 0;
 		}
 	}
 }
@@ -559,6 +558,12 @@ void pmu_task_throttled_wake(void)
 	} else {
 		has_pending_event = 1;
 	}
+}
+
+void pmu_task_wake(void)
+{
+	has_pending_event = 1;
+	task_wake(TASK_ID_PMU_TPS65090_CHARGER);
 }
 
 static void wake_pmu_task_if_necessary(void)

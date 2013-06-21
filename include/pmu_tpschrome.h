@@ -270,6 +270,11 @@ int board_get_ac(void);
 void board_hard_reset(void);
 
 /**
+ * Wake TPS65090 charger task, or schedule a re-run if it's running.
+ */
+void pmu_task_wake(void);
+
+/**
  * Wake TPS65090 charger task, but throttled to at most one call per tick
  */
 void pmu_task_throttled_wake(void);

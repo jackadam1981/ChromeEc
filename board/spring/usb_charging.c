@@ -436,7 +436,7 @@ void board_pwm_nominal_duty_cycle(int percent)
 
 void usb_charge_interrupt(enum gpio_signal signal)
 {
-	task_wake(TASK_ID_PMU_TPS65090_CHARGER);
+	pmu_task_wake();
 }
 
 static void board_adc_watch_vbus(int high, int low)
@@ -470,7 +470,7 @@ static void board_adc_watchdog_interrupt(void)
 		pending_tsu6721_reset = 1;
 		pending_adc_watchdog_disable = 1;
 		task_disable_irq(STM32_IRQ_ADC_1);
-		task_wake(TASK_ID_PMU_TPS65090_CHARGER);
+		pmu_task_wake();
 		break;
 	default:
 		break;
@@ -669,7 +669,7 @@ static void board_usb_detach_video(void)
 	set_video_power(0);
 	restore_id_mux = 1;
 	pending_tsu6721_reset = 1;
-	task_wake(TASK_ID_PMU_TPS65090_CHARGER);
+	pmu_task_wake();
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_usb_detach_video, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_usb_detach_video, HOOK_PRIO_DEFAULT);
@@ -728,7 +728,7 @@ static void board_usb_charger_redetect(void)
 		else
 			pending_dev_type_update = 1;
 		charger_need_redetect = REDETECTED;
-		task_wake(TASK_ID_PMU_TPS65090_CHARGER);
+		pmu_task_wake();
 	}
 }
 DECLARE_HOOK(HOOK_SECOND, board_usb_charger_redetect, HOOK_PRIO_DEFAULT);
