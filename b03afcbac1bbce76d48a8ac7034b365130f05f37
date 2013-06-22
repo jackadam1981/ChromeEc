@@ -16,6 +16,24 @@
       "revId": "b03afcbac1bbce76d48a8ac7034b365130f05f37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAaH//10A\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-06-22T08:05:53Z",
+      "side": 1,
+      "message": "The precision of that delay should be better than 5%.",
+      "parentUuid": "AAAAaH//190\u003d",
+      "revId": "b03afcbac1bbce76d48a8ac7034b365130f05f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
