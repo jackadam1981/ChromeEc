@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAaH//190\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-06-22T02:58:44Z",
+      "side": 1,
+      "message": "Not sure how long it actually takes to sleep for only 3ms. If the test length is too long, we can try to do something like alternating between udelay and usleep. (although I don\u0027t know how much that would improve things. just a thought.)",
+      "revId": "b03afcbac1bbce76d48a8ac7034b365130f05f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
