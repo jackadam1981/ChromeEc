@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAaH//1js\u003d",
+        "filename": "common/led_peppy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2013-06-24T01:51:24Z",
+      "side": 1,
+      "message": "How about refactoring bat_led_set_color + pwr_led_set_color to be a single function (ex. led_set_color) w/ two extra GPIO parameters?",
+      "revId": "4f2333de629fdc740be1486a56564f0dc3d89d72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
