@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAaX///z8\u003d",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2013-06-24T18:05:43Z",
+      "side": 1,
+      "message": "Note: No need to save / restore keyboard_enabled. It will automatically get restored from update_ctl_ram.",
+      "revId": "3231b18e3f3ab419714d5355e2fdc29b4dbf3a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
