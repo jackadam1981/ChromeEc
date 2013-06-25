@@ -34,6 +34,7 @@
 #define CONFIG_POWER_BUTTON
 #define CONFIG_PWM_FAN
 #define CONFIG_TEMP_SENSOR
+#define CONFIG_G781
 #define CONFIG_USB_PORT_POWER_DUMB
 
 #ifndef __ASSEMBLER__
@@ -45,7 +46,7 @@
 /* I2C ports */
 #define I2C_PORT_BATTERY 0
 #define I2C_PORT_CHARGER 0
-#define I2C_PORT_THERMAL 2
+#define I2C_PORT_THERMAL 5
 /* There are only two I2C ports used because battery and charger share a port */
 #define I2C_PORTS_USED 2
 
@@ -169,8 +170,9 @@ enum adc_channel {
 };
 
 enum temp_sensor_id {
-	/* HEY - need two I2C sensor values */
-
+	/* G781 internal and external sensors */
+	TEMP_SENSOR_I2C_G781_INTERNAL = 0,
+	TEMP_SENSOR_I2C_G781_EXTERNAL,
 	/* EC internal temperature sensor */
 	TEMP_SENSOR_EC_INTERNAL,
 	/* CPU die temperature via PECI */

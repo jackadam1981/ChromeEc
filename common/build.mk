@@ -30,6 +30,7 @@ common-$(CONFIG_EXTPOWER_SNOW)+=extpower_snow.o
 common-$(CONFIG_EXTPOWER_USB)+=extpower_usb.o
 common-$(CONFIG_FLASH)+=flash_common.o
 common-$(CONFIG_FMAP)+=fmap.o
+common-$(CONFIG_G781)+=g781.o
 common-$(CONFIG_I2C)+=i2c_common.o
 common-$(CONFIG_I2C_ARBITRATION)+=i2c_arbitration.o
 common-$(CONFIG_IR357x)+=ir357x.o
