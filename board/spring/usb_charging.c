@@ -52,6 +52,7 @@
 #define MA_TO_PWM(curr) (((curr) - PWM_MAPPING_A) / PWM_MAPPING_B)
 
 /* PWM controlled current limit */
+#define I_LIMIT_0MA     MA_TO_PWM(0)
 #define I_LIMIT_500MA   MA_TO_PWM(500)
 #define I_LIMIT_1000MA  MA_TO_PWM(1000)
 #define I_LIMIT_1500MA  MA_TO_PWM(1500)
@@ -271,7 +272,7 @@ static int hard_current_limit(int limit)
 	 * (Note that lower PWM cycle translates to higher current)
 	 */
 	if (current_limit_mode == LIMIT_AGGRESSIVE)
-		return MIN(limit + PWM_CTRL_OC_MARGIN, 100);
+		return limit + PWM_CTRL_OC_MARGIN;
 	else
 		return limit;
 }
@@ -597,7 +598,7 @@ static void usb_update_ilim(int dev_type)
 		else if (dev_type & TSU6721_TYPE_JIG_UART_ON)
 			current_limit = hard_current_limit(I_LIMIT_2000MA);
 		else if (dev_type & TOAD_DEVICE_TYPE)
-			current_limit = hard_current_limit(I_LIMIT_500MA);
+			current_limit = hard_current_limit(I_LIMIT_0MA);
 
 		board_pwm_nominal_duty_cycle(current_limit);
 	} else {
