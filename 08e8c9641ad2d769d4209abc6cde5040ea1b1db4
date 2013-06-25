@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAbn//+ec\u003d",
+        "filename": "chip/stm32/clock-stm32l15x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-06-25T22:00:08Z",
+      "side": 1,
+      "message": "The first sentence doesn\u0027t parse for me",
+      "revId": "08e8c9641ad2d769d4209abc6cde5040ea1b1db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAbn//+eo\u003d",
+        "filename": "chip/stm32/clock-stm32l15x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-06-25T22:00:08Z",
+      "side": 1,
+      "message": "Are these the same bit defines you didn\u0027t have in the previous CL?",
+      "revId": "08e8c9641ad2d769d4209abc6cde5040ea1b1db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
