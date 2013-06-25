@@ -309,6 +309,13 @@ void chipset_exit_hard_off(void)
 void chipset_throttle_cpu(int throttle)
 {
 	/* FIXME CPRINTF("[%T %s(%d)]\n", __func__, throttle);*/
+#ifdef BOARD_peppy
+	throttle_cpu = throttle;
+
+	/* Immediately set throttling if CPU is on */
+	if (state == X86_S0)
+		gpio_set_level(GPIO_CPU_PROCHOT, throttle);
+#endif
 }
 
 /*****************************************************************************/
