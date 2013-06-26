@@ -16,7 +16,7 @@
 
 /* Optional features */
 #ifdef HAS_TASK_CHIPSET
-#define CONFIG_CHIPSET_X86_HASWELL
+#define CONFIG_POWER_SEQUENCE
 #endif
 #define CONFIG_CUSTOM_KEYSCAN
 #define CONFIG_EXTPOWER_GPIO
@@ -29,11 +29,11 @@
 #define CONFIG_POWER_BUTTON
 #define CONFIG_WP_ACTIVE_HIGH
 
-/* Stuff which doesn't work yet
 #define CONFIG_SMART_BATTERY
-#define CONFIG_BATTERY_SLIPPY
 #define CONFIG_CHARGER
-#define CONFIG_CHARGER_BQ24707A
+#define CONFIG_CHARGER_BQ24715
+#define CONFIG_BATTERY_LINK
+/* Stuff which doesn't work yet
 #define CONFIG_PWM_FAN
 #define CONFIG_TEMP_SENSOR
 #define CONFIG_USB_PORT_POWER_DUMB
@@ -107,7 +107,7 @@ enum gpio_signal {
 	GPIO_PP3300_DX_EN,         /* Enable power to lots of peripherals */
 	GPIO_PP3300_LTE_EN,        /* Enable LTE radio */
 	GPIO_PP3300_WLAN_EN,       /* Enable WiFi power */
-	GPIO_SUSP_VR_EN,           /* Enable 1.05V regulator */
+	GPIO_PP1050_EN,            /* Enable 1.05V regulator */
 	GPIO_VCORE_EN,             /* Stuffing option - not connected */
 	GPIO_PP5000_EN,            /* Enable 5V supply */
 	GPIO_SYS_PWROK,            /* EC thinks everything is up and ready */
@@ -126,7 +126,7 @@ enum gpio_signal {
 	GPIO_PCH_PWRBTN_L,         /* Power button output to PCH */
 	GPIO_PCH_PWROK,            /* PWROK / APWROK signals to PCH */
 	GPIO_PCH_RCIN_L,           /* RCIN# line to PCH (for 8042 emulation) */
-	GPIO_PCH_RSMRST_L,         /* Reset PCH resume power plane logic */
+	GPIO_PCH_SYS_RST_L,        /* Reset PCH resume power plane logic */
 	GPIO_PCH_SMI_L,            /* System management interrupt to PCH */
 	GPIO_TOUCHSCREEN_RESET_L,  /* Reset touch screen */
 	GPIO_EC_EDP_VDD_EN,        /* Enable EDP (passthru from PCH) */
@@ -155,9 +155,7 @@ enum gpio_signal {
  *        Following value 4032 mA is the maximum input limit
  *        on Link's design.
  */
-#define CONFIG_BQ24707A_R_SNS 10 /* 10 mOhm charge sense resistor */
-#define CONFIG_BQ24707A_R_AC  10 /* 10 mOhm input current sense resistor */
-#define CONFIG_CHARGER_INPUT_CURRENT 4032 /* mA, about half max */
+#define CONFIG_CHARGER_INPUT_CURRENT 5000 /* mA, about half max */
 
 
 enum adc_channel {
