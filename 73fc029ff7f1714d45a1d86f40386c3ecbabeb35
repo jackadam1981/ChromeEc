@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAbn//9Ys\u003d",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-06-26T04:50:33Z",
+      "side": 1,
+      "message": "If we\u0027re preparing for a receive transmission, we\u0027re going to write into that pointer.  So we shouldn\u0027t pass in a const void *.\n\nBy taking out the const, it forces anyone passing a pointer into prepare_channel() to explicitly de-constify it.",
+      "parentUuid": "AAAAbn//+Pk\u003d",
+      "revId": "73fc029ff7f1714d45a1d86f40386c3ecbabeb35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAbn//+Qc\u003d",
         "filename": "chip/stm32/dma.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAbn//9Yo\u003d",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-06-26T04:50:33Z",
+      "side": 1,
+      "message": "Maybe.  I\u0027ll make a note to revisit IRQ priorities.",
+      "parentUuid": "AAAAbn//+Qc\u003d",
+      "revId": "73fc029ff7f1714d45a1d86f40386c3ecbabeb35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAbn//+QQ\u003d",
         "filename": "include/dma.h",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2013-06-25T22:12:02Z",
       "side": 1,
       "message": "Perhaps add a note that the second controller is not supported?",
+      "revId": "73fc029ff7f1714d45a1d86f40386c3ecbabeb35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAbn//9YY\u003d",
+        "filename": "include/dma.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-06-26T04:50:33Z",
+      "side": 1,
+      "message": "See comment for DMA_NUM_CHANNELS.",
+      "parentUuid": "AAAAbn//+QQ\u003d",
       "revId": "73fc029ff7f1714d45a1d86f40386c3ecbabeb35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
