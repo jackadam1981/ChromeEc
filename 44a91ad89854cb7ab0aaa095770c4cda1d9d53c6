@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAbn//9ZM\u003d",
+        "filename": "chip/stm32/clock-stm32l15x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-06-26T04:44:39Z",
+      "side": 1,
+      "message": "Ha, found a copy/paste bug here.  Bit should be masked off, not OR\u0027d in...",
+      "revId": "44a91ad89854cb7ab0aaa095770c4cda1d9d53c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
