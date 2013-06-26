@@ -335,6 +335,8 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define STM32_RCC_AHBLPENR          REG32(STM32_RCC_BASE + 0x28)
 #define STM32_RCC_APB2LPENR         REG32(STM32_RCC_BASE + 0x2C)
 #define STM32_RCC_APB1LPENR         REG32(STM32_RCC_BASE + 0x30)
+/* Peripheral bits for AHB* / APB* regs above */
+#define STM32_RCC_PB2_SPI1		(1 << 12)
 #define STM32_RCC_CSR               REG32(STM32_RCC_BASE + 0x34)
 
 #define RCC_AHBENR_DMA1EN           (1 << 24)
@@ -451,23 +453,27 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 
 /* The SPI controller registers */
 struct stm32_spi_regs {
-	uint16_t ctrl1;
+	uint16_t cr1;
 	uint16_t _pad0;
-	uint16_t ctrl2;
+	uint16_t cr2;
 	uint16_t _pad1;
-	unsigned stat;
-	uint16_t data;
+	unsigned sr;
+	uint16_t dr;
 	uint16_t _pad2;
-	unsigned crcp;
-	unsigned rxcrc;
-	unsigned txcrc;
-	unsigned i2scfgr;	/* STM32F10x only */
-	unsigned i2spr;		/* STM32F10x only */
+	unsigned crcpr;
+	unsigned rxcrcr;
+	unsigned txcrcr;
+	unsigned i2scfgr;	/* STM32F10x and STM32L only */
+	unsigned i2spr;		/* STM32F10x and STM32L only */
 };
 /* Must be volatile, or compiler optimizes out repeated accesses */
 typedef volatile struct stm32_spi_regs stm32_spi_regs_t;
 
 #define STM32_SPI1_REGS ((stm32_spi_regs_t *)STM32_SPI1_BASE)
+
+#define STM32_SPI_CR1_SPE		(1 << 6)
+#define STM32_SPI_CR2_RXDMAEN		(1 << 0)
+#define STM32_SPI_CR2_TXDMAEN		(1 << 1)
 
 /* --- Debug --- */
 
