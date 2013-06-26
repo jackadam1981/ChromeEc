@@ -10,3 +10,4 @@
 CHIP:=lm4
 
 board-y=board.o
+board-$(CONFIG_POWER_SEQUENCE)+=power_sequence.o

@@ -159,13 +159,13 @@ static int state_common(struct power_state_context *ctx)
 	if (curr->ac) {
 		*batt_flags |= EC_BATT_FLAG_AC_PRESENT;
 		if (charger_get_voltage(&curr->charging_voltage)) {
-			charger_set_voltage(0);
 			charger_set_current(0);
+			charger_set_voltage(0);
 			curr->error |= F_CHARGER_VOLTAGE;
 		}
 		if (charger_get_current(&curr->charging_current)) {
-			charger_set_voltage(0);
 			charger_set_current(0);
+			charger_set_voltage(0);
 			curr->error |= F_CHARGER_CURRENT;
 		}
 	} else {
@@ -345,12 +345,15 @@ static enum power_state state_idle(struct power_state_context *ctx)
 	if (state_machine_force_idle)
 		return PWR_STATE_UNCHANGE;
 
-	if (!ctx->curr.ac)
+	if (!ctx->curr.ac) {
+		CPRINTF("[%T NO AC?]\n");
 		return PWR_STATE_REINIT;
+	}
 
 	if (ctx->curr.error)
 		return PWR_STATE_ERROR;
 
+	CPRINTF("[%T v=%d i=%d]\n", ctx->curr.charging_voltage, ctx->curr.charging_current);
 	/* Prevent charging in idle mode */
 	if (ctx->curr.charging_voltage ||
 	    ctx->curr.charging_current)
@@ -377,8 +380,8 @@ static enum power_state state_idle(struct power_state_context *ctx)
 			CPRINTF("[%T Charge start %dmV %dmA]\n",
 				batt->desired_voltage, want_current);
 
-			if (charger_set_voltage(batt->desired_voltage) ||
-			    charger_set_current(want_current))
+			if (charger_set_current(want_current) ||
+			    charger_set_voltage(batt->desired_voltage))
 				return PWR_STATE_ERROR;
 		}
 		update_charger_time(ctx, get_time());
