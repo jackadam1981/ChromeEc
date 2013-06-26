@@ -17,8 +17,11 @@
  * Number of steps for fan speed control. Speed of each step is defined
  * in thermal.c.
  */
+#ifdef CONFIG_THERMAL_PEPPY
+#define THERMAL_FAN_STEPS 8
+#else
 #define THERMAL_FAN_STEPS 5
-
+#endif
 /* Set a threshold temperature to this value to disable the threshold limit. */
 #define THERMAL_THRESHOLD_DISABLE 0
 

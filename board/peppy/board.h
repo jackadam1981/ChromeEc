@@ -35,7 +35,7 @@
 #define CONFIG_PWM_FAN
 #define CONFIG_TEMP_SENSOR
 #define CONFIG_USB_PORT_POWER_DUMB
-
+#define CONFIG_THERMAL_PEPPY
 #ifndef __ASSEMBLER__
 
 /* PWM channels */
