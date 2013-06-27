@@ -16,6 +16,24 @@
       "revId": "ce885ad95f543e2c8cb4493e416707b05d47f5ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAbn//7Zs\u003d",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-06-27T16:47:18Z",
+      "side": 1,
+      "message": "Oops, yes.  Thanks for catching that.",
+      "parentUuid": "AAAAbn//7sQ\u003d",
+      "revId": "ce885ad95f543e2c8cb4493e416707b05d47f5ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
