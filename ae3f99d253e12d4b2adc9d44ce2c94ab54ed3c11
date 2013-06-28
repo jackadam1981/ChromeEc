@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAbn//5xU\u003d",
+        "filename": "board/spring/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-06-28T17:28:36Z",
+      "side": 1,
+      "message": "#define CONFIG_AUTO_HIBERNATE_SECS 3600\n\nEnables auto-hibernate and sets the default delay all in one #define.",
+      "revId": "ae3f99d253e12d4b2adc9d44ce2c94ab54ed3c11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
