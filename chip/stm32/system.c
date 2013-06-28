@@ -7,6 +7,7 @@
 
 #include "console.h"
 #include "cpu.h"
+#include "host_command.h"
 #include "registers.h"
 #include "system.h"
 #include "task.h"
