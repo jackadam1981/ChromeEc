@@ -52,6 +52,7 @@ toad_boot0() {
 
 servo_boot0() {
 	dut_control spi1_vref:pp3300
+	dut_control spi1_buf_en:on
 }
 
 ec_enable_boot0() {
@@ -115,7 +116,7 @@ function ec_uart() {
 # Servo variables management
 
 servo_VARS="ec_uart_en ec_uart_parity ec_uart_baudrate \
-jtag_buf_on_flex_en jtag_buf_en spi1_vref"
+jtag_buf_on_flex_en jtag_buf_en spi1_vref spi1_buf_en"
 toad_VARS="ec_uart_parity ec_uart_baudrate boot_mode"
 
 function dut_control() {
@@ -170,7 +171,13 @@ function flash_daisy() {
 	# Reset the EC
 	ec_reset
 	# Unprotect flash, erase, and write
-	${STM32MON} -d ${EC_UART} -u -e -w ${IMG}
+	if [ "${BOARD}" = "puppy" ] ; then
+		# '-u' option is not supported for puppy board
+		info "flashing puppy"
+		${STM32MON} -d ${EC_UART} -e -w ${IMG}
+	else
+		${STM32MON} -d ${EC_UART} -u -e -w ${IMG}
+	fi
 }
 
 function flash_link() {
@@ -222,7 +229,7 @@ fi
 save="$(servo_save)"
 
 case "${BOARD}" in
-	daisy | snow | spring | pit ) flash_daisy ;;
+	puppy | daisy | snow | spring | pit ) flash_daisy ;;
 	link ) flash_link ;;
 	slippy | falco | peppy ) flash_slippy ;;
 	*) die "board ${BOARD} not supported" ;;
