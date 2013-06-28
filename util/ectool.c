@@ -1700,8 +1700,9 @@ int cmd_panic_info(int argc, char *argv[])
 	struct panic_data *pdata = (struct panic_data *)out;
 	const uint32_t *lregs = pdata->regs;
 	const uint32_t *sregs = NULL;
-	int in_handler;
+	int in_handler = 0;
 	int i;
+	const char *panic_origins[3] = {"", "PROCESS", "HANDLER"};
 
 	rv = ec_command(EC_CMD_GET_PANIC_INFO, 0, NULL, 0, out, sizeof(out));
 	if (rv < 0)
@@ -1715,14 +1716,15 @@ int cmd_panic_info(int argc, char *argv[])
 	printf("Saved panic data:%s\n",
 	       (pdata->flags & PANIC_DATA_FLAG_OLD_HOSTCMD ? "" : " (NEW)"));
 
-	in_handler = ((pdata->regs[11] & 0xf) == 1 ||
-		      (pdata->regs[11] & 0xf) == 9);
+	if (pdata->struct_version > 1)
+		in_handler = ((pdata->regs[11] & 0xf) == 1 ||
+			      (pdata->regs[11] & 0xf) == 9) ? 2 : 1;
 
 	if (pdata->flags & PANIC_DATA_FLAG_FRAME_VALID)
-		sregs = pdata->frame;
+		sregs = pdata->frame - (pdata->struct_version == 1 ? 1 : 0);
 
 	printf("=== %s EXCEPTION: %02x ====== xPSR: %08x ===\n",
-	       in_handler ? "HANDLER" : "PROCESS",
+	       panic_origins[in_handler],
 	       lregs[1] & 0xff, sregs ? sregs[7] : -1);
 	for (i = 0; i < 4; ++i)
 		print_panic_reg(i, sregs, i);
@@ -1731,7 +1733,7 @@ int cmd_panic_info(int argc, char *argv[])
 	print_panic_reg(10, lregs, 9);
 	print_panic_reg(11, lregs, 10);
 	print_panic_reg(12, sregs, 4);
-	print_panic_reg(13, lregs, in_handler ? 2 : 0);
+	print_panic_reg(13, lregs, in_handler == 2 ? 2 : 0);
 	print_panic_reg(14, sregs, 5);
 	print_panic_reg(15, sregs, 6);
 
