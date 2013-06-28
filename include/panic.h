@@ -14,7 +14,7 @@
 /* Data saved across reboots */
 struct panic_data {
 	uint8_t arch;             /* Architecture (PANIC_ARCH_*) */
-	uint8_t struct_version;   /* Structure version (currently 1) */
+	uint8_t struct_version;   /* Structure version (currently 2) */
 	uint8_t flags;            /* Flags (PANIC_DATA_FLAG_*) */
 	uint8_t reserved;         /* Reserved; set 0 */
 

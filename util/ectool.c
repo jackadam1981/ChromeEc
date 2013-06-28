@@ -1719,7 +1719,7 @@ int cmd_panic_info(int argc, char *argv[])
 		      (pdata->regs[11] & 0xf) == 9);
 
 	if (pdata->flags & PANIC_DATA_FLAG_FRAME_VALID)
-		sregs = pdata->frame;
+		sregs = pdata->frame - (pdata->struct_version == 1 ? 1 : 0);
 
 	printf("=== %s EXCEPTION: %02x ====== xPSR: %08x ===\n",
 	       in_handler ? "HANDLER" : "PROCESS",
