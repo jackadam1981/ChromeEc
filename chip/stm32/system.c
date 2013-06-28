@@ -7,6 +7,7 @@
 
 #include "console.h"
 #include "cpu.h"
+#include "host_command.h"
 #include "registers.h"
 #include "system.h"
 #include "task.h"
@@ -28,6 +29,8 @@ enum bkpdata_index {
 	BKPDATA_INDEX_VBNV_CONTEXT6,
 	BKPDATA_INDEX_VBNV_CONTEXT7,
 };
+
+static uint8_t standby_enabled = 1;
 
 /**
  * Read backup register at specified index.
@@ -294,3 +297,18 @@ int system_get_console_force_enabled(void)
 	else
 		return 0;
 }
+
+/*****************************************************************************/
+/* Host commands */
+
+static int system_enable_standby(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_enable_standby *p = args->params;
+
+	standby_enabled = p->enabled;
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_ENABLE_STANDBY,
+		     system_enable_standby,
+		     EC_VER_MASK(0));

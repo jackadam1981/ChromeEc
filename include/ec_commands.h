@@ -1285,7 +1285,7 @@ struct ec_response_ldo_get {
 } __packed;
 
 /*****************************************************************************/
-/* Power info. */
+/* Power related. */
 
 /*
  * Get power info.
@@ -1298,6 +1298,15 @@ struct ec_response_power_info {
 	uint16_t voltage_system;
 	uint16_t current_system;
 	uint16_t usb_current_limit;
+} __packed;
+
+/*
+ * Enable/disable EC standby mode.
+ */
+#define EC_CMD_ENABLE_STANDBY 0x9e
+
+struct ec_params_enable_standby {
+	uint8_t enabled;
 } __packed;
 
 /*****************************************************************************/
