@@ -2781,8 +2781,9 @@ int cmd_console(int argc, char *argv[])
 		if (rv < 0)
 			return rv;
 
-		if (rv == 0)
-			break;  /* Empty response means done */
+		/* Empty response means done */
+		if (!rv || !*out)
+			break;
 
 		/* Make sure output is null-terminated, then dump it */
 		out[sizeof(out) - 1] = '\0';
