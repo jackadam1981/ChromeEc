@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAbn//39E\u003d",
+        "filename": "board/puppy/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2013-07-01T18:45:05Z",
+      "side": 1,
+      "message": "Puppy board-specific...?",
+      "revId": "3849df41d2ba2da06748c941043cc8e3a6722d98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAbn//388\u003d",
+        "filename": "board/puppy/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2013-07-01T18:45:05Z",
+      "side": 1,
+      "message": "Puppy?",
+      "revId": "3849df41d2ba2da06748c941043cc8e3a6722d98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAbn//3+A\u003d",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2013-07-01T18:45:05Z",
+      "side": 1,
+      "message": "Just curious, why do we need SPI buffers enabled for re-flashing an EC over UART?",
+      "revId": "3849df41d2ba2da06748c941043cc8e3a6722d98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAbn//39s\u003d",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2013-07-01T18:45:05Z",
+      "side": 1,
+      "message": "Will -u be supported in the future? It would be convenient to be rid of this extra logic. \n\nI am of the opinion that we should keep it in the flash_daisy function, though the flash_daisy function should probably be renamed to something like flash_stm32() which is beyond the scope of this CL.",
+      "revId": "3849df41d2ba2da06748c941043cc8e3a6722d98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
