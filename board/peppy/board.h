@@ -19,6 +19,7 @@
 #define CONFIG_BATTERY_PEPPY
 #define CONFIG_CHARGER
 #define CONFIG_CHARGER_BQ24707A
+#define CONFIG_CMD_CHARGE_CONTROL_DISCHARGE
 #ifdef HAS_TASK_CHIPSET
 #define CONFIG_CHIPSET_X86_HASWELL
 #endif
@@ -191,6 +192,11 @@ enum board_version {
 	BOARD_VERSION_EVT = 1,
 };
 
+#ifdef CONFIG_CMD_CHARGE_CONTROL_DISCHARGE
+int board_enable_discharge_on_ac(void);
+
+int board_disable_discharge_on_ac(void);
+#endif /* CONFIG_CMD_CHARGE_CONTROL_DISCHARGE */
 
 #endif /* !__ASSEMBLER__ */
 

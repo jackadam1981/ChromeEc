@@ -204,3 +204,17 @@ void board_process_wake_events(uint32_t active_wake_events)
 	else
 		gpio_set_level(GPIO_PCH_WAKE_L, 1);
 }
+
+#ifdef CONFIG_CMD_CHARGE_CONTROL_DISCHARGE
+int board_enable_discharge_on_ac(void)
+{
+	gpio_set_level(GPIO_CHARGE_L, 1);
+	return EC_SUCCESS;
+}
+
+int board_disable_discharge_on_ac(void)
+{
+	gpio_set_level(GPIO_CHARGE_L, 0);
+	return EC_SUCCESS;
+}
+#endif /* CONFIG_CMD_CHARGE_CONTROL_DISCHARGE */

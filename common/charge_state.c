@@ -7,6 +7,7 @@
 
 #include "battery.h"
 #include "battery_pack.h"
+#include "board.h"
 #include "charge_state.h"
 #include "charger.h"
 #include "chipset.h"
@@ -832,24 +833,57 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, charge_shutdown, HOOK_PRIO_LAST);
 /*****************************************************************************/
 /* Host commands */
 
-static int charge_command_force_idle(struct host_cmd_handler_args *args)
+static int charge_command_charge_control(struct host_cmd_handler_args *args)
 {
-	const struct ec_params_force_idle *p = args->params;
-	int rv;
+	const struct ec_params_charge_control *p = args->params;
 
 	if (system_is_locked())
 		return EC_RES_ACCESS_DENIED;
 
-	if (p->enabled)
-		rv = enter_force_idle_mode();
-	else
-		rv = exit_force_idle_mode();
-
-	if (rv != EC_SUCCESS)
+#ifdef CONFIG_CMD_CHARGE_CONTROL_DISCHARGE
+	switch (p->mode) {
+	case CHARGE_CONTROL_NORMAL:
+		if (exit_force_idle_mode() != EC_SUCCESS)
+			return EC_RES_ERROR;
+		if (board_disable_discharge_on_ac() != EC_SUCCESS)
+			return EC_RES_ERROR;
+		break;
+	case CHARGE_CONTROL_IDLE:
+		if (enter_force_idle_mode() != EC_SUCCESS)
+			return EC_RES_ERROR;
+		if (board_disable_discharge_on_ac() != EC_SUCCESS)
+			return EC_RES_ERROR;
+		break;
+	case CHARGE_CONTROL_DISCHARGE:
+		if (enter_force_idle_mode() != EC_SUCCESS)
+			return EC_RES_ERROR;
+		if (board_enable_discharge_on_ac() != EC_SUCCESS)
+			return EC_RES_ERROR;
+		break;
+	default:
 		return EC_RES_ERROR;
+	}
+#else
+	switch (p->mode) {
+	case CHARGE_CONTROL_NORMAL:
+		if (exit_force_idle_mode() != EC_SUCCESS)
+			return EC_RES_ERROR;
+		break;
+	case CHARGE_CONTROL_IDLE:
+		if (enter_force_idle_mode() != EC_SUCCESS)
+			return EC_RES_ERROR;
+		break;
+	case CHARGE_CONTROL_DISCHARGE:
+		return EC_RES_INVALID_COMMAND;
+		break;
+	default:
+		return EC_RES_ERROR;
+	}
+#endif /* CONFIG_CMD_CHARGE_CONTROL_DISCHARGE */
+
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_CHARGE_FORCE_IDLE, charge_command_force_idle,
+DECLARE_HOST_COMMAND(EC_CMD_CHARGE_CONTROL, charge_command_charge_control,
 		     EC_VER_MASK(0));
 
 static int charge_command_dump(struct host_cmd_handler_args *args)

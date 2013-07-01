@@ -6,6 +6,8 @@
 
 #include "adc.h"
 #include "board.h"
+#include "charger.h"
+#include "charger_bq24738.h"
 #include "chip_temp_sensor.h"
 #include "common.h"
 #include "ec_commands.h"
@@ -210,3 +212,27 @@ void board_process_wake_events(uint32_t active_wake_events)
 	else
 		gpio_set_level(GPIO_PCH_WAKE_L, 1);
 }
+
+#ifdef CONFIG_CMD_CHARGE_CONTROL_DISCHARGE
+int board_enable_discharge_on_ac(void)
+{
+	int rv;
+	int option;
+
+	rv = charger_get_option(&option);
+	if (rv)
+		return rv;
+	return charger_set_option(option | OPTION_LEARN_ENABLE);
+}
+
+int board_disable_discharge_on_ac(void)
+{
+	int rv;
+	int option;
+
+	rv = charger_get_option(&option);
+	if (rv)
+		return rv;
+	return charger_set_option(option & ~OPTION_LEARN_ENABLE);
+}
+#endif /* CONFIG_CMD_CHARGE_CONTROL_DISCHARGE */
