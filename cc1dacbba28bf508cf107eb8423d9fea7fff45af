@@ -51,6 +51,24 @@
       "revId": "cc1dacbba28bf508cf107eb8423d9fea7fff45af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAbn//4Xs\u003d",
+        "filename": "util/burn_my_ec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-01T15:36:49Z",
+      "side": 1,
+      "message": "Yeah.  The problem is that on link the uart output buffer\u0027s 8KB, and fills completely with all the debug output from the flash commands.  So cflush() can take a full second.\n\nI really need to fix that.  I\u0027ve got some ideas, but that\u0027s for another CL...",
+      "parentUuid": "AAAAbn//4gA\u003d",
+      "revId": "cc1dacbba28bf508cf107eb8423d9fea7fff45af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
