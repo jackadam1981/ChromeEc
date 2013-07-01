@@ -206,3 +206,15 @@ void board_process_wake_events(uint32_t active_wake_events)
 	else
 		gpio_set_level(GPIO_PCH_WAKE_L, 1);
 }
+
+int enable_discharge_on_ac(void)
+{
+	gpio_set_level(GPIO_CHARGE_L, 1);
+	return EC_SUCCESS;
+}
+
+int disable_discharge_on_ac(void)
+{
+	gpio_set_level(GPIO_CHARGE_L, 0);
+	return EC_SUCCESS;
+}

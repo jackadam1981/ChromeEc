@@ -189,3 +189,27 @@ int charger_post_init(void)
 	rv = charger_set_input_current(CONFIG_CHARGER_INPUT_CURRENT);
 	return rv;
 }
+
+/* Overrides weak function from charge_state.c */
+int enable_discharge_on_ac(void)
+{
+	int rv;
+	int option;
+
+	rv = charger_get_option(&option);
+	if (rv)
+		return rv;
+	return charger_set_option(option | OPTION_LEARN_ENABLE);
+}
+
+/* Overrides weak function from charge_state.c */
+int disable_discharge_on_ac(void)
+{
+	int rv;
+	int option;
+
+	rv = charger_get_option(&option);
+	if (rv)
+		return rv;
+	return charger_set_option(option & ~OPTION_LEARN_ENABLE);
+}

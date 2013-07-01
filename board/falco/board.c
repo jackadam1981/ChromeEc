@@ -6,6 +6,8 @@
 
 #include "adc.h"
 #include "board.h"
+#include "charger.h"
+#include "charger_bq24738.h"
 #include "chip_temp_sensor.h"
 #include "common.h"
 #include "ec_commands.h"
