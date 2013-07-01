@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAbn//4YQ\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2788,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-01T15:24:40Z",
+      "side": 1,
+      "message": "Perhaps both checks?  if (!rv || !*out)",
+      "revId": "a08d879a66954f6d8a2ef851ef0f615243ba6e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
