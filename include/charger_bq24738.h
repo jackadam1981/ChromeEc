@@ -56,3 +56,5 @@
 
 #endif /* __CROS_EC_CHARGER_BQ24738_H */
 
+/* Discharge battery when on AC power. */
+int charger_discharge_on_ac(int enable);
