@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAbn//3v8\u003d",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000402
+      },
+      "writtenOn": "2013-07-01T21:41:58Z",
+      "side": 1,
+      "message": "The purpose here is to enable U63 for signal passing from p16 to pin 15, ie PPDUT_SPI1_VREF of PP3300. It is needed only when previous command \"dut_control spi1_vref:pp3300\" doesn\u0027t successfully set PPDUT_SPI1_VREF to pp3300 for unknown reason.",
+      "parentUuid": "AAAAbn//3+A\u003d",
+      "revId": "3849df41d2ba2da06748c941043cc8e3a6722d98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAbn//39s\u003d",
         "filename": "util/flash_ec",
         "patchSetId": 1
@@ -64,6 +82,24 @@
       "writtenOn": "2013-07-01T18:45:05Z",
       "side": 1,
       "message": "Will -u be supported in the future? It would be convenient to be rid of this extra logic. \n\nI am of the opinion that we should keep it in the flash_daisy function, though the flash_daisy function should probably be renamed to something like flash_stm32() which is beyond the scope of this CL.",
+      "revId": "3849df41d2ba2da06748c941043cc8e3a6722d98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAbn//3uc\u003d",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000402
+      },
+      "writtenOn": "2013-07-01T21:41:58Z",
+      "side": 1,
+      "message": "Don\u0027t know why \"-u\" option is not supported for the EC used on puppy board. I can start another thread to ask for any special for EC selected on this board.",
+      "parentUuid": "AAAAbn//39s\u003d",
       "revId": "3849df41d2ba2da06748c941043cc8e3a6722d98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
