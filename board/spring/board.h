@@ -32,7 +32,7 @@
 #define CONFIG_WATCHDOG_HELP
 
 /* Go to STANDBY mode when system is off without external power for too long */
-#define CONFIG_AUTO_HIBERNATE_SECS 3600
+#define CONFIG_AUTO_HIBERNATE_SECS 180
 
 /* Smart battery and TPSchrome are on a private I2C bus behind the EC */
 #define CONFIG_I2C_PASSTHROUGH
