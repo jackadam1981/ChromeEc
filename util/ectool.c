@@ -2781,11 +2781,12 @@ int cmd_console(int argc, char *argv[])
 		if (rv < 0)
 			return rv;
 
-		if (rv == 0)
-			break;  /* Empty response means done */
-
 		/* Make sure output is null-terminated, then dump it */
 		out[sizeof(out) - 1] = '\0';
+
+		/* Empty response means done */
+		if (!*out)
+			break;
 		fputs(out, stdout);
 	}
 	printf("\n");
