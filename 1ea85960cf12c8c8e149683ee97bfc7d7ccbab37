@@ -16,6 +16,23 @@
       "revId": "1ea85960cf12c8c8e149683ee97bfc7d7ccbab37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAbn//18U\u003d",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-07-02T22:26:31Z",
+      "side": 1,
+      "message": "No error for a command we don\u0027t understand?",
+      "revId": "1ea85960cf12c8c8e149683ee97bfc7d7ccbab37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
