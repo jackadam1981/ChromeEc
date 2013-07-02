@@ -50,6 +50,24 @@
       "revId": "c03e38cf8bde92abcfbfc2efef8f71ae7e700740",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAbn//2aU\u003d",
+        "filename": "chip/lm4/onewire.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2013-07-02T19:25:55Z",
+      "side": 1,
+      "message": "Since it failed again I\u0027ll fix this up.",
+      "parentUuid": "AAAAbn//2cc\u003d",
+      "revId": "c03e38cf8bde92abcfbfc2efef8f71ae7e700740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
