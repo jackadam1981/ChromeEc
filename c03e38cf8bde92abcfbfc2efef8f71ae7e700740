@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAbn//2cw\u003d",
+        "filename": "board/bolt/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-07-02T19:00:47Z",
+      "side": 1,
+      "message": "s/slippy/bolt/\n\nOr just delete this comment, since it\u0027s kind of superfluous.",
+      "revId": "c03e38cf8bde92abcfbfc2efef8f71ae7e700740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAbn//2cs\u003d",
+        "filename": "board/bolt/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-07-02T19:00:47Z",
+      "side": 1,
+      "message": "bolt",
+      "revId": "c03e38cf8bde92abcfbfc2efef8f71ae7e700740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAbn//2cc\u003d",
+        "filename": "chip/lm4/onewire.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-07-02T19:00:47Z",
+      "side": 1,
+      "message": "Shouldn\u0027t these be in each platform\u0027s board.h file instead?",
+      "revId": "c03e38cf8bde92abcfbfc2efef8f71ae7e700740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
