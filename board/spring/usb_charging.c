@@ -447,7 +447,7 @@ void board_pwm_nominal_duty_cycle(int percent)
 {
 	int dummy;
 
-	if (battery_current(&dummy))
+	if (!battery_current(&dummy))
 		board_pwm_duty_cycle(percent);
 	else if (percent + PWM_CTRL_BEGIN_OFFSET > PWM_CTRL_MAX_DUTY)
 		board_pwm_duty_cycle(PWM_CTRL_MAX_DUTY);
