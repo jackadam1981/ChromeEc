@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAbn//13A\u003d",
+        "filename": "chip/stm32/i2c-stm32f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-02T23:16:33Z",
+      "side": 1,
+      "message": "Yes, but in a separate CL so if it turns out we need to roll that back we don\u0027t also lose these changes.",
+      "parentUuid": "AAAAbn//1/Q\u003d",
+      "revId": "1ea85960cf12c8c8e149683ee97bfc7d7ccbab37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAbn//18U\u003d",
         "filename": "chip/stm32/spi.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2013-07-02T22:26:31Z",
       "side": 1,
       "message": "No error for a command we don\u0027t understand?",
+      "revId": "1ea85960cf12c8c8e149683ee97bfc7d7ccbab37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAbn//128\u003d",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-02T23:16:33Z",
+      "side": 1,
+      "message": "What type of error response would we send?  protocol version 1, 2, or 3?  By definition we don\u0027t know...  I suppose we could define a byte code to return that means \"WTF\".",
+      "parentUuid": "AAAAbn//18U\u003d",
       "revId": "1ea85960cf12c8c8e149683ee97bfc7d7ccbab37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
