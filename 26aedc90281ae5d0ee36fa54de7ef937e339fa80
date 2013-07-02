@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAAbn//3RA\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 887,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-07-02T02:21:51Z",
+      "side": 1,
+      "message": "You need to change this to EC_VER_MASK(1) for up-rev\u0027ing command version.\n\nYou can search for EC_VER_FLASH_PROTECT for example.",
+      "revId": "26aedc90281ae5d0ee36fa54de7ef937e339fa80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAbn//3rE\u003d",
         "filename": "util/ectool.c",
         "patchSetId": 1
@@ -13,6 +30,24 @@
       "writtenOn": "2013-07-01T22:13:17Z",
       "side": 1,
       "message": "I tried increment the version number here to 1 but was unable to get ectool to work when passing the corresponding version number to ec_command().",
+      "revId": "26aedc90281ae5d0ee36fa54de7ef937e339fa80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAbn//3Q4\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2373,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-07-02T02:21:51Z",
+      "side": 1,
+      "message": "See my comment in common/charge_state.c for EC side version.",
+      "parentUuid": "AAAAbn//3rE\u003d",
       "revId": "26aedc90281ae5d0ee36fa54de7ef937e339fa80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
