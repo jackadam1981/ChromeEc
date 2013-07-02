@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAbn//2Wg\u003d",
+        "filename": "board/link/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-07-02T20:03:44Z",
+      "side": 1,
+      "message": "Slippy supposedly had a battery pack that contained an analog temp-sensor output.\n\nSince we never got any of those, and none of the other batteries seem to have them, you can just take this out.",
+      "parentUuid": "AAAAbn//2Zs\u003d",
+      "revId": "c03e38cf8bde92abcfbfc2efef8f71ae7e700740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAbn//2cc\u003d",
         "filename": "chip/lm4/onewire.c",
         "patchSetId": 3
