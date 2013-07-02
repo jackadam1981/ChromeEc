@@ -34,6 +34,24 @@
       "revId": "37a5570e78f6bdc9156feff5dc847c6f1114baaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAbn//1+4\u003d",
+        "filename": "board/link/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-02T22:13:17Z",
+      "side": 1,
+      "message": "So far, because we haven\u0027t done them that way - though I agree it\u0027s a little cleaner to put them together.\n\nI suppose it doesn\u0027t matter if we\u0027re consistent with how we\u0027ve done things so far.  Inconsistencies abound in this code.\n\nWe haven\u0027t even decided if all configs in board.h should have the CONFIG_ prefix.",
+      "parentUuid": "AAAAbn//1/Y\u003d",
+      "revId": "37a5570e78f6bdc9156feff5dc847c6f1114baaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
