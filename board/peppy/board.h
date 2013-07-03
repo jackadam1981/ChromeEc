@@ -141,6 +141,22 @@ enum gpio_signal {
 	GPIO_COUNT
 };
 
+/* x86 signal definitions */
+enum x86_signal {
+	X86_PGOOD_PP5000 = 0,
+	X86_PGOOD_PP1350,
+	X86_PGOOD_PP1050,
+	X86_PGOOD_VCORE,
+	X86_PCH_SLP_S0n_DEASSERTED,
+	X86_PCH_SLP_S3n_DEASSERTED,
+	X86_PCH_SLP_S5n_DEASSERTED,
+	X86_PCH_SLP_SUSn_DEASSERTED,
+	X86_PCH_SUSWARNn_DEASSERTED,
+
+	/* Number of X86 signals */
+	X86_SIGNAL_COUNT
+};
+
 /* Charger module */
 /* Set charger input current limit
  * Note - this value should depend on external power adapter,
