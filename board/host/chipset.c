@@ -10,17 +10,17 @@
 #include "common.h"
 #include "task.h"
 
-test_mockable void chipset_reset(int cold_reset)
-{
-	fprintf(stderr, "Chipset reset!\n");
-}
-
 test_mockable void chipset_force_shutdown(void)
 {
 	/* Do nothing */
 }
 
 #ifdef HAS_TASK_CHIPSET
+test_mockable void chipset_reset(int cold_reset)
+{
+	fprintf(stderr, "Chipset reset!\n");
+}
+
 test_mockable int chipset_in_state(int state_mask)
 {
 	return state_mask & CHIPSET_STATE_SOFT_OFF;
