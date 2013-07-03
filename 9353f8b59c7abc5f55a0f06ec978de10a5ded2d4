@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAbn//0xE\u003d",
+        "filename": "board/link/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-03T19:34:42Z",
+      "side": 1,
+      "message": "enum temp_sensor_id didn\u0027t have corresponding #ifdefs, so took these out...\n\nThe config options are always defined at this point on link anyway.",
+      "revId": "9353f8b59c7abc5f55a0f06ec978de10a5ded2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
