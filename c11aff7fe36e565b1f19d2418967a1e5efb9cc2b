@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAbn//0V8\u003d",
+        "filename": "common/chipset_x86_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-04T00:53:46Z",
+      "side": 1,
+      "message": "This is the only direct GPIO reference in the common interface.\n\nIf it\u0027s not latency-sensitive, it could just go in the chipset-specific state handler.\n\nIf it is latency-specific, I could add an x86_chipset_interrupt() function for each chipset, called from here, and let that do the mirroring of SUSWARN# to SUSACK#.",
+      "revId": "c11aff7fe36e565b1f19d2418967a1e5efb9cc2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
