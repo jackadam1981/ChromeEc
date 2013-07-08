@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAAcH///ro\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1703,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-08T15:31:13Z",
+      "side": 1,
+      "message": "Please define an enum instead:\n\nenum {\n  ORIGIN_UNKNOWN,\n  ORIGIN_PROCESS,\n  ORIGIN_HANDLER\n} origin \u003d ORIGIN_UNKNOWN;\n\n(or something like that)  This\u0027ll make the code below easier to read.",
+      "revId": "cb9306d14c0789ef6578c23126481234e7bfbc8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcH///sQ\u003d",
         "filename": "util/ectool.c",
         "patchSetId": 3
