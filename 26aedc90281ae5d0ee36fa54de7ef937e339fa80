@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcH//+7I\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 887,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-07-08T21:23:37Z",
+      "side": 1,
+      "message": "I was running into a bug where the version isn\u0027t getting passed correctly via the kernel interface. As chargecontrol is a superset of chargeforceidle I\u0027ll temporarily set the mask to 0 | 1. The same thing was done for flash protect.",
+      "parentUuid": "AAAAbn//3RA\u003d",
+      "revId": "26aedc90281ae5d0ee36fa54de7ef937e339fa80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAbn//3rE\u003d",
         "filename": "util/ectool.c",
         "patchSetId": 1
@@ -48,6 +66,24 @@
       "side": 1,
       "message": "See my comment in common/charge_state.c for EC side version.",
       "parentUuid": "AAAAbn//3rE\u003d",
+      "revId": "26aedc90281ae5d0ee36fa54de7ef937e339fa80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcH//+68\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2373,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-07-08T21:23:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAbn//3Q4\u003d",
       "revId": "26aedc90281ae5d0ee36fa54de7ef937e339fa80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
