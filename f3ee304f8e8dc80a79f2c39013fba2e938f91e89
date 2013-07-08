@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcH///C0\u003d",
+        "filename": "chip/lm4/switch.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2013-07-08T20:55:17Z",
+      "side": 1,
+      "message": "I see. board specific stuff is already in here.",
+      "parentUuid": "AAAAcH///PY\u003d",
+      "revId": "f3ee304f8e8dc80a79f2c39013fba2e938f91e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcH///Ug\u003d",
         "filename": "chip/lm4/switch.c",
         "patchSetId": 3
@@ -48,6 +66,24 @@
       "side": 1,
       "message": "This is code which should have been here all along, since the handler for this GPIO is already here; see above.",
       "parentUuid": "AAAAcH///Ug\u003d",
+      "revId": "f3ee304f8e8dc80a79f2c39013fba2e938f91e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcH///Ck\u003d",
+        "filename": "chip/lm4/switch.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2013-07-08T20:55:17Z",
+      "side": 1,
+      "message": "ok. I think it some of this could use some abstraction for board specificness, but I understand the motivation.",
+      "parentUuid": "AAAAcH///PU\u003d",
       "revId": "f3ee304f8e8dc80a79f2c39013fba2e938f91e89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
