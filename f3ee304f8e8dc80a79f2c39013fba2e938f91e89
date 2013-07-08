@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAcH///Ug\u003d",
+        "filename": "chip/lm4/switch.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2013-07-08T19:00:33Z",
+      "side": 1,
+      "message": "This seems to be board specific, no? Or are we asserting that all boards using the lm4 chip will have this GPIO?",
+      "revId": "f3ee304f8e8dc80a79f2c39013fba2e938f91e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
