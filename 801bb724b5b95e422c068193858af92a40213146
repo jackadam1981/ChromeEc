@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAcH//+fo\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-09T00:41:33Z",
+      "side": 1,
+      "message": "I\u0027m not a fan of weak functions, since the only way you can tell what actually got linked in is to look at the map file.",
+      "revId": "801bb724b5b95e422c068193858af92a40213146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcH//+fk\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-09T00:41:33Z",
+      "side": 1,
+      "message": "Why not enable_discharge_on_ac(int enable)?",
+      "revId": "801bb724b5b95e422c068193858af92a40213146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcH//+fY\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 856,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-09T00:41:33Z",
+      "side": 1,
+      "message": "rv \u003d enable_force_idle(mode \u003d\u003d CHARGE_CONTROL_IDLE);\n// (make that take an arg too...)\n\n  #ifdef CONFIG_DISCHARGE_MODE\n  if (!rv)\n    rv \u003d enable_discharge_on_ac(mode \u003d\u003d CHARGE_CONTROL_DISCHARGE);\n  #endif\n\nAnd then you can dump the switch statement, and the empty weak functions.",
+      "revId": "801bb724b5b95e422c068193858af92a40213146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
