@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcH//71A\u003d",
+        "filename": "board/peppy/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-10T15:45:20Z",
+      "side": 1,
+      "message": "Very likely.\n\nWhy do we need to rename the task to PEPPY_THERMAL?  The task should be the same, just backed by a different task function.",
+      "parentUuid": "AAAAbn//3PI\u003d",
+      "revId": "9491950b76175f8985ccb27596ffb7c20200a826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAbn//3PU\u003d",
         "filename": "common/thermal_peppy.c",
         "patchSetId": 1
