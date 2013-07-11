@@ -499,4 +499,3 @@ DECLARE_CONSOLE_COMMAND(mmapinfo, command_mmapinfo,
 			NULL,
 			"Print memmap switch state",
 			NULL);
-
