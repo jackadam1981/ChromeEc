@@ -10,6 +10,7 @@
 #include "chipset_haswell.h"
 #include "chipset_x86_common.h"
 #include "common.h"
+#include "console.h"
 #include "ec_commands.h"
 #include "extpower.h"
 #include "gpio.h"
@@ -224,3 +225,42 @@ void board_process_wake_events(uint32_t active_wake_events)
 	else
 		gpio_set_level(GPIO_PCH_WAKE_L, 1);
 }
+
+
+enum adapter_type {
+	ADAPTER_UNKNOWN,
+	ADAPTER_45W,
+	ADAPTER_65W,
+	ADAPTER_90W,
+};
+
+static const char * const adapter_str[] = {
+	"unknown",
+	"45W",
+	"65W",
+	"90W"
+};
+
+static enum adapter_type identify_adapter(void)
+{
+	int mv;
+	mv = adc_read_channel(ADC_AC_ADAPTER_ID_VOLTAGE);
+	if (mv >= 434 && mv <= 554)
+		return ADAPTER_45W;
+	if (mv >= 561 && mv <= 717)
+		return ADAPTER_65W;
+	if (mv >= 725 && mv <= 925)
+		return ADAPTER_90W;
+
+	return ADAPTER_UNKNOWN;
+}
+
+static int command_adapter(int argc, char **argv)
+{
+	ccprintf("%s\n", adapter_str[identify_adapter()]);
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(adapter, command_adapter,
+			NULL,
+			"Identify AC adapter type",
+			NULL);
