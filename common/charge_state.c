@@ -339,7 +339,6 @@ static enum power_state state_init(struct power_state_context *ctx)
 static enum power_state state_idle(struct power_state_context *ctx)
 {
 	struct batt_params *batt = &ctx->curr.batt;
-	const struct charger_info *c_info = ctx->charger;
 
 	/* If we are forcing idle mode, then just stay in IDLE. */
 	if (state_machine_force_idle)
@@ -361,15 +360,18 @@ static enum power_state state_idle(struct power_state_context *ctx)
 
 	/* Configure init charger state and switch to charge state */
 	if (batt->desired_voltage && batt->desired_current) {
+#ifdef CONFIG_PRECHARGE_TRICKLE
 		/* Set charger output constraints */
 		if (batt->desired_current < ctx->charger->current_min &&
 		    batt->state_of_charge < BATTERY_LEVEL_PRE_CHARGE) {
 			/* Trickle charging */
-			if (charger_set_current(c_info->current_min) ||
+			if (charger_set_current(ctx->charger->current_min) ||
 			    charger_set_voltage(batt->voltage))
 				return PWR_STATE_ERROR;
 			ctx->trickle_charging_time = get_time();
-		} else {
+		} else
+#endif
+		{
 			/* Normal charging */
 			int want_current =
 				charger_closest_current(batt->desired_current);
@@ -402,7 +404,6 @@ static enum power_state state_charge(struct power_state_context *ctx)
 {
 	struct power_state_data *curr = &ctx->curr;
 	struct batt_params *batt = &ctx->curr.batt;
-	const struct charger_info *c_info = ctx->charger;
 	int debounce = 0;
 	int want_current;
 	timestamp_t now;
@@ -410,10 +411,12 @@ static enum power_state state_charge(struct power_state_context *ctx)
 	if (curr->error)
 		return PWR_STATE_ERROR;
 
-	if (batt->desired_current < c_info->current_min &&
+#ifdef CONFIG_PRECHARGE_TRICKLE
+	if (batt->desired_current < ctx->charger->current_min &&
 	    batt->desired_current > 0 &&
 	    batt->state_of_charge < BATTERY_LEVEL_PRE_CHARGE)
 		return trickle_charge(ctx);
+#endif
 
 	/* Check charger reset */
 	if (curr->charging_voltage == 0 ||
