@@ -106,6 +106,15 @@ int battery_manufacturer_date(int *year, int *month, int *day)
 	return EC_SUCCESS;
 }
 
+/* Whether the battery reponds to smart battery commands */
+int battery_is_responsive(void)
+{
+	int value;
+	/* Use reading voltage to indicate the battery is alive */
+	return (battery_voltage(&value) == EC_SUCCESS);
+}
+
+
 /*****************************************************************************/
 /* Console commands */
 
