@@ -7,6 +7,8 @@
 #ifndef __CROS_EC_BATTERY_PACK_H
 #define __CROS_EC_BATTERY_PACK_H
 
+#include "board.h"
+
 #define CELSIUS_TO_DECI_KELVIN(temp_c) ((temp_c) * 10 + 2731)
 
 /* Battery parameters */
@@ -46,4 +48,8 @@ const struct battery_info *battery_get_info(void);
  */
 void battery_vendor_params(struct batt_params *batt);
 
-#endif
+#ifdef CONFIG_BATTERY_PHYSICAL_PRESENCE
+int battery_is_present(void);
+#endif /* CONFIG_BATTERY_PHYSICAL_PRESENCE */
+
+#endif /* __CROS_EC_BATTERY_PACK_H */

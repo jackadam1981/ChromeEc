@@ -174,12 +174,18 @@ static int state_common(struct power_state_context *ctx)
 		state_machine_force_idle = 0;
 	}
 
-	rv = battery_temperature(&batt->temperature);
-	if (rv) {
+#ifdef CONFIG_BATTERY_PHYSICAL_PRESENCE
+	if (!battery_is_present()) {
+		curr->error |= F_BATTERY_UNRESPONSIVE;
+		return curr->error;
+	}
+#endif /* CONFIG_BATTERY_PHYSICAL_PRESENCE */
+
+	if (!battery_is_responsive()) {
 		/* Check low battery condition and retry */
-		if (curr->ac && ctx->battery_present == 1 &&
+		if (curr->ac && ctx->battery_alive == 1 &&
 		    !(curr->error & F_CHARGER_MASK)) {
-			ctx->battery_present = 0;
+			ctx->battery_alive = 0;
 			/*
 			 * Try to revive ultra low voltage pack.  Charge
 			 * battery pack with minimum current and maximum
@@ -189,20 +195,24 @@ static int state_common(struct power_state_context *ctx)
 			charger_set_current(ctx->battery->precharge_current);
 			for (d = 0; d < 30; d++) {
 				sleep(1);
-				rv = battery_temperature(&batt->temperature);
-				if (rv == 0) {
-					ctx->battery_present = 1;
+				if (battery_is_responsive()) {
+					ctx->battery_alive = 1;
 					break;
 				}
 			}
 		}
 
 		/* Set error if battery is still unresponsive */
-		if (rv)
-			curr->error |= F_BATTERY_TEMPERATURE;
+		if (!battery_is_responsive()) {
+			curr->error |= F_BATTERY_UNRESPONSIVE;
+			return curr->error;
+		}
 	} else {
-		ctx->battery_present = 1;
+		ctx->battery_alive = 1;
 	}
+
+	if (battery_temperature(&batt->temperature))
+		curr->error |= F_BATTERY_TEMPERATURE;
 
 	if (battery_voltage(&batt->voltage))
 		curr->error |= F_BATTERY_VOLTAGE;
@@ -800,7 +810,7 @@ static void charge_init(void)
 	ctx->trickle_charging_time.val = 0;
 	ctx->battery = battery_get_info();
 	ctx->charger = charger_get_info();
-	ctx->battery_present = 1;
+	ctx->battery_alive = 1;
 
 	/* Set up LPC direct memmap */
 	ctx->memmap_batt_volt =

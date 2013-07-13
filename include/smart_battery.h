@@ -252,5 +252,8 @@ int battery_time_at_rate(int rate, int *minutes);
 /* Read manufacturer date */
 int battery_manufacturer_date(int *year, int *month, int *day);
 
+/* Whether the battery reponds to smart battery commands */
+int battery_is_responsive(void);
+
 #endif /* __CROS_EC_SMART_BATTERY_H */
 
