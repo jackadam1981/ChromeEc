@@ -174,6 +174,14 @@ static int state_common(struct power_state_context *ctx)
 		state_machine_force_idle = 0;
 	}
 
+#ifdef CONFIG_BATTERY_DETECT
+	if (!battery_is_connected()) {
+		curr->error |= F_BATTERY_UNRESPONSIVE;
+		return curr->error;
+	}
+#endif /* CONFIG_BATTERY_DETECT */
+
+	/* Read temperature and see if battery is responsive */
 	rv = battery_temperature(&batt->temperature);
 	if (rv) {
 		/* Check low battery condition and retry */
@@ -198,8 +206,10 @@ static int state_common(struct power_state_context *ctx)
 		}
 
 		/* Set error if battery is still unresponsive */
-		if (rv)
-			curr->error |= F_BATTERY_TEMPERATURE;
+		if (rv) {
+			curr->error |= F_BATTERY_UNRESPONSIVE;
+			return curr->error;
+		}
 	} else {
 		ctx->battery_present = 1;
 	}
@@ -783,6 +793,7 @@ static void charge_init(void)
 	ctx->trickle_charging_time.val = 0;
 	ctx->battery = battery_get_info();
 	ctx->charger = charger_get_info();
+	/* Assume the battery is responsive until proven otherwise */
 	ctx->battery_present = 1;
 
 	/* Set up LPC direct memmap */
