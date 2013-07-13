@@ -889,16 +889,22 @@ enum ec_led_id {
 	EC_LED_ID_BATTERY_LED = 0,
 	EC_LED_ID_POWER_BUTTON_LED,
 	EC_LED_ID_ADAPTER_LED,
+
+	EC_LED_ID_COUNT
 };
 
 /* LED control flags */
 #define EC_LED_FLAGS_QUERY (1 << 0) /* Query LED capability only */
 #define EC_LED_FLAGS_AUTO  (1 << 1) /* Switch LED back to automatic control */
+#define EC_LED_FLAGS_RGB   (1 << 2) /* Set color based on RGB brightness */
 
 enum ec_led_colors {
-	EC_LED_COLOR_RED = 0,
-	EC_LED_COLOR_GREEN,
+	EC_LED_COLOR_AMBER = 0,
 	EC_LED_COLOR_BLUE,
+	EC_LED_COLOR_GREEN,
+	EC_LED_COLOR_OFF,   /* Off is a color, right? */
+	EC_LED_COLOR_ORANGE,
+	EC_LED_COLOR_RED,
 	EC_LED_COLOR_YELLOW,
 	EC_LED_COLOR_WHITE,
 
@@ -907,9 +913,10 @@ enum ec_led_colors {
 
 struct ec_params_led_control {
 	uint8_t led_id;     /* Which LED to control */
+	uint8_t color;      /* Which color to set */
 	uint8_t flags;      /* Control flags */
 
-	uint8_t brightness[EC_LED_COLOR_COUNT];
+	uint8_t rgb_brightness[3];
 } __packed;
 
 struct ec_response_led_control {

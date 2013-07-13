@@ -98,7 +98,7 @@ const char help_str[] =
 	"      Perform I2C transfer on EC's I2C bus\n"
 	"  keyscan <beat_us> <filename>\n"
 	"      Test low-level key scanning\n"
-	"  led <auto | red | green | blue | <R> <G> <B>>\n"
+	"  led <name> <auto | off | colorname | rgb <R> <G> <B>>\n"
 	"      Set the color of LED\n"
 	"  lightbar [CMDS]\n"
 	"      Various lightbar control commands\n"
@@ -165,10 +165,13 @@ const char help_str[] =
 /* Note: depends on enum system_image_copy_t */
 static const char * const image_names[] = {"unknown", "RO", "RW"};
 
+/* Note: depends on enum ec_led_id */
+static const char * const led_id_names[EC_LED_ID_COUNT] = {
+	"battery", "power", "adapter"};
+
 /* Note: depends on enum ec_led_colors */
 static const char * const led_color_names[EC_LED_COLOR_COUNT] = {
-	"red", "green", "blue", "yellow", "white"};
-
+	"amber", "blue", "green", "orange", "red", "yellow", "white"};
 
 /* Check SBS numerical value range */
 int is_battery_range(int val)
@@ -1399,6 +1402,16 @@ static int cmd_lightbar(int argc, char **argv)
 	return lb_help(argv[0]);
 }
 
+/* TODO: refactor into "find_by_name" */
+static int find_led_id_by_name(const char *name)
+{
+	int i;
+
+	for (i = 0; i < EC_LED_ID_COUNT; ++i)
+		if (!strcasecmp(name, led_id_names[i]))
+			return i;
+	return -1;
+}
 
 static int find_led_color_by_name(const char *color)
 {
@@ -1422,7 +1435,7 @@ int cmd_led(int argc, char *argv[])
 
 	if (argc < 3) {
 		fprintf(stderr,
-			"Usage: %s <ID> <query | auto | "
+			"Usage: %s <name> <query | auto | "
 			"<color>=<brightness>...>\n", argv[0]);
 		return -1;
 	}
