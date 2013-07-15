@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAcX//+vc\u003d",
+        "filename": "common/battery_peppy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-15T18:28:31Z",
+      "side": 1,
+      "message": "No need for board.h; it\u0027s included by common.h.",
+      "revId": "eabb9a669cfc270b3d4cdbd4b0d35a9a08a4cee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//+vU\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-15T18:28:31Z",
+      "side": 1,
+      "message": "Does CONFIG_BATTERY_PHYSICAL_PRESENCE mean \"battery can be removed\" or just \"we have a way to tell if the battery is present\"?",
+      "revId": "eabb9a669cfc270b3d4cdbd4b0d35a9a08a4cee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//+us\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-15T18:28:31Z",
+      "side": 1,
+      "message": "This wastes an I2C transaction; we check battery_voltage() immediately below.\n\nSeems like if the battery returns a good voltage we don\u0027t need to re-read it.",
+      "revId": "eabb9a669cfc270b3d4cdbd4b0d35a9a08a4cee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//+vM\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-15T18:28:31Z",
+      "side": 1,
+      "message": "\"Alive\" may not translate well.\n\nctx-\u003ebattery_responsive would at least match battery_is_responsive().",
+      "revId": "eabb9a669cfc270b3d4cdbd4b0d35a9a08a4cee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//+vE\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-15T18:28:31Z",
+      "side": 1,
+      "message": "Add comment \"assume responsive until proven otherwise\", since at this point we\u0027re just guessing.",
+      "revId": "eabb9a669cfc270b3d4cdbd4b0d35a9a08a4cee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//+u8\u003d",
+        "filename": "common/smart_battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-15T18:28:31Z",
+      "side": 1,
+      "message": "Don\u0027t you need __attribute__((unused)) to keep it from generating compiler warnings?\n\nAlternately, it\u0027s not complaining value is used uninitialized?",
+      "revId": "eabb9a669cfc270b3d4cdbd4b0d35a9a08a4cee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//+uk\u003d",
+        "filename": "include/battery_pack.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-15T18:28:31Z",
+      "side": 1,
+      "message": "Use common.h instead",
+      "revId": "eabb9a669cfc270b3d4cdbd4b0d35a9a08a4cee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//+uI\u003d",
+        "filename": "include/smart_battery.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-15T18:28:31Z",
+      "side": 1,
+      "message": "/**\n * Attempt communication with the battery.\n *\n * @return non-zero if the battery responds.\n */",
+      "revId": "eabb9a669cfc270b3d4cdbd4b0d35a9a08a4cee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
