@@ -207,13 +207,22 @@ static void set_initial_pwrbtn_state(void)
 			pwrbtn_state = PWRBTN_STATE_EAT_RELEASE;
 		else
 			pwrbtn_state = PWRBTN_STATE_IDLE;
+	} else if (reset_flags & RESET_FLAG_POWER_ON) {
+		/*
+		 * Don't boot immediately if power was just applied.
+		 */
+		pwrbtn_state = PWRBTN_STATE_IDLE;
 	} else {
 		/*
 		 * All other EC reset conditions power on the main processor so
 		 * it can verify the EC.
 		 */
-		CPRINTF("[%T PB init-on]\n");
-		pwrbtn_state = PWRBTN_STATE_INIT_ON;
+		if (lid_is_open()) {
+			CPRINTF("[%T PB init-on]\n");
+			pwrbtn_state = PWRBTN_STATE_INIT_ON;
+		} else {
+			pwrbtn_state = PWRBTN_STATE_IDLE;
+		}
 	}
 }
 
