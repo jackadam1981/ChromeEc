@@ -212,8 +212,10 @@ static void set_initial_pwrbtn_state(void)
 		 * All other EC reset conditions power on the main processor so
 		 * it can verify the EC.
 		 */
-		CPRINTF("[%T PB init-on]\n");
-		pwrbtn_state = PWRBTN_STATE_INIT_ON;
+		if (lid_is_open()) {
+			CPRINTF("[%T PB init-on]\n");
+			pwrbtn_state = PWRBTN_STATE_INIT_ON;
+		}
 	}
 }
 
