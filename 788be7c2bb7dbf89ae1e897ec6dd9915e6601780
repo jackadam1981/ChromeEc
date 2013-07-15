@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAcX//+v4\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-15T18:16:49Z",
+      "side": 1,
+      "message": "just do \n\n   state_machine_force_idle \u003d enable;\n\nat the end (before return EC_SUCCESS), and then you don\u0027t need the else clause.",
+      "revId": "788be7c2bb7dbf89ae1e897ec6dd9915e6601780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
