@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAcX//9H0\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-16T15:49:06Z",
+      "side": 1,
+      "message": "Well, except that connected and responsive are both battery detection.\n\nPerhaps this would be clearer:\n\n#define CONFIG_BATTERY_CHECK_CONNECTED",
+      "revId": "0946e0fe1331f5e5d00be1472a8a903b4de190c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//9Kw\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-16T15:49:06Z",
+      "side": 1,
+      "message": "Seems like we ought to add a new error flag F_BATTERY_NOT_CONNECTED.\n\nWe\u0027ve had a few prototypes where the battery cables were too short and came unplugged; this would differentiate those failures from the battery IC having problems.",
+      "revId": "0946e0fe1331f5e5d00be1472a8a903b4de190c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//9Kk\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-16T15:49:06Z",
+      "side": 1,
+      "message": "just do \n\n  \u0026\u0026 ctx-\u003ebattery_present\n\nno need to compare that it\u0027s exactly 1.  Makes for slightly smaller code.",
+      "revId": "0946e0fe1331f5e5d00be1472a8a903b4de190c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//9Js\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-16T15:49:06Z",
+      "side": 1,
+      "message": "Apologies for being confused again.\n\nHere it looks like we\u0027re using \"present\" to mean \"responsive\".  But a \"connected\" battery is present, even if it\u0027s not talking to us.\n\n\"battery_responsive\" would be clearer.  It didn\u0027t matter before, because the only way we had to determine if a battery was present was seeing if it was responsive.  But now we\u0027ve got 2 ways.",
+      "revId": "0946e0fe1331f5e5d00be1472a8a903b4de190c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
