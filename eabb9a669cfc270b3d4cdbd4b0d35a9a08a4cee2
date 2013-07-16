@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcX//9Vw\u003d",
+        "filename": "common/battery_peppy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-07-16T13:46:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAcX//+vc\u003d",
+      "revId": "eabb9a669cfc270b3d4cdbd4b0d35a9a08a4cee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcX//+vU\u003d",
         "filename": "common/charge_state.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2013-07-15T18:28:31Z",
       "side": 1,
       "message": "Does CONFIG_BATTERY_PHYSICAL_PRESENCE mean \"battery can be removed\" or just \"we have a way to tell if the battery is present\"?",
+      "revId": "eabb9a669cfc270b3d4cdbd4b0d35a9a08a4cee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//9VQ\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-07-16T13:46:17Z",
+      "side": 1,
+      "message": "It means that we have a way to tell that the battery is connected without needing to talk to it over smbus. If we had a device with an external battery then something like CONFIG_BATTERY_REMOVABLE would be appropriate (and orthogonal to this config option).\n\nI can\u0027t say I\u0027m enamored with the current name. How about CONFIG_BATTERY_DETECT instead? It\u0027s more to the point.",
+      "parentUuid": "AAAAcX//+vU\u003d",
       "revId": "eabb9a669cfc270b3d4cdbd4b0d35a9a08a4cee2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcX//9VE\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-07-16T13:46:17Z",
+      "side": 1,
+      "message": "I was going for readability. I\u0027ll revert back to checking temp directly and add a comment.",
+      "parentUuid": "AAAAcX//+us\u003d",
+      "revId": "eabb9a669cfc270b3d4cdbd4b0d35a9a08a4cee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcX//+vM\u003d",
         "filename": "common/charge_state.c",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2013-07-15T18:28:31Z",
       "side": 1,
       "message": "\"Alive\" may not translate well.\n\nctx-\u003ebattery_responsive would at least match battery_is_responsive().",
+      "revId": "eabb9a669cfc270b3d4cdbd4b0d35a9a08a4cee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//9VA\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-07-16T13:46:17Z",
+      "side": 1,
+      "message": "I think I\u0027ll revert this back to \"battery_present\" as this terminology is used elsewhere in the code. I\u0027ll used battery_is_connected() for the new functionality I\u0027m adding.",
+      "parentUuid": "AAAAcX//+vM\u003d",
       "revId": "eabb9a669cfc270b3d4cdbd4b0d35a9a08a4cee2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcX//9UU\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-07-16T13:46:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAcX//+vE\u003d",
+      "revId": "eabb9a669cfc270b3d4cdbd4b0d35a9a08a4cee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcX//+u8\u003d",
         "filename": "common/smart_battery.c",
         "patchSetId": 2
@@ -98,6 +188,24 @@
       "writtenOn": "2013-07-15T18:28:31Z",
       "side": 1,
       "message": "Don\u0027t you need __attribute__((unused)) to keep it from generating compiler warnings?\n\nAlternately, it\u0027s not complaining value is used uninitialized?",
+      "revId": "eabb9a669cfc270b3d4cdbd4b0d35a9a08a4cee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//9UI\u003d",
+        "filename": "common/smart_battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-07-16T13:46:17Z",
+      "side": 1,
+      "message": "I guess passing by reference is good enough to keep the compiler quiet. I\u0027m removing this function as I\u0027ll go back to reading temperature values as a proxy for detecting whether the battery is responding on the bus.",
+      "parentUuid": "AAAAcX//+u8\u003d",
       "revId": "eabb9a669cfc270b3d4cdbd4b0d35a9a08a4cee2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcX//9T8\u003d",
+        "filename": "include/battery_pack.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-07-16T13:46:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAcX//+uk\u003d",
+      "revId": "eabb9a669cfc270b3d4cdbd4b0d35a9a08a4cee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcX//+uI\u003d",
         "filename": "include/smart_battery.h",
         "patchSetId": 2
@@ -132,6 +258,24 @@
       "writtenOn": "2013-07-15T18:28:31Z",
       "side": 1,
       "message": "/**\n * Attempt communication with the battery.\n *\n * @return non-zero if the battery responds.\n */",
+      "revId": "eabb9a669cfc270b3d4cdbd4b0d35a9a08a4cee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//9Qc\u003d",
+        "filename": "include/smart_battery.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-07-16T13:46:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAcX//+uI\u003d",
       "revId": "eabb9a669cfc270b3d4cdbd4b0d35a9a08a4cee2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
