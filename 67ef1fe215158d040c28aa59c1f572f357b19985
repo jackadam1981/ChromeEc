@@ -69,6 +69,24 @@
       "revId": "67ef1fe215158d040c28aa59c1f572f357b19985",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//6F4\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-07-17T23:48:21Z",
+      "side": 1,
+      "message": "Yes, but I mean should we require that it must be at least a multiple of this value?",
+      "parentUuid": "AAAAcX//6Kw\u003d",
+      "revId": "67ef1fe215158d040c28aa59c1f572f357b19985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
