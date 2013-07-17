@@ -572,6 +572,7 @@ struct ec_response_get_protocol_info {
 /* Get flash info */
 #define EC_CMD_FLASH_INFO 0x10
 
+/* Version 0 returns these fields */
 struct ec_response_flash_info {
 	/* Usable flash size, in bytes */
 	uint32_t flash_size;
@@ -590,6 +591,45 @@ struct ec_response_flash_info {
 	 * multiple of this.
 	 */
 	uint32_t protect_block_size;
+} __packed;
+
+/* Flags for version 1+ flash info command */
+/* EC flash erases bits to 0 instead of 1 */
+#define EC_FLASH_INFO_ERASE_TO_0 (1 << 0)
+
+/* Version 1 returns these fields */
+struct ec_response_flash_info_1 {
+	/* Usable flash size, in bytes */
+	uint32_t flash_size;
+
+	/*
+	 * Write block size.  Write offset and size must be a multiple
+	 * of this.
+	 */
+	uint32_t write_block_size;
+
+	/*
+	 * Erase block size.  Erase offset and size must be a multiple
+	 * of this.
+	 */
+	uint32_t erase_block_size;
+
+	/*
+	 * Protection block size.  Protection offset and size must be a
+	 * multiple of this.
+	 */
+	uint32_t protect_block_size;
+
+	/*
+	 * Ideal write block size in bytes.  Writes will be fastest if offset
+	 * and size are a multiple of this.  For example, an EC may have a
+	 * write buffer which can do half-page operations if data is aligned,
+	 * and a slower word-at-a-time write mode.
+	 */
+	uint32_t write_block_ideal_size;
+
+	/* Flags; see EC_FLASH_INFO_* */
+	uint32_t flags;
 } __packed;
 
 /*
