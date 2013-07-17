@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAcX//6Us\u003d",
+        "filename": "chip/stm32/config-stm32f100.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-07-17T22:01:49Z",
+      "side": 1,
+      "message": "Will this cause the AP to perform 1000s of writes?",
+      "revId": "67ef1fe215158d040c28aa59c1f572f357b19985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//6VA\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-07-17T22:01:49Z",
+      "side": 1,
+      "message": "Should we in fact require that this size be used? It might simplify the EC code, and would be easy enough for the AP.",
+      "revId": "67ef1fe215158d040c28aa59c1f572f357b19985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
