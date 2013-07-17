@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAcX//7IU\u003d",
+        "filename": "common/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-17T15:54:57Z",
+      "side": 1,
+      "message": "common-$(CONFIG_CHIPSET_X86)+\u003dchipset_x86_common.o\n\nand then define CONFIG_CHIPSET_X86 for the other x86 boards (in addition to CONFIG_CHIPSET_HASWELL/IVYBRIDGE)\n\n(It\u0027s possible that we\u0027ll have ARM boards where the power sequence moves to the board dir)",
+      "revId": "dd2832ce11a7e5d69ec062d07b968d38aadb10d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
