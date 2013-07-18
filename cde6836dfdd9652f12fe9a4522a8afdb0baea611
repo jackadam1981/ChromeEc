@@ -16,6 +16,24 @@
       "revId": "cde6836dfdd9652f12fe9a4522a8afdb0baea611",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//5/A\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-18T02:19:45Z",
+      "side": 1,
+      "message": "We can cross that bridge when we come to it.  In that case I\u0027d imagine the read and write ideal sizes would be equal; we could just define a flag EC_FLASH_INFO_READS_USE_WRITE_IDEAL_SIZE (which wouldn\u0027t be set for any current platform).",
+      "parentUuid": "AAAAcX//6BQ\u003d",
+      "revId": "cde6836dfdd9652f12fe9a4522a8afdb0baea611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
