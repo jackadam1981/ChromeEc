@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAcX//6BQ\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2013-07-18T00:53:32Z",
+      "side": 1,
+      "message": "BTW -- Should we also have a read_ideal_size as well?\n\nWe mostly treat reads as random-access (they are on NOR flash), but perhaps this will not be true for all ECs.",
+      "revId": "cde6836dfdd9652f12fe9a4522a8afdb0baea611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
