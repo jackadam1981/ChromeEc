@@ -84,9 +84,9 @@
 #define CABLE_DET_POLL_MS	100
 #define CABLE_DET_POLL_COUNT	6
 
-/* Battery level thresholds for S5 boost control */
-#define S5_BOOST_CTRL_LOWER_BOUND 94
-#define S5_BOOST_CTRL_UPPER_BOUND 98
+/* Battery level thresholds for S5 boost control. In 1/100%. */
+#define S5_BOOST_CTRL_LOWER_BOUND 9325
+#define S5_BOOST_CTRL_UPPER_BOUND 9875
 
 static int current_dev_type = TSU6721_TYPE_NONE;
 static int nominal_pwm_duty;
@@ -535,7 +535,7 @@ static int usb_need_boost(int dev_type)
 
 static void usb_s5_manage_boost(void)
 {
-	int charge;
+	int chg, cap;
 	int boost = gpio_get_level(GPIO_BOOST_EN);
 
 	if (!usb_maybe_power_input(current_dev_type)) {
@@ -544,12 +544,13 @@ static void usb_s5_manage_boost(void)
 		return;
 	}
 
-	if (battery_state_of_charge(&charge))
+	if (battery_remaining_capacity(&chg) ||
+	    battery_full_charge_capacity(&cap))
 		return;
 
-	if (boost == 0 && charge <= S5_BOOST_CTRL_LOWER_BOUND)
+	if (boost == 0 && chg * 10000 <= S5_BOOST_CTRL_LOWER_BOUND * cap)
 		gpio_set_level(GPIO_BOOST_EN, 1);
-	else if (boost == 1 && charge >= S5_BOOST_CTRL_UPPER_BOUND)
+	else if (boost == 1 && chg * 10000 >= S5_BOOST_CTRL_UPPER_BOUND * cap)
 		gpio_set_level(GPIO_BOOST_EN, 0);
 }
 
