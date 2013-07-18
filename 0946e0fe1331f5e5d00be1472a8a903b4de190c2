@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcX//4/o\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-07-18T21:24:12Z",
+      "side": 1,
+      "message": "Sure...sounds better.",
+      "parentUuid": "AAAAcX//9H0\u003d",
+      "revId": "0946e0fe1331f5e5d00be1472a8a903b4de190c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcX//9Kw\u003d",
         "filename": "common/charge_state.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2013-07-16T15:49:06Z",
       "side": 1,
       "message": "Seems like we ought to add a new error flag F_BATTERY_NOT_CONNECTED.\n\nWe\u0027ve had a few prototypes where the battery cables were too short and came unplugged; this would differentiate those failures from the battery IC having problems.",
+      "revId": "0946e0fe1331f5e5d00be1472a8a903b4de190c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//4/k\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-07-18T21:24:12Z",
+      "side": 1,
+      "message": "Interesting...Done.",
+      "parentUuid": "AAAAcX//9Kw\u003d",
       "revId": "0946e0fe1331f5e5d00be1472a8a903b4de190c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcX//4/g\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-07-18T21:24:12Z",
+      "side": 1,
+      "message": "Ah yes, embedded systems programming.",
+      "parentUuid": "AAAAcX//9Kk\u003d",
+      "revId": "0946e0fe1331f5e5d00be1472a8a903b4de190c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcX//9Js\u003d",
         "filename": "common/charge_state.c",
         "patchSetId": 3
@@ -64,6 +118,24 @@
       "writtenOn": "2013-07-16T15:49:06Z",
       "side": 1,
       "message": "Apologies for being confused again.\n\nHere it looks like we\u0027re using \"present\" to mean \"responsive\".  But a \"connected\" battery is present, even if it\u0027s not talking to us.\n\n\"battery_responsive\" would be clearer.  It didn\u0027t matter before, because the only way we had to determine if a battery was present was seeing if it was responsive.  But now we\u0027ve got 2 ways.",
+      "revId": "0946e0fe1331f5e5d00be1472a8a903b4de190c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//4+0\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-07-18T21:24:12Z",
+      "side": 1,
+      "message": "Ok, I\u0027ll change it back to \u0027responsive\u0027. There is also EC_BATT_FLAG_BATT_PRESENT floating around in charge_state.c I can change this in another CL to be consistent.",
+      "parentUuid": "AAAAcX//9Js\u003d",
       "revId": "0946e0fe1331f5e5d00be1472a8a903b4de190c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
