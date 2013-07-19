@@ -24,14 +24,19 @@ if ghash=`git rev-parse --short --verify HEAD 2>/dev/null`; then
 	git status > /dev/null 2>&1
 
 	dirty=`sh -c "[ '$(git diff-index --name-only HEAD)' ] && echo '-dirty'"`
-	ver="${ver_major}.${ver_branch}.${numcommits}-${ghash}${dirty}"
+	ver="${BOARD}_${ver_major}.${ver_branch}.${numcommits}-${ghash}${dirty}"
 else
-	ver="no_version"
+	ver="${BOARD}_no_version"
 fi
+
 echo "#ifdef SHIFT_CODE_FOR_TEST"
-echo "#define VERSION \"${ver}_shift\""
+echo "#define CROS_EC_VERSION \"${ver}_shift\""
 echo "#else"
-echo "#define VERSION \"${ver}\""
+echo "#define CROS_EC_VERSION \"${ver}\""
 echo "#endif"
+
+# Version string, truncated to 31 chars (+ terminating null = 32)
+echo "#define CROS_EC_VERSION32 \"${ver:0:31}\""
+
 echo "#define DATE \"`date '+%F %T'`\""
 echo "#define BUILDER \"${USER}@`hostname`\""
