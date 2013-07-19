@@ -157,7 +157,7 @@ static int test_typematic(void)
 	set_typematic(0xf);
 
 	press_key(1, 1, 1);
-	VERIFY_LPC_CHAR_DELAY("\x01\x01\x01\x01\x01", 650);
+	VERIFY_LPC_CHAR_DELAY("\x01\x01\x01\x01\x01", 725);
 	press_key(1, 1, 0);
 	VERIFY_LPC_CHAR_DELAY("\x81", 300);
 
