@@ -20,6 +20,9 @@
 #define CONFIG_POWER_BUTTON
 #define CONFIG_TEMP_SENSOR
 #define CONFIG_MOCK_CHARGER
+#ifdef HAS_TASK_CHIPSET
+#define CONFIG_MOCK_X86_POWER
+#endif
 
 /* Keyboard protocol */
 #ifdef KB_8042

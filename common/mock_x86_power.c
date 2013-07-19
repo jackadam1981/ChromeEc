@@ -7,22 +7,29 @@
 
 #include "chipset.h"
 #include "chipset_x86_common.h"
+#include "common.h"
 #include "console.h"
 #include "lpc.h"
 #include "timer.h"
 #include "uart.h"
 #include "util.h"
 
-static int mock_power_on = 0;
+static enum x86_state state = X86_G3;  /* Current state */
+
+
+void x86_set_state(enum x86_state new_state)
+{
+	state = new_state;
+}
 
 void chipset_force_shutdown(void)
 {
 	uart_puts("Force shutdown\n");
-	mock_power_on = 0;
+	x86_set_state(X86_G3);
 }
 
 
-void chipset_reset(int cold_reset)
+test_mockable void chipset_reset(int cold_reset)
 {
 	uart_printf("X86 Power %s reset\n", cold_reset ? "cold" : "warm");
 }
@@ -44,20 +51,54 @@ void chipset_throttle_cpu(int throttle)
 
 void chipset_exit_hard_off(void)
 {
-	/* Not implemented */
+	x86_set_state(X86_S0);
 	return;
 }
 
 
 int chipset_in_state(int state_mask)
 {
-	if (mock_power_on)
-		return state_mask == CHIPSET_STATE_ON;
-	else
-		return (state_mask == CHIPSET_STATE_SOFT_OFF) ||
-		       (state_mask == CHIPSET_STATE_ANY_OFF);
-}
+	int need_mask = 0;
 
+	/*
+	 * TODO: what to do about state transitions?  If the caller wants
+	 * HARD_OFF|SOFT_OFF and we're in G3S5, we could still return
+	 * non-zero.
+	 */
+	switch (state) {
+	case X86_G3:
+		need_mask = CHIPSET_STATE_HARD_OFF;
+		break;
+	case X86_G3S5:
+	case X86_S5G3:
+		/*
+		 * In between hard and soft off states.  Match only if caller
+		 * will accept both.
+		 */
+		need_mask = CHIPSET_STATE_HARD_OFF | CHIPSET_STATE_SOFT_OFF;
+		break;
+	case X86_S5:
+		need_mask = CHIPSET_STATE_SOFT_OFF;
+		break;
+	case X86_S5S3:
+	case X86_S3S5:
+		need_mask = CHIPSET_STATE_SOFT_OFF | CHIPSET_STATE_SUSPEND;
+		break;
+	case X86_S3:
+		need_mask = CHIPSET_STATE_SUSPEND;
+		break;
+	case X86_S3S0:
+	case X86_S0S3:
+		need_mask = CHIPSET_STATE_SUSPEND | CHIPSET_STATE_ON;
+		break;
+	case X86_S0:
+		need_mask = CHIPSET_STATE_ON;
+		break;
+	}
+
+	/* Return non-zero if all needed bits are present */
+	return (state_mask & need_mask) == need_mask;
+}
 
 void x86_interrupt(enum gpio_signal signal)
 {
@@ -76,11 +117,17 @@ void chipset_task(void)
 
 static int command_mock_power(int argc, char **argv)
 {
+	int mock_power_on;
 	if (argc != 2)
 		return EC_ERROR_PARAM_COUNT;
 
 	if (!parse_bool(argv[1], &mock_power_on))
 		return EC_ERROR_PARAM1;
+
+	if (mock_power_on)
+		chipset_exit_hard_off();
+	else
+		chipset_force_shutdown();
 
 	return EC_SUCCESS;
 }
