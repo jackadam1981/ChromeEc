@@ -588,25 +588,9 @@ void pmu_init(void)
 
 	while (--retries_remaining >= 0) {
 		failure = 0;
-#ifdef CONFIG_PMU_BOARD_INIT
 		if (!failure)
 			failure = pmu_board_init();
-#else
-		/* Init configuration
-		 *   Fast charge timer    : 2 hours
-		 *   Charger              : disable
-		 *   External pin control : enable
-		 *
-		 * TODO: move settings to battery pack specific init
-		 */
-		if (!failure)
-			failure = pmu_write(CG_CTRL0, 2);
-		/* Limit full charge current to 50%
-		 * TODO: remove this temporary hack.
-		 */
-		if (!failure)
-			failure = pmu_write(CG_CTRL3, 0xbb);
-#endif
+
 		/* Enable interrupts */
 		if (!failure) {
 			failure = pmu_write(IRQ1MASK,
