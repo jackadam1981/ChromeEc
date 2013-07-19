@@ -48,4 +48,18 @@ enum temp_sensor_id {
 	TEMP_SENSOR_COUNT
 };
 
+enum adc_channel {
+	/* Charger current in mA. */
+	ADC_CH_CHARGER_CURRENT,
+
+	/* AC Adapter ID voltage in mV */
+	ADC_AC_ADAPTER_ID_VOLTAGE,
+
+	ADC_CH_COUNT
+};
+
+/* Hush warnings from inline functions in smart_battery.h */
+#define I2C_PORT_BATTERY 0
+
+
 #endif /* __BOARD_H */
