@@ -16,6 +16,24 @@
       "revId": "dd2832ce11a7e5d69ec062d07b968d38aadb10d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//4L8\u003d",
+        "filename": "common/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-19T15:33:28Z",
+      "side": 1,
+      "message": "(also, since this is adding a new config option, please add\n\n/* description of change */\n#undef CONFIG_CHIPSET_X86\n\nto config.h so that stays a canonical list of config options)",
+      "parentUuid": "AAAAcX//7IU\u003d",
+      "revId": "dd2832ce11a7e5d69ec062d07b968d38aadb10d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
