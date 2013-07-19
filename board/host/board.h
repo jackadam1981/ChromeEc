@@ -19,6 +19,10 @@
 #define CONFIG_LID_SWITCH
 #define CONFIG_POWER_BUTTON
 #define CONFIG_TEMP_SENSOR
+#define CONFIG_CHARGER_MOCK
+#ifdef HAS_TASK_CHIPSET
+#define CONFIG_CHIPSET_MOCK
+#endif
 
 /* Keyboard protocol */
 #ifdef KB_8042
