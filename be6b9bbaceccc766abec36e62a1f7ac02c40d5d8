@@ -16,6 +16,24 @@
       "revId": "be6b9bbaceccc766abec36e62a1f7ac02c40d5d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//1Yw\u003d",
+        "filename": "board/slippy/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-07-22T20:06:40Z",
+      "side": 1,
+      "message": "It gets called from g781_get_val in common/temp_sensor_g781.c\n\nIt\u0027s used to block polling the temp sensor when the 3300_dx rail is unpowered (at least in the case of x86 devices).",
+      "parentUuid": "AAAAcX//1eM\u003d",
+      "revId": "be6b9bbaceccc766abec36e62a1f7ac02c40d5d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
