@@ -425,6 +425,22 @@ int pmu_enable_fet(int fet_id, int enable, int *power_good)
 	return EC_SUCCESS;
 }
 
+void pmu_battery_mode(void)
+{
+	/* Force a hard reset of tps Chrome */
+	gpio_set_level(GPIO_PMIC_RESET, 1);
+
+	/*
+	 * Delay for 20 us. This drops 3.3V power rail to ~2.4V, which is
+	 * low enough to get TPS65090 to go into battery mode, but not as low
+	 * as to brown out the EC.
+	 */
+	udelay(20);
+
+	/* Done. Back to normal. */
+	gpio_set_level(GPIO_PMIC_RESET, 0);
+}
+
 int pmu_adc_read(int adc_idx, int flags)
 {
 	int ctrl;
