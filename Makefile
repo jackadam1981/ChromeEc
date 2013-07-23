@@ -65,3 +65,4 @@ all-y+=$(call objs_from_dir,test,$(PROJECT))
 dirs=core/$(CORE) chip/$(CHIP) board/$(BOARD) private common test util
 
 include Makefile.rules
+include Makefile.maketest

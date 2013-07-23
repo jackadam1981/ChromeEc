@@ -1,0 +1,20 @@
+# -*- makefile -*-
+# Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+#
+# Embedded Controller firmware build system - common targets
+#
+
+all-boards := $(filter-out host,$(shell ls board))
+maketest-targets=$(foreach b,$(all-boards),maketest-$(b))
+
+.PHONY: maketest $(maketest-targets)
+$(maketest-targets): maketest-%:
+	@set -e ; \
+	echo "  BUILD $*" ; \
+	$(MAKE) BOARD=$* clean > /dev/null 2>&1 ; \
+	$(MAKE) $(MAKEFLAGS) BOARD=$* > /dev/null ; \
+	$(MAKE) BOARD=$* clean > /dev/null 2>&1
+
+maketest: $(maketest-targets)
