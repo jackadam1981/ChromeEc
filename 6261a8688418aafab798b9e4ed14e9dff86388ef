@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAAcX//zGk\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-23T20:55:19Z",
+      "side": 1,
+      "message": "What kind of manual testing?",
+      "revId": "6261a8688418aafab798b9e4ed14e9dff86388ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcX//z3A\u003d",
         "filename": "board/daisy/board.h",
         "patchSetId": 3
@@ -30,6 +47,24 @@
       "writtenOn": "2013-07-23T14:59:06Z",
       "side": 1,
       "message": "what is the point of duplicating of those functions ?\n\nif you just want to modify the constant as the bug suggests, maybe we should just add defines for each board rather than functions",
+      "revId": "6261a8688418aafab798b9e4ed14e9dff86388ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//zF8\u003d",
+        "filename": "common/battery_snow.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-23T20:55:19Z",
+      "side": 1,
+      "message": "Agree with Vincent.  \n\nInstead, define this struct in battery_pack.h:\n\nstruct battery_temperature_ranges {\n  /* Allow charging to start in this range; temps in degrees C */\n  int8_t start_charging_min_c;\n  int8_t start_charging_max_c;\n\n  /* Allow charging in this range; temps in degrees C */\n  int8_t charging_min_c;\n  int8_t charging_max_c;\n\n  /* Allow discharging in this range; temps in degrees C */\n  int8_t discharging_min_c;\n  int8_t discharging_max_c;\n};\n\nconst extern struct battery_temperature_ranges bat_temp_ranges;\n\nAnd then each board.c supplies bat_temp_ranges.",
+      "parentUuid": "AAAAcX//z20\u003d",
       "revId": "6261a8688418aafab798b9e4ed14e9dff86388ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
