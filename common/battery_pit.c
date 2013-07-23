@@ -9,13 +9,13 @@
 
 int battery_start_charging_range(int deci_k)
 {
-	return (deci_k >= CELSIUS_TO_DECI_KELVIN(5) &&
+	return (deci_k >= CELSIUS_TO_DECI_KELVIN(0) &&
 		deci_k < CELSIUS_TO_DECI_KELVIN(45));
 }
 
 int battery_charging_range(int deci_k)
 {
-	return (deci_k >= CELSIUS_TO_DECI_KELVIN(5) &&
+	return (deci_k >= CELSIUS_TO_DECI_KELVIN(0) &&
 		deci_k < CELSIUS_TO_DECI_KELVIN(60));
 }
 

@@ -46,4 +46,14 @@ const struct battery_info *battery_get_info(void);
  */
 void battery_vendor_params(struct batt_params *batt);
 
+/**
+ * Check battery temperature range.
+ *
+ * @param deci_k  Battery temperature
+ * @return        True when temperature is in range
+ */
+int battery_start_charging_range(int deci_k);
+int battery_charging_range(int deci_k);
+int battery_discharging_range(int deci_k);
+
 #endif
