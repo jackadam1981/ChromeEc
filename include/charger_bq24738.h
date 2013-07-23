@@ -55,6 +55,6 @@
 #define ACPRES_DEGLITCH_1300MS_DEFAULT  (1 << 15)
 
 /* Discharge battery when on AC power. */
-int charger_discharge_on_ac(int enable);
+int charger_discharge_on_ac(int enable, int falling_threshold);
 
 #endif /* __CROS_EC_CHARGER_BQ24738_H */

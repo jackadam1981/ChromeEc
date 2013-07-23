@@ -190,7 +190,7 @@ int charger_post_init(void)
 	return rv;
 }
 
-int charger_discharge_on_ac(int enable)
+int charger_discharge_on_ac(int enable, int falling_threshold)
 {
 	int rv;
 	int option;
@@ -200,9 +200,9 @@ int charger_discharge_on_ac(int enable)
 		return rv;
 
 	if (enable)
-		rv = charger_set_option(option | OPTION_LEARN_ENABLE);
+		option |= OPTION_LEARN_ENABLE;
 	else
-		rv = charger_set_option(option & ~OPTION_LEARN_ENABLE);
-
-	return rv;
+		option &= ~OPTION_LEARN_ENABLE;
+	option = (option & ~OPTION_BAT_DEPLETION_THRESHOLD) | falling_threshold;
+	return charger_set_option(option);
 }

@@ -230,5 +230,8 @@ int board_g781_has_power(void)
  */
 int board_discharge_on_ac(int enable)
 {
-	return charger_discharge_on_ac(enable);
+	int falling_threshold = enable ?
+		FALLING_THRESHOLD_5919 : FALLING_THRESHOLD_7097_DEFAULT;
+
+	return charger_discharge_on_ac(enable, falling_threshold);
 }
