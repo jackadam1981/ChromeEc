@@ -199,6 +199,11 @@ const char *system_get_build_info(void);
  * sync.
  */
 #define SYSTEM_RESET_LEAVE_AP_OFF   (1 << 2)
+/*
+ * Reset TPSChrome and hibernate the system. Use high bit (1 << 7) here since
+ * this is Spring-specific.
+ */
+#define SYSTEM_RESET_PMU_RESET_HIBERNATE (1 << 7)
 
 /**
  * Reset the system.

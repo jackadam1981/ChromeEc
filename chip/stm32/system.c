@@ -192,6 +192,10 @@ void system_reset(int flags)
 	if (flags & SYSTEM_RESET_HARD)
 		save_flags |= RESET_FLAG_HARD;
 
+	/* Set the flags so that the EC hibernates after PMU reset */
+	if (flags & SYSTEM_RESET_PMU_RESET_HIBERNATE)
+		save_flags |= (RESET_FLAG_WATCHDOG | RESET_FLAG_HIBERNATE);
+
 	bkpdata_write(BKPDATA_INDEX_SAVED_RESET_FLAGS, save_flags | console_en);
 
 	if (flags & SYSTEM_RESET_HARD) {
@@ -202,6 +206,8 @@ void system_reset(int flags)
 		/* wait for the watchdog */
 		while (1)
 			;
+	} else if (flags & SYSTEM_RESET_PMU_RESET_HIBERNATE) {
+		board_hard_reset();
 	} else {
 		CPU_NVIC_APINT = 0x05fa0004;
 	}

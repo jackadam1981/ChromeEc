@@ -149,7 +149,12 @@ static void check_hibernate_timer(void)
 	if (timestamp_expired(hibernate_time, NULL) &&
 	    !board_get_ac()) {
 		CPRINTF("[%T hibernating]\n");
-		system_hibernate(0, 0);
+		cflush();
+		/*
+		 * WORKAROUND: We need to reset TPSChrome in order to get
+		 * it to lock into battery mode properly.
+		 */
+		system_reset(SYSTEM_RESET_PMU_RESET_HIBERNATE);
 	}
 }
 #else
