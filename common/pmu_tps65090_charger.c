@@ -5,6 +5,7 @@
  * TI TPS65090 PMU charging task.
  */
 
+#include "battery_pack.h"
 #include "clock.h"
 #include "chipset.h"
 #include "common.h"
@@ -58,31 +59,9 @@ static void enable_charging(int enable)
 		gpio_set_level(GPIO_CHARGER_EN, enable);
 }
 
-/*
- * TODO(rongchang): move battery vendor specific functions to battery pack
- * module
- */
 static int battery_temperature_celsius(int t)
 {
 	return (t - 2731) / 10;
-}
-
-static int battery_start_charging_range(int t)
-{
-	t = battery_temperature_celsius(t);
-	return (t >= 5 && t < 45);
-}
-
-static int battery_charging_range(int t)
-{
-	t = battery_temperature_celsius(t);
-	return (t >= 5 && t < 60);
-}
-
-static int battery_discharging_range(int t)
-{
-	t = battery_temperature_celsius(t);
-	return (t >= 0 && t < 100);
 }
 
 /*

@@ -19,6 +19,7 @@
 #define CONFIG_ASSERT_HELP
 
 /* Optional features */
+#define CONFIG_BATTERY_DAISY
 #define CONFIG_BOARD_POST_GPIO_INIT
 #define CONFIG_CHARGER_TPS65090
 #ifdef HAS_TASK_CHIPSET
