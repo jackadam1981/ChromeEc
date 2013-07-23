@@ -2,9 +2,10 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
- * Smart battery driver for Spring.
+ * Battery pack specific functions.
  */
 
+#include "battery_pack.h"
 #include "host_command.h"
 #include "i2c.h"
 #include "smart_battery.h"
@@ -12,6 +13,25 @@
 
 #define PARAM_CUT_OFF_LOW  0x10
 #define PARAM_CUT_OFF_HIGH 0x00
+
+
+int battery_start_charging_range(int deci_k)
+{
+	return (deci_k >= CELSIUS_TO_DECI_KELVIN(5) &&
+		deci_k < CELSIUS_TO_DECI_KELVIN(45));
+}
+
+int battery_charging_range(int deci_k)
+{
+	return (deci_k >= CELSIUS_TO_DECI_KELVIN(5) &&
+		deci_k < CELSIUS_TO_DECI_KELVIN(60));
+}
+
+int battery_discharging_range(int deci_k)
+{
+	return (deci_k >= CELSIUS_TO_DECI_KELVIN(0) &&
+		deci_k < CELSIUS_TO_DECI_KELVIN(100));
+}
 
 int battery_command_cut_off(struct host_cmd_handler_args *args)
 {
