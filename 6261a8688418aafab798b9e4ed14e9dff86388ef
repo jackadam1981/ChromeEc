@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAcX//z3A\u003d",
+        "filename": "board/daisy/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-07-23T14:59:06Z",
+      "side": 1,
+      "message": "the board name is already defined, that seems a bit redundant.",
+      "revId": "6261a8688418aafab798b9e4ed14e9dff86388ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//z20\u003d",
+        "filename": "common/battery_snow.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-07-23T14:59:06Z",
+      "side": 1,
+      "message": "what is the point of duplicating of those functions ?\n\nif you just want to modify the constant as the bug suggests, maybe we should just add defines for each board rather than functions",
+      "revId": "6261a8688418aafab798b9e4ed14e9dff86388ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//z28\u003d",
+        "filename": "common/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-07-23T14:59:06Z",
+      "side": 1,
+      "message": "common-$(BOARD_daisy)+\u003dbattery_daisy.o\nis probably a simpler implementation of this.",
+      "revId": "6261a8688418aafab798b9e4ed14e9dff86388ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
