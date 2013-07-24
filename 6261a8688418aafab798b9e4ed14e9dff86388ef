@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcX//yEQ\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2013-07-24T15:49:32Z",
+      "side": 1,
+      "message": "Done. build test and host tests added.",
+      "parentUuid": "AAAAcX//zGk\u003d",
+      "revId": "6261a8688418aafab798b9e4ed14e9dff86388ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcX//z3A\u003d",
         "filename": "board/daisy/board.h",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2013-07-23T14:59:06Z",
       "side": 1,
       "message": "the board name is already defined, that seems a bit redundant.",
+      "revId": "6261a8688418aafab798b9e4ed14e9dff86388ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//yEM\u003d",
+        "filename": "board/daisy/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2013-07-24T15:49:32Z",
+      "side": 1,
+      "message": "Done. Removed.",
+      "parentUuid": "AAAAcX//z3A\u003d",
       "revId": "6261a8688418aafab798b9e4ed14e9dff86388ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -71,6 +107,42 @@
     },
     {
       "key": {
+        "uuid": "AAAAcX//yEI\u003d",
+        "filename": "common/battery_snow.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2013-07-24T15:49:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAcX//z20\u003d",
+      "revId": "6261a8688418aafab798b9e4ed14e9dff86388ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//yEE\u003d",
+        "filename": "common/battery_snow.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2013-07-24T15:49:32Z",
+      "side": 1,
+      "message": "Done. Merged with x86 battery info fields, and modified charge_state.c .",
+      "parentUuid": "AAAAcX//zF8\u003d",
+      "revId": "6261a8688418aafab798b9e4ed14e9dff86388ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcX//z28\u003d",
         "filename": "common/build.mk",
         "patchSetId": 3
@@ -82,6 +154,24 @@
       "writtenOn": "2013-07-23T14:59:06Z",
       "side": 1,
       "message": "common-$(BOARD_daisy)+\u003dbattery_daisy.o\nis probably a simpler implementation of this.",
+      "revId": "6261a8688418aafab798b9e4ed14e9dff86388ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//yEA\u003d",
+        "filename": "common/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2013-07-24T15:49:32Z",
+      "side": 1,
+      "message": "Removed. Will modify other CONFIG_BATTERY_foobar in another CL.",
+      "parentUuid": "AAAAcX//z28\u003d",
       "revId": "6261a8688418aafab798b9e4ed14e9dff86388ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
