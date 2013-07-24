@@ -15,6 +15,9 @@
 #define CONFIG_LID_SWITCH
 #define CONFIG_POWER_BUTTON
 #define CONFIG_TEMP_SENSOR
+#define CONFIG_CHARGER
+#define CONFIG_MOCK_BATTERY
+#define CONFIG_CHARGER_INPUT_CURRENT 4032
 
 /* Keyboard protocol */
 #ifdef KB_8042

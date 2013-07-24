@@ -483,6 +483,7 @@ static enum power_state state_charge(struct power_state_context *ctx)
 static enum power_state state_discharge(struct power_state_context *ctx)
 {
 	struct batt_params *batt = &ctx->curr.batt;
+	int8_t bat_temp_c = DECI_KELVIN_TO_CELSIUS(batt->temperature);
 	if (ctx->curr.ac)
 		return PWR_STATE_REINIT;
 
@@ -490,8 +491,8 @@ static enum power_state state_discharge(struct power_state_context *ctx)
 		return PWR_STATE_ERROR;
 
 	/* Handle overtemp in discharging state by powering off host */
-	if ((batt->temperature > ctx->battery->temp_discharge_max ||
-	     batt->temperature < ctx->battery->temp_discharge_min) &&
+	if ((bat_temp_c >= bat_temp_ranges.discharging_max_c ||
+	     bat_temp_c < bat_temp_ranges.discharging_min_c) &&
 	    chipset_in_state(CHIPSET_STATE_ON)) {
 		CPRINTF("[%T charge force shutdown due to battery temp]\n");
 		chipset_force_shutdown();

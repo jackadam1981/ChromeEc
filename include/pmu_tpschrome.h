@@ -219,7 +219,7 @@ int pmu_low_current_charging(int enable);
  */
 int pmu_adc_read(int adc_idx, int flags);
 
-#ifdef HAS_TASK_CHARGER
+#ifdef HAS_TASK_PMUCHARGER
 /**
  * Handles charger interrupts from tpschrome
  *

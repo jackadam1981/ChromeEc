@@ -545,7 +545,7 @@ static int wait_for_power_on(void)
 			continue;
 		}
 
-#ifdef HAS_TASK_CHARGER
+#ifdef HAS_TASK_PMUCHARGER
 		/*
 		 * If the system is already on (value == 1), the kernel
 		 * would handle low power condition and we should not

@@ -775,7 +775,7 @@ int extpower_is_present(void)
 
 void extpower_interrupt(enum gpio_signal signal)
 {
-	task_wake(TASK_ID_CHARGER);
+	task_wake(TASK_ID_PMUCHARGER);
 }
 
 /*****************************************************************************/
@@ -791,7 +791,7 @@ static void adc_watchdog_interrupt(void)
 		pending_tsu6721_reset = 1;
 		pending_adc_watchdog_disable = 1;
 		task_disable_irq(STM32_IRQ_ADC_1);
-		task_wake(TASK_ID_CHARGER);
+		task_wake(TASK_ID_PMUCHARGER);
 		break;
 	default:
 		break;
@@ -858,7 +858,7 @@ static void usb_detach_video(void)
 	pending_video_power_off = 1;
 	restore_id_mux = 1;
 	pending_tsu6721_reset = 1;
-	task_wake(TASK_ID_CHARGER);
+	task_wake(TASK_ID_PMUCHARGER);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, usb_detach_video, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, usb_detach_video, HOOK_PRIO_DEFAULT);
@@ -919,7 +919,7 @@ static void usb_charger_redetect(void)
 		if (gpio_get_level(GPIO_ID_MUX))
 			restore_id_mux = 1;
 		charger_need_redetect = REDETECTED;
-		task_wake(TASK_ID_CHARGER);
+		task_wake(TASK_ID_PMUCHARGER);
 	}
 }
 DECLARE_HOOK(HOOK_SECOND, usb_charger_redetect, HOOK_PRIO_DEFAULT);
