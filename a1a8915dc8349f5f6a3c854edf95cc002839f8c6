@@ -34,6 +34,24 @@
       "revId": "a1a8915dc8349f5f6a3c854edf95cc002839f8c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//xdA\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-07-24T20:56:31Z",
+      "side": 1,
+      "message": "So, maybe you want to do all the sequence (udelay + 2x gipo_set_delay) with interrupts disables, else we will sometimes. miss the deadline",
+      "parentUuid": "AAAAcX//xes\u003d",
+      "revId": "a1a8915dc8349f5f6a3c854edf95cc002839f8c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
