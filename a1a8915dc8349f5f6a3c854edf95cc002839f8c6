@@ -16,6 +16,24 @@
       "revId": "a1a8915dc8349f5f6a3c854edf95cc002839f8c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//xes\u003d",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-07-24T20:48:18Z",
+      "side": 1,
+      "message": "It takes a little bit more than 30us for the EC to brown out (1.96V).",
+      "parentUuid": "AAAAcX//xfU\u003d",
+      "revId": "a1a8915dc8349f5f6a3c854edf95cc002839f8c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
