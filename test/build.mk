@@ -30,6 +30,7 @@ test-list-$(BOARD_wolf)=
 # Emulator tests
 test-list-host=mutex pingpong utils kb_scan kb_mkbp lid_sw power_button hooks
 test-list-host+=thermal flash queue kb_8042 extpwr_gpio console_edit
+test-list-host+=sbs_charging
 
 console_edit-y=console_edit.o
 extpwr_gpio-y=extpwr_gpio.o
@@ -45,6 +46,7 @@ pingpong-y=pingpong.o
 power_button-y=power_button.o
 powerdemo-y=powerdemo.o
 queue-y=queue.o
+sbs_charging-y=sbs_charging.o
 stress-y=stress.o
 thermal-y=thermal.o
 thermal-scale=200
