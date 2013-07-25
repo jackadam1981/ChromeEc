@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcX//v7Y\u003d",
+        "filename": "common/extpower_falco.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2013-07-25T20:24:15Z",
+      "side": 1,
+      "message": "I think it might be helpful to note them in decimal maybe. Easier for humans to read? And maybe reiterate they are in mA ?",
+      "parentUuid": "AAAAcX//v84\u003d",
+      "revId": "98288c3753a781c4b4d60db6931588b157cafe81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcX//v/c\u003d",
         "filename": "common/extpower_falco.c",
         "patchSetId": 1
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "Not yet. That\u0027s the next CL, where I actually send (new) host events to request that it throttle itself.",
       "parentUuid": "AAAAcX//v/c\u003d",
+      "revId": "98288c3753a781c4b4d60db6931588b157cafe81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//v7A\u003d",
+        "filename": "common/extpower_falco.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2013-07-25T20:24:15Z",
+      "side": 1,
+      "message": "OK. Good to know.",
+      "parentUuid": "AAAAcX//v8s\u003d",
       "revId": "98288c3753a781c4b4d60db6931588b157cafe81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -171,6 +207,24 @@
       "side": 1,
       "message": "With an ugly hack in common/charge_state.c\n\nSince that file is an impenetrable mess, Randall suggested I just hack it in for now, and we\u0027ll fix it when we fix the rest of the charge state logic. He has that on his ToDo list.",
       "parentUuid": "AAAAcX//wBk\u003d",
+      "revId": "98288c3753a781c4b4d60db6931588b157cafe81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//v4o\u003d",
+        "filename": "include/extpower_falco.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2013-07-25T20:24:15Z",
+      "side": 1,
+      "message": "I just meant, there is some baked in assumptions of the polling rate. They should probably be mentioned w.r.t. the expectations.",
+      "parentUuid": "AAAAcX//v70\u003d",
       "revId": "98288c3753a781c4b4d60db6931588b157cafe81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
