@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcX//vv8\u003d",
+        "filename": "common/extpower_falco.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-07-25T21:38:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAcX//v7Y\u003d",
+      "revId": "98288c3753a781c4b4d60db6931588b157cafe81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcX//v/c\u003d",
         "filename": "common/extpower_falco.c",
         "patchSetId": 1
@@ -178,6 +196,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcX//vv0\u003d",
+        "filename": "common/extpower_falco.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-07-25T21:38:21Z",
+      "side": 1,
+      "message": "Added a comment to that effect.",
+      "parentUuid": "AAAAcX//v8E\u003d",
+      "revId": "98288c3753a781c4b4d60db6931588b157cafe81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcX//wBk\u003d",
         "filename": "include/extpower_falco.h",
         "patchSetId": 1
@@ -225,6 +261,24 @@
       "side": 1,
       "message": "I just meant, there is some baked in assumptions of the polling rate. They should probably be mentioned w.r.t. the expectations.",
       "parentUuid": "AAAAcX//v70\u003d",
+      "revId": "98288c3753a781c4b4d60db6931588b157cafe81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//vwA\u003d",
+        "filename": "include/extpower_falco.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-07-25T21:38:21Z",
+      "side": 1,
+      "message": "Oh, I see. Yeah, I agree. I\u0027ll add a constant here, and use it in charge_state.c",
+      "parentUuid": "AAAAcX//v4o\u003d",
       "revId": "98288c3753a781c4b4d60db6931588b157cafe81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
