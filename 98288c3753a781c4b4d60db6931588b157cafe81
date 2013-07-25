@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAcX//v/g\u003d",
+        "filename": "common/extpower_falco.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2013-07-25T20:04:56Z",
+      "side": 1,
+      "message": "What values of current are these hex numbers equivalent to?",
+      "revId": "98288c3753a781c4b4d60db6931588b157cafe81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//v/c\u003d",
+        "filename": "common/extpower_falco.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2013-07-25T20:04:56Z",
+      "side": 1,
+      "message": "It does\u0027t seem like anything is actually being done w/ this value aside from setting it to either 0 or 1. And is the ap really throttled?",
+      "revId": "98288c3753a781c4b4d60db6931588b157cafe81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//v90\u003d",
+        "filename": "common/extpower_falco.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2013-07-25T20:04:56Z",
+      "side": 1,
+      "message": "I feel like \u0027triggered\u0027 should be renamed \u0027throttle_triggered\u0027 so it\u0027s clearer as to what exactly is triggered.",
+      "revId": "98288c3753a781c4b4d60db6931588b157cafe81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//v+4\u003d",
+        "filename": "common/extpower_falco.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2013-07-25T20:04:56Z",
+      "side": 1,
+      "message": "If we know the charge state of the battery and we know the adapter we always enable turbo, correct?",
+      "revId": "98288c3753a781c4b4d60db6931588b157cafe81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//wBk\u003d",
+        "filename": "include/extpower_falco.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2013-07-25T20:04:56Z",
+      "side": 1,
+      "message": "It seems like there should be a mention of the polling period. i.e. how is that handled?",
+      "revId": "98288c3753a781c4b4d60db6931588b157cafe81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
