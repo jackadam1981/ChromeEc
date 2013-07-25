@@ -24,6 +24,7 @@
 #define CONFIG_I2C
 #define CONFIG_KEYBOARD_PROTOCOL_MKBP
 #define CONFIG_PMU_HARD_RESET
+#define CONFIG_PMU_POWERINFO
 #define CONFIG_PMU_TPS65090
 #define CONFIG_SPI
 
@@ -51,6 +52,10 @@
 #define I2C_PORT_CHARGER I2C_PORT_HOST
 #define I2C_PORT_SLAVE 1
 #define I2C_PORTS_USED 1
+
+/* PMU sense resistors */
+#define PMU_SENSE_RAC 12
+#define PMU_SENSE_RBAT 16
 
 /* Timer selection */
 #define TIM_CLOCK_MSB 3
