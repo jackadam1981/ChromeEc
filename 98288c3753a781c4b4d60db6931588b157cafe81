@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcX//v84\u003d",
+        "filename": "common/extpower_falco.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-07-25T20:12:13Z",
+      "side": 1,
+      "message": "They are magic numbers from the partner (see the attachments to the bug). They\u0027re just the current limits in mA, instead of decimal. I can make \u0027em decimal if you prefer, but the bug had both forms.",
+      "parentUuid": "AAAAcX//v/g\u003d",
+      "revId": "98288c3753a781c4b4d60db6931588b157cafe81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcX//v/c\u003d",
         "filename": "common/extpower_falco.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2013-07-25T20:04:56Z",
       "side": 1,
       "message": "It does\u0027t seem like anything is actually being done w/ this value aside from setting it to either 0 or 1. And is the ap really throttled?",
+      "revId": "98288c3753a781c4b4d60db6931588b157cafe81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//v8s\u003d",
+        "filename": "common/extpower_falco.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-07-25T20:12:13Z",
+      "side": 1,
+      "message": "Not yet. That\u0027s the next CL, where I actually send (new) host events to request that it throttle itself.",
+      "parentUuid": "AAAAcX//v/c\u003d",
       "revId": "98288c3753a781c4b4d60db6931588b157cafe81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcX//v8U\u003d",
+        "filename": "common/extpower_falco.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-07-25T20:12:13Z",
+      "side": 1,
+      "message": "Well, it\u0027s the threshold triggered. It applies to both upper (throttling started) and lower (throttling stopped), so I figured \"lim-\u003etriggered\" was descriptive enough.",
+      "parentUuid": "AAAAcX//v90\u003d",
+      "revId": "98288c3753a781c4b4d60db6931588b157cafe81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcX//v+4\u003d",
         "filename": "common/extpower_falco.c",
         "patchSetId": 1
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcX//v8E\u003d",
+        "filename": "common/extpower_falco.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-07-25T20:12:13Z",
+      "side": 1,
+      "message": "If it\u0027s above 15%, yes. We disable below 10%, so there\u0027s some hysteresis.",
+      "parentUuid": "AAAAcX//v+4\u003d",
+      "revId": "98288c3753a781c4b4d60db6931588b157cafe81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcX//wBk\u003d",
         "filename": "include/extpower_falco.h",
         "patchSetId": 1
@@ -81,6 +153,24 @@
       "writtenOn": "2013-07-25T20:04:56Z",
       "side": 1,
       "message": "It seems like there should be a mention of the polling period. i.e. how is that handled?",
+      "revId": "98288c3753a781c4b4d60db6931588b157cafe81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//v70\u003d",
+        "filename": "include/extpower_falco.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-07-25T20:12:13Z",
+      "side": 1,
+      "message": "With an ugly hack in common/charge_state.c\n\nSince that file is an impenetrable mess, Randall suggested I just hack it in for now, and we\u0027ll fix it when we fix the rest of the charge state logic. He has that on his ToDo list.",
+      "parentUuid": "AAAAcX//wBk\u003d",
       "revId": "98288c3753a781c4b4d60db6931588b157cafe81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
