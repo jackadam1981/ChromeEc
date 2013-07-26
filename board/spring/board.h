@@ -34,6 +34,10 @@
 /* Go to STANDBY mode when system is off without external power for too long */
 #define CONFIG_AUTO_HIBERNATE_SECS 180
 
+/* Auto battery cut-off */
+#define BATTERY_CUT_OFF_MAH 25
+#define BATTERY_CUT_OFF_DELAY (11 * SECOND)
+
 /* use STOP mode when we have nothing to do */
 #define CONFIG_LOW_POWER_IDLE
 

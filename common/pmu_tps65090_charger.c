@@ -5,6 +5,7 @@
  * TI TPS65090 PMU charging task.
  */
 
+#include "battery_pack.h"
 #include "board.h"
 #include "clock.h"
 #include "chipset.h"
@@ -42,6 +43,14 @@
 
 #ifndef BATTERY_AP_OFF_LEVEL
 #define BATTERY_AP_OFF_LEVEL 0
+#endif
+
+#ifndef BATTERY_CUT_OFF_MAH
+#define BATTERY_CUT_OFF_MAH 0
+#endif
+
+#ifndef BATTERY_CUT_OFF_DELAY
+#define BATTERY_CUT_OFF_DELAY 0
 #endif
 
 static const char * const state_list[] = {
@@ -459,6 +468,26 @@ static void check_charger_capability(void)
 }
 DECLARE_DEFERRED(check_charger_capability);
 
+static void check_battery_cut_off(void)
+{
+	int charge;
+	static timestamp_t last_cutoff;
+
+	if (!BATTERY_CUT_OFF_MAH)
+		return;
+	if (battery_remaining_capacity(&charge))
+		return;
+	if (charge > BATTERY_CUT_OFF_MAH)
+		return;
+	if (board_get_ac())
+		return;
+	if (get_time().val - last_cutoff.val <= BATTERY_CUT_OFF_DELAY)
+		return;
+
+	last_cutoff = get_time();
+	battery_cut_off();
+}
+
 void pmu_charger_task(void)
 {
 	int next_state;
@@ -516,6 +545,8 @@ void pmu_charger_task(void)
 			next_state = calc_next_state(current_state);
 
 		adjust_charging_current();
+
+		check_battery_cut_off();
 
 		if (next_state != current_state) {
 			/* Reset state of charge moving average window */
