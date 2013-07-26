@@ -16,6 +16,24 @@
       "revId": "a9e77354e8353708ebd00930b51fe29672a08fe2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//up0\u003d",
+        "filename": "util/comm-dev.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2013-07-26T18:12:25Z",
+      "side": 1,
+      "message": "I was maintaining what was previously here. It is consistent in how it returns r \u003d s_cmd.insize in the case of this path returning 0. I had assumed CMD_RESEND_RESPONSE returns 0? Why else was the ternary operator added to begin with?",
+      "parentUuid": "AAAAcX//uqU\u003d",
+      "revId": "a9e77354e8353708ebd00930b51fe29672a08fe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
