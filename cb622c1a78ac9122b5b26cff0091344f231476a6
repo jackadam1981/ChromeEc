@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcX//vIc\u003d",
+        "filename": "common/pmu_powerinfo.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2013-07-26T04:34:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAcX//vXM\u003d",
+      "revId": "cb622c1a78ac9122b5b26cff0091344f231476a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcX//vYo\u003d",
         "filename": "common/pmu_powerinfo.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2013-07-26T00:43:35Z",
       "side": 1,
       "message": "3 -\u003e ARRAY_SIZE(pmu_dcdc)",
+      "revId": "cb622c1a78ac9122b5b26cff0091344f231476a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//vIg\u003d",
+        "filename": "common/pmu_powerinfo.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2013-07-26T04:34:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAcX//vYo\u003d",
       "revId": "cb622c1a78ac9122b5b26cff0091344f231476a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcX//vIk\u003d",
+        "filename": "common/pmu_powerinfo.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2013-07-26T04:34:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAcX//vYk\u003d",
+      "revId": "cb622c1a78ac9122b5b26cff0091344f231476a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcX//vX0\u003d",
         "filename": "common/pmu_powerinfo.c",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2013-07-26T00:43:35Z",
       "side": 1,
       "message": "There are cases where we still want to read AC voltage when external power is not present. Can we actually read ADC value instead of returning 0 here?",
+      "revId": "cb622c1a78ac9122b5b26cff0091344f231476a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//vIo\u003d",
+        "filename": "common/pmu_powerinfo.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2013-07-26T04:34:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAcX//vX0\u003d",
       "revId": "cb622c1a78ac9122b5b26cff0091344f231476a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
