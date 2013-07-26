@@ -209,10 +209,12 @@ static void board_ilim_use_pwm(void)
 	 *
 	 * Assuming 16MHz clock and ARR=100, PSC needed to achieve PWM_FREQUENCY
 	 * is: PSC = CPU_CLOCK / PWM_FREQUENCY / ARR - 1
+	 *
+	 * Note that we don't set CCR here so as not to accidentally limit the
+	 * input current.
 	 */
 	STM32_TIM_PSC(3) = CPU_CLOCK / PWM_FREQUENCY / 100 - 1; /* pre-scaler */
 	STM32_TIM_ARR(3) = 100;			/* auto-reload value */
-	STM32_TIM_CCR1(3) = 100;		/* duty cycle */
 
 	/* CC1 configured as output, PWM mode 1, preload enable */
 	STM32_TIM_CCMR1(3) = (6 << 4) | (1 << 3);
@@ -347,13 +349,14 @@ int board_has_high_power_ac(void)
 
 void board_pwm_duty_cycle(int percent)
 {
-	if (current_ilim_config != ILIM_CONFIG_PWM)
-		board_ilim_config(ILIM_CONFIG_PWM);
 	if (percent < 0)
 		percent = 0;
 	if (percent > 100)
 		percent = 100;
+	CPRINTF("[%T PWM %d%%]\n", current_pwm_duty);
 	STM32_TIM_CCR1(3) = (percent * STM32_TIM_ARR(3)) / 100;
+	if (current_ilim_config != ILIM_CONFIG_PWM)
+		board_ilim_config(ILIM_CONFIG_PWM);
 	current_pwm_duty = percent;
 }
 
@@ -437,13 +440,10 @@ static void board_pwm_tweak(void)
 	 */
 	if (board_pwm_check_vbus_low(vbus, current)) {
 		board_pwm_duty_cycle(current_pwm_duty + PWM_CTRL_STEP_UP);
-		CPRINTF("[%T PWM duty up %d%%]\n", current_pwm_duty);
 	} else if (board_pwm_check_vbus_high(vbus)) {
 		next = board_pwm_get_next_lower();
-		if (next >= 0) {
+		if (next >= 0)
 			board_pwm_duty_cycle(next);
-			CPRINTF("[%T PWM duty down %d%%]\n", current_pwm_duty);
-		}
 	}
 }
 DECLARE_HOOK(HOOK_SECOND, board_pwm_tweak, HOOK_PRIO_DEFAULT);
