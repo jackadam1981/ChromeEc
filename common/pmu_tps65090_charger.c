@@ -5,6 +5,7 @@
  * TI TPS65090 PMU charging task.
  */
 
+#include "battery_pack.h"
 #include "board.h"
 #include "clock.h"
 #include "chipset.h"
