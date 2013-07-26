@@ -360,20 +360,6 @@ void board_pwm_duty_cycle(int percent)
 	current_pwm_duty = percent;
 }
 
-void board_pwm_init_limit(void)
-{
-	int dummy;
-
-	/*
-	 * Shut off power input if battery is good. Otherwise, leave
-	 * 500mA to sustain the system.
-	 */
-	if (battery_current(&dummy))
-		board_pwm_duty_cycle(I_LIMIT_500MA);
-	else
-		board_ilim_config(ILIM_CONFIG_MANUAL_ON);
-}
-
 /**
  * Returns next lower PWM duty cycle, or -1 for unchanged duty cycle.
  */

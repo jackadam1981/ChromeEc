@@ -432,8 +432,6 @@ void pmu_charger_task(void)
 	disable_sleep(SLEEP_MASK_CHARGING);
 
 #ifdef CONFIG_TSU6721
-	board_pwm_init_limit();
-
 	/*
 	 * Somehow TSU6721 comes up slowly. Let's wait for a moment before
 	 * accessing it.

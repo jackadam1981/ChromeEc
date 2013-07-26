@@ -182,9 +182,6 @@ int board_get_usb_dev_type(void);
 /* Get USB port current limit */
 int board_get_usb_current_limit(void);
 
-/* Properly limit input power on EC boot */
-void board_pwm_init_limit(void);
-
 /* Do we have enough AC power to boot without a battery */
 int board_has_high_power_ac(void);
 
