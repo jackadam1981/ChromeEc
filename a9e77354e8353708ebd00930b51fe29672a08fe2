@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAcX//uqU\u003d",
+        "filename": "util/comm-dev.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-07-26T18:09:48Z",
+      "side": 1,
+      "message": "That\u0027s not right. \"r\" is \"r\", not the number of bytes you were prepared to access.",
+      "revId": "a9e77354e8353708ebd00930b51fe29672a08fe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
