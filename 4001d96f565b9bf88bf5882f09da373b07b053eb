@@ -34,6 +34,24 @@
       "revId": "4001d96f565b9bf88bf5882f09da373b07b053eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//uuo\u003d",
+        "filename": "util/comm-dev.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2013-07-26T17:29:57Z",
+      "side": 1,
+      "message": "Or are you saying proto3 max out size \u003d proto2 max size - 8? But insize can be proto2 - 8?",
+      "parentUuid": "AAAAcX//uxc\u003d",
+      "revId": "4001d96f565b9bf88bf5882f09da373b07b053eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
