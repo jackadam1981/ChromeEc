@@ -34,6 +34,24 @@
       "revId": "a9e77354e8353708ebd00930b51fe29672a08fe2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//upk\u003d",
+        "filename": "util/comm-dev.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-07-26T18:19:19Z",
+      "side": 1,
+      "message": "I have no freakin idea. I\u0027m looking at the EC code that handles RESEND_RESPONSE now, and it makes no sense. But I do know that s_cmd.insize is ectool simply saying how much data it\u0027s prepared to accept from the EC. \n\nThe return value of the ioctl is the number of bytes the EC returned (or error). If the EC isn\u0027t returning any bytes, ectool can\u0027t treat s_cmd.indata as valid information.",
+      "parentUuid": "AAAAcX//up0\u003d",
+      "revId": "a9e77354e8353708ebd00930b51fe29672a08fe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
