@@ -44,12 +44,13 @@ static int ec_command_dev(int command, int version,
 			fprintf(stderr,
 				"ioctl %d, errno %d (%s), EC result %d\n",
 				r, errno, strerror(errno), s_cmd.result);
+			r = s_cmd.insize;
 		}
 	} else if (s_cmd.result != EC_RES_SUCCESS) {
 		fprintf(stderr, "EC result %d\n", s_cmd.result);
 	}
 
-	return r ? r : s_cmd.insize;
+	return r;
 }
 
 static int ec_readmem_dev(int offset, int bytes, void *dest)
@@ -110,7 +111,7 @@ int comm_init_dev(void)
 	 * TODO: need a way to get this from the driver and EC.  For now,
 	 * pick a magic lowest common denominator value.
 	 */
-	ec_max_insize = ec_max_outsize = EC_PROTO2_MAX_PARAM_SIZE - 8;
+	ec_max_insize = ec_max_outsize = EC_PROTO2_MAX_PARAM_SIZE;
 
 	return 0;
 }
