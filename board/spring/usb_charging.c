@@ -61,18 +61,22 @@
 #define I_LIMIT_3000MA  0
 
 /* PWM control loop parameters */
-#define PWM_CTRL_MAX_DUTY	96 /* Minimum current for dead battery */
-#define PWM_CTRL_BEGIN_OFFSET	90
-#define PWM_CTRL_OC_MARGIN	15
-#define PWM_CTRL_OC_DETECT_TIME	(1200 * MSEC)
-#define PWM_CTRL_OC_BACK_OFF	3
-#define PWM_CTRL_OC_RETRY	2
-#define PWM_CTRL_STEP_DOWN	3
-#define PWM_CTRL_STEP_UP	5
-#define PWM_CTRL_VBUS_HARD_LOW	4400
-#define PWM_CTRL_VBUS_LOW	4500
-#define PWM_CTRL_VBUS_HIGH	4700 /* Must be higher than 4.5V */
-#define PWM_CTRL_VBUS_HIGH_500MA 4550
+#define PWM_CTRL_MAX_DUTY          84 /* Minimum current for dead battery */
+#define PWM_CTRL_DUTY_NO_BATT      84
+#define PWM_CTRL_CHG_DUTY_NO_BATT1 75
+#define PWM_CTRL_CHG_DUTY_NO_BATT2 50
+#define PWM_CTRL_BEGIN_OFFSET      90
+#define PWM_CTRL_OC_MARGIN         15
+#define PWM_CTRL_OC_DETECT_TIME    (1200 * MSEC)
+#define PWM_CTRL_OC_BACK_OFF       3
+#define PWM_CTRL_OC_RETRY          2
+#define PWM_CTRL_FAST_STEP_DOWN    15
+#define PWM_CTRL_STEP_DOWN         3
+#define PWM_CTRL_STEP_UP           5
+#define PWM_CTRL_VBUS_HARD_LOW     4400
+#define PWM_CTRL_VBUS_LOW          4500
+#define PWM_CTRL_VBUS_HIGH         4700 /* Must be higher than 4.5V */
+#define PWM_CTRL_VBUS_HIGH_500MA   4550
 
 /* Delay before notifying kernel of device type change */
 #define BATTERY_KEY_DELAY (PWM_CTRL_OC_DETECT_TIME + 400 * MSEC)
@@ -98,6 +102,8 @@ static int pending_adc_watchdog_disable;
 static int pending_dev_type_update;
 static int pending_video_power_off;
 static int restore_id_mux;
+
+static int no_batt_duty = PWM_CTRL_CHG_DUTY_NO_BATT1;
 
 static int s5_boost_ctrl;
 
@@ -360,24 +366,57 @@ void board_pwm_duty_cycle(int percent)
 	current_pwm_duty = percent;
 }
 
+int board_next_throttle(void)
+{
+	if (no_batt_duty == PWM_CTRL_CHG_DUTY_NO_BATT2)
+		return 1;
+	no_batt_duty = PWM_CTRL_CHG_DUTY_NO_BATT2;
+	return 0;
+}
+
 /**
  * Returns next lower PWM duty cycle, or -1 for unchanged duty cycle.
  */
-static int board_pwm_get_next_lower(void)
+static int board_pwm_get_next_lower(int throttle)
 {
+	int val;
+
+	if (throttle) {
+		if (no_batt_duty > over_current_pwm_duty) {
+			val = no_batt_duty;
+		} else if (no_batt_duty == PWM_CTRL_CHG_DUTY_NO_BATT1 &&
+			   PWM_CTRL_CHG_DUTY_NO_BATT2 > over_current_pwm_duty) {
+			no_batt_duty = PWM_CTRL_CHG_DUTY_NO_BATT2;
+			val = no_batt_duty;
+		} else {
+			CPRINTF("[%T Crappy charger!]\n");
+			board_blink_led(1);
+			pmu_stop_charging();
+			val = PWM_CTRL_DUTY_NO_BATT;
+		}
+		if (val < current_pwm_duty)
+			return MAX(current_pwm_duty - PWM_CTRL_FAST_STEP_DOWN,
+				   val);
+		else
+			return -1;
+	}
+
 	if (current_limit_mode == LIMIT_AGGRESSIVE) {
 		if (current_pwm_duty > nominal_pwm_duty -
 				       PWM_CTRL_OC_MARGIN &&
 		    current_pwm_duty > over_current_pwm_duty &&
 		    current_pwm_duty > 0)
-			return MAX(current_pwm_duty - PWM_CTRL_STEP_DOWN, 0);
-		return -1;
+			val = MAX(current_pwm_duty - PWM_CTRL_STEP_DOWN, 0);
+		else
+			val = -1;
 	} else {
 		if (current_pwm_duty > nominal_pwm_duty && current_pwm_duty > 0)
-			return MAX(current_pwm_duty - PWM_CTRL_STEP_DOWN, 0);
+			val = MAX(current_pwm_duty - PWM_CTRL_STEP_DOWN, 0);
 		else
-			return -1;
+			val = -1;
 	}
+
+	return val;
 }
 
 static int board_pwm_check_vbus_high(int vbus)
@@ -389,9 +428,9 @@ static int board_pwm_check_vbus_high(int vbus)
 	return 0;
 }
 
-static int board_pwm_check_vbus_low(int vbus, int battery_current)
+static int board_pwm_check_vbus_low(int vbus, int throttle, int battery_current)
 {
-	if (battery_current >= 0)
+	if (!throttle && battery_current >= 0)
 		return vbus < PWM_CTRL_VBUS_LOW && current_pwm_duty < 100;
 	else
 		return vbus < PWM_CTRL_VBUS_HARD_LOW && current_pwm_duty < 100;
@@ -401,14 +440,14 @@ static void board_pwm_tweak(void)
 {
 	int vbus, current;
 	int next;
+	int throttle = board_want_throttle_charge();
 
 	if (current_ilim_config != ILIM_CONFIG_PWM)
 		return;
 
 	vbus = adc_read_channel(ADC_CH_USB_VBUS_SNS);
-	if (battery_current(&current))
-		return;
 
+	battery_current(&current);
 	if (user_pwm_duty >= 0) {
 		if (current_pwm_duty != user_pwm_duty)
 			board_pwm_duty_cycle(user_pwm_duty);
@@ -424,10 +463,10 @@ static void board_pwm_tweak(void)
 	 * If VBUS voltage is high enough, allow more current until we hit
 	 * current limit target.
 	 */
-	if (board_pwm_check_vbus_low(vbus, current)) {
+	if (board_pwm_check_vbus_low(vbus, throttle, current)) {
 		board_pwm_duty_cycle(current_pwm_duty + PWM_CTRL_STEP_UP);
 	} else if (board_pwm_check_vbus_high(vbus)) {
-		next = board_pwm_get_next_lower();
+		next = board_pwm_get_next_lower(throttle);
 		if (next >= 0)
 			board_pwm_duty_cycle(next);
 	}
@@ -450,6 +489,28 @@ void board_pwm_nominal_duty_cycle(int percent)
 
 	board_pwm_duty_cycle(new_percent);
 	nominal_pwm_duty = percent;
+}
+
+int board_want_throttle_charge(void)
+{
+	int remaining, full;
+
+	/*
+	 * Throttle on any of:
+	 *   1. battery not responding
+	 *   2. battery level < 2%
+	 */
+	if (battery_remaining_capacity(&remaining) ||
+	    battery_full_charge_capacity(&full))
+		return 1;
+	else
+		return remaining * 50 < full;
+}
+
+int board_want_prevent_charge(void)
+{
+	return board_want_throttle_charge() &&
+	       current_pwm_duty > no_batt_duty;
 }
 
 void usb_charge_interrupt(enum gpio_signal signal)
@@ -705,6 +766,10 @@ static void usb_device_change(int dev_type)
 
 	if (current_dev_type == dev_type)
 		return;
+
+	board_blink_led(0);
+
+	no_batt_duty = PWM_CTRL_CHG_DUTY_NO_BATT1;
 
 	over_current_pwm_duty = 0;
 

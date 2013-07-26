@@ -49,6 +49,7 @@ static const char * const state_list[] = {
 	"reinit",
 	"bad cond",
 	"pre-charging",
+	"pre-charging fail",
 	"charging",
 	"charging error",
 	"discharging"
@@ -205,6 +206,9 @@ static int calc_next_state(int state)
 			return ST_IDLE;
 		}
 
+		if (board_want_prevent_charge())
+			return ST_BAD_COND;
+
 		/* Stay in idle mode if charger overtemp */
 		if (pmu_is_charger_alarm())
 			return ST_BAD_COND;
@@ -317,6 +321,7 @@ static int calc_next_state(int state)
 		return ST_CHARGING;
 
 	case ST_CHARGING_ERROR:
+	case ST_PRE_CHARGING_FAIL:
 		/*
 		 * This state indicates AC is plugged but the battery is not
 		 * charging. The conditions to exit this state:
@@ -326,16 +331,16 @@ static int calc_next_state(int state)
 		 */
 		if (board_get_ac()) {
 			if (battery_status(&alarm))
-				return ST_CHARGING_ERROR;
+				return state;
 
 			if (alarm & ALARM_OVER_TEMP)
-				return ST_CHARGING_ERROR;
+				return state;
 
 			if (battery_temperature(&batt_temp))
-				return ST_CHARGING_ERROR;
+				return state;
 
 			if (!battery_charging_range(batt_temp))
-				return ST_CHARGING_ERROR;
+				return state;
 
 			return ST_CHARGING;
 		}
@@ -392,6 +397,11 @@ enum charging_state charge_get_state(void)
 	return current_state;
 }
 
+void pmu_stop_charging(void)
+{
+	enable_charging(0);
+}
+
 int __board_has_high_power_ac(void)
 {
 	return 0;
@@ -416,11 +426,50 @@ int charge_keep_power_off(void)
 	return charge <= BATTERY_AP_OFF_LEVEL;
 }
 
+int __board_pmu_throttle(int throttled)
+{
+	return 0;
+}
+
+int board_pmu_throttle(int throttled)
+	__attribute__((weak, alias("__board_pmu_throttle")));
+
+static void adjust_charging_current(void)
+{
+	static int throttled; /* = 0 */
+	int v = board_want_throttle_charge();
+
+	if (v != throttled) {
+		throttled = v;
+		board_pmu_throttle(v);
+	}
+}
+
+static void check_charger_capability(void)
+{
+	int current;
+	if (current_state == ST_CHARGING || current_state == ST_PRE_CHARGING) {
+		if (battery_current(&current) == 0 && current == 0 &&
+		    board_next_throttle()) {
+			CPRINTF("[%T Crappy charger!]\n");
+			board_blink_led(1);
+			enable_charging(0);
+		}
+	}
+}
+DECLARE_DEFERRED(check_charger_capability);
+
 void pmu_charger_task(void)
 {
 	int next_state;
 	int wait_time = T1_USEC;
 	timestamp_t pre_chg_start = get_time();
+
+	board_ilim_config(ILIM_CONFIG_MANUAL_OFF);
+	CPRINTF("[%T Wait for 1000 ms]\n");
+	msleep(1000);
+	CPRINTF("[%T PWM init]\n");
+	cflush();
 
 	pmu_init();
 	/*
@@ -462,9 +511,11 @@ void pmu_charger_task(void)
 		 */
 		if (current_state == ST_PRE_CHARGING &&
 		    get_time().val - pre_chg_start.val >= PRE_CHARGING_TIMEOUT)
-			next_state = ST_CHARGING_ERROR;
+			next_state = ST_PRE_CHARGING_FAIL;
 		else
 			next_state = calc_next_state(current_state);
+
+		adjust_charging_current();
 
 		if (next_state != current_state) {
 			/* Reset state of charge moving average window */
@@ -481,11 +532,15 @@ void pmu_charger_task(void)
 				pre_chg_start = get_time();
 				/* Fall through */
 			case ST_CHARGING:
-				if (pmu_blink_led(0))
+				if (pmu_blink_led(0)) {
 					next_state = ST_CHARGING_ERROR;
-				else
+				} else {
 					enable_charging(1);
+					hook_call_deferred(
+						check_charger_capability, 1);
+				}
 				break;
+			case ST_PRE_CHARGING_FAIL:
 			case ST_CHARGING_ERROR:
 				/*
 				 * Enable hardware charging circuit after set
@@ -510,6 +565,7 @@ void pmu_charger_task(void)
 		switch (current_state) {
 		case ST_CHARGING:
 		case ST_CHARGING_ERROR:
+		case ST_PRE_CHARGING_FAIL:
 			wait_time = T2_USEC;
 			break;
 		case ST_DISCHARGING:

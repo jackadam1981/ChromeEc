@@ -185,6 +185,18 @@ int board_get_usb_current_limit(void);
 /* Do we have enough AC power to boot without a battery */
 int board_has_high_power_ac(void);
 
+/* Do we want to throttle charging current */
+int board_want_throttle_charge(void);
+
+/* Switch to next throttle level. Returns 1 on last. */
+int board_next_throttle(void);
+
+/* Do we need to prevent charging */
+int board_want_prevent_charge(void);
+
+/* Enable/disable blinking yellow LED */
+void board_blink_led(int enabled);
+
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __BOARD_H */

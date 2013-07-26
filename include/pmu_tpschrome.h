@@ -16,6 +16,7 @@ enum charging_state {
 	ST_REINIT,
 	ST_BAD_COND,
 	ST_PRE_CHARGING,
+	ST_PRE_CHARGING_FAIL,
 	ST_CHARGING,
 	ST_CHARGING_ERROR,
 	ST_DISCHARGING,
@@ -253,6 +254,14 @@ int pmu_enable_ext_control(int enable);
 int pmu_set_fastcharge(enum FASTCHARGE_TIMEOUT timeout);
 
 /**
+ * Enable/disable throttling of charging current
+ *
+ * @param throttled     boolean, set 1 to throttle charging current
+ * @return              EC_SUCCESS if ok
+ */
+int board_pmu_throttle(int throttled);
+
+/**
  * Get AC state
  *
  * @return 0        AC off
@@ -282,6 +291,11 @@ enum charging_state charge_get_state(void);
  * Return non-zero if battery is so low we want to keep AP off.
  */
 int charge_keep_power_off(void);
+
+/**
+ * Stop charging
+ */
+void pmu_stop_charging(void);
 
 #endif /* __CROS_EC_TPSCHROME_H */
 

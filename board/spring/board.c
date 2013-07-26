@@ -46,6 +46,7 @@ enum led_state_t {
 	LED_STATE_SOLID_RED,
 	LED_STATE_SOLID_GREEN,
 	LED_STATE_SOLID_YELLOW,
+	LED_STATE_BLINK_YELLOW,
 
 	/* Not an actual state */
 	LED_STATE_OFF,
@@ -53,6 +54,7 @@ enum led_state_t {
 
 static enum led_state_t last_state = LED_STATE_OFF;
 static int led_auto_control = 1;
+static int blink_yellow;
 
 /* GPIO interrupt handlers prototypes */
 #ifndef CONFIG_TASK_GAIAPOWER
@@ -257,6 +259,37 @@ void board_hard_reset(void)
 	panic_puts("Hard reset failed! (this board may not be capable)\n");
 }
 
+void board_blink_led(int enabled)
+{
+	blink_yellow = enabled;
+}
+
+/**
+ * Enable/disable throttling of charging current
+ */
+int board_pmu_throttle(int throttled)
+{
+	int failure = 0;
+
+	ccprintf("[%T throttling charging current = %d]\n", throttled);
+
+	if (throttled) {
+		failure |= pmu_set_term_current(RANGE_T01, TERM_I0250);
+		failure |= pmu_set_term_current(RANGE_T12, TERM_I0250);
+		failure |= pmu_set_term_current(RANGE_T23, TERM_I0250);
+		failure |= pmu_set_term_current(RANGE_T34, TERM_I0250);
+		failure |= pmu_set_term_current(RANGE_T40, TERM_I0250);
+	} else {
+		failure |= pmu_set_term_current(RANGE_T01, TERM_I0875);
+		failure |= pmu_set_term_current(RANGE_T12, TERM_I0875);
+		failure |= pmu_set_term_current(RANGE_T23, TERM_I0875);
+		failure |= pmu_set_term_current(RANGE_T34, TERM_I0875);
+		failure |= pmu_set_term_current(RANGE_T40, TERM_I1000);
+	}
+
+	return failure;
+}
+
 #ifdef CONFIG_PMU_BOARD_INIT
 
 /**
@@ -273,16 +306,12 @@ int board_pmu_init(void)
 	 * Adjust charging parameters to match the expectations
 	 * of the hardware fixing the cap ringing on DVT+ machines.
 	 */
-	failure |= pmu_set_term_current(RANGE_T01, TERM_I0875);
-	failure |= pmu_set_term_current(RANGE_T12, TERM_I0875);
-	failure |= pmu_set_term_current(RANGE_T23, TERM_I0875);
-	failure |= pmu_set_term_current(RANGE_T34, TERM_I0875);
-	failure |= pmu_set_term_current(RANGE_T40, TERM_I1000);
 	failure |= pmu_set_term_voltage(RANGE_T01, TERM_V2100);
 	failure |= pmu_set_term_voltage(RANGE_T12, TERM_V2100);
 	failure |= pmu_set_term_voltage(RANGE_T23, TERM_V2100);
 	failure |= pmu_set_term_voltage(RANGE_T34, TERM_V2100);
 	failure |= pmu_set_term_voltage(RANGE_T40, TERM_V2100);
+	failure |= board_pmu_throttle(0);
 
 	/* Set fast charging timeout to 10 hours*/
 	if (!failure)
@@ -304,9 +333,21 @@ int board_pmu_init(void)
 
 static int set_led_color(enum led_state_t state)
 {
+	static int last_color = LED_COLOR_NONE;
 	int rv = EC_SUCCESS;
 
-	if (!led_auto_control || state == last_state)
+	if (!led_auto_control)
+		return EC_SUCCESS;
+
+	if (state == LED_STATE_BLINK_YELLOW) {
+		int color = (last_color == LED_COLOR_NONE) ?
+				LED_COLOR_YELLOW :
+				LED_COLOR_NONE;
+		last_color = color;
+		return lp5562_set_color(color);
+	}
+
+	if (state == last_state)
 		return EC_SUCCESS;
 
 	switch (state) {
@@ -320,6 +361,9 @@ static int set_led_color(enum led_state_t state)
 		rv = lp5562_set_color(LED_COLOR_YELLOW);
 		break;
 	case LED_STATE_OFF:
+		break;
+	case LED_STATE_BLINK_YELLOW:
+		/* Shouldn't reach here */
 		break;
 	}
 
@@ -363,10 +407,11 @@ static void board_battery_led_update(void)
 	if (!new_led_power)
 		return;
 
-	/*
-	 * LED power is controlled by accessory detection. We only
-	 * set color here.
-	 */
+	if (blink_yellow) {
+		set_led_color(LED_STATE_BLINK_YELLOW);
+		return;
+	}
+
 	switch (charge_get_state()) {
 	case ST_IDLE:
 		state = LED_STATE_SOLID_GREEN;
@@ -388,6 +433,9 @@ static void board_battery_led_update(void)
 			state = LED_STATE_SOLID_YELLOW;
 		else
 			state = LED_STATE_SOLID_GREEN;
+		break;
+	case ST_PRE_CHARGING_FAIL:
+		state = LED_STATE_BLINK_YELLOW;
 		break;
 	case ST_CHARGING_ERROR:
 		state = LED_STATE_SOLID_RED;
