@@ -5,6 +5,7 @@
  * TI TPS65090 PMU charging task.
  */
 
+#include "battery_pack.h"
 #include "board.h"
 #include "clock.h"
 #include "chipset.h"
@@ -42,6 +43,14 @@
 
 #ifndef BATTERY_AP_OFF_LEVEL
 #define BATTERY_AP_OFF_LEVEL 0
+#endif
+
+#ifndef BATTERY_CUT_OFF_MV
+#define BATTERY_CUT_OFF_MV 0
+#endif
+
+#ifndef BATTERY_CUT_OFF_DELAY
+#define BATTERY_CUT_OFF_DELAY 0
 #endif
 
 static const char * const state_list[] = {
