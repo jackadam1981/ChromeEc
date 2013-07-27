@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcX//tzQ\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2013-07-27T02:18:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAcX//u3A\u003d",
+      "revId": "ac72719f8c020102fb33975124c4d710a45d9757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcX//u2s\u003d",
         "filename": "board/pit/board.h",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2013-07-26T16:56:04Z",
       "side": 1,
       "message": "Please use the existing config value names:\n\n  CONFIG_CHARGER_SENSE_RESISTOR\n  CONFIG_CHARGER_SENSE_RESISTOR_AC",
+      "revId": "ac72719f8c020102fb33975124c4d710a45d9757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//tzU\u003d",
+        "filename": "board/pit/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2013-07-27T02:18:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAcX//u2s\u003d",
       "revId": "ac72719f8c020102fb33975124c4d710a45d9757",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
