@@ -602,7 +602,7 @@ int charge_want_shutdown(void)
 		charge_get_percent() < BATTERY_LEVEL_SHUTDOWN;
 }
 
-static int charge_force_idle(int enable)
+int charge_force_idle(int enable)
 {
 	if (enable) {
 		/*

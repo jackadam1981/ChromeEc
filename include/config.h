@@ -125,6 +125,12 @@
 /* Value of the input current sense resistor, in mOhms */
 #undef CONFIG_CHARGER_SENSE_RESISTOR_AC
 
+/*
+ * Safety feature for battery charging. Stop charging the battery if it takes
+ * too long by entering charge forced idle mode.
+ */
+#undef CONFIG_CHARGER_TIMEOUT
+
 /*****************************************************************************/
 /* Chipset config */
 
