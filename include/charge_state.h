@@ -147,6 +147,11 @@ uint32_t charge_get_flags(void);
 int charge_get_percent(void);
 
 /**
+ * Stop charging the battery while on external power.
+ */
+int charge_force_idle(int enable);
+
+/**
  * Return non-zero if discharging and battery so low we should shut down.
  */
 #ifdef CONFIG_CHARGER
