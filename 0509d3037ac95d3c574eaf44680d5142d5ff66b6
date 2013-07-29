@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAcX//taY\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-29T15:37:35Z",
+      "side": 1,
+      "message": "Note that the LED state machines use CHARGE_FLAG_FORCE_IDLE to blink the charging LED.  This is used during factory burn-in test, so you can\u0027t just get rid of the blinking.\n\nNow that you\u0027ve set it to turn on automatically, users may see this blinking LED behavior.  Is that intentional?",
+      "revId": "0509d3037ac95d3c574eaf44680d5142d5ff66b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//tas\u003d",
+        "filename": "common/charge_timeout.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-29T15:37:35Z",
+      "side": 1,
+      "message": "Use CONFIG_CHARGER_TIMEOUT directly, rather than adding a second #define for the timeout value itself",
+      "revId": "0509d3037ac95d3c574eaf44680d5142d5ff66b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//tao\u003d",
+        "filename": "common/charge_timeout.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-29T15:37:35Z",
+      "side": 1,
+      "message": "_sec_hook, since it\u0027s not hooking the tick event",
+      "revId": "0509d3037ac95d3c574eaf44680d5142d5ff66b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//tag\u003d",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-29T15:37:35Z",
+      "side": 1,
+      "message": "Value is the maximum allowed charging duration in microseconds",
+      "revId": "0509d3037ac95d3c574eaf44680d5142d5ff66b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
