@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAcX//stY\u003d",
+        "filename": "board/spring/usb_charging.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-07-29T23:08:00Z",
+      "side": 1,
+      "message": "this change is now useless ?",
+      "revId": "edaf4f1dcb866df7bb9890b7aeb451e78752b478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//stI\u003d",
+        "filename": "common/battery_spring.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-07-29T23:08:00Z",
+      "side": 1,
+      "message": "you can replace the whole condition by (battery_is_cut_off)",
+      "revId": "edaf4f1dcb866df7bb9890b7aeb451e78752b478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//stQ\u003d",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-07-29T23:08:00Z",
+      "side": 1,
+      "message": "so the LED is cycling through when doing a cut off ?",
+      "revId": "edaf4f1dcb866df7bb9890b7aeb451e78752b478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
