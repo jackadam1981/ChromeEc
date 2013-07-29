@@ -26,6 +26,8 @@
 #define BATTERY_CUT_OFF_DELAY 0
 #endif
 
+static int battery_cut;
+
 int battery_cut_off(void)
 {
 	int rv;
@@ -40,7 +42,14 @@ int battery_cut_off(void)
 	rv = i2c_xfer(I2C_PORT_BATTERY, BATTERY_ADDR, buf, 3, NULL, 0);
 	i2c_unlock();
 
+	battery_cut = 1;
+
 	return rv;
+}
+
+int battery_is_cut_off(void)
+{
+	return battery_cut;
 }
 
 int battery_check_cut_off(void)
