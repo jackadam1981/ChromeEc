@@ -455,6 +455,8 @@ void pmu_charger_task(void)
 		board_usb_charge_update(0);
 #endif
 
+		battery_check_cut_off();
+
 		/*
 		 * When battery is extremely low, the internal voltage can not
 		 * power on its gas guage IC. Charging loop will enable the

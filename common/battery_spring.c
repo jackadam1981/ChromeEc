@@ -48,6 +48,8 @@ int battery_check_cut_off(void)
 
 	if (!BATTERY_CUT_OFF_MV)
 		return 0;
+	if (chipset_in_state(CHIPSET_STATE_ON | CHIPSET_STATE_SUSPEND))
+		return 0;
 	if (battery_voltage(&voltage))
 		return 0;
 	if (voltage > BATTERY_CUT_OFF_MV)
