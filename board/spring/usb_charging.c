@@ -6,6 +6,7 @@
 /* USB charging control for spring board */
 
 #include "adc.h"
+#include "battery_pack.h"
 #include "board.h"
 #include "chipset.h"
 #include "clock.h"
