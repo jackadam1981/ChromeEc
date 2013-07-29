@@ -6,6 +6,7 @@
 /* USB charging control for spring board */
 
 #include "adc.h"
+#include "battery_pack.h"
 #include "board.h"
 #include "chipset.h"
 #include "clock.h"
@@ -229,6 +230,10 @@ static void board_ilim_use_pwm(void)
 
 void board_ilim_config(enum ilim_config config)
 {
+	/* Do not allow power input if we are cutting off the battery */
+	if (battery_is_cut_off())
+		config = ILIM_CONFIG_MANUAL_ON;
+
 	if (config == current_ilim_config)
 		return;
 	current_ilim_config = config;
@@ -347,6 +352,9 @@ int board_has_high_power_ac(void)
 
 void board_pwm_duty_cycle(int percent)
 {
+	/* Do not allow power input if we are cutting off the battery */
+	if (battery_is_cut_off())
+		percent = 100;
 	if (current_ilim_config != ILIM_CONFIG_PWM)
 		board_ilim_config(ILIM_CONFIG_PWM);
 	if (percent < 0)
