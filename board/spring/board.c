@@ -247,6 +247,9 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_shutdown_hook, HOOK_PRIO_DEFAULT);
  */
 void board_hard_reset(void)
 {
+	/* record the TPS65090 reset in a backup register */
+	system_set_scratchpad(0x8000);
+
 	/* Force a hard reset of tps Chrome */
 	gpio_set_level(GPIO_PMIC_RESET, 1);
 
