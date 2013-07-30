@@ -123,6 +123,11 @@ static void check_reset_cause(void)
 	if (!flags && (raw_cause & 0xfe000000))
 		flags |= RESET_FLAG_OTHER;
 
+	/* D0 / OSC_IN */
+	gpio_set_flags(GPIO_ENTERING_RW, GPIO_HI_Z);
+	/* D1 / OSC_OUT */
+	gpio_set_flags(GPIO_ID_MUX, GPIO_HI_Z);
+
 	/*
 	 * WORKAROUND: as we cannot de-activate the watchdog during
 	 * long hibernation, we are woken-up once by the watchdog and
