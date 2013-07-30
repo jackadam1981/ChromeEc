@@ -71,6 +71,12 @@ void system_hibernate(uint32_t seconds, uint32_t microseconds)
 	/* Flush console before hibernating */
 	cflush();
 	/* chip specific standby mode */
+
+	/* D0 / OSC_IN */
+	gpio_set_flags(GPIO_ENTERING_RW, GPIO_HI_Z);
+	/* D1 / OSC_OUT */
+	gpio_set_flags(GPIO_ID_MUX, GPIO_HI_Z);
+
 	__enter_hibernate(seconds, microseconds);
 }
 
