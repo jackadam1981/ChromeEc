@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAcX//p3Y\u003d",
+        "filename": "board/wolf/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-31T15:53:45Z",
+      "side": 1,
+      "message": "Please see https://gerrit.chromium.org/gerrit/#/c/63833/ which changes how these arrays are initialized, for better compile-time error checking.",
+      "revId": "67f9328f2deadce5736e7ef99755b8c46ac242df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//p3A\u003d",
+        "filename": "common/battery_wolf.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-31T15:53:45Z",
+      "side": 1,
+      "message": "/* Info based on 3S1P battery */",
+      "revId": "67f9328f2deadce5736e7ef99755b8c46ac242df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//p2s\u003d",
+        "filename": "common/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-31T15:53:45Z",
+      "side": 1,
+      "message": "If led_wolf is currently identical to led_slippy, just compile led_slippy here - no need to make a copy of the source file.\n\nYou can always make led_wolf later, when there is actually a significant difference (or if it\u0027s a very small difference, just have a #ifdef BOARD_wolf section in led_slippy.c)\n\nSame with battery_wolf, if it\u0027s identical to battery_slippy.",
+      "revId": "67f9328f2deadce5736e7ef99755b8c46ac242df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
