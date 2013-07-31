@@ -23,6 +23,7 @@
 #include "registers.h"
 #include "switch.h"
 #include "temp_sensor.h"
+#include "temp_sensor_g781.h"
 #include "timer.h"
 #include "util.h"
 
@@ -118,6 +119,7 @@ const struct gpio_info gpio_list[GPIO_COUNT] = {
 	{"BAT_LED0_L",           LM4_GPIO_N, (1<<6), GPIO_ODR_HIGH, NULL},
 	{"BAT_LED1_L",           LM4_GPIO_N, (1<<4), GPIO_ODR_HIGH, NULL},
 };
+BUILD_ASSERT(ARRAY_SIZE(gpio_list) == GPIO_COUNT);
 
 /* x86 signal list.  Must match order of enum x86_signal. */
 const struct x86_signal_info x86_signal_list[X86_SIGNAL_COUNT] = {
@@ -130,6 +132,7 @@ const struct x86_signal_info x86_signal_list[X86_SIGNAL_COUNT] = {
 	{GPIO_PCH_SLP_S5_L,  1, "SLP_S5#_DEASSERTED"},
 	{GPIO_PCH_SLP_SUS_L, 1, "SLP_SUS#_DEASSERTED"},
 };
+BUILD_ASSERT(ARRAY_SIZE(x86_signal_list) == X86_SIGNAL_COUNT);
 
 /* ADC channels. Must be in the exactly same order as in enum adc_channel. */
 const struct adc_t adc_channels[ADC_CH_COUNT] = {
@@ -149,6 +152,7 @@ const struct adc_t adc_channels[ADC_CH_COUNT] = {
 	{"ChargerCurrent", LM4_ADC_SEQ1, 33000, ADC_READ_MAX * 2, 0,
 	 LM4_AIN(0), 0x06 /* IE0 | END0 */, LM4_GPIO_E, (1<<3)},
 };
+BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
 /* I2C ports */
 const struct i2c_port_t i2c_ports[I2C_PORTS_USED] = {
@@ -157,14 +161,17 @@ const struct i2c_port_t i2c_ports[I2C_PORTS_USED] = {
 	{"batt_chg", I2C_PORT_BATTERY,  100},
 	{"thermal",  I2C_PORT_THERMAL,  100},
 };
+BUILD_ASSERT(ARRAY_SIZE(i2c_ports) == I2C_PORTS_USED);
 
 
 /* Temperature sensors data; must be in same order as enum temp_sensor_id. */
 const struct temp_sensor_t temp_sensors[TEMP_SENSOR_COUNT] = {
-/* HEY: Need correct I2C addresses and read function for external sensor */
-	{"ECInternal", TEMP_SENSOR_TYPE_BOARD, chip_temp_sensor_get_val, 0, 4},
 	{"PECI", TEMP_SENSOR_TYPE_CPU, peci_temp_sensor_get_val, 0, 2},
+	{"ECInternal", TEMP_SENSOR_TYPE_BOARD, chip_temp_sensor_get_val, 0, 4},
+	{"G781Internal", TEMP_SENSOR_TYPE_BOARD, g781_get_val, 0, 4},
+	{"G781External", TEMP_SENSOR_TYPE_BOARD, g781_get_val, 1, 4},
 };
+BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
 struct keyboard_scan_config keyscan_config = {
 	.output_settle_us = 40,
@@ -204,3 +211,12 @@ void board_process_wake_events(uint32_t active_wake_events)
 	else
 		gpio_set_level(GPIO_PCH_WAKE_L, 1);
 }
+
+/**
+ * Board-specific g781 power state.
+ */
+int board_g781_has_power(void)
+{
+	return gpio_get_level(GPIO_PP3300_DX_EN);
+}
+
