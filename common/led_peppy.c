@@ -137,8 +137,8 @@ static void peppy_led_set_battery(int ticks)
 		peppy_led_set_color_battery(LED_OFF);
 		break;
 	case PWR_STATE_ERROR:
-		peppy_led_set_color_battery(
-			(ticks & 0x2) ? LED_AMBER : LED_OFF);
+		bat_led_set_color((ticks % LED_TOTAL_TICKS < LED_ON_TICKS) ?
+			LED_OFF : LED_AMBER);
 		break;
 	case PWR_STATE_IDLE: /* External power connected in IDLE. */
 		if (chflags & CHARGE_FLAG_FORCE_IDLE)
