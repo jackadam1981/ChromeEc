@@ -2,7 +2,7 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
-/* EC for Wolf board configuration */
+/* EC for Slippy board configuration */
 
 #include "adc.h"
 #include "backlight.h"
@@ -23,6 +23,7 @@
 #include "registers.h"
 #include "switch.h"
 #include "temp_sensor.h"
+#include "temp_sensor_g781.h"
 #include "timer.h"
 #include "util.h"
 
@@ -69,6 +70,7 @@ const struct gpio_info gpio_list[GPIO_COUNT] = {
 	{"BOARD_VERSION2",       LM4_GPIO_Q, (1<<6), GPIO_INPUT, NULL},
 	{"BOARD_VERSION3",       LM4_GPIO_Q, (1<<7), GPIO_INPUT, NULL},
 	{"CPU_PGOOD",            LM4_GPIO_C, (1<<4), GPIO_INPUT, NULL},
+	{"BAT_DETECT_L",         LM4_GPIO_B, (1<<4), GPIO_INPUT, NULL},
 
 	/* Outputs; all unasserted by default except for reset signals */
 	{"CPU_PROCHOT",          LM4_GPIO_B, (1<<1), GPIO_OUT_LOW, NULL},
@@ -161,9 +163,10 @@ const struct i2c_port_t i2c_ports[I2C_PORTS_USED] = {
 
 /* Temperature sensors data; must be in same order as enum temp_sensor_id. */
 const struct temp_sensor_t temp_sensors[TEMP_SENSOR_COUNT] = {
-/* HEY: Need correct I2C addresses and read function for external sensor */
-	{"ECInternal", TEMP_SENSOR_TYPE_BOARD, chip_temp_sensor_get_val, 0, 4},
 	{"PECI", TEMP_SENSOR_TYPE_CPU, peci_temp_sensor_get_val, 0, 2},
+	{"ECInternal", TEMP_SENSOR_TYPE_BOARD, chip_temp_sensor_get_val, 0, 4},
+	{"G781Internal", TEMP_SENSOR_TYPE_BOARD, g781_get_val, 0, 4},
+	{"G781External", TEMP_SENSOR_TYPE_BOARD, g781_get_val, 1, 4},
 };
 
 struct keyboard_scan_config keyscan_config = {
@@ -203,4 +206,24 @@ void board_process_wake_events(uint32_t active_wake_events)
 		gpio_set_level(GPIO_PCH_WAKE_L, 0);
 	else
 		gpio_set_level(GPIO_PCH_WAKE_L, 1);
+}
+
+/**
+ * Board-specific g781 power state.
+ */
+int board_g781_has_power(void)
+{
+	return gpio_get_level(GPIO_PP3300_DX_EN);
+}
+
+/**
+ * Discharge battery when on AC power for factory test.
+ */
+int board_discharge_on_ac(int enable)
+{
+	if (enable)
+		gpio_set_level(GPIO_CHARGE_L, 1);
+	else
+		gpio_set_level(GPIO_CHARGE_L, 0);
+	return EC_SUCCESS;
 }
