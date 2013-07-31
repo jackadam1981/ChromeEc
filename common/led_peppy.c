@@ -78,10 +78,16 @@ static void led_tick(void)
 		bat_led_set_color(LED_BLUE);
 		break;
 	case PWR_STATE_DISCHARGE:
-		bat_led_set_color(LED_OFF);
+		if (charge_get_percent() <= BATTERY_LEVEL_LOW) {
+			if (chipset_in_state(CHIPSET_STATE_ON))
+				bat_led_set_color((ticks % LED_TOTAL_TICKS <
+					LED_ON_TICKS) ? LED_AMBER : LED_OFF);
+		} else
+			bat_led_set_color(LED_OFF);
 		break;
 	case PWR_STATE_ERROR:
-		bat_led_set_color((ticks & 0x2) ? LED_AMBER : LED_OFF);
+		bat_led_set_color((ticks % LED_TOTAL_TICKS < LED_ON_TICKS) ?
+			LED_OFF : LED_AMBER);
 		break;
 	case PWR_STATE_IDLE: /* External power connected in IDLE state. */
 		if (chflags & CHARGE_FLAG_FORCE_IDLE)
