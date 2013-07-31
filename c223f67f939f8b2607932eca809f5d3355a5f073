@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAcX//pyo\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-07-31T16:30:26Z",
+      "side": 1,
+      "message": "It is helpful to mention the board in the summary line if you are making a change for just one machine. Something like \"Blink peppy battery LED when battery is low\"",
+      "revId": "c223f67f939f8b2607932eca809f5d3355a5f073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//pyY\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-07-31T16:30:26Z",
+      "side": 1,
+      "message": "Comment: The ec serial console has a \"battfake\" command that lets you set a fake battery level in percent (\"battfake 8\" for example). This is helpful for testing changes like this one.",
+      "revId": "c223f67f939f8b2607932eca809f5d3355a5f073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//pyw\u003d",
+        "filename": "common/led_peppy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-07-31T16:30:26Z",
+      "side": 1,
+      "message": "Question: Do you want the battery LED to blink when the battery is low when the machine is in S3 and S5? If you only want it to blink in S0 please check with chipset_in_state(CHIPSET_STATE_ON)",
+      "revId": "c223f67f939f8b2607932eca809f5d3355a5f073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
