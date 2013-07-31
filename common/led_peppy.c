@@ -78,7 +78,10 @@ static void led_tick(void)
 		bat_led_set_color(LED_BLUE);
 		break;
 	case PWR_STATE_DISCHARGE:
-		bat_led_set_color(LED_OFF);
+		if (charge_get_percent() <= BATTERY_LEVEL_LOW)
+			bat_led_set_color((ticks & 0x4) ? LED_AMBER : LED_OFF);
+		else
+			bat_led_set_color(LED_OFF);
 		break;
 	case PWR_STATE_ERROR:
 		bat_led_set_color((ticks & 0x2) ? LED_AMBER : LED_OFF);
