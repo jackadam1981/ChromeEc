@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAAcn//9Rc\u003d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-08-01T22:26:25Z",
+      "side": 1,
+      "message": "uSec hurt my brain. I think I\u0027ll change this to \"%0.6d sec\" instead.",
+      "revId": "ff40b485e31d191ae83941c3a88f253ed6971a4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcn//9Vc\u003d",
         "filename": "include/charge_state.h",
         "patchSetId": 1
