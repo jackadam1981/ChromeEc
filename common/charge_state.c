@@ -686,9 +686,12 @@ void charger_task(void)
 
 		if (new_state) {
 			ctx->curr.state = new_state;
-			CPRINTF("[%T Charge state %s -> %s]\n",
+			CPRINTF("[%T Charge state %s -> %s after %d uSec]\n",
 				state_name[ctx->prev.state],
-				state_name[new_state]);
+				state_name[new_state],
+				ctx->curr.ts.val -
+				ctx->charge_state_updated_time.val);
+			ctx->charge_state_updated_time = ctx->curr.ts;
 			hook_notify(HOOK_CHARGE_STATE_CHANGE);
 		}
 

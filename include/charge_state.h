@@ -117,6 +117,7 @@ struct power_state_context {
 	const struct charger_info *charger;
 	const struct battery_info *battery;
 	/* Charging timestamps */
+	timestamp_t charge_state_updated_time;
 	timestamp_t charger_update_time;
 	timestamp_t trickle_charging_time;
 	timestamp_t voltage_debounce_time;
