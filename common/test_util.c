@@ -80,12 +80,7 @@ int test_send_host_command(int command, int version, const void *params,
 	args.response_max = resp_size;
 	args.response_size = 0;
 
-	rv = host_command_process(&args);
-
-	if (args.response != resp)
-		memcpy(resp, args.response, args.response_size);
-
-	return rv;
+	return host_command_process(&args);
 }
 #endif  /* TASK_HAS_HOSTCMD */
 
