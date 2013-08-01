@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAcn//9dA\u003d",
+        "filename": "util/make_all.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-08-01T21:25:54Z",
+      "side": 1,
+      "message": "isn\u0027t the quoted version safer ?\nmake BOARD\u003d$b \"$*\"",
+      "revId": "1b36548545e01fe0026e73c3621018afd5e03ad9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
