@@ -42,6 +42,7 @@
 #define CONFIG_PWM_FAN
 #define CONFIG_PWM_KBLIGHT
 #define CONFIG_TEMP_SENSOR
+#define CONFIG_UART_HOST 2
 #define CONFIG_WIRELESS
 #if 0
 #define CONFIG_USB_PORT_POWER_DUMB
@@ -72,10 +73,6 @@
 
 /* USB ports */
 #define USB_PORT_COUNT 2
-
-/* GPIOs for second UART port */
-#define CONFIG_UART_HOST 2
-#define CONFIG_UART_HOST_GPIOS_PG4_5
 
 /* GPIO signal definitions. */
 enum gpio_signal {

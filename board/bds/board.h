@@ -39,9 +39,8 @@ enum adc_channel
 /* Number of I2C ports used */
 #define I2C_PORTS_USED 1
 
-/* GPIOs for second UART port */
+/* Second UART port */
 #define CONFIG_UART_HOST 1
-#define CONFIG_UART_HOST_GPIOS_PB0_1
 
 /* GPIO signal list */
 enum gpio_signal {
