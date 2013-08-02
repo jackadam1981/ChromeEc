@@ -9,22 +9,13 @@
 #define __BOARD_H
 
 /* Optional features */
-#define CONFIG_BATTERY_BQ20Z453
-#define CONFIG_BATTERY_SMART
-#ifdef HAS_TASK_CHARGER
-#define CONFIG_CHARGER_TPS65090
-#endif
 #ifdef HAS_TASK_CHIPSET
 #define CONFIG_CHIPSET_GAIA
 #endif
-#define CONFIG_CMD_PMU
-#define CONFIG_EXTPOWER_GPIO
+/* #define CONFIG_EXTPOWER_USB */
 #define CONFIG_HOST_COMMAND_STATUS
 #define CONFIG_I2C
 #define CONFIG_KEYBOARD_PROTOCOL_MKBP
-#define CONFIG_PMU_HARD_RESET
-#define CONFIG_PMU_POWERINFO
-#define CONFIG_PMU_TPS65090
 #define CONFIG_SPI
 
 #ifndef __ASSEMBLER__
@@ -33,7 +24,7 @@
 /* TODO(rspangler): use this in place of enum console_channel as well */
 enum module_id {
 	MODULE_I2C,
-	MODULE_POWER_LED,
+	MODULE_LED_KIRBY,
 	MODULE_SPI,
 	MODULE_UART,
 };
@@ -42,7 +33,7 @@ enum module_id {
 #define CC_DEFAULT	(CC_ALL & ~CC_MASK(CC_KEYSCAN))
 
 /* Keyboard output port list */
-#define KB_OUT_PORT_LIST GPIO_A, GPIO_B, GPIO_C
+#define KB_OUT_PORT_LIST GPIO_D
 
 /*
  * Charging.
@@ -58,26 +49,21 @@ enum module_id {
 #define I2C_PORT_HOST 0
 #define I2C_PORT_BATTERY I2C_PORT_HOST
 #define I2C_PORT_CHARGER I2C_PORT_HOST
-#define I2C_PORT_SLAVE 1
 #define I2C_PORTS_USED 1
 
-/* Charger sense resistors */
-#define CONFIG_CHARGER_SENSE_RESISTOR_AC 12
-#define CONFIG_CHARGER_SENSE_RESISTOR 16
-
 /* Timer selection */
-#define TIM_CLOCK_MSB 3
+#define TIM_CLOCK_MSB 2
 #define TIM_CLOCK_LSB 9
-#define TIM_POWER_LED 2
 #define TIM_WATCHDOG  4
 
 /* GPIO signal list */
 enum gpio_signal {
 	/* Inputs with interrupt handlers are first for efficiency */
 	GPIO_KB_PWR_ON_L = 0,
-	GPIO_PP1800_LDO2,
 	GPIO_SOC1V8_XPSHOLD,
 	GPIO_CHARGER_INT,
+	GPIO_USB_CHG_INT,
+	GPIO_USBPD_INT_L,
 	GPIO_LID_OPEN,
 	GPIO_SUSPEND_L,
 	GPIO_SPI1_NSS,
@@ -94,20 +80,21 @@ enum gpio_signal {
 	/* Other inputs */
 	GPIO_WP_L,
 	/* Outputs */
-	GPIO_AP_RESET_L,
 	GPIO_CHARGER_EN,
 	GPIO_EC_INT,
-	GPIO_EN_PP1350,
+	GPIO_EC_INT2,
+	GPIO_ID_MUX,
+	GPIO_BCHGR_OTG,
+	GPIO_BCHGR_PSEL,
 	GPIO_EN_PP3300,
-	GPIO_EN_PP5000,
 	GPIO_ENTERING_RW,
+	GPIO_BST_LED_EN,
 	GPIO_I2C1_SCL,
 	GPIO_I2C1_SDA,
-	GPIO_I2C2_SCL,
-	GPIO_I2C2_SDA,
-	GPIO_LED_POWER_L,
+	GPIO_CHG_LED_Y,
+	GPIO_CHG_LED_G,
+	GPIO_CHG_LED_R,
 	GPIO_PMIC_PWRON,
-	GPIO_PMIC_RESET,
 	GPIO_KB_OUT00,
 	GPIO_KB_OUT01,
 	GPIO_KB_OUT02,
@@ -121,6 +108,9 @@ enum gpio_signal {
 	GPIO_KB_OUT10,
 	GPIO_KB_OUT11,
 	GPIO_KB_OUT12,
+	/* Unimplemented */
+	GPIO_I2C2_SCL,
+	GPIO_I2C2_SDA,
 	/* Number of GPIOs; not an actual GPIO */
 	GPIO_COUNT
 };
