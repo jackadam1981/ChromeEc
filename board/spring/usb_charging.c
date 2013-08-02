@@ -719,9 +719,10 @@ static void notify_dev_type_change(int dev_type)
 	 * BATTERY_KEY_DELAY), pull down VAC.
 	 */
 	if (board_rev) {
-		if (!(dev_type & TSU6721_TYPE_VBUS_DEBOUNCED))
+		if ((org_type & TSU6721_TYPE_VBUS_DEBOUNCED) &&
+		    !(dev_type & TSU6721_TYPE_VBUS_DEBOUNCED))
 			hook_call_deferred(usb_pull_vac, BATTERY_KEY_DELAY);
-		else
+		else if (dev_type & TSU6721_TYPE_VBUS_DEBOUNCED)
 			hook_call_deferred(usb_pull_vac, -1);
 	}
 }
@@ -1050,10 +1051,12 @@ static int ext_power_command_hack_board_rev(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_hib_delay *p = args->params;
 
-	if (p->delay_secs)
+	if (p->delay_secs) {
 		board_rev = 1;
-	else
+	} else {
 		board_rev = 0;
+		hook_call_deferred(usb_pull_vac, -1);
+	}
 
 	return EC_RES_SUCCESS;
 }
