@@ -276,6 +276,7 @@ void gaia_suspend_event(enum gpio_signal signal)
 	ap_suspended = !gpio_get_level(GPIO_SUSPEND_L);
 
 	if (ap_suspended) {
+		enable_sleep(SLEEP_MASK_AP_RUN);
 		if (gpio_get_level(GPIO_LID_OPEN))
 			powerled_set_state(POWERLED_STATE_SUSPEND);
 		else
@@ -283,6 +284,7 @@ void gaia_suspend_event(enum gpio_signal signal)
 		/* Call hooks here since we don't know it prior to AP suspend */
 		hook_notify(HOOK_CHIPSET_SUSPEND);
 	} else {
+		disable_sleep(SLEEP_MASK_AP_RUN);
 		powerled_set_state(POWERLED_STATE_ON);
 		hook_notify(HOOK_CHIPSET_RESUME);
 	}

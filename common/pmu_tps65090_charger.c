@@ -521,7 +521,6 @@ void pmu_charger_task(void)
 				break;
 			} else if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
 				wait_time = T1_OFF_USEC;
-				enable_sleep(SLEEP_MASK_CHARGING);
 			} else if (chipset_in_state(CHIPSET_STATE_SUSPEND)) {
 				wait_time = T1_SUSPEND_USEC;
 			} else {
@@ -534,6 +533,7 @@ void pmu_charger_task(void)
 #endif
 
 		if (!has_pending_event) {
+			enable_sleep(SLEEP_MASK_CHARGING);
 			task_wait_event(wait_time);
 			disable_sleep(SLEEP_MASK_CHARGING);
 		} else {
