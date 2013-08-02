@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAcn//8m0\u003d",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-02T15:28:14Z",
+      "side": 1,
+      "message": "/* Maximum time to charge the battery, in hours.  If this timeout is reached, the charger will enter force-idle state.  If not defined, charger will provide current until the battery asks it to stop. */",
+      "revId": "0c6bdc06f018c630b0417a95b15bb6e99229090f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
