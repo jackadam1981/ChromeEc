@@ -32,6 +32,7 @@
 #define CONFIG_PWM_KBLIGHT
 #define CONFIG_TEMP_SENSOR
 #define CONFIG_TEMP_SENSOR_TMP006
+#define CONFIG_UART_HOST 1
 #define CONFIG_USB_PORT_POWER_SMART
 #define CONFIG_WIRELESS
 #define CONFIG_WP_ACTIVE_HIGH
@@ -77,10 +78,6 @@ enum adc_channel
 
 /* USB charge port */
 #define USB_CHARGE_PORT_COUNT 2
-
-/* GPIOs for second UART port */
-#define CONFIG_UART_HOST 1
-#define CONFIG_UART_HOST_GPIOS_PC4_5
 
 /* GPIO signal definitions. */
 enum gpio_signal {

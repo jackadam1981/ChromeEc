@@ -236,30 +236,6 @@ exit:
 	return rv;
 }
 
-/**
- * Configure I2C GPIOs for the module.
- */
-static void configure_i2c_gpios(void)
-{
-#ifdef BOARD_bds
-	/* PG6:7 = I2C5 SCL/SDA */
-	gpio_set_alternate_function(LM4_GPIO_G, 0xc0, 3);
-
-	/* Configure SDA as open-drain.  SCL should not be open-drain,
-	 * since it has an internal pull-up. */
-	LM4_GPIO_ODR(LM4_GPIO_G) |= 0x80;
-#else
-	/* PA6:7 = I2C1 SCL/SDA; PB2:3 = I2C0 SCL/SDA; PB6:7 = I2C5 SCL/SDA */
-	gpio_set_alternate_function(LM4_GPIO_A, 0xc0, 3);
-	gpio_set_alternate_function(LM4_GPIO_B, 0xcc, 3);
-
-	/* Configure SDA as open-drain.  SCL should not be open-drain,
-	 * since it has an internal pull-up. */
-	LM4_GPIO_ODR(LM4_GPIO_A) |= 0x80;
-	LM4_GPIO_ODR(LM4_GPIO_B) |= 0x88;
-#endif
-}
-
 /*****************************************************************************/
 /* Hooks */
 
@@ -306,9 +282,6 @@ static void i2c_init(void)
 
 	LM4_SYSTEM_RCGCI2C |= mask;
 	clock_wait_cycles(3);
-
-	/* Configure GPIOs */
-	configure_i2c_gpios();
 
 	/* No tasks are waiting on ports */
 	for (i = 0; i < I2C_PORT_COUNT; i++)

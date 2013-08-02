@@ -123,9 +123,6 @@ static void pwm_kblight_init(void)
 	LM4_SYSTEM_RCGCFAN = 1;
 	clock_wait_cycles(3);
 
-	/* Configure GPIOs */
-	configure_kblight_gpios();
-
 	/* Disable all fans */
 	LM4_FAN_FANCTL = 0;
 
