@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAcn//67k\u003d",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2013-08-03T03:18:11Z",
+      "side": 1,
+      "message": "How about move this to after line:524? Or add a check that TPSChrome low current detection is on.",
+      "revId": "32882cdbda4479b0d1c451cb0fabc79a9c0f2ff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
