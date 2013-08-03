@@ -926,8 +926,10 @@ enum lightbar_command {
 
 enum ec_led_id {
 	EC_LED_ID_BATTERY_LED = 0,
-	EC_LED_ID_POWER_BUTTON_LED,
+	EC_LED_ID_POWER_LED,
 	EC_LED_ID_ADAPTER_LED,
+
+	EC_LED_ID_COUNT
 };
 
 /* LED control flags */
