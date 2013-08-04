@@ -44,7 +44,7 @@
 #define CPRINTF(format, args...) cprintf(CC_CHIPSET, format, ## args)
 
 /* Time necessary for the 5V and 3.3V regulator outputs to stabilize */
-#if defined(BOARD_pit) || defined(BOARD_puppy)
+#if defined(BOARD_pit) || defined(BOARD_puppy) || defined(BOARD_nyan)
 #define DELAY_5V_SETUP		(2 * MSEC)
 #define DELAY_3V_SETUP		(2 * MSEC)
 #else
@@ -345,6 +345,7 @@ void chipset_reset(int is_cold)
 
 void chipset_force_shutdown(void)
 {
+	CPRINTF("[%T EC chipset_force_shutdown]\n");
 	/* Turn off all rails */
 	gpio_set_level(GPIO_EN_PP3300, 0);
 #ifndef BOARD_kirby
@@ -353,6 +354,12 @@ void chipset_force_shutdown(void)
 	set_pmic_pwrok(0);
 #ifndef BOARD_kirby
 	gpio_set_level(GPIO_EN_PP5000, 0);
+#endif
+#ifdef BOARD_nyan
+	CPRINTF("[%T GPIO_PMIC_RESET]\n");
+	gpio_set_level(GPIO_PMIC_RESET, 1);
+	udelay(5000);
+	gpio_set_level(GPIO_PMIC_RESET, 0);
 #endif
 }
 
@@ -417,7 +424,7 @@ static int power_on(void)
 	usleep(DELAY_5V_SETUP);
 #endif
 
-#if defined(BOARD_pit) || defined(BOARD_puppy)
+#if defined(BOARD_pit) || defined(BOARD_puppy) || defined(BOARD_nyan)
 	/*
 	 * 3.3V rail must come up right after 5V, because it sources power to
 	 * various buck supplies.
