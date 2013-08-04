@@ -345,6 +345,7 @@ void chipset_reset(int is_cold)
 
 void chipset_force_shutdown(void)
 {
+	CPRINTF("[%T EC chipset_force_shutdown]\n");
 	/* Turn off all rails */
 	gpio_set_level(GPIO_EN_PP3300, 0);
 #ifndef BOARD_kirby
@@ -428,6 +429,9 @@ static int power_on(void)
 	if (gpio_get_level(GPIO_SOC1V8_XPSHOLD) == 0) {
 		/* Initialize non-AP components */
 		hook_notify(HOOK_CHIPSET_PRE_INIT);
+
+		/* BOARD_nyan: need to wait 2 seconds before powering on PMU. */
+		/* TODO: usleep(2000000); */
 
 		/*
 		 * Initiate PMIC power-on sequence only if cold booting AP to
