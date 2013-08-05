@@ -38,14 +38,16 @@ int temp_sensor_read(enum temp_sensor_id id, int *temp_ptr)
 	}
 }
 
-void pwm_set_fan_rpm_mode(int rpm_mode)
+void pwm_set_rpm_mode(enum pwm_channel ch, int rpm_mode)
 {
-	fan_rpm_mode = rpm_mode;
+	if (ch == PWM_CH_FAN)
+		fan_rpm_mode = rpm_mode;
 }
 
-void pwm_set_fan_target_rpm(int rpm)
+void pwm_set_target_rpm(enum pwm_channel ch, int rpm)
 {
-	fan_rpm = rpm;
+	if (ch == PWM_CH_FAN)
+		fan_rpm = rpm;
 }
 
 void chipset_force_shutdown(void)
@@ -356,7 +358,7 @@ static int test_auto_fan_ctrl(void)
 	reset_mock_temp();
 
 	/* Disable fan control */
-	pwm_set_fan_rpm_mode(0);
+	pwm_set_rpm_mode(PWM_CH_FAN, 0);
 	thermal_control_fan(0);
 
 	/*
@@ -373,7 +375,7 @@ static int test_auto_fan_ctrl(void)
 	TEST_ASSERT(wait_fan_rpm(fan_speed[1], 11));
 
 	/* Disable fan control */
-	pwm_set_fan_rpm_mode(0);
+	pwm_set_rpm_mode(PWM_CH_FAN, 0);
 	thermal_control_fan(0);
 
 	/* Increase CPU temperature to second fan step */

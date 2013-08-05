@@ -14,6 +14,7 @@
 #define CONFIG_POWER_BUTTON
 #define CONFIG_TEMP_SENSOR
 #undef CONFIG_WATCHDOG
+#define CONFIG_PWM
 
 /* Host test config */
 #ifdef TEST_SMART_BATTERY_CHARGER
@@ -60,6 +61,12 @@ enum adc_channel {
 	ADC_AC_ADAPTER_ID_VOLTAGE,
 
 	ADC_CH_COUNT
+};
+
+enum pwm_channel {
+	PWM_CH_FAN,
+
+	PWM_CH_COUNT
 };
 
 #endif /* __BOARD_H */

@@ -11,70 +11,56 @@
 #include "common.h"
 
 /**
- * Enable/disable the fan.
+ * Enable/disable a PWM channel.
+ */
+void pwm_enable(enum pwm_channel ch, int enabled);
+
+/**
+ * Get PWM channel enabled status.
+ */
+int pwm_get_enabled(enum pwm_channel ch);
+
+/**
+ * Set PWM channel duty cycle (0-100).
+ */
+void pwm_set_duty(enum pwm_channel ch, int percent);
+
+/**
+ * Get PWM channel duty cycle.
+ */
+int pwm_get_duty(enum pwm_channel ch);
+
+/**
+ * Enable/disable RPM control logic.
  *
- * Should be called by whatever function enables the power supply to the fan.
+ * @param enabled	Enable (1) or disable (0) RPM control loop; when
+ *			disabled, duty cycle will be used.
  */
-void pwm_enable_fan(int enable);
+void pwm_set_rpm_mode(enum pwm_channel ch, int enabled);
 
 /**
- * Enable/disable fan RPM control logic.
- *
- * @param rpm_mode	Enable (1) or disable (0) RPM control loop; when
- *			disabled, fan duty cycle will be used.
+ * Get RPM control logic enabled status.
  */
-void pwm_set_fan_rpm_mode(int enable);
+int pwm_get_rpm_mode(enum pwm_channel ch);
 
 /**
- * Get the current fan RPM.
+ * Set target RPM.
  */
-int pwm_get_fan_rpm(void);
+void pwm_set_target_rpm(enum pwm_channel ch, int rpm);
 
 /**
- * Get the target fan RPM.
+ * Get target RPM.
  */
-int pwm_get_fan_target_rpm(void);
+int pwm_get_target_rpm(enum pwm_channel ch);
 
 /**
- * Set the target fan RPM.
- *
- * @param rpm   Target RPM; pass -1 to set fan to maximum.
+ * Get current RPM.
  */
-void pwm_set_fan_target_rpm(int rpm);
+int pwm_get_rpm(enum pwm_channel ch);
 
 /**
- * Set the fan PWM duty cycle (0-100), disabling the automatic control.
+ * Return non-zero if RPM control is enabled but target is stalled.
  */
-void pwm_set_fan_duty(int percent);
-
-/**
- * Set up the keyboard gpios.
- */
-void configure_kblight_gpios(void);
-
-/**
- * Enable/disable the keyboard backlight.
- */
-void pwm_enable_keyboard_backlight(int enable);
-
-/**
- * Get the keyboard backlight enable/disable status (1=enabled, 0=disabled).
- */
-int pwm_get_keyboard_backlight_enabled(void);
-
-/**
- * Get the keyboard backlight percentage (0=off, 100=max).
- */
-int pwm_get_keyboard_backlight(void);
-
-/**
- * Set the keyboard backlight percentage (0=off, 100=max).
- */
-void pwm_set_keyboard_backlight(int percent);
-
-/**
- * Configure the GPIOs for the pwm module -- board-specific.
- */
-void configure_fan_gpios(void);
+int pwm_is_stalled(enum pwm_channel ch);
 
 #endif  /* __CROS_EC_PWM_H */

@@ -415,7 +415,7 @@ static void handle_acpi_write(int is_cmd)
 			 * good enough and less code than defining a new
 			 * console command interface just for ACPI read/write.
 			 */
-			result = pwm_get_keyboard_backlight();
+			result = pwm_get_duty(PWM_CH_KBLIGHT);
 			break;
 #endif
 		default:
@@ -441,7 +441,7 @@ static void handle_acpi_write(int is_cmd)
 			 * debug console.
 			 */
 			CPRINTF("\r[%T ACPI kblight %d]", data);
-			pwm_set_keyboard_backlight(data);
+			pwm_set_duty(PWM_CH_KBLIGHT, data);
 			break;
 #endif
 		default:

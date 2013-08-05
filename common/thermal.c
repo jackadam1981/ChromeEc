@@ -88,7 +88,7 @@ void thermal_control_fan(int enable)
 
 	/* If controlling the fan, need it in RPM-control mode */
 	if (enable)
-		pwm_set_fan_rpm_mode(1);
+		pwm_set_rpm_mode(PWM_CH_FAN, 1);
 }
 
 static void smi_overheated_warning(void)
@@ -141,7 +141,7 @@ static void overheated_action(void)
 		for (i = THERMAL_FAN_STEPS - 1; i >= 0; --i)
 			if (fan_threshold_reached[i])
 				break;
-		pwm_set_fan_target_rpm(fan_speed[i + 1]);
+		pwm_set_target_rpm(PWM_CH_FAN, fan_speed[i + 1]);
 	}
 }
 
