@@ -19,11 +19,12 @@
 #define CONFIG_CHIPSET_HASWELL
 #define CONFIG_CHIPSET_X86
 #define CONFIG_EXTPOWER_GPIO
+#define CONFIG_FAN
 #define CONFIG_KEYBOARD_BOARD_CONFIG
 #define CONFIG_KEYBOARD_PROTOCOL_8042
 #define CONFIG_POWER_BUTTON
 #define CONFIG_POWER_BUTTON_X86
-#define CONFIG_PWM_FAN
+#define CONFIG_PWM
 #define CONFIG_PWM_FAN_EN_GPIO GPIO_PP5000_FAN_EN
 #define CONFIG_TEMP_SENSOR
 #define CONFIG_TEMP_SENSOR_G781
@@ -176,6 +177,13 @@ enum adc_channel {
 	ADC_CH_CHARGER_CURRENT,
 
 	ADC_CH_COUNT
+};
+
+enum pwm_channel {
+	PWM_CH_FAN,
+
+	/* Number of PWM channels */
+	PWM_CH_COUNT
 };
 
 enum temp_sensor_id {
