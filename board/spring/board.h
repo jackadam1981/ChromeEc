@@ -35,6 +35,7 @@
 #define CONFIG_PMU_HARD_RESET
 #define CONFIG_PMU_TPS65090
 #define CONFIG_USB_SWITCH_TSU6721
+#define CONFIG_PWM
 
 #ifndef __ASSEMBLER__
 
@@ -66,6 +67,13 @@ enum adc_channel {
 	ADC_CH_USB_DN_SNS,
 	/* Number of ADC channels */
 	ADC_CH_COUNT
+};
+
+/* PWM signal */
+enum pwm_channel {
+	PWM_CH_ILIM = 0,
+	/* Number of PWM channels */
+	PWM_CH_COUNT
 };
 
 /* GPIO signal list */

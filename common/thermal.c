@@ -8,6 +8,7 @@
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
+#include "fan.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
@@ -88,7 +89,7 @@ void thermal_control_fan(int enable)
 
 	/* If controlling the fan, need it in RPM-control mode */
 	if (enable)
-		pwm_set_fan_rpm_mode(1);
+		fan_set_rpm_mode(1);
 }
 
 static void smi_overheated_warning(void)
@@ -141,7 +142,7 @@ static void overheated_action(void)
 		for (i = THERMAL_FAN_STEPS - 1; i >= 0; --i)
 			if (fan_threshold_reached[i])
 				break;
-		pwm_set_fan_target_rpm(fan_speed[i + 1]);
+		fan_set_target_rpm(fan_speed[i + 1]);
 	}
 }
 

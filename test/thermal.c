@@ -7,6 +7,7 @@
 
 #include "common.h"
 #include "console.h"
+#include "fan.h"
 #include "hooks.h"
 #include "host_command.h"
 #include "printf.h"
@@ -38,12 +39,12 @@ int temp_sensor_read(enum temp_sensor_id id, int *temp_ptr)
 	}
 }
 
-void pwm_set_fan_rpm_mode(int rpm_mode)
+void fan_set_rpm_mode(int rpm_mode)
 {
 	fan_rpm_mode = rpm_mode;
 }
 
-void pwm_set_fan_target_rpm(int rpm)
+void fan_set_target_rpm(int rpm)
 {
 	fan_rpm = rpm;
 }
@@ -356,7 +357,7 @@ static int test_auto_fan_ctrl(void)
 	reset_mock_temp();
 
 	/* Disable fan control */
-	pwm_set_fan_rpm_mode(0);
+	fan_set_rpm_mode(0);
 	thermal_control_fan(0);
 
 	/*
@@ -373,7 +374,7 @@ static int test_auto_fan_ctrl(void)
 	TEST_ASSERT(wait_fan_rpm(fan_speed[1], 11));
 
 	/* Disable fan control */
-	pwm_set_fan_rpm_mode(0);
+	fan_set_rpm_mode(0);
 	thermal_control_fan(0);
 
 	/* Increase CPU temperature to second fan step */
