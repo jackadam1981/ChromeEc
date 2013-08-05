@@ -55,9 +55,11 @@
 #define PULL_UP(x) PULL(x, 1)
 #define PULL_DOWN(x) PULL(x, 0)
 
-#ifdef CONFIG_I2C_DEBUG
+int debug = 0;
+
 static void dump_i2c_reg(int port, const char *what)
 {
+	if (debug)
 	CPRINTF("[%T i2c CR1=%04x CR2=%04x SR1=%04x SR2=%04x %s]\n",
 		STM32_I2C_CR1(port),
 		STM32_I2C_CR2(port),
@@ -65,11 +67,6 @@ static void dump_i2c_reg(int port, const char *what)
 		STM32_I2C_SR2(port),
 		what);
 }
-#else
-static inline void dump_i2c_reg(int port, const char *what)
-{
-}
-#endif
 
 /**
  * Wait for SR1 register to contain the specified mask.
@@ -151,6 +148,9 @@ int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
 	ASSERT(out || !out_bytes);
 	ASSERT(in || !in_bytes);
 
+	debug = (slave_addr == 22);
+	if (debug)
+	CPRINTF("[%T i2c xfer port=%d in=%d out=%d addr=%d\n", port, in_bytes, out_bytes, slave_addr);
 	dump_i2c_reg(port, "xfer start");
 
 	/* Clear status */
@@ -178,6 +178,7 @@ int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
 		}
 
 		/* Write data, if any */
+		dump_i2c_reg(port, "before writing data");
 		for (i = 0; i < out_bytes; i++) {
 			/* Write next data byte */
 			STM32_I2C_DR(port) = out[i];
@@ -276,6 +277,19 @@ int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
 
 		/* Try unwedging the bus */
 		i2c_unwedge(port);
+	} else {
+		dump_i2c_reg(port, "stop normally");
+		if (debug) {
+			CPRINTF("   OUT %d: ", out_bytes);
+			for (i = 0; i < out_bytes; ++i) {
+				CPRINTF("%d ", out[i]);
+			}
+			CPRINTF("\n   IN: %d: ", in_bytes);
+			for (i = 0; i < in_bytes; ++i) {
+				CPRINTF("%d ", in[i]);
+			}
+			CPRINTF("\n");
+		}
 	}
 
 	return rv;
@@ -341,6 +355,8 @@ static void i2c_freq_change(void)
 	const struct i2c_port_t *p = i2c_ports;
 	int freq = clock_get_freq();
 	int i;
+
+	CPRINTF("freq changed = %d\n", freq);
 
 	for (i = 0; i < I2C_PORTS_USED; i++, p++) {
 		int port = p->port;
@@ -586,6 +602,9 @@ static void i2c_bitbang_unwedge(int port)
 
 static void i2c_unwedge(int port)
 {
+	int tmp = debug;
+	debug = 1;
+
 	dump_i2c_reg(port, "before unwedge");
 
 	i2c_bitbang_unwedge(port);
@@ -593,6 +612,8 @@ static void i2c_unwedge(int port)
 
 	dump_i2c_reg(port, "after unwedge");
 	CPRINTF("[%T I2C unwedge attemp complete\n");
+
+	debug = tmp;
 }
 
 static int command_i2c_unwedge(int argc, char **argv)
