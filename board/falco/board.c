@@ -20,6 +20,7 @@
 #include "keyboard_scan.h"
 #include "lid_switch.h"
 #include "lm4_adc.h"
+#include "lm4_pwm.h"
 #include "peci.h"
 #include "power_button.h"
 #include "registers.h"
@@ -122,6 +123,9 @@ const struct gpio_info gpio_list[] = {
 	{"KB_LED_EN",            LM4_GPIO_D, (1<<4), GPIO_OUT_LOW, NULL},
 	{"BAT_LED0",             LM4_GPIO_D, (1<<0), GPIO_OUT_LOW, NULL},
 	{"BAT_LED1",             LM4_GPIO_D, (1<<1), GPIO_OUT_LOW, NULL},
+
+	{"FAN_PWM",              LM4_GPIO_N, (1<<2), GPIO_INPUT, NULL},
+	{"FAN_TACH",             LM4_GPIO_N, (1<<3), GPIO_INPUT, NULL},
 };
 BUILD_ASSERT(ARRAY_SIZE(gpio_list) == GPIO_COUNT);
 
@@ -162,6 +166,13 @@ const struct adc_t adc_channels[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
+/* PWM channels */
+const struct pwm_t pwm_channels[] = {
+	[PWM_CH_FAN] = {FAN_CH_CPU, GPIO_FAN_PWM, 1, GPIO_FAN_TACH, 1, 2,
+			PWM_AUTO_RESTART | PWM_RPM_AVG_4 | PWM_PULSE_PER_REV_8},
+};
+BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
+
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
 	/* Note: battery and charger share a port.  Only include it once in
@@ -193,15 +204,6 @@ struct keyboard_scan_config keyscan_config = {
 		0xa4, 0xff, 0xf6, 0x55, 0xfa, 0xc8  /* full set */
 	},
 };
-
-/**
- * Configure the GPIOs for the pwm module.
- */
-void configure_fan_gpios(void)
-{
-	/* PN2:3 alternate function 1 = channel 0 PWM/tach */
-	gpio_set_alternate_function(LM4_GPIO_N, 0x0c, 1);
-}
 
 /**
  * Perform necessary actions on host wake events.
