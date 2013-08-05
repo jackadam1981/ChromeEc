@@ -87,6 +87,24 @@
       "revId": "448228be47bd1f29dd26295c43332dd3a8d55e63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//5PY\u003d",
+        "filename": "common/led_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-08-05T23:58:58Z",
+      "side": 1,
+      "message": "not that we shouldn\u0027t return this info only for QUERY request. The QUERY flag was introduced so that we have a way to get the range without changing LED color/brightness. Without knowing brightness range, there\u0027s no way to tell what kind of command can achieve this.",
+      "parentUuid": "AAAAcn//5rE\u003d",
+      "revId": "448228be47bd1f29dd26295c43332dd3a8d55e63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
