@@ -11,60 +11,36 @@
 #include "common.h"
 
 /**
- * Enable/disable the fan.
- *
- * Should be called by whatever function enables the power supply to the fan.
+ * Enable/disable a PWM channel.
  */
-void pwm_enable_fan(int enable);
+void pwm_enable(enum pwm_channel ch, int enabled);
 
 /**
- * Enable/disable fan RPM control logic.
- *
- * @param rpm_mode	Enable (1) or disable (0) RPM control loop; when
- *			disabled, fan duty cycle will be used.
+ * Get PWM channel enabled status.
  */
-void pwm_set_fan_rpm_mode(int enable);
+int pwm_get_enabled(enum pwm_channel ch);
 
 /**
- * Get the current fan RPM.
+ * Set PWM channel duty cycle (0-100).
  */
-int pwm_get_fan_rpm(void);
+void pwm_set_duty(enum pwm_channel ch, int percent);
 
 /**
- * Get the target fan RPM.
+ * Get PWM channel duty cycle.
  */
-int pwm_get_fan_target_rpm(void);
+int pwm_get_duty(enum pwm_channel ch);
+
+
+/* Flags for PWM config table */
 
 /**
- * Set the target fan RPM.
- *
- * @param rpm   Target RPM; pass -1 to set fan to maximum.
+ * PWM output signal is inverted, so 100% duty means always low
  */
-void pwm_set_fan_target_rpm(int rpm);
-
+#define PWM_CONFIG_ACTIVE_LOW   (1 << 0)
 /**
- * Set the fan PWM duty cycle (0-100), disabling the automatic control.
+ * PWM channel has a fan controller with a tach input and can auto-adjust
+ * its duty cycle to produce a given fan RPM.
  */
-void pwm_set_fan_duty(int percent);
-
-/**
- * Enable/disable the keyboard backlight.
- */
-void pwm_enable_keyboard_backlight(int enable);
-
-/**
- * Get the keyboard backlight enable/disable status (1=enabled, 0=disabled).
- */
-int pwm_get_keyboard_backlight_enabled(void);
-
-/**
- * Get the keyboard backlight percentage (0=off, 100=max).
- */
-int pwm_get_keyboard_backlight(void);
-
-/**
- * Set the keyboard backlight percentage (0=off, 100=max).
- */
-void pwm_set_keyboard_backlight(int percent);
+#define PWM_CONFIG_HAS_RPM_MODE (1 << 1)
 
 #endif  /* __CROS_EC_PWM_H */

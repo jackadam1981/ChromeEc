@@ -22,6 +22,7 @@
 #define CONFIG_PMU_POWERINFO
 #define CONFIG_PMU_TPS65090
 #define CONFIG_SPI
+#define CONFIG_PWM
 
 #ifndef __ASSEMBLER__
 
@@ -119,6 +120,12 @@ enum gpio_signal {
 	GPIO_KB_OUT12,
 	/* Number of GPIOs; not an actual GPIO */
 	GPIO_COUNT
+};
+
+enum pwm_channel {
+	PWM_CH_POWER_LED = 0,
+	/* Number of PWM channels */
+	PWM_CH_COUNT
 };
 
 #endif /* !__ASSEMBLER__ */
