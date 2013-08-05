@@ -458,7 +458,7 @@
 #undef CONFIG_PSTORE
 
 /* Compile support for PWM control of cooling fans */
-#undef CONFIG_PWM_FAN
+#undef CONFIG_FAN
 
 /* Compile support for PWM output to keyboard backlight */
 #undef CONFIG_PWM_KBLIGHT

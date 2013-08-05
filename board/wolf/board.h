@@ -21,7 +21,8 @@
 #endif
 #define CONFIG_POWER_BUTTON
 #define CONFIG_POWER_BUTTON_X86
-#define CONFIG_PWM_FAN
+#define CONFIG_PWM
+#define CONFIG_FAN
 #define CONFIG_TEMP_SENSOR
 #define CONFIG_USB_PORT_POWER_DUMB
 #define CONFIG_WIRELESS
@@ -124,6 +125,9 @@ enum gpio_signal {
 	BAT_LED0_L,                /* Battery charging LED - Blue */
 	BAT_LED1_L,                /* Battery charging LED - Amber */
 
+	GPIO_FAN_PWM,              /* CPU fan PWM */
+	GPIO_FAN_TACH,             /* CPU fan tach */
+
 	/* Number of GPIOs; not an actual GPIO */
 	GPIO_COUNT
 };
@@ -156,6 +160,13 @@ enum adc_channel {
 	ADC_CH_CHARGER_CURRENT,
 
 	ADC_CH_COUNT
+};
+
+enum pwm_channel {
+	PWM_CH_FAN,
+
+	/* Number of PWM channels */
+	PWM_CH_COUNT
 };
 
 enum temp_sensor_id {

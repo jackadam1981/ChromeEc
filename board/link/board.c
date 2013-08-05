@@ -20,6 +20,7 @@
 #include "peci.h"
 #include "power_button.h"
 #include "pwm.h"
+#include "pwm_data.h"
 #include "registers.h"
 #include "switch.h"
 #include "temp_sensor.h"
@@ -122,6 +123,9 @@ const struct gpio_info gpio_list[] = {
 	{"USB2_CTL3",            LM4_GPIO_D, (1<<6), GPIO_OUT_LOW, NULL},
 	{"USB2_ENABLE",          LM4_GPIO_D, (1<<7), GPIO_OUT_LOW, NULL},
 	{"USB2_ILIM_SEL",        LM4_GPIO_E, (1<<0), GPIO_OUT_LOW, NULL},
+	{"FAN_PWM",              LM4_GPIO_M, (1<<6), GPIO_INPUT, NULL},
+	{"FAN_TACH",             LM4_GPIO_M, (1<<7), GPIO_INPUT, NULL},
+	{"KBLIGHT_PWM",          LM4_GPIO_K, (1<<6), GPIO_INPUT, NULL},
 };
 BUILD_ASSERT(ARRAY_SIZE(gpio_list) == GPIO_COUNT);
 
@@ -160,6 +164,15 @@ const struct adc_t adc_channels[] = {
 	 LM4_AIN(11), 0x06 /* IE0 | END0 */, LM4_GPIO_B, (1<<5)},
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
+
+/* PWM channels */
+const struct pwm_t pwm_channels[] = {
+	[PWM_CH_FAN] = {FAN_CH_CPU, GPIO_FAN_PWM, 1, GPIO_FAN_TACH, 1,
+			PWM_CONFIG_HAS_RPM_MODE},
+	[PWM_CH_KBLIGHT] = {FAN_CH_KBLIGHT, GPIO_KBLIGHT_PWM, 1, PWM_NO_TACH, 0,
+			    0},
+};
+BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
@@ -217,15 +230,6 @@ struct keyboard_scan_config keyscan_config = {
 };
 
 /**
- * Configure the GPIOs for the pwm module.
- */
-void configure_fan_gpios(void)
-{
-	/* PM6:7 alternate function 1 = channel 0 PWM/tach */
-	gpio_set_alternate_function(LM4_GPIO_M, 0xc0, 1);
-}
-
-/**
  * Perform necessary actions on host events.
  */
 void board_process_wake_events(uint32_t active_wake_events)
@@ -235,13 +239,4 @@ void board_process_wake_events(uint32_t active_wake_events)
 		gpio_set_level(GPIO_PCH_WAKE_L, 0);
 	else
 		gpio_set_level(GPIO_PCH_WAKE_L, 1);
-}
-
-/**
- * Configure the GPIOs for the pwm module.
- */
-void configure_kblight_gpios(void)
-{
-	/* PK6 alternate function 1 = channel 1 PWM */
-	gpio_set_alternate_function(LM4_GPIO_K, 0x40, 1);
 }

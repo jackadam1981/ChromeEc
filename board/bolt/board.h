@@ -39,7 +39,8 @@
 #define   CONFIG_CHARGER_SENSE_RESISTOR_AC 10
 /* External Charger maximum current. */
 #define   CONFIG_CHARGER_INPUT_CURRENT 5000
-#define CONFIG_PWM_FAN
+#define CONFIG_PWM
+#define CONFIG_FAN
 #define CONFIG_PWM_KBLIGHT
 #define CONFIG_TEMP_SENSOR
 #define CONFIG_WIRELESS
@@ -152,6 +153,9 @@ enum gpio_signal {
 	GPIO_USB2_CTL3,            /* USB charger port 2 CTL3 output */
 	GPIO_USB2_ENABLE,          /* USB charger port 2 enable */
 	GPIO_USB2_ILIM_SEL,        /* USB charger port 2 ILIM_SEL output */
+	GPIO_FAN_PWM,              /* CPU fan PWM */
+	GPIO_FAN_TACH,             /* CPU fan tach */
+	GPIO_KBLIGHT_PWM,          /* Keyboard backlight PWM */
 
 	/* Number of GPIOs; not an actual GPIO */
 	GPIO_COUNT
@@ -171,6 +175,7 @@ enum x86_signal {
 	/* Number of X86 signals */
 	X86_SIGNAL_COUNT
 };
+
 enum adc_channel {
 	/* EC internal die temperature in degrees K. */
 	ADC_CH_EC_TEMP = 0,
@@ -179,6 +184,14 @@ enum adc_channel {
 	ADC_CH_CHARGER_CURRENT,
 
 	ADC_CH_COUNT
+};
+
+enum pwm_channel {
+	PWM_CH_FAN,
+	PWM_CH_KBLIGHT,
+
+	/* Number of PWM channels */
+	PWM_CH_COUNT
 };
 
 enum temp_sensor_id {
