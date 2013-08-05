@@ -279,6 +279,9 @@
  */
 #undef CONFIG_EXTPOWER_USB
 
+/* Compile support for PWM control of cooling fans */
+#undef CONFIG_FAN
+
 /*****************************************************************************/
 /* Flash configuration */
 
@@ -461,9 +464,6 @@
  * storage for the AP.
  */
 #undef CONFIG_PSTORE
-
-/* Compile support for PWM control of cooling fans */
-#undef CONFIG_PWM_FAN
 
 /* Name of active high GPIO to control power to the cooling fan */
 #undef CONFIG_PWM_FAN_EN_GPIO

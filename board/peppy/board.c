@@ -20,6 +20,8 @@
 #include "lm4_adc.h"
 #include "peci.h"
 #include "power_button.h"
+#include "pwm.h"
+#include "pwm_data.h"
 #include "registers.h"
 #include "switch.h"
 #include "temp_sensor.h"
@@ -171,6 +173,12 @@ const struct adc_t adc_channels[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
+/* PWM channels */
+const struct pwm_t pwm_channels[] = {
+	[PWM_CH_FAN] = {FAN_CH_CPU, PWM_CONFIG_HAS_RPM_MODE},
+};
+BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
+
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
 	/* Note: battery and charger share a port.  Only include it once in
@@ -179,7 +187,6 @@ const struct i2c_port_t i2c_ports[] = {
 	{"thermal",  I2C_PORT_THERMAL,  100},
 };
 BUILD_ASSERT(ARRAY_SIZE(i2c_ports) == I2C_PORTS_USED);
-
 
 /* Temperature sensors data; must be in same order as enum temp_sensor_id. */
 const struct temp_sensor_t temp_sensors[] = {
