@@ -28,6 +28,7 @@
 #define CONFIG_ONEWIRE
 #define CONFIG_POWER_BUTTON
 #define CONFIG_POWER_BUTTON_X86
+#define CONFIG_PWM
 #define CONFIG_PWM_FAN
 #define CONFIG_PWM_KBLIGHT
 #define CONFIG_TEMP_SENSOR
@@ -43,14 +44,21 @@
 #define FAN_CH_KBLIGHT   1  /* Keyboard backlight */
 #define FAN_CH_POWER_LED 5  /* Power adapter LED */
 
-enum adc_channel
-{
+enum adc_channel {
 	/* EC internal die temperature in degrees K. */
 	ADC_CH_EC_TEMP = 0,
 	/* Charger current in mA. */
 	ADC_CH_CHARGER_CURRENT,
 
 	ADC_CH_COUNT
+};
+
+enum pwm_channel {
+	PWM_CH_FAN,
+	PWM_CH_KBLIGHT,
+
+	/* Number of PWM channels */
+	PWM_CH_COUNT
 };
 
 /* Charger module */
@@ -153,6 +161,9 @@ enum gpio_signal {
 	GPIO_USB2_CTL3,            /* USB charger port 2 CTL3 output */
 	GPIO_USB2_ENABLE,          /* USB charger port 2 enable */
 	GPIO_USB2_ILIM_SEL,        /* USB charger port 2 ILIM_SEL output */
+	GPIO_FAN_PWM,              /* CPU fan PWM */
+	GPIO_FAN_TACH,             /* CPU fan tach */
+	GPIO_KBLIGHT_PWM,          /* Keyboard backlight PWM */
 
 	/* Number of GPIOs; not an actual GPIO */
 	GPIO_COUNT

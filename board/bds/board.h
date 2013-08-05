@@ -27,11 +27,14 @@
 
 #ifndef __ASSEMBLER__
 
-enum adc_channel
-{
+enum adc_channel {
 	ADC_CH_EC_TEMP = 0,  /* EC internal die temperature in degrees K. */
 	ADC_CH_BDS_POT,      /* BDS pot input. */
 	ADC_CH_COUNT
+};
+
+enum pwm_channel {
+	PWM_CH_COUNT
 };
 
 /* I2C ports */

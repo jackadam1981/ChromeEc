@@ -8,6 +8,7 @@
 #include "clock.h"
 #include "common.h"
 #include "console.h"
+#include "fan.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
@@ -42,54 +43,51 @@ struct pwm_fan_state {
 	char pad; /* Pad to multiple of 4 bytes. */
 };
 
-void pwm_enable_fan(int enable)
+void fan_enable(int enable)
 {
-	if (enable)
-		LM4_FAN_FANCTL |= (1 << FAN_CH_CPU);
-	else
-		LM4_FAN_FANCTL &= ~(1 << FAN_CH_CPU);
+	pwm_enable(PWM_CH_FAN, enable);
 }
 
-int pwm_get_fan_enabled(void)
+int fan_get_enabled(void)
 {
-	return (LM4_FAN_FANCTL & (1 << FAN_CH_CPU)) ? 1 : 0;
+	return pwm_get_enabled(PWM_CH_FAN);
 }
 
-static int pwm_get_rpm_mode(void)
+static int fan_get_rpm_mode(void)
 {
 	return (LM4_FAN_FANCH(FAN_CH_CPU) & 0x0001) ? 0 : 1;
 }
 
-void pwm_set_fan_rpm_mode(int rpm_mode)
+void fan_set_rpm_mode(int rpm_mode)
 {
-	int was_enabled = pwm_get_fan_enabled();
-	int was_rpm = pwm_get_rpm_mode();
+	int was_enabled = fan_get_enabled();
+	int was_rpm = fan_get_rpm_mode();
 
 	if (!was_rpm && rpm_mode) {
 		/* Enable RPM control */
-		pwm_enable_fan(0);
+		fan_enable(0);
 		LM4_FAN_FANCH(FAN_CH_CPU) &= ~0x0001;
 
-		pwm_enable_fan(was_enabled);
+		fan_enable(was_enabled);
 	} else if (was_rpm && !rpm_mode) {
 		/* Disable RPM mode */
-		pwm_enable_fan(0);
+		fan_enable(0);
 		LM4_FAN_FANCH(FAN_CH_CPU) |= 0x0001;
-		pwm_enable_fan(was_enabled);
+		fan_enable(was_enabled);
 	}
 }
 
-int pwm_get_fan_rpm(void)
+int fan_get_rpm(void)
 {
 	return (LM4_FAN_FANCST(FAN_CH_CPU) & MAX_RPM) * CPU_FAN_SCALE;
 }
 
-int pwm_get_fan_target_rpm(void)
+int fan_get_target_rpm(void)
 {
 	return (LM4_FAN_FANCMD(FAN_CH_CPU) & MAX_RPM) * CPU_FAN_SCALE;
 }
 
-void pwm_set_fan_target_rpm(int rpm)
+void fan_set_target_rpm(int rpm)
 {
 	/* Apply fan scaling */
 	if (rpm > 0)
@@ -102,30 +100,17 @@ void pwm_set_fan_target_rpm(int rpm)
 	LM4_FAN_FANCMD(FAN_CH_CPU) = rpm;
 }
 
-void pwm_set_fan_duty(int percent)
+void fan_set_duty(int percent)
 {
-	int pwm;
-
-	if (percent < 0)
-		percent = 0;
-	else if (percent > 100)
-		percent = 100;
-
-	pwm = (MAX_PWM * percent) / 100;
-
 	/* Move the fan to manual control */
-	pwm_set_fan_rpm_mode(0);
-
-	/* Always enable the fan */
-	pwm_enable_fan(1);
+	fan_set_rpm_mode(0);
 
 #ifdef HAS_TASK_THERMAL
 	/* Disable thermal engine automatic fan control. */
 	thermal_control_fan(0);
 #endif
 
-	/* Set the duty cycle */
-	LM4_FAN_FANCMD(FAN_CH_CPU) = pwm << 16;
+	pwm_set_duty(PWM_CH_FAN, percent);
 }
 
 /**
@@ -134,7 +119,7 @@ void pwm_set_fan_duty(int percent)
 static int fan_is_stalled(void)
 {
 	/* Must be enabled with non-zero target to stall */
-	if (!pwm_get_fan_enabled() || pwm_get_fan_target_rpm() == 0)
+	if (!fan_get_enabled() || fan_get_target_rpm() == 0)
 		return 0;
 
 	/* Check for stall condition */
@@ -146,14 +131,14 @@ static int fan_is_stalled(void)
 
 static int command_fan_info(int argc, char **argv)
 {
-	ccprintf("Actual: %4d rpm\n", pwm_get_fan_rpm());
-	ccprintf("Target: %4d rpm\n", pwm_get_fan_target_rpm());
+	ccprintf("Actual: %4d rpm\n", fan_get_rpm());
+	ccprintf("Target: %4d rpm\n", fan_get_target_rpm());
 	ccprintf("Duty:   %d%%\n",
 		 ((LM4_FAN_FANCMD(FAN_CH_CPU) >> 16)) * 100 / MAX_PWM);
 	ccprintf("Status: %d\n",
 		 (LM4_FAN_FANSTS >> (2 * FAN_CH_CPU)) & 0x03);
-	ccprintf("Mode:   %s\n", pwm_get_rpm_mode() ? "rpm" : "duty");
-	ccprintf("Enable: %s\n", pwm_get_fan_enabled() ? "yes" : "no");
+	ccprintf("Mode:   %s\n", fan_get_rpm_mode() ? "rpm" : "duty");
+	ccprintf("Enable: %s\n", fan_get_enabled() ? "yes" : "no");
 #ifdef BOARD_link				/* HEY: Slippy? */
 	ccprintf("Power:  %s\n",
 		 gpio_get_level(GPIO_PGOOD_5VALW) ? "yes" : "no");
@@ -179,17 +164,17 @@ static int command_fan_set(int argc, char **argv)
 		return EC_ERROR_PARAM1;
 
 	/* Move the fan to automatic control */
-	pwm_set_fan_rpm_mode(1);
+	fan_set_rpm_mode(1);
 
 	/* Always enable the fan */
-	pwm_enable_fan(1);
+	fan_enable(1);
 
 #ifdef HAS_TASK_THERMAL
 	/* Disable thermal engine automatic fan control. */
 	thermal_control_fan(0);
 #endif
 
-	pwm_set_fan_target_rpm(rpm);
+	fan_set_target_rpm(rpm);
 
 	return EC_SUCCESS;
 }
@@ -211,7 +196,7 @@ static int ec_command_fan_duty(int argc, char **argv)
 		return EC_ERROR_PARAM1;
 
 	ccprintf("Setting fan duty cycle to %d%%\n", percent);
-	pwm_set_fan_duty(percent);
+	fan_set_duty(percent);
 
 	return EC_SUCCESS;
 }
@@ -227,7 +212,7 @@ int pwm_command_get_fan_target_rpm(struct host_cmd_handler_args *args)
 {
 	struct ec_response_pwm_get_fan_rpm *r = args->response;
 
-	r->rpm = pwm_get_fan_target_rpm();
+	r->rpm = fan_get_target_rpm();
 	args->response_size = sizeof(*r);
 
 	return EC_RES_SUCCESS;
@@ -243,8 +228,8 @@ int pwm_command_set_fan_target_rpm(struct host_cmd_handler_args *args)
 #ifdef HAS_TASK_THERMAL
 	thermal_control_fan(0);
 #endif
-	pwm_set_fan_rpm_mode(1);
-	pwm_set_fan_target_rpm(p->rpm);
+	fan_set_rpm_mode(1);
+	fan_set_target_rpm(p->rpm);
 
 	return EC_RES_SUCCESS;
 }
@@ -255,7 +240,7 @@ DECLARE_HOST_COMMAND(EC_CMD_PWM_SET_FAN_TARGET_RPM,
 int pwm_command_fan_duty(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_pwm_set_fan_duty *p = args->params;
-	pwm_set_fan_duty(p->percent);
+	fan_set_duty(p->percent);
 
 	return EC_RES_SUCCESS;
 }
@@ -265,55 +250,6 @@ DECLARE_HOST_COMMAND(EC_CMD_PWM_SET_FAN_DUTY,
 
 /*****************************************************************************/
 /* Hooks */
-
-static void pwm_fan_init(void)
-{
-	const struct pwm_fan_state *prev;
-	uint16_t *mapped;
-	int version, size;
-	int i;
-
-	/* Enable the fan module and delay a few clocks */
-	LM4_SYSTEM_RCGCFAN = 1;
-	clock_wait_cycles(3);
-
-	/* Configure GPIOs */
-	configure_fan_gpios();
-
-	/* Disable all fans */
-	LM4_FAN_FANCTL = 0;
-
-	/*
-	 * Configure CPU fan:
-	 * 0x8000 = bit 15     = auto-restart
-	 * 0x0000 = bit 14     = slow acceleration
-	 * 0x0000 = bits 13:11 = no hysteresis
-	 * 0x0000 = bits 10:8  = start period (2<<0) edges
-	 * 0x0000 = bits 7:6   = no fast start
-	 * 0x0020 = bits 5:4   = average 4 edges when calculating RPM
-	 * 0x000c = bits 3:2   = 8 pulses per revolution
-	 *                       (see note at top of file)
-	 * 0x0000 = bit 0      = automatic control
-	 */
-	LM4_FAN_FANCH(FAN_CH_CPU) = 0x802c;
-
-	prev = (const struct pwm_fan_state *)
-		system_get_jump_tag(PWMFAN_SYSJUMP_TAG, &version, &size);
-	if (prev && version == PWM_HOOK_VERSION && size == sizeof(*prev)) {
-		/* Restore previous state. */
-		pwm_enable_fan(prev->fan_en);
-		pwm_set_fan_target_rpm(prev->fan_rpm);
-	} else {
-		/* Set initial fan speed to maximum */
-		pwm_set_fan_target_rpm(-1);
-	}
-
-	/* Initialize memory-mapped data */
-	mapped = (uint16_t *)host_get_memmap(EC_MEMMAP_FAN);
-	for (i = 0; i < EC_FAN_SPEED_ENTRIES; i++)
-		mapped[i] = EC_FAN_SPEED_NOT_PRESENT;
-}
-DECLARE_HOOK(HOOK_INIT, pwm_fan_init, HOOK_PRIO_DEFAULT);
 
 static void pwm_fan_second(void)
 {
@@ -328,7 +264,7 @@ static void pwm_fan_second(void)
 		host_set_single_event(EC_HOST_EVENT_THERMAL);
 		cprintf(CC_PWM, "[%T Fan stalled!]\n");
 	} else {
-		mapped[0] = pwm_get_fan_rpm();
+		mapped[0] = fan_get_rpm();
 	}
 }
 DECLARE_HOOK(HOOK_SECOND, pwm_fan_second, HOOK_PRIO_DEFAULT);
@@ -337,8 +273,8 @@ static void pwm_fan_preserve_state(void)
 {
 	struct pwm_fan_state state;
 
-	state.fan_en = pwm_get_fan_enabled();
-	state.fan_rpm = pwm_get_fan_target_rpm();
+	state.fan_en = fan_get_enabled();
+	state.fan_rpm = fan_get_target_rpm();
 
 	system_add_jump_tag(PWMFAN_SYSJUMP_TAG, PWM_HOOK_VERSION,
 			    sizeof(state), &state);
@@ -347,13 +283,13 @@ DECLARE_HOOK(HOOK_SYSJUMP, pwm_fan_preserve_state, HOOK_PRIO_DEFAULT);
 
 static void pwm_fan_resume(void)
 {
-	pwm_enable_fan(1);
+	fan_enable(1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, pwm_fan_resume, HOOK_PRIO_DEFAULT);
 
 static void pwm_fan_suspend(void)
 {
-	pwm_enable_fan(0);
-	pwm_set_fan_target_rpm(0);
+	fan_enable(0);
+	fan_set_target_rpm(0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, pwm_fan_suspend, HOOK_PRIO_DEFAULT);
