@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcn//4F0\u003d",
+        "filename": "common/led_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-06T15:16:10Z",
+      "side": 1,
+      "message": "For persistent state within a file, yes.\n\nFor constant data (such as the GPIO list in board.c), yes.\n\nTo pass information between files, no.\n\nSo\n static yes\n const yes\n neither static nor const, no.",
+      "parentUuid": "AAAAcn//4Ho\u003d",
+      "revId": "cf9a65003fe24212ff4500b9ee7436be0038e1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcn//4Hk\u003d",
         "filename": "common/led_common.c",
         "patchSetId": 3
@@ -30,6 +48,41 @@
       "writtenOn": "2013-08-06T13:42:58Z",
       "side": 1,
       "message": "How about params and response?\nVery short variable names are generally discouraged unless for quite short loop.",
+      "revId": "cf9a65003fe24212ff4500b9ee7436be0038e1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//4Fo\u003d",
+        "filename": "common/led_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-06T15:16:10Z",
+      "side": 1,
+      "message": "Here it\u0027s a tradeoff between having the short variable names (p, r) and the long member names inside the variables (brightness_range), and the 80-character line limit.\n\nBut yes, in general we go with longer variable names.",
+      "parentUuid": "AAAAcn//4Hk\u003d",
+      "revId": "cf9a65003fe24212ff4500b9ee7436be0038e1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//4Fg\u003d",
+        "filename": "common/led_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-06T15:16:10Z",
+      "side": 1,
+      "message": "sizeof(*r) is shorter, and more likely to stay correct if we change the struct name (or this gets copy/paste/modified)",
       "revId": "cf9a65003fe24212ff4500b9ee7436be0038e1bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -70,6 +123,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcn//4Ek\u003d",
+        "filename": "common/led_peppy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-06T15:16:10Z",
+      "side": 1,
+      "message": "Pink?",
+      "parentUuid": "AAAAcn//4Hc\u003d",
+      "revId": "cf9a65003fe24212ff4500b9ee7436be0038e1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcn//4HY\u003d",
         "filename": "common/led_peppy.c",
         "patchSetId": 3
@@ -98,6 +169,143 @@
       "writtenOn": "2013-08-06T13:42:58Z",
       "side": 1,
       "message": "Is a \u0027rv\u0027 a convention in this codebase? If not, how about using \u0027return_value\u0027 or \u0027result\u0027 instead?",
+      "revId": "cf9a65003fe24212ff4500b9ee7436be0038e1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//4Eg\u003d",
+        "filename": "common/led_peppy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-06T15:16:10Z",
+      "side": 1,
+      "message": "Yes, it\u0027s a convention here.",
+      "parentUuid": "AAAAcn//4HU\u003d",
+      "revId": "cf9a65003fe24212ff4500b9ee7436be0038e1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//4EU\u003d",
+        "filename": "common/led_peppy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-06T15:16:10Z",
+      "side": 1,
+      "message": "Might want to put this in a separate function\n\nif (led_auto_control_is_enabled(EC_LED_ID_POWER_LED))\n  led_set_power(ticks);",
+      "revId": "cf9a65003fe24212ff4500b9ee7436be0038e1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//4EQ\u003d",
+        "filename": "common/led_peppy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-06T15:16:10Z",
+      "side": 1,
+      "message": "if (led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED))\n  led_set_battery(ticks)\n\nAnd then chflags is a local variable to that function",
+      "revId": "cf9a65003fe24212ff4500b9ee7436be0038e1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//4FU\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 928,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-06T15:16:10Z",
+      "side": 1,
+      "message": "We should add comments for these.\n\n/* LED to indicate battery state of charge */",
+      "revId": "cf9a65003fe24212ff4500b9ee7436be0038e1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//4FM\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-06T15:16:10Z",
+      "side": 1,
+      "message": "/* LED to indicate system power state (on or in suspend).  May be on power button or on C-panel */",
+      "revId": "cf9a65003fe24212ff4500b9ee7436be0038e1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//4FQ\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-06T15:16:10Z",
+      "side": 1,
+      "message": "/* LED on power adapter or its plug */",
+      "revId": "cf9a65003fe24212ff4500b9ee7436be0038e1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//4E4\u003d",
+        "filename": "include/led_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-06T15:16:10Z",
+      "side": 1,
+      "message": "How big an array does brightness_range need to point to?\n\nI\u0027m guessing size 3, but it should be explicit, or it should be followed by a size param.\n\nIf explicit, the size should be a #defined constant\n\nOh, and how do we find out how many channels a given ID supports?",
+      "revId": "cf9a65003fe24212ff4500b9ee7436be0038e1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//4Eo\u003d",
+        "filename": "include/led_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-06T15:16:10Z",
+      "side": 1,
+      "message": "led_get_brightness_range",
       "revId": "cf9a65003fe24212ff4500b9ee7436be0038e1bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
