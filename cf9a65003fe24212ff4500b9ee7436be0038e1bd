@@ -101,6 +101,23 @@
       "revId": "cf9a65003fe24212ff4500b9ee7436be0038e1bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//4HE\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1489,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2013-08-06T13:51:58Z",
+      "side": 1,
+      "message": "EC_LED_ID_COUNT instead of 5?",
+      "revId": "cf9a65003fe24212ff4500b9ee7436be0038e1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
