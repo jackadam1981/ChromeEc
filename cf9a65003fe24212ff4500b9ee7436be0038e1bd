@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcn//4Dc\u003d",
+        "filename": "common/led_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-08-06T18:07:42Z",
+      "side": 1,
+      "message": "Good clarification. I\u0027ll add this to my \"getting started doc\". Done.",
+      "parentUuid": "AAAAcn//4F0\u003d",
+      "revId": "cf9a65003fe24212ff4500b9ee7436be0038e1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcn//4Hk\u003d",
         "filename": "common/led_common.c",
         "patchSetId": 3
@@ -72,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcn//4BM\u003d",
+        "filename": "common/led_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-08-06T18:07:42Z",
+      "side": 1,
+      "message": "I\u0027ll leave the (p, r) as is. This follows the convention for other host command handlers.",
+      "parentUuid": "AAAAcn//4Fo\u003d",
+      "revId": "cf9a65003fe24212ff4500b9ee7436be0038e1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcn//4Fg\u003d",
         "filename": "common/led_common.c",
         "patchSetId": 3
@@ -89,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcn//4A8\u003d",
+        "filename": "common/led_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-08-06T18:07:42Z",
+      "side": 1,
+      "message": "I like it. Done.",
+      "parentUuid": "AAAAcn//4Fg\u003d",
+      "revId": "cf9a65003fe24212ff4500b9ee7436be0038e1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcn//4Hg\u003d",
         "filename": "common/led_common.c",
         "patchSetId": 3
@@ -100,6 +154,24 @@
       "writtenOn": "2013-08-06T13:42:58Z",
       "side": 1,
       "message": "One redundant indent.",
+      "revId": "cf9a65003fe24212ff4500b9ee7436be0038e1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//4A4\u003d",
+        "filename": "common/led_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-08-06T18:07:42Z",
+      "side": 1,
+      "message": "Good catch. Thanks.",
+      "parentUuid": "AAAAcn//4Hg\u003d",
       "revId": "cf9a65003fe24212ff4500b9ee7436be0038e1bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -141,6 +213,42 @@
     },
     {
       "key": {
+        "uuid": "AAAAcn//4A0\u003d",
+        "filename": "common/led_peppy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-08-06T18:07:42Z",
+      "side": 1,
+      "message": "Pink is just blue and amber at the same time. If we test each separately, it is good enough. I thought of suggesting that we just make each LED pink for a faster test. However if the tester is color blink they may not easily be able to tell if both blue and amber are on.",
+      "parentUuid": "AAAAcn//4Hc\u003d",
+      "revId": "cf9a65003fe24212ff4500b9ee7436be0038e1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//4As\u003d",
+        "filename": "common/led_peppy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-08-06T18:07:42Z",
+      "side": 1,
+      "message": "Like the elephants. Blue + amber looks pink to me. This is needed as a separate option if you want to turn both on at the same time....as peppy_led_set_gpio is overly protective.",
+      "parentUuid": "AAAAcn//4Ek\u003d",
+      "revId": "cf9a65003fe24212ff4500b9ee7436be0038e1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcn//4HY\u003d",
         "filename": "common/led_peppy.c",
         "patchSetId": 3
@@ -152,6 +260,24 @@
       "writtenOn": "2013-08-06T13:42:58Z",
       "side": 1,
       "message": "Redundant indent?",
+      "revId": "cf9a65003fe24212ff4500b9ee7436be0038e1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//4Ag\u003d",
+        "filename": "common/led_peppy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-08-06T18:07:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAcn//4HY\u003d",
       "revId": "cf9a65003fe24212ff4500b9ee7436be0038e1bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -210,6 +336,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcn//3+Y\u003d",
+        "filename": "common/led_peppy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-08-06T18:07:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAcn//4EU\u003d",
+      "revId": "cf9a65003fe24212ff4500b9ee7436be0038e1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcn//4EQ\u003d",
         "filename": "common/led_peppy.c",
         "patchSetId": 3
@@ -221,6 +365,24 @@
       "writtenOn": "2013-08-06T15:16:10Z",
       "side": 1,
       "message": "if (led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED))\n  led_set_battery(ticks)\n\nAnd then chflags is a local variable to that function",
+      "revId": "cf9a65003fe24212ff4500b9ee7436be0038e1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//3+c\u003d",
+        "filename": "common/led_peppy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-08-06T18:07:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAcn//4EQ\u003d",
       "revId": "cf9a65003fe24212ff4500b9ee7436be0038e1bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -244,6 +406,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcn//3+I\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 928,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-08-06T18:07:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAcn//4FU\u003d",
+      "revId": "cf9a65003fe24212ff4500b9ee7436be0038e1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcn//4FM\u003d",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
@@ -255,6 +435,24 @@
       "writtenOn": "2013-08-06T15:16:10Z",
       "side": 1,
       "message": "/* LED to indicate system power state (on or in suspend).  May be on power button or on C-panel */",
+      "revId": "cf9a65003fe24212ff4500b9ee7436be0038e1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//3+E\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-08-06T18:07:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAcn//4FM\u003d",
       "revId": "cf9a65003fe24212ff4500b9ee7436be0038e1bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -278,6 +476,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcn//3+A\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-08-06T18:07:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAcn//4FQ\u003d",
+      "revId": "cf9a65003fe24212ff4500b9ee7436be0038e1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcn//4E4\u003d",
         "filename": "include/led_common.h",
         "patchSetId": 3
@@ -289,6 +505,24 @@
       "writtenOn": "2013-08-06T15:16:10Z",
       "side": 1,
       "message": "How big an array does brightness_range need to point to?\n\nI\u0027m guessing size 3, but it should be explicit, or it should be followed by a size param.\n\nIf explicit, the size should be a #defined constant\n\nOh, and how do we find out how many channels a given ID supports?",
+      "revId": "cf9a65003fe24212ff4500b9ee7436be0038e1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//36U\u003d",
+        "filename": "include/led_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-08-06T18:07:42Z",
+      "side": 1,
+      "message": "I\u0027ve added that the array size should be EC_LED_COLOR_COUNT elements. To figure out the number of channels an ID supports you have to loop over the brightness_range array and count the non-zero elements....this is how the current ectool command works. We can improve it for the next version.",
+      "parentUuid": "AAAAcn//4E4\u003d",
       "revId": "cf9a65003fe24212ff4500b9ee7436be0038e1bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -312,6 +546,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcn//39w\u003d",
+        "filename": "include/led_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-08-06T18:07:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAcn//4Eo\u003d",
+      "revId": "cf9a65003fe24212ff4500b9ee7436be0038e1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcn//4HE\u003d",
         "filename": "util/ectool.c",
         "patchSetId": 3
@@ -323,6 +575,24 @@
       "writtenOn": "2013-08-06T13:51:58Z",
       "side": 1,
       "message": "EC_LED_ID_COUNT instead of 5?",
+      "revId": "cf9a65003fe24212ff4500b9ee7436be0038e1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//35Y\u003d",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1489,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-08-06T18:07:42Z",
+      "side": 1,
+      "message": "Yes, that\u0027s safer. Good catch.",
+      "parentUuid": "AAAAcn//4HE\u003d",
       "revId": "cf9a65003fe24212ff4500b9ee7436be0038e1bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
