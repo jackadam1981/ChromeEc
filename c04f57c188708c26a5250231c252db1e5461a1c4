@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcn//2Go\u003d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-08-07T17:33:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAcn//2Hg\u003d",
+      "revId": "c04f57c188708c26a5250231c252db1e5461a1c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcn//2HY\u003d",
         "filename": "include/led_common.h",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2013-08-07T17:04:40Z",
       "side": 1,
       "message": "points to EC_LED_COLOR_COUNT element array where current brightness will be stored.",
+      "revId": "c04f57c188708c26a5250231c252db1e5461a1c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//2GM\u003d",
+        "filename": "include/led_common.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-08-07T17:33:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAcn//2HY\u003d",
       "revId": "c04f57c188708c26a5250231c252db1e5461a1c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
