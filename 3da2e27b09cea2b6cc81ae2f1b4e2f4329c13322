@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAcn//2Fc\u003d",
+        "filename": "chip/lm4/fan.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-07T17:21:38Z",
+      "side": 1,
+      "message": "Seems like if we have this level of control here, that the TACH inputs should be configured by the fan module instead of being present in the pwm channel table.",
+      "revId": "3da2e27b09cea2b6cc81ae2f1b4e2f4329c13322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//2F4\u003d",
+        "filename": "chip/lm4/pwm_data.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-07T17:21:38Z",
+      "side": 1,
+      "message": "Comment what each member does.",
+      "revId": "3da2e27b09cea2b6cc81ae2f1b4e2f4329c13322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//2Fw\u003d",
+        "filename": "chip/lm4/pwm_data.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-07T17:21:38Z",
+      "side": 1,
+      "message": "I\u0027d tend to rename this to \u0027flags\u0027, since that\u0027s what we\u0027ve done with GPIO and alternate function tables.\n\n/* Channel flags; see PWM_FLAG_* in include/pwm.h */",
+      "revId": "3da2e27b09cea2b6cc81ae2f1b4e2f4329c13322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//2Fs\u003d",
+        "filename": "chip/lm4/pwm_data.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-07T17:21:38Z",
+      "side": 1,
+      "message": "Should just be able to set tach_pin and tach_alt_func to 0, since those members will be ignored if the RPM mode flag isn\u0027t present.",
+      "revId": "3da2e27b09cea2b6cc81ae2f1b4e2f4329c13322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//2Fo\u003d",
+        "filename": "include/config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-07T17:21:38Z",
+      "side": 1,
+      "message": "Please move up to correct alphabetical location, so the list stays sorted",
+      "revId": "3da2e27b09cea2b6cc81ae2f1b4e2f4329c13322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//2GA\u003d",
+        "filename": "include/pwm.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-07T17:21:38Z",
+      "side": 1,
+      "message": "Add comments.   Something like...\n\n/* Flags for PWM config table */\n\n/* PWM output signal is inverted, so 100% duty means always low */\n\n/* PWM channel has a fan controller with a tach input and can auto-adjust its duty cycle to produce a given fan RPM */",
+      "revId": "3da2e27b09cea2b6cc81ae2f1b4e2f4329c13322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
