@@ -5,7 +5,6 @@
  * Main routine for Chrome EC
  */
 
-#include "board_config.h"
 #include "clock.h"
 #include "common.h"
 #include "console.h"
@@ -29,24 +28,10 @@
 
 test_mockable int main(void)
 {
-	/*
-	 * Pre-initialization (pre-verified boot) stage.  Initialization at
-	 * this level should do as little as possible, because verified boot
-	 * may need to jump to another image, which will repeat this
-	 * initialization.  In particular, modules should NOT enable
-	 * interrupts.
-	 */
-#ifdef CONFIG_BOARD_PRE_INIT
-	board_config_pre_init();
-#endif
-
 	/* Configure the pin multiplexers and GPIOs */
 	jtag_pre_init();
 	gpio_pre_init();
 
-#ifdef CONFIG_BOARD_POST_GPIO_INIT
-	board_config_post_gpio_init();
-#endif
 	/*
 	 * Initialize interrupts, but don't enable any of them.  Note that
 	 * task scheduling is not enabled until task_start() below.

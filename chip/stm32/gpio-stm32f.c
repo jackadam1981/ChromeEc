@@ -121,6 +121,14 @@ void gpio_pre_init(void)
 	const struct gpio_info *g = gpio_list;
 	int i;
 
+	/*
+	 * TODO(rspangler): STM32F boards don't support
+	 * gpio_set_alternate_function(), and don't have a good way to
+	 * configure pin remapping via AFIO_MAPR, so call a board-specific
+	 * function to do that.
+	 */
+	gpio_board_pre_init();
+
 	if (STM32_RCC_APB1ENR & 1) {
 		/* This is a warm reboot : TIM2 is already active */
 		is_warm_boot = 1;

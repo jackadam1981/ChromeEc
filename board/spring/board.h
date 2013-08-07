@@ -18,7 +18,6 @@
 /* Optional features */
 #define CONFIG_ADC
 #define CONFIG_BATTERY_SMART
-#define CONFIG_BOARD_PRE_INIT
 #define CONFIG_CHARGER_TPS65090
 #define CONFIG_CHIPSET_GAIA
 #define CONFIG_CMD_PMU

@@ -5,7 +5,6 @@
 /* Snow board-specific configuration */
 
 #include "battery_pack.h"
-#include "board_config.h"
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
@@ -120,7 +119,7 @@ const struct i2c_port_t i2c_ports[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(i2c_ports) == I2C_PORTS_USED);
 
-void board_config_pre_init(void)
+void gpio_board_pre_init(void)
 {
 	uint32_t val;
 
@@ -152,13 +151,6 @@ void board_config_pre_init(void)
 	val = STM32_GPIO_CRH(GPIO_A) & ~0x00000ff0;
 	val |= 0x00000890;
 	STM32_GPIO_CRH(GPIO_A) = val;
-
-	/* EC_INT is output, open-drain */
-	val = STM32_GPIO_CRH(GPIO_B) & ~0xf0;
-	val |= 0x50;
-	STM32_GPIO_CRH(GPIO_B) = val;
-	/* put GPIO in Hi-Z state */
-	gpio_set_level(GPIO_EC_INT, 1);
 }
 
 /* GPIO configuration to be done after I2C module init */

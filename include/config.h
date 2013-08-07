@@ -71,18 +71,6 @@
 
 /*****************************************************************************/
 
-/*
- * Call board_config_post_gpio_init() after GPIOs are initialized.  See
- * include/board_config.h for more information.
- */
-#undef CONFIG_BOARD_POST_GPIO_INIT
-
-/*
- * Call board_config_pre_init() before any inits are called.  See
- * include/board_config.h for more information.
- */
-#undef CONFIG_BOARD_PRE_INIT
-
 /* EC has GPIOs attached to board version stuffing resistors */
 #undef CONFIG_BOARD_VERSION
 

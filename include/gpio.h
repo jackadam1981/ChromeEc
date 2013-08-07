@@ -191,4 +191,17 @@ void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags);
  */
 void gpio_set_alternate_function(int port, int mask, int func);
 
+#ifdef CHIP_FAMILY_stm32f
+/**
+ * Configure GPIO pin mapping and alternate functions
+ *
+ * TODO(rspangler): This is a workaround for the STM32F chip not supporting
+ * gpio_set_alternate_function() or having a better way to configure pin
+ * mapping.  This function is called from gpio_pre_init() before any GPIOs
+ * are configured.
+ */
+void gpio_board_pre_init(void);
+#endif
+
+
 #endif  /* __CROS_EC_GPIO_H */

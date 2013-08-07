@@ -19,7 +19,6 @@
 #undef CONFIG_LID_SWITCH
 
 /* Optional features */
-#define CONFIG_BOARD_PRE_INIT
 #define CONFIG_KEYBOARD_PROTOCOL_MKBP
 
 /*
