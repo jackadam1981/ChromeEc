@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAcn//1Kg\u003d",
+        "filename": "board/wolf/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2013-08-07T22:22:29Z",
+      "side": 1,
+      "message": "For consistency (based on https://gerrit.chromium.org/gerrit/#/c/63833/) can you change the array initialization to  : \nconst struct gpio_info gpio_list[] \u003d {\n\nPlease change the initialization of the other arrays as well.",
+      "revId": "eaeaf16e5151c5d16592a9c7dfb07b9d391e360d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
