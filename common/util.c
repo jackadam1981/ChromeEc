@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -271,4 +271,53 @@ int uint64divmod(uint64_t *n, int d)
 	}
 	*n = q;
 	return r;
+}
+
+
+/****************************************************************************/
+/* stateful conditional stuff */
+
+enum cond_internal_bits {
+	COND_CURR_MASK = (1 << 0),
+	COND_PREV_MASK = (1 << 1),
+};
+
+void cond_init(cond_t *c, int val)
+{
+	if (val)
+		*c = COND_PREV_MASK | COND_CURR_MASK;
+	else
+		*c = ~(COND_PREV_MASK | COND_CURR_MASK);
+}
+
+void cond_set(cond_t *c, int val)
+{
+	if (val)
+		*c = (*c << 1) | COND_CURR_MASK;
+	else
+		*c = (*c << 1) & ~(COND_CURR_MASK);
+}
+
+int cond_is(cond_t *c, int val)
+{
+	if (val)
+		return *c & COND_CURR_MASK;
+	else
+		return !(*c & COND_CURR_MASK);
+}
+
+
+int cond_went(cond_t *c, int boolean)
+{
+	int ret;
+
+	if (boolean)
+		ret = (*c & COND_CURR_MASK) && !(*c & COND_PREV_MASK);
+	else
+		ret = !(*c & COND_CURR_MASK) && (*c & COND_PREV_MASK);
+
+	if (ret)
+		cond_init(c, boolean);
+
+	return ret;
 }
