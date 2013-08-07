@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAcn//2G4\u003d",
+        "filename": "test/console_edit.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-07T17:10:11Z",
+      "side": 1,
+      "message": "Might be useful to comment what this does.  Looks like it does a strcmp not counting CR\u0027s.  In which case, compare_multiline_string() might be a slightly more descriptive name",
+      "revId": "640fc0aaf48159fdc57512198ebf655dee859a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
