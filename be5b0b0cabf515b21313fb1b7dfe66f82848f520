@@ -51,6 +51,40 @@
       "revId": "be5b0b0cabf515b21313fb1b7dfe66f82848f520",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//zDU\u003d",
+        "filename": "include/util.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-08T18:33:39Z",
+      "side": 1,
+      "message": "Set if the two immediatly preceding calls to cond_set were\n\n  cond_set_true()\n  cond_set_false()\n\nIt will NOT return true if\n\n  cond_set_true()\n  cond_set_false()\n  cond_set_false()\n\nThat is, if you have two tasks:\n\n  task1 {\n    cond_set(\u0026c, gpio_get_level(something);\n    sleep(100000);\n  }\n\n  task2 {\n    if (cond_went_true(\u0026c)\n       ccprintf(\"HEY!\\n\");\n    sleep(500000);\n  }\n\nThen you\u0027ll miss edges.",
+      "revId": "be5b0b0cabf515b21313fb1b7dfe66f82848f520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//zD4\u003d",
+        "filename": "include/util.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-08T18:33:39Z",
+      "side": 1,
+      "message": "Set if the two immediatly preceding calls to cond_set were\n\ncond_set_false()\ncond_set_true()",
+      "revId": "be5b0b0cabf515b21313fb1b7dfe66f82848f520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
