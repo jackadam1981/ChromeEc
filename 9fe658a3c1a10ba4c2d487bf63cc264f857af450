@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAcn//yZs\u003d",
+        "filename": "common/temp_sensor_g781.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-08T22:00:47Z",
+      "side": 1,
+      "message": "To sign-extend an 8-bit 2\u0027s compliment number:\n\n*temp_ptr \u003d (int)(int8_t)temp_raw;",
+      "revId": "9fe658a3c1a10ba4c2d487bf63cc264f857af450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//yZg\u003d",
+        "filename": "common/temp_sensor_g781.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-08T22:00:47Z",
+      "side": 1,
+      "message": "g781_write8(offset, (uint8_t)temp);",
+      "revId": "9fe658a3c1a10ba4c2d487bf63cc264f857af450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
