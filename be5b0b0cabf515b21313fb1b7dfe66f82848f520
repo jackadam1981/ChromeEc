@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAcn//zW8\u003d",
+        "filename": "common/util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-08T17:34:32Z",
+      "side": 1,
+      "message": "Might comment that this relies upon COND_PREV_MASK \u003d COND_CURR_MASK \u003c\u003c 1.\n\nAlso interesting that the higher bits in *c are the previous states.",
+      "revId": "be5b0b0cabf515b21313fb1b7dfe66f82848f520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//zVI\u003d",
+        "filename": "common/util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-08T17:34:32Z",
+      "side": 1,
+      "message": "I don\u0027t think this works as I\u0027d expect.\n\n  cond_init_false(\u0026c); --\u003e c \u003d 00\n  cond_set_true(\u0026c); --\u003e c \u003d 01\n  cond_set_true(\u0026c); --\u003e c \u003d 11\n\nBut now cond_went_true(\u0026c) \u003d false???\n\nSeems like we need two more bits:\n\n  COND_WENT_TRUE_MASK\n  COND_WENT_FALSE_MASK\n\nwhich are set by cond_set when a transition happens, and cleared by cond_went().",
+      "revId": "be5b0b0cabf515b21313fb1b7dfe66f82848f520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
