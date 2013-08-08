@@ -125,6 +125,14 @@ static void power_led_manual_off(void)
 	 */
 	gpio_set_flags(GPIO_LED_POWER_L, GPIO_INPUT);
 	gpio_set_level(GPIO_LED_POWER_L, 1);
+	/*
+	 * Reset GPIO alternate function to disconnect the external pin from
+	 * PWM hardware.
+	 */
+	gpio_set_alternate_function(
+			gpio_list[GPIO_LED_POWER_L].port,
+			gpio_list[GPIO_LED_POWER_L].mask,
+			-1);
 
 	using_pwm = 0;
 }
