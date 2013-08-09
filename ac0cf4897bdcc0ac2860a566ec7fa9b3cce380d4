@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcn//wj0\u003d",
+        "filename": "common/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-09T21:43:45Z",
+      "side": 1,
+      "message": "Right now we don\u0027t.  Of course, since all the other tasks are higher priority, if any of them does take a second it\u0027ll still defer HOOK_SECOND and HOOK_TICK.\n\nI\u0027ll file a bug to add checks/tracking for that.",
+      "parentUuid": "AAAAcn//yIA\u003d",
+      "revId": "ac0cf4897bdcc0ac2860a566ec7fa9b3cce380d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcn//yQY\u003d",
         "filename": "include/config.h",
         "patchSetId": 3
@@ -136,6 +154,24 @@
       "side": 1,
       "message": "No, we always need this. This function is called from thermal.c, but the default implementation is in chip/lm4/pwm_fan.c\n\nShould we move it?",
       "parentUuid": "AAAAcn//yQI\u003d",
+      "revId": "ac0cf4897bdcc0ac2860a566ec7fa9b3cce380d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//wjI\u003d",
+        "filename": "include/fan.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-09T21:43:45Z",
+      "side": 1,
+      "message": "Oh, right, I see, there\u0027s a #ifndef there.\n\nYeah, we should move that (to common/thermal.c?), since the default mapping is really chip-independent.",
+      "parentUuid": "AAAAcn//yGs\u003d",
       "revId": "ac0cf4897bdcc0ac2860a566ec7fa9b3cce380d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
