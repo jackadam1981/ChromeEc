@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcn//yII\u003d",
+        "filename": "common/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-08-09T00:02:31Z",
+      "side": 1,
+      "message": "Yes. I\u0027ll add a comment.",
+      "parentUuid": "AAAAcn//yQ4\u003d",
+      "revId": "ac0cf4897bdcc0ac2860a566ec7fa9b3cce380d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcn//yRQ\u003d",
         "filename": "common/thermal.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2013-08-08T23:03:19Z",
       "side": 1,
       "message": "Might as well switch it to just use HOOK_SECOND, and save a task stack\u0027s worth of RAM",
+      "revId": "ac0cf4897bdcc0ac2860a566ec7fa9b3cce380d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//yIA\u003d",
+        "filename": "common/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-08-09T00:02:31Z",
+      "side": 1,
+      "message": "I meant to ask about that. There are lots of things hanging off of HOOK_SECOND. How do we know if handling them all takes more than a second?",
+      "parentUuid": "AAAAcn//yRQ\u003d",
       "revId": "ac0cf4897bdcc0ac2860a566ec7fa9b3cce380d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcn//yH8\u003d",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-08-09T00:02:31Z",
+      "side": 1,
+      "message": "Okay.",
+      "parentUuid": "AAAAcn//yQY\u003d",
+      "revId": "ac0cf4897bdcc0ac2860a566ec7fa9b3cce380d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcn//yQI\u003d",
         "filename": "include/fan.h",
         "patchSetId": 3
@@ -64,6 +118,24 @@
       "writtenOn": "2013-08-08T23:03:19Z",
       "side": 1,
       "message": "#ifdef CONFIG_PWM_FAN_RPM_CUSTOM\n\n(since that hints what config is necessary to enable this)",
+      "revId": "ac0cf4897bdcc0ac2860a566ec7fa9b3cce380d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//yGs\u003d",
+        "filename": "include/fan.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-08-09T00:02:31Z",
+      "side": 1,
+      "message": "No, we always need this. This function is called from thermal.c, but the default implementation is in chip/lm4/pwm_fan.c\n\nShould we move it?",
+      "parentUuid": "AAAAcn//yQI\u003d",
       "revId": "ac0cf4897bdcc0ac2860a566ec7fa9b3cce380d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
