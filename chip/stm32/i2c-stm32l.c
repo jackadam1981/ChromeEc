@@ -38,6 +38,16 @@
  */
 #define I2C_TX_TIMEOUT_MASTER	(10 * MSEC)
 
+/*
+ * Delay 5us in bitbang mode.  That gives us roughly 5us low and 5us high or
+ * a frequency of 100kHz.
+ */
+#define I2C_BITBANG_HALF_CYCLE_US    5
+
+#define PULL(x, y) gpio_set_level(x, y);
+#define PULL_UP(x) PULL(x, 1)
+#define PULL_DOWN(x) PULL(x, 0)
+
 #ifdef CONFIG_I2C_DEBUG
 static void dump_i2c_reg(int port, const char *what)
 {
@@ -459,4 +469,126 @@ static int command_i2cdump(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(i2cdump, command_i2cdump,
 			NULL,
 			"Dump I2C regs",
+			NULL);
+
+/*
+ * Unwedge the i2c bus for the given port.
+ *
+ * The implementation is ported from
+ * https://gerrit.chromium.org/gerrit/#/c/32168. As we are the sole master
+ * on the bus, the implementation can be simplified.
+ *
+ * Below is quoted from the original implementation for clarification of what
+ * kind of situation we are dealing with.
+ *
+ * Some devices on our i2c busses keep power even if we get a reset.  That
+ * means that they could be partway through a transaction and could be
+ * driving the bus in a way that makes it hard for us to talk on the bus.
+ * ...or they might listen to the next transaction and interpret it in a
+ * weird way.
+ *
+ * Note that devices could be in one of several states:
+ * - If a device got interrupted in a write transaction it will be watching
+ *   for additional data to finish its write.  It will probably be looking to
+ *   ack the data (drive the data line low) after it gets everything.  Ideally
+ *   we'd like to abort right away so we don't write bogus data.
+ * - If a device got interrupted while responding to a register read, it will
+ *   be watching for clocks and will drive data out when it sees clocks.  At
+ *   the moment it might be trying to send out a 1 (so both clock and data
+ *   may be high) or it might be trying to send out a 0 (so it's driving data
+ *   low). Ideally we want to finish reading the current byte and then nak to
+ *   abort everything.
+ *
+ * We attempt to unwedge the bus by doing:
+ * - If possible, send a pseudo-"stop" bit.  We can only do this if nobody
+ *   else is driving the clock or data lines, since that's the only way we
+ *   have enough control.  The idea here is to abort any writes that might
+ *   be in progress.  Note that a real "stop" bit would actually be a "low to
+ *   high transition of SDA while SCL is high".  ...but both must be high for
+ *   us to be in control of the bus.  Thus we _first_ drive SDA low so we can
+ *   transition it high.  This first transition looks like a start bit.  In any
+ *   case, the hope here is that it will look enough like an error condition
+ *   that slaves will abort.
+ * - If we failed to send the pseudo-stop bit, try one clock and try again.
+ *   I've seen a reset happen while the device was waiting for us to clock out
+ *   its ack of the address.  That should be the only time that the other side
+ *   is driving things in the case of a write, so only 1 clock is enough.
+ * - Try to clock 9 times, if we can.  This should finish reading out any data
+ *   and then should nak.
+ * - Send one last pseudo-stop bit, just for good measure.
+ *
+ * @param  port  The i2c port to unwedge.
+ */
+static void i2c_bitbang_unwedge(int port)
+{
+	enum gpio_signal sda, scl;
+	int i;
+
+	ASSERT(port == I2C1 || port == I2C2);
+
+	if (port == I2C1) {
+		sda = GPIO_I2C1_SDA;
+		scl = GPIO_I2C1_SCL;
+	} else {
+		sda = GPIO_I2C2_SDA;
+		scl = GPIO_I2C2_SCL;
+	}
+
+	/*
+	 * Reconfigure ports as general purpose open-drain outputs, initted
+	 * to high.
+	 */
+	gpio_set_flags(scl, GPIO_ODR_HIGH);
+	gpio_set_flags(sda, GPIO_ODR_HIGH);
+
+	if (!gpio_get_level(sda)) {
+		/* Try one clock in case it was trying to ack its address */
+		PULL_DOWN(scl);
+		udelay(I2C_BITBANG_HALF_CYCLE_US);
+		PULL_UP(scl);
+		udelay(I2C_BITBANG_HALF_CYCLE_US);
+	}
+
+	/* Try to send a start-stop sequence. */
+	PULL_DOWN(sda);
+	udelay(I2C_BITBANG_HALF_CYCLE_US);
+	PULL_UP(sda);
+	udelay(I2C_BITBANG_HALF_CYCLE_US);
+
+	/*
+	 * Now clock 9 to read pending data; one of these will be a NAK.
+	 */
+	for (i = 0; i < 9; i++) {
+		PULL_DOWN(scl);
+		udelay(I2C_BITBANG_HALF_CYCLE_US);
+		PULL_UP(scl);
+		udelay(I2C_BITBANG_HALF_CYCLE_US);
+	}
+
+	/* One last try at a start-stop sequence */
+	PULL_DOWN(sda);
+	udelay(I2C_BITBANG_HALF_CYCLE_US);
+	PULL_UP(sda);
+	udelay(I2C_BITBANG_HALF_CYCLE_US);
+}
+
+static void i2c_unwedge(int port)
+{
+	dump_i2c_reg(port, "before unwedge");
+
+	i2c_bitbang_unwedge(port);
+	i2c_init();
+
+	dump_i2c_reg(port, "after unwedge");
+	CPRINTF("[%T I2C unwedge attemp complete\n");
+}
+
+static int command_i2c_unwedge(int argc, char **argv)
+{
+	i2c_unwedge(I2C_PORT_HOST);
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(i2cunwedge, command_i2c_unwedge,
+			NULL,
+			"Un-wedge I2C bus 0",
 			NULL);
