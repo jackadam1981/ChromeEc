@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcn//vQM\u003d",
+        "filename": "chip/lm4/peci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-12T15:29:06Z",
+      "side": 1,
+      "message": "That was because PECI temp reading was a little flaky on link, so we wanted to sample more frequently, strip errors, and then average (see peci_temp_sensor_get_val().\n\nAre we sure the haswell systems don\u0027t need this?",
+      "parentUuid": "AAAAcn//wTU\u003d",
+      "revId": "b7a93103a83e1cca968aa633e050c5efc412f3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcn//wS4\u003d",
         "filename": "include/hooks.h",
         "patchSetId": 4
