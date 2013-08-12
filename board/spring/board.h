@@ -31,6 +31,7 @@
 #define CONFIG_LOW_POWER_IDLE	/* Use STOP mode when we have nothing to do */
 #define CONFIG_LED_DRIVER_LP5562
 #define CONFIG_PMU_HARD_RESET
+#define CONFIG_PMU_POWERINFO
 #define CONFIG_PMU_TPS65090
 #define CONFIG_USB_SWITCH_TSU6721
 
@@ -58,6 +59,10 @@ enum module_id {
 
 /* Low battery threshold. In mAh. */
 #define BATTERY_AP_OFF_LEVEL 1
+
+/* Charger sense resistors */
+#define CONFIG_CHARGER_SENSE_RESISTOR_AC 20
+#define CONFIG_CHARGER_SENSE_RESISTOR 33
 
 /* Timer selection */
 #define TIM_CLOCK_MSB 2

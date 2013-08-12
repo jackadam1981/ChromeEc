@@ -113,6 +113,7 @@ DECLARE_CONSOLE_COMMAND(powerinfo, command_powerinfo,
 		"Show PMU power info",
 		NULL);
 
+#ifndef CONFIG_EXTPOWER_USB
 static int power_command_info(struct host_cmd_handler_args *args)
 {
 	int bat_charging_current;
@@ -148,3 +149,4 @@ static int power_command_info(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_POWER_INFO, power_command_info, EC_VER_MASK(0));
+#endif
