@@ -48,6 +48,13 @@ void pwm_enable_fan(int enable)
 		LM4_FAN_FANCTL |= (1 << FAN_CH_CPU);
 	else
 		LM4_FAN_FANCTL &= ~(1 << FAN_CH_CPU);
+
+#ifdef CONFIG_PWM_FAN_EN_GPIO
+	if (enable)
+		gpio_set_level(CONFIG_PWM_FAN_EN_GPIO, 1);
+	else
+		gpio_set_level(CONFIG_PWM_FAN_EN_GPIO, 0);
+#endif /* CONFIG_PWM_FAN_EN_GPIO */
 }
 
 int pwm_get_fan_enabled(void)
