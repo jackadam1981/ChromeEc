@@ -16,6 +16,23 @@
       "revId": "10422b186c602a48bf14e62a173c39b32b9e7c0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//tZc\u003d",
+        "filename": "common/led_peppy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-08-13T15:37:43Z",
+      "side": 1,
+      "message": "What is the motivation to change this to a slower blink rate? With this change the user or factory operator won\u0027t be able to tell the difference between an error state and a low battery.",
+      "revId": "10422b186c602a48bf14e62a173c39b32b9e7c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
