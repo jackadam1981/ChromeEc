@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAcn//ta8\u003d",
+        "filename": "common/led_peppy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-13T14:42:46Z",
+      "side": 1,
+      "message": "I think this needs\n\nif (charge_get_percent() \u003c\u003d BATTERY_LEVEL_LOW \u0026\u0026 chipset_in_state(CHIPSET_STATE_ON)) {\n  bat_led_set_color(ticks % ...\n} else {\n  bat_led_set_color(LED_OFF);\n}\n\nAs written, the code won\u0027t change the LED color from the charging color if the system is unplugged with low battery in S3.",
+      "revId": "10422b186c602a48bf14e62a173c39b32b9e7c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
