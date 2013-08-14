@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAcn//sw4\u003d",
+        "filename": "board/leon/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-08-14T01:31:37Z",
+      "side": 1,
+      "message": "Please change \"Slippy\" to \"Leon\" for these new files.",
+      "revId": "beca857686f6be5fccbcfb281cc483abc64214e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//sRk\u003d",
+        "filename": "board/leon/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-08-14T01:31:37Z",
+      "side": 1,
+      "message": "Tthe GPIO enum in board.h calls this GPIO_KB_LED_L indicating this is an active low signal. Please rename this to \"KB_LED_L\" if this is active low or remove the _L from the enum value if it is active high.",
+      "revId": "beca857686f6be5fccbcfb281cc483abc64214e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//sRY\u003d",
+        "filename": "board/leon/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-08-14T01:31:37Z",
+      "side": 1,
+      "message": "Please note that the \"0\" and \"1\" index values on this line and the next line have been replaced with G781_IDX_INTERNAL and G781_IDX_EXTERNAL with change 12c3d896 (do a \"git show 12c3d896\" command).",
+      "revId": "beca857686f6be5fccbcfb281cc483abc64214e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//sRU\u003d",
+        "filename": "board/leon/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-08-14T01:31:37Z",
+      "side": 1,
+      "message": "Please note that the last value in this line will change form 0xc8 to 0xca to include a key used on japanese keyboards.",
+      "revId": "beca857686f6be5fccbcfb281cc483abc64214e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//sRE\u003d",
+        "filename": "board/leon/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-08-14T01:31:37Z",
+      "side": 1,
+      "message": "Please see the note in board.c about whether this is active low or active high.",
+      "revId": "beca857686f6be5fccbcfb281cc483abc64214e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//sQ0\u003d",
+        "filename": "common/led_leon.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-08-14T01:31:37Z",
+      "side": 1,
+      "message": "Please see https://gerrit.chromium.org/gerrit/64627 for a change that adds a command to control the LEDs manually for testing in the factory. You may want to copy part of this change to add the same function to Leon.",
+      "revId": "beca857686f6be5fccbcfb281cc483abc64214e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
