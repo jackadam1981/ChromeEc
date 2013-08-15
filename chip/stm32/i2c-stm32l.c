@@ -597,3 +597,18 @@ DECLARE_CONSOLE_COMMAND(i2cunwedge, command_i2c_unwedge,
 			NULL,
 			"Un-wedge I2C bus 0",
 			NULL);
+
+static int command_i2c_wedge(int argc, char **argv)
+{
+	enum gpio_signal scl = GPIO_I2C1_SCL;
+
+	gpio_set_flags(scl, GPIO_ODR_LOW);
+	gpio_config_module(MODULE_I2C, 1);
+
+	ccputs("Wedging complete\n");
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(i2cwedge, command_i2c_wedge,
+			NULL,
+			"Wedge I2C bus 0",
+			NULL);
