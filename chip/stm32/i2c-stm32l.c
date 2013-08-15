@@ -132,6 +132,8 @@ static int send_start(int port, int slave_addr)
 /*****************************************************************************/
 /* Interface */
 
+static void i2c_unwedge(int port);
+
 int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
 	     uint8_t *in, int in_bytes, int flags)
 {
@@ -263,6 +265,10 @@ int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
 	if (rv) {
 		STM32_I2C_CR1(port) |= STM32_I2C_CR1_STOP;
 		dump_i2c_reg(port, "stop after error");
+		CPRINTF("[%T i2c_xfer error; try unwedging the bus.\n");
+
+		/* Try unwedging the bus */
+		i2c_unwedge(port);
 	}
 
 	return rv;
@@ -357,7 +363,6 @@ static void i2c_init(void)
 
 		/* Enable clocks to I2C modules if necessary */
 		if (!(STM32_RCC_APB1ENR & (1 << (21 + port)))) {
-			/* TODO: unwedge bus if necessary */
 			STM32_RCC_APB1ENR |= 1 << (21 + port);
 		}
 	}
