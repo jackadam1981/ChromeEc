@@ -18,6 +18,8 @@
 #include "timer.h"
 #include "util.h"
 
+#include "system.h"
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_I2C, outstr)
 #define CPRINTF(format, args...) cprintf(CC_I2C, format, ## args)
@@ -43,6 +45,11 @@
  * a frequency of 100kHz.
  */
 #define I2C_BITBANG_HALF_CYCLE_US    5
+
+/*
+ * Time to wait for SCL to get stable before changing SDA.
+ */
+#define I2C_BITBANG_QUAR_CYCLE_US    2
 
 #define PULL(x, y) gpio_set_level(x, y);
 #define PULL_UP(x) PULL(x, 1)
@@ -597,6 +604,261 @@ DECLARE_CONSOLE_COMMAND(i2cunwedge, command_i2c_unwedge,
 			NULL,
 			"Un-wedge I2C bus 0",
 			NULL);
+
+#ifdef CONFIG_CMD_I2C_WEDGE
+
+static void i2c_bitbang_send_start(enum gpio_signal sda, enum gpio_signal scl)
+{
+	if (!gpio_get_level(sda)) {
+		// make scl low to pull sda up
+		if (gpio_get_level(scl)) {
+			PULL_DOWN(scl);
+			udelay(I2C_BITBANG_QUAR_CYCLE_US);
+		}
+		PULL_UP(sda);
+		udelay(I2C_BITBANG_QUAR_CYCLE_US);
+	}
+
+	if (!gpio_get_level(scl)) {
+		PULL_UP(scl);
+		udelay(I2C_BITBANG_QUAR_CYCLE_US);
+	}
+
+	// now both scl and sda are high
+	udelay(I2C_BITBANG_QUAR_CYCLE_US);
+	PULL_DOWN(sda);
+	udelay(I2C_BITBANG_QUAR_CYCLE_US);
+}
+
+static void i2c_bitbang_send_stop(enum gpio_signal sda, enum gpio_signal scl)
+{
+	if (gpio_get_level(sda)) {
+		// pull sda down when clock is low
+		if (gpio_get_level(scl)) {
+			PULL_DOWN(scl);
+			udelay(I2C_BITBANG_QUAR_CYCLE_US);
+		}
+		PULL_DOWN(sda);
+		udelay(I2C_BITBANG_QUAR_CYCLE_US);
+	}
+
+	if (!gpio_get_level(scl)) {
+		PULL_UP(scl);
+		udelay(I2C_BITBANG_QUAR_CYCLE_US);
+	}
+
+	// now scl is high and sda is low
+	udelay(I2C_BITBANG_QUAR_CYCLE_US);
+	PULL_UP(sda);
+	udelay(I2C_BITBANG_QUAR_CYCLE_US);
+}
+
+static void i2c_bitbang_send_1bit(enum gpio_signal sda, enum gpio_signal scl,
+	int bit)
+{
+	if (gpio_get_level(scl)) {
+		PULL_DOWN(scl);
+	}
+	udelay(I2C_BITBANG_QUAR_CYCLE_US);
+	PULL(sda, bit);
+	CPRINTF("    send 1bit: %d\n", bit);
+	udelay(I2C_BITBANG_QUAR_CYCLE_US);
+	PULL_UP(scl);
+	udelay(I2C_BITBANG_HALF_CYCLE_US);
+}
+
+static void i2c_bitbang_read_1bit(enum gpio_signal sda, enum gpio_signal scl,
+	int *bitp, int change_input)
+{
+	int bit;
+	if (gpio_get_level(scl)) {
+		PULL_DOWN(scl);
+		//udelay(I2C_BITBANG_QUAR_CYCLE_US);
+	}
+	if (change_input)
+		gpio_set_flags(sda, GPIO_INPUT);
+
+	udelay(I2C_BITBANG_HALF_CYCLE_US);
+	PULL_UP(scl);
+	udelay(I2C_BITBANG_HALF_CYCLE_US);
+	bit = gpio_get_level(sda);
+	CPRINTF("    * read 1bit: %d\n", bit);
+
+	if (change_input) {
+		PULL_DOWN(scl);
+		//udelay(I2C_BITBANG_QUAR_CYCLE_US);
+		gpio_set_flags(sda, GPIO_OUTPUT | GPIO_OPEN_DRAIN);
+	}
+	*bitp = bit;
+}
+
+static void i2c_bitbang_read_1bit_v2(enum gpio_signal sda, enum gpio_signal scl,
+	int *bitp, int change_input, int expected)
+{
+	int bit, i;
+	if (gpio_get_level(scl)) {
+		PULL_DOWN(scl);
+		//udelay(I2C_BITBANG_QUAR_CYCLE_US);
+	}
+	if (change_input)
+		gpio_set_flags(sda, GPIO_INPUT);
+
+	udelay(I2C_BITBANG_HALF_CYCLE_US);
+	PULL_UP(scl);
+	udelay(I2C_BITBANG_HALF_CYCLE_US);
+	for (i = 0; i < 10; ++i) {
+		bit = gpio_get_level(sda);
+		if (bit == expected)
+			break;
+		udelay(I2C_BITBANG_HALF_CYCLE_US);
+	}
+	CPRINTF("    * read 1bit: %d\n", bit);
+
+	if (i)
+		CPRINTF(" wait times = %d\n", i);
+
+	if (change_input) {
+		PULL_DOWN(scl);
+		//udelay(I2C_BITBANG_QUAR_CYCLE_US);
+		gpio_set_flags(sda, GPIO_OUTPUT | GPIO_OPEN_DRAIN);
+	}
+	*bitp = bit;
+}
+
+static void i2c_bitbang_read_byte(enum gpio_signal sda, enum gpio_signal scl,
+	int *bytep, int ack_nack)
+{
+	int i, byte, bit;
+
+	// pull down scl to change gpio config
+	if (gpio_get_level(scl)) {
+		PULL_DOWN(scl);
+		//udelay(I2C_BITBANG_QUAR_CYCLE_US);
+	}
+	gpio_set_flags(sda, GPIO_INPUT);
+
+	for (i = 0, byte = 0; i < 8; ++i) {
+		i2c_bitbang_read_1bit(sda, scl, &bit, 0);
+		byte = (byte << 1) | bit;
+	}
+
+	// pull down scl to change gpio config
+	if (gpio_get_level(scl)) {
+		PULL_DOWN(scl);
+		//udelay(I2C_BITBANG_QUAR_CYCLE_US);
+	}
+	gpio_set_flags(sda, GPIO_OUTPUT | GPIO_OPEN_DRAIN);
+
+	// send ack/nack
+	i2c_bitbang_send_1bit(sda, scl, ack_nack);
+	*bytep = byte;
+}
+
+static void i2c_bitbang_write_addr(enum gpio_signal sda, enum gpio_signal scl,
+	int addr, int rw)
+{
+	int i, bit;
+	for (i = 7; i >= 1; --i) {
+		bit = !!(addr & (1 << i));
+		i2c_bitbang_send_1bit(sda, scl, bit);
+	}
+	// send "read/write" bit after slave addr is sent
+	i2c_bitbang_send_1bit(sda, scl, rw);
+	// ack
+	i2c_bitbang_read_1bit_v2(sda, scl, &bit, 1, 0);
+	CPRINTF(" *** expect 0: bitbang read 1bit: %d\n", bit);
+	//ASSERT(bit == 0);
+}
+
+static void i2c_bitbang_write_byte(enum gpio_signal sda, enum gpio_signal scl,
+	int byte)
+{
+	int i, bit;
+	for (i = 7; i >= 0; --i) {
+		bit = !!(byte & (1 << i));
+		i2c_bitbang_send_1bit(sda, scl, bit);
+	}
+	i2c_bitbang_read_1bit_v2(sda, scl, &bit, 1, 0); // ack
+	ASSERT(bit == 0);
+}
+
+static void i2c_bitbang_xfer(enum gpio_signal sda, enum gpio_signal scl,
+	int slave_addr, char **out, int out_count, int in_count)
+{
+	int i, byte = 0;
+
+	if (out_count > 0) {
+		i2c_bitbang_send_start(sda, scl);
+		i2c_bitbang_write_addr(sda, scl, slave_addr, 0/*write*/);
+
+		// write bytes
+		CPRINTF("bitbang writing %d byte(s)...\n", out_count);
+		for (i = 0; i < out_count; ++i) {
+			// write one byte
+			byte = strtoi(out[i], NULL, 0);
+			CPRINTF("  writing %d\n", byte);
+			i2c_bitbang_write_byte(sda, scl, byte);
+		}
+	}
+
+	if (in_count > 0) {
+		// send restart
+		i2c_bitbang_send_start(sda, scl);
+		// send addr
+		i2c_bitbang_write_addr(sda, scl, slave_addr, 1/*read*/);
+
+		// read bytes
+		CPRINTF("bitbang reading %d byte(s)...\n", in_count);
+		for (i = 1; i < in_count; ++i) {
+			i2c_bitbang_read_byte(sda, scl, &byte, 0/*ack*/);
+			CPRINTF("got byte: %d\n", byte);
+		}
+		i2c_bitbang_read_byte(sda, scl, &byte, 1/*nack*/);
+		CPRINTF("got byte: %d\n", byte);
+	}
+
+	if (in_count > 0 || out_count > 0)
+		i2c_bitbang_send_stop(sda, scl);
+
+/*
+	for (i = 0; i < 5; ++i) {
+	usleep(1000000L);
+	CPRINTF("scl=%d sda=%d\n", gpio_get_level(scl), gpio_get_level(sda));
+	}
+	usleep(1000000L);
+	*/
+	//system_reset(SYSTEM_RESET_HARD);
+}
+
+static int command_i2c_test(int argc, char **argv)
+{
+	int slave_addr, in_count;
+	enum gpio_signal sda = GPIO_I2C1_SDA;
+	enum gpio_signal scl = GPIO_I2C1_SCL;
+
+	if (argc < 3) {
+		ccputs("Usage: i2ctest slave_addr in_count "
+			"[write_byte0...]\n");
+		return EC_ERROR_UNKNOWN;
+	}
+	slave_addr = strtoi(argv[1], NULL, 0);
+	in_count = strtoi(argv[2], NULL, 0);
+
+	gpio_set_flags(scl, GPIO_ODR_HIGH);
+	gpio_set_flags(sda, GPIO_ODR_HIGH);
+
+	i2c_bitbang_xfer(sda, scl, slave_addr, &argv[3], argc - 3, in_count);
+
+	gpio_config_module(MODULE_I2C, 1);
+
+	ccputs("Wedging complete\n");
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(i2ctest, command_i2c_test,
+			"slave_addr in_count [byte0...]",
+			"I2C bitbang xfer test: write some and read some",
+			NULL);
+#endif
 
 static int command_i2c_wedge(int argc, char **argv)
 {
