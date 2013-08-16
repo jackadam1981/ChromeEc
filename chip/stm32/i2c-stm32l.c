@@ -460,3 +460,200 @@ DECLARE_CONSOLE_COMMAND(i2cdump, command_i2cdump,
 			NULL,
 			"Dump I2C regs",
 			NULL);
+
+#ifdef CONFIG_CMD_I2CWEDGE
+
+/*
+ * Include some bitbanged i2c code as per Wikipedia to allow
+ * us to bang the bus into just the right wedged state.
+ */
+
+int i2c_bang_started;
+enum gpio_signal i2c_bang_scl;
+enum gpio_signal i2c_bang_sda;
+
+static void i2c_bang_delay(void)
+{
+	udelay(5);
+}
+
+static int i2c_bang_read_scl(void)
+{
+	gpio_set_level(i2c_bang_scl, 1);
+	return gpio_get_level(i2c_bang_scl);
+}
+
+static int i2c_bang_read_sda(void)
+{
+	gpio_set_level(i2c_bang_sda, 1);
+	return gpio_get_level(i2c_bang_sda);
+}
+
+static void i2c_bang_clear_scl(void)
+{
+	gpio_set_level(i2c_bang_scl, 0);
+}
+
+static void i2c_bang_clear_sda(void)
+{
+	gpio_set_level(i2c_bang_sda, 0);
+}
+
+static void i2c_bang_start_cond(void)
+{
+	/* Restart if needed */
+	if (i2c_bang_started) {
+		/* set SDA to 1 */
+		i2c_bang_read_sda();
+		i2c_bang_delay();
+
+		/* Clock stretching */
+		while (i2c_bang_read_scl() == 0)
+			; /* TODO: TIMEOUT */
+
+		/* Repeated start setup time, minimum 4.7us */
+		i2c_bang_delay();
+	}
+
+	if (i2c_bang_read_sda() == 0)
+		; /* TODO: arbitration_lost */
+
+	/* SCL is high, set SDA from 1 to 0. */
+	i2c_bang_clear_sda();
+	i2c_bang_delay();
+	i2c_bang_clear_scl();
+	i2c_bang_started = 1;
+}
+
+static void i2c_bang_stop_cond(void)
+{
+	/* set SDA to 0 */
+	i2c_bang_clear_sda();
+	i2c_bang_delay();
+
+	/* Clock stretching */
+	while (i2c_bang_read_scl() == 0)
+		; /* TODO: TIMEOUT */
+
+	/* Stop bit setup time, minimum 4us */
+	i2c_bang_delay();
+
+	/* SCL is high, set SDA from 0 to 1 */
+	if (i2c_bang_read_sda() == 0)
+		; /* TODO: arbitration_lost */
+
+	i2c_bang_delay();
+
+	i2c_bang_started = 0;
+}
+
+static void i2c_bang_out_bit(int bit)
+{
+	if (bit)
+		i2c_bang_read_sda();
+	else
+		i2c_bang_clear_sda();
+
+	i2c_bang_delay();
+
+	/* Clock stretching */
+	while (i2c_bang_read_scl() == 0)
+		; /* TODO: TIMEOUT */
+
+	/*
+	 * SCL is high, now data is valid
+	 * If SDA is high, check that nobody else is driving SDA
+	 */
+	if (bit && i2c_bang_read_sda() == 0)
+		; /* TODO: arbitration_lost */
+
+	i2c_bang_delay();
+	i2c_bang_clear_scl();
+}
+
+static int i2c_bang_in_bit(void)
+{
+	int bit;
+
+	/* Let the slave drive data */
+	i2c_bang_read_sda();
+	i2c_bang_delay();
+
+	/* Clock stretching */
+	while (i2c_bang_read_scl() == 0)
+		; /* TODO: TIMEOUT */
+
+	/* SCL is high, now data is valid */
+	bit = i2c_bang_read_sda();
+	i2c_bang_delay();
+	i2c_bang_clear_scl();
+
+	return bit;
+}
+
+/* Write a byte to I2C bus. Return 0 if ack by the slave. */
+static int i2c_bang_out_byte(int send_start, int send_stop, unsigned char byte)
+{
+	unsigned bit;
+	int nack;
+
+	if (send_start)
+		i2c_bang_start_cond();
+
+	for (bit = 0; bit < 8; bit++) {
+		i2c_bang_out_bit((byte & 0x80) != 0);
+		byte <<= 1;
+	}
+
+	nack = i2c_bang_in_bit();
+	if (send_stop)
+		i2c_bang_stop_cond();
+
+	return nack;
+}
+
+static void i2c_bang_init(void)
+{
+	i2c_bang_scl = GPIO_I2C1_SCL;
+	i2c_bang_sda = GPIO_I2C1_SDA;
+	i2c_bang_started = 0;
+
+	gpio_set_flags(i2c_bang_scl, GPIO_ODR_HIGH);
+	gpio_set_flags(i2c_bang_sda, GPIO_ODR_HIGH);
+}
+
+static int command_i2c_wedge(int argc, char **argv)
+{
+	i2c_lock(I2C_PORT_HOST, 1);
+
+	i2c_bang_init();
+
+	/* State a write command to PMU (0x48) to write register address */
+	i2c_bang_out_byte(1 /*start*/, 0 /*stop*/, 0x90);
+
+	/* Write register address 0 */
+	i2c_bang_out_byte(0 /*start*/, 0 /*stop*/, 0);
+
+	/* Start a read command to read the contents of register 0 */
+	i2c_bang_out_byte(1 /*start*/, 0 /*stop*/, 0x91);
+
+	/* Clock a few bits in */
+	i2c_bang_in_bit();
+	i2c_bang_in_bit();
+
+	if (i2c_bang_read_sda())
+		ccputs("Wedge attempt failed\n");
+	else
+		ccputs("I2C bus 0 is now wedged. Enjoy.\n");
+
+	/* Put it back into normal mode */
+	gpio_config_module(MODULE_I2C, 1);
+
+	i2c_lock(I2C_PORT_HOST, 0);
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(i2cwedge, command_i2c_wedge,
+			NULL,
+			"Wedge I2C bus 0",
+			NULL);
+#endif
