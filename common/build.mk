@@ -45,6 +45,7 @@ common-$(CONFIG_FLASH)+=flash_common.o
 common-$(CONFIG_FMAP)+=fmap.o
 common-$(CONFIG_I2C)+=i2c_common.o
 common-$(CONFIG_I2C_ARBITRATION)+=i2c_arbitration.o
+common-$(CONFIG_CMD_I2CWEDGE)+=i2c_wedge.o
 common-$(CONFIG_KEYBOARD_PROTOCOL_8042)+=keyboard_8042.o
 common-$(CONFIG_KEYBOARD_PROTOCOL_MKBP)+=keyboard_mkbp.o
 common-$(CONFIG_KEYBOARD_TEST)+=keyboard_test.o
