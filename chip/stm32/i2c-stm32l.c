@@ -122,6 +122,8 @@ static int send_start(int port, int slave_addr)
 /*****************************************************************************/
 /* Interface */
 
+static void i2c_init(void);
+
 int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
 	     uint8_t *in, int in_bytes, int flags)
 {
@@ -253,6 +255,11 @@ int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
 	if (rv) {
 		STM32_I2C_CR1(port) |= STM32_I2C_CR1_STOP;
 		dump_i2c_reg(port, "stop after error");
+
+		/* Try resetting the whole thing to unwedge. */
+		CPRINTF("[%T i2c_xfer error; try resetting i2c to unwedge.\n");
+		i2c_init();
+		CPRINTF("[%T Done resetting.\n");
 	}
 
 	return rv;
