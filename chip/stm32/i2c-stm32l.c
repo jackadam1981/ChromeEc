@@ -14,6 +14,7 @@
 #include "i2c.h"
 #include "i2c_arbitration.h"
 #include "registers.h"
+#include "system.h"
 #include "task.h"
 #include "timer.h"
 #include "util.h"
@@ -627,3 +628,327 @@ DECLARE_CONSOLE_COMMAND(i2cdump, command_i2cdump,
 			NULL,
 			"Dump I2C regs",
 			NULL);
+
+#ifdef CONFIG_CMD_I2CWEDGE
+
+/*
+ * Include some bitbanged i2c code as per Wikipedia to allow
+ * us to bang the bus into just the right wedged state.
+ */
+
+int i2c_bang_started;
+enum gpio_signal i2c_bang_scl;
+enum gpio_signal i2c_bang_sda;
+
+static void i2c_bang_delay(void)
+{
+	udelay(5);
+}
+
+static int i2c_bang_read_scl(void)
+{
+	gpio_set_level(i2c_bang_scl, 1);
+	return gpio_get_level(i2c_bang_scl);
+}
+
+static int i2c_bang_read_sda(void)
+{
+	gpio_set_level(i2c_bang_sda, 1);
+	return gpio_get_level(i2c_bang_sda);
+}
+
+static void i2c_bang_clear_scl(void)
+{
+	gpio_set_level(i2c_bang_scl, 0);
+}
+
+static void i2c_bang_clear_sda(void)
+{
+	gpio_set_level(i2c_bang_sda, 0);
+}
+
+static void i2c_bang_start_cond(void)
+{
+	/* Restart if needed */
+	if (i2c_bang_started) {
+		/* set SDA to 1 */
+		i2c_bang_read_sda();
+		i2c_bang_delay();
+
+		/* Clock stretching */
+		while (i2c_bang_read_scl() == 0)
+			; /* TODO: TIMEOUT */
+
+		/* Repeated start setup time, minimum 4.7us */
+		i2c_bang_delay();
+	}
+
+	if (i2c_bang_read_sda() == 0)
+		; /* TODO: arbitration_lost */
+
+	/* SCL is high, set SDA from 1 to 0. */
+	i2c_bang_clear_sda();
+	i2c_bang_delay();
+	i2c_bang_clear_scl();
+	i2c_bang_started = 1;
+
+	ccputs("BITBANG: send start\n");
+}
+
+static void i2c_bang_stop_cond(void)
+{
+	/* set SDA to 0 */
+	i2c_bang_clear_sda();
+	i2c_bang_delay();
+
+	/* Clock stretching */
+	while (i2c_bang_read_scl() == 0)
+		; /* TODO: TIMEOUT */
+
+	/* Stop bit setup time, minimum 4us */
+	i2c_bang_delay();
+
+	/* SCL is high, set SDA from 0 to 1 */
+	if (i2c_bang_read_sda() == 0)
+		; /* TODO: arbitration_lost */
+
+	i2c_bang_delay();
+
+	i2c_bang_started = 0;
+	ccputs("BITBANG: send stop\n");
+}
+
+static void i2c_bang_out_bit(int bit)
+{
+	if (bit)
+		i2c_bang_read_sda();
+	else
+		i2c_bang_clear_sda();
+
+	i2c_bang_delay();
+
+	/* Clock stretching */
+	while (i2c_bang_read_scl() == 0)
+		; /* TODO: TIMEOUT */
+
+	/*
+	 * SCL is high, now data is valid
+	 * If SDA is high, check that nobody else is driving SDA
+	 */
+	if (bit && i2c_bang_read_sda() == 0)
+		; /* TODO: arbitration_lost */
+
+	i2c_bang_delay();
+	i2c_bang_clear_scl();
+}
+
+static int i2c_bang_in_bit(void)
+{
+	int bit;
+
+	/* Let the slave drive data */
+	i2c_bang_read_sda();
+	i2c_bang_delay();
+
+	/* Clock stretching */
+	while (i2c_bang_read_scl() == 0)
+		; /* TODO: TIMEOUT */
+
+	/* SCL is high, now data is valid */
+	bit = i2c_bang_read_sda();
+	i2c_bang_delay();
+	i2c_bang_clear_scl();
+
+	return bit;
+}
+
+/* Write a byte to I2C bus. Return 0 if ack by the slave. */
+static int i2c_bang_out_byte(int send_start, int send_stop, unsigned char byte)
+{
+	unsigned bit;
+	int nack;
+	int tmp = byte;
+
+	if (send_start)
+		i2c_bang_start_cond();
+
+	for (bit = 0; bit < 8; bit++) {
+		i2c_bang_out_bit((byte & 0x80) != 0);
+		byte <<= 1;
+	}
+
+	nack = i2c_bang_in_bit();
+
+	CPRINTF("  write byte: %d     ack/nack=%d\n", tmp, nack);
+
+	if (send_stop)
+		i2c_bang_stop_cond();
+
+	return nack;
+}
+
+static unsigned char i2c_bang_in_byte(int ack, int send_stop)
+{
+	unsigned char byte = 0;
+	int i;
+	for (i = 0; i < 8; ++i)
+		byte = (byte << 1) | i2c_bang_in_bit();
+	i2c_bang_out_bit(ack != 0);
+	if (send_stop)
+		i2c_bang_stop_cond();
+	return byte;
+}
+
+static void i2c_bang_init(void)
+{
+	i2c_bang_scl = GPIO_I2C1_SCL;
+	i2c_bang_sda = GPIO_I2C1_SDA;
+	i2c_bang_started = 0;
+
+	gpio_set_flags(i2c_bang_scl, GPIO_ODR_HIGH);
+	gpio_set_flags(i2c_bang_sda, GPIO_ODR_HIGH);
+}
+
+static void i2c_bang_xfer(int slave_addr, int reg)
+{
+	int byte;
+
+	i2c_bang_init();
+
+	/* State a write command to 'slave_addr' */
+	i2c_bang_out_byte(1 /*start*/, 0 /*stop*/, slave_addr);
+	/* Write 'reg' */
+	i2c_bang_out_byte(0 /*start*/, 0 /*stop*/, reg);
+
+	/* Start a read command */
+	i2c_bang_out_byte(1 /*start*/, 0 /*stop*/, slave_addr | 1);
+
+	/* Read two bytes */
+	byte = i2c_bang_in_byte(0, 0); /* ack and no stop */
+	CPRINTF("  read byte: %d\n", byte);
+	byte = i2c_bang_in_byte(1, 1); /* nack and stop */
+	CPRINTF("  read byte: %d\n", byte);
+}
+
+static void i2c_bang_wedge_write(int slave_addr, int byte, int bit_count,
+	int reboot)
+{
+	int i;
+
+	i2c_bang_init();
+
+	/* State a write command to 'slave_addr' */
+	i2c_bang_out_byte(1 /*start*/, 0 /*stop*/, slave_addr);
+	/* Send a few bits and stop */
+	for (i = 0; i < bit_count; ++i) {
+		i2c_bang_out_bit((byte & 0x80) != 0);
+		byte <<= 1;
+	}
+	CPRINTF("  wedged write after %d bits\n", bit_count);
+
+	if (reboot)
+		system_reset(SYSTEM_RESET_HARD);
+}
+
+static void i2c_bang_wedge_read(int slave_addr, int reg, int bit_count,
+	int reboot)
+{
+	int i;
+
+	i2c_bang_init();
+
+	/* State a write command to 'slave_addr' */
+	i2c_bang_out_byte(1 /*start*/, 0 /*stop*/, slave_addr);
+	/* Write 'reg' */
+	i2c_bang_out_byte(0 /*start*/, 0 /*stop*/, reg);
+
+	/* Start a read command */
+	i2c_bang_out_byte(1 /*start*/, 0 /*stop*/, slave_addr | 1);
+
+	/* Read bit_count bits and stop */
+	for (i = 0; i < bit_count; ++i) {
+		i2c_bang_in_bit();
+	}
+	CPRINTF("  wedged read after %d bits\n", bit_count);
+
+	if (reboot)
+		system_reset(SYSTEM_RESET_HARD);
+}
+
+#define WEDGE_WRITE	1
+#define WEDGE_READ	2
+#define WEDGE_REBOOT	4
+
+static int command_i2c_wedge(int argc, char **argv)
+{
+	int slave_addr, reg, wedge_flag = 0, wedge_bit_count = -1;
+	char *e;
+
+	if (argc < 3) {
+		ccputs("Usage: i2cwedge slave_addr out_byte "
+			"[wedge_flag [wedge_bit_count]]\n");
+		ccputs("  wedge_flag - (1: wedge out; 2: wedge in;"
+			" 5: wedge out+reboot; 6: wedge in+reboot)]\n");
+		ccputs("  wedge_bit_count - 0 to 8\n");
+		return EC_ERROR_UNKNOWN;
+	}
+
+	slave_addr = strtoi(argv[1], &e, 0);
+	if (*e) {
+		CPRINTF("Invalid slave_addr %s\n", argv[1]);
+		return EC_ERROR_INVAL;
+	}
+	reg = strtoi(argv[2], &e, 0);
+	if (*e) {
+		CPRINTF("Invalid out_byte %s\n", argv[2]);
+		return EC_ERROR_INVAL;
+	}
+	if (argc > 3) {
+		wedge_flag = strtoi(argv[3], &e, 0);
+		if (*e) {
+			CPRINTF("Invalid wedge_flag %s\n", argv[3]);
+			return EC_ERROR_INVAL;
+		}
+	}
+	if (argc > 4) {
+		wedge_bit_count = strtoi(argv[4], &e, 0);
+		if (*e || wedge_bit_count < 0 || wedge_bit_count > 8) {
+			CPRINTF("Invalid wedge_bit_count %s. Use 8 instead\n", argv[4]);
+			wedge_bit_count = -1;
+		}
+	}
+
+	i2c_lock(I2C_PORT_HOST, 1);
+
+	if (wedge_flag & WEDGE_WRITE) {
+		if (wedge_bit_count < 0)
+			wedge_bit_count = 8;
+		i2c_bang_wedge_write(slave_addr, reg, wedge_bit_count,
+			(wedge_flag & WEDGE_REBOOT));
+	} else if (wedge_flag & WEDGE_READ) {
+		if (wedge_bit_count < 0)
+			wedge_bit_count = 2;
+		i2c_bang_wedge_read(slave_addr, reg, wedge_bit_count,
+			(wedge_flag & WEDGE_REBOOT));
+	} else {
+		i2c_bang_xfer(slave_addr, reg);
+	}
+
+	/* Put it back into normal mode */
+	gpio_config_module(MODULE_I2C, 1);
+
+	i2c_lock(I2C_PORT_HOST, 0);
+
+	if (wedge_flag & (WEDGE_WRITE | WEDGE_READ))
+		ccputs("I2C bus 0 is now wedged. Enjoy.\n");
+	else
+		ccputs("Bit bang xfer complete.\n");
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(i2cwedge, command_i2c_wedge,
+			"i2cwedge slave_addr out_byte "
+				"[wedge_flag [wedge_bit_count]]",
+			"Wedge host I2C bus",
+			NULL);
+#endif
