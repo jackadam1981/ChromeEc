@@ -28,6 +28,8 @@
 /* Maximum transfer of a SMBUS block transfer */
 #define SMBUS_MAX_BLOCK 32
 
+#define I2C_ERROR_FAILED_START EC_ERROR_INTERNAL_FIRST
+
 /*
  * Transmit timeout in microseconds
  *
@@ -82,8 +84,6 @@ static int wait_sr1(int port, int mask)
 		usleep(100);
 	}
 
-	/* TODO: on error or timeout, reset port */
-
 	return EC_ERROR_TIMEOUT;
 }
 
@@ -104,7 +104,7 @@ static int send_start(int port, int slave_addr)
 	dump_i2c_reg(port, "sent start");
 	rv = wait_sr1(port, STM32_I2C_SR1_SB);
 	if (rv)
-		return rv;
+		return I2C_ERROR_FAILED_START;
 
 	/* Write slave address */
 	STM32_I2C_DR(port) = slave_addr & 0xff;
@@ -121,6 +121,21 @@ static int send_start(int port, int slave_addr)
 
 /*****************************************************************************/
 /* Interface */
+
+static void i2c_init_port(const struct i2c_port_t *p);
+
+static void i2c_unwedge(int port)
+{
+	const struct i2c_port_t *p = i2c_ports;
+	int i;
+
+	for (i = 0; i < I2C_PORTS_USED; i++, p++) {
+		if (port == p->port) {
+			i2c_init_port(p);
+			break;
+		}
+	}
+}
 
 int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
 	     uint8_t *in, int in_bytes, int flags)
@@ -253,6 +268,17 @@ int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
 	if (rv) {
 		STM32_I2C_CR1(port) |= STM32_I2C_CR1_STOP;
 		dump_i2c_reg(port, "stop after error");
+
+		/*
+		 * If failed at sending start, try resetting the port
+		 * to unwedge the bus.
+		 */
+		if (rv == I2C_ERROR_FAILED_START) {
+			CPRINTF("[%T i2c_xfer start error; "
+				"try resetting i2c%d to unwedge.\n", port);
+			i2c_unwedge(port);
+			CPRINTF("[%T Done resetting.\n");
+		}
 	}
 
 	return rv;
@@ -312,30 +338,53 @@ int i2c_read_string(int port, int slave_addr, int offset, uint8_t *data,
 /*****************************************************************************/
 /* Hooks */
 
+static void i2c_set_freq_port(const struct i2c_port_t *p)
+{
+	int port = p->port;
+	int freq = clock_get_freq();
+
+	/* Force peripheral reset and disable port */
+	STM32_I2C_CR1(port) = STM32_I2C_CR1_SWRST;
+	STM32_I2C_CR1(port) = 0;
+
+	/* Set clock frequency */
+	STM32_I2C_CCR(port) = freq / (2 * MSEC * p->kbps);
+	STM32_I2C_CR2(port) = freq / SECOND;
+	STM32_I2C_TRISE(port) = freq / SECOND + 1;
+
+	/* Enable port */
+	STM32_I2C_CR1(port) |= STM32_I2C_CR1_PE;
+}
+
 /* Handle CPU clock changing frequency */
 static void i2c_freq_change(void)
 {
 	const struct i2c_port_t *p = i2c_ports;
-	int freq = clock_get_freq();
 	int i;
 
 	for (i = 0; i < I2C_PORTS_USED; i++, p++) {
-		int port = p->port;
-
-		/* Force peripheral reset and disable port */
-		STM32_I2C_CR1(port) = STM32_I2C_CR1_SWRST;
-		STM32_I2C_CR1(port) = 0;
-
-		/* Set clock frequency */
-		STM32_I2C_CCR(port) = freq / (2 * MSEC * p->kbps);
-		STM32_I2C_CR2(port) = freq / SECOND;
-		STM32_I2C_TRISE(port) = freq / SECOND + 1;
-
-		/* Enable port */
-		STM32_I2C_CR1(port) |= STM32_I2C_CR1_PE;
+		i2c_set_freq_port(p);
 	}
 }
 DECLARE_HOOK(HOOK_FREQ_CHANGE, i2c_freq_change, HOOK_PRIO_DEFAULT);
+
+static void i2c_init_port(const struct i2c_port_t *p)
+{
+	int port = p->port;
+
+	/* Enable clocks to I2C modules if necessary */
+	if (!(STM32_RCC_APB1ENR & (1 << (21 + port)))) {
+		STM32_RCC_APB1ENR |= 1 << (21 + port);
+	}
+
+	/* Configure GPIOs */
+	gpio_config_module(MODULE_I2C, 1);
+
+	/* Set up initial bus frequencies */
+	i2c_set_freq_port(p);
+
+	/* TODO: enable interrupts using I2C_CR2 bits 8,9 */
+}
 
 static void i2c_init(void)
 {
@@ -343,22 +392,8 @@ static void i2c_init(void)
 	int i;
 
 	for (i = 0; i < I2C_PORTS_USED; i++, p++) {
-		int port = p->port;
-
-		/* Enable clocks to I2C modules if necessary */
-		if (!(STM32_RCC_APB1ENR & (1 << (21 + port)))) {
-			/* TODO: unwedge bus if necessary */
-			STM32_RCC_APB1ENR |= 1 << (21 + port);
-		}
+		i2c_init_port(p);
 	}
-
-	/* Configure GPIOs */
-	gpio_config_module(MODULE_I2C, 1);
-
-	/* Set up initial bus frequencies */
-	i2c_freq_change();
-
-	/* TODO: enable interrupts using I2C_CR2 bits 8,9 */
 }
 DECLARE_HOOK(HOOK_INIT, i2c_init, HOOK_PRIO_DEFAULT);
 
