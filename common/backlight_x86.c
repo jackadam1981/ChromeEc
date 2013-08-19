@@ -11,16 +11,41 @@
 #include "host_command.h"
 #include "lid_switch.h"
 
+#define BL_ENABLE_DELAY_US 420000 /* 420 ms delay */
+
+static int backlight_deferred_value;
+
+static void set_backlight_value(void)
+{
+	gpio_set_level(GPIO_ENABLE_BACKLIGHT, backlight_deferred_value);
+}
+DECLARE_DEFERRED(set_backlight_value);
+
 /**
  * Update backlight state.
  */
 static void update_backlight(void)
 {
-	/* Only enable the backlight if the lid is open */
-	if (gpio_get_level(GPIO_PCH_BKLTEN) && lid_is_open())
-		gpio_set_level(GPIO_ENABLE_BACKLIGHT, 1);
-	else
+	int pch_value;
+
+	pch_value = gpio_get_level(GPIO_PCH_BKLTEN);
+
+	/* Immediately disable the backlight when the lid is closed or the PCH
+	 * is instructing the backlight to be disabled. */
+	if (!lid_is_open() || !pch_value) {
+		/* If there was a scheduled callback pending make sure it picks
+		 * up the disabled value. */
+		backlight_deferred_value = 0;
 		gpio_set_level(GPIO_ENABLE_BACKLIGHT, 0);
+		/* Cancel pending hook */
+		hook_call_deferred(&set_backlight_value, -1);
+		return;
+	}
+	/* Handle a 0->1 transition by calling a deferred hook. */
+	if (pch_value && !backlight_deferred_value) {
+		backlight_deferred_value = 1;
+		hook_call_deferred(&set_backlight_value, BL_ENABLE_DELAY_US);
+	}
 }
 DECLARE_HOOK(HOOK_LID_CHANGE, update_backlight, HOOK_PRIO_DEFAULT);
 
@@ -29,6 +54,10 @@ DECLARE_HOOK(HOOK_LID_CHANGE, update_backlight, HOOK_PRIO_DEFAULT);
  */
 static void backlight_init(void)
 {
+	/* Set initial deferred value and signal to the current PCH signal. */
+	backlight_deferred_value = gpio_get_level(GPIO_PCH_BKLTEN);
+	set_backlight_value();
+
 	update_backlight();
 
 	gpio_enable_interrupt(GPIO_PCH_BKLTEN);
