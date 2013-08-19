@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAc3//9Dg\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-08-19T05:02:13Z",
+      "side": 1,
+      "message": "typeo: error",
+      "revId": "b6ae8ebdddcb7bbf98fc40d1db43a92320f18a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAc3//9Dc\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-08-19T05:02:13Z",
+      "side": 1,
+      "message": "Comment: An easy test is to disconnect the internal battery.",
+      "revId": "b6ae8ebdddcb7bbf98fc40d1db43a92320f18a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAc3//9Ds\u003d",
+        "filename": "common/led_peppy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-08-19T05:02:13Z",
+      "side": 1,
+      "message": "This won\u0027t compile. The function name changed to peppy_led_set_color_battery() during some re-factoring to support the ectool \"led\" command.",
+      "revId": "b6ae8ebdddcb7bbf98fc40d1db43a92320f18a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAc3//9Do\u003d",
+        "filename": "common/led_peppy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-08-19T05:02:13Z",
+      "side": 1,
+      "message": "As written, the battery LED will blink on for 3 seconds and then be off for 1 second which doesn\u0027t match the change description. Switch around \"LED_OFF\" and \"LED_AMBER\" to have the LED on for 1 second and off for 3 seconds.",
+      "revId": "b6ae8ebdddcb7bbf98fc40d1db43a92320f18a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
