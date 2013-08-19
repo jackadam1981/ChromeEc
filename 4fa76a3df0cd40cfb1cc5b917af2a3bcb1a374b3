@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAc3//8vc\u003d",
+        "filename": "common/led_peppy.c~",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-08-19T15:44:46Z",
+      "side": 1,
+      "message": "Looks like this backup file sneaked into your change. Please remove it from the patchset with \"git rm common/led_peppy.c~\" , git commit --amend, and repo upload .",
+      "revId": "4fa76a3df0cd40cfb1cc5b917af2a3bcb1a374b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
