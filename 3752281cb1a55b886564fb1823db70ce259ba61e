@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAc3//9E8\u003d",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2013-08-19T03:52:31Z",
+      "side": 1,
+      "message": "Really?  You need to unwedge on _all_ errors?  That doesn\u0027t seem wise.  Certain error conditions are expected, especially when trying to do bus probes.  Can you please try:\n* i2c scanning from the ec.  Make sure it doesn\u0027t spew errors.\n* Boot linux and run \"i2cdetect -y -a 20\".  Make sure that the battery and tpschrome are detected and errors aren\u0027t spewed.\n\nFrom \"i2c-stm32f.c\" I\u0027d expected more targeted unwedging.",
+      "revId": "3752281cb1a55b886564fb1823db70ce259ba61e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAc3//9FA\u003d",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2013-08-19T03:52:31Z",
+      "side": 1,
+      "message": "Probably good not to re-init all ports based on a failure of a single port.  Should only re-init one port, like \"i2c-stm32f\".",
+      "revId": "3752281cb1a55b886564fb1823db70ce259ba61e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
