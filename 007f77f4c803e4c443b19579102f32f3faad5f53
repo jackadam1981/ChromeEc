@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAc3//66s\u003d",
+        "filename": "include/battery.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-08-20T14:29:53Z",
+      "side": 1,
+      "message": "This is the charge reported by the battery. The value displayed to the user is calculated by the UI and is not necessarily the same as the value reported here. (usually they differ.)",
+      "parentUuid": "AAAAc3//68g\u003d",
+      "revId": "007f77f4c803e4c443b19579102f32f3faad5f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAc3//68k\u003d",
         "filename": "include/battery.h",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2013-08-20T14:24:17Z",
       "side": 1,
       "message": "Does this mean charge according to the battery/gas gauge?",
+      "revId": "007f77f4c803e4c443b19579102f32f3faad5f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAc3//66o\u003d",
+        "filename": "include/battery.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-08-20T14:29:53Z",
+      "side": 1,
+      "message": "AFAIK, ABS here means calculating percentage w.r.t designed full capacity instead of the current estimated full capacity.",
+      "parentUuid": "AAAAc3//68k\u003d",
       "revId": "007f77f4c803e4c443b19579102f32f3faad5f53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAc3//66k\u003d",
+        "filename": "include/battery.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-08-20T14:29:53Z",
+      "side": 1,
+      "message": "Same as state of charge, the value shown to the user is calculated by the UI. This one is currently of no effect to the user.",
+      "parentUuid": "AAAAc3//68Y\u003d",
+      "revId": "007f77f4c803e4c443b19579102f32f3faad5f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAc3//68A\u003d",
         "filename": "include/battery.h",
         "patchSetId": 4
@@ -64,6 +118,24 @@
       "writtenOn": "2013-08-20T14:24:17Z",
       "side": 1,
       "message": "This function seems to return codes that are still defined in smart_battery.h.  Should this function stay there?",
+      "revId": "007f77f4c803e4c443b19579102f32f3faad5f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAc3//66g\u003d",
+        "filename": "include/battery.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-08-20T14:29:53Z",
+      "side": 1,
+      "message": "You\u0027re right, and this is why I put \"WIP\" in the title. We need to either move those flags here or define a new set of flags that are less smart-battery-specific.",
+      "parentUuid": "AAAAc3//68A\u003d",
       "revId": "007f77f4c803e4c443b19579102f32f3faad5f53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
