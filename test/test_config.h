@@ -15,8 +15,12 @@
 
 #ifdef TEST_sbs_charging
 #define CONFIG_BATTERY_MOCK
+#define CONFIG_BATTERY_SMART
 #define CONFIG_CHARGER
 #define CONFIG_CHARGER_INPUT_CURRENT 4032
+#define I2C_PORT_HOST 1
+#define I2C_PORT_BATTERY 1
+#define I2C_PORT_CHARGER 1
 #endif
 
 #ifdef TEST_adapter

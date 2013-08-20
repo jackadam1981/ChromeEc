@@ -9,6 +9,7 @@
 #define __BOARD_H
 
 /* Optional features */
+#define CONFIG_BATTERY_BQ27541
 #define CONFIG_CHIPSET_GAIA
 #define CONFIG_HOST_COMMAND_STATUS
 #define CONFIG_I2C
