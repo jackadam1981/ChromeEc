@@ -11,6 +11,90 @@
 #include "timer.h"
 #include "util.h"
 
+/* Get/set battery mode */
+int battery_get_battery_mode(int *mode)
+	{ return sb_read(SB_BATTERY_MODE, mode); }
+
+int battery_set_battery_mode(int mode)
+	{ return sb_write(SB_BATTERY_MODE, mode); }
+
+/* Read battery temperature
+ * unit: 0.1 K
+ */
+int battery_temperature(int *deci_kelvin)
+	{ return sb_read(SB_TEMPERATURE, deci_kelvin); }
+
+/* Read battery voltage
+ * unit: mV
+ */
+int battery_voltage(int *voltage)
+	{ return sb_read(SB_VOLTAGE, voltage); }
+
+/* Relative state of charge in percent */
+int battery_state_of_charge(int *percent)
+	{ return sb_read(SB_RELATIVE_STATE_OF_CHARGE, percent); }
+
+/* Absolute state of charge in percent */
+int battery_state_of_charge_abs(int *percent)
+	{ return sb_read(SB_ABSOLUTE_STATE_OF_CHARGE, percent); }
+
+/* Battery remaining capacity
+ * unit: mAh or 10mW, depends on battery mode
+ */
+int battery_remaining_capacity(int *capacity)
+	{ return sb_read(SB_REMAINING_CAPACITY, capacity); }
+
+/* Battery full charge capacity */
+int battery_full_charge_capacity(int *capacity)
+	{ return sb_read(SB_FULL_CHARGE_CAPACITY, capacity); }
+
+/* Time in minutes left when discharging */
+int battery_time_to_empty(int *minutes)
+	{ return sb_read(SB_AVERAGE_TIME_TO_EMPTY, minutes); }
+
+int battery_run_time_to_empty(int *minutes)
+	{ return sb_read(SB_RUN_TIME_TO_EMPTY, minutes); }
+
+/* Time in minutes to full when charging */
+int battery_time_to_full(int *minutes)
+	{ return sb_read(SB_AVERAGE_TIME_TO_FULL, minutes); }
+
+/* The current battery desired to charge
+ * unit: mA
+ */
+int battery_desired_current(int *current)
+	{ return sb_read(SB_CHARGING_CURRENT, current); }
+
+/* The voltage battery desired to charge
+ * unit: mV
+ */
+int battery_desired_voltage(int *voltage)
+	{ return sb_read(SB_CHARGING_VOLTAGE, voltage); }
+
+/* Read battery status */
+int battery_status(int *status)
+	{ return sb_read(SB_BATTERY_STATUS, status); }
+
+/* Battery charge cycle count */
+int battery_cycle_count(int *count)
+	{ return sb_read(SB_CYCLE_COUNT, count); }
+
+/* Designed battery capacity
+ * unit: mAh or 10mW depends on battery mode
+ */
+int battery_design_capacity(int *capacity)
+	{ return sb_read(SB_DESIGN_CAPACITY, capacity); }
+
+/* Designed battery output voltage
+ * unit: mV
+ */
+int battery_design_voltage(int *voltage)
+	{ return sb_read(SB_DESIGN_VOLTAGE, voltage); }
+
+/* Read serial number */
+int battery_serial_number(int *serial)
+	{ return sb_read(SB_SERIAL_NUMBER, serial); }
+
 /* Read battery discharging current
  * unit: mA
  * negative value: charging
