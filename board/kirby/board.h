@@ -14,6 +14,7 @@
 #define CONFIG_I2C
 #define CONFIG_KEYBOARD_PROTOCOL_MKBP
 #define CONFIG_SPI
+#define CONFIG_PWM
 
 #ifndef __ASSEMBLER__
 
@@ -52,6 +53,16 @@ enum module_id {
 #define TIM_CLOCK_MSB 2
 #define TIM_CLOCK_LSB 9
 #define TIM_WATCHDOG  4
+
+/* PWM signal */
+enum pwm_channel {
+	PWM_CH_CHG_Y = 0,
+	PWM_CH_CHG_G,
+	PWM_CH_CHG_R,
+
+	/* Number of PWM channels */
+	PWM_CH_COUNT
+};
 
 /* GPIO signal list */
 enum gpio_signal {
