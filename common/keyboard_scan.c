@@ -214,7 +214,6 @@ static int check_runtime_keys(const uint8_t *state)
 		/* R = reboot */
 		CPRINTF("[%T KB warm reboot]\n");
 		keyboard_clear_buffer();
-		chipset_reset(0);
 		return 1;
 	} else if (state[KEYBOARD_COL_KEY_H] == KEYBOARD_MASK_KEY_H) {
 		/* H = hibernate */
