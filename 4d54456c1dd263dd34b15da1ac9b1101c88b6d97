@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAc3//4RU\u003d",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-21T23:25:23Z",
+      "side": 1,
+      "message": "How about common/i2c_wedge.c?\n\nI think with the following defines it\u0027s platform-independent:\n\n#define CONFIG_I2C_WEDGE_SCL GPIO_I2C1_SCL\n#define CONFIG_I2C_WEDGE_SDA GPIO_I2C1_SDA",
+      "parentUuid": "AAAAc3//6tU\u003d",
+      "revId": "4d54456c1dd263dd34b15da1ac9b1101c88b6d97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAc3//6tM\u003d",
         "filename": "chip/stm32/i2c-stm32l.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2013-08-20T17:34:31Z",
       "side": 1,
       "message": "Maybe we should parameterize the wedge command to be more general.  Could take in the address to use as a parameter?  ...and the number of bits to clock in?",
+      "revId": "4d54456c1dd263dd34b15da1ac9b1101c88b6d97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAc3//4Rc\u003d",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-21T23:25:23Z",
+      "side": 1,
+      "message": "Sure.  I\u0027m ok with hard-coding this for now just to get the code in, and we can add params in a follow-up CL.",
+      "parentUuid": "AAAAc3//6tM\u003d",
       "revId": "4d54456c1dd263dd34b15da1ac9b1101c88b6d97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
