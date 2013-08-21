@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAYH//+Ic\u003d",
+        "filename": "common/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001306
+      },
+      "writtenOn": "2013-08-21T01:40:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAYH//+aU\u003d",
+      "revId": "3da5c624286a72fd4048ba4430b5164e89d5d022",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAYH//+ZM\u003d",
         "filename": "common/main.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2013-05-15T21:54:56Z",
       "side": 1,
       "message": "Hmm.  What if this is RO code, and we jump to RW code, and RW code has iram.txt somewhere else?\n\nSeems like we\u0027d need to reconfigure the MPU at that point.\n\nMaybe we should just put the call to mpu_protect_ram() inside system_disable_jump()?  At that point we also know which image we\u0027ll be running, so we can disable execution of the other one as well.  Jumps are disabled by the EC software sync process before the AP leaves its own firmware, so we\u0027ll always enable the MPU before we hit OS-level code.",
+      "revId": "3da5c624286a72fd4048ba4430b5164e89d5d022",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAc3//6cA\u003d",
+        "filename": "common/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1001306
+      },
+      "writtenOn": "2013-08-21T01:40:14Z",
+      "side": 1,
+      "message": "Done though I couldn\u0027t find the code where \"Jumps are disabled by the EC software sync process\".",
+      "parentUuid": "AAAAYH//+ZM\u003d",
       "revId": "3da5c624286a72fd4048ba4430b5164e89d5d022",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAYH//+OE\u003d",
+        "filename": "core/cortex-m/include/mpu.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1001306
+      },
+      "writtenOn": "2013-08-21T01:40:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAYH//+aE\u003d",
+      "revId": "3da5c624286a72fd4048ba4430b5164e89d5d022",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAYH//+Z4\u003d",
         "filename": "core/cortex-m/include/mpu.h",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2013-05-15T21:54:56Z",
       "side": 1,
       "message": "Minor nit: function comments start with\n\n/**\n *\n\nand use the active voice (\"Enable foo\" rather than \"Enables foo\")",
+      "revId": "3da5c624286a72fd4048ba4430b5164e89d5d022",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAYH//+J4\u003d",
+        "filename": "core/cortex-m/include/mpu.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1001306
+      },
+      "writtenOn": "2013-08-21T01:40:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAYH//+Z4\u003d",
       "revId": "3da5c624286a72fd4048ba4430b5164e89d5d022",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAYH//+J0\u003d",
+        "filename": "core/cortex-m/include/mpu.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1001306
+      },
+      "writtenOn": "2013-08-21T01:40:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAYH//+Zw\u003d",
+      "revId": "3da5c624286a72fd4048ba4430b5164e89d5d022",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAYH//+Zo\u003d",
         "filename": "core/cortex-m/include/mpu.h",
         "patchSetId": 2
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAYH//+JI\u003d",
+        "filename": "core/cortex-m/include/mpu.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1001306
+      },
+      "writtenOn": "2013-08-21T01:40:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAYH//+Zo\u003d",
+      "revId": "3da5c624286a72fd4048ba4430b5164e89d5d022",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAYH//+Zs\u003d",
         "filename": "core/cortex-m/include/mpu.h",
         "patchSetId": 2
@@ -115,6 +223,24 @@
       "writtenOn": "2013-05-15T21:54:56Z",
       "side": 1,
       "message": "typo: regions",
+      "revId": "3da5c624286a72fd4048ba4430b5164e89d5d022",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAYH//+I8\u003d",
+        "filename": "core/cortex-m/include/mpu.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1001306
+      },
+      "writtenOn": "2013-08-21T01:40:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAYH//+Zs\u003d",
       "revId": "3da5c624286a72fd4048ba4430b5164e89d5d022",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
