@@ -26,6 +26,10 @@
 
 #define SCAN_TIME_COUNT 32  /* Number of last scan times to track */
 
+#ifdef BOARD_peppy
+#define PEPPY_INIT_RETRY_TIMEOUT (100 * MSEC)
+#endif /* BOARD_peppy */
+
 #ifndef CONFIG_KEYBOARD_BOARD_CONFIG
 /* Use default keyboard scan config, because board didn't supply one */
 struct keyboard_scan_config keyscan_config = {
@@ -462,6 +466,11 @@ const uint8_t *keyboard_scan_get_state(void)
 
 void keyboard_scan_init(void)
 {
+#ifdef BOARD_peppy
+	/* HORRIBLE HACK: DO NOT RE-USE */
+	timestamp_t retry_deadline;
+#endif /* BOARD_peppy */
+
 	/* Configure GPIO */
 	keyboard_raw_init();
 
@@ -474,6 +483,20 @@ void keyboard_scan_init(void)
 
 	/* Check for keys held down at boot */
 	boot_key_value = check_boot_key(debounced_state);
+
+#ifdef BOARD_peppy
+	/* HORRIBLE HACK: DO NOT RE-USE */
+	retry_deadline.val = get_time().val + PEPPY_INIT_RETRY_TIMEOUT;
+	do {
+		if (boot_key_value != BOOT_KEY_OTHER || boot_key_value == BOOT_KEY_NONE)
+			break;
+		print_state(debounced_state, "init state");
+		read_matrix(debounced_state);
+		boot_key_value = check_boot_key(debounced_state);
+	} while (!timestamp_expired(retry_deadline, NULL));
+
+	memcpy(prev_state, debounced_state, sizeof(prev_state));
+#endif /* BOARD_peppy */
 
 	/* Trigger event if recovery key was pressed */
 	if (boot_key_value == BOOT_KEY_ESC)
