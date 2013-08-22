@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAc3//2Jw\u003d",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-22T23:37:27Z",
+      "side": 1,
+      "message": "Hmm.  I think it\u0027s cleaner to put this hack in check_boot_key() itself.\n\nIf you put it around line 434, then the conditions where BOOT_KEY_OTHER are returned will already have been checked, and you won\u0027t have the 100ms penalty.",
+      "revId": "a8b46088b9f26759363bda8afaafcfe4386cc7a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
