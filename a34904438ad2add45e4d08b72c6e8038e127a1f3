@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAc3//2ss\u003d",
+        "filename": "common/battery_bq27541.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1002234
+      },
+      "writtenOn": "2013-08-22T21:25:04Z",
+      "side": 1,
+      "message": "This appears to be signed 16 bit, but interpreted as unsigned 16 bit.",
+      "revId": "a34904438ad2add45e4d08b72c6e8038e127a1f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
