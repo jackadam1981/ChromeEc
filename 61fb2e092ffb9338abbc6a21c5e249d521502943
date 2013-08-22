@@ -16,6 +16,24 @@
       "revId": "61fb2e092ffb9338abbc6a21c5e249d521502943",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAc3//22w\u003d",
+        "filename": "common/extpower_falco.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-08-22T20:24:02Z",
+      "side": 1,
+      "message": "Yes; exactly. The Turbo mode can discharge the battery even while connected to the charger. Plus, the spec says not to turn throttling off until it\u0027s been below the threshold for 5 seconds, which means we still need to check while on AC in order for that timeout to be reached.\n\nOtherwise, just plugging the adapter in and out would mess up that 5-second timeout. Since the threshold logic uses signed numbers, everything Just Works.",
+      "parentUuid": "AAAAc3//25U\u003d",
+      "revId": "61fb2e092ffb9338abbc6a21c5e249d521502943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
