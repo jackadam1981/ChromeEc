@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAc3//25U\u003d",
+        "filename": "common/extpower_falco.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2013-08-22T20:07:10Z",
+      "side": 1,
+      "message": "I think I\u0027d feel much better if we didn\u0027t call into check_threshold() if we knew the battery was being charged. Or do we have to? Do we discharge battery in tandem w/ external DC source to supply more power?",
+      "revId": "61fb2e092ffb9338abbc6a21c5e249d521502943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
