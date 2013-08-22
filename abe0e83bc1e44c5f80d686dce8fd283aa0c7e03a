@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAc3//3r0\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-08-22T06:19:13Z",
+      "side": 1,
+      "message": "Yes, now that marc has created this bug please update the commit message to include it.",
+      "parentUuid": "AAAAc3//30k\u003d",
+      "revId": "abe0e83bc1e44c5f80d686dce8fd283aa0c7e03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAc3//30g\u003d",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -30,6 +48,41 @@
       "writtenOn": "2013-08-22T03:46:59Z",
       "side": 1,
       "message": "please give steps used. For example:\nemerge-leon chromesos-ec",
+      "revId": "abe0e83bc1e44c5f80d686dce8fd283aa0c7e03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAc3//3r4\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-08-22T06:19:13Z",
+      "side": 1,
+      "message": "The overlay for leon isn\u0027t done yet...so setup_board won\u0027t work and you can\u0027t run emerge-leon. This is a high priority todo.\n\nFor the EC, doing a \"make BOARD\u003dleon\" should be good enough for now.",
+      "parentUuid": "AAAAc3//30g\u003d",
+      "revId": "abe0e83bc1e44c5f80d686dce8fd283aa0c7e03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAc3//3q4\u003d",
+        "filename": "board/leon/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-08-22T06:19:13Z",
+      "side": 1,
+      "message": "You can remove this \"CONFIG_LED_SLIPPY\" line. it doesn\u0027t do anything anymore. In common/build.mk we always build the led module for leon.",
       "revId": "abe0e83bc1e44c5f80d686dce8fd283aa0c7e03a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
