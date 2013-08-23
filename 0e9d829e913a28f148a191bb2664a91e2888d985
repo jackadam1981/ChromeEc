@@ -16,6 +16,24 @@
       "revId": "0e9d829e913a28f148a191bb2664a91e2888d985",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAc3//2DY\u003d",
+        "filename": "board/host/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-08-23T00:51:57Z",
+      "side": 0,
+      "message": "This deleted block should be in another CL. I\u0027ll separate this out.",
+      "parentUuid": "AAAAc3//2lM\u003d",
+      "revId": "0e9d829e913a28f148a191bb2664a91e2888d985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

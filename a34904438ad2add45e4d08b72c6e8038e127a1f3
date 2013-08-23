@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAc3//2A4\u003d",
+        "filename": "common/battery_bq27541.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-08-23T00:51:57Z",
+      "side": 1,
+      "message": "Thanks! I\u0027ll get this fixed.",
+      "parentUuid": "AAAAc3//2ss\u003d",
+      "revId": "a34904438ad2add45e4d08b72c6e8038e127a1f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAc3//2kU\u003d",
         "filename": "common/battery_bq27541.c",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2013-08-22T21:51:57Z",
       "side": 1,
       "message": "Are these just not supported on BQ27541?",
+      "revId": "a34904438ad2add45e4d08b72c6e8038e127a1f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAc3//2Bc\u003d",
+        "filename": "common/battery_bq27541.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-08-23T00:51:57Z",
+      "side": 1,
+      "message": "I haven\u0027t finished reading the datasheet in detail but some of these seem unsupported.",
+      "parentUuid": "AAAAc3//2kU\u003d",
       "revId": "a34904438ad2add45e4d08b72c6e8038e127a1f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
