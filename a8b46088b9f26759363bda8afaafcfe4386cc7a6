@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAAc3//2BA\u003d",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-08-23T00:51:39Z",
+      "side": 1,
+      "message": "Perhaps make this \"/* If reset was not caused by reset pin or soft reset, refresh must be held down */ \" ??",
+      "revId": "a8b46088b9f26759363bda8afaafcfe4386cc7a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAc3//2BE\u003d",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-08-23T00:51:39Z",
+      "side": 1,
+      "message": "Perhaps make this \"if (!(system_get_reset_flags() \u0026 (RESET_FLAG_RESET_PIN | RESET_FLAG_SOFT)) \u0026\u0026 \" ??",
+      "revId": "a8b46088b9f26759363bda8afaafcfe4386cc7a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAc3//2Jw\u003d",
         "filename": "common/keyboard_scan.c",
         "patchSetId": 2
@@ -13,6 +47,24 @@
       "writtenOn": "2013-08-22T23:37:27Z",
       "side": 1,
       "message": "Hmm.  I think it\u0027s cleaner to put this hack in check_boot_key() itself.\n\nIf you put it around line 434, then the conditions where BOOT_KEY_OTHER are returned will already have been checked, and you won\u0027t have the 100ms penalty.",
+      "revId": "a8b46088b9f26759363bda8afaafcfe4386cc7a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAc3//2CA\u003d",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-08-23T00:51:39Z",
+      "side": 1,
+      "message": "If I move the hack there I\u0027ll need to rewrite check_boot_key() to keep re-scanning the keyboard. I think making it a peppy-specific hack will be messy as I\u0027ll need to pull the loop that checks the boot key into the polling loop.\n\nI could change the \u0027if\u0027 at line 434 to also exclude the RESET_FLAG_SOFT case along with RESET_FLAG_RESET_PIN. That fixes the corner-case but I don\u0027t feel confident that I know what I\u0027m doing...like what are all the causes of a soft reset....other than re-flashing with servo.",
+      "parentUuid": "AAAAc3//2Jw\u003d",
       "revId": "a8b46088b9f26759363bda8afaafcfe4386cc7a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
