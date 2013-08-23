@@ -20,11 +20,21 @@
 #include "timer.h"
 #include "util.h"
 
+#ifdef BOARD_peppy
+/* HORRIBLE HACK: SEE crosbug.com/p/22127 DO NOT RE-USE */
+#include "gpio.h"
+#endif /* BOARD_peppy */
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_KEYSCAN, outstr)
 #define CPRINTF(format, args...) cprintf(CC_KEYSCAN, format, ## args)
 
 #define SCAN_TIME_COUNT 32  /* Number of last scan times to track */
+
+#ifdef BOARD_peppy
+/* HORRIBLE HACK: SEE crosbug.com/p/22127 DO NOT RE-USE */
+#define PEPPY_BOOTKEY_TIMEOUT_MSEC (5 * MSEC)
+#endif /* BOARD_peppy */
 
 #ifndef CONFIG_KEYBOARD_BOARD_CONFIG
 /* Use default keyboard scan config, because board didn't supply one */
@@ -442,6 +452,53 @@ static enum boot_key check_boot_key(const uint8_t *state)
 	return BOOT_KEY_OTHER;
 }
 
+/**
+ * HORRIBLE HACK: SEE crosbug.com/p/22127 DO NOT RE-USE
+ *
+ * Poll they keyboard for up to PEPPY_BOOTKEY_TIMEOUT_MSEC and check for a
+ * stable state:. Stable is defined as either no boot keys pressed or a
+ * single boot key pressed. This is needed as the keyboard will return an
+ * invalid state until active ESD components connected to the scan matrix
+ * are powered on.
+ *
+ * @param state		Destination for new state (must be KEYBOARD_COLS long).
+ *
+ * @return 1 if at least one key is pressed, else zero.
+ */
+static int peppy_read_initial_matrix(uint8_t *state)
+{
+	int gpio_pp5000_prev_state = gpio_get_level(GPIO_PP5000_EN);
+	const struct boot_key_entry *k;
+	int key;
+	int i;
+	timestamp_t retry_deadline;
+	int rv;
+
+	gpio_set_level(GPIO_PP5000_EN, 1);
+	retry_deadline.val = get_time().val + PEPPY_BOOTKEY_TIMEOUT_MSEC;
+
+	do {
+		rv = read_matrix(state);
+
+		/* Check what single boot key is down */
+		key = BOOT_KEY_OTHER;
+		for (i = 0, k = boot_key_list; i < ARRAY_SIZE(boot_key_list);
+		     i++, k++) {
+			if (check_key(state, k->mask_index, k->mask_value)) {
+				key = i;
+				break;
+			}
+		}
+
+		if (key != BOOT_KEY_OTHER)
+			break;
+
+	} while (!timestamp_expired(retry_deadline, NULL));
+
+	gpio_set_level(GPIO_PP5000_EN, gpio_pp5000_prev_state);
+	return rv;
+}
+
 /*****************************************************************************/
 /* Interface */
 
@@ -469,7 +526,12 @@ void keyboard_scan_init(void)
 	keyboard_raw_drive_column(KEYBOARD_COLUMN_NONE);
 
 	/* Initialize raw state */
+#ifdef BOARD_peppy
+	/* HORRIBLE HACK: SEE crosbug.com/p/22127 DO NOT RE-USE */
+	peppy_read_initial_matrix(debounced_state);
+#else
 	read_matrix(debounced_state);
+#endif /* BOARD_peppy */
 	memcpy(prev_state, debounced_state, sizeof(prev_state));
 
 	/* Check for keys held down at boot */
