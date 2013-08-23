@@ -6,7 +6,7 @@
  */
 
 #include "battery_pack.h"
-#include "gpio.h"
+#include "smart_battery.h"
 
 /* FIXME: We need REAL values for all this stuff */
 const struct battery_temperature_ranges bat_temp_ranges = {
@@ -14,15 +14,15 @@ const struct battery_temperature_ranges bat_temp_ranges = {
 	.start_charging_max_c = 50,
 	.charging_min_c       = 0,
 	.charging_max_c       = 50,
-	.discharging_min_c    = -20,
-	.discharging_max_c    = 60,
+	.discharging_min_c    = 0,
+	.discharging_max_c    = 65,
 };
 
 static const struct battery_info info = {
-/* Based on 3S1P, same as peppy */
+/* Change to the real specification  */
 
-	.voltage_max    = 12600,
-	.voltage_normal = 11100,
+	.voltage_max    = 13050,
+	.voltage_normal = 11400,
 	.voltage_min    = 9000,
 
 	/* Pre-charge values. */
