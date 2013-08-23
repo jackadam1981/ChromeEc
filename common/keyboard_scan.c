@@ -462,6 +462,11 @@ const uint8_t *keyboard_scan_get_state(void)
 
 void keyboard_scan_init(void)
 {
+#ifdef BOARD_peppy
+	/* HORRIBE HACK: DO NOT RE-USE */
+	gpio_set_level(GPIO_PP5000_EN, 1);
+#endif /* BOARD_peppy */
+
 	/* Configure GPIO */
 	keyboard_raw_init();
 
@@ -478,6 +483,11 @@ void keyboard_scan_init(void)
 	/* Trigger event if recovery key was pressed */
 	if (boot_key_value == BOOT_KEY_ESC)
 		host_set_single_event(EC_HOST_EVENT_KEYBOARD_RECOVERY);
+
+#ifdef BOARD_peppy
+	/* HORRIBE HACK: DO NOT RE-USE */
+	gpio_set_level(GPIO_PP5000_EN, 0);
+#endif /* BOARD_peppy */
 }
 
 void keyboard_scan_task(void)
