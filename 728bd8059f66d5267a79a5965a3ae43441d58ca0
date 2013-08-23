@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAc3//09o\u003d",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-08-23T18:08:23Z",
+      "side": 1,
+      "message": "Humm... gpio_set_level is pulled in indirectly via keyboard_raw.h. I should add gpio.h here.",
+      "revId": "728bd8059f66d5267a79a5965a3ae43441d58ca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
