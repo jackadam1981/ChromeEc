@@ -68,6 +68,24 @@
       "revId": "a8b46088b9f26759363bda8afaafcfe4386cc7a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAc3//18M\u003d",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-23T01:38:28Z",
+      "side": 1,
+      "message": "Well, you\u0027ve got a loop here too.  \n\ncheck_boot_key is called from exactly one place (here).  So moving this loop there wouldn\u0027t be awful.\n\nAnd it\u0027s not technically excluding RESET_PIN - it\u0027s *only* checking if the reason is reset pin.  That\u0027s because we don\u0027t want to initiate recovery mode if the user happens to hold down esc at the point the EC is rebooting...",
+      "parentUuid": "AAAAc3//2CA\u003d",
+      "revId": "a8b46088b9f26759363bda8afaafcfe4386cc7a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
