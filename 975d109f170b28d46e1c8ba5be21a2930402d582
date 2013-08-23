@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAc3//19A\u003d",
+        "filename": "chip/lm4/pwm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-08-23T01:19:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAc3//2is\u003d",
+      "revId": "975d109f170b28d46e1c8ba5be21a2930402d582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAc3//2gk\u003d",
         "filename": "chip/stm32/pwm.c",
         "patchSetId": 9
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAc3//1+s\u003d",
+        "filename": "chip/stm32/pwm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-08-23T01:19:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAc3//2gk\u003d",
+      "revId": "975d109f170b28d46e1c8ba5be21a2930402d582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAc3//2iQ\u003d",
         "filename": "chip/stm32/pwm_data.h",
         "patchSetId": 9
@@ -47,6 +83,24 @@
       "writtenOn": "2013-08-22T22:05:27Z",
       "side": 1,
       "message": "This is still dangerous.  We use non-contiguous timer number 2-4 and 9-11.  But when we say timer 11, the register contains the value 10.",
+      "revId": "975d109f170b28d46e1c8ba5be21a2930402d582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAc3//1+U\u003d",
+        "filename": "chip/stm32/pwm_data.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-08-23T01:19:34Z",
+      "side": 1,
+      "message": "Say for TIMx_CHy, x is non-contiguous, but y is always 1-4. This macro here is for y instead of x, which is used in the macro above (line 32.)",
+      "parentUuid": "AAAAc3//2iQ\u003d",
       "revId": "975d109f170b28d46e1c8ba5be21a2930402d582",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
