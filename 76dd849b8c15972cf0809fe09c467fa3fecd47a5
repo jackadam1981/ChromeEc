@@ -16,6 +16,23 @@
       "revId": "76dd849b8c15972cf0809fe09c467fa3fecd47a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAc3//0x4\u003d",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-23T19:34:47Z",
+      "side": 1,
+      "message": "Ooh, just realized this won\u0027t do what you want.  It\u0027ll de-power PP5000 during software sync.  You should only turn it off if it was off before keyboard_scan_init().",
+      "revId": "76dd849b8c15972cf0809fe09c467fa3fecd47a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
