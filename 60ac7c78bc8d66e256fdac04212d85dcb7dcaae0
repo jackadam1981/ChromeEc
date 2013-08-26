@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAAc3//zOg\u003d",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2013-08-26T21:37:14Z",
+      "side": 1,
+      "message": "It\u0027s really unclear what this function returns.  Is 0 success or failure?  Perhaps a comment?\n\nI guess that 0 means success so scl will be high in the end?",
+      "revId": "60ac7c78bc8d66e256fdac04212d85dcb7dcaae0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAc3//zkc\u003d",
         "filename": "chip/stm32/i2c-stm32l.c",
         "patchSetId": 1
@@ -13,6 +30,40 @@
       "writtenOn": "2013-08-26T15:37:10Z",
       "side": 1,
       "message": "style nit: put \u0027return 0\u0027 on the next line",
+      "revId": "60ac7c78bc8d66e256fdac04212d85dcb7dcaae0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAc3//zM8\u003d",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2013-08-26T21:37:14Z",
+      "side": 1,
+      "message": "I\u0027m not sure I\u0027m enough of an expert on i2c to catch any bugs here, but really curious what was wrong with the old/tested algorithm from stm32f.  I can understand that it doesn\u0027t deal as well with clock stretching.  ...but it did have the nice property that it would try to avoid sending a bogus transaction while unwedging.\n\nSpecifically if we were midway through a write command it\u0027s nice to actually NAK the write rather than completing it.\n\nAlso: since you\u0027re driving sda low while you\u0027re clocking signals, won\u0027t that be interpreted as an ACK by the other side?  ...so it might start writing out the next byte?",
+      "revId": "60ac7c78bc8d66e256fdac04212d85dcb7dcaae0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAc3//zNQ\u003d",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2013-08-26T21:37:14Z",
+      "side": 1,
+      "message": "Interesting that in your code unwedge calls init, but in stm32f init calls unwedge.  Is there a reason you did it differently?\n\nSpecifically an expected way that the i2c would be wedged is if the EC got a reset (like a watchdog reset or a three-finger reset) right in the middle of a transaction.  In that case it would be really nice to try an unwedge at init time.  Otherwise we\u0027ll wait for the first transaction to fail.  ...and we don\u0027t retry.",
       "revId": "60ac7c78bc8d66e256fdac04212d85dcb7dcaae0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
