@@ -13,6 +13,7 @@
 #include "i8042_protocol.h"
 #include "keyboard_config.h"
 #include "keyboard_protocol.h"
+#include "keyboard_scan.h"
 #include "lightbar.h"
 #include "lpc.h"
 #include "power_button.h"
@@ -430,8 +431,10 @@ void keyboard_state_changed(int row, int col, int is_pressed)
 
 static void keystroke_enable(int enable)
 {
-	if (!keystroke_enabled && enable)
+	if (!keystroke_enabled && enable) {
 		CPRINTF("[%T KS enable]\n");
+		keyboard_scan_enable(1);
+	}
 	else if (keystroke_enabled && !enable)
 		CPRINTF("[%T KS disable]\n");
 
