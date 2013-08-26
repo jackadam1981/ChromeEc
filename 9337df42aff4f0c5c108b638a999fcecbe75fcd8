@@ -16,6 +16,24 @@
       "revId": "9337df42aff4f0c5c108b638a999fcecbe75fcd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAc3//zCo\u003d",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-26T22:59:22Z",
+      "side": 1,
+      "message": "Potentially less-hacky fix: just wake the scanning task explicitly\n\ntask_wake(TASK_ID_KEYSCAN);\n\nsince that doesn\u0027t have the side effect of enabling scanning.",
+      "parentUuid": "AAAAc3//zDQ\u003d",
+      "revId": "9337df42aff4f0c5c108b638a999fcecbe75fcd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
