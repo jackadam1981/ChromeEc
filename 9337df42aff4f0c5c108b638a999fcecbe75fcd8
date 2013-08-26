@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAc3//zDQ\u003d",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-26T22:56:35Z",
+      "side": 1,
+      "message": "Still kind of a hack.  If this is called when the power button is pressed, we could accidentally trigger a Silego reset.",
+      "revId": "9337df42aff4f0c5c108b638a999fcecbe75fcd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
