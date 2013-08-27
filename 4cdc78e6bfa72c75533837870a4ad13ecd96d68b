@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAc3//yro\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2013-08-27T03:02:53Z",
+      "side": 1,
+      "message": "Can you file a separate bug?  I\u0027ve renamed 22093 to indicate that we should use it to deal with \"normal\" cases, and defining CONFIG_I2C_DEBUG is not normal.\n\nSaid another way: we have a real bug that end users are seeing and we should focus on that as much as possible.  Landing this change seems good, too.  ...but we can track separately.\n\nThanks!  :)",
+      "revId": "4cdc78e6bfa72c75533837870a4ad13ecd96d68b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAc3//yrs\u003d",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2013-08-27T03:02:53Z",
+      "side": 1,
+      "message": "Should you dump it in the error case, too?",
+      "revId": "4cdc78e6bfa72c75533837870a4ad13ecd96d68b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
