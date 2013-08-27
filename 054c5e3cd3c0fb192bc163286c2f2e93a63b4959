@@ -34,6 +34,23 @@
       "revId": "054c5e3cd3c0fb192bc163286c2f2e93a63b4959",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed3cdca4_8ebb3bbb",
+        "filename": "common/chipset_gaia.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-27T22:45:31Z",
+      "side": 1,
+      "message": "Change this to ap_new_suspended \u003d ...\n\nAnd then\n\n  if (ap_new_suspended \u003d\u003d ap_suspended)\n      return;\n\nSo we\u0027re guaranteed that suspends and resumes will be paired (and a suspend-resume too short for us to catch is harmless)",
+      "revId": "054c5e3cd3c0fb192bc163286c2f2e93a63b4959",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
