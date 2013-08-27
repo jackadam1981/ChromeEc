@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAc3//yqE\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002292
+      },
+      "writtenOn": "2013-08-27T03:40:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAc3//yro\u003d",
+      "revId": "4cdc78e6bfa72c75533837870a4ad13ecd96d68b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAc3//yrs\u003d",
         "filename": "chip/stm32/i2c-stm32l.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2013-08-27T03:02:53Z",
       "side": 1,
       "message": "Should you dump it in the error case, too?",
+      "revId": "4cdc78e6bfa72c75533837870a4ad13ecd96d68b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAc3//yp0\u003d",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1002292
+      },
+      "writtenOn": "2013-08-27T03:40:19Z",
+      "side": 1,
+      "message": "It\u0027s dumped in i2c_xfer() when any error is seen.",
+      "parentUuid": "AAAAc3//yrs\u003d",
       "revId": "4cdc78e6bfa72c75533837870a4ad13ecd96d68b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
