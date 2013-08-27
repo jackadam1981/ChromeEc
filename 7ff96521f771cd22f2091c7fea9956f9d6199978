@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed3cdca4_71327201",
+        "filename": "common/chipset_haswell.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-27T23:32:20Z",
+      "side": 1,
+      "message": "Not sure this is in the right place.\n\nThe chipset task doesn\u0027t necessarily get called when the lid switches state.  So if the system goes into suspend with the lid open and the lid is then closed, we won\u0027t cut power.",
+      "revId": "7ff96521f771cd22f2091c7fea9956f9d6199978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
