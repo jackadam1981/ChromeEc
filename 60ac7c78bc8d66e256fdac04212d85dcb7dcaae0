@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAc3//ypg\u003d",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1002292
+      },
+      "writtenOn": "2013-08-27T10:30:01Z",
+      "side": 1,
+      "message": "Comment is added.",
+      "parentUuid": "AAAAc3//zOg\u003d",
+      "revId": "60ac7c78bc8d66e256fdac04212d85dcb7dcaae0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAc3//zkc\u003d",
         "filename": "chip/stm32/i2c-stm32l.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2013-08-26T15:37:10Z",
       "side": 1,
       "message": "style nit: put \u0027return 0\u0027 on the next line",
+      "revId": "60ac7c78bc8d66e256fdac04212d85dcb7dcaae0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAc3//ypc\u003d",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1002292
+      },
+      "writtenOn": "2013-08-27T10:30:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAc3//zkc\u003d",
       "revId": "60ac7c78bc8d66e256fdac04212d85dcb7dcaae0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAc3//yk4\u003d",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1002292
+      },
+      "writtenOn": "2013-08-27T10:30:01Z",
+      "side": 1,
+      "message": "I actually coded this based on your algorithm. But you are right, in addition to dealing with clock stretching, I intentionally keep SDA low to create arbitration loss which, come to think again, is not as robust as yours due to the ACK/NACK issue you described. So I removed it in the new patch.\n\nAnother thing is that I didn\u0027t do the start-stop sequence at the beginning because it doesn\u0027t seem effective if the SDA is driven low by the slave, which is seen in the wedged cases we have.",
+      "parentUuid": "AAAAc3//zM8\u003d",
+      "revId": "60ac7c78bc8d66e256fdac04212d85dcb7dcaae0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAc3//zNQ\u003d",
         "filename": "chip/stm32/i2c-stm32l.c",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2013-08-26T21:37:14Z",
       "side": 1,
       "message": "Interesting that in your code unwedge calls init, but in stm32f init calls unwedge.  Is there a reason you did it differently?\n\nSpecifically an expected way that the i2c would be wedged is if the EC got a reset (like a watchdog reset or a three-finger reset) right in the middle of a transaction.  In that case it would be really nice to try an unwedge at init time.  Otherwise we\u0027ll wait for the first transaction to fail.  ...and we don\u0027t retry.",
+      "revId": "60ac7c78bc8d66e256fdac04212d85dcb7dcaae0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAc3//ykw\u003d",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1002292
+      },
+      "writtenOn": "2013-08-27T10:30:01Z",
+      "side": 1,
+      "message": "The reason I did it differently is that the wedged cases we have do not lead to an EC reboot so the bus just stays wedged. But you\u0027ve got a point there. I re-arranged the code a bit so that we check if the bus is wedged in i2c_init() and unwedge it if it seems so.",
+      "parentUuid": "AAAAc3//zNQ\u003d",
       "revId": "60ac7c78bc8d66e256fdac04212d85dcb7dcaae0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAc3//ypU\u003d",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1002292
+      },
+      "writtenOn": "2013-08-27T10:30:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAc3//zkM\u003d",
+      "revId": "60ac7c78bc8d66e256fdac04212d85dcb7dcaae0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAc3//zkI\u003d",
         "filename": "chip/stm32/i2c-stm32l.c",
         "patchSetId": 1
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAc3//ypQ\u003d",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1002292
+      },
+      "writtenOn": "2013-08-27T10:30:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAc3//zkI\u003d",
+      "revId": "60ac7c78bc8d66e256fdac04212d85dcb7dcaae0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAc3//zkE\u003d",
         "filename": "chip/stm32/i2c-stm32l.c",
         "patchSetId": 1
@@ -115,6 +223,24 @@
       "writtenOn": "2013-08-26T15:37:10Z",
       "side": 1,
       "message": "Same here...",
+      "revId": "60ac7c78bc8d66e256fdac04212d85dcb7dcaae0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAc3//ypM\u003d",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1002292
+      },
+      "writtenOn": "2013-08-27T10:30:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAc3//zkE\u003d",
       "revId": "60ac7c78bc8d66e256fdac04212d85dcb7dcaae0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
