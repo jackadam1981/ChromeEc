@@ -11,6 +11,7 @@
 #include "console.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "lid_switch.h"
 #include "system.h"
 #include "timer.h"
 #include "util.h"
@@ -153,6 +154,13 @@ enum x86_state x86_handle_state(enum x86_state state)
 		break;
 
 	case X86_S3:
+		/*
+		 * if lid is closed; hold touchscreen in reset to cut power
+		 * usage.  if lid is open, take touchscreen out of reset so it
+		 * can wake the processor.
+		 */
+		gpio_set_level(GPIO_TOUCHSCREEN_RESET_L, lid_is_open());
+
 		/* Check for state transitions */
 		if (!x86_has_signals(IN_PGOOD_S3)) {
 			/* Required rail went away */
@@ -243,12 +251,20 @@ enum x86_state x86_handle_state(enum x86_state state)
 		/* Enable wireless */
 		wireless_enable(EC_WIRELESS_SWITCH_ALL);
 
+		/*
+		 * Make sure touchscreen is out if reset (even if the lid is
+		 * still closed); it may have been turned off if the lid was
+		 * closed in S3.
+		 */
+		gpio_set_level(GPIO_TOUCHSCREEN_RESET_L, 1);
+
 		/* Wait for non-core power rails good */
 		if (x86_wait_signals(IN_PGOOD_S0)) {
 			chipset_force_shutdown();
 			wireless_enable(0);
 			gpio_set_level(GPIO_EC_EDP_VDD_EN, 0);
 			gpio_set_level(GPIO_PP3300_DX_EN, 0);
+			gpio_set_level(GPIO_TOUCHSCREEN_RESET_L, 0);
 			return X86_S3;
 		}
 
