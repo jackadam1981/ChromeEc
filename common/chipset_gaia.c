@@ -236,6 +236,17 @@ static int check_for_power_off_event(void)
 	return 0;
 }
 
+static void gaia_suspend_deferred(void)
+{
+	hook_notify(HOOK_CHIPSET_SUSPEND);
+}
+DECLARE_DEFERRED(gaia_suspend_deferred);
+static void gaia_resume_deferred(void)
+{
+	hook_notify(HOOK_CHIPSET_RESUME);
+}
+DECLARE_DEFERRED(gaia_resume_deferred);
+
 void gaia_suspend_event(enum gpio_signal signal)
 {
 	if (!ap_on) /* power on/off : not a real suspend / resume */
@@ -253,10 +264,10 @@ void gaia_suspend_event(enum gpio_signal signal)
 		else
 			powerled_set_state(POWERLED_STATE_OFF);
 		/* Call hooks here since we don't know it prior to AP suspend */
-		hook_notify(HOOK_CHIPSET_SUSPEND);
+		hook_call_deferred(gaia_suspend_deferred, 0);
 	} else {
 		powerled_set_state(POWERLED_STATE_ON);
-		hook_notify(HOOK_CHIPSET_RESUME);
+		hook_call_deferred(gaia_resume_deferred, 0);
 	}
 }
 
