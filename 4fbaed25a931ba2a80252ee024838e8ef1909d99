@@ -36,6 +36,41 @@
     },
     {
       "key": {
+        "uuid": "ed3cdca4_4e8153b9",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-27T23:04:41Z",
+      "side": 1,
+      "message": "one more nit: I\u0027d have moved the implementation of i2c_init_port() up here.  Well, actually, up above line 122, since the comment says \"interface\" and this is now \"static implementation\".",
+      "parentUuid": "4d6968a1_fc456551",
+      "revId": "4fbaed25a931ba2a80252ee024838e8ef1909d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed3cdca4_ce638349",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-27T23:04:41Z",
+      "side": 1,
+      "message": "Nit: \"[%T I2C clock stretched too long?]\\n\"\n\n(it\u0027s good if I2C debug output starts with \"[%T I2C...\" so that it\u0027s obvious _which_ clock is stretched - I2C, not some other part of the system)",
+      "revId": "4fbaed25a931ba2a80252ee024838e8ef1909d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d6968a1_fc5c8525",
         "filename": "chip/stm32/i2c-stm32l.c",
         "patchSetId": 4
@@ -81,6 +116,75 @@
       "writtenOn": "2013-08-27T21:45:14Z",
       "side": 1,
       "message": "Do you need to set sda low now to get the stop to take effect?",
+      "revId": "4fbaed25a931ba2a80252ee024838e8ef1909d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d4ec857_512014c2",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-27T23:04:41Z",
+      "side": 1,
+      "message": "(yes)",
+      "parentUuid": "4d6968a1_1c685994",
+      "revId": "4fbaed25a931ba2a80252ee024838e8ef1909d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d4ec857_94e42a5d",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-27T23:04:41Z",
+      "side": 1,
+      "message": "Move up above implementation section of file (earlier than line 120)",
+      "revId": "4fbaed25a931ba2a80252ee024838e8ef1909d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed3cdca4_0ef10b56",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-27T23:04:41Z",
+      "side": 1,
+      "message": "Same here",
+      "revId": "4fbaed25a931ba2a80252ee024838e8ef1909d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d4ec857_34f61e0e",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-27T23:04:41Z",
+      "side": 1,
+      "message": "embedded comment is kinda weird. I\u0027d put it after.\n\ni2c_init(port(p, 1);  /* Check if wedged */",
       "revId": "4fbaed25a931ba2a80252ee024838e8ef1909d99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
