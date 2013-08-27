@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d5ef4fd_38c7e9e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2013-08-27T21:45:14Z",
+      "side": 1,
+      "message": "Could you add\n\n(4) Modify the bit bang wedge code to do a reboot instead of returning and see that the unwedge works at init time w/ no cancelled transactions.\n\n(5) Modify the bit bang wedge code to do a \"write\" and stop while the other side is acking.  See that unwedge works.\n\n\nFeel free to hijack the wedge CL, make your own changes, and re-upload.  Could have it take some parameters to indicate what type of wedge to do.\n\n\nAlso: do you have a \"Logic16\" to watch the bus during all of your simulations?  They\u0027re really cheap and it\u0027s very helpful.  The i2c lines for this are easy to find, since they go out the nice big battery connector.",
+      "revId": "4fbaed25a931ba2a80252ee024838e8ef1909d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d6968a1_fc456551",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2013-08-27T21:45:14Z",
+      "side": 1,
+      "message": "nit: I probably would have named it \"force_unwedge\"",
+      "revId": "4fbaed25a931ba2a80252ee024838e8ef1909d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d6968a1_fc5c8525",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2013-08-27T21:45:14Z",
+      "side": 1,
+      "message": "nit: rename to force_unwedge and invert to keep the parameter the same as the other function.",
+      "revId": "4fbaed25a931ba2a80252ee024838e8ef1909d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d6968a1_7cceb5a3",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2013-08-27T21:45:14Z",
+      "side": 1,
+      "message": "The one case that would be interesting to try is to simulate the \"slave is midway through acking our write\" case.  In that case the slave will be holding the line low, but for exactly one clock cycle.  Maybe the next 9 clock cycles will leave us in exactly the same \"slave acking our write\"?  I\u0027d have to actually hook it up to a logic analyzer to be sure.",
+      "revId": "4fbaed25a931ba2a80252ee024838e8ef1909d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d6968a1_1c685994",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2013-08-27T21:45:14Z",
+      "side": 1,
+      "message": "Do you need to set sda low now to get the stop to take effect?",
+      "revId": "4fbaed25a931ba2a80252ee024838e8ef1909d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
