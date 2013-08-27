@@ -16,6 +16,24 @@
       "revId": "054c5e3cd3c0fb192bc163286c2f2e93a63b4959",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d4ec857_f11668ba",
+        "filename": "common/chipset_gaia.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-27T22:41:24Z",
+      "side": 1,
+      "message": "Hmm.  I think the entire contents of gaia_suspend_event() should be moved to the deferred function.\n\nOtherwise a brief suspend-resume may end up processed as resume-suspend.",
+      "parentUuid": "4d4ec857_513574e6",
+      "revId": "054c5e3cd3c0fb192bc163286c2f2e93a63b4959",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
