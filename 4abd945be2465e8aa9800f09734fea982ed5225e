@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5215892d_7c82d5c6",
+        "filename": "chip/stm32/gpio-stm32l.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-08-28T16:32:45Z",
+      "side": 1,
+      "message": "is that right if we need the alternate function mode or the analog mode ?\nfor alternate func, it seems we are usually caling set_alternate.. after that function and resetting the MODER value.",
+      "revId": "4abd945be2465e8aa9800f09734fea982ed5225e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
