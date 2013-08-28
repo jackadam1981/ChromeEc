@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "72352dd1_d22664c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001878
+      },
+      "writtenOn": "2013-08-28T10:37:36Z",
+      "side": 1,
+      "message": "New test cases added.\n\nNo I don\u0027t have the analyzer here. I should definitely get one.",
+      "parentUuid": "2d5ef4fd_38c7e9e0",
+      "revId": "4fbaed25a931ba2a80252ee024838e8ef1909d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d6968a1_fc456551",
         "filename": "chip/stm32/i2c-stm32l.c",
         "patchSetId": 4
@@ -54,6 +72,42 @@
     },
     {
       "key": {
+        "uuid": "2d2c347a_082bc792",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1001878
+      },
+      "writtenOn": "2013-08-28T10:37:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d6968a1_fc456551",
+      "revId": "4fbaed25a931ba2a80252ee024838e8ef1909d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad1f4444_041ad62f",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1001878
+      },
+      "writtenOn": "2013-08-28T10:37:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed3cdca4_4e8153b9",
+      "revId": "4fbaed25a931ba2a80252ee024838e8ef1909d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed3cdca4_ce638349",
         "filename": "chip/stm32/i2c-stm32l.c",
         "patchSetId": 4
@@ -65,6 +119,24 @@
       "writtenOn": "2013-08-27T23:04:41Z",
       "side": 1,
       "message": "Nit: \"[%T I2C clock stretched too long?]\\n\"\n\n(it\u0027s good if I2C debug output starts with \"[%T I2C...\" so that it\u0027s obvious _which_ clock is stretched - I2C, not some other part of the system)",
+      "revId": "4fbaed25a931ba2a80252ee024838e8ef1909d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d2c347a_e8459351",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1001878
+      },
+      "writtenOn": "2013-08-28T10:37:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed3cdca4_ce638349",
       "revId": "4fbaed25a931ba2a80252ee024838e8ef1909d99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -88,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "72e7ed94_4207322c",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1001878
+      },
+      "writtenOn": "2013-08-28T10:37:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d6968a1_fc5c8525",
+      "revId": "4fbaed25a931ba2a80252ee024838e8ef1909d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d6968a1_7cceb5a3",
         "filename": "chip/stm32/i2c-stm32l.c",
         "patchSetId": 4
@@ -99,6 +189,24 @@
       "writtenOn": "2013-08-27T21:45:14Z",
       "side": 1,
       "message": "The one case that would be interesting to try is to simulate the \"slave is midway through acking our write\" case.  In that case the slave will be holding the line low, but for exactly one clock cycle.  Maybe the next 9 clock cycles will leave us in exactly the same \"slave acking our write\"?  I\u0027d have to actually hook it up to a logic analyzer to be sure.",
+      "revId": "4fbaed25a931ba2a80252ee024838e8ef1909d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "72e7ed94_02212ab8",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1001878
+      },
+      "writtenOn": "2013-08-28T10:37:36Z",
+      "side": 1,
+      "message": "Interesting. I tried it and it looked like exactly the same as you described. I add a check to end the loop early if sda is released by the slave.",
+      "parentUuid": "4d6968a1_7cceb5a3",
       "revId": "4fbaed25a931ba2a80252ee024838e8ef1909d99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -140,6 +248,24 @@
     },
     {
       "key": {
+        "uuid": "ad1f4444_645f0ae5",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1001878
+      },
+      "writtenOn": "2013-08-28T10:37:36Z",
+      "side": 1,
+      "message": "Ouch, thanks for the catch.",
+      "parentUuid": "4d6968a1_1c685994",
+      "revId": "4fbaed25a931ba2a80252ee024838e8ef1909d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d4ec857_94e42a5d",
         "filename": "chip/stm32/i2c-stm32l.c",
         "patchSetId": 4
@@ -151,6 +277,24 @@
       "writtenOn": "2013-08-27T23:04:41Z",
       "side": 1,
       "message": "Move up above implementation section of file (earlier than line 120)",
+      "revId": "4fbaed25a931ba2a80252ee024838e8ef1909d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad1f4444_e4521adf",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1001878
+      },
+      "writtenOn": "2013-08-28T10:37:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d4ec857_94e42a5d",
       "revId": "4fbaed25a931ba2a80252ee024838e8ef1909d99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -174,6 +318,24 @@
     },
     {
       "key": {
+        "uuid": "2d2c347a_481a1f7f",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1001878
+      },
+      "writtenOn": "2013-08-28T10:37:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed3cdca4_0ef10b56",
+      "revId": "4fbaed25a931ba2a80252ee024838e8ef1909d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d4ec857_34f61e0e",
         "filename": "chip/stm32/i2c-stm32l.c",
         "patchSetId": 4
@@ -185,6 +347,24 @@
       "writtenOn": "2013-08-27T23:04:41Z",
       "side": 1,
       "message": "embedded comment is kinda weird. I\u0027d put it after.\n\ni2c_init(port(p, 1);  /* Check if wedged */",
+      "revId": "4fbaed25a931ba2a80252ee024838e8ef1909d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d2c347a_281deb75",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1001878
+      },
+      "writtenOn": "2013-08-28T10:37:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d4ec857_34f61e0e",
       "revId": "4fbaed25a931ba2a80252ee024838e8ef1909d99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
