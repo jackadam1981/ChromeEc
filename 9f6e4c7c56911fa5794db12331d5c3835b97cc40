@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "320ad514_f8c5d181",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2013-08-28T15:54:09Z",
+      "side": 1,
+      "message": "I\u0027d be tempted to say that you should just break here and not go through the extra setting clock to low.  Why give the slave some reason to maybe change the \"sda\" back to low?",
+      "revId": "9f6e4c7c56911fa5794db12331d5c3835b97cc40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
