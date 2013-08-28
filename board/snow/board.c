@@ -34,11 +34,11 @@
 /* GPIO signal list.  Must match order from enum gpio_signal. */
 const struct gpio_info gpio_list[] = {
 	/* Inputs with interrupt handlers are first for efficiency */
-	{"KB_PWR_ON_L", GPIO_B, (1<<5),  GPIO_INT_BOTH, gaia_power_event},
-	{"PP1800_LDO2", GPIO_A, (1<<1),  GPIO_INT_BOTH, gaia_power_event},
-	{"XPSHOLD",     GPIO_A, (1<<3),  GPIO_INT_BOTH, gaia_power_event},
-	{"CHARGER_INT", GPIO_C, (1<<4),  GPIO_INT_FALLING, pmu_irq_handler},
-	{"LID_OPEN",    GPIO_C, (1<<13), GPIO_INT_BOTH, lid_interrupt},
+	{"KB_PWR_ON_L", GPIO_B, (1<<5),  GPIO_IN_INT_BOTH, gaia_power_event},
+	{"PP1800_LDO2", GPIO_A, (1<<1),  GPIO_IN_INT_BOTH, gaia_power_event},
+	{"XPSHOLD",     GPIO_A, (1<<3),  GPIO_IN_INT_BOTH, gaia_power_event},
+	{"CHARGER_INT", GPIO_C, (1<<4),  GPIO_IN_INT_FALLING, pmu_irq_handler},
+	{"LID_OPEN",    GPIO_C, (1<<13), GPIO_IN_INT_BOTH, lid_interrupt},
 	{"SUSPEND_L",   GPIO_A, (1<<7),  INT_BOTH_FLOATING, gaia_suspend_event},
 	{"WP_L",        GPIO_B, (1<<4),  GPIO_INPUT, NULL},
 	{"KB_IN00",     GPIO_C, (1<<8),  GPIO_KB_INPUT,
@@ -58,7 +58,7 @@ const struct gpio_info gpio_list[] = {
 	{"KB_IN07",     GPIO_D, (1<<2),  GPIO_KB_INPUT,
 	 keyboard_raw_gpio_interrupt},
 	/* Other inputs */
-	{"AC_PWRBTN_L", GPIO_A, (1<<0), GPIO_INT_BOTH, NULL},
+	{"AC_PWRBTN_L", GPIO_A, (1<<0), GPIO_IN_INT_BOTH, NULL},
 	{"SPI1_NSS",    GPIO_A, (1<<4), GPIO_DEFAULT, spi_event},
 	/*
 	 * I2C pins should be configured as inputs until I2C module is
@@ -69,10 +69,10 @@ const struct gpio_info gpio_list[] = {
 	{"I2C2_SCL",    GPIO_B, (1<<10), GPIO_INPUT, NULL},
 	{"I2C2_SDA",    GPIO_B, (1<<11), GPIO_INPUT, NULL},
 	/* Outputs */
-	{"AC_STATUS",   GPIO_A, (1<<5), GPIO_DEFAULT, NULL},
-	{"SPI1_MISO",   GPIO_A, (1<<6), GPIO_DEFAULT, NULL},
+	{"AC_STATUS",   GPIO_A, (1<<5),  GPIO_DEFAULT, NULL},
+	{"SPI1_MISO",   GPIO_A, (1<<6),  GPIO_DEFAULT, NULL},
 	{"EN_PP1350",   GPIO_A, (1<<2),  GPIO_OUT_LOW, NULL},
-	{"EN_PP5000",   GPIO_A, (1<<11),  GPIO_OUT_LOW, NULL},
+	{"EN_PP5000",   GPIO_A, (1<<11), GPIO_OUT_LOW, NULL},
 	{"EN_PP3300",   GPIO_A, (1<<8),  GPIO_OUT_LOW, NULL},
 	{"PMIC_PWRON_L",GPIO_A, (1<<12), GPIO_OUT_HIGH, NULL},
 	{"PMIC_RESET",  GPIO_A, (1<<15), GPIO_OUT_LOW, NULL},

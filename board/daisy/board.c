@@ -37,12 +37,12 @@
 /* GPIO signal list.  Must match order from enum gpio_signal. */
 const struct gpio_info gpio_list[] = {
 	/* Inputs with interrupt handlers are first for efficiency */
-	{"KB_PWR_ON_L", GPIO_B, (1<<5),  GPIO_INT_BOTH, gaia_power_event},
-	{"PP1800_LDO2", GPIO_A, (1<<1),  GPIO_INT_BOTH, gaia_power_event},
-	{"XPSHOLD",     GPIO_A, (1<<3),  GPIO_INT_RISING, gaia_power_event},
-	{"CHARGER_INT", GPIO_C, (1<<4),  GPIO_INT_RISING, NULL},
-	{"LID_OPEN",    GPIO_C, (1<<13), GPIO_INT_BOTH, lid_interrupt},
-	{"SUSPEND_L",   GPIO_A, (1<<7),  GPIO_INT_BOTH, gaia_suspend_event},
+	{"KB_PWR_ON_L", GPIO_B, (1<<5),  GPIO_IN_INT_BOTH, gaia_power_event},
+	{"PP1800_LDO2", GPIO_A, (1<<1),  GPIO_IN_INT_BOTH, gaia_power_event},
+	{"XPSHOLD",     GPIO_A, (1<<3),  GPIO_IN_INT_RISING, gaia_power_event},
+	{"CHARGER_INT", GPIO_C, (1<<4),  GPIO_IN_INT_RISING, NULL},
+	{"LID_OPEN",    GPIO_C, (1<<13), GPIO_IN_INT_BOTH, lid_interrupt},
+	{"SUSPEND_L",   GPIO_A, (1<<7),  GPIO_IN_INT_BOTH, gaia_suspend_event},
 	{"KB_IN00",     GPIO_C, (1<<8),  GPIO_KB_INPUT,
 	 keyboard_raw_gpio_interrupt},
 	{"KB_IN01",     GPIO_C, (1<<9),  GPIO_KB_INPUT,
@@ -60,8 +60,8 @@ const struct gpio_info gpio_list[] = {
 	{"KB_IN07",     GPIO_D, (1<<2),  GPIO_KB_INPUT,
 	 keyboard_raw_gpio_interrupt},
 	/* Other inputs */
-	{"AC_PWRBTN_L", GPIO_A, (1<<0), GPIO_INT_BOTH, NULL},
-	{"SPI1_NSS",    GPIO_A, (1<<4), GPIO_PULL_UP, NULL},
+	{"AC_PWRBTN_L", GPIO_A, (1<<0), GPIO_IN_INT_BOTH, NULL},
+	{"SPI1_NSS",    GPIO_A, (1<<4), GPIO_INPUT | GPIO_PULL_UP, NULL},
 	/*
 	 * I2C pins should be configured as inputs until I2C module is
 	 * initialized. This will avoid driving the lines unintentionally.

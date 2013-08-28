@@ -476,7 +476,8 @@ DECLARE_HOOK(HOOK_INIT, spi_init, HOOK_PRIO_DEFAULT);
 static void spi_chipset_startup(void)
 {
 	/* Enable pullup and interrupts on NSS */
-	gpio_set_flags(GPIO_SPI1_NSS, GPIO_INT_BOTH | GPIO_PULL_UP);
+	gpio_set_flags(GPIO_SPI1_NSS,
+		       GPIO_INPUT | GPIO_INT_BOTH | GPIO_PULL_UP);
 
 	/* Set SPI pins to alternate function */
 	gpio_config_module(MODULE_SPI, 1);
@@ -495,7 +496,7 @@ static void spi_chipset_shutdown(void)
 	state = SPI_STATE_DISABLED;
 
 	/* Disable pullup and interrupts on NSS */
-	gpio_set_flags(GPIO_SPI1_NSS, 0);
+	gpio_set_flags(GPIO_SPI1_NSS, GPIO_INPUT);
 
 	/* Set SPI pins to inputs so we don't leak power when AP is off */
 	gpio_config_module(MODULE_SPI, 0);

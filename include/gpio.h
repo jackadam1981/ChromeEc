@@ -18,25 +18,30 @@
 /* The following are valid for gpio_alt_func only */
 #define GPIO_ANALOG      (1 << 3)  /* Set pin to analog-mode */
 /* The following are valid for gpio_info only */
-#define GPIO_INPUT       0         /* Input */
-#define GPIO_OUTPUT      (1 << 4)  /* Output */
-#define GPIO_LOW         (1 << 5)  /* If GPIO_OUTPUT, set level low */
-#define GPIO_HIGH        (1 << 6)  /* If GPIO_OUTPUT, set level high */
-#define GPIO_INT_RISING  (1 << 7)  /* Interrupt on rising edge */
-#define GPIO_INT_FALLING (1 << 8)  /* Interrupt on falling edge */
-#define GPIO_INT_BOTH    (1 << 9)  /* Interrupt on both edges */
-#define GPIO_INT_LOW     (1 << 10) /* Interrupt on low level */
-#define GPIO_INT_HIGH    (1 << 11) /* Interrupt on high level */
-#define GPIO_DEFAULT     (1 << 12) /* Don't set up on boot */
+#define GPIO_INPUT       (1 << 4)  /* Input */
+#define GPIO_OUTPUT      (1 << 5)  /* Output */
+#define GPIO_LOW         (1 << 6)  /* If GPIO_OUTPUT, set level low */
+#define GPIO_HIGH        (1 << 7)  /* If GPIO_OUTPUT, set level high */
+#define GPIO_INT_RISING  (1 << 8)  /* Interrupt on rising edge */
+#define GPIO_INT_FALLING (1 << 9)  /* Interrupt on falling edge */
+#define GPIO_INT_BOTH    (1 << 10) /* Interrupt on both edges */
+#define GPIO_INT_LOW     (1 << 11) /* Interrupt on low level */
+#define GPIO_INT_HIGH    (1 << 12) /* Interrupt on high level */
+#define GPIO_DEFAULT     (1 << 13) /* Don't set up on boot */
 
 /* Common flag combinations */
-#define GPIO_OUT_LOW     (GPIO_OUTPUT | GPIO_LOW)
-#define GPIO_OUT_HIGH    (GPIO_OUTPUT | GPIO_HIGH)
-#define GPIO_ODR_HIGH    (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_HIGH)
-#define GPIO_ODR_LOW     (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_LOW)
-#define GPIO_INT_EDGE    (GPIO_INT_RISING | GPIO_INT_FALLING | GPIO_INT_BOTH)
-#define GPIO_INT_LEVEL   (GPIO_INT_LOW | GPIO_INT_HIGH)
-#define GPIO_INT_ANY     (GPIO_INT_EDGE | GPIO_INT_LEVEL)
+#define GPIO_OUT_LOW        (GPIO_OUTPUT | GPIO_LOW)
+#define GPIO_OUT_HIGH       (GPIO_OUTPUT | GPIO_HIGH)
+#define GPIO_ODR_HIGH       (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_HIGH)
+#define GPIO_ODR_LOW        (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_LOW)
+#define GPIO_INT_EDGE       (GPIO_INT_RISING | GPIO_INT_FALLING | GPIO_INT_BOTH)
+#define GPIO_INT_LEVEL      (GPIO_INT_LOW | GPIO_INT_HIGH)
+#define GPIO_IN_INT_EDGE    (GPIO_INPUT | GPIO_INT_EDGE)
+#define GPIO_IN_INT_LEVEL   (GPIO_INPUT | GPIO_INT_LEVEL)
+#define GPIO_IN_INT_ANY     (GPIO_INPUT | GPIO_INT_EDGE | GPIO_INT_LEVEL)
+#define GPIO_IN_INT_BOTH    (GPIO_INPUT | GPIO_INT_BOTH)
+#define GPIO_IN_INT_RISING  (GPIO_INPUT | GPIO_INT_RISING)
+#define GPIO_IN_INT_FALLING (GPIO_INPUT | GPIO_INT_FALLING)
 /* Note that if no flags are present, the signal is a high-Z input */
 
 /* GPIO signal definition structure, for use by board.c */

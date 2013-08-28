@@ -26,15 +26,15 @@
 /* GPIO signal list.  Must match order from enum gpio_signal. */
 const struct gpio_info gpio_list[] = {
 	/* Inputs with interrupt handlers are first for efficiency */
-	{"KB_PWR_ON_L", GPIO_B, (1<<5),  GPIO_INT_BOTH, gaia_power_event},
-	{"PP1800_LDO2", GPIO_A, (1<<1),  GPIO_INT_BOTH, gaia_power_event},
-	{"XPSHOLD",     GPIO_A, (1<<3),  GPIO_INT_RISING, gaia_power_event},
-	{"CHARGER_INT", GPIO_C, (1<<6),  GPIO_INT_RISING, pmu_irq_handler},
-	{"LID_OPEN",    GPIO_C, (1<<13), GPIO_INT_BOTH, lid_interrupt},
-	{"SUSPEND_L",   GPIO_C, (1<<7),  GPIO_INT_BOTH, gaia_suspend_event},
-	{"SPI1_NSS",    GPIO_A, (1<<4),  GPIO_INT_BOTH | GPIO_PULL_UP,
+	{"KB_PWR_ON_L", GPIO_B, (1<<5),  GPIO_IN_INT_BOTH, gaia_power_event},
+	{"PP1800_LDO2", GPIO_A, (1<<1),  GPIO_IN_INT_BOTH, gaia_power_event},
+	{"XPSHOLD",     GPIO_A, (1<<3),  GPIO_IN_INT_RISING, gaia_power_event},
+	{"CHARGER_INT", GPIO_C, (1<<6),  GPIO_IN_INT_RISING, pmu_irq_handler},
+	{"LID_OPEN",    GPIO_C, (1<<13), GPIO_IN_INT_BOTH, lid_interrupt},
+	{"SUSPEND_L",   GPIO_C, (1<<7),  GPIO_IN_INT_BOTH, gaia_suspend_event},
+	{"SPI1_NSS",    GPIO_A, (1<<4),  GPIO_IN_INT_BOTH | GPIO_PULL_UP,
 	 spi_event},
-	{"AC_PRESENT",  GPIO_A, (1<<0),  GPIO_INT_BOTH, extpower_interrupt},
+	{"AC_PRESENT",  GPIO_A, (1<<0),  GPIO_IN_INT_BOTH, extpower_interrupt},
 	{"KB_IN00",     GPIO_C, (1<<8),  GPIO_KB_INPUT,
 	 keyboard_raw_gpio_interrupt},
 	{"KB_IN01",     GPIO_C, (1<<9),  GPIO_KB_INPUT,
@@ -65,7 +65,7 @@ const struct gpio_info gpio_list[] = {
 	{"I2C1_SDA",    GPIO_B, (1<<7),  GPIO_ODR_HIGH, NULL},
 	{"I2C2_SCL",    GPIO_B, (1<<10), GPIO_ODR_HIGH, NULL},
 	{"I2C2_SDA",    GPIO_B, (1<<11), GPIO_ODR_HIGH, NULL},
-	{"LED_POWER_L", GPIO_A, (1<<2), GPIO_OUT_HIGH, NULL},
+	{"LED_POWER_L", GPIO_A, (1<<2),  GPIO_OUT_HIGH, NULL},
 	{"PMIC_PWRON",  GPIO_A, (1<<12), GPIO_OUT_LOW, NULL},
 	{"PMIC_RESET",  GPIO_A, (1<<15), GPIO_OUT_LOW, NULL},
  	{"KB_OUT00",    GPIO_B, (1<<0),  GPIO_KB_OUTPUT, NULL},
@@ -80,7 +80,7 @@ const struct gpio_info gpio_list[] = {
 	{"KB_OUT09",    GPIO_B, (1<<1),  GPIO_KB_OUTPUT, NULL},
 	{"KB_OUT10",    GPIO_C, (1<<5),  GPIO_KB_OUTPUT, NULL},
 	{"KB_OUT11",    GPIO_C, (1<<4),  GPIO_KB_OUTPUT, NULL},
-	{"KB_OUT12",    GPIO_A, (1<<13),  GPIO_KB_OUTPUT, NULL},
+	{"KB_OUT12",    GPIO_A, (1<<13), GPIO_KB_OUTPUT, NULL},
 };
 BUILD_ASSERT(ARRAY_SIZE(gpio_list) == GPIO_COUNT);
 
