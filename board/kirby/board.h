@@ -9,6 +9,8 @@
 #define __BOARD_H
 
 /* Optional features */
+#define CONFIG_ADC
+#define CONFIG_ADC_CLOCK
 #define CONFIG_CHIPSET_GAIA
 #define CONFIG_HOST_COMMAND_STATUS
 #define CONFIG_I2C
@@ -24,6 +26,7 @@ enum module_id {
 	MODULE_LED_KIRBY,
 	MODULE_SPI,
 	MODULE_UART,
+	MODULE_ADC,
 };
 
 /* By default, enable all console messages except keyboard */
@@ -52,6 +55,15 @@ enum module_id {
 #define TIM_CLOCK_MSB 2
 #define TIM_CLOCK_LSB 9
 #define TIM_WATCHDOG  4
+
+/* ADC signals */
+enum adc_channel {
+	ADC_CH_USB_VBUS_SNS = 0,
+	ADC_CH_USB_DP_SNS,
+	ADC_CH_USB_DN_SNS,
+	/* Number of ADC channels */
+	ADC_CH_COUNT
+};
 
 /* GPIO signal list */
 enum gpio_signal {
