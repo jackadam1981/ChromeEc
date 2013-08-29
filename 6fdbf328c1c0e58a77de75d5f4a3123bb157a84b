@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "d27c19a6_3b91df0b",
+        "filename": "board/kirby/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-29T17:28:56Z",
+      "side": 1,
+      "message": "Some comments here explaining what these channels are?  This would be sufficient:\n\n  /* Y, G, R charging LEDs */",
+      "revId": "6fdbf328c1c0e58a77de75d5f4a3123bb157a84b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d27c19a6_bb55ef55",
         "filename": "common/led_kirby.c",
         "patchSetId": 1
