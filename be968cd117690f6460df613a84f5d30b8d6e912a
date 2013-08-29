@@ -16,6 +16,24 @@
       "revId": "be968cd117690f6460df613a84f5d30b8d6e912a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "528829e2_7661b613",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-08-29T02:04:38Z",
+      "side": 1,
+      "message": "Yes, because we currently have more boards (using chipset_gaia) with this than that without.",
+      "parentUuid": "125dd131_6794922f",
+      "revId": "be968cd117690f6460df613a84f5d30b8d6e912a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
