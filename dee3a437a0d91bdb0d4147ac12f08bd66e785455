@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5215892d_1cf51974",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2013-08-29T17:34:07Z",
+      "side": 1,
+      "message": "I probably would have copied this from Wikipedia like I did the rest of this code.  It returns the value and also has a \"send_stop\" parameter.",
+      "revId": "dee3a437a0d91bdb0d4147ac12f08bd66e785455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
