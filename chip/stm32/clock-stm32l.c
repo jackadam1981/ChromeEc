@@ -5,6 +5,7 @@
 
 /* Clocks and power management settings */
 
+#include "chipset.h"
 #include "clock.h"
 #include "common.h"
 #include "console.h"
@@ -135,11 +136,25 @@ static void clock_set_osc(enum clock_osc osc)
 	}
 
 	/* Notify modules of frequency change unless we're initializing */
-	if (current_osc != OSC_INIT) {
-		current_osc = osc;
+	current_osc = osc;
+	if (current_osc != OSC_INIT)
 		hook_notify(HOOK_FREQ_CHANGE);
-	} else {
-		current_osc = osc;
+}
+
+void clock_enable_module(enum module_id module, int enable)
+{
+	/* Shouldn't change clock state in S0 */
+	if (chipset_in_state(CHIPSET_STATE_ON))
+		return;
+
+	switch (module) {
+#ifdef CONFIG_ADC_CLOCK
+	case MODULE_ADC:
+		clock_set_osc(enable ? OSC_HSI : OSC_MSI);
+		break;
+#endif
+	default:
+		return;
 	}
 }
 
