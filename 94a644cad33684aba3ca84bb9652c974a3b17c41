@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d27c19a6_9e9d81ae",
+        "filename": "include/gpio.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-08-29T17:54:32Z",
+      "side": 1,
+      "message": "I think GPIO_INT should always include \"GPIO_IN\"\nand avoid the GPIO_IN_INT_xxx",
+      "revId": "94a644cad33684aba3ca84bb9652c974a3b17c41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
