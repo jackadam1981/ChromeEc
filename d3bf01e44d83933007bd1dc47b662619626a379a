@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b27965b7_fa8841b0",
+        "filename": "chip/stm32/adc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-29T17:10:21Z",
+      "side": 1,
+      "message": "Suggest at least a comment here that the stm32f powers on the ADC at init-time, but stm32l will turn the ADC on/off with adc_prepare() / adc_release().",
+      "revId": "d3bf01e44d83933007bd1dc47b662619626a379a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d27c19a6_1bb743cf",
+        "filename": "chip/stm32/adc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-29T17:10:21Z",
+      "side": 1,
+      "message": "Will this later be implemented?\n\nIf so, indicate with a TODO comment\n\nIf not, put the code below in #else so it\u0027s not compiled for STM32L",
+      "revId": "d3bf01e44d83933007bd1dc47b662619626a379a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b27965b7_ba6ba9ec",
+        "filename": "chip/stm32/clock-stm32l.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-29T17:10:21Z",
+      "side": 1,
+      "message": "How does this work?  You\u0027re now overwriting current_osc before checking whether it\u0027s OSC_INIT.",
+      "revId": "d3bf01e44d83933007bd1dc47b662619626a379a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d27c19a6_bb4acfcb",
+        "filename": "chip/stm32/clock-stm32l.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-29T17:10:21Z",
+      "side": 1,
+      "message": "This doesn\u0027t enable the module\u0027s clock (that is, it does not control run-time clock gating to the module).  \n\nIt changes the entire system clock.  \n\nThis is NOT what I\u0027d expect to happen, and will have odd side effects.  For example, if there are two modules which act similarly to MODULE_ADC,\n\n  clock_enable_module(module1, 1);\n  clock_enable_module(module2, 0);\n\nand\n\n  clock_enable_module(module2, 0);\n  clock_enable_module(module1, 1);\n\nwill have opposite effects.  And there\u0027s the side effect that calling clock_enable_module(MODULE_ADC, 0) will leave the entire system running at 1MHz.\n\nI think we need a different way of doing this.  Perhaps clock_enable_module() has a bit array for modules which require HSI.  Update the bit array based on (1\u003c\u003cmodule).  Then if any module requires HSI (that is, the array is non-zero), clock_set_osc(OSC_HSI), else OSC_MSI.\n\nThen we can call clock_enable_module(MODULE_CHIPSET, 1) when the chipset is in S0, and clock_enable_module(MODULE_CHIPSET, 0)  when it goes to S3/S5, which gets rid of the need for the call to chipset_in_state() above.",
+      "revId": "d3bf01e44d83933007bd1dc47b662619626a379a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2511d1f_60990e64",
+        "filename": "include/clock.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-29T17:10:21Z",
+      "side": 1,
+      "message": "Note that if the module requires a higher system clock speed than the current system clock speed, the entire system clock will be increased to allow the module to operate.\n\nWhen a module is disabled, the system clock will be reduced to the highest clock required by the remaining enabled modules.",
+      "revId": "d3bf01e44d83933007bd1dc47b662619626a379a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
