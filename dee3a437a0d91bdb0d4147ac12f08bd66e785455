@@ -16,6 +16,91 @@
       "revId": "dee3a437a0d91bdb0d4147ac12f08bd66e785455",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2511d1f_a00f067d",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2013-08-29T17:47:46Z",
+      "side": 1,
+      "message": "I would have done the wedging in a separate function and just kept this function as a \"pure\" transfer function.",
+      "revId": "dee3a437a0d91bdb0d4147ac12f08bd66e785455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2511d1f_20043665",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2013-08-29T17:47:46Z",
+      "side": 1,
+      "message": "I\u0027d probably make the default bit count 2 but then force it to 8 for a \"write\" wedge.  I think the only way to wedge a write is to use 8, so other values don\u0027t make sense, do they?",
+      "revId": "dee3a437a0d91bdb0d4147ac12f08bd66e785455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2511d1f_c01202a5",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2013-08-29T17:47:46Z",
+      "side": 1,
+      "message": "Return an error rather than picking something for them?",
+      "revId": "dee3a437a0d91bdb0d4147ac12f08bd66e785455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2511d1f_a0f6e64a",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2013-08-29T17:47:46Z",
+      "side": 1,
+      "message": "nit:\n\n [wedge_flag [wedge_bit_count]]",
+      "revId": "dee3a437a0d91bdb0d4147ac12f08bd66e785455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b27965b7_7d998b63",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2013-08-29T17:47:46Z",
+      "side": 1,
+      "message": "Wedge host I2C bus.",
+      "revId": "dee3a437a0d91bdb0d4147ac12f08bd66e785455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
