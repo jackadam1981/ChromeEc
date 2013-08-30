@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "328d75f3_20ff6a1e",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1001878
+      },
+      "writtenOn": "2013-08-30T10:51:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5215892d_1cf51974",
+      "revId": "dee3a437a0d91bdb0d4147ac12f08bd66e785455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2511d1f_a00f067d",
         "filename": "chip/stm32/i2c-stm32l.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2013-08-29T17:47:46Z",
       "side": 1,
       "message": "I would have done the wedging in a separate function and just kept this function as a \"pure\" transfer function.",
+      "revId": "dee3a437a0d91bdb0d4147ac12f08bd66e785455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "528829e2_0dc6148e",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1001878
+      },
+      "writtenOn": "2013-08-30T10:51:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2511d1f_a00f067d",
       "revId": "dee3a437a0d91bdb0d4147ac12f08bd66e785455",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "126b11de_e02098b6",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1001878
+      },
+      "writtenOn": "2013-08-30T10:51:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2511d1f_20043665",
+      "revId": "dee3a437a0d91bdb0d4147ac12f08bd66e785455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2511d1f_c01202a5",
         "filename": "chip/stm32/i2c-stm32l.c",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2013-08-29T17:47:46Z",
       "side": 1,
       "message": "Return an error rather than picking something for them?",
+      "revId": "dee3a437a0d91bdb0d4147ac12f08bd66e785455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "126b11de_605fa81b",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1001878
+      },
+      "writtenOn": "2013-08-30T10:51:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2511d1f_c01202a5",
       "revId": "dee3a437a0d91bdb0d4147ac12f08bd66e785455",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "528829e2_2dc3d87d",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1001878
+      },
+      "writtenOn": "2013-08-30T10:51:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2511d1f_a0f6e64a",
+      "revId": "dee3a437a0d91bdb0d4147ac12f08bd66e785455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b27965b7_7d998b63",
         "filename": "chip/stm32/i2c-stm32l.c",
         "patchSetId": 2
@@ -98,6 +188,24 @@
       "writtenOn": "2013-08-29T17:47:46Z",
       "side": 1,
       "message": "Wedge host I2C bus.",
+      "revId": "dee3a437a0d91bdb0d4147ac12f08bd66e785455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "328d75f3_c00f9e7c",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1001878
+      },
+      "writtenOn": "2013-08-30T10:51:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b27965b7_7d998b63",
       "revId": "dee3a437a0d91bdb0d4147ac12f08bd66e785455",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
