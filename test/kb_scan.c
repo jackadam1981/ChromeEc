@@ -13,10 +13,17 @@
 #include "keyboard_raw.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
+#include "system.h"
 #include "task.h"
 #include "test_util.h"
 #include "timer.h"
 #include "util.h"
+
+#define TEST_STATE_CLEAN_UP    (1 << 0)
+#define TEST_STATE_STEP_2      (1 << 1)
+#define TEST_STATE_STEP_3      (1 << 2)
+#define TEST_STATE_PASSED      (1 << 3)
+#define TEST_STATE_FAILED      (1 << 4)
 
 #define KEYDOWN_DELAY_MS     10
 #define KEYDOWN_RETRY        10
@@ -340,7 +347,56 @@ static int lid_test(void)
 }
 #endif
 
-void run_test(void)
+static int test_check_boot_esc(void)
+{
+	TEST_CHECK(keyboard_scan_get_boot_key() == BOOT_KEY_ESC);
+}
+
+static int test_check_boot_down(void)
+{
+	TEST_CHECK(keyboard_scan_get_boot_key() == BOOT_KEY_DOWN_ARROW);
+}
+
+static int clean_up(void)
+{
+	system_set_scratchpad(0);
+	return EC_SUCCESS;
+}
+
+static void reboot_to_clean_up(uint32_t flags)
+{
+	ccprintf("Rebooting to clear WP...\n");
+	cflush();
+	system_set_scratchpad(TEST_STATE_CLEAN_UP | flags);
+	system_reset(SYSTEM_RESET_HARD);
+}
+
+static void reboot_to_next_step(uint32_t step)
+{
+	ccprintf("Rebooting to next test step...\n");
+	cflush();
+	system_set_scratchpad(step);
+	system_reset(SYSTEM_RESET_HARD);
+}
+
+void test_init(void)
+{
+	uint32_t state = system_get_scratchpad();
+
+	if (state & TEST_STATE_STEP_2) {
+		/* Power-F3-ESC */
+		system_set_reset_flags(system_get_reset_flags() |
+				       RESET_FLAG_RESET_PIN);
+		mock_key(1, 1, 1);
+	} else if (state & TEST_STATE_STEP_3) {
+		/* Power-F3-Down */
+		system_set_reset_flags(system_get_reset_flags() |
+				       RESET_FLAG_RESET_PIN);
+		mock_key(6, 11, 1);
+	}
+}
+
+static void run_test_step1(void)
 {
 	lid_open = 1;
 	test_reset();
@@ -355,5 +411,64 @@ void run_test(void)
 	RUN_TEST(lid_test);
 #endif
 
-	test_print_result();
+	if (test_get_error_count())
+		reboot_to_clean_up(TEST_STATE_FAILED);
+	else
+		reboot_to_next_step(TEST_STATE_STEP_2);
 }
+
+static void run_test_step2(void)
+{
+	lid_open = 1;
+	test_reset();
+
+	RUN_TEST(test_check_boot_esc);
+
+	if (test_get_error_count())
+		reboot_to_clean_up(TEST_STATE_FAILED);
+	else
+		reboot_to_next_step(TEST_STATE_STEP_3);
+}
+
+static void run_test_step3(void)
+{
+	lid_open = 1;
+	test_reset();
+
+	RUN_TEST(test_check_boot_down);
+
+	if (test_get_error_count())
+		reboot_to_clean_up(TEST_STATE_FAILED);
+	else
+		reboot_to_clean_up(TEST_STATE_PASSED);
+}
+
+int test_task(void *data)
+{
+	uint32_t state = system_get_scratchpad();
+
+	if (state & TEST_STATE_PASSED)
+		ccprintf("Pass!\n");
+	else if (state & TEST_STATE_FAILED)
+		ccprintf("Fail!\n");
+
+	if (state & TEST_STATE_STEP_2)
+		run_test_step2();
+	else if (state & TEST_STATE_STEP_3)
+		run_test_step3();
+	else if (state & TEST_STATE_CLEAN_UP)
+		clean_up();
+#ifdef EMU_BUILD
+	else
+		run_test_step1();
+#endif
+
+	return EC_SUCCESS;
+}
+
+#ifndef EMU_BUILD
+void run_test(void)
+{
+	run_test_step1();
+}
+#endif
