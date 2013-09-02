@@ -57,6 +57,17 @@ static int bq24192_watchdog_reset(void)
 	       bq24192_write(BQ24192_REG_POWER_ON_CFG, val);
 }
 
+int charger_enable_otg_power(int enabled)
+{
+	int val, rv;
+
+	rv = bq24192_read(BQ24192_REG_POWER_ON_CFG, &val);
+	if (rv)
+		return rv;
+	val = (val & ~0x3) | (enabled ? 2 : 1);
+	return bq24192_write(BQ24192_REG_POWER_ON_CFG, val);
+}
+
 int charger_set_input_current(int input_current)
 {
 	int i, value, rv;
