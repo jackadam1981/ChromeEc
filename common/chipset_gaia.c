@@ -183,6 +183,17 @@ static void set_pmic_pwrok(int asserted)
 #endif
 }
 
+/**
+ * Enable or disable display backlight power.
+ *
+ * @param enabled	Enable (=1) or disable (=0) the backlight power.
+ */
+static void enable_display_backlight(int enabled)
+{
+#ifdef BOARD_kirby
+	gpio_set_level(GPIO_BST_LED_EN, enabled);
+#endif
+}
 
 /**
  * Check for some event triggering the shutdown.
@@ -268,10 +279,12 @@ void gaia_suspend_deferred(void)
 			powerled_set_state(POWERLED_STATE_SUSPEND);
 		else
 			powerled_set_state(POWERLED_STATE_OFF);
+		enable_display_backlight(0);
 		/* Call hooks here since we don't know it prior to AP suspend */
 		hook_notify(HOOK_CHIPSET_SUSPEND);
 	} else {
 		powerled_set_state(POWERLED_STATE_ON);
+		enable_display_backlight(1);
 		hook_notify(HOOK_CHIPSET_RESUME);
 	}
 
@@ -383,6 +396,8 @@ void chipset_reset(int is_cold)
 
 void chipset_force_shutdown(void)
 {
+	enable_display_backlight(0);
+
 #ifdef BOARD_kirby
 	gpio_set_flags(GPIO_SOC1V8_XPSHOLD, GPIO_ODR_LOW);
 	udelay(DELAY_XPSHOLD_PULL);
@@ -574,6 +589,7 @@ static int react_to_xpshold(unsigned int timeout_us)
 	}
 	CPRINTF("[%T XPSHOLD seen]\n");
 	set_pmic_pwrok(0);
+	enable_display_backlight(1);
 	return 0;
 }
 
