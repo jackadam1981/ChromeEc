@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2e24519_ec2b4b63",
+        "filename": "core/host/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-09-03T20:06:06Z",
+      "side": 1,
+      "message": "is that correct ?\ntask_get_next_wake returns a task_id_t which a uint8_t.\nwith no task it worths 255 and you are casting it to in, you will get 255 rather than a negative number ?",
+      "revId": "766c6b2dfc6119ce7c975ae38e553ca962759a9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
