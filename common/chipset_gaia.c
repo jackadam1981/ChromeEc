@@ -44,7 +44,7 @@
 #define CPRINTF(format, args...) cprintf(CC_CHIPSET, format, ## args)
 
 /* Time necessary for the 5V and 3.3V regulator outputs to stabilize */
-#if defined(BOARD_pit) || defined(BOARD_puppy)
+#if defined(BOARD_pit) || defined(BOARD_puppy) || defined(BOARD_nyan)
 #define DELAY_5V_SETUP		(2 * MSEC)
 #define DELAY_3V_SETUP		(2 * MSEC)
 #else
@@ -60,7 +60,11 @@
 #define DELAY_RAIL_STAGGERING 100  /* 100us */
 
 /* Long power key press to force shutdown */
+#ifndef BOARD_nyan
 #define DELAY_FORCE_SHUTDOWN  (8 * SECOND)
+#else
+#define DELAY_FORCE_SHUTDOWN  (9 * SECOND)
+#endif
 
 /* Time necessary for pulling down XPSHOLD to shutdown PMIC power */
 #define DELAY_XPSHOLD_PULL (2 * MSEC)
@@ -496,6 +500,11 @@ static int power_on(void)
 	gpio_set_level(GPIO_EN_PP3300, 1);
 	usleep(DELAY_3V_SETUP);
 #endif
+
+#ifdef BOARD_nyan
+	gpio_set_level(GPIO_AP_RESET_L, 1);
+#endif
+
 	if (gpio_get_level(GPIO_SOC1V8_XPSHOLD) == 0) {
 		/* Initialize non-AP components */
 		hook_notify(HOOK_CHIPSET_PRE_INIT);
@@ -583,6 +592,19 @@ static int react_to_xpshold(unsigned int timeout_us)
 		CPRINTF("[%T XPSHOLD not seen in time]\n");
 		return -1;
 	}
+
+#ifdef BOARD_nyan
+	/* TODO: temp workaround, will fix later.
+	 * nyan's HOLD will go low for about 20ms after initial high.
+	 * This is to monitor how HOLD signal behaves, and wait for the glitch
+	 * to disappear.
+	 */
+	while (gpio_get_level(GPIO_SOC1V8_XPSHOLD) == 1)
+		CPRINTF("[%T XPSHOLD==1\n");
+	while (gpio_get_level(GPIO_SOC1V8_XPSHOLD) == 0)
+		CPRINTF("[%T XPSHOLD==0\n");
+#endif
+
 	CPRINTF("[%T XPSHOLD seen]\n");
 	set_pmic_pwrok(0);
 	return 0;
