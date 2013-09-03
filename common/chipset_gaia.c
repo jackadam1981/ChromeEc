@@ -44,7 +44,7 @@
 #define CPRINTF(format, args...) cprintf(CC_CHIPSET, format, ## args)
 
 /* Time necessary for the 5V and 3.3V regulator outputs to stabilize */
-#if defined(BOARD_pit) || defined(BOARD_puppy)
+#if defined(BOARD_pit) || defined(BOARD_puppy) || defined(BOARD_nyan)
 #define DELAY_5V_SETUP		(2 * MSEC)
 #define DELAY_3V_SETUP		(2 * MSEC)
 #else
@@ -55,7 +55,11 @@
 #define DELAY_RAIL_STAGGERING 100  /* 100us */
 
 /* Long power key press to force shutdown */
+#ifndef BOARD_nyan
 #define DELAY_FORCE_SHUTDOWN  (8 * SECOND)
+#else
+#define DELAY_FORCE_SHUTDOWN  (9 * SECOND)
+#endif
 
 /*
  * If the power key is pressed to turn on, then held for this long, we
@@ -471,6 +475,11 @@ static int power_on(void)
 	gpio_set_level(GPIO_EN_PP3300, 1);
 	usleep(DELAY_3V_SETUP);
 #endif
+
+#ifdef BOARD_nyan
+	gpio_set_level(GPIO_AP_RESET_L, 1);
+#endif
+
 	if (gpio_get_level(GPIO_SOC1V8_XPSHOLD) == 0) {
 		/* Initialize non-AP components */
 		hook_notify(HOOK_CHIPSET_PRE_INIT);
