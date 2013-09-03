@@ -12,6 +12,7 @@ common-y+=gpio_common.o version.o printf.o queue.o
 common-y+=throttle_ap.o
 
 common-$(BOARD_daisy)+=extpower_snow.o
+common-$(BOARD_nyan)+=battery_nyan.o
 common-$(BOARD_snow)+=extpower_snow.o
 
 common-$(CONFIG_BACKLIGHT_LID)+=backlight_lid.o
