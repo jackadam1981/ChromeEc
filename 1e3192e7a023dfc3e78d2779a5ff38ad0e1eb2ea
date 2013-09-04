@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "328bb571_ea354bef",
+        "filename": "common/charge_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-09-04T15:31:27Z",
+      "side": 1,
+      "message": "You say \"both\" here, but the code below does \"either\" (||, not \u0026\u0026).  Which is correct?",
+      "revId": "1e3192e7a023dfc3e78d2779a5ff38ad0e1eb2ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b2296521_b75342e4",
+        "filename": "common/charge_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-09-04T15:31:27Z",
+      "side": 1,
+      "message": "Maybe charge_request()?",
+      "revId": "1e3192e7a023dfc3e78d2779a5ff38ad0e1eb2ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
