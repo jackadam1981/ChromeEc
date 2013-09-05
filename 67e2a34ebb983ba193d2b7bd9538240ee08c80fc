@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12bcf130_6f98b16c",
+        "filename": "common/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-09-05T17:00:49Z",
+      "side": 1,
+      "message": "ccprintf(\"%sAllowed\\n, value ? \"\" : \"Not \");",
+      "revId": "67e2a34ebb983ba193d2b7bd9538240ee08c80fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
