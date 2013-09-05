@@ -50,6 +50,24 @@
       "revId": "57a23737754718702c9905b2bc1b2678498f091b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2a03d0a_eeaadf85",
+        "filename": "common/led_kirby.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-09-05T16:59:45Z",
+      "side": 1,
+      "message": "Ah, I see, if no extpower you\u0027ve already returned above.  But then this case shouldn\u0027t just set yellow, it should break.",
+      "parentUuid": "12bcf130_af99f977",
+      "revId": "57a23737754718702c9905b2bc1b2678498f091b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
