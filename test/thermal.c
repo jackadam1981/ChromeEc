@@ -52,7 +52,7 @@ void chipset_force_shutdown(void)
 	cpu_shutdown = 1;
 }
 
-void chipset_throttle_cpu(int throttled)
+void chipset_throttle_cpu_implementation(int throttled)
 {
 	cpu_throttled = throttled;
 }

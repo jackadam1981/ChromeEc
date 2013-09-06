@@ -63,15 +63,12 @@ void chipset_exit_hard_off(void);
 static inline void chipset_exit_hard_off(void) { }
 #endif
 
-/**
- * Enable/disable CPU throttling.
- *
- * @param throttle	Enable (!=0) or disable(0) throttling
- */
-void chipset_throttle_cpu(int throttle);
+/* This is a private chipset-specific implementation. Don't call this
+ * directly. */
+void chipset_throttle_cpu_implementation(int throttle);
 
 /**
- * Immedaitely shut off power to main processor and chipset.
+ * Immediately shut off power to main processor and chipset.
  *
  * This is intended for use when the system is too hot or battery power is
  * critical.
