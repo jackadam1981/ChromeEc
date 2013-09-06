@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "128a319d_7f314ffb",
+        "filename": "common/led_kirby.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-09-06T02:17:32Z",
+      "side": 1,
+      "message": "Done. Also moved REINIT.",
+      "parentUuid": "32b7354e_3003a88f",
+      "revId": "57a23737754718702c9905b2bc1b2678498f091b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12bcf130_8f9eb55b",
         "filename": "common/led_kirby.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2013-09-05T16:58:47Z",
       "side": 1,
       "message": "IDLE0 also shouldn\u0027t set LED; wait until the next call, then it will go to IDLE.",
+      "revId": "57a23737754718702c9905b2bc1b2678498f091b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f28e7db0_7e4a3157",
+        "filename": "common/led_kirby.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-09-06T02:17:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12bcf130_8f9eb55b",
       "revId": "57a23737754718702c9905b2bc1b2678498f091b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -65,6 +101,24 @@
       "side": 1,
       "message": "Ah, I see, if no extpower you\u0027ve already returned above.  But then this case shouldn\u0027t just set yellow, it should break.",
       "parentUuid": "12bcf130_af99f977",
+      "revId": "57a23737754718702c9905b2bc1b2678498f091b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12587119_d21242c9",
+        "filename": "common/led_kirby.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-09-06T02:17:32Z",
+      "side": 1,
+      "message": "I put DISCHARGE here because battery can be discharging with AC (input power \u003c consumed power), but I was wrong because the state would be in CHARGE state in this case. Moved to below.",
+      "parentUuid": "f2a03d0a_eeaadf85",
       "revId": "57a23737754718702c9905b2bc1b2678498f091b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
