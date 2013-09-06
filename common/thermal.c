@@ -131,10 +131,10 @@ static void thermal_control(void)
 
 	if (cond_went_true(&cond_hot[EC_TEMP_THRESH_HIGH])) {
 		CPRINTF("[%T thermal HIGH]\n");
-		chipset_throttle_cpu(1);
+		chipset_throttle_cpu(1, THROTTLE_SRC_THERMAL);
 	} else if (cond_went_false(&cond_hot[EC_TEMP_THRESH_HIGH])) {
 		CPRINTF("[%T thermal no longer high]\n");
-		chipset_throttle_cpu(0);
+		chipset_throttle_cpu(0, THROTTLE_SRC_THERMAL);
 	}
 
 	if (cond_went_true(&cond_hot[EC_TEMP_THRESH_WARN])) {
