@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27f1b550_896c4138",
+        "filename": "common/extpower_leon.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000238
+      },
+      "writtenOn": "2013-09-09T10:54:48Z",
+      "side": 1,
+      "message": "This works but you could remove the need for this customized extpower file by adding the following function to battery_leon.c that is called on the AC_CHANGE hook.\n\nstatic void battery_leon_ac_change(void)\n{\n  if (extpower_is_present())\n    sb_write(SB_SHIP_MODE_ADDR, SB_SHIP_RESET_DATA);\n}\nDECLARE_HOOK(HOOK_AC_CHANGE, battery_leon_ac_change, HOOK_PRIO_DEFAULT);",
+      "revId": "e201478bdf901ec32aab1fb4ffbdbfca87aacc72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
