@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "475dc95e_f9d23749",
+        "filename": "common/gpio_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-09-10T15:55:34Z",
+      "side": 1,
+      "message": "We should just fix those functions on STM32, since their definitions allow passing multiple bits.\n\nAlso suggest making a util function:\n\n /**\n  * Get-and-clear next bit from mask.\n  *\n  * Starts with most significant bit.\n  *\n  * @param mask Bitmask to extract next bit from\n  * @return bit position (0..31)\n  */\n int get_next_bit(uint32_t *mask)\n\nThen you can do:\n\nwhile (mask) {\n  int bit \u003d get_next_bit(\u0026mask);\n  ...\n}",
+      "revId": "3eb8cb45dfed91055b6ecd4ccaf73083f541c103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
