@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "475dc95e_79046728",
+        "filename": "common/charger_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-09-10T15:16:24Z",
+      "side": 1,
+      "message": "replacing the \nif (rv !\u003d EC_SUCCESS)\n  ccprintf(\"%s\\n\", get_error_text(rv));\nby something like :\nif (rv\u003d\u003d EC_ERROR_UNIMPLEMENTED)\n   ccputs(\"(unsupported)\\n\")\nelse  if (rv !\u003d EC_SUCCESS)\n   ccputs(\"(error)\\n\");\n \nmight save you a stack overflow soon",
+      "revId": "280c8571d5918e68d76603a14ddd983795490a51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
