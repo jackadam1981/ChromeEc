@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47bf898c_8c5f87eb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2013-09-10T16:51:02Z",
+      "side": 1,
+      "message": "In the future, when cherry-picking, change the old \"Change-Id\" to \"Original-Change-Id\", then delete all the only reviewed / tested lines. Ex.\n\nOriginal-Change-Id: I73a95e8b8add80a927742c22d7d2a9e30f806883\n\nSigned-off-by: David Huang \u003cDavid.Huang@quantatw.com\u003e",
+      "revId": "356f13e2452baeaca01d90ac4afff9f6a602e31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
