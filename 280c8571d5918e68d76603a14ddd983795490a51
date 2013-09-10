@@ -16,6 +16,24 @@
       "revId": "280c8571d5918e68d76603a14ddd983795490a51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "47bf898c_0cb6371f",
+        "filename": "common/charger_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-09-10T16:25:01Z",
+      "side": 1,
+      "message": "Or:\n\n  if (rv \u003d\u003d EC_SUCCESS)\n    return 1;\n\n  ccputs(rv \u003d\u003d EC_ERROR_UNIMPLEMENTED ? \"(unsupported)\\n\" : \"(error)\\n\")) \n  return 0;",
+      "parentUuid": "475dc95e_79046728",
+      "revId": "280c8571d5918e68d76603a14ddd983795490a51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
