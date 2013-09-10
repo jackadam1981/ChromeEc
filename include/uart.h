@@ -126,6 +126,23 @@ void uart_tx_flush(void);
  */
 int uart_tx_ready(void);
 
+#ifdef CONFIG_UART_TX_DMA
+
+/**
+ * Return non-zero if UART is ready to start a DMA transfer.
+ */
+int uart_tx_dma_ready(void);
+
+/**
+ * Start a UART transmit DMA transfer
+ *
+ * @param src		Pointer to data to send
+ * @param len		Length of transfer in bytes
+ */
+void uart_tx_dma_start(const char *src, int len);
+
+#endif /* CONFIG_UART_TX_DMA */
+
 /**
  * Return non-zero if the UART has a character available to read.
  */
