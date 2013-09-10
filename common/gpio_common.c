@@ -65,19 +65,21 @@ void gpio_config_module(enum module_id id, int enable)
 {
 	const struct gpio_alt_func *af = gpio_alt_funcs;
 	int i;
+	int mask, bit, flags, func;
 
 	/* Set module's pins to alternate functions */
 	for (i = 0; i < gpio_alt_funcs_count; i++, af++) {
 		if (id != af->module_id)
 			continue;  /* Pins for some other module */
 
-		if (enable) {
-			gpio_set_flags_by_mask(af->port, af->mask, af->flags);
-			gpio_set_alternate_function(af->port, af->mask,
-						    af->func);
-		} else {
-			gpio_set_flags_by_mask(af->port, af->mask, GPIO_INPUT);
-			gpio_set_alternate_function(af->port, af->mask, -1);
+		mask = af->mask;
+		flags = enable ? af->flags : GPIO_INPUT;
+		func = enable ? af->func : -1;
+		while (mask) {
+			bit = 31 - __builtin_clz(mask);
+			gpio_set_flags_by_mask(af->port, (1 << bit), flags);
+			gpio_set_alternate_function(af->port, (1 << bit), func);
+			mask &= ~(1 << bit);
 		}
 	}
 }
