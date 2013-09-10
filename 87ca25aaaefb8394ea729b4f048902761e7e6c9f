@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c768d904_3e200d61",
+        "filename": "chip/stm32/uart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-09-10T22:36:18Z",
+      "side": 1,
+      "message": "I suggest putting the \u0027;\u0027 on the following line for clarity:\n\n   while (..)\n       ;\n\nThat\u0027s how it\u0027s done in uart_tx_flush(), above.",
+      "revId": "87ca25aaaefb8394ea729b4f048902761e7e6c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
