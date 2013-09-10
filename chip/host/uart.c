@@ -69,8 +69,10 @@ static void trigger_interrupt(void)
 	 * TODO: Check global interrupt status when we have
 	 * interrupt support.
 	 */
-	if (!int_disabled)
-		uart_process();
+	if (!int_disabled) {
+		uart_process_input();
+		uart_process_output();
+	}
 }
 
 int uart_init_done(void)
