@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27529551_5b5cf751",
+        "filename": "chip/stm32/gpio-stm32l.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-09-10T18:22:49Z",
+      "side": 1,
+      "message": "3 \u003c\u003c (bit * 2) would also work...",
+      "revId": "0c15b5a1ab3874b5beb49764f6a986691273a21a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27529551_fb218bc0",
+        "filename": "include/util.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-09-10T18:22:49Z",
+      "side": 1,
+      "message": "Is this only valid if mask!\u003d0?\n\n(It\u0027s fine to do that, but please comment if that\u0027s a requirement)",
+      "revId": "0c15b5a1ab3874b5beb49764f6a986691273a21a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
