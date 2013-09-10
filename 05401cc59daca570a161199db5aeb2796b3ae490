@@ -16,6 +16,24 @@
       "revId": "05401cc59daca570a161199db5aeb2796b3ae490",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e7addd69_a6f5c63e",
+        "filename": "common/battery_kirby.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-09-10T17:05:51Z",
+      "side": 1,
+      "message": "Done. Thanks for catching this.",
+      "parentUuid": "47d6a9dc_e01dec7d",
+      "revId": "05401cc59daca570a161199db5aeb2796b3ae490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
