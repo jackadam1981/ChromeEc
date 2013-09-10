@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c768d904_a91225a9",
+        "filename": "common/chipset_haswell.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-09-10T23:30:38Z",
+      "side": 1,
+      "message": "Now that the high-level API is throttle_ap(), no need to rename chipset_throttle_cpu()",
+      "revId": "a1157dcd41928233f53873ba08f1690157b8147f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c768d904_095a398b",
+        "filename": "include/chipset.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-09-10T23:30:38Z",
+      "side": 1,
+      "message": "...intended for use by throttle_ap()?",
+      "revId": "a1157dcd41928233f53873ba08f1690157b8147f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
