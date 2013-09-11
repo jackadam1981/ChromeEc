@@ -64,7 +64,7 @@ int mpu_nx_region(uint8_t region, uint32_t addr, uint32_t size)
 {
 	return mpu_config_region(
 		region, addr, size,
-		MPU_ATTR_NX | MPU_ATTR_FULLACCESS | MPU_ATTR_INTERNALSRAM, 1);
+		MPU_ATTR_NX | MPU_ATTR_RW_RW | MPU_ATTR_INTERNAL_SRAM, 1);
 }
 
 void mpu_enable(void)
@@ -90,17 +90,45 @@ uint32_t mpu_get_type(void)
 int mpu_protect_ram(void)
 {
 	int ret;
-
 	ret = mpu_nx_region(0, CONFIG_RAM_BASE, CONFIG_RAM_SIZE);
 	if (ret != EC_SUCCESS)
 		return ret;
-
 	ret = mpu_config_region(
 		7, (uint32_t)&__iram_text_start,
 		(uint32_t)(&__iram_text_end - &__iram_text_start),
-		MPU_ATTR_FULLACCESS | MPU_ATTR_INTERNALSRAM, 1);
-
+		MPU_ATTR_RW_RW | MPU_ATTR_INTERNAL_SRAM, 1);
 	return ret;
+}
+
+static int mpu_lock_flash(uint32_t addr, uint32_t size)
+{
+	return mpu_config_region(
+		1, addr, size,
+		MPU_ATTR_NX | MPU_ATTR_RO_NO | MPU_ATTR_FLASH_MEMORY, 1);
+}
+
+static int mpu_unlock_flash(uint32_t addr, uint32_t size)
+{
+	return mpu_config_region(
+		6, addr, size, MPU_ATTR_RW_RW | MPU_ATTR_FLASH_MEMORY, 1);
+}
+
+int mpu_lock_ro_flash(void)
+{
+	return mpu_lock_flash(CONFIG_FW_RO_OFF, CONFIG_FW_IMAGE_SIZE)
+#ifndef CONFIG_PSTATE_AT_END
+		| mpu_unlock_flash(CONFIG_FW_PSTATE_OFF, CONFIG_FW_PSTATE_SIZE)
+#endif
+		;
+}
+
+int mpu_lock_rw_flash(void)
+{
+	return mpu_lock_flash(CONFIG_FW_RW_OFF, CONFIG_FW_IMAGE_SIZE)
+#ifdef CONFIG_PSTATE_AT_END
+		| mpu_unlock_flash(CONFIG_FW_PSTATE_OFF, CONFIG_FW_PSTATE_SIZE)
+#endif
+		;
 }
 
 int mpu_pre_init(void)
@@ -114,7 +142,7 @@ int mpu_pre_init(void)
 	for (i = 0; i < 8; ++i) {
 		mpu_config_region(
 			i, CONFIG_RAM_BASE, CONFIG_RAM_SIZE,
-			MPU_ATTR_FULLACCESS | MPU_ATTR_INTERNALSRAM, 0);
+			MPU_ATTR_RW_RW | MPU_ATTR_INTERNAL_SRAM, 0);
 	}
 
 	return EC_SUCCESS;

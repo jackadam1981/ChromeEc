@@ -217,20 +217,50 @@ void system_disable_jump(void)
 	disable_jump = 1;
 
 #ifdef CONFIG_MPU
-	/*
-	 * Lock down memory
-	 * TODO: Lock down other images (RO or RW) not running.
-	 */
 	{
-		int mpu_error = mpu_protect_ram();
-		if (mpu_error == EC_SUCCESS) {
-			mpu_enable();
-			CPRINTF("RAM locked. Exclusion %08x-%08x\n",
+		int ret;
+		int enable_mpu = 0;
+		enum system_image_copy_t copy;
+
+		CPRINTF("[%T MPU type is %08x]\n", mpu_get_type());
+		/*
+		 * Protect RAM from code execution
+		 */
+		ret = mpu_protect_ram();
+		if (ret == EC_SUCCESS) {
+			enable_mpu = 1;
+			CPRINTF("[%T RAM locked. Exclusion %08x-%08x]\n",
 				&__iram_text_start, &__iram_text_end);
 		} else {
-			CPRINTF("Failed to lock RAM. mpu_type:%08x. error:%d\n",
-				mpu_get_type(), mpu_error);
+			CPRINTF("[%T Failed to lock RAM. error:%d]\n", ret);
 		}
+
+		/*
+		 * Lock down inert flash image.
+		 */
+		switch (system_get_image_copy()) {
+		case SYSTEM_IMAGE_RO:
+			ret =  mpu_lock_rw_flash();
+			copy = SYSTEM_IMAGE_RW;
+			break;
+		case SYSTEM_IMAGE_RW:
+			ret =  mpu_lock_ro_flash();
+			copy = SYSTEM_IMAGE_RO;
+			break;
+		default:
+			copy = SYSTEM_IMAGE_UNKNOWN;
+			ret = !EC_SUCCESS;
+		}
+		if (ret == EC_SUCCESS) {
+			enable_mpu = 1;
+			CPRINTF("[%T %s image locked]\n", image_names[copy]);
+		} else {
+			CPRINTF("[%T Failed to lock %s image. error:%d]\n",
+				image_names[copy], ret);
+		}
+
+		if (enable_mpu)
+			mpu_enable();
 	}
 #endif
 }
