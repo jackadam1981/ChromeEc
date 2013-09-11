@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7f07da0_5fbfd1a4",
+        "filename": "common/led_wolf.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000238
+      },
+      "writtenOn": "2013-09-11T16:07:05Z",
+      "side": 1,
+      "message": "Sorry another comment, but you don\u0027t have to fix this now. I think this means that the LED will be amber when the device is not plugged in and in S3 (and maybe S5 also). When you get the spec, please get clarification on what the LED should do in S5, S3, and S0. If you only want the LED on in S0, you can check it with \"chipset_in_state(CHIPSET_STATE_ON)\" from chipset.h",
+      "revId": "9958daadae274d82855ab0f0be6b40727b4f476e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
