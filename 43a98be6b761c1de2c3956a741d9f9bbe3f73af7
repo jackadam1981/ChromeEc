@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "072591ee_c7149e57",
+        "filename": "chip/stm32/uart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-09-11T02:09:21Z",
+      "side": 1,
+      "message": "You could do something like (at top of file)\n\n #ifdef CONFIG_UART_TX_DMA\n # define UART_TX_BITS       STM32_USART_CR1_TCIE;\n #else\n # define UART_TX_BITS       STM32_USART_CR1_TXEIE;\n #endif\n\nThen use UART_TX_BITS in these 3 places instead.",
+      "revId": "43a98be6b761c1de2c3956a741d9f9bbe3f73af7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "072591ee_27313a00",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-09-11T02:09:21Z",
+      "side": 1,
+      "message": "I\u0027d argue that you can \u0027free up\u0027 this part of the buffer now, rather than wait. Any reason to wait?",
+      "revId": "43a98be6b761c1de2c3956a741d9f9bbe3f73af7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "072591ee_673b32e0",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-09-11T02:09:21Z",
+      "side": 1,
+      "message": "Don\u0027t use?\n\nAre you setting the default value for non-STM32 here?",
+      "revId": "43a98be6b761c1de2c3956a741d9f9bbe3f73af7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "072591ee_0736b6f7",
+        "filename": "include/uart.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-09-11T02:09:21Z",
+      "side": 1,
+      "message": "You don\u0027t really need this #ifdef as you will get a link error with C line number info anyway",
+      "revId": "43a98be6b761c1de2c3956a741d9f9bbe3f73af7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
