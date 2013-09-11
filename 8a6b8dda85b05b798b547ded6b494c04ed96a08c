@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07daf132_055dd6f1",
+        "filename": "chip/stm32/gpio-stm32l.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-09-11T15:46:03Z",
+      "side": 1,
+      "message": "looks like a terrible un-optimization to me.\nI don\u0027t see the point in doing this questionable abstraction.",
+      "revId": "8a6b8dda85b05b798b547ded6b494c04ed96a08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
