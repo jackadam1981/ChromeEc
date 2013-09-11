@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8710a196_e6d28049",
+        "filename": "common/led_wolf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1003228
+      },
+      "writtenOn": "2013-09-11T04:42:53Z",
+      "side": 1,
+      "message": "Sorry for the setting. I will reverse it again because it is different from falco. Now I got the ZM7 Motherboard, so I can test it.",
+      "parentUuid": "27f1b550_89a9e128",
+      "revId": "3a232c54dbc72e5e0e7cfcede9298cbb92a20ce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6783adc5_421f1227",
         "filename": "common/led_wolf.c",
         "patchSetId": 1
@@ -47,6 +65,24 @@
       "writtenOn": "2013-09-09T11:27:45Z",
       "side": 1,
       "message": "CHARGE_FLAG_FORCE_IDLE is a special mode used in the factory to stop charging the battery when AC power is connected. There is an ectool command to enable this state. A maximum charge percent can be set in the factory test image. The factory image will then call the ectool command to keep the battery charged to this value.\n\nNormally we make an LED blink to indicate the machine is no longer charging. The color should be different than the battery error case.",
+      "revId": "3a232c54dbc72e5e0e7cfcede9298cbb92a20ce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8710a196_c6cf849f",
+        "filename": "common/led_wolf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1003228
+      },
+      "writtenOn": "2013-09-11T04:42:53Z",
+      "side": 1,
+      "message": "Ok, I will change CHARGE_FLAG_FORCE_IDLE to blink different from battery error.",
+      "parentUuid": "27f1b550_a90ca58c",
       "revId": "3a232c54dbc72e5e0e7cfcede9298cbb92a20ce1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
