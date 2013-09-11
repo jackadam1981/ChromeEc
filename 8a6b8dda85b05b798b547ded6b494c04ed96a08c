@@ -16,6 +16,24 @@
       "revId": "8a6b8dda85b05b798b547ded6b494c04ed96a08c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "07daf132_25201a61",
+        "filename": "chip/stm32/gpio-stm32l.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-09-11T15:50:41Z",
+      "side": 1,
+      "message": "It\u0027s good for set alternate function and set flags, because they\u0027re done only infrequently and not in time-critical paths.\n\nLet\u0027s put this back the way it was for the interrupt handler, since every clock matter there.",
+      "parentUuid": "07daf132_055dd6f1",
+      "revId": "8a6b8dda85b05b798b547ded6b494c04ed96a08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
