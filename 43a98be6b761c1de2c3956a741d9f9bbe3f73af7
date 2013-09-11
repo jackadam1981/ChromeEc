@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "47d0690f_e448f43a",
+        "filename": "chip/stm32/uart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-09-11T18:26:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "072591ee_c7149e57",
+      "revId": "43a98be6b761c1de2c3956a741d9f9bbe3f73af7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "072591ee_27313a00",
         "filename": "common/uart_buffering.c",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2013-09-11T02:09:21Z",
       "side": 1,
       "message": "I\u0027d argue that you can \u0027free up\u0027 this part of the buffer now, rather than wait. Any reason to wait?",
+      "revId": "43a98be6b761c1de2c3956a741d9f9bbe3f73af7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "07daf132_b378f0f9",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-09-11T18:26:16Z",
+      "side": 1,
+      "message": "Freeing it now allows subsequent bytes to be stored into it.  That can scramble output if the buffer is full, instead of just dropping subsequent output.",
+      "parentUuid": "072591ee_27313a00",
       "revId": "43a98be6b761c1de2c3956a741d9f9bbe3f73af7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "07daf132_2e93974d",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-09-11T18:26:16Z",
+      "side": 1,
+      "message": "Yes, this is the default.\n\nThen config_chip.h turns it on for STM32.",
+      "parentUuid": "072591ee_673b32e0",
+      "revId": "43a98be6b761c1de2c3956a741d9f9bbe3f73af7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "072591ee_0736b6f7",
         "filename": "include/uart.h",
         "patchSetId": 4
@@ -64,6 +118,24 @@
       "writtenOn": "2013-09-11T02:09:21Z",
       "side": 1,
       "message": "You don\u0027t really need this #ifdef as you will get a link error with C line number info anyway",
+      "revId": "43a98be6b761c1de2c3956a741d9f9bbe3f73af7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87e501f5_7b571f06",
+        "filename": "include/uart.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-09-11T18:26:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "072591ee_0736b6f7",
       "revId": "43a98be6b761c1de2c3956a741d9f9bbe3f73af7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
