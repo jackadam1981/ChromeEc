@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27645599_3798a271",
+        "filename": "common/hooks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-09-13T20:12:06Z",
+      "side": 1,
+      "message": "HOOK_DEBUG -\u003e CONFIG_HOOK_DEBUG\n\n(and then add an entry to config.h describing it)",
+      "revId": "68ab6acd38cf21ebe7b9c350642fa88aca51e743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "07691174_6a6397b2",
+        "filename": "include/console.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-09-13T20:12:06Z",
+      "side": 1,
+      "message": "Doesn\u0027t seem to be used.",
+      "revId": "68ab6acd38cf21ebe7b9c350642fa88aca51e743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
