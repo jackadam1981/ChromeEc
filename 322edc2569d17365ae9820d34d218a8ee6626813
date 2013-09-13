@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6733ad7f_82ecba7a",
+        "filename": "common/hooks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-09-13T16:15:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "670e4db7_4da48d98",
+      "revId": "322edc2569d17365ae9820d34d218a8ee6626813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2708d5aa_e86d73c3",
         "filename": "include/console.h",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2013-09-13T15:32:27Z",
       "side": 1,
       "message": "this doesn\u0027t seem to be used anywhere",
+      "revId": "322edc2569d17365ae9820d34d218a8ee6626813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4738695c_81ad9ac7",
+        "filename": "include/console.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-09-13T16:15:39Z",
+      "side": 1,
+      "message": "It\u0027s used when HOOK_DEBUG is defined. It is currently missing before this CL somehow.",
+      "parentUuid": "2708d5aa_e86d73c3",
       "revId": "322edc2569d17365ae9820d34d218a8ee6626813",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
