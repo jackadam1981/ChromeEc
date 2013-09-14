@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8712610c_5315844f",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-09-14T02:57:59Z",
+      "side": 1,
+      "message": "Perhaps add here that you are effectively calling the uart hook CONFIG_UART_RX_DMA_RECHECKS times before the next official uart hook?\n\nI guess if you had the ability to change the hook frequency that might be a cleaner way to do it?",
+      "revId": "2e10b43a94a9f5f5ca33a801f19b08c2bb4f9175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "47db09ad_29f7cd09",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-09-14T02:57:59Z",
+      "side": 1,
+      "message": "I don\u0027t see mention of Ctrl-S/Q in your test - how did you test that?",
+      "revId": "2e10b43a94a9f5f5ca33a801f19b08c2bb4f9175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "47db09ad_e9ec953e",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-09-14T02:57:59Z",
+      "side": 1,
+      "message": "I assume this is only for responsiveness? In other words, without this, you would still avoid dropping characters, but they would echo in clumps, right?\n\nAlso, is this behavior done regardless of the current clock speed?",
+      "revId": "2e10b43a94a9f5f5ca33a801f19b08c2bb4f9175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "47db09ad_c9f1d116",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-09-14T02:57:59Z",
+      "side": 1,
+      "message": "Well you already have the comment here I suppose.",
+      "revId": "2e10b43a94a9f5f5ca33a801f19b08c2bb4f9175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
