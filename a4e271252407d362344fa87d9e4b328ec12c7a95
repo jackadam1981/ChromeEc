@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87a7c122_ebb2d191",
+        "filename": "common/led_leon.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-09-16T15:39:27Z",
+      "side": 1,
+      "message": "Note: Although the power LED doesn\u0027t support yellow (amber) or pink (blue + amber) you can leave this function as is. If ectool led command specifies a color that is unsupported for an LED, it will report an error. The brightness function (which tells ectool which colors are supported for a given LED) should be fixed, however... see the next comment.",
+      "revId": "a4e271252407d362344fa87d9e4b328ec12c7a95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "67d64d84_aa33af1f",
+        "filename": "common/led_leon.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-09-16T15:39:27Z",
+      "side": 1,
+      "message": "If the power LED can\u0027t turn amber, this function needs changing to return different values for the YELLOW (which is what the ectool command calls amber) color channel for the two LEDs.",
+      "revId": "a4e271252407d362344fa87d9e4b328ec12c7a95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "67d64d84_6a4b7786",
+        "filename": "common/led_leon.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-09-16T15:39:27Z",
+      "side": 1,
+      "message": "Nit: This comment isn\u0027t correct for leon as the power LED can\u0027t be amber. In fact the code to reset power_ticks to 0 should be changed to power_ticks \u003d LED_ON_TICKS so the power LED turns off as soon as possible. That way the user gets quicker feedback that the device has gone into suspend. (The opposite made sense if the LED changed color, you would want the LED to turn amber as soon as possible).",
+      "revId": "a4e271252407d362344fa87d9e4b328ec12c7a95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "67d64d84_4a483388",
+        "filename": "common/led_leon.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-09-16T15:39:27Z",
+      "side": 1,
+      "message": "See comment above.",
+      "revId": "a4e271252407d362344fa87d9e4b328ec12c7a95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
