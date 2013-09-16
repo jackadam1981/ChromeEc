@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a7aa05ea_96dfe9f2",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-09-16T16:28:11Z",
+      "side": 1,
+      "message": "Done.\n\nNo, don\u0027t want to change the hook frequency, because that\u0027d affect everything else like the thermal task and LED blinking.",
+      "parentUuid": "8712610c_5315844f",
+      "revId": "2e10b43a94a9f5f5ca33a801f19b08c2bb4f9175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47db09ad_29f7cd09",
         "filename": "common/uart_buffering.c",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "87a7c122_4b484588",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-09-16T16:28:11Z",
+      "side": 1,
+      "message": "added to commit message",
+      "parentUuid": "47db09ad_29f7cd09",
+      "revId": "2e10b43a94a9f5f5ca33a801f19b08c2bb4f9175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47db09ad_e9ec953e",
         "filename": "common/uart_buffering.c",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2013-09-14T02:57:59Z",
       "side": 1,
       "message": "I assume this is only for responsiveness? In other words, without this, you would still avoid dropping characters, but they would echo in clumps, right?\n\nAlso, is this behavior done regardless of the current clock speed?",
+      "revId": "2e10b43a94a9f5f5ca33a801f19b08c2bb4f9175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87a7c122_ab33a91f",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-09-16T16:28:11Z",
+      "side": 1,
+      "message": "Yes, just for responsiveness.\n\nAnd yes, this is regardless of clock speed; we do DMA all the time.",
+      "parentUuid": "47db09ad_e9ec953e",
       "revId": "2e10b43a94a9f5f5ca33a801f19b08c2bb4f9175",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
