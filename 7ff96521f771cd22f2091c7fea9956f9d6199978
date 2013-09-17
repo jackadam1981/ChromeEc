@@ -51,6 +51,42 @@
       "revId": "7ff96521f771cd22f2091c7fea9956f9d6199978",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87434133_11284ca6",
+        "filename": "common/chipset_haswell.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-09-17T20:39:33Z",
+      "side": 1,
+      "message": "Benson tells me not to worry about this. The kernel driver for the touchscreen will disable touch input in docked mode.",
+      "parentUuid": "2d5354fe_33171207",
+      "revId": "7ff96521f771cd22f2091c7fea9956f9d6199978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7468540_d8c09a6f",
+        "filename": "common/chipset_haswell.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-09-17T20:39:33Z",
+      "side": 1,
+      "message": "I see a hook to wake the chipset task on lid switch changes in chipset_x86_common.c. So perhaps this isn\u0027t conceptually the right place to disable the touchscreen on lid changes, but it should work as written (?).",
+      "parentUuid": "ed3cdca4_71327201",
+      "revId": "7ff96521f771cd22f2091c7fea9956f9d6199978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
