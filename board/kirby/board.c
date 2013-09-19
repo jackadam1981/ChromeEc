@@ -29,7 +29,7 @@
 const struct gpio_info gpio_list[] = {
 	/* Inputs with interrupt handlers are first for efficiency */
 	{"KB_PWR_ON_L",   GPIO_A, (1<<0),  GPIO_INT_BOTH, gaia_power_event},
-	{"XPSHOLD",       GPIO_E, (1<<5),  GPIO_INT_RISING, gaia_power_event},
+	{"XPSHOLD",       GPIO_E, (1<<5),  GPIO_INT_BOTH, gaia_power_event},
 	{"CHARGER_INT_L", GPIO_E, (1<<2),  GPIO_INT_FALLING,
 	 NULL /*pmu_irq_handler*/},
 	{"USB_CHG_INT",   GPIO_E, (1<<15), GPIO_INT_FALLING,
