@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04574f42_7afd7521",
+        "filename": "board/pit/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-09-23T15:56:21Z",
+      "side": 1,
+      "message": "Probably should also rename the gpio to CHARGER_INT_L (here and in board.h); that\u0027s how we missed that we were triggering on the wrong edge.  Can be done as a separate CL.",
+      "revId": "cf266e1948fddb88517035577f67d8b737f8424f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
