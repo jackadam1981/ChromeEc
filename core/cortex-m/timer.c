@@ -14,6 +14,7 @@
 #include "util.h"
 #include "task.h"
 #include "timer.h"
+#include "watchdog.h"
 
 #define TIMER_SYSJUMP_TAG 0x4d54  /* "TM" */
 
@@ -160,6 +161,13 @@ void usleep(unsigned us)
 	if (evt)
 		atomic_or(task_get_event_bitmap(task_get_current()),
 			  evt & ~TASK_EVENT_TIMER);
+
+	/*
+	 * usleep may not cause a task switch if 'us' is not large enough
+	 * and/or the clock is low (e.g., at 1MHz). As such, watchdog may not
+	 * get reloaded as it should be. Do it here to mitigate the situation.
+	 */
+	watchdog_reload();
 }
 
 timestamp_t get_time(void)
