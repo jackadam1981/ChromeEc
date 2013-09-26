@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4d0d73d_defcb9a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002363
+      },
+      "writtenOn": "2013-09-26T19:35:30Z",
+      "side": 1,
+      "message": "No longer an experiment.  It works! :-)",
+      "revId": "d146e7781d63c6822c5254ddb985557684b5f423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e48cfb4a_f8815ebd",
+        "filename": "board/bolt/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1002363
+      },
+      "writtenOn": "2013-09-26T19:35:30Z",
+      "side": 1,
+      "message": "Switch this back to OUT_LOW.  The open-drain idea doesn\u0027t work due to the way things are designed.",
+      "revId": "d146e7781d63c6822c5254ddb985557684b5f423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
