@@ -34,6 +34,24 @@
       "revId": "68916090642f4fccb2146fde18d4ecfe9b8f946e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c42c5730_c9cf41fa",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-09-27T23:33:12Z",
+      "side": 1,
+      "message": "I wrote STM32L152xC not  STM32L15xC\n(and actually the exact naming here is STM32L15xxC\nthere are tons of xC variants :\nSTM32L152CC / STM32L152QC / STM32L152RC ...",
+      "parentUuid": "44214730_62616c3a",
+      "revId": "68916090642f4fccb2146fde18d4ecfe9b8f946e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
