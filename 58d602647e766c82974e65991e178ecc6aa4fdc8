@@ -50,6 +50,24 @@
       "revId": "58d602647e766c82974e65991e178ecc6aa4fdc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c42c5730_09d9b972",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002234
+      },
+      "writtenOn": "2013-09-27T22:33:19Z",
+      "side": 1,
+      "message": "The only STM32L15xx is STM32L152x.\n\nSTM32L152B is 128K\nSTM32L152C is 256K",
+      "parentUuid": "641c8bfb_2e191f8e",
+      "revId": "58d602647e766c82974e65991e178ecc6aa4fdc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
