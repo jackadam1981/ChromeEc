@@ -147,7 +147,7 @@ static int command_battery(int argc, char **argv)
 	int repeat = 1;
 	int rv = 0;
 	int loop;
-	int sleep_ms = 0;
+	int sleep_ms = 10;
 	char *e;
 
 	if (argc > 1) {
