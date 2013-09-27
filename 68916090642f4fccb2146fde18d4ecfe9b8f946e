@@ -16,6 +16,24 @@
       "revId": "68916090642f4fccb2146fde18d4ecfe9b8f946e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44214730_62616c3a",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002234
+      },
+      "writtenOn": "2013-09-27T22:32:55Z",
+      "side": 1,
+      "message": "According to production selection guide, there is no STM32L15xC other than STM32L152C:\n\nhttp://www.st.com/web/en/resource/sales_and_marketing/promotional_material/selection_guide/sgmicro.pdf",
+      "parentUuid": "c42c5730_c93e61cd",
+      "revId": "68916090642f4fccb2146fde18d4ecfe9b8f946e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
