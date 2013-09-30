@@ -180,11 +180,6 @@ enum temp_sensor_id {
 	TEMP_SENSOR_COUNT
 };
 
-/**
- * Board-specific g781 power state.
- */
-int board_g781_has_power(void);
-
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __BOARD_H */

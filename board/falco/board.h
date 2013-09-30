@@ -202,11 +202,6 @@ enum temp_sensor_id {
  */
 void lcdvcc_interrupt(enum gpio_signal signal);
 
-/**
- * Board-specific g781 power state.
- */
-int board_g781_has_power(void);
-
 /* Wireless signals */
 #define WIRELESS_GPIO_WLAN GPIO_WLAN_OFF_L
 #define WIRELESS_GPIO_WWAN GPIO_PP3300_LTE_EN

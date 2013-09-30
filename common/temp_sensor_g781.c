@@ -7,6 +7,7 @@
 
 #include "common.h"
 #include "console.h"
+#include "gpio.h"
 #include "i2c.h"
 #include "hooks.h"
 #include "temp_sensor_g781.h"
@@ -14,6 +15,16 @@
 
 static int g781_temp_val_local;
 static int g781_temp_val_remote;
+
+/**
+ * Determine whether the sensor is powered.
+ *
+ * @return non-zero the g781 sensor is powered.
+ */
+static int g781_has_power(void)
+{
+	return gpio_get_level(GPIO_PP3300_DX_EN);
+}
 
 static int g781_read8(const int offset, int *data_ptr)
 {
@@ -48,7 +59,7 @@ static int g781_set_temp(const int offset, int temp)
 
 int g781_get_val(int idx, int *temp_ptr)
 {
-	if (!board_g781_has_power())
+	if (!g781_has_power())
 		return EC_ERROR_NOT_POWERED;
 
 	switch (idx) {
@@ -67,7 +78,7 @@ int g781_get_val(int idx, int *temp_ptr)
 
 static void g781_temp_sensor_poll(void)
 {
-	if (!board_g781_has_power())
+	if (!g781_has_power())
 		return;
 
 	g781_get_temp(G781_TEMP_LOCAL, &g781_temp_val_local);
@@ -145,7 +156,7 @@ static int command_g781(int argc, char **argv)
 	int offset;
 	int rv;
 
-	if (!board_g781_has_power()) {
+	if (!g781_has_power()) {
 		ccprintf("ERROR: Temp sensor not powered.\n");
 		return EC_ERROR_NOT_POWERED;
 	}
