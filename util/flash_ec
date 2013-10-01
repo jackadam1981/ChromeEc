@@ -218,11 +218,16 @@ if dut_control uart_mux 2>/dev/null ; then
 	SERVO_TYPE=toad
 	info "Using a TOAD cable"
 fi
+if [ "${BOARD}" = "reston" ] ; then
+	SERVO_TYPE=toad
+	info "Using the Reston debug interface"
+fi
 
 save="$(servo_save)"
 
 case "${BOARD}" in
 	big | blaze | discovery | nyan | pit | snow | spring ) flash_stm32 ;;
+	reston ) flash_stm32 ;;
 	falco | peppy | rambi | samus | squawks ) flash_lm4 ;;
 	link ) flash_link ;;
 	*) die "board ${BOARD} not supported" ;;
