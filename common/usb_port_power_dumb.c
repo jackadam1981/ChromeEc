@@ -40,12 +40,18 @@ static void usb_port_set_enabled(int port_id, int en)
 
 static void usb_port_all_ports_on(void)
 {
+#ifdef CONFIG_USB_POWER_GPIO
+	gpio_set_level(CONFIG_USB_POWER_GPIO, 1);
+#endif
 	usb_port_set_enabled(0, 1);
 	usb_port_set_enabled(1, 1);
 }
 
 static void usb_port_all_ports_off(void)
 {
+#ifdef CONFIG_USB_POWER_GPIO
+	gpio_set_level(CONFIG_USB_POWER_GPIO, 0);
+#endif
 	usb_port_set_enabled(0, 0);
 	usb_port_set_enabled(1, 0);
 }

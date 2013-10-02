@@ -63,12 +63,18 @@ static void usb_charge_set_ilim(int port_id, int sel)
 
 static void usb_charge_all_ports_on(void)
 {
+#ifdef CONFIG_USB_POWER_GPIO
+	gpio_set_level(CONFIG_USB_POWER_GPIO, 1);
+#endif
 	usb_charge_set_mode(0, USB_CHARGE_MODE_SDP2);
 	usb_charge_set_mode(1, USB_CHARGE_MODE_SDP2);
 }
 
 static void usb_charge_all_ports_off(void)
 {
+#ifdef CONFIG_USB_POWER_GPIO
+	gpio_set_level(CONFIG_USB_POWER_GPIO, 0);
+#endif
 	usb_charge_set_mode(0, USB_CHARGE_MODE_DISABLED);
 	usb_charge_set_mode(1, USB_CHARGE_MODE_DISABLED);
 }
