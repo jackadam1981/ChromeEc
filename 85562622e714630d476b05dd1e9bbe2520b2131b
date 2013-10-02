@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21b445af_9c157552",
+        "filename": "common/usb_port_power_dumb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-10-02T20:39:49Z",
+      "side": 1,
+      "message": "If the AP asks the EC to shut off the ports, then tells the EC to jump from RO-\u003eRW, this will call all ports off.  Then no host command from the AP will be able to power the ports back on.",
+      "revId": "85562622e714630d476b05dd1e9bbe2520b2131b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "819df127_2fb8b107",
+        "filename": "common/usb_port_power_dumb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-10-02T20:39:49Z",
+      "side": 1,
+      "message": "So maybe put the GPIO set commands down here in usb_port_resume() / usb_port_shutdown(), so they\u0027re explicitly tied to the chipset state?",
+      "revId": "85562622e714630d476b05dd1e9bbe2520b2131b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
