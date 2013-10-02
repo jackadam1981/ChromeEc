@@ -150,14 +150,20 @@ DECLARE_HOOK(HOOK_INIT, usb_port_init, HOOK_PRIO_DEFAULT);
 
 static void usb_port_resume(void)
 {
-	/* Turn on USB ports on as we go into S0 from S3 or S5. */
+	/* Turn USB ports on as we go into S0 from S3 or S5. */
+#ifdef CONFIG_USB_POWER_GPIO
+	gpio_set_level(CONFIG_USB_POWER_GPIO, 1);
+#endif
 	usb_port_all_ports_on();
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, usb_port_resume, HOOK_PRIO_DEFAULT);
 
 static void usb_port_shutdown(void)
 {
-	/* Turn on USB ports off as we go back to S5. */
+	/* Turn USB ports off as we go back to S5. */
 	usb_port_all_ports_off();
+#ifdef CONFIG_USB_POWER_GPIO
+	gpio_set_level(CONFIG_USB_POWER_GPIO, 0);
+#endif
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, usb_port_shutdown, HOOK_PRIO_DEFAULT);

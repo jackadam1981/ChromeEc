@@ -679,6 +679,9 @@
 /* Compile support for the TSU6721 I2C smart switch */
 #undef CONFIG_USB_SWITCH_TSU6721
 
+/* Explicit GPIO to enable USB power rails */
+#undef CONFIG_USB_POWER_GPIO
+
 /*****************************************************************************/
 /* Watchdog config */
 
