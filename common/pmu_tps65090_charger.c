@@ -436,16 +436,17 @@ void pmu_charger_task(void)
 	disable_sleep(SLEEP_MASK_CHARGING);
 
 #ifdef CONFIG_TSU6721
-	board_pwm_init_limit();
+	if (board_pwm_init_limit()) {
 
-	/*
-	 * Somehow TSU6721 comes up slowly. Let's wait for a moment before
-	 * accessing it.
-	 * TODO(victoryang): Investigate slow init issue.
-	 */
-	msleep(500);
+		/*
+		 * Somehow TSU6721 comes up slowly. Let's wait for a moment
+		 * before accessing it.
+		 * TODO(victoryang): Investigate slow init issue.
+		 */
+		msleep(500);
 
-	tsu6721_reset(); /* Init here until we can do with HOOK_INIT */
+		tsu6721_reset(); /* Init here until we can do with HOOK_INIT */
+	}
 	gpio_enable_interrupt(GPIO_USB_CHG_INT);
 	msleep(100); /* TSU6721 doesn't work properly right away. */
 	board_usb_charge_update(1);

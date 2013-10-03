@@ -162,6 +162,15 @@ static enum {
 } charger_need_redetect = NO_REDETECT;
 static timestamp_t charger_redetection_time;
 
+#define ILIM_SYSJUMP_TAG 0x494C /* "IL" - ILim */
+#define ILIM_HOOK_VERSION 1
+/* The previous ILIM state before sys jump */
+struct ilim_state {
+	int duty;
+	int dev_type;
+	enum ilim_config config;
+};
+
 static int get_video_power(void)
 {
 	return video_power_enabled;
@@ -359,15 +368,51 @@ void board_pwm_duty_cycle(int percent)
 	current_pwm_duty = percent;
 }
 
-void board_pwm_init_limit(void)
+int board_pwm_init_limit(void)
 {
+	uint32_t reset_flags = system_get_reset_flags();
+	const struct ilim_state *prev;
+	int version, size;
+	int keep_config = 0;
+	enum ilim_config set_config = ILIM_CONFIG_PWM;
 	/*
 	 * put a high initial limit to avoid browning out the system
 	 * when we turn on charging, lower power bricks might cut off
 	 * but we will re-enable them with a lower limit later.
 	 */
-	board_pwm_duty_cycle(I_LIMIT_2400MA);
+	int set_duty = I_LIMIT_2400MA;
+
+	if (reset_flags & RESET_FLAG_SYSJUMP) {
+		prev = (const struct ilim_state *)system_get_jump_tag(
+				ILIM_SYSJUMP_TAG, &version, &size);
+		if (prev && version == ILIM_HOOK_VERSION &&
+		    size == sizeof(*prev)) {
+			set_duty = prev->duty;
+			set_config = prev->config;
+			current_dev_type = prev->dev_type;
+			keep_config = 1;
+		}
+	}
+
+	board_ilim_config(set_config);
+	if (set_config == ILIM_CONFIG_PWM)
+		board_pwm_duty_cycle(set_duty);
+
+	return !keep_config;
 }
+
+static void board_preserve_ilim(void)
+{
+	struct ilim_state state;
+
+	state.config = current_ilim_config;
+	state.dev_type = current_dev_type;
+	state.duty = current_pwm_duty;
+
+	system_add_jump_tag(ILIM_SYSJUMP_TAG, ILIM_HOOK_VERSION,
+			    sizeof(state), &state);
+}
+DECLARE_HOOK(HOOK_SYSJUMP, board_preserve_ilim, HOOK_PRIO_DEFAULT);
 
 /**
  * Returns next lower PWM duty cycle, or -1 for unchanged duty cycle.
