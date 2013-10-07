@@ -320,5 +320,5 @@ static int command_sleepmask(int argc, char **argv)
 }
 DECLARE_CONSOLE_COMMAND(sleepmask, command_sleepmask,
 			"[0|1]",
-			"Display/force sleep mack",
+			"Display/force sleep mask",
 			NULL);
