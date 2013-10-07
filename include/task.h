@@ -43,6 +43,14 @@ void interrupt_disable(void);
 void interrupt_enable(void);
 
 /**
+ * Two functions: Use disable_and_store() to disable interrupts and return the
+ * previous state of interrupts. Use interrupt_restore() to restore interrupts
+ * back to state returned from disable_and_store().
+ */
+uint32_t interrupt_disable_and_store(void);
+void interrupt_restore(uint32_t intstate);
+
+/**
  * Return true if we are in interrupt context.
  */
 inline int in_interrupt_context(void);

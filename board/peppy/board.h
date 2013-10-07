@@ -42,6 +42,9 @@
 #define CONFIG_USB_PORT_POWER_DUMB
 #define CONFIG_WIRELESS
 
+/* use STOP mode when we have nothing to do */
+#define CONFIG_LOW_POWER_IDLE
+
 #ifndef __ASSEMBLER__
 
 /* Module IDs */

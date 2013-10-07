@@ -32,6 +32,9 @@ void uart_tx_start(void)
 	if (LM4_UART_IM(0) & 0x20)
 		return;
 
+	/* Do not allow deep sleep while transmit in progress */
+	disable_sleep(SLEEP_MASK_UART);
+
 	/*
 	 * Re-enable the transmit interrupt, then forcibly trigger the
 	 * interrupt.  This works around a hardware problem with the
@@ -45,6 +48,9 @@ void uart_tx_start(void)
 void uart_tx_stop(void)
 {
 	LM4_UART_IM(0) &= ~0x20;
+
+	/* Re-allow deep sleep */
+	enable_sleep(SLEEP_MASK_UART);
 }
 
 void uart_tx_flush(void)
