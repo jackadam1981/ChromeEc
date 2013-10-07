@@ -18,6 +18,8 @@
 #include "timer.h"
 #include "util.h"
 #include "wireless.h"
+#include "clock.h"
+#include "keyboard_scan.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHIPSET, outstr)
@@ -282,6 +284,9 @@ enum x86_state x86_handle_state(enum x86_state state)
 		/* Call hooks now that rails are up */
 		hook_notify(HOOK_CHIPSET_RESUME);
 
+		/* Disable idle task deep sleep */
+		disable_sleep(SLEEP_MASK_AP_RUN);
+
 		/* Wait 99ms after all voltages good */
 		msleep(99);
 
@@ -312,6 +317,9 @@ enum x86_state x86_handle_state(enum x86_state state)
 
 		/* Disable wireless */
 		wireless_enable(0);
+
+		/* Enable idle task deep sleep */
+		enable_sleep(SLEEP_MASK_AP_RUN);
 
 		/*
 		 * Deassert prochot since CPU is off and we're about to drop
@@ -345,6 +353,9 @@ enum x86_state x86_handle_state(enum x86_state state)
 		gpio_set_level(GPIO_PCH_DPWROK, 0);
 		gpio_set_level(GPIO_PCH_RSMRST_L, 0);
 		gpio_set_level(GPIO_SUSP_VR_EN, 0);
+
+		/* Disable keyboard scanning */
+		keyboard_scan_enable(0);
 		return X86_G3;
 	}
 

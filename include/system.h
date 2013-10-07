@@ -268,4 +268,48 @@ void system_hibernate(uint32_t seconds, uint32_t microseconds);
 int system_get_console_force_enabled(void);
 int system_set_console_force_enabled(int enabled);
 
+/**
+ * Read the real-time clock.
+ *
+ * @param ss_ptr       Destination for sub-seconds value, if not null.
+ *
+ * @return the real-time clock seconds value.
+ */
+uint32_t system_get_rtc(uint32_t *ss_ptr);
+
+/**
+ * Enable hibernate interrupt
+ */
+void system_enable_hib_interrupt(void);
+
+/*
+ * Convert between microseconds and the hibernation module RTC subsecond
+ * register which has 15-bit resolution. Divide down both numerator and
+ * denominator to avoid integer overflow while keeping the math accurate.
+ */
+#define HIB_RTC_USEC_TO_SUBSEC(us) ((us) * (32768/64) / (1000000/64))
+#define HIB_RTC_SUBSEC_TO_USEC(ss) ((ss) * (1000000/64) / (32768/64))
+
+/*
+ * Time it takes to set the RTC match register. This value is conservatively
+ * set based on measurements around 200us. */
+#define HIB_SET_RTC_MATCH_DELAY_USEC 500
+
+/**
+ * Use hibernate module to set up an RTC interrupt at a given
+ * time from now
+ *
+ * Note: If time given is less than HIB_SET_RTC_MATCH_DELAY_USEC, then it will
+ * set the interrupt at exactly HIB_SET_RTC_MATCH_DELAY_USEC.
+ *
+ * @param seconds      Number of seconds before RTC interrupt
+ * @param microseconds Number of microseconds before RTC interrupt
+ */
+void system_set_rtc_alarm(uint32_t seconds, uint32_t microseconds);
+
+/**
+ * Disable and clear the RTC interrupt.
+ */
+void system_reset_rtc_alarm(void);
+
 #endif  /* __CROS_EC_SYSTEM_H */

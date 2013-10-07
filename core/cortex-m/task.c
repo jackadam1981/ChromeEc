@@ -170,6 +170,34 @@ void interrupt_enable(void)
 	asm("cpsie i");
 }
 
+uint32_t interrupt_disable_and_store(void)
+{
+	uint32_t intstate;
+
+	/*
+	 * Disabling of interrupts with the asm("cpsid i") call, sets the
+	 * PRIMASK register. Here we read the PRIMASK register to determine
+	 * if interrupts have been enabled or disabled.
+	 */
+	asm("mrs %0, PRIMASK" : "=r"(intstate));
+
+	/* if interrupts are enabled, disable them now */
+	if (!intstate)
+		asm("cpsid i");
+
+	return intstate;
+}
+
+void interrupt_restore(uint32_t intstate)
+{
+	/*
+	 * If the PRIMASK register had been cleared (interrupts enabled),
+	 * then re-enable them here.
+	 */
+	if (!intstate)
+		asm("cpsie i");
+}
+
 inline int in_interrupt_context(void)
 {
 	int ret;
