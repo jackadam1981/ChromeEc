@@ -19,6 +19,40 @@
     },
     {
       "key": {
+        "uuid": "21ba85ee_0c868714",
+        "filename": "board/peppy/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-10-08T20:39:13Z",
+      "side": 1,
+      "message": "Convention is to alphabetize all the config options, so this would go above.",
+      "revId": "83fc1988fba0e1c41be7a2dda5ff155946f38676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "21ba85ee_ec8a3318",
+        "filename": "chip/lm4/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-10-08T20:39:13Z",
+      "side": 1,
+      "message": "...and we alphabetize the includes...",
+      "revId": "83fc1988fba0e1c41be7a2dda5ff155946f38676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21ba85ee_bb3233cf",
         "filename": "chip/lm4/clock.c",
         "patchSetId": 1
@@ -48,6 +82,24 @@
       "side": 1,
       "message": "Yeah, good idea.",
       "parentUuid": "21ba85ee_bb3233cf",
+      "revId": "83fc1988fba0e1c41be7a2dda5ff155946f38676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "21ba85ee_0cb8c7b9",
+        "filename": "chip/lm4/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-10-08T20:39:13Z",
+      "side": 1,
+      "message": "Maybe system_common.c, since that\u0027s where system_hibernate() is now.",
+      "parentUuid": "21ba85ee_9b952ffd",
       "revId": "83fc1988fba0e1c41be7a2dda5ff155946f38676",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -89,6 +141,24 @@
     },
     {
       "key": {
+        "uuid": "21ba85ee_2cc38b27",
+        "filename": "chip/lm4/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-10-08T20:39:13Z",
+      "side": 1,
+      "message": "Could make a clock_enable_peripheral() function which modules call rather than setting the SCGC reg directly.\n\nThis\u0027d also be kinda handy, because most modules make a call to clock_wait_cycles() right after enabling the peripheral clock, and that delay could be built into clock_enable_peripheral().",
+      "parentUuid": "e1d30d45_797a6329",
+      "revId": "83fc1988fba0e1c41be7a2dda5ff155946f38676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1d30d45_195b6ffe",
         "filename": "chip/lm4/clock.c",
         "patchSetId": 1
@@ -118,6 +188,24 @@
       "side": 1,
       "message": "GPIO block K has to get a clock in order to generate an interrupt when a keyboard button is pressed. I found this out the hard way. Without this, some key presses are ignored because it happens to be in deep sleep when button is pressed.",
       "parentUuid": "e1d30d45_195b6ffe",
+      "revId": "83fc1988fba0e1c41be7a2dda5ff155946f38676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "21ba85ee_ece7d3c9",
+        "filename": "chip/lm4/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-10-08T20:39:13Z",
+      "side": 1,
+      "message": "Suggest adding a comment for this, or we\u0027ll forget",
+      "parentUuid": "e1d30d45_5977a73d",
       "revId": "83fc1988fba0e1c41be7a2dda5ff155946f38676",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -228,6 +316,24 @@
     },
     {
       "key": {
+        "uuid": "21ba85ee_0c6e8731",
+        "filename": "chip/lm4/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-10-08T20:39:13Z",
+      "side": 1,
+      "message": "Or just put it in \n\n#ifdef CONFIG_CMD_CLOCKGATES\n\n(and add a config.h entry for it)",
+      "parentUuid": "e1d30d45_19712f47",
+      "revId": "83fc1988fba0e1c41be7a2dda5ff155946f38676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1d30d45_39c2ab43",
         "filename": "chip/lm4/system.c",
         "patchSetId": 1
@@ -298,6 +404,24 @@
     },
     {
       "key": {
+        "uuid": "61c0fd68_b4f12085",
+        "filename": "chip/lm4/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-10-08T20:39:13Z",
+      "side": 1,
+      "message": "This change is towards kernel style (no brackets if all clauses are single-line), but can be put off to a separate cleanup CL so it\u0027s not mixed in with deep sleep",
+      "parentUuid": "e1d30d45_7ce131e3",
+      "revId": "83fc1988fba0e1c41be7a2dda5ff155946f38676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61c0fd68_80f5baff",
         "filename": "common/chipset_haswell.c",
         "patchSetId": 1
@@ -360,6 +484,40 @@
       "writtenOn": "2013-10-08T01:39:08Z",
       "side": 1,
       "message": "ditto",
+      "revId": "83fc1988fba0e1c41be7a2dda5ff155946f38676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "21ba85ee_0cab2723",
+        "filename": "include/system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-10-08T20:39:13Z",
+      "side": 1,
+      "message": "Why not have this just return a timestamp_t?\n\nThen you can hide the conversion macros inside the implementation.",
+      "revId": "83fc1988fba0e1c41be7a2dda5ff155946f38676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61c0fd68_3450707e",
+        "filename": "include/system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-10-08T20:39:13Z",
+      "side": 1,
+      "message": "LM4-specific...",
       "revId": "83fc1988fba0e1c41be7a2dda5ff155946f38676",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
