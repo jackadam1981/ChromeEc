@@ -1,0 +1,242 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61c0fd68_ddd6ff98",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-08T01:39:08Z",
+      "side": 1,
+      "message": "you can use \"lm4:\" prefix here.\n\nwe don\u0027t have mandatory rules for that, but using prefixes for board specific and chip specific CLs allows to parse them quickly.",
+      "revId": "83fc1988fba0e1c41be7a2dda5ff155946f38676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "21ba85ee_bb3233cf",
+        "filename": "chip/lm4/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-08T01:39:08Z",
+      "side": 1,
+      "message": "now this is common code, we should probably move it somewhere else (core/cortex-m/task.c ?)",
+      "revId": "83fc1988fba0e1c41be7a2dda5ff155946f38676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61c0fd68_a0931ea7",
+        "filename": "chip/lm4/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-08T01:39:08Z",
+      "side": 1,
+      "message": "it seems it\u0027s a bit wasteful to do that on every sleep cycle.\nWe could be doing it only once at startup (the various modules might be setting their gating state in their own init, so we somehow to do it later ?)",
+      "revId": "83fc1988fba0e1c41be7a2dda5ff155946f38676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1d30d45_195b6ffe",
+        "filename": "chip/lm4/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-08T01:39:08Z",
+      "side": 1,
+      "message": "why ?",
+      "revId": "83fc1988fba0e1c41be7a2dda5ff155946f38676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1d30d45_59ec47eb",
+        "filename": "chip/lm4/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-08T01:39:08Z",
+      "side": 1,
+      "message": "the usual convention is EC code is to define a CPRINTF macro in each module,\ne.g\n#define CPRINTF(format, args...) cprintf(CC_TASK, format, ## args)\n[...]\nCPRINTF(\"[%T low power idle task started]\\n\");",
+      "revId": "83fc1988fba0e1c41be7a2dda5ff155946f38676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "21ba85ee_1b9a3f69",
+        "filename": "chip/lm4/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-08T01:39:08Z",
+      "side": 1,
+      "message": "have you tested the accuracy of the time forwarding ?",
+      "revId": "83fc1988fba0e1c41be7a2dda5ff155946f38676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1d30d45_19f6cfb7",
+        "filename": "chip/lm4/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-08T01:39:08Z",
+      "side": 1,
+      "message": "this should be in common code along with enable/disable_sleep",
+      "revId": "83fc1988fba0e1c41be7a2dda5ff155946f38676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1d30d45_d926177f",
+        "filename": "chip/lm4/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-08T01:39:08Z",
+      "side": 1,
+      "message": "you probably want to evaluate how large is that (debug) function to decide if it worths sacrifying flash space for it.",
+      "revId": "83fc1988fba0e1c41be7a2dda5ff155946f38676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1d30d45_39c2ab43",
+        "filename": "chip/lm4/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-08T01:39:08Z",
+      "side": 1,
+      "message": "I think that\u0027s not entirely true (even if that was in the old code) and this interrupt disable is more or less no needed :\nsystem_get_rtc doesn\u0027t need interrupts to be disabled to get a correct timestamp,\nand then you account for the original delay you were asked for.",
+      "revId": "83fc1988fba0e1c41be7a2dda5ff155946f38676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61c0fd68_7d2a53a3",
+        "filename": "chip/lm4/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-08T01:39:08Z",
+      "side": 1,
+      "message": "you just remove the braces ?\nI\u0027m not fan of style-only changes\nand we try to follow kernel CodingStyle in that code base \n(which mandates braces here ?)",
+      "revId": "83fc1988fba0e1c41be7a2dda5ff155946f38676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61c0fd68_80f5baff",
+        "filename": "common/chipset_haswell.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-08T01:39:08Z",
+      "side": 1,
+      "message": "it would nice to put a least a rationale here why you are disabling sleep here (eg LPC requests not waking properly the EC, wake up latency too large ...)\nor actually to avoid disabling sleep (that\u0027s the final target : having the EC in low power state in S0ix)",
+      "revId": "83fc1988fba0e1c41be7a2dda5ff155946f38676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61c0fd68_20fcaee6",
+        "filename": "common/chipset_haswell.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-08T01:39:08Z",
+      "side": 1,
+      "message": "you should put a hook in the keyboard code rather than doing it here.\ne.g.\nDECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, keyboard_shutdown_event, HOOK_PRIO_DEFAULT);",
+      "revId": "83fc1988fba0e1c41be7a2dda5ff155946f38676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "21ba85ee_9b208f62",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-08T01:39:08Z",
+      "side": 1,
+      "message": "the function should not be needed ...\nmore precisely, I don\u0027t like it because it will lead to all kind of abuse in the code base (ie devs disabling interrupts rather thinking before implementing their code) ,\nif the caller doesn\u0027t know whether interrupts are disabled, then it\u0027s a too broad function to safely disable interrupts ...",
+      "revId": "83fc1988fba0e1c41be7a2dda5ff155946f38676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61c0fd68_0033ea07",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-08T01:39:08Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "83fc1988fba0e1c41be7a2dda5ff155946f38676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
