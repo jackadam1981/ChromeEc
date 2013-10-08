@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "21ba85ee_9b952ffd",
+        "filename": "chip/lm4/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2013-10-08T14:50:35Z",
+      "side": 1,
+      "message": "Yeah, good idea.",
+      "parentUuid": "21ba85ee_bb3233cf",
+      "revId": "83fc1988fba0e1c41be7a2dda5ff155946f38676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61c0fd68_a0931ea7",
         "filename": "chip/lm4/clock.c",
         "patchSetId": 1
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "e1d30d45_797a6329",
+        "filename": "chip/lm4/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2013-10-08T14:50:35Z",
+      "side": 1,
+      "message": "I agree. I wasn\u0027t sure what to do here. The problem is if somebody changes code in the future that enables or disables the clock to one of the peripherals after startup, then it would cause a bug here because that change wouldn\u0027t get carried over. So, I put this in to see what people thought about it.",
+      "parentUuid": "61c0fd68_a0931ea7",
+      "revId": "83fc1988fba0e1c41be7a2dda5ff155946f38676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1d30d45_195b6ffe",
         "filename": "chip/lm4/clock.c",
         "patchSetId": 1
@@ -64,6 +100,24 @@
       "writtenOn": "2013-10-08T01:39:08Z",
       "side": 1,
       "message": "why ?",
+      "revId": "83fc1988fba0e1c41be7a2dda5ff155946f38676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1d30d45_5977a73d",
+        "filename": "chip/lm4/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2013-10-08T14:50:35Z",
+      "side": 1,
+      "message": "GPIO block K has to get a clock in order to generate an interrupt when a keyboard button is pressed. I found this out the hard way. Without this, some key presses are ignored because it happens to be in deep sleep when button is pressed.",
+      "parentUuid": "e1d30d45_195b6ffe",
       "revId": "83fc1988fba0e1c41be7a2dda5ff155946f38676",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -104,6 +158,24 @@
     },
     {
       "key": {
+        "uuid": "61c0fd68_0091aa41",
+        "filename": "chip/lm4/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2013-10-08T14:50:35Z",
+      "side": 1,
+      "message": "Yes, I tested it on one board, the slippy board. I should test it on more. The slippy board worked correctly, except that the RTC is 6.5% faster than the timer module, which seems a little extreme.",
+      "parentUuid": "21ba85ee_1b9a3f69",
+      "revId": "83fc1988fba0e1c41be7a2dda5ff155946f38676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1d30d45_19f6cfb7",
         "filename": "chip/lm4/clock.c",
         "patchSetId": 1
@@ -138,6 +210,24 @@
     },
     {
       "key": {
+        "uuid": "e1d30d45_19712f47",
+        "filename": "chip/lm4/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2013-10-08T14:50:35Z",
+      "side": 1,
+      "message": "Yeah, it should probably be removed. It was useful for debugging, but not too useful for the main code base.",
+      "parentUuid": "e1d30d45_d926177f",
+      "revId": "83fc1988fba0e1c41be7a2dda5ff155946f38676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1d30d45_39c2ab43",
         "filename": "chip/lm4/system.c",
         "patchSetId": 1
@@ -155,6 +245,24 @@
     },
     {
       "key": {
+        "uuid": "e1d30d45_9cdbed38",
+        "filename": "chip/lm4/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2013-10-08T14:50:35Z",
+      "side": 1,
+      "message": "Actually, looking at this more closely, the place interrupts need to be disabled is in the calling function around the call to this function and the enabling of the interrupt. The problem is if we get an interrupt after setting the match register and before enabling the RTC interrupt, then by the time we enable the RTC interrupt, we could have already passed the match time and then we will not see the RTC interrupt for a very long time (until it rolls over I think).",
+      "parentUuid": "e1d30d45_39c2ab43",
+      "revId": "83fc1988fba0e1c41be7a2dda5ff155946f38676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61c0fd68_7d2a53a3",
         "filename": "chip/lm4/system.c",
         "patchSetId": 1
@@ -166,6 +274,24 @@
       "writtenOn": "2013-10-08T01:39:08Z",
       "side": 1,
       "message": "you just remove the braces ?\nI\u0027m not fan of style-only changes\nand we try to follow kernel CodingStyle in that code base \n(which mandates braces here ?)",
+      "revId": "83fc1988fba0e1c41be7a2dda5ff155946f38676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1d30d45_7ce131e3",
+        "filename": "chip/lm4/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2013-10-08T14:50:35Z",
+      "side": 1,
+      "message": "Oh, sorry. Normally I wouldn\u0027t make a style-only change unrelated to my changes. This was modified because I didn\u0027t understand what was going on with the pre-commit checks. I didn\u0027t realize it was only looking at the changes I made, because when I ran the pre-commit checks on the whole file it came up with this block of code, so I thought I had to fix it.",
+      "parentUuid": "61c0fd68_7d2a53a3",
       "revId": "83fc1988fba0e1c41be7a2dda5ff155946f38676",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
