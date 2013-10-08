@@ -50,13 +50,10 @@ void gpio_set_alternate_function(uint32_t port, uint32_t mask, int func)
 	if (port_index < 0)
 		return;  /* TODO: assert */
 
-	/* Enable the GPIO port if necessary */
+	/* Enable the GPIO port in run and sleep. */
 	cgmask = 1 << port_index;
-	if ((LM4_SYSTEM_RCGCGPIO & cgmask) != cgmask) {
-		LM4_SYSTEM_RCGCGPIO |= cgmask;
-		/* Delay a few clocks before accessing registers */
-		clock_wait_cycles(3);
-	}
+	clock_enable_peripheral(CGC_OFFSET_GPIO, cgmask,
+			CGC_MODE_RUN | CGC_MODE_SLEEP);
 
 	if (func >= 0) {
 		int pctlmask = 0;
@@ -159,6 +156,34 @@ int gpio_enable_interrupt(enum gpio_signal signal)
 	return EC_SUCCESS;
 }
 
+#ifdef CONFIG_LOW_POWER_IDLE
+/**
+ * Convert GPIO port to a mask that can be used to set the
+ * clock gate control register for GPIOs.
+ */
+static int gpio_port_to_clock_gate_mask(uint32_t gpio_port)
+{
+	switch (gpio_port) {
+	case LM4_GPIO_A: return 0x0001;
+	case LM4_GPIO_B: return 0x0002;
+	case LM4_GPIO_C: return 0x0004;
+	case LM4_GPIO_D: return 0x0008;
+	case LM4_GPIO_E: return 0x0010;
+	case LM4_GPIO_F: return 0x0020;
+	case LM4_GPIO_G: return 0x0040;
+	case LM4_GPIO_H: return 0x0080;
+	case LM4_GPIO_J: return 0x0100;
+	case LM4_GPIO_K: return 0x0200;
+	case LM4_GPIO_L: return 0x0400;
+	case LM4_GPIO_M: return 0x0800;
+	case LM4_GPIO_N: return 0x1000;
+	case LM4_GPIO_P: return 0x2000;
+	case LM4_GPIO_Q: return 0x4000;
+	default:         return 0x0000;
+	}
+}
+#endif
+
 void gpio_pre_init(void)
 {
 	const struct gpio_info *g = gpio_list;
@@ -171,10 +196,10 @@ void gpio_pre_init(void)
 	} else {
 		/*
 		 * Enable clocks to all the GPIO blocks since we use all of
-		 * them as GPIOs.
+		 * them as GPIOs in run and sleep modes.
 		 */
-		LM4_SYSTEM_RCGCGPIO |= 0x7fff;
-		clock_wait_cycles(6);  /* Delay a few clocks */
+		clock_enable_peripheral(CGC_OFFSET_GPIO, 0x7fff,
+				CGC_MODE_RUN | CGC_MODE_SLEEP);
 	}
 
 	/*
@@ -202,6 +227,18 @@ void gpio_pre_init(void)
 		if (flags & GPIO_DEFAULT)
 			continue;
 
+#ifdef CONFIG_LOW_POWER_IDLE
+		/*
+		 * Enable board specific GPIO ports to interrupt deep sleep by
+		 * providing a clock to that port in deep sleep mode.
+		 */
+		if (flags & GPIO_INT_DSLEEP) {
+			clock_enable_peripheral(CGC_OFFSET_GPIO,
+				gpio_port_to_clock_gate_mask(g->port),
+				CGC_MODE_ALL);
+		}
+#endif
+
 		/*
 		 * If this is a warm reboot, don't set the output levels or
 		 * we'll shut off the main chipset.
@@ -215,6 +252,20 @@ void gpio_pre_init(void)
 		/* Use as GPIO, not alternate function */
 		gpio_set_alternate_function(g->port, g->mask, -1);
 	}
+
+#ifdef CONFIG_LOW_POWER_IDLE
+	/*
+	 * Enable KB scan row to interrupt deep sleep by providing a clock
+	 * signal to that port in deep sleep mode.
+	 */
+#if defined(KB_SCAN_ROW_IRQ) && (KB_SCAN_ROW_IRQ == LM4_IRQ_GPIOK)
+	clock_enable_peripheral(CGC_OFFSET_GPIO,
+				gpio_port_to_clock_gate_mask(LM4_GPIO_K),
+				CGC_MODE_ALL);
+#else
+#error "Low power idle currently only supports boards with KB scan row GPIO K"
+#endif
+#endif
 }
 
 /* List of GPIO IRQs to enable. Don't automatically enable interrupts for
