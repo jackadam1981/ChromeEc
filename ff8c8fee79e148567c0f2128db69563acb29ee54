@@ -16,6 +16,24 @@
       "revId": "ff8c8fee79e148567c0f2128db69563acb29ee54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e13ceda4_ce038391",
+        "filename": "chip/lm4/eeprom.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2013-10-10T16:15:40Z",
+      "side": 0,
+      "message": "The datasheet says three. Unless you guys think from experience it should be longer?",
+      "parentUuid": "414e9957_71bfd8bc",
+      "revId": "ff8c8fee79e148567c0f2128db69563acb29ee54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

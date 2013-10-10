@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "6132bdd4_6a719746",
+        "filename": "chip/lm4/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2013-10-10T16:15:40Z",
+      "side": 1,
+      "message": "Yeah, it\u0027s only enabling port K for deep sleep because of the hard coded LM4_GPIO_K. The hard coding is because we\u0027re in an #ifdef in which we know that port K is where the KB scan row is, and we want to enable that port in deep sleep.",
+      "parentUuid": "215365fe_d0907c0e",
+      "revId": "7a5ef3256a8b8740894a6fedb8783b85e16d4e52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "215365fe_107be4f4",
         "filename": "chip/lm4/registers.h",
         "patchSetId": 1
