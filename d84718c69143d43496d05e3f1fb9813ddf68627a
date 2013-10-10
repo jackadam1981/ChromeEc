@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "414e9957_b1722010",
+        "filename": "chip/lm4/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-10-10T16:39:27Z",
+      "side": 1,
+      "message": "Just use KB_SCAN_ROW_GPIO instead of LM4_GPIO_K, which is the correct mask for each board.",
+      "revId": "d84718c69143d43496d05e3f1fb9813ddf68627a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
