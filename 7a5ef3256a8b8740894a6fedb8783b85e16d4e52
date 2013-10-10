@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "414e9957_710d18f9",
+        "filename": "chip/lm4/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-10-10T15:49:45Z",
+      "side": 1,
+      "message": "This is smaller:\n\nint index \u003d find_gpio_port_index(gpio_port);\n\nreturn index \u003e\u003d 0 ? (1 \u003c\u003c index) : 0;",
+      "revId": "7a5ef3256a8b8740894a6fedb8783b85e16d4e52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
