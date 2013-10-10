@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6149dd4c_52af3477",
+        "filename": "board/nyan/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-10T15:48:56Z",
+      "side": 1,
+      "message": "there is no such a thing on this board ?",
+      "revId": "ef283e3aa25b056459f215323542ed52b3899968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6149dd4c_72ac3882",
+        "filename": "board/nyan/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-10T15:48:56Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "ef283e3aa25b056459f215323542ed52b3899968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6149dd4c_32a2b090",
+        "filename": "board/nyan/ec.tasklist",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-10T15:48:56Z",
+      "side": 1,
+      "message": "Randall has recently decided that we should change the task priorities for console/host commands/keyboard,\nplease see board/pit/ec.tasklist",
+      "revId": "ef283e3aa25b056459f215323542ed52b3899968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6149dd4c_12a5ac97",
+        "filename": "board/nyan/pmu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-10T15:48:56Z",
+      "side": 1,
+      "message": "if you are not using chipset_gaia, you can remove this dummy file",
+      "revId": "ef283e3aa25b056459f215323542ed52b3899968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "414e9957_91219c6a",
+        "filename": "common/chipset_gaia.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-10T15:48:56Z",
+      "side": 1,
+      "message": "Tegra is barely a Gaia chipset ...\nShould probably be in a separate file.",
+      "revId": "ef283e3aa25b056459f215323542ed52b3899968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6149dd4c_f29f484a",
+        "filename": "common/chipset_gaia.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-10T15:48:56Z",
+      "side": 1,
+      "message": "why 9s ?\n8s is a ChromeOS specification.",
+      "revId": "ef283e3aa25b056459f215323542ed52b3899968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "414e9957_51f9f4a7",
+        "filename": "test/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-10T15:48:56Z",
+      "side": 1,
+      "message": "as Nyan is not really an x86 board, it should be above and with the tests enabled.",
+      "revId": "ef283e3aa25b056459f215323542ed52b3899968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
