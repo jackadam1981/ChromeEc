@@ -232,7 +232,10 @@ void system_disable_jump(void)
 	 * running (RO if RW, or vice versa), so a bad or malicious jump can't
 	 * execute code from that image.
 	 */
-	{
+	if (system_is_locked()) {
+		/*
+		 * Protect memory from code execution
+		 */
 		int mpu_error = mpu_protect_ram();
 		if (mpu_error == EC_SUCCESS) {
 			mpu_enable();
@@ -242,6 +245,10 @@ void system_disable_jump(void)
 			CPRINTF("Failed to lock RAM. mpu_type:%08x. error:%d\n",
 				mpu_get_type(), mpu_error);
 		}
+		/*
+		 * Protect the other image from code execution
+		 * TODO: https://chromium-review.googlesource.com/#/c/169050/
+		 */
 	}
 #endif
 }
@@ -417,10 +424,6 @@ int system_run_image_copy(enum system_image_copy_t copy)
 
 		/* Target image must be RW image */
 		if (copy != SYSTEM_IMAGE_RW)
-			return EC_ERROR_ACCESS_DENIED;
-
-		/* Can't have already jumped between images */
-		if (jumped_to_image)
 			return EC_ERROR_ACCESS_DENIED;
 
 		/* Jumping must still be enabled */
