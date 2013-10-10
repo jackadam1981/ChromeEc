@@ -16,6 +16,24 @@
       "revId": "d84718c69143d43496d05e3f1fb9813ddf68627a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c139a9b5_cdb1c9d5",
+        "filename": "chip/lm4/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2013-10-10T16:50:38Z",
+      "side": 1,
+      "message": "Haha, I totally missed that one! That simplifies a lot of unneeded complexity.",
+      "parentUuid": "414e9957_b1722010",
+      "revId": "d84718c69143d43496d05e3f1fb9813ddf68627a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
