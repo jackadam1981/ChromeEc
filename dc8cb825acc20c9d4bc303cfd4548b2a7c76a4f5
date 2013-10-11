@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1e0a4014_fbc94ba0",
+        "filename": "chip/lm4/clock.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2013-10-11T16:13:39Z",
+      "side": 1,
+      "message": "Right now, I measure we have about 225us margin in the worse case. Usually it\u0027s around 350us of margin. I can lower the DEEP_SLEEP_RECOVER_TIME_USEC, I was just trying to be extra conservative. I\u0027m not sure it will make much difference to overall power consumption, I\u0027ll see.",
+      "parentUuid": "de23489b_b6c088cb",
+      "revId": "dc8cb825acc20c9d4bc303cfd4548b2a7c76a4f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e15442f_5c0ef14c",
         "filename": "chip/lm4/system.c",
         "patchSetId": 4
@@ -47,6 +65,24 @@
       "writtenOn": "2013-10-11T15:46:31Z",
       "side": 1,
       "message": "I think we had code like that on a very early version of Link, where the WAKE# pin was asserted all the time and prevented me from testing RTC match.  Shouldn\u0027t need it now.",
+      "parentUuid": "3e15442f_5c0ef14c",
+      "revId": "dc8cb825acc20c9d4bc303cfd4548b2a7c76a4f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e0a4014_1be51f22",
+        "filename": "chip/lm4/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2013-10-11T16:13:39Z",
+      "side": 1,
+      "message": "That\u0027s a good question. I\u0027m not sure why it ignores the WAKE pin, it probably can be configured to accept the WAKE pin. Functionally, we get wake interrupts because we keep the GPIO banks that contain the lid open, power btn, and AC present inputs clocked while in deep sleep. So, on any of those events, the GPIO module triggers an interrupt. But, it\u0027s probably more power efficient to disable those GPIO clocks and instead turn this wake pin interrupt on.",
       "parentUuid": "3e15442f_5c0ef14c",
       "revId": "dc8cb825acc20c9d4bc303cfd4548b2a7c76a4f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -83,6 +119,24 @@
       "side": 1,
       "message": "As long as it\u0027s clearly commented:\n\n/* Current sleep mask.  You may read from this variable, but must NOT modify it; use enable_sleep() or disable_sleep() to do that. */\n\nOtherwise someone will decide to modify it directly and won\u0027t use an atomic operation, and that\u0027ll introduce a subtle timing-dependent bug.\n\nIf we make sleep_mask global, wouldn\u0027t it also be better to make enable_sleep() and disable_sleep() inline functions (implementation in header)?\n\nNormally I don\u0027t like direct use of mutable globals because it encourages spaghetti coding, but since the sleep mask is modified in interrupt handlers the performance benefit might be worth it.",
       "parentUuid": "de23489b_79e0a344",
+      "revId": "dc8cb825acc20c9d4bc303cfd4548b2a7c76a4f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe0e4c27_97f58466",
+        "filename": "common/system_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2013-10-11T16:13:39Z",
+      "side": 1,
+      "message": "I would lean away from a global variable for a couple reasons. As Randall said, someone may try to set it directly, instead of using atomic set. Also, maybe this function should be renamed to system_is_sleep_allowed(), or something like that. In the future sleep may be blocked due to some other reason, and there\u0027s no reason other functions need to worry about that, they just need to know if sleep is allowed right now. \n\nHowever, you guys know the code better than I do, if you think the performance benefit is more important here, then I can change it. It\u0027s a small difference either way.",
+      "parentUuid": "3e15442f_9c5b69fb",
       "revId": "dc8cb825acc20c9d4bc303cfd4548b2a7c76a4f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
