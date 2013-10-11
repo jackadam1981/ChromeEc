@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "215365fe_bfd66397",
+        "filename": "board/nyan/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000393
+      },
+      "writtenOn": "2013-10-11T02:53:44Z",
+      "side": 1,
+      "message": "Correct, nyan does not use PP1800_LDO2.\nBut, since the signal (PA1) is tied high to +1.8V_STBY_KBC, so  it is always high. The code in chipset_gaia.c will not be affected if the signal is always high.\nOtherwise, I have to #ifdef BOARD_nyan around the places that use PP1800_LDO2.\n\nBut, the bottom line is should I use chipset_gaia.c or not.",
+      "parentUuid": "6149dd4c_52af3477",
+      "revId": "ef283e3aa25b056459f215323542ed52b3899968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6149dd4c_72ac3882",
         "filename": "board/nyan/board.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2013-10-10T15:48:56Z",
       "side": 1,
       "message": "ditto",
+      "revId": "ef283e3aa25b056459f215323542ed52b3899968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "215365fe_3fc353d9",
+        "filename": "board/nyan/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000393
+      },
+      "writtenOn": "2013-10-11T02:53:44Z",
+      "side": 1,
+      "message": "XPSHOLD is used in nyan, and is named as \"HOLD\" in schematics.\nIt is tied to 1.8V_VDDIO.",
+      "parentUuid": "6149dd4c_72ac3882",
       "revId": "ef283e3aa25b056459f215323542ed52b3899968",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "6149dd4c_e77f8017",
+        "filename": "board/nyan/ec.tasklist",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000393
+      },
+      "writtenOn": "2013-10-11T02:53:44Z",
+      "side": 1,
+      "message": "I will fix this by following the pit/ec.tasklist.",
+      "parentUuid": "6149dd4c_32a2b090",
+      "revId": "ef283e3aa25b056459f215323542ed52b3899968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6149dd4c_12a5ac97",
         "filename": "board/nyan/pmu.c",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2013-10-10T15:48:56Z",
       "side": 1,
       "message": "if you are not using chipset_gaia, you can remove this dummy file",
+      "revId": "ef283e3aa25b056459f215323542ed52b3899968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6149dd4c_67747038",
+        "filename": "board/nyan/pmu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000393
+      },
+      "writtenOn": "2013-10-11T02:53:44Z",
+      "side": 1,
+      "message": "yes, only if I am not using chipset_gaia.",
+      "parentUuid": "6149dd4c_12a5ac97",
       "revId": "ef283e3aa25b056459f215323542ed52b3899968",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "414e9957_0b59f137",
+        "filename": "common/chipset_gaia.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000393
+      },
+      "writtenOn": "2013-10-11T02:53:44Z",
+      "side": 1,
+      "message": "I don\u0027t know what is Gaia chipset.\nnyan is following puppy, and for puppy, I was told to follow pit.\n\nAnyone can suggest what file should I be using?",
+      "parentUuid": "414e9957_91219c6a",
+      "revId": "ef283e3aa25b056459f215323542ed52b3899968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6149dd4c_f29f484a",
         "filename": "common/chipset_gaia.c",
         "patchSetId": 2
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "6149dd4c_67c63038",
+        "filename": "common/chipset_gaia.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000393
+      },
+      "writtenOn": "2013-10-11T02:53:44Z",
+      "side": 1,
+      "message": "The pmic (AS3722) that nyan uses needs 9 seconds to shut the power off.\nI have tried 8 seconds, 8.5 seconds and they don\u0027t work.",
+      "parentUuid": "6149dd4c_f29f484a",
+      "revId": "ef283e3aa25b056459f215323542ed52b3899968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "414e9957_51f9f4a7",
         "filename": "test/build.mk",
         "patchSetId": 2
@@ -115,6 +223,24 @@
       "writtenOn": "2013-10-10T15:48:56Z",
       "side": 1,
       "message": "as Nyan is not really an x86 board, it should be above and with the tests enabled.",
+      "revId": "ef283e3aa25b056459f215323542ed52b3899968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "215365fe_ea490b3c",
+        "filename": "test/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000393
+      },
+      "writtenOn": "2013-10-11T02:53:44Z",
+      "side": 1,
+      "message": "I will remove this line.\nAs for adding the tests to nyan, I will submit another CL after I learn how tests are performed.",
+      "parentUuid": "414e9957_51f9f4a7",
       "revId": "ef283e3aa25b056459f215323542ed52b3899968",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
