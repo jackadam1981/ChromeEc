@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de23489b_b6c088cb",
+        "filename": "chip/lm4/clock.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-11T15:23:19Z",
+      "side": 1,
+      "message": "actually from a power perspective, it might be better to wake up slightly too late than too early. If we wake up too early, we have nothing to do, go back to higher power idle then wake up again.",
+      "revId": "dc8cb825acc20c9d4bc303cfd4548b2a7c76a4f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e15442f_5c0ef14c",
+        "filename": "chip/lm4/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-11T15:23:19Z",
+      "side": 1,
+      "message": "I don\u0027t understand the \"not the WAKE pin\", we still want to wake up immediatly on LID open and other similar conditions.",
+      "revId": "dc8cb825acc20c9d4bc303cfd4548b2a7c76a4f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "de23489b_79e0a344",
+        "filename": "common/system_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-11T15:23:19Z",
+      "side": 1,
+      "message": "I personally hate those kind of accessors : For me, that\u0027s just a blatant un-optimization.\nAs we are not doing Java for Enterprise, why not just using the global variable sleep_mask ?",
+      "revId": "dc8cb825acc20c9d4bc303cfd4548b2a7c76a4f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
