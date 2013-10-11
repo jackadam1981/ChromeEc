@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e83d8c4_e89de702",
+        "filename": "chip/stm32/clock-stm32f.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-11T23:34:31Z",
+      "side": 1,
+      "message": "you can remove that comment (and separation)",
+      "revId": "cc67e72c3a56da6b7bc372bd3df5e7f30231cf03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e88e4e1_a7adce7f",
+        "filename": "common/system_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-11T23:34:31Z",
+      "side": 1,
+      "message": "the [0|1] is not terribly accurate for 32-bit bitmap.",
+      "revId": "cc67e72c3a56da6b7bc372bd3df5e7f30231cf03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e88e4e1_47b882b6",
+        "filename": "include/system.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-11T23:34:31Z",
+      "side": 1,
+      "message": "this stuff is very chip specific to be here.",
+      "revId": "cc67e72c3a56da6b7bc372bd3df5e7f30231cf03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
