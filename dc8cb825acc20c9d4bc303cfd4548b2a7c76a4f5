@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "1e0a4014_3b5583fd",
+        "filename": "chip/lm4/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-10-11T15:46:31Z",
+      "side": 1,
+      "message": "I think we had code like that on a very early version of Link, where the WAKE# pin was asserted all the time and prevented me from testing RTC match.  Shouldn\u0027t need it now.",
+      "parentUuid": "3e15442f_5c0ef14c",
+      "revId": "dc8cb825acc20c9d4bc303cfd4548b2a7c76a4f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de23489b_79e0a344",
         "filename": "common/system_common.c",
         "patchSetId": 4
@@ -47,6 +65,24 @@
       "writtenOn": "2013-10-11T15:23:19Z",
       "side": 1,
       "message": "I personally hate those kind of accessors : For me, that\u0027s just a blatant un-optimization.\nAs we are not doing Java for Enterprise, why not just using the global variable sleep_mask ?",
+      "revId": "dc8cb825acc20c9d4bc303cfd4548b2a7c76a4f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e15442f_9c5b69fb",
+        "filename": "common/system_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-10-11T15:46:31Z",
+      "side": 1,
+      "message": "As long as it\u0027s clearly commented:\n\n/* Current sleep mask.  You may read from this variable, but must NOT modify it; use enable_sleep() or disable_sleep() to do that. */\n\nOtherwise someone will decide to modify it directly and won\u0027t use an atomic operation, and that\u0027ll introduce a subtle timing-dependent bug.\n\nIf we make sleep_mask global, wouldn\u0027t it also be better to make enable_sleep() and disable_sleep() inline functions (implementation in header)?\n\nNormally I don\u0027t like direct use of mutable globals because it encourages spaghetti coding, but since the sleep mask is modified in interrupt handlers the performance benefit might be worth it.",
+      "parentUuid": "de23489b_79e0a344",
       "revId": "dc8cb825acc20c9d4bc303cfd4548b2a7c76a4f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
