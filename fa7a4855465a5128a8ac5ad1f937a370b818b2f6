@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e76dcc6_3364a81d",
+        "filename": "board/nyan/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-10-14T20:06:13Z",
+      "side": 1,
+      "message": "Please update to match style in https://chromium-review.googlesource.com/#/c/172115/",
+      "revId": "fa7a4855465a5128a8ac5ad1f937a370b818b2f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e88e4e1_ed6f30f4",
+        "filename": "common/battery_nyan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-10-14T20:06:13Z",
+      "side": 1,
+      "message": "Move to board/nyan/battery.c\n\n(This matches a change to other boards that was made recently.)",
+      "revId": "fa7a4855465a5128a8ac5ad1f937a370b818b2f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "be4e9480_0465cbb8",
+        "filename": "common/chipset_gaia.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-10-14T20:06:13Z",
+      "side": 1,
+      "message": "1. Why does nyan need 9 seconds?\n\n2. Would be better to do \n\n  #ifdef BOARD_nyan\n  // set 9 sec\n  #else\n  // set 8 sec\n  #endif",
+      "revId": "fa7a4855465a5128a8ac5ad1f937a370b818b2f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
