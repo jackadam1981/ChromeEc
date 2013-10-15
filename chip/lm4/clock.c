@@ -16,6 +16,7 @@
 #include "system.h"
 #include "task.h"
 #include "timer.h"
+#include "uart.h"
 #include "util.h"
 #include "watchdog.h"
 
@@ -27,9 +28,11 @@
 
 /*
  * Length of time for the processor to wake up from deep sleep. Actual
- * measurement gives anywhere from 75-200us, so this is conservative.
+ * measurement gives anywhere up to 780us, depending on the mode it is coming
+ * out of. The datasheet gives a maximum of 846us, for coming out of deep
+ * sleep in our worst case deep sleep mode.
  */
-#define DEEP_SLEEP_RECOVER_TIME_USEC 300
+#define DEEP_SLEEP_RECOVER_TIME_USEC 850
 
 /* Low power idle statistics */
 #ifdef CONFIG_LOW_POWER_IDLE
@@ -37,6 +40,12 @@ static int idle_sleep_cnt;
 static int idle_dsleep_cnt;
 static uint64_t idle_dsleep_time_us;
 static int dsleep_recovery_margin_us = 1000000;
+
+static int jtag_in_use;
+static int console_in_use;
+static int console_in_use_timeout_sec = 60;
+static timestamp_t console_expire_time;
+static int dsleep_force_lfiosc_off;
 #endif
 
 static int freq;
@@ -207,18 +216,37 @@ void clock_disable_peripheral(uint32_t offset, uint32_t mask, uint32_t mode)
 
 #ifdef CONFIG_LOW_POWER_IDLE
 
+void clock_refresh_jtag_in_use(void)
+{
+	jtag_in_use = 1;
+}
+
+void clock_refresh_console_in_use(void)
+{
+	console_in_use = 1;
+
+	/* Set console_in_use expire time. */
+	console_expire_time = get_time();
+	console_expire_time.val += console_in_use_timeout_sec * SECOND;
+
+}
+
 /* Low power idle task.  Executed when no tasks are ready to be scheduled. */
 void __idle(void)
 {
 	timestamp_t t0, t1, rtc_t0, rtc_t1;
 	int next_delay = 0;
 	int time_for_dsleep, margin_us;
+	int use_lfiosc;
 
 	/* Enable the hibernate IRQ used to wake up from deep sleep */
 	system_enable_hib_interrupt();
 
 	/* Set SRAM and flash power management to 'low power' in deep sleep. */
 	LM4_SYSTEM_DSLPPWRCFG = 0x23;
+
+	/* Enable JTAG interrupt which will notify us when JTAG is in use. */
+	gpio_enable_interrupt(GPIO_JTAG_TCK);
 
 	/*
 	 * Print when the idle task starts.  This is the lowest priority task,
@@ -239,6 +267,14 @@ void __idle(void)
 		t0 = get_time();
 		next_delay = __hw_clock_event_get() - t0.le.lo;
 
+		/* Check if the console use has expired. */
+		if (console_in_use && t0.val > console_expire_time.val) {
+			console_in_use = 0;
+			if (!dsleep_force_lfiosc_off)
+				CPRINTF("[%T Disabling console in "
+					"deep sleep]\n");
+		}
+
 		/* Do we have enough time before next event to deep sleep. */
 		time_for_dsleep = next_delay > (DEEP_SLEEP_RECOVER_TIME_USEC +
 						HIB_SET_RTC_MATCH_DELAY_USEC);
@@ -246,6 +282,33 @@ void __idle(void)
 		if (!sleep_mask && time_for_dsleep) {
 			/* Deep-sleep in STOP mode. */
 			idle_dsleep_cnt++;
+
+			/*
+			 * Determine if we should use the LFIOSC (30kHz) or the
+			 * PIOSC (16MHz) for the clock in deep sleep. Use the
+			 * LFIOSC only if the JTAG is not in use, the console
+			 * is not in use, the console UART TX is not busy, and
+			 * we haven't received a console command to force not
+			 * using the LFIOSC.
+			 */
+			use_lfiosc = !jtag_in_use && !console_in_use &&
+					!uart_tx_in_progress() &&
+					!dsleep_force_lfiosc_off;
+
+			/* Set the deep sleep clock register. */
+			if (use_lfiosc)
+				LM4_SYSTEM_DSLPCLKCFG = 0x32;
+			else
+				LM4_SYSTEM_DSLPCLKCFG = 0x10;
+
+			/*
+			 * If using low speed (LFIOSC) clock, disable console.
+			 * This will also convert the console RX pin to a GPIO
+			 * and set an edge interrupt to wake us from deep sleep
+			 * if any action occurs on console.
+			 */
+			if (use_lfiosc)
+				uart_console_disable_for_dsleep();
 
 			/* Set deep sleep bit. */
 			CPU_SCB_SYSCTRL |= 0x4;
@@ -273,6 +336,10 @@ void __idle(void)
 			rtc_t1 = system_get_rtc();
 			t1.val = t0.val + (rtc_t1.val - rtc_t0.val);
 			force_time(t1);
+
+			/* If using low speed clock, re-enable the console. */
+			if (use_lfiosc)
+				uart_console_enable_from_dsleep();
 
 			/* Record time spent in deep sleep. */
 			idle_dsleep_time_us += (rtc_t1.val - rtc_t0.val);
@@ -614,6 +681,52 @@ static int command_idle_stats(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(idlestats, command_idle_stats,
 			"",
 			"Print last idle stats",
+			NULL);
+
+/**
+ * Configure deep sleep clock settings.
+ */
+static int command_dsleepclock(int argc, char **argv)
+{
+	int v;
+
+	if (argc > 1) {
+		if (parse_bool(argv[1], &v)) {
+			/*
+			 * Either force deep sleep to use PIOSC (16MHz) or
+			 * allow it to auto-select.
+			 */
+			dsleep_force_lfiosc_off = v;
+		} else {
+			/* Set console in use timeout. */
+			char *e;
+			v = strtoi(argv[1], &e, 10);
+			if (*e)
+				return EC_ERROR_PARAM1;
+
+			console_in_use_timeout_sec = v;
+
+			/* Refresh console in use to use new timeout. */
+			clock_refresh_console_in_use();
+		}
+	}
+
+	ccprintf("Force no low speed clock: %d\n", dsleep_force_lfiosc_off);
+	ccprintf("JTAG in use:              %d\n", jtag_in_use);
+	ccprintf("Console in use:           %d\n", console_in_use);
+	ccprintf("Console in use timeout:   %d sec\n",
+			console_in_use_timeout_sec);
+	ccprintf("DSLPCLKCFG register:      0x%08x\n", LM4_SYSTEM_DSLPCLKCFG);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(dsleepclock, command_dsleepclock,
+			"[ on | off | <timeout> sec]",
+			"Deep sleep clock settings:\nUse 'on' to force deep "
+			"sleep not to use low speed clock.\nUse 'off' to "
+			"allow deep sleep to auto-select using the low speed "
+			"clock.\n"
+			"Give a timeout value for the console in use timeout.",
 			NULL);
 #endif /* CONFIG_LOW_POWER_IDLE */
 

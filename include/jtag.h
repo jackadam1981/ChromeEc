@@ -15,4 +15,11 @@
  */
 void jtag_pre_init(void);
 
+/**
+ * Interrupt handler for JTAG clock.
+ *
+ * @param signal	Signal which triggered the interrupt.
+ */
+void jtag_interrupt(enum gpio_signal signal);
+
 #endif  /* __CROS_EC_JTAG_H */

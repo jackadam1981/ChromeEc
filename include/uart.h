@@ -101,6 +101,11 @@ void uart_tx_flush(void);
 int uart_tx_ready(void);
 
 /**
+ * Return non-zero if a transmit is in progress.
+ */
+int uart_tx_in_progress(void);
+
+/**
  * Return non-zero if UART is ready to start a DMA transfer.
  */
 int uart_tx_dma_ready(void);
@@ -194,6 +199,24 @@ void uart_process_input(void);
  * Intended to be called from the driver interrupt handler.
  */
 void uart_process_output(void);
+
+/**
+ * Disable the EC console UART and convert the UART RX pin to a generic GPIO
+ * with an edge detect interrupt.
+ */
+void uart_console_disable_for_dsleep(void);
+
+/**
+ * Enable the EC console UART after a uart_console_disable_for_dsleep().
+ */
+void uart_console_enable_from_dsleep(void);
+
+/**
+ * Interrupt handler for UART RX pin transition in deep sleep.
+ *
+ * @param signal	Signal which triggered the interrupt.
+ */
+void uart_deepsleep_interrupt(enum gpio_signal signal);
 
 /*
  * COMx functions
