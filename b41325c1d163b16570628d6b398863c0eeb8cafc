@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be4e9480_13650fb9",
+        "filename": "board/spring/usb_charging.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1000182
+      },
+      "writtenOn": "2013-10-15T20:49:26Z",
+      "side": 1,
+      "message": "If its not the RW image or if its \u003e 20 seconds past sysjump or if get_time fails for some reason don\u0027t we want to use percent as a percent rather than an absolute value that you are jamming in?",
+      "revId": "b41325c1d163b16570628d6b398863c0eeb8cafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
