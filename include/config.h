@@ -362,6 +362,11 @@
 #undef CONFIG_CONSOLE_RESTRICTED_INPUT
 
 /*****************************************************************************/
+
+/* Compile chip support for digital-to-analog convertor */
+#undef CONFIG_DAC
+
+/*****************************************************************************/
 /*
  * Debugging config
  *
