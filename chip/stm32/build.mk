@@ -36,4 +36,5 @@ chip-$(HAS_TASK_KEYSCAN)+=keyboard_raw.o
 chip-$(HAS_TASK_POWERLED)+=power_led.o
 chip-$(CONFIG_FLASH)+=flash-$(FLASH_FAMILY).o
 chip-$(CONFIG_ADC)+=adc-$(CHIP_FAMILY).o
+chip-$(CONFIG_DAC)+=dac.o
 chip-$(CONFIG_PWM)+=pwm.o
