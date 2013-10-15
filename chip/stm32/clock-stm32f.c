@@ -177,6 +177,10 @@ void __enter_hibernate(uint32_t seconds, uint32_t microseconds)
 
 #ifdef CONFIG_LOW_POWER_IDLE
 
+void clock_refresh_console_in_use(void)
+{
+}
+
 #ifdef CONFIG_FORCE_CONSOLE_RESUME
 static void enable_serial_wakeup(int enable)
 {
