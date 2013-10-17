@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "5e2f58b5_77f11283",
+        "filename": "board/nyan/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-17T15:44:27Z",
+      "side": 1,
+      "message": "I\u0027m pretty sure the actual IC is STM32L151RBT6",
+      "revId": "e76751e214f96382561b89985ef56f50fdbfe53a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e2f58b5_17e086ad",
+        "filename": "common/chipset_tegra.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-17T15:44:27Z",
+      "side": 1,
+      "message": "the system has no TPS65090, do we need that header ?",
+      "revId": "e76751e214f96382561b89985ef56f50fdbfe53a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e2f58b5_b78efa2d",
         "filename": "common/chipset_tegra.c",
         "patchSetId": 4
