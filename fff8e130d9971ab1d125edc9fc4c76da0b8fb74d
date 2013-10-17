@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "fe0bac5e_83e28e89",
+        "filename": "board/peppy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-17T23:19:24Z",
+      "side": 1,
+      "message": "the EC console gpioget/set is calling find_signal_by_name() which is using the .name field ?",
+      "parentUuid": "9ee8f0cc_dc458d24",
+      "revId": "fff8e130d9971ab1d125edc9fc4c76da0b8fb74d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe0bac5e_c3c81666",
         "filename": "chip/lm4/clock.c",
         "patchSetId": 2
