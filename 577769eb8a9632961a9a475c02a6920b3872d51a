@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e02a442_9122dcae",
+        "filename": "board/falco/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-10-17T16:45:14Z",
+      "side": 1,
+      "message": "UART_0 -\u003e UART0",
+      "revId": "577769eb8a9632961a9a475c02a6920b3872d51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e02a442_515a342c",
+        "filename": "chip/lm4/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-10-17T16:45:14Z",
+      "side": 1,
+      "message": "Suggest initializing the deep sleep expire time so that deep sleep won\u0027t happen for the first ~15 sec after the system boots.  That gives a window of time to connect with JTAG or disable deep sleep at the console before the first deep sleep could occur.\n\nFor example, just set console_in_use\u003d1 and console_expire_time \u003d (now + 15 sec).\n\n(Yes, normally we boot the AP right at system start, but there are cases where we don\u0027t - for example, if the system is booted with power+refresh+downarrow to debug a problem with chipset startup.)",
+      "revId": "577769eb8a9632961a9a475c02a6920b3872d51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "def0a8a0_ae25f7ba",
+        "filename": "chip/lm4/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-10-17T16:45:14Z",
+      "side": 1,
+      "message": "...or if the UART transmit buffer isn\u0027t empty (tx_buf_head !\u003d tx_buf_tail in uart_buffering.c)\n\nIf we pause UART output with soft flow control (Ctrl+S), we don\u0027t want to deep sleep, or else we\u0027ll eat the Ctrl+Q character which would resume UART output.",
+      "revId": "577769eb8a9632961a9a475c02a6920b3872d51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe0bac5e_cf42fd19",
+        "filename": "chip/lm4/jtag.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-10-17T16:45:14Z",
+      "side": 1,
+      "message": "Isn\u0027t this redundant with the GPIO config in board.c?",
+      "revId": "577769eb8a9632961a9a475c02a6920b3872d51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe0bac5e_af64d9bd",
+        "filename": "chip/lm4/jtag.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-10-17T16:45:14Z",
+      "side": 1,
+      "message": "With the change in jtag.h, the entire implementation can be in the #ifdef",
+      "revId": "577769eb8a9632961a9a475c02a6920b3872d51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e02a442_71b9380b",
+        "filename": "chip/lm4/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-10-17T16:45:14Z",
+      "side": 1,
+      "message": "uart_enter_dsleep()?",
+      "revId": "577769eb8a9632961a9a475c02a6920b3872d51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e02a442_51beb4f4",
+        "filename": "chip/lm4/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-10-17T16:45:14Z",
+      "side": 1,
+      "message": "uart_exit_dsleep()",
+      "revId": "577769eb8a9632961a9a475c02a6920b3872d51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e02a442_b1c9e0a1",
+        "filename": "chip/lm4/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-10-17T16:45:14Z",
+      "side": 1,
+      "message": "With the change in uart.h, the whole of uart_deepsleep_interrupt() can be inside the #ifdef",
+      "revId": "577769eb8a9632961a9a475c02a6920b3872d51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e02a442_d1a904ba",
+        "filename": "chip/lm4/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-10-17T16:45:14Z",
+      "side": 1,
+      "message": "/* Activity seen on UART RX pin while UART was disabled for deep sleep.  The console won\u0027t see that character because the UART is disabled, so we need to inform the clock module of UART activity ourselves. */",
+      "revId": "577769eb8a9632961a9a475c02a6920b3872d51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e02a442_71e01813",
+        "filename": "include/jtag.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-10-17T16:45:14Z",
+      "side": 1,
+      "message": "#ifdef CONFIG_LOW_POWER_IDLE\n  ...\n  #else\n  #define jtag_interrupt NULL\n  #endif",
+      "revId": "577769eb8a9632961a9a475c02a6920b3872d51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "def0a8a0_2e32a703",
+        "filename": "include/uart.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-10-17T16:45:14Z",
+      "side": 1,
+      "message": "#ifdef CONFIG_LOW_POWER_IDLE\n  ...\n  #else\n  #define uart_deepsleep_interrupt NULL\n  #endif",
+      "revId": "577769eb8a9632961a9a475c02a6920b3872d51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
