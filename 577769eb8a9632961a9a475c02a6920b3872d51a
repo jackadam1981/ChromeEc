@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "1e396001_40652e1c",
+        "filename": "chip/lm4/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2013-10-17T17:08:52Z",
+      "side": 1,
+      "message": "Ok, I like that idea.",
+      "parentUuid": "3e02a442_515a342c",
+      "revId": "577769eb8a9632961a9a475c02a6920b3872d51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "def0a8a0_ae25f7ba",
         "filename": "chip/lm4/clock.c",
         "patchSetId": 1
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "de42687c_3e37690d",
+        "filename": "chip/lm4/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2013-10-17T17:08:52Z",
+      "side": 1,
+      "message": "Ah, yes, good catch.",
+      "parentUuid": "def0a8a0_ae25f7ba",
+      "revId": "577769eb8a9632961a9a475c02a6920b3872d51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe0bac5e_cf42fd19",
         "filename": "chip/lm4/jtag.c",
         "patchSetId": 1
@@ -64,6 +100,24 @@
       "writtenOn": "2013-10-17T16:45:14Z",
       "side": 1,
       "message": "Isn\u0027t this redundant with the GPIO config in board.c?",
+      "revId": "577769eb8a9632961a9a475c02a6920b3872d51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "de42687c_9e3e7de8",
+        "filename": "chip/lm4/jtag.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2013-10-17T17:08:52Z",
+      "side": 1,
+      "message": "Actually, no this isn\u0027t redundant because the GPIO config for the JTAG pin has the flag GPIO_DEFAULT, which means that it won\u0027t get configured. This is critical because jtag_pre_init() gets called before gpio_pre_init(), and we don\u0027t want the gpio_pre_init() to wipe away special settings that have been configured in jtag_pre_init(). So the GPIO config of this pin is really just there to specify the interrupt function to run, and not there to actually configure the pin.",
+      "parentUuid": "fe0bac5e_cf42fd19",
       "revId": "577769eb8a9632961a9a475c02a6920b3872d51a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
