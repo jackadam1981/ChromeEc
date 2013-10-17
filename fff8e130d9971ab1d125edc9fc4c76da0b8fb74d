@@ -16,6 +16,57 @@
       "revId": "fff8e130d9971ab1d125edc9fc4c76da0b8fb74d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe0bac5e_c3c81666",
+        "filename": "chip/lm4/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-17T22:46:57Z",
+      "side": 1,
+      "message": "rather using an adhoc int for each deep sleep masking reason.\ncan we just use part of the sleep_mask ?\n(and probably create along the way appropriate constants for the mask of sleep bits and deep sleep bits)",
+      "revId": "fff8e130d9971ab1d125edc9fc4c76da0b8fb74d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e02a442_60be7cf5",
+        "filename": "chip/lm4/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-17T22:46:57Z",
+      "side": 1,
+      "message": "isn\u0027t that condition already verified by the current sleep_mask ?",
+      "revId": "fff8e130d9971ab1d125edc9fc4c76da0b8fb74d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe0bac5e_83a8ce82",
+        "filename": "chip/lm4/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-17T22:46:57Z",
+      "side": 1,
+      "message": "i\u0027m an incorrigible admirer of the ternary operator in C",
+      "revId": "fff8e130d9971ab1d125edc9fc4c76da0b8fb74d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
