@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "def0a8a0_f416b05c",
+        "filename": "board/nyan/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-17T20:16:07Z",
+      "side": 1,
+      "message": "I\u0027m reading STM32L151RBT6 on my board.\nThe current flash size seems in the ballpark of 52kB, so getting 2 copies inside 64kB  is probably difficult ...",
+      "parentUuid": "fe0bac5e_12ba6ad1",
+      "revId": "e76751e214f96382561b89985ef56f50fdbfe53a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e2f58b5_17e086ad",
         "filename": "common/chipset_tegra.c",
         "patchSetId": 4
