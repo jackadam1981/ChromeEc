@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9ee8f0cc_dc458d24",
+        "filename": "board/peppy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2013-10-17T23:14:37Z",
+      "side": 1,
+      "message": "No... I don\u0027t think that string is used anywhere except printing it. It\u0027s the enum that indexes this array that is used for the get/set functions. But, for consistency it would be better to use an underscore. I\u0027ll change it.",
+      "parentUuid": "fe0bac5e_e3a9dab9",
+      "revId": "fff8e130d9971ab1d125edc9fc4c76da0b8fb74d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe0bac5e_c3c81666",
         "filename": "chip/lm4/clock.c",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "bedbf437_dd458b24",
+        "filename": "chip/lm4/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2013-10-17T23:14:37Z",
+      "side": 1,
+      "message": "Some conditions would be tricky. Like getting the UART module to tell us when the transmit is no longer in progress.",
+      "parentUuid": "fe0bac5e_c3c81666",
+      "revId": "fff8e130d9971ab1d125edc9fc4c76da0b8fb74d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e02a442_60be7cf5",
         "filename": "chip/lm4/clock.c",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2013-10-17T22:46:57Z",
       "side": 1,
       "message": "isn\u0027t that condition already verified by the current sleep_mask ?",
+      "revId": "fff8e130d9971ab1d125edc9fc4c76da0b8fb74d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bedbf437_9db22326",
+        "filename": "chip/lm4/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2013-10-17T23:14:37Z",
+      "side": 1,
+      "message": "No, actually, initially I was thinking the sleep mask would take care of it, but it wasn\u0027t, I kept getting garbage printed to the screen when the clock speed changed. The problem is that data can still be in the TX FIFO when the sleep mask is cleared. As for the buffer empty, Randall makes a good point that if the flow control XOFF character is sent, then we will stop sending data, and clear the sleep mask, but when the XON is sent we will miss it if we are using the low speed clock.",
+      "parentUuid": "3e02a442_60be7cf5",
       "revId": "fff8e130d9971ab1d125edc9fc4c76da0b8fb74d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
