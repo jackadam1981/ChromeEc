@@ -67,6 +67,24 @@
       "revId": "fff8e130d9971ab1d125edc9fc4c76da0b8fb74d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe0bac5e_23e762ce",
+        "filename": "chip/lm4/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-10-17T22:57:35Z",
+      "side": 1,
+      "message": "username \u003d\u003d \u0027vpalatin\u0027 ? \u0027?:\u0027 : \u0027if-else\u0027",
+      "parentUuid": "fe0bac5e_83a8ce82",
+      "revId": "fff8e130d9971ab1d125edc9fc4c76da0b8fb74d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
