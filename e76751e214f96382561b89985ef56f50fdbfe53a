@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fe0bac5e_12ba6ad1",
+        "filename": "board/nyan/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000393
+      },
+      "writtenOn": "2013-10-17T18:58:05Z",
+      "side": 1,
+      "message": "My board has a STM32L151R8T6.\nR8 has 64KB flash, and RB has 128KB flash.\nI think if the code runs of 64KB flash, it should run of 128KB.\nI will fix it to say it is an STM32L151R8T6",
+      "parentUuid": "5e2f58b5_77f11283",
+      "revId": "e76751e214f96382561b89985ef56f50fdbfe53a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e2f58b5_17e086ad",
         "filename": "common/chipset_tegra.c",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2013-10-17T15:44:27Z",
       "side": 1,
       "message": "the system has no TPS65090, do we need that header ?",
+      "revId": "e76751e214f96382561b89985ef56f50fdbfe53a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e02a442_51d234a5",
+        "filename": "common/chipset_tegra.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000393
+      },
+      "writtenOn": "2013-10-17T18:58:05Z",
+      "side": 1,
+      "message": "pmu_tpschrome.h is required because charge_keep_power_off function is declared there.",
+      "parentUuid": "5e2f58b5_17e086ad",
       "revId": "e76751e214f96382561b89985ef56f50fdbfe53a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "def0a8a0_aea33794",
+        "filename": "common/chipset_tegra.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1000393
+      },
+      "writtenOn": "2013-10-17T18:58:05Z",
+      "side": 1,
+      "message": "will do.",
+      "parentUuid": "5e2f58b5_b78efa2d",
+      "revId": "e76751e214f96382561b89985ef56f50fdbfe53a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e2f58b5_978136fd",
         "filename": "include/tegra_power.h",
         "patchSetId": 4
@@ -64,6 +118,24 @@
       "writtenOn": "2013-10-17T15:39:47Z",
       "side": 1,
       "message": "Gaia -\u003e Tegra",
+      "revId": "e76751e214f96382561b89985ef56f50fdbfe53a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe0bac5e_6f5f914d",
+        "filename": "include/tegra_power.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000393
+      },
+      "writtenOn": "2013-10-17T18:58:05Z",
+      "side": 1,
+      "message": "Good catch.\nWill fix.\nThanks",
+      "parentUuid": "5e2f58b5_978136fd",
       "revId": "e76751e214f96382561b89985ef56f50fdbfe53a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
