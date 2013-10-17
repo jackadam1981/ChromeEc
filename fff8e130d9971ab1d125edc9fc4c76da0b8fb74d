@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "fe0bac5e_83fbae2b",
+        "filename": "chip/lm4/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-17T23:31:48Z",
+      "side": 1,
+      "message": "using one bit in sleep_mask for jtag_in_use and console_in_use is still saving you 2 ints in SRAM (and the adhoc clock_refresh_jtag_in_use function) \nand add a bit of consistency IMO\nthis won\u0027t magically remove the adhoc conditions below, I agree",
+      "parentUuid": "bedbf437_dd458b24",
+      "revId": "fff8e130d9971ab1d125edc9fc4c76da0b8fb74d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e02a442_60be7cf5",
         "filename": "chip/lm4/clock.c",
         "patchSetId": 2
@@ -125,6 +143,24 @@
     },
     {
       "key": {
+        "uuid": "def0a8a0_979ace07",
+        "filename": "chip/lm4/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-17T23:31:48Z",
+      "side": 1,
+      "message": "yes their interrupt handling is somewhat limited, we cannot get at the same time the TX fifo reload interrupt and the EOT one.",
+      "parentUuid": "bedbf437_9db22326",
+      "revId": "fff8e130d9971ab1d125edc9fc4c76da0b8fb74d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe0bac5e_83a8ce82",
         "filename": "chip/lm4/clock.c",
         "patchSetId": 2
@@ -154,6 +190,23 @@
       "side": 1,
       "message": "username \u003d\u003d \u0027vpalatin\u0027 ? \u0027?:\u0027 : \u0027if-else\u0027",
       "parentUuid": "fe0bac5e_83a8ce82",
+      "revId": "fff8e130d9971ab1d125edc9fc4c76da0b8fb74d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe0bac5e_437c26be",
+        "filename": "chip/lm4/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-17T23:31:48Z",
+      "side": 1,
+      "message": "according to the LM4 manual, the latter check on the BUSY bit is a superset of the former on the FIFO\nreturn LM4_UART_FR(0) \u0026 0x08\nshould be enough",
       "revId": "fff8e130d9971ab1d125edc9fc4c76da0b8fb74d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
