@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe0bac5e_84e0ca45",
+        "filename": "include/chipset.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1002234
+      },
+      "writtenOn": "2013-10-21T18:30:51Z",
+      "side": 1,
+      "message": "I suppose this is needed because power_button.c is included sometimes even when there is no AP chipset.  In theory, it would be nice to get rid of the #else.",
+      "revId": "d488478fb30a3bf5dab451e49bb67f624804d9ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
