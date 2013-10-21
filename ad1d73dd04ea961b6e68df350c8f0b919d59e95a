@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e02a442_5fd18d18",
+        "filename": "common/battery_wolf.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-10-21T03:07:50Z",
+      "side": 1,
+      "message": "Nit: You don\u0027t need the else statement. Just having the \"return rv;\" at the end of the function is good enough.",
+      "revId": "ad1d73dd04ea961b6e68df350c8f0b919d59e95a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
