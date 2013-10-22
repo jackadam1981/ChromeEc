@@ -7,7 +7,7 @@
 #include "adc.h"
 #include "gpio.h"
 #include "i2c.h"
-#include "lm4_adc.h"
+#include "adc_data.h"
 #include "registers.h"
 #include "util.h"
 

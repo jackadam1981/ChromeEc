@@ -5,11 +5,10 @@
 
 /* LM4-specific ADC module for Chrome EC */
 
-#ifndef __CROS_EC_LM4_ADC_H
-#define __CROS_EC_LM4_ADC_H
+#ifndef __CROS_EC_ADC_DATA_H
+#define __CROS_EC_ADC_DATA_H
 
-enum lm4_adc_sequencer
-{
+enum lm4_adc_sequencer {
 	LM4_ADC_SEQ0 = 0,
 	LM4_ADC_SEQ1,
 	LM4_ADC_SEQ2,
@@ -42,4 +41,4 @@ extern const struct adc_t adc_channels[];
 /* Dummy value for "channel" in adc_t if we don't have an external channel. */
 #define LM4_AIN_NONE (-1)
 
-#endif /* __CROS_EC_LM4_ADC_H */
+#endif /* __CROS_EC_ADC_DATA_H */

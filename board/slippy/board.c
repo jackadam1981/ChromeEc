@@ -18,7 +18,7 @@
 #include "jtag.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
-#include "lm4_adc.h"
+#include "adc_data.h"
 #include "peci.h"
 #include "power_button.h"
 #include "pwm.h"
