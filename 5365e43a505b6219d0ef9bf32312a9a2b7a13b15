@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e4dfc0e_dbbe33f6",
+        "filename": "board/samus/power_sequence.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1001797
+      },
+      "writtenOn": "2013-10-23T17:50:03Z",
+      "side": 1,
+      "message": "Is this needed for S5? I would expect power to be removed from the wireless device.",
+      "revId": "5365e43a505b6219d0ef9bf32312a9a2b7a13b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
