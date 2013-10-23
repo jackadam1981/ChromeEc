@@ -9,7 +9,6 @@
 common-y=main.o util.o console_output.o uart_buffering.o
 common-y+=memory_commands.o shared_mem.o system_common.o hooks.o
 common-y+=gpio_common.o version.o printf.o queue.o
-common-y+=throttle_ap.o
 
 common-$(CONFIG_BACKLIGHT_LID)+=backlight_lid.o
 common-$(CONFIG_BATTERY_BQ20Z453)+=battery_bq20z453.o
@@ -65,7 +64,7 @@ common-$(CONFIG_USB_PORT_POWER_DUMB)+=usb_port_power_dumb.o
 common-$(CONFIG_USB_PORT_POWER_SMART)+=usb_port_power_smart.o
 common-$(CONFIG_USB_SWITCH_TSU6721)+=usb_switch_tsu6721.o
 common-$(CONFIG_WIRELESS)+=wireless.o
-common-$(HAS_TASK_CHIPSET)+=chipset.o
+common-$(HAS_TASK_CHIPSET)+=chipset.o throttle_ap.o
 common-$(HAS_TASK_CONSOLE)+=console.o
 common-$(HAS_TASK_HOSTCMD)+=host_command.o host_event_commands.o
 common-$(HAS_TASK_KEYSCAN)+=keyboard_scan.o
