@@ -40,11 +40,12 @@ static void configure_gpio(void)
  * @param seq		Sequencer to read
  * @return Raw ADC value.
  */
-static int lm4_adc_flush_and_read(enum lm4_adc_sequencer seq)
+static int flush_and_read(enum lm4_adc_sequencer seq)
 {
 	/*
-	 * TODO: right now we have only a single channel so this is simple.
-	 * When we have multiple channels, should we...
+	 * This is currently simple because we can dedicate a sequencer to each
+	 * ADC channel.  If we have enough channels that's no longer possible,
+	 * this code will need to become more complex.  For example, we could:
 	 *
 	 * 1) Read them all using a timer interrupt, and then return the most
 	 * recent value?  This is lowest-latency for the caller, but won't
@@ -93,7 +94,7 @@ static int lm4_adc_flush_and_read(enum lm4_adc_sequencer seq)
  * @param ssctl		Value for sampler sequencer control register
  *
  */
-static void lm4_adc_configure(const struct adc_t *adc)
+static void adc_configure(const struct adc_t *adc)
 {
 	const enum lm4_adc_sequencer seq = adc->sequencer;
 
@@ -120,7 +121,7 @@ static void lm4_adc_configure(const struct adc_t *adc)
 int adc_read_channel(enum adc_channel ch)
 {
 	const struct adc_t *adc = adc_channels + ch;
-	int rv = lm4_adc_flush_and_read(adc->sequencer);
+	int rv = flush_and_read(adc->sequencer);
 
 	if (rv == ADC_READ_ERROR)
 		return ADC_READ_ERROR;
@@ -235,6 +236,6 @@ static void adc_init(void)
 
 	/* Initialize ADC sequencer */
 	for (i = 0; i < ADC_CH_COUNT; ++i)
-		lm4_adc_configure(adc_channels + i);
+		adc_configure(adc_channels + i);
 }
 DECLARE_HOOK(HOOK_INIT, adc_init, HOOK_PRIO_DEFAULT);
