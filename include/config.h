@@ -332,9 +332,6 @@
 /* Support PWM control of cooling fans */
 #undef CONFIG_FAN
 
-/* Fan channel (not PWM channel) for the CPU fan */
-#undef CONFIG_FAN_CH_CPU
-
 /* Name of active high GPIO to control power to the cooling fan */
 #undef CONFIG_FAN_EN_GPIO
 

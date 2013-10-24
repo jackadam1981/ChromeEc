@@ -192,7 +192,7 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
 /* PWM channels. Must be in the exactly same order as in enum pwm_channel. */
 const struct pwm_t pwm_channels[] = {
-	{CONFIG_FAN_CH_CPU, PWM_CONFIG_HAS_RPM_MODE},
+	{2, PWM_CONFIG_HAS_RPM_MODE},
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
