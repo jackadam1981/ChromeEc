@@ -37,7 +37,6 @@
 /* External Charger maximum current. */
 #define   CONFIG_CHARGER_INPUT_CURRENT 5000
 #define CONFIG_FAN
-#define CONFIG_FAN_CH_CPU 2
 #define CONFIG_FAN_PGOOD_GPIO  GPIO_PP5000_PGOOD
 #define CONFIG_FAN_RPM_MIN 1500
 #define CONFIG_FAN_RPM_MAX 9300

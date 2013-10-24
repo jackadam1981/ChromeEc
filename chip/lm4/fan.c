@@ -13,6 +13,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "pwm.h"
+#include "pwm_data.h"
 #include "registers.h"
 #include "system.h"
 #include "task.h"
@@ -52,7 +53,8 @@ static void fan_set_enabled(int enable)
 
 static int fan_get_rpm_mode(void)
 {
-	return (LM4_FAN_FANCH(CONFIG_FAN_CH_CPU) & 0x0001) ? 0 : 1;
+	return (LM4_FAN_FANCH(pwm_channels[PWM_CH_FAN].channel)
+		& 0x0001) ? 0 : 1;
 }
 
 static void fan_set_rpm_mode(int rpm_mode)
@@ -63,24 +65,26 @@ static void fan_set_rpm_mode(int rpm_mode)
 	if (!was_rpm && rpm_mode) {
 		/* Enable RPM control */
 		fan_set_enabled(0);
-		LM4_FAN_FANCH(CONFIG_FAN_CH_CPU) &= ~0x0001;
+		LM4_FAN_FANCH(pwm_channels[PWM_CH_FAN].channel) &= ~0x0001;
 		fan_set_enabled(was_enabled);
 	} else if (was_rpm && !rpm_mode) {
 		/* Disable RPM mode */
 		fan_set_enabled(0);
-		LM4_FAN_FANCH(CONFIG_FAN_CH_CPU) |= 0x0001;
+		LM4_FAN_FANCH(pwm_channels[PWM_CH_FAN].channel) |= 0x0001;
 		fan_set_enabled(was_enabled);
 	}
 }
 
 static int fan_get_rpm_actual(void)
 {
-	return (LM4_FAN_FANCST(CONFIG_FAN_CH_CPU) & MAX_RPM) * CPU_FAN_SCALE;
+	return (LM4_FAN_FANCST(pwm_channels[PWM_CH_FAN].channel)
+		& MAX_RPM) * CPU_FAN_SCALE;
 }
 
 static int fan_get_rpm_target(void)
 {
-	return (LM4_FAN_FANCMD(CONFIG_FAN_CH_CPU) & MAX_RPM) * CPU_FAN_SCALE;
+	return (LM4_FAN_FANCMD(pwm_channels[PWM_CH_FAN].channel)
+		& MAX_RPM) * CPU_FAN_SCALE;
 }
 
 static void fan_set_rpm_target(int rpm)
@@ -93,12 +97,13 @@ static void fan_set_rpm_target(int rpm)
 	if (rpm < 0 || rpm > MAX_RPM)
 		rpm = MAX_RPM;
 
-	LM4_FAN_FANCMD(CONFIG_FAN_CH_CPU) = rpm;
+	LM4_FAN_FANCMD(pwm_channels[PWM_CH_FAN].channel) = rpm;
 }
 
 static int fan_get_status(void)
 {
-	return (LM4_FAN_FANSTS >> (2 * CONFIG_FAN_CH_CPU)) & 0x03;
+	return (LM4_FAN_FANSTS >>
+		(2 * pwm_channels[PWM_CH_FAN].channel)) & 0x03;
 }
 static const char * const human_status[] = {
 	"not spinning", "changing", "locked", "frustrated"
@@ -114,8 +119,8 @@ static int fan_is_stalled(void)
 		return 0;
 
 	/* Check for stall condition */
-	return (((LM4_FAN_FANSTS >> (2 * CONFIG_FAN_CH_CPU)) & 0x03) == 0) ?
-		1 : 0;
+	return (((LM4_FAN_FANSTS >> (2 * pwm_channels[PWM_CH_FAN].channel))
+		 & 0x03) == 0) ? 1 : 0;
 }
 
 /*****************************************************************************/
