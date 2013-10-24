@@ -38,6 +38,7 @@ static int fake_hibernate;
 
 enum clock_osc {
 	OSC_INIT = 0,	/* Uninitialized */
+	OSC_PLL,	/* PLL connected to HSE crystal */
 	OSC_HSI,	/* High-speed oscillator */
 	OSC_MSI,	/* Med-speed oscillator @ 1 MHz */
 };
@@ -66,6 +67,78 @@ static void clock_set_osc(enum clock_osc osc)
 		hook_notify(HOOK_PRE_FREQ_CHANGE);
 
 	switch (osc) {
+	case OSC_PLL:
+		/* Ensure that HSI is ON for ADCs */
+		if (!(STM32_RCC_CR & STM32_RCC_CR_HSIRDY)) {
+			/* Enable HSI */
+			STM32_RCC_CR |= STM32_RCC_CR_HSION;
+			/* Wait for HSI to be ready */
+			while (!(STM32_RCC_CR & STM32_RCC_CR_HSIRDY))
+				;
+		}
+
+		/* put core voltage at 1.8V to be able to go at max frequency */
+		while (STM32_PWR_CSR & STM32_PWR_CSR_VOSF)
+			;
+		STM32_PWR_CR = (STM32_PWR_CR & ~STM32_PWR_CR_VOS_MASK)
+				| STM32_PWR_CR_VOS_1V8;
+		while (STM32_PWR_CSR & STM32_PWR_CSR_VOSF)
+			;
+
+		/* Ensure that HSE is ON */
+		if (!(STM32_RCC_CR & STM32_RCC_CR_HSERDY)) {
+			/* Enable HSE */
+			STM32_RCC_CR |= STM32_RCC_CR_HSEON;
+			/* Wait for HSE to be ready */
+			while (!(STM32_RCC_CR & STM32_RCC_CR_HSERDY))
+				;
+		}
+
+		/*
+		 * Configure the PLL: input HSE at 16Mhz, PLLVCO: x6 = 96 Mhz
+		 * USB = PLLVCO/2 = 48Mhz,
+		 * PLL div = /3 => PLLCLK = 32Mhz
+		 */
+		STM32_RCC_CFGR = STM32_RCC_CFGR_PLLSRC_HSE |
+				 STM32_RCC_CFGR_PLLMUL_6 |
+				 STM32_RCC_CFGR_PLLDIV_3 |
+				 STM32_RCC_CFGR_SW_MSI;
+
+		/* Enable the PLL */
+		STM32_RCC_CR |= STM32_RCC_CR_PLLON;
+		/* Wait for the PLL to lock */
+		while (!(STM32_RCC_CR & STM32_RCC_CR_PLLRDY))
+				;
+
+		/* Disable LPSDSR */
+		STM32_PWR_CR &= ~STM32_PWR_CR_LPSDSR;
+
+		/*
+		 * Set the recommended flash settings for 16MHz clock.
+		 *
+		 * The 3 bits must be programmed strictly sequentially, but it
+		 * is faster not to read-back the value of the ACR register in
+		 * the middle of the sequence so use a temporary variable.
+		 */
+		tmp_acr = STM32_FLASH_ACR;
+		/* Enable 64-bit access */
+		tmp_acr |= STM32_FLASH_ACR_ACC64;
+		STM32_FLASH_ACR = tmp_acr;
+		/* Enable Prefetch Buffer */
+		tmp_acr |= STM32_FLASH_ACR_PRFTEN;
+		STM32_FLASH_ACR = tmp_acr;
+		/* Flash 1 wait state */
+		tmp_acr |= STM32_FLASH_ACR_LATENCY;
+		STM32_FLASH_ACR = tmp_acr;
+		/* Switch to the PLL for the system clock */
+		STM32_RCC_CFGR = STM32_RCC_CFGR_PLLSRC_HSE |
+				 STM32_RCC_CFGR_PLLMUL_6 |
+				 STM32_RCC_CFGR_PLLDIV_3 |
+				 STM32_RCC_CFGR_SW_PLL;
+
+		freq = 32000000;
+		break;
+
 	case OSC_HSI:
 		/* Ensure that HSI is ON */
 		if (!(STM32_RCC_CR & STM32_RCC_CR_HSIRDY)) {
@@ -159,6 +232,7 @@ void clock_enable_module(enum module_id module, int enable)
 	else
 		new_mask = clock_mask & ~(1 << module);
 
+#ifndef BOARD_RESTON
 	/* Only change clock if needed */
 	if ((!!new_mask) != (!!clock_mask)) {
 
@@ -167,6 +241,7 @@ void clock_enable_module(enum module_id module, int enable)
 
 		clock_set_osc(new_mask ? OSC_HSI : OSC_MSI);
 	}
+#endif
 
 	clock_mask = new_mask;
 }
