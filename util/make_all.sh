@@ -6,8 +6,11 @@
 #
 # Build all EC boards and run unit tests
 
-# Build all boards except host
-boards=$(ls -1 board | grep -v host)
+# Don't do a build test on the following boards:
+SKIP_BOARDS=( host it8380dev )
+
+# Build all boards
+boards=$(ls -1 board | grep -v ${SKIP_BOARDS[@]/#/-e })
 for b in $boards; do
     echo ======== building $b
     make BOARD=$b $*

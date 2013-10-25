@@ -1,0 +1,149 @@
+/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ *
+ * Register map for IT83xx processor
+ */
+
+#ifndef __CROS_EC_REGISTERS_H
+#define __CROS_EC_REGISTERS_H
+
+#include "common.h"
+
+/* IRQ numbers */
+#define IT83XX_IRQ_WKO20           1
+#define IT83XX_IRQ_KBC_OUT         2
+#define IT83XX_IRQ_PMC_OUT         3
+#define IT83XX_IRQ_SMB_D           4
+#define IT83XX_IRQ_WKINTAD         5
+#define IT83XX_IRQ_WKO23           6
+#define IT83XX_IRQ_PWM             7
+#define IT83XX_IRQ_ADC             8
+#define IT83XX_IRQ_SMB_A           9
+#define IT83XX_IRQ_SMB_B          10
+#define IT83XX_IRQ_KB_MATRIX      11
+#define IT83XX_IRQ_WKO26          12
+#define IT83XX_IRQ_WKINTC         13
+#define IT83XX_IRQ_WKO25          14
+#define IT83XX_IRQ_CIR            15
+#define IT83XX_IRQ_SMB_C          16
+#define IT83XX_IRQ_WKO24          17
+#define IT83XX_IRQ_PS2_2          18
+#define IT83XX_IRQ_PS2_1          19
+#define IT83XX_IRQ_PS2_0          20
+#define IT83XX_IRQ_WKO22          21
+#define IT83XX_IRQ_SMFI           22
+#define IT83XX_IRQ_KBC_IN         24
+#define IT83XX_IRQ_PMC_IN         25
+#define IT83XX_IRQ_PMC2_OUT       26
+#define IT83XX_IRQ_PMC2_IN        27
+#define IT83XX_IRQ_GINT           28
+#define IT83XX_IRQ_EGPC           29
+#define IT83XX_IRQ_EXT_TIMER1     30
+#define IT83XX_IRQ_WKO21          31
+#define IT83XX_IRQ_GPINT0         32
+#define IT83XX_IRQ_GPINT1         33
+#define IT83XX_IRQ_GPINT2         34
+#define IT83XX_IRQ_GPINT3         35
+#define IT83XX_IRQ_CIR_GPINT      36
+#define IT83XX_IRQ_SSPI           37
+#define IT83XX_IRQ_UART1          38
+#define IT83XX_IRQ_UART2          39
+#define IT83XX_IRQ_WKO60          48
+#define IT83XX_IRQ_WKO61          49
+#define IT83XX_IRQ_WKO62          50
+#define IT83XX_IRQ_WKO63          51
+#define IT83XX_IRQ_WKO64          52
+#define IT83XX_IRQ_WKO65          53
+#define IT83XX_IRQ_WKO66          54
+#define IT83XX_IRQ_WKO67          55
+#define IT83XX_IRQ_RTCT_ALARM1    56
+#define IT83XX_IRQ_RTCT_ALARM2    57
+#define IT83XX_IRQ_EXT_TIMER2     58
+#define IT83XX_IRQ_TMR_A0         60
+#define IT83XX_IRQ_TMR_A1         61
+#define IT83XX_IRQ_TMR_B0         62
+#define IT83XX_IRQ_TMR_B1         63
+#define IT83XX_IRQ_PMC2EX_OUT     64
+#define IT83XX_IRQ_PMC2EX_IN      65
+#define IT83XX_IRQ_PMC3_OUT       66
+#define IT83XX_IRQ_PMC3_IN        67
+#define IT83XX_IRQ_PMC4_OUT       68
+#define IT83XX_IRQ_PMC4_IN        69
+#define IT83XX_IRQ_I2BRAM         71
+#define IT83XX_IRQ_WKO70          72
+#define IT83XX_IRQ_WKO71          73
+#define IT83XX_IRQ_WKO72          74
+#define IT83XX_IRQ_WKO73          75
+#define IT83XX_IRQ_WKO74          76
+#define IT83XX_IRQ_WKO75          77
+#define IT83XX_IRQ_WKO76          78
+#define IT83XX_IRQ_WKO77          79
+#define IT83XX_IRQ_EXT_TMR8       80
+#define IT83XX_IRQ_SMB_CLOCK_HELD 81
+#define IT83XX_IRQ_CEC            82
+#define IT83XX_IRQ_H2RAM_LPC      83
+#define IT83XX_IRQ_WKO88          85
+#define IT83XX_IRQ_WKO89          86
+#define IT83XX_IRQ_WKO90          87
+
+/* --- UART --- */
+
+#define IT83XX_UART0_BASE 0x00F02700
+#define IT83XX_UART1_BASE 0x00F02800
+
+#define IT83XX_UART_BASE(n)        CONCAT3(IT83XX_UART, n, _BASE)
+#define IT83XX_UART_REG(n, offset) REG8(IT83XX_UART_BASE(n) + (offset))
+
+#define IT83XX_UART_DLL(n)         IT83XX_UART_REG(n, 0x00)
+#define IT83XX_UART_DLM(n)         IT83XX_UART_REG(n, 0x01)
+#define IT83XX_UART_RBR(n)         IT83XX_UART_REG(n, 0x00)
+#define IT83XX_UART_THR(n)         IT83XX_UART_REG(n, 0x00)
+#define IT83XX_UART_IER(n)         IT83XX_UART_REG(n, 0x01)
+#define IT83XX_UART_IIR(n)         IT83XX_UART_REG(n, 0x02)
+#define IT83XX_UART_FCR(n)         IT83XX_UART_REG(n, 0x02)
+#define IT83XX_UART_LCR(n)         IT83XX_UART_REG(n, 0x03)
+#define IT83XX_UART_MCR(n)         IT83XX_UART_REG(n, 0x04)
+#define IT83XX_UART_LSR(n)         IT83XX_UART_REG(n, 0x05)
+#define IT83XX_UART_MSR(n)         IT83XX_UART_REG(n, 0x06)
+#define IT83XX_UART_SCR(n)         IT83XX_UART_REG(n, 0x07)
+#define IT83XX_UART_ECSMPR(n)      IT83XX_UART_REG(n, 0x08)
+#define IT83XX_UART_CSSR(n)        IT83XX_UART_REG(n, 0x09)
+
+/* --- GPIO --- */
+
+#define IT83XX_GPIO_BASE  0x00F01600
+
+#define GPIO_A IT83XX_GPIO_BASE
+
+/* --- MISC (not implemented yet) --- */
+
+#define IT83XX_SMFI_BASE  0x00F01000
+#define IT83XX_INTC_BASE  0x00F01100
+#define IT83XX_EC2I_BASE  0x00F01200
+#define IT83XX_KBC_BASE   0x00F01300
+#define IT83XX_SWUC_BASE  0x00F01400
+#define IT83XX_PMC_BASE   0x00F01500
+#define IT83XX_PS2_BASE   0x00F01700
+#define IT83XX_PWM_BASE   0x00F01800
+#define IT83XX_ADC_BASE   0x00F01900
+#define IT83XX_DAC_BASE   0x00F01A00
+#define IT83XX_WUC_BASE   0x00F01B00
+#define IT83XX_SMB_BASE   0x00F01C00
+#define IT83XX_KBS_BASE   0x00F01D00
+#define IT83XX_ECPM_BASE  0x00F01E00
+#define IT83XX_ETWD_BASE  0x00F01F00
+#define IT83XX_GCTRL_BASE 0x00F02000
+#define IT83XX_EGPIO_BASE 0x00F02100
+#define IT83XX_BRAM_BASE  0x00F02200
+#define IT83XX_CIR_BASE   0x00F02300
+#define IT83XX_DBGR_BASE  0x00F02500
+#define IT83XX_SSPI_BASE  0x00F02600
+#define IT83XX_TMR_BASE   0x00F02900
+#define IT83XX_OW_BASE    0x00F02A00
+#define IT83XX_PECI_BASE  0x00F02C00
+#define IT83XX_I2C_BASE   0x00F02D00
+#define IT83XX_CEC_BASE   0x00F02E00
+#define IT83XX_USB_BASE   0x00F02F00
+
+#endif /* __CROS_EC_REGISTERS_H */
