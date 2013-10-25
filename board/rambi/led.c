@@ -5,14 +5,48 @@
  * Battery LED control for Rambi
  */
 
+#include "charge_state.h"
+#include "chipset.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "led_common.h"
 #include "pwm.h"
 #include "util.h"
 
-const enum ec_led_id supported_led_ids[] = {EC_LED_ID_BATTERY_LED};
+const enum ec_led_id supported_led_ids[] = {EC_LED_ID_POWER_LED};
 const int supported_led_ids_count = ARRAY_SIZE(supported_led_ids);
+
+#define LED_TOTAL_TICKS 16
+#define LED_ON_TICKS 4
+
+enum led_color {
+	LED_OFF = 0,
+	LED_RED,
+	LED_YELLOW,
+	LED_GREEN,
+
+	/* Number of colors, not a color itself */
+	LED_COLOR_COUNT
+};
+
+/* Brightness vs. color, for {red, green} LEDs */
+static const uint8_t color_brightness[LED_COLOR_COUNT][2] = {
+	{0, 0},
+	{100, 0},
+	{40, 80},
+	{0, 100}
+};
+
+/**
+ * Set LED color
+ *
+ * @param color		Enumerated color value
+ */
+static void set_color(enum led_color color)
+{
+	pwm_set_duty(PWM_CH_LED_RED, color_brightness[color][0]);
+	pwm_set_duty(PWM_CH_LED_GREEN, color_brightness[color][1]);
+}
 
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 {
@@ -37,9 +71,68 @@ static void led_init(void)
 	 * seems to ground the pins instead of letting them float.
 	 */
 	pwm_enable(PWM_CH_LED_RED, 1);
-	pwm_set_duty(PWM_CH_LED_RED, 0);
-
 	pwm_enable(PWM_CH_LED_GREEN, 1);
-	pwm_set_duty(PWM_CH_LED_GREEN, 0);
+	set_color(LED_OFF);
 }
 DECLARE_HOOK(HOOK_INIT, led_init, HOOK_PRIO_DEFAULT);
+
+/* Called by hook task every 250mSec */
+static void led_tick(void)
+{
+	static int suspended_prev;
+	static int ticks;
+
+	int suspended = chipset_in_state(CHIPSET_STATE_SUSPEND);
+	enum led_color new = LED_OFF;
+	uint32_t chflags = charge_get_flags();
+
+	ticks++;
+
+	/* If we don't control the LED, nothing to do */
+	if (!led_auto_control_is_enabled(EC_LED_ID_POWER_LED))
+		return;
+
+	/* Handle chipset states */
+	if (suspended) {
+		/* Reset ticks if entering suspend so LED changes quickly */
+		if (!suspended_prev)
+			ticks = 0;
+
+		/* Blink once every four seconds. */
+		new = (ticks % LED_TOTAL_TICKS < LED_ON_TICKS) ?
+			LED_YELLOW : LED_OFF;
+	} else if (chipset_in_state(CHIPSET_STATE_ON))
+		new = LED_GREEN;
+
+	suspended_prev = suspended;
+
+	/*
+	 * Handle charging states.  These supersede the LED color from chipset
+	 * states.
+	 */
+	switch (charge_get_state()) {
+	case PWR_STATE_CHARGE:
+		new = LED_YELLOW;
+		break;
+	case PWR_STATE_CHARGE_NEAR_FULL:
+		new = LED_GREEN;
+		break;
+	case PWR_STATE_ERROR:
+		/* Blink red */
+		new = (ticks % LED_TOTAL_TICKS < LED_ON_TICKS) ?
+			LED_RED : LED_OFF;
+		break;
+	case PWR_STATE_IDLE: /* External power connected in IDLE. */
+		if (chflags & CHARGE_FLAG_FORCE_IDLE)
+			new = (ticks & 0x4) ? LED_GREEN : LED_OFF;
+		else
+			new = LED_GREEN;
+		break;
+	default:
+		/* Other states don't alter LED behavior */
+		break;
+	}
+
+	set_color(new);
+}
+DECLARE_HOOK(HOOK_TICK, led_tick, HOOK_PRIO_DEFAULT);
