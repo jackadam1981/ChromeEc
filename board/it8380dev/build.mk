@@ -1,10 +1,11 @@
-#!/bin/bash -e
-#
+# -*- makefile -*-
 # Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 #
-# Build all EC boards and run unit tests
+# Board specific files build
 
-echo "$0 is deprecated. Please run 'make buildall' instead."
+# the IC is ITE 8380
+CHIP:=it83xx
 
+board-y=board.o
