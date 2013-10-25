@@ -217,7 +217,7 @@ struct irq_priority {
 			= {irq, priority}
 #else /* NDS32 arch */
 #define DECLARE_IRQ(irq, routine, priority)                     \
-	void IRQ_HANDLER(irq)(void)				\
+	void IRQ_HANDLER(CPU_INT(irq))(void)			\
 		__attribute__ ((alias (STRINGIFY(routine))));	\
 	const struct irq_priority IRQ_PRIORITY(CPU_INT(irq))	\
 	__attribute__((section(".rodata.irqprio")))		\
