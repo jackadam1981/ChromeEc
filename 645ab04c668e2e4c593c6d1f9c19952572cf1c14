@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe62ccbe_71c33848",
+        "filename": "board/rambi/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-10-27T00:37:49Z",
+      "side": 1,
+      "message": "nit: new_color (if anything, the syntax highlighting in gerrit is confused).",
+      "revId": "645ab04c668e2e4c593c6d1f9c19952572cf1c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe62ccbe_91c0cc3b",
+        "filename": "board/rambi/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-10-27T00:37:49Z",
+      "side": 1,
+      "message": "Won\u0027t this clobber suspend blinking when AC power attached?",
+      "revId": "645ab04c668e2e4c593c6d1f9c19952572cf1c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
