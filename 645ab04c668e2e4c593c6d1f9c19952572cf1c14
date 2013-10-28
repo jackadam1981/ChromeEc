@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "5e49184c_b2386052",
+        "filename": "board/rambi/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2013-10-28T16:52:40Z",
+      "side": 1,
+      "message": "I\u0027m seeing green LED w/ ~85% charged battery w/o AC.\n\nThink charge state below (FULL, IDLE) may be overriding default LED_OFF incorrectly.",
+      "revId": "645ab04c668e2e4c593c6d1f9c19952572cf1c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe62ccbe_91c0cc3b",
         "filename": "board/rambi/led.c",
         "patchSetId": 1
