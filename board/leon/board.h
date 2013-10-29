@@ -17,7 +17,7 @@
 #define CONFIG_CHARGER_BQ24707A
 #define CONFIG_CHARGER_DISCHARGE_ON_AC
 #ifdef HAS_TASK_CHIPSET
-#define CONFIG_CHIPSET_HASWELL
+#define CONFIG_CHIPSET_HASWELL_LEON
 #define CONFIG_CHIPSET_X86
 #endif
 #define CONFIG_CMD_GSV
@@ -43,9 +43,10 @@
 /* I2C ports */
 #define I2C_PORT_BATTERY 0
 #define I2C_PORT_CHARGER 0
+#define I2C_PORT_LVDS    1
 #define I2C_PORT_THERMAL 5
 /* There are only two I2C ports used because battery and charger share a port */
-#define I2C_PORTS_USED 2
+#define I2C_PORTS_USED 3
 
 /* 13x8 keyboard scanner uses an entire GPIO bank for row inputs */
 #define KB_SCAN_ROW_IRQ  LM4_IRQ_GPIOK

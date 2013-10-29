@@ -7,7 +7,7 @@
 #include "adc.h"
 #include "backlight.h"
 #include "chip_temp_sensor.h"
-#include "chipset_haswell.h"
+#include "chipset_haswell_leon.h"
 #include "chipset_x86_common.h"
 #include "common.h"
 #include "ec_commands.h"
@@ -161,6 +161,7 @@ const struct i2c_port_t i2c_ports[] = {
 	/* Note: battery and charger share a port.  Only include it once in
 	 * this list so we don't double-initialize it. */
 	{"batt_chg", I2C_PORT_BATTERY,  100},
+	{"lvds",     I2C_PORT_LVDS,     100},
 	{"thermal",  I2C_PORT_THERMAL,  100},
 };
 BUILD_ASSERT(ARRAY_SIZE(i2c_ports) == I2C_PORTS_USED);
