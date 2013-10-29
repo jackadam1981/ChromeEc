@@ -18,7 +18,7 @@ common-$(BOARD_peppy)+=battery_peppy.o led_common.o led_peppy.o
 common-$(BOARD_slippy)+=battery_slippy.o led_slippy.o
 common-$(BOARD_snow)+=extpower_snow.o
 common-$(BOARD_spring)+=battery_spring.o
-common-$(BOARD_leon)+=battery_leon.o led_common.o led_leon.o
+common-$(BOARD_leon)+=battery_leon.o led_common.o led_leon.o lvds_update_leon.o
 
 common-$(CONFIG_BACKLIGHT_X86)+=backlight_x86.o
 common-$(CONFIG_BATTERY_BQ20Z453)+=battery_bq20z453.o
@@ -32,6 +32,7 @@ common-$(CONFIG_CHARGER_BQ24738)+=charger_bq24738.o
 common-$(CONFIG_CHARGER_TPS65090)+=pmu_tps65090_charger.o
 common-$(CONFIG_CHIPSET_GAIA)+=chipset_gaia.o
 common-$(CONFIG_CHIPSET_HASWELL)+=chipset_haswell.o
+common-$(CONFIG_CHIPSET_HASWELL_LEON)+=chipset_haswell_leon.o
 common-$(CONFIG_CHIPSET_IVYBRIDGE)+=chipset_ivybridge.o
 common-$(CONFIG_CHIPSET_X86)+=chipset_x86_common.o
 common-$(CONFIG_PMU_POWERINFO)+=pmu_tps65090_powerinfo.o
