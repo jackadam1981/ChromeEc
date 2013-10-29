@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e49184c_322b85a6",
+        "filename": "chip/lm4/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2013-10-29T21:43:29Z",
+      "side": 1,
+      "message": "I think we should comment this line that we are waiting after setting HIBIM to guarantee that when this function returns it has enabled the interrupt. Normally we only wait_for_hibctl_wc() before setting a register, so this is unique.",
+      "revId": "37ad162b75f04512db74c2461f1e8729ee72928f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
