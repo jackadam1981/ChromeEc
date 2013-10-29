@@ -229,13 +229,20 @@ void clock_refresh_console_in_use(void)
 
 }
 
+// KLUDGE
+uint32_t system_get_rtc_sec_subsec(uint32_t *ss_ptr);
+
 /* Low power idle task.  Executed when no tasks are ready to be scheduled. */
 void __idle(void)
 {
-	timestamp_t t0, t1, rtc_t0, rtc_t1;
+	timestamp_t t0, t1, rtc_t0, rtc_t1, rtc_t2;
 	int next_delay = 0;
 	int time_for_dsleep, margin_us;
 	int use_lfiosc;
+
+
+	static uint32_t r0, r0ss, r1, r1ss, r2, r2ss, ra, rass;
+	static uint32_t hibctl0, hibctl1, hibim0, hibim1, hibris0, hibris1, hibmis0, hibmis1;
 
 	/* Enable the hibernate IRQ used to wake up from deep sleep */
 	system_enable_hib_interrupt();
@@ -326,6 +333,7 @@ void __idle(void)
 
 			/* Record real time before sleeping. */
 			rtc_t0 = system_get_rtc();
+			r0 = system_get_rtc_sec_subsec(&r0ss);
 
 			/*
 			 * Set RTC interrupt in time to wake up before
@@ -334,11 +342,35 @@ void __idle(void)
 			system_set_rtc_alarm(0, next_delay -
 						DEEP_SLEEP_RECOVER_TIME_USEC);
 
+			ra = LM4_HIBERNATE_HIBRTCM0;
+			rass = LM4_HIBERNATE_HIBRTCSS >> 16;
+
+			rtc_t2 = system_get_rtc();
+			if(rtc_t2.val > rtc_t0.val + next_delay - DEEP_SLEEP_RECOVER_TIME_USEC)
+				CPRINTF("rtc: %d, alarm set to: %d", (int)rtc_t2.val,
+					(int)(rtc_t0.val + next_delay -
+					      DEEP_SLEEP_RECOVER_TIME_USEC));
+
+
+			hibctl0 = LM4_HIBERNATE_HIBCTL;
+			hibim0 = LM4_HIBERNATE_HIBIM;
+			hibris0 = LM4_HIBERNATE_HIBRIS;
+			hibmis0 = LM4_HIBERNATE_HIBMIS;
+
+			r1 = system_get_rtc_sec_subsec(&r1ss);
+
 			/* Wait for interrupt: goes into deep sleep. */
 			asm("wfi");
 
+			hibctl1 = LM4_HIBERNATE_HIBCTL;
+			hibim1 = LM4_HIBERNATE_HIBIM;
+			hibris1 = LM4_HIBERNATE_HIBRIS;
+			hibmis1 = LM4_HIBERNATE_HIBMIS;
+
 			/* Clear deep sleep bit. */
 			CPU_SCB_SYSCTRL &= ~0x4;
+
+			r2 = system_get_rtc_sec_subsec(&r2ss);
 
 			/* Disable and clear RTC interrupt. */
 			system_reset_rtc_alarm();
@@ -358,9 +390,24 @@ void __idle(void)
 			/* Calculate how close we were to missing deadline */
 			margin_us = next_delay - (int)(rtc_t1.val - rtc_t0.val);
 
+			if (margin_us < 0) {
+				CPRINTF("[%T overslept by %d us]\n", -margin_us);
+				CPRINTF("  before set alarm: %4d,%04x\n", r0, r0ss);
+				CPRINTF("  after set alarm:  %4d,%04x\n", r1, r1ss);
+				CPRINTF("  set alarm to:     %4d,%04x\n", ra, rass);
+				CPRINTF("  after wake:       %4d,%04x\n", r2, r2ss);
+
+				CPRINTF("  hib0 ctl=%08x im=%08x ris=%08x mis=%08x\n",
+					hibctl0, hibim0, hibris0, hibmis0);
+				CPRINTF("  hib1 ctl=%08x im=%08x ris=%08x mis=%08x\n",
+					hibctl1, hibim1, hibris1, hibmis1);
+			}
+
 			/* Record the closest to missing a deadline. */
 			if (margin_us < dsleep_recovery_margin_us)
 				dsleep_recovery_margin_us = margin_us;
+
+			ccputs("&");
 		} else {
 			idle_sleep_cnt++;
 
@@ -585,6 +632,7 @@ DECLARE_CONSOLE_COMMAND(pll, command_pll,
 
 #endif /* CONFIG_CMD_PLL */
 
+#define CONFIG_CMD_CLOCKGATES // KLUDGE
 #ifdef CONFIG_CMD_CLOCKGATES
 /**
  * Print all clock gating registers
