@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e5ec0fd_6ab40ee4",
+        "filename": "common/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-30T16:05:48Z",
+      "side": 1,
+      "message": "if you have duplicated the chipset haswell, just to add the lvds_update.\nYou should use our hooks mechanism, e.g. DECLARE_HOOK()",
+      "revId": "46c36491cc82c453521b203a6e2770bbdbc25438",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e5ec0fd_aac62656",
+        "filename": "common/lvds_update_leon.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-30T16:05:48Z",
+      "side": 1,
+      "message": "ccprintf is for interactive commands,\nplease how other modules are using channels and CPRINTF macro for non-interactive traces",
+      "revId": "46c36491cc82c453521b203a6e2770bbdbc25438",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e49184c_80e9346d",
+        "filename": "common/lvds_update_leon.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-30T16:05:48Z",
+      "side": 1,
+      "message": "in order to generate a more compact code,\nplease put all your I2C commands into an array,\nand use a loop to do the i2c_write8",
+      "revId": "46c36491cc82c453521b203a6e2770bbdbc25438",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
