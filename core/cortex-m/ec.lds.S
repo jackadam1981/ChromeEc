@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 #include "config.h"
+#include "config_core.h"
 
 #define FW_OFF_(section) CONFIG_FW_##section##_OFF
 #define FW_OFF(section) (CONFIG_FLASH_BASE + FW_OFF_(section))
@@ -11,8 +12,8 @@
 #define FW_SIZE(section) FW_SIZE_(section)
 
 
-OUTPUT_FORMAT("elf32-littlearm", "elf32-littlearm", "elf32-littlearm")
-OUTPUT_ARCH(arm)
+OUTPUT_FORMAT(BFD_FORMAT, BFD_FORMAT, BFD_FORMAT)
+OUTPUT_ARCH(BFD_ARCH)
 ENTRY(reset)
 MEMORY
 {
