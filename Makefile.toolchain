@@ -10,8 +10,9 @@
 CROSS_COMPILE ?= arm-none-eabi-
 HOST_CROSS_COMPILE ?= x86_64-pc-linux-gnu-
 
+# Use native CPP if no alternative; useful for tags and dependencies
+CPP=$(if $(shell which $(CROSS_COMPILE)cpp),$(CROSS_COMPILE)cpp,cpp)
 CC=$(CROSS_COMPILE)gcc
-CPP=$(CROSS_COMPILE)cpp
 LD=$(CROSS_COMPILE)ld
 OBJCOPY=$(CROSS_COMPILE)objcopy
 OBJDUMP=$(CROSS_COMPILE)objdump

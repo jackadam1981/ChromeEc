@@ -23,6 +23,7 @@ section_is = $(subst .,,SECTION_IS_$(suffix $(1)))
 # Decrease verbosity unless you pass V=1
 quiet = $(if $(V),,@echo '  $(2)' $(subst $(out)/,,$@) ; )$(cmd_$(1))
 silent = $(if $(V),,1>/dev/null)
+at = $(if $(V),,@)
 
 # commands to build all targets
 cmd_lds = $(CPP) -P -C -MMD -MF $@.d -MT $@ $(CPPFLAGS) \
@@ -46,9 +47,11 @@ cmd_extractrw-y = cd $(out) && \
 	dump_fmap -x $(PROJECT).bin.tmp RW_SECTION_A $(silent) && \
 	mv RW_SECTION_A $(PROJECT).RW.bin
 cmd_copyrw-y = cd $(out) && cp $(PROJECT).RW.flat $(PROJECT).RW.bin
+cmd_deps_to_list = cat $(deps) | tr -d ':\\' | tr ' ' '\012' \
+	| egrep '\.[chS]$$' | sort | uniq > $(out)/cscope.files
 
 .PHONY: all tests utils hosttests
-all: $(out)/$(PROJECT).bin utils
+all: $(out)/$(PROJECT).bin utils $(out)/cscope.files
 
 dis-y = $(out)/$(PROJECT).RO.dis $(out)/$(PROJECT).RW.dis
 dis: $(dis-y)
@@ -155,16 +158,15 @@ $(host-utils): $(out)/%:%.c $(foreach u,$(host-util-common),util/$(u).c) \
 
 $(out)/util/burn_my_ec: $(out)/$(PROJECT).bin
 
-.PHONY: FORCE
-cscope.files: FORCE
-	@-rm -f cscope.out
-	@find chip/${CHIP} board/${BOARD} common core driver power include \
-		-name '*.[chS]' \
-		-not -name '*test*' -not -name '*mock*' -not -name '*~*' \
-		> cscope.files
+$(out)/cscope.files: $(out)/$(PROJECT).bin
+	$(call quiet,deps_to_list,SH     )
 
-TAGS tags: cscope.files
-	@etags $(shell cat cscope.files)
+.PHONY: cscope.files tags TAGS
+cscope.files TAGS tags: $(out)/cscope.files
+	$(at)rm -f cscope.files cscope.out TAGS tags
+	$(at)cp -f $< cscope.files
+	$(at)etags $(shell cat $<)
+	$(at)ctags $(shell cat $<)
 
 .PHONY: clean
 clean:
@@ -177,3 +179,4 @@ clobber:
 .SECONDARY:
 
 -include $(deps)
+
