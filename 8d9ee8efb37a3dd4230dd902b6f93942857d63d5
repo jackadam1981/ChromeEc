@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe62ccbe_6b08923d",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-31T16:45:28Z",
+      "side": 1,
+      "message": "if you are removing that feature, please remove that verbose comment, it\u0027s useless.",
+      "revId": "8d9ee8efb37a3dd4230dd902b6f93942857d63d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
