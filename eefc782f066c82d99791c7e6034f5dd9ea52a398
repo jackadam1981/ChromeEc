@@ -67,6 +67,24 @@
       "revId": "eefc782f066c82d99791c7e6034f5dd9ea52a398",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e49184c_0a371a0c",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-10-31T16:25:27Z",
+      "side": 1,
+      "message": "As mentioned in the comment, this is so that you can build the cross-reference target outside the chroot. $(CPP) is used to determine $(objs) and thus $(deps), and $(deps) are needed to identify the relevant source files.",
+      "parentUuid": "1e5ec0fd_082c7308",
+      "revId": "eefc782f066c82d99791c7e6034f5dd9ea52a398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
