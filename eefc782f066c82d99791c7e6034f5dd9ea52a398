@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "fe62ccbe_483e743d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-10-31T15:47:00Z",
+      "side": 1,
+      "message": "So, how do you install etags in the chroot?\n\nctags seems to be \u0027sudo emerge ctags\u0027\n\nDo I have to install all of emacs to get etags?",
+      "revId": "eefc782f066c82d99791c7e6034f5dd9ea52a398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe62ccbe_28e780cd",
         "filename": "Makefile.rules",
         "patchSetId": 1
