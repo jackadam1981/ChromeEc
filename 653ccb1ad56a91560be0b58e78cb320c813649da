@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e49184c_404bc132",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-31T18:16:07Z",
+      "side": 1,
+      "message": "That part is unrelated to GCC, it\u0027s assembled by GAS from the binutils.\nthe narrow range is actually ALL binutils until version 2.22 ...\n(the fix has been backported to 2.21, but I\u0027m not sure it was re-released after that point)",
+      "revId": "653ccb1ad56a91560be0b58e78cb320c813649da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
