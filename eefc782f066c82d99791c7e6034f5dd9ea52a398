@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe62ccbe_28e780cd",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-31T15:33:36Z",
+      "side": 1,
+      "message": "please use $@ rather than hardcoding \"$(out)/cscope.files\"",
+      "revId": "eefc782f066c82d99791c7e6034f5dd9ea52a398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e5ec0fd_a81c67df",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-31T15:33:36Z",
+      "side": 1,
+      "message": "that\u0027s slowing everybody\u0027s build,\nI\u0027m not really happy with it.",
+      "revId": "eefc782f066c82d99791c7e6034f5dd9ea52a398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e5ec0fd_082c7308",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-31T15:33:36Z",
+      "side": 1,
+      "message": "as cscope.files has a dependency on $(PROJECT).bin, if one doesn\u0027t have a working crosstoolchain, he won\u0027t get anything.\nso what is the intent here ?\nI would prefer avoiding the questionable construct below unless it is solving a real problem",
+      "revId": "eefc782f066c82d99791c7e6034f5dd9ea52a398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
