@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "1e5ec0fd_43bf2cf2",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-31T16:39:40Z",
+      "side": 1,
+      "message": "feel free to ignore my feedback",
+      "parentUuid": "fe62ccbe_28e780cd",
+      "revId": "eefc782f066c82d99791c7e6034f5dd9ea52a398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e5ec0fd_a81c67df",
         "filename": "Makefile.rules",
         "patchSetId": 1
@@ -82,6 +100,24 @@
       "side": 1,
       "message": "As mentioned in the comment, this is so that you can build the cross-reference target outside the chroot. $(CPP) is used to determine $(objs) and thus $(deps), and $(deps) are needed to identify the relevant source files.",
       "parentUuid": "1e5ec0fd_082c7308",
+      "revId": "eefc782f066c82d99791c7e6034f5dd9ea52a398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e49184c_9d4c3678",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-10-31T16:39:40Z",
+      "side": 1,
+      "message": "if you want to use tortuous methods (ie half internal half external build), I would prefer to use the right parameter in the make call :\nmake BOARD\u003dlink CROSS_COMPILE\u003d xrefs\nrather than using a questionable slow workaround",
+      "parentUuid": "5e49184c_0a371a0c",
       "revId": "eefc782f066c82d99791c7e6034f5dd9ea52a398",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
