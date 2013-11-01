@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e2c007a_51c72633",
+        "filename": "chip/lm4/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-11-01T17:49:37Z",
+      "side": 1,
+      "message": "\"but each channel mask be read by only when task\"\n\nshould be\n\n\"but each channel may be read by only one task\"",
+      "revId": "611b1250c854069a577b4d32cd39ecbfe0d1186e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e32f8d3_1e793dc2",
+        "filename": "chip/lm4/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-11-01T17:49:37Z",
+      "side": 1,
+      "message": "Shouldn\u0027t you be using (1UL \u003c\u003c ch) in atomic_or and atomic_clear, instead of just \"ch\"?",
+      "revId": "611b1250c854069a577b4d32cd39ecbfe0d1186e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
