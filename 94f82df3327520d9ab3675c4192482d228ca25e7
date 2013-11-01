@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e3704c5_234fc66d",
+        "filename": "common/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-11-01T20:02:41Z",
+      "side": 1,
+      "message": "Weird that\n\nfanset 0 100\n\nwon\u0027t work with only one fan.  Suggest\n\nif (CONFIG_FANS \u003e 1 || argc \u003d\u003d 3)",
+      "revId": "94f82df3327520d9ab3675c4192482d228ca25e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e32f8d3_c436f2f5",
+        "filename": "common/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-11-01T20:02:41Z",
+      "side": 1,
+      "message": "Here too",
+      "revId": "94f82df3327520d9ab3675c4192482d228ca25e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e2c007a_bc21191a",
+        "filename": "common/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-11-01T20:02:41Z",
+      "side": 1,
+      "message": "Minor nit:  Easier to grep for TODO (which is what the majority of comments use) than TODO|FIXME|HEY",
+      "revId": "94f82df3327520d9ab3675c4192482d228ca25e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
