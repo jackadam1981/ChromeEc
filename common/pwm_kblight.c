@@ -18,11 +18,10 @@
 #define PWMKBD_SYSJUMP_TAG 0x504b  /* "PK" */
 #define PWM_HOOK_VERSION 1
 /* Saved PWM state across sysjumps */
-struct pwm_kbd_state {
+DECLARE_JUMP_DATA(struct pwm_kbd_state, {
 	uint8_t kblight_en;
 	uint8_t kblight_percent;
-	uint8_t pad0, pad1; /* Pad to multiple of 4 bytes. */
-};
+});
 
 /*****************************************************************************/
 /* Console commands */
