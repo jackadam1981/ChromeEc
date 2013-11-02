@@ -104,6 +104,37 @@ enum system_image_copy_t system_get_image_copy(void);
 int system_jumped_to_this_image(void);
 
 /**
+ * Macro to declare data stored with jump tags. Since that data must be a
+ * multiple of 4 bytes, let's solve that problem once. Use it like so:
+ *
+ *   DECLARE_JUMP_DATA(struct myfoo, {
+ *      uint32_t a;
+ *      uint16_t b;
+ *      uint8_t c;
+ *   });
+ *
+ *  This causes sizeof(struct myfoo) to be 8, not 7 or 12.
+ *
+ *  Note that you'll still need to handle any alignment issues manually, so
+ *  order the struct members like this:
+ *
+ *      uint32_t a;
+ *      uint16_t b;
+ *      uint8_t c;
+ *
+ *  not like this:
+ *
+ *      uint8_t c;
+ *      uint16_t b;
+ *      uint32_t a;
+ *
+ */
+#define _magic_pad_bytes_(T, D) ((D - (sizeof(T) % D)) % D)
+#define DECLARE_JUMP_DATA(T, E) T ## _0_ E  __attribute__((packed)); \
+	T { struct E __attribute__((packed)); \
+	    char _pad_[_magic_pad_bytes_(T ## _0_ , 4)]; }
+
+/**
  * Preserve data across a jump between images.
  *
  * This may ONLY be called from within a HOOK_SYSJUMP handler.

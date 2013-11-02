@@ -336,11 +336,10 @@ BUILD_ASSERT(CONFIG_FANS <= EC_FAN_SPEED_ENTRIES);
 #define PWMFAN_SYSJUMP_TAG 0x5046  /* "PF" */
 #define PWM_HOOK_VERSION 1
 /* Saved PWM state across sysjumps */
-struct pwm_fan_state {
+DECLARE_JUMP_DATA(struct pwm_fan_state, {
 	uint16_t fan_rpm;
 	uint8_t fan_en;
-	char pad; /* Pad to multiple of 4 bytes. */
-};
+});
 
 static void pwm_fan_init(void)
 {

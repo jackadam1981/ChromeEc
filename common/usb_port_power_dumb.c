@@ -24,10 +24,10 @@
 /* We need to think about this a little more */
 BUILD_ASSERT(USB_PORT_COUNT == 2);
 
-static struct usb_state {
+DECLARE_JUMP_DATA(struct usb_state, {
 	uint8_t en[USB_PORT_COUNT];
-	uint8_t pad[2]; /* Pad to 4 bytes for system_add_jump_tag(). */
-} state;
+});
+static struct usb_state state;
 
 static void usb_port_set_enabled(int port_id, int en)
 {

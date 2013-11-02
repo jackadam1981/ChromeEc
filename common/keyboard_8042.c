@@ -144,12 +144,11 @@ static timestamp_t typematic_deadline;
 #define KB_SYSJUMP_TAG 0x4b42  /* "KB" */
 #define KB_HOOK_VERSION 2
 /* the previous keyboard state before reboot_ec. */
-struct kb_state {
+DECLARE_JUMP_DATA(struct kb_state, {
 	uint8_t codeset;
 	uint8_t ctlram;
 	uint8_t keystroke_enabled;
-	uint8_t pad;	/* Pad to 4 bytes for system_add_jump_tag(). */
-};
+});
 
 /* The standard Chrome OS keyboard matrix table. */
 static const uint16_t scancode_set1[KEYBOARD_ROWS][KEYBOARD_COLS] = {
