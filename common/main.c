@@ -31,8 +31,52 @@
 #define CPUTS(outstr) cputs(CC_SYSTEM, outstr)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
 
+#define MEC_GPIO_BASE 0x40081000
+#define MEC_GPIO_PIN_(x) (MEC_GPIO_BASE + ((x) << 2))
+#define MEC_GPIO_PIN(x) REG32(MEC_GPIO_PIN_(x))
+
+#define MEC_UART_CONFIG_BASE 0x400f1f00
+#define MEC_UART_RUNTIME_BASE 0x400f1c00
+
+#define MEC_PWR_BASE 0x40080100
+
+#define MEC_VBAT_BASE 0x4000a400
+
+#define MEC_LPC_CONFIG_BASE 0x400f3300
+
+void set_led(int idx, int on)
+{
+	MEC_GPIO_PIN(0153+idx) = on ? 0x240 : 0x10240;
+}
+
+void set_int5(int val)
+{
+	int i;
+	for (i = 0; i < 5; ++i)
+		MEC_GPIO_PIN(i+1) = (val & (1 << i)) ? 0x10240 : 0x240;
+	MEC_GPIO_PIN(6) = 0x240;
+	set_led(2, 1);
+	for (i = 0; i < 100000; ++i)
+		;
+	set_led(2, 0);
+	MEC_GPIO_PIN(6) = 0x10240;
+}
+
 test_mockable int main(void)
 {
+	/*
+	 * XOSEL = Single ended clock source (1 << 0).
+	 * 32K_EN on (1 << 1)
+	 */
+	/*REG32(MEC_VBAT_BASE + 0x8) |= 0x3;*/
+
+	/*for (i = 0; i < 600000; ++i) {
+		set_led(1, (i / 100000) & 1);
+	}*/
+
+	uart_init();
+	uart_write_char('a');
+
 	/*
 	 * Pre-initialization (pre-verified boot) stage.  Initialization at
 	 * this level should do as little as possible, because verified boot
@@ -48,9 +92,14 @@ test_mockable int main(void)
 	mpu_pre_init();
 #endif
 
+	uart_write_char('b');
+
 	/* Configure the pin multiplexers and GPIOs */
-	jtag_pre_init();
 	gpio_pre_init();
+
+	uart_write_char('c');
+
+	while(1) { }
 
 #ifdef CONFIG_BOARD_POST_GPIO_INIT
 	board_config_post_gpio_init();

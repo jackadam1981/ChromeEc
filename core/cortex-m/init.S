@@ -302,6 +302,18 @@ vector_irq 254                    @ IRQ 254 handler
 .global reset
 .thumb_func
 reset:
+	/* Set the vector table on our current code */
+	ldr r0, =vectors
+	ldr r1, =0xE000ED08   /* VTABLE register in SCB*/
+	str r0, [r1]
+
+	cpsid i
+	ldr sp, =stack_end
+
+	bl main
+fini_loop1:
+	b fini_loop1
+
 	/*
 	 * Ensure we're in privileged mode with main stack.  Necessary if
 	 * we've jumped directly here from another image after task_start().
@@ -313,6 +325,11 @@ reset:
 #endif
 	msr control, r0
 	isb                  @ ensure the write is done
+
+	/* Set LED1 to low */
+	ldr r1, =0x00000240
+	ldr r2, =0x40081268
+	str r1, [r2]
 
 	/* Set the vector table on our current code */
 	ldr r1, =vectors
