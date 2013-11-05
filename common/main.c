@@ -33,6 +33,7 @@
 
 test_mockable int main(void)
 {
+	/*test_interrupt();*/
 	/*
 	 * Pre-initialization (pre-verified boot) stage.  Initialization at
 	 * this level should do as little as possible, because verified boot
@@ -49,7 +50,6 @@ test_mockable int main(void)
 #endif
 
 	/* Configure the pin multiplexers and GPIOs */
-	jtag_pre_init();
 	gpio_pre_init();
 
 #ifdef CONFIG_BOARD_POST_GPIO_INIT
