@@ -244,14 +244,27 @@ int uart_puts(const char *outstr)
 	return *outstr ? EC_ERROR_OVERFLOW : EC_SUCCESS;
 }
 
+/* HACK: Unbuffered printf */
+static int uwc(void *context, int c)
+{
+	if (c == '\n')
+		c = '\r';
+	uart_write_char(c);
+	return 0;
+}
+
 int uart_vprintf(const char *format, va_list args)
 {
+	vfnprintf(uwc, NULL, format, args);
+	return 0;
+#if 0
 	int rv = vfnprintf(__tx_char, NULL, format, args);
 
 	if (!uart_suspended)
 		uart_tx_start();
 
 	return rv;
+#endif
 }
 
 int uart_printf(const char *format, ...)
