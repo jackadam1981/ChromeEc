@@ -46,8 +46,7 @@ int main(int argc, char **argv)
 	}
 
 	/* Open interface B (UART) in the FTDI device and set 115kbaud */
-	ftdi_set_interface(&fcontext, INTERFACE_B);
-	rv = ftdi_usb_open(&fcontext, 0x0403, 0xbcda);
+	rv = ftdi_usb_open(&fcontext, 0x0403, 0x6001);
 	if (rv < 0) {
 		fprintf(stderr, "error opening ftdi device: %d (%s)\n",
 			rv, ftdi_get_error_string(&fcontext));
@@ -59,6 +58,26 @@ int main(int argc, char **argv)
 			rv, ftdi_get_error_string(&fcontext));
 		return 2;
 	}
+
+	if (argc > 1) {
+		rv = ftdi_set_line_property(&fcontext, BITS_8, STOP_BIT_1,
+					    EVEN);
+		if (rv < 0) {
+			fprintf(stderr, "error setting properties: %d (%s)\n",
+				rv, ftdi_get_error_string(&fcontext));
+			return 2;
+		}
+	} else {
+		rv = ftdi_set_line_property(&fcontext, BITS_8, STOP_BIT_1,
+					    NONE);
+		if (rv < 0) {
+			fprintf(stderr, "error setting properties: %d (%s)\n",
+				rv, ftdi_get_error_string(&fcontext));
+			return 2;
+		}
+	}
+
+	fprintf(stdout, "baud rate: %d\n", fcontext.baudrate);
 
 	/* Set DTR; this muxes RX on the ICDI board */
 	ftdi_setdtr(&fcontext, 1);
@@ -108,7 +127,7 @@ int main(int argc, char **argv)
 			}
 		}
 
-		usleep(1000);
+		usleep(100);
 
 		bytes = ftdi_read_data(&fcontext, buf, sizeof(buf));
 		if (bytes > 0) {
