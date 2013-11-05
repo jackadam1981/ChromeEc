@@ -31,6 +31,90 @@
 #define CPUTS(outstr) cputs(CC_SYSTEM, outstr)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
 
+#define MEC_GPIO_BASE 0x40081000
+#define MEC_GPIO_PIN_(x) (MEC_GPIO_BASE + ((x) << 2))
+#define MEC_GPIO_PIN(x) REG32(MEC_GPIO_PIN_(x))
+
+#define MEC_UART_CONFIG_BASE 0x400f1f00
+#define MEC_UART_RUNTIME_BASE 0x400f1c00
+
+#define MEC_PWR_BASE 0x40080100
+
+#define MEC_VBAT_BASE 0x4000a400
+
+#define MEC_LPC_CONFIG_BASE 0x400f3300
+
+#define MEC_TMR0_BASE 0x40000c80
+
+void set_led(int idx, int on)
+{
+	MEC_GPIO_PIN(0153+idx) = on ? 0x240 : 0x10240;
+}
+
+void set_int5(int val)
+{
+	int i;
+	for (i = 0; i < 5; ++i)
+		MEC_GPIO_PIN(i+1) = (val & (1 << i)) ? 0x10240 : 0x240;
+	MEC_GPIO_PIN(6) = 0x240;
+	set_led(2, 1);
+	for (i = 0; i < 100000; ++i)
+		;
+	set_led(2, 0);
+	MEC_GPIO_PIN(6) = 0x10240;
+}
+
+static void myprintnumrec(uint32_t v)
+{
+	int i = v % 10;
+	if (!v)
+		return;
+	myprintnumrec(v / 10);
+	uart_write_char(i + '0');
+}
+
+static void myprintnum(uint32_t v)
+{
+	if (!v)
+		uart_write_char('0');
+	myprintnumrec(v);
+	uart_write_char('\n');
+	uart_write_char('\r');
+}
+
+void test_timer(void)
+{
+	int i, j;
+
+	/* Enable */
+	REG32(MEC_TMR0_BASE + 0x10) |= (1 << 0);
+
+	/* Pre-scale = 48 -> 1MHz -> Period = 1us */
+	REG32(MEC_TMR0_BASE + 0x10) = (REG32(MEC_TMR0_BASE + 0x10) & 0xff) | (47 << 16);
+
+	/* Count up */
+	/*REG32(MEC_TMR0_BASE + 0x10) |= (1 << 2);*/
+
+	REG32(MEC_TMR0_BASE + 0xc) |= 1;
+
+	REG32(MEC_TMR0_BASE + 0x4) = 0xffffffff;
+
+	REG32(MEC_TMR0_BASE + 0x0) = 0xffffffff;
+
+	/* Auto restart */
+	REG32(MEC_TMR0_BASE + 0x10) |= (1 << 3);
+
+	/* Start */
+	REG32(MEC_TMR0_BASE + 0x10) |= (1 << 5);
+
+	myprintnum(REG32(MEC_TMR0_BASE + 0x0));
+	for (j = 0; j < 10; ++j) {
+		for (i = 0; i < 4000000; ++i)
+			set_led(2, 0);
+		myprintnum(REG32(MEC_TMR0_BASE + 0x0));
+	}
+}
+
 test_mockable int main(void)
 {
 	/*
@@ -49,7 +133,6 @@ test_mockable int main(void)
 #endif
 
 	/* Configure the pin multiplexers and GPIOs */
-	jtag_pre_init();
 	gpio_pre_init();
 
 #ifdef CONFIG_BOARD_POST_GPIO_INIT
