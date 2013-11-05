@@ -31,8 +31,107 @@
 #define CPUTS(outstr) cputs(CC_SYSTEM, outstr)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
 
+#define MEC_GPIO_BASE 0x40081000
+#define MEC_GPIO_PIN_(x) (MEC_GPIO_BASE + ((x) << 2))
+#define MEC_GPIO_PIN(x) REG32(MEC_GPIO_PIN_(x))
+
+#define MEC_UART_CONFIG_BASE 0x400f1f00
+#define MEC_UART_RUNTIME_BASE 0x400f1c00
+
+#define MEC_PWR_BASE 0x40080100
+
+#define MEC_VBAT_BASE 0x4000a400
+
+#define MEC_LPC_CONFIG_BASE 0x400f3300
+
+#define MEC_TMR0_BASE 0x40000c80
+
+void set_led(int idx, int on)
+{
+	MEC_GPIO_PIN(0153+idx) = on ? 0x240 : 0x10240;
+}
+
+void set_int5(int val)
+{
+	int i;
+	for (i = 0; i < 5; ++i)
+		MEC_GPIO_PIN(i+1) = (val & (1 << i)) ? 0x10240 : 0x240;
+	MEC_GPIO_PIN(6) = 0x240;
+	set_led(2, 1);
+	for (i = 0; i < 100000; ++i)
+		;
+	set_led(2, 0);
+	MEC_GPIO_PIN(6) = 0x10240;
+}
+
+static void myprintnumrec(uint32_t v)
+{
+	int i = v % 10;
+	if (!v)
+		return;
+	myprintnumrec(v / 10);
+	uart_write_char(i + '0');
+}
+
+static void myprintnum(uint32_t v)
+{
+	if (!v)
+		uart_write_char('0');
+	myprintnumrec(v);
+	uart_write_char('\n');
+	uart_write_char('\r');
+}
+
+void test_timer(void)
+{
+	int i, j;
+
+	/* Enable */
+	REG32(MEC_TMR0_BASE + 0x10) |= (1 << 0);
+
+	/* Pre-scale = 48 -> 1MHz -> Period = 1us */
+	REG32(MEC_TMR0_BASE + 0x10) = (REG32(MEC_TMR0_BASE + 0x10) & 0xff) | (47 << 16);
+
+	/* Count up */
+	/*REG32(MEC_TMR0_BASE + 0x10) |= (1 << 2);*/
+
+	REG32(MEC_TMR0_BASE + 0xc) |= 1;
+
+	REG32(MEC_TMR0_BASE + 0x4) = 0xffffffff;
+
+	REG32(MEC_TMR0_BASE + 0x0) = 0xffffffff;
+
+	/* Auto restart */
+	REG32(MEC_TMR0_BASE + 0x10) |= (1 << 3);
+
+	/* Start */
+	REG32(MEC_TMR0_BASE + 0x10) |= (1 << 5);
+
+	myprintnum(REG32(MEC_TMR0_BASE + 0x0));
+	for (j = 0; j < 10; ++j) {
+		for (i = 0; i < 4000000; ++i)
+			set_led(2, 0);
+		myprintnum(REG32(MEC_TMR0_BASE + 0x0));
+	}
+}
+
 test_mockable int main(void)
 {
+	/*
+	 * XOSEL = Single ended clock source (1 << 0).
+	 * 32K_EN on (1 << 1)
+	 */
+	/*REG32(MEC_VBAT_BASE + 0x8) |= 0x3;*/
+
+	/*for (i = 0; i < 600000; ++i) {
+		set_led(1, (i / 100000) & 1);
+	}*/
+
+	uart_init();
+	uart_write_char('\n');
+	uart_write_char('\r');
+	uart_write_char('a');
+
 	/*
 	 * Pre-initialization (pre-verified boot) stage.  Initialization at
 	 * this level should do as little as possible, because verified boot
@@ -48,9 +147,12 @@ test_mockable int main(void)
 	mpu_pre_init();
 #endif
 
+	uart_write_char('b');
+
 	/* Configure the pin multiplexers and GPIOs */
-	jtag_pre_init();
 	gpio_pre_init();
+
+	uart_write_char('c');
 
 #ifdef CONFIG_BOARD_POST_GPIO_INIT
 	board_config_post_gpio_init();
@@ -61,12 +163,16 @@ test_mockable int main(void)
 	 */
 	task_pre_init();
 
+	uart_write_char('d');
+
 	/*
 	 * Initialize the system module.  This enables the hibernate clock
 	 * source we need to calibrate the internal oscillator.
 	 */
 	system_pre_init();
 	system_common_pre_init();
+
+	uart_write_char('e');
 
 #ifdef CONFIG_FLASH
 	/*
@@ -79,6 +185,8 @@ test_mockable int main(void)
 	/* Set the CPU clocks / PLLs.  System is now running at full speed. */
 	clock_init();
 
+	uart_write_char('f');
+
 	/*
 	 * Initialize timer.  Everything after this can be benchmarked.
 	 * get_time() and udelay() may now be used.  usleep() requires task
@@ -87,6 +195,8 @@ test_mockable int main(void)
 	 * timer init() must be before uart_init().
 	 */
 	timer_init();
+
+	uart_write_char('g');
 
 	/* Main initialization stage.  Modules may enable interrupts here. */
 	cpu_init();
@@ -99,6 +209,8 @@ test_mockable int main(void)
 	/* Initialize UART.  Console output functions may now be used. */
 	uart_init();
 
+	uart_write_char('h');
+
 	if (system_jumped_to_this_image()) {
 		CPRINTF("[%T UART initialized after sysjump]\n");
 	} else {
@@ -110,6 +222,8 @@ test_mockable int main(void)
 	CPRINTF("[Image: %s, %s]\n",
 		 system_get_image_copy_string(), system_get_build_info());
 
+	uart_write_char('i');
+
 #ifdef CONFIG_WATCHDOG
 	/*
 	 * Intialize watchdog timer.  All lengthy operations between now and
@@ -120,6 +234,7 @@ test_mockable int main(void)
 	 */
 	watchdog_init();
 #endif
+	uart_write_char('j');
 
 	/*
 	 * Verified boot needs to read the initial keyboard state and EEPROM
@@ -135,9 +250,11 @@ test_mockable int main(void)
 #ifdef HAS_TASK_KEYSCAN
 	keyboard_scan_init();
 #endif
+	uart_write_char('k');
 
 	/* Initialize the hook library.  This calls HOOK_INIT hooks. */
 	hook_init();
+	uart_write_char('l');
 
 	/*
 	 * Print the init time.  Not completely accurate because it can't take
@@ -145,6 +262,7 @@ test_mockable int main(void)
 	 * the majority of the time.
 	 */
 	CPRINTF("[%T Inits done]\n");
+	uart_write_char('m');
 
 	/* Launch task scheduling (never returns) */
 	return task_start();
