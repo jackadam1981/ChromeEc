@@ -4,11 +4,21 @@
  */
 #include "config.h"
 
+#ifdef CONFIG_EXT_FLASH
+#define FW_OFF_(section) CONFIG_RAM_CODE_##section##_OFF
+#define FW_OFF(section) (CONFIG_RAM_BASE + FW_OFF_(section))
+
+#define RAM_DATA_OFF (CONFIG_RAM_BASE + CONFIG_RAM_DATA_OFF)
+
+#define FW_SIZE_(section) CONFIG_RAM_CODE_##section##_SIZE
+#define FW_SIZE(section) FW_SIZE_(section)
+#else
 #define FW_OFF_(section) CONFIG_FW_##section##_OFF
 #define FW_OFF(section) (CONFIG_FLASH_BASE + FW_OFF_(section))
 
 #define FW_SIZE_(section) CONFIG_FW_##section##_SIZE
 #define FW_SIZE(section) FW_SIZE_(section)
+#endif
 
 
 OUTPUT_FORMAT("elf32-littlearm", "elf32-littlearm", "elf32-littlearm")
@@ -17,7 +27,11 @@ ENTRY(reset)
 MEMORY
 {
     FLASH (rx) : ORIGIN = FW_OFF(SECTION), LENGTH = FW_SIZE(SECTION)
+#ifdef CONFIG_EXT_FLASH
+    IRAM (rw)  : ORIGIN = RAM_DATA_OFF, LENGTH = CONFIG_RAM_DATA_SIZE
+#else
     IRAM (rw)  : ORIGIN = CONFIG_RAM_BASE, LENGTH = CONFIG_RAM_SIZE
+#endif
 }
 SECTIONS
 {
