@@ -328,9 +328,9 @@ static int pwm_get_next_lower(void)
 	return -1;
 }
 
-static int pwm_check_vbus_low(int vbus, int battery_current)
+static int pwm_check_vbus_low(int vbus)
 {
-	if (battery_current >= 0)
+	if (charge_get_state() != ST_DISCHARGING)
 		return vbus < PWM_CTRL_VBUS_LOW && current_pwm_duty < 100;
 	else
 		return vbus < PWM_CTRL_VBUS_HARD_LOW && current_pwm_duty < 100;
@@ -744,15 +744,13 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, usb_boost_pwr_off_hook, HOOK_PRIO_DEFAULT);
 
 static void pwm_tweak(void)
 {
-	int vbus, current;
+	int vbus;
 	int next;
 
 	if (current_ilim_config != ILIM_CONFIG_PWM)
 		return;
 
 	vbus = adc_read_channel(ADC_CH_USB_VBUS_SNS);
-	if (battery_current(&current))
-		current = 0;
 
 	if (user_pwm_duty >= 0) {
 		if (current_pwm_duty != user_pwm_duty)
@@ -769,7 +767,7 @@ static void pwm_tweak(void)
 	 * If VBUS voltage is high enough, allow more current until we hit
 	 * current limit target.
 	 */
-	if (pwm_check_vbus_low(vbus, current)) {
+	if (pwm_check_vbus_low(vbus)) {
 		set_pwm_duty_cycle(current_pwm_duty + PWM_CTRL_STEP_UP);
 		CPRINTF("[%T PWM duty up %d%%]\n", current_pwm_duty);
 	} else if (pwm_check_vbus_high(vbus)) {
@@ -895,7 +893,10 @@ DECLARE_CONSOLE_COMMAND(ilim, command_ilim,
 #ifdef CONFIG_CMD_BATDEBUG
 static int command_batdebug(int argc, char **argv)
 {
-	int val;
+	struct batt_params batt;
+
+	battery_get_params(&batt);
+
 	ccprintf("VBUS = %d mV\n", adc_read_channel(ADC_CH_USB_VBUS_SNS));
 	ccprintf("VAC = %d mV\n", pmu_adc_read(ADC_VAC, ADC_FLAG_KEEP_ON)
 				  * 17000 / 1024);
@@ -906,10 +907,8 @@ static int command_batdebug(int argc, char **argv)
 	ccprintf("IBAT = %d mA\n", pmu_adc_read(ADC_IBAT, 0)
 				  * (1000 / R_BATTERY_MOHM) * 40 / 1024);
 	ccprintf("PWM = %d%%\n", pwm_get_duty(PWM_CH_ILIM));
-	battery_current(&val);
-	ccprintf("Battery Current = %d mA\n", val);
-	battery_voltage(&val);
-	ccprintf("Battery Voltage= %d mV\n", val);
+	ccprintf("Battery Current = %d mA\n", batt.current);
+	ccprintf("Battery Voltage= %d mV\n", batt.voltage);
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(batdebug, command_batdebug,
