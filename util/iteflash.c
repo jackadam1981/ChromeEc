@@ -48,6 +48,9 @@
 #define SPI_CMD_FAST_READ     0x0B
 #define SPI_CMD_CHIP_ERASE    0xC7
 
+/* Size for ftdi outgoing buffer */
+#define FI2C_BUF_SIZE (1<<12)
+
 /* store custom parameters */
 const char *input_filename;
 const char *output_filename;
@@ -95,37 +98,47 @@ static int i2c_add_send_byte(struct ftdi_context *ftdi, uint8_t *buf,
 	return 0;
 }
 
-static int i2c_add_recv_byte(struct ftdi_context *ftdi, uint8_t *buf,
-			     uint8_t *ptr, uint8_t *byte)
+static int i2c_add_recv_bytes(struct ftdi_context *ftdi, uint8_t *buf,
+			     uint8_t *ptr, uint8_t *rbuf, int rcnt)
 {
-	int ret;
+	int ret, i;
 	uint8_t *b = ptr;
 
-	/* set SCL low */
-	*b++ = SET_BITS_LOW; *b++ = 0; *b++ = SCL_BIT;
-	/* read the byte on the wire */
-	*b++ = MPSSE_DO_READ; *b++ = 0; *b++ = 0;
-	/* NACK last byte */
-	*b++ = SET_BITS_LOW; *b++ = 0; *b++ = SCL_BIT;
-	/*  */
-	*b++ = MPSSE_DO_WRITE | MPSSE_BITMODE | MPSSE_WRITE_NEG;
-	*b++ = 0; *b++ = 0xff; *b++ = SEND_IMMEDIATE;
+	for (i = 0; i < rcnt; i++) {
+		/* set SCL low */
+		*b++ = SET_BITS_LOW; *b++ = 0; *b++ = SCL_BIT;
+		/* read the byte on the wire */
+		*b++ = MPSSE_DO_READ; *b++ = 0; *b++ = 0;
+
+		if (i == rcnt - 1) {
+			/* NACK last byte */
+			*b++ = SET_BITS_LOW; *b++ = 0; *b++ = SCL_BIT;
+			*b++ = MPSSE_DO_WRITE | MPSSE_BITMODE | MPSSE_WRITE_NEG;
+			*b++ = 0; *b++ = 0xff; *b++ = SEND_IMMEDIATE;
+		} else {
+			/* ACK all other bytes */
+			*b++ = SET_BITS_LOW; *b++ = 0; *b++ = SCL_BIT | SDA_BIT;
+			*b++ = MPSSE_DO_WRITE | MPSSE_BITMODE | MPSSE_WRITE_NEG;
+			*b++ = 0; *b++ = 0; *b++ = SEND_IMMEDIATE;
+		}
+	}
+
 	ret = ftdi_write_data(ftdi, buf, b - buf);
 	if (ret < 0) {
 		fprintf(stderr, "failed to prepare read\n");
 		return ret;
 	}
-	ret = ftdi_read_data(ftdi, byte, 1);
+	ret = ftdi_read_data(ftdi, rbuf, rcnt);
 	if (ret < 0)
 		fprintf(stderr, "read byte failed\n");
 	return ret;
 }
 
 static int i2c_byte_transfer(struct ftdi_context *ftdi, uint8_t addr,
-			     uint8_t *data, int write)
+			     uint8_t *data, int write, int numbytes)
 {
 	int ret = 0, rets;
-	uint8_t buf[64];
+	static uint8_t buf[FI2C_BUF_SIZE];
 	uint8_t *b = buf;
 
 	/* START condition */
@@ -151,10 +164,10 @@ static int i2c_byte_transfer(struct ftdi_context *ftdi, uint8_t addr,
 	b = buf;
 	/* WORKAROUND: force SDA before sending the 2nd byte */
 	*b++ = SET_BITS_LOW; *b++ = SDA_BIT; *b++ = SCL_BIT | SDA_BIT;
-	if (write) /* write one byte of data */
+	if (write) /* write data */
 		ret = i2c_add_send_byte(ftdi, buf, b, *data);
-	else /* read one byte of data */
-		ret = i2c_add_recv_byte(ftdi, buf, b, data);
+	else /* read data */
+		ret = i2c_add_recv_bytes(ftdi, buf, b, data, numbytes);
 
 exit_xfer:
 	b = buf;
@@ -176,10 +189,10 @@ static int i2c_write_byte(struct ftdi_context *ftdi, uint8_t cmd, uint8_t data)
 {
 	int ret;
 
-	ret = i2c_byte_transfer(ftdi, I2C_CMD_ADDR, &cmd, 1);
+	ret = i2c_byte_transfer(ftdi, I2C_CMD_ADDR, &cmd, 1, 1);
 	if (ret < 0)
 		return -EIO;
-	ret = i2c_byte_transfer(ftdi, I2C_DATA_ADDR, &data, 1);
+	ret = i2c_byte_transfer(ftdi, I2C_DATA_ADDR, &data, 1, 1);
 	if (ret < 0)
 		return -EIO;
 
@@ -190,10 +203,10 @@ static int i2c_read_byte(struct ftdi_context *ftdi, uint8_t cmd, uint8_t *data)
 {
 	int ret;
 
-	ret = i2c_byte_transfer(ftdi, I2C_CMD_ADDR, &cmd, 1);
+	ret = i2c_byte_transfer(ftdi, I2C_CMD_ADDR, &cmd, 1, 1);
 	if (ret < 0)
 		return -EIO;
-	ret = i2c_byte_transfer(ftdi, I2C_DATA_ADDR, data, 0);
+	ret = i2c_byte_transfer(ftdi, I2C_DATA_ADDR, data, 0, 1);
 	if (ret < 0)
 		return -EIO;
 
@@ -235,7 +248,7 @@ static int spi_flash_command(struct ftdi_context *ftdi, uint8_t cmd)
 {
 	int ret = 0;
 
-	ret |= i2c_write_byte(ftdi, 0x07, 0xff);
+	ret |= i2c_write_byte(ftdi, 0x07, 0x7f);
 	ret |= i2c_write_byte(ftdi, 0x06, 0xff);
 	ret |= i2c_write_byte(ftdi, 0x05, 0xfe);
 	ret |= i2c_write_byte(ftdi, 0x04, 0x00);
@@ -394,15 +407,8 @@ int command_read_pages(struct ftdi_context *ftdi, uint32_t address,
 	int cnt;
 	uint16_t page;
 
-	res = spi_flash_command(ftdi, SPI_CMD_WRITE_ENABLE);
-	if (res < 0) {
-		fprintf(stderr, "Flash write enable FAILED (%d)\n", res);
-		goto failed_read;
-	}
-
 	while (remaining) {
 		uint8_t cmd = 0x9;
-		int i;
 
 		cnt = (remaining > PAGE_SIZE) ? PAGE_SIZE : remaining;
 		page = address / PAGE_SIZE;
@@ -420,24 +426,22 @@ int command_read_pages(struct ftdi_context *ftdi, uint32_t address,
 			fprintf(stderr, "page address set failed\n");
 			goto failed_read;
 		}
+
 		/* read page data */
-		res = i2c_byte_transfer(ftdi, I2C_CMD_ADDR, &cmd, 1);
-		for (i = 0; i < cnt; i++, buffer++) {
-			res = i2c_byte_transfer(ftdi, I2C_DATA_ADDR, buffer, 0);
-			if (res < 0) {
-				fprintf(stderr, "page data read failed\n");
-				goto failed_read;
-			}
+		res = i2c_byte_transfer(ftdi, I2C_CMD_ADDR, &cmd, 1, 1);
+		res = i2c_byte_transfer(ftdi, I2C_BLOCK_ADDR, buffer, 0, cnt);
+		if (res < 0) {
+			fprintf(stderr, "page data read failed\n");
+			goto failed_read;
 		}
 
 		address += cnt;
 		remaining -= cnt;
+		buffer += cnt;
 	}
 	res = size;
 
 failed_read:
-	if (spi_flash_command(ftdi, SPI_CMD_WRITE_DISABLE) < 0)
-		fprintf(stderr, "Flash write disable FAILED\n");
 
 	return res;
 }
@@ -478,9 +482,9 @@ int command_write_pages(struct ftdi_context *ftdi, uint32_t address,
 			goto failed_write;
 		}
 		/* write page data */
-		res = i2c_byte_transfer(ftdi, I2C_CMD_ADDR, &cmd, 1);
+		res = i2c_byte_transfer(ftdi, I2C_CMD_ADDR, &cmd, 1, 1);
 		for (i = 0; i < cnt; i++, buffer++) {
-			res = i2c_byte_transfer(ftdi, I2C_DATA_ADDR, buffer, 1);
+			res = i2c_byte_transfer(ftdi, I2C_DATA_ADDR, buffer, 1, 1);
 			if (res < 0) {
 				fprintf(stderr, "page data write failed\n");
 				goto failed_write;
