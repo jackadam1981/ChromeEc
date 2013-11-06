@@ -120,8 +120,8 @@ DECLARE_HOST_COMMAND(EC_CMD_LED_CONTROL,
 static void battery_led_update(void)
 {
 	int rv;
-	int state_of_charge;
 	enum led_state_t state = LED_STATE_OFF;
+	struct batt_params batt;
 
 	/* Current states and next states */
 	static int led_power = -1;
@@ -162,13 +162,16 @@ static void battery_led_update(void)
 	case ST_IDLE:
 	case ST_DISCHARGING:
 	case ST_CHARGING:
-		if (battery_state_of_charge(&state_of_charge)) {
+		/* TODO-KLUDGE - should use charge_get_percent() */
+		battery_get_params(&batt);
+		if (!(batt.flags & BATT_FLAG_RESPONSIVE) ||
+		    (batt.flags & BATT_FLAG_BAD_CHARGE_PERCENT)) {
 			/* Cannot talk to the battery. Set LED to red. */
 			state = LED_STATE_SOLID_RED;
 			break;
 		}
 
-		if (state_of_charge < GREEN_LED_THRESHOLD)
+		if (batt.state_of_charge < GREEN_LED_THRESHOLD)
 			state = LED_STATE_SOLID_YELLOW;
 		else
 			state = LED_STATE_SOLID_GREEN;
