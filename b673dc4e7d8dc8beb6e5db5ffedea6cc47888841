@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe680d04_7b5c572f",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-11-07T20:42:06Z",
+      "side": 1,
+      "message": "Just use \n\nASSERT(*current-\u003estack !\u003d STACK_UNUSED_VALUE);\n\nIt\u0027ll panic and/or reboot like any other catastrophic failure. We should always do that, not just when CONFIG_DEBUG_STACK_OVERFLOW.",
+      "revId": "b673dc4e7d8dc8beb6e5db5ffedea6cc47888841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
