@@ -18,6 +18,8 @@
 #include <ftdi.h>
 #pragma GCC diagnostic pop
 
+#include "itecommon.h"
+
 /* default USB device : Servo v2 */
 #define SERVO_USB_VID 0x18d1
 #define SERVO_USB_PID 0x5002
@@ -65,8 +67,10 @@ static int debug;
 
 /* optional command flags */
 enum {
-	FLAG_UNPROTECT      = 0x01,
-	FLAG_ERASE          = 0x02,
+	FLAG_UNPROTECT         = 0x01,
+	FLAG_ERASE             = 0x02,
+
+	FLAG_INTERACTIVE_DEBUG = 0x80,
 };
 
 static int i2c_add_send_byte(struct ftdi_context *ftdi, uint8_t *buf,
@@ -135,8 +139,8 @@ static int i2c_add_recv_bytes(struct ftdi_context *ftdi, uint8_t *buf,
 	return ret;
 }
 
-static int i2c_byte_transfer(struct ftdi_context *ftdi, uint8_t addr,
-			     uint8_t *data, int write, int numbytes)
+int i2c_byte_transfer(struct ftdi_context *ftdi, uint8_t addr,
+		      uint8_t *data, int write, int numbytes)
 {
 	int ret = 0, rets;
 	static uint8_t buf[FTDI_CMD_BUF_SIZE];
@@ -186,8 +190,9 @@ exit_xfer:
 	return ret;
 }
 
-static int i2c_write_byte(struct ftdi_context *ftdi, uint8_t cmd, uint8_t data)
+int i2c_write_byte(void *ctxt, uint8_t cmd, uint8_t data)
 {
+	struct ftdi_context *ftdi = ctxt;
 	int ret;
 
 	ret = i2c_byte_transfer(ftdi, I2C_CMD_ADDR, &cmd, 1, 1);
@@ -200,8 +205,9 @@ static int i2c_write_byte(struct ftdi_context *ftdi, uint8_t cmd, uint8_t data)
 	return 0;
 }
 
-static int i2c_read_byte(struct ftdi_context *ftdi, uint8_t cmd, uint8_t *data)
+int i2c_read_byte(void *ctxt, uint8_t cmd, uint8_t *data)
 {
+	struct ftdi_context *ftdi = ctxt;
 	int ret;
 
 	ret = i2c_byte_transfer(ftdi, I2C_CMD_ADDR, &cmd, 1, 1);
@@ -214,8 +220,9 @@ static int i2c_read_byte(struct ftdi_context *ftdi, uint8_t cmd, uint8_t *data)
 	return 0;
 }
 
-static int check_chipid(struct ftdi_context *ftdi)
+int check_chipid(void *ctxt)
 {
+	struct ftdi_context *ftdi = ctxt;
 	int ret;
 	uint8_t ver = 0xff;
 	uint16_t id = 0xffff;
@@ -646,6 +653,7 @@ open_failed:
 
 static const struct option longopts[] = {
 	{"debug", 0, 0, 'd'},
+	{"verbose", 0, 0, 'V'},
 	{"product", 1, 0, 'p'},
 	{"vendor", 1, 0, 'v'},
 	{"interface", 1, 0, 'i'},
@@ -660,9 +668,11 @@ static const struct option longopts[] = {
 
 void display_usage(char *program)
 {
-	fprintf(stderr, "Usage: %s [-d] [-v <VID>] [-p <PID>] [-i <1|2>] "
-		"[-s <serial>] [-u] [-e] [-r <file>] [-w <file>]\n", program);
-	fprintf(stderr, "--d[ebug] : output debug traces\n");
+	fprintf(stderr, "Usage: %s [-d] [-V] [-v <VID>] [-p <PID>] [-i <1|2>] "
+		"[-s <serial>] [-u] [-e] [-r <file>] [-w <file>] [<dbg cmds>]\n",
+		program);
+	fprintf(stderr, "--d[ebug] : interactive debug mode\n");
+	fprintf(stderr, "--V[erbose] : output debug traces\n");
 	fprintf(stderr, "--v[endor] <0x1234> : USB vendor ID\n");
 	fprintf(stderr, "--p[roduct] <0x1234> : USB product ID\n");
 	fprintf(stderr, "--s[erial] <serialname> : USB serial string\n");
@@ -682,10 +692,13 @@ int parse_parameters(int argc, char **argv)
 	int opt, idx;
 	int flags = 0;
 
-	while ((opt = getopt_long(argc, argv, "dv:p:i:s:ehr:w:u?",
+	while ((opt = getopt_long(argc, argv, "dVv:p:i:s:ehr:w:u?",
 				  longopts, &idx)) != -1) {
 		switch (opt) {
 		case 'd':
+			flags |= FLAG_INTERACTIVE_DEBUG;
+			break;
+		case 'V':
 			debug = 1;
 			break;
 		case 'v':
@@ -763,6 +776,9 @@ int main(int argc, char **argv)
 			goto terminate;
 	}
 
+	if (flags & FLAG_INTERACTIVE_DEBUG)
+		debug_mode(hnd, flags & FLAG_INTERACTIVE_DEBUG, "rd 0x2000");
+
 	/* Normal exit */
 	ret = 0;
 terminate:
@@ -771,3 +787,5 @@ terminate:
 	ftdi_free(hnd);
 	return ret;
 }
+
+#include "itedbgr.c"
