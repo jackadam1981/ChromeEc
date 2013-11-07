@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e5dfd5e_3311681f",
+        "filename": "util/iteflash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-07T22:25:10Z",
+      "side": 1,
+      "message": "as side effect of this will be to re-send the START condition every TX_BUFFER_LIMIT bytes (as it is stored between buf and ptr)\nwe might want to do just the workaround below rather than doing the full START condition ?",
+      "revId": "28387e8ad2986b05ea782503847a24de6c468ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
