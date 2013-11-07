@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be621522_f32a5090",
+        "filename": "util/iteflash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-07T01:35:50Z",
+      "side": 0,
+      "message": "you still need to check the succes of the i2c_byte_transfer ?",
+      "revId": "76872c181ee8a8bfb416e6e2cb75869baf9ae601",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e52f951_b8bc39f2",
+        "filename": "util/iteflash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-07T01:35:50Z",
+      "side": 0,
+      "message": "the whole chip erase was a good optimization,\nwe should keep it.",
+      "revId": "76872c181ee8a8bfb416e6e2cb75869baf9ae601",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
