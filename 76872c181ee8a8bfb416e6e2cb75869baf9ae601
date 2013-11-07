@@ -33,6 +33,24 @@
       "revId": "76872c181ee8a8bfb416e6e2cb75869baf9ae601",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e570543_775bd06f",
+        "filename": "util/iteflash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2013-11-07T01:43:58Z",
+      "side": 0,
+      "message": "yes, it is a good optimization, except it doesn\u0027t work. winflash uses the sector erase. i\u0027ll look into it further and see if i can get it to work.",
+      "parentUuid": "5e52f951_b8bc39f2",
+      "revId": "76872c181ee8a8bfb416e6e2cb75869baf9ae601",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
