@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e5dfd5e_820620e3",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-11-07T17:54:55Z",
+      "side": 1,
+      "message": "Include config_core.h in config.h, before config_chip.h (line ~748).  That way config_chip.h and board.h can override core-specific options if necessary.",
+      "revId": "e0f78f9edcb6ff74f06de8bcaaa707c4fa20b651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
