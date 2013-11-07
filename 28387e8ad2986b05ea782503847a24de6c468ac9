@@ -16,6 +16,24 @@
       "revId": "28387e8ad2986b05ea782503847a24de6c468ac9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e5dfd5e_735ac0bb",
+        "filename": "util/iteflash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2013-11-07T22:52:23Z",
+      "side": 1,
+      "message": "actually the START doesn\u0027t get sent because before this function is called, on line 209, the buffer pointer is reset and the workaround is added. so the only thing between buf and ptr is the workaround. but it is a little messy with the workaround duplicated in two places. i\u0027ll clean it up.",
+      "parentUuid": "7e5dfd5e_3311681f",
+      "revId": "28387e8ad2986b05ea782503847a24de6c468ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
