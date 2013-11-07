@@ -16,6 +16,24 @@
       "revId": "e0f78f9edcb6ff74f06de8bcaaa707c4fa20b651",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "de65092b_5df6af4a",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-07T18:52:33Z",
+      "side": 1,
+      "message": "I have already tried, that\u0027s not working well :\nright now core/$(CORE) is not included in the path when parsing config.h for the CONFIG_ flags,\nat that point in the Makefile, chip/$(CHIP)/build.mk is not included yet, so CORE is not defined.\n\nwe can move up the chip/$(CHIP)/build.mk include, but then it\u0027s before the proper definition of CONFIG_* variables.\nSo we need to do the include twice :\n  that\u0027s possible but might be a bit tricky for people touching those build files.\n\nLet me know if you prefer that second solution",
+      "parentUuid": "7e5dfd5e_820620e3",
+      "revId": "e0f78f9edcb6ff74f06de8bcaaa707c4fa20b651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
