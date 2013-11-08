@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3e570543_03e051e5",
+        "filename": "util/itecommon.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-08T16:36:03Z",
+      "side": 1,
+      "message": "makes sense, I will take a stab at it.\ngetopt probably still needs to know to full set of arguments (and we need to display all the options in usage) but we can try to split the parsing into 2 phases.",
+      "parentUuid": "7e5dfd5e_b8f71043",
+      "revId": "55027bc7b821088eddda77ef8ce5894206c52073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de65092b_fef68eac",
         "filename": "util/itecommon.h",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2013-11-08T16:30:16Z",
       "side": 1,
       "message": "These defines can go in itecommon.c file I think.",
+      "revId": "55027bc7b821088eddda77ef8ce5894206c52073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e570543_c3d5b908",
+        "filename": "util/itecommon.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-08T16:36:03Z",
+      "side": 1,
+      "message": "they are also used by iteflash.c for various optimized routines",
+      "parentUuid": "de65092b_fef68eac",
       "revId": "55027bc7b821088eddda77ef8ce5894206c52073",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
