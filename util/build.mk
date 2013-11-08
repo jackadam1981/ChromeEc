@@ -19,3 +19,4 @@ lbplay-objs=lbplay.o $(comm-objs)
 burn_my_ec-objs=ec_flash.o $(comm-objs) misc_util.o
 
 build-util-bin=ec_uartd stm32mon iteflash
+iteflash-objs=iteflash.o itecommon.o
