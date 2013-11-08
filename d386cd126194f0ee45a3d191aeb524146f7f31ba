@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e5dfd5e_056b3535",
+        "filename": "common/extpower_spring.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-08T03:09:29Z",
+      "side": 1,
+      "message": "I don\u0027t think this is equivalent to the old code,\nand this whole state machine is subtle enough that we don\u0027t want to change it gratuitously.",
+      "revId": "d386cd126194f0ee45a3d191aeb524146f7f31ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

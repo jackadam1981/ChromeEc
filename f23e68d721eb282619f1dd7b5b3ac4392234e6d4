@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e5dfd5e_65e79197",
+        "filename": "common/extpower_spring.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-08T03:09:29Z",
+      "side": 0,
+      "message": "afaik this condition was designed to handle the case where the battery is not handle to answer I2C requests, I don\u0027t think the new code deals with that corner case.",
+      "revId": "f23e68d721eb282619f1dd7b5b3ac4392234e6d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
