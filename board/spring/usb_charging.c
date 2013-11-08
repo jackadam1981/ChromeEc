@@ -60,6 +60,9 @@
 #define I_LIMIT_2400MA  MA_TO_PWM(2400)
 #define I_LIMIT_3000MA  0
 
+/* lower bound for PWM duty cycle : max charger current */
+#define I_LIMIT_MAX	MA_TO_PWM(2700)
+
 /* PWM control loop parameters */
 #define PWM_CTRL_MAX_DUTY	I_LIMIT_100MA /* Minimum current */
 #define PWM_CTRL_BEGIN_OFFSET	90
@@ -357,8 +360,8 @@ int board_has_high_power_ac(void)
 
 void board_pwm_duty_cycle(int percent)
 {
-	if (percent < 0)
-		percent = 0;
+	if (percent < I_LIMIT_MAX)
+		percent = I_LIMIT_MAX;
 	if (percent > 100)
 		percent = 100;
 
