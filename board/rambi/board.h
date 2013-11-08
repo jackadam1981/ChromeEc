@@ -25,6 +25,7 @@
 #define CONFIG_KEYBOARD_COL2_INVERTED
 #define CONFIG_KEYBOARD_PROTOCOL_8042
 #define CONFIG_LED_COMMON
+#define CONFIG_LOW_POWER_IDLE
 #undef  CONFIG_PECI
 #define CONFIG_POWER_BUTTON
 #define CONFIG_POWER_BUTTON_X86
@@ -71,6 +72,8 @@ enum gpio_signal {
 	GPIO_S5_PGOOD,             /* Power good on S5 supplies */
 	GPIO_VCORE_PGOOD,          /* Power good on core VR */
 	GPIO_WP_L,                 /* Write protect input */
+	GPIO_JTAG_TCK,             /* JTAG clock input */
+	GPIO_UART0_RX,             /* UART0 RX input */
 
 	/* Other inputs */
 	GPIO_BOARD_VERSION1,       /* Board version stuffing resistor 1 */
