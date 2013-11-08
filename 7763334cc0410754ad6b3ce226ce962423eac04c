@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3e570543_0ce403c3",
+        "filename": "common/charge_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-11-08T00:22:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e52f951_61614ce6",
+      "revId": "7763334cc0410754ad6b3ce226ce962423eac04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e52f951_017050b0",
         "filename": "common/charge_state.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2013-11-07T23:03:25Z",
       "side": 1,
       "message": "I think we should rely only on batt-\u003eflags for this. Assuming we have a way to customize the battery profiles, that customization should carry through to here. I\u0027m interpreting BATT_FLAG_CHARGING_ALLOWED to mean \"the battery is  willing to be charged\". \n\nWe may want another struct and set of flags for \"the charger/adapter/whatever is willing to charge the battery\"",
+      "revId": "7763334cc0410754ad6b3ce226ce962423eac04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "de65092b_e931bdd5",
+        "filename": "common/charge_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-11-08T00:22:28Z",
+      "side": 1,
+      "message": "Yes, that will be in charger_get_params(), soon.",
+      "parentUuid": "5e52f951_017050b0",
       "revId": "7763334cc0410754ad6b3ce226ce962423eac04c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "7e5dfd5e_2e50db99",
+        "filename": "driver/battery/bq27541.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-11-08T00:22:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe680d04_5b7fdbf6",
+      "revId": "7763334cc0410754ad6b3ce226ce962423eac04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e52f951_e1271cc6",
         "filename": "driver/battery/smart.c",
         "patchSetId": 1
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "3e570543_0cfa4393",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-11-08T00:22:28Z",
+      "side": 1,
+      "message": "They\u0027d override this in battery_vendor_params().",
+      "parentUuid": "5e52f951_e1271cc6",
+      "revId": "7763334cc0410754ad6b3ce226ce962423eac04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe680d04_7ba3b750",
         "filename": "driver/battery/smart.c",
         "patchSetId": 1
@@ -81,6 +153,24 @@
       "writtenOn": "2013-11-07T23:03:25Z",
       "side": 1,
       "message": "Not every caller looks at the return val. Is it needed?",
+      "revId": "7763334cc0410754ad6b3ce226ce962423eac04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e570543_ace6b7cb",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-11-08T00:22:28Z",
+      "side": 1,
+      "message": "No; removing it.",
+      "parentUuid": "fe680d04_7ba3b750",
       "revId": "7763334cc0410754ad6b3ce226ce962423eac04c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
