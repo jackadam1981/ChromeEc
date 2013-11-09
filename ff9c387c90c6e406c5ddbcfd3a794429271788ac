@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e570543_6fdc8cb1",
+        "filename": "board/rambi/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2013-11-09T02:03:33Z",
+      "side": 1,
+      "message": "Given the early nature of development on rambi should we put this #define into a separate CL and postpone enabling until more of the s/w stack has been brought up",
+      "revId": "ff9c387c90c6e406c5ddbcfd3a794429271788ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
