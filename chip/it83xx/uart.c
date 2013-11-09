@@ -8,71 +8,169 @@
 #include "common.h"
 #include "console.h"
 #include "registers.h"
+#include "system.h"
 #include "task.h"
 #include "uart.h"
 #include "util.h"
 
+/* Traces on UART0 */
+#define UART_PORT 0
+
+static int init_done;
+
 int uart_init_done(void)
 {
-	/* TODO(crosbug.com/p/23575): IMPLEMENT ME ! */
-	return 1;
+	return init_done;
 }
 
 void uart_tx_start(void)
 {
-	/* TODO(crosbug.com/p/23575): IMPLEMENT ME ! */
+	/* If interrupt is already enabled, nothing to do */
+	if (IT83XX_UART_IER(0) & 0x03)
+		return;
+
+	/* Do not allow deep sleep while transmit in progress */
+	disable_sleep(SLEEP_MASK_UART);
+
+	/*
+	 * Re-enable the transmit interrupt, then forcibly trigger the
+	 * interrupt.  This works around a hardware problem with the
+	 * UART where the FIFO only triggers the interrupt when its
+	 * threshold is _crossed_, not just met.
+	 *
+	 * TODO: investigate if this is still needed once UART interrupts
+	 * are working.
+	 */
+	IT83XX_UART_IER(0) |= 0x03;
+	task_trigger_irq(IT83XX_IRQ_UART1);
 }
 
 void uart_tx_stop(void)
 {
-	/* TODO(crosbug.com/p/23575): IMPLEMENT ME ! */
+	IT83XX_UART_IER(0) &= ~0x03;
+
+	/* Re-allow deep sleep */
+	enable_sleep(SLEEP_MASK_UART);
 }
 
 void uart_tx_flush(void)
 {
-	/* TODO(crosbug.com/p/23575): IMPLEMENT ME ! */
+	/*
+	 * Wait for transmit FIFO empty (TEMT) and transmitter holder
+	 * register and transmitter shift registers to be empty (THRE).
+	 */
+	while ((IT83XX_UART_LSR(0) & 0x60) != 0x60)
+		;
 }
 
 int uart_tx_ready(void)
 {
-	/* TODO(crosbug.com/p/23575): IMPLEMENT ME ! */
-	return 0;
+	/* Transmit is ready when FIFO is empty (THRE). */
+	return IT83XX_UART_LSR(0) & 0x20;
 }
 
 int uart_tx_in_progress(void)
 {
-	/* TODO(crosbug.com/p/23575): IMPLEMENT ME ! */
-	return 0;
+	/*
+	 * Transmit is in progress if transmit holding register or transmitter
+	 * shift register are not empty (TEMT).
+	 */
+	return !(IT83XX_UART_LSR(0) & 0x40);
 }
 
 int uart_rx_available(void)
 {
-	/* TODO(crosbug.com/p/23575): IMPLEMENT ME ! */
-	return 0;
+	return IT83XX_UART_LSR(0) & 0x01;
 }
 
 void uart_write_char(char c)
 {
-	/* TODO(crosbug.com/p/23575): IMPLEMENT ME ! */
+	/* Wait for space in transmit FIFO. */
+	while (!uart_tx_ready())
+		;
+
+	IT83XX_UART_THR(0) = c;
 }
 
 int uart_read_char(void)
 {
-	/* TODO(crosbug.com/p/23575): IMPLEMENT ME ! */
-	return '-';
+	return IT83XX_UART_RBR(0);
 }
 
 void uart_disable_interrupt(void)
 {
-	/* TODO(crosbug.com/p/23575): IMPLEMENT ME ! */
+	task_disable_irq(IT83XX_IRQ_UART1);
 }
 
 void uart_enable_interrupt(void)
 {
-	/* TODO(crosbug.com/p/23575): IMPLEMENT ME ! */
+	task_enable_irq(IT83XX_IRQ_UART1);
+}
+
+static void uart_ec_interrupt(void)
+{
+	/* clear interrupt status */
+	task_clear_pending_irq(IT83XX_IRQ_UART1);
+
+	/* Read input FIFO until empty, then fill output FIFO */
+	uart_process_input();
+	uart_process_output();
+}
+DECLARE_IRQ(IT83XX_IRQ_UART1, uart_ec_interrupt, 1);
+
+static void uart_config(void)
+{
+	/* Set CLK_UART_DIV_SEL to /2. Assumes PLL is 48 MHz. */
+	/* TODO: depends on clock source */
+	IT83XX_ECPM_SCDCR1 |= 0x01;
+
+	/*
+	 * Specify clock source of the UART is 24MHz,
+	 * must match CLK_UART_DIV_SEL.
+	 */
+	/* TODO: depends on clock source */
+	IT83XX_UART_CSSR(UART_PORT) = 0x01;
+
+	/* 8-N-1 and DLAB set to allow access to DLL and DLM registers. */
+	IT83XX_UART_LCR(UART_PORT) = 0x83;
+
+	/* Set divisor to set baud rate to 115200 */
+	IT83XX_UART_DLM(UART_PORT) = 0x00;
+	IT83XX_UART_DLL(UART_PORT) = 0x01;
+
+	/*
+	 * Clear DLAB bit to exclude access to DLL and DLM and give access to
+	 * RBR and THR.
+	 */
+	IT83XX_UART_LCR(UART_PORT) = 0x03;
+
+	/*
+	 * Enable TX and RX FIFOs and set RX FIFO interrupt level to the
+	 * minimum 1 byte.
+	 */
+	IT83XX_UART_FCR(UART_PORT) = 0x07;
 }
 
 void uart_init(void)
 {
-	/* TODO(crosbug.com/p/23575): IMPLEMENT ME ! */
+	/* switch UART0 on without hardware flow control */
+	IT83XX_GPIO_GRC1 = 0x01;
+	IT83XX_GPIO_GRC6 |= 0x03;
+	/* Pin muxing */
+	IT83XX_GPIO_GPCRB0 = 0x00;
+	IT83XX_GPIO_GPCRB1 = 0x00;
+	/* Enable clocks to UART 1 and 2. */
+	IT83XX_ECPM_CGCTRL3R = 0x40;
+
+	/* Config UART 0 only for now. */
+	uart_config();
+
+	/* clear interrupt status */
+	task_clear_pending_irq(IT83XX_IRQ_UART1);
+
+	/* Enable interrupts */
+	IT83XX_UART_IER(0) = 0x03;
+	task_enable_irq(IT83XX_IRQ_UART1);
+
+	init_done = 1;
 }
