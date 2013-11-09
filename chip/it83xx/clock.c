@@ -19,5 +19,6 @@
 
 void clock_init(void)
 {
-	/* TODO(crosbug.com/p/23575): IMPLEMENT ME ! */
+	/* Turn off auto clock gating */
+	IT83XX_ECPM_AUTOCG = 0x00;
 }
