@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e570543_259755e8",
+        "filename": "board/spring/usb_charging.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-11T17:11:34Z",
+      "side": 1,
+      "message": "according to jim email, the phenomenon \"happens every few seconds\", so we might miss it if we reset the state every 1.2s",
+      "revId": "8c2944e139312307077e27d280883d3a7667326b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
