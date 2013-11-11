@@ -70,6 +70,7 @@
 #define PWM_CTRL_OC_DETECT_TIME	(1200 * MSEC)
 #define PWM_CTRL_OC_BACK_OFF	3
 #define PWM_CTRL_OC_RETRY	2
+#define PWM_CTRL_OC_LATCH	7
 #define PWM_CTRL_STEP_DOWN	3
 #define PWM_CTRL_STEP_UP	5
 #define PWM_CTRL_VBUS_HARD_LOW	4400
@@ -147,6 +148,7 @@ static timestamp_t power_removed_time[2];
 static uint32_t power_removed_type[2];
 static int power_removed_pwm_duty[2];
 static int oc_detect_retry[2] = {PWM_CTRL_OC_RETRY, PWM_CTRL_OC_RETRY};
+static int oc_detect_latch[2] = {PWM_CTRL_OC_LATCH, PWM_CTRL_OC_LATCH};
 
 /* PWM duty cycle limit based on over current event */
 static int over_current_pwm_duty;
@@ -657,9 +659,18 @@ static void usb_detect_overcurrent(int dev_type)
 		now.val -= power_removed_time[idx].val;
 		if (now.val >= PWM_CTRL_OC_DETECT_TIME) {
 			oc_detect_retry[idx] = PWM_CTRL_OC_RETRY;
+			oc_detect_latch[idx] = PWM_CTRL_OC_LATCH;
 			return;
 		}
 		if (power_removed_type[idx] == dev_type) {
+			if (--oc_detect_latch[idx] <= 0) {
+				over_current_pwm_duty = MAX(I_LIMIT_500MA,
+					    power_removed_pwm_duty[idx] +
+					    PWM_CTRL_OC_BACK_OFF);
+				CPRINTF("[%T USB current latched - %d%%]\n",
+					over_current_pwm_duty);
+				return;
+			}
 			if (oc_detect_retry[idx] > 0) {
 				CPRINTF("[%T USB overcurrent: Retry (%d)]\n",
 					oc_detect_retry[idx]);
