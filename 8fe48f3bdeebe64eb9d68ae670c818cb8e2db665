@@ -16,6 +16,24 @@
       "revId": "8fe48f3bdeebe64eb9d68ae670c818cb8e2db665",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "de65092b_e6160063",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-11T17:25:32Z",
+      "side": 1,
+      "message": "Yes, I mentioned that limitation in the CL description.\nThe right way to do it might be to switch all rules to \"$(call if_changed, ...)\" style as in kernel makefiles (that would also fix other corner cases where we currently badly manages dependencies/incrementel build : e.g. changes to the build files)\nbut that\u0027s a larger change.",
+      "parentUuid": "1ef161a2_34b318f6",
+      "revId": "8fe48f3bdeebe64eb9d68ae670c818cb8e2db665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
