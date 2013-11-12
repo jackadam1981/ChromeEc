@@ -21,7 +21,7 @@
 /**
  * Enable PWM mode in backlight controller and turn it on.
  */
-static int lp8555_enable_pwm_mode(void)
+static void lp8555_enable_pwm_mode(void)
 {
 	int reg;
 
@@ -39,9 +39,8 @@ static int lp8555_enable_pwm_mode(void)
 	reg |= LP8555_REG_COMMAND_ON;
 	i2c_write8(I2C_PORT_BACKLIGHT, I2C_ADDR_BACKLIGHT,
 		   LP8555_REG_COMMAND, reg);
-
-	return EC_SUCCESS;
 }
+DECLARE_DEFERRED(lp8555_enable_pwm_mode);
 
 /**
  * Host command to toggle backlight.
@@ -67,7 +66,7 @@ void backlight_interrupt(enum gpio_signal signal)
 	 * PCH indicates it is turning on backlight so we should
 	 * attempt to put the backlight controller into PWM mode.
 	 */
-	lp8555_enable_pwm_mode();
+	hook_call_deferred(lp8555_enable_pwm_mode, 0);
 }
 
 /**
