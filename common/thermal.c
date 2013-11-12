@@ -219,15 +219,6 @@ static inline void update_and_check_stat(int temp,
 			ot_count[sensor_id][threshold_id] = delay;
 			overheated[threshold_id] = 1;
 		}
-	} else if (ot_count[sensor_id][threshold_id] >= delay &&
-		   temp >= threshold - 3) {
-		/*
-		 * Once the threshold is reached, only deassert overheated if
-		 * the temperature drops to 3 degrees below threshold.  This
-		 * hysteresis prevents a temperature oscillating around the
-		 * threshold causing overheated actions to trigger repeatedly.
-		 */
-		overheated[threshold_id] = 1;
 	}
 }
 
