@@ -31,7 +31,9 @@
 #define CONFIG_STACK_SIZE 1024
 
 /* Idle task stack size */
+#ifndef IDLE_TASK_STACK_SIZE
 #define IDLE_TASK_STACK_SIZE 256
+#endif
 
 /* Default task stack size */
 #define TASK_STACK_SIZE 488

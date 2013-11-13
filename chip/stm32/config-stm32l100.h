@@ -48,3 +48,7 @@
 
 /* Flash erases to 0, not 1 */
 #define CONFIG_FLASH_ERASED_VALUE32 0
+
+/* Increase the stack size of idle task for printf */
+#undef IDLE_TASK_STACK_SIZE
+#define IDLE_TASK_STACK_SIZE 384
