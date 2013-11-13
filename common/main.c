@@ -21,6 +21,7 @@
 #ifdef CONFIG_MPU
 #include "mpu.h"
 #endif
+#include "panic.h"
 #include "system.h"
 #include "task.h"
 #include "timer.h"
@@ -30,6 +31,10 @@
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_SYSTEM, outstr)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
+
+int guard1 = 0x01000001;
+int test_data_section = 0xFADABADA;
+int guard2 = 0x02000002;
 
 test_mockable int main(void)
 {
@@ -98,6 +103,20 @@ test_mockable int main(void)
 
 	/* Initialize UART.  Console output functions may now be used. */
 	uart_init();
+
+	/* ==== PUT YOUR DEBUG MESS HERE === */
+	panic_puts("EC Starting -- UART ready\n");
+	panic_printf("[Image: %s, %s]\n",
+		 system_get_image_copy_string(), system_get_build_info());
+
+	panic_printf("Data section is: %s @%08x=%08x\n",
+		test_data_section == 0xfadabada ? "OK" : "DEAD!!!",
+		&test_data_section, test_data_section);
+
+	/* do NOT go past this limit, printf cannot work IT off */
+	while (1)
+		;
+	/* ==== END OF DEBUG ==== */
 
 	if (system_jumped_to_this_image()) {
 		CPRINTF("[%T UART initialized after sysjump]\n");
