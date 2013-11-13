@@ -16,6 +16,7 @@
 #include "flash.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "hwtimer.h"
 #include "jtag.h"
 #include "keyboard_scan.h"
 #ifdef CONFIG_MPU
@@ -38,14 +39,25 @@ test_mockable int main(void)
 
 	IT83XX_UART_SCR(0) = 0xe0;
 	uart_init();
+	__hw_clock_source_init(0);
 	IT83XX_UART_SCR(0) = 0xe1;
 	while (1) {
+#if 0
+		uart_write_char('A');
+		IT83XX_UART_SCR(0) = counter;
+		uart_write_char('B');
+		if (IT83XX_INTC_ISR7 == 0x40) {
+			IT83XX_INTC_ISR7 = 0x40;
+			counter++;
+		}
+#else
 		IT83XX_UART_SCR(0) = counter++;
 		uart_write_char('A');
 		IT83XX_UART_SCR(0) = counter++;
 		uart_write_char('B');
 		IT83XX_UART_SCR(0) = counter++;
 		counter = 0xfa;
+#endif
 	}
 	/*
 	 * Pre-initialization (pre-verified boot) stage.  Initialization at
