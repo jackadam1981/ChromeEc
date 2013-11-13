@@ -8,6 +8,7 @@
 #include "common.h"
 #include "hooks.h"
 #include "hwtimer.h"
+#include "panic.h"
 #include "registers.h"
 #include "task.h"
 #include "timer.h"
@@ -46,6 +47,7 @@ void __hw_clock_source_set(uint32_t ts)
 
 static void __hw_clock_source_irq(void)
 {
+	panic_puts("HWTMR\n");
 	/* clear interrupt status */
 	task_clear_pending_irq(IT83XX_IRQ_TMR_B0);
 
@@ -90,7 +92,7 @@ int __hw_clock_source_init(uint32_t start_t)
 #if PLL_CLOCK == 48000000
 	/* Set prescaler divider value (/8 for B and /1 for A). */
 	/* TODO: depends on clock source */
-	IT83XX_TMR_PRSC = 0x14;
+	IT83XX_TMR_PRSC = 0xFF;
 
 	/*
 	 * Tim A: 16 bit pulse mode, 8MHz clock
@@ -105,7 +107,7 @@ int __hw_clock_source_init(uint32_t start_t)
 	/* Set the 16-bit cycle time, duty time for timers. */
 	IT83XX_TMR_CTR_A0 = 0xff;
 	IT83XX_TMR_CTR_A1 = 0xff;
-	IT83XX_TMR_CTR_B0 = 0x08;	// cycle set for 1us
+	IT83XX_TMR_CTR_B0 = 0xFF;	// cycle set for 1us
 	IT83XX_TMR_DCR_B0 = 0x04;
 
 	/* Enable the cycle time interrupt for timer B0. */
