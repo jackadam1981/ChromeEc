@@ -21,6 +21,7 @@
 #ifdef CONFIG_MPU
 #include "mpu.h"
 #endif
+#include "registers.h"
 #include "system.h"
 #include "task.h"
 #include "timer.h"
@@ -33,6 +34,19 @@
 
 test_mockable int main(void)
 {
+	uint8_t counter = 0xf0;
+
+	IT83XX_UART_SCR(0) = 0xe0;
+	uart_init();
+	IT83XX_UART_SCR(0) = 0xe1;
+	while (1) {
+		IT83XX_UART_SCR(0) = counter++;
+		uart_write_char('A');
+		IT83XX_UART_SCR(0) = counter++;
+		uart_write_char('B');
+		IT83XX_UART_SCR(0) = counter++;
+		counter = 0xfa;
+	}
 	/*
 	 * Pre-initialization (pre-verified boot) stage.  Initialization at
 	 * this level should do as little as possible, because verified boot
