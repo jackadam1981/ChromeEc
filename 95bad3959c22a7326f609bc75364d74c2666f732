@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e81c517_cac68380",
+        "filename": "board/spring/usb_charging.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000182
+      },
+      "writtenOn": "2013-11-13T23:49:03Z",
+      "side": 1,
+      "message": "2 minutes might be too less; the moment we go away from a few seconds we might as well make it 5 or enough to cool things down; need to characterize on Jim\u0027s brick.",
+      "revId": "95bad3959c22a7326f609bc75364d74c2666f732",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
