@@ -12,35 +12,110 @@
 #include "task.h"
 #include "timer.h"
 
+/* 128us (2^7 us) between 2 ticks */
+#define TICK_INTERVAL_LOG2  7
+#define TICK_INTERVAL      (1 << TICK_INTERVAL_LOG2)
+#define TICK_INTERVAL_MASK (TICK_INTERVAL - 1)
+
+static volatile uint32_t time_us;
+
+static int event_set;
+static uint32_t next_event_time;
+
 void __hw_clock_event_set(uint32_t deadline)
 {
-	/* TODO(crosbug.com/p/23575): IMPLEMENT ME ! */
+	next_event_time = deadline;
+	event_set = 1;
 }
 
 uint32_t __hw_clock_event_get(void)
 {
-	/* TODO(crosbug.com/p/23575): IMPLEMENT ME ! */
-	return 0xffffffff;
+	return next_event_time;
 }
 
 void __hw_clock_event_clear(void)
 {
-	/* TODO(crosbug.com/p/23575): IMPLEMENT ME ! */
+	event_set = 0;
 }
 
 uint32_t __hw_clock_source_read(void)
 {
-	/* TODO(crosbug.com/p/23575): IMPLEMENT ME ! */
-	return 0xffffffff;
+	return time_us;
 }
 
 void __hw_clock_source_set(uint32_t ts)
 {
-	/* TODO(crosbug.com/p/23575): IMPLEMENT ME ! */
+	time_us = ts;
+}
+
+
+static void __hw_clock_source_irq(void)
+{
+	/* clear interrupt status */
+	task_clear_pending_irq(IT83XX_IRQ_TMR_B0);
+
+	time_us += TICK_INTERVAL;
+
+	/*
+	 * Find expired timers and set the new timer deadline; check the IRQ
+	 * status to determine if the free-running counter overflowed.
+	 */
+	if (event_set && (time_us == (next_event_time & TICK_INTERVAL_MASK)))
+		process_timers(0);
+	else if (time_us == 0)
+		process_timers(1);
+}
+DECLARE_IRQ(IT83XX_IRQ_TMR_B0, __hw_clock_source_irq, 1);
+
+static void setup_gpio(void)
+{
+	/* TMB0 enabled */
+	IT83XX_GPIO_GRC2 |= 0x04;
+
+	/* Pin muxing */
+	IT83XX_GPIO_GPCRF0 = 0x00;	/* TMB0 */
+}
+
+static void hw_timer_enable_int(void)
+{
+	/* clear interrupt status */
+	task_clear_pending_irq(IT83XX_IRQ_TMR_B0);
+
+	/* enable interrupt B0 */
+	task_enable_irq(IT83XX_IRQ_TMR_B0);
 }
 
 int __hw_clock_source_init(uint32_t start_t)
 {
-	/* TODO(crosbug.com/p/23575): IMPLEMENT ME ! */
+	time_us = start_t & TICK_INTERVAL_MASK;
+
+	/* GPIO module should do this. */
+	setup_gpio();
+
+	/* Set prescaler divider value (/8 for B and /1 for A). */
+	/* TODO: depends on clock source */
+	IT83XX_TMR_PRSC = 0x14;
+
+	/*
+	 * Tim A: 16 bit pulse mode, 8MHz clock
+	 * Tim B: 8  bit pulse mode, 8MHz clock.
+	 */
+	/* TODO: depends on clock source */
+	IT83XX_TMR_GCSMS = 0x15;
+
+	/* Set the 16-bit cycle time, duty time for timers. */
+	IT83XX_TMR_CTR_A0 = 0xff;
+	IT83XX_TMR_CTR_A1 = 0xff;
+	IT83XX_TMR_CTR_B0 = TICK_INTERVAL - 1;
+	IT83XX_TMR_DCR_B0 = 0x04;
+
+	/* Enable the cycle time interrupt for timer B0. */
+	IT83XX_TMR_TMRIE |= 0x10;
+
+	hw_timer_enable_int();
+
+	/* Enable TMR clock counter. */
+	IT83XX_TMR_TMRCE |= 0x02;
+
 	return 0;
 }
