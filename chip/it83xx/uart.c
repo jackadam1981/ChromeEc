@@ -7,6 +7,7 @@
 
 #include "common.h"
 #include "console.h"
+#include "gpio.h"
 #include "registers.h"
 #include "system.h"
 #include "task.h"
@@ -152,12 +153,13 @@ static void uart_config(void)
 
 void uart_init(void)
 {
+	/* Waiting for when we can use the GPIO module to set pin muxing */
+	gpio_config_module(MODULE_UART, 1);
+
 	/* switch UART0 on without hardware flow control */
 	IT83XX_GPIO_GRC1 = 0x01;
 	IT83XX_GPIO_GRC6 |= 0x03;
-	/* Pin muxing */
-	IT83XX_GPIO_GPCRB0 = 0x00;
-	IT83XX_GPIO_GPCRB1 = 0x00;
+
 	/* Enable clocks to UART 1 and 2. */
 	IT83XX_ECPM_CGCTRL3R = 0x40;
 
