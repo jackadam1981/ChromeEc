@@ -86,6 +86,65 @@
 #define IT83XX_IRQ_WKO88          85
 #define IT83XX_IRQ_WKO89          86
 #define IT83XX_IRQ_WKO90          87
+#define IT83XX_IRQ_WKO80          88
+#define IT83XX_IRQ_WKO81          89
+#define IT83XX_IRQ_WKO82          90
+#define IT83XX_IRQ_WKO83          91
+#define IT83XX_IRQ_WKO84          92
+#define IT83XX_IRQ_WKO85          93
+#define IT83XX_IRQ_WKO86          94
+#define IT83XX_IRQ_WKO87          95
+#define IT83XX_IRQ_WKO91          96
+#define IT83XX_IRQ_WKO92          97
+#define IT83XX_IRQ_WKO93          98
+#define IT83XX_IRQ_WKO94          99
+#define IT83XX_IRQ_WKO95          100
+#define IT83XX_IRQ_WKO96          101
+#define IT83XX_IRQ_WKO97          102
+#define IT83XX_IRQ_WKO98          103
+#define IT83XX_IRQ_WKO99          104
+#define IT83XX_IRQ_WKO100         105
+#define IT83XX_IRQ_WKO101         106
+#define IT83XX_IRQ_WKO102         107
+#define IT83XX_IRQ_WKO103         108
+#define IT83XX_IRQ_WKO104         109
+#define IT83XX_IRQ_WKO105         110
+#define IT83XX_IRQ_WKO106         111
+#define IT83XX_IRQ_WKO107         112
+#define IT83XX_IRQ_WKO108         113
+#define IT83XX_IRQ_WKO109         114
+#define IT83XX_IRQ_WKO110         115
+#define IT83XX_IRQ_WKO111         116
+#define IT83XX_IRQ_WKO112         117
+#define IT83XX_IRQ_WKO113         118
+#define IT83XX_IRQ_WKO114         119
+#define IT83XX_IRQ_WKO115         120
+#define IT83XX_IRQ_WKO116         121
+#define IT83XX_IRQ_WKO117         122
+#define IT83XX_IRQ_WKO118         123
+#define IT83XX_IRQ_WKO119         124
+#define IT83XX_IRQ_WKO120         125
+#define IT83XX_IRQ_WKO121         126
+#define IT83XX_IRQ_WKO122         127
+#define IT83XX_IRQ_WKO128         128
+#define IT83XX_IRQ_WKO129         129
+#define IT83XX_IRQ_WKO130         130
+#define IT83XX_IRQ_WKO131         131
+#define IT83XX_IRQ_WKO132         132
+#define IT83XX_IRQ_WKO133         133
+#define IT83XX_IRQ_WKO134         134
+#define IT83XX_IRQ_PMC5_OUT       149
+#define IT83XX_IRQ_PMC5_IN        150
+#define IT83XX_IRQ_V_COMP         151
+#define IT83XX_IRQ_SMB_E          152
+#define IT83XX_IRQ_SMB_F          153
+#define IT83XX_IRQ_OSC_DMA        154
+#define IT83XX_IRQ_EXT_TIMER3     155
+#define IT83XX_IRQ_EXT_TIMER4     156
+#define IT83XX_IRQ_EXT_TIMER5     157
+#define IT83XX_IRQ_EXT_TIMER6     158
+#define IT83XX_IRQ_EXT_TIMER7     159
+#define IT83XX_IRQ_COUNT          160
 
 /* --- INTC --- */
 #define IT83XX_INTC_BASE    0x00F01100
@@ -139,7 +198,13 @@
 /* --- Wake-Up Control (WUC) --- */
 #define IT83XX_WUC_BASE   0x00F01B00
 
+#define IT83XX_WUC_WUEMR1 (IT83XX_WUC_BASE+0x00)
+#define IT83XX_WUC_WUEMR6 (IT83XX_WUC_BASE+0x10)
+#define IT83XX_WUC_WUESR1 (IT83XX_WUC_BASE+0x04)
+#define IT83XX_WUC_WUESR6 (IT83XX_WUC_BASE+0x11)
+
 #define IT83XX_WUC_WUESR10    REG8(IT83XX_WUC_BASE+0x21)
+#define IT83XX_WUC_WUESR11    REG8(IT83XX_WUC_BASE+0x25)
 
 /* --- UART --- */
 #define IT83XX_UART0_BASE 0x00F02700
@@ -167,10 +232,6 @@
 
 #define IT83XX_GPIO_BASE  0x00F01600
 
-#define GPIO_A IT83XX_GPIO_BASE
-
-#define IT83XX_GPIO_GPCRB0	REG8(IT83XX_GPIO_BASE+0x18)
-#define IT83XX_GPIO_GPCRB1	REG8(IT83XX_GPIO_BASE+0x19)
 #define IT83XX_GPIO_GPCRF0	REG8(IT83XX_GPIO_BASE+0x38)
 
 #define IT83XX_GPIO_GRC1	REG8(IT83XX_GPIO_BASE+0xF0)
@@ -181,6 +242,28 @@
 #define IT83XX_GPIO_GRC6	REG8(IT83XX_GPIO_BASE+0xF5)
 #define IT83XX_GPIO_GRC7	REG8(IT83XX_GPIO_BASE+0xF6)
 #define IT83XX_GPIO_GRC8	REG8(IT83XX_GPIO_BASE+0xF7)
+
+#define IT83XX_GPIO_DATA_BASE        (IT83XX_GPIO_BASE + 0x00)
+#define IT83XX_GPIO_OUTPUT_TYPE_BASE (IT83XX_GPIO_BASE + 0x70)
+
+
+enum {
+	GPIO_A = 0x1,
+	GPIO_B = 0x2,
+	GPIO_C = 0x3,
+	GPIO_D = 0x4,
+	GPIO_E = 0x5,
+	GPIO_F = 0x6,
+	GPIO_G = 0x7,
+	GPIO_H = 0x8,
+	GPIO_I = 0x9,
+	GPIO_J = 0xa,
+	GPIO_M = 0xd,
+};
+
+#define IT83XX_GPIO_DATA(port)     REG8(IT83XX_GPIO_DATA_BASE + port)
+#define IT83XX_GPIO_GPOT(port)     REG8(IT83XX_GPIO_OUTPUT_TYPE_BASE + port)
+#define IT83XX_GPIO_CTRL(port_offset, pin_offset) REG8(IT83XX_GPIO_BASE + port_offset + pin_offset)
 
 /* --- Clock and Power Management (ECPM) --- */
 
