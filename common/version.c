@@ -9,8 +9,8 @@
 #include "ec_version.h"
 #include "version.h"
 
-const struct version_struct version_data
-	__attribute__((section(".rodata.ver"))) = {
+/*const*/ struct version_struct version_data
+	/*__attribute__((section(".rodata.ver")))*/ = {
 	CROS_EC_VERSION_COOKIE1,
 	CROS_EC_VERSION32,
 	CROS_EC_VERSION_COOKIE2
