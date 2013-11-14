@@ -52,10 +52,10 @@ void test_interrupt(enum gpio_signal signal)
 BUILD_ASSERT(ARRAY_SIZE(gpio_list) == GPIO_COUNT);
 
 /* Pins with alternate functions */
-const struct gpio_alt_func gpio_alt_funcs[] = {
+/*const*/ struct gpio_alt_func gpio_alt_funcs[] = {
 	{GPIO_B, 0x03, 1, MODULE_UART, GPIO_PULL_UP},	/* UART0 */
 };
-const int gpio_alt_funcs_count = ARRAY_SIZE(gpio_alt_funcs);
+/*const*/ int gpio_alt_funcs_count = ARRAY_SIZE(gpio_alt_funcs);
 
 /* Initialize board. */
 static void board_init(void)
