@@ -16,6 +16,8 @@
 enum gpio_signal {
 	/* Unimplemented GPIOs */
 	GPIO_ENTERING_RW,
+	GPIO_TEST_OUTPUT,
+	GPIO_TEST_INPUT,
 
 	/* Number of GPIOs; not an actual GPIO */
 	GPIO_COUNT
