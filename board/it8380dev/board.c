@@ -15,11 +15,14 @@
 /*const*/ struct gpio_info gpio_list[] = {
 	/* Unimplemented signals which we need to emulate for now */
 	GPIO_SIGNAL_NOT_IMPLEMENTED("ENTERING_RW"),
+	{"C2", GPIO_C, 0x04, GPIO_OUTPUT | GPIO_LOW},
+	{"C1", GPIO_C, 0x02, GPIO_INPUT | GPIO_PULL_UP},
 };
 BUILD_ASSERT(ARRAY_SIZE(gpio_list) == GPIO_COUNT);
 
 /* Pins with alternate functions */
 /*const*/ struct gpio_alt_func gpio_alt_funcs[] = {
+	{GPIO_B, 0x03, 1, MODULE_UART, GPIO_PULL_UP},	/* UART0 */
 };
 /*const*/ int gpio_alt_funcs_count = ARRAY_SIZE(gpio_alt_funcs);
 

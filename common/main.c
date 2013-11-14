@@ -38,6 +38,8 @@ int guard2 = 0x02000002;
 
 test_mockable int main(void)
 {
+	int test_output_state = 0;
+
 	/*
 	 * Pre-initialization (pre-verified boot) stage.  Initialization at
 	 * this level should do as little as possible, because verified boot
@@ -109,7 +111,7 @@ test_mockable int main(void)
 	panic_printf("[Image: %s, %s]\n",
 		 system_get_image_copy_string(), system_get_build_info());
 
-	panic_printf("Data section is: %s @%08x=%08x\n",
+	panic_printf("Data section is: %s @%08x=%08x\n\n",
 		test_data_section == 0xfadabada ? "OK" : "DEAD!!!",
 		&test_data_section, test_data_section);
 
@@ -119,9 +121,19 @@ test_mockable int main(void)
 	/* do NOT go past this limit, printf cannot work IT off */
 	while (1) {
 		volatile int dummy;
+		int input_state;
+		
 		/* wait a little bit */
 		for (dummy = 0; dummy < 500000; dummy++);
-		panic_puts(".");
+
+		input_state = gpio_get_level(GPIO_TEST_INPUT);
+		if (input_state)
+			panic_puts(".");
+		else
+			panic_puts("|");
+
+		gpio_set_level(GPIO_TEST_OUTPUT, test_output_state);
+		test_output_state = !test_output_state;
 	}
 	/* ==== END OF DEBUG ==== */
 
