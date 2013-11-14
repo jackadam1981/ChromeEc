@@ -17,7 +17,7 @@ struct version_struct {
 	uint32_t cookie2;
 } __packed;
 
-extern const struct version_struct version_data;
+extern /*const*/ struct version_struct version_data;
 extern const char build_info[];
 extern const char __version_struct_offset[];
 

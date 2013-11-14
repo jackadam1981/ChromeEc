@@ -68,7 +68,7 @@ struct gpio_info {
 };
 
 /* Signal information from board.c.  Must match order from enum gpio_signal. */
-extern const struct gpio_info gpio_list[];
+extern /*const*/ struct gpio_info gpio_list[];
 
 /* Macro for signals which don't exist */
 #ifdef CHIP_lm4
@@ -95,8 +95,8 @@ struct gpio_alt_func {
 	uint16_t flags;
 };
 
-extern const struct gpio_alt_func gpio_alt_funcs[];
-extern const int gpio_alt_funcs_count;
+extern /*const*/ struct gpio_alt_func gpio_alt_funcs[];
+extern /*const*/ int gpio_alt_funcs_count;
 
 /**
  * Pre-initialize GPIOs.
