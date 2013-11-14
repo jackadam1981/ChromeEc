@@ -12,16 +12,16 @@
 #include "util.h"
 
 /* GPIO signal list.  Must match order from enum gpio_signal. */
-const struct gpio_info gpio_list[] = {
+/*const*/ struct gpio_info gpio_list[] = {
 	/* Unimplemented signals which we need to emulate for now */
 	GPIO_SIGNAL_NOT_IMPLEMENTED("ENTERING_RW"),
 };
 BUILD_ASSERT(ARRAY_SIZE(gpio_list) == GPIO_COUNT);
 
 /* Pins with alternate functions */
-const struct gpio_alt_func gpio_alt_funcs[] = {
+/*const*/ struct gpio_alt_func gpio_alt_funcs[] = {
 };
-const int gpio_alt_funcs_count = ARRAY_SIZE(gpio_alt_funcs);
+/*const*/ int gpio_alt_funcs_count = ARRAY_SIZE(gpio_alt_funcs);
 
 /* Initialize board. */
 static void board_init(void)
