@@ -89,8 +89,8 @@ int __hw_clock_source_init(uint32_t start_t)
 	/* GPIO module should do this. */
 	setup_gpio();
 
+#if PLL_CLOCK == 48000000
 	/* Set prescaler divider value (/8 for B and /1 for A). */
-	/* TODO: depends on clock source */
 	IT83XX_TMR_PRSC = 0xFF;
 
 	/*
@@ -99,6 +99,9 @@ int __hw_clock_source_init(uint32_t start_t)
 	 */
 	/* TODO: depends on clock source */
 	IT83XX_TMR_GCSMS = 0x15;
+#else
+#error "Support only for PLL clock speed of 48MHz."
+#endif
 
 	/* Set the 16-bit cycle time, duty time for timers. */
 	IT83XX_TMR_CTR_A0 = 0xff;
