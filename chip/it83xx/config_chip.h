@@ -18,6 +18,9 @@
 /* Maximum number of deferrable functions */
 #define DEFERRABLE_MAX_COUNT 8
 
+/* Default PLL frequency. */
+#define PLL_CLOCK 48000000
+
 /****************************************************************************/
 /* Memory mapping */
 
