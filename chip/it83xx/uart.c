@@ -5,6 +5,7 @@
 
 /* UART module for Chrome EC */
 
+#include "clock.h"
 #include "common.h"
 #include "console.h"
 #include "gpio.h"
@@ -112,13 +113,15 @@ DECLARE_IRQ(IT83XX_IRQ_UART1, uart_ec_interrupt, 1);
 
 static void uart_config(void)
 {
+#if PLL_CLOCK == 48000000
 	/* Set CLK_UART_DIV_SEL to /2. Assumes PLL is 48 MHz. */
-	/* TODO: depends on clock source */
 	IT83XX_ECPM_SCDCR1 |= 0x01;
 
 	/* Specify clock source of the UART is 24MHz, must match CLK_UART_DIV_SEL. */
-	/* TODO: depends on clock source */
-	IT83XX_UART_CSSR(UART_PORT) = 0x1;
+	IT83XX_UART_CSSR(UART_PORT) = 0x01;
+#else
+#error "Support only for PLL clock speed of 48MHz."
+#endif
 
 	/* 8-N-1 and DLAB set to allow access to DLL and DLM registers. */
 	IT83XX_UART_LCR(UART_PORT) = 0x83;
@@ -150,7 +153,7 @@ void uart_init(void)
 	IT83XX_GPIO_GRC6 |= 0x03;
 
 	/* Enable clocks to UART 1 and 2. */
-	IT83XX_ECPM_CGCTRL3R = 0x40;
+	clock_enable_peripheral(CGC_OFFSET_UART, 0, 0);
 
 	/* Config UART 0 only for now. */
 	uart_config();
