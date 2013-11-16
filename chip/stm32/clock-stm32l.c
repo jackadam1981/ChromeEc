@@ -167,6 +167,9 @@ void clock_init(void)
 
 static void clock_chipset_startup(void)
 {
+	/* Flush UART before switching clock speed */
+	cflush();
+
 	/* Return to full speed */
 	clock_enable_module(MODULE_CHIPSET, 1);
 }
@@ -175,6 +178,9 @@ DECLARE_HOOK(HOOK_CHIPSET_RESUME, clock_chipset_startup, HOOK_PRIO_DEFAULT);
 
 static void clock_chipset_shutdown(void)
 {
+	/* Flush UART before switching clock speed */
+	cflush();
+
 	/* Drop to lower clock speed if no other module requires full speed */
 	clock_enable_module(MODULE_CHIPSET, 0);
 }
