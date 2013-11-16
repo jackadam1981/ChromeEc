@@ -45,6 +45,9 @@ enum module_id {
 	MODULE_EXTPOWER_USB,
 };
 
+/* By default, enable all console messages except keyboard */
+#define CC_DEFAULT	(CC_ALL & ~CC_MASK(CC_KEYSCAN))
+
 /* Keyboard output port list */
 #define KB_OUT_PORT_LIST GPIO_B, GPIO_C
 
