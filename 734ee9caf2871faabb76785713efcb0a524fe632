@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fed56d33_4226a0e5",
+        "filename": "common/extpower_spring.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-11-16T00:11:49Z",
+      "side": 1,
+      "message": "This should be sufficiently safe. If we\u0027re not sure that we\u0027re discharging, use the higher current limit. If we\u0027re sure we\u0027re discharging, then use the lower limit.\n\nIt should be up to the charge state machine to indicate whether it thinks we\u0027re discharging; the extpower state machine shouldn\u0027t try to second-guess it.",
+      "revId": "734ee9caf2871faabb76785713efcb0a524fe632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ed9616f_35750fe1",
+        "filename": "common/extpower_spring.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-11-16T00:11:49Z",
+      "side": 1,
+      "message": "Guarantee that current\u003d0 if unable to communicate with battery is now made in battery_get_params().",
+      "revId": "734ee9caf2871faabb76785713efcb0a524fe632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
