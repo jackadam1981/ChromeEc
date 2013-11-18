@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe71ed53_419482e0",
+        "filename": "board/spring/usb_charging.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1048,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2013-11-18T21:34:45Z",
+      "side": 1,
+      "message": "optional nit/paranoia\n\nShould 24 be a #define TSU6721_DEV_TYPE_WIDTH or equiv?\n\nShould we mask dev_type ( dev_type \u0026 TSU6721_DEV_TYPE_MASK )?",
+      "revId": "744efef852d3f8927985d75b0ec85d37a05a2a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
