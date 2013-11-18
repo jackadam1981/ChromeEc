@@ -16,6 +16,24 @@
       "revId": "744efef852d3f8927985d75b0ec85d37a05a2a86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe71ed53_c1363219",
+        "filename": "board/spring/usb_charging.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1048,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-18T21:47:51Z",
+      "side": 1,
+      "message": "that\u0027s not really explicit in that part of the code, \nbut current_dev_type is initialized with the value of tsu6721_get_device_type() which is the concatenation of 3 8-bit registers: \nint tsu6721_get_device_type(void)\n{\n        return (tsu6721_read(TSU6721_REG_DEV_TYPE3) \u003c\u003c 16) |\n               (tsu6721_read(TSU6721_REG_DEV_TYPE2) \u003c\u003c 8) |\n               (tsu6721_read(TSU6721_REG_DEV_TYPE1));\n}\n\nso in my opinion, this is relatively safe.",
+      "parentUuid": "fe71ed53_419482e0",
+      "revId": "744efef852d3f8927985d75b0ec85d37a05a2a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
