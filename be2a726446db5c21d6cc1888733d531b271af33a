@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fe71ed53_87459a5e",
+        "filename": "power/tegra.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2013-11-18T23:37:27Z",
+      "side": 1,
+      "message": "Done.\n\nWe have to leave it asserted so that it doesn\u0027t boot up.",
+      "parentUuid": "9e08f1da_23cd18f6",
+      "revId": "be2a726446db5c21d6cc1888733d531b271af33a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe71ed53_bc3b0dea",
         "filename": "power/tegra.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "9e08f1da_0e08fb7f",
+        "filename": "power/tegra.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2013-11-18T23:37:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe71ed53_bc3b0dea",
+      "revId": "be2a726446db5c21d6cc1888733d531b271af33a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe71ed53_bc522d28",
         "filename": "power/tegra.c",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2013-11-18T21:57:00Z",
       "side": 1,
       "message": "Why not \n\n  if(!ap_on)\n\nSeems like we should use one or the other...",
+      "revId": "be2a726446db5c21d6cc1888733d531b271af33a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e64b999_f7420a29",
+        "filename": "power/tegra.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2013-11-18T23:37:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe71ed53_bc522d28",
       "revId": "be2a726446db5c21d6cc1888733d531b271af33a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
