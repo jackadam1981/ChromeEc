@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e64b999_fd9d0b0c",
+        "filename": "chip/mec1322/clock.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-19T16:32:23Z",
+      "side": 1,
+      "message": "the name is a bit misleading (as the original one in LM4):\n it\u0027s waiting at least 3x cycles (random value I haven\u0027t checked the Cortex-M4F manual)",
+      "revId": "9eaa31e9ff90a396a37560faf2ba0d73e3a3f2d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e08f1da_0fbd95be",
+        "filename": "chip/mec1322/gpio.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-19T16:32:23Z",
+      "side": 1,
+      "message": "that\u0027s really inefficient,\nI would prefer something like using CLZ such as\nwhile (mask) {\n  i \u003d __builtin_ffs(mask);\n[...]\n mask \u0026\u003d ~(1 \u003c\u003c i);\n}",
+      "revId": "9eaa31e9ff90a396a37560faf2ba0d73e3a3f2d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe71ed53_aca996aa",
+        "filename": "chip/mec1322/hwtimer.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-19T16:32:23Z",
+      "side": 1,
+      "message": "it probably worth stating in a comment that timer 0 is your free running counter (using a count down counter) and timer 1 your event counter",
+      "revId": "9eaa31e9ff90a396a37560faf2ba0d73e3a3f2d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e08f1da_2ffdf98b",
+        "filename": "chip/mec1322/hwtimer.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-19T16:32:23Z",
+      "side": 1,
+      "message": "we will probably need to write common code for the interrupt aggregator",
+      "revId": "9eaa31e9ff90a396a37560faf2ba0d73e3a3f2d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe71ed53_6cbdeeeb",
+        "filename": "chip/mec1322/system.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-19T16:32:23Z",
+      "side": 1,
+      "message": "register name ?",
+      "revId": "9eaa31e9ff90a396a37560faf2ba0d73e3a3f2d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe71ed53_cc60a2e5",
+        "filename": "chip/mec1322/uart.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-19T16:32:23Z",
+      "side": 1,
+      "message": "no register name for pin muxes ?",
+      "revId": "9eaa31e9ff90a396a37560faf2ba0d73e3a3f2d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e08f1da_6f3251db",
+        "filename": "include/gpio.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-19T16:32:23Z",
+      "side": 1,
+      "message": "we should probably create something like DEFAULT_GPIO_BANK in all registers.h rather than adding each chip here.",
+      "revId": "9eaa31e9ff90a396a37560faf2ba0d73e3a3f2d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
