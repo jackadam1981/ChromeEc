@@ -487,6 +487,7 @@ static void host_command_debug_request(struct host_cmd_handler_args *args)
 {
 	static int hc_prev_cmd;
 	static uint64_t hc_prev_time;
+	static int wrap_up;
 
 	/*
 	 * In normal output mode, skip printing repeats of the same command
@@ -499,6 +500,10 @@ static void host_command_debug_request(struct host_cmd_handler_args *args)
 		    t - hc_prev_time < HCDEBUG_MAX_REPEAT_DELAY) {
 			hc_prev_time = t;
 			CPUTS("+");
+      if (++wrap_up >= 50) {
+        wrap_up -= 50;
+        CPUTS("\n");
+      }
 			return;
 		}
 		hc_prev_time = t;
