@@ -144,7 +144,7 @@ static task_ *current_task = (task_ *)scratchpad;
  * task unblocking.  After checking for a task switch, svc_handler() will clear
  * the flag (unless profiling is also enabled; then the flag remains set).
  */
-static int need_resched_or_profiling = 0;
+int need_resched_or_profiling = 0;
 
 /*
  * Bitmap of all tasks ready to be run.

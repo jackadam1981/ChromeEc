@@ -17,19 +17,24 @@ j irq_entry_\()\number
 .global irq_entry_\()\number
 irq_entry_\()\number:
 	/* the context is stored on the current task stack*/
+	/* save r15, fp, lp and sp */
+	smw.adm $r15, [$sp], $r15, 0xb
 	/* r0-r5 are caller saved */
-	smw.adm $r0, [$sp], $r5, 0
-	/* r15, lp and sp */
-	smw.adm $r15, [$sp], $r15, 0x3
+	smw.adm $r0,  [$sp], $r5, 0
 	/* switch to system stack if we are called from process stack */
-	/* TODO implement me: COND + la $sp, stack_end */
+	la $r1, stack_end
+	mov55 $fp, $sp
+	slt   $r0, $r1, $sp /* if sp > end of system stack, then r0 = 1 and */
+	cmovn $sp, $r1, $r0 /* point sp to the top of the system stack */
+	/* C routine handler */
 	jal irq_\()\number\()_handler
-	/* TODO: use fp to save sp ... ? hint save it before */
-	/* TODO: task_resched_if_needed() */
-	/* restore r15, lp and sp */
-	lmw.bim $r15, [$sp], $r15, 0x3
-	/* r0-r5 are caller saved */
-	lmw.bim $r0, [$sp], $r5, 0
+	/* check whether we need to change the scheduled task */
+	lwi.gp  $r0, [ + need_resched_or_profiling]
+	bnez $r0, task_resched_if_needed
+	/* restore r0-r5 */
+	lmw.bim $r0, [$fp], $r5, 0
+	/* restore r15, fp, lp and sp */
+	lmw.bi $r15, [$fp], $r15, 0xb
 	/* restore PC and PSW */
 	iret
 .popsection
