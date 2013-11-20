@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "be54d5b1_e910f11c",
+        "filename": "chip/mec1322/clock.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-11-20T03:17:38Z",
+      "side": 1,
+      "message": "This should (if it will) be fixed along with LM4. We might also want to move this function to core/cortex-m (if it\u0027s the same for M3 and M4). I\u0027ll leave it as is in this CL.",
+      "parentUuid": "5e64b999_fd9d0b0c",
+      "revId": "9eaa31e9ff90a396a37560faf2ba0d73e3a3f2d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e08f1da_0fbd95be",
         "filename": "chip/mec1322/gpio.c",
         "patchSetId": 18
@@ -30,6 +48,24 @@
       "writtenOn": "2013-11-19T16:32:23Z",
       "side": 1,
       "message": "that\u0027s really inefficient,\nI would prefer something like using CLZ such as\nwhile (mask) {\n  i \u003d __builtin_ffs(mask);\n[...]\n mask \u0026\u003d ~(1 \u003c\u003c i);\n}",
+      "revId": "9eaa31e9ff90a396a37560faf2ba0d73e3a3f2d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ee41d51_64f8c462",
+        "filename": "chip/mec1322/gpio.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-11-20T03:17:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e08f1da_0fbd95be",
       "revId": "9eaa31e9ff90a396a37560faf2ba0d73e3a3f2d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "de57c9b2_e7b9fc64",
+        "filename": "chip/mec1322/hwtimer.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-11-20T03:17:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe71ed53_aca996aa",
+      "revId": "9eaa31e9ff90a396a37560faf2ba0d73e3a3f2d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e08f1da_2ffdf98b",
         "filename": "chip/mec1322/hwtimer.c",
         "patchSetId": 18
@@ -64,6 +118,24 @@
       "writtenOn": "2013-11-19T16:32:23Z",
       "side": 1,
       "message": "we will probably need to write common code for the interrupt aggregator",
+      "revId": "9eaa31e9ff90a396a37560faf2ba0d73e3a3f2d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ee41d51_041e18ef",
+        "filename": "chip/mec1322/hwtimer.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-11-20T03:17:38Z",
+      "side": 1,
+      "message": "We only have interrupt aggregator on MEC1322 so far and it only takes two line of code to enable an interrupt, and one line to disable. (SOURCE and DISABLE are really unnecessary here and I\u0027ve removed them.) Therefore I think we can keep this simple until we have another chip that also has interrupt aggregator. Sounds ok?",
+      "parentUuid": "9e08f1da_2ffdf98b",
       "revId": "9eaa31e9ff90a396a37560faf2ba0d73e3a3f2d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "be54d5b1_49d90544",
+        "filename": "chip/mec1322/system.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-11-20T03:17:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe71ed53_6cbdeeeb",
+      "revId": "9eaa31e9ff90a396a37560faf2ba0d73e3a3f2d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe71ed53_cc60a2e5",
         "filename": "chip/mec1322/uart.c",
         "patchSetId": 18
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "7ee41d51_c4239039",
+        "filename": "chip/mec1322/uart.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-11-20T03:17:38Z",
+      "side": 1,
+      "message": "Done. Using gpio_config_module() now.",
+      "parentUuid": "fe71ed53_cc60a2e5",
+      "revId": "9eaa31e9ff90a396a37560faf2ba0d73e3a3f2d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e08f1da_6f3251db",
         "filename": "include/gpio.h",
         "patchSetId": 18
@@ -115,6 +223,24 @@
       "writtenOn": "2013-11-19T16:32:23Z",
       "side": 1,
       "message": "we should probably create something like DEFAULT_GPIO_BANK in all registers.h rather than adding each chip here.",
+      "revId": "9eaa31e9ff90a396a37560faf2ba0d73e3a3f2d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ee41d51_a4280c17",
+        "filename": "include/gpio.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-11-20T03:17:38Z",
+      "side": 1,
+      "message": "Done. I\u0027ve chosen the name DUMMY_GPIO_BANK, as there\u0027s really no such thing as \"default\" GPIO bank. (You always know which bank to use unless you want a dummy one.)",
+      "parentUuid": "9e08f1da_6f3251db",
       "revId": "9eaa31e9ff90a396a37560faf2ba0d73e3a3f2d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
