@@ -16,6 +16,24 @@
       "revId": "3b5e44a6511f61818d0382b531aaa65a800f2325",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "deaa69eb_cfae01b0",
+        "filename": "include/fan.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-11-20T23:12:02Z",
+      "side": 1,
+      "message": "I suspect I\u0027ll have a bunch of similar tweaks in other places for the remaining dptf functions. That\u0027s why I started it like this.",
+      "parentUuid": "defc29ef_25cd14f6",
+      "revId": "3b5e44a6511f61818d0382b531aaa65a800f2325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
