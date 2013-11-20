@@ -21,6 +21,11 @@
 /* Default PLL frequency. */
 #define PLL_CLOCK 48000000
 
+/* Only define one of these. TODO: only temporarily needed because all
+ * interrupts are coming in INT1#. */
+#undef USE_IRQ1_FOR_WATCHDOG
+#define USE_IRQ1_FOR_HW_TIMER
+
 /****************************************************************************/
 /* Memory mapping */
 
@@ -98,6 +103,6 @@
 /* Optional features present on this chip */
 #undef CONFIG_I2C
 #undef CONFIG_FLASH
-#undef CONFIG_WATCHDOG
+#define CONFIG_WATCHDOG
 
 #endif  /* __CROS_EC_CONFIG_CHIP_H */

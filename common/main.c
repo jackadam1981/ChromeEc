@@ -106,6 +106,9 @@ test_mockable int main(void)
 	/* Initialize UART.  Console output functions may now be used. */
 	uart_init();
 
+	/* Initialize watchdog. */
+	watchdog_init();
+
 	/* ==== PUT YOUR DEBUG MESS HERE === */
 	panic_puts("EC Starting -- UART ready\n");
 	panic_printf("[Image: %s, %s]\n",
@@ -124,13 +127,18 @@ test_mockable int main(void)
 		int input_state;
 		
 		/* wait a little bit */
-		for (dummy = 0; dummy < 500000; dummy++);
+		for (dummy = 0; dummy < 3000000; dummy++);
 
+		/* Test code: will alternate printing if connect pins C1 and C2. */
 		input_state = gpio_get_level(GPIO_TEST_INPUT);
 		if (input_state)
 			panic_puts(".");
 		else
 			panic_puts("|");
+
+		/* Test code: will trigger WD if connect pins C1 and C2. */
+		if(input_state)
+			watchdog_reload();
 
 		gpio_set_level(GPIO_TEST_OUTPUT, test_output_state);
 		test_output_state = !test_output_state;

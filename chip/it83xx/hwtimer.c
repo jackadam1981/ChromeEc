@@ -45,6 +45,7 @@ void __hw_clock_source_set(uint32_t ts)
 }
 
 
+#ifdef USE_IRQ1_FOR_HW_TIMER
 static void __hw_clock_source_irq(void)
 {
 	panic_puts("HWTMR\n");
@@ -63,6 +64,7 @@ static void __hw_clock_source_irq(void)
 		process_timers(1);
 }
 DECLARE_IRQ(1 /*should 3 the CPU_INT number for IT83XX_IRQ_TMR_B0 */, __hw_clock_source_irq, 1);
+#endif
 
 static void setup_gpio(void)
 {
@@ -78,8 +80,10 @@ static void hw_timer_enable_int(void)
 	/* clear interrupt status */
 	IT83XX_INTC_ISR7 = 0x40;
 
+#ifdef USE_IRQ1_FOR_HW_TIMER
 	/* enable interrupt B0 */
 	IT83XX_INTC_IER7 = 0x40;
+#endif
 }
 
 int __hw_clock_source_init(uint32_t start_t)
