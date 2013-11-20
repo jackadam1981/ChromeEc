@@ -16,6 +16,24 @@
       "revId": "f2642cc3e8cc780de1dea985baaa3bfad4c436d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e08f1da_0be73f97",
+        "filename": "chip/lm4/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-11-20T21:57:30Z",
+      "side": 0,
+      "message": "I2C1 is not used on leon. It was only used on link for the lightbar.",
+      "parentUuid": "3e0705cd_3aaedd7f",
+      "revId": "f2642cc3e8cc780de1dea985baaa3bfad4c436d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
