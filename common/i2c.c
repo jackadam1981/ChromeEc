@@ -259,8 +259,10 @@ static int i2c_command_passthru(struct host_cmd_handler_args *args)
 #endif
 
 	ret = check_i2c_params(args);
-	if (ret)
+	if (ret) {
+		PTHRUPRINTF("[%T check_i2c_params: %d]\n", ret);
 		return ret;
+	}
 
 	/* Loop and process messages */
 	resp->i2c_status = 0;
@@ -295,11 +297,16 @@ static int i2c_command_passthru(struct host_cmd_handler_args *args)
 			      &resp->data[in_len], read_len, xferflags);
 		if (rv) {
 			/* Driver will have sent a stop bit here */
-			if (rv == EC_ERROR_TIMEOUT)
+			if (rv == EC_ERROR_TIMEOUT) {
+				PTHRUPRINTF("[%T i2c passthru xfer <%d>: timeout]\n", resp->num_msgs);
 				resp->i2c_status = EC_I2C_STATUS_TIMEOUT;
-			else
+			} else {
+				PTHRUPRINTF("[%T i2c passthru xfer <%d>: NAK (%d)]\n", resp->num_msgs, rv);
 				resp->i2c_status = EC_I2C_STATUS_NAK;
+			}
 			break;
+		} else {
+			PTHRUPRINTF("[%T i2c passthru xfer <%d>: SUCCESS]\n", resp->num_msgs);
 		}
 
 		in_len += read_len;
