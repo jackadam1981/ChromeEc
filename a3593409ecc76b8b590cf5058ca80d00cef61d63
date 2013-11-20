@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e08f1da_f0375d16",
+        "filename": "chip/mec1322/util/pack_ec.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-20T15:59:49Z",
+      "side": 1,
+      "message": "to be compatible with \"make tests\" we will need to do something a bit more flexible.\n\nwe will probably need to use \"argparse\" module to (optionally) get this filename as well as the SPI size above.",
+      "revId": "a3593409ecc76b8b590cf5058ca80d00cef61d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
