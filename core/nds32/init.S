@@ -24,8 +24,8 @@ irq_entry_\()\number:
 	/* switch to system stack if we are called from process stack */
 	la $r1, stack_end
 	mov55 $fp, $sp
-	slt   $r0, $r1, $sp /* if sp > end of system stack, then r0 = 1 and */
-	cmovn $sp, $r1, $r0 /* point sp to the top of the system stack */
+	slt45 $r1, $sp /* if sp > end of system stack, then r15 = 1 and */
+	cmovn $sp, $r1, $r15 /* point sp to the top of the system stack */
 	/* C routine handler */
 	jal irq_\()\number\()_handler
 	/* check whether we need to change the scheduled task */
