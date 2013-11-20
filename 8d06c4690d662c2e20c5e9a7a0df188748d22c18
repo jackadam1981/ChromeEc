@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fe71ed53_bec45749",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001306
+      },
+      "writtenOn": "2013-11-20T02:30:02Z",
+      "side": 1,
+      "message": "The problem is ToT firmware is broken for Pixel (Issue 320181). Is it enough to locally port this change and MPU lock code to 2695.B and test it on Pixel? Otherwise, I need to wait until somebody (including me) fix Issue 320181.",
+      "parentUuid": "5e64b999_835caddd",
+      "revId": "8d06c4690d662c2e20c5e9a7a0df188748d22c18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e64b999_a359b1ed",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "5e64b999_c3d5c582",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001306
+      },
+      "writtenOn": "2013-11-20T02:30:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e64b999_a359b1ed",
+      "revId": "8d06c4690d662c2e20c5e9a7a0df188748d22c18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe71ed53_bef0d70b",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -47,6 +83,24 @@
       "writtenOn": "2013-11-20T01:19:40Z",
       "side": 1,
       "message": "the correct SoB format is:\nSigned-off-by: Daisuke Nojiri \u003cdnojiri@google.com\u003e\n\nand we usually put our chromium.org addresses :\ne.g.\nSigned-off-by:  Daisuke Nojiri \u003cdnojiri@chromium.org\u003e",
+      "revId": "8d06c4690d662c2e20c5e9a7a0df188748d22c18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e64b999_e3da49b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001306
+      },
+      "writtenOn": "2013-11-20T02:30:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe71ed53_bef0d70b",
       "revId": "8d06c4690d662c2e20c5e9a7a0df188748d22c18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
