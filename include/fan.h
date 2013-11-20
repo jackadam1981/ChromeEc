@@ -49,9 +49,18 @@ void fan_set_percent_needed(int fan, int pct);
 int fan_percent_to_rpm(int fan, int pct);
 
 
-/**
- * These functions require chip-specific implementations.
- */
+/****************************************************************************/
+/* For DPTF/ACPI commands */
+
+/* 0-100% sets fixed duty cycle, out of range means let the EC drive */
+void dptf_set_fan_duty_target(int pct);
+
+/*  0-100% if in duty mode. -1 if not */
+int dptf_get_fan_duty_target(void);
+
+
+/****************************************************************************/
+/* These functions require chip-specific implementations. */
 
 /* Enable/Disable the fan controller */
 void fan_set_enabled(int ch, int enabled);

@@ -8,6 +8,7 @@
 #include "clock.h"
 #include "common.h"
 #include "console.h"
+#include "fan.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
@@ -421,6 +422,14 @@ static void handle_acpi_write(int is_cmd)
 			result = pwm_get_duty(PWM_CH_KBLIGHT);
 			break;
 #endif
+		case EC_ACPI_MEM_FAN_DUTY:
+			/** TODO(crosbug.com/p/23774): Fix this too */
+#ifdef CONFIG_FANS
+			result = dptf_get_fan_duty_target();
+#else
+			result = -1;
+#endif
+			break;
 		default:
 			break;
 		}
@@ -445,6 +454,12 @@ static void handle_acpi_write(int is_cmd)
 			 */
 			CPRINTF("\r[%T ACPI kblight %d]", data);
 			pwm_set_duty(PWM_CH_KBLIGHT, data);
+			break;
+#endif
+#ifdef CONFIG_FANS
+		case EC_ACPI_MEM_FAN_DUTY:
+			/** TODO(crosbug.com/p/23774): Fix this too */
+			dptf_set_fan_duty_target(data);
 			break;
 #endif
 		default:
