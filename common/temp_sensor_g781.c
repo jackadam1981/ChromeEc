@@ -78,6 +78,14 @@ static void g781_temp_sensor_poll(void)
 }
 DECLARE_HOOK(HOOK_SECOND, g781_temp_sensor_poll, HOOK_PRIO_TEMP_SENSOR);
 
+static void g781_temp_sensor_init(void)
+{
+	g781_set_temp(G781_LOCAL_TEMP_THERM_LIMIT,
+		      G781_LOCAL_TEMP_THERM_LIMIT_TRIP);
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, g781_temp_sensor_init, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, g781_temp_sensor_init, HOOK_PRIO_DEFAULT);
+
 static int g781_show_status(void)
 {
 	int value;
