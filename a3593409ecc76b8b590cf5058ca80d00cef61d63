@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "5e64b999_99c41c4a",
+        "filename": "chip/mec1322/util/pack_ec.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-11-20T17:00:54Z",
+      "side": 1,
+      "message": "Can you add a reference to where the flash image format is described?\n\nFor example,  \"See ____ in datasheet\".",
+      "revId": "a3593409ecc76b8b590cf5058ca80d00cef61d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e08f1da_f0375d16",
         "filename": "chip/mec1322/util/pack_ec.py",
         "patchSetId": 1
@@ -13,6 +30,58 @@
       "writtenOn": "2013-11-20T15:59:49Z",
       "side": 1,
       "message": "to be compatible with \"make tests\" we will need to do something a bit more flexible.\n\nwe will probably need to use \"argparse\" module to (optionally) get this filename as well as the SPI size above.",
+      "revId": "a3593409ecc76b8b590cf5058ca80d00cef61d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe71ed53_249a965e",
+        "filename": "chip/mec1322/util/pack_ec.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-11-20T17:00:54Z",
+      "side": 1,
+      "message": "Agree.  Please file a bug and add # TODO(buglink) so we don\u0027t forget to add that functionality.",
+      "parentUuid": "9e08f1da_f0375d16",
+      "revId": "a3593409ecc76b8b590cf5058ca80d00cef61d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe71ed53_e4932e45",
+        "filename": "chip/mec1322/util/pack_ec.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-11-20T17:00:54Z",
+      "side": 1,
+      "message": "Will need to parse / construct output filename, too.",
+      "revId": "a3593409ecc76b8b590cf5058ca80d00cef61d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e08f1da_abc7367b",
+        "filename": "chip/mec1322/util/pack_ec.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-11-20T17:00:54Z",
+      "side": 1,
+      "message": "Can do it all in one call:\n\ndata.extend([0] * (size - len(data)))",
       "revId": "a3593409ecc76b8b590cf5058ca80d00cef61d63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
