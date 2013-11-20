@@ -33,6 +33,23 @@
       "revId": "8d06c4690d662c2e20c5e9a7a0df188748d22c18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe71ed53_bef0d70b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-20T01:19:40Z",
+      "side": 1,
+      "message": "the correct SoB format is:\nSigned-off-by: Daisuke Nojiri \u003cdnojiri@google.com\u003e\n\nand we usually put our chromium.org addresses :\ne.g.\nSigned-off-by:  Daisuke Nojiri \u003cdnojiri@chromium.org\u003e",
+      "revId": "8d06c4690d662c2e20c5e9a7a0df188748d22c18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
