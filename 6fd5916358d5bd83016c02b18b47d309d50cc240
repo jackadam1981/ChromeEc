@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bea77522_1f7b13da",
+        "filename": "chip/lm4/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-11-21T17:55:56Z",
+      "side": 1,
+      "message": "I\u0027m pretty sure this won\u0027t break anything, because nothing should be relying on nonexistant register values except for the MEM_TEST calls. 0xFF is more commonly used for invalid values.",
+      "revId": "6fd5916358d5bd83016c02b18b47d309d50cc240",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
