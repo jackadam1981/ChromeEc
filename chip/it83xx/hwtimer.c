@@ -46,22 +46,42 @@ void __hw_clock_source_set(uint32_t ts)
 
 
 #ifdef USE_IRQ1_FOR_HW_TIMER
+extern void uart_interrupt(void);
 static void __hw_clock_source_irq(void)
 {
-	panic_puts("HWTMR\n");
-	/* clear interrupt status */
-	IT83XX_INTC_ISR7 = 0x40;
+	int uart_iir;
 
-	time_us++;
+	/* HW timere interrupt. */
+	if (IT83XX_INTC_ISR7 & 0x40) {
+		/* Clear interrupt status. */
+		IT83XX_INTC_ISR7 = 0x40;
+
+		time_us++;
+
+		/*
+		 * Find expired timers and set the new timer deadline; check the IRQ
+		 * status to determine if the free-running counter overflowed.
+		 */
+		if(event_set && (time_us == next_event_time))
+			process_timers(0);
+		else if (time_us == 0)
+			process_timers(1);
+	}
+
+	/* Workaround: if rising edge of B0 or B1, then check on UART. */
+
+	/* Clear interrupt status for pins B0 and B1 (UART RX and TX). */
+	IT83XX_INTC_ISR13 = 0x0c;
+	IT83XX_WUC_WUESR10 = 0x60;
 
 	/*
-	 * Find expired timers and set the new timer deadline; check the IRQ
-	 * status to determine if the free-running counter overflowed.
+	 * If UART IIR is showing that a FIFO interrupt is pending, then
+	 * we should perform the typical uart interrupt actions.
 	 */
-	if(event_set && (time_us == next_event_time))
-		process_timers(0);
-	else if (time_us == 0)
-		process_timers(1);
+	uart_iir = IT83XX_UART_IIR(0) & 0xf;
+	if(uart_iir == 0x4 || uart_iir == 0xc || uart_iir == 0x2) {
+		uart_interrupt();
+	}
 }
 DECLARE_IRQ(1 /*should 3 the CPU_INT number for IT83XX_IRQ_TMR_B0 */, __hw_clock_source_irq, 1);
 #endif

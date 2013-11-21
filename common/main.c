@@ -22,6 +22,7 @@
 #include "mpu.h"
 #endif
 #include "panic.h"
+#include "registers.h"
 #include "system.h"
 #include "task.h"
 #include "timer.h"

@@ -46,7 +46,7 @@ void uart_tx_start(void)
 
 void uart_tx_stop(void)
 {
-	IT83XX_UART_IER(0) &= ~0x03;
+	//IT83XX_UART_IER(0) &= ~0x03;
 
 	/* Re-allow deep sleep */
 	enable_sleep(SLEEP_MASK_UART);
@@ -90,26 +90,32 @@ int uart_read_char(void)
 
 void uart_disable_interrupt(void)
 {
-	task_disable_irq(IT83XX_IRQ_UART1);
+	task_disable_irq(9);
 }
 
 void uart_enable_interrupt(void)
 {
-	task_enable_irq(IT83XX_IRQ_UART1);
+	task_enable_irq(9);
+}
+
+/* Workaround: This function can be called when IRQ1 triggers,
+ * if it detects that the UART was the cause of the interrupt. */
+void uart_interrupt(void)
+{
+	uart_process_input();
+	uart_process_output();
 }
 
 static void uart_ec_interrupt(void)
 {
 	/* clear interrupt status */
-#if 0 //No interrupt code is ready
-	IT83XX_INTC_ISR4 = 0x02;
-#endif
+	IT83XX_INTC_ISR4 = 0x40;
 
 	/* Read input FIFO until empty, then fill output FIFO */
 	uart_process_input();
 	uart_process_output();
 }
-DECLARE_IRQ(IT83XX_IRQ_UART1, uart_ec_interrupt, 1);
+DECLARE_IRQ(9, uart_ec_interrupt, 1);
 
 static void uart_config(void)
 {
@@ -150,7 +156,6 @@ void uart_init(void)
 
 	/* switch UART0 on without hardware flow control */
 	IT83XX_GPIO_GRC1 = 0x01;
-	IT83XX_GPIO_GRC6 |= 0x03;
 
 	/* Enable clocks to UART 1 and 2. */
 	clock_enable_peripheral(CGC_OFFSET_UART, 0, 0);
@@ -159,13 +164,18 @@ void uart_init(void)
 	uart_config();
 
 	/* clear interrupt status */
-#if 0 //No interrupt code is ready
-	IT83XX_INTC_ISR4 = 0x02;
+	IT83XX_INTC_ISR4 = 0x40;
 
 	/* Enable interrupts */
 	IT83XX_UART_IER(0) = 0x03;
-	task_enable_irq(IT83XX_IRQ_UART1);
-#endif
+	task_enable_irq(9);
+
+	/*
+	 * Workaround: Instead of enabling UART interrupt, enable the WKO
+	 * interrupt on the pins used for the UART.
+	 */
+	//IT83XX_INTC_IER4 = 0x40;
+	IT83XX_INTC_IER13 = 0x0c;
 
 	init_done = 1;
 }

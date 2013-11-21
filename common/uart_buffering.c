@@ -214,7 +214,9 @@ void uart_process_input(void)
 	}
 
 	if (got_input)
-		console_has_input();
+		/* Workaround: console task not yet working. */
+		return;
+		//console_has_input();
 }
 
 #endif /* !CONFIG_UART_RX_DMA */
