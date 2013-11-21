@@ -7,9 +7,26 @@
 
 #include "common.h"
 #include "gpio.h"
+#include "hooks.h"
 #include "registers.h"
+#include "task.h"
 #include "timer.h"
 #include "util.h"
+
+struct gpio_int_mapping_t {
+	int8_t girq_id;
+	int8_t port_offset;
+};
+
+/* Mapping from GPIO port to GIRQ info */
+static const struct gpio_int_mapping_t int_map[22] = {
+	{11, 0}, {11, 0}, {11, 0}, {11, 0},
+	{10, 4}, {10, 4}, {10, 4}, {-1, -1},
+	{-1, -1}, {-1, -1}, {9, 10}, {9, 10},
+	{9, 10}, {9, 10}, {8, 14}, {8, 14},
+	{8, 14}, {-1, -1}, {-1, -1}, {-1, -1},
+	{20, 20}, {20, 20}
+};
 
 void gpio_set_alternate_function(uint32_t port, uint32_t mask, int func)
 {
@@ -82,7 +99,26 @@ void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags)
 		else
 			val &= ~0x3;
 
-		/* TODO(crosbug.com/p/24107): Set up interrupt */
+		/* Set up interrupt */
+		if (flags & (GPIO_INT_F_RISING | GPIO_INT_F_FALLING))
+			val |= (1 << 7);
+		else
+			val &= ~(1 << 7);
+
+		if ((flags & (GPIO_INT_F_BOTH)) ||
+		    ((flags & GPIO_INT_F_RISING) &&
+		     (flags & GPIO_INT_F_FALLING)))
+			val |= 0x7 << 4;
+		else if (flags & GPIO_INT_F_RISING)
+			val = (val & ~(0x7 << 4)) | (0x5 << 4);
+		else if (flags & GPIO_INT_F_FALLING)
+			val = (val & ~(0x7 << 4)) | (0x6 << 4);
+		else if (flags & GPIO_INT_F_LOW)
+			val &= ~(0x7 << 4);
+		else if (flags & GPIO_INT_F_HIGH)
+			val = (val & ~(0x7 << 4)) | (0x1 << 4);
+		else
+			val = (val & ~(0x7 << 4)) | (0x4 << 4);
 
 		/* Use as GPIO */
 		val &= ~((1 << 12) | (1 << 13));
@@ -98,12 +134,27 @@ void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags)
 
 int gpio_enable_interrupt(enum gpio_signal signal)
 {
-	return EC_ERROR_UNIMPLEMENTED;
+	int i = 31 - __builtin_clz(gpio_list[signal].mask);
+	int port = gpio_list[signal].port;
+	int girq_id = int_map[port].girq_id;
+	int bit_id = (port - int_map[port].port_offset) * 8 + i;
+
+	MEC1322_INT_ENABLE(girq_id) |= (1 << bit_id);
+	MEC1322_INT_BLK_EN |= (1 << girq_id);
+
+	return EC_SUCCESS;
 }
 
 int gpio_disable_interrupt(enum gpio_signal signal)
 {
-	return EC_ERROR_UNIMPLEMENTED;
+	int i = 31 - __builtin_clz(gpio_list[signal].mask);
+	int port = gpio_list[signal].port;
+	int girq_id = int_map[port].girq_id;
+	int bit_id = (port - int_map[port].port_offset) * 8 + i;
+
+	MEC1322_INT_DISABLE(girq_id) |= (1 << bit_id);
+
+	return EC_SUCCESS;
 }
 
 void gpio_pre_init(void)
@@ -114,3 +165,72 @@ void gpio_pre_init(void)
 	for (i = 0; i < GPIO_COUNT; i++, g++)
 		gpio_set_flags_by_mask(g->port, g->mask, g->flags);
 }
+
+static void gpio_init(void)
+{
+	task_enable_irq(MEC1322_IRQ_GIRQ8);
+	task_enable_irq(MEC1322_IRQ_GIRQ9);
+	task_enable_irq(MEC1322_IRQ_GIRQ10);
+	task_enable_irq(MEC1322_IRQ_GIRQ11);
+	task_enable_irq(MEC1322_IRQ_GIRQ20);
+}
+DECLARE_HOOK(HOOK_INIT, gpio_init, HOOK_PRIO_DEFAULT);
+
+/*****************************************************************************/
+/* Interrupt handlers */
+
+/**
+ * Handle a GPIO interrupt.
+ *
+ * @param port		GPIO port
+ * @param mask		Interrupt bit mask
+ */
+static void gpio_interrupt(int port, uint32_t mask)
+{
+	int i = 0;
+	const struct gpio_info *g = gpio_list;
+
+	for (i = 0; i < GPIO_COUNT; i++, g++) {
+		if (port == g->port && mask == g->mask && g->irq_handler) {
+			g->irq_handler(i);
+			break;
+		}
+	}
+}
+
+/**
+ * Handlers for each GPIO port.  These read and clear the interrupt bits for
+ * the port, then call the master handler above.
+ */
+#define GPIO_IRQ_FUNC(irqfunc, girq, port_offset)         \
+	static void irqfunc(void)                         \
+	{                                                 \
+		uint32_t sts = MEC1322_INT_RESULT(girq);  \
+		int id, port, mask;                       \
+		MEC1322_INT_SOURCE(girq) |= sts;          \
+		while (sts) {                             \
+			id = __builtin_ffs(sts) - 1;      \
+			port = id / 8 + port_offset;      \
+			mask = 1 << (id % 8);             \
+			gpio_interrupt(port, mask);       \
+			sts &= ~(1 << id);                \
+		}                                         \
+	}
+
+GPIO_IRQ_FUNC(__gpio_8_interrupt, 8, 14);
+GPIO_IRQ_FUNC(__gpio_9_interrupt, 9, 10);
+GPIO_IRQ_FUNC(__gpio_10_interrupt, 10, 4);
+GPIO_IRQ_FUNC(__gpio_11_interrupt, 11, 0);
+GPIO_IRQ_FUNC(__gpio_20_interrupt, 20, 20);
+
+#undef GPIO_IRQ_FUNC
+
+/*
+ * Declare IRQs.  Nesting this macro inside the GPIO_IRQ_FUNC macro works
+ * poorly because DECLARE_IRQ() stringizes its inputs.
+ */
+DECLARE_IRQ(MEC1322_IRQ_GIRQ8, __gpio_8_interrupt, 1);
+DECLARE_IRQ(MEC1322_IRQ_GIRQ9, __gpio_9_interrupt, 1);
+DECLARE_IRQ(MEC1322_IRQ_GIRQ10, __gpio_10_interrupt, 1);
+DECLARE_IRQ(MEC1322_IRQ_GIRQ11, __gpio_11_interrupt, 1);
+DECLARE_IRQ(MEC1322_IRQ_GIRQ20, __gpio_20_interrupt, 1);
