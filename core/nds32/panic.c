@@ -77,7 +77,6 @@ void report_panic(uint32_t *regs, uint32_t itype)
 {
 	/* TODO(crosbug.com/p/23574): IMPLEMENT ME ! */
 	panic_printf("=== EXCEP: ITYPE=%x ===\n", itype);
-	panic_printf("REGS %08x\n", (uint32_t)regs);
 	panic_printf("R0  %08x R1  %08x R2  %08x R3  %08x\n",
 		     regs[0], regs[1], regs[2], regs[3]);
 	panic_printf("R4  %08x R5  %08x R6  %08x R7  %08x\n",
@@ -87,6 +86,12 @@ void report_panic(uint32_t *regs, uint32_t itype)
 	panic_printf("FP  %08x GP  %08x LP  %08x SP  %08x\n",
 		     regs[12], regs[13], regs[14], regs[15]);
 	panic_printf("IPC %08x IPSW   %05x\n", regs[16], regs[17]);
+	if (regs[17] & 8) { /* 2nd level exception */
+		uint32_t oipc;
+
+		asm volatile("mfsr %0, $OIPC":"=r"(oipc));
+		panic_printf("OIPC %08x\n", oipc);
+	}
 
 	panic_reboot();
 }

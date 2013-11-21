@@ -8,29 +8,28 @@
 #include "config.h"
 
 /* magic macro to implement IRQ prefix / exit */
-.macro vector_irq number
-.if \number < CONFIG_IRQ_COUNT
-.weak irq_\()\number\()_handler
-.set irq_\()\number\()_handler, unhandled_irq
-j irq_entry_\()\number
+.macro vector name
+.weak \name\()_handler
+.set \name\()_handler, unhandled_irq
+j __entry_\()\name
 .pushsection .text.vectirq
-.global irq_entry_\()\number
-irq_entry_\()\number:
+.global __entry_\()\name
+__entry_\()\name:
 	/* the context is stored on the current task stack*/
 	/* save r15, fp, lp and sp */
 	smw.adm $r15, [$sp], $r15, 0xb
 	/* r0-r5 are caller saved */
 	smw.adm $r0,  [$sp], $r5, 0
 	/* switch to system stack if we are called from process stack */
-	la $r1, stack_end
+	la $r3, stack_end
 	mov55 $fp, $sp
-	slt45 $r1, $sp /* if sp > end of system stack, then r15 = 1 and */
-	cmovn $sp, $r1, $r15 /* point sp to the top of the system stack */
+	slt45 $r3, $sp /* if sp > end of system stack, then r15 = 1 and */
+	cmovn $sp, $r3, $r15 /* point sp to the top of the system stack */
 	/* C routine handler */
-	jal irq_\()\number\()_handler
+	jal \name\()_handler
 	/* check whether we need to change the scheduled task */
-	lwi.gp  $r0, [ + need_resched_or_profiling]
-	bnez $r0, task_resched_if_needed
+	lwi.gp  $r2, [ + need_resched]
+	bnez $r2, __switch_task
 	/* restore r0-r5 */
 	lmw.bim $r0, [$fp], $r5, 0
 	/* restore r15, fp, lp and sp */
@@ -38,9 +37,6 @@ irq_entry_\()\number:
 	/* restore PC and PSW */
 	iret
 .popsection
-.else /* undefined IRQ on this platform */
-j .
-.endif
 .endm
 
 .section .text.vecttable
@@ -55,23 +51,23 @@ j excep_handler	/* TLB VLPT miss */
 j excep_handler	/* Machine error */
 j excep_handler	/* Debug related */
 j excep_handler	/* General exception */
-j syscall	/* Syscall */
-vector_irq 0	/* HW  0 */
-vector_irq 1	/* HW  1 */
-vector_irq 2	/* HW  2 */
-vector_irq 3	/* HW  3 */
-vector_irq 4	/* HW  4 */
-vector_irq 5	/* HW  5 */
-vector_irq 6	/* HW  6 */
-vector_irq 7	/* HW  7 */
-vector_irq 8	/* HW  8 */
-vector_irq 9	/* HW  9 */
-vector_irq 10	/* HW 10 */
-vector_irq 11	/* HW 11 */
-vector_irq 12	/* HW 12 */
-vector_irq 13	/* HW 13 */
-vector_irq 14	/* HW 14 */
-vector_irq 15	/* HW 15 */
+vector syscall	/* Syscall */
+vector irq_0	/* HW  0 */
+vector irq_1	/* HW  1 */
+vector irq_2	/* HW  2 */
+vector irq_3	/* HW  3 */
+vector irq_4	/* HW  4 */
+vector irq_5	/* HW  5 */
+vector irq_6	/* HW  6 */
+vector irq_7	/* HW  7 */
+vector irq_8	/* HW  8 */
+vector irq_9	/* HW  9 */
+vector irq_10	/* HW 10 */
+vector irq_11	/* HW 11 */
+vector irq_12	/* HW 12 */
+vector irq_13	/* HW 13 */
+vector irq_14	/* HW 14 */
+vector irq_15	/* HW 15 */
 
 /* E-flash signature */
 .balign 16
@@ -164,12 +160,6 @@ excep_handler:
 	jal report_panic
 	/* we never return: exceptions are fatal */
 	j .
-
-.global syscall
-syscall:
-	/* TODO: check if we need to save lp */
-	jal svc_handler
-	iret
 
 _bss_start:
 .long __bss_start

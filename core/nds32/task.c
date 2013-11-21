@@ -47,18 +47,7 @@ static const char * const task_names[] = {
 };
 #undef TASK
 
-#ifdef CONFIG_TASK_PROFILING
-static uint64_t task_start_time; /* Time task scheduling started */
-static uint64_t exc_start_time;  /* Time of task->exception transition */
-static uint64_t exc_end_time;    /* Time of exception->task transition */
-static uint64_t exc_total_time;  /* Total time in exceptions */
-static uint32_t svc_calls;       /* Number of service calls */
-static uint32_t task_switches;   /* Number of times active task changed */
-static uint32_t irq_dist[CONFIG_IRQ_COUNT];  /* Distribution of IRQ calls */
-#endif
-
-extern void __switchto(task_ *from, task_ *to);
-extern int __task_start(int *task_stack_ready);
+extern int __task_start(void);
 
 #ifndef CONFIG_LOW_POWER_IDLE
 /* Idle task.  Executed when no tasks are ready to be scheduled. */
@@ -131,7 +120,7 @@ uint32_t scratchpad[17+18];
 uint32_t scratchpad[17];
 #endif
 
-static task_ *current_task = (task_ *)scratchpad;
+task_ *current_task = (task_ *)scratchpad;
 
 /*
  * Should IRQs chain to svc_handler()?  This should be set if either of the
@@ -144,7 +133,7 @@ static task_ *current_task = (task_ *)scratchpad;
  * task unblocking.  After checking for a task switch, svc_handler() will clear
  * the flag (unless profiling is also enabled; then the flag remains set).
  */
-int need_resched_or_profiling = 0;
+int need_resched = 0;
 
 /*
  * Bitmap of all tasks ready to be run.
@@ -217,77 +206,25 @@ int task_start_called(void)
 /**
  * Scheduling system call
  */
-void svc_handler(int desched, task_id_t resched)
+void syscall_handler(int desched, task_id_t resched)
 {
-	task_ *current, *next;
-#ifdef CONFIG_TASK_PROFILING
-	int exc = get_interrupt_context();
-	uint64_t t;
-#endif
-
-	/*
-	 * Push the priority to -1 until the return, to avoid being
-	 * interrupted.
-	 */
-	/* TODO(crosbug.com/p/23574): IMPLEMENT ME ! */
-
-#ifdef CONFIG_TASK_PROFILING
-	/*
-	 * SVCall isn't triggered via DECLARE_IRQ(), so it needs to track its
-	 * start time explicitly.
-	 */
-	if (exc == 0xb) {
-		exc_start_time = get_time().val;
-		svc_calls++;
-	}
-#endif
-
-	current = current_task;
-#ifdef CONFIG_OVERFLOW_DETECT
-	ASSERT(*current->stack == STACK_UNUSED_VALUE);
-#endif
-
-	if (desched && !current->events) {
+	if (desched && !current_task->events) {
 		/*
 		 * Remove our own ready bit (current - tasks is same as
 		 * task_get_current())
 		 */
-		tasks_ready &= ~(1 << (current - tasks));
+		tasks_ready &= ~(1 << (current_task - tasks));
 	}
 	tasks_ready |= 1 << resched;
 
-	ASSERT(tasks_ready);
-	next = __task_id_to_ptr(31 - __builtin_clz(tasks_ready));
+	/* trigger a re-scheduling on exit */
+	need_resched = 1;
 
-#ifdef CONFIG_TASK_PROFILING
-	/* Track time in interrupts */
-	t = get_time().val;
-	exc_total_time += (t - exc_start_time);
+}
 
-	/*
-	 * Bill the current task for time between the end of the last interrupt
-	 * and the start of this one.
-	 */
-	current->runtime += (exc_start_time - exc_end_time);
-	exc_end_time = t;
-#else
-	/*
-	 * Don't chain here from interrupts until the next time an interrupt
-	 * sets an event.
-	 */
-	need_resched_or_profiling = 0;
-#endif
-
-	/* Nothing to do */
-	if (next == current)
-		return;
-
-	/* Switch to new task */
-#ifdef CONFIG_TASK_PROFILING
-	task_switches++;
-#endif
-	current_task = next;
-	__switchto(current, next);
+task_ *next_sched_task(void)
+{
+	return __task_id_to_ptr(31 - __builtin_clz(tasks_ready));
 }
 
 void __schedule(int desched, int resched)
@@ -296,48 +233,6 @@ void __schedule(int desched, int resched)
 	register int p1 asm("$r1") = resched;
 
 	asm("syscall 0"::"r"(p0),"r"(p1));
-}
-
-
-#ifdef CONFIG_TASK_PROFILING
-void task_start_irq_handler(void *excep_return)
-{
-	/*
-	 * Get time before checking depth, in case this handler is
-	 * pre-empted.
-	 */
-	uint64_t t = get_time().val;
-	int irq = get_interrupt_context() - 16;
-
-	/*
-	 * Track IRQ distribution.  No need for atomic add, because an IRQ
-	 * can't pre-empt itself.
-	 */
-	if (irq < ARRAY_SIZE(irq_dist))
-		irq_dist[irq]++;
-
-	/*
-	 * Continue iff a rescheduling event happened or profiling is active,
-	 * and we are not called from another exception (this must match the
-	 * logic for when we chain to svc_handler() below).
-	 */
-	if (!need_resched_or_profiling || (((uint32_t)excep_return & 0xf) == 1))
-		return;
-
-	exc_start_time = t;
-}
-#endif
-
-void task_resched_if_needed(void *excep_return)
-{
-	/*
-	 * Continue iff a rescheduling event happened or profiling is active,
-	 * and we are not called from another exception.
-	 */
-	if (!need_resched_or_profiling || (((uint32_t)excep_return & 0xf) == 1))
-		return;
-
-	svc_handler(0, 0);
 }
 
 static uint32_t __wait_evt(int timeout_us, task_id_t resched)
@@ -378,9 +273,7 @@ uint32_t task_set_event(task_id_t tskid, uint32_t event, int wait)
 	if (in_interrupt_context()) {
 		/* The receiver might run again */
 		atomic_or(&tasks_ready, 1 << tskid);
-#ifndef CONFIG_TASK_PROFILING
-		need_resched_or_profiling = 1;
-#endif
+		need_resched = 1;
 	} else {
 		if (wait)
 			return __wait_evt(-1, tskid);
@@ -489,30 +382,7 @@ void task_print_list(void)
 
 int command_task_info(int argc, char **argv)
 {
-#ifdef CONFIG_TASK_PROFILING
-	int total = 0;
-	int i;
-#endif
-
 	task_print_list();
-
-#ifdef CONFIG_TASK_PROFILING
-	ccputs("IRQ counts by type:\n");
-	cflush();
-	for (i = 0; i < ARRAY_SIZE(irq_dist); i++) {
-		if (irq_dist[i]) {
-			ccprintf("%4d %8d\n", i, irq_dist[i]);
-			total += irq_dist[i];
-		}
-	}
-	ccprintf("Service calls:          %11d\n", svc_calls);
-	ccprintf("Total exceptions:       %11d\n", total + svc_calls);
-	ccprintf("Task switches:          %11d\n", task_switches);
-	ccprintf("Task switching started: %11.6ld s\n", task_start_time);
-	ccprintf("Time in tasks:          %11.6ld s\n",
-		 get_time().val - task_start_time);
-	ccprintf("Time in exceptions:     %11.6ld s\n", exc_total_time);
-#endif
 
 	return EC_SUCCESS;
 }
@@ -552,22 +422,16 @@ void task_pre_init(void)
 		tasks[i].stack = stack_next;
 
 		/*
-		 * Update stack used by first frame: 8 words for the normal
-		 * stack, plus 8 for R4-R11. With FP enabled, we need another
-		 * 18 words for S0-S15 and FPCSR and to align to 64-bit.
+		 * Update stack used by first frame: 15 regs + PC
 		 */
-#ifdef CONFIG_FPU
-		sp = stack_next + ssize - 16 - 18;
-#else
 		sp = stack_next + ssize - 16;
-#endif
 		tasks[i].sp = (uint32_t)sp;
 
 		/* Initial context on stack (see __switchto()) */
-		sp[8] = tasks_init[i].r0;           /* r0 */
-		sp[13] = (uint32_t)task_exit_trap;  /* lr */
-		sp[14] = tasks_init[i].pc;          /* pc */
-		sp[15] = 0x01000000;                /* psr */
+		sp[6] = tasks_init[i].r0;           /* r0 */
+		sp[14] = (uint32_t)task_exit_trap;  /* lr */
+		sp[0] = tasks_init[i].pc;           /* pc */
+		sp[15] = (uint32_t)sp;              /* sp */
 
 		/* Fill unused stack; also used to detect stack overflow. */
 		for (sp = stack_next; sp < (uint32_t *)tasks[i].sp; sp++)
@@ -591,10 +455,7 @@ void task_pre_init(void)
 
 int task_start(void)
 {
-#ifdef CONFIG_TASK_PROFILING
-	task_start_time = exc_end_time = get_time().val;
-#endif
 	start_called = 1;
 
-	return __task_start(&need_resched_or_profiling);
+	return __task_start();
 }
