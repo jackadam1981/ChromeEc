@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "deaa69eb_c105302b",
+        "filename": "chip/mec1322/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-11-21T23:25:07Z",
+      "side": 1,
+      "message": "| GPIO_INT_F_BOTH?",
+      "revId": "3f8c3627d52bba027c5d40881db682e8ed1fc7c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bea77522_251fe2b9",
+        "filename": "chip/mec1322/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-11-21T23:25:07Z",
+      "side": 1,
+      "message": "Seems like we should only have one way of saying BOTH.\n\nEither disallow (RISING \u0026\u0026 FALLING) as a back-door way of saying BOTH, or remove GPIO_INT_F_BOTH so GPIO_INT_BOTH is defined as RISING|FALLING.  The latter is probably cleaner, and avoids the need to change line 85.\n\nI\u0027ve filed crosbug.com/p/24204 to fix that.",
+      "revId": "3f8c3627d52bba027c5d40881db682e8ed1fc7c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "deaa69eb_61c43c77",
+        "filename": "chip/mec1322/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-11-21T23:25:07Z",
+      "side": 1,
+      "message": "Do we need to turn off INT_BLK_EN if no interrupts are left enabled for the block?",
+      "revId": "3f8c3627d52bba027c5d40881db682e8ed1fc7c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ed03988_37744217",
+        "filename": "chip/mec1322/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-11-21T23:25:07Z",
+      "side": 1,
+      "message": "Change args to gpio_interrupt(port_offset, sts)",
+      "revId": "3f8c3627d52bba027c5d40881db682e8ed1fc7c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bea77522_c5509e4e",
+        "filename": "chip/mec1322/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-11-21T23:25:07Z",
+      "side": 1,
+      "message": "Then move all the code in the while() loop up into gpio_interrupt(), so this isn\u0027t such a long macro",
+      "revId": "3f8c3627d52bba027c5d40881db682e8ed1fc7c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
