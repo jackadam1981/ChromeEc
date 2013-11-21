@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "be54d5b1_0c7f9b3c",
+        "filename": "chip/mec1322/util/pack_ec.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-11-21T03:08:04Z",
+      "side": 1,
+      "message": "We don\u0027t have document on the image format yet. This is also why the lack of explanation of the constants below.",
+      "parentUuid": "5e64b999_99c41c4a",
+      "revId": "a3593409ecc76b8b590cf5058ca80d00cef61d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e08f1da_f0375d16",
         "filename": "chip/mec1322/util/pack_ec.py",
         "patchSetId": 1
@@ -54,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "be54d5b1_ec6c7f93",
+        "filename": "chip/mec1322/util/pack_ec.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-11-21T03:08:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe71ed53_249a965e",
+      "revId": "a3593409ecc76b8b590cf5058ca80d00cef61d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe71ed53_e4932e45",
         "filename": "chip/mec1322/util/pack_ec.py",
         "patchSetId": 1
@@ -82,6 +118,24 @@
       "writtenOn": "2013-11-20T17:00:54Z",
       "side": 1,
       "message": "Can do it all in one call:\n\ndata.extend([0] * (size - len(data)))",
+      "revId": "a3593409ecc76b8b590cf5058ca80d00cef61d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "de57c9b2_aaf50b3e",
+        "filename": "chip/mec1322/util/pack_ec.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-11-21T03:08:04Z",
+      "side": 1,
+      "message": "Done. I\u0027m keeping this function (changing the name slightly to PadZeroTo) to make BuildHeader() easier to read.",
+      "parentUuid": "9e08f1da_abc7367b",
       "revId": "a3593409ecc76b8b590cf5058ca80d00cef61d63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
