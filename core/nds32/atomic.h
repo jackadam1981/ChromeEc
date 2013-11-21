@@ -13,26 +13,32 @@
 static inline void atomic_clear(uint32_t *addr, uint32_t bits)
 {
 	/* TODO(crosbug.com/p/23574): IMPLEMENT ME ! */
+	*addr &= ~bits;
 }
 
 static inline void atomic_or(uint32_t *addr, uint32_t bits)
 {
 	/* TODO(crosbug.com/p/23574): IMPLEMENT ME ! */
+	*addr |= bits;
 }
 
 static inline void atomic_add(uint32_t *addr, uint32_t value)
 {
 	/* TODO(crosbug.com/p/23574): IMPLEMENT ME ! */
+	*addr += value;
 }
 
 static inline void atomic_sub(uint32_t *addr, uint32_t value)
 {
 	/* TODO(crosbug.com/p/23574): IMPLEMENT ME ! */
+	*addr -= value;
 }
 
 static inline uint32_t atomic_read_clear(uint32_t *addr)
 {
 	/* TODO(crosbug.com/p/23574): IMPLEMENT ME ! */
-	return 0;
+	uint32_t val = *addr;
+	*addr = 0;
+	return val;
 }
 #endif  /* __CROS_EC_ATOMIC_H */
