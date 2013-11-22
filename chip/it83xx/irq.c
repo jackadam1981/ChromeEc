@@ -8,6 +8,7 @@
 #include "common.h"
 #include "irq_chip.h"
 #include "registers.h"
+#include "task.h"
 
 #define IRQ_GROUP(n, cpu_ints...) \
 	{(uint32_t)&CONCAT2(IT83XX_INTC_ISR, n) - IT83XX_INTC_BASE, \
@@ -48,7 +49,7 @@ int chip_enable_irq(int irq)
 
 	IT83XX_INTC_REG(irq_groups[group].ier_off) |= 1 << bit; 
 
-	return irq_groups[group].cpu_int[bit];
+	return 1 /*SHOULD BE: irq_groups[group].cpu_int[bit]*/;
 }
 
 int chip_disable_irq(int irq)
@@ -80,4 +81,21 @@ int chip_trigger_irq(int irq)
 void chip_init_irqs(void)
 {
 	/* TODO(crosbug.com/p/23575): IMPLEMENT ME ! */
+}
+
+/* interrupt handlers temporary dispatcher */
+extern const struct irq_dispatch __irqdispatch[];
+extern const struct irq_dispatch __irqdispatch_end[];
+void irq_1_handler(void)
+{
+	int irq = IT83XX_INTC_AIVCT - 16;
+
+	if (irq) {
+		int count = __irqdispatch_end - __irqdispatch;
+		int i;
+
+		for (i = 0; i < count; i++)
+			if (__irqdispatch[i].irq == irq)
+				__irqdispatch[i].func();
+	}
 }

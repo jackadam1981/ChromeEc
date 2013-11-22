@@ -217,12 +217,17 @@ struct irq_priority {
 			= {irq, priority}
 #else /* NDS32 arch */
 /* TODO(crosbug.com/p/23574): CLEAN ME ! */
+struct irq_dispatch {
+	uint8_t irq;
+	void (*func)(void);
+};
+
 #define DECLARE_IRQ(irq, routine, priority)                     \
 	void IRQ_HANDLER(irq)(void)				\
 		__attribute__ ((alias (STRINGIFY(routine))));	\
-	const struct irq_priority IRQ_PRIORITY(irq)		\
-	__attribute__((section(".rodata.irqprio")))		\
-			= {irq, priority}
+	const struct irq_dispatch IRQ_PRIORITY(irq)		\
+	__attribute__((section(".rodata.irqdispatch")))		\
+			= {irq, routine}
 #endif
 
 #endif  /* __CROS_EC_TASK_H */
