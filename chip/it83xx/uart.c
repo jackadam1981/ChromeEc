@@ -98,16 +98,27 @@ void uart_enable_interrupt(void)
 
 static void uart_ec_interrupt(void)
 {
+	int uart_iir;
 	/* clear interrupt status */
-#if 0 //No interrupt code is ready
-	IT83XX_INTC_ISR4 = 0x02;
-#endif
-
-	/* Read input FIFO until empty, then fill output FIFO */
-	uart_process_input();
-	uart_process_output();
+	task_clear_pending_irq(IT83XX_IRQ_UART1);
+	/* Clear interrupt status for pins B0 and B1 (UART RX and TX). */
+	task_clear_pending_irq(106);
+	task_clear_pending_irq(107);
+	IT83XX_WUC_WUESR10 = 0x60;
+	/*
+	 * If UART IIR is showing that a FIFO interrupt is pending, then
+	 * we should perform the typical uart interrupt actions.
+	 */
+	uart_iir = IT83XX_UART_IIR(0) & 0xf;
+	if(uart_iir == 0x4 || uart_iir == 0xc || uart_iir == 0x2) {
+		/* Read input FIFO until empty, then fill output FIFO */
+		uart_process_input();
+		uart_process_output();
+	}
 }
 DECLARE_IRQ(IT83XX_IRQ_UART1, uart_ec_interrupt, 1);
+DECLARE_IRQ(106, uart_ec_interrupt, 1);
+DECLARE_IRQ(107, uart_ec_interrupt, 1);
 
 static void uart_config(void)
 {
@@ -154,13 +165,17 @@ void uart_init(void)
 	uart_config();
 
 	/* clear interrupt status */
-#if 0 //No interrupt code is ready
-	IT83XX_INTC_ISR4 = 0x02;
+	task_clear_pending_irq(IT83XX_IRQ_UART1);
 
 	/* Enable interrupts */
 	IT83XX_UART_IER(0) = 0x03;
 	task_enable_irq(IT83XX_IRQ_UART1);
-#endif
+	/*
+	 * Workaround: Instead of enabling UART interrupt, enable the WKO
+	 * interrupt on the pins used for the UART.
+	 */
+	task_enable_irq(106);
+	task_enable_irq(107);
 
 	init_done = 1;
 }
