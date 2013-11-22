@@ -16,6 +16,9 @@
 /* Traces on UART0 */
 #define UART_PORT 0
 
+/* use the UART pins GPIO interrupts to workaround non-working UART IRQ */
+#define UART_INT_GPIO_WORKAROUND
+
 static int init_done;
 
 int uart_init_done(void)
@@ -25,9 +28,11 @@ int uart_init_done(void)
 
 void uart_tx_start(void)
 {
+#ifndef UART_INT_GPIO_WORKAROUND
 	/* If interrupt is already enabled, nothing to do */
 	if (IT83XX_UART_IER(0) & 0x03)
 		return;
+#endif
 
 	/* Do not allow deep sleep while transmit in progress */
 	disable_sleep(SLEEP_MASK_UART);
@@ -39,12 +44,18 @@ void uart_tx_start(void)
 	 * threshold is _crossed_, not just met.
 	 */
 	IT83XX_UART_IER(0) |= 0x03;
+#ifdef UART_INT_GPIO_WORKAROUND
+	/* Workaround: force UART IRQ ... */
+	IT83XX_UART_THR(0) = '%';
+#endif
 	task_trigger_irq(IT83XX_IRQ_UART1);
 }
 
 void uart_tx_stop(void)
 {
+#ifndef UART_INT_GPIO_WORKAROUND
 	IT83XX_UART_IER(0) &= ~0x03;
+#endif
 
 	/* Re-allow deep sleep */
 	enable_sleep(SLEEP_MASK_UART);
@@ -98,14 +109,31 @@ void uart_enable_interrupt(void)
 
 static void uart_ec_interrupt(void)
 {
+	int uart_iir;
 	/* clear interrupt status */
 	task_clear_pending_irq(IT83XX_IRQ_UART1);
-
-	/* Read input FIFO until empty, then fill output FIFO */
-	uart_process_input();
-	uart_process_output();
+#ifdef UART_INT_GPIO_WORKAROUND
+	/* Clear interrupt status for pins B0 and B1 (UART RX and TX). */
+	task_clear_pending_irq(106);
+	task_clear_pending_irq(107);
+	IT83XX_WUC_WUESR10 = 0x60;
+#endif
+	/*
+	 * If UART IIR is showing that a FIFO interrupt is pending, then
+	 * we should perform the typical uart interrupt actions.
+	 */
+	uart_iir = IT83XX_UART_IIR(0) & 0xf;
+	if (uart_iir == 0x4 || uart_iir == 0xc || uart_iir == 0x2) {
+		/* Read input FIFO until empty, then fill output FIFO */
+		uart_process_input();
+		uart_process_output();
+	}
 }
 DECLARE_IRQ(IT83XX_IRQ_UART1, uart_ec_interrupt, 1);
+#ifdef UART_INT_GPIO_WORKAROUND
+DECLARE_IRQ(106, uart_ec_interrupt, 1);
+DECLARE_IRQ(107, uart_ec_interrupt, 1);
+#endif
 
 static void uart_config(void)
 {
@@ -160,6 +188,14 @@ void uart_init(void)
 	/* Enable interrupts */
 	IT83XX_UART_IER(0) = 0x03;
 	task_enable_irq(IT83XX_IRQ_UART1);
+#ifdef UART_INT_GPIO_WORKAROUND
+	/*
+	 * Workaround: Instead of enabling UART interrupt, enable the WKO
+	 * interrupt on the pins used for the UART.
+	 */
+	task_enable_irq(106);
+	task_enable_irq(107);
+#endif
 
 	init_done = 1;
 }
