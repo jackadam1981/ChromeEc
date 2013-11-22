@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ed03988_cf0d4e94",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-22T21:45:22Z",
+      "side": 1,
+      "message": "why not putting the sb_read call directly in the extpower_spring code rather than adding the special section here ?",
+      "revId": "2e0c2a9cfcfbda8177d1d65eae8a67b16a0e3db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
