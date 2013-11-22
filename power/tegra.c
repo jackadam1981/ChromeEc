@@ -152,7 +152,7 @@ static void set_pmic_pwrok(int asserted)
 static void set_ap_reset(int asserted)
 {
 	/* Signal is active-low */
-	gpio_set_level(GPIO_AP_RESET_L, asserted ? 0 : 1);
+	// gpio_set_level(GPIO_AP_RESET_L, asserted ? 0 : 1);
 }
 
 /**
@@ -343,6 +343,10 @@ void chipset_force_shutdown(void)
 {
 	/* Assert AP reset to shutdown immediately */
 	set_ap_reset(1);
+
+	gpio_set_level(GPIO_PMIC_THERM, 0);
+	udelay(1 * 1000);  // 1ms
+	gpio_set_level(GPIO_PMIC_THERM, 1);
 
 	/* Release the power button, if it was asserted */
 	set_pmic_pwrok(0);
@@ -539,6 +543,9 @@ void chipset_task(void)
 
 	tegra_power_init();
 	ap_on = 0;
+	gpio_set_level(GPIO_PMIC_THERM, 0);
+	udelay(1 * 1000);  // 1ms
+	gpio_set_level(GPIO_PMIC_THERM, 1);
 
 	while (1) {
 		/* Wait until we need to power on, then power on */
