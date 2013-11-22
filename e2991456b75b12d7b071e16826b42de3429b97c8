@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "deaa69eb_e9c3f2d1",
+        "filename": "power/tegra.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000393
+      },
+      "writtenOn": "2013-11-22T19:52:37Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "deaa69eb_2915fac6",
+      "revId": "e2991456b75b12d7b071e16826b42de3429b97c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ed03988_7d1cdbc2",
         "filename": "power/tegra.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2013-11-22T19:36:43Z",
       "side": 1,
       "message": "exceed 80 chars in a row. use 2 space chars, instead of tab.",
+      "revId": "e2991456b75b12d7b071e16826b42de3429b97c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "deaa69eb_49a9660e",
+        "filename": "power/tegra.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000393
+      },
+      "writtenOn": "2013-11-22T19:52:37Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "5ed03988_7d1cdbc2",
       "revId": "e2991456b75b12d7b071e16826b42de3429b97c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
