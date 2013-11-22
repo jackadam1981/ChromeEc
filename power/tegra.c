@@ -45,6 +45,12 @@
 /* Long power key press to force shutdown */
 #define DELAY_FORCE_SHUTDOWN  (10200 * MSEC)  /* 10.2 seconds */
 
+/* The minimum time to assert the PMIC PWRON pin */
+#define PMIC_PWRON_DEBOUNCE_TIME  (20 * MSEC)
+
+/* The minimum time to assert the PMIC THERM pin */
+#define PMIC_THERM_DEBOUNCE_TIME  32  /* 32 us */
+
 /*
  * If the power key is pressed to turn on, then held for this long, we
  * power off.
@@ -132,27 +138,29 @@ static int wait_in_signal(enum gpio_signal signal, int value, int timeout)
 }
 
 /**
- * Set the PMIC PWROK signal.
+ * Set the PMIC PWRON signal.
+ *
+ * Note that asserting requires holding for PMIC_PWRON_DEBOUNCE_TIME.
  *
  * @param asserted	Assert (=1) or deassert (=0) the signal.  This is the
  *			logical level of the pin, not the physical level.
  */
-static void set_pmic_pwrok(int asserted)
+static void set_pmic_pwron(int asserted)
 {
 	/* Signal is active-low */
 	gpio_set_level(GPIO_PMIC_PWRON_L, asserted ? 0 : 1);
 }
 
 /**
- * Set the AP RESET signal.
+ * Set the PMIC THERM to force shutdown the AP.
  *
  * @param asserted	Assert (=1) or deassert (=0) the signal.  This is the
  *			logical level of the pin, not the physical level.
  */
-static void set_ap_reset(int asserted)
+static void set_pmic_therm(int asserted)
 {
 	/* Signal is active-low */
-	gpio_set_level(GPIO_AP_RESET_L, asserted ? 0 : 1);
+	gpio_set_level(GPIO_PMIC_THERM_L, asserted ? 0 : 1);
 }
 
 /**
@@ -188,7 +196,8 @@ static int check_for_power_off_event(void)
 
 	now = get_time();
 	if (pressed) {
-		set_pmic_pwrok(1);
+		set_pmic_pwron(1);
+		usleep(PMIC_PWRON_DEBOUNCE_TIME * 2);
 
 		if (!power_button_was_pressed) {
 			power_off_deadline.val = now.val + DELAY_FORCE_SHUTDOWN;
@@ -202,7 +211,7 @@ static int check_for_power_off_event(void)
 		}
 	} else if (power_button_was_pressed) {
 		CPRINTF("[%T power off cancel]\n");
-		set_pmic_pwrok(0);
+		set_pmic_pwron(0);
 	}
 
 	power_button_was_pressed = pressed;
@@ -341,11 +350,13 @@ void chipset_reset(int is_cold)
 
 void chipset_force_shutdown(void)
 {
-	/* Assert AP reset to shutdown immediately */
-	set_ap_reset(1);
-
 	/* Release the power button, if it was asserted */
-	set_pmic_pwrok(0);
+	set_pmic_pwron(0);
+
+	/* Assert AP reset to shutdown immediately */
+	set_pmic_therm(1);
+	udelay(PMIC_THERM_DEBOUNCE_TIME * 3);
+	set_pmic_therm(0);
 }
 
 /*****************************************************************************/
@@ -407,10 +418,11 @@ static int check_for_power_on_event(void)
 static int power_on(void)
 {
 	/* Make sure we de-assert the AP_RESET_L pin. */
-	set_ap_reset(0);
+	set_pmic_therm(0);
 
 	/* Push the power button */
-	set_pmic_pwrok(1);
+	set_pmic_pwron(1);
+	usleep(PMIC_PWRON_DEBOUNCE_TIME * 2);
 
 	/* Initialize non-AP components if the AP is off. */
 	if (!ap_on)
@@ -553,7 +565,7 @@ void chipset_task(void)
 					DELAY_SHUTDOWN_ON_POWER_HOLD))
 					continue_power = 1;
 			}
-			set_pmic_pwrok(0);
+			set_pmic_pwron(0);
 			if (continue_power) {
 				power_button_was_pressed = 0;
 				while (!(value = check_for_power_off_event()))
