@@ -45,6 +45,9 @@ SECTIONS
         __irqprio = .;
         *(.rodata.irqprio)
         __irqprio_end = .;
+        __irqdispatch = .;
+        *(.rodata.irqdispatch)
+        __irqdispatch_end = .;
 
         . = ALIGN(4);
         __cmds = .;
