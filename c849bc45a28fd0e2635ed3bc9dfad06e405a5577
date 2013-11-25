@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ed03988_9e4c225a",
+        "filename": "chip/mec1322/gpio.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-25T17:18:45Z",
+      "side": 1,
+      "message": "it would make sense to factorize the val \u0026\u003d ~(0x7 \u003c\u003c 4) out of the conditions, but that\u0027s not an important detail",
+      "revId": "c849bc45a28fd0e2635ed3bc9dfad06e405a5577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "deaa69eb_21698a10",
+        "filename": "chip/mec1322/gpio.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-25T17:18:45Z",
+      "side": 1,
+      "message": "is this condition !MEC1322_INT_ENABLE(girq_id) or !MEC1322_INT_BLK_EN(girq_id) ?",
+      "revId": "c849bc45a28fd0e2635ed3bc9dfad06e405a5577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
