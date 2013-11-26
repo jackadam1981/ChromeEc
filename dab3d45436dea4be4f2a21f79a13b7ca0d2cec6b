@@ -34,6 +34,24 @@
       "revId": "dab3d45436dea4be4f2a21f79a13b7ca0d2cec6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "43e062af_d800e1c8",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-26T21:22:34Z",
+      "side": 1,
+      "message": "my point is that DSB is actually a superset of DMB\nso, if you have DSB you don\u0027t need the DMB operations twice",
+      "parentUuid": "63dba606_16ab9ca1",
+      "revId": "dab3d45436dea4be4f2a21f79a13b7ca0d2cec6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
