@@ -52,7 +52,12 @@ struct battery_temperature_ranges {
 	int8_t discharging_min_c;
 	int8_t discharging_max_c;
 };
+
+#ifdef CONFIG_BAT_TEMP_RANGES
+extern struct battery_temperature_ranges bat_temp_ranges;
+#else
 extern const struct battery_temperature_ranges bat_temp_ranges;
+#endif
 
 /* Battery constants */
 struct battery_info {
