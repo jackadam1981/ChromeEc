@@ -87,6 +87,24 @@
       "revId": "c849bc45a28fd0e2635ed3bc9dfad06e405a5577",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c37612c5_f3fdd08b",
+        "filename": "chip/mec1322/gpio.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-11-26T16:47:34Z",
+      "side": 1,
+      "message": "Thanks for catching this! I was doing this for power, but the power saving from this is likely low. Let\u0027s remove this for now, and revisit if needed.",
+      "parentUuid": "83d6dad9_b12660cb",
+      "revId": "c849bc45a28fd0e2635ed3bc9dfad06e405a5577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
