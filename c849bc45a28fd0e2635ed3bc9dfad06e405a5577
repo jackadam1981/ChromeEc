@@ -69,6 +69,24 @@
       "revId": "c849bc45a28fd0e2635ed3bc9dfad06e405a5577",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83d6dad9_b12660cb",
+        "filename": "chip/mec1322/gpio.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-26T16:07:20Z",
+      "side": 1,
+      "message": "ok, but then you have a race condition between gpio_enable_interrupt and gpio_disable_interrupt on the same block.\n\nTASK1                                                                  TASK2\ngpio_disable_interrupt(\nMEC1322_INT_DISABLE(girq_id) |\u003d (1 \u003c\u003c bit_id);\t\nif (!MEC1322_INT_ENABLE(girq_id))\n\n                                                                           gpio_enable_interrupt(\n                                                                           MEC1322_INT_ENABLE(girq_id) |\u003d (1 \u003c\u003c bit_id);\n                                                                           MEC1322_INT_BLK_EN |\u003d (1 \u003c\u003c girq_id);\n\nMEC1322_INT_BLK_DIS |\u003d (1 \u003c\u003c girq_id);\n\n\u003d\u003d\u003e the block ends up disable while it should be enable.\nIs this optimization useful (for no looping somewhere ? for power ?) else we can just remove it.",
+      "parentUuid": "1e78816e_bcda0903",
+      "revId": "c849bc45a28fd0e2635ed3bc9dfad06e405a5577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
