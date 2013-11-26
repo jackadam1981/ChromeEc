@@ -19,6 +19,7 @@
 #define CONFIG_KEYBOARD_PROTOCOL_MKBP
 #define CONFIG_SPI
 #define CONFIG_PWM
+#define CONFIG_BAT_TEMP_RANGES
 
 #ifndef __ASSEMBLER__
 

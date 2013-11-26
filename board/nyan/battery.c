@@ -6,14 +6,75 @@
  */
 
 #include "battery.h"
+#include "battery_smart.h"
+#include "gpio.h"
+#include "host_command.h"
+#include "util.h"
+#include "console.h"
 
+/* Console output macros */
+#define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
+
+#define DESIGN_MV_11250	11250	/* This 3S battery's design voltage */
+#define DESIGN_MV_7400	7400	/* This 2S battery's design voltage */
+
+static struct battery_info info;
+struct battery_temperature_ranges bat_temp_ranges;
+
+static struct battery_info info_2s = {
+	/*
+	 * Design voltage
+	 *   max    = 8.4V
+	 *   normal = 7.4V
+	 *   min    = 6.0V
+	 */
+	.voltage_max    = 8400,
+	.voltage_normal = 7400,
+	.voltage_min    = 6000,
+
+	/* Pre-charge current: I <= 0.01C */
+	.precharge_current  = 64, /* mA */
+};
+
+struct battery_temperature_ranges bat_temp_ranges_2s = {
+	/*
+	 * Operational temperature range
+	 *   0 <= T_charge    <= 50 deg C
+	 * -20 <= T_discharge <= 60 deg C
+	 */
+	.start_charging_min_c = 0,
+	.start_charging_max_c = 50,
+	.charging_min_c       = 0,
+	.charging_max_c       = 50,
+	.discharging_min_c    = -20,
+	.discharging_max_c    = 60,
+};
+
+static struct battery_info info_3s = {
+
+	.voltage_max    = 12600,
+	.voltage_normal = 11100, /* Average of max & min */
+	.voltage_min    =  9000,
+
+	/* Pre-charge values. */
+	.precharge_current  = 392,	/* mA */
+};
+
+/* Values for 54Wh 3UPF656790-1-T1001 battery */
+struct battery_temperature_ranges bat_temp_ranges_3s = {
+	.start_charging_min_c = 0,
+	.start_charging_max_c = 60,
+	.charging_min_c       = 0,
+	.charging_max_c       = 60,
+	.discharging_min_c    = 0,
+	.discharging_max_c    = 50,
+};
+
+#ifdef CONFIG_BATTERY_VENDOR_PARAMS
 /*
- * Design capacity
- *   Battery capacity = 8200 mAh
- *   1C = 8200 mA
+ * The following parameters are for 2S battery.
+ * There is no corresponding params for 3S battery.
  */
-#define DESIGN_CAPACITY 8200
-
 enum {
 	TEMP_RANGE_10,
 	TEMP_RANGE_23,
@@ -47,44 +108,10 @@ static const int const current_limit[TEMP_RANGE_MAX][VOLT_RANGE_MAX] = {
 	{ 800, 1600,  800},
 };
 
-const struct battery_temperature_ranges bat_temp_ranges = {
-	/*
-	 * Operational temperature range
-	 *   0 <= T_charge    <= 50 deg C
-	 * -20 <= T_discharge <= 60 deg C
-	 */
-	.start_charging_min_c = 0,
-	.start_charging_max_c = 50,
-	.charging_min_c       = 0,
-	.charging_max_c       = 50,
-	.discharging_min_c    = -20,
-	.discharging_max_c    = 60,
-};
-
-static const struct battery_info info = {
-	/*
-	 * Design voltage
-	 *   max    = 8.4V
-	 *   normal = 7.4V
-	 *   min    = 6.0V
-	 */
-	.voltage_max    = 8400,
-	.voltage_normal = 7400,
-	.voltage_min    = 6000,
-
-	/* Pre-charge current: I <= 0.01C */
-	.precharge_current  = 64, /* mA */
-};
-
 static inline void limit_value(int *val, int limit)
 {
 	if (*val > limit)
 		*val = limit;
-}
-
-const struct battery_info *battery_get_info(void)
-{
-	return &info;
 }
 
 void battery_vendor_params(struct batt_params *batt)
@@ -92,6 +119,10 @@ void battery_vendor_params(struct batt_params *batt)
 	int *desired_current = &batt->desired_current;
 	int temp_range, volt_range;
 	int bat_temp_c = DECI_KELVIN_TO_CELSIUS(batt->temperature);
+
+	/* Return if the battery is not a 2S battery */
+	if (info.voltage_max != info_2s.voltage_max)
+		return;
 
 	/* Limit charging voltage */
 	if (batt->desired_voltage > info.voltage_max)
@@ -129,3 +160,55 @@ void battery_vendor_params(struct batt_params *batt)
 	if (*desired_current > 0 && *desired_current < info.precharge_current)
 		*desired_current = info.precharge_current;
 }
+#endif	/* CONFIG_BATTERY_VENDOR_PARAMS */
+
+const struct battery_info *battery_get_info(void)
+{
+	int design_volt;
+	struct battery_info *info_src;
+	struct battery_temperature_ranges *bat_temp_ranges_src;
+
+	/* Get battery's Design Voltage */
+	if (battery_design_voltage((int *)&design_volt)) {
+		CPRINTF("[%T Failed to get DESIGN_VOLTAGE]\n");
+		return NULL;
+	}
+
+	if (design_volt == DESIGN_MV_11250) {
+		CPRINTF("[%T Using 3S battery]\n");
+		info_src = &info_3s;
+		bat_temp_ranges_src = &bat_temp_ranges_3s;
+	} else if (design_volt == DESIGN_MV_7400) {
+		CPRINTF("[%T Using 2S battery]\n");
+		info_src = &info_2s;
+		bat_temp_ranges_src = &bat_temp_ranges_2s;
+	} else {
+		CPRINTF("[%T Cannot determine battery type]\n");
+		return NULL;
+	}
+
+	memcpy((char *)&info, (char *)info_src, sizeof(info));
+	memcpy((char *)&bat_temp_ranges, (char *)bat_temp_ranges_src,
+	       sizeof(struct battery_temperature_ranges));
+	return &info;
+}
+
+#define SB_SHIP_MODE_ADDR	0x3a
+#define SB_SHIP_MODE_DATA	0xc574
+
+int battery_command_cut_off(struct host_cmd_handler_args *args)
+{
+	return sb_write(SB_SHIP_MODE_ADDR, SB_SHIP_MODE_DATA);
+}
+DECLARE_HOST_COMMAND(EC_CMD_BATTERY_CUT_OFF, battery_command_cut_off,
+		     EC_VER_MASK(0));
+
+#ifdef CONFIG_BATTERY_CHECK_CONNECTED
+/**
+ * Physical detection of battery connection.
+ */
+int battery_is_connected(void)
+{
+	return (gpio_get_level(GPIO_BAT_DETECT_L) == 0);
+}
+#endif	/* CONFIG_BATTERY_CHECK_CONNECTED */
