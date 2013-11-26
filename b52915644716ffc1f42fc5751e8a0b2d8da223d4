@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83d6dad9_118acc00",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-26T17:24:28Z",
+      "side": 1,
+      "message": "that\u0027s an expensive way (for flash footprint and execution time) to implement this.\nWhy not actually encoding the bit number and the reg offset in the constant we are passing as offset (rather than using an arbitrary index)",
+      "revId": "b52915644716ffc1f42fc5751e8a0b2d8da223d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
