@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5ed03988_80bddcee",
+        "filename": "chip/it83xx/hwtimer.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2013-11-26T01:47:21Z",
+      "side": 1,
+      "message": "ok, that sounds good.",
+      "parentUuid": "5ed03988_dd3cddfd",
+      "revId": "909543cc8d1ca9a99513be0078c4b31795a610ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bea77522_7176beb1",
         "filename": "chip/it83xx/hwtimer.c",
         "patchSetId": 10
@@ -70,6 +88,24 @@
     },
     {
       "key": {
+        "uuid": "5ed03988_802b1c67",
+        "filename": "chip/it83xx/hwtimer.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2013-11-26T01:47:21Z",
+      "side": 1,
+      "message": "hm... the only potential danger i can think of is if this interrupt can interrupt itself, in which case it would be possible to miss an event. i don\u0027t think this is possible for us.",
+      "parentUuid": "deaa69eb_a55c5fdd",
+      "revId": "909543cc8d1ca9a99513be0078c4b31795a610ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bea77522_71bd1eec",
         "filename": "chip/it83xx/hwtimer.c",
         "patchSetId": 10
@@ -87,6 +123,23 @@
     },
     {
       "key": {
+        "uuid": "5ed03988_403804b7",
+        "filename": "chip/it83xx/hwtimer.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2013-11-26T01:47:21Z",
+      "side": 1,
+      "message": "We can remove calls to set timer A.",
+      "revId": "909543cc8d1ca9a99513be0078c4b31795a610ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bea77522_51baa2f5",
         "filename": "chip/it83xx/hwtimer.c",
         "patchSetId": 10
@@ -98,6 +151,24 @@
       "writtenOn": "2013-11-26T01:15:30Z",
       "side": 1,
       "message": "we should BUILD_ASSERT on TICK_INTERVAL being too large for a byte.",
+      "revId": "909543cc8d1ca9a99513be0078c4b31795a610ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ed03988_003e0ca5",
+        "filename": "chip/it83xx/hwtimer.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2013-11-26T01:47:21Z",
+      "side": 1,
+      "message": "Yes, that\u0027s a great idea.",
+      "parentUuid": "bea77522_51baa2f5",
       "revId": "909543cc8d1ca9a99513be0078c4b31795a610ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
