@@ -75,7 +75,8 @@ int peci_temp_sensor_get_val(int idx, int *temp_ptr)
 		}
 	}
 
-	if (!success_cnt)
+	/* Require at least two valid samples. */
+	if (success_cnt < 2)
 		return EC_ERROR_UNKNOWN;
 
 	*temp_ptr = sum / success_cnt;
