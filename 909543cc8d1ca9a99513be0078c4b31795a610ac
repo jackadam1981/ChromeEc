@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ed03988_dd3cddfd",
+        "filename": "chip/it83xx/hwtimer.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-26T01:15:30Z",
+      "side": 1,
+      "message": "the event_set here is neither used in a atomic fashion nor really useful.\n\nLet\u0027s do the following :\nuse next_event_time \u003d 0 as \"no event set\" value,\nif we actually need to trigger a real timer event on next_event_time \u003d\u003d 0, it implicitly done by calling process_timers(1) when the timer value is rolling over.",
+      "revId": "909543cc8d1ca9a99513be0078c4b31795a610ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bea77522_7176beb1",
+        "filename": "chip/it83xx/hwtimer.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-26T01:15:30Z",
+      "side": 1,
+      "message": "next_event_time \u003d 0",
+      "revId": "909543cc8d1ca9a99513be0078c4b31795a610ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ed03988_00df2c7e",
+        "filename": "chip/it83xx/hwtimer.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-26T01:15:30Z",
+      "side": 1,
+      "message": "should be:\ntime_us \u003d ts \u0026 TICK_INTERVAL_MASK\nto avoid random values in low bits",
+      "revId": "909543cc8d1ca9a99513be0078c4b31795a610ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "deaa69eb_a55c5fdd",
+        "filename": "chip/it83xx/hwtimer.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-26T01:15:30Z",
+      "side": 1,
+      "message": "we need to think carefully about the 2nd part of the condition (and remove the first part)",
+      "revId": "909543cc8d1ca9a99513be0078c4b31795a610ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bea77522_71bd1eec",
+        "filename": "chip/it83xx/hwtimer.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-26T01:15:30Z",
+      "side": 1,
+      "message": "we should use __hw_clock_source_set()",
+      "revId": "909543cc8d1ca9a99513be0078c4b31795a610ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bea77522_51baa2f5",
+        "filename": "chip/it83xx/hwtimer.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-26T01:15:30Z",
+      "side": 1,
+      "message": "we should BUILD_ASSERT on TICK_INTERVAL being too large for a byte.",
+      "revId": "909543cc8d1ca9a99513be0078c4b31795a610ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
