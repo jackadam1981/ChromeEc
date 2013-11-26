@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63dba606_509b6c60",
+        "filename": "board/it8380dev/board.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-26T17:59:35Z",
+      "side": 1,
+      "message": "we should now use ccprintf here",
+      "revId": "761258ba54b36a9dd49036b14d758c0f8a3683f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63dba606_b0a5f899",
+        "filename": "board/it8380dev/board.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-26T17:59:35Z",
+      "side": 1,
+      "message": "rather than arbitrary GPIO,\nwhy not wiring:\nGPE0/../GPE3 as input (the dip switches)\nand\nGPA0/../GPA7 and GPI0..GPI7 (7-segment LEDs) as outputs\nso we have something easily testable",
+      "revId": "761258ba54b36a9dd49036b14d758c0f8a3683f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "43e062af_8fe455c6",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-26T17:59:35Z",
+      "side": 1,
+      "message": "then gpio_ctrl[PORT_X] \u003d 0x10 + (\u0027X\u0027 - \u0027A\u0027) * 8\nThat\u0027s an expensive way of writing it.\nif you did it to simplify the management of the gap between GPIO_J and GPIO_M, you can just remove GPIO_M for now (it\u0027s LPC pins we will use for LPC)",
+      "revId": "761258ba54b36a9dd49036b14d758c0f8a3683f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "43e062af_6f01f194",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-26T17:59:35Z",
+      "side": 1,
+      "message": "I still love ternary operator ;-)",
+      "revId": "761258ba54b36a9dd49036b14d758c0f8a3683f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "43e062af_0f0625ae",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-26T17:59:35Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "761258ba54b36a9dd49036b14d758c0f8a3683f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83d6dad9_91679c81",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-26T17:59:35Z",
+      "side": 1,
+      "message": "aaarrghh this HW is a disaster ... who designed such a random assignment",
+      "revId": "761258ba54b36a9dd49036b14d758c0f8a3683f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63dba606_50692c80",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-26T17:59:35Z",
+      "side": 1,
+      "message": "whitespace",
+      "revId": "761258ba54b36a9dd49036b14d758c0f8a3683f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63dba606_f015c0c8",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-26T17:59:35Z",
+      "side": 1,
+      "message": "the hardcoded 0x2 is probably wrong...",
+      "revId": "761258ba54b36a9dd49036b14d758c0f8a3683f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "43e062af_4f0f4d8b",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-26T17:59:35Z",
+      "side": 1,
+      "message": "to avoid glitching, it\u0027s usually better to set the level first in the sequence before changing the port direction or type",
+      "revId": "761258ba54b36a9dd49036b14d758c0f8a3683f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83d6dad9_d15d24b1",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-26T17:59:35Z",
+      "side": 1,
+      "message": "clearing the interrupt before going through the handler is probably wrong since the handler might be resetting the external condition triggering the interrupt",
+      "revId": "761258ba54b36a9dd49036b14d758c0f8a3683f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
