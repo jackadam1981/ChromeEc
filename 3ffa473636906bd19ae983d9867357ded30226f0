@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "deaa69eb_c5a52b98",
+        "filename": "chip/it83xx/uart.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2013-11-26T01:39:49Z",
+      "side": 1,
+      "message": "I\u0027m not sure. I don\u0027t think we\u0027ll be able to test it until we get the UART working. Should probably just add a TODO here.",
+      "parentUuid": "bea77522_6629e6b5",
+      "revId": "3ffa473636906bd19ae983d9867357ded30226f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "deaa69eb_45f49bb0",
         "filename": "chip/it83xx/uart.c",
         "patchSetId": 12
@@ -30,6 +48,24 @@
       "writtenOn": "2013-11-26T01:05:04Z",
       "side": 1,
       "message": "we should wait for THR \u0026\u0026 TEMT  ?",
+      "revId": "3ffa473636906bd19ae983d9867357ded30226f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bea77522_11be5a9a",
+        "filename": "chip/it83xx/uart.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2013-11-26T01:39:49Z",
+      "side": 1,
+      "message": "Yeah, you\u0027re right, I think we need to check TEMT and THRE.",
+      "parentUuid": "deaa69eb_45f49bb0",
       "revId": "3ffa473636906bd19ae983d9867357ded30226f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
