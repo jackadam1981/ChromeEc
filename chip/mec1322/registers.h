@@ -172,6 +172,15 @@ static inline uintptr_t gpio_port_base(int port_id)
 #define MEC1322_MBX_IMR        REG8(MEC1322_MBX_BASE + 0xc)
 #define MEC1322_MBX_REG(x)     REG8(MEC1322_MBX_BASE + 0x10 + (x))
 
+
+/* ACPI */
+#define MEC1322_ACPI_EC_BASE(x)     (0x400f0c00 + (x) * 0x400)
+#define MEC1322_ACPI_EC_EC2OS(x, y) REG8(MEC1322_ACPI_EC_BASE(x) + 0x100 + (y))
+#define MEC1322_ACPI_EC_STATUS(x)   REG8(MEC1322_ACPI_EC_BASE(x) + 0x104)
+#define MEC1322_ACPI_EC_BYTE_CTL(x) REG8(MEC1322_ACPI_EC_BASE(x) + 0x105)
+#define MEC1322_ACPI_EC_OS2EC(x, y) REG8(MEC1322_ACPI_EC_BASE(x) + 0x108 + (y))
+
+
 /* IRQ Numbers */
 #define MEC1322_IRQ_I2C_0        0
 #define MEC1322_IRQ_I2C_1        1
