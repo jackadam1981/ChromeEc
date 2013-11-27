@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3a45289_c3731678",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-27T16:10:07Z",
+      "side": 1,
+      "message": "that might waste a lot of memory.\nFor such a big alignment, you probably want to add a convenient section in the linker file and use __attribute__((section(\".bss.foobar\")))",
+      "revId": "8b5104d5a7ac27f28f7f54906a7ef16b228fac96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
