@@ -181,6 +181,13 @@ static inline uintptr_t gpio_port_base(int port_id)
 #define MEC1322_ACPI_EC_OS2EC(x, y) REG8(MEC1322_ACPI_EC_BASE(x) + 0x108 + (y))
 
 
+/* PWM */
+#define MEC1322_PWM_BASE(x)    (0x40005800 + (x) * 0x10)
+#define MEC1322_PWM_ON(x)      REG32(MEC1322_PWM_BASE(x) + 0x00)
+#define MEC1322_PWM_OFF(x)     REG32(MEC1322_PWM_BASE(x) + 0x04)
+#define MEC1322_PWM_CFG(x)     REG32(MEC1322_PWM_BASE(x) + 0x08)
+
+
 /* IRQ Numbers */
 #define MEC1322_IRQ_I2C_0        0
 #define MEC1322_IRQ_I2C_1        1
