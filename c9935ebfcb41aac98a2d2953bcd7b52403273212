@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4325c2ed_87fd868d",
+        "filename": "chip/mec1322/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-29T16:08:37Z",
+      "side": 1,
+      "message": "you should put a constant for the index (eg \u003d0)\nto ensure that your toolchain selects a consistent (and existent) physical location accross toolchain versions.",
+      "revId": "c9935ebfcb41aac98a2d2953bcd7b52403273212",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
