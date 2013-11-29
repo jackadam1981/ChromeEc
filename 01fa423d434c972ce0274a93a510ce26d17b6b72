@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4325c2ed_c7f77ea9",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-29T16:19:08Z",
+      "side": 1,
+      "message": "ptr should simply be uintptr_t",
+      "revId": "01fa423d434c972ce0274a93a510ce26d17b6b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
