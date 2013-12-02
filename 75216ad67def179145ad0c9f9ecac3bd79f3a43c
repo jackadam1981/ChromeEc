@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "632006df_b15c42dd",
+        "filename": "board/nyan/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-12-02T20:27:46Z",
+      "side": 1,
+      "message": "Wouldn\u0027t it be safer to read the battery make/model, rather than assuming all 3S batteries can share the temperature range and precharge current?",
+      "revId": "75216ad67def179145ad0c9f9ecac3bd79f3a43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "832b3ac2_124f12fb",
         "filename": "include/battery.h",
         "patchSetId": 2
