@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "632006df_eb67ed7f",
+        "filename": "chip/lm4/peci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-12-02T18:40:54Z",
+      "side": 1,
+      "message": "Please comment in more detail why this is required / what we\u0027re working around, and the side effect that a bad first temperature may temporarily cause a high reading.\n\n(Otherwise, we\u0027ll be back here in 6 months wondering why the fan spins up and down at boot...)",
+      "revId": "2d797f230a97225cc0f653496c928fd40f1ba608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
