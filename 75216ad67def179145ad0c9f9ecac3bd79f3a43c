@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "832b3ac2_124f12fb",
+        "filename": "include/battery.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-12-02T20:23:24Z",
+      "side": 1,
+      "message": "Maybe we should just move these into struct battery_info?",
+      "revId": "75216ad67def179145ad0c9f9ecac3bd79f3a43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "832b3ac2_d253bac8",
+        "filename": "include/battery.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-12-02T20:23:24Z",
+      "side": 1,
+      "message": "What is this config?  Needs description in config.h\n\nThe name is confusing, since bat_temp_ranges exists in both cases, but is const only in one.\n\nMight be better to have\n\n  extern const struct *bat_temp_ranges;\n\nAnd then set the pointer to the correct temperature range struct in battery code.  That way external users still see the data as const and can\u0027t change it.  But code also needs to check if the pointer is NULL then.\n\nOr hmm, maybe it\u0027d be better if we moved all the temperature range checking into battery_vendor_params(), and stopped exposing this struct at all.",
+      "revId": "75216ad67def179145ad0c9f9ecac3bd79f3a43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
