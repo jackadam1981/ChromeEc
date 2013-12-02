@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "832b3ac2_2c50fb4b",
+        "filename": "board/nyan/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2013-12-02T20:33:24Z",
+      "side": 1,
+      "message": "Do you mind adding few comment for these 2 const and move to the head of this file? like: for battery cut-off command.",
+      "revId": "75216ad67def179145ad0c9f9ecac3bd79f3a43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "832b3ac2_124f12fb",
         "filename": "include/battery.h",
         "patchSetId": 2
