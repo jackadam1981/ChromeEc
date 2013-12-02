@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "632006df_dcf8edf2",
+        "filename": "board/nyan/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000393
+      },
+      "writtenOn": "2013-12-02T22:01:30Z",
+      "side": 1,
+      "message": "I will do the checkings of Manuf and Device in the next CL.\nFor this CL, I will add TODO of those checkings.",
+      "parentUuid": "632006df_b15c42dd",
+      "revId": "75216ad67def179145ad0c9f9ecac3bd79f3a43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "832b3ac2_2c50fb4b",
         "filename": "board/nyan/battery.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2013-12-02T20:33:24Z",
       "side": 1,
       "message": "Do you mind adding few comment for these 2 const and move to the head of this file? like: for battery cut-off command.",
+      "revId": "75216ad67def179145ad0c9f9ecac3bd79f3a43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4325c2ed_703926b9",
+        "filename": "board/nyan/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1000393
+      },
+      "writtenOn": "2013-12-02T22:01:30Z",
+      "side": 1,
+      "message": "I will remove cut-off command from this CL.\nI need to do more investigations on cut-off command.\nIt seems the cut-off command only exists to 3S battery.",
+      "parentUuid": "832b3ac2_2c50fb4b",
       "revId": "75216ad67def179145ad0c9f9ecac3bd79f3a43c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "632006df_5c54fd15",
+        "filename": "include/battery.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000393
+      },
+      "writtenOn": "2013-12-02T22:01:30Z",
+      "side": 1,
+      "message": "WIll leave it as is now.\nWill have further discussions.",
+      "parentUuid": "832b3ac2_124f12fb",
+      "revId": "75216ad67def179145ad0c9f9ecac3bd79f3a43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "832b3ac2_d253bac8",
         "filename": "include/battery.h",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2013-12-02T20:23:24Z",
       "side": 1,
       "message": "What is this config?  Needs description in config.h\n\nThe name is confusing, since bat_temp_ranges exists in both cases, but is const only in one.\n\nMight be better to have\n\n  extern const struct *bat_temp_ranges;\n\nAnd then set the pointer to the correct temperature range struct in battery code.  That way external users still see the data as const and can\u0027t change it.  But code also needs to check if the pointer is NULL then.\n\nOr hmm, maybe it\u0027d be better if we moved all the temperature range checking into battery_vendor_params(), and stopped exposing this struct at all.",
+      "revId": "75216ad67def179145ad0c9f9ecac3bd79f3a43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "832b3ac2_5db07b0d",
+        "filename": "include/battery.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000393
+      },
+      "writtenOn": "2013-12-02T22:01:30Z",
+      "side": 1,
+      "message": "I agree with the name of this CONFIG.\nWill rename it to CONFIG_BAT_TEMP_RANGES_NON_CONST.",
+      "parentUuid": "832b3ac2_d253bac8",
       "revId": "75216ad67def179145ad0c9f9ecac3bd79f3a43c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
