@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "832b3ac2_cbc5bc48",
+        "filename": "board/nyan/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000393
+      },
+      "writtenOn": "2013-12-03T19:19:52Z",
+      "side": 1,
+      "message": "Decided to add checking of manuf and device names to determine the battery type in the patchset #3.",
+      "parentUuid": "632006df_dcf8edf2",
+      "revId": "75216ad67def179145ad0c9f9ecac3bd79f3a43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "832b3ac2_2c50fb4b",
         "filename": "board/nyan/battery.c",
         "patchSetId": 2
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "I will remove cut-off command from this CL.\nI need to do more investigations on cut-off command.\nIt seems the cut-off command only exists to 3S battery.",
       "parentUuid": "832b3ac2_2c50fb4b",
+      "revId": "75216ad67def179145ad0c9f9ecac3bd79f3a43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4325c2ed_703e41a3",
+        "filename": "board/nyan/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1000393
+      },
+      "writtenOn": "2013-12-03T19:19:52Z",
+      "side": 1,
+      "message": "Decided to keep cut-off command in this CL.",
+      "parentUuid": "4325c2ed_703926b9",
       "revId": "75216ad67def179145ad0c9f9ecac3bd79f3a43c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
