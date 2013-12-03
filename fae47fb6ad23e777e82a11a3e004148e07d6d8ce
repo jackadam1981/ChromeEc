@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "632006df_2343e15a",
+        "filename": "board/nyan/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1000393
+      },
+      "writtenOn": "2013-12-03T22:03:07Z",
+      "side": 1,
+      "message": "Will use strcasecmp(). Thanks.",
+      "parentUuid": "632006df_c852e4f8",
+      "revId": "fae47fb6ad23e777e82a11a3e004148e07d6d8ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "832b3ac2_466ee38a",
         "filename": "board/nyan/battery.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2013-12-03T20:46:58Z",
       "side": 1,
       "message": "Why not just return info_src directly?",
+      "revId": "fae47fb6ad23e777e82a11a3e004148e07d6d8ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4325c2ed_d3d0d792",
+        "filename": "board/nyan/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1000393
+      },
+      "writtenOn": "2013-12-03T22:03:07Z",
+      "side": 1,
+      "message": "You are right, will use the pointer directly.\nIt will require changes in battery_vendor_params() routine.",
+      "parentUuid": "832b3ac2_466ee38a",
       "revId": "fae47fb6ad23e777e82a11a3e004148e07d6d8ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
