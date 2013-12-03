@@ -81,12 +81,12 @@
 /* Optional features present on this chip */
 #if 0
 #define CONFIG_ADC
-#define CONFIG_I2C
 #define CONFIG_LPC
 #define CONFIG_PECI
 #define CONFIG_SWITCH
 #define CONFIG_MPU
 #endif
+#define CONFIG_I2C
 #define CONFIG_FPU
 
 #undef CONFIG_FLASH
