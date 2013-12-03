@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "632006df_c852e4f8",
+        "filename": "board/nyan/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-12-03T20:46:58Z",
+      "side": 1,
+      "message": "Just add strcmp() to util.h / util.c (but in a separate CL).\n\nOr use strcasecmp(), since it\u0027ll still work.",
+      "revId": "fae47fb6ad23e777e82a11a3e004148e07d6d8ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "832b3ac2_466ee38a",
+        "filename": "board/nyan/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-12-03T20:46:58Z",
+      "side": 1,
+      "message": "Why not just return info_src directly?",
+      "revId": "fae47fb6ad23e777e82a11a3e004148e07d6d8ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
