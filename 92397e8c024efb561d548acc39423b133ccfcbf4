@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63a3a6b3_9622ec01",
+        "filename": "driver/temp_sensor/tmp432.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-12-04T02:38:47Z",
+      "side": 1,
+      "message": "This is a bit copy-and-pastey from g781.c. I don\u0027t think we\u0027ve hit critical mass to refactor...although I might be wrong...",
+      "revId": "92397e8c024efb561d548acc39423b133ccfcbf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "43a86290_55631ca1",
+        "filename": "driver/temp_sensor/tmp432.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2013-12-04T02:38:47Z",
+      "side": 1,
+      "message": "This is a dump of the interesting parts of the datasheet. It includes much more than the code actually uses. However, some of it makes a good reference when using the \u0027tmp432\u0027 EC console command.",
+      "revId": "92397e8c024efb561d548acc39423b133ccfcbf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
