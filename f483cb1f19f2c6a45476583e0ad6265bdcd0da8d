@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "63a3a6b3_25dd84ac",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-12-04T23:25:40Z",
+      "side": 1,
+      "message": "Can we use an interrupt and then wait_next_event()?",
+      "parentUuid": "63a3a6b3_d99587e0",
+      "revId": "f483cb1f19f2c6a45476583e0ad6265bdcd0da8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63a3a6b3_f9924bf5",
         "filename": "chip/mec1322/i2c.c",
         "patchSetId": 3
@@ -81,6 +99,24 @@
       "writtenOn": "2013-12-04T16:05:10Z",
       "side": 1,
       "message": "the \u0026 0xff when assigning to a uint8_t is midly useful",
+      "revId": "f483cb1f19f2c6a45476583e0ad6265bdcd0da8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "839eda6a_5de97ed7",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-12-04T23:25:40Z",
+      "side": 1,
+      "message": "perhaps (uint8_t)slave_addr?",
+      "parentUuid": "63a3a6b3_398693b7",
       "revId": "f483cb1f19f2c6a45476583e0ad6265bdcd0da8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
