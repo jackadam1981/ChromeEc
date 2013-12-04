@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "839eda6a_fafa3891",
+        "filename": "power/tegra.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2013-12-04T22:05:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43a86290_7eb0fd0d",
+      "revId": "9db4d20f9d877fcb1aee1db0948eafd3f379ba09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63a3a6b3_ea70abb4",
         "filename": "power/tegra.c",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2013-12-04T21:17:49Z",
       "side": 1,
       "message": "would need -\u003e needs; delete \"though\"",
+      "revId": "9db4d20f9d877fcb1aee1db0948eafd3f379ba09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "43a86290_1e25313f",
+        "filename": "power/tegra.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2013-12-04T22:05:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63a3a6b3_ea70abb4",
       "revId": "9db4d20f9d877fcb1aee1db0948eafd3f379ba09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
