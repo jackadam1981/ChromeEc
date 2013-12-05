@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e3e2361a_0cc33772",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-12-05T06:19:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63a3a6b3_998bffc1",
+      "revId": "f483cb1f19f2c6a45476583e0ad6265bdcd0da8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63a3a6b3_d99587e0",
         "filename": "chip/mec1322/i2c.c",
         "patchSetId": 3
@@ -54,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "e3e2361a_ac3543f8",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-12-05T06:19:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63a3a6b3_25dd84ac",
+      "revId": "f483cb1f19f2c6a45476583e0ad6265bdcd0da8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63a3a6b3_f9924bf5",
         "filename": "chip/mec1322/i2c.c",
         "patchSetId": 3
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "03d66a3f_4d7499a7",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-12-05T06:19:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63a3a6b3_f9924bf5",
+      "revId": "f483cb1f19f2c6a45476583e0ad6265bdcd0da8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43a86290_d833c1dd",
         "filename": "chip/mec1322/i2c.c",
         "patchSetId": 3
@@ -82,6 +136,24 @@
       "writtenOn": "2013-12-04T16:05:10Z",
       "side": 1,
       "message": "what is that check supposed to do ?\nstub some kind of scanning ?\nignore transfers from misbehaved user (we can return error then)",
+      "revId": "f483cb1f19f2c6a45476583e0ad6265bdcd0da8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3e2361a_6c207bb3",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-12-05T06:19:17Z",
+      "side": 1,
+      "message": "This is done to match the behavior on LM4. I agree returning error is more reasonable, but this should be done along with a change for LM4 in another CL.",
+      "parentUuid": "43a86290_d833c1dd",
       "revId": "f483cb1f19f2c6a45476583e0ad6265bdcd0da8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -123,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "03d66a3f_2d714db7",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-12-05T06:19:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "839eda6a_5de97ed7",
+      "revId": "f483cb1f19f2c6a45476583e0ad6265bdcd0da8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43a86290_5820b184",
         "filename": "chip/mec1322/registers.h",
         "patchSetId": 3
@@ -134,6 +224,24 @@
       "writtenOn": "2013-12-04T16:05:10Z",
       "side": 1,
       "message": "last time we tried, we avoided this kind of inline and went back to macros because it was producing really bad code.\n\nit\u0027s also bad here (not even inlining it):\n00101aac \u003cmec1322_i2c_addr\u003e:\n  101aac:       b120            cbz     r0, 101ab8 \n  101aae:       f500 1080       add.w   r0, r0, #0x100000\n  101ab2:       302a            adds    r0, #42 ; 0x2a\n  101ab4:       0280            lsls    r0, r0, #10\n  101ab6:       e000            b.n     101aba \n  101ab8:       4801            ldr     r0, [pc, #4]    ; (101ac0)\n  101aba:       1808            adds    r0, r1, r0\n  101abc:       4770            bx      lr\n  101abe:       bf00            nop\n  101ac0:       40001800       \n\n00101ac4 \u003cconfigure_port\u003e:\n  101ac4:       b570            push    {r4, r5, r6, lr}\n  101ac6:       460e            mov     r6, r1\n  101ac8:       2100            movs    r1, #0\n  101aca:       4604            mov     r4, r0\n  101acc:       f7ff ffee       bl      101aac \u003cmec1322_i2c_addr\u003e\n  101ad0:       2380            movs    r3, #128        ; 0x80\n  101ad2:       7003            strb    r3, [r0, #0]\n  101ad4:       2104            movs    r1, #4\n  101ad6:       4605            mov     r5, r0\n  101ad8:       4620            mov     r0, r4\n  101ada:       f7ff ffe7       bl      101aac \u003cmec1322_i2c_addr\u003e\n  101ade:       2300            movs    r3, #0\n[...]",
+      "revId": "f483cb1f19f2c6a45476583e0ad6265bdcd0da8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3dff254_0b6e7dd3",
+        "filename": "chip/mec1322/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2013-12-05T06:19:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43a86290_5820b184",
       "revId": "f483cb1f19f2c6a45476583e0ad6265bdcd0da8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
