@@ -28,6 +28,8 @@ enum gpio_signal {
 	GPIO_LED1 = 0,
 	GPIO_LED2,
 	GPIO_LED3,
+	GPIO_035,
+	GPIO_036,
 	/*
 	 * Signals which aren't implemented on MEC1322 eval board but we'll
 	 * emulate anyway, to make it more convenient to debug other code.

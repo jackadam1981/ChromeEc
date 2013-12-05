@@ -9,11 +9,15 @@
 #include "registers.h"
 #include "util.h"
 
+extern void gpio_uart_interrupt(enum gpio_signal);
+
 /* GPIO signal list.  Must match order from enum gpio_signal. */
 const struct gpio_info gpio_list[] = {
 	{"LED1", GPIO_PORT(15), (1 << 4), GPIO_ODR_LOW, NULL},
 	{"LED2", GPIO_PORT(15), (1 << 5), GPIO_ODR_HIGH, NULL},
 	{"LED3", GPIO_PORT(15), (1 << 6), GPIO_ODR_LOW, NULL},
+	{"035",  GPIO_PORT(3),  (1 << 5), GPIO_INPUT | GPIO_INT_BOTH, gpio_uart_interrupt},
+	{"036",  GPIO_PORT(3),  (1 << 6), GPIO_OUT_HIGH, NULL},
 	/* Unimplemented signals which we need to emulate for now */
 	GPIO_SIGNAL_NOT_IMPLEMENTED("RECOVERYn"),
 	GPIO_SIGNAL_NOT_IMPLEMENTED("WP"),
