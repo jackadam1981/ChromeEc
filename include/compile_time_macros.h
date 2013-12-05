@@ -23,4 +23,14 @@
 #define offsetof(type, member)  __builtin_offsetof(type, member)
 #endif
 
+/**
+ * returns a pointer the containing struct of a field
+ * @param ptr   the pointer to the member.
+ * @param type  the type of the container struct.
+ * @param field the name of the member within the struct.
+ */
+#define container_of(ptr, type, field) ({              \
+        const typeof(((type *)0)->field) *__p = (ptr); \
+	        (type *)((char *)__p - offsetof(type,field));})
+
 #endif /* __CROS_EC_TRICKS_H */

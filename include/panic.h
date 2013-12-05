@@ -18,19 +18,6 @@ struct panic_data {
 	uint8_t flags;            /* Flags (PANIC_DATA_FLAG_*) */
 	uint8_t reserved;         /* Reserved; set 0 */
 
-	uint32_t regs[12];        /* psp, ipsr, msp, r4-r11, lr(=exc_return).
-				   * In version 1, that was uint32_t regs[11] =
-				   * psp, ipsr, lr, r4-r11
-				   */
-	uint32_t frame[8];        /* r0-r3, r12, lr, pc, xPSR */
-
-	uint32_t mmfs;
-	uint32_t bfar;
-	uint32_t mfar;
-	uint32_t shcsr;
-	uint32_t hfsr;
-	uint32_t dfsr;
-
 	/*
 	 * These fields go at the END of the struct so we can find it at the
 	 * end of memory.
@@ -70,6 +57,13 @@ void panic_puts(const char *s);
  */
 void panic_printf(const char *format, ...);
 
+/*
+ * Print saved panic information
+ *
+ * @param pdata pointer to saved panic data
+ */
+void panic_data_print(const struct panic_data *pdata);
+
 /**
  * Report an assertion failure and reset
  *
@@ -106,6 +100,6 @@ void ignore_bus_fault(int ignored);
  * @param pointer to the panic data, or NULL if none available (for example,
  * the last reboot was not caused by a panic).
  */
-struct panic_data *panic_get_data(void);
+void *panic_get_data(void);
 
 #endif  /* __CROS_EC_PANIC_H */

@@ -6,7 +6,7 @@
 # Common files build
 #
 
-common-y=main.o util.o console_output.o uart_buffering.o
+common-y=main.o util.o console_output.o uart_buffering.o panic_output.o
 common-y+=memory_commands.o shared_mem.o system.o hooks.o
 common-y+=gpio.o version.o printf.o queue.o
 
@@ -18,6 +18,7 @@ common-$(CONFIG_BACKLIGHT_LID)+=backlight_lid.o
 # command?
 common-$(CONFIG_BATTERY_BQ27541)+=battery.o
 common-$(CONFIG_BATTERY_SMART)+=battery.o
+common-$(CONFIG_COMMON_TIMER)+=timer.o
 common-$(CONFIG_CHARGER)+=charge_state.o charger.o
 # TODO(crosbug.com/p/23815): This is really the charge state machine
 # for ARM, not the charger driver for the tps65090.  Rename.
