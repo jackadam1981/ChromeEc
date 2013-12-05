@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3cdd6a7_97dbc6b5",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-12-05T16:57:18Z",
+      "side": 1,
+      "message": "Will this still be 16 MHz if we PLL up or divide down the core clock?  Compare with the other I2C implementations that call clock_get_freq().",
+      "revId": "c4a8737428979c363bbdf7c9e6794c1d0646d3a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
