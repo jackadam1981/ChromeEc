@@ -10,6 +10,8 @@ common-y=main.o util.o console_output.o uart_buffering.o
 common-y+=memory_commands.o shared_mem.o system.o hooks.o
 common-y+=gpio.o version.o printf.o queue.o
 
+common-y+=gpio_uart.o
+
 common-$(CONFIG_ALS)+=als.o
 common-$(CONFIG_BACKLIGHT_LID)+=backlight_lid.o
 # TODO(crosbug.com/p/23821): Why do these include battery_common but
