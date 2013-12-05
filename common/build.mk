@@ -11,6 +11,8 @@ common-y+=version.o printf.o queue.o
 
 common-$(CONFIG_ACCEL_CALIBRATE)+=motion_calibrate.o
 common-$(CONFIG_ADC)+=adc.o
+common-y+=gpio_uart.o
+
 common-$(CONFIG_ALS)+=als.o
 common-$(CONFIG_AP_HANG_DETECT)+=ap_hang_detect.o
 common-$(CONFIG_BACKLIGHT_LID)+=backlight_lid.o
