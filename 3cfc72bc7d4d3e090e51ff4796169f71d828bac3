@@ -16,6 +16,24 @@
       "revId": "3cfc72bc7d4d3e090e51ff4796169f71d828bac3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c34d3211_7ba59f30",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-12-06T17:11:10Z",
+      "side": 1,
+      "message": "Incrementing a volatile int is cheap in the scan task, which is important because it runs a *lot*.\n\nThings that are more clever would also add more overhead to the scan task.",
+      "parentUuid": "e3cdd6a7_434d7052",
+      "revId": "3cfc72bc7d4d3e090e51ff4796169f71d828bac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
