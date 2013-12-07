@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43eea235_228990c9",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-12-07T00:49:37Z",
+      "side": 1,
+      "message": "instead of writing 5 times the same sequence, we should be able to use a makefile function and $(call )\neg (untested)\nuppercase \u003d $(shell echo $(1) | tr \u0027[:lower:]-\u0027 \u0027[:upper:]_\u0027)\n\nUC_BOARD:\u003d$(call $(BOARD))",
+      "revId": "b4f88093c2cae4ba802d4f347ffab9e716011db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
