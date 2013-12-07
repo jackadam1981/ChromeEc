@@ -16,6 +16,24 @@
       "revId": "b4f88093c2cae4ba802d4f347ffab9e716011db4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3df5e7e_487793ad",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-12-07T00:54:30Z",
+      "side": 1,
+      "message": "UC_BOARD:\u003d$(call uppercase,$(BOARD))\nactually",
+      "parentUuid": "43eea235_228990c9",
+      "revId": "b4f88093c2cae4ba802d4f347ffab9e716011db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
