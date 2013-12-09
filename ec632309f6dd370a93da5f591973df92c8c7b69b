@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6302c6bc_5b3e373e",
+        "filename": "test/kb_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2013-12-09T23:59:39Z",
+      "side": 1,
+      "message": "The key will now already be pressed by the time this function returns...\n\n...note that other uses of expect_keychange() look like they could have a bit of a race if we get really unlucky, but I guess we\u0027re OK for now...",
+      "revId": "ec632309f6dd370a93da5f591973df92c8c7b69b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
