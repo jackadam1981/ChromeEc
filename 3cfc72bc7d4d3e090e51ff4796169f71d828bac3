@@ -51,6 +51,24 @@
       "revId": "3cfc72bc7d4d3e090e51ff4796169f71d828bac3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3df5e7e_51d8de3f",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2013-12-09T19:05:01Z",
+      "side": 1,
+      "message": "Hrm.  Something isn\u0027t adding up, then.  I polled kbd_polls before and after the task_wake and it was the same.  \n\nOh, I need http://crosreview.com/169334\n\nOK, so after I add that it works _better_, but not perfect.  I _think_ the problem is when we\u0027re sitting in the \"usleep(wait_time)\" (AKA when we\u0027re in polling mode).  It appears that the task_wake() doesn\u0027t wake up from the usleep().  I think that means we should keep ensure_keyboard_scanned(), right?",
+      "parentUuid": "83e41a52_3018b68e",
+      "revId": "3cfc72bc7d4d3e090e51ff4796169f71d828bac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
