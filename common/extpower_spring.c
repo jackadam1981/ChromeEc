@@ -236,7 +236,6 @@ static int apple_charger_current(void)
 	int type = 0;
 	int data[ADC_CH_COUNT];
 
-	/* TODO(crosbug.com/p/23743): Handle potential race condition. */
 	tsu6721_disable_interrupts();
 	tsu6721_mux(TSU6721_MUX_USB);
 	/* Wait for signal to stablize */
