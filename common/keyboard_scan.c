@@ -160,6 +160,7 @@ static void ensure_keyboard_scanned(int old_polls)
 static void simulate_key(int row, int col, int pressed)
 {
 	int old_polls;
+	int polls1, polls2, polls3, polls4;
 
 	if ((simulated_key[col] & (1 << row)) == ((pressed ? 1 : 0) << row))
 		return;  /* No change */
@@ -174,14 +175,21 @@ static void simulate_key(int row, int col, int pressed)
 	/* Wake the task to handle changes in simulated keys */
 	task_wake(TASK_ID_KEYSCAN);
 
+	polls1 = kbd_polls;
+
 	/*
 	 * Make sure that the keyboard task sees the key for long enough.
 	 * That means it needs to have run and for enough time.
 	 */
 	ensure_keyboard_scanned(old_polls);
+	polls2 = kbd_polls;
 	usleep(pressed ?
 	       keyscan_config.debounce_down_us : keyscan_config.debounce_up_us);
+	polls3 = kbd_polls;
 	ensure_keyboard_scanned(kbd_polls);
+	polls4 = kbd_polls;
+
+	ccprintf("DOUG: %d %d %d %d %d\n", old_polls, polls1, polls2, polls3, polls4);
 }
 
 /**
