@@ -69,6 +69,24 @@
       "revId": "3cfc72bc7d4d3e090e51ff4796169f71d828bac3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3df5e7e_7cc33971",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-12-09T19:46:03Z",
+      "side": 1,
+      "message": "yes, the task_wake() won\u0027t wake up the task from usleep(wait_time) (actually it will wake it up then go back to sleep because it\u0027s not the expected timer event)\nwe would need to use : task_wait_event(wait_time) to have interruptible sleep (but then we no longer guaranty minimum delay there, so maybe we don\u0027t want that).\n\nwe should probably keep ensure_keyboard_scanned, just the current implementation is not optimal, it would be nice to record the old_polls value before the task_wake.",
+      "parentUuid": "a3df5e7e_51d8de3f",
+      "revId": "3cfc72bc7d4d3e090e51ff4796169f71d828bac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
