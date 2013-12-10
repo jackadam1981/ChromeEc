@@ -402,7 +402,7 @@ uint32_t lpc_get_host_event_mask(enum lpc_host_event_type type)
  *
  * @param is_cmd	Is write command (is_cmd=1) or data (is_cmd=0)
  */
-static void handle_acpi_write(int is_cmd)
+void handle_acpi_write(int is_cmd)
 {
 	uint8_t value, result;
 
