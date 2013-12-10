@@ -80,6 +80,23 @@
  */
 #define XPSHOLD_DEBOUNCE      (30 * 1000)  /* 30 ms */
 
+/*
+ * The hold time for pulling down the PMIC_WARM_RESET_L pin so that
+ * the AP can entery the recovery mode (flash SPI flash from USB).
+ */
+#define PMIC_WARM_RESET_L_HOLD_TIME (4 * MSEC)
+
+/*
+ * The reset flags are indicating NOT a real EC reset. So the AP doesn't
+ * have to reset.
+ */
+#define FLAGS_NOT_TO_RESET_AP (  \
+		RESET_FLAG_HIBERNATE |  \
+		RESET_FLAG_RTC_ALARM |  \
+		RESET_FLAG_WAKE_PIN |  \
+		RESET_FLAG_LOW_BATTERY |  \
+		RESET_FLAG_SYSJUMP)
+
 /* Application processor power state */
 static int ap_on;
 static int ap_suspended;
@@ -294,6 +311,8 @@ DECLARE_HOOK(HOOK_LID_CHANGE, tegra_lid_event, HOOK_PRIO_DEFAULT);
 
 static int tegra_power_init(void)
 {
+	uint32_t reset_flags = system_get_reset_flags();
+
 	/* Enable interrupts for our GPIOs */
 	gpio_enable_interrupt(GPIO_KB_PWR_ON_L);
 	gpio_enable_interrupt(GPIO_SOC1V8_XPSHOLD);
@@ -303,16 +322,31 @@ static int tegra_power_init(void)
 	 * Force the AP shutdown unless we are doing SYSJUMP. Otherwise,
 	 * the AP could stay in strange state.
 	 */
-	if (!(system_get_reset_flags() & RESET_FLAG_SYSJUMP)) {
+	if (!(reset_flags & RESET_FLAG_SYSJUMP)) {
 		CPRINTF("[%T not sysjump; forcing AP shutdown]\n");
 		chipset_force_shutdown();
 	}
 
 	/* Leave power off only if requested by reset flags */
-	if (!(system_get_reset_flags() & RESET_FLAG_AP_OFF)) {
+	if (!(reset_flags & RESET_FLAG_AP_OFF)) {
 		CPRINTF("[%T auto_power_on is set due to reset_flag 0x%x]\n",
-			system_get_reset_flags());
+			reset_flags);
 		auto_power_on = 1;
+	}
+
+	/*
+	 * In any case EC is *really* reset, assert the Tegra enter recovery
+	 * mode to flash SPI flash from USB. New boards (rev >= 2.2) are not
+	 * effected because the chipset_force_shutdown() is called and
+	 * the power rails are always removed. But the old boards didn't.
+	 * Thus, pull down PMIC_WARM_RESET_L to reset AP.
+	 */
+	if (!(reset_flags & FLAGS_NOT_TO_RESET_AP)) {
+		CPRINTF("[%T assert GPIO_PMIC_WARM_RESET_L for %d ms]\n",
+				PMIC_WARM_RESET_L_HOLD_TIME / MSEC);
+		gpio_set_level(GPIO_PMIC_WARM_RESET_L, 0);
+		usleep(PMIC_WARM_RESET_L_HOLD_TIME);
+		gpio_set_level(GPIO_PMIC_WARM_RESET_L, 1);
 	}
 
 	return EC_SUCCESS;
