@@ -9,5 +9,10 @@
 
 void jtag_pre_init(void)
 {
-	/* Not implemented yet */
+	/*
+	 * Disable JTAG. JTAG_nRST pin also need to be tied to ground by
+	 * hardware in order for JTAG pins to be functional as GPIOs or
+	 * keyboard pins.
+	 */
+	MEC1322_EC_JTAG_EN &= ~1;
 }
