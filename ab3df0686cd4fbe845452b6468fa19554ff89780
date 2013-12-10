@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83809a7a_2ad14395",
+        "filename": "power/tegra.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-12-10T19:27:57Z",
+      "side": 1,
+      "message": "@param timeout_us Timeout in microseconds, or -1 to wait forever\n\n(Or that looks like what it\u0027s doing, anyway)",
+      "revId": "ab3df0686cd4fbe845452b6468fa19554ff89780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
