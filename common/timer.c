@@ -96,6 +96,7 @@ void process_timers(int overflow)
 
 void udelay(unsigned us)
 {
+#ifndef __nds32__
 	unsigned t0 = __hw_clock_source_read();
 
 	/*
@@ -110,6 +111,9 @@ void udelay(unsigned us)
 	 */
 	while (__hw_clock_source_read() - t0 < us)
 		;
+#else
+	__hw_clock_delay(us);
+#endif
 }
 
 int timer_arm(timestamp_t tstamp, task_id_t tskid)

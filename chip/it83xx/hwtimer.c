@@ -151,3 +151,20 @@ int __hw_clock_source_init(uint32_t start_t)
 
 	return IT83XX_IRQ_TMR_B0;
 }
+
+void __hw_clock_delay(unsigned us)
+{
+	/*
+	 * When WNCKR register is set, the CPU pauses until a low to
+	 * high transition on an internal 65kHz clock (~15.25us). We need to
+	 * make sure though that we don't ever delay less than the requested
+	 * amount, so we always have to add an extra wait.
+	 *
+	 * TODO: This code has a few limitations, the math isn't exact so
+	 * the larger the delay the farther off it will be, it uses a divide,
+	 * and the resolution is only about 15us.
+	 */
+	int waits = us*4/61 + 1;
+	while (waits-- >= 0)
+		IT83XX_GCTRL_WNCKR = 0;
+}

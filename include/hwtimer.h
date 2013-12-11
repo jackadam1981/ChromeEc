@@ -67,4 +67,11 @@ void hwtimer_setup_watchdog(void);
 /* Reset the watchdog timer, to avoid the watchdog warning */
 void hwtimer_reset_watchdog(void);
 
+/**
+ * Delay by use of internal clock.
+ *
+ * @param us	Number of microseconds to pause for.
+ */
+void __hw_clock_delay(unsigned us);
+
 #endif  /* __CROS_EC_HWTIMER_H */
