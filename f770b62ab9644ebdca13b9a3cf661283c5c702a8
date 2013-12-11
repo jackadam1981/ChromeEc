@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a332fed0_6d129170",
+        "filename": "chip/it83xx/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-12-11T02:09:42Z",
+      "side": 1,
+      "message": "isn\u0027t \"int waits \u003d us * 0.065 + 1\" actually compiling properly ?",
+      "revId": "f770b62ab9644ebdca13b9a3cf661283c5c702a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "632c867b_68c9a33e",
+        "filename": "common/timer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-12-11T02:09:42Z",
+      "side": 1,
+      "message": "I would prefer something like that :\n#ifndef CONFIG_HW_SPECIFIC_UDELAY\nvoid udelay(unsigned us)\n{\n[...]\n}\n#endif\n\nand you wrote your full udelay() function in chip/ /hwtimer.c",
+      "revId": "f770b62ab9644ebdca13b9a3cf661283c5c702a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
