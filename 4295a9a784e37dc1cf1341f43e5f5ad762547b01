@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e83213f0_ccefef9b",
+        "filename": "common/acpi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-12-11T23:44:35Z",
+      "side": 1,
+      "message": "This functionality doesn\u0027t appear to exist anywhere except in the LPC implementation (return the 1-based index of the next event bit).\n\nI\u0027m not sure how to abstract it so that this works correctly on all ECs. CONFIG_ACPI? CONFIG_LPC? something else?",
+      "revId": "4295a9a784e37dc1cf1341f43e5f5ad762547b01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
