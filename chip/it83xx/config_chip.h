@@ -95,6 +95,9 @@
 /****************************************************************************/
 /* Customize the build */
 
+/* Use hardware specific udelay() for this chip */
+#define CONFIG_HW_SPECIFIC_UDELAY
+
 /* Optional features present on this chip */
 #undef CONFIG_I2C
 #undef CONFIG_FLASH

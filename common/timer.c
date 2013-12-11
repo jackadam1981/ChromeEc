@@ -94,8 +94,10 @@ void process_timers(int overflow)
 	} while (next.val <= get_time().val);
 }
 
+#ifndef CONFIG_HW_SPECIFIC_UDELAY
 void udelay(unsigned us)
 {
+
 	unsigned t0 = __hw_clock_source_read();
 
 	/*
@@ -111,6 +113,7 @@ void udelay(unsigned us)
 	while (__hw_clock_source_read() - t0 < us)
 		;
 }
+#endif
 
 int timer_arm(timestamp_t tstamp, task_id_t tskid)
 {

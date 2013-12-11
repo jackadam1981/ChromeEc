@@ -508,7 +508,7 @@ enum clock_gate_offsets {
 #define IT83XX_TMR_TMRCE        REG8(IT83XX_TMR_BASE+0x0B)
 #define IT83XX_TMR_TMRIE        REG8(IT83XX_TMR_BASE+0x0C)
 
-/*** External Timer and Watchdog (ETWD) */
+/* --- External Timer and Watchdog (ETWD) --- */
 #define IT83XX_ETWD_BASE  0x00F01F00
 
 #define IT83XX_ETWD_ETWCFG     REG8(IT83XX_ETWD_BASE+0x01)
@@ -525,6 +525,11 @@ enum clock_gate_offsets {
 #define IT83XX_ETWD_ET3CNTLHR  REG8(IT83XX_ETWD_BASE+0x15)
 #define IT83XX_ETWD_ET3CNTLH2R REG8(IT83XX_ETWD_BASE+0x16)
 
+/* --- General Control (GCTRL) --- */
+#define IT83XX_GCTRL_BASE 0x00F02000
+
+#define IT83XX_GCTRL_WNCKR     REG8(IT83XX_GCTRL_BASE+0x0B)
+
 
 /* --- MISC (not implemented yet) --- */
 
@@ -540,7 +545,6 @@ enum clock_gate_offsets {
 #define IT83XX_WUC_BASE   0x00F01B00
 #define IT83XX_SMB_BASE   0x00F01C00
 #define IT83XX_KBS_BASE   0x00F01D00
-#define IT83XX_GCTRL_BASE 0x00F02000
 #define IT83XX_EGPIO_BASE 0x00F02100
 #define IT83XX_BRAM_BASE  0x00F02200
 #define IT83XX_CIR_BASE   0x00F02300
