@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "087da79f_f5bb78f4",
+        "filename": "chip/lm4/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-12-11T23:59:22Z",
+      "side": 1,
+      "message": "return i+1;",
+      "revId": "4295a9a784e37dc1cf1341f43e5f5ad762547b01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "486b1fdd_f74ce05d",
+        "filename": "chip/lm4/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-12-11T23:59:22Z",
+      "side": 1,
+      "message": "return 0;",
+      "revId": "4295a9a784e37dc1cf1341f43e5f5ad762547b01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e87933b6_5456ec1f",
+        "filename": "chip/lm4/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-12-11T23:59:22Z",
+      "side": 1,
+      "message": "Why?",
+      "revId": "4295a9a784e37dc1cf1341f43e5f5ad762547b01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e83213f0_ccefef9b",
         "filename": "common/acpi.c",
         "patchSetId": 1
@@ -13,6 +64,41 @@
       "writtenOn": "2013-12-11T23:44:35Z",
       "side": 1,
       "message": "This functionality doesn\u0027t appear to exist anywhere except in the LPC implementation (return the 1-based index of the next event bit).\n\nI\u0027m not sure how to abstract it so that this works correctly on all ECs. CONFIG_ACPI? CONFIG_LPC? something else?",
+      "revId": "4295a9a784e37dc1cf1341f43e5f5ad762547b01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "087da79f_151f1443",
+        "filename": "common/acpi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-12-11T23:59:22Z",
+      "side": 1,
+      "message": "I\u0027d put it in common/host_event_commands.c and include/host_command.h, and call it host_pop_next_event()\n\nCONFIG_LPC is fine for now, since the existence of ACPI on non-LPC/x86 platforms is still under debate elsewhere...",
+      "parentUuid": "e83213f0_ccefef9b",
+      "revId": "4295a9a784e37dc1cf1341f43e5f5ad762547b01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "486b1fdd_57b10ce8",
+        "filename": "include/lpc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-12-11T23:59:22Z",
+      "side": 1,
+      "message": "move to include/host_command.h, call it host_pop_next_event()",
       "revId": "4295a9a784e37dc1cf1341f43e5f5ad762547b01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
