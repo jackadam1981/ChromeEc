@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "486b1fdd_f7f5c039",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2013-12-12T17:18:13Z",
+      "side": 1,
+      "message": "The following comment doesn\u0027t apply anymore.",
+      "revId": "4dd8fbdc83f8cb864a1508ea986daf1e799c73db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a82f3bb4_e5c8d0e7",
+        "filename": "chip/it83xx/hwtimer.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2013-12-12T17:18:13Z",
+      "side": 1,
+      "message": "Shouldn\u0027t clearing the pending IRQ go above the if check for SW interrupt so that it gets run for SW interrupts too?",
+      "revId": "4dd8fbdc83f8cb864a1508ea986daf1e799c73db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8762fc5_b60e6649",
         "filename": "chip/it83xx/uart.c",
         "patchSetId": 29
