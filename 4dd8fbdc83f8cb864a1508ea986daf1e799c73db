@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8762fc5_b60e6649",
+        "filename": "chip/it83xx/uart.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-12-12T17:15:20Z",
+      "side": 1,
+      "message": "should UART_PORT rather than 0",
+      "revId": "4dd8fbdc83f8cb864a1508ea986daf1e799c73db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8762fc5_562fd2a9",
+        "filename": "chip/it83xx/uart.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-12-12T17:15:20Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "4dd8fbdc83f8cb864a1508ea986daf1e799c73db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68db8306_d349a67d",
+        "filename": "chip/it83xx/uart.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-12-12T17:15:20Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "4dd8fbdc83f8cb864a1508ea986daf1e799c73db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8762fc5_76344ef9",
+        "filename": "chip/it83xx/uart.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-12-12T17:15:20Z",
+      "side": 1,
+      "message": "s/0/UART_PORT/",
+      "revId": "4dd8fbdc83f8cb864a1508ea986daf1e799c73db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8762fc5_16395af0",
+        "filename": "chip/it83xx/uart.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-12-12T17:15:20Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "4dd8fbdc83f8cb864a1508ea986daf1e799c73db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "28c50b24_8e50db44",
+        "filename": "chip/it83xx/uart.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-12-12T17:15:20Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "4dd8fbdc83f8cb864a1508ea986daf1e799c73db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8762fc5_363ed6d9",
+        "filename": "chip/it83xx/uart.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-12-12T17:15:20Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "4dd8fbdc83f8cb864a1508ea986daf1e799c73db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
