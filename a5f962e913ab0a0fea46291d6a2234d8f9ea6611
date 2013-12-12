@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8d1fbe3_98801ddf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-12-12T23:40:22Z",
+      "side": 1,
+      "message": "Grammar nits:\n\nNew boards (rev \u003e\u003d 2.2) are not affected since chipset_force_shutdown() \nis called.  On old boards the power rails of old boards are not removed completely.  This CL ensures the AP is warm-reset after EC is reset.",
+      "revId": "a5f962e913ab0a0fea46291d6a2234d8f9ea6611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88d6f7d9_f7edb834",
+        "filename": "power/tegra.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-12-12T23:40:22Z",
+      "side": 1,
+      "message": "What does \"real\" EC reset mean?  Do you mean \"hard\" or \"soft\"?\n\nWouldn\u0027t it be better to define the flags which do indicate a real reset, rather than flags which don\u0027t?",
+      "revId": "a5f962e913ab0a0fea46291d6a2234d8f9ea6611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
