@@ -169,6 +169,41 @@ static void thermal_control(void)
 DECLARE_HOOK(HOOK_SECOND, thermal_control, HOOK_PRIO_TEMP_SENSOR_DONE);
 
 /*****************************************************************************/
+/* DPTF temperature thresholds */
+
+static int dptf_threshold[EC_ACPI_MEM_TEMP_COUNT] = { -1, -1 };
+
+int dptf_get_temp_threshold(int idx)
+{
+	int retval = -1;
+
+	if (idx >= 0 && idx < ARRAY_SIZE(dptf_threshold)) {
+		retval = dptf_threshold[idx];
+		if (retval >= 0)
+			CPRINTF("[%T %s(%d) = %d C]\n", __func__, idx,
+				K_TO_C(retval));
+		else
+			CPRINTF("[%T %s(%d) = disabled]\n", __func__, idx);
+	}
+
+	return retval;
+}
+
+void dptf_set_temp_threshold(int idx, int temp)
+{
+	if (idx < 0 || idx >= ARRAY_SIZE(dptf_threshold))
+		return;
+
+	if (temp < 0) {
+		CPRINTF("[%T %s(%d, disabled)]\n", __func__, idx);
+		dptf_threshold[idx] = -1;	/* HEY: disable! */
+	} else {
+		CPRINTF("[%T %s(%d, %d C)]\n", __func__, idx, K_TO_C(temp));
+		dptf_threshold[idx] = temp;
+	}
+}
+
+/*****************************************************************************/
 /* Console commands */
 
 static int command_thermalget(int argc, char **argv)

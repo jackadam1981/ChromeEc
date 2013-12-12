@@ -1866,8 +1866,12 @@ struct ec_params_reboot_ec {
 #define EC_ACPI_MEM_TEST_COMPLIMENT    0x02
 /* Keyboard backlight brightness percent (0 - 100) */
 #define EC_ACPI_MEM_KEYBOARD_BACKLIGHT 0x03
-/* Target Fan Duty (0-100, 0xff for auto/none) */
-#define EC_ACPI_MEM_FAN_DUTY 0x04
+/* DPTF Target Fan Duty (0-100, 0xff for auto/none) */
+#define EC_ACPI_MEM_FAN_DUTY           0x04
+/* DPTF temp thresholds */
+#define EC_ACPI_MEM_TEMP_0             0x05
+#define EC_ACPI_MEM_TEMP_1             0x06
+#define EC_ACPI_MEM_TEMP_COUNT         2
 
 /* Current version of ACPI memory address space */
 #define EC_ACPI_MEM_VERSION_CURRENT 1

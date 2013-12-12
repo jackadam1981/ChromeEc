@@ -11,7 +11,13 @@
 /* 0-100% sets fixed duty cycle, out of range means let the EC drive */
 void dptf_set_fan_duty_target(int pct);
 
-/*  0-100% if in duty mode. -1 if not */
+/* 0-100% if in duty mode. -1 if not */
 int dptf_get_fan_duty_target(void);
+
+/* Returns threshold temp in degrees K, -1 if not set */
+int dptf_get_temp_threshold(int idx);
+
+/* Temp in degrees K. Negative means disable this threshold. */
+void dptf_set_temp_threshold(int idx, int temp);
 
 #endif	/* __CROS_EC_DPTF_H */
