@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28c50b24_f189425c",
+        "filename": "chip/it83xx/hwtimer.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-12-12T18:48:36Z",
+      "side": 1,
+      "message": "I would prefer removing the #ifdef here,\nif this config is not defined for such a board, it\u0027s better to have the linker fail rather than doing random non-sense badness at runtime.",
+      "revId": "1893198644cc59d5d0f894fb047d84439aefa405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
