@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "68db8306_93431e5a",
+        "filename": "chip/it83xx/hwtimer.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-12-12T17:25:34Z",
+      "side": 1,
+      "message": "the ITE side of the irq is not pending when the sw irq path is jumping here.\nif it is pending, it means that we have a tick in addition to the IRQ, we will go through that handler twice to deal with all the details",
+      "parentUuid": "a82f3bb4_e5c8d0e7",
+      "revId": "4dd8fbdc83f8cb864a1508ea986daf1e799c73db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8762fc5_b60e6649",
         "filename": "chip/it83xx/uart.c",
         "patchSetId": 29
