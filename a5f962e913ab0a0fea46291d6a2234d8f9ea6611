@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "88d6f7d9_f789385c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2013-12-13T00:42:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8d1fbe3_98801ddf",
+      "revId": "a5f962e913ab0a0fea46291d6a2234d8f9ea6611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88d6f7d9_f7edb834",
         "filename": "power/tegra.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2013-12-12T23:40:22Z",
       "side": 1,
       "message": "What does \"real\" EC reset mean?  Do you mean \"hard\" or \"soft\"?\n\nWouldn\u0027t it be better to define the flags which do indicate a real reset, rather than flags which don\u0027t?",
+      "revId": "a5f962e913ab0a0fea46291d6a2234d8f9ea6611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e8ce934a_8f2779e2",
+        "filename": "power/tegra.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2013-12-13T00:42:37Z",
+      "side": 1,
+      "message": "Sorry that I am quite bad on naming. What I meant to real EC reset is those resets DO require the AP to warm-reset as well, for instances, the cold reset and F3+Power. So that the AP can enter the recovery mode (flashing SPI from USB, not Chrome OS recovery mode).\n\nThe listed reset flags are not reset condition on the AP\u0027s standpoint. Thus, don\u0027t warm-reset the AP.\n\nFor the negative listing, I think this is easier if a new reset flag is defined, it doesn\u0027t effect this logic and AP still enters recovery mode by default.",
+      "parentUuid": "88d6f7d9_f7edb834",
       "revId": "a5f962e913ab0a0fea46291d6a2234d8f9ea6611",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
