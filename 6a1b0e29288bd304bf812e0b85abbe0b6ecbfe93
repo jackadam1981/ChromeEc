@@ -16,6 +16,24 @@
       "revId": "6a1b0e29288bd304bf812e0b85abbe0b6ecbfe93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68baa3ef_182a4593",
+        "filename": "common/system.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1001306
+      },
+      "writtenOn": "2013-12-13T23:06:46Z",
+      "side": 1,
+      "message": "Done.\n\nI removed it because jump is now protected by MPU but this can help the caller handle an illegal jump gracefully instead of seeing crash and reboot.",
+      "parentUuid": "c86c6f4a_838e3ed4",
+      "revId": "6a1b0e29288bd304bf812e0b85abbe0b6ecbfe93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
