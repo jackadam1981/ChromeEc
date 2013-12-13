@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28aeeb65_5024c198",
+        "filename": "power/tegra.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-12-13T02:05:58Z",
+      "side": 1,
+      "message": "Ok, how about\n\nMost reset causes require forcing the AP to reset as well, because the EC will be back in RO code and need software sync.  This mask lists the reset causes where the EC will still be in the correct firmware.\n\nBut I\u0027m not convinced this includes anything other than SYSJUMP...",
+      "revId": "90ea386b2441d86196d32e561408ad2ca0b10e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
