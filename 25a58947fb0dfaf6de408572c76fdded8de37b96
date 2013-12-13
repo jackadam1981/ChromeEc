@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48b31ffa_37ea1861",
+        "filename": "power/tegra.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-12-13T20:13:46Z",
+      "side": 1,
+      "message": "ARM boards still use RO-normal, so EC in RO is the usual case.\n\nThere\u0027s also the case where the system is unlocked and we\u0027re doing a full firmware update (EC-RW and EC-RO) and the AP jumps the EC back and forth between RO and RW.\n\nSo I think looking at RESET_FLAG_SYSJUMP is correct here too.",
+      "revId": "25a58947fb0dfaf6de408572c76fdded8de37b96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
