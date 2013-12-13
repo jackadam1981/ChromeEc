@@ -27,6 +27,8 @@
 #define CPUTS(outstr) cputs(CC_KEYBOARD, outstr)
 #define CPRINTF(format, args...) cprintf(CC_KEYBOARD, format, ## args)
 
+#define CONFIG_KEYBOARD_DEBUG
+
 #ifdef CONFIG_KEYBOARD_DEBUG
 #define CPUTS5(outstr) cputs(CC_KEYBOARD, outstr)
 #define CPRINTF5(format, args...) cprintf(CC_KEYBOARD, format, ## args)
@@ -1103,7 +1105,7 @@ static void keyboard_power_button(void)
 		}
 	};
 
-	power_button_pressed = power_button_is_pressed();
+	power_button_pressed = 0; /*power_button_is_pressed();*/
 
 	/*
 	 * Only send the scan code if main chipset is fully awake and

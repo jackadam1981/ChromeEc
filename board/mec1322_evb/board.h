@@ -12,6 +12,7 @@
 #define CONFIG_SYSTEM_UNLOCKED  /* Allow dangerous commands */
 #define CONFIG_WATCHDOG_HELP
 #define CONFIG_FANS 1
+#define CONFIG_KEYBOARD_PROTOCOL_8042
 
 /* Modules we want to exclude */
 #undef CONFIG_EEPROM

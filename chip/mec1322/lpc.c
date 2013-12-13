@@ -8,6 +8,7 @@
 #include "console.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "keyboard_protocol.h"
 #include "lpc.h"
 #include "registers.h"
 #include "task.h"
@@ -60,10 +61,18 @@ static void setup_lpc(void)
 		ptr = ptr - 0x118000 + 0x20000000;
 
 	/* Set up ACPI1 for 0x200/0x204 */
-	MEC1322_LPC_ACPI_EC1_BAR = 0x02008407;
+	/*MEC1322_LPC_ACPI_EC1_BAR = 0x02008407;
 	MEC1322_INT_ENABLE(15) |= 1 << 8;
 	MEC1322_INT_BLK_EN |= 1 << 15;
-	task_enable_irq(MEC1322_IRQ_ACPIEC1_IBF);
+	task_enable_irq(MEC1322_IRQ_ACPIEC1_IBF);*/
+
+	/* Set up 8042 interface at 0x60/0x64 */
+	MEC1322_LPC_8042_BAR = 0x02008104;
+	/*MEC1322_LPC_8042_BAR = 0x00608104;*/
+	MEC1322_8042_ACT |= 1;
+	MEC1322_INT_ENABLE(15) |= 1 << 14;
+	MEC1322_INT_BLK_EN |= 1 << 15;
+	task_enable_irq(MEC1322_IRQ_8042EM_IBF);
 
 	/* Set up EMI module for memory mapped region.
 	 * TODO(crosbug.com/p/24107): Use LPC memory transaction for this
@@ -142,6 +151,44 @@ static void acpi_1_interrupt(void)
 	host_command_received(&host_cmd_args);
 }
 DECLARE_IRQ(MEC1322_IRQ_ACPIEC1_IBF, acpi_1_interrupt, 1);
+
+static void kb_ibf_interrupt(void)
+{
+#ifdef HAS_TASK_KEYPROTO
+	if (lpc_keyboard_input_pending())
+		keyboard_host_write(MEC1322_8042_H2E,
+				    MEC1322_8042_STS & (1 << 3));
+	task_wake(TASK_ID_KEYPROTO);
+#endif
+}
+DECLARE_IRQ(MEC1322_IRQ_8042EM_IBF, kb_ibf_interrupt, 1);
+
+int lpc_keyboard_has_char(void)
+{
+	return (MEC1322_8042_STS & (1 << 0)) ? 1 : 0;
+}
+
+int lpc_keyboard_input_pending(void)
+{
+	return (MEC1322_8042_STS & (1 << 1)) ? 1 : 0;
+}
+
+void lpc_keyboard_put_char(uint8_t chr, int send_irq)
+{
+	MEC1322_8042_E2H = chr;
+	/* TODO: handle send_irq */
+}
+
+void lpc_keyboard_clear_buffer(void)
+{
+	volatile char dummy __attribute__((unused));
+	dummy = MEC1322_8042_OBF_CLR;
+}
+
+void lpc_keyboard_resume_irq(void)
+{
+	/* TODO: implement */
+}
 
 void lpc_set_host_event_state(uint32_t mask)
 {
