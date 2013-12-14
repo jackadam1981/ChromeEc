@@ -25,7 +25,7 @@
 /* Memory mapping */
 
 #define CONFIG_RAM_BASE             0x00080000
-#define CONFIG_RAM_SIZE             0x00002000
+#define CONFIG_RAM_SIZE             0x00020000
 
 /* System stack size */
 #define CONFIG_STACK_SIZE           1024
@@ -101,6 +101,7 @@
 /* Optional features present on this chip */
 #undef CONFIG_I2C
 #undef CONFIG_FLASH
+#define CONFIG_LPC
 #undef CONFIG_WATCHDOG
 
 #endif  /* __CROS_EC_CONFIG_CHIP_H */

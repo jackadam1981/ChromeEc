@@ -147,6 +147,8 @@ SECTIONS
 #endif
         . = ALIGN(4);
         __data_start = .;
+        *(.lpc.reserved)
+        . = ALIGN(4);
         *(.data.tasks)
         *(.data)
 #ifdef CONFIG_MPU
