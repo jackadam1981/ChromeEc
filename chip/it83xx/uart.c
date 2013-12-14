@@ -17,6 +17,13 @@
 
 /* Traces on UART0 */
 #define UART_PORT 0
+#define UART_HOST 1
+
+#if UART_PORT == 0
+#define UART_INT  IT83XX_IRQ_UART1
+#else
+#define UART_INT  IT83XX_IRQ_UART2
+#endif
 
 static int init_done;
 
@@ -92,24 +99,24 @@ int uart_read_char(void)
 
 void uart_disable_interrupt(void)
 {
-	task_disable_irq(IT83XX_IRQ_UART1);
+	task_disable_irq(UART_INT);
 }
 
 void uart_enable_interrupt(void)
 {
-	task_enable_irq(IT83XX_IRQ_UART1);
+	task_enable_irq(UART_INT);
 }
 
 static void uart_ec_interrupt(void)
 {
 	/* clear interrupt status */
-	task_clear_pending_irq(IT83XX_IRQ_UART1);
+	task_clear_pending_irq(UART_INT);
 
 	/* Read input FIFO until empty, then fill output FIFO */
 	uart_process_input();
 	uart_process_output();
 }
-DECLARE_IRQ(IT83XX_IRQ_UART1, uart_ec_interrupt, 1);
+DECLARE_IRQ(UART_INT, uart_ec_interrupt, 1);
 
 static void uart_config(void)
 {
@@ -129,7 +136,7 @@ static void uart_config(void)
 	/* 8-N-1 and DLAB set to allow access to DLL and DLM registers. */
 	IT83XX_UART_LCR(UART_PORT) = 0x83;
 
-	/* Set divisor to set baud rate to 115200 */
+	/* Set divisor to set baud rate to 115200. */
 	IT83XX_UART_DLM(UART_PORT) = 0x00;
 	IT83XX_UART_DLL(UART_PORT) = 0x01;
 
@@ -146,7 +153,7 @@ static void uart_config(void)
 	IT83XX_UART_FCR(UART_PORT) = 0x07;
 
 	/*
-	 * set OUT2 bit to enable interrupt logic.
+	 * Set OUT2 bit to enable interrupt logic.
 	 */
 	IT83XX_UART_MCR(UART_PORT) = 0x08;
 }
@@ -156,22 +163,42 @@ void uart_init(void)
 	/* Waiting for when we can use the GPIO module to set pin muxing */
 	gpio_config_module(MODULE_UART, 1);
 
-	/* switch UART0 on without hardware flow control */
-	IT83XX_GPIO_GRC1 = 0x01;
-	IT83XX_GPIO_GRC6 |= 0x03;
+	/* switch UART1 and UART2 on without hardware flow control */
+	IT83XX_GPIO_GRC1 |= 0x05;
+	IT83XX_GPIO_GRC6 |= 0x0f;
+
+	/*
+	 * Set UART_PORT to be controlled by EC side and UART_HOST to be
+	 * controlled by host side.
+	 */
+#if UART_PORT == 0
+	IT83XX_GCTRL_RSTDMMC |= 0x08;
+	IT83XX_GCTRL_RSTDMMC &= ~0x04;
+#else
+	IT83XX_GCTRL_RSTDMMC |= 0x04;
+	IT83XX_GCTRL_RSTDMMC &= ~0x08;
+#endif
 
 	/* Enable clocks to UART 1 and 2. */
 	clock_enable_peripheral(CGC_OFFSET_UART, 0, 0);
 
-	/* Config UART 0 only for now. */
+	/* Config UART_PORT. */
 	uart_config();
 
+	/* Basic config for host UART. */
+	IT83XX_UART_CSSR(UART_HOST) = 0x01;
+	IT83XX_UART_LCR(UART_HOST) = 0x83;
+	IT83XX_UART_DLM(UART_HOST) = 0x00;
+	IT83XX_UART_DLL(UART_HOST) = 0x01;
+	IT83XX_UART_LCR(UART_HOST) = 0x03;
+	IT83XX_UART_FCR(UART_HOST) = 0x07;
+
 	/* clear interrupt status */
-	task_clear_pending_irq(IT83XX_IRQ_UART1);
+	task_clear_pending_irq(UART_INT);
 
 	/* Enable interrupts */
 	IT83XX_UART_IER(UART_PORT) = 0x03;
-	task_enable_irq(IT83XX_IRQ_UART1);
+	task_enable_irq(UART_INT);
 
 	init_done = 1;
 }

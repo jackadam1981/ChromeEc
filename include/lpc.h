@@ -91,4 +91,11 @@ void lpc_set_host_event_mask(enum lpc_host_event_type type, uint32_t mask);
  */
 uint32_t lpc_get_host_event_mask(enum lpc_host_event_type type);
 
+/**
+ * LPC port 0x80 received interrupt
+ *
+ * @param signal	GPIO signal that triggered interrupt
+ */
+void __lpc_port80_interrupt(enum gpio_signal signal);
+
 #endif  /* __CROS_EC_LPC_H */
