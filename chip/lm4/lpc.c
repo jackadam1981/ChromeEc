@@ -699,8 +699,10 @@ static void lpc_init(void)
 	 *
 	 *   pci_write32 0 0x1f 0 0x8c 0x007c0901
 	 */
+#if 1
 	LM4_LPC_ADR(LPC_CH_MEMMAP) = EC_LPC_ADDR_MEMMAP;
 	LM4_LPC_CTL(LPC_CH_MEMMAP) = 0x0019 | (LPC_POOL_OFFS_MEMMAP << (5 - 1));
+#endif
 
 #ifdef CONFIG_UART_HOST
 	/*
@@ -752,12 +754,14 @@ static void lpc_init(void)
 	 * (That never happens; we can't use the last byte in the space because
 	 * ACPI can't see it anyway.)
 	 */
+#if 1
 	while (!(LM4_LPC_ST(LPC_CH_MEMMAP) & 0x10)) {
 		/* Clear HW1ST */
 		LM4_LPC_ST(LPC_CH_MEMMAP) &= ~0x40;
 		/* Do a dummy slave write; this should cause SW1ST to be set */
 		*LPC_POOL_MEMMAP = *LPC_POOL_MEMMAP;
 	}
+#endif
 
 	/* Initialize host args and memory map to all zero */
 	memset(lpc_host_args, 0, sizeof(*lpc_host_args));
