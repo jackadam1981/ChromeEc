@@ -147,6 +147,9 @@ SECTIONS
 #endif
         . = ALIGN(4);
         __data_start = .;
+        /* The LPC subsection below must be first in RAM, 0x80000-0x80204. */
+        *(.lpc.reserved)
+        . = ALIGN(4);
         *(.data.tasks)
         *(.data)
 #ifdef CONFIG_MPU

@@ -12,6 +12,7 @@
 
 /* stubbed features */
 #undef CONFIG_LID_SWITCH
+#define CONFIG_LPC_PROTOCOL_ITE
 
 enum gpio_signal {
 	GPIO_H_LED0,
@@ -28,13 +29,10 @@ enum gpio_signal {
 	GPIO_L_LED4,
 	GPIO_L_LED5,
 	GPIO_L_LED6,
+	GPIO_L80HLAT,
 	GPIO_BUSY_LED,
 	GPIO_GOOD_LED,
 	GPIO_FAIL_LED,
-	GPIO_SW1,
-	GPIO_SW2,
-	GPIO_SW3,
-	GPIO_SW4,
 	GPIO_START_SW,
 	/* Unimplemented GPIOs */
 	GPIO_ENTERING_RW,

@@ -24,15 +24,19 @@
 #define EC_LPC_ADDR_ACPI_DATA  0x62
 #define EC_LPC_ADDR_ACPI_CMD   0x66
 
+#ifndef CONFIG_LPC_PROTOCOL_ITE
+
 /* I/O addresses for host command */
 #define EC_LPC_ADDR_HOST_DATA  0x200
 #define EC_LPC_ADDR_HOST_CMD   0x204
+#define EC_LPC_ADDR_HOST_STATUS EC_LPC_ADDR_HOST_CMD
 
 /* I/O addresses for host command args and params */
 /* Protocol version 2 */
 #define EC_LPC_ADDR_HOST_ARGS    0x800  /* And 0x801, 0x802, 0x803 */
 #define EC_LPC_ADDR_HOST_PARAM   0x804  /* For version 2 params; size is
 					 * EC_PROTO2_MAX_PARAM_SIZE */
+
 /* Protocol version 3 */
 #define EC_LPC_ADDR_HOST_PACKET  0x800  /* Offset of version 3 packet */
 #define EC_LPC_HOST_PACKET_SIZE  0x100  /* Max size of version 3 packet */
@@ -43,6 +47,37 @@
 #define EC_HOST_CMD_REGION1    0x880
 #define EC_HOST_CMD_REGION_SIZE 0x80
 
+#define EC_LPC_ADDR_MEMMAP       0x900
+
+#else
+
+/* I/O addresses for host command */
+#define EC_LPC_ADDR_HOST_DATA   0xd202
+#define EC_LPC_ADDR_HOST_CMD    0xd200
+#define EC_LPC_ADDR_HOST_STATUS 0xd201
+
+/* I/O addresses for host command args and params */
+/* Protocol version 2 */
+#define EC_LPC_ADDR_HOST_ARGS    0xd100  /* And 0xd101, 0xd102, 0xd103 */
+#define EC_LPC_ADDR_HOST_PARAM   0xd104  /* For version 2 params; size is
+					  * EC_PROTO2_MAX_PARAM_SIZE */
+
+/* Protocol version 3 */
+#define EC_LPC_ADDR_HOST_PACKET  0xd100  /* Offset of version 3 packet */
+
+/* The actual block is 0x800-0x8ff, but some BIOSes think it's 0x880-0x8ff
+ * and they tell the kernel that so we have to think of it as two parts. */
+#define EC_HOST_CMD_REGION0    0xd100
+#define EC_HOST_CMD_REGION1    0xd180
+
+#define EC_LPC_ADDR_MEMMAP       0xd000
+#endif /* CONFIG_LPC_PROTOCOL_ITE */
+
+#define EC_LPC_HOST_PACKET_SIZE  0x100  /* Max size of version 3 packet */
+#define EC_HOST_CMD_REGION_SIZE  0x80
+#define EC_MEMMAP_SIZE           255   /* ACPI IO buffer max is 255 bytes */
+#define EC_MEMMAP_TEXT_MAX       8     /* Size of a string in the memory map */
+
 /* EC command register bit functions */
 #define EC_LPC_CMDR_DATA	(1 << 0)  /* Data ready for host to read */
 #define EC_LPC_CMDR_PENDING	(1 << 1)  /* Write pending to EC */
@@ -51,10 +86,6 @@
 #define EC_LPC_CMDR_ACPI_BRST	(1 << 4)  /* Burst mode (not used) */
 #define EC_LPC_CMDR_SCI		(1 << 5)  /* SCI event is pending */
 #define EC_LPC_CMDR_SMI		(1 << 6)  /* SMI event is pending */
-
-#define EC_LPC_ADDR_MEMMAP       0x900
-#define EC_MEMMAP_SIZE         255 /* ACPI IO buffer max is 255 bytes */
-#define EC_MEMMAP_TEXT_MAX     8   /* Size of a string in the memory map */
 
 /* The offset address of each type of data in mapped memory. */
 #define EC_MEMMAP_TEMP_SENSOR      0x00 /* Temp sensors */

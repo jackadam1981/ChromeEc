@@ -148,3 +148,56 @@ int system_get_console_force_enabled(void)
 	/* TODO(crosbug.com/p/23575): IMPLEMENT ME ! */
 	return 0;
 }
+
+/*****************************************************************************/
+/* Console commands */
+
+static int command_print_bram(int argc, char **argv)
+{
+	uint8_t val, addr;
+	char *e;
+	int i;
+
+	if (argc > 3)
+		return EC_ERROR_PARAM_COUNT;
+
+	/*
+	 * If three args, then second arg is BRAM address and third arg is value
+	 * to set for that BRAM address.
+	 */
+	if (argc == 3) {
+		addr = strtoi(argv[1], &e, 16);
+		if (*e || addr > 191)
+			return EC_ERROR_PARAM1;
+		val = strtoi(argv[2], &e, 16);
+		if (*e)
+			return EC_ERROR_PARAM2;
+
+		REG8(IT83XX_BRAM_BASE+addr) = val;
+	}
+
+	/* If two args, set all of BRAM to the second arg. */
+	if (argc == 2) {
+		val = strtoi(argv[1], &e, 16);
+		if (*e)
+			return EC_ERROR_PARAM1;
+
+		for (i = 0; i < 192; i++)
+			REG8(IT83XX_BRAM_BASE+i) = val;
+	}
+
+	/* Print contents of all of BRAM. */
+	for (i = 0; i < 192; i++) {
+		ccprintf("%02x ", REG8(IT83XX_BRAM_BASE+i));
+		if (i%16 == 15) {
+			ccprintf("\n");
+			cflush();
+		}
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(bram, command_print_bram,
+			"[val] | [addr val]",
+			"Print and/or set battery backed ram (BRAM)",
+			NULL);

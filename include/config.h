@@ -515,6 +515,9 @@
 /* Support LPC interface */
 #undef CONFIG_LPC
 
+/* Support ITE version of LPC interface */
+#undef CONFIG_LPC_PROTOCOL_ITE
+
 /* Support memory protection unit (MPU) */
 #undef CONFIG_MPU
 
