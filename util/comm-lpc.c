@@ -72,9 +72,17 @@ static int ec_command_lpc(int command, int version,
 	for (i = 0, d = (const uint8_t *)&args; i < sizeof(args); i++, d++)
 		outb(*d, EC_LPC_ADDR_HOST_ARGS + i);
 
+#ifdef CONFIG_LPC_PROTOCOL_ITE
+	outb(EC_LPC_STATUS_FROM_HOST, EC_LPC_ADDR_HOST_STATUS);
+#endif
+
 	outb(command, EC_LPC_ADDR_HOST_CMD);
 
+#ifdef CONFIG_LPC_PROTOCOL_ITE
+	if (wait_for_ec(EC_LPC_ADDR_HOST_STATUS, 1000000)) {
+#else
 	if (wait_for_ec(EC_LPC_ADDR_HOST_CMD, 1000000)) {
+#endif
 		fprintf(stderr, "Timeout waiting for EC response\n");
 		return -EC_RES_ERROR;
 	}
@@ -166,10 +174,18 @@ static int ec_command_lpc_3(int command, int version,
 	for (i = 0, d = (const uint8_t *)&rq; i < sizeof(rq); i++, d++)
 		outb(*d, EC_LPC_ADDR_HOST_PACKET + i);
 
+#ifdef CONFIG_LPC_PROTOCOL_ITE
+	outb(EC_LPC_STATUS_FROM_HOST, EC_LPC_ADDR_HOST_STATUS);
+#endif
+
 	/* Start the command */
 	outb(EC_COMMAND_PROTOCOL_3, EC_LPC_ADDR_HOST_CMD);
 
+#ifdef CONFIG_LPC_PROTOCOL_ITE
+	if (wait_for_ec(EC_LPC_ADDR_HOST_STATUS, 1000000)) {
+#else
 	if (wait_for_ec(EC_LPC_ADDR_HOST_CMD, 1000000)) {
+#endif
 		fprintf(stderr, "Timeout waiting for EC response\n");
 		return -EC_RES_ERROR;
 	}
