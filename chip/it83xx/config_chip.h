@@ -101,6 +101,7 @@
 /* Optional features present on this chip */
 #undef CONFIG_I2C
 #undef CONFIG_FLASH
+#define CONFIG_LPC
 #undef CONFIG_WATCHDOG
 
 #endif  /* __CROS_EC_CONFIG_CHIP_H */
