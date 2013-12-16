@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8973b5d_772032b3",
+        "filename": "common/thermal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-12-16T20:31:22Z",
+      "side": 1,
+      "message": "Should be ok, since there\u0027s only one thing which reads it.\n\nIf we were more worried about it, we could implement an atomic_get_and_clear_mask().",
+      "revId": "3c4c8e9a192609a843ac4e72a34659a3c395aaec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
