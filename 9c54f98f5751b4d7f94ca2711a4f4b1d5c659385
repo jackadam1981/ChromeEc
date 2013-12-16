@@ -2,6 +2,42 @@
   "comments": [
     {
       "key": {
+        "uuid": "a8973b5d_5199be17",
+        "filename": "a8973b5d_5199be17",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1001306
+      },
+      "writtenOn": "2013-12-16T19:38:15Z",
+      "side": 1,
+      "message": "Done. I added more comment.\n\nI will remove unused ones or I can make the list more comprehensive, if you insist. I usually see unused registers in a header file for a specific piece of hardware. I assume it\u0027s for convenience for future development. For example, if space is allowed, I would like to add command_mpu so that one can control the MPU from ec console for debugging.",
+      "parentUuid": "68baa3ef_b808f9bb",
+      "revId": "9c54f98f5751b4d7f94ca2711a4f4b1d5c659385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8973b5d_9c74fda6",
+        "filename": "a8973b5d_9c74fda6",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1001306
+      },
+      "writtenOn": "2013-12-16T19:38:15Z",
+      "side": 1,
+      "message": "These are used mutually exclusively. So, I deliberately used the same index. It also guarantees neither of these have a higher priority. The one which is not locked runs unaffected by the MPU because there is no matching region.",
+      "parentUuid": "68baa3ef_38e2a9bb",
+      "revId": "9c54f98f5751b4d7f94ca2711a4f4b1d5c659385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68baa3ef_78e8219d",
         "filename": "core/cortex-m/include/mpu.h",
         "patchSetId": 6
@@ -13,6 +49,24 @@
       "writtenOn": "2013-12-16T16:50:48Z",
       "side": 1,
       "message": "The TM4E1G31H6ZRB data sheet (which I was told is the latest) shows the XN bit as bit 28, not 12. Bit 12 falls into the subregion field. What\u0027s this MPU_ATTR_NX bit for?",
+      "revId": "9c54f98f5751b4d7f94ca2711a4f4b1d5c659385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "28ab4b9f_d24f1482",
+        "filename": "core/cortex-m/include/mpu.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001306
+      },
+      "writtenOn": "2013-12-16T19:38:15Z",
+      "side": 1,
+      "message": "Attribute register can be accessed half-word. So, I read/write attribute register (uint16_t) and size register (uint16_t) separately.",
+      "parentUuid": "68baa3ef_78e8219d",
       "revId": "9c54f98f5751b4d7f94ca2711a4f4b1d5c659385",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -36,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "c86c6f4a_f829559e",
+        "filename": "core/cortex-m/include/mpu.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1001306
+      },
+      "writtenOn": "2013-12-16T19:38:15Z",
+      "side": 1,
+      "message": "Done. Added more comments.\n\nI will remove unused ones or make the list more comprehensive if you insist. I usually see unused registers in a header file for a specific piece of hardware.",
+      "parentUuid": "68baa3ef_b808f9bb",
+      "revId": "9c54f98f5751b4d7f94ca2711a4f4b1d5c659385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08a847a1_fdd307ed",
         "filename": "core/cortex-m/mpu.c",
         "patchSetId": 6
@@ -47,6 +119,24 @@
       "writtenOn": "2013-12-16T16:50:48Z",
       "side": 1,
       "message": "Do we mark the stack as no-execute? I\u0027d think we should.",
+      "revId": "9c54f98f5751b4d7f94ca2711a4f4b1d5c659385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "28ab4b9f_724de056",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1001306
+      },
+      "writtenOn": "2013-12-16T19:38:15Z",
+      "side": 1,
+      "message": "Stuck is in RAM. So, yes, it\u0027s XN\u0027ed.",
+      "parentUuid": "08a847a1_fdd307ed",
       "revId": "9c54f98f5751b4d7f94ca2711a4f4b1d5c659385",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -70,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "28ab4b9f_b2d248e6",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1001306
+      },
+      "writtenOn": "2013-12-16T19:38:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68baa3ef_f8fe7152",
+      "revId": "9c54f98f5751b4d7f94ca2711a4f4b1d5c659385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68baa3ef_38e2a9bb",
         "filename": "core/cortex-m/mpu.c",
         "patchSetId": 6
@@ -81,6 +189,24 @@
       "writtenOn": "2013-12-16T16:50:48Z",
       "side": 1,
       "message": "Why are we using region 1 for both RO and RW sections? Shouldn\u0027t we use two different regions, so we can make one explicitly non-executable?",
+      "revId": "9c54f98f5751b4d7f94ca2711a4f4b1d5c659385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "28ab4b9f_123a1c00",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1001306
+      },
+      "writtenOn": "2013-12-16T19:38:15Z",
+      "side": 1,
+      "message": "These are used mutually exclusively. Only one of these is used at a time. It also guarantees neither of them have a higher priority.",
+      "parentUuid": "68baa3ef_38e2a9bb",
       "revId": "9c54f98f5751b4d7f94ca2711a4f4b1d5c659385",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
