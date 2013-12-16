@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8973b5d_bcd90166",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-12-16T19:12:33Z",
+      "side": 1,
+      "message": "#include \"ap_hang_detect.h\", just for safety?",
+      "revId": "c92dad72564327538aaf05a73766e618b6909f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c86c6f4a_dd3d6b42",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1722,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-12-16T19:12:33Z",
+      "side": 1,
+      "message": "Would these not be better as an enum, to make sure we\u0027re always using them symbolically?",
+      "revId": "c92dad72564327538aaf05a73766e618b6909f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c86c6f4a_fd3a2747",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1761,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-12-16T19:12:33Z",
+      "side": 1,
+      "message": "enum ec_hang_flags flags; instead?",
+      "revId": "c92dad72564327538aaf05a73766e618b6909f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
