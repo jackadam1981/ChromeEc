@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "c86c6f4a_d8cbb9e1",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1722,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-12-16T20:44:14Z",
+      "side": 1,
+      "message": "enum is only guaranteed to fit in an int. Empirically, that\u0027s 32 bits for both x86 and ARM with our current compilers so it would be fine, but legally it could be as small as 16 bits.\n\n(Although I suspect if int was actually 16 bits, nothing would work).\n\nUp to you.",
+      "parentUuid": "c86c6f4a_f8ff9516",
+      "revId": "c92dad72564327538aaf05a73766e618b6909f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c86c6f4a_fd3a2747",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "No, because more than one flag can be present, and because sizeof(enum) is not guaranteed constant across platforms.",
       "parentUuid": "c86c6f4a_fd3a2747",
+      "revId": "c92dad72564327538aaf05a73766e618b6909f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c86c6f4a_f8c875e7",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1761,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-12-16T20:44:14Z",
+      "side": 1,
+      "message": "Neither of those matter. But whatever.",
+      "parentUuid": "c86c6f4a_180c7198",
       "revId": "c92dad72564327538aaf05a73766e618b6909f55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
