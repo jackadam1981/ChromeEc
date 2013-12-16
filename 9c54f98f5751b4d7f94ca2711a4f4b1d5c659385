@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68baa3ef_78e8219d",
+        "filename": "core/cortex-m/include/mpu.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-12-16T16:50:48Z",
+      "side": 1,
+      "message": "The TM4E1G31H6ZRB data sheet (which I was told is the latest) shows the XN bit as bit 28, not 12. Bit 12 falls into the subregion field. What\u0027s this MPU_ATTR_NX bit for?",
+      "revId": "9c54f98f5751b4d7f94ca2711a4f4b1d5c659385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68baa3ef_b808f9bb",
+        "filename": "core/cortex-m/include/mpu.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-12-16T16:50:48Z",
+      "side": 1,
+      "message": "Only MPU_ATTR_RW_RW is used anywhere. What are the the others for?\n\nMaybe just add a big comment describing the intended purpose of these bits.",
+      "revId": "9c54f98f5751b4d7f94ca2711a4f4b1d5c659385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "08a847a1_fdd307ed",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-12-16T16:50:48Z",
+      "side": 1,
+      "message": "Do we mark the stack as no-execute? I\u0027d think we should.",
+      "revId": "9c54f98f5751b4d7f94ca2711a4f4b1d5c659385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68baa3ef_f8fe7152",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-12-16T16:50:48Z",
+      "side": 1,
+      "message": "I see some magic numbers when calling mpu_lock_region() - looks like 0 for RAM, 7 for more RAM(?), 1 for flash.\nPlease use an enum for all the configured regions so we can tell which ones are used for what purpose.",
+      "revId": "9c54f98f5751b4d7f94ca2711a4f4b1d5c659385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68baa3ef_38e2a9bb",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-12-16T16:50:48Z",
+      "side": 1,
+      "message": "Why are we using region 1 for both RO and RW sections? Shouldn\u0027t we use two different regions, so we can make one explicitly non-executable?",
+      "revId": "9c54f98f5751b4d7f94ca2711a4f4b1d5c659385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
