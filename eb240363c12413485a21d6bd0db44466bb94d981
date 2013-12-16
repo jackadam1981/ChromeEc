@@ -16,6 +16,24 @@
       "revId": "eb240363c12413485a21d6bd0db44466bb94d981",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c86c6f4a_b8435d82",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-12-16T20:54:43Z",
+      "side": 1,
+      "message": "The net name on the schematic is EC_PWROK, but yes, the gpio name is PCH_SYS_PWROK.",
+      "parentUuid": "a8973b5d_e21006ab",
+      "revId": "eb240363c12413485a21d6bd0db44466bb94d981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
