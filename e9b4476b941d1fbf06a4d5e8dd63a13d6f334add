@@ -16,6 +16,24 @@
       "revId": "e9b4476b941d1fbf06a4d5e8dd63a13d6f334add",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "886fd775_cc0bbf80",
+        "filename": "board/rambi/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-12-18T16:43:18Z",
+      "side": 1,
+      "message": "Good catch, I missed these.  Will fix and re-upload.",
+      "parentUuid": "88e43752_21d86e3d",
+      "revId": "e9b4476b941d1fbf06a4d5e8dd63a13d6f334add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
