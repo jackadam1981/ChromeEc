@@ -84,6 +84,11 @@
  */
 #define PMIC_WARM_RESET_L_HOLD_TIME (4 * MSEC)
 
+/*
+ * The first time the PMIC sees power (AC or battery) it needs 200ms for
+ * the RTC startup */
+#define PMIC_RTC_STARTUP (200 * MSEC)
+
 /* Application processor power state */
 static int ap_on;
 static int ap_suspended;
@@ -462,6 +467,11 @@ static int power_on(void)
 	set_ap_reset(0);
 
 	/* Push the power button */
+	if (system_get_reset_flags() & RESET_FLAG_POWER_ON) {
+		CPRINTF("[%T wait for %dms for PMIC RTC start-up]\n",
+			PMIC_RTC_STARTUP / MSEC);
+		usleep(PMIC_RTC_STARTUP);
+	}
 	set_pmic_pwron(1);
 	usleep(PMIC_PWRON_DEBOUNCE_TIME);
 
