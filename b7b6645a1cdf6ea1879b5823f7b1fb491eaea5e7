@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "685e23ff_5e33a5dc",
+        "filename": "power/tegra.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-12-19T17:09:15Z",
+      "side": 1,
+      "message": "t \u003d get_time().val;\n\n  if (t \u003c PMIC_RTC_STARTUP)\n    usleep(PMIC_RTC_STARTUP - t);\n\nThat is, you only need to sleep the remainder of the 200ms interval, not a full 200ms.",
+      "revId": "b7b6645a1cdf6ea1879b5823f7b1fb491eaea5e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
