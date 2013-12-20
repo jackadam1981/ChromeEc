@@ -34,6 +34,7 @@ enum gpio_signal {
 	GPIO_GOOD_LED,
 	GPIO_FAIL_LED,
 	GPIO_START_SW,
+	GPIO_WP_L,
 	/* Unimplemented GPIOs */
 	GPIO_ENTERING_RW,
 

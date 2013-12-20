@@ -40,7 +40,7 @@
 #define CONFIG_FLASH_BASE           0x00000000
 #define CONFIG_FLASH_BANK_SIZE      0x00000800  /* protect bank size */
 #define CONFIG_FLASH_ERASE_SIZE     0x00000400  /* erase bank size */
-#define CONFIG_FLASH_WRITE_SIZE     0x00000004  /* minimum write size */
+#define CONFIG_FLASH_WRITE_SIZE     0x00000002  /* minimum write size */
 
 /* Ideal flash write size fills the 32-entry flash write buffer */
 #define CONFIG_FLASH_WRITE_IDEAL_SIZE (32 * 4)
@@ -100,7 +100,7 @@
 
 /* Optional features present on this chip */
 #undef CONFIG_I2C
-#undef CONFIG_FLASH
+#define CONFIG_FLASH
 #define CONFIG_LPC
 #undef CONFIG_WATCHDOG
 
