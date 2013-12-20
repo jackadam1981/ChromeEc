@@ -10,7 +10,7 @@
 CORE:=nds32
 
 # Required chip modules
-chip-y=hwtimer.o uart.o gpio.o system.o jtag.o clock.o irq.o lpc.o
+chip-y=hwtimer.o uart.o gpio.o system.o jtag.o clock.o irq.o lpc.o flash.o
 
 # Optional chip modules
 chip-$(CONFIG_WATCHDOG)+=watchdog.o
