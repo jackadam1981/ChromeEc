@@ -44,6 +44,7 @@ const struct gpio_info gpio_list[] = {
 	{"GOOD_LED", GPIO_J, (1<<1), GPIO_OUT_HIGH},
 	{"FAIL_LED", GPIO_J, (1<<2), GPIO_OUT_LOW},
 	{"START_SW", GPIO_E, (1<<4), GPIO_INT_FALLING, test_interrupt},
+	{"WP_L", GPIO_E, (1<<1), GPIO_INPUT},
 	/* Unimplemented signals which we need to emulate for now */
 	GPIO_SIGNAL_NOT_IMPLEMENTED("ENTERING_RW"),
 };
