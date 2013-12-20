@@ -57,6 +57,7 @@ const struct gpio_alt_func gpio_alt_funcs[] = {
 const int gpio_alt_funcs_count = ARRAY_SIZE(gpio_alt_funcs);
 
 /* Initialize board. */
+#include "clock.h"
 static void board_init(void)
 {
 	gpio_enable_interrupt(GPIO_START_SW);
