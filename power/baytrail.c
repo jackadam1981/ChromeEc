@@ -147,6 +147,8 @@ enum x86_state x86_handle_state(enum x86_state state)
 {
 	switch (state) {
 	case X86_G3:
+		gpio_set_level(GPIO_KBD_IRQ_L, 0);
+		gpio_set_level(GPIO_KBD_IRQ_NEW_L, 0);
 		break;
 
 	case X86_S5:
@@ -227,6 +229,12 @@ enum x86_state x86_handle_state(enum x86_state state)
 		 * suspend.
 		 */
 		gpio_set_level(GPIO_ENABLE_TOUCHPAD, 1);
+
+		/*
+		 * Late pull-up of IRQ_SERIRQ.
+		 */
+		gpio_set_level(GPIO_KBD_IRQ_L, 1);
+		gpio_set_level(GPIO_KBD_IRQ_NEW_L, 1);
 
 		/* Call hooks now that rails are up */
 		hook_notify(HOOK_CHIPSET_STARTUP);
