@@ -162,6 +162,8 @@ enum x86_state x86_handle_state(enum x86_state state)
 		 * switch transitions.
 		 */
 		gpio_set_level(GPIO_TOUCHSCREEN_RESET_L, lid_is_open());
+		gpio_set_level(GPIO_KBD_IRQ_L, 1);
+		gpio_set_level(GPIO_KBD_IRQ_NEW_L, 1);
 
 		/* Check for state transitions */
 		if (!x86_has_signals(IN_PGOOD_S3)) {
