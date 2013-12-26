@@ -269,14 +269,9 @@ static void gaia_suspend_deferred(void)
 	ap_suspended = new_ap_suspended;
 
 	if (ap_suspended) {
-		if (lid_is_open())
-			powerled_set_state(POWERLED_STATE_SUSPEND);
-		else
-			powerled_set_state(POWERLED_STATE_OFF);
 		/* Call hooks here since we don't know it prior to AP suspend */
 		hook_notify(HOOK_CHIPSET_SUSPEND);
 	} else {
-		powerled_set_state(POWERLED_STATE_ON);
 		hook_notify(HOOK_CHIPSET_RESUME);
 	}
 
@@ -523,7 +518,6 @@ static int power_on(void)
 
 	ap_on = 1;
 	disable_sleep(SLEEP_MASK_AP_RUN);
-	powerled_set_state(POWERLED_STATE_ON);
 
 	/* Call hooks now that AP is running */
 	hook_notify(HOOK_CHIPSET_STARTUP);
@@ -584,7 +578,6 @@ static void power_off(void)
 	ap_suspended = 0;
 	lid_opened = 0;
 	enable_sleep(SLEEP_MASK_AP_RUN);
-	powerled_set_state(POWERLED_STATE_OFF);
 #ifdef CONFIG_PMU_TPS65090
 	pmu_shutdown();
 #endif
