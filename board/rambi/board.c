@@ -115,8 +115,8 @@ const struct gpio_info gpio_list[] = {
 	 * TODO(crosbug.com/p/24424): Remove old assignment and remove _NEW
 	 * from the new one when we deprecate the 1.5 boards.
 	 */
-	{"KBD_IRQ_L",            LM4_GPIO_M, (1<<4), GPIO_OUT_HIGH, NULL},
-	{"KBD_IRQ_NEW_L",        LM4_GPIO_M, (1<<3), GPIO_OUT_HIGH, NULL},
+	{"KBD_IRQ_L",            LM4_GPIO_M, (1<<4), GPIO_ODR_HIGH, NULL},
+	{"KBD_IRQ_NEW_L",        LM4_GPIO_M, (1<<3), GPIO_ODR_HIGH, NULL},
 };
 BUILD_ASSERT(ARRAY_SIZE(gpio_list) == GPIO_COUNT);
 
