@@ -111,6 +111,8 @@ enum power_request_t {
 	POWER_REQ_NONE,
 	POWER_REQ_OFF,
 	POWER_REQ_ON,
+	POWER_REQ_COLD,
+	POWER_REQ_WARM,
 
 	POWER_REQ_COUNT,
 };
@@ -332,11 +334,7 @@ static int tegra_power_init(void)
 		 * The warm reset triggers AP into the Tegra recovery mode (
 		 * flash SPI from USB).
 		 */
-		CPRINTF("[%T assert GPIO_PMIC_WARM_RESET_L for %d ms]\n",
-				PMIC_WARM_RESET_L_HOLD_TIME / MSEC);
-		gpio_set_level(GPIO_PMIC_WARM_RESET_L, 0);
-		usleep(PMIC_WARM_RESET_L_HOLD_TIME);
-		gpio_set_level(GPIO_PMIC_WARM_RESET_L, 1);
+		chipset_reset(0);
 	}
 
 	/* Leave power off only if requested by reset flags */
@@ -376,23 +374,6 @@ void chipset_exit_hard_off(void)
 	 * TODO(crosbug.com/p/23822): Implement, if/when we take the AP down to
 	 * a hard-off state.
 	 */
-}
-
-void chipset_reset(int is_cold)
-{
-	/*
-	 * TODO(crosbug.com/p/23822): Implement cold reset.  For now, all
-	 * resets are warm resets.
-	 */
-	CPRINTF("[%T EC triggered warm reboot]\n");
-
-	/*
-	 * This is a hack to do an AP warm reboot while still preserving RAM
-	 * contents. This is useful for looking at kernel log message contents
-	 * from previous boot in cases where the AP/OS is hard hung.
-	 */
-	power_request = POWER_REQ_ON;
-	task_wake(TASK_ID_CHIPSET);
 }
 
 void chipset_force_shutdown(void)
@@ -561,6 +542,23 @@ static void power_off(void)
 	CPRINTF("[%T power shutdown complete]\n");
 }
 
+void chipset_reset(int is_cold)
+{
+	if (is_cold) {
+		CPRINTF("[%T EC triggered cold reboot]\n");
+		power_off();
+		/* After XPSHOLD is dropped off, the system will be on again */
+		power_request = POWER_REQ_ON;
+	} else {
+		CPRINTF("[%T EC triggered warm reboot]\n");
+		CPRINTF("[%T assert GPIO_PMIC_WARM_RESET_L for %d ms]\n",
+				PMIC_WARM_RESET_L_HOLD_TIME / MSEC);
+		gpio_set_level(GPIO_PMIC_WARM_RESET_L, 0);
+		usleep(PMIC_WARM_RESET_L_HOLD_TIME);
+		gpio_set_level(GPIO_PMIC_WARM_RESET_L, 1);
+	}
+}
+
 /*
  * Calculates the delay in microseconds to the next time we have to check
  * for a power event,
@@ -650,6 +648,8 @@ static const char *power_req_name[POWER_REQ_COUNT] = {
 	"none",
 	"off",
 	"on",
+	"cold",
+	"warm",
 };
 
 /* Power states that we can report */
@@ -671,7 +671,7 @@ static const char * const state_name[] = {
 
 static int command_power(int argc, char **argv)
 {
-	int v;
+	int req;
 
 	if (argc < 2) {
 		enum power_state_t state;
@@ -688,16 +688,26 @@ static int command_power(int argc, char **argv)
 		return EC_SUCCESS;
 	}
 
-	if (!parse_bool(argv[1], &v))
+	if (!strcasecmp(argv[1], "off")) {
+		req = power_request = POWER_REQ_OFF;
+	} else if (!strcasecmp(argv[1], "on")) {
+		req = power_request = POWER_REQ_ON;
+	} else if (!strcasecmp(argv[1], "cold")) {
+		req = POWER_REQ_COLD;
+		chipset_reset(1);
+	} else if (!strcasecmp(argv[1], "warm")) {
+		req = POWER_REQ_WARM;
+		chipset_reset(0);
+	} else {
 		return EC_ERROR_PARAM1;
+	}
 
-	power_request = v ? POWER_REQ_ON : POWER_REQ_OFF;
-	ccprintf("Requesting power %s\n", power_req_name[power_request]);
+	ccprintf("Requesting power %s\n", power_req_name[req]);
 	task_wake(TASK_ID_CHIPSET);
 
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(power, command_power,
-			"on/off",
-			"Turn AP power on/off",
+			"on/off/cold/warm",
+			"Turn AP power on/off, cold/warm reset",
 			NULL);
