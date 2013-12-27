@@ -44,6 +44,11 @@
 #define BATTERY_AP_OFF_LEVEL 0
 #endif
 
+#ifdef CONFIG_3LED_PIT
+#define GREEN_LED_ON 1
+#define GREEN_LED_OFF 0
+#endif
+
 static const char * const state_list[] = POWER_STATE_NAME_TABLE;
 
 /* States for throttling PMU task */
@@ -51,6 +56,35 @@ static timestamp_t last_waken; /* Initialized to 0 */
 static int has_pending_event;
 
 static enum charging_state current_state = ST_IDLE0;
+
+#ifdef CONFIG_3LED_PIT
+static void battery_charging_led(int led_on)
+{
+	led_on = led_on ? 1 : 0;
+	if (gpio_get_level(GPIO_CHG_COMP_L) != led_on)
+		gpio_set_level(GPIO_CHG_COMP_L, led_on);
+}
+
+static int battery_charging_stat(void)
+{
+	return gpio_get_level(GPIO_CHARGER_EN);
+}
+
+static void change_green_led_stat(void)
+{
+	int alarm;
+	
+	if(extpower_is_present()){
+		battery_status(&alarm);
+		if((alarm & ALARM_CHARGED) && !battery_charging_stat())
+			battery_charging_led(GREEN_LED_ON);
+		else
+			battery_charging_led(GREEN_LED_OFF);
+	}
+	else
+		battery_charging_led(GREEN_LED_OFF);
+}
+#endif
 
 static void enable_charging(int enable)
 {
@@ -409,6 +443,9 @@ void charger_task(void)
 		extpower_charge_update(0);
 #endif
 
+#ifdef CONFIG_3LED_PIT
+		change_green_led_stat();
+#endif
 		/*
 		 * When battery is extremely low, the internal voltage can not
 		 * power on its gas guage IC. Charging loop will enable the
