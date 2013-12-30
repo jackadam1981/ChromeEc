@@ -135,7 +135,81 @@ uint32_t system_get_scratchpad(void)
 	return MEC1322_VBAT_RAM(HIBDATA_INDEX_SCRATCHPAD);
 }
 
+#include "gpio.h"
+
+void unpower_gpio(void)
+{
+	int i, j, k;
+
+	for (i = 0; i < 2; ++i)
+		for(j = 0; j < 7; ++j)
+			for (k = 0; k < 8; ++k) {
+				if (i == 1 && j == 3 && k == 1)
+					continue;
+				if (i == 0 && j == 6 && k == 3)
+					continue;
+				if (i == 1 && j == 2 && k == 1)
+					continue;
+				if (i == 1 && j == 4 && k == 3)
+					continue;
+				if (i == 0 && j == 3 && k == 7)
+					break;
+				if (i == 1 && j == 3 && k == 7)
+					break;
+				if (i == 1 && j == 6 && k == 6)
+					break;
+				MEC1322_GPIO_CTL(10 * i + j, k) =
+					(MEC1322_GPIO_CTL(10 * i + j, k) & ~0xff) | 0x48;
+			}
+}
+
 void system_hibernate(uint32_t seconds, uint32_t microseconds)
 {
-	/* TODO(crosbug.com/p/24107): Implement this */
+	int i;
+
+	MEC1322_WDG_CTL &= ~1;
+
+	MEC1322_TMR32_CTL(0) &= ~1;
+	MEC1322_TMR32_CTL(1) &= ~1;
+	MEC1322_TMR16_CTL(0) &= ~1;
+
+	MEC1322_PCR_CHIP_SLP_EN |= 0x3;
+	MEC1322_PCR_EC_SLP_EN |= 0xe0700ff7;
+	MEC1322_PCR_HOST_SLP_EN |= 0x5f003;
+	MEC1322_PCR_SYS_SLP_CTL |= 0x5;
+	MEC1322_PCR_EC_SLP_EN2 |= 0x1ffffff8;
+	MEC1322_PCR_SLOW_CLK_CTL &= 0xfffffc00;
+	CPU_SCB_SYSCTRL |= 0x4;
+
+#define PREG(x) ccprintf(#x " = 0x%08x\n", x)
+	PREG(MEC1322_PCR_CHIP_CLK_REQ);
+	PREG(MEC1322_PCR_EC_CLK_REQ);
+	PREG(MEC1322_PCR_HOST_CLK_REQ);
+	PREG(MEC1322_PCR_EC_CLK_REQ2);
+	cflush();
+
+	MEC1322_UART_ACT &= ~0x1;
+	MEC1322_LPC_ACT &= ~0x1;
+	MEC1322_EC_ADC_VREF_PD |= 1;
+	MEC1322_PCR_PROC_CLK_CTL = 48;
+
+	/*unpower_gpio();*/
+	MEC1322_EC_JTAG_EN &= ~1;
+	MEC1322_VBAT_CE &= ~0x2;
+
+	interrupt_disable();
+
+	for (i = 8; i <= 23; ++i)
+		MEC1322_INT_DISABLE(i) = 0xffffffff;
+	MEC1322_INT_BLK_DIS |= 0xffff00;
+	MEC1322_EC_INT_CTRL &= ~1;
+
+	for (i = 0; i <= 92; ++i) {
+		task_disable_irq(i);
+		task_clear_pending_irq(i);
+	}
+
+	asm("wfi");
+
+	gpio_set_level(GPIO_LED2, 0);
 }
