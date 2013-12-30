@@ -135,7 +135,34 @@ uint32_t system_get_scratchpad(void)
 	return MEC1322_VBAT_RAM(HIBDATA_INDEX_SCRATCHPAD);
 }
 
+#include "gpio.h"
+
 void system_hibernate(uint32_t seconds, uint32_t microseconds)
 {
-	/* TODO(crosbug.com/p/24107): Implement this */
+	int i;
+
+	interrupt_disable();
+
+	MEC1322_WDG_CTL &= ~1;
+
+	MEC1322_PCR_CHIP_SLP_EN |= 0x3;
+	MEC1322_PCR_EC_SLP_EN |= 0xe0700ff7;
+	MEC1322_PCR_HOST_SLP_EN |= 0x5f003;
+	MEC1322_PCR_SYS_SLP_CTL |= 0x5;
+	MEC1322_PCR_EC_SLP_EN2 |= 0x1ffffff8;
+	MEC1322_PCR_SLOW_CLK_CTL &= 0xfffffc00;
+
+	for (i = 8; i <= 23; ++i)
+		MEC1322_INT_DISABLE(i) = 0xffffffff;
+	MEC1322_INT_BLK_DIS |= 0xffff00;
+	MEC1322_EC_INT_CTRL &= ~1;
+
+	for (i = 0; i <= 92; ++i) {
+		task_disable_irq(i);
+		task_clear_pending_irq(i);
+	}
+
+	asm("wfi");
+
+	gpio_set_level(GPIO_LED2, 0);
 }
