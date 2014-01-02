@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6df1d54f_54ffecd4",
+        "filename": "power/tegra.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-02T20:33:52Z",
+      "side": 1,
+      "message": "\u0027cold\u0027 and \u0027warm\u0027 duplicate the \u0027apreset\u0027 command, so aren\u0027t needed.",
+      "revId": "e675dd7375f9c90baa06409dc27945934b490ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
