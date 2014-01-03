@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0875a776_cf5aa142",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-01-03T02:20:32Z",
+      "side": 1,
+      "message": "Do you also need this in clock_enable_peripheral?",
+      "revId": "eb90489d5cffbcd3c28648a029a5862cbd7dc6d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2878ab6e_65cff067",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-01-03T02:20:32Z",
+      "side": 1,
+      "message": "I take this as the lack of __builtin_clz support?",
+      "revId": "eb90489d5cffbcd3c28648a029a5862cbd7dc6d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2878ab6e_05971c30",
+        "filename": "util/make_all.sh",
+        "patchSetId": 31
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-01-03T02:20:32Z",
+      "side": 1,
+      "message": "This file is now deprecated. You need to move this to \"make buildall\". Although why don\u0027t we want to test build it8380dev? Doesn\u0027t it build now?",
+      "revId": "eb90489d5cffbcd3c28648a029a5862cbd7dc6d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
