@@ -8,7 +8,7 @@
 #include "adc_chip.h"
 #include "backlight.h"
 #include "chipset.h"
-#include "chipset_x86_common.h"
+#include "chipset_common.h"
 #include "common.h"
 #include "driver/temp_sensor/tmp006.h"
 #include "extpower.h"
