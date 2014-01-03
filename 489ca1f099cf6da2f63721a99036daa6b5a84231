@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d4f797f_05eb9222",
+        "filename": "chip/it83xx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-01-03T09:28:12Z",
+      "side": 1,
+      "message": "the while loop without timeout might be dangerous here (and below).\nIf the host dies suddenly, it might stay stuck in one of those loops and trigger the EC watchdog.",
+      "revId": "489ca1f099cf6da2f63721a99036daa6b5a84231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed4b0572_44e18e42",
+        "filename": "chip/it83xx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-01-03T09:28:12Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "489ca1f099cf6da2f63721a99036daa6b5a84231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd48017b_6305a22c",
+        "filename": "chip/it83xx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-01-03T09:28:12Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "489ca1f099cf6da2f63721a99036daa6b5a84231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd48017b_430aa63c",
+        "filename": "chip/it83xx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-01-03T09:28:12Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "489ca1f099cf6da2f63721a99036daa6b5a84231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd48017b_a3f95af5",
+        "filename": "include/lpc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-01-03T09:28:12Z",
+      "side": 1,
+      "message": "I\u0027m not sure of our coding conventions,\nbut the double underscore for an exported symbol is a bit strange.",
+      "revId": "489ca1f099cf6da2f63721a99036daa6b5a84231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
