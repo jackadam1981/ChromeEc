@@ -16,7 +16,7 @@
 #include "timer.h"
 #include "util.h"
 #include "chipset.h"
-#include "chipset_x86_common.h"
+#include "chipset_common.h"
 
 /* Normally private stuff from the modules we're going to test */
 #include "adapter_externs.h"

@@ -8,7 +8,7 @@
 #include "adc_chip.h"
 #include "backlight.h"
 #include "board.h"
-#include "chipset_x86_common.h"
+#include "chipset_common.h"
 #include "common.h"
 #include "driver/charger/bq24738.h"
 #include "driver/temp_sensor/g781.h"
