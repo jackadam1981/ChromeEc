@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4d441157_12606ae4",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-01-03T16:20:24Z",
+      "side": 1,
+      "message": "Actually, there\u0027s a mistake in the clock_enable_peripheral(). The last line should be *reg \u0026\u003d ~reg_mask. \n\nAfter that bug is fixed, there is no need to add extra code in the clock_enable() function to make sure CGCTRL3R, bit 6, is always 1, because there is no set of arguments that will result in using that bit as the mask, so it will always write a 1 to that bit regardless. I can add a comment to make sure it is remembered.",
+      "parentUuid": "0875a776_cf5aa142",
+      "revId": "eb90489d5cffbcd3c28648a029a5862cbd7dc6d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2878ab6e_65cff067",
         "filename": "chip/it83xx/gpio.c",
         "patchSetId": 31
