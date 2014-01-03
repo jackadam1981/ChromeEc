@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "0d4f797f_45e18a42",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-01-03T08:13:41Z",
+      "side": 1,
+      "message": "the CPU core has no CLZ instruction, \nbut I have implemented __clzsi2 in cpu.c , so __builtin_clz() function is working as expected.\nas it\u0027s a software emulation, using _builtin_clz here might not be faster than iterating on the bits.",
+      "parentUuid": "2878ab6e_65cff067",
+      "revId": "eb90489d5cffbcd3c28648a029a5862cbd7dc6d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2878ab6e_05971c30",
         "filename": "util/make_all.sh",
         "patchSetId": 31
@@ -47,6 +65,24 @@
       "writtenOn": "2014-01-03T02:20:32Z",
       "side": 1,
       "message": "This file is now deprecated. You need to move this to \"make buildall\". Although why don\u0027t we want to test build it8380dev? Doesn\u0027t it build now?",
+      "revId": "eb90489d5cffbcd3c28648a029a5862cbd7dc6d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd48017b_43e18642",
+        "filename": "util/make_all.sh",
+        "patchSetId": 31
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-01-03T08:13:41Z",
+      "side": 1,
+      "message": "it does build but\nyou need the nds32 toolchain and it\u0027s not installed by default in the chroot.\nso this was just convenience for other EC developers (unless the automatic builder is triggering this path but I don\u0027t think so).\nby the way, you can install the nds32 toolchain in your chroot by doing :\n  sudo crossdev -t nds32le-cros-elf --ex-gdb",
+      "parentUuid": "2878ab6e_05971c30",
       "revId": "eb90489d5cffbcd3c28648a029a5862cbd7dc6d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
