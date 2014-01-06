@@ -6,6 +6,9 @@
 # Drivers for off-chip devices
 #
 
+# Accelerometers (G-Sensors)
+driver-$(CONFIG_GSENSOR_KXCJ9)+=gsensor_kxcj9.o
+
 # ALS drivers
 driver-$(CONFIG_ALS_ISL29035)+=als_isl29035.o
 
