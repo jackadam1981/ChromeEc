@@ -734,6 +734,9 @@
  */
 #undef CONFIG_USB_PORT_POWER_SMART
 
+/* Use the simplified smart power control. */
+#undef CONFIG_USB_PORT_POWER_SMART_SIMPLE
+
 /* Support the TSU6721 I2C smart switch */
 #undef CONFIG_USB_SWITCH_TSU6721
 

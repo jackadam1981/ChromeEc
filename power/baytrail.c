@@ -64,7 +64,9 @@ void chipset_force_shutdown(void)
 	 * TODO(crosbug.com/p/24424): Remove duplicate SYS_PWROK output when we
 	 * finish transitioning from proto 1.5 to proto 2.0.
 	 */
+#ifdef BOARD_RAMBI
 	gpio_set_level(GPIO_PCH_SYS_PWROK_NEW, 0);
+#endif
 	gpio_set_level(GPIO_PCH_RSMRST_L, 0);
 }
 
@@ -86,10 +88,14 @@ void chipset_reset(int cold_reset)
 
 		/* PWROK must deassert for at least 3 RTC clocks = 91 us */
 		gpio_set_level(GPIO_PCH_SYS_PWROK, 0);
+#ifdef BOARD_RAMBI
 		gpio_set_level(GPIO_PCH_SYS_PWROK_NEW, 0);
+#endif
 		udelay(100);
 		gpio_set_level(GPIO_PCH_SYS_PWROK, 1);
+#ifdef BOARD_RAMBI
 		gpio_set_level(GPIO_PCH_SYS_PWROK_NEW, 1);
+#endif
 
 	} else {
 		/*
@@ -135,7 +141,9 @@ enum x86_state x86_chipset_init(void)
 			gpio_set_level(GPIO_PP5000_EN, 0);
 			gpio_set_level(GPIO_PCH_RSMRST_L, 0);
 			gpio_set_level(GPIO_PCH_SYS_PWROK, 0);
+#ifdef BOARD_RAMBI
 			gpio_set_level(GPIO_PCH_SYS_PWROK_NEW, 0);
+#endif
 			wireless_enable(0);
 		}
 	}
@@ -283,7 +291,9 @@ enum x86_state x86_handle_state(enum x86_state state)
 
 		/* Set SYS and CORE PWROK */
 		gpio_set_level(GPIO_PCH_SYS_PWROK, 1);
+#ifdef BOARD_RAMBI
 		gpio_set_level(GPIO_PCH_SYS_PWROK_NEW, 1);
+#endif
 		gpio_set_level(GPIO_PCH_CORE_PWROK, 1);
 		return X86_S0;
 
@@ -293,7 +303,9 @@ enum x86_state x86_handle_state(enum x86_state state)
 
 		/* Clear SYS and CORE PWROK */
 		gpio_set_level(GPIO_PCH_SYS_PWROK, 0);
+#ifdef BOARD_RAMBI
 		gpio_set_level(GPIO_PCH_SYS_PWROK_NEW, 0);
+#endif
 		gpio_set_level(GPIO_PCH_CORE_PWROK, 0);
 
 		/* Wait 40ns */

@@ -26,7 +26,7 @@
 #define CONFIG_KEYBOARD_COL2_INVERTED
 #define CONFIG_KEYBOARD_IRQ_GPIO GPIO_KBD_IRQ_L
 #define CONFIG_KEYBOARD_PROTOCOL_8042
-#define CONFIG_LED_COMMON
+#undef  CONFIG_LED_COMMON
 #undef  CONFIG_PECI
 #define CONFIG_POWER_BUTTON
 #define CONFIG_POWER_BUTTON_X86
@@ -87,6 +87,8 @@ enum gpio_signal {
 	GPIO_PP1000_S0IX_PGOOD,    /* Power good on 1.00V (S0iX supplies) */
 	GPIO_USB1_OC_L,            /* USB port overcurrent warning */
 	GPIO_USB2_OC_L,            /* USB port overcurrent warning */
+	GPIO_ACCEL_INT0,           /* Accelerometer interrupt 0 */
+	GPIO_ACCEL_INT1,           /* Accelerometer interrupt 1 */
 
 	/* Outputs */
 	GPIO_CPU_PROCHOT,          /* Force CPU to think it's overheated */
@@ -106,7 +108,6 @@ enum gpio_signal {
 	 * from the new one when we deprecate the 1.5 boards.
 	 */
 	GPIO_PCH_SYS_PWROK,        /* EC thinks everything is up and ready */
-	GPIO_PCH_SYS_PWROK_NEW,    /* Duplicate of SYS_PWROK for 2.0 boards */
 	GPIO_PCH_WAKE_L,           /* Wake signal from EC to PCH */
 	GPIO_PP1350_EN,            /* Enable 1.35V supply */
 	GPIO_PP3300_DX_EN,         /* Enable power to lots of peripherals */
@@ -123,12 +124,7 @@ enum gpio_signal {
 	GPIO_VCORE_EN,             /* Enable core power supplies */
 	GPIO_WLAN_OFF_L,           /* Disable WiFi radio */
 	GPIO_PCH_SCI_L,            /* Assert SCI to PCH */
-	/*
-	 * TODO(crosbug.com/p/24424): Remove old assignment and remove _NEW
-	 * from the new one when we deprecate the 1.5 boards.
-	 */
-	GPIO_KBD_IRQ_L,            /* Negative edge triggered irq. */
-	GPIO_KBD_IRQ_NEW_L,        /* Duplicate of KBD_IRQ# for 2.0 boards */
+	GPIO_KBD_IRQ_L,        /* Duplicate of KBD_IRQ# for 2.0 boards */
 
 	/* Number of GPIOs; not an actual GPIO */
 	GPIO_COUNT
