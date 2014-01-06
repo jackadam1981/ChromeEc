@@ -16,6 +16,23 @@
       "revId": "407bfc7b525fa3830e751c4bb50b0382646176a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8dd609da_6527ce4a",
+        "filename": "driver/gsensor_kxcj9.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-01-06T21:28:24Z",
+      "side": 1,
+      "message": "These addresses are wrong. i2cscan finds them at \n0x1c and 0x1e",
+      "revId": "407bfc7b525fa3830e751c4bb50b0382646176a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
