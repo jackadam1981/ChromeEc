@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0dc2191e_138ad492",
+        "filename": "board/clapper/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-06T21:52:22Z",
+      "side": 1,
+      "message": "Pick whatever the right GPIO is and get rid of the duplicate hack I put in for Rambi 1.5.",
+      "revId": "5ba233d23f3c215f47b86fe7d3c73878ca8fb3ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
