@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0dc2191e_b39420e1",
+        "filename": "power/gaia.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-06T20:38:50Z",
+      "side": 0,
+      "message": "Just make an empty powerled_set_state() function in board/pit/board.c for now.\n\nI believe pit will be gaining a different set of LEDs imminently, at which point it\u0027ll need these functions again.",
+      "parentUuid": "0d7db99f_09aa996b",
+      "revId": "7c673390aecdd35da01ddf446a23667d95dccef1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d80bdc3_2a218732",
         "filename": "power/gaia.c",
         "patchSetId": 1
