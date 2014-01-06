@@ -36,6 +36,58 @@
     },
     {
       "key": {
+        "uuid": "edcea54a_d593cec9",
+        "filename": "board/pit/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-06T20:54:59Z",
+      "side": 1,
+      "message": "But it\u0027s not a 3-color LED.  The imlpementation is a single LED.\n\nSo \n\nCONFIG_PMU_TPS65090_CHARGING_LED",
+      "parentUuid": "0d7db99f_095cd9d7",
+      "revId": "5cf9110eec0bfbc5cafdaf4751ad2841c94e6910",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "edcea54a_358fb2a3",
+        "filename": "board/pit/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-06T20:54:59Z",
+      "side": 1,
+      "message": "Just call it GPIO_BATTERY_LED\n\nIs signal level low \u003d LED on?  It should only have the _L prefix if that\u0027s true.",
+      "revId": "5cf9110eec0bfbc5cafdaf4751ad2841c94e6910",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0dc2191e_13ee5473",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-06T20:54:59Z",
+      "side": 1,
+      "message": "These defines are just confusing.  Just use 0 and 1.",
+      "revId": "5cf9110eec0bfbc5cafdaf4751ad2841c94e6910",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d7db99f_69ac6d74",
         "filename": "common/pmu_tps65090_charger.c",
         "patchSetId": 1
@@ -64,6 +116,126 @@
       "writtenOn": "2014-01-06T19:36:32Z",
       "side": 1,
       "message": "I think gpip_set_level() is good enough. gpio_get_level is redundant.\n\nSo this function can be in one-line:\n\n  gpio_set_level(!!led_on);",
+      "revId": "5cf9110eec0bfbc5cafdaf4751ad2841c94e6910",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d5d2962_b9ac3f89",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-06T20:54:59Z",
+      "side": 1,
+      "message": "Since gpio_set_level takes a bool,\n\ngpio_set_level(led_on)\n\nBut really, since this is only called in one place, get rid of the whole function.",
+      "parentUuid": "8dd609da_faa6fd3f",
+      "revId": "5cf9110eec0bfbc5cafdaf4751ad2841c94e6910",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d5d2962_99a97b79",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-06T20:54:59Z",
+      "side": 1,
+      "message": "stat -\u003e state\n\nAnd really, it\u0027d be better to call this battery_is_charging(), since \"state\" could mean a lot of different things.\n\nAnd since this is only called in one place, don\u0027t need it at all.",
+      "revId": "5cf9110eec0bfbc5cafdaf4751ad2841c94e6910",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "edcea54a_55803e74",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-06T20:54:59Z",
+      "side": 1,
+      "message": "update_battery_led()",
+      "revId": "5cf9110eec0bfbc5cafdaf4751ad2841c94e6910",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0dc2191e_33f3505a",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-06T20:54:59Z",
+      "side": 1,
+      "message": "int led_on \u003d 0;  /* Default to off */",
+      "revId": "5cf9110eec0bfbc5cafdaf4751ad2841c94e6910",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0dc2191e_d3f76c42",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-06T20:54:59Z",
+      "side": 1,
+      "message": "Just \n  if ((alarm \u0026 ALARM_CHARGED) \u0026\u0026 !gpio_get_level(GPIO_CHARGER_EN))\n    led_on \u003d 1;",
+      "revId": "5cf9110eec0bfbc5cafdaf4751ad2841c94e6910",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "edcea54a_75853a83",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-06T20:54:59Z",
+      "side": 1,
+      "message": "delete else",
+      "revId": "5cf9110eec0bfbc5cafdaf4751ad2841c94e6910",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0dc2191e_f3f4e83f",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-06T20:54:59Z",
+      "side": 1,
+      "message": "delete else\n\nThen just\n\ngpio_set_level(GPIO_BATTERY_LED, led_on)",
       "revId": "5cf9110eec0bfbc5cafdaf4751ad2841c94e6910",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
