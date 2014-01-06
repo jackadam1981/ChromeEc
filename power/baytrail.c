@@ -84,6 +84,7 @@ void chipset_reset(int cold_reset)
 		udelay(100);
 		gpio_set_level(GPIO_PCH_SYS_PWROK, 1);
 
+
 	} else {
 		/*
 		 * Send a reset pulse to the PCH.  This just causes it to

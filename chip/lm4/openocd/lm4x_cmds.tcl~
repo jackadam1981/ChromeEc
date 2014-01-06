@@ -35,10 +35,14 @@ proc flash_rambi { } {
 	flash_lm4 ../../../build/rambi/ec.bin 0
 }
 
+<<<<<<< HEAD
+=======
 proc flash_clapper { } {
 	flash_lm4 ../../../build/clapper/ec.bin 0
 }
 
+# 128KB images
+>>>>>>> clapper: Initial EC firmware
 proc flash_samus { } {
 	flash_lm4 ../../../build/samus/ec.bin 0
 }
