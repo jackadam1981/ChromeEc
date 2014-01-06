@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "edcea54a_35ded2a4",
+        "filename": "common/usb_port_power_smart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-06T20:42:28Z",
+      "side": 1,
+      "message": "Other Rambi-derived boards will be similar.  So maybe\n\n#ifdef CONFIG_USB_PORT_POWER_SMART_SIMPLE",
+      "revId": "456a79fd49d838011e2ff3c70935706fa784c6ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
