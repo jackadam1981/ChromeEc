@@ -88,7 +88,7 @@ static void keyboard_irq_assert(void)
 {
 	/* Negative edge-triggered keyboard interrupt. */
 	gpio_set_level(CONFIG_KEYBOARD_IRQ_GPIO, 0);
-#ifdef BOARD_RAMBI
+#if defined(BOARD_RAMBI) || defined(BOARD_SQUAWKS)
 	/*
 	 * TODO(crosbug.com/p/24424): Remove duplicate IRQ output when we
 	 * finish transitioning from proto 1.5 to proto 2.0.
@@ -99,7 +99,7 @@ static void keyboard_irq_assert(void)
 	wait_irq_sent();
 
 	gpio_set_level(CONFIG_KEYBOARD_IRQ_GPIO, 1);
-#ifdef BOARD_RAMBI
+#if defined(BOARD_RAMBI) || defined(BOARD_SQUAWKS)
 	gpio_set_level(GPIO_KBD_IRQ_NEW_L, 1);
 #endif
 }
