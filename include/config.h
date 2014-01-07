@@ -36,6 +36,12 @@
  * BOARD_*, CHIP_*, and CHIP_FAMILY_*.
  */
 
+/* Add EC console commands to calibrate accelerometers. */
+#undef CONFIG_ACCEL_CALIBRATE
+
+/* Specify type of accelerometers attached. */
+#undef CONFIG_ACCEL_KXCJ9
+
 /* Compile chip support for analog-to-digital convertor */
 #undef CONFIG_ADC
 
