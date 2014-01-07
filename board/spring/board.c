@@ -18,6 +18,7 @@
 #include "keyboard_raw.h"
 #include "lid_switch.h"
 #include "pmu_tpschrome.h"
+#include "power.h"
 #include "pwm.h"
 #include "pwm_chip.h"
 #include "registers.h"

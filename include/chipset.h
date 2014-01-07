@@ -76,9 +76,9 @@ void chipset_force_shutdown(void);
 void chipset_reset(int cold_reset);
 
 /**
- * Interrupt handler for power GPIO inputs.
+ * Interrupt handler to relay GPIO inputs.
  */
-void power_interrupt(enum gpio_signal signal);
+void relay_interrupt(enum gpio_signal signal);
 
 #else /* !HAS_TASK_CHIPSET */
 /*
@@ -96,7 +96,7 @@ static inline void chipset_throttle_cpu(int throttle) { }
 static inline void chipset_force_shutdown(void) { }
 static inline void chipset_reset(int cold_reset) { }
 
-#define power_interrupt NULL
+#define relay_interrupt NULL
 
 #endif /* !HAS_TASK_CHIPSET */
 

@@ -134,8 +134,8 @@ enum gpio_signal {
 	GPIO_COUNT
 };
 
-/* x86 signal definitions */
-enum x86_signal {
+/* power signal definitions */
+enum power_signal {
 	X86_PGOOD_PP1050 = 0,
 	X86_PGOOD_PP3300_PCH,
 	X86_PGOOD_PP5000,
@@ -149,7 +149,7 @@ enum x86_signal {
 	X86_SUSPWRDNACK_ASSERTED,
 
 	/* Number of X86 signals */
-	X86_SIGNAL_COUNT
+	POWER_SIGNAL_COUNT
 };
 
 enum adc_channel {
