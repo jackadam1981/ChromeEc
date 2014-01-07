@@ -43,6 +43,7 @@
 /* I2C ports */
 #define I2C_PORT_BATTERY 0
 #define I2C_PORT_CHARGER 0
+#define I2C_PORT_ACCEL   2
 #define I2C_PORT_THERMAL 5
 
 /* 13x8 keyboard scanner uses an entire GPIO bank for row inputs */
