@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d1a7db4_6965c1a6",
+        "filename": "board/pit/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-07T20:28:25Z",
+      "side": 1,
+      "message": "I don\u0027t understand.  This is still the power LED, right?  So why rename it to something else?\n\nCoding style for EC is to name the GPIO based on its function, not on the schematic signal name.",
+      "revId": "58024b6135568cb25f8b545e7bbe24ef2474a483",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d17798c_08bb675a",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-07T20:28:25Z",
+      "side": 1,
+      "message": "Don\u0027t need this else, since led_on\u003d0 already",
+      "revId": "58024b6135568cb25f8b545e7bbe24ef2474a483",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
