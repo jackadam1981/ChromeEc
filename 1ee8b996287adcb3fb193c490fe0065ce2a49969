@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4db331fa_7723b092",
+        "filename": "core/host/task.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-01-07T13:01:27Z",
+      "side": 1,
+      "message": "is _task_dump_trace_impl always present ?\nI would guess that the compiler sometimes inline it.",
+      "revId": "1ee8b996287adcb3fb193c490fe0065ce2a49969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6dae3595_b8fff980",
+        "filename": "core/host/task.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-01-07T13:01:27Z",
+      "side": 1,
+      "message": "you need to check errors after that call as external binary execution is always likely to fail...",
+      "revId": "1ee8b996287adcb3fb193c490fe0065ce2a49969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6dae3595_d8fcad8e",
+        "filename": "core/host/task.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-01-07T13:01:27Z",
+      "side": 1,
+      "message": "pclose is missing ?",
+      "revId": "1ee8b996287adcb3fb193c490fe0065ce2a49969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4db331fa_57378cc5",
+        "filename": "core/host/task.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-01-07T13:01:27Z",
+      "side": 1,
+      "message": "you need to free \"messages\" before returning",
+      "revId": "1ee8b996287adcb3fb193c490fe0065ce2a49969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4db331fa_773c90a7",
+        "filename": "util/run_host_test",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-01-07T13:01:27Z",
+      "side": 1,
+      "message": "can we add a hook for the trace dump on SIGTERM rather than using SIGUSR2 ?\nthis would be more straightforward IMO",
+      "revId": "1ee8b996287adcb3fb193c490fe0065ce2a49969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
