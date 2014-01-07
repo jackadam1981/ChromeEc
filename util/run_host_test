@@ -6,6 +6,7 @@
 
 from cStringIO import StringIO
 import pexpect
+import signal
 import sys
 import time
 
@@ -34,12 +35,15 @@ def RunOnce(test_name, log, timeout_secs):
                       timeout=TIMEOUT)
   child.logfile = log
   try:
-    return child.expect(EXPECT_LIST)
+    rv = child.expect(EXPECT_LIST)
+    return rv
   except pexpect.EOF:
     child.close()
     raise
   finally:
-    child.kill(15)
+    if child.isalive():
+      child.kill(signal.SIGTERM)
+    child.read()
 
 log = StringIO()
 tee_log = Tee(log)

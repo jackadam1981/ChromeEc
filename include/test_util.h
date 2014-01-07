@@ -27,6 +27,7 @@
 	do { \
 		if (!(n)) { \
 			ccprintf("%d: ASSERTION failed: %s\n", __LINE__, #n); \
+			task_dump_trace(); \
 			return EC_ERROR_UNKNOWN; \
 		} \
 	} while (0)
@@ -38,6 +39,7 @@
 		if (__ABS(n) >= t) { \
 			ccprintf("%d: ASSERT_ABS_LESS failed: abs(%d) is " \
 				 "not less than %d\n", __LINE__, n, t); \
+			task_dump_trace(); \
 			return EC_ERROR_UNKNOWN; \
 		} \
 	} while (0)
@@ -50,6 +52,7 @@
 				ccprintf("%d: ASSERT_ARRAY_EQ failed at " \
 					 "index=%d: %d != %d\n", __LINE__, \
 					 __i, (int)(s)[__i], (int)(d)[__i]); \
+				task_dump_trace(); \
 				return EC_ERROR_UNKNOWN; \
 			} \
 	} while (0)
@@ -130,6 +133,15 @@ void wait_for_task_started(void);
 #else
 static inline void wait_for_task_started(void) { }
 #endif
+
+/*
+ * Register trace dump handler for emulator. Trace dump is printed to stderr
+ * when SIGUSR2 is received.
+ */
+void task_register_tracedump(void);
+
+/* Dump current stack trace */
+void task_dump_trace(void);
 
 uint32_t prng(uint32_t seed);
 
