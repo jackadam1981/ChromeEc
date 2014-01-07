@@ -5,6 +5,7 @@
 
 /* Task scheduling / events module for Chrome EC operating system */
 
+#include <execinfo.h>
 #include <pthread.h>
 #include <semaphore.h>
 #include <signal.h>
@@ -18,6 +19,12 @@
 #include "task_id.h"
 #include "test_util.h"
 #include "timer.h"
+
+#define SIGNAL_INTERRUPT SIGUSR1
+#define SIGNAL_TRACE_DUMP SIGUSR2
+#define MAX_TRACE 10
+/* Skip _task_dump_trace, _task_dump_trace_dispath, and a function in libc */
+#define TRACE_OFFSET 3
 
 struct emu_task_t {
 	pthread_t thread;
@@ -37,6 +44,7 @@ static pthread_cond_t scheduler_cond;
 static pthread_mutex_t run_lock;
 static task_id_t running_task_id;
 static int task_started;
+static pthread_t main_thread;
 
 static sem_t interrupt_sem;
 static pthread_mutex_t interrupt_lock;
@@ -105,7 +113,7 @@ void interrupt_enable(void)
 	interrupt_disabled = 0;
 }
 
-void _task_execute_isr(int sig)
+static void _task_execute_isr(int sig)
 {
 	in_interrupt = 1;
 	pending_isr();
@@ -113,10 +121,47 @@ void _task_execute_isr(int sig)
 	in_interrupt = 0;
 }
 
-void task_register_interrupt(void)
+void task_dump_trace(void)
+{
+	void *trace[MAX_TRACE];
+	size_t sz;
+
+	sz = backtrace(trace, MAX_TRACE);
+	backtrace_symbols_fd(trace + TRACE_OFFSET,
+			     sz - TRACE_OFFSET,
+			     fileno(stderr));
+	fflush(stderr);
+}
+
+static void _task_dump_trace_dispatch(int sig)
+{
+	if (pthread_self() != main_thread) {
+		/* Dispatched */
+		task_dump_trace();
+	} else if (!task_start_called()) {
+		fprintf(stderr, "Stack trace of main thread:\n");
+		task_dump_trace();
+	} else if (in_interrupt_context()) {
+		fprintf(stderr, "Stack trace of ISR:\n");
+		pthread_kill(tasks[running_task_id].thread, SIGNAL_TRACE_DUMP);
+	} else {
+		fprintf(stderr, "Stack trace of task %d (%s):\n",
+				running_task_id, task_names[running_task_id]);
+		pthread_kill(tasks[running_task_id].thread, SIGNAL_TRACE_DUMP);
+	}
+}
+
+void task_register_tracedump(void)
+{
+	/* Trace dumper MUST be registered from main thread */
+	main_thread = pthread_self();
+	signal(SIGNAL_TRACE_DUMP, _task_dump_trace_dispatch);
+}
+
+static void task_register_interrupt(void)
 {
 	sem_init(&interrupt_sem, 0, 0);
-	signal(SIGUSR1, _task_execute_isr);
+	signal(SIGNAL_INTERRUPT, _task_execute_isr);
 }
 
 void task_trigger_test_interrupt(void (*isr)(void))
@@ -127,7 +172,7 @@ void task_trigger_test_interrupt(void (*isr)(void))
 
 	/* Suspend current task and excute ISR */
 	pending_isr = isr;
-	pthread_kill(tasks[running_task_id].thread, SIGUSR1);
+	pthread_kill(tasks[running_task_id].thread, SIGNAL_INTERRUPT);
 
 	/* Wait for ISR to complete */
 	sem_wait(&interrupt_sem);
