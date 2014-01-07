@@ -9,6 +9,8 @@
 #define __BOARD_H
 
 /* Optional features */
+#undef CONFIG_ACCEL_CALIBRATE
+#define CONFIG_ACCEL_KXCJ9
 #define CONFIG_AP_HANG_DETECT
 #define CONFIG_BACKLIGHT_LID
 #define CONFIG_BATTERY_SMART
@@ -46,7 +48,12 @@
 /* I2C ports */
 #define I2C_PORT_BATTERY 0
 #define I2C_PORT_CHARGER 0
+#define I2C_PORT_ACCEL   2
 #define I2C_PORT_THERMAL 5
+
+/* Define I2C address of the two accelerometers. */
+#define ACCEL_ADDR_LID   0x1c
+#define ACCEL_ADDR_BASE  0x1e
 
 /* 13x8 keyboard scanner uses an entire GPIO bank for row inputs */
 #define KB_SCAN_ROW_IRQ  LM4_IRQ_GPIOK
@@ -180,6 +187,34 @@ enum temp_sensor_id {
 
 /* Discharge battery when on AC power for factory test. */
 int board_discharge_on_ac(int enable);
+
+#ifdef HAS_TASK_MOTIONSENSE
+/* 3-D vector structure. */
+struct vector {
+	int x;
+	int y;
+	int z;
+};
+
+/* Link global variables for orientation. */
+extern
+#ifndef CONFIG_ACCEL_CALIBRATE
+const
+#endif
+float rot_sense_orientation[3][3];
+
+extern
+#ifndef CONFIG_ACCEL_CALIBRATE
+const
+#endif
+float rot_up_direction[3][3];
+
+extern
+#ifndef CONFIG_ACCEL_CALIBRATE
+const
+#endif
+struct vector hinge_axis;
+#endif /* HAS_TASK_MOTIONSENSE */
 
 #endif /* !__ASSEMBLER__ */
 
