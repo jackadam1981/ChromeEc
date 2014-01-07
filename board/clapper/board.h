@@ -9,6 +9,7 @@
 #define __BOARD_H
 
 /* Optional features */
+#define CONFIG_ACCEL_KXCJ9
 #define CONFIG_AP_HANG_DETECT
 #define CONFIG_BACKLIGHT_LID
 #define CONFIG_BATTERY_SMART
@@ -46,7 +47,12 @@
 /* I2C ports */
 #define I2C_PORT_BATTERY 0
 #define I2C_PORT_CHARGER 0
+#define I2C_PORT_ACCEL   2
 #define I2C_PORT_THERMAL 5
+
+/* Define I2C address of the two accelerometers. */
+#define ACCEL_ADDR_LID   0x1c
+#define ACCEL_ADDR_BASE  0x1e
 
 /* 13x8 keyboard scanner uses an entire GPIO bank for row inputs */
 #define KB_SCAN_ROW_IRQ  LM4_IRQ_GPIOK
@@ -180,6 +186,27 @@ enum temp_sensor_id {
 
 /* Discharge battery when on AC power for factory test. */
 int board_discharge_on_ac(int enable);
+
+/**
+ * Return pointer to the rotation matrix for sensor orientation.
+ *
+ * @return Pointer to 3x3 array of floats
+ */
+float (*get_rot_sense_oreintation(void))[3][3];
+
+/**
+ * Return pointer to the rotation matrix for determining the up direction.
+ *
+ * @return Pointer to 3x3 array of floats
+ */
+float (*get_rot_up_direction(void))[3][3];
+
+/**
+ * Return pointer to an array representing a vector pointing along hinge.
+ *
+ * @return Pointer to hinge axis array
+ */
+float *get_hinge_axis(void);
 
 #endif /* !__ASSEMBLER__ */
 
