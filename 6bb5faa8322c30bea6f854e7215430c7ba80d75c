@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d17798c_08e4077b",
+        "filename": "board/link/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-07T20:38:31Z",
+      "side": 1,
+      "message": "There\u0027s already a power_interrupt, which is the chipset-specific interrupt.  So I don\u0027t think you can rename x86_interrupt to power_interrupt yet.\n\nSo, how about\n\npower_interrupt stays as is\n\nx86_interrupt -\u003e power_signal_interrupt\n\nsince it\u0027s the handler for those things enumerated in the power signal list.",
+      "revId": "6bb5faa8322c30bea6f854e7215430c7ba80d75c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
