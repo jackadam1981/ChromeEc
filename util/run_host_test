@@ -17,6 +17,9 @@ RESULT_ID_FAIL = 2
 
 EXPECT_LIST = [pexpect.TIMEOUT, 'Pass!', 'Fail!']
 
+SIGNAL_TRACE_DUMP = 12
+SIGNAL_TERMINATE = 15
+
 class Tee(object):
   def __init__(self, target):
     self._target = target
@@ -29,17 +32,29 @@ class Tee(object):
     sys.stdout.flush()
     self._target.flush()
 
+def DumpTrace(child):
+  child.kill(SIGNAL_TRACE_DUMP)
+  try:
+    # Force a read to get trace dump
+    child.read()
+  except pexpect.TIMEOUT:
+    # Child is still alive, so timeout is expected
+    pass
+
 def RunOnce(test_name, log, timeout_secs):
   child = pexpect.spawn('build/host/{0}/{0}.exe'.format(test_name),
                       timeout=TIMEOUT)
   child.logfile = log
   try:
-    return child.expect(EXPECT_LIST)
+    rv = child.expect(EXPECT_LIST)
+    if rv == RESULT_ID_TIMEOUT:
+      DumpTrace(child)
+    return rv
   except pexpect.EOF:
     child.close()
     raise
   finally:
-    child.kill(15)
+    child.kill(SIGNAL_TERMINATE)
 
 log = StringIO()
 tee_log = Tee(log)
