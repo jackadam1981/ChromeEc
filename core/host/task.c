@@ -97,12 +97,16 @@ int in_interrupt_context(void)
 
 void interrupt_disable(void)
 {
+	pthread_mutex_lock(&interrupt_lock);
 	interrupt_disabled = 1;
+	pthread_mutex_unlock(&interrupt_lock);
 }
 
 void interrupt_enable(void)
 {
+	pthread_mutex_lock(&interrupt_lock);
 	interrupt_disabled = 0;
+	pthread_mutex_unlock(&interrupt_lock);
 }
 
 void _task_execute_isr(int sig)
@@ -121,9 +125,11 @@ void task_register_interrupt(void)
 
 void task_trigger_test_interrupt(void (*isr)(void))
 {
-	if (interrupt_disabled)
-		return;
 	pthread_mutex_lock(&interrupt_lock);
+	if (interrupt_disabled) {
+		pthread_mutex_unlock(&interrupt_lock);
+		return;
+	}
 
 	/* Suspend current task and excute ISR */
 	pending_isr = isr;
