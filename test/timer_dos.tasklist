@@ -15,7 +15,7 @@
  * 's' is the stack size in bytes; must be a multiple of 8
  */
 #define CONFIG_TEST_TASK_LIST \
-  TASK_TEST(TMRA, task_timer, (void *)1234, TASK_STACK_SIZE) \
-  TASK_TEST(TMRB, task_timer, (void *)5678, TASK_STACK_SIZE) \
-  TASK_TEST(TMRC, task_timer, (void *)8462, TASK_STACK_SIZE) \
-  TASK_TEST(TMRD, task_timer, (void *)3719, TASK_STACK_SIZE)
+  TASK_TEST(TMRA, task_timer, (void *)((45 << 16) + 1234), TASK_STACK_SIZE) \
+  TASK_TEST(TMRB, task_timer, (void *)((53 << 16) + 5678), TASK_STACK_SIZE) \
+  TASK_TEST(TMRC, task_timer, (void *)((42 << 16) + 8462), TASK_STACK_SIZE) \
+  TASK_TEST(TMRD, task_timer, (void *)((52 << 16) + 3719), TASK_STACK_SIZE)
