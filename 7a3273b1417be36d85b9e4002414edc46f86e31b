@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2dd43d2d_b0f488b0",
+        "filename": "board/clapper/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-09T18:28:11Z",
+      "side": 1,
+      "message": "Clapper",
+      "revId": "7a3273b1417be36d85b9e4002414edc46f86e31b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdcac190_6772babc",
+        "filename": "board/clapper/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-09T18:28:11Z",
+      "side": 1,
+      "message": "Clapper",
+      "revId": "7a3273b1417be36d85b9e4002414edc46f86e31b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdcac190_476fbed2",
+        "filename": "board/clapper/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-09T18:28:11Z",
+      "side": 1,
+      "message": "Needs renaming after Louis\u0027s power refactoring",
+      "revId": "7a3273b1417be36d85b9e4002414edc46f86e31b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2dd43d2d_50e414fe",
+        "filename": "board/clapper/ec.tasklist",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-09T18:28:11Z",
+      "side": 1,
+      "message": "VBOOTHASH is imminently CONFIG_VBOOT_HASH and not a task",
+      "revId": "7a3273b1417be36d85b9e4002414edc46f86e31b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
