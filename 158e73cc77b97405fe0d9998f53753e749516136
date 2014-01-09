@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "0dd1393f_64e634d2",
+        "filename": "driver/accel_kxcj9.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-01-09T17:26:29Z",
+      "side": 1,
+      "message": "Yeah, I figure we\u0027ll have another file at a higher level that will figure out which way gravity is pointing and use that to determine the lid angle, and that file will have the task which runs at whatever rate we want.\n\nThis is more just so that we can test sampling accelerometers at certain rates.",
+      "parentUuid": "cdcac190_fcde5da5",
+      "revId": "158e73cc77b97405fe0d9998f53753e749516136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cdcac190_fcb53d67",
         "filename": "driver/accel_kxcj9.h",
         "patchSetId": 1
