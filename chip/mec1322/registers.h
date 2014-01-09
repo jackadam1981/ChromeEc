@@ -190,6 +190,10 @@ static inline uintptr_t gpio_port_base(int port_id)
 #define MEC1322_ACPI_EC_BYTE_CTL(x) REG8(MEC1322_ACPI_EC_BASE(x) + 0x105)
 #define MEC1322_ACPI_EC_OS2EC(x, y) REG8(MEC1322_ACPI_EC_BASE(x) + 0x108 + (y))
 
+#define MEC1322_ACPI_PM_RT_BASE     0x400f1400
+#define MEC1322_ACPI_PM_EC_BASE     0x400f1500
+#define MEC1322_ACPI_PM_STS         REG8(MEC1322_ACPI_PM_EC_BASE + 0x10)
+
 
 /* 8042 */
 #define MEC1322_8042_BASE      0x400f0400
