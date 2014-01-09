@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cdcac190_1cffd918",
+        "filename": "driver/accel_kxcj9.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-01-09T17:20:34Z",
+      "side": 1,
+      "message": "For later: I imagine board.c will define an array of struct to declare where the accelerometers live: {pretty_name i2c_port, i2c_address, orientation}. Something similar to how the temp sensors are defined.",
+      "revId": "158e73cc77b97405fe0d9998f53753e749516136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdcac190_3c1bb5ca",
+        "filename": "driver/accel_kxcj9.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-01-09T17:20:34Z",
+      "side": 1,
+      "message": "Possible nit?: I see more arguments in the code with spaces around operators than without. Not sure if we have strong feelings about this or not.",
+      "revId": "158e73cc77b97405fe0d9998f53753e749516136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdcac190_fcde5da5",
+        "filename": "driver/accel_kxcj9.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-01-09T17:20:34Z",
+      "side": 1,
+      "message": "For the future: We\u0027ll want to split out the accel_task from the driver and support mixed and matched sensors.",
+      "revId": "158e73cc77b97405fe0d9998f53753e749516136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdcac190_fcb53d67",
+        "filename": "driver/accel_kxcj9.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-01-09T17:20:34Z",
+      "side": 1,
+      "message": "Being retentive: Use ACCEL to match the filename.",
+      "revId": "158e73cc77b97405fe0d9998f53753e749516136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2dd43d2d_e587e0b2",
+        "filename": "driver/accel_kxcj9.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-01-09T17:20:34Z",
+      "side": 1,
+      "message": "ACCEL",
+      "revId": "158e73cc77b97405fe0d9998f53753e749516136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2dd43d2d_85770c1b",
+        "filename": "driver/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-01-09T17:20:34Z",
+      "side": 1,
+      "message": "This works for now but I think it\u0027s a bit cleaner to just define CONFIG_ACCEL_KXCJ9 now and get it over with.",
+      "revId": "158e73cc77b97405fe0d9998f53753e749516136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
