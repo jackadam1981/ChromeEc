@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d38c95d_01198a5c",
+        "filename": "test/test_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-01-10T15:46:49Z",
+      "side": 1,
+      "message": "This breaks actually running on the device. It uncondtionally undefs this. Therefore we don\u0027t get CONFIG_VBOOT_HASH. I\u0027m not sure how to rectify the \"unless specifically testing for it\".",
+      "revId": "72481572aad731b3c2db20c41efb6d5a51812eaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
