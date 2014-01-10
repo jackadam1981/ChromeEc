@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8dea89ed_a00b047d",
+        "filename": "board/pit/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-10T18:36:45Z",
+      "side": 1,
+      "message": "Minor nit: add a space before GPIO_OUT_LOW so it stays lined up.",
+      "revId": "707d127228a3d720d5e74980d525d80eddc1a1d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d3d554c_c055de10",
+        "filename": "board/pit/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-10T18:36:45Z",
+      "side": 1,
+      "message": "Minor nit: put this line before CONFIG_SPI so it stays alphabetized",
+      "revId": "707d127228a3d720d5e74980d525d80eddc1a1d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
