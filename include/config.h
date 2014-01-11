@@ -126,6 +126,13 @@
 #undef CONFIG_BOOTCFG_VALUE
 
 /*****************************************************************************/
+
+/* Number of extra buttons not on the keyboard scan matrix. Doesn't include
+ * the power button which has it's own handler.
+ */
+#undef CONFIG_BUTTON_COUNT
+
+/*****************************************************************************/
 /* Charger config */
 
 /* Compile common charge state code */
