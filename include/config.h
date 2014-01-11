@@ -126,6 +126,14 @@
 #undef CONFIG_BOOTCFG_VALUE
 
 /*****************************************************************************/
+
+/*
+ * Number of extra buttons not on the keyboard scan matrix. Doesn't include
+ * the power button which has its own handler.
+ */
+#undef CONFIG_BUTTON_COUNT
+
+/*****************************************************************************/
 /* Charger config */
 
 /* Compile common charge state code */
@@ -511,12 +519,6 @@
  * Low power idle options. These are disabled by default and all boards that
  * want to use low power idle must define it. When using the LFIOSC, the low
  * frequency clock will be used to conserve even more power when possible.
- *
- * GPIOs which need to trigger interrupts in low power idle must specify the
- * GPIO_INT_DSLEEP flag in gpio_list[].
- *
- * Note that for some processors (e.g. LM4), an active JTAG connection will
- * prevent the EC from using low-power idle.
  */
 #undef CONFIG_LOW_POWER_IDLE
 #undef CONFIG_LOW_POWER_USE_LFIOSC
@@ -732,12 +734,6 @@
 
 /* Support simple control of power to the device's USB ports */
 #undef CONFIG_USB_PORT_POWER_DUMB
-
-/*
- * Support supplying USB power in S3, if the host leaves the port enabled when
- * entering S3.
- */
-#undef CONFIG_USB_PORT_POWER_IN_S3
 
 /*
  * Support smart power control to the device's USB ports, using
