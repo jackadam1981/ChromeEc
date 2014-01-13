@@ -16,6 +16,24 @@
       "revId": "feac4c898c79392b3f7eef09de11665079fd5579",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8dea89ed_3d261ae7",
+        "filename": "test/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-01-13T21:22:02Z",
+      "side": 1,
+      "message": "thermal_falco will run successfully without falco\u0027s board directory. It\u0027s testing common code which includes common/extpower_falco.c. I\u0027m content to leave it alone on this branch for now.",
+      "parentUuid": "8dea89ed_baf21053",
+      "revId": "feac4c898c79392b3f7eef09de11665079fd5579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
