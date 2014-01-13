@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d44d9e7_5df0db0a",
+        "filename": "common/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-13T18:38:40Z",
+      "side": 1,
+      "message": "-1",
+      "revId": "832dda8807e1dfc78578baa56d2f43431b9123ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8dea89ed_bd032a26",
+        "filename": "common/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-13T18:38:40Z",
+      "side": 1,
+      "message": "Minor nit: put the big elements first.  So debounce_time (64-bit) before debounced_pressed (32-bit)",
+      "revId": "832dda8807e1dfc78578baa56d2f43431b9123ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d38c95d_95163461",
+        "filename": "common/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-13T18:38:40Z",
+      "side": 1,
+      "message": "return button-\u003eactive_level \u003d\u003d BUTTON_ACTIVE_HIGH ? raw_value : !raw_value;",
+      "revId": "832dda8807e1dfc78578baa56d2f43431b9123ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d44d9e7_1d133373",
+        "filename": "common/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-13T18:38:40Z",
+      "side": 1,
+      "message": "Since MAXUINT is a 32-bit value, this will fail as soon as the system has been up 2^32 usec.\n\nIsn\u0027t this the same as next_deferred_time?",
+      "revId": "832dda8807e1dfc78578baa56d2f43431b9123ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8dea89ed_9d22a6bc",
+        "filename": "include/button.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-13T18:38:40Z",
+      "side": 1,
+      "message": "int flags;\n\n#define BUTTON_FLAG_ACTIVE_HIGH (1 \u003c\u003c 0)",
+      "revId": "832dda8807e1dfc78578baa56d2f43431b9123ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d38c95d_f556a01e",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-13T18:38:40Z",
+      "side": 1,
+      "message": "Minor nit: /* goes on a line by itself for multi-line comments",
+      "revId": "832dda8807e1dfc78578baa56d2f43431b9123ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
