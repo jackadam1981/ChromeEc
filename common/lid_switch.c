@@ -45,7 +45,7 @@ static void lid_switch_open(void)
 	CPRINTF("[%T lid open]\n");
 	debounced_lid_open = 1;
 	hook_notify(HOOK_LID_CHANGE);
-	host_set_single_event(EC_HOST_EVENT_LID_OPEN);
+	/* host_set_single_event(EC_HOST_EVENT_LID_OPEN); */
 }
 
 /**
@@ -61,7 +61,7 @@ static void lid_switch_close(void)
 	CPRINTF("[%T lid close]\n");
 	debounced_lid_open = 0;
 	hook_notify(HOOK_LID_CHANGE);
-	host_set_single_event(EC_HOST_EVENT_LID_CLOSED);
+	/* host_set_single_event(EC_HOST_EVENT_LID_CLOSED); */
 }
 
 test_mockable int lid_is_open(void)

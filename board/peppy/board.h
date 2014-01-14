@@ -9,6 +9,7 @@
 #define __BOARD_H
 
 /* Optional features */
+#define CONFIG_ACCEL_KXCJ9
 #define CONFIG_BACKLIGHT_LID
 #define CONFIG_BACKLIGHT_REQ_GPIO GPIO_PCH_BKLTEN
 #define CONFIG_BATTERY_CHECK_CONNECTED
@@ -44,7 +45,12 @@
 /* I2C ports */
 #define I2C_PORT_BATTERY 0
 #define I2C_PORT_CHARGER 0
+#define I2C_PORT_ACCEL   1
 #define I2C_PORT_THERMAL 5
+
+/* Define I2C address of the two accelerometers. */
+#define ACCEL_ADDR_LID   0x1c
+#define ACCEL_ADDR_BASE  0x1e
 
 /* 13x8 keyboard scanner uses an entire GPIO bank for row inputs */
 #define KB_SCAN_ROW_IRQ  LM4_IRQ_GPIOK
