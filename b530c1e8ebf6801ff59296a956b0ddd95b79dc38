@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad810d4e_7ba4d3cf",
+        "filename": "chip/it83xx/config_chip.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-01-14T18:28:59Z",
+      "side": 1,
+      "message": "I would prefer to add that area properly in the linker file (ie core/nds32/ec.lds.S) by adding a new section there before .data rather than putting fake values here.",
+      "revId": "b530c1e8ebf6801ff59296a956b0ddd95b79dc38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd26414f_f63f7eeb",
+        "filename": "util/comm-lpc.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-01-14T18:28:59Z",
+      "side": 1,
+      "message": "could we manage to alias EC_LPC_ADDR_HOST_STATUS to EC_LPC_ADDR_HOST_CMD on LM4 and avoid the #ifdef for wait_for_ec() ?",
+      "revId": "b530c1e8ebf6801ff59296a956b0ddd95b79dc38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
