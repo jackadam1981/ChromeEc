@@ -140,6 +140,8 @@ const struct gpio_alt_func gpio_alt_funcs[] = {
 	{GPIO_B, 0x08, 3, MODULE_I2C, GPIO_OPEN_DRAIN},	/* I2C0 SDA */
 	{GPIO_B, 0x40, 3, MODULE_I2C},			/* I2C5 SCL */
 	{GPIO_B, 0x80, 3, MODULE_I2C, GPIO_OPEN_DRAIN},	/* I2C5 SDA */
+	{GPIO_A, 0x40, 3, MODULE_I2C},			/* I2C1 SCL */
+	{GPIO_A, 0x80, 3, MODULE_I2C, GPIO_OPEN_DRAIN},	/* I2C1 SDA */
 	{GPIO_G, 0x30, 1, MODULE_UART},			/* UART2 */
 	{GPIO_J, 0x40, 1, MODULE_PECI},			/* PECI Tx */
 	{GPIO_J, 0x80, 0, MODULE_PECI, GPIO_ANALOG},	/* PECI Rx */
@@ -197,6 +199,7 @@ BUILD_ASSERT(ARRAY_SIZE(fans) == CONFIG_FANS);
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
 	{"batt_chg", 0, 100},
+	{"accels",   1, 100},
 	{"thermal",  5, 100},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);

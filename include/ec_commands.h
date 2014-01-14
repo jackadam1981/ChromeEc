@@ -82,6 +82,10 @@
 #define EC_MEMMAP_BATT_SERIAL      0x70 /* Battery Serial Number String */
 #define EC_MEMMAP_BATT_TYPE        0x78 /* Battery Type String */
 #define EC_MEMMAP_ALS              0x80 /* ALS readings in lux (uint16_t) */
+#define EC_MEMMAP_GESTURE_DATA     0x90 /* Gesture sensor data 0x90 - 0x9c */
+
+/* Offset from EC_MEMMAP_GESTURE_DATA to find the sample ID. */
+#define EC_MEMMAP_GESTURE_SAMPLE_ID 0xc
 
 /* Number of temp sensors at EC_MEMMAP_TEMP_SENSOR */
 #define EC_TEMP_SENSOR_ENTRIES     16
@@ -2014,6 +2018,22 @@ struct ec_params_reboot_ec {
  * The old EC interface must not use commands 0dc or higher.
  */
 #define EC_CMD_VERSION0 0xdc
+
+/*****************************************************************************/
+/*
+ * Gesture commands
+ *
+ */
+
+/* Write gesture config file */
+#define EC_CMD_GESTURE_CONFIG_WRITE 0xc0
+#define EC_VER_GESTURE_CONFIG_WRITE 0
+
+struct ec_params_gesture_config_write {
+	uint32_t offset;   /* Byte offset to write */
+	uint32_t size;     /* Size to write in bytes */
+	/* Followed by data to write */
+} __packed;
 
 #endif  /* !__ACPI__ */
 
