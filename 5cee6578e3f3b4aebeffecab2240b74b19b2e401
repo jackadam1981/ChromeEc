@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d1b3107_26c8688d",
+        "filename": "board/skate/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-01-14T16:44:41Z",
+      "side": 1,
+      "message": "nit on date",
+      "revId": "5cee6578e3f3b4aebeffecab2240b74b19b2e401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d30bd7d_2afa67e9",
+        "filename": "board/skate/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-01-14T16:44:41Z",
+      "side": 1,
+      "message": "nit on name",
+      "revId": "5cee6578e3f3b4aebeffecab2240b74b19b2e401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d1635de_07852083",
+        "filename": "board/skate/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-01-14T16:44:41Z",
+      "side": 1,
+      "message": "nit on date",
+      "revId": "5cee6578e3f3b4aebeffecab2240b74b19b2e401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d30bd7d_ea046f32",
+        "filename": "board/skate/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-01-14T16:44:41Z",
+      "side": 1,
+      "message": "nit on name",
+      "revId": "5cee6578e3f3b4aebeffecab2240b74b19b2e401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d1b3107_c6b16c11",
+        "filename": "board/skate/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-01-14T16:44:41Z",
+      "side": 1,
+      "message": "I see you added CONFIG_BATTERY_SKATE to the build.mk file so might as well use it here. :)",
+      "revId": "5cee6578e3f3b4aebeffecab2240b74b19b2e401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d1635de_a789d49f",
+        "filename": "board/skate/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-01-14T16:44:41Z",
+      "side": 1,
+      "message": "nit on date",
+      "revId": "5cee6578e3f3b4aebeffecab2240b74b19b2e401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d1b3107_46c55c74",
+        "filename": "board/skate/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-01-14T16:44:41Z",
+      "side": 1,
+      "message": "nit on date",
+      "revId": "5cee6578e3f3b4aebeffecab2240b74b19b2e401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d1635de_67941cb3",
+        "filename": "board/skate/usb_charging.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-01-14T16:44:41Z",
+      "side": 1,
+      "message": "nit on date",
+      "revId": "5cee6578e3f3b4aebeffecab2240b74b19b2e401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d30bd7d_2a134773",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-01-14T16:44:41Z",
+      "side": 1,
+      "message": "Getting ugly but ok for this branch.",
+      "revId": "5cee6578e3f3b4aebeffecab2240b74b19b2e401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d1b3107_66a740d6",
+        "filename": "common/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-01-14T16:44:41Z",
+      "side": 1,
+      "message": "Where is this mythical battery_skate.c file you speak of?",
+      "revId": "5cee6578e3f3b4aebeffecab2240b74b19b2e401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
