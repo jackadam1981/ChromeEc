@@ -84,6 +84,10 @@ const char help_str[] =
 	"      Reads from EC flash to a file\n"
 	"  flashwrite <offset> <infile>\n"
 	"      Writes to EC flash from a file\n"
+	"  gestureconfig <offset> <infile>\n"
+	"      Writes gesture config file to EC\n"
+	"  gesturerecord <time(ms) rate(ms)>\n"
+	"      Print gesture sensor data\n"
 	"  gpioget <GPIO name>\n"
 	"      Get the value of GPIO signal\n"
 	"  gpioset <GPIO name>\n"
@@ -644,6 +648,116 @@ int cmd_flash_write(int argc, char *argv[])
 		return rv;
 
 	printf("done.\n");
+	return 0;
+}
+
+int cmd_gesture_config_write(int argc, char *argv[])
+{
+	int offset, size, i;
+	int rv = 0;
+	char *e;
+	char *buf;
+	struct ec_params_gesture_config_write *p =
+		(struct ec_params_gesture_config_write *)ec_outbuf;
+	int step = (int)(ec_max_outsize - sizeof(*p));
+
+	if (argc < 3) {
+		fprintf(stderr, "Usage: %s <offset> <filename>\n", argv[0]);
+		return -1;
+	}
+
+	offset = strtol(argv[1], &e, 0);
+	if ((e && *e) || offset < 0 || offset > 0x100000) {
+		fprintf(stderr, "Bad offset.\n");
+		return -1;
+	}
+
+	/* Read the input file */
+	buf = read_file(argv[2], &size);
+	if (!buf)
+		return -1;
+
+	printf("Writing to offset %d...\n", offset);
+
+	/* Write data in chunks */
+	printf("Write size %d...\n", step);
+
+	for (i = 0; i < size; i += step) {
+		p->offset = offset + i;
+		p->size = MIN(size - i, step);
+		memcpy(p + 1, buf + i, p->size);
+		rv = ec_command(EC_CMD_GESTURE_CONFIG_WRITE, 0, p, sizeof(*p) +
+				p->size, NULL, 0);
+		if (rv < 0) {
+			fprintf(stderr, "Write error at offset %d\n", i);
+			return rv;
+		}
+	}
+
+	free(buf);
+
+	if (rv < 0)
+		return rv;
+
+	printf("done.\n");
+	return 0;
+}
+
+int cmd_gesture_record(int argc, char *argv[])
+{
+	int lo[6], hi[6], sample, i, busy;
+	char *e;
+	int rate_ms = 0, time_ms = 0;
+
+	if (argc > 3 || argc == 2) {
+		fprintf(stderr, "Usage: %s <time(ms) rate(ms)>\n", argv[0]);
+		return -1;
+	}
+
+	if (argc == 3) {
+		time_ms = strtol(argv[1], &e, 0);
+		if (e && *e) {
+			fprintf(stderr, "Bad time.\n");
+			return -1;
+		}
+
+		rate_ms = strtol(argv[2], &e, 0);
+		if ((e && *e) || rate_ms < 10 || rate_ms > time_ms) {
+			fprintf(stderr, "Bad rate.\n");
+			return -1;
+		}
+	}
+
+	/* Loop until time is out. Run at least once. */
+	do {
+		/*
+		 * Loop until we can guarantee that all data is from the
+		 * same sample.
+		 */
+		do {
+			sample = read_mapped_mem8(EC_MEMMAP_GESTURE_DATA +
+					EC_MEMMAP_GESTURE_SAMPLE_ID);
+			busy = sample & 0x80;
+
+			for (i = 0; i < 6; i++) {
+				hi[i] = read_mapped_mem8(EC_MEMMAP_GESTURE_DATA
+						+ 2*i);
+				lo[i] = read_mapped_mem8(EC_MEMMAP_GESTURE_DATA
+						+ 2*i + 1);
+			}
+		} while (!busy && read_mapped_mem8(EC_MEMMAP_GESTURE_DATA +
+				EC_MEMMAP_GESTURE_SAMPLE_ID) != sample);
+
+		/* Print all data. */
+		printf("%d,\t%d,\t%d,\t%d,\t%d,\t%d\n",
+				hi[0] << 8 | lo[0], hi[1] << 8 | lo[1],
+				hi[2] << 8 | lo[2], hi[3] << 8 | lo[3],
+				hi[4] << 8 | lo[4], hi[5] << 8 | lo[5]);
+
+		usleep(rate_ms * 1000);
+		time_ms -= rate_ms;
+	} while (time_ms > 0);
+
 	return 0;
 }
 
@@ -3461,6 +3575,8 @@ const struct command commands[] = {
 	{"flashread", cmd_flash_read},
 	{"flashwrite", cmd_flash_write},
 	{"flashinfo", cmd_flash_info},
+	{"gestureconfig", cmd_gesture_config_write},
+	{"gesturerecord", cmd_gesture_record},
 	{"gpioget", cmd_gpio_get},
 	{"gpioset", cmd_gpio_set},
 	{"hangdetect", cmd_hang_detect},
