@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cd26414f_169ebad0",
+        "filename": "board/skate/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000764
+      },
+      "writtenOn": "2014-01-14T18:10:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d1b3107_26c8688d",
+      "revId": "5cee6578e3f3b4aebeffecab2240b74b19b2e401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d30bd7d_2afa67e9",
         "filename": "board/skate/board.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-01-14T16:44:41Z",
       "side": 1,
       "message": "nit on name",
+      "revId": "5cee6578e3f3b4aebeffecab2240b74b19b2e401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd26414f_76912ec1",
+        "filename": "board/skate/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000764
+      },
+      "writtenOn": "2014-01-14T18:10:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d30bd7d_2afa67e9",
       "revId": "5cee6578e3f3b4aebeffecab2240b74b19b2e401",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "cd26414f_369bb6e1",
+        "filename": "board/skate/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000764
+      },
+      "writtenOn": "2014-01-14T18:10:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d1635de_07852083",
+      "revId": "5cee6578e3f3b4aebeffecab2240b74b19b2e401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d30bd7d_ea046f32",
         "filename": "board/skate/board.h",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2014-01-14T16:44:41Z",
       "side": 1,
       "message": "nit on name",
+      "revId": "5cee6578e3f3b4aebeffecab2240b74b19b2e401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad810d4e_1b96e779",
+        "filename": "board/skate/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000764
+      },
+      "writtenOn": "2014-01-14T18:10:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d30bd7d_ea046f32",
       "revId": "5cee6578e3f3b4aebeffecab2240b74b19b2e401",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "cd26414f_f66d3e1f",
+        "filename": "board/skate/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000764
+      },
+      "writtenOn": "2014-01-14T18:10:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d1b3107_c6b16c11",
+      "revId": "5cee6578e3f3b4aebeffecab2240b74b19b2e401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d1635de_a789d49f",
         "filename": "board/skate/build.mk",
         "patchSetId": 1
@@ -98,6 +188,24 @@
       "writtenOn": "2014-01-14T16:44:41Z",
       "side": 1,
       "message": "nit on date",
+      "revId": "5cee6578e3f3b4aebeffecab2240b74b19b2e401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad810d4e_3b93ab8a",
+        "filename": "board/skate/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000764
+      },
+      "writtenOn": "2014-01-14T18:10:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d1635de_a789d49f",
       "revId": "5cee6578e3f3b4aebeffecab2240b74b19b2e401",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "ad810d4e_fb6523f8",
+        "filename": "board/skate/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000764
+      },
+      "writtenOn": "2014-01-14T18:10:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d1b3107_46c55c74",
+      "revId": "5cee6578e3f3b4aebeffecab2240b74b19b2e401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d1635de_67941cb3",
         "filename": "board/skate/usb_charging.c",
         "patchSetId": 1
@@ -132,6 +258,24 @@
       "writtenOn": "2014-01-14T16:44:41Z",
       "side": 1,
       "message": "nit on date",
+      "revId": "5cee6578e3f3b4aebeffecab2240b74b19b2e401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad810d4e_7b7293bc",
+        "filename": "board/skate/usb_charging.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000764
+      },
+      "writtenOn": "2014-01-14T18:10:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d1635de_67941cb3",
       "revId": "5cee6578e3f3b4aebeffecab2240b74b19b2e401",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -155,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "ed294520_9afe6dd7",
+        "filename": "chip/stm32/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000764
+      },
+      "writtenOn": "2014-01-14T18:10:32Z",
+      "side": 1,
+      "message": "i just copy/paste...",
+      "parentUuid": "2d30bd7d_2a134773",
+      "revId": "5cee6578e3f3b4aebeffecab2240b74b19b2e401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d1b3107_66a740d6",
         "filename": "common/build.mk",
         "patchSetId": 1
@@ -166,6 +328,24 @@
       "writtenOn": "2014-01-14T16:44:41Z",
       "side": 1,
       "message": "Where is this mythical battery_skate.c file you speak of?",
+      "revId": "5cee6578e3f3b4aebeffecab2240b74b19b2e401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd26414f_b667c63d",
+        "filename": "common/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000764
+      },
+      "writtenOn": "2014-01-14T18:10:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d1b3107_66a740d6",
       "revId": "5cee6578e3f3b4aebeffecab2240b74b19b2e401",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
