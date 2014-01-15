@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0df0590e_17512c25",
+        "filename": "board/nyan/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-01-15T22:57:38Z",
+      "side": 1,
+      "message": "Hm... I think this should be TEGRA_SUSPEND_ASSERTED since the GPIO_SUSPEND_L is configured level 0. just like X86_SUS_STAT_ASSERTED in rambi. I will fix.",
+      "parentUuid": "0df0590e_6c9543db",
+      "revId": "3f1f4fb3d5b606210103713cb796ebe8adedbca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "edaa25eb_15165662",
         "filename": "include/power.h",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2014-01-15T21:47:47Z",
       "side": 1,
       "message": "Seems like we ought to rename that to CONFIG_POWER_COMMON",
+      "revId": "3f1f4fb3d5b606210103713cb796ebe8adedbca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4deed135_d4ab3a5b",
+        "filename": "include/power.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-01-15T22:57:38Z",
+      "side": 1,
+      "message": "Hm... right. Will file another CL.",
+      "parentUuid": "edaa25eb_15165662",
       "revId": "3f1f4fb3d5b606210103713cb796ebe8adedbca0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "6d02b5bc_c1db788d",
+        "filename": "power/tegra.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-01-15T22:57:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edaa25eb_f5374afb",
+      "revId": "3f1f4fb3d5b606210103713cb796ebe8adedbca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "edaa25eb_352272be",
         "filename": "power/tegra.c",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2014-01-15T21:47:47Z",
       "side": 1,
       "message": "???",
+      "revId": "3f1f4fb3d5b606210103713cb796ebe8adedbca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0df0590e_b765d8f9",
+        "filename": "power/tegra.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-01-15T22:57:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edaa25eb_352272be",
       "revId": "3f1f4fb3d5b606210103713cb796ebe8adedbca0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "0df0590e_b7d9580f",
+        "filename": "power/tegra.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-01-15T22:57:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edaa25eb_15749614",
+      "revId": "3f1f4fb3d5b606210103713cb796ebe8adedbca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4deed135_b465d6f9",
         "filename": "power/tegra.c",
         "patchSetId": 2
@@ -98,6 +188,24 @@
       "writtenOn": "2014-01-15T21:47:47Z",
       "side": 1,
       "message": "use power_has_signals() rather than gpio_get_level()",
+      "revId": "3f1f4fb3d5b606210103713cb796ebe8adedbca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdf9e1ff_612f1272",
+        "filename": "power/tegra.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-01-15T22:57:38Z",
+      "side": 1,
+      "message": "Done with power_has_signals()",
+      "parentUuid": "4deed135_b465d6f9",
       "revId": "3f1f4fb3d5b606210103713cb796ebe8adedbca0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
