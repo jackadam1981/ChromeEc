@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "8d0d29ec_3f224fbe",
+        "filename": "board/glimmer/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-01-15T20:45:48Z",
+      "side": 1,
+      "message": "Please update to 2014.",
+      "revId": "0a606889747c3df6ba1311e730e591c822d17186",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d0d29ec_7c4b3543",
         "filename": "board/glimmer/battery.c",
         "patchSetId": 1
@@ -13,6 +30,58 @@
       "writtenOn": "2014-01-15T15:50:15Z",
       "side": 1,
       "message": "please stick to the standard copyright header for Chromium OS contribution.",
+      "revId": "0a606889747c3df6ba1311e730e591c822d17186",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0df0590e_0cff5fd5",
+        "filename": "board/glimmer/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-01-15T20:45:48Z",
+      "side": 1,
+      "message": "Yes, code should be contributed under the terms of the Chromium open-source licence.",
+      "parentUuid": "8d0d29ec_7c4b3543",
+      "revId": "0a606889747c3df6ba1311e730e591c822d17186",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0df0590e_4c8cc76b",
+        "filename": "board/glimmer/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-01-15T20:45:48Z",
+      "side": 1,
+      "message": "WIll the battery also exit sleep mode and then ship mode if it sees i2c traffic from the EC? If so, this function may not be needed.",
+      "revId": "0a606889747c3df6ba1311e730e591c822d17186",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0df0590e_ec3cb3e0",
+        "filename": "include/battery_smart.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-01-15T20:45:48Z",
+      "side": 1,
+      "message": "This is a manufacturer-specific code which is marked as \"reserved\" in the smart battery spec. This should go in battery.c for the board instead.",
       "revId": "0a606889747c3df6ba1311e730e591c822d17186",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
