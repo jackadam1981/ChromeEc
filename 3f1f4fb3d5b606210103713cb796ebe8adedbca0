@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0df0590e_6c9543db",
+        "filename": "board/nyan/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-15T21:47:47Z",
+      "side": 1,
+      "message": "TEGRA_SUSPEND_DEASSERTED?",
+      "revId": "3f1f4fb3d5b606210103713cb796ebe8adedbca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "edaa25eb_15165662",
+        "filename": "include/power.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-15T21:47:47Z",
+      "side": 1,
+      "message": "Seems like we ought to rename that to CONFIG_POWER_COMMON",
+      "revId": "3f1f4fb3d5b606210103713cb796ebe8adedbca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "edaa25eb_f5374afb",
+        "filename": "power/tegra.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-15T21:47:47Z",
+      "side": 1,
+      "message": "grammar nit: remove \"the\"",
+      "revId": "3f1f4fb3d5b606210103713cb796ebe8adedbca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "edaa25eb_352272be",
+        "filename": "power/tegra.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-15T21:47:47Z",
+      "side": 1,
+      "message": "???",
+      "revId": "3f1f4fb3d5b606210103713cb796ebe8adedbca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4deed135_b465d6f9",
+        "filename": "power/tegra.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-15T21:47:47Z",
+      "side": 1,
+      "message": "use power_has_signals() rather than gpio_get_level()",
+      "revId": "3f1f4fb3d5b606210103713cb796ebe8adedbca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
