@@ -70,6 +70,23 @@
     },
     {
       "key": {
+        "uuid": "edaa25eb_15749614",
+        "filename": "power/tegra.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1000393
+      },
+      "writtenOn": "2014-01-15T22:31:36Z",
+      "side": 1,
+      "message": "Same here: it\u0027s better to check for EC_SUCCESS.",
+      "revId": "3f1f4fb3d5b606210103713cb796ebe8adedbca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4deed135_b465d6f9",
         "filename": "power/tegra.c",
         "patchSetId": 2
