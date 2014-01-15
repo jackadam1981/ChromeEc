@@ -86,10 +86,22 @@
 #undef CONFIG_BATTERY_MOCK
 
 /*
- * Battery can check if it's connected.  If defined, charger will check for
- * battery presence before attempting to communicate with it.
+ * If defined, the charger will check for battery presence before attempting
+ * to communicate with it. This avoids the 30 second delay when booting
+ * without a battery present. Do not use with CONFIG_BATTERY_PRESENT_GPIO.
+ *
+ * Replace the default battery_is_present() function with a board-specific
+ * implementation in board.c
  */
-#undef CONFIG_BATTERY_CHECK_CONNECTED
+#undef CONFIG_BATTERY_PRESENT_CUSTOM
+
+/*
+ * If defined, the charger will check for battery presence before attempting
+ * to communicate with it. This avoids the 30 second delay when booting
+ * without a battery present. Do not use with CONFIG_BATTERY_PRESENT_CUSTOM.
+ * GPIO is assumed to be low when the battery is present.
+ */
+#undef CONFIG_BATTERY_PRESENT_GPIO
 
 /*
  * Compile smart battery support
