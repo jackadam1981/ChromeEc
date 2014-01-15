@@ -7,9 +7,20 @@
 
 #include "battery.h"
 #include "console.h"
+#include "gpio.h"
 #include "timer.h"
 #include "util.h"
 #include "watchdog.h"
+
+#ifdef CONFIG_BATTERY_DETECT_GPIO
+/**
+ * Physical detection of battery connection.
+ */
+int battery_is_connected(void)
+{
+	return (gpio_get_level(GPIO_BAT_DETECT_L) == 0);
+}
+#endif
 
 static const char *get_error_text(int rv)
 {

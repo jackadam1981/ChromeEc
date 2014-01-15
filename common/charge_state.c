@@ -248,12 +248,13 @@ static int state_common(struct charge_state_context *ctx)
 		state_machine_force_idle = 0;
 	}
 
-#ifdef CONFIG_BATTERY_CHECK_CONNECTED
+#if defined(CONFIG_BATTERY_DETECT_CUSTOM) || \
+	defined(CONFIG_BATTERY_DETECT_GPIO)
 	if (!battery_is_connected()) {
 		curr->error |= F_BATTERY_NOT_CONNECTED;
 		return curr->error;
 	}
-#endif /* CONFIG_BATTERY_CHECK_CONNECTED */
+#endif
 
 	/* Read params and see if battery is responsive */
 	battery_get_params(batt);
