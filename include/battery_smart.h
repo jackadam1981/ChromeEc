@@ -56,6 +56,7 @@
 #define SB_DEVICE_NAME                  0x21
 #define SB_DEVICE_CHEMISTRY             0x22
 #define SB_MANUFACTURER_DATA            0x23
+#define SB_FET_OFF			0x34
 
 /* Battery mode */
 #define MODE_INTERNAL_CHARGE_CONTROLLER (1 << 0)
