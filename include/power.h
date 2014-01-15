@@ -90,7 +90,7 @@ enum power_state power_handle_state(enum power_state state);
 /**
  * Interrupt handler for chipset GPIOs.
  */
-#if defined(CONFIG_CHIPSET_X86) || defined(CONFIG_CHIPSET_TEGRA)
+#ifdef CONFIG_POWER_COMMON
 void power_signal_interrupt(enum gpio_signal signal);
 #else
 #define power_signal_interrupt NULL

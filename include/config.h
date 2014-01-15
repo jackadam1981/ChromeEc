@@ -192,10 +192,7 @@
 #undef CONFIG_CHIPSET_GAIA	/* Gaia and Ares (ARM) */
 #undef CONFIG_CHIPSET_HASWELL   /* Intel Haswell (x86) */
 #undef CONFIG_CHIPSET_IVYBRIDGE /* Intel Ivy Bridge (x86) */
-#undef CONFIG_CHIPSET_TEGRA	/* Tegra */
-
-/* Compile common x86 chipset infrastructure.  Required for x86 chips. */
-#undef CONFIG_CHIPSET_X86
+#undef CONFIG_CHIPSET_TEGRA  /* nVidia Tegra 5 */
 
 /* Support power rail control */
 #define CONFIG_CHIPSET_HAS_PP1350
@@ -814,7 +811,6 @@
 #undef CONFIG_CHIPSET_GAIA
 #undef CONFIG_CHIPSET_HASWELL
 #undef CONFIG_CHIPSET_IVYBRIDGE
-#undef CONFIG_CHIPSET_X86
 #undef CONFIG_CHIPSET_TEGRA
 #endif
 
