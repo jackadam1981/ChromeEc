@@ -33,6 +33,40 @@
       "revId": "f4ad5589640c266f9e80282cca1182ded487eb31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4deed135_25423ac9",
+        "filename": "chip/lm4/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-01-15T03:03:39Z",
+      "side": 1,
+      "message": "Took me a little while to see that this is here to start the transaction.  Actually, it wasn\u0027t clear at all that this function was in charge of starting the transaction. Maybe the function should be renamed or maybe just add some comments in i2c_xfer() that the function call to wait_idle() starts the transaction.",
+      "revId": "f4ad5589640c266f9e80282cca1182ded487eb31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4deed135_65e0c2b2",
+        "filename": "chip/lm4/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-01-15T03:03:39Z",
+      "side": 1,
+      "message": "Typo in comment: \"doring\" -\u003e \"doing\"",
+      "revId": "f4ad5589640c266f9e80282cca1182ded487eb31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
