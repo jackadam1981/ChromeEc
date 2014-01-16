@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2dca7dde_06a75a3d",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-16T00:58:47Z",
+      "side": 1,
+      "message": "Please add description of CONFIG_POWER_COMMON",
+      "revId": "f843998b52920c1b997a315107c856975d8860ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6dd0f588_6b96dd7a",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-16T00:58:47Z",
+      "side": 1,
+      "message": "Don\u0027t we still need to #undef CONFIG_POWER_COMMON?",
+      "revId": "f843998b52920c1b997a315107c856975d8860ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
