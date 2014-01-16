@@ -71,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "2d8fddae_bee03941",
+        "filename": "board/glimmer/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1003228
+      },
+      "writtenOn": "2014-01-16T01:22:23Z",
+      "side": 1,
+      "message": "The condition that exit ship mode is send the command 0x2000 and 0x4000 sequentially and the interval is less than 5 seconds.\nIf the battery is cutoff, the register 0x34 returns 0x0100.",
+      "parentUuid": "0df0590e_4c8cc76b",
+      "revId": "0a606889747c3df6ba1311e730e591c822d17186",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0df0590e_ec3cb3e0",
         "filename": "include/battery_smart.h",
         "patchSetId": 1
@@ -82,6 +100,24 @@
       "writtenOn": "2014-01-15T20:45:48Z",
       "side": 1,
       "message": "This is a manufacturer-specific code which is marked as \"reserved\" in the smart battery spec. This should go in battery.c for the board instead.",
+      "revId": "0a606889747c3df6ba1311e730e591c822d17186",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d855589_80f796ff",
+        "filename": "include/battery_smart.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1003228
+      },
+      "writtenOn": "2014-01-16T01:22:23Z",
+      "side": 1,
+      "message": "I will change it to battery.c.",
+      "parentUuid": "0df0590e_ec3cb3e0",
       "revId": "0a606889747c3df6ba1311e730e591c822d17186",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
