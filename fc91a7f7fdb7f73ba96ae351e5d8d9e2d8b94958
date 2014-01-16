@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d37e9c2_c9ac51bc",
+        "filename": "board/nyan/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-01-16T23:19:44Z",
+      "side": 0,
+      "message": "Note that nyan didn\u0027t define CONFIG_BATTERY_CHECK_CONNECTED so I didn\u0027t bother adding it.",
+      "revId": "fc91a7f7fdb7f73ba96ae351e5d8d9e2d8b94958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
