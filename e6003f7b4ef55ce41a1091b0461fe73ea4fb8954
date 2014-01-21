@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3229fe85_68557f16",
+        "filename": "common/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-01-21T22:10:33Z",
+      "side": 1,
+      "message": "Done. Appears to be missing on other things under /common.",
+      "parentUuid": "32fbbe35_9e56bdbc",
+      "revId": "e6003f7b4ef55ce41a1091b0461fe73ea4fb8954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12f87a37_fdd4a711",
         "filename": "common/battery.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "5244b256_a97011ad",
+        "filename": "common/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-01-21T22:10:33Z",
+      "side": 1,
+      "message": "Ack! Yes. That\u0027s embarrassing :)",
+      "parentUuid": "12f87a37_fdd4a711",
+      "revId": "e6003f7b4ef55ce41a1091b0461fe73ea4fb8954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12f87a37_7d0897f6",
         "filename": "include/config.h",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2014-01-17T08:22:12Z",
       "side": 1,
       "message": "I am thinking if CONFIG_BATTERY_PRESENT_GPIO is a more meaningful name because DETECT is more generic (detect voltage? current? temperature?)",
+      "revId": "e6003f7b4ef55ce41a1091b0461fe73ea4fb8954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d29d0227_bbc2c7c5",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-01-21T22:10:33Z",
+      "side": 1,
+      "message": "Done. I flip-flopped between \"PRESENT\" and \"DETECT\" for a while...and ultimately picked one at random. If you think \"PRESENT\" is more meaningful, let\u0027s use it.",
+      "parentUuid": "12f87a37_7d0897f6",
       "revId": "e6003f7b4ef55ce41a1091b0461fe73ea4fb8954",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
