@@ -13,6 +13,7 @@
 #include "task.h"
 #include "test_util.h"
 #include "timer.h"
+#include "trace.h"
 #include "uart.h"
 
 /* Console output macros */

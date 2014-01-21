@@ -9,6 +9,7 @@
 #include "common.h"
 #include "panic.h"
 #include "test_util.h"
+#include "trace.h"
 #include "util.h"
 
 void panic_assert_fail(const char *msg, const char *func, const char *fname,
