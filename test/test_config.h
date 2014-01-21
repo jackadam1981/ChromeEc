@@ -82,5 +82,10 @@ int board_discharge_on_ac(int enabled);
 #define I2C_PORT_MASTER 1
 #endif
 
+#ifdef TEST_POWER_TEGRA
+#define CONFIG_CHIPSET_TEGRA
+#define CONFIG_POWER_COMMON
+#endif
+
 #endif  /* TEST_BUILD */
 #endif  /* __CROS_EC_TEST_CONFIG_H */

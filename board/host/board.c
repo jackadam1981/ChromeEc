@@ -7,6 +7,7 @@
 #include "extpower.h"
 #include "gpio.h"
 #include "lid_switch.h"
+#include "power.h"
 #include "power_button.h"
 #include "temp_sensor.h"
 #include "util.h"
@@ -23,6 +24,13 @@ const struct gpio_info gpio_list[] = {
 	MOCK_GPIO_INT(AC_PRESENT, GPIO_INT_BOTH, extpower_interrupt),
 	MOCK_GPIO(PCH_BKLTEN),
 	MOCK_GPIO(ENABLE_BACKLIGHT),
+	MOCK_GPIO(GPIO_AP_RESET_L),
+	MOCK_GPIO(GPIO_PMIC_PWRON_L),
+	MOCK_GPIO(GPIO_PMIC_RESET),
+	MOCK_GPIO(GPIO_PMIC_THERM_L),
+	MOCK_GPIO(GPIO_PMIC_WARM_RESET_L),
+	MOCK_GPIO(GPIO_SOC1V8_XPSHOLD),
+	MOCK_GPIO(GPIO_SUSPEND_L),
 };
 BUILD_ASSERT(ARRAY_SIZE(gpio_list) == GPIO_COUNT);
 
@@ -44,3 +52,12 @@ const struct temp_sensor_t temp_sensors[] = {
 	{"Battery", TEMP_SENSOR_TYPE_BOARD, dummy_temp_get_val, 3, 0},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
+
+#ifdef TEST_POWER_TEGRA
+/* power signal list.  Must match order of enum power_signal. */
+const struct power_signal_info power_signal_list[] = {
+	{GPIO_SOC1V8_XPSHOLD, 1, "XPSHOLD"},
+	{GPIO_SUSPEND_L,      0, "SUSPEND#_ASSERTED"},
+};
+BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
+#endif

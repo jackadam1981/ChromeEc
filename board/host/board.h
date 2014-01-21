@@ -29,6 +29,13 @@ enum gpio_signal {
 	GPIO_AC_PRESENT,
 	GPIO_PCH_BKLTEN,
 	GPIO_ENABLE_BACKLIGHT,
+	GPIO_AP_RESET_L,
+	GPIO_PMIC_PWRON_L,
+	GPIO_PMIC_RESET,
+	GPIO_PMIC_THERM_L,
+	GPIO_PMIC_WARM_RESET_L,
+	GPIO_SOC1V8_XPSHOLD,
+	GPIO_SUSPEND_L,
 
 	GPIO_COUNT
 };
@@ -48,5 +55,15 @@ enum adc_channel {
 
 	ADC_CH_COUNT
 };
+
+#ifdef TEST_POWER_TEGRA
+enum power_signal {
+	TEGRA_XPSHOLD = 0,
+	TEGRA_SUSPEND_ASSERTED,
+
+	/* Number of power signals */
+	POWER_SIGNAL_COUNT
+};
+#endif
 
 #endif /* __BOARD_H */
