@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12eebac6_160d4206",
+        "filename": "board/squawks/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-27T17:45:38Z",
+      "side": 1,
+      "message": "Must also cancel any pending deferred call!\n\n  hook_call_deferred(discharge_on_ac_deferred, -1);\n  return charger_discharge_on_ac(0);",
+      "revId": "ba4dad2abc6d5c8791a32ca85d58c13f8f1d8429",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
