@@ -27,61 +27,6 @@ const enum ec_led_id supported_led_ids[] = {
 
 const int supported_led_ids_count = ARRAY_SIZE(supported_led_ids);
 
-static int wolf_led_set_gpio(enum led_color color,
-				enum gpio_signal gpio_led_white_l,
-				enum gpio_signal gpio_led_amber_l)
-{
-	switch (color) {
-	case LED_OFF:
-		gpio_set_level(gpio_led_white_l, 1);
-		gpio_set_level(gpio_led_amber_l, 1);
-		break;
-	case LED_WHITE:
-		gpio_set_level(gpio_led_white_l, 0);
-		gpio_set_level(gpio_led_amber_l, 1);
-		break;
-	case LED_AMBER:
-		gpio_set_level(gpio_led_white_l, 1);
-		gpio_set_level(gpio_led_amber_l, 0);
-		break;
-	default:
-		return EC_ERROR_UNKNOWN;
-	}
-	return EC_SUCCESS;
-}
-
-
-static int wolf_led_set_color_battery(enum led_color color)
-{
-	return wolf_led_set_gpio(color, GPIO_BAT_LED0_L, GPIO_BAT_LED1_L);
-}
-
-static int wolf_led_set_color(enum ec_led_id led_id, enum led_color color)
-{
-	int rv;
-
-	switch (led_id) {
-	case EC_LED_ID_BATTERY_LED:
-		rv = wolf_led_set_color_battery(color);
-		break;
-	default:
-		return EC_ERROR_UNKNOWN;
-	}
-	return rv;
-}
-
-int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
-{
-	if (brightness[EC_LED_COLOR_WHITE] != 0)
-		wolf_led_set_color(led_id, LED_WHITE);
-	else if (brightness[EC_LED_COLOR_YELLOW] != 0)
-		wolf_led_set_color(led_id, LED_AMBER);
-	else
-		wolf_led_set_color(led_id, LED_OFF);
-
-	return EC_SUCCESS;
-}
-
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 {
 	/* Ignoring led_id as both leds support the same colors */
@@ -107,6 +52,18 @@ static int bat_led_set_color(enum led_color color)
 	default:
 		return EC_ERROR_UNKNOWN;
 	}
+	return EC_SUCCESS;
+}
+
+int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
+{
+	if (brightness[EC_LED_COLOR_WHITE] != 0)
+		bat_led_set_color(LED_WHITE);
+	else if (brightness[EC_LED_COLOR_YELLOW] != 0)
+		bat_led_set_color(LED_AMBER);
+	else
+		bat_led_set_color(LED_OFF);
+
 	return EC_SUCCESS;
 }
 
