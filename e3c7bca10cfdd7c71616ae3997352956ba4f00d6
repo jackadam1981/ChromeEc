@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d210a297_6c02efd5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-01-29T00:49:02Z",
+      "side": 1,
+      "message": "that part needs to be modified ?",
+      "revId": "e3c7bca10cfdd7c71616ae3997352956ba4f00d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f213e69e_8d4649dc",
+        "filename": "core/nds32/ec.lds.S",
+        "patchSetId": 13
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-01-29T00:49:02Z",
+      "side": 1,
+      "message": "please add comment that you need absolute addresses 0x800000 to 0x800400 to scare away people willing to re-shuffle sections.",
+      "revId": "e3c7bca10cfdd7c71616ae3997352956ba4f00d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
