@@ -104,6 +104,24 @@
       "revId": "253f2ebf52d7219e890bd6c3ff01b8169f464e97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52811216_6df051b9",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-01-29T16:57:05Z",
+      "side": 1,
+      "message": "then, maybe you can use the MSB of the SAMPLE_ID byte as an update flag.\ne.g.\nSAMPLE_ID |\u003d 0x80\nupdate values\nSAMPLE_ID \u003d (SAMPLE_ID \u0026 ~0x80) +!",
+      "parentUuid": "52811216_2d18195f",
+      "revId": "253f2ebf52d7219e890bd6c3ff01b8169f464e97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
