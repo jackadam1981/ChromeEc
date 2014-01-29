@@ -125,7 +125,7 @@ enum gpio_signal {
 	GPIO_WLAN_OFF_L,           /* Disable WiFi radio */
 	GPIO_PCH_SCI_L,            /* Assert SCI to PCH */
 	GPIO_KBD_IRQ_L,            /* Negative edge triggered irq. */
-
+	GPIO_POWER_LED_L,	   /*  */
 	/* Number of GPIOs; not an actual GPIO */
 	GPIO_COUNT
 };

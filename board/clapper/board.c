@@ -110,6 +110,7 @@ const struct gpio_info gpio_list[] = {
 	{"WLAN_OFF_L",           LM4_GPIO_J, (1<<4), GPIO_OUT_LOW, NULL},
 	{"PCH_SCI_L",            LM4_GPIO_M, (1<<1), GPIO_ODR_HIGH, NULL},
 	{"KBD_IRQ_L",            LM4_GPIO_M, (1<<3), GPIO_ODR_HIGH, NULL},
+	{"POWER_LED_L",          LM4_GPIO_M, (1<<6), GPIO_OUT_HIGH, NULL},
 };
 BUILD_ASSERT(ARRAY_SIZE(gpio_list) == GPIO_COUNT);
 
