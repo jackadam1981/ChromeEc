@@ -86,6 +86,24 @@
       "revId": "253f2ebf52d7219e890bd6c3ff01b8169f464e97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52811216_2d18195f",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-01-29T16:40:48Z",
+      "side": 1,
+      "message": "That is what I\u0027m doing here. The problem is it doesn\u0027t protect against the case where we read the memory much faster than the EC writes it. In that case we could end up reading the same sample ID before and after even though during that time the EC wrote to some of the memory locations.",
+      "parentUuid": "52811216_2dd2d947",
+      "revId": "253f2ebf52d7219e890bd6c3ff01b8169f464e97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
