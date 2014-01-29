@@ -19,6 +19,41 @@
     },
     {
       "key": {
+        "uuid": "f2b4c6fd_df0cbf0b",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-01-29T16:10:01Z",
+      "side": 1,
+      "message": "eg\nhost_set_single_event(EC_HOST_EVENT_LID_OPEN);\nor\ncall keyboard_state_changed(row, col, 1);\n(which ultimately triggers host_set_single_event(EC_HOST_EVENT_KEY_PRESSED); )",
+      "parentUuid": "52811216_4d60eddf",
+      "revId": "253f2ebf52d7219e890bd6c3ff01b8169f464e97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2b4c6fd_9f0637e6",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-01-29T16:10:01Z",
+      "side": 1,
+      "message": "the right way of doing this is to use a hook on HOOK_CHIPSET_STARTUP.\nbut we dont care.",
+      "revId": "253f2ebf52d7219e890bd6c3ff01b8169f464e97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52811216_2d6bb9c7",
         "filename": "util/ectool.c",
         "patchSetId": 1
@@ -30,6 +65,24 @@
       "writtenOn": "2014-01-29T15:52:56Z",
       "side": 1,
       "message": "This isn\u0027t quite sure proof. If we read from the memory map while it is being modified from the EC side, then we could have problems. We need to add something like a status byte in addition to a sample count. The status byte should be marked busy while the EC is modifying the memory.",
+      "revId": "253f2ebf52d7219e890bd6c3ff01b8169f464e97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52811216_2dd2d947",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-01-29T16:10:01Z",
+      "side": 1,
+      "message": "maybe you should just ensure that the sample ID is the same at the beginning and at the end of your readings",
+      "parentUuid": "52811216_2d6bb9c7",
       "revId": "253f2ebf52d7219e890bd6c3ff01b8169f464e97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
