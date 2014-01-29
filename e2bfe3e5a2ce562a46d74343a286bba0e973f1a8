@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b297ae5d_02b76add",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-01-29T18:31:16Z",
+      "side": 1,
+      "message": "since we have decided to bikeshed on the byte increment,\nIMO we don\u0027t to increment sample_id twice in the cycle.\njust remove that line and we are good ?",
+      "revId": "e2bfe3e5a2ce562a46d74343a286bba0e973f1a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
