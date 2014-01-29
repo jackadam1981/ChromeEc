@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52811216_4d60eddf",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-01-29T15:52:56Z",
+      "side": 1,
+      "message": "Need an example of a host event here to signal that a gesture has been recognized.",
+      "revId": "253f2ebf52d7219e890bd6c3ff01b8169f464e97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52811216_2d6bb9c7",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-01-29T15:52:56Z",
+      "side": 1,
+      "message": "This isn\u0027t quite sure proof. If we read from the memory map while it is being modified from the EC side, then we could have problems. We need to add something like a status byte in addition to a sample count. The status byte should be marked busy while the EC is modifying the memory.",
+      "revId": "253f2ebf52d7219e890bd6c3ff01b8169f464e97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
