@@ -122,6 +122,24 @@
       "revId": "253f2ebf52d7219e890bd6c3ff01b8169f464e97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "92870a29_efdb553c",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-29T17:07:36Z",
+      "side": 1,
+      "message": "Agree with Vincent.  That\u0027s what we\u0027re doing with the raw accelerometer data already, isn\u0027t it?  (With a 4-bit sample counter; we reserved bitmask 0x70 for future expansion)\n\nMinor nit:  in the example above, if SAMPLE_ID\u003d0x7f, it\u0027ll wrap to 0x80 when incremented, so the increment needs to happen before the mask:\n\n  SAMPLE_ID |\u003d 0x80\n  (update values)\n  SAMPLE_ID \u003d (SAMPLE_ID + 1) \u0026 ~0x80",
+      "parentUuid": "52811216_6df051b9",
+      "revId": "253f2ebf52d7219e890bd6c3ff01b8169f464e97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
