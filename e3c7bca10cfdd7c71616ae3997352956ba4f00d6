@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d2934268_cbd4d500",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-01-29T01:10:04Z",
+      "side": 1,
+      "message": "There is a typo here, should be 0xd300/0xd301/0xd302. \n\nThis mapping is actually wasting space: 0xd000-0xd100 is unused. It would be better to shift things down to occupy 0xd000-0xd203.",
+      "parentUuid": "d210a297_6c02efd5",
+      "revId": "e3c7bca10cfdd7c71616ae3997352956ba4f00d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f213e69e_8d4649dc",
         "filename": "core/nds32/ec.lds.S",
         "patchSetId": 13
