@@ -35,9 +35,11 @@ static int raw_power_button_pressed(void)
 	if (simulate_power_pressed)
 		return 1;
 
+#ifndef CONFIG_POWER_BUTTON_IGNORE_LID
 	/* Ignore power button if lid is closed */
 	if (!lid_is_open())
 		return 0;
+#endif
 
 	return gpio_get_level(GPIO_POWER_BUTTON_L) ? 0 : 1;
 }
