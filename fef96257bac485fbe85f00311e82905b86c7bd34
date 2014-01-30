@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "727c56f1_0b0a617f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-01-30T00:06:23Z",
+      "side": 1,
+      "message": "Please add a blank line after the first line. The first line is treated as the summary.",
+      "revId": "fef96257bac485fbe85f00311e82905b86c7bd34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b2824e17_704f4885",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-01-30T00:06:23Z",
+      "side": 1,
+      "message": "Please add: \"BUG\u003dchrome-os-partner:24371\"\nThis way, the commit message will be appended to the bug.",
+      "revId": "fef96257bac485fbe85f00311e82905b86c7bd34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32765e13_c9abf567",
+        "filename": "board/clapper/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-01-30T00:06:23Z",
+      "side": 1,
+      "message": "Please note that this is a PWM capable GPIO. If you want to set a brightness other than 100% please add this GPIO to gpio_alt_funcs[] and set the brightness level with  pwm_set_duty(). See board/rambi/led.c for an example.",
+      "revId": "fef96257bac485fbe85f00311e82905b86c7bd34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b2824e17_9092fc8a",
+        "filename": "board/clapper/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-01-30T00:06:23Z",
+      "side": 1,
+      "message": "For consistency, please add a comment. \"Power LED\" will do. Use spaces to align the comment rather than tab (like the other lines).",
+      "revId": "fef96257bac485fbe85f00311e82905b86c7bd34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32765e13_69c68159",
+        "filename": "board/clapper/opled.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-01-30T00:06:23Z",
+      "side": 1,
+      "message": "Please change the date to 2014.",
+      "revId": "fef96257bac485fbe85f00311e82905b86c7bd34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b2824e17_b040e051",
+        "filename": "board/clapper/opled.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-01-30T00:06:23Z",
+      "side": 1,
+      "message": "Please change this line to \"LED control for Clapper\".",
+      "revId": "fef96257bac485fbe85f00311e82905b86c7bd34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b2824e17_10660cff",
+        "filename": "board/clapper/opled.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-01-30T00:06:23Z",
+      "side": 1,
+      "message": "Please do not use #define to create macros that call regular functions. We limit this use to just console printing macros and for computing constants or bit masks.",
+      "revId": "fef96257bac485fbe85f00311e82905b86c7bd34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "727c56f1_8ba49133",
+        "filename": "board/clapper/opled.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-01-30T00:06:23Z",
+      "side": 1,
+      "message": "Please use chipset_in_state(CHIPSET_STATE_SUSPEND) rather than checking the GPIO directly.",
+      "revId": "fef96257bac485fbe85f00311e82905b86c7bd34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "727c56f1_cbae8911",
+        "filename": "board/clapper/opled.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-01-30T00:06:23Z",
+      "side": 1,
+      "message": "Please use chipset_in_state(CHIPSET_STATE_ANY_OFF)",
+      "revId": "fef96257bac485fbe85f00311e82905b86c7bd34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "727c56f1_ebab4dfe",
+        "filename": "board/clapper/opled.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-01-30T00:06:23Z",
+      "side": 1,
+      "message": "Please add a blank line after defining local variables.",
+      "revId": "fef96257bac485fbe85f00311e82905b86c7bd34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32765e13_498f0516",
+        "filename": "board/clapper/opled.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-01-30T00:06:23Z",
+      "side": 1,
+      "message": "Please add a blank line after closing a conditional block.",
+      "revId": "fef96257bac485fbe85f00311e82905b86c7bd34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
