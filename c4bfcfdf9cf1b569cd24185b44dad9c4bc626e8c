@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d2dfc254_7fcb7760",
+        "filename": "common/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-01T22:02:39Z",
+      "side": 1,
+      "message": "I added this after a unit test I was adding failed and I thought about it too much and convinced myself this was better. From a user perspective the difference isn\u0027t noticeable...however \"KISS\" is generally better. Removed. Done.",
+      "parentUuid": "f2e2061a_a00662e5",
+      "revId": "c4bfcfdf9cf1b569cd24185b44dad9c4bc626e8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b20eceb3_9edbcd62",
         "filename": "include/button.h",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-02-01T02:06:06Z",
       "side": 1,
       "message": "Should be CONFIG_BUTTON_COUNT elements long.",
+      "revId": "c4bfcfdf9cf1b569cd24185b44dad9c4bc626e8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2e2061a_2015d298",
+        "filename": "include/button.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-01T22:02:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b20eceb3_9edbcd62",
       "revId": "c4bfcfdf9cf1b569cd24185b44dad9c4bc626e8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "f2e2061a_00b1b677",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-01T22:02:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b20eceb3_7ec1396d",
+      "revId": "c4bfcfdf9cf1b569cd24185b44dad9c4bc626e8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2dfc254_ffdac790",
         "filename": "include/config.h",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2014-02-01T02:06:06Z",
       "side": 1,
       "message": "Remerge?  Not sure why these comments vanished...",
+      "revId": "c4bfcfdf9cf1b569cd24185b44dad9c4bc626e8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b20eceb3_1e6fdd3d",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-01T22:02:39Z",
+      "side": 1,
+      "message": "Ug. This we me being sloppy when moving this patch over from the firmware-glimmer branch. I\u0027ll restore this and the missing config below.",
+      "parentUuid": "d2dfc254_ffdac790",
       "revId": "c4bfcfdf9cf1b569cd24185b44dad9c4bc626e8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "d2dfc254_5fc8bb61",
+        "filename": "include/keyboard_8042.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-01T22:02:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b20eceb3_bead71b2",
+      "revId": "c4bfcfdf9cf1b569cd24185b44dad9c4bc626e8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2e2061a_40f69eab",
         "filename": "test/button.c",
         "patchSetId": 1
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "b20eceb3_dee70590",
+        "filename": "test/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-01T22:02:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2e2061a_40f69eab",
+      "revId": "c4bfcfdf9cf1b569cd24185b44dad9c4bc626e8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b20eceb3_fe12c93f",
         "filename": "test/button.c",
         "patchSetId": 1
@@ -115,6 +223,24 @@
       "writtenOn": "2014-02-01T02:06:06Z",
       "side": 1,
       "message": "Add test: button must be stable for the entire debounce interval.\n\nThat is, if button has a 30ms debounce interval,\n\n0 ms -\u003e down\n20 ms -\u003e up\n40 ms -\u003e down\n100 ms -\u003e up\n200 ms -\u003e still up\n\nshould generate a button-down event at 70ms (since it has been stable for 30ms) and a button-up at 130ms (since it has been stable for 30ms).",
+      "revId": "c4bfcfdf9cf1b569cd24185b44dad9c4bc626e8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2e2061a_80a5a62f",
+        "filename": "test/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-01T22:02:39Z",
+      "side": 1,
+      "message": "SGTM. Done.",
+      "parentUuid": "b20eceb3_fe12c93f",
       "revId": "c4bfcfdf9cf1b569cd24185b44dad9c4bc626e8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
