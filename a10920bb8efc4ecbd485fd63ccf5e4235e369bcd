@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2dfc254_b4c0e63c",
+        "filename": "common/power_button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-02-01T00:33:10Z",
+      "side": 1,
+      "message": "Please change comment to\n\n/*\n * Always indicate power button released if the lid is closed.  This prevents waking the system if the device is squashed enough to press the power button through the closed lid.\n */\n\n(As it is now, the two different meanings of \"ignore\" between the comment and config option are confusing - one means \"ignore the power button\", and the other means \"ignore the lid\")\n\nLGTM+2 after that.",
+      "revId": "a10920bb8efc4ecbd485fd63ccf5e4235e369bcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
