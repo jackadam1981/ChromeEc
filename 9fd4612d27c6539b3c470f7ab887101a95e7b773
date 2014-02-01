@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b25ece29_b0cac087",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-01T01:30:13Z",
+      "side": 1,
+      "message": "The inner dimension is needed or I get an \"incomplete element type\" warning -\u003e error. I\u0027ll add the ASSERT in addition.",
+      "parentUuid": "8dea89ed_9a218c03",
+      "revId": "9fd4612d27c6539b3c470f7ab887101a95e7b773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8dea89ed_ba0b307d",
         "filename": "common/keyboard_8042.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2014-01-13T17:56:09Z",
       "side": 1,
       "message": "Add assert to ensure size\u003d\u003dBUTTON_COUNT (see gpio_list in board.c for example)",
+      "revId": "9fd4612d27c6539b3c470f7ab887101a95e7b773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f23206f0_f55f0ad4",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-01T01:30:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8dea89ed_ba0b307d",
       "revId": "9fd4612d27c6539b3c470f7ab887101a95e7b773",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "1226bab5_530f1c8f",
+        "filename": "include/button.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-01T01:30:13Z",
+      "side": 1,
+      "message": "Good point. Done.",
+      "parentUuid": "8dea89ed_da89549f",
+      "revId": "9fd4612d27c6539b3c470f7ab887101a95e7b773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d3d554c_e9c9ed98",
         "filename": "include/button.h",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2014-01-13T17:56:09Z",
       "side": 1,
       "message": "keyboard_handle_button_change() or keyboard_update_button()\n\nThis is how just the keyboard is notified of button changes.  Not where all button state management is done.\n\nMove function declaration to keyboard_protocol.h",
+      "revId": "9fd4612d27c6539b3c470f7ab887101a95e7b773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32801ec4_dc1c6583",
+        "filename": "include/button.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-01T01:30:13Z",
+      "side": 1,
+      "message": "This bakes in the assumption that the keyboard also handles button events which might not always be true. However it is true for now. Done.",
+      "parentUuid": "6d3d554c_e9c9ed98",
       "revId": "9fd4612d27c6539b3c470f7ab887101a95e7b773",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
