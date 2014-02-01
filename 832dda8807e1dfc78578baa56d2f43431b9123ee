@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f27926b6_97ca4688",
+        "filename": "common/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-01T01:31:07Z",
+      "side": 1,
+      "message": "Removed in new patchset.",
+      "parentUuid": "0d44d9e7_5df0db0a",
+      "revId": "832dda8807e1dfc78578baa56d2f43431b9123ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8dea89ed_bd032a26",
         "filename": "common/button.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-01-13T18:38:40Z",
       "side": 1,
       "message": "Minor nit: put the big elements first.  So debounce_time (64-bit) before debounced_pressed (32-bit)",
+      "revId": "832dda8807e1dfc78578baa56d2f43431b9123ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32801ec4_7c3f519d",
+        "filename": "common/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-01T01:31:07Z",
+      "side": 1,
+      "message": "Done. Is this more of a warm fuzzy or do you think this will pack better than the compiler?",
+      "parentUuid": "8dea89ed_bd032a26",
       "revId": "832dda8807e1dfc78578baa56d2f43431b9123ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "f27926b6_37b33217",
+        "filename": "common/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-01T01:31:07Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "8d38c95d_95163461",
+      "revId": "832dda8807e1dfc78578baa56d2f43431b9123ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d44d9e7_1d133373",
         "filename": "common/button.c",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2014-01-13T18:38:40Z",
       "side": 1,
       "message": "Since MAXUINT is a 32-bit value, this will fail as soon as the system has been up 2^32 usec.\n\nIsn\u0027t this the same as next_deferred_time?",
+      "revId": "832dda8807e1dfc78578baa56d2f43431b9123ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12c23a1e_cd15895d",
+        "filename": "common/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-01T01:31:07Z",
+      "side": 1,
+      "message": "Removed check for MAXUINT and added explicit check for 0 to indicate an invalid value.\n\nsoonest_debounce_time is used to find the next time we need to debounce. I was avoiding setting the static next_deferred_time to an interim value.",
+      "parentUuid": "0d44d9e7_1d133373",
       "revId": "832dda8807e1dfc78578baa56d2f43431b9123ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "92bf0a8c_2cea1b19",
+        "filename": "include/button.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-01T01:31:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8dea89ed_9d22a6bc",
+      "revId": "832dda8807e1dfc78578baa56d2f43431b9123ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d38c95d_f556a01e",
         "filename": "include/config.h",
         "patchSetId": 1
@@ -98,6 +188,24 @@
       "writtenOn": "2014-01-13T18:38:40Z",
       "side": 1,
       "message": "Minor nit: /* goes on a line by itself for multi-line comments",
+      "revId": "832dda8807e1dfc78578baa56d2f43431b9123ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "72b456b0_cbeec92b",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-01T01:31:07Z",
+      "side": 1,
+      "message": "Done. It wasn\u0027t a multi-line comment when I started writing it :)",
+      "parentUuid": "8d38c95d_f556a01e",
       "revId": "832dda8807e1dfc78578baa56d2f43431b9123ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
