@@ -2,6 +2,91 @@
   "comments": [
     {
       "key": {
+        "uuid": "f2e2061a_9be99726",
+        "filename": "board/peppy/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-02T22:47:49Z",
+      "side": 1,
+      "message": "Change to: CONFIG_BATTERY_PRESENT_GPIO  GPIO_BAT_PRESENT_L\n\nAlso change \"GPIO_BAT_DETECT_L\" to \"GPIO_BAT_PRESENT_L\" below and fix up board/peppy/board.c to match.",
+      "revId": "1de517fd7f9996cd736499311493bd5d1967db46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d2dfc254_fff88766",
+        "filename": "board/samus/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-02T22:47:49Z",
+      "side": 1,
+      "message": "Should be changed to CONFIG_BATTERY_PRESENT_CUSTOM",
+      "revId": "1de517fd7f9996cd736499311493bd5d1967db46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d2dfc254_7fedb79d",
+        "filename": "board/samus/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-02T22:47:49Z",
+      "side": 1,
+      "message": "Physical detection of battery presence",
+      "revId": "1de517fd7f9996cd736499311493bd5d1967db46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2e2061a_5bec4f31",
+        "filename": "board/samus/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-02T22:47:49Z",
+      "side": 1,
+      "message": "battery_is_present",
+      "revId": "1de517fd7f9996cd736499311493bd5d1967db46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b20eceb3_193b77dc",
+        "filename": "board/samus/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-02T22:47:49Z",
+      "side": 1,
+      "message": "Should be changed to CONFIG_BATTERY_PRESENT_CUSTOM",
+      "revId": "1de517fd7f9996cd736499311493bd5d1967db46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f27926b6_d7be7e95",
         "filename": "common/battery.c",
         "patchSetId": 2
@@ -19,6 +104,24 @@
     },
     {
       "key": {
+        "uuid": "d2dfc254_1fdd93f9",
+        "filename": "common/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-02T22:47:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f27926b6_d7be7e95",
+      "revId": "1de517fd7f9996cd736499311493bd5d1967db46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12c23a1e_ed12c572",
         "filename": "include/config.h",
         "patchSetId": 2
@@ -30,6 +133,24 @@
       "writtenOn": "2014-01-22T20:41:56Z",
       "side": 1,
       "message": "If defined, GPIO which is driven low when battery is present.\n\nCharger will check for battery presence... (copy rest of original comment)",
+      "revId": "1de517fd7f9996cd736499311493bd5d1967db46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b20eceb3_393e3bcc",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-02T22:47:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12c23a1e_ed12c572",
       "revId": "1de517fd7f9996cd736499311493bd5d1967db46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
