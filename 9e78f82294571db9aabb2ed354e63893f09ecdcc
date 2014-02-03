@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2e2061a_332e4771",
+        "filename": "include/accelerometer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-03T22:52:30Z",
+      "side": 1,
+      "message": "If this is accelerometer specific, it should go in the driver. Also seems to be not used in this patch.",
+      "revId": "9e78f82294571db9aabb2ed354e63893f09ecdcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
