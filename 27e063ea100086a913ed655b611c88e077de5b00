@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2e2061a_53e0b3ab",
+        "filename": "chip/lm4/registers.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1002183
+      },
+      "writtenOn": "2014-02-03T22:17:26Z",
+      "side": 1,
+      "message": "Nit: making this bytes, and hex, would make it easier to correlate to the datasheet (and no less readable)",
+      "revId": "27e063ea100086a913ed655b611c88e077de5b00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
