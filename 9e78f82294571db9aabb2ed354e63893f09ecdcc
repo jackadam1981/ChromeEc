@@ -16,6 +16,24 @@
       "revId": "9e78f82294571db9aabb2ed354e63893f09ecdcc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b21c0efc_ba9571b6",
+        "filename": "include/accelerometer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-02-03T23:19:59Z",
+      "side": 1,
+      "message": "Yeah, this CL is really part 1 of the accelerometer stuff. I was trying to divide up the work into two CL\u0027s. This macro isn\u0027t used right now, but will be in next CL. It\u0027s not accelerometer specific. The goal is for any accelerometer driver to return acceleration numbers on a scale such that 2^10 is 1G. That\u0027s why in the driver itself I have to scale the raw value returned from the device to match this.",
+      "parentUuid": "f2e2061a_332e4771",
+      "revId": "9e78f82294571db9aabb2ed354e63893f09ecdcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
