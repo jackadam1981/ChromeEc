@@ -9,6 +9,28 @@ extern const int accel_addr[];
 /* This enum must be defined in board.h. */
 enum accel_id;
 
+/* Link global variables for orientation. These must be defined in board.c */
+extern
+#ifndef CONFIG_ACCEL_CALIBRATE
+const
+#endif
+float rot_sense_orientation[3][3];
+
+extern
+#ifndef CONFIG_ACCEL_CALIBRATE
+const
+#endif
+float rot_up_direction[3][3];
+
+extern
+#ifndef CONFIG_ACCEL_CALIBRATE
+const
+#endif
+struct vector hinge_axis;
+
+
+/* Number of counts from accelerometer that represents 1G acceleration. */
+#define ACCEL_G  1024
 
 /**
  * Read all three accelerations of an accelerometer.

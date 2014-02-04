@@ -221,3 +221,40 @@ int board_discharge_on_ac(int enable)
 	return charger_discharge_on_ac(enable);
 }
 #endif
+
+#ifdef HAS_TASK_MOTIONSENSE
+/*
+ * Define a rotation matrix for the relative rotation between the lid and base.
+ * This matrix represents R in the equation acc_lid * R = acc_base when lid
+ * is closed.
+ */
+#ifndef CONFIG_ACCEL_CALIBRATE
+const
+#endif
+float rot_sense_orientation[3][3] = {
+	{0, 1, 0},
+	{-1, 0, 0},
+	{0, 0, 1}
+};
+
+/*
+ * Define a rotation matrix to rotate the base acceleration vector into a vector
+ * pointing in the direction of "up". This helps fix the "up" direction in order
+ * to disambiguate the two valid solutions of the lid angle calculations.
+ */
+#ifndef CONFIG_ACCEL_CALIBRATE
+const
+#endif
+float rot_up_direction[3][3] = {
+	{1, 0, 0},
+	{0, 0, 1},
+	{0, -1, 0}
+};
+
+/* Define a vector pointing in the direction of the hinge. */
+#ifndef CONFIG_ACCEL_CALIBRATE
+const
+#endif
+struct vector hinge_axis = {1024, 0, 0};
+#endif /* HAS_TASK_MOTIONSENSE */
+

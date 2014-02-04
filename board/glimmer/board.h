@@ -194,6 +194,15 @@ enum accel_id {
 /* Discharge battery when on AC power for factory test. */
 int board_discharge_on_ac(int enable);
 
+#ifdef HAS_TASK_MOTIONSENSE
+/* 3-D vector structure. */
+struct vector {
+	int x;
+	int y;
+	int z;
+};
+#endif /* HAS_TASK_MOTIONSENSE */
+
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __BOARD_H */
