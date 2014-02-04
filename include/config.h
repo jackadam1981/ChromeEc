@@ -36,6 +36,9 @@
  * BOARD_*, CHIP_*, and CHIP_FAMILY_*.
  */
 
+/* Use to enable EC console functions for calibrating accelerometers. */
+#undef CONFIG_ACCEL_CALIBRATE
+
 /* Specify type of accelerometers attached. */
 #undef CONFIG_ACCEL_KXCJ9
 
@@ -231,6 +234,7 @@
 #undef CONFIG_CMD_GSV
 #undef CONFIG_CMD_ILIM
 #undef CONFIG_CMD_JUMPTAGS
+#undef CONFIG_CMD_LID_ANGLE
 #undef CONFIG_CMD_PLL
 #undef CONFIG_CMD_PMU
 #undef CONFIG_CMD_POWERLED

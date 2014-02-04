@@ -63,3 +63,4 @@ common-$(HAS_TASK_HOSTCMD)+=acpi.o host_command.o host_event_commands.o
 common-$(HAS_TASK_KEYSCAN)+=keyboard_scan.o
 common-$(HAS_TASK_LIGHTBAR)+=lightbar.o
 common-$(TEST_BUILD)+=test_util.o
+common-$(HAS_TASK_MOTIONSENSE)+=motion_sense.o
