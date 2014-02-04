@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12f07a0e_3d16cf68",
+        "filename": "board/clapper/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-02-04T22:02:30Z",
+      "side": 1,
+      "message": "Designated initializers make the BUILD_ASSERT() below meaningless.  Suggest just commenting instead\n\n  /* Lid */\n  /* Base */",
+      "revId": "190b2f3cf2848c18fa3149530a4f8654bf4296ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32f3be1c_de37e5f7",
+        "filename": "board/glimmer/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-02-04T22:02:30Z",
+      "side": 1,
+      "message": "(here too)",
+      "revId": "190b2f3cf2848c18fa3149530a4f8654bf4296ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2fcc6ee_dc008d1d",
+        "filename": "driver/accel_kxcj9.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-02-04T22:02:30Z",
+      "side": 1,
+      "message": "resolution -\u003e rate",
+      "revId": "190b2f3cf2848c18fa3149530a4f8654bf4296ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32f3be1c_9e543d1c",
+        "filename": "include/accelerometer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-02-04T22:02:30Z",
+      "side": 1,
+      "message": "Units?",
+      "revId": "190b2f3cf2848c18fa3149530a4f8654bf4296ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
