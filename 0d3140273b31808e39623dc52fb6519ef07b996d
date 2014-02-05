@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72e9b62a_696a5d46",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-05T01:10:21Z",
+      "side": 1,
+      "message": "(perhaps another TODO) There are versions of glimmer/clapper that don\u0027t have accelerometers. I simulated this by changing the expected I2C addresses for the accelerometers in the driver to invalid values. The result is that I get a hinge angle of 90 as x,y,z \u003d 0 for both accelerometers. We need a check that the accelerometers have been initialized successfully before starting the task loop.",
+      "revId": "0d3140273b31808e39623dc52fb6519ef07b996d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "72e9b62a_541d6c7b",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-05T01:10:21Z",
+      "side": 1,
+      "message": "Might as well enable this for clapper/glimmer for now.",
+      "revId": "0d3140273b31808e39623dc52fb6519ef07b996d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
