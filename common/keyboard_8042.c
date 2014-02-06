@@ -956,6 +956,44 @@ test_mockable void keyboard_update_button(enum keyboard_button_type button,
 	}
 }
 
+#ifdef CONFIG_CAPSENSE
+/*
+ * Translate capsense buttons into keyboard events.
+ *
+ * @param button         Button number from capsense (0-7)
+ * @param is_pressed     Whether the button was pressed or released
+ */
+void keyboard_send_capsense(int button, int is_pressed)
+{
+	static const uint16_t capsense_scancodes[2][8] = {
+		/* Set 1 */
+		{0x0002, 0x0003, 0x0004, 0x0005,
+		 0x0006, 0x0007, 0x0008, 0x0009},
+		/* Set 2 */
+		{0x0016, 0x001e, 0x0026, 0x0025,
+		 0x002e, 0x0036, 0x003d, 0x003e},
+	};
+	uint8_t scan_code[MAX_SCAN_CODE_LEN];
+	uint16_t make_code;
+	uint32_t len;
+	enum scancode_set_list code_set;
+
+	/*
+	 * Only send the scan code if main chipset is fully awake and
+	 * keystrokes are enabled.
+	 */
+	if (!chipset_in_state(CHIPSET_STATE_ON) || !keystroke_enabled)
+		return;
+
+	code_set = acting_code_set(scancode_set);
+	make_code = capsense_scancodes[code_set - SCANCODE_SET_1][button];
+	scancode_bytes(make_code, is_pressed, code_set, scan_code, &len);
+	ASSERT(len > 0);
+	i8042_send_to_host(len, scan_code);
+	task_wake(TASK_ID_KEYPROTO);
+}
+#endif
+
 /*****************************************************************************/
 /* Console commands */
 

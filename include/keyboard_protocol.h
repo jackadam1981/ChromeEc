@@ -27,6 +27,14 @@ void keyboard_clear_buffer(void);
  */
 void keyboard_update_button(enum keyboard_button_type button, int is_pressed);
 
+/*
+ * Translate capsense buttons into keyboard events.
+ *
+ * @param button         Button number from capsense
+ * @param is_pressed     Whether the button was pressed or released
+ */
+void keyboard_send_capsense(int button, int is_pressed);
+
 /* Protocol-specific includes */
 
 #ifdef CONFIG_KEYBOARD_PROTOCOL_8042
