@@ -1,0 +1,344 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "129ebad0_99f71e6e",
+        "filename": "board/clapper/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-02-06T19:29:39Z",
+      "side": 1,
+      "message": "Eew.",
+      "revId": "2f4d69c2957963bfdfae36ce901e35379262adab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "129ebad0_5963f672",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-02-06T19:29:39Z",
+      "side": 1,
+      "message": "Move cos() and vector stuff to its own file.  Easier to unit test that way.\n\nmath2.h?  math_util.h?",
+      "revId": "2f4d69c2957963bfdfae36ce901e35379262adab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f29846f7_5c7c9dca",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-02-06T19:29:39Z",
+      "side": 1,
+      "message": "only used inside one function?  define there.",
+      "revId": "2f4d69c2957963bfdfae36ce901e35379262adab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32a1fe0c_2ea5fcc4",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-02-06T19:29:39Z",
+      "side": 1,
+      "message": "...but it clips if it\u0027s out of range...",
+      "revId": "2f4d69c2957963bfdfae36ce901e35379262adab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32a1fe0c_eeb2d410",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-02-06T19:29:39Z",
+      "side": 1,
+      "message": "Bonus points for binary search (put in TODO: and file a bug to do this later)",
+      "revId": "2f4d69c2957963bfdfae36ce901e35379262adab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2aa06eb_d3d7c38e",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-02-06T19:29:39Z",
+      "side": 1,
+      "message": "Add ASSERT(), since we should never get here?",
+      "revId": "2f4d69c2957963bfdfae36ce901e35379262adab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "129ebad0_59f77640",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-02-06T19:29:39Z",
+      "side": 1,
+      "message": "typedef float matrix_t[3][3]?\n\nhmm, maybe vector should be typedef vector_t[3] for consistency\n\n(since x,y,z are really only accurate labels if it\u0027s aligned to the reference frame...)",
+      "revId": "2f4d69c2957963bfdfae36ce901e35379262adab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32a1fe0c_ceb6f8df",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-02-06T19:29:39Z",
+      "side": 1,
+      "message": "Suggest naming:\n  up -\u003e lid90\n  down -\u003e lid270\n\n(and add descriptive comments as you suggest \"lid90 is an estimate of the acceleration seen by the lid at an angle of 90 degrees, calculated from the acceleration vector seen by the base\")",
+      "revId": "2f4d69c2957963bfdfae36ce901e35379262adab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f29846f7_7c8079df",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-02-06T19:29:39Z",
+      "side": 1,
+      "message": "please file bugs and TODO(crosbug.com/p/111111)",
+      "revId": "2f4d69c2957963bfdfae36ce901e35379262adab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b2640ec9_baaf7161",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-02-06T19:29:39Z",
+      "side": 1,
+      "message": "Why does this set ts1?",
+      "revId": "2f4d69c2957963bfdfae36ce901e35379262adab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f29846f7_7cc6b934",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-02-06T19:29:39Z",
+      "side": 1,
+      "message": "Define a channel and use CPRINTF\n\nAnd format string\n\n \"[%T ACC base\u003d%d,%d,%d lid\u003d%d,%d,%d a\u003d%d]\\n\"\n\n(or %-3d for each one...)",
+      "revId": "2f4d69c2957963bfdfae36ce901e35379262adab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b2640ec9_dab425b8",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-02-06T19:29:39Z",
+      "side": 1,
+      "message": "1000 -\u003e MSEC\n\nspaces before/after operators",
+      "revId": "2f4d69c2957963bfdfae36ce901e35379262adab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b2640ec9_dacb4538",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-02-06T19:29:39Z",
+      "side": 1,
+      "message": "Check the keyboard scan task, which has to do similar things.\n\nNeed to enforce a minimum delay between scans, or in a loaded system this will watchdog.\n\nMaybe add status bit in the mapped memory that says \"hey, we\u0027re running late\".  Can use presence of that bit in testing to determine whether we can meet the requested sample rate.",
+      "revId": "2f4d69c2957963bfdfae36ce901e35379262adab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b2640ec9_7a0b19ad",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-02-06T19:29:39Z",
+      "side": 1,
+      "message": "Make a separate function in math_util.c:\n\nvector_det()?",
+      "revId": "2f4d69c2957963bfdfae36ce901e35379262adab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f29846f7_dc198d0c",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-02-06T19:29:39Z",
+      "side": 1,
+      "message": "matrix_inv()?",
+      "revId": "2f4d69c2957963bfdfae36ce901e35379262adab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f29846f7_dcd18d9b",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-02-06T19:29:39Z",
+      "side": 1,
+      "message": "Fixed point display should work: %.2d",
+      "revId": "2f4d69c2957963bfdfae36ce901e35379262adab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f29846f7_9ce2a581",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-02-06T19:29:39Z",
+      "side": 1,
+      "message": "With reformatted printf data, don\u0027t need the header",
+      "revId": "2f4d69c2957963bfdfae36ce901e35379262adab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f29846f7_7c15d997",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-02-06T19:29:39Z",
+      "side": 1,
+      "message": "Maybe move all of these to a motion_calibrate.c file?",
+      "revId": "2f4d69c2957963bfdfae36ce901e35379262adab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f29846f7_1c9bf5ea",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-02-06T19:29:39Z",
+      "side": 1,
+      "message": "Print an error if solve_rotation_matrix() returns error?\n\n(or print one in solve_rotation_matrix())",
+      "revId": "2f4d69c2957963bfdfae36ce901e35379262adab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32a1fe0c_ee3774f7",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-02-06T19:29:39Z",
+      "side": 1,
+      "message": "Minor style nit: move struct above function defs",
+      "revId": "2f4d69c2957963bfdfae36ce901e35379262adab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
