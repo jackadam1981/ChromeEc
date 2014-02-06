@@ -29,7 +29,7 @@
 #define CONFIG_KEYBOARD_COL2_INVERTED
 #define CONFIG_KEYBOARD_IRQ_GPIO GPIO_KBD_IRQ_L
 #define CONFIG_KEYBOARD_PROTOCOL_8042
-#undef  CONFIG_LED_COMMON
+#define CONFIG_LED_COMMON
 #undef  CONFIG_PECI
 #define CONFIG_POWER_BUTTON
 #define CONFIG_POWER_BUTTON_X86
@@ -125,6 +125,7 @@ enum gpio_signal {
 	GPIO_WLAN_OFF_L,           /* Disable WiFi radio */
 	GPIO_PCH_SCI_L,            /* Assert SCI to PCH */
 	GPIO_KBD_IRQ_L,            /* Negative edge triggered irq. */
+	GPIO_POWER_LED_L,          /* POWER LED */
 
 	/* Number of GPIOs; not an actual GPIO */
 	GPIO_COUNT
