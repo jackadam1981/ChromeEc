@@ -1,0 +1,259 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2aa06eb_a18bc499",
+        "filename": "board/clapper/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-07T02:03:47Z",
+      "side": 1,
+      "message": "Please remove this file from this change and include it in a separate change for the battery.",
+      "revId": "2cf72b6901a3805d53f65cdc44e7aeabe6d1c23d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2aa06eb_61a27c15",
+        "filename": "board/clapper/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-07T02:03:47Z",
+      "side": 1,
+      "message": "Please move this to a separate change for the battery.",
+      "revId": "2cf72b6901a3805d53f65cdc44e7aeabe6d1c23d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "129ebad0_f60751a9",
+        "filename": "board/clapper/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-07T02:03:47Z",
+      "side": 1,
+      "message": "2014",
+      "revId": "2cf72b6901a3805d53f65cdc44e7aeabe6d1c23d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "129ebad0_56ed859d",
+        "filename": "board/clapper/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-07T02:03:47Z",
+      "side": 1,
+      "message": "LED control for Clapper",
+      "revId": "2cf72b6901a3805d53f65cdc44e7aeabe6d1c23d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "924e2a55_e55f7e25",
+        "filename": "board/clapper/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-07T02:03:47Z",
+      "side": 1,
+      "message": "Add EC_LED_ID_BATTERY_LED.",
+      "revId": "2cf72b6901a3805d53f65cdc44e7aeabe6d1c23d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "924e2a55_14bf5a92",
+        "filename": "board/clapper/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-07T02:03:47Z",
+      "side": 1,
+      "message": "Please change this to OFF, AMBER, WHITE to match the hardware.",
+      "revId": "2cf72b6901a3805d53f65cdc44e7aeabe6d1c23d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d26ee2af_87a97672",
+        "filename": "board/clapper/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-07T02:03:47Z",
+      "side": 1,
+      "message": "Change to match the updated led_color enum.",
+      "revId": "2cf72b6901a3805d53f65cdc44e7aeabe6d1c23d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "924e2a55_25a8a69e",
+        "filename": "board/clapper/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-07T02:03:47Z",
+      "side": 1,
+      "message": "This is called from the \"ectool led\" command from the host. Please make sure the following work for the factory.\n\n\"ectool led power off\"\n\"ectool led power white\"\n\"ectool led battery off\"\n\"ectool led battery white\"",
+      "revId": "2cf72b6901a3805d53f65cdc44e7aeabe6d1c23d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b2496e4f_66a2b6be",
+        "filename": "board/clapper/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-07T02:03:47Z",
+      "side": 1,
+      "message": "Please check that auto control is enabled first. There is a factory test for the LEDs that overrides the normal control behavior.\n\nif (led_auto_control_is_enabled(EC_LED_ID_POWER_LED))\n    power_led_update();",
+      "revId": "2cf72b6901a3805d53f65cdc44e7aeabe6d1c23d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "924e2a55_a528169c",
+        "filename": "board/clapper/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-07T02:03:47Z",
+      "side": 1,
+      "message": "if (led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED))\n    battery_led_update();",
+      "revId": "2cf72b6901a3805d53f65cdc44e7aeabe6d1c23d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "924e2a55_74fee61b",
+        "filename": "board/clapper/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-07T02:03:47Z",
+      "side": 1,
+      "message": "The transition between S0 and S3 is going to look messy as the initial state of the LED in suspend is going to be random, depending on the value of ticks. Please keep track of the previous chipset state and reset ticks to 0 on state changes. See \"previous_state_suspend\" in board/peppy/led.c",
+      "revId": "2cf72b6901a3805d53f65cdc44e7aeabe6d1c23d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b2496e4f_583e75cc",
+        "filename": "board/clapper/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-07T02:03:47Z",
+      "side": 1,
+      "message": "Add comment: Least common multiple of dividers.",
+      "revId": "2cf72b6901a3805d53f65cdc44e7aeabe6d1c23d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d26ee2af_c73e0ea0",
+        "filename": "board/clapper/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-07T02:03:47Z",
+      "side": 1,
+      "message": "Note that the factory might require the charge LED to blink while on and off (500msec each) to indicate the battery has stopped charging for shipping less than 100% full. Check with\nuint32_t chflags \u003d charge_get_flags();\nif (chflags \u0026 CHARGE_FLAG_FORCE_IDLE)",
+      "revId": "2cf72b6901a3805d53f65cdc44e7aeabe6d1c23d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "924e2a55_b4b5ae64",
+        "filename": "board/clapper/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-07T02:03:47Z",
+      "side": 1,
+      "message": "States UNCHANGE, INIT, REINIT, and IDLE0  shouldn\u0027t change the LED status. Please remove them from the switch. IDLE is the state that indicates the battery is charged.",
+      "revId": "2cf72b6901a3805d53f65cdc44e7aeabe6d1c23d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b2496e4f_c60c420c",
+        "filename": "board/clapper/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-07T02:03:47Z",
+      "side": 1,
+      "message": "Note that most Chromebooks make the charging LED flash red or orange if there is an error condition. This is optional.",
+      "revId": "2cf72b6901a3805d53f65cdc44e7aeabe6d1c23d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
