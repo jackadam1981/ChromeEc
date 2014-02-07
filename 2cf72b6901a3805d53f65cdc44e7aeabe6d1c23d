@@ -138,6 +138,24 @@
     },
     {
       "key": {
+        "uuid": "924e2a55_8545d230",
+        "filename": "board/clapper/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-07T02:07:40Z",
+      "side": 1,
+      "message": "Sorry, \"ectool led battery yellow\" should also work (amber).",
+      "parentUuid": "924e2a55_25a8a69e",
+      "revId": "2cf72b6901a3805d53f65cdc44e7aeabe6d1c23d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b2496e4f_66a2b6be",
         "filename": "board/clapper/led.c",
         "patchSetId": 1
