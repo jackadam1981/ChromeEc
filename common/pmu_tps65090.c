@@ -16,6 +16,7 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#include "chipset.h"
 
 #define CPUTS(outstr) cputs(CC_CHARGER, outstr)
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
@@ -630,6 +631,24 @@ static void pmu_chipset_startup(void)
 #endif
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, pmu_chipset_startup, HOOK_PRIO_DEFAULT);
+
+#if defined(BOARD_pit)
+static void pmu_suspend_event(void)
+{
+	int pgood;
+
+	if (chipset_in_state(CHIPSET_STATE_SUSPEND)) {
+		pmu_enable_fet(5, 0, &pgood);
+		ccprintf("pmu_suspend_event");
+	}
+	else {
+		pmu_enable_fet(5, 1, &pgood);
+		ccprintf("pmu_resume_event");
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, pmu_suspend_event, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, pmu_suspend_event, HOOK_PRIO_DEFAULT);
+#endif
 
 #ifdef CONFIG_CMD_PMU
 static int print_pmu_info(void)
