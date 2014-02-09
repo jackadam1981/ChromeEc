@@ -12,6 +12,9 @@
 #include "test_util.h"
 #include "timer.h"
 #include "util.h"
+#ifndef EMU_BUILD
+#include "link_defs.h"
+#endif
 
 static int test_isalpha(void)
 {
@@ -80,6 +83,60 @@ static int test_memmove(void)
 	memmove(buf + 10, buf, 30);
 	TEST_ASSERT_ARRAY_EQ(buf + 10, buf + 60, 30);
 
+	return EC_SUCCESS;
+}
+
+static int test_memcpy(void)
+{
+	int i;
+	timestamp_t t0, t1, t2, t3;
+#ifdef EMU_BUILD
+	char buf[100000];
+	const int buf_size = 100000;
+	const int len = 20000;
+	const int dest_offset = 60000;
+#else
+	char *buf;
+	const int buf_size = 3000;
+	const int len = 1000;
+	const int dest_offset = 1500;
+	TEST_ASSERT(shared_mem_acquire(buf_size, &buf) == EC_SUCCESS);
+#endif
+
+	for (i = 0; i < len; ++i)
+		buf[i] = i & 0x7f;
+	for (i = len; i < buf_size; ++i)
+		buf[i] = 0;
+
+	t0 = get_time();
+	memcpy(buf + dest_offset + 1, buf, len);	/* misaligned copy */
+	t1 = get_time();
+	TEST_ASSERT_ARRAY_EQ(buf + dest_offset + 1, buf, len);
+	ccprintf(" (speed gain: %d ->", t1.val-t0.val);
+
+	t2 = get_time();
+	memcpy(buf + dest_offset, buf, len);		/* aligned copy */
+	t3 = get_time();
+	ccprintf(" %d us) ", t3.val-t2.val);
+	TEST_ASSERT_ARRAY_EQ(buf + dest_offset, buf, len);
+
+	/* Expected about 4x speed gain. Use 3x because it fluctuates */
+	TEST_ASSERT((t1.val-t0.val) >= (t3.val-t2.val) * 3);
+
+	memcpy(buf + dest_offset + 1, buf + 1, len - 1);
+	TEST_ASSERT_ARRAY_EQ(buf + dest_offset + 1, buf + 1, len - 1);
+
+	/* Test small copies */
+	memcpy(buf + dest_offset, buf, 1);
+	TEST_ASSERT_ARRAY_EQ(buf + dest_offset, buf, 1);
+	memcpy(buf + dest_offset, buf, 4);
+	TEST_ASSERT_ARRAY_EQ(buf + dest_offset, buf, 4);
+	memcpy(buf + dest_offset + 1, buf, 1);
+	TEST_ASSERT_ARRAY_EQ(buf + dest_offset + 1, buf, 1);
+	memcpy(buf + dest_offset + 1, buf, 4);
+	TEST_ASSERT_ARRAY_EQ(buf + dest_offset + 1, buf, 4);
+
+	shared_mem_release(buf);
 	return EC_SUCCESS;
 }
 
@@ -305,6 +362,7 @@ void run_test(void)
 	RUN_TEST(test_strtoi);
 	RUN_TEST(test_parse_bool);
 	RUN_TEST(test_memmove);
+	RUN_TEST(test_memcpy);
 	RUN_TEST(test_strzcpy);
 	RUN_TEST(test_strlen);
 	RUN_TEST(test_strcasecmp);
