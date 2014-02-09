@@ -173,16 +173,45 @@ int memcmp(const void *s1, const void *s2, int len)
 
 void *memcpy(void *dest, const void *src, int len)
 {
-	/*
-	 * TODO(crosbug.com/p/23720): if src/dest are aligned, copy a word at a
-	 * time instead.
-	 */
 	char *d = (char *)dest;
 	const char *s = (const char *)src;
-	while (len > 0) {
-		*(d++) = *(s++);
-		len--;
+
+	if (((uint32_t)dest & 3) != ((uint32_t)src & 3)) {
+		while (len > 0) {
+			*(d++) = *(s++);
+			len--;
+		}
+	} else {
+		/*
+		 * src and dest are aligned in mod 4. we can copy word by word,
+		 * only the first and last part need to be copied byte by byte.
+		 */
+		uint32_t *dw;
+		const uint32_t *sw;
+
+		/* Copy head until d and s get aligned */
+		while (len > 0 && (uint32_t)d & 3) {
+			*(d++) = *(s++);
+			len--;
+		}
+
+		/* Copy body */
+		dw = (uint32_t *)d;
+		sw = (uint32_t *)s;
+		while (len > 3) {
+			*(dw++) = *(sw++);
+			len -= 4;
+		}
+
+		/* Copy tail */
+		d = (char *)dw;
+		s = (const char *)sw;
+		while (len > 0) {
+			*(d++) = *(s++);
+			len--;
+		}
 	}
+
 	return dest;
 }
 
