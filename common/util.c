@@ -173,16 +173,44 @@ int memcmp(const void *s1, const void *s2, int len)
 
 void *memcpy(void *dest, const void *src, int len)
 {
-	/*
-	 * TODO(crosbug.com/p/23720): if src/dest are aligned, copy a word at a
-	 * time instead.
-	 */
 	char *d = (char *)dest;
 	const char *s = (const char *)src;
-	while (len > 0) {
-		*(d++) = *(s++);
-		len--;
+	uintptr_t *dw;
+	const uintptr_t *sw;
+	char *head;
+	char * const tail = (char *)dest + len;
+	/* Set 'body' to the last word boundary */
+	uintptr_t * const body = (uintptr_t *)((uintptr_t)tail & ~3);
+
+	if (((uintptr_t)dest & 3) != ((uintptr_t)src & 3)) {
+		/* Misaligned. no body, no tail. */
+		head = tail;
+	} else {
+		/* Aligned */
+		if ((uintptr_t)tail < (((uintptr_t)d + 3) & ~3))
+			/* len is shorter than the first word boundary */
+			head = tail;
+		else
+			/* Set 'head' to the first word boundary */
+			head = (char *)(((uintptr_t)d + 3) & ~3);
 	}
+
+	/* Copy head */
+	while (d < head)
+		*(d++) = *(s++);
+
+	/* Copy body */
+	dw = (uintptr_t *)d;
+	sw = (uintptr_t *)s;
+	while (dw < body)
+		*(dw++) = *(sw++);
+
+	/* Copy tail */
+	d = (char *)dw;
+	s = (const char *)sw;
+	while (d < tail)
+		*(d++) = *(s++);
+
 	return dest;
 }
 
