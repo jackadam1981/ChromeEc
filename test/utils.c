@@ -83,6 +83,27 @@ static int test_memmove(void)
 	return EC_SUCCESS;
 }
 
+static int test_memcpy(void)
+{
+	char buf[100];
+	int i;
+
+	for (i = 0; i < 30; ++i)
+		buf[i] = i;
+	for (i = 30; i < 100; ++i)
+		buf[i] = 0;
+	memcpy(buf + 60, buf, 30);
+	TEST_ASSERT_ARRAY_EQ(buf, buf + 60, 30);
+	memcpy(buf + 61, buf, 30);
+	TEST_ASSERT_ARRAY_EQ(buf, buf + 61, 30);
+	memcpy(buf + 62, buf, 30);
+	TEST_ASSERT_ARRAY_EQ(buf, buf + 62, 30);
+	memcpy(buf + 63, buf, 30);
+	TEST_ASSERT_ARRAY_EQ(buf, buf + 63, 30);
+
+	return EC_SUCCESS;
+}
+
 static int test_strzcpy(void)
 {
 	char dest[10];
@@ -305,6 +326,7 @@ void run_test(void)
 	RUN_TEST(test_strtoi);
 	RUN_TEST(test_parse_bool);
 	RUN_TEST(test_memmove);
+	RUN_TEST(test_memcpy);
 	RUN_TEST(test_strzcpy);
 	RUN_TEST(test_strlen);
 	RUN_TEST(test_strcasecmp);

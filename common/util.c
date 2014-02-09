@@ -173,16 +173,53 @@ int memcmp(const void *s1, const void *s2, int len)
 
 void *memcpy(void *dest, const void *src, int len)
 {
-	/*
-	 * TODO(crosbug.com/p/23720): if src/dest are aligned, copy a word at a
-	 * time instead.
-	 */
 	char *d = (char *)dest;
 	const char *s = (const char *)src;
-	while (len > 0) {
-		*(d++) = *(s++);
-		len--;
+
+	if (((uintptr_t)dest & 3) != ((uintptr_t)src & 3)) {
+		/*
+		 * This is the case where src and dest are not aligned. It can
+		 * be seen as [head] + [zero body] + [zero tail], thus, can be
+		 * handled in the aligned case below. But handling it separately
+		 * is faster because we know src and dest never get aligned,
+		 * thus, the while loop here has a cheaper condition.
+		 */
+		while (len > 0) {
+			*(d++) = *(s++);
+			len--;
+		}
+	} else {
+		/*
+		 * src and dest are aligned in mod 4. we can copy word by word,
+		 * only the first and last part need to be copied byte by byte.
+		 */
+		uintptr_t *dw;
+		const uintptr_t *sw;
+
+		/* Copy head until d and s get aligned */
+		while (len > 0 && (uintptr_t)d & 3) {
+			*(d++) = *(s++);
+			len--;
+		}
+
+		/* Copy body */
+		dw = (uintptr_t *)d;
+		sw = (uintptr_t *)s;
+		/* TODO: While condition can be cheaper using end pointer. */
+		while (len > 3) {
+			*(dw++) = *(sw++);
+			len -= 4;
+		}
+
+		/* Copy tail */
+		d = (char *)dw;
+		s = (const char *)sw;
+		while (len > 0) {
+			*(d++) = *(s++);
+			len--;
+		}
 	}
+
 	return dest;
 }
 
