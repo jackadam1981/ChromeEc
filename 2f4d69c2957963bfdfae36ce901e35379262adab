@@ -104,6 +104,23 @@
     },
     {
       "key": {
+        "uuid": "2f80b5c3_7608d044",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-02-09T04:57:29Z",
+      "side": 1,
+      "message": "multiply first to save a sqrtf() call?",
+      "revId": "2f4d69c2957963bfdfae36ce901e35379262adab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "129ebad0_59f77640",
         "filename": "common/motion_sense.c",
         "patchSetId": 4
@@ -132,6 +149,23 @@
       "writtenOn": "2014-02-06T19:29:39Z",
       "side": 1,
       "message": "Suggest naming:\n  up -\u003e lid90\n  down -\u003e lid270\n\n(and add descriptive comments as you suggest \"lid90 is an estimate of the acceleration seen by the lid at an angle of 90 degrees, calculated from the acceleration vector seen by the base\")",
+      "revId": "2f4d69c2957963bfdfae36ce901e35379262adab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6f662d14_1832e50b",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-02-09T04:57:29Z",
+      "side": 1,
+      "message": "cos() is strictly decreasing (in the range you use) so you can just compare without doing acos()",
       "revId": "2f4d69c2957963bfdfae36ce901e35379262adab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -268,6 +302,23 @@
       "writtenOn": "2014-02-06T19:29:39Z",
       "side": 1,
       "message": "Fixed point display should work: %.2d",
+      "revId": "2f4d69c2957963bfdfae36ce901e35379262adab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6f662d14_3837a9fc",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-02-09T04:57:29Z",
+      "side": 1,
+      "message": "There are 5 copies of this matrix printing code. Perhaps you want to factor them out?",
       "revId": "2f4d69c2957963bfdfae36ce901e35379262adab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
