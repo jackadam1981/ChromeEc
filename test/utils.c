@@ -83,6 +83,37 @@ static int test_memmove(void)
 	return EC_SUCCESS;
 }
 
+static int test_memcpy(void)
+{
+	unsigned char buf[100000];
+	int i;
+	timestamp_t t0, t1, t2, t3;
+	const int len = 20000;
+	const int dest_offset = 60000;
+
+	for (i = 0; i < len; ++i)
+		buf[i] = i & 0xff;
+	for (i = len; i < sizeof(buf); ++i)
+		buf[i] = 0;
+
+	t0 = get_time();
+	memcpy(buf + dest_offset, buf, len);		/* aligned copy */
+	t1 = get_time();
+	TEST_ASSERT_ARRAY_EQ(buf + dest_offset, buf, len);
+
+	t2 = get_time();
+	memcpy(buf + dest_offset + 1, buf, len);	/* misaligned copy */
+	t3 = get_time();
+	TEST_ASSERT_ARRAY_EQ(buf + dest_offset + 1, buf, len);
+
+	ccprintf(" speed gain: %dx (%d -> %d us) ",
+		 (t3.val-t2.val)/(t1.val-t0.val), t3.val-t2.val, t1.val-t0.val);
+	/* Expected ~4x speed gain. Use 3x because it fluctuates */
+	TEST_ASSERT((t3.val-t2.val)/(t1.val-t0.val) >= 3.0);
+
+	return EC_SUCCESS;
+}
+
 static int test_strzcpy(void)
 {
 	char dest[10];
@@ -305,6 +336,7 @@ void run_test(void)
 	RUN_TEST(test_strtoi);
 	RUN_TEST(test_parse_bool);
 	RUN_TEST(test_memmove);
+	RUN_TEST(test_memcpy);
 	RUN_TEST(test_strzcpy);
 	RUN_TEST(test_strlen);
 	RUN_TEST(test_strcasecmp);
