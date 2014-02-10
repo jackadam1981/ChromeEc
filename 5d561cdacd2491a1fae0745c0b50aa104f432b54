@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af83c5c3_91ba46ea",
+        "filename": "common/util.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-02-10T22:25:58Z",
+      "side": 1,
+      "message": "our coding convention is to have bug numbers inside the TODOs.\nby the way, this part should be trivial to implement now.",
+      "revId": "5d561cdacd2491a1fae0745c0b50aa104f432b54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef4bfd71_b310826b",
+        "filename": "test/utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-02-10T22:25:58Z",
+      "side": 1,
+      "message": "other tests can run on the target (where the stack is a few hundreds bytes), this is sometimes useful to test new ports and check performance.\nYou can probably use the shared memory area for your testing.",
+      "revId": "5d561cdacd2491a1fae0745c0b50aa104f432b54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
