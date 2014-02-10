@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "cf9d5927_21020a9e",
+        "filename": "common/util.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-02-10T23:39:04Z",
+      "side": 1,
+      "message": "int *?\n\n(yes, sizeof(int) \u003d\u003d sizeof(pointer) right now)",
+      "revId": "5d561cdacd2491a1fae0745c0b50aa104f432b54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af83c5c3_91ba46ea",
         "filename": "common/util.c",
         "patchSetId": 3
