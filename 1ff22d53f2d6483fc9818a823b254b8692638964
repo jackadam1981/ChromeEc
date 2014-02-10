@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f71a1c9_9fa25bbc",
+        "filename": "chip/lm4/openocd/lm4x_cmds.tcl",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-02-10T23:40:49Z",
+      "side": 1,
+      "message": "Someday we should have the flash command take the board name as a param.  So\n\nflash_ro winky\n\ninstead of\n\nflash_winky_ro\n\nand then we won\u0027t need to do this every time we add a board...",
+      "revId": "1ff22d53f2d6483fc9818a823b254b8692638964",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
