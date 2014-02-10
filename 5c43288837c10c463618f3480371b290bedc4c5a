@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f924913_02126ce4",
+        "filename": "common/math_util.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-02-10T16:38:06Z",
+      "side": 1,
+      "message": "You might want to add an unit test for this so that you won\u0027t accidentally break it when optimizing with binary search later. (e.g. check the calculated values are within 3 degrees from the actual values.)",
+      "revId": "5c43288837c10c463618f3480371b290bedc4c5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
