@@ -58,26 +58,7 @@ static int freq;
  */
 static void disable_pll(void)
 {
-	/* Switch to 16MHz internal oscillator and power down the PLL */
-	LM4_SYSTEM_RCC = LM4_SYSTEM_RCC_SYSDIV(0) |
-		LM4_SYSTEM_RCC_BYPASS |
-		LM4_SYSTEM_RCC_PWRDN |
-		LM4_SYSTEM_RCC_OSCSRC(1) |
-		LM4_SYSTEM_RCC_MOSCDIS;
-
-#ifdef CONFIG_LOW_POWER_IDLE
-	/*
-	 * If using the low power idle, then set the ACG bit, which specifies
-	 * that the sleep and deep sleep modes are using their own clock gating
-	 * registers SCGC and DCGS respectively instead of using the run mode
-	 * clock gating registers RCGC.
-	 */
-	LM4_SYSTEM_RCC |= LM4_SYSTEM_RCC_ACG;
-#endif
-
-	LM4_SYSTEM_RCC2 &= ~LM4_SYSTEM_RCC2_USERCC2;
-
-	freq = INTERNAL_CLOCK;
+	LM4_SYSTEM_RSCLKCFG &= ~LM4_SYSTEM_RSCLKCFG_USEPLL;
 }
 
 /**
@@ -88,34 +69,11 @@ static void enable_pll(void)
 	/* Disable the PLL so we can reconfigure it */
 	disable_pll();
 
-	/*
-	 * Enable the PLL (PWRDN is no longer set) and set divider.  PLL is
-	 * still bypassed, since it hasn't locked yet.
-	 */
-	LM4_SYSTEM_RCC = LM4_SYSTEM_RCC_SYSDIV(2) |
-		LM4_SYSTEM_RCC_USESYSDIV |
-		LM4_SYSTEM_RCC_BYPASS |
-		LM4_SYSTEM_RCC_OSCSRC(1) |
-		LM4_SYSTEM_RCC_MOSCDIS;
+	LM4_SYSTEM_PLLFREQ0 = LM4_SYSTEM_PLLFREQ0_PLLWPR | 0x14;
+	LM4_SYSTEM_PLLFREQ1 = 0x0;
 
-#ifdef CONFIG_LOW_POWER_IDLE
-	/*
-	 * If using the low power idle, then set the ACG bit, which specifies
-	 * that the sleep and deep sleep modes are using their own clock gating
-	 * registers SCGC and DCGS respectively instead of using the run mode
-	 * clock gating registers RCGC.
-	 */
-	LM4_SYSTEM_RCC |= LM4_SYSTEM_RCC_ACG;
-#endif
-
-	/* Wait for the PLL to lock */
-	clock_wait_cycles(1024);
-	while (!(LM4_SYSTEM_PLLSTAT & 1))
-		;
-
-	/* Remove bypass on PLL */
-	LM4_SYSTEM_RCC &= ~LM4_SYSTEM_RCC_BYPASS;
-	freq = PLL_CLOCK;
+	LM4_SYSTEM_RSCLKCFG |= LM4_SYSTEM_RSCLKCFG_NEWFREQ;
+	LM4_SYSTEM_RSCLKCFG |= LM4_SYSTEM_RSCLKCFG_USEPLL;
 }
 
 void clock_enable_pll(int enable, int notify)
@@ -159,12 +117,6 @@ void clock_init(void)
 		while (!(LM4_SYSTEM_PIOSCSTAT & 0x300))
 			;
 	}
-#else
-	/*
-	 * Only BDS has an external crystal; other boards don't have one, and
-	 * can disable main oscillator control to reduce power consumption.
-	 */
-	LM4_SYSTEM_MOSCCTL = 0x04;
 #endif
 
 	/*
@@ -491,11 +443,6 @@ static int command_sleep(int argc, char **argv)
 		asm volatile("cpsie i");
 	}
 
-	if (uartfbrd) {
-		ccprintf("We are still alive. RCC=%08x\n", LM4_SYSTEM_RCC);
-		cflush();
-	}
-
 	/* Enable interrupts. */
 	asm volatile("cpsid i");
 
@@ -574,12 +521,6 @@ static int command_pll(int argc, char **argv)
 			if (*e)
 				return EC_ERROR_PARAM1;
 
-			LM4_SYSTEM_RCC = LM4_SYSTEM_RCC_SYSDIV(v - 1) |
-				LM4_SYSTEM_RCC_BYPASS |
-				LM4_SYSTEM_RCC_PWRDN |
-				LM4_SYSTEM_RCC_OSCSRC(1) |
-				LM4_SYSTEM_RCC_MOSCDIS;
-
 			freq = INTERNAL_CLOCK / v;
 
 			/* Notify modules of frequency change */
@@ -588,10 +529,6 @@ static int command_pll(int argc, char **argv)
 	}
 
 	/* Print current PLL state */
-	ccprintf("RCC:     0x%08x\n", LM4_SYSTEM_RCC);
-	ccprintf("RCC2:    0x%08x\n", LM4_SYSTEM_RCC2);
-	ccprintf("PLLSTAT: 0x%08x\n", LM4_SYSTEM_PLLSTAT);
-	ccprintf("Clock:   %d Hz\n", clock_get_freq());
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(pll, command_pll,

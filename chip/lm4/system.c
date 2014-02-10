@@ -440,17 +440,6 @@ void system_pre_init(void)
 
 	check_reset_cause();
 
-	/* Initialize bootcfg if needed */
-	if (LM4_SYSTEM_BOOTCFG != CONFIG_BOOTCFG_VALUE) {
-		/* read-modify-write */
-		LM4_FLASH_FMD = (LM4_SYSTEM_BOOTCFG_MASK & LM4_SYSTEM_BOOTCFG)
-			| (~LM4_SYSTEM_BOOTCFG_MASK & CONFIG_BOOTCFG_VALUE);
-		LM4_FLASH_FMA = 0x75100000;
-		LM4_FLASH_FMC = 0xa4420008;  /* WRKEY | COMT */
-		while (LM4_FLASH_FMC & 0x08)
-			;
-	}
-
 	/* Brown-outs should trigger a reset */
 	LM4_SYSTEM_PBORCTL |= 0x02;
 }

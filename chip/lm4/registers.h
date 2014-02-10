@@ -82,7 +82,8 @@ static inline int lm4_adc_addr(int ss, int offset)
 #define LM4_ADC_SSFIFO(ss)     LM4ADCREG(ss, 0x008)
 #define LM4_ADC_SSFSTAT(ss)    LM4ADCREG(ss, 0x00c)
 #define LM4_ADC_SSOP(ss)       LM4ADCREG(ss, 0x010)
-#define LM4_ADC_SSEMUX(ss)     LM4ADCREG(ss, 0x018)
+#define LM4_ADC_SSDC(ss)       LM4ADCREG(ss, 0x018)
+#define LM4_ADC_SSTSH(ss)       LM4ADCREG(ss, 0x01c)
 
 #define LM4_LPC_LPCCTL         REG32(0x40080000)
 #define LM4_LPC_SCI_START      (1 << 9)  /* Start a pulse on LPC0SCI signal */

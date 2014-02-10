@@ -108,10 +108,8 @@ static void adc_configure(const struct adc_t *adc)
 	/* Sample internal temp sensor */
 	if (adc->channel == LM4_AIN_NONE) {
 		LM4_ADC_SSMUX(seq) = 0x00;
-		LM4_ADC_SSEMUX(seq) = 0x00;
 	} else {
 		LM4_ADC_SSMUX(seq) = adc->channel & 0xf;
-		LM4_ADC_SSEMUX(seq) = adc->channel >> 4;
 	}
 	LM4_ADC_SSCTL(seq) = adc->flag;
 

@@ -19,7 +19,7 @@
 #undef CONFIG_FPU
 #undef CONFIG_FLASH
 #undef CONFIG_WATCHDOG
-#undef CONFIG_ADC
+#define CONFIG_ADC
 
 /* Write protect is active high */
 #define CONFIG_WP_ACTIVE_HIGH

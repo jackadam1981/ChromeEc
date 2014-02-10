@@ -15,7 +15,6 @@ static int last_val = C_TO_K(27);
 
 static void chip_temp_sensor_poll(void)
 {
-	last_val = adc_read_channel(ADC_CH_EC_TEMP);
 }
 DECLARE_HOOK(HOOK_SECOND, chip_temp_sensor_poll, HOOK_PRIO_TEMP_SENSOR);
 
