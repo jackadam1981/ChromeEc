@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0fc2111e_2103f6da",
+        "filename": "test/utils.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-02-11T17:59:01Z",
+      "side": 1,
+      "message": "I would prefer using the shared_mem area everywhere (ie even on the host), and have only one code path. If the copy is too fast, can you just iterate several times ?",
+      "revId": "011b32f2ad1a983c0c5397b9f17628a6bba7df7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
