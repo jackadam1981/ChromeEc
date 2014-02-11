@@ -16,6 +16,24 @@
       "revId": "1ff22d53f2d6483fc9818a823b254b8692638964",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0fc2111e_7cfd2552",
+        "filename": "chip/lm4/openocd/lm4x_cmds.tcl",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-11T21:11:18Z",
+      "side": 1,
+      "message": "Bug filed: crosbug.com/p/25702",
+      "parentUuid": "8f71a1c9_9fa25bbc",
+      "revId": "1ff22d53f2d6483fc9818a823b254b8692638964",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
