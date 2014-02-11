@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-/* Configuration for Rambi mainboard */
+/* Configuration for Squawks mainboard */
 
 #ifndef __BOARD_H
 #define __BOARD_H
@@ -40,6 +40,8 @@
 #define CONFIG_USB_PORT_POWER_SMART_SIMPLE
 #define CONFIG_VBOOT_HASH
 #define CONFIG_WIRELESS
+#define CONFIG_WIRELESS_SUSPEND \
+	(EC_WIRELESS_SWITCH_WLAN | EC_WIRELESS_SWITCH_WLAN_POWER)
 
 #ifndef __ASSEMBLER__
 

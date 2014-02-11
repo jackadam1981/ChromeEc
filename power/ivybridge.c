@@ -239,7 +239,7 @@ enum power_state power_handle_state(enum power_state state)
 		gpio_set_level(GPIO_ENABLE_VS, 1);
 
 		/* Enable wireless */
-		wireless_enable(EC_WIRELESS_SWITCH_ALL);
+		wireless_set_state(WIRELESS_ON);
 
 		/*
 		 * Make sure touchscreen is out if reset (even if the lid is
@@ -252,7 +252,7 @@ enum power_state power_handle_state(enum power_state state)
 		if (power_wait_signals(IN_PGOOD_S0)) {
 			chipset_force_shutdown();
 			gpio_set_level(GPIO_TOUCHSCREEN_RESET_L, 0);
-			wireless_enable(0);
+			wireless_set_state(WIRELESS_OFF);
 			gpio_set_level(GPIO_ENABLE_VS, 0);
 			return POWER_S3;
 		}
@@ -293,7 +293,7 @@ enum power_state power_handle_state(enum power_state state)
 		gpio_set_level(GPIO_ENABLE_VCORE, 0);
 
 		/* Disable wireless */
-		wireless_enable(0);
+		wireless_set_state(WIRELESS_OFF);
 
 		/*
 		 * Deassert prochot since CPU is off and we're about to drop

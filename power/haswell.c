@@ -145,7 +145,7 @@ enum power_state power_chipset_init(void)
 			gpio_set_level(GPIO_PP5000_EN, 0);
 			gpio_set_level(GPIO_PCH_RSMRST_L, 0);
 			gpio_set_level(GPIO_PCH_DPWROK, 0);
-			wireless_enable(0);
+			wireless_set_state(WIRELESS_OFF);
 		}
 	}
 
@@ -261,7 +261,7 @@ enum power_state power_handle_state(enum power_state state)
 		gpio_set_level(GPIO_PP3300_DX_EN, 1);
 
 		/* Enable wireless */
-		wireless_enable(EC_WIRELESS_SWITCH_ALL);
+		wireless_set_state(WIRELESS_ON);
 
 		/*
 		 * Make sure touchscreen is out if reset (even if the lid is
@@ -273,7 +273,7 @@ enum power_state power_handle_state(enum power_state state)
 		/* Wait for non-core power rails good */
 		if (power_wait_signals(IN_PGOOD_S0)) {
 			chipset_force_shutdown();
-			wireless_enable(0);
+			wireless_set_state(WIRELESS_OFF);
 			gpio_set_level(GPIO_EC_EDP_VDD_EN, 0);
 			gpio_set_level(GPIO_PP3300_DX_EN, 0);
 			gpio_set_level(GPIO_TOUCHSCREEN_RESET_L, 0);
@@ -324,7 +324,7 @@ enum power_state power_handle_state(enum power_state state)
 		gpio_set_level(GPIO_VCORE_EN, 0);
 
 		/* Disable wireless */
-		wireless_enable(0);
+		wireless_set_state(WIRELESS_OFF);
 
 		/*
 		 * Enable idle task deep sleep. Allow the low power idle task
