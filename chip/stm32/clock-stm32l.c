@@ -14,6 +14,16 @@
 #include "registers.h"
 #include "util.h"
 
+#ifdef CONFIG_STM32L_FAKE_HIBERNATE
+#include "extpower.h"
+#include "lid_switch.h"
+#include "power_button.h"
+#include "system.h"
+#include "task.h"
+
+static int fake_hibernate;
+#endif
+
 /* High-speed oscillator is 16 MHz */
 #define HSI_CLOCK 16000000
 /*
@@ -158,6 +168,69 @@ void clock_enable_module(enum module_id module, int enable)
 
 	clock_mask = new_mask;
 }
+
+#ifdef CONFIG_STM32L_FAKE_HIBERNATE
+/*
+ *  This is for NOT having enough hibernate (more precisely, the stand-by mode)
+ *  wake-up source pin. STM32L100 supports 3 wake-up source pins:
+ *
+ *     WKUP1 (PA0)  -- used for ACOK_PMU
+ *     WKUP2 (PC13) -- used for LID_OPEN
+ *     WKUP3 (PE6)  -- cannot be used due to IC package.
+ *
+ *  However, we need the power button as a wake-up source as well and there is
+ *  no available pin for us (we don't want to move the ACOK_PMU pin).
+ *
+ *  Fortunately, the STM32L is low-power enough so that we don't need the
+ *  super-low-power mode. So, we fake this hibernate mode and accept the
+ *  following wake-up source.
+ *
+ *     RTC alarm  (faked as well).
+ *     Power button
+ *     Lid open
+ *
+ *  The original issue is here: crosbug.com/p/25435.
+ */
+void __enter_hibernate(uint32_t seconds, uint32_t microseconds)
+{
+	fake_hibernate = 1;
+
+	ccprintf("[%T fake hibernate. waits for power button/lid/RTC]\n");
+	cflush();
+
+	if (seconds || microseconds) {
+		msleep(seconds * (SECOND / MSEC) + microseconds);
+	} else {
+		while (1)
+			task_wait_event(-1);
+	}
+
+	ccprintf("[%T fake RTC alarm fires. resets EC]\n");
+	cflush();
+	system_reset(SYSTEM_RESET_HARD);
+}
+
+static void fake_hibernate_power_button_hook(void)
+{
+	if (fake_hibernate && lid_is_open() && !power_button_is_pressed()) {
+		ccprintf("[%T %s() resets EC]\n", __func__);
+		cflush();
+		system_reset(SYSTEM_RESET_HARD);
+	}
+}
+DECLARE_HOOK(HOOK_POWER_BUTTON_CHANGE, fake_hibernate_power_button_hook,
+	HOOK_PRIO_DEFAULT);
+
+static void fake_hibernate_lid_hook(void)
+{
+	if (fake_hibernate && lid_is_open()) {
+		ccprintf("[%T %s() resets EC]\n", __func__);
+		cflush();
+		system_reset(SYSTEM_RESET_HARD);
+	}
+}
+DECLARE_HOOK(HOOK_LID_CHANGE, fake_hibernate_lid_hook, HOOK_PRIO_DEFAULT);
+#endif
 
 void clock_init(void)
 {
