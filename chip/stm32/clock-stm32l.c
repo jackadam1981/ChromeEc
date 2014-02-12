@@ -12,6 +12,7 @@
 #include "cpu.h"
 #include "hooks.h"
 #include "registers.h"
+#include "system.h"
 #include "util.h"
 
 /* High-speed oscillator is 16 MHz */
@@ -159,6 +160,48 @@ void clock_enable_module(enum module_id module, int enable)
 	clock_mask = new_mask;
 }
 
+static void enable_serial_wakeup(int enable)
+{
+        static uint32_t save_exticr;
+
+        if (enable) {
+                /**
+                 * allow to wake up from serial port (RX on pin PA10)
+                 * by setting it as a GPIO with an external interrupt.
+                 */
+                save_exticr = STM32_AFIO_EXTICR(10 / 4);
+                STM32_AFIO_EXTICR(10 / 4) = (save_exticr & ~(0xf << 8));
+        } else {
+                /* serial port wake up : don't go back to sleep */
+                if (STM32_EXTI_PR & (1 << 10))
+                        disable_sleep(SLEEP_MASK_FORCE_NO_DSLEEP);
+                /* restore keyboard external IT on PC10 */
+                STM32_AFIO_EXTICR(10 / 4) = save_exticr;
+        }
+}
+
+void __enter_hibernate(uint32_t seconds, uint32_t microseconds)
+{
+	//if (seconds || microseconds)
+	//	set_rtc_alarm(seconds, microseconds);
+
+	/* interrupts off now */
+	asm volatile("cpsid i");
+
+	/* enable the wake up pin */
+	STM32_PWR_CSR |= (1<<8);
+	STM32_PWR_CR |= 0xe;
+	CPU_SCB_SYSCTRL |= 0x4;
+
+	enable_serial_wakeup(1);
+	/* go to Standby mode */
+	asm("wfi");
+
+	/* we should never reach that point */
+	while (1)
+                ;
+}
+
 void clock_init(void)
 {
 	/*
@@ -169,6 +212,12 @@ void clock_init(void)
 
 	/* Switch to high-speed oscillator */
 	clock_set_osc(1);
+
+	/*
+	 * Our deep sleep mode is STOP mode.
+	 * clear PDDS (stop mode) , set LDDS (regulator in low power mode)
+	 */
+	STM32_PWR_CR = (STM32_PWR_CR & ~2) | 1;
 }
 
 static void clock_chipset_startup(void)
