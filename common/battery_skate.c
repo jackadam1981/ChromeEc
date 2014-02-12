@@ -123,18 +123,7 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, check_pending_cutoff, HOOK_PRIO_LAST);
 
 int battery_command_cut_off(struct host_cmd_handler_args *args)
 {
-	pending_cutoff = 1;
-
-	/*
-	 * When cutting off the battery, the AP is off and AC is not present.
-	 * This makes serial console unresponsive and hard to verify battery
-	 * cut-off. Let's disable sleep here so one can check cut-off status
-	 * if needed. This shouldn't matter because we are about to cut off
-	 * the battery.
-	 */
-	disable_sleep(SLEEP_MASK_FORCE);
-
-	return EC_RES_SUCCESS;
+	return battery_cut_off();
 }
 DECLARE_HOST_COMMAND(EC_CMD_BATTERY_CUT_OFF, battery_command_cut_off,
 		     EC_VER_MASK(0));
