@@ -12,6 +12,7 @@
 #include "cpu.h"
 #include "hooks.h"
 #include "registers.h"
+#include "system.h"
 #include "util.h"
 
 /* High-speed oscillator is 16 MHz */
@@ -159,6 +160,33 @@ void clock_enable_module(enum module_id module, int enable)
 	clock_mask = new_mask;
 }
 
+void __enter_hibernate(uint32_t seconds, uint32_t microseconds)
+{
+	//if (seconds || microseconds)
+	//	set_rtc_alarm(seconds, microseconds);
+
+	/* interrupts off now */
+	asm volatile("cpsid i");
+
+	/*
+	 * enable the wake up pin
+	 * bit
+	 *  8  WKUP1 (PA0)  -- ACOK_PMU
+	 *  9  WKUP2 (PC13) -- LID_OPEN
+	 * 10  WKUP3 (PE6)  -- not used
+	 */
+	STM32_PWR_CSR |= (3<<8);
+	STM32_PWR_CR |= 0xe;
+	CPU_SCB_SYSCTRL |= 0x4;
+
+	/* go to Standby mode */
+	asm("wfi");
+
+	/* we should never reach that point */
+	while (1)
+                ;
+}
+
 void clock_init(void)
 {
 	/*
@@ -169,6 +197,12 @@ void clock_init(void)
 
 	/* Switch to high-speed oscillator */
 	clock_set_osc(1);
+
+	/*
+	 * Our deep sleep mode is STOP mode.
+	 * clear PDDS (stop mode) , set LDDS (regulator in low power mode)
+	 */
+	STM32_PWR_CR = (STM32_PWR_CR & ~2) | 1;
 }
 
 static void clock_chipset_startup(void)
