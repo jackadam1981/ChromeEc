@@ -408,7 +408,7 @@ int charge_keep_power_off(void)
 {
 	int charge;
 
-#ifdef CONFIG_BATTERY_SPRING
+#if defined(CONFIG_BATTERY_SKATE) || defined(CONFIG_BATTERY_SPRING)
 	int blk_opstatus;
 	int ret;
 	/*

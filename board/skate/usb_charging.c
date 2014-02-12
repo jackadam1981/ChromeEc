@@ -82,8 +82,8 @@
 
 /* Delay to read again ID pin when VBUS went off */
 #define ID_REDETECTION_DELAY (200 * MSEC)
-/* Threshold for glitch detection on the Spring charger */
-#define SPRING_GLITCH_THR (250 * MSEC)
+/* Threshold for glitch detection on the Skate charger */
+#define SKATE_GLITCH_THR (250 * MSEC)
 /* Minimum delay before allowing the charger to go off idle mode */
 #define CHARGER_IDLE_MINIMUM_PERIOD (3 * MINUTE)
 
@@ -111,7 +111,7 @@ static int pending_adc_watchdog_disable;
 static int pending_dev_type_update;
 static int pending_video_power_off;
 static int restore_id_mux;
-static int charger_idle; /* Spring brick in idle mode */
+static int charger_idle; /* Skate brick in idle mode */
 static timestamp_t charger_idle_time; /* last entry time in idle mode */
 
 static int board_rev = 1; /* Assume new boards unless told otherwise */
@@ -653,7 +653,7 @@ static void check_skate_brick_deferred(void)
 		 * the power brick is still plugged
 		 * but has internally cut its voltage.
 		 */
-		CPRINTF("[%T Spring brick went to IDLE\n");
+		CPRINTF("[%T Skate brick went to IDLE\n");
 		charger_idle = 1;
 		charger_idle_time.val = 0 /* no minimum idle period */;
 	}
@@ -680,7 +680,7 @@ static void usb_detect_overcurrent(int dev_type)
 		power_removed_pwm_duty[idx] = current_pwm_duty;
 
 		/*
-		 * if the Spring charger voltage went away,
+		 * if the Skate charger voltage went away,
 		 * check later (after ADC re-sampling time)
 		 * if the ID pin is still there.
 		 */
@@ -692,12 +692,12 @@ static void usb_detect_overcurrent(int dev_type)
 		timestamp_t now = get_time();
 		if ((power_removed_type[1] & TSU6721_TYPE_CHG12) &&
 		    ((now.val - power_removed_time[1].val) <
-		     SPRING_GLITCH_THR) && !charger_idle) {
+		     SKATE_GLITCH_THR) && !charger_idle) {
 			/*
 			 * the skate brick should not glitch,
 			 * put it in idle.
 			 */
-			CPRINTF("[%T Spring brick GLITCH]\n");
+			CPRINTF("[%T Skate brick GLITCH]\n");
 			charger_idle = 1;
 			charger_idle_time = get_time();
 			return;
