@@ -9,6 +9,7 @@
 #include "common.h"
 #include "console.h"
 #include "hooks.h"
+#include "host_command.h"
 #include "math_util.h"
 #include "motion_sense.h"
 #include "timer.h"
@@ -32,6 +33,11 @@ static int accel_interval_ms = 250;
 #ifdef CONFIG_CMD_LID_ANGLE
 static int accel_disp;
 #endif
+
+/* For vector_3_t, define which coordinates are in which location. */
+enum {
+	X, Y, Z
+};
 
 /* Pointer to constant acceleration orientation data. */
 const struct accel_orientation * const p_acc_orient = &acc_orient;
@@ -116,6 +122,11 @@ void motion_sense_task(void)
 	timestamp_t ts0, ts1;
 	int wait_us;
 	int ret;
+	uint8_t *lpc_status, *lpc_data;
+	int sample_id = 0;
+
+	lpc_status = host_get_memmap(EC_MEMMAP_ACC_STATUS);
+	lpc_data = host_get_memmap(EC_MEMMAP_ACC_DATA);
 
 	/* Initialize accelerometers. */
 	ret = accel_init(ACCEL_LID);
@@ -132,10 +143,10 @@ void motion_sense_task(void)
 		ts0 = get_time();
 
 		/* Read all accelerations. */
-		accel_read(ACCEL_LID, &acc_lid_raw[0], &acc_lid_raw[1],
-			   &acc_lid_raw[2]);
-		accel_read(ACCEL_BASE, &acc_base[0], &acc_base[1],
-			   &acc_base[2]);
+		accel_read(ACCEL_LID, &acc_lid_raw[X], &acc_lid_raw[Y],
+			   &acc_lid_raw[Z]);
+		accel_read(ACCEL_BASE, &acc_base[X], &acc_base[Y],
+			   &acc_base[Z]);
 
 		/*
 		 * Rotate the lid vector so the reference frame aligns with
@@ -149,16 +160,44 @@ void motion_sense_task(void)
 		/* TODO(crosbug.com/p/25597): Add filter to smooth lid angle. */
 
 		/*
-		 * TODO(crosbug.com/p/25599): Add acceleration data to LPC
-		 * shared memory.
+		 * Set the busy bit before writing the sensor data. Increment
+		 * the counter and clear the busy bit after writing the sensor
+		 * data. On the host side, the host needs to make sure the busy
+		 * bit is not set and that the counter remains the same before
+		 * and after reading the data.
 		 */
+		*lpc_status |= EC_MEMMAP_ACC_STATUS_BUSY_BIT;
+
+		lpc_data[0] = (((int)lid_angle_deg) >> 8) & 0xff;
+		lpc_data[1] = ((int)lid_angle_deg) & 0xff;
+		lpc_data[2] = (acc_base[X] >> 8) & 0xff;
+		lpc_data[3] = acc_base[X] & 0xff;
+		lpc_data[4] = (acc_base[Y] >> 8) & 0xff;
+		lpc_data[5] = acc_base[Y] & 0xff;
+		lpc_data[6] = (acc_base[Z] >> 8) & 0xff;
+		lpc_data[7] = acc_base[Z] & 0xff;
+		lpc_data[8] = (acc_lid[X] >> 8) & 0xff;
+		lpc_data[9] = acc_lid[X] & 0xff;
+		lpc_data[10] = (acc_lid[Y] >> 8) & 0xff;
+		lpc_data[11] = acc_lid[Y] & 0xff;
+		lpc_data[12] = (acc_lid[Z] >> 8) & 0xff;
+		lpc_data[13] = acc_lid[Z] & 0xff;
+
+		/*
+		 * Increment sample id and clear busy bit to signal we finished
+		 * updating data.
+		 */
+		sample_id = (sample_id + 1) &
+				EC_MEMMAP_ACC_STATUS_SAMPLE_ID_MASK;
+		*lpc_status = sample_id;
+
 
 #ifdef CONFIG_CMD_LID_ANGLE
 		if (accel_disp) {
 			CPRINTF("[%T ACC base=%-5d, %-5d, %-5d  lid=%-5d, "
 					"%-5d, %-5d  a=%-6.1d]\n",
-					acc_base[0], acc_base[1], acc_base[2],
-					acc_lid[0], acc_lid[1], acc_lid[2],
+					acc_base[X], acc_base[Y], acc_base[Z],
+					acc_lid[X], acc_lid[Y], acc_lid[Z],
 					(int)(10*lid_angle_deg));
 		}
 #endif
