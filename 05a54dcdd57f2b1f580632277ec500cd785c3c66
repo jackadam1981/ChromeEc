@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f9e016b_11128c41",
+        "filename": "common/util.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-02-13T06:20:13Z",
+      "side": 1,
+      "message": "I\u0027ve seen alignment problems typecasting an unaligned char up to a uint32_t.\n\nSuggest going the other way - declare cccc as a uint32_t, then typecast to a char* to set its sub-elements.\n\nAlternately, and perhaps more cleanly, just do:\n\nuint32_t cccc \u003d c | (c \u003c\u003c 8) | (c \u003c\u003c 16) | (c \u003c\u003c 24)",
+      "revId": "05a54dcdd57f2b1f580632277ec500cd785c3c66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
