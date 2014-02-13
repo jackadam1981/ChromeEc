@@ -9,6 +9,7 @@
 #include "common.h"
 #include "console.h"
 #include "hooks.h"
+#include "host_command.h"
 #include "math_util.h"
 #include "motion_sense.h"
 #include "timer.h"
@@ -116,6 +117,11 @@ void motion_sense_task(void)
 	timestamp_t ts0, ts1;
 	int wait_us;
 	int ret;
+	uint8_t *lpc_status, *lpc_data;
+	int sample_id = 0;
+
+	lpc_status = host_get_memmap(EC_MEMMAP_ACC_STATUS);
+	lpc_data = host_get_memmap(EC_MEMMAP_ACC_DATA);
 
 	/* Initialize accelerometers. */
 	ret = accel_init(ACCEL_LID);
@@ -152,6 +158,38 @@ void motion_sense_task(void)
 		 * TODO(crosbug.com/p/25599): Add acceleration data to LPC
 		 * shared memory.
 		 */
+		/*
+		 * Set the busy bit before writing the sensor data. Increment
+		 * the counter and clear the busy bit after writing the sensor
+		 * data. On the host side, the host needs to make sure the busy
+		 * bit is not set and that the counter remains the same before
+		 * and after reading the data.
+		 */
+		*lpc_status |= EC_MEMMAP_ACC_STATUS_BUSY_BIT;
+
+		lpc_data[0] = (((int)lid_angle_deg) >> 8) & 0xff;
+		lpc_data[1] = ((int)lid_angle_deg) & 0xff;
+		lpc_data[2] = (acc_base[0] >> 8) & 0xff;
+		lpc_data[3] = acc_base[0] & 0xff;
+		lpc_data[4] = (acc_base[1] >> 8) & 0xff;
+		lpc_data[5] = acc_base[1] & 0xff;
+		lpc_data[6] = (acc_base[2] >> 8) & 0xff;
+		lpc_data[7] = acc_base[2] & 0xff;
+		lpc_data[8] = (acc_lid[0] >> 8) & 0xff;
+		lpc_data[9] = acc_lid[0] & 0xff;
+		lpc_data[10] = (acc_lid[1] >> 8) & 0xff;
+		lpc_data[11] = acc_lid[1] & 0xff;
+		lpc_data[12] = (acc_lid[2] >> 8) & 0xff;
+		lpc_data[13] = acc_lid[2] & 0xff;
+
+		/*
+		 * Increment sample id and clear busy bit to signal we finished
+		 * updating data.
+		 */
+		sample_id = (sample_id + 1) &
+				EC_MEMMAP_ACC_STATUS_SAMPLE_ID_MASK;
+		*lpc_status = sample_id;
+
 
 #ifdef CONFIG_CMD_LID_ANGLE
 		if (accel_disp) {
