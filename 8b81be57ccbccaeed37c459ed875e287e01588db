@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8f9e016b_8b3721fa",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-02-13T23:16:22Z",
+      "side": 1,
+      "message": "The host doesn\u0027t have to handle the rollover. The host side is pretty dumb, it just compares the sample ID before and after reading data. If they match, then the host is happy.",
+      "parentUuid": "ef13fd9e_0ee1acb0",
+      "revId": "8b81be57ccbccaeed37c459ed875e287e01588db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f9e016b_004230c8",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-02-13T22:42:50Z",
       "side": 1,
       "message": "Would X,Y,Z make more sense here rather than 0,1,2?",
+      "revId": "8b81be57ccbccaeed37c459ed875e287e01588db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "afcbc564_9fe92c25",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-02-13T23:16:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f9e016b_004230c8",
       "revId": "8b81be57ccbccaeed37c459ed875e287e01588db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
