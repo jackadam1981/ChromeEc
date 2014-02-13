@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef13fd9e_0ee1acb0",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-13T22:42:50Z",
+      "side": 1,
+      "message": "(implied) The host must be able to handle the rollover case for the sample ID.",
+      "revId": "8b81be57ccbccaeed37c459ed875e287e01588db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f9e016b_004230c8",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-13T22:42:50Z",
+      "side": 1,
+      "message": "Would X,Y,Z make more sense here rather than 0,1,2?",
+      "revId": "8b81be57ccbccaeed37c459ed875e287e01588db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
