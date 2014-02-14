@@ -241,7 +241,7 @@ void gaia_suspend_deferred(void)
 	int new_ap_suspended;
 
 	if (!ap_on) /* power on/off : not a real suspend / resume */
-		return;
+	{	return; }
 
 	/*
 	 * Note: For Snow, suspend state can only be reliably
@@ -563,6 +563,10 @@ static void power_off(void)
 	powerled_set_state(POWERLED_STATE_OFF);
 	pmu_shutdown();
 	CPRINTF("[%T power shutdown complete]\n");
+	/* Wait 5 sec for system stability */
+	msleep(5000);
+	/* ap reset, it's warm boot after power_off */
+	chipset_reset(1);
 }
 
 
