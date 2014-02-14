@@ -697,7 +697,7 @@ static int command_hibernate(int argc, char **argv)
 		microseconds = strtoi(argv[2], NULL, 0);
 
 	if (seconds || microseconds)
-		ccprintf("Hibernating for %d.%06d s\n", seconds, microseconds);
+		ccprintf("Hibernating for %d.%03d s\n", seconds, microseconds);
 	else
 		ccprintf("Hibernating until wake pin asserted.\n");
 
@@ -706,7 +706,7 @@ static int command_hibernate(int argc, char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(hibernate, command_hibernate,
-			"[sec] [usec]",
+			"[sec] [msec]",
 			"Hibernate the EC",
 			NULL);
 
