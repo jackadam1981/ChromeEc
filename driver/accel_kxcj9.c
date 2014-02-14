@@ -112,7 +112,8 @@ int accel_write_datarate(const enum accel_id id, const int rate)
 	return ret;
 }
 
-int accel_read(enum accel_id id, int *x_acc, int *y_acc, int *z_acc)
+test_mockable int accel_read(enum accel_id id, int *x_acc, int *y_acc,
+				int *z_acc)
 {
 	uint8_t acc[6];
 	uint8_t reg = KXCJ9_XOUT_L;
@@ -162,7 +163,7 @@ int accel_read(enum accel_id id, int *x_acc, int *y_acc, int *z_acc)
 	return EC_SUCCESS;
 }
 
-int accel_init(enum accel_id id)
+test_mockable int accel_init(enum accel_id id)
 {
 	int ret = EC_SUCCESS;
 
