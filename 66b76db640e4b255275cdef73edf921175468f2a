@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef13fd9e_b0a0ad1e",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-02-14T15:34:28Z",
+      "side": 1,
+      "message": "...then here, typecast lpc_data to an int16_t*.",
+      "revId": "66b76db640e4b255275cdef73edf921175468f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f9e016b_909e6d50",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-02-14T15:34:28Z",
+      "side": 1,
+      "message": "If you 16-bit-align data, should be able to read/write it 16 bits at a time, rather than doing byte ops.  Move ACC_DATA to 0x92?",
+      "revId": "66b76db640e4b255275cdef73edf921175468f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
