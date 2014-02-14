@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "afcbc564_131993d5",
+        "filename": "chip/stm32/clock-stm32l.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-02-14T15:37:30Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we also wake on AC-detect?",
+      "revId": "678eae4cc3b5a8b677d43643cedab7bedc29d8e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
