@@ -16,6 +16,24 @@
       "revId": "678eae4cc3b5a8b677d43643cedab7bedc29d8e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f21a133_bfb31f16",
+        "filename": "chip/stm32/clock-stm32l.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-02-15T04:20:01Z",
+      "side": 1,
+      "message": "I was doing reboot after AC is detected. But since the charger task is still working in fake-hibernate mode, I didn\u0027t implement this.\n\nAfter second-thought, I will wake-on AC-detect to reduce potential bugs. Stay tuned.",
+      "parentUuid": "afcbc564_131993d5",
+      "revId": "678eae4cc3b5a8b677d43643cedab7bedc29d8e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
