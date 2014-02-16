@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f21a133_42f548f4",
+        "filename": "driver/accel_kxcj9.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-02-16T15:00:39Z",
+      "side": 1,
+      "message": "You don\u0027t need to add test_mockable here. This file is not compiled for the unit tests.",
+      "revId": "7cd7506d38cbc3e97cd5c0c47e4fcdc8ec6009be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0fd6913f_81ec8aa2",
+        "filename": "driver/accel_kxcj9.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-02-16T15:00:39Z",
+      "side": 1,
+      "message": "Same here.",
+      "revId": "7cd7506d38cbc3e97cd5c0c47e4fcdc8ec6009be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f21a133_22f854ed",
+        "filename": "test/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-02-16T15:00:39Z",
+      "side": 1,
+      "message": "This should be defined in board/host/board.c, like for clapper and glimmer.",
+      "revId": "7cd7506d38cbc3e97cd5c0c47e4fcdc8ec6009be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0fd6913f_61e99e90",
+        "filename": "test/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-02-16T15:00:39Z",
+      "side": 1,
+      "message": "typo: seet -\u003e set",
+      "revId": "7cd7506d38cbc3e97cd5c0c47e4fcdc8ec6009be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
