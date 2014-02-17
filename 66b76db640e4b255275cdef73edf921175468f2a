@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0fd6913f_01e2da83",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-02-17T00:37:04Z",
+      "side": 1,
+      "message": "But then wouldn\u0027t we be relying on endianness of the processor in common code? Are we at all concerned about that?",
+      "parentUuid": "ef13fd9e_b0a0ad1e",
+      "revId": "66b76db640e4b255275cdef73edf921175468f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f9e016b_909e6d50",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
