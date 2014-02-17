@@ -167,7 +167,7 @@ static void fan_init(void)
 {
 	/* Enable the fan module and delay a few clocks */
 	clock_enable_peripheral(CGC_OFFSET_FAN, 0x1,
-			CGC_MODE_RUN | CGC_MODE_SLEEP);
+			CGC_MODE_RUN | CGC_MODE_SLEEP | CGC_MODE_DSLEEP);
 
 	/* Disable all fans */
 	LM4_FAN_FANCTL = 0;
