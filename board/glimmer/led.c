@@ -17,6 +17,7 @@
 const enum ec_led_id supported_led_ids[] = {EC_LED_ID_POWER_LED};
 const int supported_led_ids_count = ARRAY_SIZE(supported_led_ids);
 static int ac_in_blink_times;
+static int ticks;
 
 enum led_color {
 	LED_OFF = 0,
@@ -68,6 +69,39 @@ static void ac_in_blink(void)
 }
 DECLARE_HOOK(HOOK_AC_CHANGE, ac_in_blink, HOOK_PRIO_DEFAULT);
 
+static void suspend_led_update(void)
+{
+	int delay = 50 * MSEC;
+
+	if (ticks >= 100)
+		ticks = 0;
+
+	/* 1s gradual on, 1s gradual off, 3s off */
+
+	pwm_set_duty(PWM_CH_LED_RED, ticks <= 20 ? ticks*5 :
+				     ticks <= 40 ? (40-ticks)*5 : 0);
+
+	ticks++;
+
+	hook_call_deferred(suspend_led_update, delay);
+}
+DECLARE_DEFERRED(suspend_led_update);
+
+static void suspend_led_init(void)
+{
+	ticks = 0;
+
+	hook_call_deferred(suspend_led_update, 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, suspend_led_init, HOOK_PRIO_DEFAULT);
+
+static void suspend_led_deinit(void)
+{
+	hook_call_deferred(suspend_led_update, -1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, suspend_led_deinit, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, suspend_led_deinit, HOOK_PRIO_DEFAULT);
+
 /**
  * Called by hook task every 250 ms
  */
@@ -87,8 +121,8 @@ static void led_tick(void)
 
 	/* If suspended, breathe the led */
 	if (chipset_in_state(CHIPSET_STATE_SUSPEND)) {
-		set_color(LED_OFF);
-	/* TODO keep led off now, will to be done in next CL */
+
+		/* Kept no function, use defered function instead. */
 		return;
 	}
 

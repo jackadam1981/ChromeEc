@@ -627,6 +627,9 @@
 #undef CONFIG_PWM
 
 /*****************************************************************************/
+/* Support PWM control while EC DSleep */
+#undef CONFIG_PWM_DSLEEP
+
 /* Support PWM output to keyboard backlight */
 #undef CONFIG_PWM_KBLIGHT
 
