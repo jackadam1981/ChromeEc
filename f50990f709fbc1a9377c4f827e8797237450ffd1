@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f8b8d70_d0cb5c91",
+        "filename": "chip/mec1322/watchdog.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-02-17T08:05:51Z",
+      "side": 1,
+      "message": "The delay here needs to be extended to about 100ms for the stack to be dumped completely.",
+      "revId": "f50990f709fbc1a9377c4f827e8797237450ffd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
