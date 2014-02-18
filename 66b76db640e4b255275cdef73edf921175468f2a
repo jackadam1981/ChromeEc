@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "6f8b8d70_0a176f31",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-02-18T21:31:30Z",
+      "side": 1,
+      "message": "Yes, we would.  But we already make that assumption in update_battery_info().",
+      "parentUuid": "0fd6913f_01e2da83",
+      "revId": "66b76db640e4b255275cdef73edf921175468f2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f9e016b_909e6d50",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
