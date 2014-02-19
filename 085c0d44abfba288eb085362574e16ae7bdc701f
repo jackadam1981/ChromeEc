@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef7e9d24_ef0d5d05",
+        "filename": "board/glimmer/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-19T01:14:04Z",
+      "side": 1,
+      "message": "Alternate implementation that delays for 3 seconds when the LED is off....might save a little power.\n\nstatic void suspend_led_update(void)\n{\n        int delay \u003d 50 * MSEC;\n\n        ticks++;\n\n        /* 1s gradual on, 1s gradual off, 3s off */\n        if (ticks \u003c\u003d 20) {\n                pwm_set_duty(PWM_CH_LED_RED, ticks*5);\n        } else if (ticks \u003c\u003d 40) {\n                pwm_set_duty(PWM_CH_LED_RED, (40 - ticks)*5);\n        } else {\n                ticks \u003d 0;\n                delay \u003d 3000 * MSEC;\n        }\n\n        hook_call_deferred(suspend_led_update, delay);\n}",
+      "revId": "085c0d44abfba288eb085362574e16ae7bdc701f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "afdf457e_657f2036",
+        "filename": "board/glimmer/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-19T01:14:04Z",
+      "side": 1,
+      "message": "if you change this to \"ticks \u003d 20\" the LED will start by dimming. Currently the LED is on the turns off then gets brighter when entering S3.",
+      "revId": "085c0d44abfba288eb085362574e16ae7bdc701f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6f8b8d70_d7f02b4c",
+        "filename": "chip/lm4/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-19T01:14:04Z",
+      "side": 1,
+      "message": "Please don\u0027t indent pre-processor statements.",
+      "revId": "085c0d44abfba288eb085362574e16ae7bdc701f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef293d20_be8d561d",
+        "filename": "chip/lm4/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-19T01:14:04Z",
+      "side": 1,
+      "message": "Don\u0027t ident",
+      "revId": "085c0d44abfba288eb085362574e16ae7bdc701f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6f8b8d70_97f38354",
+        "filename": "chip/lm4/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-19T01:14:04Z",
+      "side": 1,
+      "message": "Don\u0027t indent",
+      "revId": "085c0d44abfba288eb085362574e16ae7bdc701f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6f8b8d70_97a14324",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-19T01:14:04Z",
+      "side": 1,
+      "message": "/* Support PWM control while in low-power idle */\n\n(we use the term \"low-power idle\" more often)",
+      "revId": "085c0d44abfba288eb085362574e16ae7bdc701f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
