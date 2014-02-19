@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cf26394f_ffd2eaf0",
+        "filename": "board/glimmer/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-02-19T01:32:31Z",
+      "side": 1,
+      "message": "Agree with Dave.",
+      "parentUuid": "ef7e9d24_ef0d5d05",
+      "revId": "085c0d44abfba288eb085362574e16ae7bdc701f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "afdf457e_657f2036",
         "filename": "board/glimmer/led.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2014-02-19T01:14:04Z",
       "side": 1,
       "message": "if you change this to \"ticks \u003d 20\" the LED will start by dimming. Currently the LED is on the turns off then gets brighter when entering S3.",
+      "revId": "085c0d44abfba288eb085362574e16ae7bdc701f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6f8b8d70_5a2d4271",
+        "filename": "board/glimmer/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-02-19T01:32:31Z",
+      "side": 1,
+      "message": "If you\u0027re gonna do that,\n\n#define TICKS_STEP1_BRIGHTER 0\n#define TICKS_STEP2_DIMMER 20\n#define TICKS_STEP3 OFF 40\n\nThen use those in suspend_led_update() and here.  That\u0027s less likely to break later than an arbitrary \"20\" here.",
+      "parentUuid": "afdf457e_657f2036",
       "revId": "085c0d44abfba288eb085362574e16ae7bdc701f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
