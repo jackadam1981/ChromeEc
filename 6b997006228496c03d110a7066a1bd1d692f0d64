@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ff0510e_c3d9ca9d",
+        "filename": "board/clapper/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-19T15:44:56Z",
+      "side": 1,
+      "message": "Please note: console.h and the includes below aren\u0027t needed without the battery cutoff code. However, I know you\u0027ll be adding this back shortly.",
+      "revId": "6b997006228496c03d110a7066a1bd1d692f0d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
