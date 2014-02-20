@@ -11,7 +11,18 @@
 #include "gpio.h"
 #include "host_command.h"
 #include "util.h"
+#include "hooks.h"
 
+/* Shutdown mode parameter to write to manufacturer access register */
+#define SB_SHUTDOWN_REG		0x34
+#define SB_SHUTDOWN_DATA	0x0010
+#define SB_SHUTDOWN_DATA1	0x0000
+#define SB_SHUTDOWN_DATA2	0x1000
+#define SB_WAKE_DATA1		0x2000
+#define SB_WAKE_DATA2		0x4000
+#define SB_SHIPMODE		0x0100
+
+static int dontwake;
 
 static const struct battery_info info = {
 	.voltage_max    = 12600,	/* mV */
@@ -30,3 +41,63 @@ const struct battery_info *battery_get_info(void)
 {
 	return &info;
 }
+
+static int cutoff(void)
+{
+	int rv, tmp;
+
+	/* Ship mode command must be sent twice to take effect */
+	rv = sb_write(SB_SHUTDOWN_REG, SB_SHUTDOWN_DATA1);
+	if (rv != EC_SUCCESS)
+		return rv;
+
+	rv = sb_write(SB_SHUTDOWN_REG, SB_SHUTDOWN_DATA2);
+	if (rv != EC_SUCCESS)
+		return rv;
+
+	sb_read(SB_SHUTDOWN_REG, &tmp);
+	if (tmp == SB_SHIPMODE) {
+		rv = EC_SUCCESS;
+		dontwake = 1;
+		ccprintf("Battery close\n", tmp);
+	} else
+		rv = EC_ERROR_UNKNOWN;
+
+	return rv;
+}
+
+/* Called by hook task every 250mSec */
+/* polling to make sure battery could be waked */
+static void battery_tick(void)
+{
+	int tmp;
+
+	if (gpio_get_level(GPIO_AC_PRESENT)) {
+		if (!dontwake) {
+			sb_read(SB_SHUTDOWN_REG, &tmp);
+			if (tmp == SB_SHIPMODE) {
+				sb_write(SB_SHUTDOWN_REG, SB_WAKE_DATA1);
+				sb_write(SB_SHUTDOWN_REG, SB_WAKE_DATA2);
+				ccprintf("Battery wake\n");
+			}
+		} else
+			board_discharge_on_ac(1);
+	}
+}
+DECLARE_HOOK(HOOK_TICK, battery_tick, HOOK_PRIO_DEFAULT);
+
+static int battery_command_cut_off(struct host_cmd_handler_args *args)
+{
+	return cutoff() ? EC_RES_SUCCESS : EC_RES_ERROR;
+}
+DECLARE_HOST_COMMAND(EC_CMD_BATTERY_CUT_OFF, battery_command_cut_off,
+		     EC_VER_MASK(0));
+
+static int command_battcutoff(int argc, char **argv)
+{
+	return cutoff();
+}
+DECLARE_CONSOLE_COMMAND(battcutoff, command_battcutoff,
+			NULL,
+			"Enable battery cutoff (ship mode)",
+			NULL);
