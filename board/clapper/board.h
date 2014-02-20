@@ -133,6 +133,8 @@ enum gpio_signal {
 	GPIO_WLAN_OFF_L,           /* Disable WiFi radio */
 	GPIO_PCH_SCI_L,            /* Assert SCI to PCH */
 	GPIO_KBD_IRQ_L,            /* Negative edge triggered irq. */
+	GPIO_POWER_LED_L,          /* POWER LED */
+
 
 	/* Number of GPIOs; not an actual GPIO */
 	GPIO_COUNT
@@ -168,8 +170,8 @@ enum adc_channel {
 
 /* TODO(crosbug.com/p/24371): Add support for charger + power LEDs */
 enum pwm_channel {
-	PWM_CH_LED_GREEN,
-	PWM_CH_LED_RED,
+	PWM_CH_LED_WHITE,
+	PWM_CH_LED_AMBER,
 
 	/* Number of PWM channels */
 	PWM_CH_COUNT
