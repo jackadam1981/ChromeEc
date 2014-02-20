@@ -124,7 +124,7 @@ enum power_state power_chipset_init(void)
 			gpio_set_level(GPIO_PCH_CORE_PWROK, 0);
 			gpio_set_level(GPIO_VCORE_EN, 0);
 			gpio_set_level(GPIO_SUSP_VR_EN, 0);
-			gpio_set_level(GPIO_PP1350_EN, 0);
+			/* gpio_set_level(GPIO_PP1350_EN, 0); */
 			gpio_set_level(GPIO_PP3300_DX_EN, 0);
 			gpio_set_level(GPIO_PP5000_EN, 0);
 			gpio_set_level(GPIO_PCH_RSMRST_L, 0);
@@ -350,7 +350,7 @@ enum power_state power_handle_state(enum power_state state)
 		gpio_set_level(GPIO_TOUCHSCREEN_RESET_L, 0);
 
 		/* Turn off power to RAM */
-		gpio_set_level(GPIO_PP1350_EN, 0);
+		/* gpio_set_level(GPIO_PP1350_EN, 0); */
 
 		/* Start shutting down */
 		return pause_in_s5 ? POWER_S5 : POWER_S5G3;
