@@ -118,6 +118,7 @@ const struct gpio_info gpio_list[] = {
 	{"WLAN_OFF_L",           LM4_GPIO_J, (1<<4), GPIO_OUT_LOW, NULL},
 	{"PCH_SCI_L",            LM4_GPIO_M, (1<<1), GPIO_ODR_HIGH, NULL},
 	{"KBD_IRQ_L",            LM4_GPIO_M, (1<<3), GPIO_ODR_HIGH, NULL},
+	{"POWER_LED_L",		 LM4_GPIO_M, (1<<6), GPIO_ODR_HIGH, NULL},
 };
 BUILD_ASSERT(ARRAY_SIZE(gpio_list) == GPIO_COUNT);
 
@@ -175,7 +176,7 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
 /* PWM channels. Must be in the exactly same order as in enum pwm_channel. */
 const struct pwm_t pwm_channels[] = {
-	{4, PWM_CONFIG_ACTIVE_LOW},
+	{2, PWM_CONFIG_ACTIVE_LOW},
 	{3, PWM_CONFIG_ACTIVE_LOW},
 };
 
