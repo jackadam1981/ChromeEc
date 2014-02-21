@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f75b176_a4858c88",
+        "filename": "board/clapper/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-21T03:46:26Z",
+      "side": 1,
+      "message": "The gpio.h include can be removed after removing the gpio_get_level() statement (see below).",
+      "revId": "27f398b27f09295d8497bdf951243c790905e124",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2f78b56e_25a41832",
+        "filename": "board/clapper/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-21T03:46:26Z",
+      "side": 1,
+      "message": "SB_SHUTDOWN_DATA isn\u0027t used. Please remove it.",
+      "revId": "27f398b27f09295d8497bdf951243c790905e124",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0f75b176_24cdfcf9",
+        "filename": "board/clapper/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-21T03:46:26Z",
+      "side": 1,
+      "message": "Please add a console macro at the top to print this to a specific channel:\n\n#define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)\n\nand change this to:\n\nCPRINTF(\"[%T Battery cut off]\\n\");\n\nThis is so the \u0027chan\u0027 command can filter the print statement correctly when triggered by the host command.",
+      "revId": "27f398b27f09295d8497bdf951243c790905e124",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6f5e2dff_872890ac",
+        "filename": "board/clapper/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-21T03:46:26Z",
+      "side": 1,
+      "message": "Please update this comment after changing the hook to HOOK_AC_CHANGE (see below).",
+      "revId": "27f398b27f09295d8497bdf951243c790905e124",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0f75b176_a49bcc1b",
+        "filename": "board/clapper/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-21T03:46:26Z",
+      "side": 1,
+      "message": "Please include extpower.h and use extpower_is_present() instead.",
+      "revId": "27f398b27f09295d8497bdf951243c790905e124",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2f78b56e_a584a8b3",
+        "filename": "board/clapper/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-21T03:46:26Z",
+      "side": 1,
+      "message": "CPRINTF(\"[%T Battery wake]\\n\");",
+      "revId": "27f398b27f09295d8497bdf951243c790905e124",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6f5e2dff_271fc4bd",
+        "filename": "board/clapper/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-21T03:46:26Z",
+      "side": 1,
+      "message": "Please use HOOK_AC_CHANGE instead. There is no need to call this every 250 mSec with HOOK_TICK.",
+      "revId": "27f398b27f09295d8497bdf951243c790905e124",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0f75b176_24909cf4",
+        "filename": "board/clapper/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-21T03:46:26Z",
+      "side": 1,
+      "message": "Please swap EC_RES_SUCCESS and EC_RES_ERROR. This was a bug that was fixed on other boards recently.",
+      "revId": "27f398b27f09295d8497bdf951243c790905e124",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
