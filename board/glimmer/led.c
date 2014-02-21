@@ -5,6 +5,9 @@
  * Battery LED control for Glimmer
  */
 
+/* test */
+
+
 #include "charge_state.h"
 #include "chipset.h"
 #include "extpower.h"
