@@ -62,8 +62,28 @@ static int tmp432_set_temp(const int offset, int temp)
 	return raw_write8(offset, (uint8_t)temp);
 }
 
+static int fake_temp(void)
+{
+	static int temp_fake = 293;
+	static int increasing;
+
+	if (increasing && temp_fake < 343)
+		temp_fake++;
+	else if (increasing && temp_fake == 343)
+		increasing = 0;
+	else if (!increasing && temp_fake > 293)
+		temp_fake--;
+	else if (!increasing && temp_fake == 293)
+		increasing = 1;
+
+	cprintf(CC_THERMAL, "[%T Setting fake temp to %dC]\n",
+		K_TO_C(temp_fake));
+	return temp_fake;
+}
+
 int tmp432_get_val(int idx, int *temp_ptr)
 {
+
 	if (!has_power())
 		return EC_ERROR_NOT_POWERED;
 
@@ -75,7 +95,8 @@ int tmp432_get_val(int idx, int *temp_ptr)
 		*temp_ptr = temp_val_remote1;
 		break;
 	case TMP432_IDX_REMOTE2:
-		*temp_ptr = temp_val_remote2;
+		/* *temp_ptr = temp_val_remote2; */
+		*temp_ptr = fake_temp();
 		break;
 	default:
 		return EC_ERROR_UNKNOWN;
