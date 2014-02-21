@@ -37,6 +37,22 @@
 #include "uart.h"
 #include "util.h"
 
+#ifdef CONFIG_FAN_RPM_CUSTOM
+struct fan_step {
+	int lv0;
+	int lv1;
+	int lv2;
+	int lv3;
+};
+
+static struct fan_step fan_table = {
+	.lv0 = 0,
+	.lv1 = 4000,
+	.lv2 = 4350,
+	.lv3 = 5150,
+};
+#endif  /* CONFIG_FAN_RPM_CUSTOM */
+
 /* GPIO signal list.  Must match order from enum gpio_signal. */
 const struct gpio_info gpio_list[] = {
 	/* Inputs with interrupt handlers are first for efficiency */
@@ -226,7 +242,7 @@ struct ec_thermal_config thermal_params[] = {
 	{{0, 0, 0}, 0, 0},
 	{{0, 0, 0}, 0, 0},
 	{{0, 0, 0}, 0, 0},
-	{{C_TO_K(80), C_TO_K(85), C_TO_K(88)}, C_TO_K(45), C_TO_K(70)},
+	{{C_TO_K(65), C_TO_K(67), C_TO_K(69)}, C_TO_K(20), C_TO_K(70)},
 	{{0, 0, 0}, 0, 0},
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
@@ -276,5 +292,28 @@ struct accel_orientation acc_orient = {
 	},
 	.hinge_axis = {1, 0, 0},
 };
-
 #endif /* HAS_TASK_MOTIONSENSE */
+
+#ifdef CONFIG_FAN_RPM_CUSTOM
+int fan_percent_to_rpm(int fan, int pct)
+{
+
+	if (pct < 30)
+		return fan_table.lv0;
+	else if (pct < 38)
+		return (fan_get_rpm_target(fans[fan].ch) >= fan_table.lv1) ?
+			fan_table.lv1 : fan_table.lv0;
+	else if (pct < 44)
+		return fan_get_rpm_target(fans[fan].ch);
+	else if (pct < 56)
+		return (fan_get_rpm_target(fans[fan].ch) > fan_table.lv0) ?
+			fan_get_rpm_target(fans[fan].ch) : fan_table.lv1;
+	else if (pct < 66)
+		return fan_table.lv2;
+	else if (pct < 86)
+		return (fan_get_rpm_target(fans[fan].ch) > fan_table.lv0) ?
+			fan_get_rpm_target(fans[fan].ch) : fan_table.lv2;
+	else
+		return fan_table.lv3;
+}
+#endif  /* CONFIG_FAN_RPM_CUSTOM */
