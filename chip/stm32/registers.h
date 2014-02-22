@@ -1073,6 +1073,10 @@ typedef volatile struct stm32_dma_regs stm32_dma_regs_t;
 #define STM32_CRC_BASE              0x40023000
 
 #define STM32_CRC_DR                REG32(STM32_CRC_BASE + 0x0)
+#define STM32_CRC_DR32              REG32(STM32_CRC_BASE + 0x0)
+#define STM32_CRC_DR16              REG16(STM32_CRC_BASE + 0x0)
+#define STM32_CRC_DR8               REG8(STM32_CRC_BASE + 0x0)
+
 #define STM32_CRC_IDR               REG32(STM32_CRC_BASE + 0x4)
 #define STM32_CRC_CR                REG32(STM32_CRC_BASE + 0x8)
 #define STM32_CRC_INIT              REG32(STM32_CRC_BASE + 0x10)
