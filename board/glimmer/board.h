@@ -208,6 +208,10 @@ enum accel_id {
 /* Discharge battery when on AC power for factory test. */
 int board_discharge_on_ac(int enable);
 
+/* DEBUG */
+void led_power_on(void);
+void led_power_off(void);
+
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __BOARD_H */

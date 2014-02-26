@@ -21,7 +21,6 @@
 const enum ec_led_id supported_led_ids[] = {EC_LED_ID_POWER_LED};
 const int supported_led_ids_count = ARRAY_SIZE(supported_led_ids);
 static int ac_in_blink_times;
-static int ticks;
 
 enum led_color {
 	LED_OFF = 0,
@@ -39,6 +38,16 @@ enum led_color {
 static void set_color(enum led_color color)
 {
 	pwm_set_duty(PWM_CH_LED_RED, color ? 100 : 0);
+}
+
+void led_power_on(void)
+{
+	set_color(LED_RED);
+}
+
+void led_power_off(void)
+{
+	set_color(LED_OFF);
 }
 
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
@@ -72,41 +81,6 @@ static void ac_in_blink(void)
 		ac_in_blink_times = 6;
 }
 DECLARE_HOOK(HOOK_AC_CHANGE, ac_in_blink, HOOK_PRIO_DEFAULT);
-
-static void suspend_led_update(void)
-{
-	int delay = 50 * MSEC;
-
-	ticks++;
-
-	/* 1s gradual on, 1s gradual off, 3s off */
-	if (ticks <= TICKS_STEP2_DIMMER) {
-		pwm_set_duty(PWM_CH_LED_RED, ticks*5);
-	} else if (ticks <= TICKS_STEP3_OFF) {
-		pwm_set_duty(PWM_CH_LED_RED, (TICKS_STEP3_OFF - ticks)*5);
-	} else {
-		ticks = TICKS_STEP1_BRIGHTER;
-		delay = 3000 * MSEC;
-	}
-
-	hook_call_deferred(suspend_led_update, delay);
-}
-DECLARE_DEFERRED(suspend_led_update);
-
-static void suspend_led_init(void)
-{
-	ticks = TICKS_STEP2_DIMMER;
-
-	hook_call_deferred(suspend_led_update, 0);
-}
-DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, suspend_led_init, HOOK_PRIO_DEFAULT);
-
-static void suspend_led_deinit(void)
-{
-	hook_call_deferred(suspend_led_update, -1);
-}
-DECLARE_HOOK(HOOK_CHIPSET_RESUME, suspend_led_deinit, HOOK_PRIO_DEFAULT);
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, suspend_led_deinit, HOOK_PRIO_DEFAULT);
 
 /**
  * Called by hook task every 250 ms

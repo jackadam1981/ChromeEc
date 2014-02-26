@@ -6,15 +6,24 @@
 /* Motion sense module to read from various motion sensors. */
 
 #include "accelerometer.h"
+#include "chipset.h"
 #include "common.h"
 #include "console.h"
+#include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "keyboard_scan.h"
 #include "math_util.h"
 #include "motion_sense.h"
 #include "timer.h"
 #include "task.h"
 #include "util.h"
+#include "led_common.h" /* HACK */
+
+#ifndef BOARD_GLIMMER
+void led_power_on(void) {};
+void led_power_off(void) {};
+#endif
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_MOTION_SENSE, outstr)
@@ -23,13 +32,16 @@
 /* Minimum time in between running motion sense task loop. */
 #define MIN_MOTION_SENSE_WAIT_TIME (1 * MSEC)
 
+#define ACCEL_INTERVAL_MEMORYMAPPED_MS 10
+#define ACCEL_INTERVAL_SUSPEND_MS      100
+
 /* Current acceleration vectors and current lid angle. */
 static vector_3_t acc_lid_raw, acc_lid, acc_base;
 static vector_3_t acc_lid_host, acc_base_host;
 static float lid_angle_deg;
 
 /* Sampling interval for measuring acceleration and calculating lid angle. */
-static int accel_interval_ms = 10;
+int accel_interval_ms;
 
 #ifdef CONFIG_CMD_LID_ANGLE
 static int accel_disp;
@@ -98,6 +110,20 @@ static float calculate_lid_angle(vector_3_t base, vector_3_t lid)
 		ang_lid_to_base = -ang_lid_to_base;
 
 	return ang_lid_to_base;
+}
+
+static int is_lid_angle_reliable(void)
+{
+	return 1;
+}
+
+static int enable_input_devices(float lid_angle_deg)
+{
+	/*
+	 * TODO: Add smoothing and hysteresis. 45 degrees is
+	 * convienient for testing
+	 */
+	return (lid_angle_deg > 45.0F && is_lid_angle_reliable());
 }
 
 int motion_get_lid_angle(void)
@@ -199,6 +225,28 @@ void motion_sense_task(void)
 				EC_MEMMAP_ACC_STATUS_SAMPLE_ID_MASK;
 		*lpc_status = EC_MEMMAP_ACC_STATUS_PRESENCE_BIT | sample_id;
 
+		if (chipset_in_state(CHIPSET_STATE_SUSPEND)) {
+			led_auto_control(EC_LED_ID_POWER_LED, 1); /* DEBUG */
+			if (enable_input_devices(lid_angle_deg)) {
+				if (!is_scanning_enabled()) {
+					CPRINTF("[%T Enabling keyboard scan]\n");
+					keyboard_scan_enable(1);
+				}
+				/* This is bad, system wakes when touchpad enabled */
+				/* gpio_set_level(GPIO_ENABLE_TOUCHPAD, 1); */
+				led_power_on(); /* DEBUG */
+
+			} else {
+				if (is_scanning_enabled()) {
+					CPRINTF("[%T Disabling keyboard scan]\n");
+					keyboard_scan_enable(0);
+				}
+				gpio_set_level(GPIO_ENABLE_TOUCHPAD, 0);
+				led_power_off(); /* DEBUG */
+			}
+		} else {
+			led_auto_control(EC_LED_ID_POWER_LED, 0); /* DEBUG */
+		}
 
 #ifdef CONFIG_CMD_LID_ANGLE
 		if (accel_disp) {
@@ -211,6 +259,9 @@ void motion_sense_task(void)
 #endif
 
 		/* Delay appropriately to keep sampling time consistent. */
+		accel_interval_ms = chipset_in_state(CHIPSET_STATE_SUSPEND) ?
+					ACCEL_INTERVAL_SUSPEND_MS :
+					ACCEL_INTERVAL_MEMORYMAPPED_MS;
 		ts1 = get_time();
 		wait_us = accel_interval_ms * MSEC - (ts1.val-ts0.val);
 
@@ -250,6 +301,7 @@ static int command_ctrl_print_lid_angle_calcs(int argc, char **argv)
 		if (*e)
 			return EC_ERROR_PARAM2;
 
+		/* TODO: This gets clobbered on suspend/resume */
 		accel_interval_ms = val;
 	}
 

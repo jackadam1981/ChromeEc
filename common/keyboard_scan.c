@@ -93,7 +93,7 @@ static int enable_scanning = 1;  /* Must init to 1 for scanning at boot */
 /* Constantly incrementing counter of the number of times we polled */
 static volatile int kbd_polls;
 
-static int is_scanning_enabled(void)
+int is_scanning_enabled(void)
 {
 #ifdef CONFIG_LID_SWITCH
 	/* Scanning is never enabled when lid is closed */

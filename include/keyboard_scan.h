@@ -11,6 +11,8 @@
 #include "common.h"
 #include "keyboard_config.h"
 
+int is_scanning_enabled(void);
+
 struct keyboard_scan_config {
 	/* Delay between setting up output and waiting for it to settle */
 	uint16_t output_settle_us;
