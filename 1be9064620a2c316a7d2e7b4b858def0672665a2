@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c29d585_ce10036b",
+        "filename": "board/glimmer/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-02-26T22:11:23Z",
+      "side": 1,
+      "message": "Note that DPTF is currently setting throttling to 55C and critical temp to 70C\n\nhttps://chromium.googlesource.com/chromiumos/third_party/coreboot/+/firmware-rambi-5216.B/src/mainboard/google/glimmer/acpi/dptf.asl",
+      "revId": "1be9064620a2c316a7d2e7b4b858def0672665a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
