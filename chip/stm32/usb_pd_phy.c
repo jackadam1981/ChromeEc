@@ -270,7 +270,7 @@ void pd_start_tx(void *ctxt, int bit_len)
 	dma_go(tx);
 }
 
-static void enable_rx_monitoring(void)
+void enable_rx_monitoring(void)
 {
 	/* clear EXTI22 */
 	STM32_EXTI_PR = 1 << 22;
