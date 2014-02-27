@@ -390,6 +390,7 @@ static void send_bist(void *ctxt)
 	CPRINTF("Done\n");
 	/* DEBUG */gpio_set_level(GPIO_LED_GREEN, 0);
 }
+extern void enable_rx_monitoring(void);
 
 static void handle_request(void *ctxt, uint16_t head, uint32_t *payload)
 {
@@ -441,6 +442,10 @@ static void handle_request(void *ctxt, uint16_t head, uint32_t *payload)
 	case PD_CTRL_SOFT_RESET:
 		CPRINTF("Unhandled message type %d\n", type);
 		break;
+	}
+	if (type == 1 && !cnt) { /* Got a good CRC */
+		inc_id();
+		enable_rx_monitoring();
 	}
 }
 
