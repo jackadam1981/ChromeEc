@@ -197,8 +197,15 @@ int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 
 	reg_sts = MEC1322_I2C_STATUS(port);
 	if (!started &&
-	    ((reg_sts & (STS_BER | STS_LAB)) || !(reg_sts & STS_NBB))) {
-		CPRINTF("[%T I2C%d bad status 0x%02x]\n", port, reg_sts);
+	    (((reg_sts & (STS_BER | STS_LAB)) || !(reg_sts & STS_NBB)) ||
+			    (i2c_get_line_levels(port) != I2C_LINE_IDLE))) {
+		CPRINTF("[%T I2C%d bad status 0x%02x, SCL=%d, SDA=%d]\n", port,
+			reg_sts,
+			i2c_get_line_levels(port) & I2C_LINE_SCL_HIGH,
+			i2c_get_line_levels(port) & I2C_LINE_SDA_HIGH);
+
+		/* Attempt to unwedge the port. */
+		i2c_unwedge(port);
 
 		/* Bus error, bus busy, or arbitration lost. Reset port. */
 		reset_port(port);
@@ -294,6 +301,58 @@ err_i2c_xfer:
 	/* Send STOP and return error */
 	MEC1322_I2C_CTRL(port) = CTRL_PIN | CTRL_ESO | CTRL_STO | CTRL_ACK;
 	return EC_ERROR_UNKNOWN;
+}
+
+int i2c_raw_get_scl(int port)
+{
+	enum gpio_signal g;
+	int ret = 1;
+
+	if (get_scl_from_i2c_port(port, &g) == EC_SUCCESS) {
+		/*
+		 * To read state of an I2C pin, first toggle into input mode,
+		 * then read, and toggle back to open drain high. This shouldn't
+		 * affect the state of the pin because the pins have external
+		 * pull-ups and we are curious to see if a slave is pulling it
+		 * low.
+		 *
+		 * Note: This only works when we are in raw mode, not alternate
+		 * function mode. Use i2c_get_line_levels() if in alternate
+		 * function mode and you want to read the state of the pins.
+		 */
+		gpio_set_flags(g, GPIO_INPUT);
+		ret = gpio_get_level(g);
+		gpio_set_flags(g, GPIO_ODR_HIGH);
+	}
+
+	/* If no SDA pin defined for this port, then return 1 to appear idle. */
+	return ret;
+}
+
+int i2c_raw_get_sda(int port)
+{
+	enum gpio_signal g;
+	int ret = 1;
+
+	if (get_sda_from_i2c_port(port, &g) == EC_SUCCESS) {
+		/*
+		 * To read state of an I2C pin, first toggle into input mode,
+		 * then read, and toggle back to open drain high. This shouldn't
+		 * affect the state of the pin because the pins have external
+		 * pull-ups and we are curious to see if a slave is pulling it
+		 * low.
+		 *
+		 * Note: This only works when we are in raw mode, not alternate
+		 * function mode. Use i2c_get_line_levels() if in alternate
+		 * function mode and you want to read the state of the pins.
+		 */
+		gpio_set_flags(g, GPIO_INPUT);
+		ret = gpio_get_level(g);
+		gpio_set_flags(g, GPIO_ODR_HIGH);
+	}
+
+	/* If no SDA pin defined for this port, then return 1 to appear idle. */
+	return ret;
 }
 
 int i2c_get_line_levels(int port)

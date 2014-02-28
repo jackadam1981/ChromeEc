@@ -161,12 +161,6 @@ int i2c_do_work(int port)
 	return 0;
 }
 
-int i2c_get_line_levels(int port)
-{
-	/* Conveniently, MBMON bit (1 << 1) is SDA and (1 << 0) is SCL. */
-	return LM4_I2C_MBMON(port) & 0x03;
-}
-
 int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 	     uint8_t *in, int in_size, int flags)
 {
@@ -189,10 +183,17 @@ int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 
 	/* Make sure we're in a good state to start */
 	if ((flags & I2C_XFER_START) &&
-	    (reg_mcs & (LM4_I2C_MCS_CLKTO | LM4_I2C_MCS_ARBLST))) {
+	    ((reg_mcs & (LM4_I2C_MCS_CLKTO | LM4_I2C_MCS_ARBLST)) ||
+			    (i2c_get_line_levels(port) != I2C_LINE_IDLE))) {
 		uint32_t tpr = LM4_I2C_MTPR(port);
 
-		CPRINTF("[%T I2C%d bad status 0x%02x]\n", port, reg_mcs);
+		CPRINTF("[%T I2C%d bad status 0x%02x, SCL=%d, SDA=%d]\n", port,
+				reg_mcs,
+				i2c_get_line_levels(port) & I2C_LINE_SCL_HIGH,
+				i2c_get_line_levels(port) & I2C_LINE_SDA_HIGH);
+
+		/* Attempt to unwedge the port. */
+		i2c_unwedge(port);
 
 		/* Clock timeout or arbitration lost.  Reset port to clear. */
 		LM4_SYSTEM_SRI2C |= (1 << port);
@@ -263,6 +264,64 @@ int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 	}
 
 	return pd->err;
+}
+
+int i2c_raw_get_scl(int port)
+{
+	enum gpio_signal g;
+	int ret = 1;
+
+	if (get_scl_from_i2c_port(port, &g) == EC_SUCCESS) {
+		/*
+		 * To read state of an I2C pin, first toggle into input mode,
+		 * then read, and toggle back to open drain high. This shouldn't
+		 * affect the state of the pin because the pins have external
+		 * pull-ups and we are curious to see if a slave is pulling it
+		 * low.
+		 *
+		 * Note: This only works when we are in raw mode, not alternate
+		 * function mode. Use i2c_get_line_levels() if in alternate
+		 * function mode and you want to read the state of the pins.
+		 */
+		gpio_set_flags(g, GPIO_INPUT);
+		ret = gpio_get_level(g);
+		gpio_set_flags(g, GPIO_ODR_HIGH);
+	}
+
+	/* If no SDA pin defined for this port, then return 1 to appear idle. */
+	return ret;
+}
+
+int i2c_raw_get_sda(int port)
+{
+	enum gpio_signal g;
+	int ret = 1;
+
+	if (get_sda_from_i2c_port(port, &g) == EC_SUCCESS) {
+		/*
+		 * To read state of an I2C pin, first toggle into input mode,
+		 * then read, and toggle back to open drain high. This shouldn't
+		 * affect the state of the pin because the pins have external
+		 * pull-ups and we are curious to see if a slave is pulling it
+		 * low.
+		 *
+		 * Note: This only works when we are in raw mode, not alternate
+		 * function mode. Use i2c_get_line_levels() if in alternate
+		 * function mode and you want to read the state of the pins.
+		 */
+		gpio_set_flags(g, GPIO_INPUT);
+		ret = gpio_get_level(g);
+		gpio_set_flags(g, GPIO_ODR_HIGH);
+	}
+
+	/* If no SDA pin defined for this port, then return 1 to appear idle. */
+	return ret;
+}
+
+int i2c_get_line_levels(int port)
+{
+	/* Conveniently, MBMON bit (1 << 1) is SDA and (1 << 0) is SCL. */
+	return LM4_I2C_MBMON(port) & 0x03;
 }
 
 int i2c_read_string(int port, int slave_addr, int offset, uint8_t *data,
