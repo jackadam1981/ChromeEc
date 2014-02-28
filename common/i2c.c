@@ -8,11 +8,19 @@
 #include "clock.h"
 #include "console.h"
 #include "host_command.h"
+#include "gpio.h"
 #include "i2c.h"
 #include "system.h"
 #include "task.h"
 #include "util.h"
 #include "watchdog.h"
+
+/* Delay for bitbanging i2c corresponds roughly to 100kHz. */
+#define I2C_BITBANG_DELAY_US	5
+
+/* Number of attempts to unwedge each pin. */
+#define UNWEDGE_SCL_ATTEMPTS  10
+#define UNWEDGE_SDA_ATTEMPTS  3
 
 #define CPUTS(outstr) cputs(CC_I2C, outstr)
 #define CPRINTF(format, args...) cprintf(CC_I2C, format, ## args)
@@ -109,6 +117,126 @@ int i2c_write8(int port, int slave_addr, int offset, int data)
 	i2c_lock(port, 0);
 
 	return rv;
+}
+
+/*
+ * Unwedge the i2c bus for the given port.
+ *
+ * Some devices on our i2c busses keep power even if we get a reset.  That
+ * means that they could be part way through a transaction and could be
+ * driving the bus in a way that makes it hard for us to talk on the bus.
+ * ...or they might listen to the next transaction and interpret it in a
+ * weird way.
+ *
+ * Note that devices could be in one of several states:
+ * - If a device got interrupted in a write transaction it will be watching
+ *   for additional data to finish its write.  It will probably be looking to
+ *   ack the data (drive the data line low) after it gets everything.
+ * - If a device got interrupted while responding to a register read, it will
+ *   be watching for clocks and will drive data out when it sees clocks.  At
+ *   the moment it might be trying to send out a 1 (so both clock and data
+ *   may be high) or it might be trying to send out a 0 (so it's driving data
+ *   low).
+ *
+ * We attempt to unwedge the bus by doing:
+ * - If SCL is being held low, then a slave is clock extending. The only
+ *   thing we can do is try to wait until the slave stops clock extending.
+ * - Otherwise, we will toggle the clock until the slave releases the SDA line.
+ *   Once the SDA line is released, try to send a STOP bit. Rinse and repeat
+ *   until either the bus is normal, or we run out of attempts.
+ *
+ * Note this should work for most devices, but depending on the slaves i2c
+ * state machine, it may not be possible to unwedge the bus.
+ */
+int i2c_unwedge(enum gpio_signal sda, enum gpio_signal scl, int toggle_modes)
+{
+	int i, j;
+
+	/* Set both pins to inputs for now. */
+	gpio_set_flags(scl, GPIO_INPUT);
+	gpio_set_flags(sda, GPIO_INPUT);
+
+	/* Take I2C pins out of alternate function mode if necessary. */
+	if (toggle_modes) {
+		gpio_set_alternate_function(gpio_list[sda].port,
+						gpio_list[sda].mask, -1);
+		gpio_set_alternate_function(gpio_list[scl].port,
+						gpio_list[scl].mask, -1);
+	}
+
+	/*
+	 * If clock is low, wait for a while in case of clock stretched
+	 * by a slave.
+	 */
+	if (!gpio_get_level(scl)) {
+		for (i = 0; i < UNWEDGE_SCL_ATTEMPTS; i++) {
+			udelay(I2C_BITBANG_DELAY_US);
+			if (gpio_get_level(scl))
+				break;
+		}
+
+		/*
+		 * If we get here, a slave is holding the clock low and there
+		 * is nothing we can do.
+		 */
+		CPRINTF("[%T I2C unwedge failed, SCL is being held low.]\n");
+		return EC_ERROR_UNKNOWN;
+	}
+
+	/* Keep trying to unwedge the SDA line until we run out of attempts. */
+	for (i = 0; i < UNWEDGE_SDA_ATTEMPTS; i++) {
+		/* Drive the clock high. */
+		gpio_set_flags(scl, GPIO_ODR_HIGH);
+		gpio_set_level(scl, 1);
+		udelay(I2C_BITBANG_DELAY_US);
+
+		/*
+		 * Clock through the problem by clocking out 9 bits. If slave
+		 * releases the SDA line, then we can stop clocking bits and
+		 * send a STOP.
+		 */
+		for (j = 0; j < 9; j++) {
+			if (gpio_get_level(sda))
+				break;
+
+			gpio_set_level(scl, 0);
+			udelay(I2C_BITBANG_DELAY_US);
+			gpio_set_level(scl, 1);
+			udelay(I2C_BITBANG_DELAY_US);
+		}
+
+		/* Take control of SDA line and issue a STOP command. */
+		gpio_set_flags(sda, GPIO_ODR_HIGH);
+		gpio_set_level(sda, 0);
+		udelay(I2C_BITBANG_DELAY_US);
+		gpio_set_level(sda, 1);
+		udelay(I2C_BITBANG_DELAY_US);
+
+		/* Check if the bus is unwedged. */
+		gpio_set_flags(scl, GPIO_INPUT);
+		gpio_set_flags(sda, GPIO_INPUT);
+		if (gpio_get_level(sda) && gpio_get_level(scl))
+			break;
+	}
+
+	if (!gpio_get_level(sda)) {
+		CPRINTF("[%T I2C unwedge failed, SDA still low]\n");
+		return EC_ERROR_UNKNOWN;
+	}
+	if (!gpio_get_level(scl)) {
+		CPRINTF("[%T I2C unwedge failed, SCL still low]\n");
+		return EC_ERROR_UNKNOWN;
+	}
+
+	/* Restore pins back to open drain outputs. */
+	gpio_set_flags(scl, GPIO_ODR_HIGH);
+	gpio_set_flags(sda, GPIO_ODR_HIGH);
+
+	/* Toggle I2C pins back to I2C alternate function if necessary. */
+	if (toggle_modes)
+		gpio_config_module(MODULE_I2C, 1);
+
+	return EC_SUCCESS;
 }
 
 /*****************************************************************************/

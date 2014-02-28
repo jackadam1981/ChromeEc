@@ -80,6 +80,18 @@ int i2c_read8(int port, int slave_addr, int offset, int *data);
  * the specified 8-bit <offset> in the slave's address space. */
 int i2c_write8(int port, int slave_addr, int offset, int data);
 
+/**
+ * Attempt to unwedge an I2C bus.
+ *
+ * @param sda GPIO pin for the data I/O point.
+ * @param scl GPIO pin for the clock I/O point.
+ * @param toggle_modes flag to toggle the pins in and out of alternate function
+ *        mode.
+ *
+ * @return EC_SUCCESS or EC_ERROR_UNKNOWN
+ */
+int i2c_unwedge(enum gpio_signal sda, enum gpio_signal scl, int toggle_modes);
+
 /* Read ascii string using smbus read block protocol.
  * Read bytestream from <slaveaddr>:<offset> with format:
  *     [length_N] [byte_0] [byte_1] ... [byte_N-1]

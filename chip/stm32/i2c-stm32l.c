@@ -144,39 +144,16 @@ static void i2c_set_freq_port(const struct i2c_port_t *p)
 	STM32_I2C_CR1(port) |= STM32_I2C_CR1_PE;
 }
 
-/*
- * Try to pull up SCL. If clock is stretched, we will wait for a few cycles
- * for the slave to get ready.
+/**
+ * Initialize on the specified I2C port.
  *
- * @param scl		the SCL gpio pin
- * @return 0 when success; -1 if SCL is still low
- */
-static int try_pull_up_scl(enum gpio_signal scl)
-{
-	int i;
-	for (i = 0; i < 3; ++i) {
-		gpio_set_level(scl, 1);
-		if (gpio_get_level(scl))
-			return 0;
-		udelay(I2C_BITBANG_HALF_CYCLE_US);
-	}
-	CPRINTF("[%T I2C clock stretched too long?]\n");
-	return -1;
-}
-
-/*
- * Try to unwedge the bus.
- *
- * The implementation is based on unwedge_i2c_bus() in i2c-stm32f.c.
- * Or refer to https://chromium-review.googlesource.com/#/c/32168 for details.
- *
- * @param port		I2C port
+ * @param p		the I2c port
  * @param force_unwedge	perform unwedge without checking if wedged
  */
-static void i2c_try_unwedge(int port, int force_unwedge)
+static void i2c_init_port(const struct i2c_port_t *p, int force_unwedge)
 {
+	int port = p->port;
 	enum gpio_signal scl, sda;
-	int i;
 
 	/*
 	 * TODO(crosbug.com/p/23802): This requires defining GPIOs for both
@@ -191,65 +168,21 @@ static void i2c_try_unwedge(int port, int force_unwedge)
 	}
 
 	if (!force_unwedge) {
-		if (gpio_get_level(scl) && gpio_get_level(sda))
-			/* Everything seems ok; no need to unwedge */
-			return;
-		CPRINTF("[%T I2C wedge detected; fixing]\n");
-	}
-
-	gpio_set_flags(scl, GPIO_ODR_HIGH);
-	gpio_set_flags(sda, GPIO_ODR_HIGH);
-
-	if (!gpio_get_level(scl)) {
 		/*
-		 * Clock is low, wait for a while in case of clock stretched
-		 * by a slave.
+		 * Check if either line is being held low, in which case it is
+		 * wedged and we need to try to fix it.
 		 */
-		if (try_pull_up_scl(scl))
-			return;
+		if (!gpio_get_level(scl) || !gpio_get_level(sda)) {
+			CPRINTF("[%T I2C wedge detected; fixing]\n");
+			i2c_unwedge(sda, scl, 0);
+		}
+	} else {
+		/*
+		 * Attempt to unwedge bus regardless of whether or not it is
+		 * currently wedged.
+		 */
+		i2c_unwedge(sda, scl, 0);
 	}
-
-	/*
-	 * SCL is high. No matter whether SDA is 0 or 1, we generate at most
-	 * 9 clocks with SDA released and then send a STOP. If a slave is in the
-	 * middle of writing, one of the cycles should be a NACK.
-	 * If it's in reading, then this should finish the transaction.
-	 */
-	udelay(I2C_BITBANG_HALF_CYCLE_US);
-	for (i = 0; i < 9; ++i) {
-		if (try_pull_up_scl(scl))
-			return;
-		udelay(I2C_BITBANG_HALF_CYCLE_US);
-		gpio_set_level(scl, 0);
-		udelay(I2C_BITBANG_HALF_CYCLE_US);
-		if (gpio_get_level(sda))
-			break;
-	}
-
-	/* Issue a STOP */
-	gpio_set_level(sda, 0);
-	udelay(I2C_BITBANG_HALF_CYCLE_US);
-	if (try_pull_up_scl(scl))
-		return;
-	udelay(I2C_BITBANG_HALF_CYCLE_US);
-	gpio_set_level(sda, 1);
-	if (gpio_get_level(sda) == 0)
-		CPRINTF("[%T sda is still low]\n");
-	udelay(I2C_BITBANG_HALF_CYCLE_US);
-}
-
-/**
- * Initialize on the specified I2C port.
- *
- * @param p		the I2c port
- * @param force_unwedge	perform unwedge without checking if wedged
- */
-static void i2c_init_port(const struct i2c_port_t *p, int force_unwedge)
-{
-	int port = p->port;
-
-	/* Unwedge the bus if it seems wedged */
-	i2c_try_unwedge(port, force_unwedge);
 
 	/* Enable clocks to I2C modules if necessary */
 	if (!(STM32_RCC_APB1ENR & (1 << (21 + port))))
