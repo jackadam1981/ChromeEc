@@ -16,6 +16,24 @@
       "revId": "8ce565a20bd711b7b423d5bc26a7a16d2bbdf146",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c5da930_618b5ac5",
+        "filename": "common/util.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-02-28T18:53:11Z",
+      "side": 1,
+      "message": "Ok, how about:\n\n  /* Force c to 8-bit range */\n  c \u0026\u003d 0xff;\n\n  cccc \u003d c | (c \u003c\u003c 8) | (c \u003c\u003c 16) | (c \u003c\u003c 24);",
+      "parentUuid": "6fae2d95_1b67fffc",
+      "revId": "8ce565a20bd711b7b423d5bc26a7a16d2bbdf146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
