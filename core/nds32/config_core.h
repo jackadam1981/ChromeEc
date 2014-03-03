@@ -10,6 +10,8 @@
 #define BFD_ARCH nds32
 #define BFD_FORMAT "elf32-nds32le"
 
+/* Emulate the CLZ instruction since the CPU core has no support */
+#define CONFIG_SOFTWARE_CLZ
 
 /*
  * Force the compiler to use a proper relocation when accessing an external
