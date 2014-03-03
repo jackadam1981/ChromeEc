@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c920913_8530c601",
+        "filename": "common/build.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-03-03T16:33:01Z",
+      "side": 1,
+      "message": "Please add in alphabetical order, and add #undef to config.h as well (so that remains a canonical list of CONFIG_ options).",
+      "revId": "9879422d44175a4c4f4fea25eadeaf9e1d4eb478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c920913_e51e7277",
+        "filename": "common/i2c_wedge.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-03-03T16:33:01Z",
+      "side": 1,
+      "message": "Eew.  Ok for now.  I\u0027d talked with Alec about a new low-level I2C interface to support bit-banging more cleanly, but that should be done in a follow-up CL anyway.",
+      "revId": "9879422d44175a4c4f4fea25eadeaf9e1d4eb478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c920913_c5256ebe",
+        "filename": "common/i2c_wedge.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-03-03T16:33:01Z",
+      "side": 1,
+      "message": "0 --\u003e %d, I2C_PORT_HOST",
+      "revId": "9879422d44175a4c4f4fea25eadeaf9e1d4eb478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
