@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c66ed13_f877e6a4",
+        "filename": "chip/lm4/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-03-04T23:16:53Z",
+      "side": 1,
+      "message": "Tidier to put the comment and the effect together:\n\n/* If no SCL pin defined for this port, then return 1 to appear idle. */\nif (get_scl_from_i2c_port(port, \u0026g) !\u003d EC_SUCCESS)\n  return 1;\n\nThen you also don\u0027t need to initialize ret\u003d1 above.",
+      "revId": "09ed2e90d09e90b0766adaf949f4e0736a41e03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c66ed13_d8978276",
+        "filename": "chip/lm4/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-03-04T23:16:53Z",
+      "side": 1,
+      "message": "/* If we are driving the pin low, it must be low. */\nif (gpio_get_level(g) \u003d\u003d 0)\n   return 0;\n\n/* Otherwise, we need to toggle it to an input to read the true pin state */",
+      "revId": "09ed2e90d09e90b0766adaf949f4e0736a41e03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c7df19f_0116edd6",
+        "filename": "chip/lm4/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-03-04T23:16:53Z",
+      "side": 1,
+      "message": "SDA -\u003e SCL",
+      "revId": "09ed2e90d09e90b0766adaf949f4e0736a41e03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc76f9c4_52203580",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-03-04T23:16:53Z",
+      "side": 1,
+      "message": "Is this true for MEC1322?  Or can it read the true pin state even when the pin is an output like STM32?\n\n(other comments from LM4 apply here too)",
+      "revId": "09ed2e90d09e90b0766adaf949f4e0736a41e03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc76f9c4_f2d62116",
+        "filename": "common/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-03-04T23:16:53Z",
+      "side": 1,
+      "message": "Note that this will return *all* I2C ports to normal mode.  If two I2C ports are both in raw mode, whichever one finishes first will yank raw mode away from the other one.\n\n(Probaby ok just to comment this, with a TODO bug to support configuring I2C ports separately...)",
+      "revId": "09ed2e90d09e90b0766adaf949f4e0736a41e03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
