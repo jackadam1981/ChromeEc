@@ -70,6 +70,24 @@
     },
     {
       "key": {
+        "uuid": "dc76f9c4_15eaa718",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-03-05T00:10:43Z",
+      "side": 1,
+      "message": "I\u0027m not sure if reading the gpio directly will give us the true state of the pin, like the STM32, or if it will give us the data we are outputting, like the LM4. I tried to look it up in datasheet, but I couldn\u0027t find anything conclusive. I also can\u0027t test it for this board. But, regardless of which behavior it exhibits, this code will work, it\u0027s the more flexible, although more time-consuming, solution. I can add a TODO with a bug report to actually test this on the microchip.",
+      "parentUuid": "dc76f9c4_52203580",
+      "revId": "09ed2e90d09e90b0766adaf949f4e0736a41e03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dc76f9c4_f2d62116",
         "filename": "common/i2c.c",
         "patchSetId": 2
