@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bcd145e4_d8bc659d",
+        "filename": "chip/stm32/clock-stm32l.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-05T00:36:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc76f9c4_323579f0",
+      "revId": "14de4492c9bc102d3af8f111a6bf577e4fd68248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dc76f9c4_12115d6c",
         "filename": "chip/stm32/clock-stm32l.c",
         "patchSetId": 8
@@ -30,6 +48,24 @@
       "writtenOn": "2014-03-04T23:00:30Z",
       "side": 1,
       "message": "We should handle GPIO_SUSPEND_L in the power module.\n\nAt chipset startup (near where we set ap_on \u003d 1), gpio_set_flags() to add pull-up, then enable interrupt.\n\nAt chipset shutdown (where we set ap_on \u003d 0), disable interrupt, then remove pull-up.\n\nThis will save power whenever the chipset is shut down, even without hibernate.  And it will prevent interrupts from firing when the line is floating.",
+      "revId": "14de4492c9bc102d3af8f111a6bf577e4fd68248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9cd641da_b4f5ee64",
+        "filename": "chip/stm32/clock-stm32l.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-05T00:36:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc76f9c4_12115d6c",
       "revId": "14de4492c9bc102d3af8f111a6bf577e4fd68248",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
