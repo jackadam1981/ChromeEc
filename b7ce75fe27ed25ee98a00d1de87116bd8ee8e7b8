@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3cae3566_e6765e19",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-05T03:18:05Z",
+      "side": 1,
+      "message": "Please give more context in the CL description so that people no need to diff your code to understand what you have modified.\n\nI would recommend information like:\n\nRemove the power_led .c because blahblah ...\nAdd customized LED behavior in led.c.\nI implemented this behavior based on the XXX document (a pointer or URL so that people know what is expected behavior in the future).",
+      "revId": "b7ce75fe27ed25ee98a00d1de87116bd8ee8e7b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c7df19f_f225c1bd",
+        "filename": "board/nyan/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-05T03:18:05Z",
+      "side": 1,
+      "message": "these 2 lines seem unrelated. please send in another CL.",
+      "revId": "b7ce75fe27ed25ee98a00d1de87116bd8ee8e7b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3cae3566_0605baa5",
+        "filename": "board/nyan/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-05T03:18:05Z",
+      "side": 1,
+      "message": "console.h is not needed.",
+      "revId": "b7ce75fe27ed25ee98a00d1de87116bd8ee8e7b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3cae3566_a60ce6c6",
+        "filename": "board/nyan/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-05T03:18:05Z",
+      "side": 1,
+      "message": "I would recommend to use \u0027second\u0027, which is more meaningful than \u0027tick\u0027.",
+      "revId": "b7ce75fe27ed25ee98a00d1de87116bd8ee8e7b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c7df19f_32a7b9d1",
+        "filename": "board/nyan/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-05T03:18:05Z",
+      "side": 1,
+      "message": "Recommended comment:\n\n/*\n * Power LED behavior.\n *\n * AP is:\n *  OFF:  off\n *  ON: blue\n * SUSPEND: orange for 4 secs, then off for 4 secs.\n */",
+      "revId": "b7ce75fe27ed25ee98a00d1de87116bd8ee8e7b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc76f9c4_101635d7",
+        "filename": "board/nyan/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-05T03:18:05Z",
+      "side": 1,
+      "message": "Similar to above. Giving some rough description can make the code easier to read.",
+      "revId": "b7ce75fe27ed25ee98a00d1de87116bd8ee8e7b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c7df19f_9211ed3b",
+        "filename": "board/nyan/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-05T03:18:05Z",
+      "side": 1,
+      "message": "Move this line to the else case below.",
+      "revId": "b7ce75fe27ed25ee98a00d1de87116bd8ee8e7b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c7df19f_7220d180",
+        "filename": "board/nyan/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-05T03:18:05Z",
+      "side": 1,
+      "message": "led_second instead of led_tick.",
+      "revId": "b7ce75fe27ed25ee98a00d1de87116bd8ee8e7b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
