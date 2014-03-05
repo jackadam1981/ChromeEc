@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc76f9c4_c1155199",
+        "filename": "board/nyan/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-05T19:09:09Z",
+      "side": 1,
+      "message": "Use Suspend instead of Standby. If you want Standby, please use \"Standby(suspend\") so that people can match the code below.",
+      "revId": "59ec60fcdc2a15a1ebca322db9fab15abfbe4203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc76f9c4_01f58935",
+        "filename": "board/nyan/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-05T19:09:09Z",
+      "side": 1,
+      "message": "I think we don\u0027t support the hibernation mode. What is this? S4? And what does \"keep power on color\" mean?",
+      "revId": "59ec60fcdc2a15a1ebca322db9fab15abfbe4203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc76f9c4_a1b8555a",
+        "filename": "board/nyan/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-05T19:09:09Z",
+      "side": 1,
+      "message": "The code doesn\u0027t match your description above. The breeze mode is \"1 sec on and 3 secs off\". But your code is doing \"4 secs on and 4 secs off\". Have you test this before you upload?\n\nI think the correct code should be:\n\n  pwr_led_set_color((second \u0026 3) ? LED_OFF : LED_ORANGE);",
+      "revId": "59ec60fcdc2a15a1ebca322db9fab15abfbe4203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3cae3566_fa8fd1d2",
+        "filename": "board/nyan/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-05T19:09:09Z",
+      "side": 1,
+      "message": "please remove the whitespace. Thanks.",
+      "revId": "59ec60fcdc2a15a1ebca322db9fab15abfbe4203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3cae3566_1a8f4da9",
+        "filename": "board/nyan/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-05T19:09:09Z",
+      "side": 1,
+      "message": "More than 80 chars. Please split into 2 lines.",
+      "revId": "59ec60fcdc2a15a1ebca322db9fab15abfbe4203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3cae3566_da7f75be",
+        "filename": "board/nyan/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-05T19:09:09Z",
+      "side": 1,
+      "message": "I think the correct code should be:\n\n  pwr_led_set_color((second \u0026 1) ? LED_OFF : LED_ORANGE);",
+      "revId": "59ec60fcdc2a15a1ebca322db9fab15abfbe4203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c7df19f_e37651e7",
+        "filename": "board/nyan/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-05T19:09:09Z",
+      "side": 1,
+      "message": "I think the correct code should be:\n\n  pwr_led_set_color((second \u0026 3) ? LED_OFF : LED_ORANGE);",
+      "revId": "59ec60fcdc2a15a1ebca322db9fab15abfbe4203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c7df19f_c354753e",
+        "filename": "board/nyan/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-05T19:09:09Z",
+      "side": 1,
+      "message": "I think the correct code should be:\n\n  pwr_led_set_color((second \u0026 1) ? LED_OFF : LED_ORANGE);",
+      "revId": "59ec60fcdc2a15a1ebca322db9fab15abfbe4203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
