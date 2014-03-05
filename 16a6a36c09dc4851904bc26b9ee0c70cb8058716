@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c7df19f_12ef1d9b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-05T04:00:04Z",
+      "side": 1,
+      "message": "Add an empty line below. Add a dot at end of line.\n\nAlso, this description is not meaningful to me. Feel free to remove this line if it is not necessary.",
+      "revId": "16a6a36c09dc4851904bc26b9ee0c70cb8058716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c7df19f_b2ae6967",
+        "filename": "board/nyan/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-05T04:00:04Z",
+      "side": 1,
+      "message": "Style nit: please remove the tailing space. I assume the \"repo upload\" script should have given you this warning. You should pass it if it warms.",
+      "revId": "16a6a36c09dc4851904bc26b9ee0c70cb8058716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
