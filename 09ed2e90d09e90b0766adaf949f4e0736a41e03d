@@ -88,6 +88,24 @@
     },
     {
       "key": {
+        "uuid": "7c66ed13_33a7bfd1",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-03-05T00:19:50Z",
+      "side": 1,
+      "message": "SGTM on the TODO.  Thanks",
+      "parentUuid": "dc76f9c4_15eaa718",
+      "revId": "09ed2e90d09e90b0766adaf949f4e0736a41e03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dc76f9c4_f2d62116",
         "filename": "common/i2c.c",
         "patchSetId": 2
