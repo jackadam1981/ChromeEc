@@ -339,7 +339,7 @@ void x86_interrupt(enum gpio_signal signal)
 	 * PP3300_EC rail is going down with it. (http://crosbug.com/p/25833)
 	 */
 	if (signal == GPIO_PP5000_PGOOD && (gpio_get_level(signal) == 0) &&
-	    chipset_in_state(CHIPSET_STATE_ON)) {
+	    chipset_in_state(CHIPSET_STATE_ON | CHIPSET_STATE_SUSPEND)) {
 		usb_port_all_ports_off();
 		CPRINTF("[%T Disabled USB ports and triggering shutdown]\n");
 		chipset_force_shutdown();
