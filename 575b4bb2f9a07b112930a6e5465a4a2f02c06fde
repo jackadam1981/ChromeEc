@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fca73d88_8a452f34",
+        "filename": "core/cortex-m0/ec.lds.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-03-06T01:27:32Z",
+      "side": 1,
+      "message": "I wonder if we should put all the hooks, etc. in a common header file and #include it in each ec.lds.S.",
+      "revId": "575b4bb2f9a07b112930a6e5465a4a2f02c06fde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
