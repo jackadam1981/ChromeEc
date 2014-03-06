@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dca43989_f7d36823",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-06T09:09:14Z",
+      "side": 1,
+      "message": "Big: implement the power and battery LED behavior\n\nRemove power_led_task and add the big-specific LED logic.",
+      "revId": "c411275655ee3a6a8d2b44ca2d79207d17d0942e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fca73d88_99282798",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-06T09:09:14Z",
+      "side": 1,
+      "message": "Since you have the detailed behavior in code comment, you could remove here.",
+      "revId": "c411275655ee3a6a8d2b44ca2d79207d17d0942e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dca43989_b7cf306a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-06T09:09:14Z",
+      "side": 1,
+      "message": "BRANCH\u003dbig",
+      "revId": "c411275655ee3a6a8d2b44ca2d79207d17d0942e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c7df19f_6c1308e6",
+        "filename": "board/nyan/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-06T09:09:14Z",
+      "side": 1,
+      "message": "Sorry that I don\u0027t have schematic on hand. Could this leak circuit if the other side (slave) goes to high? Or the always-low could hang the i2c slave? Will GPIO_INPUT be better here?",
+      "revId": "c411275655ee3a6a8d2b44ca2d79207d17d0942e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fca73d88_9e2b2dab",
+        "filename": "board/nyan/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-06T09:09:14Z",
+      "side": 1,
+      "message": "The above 3 lines are quite confusing without proper indent. I would recommend as following:\n\n * Battery critical low (less than 3%) or abnormal battery\n *     situation: Blinking mode Orange (1 sec on, 1 sec off)",
+      "revId": "c411275655ee3a6a8d2b44ca2d79207d17d0942e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
