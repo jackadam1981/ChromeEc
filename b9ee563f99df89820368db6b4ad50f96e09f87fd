@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c398d00_43b3787e",
+        "filename": "board/big/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-06T23:26:39Z",
+      "side": 1,
+      "message": "2014. Thanks for correction.",
+      "revId": "b9ee563f99df89820368db6b4ad50f96e09f87fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c348108_35b82859",
+        "filename": "board/big/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-06T23:26:39Z",
+      "side": 1,
+      "message": "2014. Thanks for correction.",
+      "revId": "b9ee563f99df89820368db6b4ad50f96e09f87fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c398d00_c3cdc8fe",
+        "filename": "board/big/ec.tasklist",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-06T23:26:39Z",
+      "side": 1,
+      "message": "2014. Thanks for correction.",
+      "revId": "b9ee563f99df89820368db6b4ad50f96e09f87fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9cd641da_c5c31a24",
+        "filename": "board/big/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-06T23:26:39Z",
+      "side": 1,
+      "message": "2014. Thanks for correction.",
+      "revId": "b9ee563f99df89820368db6b4ad50f96e09f87fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c398d00_c392e8f9",
+        "filename": "board/big/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-06T23:26:39Z",
+      "side": 1,
+      "message": "Since this function cannot return error message and 2 LED have the same color, you could just do:\n\n        /* Ignoring led_id as both leds support the same colors */\n        brightness_range[EC_LED_COLOR_BLUE] \u003d 1;\n        brightness_range[EC_LED_COLOR_YELLOW] \u003d 1;",
+      "revId": "b9ee563f99df89820368db6b4ad50f96e09f87fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c348108_55084c88",
+        "filename": "board/big/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-06T23:26:39Z",
+      "side": 1,
+      "message": "return EC_ERROR_UNKNOWN;",
+      "revId": "b9ee563f99df89820368db6b4ad50f96e09f87fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c348108_d5157ccb",
+        "filename": "board/big/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-06T23:26:39Z",
+      "side": 1,
+      "message": "Suspend: Orange in breeze mode ( 1 sec on / 3 sec off)\n\n(Suspand is a typo)",
+      "revId": "b9ee563f99df89820368db6b4ad50f96e09f87fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dca43989_25ed45e3",
+        "filename": "board/big/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-06T23:26:39Z",
+      "side": 1,
+      "message": "Orange in breeze mode",
+      "revId": "b9ee563f99df89820368db6b4ad50f96e09f87fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c348108_5534cc5d",
+        "filename": "board/big/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-06T23:26:39Z",
+      "side": 1,
+      "message": "Orange in blink mode",
+      "revId": "b9ee563f99df89820368db6b4ad50f96e09f87fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9cd641da_a5c61635",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-06T23:26:39Z",
+      "side": 1,
+      "message": "You cannot enable here. All boards will be enabled then. Please define it in board/big/board.h. Add it in the \"Optional features\" section and sort with alphabet order.",
+      "revId": "b9ee563f99df89820368db6b4ad50f96e09f87fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
