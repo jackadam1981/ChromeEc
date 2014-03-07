@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c348108_8dd924c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-07T08:18:01Z",
+      "side": 1,
+      "message": "I assume you have tested with ectool command for LED auto control? If so, please list the steps you have tested and the expected result.",
+      "revId": "d7ef1545b8baea2bb49cb3598aa0343467f43bdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc4c9db4_e5c9ec96",
+        "filename": "board/big/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-07T08:18:01Z",
+      "side": 1,
+      "message": "Please add comment above so that we know led_id is intentional ignored.\n\n  /* Ignoring led_id as both leds support the same colors */",
+      "revId": "d7ef1545b8baea2bb49cb3598aa0343467f43bdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c348108_6ddae0b8",
+        "filename": "board/big/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-07T08:18:01Z",
+      "side": 1,
+      "message": "remove the unreached break.",
+      "revId": "d7ef1545b8baea2bb49cb3598aa0343467f43bdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc4c9db4_45b6e007",
+        "filename": "board/big/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-07T08:18:01Z",
+      "side": 1,
+      "message": "Sorry, my fault. You were right. \"Orange in blinking mode (1 sec on, 1 sec off)\". Remember to remove the colon.",
+      "revId": "d7ef1545b8baea2bb49cb3598aa0343467f43bdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
