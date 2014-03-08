@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3cf1d5a2_4ede1352",
+        "filename": "common/chipset_x86_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-03-08T02:13:00Z",
+      "side": 1,
+      "message": "In this condition, the EC is about to lose power if it doesn\u0027t react quickly enough. Wouldn\u0027t it be better to move this printf() to after chipset_force_shutdown(), to better improve our chance of reacting quickly enough?\n\nProbably doesn\u0027t make much of a difference either way, but you never know how close to the edge we are.",
+      "revId": "5d9a357570c623c4b8054d603509046590fb19f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
