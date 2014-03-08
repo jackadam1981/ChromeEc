@@ -16,6 +16,24 @@
       "revId": "5d9a357570c623c4b8054d603509046590fb19f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3cf1d5a2_0ea40b56",
+        "filename": "common/chipset_x86_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-03-08T03:34:59Z",
+      "side": 1,
+      "message": "That\u0027s a great question. It turns out that turning off the USB power is the significant action for preventing the VR from crashing. By turning off the USB power, the VR recovers and reasserts PGOOD after ~ 2mSec. If all I did was call chipset_force_shutdown() here, the VR would still crash and latch.",
+      "parentUuid": "3cf1d5a2_4ede1352",
+      "revId": "5d9a357570c623c4b8054d603509046590fb19f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
