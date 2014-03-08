@@ -16,6 +16,24 @@
       "revId": "e881c8c7fb476bcda011a306f122c3598c96e1da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc4c9db4_5c87d200",
+        "filename": "common/chipset_x86_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-03-08T00:35:24Z",
+      "side": 1,
+      "message": "Checking GPIO_PP5000_EN directly seems more straight forward. If we\u0027re doing this, I don\u0027t think we need to check the chipset state anymore.",
+      "parentUuid": "bc586570_34167032",
+      "revId": "e881c8c7fb476bcda011a306f122c3598c96e1da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
