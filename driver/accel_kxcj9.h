@@ -129,4 +129,26 @@ int accel_write_resolution(const enum accel_id id, const int res);
  */
 int accel_write_datarate(const enum accel_id id, const int rate);
 
+/**
+ * Interrupt function for lid accelerometer.
+ *
+ * @param signal GPIO signal that caused interrupt
+ */
+void accel_int_lid(enum gpio_signal signal);
+
+/**
+ * Interrupt function for base accelerometer.
+ *
+ * @param signal GPIO signal that caused interrupt
+ */
+void accel_int_base(enum gpio_signal signal);
+
+/**
+ * Setup a one-time accel interrupt.
+ *
+ * @param id Target accelerometer
+ * @param threshold Threshold for interrupt in units of counts.
+ */
+int accel_set_interrupt(const enum accel_id id, int threshold);
+
 #endif /* __CROS_EC_ACCEL_KXCJ9_H */
