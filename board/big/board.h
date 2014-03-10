@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -23,6 +23,7 @@
 #define CONFIG_PWM
 #define CONFIG_POWER_BUTTON
 #define CONFIG_VBOOT_HASH
+#define CONFIG_CHARGER_DISCHARGE_ON_AC
 
 #ifndef __ASSEMBLER__
 
@@ -115,6 +116,9 @@ enum pwm_channel {
 #define CONFIG_CHARGER_SENSE_RESISTOR_AC 20 /* Input sensor resistor, mOhm */
 #define CONFIG_CHARGER_INPUT_CURRENT 4032 /* mA, based on Link HW design */
 #define CONFIG_CHARGER_CURRENT_LIMIT 3000 /* PL102 inductor 3.0A(3.8A) */
+
+/* Discharge battery when on AC power for factory test. */
+int board_discharge_on_ac(int enable);
 
 #endif /* !__ASSEMBLER__ */
 
