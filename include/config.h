@@ -39,6 +39,9 @@
 /* Use to enable EC console functions for calibrating accelerometers. */
 #undef CONFIG_ACCEL_CALIBRATE
 
+/* Use to enable accelerometer interrupts. */
+#undef CONFIG_ACCEL_INTERRUPTS
+
 /* Specify type of accelerometers attached. */
 #undef CONFIG_ACCEL_KXCJ9
 
