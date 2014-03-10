@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c2ba1c2_fd284f98",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000764
+      },
+      "writtenOn": "2014-03-10T16:46:33Z",
+      "side": 1,
+      "message": "small nit - can you change this to something like:\nbig: Add ectool discharge command\nor Add ectool discharge command to Big",
+      "revId": "37d9d4df6e3d0e655eb524fde895d30dbeefe9c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2ba1c2_dd258bbe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000764
+      },
+      "writtenOn": "2014-03-10T16:46:33Z",
+      "side": 1,
+      "message": "can you confirm that ectool chargecontrol for each option still works (normal, idle, discharge) and verify the battery is discharging via ec console battery command? (see the tests used when https://gerrit.chromium.org/gerrit/60689 was added)",
+      "revId": "37d9d4df6e3d0e655eb524fde895d30dbeefe9c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
