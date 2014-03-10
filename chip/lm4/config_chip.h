@@ -23,7 +23,7 @@
 #define HOOK_TICK_INTERVAL (250 * MSEC)
 
 /* Maximum number of deferrable functions */
-#define DEFERRABLE_MAX_COUNT 8
+#define DEFERRABLE_MAX_COUNT 10
 
 /* Number of I2C ports */
 #define I2C_PORT_COUNT 6
