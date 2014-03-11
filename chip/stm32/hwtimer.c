@@ -157,8 +157,8 @@ static void __hw_clock_source_irq(void)
 	 */
 	process_timers(stat_tim_msb & 0x01);
 }
-DECLARE_IRQ(IRQ_MSB, __hw_clock_source_irq, 1);
-DECLARE_IRQ(IRQ_LSB, __hw_clock_source_irq, 1);
+DECLARE_IRQ(IRQ_MSB, __hw_clock_source_irq, 2);
+DECLARE_IRQ(IRQ_LSB, __hw_clock_source_irq, 2);
 
 void __hw_timer_enable_clock(int n, int enable)
 {
