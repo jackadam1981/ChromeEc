@@ -16,6 +16,24 @@
       "revId": "1a87efe3af4e2c53fff5f87f277e97370f16e1d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fce81dcd_3c6e668a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2014-03-11T23:46:21Z",
+      "side": 1,
+      "message": "It\u0027s a little unclear if it\u0027s the SPI driver\u0027s fault.  So far the best explanation for what I\u0027m seeing is that there is a 2ms delay in processing the SPI driver\u0027s GPIO interrupt.  It doesn\u0027t look to be anything that the SPI driver is doing that causes that...",
+      "parentUuid": "9cb9e1da_19d0ebe4",
+      "revId": "1a87efe3af4e2c53fff5f87f277e97370f16e1d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
