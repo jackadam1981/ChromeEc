@@ -16,6 +16,24 @@
       "revId": "1353a6735fad1da4cffe39485db792b2c0087199",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fce81dcd_d731db1a",
+        "filename": "common/charge_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-03-12T01:09:54Z",
+      "side": 1,
+      "message": "nevermind, they\u0027re not exactly the same.\n\ntask_ctx.curr.batt can still be true even if the battery is not responding and we are not connected to AC. Not sure why it\u0027s written like that, but that\u0027s how it behaves as far as I can see.",
+      "parentUuid": "fce81dcd_b7d9afc1",
+      "revId": "1353a6735fad1da4cffe39485db792b2c0087199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
