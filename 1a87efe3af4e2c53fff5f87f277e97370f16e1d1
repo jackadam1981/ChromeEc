@@ -34,6 +34,24 @@
       "revId": "1a87efe3af4e2c53fff5f87f277e97370f16e1d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2ba1c2_1171be1e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-03-12T00:11:16Z",
+      "side": 1,
+      "message": "\u003e It\u0027s a little unclear if it\u0027s the SPI driver\u0027s fault\n\nI don\u0027t know either, but when I open the SPI driver code and see a function polling (with a 8ms timeout) inside an interrupt handler (of a RTOS ...), I\u0027m not confident everything is done properly inside that driver (if the goal is correctness rather than demonstrating the vast superiority of the SPI throughput).\n\n\u003e I\u0027m seeing is that there is a 2ms delay in processing the SPI driver\u0027s GPIO interrupt\n\nthat\u0027s about 50 times the usual delay necessary to process the timers. So there is probably a larger bug than just the interrupt priority.",
+      "parentUuid": "fce81dcd_3c6e668a",
+      "revId": "1a87efe3af4e2c53fff5f87f277e97370f16e1d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
