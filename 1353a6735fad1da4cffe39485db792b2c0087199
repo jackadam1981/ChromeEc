@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fce81dcd_b7d9afc1",
+        "filename": "common/charge_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-03-12T01:02:42Z",
+      "side": 1,
+      "message": "how about just: \nreturn task_ctx.battery_responsive;\n\ni think it will give you the same thing, but cleaner.",
+      "revId": "1353a6735fad1da4cffe39485db792b2c0087199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
