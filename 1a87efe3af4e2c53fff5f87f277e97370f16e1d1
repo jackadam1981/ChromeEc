@@ -52,6 +52,24 @@
       "revId": "1a87efe3af4e2c53fff5f87f277e97370f16e1d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2ba1c2_b166f23c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2014-03-12T00:19:50Z",
+      "side": 1,
+      "message": "Yeah, I saw that 8ms timeout too and wondered about it.\n\n...but I\u0027ve added some timing code and it doesn\u0027t appear that the SPI interrupt handler itself is the root of the problem.  It runs quickly, at least in the places where I\u0027m seeing the failure.\n\nI agree that the timer processing code doesn\u0027t seem to be slow and we don\u0027t even seem to be getting \"interrupt storms\" of timers, which was my original theory when I posted this CL.  I\u0027m pretty baffled about why this seems to make things better.\n\n\nNote also that things seem pretty solid when I move the kernel from delaying 200us between transactions to delaying 4ms between transactions.  We could actually do that as a workaround though 4ms is pretty much an eternity.  I guess I need to figure out a theory that explains both...",
+      "parentUuid": "9c2ba1c2_1171be1e",
+      "revId": "1a87efe3af4e2c53fff5f87f277e97370f16e1d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
