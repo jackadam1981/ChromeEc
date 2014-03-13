@@ -16,6 +16,9 @@
 #define CONFIG_UART_CONSOLE 2
 
 /* Optional features */
+#define CONFIG_STM_HWTIMER32
+#define CONFIG_USB_POWER_DELIVERY
+#define CONFIG_ADC
 #undef CONFIG_WATCHDOG_HELP
 #undef CONFIG_LID_SWITCH
 #undef CONFIG_TASK_PROFILING
@@ -29,8 +32,9 @@
 #ifndef __ASSEMBLER__
 
 /* Timer selection */
-#define TIM_CLOCK_MSB  3
-#define TIM_CLOCK_LSB 15
+#define TIM_CLOCK32 2
+#define TIM_CLOCK_PD_TX 17
+#define TIM_CLOCK_PD_RX 1
 
 /* GPIO signal list */
 enum gpio_signal {

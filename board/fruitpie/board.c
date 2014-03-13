@@ -13,9 +13,7 @@
 #include "task.h"
 #include "util.h"
 
-void button_event(enum gpio_signal signal)
-{
-}
+void button_event(enum gpio_signal signal);
 
 void rohm_event(enum gpio_signal signal)
 {
@@ -104,9 +102,9 @@ DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
 /* Pins with alternate functions */
 const struct gpio_alt_func gpio_alt_funcs[] = {
+	{GPIO_B, 0x6000, 0, MODULE_USB_PD},/* SPI2: MISO(PB14) SCK(PB13) */
 	{GPIO_A, 0xC000, 1, MODULE_UART},     /* USART2: PA14/PA15 */
 	{GPIO_B, 0x0cc0, 1, MODULE_I2C},  /* I2C SLAVE:PB6/7 MASTER:PB10/11 */
-	{GPIO_B, 0x7000, 0, MODULE_USB_PD},/* SPI2: MISO(PB14) SCK(PB13) NSS(PB12) */
 };
 const int gpio_alt_funcs_count = ARRAY_SIZE(gpio_alt_funcs);
 
