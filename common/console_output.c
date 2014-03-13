@@ -53,6 +53,7 @@ static const char * const channel_names[] = {
 	"task",
 	"thermal",
 	"usbcharge",
+	"usbpd",
 	"vboot",
 	"hook",
 };
