@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3cc8f574_6a5e5f2b",
+        "filename": "chip/stm32/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-03-13T21:44:58Z",
+      "side": 1,
+      "message": "would it be more readable if written as:\n\n$(if $(CONFIG_STM_HWTIMER32),32,)",
+      "revId": "bfd27378bec64c59cde865e7bd51bbd10f137d94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3cc8f574_4a3d23a1",
+        "filename": "chip/stm32/hwtimer32.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-03-13T21:44:58Z",
+      "side": 1,
+      "message": "nit: update comment. there\u0027s no 16-bit MSB counter.",
+      "revId": "bfd27378bec64c59cde865e7bd51bbd10f137d94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1cc5f15c_d87111b1",
+        "filename": "chip/stm32/hwtimer32.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-03-13T21:44:58Z",
+      "side": 1,
+      "message": "nit: update comment.",
+      "revId": "bfd27378bec64c59cde865e7bd51bbd10f137d94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1cc5f15c_38d4c530",
+        "filename": "chip/stm32/hwtimer32.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-03-13T21:44:58Z",
+      "side": 1,
+      "message": "32-bit",
+      "revId": "bfd27378bec64c59cde865e7bd51bbd10f137d94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
