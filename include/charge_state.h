@@ -106,7 +106,9 @@ struct charge_state_context {
 	struct charge_state_data prev;
 	timestamp_t charge_state_updated_time;
 	uint32_t *memmap_batt_volt;
+	uint32_t *memmap_batt_volt_dsrd;
 	uint32_t *memmap_batt_rate;
+	uint32_t *memmap_batt_rate_dsrd;
 	uint32_t *memmap_batt_cap;
 	uint8_t *memmap_batt_flags;
 	/* Charger and battery pack info */

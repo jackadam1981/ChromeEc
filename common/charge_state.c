@@ -298,10 +298,12 @@ static int state_common(struct charge_state_context *ctx)
 		curr->error |= F_BATTERY_STATE_OF_CHARGE;
 
 	*ctx->memmap_batt_volt = batt->voltage;
+	*ctx->memmap_batt_volt_dsrd = batt->desired_voltage;
 
 	/* Memory mapped value: discharge rate */
 	*ctx->memmap_batt_rate = batt->current < 0 ?
 		-batt->current : batt->current;
+	*ctx->memmap_batt_rate_dsrd = batt->desired_current;
 
 	/* Fake state of charge if necessary */
 	if (fake_state_of_charge >= 0) {
@@ -909,8 +911,12 @@ static void charge_init(void)
 	/* Set up LPC direct memmap */
 	ctx->memmap_batt_volt =
 		(uint32_t *)host_get_memmap(EC_MEMMAP_BATT_VOLT);
+	ctx->memmap_batt_volt_dsrd =
+		(uint32_t *)host_get_memmap(EC_MEMMAP_BATT_VOLT_DSRD);
 	ctx->memmap_batt_rate =
 		(uint32_t *)host_get_memmap(EC_MEMMAP_BATT_RATE);
+	ctx->memmap_batt_rate_dsrd =
+		(uint32_t *)host_get_memmap(EC_MEMMAP_BATT_RATE_DSRD);
 	ctx->memmap_batt_cap =
 		(uint32_t *)host_get_memmap(EC_MEMMAP_BATT_CAP);
 	ctx->memmap_batt_flags = host_get_memmap(EC_MEMMAP_BATT_FLAG);

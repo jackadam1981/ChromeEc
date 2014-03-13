@@ -84,6 +84,8 @@
 #define EC_MEMMAP_ALS              0x80 /* ALS readings in lux (uint16_t) */
 #define EC_MEMMAP_ACC_STATUS       0x90 /* Accelerometer status */
 #define EC_MEMMAP_ACC_DATA         0x92 /* Accelerometer data 0x92 - 0xa5 */
+#define EC_MEMMAP_BATT_VOLT_DSRD   0xa8 /* Battery Desired Voltage */
+#define EC_MEMMAP_BATT_RATE_DSRD   0xac /* Battery Desired Rate */
 
 /* Define the format of the accelerometer mapped memory status byte. */
 #define EC_MEMMAP_ACC_STATUS_SAMPLE_ID_MASK  0x0f
