@@ -425,6 +425,10 @@ static enum charge_state state_idle(struct charge_state_context *ctx)
 	if (state_machine_force_idle)
 		return PWR_STATE_UNCHANGE;
 
+	/* If we are throttling charging current to 0, stay in IDLE. */
+	if (charger_closest_current(batt->desired_current) == 0)
+		return PWR_STATE_UNCHANGE;
+
 	if (!ctx->curr.ac)
 		return PWR_STATE_REINIT;
 
