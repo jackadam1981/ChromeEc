@@ -93,4 +93,13 @@ static inline void keyboard_scan_enable(int enable) { }
 void keyboard_suppress_noise(void);
 #endif
 
+#ifdef USE_LID_ANGLE_TO_DISABLE_KEY_SCAN_IN_SLEEP
+/**
+ * Update the keyboard scan module with most recent lid angle calculation.
+ *
+ * @lid_ang Lid angle.
+ */
+void keyboard_scan_update_lidangle(float lid_ang);
+#endif
+
 #endif  /* __CROS_EC_KEYBOARD_SCAN_H */
