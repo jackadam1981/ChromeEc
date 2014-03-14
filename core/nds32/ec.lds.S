@@ -22,7 +22,7 @@ MEMORY
 SECTIONS
 {
     .text : {
-        OUTDIR/core/CORE/init.o (.text.vecttable)
+        KEEP(OUTDIR/core/CORE/init.o (.text.vecttable))
         . = ALIGN(4);
         __version_struct_offset = .;
         KEEP(*(.rodata.ver))
@@ -31,9 +31,9 @@ SECTIONS
 #else
         . = ALIGN(4);
 #endif
-        OUTDIR/core/CORE/init.o (.text.vectirq)
-        OUTDIR/core/CORE/init.o (.text)
-        *(.text*)
+        KEEP(OUTDIR/core/CORE/init.o (.text.vectirq))
+        KEEP(OUTDIR/core/CORE/init.o (.text))
+        KEEP(*(.text*))
 #ifdef COMPILE_FOR_RAM
     } > IRAM
 #else
@@ -48,7 +48,7 @@ SECTIONS
 
         . = ALIGN(4);
         __irqhandler = .;
-        OUTDIR/core/CORE/init.o (.rodata.vecthandlers)
+        KEEP(OUTDIR/core/CORE/init.o (.rodata.vecthandlers))
 
         . = ALIGN(4);
         __cmds = .;
@@ -126,7 +126,7 @@ SECTIONS
         __deferred_funcs_end = .;
 
         . = ALIGN(4);
-        *(.rodata*)
+        KEEP(*(.rodata*))
 
 #if defined(SECTION_IS_RO) && defined(CONFIG_FLASH)
         . = ALIGN(64);

@@ -27,8 +27,12 @@ struct clock_gate_ctrl {
 void clock_init(void)
 {
 #if PLL_CLOCK == 48000000
-	/* Set PLL frequency to 48MHz. */
-	IT83XX_ECPM_PLLFREQR = 0x04;
+	/*
+	* Set PLL frequency to 48MHz.
+	* To change PLL frequency should use ROM function.
+	* The default PLL frequency setting is 48MHz
+	* IT83XX_ECPM_PLLFREQR = 0x04;
+	*/
 	freq = PLL_CLOCK;
 #else
 #error "Support only for PLL clock speed of 48MHz."
@@ -36,6 +40,9 @@ void clock_init(void)
 
 	/* Set EC Clock Frequency to PLL frequency. */
 	IT83XX_ECPM_SCDCR3 &= 0xf0;
+
+	/* The VCC power status is treated as power-on */
+	IT83XX_GCTRL_RSTS = (IT83XX_GCTRL_RSTS & 0x3F) + 0x40;
 
 	/* Turn off auto clock gating. */
 	IT83XX_ECPM_AUTOCG = 0x00;
