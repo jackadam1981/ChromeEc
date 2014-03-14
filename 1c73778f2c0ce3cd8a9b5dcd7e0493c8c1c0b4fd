@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fcb49dfd_a5b444fb",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-03-14T19:31:36Z",
+      "side": 1,
+      "message": "though I agree we cannot change the PLL that way, we usually avoid using obscure ROM function.\nIf I remember correct in that case setting properly the frequency is just a matter of calling \"standby wake_grant\" after configuring the dividers.",
+      "revId": "1c73778f2c0ce3cd8a9b5dcd7e0493c8c1c0b4fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fcb49dfd_a51fa443",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-03-14T19:31:36Z",
+      "side": 1,
+      "message": "What does that mean ?",
+      "revId": "1c73778f2c0ce3cd8a9b5dcd7e0493c8c1c0b4fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5cbf69de_6011886c",
+        "filename": "core/nds32/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-03-14T19:31:36Z",
+      "side": 1,
+      "message": "you should not need to add a KEEP to that line, what is the missing symbol ?",
+      "revId": "1c73778f2c0ce3cd8a9b5dcd7e0493c8c1c0b4fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fcb49dfd_8525c891",
+        "filename": "core/nds32/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-03-14T19:31:36Z",
+      "side": 1,
+      "message": "you should not need to add a KEEP to that line, what is the missing symbol ?",
+      "revId": "1c73778f2c0ce3cd8a9b5dcd7e0493c8c1c0b4fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
