@@ -80,6 +80,11 @@ const uint8_t *keyboard_scan_get_state(void);
  * Enables/disables keyboard matrix scan.
  */
 void keyboard_scan_enable(int enable);
+
+/**
+ * Returns if keyboard matrix scanning is enabled/disabled.
+ */
+int keyboard_scan_is_enabled(void);
 #else
 static inline void keyboard_scan_enable(int enable) { }
 #endif
