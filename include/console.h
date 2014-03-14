@@ -38,6 +38,7 @@ enum console_channel {
 	CC_I2C,
 	CC_KEYBOARD,
 	CC_KEYSCAN,
+	CC_LIDANGLE,
 	CC_LIGHTBAR,
 	CC_LPC,
 	CC_MOTION_SENSE,
