@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dcb1990e_758ee869",
+        "filename": "driver/accel_kxcj9.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-03-14T22:30:51Z",
+      "side": 1,
+      "message": "agree, will remove",
+      "parentUuid": "5cbf69de_6643e060",
+      "revId": "c5087d0ae2b717efebd6386e6fab79b59a885f79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dcb1990e_0a6c231f",
         "filename": "driver/accel_kxcj9.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "fcb49dfd_8bd71912",
+        "filename": "driver/accel_kxcj9.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-03-14T22:30:51Z",
+      "side": 1,
+      "message": "Yeah, this should be moved to the interrupt function. The idea was to disable the interrupt so it only fires once.",
+      "parentUuid": "dcb1990e_0a6c231f",
+      "revId": "c5087d0ae2b717efebd6386e6fab79b59a885f79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5cbf69de_c65d0c2e",
         "filename": "driver/accel_kxcj9.c",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2014-03-14T22:16:54Z",
       "side": 1,
       "message": "what are you ultimately going to do in that deferred function ?\n(since it is currently doing nothing)",
+      "revId": "c5087d0ae2b717efebd6386e6fab79b59a885f79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5cbf69de_26a168b9",
+        "filename": "driver/accel_kxcj9.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-03-14T22:30:51Z",
+      "side": 1,
+      "message": "For now, I was just testing the accelerometer interrupt functionality, but I\u0027m preparing for this to be used to implement the samus \u0027tap for battery\u0027 functionality. This interrupt will initiate a short burst of sampling the accelerometers at a high rate in order to determine if a tap has just occurred.\n\nI guess, I may not needed a deferred function, the interrupt function might just set a flag and wake up the motion_sense task to take care of the rest. I\u0027ll remove the deferred functions for now, and put them in later if I need them.",
+      "parentUuid": "5cbf69de_c65d0c2e",
       "revId": "c5087d0ae2b717efebd6386e6fab79b59a885f79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
