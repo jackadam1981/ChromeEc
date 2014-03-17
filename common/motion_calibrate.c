@@ -30,7 +30,7 @@
 static matrix_3x3_t standard_ref_calib = {
 	{ 1024,  0,  0},
 	{ 0, -1024,  0},
-	{ 0,  0, -1024}
+	{ 0,  0,  1024}
 };
 
 /*****************************************************************************/
@@ -217,6 +217,8 @@ static int calibrate_standard_frame(vector_3_t *v_x, vector_3_t *v_y,
 		m[0][j] = (*v_x)[j];
 		m[1][j] = (*v_y)[j];
 		m[2][j] = (*v_z)[j];
+
+		ccprintf("%d, %d, %d\n", (*v_x)[j], (*v_y)[j], (*v_z)[j]);
 	}
 
 	return solve_rotation_matrix(&m, &standard_ref_calib,
