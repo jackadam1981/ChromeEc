@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcdfd954_34a3d61c",
+        "filename": "chip/stm32/crc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-03-17T20:05:10Z",
+      "side": 1,
+      "message": "Why do these all need to be inline?  Performance?",
+      "revId": "86adf69226c719899147947a57fb98a35b048aba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc0ea5b3_aa608f1a",
+        "filename": "chip/stm32/crc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-03-17T20:05:10Z",
+      "side": 1,
+      "message": "Anyone who uses this will end up declaring their own copy of this (large) array.  Should go in a .C file.",
+      "revId": "86adf69226c719899147947a57fb98a35b048aba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
