@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcb1990e_895ef8ac",
+        "filename": "common/charge_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-03-17T20:02:15Z",
+      "side": 1,
+      "message": "Just look directly at batt-\u003edesired_current, since charger_closest_current() will be non-zero IFF that\u0027s non-zero.\n\nWho does the throttling?  The battery or the charge state machine?  It\u0027s unclear whether this is checking the right variable at the right time?",
+      "revId": "a9484c28e1d89d3ad616ade941b20a8133483b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
