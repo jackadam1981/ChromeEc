@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcf8b9d4_63fe4285",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000764
+      },
+      "writtenOn": "2014-03-19T20:38:14Z",
+      "side": 1,
+      "message": "probably this line is redundant",
+      "revId": "8de3901fd2b179bf615b76b9275885fb58a7ae01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc33057e_c29ac25c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000764
+      },
+      "writtenOn": "2014-03-19T20:38:14Z",
+      "side": 1,
+      "message": "please file a bug on this and reference it here",
+      "revId": "8de3901fd2b179bf615b76b9275885fb58a7ae01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fcfbbdcb_5311ce6b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000764
+      },
+      "writtenOn": "2014-03-19T20:38:14Z",
+      "side": 1,
+      "message": "please make sure your ebuild change lands first\n\nalso your test should also include flashing and verifying on a live system",
+      "revId": "8de3901fd2b179bf615b76b9275885fb58a7ae01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
