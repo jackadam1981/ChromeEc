@@ -19,6 +19,7 @@
 #undef CONFIG_WATCHDOG_HELP
 #undef CONFIG_LID_SWITCH
 #undef CONFIG_TASK_PROFILING
+#define CONFIG_ADC
 
 /*
  * Allow dangerous commands all the time, since we don't have a write protect
@@ -29,13 +30,23 @@
 #ifndef __ASSEMBLER__
 
 /* Timer selection */
-#define TIM_CLOCK_MSB  3
-#define TIM_CLOCK_LSB 15
+#define CONFIG_STM_HWTIMER32
+#define TIM_CLOCK32  2
 
 /* GPIO signal list */
 enum gpio_signal {
 	/* Inputs with interrupt handlers are first for efficiency */
 	GPIO_USER_BUTTON = 0,
+	/* */
+	GPIO_AIN1,
+	GPIO_AIN2,
+	GPIO_AIN3,
+	GPIO_AIN4,
+	GPIO_AIN5,
+	GPIO_AIN6,
+	GPIO_AIN7,
+	GPIO_AIN8,
+	GPIO_AIN9,
 	/* Outputs */
 	GPIO_LED_BLUE,
 	GPIO_LED_GREEN,
@@ -44,6 +55,22 @@ enum gpio_signal {
 	GPIO_WP_L,
 	/* Number of GPIOs; not an actual GPIO */
 	GPIO_COUNT
+};
+
+/* ADC signal */
+enum adc_channel {
+	ADC_CH_AIN0 = 0,
+	ADC_CH_AIN1,
+	ADC_CH_AIN2,
+	ADC_CH_AIN3,
+	ADC_CH_AIN4,
+	ADC_CH_AIN5,
+	ADC_CH_AIN6,
+	ADC_CH_AIN7,
+	ADC_CH_AIN8,
+	ADC_CH_AIN9,
+	/* Number of ADC channels */
+	ADC_CH_COUNT
 };
 
 #endif /* !__ASSEMBLER__ */
