@@ -540,6 +540,35 @@ static int command_i2c(int argc, char **argv)
 	char *e;
 	int rv = 0;
 
+	if (strcasecmp(argv[1], "DOUG") == 0) {
+		int repeat, delay, i;
+
+		repeat = strtoi(argv[2], &e, 0);
+		delay = strtoi(argv[3], &e, 0);
+
+		ccprintf("DOUG: repeat=%d, delay=%d\n", repeat, delay);
+		for (i = 0; i < repeat; i++) {
+			rv = i2c_write16(I2C_PORT_HOST, 0x16, 0x3, 0xe000);
+			if (rv) {
+				ccprintf("Fail 1 [%d]\n", rv);
+				return rv;
+			}
+			rv = i2c_write8(I2C_PORT_HOST, 0x90, 0, 0);
+			if (rv) {
+				ccprintf("Fail 2 [%d]\n", rv);
+				return rv;
+			}
+			rv = i2c_write16(I2C_PORT_HOST, 0x16, 0x3, 0x6000);
+			if (rv) {
+				ccprintf("Fail 3 [%d]\n", rv);
+				return rv;
+			}
+
+			usleep(delay);
+		}
+		return 0;
+	}
+
 	if (argc < 4) {
 		ccputs("Usage: i2c r/r16/w/w16 slave_addr offset [value]\n");
 		return EC_ERROR_UNKNOWN;
