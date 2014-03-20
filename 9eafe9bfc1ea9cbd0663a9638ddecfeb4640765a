@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c30f57d_0aa44b55",
+        "filename": "board/glimmer/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-03-20T16:52:28Z",
+      "side": 1,
+      "message": "Should be a CONFIG_ setting, documented in config.h (with the description below about needing to define LID_IN_RANGE_* macros)\n\nCONFIG_LID_ANGLE_DISABLE_KEY_SCAN?\n\nCONFIG_ACCEL_LID_ANGLE_DISABLE_KEY_SCAN?",
+      "revId": "9eafe9bfc1ea9cbd0663a9638ddecfeb4640765a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c30f57d_2affc716",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-03-20T16:52:28Z",
+      "side": 1,
+      "message": "Suggest putting this in a separate file, gated by the CONFIG_ option.  That way the keyboard scan task doesn\u0027t grow a new dependency on motion sensing.\n\nEither that, or put it in motion_sense.c\n\nWill need to change is_scanning_enabled() to a non-static keyboard_scan_is_enabled().",
+      "revId": "9eafe9bfc1ea9cbd0663a9638ddecfeb4640765a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
