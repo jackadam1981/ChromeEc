@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "dc4d1911_9578744f",
+        "filename": "driver/accel_kxcj9.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-03-20T17:56:17Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "9c21e133_3329889b",
+      "revId": "ccceba46de8e4f501ab8dfe01cbc29a4a64ece02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c21e133_13dec482",
         "filename": "driver/accel_kxcj9.c",
         "patchSetId": 3
@@ -71,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "dc4d1911_552c2c79",
+        "filename": "driver/accel_kxcj9.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-03-20T17:56:17Z",
+      "side": 1,
+      "message": "Yes, you are correct. I\u0027ll fix the comment.",
+      "parentUuid": "3c30f57d_8575ac9e",
+      "revId": "ccceba46de8e4f501ab8dfe01cbc29a4a64ece02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c30f57d_65c3b079",
         "filename": "driver/accel_kxcj9.c",
         "patchSetId": 3
@@ -88,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "9c21e133_53a19cb7",
+        "filename": "driver/accel_kxcj9.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-03-20T17:56:17Z",
+      "side": 1,
+      "message": "If it rounds down to 0, the trigger immediately fires. Which I think is appropriate, if you set a really small number for threshold, you should still get an interrupt, but it might just happen due to noise and no real movement.",
+      "parentUuid": "3c30f57d_65c3b079",
+      "revId": "ccceba46de8e4f501ab8dfe01cbc29a4a64ece02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dc4d1911_553d0cca",
         "filename": "driver/accel_kxcj9.c",
         "patchSetId": 3
@@ -99,6 +153,24 @@
       "writtenOn": "2014-03-20T17:25:03Z",
       "side": 1,
       "message": "Does clear need to be done before enable?",
+      "revId": "ccceba46de8e4f501ab8dfe01cbc29a4a64ece02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c30f57d_6593b0ff",
+        "filename": "driver/accel_kxcj9.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-03-20T17:56:17Z",
+      "side": 1,
+      "message": "Clearing the interrupt pending register needs to happen last. \n\nThe motion detect functionality is always enabled because the WUFE bit in KXCJ9_CTRL1 is set in the init() function. Setting the interrupt enable bit above enables the physical interrupt pin so that when motion is detected it toggles the pin that generates an interrupt on the EC. Clearing the interrupt pending register clears the motion detected latch, which essentially allows the motion detect functionality to trigger.\n\nIf the latch register is cleared before the enable, then if motion is detected before the enable, no interrupt signal will be sent to EC.",
+      "parentUuid": "dc4d1911_553d0cca",
       "revId": "ccceba46de8e4f501ab8dfe01cbc29a4a64ece02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
