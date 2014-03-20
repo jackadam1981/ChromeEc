@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc4d1911_55266cca",
+        "filename": "driver/accel_kxcj9.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-03-20T17:25:03Z",
+      "side": 1,
+      "message": "More comment please.  What are units for threshold?\n\n /**\n  * Set up one-time accelerometer interrupt.\n  *\n  * @param id    Accelerometer index\n  * @param threshold   Threshold in counts.  Note that this is rounded down in the implementation, so requesting a small threshold may end up setting a zero threshold.\n  */",
+      "revId": "ccceba46de8e4f501ab8dfe01cbc29a4a64ece02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c21e133_13dec482",
+        "filename": "driver/accel_kxcj9.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-03-20T17:25:03Z",
+      "side": 1,
+      "message": "sensor_disable() (from previous CL)",
+      "revId": "ccceba46de8e4f501ab8dfe01cbc29a4a64ece02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c30f57d_8575ac9e",
+        "filename": "driver/accel_kxcj9.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-03-20T17:25:03Z",
+      "side": 1,
+      "message": "Confused.  Seems like setting wake threshold is done below, not here.",
+      "revId": "ccceba46de8e4f501ab8dfe01cbc29a4a64ece02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c30f57d_65c3b079",
+        "filename": "driver/accel_kxcj9.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-03-20T17:25:03Z",
+      "side": 1,
+      "message": "What happens if this rounds down to 0?  Does it trigger an interrupt immediately, or disable the threshold detect?",
+      "revId": "ccceba46de8e4f501ab8dfe01cbc29a4a64ece02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc4d1911_553d0cca",
+        "filename": "driver/accel_kxcj9.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-03-20T17:25:03Z",
+      "side": 1,
+      "message": "Does clear need to be done before enable?",
+      "revId": "ccceba46de8e4f501ab8dfe01cbc29a4a64ece02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
