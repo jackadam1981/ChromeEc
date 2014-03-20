@@ -25,7 +25,8 @@
 /* DMA channel options; assumes UART1 */
 static const struct dma_option dma_tx_option = {
 	STM32_DMAC_USART1_TX, (void *)&STM32_USART_TDR(UARTN),
-	STM32_DMA_CCR_MSIZE_8_BIT | STM32_DMA_CCR_PSIZE_8_BIT
+	STM32_DMA_CCR_MSIZE_8_BIT | STM32_DMA_CCR_PSIZE_8_BIT,
+	STM32_DMA_REQUEST_USART1_TX,
 };
 
 #else
@@ -37,7 +38,8 @@ static const struct dma_option dma_tx_option = {
 static const struct dma_option dma_rx_option = {
 	STM32_DMAC_USART1_RX, (void *)&STM32_USART_RDR(UARTN),
 	STM32_DMA_CCR_MSIZE_8_BIT | STM32_DMA_CCR_PSIZE_8_BIT |
-	STM32_DMA_CCR_CIRC
+	STM32_DMA_CCR_CIRC,
+	STM32_DMA_REQUEST_USART1_RX,
 };
 
 static int dma_rx_len;   /* Size of receive DMA circular buffer */
@@ -148,6 +150,8 @@ void uart_enable_interrupt(void)
 	task_enable_irq(STM32_IRQ_USART(UARTN));
 }
 
+void say_string(const char *string);
+
 /* Interrupt handler for console USART */
 void uart_interrupt(void)
 {
@@ -192,7 +196,8 @@ static void uart_freq_change(void)
 {
 	int div = DIV_ROUND_NEAREST(clock_get_freq(), CONFIG_UART_BAUD_RATE);
 
-#if defined(CHIP_FAMILY_STM32L) || defined(CHIP_FAMILY_STM32F0)
+#if defined(CHIP_FAMILY_STM32L) || defined(CHIP_FAMILY_STM32F0) || \
+    defined(CHIP_FAMILY_STM32L0)
 	if (div / 16 > 0) {
 		/*
 		 * CPU clock is high enough to support x16 oversampling.
@@ -212,7 +217,7 @@ static void uart_freq_change(void)
 	/* STM32F only supports x16 oversampling */
 	STM32_USART_BRR(UARTN) = div;
 #endif
-
+	uart_disable_interrupt();
 }
 DECLARE_HOOK(HOOK_FREQ_CHANGE, uart_freq_change, HOOK_PRIO_DEFAULT);
 
@@ -227,6 +232,14 @@ void uart_init(void)
 
 	/* Configure GPIOs */
 	gpio_config_module(MODULE_UART, 1);
+
+	/* Set initial baud rate */
+	uart_freq_change();
+
+#if defined(CHIP_FAMILY_STM32L) || defined(CHIP_FAMILY_STM32L0)
+	/* Use single-bit sampling */
+	STM32_USART_CR3(UARTN) |= STM32_USART_CR3_ONEBIT;
+#endif
 
 	/*
 	 * UART enabled, 8 Data bits, oversampling x16, no parity,
@@ -253,14 +266,6 @@ void uart_init(void)
 	/* Enable receive-not-empty interrupt */
 	STM32_USART_CR1(UARTN) |= STM32_USART_CR1_RXNEIE;
 #endif
-
-#ifdef CHIP_FAMILY_STM32L
-	/* Use single-bit sampling */
-	STM32_USART_CR3(UARTN) |= STM32_USART_CR3_ONEBIT;
-#endif
-
-	/* Set initial baud rate */
-	uart_freq_change();
 
 	/* Enable interrupts */
 	task_enable_irq(STM32_IRQ_USART(UARTN));

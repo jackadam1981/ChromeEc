@@ -15,6 +15,9 @@
 #include "uart.h"
 #include "util.h"
 
+#include "board.h"
+#include "gpio.h"
+
 typedef union {
 	struct {
 		/*
@@ -54,7 +57,7 @@ static uint64_t exc_end_time;    /* Time of exception->task transition */
 static uint64_t exc_total_time;  /* Total time in exceptions */
 static uint32_t svc_calls;       /* Number of service calls */
 static uint32_t task_switches;   /* Number of times active task changed */
-static uint32_t irq_dist[CONFIG_IRQ_COUNT];  /* Distribution of IRQ calls */
+/*static*/ uint32_t irq_dist[CONFIG_IRQ_COUNT];  /* Distribution of IRQ calls */
 #endif
 
 extern void __switchto(task_ *from, task_ *to);

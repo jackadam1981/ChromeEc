@@ -12,6 +12,8 @@
 #include "timer.h"
 #include "util.h"
 
+#include "panic.h"
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_DMA, outstr)
 #define CPRINTF(format, args...) cprintf(CC_DMA, format, ## args)
@@ -98,6 +100,11 @@ void dma_prepare_tx(const struct dma_option *option, unsigned count,
 	prepare_channel(chan, count, option->periph, (void *)memory,
 			STM32_DMA_CCR_MINC | STM32_DMA_CCR_DIR |
 			option->flags);
+#ifdef CHIP_FAMILY_STM32L0
+	STM32_DMA1_CSELR =
+		(STM32_DMA1_CSELR & ~(0xf << (option->channel * 4))) |
+		(option->request_num << (option->channel * 4));
+#endif
 }
 
 void dma_start_rx(const struct dma_option *option, unsigned count,
@@ -107,6 +114,11 @@ void dma_start_rx(const struct dma_option *option, unsigned count,
 
 	prepare_channel(chan, count, option->periph, memory,
 			STM32_DMA_CCR_MINC | option->flags);
+#ifdef CHIP_FAMILY_STM32L0
+	STM32_DMA1_CSELR =
+		(STM32_DMA1_CSELR & ~(0xf << (option->channel * 4))) |
+		(option->request_num << (option->channel * 4));
+#endif
 	dma_go(chan);
 }
 
@@ -241,7 +253,7 @@ void dma_clear_isr(enum dma_channel channel)
 	dma->ifcr |= STM32_DMA_ISR_ALL(channel);
 }
 
-#ifndef CHIP_FAMILY_STM32F0
+#if !defined(CHIP_FAMILY_STM32F0) && !defined(CHIP_FAMILY_STM32L0)
 void dma_event_interrupt_channel_4(void)
 {
 	dma_clear_isr(STM32_DMAC_CH4);
