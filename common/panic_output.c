@@ -18,6 +18,8 @@
 /* Panic data goes at the end of RAM. */
 static struct panic_data * const pdata_ptr = PANIC_DATA_PTR;
 
+void say_hi(char c);
+
 /**
  * Add a character directly to the UART buffer.
  *
@@ -29,6 +31,9 @@ static int panic_txchar(void *context, int c)
 {
 	if (c == '\n')
 		panic_txchar(context, '\r');
+
+	say_hi(c);
+	return 0;
 
 	/* Wait for space in transmit FIFO */
 	while (!uart_tx_ready())

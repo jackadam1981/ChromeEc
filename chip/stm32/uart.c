@@ -151,6 +151,10 @@ void uart_enable_interrupt(void)
 /* Interrupt handler for console USART */
 void uart_interrupt(void)
 {
+	static int last = 0;
+	last ^= 1;
+	gpio_set_level(GPIO_GREEN_LED, last);
+	gpio_set_level(GPIO_BLUE_LED, !last);
 #ifdef CONFIG_UART_TX_DMA
 	/* Disable transmission complete interrupt if DMA done */
 	if (STM32_USART_SR(UARTN) & STM32_USART_SR_TC)
@@ -192,7 +196,8 @@ static void uart_freq_change(void)
 {
 	int div = DIV_ROUND_NEAREST(clock_get_freq(), CONFIG_UART_BAUD_RATE);
 
-#if defined(CHIP_FAMILY_STM32L) || defined(CHIP_FAMILY_STM32F0)
+#if defined(CHIP_FAMILY_STM32L) || defined(CHIP_FAMILY_STM32F0) || \
+    defined(CHIP_FAMILY_STM32L0)
 	if (div / 16 > 0) {
 		/*
 		 * CPU clock is high enough to support x16 oversampling.
@@ -212,7 +217,7 @@ static void uart_freq_change(void)
 	/* STM32F only supports x16 oversampling */
 	STM32_USART_BRR(UARTN) = div;
 #endif
-
+	uart_disable_interrupt();
 }
 DECLARE_HOOK(HOOK_FREQ_CHANGE, uart_freq_change, HOOK_PRIO_DEFAULT);
 
@@ -227,6 +232,14 @@ void uart_init(void)
 
 	/* Configure GPIOs */
 	gpio_config_module(MODULE_UART, 1);
+
+	/* Set initial baud rate */
+	uart_freq_change();
+
+#if defined(CHIP_FAMILY_STM32L) || defined(CHIP_FAMILY_STM32L0)
+	/* Use single-bit sampling */
+	STM32_USART_CR3(UARTN) |= STM32_USART_CR3_ONEBIT;
+#endif
 
 	/*
 	 * UART enabled, 8 Data bits, oversampling x16, no parity,
@@ -254,14 +267,7 @@ void uart_init(void)
 	STM32_USART_CR1(UARTN) |= STM32_USART_CR1_RXNEIE;
 #endif
 
-#ifdef CHIP_FAMILY_STM32L
-	/* Use single-bit sampling */
-	STM32_USART_CR3(UARTN) |= STM32_USART_CR3_ONEBIT;
-#endif
-
-	/* Set initial baud rate */
-	uart_freq_change();
-
+	uart_write_char('h');
 	/* Enable interrupts */
 	task_enable_irq(STM32_IRQ_USART(UARTN));
 
