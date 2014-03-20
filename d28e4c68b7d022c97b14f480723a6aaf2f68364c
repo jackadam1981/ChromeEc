@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc4d1911_6aaaa79b",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-03-20T15:34:54Z",
+      "side": 1,
+      "message": "ACCEL_INTERVAL_S0_MS / ACCEL_INTERVAL_S3_MS?\n\nACCEL_INTERVAL_AP_ON / ACCEL_INTERVAL_AP_SUSPEND?\n\nI think the memory map still gets updated in S3, doesn\u0027t it?",
+      "revId": "d28e4c68b7d022c97b14f480723a6aaf2f68364c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
