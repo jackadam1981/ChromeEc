@@ -108,6 +108,8 @@ void report_panic(void)
 {
 	struct panic_data *pdata = pdata_ptr;
 	uint32_t sp;
+	extern uint32_t irq_dist[CONFIG_IRQ_COUNT];
+	int idx;
 
 	pdata->magic = PANIC_DATA_MAGIC;
 	pdata->struct_size = sizeof(*pdata);
@@ -131,6 +133,10 @@ void report_panic(void)
 	}
 
 	panic_data_print(pdata);
+	for (idx = 0; idx < ARRAY_SIZE(irq_dist); idx++) {
+		if (irq_dist[idx])
+			panic_printf("%4d %8d\n", idx, irq_dist[idx]);
+	}
 	panic_reboot();
 }
 

@@ -31,6 +31,41 @@
 #define CPUTS(outstr) cputs(CC_SYSTEM, outstr)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
 
+#if 0
+void say_hi(char c)
+{
+	int i;
+	int v = (((int)c) << 1) | (1 << 9);
+	for (i = 0; i < 10; ++i) {
+		gpio_set_level(GPIO_TX, (v & (1 << i)) ? 1 : 0);
+		udelay(100);
+	}
+}
+
+void say_hex_digit(int h)
+{
+	if (h < 10)
+		say_hi('0' + h);
+	else
+		say_hi('a' + h - 10);
+}
+
+void say_hex(uint32_t v)
+{
+	int i;
+	say_hi('0');
+	say_hi('x');
+	for (i = 0; i < 8; ++i)
+		say_hex_digit((v >> (28 - i * 4)) & 0xf);
+}
+
+void say_string(const char *s)
+{
+	while (*s)
+		say_hi(*s++);
+}
+#endif
+
 test_mockable int main(void)
 {
 	/*

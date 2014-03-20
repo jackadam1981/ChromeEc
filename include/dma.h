@@ -19,6 +19,7 @@ struct dma_option {
 	void *periph;		/* Pointer to peripheral data register */
 	unsigned flags;		/* DMA flags for the control register. Normally
 				   used to select memory size. */
+	unsigned request_num;
 };
 
 #define DMA_POLLING_INTERVAL_US	100	/* us */
