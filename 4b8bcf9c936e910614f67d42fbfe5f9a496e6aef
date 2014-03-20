@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c30f57d_6abdbf95",
+        "filename": "driver/accel_kxcj9.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-03-20T16:19:33Z",
+      "side": 1,
+      "message": "Seems like disable_sensor() and enable_sensor() would be worthwhile rather than duplicating this code in 3+ places.",
+      "revId": "4b8bcf9c936e910614f67d42fbfe5f9a496e6aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
