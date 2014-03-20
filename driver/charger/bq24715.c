@@ -176,8 +176,14 @@ int charger_post_init(void)
 	if (rv)
 		return rv;
 
+#ifdef CONFIG_CHARGER_BQ24715_FREQ_NO_LIMIT
+
+	option &= ~OPT_AUDIO_FREQ_LIMIT_MASK;
+#else
+
 	/* Don't be noisy */
 	option |= OPT_AUDIO_FREQ_40KHZ_LIMIT;
+#endif
 
 	/* Always monitor adapter current (40X multiplier). */
 	option |= OPT_FIX_IOUT_ALWAYS;

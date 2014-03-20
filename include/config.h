@@ -164,6 +164,9 @@
 #undef CONFIG_CHARGER_BQ24738
 #undef CONFIG_CHARGER_TPS65090  /* Note: does not use CONFIG_CHARGER */
 
+/* Charger specific parameter */
+#undef CONFIG_CHARGER_BQ24715_FREQ_NO_LIMIT
+
 /*
  * Board specific charging current limit, in mA.  If defined, the charge state
  * machine will not allow the battery to request more current than this.
