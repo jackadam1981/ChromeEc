@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9c21e133_3329889b",
+        "filename": "driver/accel_kxcj9.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-03-20T17:26:10Z",
+      "side": 1,
+      "message": "Ah, wait, this is documented in the header file.  So just remove the one-line comment here.",
+      "parentUuid": "dc4d1911_55266cca",
+      "revId": "ccceba46de8e4f501ab8dfe01cbc29a4a64ece02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c21e133_13dec482",
         "filename": "driver/accel_kxcj9.c",
         "patchSetId": 3
@@ -81,6 +99,23 @@
       "writtenOn": "2014-03-20T17:25:03Z",
       "side": 1,
       "message": "Does clear need to be done before enable?",
+      "revId": "ccceba46de8e4f501ab8dfe01cbc29a4a64ece02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c30f57d_e5102038",
+        "filename": "driver/accel_kxcj9.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-03-20T17:26:10Z",
+      "side": 1,
+      "message": "What happens if threshold is 0?  Or low enough it gets rounded down to 0 in the implementation?",
       "revId": "ccceba46de8e4f501ab8dfe01cbc29a4a64ece02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
