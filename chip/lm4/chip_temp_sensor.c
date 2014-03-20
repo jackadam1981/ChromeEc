@@ -9,6 +9,7 @@
 #include "adc_chip.h"
 #include "common.h"
 #include "hooks.h"
+#include "timer.h"
 
 /* Initialize temperature reading to a sane value (27 C) */
 static int last_val = C_TO_K(27);
