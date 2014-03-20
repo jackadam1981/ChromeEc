@@ -5,10 +5,12 @@
 
 #include "adc.h"
 #include "adc_chip.h"
+#include "clock.h"
 #include "common.h"
 #include "console.h"
 #include "dma.h"
 #include "hooks.h"
+#include "hwtimer.h"
 #include "registers.h"
 #include "task.h"
 #include "timer.h"
@@ -59,7 +61,7 @@ static void adc_configure(int ain_id)
 	STM32_ADC_CFGR1 &= ~0x1;
 }
 
-static void adc_continuous_read(int ain_id)
+/*static*/ void adc_continuous_read(int ain_id)
 {
 	adc_configure(ain_id);
 
@@ -69,7 +71,7 @@ static void adc_continuous_read(int ain_id)
 	STM32_ADC_CR |= 1 << 2 /* ADSTART */;
 }
 
-static void adc_continuous_stop(void)
+/*static*/ void adc_continuous_stop(void)
 {
 	STM32_ADC_CR |= 1 << 4; /* ADSTP */
 	while (STM32_ADC_CR & (1 << 4))
@@ -77,6 +79,45 @@ static void adc_continuous_stop(void)
 
 	/* CONT=0 */
 	STM32_ADC_CFGR1 &= ~(1 << 13);
+}
+
+static void adc_interval_read(int ain_id, int interval_ms)
+{
+	adc_configure(ain_id);
+	STM32_ADC_CFGR1 = (STM32_ADC_CFGR1 & ~0xc00) | (1 << 10);
+	STM32_ADC_CFGR1 = (STM32_ADC_CFGR1 & ~0x1c0) | (3 << 6);
+#define TIM_ADC 3
+	__hw_timer_enable_clock(TIM_ADC, 1);
+
+	/* Upcounter, counter disabled, update event only on underflow */
+	STM32_TIM_CR1(TIM_ADC) = 0x0004;
+	/* TRGO on update event */
+	STM32_TIM_CR2(TIM_ADC) = 0x0020;
+	STM32_TIM_SMCR(TIM_ADC) = 0x0000;
+
+	/* Auto-reload value */
+	STM32_TIM_ARR(TIM_ADC) = interval_ms & 0xffff;
+
+	STM32_TIM_PSC(TIM_ADC) = (clock_get_freq() / MSEC) - 1;
+
+	STM32_TIM_DIER(TIM_ADC) = 0x0001;
+
+	STM32_TIM_CR1(TIM_ADC) |= 1;
+	STM32_ADC_CR |= 1 << 2; /* ADSTART */
+
+	task_enable_irq(STM32_IRQ_TIM3);
+}
+
+void tim_adc_update(void)
+{
+	STM32_TIM_SR(TIM_ADC) = 0;
+	ccprintf("TIM ADC Update\n");
+}
+DECLARE_IRQ(STM32_IRQ_TIM3, tim_adc_update, 2);
+
+static void adc_interval_stop(void)
+{
+	STM32_TIM_CR1(TIM_ADC) &= ~0x1;
 }
 
 static int adc_watchdog_enabled(void)
@@ -97,7 +138,8 @@ static int adc_enable_watchdog_no_lock(void)
 	/* Enable interrupt */
 	STM32_ADC_IER |= 1 << 7;
 
-	adc_continuous_read(watchdog_ain_id);
+	adc_interval_read(watchdog_ain_id, 1000);
+	/*adc_continuous_read(watchdog_ain_id);*/
 
 	return EC_SUCCESS;
 }
@@ -120,7 +162,8 @@ int adc_enable_watchdog(int ain_id, int high, int low)
 
 static int adc_disable_watchdog_no_lock(void)
 {
-	adc_continuous_stop();
+	adc_interval_stop();
+	/*adc_continuous_stop();*/
 
 	/* Clear Watchdog enable bit */
 	STM32_ADC_CFGR1 &= ~(1 << 23);
