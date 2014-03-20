@@ -33,6 +33,24 @@
       "revId": "9eafe9bfc1ea9cbd0663a9638ddecfeb4640765a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc4d1911_ea6b1708",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-03-20T17:03:54Z",
+      "side": 1,
+      "message": "Ok, after talking to Randall, the plan is I will move this function to a new file, lid_angle.c. That way if in the future we have any way of measuring lid angle (doesn\u0027t have to be accels), then it can still simply call this function to update the key scanning based on lid angle.\n\nAlso, will change macro to a CONFIG_ option which is more consistent with how we do things.",
+      "parentUuid": "3c30f57d_2affc716",
+      "revId": "9eafe9bfc1ea9cbd0663a9638ddecfeb4640765a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
