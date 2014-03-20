@@ -99,6 +99,9 @@ static void charger_init(void)
 		/* Disable LDO mode */
 		option &= ~OPT_LDO_MODE_MASK;
 
+		/* Disable audio frequency limit */
+		option &= ~OPT_AUDIO_FREQ_LIMIT_MASK;
+
 		charger_set_option(option);
 	}
 }
