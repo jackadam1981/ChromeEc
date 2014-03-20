@@ -59,7 +59,8 @@ static int flush_and_read(enum lm4_adc_sequencer seq)
 	 * 3) Both?
 	 */
 	volatile uint32_t scratch  __attribute__((unused));
-	int event;
+	int events = 0;
+	int other_events = 0;
 
 	/* Empty the FIFO of any previous results */
 	while (!(LM4_ADC_SSFSTAT(seq) & 0x100))
@@ -74,13 +75,34 @@ static int flush_and_read(enum lm4_adc_sequencer seq)
 	/* Clear the interrupt status */
 	LM4_ADC_ADCISC |= 0x01 << seq;
 
+	/* Enable interrupt */
+	LM4_ADC_ADCIM |= 0x01 << seq;
+
 	/* Initiate sample sequence */
 	LM4_ADC_ADCPSSI |= 0x01 << seq;
 
-	/* Wait for interrupt */
-	event = task_wait_event(SECOND);
+	while (!(events & (TASK_EVENT_ADC_IDLE | TASK_EVENT_TIMER))) {
+
+		/* Wait for sequence completion interrupt */
+		events = task_wait_event(SECOND);
+
+		/*
+		 * Collect any other events until the sequence is done
+		 * or we timeout.
+		 */
+		other_events |= events &
+			~(TASK_EVENT_ADC_IDLE | TASK_EVENT_TIMER);
+	}
+
+	/* Disable interrupt */
+	LM4_ADC_ADCIM &= ~(0x01 << seq);
+
+	/* Re-post any other events collected */
+	task_set_event(task_get_current(), other_events, 0);
+
 	task_waiting_on_ss[seq] = TASK_ID_INVALID;
-	if (event == TASK_EVENT_TIMER)
+
+	if (!(events & TASK_EVENT_ADC_IDLE))
 		return ADC_READ_ERROR;
 
 	/* Read the FIFO and convert to temperature */
@@ -159,6 +181,7 @@ int adc_read_channel(enum adc_channel ch)
 
 	if (rv == ADC_READ_ERROR)
 		return ADC_READ_ERROR;
+
 	return rv * adc->factor_mul / adc->factor_div + adc->shift;
 }
 
@@ -189,7 +212,7 @@ static void handle_interrupt(int ss)
 
 	/* Wake up the task which was waiting on the interrupt, if any */
 	if (id != TASK_ID_INVALID)
-		task_wake(id);
+		task_set_event(id, TASK_EVENT_ADC_IDLE, 0);
 }
 
 static void ss0_interrupt(void) { handle_interrupt(0); }
@@ -255,8 +278,7 @@ static void adc_init(void)
 	for (i = 0; i < LM4_ADC_SEQ_COUNT; i++)
 		task_waiting_on_ss[i] = TASK_ID_INVALID;
 
-	/* Enable interrupt */
-	LM4_ADC_ADCIM = 0xF;
+	/* Enable IRQs */
 	task_enable_irq(LM4_IRQ_ADC0_SS0);
 	task_enable_irq(LM4_IRQ_ADC0_SS1);
 	task_enable_irq(LM4_IRQ_ADC0_SS2);
