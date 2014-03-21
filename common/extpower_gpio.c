@@ -50,7 +50,13 @@ void extpower_interrupt(enum gpio_signal signal)
 
 static void extpower_init(void)
 {
-	debounced_extpower_presence = gpio_get_level(GPIO_AC_PRESENT);
+	/*
+	 * Initialize to 0 so we send an AC change notification if AC
+	 * power is connected when the EC is reset or powered on. Note
+	 * that there is no interrupt if the signal level is low when
+	 * interrupts are enabled.
+	 */
+	debounced_extpower_presence = 0;
 
 	/* Enable interrupts, now that we've initialized */
 	gpio_enable_interrupt(GPIO_AC_PRESENT);
