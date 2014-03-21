@@ -16,6 +16,24 @@
       "revId": "2bc439a1834f2cdf69a88aeed62944d2210538dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c5e35d0_6913a1e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-03-21T01:10:19Z",
+      "side": 1,
+      "message": "Only the former are *new* options,\nthe latter were pre-existing (and not defined for different core archs)",
+      "parentUuid": "3cf3951c_3e788996",
+      "revId": "2bc439a1834f2cdf69a88aeed62944d2210538dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
