@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcdf857e_b7383a53",
+        "filename": "chip/lm4/adc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-03-21T21:07:04Z",
+      "side": 1,
+      "message": "Do we really need to wait a full second? The ADC shouldn\u0027t take nearly this long, we should know if it has timed out much quicker. And since we call this from the hooks task, it seems like we don\u0027t want to delay the hooks task for a full second.",
+      "revId": "978358aaafcf7109996b60c70212803d9d73759f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5cee8935_942ff26e",
+        "filename": "chip/lm4/adc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-03-21T21:07:04Z",
+      "side": 1,
+      "message": "The temp sensor reading runs from the hooks task. And on clapper, there is an LED state machine of sorts running out of a deferred function every 100ms. So, it looks like a timeout is impossible here. The loop will wake up every 100ms, realize it\u0027s not an ADC_IDLE event, and do a task_wait_event(SECOND).",
+      "revId": "978358aaafcf7109996b60c70212803d9d73759f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
