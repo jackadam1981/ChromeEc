@@ -240,9 +240,9 @@ void pd_start_tx(void *ctxt, int bit_len)
 	/* disable RX detection interrupt */
 	pd_rx_disable_monitoring();
 	/* set the low level reference */
-	gpio_set_level(GPIO_PD_TX_EN, 0);
+	gpio_set_level(GPIO_PD_TX_EN, 1);
 	/* put SPI function on TX pin */
-	gpio_config_module(MODULE_USB_PD, 1);
+	//gpio_config_module(MODULE_USB_PD, 1);
 
 	/* update DMA configuration */
 	dma_prepare_tx(&dma_tx_option, DIV_ROUND_UP(bit_len, 8), ctxt);
@@ -275,9 +275,9 @@ void pd_tx_done(void)
 	/* clear tranfer flag */
 	dma_clear_isr(DMAC_SPI_TX);
 	/* put SPI TX in Hi-Z */
-	gpio_config_module(MODULE_USB_PD, 0);
+	//gpio_config_module(MODULE_USB_PD, 0);
 	/* put the low level reference in Hi-Z */
-	gpio_set_level(GPIO_PD_TX_EN, 1);
+	gpio_set_level(GPIO_PD_TX_EN, 0);
 }
 
 /* --- RX operation using comparator linked to timer --- */
@@ -349,7 +349,7 @@ void *pd_hw_init(void)
 	spi_enable_clock();
 
 	/* put SPI TX in Hi-Z */
-	gpio_config_module(MODULE_USB_PD, 0);
+	gpio_config_module(MODULE_USB_PD, 1);
 
 	/* Enable Tx DMA for our first transaction */
 	spi->cr2 = STM32_SPI_CR2_TXDMAEN | STM32_SPI_CR2_DATASIZE(8);
