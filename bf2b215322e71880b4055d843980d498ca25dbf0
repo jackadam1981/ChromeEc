@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c5e35d0_c66ab702",
+        "filename": "common/charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-03-22T00:51:39Z",
+      "side": 1,
+      "message": "This is going to preserve the value across AP reboots, provided the EC doesn\u0027t hibernate in the mean time. Is that really what we want? What if the AP reboots into a different image? The new kernel won\u0027t know it\u0027s supposed to be in control. \n\nI\u0027d say preserve across suspend, but not full shutdown.",
+      "revId": "bf2b215322e71880b4055d843980d498ca25dbf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
