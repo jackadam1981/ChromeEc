@@ -380,6 +380,34 @@ uint32_t task_wait_event(int timeout_us)
 	return __wait_evt(timeout_us, TASK_ID_IDLE);
 }
 
+uint32_t task_wait_event_mask(uint32_t event_mask, int timeout_us)
+{
+	uint64_t deadline = get_time().val + timeout_us;
+	uint32_t events = 0;
+	uint32_t other_events = 0;
+	int time_remaining_us = timeout_us;
+
+	/* Add the timer event to the mask so we can indicate a timeout */
+	event_mask |= TASK_EVENT_TIMER;
+
+	while (!(events & event_mask)) {
+		events = __wait_evt(time_remaining_us, TASK_ID_IDLE);
+
+		/* Collect any other events to re-post later */
+		other_events |= events & ~event_mask;
+
+		time_remaining_us = deadline - get_time().val;
+		if (time_remaining_us <= 0)
+			break;
+	}
+
+	/* Re-post any other events collected */
+	if (other_events)
+		task_set_event(task_get_current(), other_events, 0);
+
+	return events & event_mask;
+}
+
 void task_enable_irq(int irq)
 {
 	CPU_NVIC_EN(irq / 32) = 1 << (irq % 32);
