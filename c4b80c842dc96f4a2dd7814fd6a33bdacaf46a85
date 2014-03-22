@@ -34,6 +34,24 @@
       "revId": "c4b80c842dc96f4a2dd7814fd6a33bdacaf46a85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9cb2c15a_d4e7b24f",
+        "filename": "board/zinger/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-03-22T17:23:30Z",
+      "side": 1,
+      "message": "actually I did it properly :\nunsigned t0 \u003d STM32_TIM32_CNT(2);\nwhile ((STM32_TIM32_CNT(2) - t0) \u003c us)\n          ;\n\nit is as optimized and should be correct even if the timer overflows.",
+      "parentUuid": "3c5e35d0_299a8911",
+      "revId": "c4b80c842dc96f4a2dd7814fd6a33bdacaf46a85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
