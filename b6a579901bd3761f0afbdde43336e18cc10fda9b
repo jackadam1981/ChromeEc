@@ -16,6 +16,24 @@
       "revId": "b6a579901bd3761f0afbdde43336e18cc10fda9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5cbcc931_5843f12d",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-03-24T23:29:49Z",
+      "side": 1,
+      "message": "What about the special behavior of calling __wait_evt with a 0 uSec timeout to not set a timer? I wanted to call __wait_evt the first pass through with exactly what the caller provided.\n\nHow about this:\n\nif (time_remaining_us \u003c\u003d 0) {\n  events |\u003d TASK_EVENT_TIMER;\n  break;\n}\n\nThe event mask is modified before the loop to include TASK_EVENT_TIMER so the return value will be 1 if we hit the race condition.",
+      "parentUuid": "1cf0910e_66c4442d",
+      "revId": "b6a579901bd3761f0afbdde43336e18cc10fda9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
