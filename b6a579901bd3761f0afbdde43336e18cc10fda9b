@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1cf0910e_66c4442d",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-03-24T23:10:45Z",
+      "side": 1,
+      "message": "There\u0027s a race condition here.\n\n1. Some undesired event causes __wait_evt() to exit\n2. Deadline expires\n3. We break here\n\nBut then events \u0026 event_mask \u003d 0.  Try:\n\n  while (!(events \u0026 event_mask)) {\n    time_remaining_us \u003d deadline - get_time().val;\n    if (time_remaining_us \u003e 0)\n      events \u003d __wait_evt(time_remaining_us, TASK_ID_IDLE);\n    else\n      events |\u003d TASK_EVENT_TIMER;  /* Timeout */\n\n    other_events |\u003d events \u0026 ~event_mask;\n  }",
+      "revId": "b6a579901bd3761f0afbdde43336e18cc10fda9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
