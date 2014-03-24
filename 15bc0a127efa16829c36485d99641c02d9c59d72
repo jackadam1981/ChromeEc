@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3cf3951c_c73714c1",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-03-24T21:19:27Z",
+      "side": 1,
+      "message": "hum I forgot to fix that, all delays are hard-coded for 100kbps.",
+      "revId": "15bc0a127efa16829c36485d99641c02d9c59d72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
