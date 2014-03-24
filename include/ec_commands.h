@@ -926,6 +926,90 @@ struct ec_params_pwm_set_fan_duty {
 
 /*****************************************************************************/
 /*
+ * Motion sense commands. We'll make separate structs for sub-commands with
+ * different input args, so that we know how much to expect.
+ */
+#define EC_CMD_MOTION_SENSE_CMD 0xE0
+
+/* Motion sense commands */
+enum motionsense_command {
+	MOTIONSENSE_CMD_DUMP = 0,
+	MOTIONSENSE_CMD_INFO = 1,
+	MOTIONSENSE_CMD_EC_RATE = 2,
+	MOTIONSENSE_CMD_SENSOR_ODR = 3,
+	MOTIONSENSE_CMD_SENSOR_RANGE = 4,
+	MOTIONSENSE_NUM_CMDS
+};
+
+/* List of motion sensor types. */
+enum motionsensor_type {
+	MOTIONSENSE_TYPE_ACCEL,
+	MOTIONSENSE_TYPE_GYRO,
+};
+
+/* List of motion sensor locations. */
+enum motionsensor_location {
+	MOTIONSENSE_LOC_BASE,
+	MOTIONSENSE_LOC_LID,
+};
+
+/* List of motion sensor chips. */
+enum motionsensor_chip {
+	MOTIONSENSE_CHIP_KXCJ9,
+};
+
+/*
+ * Send this value for the data element to only perform a read. If you
+ * send any other value, the EC will interpret it as data to set.
+ */
+#define EC_CMD_MOTION_SENSE_NO_VALUE -1
+
+struct ec_params_motion_sense {
+	uint8_t cmd;
+	union {
+		struct {
+			/* no args */
+		} dump;
+
+		struct {
+			int16_t data;
+		} ec_rate;
+
+		struct {
+			uint8_t sensor_num;
+		} info;
+
+		struct {
+			uint8_t sensor_num;
+			int32_t data;
+			uint8_t roundup;
+		} sensor_odr, sensor_range;
+	};
+} __packed;
+
+struct ec_response_motion_sense {
+	union {
+		struct {
+			uint8_t sensor_presence[3];
+			int16_t data[9];
+		} dump;
+
+		struct {
+			uint8_t type;
+			uint8_t location;
+			uint8_t chip;
+		} info;
+
+		struct {
+			int32_t ret;
+		} ec_rate, sensor_odr, sensor_range;
+	};
+} __packed;
+
+
+
+/*****************************************************************************/
+/*
  * Lightbar commands. This looks worse than it is. Since we only use one HOST
  * command to say "talk to the lightbar", we put the "and tell it to do X" part
  * into a subcommand. We'll make separate structs for subcommands with
