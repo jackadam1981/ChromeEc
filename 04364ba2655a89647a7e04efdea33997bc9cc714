@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9cb2c15a_e0094cc3",
+        "filename": "common/charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-03-24T16:26:39Z",
+      "side": 1,
+      "message": "Coding style nit: Each DECLARE_HOOK() should immediately follow its hook function.\n\nAnd like Bill said, add a hook on shutdown which sets dptf_limit_ma_bak \u003d -1, or the next boot will reuse whatever the last boot stored as it was shutting down.  RESUME is called on *any* transition to S0.",
+      "revId": "04364ba2655a89647a7e04efdea33997bc9cc714",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
