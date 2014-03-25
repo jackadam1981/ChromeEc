@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fc1f3d43_07d73813",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-03-25T21:33:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c23318f_0591f285",
+      "revId": "9c4422972a032528283f7a0e2cdfa1dfab0c8f12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c3d559f_f4b490fc",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2014-03-25T19:52:34Z",
       "side": 1,
       "message": "Do you really to go through the scheduler at that point ?\nelse you want to do only :\n  atomic_or(task_get_event_bitmap(task_get_current()),\n                          other_events)",
+      "revId": "9c4422972a032528283f7a0e2cdfa1dfab0c8f12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc1c3954_c690c436",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-03-25T21:33:52Z",
+      "side": 1,
+      "message": "I\u0027ll defer to you and Randall on this point. If you think we don\u0027t need to reschedule here then I\u0027ll just update the task\u0027s event bitmap and call it done.",
+      "parentUuid": "3c3d559f_f4b490fc",
       "revId": "9c4422972a032528283f7a0e2cdfa1dfab0c8f12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
