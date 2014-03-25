@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c23318f_0591f285",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-03-25T19:52:34Z",
+      "side": 1,
+      "message": "the maintenance of other_events complexifies/add more registers to the code without benefits.\nYou can accumulate events in \"events\"\nand just mask it after the loop",
+      "revId": "9c4422972a032528283f7a0e2cdfa1dfab0c8f12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c3d559f_f4b490fc",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-03-25T19:52:34Z",
+      "side": 1,
+      "message": "Do you really to go through the scheduler at that point ?\nelse you want to do only :\n  atomic_or(task_get_event_bitmap(task_get_current()),\n                          other_events)",
+      "revId": "9c4422972a032528283f7a0e2cdfa1dfab0c8f12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
