@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcd6a580_0d45b5d2",
+        "filename": "board/kip/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-03-25T02:00:52Z",
+      "side": 1,
+      "message": "Add EC_LED_ID_POWER_LED",
+      "revId": "481908bdce81aeaa20ea9a831379354c88e430fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bcd6a580_2d4879ec",
+        "filename": "board/kip/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-03-25T02:00:52Z",
+      "side": 1,
+      "message": "if (led_id \u003d\u003d EC_LED_ID_POWER_LED) {\n  brightness_range[EC_LED_COLOR_WHITE] \u003d 100;\n} else {\n  brightness_range[EC_LED_COLOR_WHITE] \u003d 100;\n  brightness_range[EC_LED_COLOR_YELLOW] \u003d 100;\n}",
+      "revId": "481908bdce81aeaa20ea9a831379354c88e430fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5cd5a977_4af5d399",
+        "filename": "board/kip/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-03-25T02:00:52Z",
+      "side": 1,
+      "message": "Something like:\n\nif (led_id \u003d\u003d EC_LED_ID_POWER_LED) {\n  if (brightness[EC_LED_COLOR_WHITE] !\u003d 0)\n    power_led_set_color(LED_WHITE);\n  else\n    power_led_set_color(LED_OFF);\n} else {\n  if (brightness[EC_LED_COLOR_WHITE] !\u003d 0)\n    bat_led_set_color(LED_WHITE);\n  else if (brightness[EC_LED_COLOR_YELLOW] !\u003d 0)\n    bat_led_set_color(LED_AMBER);\n  else\n    bat_led_set_color(LED_OFF);\n}",
+      "revId": "481908bdce81aeaa20ea9a831379354c88e430fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
