@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc1c3954_a9b9d9cf",
+        "filename": "board/kip/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-03-25T22:47:50Z",
+      "side": 1,
+      "message": "Please remove pwm.h, you don\u0027t need it here.",
+      "revId": "d043b647de9f5ad02f69efd9957c5655c6405ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc1f3d43_6ad0b307",
+        "filename": "board/kip/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-03-25T22:47:50Z",
+      "side": 1,
+      "message": "Nit: please indent like this:\n\nconst enum ec_led_id supported_led_ids[] \u003d {\n        EC_LED_ID_BATTERY_LED, EC_LED_ID_POWER_LED};",
+      "revId": "d043b647de9f5ad02f69efd9957c5655c6405ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc1c3954_49e145e9",
+        "filename": "board/kip/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-03-25T22:47:50Z",
+      "side": 1,
+      "message": "color_brightness isn\u0027t needed here as it\u0027s mainly useful if you\u0027re using PWMs to control the LEDs (for dimming or color mixing). Please remove this.",
+      "revId": "d043b647de9f5ad02f69efd9957c5655c6405ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc1c3954_89cfbd48",
+        "filename": "board/kip/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-03-25T22:47:50Z",
+      "side": 1,
+      "message": "(optional) The transition between ON and SUSPEND might look messy as we don\u0027t know if (ticks \u0026 0x4) will be on or off when we enter suspend. If you look at peppy_led_set_power() in board/peppy/led.c you\u0027ll find an example where we reset ticks on state transitions to ensure the LED changes immediately.....in this case you\u0027d want it to turn OFF when ticks is reset to 0.",
+      "revId": "d043b647de9f5ad02f69efd9957c5655c6405ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
