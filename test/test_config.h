@@ -63,6 +63,19 @@ int board_discharge_on_ac(int enabled);
 #define I2C_PORT_CHARGER 1
 #endif
 
+#ifdef TEST_SBS_CHARGING_V2
+#define CONFIG_BATTERY_MOCK
+#define CONFIG_BATTERY_SMART
+#define CONFIG_CHARGER
+#define CONFIG_CHARGER_V2
+#define CONFIG_CHARGER_INPUT_CURRENT 4032
+#define CONFIG_CHARGER_DISCHARGE_ON_AC
+int board_discharge_on_ac(int enabled);
+#define I2C_PORT_MASTER 1
+#define I2C_PORT_BATTERY 1
+#define I2C_PORT_CHARGER 1
+#endif
+
 #ifdef TEST_THERMAL
 #define CONFIG_CHIPSET_CAN_THROTTLE
 #define CONFIG_FANS 1
