@@ -10,6 +10,7 @@
 #include "backlight.h"
 #include "battery.h"
 #include "capsense.h"
+#include "charger.h"
 #include "common.h"
 #include "driver/temp_sensor/tmp006.h"
 #include "driver/als_isl29035.h"
@@ -330,5 +331,15 @@ enum battery_present battery_is_present(void)
 	 */
 	int analog_val = adc_read_channel(ADC_CH_BAT_TEMP);
 	return analog_val < (9 * ADC_READ_MAX / 10) ? BP_YES : BP_NO;
+}
+#endif
+
+#ifdef CONFIG_CHARGER_DISCHARGE_ON_AC
+/**
+ * Discharge battery when on AC power for factory test.
+ */
+int board_discharge_on_ac(int enable)
+{
+        return charger_discharge_on_ac(enable);
 }
 #endif
