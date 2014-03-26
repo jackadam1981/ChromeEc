@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c23318f_d4d86a67",
+        "filename": "board/glimmer/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-03-26T01:13:58Z",
+      "side": 1,
+      "message": "If we\u0027re adding the config option, there is no need to do this here. Please remove this part.",
+      "revId": "8f7f84f6b785584f32ad22f3978b80e29f91cfe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
