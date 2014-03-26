@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c23318f_5440fa51",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-03-26T01:11:42Z",
+      "side": 1,
+      "message": "BUG\u003dchrome-os-partner:27063",
+      "revId": "dfe6bbbc7b05b15527d0ccc6331a727382d923a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc1f3d43_58466d3f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-03-26T01:11:42Z",
+      "side": 1,
+      "message": "TEST\u003dEnable config option for a board and verify bit 10 is not \nset in the charger\u0027s option register using the \u0027charger\u0027 console \ncommand.",
+      "revId": "dfe6bbbc7b05b15527d0ccc6331a727382d923a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
