@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c23318f_3a77e516",
+        "filename": "chip/stm32/gpio-stm32l0.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-03-26T15:15:46Z",
+      "side": 1,
+      "message": "is is different from F0 ?\nelse we should use the same file",
+      "revId": "582dc217985acd1ebf102dc943e0d1fce3f5f58d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c23318f_bae5958c",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-03-26T15:15:46Z",
+      "side": 1,
+      "message": "it\u0027s mostly common with STM32F0\nIMO, just merge them and put a double define for small differences :\neg\n#define STM32_IRQ_CEC_CAN         30 /* STM32F0 only */\n#define STM32_IRQ_LCD                  30 /* STM32L0 only */",
+      "revId": "582dc217985acd1ebf102dc943e0d1fce3f5f58d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
