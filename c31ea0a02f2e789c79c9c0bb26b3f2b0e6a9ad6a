@@ -16,6 +16,24 @@
       "revId": "c31ea0a02f2e789c79c9c0bb26b3f2b0e6a9ad6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "392487a3_190acfed",
+        "filename": "chip/stm32/crc.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-03-26T19:33:24Z",
+      "side": 1,
+      "message": "yes now everything is pre-computed in crc32_tab below.\nI will update it.",
+      "parentUuid": "5cd5a977_90dd3a88",
+      "revId": "c31ea0a02f2e789c79c9c0bb26b3f2b0e6a9ad6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
