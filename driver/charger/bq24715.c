@@ -172,12 +172,13 @@ int charger_post_init(void)
 	int rv;
 	int option;
 
+
 	rv = charger_get_option(&option);
 	if (rv)
 		return rv;
 
-	/* Don't be noisy */
-	option |= OPT_AUDIO_FREQ_40KHZ_LIMIT;
+	/* Ensure 40KHz audio frequency limit is not set */
+	option &= ~OPT_AUDIO_FREQ_LIMIT_MASK;
 
 	/* Always monitor adapter current (40X multiplier). */
 	option |= OPT_FIX_IOUT_ALWAYS;
