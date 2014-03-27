@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b910773f_a0983e17",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-03-27T19:35:55Z",
+      "side": 1,
+      "message": "Or somehow notify the thermal loop, if we\u0027re lucky enough to have a fan",
+      "revId": "27cffca8e9333759435e1a8808e41ff33541c084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99157331_8239c0b7",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-03-27T19:35:55Z",
+      "side": 1,
+      "message": "We should on AC.  Could be a low-current charger and we\u0027re still draining battery.\n\nDefinitely need to in suspend, since AP may want to wake up and shut down cleanly.\n\nNo harm in S5.  AP will read and discard events it doesn\u0027t care about when it boots.",
+      "revId": "27cffca8e9333759435e1a8808e41ff33541c084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b910773f_60e5868b",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-03-27T19:35:55Z",
+      "side": 1,
+      "message": "But maybe can get the same effect with DPTF set charging current\u003d0.",
+      "revId": "27cffca8e9333759435e1a8808e41ff33541c084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b910773f_23e79854",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-03-27T19:35:55Z",
+      "side": 1,
+      "message": "Ponder... Absolute timeout from start-of-charging, or from last time %charge changed?\n\nThat is, stop after 8 hours?  Or if gas gauge doesn\u0027t move in 1 hour?",
+      "revId": "27cffca8e9333759435e1a8808e41ff33541c084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99157331_c2c5782c",
+        "filename": "include/charge_state_v2.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-03-27T19:35:55Z",
+      "side": 1,
+      "message": "...and we probably should change that to a simpler list too.\n   - Charging\n   - \"Full\" (includes charging-and-almost full; that is, lie to the LED module too))\n   - Discharging\n   - Discharging-and-almost-dead\n   - Error\n   - Force-idle",
+      "revId": "27cffca8e9333759435e1a8808e41ff33541c084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
