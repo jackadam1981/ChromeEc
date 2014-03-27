@@ -262,6 +262,38 @@ static void send_hard_reset(void *ctxt)
 	pd_tx_done();
 }
 
+static int send_soft_reset(void *ctxt)
+{
+	int bit_len;
+	int head;
+	uint16_t header = PD_HEADER(PD_CTRL_SOFT_RESET, pd_role, 0, 0);
+	static uint32_t payload[7];
+	/* Soft reset always had ID 0 */
+	pd_message_id = 0;
+	/* write the encoded packet in the transmission buffer */
+	bit_len = prepare_message(ctxt, header, 0, NULL);
+	/* Transmit the packet */
+	pd_start_tx(ctxt, bit_len);
+	pd_tx_done();
+	/* starting waiting for GoodCrc */
+	pd_rx_start();
+	/* read the incoming packet if any */
+	head = analyze_rx(payload);
+	pd_rx_complete();
+	if (head > 0) { /* we got a good packet, analyze it */
+		int type = PD_HEADER_TYPE(head);
+		int nb = PD_HEADER_CNT(head);
+		uint8_t id = PD_HEADER_ID(head);
+		if (type == PD_CTRL_GOOD_CRC && nb == 0 &&
+		   id == 0) {
+			/* got the GoodCRC we were expecting */
+			inc_id();
+			return bit_len;
+		}
+	}
+	return -1;
+}
+
 static int send_validate_message(void *ctxt, uint16_t header, uint8_t cnt,
 				 const uint32_t *data)
 {
@@ -452,10 +484,12 @@ static void handle_ctrl_request(void *ctxt, uint16_t head, uint32_t *payload)
 		break;
 	case PD_CTRL_REJECT:
 		break;
+	case PD_CTRL_SOFT_RESET:
+		pd_message_id = 0;
+		break;
 	case PD_CTRL_PROTOCOL_ERR:
 	case PD_CTRL_SWAP:
 	case PD_CTRL_WAIT:
-	case PD_CTRL_SOFT_RESET:
 	default:
 		CPRINTF("Unhandled ctrl message type %d\n", type);
 	}
@@ -657,6 +691,9 @@ void pd_task(void)
 			res = send_control(ctxt, PD_CTRL_PING);
 			if (res < 0) {
 				/* The sink died ... TODO */
+				/* TODO: we should soft-reset here */
+				if (0)
+					send_soft_reset(ctxt);
 				pd_task_state = PD_STATE_SRC_DISCOVERY;
 				timeout = PD_T_SEND_SOURCE_CAP;
 				pd_power_supply_reset();
