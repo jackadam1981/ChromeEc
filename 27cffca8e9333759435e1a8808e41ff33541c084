@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "f91d8f5d_31dd9753",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-28T00:25:12Z",
+      "side": 1,
+      "message": "hm... no?  We should use fail-safe here? Like cut-off the battery?",
+      "revId": "27cffca8e9333759435e1a8808e41ff33541c084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "993ad3c3_d4765262",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-28T00:25:12Z",
+      "side": 1,
+      "message": "If the battery is too hot, cut-off battery?",
+      "revId": "27cffca8e9333759435e1a8808e41ff33541c084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b910773f_a0983e17",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 1
@@ -36,6 +70,23 @@
     },
     {
       "key": {
+        "uuid": "b935d7d3_2609eec0",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-28T00:25:12Z",
+      "side": 1,
+      "message": "charger --\u003e IDLE\nbattery --\u003e cut-off   (if we can)",
+      "revId": "27cffca8e9333759435e1a8808e41ff33541c084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b910773f_60e5868b",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 1
@@ -64,6 +115,23 @@
       "writtenOn": "2014-03-27T19:35:55Z",
       "side": 1,
       "message": "Ponder... Absolute timeout from start-of-charging, or from last time %charge changed?\n\nThat is, stop after 8 hours?  Or if gas gauge doesn\u0027t move in 1 hour?",
+      "revId": "27cffca8e9333759435e1a8808e41ff33541c084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f91d8f5d_310a37ee",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-03-28T00:25:12Z",
+      "side": 1,
+      "message": "This is another issue and might not fix in this CL. This function doesn\u0027t work well because this hook is called *BEFORE* chipset is force-shutdown. That means the EC would enter hibernate mode before the AP is force off. The AP is still running but the EC has slept. :-(\n\nI think we can remove this function and let prevent_deep_discharge() to hibernate EC.",
       "revId": "27cffca8e9333759435e1a8808e41ff33541c084",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
