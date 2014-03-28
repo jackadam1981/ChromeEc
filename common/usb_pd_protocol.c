@@ -659,6 +659,7 @@ void pd_task(void)
 				/* The sink died ... TODO */
 				pd_task_state = PD_STATE_SRC_DISCOVERY;
 				timeout = PD_T_SEND_SOURCE_CAP;
+				pd_power_supply_reset();
 			} else { /* schedule next keep-alive */
 				timeout = PD_T_SOURCE_ACTIVITY;
 			}
