@@ -6,6 +6,7 @@
 #include "board.h"
 #include "common.h"
 #include "console.h"
+#include "gpib.h"
 #include "hooks.h"
 #include "registers.h"
 #include "task.h"
@@ -17,9 +18,9 @@
 
 const uint32_t pd_src_pdo[] = {
 		PDO_FIXED(5000,   500, PDO_FIXED_EXTERNAL),
-		PDO_FIXED(5000,  3000, 0),
-		PDO_FIXED(12000, 3000, 0),
-		PDO_FIXED(20000, 2000, 0),
+		PDO_FIXED(5000,  1500, 0),
+		PDO_FIXED(12000, 2000, 0),
+		PDO_FIXED(20000, 1800, 0),
 };
 const int pd_src_pdo_cnt = ARRAY_SIZE(pd_src_pdo);
 
@@ -33,6 +34,7 @@ static void *last_ctxt;
 
 static void fake_voltage_transition(void)
 {
+	gpib_set_output(1);
 	if (last_ctxt)
 		pd_power_supply_ready(last_ctxt);
 }
@@ -82,6 +84,7 @@ int pd_request_voltage(void *ctxt, uint32_t rdo)
 	int idx = rdo >> 28;
 	uint32_t pdo;
 	uint32_t pdo_ma;
+	uint32_t pdo_mv;
 
 	if (idx > pd_src_pdo_cnt)
 		return EC_ERROR_INVAL; /* Invalid index */
@@ -89,14 +92,19 @@ int pd_request_voltage(void *ctxt, uint32_t rdo)
 	/* check current ... */
 	pdo = pd_src_pdo[idx - 1];
 	pdo_ma = (pdo & 0x3ff);
+	pdo_mv =  ((pdo >> 10) & 0x3ff) * 50;
 	if (op_ma > pdo_ma)
 		return EC_ERROR_INVAL; /* too much op current */
 	if (max_ma > pdo_ma)
 		return EC_ERROR_INVAL; /* too much max current */
 
-	ccprintf("Switch to %d V %d mA (for %d/%d mA)\n",
+	ccprintf("Switch to %d mV %d mA (for %d/%d mA)\n",
 		 ((pdo >> 10) & 0x3ff) * 50, (pdo & 0x3ff) * 10,
 		 ((rdo >> 10) & 0x3ff) * 10, (rdo & 0x3ff) * 10);
+
+	gpib_set_output(0);
+	gpib_set_voltage(pdo_mv);
+	gpib_set_current(pdo_ma*10);
 
 	/* trigger a PS_RDY after a 50-ms fake delay */
 	last_ctxt = ctxt;
@@ -107,4 +115,8 @@ int pd_request_voltage(void *ctxt, uint32_t rdo)
 
 void pd_power_supply_reset(void)
 {
+	gpib_set_output(0);
+	gpib_set_voltage(5000);
+	gpib_set_current(100);
+	gpib_set_output(1);
 }
