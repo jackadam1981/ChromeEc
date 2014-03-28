@@ -18,7 +18,11 @@
 #include "usb_pd.h"
 #include "usb_pd_config.h"
 
+#ifdef CONFIG_COMMON_RUNTIME
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
+#else
+#define CPRINTF(format, args...)
+#endif
 
 #define PD_DATARATE 300000 /* Hz */
 
@@ -220,6 +224,7 @@ int pd_write_last_edge(void *ctxt, int bit_off)
 	return bit_off + 2;
 }
 
+#ifdef CONFIG_COMMON_RUNTIME
 void pd_dump_packet(void *ctxt, const char *msg)
 {
 	uint8_t *vals = ctxt;
@@ -243,6 +248,7 @@ void pd_dump_packet(void *ctxt, const char *msg)
 	CPRINTF("||\n");
 	cflush();
 }
+#endif /* CONFIG_COMMON_RUNTIME */
 
 /* --- SPI TX operation --- */
 
@@ -441,6 +447,7 @@ void *pd_hw_init(void)
 #endif
 
 	/* --- COMP2 as comparator for RX vs Vmid = 850mV --- */
+#ifdef CONFIG_USB_PD_INTERNAL_COMP
 #if defined(CHIP_FAMILY_STM32F0)
 	/* 40 MHz pin speed on PA0 and PA4 */
 	STM32_GPIO_OSPEEDR(GPIO_A) |= 0x303;
@@ -464,6 +471,7 @@ void *pd_hw_init(void)
 #else
 #error Unsupported chip family
 #endif
+#endif /* CONFIG_USB_PD_INTERNAL_COMP */
 	/* DBG */usleep(250000);
 	/* comparator interrupt : triggers on falling edge */
 	STM32_EXTI_FTSR |= 1 << EXTI_COMP;
@@ -479,7 +487,9 @@ void pd_set_clock(int freq)
 	STM32_TIM_ARR(TIM_TX) = clock_get_freq() / (2*freq);
 }
 
+#ifdef CONFIG_USB_PD_DUAL_ROLE
 void pd_set_host_mode(int enable)
 {
 	gpio_set_level(GPIO_CC_HOST, enable);
 }
+#endif /* CONFIG_USB_PD_DUAL_ROLE */
