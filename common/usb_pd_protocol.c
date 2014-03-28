@@ -17,7 +17,15 @@
 #include "usb_pd.h"
 #include "usb_pd_config.h"
 
+#ifdef CONFIG_COMMON_RUNTIME
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
+
+/* dump full packet on RX error */
+static int debug_dump;
+#else
+#define CPRINTF(format, args...)
+const int debug_dump = 0;
+#endif
 
 /* Control Message type */
 enum {
@@ -173,16 +181,14 @@ static uint8_t pd_message_id;
 /* Port polarity : 0 => CC1 is CC line, 1 => CC2 is CC line */
 static uint8_t pd_polarity;
 
-/* dump full packet on RX error */
-static int debug_dump;
-
 static enum {
 	PD_STATE_DISABLED,
-
+#ifdef CONFIG_USB_PD_DUAL_ROLE
 	PD_STATE_SNK_DISCONNECTED,
 	PD_STATE_SNK_DISCOVERY,
 	PD_STATE_SNK_TRANSITION,
 	PD_STATE_SNK_READY,
+#endif /* CONFIG_USB_PD_DUAL_ROLE */
 
 	PD_STATE_SRC_DISCONNECTED,
 	PD_STATE_SRC_DISCOVERY,
@@ -336,6 +342,7 @@ static int send_source_cap(void *ctxt)
 	return bit_len;
 }
 
+#ifdef CONFIG_USB_PD_DUAL_ROLE
 static void send_sink_cap(void *ctxt)
 {
 	int bit_len;
@@ -355,8 +362,9 @@ static void send_request(void *ctxt, uint32_t rdo)
 	bit_len = send_validate_message(ctxt, header, 1, &rdo);
 	CPRINTF("REQ%d>\n", bit_len);
 }
+#endif /* CONFIG_USB_PD_DUAL_ROLE */
 
-static void send_bist(void *ctxt)
+static int send_bist(void *ctxt)
 {
 	uint32_t bdo = BDO(BDO_MODE_TRANSMIT, 0);
 	int bit_len;
@@ -364,6 +372,8 @@ static void send_bist(void *ctxt)
 
 	bit_len = send_validate_message(ctxt, header, 1, &bdo);
 	CPRINTF("BIST>%d\n", bit_len);
+
+	return bit_len;
 }
 
 void pd_power_supply_ready(void *ctxt)
@@ -390,6 +400,7 @@ static void handle_data_request(void *ctxt, uint16_t head, uint32_t *payload)
 	int cnt = PD_HEADER_CNT(head);
 
 	switch (type) {
+#ifdef CONFIG_USB_PD_DUAL_ROLE
 	case PD_DATA_SOURCE_CAP:
 		if ((pd_task_state == PD_STATE_SNK_DISCOVERY)
 			|| (pd_task_state == PD_STATE_SNK_TRANSITION)) {
@@ -403,6 +414,7 @@ static void handle_data_request(void *ctxt, uint16_t head, uint32_t *payload)
 			}
 		}
 		break;
+#endif /* CONFIG_USB_PD_DUAL_ROLE */
 	case PD_DATA_REQUEST:
 		if ((pd_role == PD_ROLE_SOURCE) && (cnt == 1))
 			if (!pd_request_voltage(ctxt, payload[0])) {
@@ -439,6 +451,7 @@ static void handle_ctrl_request(void *ctxt, uint16_t head, uint32_t *payload)
 	case PD_CTRL_GET_SOURCE_CAP:
 		send_source_cap(ctxt);
 		break;
+#ifdef CONFIG_USB_PD_DUAL_ROLE
 	case PD_CTRL_GET_SINK_CAP:
 		send_sink_cap(ctxt);
 		break;
@@ -448,6 +461,7 @@ static void handle_ctrl_request(void *ctxt, uint16_t head, uint32_t *payload)
 		if (pd_role == PD_ROLE_SINK)
 			pd_task_state = PD_STATE_SNK_READY;
 		break;
+#endif /* CONFIG_USB_PD_DUAL_ROLE */
 	case PD_CTRL_ACCEPT:
 		break;
 	case PD_CTRL_REJECT:
@@ -588,13 +602,15 @@ packet_err:
 static void execute_hard_reset(void)
 {
 	pd_message_id = 0;
+#ifdef CONFIG_USB_PD_DUAL_ROLE
 	pd_task_state = pd_role == PD_ROLE_SINK ? PD_STATE_SNK_DISCONNECTED
 						: PD_STATE_SRC_DISCONNECTED;
+#else
+	pd_task_state = PD_STATE_SRC_DISCONNECTED;
+#endif
 	pd_power_supply_reset();
 	CPRINTF("HARD RESET!\n");
 }
-
-#define PD_EVENT_RX TASK_EVENT_CUSTOM(1<<2)
 
 void pd_task(void)
 {
@@ -663,6 +679,7 @@ void pd_task(void)
 				timeout = PD_T_SOURCE_ACTIVITY;
 			}
 			break;
+#ifdef CONFIG_USB_PD_DUAL_ROLE
 		case PD_STATE_SNK_DISCONNECTED:
 			/* Source connection monitoring */
 			cc1_volt = adc_read_channel(ADC_CH_CC1_PD);
@@ -688,6 +705,7 @@ void pd_task(void)
 		case PD_STATE_SNK_READY:
 			/* we have power and we are happy */
 			break;
+#endif /* CONFIG_USB_PD_DUAL_ROLE */
 		case PD_STATE_HARD_RESET:
 			send_hard_reset(ctxt);
 			/* reset our own state machine */
@@ -706,6 +724,7 @@ void pd_rx_event(void)
 	task_set_event(TASK_ID_PD, PD_EVENT_RX, 0);
 }
 
+#ifdef CONFIG_COMMON_RUNTIME
 static int command_pd(int argc, char **argv)
 {
 	if (argc < 2)
@@ -773,3 +792,4 @@ DECLARE_CONSOLE_COMMAND(pd, command_pd,
 			"[rx|tx|hardreset|clock|connect]",
 			"USB PD",
 			NULL);
+#endif /* CONFIG_COMMON_RUNTIME */

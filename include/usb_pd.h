@@ -17,6 +17,9 @@ enum pd_errors {
 	PD_ERR_ID = -4,         /* Invalid ID number */
 };
 
+/* incoming packet event (for the USB PD task) */
+#define PD_EVENT_RX (1<<2)
+
 /* --- PD data message helpers --- */
 
 /* PDO : Power Data Object */
