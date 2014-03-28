@@ -55,3 +55,14 @@ thermal_falco-y=thermal_falco.o
 timer_calib-y=timer_calib.o
 timer_dos-y=timer_dos.o
 utils-y=utils.o
+
+# When writing new tests, it's very handy to be able to say
+#
+#   make runtests TEST_ONLY=mynewtest
+#
+# until it's working properly.
+#
+ifneq (${TEST_ONLY},)
+test-list-y=
+test-list-host=${TEST_ONLY}
+endif
