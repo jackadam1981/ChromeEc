@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b910773f_4eb1930b",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-03-28T16:56:31Z",
+      "side": 1,
+      "message": "Not always. I\u0027m going to hold off on this until I\u0027ve dealt with the errors elsewhere. It\u0027s not unusual for the battery to not respond or to return zeros once in a while when asked for values. The next attempt reads normally.",
+      "parentUuid": "f91d8f5d_31dd9753",
+      "revId": "27cffca8e9333759435e1a8808e41ff33541c084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "993ad3c3_d4765262",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-03-28T00:25:12Z",
       "side": 1,
       "message": "If the battery is too hot, cut-off battery?",
+      "revId": "27cffca8e9333759435e1a8808e41ff33541c084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99157331_edf06d47",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-03-28T16:56:31Z",
+      "side": 1,
+      "message": "Possibly. I\u0027ll file a new bug to discuss it.",
+      "parentUuid": "993ad3c3_d4765262",
       "revId": "27cffca8e9333759435e1a8808e41ff33541c084",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "99157331_cdfda91d",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-03-28T16:56:31Z",
+      "side": 1,
+      "message": "Well, the thermal loop has the ability to react to the battery temps itself. We\u0027ve just never done that. \n\nI\u0027ll file a bug to add that.",
+      "parentUuid": "b910773f_a0983e17",
+      "revId": "27cffca8e9333759435e1a8808e41ff33541c084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99157331_8239c0b7",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2014-03-27T19:35:55Z",
       "side": 1,
       "message": "We should on AC.  Could be a low-current charger and we\u0027re still draining battery.\n\nDefinitely need to in suspend, since AP may want to wake up and shut down cleanly.\n\nNo harm in S5.  AP will read and discard events it doesn\u0027t care about when it boots.",
+      "revId": "27cffca8e9333759435e1a8808e41ff33541c084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39fba735_329358d2",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-03-28T16:56:31Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "99157331_8239c0b7",
       "revId": "27cffca8e9333759435e1a8808e41ff33541c084",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "99157331_cd16c9a5",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-03-28T16:56:31Z",
+      "side": 1,
+      "message": "ok. I\u0027ll handle this with a new bug.",
+      "parentUuid": "b935d7d3_2609eec0",
+      "revId": "27cffca8e9333759435e1a8808e41ff33541c084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b910773f_60e5868b",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 1
@@ -98,6 +188,24 @@
       "writtenOn": "2014-03-27T19:35:55Z",
       "side": 1,
       "message": "But maybe can get the same effect with DPTF set charging current\u003d0.",
+      "revId": "27cffca8e9333759435e1a8808e41ff33541c084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39fba735_d2a1d413",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-03-28T16:56:31Z",
+      "side": 1,
+      "message": "Probably. That\u0027s chrome-os-partner:26418, which I haven\u0027t verified here yet.",
+      "parentUuid": "b910773f_60e5868b",
       "revId": "27cffca8e9333759435e1a8808e41ff33541c084",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "99157331_eda2ad27",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-03-28T16:56:31Z",
+      "side": 1,
+      "message": "chrome-os-partner:20145\n\nIf AC is connected for 10 hours and the battery is not yet fully charged, give up. Reset the timer each time charging is interrupted.",
+      "parentUuid": "b910773f_23e79854",
+      "revId": "27cffca8e9333759435e1a8808e41ff33541c084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f91d8f5d_310a37ee",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 1
@@ -138,6 +264,24 @@
     },
     {
       "key": {
+        "uuid": "b910773f_ee206781",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-03-28T16:56:31Z",
+      "side": 1,
+      "message": "Ha. Yes, that\u0027s a good point. I\u0027ll do that.",
+      "parentUuid": "f91d8f5d_310a37ee",
+      "revId": "27cffca8e9333759435e1a8808e41ff33541c084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99157331_c2c5782c",
         "filename": "include/charge_state_v2.h",
         "patchSetId": 1
@@ -149,6 +293,24 @@
       "writtenOn": "2014-03-27T19:35:55Z",
       "side": 1,
       "message": "...and we probably should change that to a simpler list too.\n   - Charging\n   - \"Full\" (includes charging-and-almost full; that is, lie to the LED module too))\n   - Discharging\n   - Discharging-and-almost-dead\n   - Error\n   - Force-idle",
+      "revId": "27cffca8e9333759435e1a8808e41ff33541c084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99157331_2def856b",
+        "filename": "include/charge_state_v2.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-03-28T16:56:31Z",
+      "side": 1,
+      "message": "Yeah. That\u0027s a separate issue, though. dparker had already mentioned that we might want to clean up the LED stuff a bit.",
+      "parentUuid": "99157331_c2c5782c",
       "revId": "27cffca8e9333759435e1a8808e41ff33541c084",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
