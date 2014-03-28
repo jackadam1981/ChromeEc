@@ -18,6 +18,8 @@
 /* Optional features */
 #define CONFIG_STM_HWTIMER32
 #define CONFIG_USB_POWER_DELIVERY
+#define CONFIG_USB_PD_DUAL_ROLE
+#define CONFIG_USB_PD_INTERNAL_COMP
 #define CONFIG_ADC
 #define CONFIG_HW_CRC
 #define CONFIG_I2C
