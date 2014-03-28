@@ -742,7 +742,7 @@ static int command_pd(int argc, char **argv)
 		pd_set_clock(freq);
 		ccprintf("set TX frequency to %d Hz\n", freq);
 	} else if (!strcasecmp(argv[1], "dump")) {
-		debug_dump = !!debug_dump;
+		debug_dump = !debug_dump;
 	} else if (!strncasecmp(argv[1], "hard", 4)) {
 		pd_task_state = PD_STATE_HARD_RESET;
 		task_wake(TASK_ID_PD);
