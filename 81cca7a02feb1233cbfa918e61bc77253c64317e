@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5944db56_32bc8e4b",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-03-28T18:36:15Z",
+      "side": 1,
+      "message": "case ACCEL_BASE:",
+      "revId": "81cca7a02feb1233cbfa918e61bc77253c64317e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3929e785_716d721b",
+        "filename": "driver/accel_kxcj9.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-03-28T18:36:15Z",
+      "side": 1,
+      "message": "Might comment that it always returns a valid index, even if the request is outside the range of values.",
+      "revId": "81cca7a02feb1233cbfa918e61bc77253c64317e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1926e3b5_30b1260d",
+        "filename": "driver/accel_kxcj9.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-03-28T18:36:15Z",
+      "side": 1,
+      "message": "(find_param_index() is tolerant of this, so don\u0027t really need this check)",
+      "revId": "81cca7a02feb1233cbfa918e61bc77253c64317e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5944db56_7209f68a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-03-28T18:36:15Z",
+      "side": 1,
+      "message": "EC_MOTION_SENSE_NO_VALUE",
+      "revId": "81cca7a02feb1233cbfa918e61bc77253c64317e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
