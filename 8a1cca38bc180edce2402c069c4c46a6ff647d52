@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99d653da_51e0547c",
+        "filename": "board/swanky/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-03-31T22:30:42Z",
+      "side": 1,
+      "message": "Please update to 2014.",
+      "revId": "8a1cca38bc180edce2402c069c4c46a6ff647d52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59e05baf_b5ac081a",
+        "filename": "board/swanky/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-03-31T22:30:42Z",
+      "side": 1,
+      "message": "Note: These parameters may need updating for swanky. Please included in another change if needed.",
+      "revId": "8a1cca38bc180edce2402c069c4c46a6ff647d52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59e05baf_d5a50c32",
+        "filename": "board/swanky/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-03-31T22:30:42Z",
+      "side": 1,
+      "message": "Note: You may need to update this function depending on the battery pack in swanky. Please include in another change if needed.",
+      "revId": "8a1cca38bc180edce2402c069c4c46a6ff647d52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59e05baf_55db5cba",
+        "filename": "board/swanky/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-03-31T22:30:42Z",
+      "side": 1,
+      "message": "Note: The names of these temp sensors may need updating depending on placement in Swanky. Please include in another change if needed.",
+      "revId": "8a1cca38bc180edce2402c069c4c46a6ff647d52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39c56724_ae3fd732",
+        "filename": "board/swanky/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-03-31T22:30:42Z",
+      "side": 1,
+      "message": "Note: It would be good to add some thermal warning/critical levels for the battery and CPU board temp sensor in case DPTF is not running. Please include in a follow-up change.",
+      "revId": "8a1cca38bc180edce2402c069c4c46a6ff647d52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39c56724_4e9e730c",
+        "filename": "board/swanky/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-03-31T22:30:42Z",
+      "side": 1,
+      "message": "Note: This may need changing depending on the capacity of the adapater for Swanky.",
+      "revId": "8a1cca38bc180edce2402c069c4c46a6ff647d52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99d653da_31efd06b",
+        "filename": "board/swanky/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-03-31T22:30:42Z",
+      "side": 1,
+      "message": "Please update to 2014.",
+      "revId": "8a1cca38bc180edce2402c069c4c46a6ff647d52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99d653da_d1f3e451",
+        "filename": "board/swanky/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-03-31T22:30:42Z",
+      "side": 1,
+      "message": "Please update to 2014.",
+      "revId": "8a1cca38bc180edce2402c069c4c46a6ff647d52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39c56724_ce7a63fe",
+        "filename": "board/swanky/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-03-31T22:30:42Z",
+      "side": 1,
+      "message": "The LED control code from Rambi is probably wrong for Swanky.\nPlease update it in a follow-up change. Note that the led code for Quawks (board/quawks/led.c) is probably the best example at the moment because it uses the PWM interface to control the brightness of the power LED and dual-color charging LED.",
+      "revId": "8a1cca38bc180edce2402c069c4c46a6ff647d52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
