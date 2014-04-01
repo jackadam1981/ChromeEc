@@ -224,6 +224,25 @@ static void reply(stm32_dma_chan_t *txdma,
 	dma_go(txdma);
 }
 
+#include "console.h"
+static int command_dump_spibuf(int argc, char **argv)
+{
+	char *msg = out_msg;
+	int msg_len = msg[3];
+	int i;
+
+	for (i = 0; i < msg_len + 2 + SPI_PROTO2_OFFSET; i++) {
+		ccprintf("%02x ", msg[i]);
+	}
+	ccprintf("\n", msg[i]);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(dump_spibuf, command_dump_spibuf,
+			"dump spi buffer", "dump spi buffer2",
+			NULL);
+
+
 /**
  * Get ready to receive a message from the master.
  *
