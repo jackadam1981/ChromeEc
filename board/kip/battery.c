@@ -16,16 +16,16 @@
 #define SB_SHUTDOWN_DATA	0x0010
 
 static const struct battery_info info = {
-	.voltage_max    = 8400,		/* mV */
-	.voltage_normal = 7400,
-	.voltage_min    = 6000,
+	.voltage_max    = 12900,	/* mV */
+	.voltage_normal = 11400,
+	.voltage_min    = 8250,
 	.precharge_current  = 256,	/* mA */
 	.start_charging_min_c = 0,
 	.start_charging_max_c = 45,
 	.charging_min_c       = 0,
 	.charging_max_c       = 45,
 	.discharging_min_c    = 0,
-	.discharging_max_c    = 60,
+	.discharging_max_c    = 55,
 };
 
 const struct battery_info *battery_get_info(void)
