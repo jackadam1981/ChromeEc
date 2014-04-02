@@ -7,6 +7,7 @@
 #include "clock.h"
 #include "common.h"
 #include "console.h"
+#include "debug.h"
 #include "dma.h"
 #include "gpio.h"
 #include "hwtimer.h"
@@ -21,7 +22,7 @@
 #ifdef CONFIG_COMMON_RUNTIME
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #else
-#define CPRINTF(format, args...)
+#define CPRINTF(format, args...) debug_printf( format, ## args)
 #endif
 
 #define PD_DATARATE 300000 /* Hz */
@@ -159,11 +160,14 @@ int pd_find_preamble(void *ctxt)
 			if (STM32_TIM_SR(TIM_RX) & 4) {
 				CPRINTF("TMOUT RX %d/%d\n",
 					PD_MAX_RAW_SIZE - rx->cndtr, bit);
+				debug_printf("TMOUT RX %d/%d\n",
+					PD_MAX_RAW_SIZE - rx->cndtr, bit);
 				return -1;
 			}
 		}
 		cnt = vals[bit] - vals[bit-1];
 		all = (all >> 1) | (cnt <= PERIOD_THRESHOLD ? 1 << 31 : 0);
+		debug_printf("%08x::%d\n",all,cnt);
 		if (all == 0x36db6db6)
 			return bit - 1; /* should be SYNC-1 */
 		if (all == 0xF33F3F3F)
@@ -476,7 +480,8 @@ void *pd_hw_init(void)
 	/* comparator interrupt : triggers on falling edge */
 	STM32_EXTI_FTSR |= 1 << EXTI_COMP;
 	STM32_EXTI_IMR |= 1 << EXTI_COMP;
-	task_enable_irq(STM32_IRQ_COMP);
+	//task_enable_irq(STM32_IRQ_COMP);
+	task_enable_irq(STM32_IRQ_EXTI4_15);
 
 	CPRINTF("USB PD initialized\n");
 	return raw_samples;

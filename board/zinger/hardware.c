@@ -7,6 +7,7 @@
 #include "adc.h"
 #include "adc_chip.h"
 #include "common.h"
+#include "cpu.h"
 #include "registers.h"
 #include "timer.h"
 #include "util.h"
@@ -62,7 +63,7 @@ static void power_init(void)
 static void pins_init(void)
 {
 	/* Pin usage:
-	 * PA0  ()                 : Wakeup on Vnc / Threshold
+	 * PA0  (OUT - OD GPIO)    : Wakeup on Vnc / Threshold
 	 * PA1  (ANALOG - ADC_IN1) : CC sense
 	 * PA2  (ANALOG - ADC_IN2) : Current sense
 	 * PA3  (ANALOG - ADC_IN3) : Voltage sense
@@ -78,14 +79,15 @@ static void pins_init(void)
 	 * PF0  (OUT - GPIO)       : LM5050 FET driver off
 	 * PF1  (OUT - GPIO)       : discharge FET
 	 */
-	STM32_GPIO_ODR(GPIO_A) = HIGH(4) | HIGH(6);
+	STM32_GPIO_ODR(GPIO_A) = /* HIGH(0) | */ HIGH(4) | HIGH(6);
+	STM32_GPIO_PUPDR(GPIO_A) = 1 << (7 *2); /* Pull up on PA7 */
 	STM32_GPIO_AFRL(GPIO_A) = AFx(7, 5);
 	STM32_GPIO_AFRH(GPIO_A) = AFx(9, 1) | AFx(10, 1);
-	STM32_GPIO_OTYPER(GPIO_A) = ODR(4) | ODR(6);
+	STM32_GPIO_OTYPER(GPIO_A) = ODR(0) | ODR(4) | ODR(6);
 	STM32_GPIO_OSPEEDR(GPIO_A) = HISPEED(5) | HISPEED(6) | HISPEED(7);
-	STM32_GPIO_MODER(GPIO_A) = ANALOG(1) | ANALOG(2) | ANALOG(3) | OUT(4)
-				 | AF(5) /*| AF(6)*/ | AF(7) | AF(9) | AF(10)
-				 | OUT(13) | OUT(14);
+	STM32_GPIO_MODER(GPIO_A) = OUT(0) | ANALOG(1) | ANALOG(2) | ANALOG(3)
+				 | OUT(4) | AF(5) /*| AF(6)*/ | AF(7) | AF(9)
+				 | AF(10) | OUT(13) | OUT(14);
 	/* set PF0 / PF1 as output, PF0 is open-drain, high by default */
 	STM32_GPIO_ODR(GPIO_F) = HIGH(0);
 	STM32_GPIO_MODER(GPIO_F) = OUT(0) | OUT(1);
@@ -146,6 +148,15 @@ static void timers_init(void)
 	STM32_TIM_CR1(2) = 1;
 }
 
+static void irq_init(void)
+{
+	/* clear all pending interrupts */
+	//CPU_NVIC_DIS(0) = 0xffffffff;
+	CPU_NVIC_UNPEND(0) = 0xffffffff;
+	/* enable global interrupts */
+	asm("cpsie i");
+}
+
 void hardware_init(void)
 {
 	power_init();
@@ -154,6 +165,7 @@ void hardware_init(void)
 	uart_init();
 	timers_init();
 	adc_init();
+	irq_init();
 }
 
 int adc_read_channel(enum adc_channel ch)

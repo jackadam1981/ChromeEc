@@ -4,6 +4,8 @@
  */
 /* Tiny charger configuration */
 
+#include "adc.h"
+#include "adc_chip.h"
 #include "common.h"
 #include "debug.h"
 #include "irq_handler.h"
@@ -11,9 +13,16 @@
 #include "usb_pd.h"
 #include "util.h"
 
+extern void pd_rx_handler(void);
+
 /* External interrupt EXTINT7 for external comparator on PA7 */
-void IRQ_HANDLER(STM32_IRQ_EXTI0_1)(void)
+void IRQ_HANDLER(STM32_IRQ_EXTI4_15)(void)
 {
+	/* clear the interrupt */
+	STM32_EXTI_PR = STM32_EXTI_PR;
+	/* */
+	pd_rx_handler();
+
 	debug_printf("!\n");
 	/* send PD_EVENT_RX */
 	last_event = PD_EVENT_RX;

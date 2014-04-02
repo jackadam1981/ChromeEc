@@ -8,6 +8,7 @@
 #include "common.h"
 #include "console.h"
 #include "crc.h"
+#include "debug.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "registers.h"
@@ -23,7 +24,7 @@
 /* dump full packet on RX error */
 static int debug_dump;
 #else
-#define CPRINTF(format, args...)
+#define CPRINTF(format, args...) debug_printf(format, ## args)
 const int debug_dump = 0;
 #endif
 
@@ -537,6 +538,7 @@ static int analyze_rx(uint32_t *payload)
 
 	/* Detect preamble */
 	bit = pd_find_preamble(ctxt);
+	debug_printf("PREAMBLE %d\n", bit);
 	if (bit < 0) {
 		msg = "Preamble";
 		goto packet_err;
@@ -545,6 +547,7 @@ static int analyze_rx(uint32_t *payload)
 	/* Find the Start Of Packet sequence */
 	while (bit > 0) {
 		bit = pd_dequeue_bits(ctxt, bit, 20, &val);
+		debug_printf("SOP %d\n", bit);
 		if (val == PD_SOP)
 			break;
 		/* TODO: detect SOP with 1 error code */
@@ -557,12 +560,14 @@ static int analyze_rx(uint32_t *payload)
 
 	/* read header */
 	bit = decode_short(ctxt, bit, &header);
+	debug_printf("HEAD %d = %04x\n", bit, header);
 	crc32_hash16(header);
 	cnt = PD_HEADER_CNT(header);
 
 	/* read payload data */
 	for (p = 0; p < cnt && bit > 0; p++) {
 		bit = decode_word(ctxt, bit, payload+p);
+		debug_printf("P/%d %04x\n", bit, payload);
 		crc32_hash32(payload[p]);
 	}
 	if (bit < 0) {
@@ -721,7 +726,7 @@ void pd_task(void)
 
 void pd_rx_event(void)
 {
-	task_set_event(TASK_ID_PD, PD_EVENT_RX, 0);
+	//task_set_event(TASK_ID_PD, PD_EVENT_RX, 0);
 }
 
 #ifdef CONFIG_COMMON_RUNTIME
