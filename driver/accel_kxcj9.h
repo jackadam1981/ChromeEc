@@ -109,7 +109,7 @@
  * @param id Target accelerometer
  * @param threshold Threshold for interrupt in units of counts.
  */
-int accel_set_interrupt(const enum accel_id id, unsigned int threshold);
+int accel_set_interrupt(const enum motion_sensor_id id, unsigned int threshold);
 #endif
 
 #endif /* __CROS_EC_ACCEL_KXCJ9_H */

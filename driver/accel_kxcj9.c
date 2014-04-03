@@ -9,6 +9,7 @@
 #include "common.h"
 #include "console.h"
 #include "driver/accel_kxcj9.h"
+#include "ec_commands.h"
 #include "gpio.h"
 #include "i2c.h"
 #include "task.h"
@@ -60,22 +61,22 @@ const struct accel_param_pair datarates[] = {
 };
 
 /* Current range of each accelerometer. The value is an index into ranges[]. */
-static int sensor_range[ACCEL_COUNT] = {0, 0};
+static int sensor_range[MOTION_SENSOR_COUNT] = {0, 0};
 
 /*
  * Current resolution of each accelerometer. The value is an index into
  * resolutions[].
  */
-static int sensor_resolution[ACCEL_COUNT] = {1, 1};
+static int sensor_resolution[MOTION_SENSOR_COUNT] = {1, 1};
 
 /*
  * Current output data rate of each accelerometer. The value is an index into
  * datarates[].
  */
-static int sensor_datarate[ACCEL_COUNT] = {6, 6};
+static int sensor_datarate[MOTION_SENSOR_COUNT] = {6, 6};
 
 
-static struct mutex accel_mutex[ACCEL_COUNT];
+static struct mutex accel_mutex[MOTION_SENSOR_COUNT];
 
 /**
  * Find index into a accel_param_pair that matches the given engineering value
@@ -131,7 +132,7 @@ static int raw_write8(const int addr, const int reg, int data)
  *
  * @return EC_SUCCESS if successful, EC_ERROR_* otherwise
  */
-static int disable_sensor(const enum accel_id id, int *ctrl1)
+static int disable_sensor(const enum motion_sensor_id id, int *ctrl1)
 {
 	int ret;
 
@@ -170,7 +171,7 @@ static int disable_sensor(const enum accel_id id, int *ctrl1)
  *
  * @return EC_SUCCESS if successful, EC_ERROR_* otherwise
  */
-static int enable_sensor(const enum accel_id id, const int ctrl1)
+static int enable_sensor(const enum motion_sensor_id id, const int ctrl1)
 {
 	int i, ret;
 
@@ -196,12 +197,13 @@ static int enable_sensor(const enum accel_id id, const int ctrl1)
 	return ret;
 }
 
-int accel_set_range(const enum accel_id id, const int range, const int rnd)
+int accel_set_range(const enum motion_sensor_id id, const int range,
+		const int rnd)
 {
 	int ret, ctrl1, ctrl1_new, index;
 
 	/* Check for valid id. */
-	if (id < 0 || id >= ACCEL_COUNT)
+	if (id < 0 || id >= MOTION_SENSOR_COUNT)
 		return EC_ERROR_INVAL;
 
 	/* Find index for interface pair matching the specified range. */
@@ -229,22 +231,23 @@ int accel_set_range(const enum accel_id id, const int range, const int rnd)
 	return ret;
 }
 
-int accel_get_range(const enum accel_id id, int * const range)
+int accel_get_range(const enum motion_sensor_id id, int * const range)
 {
 	/* Check for valid id. */
-	if (id < 0 || id >= ACCEL_COUNT)
+	if (id < 0 || id >= MOTION_SENSOR_COUNT)
 		return EC_ERROR_INVAL;
 
 	*range = ranges[sensor_range[id]].val;
 	return EC_SUCCESS;
 }
 
-int accel_set_resolution(const enum accel_id id, const int res, const int rnd)
+int accel_set_resolution(const enum motion_sensor_id id, const int res,
+		const int rnd)
 {
 	int ret, ctrl1, ctrl1_new, index;
 
 	/* Check for valid id. */
-	if (id < 0 || id >= ACCEL_COUNT)
+	if (id < 0 || id >= MOTION_SENSOR_COUNT)
 		return EC_ERROR_INVAL;
 
 	/* Find index for interface pair matching the specified resolution. */
@@ -273,22 +276,23 @@ int accel_set_resolution(const enum accel_id id, const int res, const int rnd)
 	return ret;
 }
 
-int accel_get_resolution(const enum accel_id id, int * const res)
+int accel_get_resolution(const enum motion_sensor_id id, int * const res)
 {
 	/* Check for valid id. */
-	if (id < 0 || id >= ACCEL_COUNT)
+	if (id < 0 || id >= MOTION_SENSOR_COUNT)
 		return EC_ERROR_INVAL;
 
 	*res = resolutions[sensor_resolution[id]].val;
 	return EC_SUCCESS;
 }
 
-int accel_set_datarate(const enum accel_id id, const int rate, const int rnd)
+int accel_set_datarate(const enum motion_sensor_id id, const int rate,
+		const int rnd)
 {
 	int ret, ctrl1, index;
 
 	/* Check for valid id. */
-	if (id < 0 || id >= ACCEL_COUNT)
+	if (id < 0 || id >= MOTION_SENSOR_COUNT)
 		return EC_ERROR_INVAL;
 
 	/* Find index for interface pair matching the specified rate. */
@@ -314,10 +318,10 @@ int accel_set_datarate(const enum accel_id id, const int rate, const int rnd)
 	return ret;
 }
 
-int accel_get_datarate(const enum accel_id id, int * const rate)
+int accel_get_datarate(const enum motion_sensor_id id, int * const rate)
 {
 	/* Check for valid id. */
-	if (id < 0 || id >= ACCEL_COUNT)
+	if (id < 0 || id >= MOTION_SENSOR_COUNT)
 		return EC_ERROR_INVAL;
 
 	*rate = datarates[sensor_datarate[id]].val;
@@ -326,7 +330,7 @@ int accel_get_datarate(const enum accel_id id, int * const rate)
 
 
 #ifdef CONFIG_ACCEL_INTERRUPTS
-int accel_set_interrupt(const enum accel_id id, unsigned int threshold)
+int accel_set_interrupt(const enum motion_sensor_id id, unsigned int threshold)
 {
 	int ctrl1, tmp, ret;
 
@@ -380,15 +384,15 @@ error_enable_sensor:
 }
 #endif
 
-int accel_read(const enum accel_id id, int * const x_acc, int * const y_acc,
-		int * const z_acc)
+int accel_read(const enum motion_sensor_id id, int * const x_acc,
+		int * const y_acc, int * const z_acc)
 {
 	uint8_t acc[6];
 	uint8_t reg = KXCJ9_XOUT_L;
 	int ret, multiplier;
 
 	/* Check for valid id. */
-	if (id < 0 || id >= ACCEL_COUNT)
+	if (id < 0 || id >= MOTION_SENSOR_COUNT)
 		return EC_ERROR_INVAL;
 
 	/* Read 6 bytes starting at KXCJ9_XOUT_L. */
@@ -436,13 +440,13 @@ int accel_read(const enum accel_id id, int * const x_acc, int * const y_acc,
 	return EC_SUCCESS;
 }
 
-int accel_init(const enum accel_id id)
+int accel_init(const enum motion_sensor_id id)
 {
 	int ret = EC_SUCCESS;
 	int cnt = 0, ctrl1, ctrl2;
 
 	/* Check for valid id. */
-	if (id < 0 || id >= ACCEL_COUNT)
+	if (id < 0 || id >= MOTION_SENSOR_COUNT)
 		return EC_ERROR_INVAL;
 
 	/* Disable the sensor to allow for changing of critical parameters. */
@@ -589,7 +593,7 @@ static int command_accelrange(int argc, char **argv)
 
 	/* First argument is sensor id. */
 	id = strtoi(argv[1], &e, 0);
-	if (*e || id < 0 || id > ACCEL_COUNT)
+	if (*e || id < 0 || id > MOTION_SENSOR_COUNT)
 		return EC_ERROR_PARAM1;
 
 	if (argc >= 3) {
@@ -632,7 +636,7 @@ static int command_accelresolution(int argc, char **argv)
 
 	/* First argument is sensor id. */
 	id = strtoi(argv[1], &e, 0);
-	if (*e || id < 0 || id > ACCEL_COUNT)
+	if (*e || id < 0 || id > MOTION_SENSOR_COUNT)
 		return EC_ERROR_PARAM1;
 
 	if (argc >= 3) {
@@ -675,7 +679,7 @@ static int command_acceldatarate(int argc, char **argv)
 
 	/* First argument is sensor id. */
 	id = strtoi(argv[1], &e, 0);
-	if (*e || id < 0 || id > ACCEL_COUNT)
+	if (*e || id < 0 || id > MOTION_SENSOR_COUNT)
 		return EC_ERROR_PARAM1;
 
 	if (argc >= 3) {
@@ -719,7 +723,7 @@ static int command_accelerometer_interrupt(int argc, char **argv)
 
 	/* First argument is id. */
 	id = strtoi(argv[1], &e, 0);
-	if (*e || id < 0 || id >= ACCEL_COUNT)
+	if (*e || id < 0 || id >= MOTION_SENSOR_COUNT)
 		return EC_ERROR_PARAM1;
 
 	/* Second argument is interrupt threshold. */

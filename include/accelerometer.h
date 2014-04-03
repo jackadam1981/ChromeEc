@@ -11,8 +11,8 @@
 /* This array must be defined in board.c. */
 extern const int accel_addr[];
 
-/* This enum must be defined in board.h. */
-enum accel_id;
+/* This enum must be defined in ec_commands.h. */
+enum motion_sensor_id;
 
 /* Number of counts from accelerometer that represents 1G acceleration. */
 #define ACCEL_G  1024
@@ -29,8 +29,8 @@ enum accel_id;
  *
  * @return EC_SUCCESS if successful, non-zero if error.
  */
-int accel_read(const enum accel_id id, int * const x_acc, int * const y_acc,
-		int * const z_acc);
+int accel_read(const enum motion_sensor_id id, int * const x_acc,
+		int * const y_acc, int * const z_acc);
 
 /**
  * Initialize accelerometers.
@@ -39,7 +39,7 @@ int accel_read(const enum accel_id id, int * const x_acc, int * const y_acc,
  *
  * @return EC_SUCCESS if successful, non-zero if error.
  */
-int accel_init(const enum accel_id id);
+int accel_init(const enum motion_sensor_id id);
 
 /**
  * Setter and getter methods for the sensor range. The sensor range defines
@@ -53,8 +53,9 @@ int accel_init(const enum accel_id id);
  *
  * @return EC_SUCCESS if successful, non-zero if error.
  */
-int accel_set_range(const enum accel_id id, const int range, const int rnd);
-int accel_get_range(const enum accel_id id, int * const range);
+int accel_set_range(const enum motion_sensor_id id, const int range,
+		const int rnd);
+int accel_get_range(const enum motion_sensor_id id, int * const range);
 
 
 /**
@@ -67,8 +68,9 @@ int accel_get_range(const enum accel_id id, int * const range);
  *
  * @return EC_SUCCESS if successful, non-zero if error.
  */
-int accel_set_resolution(const enum accel_id id, const int res, const int rnd);
-int accel_get_resolution(const enum accel_id id, int * const res);
+int accel_set_resolution(const enum motion_sensor_id id, const int res,
+		const int rnd);
+int accel_get_resolution(const enum motion_sensor_id id, int * const res);
 
 /**
  * Setter and getter methods for the sensor output data range. As the ODR
@@ -81,7 +83,8 @@ int accel_get_resolution(const enum accel_id id, int * const res);
  *
  * @return EC_SUCCESS if successful, non-zero if error.
  */
-int accel_set_datarate(const enum accel_id id, const int rate, const int rnd);
-int accel_get_datarate(const enum accel_id id, int * const rate);
+int accel_set_datarate(const enum motion_sensor_id id, const int rate,
+		const int rnd);
+int accel_get_datarate(const enum motion_sensor_id id, int * const rate);
 
 #endif /* __CROS_EC_ACCELEROMETER_H */

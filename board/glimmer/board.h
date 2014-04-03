@@ -218,15 +218,6 @@ enum temp_sensor_id {
 	TEMP_SENSOR_COUNT
 };
 
-/* Identifiers for each accelerometer used. */
-enum accel_id {
-	ACCEL_BASE,
-	ACCEL_LID,
-
-	/* Number of accelerometers. */
-	ACCEL_COUNT
-};
-
 /* Discharge battery when on AC power for factory test. */
 int board_discharge_on_ac(int enable);
 

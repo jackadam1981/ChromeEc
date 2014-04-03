@@ -7,6 +7,8 @@
 
 #include <math.h>
 
+#include "common.h"
+#include "ec_commands.h"
 #include "math_util.h"
 #include "motion_sense.h"
 #include "test_util.h"
@@ -15,35 +17,38 @@
 /* Mock functions */
 
 /* Need to define accelerometer functions just to compile. */
-int accel_init(enum accel_id id)
+int accel_init(enum motion_sensor_id id)
 {
 	return EC_SUCCESS;
 }
-int accel_read(enum accel_id id, int *x_acc, int *y_acc, int *z_acc)
+int accel_read(enum motion_sensor_id id, int *x_acc, int *y_acc, int *z_acc)
 {
 	return EC_SUCCESS;
 }
-int accel_set_range(const enum accel_id id, const int range, const int rnd)
+int accel_set_range(const enum motion_sensor_id id, const int range,
+		const int rnd)
 {
 	return EC_SUCCESS;
 }
-int accel_get_range(const enum accel_id id, int * const range)
+int accel_get_range(const enum motion_sensor_id id, int * const range)
 {
 	return EC_SUCCESS;
 }
-int accel_set_resolution(const enum accel_id id, const int res, const int rnd)
+int accel_set_resolution(const enum motion_sensor_id id, const int res,
+		const int rnd)
 {
 	return EC_SUCCESS;
 }
-int accel_get_resolution(const enum accel_id id, int * const res)
+int accel_get_resolution(const enum motion_sensor_id id, int * const res)
 {
 	return EC_SUCCESS;
 }
-int accel_set_datarate(const enum accel_id id, const int rate, const int rnd)
+int accel_set_datarate(const enum motion_sensor_id id, const int rate,
+		const int rnd)
 {
 	return EC_SUCCESS;
 }
-int accel_get_datarate(const enum accel_id id, int * const rate)
+int accel_get_datarate(const enum motion_sensor_id id, int * const rate)
 {
 	return EC_SUCCESS;
 }

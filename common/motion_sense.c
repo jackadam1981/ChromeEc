@@ -191,8 +191,8 @@ void motion_sense_task(void)
 	 */
 
 	/* Initialize accelerometers. */
-	ret = accel_init(ACCEL_LID);
-	ret |= accel_init(ACCEL_BASE);
+	ret = accel_init(MS_ACCEL_LID);
+	ret |= accel_init(MS_ACCEL_BASE);
 
 	/* If accelerometers do not initialize, then end task. */
 	if (ret != EC_SUCCESS) {
@@ -205,12 +205,12 @@ void motion_sense_task(void)
 	accel_interval_ms = accel_interval_ap_suspend_ms;
 
 	/* Set default accelerometer parameters. */
-	accel_set_range(ACCEL_LID,  2, 1);
-	accel_set_range(ACCEL_BASE, 2, 1);
-	accel_set_resolution(ACCEL_LID,  12, 1);
-	accel_set_resolution(ACCEL_BASE, 12, 1);
-	accel_set_datarate(ACCEL_LID,  100000, 1);
-	accel_set_datarate(ACCEL_BASE, 100000, 1);
+	accel_set_range(MS_ACCEL_LID,  2, 1);
+	accel_set_range(MS_ACCEL_BASE, 2, 1);
+	accel_set_resolution(MS_ACCEL_LID,  12, 1);
+	accel_set_resolution(MS_ACCEL_BASE, 12, 1);
+	accel_set_datarate(MS_ACCEL_LID,  100000, 1);
+	accel_set_datarate(MS_ACCEL_BASE, 100000, 1);
 
 	/* Write to status byte to represent that accelerometers are present. */
 	*lpc_status |= EC_MEMMAP_ACC_STATUS_PRESENCE_BIT;
@@ -219,9 +219,9 @@ void motion_sense_task(void)
 		ts0 = get_time();
 
 		/* Read all accelerations. */
-		accel_read(ACCEL_LID, &acc_lid_raw[X], &acc_lid_raw[Y],
+		accel_read(MS_ACCEL_LID, &acc_lid_raw[X], &acc_lid_raw[Y],
 			   &acc_lid_raw[Z]);
-		accel_read(ACCEL_BASE, &acc_base[X], &acc_base[Y],
+		accel_read(MS_ACCEL_BASE, &acc_base[X], &acc_base[Y],
 			   &acc_base[Z]);
 
 		/*
@@ -335,6 +335,9 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		 * use some motion_sense data structure from the board file to
 		 * help fill in this response.
 		 */
+		out->dump.ms_active =
+				*(host_get_memmap(EC_MEMMAP_ACC_STATUS)) &
+					EC_MEMMAP_ACC_STATUS_PRESENCE_BIT;
 		out->dump.sensor_presence[0] = 1;
 		out->dump.sensor_presence[1] = 1;
 		out->dump.sensor_presence[2] = 0;
@@ -355,12 +358,12 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		 * help fill in this response.
 		 */
 		switch (in->sensor_odr.sensor_num) {
-		case ACCEL_BASE:
+		case MS_ACCEL_BASE:
 			out->info.type = MOTIONSENSE_TYPE_ACCEL;
 			out->info.location = MOTIONSENSE_LOC_BASE;
 			out->info.chip = MOTIONSENSE_CHIP_KXCJ9;
 			break;
-		case ACCEL_LID:
+		case MS_ACCEL_LID:
 			out->info.type = MOTIONSENSE_TYPE_ACCEL;
 			out->info.location = MOTIONSENSE_LOC_LID;
 			out->info.chip = MOTIONSENSE_CHIP_KXCJ9;
@@ -396,7 +399,7 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 
 	case MOTIONSENSE_CMD_SENSOR_ODR:
 		/* Verify sensor number is valid. */
-		if (in->sensor_odr.sensor_num >= ACCEL_COUNT)
+		if (in->sensor_odr.sensor_num >= MOTION_SENSOR_COUNT)
 			return EC_RES_INVALID_PARAM;
 
 		id = in->sensor_odr.sensor_num;
@@ -419,7 +422,7 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 
 	case MOTIONSENSE_CMD_SENSOR_RANGE:
 		/* Verify sensor number is valid. */
-		if (in->sensor_odr.sensor_num >= ACCEL_COUNT)
+		if (in->sensor_odr.sensor_num >= MOTION_SENSOR_COUNT)
 			return EC_RES_INVALID_PARAM;
 
 		id = in->sensor_odr.sensor_num;

@@ -1161,7 +1161,8 @@ enum ec_vboot_hash_status {
 enum motionsense_command {
 	/*
 	 * Dump command returns all motion sensor data including a physical
-	 * presence bit for each potential sensor.
+	 * presence bit for each potential sensor and a bit for whether the
+	 * motion sensor task is active.
 	 */
 	MOTIONSENSE_CMD_DUMP = 0,
 
@@ -1192,6 +1193,15 @@ enum motionsense_command {
 
 	/* Number of motionsense sub-commands. */
 	MOTIONSENSE_NUM_CMDS
+};
+
+/* Identifiers for each motion sensor used. */
+enum motion_sensor_id {
+	MS_ACCEL_BASE,
+	MS_ACCEL_LID,
+
+	/* Number of motion sensors. */
+	MOTION_SENSOR_COUNT
 };
 
 /* List of motion sensor types. */
@@ -1232,6 +1242,7 @@ struct ec_params_motion_sense {
 
 		/* Used for MOTIONSENSE_CMD_INFO. */
 		struct {
+			/* Should be element of enum motion_sensor_id. */
 			uint8_t sensor_num;
 		} info;
 
@@ -1240,7 +1251,9 @@ struct ec_params_motion_sense {
 		 * MOTIONSENSE_CMD_SENSOR_RANGE.
 		 */
 		struct {
+			/* Should be element of enum motion_sensor_id. */
 			uint8_t sensor_num;
+
 			uint8_t roundup;
 			uint16_t reserved;
 			int32_t data;
@@ -1252,8 +1265,8 @@ struct ec_response_motion_sense {
 	union {
 		/* Used for MOTIONSENSE_CMD_DUMP. */
 		struct {
+			uint8_t ms_active;
 			uint8_t sensor_presence[3];
-			uint8_t reserved;
 			int16_t data[9];
 		} dump;
 

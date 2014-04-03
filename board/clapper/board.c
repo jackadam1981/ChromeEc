@@ -228,10 +228,10 @@ struct ec_thermal_config thermal_params[] = {
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
 
 const int accel_addr[] = {
-	KXCJ9_ADDR1,	/* ACCEL_BASE */
-	KXCJ9_ADDR0	/* ACCEL_LID */
+	KXCJ9_ADDR1,	/* MS_ACCEL_BASE */
+	KXCJ9_ADDR0	/* MS_ACCEL_LID */
 };
-BUILD_ASSERT(ARRAY_SIZE(accel_addr) == ACCEL_COUNT);
+BUILD_ASSERT(ARRAY_SIZE(accel_addr) == MOTION_SENSOR_COUNT);
 
 #ifdef HAS_TASK_CHARGER
 /**
