@@ -1706,6 +1706,11 @@ static int cmd_motionsense(int argc, char **argv)
 		if (rv < 0)
 			return rv;
 
+		if (resp.dump.ms_active)
+			printf("Motion sensing active\n");
+		else
+			printf("Motion sensing inactive\n");
+
 		for (i = 0; i < ARRAY_SIZE(resp.dump.sensor_presence); i++) {
 			printf("Sensor %d: ", i);
 			if (resp.dump.sensor_presence[i])

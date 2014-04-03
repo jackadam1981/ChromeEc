@@ -322,6 +322,27 @@ void accel_int_base(enum gpio_signal signal)
 /*****************************************************************************/
 /* Host commands */
 
+/**
+ * Temporary function to map host sensor IDs to EC sensor IDs.
+ *
+ * TODO(crosbug.com/p/27320): Eventually we need a board specific table
+ * specifying which motion sensors are attached and which driver to use to
+ * access that sensor. Once we have this, this function should be able to go
+ * away.
+ */
+static int host_sensor_id_to_ec_sensor_id(int host_id)
+{
+	switch (host_id) {
+	case MS_ACCEL_BASE:
+		return ACCEL_BASE;
+	case MS_ACCEL_LID:
+		return ACCEL_LID;
+	}
+
+	/* If no match then the EC currently doesn't support ID received. */
+	return -1;
+}
+
 static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_motion_sense *in = args->params;
@@ -354,7 +375,11 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		 * use some motion_sense data structure from the board file to
 		 * help fill in this response.
 		 */
-		switch (in->sensor_odr.sensor_num) {
+		id = host_sensor_id_to_ec_sensor_id(in->sensor_odr.sensor_num);
+		if (id < 0)
+			return EC_RES_INVALID_PARAM;
+
+		switch (id) {
 		case ACCEL_BASE:
 			out->info.type = MOTIONSENSE_TYPE_ACCEL;
 			out->info.location = MOTIONSENSE_LOC_BASE;
@@ -396,10 +421,9 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 
 	case MOTIONSENSE_CMD_SENSOR_ODR:
 		/* Verify sensor number is valid. */
-		if (in->sensor_odr.sensor_num >= ACCEL_COUNT)
+		id = host_sensor_id_to_ec_sensor_id(in->sensor_odr.sensor_num);
+		if (id < 0)
 			return EC_RES_INVALID_PARAM;
-
-		id = in->sensor_odr.sensor_num;
 
 		/* Set new datarate if the data arg has a value. */
 		if (in->sensor_odr.data != EC_MOTION_SENSE_NO_VALUE) {
@@ -419,10 +443,9 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 
 	case MOTIONSENSE_CMD_SENSOR_RANGE:
 		/* Verify sensor number is valid. */
-		if (in->sensor_odr.sensor_num >= ACCEL_COUNT)
+		id = host_sensor_id_to_ec_sensor_id(in->sensor_odr.sensor_num);
+		if (id < 0)
 			return EC_RES_INVALID_PARAM;
-
-		id = in->sensor_odr.sensor_num;
 
 		/* Set new datarate if the data arg has a value. */
 		if (in->sensor_range.data != EC_MOTION_SENSE_NO_VALUE) {
