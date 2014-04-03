@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59da1b34_ffc23f21",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-04-03T19:31:27Z",
+      "side": 1,
+      "message": "...but the way we\u0027re going, we\u0027ll soon have more than 32 host events, so might note this should be left for that...",
+      "revId": "6b09647439fe37eab0d285f388341559708b2bc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d910cb97_a316bad5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-04-03T19:31:27Z",
+      "side": 1,
+      "message": "typo: Gyro",
+      "revId": "6b09647439fe37eab0d285f388341559708b2bc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
