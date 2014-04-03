@@ -79,18 +79,10 @@ void motion_get_accel_base(vector_3_t *v);
 #endif
 
 /**
- * Interrupt function for lid accelerometer.
+ * Interrupt function for accelerometer.
  *
  * @param signal GPIO signal that caused interrupt
  */
-void accel_int_lid(enum gpio_signal signal);
-
-/**
- * Interrupt function for base accelerometer.
- *
- * @param signal GPIO signal that caused interrupt
- */
-void accel_int_base(enum gpio_signal signal);
-
+void accel_int(enum gpio_signal signal);
 
 #endif /* __CROS_EC_MOTION_SENSE_H */

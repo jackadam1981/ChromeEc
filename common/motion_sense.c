@@ -6,6 +6,7 @@
 /* Motion sense module to read from various motion sensors. */
 
 #include "accelerometer.h"
+#include "chipset.h"
 #include "common.h"
 #include "console.h"
 #include "hooks.h"
@@ -30,9 +31,19 @@ static vector_3_t acc_lid_host, acc_base_host;
 static float lid_angle_deg;
 static int lid_angle_is_reliable;
 
+/* Whether the motion sense task is running or sleeping. */
+static int motion_sense_enabled;
+
+/* Whether the accelerometers have successfully been initialized. */
+static int accelerometers_initialized;
+
 /* Bounds for setting the sensor polling interval. */
 #define MIN_POLLING_INTERVAL_MS 5
 #define MAX_POLLING_INTERVAL_MS 1000
+
+/* TODO(crosbug.com/p/27577): Check reset interval works on hardware. */
+#define ACCEL_RESET_DELAY_US (5 * MSEC)
+#define ACCEL_ENABLE_DELAY_US (50 * MSEC)
 
 /* Accelerometer polling intervals based on chipset state. */
 static int accel_interval_ap_on_ms = 10;
@@ -165,30 +176,37 @@ void motion_get_accel_base(vector_3_t *v)
 }
 #endif
 
-static void set_ap_suspend_polling(void)
+static int motion_accel_enable(int enable)
 {
-	accel_interval_ms = accel_interval_ap_suspend_ms;
-}
-DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, set_ap_suspend_polling, HOOK_PRIO_DEFAULT);
-
-static void set_ap_on_polling(void)
-{
-	accel_interval_ms = accel_interval_ap_on_ms;
-}
-DECLARE_HOOK(HOOK_CHIPSET_RESUME, set_ap_on_polling, HOOK_PRIO_DEFAULT);
-
-
-void motion_sense_task(void)
-{
-	static timestamp_t ts0, ts1;
-	int wait_us;
 	int ret;
 	uint8_t *lpc_status;
-	uint16_t *lpc_data;
-	int sample_id = 0;
 
 	lpc_status = host_get_memmap(EC_MEMMAP_ACC_STATUS);
-	lpc_data = (uint16_t *)host_get_memmap(EC_MEMMAP_ACC_DATA);
+
+	/* Check if the accelerometers are already in the correct state */
+	if (enable && accelerometers_initialized)
+		return EC_SUCCESS;
+
+	/*
+	 * Declare the accelerometers not initialized unless they complete
+	 * the initization process.
+	 */
+	accelerometers_initialized = 0;
+	*lpc_status &= ~EC_MEMMAP_ACC_STATUS_PRESENCE_BIT;
+
+#ifdef CONFIG_ACCEL_POWER_GPIO
+	if (gpio_get_level(CONFIG_ACCEL_POWER_GPIO) != enable) {
+		gpio_set_level(CONFIG_ACCEL_POWER_GPIO, enable);
+
+		/* Give the accelerometers time to power up */
+		if (enable)
+			usleep(ACCEL_ENABLE_DELAY_US);
+	}
+#endif
+
+	if (!enable) {
+		return EC_SUCCESS;
+	}
 
 	/*
 	 * TODO(crosbug.com/p/27320): The motion_sense task currently assumes
@@ -197,20 +215,31 @@ void motion_sense_task(void)
 	 * driver. Eventually, all of these assumptions will have to be removed
 	 * when we have other configurations of motion sensors.
 	 */
-
-	/* Initialize accelerometers. */
 	ret = accel_init(ACCEL_LID);
 	ret |= accel_init(ACCEL_BASE);
 
-	/* If accelerometers do not initialize, then end task. */
+#ifdef CONFIG_ACCEL_POWER_GPIO
 	if (ret != EC_SUCCESS) {
-		CPRINTF("[%T, Accelerometers failed to initialize. Stopping "
-				"motion sense task.\n");
-		return;
-	}
+		/* Power cycle accelometers. */
+		CPRINTF("[%T Resetting accelerometers]\n");
+		gpio_set_level(CONFIG_ACCEL_POWER_GPIO, 0);
+		usleep(ACCEL_RESET_DELAY_US);
+		gpio_set_level(CONFIG_ACCEL_POWER_GPIO, 1);
+		usleep(ACCEL_ENABLE_DELAY_US);
 
-	/* Initialize sampling interval. */
-	accel_interval_ms = accel_interval_ap_suspend_ms;
+		/* Try initializing again. */
+		ret = accel_init(ACCEL_LID);
+		ret |= accel_init(ACCEL_BASE);
+	}
+#endif /* CONFIG_ACCEL_POWER_GPIO */
+
+	if (ret != EC_SUCCESS) {
+#ifdef CONFIG_ACCEL_POWER_GPIO
+		gpio_set_level(CONFIG_ACCEL_POWER_GPIO, 0);
+#endif /* CONFIG_ACCEL_POWER_GPIO */
+		CPRINTF("[%T Accelerometers failed to initialize]\n");
+		return EC_ERROR_UNKNOWN;
+	}
 
 	/* Set default accelerometer parameters. */
 	accel_set_range(ACCEL_LID,  2, 1);
@@ -223,7 +252,87 @@ void motion_sense_task(void)
 	/* Write to status byte to represent that accelerometers are present. */
 	*lpc_status |= EC_MEMMAP_ACC_STATUS_PRESENCE_BIT;
 
+	accelerometers_initialized = 1;
+	return EC_SUCCESS;
+}
+
+static void set_ap_suspend_polling(void)
+{
+	accel_interval_ms = accel_interval_ap_suspend_ms;
+	CPRINTF("[%T HOOK set sample interval to %d]\n", accel_interval_ms);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, set_ap_suspend_polling, HOOK_PRIO_DEFAULT);
+
+static void set_ap_on_polling(void)
+{
+	accel_interval_ms = accel_interval_ap_on_ms;
+	CPRINTF("[%T HOOK set sample interval to %d]\n", accel_interval_ms);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, set_ap_on_polling, HOOK_PRIO_DEFAULT);
+
+#ifndef CONFIG_MOTION_SENSE_IN_G3
+static void motion_chipset_startup_hook(void)
+{
+	CPRINTF("[%T Waking motion sense task]\n");
+	motion_sense_enabled = 1;
+	task_wake(TASK_ID_MOTIONSENSE);
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, motion_chipset_startup_hook,
+	     HOOK_PRIO_DEFAULT);
+
+static void motion_chipset_shutdown_hook(void)
+{
+	motion_sense_enabled = 0;
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, motion_chipset_shutdown_hook,
+	     HOOK_PRIO_DEFAULT);
+#endif /* NOT CONFIG_MOTION_SENSE_IN_G3 */
+
+#ifdef CONFIG_MOTION_SENSE_IN_G3
+static void motion_init_hook(void)
+{
+	motion_sense_enabled = 1;
+}
+DECLARE_HOOK(HOOK_INIT, motion_init_hook, HOOK_PRIO_DEFAULT);
+#endif
+
+void motion_sense_task(void)
+{
+	static timestamp_t ts0, ts1;
+	int wait_us;
+	uint8_t *lpc_status;
+	uint16_t *lpc_data;
+	int sample_id = 0;
+
+	lpc_status = host_get_memmap(EC_MEMMAP_ACC_STATUS);
+	lpc_data = (uint16_t *)host_get_memmap(EC_MEMMAP_ACC_DATA);
+
+	/* We may have sysjumped while the host is running. */
+	if (!motion_sense_enabled &&
+	    chipset_in_state(CHIPSET_STATE_ON | CHIPSET_STATE_SUSPEND)) {
+		motion_sense_enabled = 1;
+	}
+
+	/* Ensure we have the correct polling interval set. */
+	accel_interval_ms = chipset_in_state(CHIPSET_STATE_ON) ?
+				accel_interval_ap_on_ms :
+				accel_interval_ap_suspend_ms;
+	CPRINTF("[%T MS set sample interval to %d]\n", accel_interval_ms);
+
 	while (1) {
+		/* Suspend task if requested. */
+		if (!motion_sense_enabled) {
+			CPRINTF("[%T Suspending motion sense task]\n");
+			motion_accel_enable(0);
+			task_wait_event(-1);
+		}
+
+		/* Ensure accelerometers are ready. */
+		if (motion_accel_enable(1) != EC_SUCCESS) {
+			motion_sense_enabled = 0;
+			continue;
+		}
+
 		ts0 = get_time();
 
 		/* Read all accelerations. */
@@ -313,22 +422,14 @@ void motion_sense_task(void)
 	}
 }
 
-void accel_int_lid(enum gpio_signal signal)
+void accel_int(enum gpio_signal signal)
 {
 	/*
 	 * Print statement is here for testing with console accelint command.
 	 * Remove print statement when interrupt is used for real.
 	 */
-	CPRINTF("[%T Accelerometer wake-up interrupt occurred on lid]\n");
-}
-
-void accel_int_base(enum gpio_signal signal)
-{
-	/*
-	 * Print statement is here for testing with console accelint command.
-	 * Remove print statement when interrupt is used for real.
-	 */
-	CPRINTF("[%T Accelerometer wake-up interrupt occurred on base]\n");
+	CPRINTF("[%T Accelerometer wake-up interrupt occurred on %s]\n",
+		gpio_get_name(signal));
 }
 
 /*****************************************************************************/

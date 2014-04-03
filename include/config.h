@@ -45,6 +45,9 @@
 /* Specify type of accelerometers attached. */
 #undef CONFIG_ACCEL_KXCJ9
 
+/* Optional dedicated active high power enable GPIO for the accelerometers. */
+#undef CONFIG_ACCEL_POWER_GPIO
+
 /* Compile chip support for analog-to-digital convertor */
 #undef CONFIG_ADC
 
@@ -898,6 +901,8 @@
 
 #ifndef HAS_TASK_MOTIONSENSE
 #undef CONFIG_ACCEL_CALIBRATE
+/* Whether to poll accelerometers in S5/G3 state */
+#undef CONFIG_MOTION_SENSE_IN_G3
 #endif
 
 /*****************************************************************************/
