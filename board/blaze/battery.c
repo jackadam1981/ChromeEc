@@ -15,9 +15,8 @@
 /* Console output macros */
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
 
-/* These 2 defines are for cut_off command for 3S battery */
-#define SB_SHIP_MODE_ADDR	0x3a
-#define SB_SHIP_MODE_DATA	0xc574
+/* Shutdown mode parameter to write to manufacturer access register */
+#define SB_SHUTDOWN_DATA	0x0010
 
 static struct battery_info *battery_info;
 static int battery_cut_off;
@@ -59,8 +58,8 @@ static struct battery_info info_2s = {
 
 static struct battery_info info_3s = {
 
-	.voltage_max    = 12600,
-	.voltage_normal = 11100, /* Average of max & min */
+	.voltage_max    = 13050,
+	.voltage_normal = 11400, /* Average of max & min */
 	.voltage_min    =  9000,
 
 	/* Pre-charge values. */
@@ -71,7 +70,7 @@ static struct battery_info info_3s = {
 	.charging_min_c       = 0,
 	.charging_max_c       = 60,
 	.discharging_min_c    = 0,
-	.discharging_max_c    = 50,
+	.discharging_max_c    = 60,
 };
 
 static struct battery_device support_batteries[] = {
@@ -93,6 +92,27 @@ static struct battery_device support_batteries[] = {
 		.manuf			= "SONYCorp",
 		.device			= "AP13J4K",
 		.design_mv		= 11400,
+		.battery_info		= &info_3s,
+		.support_cut_off	= 1,
+	},
+	{
+		.manuf			= "13-1B",
+		.device			= "BO03037X",
+		.design_mv		= 11400,
+		.battery_info		= &info_3s,
+		.support_cut_off	= 1,
+	},
+	{
+		.manuf			= "13-1C",
+		.device			= "BO03037X",
+		.design_mv		= 11400,
+		.battery_info		= &info_3s,
+		.support_cut_off	= 1,
+	},
+	{
+		.manuf			= "13-1B",
+		.device			= "BO03032X",
+		.design_mv		= 11100,
 		.battery_info		= &info_3s,
 		.support_cut_off	= 1,
 	}
@@ -204,16 +224,16 @@ const struct battery_info *battery_get_info(void)
 
 	if (battery_manufacturer_name(manuf, sizeof(manuf))) {
 		CPRINTF("[%T Failed to get MANUF name]\n");
-		return NULL;
+		return &info_3s;
 	}
 
 	if (battery_device_name(device, sizeof(device))) {
 		CPRINTF("[%T Failed to get DEVICE name]\n");
-		return NULL;
+		return &info_3s;
 	}
 	if (battery_design_voltage((int *)&design_mv)) {
 		CPRINTF("[%T Failed to get DESIGN_VOLTAGE]\n");
-		return NULL;
+		return &info_3s;
 	}
 
 	for (i = 0; i < ARRAY_SIZE(support_batteries); ++i) {
@@ -231,12 +251,22 @@ const struct battery_info *battery_get_info(void)
 	return NULL;
 }
 
+static int cutoff(void)
+{
+	int rv;
+
+	/* Ship mode command must be sent twice to take effect */
+	rv = sb_write(SB_MANUFACTURER_ACCESS, SB_SHUTDOWN_DATA);
+
+	if (rv != EC_SUCCESS)
+		return rv;
+
+	return sb_write(SB_MANUFACTURER_ACCESS, SB_SHUTDOWN_DATA);
+}
+
 int battery_command_cut_off(struct host_cmd_handler_args *args)
 {
-	if (battery_cut_off)
-		return sb_write(SB_SHIP_MODE_ADDR, SB_SHIP_MODE_DATA);
-	else
-		return EC_RES_INVALID_COMMAND;
+	return cutoff() ? EC_RES_ERROR : EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_BATTERY_CUT_OFF, battery_command_cut_off,
 		     EC_VER_MASK(0));
