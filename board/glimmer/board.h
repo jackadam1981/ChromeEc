@@ -10,6 +10,7 @@
 
 /* Optional features */
 #define CONFIG_ACCEL_KXCJ9
+#define CONFIG_ACCEL_POWER_GPIO GPIO_ACCEL_EN
 #define CONFIG_AP_HANG_DETECT
 #define CONFIG_BACKLIGHT_LID
 #define CONFIG_BATTERY_PRESENT_GPIO GPIO_BAT_PRESENT_L
@@ -98,8 +99,7 @@ enum gpio_signal {
 	GPIO_BUTTON_VOLUME_DOWN_L, /* Volume down button */
 	GPIO_BUTTON_VOLUME_UP_L,   /* Volume up button */
 #ifdef HAS_TASK_MOTIONSENSE
-	GPIO_ACCEL_INT_LID,        /* Accelerometer interrupt lid */
-	GPIO_ACCEL_INT_BASE,       /* Accelerometer interrupt base */
+	GPIO_ACCEL_INT,            /* Accelerometer interrupt */
 #endif
 
 	/* Other inputs */
@@ -149,6 +149,7 @@ enum gpio_signal {
 	GPIO_KBD_IRQ_L,            /* Negative edge triggered irq. */
 	GPIO_I2C2_SCL,             /* I2C port 2, SCL pin */
 	GPIO_I2C2_SDA,             /* I2C port 2, SDA pin */
+	GPIO_ACCEL_EN,             /* Enable accelerometer power */
 
 	/* Number of GPIOs; not an actual GPIO */
 	GPIO_COUNT
