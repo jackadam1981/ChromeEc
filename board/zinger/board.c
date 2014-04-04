@@ -96,14 +96,6 @@ static void pins_init(void)
 	/* Set PB1 as AF0 (TIM14_CH1) */
 	STM32_GPIO_OSPEEDR(GPIO_B) = HISPEED(1);
 	STM32_GPIO_MODER(GPIO_B) = AF(1);
-
-	/* --- dev board only --- */
-	/*
-	 * Blue LED    : PC8 (OUT)
-	 * Green LED   : PC9 (OUT)
-	 */
-	STM32_GPIO_ODR(GPIO_C) = HIGH(9);
-	STM32_GPIO_MODER(GPIO_C) = OUT(8) | OUT(9);
 }
 
 
@@ -198,13 +190,7 @@ int main(void)
 	output_enable();
 
 	while (1) {
-		/* magic LED blinker on the test board */
-		STM32_GPIO_BSRR(GPIO_C) = GPIO_SET(8);
-		udelay(200000);
-		STM32_GPIO_BSRR(GPIO_C) = GPIO_RESET(8);
-		udelay(750000);
+		udelay(1000000);
 		debug_printf("%T ALIVE\n");
 	}
-	while (1)
-		;
 }
