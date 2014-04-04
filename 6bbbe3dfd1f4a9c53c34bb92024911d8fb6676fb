@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9995785_b5c44a51",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1229,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-04-04T16:08:16Z",
+      "side": 1,
+      "message": "and will return the actual value set?",
+      "revId": "6bbbe3dfd1f4a9c53c34bb92024911d8fb6676fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "999e536b_d42d5277",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1283,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-04-04T16:08:16Z",
+      "side": 1,
+      "message": "If you\u0027re just returning a sensor presence flag, why not\n\nuint8_t flags[]\n\n#define MOTIONSENSE_DUMP_FLAG_PRESENT (1\u003c\u003c0)\n\nand then if we later add other flags (enabled, interrupt-triggered, fault, etc.) we don\u0027t need to worry that somewhere code is doing\n\nif (sensor_presence[i])...",
+      "revId": "6bbbe3dfd1f4a9c53c34bb92024911d8fb6676fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
