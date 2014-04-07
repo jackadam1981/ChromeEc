@@ -8,6 +8,9 @@
 #include "common.h"
 #include "console.h"
 #include "crc.h"
+#ifndef CONFIG_COMMON_RUNTIME
+#include "debug.h"
+#endif
 #include "gpio.h"
 #include "hooks.h"
 #include "registers.h"
@@ -23,7 +26,7 @@
 /* dump full packet on RX error */
 static int debug_dump;
 #else
-#define CPRINTF(format, args...)
+#define CPRINTF(format, args...) debug_printf(format, ## args)
 const int debug_dump;
 #endif
 
