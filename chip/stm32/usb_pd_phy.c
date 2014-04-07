@@ -7,6 +7,9 @@
 #include "clock.h"
 #include "common.h"
 #include "console.h"
+#ifndef CONFIG_COMMON_RUNTIME
+#include "debug.h"
+#endif
 #include "dma.h"
 #include "gpio.h"
 #include "hwtimer.h"
@@ -21,7 +24,7 @@
 #ifdef CONFIG_COMMON_RUNTIME
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #else
-#define CPRINTF(format, args...)
+#define CPRINTF(format, args...) debug_printf( format, ## args)
 #endif
 
 #define PD_DATARATE 300000 /* Hz */
@@ -247,6 +250,28 @@ void pd_dump_packet(void *ctxt, const char *msg)
 	}
 	CPRINTF("||\n");
 	cflush();
+}
+#else
+void pd_dump_packet(void *ctxt, const char *msg)
+{
+	uint8_t *vals = ctxt;
+	int bit;
+
+	debug_printf("ERR %s:\n000:- ", msg);
+	/* Packet debug output */
+	for (bit = 1; bit <  PD_MAX_RAW_SIZE; bit++) {
+		int cnt = NB_PERIOD(vals[bit-1], vals[bit]);
+		if ((bit & 31) == 0)
+			debug_printf("\n%03d:", bit);
+		debug_printf("%1d ", cnt);
+	}
+	debug_printf("><\n");
+	for (bit = 0; bit <  PD_MAX_RAW_SIZE; bit++) {
+		if ((bit & 31) == 0)
+			debug_printf("\n%03d:", bit);
+		debug_printf("%02x ", vals[bit]);
+	}
+	debug_printf("||\n");
 }
 #endif /* CONFIG_COMMON_RUNTIME */
 
