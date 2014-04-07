@@ -33,6 +33,8 @@ SERVO_TYPE=servo
 
 # reset the EC
 toad_hard_reset() {
+	dut_control cold_reset:on
+	dut_control cold_reset:off
 	info "you probably need to hard-reset your EC with Refresh+Power"
 }
 
