@@ -16,13 +16,19 @@
 #include "test_util.h"
 #include "util.h"
 
-#define WAIT_CHARGER_TASK 500
+#define WAIT_CHARGER_TASK 600
 #define BATTERY_DETACH_DELAY 35000
 
 static int mock_chipset_state = CHIPSET_STATE_ON;
 static int is_shutdown;
 static int is_force_discharge;
 static int is_hibernated;
+
+static void reset_mocks(void)
+{
+	mock_chipset_state = CHIPSET_STATE_ON;
+	is_shutdown = is_force_discharge = is_hibernated = 0;
+}
 
 void chipset_force_shutdown(void)
 {
@@ -50,11 +56,14 @@ static void test_setup(void)
 {
 	const struct battery_info *bat_info = battery_get_info();
 
+	reset_mocks();
+
 	/* 50% of charge */
 	sb_write(SB_RELATIVE_STATE_OF_CHARGE, 50);
 	sb_write(SB_ABSOLUTE_STATE_OF_CHARGE, 50);
+	sb_write(SB_FULL_CHARGE_CAPACITY, 0xf000);
 	/* 25 degree Celsius */
-	sb_write(SB_TEMPERATURE, 250 + 2731);
+	sb_write(SB_TEMPERATURE, CELSIUS_TO_DECI_KELVIN(25));
 	/* Normal voltage */
 	sb_write(SB_VOLTAGE, bat_info->voltage_normal);
 	sb_write(SB_CHARGING_VOLTAGE, bat_info->voltage_max);
@@ -86,6 +95,7 @@ static int charge_control(enum ec_charge_control_mode mode)
 static int test_charge_state(void)
 {
 	enum charge_state state;
+	uint32_t flags;
 
 	state = wait_charging_state();
 	/* Plug AC, charging at 1000mAh */
@@ -106,8 +116,15 @@ static int test_charge_state(void)
 	/* Attach battery again, charging */
 	ccprintf("[CHARGING TEST] Attach battery\n");
 	test_attach_i2c(I2C_PORT_BATTERY, BATTERY_ADDR);
+	/* And changing full capacity should trigger a host event */
+	host_clear_events(EC_HOST_EVENT_MASK(EC_HOST_EVENT_BATTERY));
+	TEST_ASSERT(!(host_get_events()
+		      & EC_HOST_EVENT_MASK(EC_HOST_EVENT_BATTERY)));
+	sb_write(SB_FULL_CHARGE_CAPACITY, 0xeff0);
 	state = wait_charging_state();
 	TEST_ASSERT(state == PWR_STATE_CHARGE);
+	TEST_ASSERT(host_get_events()
+		     & EC_HOST_EVENT_MASK(EC_HOST_EVENT_BATTERY));
 
 	/* Unplug AC, discharging at 1000mAh */
 	ccprintf("[CHARGING TEST] AC off\n");
@@ -115,6 +132,9 @@ static int test_charge_state(void)
 	sb_write(SB_CURRENT, -1000);
 	state = wait_charging_state();
 	TEST_ASSERT(state == PWR_STATE_DISCHARGE);
+	flags = charge_get_flags();
+	TEST_ASSERT(!(flags & CHARGE_FLAG_EXTERNAL_POWER));
+	TEST_ASSERT(!(flags & CHARGE_FLAG_FORCE_IDLE));
 
 	/* Discharging waaaay overtemp is ignored */
 	ccprintf("[CHARGING TEST] AC off, batt temp = 0xffff\n");
@@ -147,9 +167,15 @@ static int test_charge_state(void)
 	sb_write(SB_CURRENT, 1000);
 	state = wait_charging_state();
 	TEST_ASSERT(state == PWR_STATE_CHARGE);
+	flags = charge_get_flags();
+	TEST_ASSERT(flags & CHARGE_FLAG_EXTERNAL_POWER);
+	TEST_ASSERT(!(flags & CHARGE_FLAG_FORCE_IDLE));
 	charge_control(CHARGE_CONTROL_IDLE);
 	state = wait_charging_state();
 	TEST_ASSERT(state == PWR_STATE_IDLE);
+	flags = charge_get_flags();
+	TEST_ASSERT(flags & CHARGE_FLAG_EXTERNAL_POWER);
+	TEST_ASSERT(flags & CHARGE_FLAG_FORCE_IDLE);
 	charge_control(CHARGE_CONTROL_NORMAL);
 	state = wait_charging_state();
 	TEST_ASSERT(state == PWR_STATE_CHARGE);
@@ -222,12 +248,197 @@ static int test_low_battery(void)
 	return EC_SUCCESS;
 }
 
+static int test_external_funcs(void)
+{
+	int rv, temp;
+	uint32_t flags;
+	int state;
+
+	/* Connect the AC */
+	test_setup();
+	sb_write(SB_CURRENT, 1000);
+	gpio_set_level(GPIO_AC_PRESENT, 1);
+	state = wait_charging_state();
+	TEST_ASSERT(state == PWR_STATE_CHARGE);
+	flags = charge_get_flags();
+	TEST_ASSERT(flags & CHARGE_FLAG_EXTERNAL_POWER);
+	TEST_ASSERT(!(flags & CHARGE_FLAG_FORCE_IDLE));
+
+	/* Invalid or do-nothing commands first */
+	UART_INJECT("chg\n");
+	state = wait_charging_state();
+	TEST_ASSERT(state == PWR_STATE_CHARGE);
+	flags = charge_get_flags();
+	TEST_ASSERT(flags & CHARGE_FLAG_EXTERNAL_POWER);
+	TEST_ASSERT(!(flags & CHARGE_FLAG_FORCE_IDLE));
+
+	UART_INJECT("chg blahblah\n");
+	state = wait_charging_state();
+	TEST_ASSERT(state == PWR_STATE_CHARGE);
+	flags = charge_get_flags();
+	TEST_ASSERT(flags & CHARGE_FLAG_EXTERNAL_POWER);
+	TEST_ASSERT(!(flags & CHARGE_FLAG_FORCE_IDLE));
+
+	UART_INJECT("chg idle\n");
+	state = wait_charging_state();
+	TEST_ASSERT(state == PWR_STATE_CHARGE);
+	flags = charge_get_flags();
+	TEST_ASSERT(flags & CHARGE_FLAG_EXTERNAL_POWER);
+	TEST_ASSERT(!(flags & CHARGE_FLAG_FORCE_IDLE));
+
+	UART_INJECT("chg idle blargh\n");
+	state = wait_charging_state();
+	TEST_ASSERT(state == PWR_STATE_CHARGE);
+	flags = charge_get_flags();
+	TEST_ASSERT(flags & CHARGE_FLAG_EXTERNAL_POWER);
+	TEST_ASSERT(!(flags & CHARGE_FLAG_FORCE_IDLE));
+
+	/* Now let's force idle on and off */
+	UART_INJECT("chg idle on\n");
+	state = wait_charging_state();
+	TEST_ASSERT(state == PWR_STATE_IDLE);
+	flags = charge_get_flags();
+	TEST_ASSERT(flags & CHARGE_FLAG_EXTERNAL_POWER);
+	TEST_ASSERT(flags & CHARGE_FLAG_FORCE_IDLE);
+
+	UART_INJECT("chg idle off\n");
+	wait_charging_state();
+	state = wait_charging_state();
+	TEST_ASSERT(state == PWR_STATE_CHARGE);
+	flags = charge_get_flags();
+	TEST_ASSERT(flags & CHARGE_FLAG_EXTERNAL_POWER);
+	TEST_ASSERT(!(flags & CHARGE_FLAG_FORCE_IDLE));
+
+	/* and the rest */
+	TEST_ASSERT(charge_get_state() == PWR_STATE_CHARGE);
+	TEST_ASSERT(!charge_want_shutdown());
+	TEST_ASSERT(charge_get_percent() == 50);
+	temp = 0;
+	rv = charge_temp_sensor_get_val(0, &temp);
+	TEST_ASSERT(rv == EC_SUCCESS);
+	TEST_ASSERT(K_TO_C(temp) == 25);
+
+	return EC_SUCCESS;
+}
+
+#define CHG_OPT1 0x2000
+#define CHG_OPT2 0x4000
+static int test_hc_charge_state(void)
+{
+	enum charge_state state;
+	int i, rv, tmp;
+	struct ec_params_charge_state params;
+	struct ec_response_charge_state resp;
+
+	/* Let's connect the AC again. */
+	test_setup();
+	sb_write(SB_CURRENT, 1000);
+	gpio_set_level(GPIO_AC_PRESENT, 1);
+	state = wait_charging_state();
+	TEST_ASSERT(state == PWR_STATE_CHARGE);
+	/* Initialize the charger options with some nonzero value */
+	TEST_ASSERT(charger_set_option(CHG_OPT1) == EC_SUCCESS);
+
+	/* Get the state */
+	memset(&resp, 0, sizeof(resp));
+	params.cmd = CHARGE_STATE_CMD_GET_STATE;
+	rv = test_send_host_command(EC_CMD_CHARGE_STATE, 0,
+				    &params, sizeof(params),
+				    &resp, sizeof(resp));
+	TEST_ASSERT(rv == EC_RES_SUCCESS);
+	TEST_ASSERT(resp.get_state.ac);
+	TEST_ASSERT(resp.get_state.chg_voltage);
+	TEST_ASSERT(resp.get_state.chg_current);
+	TEST_ASSERT(resp.get_state.chg_input_current);
+	TEST_ASSERT(resp.get_state.batt_state_of_charge);
+
+	/* Check all the params */
+	for (i = 0; i < CS_NUM_BASE_PARAMS; i++) {
+
+		/* Read it */
+		memset(&resp, 0, sizeof(resp));
+		params.cmd = CHARGE_STATE_CMD_GET_PARAM;
+		params.get_param.param = i;
+		rv = test_send_host_command(EC_CMD_CHARGE_STATE, 0,
+					    &params, sizeof(params),
+					    &resp, sizeof(resp));
+		TEST_ASSERT(rv == EC_RES_SUCCESS);
+		TEST_ASSERT(resp.get_param.value);
+
+		/* Bump it up a bit */
+		tmp = resp.get_param.value;
+		switch (i) {
+		case CS_PARAM_CHG_VOLTAGE:
+		case CS_PARAM_CHG_CURRENT:
+		case CS_PARAM_CHG_INPUT_CURRENT:
+			tmp -= 128;		/* Should be valid delta */
+			break;
+		case CS_PARAM_CHG_STATUS:
+			/* This one can't be set */
+			break;
+		case CS_PARAM_CHG_OPTION:
+			tmp = CHG_OPT2;
+			break;
+		}
+		params.cmd = CHARGE_STATE_CMD_SET_PARAM;
+		params.set_param.param = i;
+		params.set_param.value = tmp;
+		rv = test_send_host_command(EC_CMD_CHARGE_STATE, 0,
+					    &params, sizeof(params),
+					    &resp, sizeof(resp));
+		if (i == CS_PARAM_CHG_STATUS)
+			TEST_ASSERT(rv == EC_RES_ACCESS_DENIED);
+		else
+			TEST_ASSERT(rv == EC_RES_SUCCESS);
+		/* Allow the change to take effect */
+		state = wait_charging_state();
+		TEST_ASSERT(state == PWR_STATE_CHARGE);
+
+		/* Read it back again*/
+		memset(&resp, 0, sizeof(resp));
+		params.cmd = CHARGE_STATE_CMD_GET_PARAM;
+		params.get_param.param = i;
+		rv = test_send_host_command(EC_CMD_CHARGE_STATE, 0,
+					    &params, sizeof(params),
+					    &resp, sizeof(resp));
+		TEST_ASSERT(rv == EC_RES_SUCCESS);
+		TEST_ASSERT(resp.get_param.value == tmp);
+	}
+
+	/* param out of range */
+	params.cmd = CHARGE_STATE_CMD_GET_PARAM;
+	params.get_param.param = CS_NUM_BASE_PARAMS;
+	rv = test_send_host_command(EC_CMD_CHARGE_STATE, 0,
+				    &params, sizeof(params),
+				    &resp, sizeof(resp));
+	TEST_ASSERT(rv == EC_RES_INVALID_PARAM);
+	params.cmd = CHARGE_STATE_CMD_SET_PARAM;
+	params.set_param.param = CS_NUM_BASE_PARAMS;
+	params.set_param.value = 0x1000;	/* random value */
+	rv = test_send_host_command(EC_CMD_CHARGE_STATE, 0,
+				    &params, sizeof(params),
+				    &resp, sizeof(resp));
+	TEST_ASSERT(rv == EC_RES_INVALID_PARAM);
+
+	/* command out of range */
+	params.cmd = CHARGE_STATE_NUM_CMDS;
+	rv = test_send_host_command(EC_CMD_CHARGE_STATE, 0,
+				    &params, sizeof(params),
+				    &resp, sizeof(resp));
+	TEST_ASSERT(rv == EC_RES_INVALID_PARAM);
+
+	return EC_SUCCESS;
+}
+
+
 void run_test(void)
 {
 	test_setup();
 
 	RUN_TEST(test_charge_state);
 	RUN_TEST(test_low_battery);
+	RUN_TEST(test_external_funcs);
+	RUN_TEST(test_hc_charge_state);
 
 	test_print_result();
 }
