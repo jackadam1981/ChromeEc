@@ -114,7 +114,7 @@ enum pwm_channel {
 /* Charger module */
 #define CONFIG_CHARGER_SENSE_RESISTOR 10 /* Charge sense resistor, mOhm */
 #define CONFIG_CHARGER_SENSE_RESISTOR_AC 20 /* Input sensor resistor, mOhm */
-#define CONFIG_CHARGER_INPUT_CURRENT 4032 /* mA, based on Link HW design */
+#define CONFIG_CHARGER_INPUT_CURRENT 2048 /* mA, based on Link HW design */
 #define CONFIG_CHARGER_CURRENT_LIMIT 3000 /* PL102 inductor 3.0A(3.8A) */
 
 /* Discharge battery when on AC power for factory test. */
