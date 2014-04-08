@@ -133,6 +133,10 @@ static int calculate_lid_angle(vector_3_t base, vector_3_t lid,
 	if (ang_lid_270 > ang_lid_90)
 		ang_lid_to_base = -ang_lid_to_base;
 
+	/* Place lid angle between 0 and 360 degrees. */
+	if (ang_lid_to_base < 0)
+		ang_lid_to_base += 360;
+
 	*lid_angle = ang_lid_to_base;
 	return reliable;
 }
@@ -140,7 +144,11 @@ static int calculate_lid_angle(vector_3_t base, vector_3_t lid,
 int motion_get_lid_angle(void)
 {
 	if (lid_angle_is_reliable)
-		return (int)lid_angle_deg;
+		/*
+		 * Round to nearest int by adding 0.5. Note, only works because
+		 * lid angle is known to be positive.
+		 */
+		return (int)(lid_angle_deg + 0.5F);
 	else
 		return (int)LID_ANGLE_UNRELIABLE;
 }
@@ -465,6 +473,20 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		out->sensor_range.ret = data;
 
 		args->response_size = sizeof(out->sensor_range);
+		break;
+
+	case MOTIONSENSE_CMD_KB_DISABLE_ANGLE:
+#ifdef CONFIG_LID_ANGLE_KEY_SCAN
+		/* Set new keyboard disable lid angle if data arg has value. */
+		if (in->kb_dis_angle.data != EC_MOTION_SENSE_NO_VALUE)
+			lid_angle_set_kb_dis_angle(in->kb_dis_angle.data);
+
+		out->kb_dis_angle.ret = lid_angle_get_kb_dis_angle();
+#else
+		out->kb_dis_angle.ret = 0;
+#endif
+		args->response_size = sizeof(out->kb_dis_angle);
+
 		break;
 
 	default:
