@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "f9cd8fa7_372e3273",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-04-08T20:35:07Z",
+      "side": 1,
+      "message": "Add an empty line above.",
+      "revId": "d0c495a2c4122a692ea1ae42ec0d5698203dd1c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39d4872d_0a654bf4",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -13,6 +30,23 @@
       "writtenOn": "2014-04-08T18:48:31Z",
       "side": 1,
       "message": "can you please file a bug (and attach relevant datasheets for the batteries there)?",
+      "revId": "d0c495a2c4122a692ea1ae42ec0d5698203dd1c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59f4dbd0_4f780d05",
+        "filename": "board/big/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-04-08T20:35:07Z",
+      "side": 1,
+      "message": "Why do you change this? Is this required by this battery?",
       "revId": "d0c495a2c4122a692ea1ae42ec0d5698203dd1c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
