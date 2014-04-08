@@ -1677,6 +1677,7 @@ static int ms_help(const char *cmd)
 {
 	printf("Usage:\n");
 	printf("  %s                            - dump all motion data\n", cmd);
+	printf("  %s active                     - print active flag\n", cmd);
 	printf("  %s info NUM                   - print sensor info\n", cmd);
 	printf("  %s ec_rate [RATE_MS]          - set/get sample rate\n", cmd);
 	printf("  %s odr NUM [ODR [ROUNDUP]]    - set/get sensor ODR\n", cmd);
@@ -1721,6 +1722,20 @@ static int cmd_motionsense(int argc, char **argv)
 			else
 				printf("None\n");
 		}
+
+		return 0;
+	}
+
+	if (argc == 2 && !strcasecmp(argv[1], "active")) {
+		param.cmd = MOTIONSENSE_CMD_DUMP;
+		rv = ec_command(EC_CMD_MOTION_SENSE_CMD, 0,
+				&param, ms_command_sizes[param.cmd].insize,
+				&resp, ms_command_sizes[param.cmd].outsize);
+
+		if (resp.dump.module_flags & MOTIONSENSE_MODULE_FLAG_ACTIVE)
+			printf("1\n");
+		else
+			printf("0\n");
 
 		return 0;
 	}
