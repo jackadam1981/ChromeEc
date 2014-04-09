@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59f4dbd0_b51c68f8",
+        "filename": "board/blaze/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-04-09T18:16:07Z",
+      "side": 1,
+      "message": "Could you add comment here for the LED status the you expect, like following:\n\n  system is ON: WHITE\n  system is OFF: OFF\n  system is in suspend: 1 sec of white, 1 sec of off",
+      "revId": "53b1d4fd97bd7235a8747f808b944950bd82d4da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59f4dbd0_75ee009e",
+        "filename": "board/blaze/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-04-09T18:16:07Z",
+      "side": 1,
+      "message": "Nope. Your code makes the LED turns *OFF* immediately. And it is white, not amber.",
+      "revId": "53b1d4fd97bd7235a8747f808b944950bd82d4da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9cd8fa7_5dcc2ffe",
+        "filename": "board/blaze/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-04-09T18:16:07Z",
+      "side": 1,
+      "message": "Just want to double confirm that you want this pattern:\n\n  1 sec of WHITE --\u003e 1 sec of OFF --\u003e 1 sec of WHITE --\u003e ...\n\nRight? Your comment  doesn\u0027t match this.",
+      "revId": "53b1d4fd97bd7235a8747f808b944950bd82d4da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9cd8fa7_3dc973ee",
+        "filename": "board/blaze/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-04-09T18:16:07Z",
+      "side": 1,
+      "message": "I would like to recommend the following code so that you are safe if we add a new chipset state in the future.\n\nif (chipset_in_state(CHIPSET_STATE_ON))\n  pwr_led_set_color(LED_WHITE);\nelse\n  pwr_led_set_color(LED_OFF);",
+      "revId": "53b1d4fd97bd7235a8747f808b944950bd82d4da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79efdfff_b93223d0",
+        "filename": "board/blaze/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-04-09T18:16:07Z",
+      "side": 1,
+      "message": "Could you kindly add comment of the battery LED color (and pattern) in all states?  It is easier for future reading and also easier for us to review LED behavior. Thanks.",
+      "revId": "53b1d4fd97bd7235a8747f808b944950bd82d4da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9cd8fa7_dd883fa1",
+        "filename": "board/blaze/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-04-09T18:16:07Z",
+      "side": 1,
+      "message": "See the CL https://chromium-review.googlesource.com/189757\n\nYou need an else statement to set battery LED to WHITE. Otherwise you could meet a corner case like the CL describes.",
+      "revId": "53b1d4fd97bd7235a8747f808b944950bd82d4da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79efdfff_192b6f63",
+        "filename": "board/blaze/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-04-09T18:16:07Z",
+      "side": 1,
+      "message": "You need an extra state PWR_STATE_CHARGE_NEAR_FULL",
+      "revId": "53b1d4fd97bd7235a8747f808b944950bd82d4da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
