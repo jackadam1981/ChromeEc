@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9921f333_f9053730",
+        "filename": "include/charge_state_v2.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-04-09T20:14:44Z",
+      "side": 1,
+      "message": "Minor nit: If we\u0027re going to move these into a header file included lots of places, should prefix them with CHARGE_ or CS_ or something like that.",
+      "revId": "dec41ce4e016c498e1ba85b71faac32092295bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d94d2b11_db64f3fa",
+        "filename": "test/sbs_charging_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-04-09T20:14:44Z",
+      "side": 1,
+      "message": "(Shout) a little bit softer now\n  (Shout) a little bit softer now\n  (Shout) a little bit softer now\n  (Shout) a little bit louder now\n  (Shout) a little bit louder now\n  (Shout) a little bit louder now (ooo)\n  (Shout) a little bit louder now",
+      "revId": "dec41ce4e016c498e1ba85b71faac32092295bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
