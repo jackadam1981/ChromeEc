@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79efdfff_594a1745",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-04-09T18:22:54Z",
+      "side": 1,
+      "message": "chrome-os-partner:27859\n\nThis format is meaningful for program to parse.",
+      "revId": "06b9b3dd8147c4a9cb0dec03f0ba631b0015c962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79efdfff_3947533d",
+        "filename": "board/big/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-04-09T18:22:54Z",
+      "side": 1,
+      "message": "Nice calculation. Could you put your formula in comment so that later on people can change it (if needed)?\n\nThanks.",
+      "revId": "06b9b3dd8147c4a9cb0dec03f0ba631b0015c962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
