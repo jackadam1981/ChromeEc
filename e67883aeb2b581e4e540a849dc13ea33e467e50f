@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "79efdfff_99dcff57",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-04-09T17:46:59Z",
+      "side": 1,
+      "message": "This is minor. Please use lower case just like other CL.\n\nblaze: add battery configuration.",
+      "revId": "e67883aeb2b581e4e540a849dc13ea33e467e50f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79efdfff_39ccf3a4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-04-09T17:46:59Z",
+      "side": 1,
+      "message": "Could you also verify that charging comes back after the AC power is plugged in.",
+      "revId": "e67883aeb2b581e4e540a849dc13ea33e467e50f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59f4dbd0_f5f9d066",
+        "filename": "board/blaze/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-04-09T17:46:59Z",
+      "side": 1,
+      "message": "Are you sure the manufacture name is 13-1B?  It looks more like a battery type to me.",
+      "revId": "e67883aeb2b581e4e540a849dc13ea33e467e50f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9fbcfcb_98b645bb",
         "filename": "board/blaze/battery.c",
         "patchSetId": 1
@@ -19,6 +70,24 @@
     },
     {
       "key": {
+        "uuid": "f9cd8fa7_7d924bfd",
+        "filename": "board/blaze/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-04-09T17:46:59Z",
+      "side": 1,
+      "message": "This doesn\u0027t look right. Returning NULL is for error handling for upper layer. Are you implementing the \"default battery is 2s\"?",
+      "parentUuid": "f9fbcfcb_98b645bb",
+      "revId": "e67883aeb2b581e4e540a849dc13ea33e467e50f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b933177e_a88d1faf",
         "filename": "board/blaze/battery.c",
         "patchSetId": 1
@@ -30,6 +99,23 @@
       "writtenOn": "2014-04-09T15:30:34Z",
       "side": 1,
       "message": "Does this cutoff function work for all the possible battery packs? If not, then perhaps we need to add a cuttoff function ptr to the battery_device struct.",
+      "revId": "e67883aeb2b581e4e540a849dc13ea33e467e50f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79efdfff_79ab9b9d",
+        "filename": "board/blaze/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-04-09T17:46:59Z",
+      "side": 1,
+      "message": "I think we should keep the \"if (battery_cut_off)\" here because not all battery support this.",
       "revId": "e67883aeb2b581e4e540a849dc13ea33e467e50f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
