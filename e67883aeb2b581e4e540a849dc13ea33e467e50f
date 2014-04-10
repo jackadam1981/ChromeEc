@@ -195,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "f97e6f24_bb8553af",
+        "filename": "board/blaze/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000393
+      },
+      "writtenOn": "2014-04-10T17:17:52Z",
+      "side": 1,
+      "message": "In nyan, cutoff means no voltage coming out from battery. So system is dead until AC adapter is plugged in.",
+      "parentUuid": "f97e6f24_4f603169",
+      "revId": "e67883aeb2b581e4e540a849dc13ea33e467e50f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b933177e_a88d1faf",
         "filename": "board/blaze/battery.c",
         "patchSetId": 1
