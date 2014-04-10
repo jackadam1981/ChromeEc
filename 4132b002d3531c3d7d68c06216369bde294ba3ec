@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79643f9a_8b1cd1f8",
+        "filename": "board/blaze/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-04-10T18:52:37Z",
+      "side": 1,
+      "message": "1 second ON",
+      "revId": "4132b002d3531c3d7d68c06216369bde294ba3ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79643f9a_eb50ed9f",
+        "filename": "board/blaze/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-04-10T18:52:37Z",
+      "side": 1,
+      "message": "and battery is full.",
+      "revId": "4132b002d3531c3d7d68c06216369bde294ba3ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "395e47d0_a9dc3957",
+        "filename": "board/blaze/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-04-10T18:52:37Z",
+      "side": 1,
+      "message": "Please add extra spaces ahead to improve reading.",
+      "revId": "4132b002d3531c3d7d68c06216369bde294ba3ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b96a3764_ad6d298a",
+        "filename": "board/blaze/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-04-10T18:52:37Z",
+      "side": 1,
+      "message": "Please add extra spaces ahead to improve reading.",
+      "revId": "4132b002d3531c3d7d68c06216369bde294ba3ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79643f9a_8b8051a0",
+        "filename": "board/blaze/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-04-10T18:52:37Z",
+      "side": 1,
+      "message": "Consider this corner case:\n\nThe battery is almost full (or any case that charger is in idle), but the AC is NOT present.\n\nWhat color do you expect? WHITE or OFF? Let\u0027s define first, then continue on review.",
+      "revId": "4132b002d3531c3d7d68c06216369bde294ba3ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
