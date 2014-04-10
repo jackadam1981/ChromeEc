@@ -75,19 +75,28 @@ static inline enum boot_key keyboard_scan_get_boot_key(void)
  */
 const uint8_t *keyboard_scan_get_state(void);
 
+enum kb_scan_disable_masks {
+	KB_SCAN_DISABLE_LID_CLOSED   = (1<<0),
+	KB_SCAN_DISABLE_POWER_BUTTON = (1<<1),
+	KB_SCAN_DISABLE_LID_ANGLE    = (1<<2),
+};
+
 #ifdef HAS_TASK_KEYSCAN
 /**
  * Enables/disables keyboard matrix scan.
  */
-void keyboard_scan_enable(int enable);
-#else
-static inline void keyboard_scan_enable(int enable) { }
-#endif
+void keyboard_scan_enable(int enable, enum kb_scan_disable_masks mask);
 
 /**
  * Returns if keyboard matrix scanning is enabled/disabled.
  */
-int keyboard_scan_is_enabled(void);
+int keyboard_scan_is_disabled(void);
+#else
+static inline void keyboard_scan_enable(int enable,
+		enum kb_scan_disable_masks mask) { }
+
+static inline int keyboard_scan_is_disabled(void) { return 0; }
+#endif
 
 #ifdef CONFIG_KEYBOARD_SUPPRESS_NOISE
 /**
