@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9add7fe_f203e8a1",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-04-10T23:14:53Z",
+      "side": 1,
+      "message": "Technically not just a power press.\n\nHow about:\n\nScanning is being enabled, so wake up the scanning task to unlock the task_wait_event() loop after enable_interrupt().",
+      "revId": "16d7d27d76d84d8cd99eba31479f7d10c1a491de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
