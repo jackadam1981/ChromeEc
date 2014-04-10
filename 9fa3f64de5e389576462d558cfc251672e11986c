@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "79027fbc_e7dccc58",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-04-10T21:15:18Z",
+      "side": 1,
+      "message": "I think this should still be is_enabled()\n\nSince !is_disabled() is a little cumbersome.\n\n(so, just return !disable_scanning_mask)",
+      "revId": "9fa3f64de5e389576462d558cfc251672e11986c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "996f3376_522525bc",
         "filename": "common/keyboard_scan.c",
         "patchSetId": 1
@@ -19,6 +36,41 @@
     },
     {
       "key": {
+        "uuid": "79027fbc_47249894",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-04-10T21:15:18Z",
+      "side": 1,
+      "message": "should be ok.  No worse than printing when we start scanning or go back to wait mode, which we do already.",
+      "parentUuid": "996f3376_522525bc",
+      "revId": "9fa3f64de5e389576462d558cfc251672e11986c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79027fbc_87a510c9",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-04-10T21:15:18Z",
+      "side": 1,
+      "message": "Just print the disable mask as part of the ksstate command",
+      "revId": "9fa3f64de5e389576462d558cfc251672e11986c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79027fbc_6c442336",
         "filename": "common/lid_angle.c",
         "patchSetId": 1
@@ -30,6 +82,58 @@
       "writtenOn": "2014-04-10T20:09:45Z",
       "side": 1,
       "message": "This printf should be removed if the one in keyboard_scan.c stays in. If the one in keyboard_scan.c is removed, then this would be nice to see when lid angle transitions modes.",
+      "revId": "9fa3f64de5e389576462d558cfc251672e11986c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "996f3376_f58523f9",
+        "filename": "common/lid_angle.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-04-10T21:15:18Z",
+      "side": 1,
+      "message": "Let\u0027s leave the one in keyboard_scan.\n\nAnd then this code can always call keyboard_scan_enable() to update its disable-bit; it doesn\u0027t need to read keyboard_scan_is_disabled() first.",
+      "parentUuid": "79027fbc_6c442336",
+      "revId": "9fa3f64de5e389576462d558cfc251672e11986c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "996f3376_95b947ab",
+        "filename": "include/keyboard_scan.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-04-10T21:15:18Z",
+      "side": 1,
+      "message": "/* Reasons why keyboard scanning should be disabled */",
+      "revId": "9fa3f64de5e389576462d558cfc251672e11986c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "996f3376_15ad576a",
+        "filename": "include/keyboard_scan.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-04-10T21:15:18Z",
+      "side": 1,
+      "message": "Gonna need more description here.  Perhaps\n\nEnable/disable keyboard scanning.  Scanning will be disabled if any disable reason bit is set.  Scanning is enabled only if no disable reasons are set.\n\n  @param enable Clear(\u003d1) or set(\u003d0) disable-bits from the mask.\n  @param mask Disable reasons from kb_scan_disable_masks",
       "revId": "9fa3f64de5e389576462d558cfc251672e11986c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
