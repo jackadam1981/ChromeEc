@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "f97e6f24_cfdf41bd",
+        "filename": "board/blaze/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2014-04-10T01:45:10Z",
+      "side": 1,
+      "message": "I will remove nyan\u0027s batteries.",
+      "parentUuid": "f9fbcfcb_8ac02fcf",
+      "revId": "e67883aeb2b581e4e540a849dc13ea33e467e50f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59f4dbd0_f5f9d066",
         "filename": "board/blaze/battery.c",
         "patchSetId": 1
@@ -64,6 +82,24 @@
       "writtenOn": "2014-04-09T17:46:59Z",
       "side": 1,
       "message": "Are you sure the manufacture name is 13-1B?  It looks more like a battery type to me.",
+      "revId": "e67883aeb2b581e4e540a849dc13ea33e467e50f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "996f3376_acf0cbb8",
+        "filename": "board/blaze/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2014-04-10T01:45:10Z",
+      "side": 1,
+      "message": "This is HP\u0027s battery manufacture name define,\n4. The ManufacturerName register shall be programmed with 5 bytes as follows:\nW C - Pack Supplier ID Cell Supplier ID\nWhere W \u003d 1\nWarranty options are:\n1 \u003d 1 year warranty\n2 \u003d 2 year warranty\n3 \u003d 3 year warranty\n8 \u003d 3 year or 1000 cycle warranty\nWhere C is populated as follows:\n1 \u003d full charge, full discharge (TI 2084 and Renesas)\n2 \u003d full charge, full discharge, full charge (Maxim)\n3 \u003d full charge, wait 2.5 hrs (TI Impedance Track)\nWhere Pack Supplier is populated as follows:\n1 \u003d Simplo\n2 \u003d Dynapack\n4 \u003d LG Chemical\n5 \u003d Samsung (SDI)\n8 \u003d Panasonic/Sanyo\nWhere Cell Supplier is populated as follows:\n1 \u003d E-One Moli\n2 \u003d LG Chemical\n3 \u003d Panasonic\n4 \u003d Samsung (SDI)\n5 \u003d Sanyo\n6 \u003d Sony\n7 \u003d ATL\n8 \u003d SKC\n9 \u003d Boston Power\nA \u003d BAK\nB \u003d Lishen\nC \u003d Coslight",
+      "parentUuid": "59f4dbd0_f5f9d066",
       "revId": "e67883aeb2b581e4e540a849dc13ea33e467e50f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -105,6 +141,24 @@
     },
     {
       "key": {
+        "uuid": "f97e6f24_4f603169",
+        "filename": "board/blaze/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2014-04-10T01:45:10Z",
+      "side": 1,
+      "message": "I think return NULL is right for the nyan\u0027s battery, but HP battery need charge current to wake up battery from ship mode, if I return NULL, battery will die after ship mode.I would like to know why nyan\u0027s batteries can wake up from ship mode if return NULL?",
+      "parentUuid": "f9cd8fa7_7d924bfd",
+      "revId": "e67883aeb2b581e4e540a849dc13ea33e467e50f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b933177e_a88d1faf",
         "filename": "board/blaze/battery.c",
         "patchSetId": 1
@@ -122,6 +176,24 @@
     },
     {
       "key": {
+        "uuid": "195b43e2_48249f94",
+        "filename": "board/blaze/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2014-04-10T01:45:10Z",
+      "side": 1,
+      "message": "This cutoff function is workable with blaze\u0027s battery, because HP\u0027s battery schematic are all the same for battery  ship mode.",
+      "parentUuid": "b933177e_a88d1faf",
+      "revId": "e67883aeb2b581e4e540a849dc13ea33e467e50f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79efdfff_79ab9b9d",
         "filename": "board/blaze/battery.c",
         "patchSetId": 1
@@ -133,6 +205,24 @@
       "writtenOn": "2014-04-09T17:46:59Z",
       "side": 1,
       "message": "I think we should keep the \"if (battery_cut_off)\" here because not all battery support this.",
+      "revId": "e67883aeb2b581e4e540a849dc13ea33e467e50f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "996f3376_cc6e5f88",
+        "filename": "board/blaze/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2014-04-10T01:45:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79efdfff_79ab9b9d",
       "revId": "e67883aeb2b581e4e540a849dc13ea33e467e50f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
