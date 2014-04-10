@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "195b43e2_48d6df18",
+        "filename": "board/blaze/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2014-04-10T01:44:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59f4dbd0_b51c68f8",
+      "revId": "53b1d4fd97bd7235a8747f808b944950bd82d4da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59f4dbd0_75ee009e",
         "filename": "board/blaze/led.c",
         "patchSetId": 1
@@ -70,6 +88,24 @@
     },
     {
       "key": {
+        "uuid": "195b43e2_68fcfb88",
+        "filename": "board/blaze/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2014-04-10T01:44:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9cd8fa7_3dc973ee",
+      "revId": "53b1d4fd97bd7235a8747f808b944950bd82d4da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79efdfff_b93223d0",
         "filename": "board/blaze/led.c",
         "patchSetId": 1
@@ -81,6 +117,24 @@
       "writtenOn": "2014-04-09T18:16:07Z",
       "side": 1,
       "message": "Could you kindly add comment of the battery LED color (and pattern) in all states?  It is easier for future reading and also easier for us to review LED behavior. Thanks.",
+      "revId": "53b1d4fd97bd7235a8747f808b944950bd82d4da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "195b43e2_28f603a9",
+        "filename": "board/blaze/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2014-04-10T01:44:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79efdfff_b93223d0",
       "revId": "53b1d4fd97bd7235a8747f808b944950bd82d4da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
