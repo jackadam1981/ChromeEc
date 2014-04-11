@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9a7eb21_74ccfea5",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-04-11T21:08:55Z",
+      "side": 1,
+      "message": "No. Please use the levels in include/battery.h\n(for now; if you need more functionality, let\u0027s add that in a separate CL).",
+      "revId": "d1b0032a1ac06ec55523d093977096681de2a67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
