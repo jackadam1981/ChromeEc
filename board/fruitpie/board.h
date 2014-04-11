@@ -17,6 +17,8 @@
 
 /* Optional features */
 #define CONFIG_STM_HWTIMER32
+#define CONFIG_USB
+#define CONFIG_USB_CONSOLE
 #define CONFIG_USB_POWER_DELIVERY
 #define CONFIG_USB_PD_DUAL_ROLE
 #define CONFIG_USB_PD_INTERNAL_COMP
@@ -43,6 +45,11 @@
 #define CONFIG_CHARGER_SENSE_RESISTOR_AC 10 /* milliOhms */
 #define CONFIG_CHARGER_INPUT_CURRENT    512 /* mA */
 #define CONFIG_CHARGER_ILIM_PIN_DISABLED    /* external ILIM pin disabled */
+
+/* USB configuration */
+#define CONFIG_USB_PID 0x5008
+/* By default, enable all console messages excepted USB */
+#define CC_DEFAULT     (CC_ALL & ~CC_MASK(CC_USB))
 
 /*
  * Allow dangerous commands all the time, since we don't have a write protect
@@ -131,6 +138,25 @@ enum typec_mux {
 	TYPEC_MUX_DP2,
 };
 
+/* USB string indexes */
+enum usb_strings {
+	USB_STR_DESC = 0,
+	USB_STR_VENDOR,
+	USB_STR_PRODUCT,
+	USB_STR_VERSION,
+
+	USB_STR_COUNT
+};
 #endif /* !__ASSEMBLER__ */
+
+/* USB interface indexes (use define rather than enum to expand them) */
+#define USB_IFACE_CONSOLE 0
+#define USB_IFACE_COUNT   1
+
+/* USB endpoint indexes (use define rather than enum to expand them) */
+#define USB_EP_CONTROL   0
+#define USB_EP_CON_TX    1
+#define USB_EP_CON_RX    2
+#define USB_EP_COUNT     3
 
 #endif /* __BOARD_H */
