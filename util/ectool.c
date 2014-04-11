@@ -84,6 +84,10 @@ const char help_str[] =
 	"      Reads from EC flash to a file\n"
 	"  flashwrite <offset> <infile>\n"
 	"      Writes to EC flash from a file\n"
+	"  fudget\n"
+	"	Get first use day\n"
+	"  fudset <year> <month> <day>\n"
+	"	Set first use day\n"
 	"  gpioget <GPIO name>\n"
 	"      Get the value of GPIO signal\n"
 	"  gpioset <GPIO name>\n"
@@ -3256,6 +3260,64 @@ int cmd_proto_info(int argc, char *argv[])
 	return 0;
 }
 
+int cmd_fud_get(int argc, char *argv[])
+{
+	struct ec_response_sb_rd_fud r;
+	int rv;
+
+	rv = ec_command(EC_CMD_SB_RD_FUD, 0, NULL, 0, &r, sizeof(r));
+
+	if (rv < 0)
+		return rv;
+
+	printf("The first use day is year: %d, month: %d , and day: %d\n",
+		((r.value & 0xFE00) >> 9) + 1980, (r.value & 0x1E0) >> 5,
+		(r.value & 0x1F));
+
+	return 0;
+}
+
+int cmd_fud_set(int argc, char *argv[])
+{
+	struct ec_params_sb_wr_fud p;
+	int day, month, year;
+	char *e;
+	int rv;
+
+	if (argc != 4) {
+		fprintf(stderr, "Usage: %s year month day\n", argv[0]);
+		return -1;
+	}
+
+	year = strtol(argv[1], &e, 0);
+	if ((e && *e) || year < 1980) {
+		fprintf(stderr, "Bad year.\n");
+		return -1;
+	}
+
+	month = strtol(argv[2], &e, 0);
+	if ((e && *e) || month > 12 || month < 1) {
+		fprintf(stderr, "Bad month.\n");
+		return -1;
+	}
+
+	day = strtol(argv[3], &e, 0);
+	if ((e && *e) || day > 31 || day < 1) {
+		fprintf(stderr, "Bad month.\n");
+		return -1;
+	}
+
+	p.value = ((year - 1980) << 9) + (month << 5) + day;
+	rv = ec_command(EC_CMD_SB_WR_FUD, 0, &p, sizeof(p), NULL, 0);
+
+	if (rv < 0)
+		return rv;
+	printf("Set first use day as year: %d, month: %d , and day: %d\n",
+		year, month, day);
+
+	return 0;
+}
+
 static int ec_hash_help(const char *cmd)
 {
 	printf("Usage:\n");
@@ -3785,6 +3847,8 @@ const struct command commands[] = {
 	{"flashread", cmd_flash_read},
 	{"flashwrite", cmd_flash_write},
 	{"flashinfo", cmd_flash_info},
+	{"fudget", cmd_fud_get},
+	{"fudset", cmd_fud_set},
 	{"gpioget", cmd_gpio_get},
 	{"gpioset", cmd_gpio_set},
 	{"hangdetect", cmd_hang_detect},

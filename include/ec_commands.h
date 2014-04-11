@@ -2042,6 +2042,18 @@ struct ec_params_sb_wr_block {
 	uint16_t data[32];
 } __packed;
 
+/* First use day set/get funtion */
+#define EC_CMD_SB_RD_FUD 0xb4
+#define EC_CMD_SB_WR_FUD 0xb5
+
+struct ec_response_sb_rd_fud {
+	uint16_t value;
+} __packed;
+
+struct ec_params_sb_wr_fud {
+	uint16_t value;
+} __packed;
+
 /*****************************************************************************/
 /* System commands */
 

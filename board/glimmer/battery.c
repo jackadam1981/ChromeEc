@@ -86,6 +86,54 @@ static int battery_command_cut_off(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_BATTERY_CUT_OFF, battery_command_cut_off,
 		     EC_VER_MASK(0));
 
+static int battery_fud_read(struct host_cmd_handler_args *args)
+{
+	int rv, val;
+	struct ec_response_sb_rd_fud *r = args->response;
+
+	rv = sb_read(0x3f, &val);
+	if (rv != EC_SUCCESS)
+		return EC_RES_ERROR;
+
+	r->value = val;
+	args->response_size = sizeof(struct ec_response_sb_rd_fud);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_SB_RD_FUD, battery_fud_read,
+		     EC_VER_MASK(0));
+
+static int battery_fud_write(struct host_cmd_handler_args *args)
+{
+	int rv, ymd;
+	const struct ec_params_sb_wr_fud *p = args->params;
+
+	rv = sb_read(0x38, &ymd);
+	if (rv != EC_SUCCESS)
+		return EC_RES_ERROR;
+	if (ymd == 0)
+		return sb_write(0x38, p->value) ? EC_RES_ERROR :
+						  EC_RES_SUCCESS;
+
+	rv = sb_read(0x3b, &ymd);
+	if (rv != EC_SUCCESS)
+		return EC_RES_ERROR;
+	if (ymd == 0)
+		return sb_write(0x3b, p->value) ? EC_RES_ERROR :
+						  EC_RES_SUCCESS;
+
+	rv = sb_read(0x3f, &ymd);
+	if (rv != EC_SUCCESS)
+		return EC_RES_ERROR;
+	if (ymd == 0)
+		return sb_write(0x3f, p->value) ? EC_RES_ERROR :
+						   EC_RES_SUCCESS;
+
+	 return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_SB_WR_FUD, battery_fud_write,
+		     EC_VER_MASK(0));
+
 static int command_battcutoff(int argc, char **argv)
 {
 	return cutoff();
