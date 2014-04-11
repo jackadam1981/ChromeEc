@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9d6b780_0abf5bde",
+        "filename": "board/blaze/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-04-11T17:46:14Z",
+      "side": 1,
+      "message": "Nope. Sorry I didn\u0027t make it clear. This is what I suggest:\n\n  /* Blinking white slowly: The fuel gauge is .....\n   *                        sequence of blink is 1 second on ...\n     ^^^^^^^^^^^^^^^^^^^^^ add space here",
+      "revId": "98e699b062e1f15caefabbaedf75d6287c65505c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39a1e70c_b434a85f",
+        "filename": "board/blaze/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-04-11T17:46:14Z",
+      "side": 1,
+      "message": "Okay, as you said, the battery LED should be off when AC is not present. Then, I was wrong and you are right. We don\u0027t need this state. This stays will turn the LED to white even you remove the AC. I am sorry about this. Please remove this state.",
+      "revId": "98e699b062e1f15caefabbaedf75d6287c65505c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
