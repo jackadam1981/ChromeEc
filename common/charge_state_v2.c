@@ -67,6 +67,12 @@ static const char * const prob_text[] = {
 BUILD_ASSERT(ARRAY_SIZE(prob_text) == NUM_PROBLEM_TYPES);
 
 /*
+ *  If the battery remaining capacity is smaller and equal than this value,
+ *  keep the AP off.
+ */
+#define BATTERY_AP_OFF_LEVEL 3
+
+/*
  * TODO(crosbug.com/p/27639): When do we decide a problem is real and not
  * just intermittent? And what do we do about it?
  */
@@ -700,6 +706,19 @@ int charge_temp_sensor_get_val(int idx, int *temp_ptr)
 	/* Battery temp is 10ths of degrees K, temp wants degrees K */
 	*temp_ptr = curr.batt.temperature / 10;
 	return EC_SUCCESS;
+}
+
+/*
+ * Does the AP need to be kept as off?
+ */
+int charge_keep_power_off(void)
+{
+	int charge;
+
+	if (battery_remaining_capacity(&charge))
+		return charge_get_state() != PWR_STATE_ERROR;
+
+	return charge <= BATTERY_AP_OFF_LEVEL;
 }
 
 /*****************************************************************************/
