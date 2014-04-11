@@ -16,6 +16,24 @@
       "revId": "d1b0032a1ac06ec55523d093977096681de2a67f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99dbb3ac_6f28a596",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-04-11T21:36:07Z",
+      "side": 1,
+      "message": "Nope. Since Tegra doesn\u0027t support USB charge, we can remove this then. Thanks.",
+      "parentUuid": "d9a7eb21_74ccfea5",
+      "revId": "d1b0032a1ac06ec55523d093977096681de2a67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
