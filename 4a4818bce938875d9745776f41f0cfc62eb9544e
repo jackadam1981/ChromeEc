@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9544bb3_22ccdba4",
+        "filename": "common/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-04-14T23:28:22Z",
+      "side": 1,
+      "message": "Why not just have battery_get_current_params() use memcpy to update the local struct batt_params batt; ?\n\nThen if we need to use a mutex or something on the v1/v2 implementation, we can just change battery_get_current_params().",
+      "revId": "4a4818bce938875d9745776f41f0cfc62eb9544e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
