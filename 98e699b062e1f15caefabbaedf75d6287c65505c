@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d9c0cbc1_c30896bf",
+        "filename": "board/blaze/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2014-04-14T01:29:49Z",
+      "side": 1,
+      "message": "Understood, I will modify it.",
+      "parentUuid": "b9d6b780_0abf5bde",
+      "revId": "98e699b062e1f15caefabbaedf75d6287c65505c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39a1e70c_b434a85f",
         "filename": "board/blaze/led.c",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2014-04-11T17:46:14Z",
       "side": 1,
       "message": "Okay, as you said, the battery LED should be off when AC is not present. Then, I was wrong and you are right. We don\u0027t need this state. This stays will turn the LED to white even you remove the AC. I am sorry about this. Please remove this state.",
+      "revId": "98e699b062e1f15caefabbaedf75d6287c65505c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9a7eb21_34eb918d",
+        "filename": "board/blaze/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2014-04-14T01:29:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39a1e70c_b434a85f",
       "revId": "98e699b062e1f15caefabbaedf75d6287c65505c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
