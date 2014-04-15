@@ -421,6 +421,9 @@
 /* Enable support for floating point unit */
 #undef CONFIG_FPU
 
+/* Enable support for storing FP regs on context switches when task uses FP. */
+#undef CONIFG_FPU_STORE_CONTEXT
+
 /*****************************************************************************/
 /* Firmware region configuration */
 

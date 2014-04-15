@@ -50,6 +50,9 @@
 /* Default task stack size */
 #define TASK_STACK_SIZE             512
 
+/* Enable support for storing FP regs on context switches when task uses FP. */
+#define CONIFG_FPU_STORE_CONTEXT
+
 #define CONFIG_FLASH_BASE           0x00000000
 #define CONFIG_FLASH_BANK_SIZE      0x00000800  /* protect bank size */
 #define CONFIG_FLASH_ERASE_SIZE     0x00000400  /* erase bank size */
