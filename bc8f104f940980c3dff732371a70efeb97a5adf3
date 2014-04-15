@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9980137b_0f67243c",
+        "filename": "board/glimmer/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-04-15T23:24:24Z",
+      "side": 1,
+      "message": "It\u0027s obvious from the read function what the actual command offset is. This obscurity business just doesn\u0027t work. Also, the only way to write a second time would involve physically disabling write protect which is a warranty voiding operation for an end user.",
+      "revId": "bc8f104f940980c3dff732371a70efeb97a5adf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9980137b_6fffcf7e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2045,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-04-15T23:24:24Z",
+      "side": 1,
+      "message": "Adding randall for common code change. Please note that this should be in a separate dependent CL to make it easier to pull back to ToT (along with the ectool change).",
+      "revId": "bc8f104f940980c3dff732371a70efeb97a5adf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "795efffe_b873f96d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-04-15T23:24:24Z",
+      "side": 1,
+      "message": "Note that ectool changes should be in a separate CL as they need to be cherry-picked up to ToT and the release branches. Note that we\u0027re trying to avoid adding commands to ectool that are used in the release image. Our preference is to add commands to the cros_ec kernel module.",
+      "revId": "bc8f104f940980c3dff732371a70efeb97a5adf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9980137b_6fab4f9d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-04-15T23:24:24Z",
+      "side": 1,
+      "message": "Please change to \"batteryusedate\" and remove the setter. The behavior could be merged into the one command. If no argument, get the value. If there are arguments, use them to set the date.",
+      "revId": "bc8f104f940980c3dff732371a70efeb97a5adf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9980137b_6f242f95",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3263,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-04-15T23:24:24Z",
+      "side": 1,
+      "message": "Please merge these two functions into one command per the comment above.",
+      "revId": "bc8f104f940980c3dff732371a70efeb97a5adf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "198c23b9_f5b813cb",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3306,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-04-15T23:24:24Z",
+      "side": 1,
+      "message": "Bad day",
+      "revId": "bc8f104f940980c3dff732371a70efeb97a5adf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
