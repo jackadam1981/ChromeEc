@@ -9,6 +9,7 @@
 #include "common.h"
 #include "console.h"
 #include "gpio.h"
+#include "shared_mem.h"
 #include "timer.h"
 #include "util.h"
 #include "watchdog.h"
@@ -96,41 +97,56 @@ static void print_battery_strings(void)
 
 static void print_battery_params(void)
 {
-	struct batt_params batt;
+	int rv;
+	struct batt_params *batt;
 
-	battery_get_params(&batt);
+	if (sizeof(*batt) > shared_mem_size()) {
+		ccprintf("shared_mem is too small.\n");
+		return;
+	}
+	rv = shared_mem_acquire(sizeof(*batt), (char**)&batt);
+	if (rv) {
+		ccputs("Can't get shared memory.\n");
+		return;
+	}
+
+	battery_get_params(batt);
 	print_item_name("Param flags:");
-	ccprintf("%08x\n", batt.flags);
+	ccprintf("%08x\n", batt->flags);
 
 	print_item_name("Temp:");
 	ccprintf("0x%04x = %.1d K (%.1d C)\n",
-		 batt.temperature, batt.temperature, batt.temperature - 2731);
+		 batt->temperature,
+		 batt->temperature,
+		 batt->temperature - 2731);
 
 	print_item_name("V:");
-	ccprintf("0x%04x = %d mV\n", batt.voltage, batt.voltage);
+	ccprintf("0x%04x = %d mV\n", batt->voltage, batt->voltage);
 
 	print_item_name("V-desired:");
-	ccprintf("0x%04x = %d mV\n", batt.desired_voltage,
-		 batt.desired_voltage);
+	ccprintf("0x%04x = %d mV\n", batt->desired_voltage,
+		 batt->desired_voltage);
 
 	print_item_name("I:");
-	ccprintf("0x%04x = %d mA", batt.current & 0xffff, batt.current);
-	if (batt.current > 0)
+	ccprintf("0x%04x = %d mA", batt->current & 0xffff, batt->current);
+	if (batt->current > 0)
 		ccputs("(CHG)");
-	else if (batt.current < 0)
+	else if (batt->current < 0)
 		ccputs("(DISCHG)");
 	ccputs("\n");
 
 	print_item_name("I-desired:");
-	ccprintf("0x%04x = %d mA\n", batt.desired_current,
-		 batt.desired_current);
+	ccprintf("0x%04x = %d mA\n", batt->desired_current,
+		 batt->desired_current);
 
 	print_item_name("Charging:");
 	ccprintf("%sAllowed\n",
-		 batt.flags & BATT_FLAG_WANT_CHARGE ? "" : "Not ");
+		 batt->flags & BATT_FLAG_WANT_CHARGE ? "" : "Not ");
 
 	print_item_name("Charge:");
-		ccprintf("%d %%\n", batt.state_of_charge);
+		ccprintf("%d %%\n", batt->state_of_charge);
+
+	shared_mem_release((char**)&batt);
 }
 
 static void print_battery_info(void)
