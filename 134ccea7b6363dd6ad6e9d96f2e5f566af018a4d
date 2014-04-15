@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9980137b_809ceb0c",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-04-15T16:01:06Z",
+      "side": 1,
+      "message": "If next comment is followed, then this if statement can go away and instead you can have:\n\nif (!enable) {\n#ifdef CONFIG_ACCEL_POWER_GPIO\n  gpio_set_level(CONFIG_ACCEL_POWER_GPIO, 0);\n#endif\n  return EC_SUCCESS;\n}",
+      "revId": "134ccea7b6363dd6ad6e9d96f2e5f566af018a4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9980137b_a0672f7d",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-04-15T16:01:06Z",
+      "side": 1,
+      "message": "I would write this as a loop, so we have a retry counter that can easily be changed:\n\n#define ACCEL_INIT_ATTEMPTS 2\nfor (i\u003d0; i\u003cACCEL_INIT_ATTEMPTS; i++) {\n#ifdef CONFIG_ACCEL_POWER_GPIO\n  /* Power cycle accelometers. */\n  gpio_set_level(CONFIG_ACCEL_POWER_GPIO, 0);\n  usleep(ACCEL_RESET_DELAY_US);\n  gpio_set_level(CONFIG_ACCEL_POWER_GPIO, 1);\n  usleep(ACCEL_ENABLE_DELAY_US);\n#endif\n\n  ret \u003d accel_init(ACCEL_LID);\n  ret |\u003d accel_init(ACCEL_BASE);\n\n  if (ret \u003d\u003d EC_SUCCESS)\n    break;\n}",
+      "revId": "134ccea7b6363dd6ad6e9d96f2e5f566af018a4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "198c23b9_575d54af",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-04-15T16:01:06Z",
+      "side": 1,
+      "message": "nit: add time units to end of string: \"... interval to %d ms]\\n\"",
+      "revId": "134ccea7b6363dd6ad6e9d96f2e5f566af018a4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "198c23b9_574634e1",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-04-15T16:01:06Z",
+      "side": 1,
+      "message": "I think this should be:\n\nwhile(!motion_sense_enabled) {\n...\n}\n\nThat way if, in the future, something else wakes the task (something that doesn\u0027t set motion_sense_enabled to true) then it will just go back to sleep, instead of trying to enable the sensors.",
+      "revId": "134ccea7b6363dd6ad6e9d96f2e5f566af018a4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
