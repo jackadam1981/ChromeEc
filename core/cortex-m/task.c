@@ -31,6 +31,18 @@ typedef union {
 /* Value to store in unused stack */
 #define STACK_UNUSED_VALUE 0xdeadd00d
 
+/*
+ * Number of additional registers pushed and popped off stack during the first
+ * context switch besides the standard exception frame.
+ */
+#ifdef CONFIG_FPU
+/* R4-R11 plus LR. */
+#define EXTRA_STACK_OFFSET 9
+#else
+/* R4-R11. */
+#define EXTRA_STACK_OFFSET 8
+#endif
+
 /* declare task routine prototypes */
 #define TASK(n, r, d, s) int r(void *);
 void __idle(void);
@@ -119,7 +131,8 @@ uint8_t task_stacks[0
 
 /* Reserve space to discard context on first context switch. */
 #ifdef CONFIG_FPU
-uint32_t scratchpad[17+18];
+/* FPU requires an extra word on stack for EXC_RETURN (see __switchto()). */
+uint32_t scratchpad[17+1];
 #else
 uint32_t scratchpad[17];
 #endif
@@ -635,21 +648,31 @@ void task_pre_init(void)
 
 		/*
 		 * Update stack used by first frame: 8 words for the normal
-		 * stack, plus 8 for R4-R11. With FP enabled, we need another
-		 * 18 words for S0-S15 and FPCSR and to align to 64-bit.
+		 * stack, plus 8 for R4-R11. If using FPU, the first frame does
+		 * store FP regs, but does have a plus 1 for LR (EXC_RETURN).
 		 */
 #ifdef CONFIG_FPU
-		sp = stack_next + ssize - 16 - 18;
+		sp = stack_next + ssize - 16 - 1;
 #else
 		sp = stack_next + ssize - 16;
 #endif
 		tasks[i].sp = (uint32_t)sp;
 
 		/* Initial context on stack (see __switchto()) */
-		sp[8] = tasks_init[i].r0;           /* r0 */
-		sp[13] = (uint32_t)task_exit_trap;  /* lr */
-		sp[14] = tasks_init[i].pc;          /* pc */
-		sp[15] = 0x01000000;                /* psr */
+		sp[EXTRA_STACK_OFFSET] = tasks_init[i].r0;           /* r0 */
+		sp[5+EXTRA_STACK_OFFSET] = (uint32_t)task_exit_trap;  /* lr */
+		sp[6+EXTRA_STACK_OFFSET] = tasks_init[i].pc;          /* pc */
+		sp[7+EXTRA_STACK_OFFSET] = 0x01000000;                /* psr */
+
+#ifdef CONFIG_FPU
+		/*
+		 * On top of the stack is EXC_RETURN for the first return from
+		 * exception. The value represents: return to Thread mode,
+		 * exception return uses non-floating-point state from the PSP
+		 * and execution uses PSP (process stack poitner) after return.
+		 */
+		sp[0] = 0xFFFFFFFD;
+#endif
 
 		/* Fill unused stack; also used to detect stack overflow. */
 		for (sp = stack_next; sp < (uint32_t *)tasks[i].sp; sp++)
@@ -669,6 +692,16 @@ void task_pre_init(void)
 
 	/* Initialize IRQs */
 	__nvic_init_irqs();
+}
+
+void task_clear_fp_used(void)
+{
+	int ctrl;
+
+	/* Clear the CONTROL.FPCA bit, which represents FP context active. */
+	asm volatile("mrs %0, control" : "=r"(ctrl));
+	ctrl &= ~0x4;
+	asm volatile("msr control, %0" : : "r"(ctrl));
 }
 
 int task_start(void)
