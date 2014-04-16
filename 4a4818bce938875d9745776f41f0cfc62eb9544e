@@ -16,6 +16,23 @@
       "revId": "4a4818bce938875d9745776f41f0cfc62eb9544e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8510a73f_3dffbb49",
+        "filename": "common/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-04-16T23:53:49Z",
+      "side": 1,
+      "message": "Wait, won\u0027t this still cause stack overflows in the console task #ifndef CONFIG_CHARGER?",
+      "revId": "4a4818bce938875d9745776f41f0cfc62eb9544e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
