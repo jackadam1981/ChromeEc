@@ -2042,6 +2042,12 @@ struct ec_params_sb_wr_block {
 	uint16_t data[32];
 } __packed;
 
+#define EC_CMD_SB_WR_FUD 0xb4
+
+struct ec_params_sb_wr_fud {
+	uint16_t value;
+} __packed;
+
 /*****************************************************************************/
 /* System commands */
 
