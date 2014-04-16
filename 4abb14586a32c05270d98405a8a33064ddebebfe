@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3978076f_6a0fbf4a",
+        "filename": "common/extpower_kip.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2014-04-16T07:53:49Z",
+      "side": 1,
+      "message": "Sorry, I will update the comments.",
+      "parentUuid": "f9710f8d_344a9044",
+      "revId": "4abb14586a32c05270d98405a8a33064ddebebfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19750377_3577f05f",
         "filename": "common/extpower_kip.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-04-16T00:27:15Z",
       "side": 1,
       "message": "I don\u0027 think this is true on BayTrail. We should be able to talk to the charger anytime.",
+      "revId": "4abb14586a32c05270d98405a8a33064ddebebfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3978076f_4a120374",
+        "filename": "common/extpower_kip.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2014-04-16T07:53:49Z",
+      "side": 1,
+      "message": "Agreed, I hope only set input current when AC present.",
+      "parentUuid": "19750377_3577f05f",
       "revId": "4abb14586a32c05270d98405a8a33064ddebebfe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
