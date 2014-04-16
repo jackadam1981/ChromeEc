@@ -36,6 +36,8 @@ const char help_str[] =
 	"      Prints battery info\n"
 	"  batterycutoff\n"
 	"      Cut off battery output power\n"
+	"  batteryusedate <year> <month> <day>\n"
+	"      Set battery first use day\n"
 	"  boardversion\n"
 	"      Prints the board version\n"
 	"  chargecurrentlimit\n"
@@ -3749,6 +3751,48 @@ static int cmd_hang_detect(int argc, char *argv[])
 	return -1;
 }
 
+int cmd_battery_use_date(int argc, char *argv[])
+{
+	struct ec_params_sb_wr_fud p;
+	int day, month, year;
+	char *e;
+	int rv;
+
+	if (argc != 4) {
+		fprintf(stderr, "Usage: %s year month day\n", argv[0]);
+		return -1;
+	}
+
+	year = strtol(argv[1], &e, 0);
+	if ((e && *e) || year < 1980) {
+		fprintf(stderr, "Bad year.\n");
+		return -1;
+	}
+
+	month = strtol(argv[2], &e, 0);
+	if ((e && *e) || month > 12 || month < 1) {
+		fprintf(stderr, "Bad month.\n");
+		return -1;
+	}
+
+	day = strtol(argv[3], &e, 0);
+	if ((e && *e) || day > 31 || day < 1) {
+		fprintf(stderr, "Bad day.\n");
+		return -1;
+	}
+
+	p.value = ((year - 1980) << 9) + (month << 5) + day;
+	rv = ec_command(EC_CMD_SB_WR_FUD, 0, &p, sizeof(p), NULL, 0);
+
+	if (rv < 0)
+		return rv;
+
+	printf("Set first use day as year: %d, month: %d , and day: %d\n",
+		year, month, day);
+
+	return 0;
+}
+
 struct command {
 	const char *name;
 	int (*handler)(int argc, char *argv[]);
@@ -3761,6 +3805,7 @@ const struct command commands[] = {
 	{"backlight", cmd_lcd_backlight},
 	{"battery", cmd_battery},
 	{"batterycutoff", cmd_battery_cut_off},
+	{"batteryusedate", cmd_battery_use_date},
 	{"boardversion", cmd_board_version},
 	{"chargecurrentlimit", cmd_charge_current_limit},
 	{"chargedump", cmd_charge_dump},
