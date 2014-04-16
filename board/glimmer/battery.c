@@ -25,6 +25,8 @@
 #define	SB_FETON_DATA2	0x4000
 #define	BATTERY_FETOFF	0x0100
 
+#define BATT_FUD_BASE	0x38
+
 static const struct battery_info info = {
 	.voltage_max    = 8400,		/* mV */
 	.voltage_normal = 7400,
@@ -94,6 +96,38 @@ DECLARE_CONSOLE_COMMAND(battcutoff, command_battcutoff,
 			NULL,
 			"Enable battery cutoff (ship mode)",
 			NULL);
+
+/* Battery FUD set function */
+static int battery_fud_write(struct host_cmd_handler_args *args)
+{
+	int rv, ymd;
+	const struct ec_params_sb_wr_fud *p = args->params;
+
+	rv = sb_read(BATT_FUD_BASE, &ymd);
+	if (rv != EC_SUCCESS)
+		return EC_RES_ERROR;
+	if (ymd == 0)
+		return sb_write(BATT_FUD_BASE, p->value) ? EC_RES_ERROR :
+				EC_RES_SUCCESS;
+
+	rv = sb_read(BATT_FUD_BASE | 0x03, &ymd);
+	if (rv != EC_SUCCESS)
+		return EC_RES_ERROR;
+	if (ymd == 0)
+		return sb_write(BATT_FUD_BASE | 0x03, p->value) ?
+				EC_RES_ERROR : EC_RES_SUCCESS;
+
+	rv = sb_read(BATT_FUD_BASE | 0x07, &ymd);
+	if (rv != EC_SUCCESS)
+		return EC_RES_ERROR;
+	if (ymd == 0)
+		return sb_write(BATT_FUD_BASE | 0x07, p->value) ?
+				EC_RES_ERROR : EC_RES_SUCCESS;
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_SB_WR_FUD, battery_fud_write,
+		     EC_VER_MASK(0));
 
 /**
  * Initialize charger additional option value
