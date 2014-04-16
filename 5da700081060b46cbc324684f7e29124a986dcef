@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "198c23b9_da2984a1",
+        "filename": "core/cortex-m/switch.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-04-16T15:42:34Z",
+      "side": 1,
+      "message": "typo",
+      "revId": "5da700081060b46cbc324684f7e29124a986dcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9969f3a4_99d71b67",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-04-16T15:42:34Z",
+      "side": 1,
+      "message": "why do we have 2 options (ie CONFIG_FPU and CONFIG_FPU_STORE_CONTEXT) ?\nwhy CONFIG_FPU_STORE_CONTEXT is not always defined ?",
+      "revId": "5da700081060b46cbc324684f7e29124a986dcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
