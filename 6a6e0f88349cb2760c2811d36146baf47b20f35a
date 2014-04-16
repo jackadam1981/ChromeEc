@@ -16,6 +16,24 @@
       "revId": "6a6e0f88349cb2760c2811d36146baf47b20f35a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5f7a345_e083dc3f",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-04-16T20:56:09Z",
+      "side": 1,
+      "message": "yes, you\u0027re right, good catch.",
+      "parentUuid": "65ec937a_c1f2227a",
+      "revId": "6a6e0f88349cb2760c2811d36146baf47b20f35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
