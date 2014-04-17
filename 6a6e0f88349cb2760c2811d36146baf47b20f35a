@@ -36,6 +36,41 @@
     },
     {
       "key": {
+        "uuid": "45586f41_6bf57d67",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-04-17T18:23:20Z",
+      "side": 1,
+      "message": "I tested it for a handful of registers, including registers in the range of s0-s15.",
+      "parentUuid": "c51d3f5e_08127778",
+      "revId": "6a6e0f88349cb2760c2811d36146baf47b20f35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45586f41_ebe84d8c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-04-17T18:23:20Z",
+      "side": 1,
+      "message": "I\u0027ll move this comment up, to make it more clear that I tested registers in both s0-s15 and s16-s31.",
+      "revId": "6a6e0f88349cb2760c2811d36146baf47b20f35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "853507d4_e160708a",
         "filename": "core/cortex-m/switch.S",
         "patchSetId": 2
@@ -201,6 +236,24 @@
       "writtenOn": "2014-04-17T16:46:04Z",
       "side": 1,
       "message": "maybe you want an \"ISB\" here else you don\u0027t really know when this will take effect",
+      "revId": "6a6e0f88349cb2760c2811d36146baf47b20f35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "853507d4_ec49879a",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-04-17T18:23:20Z",
+      "side": 1,
+      "message": "ok, good thinking",
+      "parentUuid": "853507d4_01193494",
       "revId": "6a6e0f88349cb2760c2811d36146baf47b20f35a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
