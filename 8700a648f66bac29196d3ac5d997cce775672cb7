@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "853507d4_21e67850",
+        "filename": "board/keyborg/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-04-17T15:02:51Z",
+      "side": 1,
+      "message": "I think the code would be simplified by using CHIP_FAMILY:\u003dstm32f  (it\u0027s mostly a F103 after all)\nbut keep CHIP_VARIANT:\u003dstm32ts60",
+      "revId": "8700a648f66bac29196d3ac5d997cce775672cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
