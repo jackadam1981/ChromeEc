@@ -95,6 +95,12 @@
 #undef CONFIG_BATTERY_MOCK
 
 /*
+ * Board implements a getter and setter to store the first use date of the
+ * battery pack. See include/battery.h for the prototype.
+ */
+#undef CONFIG_BATTERY_PARAM_FIRST_USE_DATE
+
+/*
  * If defined, the charger will check for battery presence before attempting
  * to communicate with it. This avoids the 30 second delay when booting
  * without a battery present. Do not use with CONFIG_BATTERY_PRESENT_GPIO.
