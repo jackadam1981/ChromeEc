@@ -26,6 +26,7 @@
 #define CONFIG_VBOOT_HASH
 #define CONFIG_LED_COMMON
 #define CONFIG_CHARGER_DISCHARGE_ON_AC
+#define CONFIG_WAKEUP_CHARGE_DEFAULT
 
 #ifndef __ASSEMBLER__
 
@@ -119,6 +120,14 @@ enum pwm_channel {
  */
 #define CONFIG_CHARGER_INPUT_CURRENT 2048 /* mA, based on Link HW design */
 #define CONFIG_CHARGER_CURRENT_LIMIT 3000 /* PL102 inductor 3.0A(3.8A) */
+
+#ifdef CONFIG_WAKEUP_CHARGE_DEFAULT
+/* Use the default pre-charge voltage and current
+ * if we can not get battery info
+ */
+#define CONFIG_WAKEUP_CHARGE_VOLTAGE 12900
+#define CONFIG_WAKEUP_CHARGE_CURRENT 256
+#endif
 
 /* Discharge battery when on AC power for factory test. */
 int board_discharge_on_ac(int enable);

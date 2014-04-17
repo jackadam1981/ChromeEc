@@ -528,6 +528,17 @@ void charger_task(void)
 					batt_info->voltage_max;
 				curr.requested_current =
 					batt_info->precharge_current;
+				#ifdef CONFIG_WAKEUP_CHARGE_DEFAULT
+				/* Use the default pre-charge voltage and
+				 * current if we can not get battery info
+				 */
+				if(batt_info == NULL){
+					curr.requested_voltage =
+						CONFIG_WAKEUP_CHARGE_VOLTAGE;
+					curr.requested_current =
+						CONFIG_WAKEUP_CHARGE_CURRENT;
+				}
+				#endif
 			}
 			goto wait_for_it;
 		} else {

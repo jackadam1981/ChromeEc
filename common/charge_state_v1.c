@@ -269,6 +269,14 @@ static int state_common(struct charge_state_context *ctx)
 			 */
 			charge_request(ctx->battery->voltage_max,
 				       ctx->battery->precharge_current);
+			#ifdef CONFIG_WAKEUP_CHARGE_DEFAULT
+			/* Use the default pre-charge voltage and current
+			 * if we can not get battery info
+			 */
+			if(ctx->battery == NULL)
+				charge_request(CONFIG_WAKEUP_CHARGE_VOLTAGE,
+						CONFIG_WAKEUP_CHARGE_CURRENT);
+			#endif
 			for (d = 0; d < PRECHARGE_TIMEOUT; d++) {
 				sleep(1);
 				battery_get_params(batt);
