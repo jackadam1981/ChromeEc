@@ -19,15 +19,19 @@ CFLAGS_CPU+=-march=armv7-m -mcpu=cortex-m3
 endif
 
 # STM32F0xx and STM32F1xx are using the same flash controller
-FLASH_FAMILY=$(subst stm32f0,stm32f,$(CHIP_FAMILY))
+FLASH_FAMILY:=$(subst stm32f0,stm32f,$(CHIP_FAMILY))
+FLASH_FAMILY:=$(subst stm32ts,stm32f,$(FLASH_FAMILY))
 # Select between 16-bit and 32-bit timer for clock source
 TIMER_TYPE=$(if $(CONFIG_STM_HWTIMER32),32,)
+# STM32TS and STM32F are using the same clock controller
+CLOCK_FAMILY=$(subst stm32ts,stm32f,$(CHIP_FAMILY))
+GPIO_FAMILY=$(subst stm32ts,stm32f,$(CHIP_FAMILY))
 
 chip-y=dma.o system.o
-chip-y+=jtag-$(CHIP_FAMILY).o clock-$(CHIP_FAMILY).o
+chip-y+=jtag-$(CHIP_FAMILY).o clock-$(CLOCK_FAMILY).o
 chip-$(CONFIG_SPI)+=spi.o
 chip-$(CONFIG_SW_CRC)+=crc.o
-chip-$(CONFIG_COMMON_GPIO)+=gpio-$(CHIP_FAMILY).o
+chip-$(CONFIG_COMMON_GPIO)+=gpio-$(GPIO_FAMILY).o
 chip-$(CONFIG_COMMON_TIMER)+=hwtimer$(TIMER_TYPE).o
 chip-$(CONFIG_I2C)+=i2c-$(CHIP_FAMILY).o
 chip-$(CONFIG_WATCHDOG)+=watchdog.o
