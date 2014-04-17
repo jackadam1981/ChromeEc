@@ -33,6 +33,24 @@
       "revId": "4a4818bce938875d9745776f41f0cfc62eb9544e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "453f8fb5_6475b24e",
+        "filename": "common/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-04-17T23:06:53Z",
+      "side": 1,
+      "message": "Good catch. The only EC image having HAS_TASK_CHARGER but no CONFIG_CHARGER is pit, which uses CONFIG_CHARGER_TPS65090 instead.\n\nThe good news is that doesn\u0027t overflow the stack (yet). The bad news is the stack is quite full now (480/488 bytes).\n\nSo, please see my next patchset.",
+      "parentUuid": "8510a73f_3dffbb49",
+      "revId": "4a4818bce938875d9745776f41f0cfc62eb9544e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
