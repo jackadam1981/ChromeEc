@@ -38,6 +38,18 @@ static const struct battery_info info = {
 	.discharging_max_c    = 60,
 };
 
+int battery_get_first_use_date(uint32_t *value)
+{
+	/* DO SOMETHING HERE */
+	return EC_SUCCESS;
+}
+
+int battery_set_first_use_date(uint32_t value)
+{
+	/* DO SOMETHING HERE */
+	return EC_SUCCESS;
+}
+
 const struct battery_info *battery_get_info(void)
 {
 	return &info;

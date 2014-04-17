@@ -252,4 +252,15 @@ int battery_device_chemistry(char *dest, int size);
  */
 int battery_manufacturer_date(int *year, int *month, int *day);
 
+/**
+ * Get and set battery first use date.
+ *
+ * Vendor parameter implemented in board-specific battery.c
+ *
+ * @param value		32 bit value to get or set
+ * @return non-zero if error.
+ */
+extern int battery_get_first_use_date(uint32_t *value);
+extern int battery_set_first_use_date(uint32_t value);
+
 #endif /* __CROS_EC_BATTERY_H */

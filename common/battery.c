@@ -9,6 +9,7 @@
 #include "common.h"
 #include "console.h"
 #include "gpio.h"
+#include "host_command.h"
 #include "timer.h"
 #include "util.h"
 #include "watchdog.h"
@@ -236,3 +237,37 @@ DECLARE_CONSOLE_COMMAND(battery, command_battery,
 			"<repeat_count> <sleep_ms>",
 			"Print battery info",
 			NULL);
+
+static int host_command_battery_vendor_param(struct host_cmd_handler_args *args)
+{
+	int rv;
+	const struct ec_params_battery_vendor_param *p = args->params;
+	struct ec_response_battery_vendor_param *r = args->response;
+
+	args->response_size = sizeof(*r);
+
+	if (p->mode != BATTERY_VENDOR_PARAM_MODE_GET &&
+	    p->mode != BATTERY_VENDOR_PARAM_MODE_SET)
+		return EC_RES_INVALID_PARAM;
+
+	if (!(p->param < BATTERY_VENDOR_PARAM_COUNT))
+		return EC_RES_INVALID_PARAM;
+
+	switch (p->param) {
+#ifdef CONFIG_BATTERY_PARAM_FIRST_USE_DATE
+	case BATTERY_VENDOR_PARAM_FIRST_USE_DATE:
+		if (p->mode == BATTERY_VENDOR_PARAM_MODE_GET)
+			rv = battery_get_first_use_date(&r->value);
+		else
+			rv = battery_set_first_use_date(p->value);
+		break;
+#endif /* CONFIG_BATTERY_PARAM_FIRST_USE_DATE */
+	default:
+		return EC_RES_INVALID_COMMAND;
+	}
+
+	return rv ? EC_RES_ERROR : EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_BATTERY_VENDOR_PARAM,
+		     host_command_battery_vendor_param,
+		     EC_VER_MASK(0));
