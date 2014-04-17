@@ -2,6 +2,159 @@
   "comments": [
     {
       "key": {
+        "uuid": "853507d4_4ce1b336",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-04-17T16:46:04Z",
+      "side": 1,
+      "message": "adding 32 bits (maybe 64?) on the stack for that seems really wasteful.\nCan we do better (eg store somewhere in FPSCR  ?)?",
+      "revId": "6a6e0f88349cb2760c2811d36146baf47b20f35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c51d3f5e_08127778",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-04-17T16:46:04Z",
+      "side": 1,
+      "message": "I\u0027m not sure that your test code actually proves that the lazy saving of s0-s16 is actually happening",
+      "revId": "6a6e0f88349cb2760c2811d36146baf47b20f35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "853507d4_e160708a",
+        "filename": "core/cortex-m/switch.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-04-17T16:46:04Z",
+      "side": 1,
+      "message": "typo: FPSCR",
+      "revId": "6a6e0f88349cb2760c2811d36146baf47b20f35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45586f41_88bb17fe",
+        "filename": "core/cortex-m/switch.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-04-17T16:46:04Z",
+      "side": 1,
+      "message": "your stack is no longer 64-bit aligned ?\nif that\u0027s happening, you are breaking the ABI/calling convention and will get all kind of weird bugs (when using 64-bit int on the stack)",
+      "revId": "6a6e0f88349cb2760c2811d36146baf47b20f35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "853507d4_e1dd1029",
+        "filename": "core/cortex-m/switch.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-04-17T16:46:04Z",
+      "side": 1,
+      "message": "isn\u0027t using  \"tst lr, #1\u003c\u003c4\" then \"it ne\" more optimal for the pipeline than cbnz ?",
+      "revId": "6a6e0f88349cb2760c2811d36146baf47b20f35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "853507d4_c1afac80",
+        "filename": "core/cortex-m/switch.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-04-17T16:46:04Z",
+      "side": 1,
+      "message": "I don\u0027t know whether the assembler is transforming this instruction automatically but what we really want is :\nstr lr, [r3, #-4]!\n(else stm with odd register count are not great for speed)",
+      "revId": "6a6e0f88349cb2760c2811d36146baf47b20f35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c51d3f5e_48f86fe6",
+        "filename": "core/cortex-m/switch.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-04-17T16:46:04Z",
+      "side": 1,
+      "message": "ditto\nldr lr, [r2],#4",
+      "revId": "6a6e0f88349cb2760c2811d36146baf47b20f35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "853507d4_2113182f",
+        "filename": "core/cortex-m/switch.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-04-17T16:46:04Z",
+      "side": 1,
+      "message": "ditto about \"it ne\"",
+      "revId": "6a6e0f88349cb2760c2811d36146baf47b20f35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "853507d4_614b603f",
+        "filename": "core/cortex-m/switch.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-04-17T16:46:04Z",
+      "side": 1,
+      "message": "-1 for the label style.\neither use lower case or simply 1: (and 1f in cbnz)",
+      "revId": "6a6e0f88349cb2760c2811d36146baf47b20f35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65ec937a_c1f2227a",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 2
@@ -31,6 +184,23 @@
       "side": 1,
       "message": "yes, you\u0027re right, good catch.",
       "parentUuid": "65ec937a_c1f2227a",
+      "revId": "6a6e0f88349cb2760c2811d36146baf47b20f35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "853507d4_01193494",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-04-17T16:46:04Z",
+      "side": 1,
+      "message": "maybe you want an \"ISB\" here else you don\u0027t really know when this will take effect",
       "revId": "6a6e0f88349cb2760c2811d36146baf47b20f35a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
