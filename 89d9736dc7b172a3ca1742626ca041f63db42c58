@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0552f722_e9117174",
+        "filename": "chip/stm32/jtag-stm32ts.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-04-18T04:51:09Z",
+      "side": 1,
+      "message": "I think this file is no longer used, you need either to remove it or modify the build.mk",
+      "revId": "89d9736dc7b172a3ca1742626ca041f63db42c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
