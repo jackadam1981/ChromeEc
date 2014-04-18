@@ -404,9 +404,6 @@ void charger_task(void)
 	int sleep_usec;
 	int need_static = 1;
 
-	/* Get the battery-specific values */
-	batt_info = battery_get_info();
-
 	/* Initialize all the state */
 	memset(&curr, 0, sizeof(curr));
 	curr.batt.is_present = BP_NOT_SURE;
@@ -443,6 +440,9 @@ void charger_task(void)
 		}
 		charger_get_params(&curr.chg);
 		battery_get_params(&curr.batt);
+
+		/* Get the battery-specific values */
+		batt_info = battery_get_info();
 
 		/*
 		 * TODO(crosbug.com/p/27527). Sometimes the battery thinks its
