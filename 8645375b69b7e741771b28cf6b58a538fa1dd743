@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e54ec381_4ba759ae",
+        "filename": "common/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-04-18T17:52:13Z",
+      "side": 1,
+      "message": "Why not just\n\nif (p-\u003eparam \u003e\u003d BATTERY_VENDOR_PARAM_COUNT)\n\n?",
+      "revId": "8645375b69b7e741771b28cf6b58a538fa1dd743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e54ec381_8bac318d",
+        "filename": "common/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-04-18T17:52:13Z",
+      "side": 1,
+      "message": "INVALID_PARAM",
+      "revId": "8645375b69b7e741771b28cf6b58a538fa1dd743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "255d3b32_8173eec3",
+        "filename": "include/battery.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-04-18T17:52:13Z",
+      "side": 1,
+      "message": "I was thinking we\u0027d make this even more generic\n\n  int battery_set_vendor_param(uint32_t param, uint32_t value);\n  int battery_get_vendor_param(uint32_t param, uint32_t *value_ptr);\n\nso generic battery.c doesn\u0027t need to know about all the params a battery might support.",
+      "revId": "8645375b69b7e741771b28cf6b58a538fa1dd743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
