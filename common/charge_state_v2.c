@@ -98,6 +98,9 @@ static int update_static_battery_info(void)
 	 */
 	int rv;
 
+	/* Before we ask battery info, clear the flag */
+	*host_get_memmap(EC_MEMMAP_BATTERY_VERSION) = 0;
+
 	/* Smart battery serial number is 16 bits */
 	batt_str = (char *)host_get_memmap(EC_MEMMAP_BATT_SERIAL);
 	memset(batt_str, 0, EC_MEMMAP_TEXT_MAX);
@@ -284,12 +287,12 @@ static int charge_request(int voltage, int current)
 
 	CPRINTF("[%T %s(%dmV, %dmA)]\n", __func__, voltage, current);
 
-	if (voltage > 0)
+	if (voltage >= 0)
 		r1 = charger_set_voltage(voltage);
 	if (r1 != EC_SUCCESS)
 		problem(PR_SET_VOLTAGE, r1);
 
-	if (current > 0)
+	if (current >= 0)
 		r2 = charger_set_current(current);
 	if (r2 != EC_SUCCESS)
 		problem(PR_SET_CURRENT, r2);
@@ -537,9 +540,14 @@ void charger_task(void)
 			goto wait_for_it;
 		} else {
 			/* The battery is responding. Yay. Try to use it. */
-			if (curr.state == ST_PRECHARGE ||
-			    battery_seems_to_be_dead)
+			if (curr.state == ST_PRECHARGE) {
 				ccprintf("[%T battery woke up]\n");
+
+				/* Update the battery-specific values */
+				batt_info = battery_get_info();
+				need_static = 1;
+			}
+
 			battery_seems_to_be_dead = 0;
 			curr.state = ST_CHARGE;
 		}
