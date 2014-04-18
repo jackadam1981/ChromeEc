@@ -740,6 +740,14 @@ void pd_rx_event(void)
 }
 
 #ifdef CONFIG_COMMON_RUNTIME
+void pd_request_source_voltage(int mv)
+{
+	pd_set_max_voltage(mv);
+	pd_role = PD_ROLE_SINK;
+	pd_set_host_mode(0);
+	pd_task_state = PD_STATE_SNK_DISCONNECTED;
+}
+
 static int command_pd(int argc, char **argv)
 {
 	if (argc < 2)
@@ -759,18 +767,12 @@ static int command_pd(int argc, char **argv)
 		pd_task_state = PD_STATE_SRC_DISCONNECTED;
 		task_wake(TASK_ID_PD);
 	} else if (!strncasecmp(argv[1], "dev", 3)) {
+		int max_volt = -1;
 		if (argc >= 3) {
-			unsigned max_volt;
 			char *e;
-
-			max_volt = strtoi(argv[2], &e, 10);
-			pd_set_max_voltage(max_volt * 1000);
+			max_volt = strtoi(argv[2], &e, 10) * 1000;
 		}
-
-		pd_role = PD_ROLE_SINK;
-		pd_set_host_mode(0);
-		pd_task_state = PD_STATE_SNK_DISCONNECTED;
-		task_wake(TASK_ID_PD);
+		pd_request_source_voltage(max_volt);
 	} else if (!strcasecmp(argv[1], "clock")) {
 		int freq;
 		char *e;

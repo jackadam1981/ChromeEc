@@ -486,10 +486,3 @@ void pd_set_clock(int freq)
 {
 	STM32_TIM_ARR(TIM_TX) = clock_get_freq() / (2*freq);
 }
-
-#ifdef CONFIG_USB_PD_DUAL_ROLE
-void pd_set_host_mode(int enable)
-{
-	gpio_set_level(GPIO_CC_HOST, enable);
-}
-#endif /* CONFIG_USB_PD_DUAL_ROLE */
