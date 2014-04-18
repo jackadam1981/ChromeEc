@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45586f41_e8cba850",
+        "filename": "core/cortex-m/switch.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-04-18T04:50:04Z",
+      "side": 1,
+      "message": "assembly style bikeshedding :\nyou are using the 2-argument syntax for orr while you have used the 3-argument one for bic. You should be consistent...",
+      "revId": "07f53a701744c65fa5a12e04b0d6d089a33bf969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "255d3b32_6aa8d7ae",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-04-18T04:50:04Z",
+      "side": 1,
+      "message": "is the dsb useful here ?",
+      "revId": "07f53a701744c65fa5a12e04b0d6d089a33bf969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
