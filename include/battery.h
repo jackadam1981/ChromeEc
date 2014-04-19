@@ -252,4 +252,16 @@ int battery_device_chemistry(char *dest, int size);
  */
 int battery_manufacturer_date(int *year, int *month, int *day);
 
+/**
+ * Read and write battery vendor parameters.
+ *
+ * Vendor parameter handlers are implemented in board-specific battery.c
+ *
+ * @param param		Parameter identifier
+ * @param value		Value to read or write
+ * @return non-zero if error.
+ */
+int battery_get_vendor_param(uint32_t param, uint32_t *value);
+int battery_set_vendor_param(uint32_t param, uint32_t value);
+
 #endif /* __CROS_EC_BATTERY_H */
