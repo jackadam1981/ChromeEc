@@ -42,6 +42,26 @@ const struct battery_info *battery_get_info(void)
 	return &info;
 }
 
+static uint32_t vendor_param0;
+
+int battery_get_vendor_param(uint32_t param, uint32_t *value)
+{
+	if (param != 0)
+		return EC_RES_INVALID_PARAM;
+
+	*value = vendor_param0;
+	return EC_RES_SUCCESS;
+}
+
+int battery_set_vendor_param(uint32_t param, uint32_t value)
+{
+	if (param != 0)
+		return EC_RES_INVALID_PARAM;
+
+	vendor_param0 = value;
+	return EC_RES_SUCCESS;
+}
+
 static int cutoff(void)
 {
 	int rv, tmp;
