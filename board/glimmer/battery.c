@@ -66,7 +66,7 @@ static void wakeup(void)
 }
 DECLARE_HOOK(HOOK_INIT, wakeup, HOOK_PRIO_DEFAULT);
 
-static int cutoff(void)
+int battery_cut_off(void)
 {
 	int rv;
 
@@ -78,22 +78,6 @@ static int cutoff(void)
 
 	return sb_write(SB_FET_OFF, SB_FETOFF_DATA2);
 }
-
-static int battery_command_cut_off(struct host_cmd_handler_args *args)
-{
-	return cutoff() ? EC_RES_ERROR : EC_RES_SUCCESS;
-}
-DECLARE_HOST_COMMAND(EC_CMD_BATTERY_CUT_OFF, battery_command_cut_off,
-		     EC_VER_MASK(0));
-
-static int command_battcutoff(int argc, char **argv)
-{
-	return cutoff();
-}
-DECLARE_CONSOLE_COMMAND(battcutoff, command_battcutoff,
-			NULL,
-			"Enable battery cutoff (ship mode)",
-			NULL);
 
 /**
  * Initialize charger additional option value
