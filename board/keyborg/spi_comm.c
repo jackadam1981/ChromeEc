@@ -146,38 +146,62 @@ int spi_master_send_command(struct spi_comm_packet *cmd)
 	return ret;
 }
 
-const struct spi_comm_packet *spi_master_wait_response(void)
+int spi_master_wait_response_async(void)
+{
+	do {
+		/* Wait for SPI_NSS to go low */
+		if (wait_for_signal(GPIO_A, 1 << 0, 0, 40 * MSEC))
+			goto err_wait_resp_async;
+		/* Wait for slave to reply */
+		if (spi_master_read_write_byte(in_msg, out_msg, 1))
+			goto err_wait_resp_async;
+	} while (in_msg[0] == TS_STS_NOT_READY);
+
+	dma_start_rx(&dma_rx_option, sizeof(in_msg), in_msg);
+	dma_prepare_tx(&dma_tx_option, sizeof(out_msg), out_msg);
+	dma_go(dma_get_channel(STM32_DMAC_SPI1_TX));
+
+	return EC_SUCCESS;
+err_wait_resp_async:
+	/* Set CS1 (slave SPI_NSS) to high */
+	STM32_GPIO_BSRR(GPIO_A) = 1 << 6;
+	return EC_ERROR_TIMEOUT;
+}
+
+const struct spi_comm_packet *spi_master_wait_response_done(void)
 {
 	const struct spi_comm_packet *resp =
 		(const struct spi_comm_packet *)in_msg;
 
-	do {
-		/* Wait for SPI_NSS to go low */
-		if (wait_for_signal(GPIO_A, 1 << 0, 0, 40 * MSEC))
-			goto err_wait_resp;
-		/* Wait for slave to reply */
-		if (spi_master_read_write_byte(in_msg, out_msg, 1))
-			goto err_wait_resp;
-	} while (in_msg[0] == TS_STS_NOT_READY);
-
-	/* Read header */
-	if (spi_master_read_write_byte(in_msg, out_msg, 3))
-		goto err_wait_resp;
+	if (wait_for_bytes(3, 5 * MSEC) != EC_SUCCESS)
+		goto err_wait_response_done;
 	if (resp->cmd_sts != EC_SUCCESS)
-		goto err_wait_resp;
-	if (spi_master_read_write_byte(in_msg + 3, out_msg, resp->size))
-		goto err_wait_resp;
+		goto err_wait_response_done;
+	if (wait_for_bytes(resp->size + 3, 5 * MSEC) != EC_SUCCESS)
+		goto err_wait_response_done;
 	if (calculate_checksum(resp) != resp->checksum)
-		goto err_wait_resp;
+		goto err_wait_response_done;
 
-exit_wait_resp:
+exit_wait_response_done:
+	dma_disable(STM32_DMAC_SPI1_TX);
+	dma_disable(STM32_DMAC_SPI1_RX);
+	dma_clear_isr(STM32_DMAC_SPI1_TX);
+	dma_clear_isr(STM32_DMAC_SPI1_RX);
+
 	/* Set CS1 (slave SPI_NSS) to high */
 	STM32_GPIO_BSRR(GPIO_A) = 1 << 6;
 
 	return resp;
-err_wait_resp:
+err_wait_response_done:
 	resp = NULL;
-	goto exit_wait_resp;
+	goto exit_wait_response_done;
+}
+
+const struct spi_comm_packet *spi_master_wait_response(void)
+{
+	if (spi_master_wait_response_async() != EC_SUCCESS)
+		return NULL;
+	return spi_master_wait_response_done();
 }
 
 static uint32_t myrnd(void)
@@ -264,8 +288,14 @@ void spi_slave_init(void)
 
 int spi_slave_send_response(struct spi_comm_packet *resp)
 {
-	stm32_spi_regs_t *spi = STM32_SPI1_REGS;
-	int size = resp->size + 3, ret;
+	if (spi_slave_send_response_async(resp) != EC_SUCCESS)
+		return EC_ERROR_UNKNOWN;
+	return spi_slave_send_response_flush(0);
+}
+
+int spi_slave_send_response_async(struct spi_comm_packet *resp)
+{
+	int size = resp->size + 3;
 
 	if (size > SPI_PACKET_MAX_SIZE)
 		return EC_ERROR_OVERFLOW;
@@ -284,14 +314,24 @@ int spi_slave_send_response(struct spi_comm_packet *resp)
 	/* Set N_CHG (master SPI_NSS) to low */
 	STM32_GPIO_BSRR(GPIO_A) = 1 << (1 + 16);
 
+	return EC_SUCCESS;
+}
+
+int spi_slave_send_response_flush(int has_next_response)
+{
+	stm32_spi_regs_t *spi = STM32_SPI1_REGS;
+	int ret;
+
 	ret = dma_wait(STM32_DMAC_SPI1_TX);
 	ret |= dma_wait(STM32_DMAC_SPI1_RX);
 	dma_clear_isr(STM32_DMAC_SPI1_TX);
 	dma_clear_isr(STM32_DMAC_SPI1_RX);
 
-	/* Wait for the next command */
-	in_msg[0] = spi->dr;
-	dma_start_rx(&dma_rx_option, sizeof(in_msg), in_msg);
+	if (!has_next_response) {
+		/* Wait for the next command */
+		in_msg[0] = spi->dr;
+		dma_start_rx(&dma_rx_option, sizeof(in_msg), in_msg);
+	}
 
 	/* Set N_CHG (master SPI_NSS) to high */
 	STM32_GPIO_BSRR(GPIO_A) = 1 << 1;
@@ -328,6 +368,7 @@ void spi_nss_interrupt(void)
 		spi_slave_nack();
 		return;
 	}
+
 	if (cmd->cmd_sts == TS_CMD_HELLO) {
 		sz = cmd->data[0];
 		memcpy(buf, cmd->data, sz + 2);
