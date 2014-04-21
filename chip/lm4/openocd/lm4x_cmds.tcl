@@ -151,6 +151,20 @@ proc flash_kip_rw { } {
 	flash_lm4 ../../../build/kip/ec.RW.bin 131072
 }
 
+proc flash_gnawty { } {
+        flash_lm4 ../../../build/kip/ec.bin 0
+}
+
+proc flash_gnawty_ro { } {
+	flash_lm4 ../../../build/kip/ec.RO.flat 0
+}
+
+proc flash_gnawty_rw { } {
+	flash_lm4 ../../../build/kip/ec.RW.bin 131072
+}
+
+
+
 # link has pstate in last sector
 proc unprotect_link { } {
 	reset halt
