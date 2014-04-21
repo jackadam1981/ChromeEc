@@ -47,6 +47,22 @@ int spi_master_send_command(struct spi_comm_packet *cmd);
 const struct spi_comm_packet *spi_master_wait_response(void);
 
 /*
+ * Start receiving slave response, but don't wait for full transaction.
+ * The caller is responsible for calling spi_master_wait_response_done()
+ * to ensure the response is fully received.
+ *
+ * @return		EC_SUCCESS, or non-zero if any error.
+ */
+int spi_master_wait_response_async(void);
+
+/*
+ * Wait for slave response to complete.
+ *
+ * @return		Pointer to the response packet, or NULL if any error.
+ */
+const struct spi_comm_packet *spi_master_wait_response_done(void);
+
+/*
  * Calculate checksum and send response packet to the master.
  *
  * @param resp		Pointer to the response packet.
@@ -54,6 +70,26 @@ const struct spi_comm_packet *spi_master_wait_response(void);
  * @return		EC_SUCCESS, or non-zero if any error.
  */
 int spi_slave_send_response(struct spi_comm_packet *resp);
+
+/*
+ * Start sending response to the master, but don't block. The caller is
+ * responsible for calling spi_slave_send_response_flush() to ensure
+ * the response is fully transmitted.
+ *
+ * @return		EC_SUCCESS, or non-zero if any error.
+ */
+int spi_slave_send_response_async(struct spi_comm_packet *resp);
+
+/*
+ * Wait until the last response is sent out.
+ *
+ * @param has_next_response
+ *			Non-zero if there is more data to respond; otherwise,
+ *			zero.
+ *
+ * @return		EC_SUCCESS, or non-zero if any error.
+ */
+int spi_slave_send_response_flush(int has_next_response);
 
 /* SPI NSS interrupt handler. Slave only. */
 void spi_nss_interrupt(void);
