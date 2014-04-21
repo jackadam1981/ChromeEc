@@ -20,7 +20,7 @@
 #define SB_SHIP_MODE_DATA	0xc574
 
 static struct battery_info *battery_info;
-static int battery_cut_off;
+static int cut_off_supported;
 
 struct battery_device {
 	char			manuf[9];
@@ -222,7 +222,8 @@ const struct battery_info *battery_get_info(void)
 		    (support_batteries[i].design_mv == design_mv)) {
 			CPRINTF("[%T battery Manuf:%s, Device=%s, design=%u]\n",
 				manuf, device, design_mv);
-			battery_cut_off = support_batteries[i].support_cut_off;
+			cut_off_supported = (
+				support_batteries[i].support_cut_off);
 			battery_info = support_batteries[i].battery_info;
 			return battery_info;
 		}
@@ -233,7 +234,7 @@ const struct battery_info *battery_get_info(void)
 
 int battery_command_cut_off(struct host_cmd_handler_args *args)
 {
-	if (battery_cut_off)
+	if (cut_off_supported)
 		return sb_write(SB_SHIP_MODE_ADDR, SB_SHIP_MODE_DATA);
 	else
 		return EC_RES_INVALID_COMMAND;
