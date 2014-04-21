@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65d653dd_3a456527",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-04-21T23:31:48Z",
+      "side": 1,
+      "message": "Is this necessary?  If the battery is removed, the previous battery info will stay around, but the EC_BATT_FLAG_BATT_PRESENT flag will be cleared, so it shoudn\u0027t matter.",
+      "revId": "a49d9646d2173f5eaf2f1278dfca6f1868757677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65d653dd_5aedc9dd",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-04-21T23:31:48Z",
+      "side": 1,
+      "message": "This is not necessary.  The if statement just above sets both to zero if either is zero. We don\u0027t want one set to zero without also setting the other.",
+      "revId": "a49d9646d2173f5eaf2f1278dfca6f1868757677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "658813e3_234a098f",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-04-21T23:31:48Z",
+      "side": 1,
+      "message": "No. You need the \" || battery_seems_to_be_dead\" part too. It goes from PRECHARGE to IDLE after 30 seconds. WIthout that second part, it\u0027ll never recover if you don\u0027t plug in a new battery before then.",
+      "revId": "a49d9646d2173f5eaf2f1278dfca6f1868757677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
