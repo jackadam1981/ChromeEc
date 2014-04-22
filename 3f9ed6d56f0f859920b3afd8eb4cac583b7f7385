@@ -16,6 +16,24 @@
       "revId": "3f9ed6d56f0f859920b3afd8eb4cac583b7f7385",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5aa4352_59787308",
+        "filename": "board/keyborg/master_slave.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-04-22T16:32:30Z",
+      "side": 1,
+      "message": "I only see pull-down option in the datasheet. Do we know if the pull-up config from STM32F GPIO driver works?\n\nI tried to make this as safe as possible. The two chips share the same VDD input so the risk should be minimal.",
+      "parentUuid": "852fc7b4_e550d0e6",
+      "revId": "3f9ed6d56f0f859920b3afd8eb4cac583b7f7385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
