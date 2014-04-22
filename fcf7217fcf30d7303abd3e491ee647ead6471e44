@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "852fc7b4_22ad8ebe",
+        "filename": "board/gnawty/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-04-22T00:57:34Z",
+      "side": 1,
+      "message": "Please add EC_LED_ID_POWER_LED to this array.",
+      "revId": "fcf7217fcf30d7303abd3e491ee647ead6471e44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65349307_e18d666d",
+        "filename": "board/gnawty/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-04-22T00:57:34Z",
+      "side": 1,
+      "message": "Please use led_id to update the color of the correct led. Note that the following ectool commands must work for the factory test:\n\n\"ectool led power yellow\" \"ectool led power blue\" \"ectool led power off\" \"ectool led power auto\"\n\n\"ectool led battery yellow\" \"ectool led battery blue\" \"ectool led battery off\" \"ectool led battery auto\"",
+      "revId": "fcf7217fcf30d7303abd3e491ee647ead6471e44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65349307_614b166d",
+        "filename": "board/gnawty/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-04-22T00:57:34Z",
+      "side": 1,
+      "message": "Please check if led_auto_control_is_enabled like at the top of battery_led",
+      "revId": "fcf7217fcf30d7303abd3e491ee647ead6471e44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "253e1beb_7f460f66",
+        "filename": "board/gnawty/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-04-22T00:57:34Z",
+      "side": 1,
+      "message": "Please follow the multi-line comment format with a separate opening and closing line (like the one in led_init )",
+      "revId": "fcf7217fcf30d7303abd3e491ee647ead6471e44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65349307_6182f640",
+        "filename": "board/gnawty/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-04-22T00:57:34Z",
+      "side": 1,
+      "message": "Note that the LED might turn off and back on very quickly when entering suspend as you don\u0027t know what the value of ticks will be when transitioning into suspend. Some other devices reset power_ticks to 0 when entering suspend. See board/peppy/led.c for an example.",
+      "revId": "fcf7217fcf30d7303abd3e491ee647ead6471e44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65349307_e11f2675",
+        "filename": "board/gnawty/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-04-22T00:57:34Z",
+      "side": 1,
+      "message": "green -\u003e blue",
+      "revId": "fcf7217fcf30d7303abd3e491ee647ead6471e44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
