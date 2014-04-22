@@ -168,6 +168,12 @@ static void irq_init(void)
 	asm("cpsie i");
 }
 
+static void pmse_init(void)
+{
+	/* Use 10K-ohm pull down */
+	STM32_PMSE_CR |= (1 << 13);
+}
+
 void hardware_init(void)
 {
 	power_init();
@@ -176,4 +182,5 @@ void hardware_init(void)
 	timers_init();
 	adc_init();
 	irq_init();
+	pmse_init();
 }
