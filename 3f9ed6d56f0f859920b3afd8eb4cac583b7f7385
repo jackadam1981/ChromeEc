@@ -34,6 +34,24 @@
       "revId": "3f9ed6d56f0f859920b3afd8eb4cac583b7f7385",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65349307_a4b1ac20",
+        "filename": "board/keyborg/master_slave.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-04-22T16:38:24Z",
+      "side": 1,
+      "message": "I missed this difference between F103 and TS60.",
+      "parentUuid": "e5aa4352_59787308",
+      "revId": "3f9ed6d56f0f859920b3afd8eb4cac583b7f7385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
