@@ -35,6 +35,7 @@ static const struct charger_info bq24725_charger_info = {
 	.input_current_max  = REG_TO_CURRENT(8064, R_AC),
 	.input_current_min  = REG_TO_CURRENT(128, R_AC),
 	.input_current_step = REG_TO_CURRENT(128, R_AC),
+	.input_timeout = 175,  /* seconds */
 };
 
 /* bq24725 specific interfaces */

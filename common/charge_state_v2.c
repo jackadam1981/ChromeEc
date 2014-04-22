@@ -274,7 +274,7 @@ static void show_charging_progress(void)
  * Ask the charger for some voltage and current. If either value is 0,
  * charging is disabled; otherwise it's enabled. Negative values are ignored.
  */
-static int charge_request(int voltage, int current)
+static int charge_request(int voltage, int current, int verbose)
 {
 	int r1 = EC_SUCCESS, r2 = EC_SUCCESS;
 
@@ -282,7 +282,8 @@ static int charge_request(int voltage, int current)
 	if (!voltage || !current)
 		voltage = current = 0;
 
-	CPRINTF("[%T %s(%dmV, %dmA)]\n", __func__, voltage, current);
+	if (verbose)
+		CPRINTF("[%T %s(%dmV, %dmA)]\n", __func__, voltage, current);
 
 	if (voltage >= 0)
 		r1 = charger_set_voltage(voltage);
@@ -408,6 +409,8 @@ void charger_task(void)
 {
 	int sleep_usec;
 	int need_static = 1;
+	int parameter_changed;
+	int reload_charger;
 
 	/* Get the battery-specific values */
 	batt_info = battery_get_info();
@@ -600,19 +603,26 @@ wait_for_it:
 			charger_closest_current(curr.requested_current);
 
 		/*
-		 * Only update the charger when something changes so that
-		 * temporary overrides are possible through console commands.
+		 * Only update the charger when something changes, or charger
+		 * needs to reload watchdog to generate output.
+		 *
+		 * Use force idle mode if you want to temporarily override
+		 * charger parameters.
 		 */
-		if ((prev_volt != curr.requested_voltage ||
-		     prev_curr != curr.requested_current) &&
+		parameter_changed = (prev_volt != curr.requested_voltage ||
+				     prev_curr != curr.requested_current);
+		reload_charger = charger_needs_reload();
+		if ((parameter_changed || reload_charger) &&
 		    EC_SUCCESS == charge_request(curr.requested_voltage,
-						 curr.requested_current)) {
+				curr.requested_current, parameter_changed)) {
 			/*
 			 * Only update if the request worked, so we'll keep
 			 * trying on failures.
 			 */
 			prev_volt = curr.requested_voltage;
 			prev_curr = curr.requested_current;
+
+			charger_schedule_next_reload();
 		}
 
 		/* How long to sleep? */
@@ -835,12 +845,12 @@ static int charge_command_charge_state(struct host_cmd_handler_args *args)
 			switch (in->set_param.param) {
 			case CS_PARAM_CHG_VOLTAGE:
 				val = charger_closest_voltage(val);
-				if (charge_request(val, -1))
+				if (charge_request(val, -1, 1))
 					rv = EC_RES_ERROR;
 				break;
 			case CS_PARAM_CHG_CURRENT:
 				val = charger_closest_current(val);
-				if (charge_request(-1, val))
+				if (charge_request(-1, val, 1))
 					rv = EC_RES_ERROR;
 				break;
 			case CS_PARAM_CHG_INPUT_CURRENT:

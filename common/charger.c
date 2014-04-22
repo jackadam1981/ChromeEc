@@ -11,6 +11,7 @@
 #include "dptf.h"
 #include "host_command.h"
 #include "printf.h"
+#include "timer.h"
 #include "util.h"
 #include "hooks.h"
 
@@ -20,6 +21,10 @@
 
 /* DPTF current limit, -1 = none */
 static int dptf_limit_ma = -1;
+
+/* Charger watchdog */
+static timestamp_t input_watchdog;
+
 
 void dptf_set_charging_current_limit(int ma)
 {
@@ -79,6 +84,21 @@ int charger_closest_current(int current)
 
 	/* Otherwise round down to nearest current step */
 	return current - (current % info->current_step);
+}
+
+int charger_needs_reload(void)
+{
+	const struct charger_info * const info = charger_get_info();
+
+	return info->input_timeout &&
+	       get_time().val >= input_watchdog.val;
+}
+
+void charger_schedule_next_reload(void)
+{
+	const struct charger_info * const info = charger_get_info();
+
+	input_watchdog.val = get_time().val + info->input_timeout / 2 * SECOND;
 }
 
 void charger_get_params(struct charger_params *chg)
@@ -158,6 +178,10 @@ static int print_info(void)
 		ccprintf("%5d (%4d - %5d, %3d)\n", d,
 			 info->input_current_min, info->input_current_max,
 			 info->input_current_step);
+
+	print_item_name("input_timeout:");
+	ccprintf("%5d (%s)\n", info->input_timeout,
+		info->input_timeout ? "secs" : "never");
 
 	/* dptf current limit */
 	print_item_name("I_dptf:");

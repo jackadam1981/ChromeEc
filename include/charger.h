@@ -25,6 +25,7 @@ struct charger_info {
 	uint16_t input_current_max;
 	uint16_t input_current_min;
 	uint16_t input_current_step;
+	uint16_t input_timeout;  /* stop charging if no input after X secs */
 };
 
 /*
@@ -87,6 +88,17 @@ int charger_closest_current(int current);
  * @return Voltage the charger will actually supply if <voltage> is requested.
  */
 int charger_closest_voltage(int voltage);
+
+/**
+ * Return if the charge state machine should set the charger now so that
+ * the charger watchdog doesn't stop charging.
+ */
+int charger_needs_reload(void);
+
+/**
+ * Schedule the next timestamp for charger watchdog.
+ */
+void charger_schedule_next_reload(void);
 
 /* Get/set charge current limit in mA */
 int charger_get_current(int *current);
