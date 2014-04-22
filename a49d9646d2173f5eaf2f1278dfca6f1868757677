@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "65349307_41c1b264",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-04-22T01:09:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65d653dd_3a456527",
+      "revId": "a49d9646d2173f5eaf2f1278dfca6f1868757677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65d653dd_5aedc9dd",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "852fc7b4_e2e726f6",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-04-22T01:09:19Z",
+      "side": 1,
+      "message": "Yes, this is necessary. If either voltage or current is 0, then both charger_set_voltage() and charger_set_current() would not be called, which means the charger reminds generates output even we set it to zero.",
+      "parentUuid": "65d653dd_5aedc9dd",
+      "revId": "a49d9646d2173f5eaf2f1278dfca6f1868757677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "658813e3_234a098f",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2014-04-21T23:31:48Z",
       "side": 1,
       "message": "No. You need the \" || battery_seems_to_be_dead\" part too. It goes from PRECHARGE to IDLE after 30 seconds. WIthout that second part, it\u0027ll never recover if you don\u0027t plug in a new battery before then.",
+      "revId": "a49d9646d2173f5eaf2f1278dfca6f1868757677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "253e1beb_1fad43be",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-04-22T01:09:19Z",
+      "side": 1,
+      "message": "Done. Ah, I thought that is \u0026\u0026.",
+      "parentUuid": "658813e3_234a098f",
       "revId": "a49d9646d2173f5eaf2f1278dfca6f1868757677",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
