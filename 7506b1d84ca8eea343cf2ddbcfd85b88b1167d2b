@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "a5a4cb87_e3ddf228",
+        "filename": "board/nyan/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-04-22T00:13:32Z",
+      "side": 1,
+      "message": "This change doesn\u0027t seem related to this CL?",
+      "revId": "7506b1d84ca8eea343cf2ddbcfd85b88b1167d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5a4cb87_e30412e3",
+        "filename": "common/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-04-22T00:13:32Z",
+      "side": 1,
+      "message": "Please #undef this in include/config.h",
+      "revId": "7506b1d84ca8eea343cf2ddbcfd85b88b1167d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45db0f06_d318c692",
         "filename": "common/battery.c",
         "patchSetId": 1
@@ -13,6 +47,24 @@
       "writtenOn": "2014-04-21T23:31:57Z",
       "side": 1,
       "message": "Consistency please!",
+      "revId": "7506b1d84ca8eea343cf2ddbcfd85b88b1167d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5a4cb87_83d8be27",
+        "filename": "common/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-04-22T00:13:32Z",
+      "side": 1,
+      "message": "Good catch!",
+      "parentUuid": "45db0f06_d318c692",
       "revId": "7506b1d84ca8eea343cf2ddbcfd85b88b1167d2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
