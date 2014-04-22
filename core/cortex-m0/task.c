@@ -329,6 +329,13 @@ static uint32_t __wait_evt(int timeout_us, task_id_t resched)
 		ASSERT(ret == EC_SUCCESS);
 	}
 	while (!(evt = atomic_read_clear(&tsk->events))) {
+		/*
+		 * We need to ensure that the execution priority is actually
+		 * decreased after the "cpsie i" in the atomic operation above
+		 * else the "svc" in the __schedule call below will trigger
+		 * a HardFault. Use a barrier to force it at that point.
+		 */
+		asm volatile("isb");
 		/* Remove ourself and get the next task in the scheduler */
 		__schedule(1, resched);
 		resched = TASK_ID_IDLE;
