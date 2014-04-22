@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "852fc7b4_65fcc092",
+        "filename": "board/keyborg/spi_comm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-04-22T16:07:02Z",
+      "side": 1,
+      "message": "do we really need 3 buffers ?",
+      "revId": "22d5fb06ccbab21c29ced7e8b1ca6ec9b74bd635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "253e1beb_82e1fc39",
+        "filename": "board/keyborg/spi_comm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-04-22T16:07:02Z",
+      "side": 1,
+      "message": "that\u0027s a terrible checksum ... (I know it is used somewhere else for SPI communication\nCan we use the CRC16 integrated in the SPI controller ?",
+      "revId": "22d5fb06ccbab21c29ced7e8b1ca6ec9b74bd635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65349307_a40ecc50",
+        "filename": "board/keyborg/spi_comm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-04-22T16:07:02Z",
+      "side": 1,
+      "message": "to be on the safe side, you probably want to do the full \"25.3.8\nSerial peripheral interface (SPI)\" sequence here.",
+      "revId": "22d5fb06ccbab21c29ced7e8b1ca6ec9b74bd635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
