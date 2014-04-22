@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "0543d781_5e987561",
+        "filename": "board/nyan/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-04-22T18:31:07Z",
+      "side": 1,
+      "message": "Duplicating the flag is clunky.\n\nJust make a single batt_device pointer to support_batteries+i, and then refer to batt_device-\u003esupport_cut_off.",
+      "revId": "7506b1d84ca8eea343cf2ddbcfd85b88b1167d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5a4cb87_e30412e3",
         "filename": "common/battery.c",
         "patchSetId": 1
@@ -65,6 +82,40 @@
       "side": 1,
       "message": "Good catch!",
       "parentUuid": "45db0f06_d318c692",
+      "revId": "7506b1d84ca8eea343cf2ddbcfd85b88b1167d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45394f00_2048eae8",
+        "filename": "common/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-04-22T18:31:07Z",
+      "side": 1,
+      "message": "Use battery/charger channel, not hook channel.",
+      "revId": "7506b1d84ca8eea343cf2ddbcfd85b88b1167d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c54c5fb5_fcbea9ee",
+        "filename": "include/battery.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-04-22T18:31:07Z",
+      "side": 1,
+      "message": "if CONFIG_BATTERY_CUT_OFF defined...",
       "revId": "7506b1d84ca8eea343cf2ddbcfd85b88b1167d2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
