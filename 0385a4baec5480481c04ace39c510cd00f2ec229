@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c54c5fb5_7c0e1907",
+        "filename": "common/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-04-22T20:41:49Z",
+      "side": 1,
+      "message": "if (argc \u003e 2) {\n\n  } else {\n     \n  }",
+      "revId": "0385a4baec5480481c04ace39c510cd00f2ec229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0543d781_3e780908",
+        "filename": "common/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-04-22T20:41:49Z",
+      "side": 1,
+      "message": "Move up into \"if argc \u003e 2\"",
+      "revId": "0385a4baec5480481c04ace39c510cd00f2ec229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45394f00_6015d2a0",
+        "filename": "common/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-04-22T20:41:49Z",
+      "side": 1,
+      "message": "Would be handy for this to call battery_get_param() even on a set, to print the actual value set.",
+      "revId": "0385a4baec5480481c04ace39c510cd00f2ec229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c54c5fb5_bc0701e6",
+        "filename": "common/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-04-22T20:41:49Z",
+      "side": 1,
+      "message": "On a set, still need to call battery_get_vendor_param() to fill in r-\u003evalue.",
+      "revId": "0385a4baec5480481c04ace39c510cd00f2ec229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0543d781_fe8ea1d8",
+        "filename": "include/battery.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-04-22T20:41:49Z",
+      "side": 1,
+      "message": "Please comment getter and setter separately.\n\nFor the getter, value_ptr is where the value will be stored.",
+      "revId": "0385a4baec5480481c04ace39c510cd00f2ec229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45394f00_e009e290",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2050,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-04-22T20:41:49Z",
+      "side": 1,
+      "message": "On a set operation, the response contains the actual value set, which may be rounded or clipped from the requested value.",
+      "revId": "0385a4baec5480481c04ace39c510cd00f2ec229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
