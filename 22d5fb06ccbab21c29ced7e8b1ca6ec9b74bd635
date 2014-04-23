@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a5620b22_0ddc05f2",
+        "filename": "board/keyborg/spi_comm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-04-23T06:55:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "852fc7b4_65fcc092",
+      "revId": "22d5fb06ccbab21c29ced7e8b1ca6ec9b74bd635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "253e1beb_82e1fc39",
         "filename": "board/keyborg/spi_comm.c",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "85fd0775_a7b19820",
+        "filename": "board/keyborg/spi_comm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-04-23T06:55:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "253e1beb_82e1fc39",
+      "revId": "22d5fb06ccbab21c29ced7e8b1ca6ec9b74bd635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65349307_a40ecc50",
         "filename": "board/keyborg/spi_comm.c",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2014-04-22T16:07:02Z",
       "side": 1,
       "message": "to be on the safe side, you probably want to do the full \"25.3.8\nSerial peripheral interface (SPI)\" sequence here.",
+      "revId": "22d5fb06ccbab21c29ced7e8b1ca6ec9b74bd635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2557fb42_b149f09b",
+        "filename": "board/keyborg/spi_comm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-04-23T06:55:11Z",
+      "side": 1,
+      "message": "So far I\u0027m not turning off SPI anywhere (only turning off DMA). I\u0027ll implement that sequence when I turn off SPI for low power in future CLs.",
+      "parentUuid": "65349307_a40ecc50",
       "revId": "22d5fb06ccbab21c29ced7e8b1ca6ec9b74bd635",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
