@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5104b96_631682e0",
+        "filename": "board/quawks/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-04-23T22:01:06Z",
+      "side": 1,
+      "message": "CONFIG_ options have a special meaning and are normally documented in include/config.h. Please move this to thermal_shutdown.c and rename it to just \"THERMAL_SHUTDOWN_TEMP\"",
+      "revId": "19b2afde9a403ec96cfcd310d5a20abbafd63806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85fd0775_c8794851",
+        "filename": "board/quawks/thermalshutdown.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-04-23T22:01:06Z",
+      "side": 1,
+      "message": "Please rename this to thermal_shutdown.c",
+      "revId": "19b2afde9a403ec96cfcd310d5a20abbafd63806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5104b96_231c8a00",
+        "filename": "board/quawks/thermalshutdown.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-04-23T22:01:06Z",
+      "side": 1,
+      "message": "Please reformat to 80 columns.",
+      "revId": "19b2afde9a403ec96cfcd310d5a20abbafd63806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5104b96_c3d81600",
+        "filename": "board/quawks/thermalshutdown.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-04-23T22:01:06Z",
+      "side": 1,
+      "message": "Thremal -\u003e Thermal\n\nPlease include units in the temperature. \"%dC\"\n\nAlso the standard format for logging statements is\n\"[%T message]\\n\" with the closing bracket just before the newline.",
+      "revId": "19b2afde9a403ec96cfcd310d5a20abbafd63806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85fd0775_c8b788c2",
+        "filename": "board/quawks/thermalshutdown.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-04-23T22:01:06Z",
+      "side": 1,
+      "message": "Please format like \"[%T message]\\n\"",
+      "revId": "19b2afde9a403ec96cfcd310d5a20abbafd63806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
