@@ -465,7 +465,8 @@ void charger_task(void)
 			}
 		}
 		charger_get_params(&curr.chg);
-		battery_get_params(&curr.batt);
+		if (!battery_is_cut_off())
+			battery_get_params(&curr.batt);
 
 		/*
 		 * TODO(crosbug.com/p/27527). Sometimes the battery thinks its
@@ -586,13 +587,18 @@ void charger_task(void)
 #endif
 
 wait_for_it:
-		/* Keep the AP informed */
-		if (need_static)
-			need_static = update_static_battery_info();
-		/* Wait on the dynamic info until the static info is good. */
-		if (!need_static)
-			update_dynamic_battery_info();
-		notify_host_of_low_battery();
+		if (!battery_is_cut_off()) {
+			/* Keep the AP informed */
+			if (need_static)
+				need_static = update_static_battery_info();
+			/*
+			 * Wait on the dynamic info until the static info is
+			 * good.
+			 */
+			if (!need_static)
+				update_dynamic_battery_info();
+			notify_host_of_low_battery();
+		}
 
 		/* And the EC console */
 		if (!(curr.batt.flags & BATT_FLAG_BAD_STATE_OF_CHARGE) &&
@@ -617,16 +623,28 @@ wait_for_it:
 		curr.requested_current =
 			charger_closest_current(curr.requested_current);
 
-		/*
-		 * As a safety feature, some chargers will stop charging if
-		 * we don't communicate with it frequently enough. In manual
-		 * mode, we'll just tell it what it already knows
-		 */
-		if (manual_mode) {
-			charge_request(curr.chg.voltage, curr.chg.current);
-		} else {
-			charge_request(curr.requested_voltage,
-				       curr.requested_current);
+		/* Charger only accpets request when AC is on. */
+		if (curr.ac) {
+			/*
+			 * Some batteries would wake up after cut-off if we keep
+			 * charging it. Thus, we only charge when AC is on and
+			 * battery is not cut off yet.
+			 */
+			if (battery_is_cut_off())
+				charge_request(0, 0);
+			/*
+			 * As a safety feature, some chargers will stop
+			 * charging if we don't communicate with it frequently
+			 * enough. In manual mode, we'll just tell it what it
+			 * already knows
+			 */
+			else if (manual_mode) {
+				charge_request(curr.chg.voltage,
+					       curr.chg.current);
+			} else {
+				charge_request(curr.requested_voltage,
+					       curr.requested_current);
+			}
 		}
 
 		/* How long to sleep? */
