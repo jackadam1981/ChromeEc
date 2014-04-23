@@ -10,9 +10,14 @@
 #include "common.h"
 #include "console.h"
 #include "gpio.h"
+#include "host_command.h"
 #include "timer.h"
 #include "util.h"
 #include "watchdog.h"
+
+#ifdef CONFIG_BATTERY_CUT_OFF
+static int is_cut_off;
+#endif
 
 #ifdef CONFIG_BATTERY_PRESENT_GPIO
 #ifdef CONFIG_BATTERY_PRESENT_CUSTOM
@@ -248,3 +253,39 @@ DECLARE_CONSOLE_COMMAND(battery, command_battery,
 			"<repeat_count> <sleep_ms>",
 			"Print battery info",
 			NULL);
+
+
+#ifdef CONFIG_BATTERY_CUT_OFF
+int battery_is_cut_off(void)
+{
+	return is_cut_off;
+}
+
+int battery_command_cut_off(struct host_cmd_handler_args *args)
+{
+	int rv;
+
+	rv = board_cut_off_battery();
+	if (!rv)
+		is_cut_off = 1;
+
+	return rv;
+}
+DECLARE_HOST_COMMAND(EC_CMD_BATTERY_CUT_OFF, battery_command_cut_off,
+		EC_VER_MASK(0));
+
+static int command_cutoff(int argc, char **argv)
+{
+	int rv;
+
+	rv = board_cut_off_battery();
+	if (!rv)
+		is_cut_off = 1;
+
+	return rv;
+}
+DECLARE_CONSOLE_COMMAND(cutoff, command_cutoff,
+		"",
+		"Cut off the battery output",
+		NULL);
+#endif  /* CONFIG_BATTERY_CUT_OFF */

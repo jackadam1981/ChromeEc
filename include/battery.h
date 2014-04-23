@@ -268,4 +268,16 @@ int battery_device_chemistry(char *dest, int size);
  */
 int battery_manufacturer_date(int *year, int *month, int *day);
 
+/**
+ * Call board-specific cut-off function.
+ *
+ * @return EC_RES_INVALID_COMMAND if the battery doesn't support.
+ */
+int board_cut_off_battery(void);
+
+/**
+ * Return true if the battery has been cut off.
+ */
+int battery_is_cut_off(void);
+
 #endif /* __CROS_EC_BATTERY_H */
