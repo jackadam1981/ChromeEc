@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2557fb42_c00e4f52",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-04-23T16:02:12Z",
+      "side": 1,
+      "message": "Let\u0027s add some explanation to this comment: \n\n\"As a safety feature, some chargers will stop charging if we don\u0027t communicate with it frequently enough. In manual mode, we\u0027ll just tell it what it already knows.\"",
+      "revId": "56aab0b6a82bf1d5172dee2168f988de01dbdc85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
