@@ -86,6 +86,8 @@ const char help_str[] =
 	"      Writes to EC flash from a file\n"
 	"  gpioget <GPIO name>\n"
 	"      Get the value of GPIO signal\n"
+	"  gpiogetcount\n"
+	"      Get the count of GPIO signals\n"
 	"  gpioset <GPIO name>\n"
 	"      Set the value of GPIO signal\n"
 	"  hangdetect <flags> <event_msec> <reboot_msec> | stop | start\n"
@@ -3179,6 +3181,25 @@ int cmd_gpio_get(int argc, char *argv[])
 }
 
 
+int cmd_gpio_get_count(int argc, char *argv[])
+{
+	struct ec_response_gpio_get_count r;
+	int rv;
+
+	if (argc != 1) {
+		fprintf(stderr, "Usage: %s\n", argv[0]);
+		return -1;
+	}
+
+	rv = ec_command(EC_CMD_GPIO_GET_COUNT, 0, NULL, 0, &r, sizeof(r));
+	if (rv < 0)
+		return rv;
+
+	printf("NUMBER OF GPIOs = %d\n", r.val);
+	return 0;
+}
+
+
 int cmd_gpio_set(int argc, char *argv[])
 {
 	struct ec_params_gpio_set p;
@@ -3947,6 +3968,7 @@ const struct command commands[] = {
 	{"flashwrite", cmd_flash_write},
 	{"flashinfo", cmd_flash_info},
 	{"gpioget", cmd_gpio_get},
+	{"gpiogetcount", cmd_gpio_get_count},
 	{"gpioset", cmd_gpio_set},
 	{"hangdetect", cmd_hang_detect},
 	{"hello", cmd_hello},

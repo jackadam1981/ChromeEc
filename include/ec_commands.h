@@ -1774,6 +1774,12 @@ struct ec_response_gpio_get {
 	uint8_t val;
 } __packed;
 
+/* Get count of GPIOs */
+#define EC_CMD_GPIO_GET_COUNT 0xe0
+struct ec_response_gpio_get_count {
+	uint8_t val;
+} __packed;
+
 /*****************************************************************************/
 /* I2C commands. Only available when flash write protect is unlocked. */
 

@@ -216,3 +216,16 @@ static int gpio_command_set(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_GPIO_SET, gpio_command_set, EC_VER_MASK(0));
+
+static int gpio_command_get_count(struct host_cmd_handler_args *args)
+{
+	struct ec_response_gpio_get_count *r = args->response;
+
+	r->val = GPIO_COUNT;
+	args->response_size = sizeof(struct ec_response_gpio_get_count);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_GPIO_GET_COUNT,
+		     gpio_command_get_count,
+		     EC_VER_MASK(0));
