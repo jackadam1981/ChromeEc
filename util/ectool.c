@@ -3155,26 +3155,86 @@ static int cmd_charge_state(int argc, char **argv)
 
 int cmd_gpio_get(int argc, char *argv[])
 {
-	struct ec_params_gpio_get p;
-	struct ec_response_gpio_get r;
-	int rv;
+	struct ec_params_gpio_get_v1 p;
+	struct ec_response_gpio_get_v1 r;
+	char *e;
+	int i, rv, subcmd, num_gpios;
 
-	if (argc != 2) {
-		fprintf(stderr, "Usage: %s <GPIO name>\n", argv[0]);
+	if (argc < 2 || argc > 3) {
+		printf("Usage: %s <subcmd> [<GPIO name>]\n", argv[0]);
+		printf("Supports the following subcmds\n");
+		printf("0 - Get value by name   # 'gpioget 0 LID_OPEN'\n");
+		printf("1 - Get count of GPIOS  # 'gpioget 1'\n");
+		printf("2 - Get info for all GPIOs # 'gpioget 2'\n");
 		return -1;
 	}
 
-	if (strlen(argv[1]) + 1 > sizeof(p.name)) {
-		fprintf(stderr, "GPIO name too long.\n");
+	subcmd = strtol(argv[1], &e, 0);
+	if ((e && *e) ||
+	    (subcmd != EC_GPIO_GET_BY_NAME &&
+	     subcmd != EC_GPIO_GET_COUNT &&
+	     subcmd != EC_GPIO_GET_INFO)) {
+		fprintf(stderr, "Bad sub-command.\n");
 		return -1;
 	}
-	strcpy(p.name, argv[1]);
 
-	rv = ec_command(EC_CMD_GPIO_GET, 0, &p, sizeof(p), &r, sizeof(r));
+	if (subcmd == EC_GPIO_GET_BY_NAME) {
+		if (argc != 3) {
+			printf("Usage: 'gpioget 0 <GPIO_NAME>'\n");
+			return -1;
+		}
+		p.subcmd = EC_GPIO_GET_BY_NAME;
+		if (strlen(argv[2]) + 1 > sizeof(p.get_value_by_name.name)) {
+			fprintf(stderr, "GPIO name too long.\n");
+			return -1;
+		}
+		strcpy(p.get_value_by_name.name, argv[2]);
+
+		rv = ec_command(EC_CMD_GPIO_GET, EC_VER_GPIO_GET, &p,
+				sizeof(p), &r, sizeof(r));
+
+		if (rv < 0)
+			return rv;
+
+		printf("GPIO %s = %d\n", p.get_value_by_name.name,
+			r.get_value_by_name.val);
+		return 0;
+	}
+
+	if (argc == 3) {
+		printf("USAGE: 'gpioget %d'\n", subcmd);
+		return -1;
+	}
+
+	/* Need GPIO count for EC_GPIO_GET_COUNT or EC_GPIO_GET_INFO */
+	p.subcmd = EC_GPIO_GET_COUNT;
+	rv = ec_command(EC_CMD_GPIO_GET, EC_VER_GPIO_GET, &p,
+			sizeof(p), &r, sizeof(r));
 	if (rv < 0)
 		return rv;
 
-	printf("GPIO %s = %d\n", p.name, r.val);
+	if (subcmd == EC_GPIO_GET_COUNT) {
+		printf("GPIO COUNT = %d\n", r.get_count.val);
+		return 0;
+	}
+
+	/* subcmd EC_GPIO_GET_INFO */
+	num_gpios = r.get_count.val;
+	p.subcmd = EC_GPIO_GET_INFO;
+
+	printf("%-32s %8s %8s\n", "GPIO", "VALUE", "FLAG");
+	for (i = 0; i < num_gpios; i++) {
+		p.get_info.index = i;
+
+		rv = ec_command(EC_CMD_GPIO_GET, EC_VER_GPIO_GET, &p,
+				sizeof(p), &r, sizeof(r));
+		if (rv < 0)
+			return rv;
+
+		printf("%-32s %8d %8X\n", r.get_info.name,
+			r.get_info.val, r.get_info.flags);
+	}
+
 	return 0;
 }
 
