@@ -327,7 +327,7 @@ static int send_control(void *ctxt, int type)
 
 	bit_len = send_validate_message(ctxt, header, 0, NULL);
 
-	CPRINTF("CTRL[%d]>%d\n", type, bit_len);
+	if (type != 5) CPRINTF("%T CTRL[%d]>%d\n", type, bit_len);
 
 	return bit_len;
 }
@@ -349,7 +349,7 @@ static int send_source_cap(void *ctxt)
 
 	bit_len = send_validate_message(ctxt, header, pd_src_pdo_cnt,
 					pd_src_pdo);
-	CPRINTF("srcCAP>%d\n", bit_len);
+	/* CPRINTF("srcCAP>%d\n", bit_len); */
 
 	return bit_len;
 }
@@ -485,10 +485,12 @@ static void handle_request(void *ctxt, uint16_t head, uint32_t *payload)
 		send_goodcrc(ctxt, PD_HEADER_ID(head));
 
 	/* dump received packet content */
-	CPRINTF("RECV %04x/%d ", head, cnt);
+	if (PD_HEADER_TYPE(head) != 5) {
+	CPRINTF("%T RECV %04x/%d ", head, cnt);
 	for (p = 0; p < cnt; p++)
 		CPRINTF("[%d]%08x ", p, payload[p]);
 	CPRINTF("\n");
+	}
 
 	if (cnt)
 		handle_data_request(ctxt, head, payload);
@@ -595,8 +597,8 @@ static int analyze_rx(uint32_t *payload)
 packet_err:
 	if (debug_dump)
 		pd_dump_packet(ctxt, msg);
-	else
-		CPRINTF("RX ERR (%d)\n", bit);
+	//else
+	//	CPRINTF("RX ERR (%d)\n", bit);
 	return bit;
 }
 
