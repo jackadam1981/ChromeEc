@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5104b96_09036d2e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1778,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-04-23T22:54:59Z",
+      "side": 1,
+      "message": "Assigned a code that is not currently used. Not sure if there is some protocol in assigning these codes.",
+      "revId": "dc2c7a3e05eae00b4959508c636f333ff509d5bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85fd0775_23d2b58e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1781,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-04-23T22:54:59Z",
+      "side": 1,
+      "message": "Unsure if I should reuse the ec_response_gpio_get struct or define a new one? For now I\u0027ve defined a new one.",
+      "revId": "dc2c7a3e05eae00b4959508c636f333ff509d5bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
