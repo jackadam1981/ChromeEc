@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e516c38e_05dcf27e",
+        "filename": "board/stimpy/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-04-23T17:00:36Z",
+      "side": 1,
+      "message": "This cut off command won\u0027t work for the 0C2A battery. You can fix this in a follow-up patch.",
+      "revId": "9b4bff920fb117f061b8368d1385696187d5e659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e516c38e_45e6ea50",
+        "filename": "board/stimpy/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-04-23T17:00:36Z",
+      "side": 1,
+      "message": "4A is probably way beyond the rating of the stimpy adapter. Please update this in a follow-up patch.",
+      "revId": "9b4bff920fb117f061b8368d1385696187d5e659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
