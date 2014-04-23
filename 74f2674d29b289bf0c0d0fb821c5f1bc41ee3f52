@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2557fb42_0bb06de0",
+        "filename": "driver/accelgyro_lsm6ds0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-04-23T01:04:35Z",
+      "side": 1,
+      "message": "This function is now repeated in both accel drivers. I\u0027d like to move it out of here, but not sure where to put it. Any ideas?",
+      "revId": "74f2674d29b289bf0c0d0fb821c5f1bc41ee3f52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
