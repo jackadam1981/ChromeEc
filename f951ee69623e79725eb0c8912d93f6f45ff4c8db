@@ -16,6 +16,24 @@
       "revId": "f951ee69623e79725eb0c8912d93f6f45ff4c8db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85cb4765_c8dea3ec",
+        "filename": "driver/charger/bq24735.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1109744
+      },
+      "writtenOn": "2014-04-24T03:47:06Z",
+      "side": 1,
+      "message": "It\u0027s the same. ManufacturerID() and DeviceID() can be used to identify the bq24735. The\nManufacturerID() command always returns 0x0040H and the DeviceID() command always returns 0x000BH.\nI checked the TI BQ247XX charger, it all use the same setting.",
+      "parentUuid": "e5ede3ca_73249838",
+      "revId": "f951ee69623e79725eb0c8912d93f6f45ff4c8db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
