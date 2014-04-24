@@ -27,6 +27,8 @@ extern const struct i2c_port_t i2c_ports[];
 #define I2C_XFER_STOP (1 << 1)  /* Terminate smbus session with stop bit */
 #define I2C_XFER_SINGLE (I2C_XFER_START | I2C_XFER_STOP)  /* One transaction */
 
+void i2c_error_on (int error);
+
 /**
  * Transmit one block of raw data, then receive one block of raw data.
  *

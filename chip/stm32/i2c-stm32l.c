@@ -260,6 +260,13 @@ static void i2c_init_port(const struct i2c_port_t *p, int force_unwedge)
 	/* TODO: enable interrupts using I2C_CR2 bits 8,9 */
 }
 
+static int force_error_i2c = 0;
+
+void i2c_error_on (int error)
+{
+	force_error_i2c = error;
+}
+
 /*****************************************************************************/
 /* Interface */
 
@@ -337,6 +344,10 @@ int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
 			rv = wait_sr1(port, STM32_I2C_SR1_RXNE);
 			if (rv)
 				goto xfer_exit;
+			if (force_error_i2c == 1) {
+				rv = I2C_ERROR_FAILED_START;
+				goto xfer_exit;
+			}
 
 			in[0] = STM32_I2C_DR(port);
 		} else if (in_bytes == 2) {

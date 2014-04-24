@@ -19,6 +19,7 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#include "i2c.h"
 
 #define CPUTS(outstr) cputs(CC_CHARGER, outstr)
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
@@ -433,8 +434,10 @@ void charger_task(void)
 		if (current_state == ST_PRE_CHARGING &&
 		    get_time().val - pre_chg_start.val >= PRE_CHARGING_TIMEOUT)
 			next_state = ST_CHARGING_ERROR;
-		else
+		else {
+			i2c_error_on(1);
 			next_state = calc_next_state(current_state);
+		}
 
 		if (next_state != current_state) {
 			/* Reset state of charge moving average window */
