@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5e5abf4_caddbb29",
+        "filename": "board/quawks/thermal_shutdown.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-04-24T21:25:20Z",
+      "side": 1,
+      "message": "I checked this on a quawks...it looks like you want TMP432_LOCAL_THERM_LIMIT instead as the THERM# pin is tied to EC_RESET. Also note that by default there is a 10C hysteresis on deasserting the THERM# pin so the device will need to cool down to 66C before booting back up (which is probably a good idea).",
+      "revId": "012b71a12c8d004e3b2c98f0364433f21c74ee21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
