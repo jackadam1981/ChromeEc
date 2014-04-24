@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "85cb4765_8552c497",
+        "filename": "common/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-04-24T00:34:29Z",
+      "side": 1,
+      "message": "Currently I\u0027m returning the total number of GPIOs. However on the console \"gpioget\" returns only the unmasked GPIOs. Should I return only number of unmasked GPIOs?",
+      "revId": "dc2c7a3e05eae00b4959508c636f333ff509d5bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5104b96_09036d2e",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
