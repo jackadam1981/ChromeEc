@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c5e8dfcd_3f7743e9",
+        "filename": "common/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-04-24T16:04:02Z",
+      "side": 1,
+      "message": "You\u0027ll need to return the array size, because your get-info function needs to pass an array index.",
+      "parentUuid": "85cb4765_8552c497",
+      "revId": "dc2c7a3e05eae00b4959508c636f333ff509d5bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5104b96_09036d2e",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "85b427df_9d330730",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1778,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-04-24T16:04:02Z",
+      "side": 1,
+      "message": "Commands above 0xdc are not available on ARM platforms, since the cros-ec kernel driver still uses SPIv2 communication protocol.\n\nSuggest defining a version 1 struct for EC_CMD_GPIO_GET which takes a sub-command.  That\u0027s what we\u0027ve done with the lightbar, battery vendor data, etc. so we don\u0027t need to use as many command handlers.\n\nparams {\n   uint8_t subcmd;\n   union {\n      struct {\n         char name[32];\n      } get_value_by_name;\n      struct {\n         uint8_t index;\n      } get_info;\n   }\n}\n\nresponse {\n   union {\n      struct {\n         uint8_t;\n      } get_value_by_name, get_count;\n      struct {\n         char name[32];\n         uint32_t flags;\n      } get_info;\n   }\n}\n\nenum subcmd {\n    EC_GPIO_GET_BY_NAME \u003d 0,\n    EC_GPIO_GET_COUNT \u003d 1,\n    EC_GPIO_GET_INFO \u003d 2,\n}",
+      "parentUuid": "a5104b96_09036d2e",
+      "revId": "dc2c7a3e05eae00b4959508c636f333ff509d5bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85fd0775_23d2b58e",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2014-04-23T22:54:59Z",
       "side": 1,
       "message": "Unsure if I should reuse the ec_response_gpio_get struct or define a new one? For now I\u0027ve defined a new one.",
+      "revId": "dc2c7a3e05eae00b4959508c636f333ff509d5bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85b427df_bd30cb23",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1781,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-04-24T16:04:02Z",
+      "side": 1,
+      "message": "(see above)",
+      "parentUuid": "85fd0775_23d2b58e",
       "revId": "dc2c7a3e05eae00b4959508c636f333ff509d5bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
