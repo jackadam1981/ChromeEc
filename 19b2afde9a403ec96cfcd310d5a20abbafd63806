@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "a5104b96_5277ca15",
+        "filename": "board/quawks/thermalshutdown.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1104589
+      },
+      "writtenOn": "2014-04-24T02:28:34Z",
+      "side": 1,
+      "message": "Is there any example of license statements with file name embedded? I checked many files (in board/* and in common/*) but cannot find any examples.",
+      "parentUuid": "85fd0775_c8794851",
+      "revId": "19b2afde9a403ec96cfcd310d5a20abbafd63806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5104b96_231c8a00",
         "filename": "board/quawks/thermalshutdown.c",
         "patchSetId": 3
