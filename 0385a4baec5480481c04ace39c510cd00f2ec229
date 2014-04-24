@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a5104b96_7d63b720",
+        "filename": "common/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-04-24T05:44:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c54c5fb5_7c0e1907",
+      "revId": "0385a4baec5480481c04ace39c510cd00f2ec229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0543d781_3e780908",
         "filename": "common/battery.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-04-22T20:41:49Z",
       "side": 1,
       "message": "Move up into \"if argc \u003e 2\"",
+      "revId": "0385a4baec5480481c04ace39c510cd00f2ec229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85cb4765_365a102e",
+        "filename": "common/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-04-24T05:44:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0543d781_3e780908",
       "revId": "0385a4baec5480481c04ace39c510cd00f2ec229",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "a5104b96_bd4c0fac",
+        "filename": "common/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-04-24T05:44:55Z",
+      "side": 1,
+      "message": "Good idea. Done.",
+      "parentUuid": "45394f00_6015d2a0",
+      "revId": "0385a4baec5480481c04ace39c510cd00f2ec229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c54c5fb5_bc0701e6",
         "filename": "common/battery.c",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2014-04-22T20:41:49Z",
       "side": 1,
       "message": "On a set, still need to call battery_get_vendor_param() to fill in r-\u003evalue.",
+      "revId": "0385a4baec5480481c04ace39c510cd00f2ec229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65d01310_8a348f02",
+        "filename": "common/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-04-24T05:44:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c54c5fb5_bc0701e6",
       "revId": "0385a4baec5480481c04ace39c510cd00f2ec229",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "85cb4765_168eec68",
+        "filename": "include/battery.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-04-24T05:44:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0543d781_fe8ea1d8",
+      "revId": "0385a4baec5480481c04ace39c510cd00f2ec229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45394f00_e009e290",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -98,6 +188,24 @@
       "writtenOn": "2014-04-22T20:41:49Z",
       "side": 1,
       "message": "On a set operation, the response contains the actual value set, which may be rounded or clipped from the requested value.",
+      "revId": "0385a4baec5480481c04ace39c510cd00f2ec229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85cb4765_765498fe",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2050,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-04-24T05:44:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45394f00_e009e290",
       "revId": "0385a4baec5480481c04ace39c510cd00f2ec229",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
