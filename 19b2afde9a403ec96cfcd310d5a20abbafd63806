@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "c5e8dfcd_1c91b5ff",
+        "filename": "board/quawks/thermalshutdown.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1001777
+      },
+      "writtenOn": "2014-04-24T10:14:38Z",
+      "side": 1,
+      "message": "I think Dave\u0027s suggestion is to rename the file name thermalshutdown.c to thermal_shutdown.c\n\nNothing needs to be embedded here.",
+      "parentUuid": "a5104b96_5277ca15",
+      "revId": "19b2afde9a403ec96cfcd310d5a20abbafd63806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5104b96_231c8a00",
         "filename": "board/quawks/thermalshutdown.c",
         "patchSetId": 3
