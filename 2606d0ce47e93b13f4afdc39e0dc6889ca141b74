@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "659c9384_c4f750f5",
+        "filename": "common/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-04-25T18:38:23Z",
+      "side": 1,
+      "message": "switch(p-\u003esubcmd)\n\nand then handle the invalid case in default:",
+      "revId": "2606d0ce47e93b13f4afdc39e0dc6889ca141b74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45a14fb9_6027521a",
+        "filename": "common/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-04-25T18:38:23Z",
+      "side": 1,
+      "message": "If you want backwards-compatibility:\n   EC_VER_MASK(0) | EC_VER_MASK(1)\nand then check args-\u003eversion to see if you got the old command.",
+      "revId": "2606d0ce47e93b13f4afdc39e0dc6889ca141b74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25a61bd4_42f574f0",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1805,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-04-25T18:38:23Z",
+      "side": 1,
+      "message": "enum_gpio_get_subcmd",
+      "revId": "2606d0ce47e93b13f4afdc39e0dc6889ca141b74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
