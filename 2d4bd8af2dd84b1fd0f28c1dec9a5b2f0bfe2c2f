@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2581bb17_1c2541ce",
+        "filename": "core/cortex-m0/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-04-25T18:02:33Z",
+      "side": 1,
+      "message": "shouldn\u0027t we also put an \"isb\" here. seems like the same potential problem since atomic_or() disables and re-enables interrupts.",
+      "revId": "2d4bd8af2dd84b1fd0f28c1dec9a5b2f0bfe2c2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
