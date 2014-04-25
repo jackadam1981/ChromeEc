@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6587332a_d8865900",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-04-25T17:10:22Z",
+      "side": 1,
+      "message": "inherited",
+      "revId": "0ec6203b543467532e0e078b5752d293ce466a5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2581bb17_a107b2e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-04-25T17:10:22Z",
+      "side": 1,
+      "message": "comments",
+      "revId": "0ec6203b543467532e0e078b5752d293ce466a5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6587332a_78a1ed95",
+        "filename": "board/stimpy/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-04-25T17:10:22Z",
+      "side": 1,
+      "message": "If the stimpy doesn\u0027t support the above 3 batteries, feel free to remove them.",
+      "revId": "0ec6203b543467532e0e078b5752d293ce466a5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2581bb17_a1e092e2",
+        "filename": "board/stimpy/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-04-25T17:10:22Z",
+      "side": 1,
+      "message": "I assume this is 1 because you added cut-off command to it?",
+      "revId": "0ec6203b543467532e0e078b5752d293ce466a5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2581bb17_2114a217",
+        "filename": "board/stimpy/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-04-25T17:10:22Z",
+      "side": 1,
+      "message": "If not all batteries support cut-off in your board, please check support_cut_off and return EC_RES_INVALID_COMMAND. See board/nyan/battery.c for reference.",
+      "revId": "0ec6203b543467532e0e078b5752d293ce466a5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
