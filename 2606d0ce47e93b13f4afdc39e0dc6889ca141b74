@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "25bffbdf_3a917d8a",
+        "filename": "common/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-04-25T21:01:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "659c9384_c4f750f5",
+      "revId": "2606d0ce47e93b13f4afdc39e0dc6889ca141b74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45a14fb9_6027521a",
         "filename": "common/gpio.c",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "6587332a_d2e71548",
+        "filename": "common/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-04-25T21:01:49Z",
+      "side": 1,
+      "message": "Added support for version 0 in both ectool and the EC code",
+      "parentUuid": "45a14fb9_6027521a",
+      "revId": "2606d0ce47e93b13f4afdc39e0dc6889ca141b74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "25a61bd4_42f574f0",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2014-04-25T18:38:23Z",
       "side": 1,
       "message": "enum_gpio_get_subcmd",
+      "revId": "2606d0ce47e93b13f4afdc39e0dc6889ca141b74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25bffbdf_fa59c539",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1805,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-04-25T21:01:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25a61bd4_42f574f0",
       "revId": "2606d0ce47e93b13f4afdc39e0dc6889ca141b74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
