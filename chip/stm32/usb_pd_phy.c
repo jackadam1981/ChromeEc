@@ -263,10 +263,8 @@ void pd_start_tx(void *ctxt, int bit_len)
 
 	/* update DMA configuration */
 	dma_prepare_tx(&dma_tx_option, DIV_ROUND_UP(bit_len, 8), ctxt);
-	/* Flush data in write buffer so that DMA can get the lastest data */
+	/* Flush data in write buffer so that DMA can get the latest data */
 	asm volatile("dmb;");
-	/* Kick off the DMA to send the data */
-	dma_go(tx);
 
 	/* disable RX detection interrupt */
 	pd_rx_disable_monitoring();
@@ -277,8 +275,13 @@ void pd_start_tx(void *ctxt, int bit_len)
 	 */
 	pd_tx_enable();
 
+	/* Kick off the DMA to send the data */
+	dma_go(tx);
+
+#ifndef PD_TX_USES_SPI_MASTER
 	/* Start counting at 300Khz*/
 	STM32_TIM_CR1(TIM_TX) |= 1;
+#endif
 }
 
 void pd_tx_done(void)
@@ -294,14 +297,41 @@ void pd_tx_done(void)
 	while (!(spi->sr & (1<<1)))
 		; /* wait for TXE == 1 */
 #endif
+
+	/* clear transfer flag */
+	dma_clear_isr(DMAC_SPI_TX);
+
+	/*
+	 * At the end of transmitting, the last bit is guaranteed by the
+	 * protocol to be low, and it is necessary that the TX line stay low
+	 * until pd_tx_disable().
+	 *
+	 * When using SPI slave mode for TX, this is done by writing out dummy
+	 * 0 byte at end.
+	 * When using SPI master mode, the CPOL and CPHA are set high, which
+	 * means that after the last bit is transmitted there are no more
+	 * clock edges. Hopefully, this is sufficient to guarantee that the
+	 * MOSI line does not change before pd_tx_disable(). But, in the case
+	 * that we are having problems, the following conditional compile
+	 * should be flipped, such that, we add a dummy 0 byte to the end of
+	 * transmission similar to the SPI slave mode.
+	 */
+#if 1
 	while (spi->sr & (1<<7))
 		; /* wait for BSY == 0 */
+#else
+	*(uint8_t *)&spi->dr = 0;
+	while ((spi->sr & (3<<11)))
+		; /* wait for TX FIFO empty */
+#endif
+
+
+#ifndef PD_TX_USES_SPI_MASTER
 	/* ensure that we are not pushing out junk */
 	*(uint8_t *)&spi->dr = 0;
 	/* Stop counting */
 	STM32_TIM_CR1(TIM_TX) &= ~1;
-	/* clear tranfer flag */
-	dma_clear_isr(DMAC_SPI_TX);
+#endif
 	/* put TX pins and reference in Hi-Z */
 	pd_tx_disable();
 }
@@ -380,14 +410,27 @@ void *pd_hw_init(void)
 	/* Enable Tx DMA for our first transaction */
 	spi->cr2 = STM32_SPI_CR2_TXDMAEN | STM32_SPI_CR2_DATASIZE(8);
 
-	/* Enable the salve SPI: LSB first, force NSS, TX only */
+#ifdef PD_TX_USES_SPI_MASTER
+	/*
+	 * Enable the master SPI: LSB first, force NSS, TX only, CPOL and CPHA
+	 * high.
+	 */
+	spi->cr1 = STM32_SPI_CR1_LSBFIRST | STM32_SPI_CR1_BIDIMODE
+		 | STM32_SPI_CR1_SSM | STM32_SPI_CR1_SSI
+		 | STM32_SPI_CR1_BIDIOE | STM32_SPI_CR1_MSTR
+		 | STM32_SPI_CR1_BR_DIV64R | STM32_SPI_CR1_SPE
+		 | STM32_SPI_CR1_CPOL | STM32_SPI_CR1_CPHA;
+#else
+	/* Enable the slave SPI: LSB first, force NSS, TX only */
 	spi->cr1 = STM32_SPI_CR1_SPE | STM32_SPI_CR1_LSBFIRST
 		 | STM32_SPI_CR1_SSM | STM32_SPI_CR1_BIDIMODE
 		 | STM32_SPI_CR1_BIDIOE;
+#endif
 
 	/* configure TX DMA */
 	dma_prepare_tx(&dma_tx_option, PD_MAX_RAW_SIZE, raw_samples);
 
+#ifndef PD_TX_USES_SPI_MASTER
 	/* --- set the TX timer with updates at 600KHz (BMC frequency) --- */
 	__hw_timer_enable_clock(TIM_TX, 1);
 	/* Timer configuration */
@@ -406,6 +449,7 @@ void *pd_hw_init(void)
 	STM32_TIM_PSC(TIM_TX) = 0;
 	/* Reload the pre-scaler and reset the counter */
 	STM32_TIM_EGR(TIM_TX) = 0x0001;
+#endif
 
 	/* --- set counter for RX timing : 2.4Mhz rate, free-running --- */
 	__hw_timer_enable_clock(TIM_RX, 1);

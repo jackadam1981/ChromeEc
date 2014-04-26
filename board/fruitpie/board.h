@@ -8,8 +8,13 @@
 #ifndef __BOARD_H
 #define __BOARD_H
 
+#ifdef PD_TX_USES_SPI_MASTER
+/* 38.4 MHz SYSCLK clock frequency */
+#define CPU_CLOCK 38400000
+#else
 /* 48 MHz SYSCLK clock frequency */
 #define CPU_CLOCK 48000000
+#endif
 
 /* the UART console is on USART2 (PA14/PA15) */
 #undef CONFIG_UART_CONSOLE

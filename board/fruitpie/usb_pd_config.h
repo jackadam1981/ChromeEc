@@ -34,9 +34,13 @@ static inline void spi_enable_clock(void)
 /* triggers packet detection on comparator falling edge */
 #define EXTI_XTSR STM32_EXTI_FTSR
 
-
-/* Clock divider for RX edges timings (2.4Mhz counter from 48Mhz clock) */
+/* Clock divider for RX edges timings (2.4Mhz counter) */
+#if CPU_CLOCK == 48000000
 #define RX_CLOCK_DIV (20 - 1)
+#elif CPU_CLOCK == 38400000
+#define RX_CLOCK_DIV (16 - 1)
+#endif
+
 
 /* the pins used for communication need to be hi-speed */
 static inline void pd_set_pins_speed(void)
