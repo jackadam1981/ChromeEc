@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5268b4d_9cfe694a",
+        "filename": "board/keyborg/touch_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-04-28T15:55:37Z",
+      "side": 1,
+      "message": "that\u0027s a complex way of initializing GPIO registers.\nwe could do only one write to each reg...\nbut as you want, that\u0027s not really important.",
+      "revId": "bcccd551c0708807382de2df77cb8748ead38621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0530377d_bc9fa909",
+        "filename": "board/keyborg/touch_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-04-28T15:55:37Z",
+      "side": 1,
+      "message": "personally, I prefer ~((1 \u003c\u003c1) | (1 \u003c\u003c 4))\nbut I agree De Morgan\u0027s law tells you that both are the same",
+      "revId": "bcccd551c0708807382de2df77cb8748ead38621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4516afdd_81dfe0e7",
+        "filename": "board/keyborg/touch_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-04-28T15:55:37Z",
+      "side": 1,
+      "message": "have you verified it ?\n(ie that on cortex-M3 a branch backward takes only 1 cycle)",
+      "revId": "bcccd551c0708807382de2df77cb8748ead38621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
