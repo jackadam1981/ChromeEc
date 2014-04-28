@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4516afdd_a171c423",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-04-28T16:12:52Z",
+      "side": 1,
+      "message": "maybe just put a #error in the #else in clock_init()",
+      "revId": "2372cdbdf3ff162d3d966043e041dd567f8c65a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5268b4d_dc770117",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-04-28T16:12:52Z",
+      "side": 1,
+      "message": "that looks dangerous *or* useless.\neither the PLL is the current system clock and this will kill your system early or it is likely off at cold boot.\n\nfor jumping to RW firmware, we might need something like that, but I doubt it\u0027s currently correct. maybe just a bypass of the clock setting code.",
+      "revId": "2372cdbdf3ff162d3d966043e041dd567f8c65a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4516afdd_4121c801",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-04-28T16:12:52Z",
+      "side": 1,
+      "message": "I\u0027m not sure this is 100% right in slave mode since we might be still clock the SPI port (and getting DMA request)",
+      "revId": "2372cdbdf3ff162d3d966043e041dd567f8c65a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
