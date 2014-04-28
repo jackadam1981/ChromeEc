@@ -50,6 +50,23 @@
       "revId": "bcccd551c0708807382de2df77cb8748ead38621",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5268b4d_7c54ad82",
+        "filename": "board/keyborg/touch_scan.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-04-28T15:58:06Z",
+      "side": 1,
+      "message": "you can save flash space by using uint8_t for both fields (and store here the index rather than the mask)",
+      "revId": "bcccd551c0708807382de2df77cb8748ead38621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
