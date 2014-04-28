@@ -86,8 +86,8 @@ const struct ts_pin col_pins[] = {
 	{TS_GPIO_B, 1 <<  0}, /* C23 */
 	{TS_GPIO_G, 1 <<  2}, /* C24 */
 	{TS_GPIO_G, 1 <<  1}, /* C25 */
-	{TS_GPIO_A, 1 << 10}, /* Fake C26. C26 is used by debugger. */
-	{TS_GPIO_A, 1 << 10}, /* Fake C27. C27 is used by debugger. */
+	{TS_GPIO_A, 1 << 13}, /* C26 */
+	{TS_GPIO_A, 1 << 14}, /* C27 */
 	{TS_GPIO_B, 1 <<  3}, /* C28 */
 	{TS_GPIO_A, 1 << 10}, /* Fake C29. C29 is used as UART Tx. */
 	{TS_GPIO_B, 1 <<  8}, /* C30 */
