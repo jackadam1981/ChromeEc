@@ -11,6 +11,9 @@
 #include "timer.h"
 #include "util.h"
 
+#define BATTERY_WAIT_TIMEOUT	(2800*MSEC)
+#define BATTERY_NO_RESPONSE_MAX	(1000*MSEC)
+
 /* Read battery discharging current
  * unit: mA
  * negative value: charging
@@ -125,6 +128,40 @@ int battery_device_chemistry(char *device_chemistry, int buf_size)
 {
 	return i2c_read_string(I2C_PORT_BATTERY, BATTERY_ADDR,
 		SB_DEVICE_CHEMISTRY, device_chemistry, buf_size);
+}
+
+/* Wait until battery is totally stable */
+int battery_wait_for_stable(void)
+{
+	int status, no_response;
+	uint64_t timeout = get_time().val + BATTERY_WAIT_TIMEOUT;
+
+	no_response = 0;
+
+	ccprintf("[%T Wait for battery stabilized during %d\n",	\
+			BATTERY_WAIT_TIMEOUT);
+	while(get_time().val < timeout) {
+		/* Starting pinging battery */
+		if(battery_status(&status) == EC_SUCCESS) {
+			no_response = 0;
+			/* Battery is stable */
+			if(status & STATUS_INITIALIZED) {
+				ccprintf("[%T Battery initialized!!]\n");
+				return EC_SUCCESS;
+			}
+		}
+		/* Assume no battery connected if no response during max count */
+		else {
+			no_response++;
+			if (no_response > BATTERY_NO_RESPONSE_MAX/25000) {
+				ccprintf("[%T There is no batttery, Go ahead!!]\n");
+				return EC_SUCCESS;
+			}
+		}
+		msleep(25); /* clock stretching could hold 25ms */
+	}
+	ccprintf("%T Battery waiting is Timeout!!\n");
+	return EC_ERROR_TIMEOUT;
 }
 
 /*****************************************************************************/
