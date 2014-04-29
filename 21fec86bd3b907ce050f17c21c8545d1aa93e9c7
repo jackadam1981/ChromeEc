@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65dbb3ad_093be959",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2014-04-29T16:23:01Z",
+      "side": 1,
+      "message": "I think you need Signed-off-by for EC project.",
+      "revId": "21fec86bd3b907ce050f17c21c8545d1aa93e9c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65dbb3ad_899519ed",
+        "filename": "common/smart_battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2014-04-29T16:23:01Z",
+      "side": 1,
+      "message": "You could probably just use a #define instead of taking in a parameter.",
+      "revId": "21fec86bd3b907ce050f17c21c8545d1aa93e9c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65dbb3ad_a990ddfc",
+        "filename": "common/smart_battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2014-04-29T16:23:01Z",
+      "side": 1,
+      "message": "Since this could be a long delay, could you add a console printf here?",
+      "revId": "21fec86bd3b907ce050f17c21c8545d1aa93e9c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e59de3d4_0d27711a",
+        "filename": "common/smart_battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2014-04-29T16:23:01Z",
+      "side": 1,
+      "message": "I think we should wait for 0x80.  If that takes several seconds on some batteries then we should just wait.  It\u0027s only upon first plug in, right?\n\nNote: you should use the #define, which means you should probably make this change too:\n\n -#define STATUS_INITIALIZED              (1 \u003c\u003c 7)\n +#define STATUS_INITIALIZING             (1 \u003c\u003c 7)",
+      "revId": "21fec86bd3b907ce050f17c21c8545d1aa93e9c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25d53b79_4735ce5f",
+        "filename": "common/smart_battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2014-04-29T16:23:01Z",
+      "side": 1,
+      "message": "Structure loop like this:\n\n uint64_t start_time;\n start_time \u003d get_time().val;\n do {\n   ...\n   msleep(25);\n } while (get_time().val - start_time \u003c duration_msec);",
+      "revId": "21fec86bd3b907ce050f17c21c8545d1aa93e9c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
