@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5c37fc9_67f3ac7f",
+        "filename": "board/firefly/usb_pd_config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-04-29T17:21:59Z",
+      "side": 1,
+      "message": "Shouldn\u0027t be needed anymore since SPI master change went in.",
+      "revId": "2460b9f34e5a5db58233dd99ec366fa8b70f2457",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
