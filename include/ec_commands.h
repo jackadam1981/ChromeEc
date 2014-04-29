@@ -1791,10 +1791,10 @@ struct ec_params_gpio_get_v1 {
 struct ec_response_gpio_get_v1 {
 	union {
 		struct {
-			uint8_t val;
+			uint8_t val_changed;
 		} get_value_by_name, get_count;
 		struct {
-			uint8_t val;
+			uint8_t val_changed;
 			char name[32];
 			uint32_t flags;
 		} get_info;

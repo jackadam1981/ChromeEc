@@ -3159,7 +3159,7 @@ int cmd_gpio_get(int argc, char *argv[])
 {
 	struct ec_params_gpio_get_v1 p_v1;
 	struct ec_response_gpio_get_v1 r_v1;
-	int i, rv, subcmd, num_gpios;
+	int i, rv, subcmd, num_gpios, changed, val;
 	int cmdver = 1;
 
 	if (!ec_cmd_version_supported(EC_CMD_GPIO_GET, cmdver)) {
@@ -3216,12 +3216,14 @@ int cmd_gpio_get(int argc, char *argv[])
 
 		rv = ec_command(EC_CMD_GPIO_GET, cmdver, &p_v1,
 				sizeof(p_v1), &r_v1, sizeof(r_v1));
-
 		if (rv < 0)
 			return rv;
 
-		printf("GPIO %s = %d\n", p_v1.get_value_by_name.name,
-			r_v1.get_value_by_name.val);
+		val = r_v1.get_value_by_name.val_changed & 1;
+		changed = r_v1.get_value_by_name.val_changed & 2;
+
+		printf("GPIO %s = %d%c\n", p_v1.get_value_by_name.name,
+			val, (changed ? '*' : ' '));
 		return 0;
 	}
 
@@ -3233,12 +3235,12 @@ int cmd_gpio_get(int argc, char *argv[])
 		return rv;
 
 	if (subcmd == EC_GPIO_GET_COUNT) {
-		printf("GPIO COUNT = %d\n", r_v1.get_count.val);
+		printf("GPIO COUNT = %d\n", r_v1.get_count.val_changed);
 		return 0;
 	}
 
 	/* subcmd EC_GPIO_GET_INFO */
-	num_gpios = r_v1.get_count.val;
+	num_gpios = r_v1.get_count.val_changed;
 	p_v1.subcmd = EC_GPIO_GET_INFO;
 
 	for (i = 0; i < num_gpios; i++) {
@@ -3249,7 +3251,11 @@ int cmd_gpio_get(int argc, char *argv[])
 		if (rv < 0)
 			return rv;
 
-		printf("%2d %-32s 0x%04X\n", r_v1.get_info.val,
+		val = r_v1.get_info.val_changed & 1;
+		changed = r_v1.get_info.val_changed & 2;
+
+		printf("  %d%c %-32s 0x%04X\n", val,
+			(changed ? '*' : ' '),
 			r_v1.get_info.name, r_v1.get_info.flags);
 	}
 
