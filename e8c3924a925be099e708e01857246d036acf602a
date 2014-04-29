@@ -34,6 +34,24 @@
       "revId": "e8c3924a925be099e708e01857246d036acf602a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5c37fc9_27bb74b3",
+        "filename": "board/fruitpie/usb_pd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-04-29T17:16:17Z",
+      "side": 1,
+      "message": "I see, so the pd_select_polarity() is selecting the comparator to use for the RX line. Meanwhile the polarity arg used for all the *tx* functions is not used for fruitpie and zinger since there is only one choice for tx. Would it be more clear to rename this the pd_rx_select_polarity()?",
+      "parentUuid": "c5c37fc9_077ab844",
+      "revId": "e8c3924a925be099e708e01857246d036acf602a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
