@@ -180,7 +180,7 @@ static int gpio_command_get(struct host_cmd_handler_args *args)
 	const struct gpio_info *g = gpio_list;
 	const struct ec_params_gpio_get_v1 *p_v1 = args->params;
 	struct ec_response_gpio_get_v1 *r_v1 = args->response;
-	int i, len;
+	int i, v, len;
 
 	if (args->version == 0) {
 		const struct ec_params_gpio_get *p = args->params;
@@ -200,7 +200,9 @@ static int gpio_command_get(struct host_cmd_handler_args *args)
 		if (i == GPIO_COUNT)
 			return EC_RES_ERROR;
 
-		r_v1->get_value_by_name.val = gpio_get_level(i);
+		v = gpio_get_level(i);
+		r_v1->get_value_by_name.val = v;
+		r_v1->get_value_by_name.changed = last_val_changed(i, v);
 		args->response_size = sizeof(r_v1->get_value_by_name);
 		break;
 	case EC_GPIO_GET_COUNT:
@@ -214,7 +216,9 @@ static int gpio_command_get(struct host_cmd_handler_args *args)
 		i = p_v1->get_info.index;
 		len = strlen(g[i].name);
 		memcpy(r_v1->get_info.name, g[i].name, len+1);
-		r_v1->get_info.val = gpio_get_level(i);
+		v = gpio_get_level(i);
+		r_v1->get_info.val = v;
+		r_v1->get_info.changed = last_val_changed(i, v);
 		r_v1->get_info.flags = g[i].flags;
 		args->response_size = sizeof(r_v1->get_info);
 		break;

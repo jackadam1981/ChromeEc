@@ -1792,9 +1792,14 @@ struct ec_response_gpio_get_v1 {
 	union {
 		struct {
 			uint8_t val;
-		} get_value_by_name, get_count;
+		} get_count;
 		struct {
 			uint8_t val;
+			uint8_t changed;
+		} get_value_by_name;
+		struct {
+			uint8_t val;
+			uint8_t changed;
 			char name[32];
 			uint32_t flags;
 		} get_info;

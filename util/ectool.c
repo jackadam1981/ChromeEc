@@ -3220,8 +3220,9 @@ int cmd_gpio_get(int argc, char *argv[])
 		if (rv < 0)
 			return rv;
 
-		printf("GPIO %s = %d\n", p_v1.get_value_by_name.name,
-			r_v1.get_value_by_name.val);
+		printf("GPIO %s = %d%c\n", p_v1.get_value_by_name.name,
+			r_v1.get_value_by_name.val,
+			(r_v1.get_value_by_name.changed ? '*' : ' '));
 		return 0;
 	}
 
@@ -3249,7 +3250,8 @@ int cmd_gpio_get(int argc, char *argv[])
 		if (rv < 0)
 			return rv;
 
-		printf("%2d %-32s 0x%04X\n", r_v1.get_info.val,
+		printf("  %d%c %-32s 0x%04X\n", r_v1.get_info.val,
+			(r_v1.get_info.changed ? '*' : ' '),
 			r_v1.get_info.name, r_v1.get_info.flags);
 	}
 
