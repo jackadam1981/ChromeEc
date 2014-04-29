@@ -127,6 +127,29 @@ int battery_device_chemistry(char *device_chemistry, int buf_size)
 		SB_DEVICE_CHEMISTRY, device_chemistry, buf_size);
 }
 
+/* Wait until battery is totally stable */
+int battery_wait_for_stable(int duration_msec)
+{
+	int status, timeout_waiting;
+
+	timeout_waiting = 0;
+
+	while(1) {
+		/* Starting pinging battery */
+		if(battery_status(&status) == EC_SUCCESS) {
+			/* Battery is stable */
+			if(status != 0)
+				return EC_SUCCESS;
+		}
+		/* Quit if battery is not initialized on some reason during 2.5s */
+		/* Assume no battery connected if no response during 1s */
+		timeout_waiting++;
+		if (timeout_waiting > duration_msec/25)
+			return EC_SUCCESS;
+		msleep(25); /* clock stretching could hold 25ms */
+	}
+}
+
 /*****************************************************************************/
 /* Console commands */
 
