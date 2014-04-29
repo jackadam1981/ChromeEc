@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5c37fc9_6dc54d1b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1801,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-04-29T19:53:35Z",
+      "side": 1,
+      "message": "Why not just make val into val_flags?\n\n  (1\u003c\u003c0) GPIO is high\n  (1\u003c\u003c1) GPIO value changed from previous call",
+      "revId": "cb322a053de32ff4b792b73f7b583aa637671d1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
