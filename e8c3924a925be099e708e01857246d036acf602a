@@ -16,6 +16,24 @@
       "revId": "e8c3924a925be099e708e01857246d036acf602a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5c37fc9_077ab844",
+        "filename": "board/fruitpie/usb_pd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-04-29T17:10:48Z",
+      "side": 1,
+      "message": "the short answer is that depends on the board.\n(as in https://chromium-review.googlesource.com/#/c/195586/5/board/firefly/usb_pd_config.h )\n\nFruitpie has a single TX path on the STM32 side, but that\u0027s not the case for other boards.\nwe can store a copy of the polarity state in the board specific part, but we might end up messing up the synchronization)",
+      "parentUuid": "45d06f88_0bae411e",
+      "revId": "e8c3924a925be099e708e01857246d036acf602a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
