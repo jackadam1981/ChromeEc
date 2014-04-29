@@ -38,6 +38,9 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#ifdef BOARD_pit
+#include "smart_battery.h"
+#endif
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHIPSET, outstr)
@@ -616,7 +619,9 @@ void chipset_task(void)
 
 	gaia_power_init();
 	ap_on = 0;
-
+#ifdef BOARD_pit
+	battery_wait_for_stable(1000);
+#endif
 	while (1) {
 		/* Wait until we need to power on, then power on */
 		wait_for_power_on();
