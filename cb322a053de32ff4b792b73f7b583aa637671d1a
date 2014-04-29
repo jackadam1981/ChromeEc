@@ -16,6 +16,24 @@
       "revId": "cb322a053de32ff4b792b73f7b583aa637671d1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45d06f88_f7dd8aa3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1801,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-04-29T20:17:54Z",
+      "side": 1,
+      "message": "Done. Return value is (changed \u003c\u003c 1) + val",
+      "parentUuid": "c5c37fc9_6dc54d1b",
+      "revId": "cb322a053de32ff4b792b73f7b583aa637671d1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
