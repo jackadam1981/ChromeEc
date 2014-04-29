@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "45d06f88_4b631954",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-04-29T16:57:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5c37fc9_a48ac299",
+      "revId": "dfb8fc54af086c02ee21ce0ea90cc923c8ee231b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45d06f88_4b5e79a3",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2014-04-29T16:45:52Z",
       "side": 1,
       "message": "I don\u0027t understand this, maybe I\u0027m missing something. The comment suggests you want to send a ping after a timeout. But, in the event of a timeout, we set the timeout to a smaller value, PD_T_SOURCE_ACTIVITY \u003d 45ms, and break from the switch statement. So, it doesn\u0027t actually send a ping until an event other than a timeout wakes up the task.\n\nAlso, seems like PD_EVENT_RX should be defined using TASK_EVENT_CUSTOM() for consistency.",
+      "revId": "dfb8fc54af086c02ee21ce0ea90cc923c8ee231b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05caf7dd_49c20515",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-04-29T16:57:49Z",
+      "side": 1,
+      "message": "yep the condition is inverted here  ... I will fix that or remove it, I\u0027m not fully convinced it was needed.\n\nfor TASK_EVENT_CUSTOM(), we are also using that code without CONFIG_COMMON_RUNTIME, this requires a bit of header rework and I\u0027m not sure it worth it to implement the identity function ...",
+      "parentUuid": "45d06f88_4b5e79a3",
       "revId": "dfb8fc54af086c02ee21ce0ea90cc923c8ee231b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "05caf7dd_29b6a9e0",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 733,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-04-29T16:57:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45d06f88_4b93197a",
+      "revId": "dfb8fc54af086c02ee21ce0ea90cc923c8ee231b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5c37fc9_e46b1a00",
         "filename": "include/usb_pd.h",
         "patchSetId": 5
@@ -64,6 +118,24 @@
       "writtenOn": "2014-04-29T16:45:52Z",
       "side": 1,
       "message": "misspelling: should be \"negotiation\"",
+      "revId": "dfb8fc54af086c02ee21ce0ea90cc923c8ee231b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05caf7dd_297d093d",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-04-29T16:57:49Z",
+      "side": 1,
+      "message": "Thanks\ns/misspelling/bad language/",
+      "parentUuid": "c5c37fc9_e46b1a00",
       "revId": "dfb8fc54af086c02ee21ce0ea90cc923c8ee231b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
