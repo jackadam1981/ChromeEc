@@ -16,6 +16,24 @@
       "revId": "012b71a12c8d004e3b2c98f0364433f21c74ee21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5a76b22_8e7cfbfc",
+        "filename": "board/quawks/thermal_shutdown.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1104589
+      },
+      "writtenOn": "2014-04-29T09:10:39Z",
+      "side": 1,
+      "message": "Yes, you are correct. TMP432_LOCAL_THERM_LIMIT should be used. And the 10C hysteresis is ok for this project. Thanks.",
+      "parentUuid": "a5e5abf4_caddbb29",
+      "revId": "012b71a12c8d004e3b2c98f0364433f21c74ee21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
