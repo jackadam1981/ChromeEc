@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45d06f88_0bae411e",
+        "filename": "board/fruitpie/usb_pd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-04-29T17:05:54Z",
+      "side": 1,
+      "message": "This is a little confusing. If you do:\npd_select_polarity(0);\npd_start_tx(1);\nthen it will actually use polarity 0 for the transmission, so the polarity 1 arg to pd_start_tx(), and these other functions is useless.\n\nIt seems like the real change is in pd_select_polarity(). Can we just rely on user calling that function and remove the polarity arg from all the functions: pd_tx_enable(), pd_tx_disable() pd_start_tx(), pd_tx_done()?",
+      "revId": "e8c3924a925be099e708e01857246d036acf602a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
