@@ -16,6 +16,24 @@
       "revId": "ff9bcd3e13776d216f46c6561a2de2bc2e7f9d5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5c37fc9_fe69e179",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1794,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-04-29T23:20:38Z",
+      "side": 1,
+      "message": "I was hesitant to use \"flags\" in the name since I already have another member variable called flags and thought it might cause more confusion. Should I combine those flags also with a single uint32 variable val_flags?\n\nenum gpio_val_flags {\n  /* The flags will directly translate to their definition in gpio.h */\n  EC_GPIO_OPEN_DRAIN \u003d (1 \u003c\u003c 0)\n  EC_GPIO_PULL_UP \u003d (1 \u003c\u003c 1)\n  EC_GPIO_PULL_DOWN \u003d (1 \u003c\u003c 2)\n  EC_GPIO_ANALOG \u003d (1 \u003c\u003c 3)\n  EC_GPIO_INPUT \u003d (1 \u003c\u003c 4)\n  EC_GPIO_OUTPUT \u003d (1 \u003c\u003c 5)\n  EC_GPIO_LOW \u003d (1 \u003c\u003c 6)\n  EC_GPIO_HIGH \u003d (1 \u003c\u003c 7)\n  EC_GPIO_INT_F_RISING \u003d (1 \u003c\u003c 8)\n  EC_GPIO_INT_F_FALLING \u003d (1 \u003c\u003c 9)\n  EC_GPIO_INT_F_LOW \u003d (1 \u003c\u003c 11)\n  EC_GPIO_INT_F_HIGH \u003d (1 \u003c\u003c 12)\n  EC_GPIO_DEFAULT \u003d (1 \u003c\u003c 13)\n  EC_GPIO_INT_DSLEEP \u003d (1 \u003c\u003c 14)\n  /* For some possible additional states later on */\n\n  EC_GPIO_VAL_HIGH \u003d (1 \u003c\u003c 24)\n  EC_GPIO_VAL_CHANGED \u003d (1 \u003c\u003c 25)\n}",
+      "parentUuid": "45d06f88_b2e83d47",
+      "revId": "ff9bcd3e13776d216f46c6561a2de2bc2e7f9d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
