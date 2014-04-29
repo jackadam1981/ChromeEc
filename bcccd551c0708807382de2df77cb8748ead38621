@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "85d6e780_8d208536",
+        "filename": "board/keyborg/touch_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-04-29T06:34:01Z",
+      "side": 1,
+      "message": "This is just for development stage in case we want to disable some pins some time. We should definitely change this later.",
+      "parentUuid": "a5268b4d_9cfe694a",
+      "revId": "bcccd551c0708807382de2df77cb8748ead38621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0530377d_bc9fa909",
         "filename": "board/keyborg/touch_scan.c",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2014-04-28T15:55:37Z",
       "side": 1,
       "message": "personally, I prefer ~((1 \u003c\u003c1) | (1 \u003c\u003c 4))\nbut I agree De Morgan\u0027s law tells you that both are the same",
+      "revId": "bcccd551c0708807382de2df77cb8748ead38621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5aa9feb_0f3be959",
+        "filename": "board/keyborg/touch_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-04-29T06:34:01Z",
+      "side": 1,
+      "message": "I\u0027m fine with either. Changed to ~((1 \u003c\u003c 1) | (1 \u003c\u003c 4)).",
+      "parentUuid": "0530377d_bc9fa909",
       "revId": "bcccd551c0708807382de2df77cb8748ead38621",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "c5aa9feb_6f38ad5b",
+        "filename": "board/keyborg/touch_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-04-29T06:34:01Z",
+      "side": 1,
+      "message": "It\u0027s actually taking 3 cycles. Thanks!",
+      "parentUuid": "4516afdd_81dfe0e7",
+      "revId": "bcccd551c0708807382de2df77cb8748ead38621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5268b4d_7c54ad82",
         "filename": "board/keyborg/touch_scan.h",
         "patchSetId": 4
@@ -64,6 +118,24 @@
       "writtenOn": "2014-04-28T15:58:06Z",
       "side": 1,
       "message": "you can save flash space by using uint8_t for both fields (and store here the index rather than the mask)",
+      "revId": "bcccd551c0708807382de2df77cb8748ead38621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5aa9feb_2f6ce545",
+        "filename": "board/keyborg/touch_scan.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-04-29T06:34:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5268b4d_7c54ad82",
       "revId": "bcccd551c0708807382de2df77cb8748ead38621",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
