@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45d06f88_b2e83d47",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1794,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-04-29T23:04:40Z",
+      "side": 1,
+      "message": "Prefer val_flags, with \n\nenum gpio_val_flags {\n    EC_GPIO_VAL_HIGH \u003d (1\u003c\u003c0),\n    EC_GPIO_VAL_CHANGED \u003d (1\u003c\u003c1),\n}\n\nso the returned data is better documented.",
+      "revId": "ff9bcd3e13776d216f46c6561a2de2bc2e7f9d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
