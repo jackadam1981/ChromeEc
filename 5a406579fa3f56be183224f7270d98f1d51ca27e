@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eaf77045_20fe64d2",
+        "filename": "power/tegra.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2014-04-30T20:58:46Z",
+      "side": 1,
+      "message": "I am also wondering if we need to return 0 here to avoid hitting the \"lid_opened\" case below and returning 3 aka POWER_S0 aka \"System is on\".",
+      "revId": "5a406579fa3f56be183224f7270d98f1d51ca27e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
