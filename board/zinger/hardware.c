@@ -178,3 +178,147 @@ int adc_read_channel(enum adc_channel ch)
 
 	return value;
 }
+
+/* ---- flash handling ---- */
+
+/*
+ * Approximate number of CPU cycles per iteration of the loop when polling
+ * the flash status
+ */
+#define CYCLE_PER_FLASH_LOOP 10
+
+/* Flash page programming timeout.  This is 2x the datasheet max. */
+#define FLASH_TIMEOUT_US 16000
+#define FLASH_TIMEOUT_LOOP \
+	(FLASH_TIMEOUT_US * (CPU_CLOCK / SECOND) / CYCLE_PER_FLASH_LOOP)
+
+/* Flash unlocking keys */
+#define KEY1    0x45670123
+#define KEY2    0xCDEF89AB
+
+/* Lock bits for FLASH_CR register */
+#define PG       (1<<0)
+#define PER      (1<<1)
+#define STRT     (1<<6)
+#define CR_LOCK  (1<<7)
+
+int flash_physical_write(int offset, int size, const char *data)
+{
+	uint16_t *address = (uint16_t *)(CONFIG_FLASH_BASE + offset);
+	int res = EC_SUCCESS;
+	int i;
+
+	/* unlock CR if needed */
+	if (STM32_FLASH_CR & CR_LOCK) {
+		STM32_FLASH_KEYR = KEY1;
+		STM32_FLASH_KEYR = KEY2;
+	}
+
+	/* Clear previous error status */
+	STM32_FLASH_SR = 0x34;
+	/* set the ProGram bit */
+	STM32_FLASH_CR |= PG;
+
+	for (; size > 0; size -= sizeof(uint16_t)) {
+#if 0
+		/*
+		 * Reload the watchdog timer to avoid watchdog reset when doing
+		 * long writing with interrupt disabled.
+		 */
+		watchdog_reload();
+#endif
+
+		/* wait to be ready  */
+		for (i = 0; (STM32_FLASH_SR & 1) && (i < FLASH_TIMEOUT_LOOP);
+		     i++)
+			;
+
+		/* write the half word */
+		*address++ = data[0] + (data[1] << 8);
+		data += 2;
+
+		/* Wait for writes to complete */
+		for (i = 0; (STM32_FLASH_SR & 1) && (i < FLASH_TIMEOUT_LOOP);
+		     i++)
+			;
+
+		if (STM32_FLASH_SR & 1) {
+			res = EC_ERROR_TIMEOUT;
+			goto exit_wr;
+		}
+
+		/* Check for error conditions - erase failed, voltage error,
+		 * protection error */
+		if (STM32_FLASH_SR & 0x14) {
+			res = EC_ERROR_UNKNOWN;
+			goto exit_wr;
+		}
+	}
+
+exit_wr:
+	STM32_FLASH_CR &= ~PG;
+	STM32_FLASH_CR = CR_LOCK;
+
+	return res;
+}
+
+int flash_erase_rw(void)
+{
+	int res = EC_SUCCESS;
+	int offset = CONFIG_FW_RW_OFF;
+	int size = CONFIG_FW_RW_SIZE;
+
+	/* unlock CR if needed */
+	if (STM32_FLASH_CR & CR_LOCK) {
+		STM32_FLASH_KEYR = KEY1;
+		STM32_FLASH_KEYR = KEY2;
+	}
+
+	/* Clear previous error status */
+	STM32_FLASH_SR = 0x34;
+
+	/* set PER bit */
+	STM32_FLASH_CR |= PER;
+
+	for (; size > 0; size -= CONFIG_FLASH_ERASE_SIZE,
+	     offset += CONFIG_FLASH_ERASE_SIZE) {
+		int i;
+		/* select page to erase */
+		STM32_FLASH_AR = CONFIG_FLASH_BASE + offset;
+
+		/* set STRT bit : start erase */
+		STM32_FLASH_CR |= STRT;
+
+#if 0
+		/*
+		 * Reload the watchdog timer to avoid watchdog reset during a
+		 * long erase operation.
+		 */
+		watchdog_reload();
+#endif
+
+		/* Wait for erase to complete */
+		for (i = 0; (STM32_FLASH_SR & 1) && (i < FLASH_TIMEOUT_LOOP);
+		     i++)
+			;
+		if (STM32_FLASH_SR & 1) {
+			res = EC_ERROR_TIMEOUT;
+			goto exit_er;
+		}
+
+		/*
+		 * Check for error conditions - erase failed, voltage error,
+		 * protection error
+		 */
+		if (STM32_FLASH_SR & 0x14) {
+			res = EC_ERROR_UNKNOWN;
+			goto exit_er;
+		}
+	}
+
+exit_er:
+	STM32_FLASH_CR &= ~PER;
+	STM32_FLASH_CR = CR_LOCK;
+
+	return res;
+}
