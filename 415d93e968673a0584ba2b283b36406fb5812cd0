@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "8ae7d493_25467835",
+        "filename": "common/smart_battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-04-30T16:58:20Z",
+      "side": 1,
+      "message": "Add these:\n\n  /* Console output macros */\n  #define CPUTS(outstr) cputs(CC_CHARGER, outstr)\n  #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)",
+      "revId": "415d93e968673a0584ba2b283b36406fb5812cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4af15c4f_c0857ef6",
         "filename": "common/smart_battery.c",
         "patchSetId": 6
@@ -36,6 +53,41 @@
     },
     {
       "key": {
+        "uuid": "6aec607a_c1b90267",
+        "filename": "common/smart_battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-04-30T16:58:20Z",
+      "side": 1,
+      "message": "Use CPRINTF() instead of ccprintf():\n\nCPRINTF(\"[%T battery wait stable]\\n\");",
+      "parentUuid": "4af15c4f_a0827aea",
+      "revId": "415d93e968673a0584ba2b283b36406fb5812cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6aec607a_e183e678",
+        "filename": "common/smart_battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-04-30T16:58:20Z",
+      "side": 1,
+      "message": "No need for the extra !\n\nCPRINTF(\"[%T battery initialized]\\n\");",
+      "revId": "415d93e968673a0584ba2b283b36406fb5812cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6aec607a_e10526df",
         "filename": "common/smart_battery.c",
         "patchSetId": 6
@@ -47,6 +99,41 @@
       "writtenOn": "2014-04-30T16:05:30Z",
       "side": 1,
       "message": "typo",
+      "revId": "415d93e968673a0584ba2b283b36406fb5812cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4af15c4f_a35164eb",
+        "filename": "common/smart_battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-04-30T16:58:20Z",
+      "side": 1,
+      "message": "CPRINTF(\"[%T battery not responding]\\n\");",
+      "parentUuid": "6aec607a_e10526df",
+      "revId": "415d93e968673a0584ba2b283b36406fb5812cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4af15c4f_23fb149b",
+        "filename": "common/smart_battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-04-30T16:58:20Z",
+      "side": 1,
+      "message": "CPRINTF(\"[%T battery wait stable timeout]\\n\");",
       "revId": "415d93e968673a0584ba2b283b36406fb5812cd0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
