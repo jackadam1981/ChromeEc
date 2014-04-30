@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45d06f88_1e4dd2f8",
+        "filename": "power/tegra.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2014-04-30T01:53:35Z",
+      "side": 1,
+      "message": "Do you need to clear RESET_FLAG_AP_OFF here? (See longer comment for details)",
+      "revId": "482ae4b1f01b8a4c34ae1b4bbb22224b79837820",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45d06f88_9e3d42b5",
+        "filename": "power/tegra.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2014-04-30T01:53:35Z",
+      "side": 1,
+      "message": "Looks like this comment can be put on a single line.",
+      "revId": "482ae4b1f01b8a4c34ae1b4bbb22224b79837820",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
