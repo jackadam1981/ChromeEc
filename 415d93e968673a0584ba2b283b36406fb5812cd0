@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4af15c4f_c0857ef6",
+        "filename": "common/smart_battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-04-30T16:05:30Z",
+      "side": 1,
+      "message": "I don\u0027t think this patch is passing the pre-submit style check.",
+      "revId": "415d93e968673a0584ba2b283b36406fb5812cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4af15c4f_a0827aea",
+        "filename": "common/smart_battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-04-30T16:05:30Z",
+      "side": 1,
+      "message": "ccprintf is for interactive command.",
+      "revId": "415d93e968673a0584ba2b283b36406fb5812cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6aec607a_e10526df",
+        "filename": "common/smart_battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-04-30T16:05:30Z",
+      "side": 1,
+      "message": "typo",
+      "revId": "415d93e968673a0584ba2b283b36406fb5812cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
