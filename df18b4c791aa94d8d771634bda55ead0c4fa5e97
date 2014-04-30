@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8549874f_32e630be",
+        "filename": "common/smart_battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2014-04-30T06:15:23Z",
+      "side": 1,
+      "message": "add:\n\n uint64_t no_response_timeout \u003d get_time().val + BATTERY_NO_RESPONSE_MAX",
+      "revId": "df18b4c791aa94d8d771634bda55ead0c4fa5e97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8549874f_72d99801",
+        "filename": "common/smart_battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2014-04-30T06:15:23Z",
+      "side": 1,
+      "message": "change to:\n\n got_response \u003d 0;",
+      "revId": "df18b4c791aa94d8d771634bda55ead0c4fa5e97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8549874f_32b8f0b3",
+        "filename": "common/smart_battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2014-04-30T06:15:23Z",
+      "side": 1,
+      "message": "nit: no \\ needed",
+      "revId": "df18b4c791aa94d8d771634bda55ead0c4fa5e97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45530ffd_10e124e6",
+        "filename": "common/smart_battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2014-04-30T06:15:23Z",
+      "side": 1,
+      "message": "nit: while and if should have a space before their (",
+      "revId": "df18b4c791aa94d8d771634bda55ead0c4fa5e97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45530ffd_d0c4fc45",
+        "filename": "common/smart_battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2014-04-30T06:15:23Z",
+      "side": 1,
+      "message": "got_response \u003d 1",
+      "revId": "df18b4c791aa94d8d771634bda55ead0c4fa5e97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8549874f_f203c8a1",
+        "filename": "common/smart_battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2014-04-30T06:15:23Z",
+      "side": 1,
+      "message": "else if (!got_response \u0026\u0026 get_time().val \u003e\u003d no_response_timeout) {\n   cprintf(...)\n   return EC_SUCCESS;\n }\n msleep(25);",
+      "revId": "df18b4c791aa94d8d771634bda55ead0c4fa5e97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
