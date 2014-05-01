@@ -8,10 +8,15 @@
 #include "common.h"
 #include "console.h"
 #include "crc.h"
+#ifndef CONFIG_COMMON_RUNTIME
+#include "debug.h"
+#endif
 #include "gpio.h"
 #include "hooks.h"
 #include "registers.h"
 #include "task.h"
+#undef DECLARE_IRQ
+#include "irq_handler.h"
 #include "timer.h"
 #include "util.h"
 #include "usb_pd.h"
@@ -1032,4 +1037,24 @@ DECLARE_CONSOLE_COMMAND(pd, command_pd,
 			"[rx|tx|hardreset|clock|connect]",
 			"USB PD",
 			NULL);
+#else
+void IRQ_HANDLER(STM32_IRQ_USART1)(void)
+{
+		const char * const state_names[] = {
+			"DISABLED",
+			"SRC_DISCONNECTED", "SRC_DISCOVERY", "SRC_NEGOCIATE",
+			"SRC_ACCEPTED", "SRC_TRANSITION", "SRC_READY",
+			"HARD_RESET", "BIST",
+		};
+		int val = STM32_USART_RDR(UARTN);
+		uint32_t *stack = __builtin_frame_address(0);
+		if (val == 103) /* press g to wake up the main loop */
+			task_set_event(0, TASK_EVENT_TIMER, 0);
+		debug_printf("Role: %s Polarity: CC%d State: %s [%d]\n",
+			pd_role == PD_ROLE_SOURCE ? "SRC" : "SNK",
+			pd_polarity + 1, state_names[pd_task_state], val);
+		stack += (68 - 24) / 4 + 5;
+		debug_printf("R0  %08x R1  %08x R2  %08x R3  %08x\nR12 %08x LR  %08x PC  %08x PSR %08x\n",
+			stack[0], stack[1], stack[2], stack[3], stack[4], stack[5], stack[6], stack[7]);
+}
 #endif /* CONFIG_COMMON_RUNTIME */

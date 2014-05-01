@@ -130,11 +130,13 @@ static void uart_init(void)
 		DIV_ROUND_NEAREST(CPU_CLOCK, CONFIG_UART_BAUD_RATE);
 	/* UART enabled, 8 Data bits, oversampling x16, no parity */
 	STM32_USART_CR1(UARTN) =
-		STM32_USART_CR1_UE | STM32_USART_CR1_TE | STM32_USART_CR1_RE;
+		STM32_USART_CR1_UE | STM32_USART_CR1_TE | STM32_USART_CR1_RE |
+		STM32_USART_CR1_RXNEIE;
 	/* 1 stop bit, no fancy stuff */
 	STM32_USART_CR2(UARTN) = 0x0000;
 	/* DMA disabled, special modes disabled, error interrupt disabled */
 	STM32_USART_CR3(UARTN) = 0x0000;
+	task_enable_irq(STM32_IRQ_USART1);
 }
 
 static void timers_init(void)
