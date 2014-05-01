@@ -3,12 +3,14 @@
  * found in the LICENSE file.
  */
 
+#include "adc.h"
 #include "board.h"
 #include "common.h"
 #include "console.h"
 #include "debug.h"
 #include "hooks.h"
 #include "registers.h"
+#include "timer.h"
 #include "util.h"
 #include "usb_pd.h"
 
@@ -44,6 +46,42 @@ static inline void output_disable(void)
 	STM32_GPIO_BSRR(GPIO_F) = GPIO_SET(0);
 }
 
+/* ----- fault conditions ----- */
+
+enum faults {
+	FAULT_OK = 0,
+	FAULT_OCP, /* Over-Current Protection */
+	FAULT_OVP, /* Under or Over-Voltage Protection */
+};
+
+/* current fault condition */
+static enum faults fault;
+/* expiration date of the last fault condition */
+static timestamp_t fault_deadline;
+
+/* ADC in 12-bit mode */
+#define ADC_SCALE (1 << 12)
+/* ADC power supply : VDDA = 3.3V */
+#define VDDA_MV   3300
+/* Current sense resistor : 5 milliOhm */
+#define R_SENSE   5
+/* VBUS voltage is measured through 10k / 100k voltage divider = /11 */
+#define VOLT_DIV  ((10+110)/10)
+/* The current sensing op-amp has a x101 gain */
+#define CURR_GAIN 101
+/* convert VBUS voltage in raw ADC value */
+#define VBUS_MV(mv) ((mv)*ADC_SCALE/VOLT_DIV/VDDA_MV)
+/* convert VBUS current in raw ADC value */
+#define VBUS_MA(ma) ((ma)*ADC_SCALE*R_SENSE/1000*CURR_GAIN/VDDA_MV)
+
+/* Max current : 10% over 3A = 3.3A */
+#define MAX_CURRENT VBUS_MA(3300)
+/* reset over-current after 1 second */
+#define OCP_TIMEOUT SECOND
+
+/* Absolute over-voltage threshold : 24V */
+#define MAX_VOLTAGE VBUS_MV(24000)
+
 /* ----------------------- USB Power delivery policy ---------------------- */
 
 /* Power Delivery Objects */
@@ -70,6 +108,11 @@ int pd_request_voltage(uint32_t rdo)
 	int idx = rdo >> 28;
 	uint32_t pdo;
 	uint32_t pdo_ma;
+
+
+	/* fault condition not cleared : reject transitions */
+	if (fault != FAULT_OK)
+		return EC_ERROR_INVAL;
 
 	if (!idx || idx > pd_src_pdo_cnt)
 		return EC_ERROR_INVAL; /* Invalid index */
@@ -107,6 +150,38 @@ void pd_power_supply_reset(void)
 	/* TODO transition delay */
 }
 
-void pd_board_checks(void)
+int pd_board_checks(void)
 {
+	int vbus_volt, vbus_amp;
+
+	vbus_volt = adc_read_channel(ADC_CH_V_SENSE);
+	vbus_amp = adc_read_channel(ADC_CH_A_SENSE);
+
+	if (vbus_amp > MAX_CURRENT) {
+		debug_printf("OverCurrent : %d mA\n",
+		  vbus_amp * VDDA_MV / CURR_GAIN * 1000 / R_SENSE / ADC_SCALE);
+		fault = FAULT_OCP;
+		/* reset over-current after 1 second */
+		fault_deadline.val = get_time().val + OCP_TIMEOUT;
+		return EC_ERROR_INVAL;
+	}
+	if (vbus_volt > MAX_VOLTAGE) {
+		/* if not in dischare phase */
+		/* TODO check voltage range: 0.8x - 1.2x Vo_normal */
+		debug_printf("OverVoltage : %d mV\n",
+			     vbus_volt * VDDA_MV * VOLT_DIV / ADC_SCALE);
+		fault = FAULT_OVP;
+		/* no timeout */
+		fault_deadline.val = get_time().val;
+		return EC_ERROR_INVAL;
+	}
+
+	/* everything is good *and* the error condition has expired */
+	if ((fault != FAULT_OK) && (get_time().val > fault_deadline.val)) {
+		fault = FAULT_OK;
+		debug_printf("Reset fault\n");
+	}
+
+	return EC_SUCCESS;
+
 }
