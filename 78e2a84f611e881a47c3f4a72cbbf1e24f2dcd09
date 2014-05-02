@@ -16,6 +16,24 @@
       "revId": "78e2a84f611e881a47c3f4a72cbbf1e24f2dcd09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a520423_708f9daa",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-05-02T17:43:13Z",
+      "side": 1,
+      "message": "I was consistent, I did it nowhere :-P\nbut yes, now I have started fixing that, I will update all of them and re-post this CL ...",
+      "parentUuid": "0a520423_90f4596e",
+      "revId": "78e2a84f611e881a47c3f4a72cbbf1e24f2dcd09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
