@@ -88,6 +88,24 @@
       "revId": "5a406579fa3f56be183224f7270d98f1d51ca27e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a8044c3_19c42f44",
+        "filename": "power/tegra.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-05-02T21:33:43Z",
+      "side": 1,
+      "message": "Good point. Let me try to remove the XPSHOLD. Stay tuned.",
+      "parentUuid": "6a71c0c6_02b02b7b",
+      "revId": "5a406579fa3f56be183224f7270d98f1d51ca27e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
