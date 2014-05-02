@@ -70,6 +70,24 @@
       "revId": "5a406579fa3f56be183224f7270d98f1d51ca27e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a71c0c6_02b02b7b",
+        "filename": "power/tegra.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2014-05-02T19:55:16Z",
+      "side": 1,
+      "message": "Oops-I mistyped. I meant to say that when I use \"reboot ap-off\" my Nyan remains off, even if the lid is opened.\n\nActually, I seem to always see \"power on 1\" when I power on after \"reboot ap-off\". I have tried using the power button and by toggling the lid switch on Servo. In both cases, I saw \"power on 1\".\n\nIf instead I use \"apshutdown\", I see \"power on 3\" when I toggle the lid switch and \"power on 4\" when I press the power button.\n\nSo I think that if \"reboot ap-off\" is used, then IN_XPSHOLD remains high and we always use this if-else statement. Is this correct behavior?",
+      "parentUuid": "4a66bc13_a72e34c3",
+      "revId": "5a406579fa3f56be183224f7270d98f1d51ca27e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
