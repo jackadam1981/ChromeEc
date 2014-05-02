@@ -34,6 +34,24 @@
       "revId": "5a406579fa3f56be183224f7270d98f1d51ca27e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a66bc13_874c5056",
+        "filename": "power/tegra.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2014-05-02T19:00:18Z",
+      "side": 1,
+      "message": "How will that work with automated testing? If we have explicitly tell the EC to keep the AP off, then I think it makes sense to ignore the current status of the lid.\n\nAlso, are you sure lid_opened gets set if LID is really opened? I can run \"reboot ap-off\" on my Nyan with the lid opened and the system remains on. This seems inconsistent with the behavior you describe.",
+      "parentUuid": "0a292485_c3b0d4e4",
+      "revId": "5a406579fa3f56be183224f7270d98f1d51ca27e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
