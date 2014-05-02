@@ -37,6 +37,7 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#include "battery.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHIPSET, outstr)
@@ -642,6 +643,7 @@ void chipset_task(void)
 
 	gaia_power_init();
 	ap_on = 0;
+	battery_wait_for_stable();
 
 	while (1) {
 		/* Wait until we need to power on, then power on */
