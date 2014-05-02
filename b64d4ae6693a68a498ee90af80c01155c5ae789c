@@ -16,6 +16,23 @@
       "revId": "b64d4ae6693a68a498ee90af80c01155c5ae789c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a71c0c6_9377b4b0",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-05-02T18:07:28Z",
+      "side": 1,
+      "message": "return EC_ERROR_TIMEOUT or other error?  Returning EC_SUCCESS could confuse caller the battery is detected. Although this is not used now.",
+      "revId": "b64d4ae6693a68a498ee90af80c01155c5ae789c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
