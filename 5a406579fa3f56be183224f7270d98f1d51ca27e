@@ -16,6 +16,24 @@
       "revId": "5a406579fa3f56be183224f7270d98f1d51ca27e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a292485_c3b0d4e4",
+        "filename": "power/tegra.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-05-02T17:05:54Z",
+      "side": 1,
+      "message": "lid_opened is only set when LID is really opened (rather than changed). If that case happens, we shall return 3 to turn on the system.",
+      "parentUuid": "eaf77045_20fe64d2",
+      "revId": "5a406579fa3f56be183224f7270d98f1d51ca27e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
