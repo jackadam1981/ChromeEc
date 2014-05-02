@@ -127,3 +127,42 @@ int port80_last_boot(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_PORT80_LAST_BOOT,
 		     port80_last_boot, EC_VER_MASK(0));
+
+int port80_command_read(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_port80_read *p = args->params;
+	char *dest = args->response;
+	int offset = p->offset;
+	int bytes_left = p->size;
+	int i;
+	uint32_t *p_writes;
+
+	if (offset == ARRAY_SIZE(history)*sizeof(uint16_t)
+		&& bytes_left == sizeof(uint32_t)) {
+		/* passing "writes" to host */
+		p_writes = (uint32_t *)dest;
+		*p_writes = (uint32_t)writes;
+		args->response_size = p->size;
+		return EC_RES_SUCCESS;
+	}
+
+	if (p->size > args->response_max)
+		return EC_RES_INVALID_PARAM;
+
+	for (i = offset/2; i < ARRAY_SIZE(history); i++) {
+		int e = history[i % ARRAY_SIZE(history)];
+		*dest = e & 0xff;
+		dest++;
+		*dest = (e >> 8) & 0xff;
+		dest++;
+		bytes_left -= 2;
+		if (bytes_left <= 0)
+			break;
+	}
+
+	args->response_size = p->size;
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_PORT80_READ,
+		  port80_command_read,
+		  EC_VER_MASK(0));

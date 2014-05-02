@@ -116,6 +116,8 @@ const char help_str[] =
 	"      Whether or not the AP should pause in S5 on shutdown\n"
 	"  port80flood\n"
 	"      Rapidly write bytes to port 80\n"
+	"  port80read\n"
+	"      Print history of port 80 write\n"
 	"  powerinfo\n"
 	"	Prints power-related information\n"
 	"  protoinfo\n"
@@ -4042,6 +4044,86 @@ static int cmd_hang_detect(int argc, char *argv[])
 	return -1;
 }
 
+#define HISTORY_LEN 256
+
+enum port_80_event {
+	PORT_80_EVENT_RESUME = 0x1001,  /* S3->S0 transition */
+	PORT_80_EVENT_RESET = 0x1002,   /* RESET transition */
+};
+
+int cmd_port80_read(int argc, char *argv[])
+{
+	struct ec_params_port80_read p;
+	int size = HISTORY_LEN*sizeof(uint16_t);
+	int rv;
+	int i, head, tail;
+	uint16_t *history;
+	int printed = 0;
+	uint32_t writes;
+
+	history = (uint16_t *)malloc(size);
+	if (!history) {
+		fprintf(stderr, "Unable to allocate buffer.\n");
+		return -1;
+	}
+	memset(history, 0, size);
+
+	/* read "writes" */
+	p.offset = HISTORY_LEN*2;
+	p.size = sizeof(writes);
+	rv = ec_command(EC_CMD_PORT80_READ, 0,
+			&p, sizeof(p), &writes, sizeof(writes));
+	if (rv < 0) {
+		fprintf(stderr, "Read error at writes\n");
+		free(history);
+		return rv;
+	}
+
+	/* Read data in chunks */
+	for (i = 0; i < size; i += EC_PORT80_SIZE_MAX) {
+		p.offset = i;
+		p.size = EC_PORT80_SIZE_MAX;
+		rv = ec_command(EC_CMD_PORT80_READ, 0,
+				&p, sizeof(p), history + i/sizeof(uint16_t),
+				EC_PORT80_SIZE_MAX);
+		if (rv < 0) {
+			fprintf(stderr, "Read error at offset %d\n", i);
+			free(history);
+			return rv;
+		}
+	}
+
+	head = writes;
+	if (head > HISTORY_LEN)
+		tail = head - HISTORY_LEN;
+	else
+		tail = 0;
+
+	fprintf(stderr, "Port 80 writes");
+	for (i = tail; i < head; i++) {
+		int e = history[i % HISTORY_LEN];
+		switch (e) {
+		case PORT_80_EVENT_RESUME:
+			fprintf(stderr, "\n(S3->S0)");
+			printed = 0;
+			break;
+		case PORT_80_EVENT_RESET:
+			fprintf(stderr, "\n(RESET)");
+			printed = 0;
+			break;
+		default:
+			if (!(printed++ % 20))
+				fprintf(stderr, "\n ");
+			fprintf(stderr, " %02x", e);
+		}
+	}
+	fprintf(stderr, " <--new\n");
+
+	free(history);
+	printf("done.\n");
+	return 0;
+}
+
 struct command {
 	const char *name;
 	int (*handler)(int argc, char *argv[]);
@@ -4094,6 +4176,7 @@ const struct command commands[] = {
 	{"motionsense", cmd_motionsense},
 	{"panicinfo", cmd_panic_info},
 	{"pause_in_s5", cmd_s5},
+	{"port80read", cmd_port80_read},
 	{"powerinfo", cmd_power_info},
 	{"protoinfo", cmd_proto_info},
 	{"pstoreinfo", cmd_pstore_info},
