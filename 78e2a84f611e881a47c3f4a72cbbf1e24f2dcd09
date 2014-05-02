@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a520423_90f4596e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-02T17:18:11Z",
+      "side": 1,
+      "message": "It\u0027d be nice if we were consistent and did this everywhere in this file:\ntimeout \u003d 10*MSEC",
+      "revId": "78e2a84f611e881a47c3f4a72cbbf1e24f2dcd09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
