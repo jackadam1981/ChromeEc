@@ -37,6 +37,8 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#include "i2c.h"
+#include "battery_smart.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHIPSET, outstr)
@@ -636,6 +638,33 @@ static int wait_for_power_on(void)
 	}
 }
 
+static int TEST_ping_pmu_and_battery(void)
+{
+	int rv, value;
+	uint64_t timeout = get_time().val + (1000*MSEC);
+
+	CPRINTF("[%T ping i2c start]\n");
+	while (get_time().val < timeout) {
+		/* Pinging battery */
+		rv = i2c_read16(I2C_PORT_BATTERY, BATTERY_ADDR, SB_BATTERY_STATUS, &value);
+		if (rv == EC_SUCCESS)
+			CPRINTF("[%T battery ping success]\n");
+		else
+			CPRINTF("[%T battery ping failed]\n");
+		msleep(1);
+		/* Pinging pmu */
+		rv = i2c_read8(I2C_PORT_CHARGER, 0x90 /*TPS65090_I2C_ADDR*/, 0x0 /*IRQ1_REG*/, &value);
+		if (rv == EC_SUCCESS)
+			CPRINTF("[%T PMU ping success]\n");
+		else
+			CPRINTF("[%T PMU ping failed]\n");
+		msleep(1);
+	}
+	CPRINTF("[%T ping i2c done]\n");
+	return EC_ERROR_TIMEOUT;
+}
+
+
 void chipset_task(void)
 {
 	int value;
@@ -646,6 +675,7 @@ void chipset_task(void)
 	while (1) {
 		/* Wait until we need to power on, then power on */
 		wait_for_power_on();
+		TEST_ping_pmu_and_battery();
 
 		if (!power_on()) {
 			int continue_power = 0;

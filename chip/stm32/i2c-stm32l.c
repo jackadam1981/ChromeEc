@@ -106,8 +106,10 @@ static int send_start(int port, int slave_addr)
 	STM32_I2C_CR1(port) |= STM32_I2C_CR1_START;
 	dump_i2c_reg(port, "sent start");
 	rv = wait_sr1(port, STM32_I2C_SR1_SB);
-	if (rv)
+	if (rv){
+		CPRINTF("[%T ######### TEST: start bit occured ##########]\n");
 		return I2C_ERROR_FAILED_START;
+	}
 
 	/* Write slave address */
 	STM32_I2C_DR(port) = slave_addr & 0xff;
