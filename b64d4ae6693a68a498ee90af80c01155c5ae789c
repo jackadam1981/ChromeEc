@@ -33,6 +33,24 @@
       "revId": "b64d4ae6693a68a498ee90af80c01155c5ae789c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a8044c3_364c9882",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2014-05-02T20:29:50Z",
+      "side": 1,
+      "message": "Not EC_ERROR_TIMEOUT, but you could return some other error.  \n\nThe overall thought is that it shouldn\u0027t be so fatal to boot up a board that doesn\u0027t have a battery plugged in, but some type of error would be OK (especially since nobody checks it).",
+      "parentUuid": "6a71c0c6_9377b4b0",
+      "revId": "b64d4ae6693a68a498ee90af80c01155c5ae789c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
