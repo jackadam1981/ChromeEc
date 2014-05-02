@@ -2384,6 +2384,20 @@ struct ec_params_reboot_ec {
 
 #endif  /* !__ACPI__ */
 
+/* Maximum bytes that can be read/written in a single command */
+#define EC_PORT80_SIZE_MAX 64
+/*
+ * Read persistent storage
+ *
+ * Response is params.size bytes of data.
+ */
+#define EC_CMD_PORT80_READ 0x49
+
+struct ec_params_port80_read {
+	uint32_t offset;   /* Byte offset to read */
+	uint32_t size;     /* Size to read in bytes */
+} __packed;
+
 /*****************************************************************************/
 /*
  * Deprecated constants. These constants have been renamed for clarity. The

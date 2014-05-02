@@ -127,3 +127,52 @@ int port80_last_boot(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_PORT80_LAST_BOOT,
 		     port80_last_boot, EC_VER_MASK(0));
+
+int port80_command_read(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_port80_read *p = args->params;
+	char *dest = args->response;
+	int offset = p->offset;
+	int bytes_left = p->size;
+	int i;
+	uint32_t *p_writes;
+
+	/* do not allow odd offset or bad size */
+	if (p->offset % sizeof(uint16_t) || p->size == 0 ||
+		p->size > args->response_max)
+		return EC_RES_INVALID_PARAM;
+
+	/* offset: bytes offset from the beginning of history buffer. When
+		it is pointed to the end of history buffer, it indicates that
+		host request "writes". Offset cannot be an odd number.
+	    writes: this is the port 80 command history pointer that
+		increments constantly.
+	    size: requested bytes of transfer.
+	*/
+	if (offset == ARRAY_SIZE(history)*sizeof(uint16_t)
+		&& bytes_left == sizeof(uint32_t)) {
+		/* passing "writes" to host */
+		p_writes = (uint32_t *)dest;
+		*p_writes = (uint32_t)writes;
+		args->response_size = p->size;
+		return EC_RES_SUCCESS;
+	}
+
+	for (i = offset/sizeof(uint16_t); i < ARRAY_SIZE(history); i++) {
+		int e = history[i % ARRAY_SIZE(history)];
+		*dest = e & 0xff;
+		dest++;
+		*dest = (e >> 8) & 0xff;
+		dest++;
+		bytes_left -= sizeof(uint16_t);
+		if (bytes_left <= 0)
+			break;
+	}
+
+	/* response size in bytes is requested transfer size minus bytes_left*/
+	args->response_size = p->size - bytes_left;
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_PORT80_READ,
+		  port80_command_read,
+		  EC_VER_MASK(0));
