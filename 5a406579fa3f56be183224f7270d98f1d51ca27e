@@ -52,6 +52,24 @@
       "revId": "5a406579fa3f56be183224f7270d98f1d51ca27e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a66bc13_a72e34c3",
+        "filename": "power/tegra.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-05-02T19:44:42Z",
+      "side": 1,
+      "message": "I buy-in your first opinion. Since ap-off is only used for test, it sounds reasonable to keep the system off and ignore other states. Submitting patchset 3.\n\nFor the lid_opened, what power on # did you get, is it \"power on 3\"?  I guess your case is \"power on 4\", which is the power button pressed. :-)  Anyway, at least on my big, I don\u0027t see the system on even if the lid is opened after ap-off.",
+      "parentUuid": "4a66bc13_874c5056",
+      "revId": "5a406579fa3f56be183224f7270d98f1d51ca27e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
