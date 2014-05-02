@@ -252,7 +252,9 @@ static void i2c_event_handler(int port)
 
 	/* Confirm that you are not in master mode */
 	if (STM32_I2C_SR2(port) & (1 << 0)) {
-		CPRINTF("I2C slave ISR triggered in master mode, ignoring.\n");
+		CPRINTF(
+			"[%T I2C slave ISR triggered in "
+			"master mode, ignoring]\n");
 		return;
 	}
 
@@ -310,9 +312,9 @@ static void i2c_error_handler(int port)
 		/* ACK failed (NACK); expected when AP reads final byte.
 		 * Software must clear AF bit. */
 	} else {
-		CPRINTF("%s: I2C_SR1(%d): 0x%04x\n",
+		CPRINTF("[%T %s: I2C_SR1(%d): 0x%04x]\n",
 			__func__, port, i2c_sr1[port]);
-		CPRINTF("%s: I2C_SR2(%d): 0x%04x\n",
+		CPRINTF("[%T %s: I2C_SR2(%d): 0x%04x]\n",
 			__func__, port, STM32_I2C_SR2(port));
 	}
 
@@ -546,7 +548,7 @@ static void handle_i2c_error(int port, int rv)
 	/* EC_ERROR_TIMEOUT may have a code specifying where the timeout was */
 	if ((rv & 0xff) == EC_ERROR_TIMEOUT) {
 #ifdef CONFIG_I2C_DEBUG
-		CPRINTF("Wait_status() timeout type: %d\n", (rv >> 8));
+		CPRINTF("[%T Wait_status() timeout type: %d]\n", (rv >> 8));
 #endif
 		rv = EC_ERROR_TIMEOUT;
 	}
@@ -568,7 +570,7 @@ static void handle_i2c_error(int port, int rv)
 		 * (Probably a stray pulse on the line got it out of sync with
 		 * the actual bytes) so reset it.
 		 */
-		CPRINTF("Unable to send START, resetting i2c.\n");
+		CPRINTF("[%T Unable to send START, resetting i2c]\n");
 		i2c_init_port(port);
 		goto cr_cleanup;
 	} else if (rv == EC_ERROR_TIMEOUT && !(r & 2)) {
@@ -577,7 +579,7 @@ static void handle_i2c_error(int port, int rv)
 		 * It seems that this can be happen very briefly while sending
 		 * a 1. We've not actually seen this, but just to be safe.
 		 */
-		CPRINTF("Bad BUSY bit detected.\n");
+		CPRINTF("[%T Bad BUSY bit detected]\n");
 		master_stop(port);
 	}
 
