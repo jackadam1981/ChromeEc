@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6a346007_843bc809",
+        "filename": "common/port80.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1108879
+      },
+      "writtenOn": "2014-05-05T20:02:39Z",
+      "side": 1,
+      "message": "This is not supposed to happen. But anyway, I will add checking to disallow odd offset.",
+      "parentUuid": "6a346007_41bc125c",
+      "revId": "259ac57c0a56c543d50220a2ec4daca49e4d1c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8aba749a_ff3b4355",
         "filename": "common/port80.c",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "8aba749a_31dfcf9c",
+        "filename": "common/port80.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1108879
+      },
+      "writtenOn": "2014-05-05T20:02:39Z",
+      "side": 1,
+      "message": "Will fix.",
+      "parentUuid": "8aba749a_ff3b4355",
+      "revId": "259ac57c0a56c543d50220a2ec4daca49e4d1c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8aba749a_1f9417be",
         "filename": "common/port80.c",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2014-05-05T18:51:29Z",
       "side": 1,
       "message": "We don\u0027t seem to be checking bytes_left/p-\u003esize being \u003c\u003d uint16_t.",
+      "revId": "259ac57c0a56c543d50220a2ec4daca49e4d1c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a2fd4b4_31db1a89",
+        "filename": "common/port80.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1108879
+      },
+      "writtenOn": "2014-05-05T20:02:39Z",
+      "side": 1,
+      "message": "Added checking.",
+      "parentUuid": "8aba749a_1f9417be",
       "revId": "259ac57c0a56c543d50220a2ec4daca49e4d1c79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
