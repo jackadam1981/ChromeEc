@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a346007_fb37cff8",
+        "filename": "common/port80.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-05T23:15:08Z",
+      "side": 1,
+      "message": "Remove this DECLARE_HOST_COMMAND() macro; we\u0027ll declare both version 0 and 1 below.",
+      "revId": "d9b3fb440d2a2f0f9f2256fbe40c431e987489ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8aba749a_65781d05",
+        "filename": "common/port80.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-05T23:15:08Z",
+      "side": 1,
+      "message": "/* Fall back to old handler for version 0 of command */\n  if (args.version \u003d\u003d 0)\n     return port80_last_boot(args);",
+      "revId": "d9b3fb440d2a2f0f9f2256fbe40c431e987489ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a2fd4b4_6cbca45c",
+        "filename": "common/port80.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-05T23:15:08Z",
+      "side": 1,
+      "message": "Well, technically odd offset is ok now, since we\u0027re counting entries instead of bytes",
+      "revId": "d9b3fb440d2a2f0f9f2256fbe40c431e987489ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a346007_fbba2ff8",
+        "filename": "common/port80.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-05T23:15:08Z",
+      "side": 1,
+      "message": "Ah, I see, the % makes it wrap around if i+offset \u003e ARRAY_SIZE.  I guess with that, it\u0027s technically ok if offset \u003e\u003d ARRAY_SIZE(history).",
+      "revId": "d9b3fb440d2a2f0f9f2256fbe40c431e987489ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8aba749a_2581c5a9",
+        "filename": "common/port80.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-05T23:15:08Z",
+      "side": 1,
+      "message": "EC_CMD_PORT80_READ \u003d\u003d EC_CMD_PORT80_LAST_BOOT, so declare it this way...\n\nDECLARE_HOST_COMMAND(EC_CMD_PORT80_READ,\n  port80_command_read,\n  EC_VER_MASK(0) | EC_VER_MASK(1));",
+      "revId": "d9b3fb440d2a2f0f9f2256fbe40c431e987489ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a346007_70675e2d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1409,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-05T23:15:08Z",
+      "side": 1,
+      "message": "\"bytes\" -\u003e \"entries\"",
+      "revId": "d9b3fb440d2a2f0f9f2256fbe40c431e987489ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a346007_7be57f43",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1436,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-05T23:15:08Z",
+      "side": 1,
+      "message": "If we also add \n\n  uint32_t history_size;\n\nto get_info, then you don\u0027t need to hard-code HISTORY_LEN in ectool.c.",
+      "revId": "d9b3fb440d2a2f0f9f2256fbe40c431e987489ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
