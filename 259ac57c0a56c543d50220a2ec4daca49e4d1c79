@@ -37,6 +37,41 @@
     },
     {
       "key": {
+        "uuid": "6a346007_070dfa53",
+        "filename": "common/port80.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-05T20:12:26Z",
+      "side": 1,
+      "message": "And it\u0027s signed, so you can pass in offset\u003c0 to snoop EC memory.",
+      "parentUuid": "6a346007_41bc125c",
+      "revId": "259ac57c0a56c543d50220a2ec4daca49e4d1c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8aba749a_717307fe",
+        "filename": "common/port80.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-05T20:12:26Z",
+      "side": 1,
+      "message": "This is really hidden and fragile.  Let\u0027s do that in a better way.  See notes in ec_commands.h",
+      "revId": "259ac57c0a56c543d50220a2ec4daca49e4d1c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8aba749a_ff3b4355",
         "filename": "common/port80.c",
         "patchSetId": 2
@@ -101,6 +136,57 @@
       "side": 1,
       "message": "Added checking.",
       "parentUuid": "8aba749a_1f9417be",
+      "revId": "259ac57c0a56c543d50220a2ec4daca49e4d1c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a2fd4b4_f1ba52f8",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2387,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-05T20:12:26Z",
+      "side": 1,
+      "message": "All this should move down to the section on port 80 commands (search for EC_CMD_PORT80_LAST_BOOT)",
+      "revId": "259ac57c0a56c543d50220a2ec4daca49e4d1c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8aba749a_54fef1d2",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2394,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-05T20:12:26Z",
+      "side": 1,
+      "message": "Can just take over command 0x48.  If version\u003d0, return the current data (last_boot).  If version\u003d1, use the new structs below.",
+      "revId": "259ac57c0a56c543d50220a2ec4daca49e4d1c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a346007_e76576e9",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2400,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-05T20:12:26Z",
+      "side": 1,
+      "message": "Do this like the other commands we\u0027ve added recently, where there\u0027s a subcommand field in the params to ask for different things.  That\u0027s easier to understand than passing offset\u003d(some strange number) to return special info.\n\nenum ec_port80_subcmd {\n   EC_PORT80_GET_INFO \u003d 0,\n   EC_PORT80_READ_BUFFER,\n};\n\nstruct ec_params_port80_read {\n  uint8 subcmd;\n\n  union {\n    struct {\n      uint32_t offset;\n      uint32_t num_entries;\n    } read_buffer;\n  }\n};\n\nstruct ec_response_port80_read {\n  union {\n\n    struct {\n      uint32_t writes;\n      uint32_t last_boot;\n    } get_info;\n\n    struct {\n      uint16_t codes[64];\n    }\n  }\n};",
       "revId": "259ac57c0a56c543d50220a2ec4daca49e4d1c79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
