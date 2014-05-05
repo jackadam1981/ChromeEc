@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a346007_41bc125c",
+        "filename": "common/port80.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-05-05T18:51:29Z",
+      "side": 1,
+      "message": "If p-\u003eoffset is odd you\u0027ll get weird post codes.",
+      "revId": "259ac57c0a56c543d50220a2ec4daca49e4d1c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8aba749a_ff3b4355",
+        "filename": "common/port80.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-05-05T18:51:29Z",
+      "side": 1,
+      "message": "Could you make this multi-line comment consistent w/ the other multi-line comments? i.e. \u0027* next line\u0027",
+      "revId": "259ac57c0a56c543d50220a2ec4daca49e4d1c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8aba749a_1f9417be",
+        "filename": "common/port80.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-05-05T18:51:29Z",
+      "side": 1,
+      "message": "We don\u0027t seem to be checking bytes_left/p-\u003esize being \u003c\u003d uint16_t.",
+      "revId": "259ac57c0a56c543d50220a2ec4daca49e4d1c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
