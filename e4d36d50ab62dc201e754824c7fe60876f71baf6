@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "aacbb83b_25c9c233",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-05-05T15:47:03Z",
+      "side": 1,
+      "message": "sure, fixed",
+      "parentUuid": "aacbb83b_dfdf6b1f",
+      "revId": "e4d36d50ab62dc201e754824c7fe60876f71baf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6abf008d_f857ddde",
         "filename": "board/zinger/usb_pd_policy.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2014-05-05T00:19:53Z",
       "side": 1,
       "message": "spaces for uvp, tab for ovp.",
+      "revId": "e4d36d50ab62dc201e754824c7fe60876f71baf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a2fd4b4_622dd682",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-05-05T15:47:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6abf008d_f857ddde",
       "revId": "e4d36d50ab62dc201e754824c7fe60876f71baf6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
