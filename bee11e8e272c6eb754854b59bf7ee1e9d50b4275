@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aacbb83b_a03b60bd",
+        "filename": "common/port80.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-05-05T16:53:11Z",
+      "side": 1,
+      "message": "2 -\u003e sizeof(uint16_t) ?",
+      "revId": "bee11e8e272c6eb754854b59bf7ee1e9d50b4275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8aba749a_f9484396",
+        "filename": "common/port80.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-05-05T16:53:11Z",
+      "side": 1,
+      "message": "sizeof(uint16_t) ?",
+      "revId": "bee11e8e272c6eb754854b59bf7ee1e9d50b4275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aacbb83b_60157814",
+        "filename": "common/port80.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-05-05T16:53:11Z",
+      "side": 1,
+      "message": "This doesn\u0027t always seem to be the correct size. i.e. p-\u003esize may be large but we hit the end of the history array. In that case shouldn\u0027t it be \u0027response_size \u003d ARRAY_SIZE(history) - offset/sizeof(uint16_t)\u0027 ?",
+      "revId": "bee11e8e272c6eb754854b59bf7ee1e9d50b4275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8aba749a_f9dfe3e5",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4064,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-05-05T16:53:11Z",
+      "side": 1,
+      "message": "We shouldn\u0027t cast malloc\u0027s return type.",
+      "revId": "bee11e8e272c6eb754854b59bf7ee1e9d50b4275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aacbb83b_85eaf63b",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4069,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-05-05T16:53:11Z",
+      "side": 1,
+      "message": "Just use calloc() ?",
+      "revId": "bee11e8e272c6eb754854b59bf7ee1e9d50b4275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aacbb83b_858f56a9",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4071,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-05-05T16:53:11Z",
+      "side": 1,
+      "message": "Could you add more comments about the meaning of offset and size being the number of writes?",
+      "revId": "bee11e8e272c6eb754854b59bf7ee1e9d50b4275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
