@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a58b470_1df1d7bb",
+        "filename": "common/lid_angle.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-05-06T23:29:43Z",
+      "side": 1,
+      "message": "Do we get a spurious enable on a sysjump here? ...probably not important as we should still be booting the host. I just want to sanity check that this isn\u0027t a problem.",
+      "revId": "a7cfc11ca71e1e4f77fe108408db9a5b4042b4d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
