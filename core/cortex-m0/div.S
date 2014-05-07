@@ -181,3 +181,40 @@ L_dont_sub0:
 
 __aeabi_idiv0:
 	bl panic
+
+@ Probably wrong, but pretty close to the right code size
+#define xxh r0
+#define xxl r1
+#define yyh r2
+#define yyl r3
+	
+	.thumb_func
+	.global __aeabi_lmul
+__aeabi_lmul:
+	muls 	xxh, yyl
+	push	{r4, r5, r6, r7}
+	muls	yyh, xxl
+@	ldr	r4, .L_mask
+	movs	r4, #0
+	lsrs	r5, xxl, #16
+	lsrs	r6, yyl, #16
+	lsrs	r7, xxl, #16
+	muls	r5, r6
+	ands	xxl, r4
+	ands	yyl, r4
+	add	xxh, yyh
+	muls	r6, xxl
+	muls	r7, yyl
+	add	xxh, r5
+	muls	xxl, yyl
+	movs	r4, #0
+	adds	r6, r7
+	adcs	r4, r4
+	lsrs	yyh, r6, #16
+	lsls	r4, r4, #16
+	lsls	yyl, r6, #16
+	add	xxh, r4
+	adds	xxl, yyl
+	adcs	xxh, yyh
+	pop	{r4, r5, r6, r7}
+	bx	lr

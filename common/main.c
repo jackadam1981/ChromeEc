@@ -27,6 +27,11 @@
 #include "uart.h"
 #include "watchdog.h"
 
+struct vb2_public_key;
+void modpowF4(const struct vb2_public_key *key, uint8_t *inout,
+	      uint32_t *workbuf32);
+
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_SYSTEM, outstr)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
@@ -145,6 +150,8 @@ test_mockable int main(void)
 	 * the majority of the time.
 	 */
 	CPRINTF("[%T Inits done]\n");
+
+	//modpowF4(0, 0, 0);
 
 	/* Launch task scheduling (never returns) */
 	return task_start();

@@ -13,6 +13,10 @@
 
 extern void pd_rx_handler(void);
 
+struct vb2_public_key;
+void modpowF4(const struct vb2_public_key *key, uint8_t *inout,
+	      uint32_t *workbuf32);
+
 /* External interrupt EXTINT7 for external comparator on PA7 */
 void IRQ_HANDLER(STM32_IRQ_EXTI4_15)(void)
 {
@@ -28,6 +32,8 @@ int main(void)
 {
 	hardware_init();
 	debug_printf("Power supply started ...\n");
+
+	//modpowF4(0, 0, 0);
 
 	/* background loop for PD events */
 	pd_task();
