@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa62d821_f27d21c2",
+        "filename": "driver/charger/bq24773.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-05-08T22:46:55Z",
+      "side": 1,
+      "message": "Not that there is a really good error handling solution here,\nbut we should probably avoid writing the value we have failed to read.\n\nmaybe the best approach for now would be :\nif set_input_current() failed OR read16 failed, then bails out before writing.",
+      "revId": "76d4057bba9240f4691bb401f99283cbcde832c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
