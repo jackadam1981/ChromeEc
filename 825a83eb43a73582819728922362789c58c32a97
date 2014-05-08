@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca138c9f_137ef6f3",
+        "filename": "driver/charger/bq24773.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-05-08T22:34:21Z",
+      "side": 1,
+      "message": "should be the other way round :\nyou need to set the new limit before removing the other one ?",
+      "revId": "825a83eb43a73582819728922362789c58c32a97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
