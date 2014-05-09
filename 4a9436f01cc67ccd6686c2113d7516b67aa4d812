@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca962c58_ac3de3dc",
+        "filename": "power/tegra.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2014-05-09T00:25:05Z",
+      "side": 1,
+      "message": "Ok, I think I get it - We want to store and clear RESET_FLAG_AP_OFF to ensure it only affects the 1 case we really care about (IN_XPSHOLD).",
+      "revId": "4a9436f01cc67ccd6686c2113d7516b67aa4d812",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
