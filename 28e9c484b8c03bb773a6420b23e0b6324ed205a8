@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a999485_35f3fa55",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-05-09T00:48:17Z",
+      "side": 1,
+      "message": "There is a race condition here: power_common_init() can run after this so that the state is still G3.\n\nI am thinking if we can put this in lower priority.",
+      "revId": "28e9c484b8c03bb773a6420b23e0b6324ed205a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
