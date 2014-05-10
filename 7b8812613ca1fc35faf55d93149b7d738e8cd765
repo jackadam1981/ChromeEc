@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a16bcdd_d8bf0def",
+        "filename": "board/samus/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-10T15:56:51Z",
+      "side": 1,
+      "message": "I think the correct values are:\n\n#define CONFIG_CHARGER_SENSE_RESISTOR     5 /* milliOhms */\n#define CONFIG_CHARGER_SENSE_RESISTOR_AC 10 /* milliOhms */",
+      "revId": "7b8812613ca1fc35faf55d93149b7d738e8cd765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
