@@ -13,9 +13,11 @@
 #include "registers.h"
 #include "task.h"
 #include "timer.h"
+#include "uart.h"
 #include "util.h"
 #include "usb_pd.h"
 #include "usb_pd_config.h"
+#include "watchdog.h"
 
 #ifdef CONFIG_COMMON_RUNTIME
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
@@ -198,6 +200,7 @@ static enum {
 	PD_STATE_SNK_REQUESTED,
 	PD_STATE_SNK_TRANSITION,
 	PD_STATE_SNK_READY,
+	PD_STATE_FLASHING_MODE,
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 
 	PD_STATE_SRC_DISCONNECTED,
@@ -379,6 +382,9 @@ static int send_request(void *ctxt, uint32_t rdo)
 
 	return bit_len;
 }
+
+static int flash_count;
+static uint32_t flash_data[7];
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 
 static int send_bist(void *ctxt)
@@ -395,8 +401,28 @@ static int send_bist(void *ctxt)
 
 static void handle_vdm_request(void *ctxt, int cnt, uint32_t *payload)
 {
-	CPRINTF("[%T PD Unhandled VDM VID %04x CMD %04x]\n", payload[0] >> 16,
-		payload[0] & 0xFFFF);
+	uint16_t vid = PD_VDO_VID(payload[0]);
+#ifdef CONFIG_USB_PD_CUSTOM_VDM
+	int rlen;
+	uint32_t *rdata;
+
+	if (vid == USB_VID_GOOGLE) {
+		rlen = pd_custom_vdm(ctxt, cnt, payload, &rdata);
+		if (rlen > 0) {
+			uint16_t header = PD_HEADER(PD_DATA_VENDOR_DEF,
+						pd_role, pd_message_id, rlen);
+			send_validate_message(ctxt, header, rlen, rdata);
+		}
+		return;
+	}
+#else
+	if (vid == USB_VID_GOOGLE) {
+		flash_count = 0;
+		return;
+	}
+#endif
+	CPRINTF("[%T PD Unhandled VDM VID %04x CMD %04x]\n",
+		vid, payload[0] & 0xFFFF);
 }
 
 static void handle_data_request(void *ctxt, uint16_t head, uint32_t *payload)
@@ -768,6 +794,26 @@ void pd_task(void)
 			/* check vital parameters from time to time */
 			timeout = 100*MSEC;
 			break;
+		case PD_STATE_FLASHING_MODE:
+			if (flash_count > 7) { /* TIMEOUT */
+				flash_count = -EC_ERROR_TIMEOUT;
+			} else if (flash_count > 0) {
+				int len;
+				int cnt = flash_count;
+				uint16_t header = PD_HEADER(PD_DATA_VENDOR_DEF,
+					pd_role, pd_message_id, cnt);
+				uint32_t cmd = (flash_count == 1) ?
+					       VDO_CMD_FLASH_ERASE :
+					       VDO_CMD_FLASH_WRITE;
+				flash_data[0] = VDO(USB_VID_GOOGLE, cmd);
+				flash_count = 8; /* Transmitting */
+				len = send_validate_message(ctxt, header, cnt,
+							    flash_data);
+				if (len < 0)
+					flash_count = -EC_ERROR_BUSY;
+			}
+			timeout = 500*MSEC;
+			break;
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 		case PD_STATE_HARD_RESET:
 			send_hard_reset(ctxt);
@@ -788,6 +834,53 @@ void pd_rx_event(void)
 }
 
 #ifdef CONFIG_COMMON_RUNTIME
+static int hex8tou32(char *str, uint32_t *val)
+{
+	char *ptr = str;
+	uint32_t tmp = 0;
+
+	while (*ptr) {
+		char c = *ptr++;
+		if (c >= '0' && c <= '9')
+			tmp = (tmp << 4) + (c - '0');
+		else if (c >= 'A' && c <= 'F')
+			tmp = (tmp << 4) + (c - 'A' + 10);
+		else if (c >= 'a' && c <= 'f')
+			tmp = (tmp << 4) + (c - 'a' + 10);
+		else
+			return EC_ERROR_INVAL;
+	}
+	if (ptr != str + 8)
+		return EC_ERROR_INVAL;
+	*val = tmp;
+	return EC_SUCCESS;
+}
+
+static int remote_flashing(int argc, char **argv)
+{
+	static int flash_offset;
+	if (argc < 3) {
+		flash_count = 1;
+		flash_offset = 0;
+		ccprintf("ERASE ...");
+	} else {
+		int i;
+		for (i = 2; i < argc; i++)
+			if (hex8tou32(argv[i], flash_data + i - 1))
+				return EC_ERROR_INVAL;
+		flash_count = argc - 1;
+		ccprintf("WRITE %d @%04x ...", (argc - 2) * 4, flash_offset);
+		flash_offset += (argc - 2) * 4;
+	}
+	pd_task_state = PD_STATE_FLASHING_MODE;
+	task_wake(TASK_ID_PD);
+	watchdog_reload();
+	while (flash_count > 0)
+		watchdog_reload();
+	ccprintf("DONE\n");
+	return EC_SUCCESS;
+}
+
 void pd_request_source_voltage(int mv)
 {
 	pd_set_max_voltage(mv);
@@ -842,11 +935,13 @@ static int command_pd(int argc, char **argv)
 		pd_set_host_mode(1);
 		pd_task_state = PD_STATE_SRC_READY;
 		task_wake(TASK_ID_PD);
+	} else if (!strncasecmp(argv[1], "flash", 4)) {
+		return remote_flashing(argc, argv);
 	} else if (!strncasecmp(argv[1], "state", 5)) {
 		const char * const state_names[] = {
 			"DISABLED",
 			"SNK_DISCONNECTED", "SNK_DISCOVERY", "SNK_REQUESTED",
-			"SNK_TRANSITION", "SNK_READY",
+			"SNK_TRANSITION", "SNK_READY", "FLASHING",
 			"SRC_DISCONNECTED", "SRC_DISCOVERY", "SRC_NEGOCIATE",
 			"SRC_ACCEPTED", "SRC_TRANSITION", "SRC_READY",
 			"HARD_RESET", "BIST",
