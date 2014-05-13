@@ -23,11 +23,14 @@ void IRQ_HANDLER(STM32_IRQ_EXTI4_15)(void)
 }
 
 extern void pd_task(void);
+extern void simple_pd(void);
 
 int main(void)
 {
 	hardware_init();
 	debug_printf("Power supply started ...\n");
+
+	simple_pd();
 
 	/* background loop for PD events */
 	pd_task();

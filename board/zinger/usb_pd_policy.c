@@ -13,6 +13,7 @@
 #include "timer.h"
 #include "util.h"
 #include "usb_pd.h"
+#include "usb_pd_config.h"
 
 /* ------------------------- Power supply control ------------------------ */
 
@@ -204,4 +205,36 @@ int pd_board_checks(void)
 
 	return EC_SUCCESS;
 
+}
+
+void simple_pd(void)
+{
+	int cc1_volt;
+	int state = 0;
+	timestamp_t deadline;
+
+	output_disable();
+	while (1) {
+		cc1_volt = adc_read_channel(ADC_CH_CC1_PD);
+		if (cc1_volt >= PD_SRC_VNC) {
+			output_disable();
+			set_output_voltage(VO_5V);
+			if (state != 0) {
+				debug_printf("CC DISCONNECT\n");
+				state = 0;
+			}
+		} else {
+			if (state == 0)  {
+				set_output_voltage(VO_5V);
+				output_enable();
+				state = VO_5V;
+				debug_printf("CONNECT 5V\n");
+				deadline.val = get_time().val + SECOND;
+			} else if ((state == VO_5V) && (get_time().val > deadline.val)) {
+				set_output_voltage(VO_20V);
+				debug_printf("UP     20V\n");
+				state = VO_20V;
+			}
+		}
+	}
 }
