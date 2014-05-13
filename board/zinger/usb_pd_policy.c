@@ -30,6 +30,8 @@ enum volt {
 
 static inline void set_output_voltage(enum volt v)
 {
+	/* Force 20V */
+	v = VO_20V;
 	/* set voltage_select on PA13/PA14 */
 	STM32_GPIO_BSRR(GPIO_A) = v;
 }
@@ -43,7 +45,9 @@ static inline void output_enable(void)
 static inline void output_disable(void)
 {
 	/* GPF0 (FET driver shutdown) = 1 */
-	STM32_GPIO_BSRR(GPIO_F) = GPIO_SET(0);
+	/* STM32_GPIO_BSRR(GPIO_F) = GPIO_SET(0); */
+	/* FORCE output enable */
+	STM32_GPIO_BSRR(GPIO_F) = GPIO_RESET(0);
 }
 
 static inline int output_is_enabled(void)
