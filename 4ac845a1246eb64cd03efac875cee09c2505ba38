@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "eac690d8_28ea2313",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-14T18:02:29Z",
+      "side": 1,
+      "message": "Ok, so it is safe for both to be enabled. If the LM5050 see\u0027s a reverse current, it shuts itself off automatically.",
+      "parentUuid": "aaa73822_f4f58ea7",
+      "revId": "4ac845a1246eb64cd03efac875cee09c2505ba38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aaa73822_b1f31885",
         "filename": "board/samus_pd/board.c",
         "patchSetId": 3
