@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "caaaaceb_75ba3a5c",
+        "filename": "common/sha1.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-14T14:05:35Z",
+      "side": 1,
+      "message": "Seems like assembly code shouldn\u0027t be in the common/ directory",
+      "revId": "71838178f1fff388054cc1e4c9b49d7b208b072f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aaa73822_2ed987b4",
+        "filename": "common/sha1.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-14T14:05:35Z",
+      "side": 1,
+      "message": "This is 320 bytes on that goes on the stack.",
+      "revId": "71838178f1fff388054cc1e4c9b49d7b208b072f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
