@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "aaa73822_7186d002",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-05-14T15:55:55Z",
+      "side": 1,
+      "message": "Maybe what we actually want  to do is :\n-first set USB_C0_CC1_ODL to ensure we are in device mode\n- then enable CC_EN\nwe need to ensure the proper ordering to avoid glitching the power.\nI guess keeping this as GPIO_OUT_HIGH, but putting the USB_C0_CC1_ODL declaration (as _ODR_LOW) before might be enough.",
+      "parentUuid": "ea9db0d4_f040fe1a",
+      "revId": "04b3efe1a6d554bf8b4b50527bfbab7d9e4f8592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4ae95c2a_b2ef9e8e",
         "filename": "board/samus_pd/board.c",
         "patchSetId": 2
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "Ok, changed to HIGH, I don\u0027t think open drain would be useful here, it\u0027s just the gate to a FET.",
       "parentUuid": "4ae95c2a_b2ef9e8e",
+      "revId": "04b3efe1a6d554bf8b4b50527bfbab7d9e4f8592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "caaaaceb_40b77edd",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-05-14T15:55:55Z",
+      "side": 1,
+      "message": "Ok good",
+      "parentUuid": "4ae95c2a_9886fb51",
       "revId": "04b3efe1a6d554bf8b4b50527bfbab7d9e4f8592",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -171,6 +207,24 @@
       "side": 1,
       "message": "Description says \"High-Z when Samus is a host, pulled low when Samus is a device\", so I was setting it to device mode. Which mode should be default?",
       "parentUuid": "4ae95c2a_321c2efc",
+      "revId": "04b3efe1a6d554bf8b4b50527bfbab7d9e4f8592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "caaaaceb_80b166e9",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-05-14T15:55:55Z",
+      "side": 1,
+      "message": "Yes device should be the default",
+      "parentUuid": "4ae95c2a_f85f4719",
       "revId": "04b3efe1a6d554bf8b4b50527bfbab7d9e4f8592",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
