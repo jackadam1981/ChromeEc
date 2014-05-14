@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "aaa73822_94f08ab9",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-14T17:04:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea9db0d4_07e0ea33",
+      "revId": "4ac845a1246eb64cd03efac875cee09c2505ba38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea9db0d4_a703d62d",
         "filename": "board/samus_pd/board.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2014-05-14T16:16:50Z",
       "side": 1,
       "message": "right now, the charge is \"hardcoded\" on port 0\nand I don\u0027t how safe it is to keep both of them enabled\n(might want to ask David whether with the LM5050s port 0 VBUS might bleed on port1 VBUS)",
+      "revId": "4ac845a1246eb64cd03efac875cee09c2505ba38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aaa73822_f4f58ea7",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-14T17:04:59Z",
+      "side": 1,
+      "message": "ok, I emailed david, will follow up when he is in.",
+      "parentUuid": "ea9db0d4_a703d62d",
       "revId": "4ac845a1246eb64cd03efac875cee09c2505ba38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "aaa73822_14ddba26",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-14T17:04:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aaa73822_b1f31885",
+      "revId": "4ac845a1246eb64cd03efac875cee09c2505ba38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "caaaaceb_00c9f633",
         "filename": "board/samus_pd/board.c",
         "patchSetId": 3
@@ -64,6 +118,24 @@
       "writtenOn": "2014-05-14T16:16:50Z",
       "side": 1,
       "message": "ditto",
+      "revId": "4ac845a1246eb64cd03efac875cee09c2505ba38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aaa73822_54e742f8",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-14T17:04:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "caaaaceb_00c9f633",
       "revId": "4ac845a1246eb64cd03efac875cee09c2505ba38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "8ad6f480_4a0af33c",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-14T17:04:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea9db0d4_671f2e76",
+      "revId": "4ac845a1246eb64cd03efac875cee09c2505ba38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aaa73822_91f89c60",
         "filename": "board/samus_pd/board.c",
         "patchSetId": 3
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "aaa73822_9419aa51",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-14T17:04:59Z",
+      "side": 1,
+      "message": "sure",
+      "parentUuid": "aaa73822_91f89c60",
+      "revId": "4ac845a1246eb64cd03efac875cee09c2505ba38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "caaaaceb_40113ee4",
         "filename": "board/samus_pd/usb_pd_config.h",
         "patchSetId": 3
@@ -115,6 +223,24 @@
       "writtenOn": "2014-05-14T16:16:50Z",
       "side": 1,
       "message": "the value seems broken : FC0 ?",
+      "revId": "4ac845a1246eb64cd03efac875cee09c2505ba38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aaa73822_d413322d",
+        "filename": "board/samus_pd/usb_pd_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-14T17:04:59Z",
+      "side": 1,
+      "message": "yes, my mistake",
+      "parentUuid": "caaaaceb_40113ee4",
       "revId": "4ac845a1246eb64cd03efac875cee09c2505ba38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
