@@ -212,6 +212,7 @@ static enum {
 	PD_STATE_SNK_REQUESTED,
 	PD_STATE_SNK_TRANSITION,
 	PD_STATE_SNK_READY,
+	PD_STATE_VDM_COMM,
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 
 	PD_STATE_SRC_DISCONNECTED,
@@ -400,6 +401,10 @@ static int send_request(void *ctxt, uint32_t rdo)
 
 	return bit_len;
 }
+
+/* next Vendor Defined Message to send */
+static int vdo_count;
+static uint32_t vdo_data[7];
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 
 static int send_bist_cmd(void *ctxt)
@@ -471,17 +476,22 @@ static void handle_vdm_request(void *ctxt, int cnt, uint32_t *payload)
 #ifdef CONFIG_USB_PD_CUSTOM_VDM
 	int rlen;
 	uint32_t *rdata;
+#endif
 
 	if (vid == USB_VID_GOOGLE) {
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+		vdo_count = 0; /* Done */
+#endif
+#ifdef CONFIG_USB_PD_CUSTOM_VDM
 		rlen = pd_custom_vdm(ctxt, cnt, payload, &rdata);
 		if (rlen > 0) {
 			uint16_t header = PD_HEADER(PD_DATA_VENDOR_DEF,
 						pd_role, pd_message_id, rlen);
 			send_validate_message(ctxt, header, rlen, rdata);
 		}
+#endif
 		return;
 	}
-#endif
 	CPRINTF("Unhandled VDM VID %04x CMD %04x\n",
 		vid, payload[0] & 0xFFFF);
 }
@@ -1012,6 +1022,22 @@ void pd_task(void)
 			/* we have power, check vitals from time to time */
 			timeout = 100*MSEC;
 			break;
+		case PD_STATE_VDM_COMM:
+			if (vdo_count > 7) { /* TIMEOUT */
+				vdo_count = -EC_ERROR_TIMEOUT;
+			} else if (vdo_count > 0) {
+				int len;
+				uint16_t header = PD_HEADER(PD_DATA_VENDOR_DEF,
+					pd_role, pd_message_id, vdo_count);
+				len = send_validate_message(ctxt, header,
+							    vdo_count,
+							    vdo_data);
+				vdo_count = 8; /* Transmitting */
+				if (len < 0)
+					vdo_count = -EC_ERROR_BUSY;
+			}
+			timeout = 500*MSEC;
+			break;
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 		case PD_STATE_HARD_RESET:
 			send_hard_reset(ctxt);
@@ -1046,10 +1072,12 @@ void pd_task(void)
 		}
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 		if (pd_role == PD_ROLE_SINK && !pd_snk_is_vbus_provided()) {
-			/* Sink: detect disconnect by monitoring VBUS */
-			pd_task_state = PD_STATE_SNK_DISCONNECTED;
-			/* set timeout small to reconnect fast */
-			timeout = 5*MSEC;
+			if (pd_task_state != PD_STATE_VDM_COMM) {
+				/* Sink: detect disconnect by monitoring VBUS */
+				pd_task_state = PD_STATE_SNK_DISCONNECTED;
+				/* set timeout small to reconnect fast */
+				timeout = 5*MSEC;
+			}
 		}
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 	}
@@ -1066,6 +1094,78 @@ void pd_set_suspend(int enable)
 	pd_task_state = enable ? PD_STATE_SUSPENDED : PD_DEFAULT_STATE;
 
 	task_wake(TASK_ID_PD);
+}
+
+static int hex8tou32(char *str, uint32_t *val)
+{
+	char *ptr = str;
+	uint32_t tmp = 0;
+
+	while (*ptr) {
+		char c = *ptr++;
+		if (c >= '0' && c <= '9')
+			tmp = (tmp << 4) + (c - '0');
+		else if (c >= 'A' && c <= 'F')
+			tmp = (tmp << 4) + (c - 'A' + 10);
+		else if (c >= 'a' && c <= 'f')
+			tmp = (tmp << 4) + (c - 'a' + 10);
+		else
+			return EC_ERROR_INVAL;
+	}
+	if (ptr != str + 8)
+		return EC_ERROR_INVAL;
+	*val = tmp;
+	return EC_SUCCESS;
+}
+
+static int remote_flashing(int argc, char **argv)
+{
+	static int flash_offset;
+	if (argc < 3)
+		return EC_ERROR_PARAM_COUNT;
+	if (!strcasecmp(argv[2], "erase")) {
+		vdo_data[0] = VDO(USB_VID_GOOGLE, VDO_CMD_FLASH_ERASE);
+		vdo_count = 1;
+		flash_offset = 0;
+		ccprintf("ERASE ...");
+	} else if (!strcasecmp(argv[2], "reboot")) {
+		vdo_data[0] = VDO(USB_VID_GOOGLE, VDO_CMD_REBOOT);
+		vdo_count = 1;
+		ccprintf("REBOOT ...");
+	} else if (!strcasecmp(argv[2], "hash")) {
+		int i;
+		for (i = 3; i < argc; i++)
+			if (hex8tou32(argv[i], vdo_data + i - 2))
+				return EC_ERROR_INVAL;
+		vdo_data[0] = VDO(USB_VID_GOOGLE, VDO_CMD_FLASH_HASH);
+		vdo_count = argc - 2;
+		ccprintf("HASH ...");
+	} else if (!strcasecmp(argv[2], "rw_hash")) {
+		vdo_data[0] = VDO(USB_VID_GOOGLE, VDO_CMD_RW_HASH);
+		vdo_count = 1;
+		ccprintf("RW HASH...");
+	} else if (!strcasecmp(argv[2], "version")) {
+		vdo_data[0] = VDO(USB_VID_GOOGLE, VDO_CMD_VERSION);
+		vdo_count = 1;
+		ccprintf("VERSION...");
+	} else {
+		int i;
+		for (i = 2; i < argc; i++)
+			if (hex8tou32(argv[i], vdo_data + i - 1))
+				return EC_ERROR_INVAL;
+		vdo_data[0] = VDO(USB_VID_GOOGLE, VDO_CMD_FLASH_WRITE);
+		vdo_count = argc - 1;
+		ccprintf("WRITE %d @%04x ...", (argc - 2) * 4, flash_offset);
+		flash_offset += (argc - 2) * 4;
+	}
+	pd_task_state = PD_STATE_VDM_COMM;
+	task_wake(TASK_ID_PD);
+
+	/* Wait until VDO is done */
+	while (vdo_count > 0)
+		task_wait_event(100*MSEC);
+	ccprintf("DONE\n");
+	return EC_SUCCESS;
 }
 
 void pd_request_source_voltage(int mv)
@@ -1137,11 +1237,13 @@ static int command_pd(int argc, char **argv)
 			pd_set_dual_role(on ? PD_DRP_TOGGLE_ON :
 					      PD_DRP_FORCE_SINK);
 		}
+	} else if (!strncasecmp(argv[1], "flash", 4)) {
+		return remote_flashing(argc, argv);
 	} else if (!strncasecmp(argv[1], "state", 5)) {
 		const char * const state_names[] = {
 			"DISABLED", "SUSPENDED",
 			"SNK_DISCONNECTED", "SNK_DISCOVERY", "SNK_REQUESTED",
-			"SNK_TRANSITION", "SNK_READY",
+			"SNK_TRANSITION", "SNK_READY", "VDM_COMM",
 			"SRC_DISCONNECTED", "SRC_DISCOVERY", "SRC_NEGOCIATE",
 			"SRC_ACCEPTED", "SRC_TRANSITION", "SRC_READY",
 			"HARD_RESET", "BIST",
