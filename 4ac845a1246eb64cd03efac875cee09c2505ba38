@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea9db0d4_07e0ea33",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-05-14T16:16:50Z",
+      "side": 1,
+      "message": "you need to add below the remapping bits for chan 6 and 7\nbit 24 and 30 ?",
+      "revId": "4ac845a1246eb64cd03efac875cee09c2505ba38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea9db0d4_a703d62d",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-05-14T16:16:50Z",
+      "side": 1,
+      "message": "right now, the charge is \"hardcoded\" on port 0\nand I don\u0027t how safe it is to keep both of them enabled\n(might want to ask David whether with the LM5050s port 0 VBUS might bleed on port1 VBUS)",
+      "revId": "4ac845a1246eb64cd03efac875cee09c2505ba38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aaa73822_b1f31885",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-05-14T16:16:50Z",
+      "side": 1,
+      "message": "the right alternate function seems to be 0 rather than 2",
+      "revId": "4ac845a1246eb64cd03efac875cee09c2505ba38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "caaaaceb_00c9f633",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-05-14T16:16:50Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "4ac845a1246eb64cd03efac875cee09c2505ba38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea9db0d4_671f2e76",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-05-14T16:16:50Z",
+      "side": 1,
+      "message": "it\u0027s AF0",
+      "revId": "4ac845a1246eb64cd03efac875cee09c2505ba38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aaa73822_91f89c60",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-05-14T16:16:50Z",
+      "side": 1,
+      "message": "do we want the slave I2C port here ?",
+      "revId": "4ac845a1246eb64cd03efac875cee09c2505ba38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "caaaaceb_40113ee4",
+        "filename": "board/samus_pd/usb_pd_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-05-14T16:16:50Z",
+      "side": 1,
+      "message": "the value seems broken : FC0 ?",
+      "revId": "4ac845a1246eb64cd03efac875cee09c2505ba38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
