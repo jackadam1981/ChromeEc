@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4ae95c2a_f87627b3",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-14T15:25:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ae46051_50e8da89",
+      "revId": "04b3efe1a6d554bf8b4b50527bfbab7d9e4f8592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ae46051_70efde8f",
         "filename": "board/samus_pd/board.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2014-05-14T00:26:52Z",
       "side": 1,
       "message": "we need to be careful to avoid killing the dead battery charging too early",
+      "revId": "04b3efe1a6d554bf8b4b50527bfbab7d9e4f8592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea9db0d4_f040fe1a",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-14T15:25:51Z",
+      "side": 1,
+      "message": "if we initialize to low, when do we enable it? After the EC tells us the battery is charged enough?",
+      "parentUuid": "6ae46051_70efde8f",
       "revId": "04b3efe1a6d554bf8b4b50527bfbab7d9e4f8592",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "4ae95c2a_9886fb51",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-14T15:25:51Z",
+      "side": 1,
+      "message": "Ok, changed to HIGH, I don\u0027t think open drain would be useful here, it\u0027s just the gate to a FET.",
+      "parentUuid": "4ae95c2a_b2ef9e8e",
+      "revId": "04b3efe1a6d554bf8b4b50527bfbab7d9e4f8592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ae46051_3053969e",
         "filename": "board/samus_pd/board.c",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2014-05-14T00:26:52Z",
       "side": 1,
       "message": "need to be low at startup for dead battery case (and hardcoded Samus P1.9 behavior)",
+      "revId": "04b3efe1a6d554bf8b4b50527bfbab7d9e4f8592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ae95c2a_585593f9",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-14T15:25:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ae46051_3053969e",
       "revId": "04b3efe1a6d554bf8b4b50527bfbab7d9e4f8592",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "4ae95c2a_f85f4719",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-14T15:25:51Z",
+      "side": 1,
+      "message": "Description says \"High-Z when Samus is a host, pulled low when Samus is a device\", so I was setting it to device mode. Which mode should be default?",
+      "parentUuid": "4ae95c2a_321c2efc",
+      "revId": "04b3efe1a6d554bf8b4b50527bfbab7d9e4f8592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2aeee834_0e62b31d",
         "filename": "board/samus_pd/board.c",
         "patchSetId": 2
@@ -98,6 +188,24 @@
       "writtenOn": "2014-05-14T00:26:52Z",
       "side": 1,
       "message": "need to discuss with EE if this should be open drain (with internal pull-up on EC side)",
+      "revId": "04b3efe1a6d554bf8b4b50527bfbab7d9e4f8592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea9db0d4_9c8c3126",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-14T15:25:51Z",
+      "side": 1,
+      "message": "yeah, i think this should be open drain with pull-up on EC side in the case that the PD MCU resets, we don\u0027t want it to trigger an interrupt on EC side.",
+      "parentUuid": "2aeee834_0e62b31d",
       "revId": "04b3efe1a6d554bf8b4b50527bfbab7d9e4f8592",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "ea9db0d4_1c6a012a",
+        "filename": "board/samus_pd/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-14T15:25:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ae95c2a_d2c4e222",
+      "revId": "04b3efe1a6d554bf8b4b50527bfbab7d9e4f8592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4ae95c2a_b2c15e12",
         "filename": "board/samus_pd/board.h",
         "patchSetId": 2
@@ -132,6 +258,24 @@
       "writtenOn": "2014-05-14T00:26:52Z",
       "side": 1,
       "message": "The charger is on the EC side, not here.",
+      "revId": "04b3efe1a6d554bf8b4b50527bfbab7d9e4f8592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "caaaaceb_b58942a8",
+        "filename": "board/samus_pd/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-14T15:25:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ae95c2a_b2c15e12",
       "revId": "04b3efe1a6d554bf8b4b50527bfbab7d9e4f8592",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -155,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "ea9db0d4_70ea4ec2",
+        "filename": "board/samus_pd/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-14T15:25:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ae95c2a_12cf6a3b",
+      "revId": "04b3efe1a6d554bf8b4b50527bfbab7d9e4f8592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ae46051_7064fe5b",
         "filename": "board/samus_pd/usb_pd_config.h",
         "patchSetId": 2
@@ -166,6 +328,24 @@
       "writtenOn": "2014-05-14T00:26:52Z",
       "side": 1,
       "message": "I think it\u0027s TIM14",
+      "revId": "04b3efe1a6d554bf8b4b50527bfbab7d9e4f8592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea9db0d4_7c86a502",
+        "filename": "board/samus_pd/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-14T15:25:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ae46051_7064fe5b",
       "revId": "04b3efe1a6d554bf8b4b50527bfbab7d9e4f8592",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -189,6 +369,24 @@
     },
     {
       "key": {
+        "uuid": "ea9db0d4_1cb7a1c5",
+        "filename": "board/samus_pd/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-14T15:25:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ae46051_f0776e14",
+      "revId": "04b3efe1a6d554bf8b4b50527bfbab7d9e4f8592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4ae95c2a_322a6e04",
         "filename": "board/samus_pd/usb_pd_config.h",
         "patchSetId": 2
@@ -200,6 +398,24 @@
       "writtenOn": "2014-05-14T00:26:52Z",
       "side": 1,
       "message": "TIM14_CH1 on PB1 ?",
+      "revId": "04b3efe1a6d554bf8b4b50527bfbab7d9e4f8592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "caaaaceb_f53aaa05",
+        "filename": "board/samus_pd/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-14T15:25:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ae95c2a_322a6e04",
       "revId": "04b3efe1a6d554bf8b4b50527bfbab7d9e4f8592",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -223,6 +439,24 @@
     },
     {
       "key": {
+        "uuid": "ea9db0d4_9c9431f1",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-14T15:25:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ae46051_101132b7",
+      "revId": "04b3efe1a6d554bf8b4b50527bfbab7d9e4f8592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2aeee834_99f44bf8",
         "filename": "board/samus_pd/usb_pd_policy.c",
         "patchSetId": 2
@@ -234,6 +468,24 @@
       "writtenOn": "2014-05-14T00:26:52Z",
       "side": 1,
       "message": "we probably want real values here ...",
+      "revId": "04b3efe1a6d554bf8b4b50527bfbab7d9e4f8592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "caaaaceb_a028e2a5",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-14T15:25:51Z",
+      "side": 1,
+      "message": "opened bug",
+      "parentUuid": "2aeee834_99f44bf8",
       "revId": "04b3efe1a6d554bf8b4b50527bfbab7d9e4f8592",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -257,6 +509,24 @@
     },
     {
       "key": {
+        "uuid": "caaaaceb_600a7a3d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-14T15:25:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ae95c2a_f2aac65c",
+      "revId": "04b3efe1a6d554bf8b4b50527bfbab7d9e4f8592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ae46051_b0d326e8",
         "filename": "util/flash_ec",
         "patchSetId": 2
@@ -268,6 +538,24 @@
       "writtenOn": "2014-05-14T00:26:52Z",
       "side": 1,
       "message": "reminder: you also need to update the samus make.conf (in a separate CL on the internal overlay) to build samus_pd firmware on builders",
+      "revId": "04b3efe1a6d554bf8b4b50527bfbab7d9e4f8592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aaa73822_0e492b99",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-14T15:25:51Z",
+      "side": 1,
+      "message": "yep, i remember",
+      "parentUuid": "6ae46051_b0d326e8",
       "revId": "04b3efe1a6d554bf8b4b50527bfbab7d9e4f8592",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
