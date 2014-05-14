@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aaa73822_d4c85259",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-05-14T17:07:59Z",
+      "side": 1,
+      "message": "given the registers are defined as volatile, I guess that construct ends up generating inefficient (but I haven\u0027t verified)",
+      "revId": "b48a0bed2ccea59209e4aec9269ea6819464d378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
