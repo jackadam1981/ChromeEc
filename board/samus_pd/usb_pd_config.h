@@ -46,13 +46,15 @@ static inline void pd_set_pins_speed(void)
 /* Drive the CC line from the TX block */
 static inline void pd_tx_enable(int polarity)
 {
-	gpio_set_level(GPIO_PD_TX_EN, 1);
+	gpio_set_level(GPIO_USB_C0_CC1_TX_EN, 1);
+	gpio_set_level(GPIO_USB_C0_CC2_TX_EN, 1);
 }
 
 /* Put the TX driver in Hi-Z state */
 static inline void pd_tx_disable(int polarity)
 {
-	gpio_set_level(GPIO_PD_TX_EN, 0);
+	gpio_set_level(GPIO_USB_C0_CC1_TX_EN, 0);
+	gpio_set_level(GPIO_USB_C0_CC2_TX_EN, 0);
 }
 
 /* we know the plug polarity, do the right configuration */
@@ -73,15 +75,24 @@ static inline void pd_tx_init(void)
 
 static inline void pd_set_host_mode(int enable)
 {
-	gpio_set_level(GPIO_CC_HOST, enable);
+	if (enable) {
+		/* High-Z is used for host mode. */
+		gpio_set_flags(GPIO_USB_C0_CC1_ODL, GPIO_INPUT);
+		gpio_set_flags(GPIO_USB_C0_CC2_ODL, GPIO_INPUT);
+	} else {
+		/* Pull low for device mode. */
+		gpio_set_flags(GPIO_USB_C0_CC1_ODL, GPIO_OUT_LOW);
+		gpio_set_flags(GPIO_USB_C0_CC2_ODL, GPIO_OUT_LOW);
+	}
+
 }
 
 static inline int pd_adc_read(int cc)
 {
 	if (cc == 0)
-		return adc_read_channel(ADC_CH_CC1_PD);
+		return adc_read_channel(ADC_C0_CC1_PD);
 	else
-		return adc_read_channel(ADC_CH_CC2_PD);
+		return adc_read_channel(ADC_C0_CC2_PD);
 }
 
 /* Standard-current DFP : no-connect voltage is 1.55V */
