@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2aeee834_738b68c8",
+        "filename": "common/i2c_wedge.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2014-05-14T20:44:16Z",
+      "side": 1,
+      "message": "As per Julius, this is not quite so legal in i2c.  You shouldn\u0027t be messing with sda while scl is high.",
+      "revId": "6bdc69940188cd4f17ecde547afbbc3ad8335367",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ae46051_15c48443",
+        "filename": "common/i2c_wedge.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2014-05-14T20:44:16Z",
+      "side": 1,
+      "message": "As per Julius, this is backwards.  You should be sending a 1 for NACK and a 0 for ack.",
+      "revId": "6bdc69940188cd4f17ecde547afbbc3ad8335367",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
