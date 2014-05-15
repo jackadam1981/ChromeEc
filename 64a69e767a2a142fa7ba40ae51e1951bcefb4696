@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a4e2058_3fe50944",
+        "filename": "board/samus_pd/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000434
+      },
+      "writtenOn": "2014-05-15T23:33:56Z",
+      "side": 0,
+      "message": "this has an impact on interrupt latency for our specific application, I would prefer that you just enable it locally.",
+      "revId": "64a69e767a2a142fa7ba40ae51e1951bcefb4696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
