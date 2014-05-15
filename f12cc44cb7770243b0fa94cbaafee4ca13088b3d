@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a4e2058_e5c3fe3b",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-05-15T04:15:54Z",
+      "side": 1,
+      "message": "typo \"}\" after FLAGS\ntechnically a \"toad\" style dongle cannot have usbpd_XXX pty right now",
+      "revId": "f12cc44cb7770243b0fa94cbaafee4ca13088b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
