@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a78446e_9fa8dfaf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-15T01:22:31Z",
+      "side": 1,
+      "message": "Should mention it is NOT a secure update mechanism, it\u0027s just an update mechanism.",
+      "revId": "78823a17e72cb2e9a9616a1c0501e93b1630f5b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa9578be_7b223f0a",
+        "filename": "board/zinger/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-15T01:22:31Z",
+      "side": 1,
+      "message": "const pointer?\n\nstatic uint32_t * const rw_rst;",
+      "revId": "78823a17e72cb2e9a9616a1c0501e93b1630f5b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca71cc8d_54038cd9",
+        "filename": "board/zinger/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-15T01:22:31Z",
+      "side": 1,
+      "message": "debug_printf() here to differentiate watchdog or other reset.",
+      "revId": "78823a17e72cb2e9a9616a1c0501e93b1630f5b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a78446e_1cd93db4",
+        "filename": "board/zinger/hardware.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-15T01:22:31Z",
+      "side": 1,
+      "message": "move these to registers.h",
+      "revId": "78823a17e72cb2e9a9616a1c0501e93b1630f5b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a78446e_1fea0f13",
+        "filename": "board/zinger/hardware.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-15T01:22:31Z",
+      "side": 1,
+      "message": "doing if (i \u003d\u003d FLASH_TIMEOUT_LOOP) seems like it would be more efficient since STM32_FLASH_SR is volatile and must be read everytime and there is the bit-and.",
+      "revId": "78823a17e72cb2e9a9616a1c0501e93b1630f5b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a4e2058_17b03c7c",
+        "filename": "board/zinger/hardware.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-15T01:22:31Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "78823a17e72cb2e9a9616a1c0501e93b1630f5b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
