@@ -24,11 +24,9 @@
 #define CONFIG_ADC
 #define CONFIG_HW_CRC
 #define CONFIG_I2C
-#define CONFIG_BATTERY_SMART
 #define CONFIG_USB_SWITCH_TSU6721
 #undef CONFIG_WATCHDOG_HELP
 #undef CONFIG_LID_SWITCH
-#undef CONFIG_TASK_PROFILING
 
 /* I2C ports configuration */
 #define I2C_PORT_MASTER 1
