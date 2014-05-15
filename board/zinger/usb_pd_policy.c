@@ -61,6 +61,7 @@ enum faults {
 	FAULT_OCP, /* Over-Current Protection */
 	FAULT_FAST_OCP, /* Over-Current Protection for interrupt context */
 	FAULT_OVP, /* Under or Over-Voltage Protection */
+	FAULT_DISCHARGE, /* Discharge was ineffective */
 };
 
 /* current fault condition */
@@ -92,6 +93,39 @@ static timestamp_t fault_deadline;
 #define UVP_MV(mv)  VBUS_MV((mv) * 8 / 10)
 /* Over-voltage limit is 1.2x Vnom */
 #define OVP_MV(mv)  VBUS_MV((mv) * 12 / 10)
+
+/* Maximum discharging delay */
+#define DISCHARGE_TIMEOUT (100*MSEC)
+
+/* ----- output voltage discharging ----- */
+
+/* expiration date of the discharge */
+static timestamp_t discharge_deadline;
+
+static inline void discharge_enable(void)
+{
+	STM32_GPIO_BSRR(GPIO_F) = GPIO_SET(1);
+}
+
+static inline void discharge_disable(void)
+{
+	STM32_GPIO_BSRR(GPIO_F) = GPIO_RESET(1);
+	adc_disable_watchdog();
+}
+
+static inline int discharge_is_enabled(void)
+{
+	/* GPF1 = enable discharge FET */
+	return STM32_GPIO_IDR(GPIO_F) & 2;
+}
+
+static void discharge_voltage(int target_volt)
+{
+	discharge_enable();
+	discharge_deadline.val = get_time().val + DISCHARGE_TIMEOUT;
+	/* Monitor VBUS voltage */
+	adc_enable_watchdog(ADC_CH_V_SENSE, 0xFFF, target_volt);
+}
 
 /* ----------------------- USB Power delivery policy ---------------------- */
 
@@ -127,7 +161,6 @@ int pd_request_voltage(uint32_t rdo)
 	uint32_t pdo;
 	uint32_t pdo_ma;
 
-
 	/* fault condition not cleared : reject transitions */
 	if (fault != FAULT_OK)
 		return EC_ERROR_INVAL;
@@ -147,11 +180,17 @@ int pd_request_voltage(uint32_t rdo)
 		     ((pdo >> 10) & 0x3ff) * 50, (pdo & 0x3ff) * 10,
 		     ((rdo >> 10) & 0x3ff) * 10, (rdo & 0x3ff) * 10);
 
-	if (idx - 1 < volt_idx) /* down voltage transition */
+	if (idx - 1 < volt_idx) { /* down voltage transition */
+		/* Stop OCP monitoring */
+		adc_disable_watchdog();
+
 		output_disable();
-	/* TODO discharge ? */
+		set_output_voltage(voltages[idx - 1].select);
+		discharge_voltage(voltages[idx - 1].ovp);
+	} else { /* up voltage transition */
+		set_output_voltage(voltages[idx - 1].select);
+	}
 	volt_idx = idx - 1;
-	set_output_voltage(voltages[volt_idx].select);
 
 	return EC_SUCCESS;
 }
@@ -159,7 +198,7 @@ int pd_request_voltage(uint32_t rdo)
 int pd_set_power_supply_ready(void)
 {
 	/* fault condition not cleared : do not turn on power */
-	if (fault != FAULT_OK)
+	if ((fault != FAULT_OK) || discharge_is_enabled())
 		return EC_ERROR_INVAL;
 
 	output_enable();
@@ -171,34 +210,45 @@ int pd_set_power_supply_ready(void)
 
 void pd_power_supply_reset(void)
 {
+	int need_discharge = volt_idx > 1;
+
 	output_disable();
-	/* TODO discharge ? */
 	volt_idx = 0;
 	set_output_voltage(VO_5V);
 	/* TODO transition delay */
 
 	/* Stop OCP monitoring to save power */
 	adc_disable_watchdog();
+
+	/* discharge voltage to 5V ? */
+	if (need_discharge)
+		discharge_voltage(voltages[0].ovp);
 }
 
 int pd_board_checks(void)
 {
 	int vbus_volt, vbus_amp;
 	int watchdog_enabled = STM32_ADC_CFGR1 & (1 << 23);
+	uint32_t watchdog_chan, watchdog_tr;
 
 	/* Reload the watchdog */
 	STM32_IWDG_KR = STM32_IWDG_KR_RELOAD;
 
-	if (watchdog_enabled)
+	if (watchdog_enabled) {
+		/* record current parameters */
+		watchdog_chan = STM32_ADC_CFGR1 >> 26;
+		watchdog_tr = STM32_ADC_TR;
 		/* if the watchdog is enabled, stop it to do other readings */
 		adc_disable_watchdog();
+	}
 
 	vbus_volt = adc_read_channel(ADC_CH_V_SENSE);
 	vbus_amp = adc_read_channel(ADC_CH_A_SENSE);
 
 	if (watchdog_enabled)
-		/* re-enable fast OCP */
-		adc_enable_watchdog(ADC_CH_A_SENSE, MAX_CURRENT, 0);
+		/* re-enable the watchdog */
+		adc_enable_watchdog(watchdog_chan,
+				    watchdog_tr >> 16, watchdog_tr & 0xFFF);
 
 	if ((fault == FAULT_FAST_OCP) || (vbus_amp > MAX_CURRENT)) {
 		debug_printf("OverCurrent : %d mA\n",
@@ -216,6 +266,18 @@ int pd_board_checks(void)
 		/* no timeout */
 		fault_deadline.val = get_time().val;
 		return EC_ERROR_INVAL;
+	}
+
+	/* the discharge did not work properly */
+	if (discharge_is_enabled() &&
+		(get_time().val > discharge_deadline.val)) {
+		/* stop it */
+		discharge_disable();
+		debug_printf("Discharge failure : %d mV\n",
+			     vbus_volt * VDDA_MV * VOLT_DIV / ADC_SCALE);
+		fault = FAULT_DISCHARGE;
+		/* reset it after 1 second */
+		fault_deadline.val = get_time().val + OCP_TIMEOUT;
 	}
 
 	/* everything is good *and* the error condition has expired */
@@ -240,12 +302,15 @@ int pd_power_negotiation_allowed(void)
 
 void pd_adc_interrupt(void)
 {
-	/* cut the power output */
-	pd_power_supply_reset();
-	/* Clear flags */
-	STM32_ADC_ISR = 0x8e;
-	/* record a special fault, the normal check will record the timeout */
-	fault = FAULT_FAST_OCP;
+	if (discharge_is_enabled()) { /* discharge completed */
+		discharge_disable();
+	} else {/* Over-current detection */
+		/* cut the power output */
+		pd_power_supply_reset();
+		/* record a special fault */
+		fault = FAULT_FAST_OCP;
+		/* pd_board_checks() will record the timeout later */
+	}
 }
 DECLARE_IRQ(STM32_IRQ_ADC_COMP, pd_adc_interrupt, 1);
 
