@@ -18,7 +18,7 @@ DEFINE_integer port 9999 \
 	"Port to communicate to servo on."
 DEFINE_boolean ro "${FLAGS_FALSE}" \
 	"Write only the read-only partition"
-DEFINE_string uart_prefix "ec" \
+DEFINE_string uart_prefix "" \
 	"Prefix name (ec|usbpd) to prepend to various UART servo controls."
 DEFINE_boolean unprotect "${FLAGS_FALSE}" \
 	"Clear the protect flag."
@@ -120,10 +120,17 @@ function ec_uart() {
 }
 
 # Servo variables management
+if [[ -z $FLAGS_uart_prefix ]] ; then
+	case "${BOARD}" in
+		samus_pd ) FLAGS_uart_prefix="usbpd" ;;
+		*) FLAGS_uart_prefix="ec" ;;
+	esac
+fi
 
-servo_VARS="ec_uart_en ec_uart_parity ec_uart_baudrate \
-jtag_buf_on_flex_en jtag_buf_en spi1_vref"
-toad_VARS="ec_uart_parity ec_uart_baudrate boot_mode"
+servo_VARS="${FLAGS_uart_prefix}_uart_en ${FLAGS_uart_prefix}_uart_parity \
+${FLAGS_uart_prefix}_uart_baudrate jtag_buf_on_flex_en jtag_buf_en spi1_vref"
+toad_VARS="${FLAGS}_uart_prefix}_uart_parity \
+${FLAGS_uart_prefix}_uart_baudrate boot_mode"
 
 function dut_control() {
 	$DUT_CONTROL_CMD "$1" >/dev/null
