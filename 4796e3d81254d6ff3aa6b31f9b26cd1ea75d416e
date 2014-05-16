@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3f0aac14_3810e91e",
+        "filename": "board/zinger/hardware.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-05-16T23:33:03Z",
+      "side": 1,
+      "message": "yes that\u0027s the idea,\nexcepted the watchdog CL isn\u0027t submitted yet ;-)",
+      "parentUuid": "5f15a02d_bcd3cd8f",
+      "revId": "4796e3d81254d6ff3aa6b31f9b26cd1ea75d416e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f15a02d_1cce39f7",
         "filename": "board/zinger/usb_pd_policy.c",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "5f15a02d_7fc3e770",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-05-16T23:33:03Z",
+      "side": 1,
+      "message": "zinger is not running the full runtime,\nit has only a background loop.",
+      "parentUuid": "5f15a02d_1cce39f7",
+      "revId": "4796e3d81254d6ff3aa6b31f9b26cd1ea75d416e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f10a43e_c397bc63",
         "filename": "board/zinger/usb_pd_policy.c",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2014-05-16T23:19:06Z",
       "side": 1,
       "message": "This line isn\u0027t needed. pd_power_supply_reset() calls -\u003e adc_disable_watchdog() which clears the ISR reg.",
+      "revId": "4796e3d81254d6ff3aa6b31f9b26cd1ea75d416e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f10a43e_43228c2f",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-05-16T23:33:03Z",
+      "side": 1,
+      "message": "right now disable_watchdog doesn\u0027t clear the ISR, I will add it though.",
+      "parentUuid": "7f10a43e_c397bc63",
       "revId": "4796e3d81254d6ff3aa6b31f9b26cd1ea75d416e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
