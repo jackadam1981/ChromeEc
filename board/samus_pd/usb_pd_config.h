@@ -21,7 +21,7 @@
 
 static inline void spi_enable_clock(void)
 {
-	STM32_RCC_APB1ENR |= STM32_RCC_PB1_SPI2;
+	STM32_RCC_APB2ENR |= STM32_RCC_PB2_SPI1;
 }
 
 /* RX is using COMP1 triggering TIM1 CH1 */
