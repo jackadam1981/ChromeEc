@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fffad42e_e1fd201b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-05-16T16:19:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a78446e_9fa8dfaf",
+      "revId": "78823a17e72cb2e9a9616a1c0501e93b1630f5b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa9578be_7b223f0a",
         "filename": "board/zinger/board.c",
         "patchSetId": 4
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "6a4e2058_59bae5ad",
+        "filename": "board/zinger/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-05-16T16:19:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa9578be_7b223f0a",
+      "revId": "78823a17e72cb2e9a9616a1c0501e93b1630f5b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca71cc8d_54038cd9",
         "filename": "board/zinger/board.c",
         "patchSetId": 4
@@ -47,6 +83,24 @@
       "writtenOn": "2014-05-15T01:22:31Z",
       "side": 1,
       "message": "debug_printf() here to differentiate watchdog or other reset.",
+      "revId": "78823a17e72cb2e9a9616a1c0501e93b1630f5b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dff7d045_fd6dc745",
+        "filename": "board/zinger/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-05-16T16:19:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca71cc8d_54038cd9",
       "revId": "78823a17e72cb2e9a9616a1c0501e93b1630f5b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +141,24 @@
     },
     {
       "key": {
+        "uuid": "6a4e2058_99dd2df0",
+        "filename": "board/zinger/hardware.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-05-16T16:19:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a78446e_1fea0f13",
+      "revId": "78823a17e72cb2e9a9616a1c0501e93b1630f5b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a4e2058_17b03c7c",
         "filename": "board/zinger/hardware.c",
         "patchSetId": 4
@@ -98,6 +170,24 @@
       "writtenOn": "2014-05-15T01:22:31Z",
       "side": 1,
       "message": "ditto",
+      "revId": "78823a17e72cb2e9a9616a1c0501e93b1630f5b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a4e2058_b9daf1f3",
+        "filename": "board/zinger/hardware.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-05-16T16:19:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a4e2058_17b03c7c",
       "revId": "78823a17e72cb2e9a9616a1c0501e93b1630f5b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
