@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f10a43e_b4d640ce",
+        "filename": "chip/stm32/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-05-17T16:51:19Z",
+      "side": 1,
+      "message": "this will wait for the transmission of up to 512 characters at 115200bauds :\nmore than 30ms in interrupt.",
+      "revId": "ba6de061afacd1fdc1b8ca6070d50633dff1e5a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
