@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3f0aac14_3b74630f",
+        "filename": "board/keyborg/encode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-05-17T01:07:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dff7d045_fd4ee7a4",
+      "revId": "42980ee3c62ae623d6eb4a418ef0e1a3576c5402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dff7d045_7d5bf767",
         "filename": "board/keyborg/encode.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2014-05-16T16:44:24Z",
       "side": 1,
       "message": "given that code in on the critical path, it might be a bit wasteful to iterate twice over all the value.\ncan you just save a pointer to where you need to the size in the stream and record it at the end ?\nit doesn\u0027t seem to be used for anything else.",
+      "revId": "42980ee3c62ae623d6eb4a418ef0e1a3576c5402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f15a02d_2de42548",
+        "filename": "board/keyborg/encode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-05-17T01:07:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dff7d045_7d5bf767",
       "revId": "42980ee3c62ae623d6eb4a418ef0e1a3576c5402",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
