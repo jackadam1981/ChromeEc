@@ -763,6 +763,11 @@ void pd_task(void)
 			break;
 		case PD_STATE_SNK_READY:
 			/* we have power and we are happy */
+
+			/* if we have lost vbus, go back to disconnected */
+			if (!pd_snk_is_vbus_provided())
+				pd_task_state = PD_STATE_SNK_DISCONNECTED;
+
 			/* check vital parameters from time to time */
 			timeout = 100*MSEC;
 			break;
