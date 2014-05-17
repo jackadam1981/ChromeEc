@@ -178,6 +178,7 @@ static int handle_command(char *input)
 	}
 
 	rv = cmd->handler(argc, argv);
+	cflush();
 	if (rv == EC_SUCCESS)
 		return rv;
 
