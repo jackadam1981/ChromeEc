@@ -178,6 +178,13 @@ static int handle_command(char *input)
 	}
 
 	rv = cmd->handler(argc, argv);
+	/*
+	 * Workaround for output failing to fully flush intermittently
+	 * on STM32 (see crosbug.com/p/28837).
+	 */
+#ifdef CONFIG_UART_TX_DMA
+	cflush();
+#endif
 	if (rv == EC_SUCCESS)
 		return rv;
 
