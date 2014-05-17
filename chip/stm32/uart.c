@@ -172,7 +172,7 @@ void uart_interrupt(void)
 #endif
 
 	/* Fill output FIFO */
-	uart_process_output();
+	uart_flush_output();
 
 #ifndef CONFIG_UART_TX_DMA
 	/*
