@@ -14,7 +14,7 @@
 
 #ifdef CONFIG_HOOK_DEBUG
 #define CPUTS(outstr) cputs(CC_HOOK, outstr)
-#define CPRINTF(format, args...) cprintf(CC_HOOK, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_HOOK, format, ## args)
 #else
 #define CPUTS(outstr)
 #define CPRINTF(format, args...)
@@ -83,7 +83,7 @@ static void record_hook_delay(uint64_t now, uint64_t last, uint64_t interval,
 
 	/* Warn if delayed by more than 10% */
 	if (delayed * 10 > interval)
-		CPRINTF("[%T Hook at interval %d us delayed by %d us]\n",
+		CPRINTF("Hook at interval %d us delayed by %d us",
 			(uint32_t)interval, (uint32_t)delayed);
 }
 #endif
@@ -98,7 +98,7 @@ void hook_notify(enum hook_type type)
 	uint64_t run_time;
 #endif
 
-	CPRINTF("[%T hook notify %d]\n", type);
+	CPRINTF("hook notify %d", type);
 
 	start = hook_list[type].start;
 	end = hook_list[type].end;
@@ -187,7 +187,7 @@ void hook_task(void)
 		/* Handle deferred routines */
 		for (i = 0; i < DEFERRED_FUNCS_COUNT; i++) {
 			if (defer_until[i] && defer_until[i] < t) {
-				CPRINTF("[%T hook call deferred 0x%p]\n",
+				CPRINTF("hook call deferred 0x%p",
 					__deferred_funcs[i].routine);
 				/*
 				 * Call deferred function.  Clear timer first,

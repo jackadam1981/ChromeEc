@@ -84,6 +84,8 @@ int cputs(enum console_channel channel, const char *outstr);
  */
 int cprintf(enum console_channel channel, const char *format, ...);
 
+int cprints(enum console_channel channel, const char *format, ...);
+
 /**
  * Flush the console output for all channels.
  */
@@ -97,6 +99,7 @@ void cflush(void);
 /* gcc allows variable arg lists in macros; see
  * http://gcc.gnu.org/onlinedocs/gcc/Variadic-Macros.html */
 #define ccprintf(format, args...) cprintf(CC_COMMAND, format, ## args)
+#define cccprints(format, args...) cprints(CC_COMMAND, format, ## args)
 
 /**
  * Called by UART when a line of input is pending.

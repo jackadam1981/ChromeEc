@@ -19,9 +19,9 @@
 #include "usb_pd_config.h"
 
 #ifdef CONFIG_COMMON_RUNTIME
-#define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 #else
-#define CPRINTF(format, args...)
+#define CPRINTS(format, args...)
 #endif
 
 #define PD_DATARATE 300000 /* Hz */
@@ -84,7 +84,7 @@ static int wait_bits(int nb)
 			&& !(STM32_TIM_SR(TIM_RX) & 4))
 			; /* optimized for latency, not CPU usage ... */
 		if (dma_bytes_done(rx, PD_MAX_RAW_SIZE) < nb) {
-			CPRINTF("[%T PD TMOUT RX %d/%d]\n",
+			CPRINTS("PD TMOUT RX %d/%d",
 				dma_bytes_done(rx, PD_MAX_RAW_SIZE), nb);
 			return -1;
 		}
@@ -131,7 +131,7 @@ int pd_dequeue_bits(void *ctxt, int off, int len, uint32_t *val)
 		return -1;
 	}
 stream_err:
-	CPRINTF("[%T PD Invalid %d @%d]\n", cnt, off);
+	CPRINTS("PD Invalid %d @%d", cnt, off);
 	return -1;
 }
 
@@ -155,7 +155,7 @@ int pd_find_preamble(void *ctxt)
 				!(STM32_TIM_SR(TIM_RX) & 4))
 				;
 			if (STM32_TIM_SR(TIM_RX) & 4) {
-				CPRINTF("[%T PD TMOUT RX %d/%d]\n",
+				CPRINTS("PD TMOUT RX %d/%d",
 					PD_MAX_RAW_SIZE - rx->cndtr, bit);
 				return -1;
 			}
@@ -228,22 +228,22 @@ void pd_dump_packet(void *ctxt, const char *msg)
 	uint8_t *vals = ctxt;
 	int bit;
 
-	CPRINTF("ERR %s:\n000:- ", msg);
+	CPRINTS("ERR %s:\n000:- ", msg);
 	/* Packet debug output */
 	for (bit = 1; bit <  PD_MAX_RAW_SIZE; bit++) {
 		int cnt = NB_PERIOD(vals[bit-1], vals[bit]);
 		if ((bit & 31) == 0)
-			CPRINTF("\n%03d:", bit);
-		CPRINTF("%1d ", cnt);
+			CPRINTS("\n%03d:", bit);
+		CPRINTS("%1d ", cnt);
 	}
-	CPRINTF("><\n");
+	CPRINTS("><\n");
 	cflush();
 	for (bit = 0; bit <  PD_MAX_RAW_SIZE; bit++) {
 		if ((bit & 31) == 0)
-			CPRINTF("\n%03d:", bit);
-		CPRINTF("%02x ", vals[bit]);
+			CPRINTS("\n%03d:", bit);
+		CPRINTS("%02x ", vals[bit]);
 	}
-	CPRINTF("||\n");
+	CPRINTS("||\n");
 	cflush();
 }
 #endif /* CONFIG_COMMON_RUNTIME */
@@ -524,7 +524,7 @@ void *pd_hw_init(void)
 	STM32_EXTI_IMR |= EXTI_COMP_MASK;
 	task_enable_irq(IRQ_COMP);
 
-	CPRINTF("[%T USB PD initialized]\n");
+	CPRINTS("USB PD initialized");
 	return raw_samples;
 }
 
