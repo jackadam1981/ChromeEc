@@ -18,11 +18,13 @@
 #include "usb_pd_config.h"
 
 #ifdef CONFIG_COMMON_RUNTIME
+#define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 
 /* dump full packet on RX error */
 static int debug_dump;
 #else
+#define CPRINTS(format, args...)
 #define CPRINTF(format, args...)
 const int debug_dump;
 #endif
@@ -312,14 +314,14 @@ static int send_validate_message(void *ctxt, uint16_t header, uint8_t cnt,
 				udelay(10);
 				return bit_len;
 			} else {
-				/* CPRINTF("[%T PD ERR ACK/%d %04x]\n",
+				/* CPRINTS("PD ERR ACK/%d %04x",
 					id, head); */
 			}
 		}
 	}
 	/* we failed all the re-transmissions */
 	/* TODO: try HardReset */
-	CPRINTF("[%T PD TX NO ACK %04x/%d]\n", header, cnt);
+	CPRINTS("PD TX NO ACK %04x/%d", header, cnt);
 	return -1;
 }
 
@@ -330,7 +332,7 @@ static int send_control(void *ctxt, int type)
 
 	bit_len = send_validate_message(ctxt, header, 0, NULL);
 
-	CPRINTF("[%T PD CTRL[%d]>%d]\n", type, bit_len);
+	CPRINTS("PD CTRL[%d]>%d", type, bit_len);
 
 	return bit_len;
 }
@@ -352,7 +354,7 @@ static int send_source_cap(void *ctxt)
 
 	bit_len = send_validate_message(ctxt, header, pd_src_pdo_cnt,
 					pd_src_pdo);
-	CPRINTF("[%T PD srcCAP>%d]\n", bit_len);
+	CPRINTS("PD srcCAP>%d", bit_len);
 
 	return bit_len;
 }
@@ -366,7 +368,7 @@ static void send_sink_cap(void *ctxt)
 
 	bit_len = send_validate_message(ctxt, header, pd_snk_pdo_cnt,
 					pd_snk_pdo);
-	CPRINTF("[%T PD snkCAP>%d]\n", bit_len);
+	CPRINTS("PD snkCAP>%d", bit_len);
 }
 
 static int send_request(void *ctxt, uint32_t rdo)
@@ -375,7 +377,7 @@ static int send_request(void *ctxt, uint32_t rdo)
 	uint16_t header = PD_HEADER(PD_DATA_REQUEST, pd_role, pd_message_id, 1);
 
 	bit_len = send_validate_message(ctxt, header, 1, &rdo);
-	CPRINTF("[%T PD REQ%d>]\n", bit_len);
+	CPRINTS("PD REQ%d>", bit_len);
 
 	return bit_len;
 }
@@ -388,7 +390,7 @@ static int send_bist(void *ctxt)
 	uint16_t header = PD_HEADER(PD_DATA_BIST, pd_role, pd_message_id, 1);
 
 	bit_len = send_validate_message(ctxt, header, 1, &bdo);
-	CPRINTF("[%T PD BIST>%d]\n", bit_len);
+	CPRINTS("PD BIST>%d", bit_len);
 
 	return bit_len;
 }
@@ -410,7 +412,7 @@ static void handle_vdm_request(void *ctxt, int cnt, uint32_t *payload)
 		return;
 	}
 #endif
-	CPRINTF("[%T PD Unhandled VDM VID %04x CMD %04x]\n",
+	CPRINTS("PD Unhandled VDM VID %04x CMD %04x",
 		vid, payload[0] & 0xFFFF);
 }
 
@@ -454,7 +456,7 @@ static void handle_data_request(void *ctxt, uint16_t head, uint32_t *payload)
 		send_control(ctxt, PD_CTRL_REJECT);
 		break;
 	case PD_DATA_BIST:
-		CPRINTF("[%T PD BIST not supported]\n");
+		CPRINTS("PD BIST not supported");
 		break;
 	case PD_DATA_SINK_CAP:
 		break;
@@ -462,7 +464,7 @@ static void handle_data_request(void *ctxt, uint16_t head, uint32_t *payload)
 		handle_vdm_request(ctxt, cnt, payload);
 		break;
 	default:
-		CPRINTF("[%T PD unhandled data message type %d]\n", type);
+		CPRINTS("PD unhandled data message type %d", type);
 	}
 }
 
@@ -500,7 +502,7 @@ static void handle_ctrl_request(void *ctxt, uint16_t head, uint32_t *payload)
 	case PD_CTRL_WAIT:
 	case PD_CTRL_SOFT_RESET:
 	default:
-		CPRINTF("[%T PD unhandled ctrl message type %d]\n", type);
+		CPRINTS("PD unhandled ctrl message type %d", type);
 	}
 }
 
@@ -532,7 +534,7 @@ static inline int decode_short(void *ctxt, int off, uint16_t *val16)
 	end = pd_dequeue_bits(ctxt, off, 20, &w);
 
 #if 0 /* DEBUG */
-	CPRINTF("%d-%d: %05x %x:%x:%x:%x\n",
+	CPRINTS("%d-%d: %05x %x:%x:%x:%x\n",
 		off, end, w,
 		dec4b5b[(w >> 15) & 0x1f], dec4b5b[(w >> 10) & 0x1f],
 		dec4b5b[(w >>  5) & 0x1f], dec4b5b[(w >>  0) & 0x1f]);
@@ -607,7 +609,7 @@ static int analyze_rx(uint32_t *payload)
 		if (pcrc != ccrc)
 			bit = PD_ERR_CRC;
 		/* DEBUG */
-		CPRINTF("[%T PD CRC %08x <> %08x]\n", pcrc, crc32_result());
+		CPRINTS("PD CRC %08x <> %08x", pcrc, crc32_result());
 		goto packet_err;
 	}
 
@@ -625,7 +627,7 @@ packet_err:
 	if (debug_dump)
 		pd_dump_packet(ctxt, msg);
 	else
-		CPRINTF("[%T PD RX ERR (%d)]\n", bit);
+		CPRINTS("PD RX ERR (%d)", bit);
 	return bit;
 }
 
@@ -639,7 +641,7 @@ static void execute_hard_reset(void)
 	pd_task_state = PD_STATE_SRC_DISCONNECTED;
 #endif
 	pd_power_supply_reset();
-	CPRINTF("[%T PD HARD RESET!]\n");
+	CPRINTS("PD HARD RESET!");
 }
 
 void pd_task(void)
