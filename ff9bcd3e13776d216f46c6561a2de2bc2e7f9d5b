@@ -34,6 +34,24 @@
       "revId": "ff9bcd3e13776d216f46c6561a2de2bc2e7f9d5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df20b093_987a59c7",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1794,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-19T16:25:08Z",
+      "side": 1,
+      "message": "Heh.  I found val_changed equally confusing, since (val_changed \u0026 EC_GPIO_VAL_HIGH) doesn\u0027t necessarily mean that the val has changed to be high.\n\nAre you reporting the flags as they are set for a GPIO at boot, or their current state?  If their current state, you can set either EC_GPIO_HIGH or EC_GPIO_LOW to indicate the current value.  Then we\u0027d just need one changed flag.\n\nChanged is also a bit weird in its implementation.  There\u0027s only one changed bit even though there are two ways to clear it - either with the host command or the console command.  So maybe we shouldn\u0027t attempt to report changed/clear via the host command at all.  Then you just need the one flags.",
+      "parentUuid": "c5c37fc9_fe69e179",
+      "revId": "ff9bcd3e13776d216f46c6561a2de2bc2e7f9d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
