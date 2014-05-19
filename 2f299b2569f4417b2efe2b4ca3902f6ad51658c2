@@ -16,6 +16,24 @@
       "revId": "2f299b2569f4417b2efe2b4ca3902f6ad51658c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf1dbc5e_7ab9b1d9",
+        "filename": "common/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2014-05-19T19:40:52Z",
+      "side": 1,
+      "message": "Done.\n\nI think this might also affect the non-DMA case, since the bug is just that uart_process_output() needs to be called a second time in the buffer wraparound case. But I haven\u0027t looked at that codepath much.",
+      "parentUuid": "df20b093_c4f22808",
+      "revId": "2f299b2569f4417b2efe2b4ca3902f6ad51658c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
