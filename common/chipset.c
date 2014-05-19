@@ -12,7 +12,7 @@
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHIPSET, outstr)
-#define CPRINTF(format, args...) cprintf(CC_CHIPSET, format, ## args)
+#define CPRINTF(format, args...) info_printf(CC_CHIPSET, format, ## args)
 
 /*****************************************************************************/
 /* Console commands */

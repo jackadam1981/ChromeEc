@@ -13,7 +13,7 @@
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_LPC, outstr)
-#define CPRINTF(format, args...) cprintf(CC_LPC, format, ## args)
+#define CPRINTF(format, args...) info_printf(CC_LPC, format, ## args)
 
 static uint8_t acpi_cmd;         /* Last received ACPI command */
 static uint8_t acpi_addr;        /* First byte of data after ACPI command */
@@ -86,7 +86,7 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 			break;
 #endif
 		default:
-			CPRINTF("[%T ACPI read 0x%02x (ignored)]\n", acpi_addr);
+			CPRINTF("ACPI read 0x%02x (ignored)", acpi_addr);
 			break;
 		}
 
@@ -107,7 +107,7 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 			 * does a lot of keyboard backlights and it scrolls the
 			 * debug console.
 			 */
-			CPRINTF("\r[%T ACPI kblight %d]", data);
+			cprintf(CC_LPC, "\r[%T ACPI kblight %d]", data);
 			pwm_set_duty(PWM_CH_KBLIGHT, data);
 			break;
 #endif
@@ -144,7 +144,7 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 			break;
 #endif
 		default:
-			CPRINTF("[%T ACPI write 0x%02x = 0x%02x (ignored)]\n",
+			CPRINTF("ACPI write 0x%02x = 0x%02x (ignored)",
 				acpi_addr, data);
 			break;
 		}
@@ -154,7 +154,7 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 	} else if (acpi_cmd == EC_CMD_ACPI_QUERY_EVENT && !acpi_data_count) {
 		/* Clear and return the lowest host event */
 		int evt_index = lpc_query_host_event_state();
-		CPRINTF("[%T ACPI query = %d]\n", evt_index);
+		CPRINTF("ACPI query = %d", evt_index);
 		*resultptr = evt_index;
 		retval = 1;
 #endif

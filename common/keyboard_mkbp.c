@@ -22,7 +22,7 @@
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_KEYBOARD, outstr)
-#define CPRINTF(format, args...) cprintf(CC_KEYBOARD, format, ## args)
+#define CPRINTF(format, args...) info_printf(CC_KEYBOARD, format, ## args)
 
 /*
  * Keyboard FIFO depth.  This needs to be big enough not to overflow if a
@@ -132,7 +132,7 @@ test_mockable int keyboard_fifo_add(const uint8_t *buffp)
 		return EC_SUCCESS;
 
 	if (kb_fifo_entries >= config.fifo_max_depth) {
-		CPRINTF("[%T KB FIFO depth %d reached]\n",
+		CPRINTF("KB FIFO depth %d reached",
 			config.fifo_max_depth);
 		ret = EC_ERROR_OVERFLOW;
 		goto kb_fifo_push_done;

@@ -19,7 +19,7 @@
 #include "usb_pd_config.h"
 
 #ifdef CONFIG_COMMON_RUNTIME
-#define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
+#define CPRINTF(format, args...) info_printf(CC_USBPD, format, ## args)
 #else
 #define CPRINTF(format, args...)
 #endif
@@ -84,7 +84,7 @@ static int wait_bits(int nb)
 			&& !(STM32_TIM_SR(TIM_RX) & 4))
 			; /* optimized for latency, not CPU usage ... */
 		if (dma_bytes_done(rx, PD_MAX_RAW_SIZE) < nb) {
-			CPRINTF("[%T PD TMOUT RX %d/%d]\n",
+			CPRINTF("PD TMOUT RX %d/%d",
 				dma_bytes_done(rx, PD_MAX_RAW_SIZE), nb);
 			return -1;
 		}
@@ -131,7 +131,7 @@ int pd_dequeue_bits(void *ctxt, int off, int len, uint32_t *val)
 		return -1;
 	}
 stream_err:
-	CPRINTF("[%T PD Invalid %d @%d]\n", cnt, off);
+	CPRINTF("PD Invalid %d @%d", cnt, off);
 	return -1;
 }
 
@@ -155,7 +155,7 @@ int pd_find_preamble(void *ctxt)
 				!(STM32_TIM_SR(TIM_RX) & 4))
 				;
 			if (STM32_TIM_SR(TIM_RX) & 4) {
-				CPRINTF("[%T PD TMOUT RX %d/%d]\n",
+				CPRINTF("PD TMOUT RX %d/%d",
 					PD_MAX_RAW_SIZE - rx->cndtr, bit);
 				return -1;
 			}
@@ -524,7 +524,7 @@ void *pd_hw_init(void)
 	STM32_EXTI_IMR |= EXTI_COMP_MASK;
 	task_enable_irq(IRQ_COMP);
 
-	CPRINTF("[%T USB PD initialized]\n");
+	CPRINTF("USB PD initialized");
 	return raw_samples;
 }
 

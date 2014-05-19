@@ -19,7 +19,7 @@
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_HOSTCMD, outstr)
-#define CPRINTF(format, args...) cprintf(CC_HOSTCMD, format, ## args)
+#define CPRINTF(format, args...) info_printf(CC_HOSTCMD, format, ## args)
 
 #define TASK_EVENT_CMD_PENDING TASK_EVENT_CUSTOM(1)
 
@@ -99,7 +99,7 @@ test_mockable void host_send_response(struct host_cmd_handler_args *args)
 			 * the completion of that command, so stash the result
 			 * code.
 			 */
-			CPRINTF("[%T HC pending done, size=%d, result=%d]\n",
+			CPRINTF("HC pending done, size=%d, result=%d",
 				args->response_size, args->result);
 
 			/*
@@ -362,7 +362,7 @@ static void host_command_init(void)
 	*host_get_memmap(EC_MEMMAP_EVENTS_VERSION) = 1;
 
 	host_set_single_event(EC_HOST_EVENT_INTERFACE_READY);
-	CPRINTF("[%T hostcmd init 0x%x]\n", host_get_events());
+	CPRINTF("hostcmd init 0x%x", host_get_events());
 }
 
 void host_command_task(void)
@@ -512,10 +512,10 @@ static void host_command_debug_request(struct host_cmd_handler_args *args)
 	}
 
 	if (hcdebug >= HCDEBUG_PARAMS && args->params_size)
-		CPRINTF("[%T HC 0x%02x.%d:%.*h]\n", args->command,
+		CPRINTF("HC 0x%02x.%d:%.*h", args->command,
 			args->version, args->params_size, args->params);
 	else
-		CPRINTF("[%T HC 0x%02x]\n", args->command);
+		CPRINTF("HC 0x%02x", args->command);
 }
 
 enum ec_status host_command_process(struct host_cmd_handler_args *args)
@@ -534,10 +534,10 @@ enum ec_status host_command_process(struct host_cmd_handler_args *args)
 		rv = cmd->handler(args);
 
 	if (rv != EC_RES_SUCCESS)
-		CPRINTF("[%T HC err %d]\n", rv);
+		CPRINTF("HC err %d", rv);
 
 	if (hcdebug >= HCDEBUG_PARAMS && args->response_size)
-		CPRINTF("[%T HC resp:%.*h]\n", args->response_size,
+		CPRINTF("HC resp:%.*h", args->response_size,
 			args->response);
 
 	return rv;
