@@ -21,7 +21,7 @@
 #include "util.h"
 
 #define CPUTS(outstr) cputs(CC_CHARGER, outstr)
-#define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
 
 /* Charging and discharging alarms */
 #define ALARM_DISCHARGING (ALARM_TERMINATE_DISCHARGE | ALARM_OVER_TEMP)
@@ -277,7 +277,7 @@ static int calc_next_state(int state)
 			      "temperature\n");
 			return ST_IDLE0;
 		} else if (!battery_charging_range(batt.temperature)) {
-			CPRINTF("[pmu] charging: temperature out of range "
+			CPRINTS("[pmu] charging: temperature out of range "
 				"%dC\n",
 				DECI_KELVIN_TO_CELSIUS(batt.temperature));
 			return ST_CHARGING_ERROR;
@@ -359,7 +359,7 @@ static int calc_next_state(int state)
 		/* Check battery discharging temperature range */
 		if (batt.flags & BATT_FLAG_RESPONSIVE) {
 			if (!battery_discharging_range(batt.temperature)) {
-				CPRINTF("[pmu] discharging: temperature out of"
+				CPRINTS("[pmu] discharging: temperature out of"
 					"range %dC\n",
 					DECI_KELVIN_TO_CELSIUS(
 							batt.temperature));
@@ -368,7 +368,7 @@ static int calc_next_state(int state)
 		}
 		/* Check discharging alarm */
 		if (!battery_status(&alarm) && (alarm & ALARM_DISCHARGING)) {
-			CPRINTF("[pmu] discharging: battery alarm %016b\n",
+			CPRINTS("[pmu] discharging: battery alarm %016b\n",
 					alarm);
 			return system_off();
 		}
@@ -462,7 +462,7 @@ void charger_task(void)
 			/* Reset state of charge moving average window */
 			rsoc_moving_average(-1);
 
-			CPRINTF("[batt] state %s -> %s\n",
+			CPRINTS("[batt] state %s -> %s\n",
 				state_list[current_state],
 				state_list[next_state]);
 
@@ -573,6 +573,6 @@ DECLARE_HOOK(HOOK_CHIPSET_RESUME, pmu_chipset_events, HOOK_PRIO_DEFAULT);
 void pmu_irq_handler(enum gpio_signal signal)
 {
 	pmu_task_throttled_wake();
-	CPRINTF("[%T Charger IRQ received]\n");
+	CPRINTS("Charger IRQ received");
 }
 
