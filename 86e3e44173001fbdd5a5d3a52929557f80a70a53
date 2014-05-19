@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f10a43e_5701239c",
+        "filename": "board/firefly/usb_pd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-05-19T16:22:59Z",
+      "side": 1,
+      "message": "On Firefly, we probably want something real here (ie force the test board to re-connect). I will do it in a later CL.",
+      "revId": "86e3e44173001fbdd5a5d3a52929557f80a70a53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f10a43e_17ebab8a",
+        "filename": "board/samus_pd/usb_pd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-05-19T16:22:59Z",
+      "side": 1,
+      "message": "return gpio_get_level(GPIO_USB_C0_VBUS_WAKE);",
+      "revId": "86e3e44173001fbdd5a5d3a52929557f80a70a53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f0aac14_5201349c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-05-19T16:22:59Z",
+      "side": 1,
+      "message": "we might want to touch the timeout in that case to re-connect faster",
+      "revId": "86e3e44173001fbdd5a5d3a52929557f80a70a53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
