@@ -16,7 +16,7 @@
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_SPI, outstr)
-#define CPRINTF(format, args...) cprintf(CC_SPI, format, ## args)
+#define CPRINTF(format, args...) info_printf(CC_SPI, format, ## args)
 
 
 int spi_enable(int enable)

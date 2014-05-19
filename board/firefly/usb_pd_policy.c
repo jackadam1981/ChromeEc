@@ -15,7 +15,7 @@
 #include "util.h"
 #include "usb_pd.h"
 
-#define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
+#define CPRINTF(format, args...) info_printf(CC_USBPD, format, ## args)
 
 /* Acceptable margin between requested VBUS and measured value */
 #define MARGIN_MV 400 /* mV */

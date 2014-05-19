@@ -21,7 +21,7 @@
 #include "util.h"
 
 #define CPUTS(outstr) cputs(CC_CHARGER, outstr)
-#define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
+#define CPRINTF(format, args...) info_printf(CC_CHARGER, format, ## args)
 
 /* Charging and discharging alarms */
 #define ALARM_DISCHARGING (ALARM_TERMINATE_DISCHARGE | ALARM_OVER_TEMP)
@@ -573,6 +573,6 @@ DECLARE_HOOK(HOOK_CHIPSET_RESUME, pmu_chipset_events, HOOK_PRIO_DEFAULT);
 void pmu_irq_handler(enum gpio_signal signal)
 {
 	pmu_task_throttled_wake();
-	CPRINTF("[%T Charger IRQ received]\n");
+	CPRINTF("Charger IRQ received");
 }
 

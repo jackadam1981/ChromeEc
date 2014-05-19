@@ -13,7 +13,7 @@
 #include "util.h"
 #include "usb_pd.h"
 
-#define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
+#define CPRINTF(format, args...) info_printf(CC_USBPD, format, ## args)
 
 /* TODO(crossbug.com/p/28869): update source and sink tables to spec. */
 const uint32_t pd_src_pdo[] = {

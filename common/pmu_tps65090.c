@@ -18,7 +18,7 @@
 #include "util.h"
 
 #define CPUTS(outstr) cputs(CC_CHARGER, outstr)
-#define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
+#define CPRINTF(format, args...) info_printf(CC_CHARGER, format, ## args)
 
 #define TPS65090_I2C_ADDR 0x90
 
@@ -153,7 +153,7 @@ static int pmu_get_event(int *event)
 	*event = irq1 | (irq2 << 8);
 
 	if (prev_event != *event) {
-		CPRINTF("[%T pmu event: %016b]\n", *event);
+		CPRINTF("pmu event: %016b", *event);
 		prev_event = *event;
 	}
 

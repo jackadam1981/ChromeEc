@@ -12,7 +12,7 @@
 #include "timer.h"
 
 /* Console output macro */
-#define CPRINTF(format, args...) cprintf(CC_KEYBOARD, format, ## args)
+#define CPRINTF(format, args...) ccprintf(CC_KEYBOARD, format, ## args)
 
 #define CAPSENSE_I2C_ADDR 0x08
 #define CAPSENSE_MASK_BITS 8
@@ -29,7 +29,7 @@ static int capsense_read_bitmask(void)
 	i2c_lock(I2C_PORT_CAPSENSE, 0);
 
 	if (rv)
-		CPRINTF("[%T %s failed: error %d]\n", __func__, rv);
+		CPRINTF("%s failed: error %d", __func__, rv);
 
 	return val;
 }
