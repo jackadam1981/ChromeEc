@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df20b093_c4f22808",
+        "filename": "common/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-19T19:30:01Z",
+      "side": 1,
+      "message": "Suggest adding a comment indicating this is a workaround, and perhaps limiting this to STM32 only.  Otherwise this masks the underlying bug, which may pop up in other unfortunate places.\n\n  /* Workaround for output failing to fully flush intermittently on STM32 (see crosbug.com/p/28837) */\n  #ifdef CONFIG_UART_TX_DMA\n      cflush();\n  #endif",
+      "revId": "2f299b2569f4417b2efe2b4ca3902f6ad51658c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
