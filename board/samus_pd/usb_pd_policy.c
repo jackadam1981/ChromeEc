@@ -104,12 +104,12 @@ int pd_request_voltage(uint32_t rdo)
 	return EC_SUCCESS;
 }
 
-int pd_set_power_supply_ready(void)
+int pd_set_power_supply_ready(int port)
 {
 	return EC_SUCCESS; /* we are ready */
 }
 
-void pd_power_supply_reset(void)
+void pd_power_supply_reset(int port)
 {
 }
 

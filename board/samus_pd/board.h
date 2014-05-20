@@ -35,6 +35,11 @@
 #define I2C_PORT_CHARGER I2C_PORT_MASTER
 #define I2C_PORT_SLAVE  0
 
+/* USB-PD configuration */
+#define PD_PORT_COUNT 2
+#define PORT_TO_TASK_ID(port) ((port) ? TASK_ID_PD_C1 : TASK_ID_PD_C0)
+#define TASK_ID_TO_PORT(id)   (id == TASK_ID_PD_C0 ? 0 : 1)
+
 /*
  * Allow dangerous commands all the time, since we don't have a write protect
  * switch.
