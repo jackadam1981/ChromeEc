@@ -30,6 +30,11 @@
 /* I2C ports configuration */
 #define I2C_PORT_SLAVE  0
 
+/* USB-PD configuration */
+#define PD_PORT_COUNT 1
+#define PORT_TO_TASK_ID(port) TASK_ID_PD
+#define TASK_ID_TO_PORT(id)   0
+
 /*
  * Allow dangerous commands all the time, since we don't have a write protect
  * switch.
