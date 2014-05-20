@@ -35,6 +35,9 @@
 #define I2C_PORT_CHARGER I2C_PORT_MASTER
 #define I2C_PORT_SLAVE  0
 
+/* Number of USB-PD ports */
+#define PD_PORT_COUNT 2
+
 /*
  * Allow dangerous commands all the time, since we don't have a write protect
  * switch.

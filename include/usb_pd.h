@@ -160,23 +160,27 @@ int pd_request_voltage(uint32_t rdo);
 
 /**
  * Go back to the default/safe state of the power supply
+ *
+ * @param port USB-C port number
  */
-void pd_power_supply_reset(void);
+void pd_power_supply_reset(int port);
 
 /**
  * Enable the power supply output after the ready delay.
  *
+ * @param port USB-C port number
  * @return EC_SUCCESS if the power supply is ready, <0 else.
  */
-int pd_set_power_supply_ready(void);
+int pd_set_power_supply_ready(int port);
 
 /**
  * Ask the specified voltage from the PD source.
  *
  * It triggers a new negotiation sequence with the source.
+ * @param port USB-C port number
  * @param mv request voltage in millivolts.
  */
-void pd_request_source_voltage(int mv);
+void pd_request_source_voltage(int port, int mv);
 
 /*
  * Verify board specific health status : current, voltages...
@@ -209,28 +213,31 @@ extern const int pd_snk_pdo_cnt;
 /**
  * Prepare packet reading state machine.
  *
+ * @param port USB-C port number
  * @return opaque context for other reading functions.
  */
-void *pd_init_dequeue(void);
+void *pd_init_dequeue(int port);
 
 /**
  * Prepare packet reading state machine.
  *
  * @param ctxt opaque context.
+ * @param port USB-C port number
  * @param off  current position in the packet buffer.
  * @param len  minimum size to read in bits.
  * @param val  the read bits.
  * @return new position in the packet buffer.
  */
-int pd_dequeue_bits(void *ctxt, int off, int len, uint32_t *val);
+int pd_dequeue_bits(void *ctxt, int port, int off, int len, uint32_t *val);
 
 /**
  * Advance until the end of the preamble.
  *
  * @param ctxt opaque context.
+ * @param port USB-C port number
  * @return new position in the packet buffer.
  */
-int pd_find_preamble(void *ctxt);
+int pd_find_preamble(void *ctxt, int port);
 
 /**
  * Write the preamble in the TX buffer.
@@ -274,9 +281,10 @@ void pd_dump_packet(void *ctxt, const char *msg);
 /**
  * Change the TX data clock frequency.
  *
+ * @param port USB-C port number
  * @param freq frequency in hertz.
  */
-void pd_set_clock(int freq);
+void pd_set_clock(int port, int freq);
 
 /* TX/RX callbacks */
 
@@ -284,41 +292,45 @@ void pd_set_clock(int freq);
  * Start sending over the wire the prepared packet.
  *
  * @param ctxt    opaque context.
+ * @param port USB-C port number
  * @param polarity plug polarity (0=CC1, 1=CC2).
  * @param bit_len size of the packet in bits.
  */
-void pd_start_tx(void *ctxt, int polarity, int bit_len);
+void pd_start_tx(void *ctxt, int port, int polarity, int bit_len);
 /**
  * Call when we are done sending a packet.
  *
+ * @param port USB-C port number
  * @param polarity plug polarity (0=CC1, 1=CC2).
  */
-void pd_tx_done(int polarity);
+void pd_tx_done(int port, int polarity);
 
 /**
  * Check whether the PD reception is started.
  *
+ * @param port USB-C port number
  * @return true if the reception is on-going.
  */
-int pd_rx_started(void);
+int pd_rx_started(int port);
 
 /* Callback when the hardware has detected an incoming packet */
-void pd_rx_event(void);
+void pd_rx_event(int port);
 /* Start sampling the CC line for reception */
-void pd_rx_start(void);
+void pd_rx_start(int port);
 /* Call when we are done reading a packet */
-void pd_rx_complete(void);
+void pd_rx_complete(int port);
 
 /* restart listening to the CC wire */
-void pd_rx_enable_monitoring(void);
+void pd_rx_enable_monitoring(int port);
 /* stop listening to the CC wire during transmissions */
-void pd_rx_disable_monitoring(void);
+void pd_rx_disable_monitoring(int port);
 
 /**
  * Initialize the hardware used for PD RX/TX.
  *
+ * @param port USB-C port number
  * @return opaque context for other functions.
  */
-void *pd_hw_init(void);
+void *pd_hw_init(int port);
 
 #endif  /* __USB_PD_H */
