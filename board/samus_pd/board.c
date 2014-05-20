@@ -20,7 +20,8 @@
 void vbus_evt(enum gpio_signal signal)
 {
 	ccprintf("VBUS %d, %d!\n", signal, gpio_get_level(signal));
-	task_wake(TASK_ID_PD);
+	task_wake((signal == GPIO_USB_C0_VBUS_WAKE) ? TASK_ID_PD_C0 :
+							TASK_ID_PD_C1);
 }
 
 void bc12_evt(enum gpio_signal signal)
@@ -36,15 +37,18 @@ void pch_evt(enum gpio_signal signal)
 	if (slp_s5 && slp_s3) {
 		/* Turn dual role toggling on */
 		ccprintf("PCH change -> S0\n");
-		pd_set_dual_role(PD_DRP_TOGGLE_ON);
+		pd_set_dual_role(0, PD_DRP_TOGGLE_ON);
+		pd_set_dual_role(1, PD_DRP_TOGGLE_ON);
 	} else if (slp_s5 && !slp_s3) {
 		/* Turn dual role toggling off, maintain PD state */
 		ccprintf("PCH change -> S3\n");
-		pd_set_dual_role(PD_DRP_TOGGLE_OFF);
+		pd_set_dual_role(0, PD_DRP_TOGGLE_OFF);
+		pd_set_dual_role(1, PD_DRP_TOGGLE_OFF);
 	} else {
 		/* Turn dual role toggling off, force PD state to sink */
 		ccprintf("PCH change -> S5\n");
-		pd_set_dual_role(PD_DRP_FORCE_SINK);
+		pd_set_dual_role(0, PD_DRP_FORCE_SINK);
+		pd_set_dual_role(1, PD_DRP_FORCE_SINK);
 	}
 }
 
@@ -58,7 +62,7 @@ void board_config_pre_init(void)
 	 *  Chan 3 : SPI1_TX   (C0 TX)
 	 *  Chan 4 : USART1_TX
 	 *  Chan 5 : USART1_RX
-	 *  Chan 6 : TIM3_CH1  (C1_RX)
+	 *  Chan 6 : TIM3_CH1  (C1 RX)
 	 *  Chan 7 : SPI2_TX   (C1 TX)
 	 */
 
@@ -83,6 +87,7 @@ static void board_init(void)
 
 	/* Enable interrupts on VBUS transitions. */
 	gpio_enable_interrupt(GPIO_USB_C0_VBUS_WAKE);
+	gpio_enable_interrupt(GPIO_USB_C1_VBUS_WAKE);
 
 	/* Enable interrupts on PCH state change */
 	gpio_enable_interrupt(GPIO_PCH_SLP_S3_L);
@@ -184,9 +189,6 @@ void board_set_usb_mux(int port, enum typec_mux mux, int polarity)
 	}
 }
 
-/* PD Port polarity as detected by the common PD code */
-extern uint8_t pd_polarity;
-
 static int command_typec(int argc, char **argv)
 {
 	const char * const mux_name[] = {"none", "usb", "dp", "dock"};
@@ -199,7 +201,7 @@ static int command_typec(int argc, char **argv)
 		return EC_ERROR_PARAM_COUNT;
 
 	port = strtoi(argv[1], &e, 10);
-	if (*e || port >= 2)
+	if (*e || port >= PD_PORT_COUNT)
 		return EC_ERROR_PARAM1;
 
 	if (argc < 3) {
@@ -225,12 +227,9 @@ static int command_typec(int argc, char **argv)
 			usb_str = gpio_get_level(GPIO_USB_C1_SS1_DP_MODE) ?
 					"USB2" : "USB1";
 		}
-		/* TODO: add param to pd_adc_read() to read C1 ADCs */
 		ccprintf("Port C%d: CC1 %d mV  CC2 %d mV (polarity:CC%d)\n",
-			port,
-			port ? adc_read_channel(ADC_C1_CC1_PD) : pd_adc_read(0),
-			port ? adc_read_channel(ADC_C1_CC2_PD) : pd_adc_read(1),
-			port ? 1 /*TODO: polarity on Port1*/ : pd_polarity + 1);
+			port, pd_adc_read(port, 0), pd_adc_read(port, 1),
+			pd_get_polarity(port) + 1);
 		if (has_ss)
 			ccprintf("Superspeed %s%s%s\n",
 				 has_dp ? dp_str : "",
@@ -245,7 +244,7 @@ static int command_typec(int argc, char **argv)
 	for (i = 0; i < ARRAY_SIZE(mux_name); i++)
 		if (!strcasecmp(argv[2], mux_name[i]))
 			mux = i;
-	board_set_usb_mux(port, mux, pd_polarity);
+	board_set_usb_mux(port, mux, pd_get_polarity(port));
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(typec, command_typec,

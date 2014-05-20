@@ -37,8 +37,12 @@
 #undef CONFIG_FLASH
 #undef CONFIG_FMAP
 
+/* USB-PD configuration */
+#define PD_PORT_COUNT 1
 /* Stub value */
 #define TASK_ID_PD 0
+#define PORT_TO_TASK_ID(port) TASK_ID_PD
+#define TASK_ID_TO_PORT(id)   0
 
 /* debug printf flash footprinf is about 1400 bytes */
 #define CONFIG_DEBUG_PRINTF
