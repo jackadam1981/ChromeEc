@@ -285,7 +285,7 @@ struct timer_ctlr {
 
 	unsigned ccr[5]; /* ccr[0] = reserved30 */
 
-	unsigned reserved44;
+	unsigned bdtr;
 	unsigned dcr;
 	unsigned dmar;
 
