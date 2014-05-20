@@ -1633,6 +1633,19 @@ struct ec_result_keyscan_seq_ctrl {
 	};
 } __packed;
 
+/* Configure keyboard type */
+#define EC_CMD_MKBP_SET_TYPE 0x67
+
+enum ec_mkbp_keyboard_id {
+	EC_KEYBOARD_US = 0,
+	EC_KEYBOARD_FCE = 1,
+	EC_KEYBOARD_JP = 2,
+};
+
+struct ec_mkbp_keyboard_id_info {
+	uint8_t id;	/* ec_mkbp_keyboard_id */
+} __packed;
+
 /*****************************************************************************/
 /* Temperature sensor commands */
 

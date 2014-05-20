@@ -29,6 +29,7 @@
 #define CONFIG_KEYBOARD_COL2_INVERTED
 #define CONFIG_KEYBOARD_IRQ_GPIO GPIO_KBD_IRQ_L
 #define CONFIG_KEYBOARD_PROTOCOL_8042
+#define CONFIG_KEYBOARD_OVERRIDE_SCANCODE
 #define CONFIG_LED_COMMON
 #define CONFIG_LOW_POWER_IDLE
 #undef  CONFIG_PECI
@@ -194,6 +195,8 @@ enum temp_sensor_id {
 
 /* Discharge battery when on AC power for factory test. */
 int board_discharge_on_ac(int enable);
+
+void keyboard_override_scancode(uint16_t *tmp);
 
 #endif /* !__ASSEMBLER__ */
 

@@ -216,6 +216,8 @@ struct ec_thermal_config thermal_params[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
 
+static int keyboard_id = -1;
+
 /**
  * Discharge battery when on AC power for factory test.
  */
@@ -223,3 +225,27 @@ int board_discharge_on_ac(int enable)
 {
 	return charger_discharge_on_ac(enable);
 }
+
+/**
+ * Kip need support FCE keyboard, but used US keyboard matrix, so must
+ * override the right ctrl key to the broken pipe key.
+ */
+void keyboard_override_scancode(uint16_t *tmp)
+{
+	if (*tmp == 0xe01d && keyboard_id == EC_KEYBOARD_FCE)
+		*tmp = 0x56;	/* broken pipe key */
+}
+
+/*****************************************************************************/
+/* Host commands */
+
+static int host_command_mkbp_set_type(struct host_cmd_handler_args *args)
+{
+	const struct ec_mkbp_keyboard_id_info *p = args->params;
+
+	keyboard_id = p->id;
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_MKBP_SET_TYPE, host_command_mkbp_set_type,
+		     EC_VER_MASK(0));

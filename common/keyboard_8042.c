@@ -384,6 +384,11 @@ static enum ec_error_list matrix_callback(int8_t row, int8_t col,
 	switch (code_set) {
 	case SCANCODE_SET_1:
 		make_code = scancode_set1[row][col];
+
+#ifdef CONFIG_KEYBOARD_OVERRIDE_SCANCODE
+		keyboard_override_scancode(&make_code);
+#endif
+
 		break;
 
 	case SCANCODE_SET_2:
