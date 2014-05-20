@@ -156,7 +156,7 @@ int pd_request_voltage(uint32_t rdo)
 	return EC_SUCCESS;
 }
 
-int pd_set_power_supply_ready(void)
+int pd_set_power_supply_ready(int port)
 {
 	/* fault condition not cleared : do not turn on power */
 	if (fault != FAULT_OK)
@@ -169,7 +169,7 @@ int pd_set_power_supply_ready(void)
 	return EC_SUCCESS; /* we are ready */
 }
 
-void pd_power_supply_reset(void)
+void pd_power_supply_reset(int port)
 {
 	output_disable();
 	/* TODO discharge ? */
@@ -233,7 +233,7 @@ int pd_board_checks(void)
 void IRQ_HANDLER(STM32_IRQ_ADC_COMP)(void)
 {
 	/* cut the power output */
-	pd_power_supply_reset();
+	pd_power_supply_reset(0);
 	/* Clear flags */
 	STM32_ADC_ISR = 0x8e;
 	/* record a special fault, the normal check will record the timeout */
@@ -241,7 +241,7 @@ void IRQ_HANDLER(STM32_IRQ_ADC_COMP)(void)
 }
 
 /* ----------------- Vendor Defined Messages ------------------ */
-int pd_custom_vdm(void *ctxt, int cnt, uint32_t *payload, uint32_t **rpayload)
+int pd_custom_vdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 {
 	static int flash_offset;
 	void *hash;
@@ -257,7 +257,7 @@ int pd_custom_vdm(void *ctxt, int cnt, uint32_t *payload, uint32_t **rpayload)
 		break;
 	case VDO_CMD_REBOOT:
 		/* ensure the power supply is in a safe state */
-		pd_power_supply_reset();
+		pd_power_supply_reset(0);
 		cpu_reset();
 		break;
 	case VDO_CMD_RW_HASH:
