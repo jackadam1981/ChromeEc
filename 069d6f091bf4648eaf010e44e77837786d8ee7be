@@ -1,0 +1,208 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f1ab865_2bb404d5",
+        "filename": "chip/stm32/i2c-stm32f.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-20T19:39:54Z",
+      "side": 1,
+      "message": "These should still be CPRINTF; each one has a newline, and doesn\u0027t need the timestamp.",
+      "revId": "069d6f091bf4648eaf010e44e77837786d8ee7be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f440856_4331860e",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-20T19:39:54Z",
+      "side": 1,
+      "message": "These should still be CPRINTF; they\u0027re building up a single line mesage from multiple calls.",
+      "revId": "069d6f091bf4648eaf010e44e77837786d8ee7be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f440856_c32456d0",
+        "filename": "common/capsense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-20T19:39:54Z",
+      "side": 1,
+      "message": "No, this was right before",
+      "revId": "069d6f091bf4648eaf010e44e77837786d8ee7be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f440856_03425e50",
+        "filename": "common/hooks.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-20T19:39:54Z",
+      "side": 1,
+      "message": "CPRINTS?  (elsewhere in this file, too)",
+      "revId": "069d6f091bf4648eaf010e44e77837786d8ee7be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f1ab865_eb5f2cc4",
+        "filename": "common/host_command.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-20T19:39:54Z",
+      "side": 1,
+      "message": "Remove brackets and newline",
+      "revId": "069d6f091bf4648eaf010e44e77837786d8ee7be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f1ab865_8baaf85e",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-20T19:39:54Z",
+      "side": 1,
+      "message": "Remove brackets and newline",
+      "revId": "069d6f091bf4648eaf010e44e77837786d8ee7be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f1ab865_cbbfd097",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-20T19:39:54Z",
+      "side": 1,
+      "message": "While we\u0027re saving chars, \n\n\"Accel init failed; stopping MS\"",
+      "revId": "069d6f091bf4648eaf010e44e77837786d8ee7be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f1ab865_0bddc8ed",
+        "filename": "common/pmu_tps65090.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-20T19:39:54Z",
+      "side": 1,
+      "message": "Remove newlines",
+      "revId": "069d6f091bf4648eaf010e44e77837786d8ee7be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f440856_4352a611",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-20T19:39:54Z",
+      "side": 1,
+      "message": "Change to CPRINTS, so it gets timestamp",
+      "revId": "069d6f091bf4648eaf010e44e77837786d8ee7be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff281483_116aaef6",
+        "filename": "common/pmu_tps65090_charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-20T19:39:54Z",
+      "side": 1,
+      "message": "Remove extra brackets from \"[pmu]\" -\u003e \"pmu\", and newline\n\n(elsewhere in this file, too)",
+      "revId": "069d6f091bf4648eaf010e44e77837786d8ee7be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff281483_34f6b8f9",
+        "filename": "include/console.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-20T19:39:54Z",
+      "side": 1,
+      "message": "Add comment describing what this does.\n\nFor example,\n\nPrint formatted output with timestamp.  This is like cprintf(channel, \"[%T \" + format + \"]\\n\", ...)",
+      "revId": "069d6f091bf4648eaf010e44e77837786d8ee7be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f440856_a3bdd2f1",
+        "filename": "include/console.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-20T19:39:54Z",
+      "side": 1,
+      "message": "ccprints (got an extra c there...)",
+      "revId": "069d6f091bf4648eaf010e44e77837786d8ee7be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
