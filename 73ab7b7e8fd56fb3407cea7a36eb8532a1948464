@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7f3504d1_f29cc8e4",
+        "filename": "board/big/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-05-20T00:28:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f3a00c6_f15728dd",
+      "revId": "73ab7b7e8fd56fb3407cea7a36eb8532a1948464",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf1dbc5e_03e018aa",
         "filename": "common/console_output.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2014-05-19T23:31:42Z",
       "side": 1,
       "message": "The return codes are enums.  Can\u0027t mix them this way.  Could do:\n\n  int r, rv;\n\n  rv \u003d uart_printf();\n\n  r \u003d uart_vprintf();\n  if (r)\n    rv \u003d r;\n\n  r \u003d uart_puts();\n\n  return r ? r : rv;",
+      "revId": "73ab7b7e8fd56fb3407cea7a36eb8532a1948464",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f3504d1_d280a470",
+        "filename": "common/console_output.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-05-20T00:28:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf1dbc5e_03e018aa",
       "revId": "73ab7b7e8fd56fb3407cea7a36eb8532a1948464",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "aa1c9852_c5ad11be",
+        "filename": "include/console.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-05-20T00:28:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f3a00c6_f13048db",
+      "revId": "73ab7b7e8fd56fb3407cea7a36eb8532a1948464",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf1dbc5e_434bb0e7",
         "filename": "include/console.h",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2014-05-19T23:31:42Z",
       "side": 1,
       "message": "ccprints()",
+      "revId": "73ab7b7e8fd56fb3407cea7a36eb8532a1948464",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa1c9852_e5a20dcd",
+        "filename": "include/console.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-05-20T00:28:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf1dbc5e_434bb0e7",
       "revId": "73ab7b7e8fd56fb3407cea7a36eb8532a1948464",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
