@@ -47,6 +47,11 @@
 #define CONFIG_CHARGER_INPUT_CURRENT    512 /* mA */
 #define CONFIG_CHARGER_ILIM_PIN_DISABLED    /* external ILIM pin disabled */
 
+/* USB-PD configuration */
+#define PD_PORT_COUNT 1
+#define PORT_TO_TASK_ID(port) TASK_ID_PD
+#define TASK_ID_TO_PORT(id)   0
+
 /*
  * Allow dangerous commands all the time, since we don't have a write protect
  * switch.
@@ -62,9 +67,11 @@
 
 /*
  * Used to set GPIO's and clock to SPI module used for debug
+ *
+ * @param port USB-C port number
  * @param enable Whether to enable or disable debug
  */
-int board_set_debug(int enable);
+int board_set_debug(int port, int enable);
 
 /* Timer selection */
 #define TIM_CLOCK32 2
