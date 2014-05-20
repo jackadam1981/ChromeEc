@@ -19,7 +19,8 @@
 void vbus_evt(enum gpio_signal signal)
 {
 	ccprintf("VBUS %d, %d!\n", signal, gpio_get_level(signal));
-	task_wake(TASK_ID_PD);
+	task_wake((signal == GPIO_USB_C0_VBUS_WAKE) ? TASK_ID_PD_C0 :
+							TASK_ID_PD_C1);
 }
 
 void bc12_evt(enum gpio_signal signal)
@@ -42,7 +43,7 @@ void board_config_pre_init(void)
 	 *  Chan 3 : SPI1_TX   (C0 TX)
 	 *  Chan 4 : USART1_TX
 	 *  Chan 5 : USART1_RX
-	 *  Chan 6 : TIM3_CH1  (C1_RX)
+	 *  Chan 6 : TIM3_CH1  (C1 RX)
 	 *  Chan 7 : SPI2_TX   (C1 TX)
 	 */
 
@@ -186,6 +187,7 @@ static void board_init(void)
 
 	/* Enable interrupts on VBUS transitions. */
 	gpio_enable_interrupt(GPIO_USB_C0_VBUS_WAKE);
+	gpio_enable_interrupt(GPIO_USB_C1_VBUS_WAKE);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -295,16 +297,16 @@ static int command_typec(int argc, char **argv)
 		return EC_ERROR_PARAM_COUNT;
 
 	port = strtoi(argv[1], &e, 10);
-	if (*e || port >= 2)
+	if (*e || port >= PD_PORT_COUNT)
 		return EC_ERROR_PARAM1;
 
 	if (argc < 3) {
 		/* dump current state */
+		ccprintf("Port C%d: CC1 %d mV  CC2 %d mV\n",
+			port,
+			pd_adc_read(port, 0),
+			pd_adc_read(port, 1));
 		if (port == 0) {
-			ccprintf("Port C%d: CC1 %d mV  CC2 %d mV\n",
-				port,
-				pd_adc_read(0),
-				pd_adc_read(1));
 			ccprintf("DP %d Polarity %d\n",
 				!gpio_get_level(GPIO_USB_C0_DP_MODE_L),
 				!!gpio_get_level(GPIO_USB_C0_DP_POLARITY_L)
@@ -315,11 +317,6 @@ static int command_typec(int argc, char **argv)
 				(!gpio_get_level(GPIO_USB_C0_SS1_DP_MODE_L) ?
 						"USB1" : "USB2")));
 		} else {
-			/* TODO: add param to pd_adc_read() to read C1 ADCs */
-			ccprintf("Port C%d: CC1 %d mV  CC2 %d mV\n",
-				port,
-				adc_read_channel(ADC_C1_CC1_PD),
-				adc_read_channel(ADC_C1_CC2_PD));
 			ccprintf("DP %d Polarity %d\n",
 				!gpio_get_level(GPIO_USB_C1_DP_MODE_L),
 				!!gpio_get_level(GPIO_USB_C1_DP_POLARITY_L)
