@@ -122,6 +122,7 @@ static inline int discharge_is_enabled(void)
 
 static void discharge_voltage(int target_volt)
 {
+	debug_printf("%T] DV0 %d mV\n", adc_read_channel(ADC_CH_V_SENSE) * VDDA_MV * VOLT_DIV / ADC_SCALE);
 	discharge_enable();
 	discharge_deadline.val = get_time().val + DISCHARGE_TIMEOUT;
 	/* Monitor VBUS voltage */
@@ -187,6 +188,7 @@ int pd_request_voltage(uint32_t rdo)
 
 		output_disable();
 		set_output_voltage(voltages[idx - 1].select);
+		debug_printf("%d->%d\n", volt_idx, idx - 1);
 		discharge_voltage(voltages[idx - 1].ovp);
 	} else { /* up voltage transition */
 		set_output_voltage(voltages[idx - 1].select);
@@ -222,8 +224,10 @@ void pd_power_supply_reset(void)
 	adc_disable_watchdog();
 
 	/* discharge voltage to 5V ? */
-	if (need_discharge)
+	if (need_discharge) {
+		debug_printf("DSG RST\n");
 		discharge_voltage(voltages[0].ovp);
+	}
 }
 
 int pd_board_checks(void)
@@ -246,10 +250,12 @@ int pd_board_checks(void)
 	vbus_volt = adc_read_channel(ADC_CH_V_SENSE);
 	vbus_amp = adc_read_channel(ADC_CH_A_SENSE);
 
-	if (watchdog_enabled)
+	if (watchdog_enabled) {
+		debug_printf("%d/%d/%d\n",watchdog_chan,watchdog_tr >> 16, watchdog_tr & 0xFFF );
 		/* re-enable the watchdog */
 		adc_enable_watchdog(watchdog_chan,
 				    watchdog_tr >> 16, watchdog_tr & 0xFFF);
+	}
 
 	if ((fault == FAULT_FAST_OCP) || (vbus_amp > MAX_CURRENT)) {
 		debug_printf("OverCurrent : %d mA\n",
@@ -305,9 +311,11 @@ void IRQ_HANDLER(STM32_IRQ_ADC_COMP)(void)
 {
 	if (discharge_is_enabled()) { /* discharge completed */
 		discharge_disable();
+		debug_printf("!%T!\n");
 	} else {/* Over-current detection */
 		/* cut the power output */
 		pd_power_supply_reset();
+		debug_printf("$%T$\n");
 		/* record a special fault */
 		fault = FAULT_FAST_OCP;
 		/* pd_board_checks() will record the timeout later */
