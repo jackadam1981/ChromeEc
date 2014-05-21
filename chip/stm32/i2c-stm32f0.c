@@ -9,6 +9,7 @@
 #include "console.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "host_command.h"
 #include "i2c.h"
 #include "registers.h"
 #include "task.h"
@@ -18,6 +19,9 @@
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_I2C, outstr)
 #define CPRINTF(format, args...) cprintf(CC_I2C, format, ## args)
+
+/* 8-bit I2C address for host commands */
+#define I2C_ADDRESS 0xaa
 
 /* Maximum transfer of a SMBUS block transfer */
 #define SMBUS_MAX_BLOCK 32
@@ -98,6 +102,142 @@ static void i2c_init_port(const struct i2c_port_t *p)
 	/* Set up initial bus frequencies */
 	i2c_set_freq_port(p);
 }
+
+/*****************************************************************************/
+/* Host command slave */
+/* Buffer for host commands (including version, error code and checksum) */
+static uint8_t host_buffer[EC_PROTO2_MAX_REQUEST_SIZE];
+static struct host_cmd_handler_args host_cmd_args;
+static int host_i2c_resp_port;
+
+static void i2c_send_response(struct host_cmd_handler_args *args)
+{
+	const uint8_t *data = args->response;
+	int size = args->response_size;
+	uint8_t *out = host_buffer;
+	int sum = 0, i;
+
+	*out++ = args->result;
+
+	*out++ = size;
+	sum = args->result + size;
+
+	for (i = 0; i < size; i++, data++, out++) {
+		if (data != out)
+			*out = *data;
+		sum += *data;
+	}
+	*out++ = sum & 0xff;
+
+	i = 0;
+	while (i < out - host_buffer) {
+		if (STM32_I2C_ISR(host_i2c_resp_port) & STM32_I2C_CR1_TXIE)
+			STM32_I2C_TXDR(host_i2c_resp_port) = host_buffer[i++];
+
+		/* I2C is slow, so let other things run while we wait */
+		usleep(100);
+	}
+}
+
+/* Process the command in the i2c host buffer */
+static void i2c_process_command(void)
+{
+	struct host_cmd_handler_args *args = &host_cmd_args;
+	char *buff = host_buffer;
+
+	args->command = *buff;
+	args->result = EC_RES_SUCCESS;
+	if (args->command >= EC_CMD_VERSION0) {
+		int csum, i;
+
+		/* Read version and data size */
+		args->version = args->command - EC_CMD_VERSION0;
+		args->command = buff[1];
+		args->params_size = buff[2];
+
+		/* Verify checksum */
+		for (csum = i = 0; i < args->params_size + 3; i++)
+			csum += buff[i];
+		if ((uint8_t)csum != buff[i])
+			args->result = EC_RES_INVALID_CHECKSUM;
+
+		buff += 3;
+	} else {
+		/* Old style (version 1) commands not supported */
+		ASSERT(0);
+	}
+
+	/* we have an available command : execute it */
+	args->send_response = i2c_send_response;
+	args->params = buff;
+	/* skip room for error code, arglen */
+	args->response = host_buffer + 2;
+	args->response_max = EC_PROTO2_MAX_PARAM_SIZE;
+	args->response_size = 0;
+
+	host_command_received(args);
+}
+
+static void i2c_event_handler(int port)
+{
+	int i2c_isr;
+	static int rx_pending, buf_idx;
+
+	i2c_isr = STM32_I2C_ISR(port);
+
+	/* Transfer matched our slave address */
+	if (i2c_isr & STM32_I2C_ISR_ADDR) {
+		if (i2c_isr & STM32_I2C_ISR_DIR) {
+			/* Transmitter slave */
+			/* Clear transmit buffer */
+			STM32_I2C_ISR(port) |= STM32_I2C_ISR_TXE;
+
+			/* Enable txis interrupt to start response */
+			STM32_I2C_CR1(port) |= STM32_I2C_CR1_TXIE;
+		} else {
+			/* Receiver slave */
+			buf_idx = 0;
+			rx_pending = 1;
+		}
+
+		/* Clear ADDR bit by writing to ADDRCF bit */
+		STM32_I2C_ICR(port) |= STM32_I2C_ICR_ADDRCF;
+	} else if (i2c_isr & STM32_I2C_ISR_STOP) {
+		rx_pending = 0;
+
+		/* Make sure TXIS interrupt is disabled */
+		STM32_I2C_CR1(port) &= ~STM32_I2C_CR1_TXIE;
+
+		/* Clear STOPF bit by writing to STOPCF bit */
+		STM32_I2C_ICR(port) |= STM32_I2C_ICR_STOPCF;
+	}
+
+	/* Receiver full event */
+	if (i2c_isr & STM32_I2C_ISR_RXNE)
+		host_buffer[buf_idx++] = STM32_I2C_RXDR(port);
+
+	/* Transmitter empty event */
+	if (i2c_isr & STM32_I2C_ISR_TXIS) {
+		if (port == I2C_PORT_EC) { /* host is waiting for PD response */
+			if (rx_pending) {
+				host_i2c_resp_port = port;
+				/*
+				 * Disable TXIS interrupt, transmission will
+				 * be done by host command task.
+				 */
+				STM32_I2C_CR1(port) &= ~STM32_I2C_CR1_TXIE;
+
+				i2c_process_command();
+				/* Reset host buffer after end of transfer */
+				rx_pending = 0;
+			} else {
+				STM32_I2C_TXDR(port) = 0xec;
+			}
+		}
+	}
+}
+void i2c2_event_interrupt(void) { i2c_event_handler(I2C_PORT_EC); }
+DECLARE_IRQ(STM32_IRQ_I2C1, i2c2_event_interrupt, 2);
 
 /*****************************************************************************/
 /* Interface */
@@ -255,5 +395,12 @@ static void i2c_init(void)
 
 	for (i = 0; i < i2c_ports_used; i++, p++)
 		i2c_init_port(p);
+
+#ifdef HAS_TASK_HOSTCMD
+	STM32_I2C_CR1(I2C_PORT_EC) |= STM32_I2C_CR1_RXIE |
+			STM32_I2C_CR1_ADDRIE | STM32_I2C_CR1_STOPIE;
+	STM32_I2C_OAR1(I2C_PORT_EC) = 0x8000 | I2C_ADDRESS;
+	task_enable_irq(STM32_IRQ_I2C1);
+#endif
 }
 DECLARE_HOOK(HOOK_INIT, i2c_init, HOOK_PRIO_DEFAULT);
