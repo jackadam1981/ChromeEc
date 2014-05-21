@@ -23,6 +23,10 @@
 #define TS_GPIO_TO_BASE(p) (0x40010800 + (p) * 0x400)
 
 static uint8_t buf[2][ROW_COUNT * 2];
+static uint8_t scan_needed[DIV_ROUND_UP(COL_COUNT * 2, 8)];
+
+#define GET_SCAN_NEEDED(x) (scan_needed[(x) / 8] & (1 << ((x) & 7)))
+#define SET_SCAN_NEEDED(x) (scan_needed[(x) / 8] |= (1 << ((x) & 7)))
 
 static uint32_t mccr_list[COL_COUNT];
 static uint32_t mrcr_list[ROW_COUNT];
@@ -115,6 +119,50 @@ static void enable_col(int idx, int enabled)
 	}
 }
 
+int fast_scan(uint8_t *data)
+{
+	int col;
+	uint16_t sliding = 0;
+
+	memset(data, 0, DIV_ROUND_UP(COL_COUNT * 2, 8));
+
+	STM32_PMSE_MRCR = 1 << 31;
+	for (col = 0; col < COL_COUNT * 2; ++col) {
+		if (col < COL_COUNT) {
+			enable_col(col, 1);
+			STM32_PMSE_MCCR = mccr_list[col];
+		}
+
+		if (master_slave_sync(5) != EC_SUCCESS)
+			return EC_ERROR_UNKNOWN;
+
+		start_adc_sample(0, ADC_SMPL_CPU_CYCLE);
+		while (!(STM32_ADC_SR(0) & (1 << 1)))
+			;
+		sliding = (sliding << 1) & ~(1 << (COL_SPAN * 2 + 1));
+		if (ADC_DATA_WINDOW(flush_adc(0)) >= COL_THRESHOLD)
+			sliding |= 1;
+		if (col >= COL_SPAN && sliding)
+			SET_SCAN_NEEDED(col - COL_SPAN);
+
+		if (master_slave_sync(5) != EC_SUCCESS)
+			return EC_ERROR_UNKNOWN;
+		if (col < COL_COUNT) {
+			enable_col(col, 0);
+			STM32_PMSE_MCCR = 0;
+		}
+	}
+	STM32_PMSE_MRCR = 0;
+
+	for (col = COL_COUNT * 2 - COL_SPAN; col < COL_COUNT * 2; ++col) {
+		sliding = (sliding << 1) & ~(1 << (COL_SPAN * 2 + 1));
+		if (sliding)
+			SET_SCAN_NEEDED(col);
+	}
+
+	return EC_SUCCESS;
+}
+
 void scan_column(uint8_t *data)
 {
 	int i;
@@ -143,6 +191,12 @@ void touch_scan_slave_start(void)
 	int col, i, v;
 	struct spi_comm_packet *resp = (struct spi_comm_packet *)buf;
 
+	if (fast_scan(scan_needed) != EC_SUCCESS)
+		return;
+
+	/* Discharge the panel */
+	scan_column(buf[0]);
+
 	for (col = 0; col < COL_COUNT * 2; ++col) {
 		if (col < COL_COUNT) {
 			enable_col(col, 1);
@@ -152,23 +206,27 @@ void touch_scan_slave_start(void)
 		if (master_slave_sync(20) != EC_SUCCESS)
 			return;
 
-		scan_column(resp->data);
-		resp->cmd_sts = EC_SUCCESS;
+		if (GET_SCAN_NEEDED(col)) {
+			scan_column(resp->data);
 
-		/* Reverse the scanned data */
-		for (i = 0; ROW_COUNT - 1 - i > i; ++i) {
-			v = resp->data[i];
-			resp->data[i] = resp->data[ROW_COUNT - 1 - i];
-			resp->data[ROW_COUNT - 1 - i] = v;
+			/* Reverse the scanned data */
+			for (i = 0; ROW_COUNT - 1 - i > i; ++i) {
+				v = resp->data[i];
+				resp->data[i] = resp->data[ROW_COUNT - 1 - i];
+				resp->data[ROW_COUNT - 1 - i] = v;
+			}
+			resp->size = ROW_COUNT;
+		} else {
+			resp->size = 0;
 		}
 
-		resp->size = ROW_COUNT;
+		resp->cmd_sts = EC_SUCCESS;
 
 		/* Flush the last response */
 		if (col != 0)
 			spi_slave_send_response_flush();
 
-		if (master_slave_sync(20) != EC_SUCCESS)
+		if (master_slave_sync(40) != EC_SUCCESS)
 			return;
 
 		/* Start sending the response for the current column */
@@ -198,6 +256,13 @@ int touch_scan_full_matrix(void)
 		return EC_ERROR_UNKNOWN;
 
 	encode_reset();
+
+	if (fast_scan(scan_needed) != EC_SUCCESS)
+		return EC_ERROR_UNKNOWN;
+
+	/* Discharge the panel */
+	scan_column(buf[0]);
+
 	for (col = 0; col < COL_COUNT * 2; ++col) {
 		if (col >= COL_COUNT) {
 			enable_col(col - COL_COUNT, 1);
@@ -210,18 +275,24 @@ int touch_scan_full_matrix(void)
 		last_dptr = dptr;
 		dptr = buf[col & 1];
 
-		scan_column(dptr + ROW_COUNT);
+		if (GET_SCAN_NEEDED(col))
+			scan_column(dptr + ROW_COUNT);
+		else
+			memset(dptr + ROW_COUNT, 0, ROW_COUNT);
 
 		if (col > 0) {
 			/* Flush the data from the slave for the last column */
 			resp = spi_master_wait_response_done();
 			if (resp == NULL)
 				return EC_ERROR_UNKNOWN;
-			memcpy(last_dptr, resp->data, ROW_COUNT);
+			if (resp->size)
+				memcpy(last_dptr, resp->data, ROW_COUNT);
+			else
+				memset(last_dptr, 0, ROW_COUNT);
 			encode_add_column(last_dptr);
 		}
 
-		if (master_slave_sync(20) != EC_SUCCESS)
+		if (master_slave_sync(40) != EC_SUCCESS)
 			return EC_ERROR_UNKNOWN;
 
 		/* Start receiving data for the current column */
@@ -237,7 +308,10 @@ int touch_scan_full_matrix(void)
 	resp = spi_master_wait_response_done();
 	if (resp == NULL)
 		return EC_ERROR_UNKNOWN;
-	memcpy(last_dptr, resp->data, ROW_COUNT);
+	if (resp->size)
+		memcpy(last_dptr, resp->data, ROW_COUNT);
+	else
+		memset(last_dptr, 0, ROW_COUNT);
 	encode_add_column(last_dptr);
 
 	master_slave_sync(20);
