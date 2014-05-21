@@ -19,7 +19,7 @@ enum pin_type {
 #define ADC_DATA_WINDOW(x) ((x) >> ADC_WINDOW_POS)
 
 /* Threshold for each cell */
-#define THRESHOLD 35
+#define THRESHOLD 0
 
 /* ADC speed */
 #define ADC_SMPR_VAL 0x2 /* 13.5 cycles */
