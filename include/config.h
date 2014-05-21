@@ -492,6 +492,9 @@
 
 /*****************************************************************************/
 
+/* Support EC acting as host master for other MCUs. */
+#undef CONFIG_HOST_CMD_MASTER
+
 /*
  * Support the host asking the EC about the status of the most recent host
  * command.
