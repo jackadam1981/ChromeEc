@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bfa05c5b_5f1e0ff9",
+        "filename": "board/keyborg/touch_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-05-22T17:42:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df935016_a397fe63",
+      "revId": "9311d8814fb59c2551588db523447261d7b416f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df935016_c3948a61",
         "filename": "board/keyborg/touch_scan.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-05-22T15:15:25Z",
       "side": 1,
       "message": "it took 5min to understand this sliding window algorithm, probably worth a few comments here.\n\nby the way, I think you can eliminate the need for the fast_scan_buf variable and this second loop for the window algorithm, if you just define scan_needed as a bitmap and set the 11-bit mask on and around ¨col¨ in the scanning loop above (should be at most 2 word writes in the bitmap).",
+      "revId": "9311d8814fb59c2551588db523447261d7b416f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff965405_2dc3d93f",
+        "filename": "board/keyborg/touch_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-05-22T17:42:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df935016_c3948a61",
       "revId": "9311d8814fb59c2551588db523447261d7b416f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
