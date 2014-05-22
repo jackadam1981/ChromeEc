@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5f8840e2_47fba2e0",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-22T00:18:56Z",
+      "side": 1,
+      "message": "I think we can just stop using (void *)ctxt and make a per-port struct like:\n\nstruct {\n  uint32_t raw_samples[];\n  int d_toggle;\n  int d_lastlen;\n  int d_last;\n} pd_phy_buf[PD_PORT_COUNT];\n\nThen, instead of passing around ctxt everywhere, we just pass around port number, and that is used as an index here to get raw_samples[].",
+      "parentUuid": "9f48f879_43ebc644",
+      "revId": "6c884a323a518c5ce11c3c09e1c08acf12e7567a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f8344c5_02e02ae1",
         "filename": "chip/stm32/usb_pd_phy.c",
         "patchSetId": 1
