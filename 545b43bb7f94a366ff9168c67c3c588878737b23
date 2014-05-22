@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f6c24f1_c0bf9297",
+        "filename": "board/keyborg/touch_scan.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-05-22T22:31:52Z",
+      "side": 1,
+      "message": "is that correct ?\nif col is less than COL_SPAN, i\u0027m not sure the result is the expected one.",
+      "revId": "545b43bb7f94a366ff9168c67c3c588878737b23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
