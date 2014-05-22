@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfa05c5b_e230a2db",
+        "filename": "board/kip/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-05-22T18:09:05Z",
+      "side": 1,
+      "message": "We\u0027ve reserved B4 for BAT_PRESENT_L. Why are you using B1? Has a board been built with B1 as the BAT_PRESENT_L connection?",
+      "revId": "0e8cf40765f6378d6077d75067f36b06235e153a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
