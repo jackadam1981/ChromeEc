@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f6c24f1_7a1999dc",
+        "filename": "board/keyborg/touch_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-05-22T19:19:25Z",
+      "side": 1,
+      "message": "I still think you avoid the second loop if you use 32-bit bitmap and set the 11 bits everytime. \n\nremove the 5 lines above and replace them by :\nif (ADC_DATA_WINDOW(flush_adc(0)) \u003e\u003d COL_THRESHOLD)\n   set_scan_needed(col);\n\nand then use something like (of course untested ;-) :\nstatic uint32_t scan_needed[DIV_ROUND_UP(COL_COUNT * 2, 32) + 1];\n#define SPAN_LENGTH  (2 * COL_SPAN + 1)\n#define SPAN_MASK (  (1 \u003c\u003c SPAN_LENGTH) - 1)\n\n\u003c...\u003e\n\nstatic inline void set_scan_needed(int col)\n{\n   int mask \u003d col \u003c COL_SPAN ? S : SPAN_MASK;\n   int first_col \u003d col \u003c COL_SPAN ?  0 : col - COL_SPAN;\n   int word \u003d first_col / 32;\n   int bit \u003d first_col % 32;\n\n  scan_needed[word] |\u003d SPAN_MASK \u003c\u003c bit; \n  if (bit \u003e 32 - SPAN_LENGTH)\n    scan_needed[word+1] |\u003d SPAN_MASK \u003e\u003e (32 - bit); \n}\n\nmaybe adding one dummy word at the beginning of the bitmap if even more optimized than doing the clipping in set_scan_needed(), who knows ...",
+      "revId": "6811a58ce9b853a96dc8c7415ed26518e3261029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
