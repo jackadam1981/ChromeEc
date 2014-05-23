@@ -34,6 +34,24 @@
       "revId": "0e8cf40765f6378d6077d75067f36b06235e153a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f5ee42c_c709f14b",
+        "filename": "board/kip/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-05-23T01:11:53Z",
+      "side": 1,
+      "message": "I see. We should have provided the full GPIO map to keep consistency between boards. It doesn\u0027t really matter in this case. I\u0027ll approve it.",
+      "parentUuid": "9f9d5828_30656e26",
+      "revId": "0e8cf40765f6378d6077d75067f36b06235e153a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
