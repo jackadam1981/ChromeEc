@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5fd680dc_b13740cf",
+        "filename": "common/host_command_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-23T17:16:43Z",
+      "side": 1,
+      "message": "This exists in 2 places.\n\nMaybe move to CONFIG_I2C_PD_SLAVE?",
+      "revId": "88002507cd271e2a5d4ee00042c8a70dd61a390c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fe088ae_6ff491a9",
+        "filename": "common/host_command_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-23T17:16:43Z",
+      "side": 1,
+      "message": "Use/Implement v3?",
+      "revId": "88002507cd271e2a5d4ee00042c8a70dd61a390c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
