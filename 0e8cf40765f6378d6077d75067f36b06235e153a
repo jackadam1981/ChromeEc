@@ -16,6 +16,24 @@
       "revId": "0e8cf40765f6378d6077d75067f36b06235e153a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f9d5828_30656e26",
+        "filename": "board/kip/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2014-05-23T00:59:35Z",
+      "side": 1,
+      "message": "Sorry, I wan\u0027t use B4 for BAT_PRESENT, but seems used for adapter type.",
+      "parentUuid": "bfa05c5b_e230a2db",
+      "revId": "0e8cf40765f6378d6077d75067f36b06235e153a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
