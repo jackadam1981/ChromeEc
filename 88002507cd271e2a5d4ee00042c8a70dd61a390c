@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "1fe088ae_efdf211d",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-23T17:17:04Z",
+      "side": 1,
+      "message": "Move shared code to chip/stm32/i2c.c",
+      "revId": "88002507cd271e2a5d4ee00042c8a70dd61a390c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5fd680dc_b13740cf",
         "filename": "common/host_command_master.c",
         "patchSetId": 2
