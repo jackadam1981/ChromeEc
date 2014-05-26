@@ -840,7 +840,7 @@
  * When a character is received, make this many additional checks between then
  * and the next HOOK_TICK, to increase responsiveness of the console to input.
  */
-#define CONFIG_UART_RX_DMA_RECHECKS 5
+#define CONFIG_UART_RX_DMA_RECHECKS 15
 
 /*
  * UART transmit buffer size in bytes.  Must be a power of 2 for macros in
