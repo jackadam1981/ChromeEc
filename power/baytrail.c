@@ -344,6 +344,9 @@ enum power_state power_handle_state(enum power_state state)
 
 		/* Turn off power rails */
 		msleep(7);  /* Small delay; see crosbug.com/p/26561 */
+#ifdef CONFIG_GNAWTY_POWER_SEQUENCE
+		msleep(8);  /* Small delay; see Gnawty issue #29024 */
+#endif
 		gpio_set_level(GPIO_PP3300_DX_EN, 0);
 
 #ifdef CONFIG_USB_PORT_POWER_IN_S3
