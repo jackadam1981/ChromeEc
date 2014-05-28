@@ -119,6 +119,12 @@ int usb_charge_set_mode(int port_id, enum usb_charge_mode mode)
 		usb_charge_set_ilim(port_id, 1);
 		usb_charge_set_enabled(port_id, 1);
 		break;
+#ifdef CONFIG_USB_DCP_AUTO_SUPPORT
+	case USB_CHARGE_MODE_DCP_AUTO:
+		usb_charge_set_control_mode(port_id, 3);
+		usb_charge_set_enabled(port_id, 1);
+		break;
+#endif
 	case USB_CHARGE_MODE_DCP_SHORT:
 		usb_charge_set_control_mode(port_id, 4);
 		usb_charge_set_enabled(port_id, 1);
@@ -161,12 +167,21 @@ static int command_set_mode(int argc, char **argv)
 	return usb_charge_set_mode(port_id, mode);
 }
 DECLARE_CONSOLE_COMMAND(usbchargemode, command_set_mode,
+#ifdef CONFIG_USB_DCP_AUTO_SUPPORT
+			"[<port> <0 | 1 | 2 | 3 | 4>]",
+#else
 			"[<port> <0 | 1 | 2 | 3>]",
+#endif
 			"Set USB charge mode",
 			"Modes: 0=Disabled.\n"
 			"       1=Standard downstream port.\n"
 			"	2=Charging downstream port, BC 1.2.\n"
+#ifdef CONFIG_USB_DCP_AUTO_SUPPORT
+			"       3=Dedicated charging port, Auto-detect.\n"
+			"       4=Dedicated charging port, BC 1.2.\n");
+#else
 			"       3=Dedicated charging port, BC 1.2.\n");
+#endif
 
 /*****************************************************************************/
 /* Host commands */

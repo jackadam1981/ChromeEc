@@ -790,6 +790,9 @@
 
 /*****************************************************************************/
 
+/* Support USB charger DCP Auto detect mode */
+#undef CONFIG_USB_DCP_AUTO_SUPPORT
+
 /* Support simple control of power to the device's USB ports */
 #undef CONFIG_USB_PORT_POWER_DUMB
 

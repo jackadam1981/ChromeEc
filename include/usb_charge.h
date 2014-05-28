@@ -17,6 +17,10 @@ enum usb_charge_mode {
 	USB_CHARGE_MODE_SDP2,
 	/* Set USB port to Charging Downstream Port, BC 1.2. */
 	USB_CHARGE_MODE_CDP,
+#ifdef CONFIG_USB_DCP_AUTO_SUPPORT
+	/* Set USB port to Dedicated Charging poet, Auto-detect */
+	USB_CHARGE_MODE_DCP_AUTO,
+#endif
 	/* Set USB port to Dedicated Charging Port, BC 1.2. */
 	USB_CHARGE_MODE_DCP_SHORT,
 	/* Enable USB port (for dumb ports). */
