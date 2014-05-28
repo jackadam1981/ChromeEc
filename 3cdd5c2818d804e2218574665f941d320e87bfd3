@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fa38cb4_56cde499",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-05-28T23:27:40Z",
+      "side": 1,
+      "message": "change to:\n\nGnawty: Add 15 ms delay before turning off PP3300_DX at S0-\u003eS3",
+      "revId": "3cdd5c2818d804e2218574665f941d320e87bfd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fa8888f_92003a69",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-05-28T23:27:40Z",
+      "side": 1,
+      "message": "change to BUG\u003dchrome-os-partner:29024",
+      "revId": "3cdd5c2818d804e2218574665f941d320e87bfd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff8c944a_74a2e056",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-05-28T23:27:40Z",
+      "side": 1,
+      "message": "Can you also verify that the extra delay actually does allow the power switch to discharge the LCDVCC power in under 10 ms?",
+      "revId": "3cdd5c2818d804e2218574665f941d320e87bfd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff8c944a_d4f47466",
+        "filename": "board/gnawty/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-05-28T23:27:40Z",
+      "side": 1,
+      "message": "Please remove this config option. BOARD_GNAWTY will work.",
+      "revId": "3cdd5c2818d804e2218574665f941d320e87bfd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fa38cb4_f63898e9",
+        "filename": "power/baytrail.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-05-28T23:27:40Z",
+      "side": 1,
+      "message": "Lets make this a BOARD_GNAWTY ifdef for now. We may refactor this if more boards need to adjust this delay. Please use the following:\n\n                /*\n                 * Delay turning off PP3300_DX power when going into S3 to\n                 * give the LCD power swtich time to discharge the LCD power\n                 * rail. See crosbug.com/p/26561\n                 */\n#ifdef BOARD_GNAWTY\n                msleep(15);\n#else\n                msleep(7);\n#endif",
+      "revId": "3cdd5c2818d804e2218574665f941d320e87bfd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
