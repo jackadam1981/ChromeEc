@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3fd54c00_a99c05e4",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-28T18:41:23Z",
+      "side": 1,
+      "message": "Since moving to protocol version 3, there is no more shared code, because the stm32f i2c host commands only support protocol version 2 and 1.\n\nBut, I added a todo to combine the i2c_process_command() here with the one in chip/stm32/i2c-stm32f.c to create one host command i2c process function which handles all protocol versions.",
+      "parentUuid": "1fe088ae_efdf211d",
+      "revId": "88002507cd271e2a5d4ee00042c8a70dd61a390c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5fd680dc_b13740cf",
         "filename": "common/host_command_master.c",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "9f10f896_a935f913",
+        "filename": "common/host_command_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-28T18:41:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fd680dc_b13740cf",
+      "revId": "88002507cd271e2a5d4ee00042c8a70dd61a390c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fe088ae_6ff491a9",
         "filename": "common/host_command_master.c",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2014-05-23T17:16:43Z",
       "side": 1,
       "message": "Use/Implement v3?",
+      "revId": "88002507cd271e2a5d4ee00042c8a70dd61a390c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f10f896_8932bd27",
+        "filename": "common/host_command_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-28T18:41:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fe088ae_6ff491a9",
       "revId": "88002507cd271e2a5d4ee00042c8a70dd61a390c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
