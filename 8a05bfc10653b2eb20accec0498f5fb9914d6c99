@@ -67,6 +67,23 @@
       "revId": "8a05bfc10653b2eb20accec0498f5fb9914d6c99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fbfa8df_b70da89c",
+        "filename": "include/usb_charge.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-05-29T18:27:32Z",
+      "side": 1,
+      "message": "If there\u0027s a need to have #ifdef here, move MODE_DCP_AUTO to be after MODE_DCP_SHORT so that you can simplify things a bit. If not, don\u0027t do #ifdef, as Vincent suggested.",
+      "revId": "8a05bfc10653b2eb20accec0498f5fb9914d6c99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
