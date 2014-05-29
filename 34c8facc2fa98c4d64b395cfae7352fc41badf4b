@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5fc5a077_fcd42557",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-29T15:11:49Z",
+      "side": 1,
+      "message": "Are you concerned about running out of RAM?  This could be adjusted on a per-board basis with a CONFIG option instead.\n\nNote that firmware updates also benefit from the larger packet size.",
+      "parentUuid": "5fc5a077_5918c38d",
+      "revId": "34c8facc2fa98c4d64b395cfae7352fc41badf4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3fbaacee_5869ddc6",
         "filename": "chip/stm32/i2c-stm32f0.c",
         "patchSetId": 5
@@ -64,6 +82,24 @@
       "writtenOn": "2014-05-29T04:41:11Z",
       "side": 1,
       "message": "we really have to do that in interrupt context ?\nthat seems awfully slow.",
+      "revId": "34c8facc2fa98c4d64b395cfae7352fc41badf4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fc0a468_dd2b9fa3",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-29T15:11:49Z",
+      "side": 1,
+      "message": "That should just queue the command for processing in the host command task... except that it doesn\u0027t.\n\nWe should fix that in host_command.c so the fix applies to all platforms.",
+      "parentUuid": "7fc0a468_7ab7f912",
       "revId": "34c8facc2fa98c4d64b395cfae7352fc41badf4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
