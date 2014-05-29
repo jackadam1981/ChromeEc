@@ -6,6 +6,7 @@
 /* Host command module for Chrome EC */
 
 #include "ap_hang_detect.h"
+#include "charge_state.h"
 #include "common.h"
 #include "console.h"
 #include "host_command.h"
@@ -21,7 +22,8 @@
 #define CPUTS(outstr) cputs(CC_HOSTCMD, outstr)
 #define CPRINTS(format, args...) cprints(CC_HOSTCMD, format, ## args)
 
-#define TASK_EVENT_CMD_PENDING TASK_EVENT_CUSTOM(1)
+#define TASK_EVENT_CMD_PENDING     TASK_EVENT_CUSTOM(1)
+#define TASK_EVENT_SEND_PD_STATUS  TASK_EVENT_CUSTOM(2)
 
 /* Maximum delay to skip printing repeated host command debug output */
 #define HCDEBUG_MAX_REPEAT_DELAY (50 * MSEC)
@@ -375,6 +377,13 @@ static void host_command_init(void)
 	CPRINTS("hostcmd init 0x%x", host_get_events());
 }
 
+#ifdef CONFIG_HOST_CMD_MASTER
+void host_command_pd_send_status(void)
+{
+	task_set_event(TASK_ID_HOSTCMD, TASK_EVENT_SEND_PD_STATUS, 0);
+}
+#endif
+
 void host_command_task(void)
 {
 	host_command_init();
@@ -383,12 +392,45 @@ void host_command_task(void)
 		/* Wait for the next command event */
 		int evt = task_wait_event(-1);
 
-		/* Process it */
+		/* Process incoming command pending */
 		if ((evt & TASK_EVENT_CMD_PENDING) && pending_args) {
 			pending_args->result =
 					host_command_process(pending_args);
 			host_send_response(pending_args);
 		}
+
+#ifdef CONFIG_HOST_CMD_MASTER
+		/* Process event to send status to PD */
+		if (evt & TASK_EVENT_SEND_PD_STATUS) {
+			struct ec_params_pd_status ec_status;
+			struct ec_response_pd_status pd_status;
+			int rv;
+
+			/*
+			 * Setup EC status, send status, and parse PD status
+			 * response.
+			 */
+#ifdef CONFIG_USB_PD_WAIT_FOR_BATT
+			ec_status.flags = charge_battery_ok() ?
+					EC_TO_PD_STATUS_FLAG_BATT_OK : 0;
+#else
+			ec_status.flags = 0;
+#endif
+
+			rv = pd_host_command(EC_CMD_PD_STATUS, 0, &ec_status,
+					sizeof(struct ec_params_pd_status),
+					&pd_status,
+					sizeof(struct ec_response_pd_status));
+
+#ifdef CONFIG_USB_PD_WAIT_FOR_BATT
+			if (rv > 0) {
+				if (pd_status.flags &
+					PD_TO_EC_STATUS_FLAG_INT_ON_BATT_OK)
+					charge_set_battery_ok_wake();
+			}
+#endif
+		}
+#endif /* CONFIG_HOST_CMD_MASTER */
 	}
 }
 

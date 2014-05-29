@@ -45,6 +45,10 @@ static int battery_seems_to_be_dead;
 static int problems_exist;
 static int debugging;
 
+#ifdef CONFIG_USB_PD_WAIT_FOR_BATT
+static int pd_send_next_battery_ok;
+#endif
+
 /* Track problems in communicating with the battery or charger */
 enum problem_type {
 	PR_STATIC_UPDATE,
@@ -589,6 +593,14 @@ void charger_task(void)
 			goto wait_for_it;
 		}
 
+#ifdef CONFIG_USB_PD_WAIT_FOR_BATT
+		/* As soon as EC detects battery above threshold, notify PD. */
+		if (pd_send_next_battery_ok && charge_battery_ok()) {
+			pd_send_next_battery_ok = 0;
+			host_command_pd_send_status();
+		}
+#endif
+
 		/*
 		 * TODO(crosbug.com/p/27643): Quit trying if charging too long
 		 * without getting full (CONFIG_CHARGER_TIMEOUT_HOURS).
@@ -753,6 +765,20 @@ int charge_temp_sensor_get_val(int idx, int *temp_ptr)
 	*temp_ptr = curr.batt.temperature / 10;
 	return EC_SUCCESS;
 }
+
+#ifdef CONFIG_USB_PD_WAIT_FOR_BATT
+int charge_battery_ok(void)
+{
+	return (curr.batt.flags & BATT_FLAG_RESPONSIVE) &&
+		(curr.batt.state_of_charge >= CONFIG_USB_PD_MIN_BATT_CHARGE);
+}
+
+void charge_set_battery_ok_wake(void)
+{
+	CPRINTS("Watching for next battery ok");
+	pd_send_next_battery_ok = 1;
+}
+#endif
 
 /*****************************************************************************/
 /* Hooks */

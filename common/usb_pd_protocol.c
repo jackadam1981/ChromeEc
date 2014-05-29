@@ -439,6 +439,10 @@ static void handle_data_request(void *ctxt, uint16_t head, uint32_t *payload)
 					 */
 					pd_task_state = PD_STATE_SNK_REQUESTED;
 			}
+			/*
+			 * TODO(crosbug.com/p/28332): if pd_choose_voltage
+			 * returns an error, ignore failure for now.
+			 */
 		}
 		break;
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
@@ -761,6 +765,12 @@ void pd_task(void)
 				break;
 			}
 
+			/* Don't continue if power negotiation is not allowed */
+			if (!pd_power_negotiation_allowed()) {
+				timeout = PD_T_GET_SOURCE_CAP;
+				break;
+			}
+
 			res = send_control(ctxt, PD_CTRL_GET_SOURCE_CAP);
 			/* packet was acked => PD capable device) */
 			if (res >= 0) {
@@ -898,3 +908,4 @@ DECLARE_CONSOLE_COMMAND(pd, command_pd,
 			"USB PD",
 			NULL);
 #endif /* CONFIG_COMMON_RUNTIME */
+

@@ -110,6 +110,21 @@ int charge_temp_sensor_get_val(int idx, int *temp_ptr);
  */
 const struct batt_params *charger_current_battery_params(void);
 
+#ifdef CONFIG_USB_PD_WAIT_FOR_BATT
+/**
+ * Get battery ok status. Returns true if battery is present and above
+ * CONFIG_USB_PD_MIN_BATT_CHARGE threshold.
+ *
+ * @return true if battery is ok, false otherwise.
+ */
+int charge_battery_ok(void);
+
+/**
+ * Set flag to send battery ok status signal as soon as battery becomes ok.
+ */
+void charge_set_battery_ok_wake(void);
+#endif
+
 
 /* Pick the right implementation */
 #ifdef CONFIG_CHARGER_V1

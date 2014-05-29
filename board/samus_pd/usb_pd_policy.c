@@ -6,7 +6,9 @@
 #include "board.h"
 #include "common.h"
 #include "console.h"
+#include "gpio.h"
 #include "hooks.h"
+#include "host_command.h"
 #include "registers.h"
 #include "task.h"
 #include "timer.h"
@@ -32,12 +34,20 @@ const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
 /* Cap on the max voltage requested as a sink (in millivolts) */
 static unsigned max_mv = -1; /* no cap */
 
+/* Flags from the EC */
+static int battery_ok;
+static int ec_status_received;
+
 int pd_choose_voltage(int cnt, uint32_t *src_caps, uint32_t *rdo)
 {
 	int i;
 	int sel_mv;
 	int max_uw = 0;
 	int max_i = -1;
+
+	/* Don't negotiate power until battery ok signal is given */
+	if (!battery_ok)
+		return -EC_ERROR_UNKNOWN;
 
 	/* Get max power */
 	for (i = 0; i < cnt; i++) {
@@ -115,5 +125,46 @@ void pd_power_supply_reset(void)
 
 int pd_board_checks(void)
 {
+	/* If we have not yet received EC status, signal EC now */
+	if (!ec_status_received) {
+		gpio_set_level(GPIO_EC_INT_L, 0);
+		usleep(5);
+		gpio_set_level(GPIO_EC_INT_L, 1);
+	}
+
 	return EC_SUCCESS;
 }
+
+int pd_power_negotiation_allowed(void)
+{
+	return battery_ok;
+}
+
+static int ec_status_host_cmd(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_pd_status *p = args->params;
+	struct ec_response_pd_status *r = args->response;
+
+	ec_status_received = 1;
+	r->flags = 0;
+
+	if (p->flags & EC_TO_PD_STATUS_FLAG_BATT_OK) {
+		/*
+		 * When this flag is set, we know that the EC has detected a
+		 * battery and that it has enough power remaining for us to
+		 * negotiate power over PD.
+		 */
+		CPRINTS("Battery is ok, safe to negotiate power");
+		battery_ok = 1;
+	} else {
+		battery_ok = 0;
+	}
+
+	if (!battery_ok)
+		r->flags |= PD_TO_EC_STATUS_FLAG_INT_ON_BATT_OK;
+
+	args->response_size = sizeof(*r);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_PD_STATUS, ec_status_host_cmd, EC_VER_MASK(0));

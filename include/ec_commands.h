@@ -1349,6 +1349,22 @@ struct ec_response_motion_sense {
 } __packed;
 
 /*****************************************************************************/
+/* EC to PD MCU exchange status command */
+#define EC_CMD_PD_STATUS 0x2C
+
+/* Status of EC being sent to PD */
+#define EC_TO_PD_STATUS_FLAG_BATT_OK (1 << 0)
+struct ec_params_pd_status {
+	uint8_t flags;
+} __packed;
+
+/* Status of PD being sent back to EC */
+#define PD_TO_EC_STATUS_FLAG_INT_ON_BATT_OK (1 << 0)
+struct ec_response_pd_status {
+	uint8_t flags;
+} __packed;
+
+/*****************************************************************************/
 /* USB charging control commands */
 
 /* Set USB port charging mode */
