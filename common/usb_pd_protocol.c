@@ -10,6 +10,7 @@
 #include "crc.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "host_command.h"
 #include "registers.h"
 #include "task.h"
 #include "timer.h"
@@ -210,6 +211,10 @@ static enum {
 	PD_STATE_HARD_RESET,
 	PD_STATE_BIST,
 } pd_task_state = PD_DEFAULT_STATE;
+
+#ifdef CONFIG_USB_PD_WAIT_FOR_BATT
+static int battery_ok;
+#endif
 
 /* increment message ID counter */
 static void inc_id(void)
@@ -421,6 +426,10 @@ static void handle_data_request(void *ctxt, uint16_t head, uint32_t *payload)
 	switch (type) {
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	case PD_DATA_SOURCE_CAP:
+#ifdef CONFIG_USB_PD_WAIT_FOR_BATT
+		if (!battery_ok)
+			break;
+#endif
 		if ((pd_task_state == PD_STATE_SNK_DISCOVERY)
 			|| (pd_task_state == PD_STATE_SNK_TRANSITION)) {
 			uint32_t rdo;
@@ -761,6 +770,14 @@ void pd_task(void)
 				break;
 			}
 
+#ifdef CONFIG_USB_PD_WAIT_FOR_BATT
+			/* Don't negotiate power until battery is ok. */
+			if (!battery_ok) {
+				timeout = PD_T_GET_SOURCE_CAP;
+				break;
+			}
+#endif
+
 			res = send_control(ctxt, PD_CTRL_GET_SOURCE_CAP);
 			/* packet was acked => PD capable device) */
 			if (res >= 0) {
@@ -898,3 +915,21 @@ DECLARE_CONSOLE_COMMAND(pd, command_pd,
 			"USB PD",
 			NULL);
 #endif /* CONFIG_COMMON_RUNTIME */
+
+#ifdef CONFIG_USB_PD_WAIT_FOR_BATT
+static int battery_is_ok(struct host_cmd_handler_args *args)
+{
+	/*
+	 * When we receive this command, we know that the EC has detected a
+	 * battery and that it has enough power remaining for us to negotiate
+	 * power over PD.
+	 */
+	if (!battery_ok) {
+		CPRINTF("[%T Battery is ok, safe to negotiate power]\n");
+		battery_ok = 1;
+	}
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_PD_BATTERY_OK, battery_is_ok, EC_VER_MASK(0));
+#endif

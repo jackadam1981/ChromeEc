@@ -1349,6 +1349,10 @@ struct ec_response_motion_sense {
 } __packed;
 
 /*****************************************************************************/
+/* PD MCU battery ok command */
+#define EC_CMD_PD_BATTERY_OK 0x2C
+
+/*****************************************************************************/
 /* USB charging control commands */
 
 /* Set USB port charging mode */
