@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "5fc5a077_5c3f91d2",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-29T15:42:27Z",
+      "side": 1,
+      "message": "Also, if we don\u0027t want to have enough space for EC_CMD_GET_VERSION, we\u0027re still going to want to get version information, so we\u0027d have to create a custom version command for the PD MCU. I\u0027d rather just use the standard get version command unless we\u0027re running out of RAM.",
+      "parentUuid": "5fc5a077_fcd42557",
+      "revId": "34c8facc2fa98c4d64b395cfae7352fc41badf4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3fbaacee_5869ddc6",
         "filename": "chip/stm32/i2c-stm32f0.c",
         "patchSetId": 5
@@ -54,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "3fbaacee_f85af162",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-29T15:42:27Z",
+      "side": 1,
+      "message": "The bus is running at 100kHz and is shared with battery and bq charger chip. I\u0027ll reduce the usleep time and I can try a faster bus speed, not sure if other devices can handle it.\n\nWe do still have one DMA channel open, and it looks like if we shuffle all of the DMA channels around we can get this one. But, do we really care if this is slow? It\u0027s running out of the host command task, which is lower priority than PD, so it\u0027s not blocking that. And, host commands between EC and PD won\u0027t be all that frequent.",
+      "parentUuid": "3fbaacee_5869ddc6",
+      "revId": "34c8facc2fa98c4d64b395cfae7352fc41badf4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3fbaacee_386629f7",
         "filename": "chip/stm32/i2c-stm32f0.c",
         "patchSetId": 5
@@ -65,6 +101,24 @@
       "writtenOn": "2014-05-29T04:41:11Z",
       "side": 1,
       "message": "isn\u0027t ASSERT doing a panic ?\nyou don\u0027t want to panic because somebody (untrusted) has sent you a bad command.",
+      "revId": "34c8facc2fa98c4d64b395cfae7352fc41badf4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5fc5a077_bc7a2d94",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-29T15:42:27Z",
+      "side": 1,
+      "message": "ok, i\u0027ll change this",
+      "parentUuid": "3fbaacee_386629f7",
       "revId": "34c8facc2fa98c4d64b395cfae7352fc41badf4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -106,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "5fc5a077_39598f69",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-29T15:42:27Z",
+      "side": 1,
+      "message": "The LPC and SPI implementations of host commands both call this in interrupt context. If it takes too long, then we need to fix it in host_command.c like Randall suggests.",
+      "parentUuid": "7fc0a468_7ab7f912",
+      "revId": "34c8facc2fa98c4d64b395cfae7352fc41badf4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7fc0a468_5ab4350c",
         "filename": "chip/stm32/i2c-stm32f0.c",
         "patchSetId": 5
@@ -117,6 +189,24 @@
       "writtenOn": "2014-05-29T04:41:11Z",
       "side": 1,
       "message": "the TXIS interrupt condition is not reset until the next write to TXDR,\nwhich currently might be happening in i2c_process_command (but should not), we might have to disable it earlier.",
+      "revId": "34c8facc2fa98c4d64b395cfae7352fc41badf4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5fc5a077_5933232e",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-29T15:42:27Z",
+      "side": 1,
+      "message": "I don\u0027t think so. This disables the interrupt, so even though the TXIS flag will remain set until we write TXDR, the interrupt will not fire. We want the TXIS flag to remain set, so that when we first get to i2c_send_response_packet(), it immediately writes the first byte.",
+      "parentUuid": "7fc0a468_5ab4350c",
       "revId": "34c8facc2fa98c4d64b395cfae7352fc41badf4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
