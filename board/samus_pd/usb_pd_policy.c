@@ -6,7 +6,9 @@
 #include "board.h"
 #include "common.h"
 #include "console.h"
+#include "gpio.h"
 #include "hooks.h"
+#include "host_command.h"
 #include "registers.h"
 #include "task.h"
 #include "timer.h"
@@ -14,6 +16,8 @@
 #include "usb_pd.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
+
+#define CONFIG_USB_PD_MIN_BATT_CHARGE 2
 
 /* TODO(crossbug.com/p/28869): update source and sink tables to spec. */
 const uint32_t pd_src_pdo[] = {
@@ -32,12 +36,19 @@ const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
 /* Cap on the max voltage requested as a sink (in millivolts) */
 static unsigned max_mv = -1; /* no cap */
 
+/* Flag for battery status */
+static int battery_ok;
+
 int pd_choose_voltage(int cnt, uint32_t *src_caps, uint32_t *rdo)
 {
 	int i;
 	int sel_mv;
 	int max_uw = 0;
 	int max_i = -1;
+
+	/* Don't negotiate power until battery ok signal is given */
+	if (!battery_ok)
+		return -EC_ERROR_UNKNOWN;
 
 	/* Get max power */
 	for (i = 0; i < cnt; i++) {
@@ -113,7 +124,47 @@ void pd_power_supply_reset(void)
 {
 }
 
+static void pd_send_ec_int(void)
+{
+	gpio_set_level(GPIO_EC_INT_L, 0);
+	usleep(2);
+	gpio_set_level(GPIO_EC_INT_L, 1);
+}
+
 int pd_board_checks(void)
 {
+	/* If battery is not yet ok, signal EC to send status */
+	if (!battery_ok)
+		pd_send_ec_int();
+
 	return EC_SUCCESS;
 }
+
+int pd_power_negotiation_allowed(void)
+{
+	return battery_ok;
+}
+
+static int ec_status_host_cmd(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_pd_status *p = args->params;
+	struct ec_response_pd_status *r = args->response;
+
+	if (p->batt_soc >= CONFIG_USB_PD_MIN_BATT_CHARGE) {
+		/*
+		 * When battery is above minimum charge, we know
+		 * that we have enough power remaining for us to
+		 * negotiate power over PD.
+		 */
+		CPRINTS("Battery is ok, safe to negotiate power");
+		battery_ok = 1;
+	} else {
+		battery_ok = 0;
+	}
+
+	args->response_size = sizeof(*r);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_PD_EXCHANGE_STATUS, ec_status_host_cmd,
+			EC_VER_MASK(0));
