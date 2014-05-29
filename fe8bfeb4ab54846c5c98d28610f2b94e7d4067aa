@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff8c944a_02ab1a77",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-29T01:11:21Z",
+      "side": 1,
+      "message": "Kinda weird having a LPC constant in an I2C implementation.  Should define an I2C constant.\n\nAlso please add support for EC_CMD_GET_PROTOCOL_INFO, so that the host can detect protocol version 3.\n\nSee chip/lm4/lpc.c and chip/stm32/spi.c for examples (and note that they use different max packet sizes...)",
+      "revId": "fe8bfeb4ab54846c5c98d28610f2b94e7d4067aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
