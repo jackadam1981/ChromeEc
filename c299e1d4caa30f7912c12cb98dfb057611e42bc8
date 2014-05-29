@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fbaacee_580d5d56",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-05-29T04:15:29Z",
+      "side": 1,
+      "message": "do we want to send this only once in the EC lifetime (at EC startup) ?\nwe might have other corner cases ?",
+      "revId": "c299e1d4caa30f7912c12cb98dfb057611e42bc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5fc5a077_590d6356",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-05-29T04:15:29Z",
+      "side": 1,
+      "message": "IMO that code should be in board/samus_pd/usb_pd_policy.c in pd_choose_voltage() rather than ifdef\u0027ed here.\nit should probably send an error code in that case, maybe the TODO below needs to be fixed for that case",
+      "revId": "c299e1d4caa30f7912c12cb98dfb057611e42bc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
