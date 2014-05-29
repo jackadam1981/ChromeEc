@@ -16,6 +16,24 @@
       "revId": "fe8bfeb4ab54846c5c98d28610f2b94e7d4067aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fa8888f_58afd16f",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-29T01:33:39Z",
+      "side": 1,
+      "message": "aha, yes, you\u0027re right. i\u0027ll define an i2c max size and add an EC_CMD_GET_PROTOCOL_INFO host command.",
+      "parentUuid": "ff8c944a_02ab1a77",
+      "revId": "fe8bfeb4ab54846c5c98d28610f2b94e7d4067aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
