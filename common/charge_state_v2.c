@@ -441,6 +441,9 @@ void charger_task(void)
 {
 	int sleep_usec;
 	int need_static = 1;
+#ifdef CONFIG_USB_PD_WAIT_FOR_BATT
+	int pd_battery_ok_sent = 0;
+#endif
 
 	/* Get the battery-specific values */
 	batt_info = battery_get_info();
@@ -588,6 +591,18 @@ void charger_task(void)
 			curr.state = ST_IDLE;
 			goto wait_for_it;
 		}
+
+#ifdef CONFIG_USB_PD_WAIT_FOR_BATT
+		/* As soon as EC detects battery above threshold, notify PD. */
+		if (!pd_battery_ok_sent &&
+			(curr.batt.flags & BATT_FLAG_RESPONSIVE) &&
+			(curr.batt.state_of_charge >=
+					CONFIG_USB_PD_MIN_BATT_CHARGE)) {
+			pd_host_command(EC_CMD_PD_BATTERY_OK, 0, NULL, 0,
+					NULL, 0);
+			pd_battery_ok_sent = 1;
+		}
+#endif
 
 		/*
 		 * TODO(crosbug.com/p/27643): Quit trying if charging too long
