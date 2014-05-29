@@ -207,6 +207,13 @@ void host_packet_receive(struct host_packet *pkt);
  */
 void host_throttle_cpu(int throttle);
 
+
+#ifdef CONFIG_HOST_CMD_MASTER
+/**
+ * Signal host command task to send status to PD MCU.
+ */
+void host_command_pd_send_status(void);
+
 /**
  * Send host command to PD MCU.
  *
@@ -220,5 +227,6 @@ void host_throttle_cpu(int throttle);
 int pd_host_command(int command, int version,
 		    const void *outdata, int outsize,
 		    void *indata, int insize);
+#endif
 
 #endif  /* __CROS_EC_HOST_COMMAND_H */
