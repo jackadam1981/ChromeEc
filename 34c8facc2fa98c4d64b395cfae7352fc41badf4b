@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "7fc0a468_fd40a3c5",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-05-29T16:34:21Z",
+      "side": 1,
+      "message": "Actually, this delay is about right. Bus is running at 100kHz, so it will take 10us to transmit one bit \u003d 80us for one byte.\n\nAlso, I did try speeding up the bus to 400kHz and the battery was unresponsive. So, I think this bus will have to stay at 100kHz.",
+      "parentUuid": "3fbaacee_f85af162",
+      "revId": "34c8facc2fa98c4d64b395cfae7352fc41badf4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3fbaacee_386629f7",
         "filename": "chip/stm32/i2c-stm32f0.c",
         "patchSetId": 5
