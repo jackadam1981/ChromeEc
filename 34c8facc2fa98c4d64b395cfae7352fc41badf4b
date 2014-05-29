@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5fc5a077_5918c38d",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-05-29T04:41:11Z",
+      "side": 1,
+      "message": "that seems a lot of memory for not much benefit (ie sending a very large reserved field in GET_VERSION),\nI would love to use only 64 bytes,",
+      "revId": "34c8facc2fa98c4d64b395cfae7352fc41badf4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fbaacee_5869ddc6",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-05-29T04:41:11Z",
+      "side": 1,
+      "message": "it might be slow ... but not running at 10khz.\nit should run at 400khz if we are sharing the bus and at 1Mhz if we are not.\nif we still have a free DMA channel for this we should open a bug to use it..",
+      "revId": "34c8facc2fa98c4d64b395cfae7352fc41badf4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fbaacee_386629f7",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-05-29T04:41:11Z",
+      "side": 1,
+      "message": "isn\u0027t ASSERT doing a panic ?\nyou don\u0027t want to panic because somebody (untrusted) has sent you a bad command.",
+      "revId": "34c8facc2fa98c4d64b395cfae7352fc41badf4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fc0a468_7ab7f912",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-05-29T04:41:11Z",
+      "side": 1,
+      "message": "we really have to do that in interrupt context ?\nthat seems awfully slow.",
+      "revId": "34c8facc2fa98c4d64b395cfae7352fc41badf4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fc0a468_5ab4350c",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-05-29T04:41:11Z",
+      "side": 1,
+      "message": "the TXIS interrupt condition is not reset until the next write to TXDR,\nwhich currently might be happening in i2c_process_command (but should not), we might have to disable it earlier.",
+      "revId": "34c8facc2fa98c4d64b395cfae7352fc41badf4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
