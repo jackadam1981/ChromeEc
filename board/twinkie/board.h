@@ -13,8 +13,6 @@
 
 /* the UART console is on USART1 (PA9/PA10) */
 #define CONFIG_UART_CONSOLE 1
-#undef CONFIG_UART_BAUD_RATE
-#define CONFIG_UART_BAUD_RATE 3000000
 
 /* Optional features */
 #define CONFIG_STM_HWTIMER32
