@@ -336,15 +336,25 @@ static void ep2_tx(void)
 	return;
 }
 
-void console_handle_char(int c);
+extern volatile char rx_buf[CONFIG_UART_RX_BUF_SIZE];
+extern volatile int rx_buf_head;
+extern volatile int rx_buf_tail;
+#define RX_BUF_NEXT(i) (((i) + 1) & (CONFIG_UART_RX_BUF_SIZE - 1))
 static void ep3_rx(void)
 {
 	int i;
-	for (i = 0; i < (desc->ep[3].rx_count & 0x3ff); i++)
-		/* Not working on old STM32 ... */
-		console_handle_char(((uint8_t *)desc->ep3_rx)[i]);
+	for (i = 0; i < (desc->ep[3].rx_count & 0x3ff); i++) {
+		int rx_buf_next = RX_BUF_NEXT(rx_buf_head);
+		if (rx_buf_next != rx_buf_tail) {
+			/* Not working on old STM32 ... */
+                        rx_buf[rx_buf_head] = ((uint8_t *)desc->ep3_rx)[i];
+                        rx_buf_head = rx_buf_next;
+                }
+	}
 	/* clear IT */
 	TOGGLE_EP(3, EP_RX_MASK, EP_RX_VALID, 0);
+	/* wake-up the console task */
+	console_has_input();
 	return;
 }
 
@@ -379,6 +389,18 @@ static int __tx_char(void *context, int c)
 	ep2_idx++;
 
 	return 0;
+}
+
+int usb_tx_char(void *context, int c)
+{
+	int ret;
+	ep2_idx = 0;
+	ret = __tx_char(context, c);
+	desc->ep[2].tx_count = ep2_idx;
+	/* enable TX */
+	TOGGLE_EP(2, EP_TX_MASK, EP_TX_VALID, 0);
+
+	return ret;
 }
 
 int usb_puts(const char *outstr)
