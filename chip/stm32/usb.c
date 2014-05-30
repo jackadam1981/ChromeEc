@@ -54,6 +54,7 @@ const struct usb_config_descriptor USB_CONF_DESC(conf) = {
 	.bmAttributes = 0x80, /* bus powered */
 	.bMaxPower = 250, /* MaxPower 500 mA */
 };
+#if 0
 /* HID descriptors */
 const struct usb_interface_descriptor USB_IFACE_DESC(USB_IFACE_HID) = {
 	.bLength = USB_DT_INTERFACE_SIZE,
@@ -85,6 +86,7 @@ const struct usb_hid_descriptor USB_CUSTOM_DESC(USB_IFACE_HID, hid) = {
 		.wDescriptorLength = 45
 	}}
 };
+#endif
 /* USB-Serial descriptors */
 const struct usb_interface_descriptor USB_IFACE_DESC(USB_IFACE_SERIAL) = {
 	.bLength = USB_DT_INTERFACE_SIZE,
