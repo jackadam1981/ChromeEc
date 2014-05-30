@@ -13,9 +13,12 @@
 
 /* the UART console is on USART1 (PA9/PA10) */
 #define CONFIG_UART_CONSOLE 1
+#undef CONFIG_UART_BAUD_RATE
+#define CONFIG_UART_BAUD_RATE 3000000
 
 /* Optional features */
 #define CONFIG_STM_HWTIMER32
+#define CONFIG_USB
 #define CONFIG_ADC
 #define CONFIG_BOARD_PRE_INIT
 #define CONFIG_I2C
@@ -26,6 +29,11 @@
 
 /* I2C ports configuration */
 #define I2C_PORT_MASTER 0
+
+/* USB configuration */
+#define CONFIG_USB_PID 0x5008
+/* By default, enable all console messages excepted USB */
+#define CC_DEFAULT     (CC_ALL & ~CC_MASK(CC_USB))
 
 /*
  * Allow dangerous commands all the time, since we don't have a write protect
@@ -85,6 +93,32 @@ enum adc_channel {
 	ADC_CH_CC2_PD,
 	/* Number of ADC channels */
 	ADC_CH_COUNT
+};
+
+/* USB interface indexes */
+enum usb_interface {
+	USB_IFACE_HID = 0,
+	USB_IFACE_SERIAL,
+
+	USB_IFACE_COUNT
+};
+/* USB endpoint indexes */
+enum usb_endpoint {
+	USB_EP_CONTROL = 0,
+	USB_EP_HID,
+	USB_EP_SERIAL_TX,
+	USB_EP_SERIAL_RX,
+
+	USB_EP_COUNT
+};
+/* USB string indexes */
+enum usb_strings {
+	USB_STR_DESC = 0,
+	USB_STR_VENDOR,
+	USB_STR_PRODUCT,
+	USB_STR_VERSION,
+
+	USB_STR_COUNT
 };
 #endif /* !__ASSEMBLER__ */
 
