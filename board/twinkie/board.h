@@ -13,8 +13,6 @@
 
 /* the UART console is on USART1 (PA9/PA10) */
 #define CONFIG_UART_CONSOLE 1
-#undef CONFIG_UART_BAUD_RATE
-#define CONFIG_UART_BAUD_RATE 3000000
 
 /* Optional features */
 #define CONFIG_STM_HWTIMER32
@@ -97,8 +95,7 @@ enum adc_channel {
 
 /* USB interface indexes */
 enum usb_interface {
-	USB_IFACE_HID = 0,
-	USB_IFACE_SERIAL,
+	USB_IFACE_SERIAL = 0,
 
 	USB_IFACE_COUNT
 };
