@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "5fc5a077_367191ba",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-30T20:06:54Z",
+      "side": 1,
+      "message": "Though it\u0027s worth filing a bug to make a version 1 of the get-version command.  We\u0027ll want it eventually.  Heck, I\u0027ll file that now.  crosbug.com/p/29300",
+      "parentUuid": "5fc5a077_5c3f91d2",
+      "revId": "34c8facc2fa98c4d64b395cfae7352fc41badf4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3fbaacee_5869ddc6",
         "filename": "chip/stm32/i2c-stm32f0.c",
         "patchSetId": 5
