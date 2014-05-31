@@ -82,6 +82,32 @@ static void board_init(void)
 	/* Enable interrupts for INAs. */
 	gpio_enable_interrupt(GPIO_CC2_ALERT_L);
 	gpio_enable_interrupt(GPIO_VBUS_ALERT_L);
+
+	/* --- using Twinkie as PHY for the logic analyzer --- */
+
+	/* --- DAC configuration for comparator at 550mV --- */
+	/* Enable DAC interface clock. */
+	STM32_RCC_APB1ENR |= (1 << 29);
+	/* set voltage Vout=0.550V (Vref = 3.0V) */
+	STM32_DAC_DHR12RD = 550 * 4096 / 3000;
+	/* Start DAC channel 1 */
+	STM32_DAC_CR = STM32_DAC_CR_EN1 | STM32_DAC_CR_BOFF1;
+
+	/* --- COMP1/COMP2 as comparators for CC RX --- */
+	/* turn on COMP/SYSCFG */
+	STM32_RCC_APB2ENR |= 1 << 0;
+	/* currently in hi-speed mode : INP = PA1 , INM = DAC1 / PA4 / INM4 */
+	STM32_COMP_CSR = STM32_COMP_CMP1EN | STM32_COMP_CMP1MODE_HSPEED |
+			 STM32_COMP_CMP1INSEL_INM4 |
+			 STM32_COMP_CMP1OUTSEL_TIM1_IC1 |
+			 STM32_COMP_CMP1HYST_HI |
+			 STM32_COMP_CMP2EN | STM32_COMP_CMP2MODE_HSPEED |
+			 STM32_COMP_CMP2INSEL_INM4 |
+			 STM32_COMP_CMP2OUTSEL_TIM1_IC1 |
+			 STM32_COMP_CMP2HYST_HI;
+
+	/* pin-muxing : COMPx_OUT(7) on PA11/PA12 */
+	gpio_set_alternate_function(GPIO_A, 0x1800, 7);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -109,6 +135,7 @@ const struct i2c_port_t i2c_ports[] = {
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
+#ifdef CONFIG_USB
 const void * const usb_strings[] = {
 	[USB_STR_DESC] = usb_string_desc,
 	[USB_STR_VENDOR] = USB_STRING_DESC("Google Inc."),
@@ -116,3 +143,4 @@ const void * const usb_strings[] = {
 	[USB_STR_VERSION] = USB_STRING_DESC("vXX.YYY"),
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
+#endif
