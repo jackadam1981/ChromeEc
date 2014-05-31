@@ -16,7 +16,7 @@
 
 /* Optional features */
 #define CONFIG_STM_HWTIMER32
-#define CONFIG_USB
+#undef CONFIG_USB
 #define CONFIG_ADC
 #define CONFIG_BOARD_PRE_INIT
 #define CONFIG_I2C
