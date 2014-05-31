@@ -16,6 +16,7 @@
 #include "util.h"
 #include "usb_pd.h"
 #include "usb_pd_config.h"
+#include "watchdog.h"
 
 #ifdef CONFIG_COMMON_RUNTIME
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
@@ -276,7 +277,7 @@ static void send_hard_reset(void *ctxt)
 	/* Ensure that we have a final edge */
 	off = pd_write_last_edge(ctxt, off);
 	/* Transmit the packet */
-	pd_start_tx(ctxt, pd_polarity, off);
+	pd_start_tx(ctxt, pd_polarity, off, 0);
 	pd_tx_done(pd_polarity);
 }
 
@@ -293,7 +294,7 @@ static int send_validate_message(void *ctxt, uint16_t header, uint8_t cnt,
 		/* write the encoded packet in the transmission buffer */
 		bit_len = prepare_message(ctxt, header, cnt, data);
 		/* Transmit the packet */
-		pd_start_tx(ctxt, pd_polarity, bit_len);
+		pd_start_tx(ctxt, pd_polarity, bit_len, 0);
 		pd_tx_done(pd_polarity);
 		/* starting waiting for GoodCrc */
 		pd_rx_start();
@@ -339,7 +340,7 @@ static void send_goodcrc(void *ctxt, int id)
 	uint16_t header = PD_HEADER(PD_CTRL_GOOD_CRC, pd_role, id, 0);
 	int bit_len = prepare_message(ctxt, header, 0, NULL);
 
-	pd_start_tx(ctxt, pd_polarity, bit_len);
+	pd_start_tx(ctxt, pd_polarity, bit_len, 0);
 	pd_tx_done(pd_polarity);
 }
 
@@ -382,7 +383,8 @@ static int send_request(void *ctxt, uint32_t rdo)
 
 static int send_bist(void *ctxt)
 {
-	uint32_t bdo = BDO(BDO_MODE_TRANSMIT, 0);
+	/* currently only support sending bist carrier 2 */
+	uint32_t bdo = BDO(BDO_MODE_CARRIER2, 0);
 	int bit_len;
 	uint16_t header = PD_HEADER(PD_DATA_BIST, pd_role, pd_message_id, 1);
 
@@ -417,6 +419,7 @@ static void handle_data_request(void *ctxt, uint16_t head, uint32_t *payload)
 {
 	int type = PD_HEADER_TYPE(head);
 	int cnt = PD_HEADER_CNT(head);
+	int bit;
 
 	switch (type) {
 #ifdef CONFIG_USB_PD_DUAL_ROLE
@@ -453,7 +456,26 @@ static void handle_data_request(void *ctxt, uint16_t head, uint32_t *payload)
 		send_control(ctxt, PD_CTRL_REJECT);
 		break;
 	case PD_DATA_BIST:
-		CPRINTF("BIST not supported\n");
+		/* currently only support sending bist carrier 2 */
+		CPRINTF("BIST carrier 2 - sending\n");
+
+		/*
+		 * build context buffer with 5 bytes, where the data is
+		 * alternating 1's and 0's.
+		 */
+		bit = 0;
+		bit = pd_write_sym(ctxt, bit, BMC(0x15));
+		bit = pd_write_sym(ctxt, bit, BMC(0x0a));
+		bit = pd_write_sym(ctxt, bit, BMC(0x15));
+		bit = pd_write_sym(ctxt, bit, BMC(0x0a));
+
+		/* start a circular DMA transfer (will never end) */
+		pd_start_tx(ctxt, pd_polarity, bit, 1);
+
+		/* do not let pd task state machine run anymore */
+		while (1)
+			watchdog_reload();
+
 		break;
 	case PD_DATA_SINK_CAP:
 		break;
@@ -529,7 +551,7 @@ static inline int decode_short(void *ctxt, int off, uint16_t *val16)
 	uint32_t w;
 	int end;
 
-	end = pd_dequeue_bits(ctxt, off, 20, &w);
+	end = pd_dequeue_bits(ctxt, off, 20, &w, 0);
 
 #if 0 /* DEBUG */
 	CPRINTS("%d-%d: %05x %x:%x:%x:%x\n",
@@ -548,6 +570,49 @@ static inline int decode_word(void *ctxt, int off, uint32_t *val32)
 {
 	off = decode_short(ctxt, off, (uint16_t *)val32);
 	return decode_short(ctxt, off, ((uint16_t *)val32 + 1));
+}
+
+static int count_set_bits(int n)
+{
+	int count = 0;
+	while (n) {
+		n &= (n - 1);
+		count++;
+	}
+	return count;
+}
+
+static void analyze_rx_bist(void)
+{
+	void *ctxt;
+	int i = 0, bit = -1;
+	uint32_t w, match;
+	int invalid_bits = 0;
+	static int total_invalid_bits;
+
+	ctxt = pd_init_dequeue();
+
+	/* dequeue bits until we see a full byte of alternating 1's and 0's */
+	while (bit < 0 || (w != 0xaa && w != 0x55))
+		bit = pd_dequeue_bits(ctxt, i++, 8, &w, 1);
+
+	/*
+	 * now we know what matching byte we are looking for, dequeue a bunch
+	 * more data and count how many bits differ from expectations.
+	 */
+	match = w;
+	bit = i - 1;
+	for (i = 0; i < 40; i++) {
+		bit = pd_dequeue_bits(ctxt, bit, 8, &w, 0);
+		if (i % 20 == 0)
+			CPRINTF("\n");
+		CPRINTF("%02x ", w);
+		invalid_bits += count_set_bits(w ^ match);
+	}
+
+	total_invalid_bits += invalid_bits;
+	CPRINTF("- incorrect bits: %d / %d\n", invalid_bits,
+			total_invalid_bits);
 }
 
 static int analyze_rx(uint32_t *payload)
@@ -573,7 +638,7 @@ static int analyze_rx(uint32_t *payload)
 
 	/* Find the Start Of Packet sequence */
 	while (bit > 0) {
-		bit = pd_dequeue_bits(ctxt, bit, 20, &val);
+		bit = pd_dequeue_bits(ctxt, bit, 20, &val, 0);
 		if (val == PD_SOP)
 			break;
 		/* TODO: detect SOP with 1 error code */
@@ -612,7 +677,7 @@ static int analyze_rx(uint32_t *payload)
 
 	/* check End Of Packet */
 	/* SKIP EOP for now
-	bit = pd_dequeue_bits(ctxt, bit, 5, &eop);
+	bit = pd_dequeue_bits(ctxt, bit, 5, &eop, 0);
 	if (bit < 0 || eop != PD_EOP) {
 		msg = "EOP";
 		goto packet_err;
@@ -668,12 +733,27 @@ void pd_task(void)
 		task_wait_event(timeout);
 		/* incoming packet ? */
 		if (pd_rx_started()) {
-			head = analyze_rx(payload);
-			pd_rx_complete();
-			if (head > 0)
-				handle_request(ctxt, head, payload);
-			else if (head == PD_ERR_HARD_RESET)
-				execute_hard_reset();
+			if (pd_task_state == PD_STATE_BIST) {
+				/*
+				 * once we start receiving bist data, do not
+				 * let state machine run again. stay here, and
+				 * analyze a chunk of data every 250ms.
+				 */
+				while (1) {
+					watchdog_reload();
+					analyze_rx_bist();
+					pd_rx_complete();
+					msleep(250);
+					pd_rx_enable_monitoring();
+				}
+			} else {
+				head = analyze_rx(payload);
+				pd_rx_complete();
+				if (head > 0)
+					handle_request(ctxt, head, payload);
+				else if (head == PD_ERR_HARD_RESET)
+					execute_hard_reset();
+			}
 		}
 		/* if nothing to do, verify the state of the world in 500ms */
 		timeout = 500*MSEC;
@@ -809,7 +889,7 @@ void pd_task(void)
 			break;
 		case PD_STATE_BIST:
 			send_bist(ctxt);
-			pd_task_state = PD_STATE_DISABLED;
+			timeout = 1000*MSEC;
 			break;
 		}
 	}

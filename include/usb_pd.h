@@ -222,7 +222,7 @@ void *pd_init_dequeue(void);
  * @param val  the read bits.
  * @return new position in the packet buffer.
  */
-int pd_dequeue_bits(void *ctxt, int off, int len, uint32_t *val);
+int pd_dequeue_bits(void *ctxt, int off, int len, uint32_t *val, int silent);
 
 /**
  * Advance until the end of the preamble.
@@ -287,7 +287,7 @@ void pd_set_clock(int freq);
  * @param polarity plug polarity (0=CC1, 1=CC2).
  * @param bit_len size of the packet in bits.
  */
-void pd_start_tx(void *ctxt, int polarity, int bit_len);
+void pd_start_tx(void *ctxt, int polarity, int bit_len, int circular);
 /**
  * Call when we are done sending a packet.
  *

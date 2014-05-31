@@ -94,7 +94,7 @@ static int wait_bits(int nb)
 	return nb;
 }
 
-int pd_dequeue_bits(void *ctxt, int off, int len, uint32_t *val)
+int pd_dequeue_bits(void *ctxt, int off, int len, uint32_t *val, int silent)
 {
 	int w;
 	uint8_t cnt = 0xff;
@@ -133,7 +133,8 @@ int pd_dequeue_bits(void *ctxt, int off, int len, uint32_t *val)
 		return -1;
 	}
 stream_err:
-	CPRINTS("PD Invalid %d @%d", cnt, off);
+	if (!silent)
+		CPRINTS("PD Invalid %d @%d", cnt, off);
 	return -1;
 }
 
@@ -252,14 +253,17 @@ void pd_dump_packet(void *ctxt, const char *msg)
 
 /* --- SPI TX operation --- */
 
-static const struct dma_option dma_tx_option = {
+static struct dma_option dma_tx_option = {
 	DMAC_SPI_TX, (void *)&SPI_REGS->dr,
 	STM32_DMA_CCR_MSIZE_8_BIT | STM32_DMA_CCR_PSIZE_8_BIT
 };
 
-void pd_start_tx(void *ctxt, int polarity, int bit_len)
+void pd_start_tx(void *ctxt, int polarity, int bit_len, int circular)
 {
 	stm32_dma_chan_t *tx = dma_get_channel(DMAC_SPI_TX);
+
+	if (circular)
+		dma_tx_option.flags |= STM32_DMA_CCR_CIRC;
 
 	/* update DMA configuration */
 	dma_prepare_tx(&dma_tx_option, DIV_ROUND_UP(bit_len, 8), ctxt);
