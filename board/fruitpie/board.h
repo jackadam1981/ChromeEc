@@ -25,6 +25,8 @@
 #define CONFIG_I2C
 #define CONFIG_BATTERY_SMART
 #define CONFIG_USB_SWITCH_TSU6721
+#define CONFIG_SPI_FLASH
+#define CONFIG_SPI_FLASH_SIZE 8388608
 #undef CONFIG_WATCHDOG_HELP
 #undef CONFIG_LID_SWITCH
 #undef CONFIG_TASK_PROFILING
@@ -69,10 +71,8 @@ enum gpio_signal {
 	GPIO_USB_CC2_PD,
 	GPIO_PD_CLK_OUT,
 	GPIO_PD_TX_EN,
-#if 0
 	GPIO_PD_CLK_IN,
 	GPIO_PD_TX_DATA,
-#endif
 
 	/* Power and muxes control */
 	GPIO_PP5000_EN,

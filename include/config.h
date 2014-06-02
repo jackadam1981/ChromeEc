@@ -740,6 +740,12 @@
 /* Support SPI interfaces */
 #undef CONFIG_SPI
 
+/* Support SPI flash */
+#undef CONFIG_SPI_FLASH
+
+/* Size (bytes) of SPI flash memory */
+#undef CONFIG_SPI_FLASH_SIZE
+
 /* Default stack size to use for tasks, in bytes */
 #undef CONFIG_STACK_SIZE
 
