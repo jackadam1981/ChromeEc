@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfcdbca8_8f9a86e5",
+        "filename": "driver/ina231.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-06-02T20:48:24Z",
+      "side": 1,
+      "message": "nit, CPUTS unused.",
+      "revId": "f39796f9f8005388ec48823d50b09f7335c861a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fbfa8df_e530fd0d",
+        "filename": "driver/ina231.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-06-02T20:48:24Z",
+      "side": 1,
+      "message": "Suggest a #define for calibration\n\n  #define SET_CALIB(max_cur_ma, rsense_mohm) (5120/((fs_cur_ma/1\u003c\u003c15)*rsense_mohm))",
+      "revId": "f39796f9f8005388ec48823d50b09f7335c861a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfcdbca8_2f8932a9",
+        "filename": "driver/ina231.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-06-02T20:48:24Z",
+      "side": 1,
+      "message": "nit, warn to console here as well",
+      "revId": "f39796f9f8005388ec48823d50b09f7335c861a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fcab88f_dc695c0c",
+        "filename": "driver/ina231.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-06-02T20:48:24Z",
+      "side": 1,
+      "message": "Call from board.c/board_init?\n\nSince you\u0027re making the assumption of 1mA/LSB for calib I think you should hard-code here for now and add TODO to revisit later perhaps.\n\nMy math for calib is w/ 1ma/LSB is\n\n  0.00512/(1e-3*15e-3) \u003d 341.333 \u003d 155h",
+      "revId": "f39796f9f8005388ec48823d50b09f7335c861a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fbfa8df_b96eb210",
+        "filename": "driver/ina231.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-06-02T20:48:24Z",
+      "side": 1,
+      "message": "config -\u003e  calib",
+      "revId": "f39796f9f8005388ec48823d50b09f7335c861a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfcdbca8_b1c7e748",
+        "filename": "driver/ina231.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-06-02T20:48:24Z",
+      "side": 1,
+      "message": "Define constant for 125 / 100 since its used in multiple places",
+      "revId": "f39796f9f8005388ec48823d50b09f7335c861a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfcdbca8_51d773f4",
+        "filename": "driver/ina231.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-06-02T20:48:24Z",
+      "side": 1,
+      "message": "#define perhaps for this\n\n  #define POW_MW_PER_LSB(cur_ma_per_lsb) ( cur_ma_per_lsb * 25)",
+      "revId": "f39796f9f8005388ec48823d50b09f7335c861a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfcdbca8_0ff2f64d",
+        "filename": "driver/ina231.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-06-02T20:48:24Z",
+      "side": 1,
+      "message": "perhaps warning here if its not equal to 1mA/lsb default at least.",
+      "revId": "f39796f9f8005388ec48823d50b09f7335c861a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df4350e0_fda447ac",
+        "filename": "driver/ina231.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-06-02T20:48:24Z",
+      "side": 1,
+      "message": "nit, should include \u003cval\u003e as well since its only for writing?",
+      "revId": "f39796f9f8005388ec48823d50b09f7335c861a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
