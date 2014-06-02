@@ -16,10 +16,8 @@
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
 const uint32_t pd_src_pdo[] = {
-		PDO_FIXED(5000,   500, PDO_FIXED_EXTERNAL),
-		PDO_FIXED(5000,  3000, 0),
-		PDO_FIXED(12000, 3000, 0),
-		PDO_FIXED(20000, 2000, 0),
+		PDO_FIXED(5000,  1500, PDO_FIXED_EXTERNAL),
+		PDO_FIXED(20000, 3000, PDO_FIXED_EXTERNAL),
 };
 const int pd_src_pdo_cnt = ARRAY_SIZE(pd_src_pdo);
 
@@ -30,46 +28,43 @@ const uint32_t pd_snk_pdo[] = {
 const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
 
 /* Cap on the max voltage requested as a sink (in millivolts) */
-static unsigned max_mv = -1; /* no cap */
+static unsigned max_mv = -1; /* default 5V selection */
 
 int pd_choose_voltage(int cnt, uint32_t *src_caps, uint32_t *rdo)
 {
 	int i;
 	int sel_mv;
-	int max_uw = 0;
-	int max_i = -1;
+	int select_i = 1;
+	int ma = 1500; /* request 1.5A */
+	int max_ma;
 
-	/* Get max power */
-	for (i = 0; i < cnt; i++) {
-		int uw;
-		int mv = ((src_caps[i] >> 10) & 0x3FF) * 50;
-		if ((src_caps[i] & PDO_TYPE_MASK) == PDO_TYPE_BATTERY) {
-			uw = 250000 * (src_caps[i] & 0x3FF);
-		} else {
-			int ma = (src_caps[i] & 0x3FF) * 10;
-			uw = ma * mv;
+	/* Get the requested voltage */
+	if (max_mv > 0)
+		for (i = 0; i < cnt; i++) {
+			int mv = ((src_caps[i] >> 10) & 0x3FF) * 50;
+			if (mv == max_mv) {
+				select_i = i;
+				break;
+			}
 		}
-		if ((uw > max_uw) && (mv <= max_mv)) {
-			max_i = i;
-			max_uw = uw;
-			sel_mv = mv;
-		}
-	}
-	if (max_i < 0)
+
+	if (select_i < cnt)
 		return -EC_ERROR_UNKNOWN;
 
-	/* request all the power ... */
-	if ((src_caps[max_i] & PDO_TYPE_MASK) == PDO_TYPE_BATTERY) {
-		int uw = 250000 * (src_caps[i] & 0x3FF);
-		*rdo = RDO_BATT(max_i + 1, uw/2, uw, 0);
-		ccprintf("Request [%d] %dV %d/%d mW\n",
-			 max_i, sel_mv/1000, uw/1000, uw/1000);
-	} else {
-		int ma = 10 * (src_caps[max_i] & 0x3FF);
-		*rdo = RDO_FIXED(max_i + 1, ma / 2, ma, 0);
-		ccprintf("Request [%d] %dV %d/%d mA\n",
-			 max_i, sel_mv/1000, max_i, ma/2, ma);
-	}
+	/* we do not deal with battery powered source for that simple mode */
+	if ((src_caps[select_i] & PDO_TYPE_MASK) == PDO_TYPE_BATTERY)
+		return -EC_ERROR_INVAL;
+
+	/* cap requested current */
+	max_ma = (src_caps[select_i] & 0x3FF) * 10;
+	if (ma > max_ma)
+		ma = max_ma;
+
+	sel_mv = ((src_caps[select_i] >> 10) & 0x3FF) * 50;
+	*rdo = RDO_FIXED(select_i, ma, ma, 0);
+	ccprintf("Request [%d] %dV %d mA\n",
+		 select_i, sel_mv/1000, ma);
+
 	return EC_SUCCESS;
 }
 
