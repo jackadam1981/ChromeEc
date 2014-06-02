@@ -315,6 +315,11 @@ void pd_tx_done(int polarity);
 void pd_dma_disable(void);
 
 /**
+ * Disable timer used for SPI.
+ */
+void pd_timer_disable(void);
+
+/**
  * Check whether the PD reception is started.
  *
  * @return true if the reception is on-going.
