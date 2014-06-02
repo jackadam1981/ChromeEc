@@ -55,6 +55,12 @@
 
 #ifndef __ASSEMBLER__
 
+/*
+ * Used to set GPIO's and clock to SPI module used for debug
+ * @param enable Whether to enable or disable debug
+ */
+int board_set_debug(int enable);
+
 /* Timer selection */
 #define TIM_CLOCK32 2
 #define TIM_ADC     3
