@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f33447f_c9f66240",
+        "filename": "common/host_command.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-02T15:34:58Z",
+      "side": 1,
+      "message": "This is left over from handling deferred responses on Snow, and can be removed now.  \n\nThe host would time out waiting for the flash erase command before the command finished, so we had a scheme for replying early and then the host would later ask for the result of the previous command.",
+      "revId": "72d96d55cd675fe1571c8ab0f20365b0da2e6d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
