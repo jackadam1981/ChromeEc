@@ -126,6 +126,50 @@ const struct i2c_port_t i2c_ports[] = {
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
+void board_set_debug(int enable)
+{
+	if (enable) {
+		/* Set pins PD_CLK_IN, PD_TX_DATA, and
+		 * VCONN1_EN to alternate function. */
+		/* Set pin PD_TX_EN (NSS) to general purpose output mode. */
+		STM32_GPIO_MODER(GPIO_B) &= ~0xff000000;
+		STM32_GPIO_MODER(GPIO_B) |= 0xa9000000;
+
+		/* Set all four pins to output push-pull */
+		STM32_GPIO_OTYPER(GPIO_B) &= ~(0xf000);
+
+		/* Set all four pins to high speed */
+		STM32_GPIO_OSPEEDR(GPIO_B) |= 0xff000000;
+
+		/* Set all four pins to no pull-up/pull-down */
+		STM32_GPIO_PUPDR(GPIO_B) &= ~(0xff000000);
+
+		/* Set all four pins to alternate function 0 */
+		STM32_GPIO_AFRH(GPIO_B) &= ~(0xffff0000);
+
+		/* Enable clocks to SPI2 module */
+		STM32_RCC_APB1ENR |= STM32_RCC_PB1_SPI2;
+
+		/* Set DMA to be remapped */
+		STM32_SYSCFG_CFGR1 |= (1 << 24);
+	}
+
+	else {
+		/* Unset DMA to be remapped */
+		STM32_SYSCFG_CFGR1 &= ~(1 << 24);
+
+		/* Disable clocks to SPI2 module */
+		STM32_RCC_APB1ENR &= ~STM32_RCC_PB1_SPI2;
+
+		/* Set all four pins to low speed */
+		STM32_GPIO_OSPEEDR(GPIO_B) &= ~0xff000000;
+
+		/* Set pins PD_CLK_IN, PD_TX_DATA,
+		 * and VCONN1_EN to input mode */
+		STM32_GPIO_MODER(GPIO_B) &= ~0xff000000;
+	}
+}
+
 void board_set_usb_mux(enum typec_mux mux)
 {
 	/* reset everything */
