@@ -16,7 +16,6 @@
 #define CONFIG_UART_CONSOLE 2
 
 /* Optional features */
-#define CONFIG_BOARD_PRE_INIT
 #define CONFIG_STM_HWTIMER32
 #define CONFIG_USB_POWER_DELIVERY
 #define CONFIG_USB_PD_DUAL_ROLE

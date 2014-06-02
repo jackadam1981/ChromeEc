@@ -103,6 +103,11 @@ BUILD_ASSERT(ARRAY_SIZE(gpio_list) == GPIO_COUNT);
 /* Initialize board. */
 static void board_init(void)
 {
+	/* enable SYSCFG clock */
+	STM32_RCC_APB2ENR |= 1 << 0;
+
+	/* Remap SPI2 to DMA channels 6 and 7 */
+	STM32_SYSCFG_CFGR1 |= (1 << 24);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -130,20 +135,14 @@ const struct i2c_port_t i2c_ports[] = {
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
-void board_config_pre_init(void)
-{
-	/* enable SYSCFG clock */
-	STM32_RCC_APB2ENR |= 1 << 0;
-
-	/* Remap SPI2 to DMA channels 6 and 7 */
-	STM32_SYSCFG_CFGR1 |= (1 << 24);
-}
-
 int board_set_debug(int enable)
 {
 	int rv = EC_SUCCESS;
 
 	if (enable) {
+		/* Disable the PD module */
+		gpio_config_module(MODULE_USB_PD, 0);
+
 		/* Suspend the USB PD task */
 		pd_set_suspend(1);
 
@@ -167,6 +166,10 @@ int board_set_debug(int enable)
 		/* Switch debug mux */
 		tsu6721_set_pins(TSU6721_PIN_MANUAL2_BOOT);
 
+		/* Unset output and alternate function on USB_C_PD_CLK_OUT */
+		STM32_GPIO_AFRH(GPIO_B) &= ~0xf0;
+		STM32_GPIO_MODER(GPIO_B) &= ~0xc0000;
+
 		/* Set pins PD_CLK_IN, PD_TX_DATA, and
 		 * VCONN1_EN to alternate function. */
 		/* Set pin PD_TX_EN (NSS) to general purpose output mode. */
@@ -179,20 +182,20 @@ int board_set_debug(int enable)
 		/* Set all four pins to output push-pull */
 		STM32_GPIO_OTYPER(GPIO_B) &= ~(0xf000);
 
+		/* Set pullup on PD_TX_EN */
+		STM32_GPIO_PUPDR(GPIO_B) |= 0x1000000;
+
 		/* Set all four pins to high speed */
 		STM32_GPIO_OSPEEDR(GPIO_B) |= 0xff000000;
 
 		/* Enable clocks to SPI2 module */
 		STM32_RCC_APB1ENR |= STM32_RCC_PB1_SPI2;
 	} else {
-		/* Disable clocks to SPI2 module */
-		STM32_RCC_APB1ENR &= ~STM32_RCC_PB1_SPI2;
-
 		/* Set all but VCONN1_EN to input mode */
 		STM32_GPIO_MODER(GPIO_B) &= ~0x3f000000;
 
-		/* Set all four pins to low speed */
-		STM32_GPIO_OSPEEDR(GPIO_B) &= ~0xff000000;
+		/* Unset pullup on PD_TX_EN/SPI_NSS */
+		gpio_set_flags(GPIO_PD_TX_EN, GPIO_OUTPUT | GPIO_PULL_UP);
 
 		/* Turn off debug mux */
 		tsu6721_set_pins(0);
