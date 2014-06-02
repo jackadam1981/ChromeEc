@@ -750,6 +750,9 @@
 /* SPI module register used for flash interface */
 #undef CONFIG_SPI_FLASH_REGISTER
 
+/* Enable additional console commands for debug */
+#undef CONFIG_SPI_FLASH_DEBUG
+
 /* Default stack size to use for tasks, in bytes */
 #undef CONFIG_STACK_SIZE
 
