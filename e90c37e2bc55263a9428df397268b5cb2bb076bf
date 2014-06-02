@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9fcab88f_1cb914db",
+        "filename": "common/host_command.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-02T16:23:40Z",
+      "side": 1,
+      "message": "I\u0027m not sure that sending and receiving host commands should be put together in the same task. They seem related, so I put them together and tested it like this. But, I\u0027m not convinced that this won\u0027t mess up some timing with the normal receiving host commands. Let me know if you have an opinion.",
+      "revId": "e90c37e2bc55263a9428df397268b5cb2bb076bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfcdbca8_de94b22d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1353,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-02T16:23:40Z",
+      "side": 1,
+      "message": "Randall, is there a different host command number you\u0027d prefer I use for this PD stuff?",
+      "revId": "e90c37e2bc55263a9428df397268b5cb2bb076bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
