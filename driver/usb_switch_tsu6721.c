@@ -134,7 +134,10 @@ int tsu6721_mux(enum tsu6721_mux sel)
 	if (sel == TSU6721_MUX_AUTO) {
 		tsu6721_write(TSU6721_REG_CONTROL, ctrl | TSU6721_CTRL_AUTO);
 	} else {
-		tsu6721_write(TSU6721_REG_MANUAL1, sel);
+		if (sel != TSU6721_MUX_DEBUG)
+			tsu6721_write(TSU6721_REG_MANUAL1, sel);
+		else
+			tsu6721_write(TSU6721_REG_MANUAL2, sel);
 		tsu6721_write(TSU6721_REG_CONTROL, ctrl & ~TSU6721_CTRL_AUTO);
 	}
 
