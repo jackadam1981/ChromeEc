@@ -38,6 +38,8 @@ enum tsu6721_mux {
 	TSU6721_MUX_UART  = 0x6C,
 };
 
+#define TSU6721_PIN_MANUAL2_BOOT	0x8
+
 #define TSU6721_INT_ATTACH		0x0001
 #define TSU6721_INT_DETACH		0x0002
 #define TSU6721_INT_KP			0x0004
@@ -104,6 +106,9 @@ int tsu6721_get_device_type(void);
 
 /* Control TSU6721 mux. */
 int tsu6721_mux(enum tsu6721_mux sel);
+
+/* Set USB debug MUX to access SPI */
+int tsu6721_usb_debug(int enable);
 
 /* Reset TSU6721. */
 void tsu6721_reset(void);

@@ -331,6 +331,11 @@ void pd_tx_done(int polarity)
 	pd_tx_disable(polarity);
 }
 
+void pd_dma_disable(void)
+{
+	dma_disable(DMAC_SPI_TX);
+}
+
 /* --- RX operation using comparator linked to timer --- */
 
 static const struct dma_option dma_tim_option = {

@@ -802,6 +802,7 @@ void pd_task(void)
 			/* Nothing to do */
 			break;
 		case PD_STATE_SUSPENDED:
+			pd_dma_disable();
 			pd_rx_disable_monitoring();
 			pd_power_supply_reset();
 

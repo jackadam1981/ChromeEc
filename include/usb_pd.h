@@ -310,6 +310,11 @@ void pd_tx_set_circular_mode(void);
 void pd_tx_done(int polarity);
 
 /**
+ * Disable DMA used for TX.
+ */
+void pd_dma_disable(void);
+
+/**
  * Check whether the PD reception is started.
  *
  * @return true if the reception is on-going.
