@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dffef0bb_d164972b",
+        "filename": "board/fruitpie/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-02T21:46:42Z",
+      "side": 1,
+      "message": "that will break the PD RX :\nin the PD code,  pd_tx_init() will set those GPIOs in their alternate config at startup, so PB15 will be initialize as MOSI and VCONN1_EN will no longer work as expected.",
+      "revId": "efff30636b3d6ac0825848317a3c5c4a2ce02e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
