@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f33447f_d86b8a72",
+        "filename": "board/fruitpie/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-03T01:11:30Z",
+      "side": 1,
+      "message": "setting this GPIO as output by default might trigger some electrical conflict since by default it is connected to another output (PB9)",
+      "revId": "98a11042ecfd7029645ba6f7ac317336503abeb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
