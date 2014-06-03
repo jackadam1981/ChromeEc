@@ -142,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "dffef0bb_02989b20",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-03T00:50:16Z",
+      "side": 1,
+      "message": "yes sure, it\u0027s not fully supported by hardware ...\nlet\u0027s forget about it for now.",
+      "parentUuid": "dffef0bb_42c0d30c",
+      "revId": "534b7485706177dfb739043bcb7bc249c24ef293",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dffef0bb_445fc39d",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
