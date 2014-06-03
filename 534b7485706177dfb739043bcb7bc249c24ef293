@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5fc5a077_aa39ad5f",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-03T00:28:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fc5a077_8725c4cb",
+      "revId": "534b7485706177dfb739043bcb7bc249c24ef293",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f33447f_3f5f009f",
         "filename": "chip/stm32/usb_pd_phy.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2014-06-02T22:31:47Z",
       "side": 1,
       "message": "as we never exit BIST mode, rather than touching this function (and slightly slowing tx) I would just modify dma_tx_option with another function before calling that one.",
+      "revId": "534b7485706177dfb739043bcb7bc249c24ef293",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dffef0bb_02d1bbdc",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-03T00:28:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f33447f_3f5f009f",
       "revId": "534b7485706177dfb739043bcb7bc249c24ef293",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "5fc5a077_ca3ce150",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-03T00:28:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fc5a077_077bf49a",
+      "revId": "534b7485706177dfb739043bcb7bc249c24ef293",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5fc5a077_a769e8c9",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "dffef0bb_42c0d30c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-03T00:28:26Z",
+      "side": 1,
+      "message": "tried using that builtin function, but i get a linker error:\nundefined reference to `__popcountsi2\u0027",
+      "parentUuid": "5fc5a077_a769e8c9",
+      "revId": "534b7485706177dfb739043bcb7bc249c24ef293",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dffef0bb_445fc39d",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -81,6 +153,24 @@
       "writtenOn": "2014-06-02T22:31:47Z",
       "side": 1,
       "message": "why not just call another function (forever) from PD_STATE_BIST rather than adding this on the critical path ?",
+      "revId": "534b7485706177dfb739043bcb7bc249c24ef293",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f33447f_bdd7987c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-03T00:28:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dffef0bb_445fc39d",
       "revId": "534b7485706177dfb739043bcb7bc249c24ef293",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
