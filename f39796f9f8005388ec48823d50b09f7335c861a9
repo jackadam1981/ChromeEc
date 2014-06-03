@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1fbfa8df_2f46cfdf",
+        "filename": "driver/ina231.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-03T18:58:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfcdbca8_8f9a86e5",
+      "revId": "f39796f9f8005388ec48823d50b09f7335c861a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fbfa8df_e530fd0d",
         "filename": "driver/ina231.c",
         "patchSetId": 4
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "1fbfa8df_0f4b0be9",
+        "filename": "driver/ina231.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-03T18:58:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfcdbca8_2f8932a9",
+      "revId": "f39796f9f8005388ec48823d50b09f7335c861a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fcab88f_dc695c0c",
         "filename": "driver/ina231.c",
         "patchSetId": 4
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "5f212030_395c0fa7",
+        "filename": "driver/ina231.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-03T18:58:43Z",
+      "side": 1,
+      "message": "Yes called from board_init using the INA231_CALIB_1MA() macro defined in the .h\n\nI have opened the bug and assigned it to you ;-)",
+      "parentUuid": "9fcab88f_dc695c0c",
+      "revId": "f39796f9f8005388ec48823d50b09f7335c861a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fbfa8df_b96eb210",
         "filename": "driver/ina231.c",
         "patchSetId": 4
@@ -81,6 +135,24 @@
       "writtenOn": "2014-06-02T20:48:24Z",
       "side": 1,
       "message": "config -\u003e  calib",
+      "revId": "f39796f9f8005388ec48823d50b09f7335c861a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f212030_b9057faa",
+        "filename": "driver/ina231.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-03T18:58:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fbfa8df_b96eb210",
       "revId": "f39796f9f8005388ec48823d50b09f7335c861a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -149,6 +221,24 @@
       "writtenOn": "2014-06-02T20:48:24Z",
       "side": 1,
       "message": "nit, should include \u003cval\u003e as well since its only for writing?",
+      "revId": "f39796f9f8005388ec48823d50b09f7335c861a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df4350e0_71b70013",
+        "filename": "driver/ina231.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-03T18:58:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df4350e0_fda447ac",
       "revId": "f39796f9f8005388ec48823d50b09f7335c861a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
