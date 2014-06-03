@@ -47,12 +47,16 @@ static inline void pd_set_pins_speed(void)
 static inline void pd_tx_enable(int polarity)
 {
 	gpio_set_level(GPIO_PD_TX_EN, 1);
+	/* TX_DATA on PB14 is now connected to SPI2 */
+	gpio_set_alternate_function(GPIO_B, 0x4000, 0);
 }
 
 /* Put the TX driver in Hi-Z state */
 static inline void pd_tx_disable(int polarity)
 {
 	gpio_set_level(GPIO_PD_TX_EN, 0);
+	/* TX_DATA on PB14 is an output low GPIO to disable the FET */
+	gpio_set_alternate_function(GPIO_B, 0x4000, -1);
 }
 
 /* we know the plug polarity, do the right configuration */
