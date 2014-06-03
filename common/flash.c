@@ -308,30 +308,6 @@ int flash_set_protect(uint32_t mask, uint32_t flags)
  * *offset<0.  If argc<shift+1, leaves size unchanged, returning error if
  * *size<0.
  */
-static int parse_offset_size(int argc, char **argv, int shift,
-			     int *offset, int *size)
-{
-	char *e;
-	int i;
-
-	if (argc > shift) {
-		i = (uint32_t)strtoi(argv[shift], &e, 0);
-		if (*e)
-			return EC_ERROR_PARAM1;
-		*offset = i;
-	} else if (*offset < 0)
-		return EC_ERROR_PARAM_COUNT;
-
-	if (argc > shift + 1) {
-		i = (uint32_t)strtoi(argv[shift + 1], &e, 0);
-		if (*e)
-			return EC_ERROR_PARAM2;
-		*size = i;
-	} else if (*size < 0)
-		return EC_ERROR_PARAM_COUNT;
-
-	return EC_SUCCESS;
-}
 
 static int command_flash_info(int argc, char **argv)
 {
