@@ -13,7 +13,7 @@
 
 /* Optional features */
 #define CONFIG_DEBUG_PRINTF
-#define CONFIG_KEYBORG_FAST_SCAN
+#undef CONFIG_KEYBORG_FAST_SCAN
 #define CONFIG_USB
 #undef CONFIG_ADC
 #undef CONFIG_COMMON_GPIO
@@ -30,8 +30,9 @@
 #undef CONFIG_WATCHDOG_HELP
 
 /* How the touch data is stored and printed */
-#define CONFIG_ENCODE_SEGMENT
+#undef CONFIG_ENCODE_SEGMENT
 #undef CONFIG_ENCODE_RAW
+#define CONFIG_ENCODE_USB
 #undef CONFIG_ENCODE_DUMP_PYTHON
 
 #define CONFIG_USB_PID 0x1234

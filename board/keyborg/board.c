@@ -132,7 +132,19 @@ static const char *get_version(void)
 }
 
 void usb_init(void);
+int usb_write_raw(uint8_t *data, int size);
 
+int pending_scan;
+
+void console_handle_char(int c)
+{
+	if (c == 's') {
+		pending_scan++;
+	}
+	debug_printf("%c", c);
+}
+extern uint32_t acc;
+extern uint32_t kick_cnt;
 int main(void)
 {
 	int i = 0;
@@ -165,7 +177,14 @@ int main(void)
 
 	while (1) {
 		i++;
-		task_wait_event(SECOND);
+		task_wait_event(1000 * MSEC);
+		if (pending_scan) {
+			pending_scan--;
+			touch_scan_full_matrix();
+			debug_printf("Acc = %d us\n", acc);
+			debug_printf("kc = %d\n", kick_cnt);
+		}
+#if 0
 		if (master_slave_is_master()) {
 			debug_printf("Hello x 50...");
 			if (spi_hello_test(50) == EC_SUCCESS)
@@ -181,5 +200,6 @@ int main(void)
 				task_wait_event(-1);
 			}
 		}
+#endif
 	}
 }
