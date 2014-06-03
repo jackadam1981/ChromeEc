@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f33447f_2e602c16",
+        "filename": "chip/stm32/spi_flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-03T16:40:00Z",
+      "side": 1,
+      "message": "I think most of the instructions are inside the JEDEC standard, it probably worth having a look at the standard and sort the chip specific from the standard ones.",
+      "revId": "71da8065fc885f140b8e08fe833d35210b459e81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dffef0bb_939dffe0",
+        "filename": "chip/stm32/spi_flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-03T16:40:00Z",
+      "side": 1,
+      "message": "is it useful to have 2 buffers or can we re-use the same ?",
+      "revId": "71da8065fc885f140b8e08fe833d35210b459e81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f33447f_8e4ff8a0",
+        "filename": "chip/stm32/spi_flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-03T16:40:00Z",
+      "side": 1,
+      "message": "looks like an open coded memset, you can use memset",
+      "revId": "71da8065fc885f140b8e08fe833d35210b459e81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f33447f_ae4c3cac",
+        "filename": "chip/stm32/spi_flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-03T16:40:00Z",
+      "side": 1,
+      "message": "at that point, rcv is *always* defined ?\n(since you defined it at line 151)",
+      "revId": "71da8065fc885f140b8e08fe833d35210b459e81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf505ca5_5f58cf0e",
+        "filename": "chip/stm32/spi_flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-03T16:40:00Z",
+      "side": 1,
+      "message": "that part is board-specific.\nwe need to do a little bit better, at least a config constant ?",
+      "revId": "71da8065fc885f140b8e08fe833d35210b459e81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f33447f_ce3bc008",
+        "filename": "chip/stm32/spi_flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-03T16:40:00Z",
+      "side": 1,
+      "message": "as spi registers are defined as \"volatile\", this kind of construct with several assignments will produce very bad code.",
+      "revId": "71da8065fc885f140b8e08fe833d35210b459e81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf505ca5_7f558bd3",
+        "filename": "chip/stm32/spi_flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-03T16:40:00Z",
+      "side": 1,
+      "message": "putting 3 erase size options is expensive wrt the code size and might not worth the speedup",
+      "revId": "71da8065fc885f140b8e08fe833d35210b459e81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
