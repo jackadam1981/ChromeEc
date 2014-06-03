@@ -133,6 +133,19 @@ static const char *get_version(void)
 
 void usb_init(void);
 
+int usb_puts(const char *outstr);
+int usb_write_raw(uint8_t *data, int size);
+
+int pending_scan;
+
+void console_handle_char(int c)
+{
+	if (c == 's') {
+		pending_scan = 1;
+	}
+	debug_printf("%c", c);
+}
+
 int main(void)
 {
 	int i = 0;
@@ -165,7 +178,20 @@ int main(void)
 
 	while (1) {
 		i++;
-		task_wait_event(SECOND);
+		task_wait_event(1000 * MSEC);
+#if 0
+		for (i = 0; i < 10; ++i) {
+			uint8_t data[10] = {'a', 'c', '!'};
+			usb_write_raw(data, 3);
+			while ((STM32_USB_EP(2) & (0x3 << 4)) == (0x3 << 4))
+				;
+		}
+#endif
+		if (pending_scan) {
+			pending_scan = 0;
+			touch_scan_full_matrix();
+		}
+#if 0
 		if (master_slave_is_master()) {
 			debug_printf("Hello x 50...");
 			if (spi_hello_test(50) == EC_SUCCESS)
@@ -181,5 +207,6 @@ int main(void)
 				task_wait_event(-1);
 			}
 		}
+#endif
 	}
 }

@@ -21,7 +21,7 @@
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_USB, outstr)
-#define CPRINTF(format, args...) debug_printf(format, ## args)
+#define CPRINTF(format, args...) /*debug_printf(format, ## args)*/
 
 #define MAX_PACKET_SIZE 64
 
@@ -66,7 +66,7 @@ const struct usb_config_descriptor USB_CONF_DESC(conf) = {
 	.bMaxPower = 250, /* MaxPower 500 mA */
 };
 /* HID descriptors */
-const struct usb_interface_descriptor USB_CONF_DESC(iface0) = {
+const struct usb_interface_descriptor USB_IFACE_DESC(USB_IFACE_HID) = {
 	.bLength = USB_DT_INTERFACE_SIZE,
 	.bDescriptorType = USB_DT_INTERFACE,
 	.bInterfaceNumber = 0,
@@ -77,7 +77,15 @@ const struct usb_interface_descriptor USB_CONF_DESC(iface0) = {
 	.bInterfaceProtocol = USB_HID_PROTOCOL_KEYBOARD,
 	.iInterface = 0,
 };
-const struct usb_hid_descriptor USB_CONF_DESC(hid) = {
+const struct usb_endpoint_descriptor USB_EP_DESC(USB_IFACE_HID, 81) = {
+	.bLength = USB_DT_ENDPOINT_SIZE,
+	.bDescriptorType = USB_DT_ENDPOINT,
+	.bEndpointAddress = 0x80 | USB_EP_HID,
+	.bmAttributes = 0x03 /* Interrupt endpoint */,
+	.wMaxPacketSize = HID_REPORT_SIZE,
+	.bInterval = 40 /* ms polling interval */
+};
+const struct usb_hid_descriptor USB_CUSTOM_DESC(USB_IFACE_HID, hid) = {
 	.bLength = 9,
 	.bDescriptorType = USB_HID_DT_HID,
 	.bcdHID = 0x0100,
@@ -88,16 +96,8 @@ const struct usb_hid_descriptor USB_CONF_DESC(hid) = {
 		.wDescriptorLength = 45
 	}}
 };
-const struct usb_endpoint_descriptor USB_CONF_DESC(ep81) = {
-	.bLength = USB_DT_ENDPOINT_SIZE,
-	.bDescriptorType = USB_DT_ENDPOINT,
-	.bEndpointAddress = 0x80 | USB_EP_HID,
-	.bmAttributes = 0x03 /* Interrupt endpoint */,
-	.wMaxPacketSize = HID_REPORT_SIZE,
-	.bInterval = 40 /* ms polling interval */
-};
 /* USB-Serial descriptors */
-const struct usb_interface_descriptor USB_CONF_DESC(iface1) = {
+const struct usb_interface_descriptor USB_IFACE_DESC(USB_IFACE_SERIAL) = {
 	.bLength = USB_DT_INTERFACE_SIZE,
 	.bDescriptorType = USB_DT_INTERFACE,
 	.bInterfaceNumber = 1,
@@ -108,7 +108,7 @@ const struct usb_interface_descriptor USB_CONF_DESC(iface1) = {
 	.bInterfaceProtocol = 0,
 	.iInterface = 0,
 };
-const struct usb_endpoint_descriptor USB_CONF_DESC(ep82) = {
+const struct usb_endpoint_descriptor USB_EP_DESC(USB_IFACE_SERIAL, 82) = {
 	.bLength = USB_DT_ENDPOINT_SIZE,
 	.bDescriptorType = USB_DT_ENDPOINT,
 	.bEndpointAddress = 0x80 | USB_EP_SERIAL_TX,
@@ -116,7 +116,7 @@ const struct usb_endpoint_descriptor USB_CONF_DESC(ep82) = {
 	.wMaxPacketSize = MAX_PACKET_SIZE,
 	.bInterval = 10
 };
-const struct usb_endpoint_descriptor USB_CONF_DESC(ep3) = {
+const struct usb_endpoint_descriptor USB_EP_DESC(USB_IFACE_SERIAL, 3) = {
 	.bLength = USB_DT_ENDPOINT_SIZE,
 	.bDescriptorType = USB_DT_ENDPOINT,
 	.bEndpointAddress = USB_EP_SERIAL_RX,
@@ -209,6 +209,10 @@ static void copy_to_endpoint(const uint8_t *src, usb_uint *ebuf, int size)
 #define EP_RX_STALL 0x1000
 #define EP_RX_DISAB 0x0000
 
+#define TOGGLE_EP(n, mask, val, flags) \
+	STM32_USB_EP(n) = (((STM32_USB_EP(n) & (EP_MASK | (mask))) \
+			   ^ (val)) | (flags))
+
 static int set_addr;
 
 static void ep0_rx(void)
@@ -296,7 +300,7 @@ static void ep0_rx(void)
 				(1 << 8)  /* STATUS OUT */;
 	} else if (desc->ep0_rx[0] == 0x0900) {
 		/* SET_CONFIGURATION */
-		uint8_t cfg = desc->ep0_rx[1] & 0xff;
+		/*uint8_t cfg = desc->ep0_rx[1] & 0xff;*/
 		CPRINTF("SetCFG %d\n", cfg);
 		/* null IN for handshake */
 		desc->ep[0].tx_count = 0;
@@ -357,14 +361,19 @@ static void ep2_tx(void)
 	return;
 }
 
-void console_handle_char(int c) { }
+/*void console_handle_char(int c) { debug_printf("%c", c); }*/
+void console_handle_char(int c);
 static void ep3_rx(void)
 {
 	uint16_t ep3 = STM32_USB_EP(3);
 	int i;
 	for (i = 0; i < (desc->ep[3].rx_count & 0x3ff); i++)
 		/* Not working on old STM32 ... */
+#if 0
 		console_handle_char(((uint8_t *)desc->ep3_rx)[i]);
+#else
+		console_handle_char(((uint8_t *)desc->ep3_rx)[((i & ~1) << 1) + (i & 1)]);
+#endif
 	/* clear IT */
 	STM32_USB_EP(3) = (ep3 & (EP_MASK | EP_RX_MASK)) ^ EP_RX_VALID;
 	return;
@@ -387,11 +396,12 @@ static int is_reset;
 
 static int __tx_char(void *context, int c)
 {
-	uint16_t *buf = (uint16_t *)desc->ep2_tx;
+	usb_uint *buf = (usb_uint *)desc->ep2_tx;
 
 	/* Do newline to CRLF translation */
+	/*
 	if (c == '\n' && __tx_char(NULL, '\r'))
-		return 1;
+		return 1;*/
 
 	if (ep2_idx > 63)
 		return 1;
@@ -399,6 +409,7 @@ static int __tx_char(void *context, int c)
 		buf[ep2_idx/2] = c;
 	else
 		buf[ep2_idx/2] |= c << 8;
+
 	ep2_idx++;
 
 	return 0;
@@ -423,6 +434,27 @@ int usb_puts(const char *outstr)
 	STM32_USB_EP(2) = (ep2 & (EP_MASK | EP_TX_MASK)) ^ EP_TX_VALID;
 	/* Successful if we consumed all output */
 	return *outstr ? EC_ERROR_OVERFLOW : EC_SUCCESS;
+}
+
+int usb_write_raw(const uint8_t *data, int size)
+{
+	uint16_t ep2 = STM32_USB_EP(2);
+	int i;
+
+	if (!is_reset)
+		return 0;
+
+	ep2_idx = 0;
+	/* Put all characters in the output buffer */
+	for (i = 0; i < size; ++i)
+		if (__tx_char(NULL, data[i]) != 0)
+			break;
+
+	desc->ep[2].tx_count = ep2_idx;
+	/* enable TX */
+	STM32_USB_EP(2) = (ep2 & (EP_MASK | EP_TX_MASK)) ^ EP_TX_VALID;
+	/* Successful if we consumed all output */
+	return (ep2_idx != size) ? EC_ERROR_OVERFLOW : EC_SUCCESS;
 }
 
 int usb_vprintf(const char *format, va_list args)
@@ -510,8 +542,6 @@ void usb_reset(void)
 void IRQ_HANDLER(STM32_IRQ_USB_LP)(void)
 {
 	uint16_t status = STM32_USB_ISTR;
-
-	debug_printf("ok\n");
 
 	if ((status & (1 << 10)))
 		usb_reset();
