@@ -18,7 +18,7 @@ enum pin_type {
 #define ADC_WINDOW_POS 2
 
 /* Threshold for each cell */
-#define THRESHOLD 35
+#define THRESHOLD 0
 
 /* Threshold for entire column */
 #define COL_THRESHOLD 16

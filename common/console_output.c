@@ -75,7 +75,7 @@ int cputs(enum console_channel channel, const char *outstr)
 		return EC_SUCCESS;
 
 #ifdef CONFIG_USB
-	usb_puts(outstr);
+	/*usb_puts(outstr);*/
 #endif
 	return uart_puts(outstr);
 }
@@ -90,9 +90,11 @@ int cprintf(enum console_channel channel, const char *format, ...)
 		return EC_SUCCESS;
 
 #ifdef CONFIG_USB
+	/*
 	va_start(args, format);
 	rv = usb_vprintf(format, args);
 	va_end(args);
+	*/
 #endif
 
 	va_start(args, format);
