@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5fc5a077_0ae0995c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-03T00:45:05Z",
+      "side": 1,
+      "message": "we should check the mode bits in the BIST data object, e.g. :\n\nif ((payload[0] \u003e\u003e 28) \u003d\u003d 5)\n   bist_mode_2_tx(ctxt);",
+      "revId": "bd08cc42747d5988e7c06f92fcf880cc0113e10e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
