@@ -123,7 +123,10 @@ struct usb_endpoint_descriptor {
 	}
 
 #define USB_CONF_DESC(name) CONCAT2(usb_desc_,name) \
-	 __attribute__((section(".rodata.usb_desc_"#name)))
+	__attribute__((section(".rodata.usb_desc_" STRINGIFY(name))))
+#define USB_IFACE_DESC(num) USB_CONF_DESC(CONCAT3(iface,num,_0iface))
+#define USB_EP_DESC(i,num) USB_CONF_DESC(CONCAT4(iface,i,_1ep,num))
+#define USB_CUSTOM_DESC(i,name) USB_CONF_DESC(CONCAT4(iface,i,_2,name))
 
 /* String descriptors are defined in the board code */
 extern const void * const usb_strings[];

@@ -12,4 +12,5 @@ CHIP_VARIANT:=stm32ts60
 board-y=board.o hardware.o runtime.o master_slave.o spi_comm.o touch_scan.o
 board-$(CONFIG_ENCODE_SEGMENT)+=encode_segment.o
 board-$(CONFIG_ENCODE_RAW)+=encode_raw.o
+board-$(CONFIG_ENCODE_USB)+=encode_usb.o
 board-$(CONFIG_DEBUG_PRINTF)+=debug.o

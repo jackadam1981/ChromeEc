@@ -351,8 +351,8 @@ int touch_scan_full_matrix(void)
 
 	master_slave_sync(20);
 
-	debug_printf("Sampling took %d us\n", get_time().val - st.val);
-	/*encode_dump_matrix();*/
+	debug_printf("Sampling took %d us\n", get_time().le.lo - st.le.lo);
+	encode_dump_matrix();
 
 	return EC_SUCCESS;
 }
