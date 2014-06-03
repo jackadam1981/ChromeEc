@@ -11,6 +11,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
+#include "ina231.h"
 #include "registers.h"
 #include "task.h"
 #include "usb.h"
@@ -108,6 +109,11 @@ static void board_init(void)
 
 	/* pin-muxing : COMPx_OUT(7) on PA11/PA12 */
 	gpio_set_alternate_function(GPIO_A, 0x1800, 7);
+
+	/* Calibrate INA0 (VBUS) with 1mA/LSB scale */
+	ina231_init(0, 0x4127, INA231_CALIB_1MA(15 /*mOhm*/));
+	/* Disable INA1 (VCONN2) to avoid leaking current */
+	ina231_init(1, 0, INA231_CALIB_1MA(15 /*mOhm*/));
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
