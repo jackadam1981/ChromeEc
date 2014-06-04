@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "7f33447f_37a2b956",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-04T18:54:12Z",
+      "side": 1,
+      "message": "Can\u0027t use a mutex. I\u0027m not too worried about it because the worst that can happen is we miss a signal change. But, you could fix it by refactoring the deferred function to disable the power_signal_interrupt() function around the check and clear of siglog_entries.",
+      "parentUuid": "3f162cdd_c74c0888",
+      "revId": "067f94d61bee7db168791e99eb1bd7881bb7665d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df4350e0_ff6f520f",
         "filename": "power/common.c",
         "patchSetId": 1
