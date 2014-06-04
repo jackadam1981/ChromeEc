@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "bf505ca5_50abdc76",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-04T04:06:16Z",
+      "side": 1,
+      "message": "Seems like this ought to be moved to a pd_send_ec_int() function.  I\u0027m guessing this isn\u0027t the only place we\u0027ll be sending an interrupt to the EC?",
+      "revId": "e90c37e2bc55263a9428df397268b5cb2bb076bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf505ca5_707ff833",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-04T04:06:16Z",
+      "side": 1,
+      "message": "This seems like it\u0027s in the wrong place too.\n\nMaybe the PD task should just poll for the battery status?",
+      "revId": "e90c37e2bc55263a9428df397268b5cb2bb076bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f162cdd_1ec32d1c",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-04T04:06:16Z",
+      "side": 1,
+      "message": "This seems like the wrong place for this code.  It\u0027s using PD-specific constants.  Why can\u0027t the pd module simply ask for the flags and state of charge, rather than adding this here?",
+      "revId": "e90c37e2bc55263a9428df397268b5cb2bb076bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fcab88f_1cb914db",
         "filename": "common/host_command.c",
         "patchSetId": 4
@@ -19,6 +70,58 @@
     },
     {
       "key": {
+        "uuid": "3f162cdd_beca4129",
+        "filename": "common/host_command.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-04T04:06:16Z",
+      "side": 1,
+      "message": "I\u0027m more worried this is confusing.  Currently, the host command module handles received host commands, but doesn\u0027t know about specific commands.  This is putting some awfully specific code about PD and charge status and such in here.\n\nI think this code needs to go elsewhere, at the very least.",
+      "parentUuid": "9fcab88f_1cb914db",
+      "revId": "e90c37e2bc55263a9428df397268b5cb2bb076bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f162cdd_5ee0c5ab",
+        "filename": "include/charge_state.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-04T04:06:16Z",
+      "side": 1,
+      "message": "Why can\u0027t the PD module simple call charge_get_percent()?",
+      "revId": "e90c37e2bc55263a9428df397268b5cb2bb076bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf505ca5_10779456",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 873,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-04T04:06:16Z",
+      "side": 1,
+      "message": "Combine into a single config option.\n\nif CONFIG_USB_PD_MIN_CHARGE is defined, it\u0027s the minimum charge percent, and we care.  If it\u0027s not defined, PD MCU doesn\u0027t need to wait.",
+      "revId": "e90c37e2bc55263a9428df397268b5cb2bb076bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfcdbca8_de94b22d",
         "filename": "include/ec_commands.h",
         "patchSetId": 4
@@ -30,6 +133,24 @@
       "writtenOn": "2014-06-02T16:23:40Z",
       "side": 1,
       "message": "Randall, is there a different host command number you\u0027d prefer I use for this PD stuff?",
+      "revId": "e90c37e2bc55263a9428df397268b5cb2bb076bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf505ca5_30c3b01c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1353,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-04T04:06:16Z",
+      "side": 1,
+      "message": "No, this is fine.  But the name suggests the host uses it to ask the EC about the PD status.\n\nPerhaps EC_CMD_PD_EXCHANGE_STATUS?\n\nHmm.  If you\u0027ve implemented protocol v3.0, you can use command numbers \u003e 0xff.  Maybe we should just put all the PD commands up at 0x100 - 0x1ff, so it\u0027s clear they\u0027re not things the host can send to the EC?",
+      "parentUuid": "bfcdbca8_de94b22d",
       "revId": "e90c37e2bc55263a9428df397268b5cb2bb076bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
