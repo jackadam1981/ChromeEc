@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3f162cdd_e7702cb8",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-06-04T18:43:57Z",
+      "side": 1,
+      "message": "Okay.",
+      "parentUuid": "df2c3030_5bcd3b67",
+      "revId": "067f94d61bee7db168791e99eb1bd7881bb7665d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f1b2808_0c222398",
         "filename": "power/common.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "3f162cdd_c74c0888",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-06-04T18:43:57Z",
+      "side": 1,
+      "message": "I\u0027m not sure either. I suspect it\u0027s unlikely to happen unless we\u0027re in a reset loop of some sort.",
+      "parentUuid": "1f1b2808_0c222398",
+      "revId": "067f94d61bee7db168791e99eb1bd7881bb7665d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df4350e0_ff6f520f",
         "filename": "power/common.c",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2014-06-04T18:30:24Z",
       "side": 1,
       "message": "Should this also try to kick off siglog_deferred?  Or is it assuming that there is a deferred call already pending?",
+      "revId": "067f94d61bee7db168791e99eb1bd7881bb7665d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f162cdd_273ce4db",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-06-04T18:43:57Z",
+      "side": 1,
+      "message": "There should already be a deferred queued up, or it wouldn\u0027t be filled.",
+      "parentUuid": "df4350e0_ff6f520f",
       "revId": "067f94d61bee7db168791e99eb1bd7881bb7665d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
