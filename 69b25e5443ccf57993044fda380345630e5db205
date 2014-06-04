@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f33447f_397075ed",
+        "filename": "common/als.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-04T01:10:50Z",
+      "side": 1,
+      "message": "Why not just \n\n    mapped[i] \u003d als_read(i, \u0026val) \u003d\u003d EC_SUCCESS ? val : 0;",
+      "revId": "69b25e5443ccf57993044fda380345630e5db205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf505ca5_65dadca9",
+        "filename": "common/als.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-04T01:10:50Z",
+      "side": 1,
+      "message": "Might as well just\n\nusleep(SECOND)\n\nOr do you want to wake up if someone fires the task event?",
+      "revId": "69b25e5443ccf57993044fda380345630e5db205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
