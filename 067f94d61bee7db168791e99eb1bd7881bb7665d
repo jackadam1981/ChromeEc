@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df2c3030_5bcd3b67",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2014-06-04T18:30:24Z",
+      "side": 1,
+      "message": "This may be good to pull into the #ifdef and print the output based on what it is actually setting for the state.",
+      "revId": "067f94d61bee7db168791e99eb1bd7881bb7665d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f1b2808_0c222398",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2014-06-04T18:30:24Z",
+      "side": 1,
+      "message": "Does siglog need protected in case a power_signal_interrupt happens while processing in siglog_deferred()?  I\u0027m not sure the mutex interface in the EC can be used in interrupts so it may not be trivial.",
+      "revId": "067f94d61bee7db168791e99eb1bd7881bb7665d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df4350e0_ff6f520f",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2014-06-04T18:30:24Z",
+      "side": 1,
+      "message": "Should this also try to kick off siglog_deferred?  Or is it assuming that there is a deferred call already pending?",
+      "revId": "067f94d61bee7db168791e99eb1bd7881bb7665d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
