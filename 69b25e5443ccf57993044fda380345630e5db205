@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7f33447f_a4ebf888",
+        "filename": "common/als.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-04T01:40:17Z",
+      "side": 1,
+      "message": "ok, sure",
+      "parentUuid": "7f33447f_397075ed",
+      "revId": "69b25e5443ccf57993044fda380345630e5db205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf505ca5_65dadca9",
         "filename": "common/als.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-06-04T01:10:50Z",
       "side": 1,
       "message": "Might as well just\n\nusleep(SECOND)\n\nOr do you want to wake up if someone fires the task event?",
+      "revId": "69b25e5443ccf57993044fda380345630e5db205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f162cdd_bb6ed310",
+        "filename": "common/als.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-04T01:40:17Z",
+      "side": 1,
+      "message": "Doesn\u0027t make a difference right now, but it seems we may want someone else to fire it in the future, so I\u0027ll leave it as is.",
+      "parentUuid": "bf505ca5_65dadca9",
       "revId": "69b25e5443ccf57993044fda380345630e5db205",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
