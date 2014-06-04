@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "3f162cdd_27894413",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-06-04T19:34:43Z",
+      "side": 1,
+      "message": "Done. I tested it by lowering the delay to a millisecond. It worked fine, things still booted, etc.",
+      "parentUuid": "7f33447f_37a2b956",
+      "revId": "067f94d61bee7db168791e99eb1bd7881bb7665d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df4350e0_ff6f520f",
         "filename": "power/common.c",
         "patchSetId": 1
