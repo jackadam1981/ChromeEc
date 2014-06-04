@@ -215,7 +215,11 @@ static void set_initial_pwrbtn_state(void)
 		 * it can verify the EC.
 		 */
 		CPRINTS("PB init-on");
+#ifdef CONFIG_BRINGUP
+		pwrbtn_state = PWRBTN_STATE_IDLE;
+#else
 		pwrbtn_state = PWRBTN_STATE_INIT_ON;
+#endif
 	}
 }
 
