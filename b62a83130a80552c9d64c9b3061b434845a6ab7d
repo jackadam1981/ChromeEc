@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf505ca5_d7303b0e",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-05T20:06:22Z",
+      "side": 1,
+      "message": "Move to config.h and add description",
+      "revId": "b62a83130a80552c9d64c9b3061b434845a6ab7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f33447f_040bb6f6",
+        "filename": "common/host_command_pd.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-05T20:06:22Z",
+      "side": 1,
+      "message": "This is getting pretty deeply nested.  Move to a pd_exchange_status() function?",
+      "revId": "b62a83130a80552c9d64c9b3061b434845a6ab7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f33447f_c404eee3",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-05T20:06:22Z",
+      "side": 1,
+      "message": "Also define the min charge to do PD negotiation?",
+      "revId": "b62a83130a80552c9d64c9b3061b434845a6ab7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f162cdd_6ef070ff",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 2442,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-05T20:06:22Z",
+      "side": 1,
+      "message": "Where are the status bits defined?",
+      "revId": "b62a83130a80552c9d64c9b3061b434845a6ab7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
