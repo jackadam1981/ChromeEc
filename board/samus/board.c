@@ -97,13 +97,13 @@ const struct gpio_info gpio_list[] = {
 	{"BOARD_VERSION1",       LM4_GPIO_Q, (1<<5), GPIO_INPUT, NULL},
 	{"BOARD_VERSION2",       LM4_GPIO_Q, (1<<6), GPIO_INPUT, NULL},
 	{"BOARD_VERSION3",       LM4_GPIO_Q, (1<<7), GPIO_INPUT, NULL},
-	{"CPU_PGOOD",            LM4_GPIO_C, (1<<4), GPIO_INPUT, NULL},
 	{"USB1_OC_L",            LM4_GPIO_E, (1<<7), GPIO_INPUT, NULL},
 	{"USB1_STATUS_L",        LM4_GPIO_E, (1<<6), GPIO_INPUT, NULL},
 	{"USB2_OC_L",            LM4_GPIO_E, (1<<0), GPIO_INPUT, NULL},
 	{"USB2_STATUS_L",        LM4_GPIO_D, (1<<7), GPIO_INPUT, NULL},
 
 	/* Outputs; all unasserted by default except for reset signals */
+	{"PCH_RSMRST_L",         LM4_GPIO_C, (1<<4), GPIO_OUT_LOW, NULL},
 	{"CPU_PROCHOT",          LM4_GPIO_B, (1<<1), GPIO_OUT_LOW, NULL},
 	{"PP1200_EN",            LM4_GPIO_H, (1<<5), GPIO_OUT_LOW, NULL},
 	{"PP3300_DSW_EN",        LM4_GPIO_F, (1<<6), GPIO_OUT_LOW, NULL},

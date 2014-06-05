@@ -14,6 +14,8 @@
 
 #undef HEY_USE_BUILTIN_CLKRUN
 
+#define CONFIG_BRINGUP
+
 /* Optional features */
 #define CONFIG_ALS
 #define CONFIG_ALS_ISL29035
@@ -109,13 +111,13 @@ enum gpio_signal {
 	GPIO_BOARD_VERSION1,       /* Board version stuffing resistor 1 */
 	GPIO_BOARD_VERSION2,       /* Board version stuffing resistor 2 */
 	GPIO_BOARD_VERSION3,       /* Board version stuffing resistor 3 */
-	GPIO_CPU_PGOOD,            /* Power good to the CPU */
 	GPIO_USB1_OC_L,            /* USB port overcurrent warning */
 	GPIO_USB1_STATUS_L,        /* USB charger port 1 status output */
 	GPIO_USB2_OC_L,            /* USB port overcurrent warning */
 	GPIO_USB2_STATUS_L,        /* USB charger port 2 status output */
 
 	/* Outputs */
+	GPIO_PCH_RSMRST_L,         /* CPU Resume Reset*/
 	GPIO_CPU_PROCHOT,          /* Force CPU to think it's overheated */
 	GPIO_PP1200_EN,            /* Enable 1.20V supply */
 	GPIO_PP3300_DSW_EN,        /* Enable 3.3V DSW rail */

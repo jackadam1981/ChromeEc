@@ -242,8 +242,10 @@ enum power_state power_handle_state(enum power_state state)
 			return POWER_G3;
 		}
 
-		/* Wait 5ms for SUSCLK to stabilize */
-		msleep(5);
+		/* Wait for SUSCLK to stabilize */
+		msleep(50);
+
+		gpio_set_level(GPIO_PCH_RSMRST_L, 1);
 
 		/* Call hook to indicate out of G3 state */
 		hook_notify(HOOK_CHIPSET_PRE_INIT);
@@ -381,6 +383,7 @@ enum power_state power_handle_state(enum power_state state)
 	case POWER_S5G3:
 		/* Deassert DPWROK */
 		gpio_set_level(GPIO_PCH_DPWROK, 0);
+		gpio_set_level(GPIO_PCH_RSMRST_L, 0);
 
 		/* Turn off power rails enabled in S5 */
 		gpio_set_level(GPIO_PP1050_EN, 0);
