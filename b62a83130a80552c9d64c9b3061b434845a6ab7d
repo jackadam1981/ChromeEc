@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "df2c3030_c8ae5273",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-05T21:05:31Z",
+      "side": 1,
+      "message": "The code to wait for the min charge to be reached is in the board/samus/ directory. So, if we have the config option here,  it is misleading because some other board may set it, but it won\u0027t actually do anything. The problem is a lot of boards that have the USB PD code, don\u0027t use host commands to talk to EC (zinger, fruitpie, firefly, etc.). So, it is really a samus specific feature, which is why the code is in the board/samus/ directory.\n\nGiven that it can only apply to samus, does it make sense to move it to include/config.h?",
+      "parentUuid": "7f33447f_c404eee3",
+      "revId": "b62a83130a80552c9d64c9b3061b434845a6ab7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f162cdd_6ef070ff",
         "filename": "include/ec_commands.h",
         "patchSetId": 6
@@ -64,6 +82,24 @@
       "writtenOn": "2014-06-05T20:06:22Z",
       "side": 1,
       "message": "Where are the status bits defined?",
+      "revId": "b62a83130a80552c9d64c9b3061b434845a6ab7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f1b2808_ac120de5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 2442,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-05T21:05:31Z",
+      "side": 1,
+      "message": "There are no status flags being exchanged in this CL. In the future there will be, but right now, the only status info is the battery SOC.",
+      "parentUuid": "3f162cdd_6ef070ff",
       "revId": "b62a83130a80552c9d64c9b3061b434845a6ab7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
