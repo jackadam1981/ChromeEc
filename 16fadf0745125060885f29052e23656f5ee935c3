@@ -16,6 +16,24 @@
       "revId": "16fadf0745125060885f29052e23656f5ee935c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fe5041b_fc489645",
+        "filename": "board/swanky/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1003228
+      },
+      "writtenOn": "2014-06-06T05:58:06Z",
+      "side": 1,
+      "message": "This is because we need control power led on/off in factory test.",
+      "parentUuid": "1f1b2808_8f393bee",
+      "revId": "16fadf0745125060885f29052e23656f5ee935c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
