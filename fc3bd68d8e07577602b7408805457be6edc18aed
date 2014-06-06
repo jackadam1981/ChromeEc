@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df2c3030_898cdb72",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-06T22:14:54Z",
+      "side": 1,
+      "message": "please explain your use case in the commit description \n(re-use the USB port for close case debug)",
+      "revId": "fc3bd68d8e07577602b7408805457be6edc18aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df4350e0_2014aea4",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-06T22:14:54Z",
+      "side": 1,
+      "message": "no, not a busy loop, just wait for an event\ntask_wait_event(-1);\n\nyou probably need to disable RX interrupt first\npd_rx_disable_monitoring();\n\nif we were a power source before,\nwe might want to disable power before suspending for safety.\npd_power_supply_reset();",
+      "revId": "fc3bd68d8e07577602b7408805457be6edc18aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df4350e0_4019badc",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 945,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-06T22:14:54Z",
+      "side": 1,
+      "message": "no tab after }",
+      "revId": "fc3bd68d8e07577602b7408805457be6edc18aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df2c3030_0980cb37",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-06T22:14:54Z",
+      "side": 1,
+      "message": "that one should be in the  \"case PD_STATE_SUSPENDED:\" above (after the event reception)",
+      "revId": "fc3bd68d8e07577602b7408805457be6edc18aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df2c3030_a9851749",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-06T22:14:54Z",
+      "side": 1,
+      "message": "you need to comment the enable param here",
+      "revId": "fc3bd68d8e07577602b7408805457be6edc18aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
