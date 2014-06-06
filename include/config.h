@@ -456,6 +456,7 @@
 /* Support programming on-chip flash */
 #define CONFIG_FLASH
 
+#undef CONFIG_FLASH_DEBUG
 #undef CONFIG_FLASH_BANK_SIZE
 #undef CONFIG_FLASH_BASE
 #undef CONFIG_FLASH_ERASED_VALUE32

@@ -349,6 +349,7 @@ DECLARE_CONSOLE_COMMAND(flashinfo, command_flash_info,
 			"Print flash info",
 			NULL);
 
+#ifdef CONFIG_FLASH_DEBUG
 static int command_flash_erase(int argc, char **argv)
 {
 	int offset = -1;
@@ -435,6 +436,7 @@ DECLARE_CONSOLE_COMMAND(flashwp, command_flash_wp,
 			"<enable | disable | now | rw | norw>",
 			"Modify flash write protect",
 			NULL);
+#endif
 
 /*****************************************************************************/
 /* Host commands */
