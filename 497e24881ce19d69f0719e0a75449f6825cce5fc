@@ -70,6 +70,24 @@
     },
     {
       "key": {
+        "uuid": "1f1b2808_d8de1775",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-06T23:45:01Z",
+      "side": 1,
+      "message": "Yes, I\u0027m a ternary operator addict.",
+      "parentUuid": "bf505ca5_ce0f45bf",
+      "revId": "497e24881ce19d69f0719e0a75449f6825cce5fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf505ca5_0e1d2df7",
         "filename": "include/usb_pd.h",
         "patchSetId": 3
@@ -81,6 +99,24 @@
       "writtenOn": "2014-06-06T23:33:12Z",
       "side": 1,
       "message": "missing @return description\n\nbut does this function really need a return value?",
+      "revId": "497e24881ce19d69f0719e0a75449f6825cce5fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df4350e0_c0814a74",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-06T23:45:01Z",
+      "side": 1,
+      "message": "let\u0027s void it",
+      "parentUuid": "bf505ca5_0e1d2df7",
       "revId": "497e24881ce19d69f0719e0a75449f6825cce5fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
