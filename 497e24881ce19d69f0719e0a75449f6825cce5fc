@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df2c3030_894ffb45",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-06T23:19:45Z",
+      "side": 1,
+      "message": "all other commits use \"pd:\" as the prefix.",
+      "revId": "497e24881ce19d69f0719e0a75449f6825cce5fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df4350e0_80d10289",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 945,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-06T23:19:45Z",
+      "side": 1,
+      "message": "this variable is useless,\nyou can directly return EC_SUCCESS below",
+      "revId": "497e24881ce19d69f0719e0a75449f6825cce5fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
