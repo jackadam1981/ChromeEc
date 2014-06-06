@@ -295,14 +295,19 @@ void battery_get_params(struct batt_params *batt)
 
 	/*
 	 * Charging allowed if both desired voltage and current are nonzero
-	 * and battery isn't full (and we read them all correctly).
+	 * and battery isn't full (normal case) OR if desired voltage and
+	 * current are zero and the battery is emtpy (dead battery case).
+	 * And, make sure we read them all correctly.
 	 */
 	if (!(batt_new.flags & (BATT_FLAG_BAD_DESIRED_VOLTAGE |
 				BATT_FLAG_BAD_DESIRED_CURRENT |
 				BATT_FLAG_BAD_STATE_OF_CHARGE)) &&
-	    batt_new.desired_voltage &&
-	    batt_new.desired_current &&
-	    batt_new.state_of_charge < BATTERY_LEVEL_FULL)
+		((batt_new.desired_voltage &&
+			batt_new.desired_current &&
+			batt_new.state_of_charge < BATTERY_LEVEL_FULL) ||
+		(batt_new.desired_voltage == 0 &&
+			batt_new.desired_current == 0 &&
+			batt_new.state_of_charge == 0)))
 		batt_new.flags |= BATT_FLAG_WANT_CHARGE;
 	else
 		/* Force both to zero */

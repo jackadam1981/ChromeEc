@@ -570,17 +570,27 @@ void charger_task(void)
 			goto wait_for_it;
 		} else {
 			/* The battery is responding. Yay. Try to use it. */
-			if (curr.state == ST_PRECHARGE ||
-			    battery_seems_to_be_dead) {
+			curr.state = ST_CHARGE;
+
+			if (curr.requested_voltage == 0 &&
+			    curr.requested_current == 0 &&
+			    curr.batt.state_of_charge == 0) {
+				/* Battery is dead, give precharge current */
+				curr.requested_voltage =
+					batt_info->voltage_max;
+				curr.requested_current =
+					batt_info->precharge_current;
+			} else if (curr.state == ST_PRECHARGE ||
+				   battery_seems_to_be_dead) {
+				/* Battery woke from unresponsiveness */
 				CPRINTS("battery woke up");
 
 				/* Update the battery-specific values */
 				batt_info = battery_get_info();
 				need_static = 1;
+			} else {
+				battery_seems_to_be_dead = 0;
 			}
-
-			battery_seems_to_be_dead = 0;
-			curr.state = ST_CHARGE;
 		}
 
 		if (curr.batt.state_of_charge >= BATTERY_LEVEL_FULL) {
