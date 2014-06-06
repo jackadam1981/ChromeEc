@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f1b2808_3d75c5dc",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-06T23:00:33Z",
+      "side": 1,
+      "message": "please do those 2 actions in the task code above rather than here asynchronously, else you will run into all kind of race conditions.",
+      "revId": "ad2c37d456a98690d4de17be26b56e6954389a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
