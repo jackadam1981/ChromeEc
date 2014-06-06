@@ -196,6 +196,7 @@ static uint8_t pd_polarity;
 
 static enum {
 	PD_STATE_DISABLED,
+	PD_STATE_SUSPENDED,
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	PD_STATE_SNK_DISCONNECTED,
 	PD_STATE_SNK_DISCOVERY,
@@ -790,6 +791,11 @@ void pd_task(void)
 		case PD_STATE_DISABLED:
 			/* Nothing to do */
 			break;
+		case PD_STATE_SUSPENDED:
+			/* Busy loop */
+			while (pd_task_state == PD_STATE_SUSPENDED)
+				;
+			break;
 		case PD_STATE_SRC_DISCONNECTED:
 			/* Vnc monitoring */
 			cc1_volt = pd_adc_read(0);
@@ -930,6 +936,22 @@ void pd_rx_event(void)
 }
 
 #ifdef CONFIG_COMMON_RUNTIME
+int pd_set_suspend(int enable)
+{
+	int rv = EC_SUCCESS;
+
+	if (enable) {
+		pd_task_state = PD_STATE_SUSPENDED;
+	}	else {
+		pd_hw_init();
+		pd_task_state = PD_DEFAULT_STATE;
+	}
+
+	task_wake(TASK_ID_PD);
+
+	return rv;
+}
+
 void pd_request_source_voltage(int mv)
 {
 	pd_set_max_voltage(mv);
