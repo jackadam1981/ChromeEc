@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f1b2808_8f393bee",
+        "filename": "board/swanky/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-06T00:39:41Z",
+      "side": 1,
+      "message": "why are we going through this every 250 ms ?\nThat seems plain wrong, it should be triggered on chipset state change.",
+      "revId": "16fadf0745125060885f29052e23656f5ee935c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
