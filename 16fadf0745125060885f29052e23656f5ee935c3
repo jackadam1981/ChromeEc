@@ -34,6 +34,24 @@
       "revId": "16fadf0745125060885f29052e23656f5ee935c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ffd3b444_8be03dad",
+        "filename": "board/swanky/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-06-06T07:10:52Z",
+      "side": 1,
+      "message": "Hook updates would be prettier but I\u0027m not worried about a 250ms tick for a few quick compares and a gpioset.",
+      "parentUuid": "1f1b2808_8f393bee",
+      "revId": "16fadf0745125060885f29052e23656f5ee935c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
