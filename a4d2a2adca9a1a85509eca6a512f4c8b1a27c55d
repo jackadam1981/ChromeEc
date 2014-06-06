@@ -33,6 +33,41 @@
       "revId": "a4d2a2adca9a1a85509eca6a512f4c8b1a27c55d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f162cdd_6d687333",
+        "filename": "common/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-06T22:24:47Z",
+      "side": 1,
+      "message": "Agree with Vincent",
+      "parentUuid": "df4350e0_8008228f",
+      "revId": "a4d2a2adca9a1a85509eca6a512f4c8b1a27c55d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf505ca5_ae851949",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-06T22:24:47Z",
+      "side": 1,
+      "message": "CONFIG_CMD_FLASH is more appropriate.",
+      "revId": "a4d2a2adca9a1a85509eca6a512f4c8b1a27c55d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
