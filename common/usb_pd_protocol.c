@@ -197,6 +197,7 @@ static uint8_t pd_polarity;
 static enum {
 	PD_STATE_DISABLED,
 #ifdef CONFIG_USB_PD_DUAL_ROLE
+	PD_STATE_SUSPENDED,
 	PD_STATE_SNK_DISCONNECTED,
 	PD_STATE_SNK_DISCOVERY,
 	PD_STATE_SNK_REQUESTED,
@@ -800,6 +801,18 @@ void pd_task(void)
 		case PD_STATE_DISABLED:
 			/* Nothing to do */
 			break;
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+		case PD_STATE_SUSPENDED:
+			pd_hw_release();
+			pd_rx_disable_monitoring();
+			pd_power_supply_reset();
+
+			/* Wait for resume */
+			task_wait_event(-1);
+
+			pd_hw_init();
+			break;
+#endif /* CONFIG_USB_PD_DUAL_ROLE */
 		case PD_STATE_SRC_DISCONNECTED:
 			/* Vnc monitoring */
 			cc1_volt = pd_adc_read(0);
@@ -956,6 +969,13 @@ void pd_rx_event(void)
 }
 
 #ifdef CONFIG_COMMON_RUNTIME
+void pd_set_suspend(int enable)
+{
+	pd_task_state = enable ? PD_STATE_SUSPENDED : PD_DEFAULT_STATE;
+
+	task_wake(TASK_ID_PD);
+}
+
 void pd_request_source_voltage(int mv)
 {
 	pd_set_max_voltage(mv);
@@ -1012,7 +1032,7 @@ static int command_pd(int argc, char **argv)
 		task_wake(TASK_ID_PD);
 	} else if (!strncasecmp(argv[1], "state", 5)) {
 		const char * const state_names[] = {
-			"DISABLED",
+			"DISABLED", "SUSPENDED",
 			"SNK_DISCONNECTED", "SNK_DISCOVERY", "SNK_REQUESTED",
 			"SNK_TRANSITION", "SNK_READY",
 			"SRC_DISCONNECTED", "SRC_DISCOVERY", "SRC_NEGOCIATE",
