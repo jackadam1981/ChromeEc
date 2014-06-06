@@ -331,6 +331,17 @@ void pd_tx_done(int polarity)
 	pd_tx_disable(polarity);
 }
 
+void pd_dma_disable(void)
+{
+	dma_disable(DMAC_SPI_TX);
+}
+
+void pd_timer_disable(void)
+{
+	__hw_timer_enable_clock(TIM_TX, 0);
+	__hw_timer_enable_clock(TIM_RX, 0);
+}
+
 /* --- RX operation using comparator linked to timer --- */
 
 static const struct dma_option dma_tim_option = {

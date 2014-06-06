@@ -310,11 +310,27 @@ void pd_tx_set_circular_mode(void);
 void pd_tx_done(int polarity);
 
 /**
+ * Disable DMA used for TX.
+ */
+void pd_dma_disable(void);
+
+/**
+ * Disable timer used for SPI.
+ */
+void pd_timer_disable(void);
+
+/**
  * Check whether the PD reception is started.
  *
  * @return true if the reception is on-going.
  */
 int pd_rx_started(void);
+
+/**
+ * Suspend the PD task.
+ * @param enable pass 0 to resume, anything else to suspend
+ */
+void pd_set_suspend(int enable);
 
 /* Callback when the hardware has detected an incoming packet */
 void pd_rx_event(void);
