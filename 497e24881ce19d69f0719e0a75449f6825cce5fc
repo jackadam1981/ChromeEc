@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "bf505ca5_ae55197f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-06T23:33:12Z",
+      "side": 1,
+      "message": "seems like you should do something more to test.\n\nyou can create a console command to go in and out of suspend and make sure that when you go into suspend, the state machine stays there, and when you come out of suspend, PD communication still works.",
+      "revId": "497e24881ce19d69f0719e0a75449f6825cce5fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df4350e0_80d10289",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
@@ -30,6 +47,40 @@
       "writtenOn": "2014-06-06T23:19:45Z",
       "side": 1,
       "message": "this variable is useless,\nyou can directly return EC_SUCCESS below",
+      "revId": "497e24881ce19d69f0719e0a75449f6825cce5fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf505ca5_ce0f45bf",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-06T23:33:12Z",
+      "side": 1,
+      "message": "pd_task_state \u003d enable ? PD_STATE_SUSPEND : PD_DEFAULT_STATE;\n\nI\u0027m surprised Vincent didn\u0027t mention it :-).",
+      "revId": "497e24881ce19d69f0719e0a75449f6825cce5fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf505ca5_0e1d2df7",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-06T23:33:12Z",
+      "side": 1,
+      "message": "missing @return description\n\nbut does this function really need a return value?",
       "revId": "497e24881ce19d69f0719e0a75449f6825cce5fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
