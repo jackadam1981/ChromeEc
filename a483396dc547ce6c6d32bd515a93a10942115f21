@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f1b2808_728fec67",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-06-06T17:01:20Z",
+      "side": 1,
+      "message": "Put this in #ifdef CONFIG_STUPID_BATTERY\n\nand add a TODO(BUG#) to take it out again.",
+      "revId": "a483396dc547ce6c6d32bd515a93a10942115f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df4350e0_45beacc3",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-06-06T17:01:20Z",
+      "side": 1,
+      "message": "Same here.",
+      "revId": "a483396dc547ce6c6d32bd515a93a10942115f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
