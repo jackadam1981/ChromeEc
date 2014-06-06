@@ -1,0 +1,208 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f1b2808_124d5081",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-06T17:38:35Z",
+      "side": 1,
+      "message": "BUG\u003dchrome-os-partner:28345",
+      "revId": "430a98773f767d96edb44c64e1eb63054006fc7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df2c3030_c3e8748e",
+        "filename": "board/fruitpie/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-06T17:38:35Z",
+      "side": 1,
+      "message": "we should ensure that we have steered the debug mux before doing this to avoid any kind of conflict.\nAlso setting MISO as output before setting the alternate function might conflict with the SPI flash driving that line.",
+      "revId": "430a98773f767d96edb44c64e1eb63054006fc7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f1b2808_b2582410",
+        "filename": "board/fruitpie/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-06T17:38:35Z",
+      "side": 1,
+      "message": "you don\u0027t really to touch that AFAICT.",
+      "revId": "430a98773f767d96edb44c64e1eb63054006fc7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f1b2808_d282783f",
+        "filename": "board/fruitpie/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-06T17:38:35Z",
+      "side": 1,
+      "message": "I don\u0027t think we should modify the DMA mapping during runtime, this will be error-prone. You should put the DMA mapping you need in board_config_pre_init() (as in board/samus_pd/board.c) and never touch it again unless you have a compelling reason to do so.",
+      "revId": "430a98773f767d96edb44c64e1eb63054006fc7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df4350e0_a5cd306a",
+        "filename": "board/fruitpie/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-06T17:38:35Z",
+      "side": 1,
+      "message": "that will break the USB PD code which won\u0027t enable again this clock.",
+      "revId": "430a98773f767d96edb44c64e1eb63054006fc7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df4350e0_c5cabc50",
+        "filename": "board/fruitpie/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-06T17:38:35Z",
+      "side": 1,
+      "message": "ditto.",
+      "revId": "430a98773f767d96edb44c64e1eb63054006fc7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df2c3030_231da852",
+        "filename": "board/fruitpie/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-06T17:38:35Z",
+      "side": 1,
+      "message": "TX_DATA and VCONN1_EN should be output low.",
+      "revId": "430a98773f767d96edb44c64e1eb63054006fc7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df2c3030_83091cbc",
+        "filename": "chip/stm32/spi_flash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-06T17:38:35Z",
+      "side": 1,
+      "message": "I thought you had decided to use \"CONFIG_SPI_FLASH_REGISTER\" instead ?",
+      "revId": "430a98773f767d96edb44c64e1eb63054006fc7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f1b2808_521bc846",
+        "filename": "chip/stm32/spi_flash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-06T17:38:35Z",
+      "side": 1,
+      "message": "you can just declare tmp as volatile ?",
+      "revId": "430a98773f767d96edb44c64e1eb63054006fc7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f1b2808_920160d3",
+        "filename": "chip/stm32/spi_flash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-06T17:38:35Z",
+      "side": 1,
+      "message": "return buf[1];  ?",
+      "revId": "430a98773f767d96edb44c64e1eb63054006fc7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f1b2808_f2c21c3a",
+        "filename": "chip/stm32/spi_flash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-06T17:38:35Z",
+      "side": 1,
+      "message": "you will probably need to set a timeout on such a loop to avoid a watchdog reset if the SPI flash is not answering.",
+      "revId": "430a98773f767d96edb44c64e1eb63054006fc7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df4350e0_a53c504f",
+        "filename": "chip/stm32/spi_flash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-06T17:38:35Z",
+      "side": 1,
+      "message": "that\u0027s a nice debug command, but I\u0027m not sure we want to submit, does it worth the flash space ?\nmaybe under a compilation flag.",
+      "revId": "430a98773f767d96edb44c64e1eb63054006fc7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
