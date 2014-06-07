@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf505ca5_91087c8f",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-07T14:13:04Z",
+      "side": 1,
+      "message": "level-triggered interrupt (reset by status read) would be more robust, but it\u0027s too much overhead for now (since on the EC side cannot read the status over i2c in interrupt context)\nProbably worth re-discussing together the use cases to check what would be the best option.",
+      "revId": "c9e96de0305a992fd4251658dfa076d6ab64b82f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf505ca5_311408a5",
+        "filename": "common/host_command_pd.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-07T14:13:04Z",
+      "side": 1,
+      "message": "maybe we want to set -1 (and defined batt_soc as signed) to possibly differentiate the drained battery from no battery response.\n\nIn the past, for drained battery detection, the remaining energy (mWh) has proven a more useful metric than charge percent because it\u0027s finer grained (1 mWh \u003c\u003c 1%)",
+      "revId": "c9e96de0305a992fd4251658dfa076d6ab64b82f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf505ca5_511994dc",
+        "filename": "include/host_command.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-07T14:13:04Z",
+      "side": 1,
+      "message": "why not HAS_TASK_PDCMD ?",
+      "revId": "c9e96de0305a992fd4251658dfa076d6ab64b82f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
