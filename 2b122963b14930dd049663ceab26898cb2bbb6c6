@@ -1,0 +1,225 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf505ca5_eeaec172",
+        "filename": "board/fruitpie/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-07T02:00:30Z",
+      "side": 1,
+      "message": "Add more detail to comment:\n\n/* Remap SPI2 to DMA channels 6 and 7 */",
+      "revId": "2b122963b14930dd049663ceab26898cb2bbb6c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf505ca5_8e8e1dd9",
+        "filename": "board/fruitpie/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-07T02:00:30Z",
+      "side": 1,
+      "message": "else goes on same line as previous end bracket:\n\n} else {",
+      "revId": "2b122963b14930dd049663ceab26898cb2bbb6c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff749443_ce40a3c6",
+        "filename": "board/fruitpie/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-07T02:00:30Z",
+      "side": 1,
+      "message": "i\u0027m not sure you want to change VCONN1_EN to an input. it should always output low.",
+      "revId": "2b122963b14930dd049663ceab26898cb2bbb6c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf505ca5_2ef7c96f",
+        "filename": "board/fruitpie/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-07T02:00:30Z",
+      "side": 1,
+      "message": "missing space before *",
+      "revId": "2b122963b14930dd049663ceab26898cb2bbb6c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff749443_6e52cf97",
+        "filename": "chip/stm32/spi_flash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-07T02:00:30Z",
+      "side": 1,
+      "message": "i prefer to put units in name: SPI_FLASH_TIMEOUT_USEC",
+      "revId": "2b122963b14930dd049663ceab26898cb2bbb6c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf505ca5_8e1ffdbb",
+        "filename": "chip/stm32/spi_flash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-07T02:00:30Z",
+      "side": 1,
+      "message": "can combine with next while loop:\n\n/* Wait for FIFO empty and BSY bit clear to indicate completion */\n\nwhile ((spi-\u003esr \u0026 STM32_SPI_SR_FTLVL) || (spi-\u003esr \u0026 STM32_SPI_SR_BSY))",
+      "revId": "2b122963b14930dd049663ceab26898cb2bbb6c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f33447f_68f7f06e",
+        "filename": "chip/stm32/spi_flash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-07T02:00:30Z",
+      "side": 1,
+      "message": "why don\u0027t you just directly set the cr1 register to what you want? it doesn\u0027t appear there is any bit in that register you really care to preserve.",
+      "revId": "2b122963b14930dd049663ceab26898cb2bbb6c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff749443_8ef61b3f",
+        "filename": "chip/stm32/spi_flash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-07T02:00:30Z",
+      "side": 1,
+      "message": "comment style:\n\n/*\n * Configure 8-bit datasize, set FRXTH, enable DMA,\n * and enable NSS output\n */",
+      "revId": "2b122963b14930dd049663ceab26898cb2bbb6c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff749443_4e01136b",
+        "filename": "chip/stm32/spi_flash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-07T02:00:30Z",
+      "side": 1,
+      "message": "ditto as above, combine loops",
+      "revId": "2b122963b14930dd049663ceab26898cb2bbb6c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff749443_ee8d5fb4",
+        "filename": "chip/stm32/spi_flash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-07T02:00:30Z",
+      "side": 1,
+      "message": "wrong name -\u003e buf_usr",
+      "revId": "2b122963b14930dd049663ceab26898cb2bbb6c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f33447f_e801c06c",
+        "filename": "chip/stm32/spi_flash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-07T02:00:30Z",
+      "side": 1,
+      "message": "indented one too far",
+      "revId": "2b122963b14930dd049663ceab26898cb2bbb6c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f33447f_dbeb6888",
+        "filename": "chip/stm32/spi_flash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-07T02:00:30Z",
+      "side": 1,
+      "message": "memcpy() is slightly more efficient and perfectly safe when copying to stack var",
+      "revId": "2b122963b14930dd049663ceab26898cb2bbb6c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff749443_949cec15",
+        "filename": "chip/stm32/spi_flash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-07T02:00:30Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "2b122963b14930dd049663ceab26898cb2bbb6c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
