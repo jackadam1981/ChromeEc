@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7f33447f_b4bd5152",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-09T16:18:46Z",
+      "side": 1,
+      "message": "Yeah, I thought about making it a level trigger, but like you said we don\u0027t want to send i2c host commands from interrupt context on the EC side. The GPIO peripheral on the EC side should be running pretty fast though. The only case I\u0027m worried about is deep sleep, when the EC is down clocked to 250kHz. I guess it would be better for now to put in a delay value to account for the slowest EC clock (4us + 1us buffer \u003d 5us).",
+      "parentUuid": "bf505ca5_91087c8f",
+      "revId": "c9e96de0305a992fd4251658dfa076d6ab64b82f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf505ca5_311408a5",
         "filename": "common/host_command_pd.c",
         "patchSetId": 8
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "bf505ca5_22a03897",
+        "filename": "common/host_command_pd.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-09T16:18:46Z",
+      "side": 1,
+      "message": "Ok, will change no battery to -1.\n\nYeah, you\u0027re right that remaining capacity would be better. I think I\u0027ll just put a todo to change it and evaluate what value it should be set to because I want to get something in now.",
+      "parentUuid": "bf505ca5_311408a5",
+      "revId": "c9e96de0305a992fd4251658dfa076d6ab64b82f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf505ca5_511994dc",
         "filename": "include/host_command.h",
         "patchSetId": 8
@@ -47,6 +83,24 @@
       "writtenOn": "2014-06-07T14:13:04Z",
       "side": 1,
       "message": "why not HAS_TASK_PDCMD ?",
+      "revId": "c9e96de0305a992fd4251658dfa076d6ab64b82f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf505ca5_029f3c51",
+        "filename": "include/host_command.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-09T16:18:46Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "bf505ca5_511994dc",
       "revId": "c9e96de0305a992fd4251658dfa076d6ab64b82f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
