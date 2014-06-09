@@ -123,6 +123,8 @@ DECLARE_IRQ(STM32_IRQ_DMA_CHANNEL_4_7, tim_dma_handler, 1);
 
 static void sniffer_init(void)
 {
+	return;
+
 	/* remap TIM1 CH1/2/3 to DMA channel 6 */
 	STM32_SYSCFG_CFGR1 |= 1 << 28;
 	/* --- set counter for RX timing : 2.4Mhz rate, free-running --- */
