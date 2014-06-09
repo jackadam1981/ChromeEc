@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df2c3030_8c22a9c0",
+        "filename": "common/host_command_pd.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-09T16:59:02Z",
+      "side": 1,
+      "message": "does that config switch still exist ?\nnow you have replaced it with HAS_TASK_PDCMD in the other file.",
+      "revId": "0d9efc7c8893934e29885f9c2081f7389cc6e76a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f1b2808_f840bb6a",
+        "filename": "include/host_command.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-09T16:59:02Z",
+      "side": 1,
+      "message": "actually that\u0027s just a header, do we need ifdef in a header ?",
+      "revId": "0d9efc7c8893934e29885f9c2081f7389cc6e76a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
