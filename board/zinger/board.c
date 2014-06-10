@@ -40,7 +40,7 @@ static void jump_to_rw(void)
 
 int is_ro_mode(void)
 {
-	return (uint32_t)&jump_to_rw < *rw_rst;
+	return (uint32_t *)&jump_to_rw < rw_rst;
 }
 
 static int check_rw_valid(void)
