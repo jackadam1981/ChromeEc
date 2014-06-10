@@ -238,7 +238,8 @@ struct irq_priority {
 #ifdef CONFIG_COMMON_RUNTIME
 #include "irq_handler.h"
 #else
-#define DECLARE_IRQ(irq, routine, priority)
+#define DECLARE_IRQ(irq, routine, priority) \
+	void IRQ_HANDLER(irq)(void) __attribute__((alias(#routine)));
 #define IRQ_HANDLER(irqname) CONCAT3(irq_, irqname, _handler)
 #endif
 
