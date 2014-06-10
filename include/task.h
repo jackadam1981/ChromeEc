@@ -238,8 +238,10 @@ struct irq_priority {
 #ifdef CONFIG_COMMON_RUNTIME
 #include "irq_handler.h"
 #else
-#define DECLARE_IRQ(irq, routine, priority)
 #define IRQ_HANDLER(irqname) CONCAT3(irq_, irqname, _handler)
+#define IRQ_HANDLER_OPT(irqname) CONCAT3(irq_, irqname, _handler_optional)
+#define DECLARE_IRQ(irq, routine, priority) \
+	void IRQ_HANDLER_OPT(irq)(void) __attribute__((alias(#routine)));
 #endif
 
 #endif  /* __CROS_EC_TASK_H */

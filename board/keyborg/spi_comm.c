@@ -400,6 +400,9 @@ static void spi_nss_interrupt(void)
 		(const struct spi_comm_packet *)in_msg;
 	stm32_spi_regs_t *spi = STM32_SPI1_REGS;
 
+	/* Clear the interrupt */
+	STM32_EXTI_PR = STM32_EXTI_PR;
+
 	if (spi->sr & STM32_SPI_SR_RXNE)
 		in_msg[0] = spi->dr;
 
@@ -438,14 +441,5 @@ static void spi_nss_interrupt(void)
 	else
 		spi_slave_nack();
 }
-
 /* Interrupt handler for PA0 */
-void IRQ_HANDLER(STM32_IRQ_EXTI0)(void)
-{
-	/* Clear the interrupt */
-	STM32_EXTI_PR = STM32_EXTI_PR;
-
-	/* SPI slave interrupt */
-	spi_nss_interrupt();
-}
-
+DECLARE_IRQ(STM32_IRQ_EXTI0, spi_nss_interrupt, 1);

@@ -77,3 +77,6 @@ common-$(HAS_TASK_LIGHTBAR)+=lb_common.o lightbar.o
 common-$(HAS_TASK_MOTIONSENSE)+=motion_sense.o math_util.o
 common-$(TEST_BUILD)+=test_util.o
 
+ifneq "$(CONFIG_COMMON_RUNTIME)" "y"
+	common-y+=irq_mapper.o
+endif
