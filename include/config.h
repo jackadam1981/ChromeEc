@@ -299,6 +299,9 @@
 /* Support firmware long press power-off timer */
 #undef CONFIG_PMIC_FW_LONG_PRESS_TIMER
 
+/* Support using crystal vs oscillator for clock */
+#undef CONFIG_CLOCK_CRYSTAL
+
 /*****************************************************************************/
 /*
  * Optional console commands

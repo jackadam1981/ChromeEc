@@ -60,6 +60,15 @@ cmd_copyrw-y = cd $(out) && cp $(PROJECT).RW.flat $(PROJECT).RW.bin
 # commands for RSA signature
 cmd_pubkey = ./util/pem_extract_pubkey.py $(PEM) > $@
 cmd_rsasign = ./util/ec_sign_rsa.py $(PEM) $(out)/$*.bin.tmp
+ifeq "$(UC_CHIP)" "MEC1322"
+	CHIP_SPI_SIZE ?= 16
+	MEC1322_PACK_EC_FLAG = -i $(out)/$*.bin \
+	                       -o $(out)/$*.spi.bin \
+                               --header_key ./chip/mec1322/util/rsakey_sign_header.pem \
+                               --payload_key ./chip/mec1322/util/rsakey_sign_payload.pem \
+                               -s $(CHIP_SPI_SIZE)
+	cmd_bin_to_mec1322_spi = ./chip/mec1322/util/pack_ec.py $(MEC1322_PACK_EC_FLAG)
+endif
 
 # commands to build optional xref files
 cmd_deps_to_list = cat $(deps) | tr -d ':\\' | tr ' ' '\012' \
@@ -145,6 +154,9 @@ $(out)/%.bin: $(out)/%.obj
 	$(if $(wildcard $(PEM)),$(call quiet,extractrw-y,EXTR_RW), \
 			$(call quiet,copyrw-y,COPY_RW))
 	$(call quiet,mv_from_tmp,MV     )
+ifeq "$(UC_CHIP)" "MEC1322"
+	$(call quiet,bin_to_mec1322_spi,GEN_SPI)
+endif
 
 flat-y = $(out)/$(PROJECT).RO.flat $(out)/$(PROJECT).RW.flat
 
