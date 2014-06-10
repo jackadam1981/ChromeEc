@@ -5,6 +5,7 @@
  * Cortex-M CPU initialization
  */
 
+#include "common.h"
 #include "config.h"
 
 .section .text.vecttable
@@ -15,9 +16,22 @@
 .set \name\()_handler, default_handler
 .endm
 
+#ifndef CONFIG_COMMON_RUNTIME
+#define ENABLE_IRQ(x) .set CONCAT2(irq_enabled_, x), 1
+#include "ec.irqlist"
+#endif
+
 .macro vector_irq number
 .if \number < CONFIG_IRQ_COUNT
+#ifdef CONFIG_COMMON_RUNTIME
 vector irq_\()\number
+#else
+.ifdef irq_enabled_\()\number
+vector irq_\()\number
+.else
+vector irq_disabled
+.endif
+#endif
 .endif
 .endm
 

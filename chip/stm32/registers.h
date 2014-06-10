@@ -138,6 +138,8 @@
 #define STM32_IRQ_DMA2_CHANNEL5   60 /* STM32F100 only */
 #endif /* CHIP_FAMILY_STM32F0 */
 
+#ifndef __ASSEMBLER__
+
 /* --- USART --- */
 #define STM32_USART1_BASE          0x40013800
 #define STM32_USART2_BASE          0x40004400
@@ -1224,5 +1226,7 @@ typedef volatile struct stm32_dma_regs stm32_dma_regs_t;
 #define STM32_BXCAN2_BASE           0x40006800 /* STM32F10x only */
 #define STM32_USB_CAN_SRAM_BASE     0x40006000 /* STM32F10x only */
 #define STM32_USB_FS_BASE           0x40005C00 /* STM32F10x only */
+
+#endif /* !__ASSEMBLER__ */
 
 #endif /* __CROS_EC_REGISTERS_H */
