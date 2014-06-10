@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff5d74d3_973f0bd2",
+        "filename": "board/zinger/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-10T18:07:53Z",
+      "side": 1,
+      "message": "pointers comparison is mostly undefined in C\n(even though that one will work with GCC)\n\nmaybe we want :\nreturn (uint32_t)\u0026jump_to_rw \u003c (uint32_t)rw_rst;",
+      "revId": "76d82a8c405070a96e897e3353da6e6fd3d4806c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
