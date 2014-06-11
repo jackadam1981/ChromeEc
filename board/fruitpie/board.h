@@ -16,6 +16,7 @@
 #define CONFIG_UART_CONSOLE 2
 
 /* Optional features */
+#define CONFIG_BOARD_PRE_INIT
 #define CONFIG_STM_HWTIMER32
 #define CONFIG_USB_POWER_DELIVERY
 #define CONFIG_USB_PD_DUAL_ROLE
@@ -25,6 +26,9 @@
 #define CONFIG_I2C
 #define CONFIG_BATTERY_SMART
 #define CONFIG_USB_SWITCH_TSU6721
+#define CONFIG_SPI_FLASH
+#define CONFIG_SPI_FLASH_SIZE 8388608
+#define CONFIG_SPI_FLASH_REGISTER STM32_SPI2_REGS
 #undef CONFIG_WATCHDOG_HELP
 #undef CONFIG_LID_SWITCH
 #undef CONFIG_TASK_PROFILING
@@ -51,6 +55,12 @@
 #define CONFIG_SYSTEM_UNLOCKED
 
 #ifndef __ASSEMBLER__
+
+/*
+ * Used to set GPIO's and clock to SPI module used for debug
+ * @param enable Whether to enable or disable debug
+ */
+int board_set_debug(int enable);
 
 /* Timer selection */
 #define TIM_CLOCK32 2
