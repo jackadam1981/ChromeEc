@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f804079_36b7ee13",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-11T18:21:21Z",
+      "side": 1,
+      "message": "why PD_IN_RW is looped back to us ?",
+      "revId": "52eb5de78e200f47cf048f890c96634556429025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f804079_16a90ab2",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-11T18:21:21Z",
+      "side": 1,
+      "message": "isn\u0027t that one the output of the silego (MCU input) ?",
+      "revId": "52eb5de78e200f47cf048f890c96634556429025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f8a489d_08c64626",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-11T18:21:21Z",
+      "side": 1,
+      "message": "the voltage scaling is bad ?\nwe have a 133K/392K voltage divider",
+      "revId": "52eb5de78e200f47cf048f890c96634556429025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
