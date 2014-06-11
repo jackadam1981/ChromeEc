@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ffc9f4e9_affbb9e2",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-11T21:20:45Z",
+      "side": 1,
+      "message": "not sure. in fact, i don\u0027t think we have any use for pd_entering_rw and pd_in_rw at all. i\u0027ll check with randall.",
+      "parentUuid": "5f804079_36b7ee13",
+      "revId": "52eb5de78e200f47cf048f890c96634556429025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f804079_16a90ab2",
         "filename": "board/samus_pd/board.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "3fd0ec87_91f1be4b",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-11T21:20:45Z",
+      "side": 1,
+      "message": "yeah, you\u0027re right. and in fact, i think it\u0027s wrong that the output of the silego, PD_DEBUG_EN, even goes to the PD MCU because the PD MCU can fight the silego, and depending on what voltage that lines end up at, it may get access to the SPI flash at the wrong time.",
+      "parentUuid": "5f804079_16a90ab2",
+      "revId": "52eb5de78e200f47cf048f890c96634556429025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f8a489d_08c64626",
         "filename": "board/samus_pd/board.c",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2014-06-11T18:21:21Z",
       "side": 1,
       "message": "the voltage scaling is bad ?\nwe have a 133K/392K voltage divider",
+      "revId": "52eb5de78e200f47cf048f890c96634556429025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dfc6f0d8_0b39215e",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-11T21:20:45Z",
+      "side": 1,
+      "message": "yeah, we\u0027re not using this for anything yet so I didn\u0027t bother with the math. based off the resistor values it looks like they are only giving us resolution between 0 and 5V.",
+      "parentUuid": "1f8a489d_08c64626",
       "revId": "52eb5de78e200f47cf048f890c96634556429025",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
