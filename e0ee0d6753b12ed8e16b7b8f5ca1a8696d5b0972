@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f6328c5_da734127",
+        "filename": "driver/tsu6721.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-06-11T22:46:33Z",
+      "side": 1,
+      "message": "This is a bit too application-specific. The TSU6721 driver shouldn\u0027t know about how BOOT pin is used. The function name is also too specific. Perhaps use something like tsu6721_usb_set_boot(int enabled) ?",
+      "revId": "e0ee0d6753b12ed8e16b7b8f5ca1a8696d5b0972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
