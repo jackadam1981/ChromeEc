@@ -34,6 +34,24 @@
       "revId": "d8c2ab797e0def009e991f06df08ccb885483032",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f854c8a_af8ac50b",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-06-11T15:46:11Z",
+      "side": 1,
+      "message": "I\u0027d like to suggest (voltage \u003e 0). My original thought is to prevent the negative value but somehow I added \u003d.",
+      "parentUuid": "3f854c8a_06fb9ee1",
+      "revId": "d8c2ab797e0def009e991f06df08ccb885483032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
