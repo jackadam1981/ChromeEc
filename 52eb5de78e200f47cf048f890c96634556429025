@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "1f8a489d_bc22f8bf",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-11T21:33:54Z",
+      "side": 1,
+      "message": "you need to assert PD_IN_RW  before jumping to the RW firmware.",
+      "parentUuid": "ffc9f4e9_affbb9e2",
+      "revId": "52eb5de78e200f47cf048f890c96634556429025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f804079_16a90ab2",
         "filename": "board/samus_pd/board.c",
         "patchSetId": 1
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "yeah, we\u0027re not using this for anything yet so I didn\u0027t bother with the math. based off the resistor values it looks like they are only giving us resolution between 0 and 5V.",
       "parentUuid": "1f8a489d_08c64626",
+      "revId": "52eb5de78e200f47cf048f890c96634556429025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f8a489d_5c42cc51",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-11T21:33:54Z",
+      "side": 1,
+      "message": "during the review, I thought we asked for a BOM change there to get the full range.\nThe SMT is not done yet, we should ask again",
+      "parentUuid": "dfc6f0d8_0b39215e",
       "revId": "52eb5de78e200f47cf048f890c96634556429025",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
