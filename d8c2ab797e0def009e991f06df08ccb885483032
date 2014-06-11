@@ -16,6 +16,24 @@
       "revId": "d8c2ab797e0def009e991f06df08ccb885483032",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f854c8a_06fb9ee1",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1002417
+      },
+      "writtenOn": "2014-06-11T00:01:17Z",
+      "side": 1,
+      "message": "I think what I have is more correct - if we\u0027re enabling charging, then both voltage and current will be non-zero.  Otherwise they will both be zero and we will inhibit charging below.",
+      "parentUuid": "1f8a489d_bf8d97b5",
+      "revId": "d8c2ab797e0def009e991f06df08ccb885483032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
