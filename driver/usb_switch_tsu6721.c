@@ -141,6 +141,24 @@ int tsu6721_mux(enum tsu6721_mux sel)
 	return EC_SUCCESS;
 }
 
+int tsu6721_usb_debug(int enable)
+{
+	int rv = EC_SUCCESS;
+
+	if (enable) {
+		rv = tsu6721_mux(TSU6721_MUX_USB);
+		if (rv)
+			return rv;
+
+		tsu6721_write(TSU6721_REG_MANUAL2, TSU6721_PIN_MANUAL2_BOOT);
+	} else {
+		tsu6721_write(TSU6721_REG_MANUAL2, 0);
+
+		rv = tsu6721_mux(TSU6721_MUX_AUTO);
+	}
+	return rv;
+}
+
 int tsu6721_init(void)
 {
 	uint8_t settings;
