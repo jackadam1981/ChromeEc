@@ -2,6 +2,142 @@
   "comments": [
     {
       "key": {
+        "uuid": "3f854c8a_1a276d3e",
+        "filename": "util/flash_pd.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-06-11T18:17:19Z",
+      "side": 1,
+      "message": "+1 add default via optparse.  See hdctools/servo/dut_control.py for examples",
+      "revId": "ee24be11ab0a93798768d1f746bb0eb7f43b55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f854c8a_5a0f35c0",
+        "filename": "util/flash_pd.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-06-11T18:17:19Z",
+      "side": 1,
+      "message": "prefer you used logging module instead.",
+      "revId": "ee24be11ab0a93798768d1f746bb0eb7f43b55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f854c8a_babe8151",
+        "filename": "util/flash_pd.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-06-11T18:17:19Z",
+      "side": 1,
+      "message": "Function names lowercase w/ underscores between words (not camelcase)\n\n  http://legacy.python.org/dev/peps/pep-0008/#function-names",
+      "revId": "ee24be11ab0a93798768d1f746bb0eb7f43b55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f854c8a_5a6bb530",
+        "filename": "util/flash_pd.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-06-11T18:17:19Z",
+      "side": 1,
+      "message": "nit consider commands.getoutput() for neatness",
+      "revId": "ee24be11ab0a93798768d1f746bb0eb7f43b55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f804079_7b0b1f8c",
+        "filename": "util/flash_pd.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-06-11T18:17:19Z",
+      "side": 1,
+      "message": "remove unused",
+      "revId": "ee24be11ab0a93798768d1f746bb0eb7f43b55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f804079_fb0d6f9b",
+        "filename": "util/flash_pd.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-06-11T18:17:19Z",
+      "side": 1,
+      "message": "nit,\n\n  return serial.Serial(port, timeout\u003d1)",
+      "revId": "ee24be11ab0a93798768d1f746bb0eb7f43b55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f854c8a_fa69e90b",
+        "filename": "util/flash_pd.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-06-11T18:17:19Z",
+      "side": 1,
+      "message": "prefer you use pexpect module or could use use servod controls ec_uart_capture, ec_uart_stream instead.  Something like\n\n  dut-control ec_uart_capture:on\n  while time.time() \u003c deadline:\n    if val in commands.getoutput(\u0027dut-control ec_uart_stream\u0027):\n      break",
+      "revId": "ee24be11ab0a93798768d1f746bb0eb7f43b55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f8a489d_885256eb",
+        "filename": "util/flash_pd.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-06-11T18:17:19Z",
+      "side": 1,
+      "message": "pythonista\u0027s typically ask me do this instead:\n\ndef main_function():\n  (options, args) \u003d parse_args()\n  flash_pd(options)\n  \ndef main():\n  \"\"\"Main function wrapper to catch exceptions properly\"\"\"\n  try:\n    main_function()\n  except KeyboardInterrupt:\n    sys.exit(0)\n  except FlashPDError as e:\n    print \"Error: \", e.message\n    sys.exit(1)\n\nif __name__ \u003d\u003d \u0027__main__\u0027:\n  main()\n\nBTW, what should be the desired response to ctrl-c?  Any risk?",
+      "revId": "ee24be11ab0a93798768d1f746bb0eb7f43b55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f8a489d_992d4bcc",
         "filename": "util/flash_pd.py",
         "patchSetId": 1
