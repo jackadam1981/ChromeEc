@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f804079_56cab251",
+        "filename": "core/cortex-m/init.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-11T18:28:40Z",
+      "side": 1,
+      "message": "why not putting that mechanism in include/task.h in the DECLARE_IRQ macros rather than putting it in every assembly bootstrap file ?",
+      "revId": "7809878d963ac0ce9392e97625bd56602a52d478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
