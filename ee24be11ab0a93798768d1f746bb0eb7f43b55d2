@@ -138,6 +138,24 @@
     },
     {
       "key": {
+        "uuid": "3fd0ec87_9cf395c1",
+        "filename": "util/flash_pd.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-11T22:59:35Z",
+      "side": 1,
+      "message": "No, there isn\u0027t any risk to hitting ctrl-c in the middle, it just means the RW firwmare will be incomplete and it will fail the hash check on boot.",
+      "parentUuid": "1f8a489d_885256eb",
+      "revId": "ee24be11ab0a93798768d1f746bb0eb7f43b55d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f8a489d_992d4bcc",
         "filename": "util/flash_pd.py",
         "patchSetId": 1
