@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "bf713c8e_b7fb025a",
+        "filename": "util/flash_pd.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-12T17:23:02Z",
+      "side": 1,
+      "message": "200ms should be way too long for write command (which are supposed to be a few ms)",
+      "revId": "00c2a4292145a3b1440b6bfbf31af91bf2634603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f6328c5_c08a6f0d",
+        "filename": "util/flash_pd.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-12T17:23:02Z",
+      "side": 1,
+      "message": "might be usbpd_uart_pty\n(eg when using samus_pd to flash the brick)\nwe probably need a parameter",
+      "revId": "00c2a4292145a3b1440b6bfbf31af91bf2634603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fc0f8c0_eccc9fa0",
         "filename": "util/flash_pd.py",
         "patchSetId": 3
