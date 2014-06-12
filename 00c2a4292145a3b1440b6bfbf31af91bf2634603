@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "9fc0f8c0_eccc9fa0",
+        "filename": "util/flash_pd.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-12T16:08:51Z",
+      "side": 1,
+      "message": "Can we check for the \"Jump to RW\" output from the console after the reboot. That\u0027s the only check we have to make sure that the flash was completely successful. Otherwise, we\u0027re just saying that each PD packet was successful.",
+      "revId": "00c2a4292145a3b1440b6bfbf31af91bf2634603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f854c8a_f1c74779",
         "filename": "util/flash_pd.py",
         "patchSetId": 3
