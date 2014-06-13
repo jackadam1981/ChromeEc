@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "bfc3fcc9_9e754da7",
+        "filename": "common/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-06-13T18:59:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f6424c8_2984f982",
+      "revId": "e6c9d9723785d6fe8272fb0e622681e84e83756b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfc3fcc9_be7009b7",
         "filename": "common/battery.c",
         "patchSetId": 2
@@ -48,6 +66,24 @@
       "writtenOn": "2014-06-13T17:42:35Z",
       "side": 1,
       "message": "Use EC_VER_BATTERY_CUT_OFF instead of 1. See my comment in ec_command.h",
+      "revId": "e6c9d9723785d6fe8272fb0e622681e84e83756b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfc3fcc9_fe7a8194",
+        "filename": "common/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-06-13T18:59:07Z",
+      "side": 1,
+      "message": "I was wrong. Should keep 1 here so that version larger than 1 can be backward-compatible.",
+      "parentUuid": "bfc3fcc9_be7009b7",
       "revId": "e6c9d9723785d6fe8272fb0e622681e84e83756b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -106,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "7f6424c8_096ad5f6",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1977,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-06-13T18:59:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fc0f8c0_17b02478",
+      "revId": "e6c9d9723785d6fe8272fb0e622681e84e83756b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f6424c8_c9745de3",
         "filename": "util/ectool.c",
         "patchSetId": 2
@@ -123,6 +177,24 @@
     },
     {
       "key": {
+        "uuid": "9fc0f8c0_f7df4897",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3658,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-06-13T18:59:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f6424c8_c9745de3",
+      "revId": "e6c9d9723785d6fe8272fb0e622681e84e83756b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f6424c8_096f350f",
         "filename": "util/ectool.c",
         "patchSetId": 2
@@ -134,6 +206,24 @@
       "writtenOn": "2014-06-13T17:42:35Z",
       "side": 1,
       "message": "Use EC_VER_BATTERY_CUT_OFF instead of 1.",
+      "revId": "e6c9d9723785d6fe8272fb0e622681e84e83756b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f6424c8_8956e535",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3668,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-06-13T18:59:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f6424c8_096f350f",
       "revId": "e6c9d9723785d6fe8272fb0e622681e84e83756b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
