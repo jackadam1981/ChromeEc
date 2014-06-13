@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9fc0f8c0_7289a612",
+        "filename": "common/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-06-13T21:04:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f49844c_2c840f83",
+      "revId": "8338aeed97aabea22bc9c5f0e5282ca629620210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df74307d_0de01c5d",
         "filename": "common/battery.c",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2014-06-13T19:12:55Z",
       "side": 1,
       "message": "nit: \"has failed\"",
+      "revId": "8338aeed97aabea22bc9c5f0e5282ca629620210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f6424c8_34b37088",
+        "filename": "common/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-06-13T21:04:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df74307d_0de01c5d",
       "revId": "8338aeed97aabea22bc9c5f0e5282ca629620210",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
