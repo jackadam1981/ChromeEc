@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf713c8e_a9ec8575",
+        "filename": "common/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-06-13T04:16:35Z",
+      "side": 1,
+      "message": "I\u0027m not sure if this 5 second delay is necessary. All the corruptible things (like the eMMC or SSD) should already have been powered down.",
+      "revId": "e6c9d9723785d6fe8272fb0e622681e84e83756b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
