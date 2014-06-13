@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "7f6424c8_2984f982",
+        "filename": "common/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-06-13T17:42:35Z",
+      "side": 1,
+      "message": "1 second may be good enough according to Vic.",
+      "revId": "e6c9d9723785d6fe8272fb0e622681e84e83756b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfc3fcc9_be7009b7",
+        "filename": "common/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-06-13T17:42:35Z",
+      "side": 1,
+      "message": "Use EC_VER_BATTERY_CUT_OFF instead of 1. See my comment in ec_command.h",
+      "revId": "e6c9d9723785d6fe8272fb0e622681e84e83756b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf713c8e_a9ec8575",
         "filename": "common/battery.c",
         "patchSetId": 2
@@ -31,6 +65,57 @@
       "side": 1,
       "message": "Vic wrote this for Yoshi. He also comment 5 secs is not necessary. Let\u0027s change it to 1 sec.",
       "parentUuid": "bf713c8e_a9ec8575",
+      "revId": "e6c9d9723785d6fe8272fb0e622681e84e83756b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fc0f8c0_17b02478",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1977,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-06-13T17:42:35Z",
+      "side": 1,
+      "message": "#define EC_VER_BATTERY_CUT_OFF 1",
+      "revId": "e6c9d9723785d6fe8272fb0e622681e84e83756b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f6424c8_c9745de3",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3658,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-06-13T17:42:35Z",
+      "side": 1,
+      "message": "memset(\u0026p, 0, sizeof(p));",
+      "revId": "e6c9d9723785d6fe8272fb0e622681e84e83756b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f6424c8_096f350f",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3668,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-06-13T17:42:35Z",
+      "side": 1,
+      "message": "Use EC_VER_BATTERY_CUT_OFF instead of 1.",
       "revId": "e6c9d9723785d6fe8272fb0e622681e84e83756b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
