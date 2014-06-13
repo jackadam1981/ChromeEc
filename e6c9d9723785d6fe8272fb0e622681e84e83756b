@@ -16,6 +16,24 @@
       "revId": "e6c9d9723785d6fe8272fb0e622681e84e83756b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fc0f8c0_971894db",
+        "filename": "common/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-06-13T17:05:56Z",
+      "side": 1,
+      "message": "Vic wrote this for Yoshi. He also comment 5 secs is not necessary. Let\u0027s change it to 1 sec.",
+      "parentUuid": "bf713c8e_a9ec8575",
+      "revId": "e6c9d9723785d6fe8272fb0e622681e84e83756b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
