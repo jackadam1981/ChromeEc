@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "df8b50a1_2c7f9b34",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003228
+      },
+      "writtenOn": "2014-06-13T04:00:57Z",
+      "side": 1,
+      "message": "sorry for typo.",
+      "parentUuid": "df8b50a1_4c9b0793",
+      "revId": "82da6e2eee8a027bc41cb7038e784418464e6d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df8b50a1_6c98c395",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-06-13T02:39:58Z",
       "side": 1,
       "message": "Can you also provide a reference to the original CL",
+      "revId": "82da6e2eee8a027bc41cb7038e784418464e6d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf985cf6_65f53c5f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1003228
+      },
+      "writtenOn": "2014-06-13T04:00:57Z",
+      "side": 1,
+      "message": "I will add the original change id.",
+      "parentUuid": "df8b50a1_6c98c395",
       "revId": "82da6e2eee8a027bc41cb7038e784418464e6d31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
