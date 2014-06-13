@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9fc0f8c0_d797acbd",
+        "filename": "common/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-06-13T17:58:16Z",
+      "side": 1,
+      "message": "I picked 5 seconds randomly when I did this for Spring, but I don\u0027t think we actually need this long. Alternatively, we can make this a board option:\n\n  #ifndef CONFIG_BATTERY_CUTOFF_DELAY_US\n  #define CONFIG_BATTERY_CUTOFF_DELAY_US SECOND /* or even 1/10 second? */\n  #endif",
+      "parentUuid": "7f6424c8_2984f982",
+      "revId": "e6c9d9723785d6fe8272fb0e622681e84e83756b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfc3fcc9_be7009b7",
         "filename": "common/battery.c",
         "patchSetId": 2
