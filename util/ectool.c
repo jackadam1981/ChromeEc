@@ -34,7 +34,7 @@ const char help_str[] =
 	"      Enable/disable LCD backlight\n"
 	"  battery\n"
 	"      Prints battery info\n"
-	"  batterycutoff\n"
+	"  batterycutoff [at-shutdown]\n"
 	"      Cut off battery output power\n"
 	"  batteryparam\n"
 	"      Read or write board-specific battery parameter\n"
@@ -3653,9 +3653,19 @@ cmd_error:
 
 int cmd_battery_cut_off(int argc, char *argv[])
 {
+	struct ec_params_battery_cutoff p;
 	int rv;
 
-	rv = ec_command(EC_CMD_BATTERY_CUT_OFF, 0, NULL, 0, NULL, 0);
+	if (argc > 1) {
+		if (!strcasecmp(argv[1], "at-shutdown")) {
+			p.flags = EC_BATTERY_CUTOFF_FLAG_AT_SHUTDOWN;
+		} else {
+			fprintf(stderr, "Bad parameter: %s\n", argv[1]);
+			return -1;
+		}
+	}
+
+	rv = ec_command(EC_CMD_BATTERY_CUT_OFF, 1, &p, sizeof(p), NULL, 0);
 	rv = (rv < 0 ? rv : 0);
 
 	if (rv < 0) {
@@ -3669,8 +3679,6 @@ int cmd_battery_cut_off(int argc, char *argv[])
 		printf("SUCCESS. The battery has arranged a cut-off and\n");
 		printf("the system should be shutdown immediately.\n");
 		printf("\n");
-		printf("If the system is still alive, you could remove\n");
-		printf("the AC power and try again.\n");
 	}
 	return rv;
 }
