@@ -43,6 +43,12 @@ enum battery_present {
 	BP_NOT_SURE,
 };
 
+enum battery_cutoff_states {
+	BATTERY_CUTOFF_STATE_NORMAL = 0,
+	BATTERY_CUTOFF_STATE_CUTOFF,
+	BATTERY_CUTOFF_STATE_PENDING,
+};
+
 /* Battery parameters */
 struct batt_params {
 	int temperature;      /* Temperature in 0.1 K */
@@ -273,7 +279,7 @@ int battery_manufacturer_date(int *year, int *month, int *day);
  *
  * @return EC_RES_INVALID_COMMAND if the battery doesn't support.
  */
-int board_cut_off_battery(void);
+int board_cutoff_battery(void);
 
 /**
  * Return if the battery has been cut off.
