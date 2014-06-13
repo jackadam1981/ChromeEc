@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7f6424c8_942d1ccc",
+        "filename": "common/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-06-13T21:42:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fd0ec87_14481172",
+      "revId": "e3a65a1c7398722cf01f515f78e54512bd664a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3fd0ec87_d4579900",
         "filename": "common/battery.c",
         "patchSetId": 5
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "9fc0f8c0_924542d5",
+        "filename": "common/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-06-13T21:42:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fd0ec87_d4579900",
+      "revId": "e3a65a1c7398722cf01f515f78e54512bd664a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f6e38af_e800379c",
         "filename": "common/battery.c",
         "patchSetId": 5
@@ -47,6 +83,24 @@
       "writtenOn": "2014-06-13T21:27:17Z",
       "side": 1,
       "message": "nit: is -\u003e was",
+      "revId": "e3a65a1c7398722cf01f515f78e54512bd664a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfc3fcc9_5995af59",
+        "filename": "common/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-06-13T21:42:02Z",
+      "side": 1,
+      "message": "why \"was\"?  I think this is just happening?",
+      "parentUuid": "9f6e38af_e800379c",
       "revId": "e3a65a1c7398722cf01f515f78e54512bd664a50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
