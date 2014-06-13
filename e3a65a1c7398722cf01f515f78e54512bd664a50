@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fd0ec87_14481172",
+        "filename": "common/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-06-13T21:27:17Z",
+      "side": 1,
+      "message": "Make this static?",
+      "revId": "e3a65a1c7398722cf01f515f78e54512bd664a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fd0ec87_d4579900",
+        "filename": "common/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-06-13T21:27:17Z",
+      "side": 1,
+      "message": "we should also cancel the deferred call here:\n\n  hook_call_deferred(pending_cutoff_deferred, -1);",
+      "revId": "e3a65a1c7398722cf01f515f78e54512bd664a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f6e38af_e800379c",
+        "filename": "common/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-06-13T21:27:17Z",
+      "side": 1,
+      "message": "nit: is -\u003e was",
+      "revId": "e3a65a1c7398722cf01f515f78e54512bd664a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
