@@ -65,12 +65,18 @@ BUILD_ASSERT(ARRAY_SIZE(channel_names) == CC_CHANNEL_COUNT);
 /*****************************************************************************/
 /* Channel-based console output */
 
+int usb_puts(const char *outstr);
+int usb_vprintf(const char *format, va_list args);
+
 int cputs(enum console_channel channel, const char *outstr)
 {
 	/* Filter out inactive channels */
 	if (!(CC_MASK(channel) & channel_mask))
 		return EC_SUCCESS;
 
+#ifdef CONFIG_USB_CONSOLE
+	usb_puts(outstr);
+#endif
 	return uart_puts(outstr);
 }
 
@@ -82,6 +88,12 @@ int cprintf(enum console_channel channel, const char *format, ...)
 	/* Filter out inactive channels */
 	if (!(CC_MASK(channel) & channel_mask))
 		return EC_SUCCESS;
+
+#ifdef CONFIG_USB_CONSOLE
+	va_start(args, format);
+	rv = usb_vprintf(format, args);
+	va_end(args);
+#endif
 
 	va_start(args, format);
 	rv = uart_vprintf(format, args);

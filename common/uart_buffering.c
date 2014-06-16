@@ -42,9 +42,9 @@
 static volatile char tx_buf[CONFIG_UART_TX_BUF_SIZE];
 static volatile int tx_buf_head;
 static volatile int tx_buf_tail;
-static volatile char rx_buf[CONFIG_UART_RX_BUF_SIZE];
-static volatile int rx_buf_head;
-static volatile int rx_buf_tail;
+/*static*/ volatile char rx_buf[CONFIG_UART_RX_BUF_SIZE];
+/*static*/ volatile int rx_buf_head;
+/*static*/ volatile int rx_buf_tail;
 static int tx_snapshot_head;
 static int tx_snapshot_tail;
 static int uart_suspended;
@@ -219,9 +219,17 @@ void uart_process_input(void)
 
 #endif /* !CONFIG_UART_RX_DMA */
 
+#ifdef CONFIG_USB_CONSOLE
+int usb_tx_char(void *context, int c);
+#endif
+
 int uart_putc(int c)
 {
 	int rv = __tx_char(NULL, c);
+
+#ifdef CONFIG_USB_CONSOLE
+	usb_tx_char(NULL, c);
+#endif
 
 	if (!uart_suspended)
 		uart_tx_start();
