@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f439833_cb51b50d",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-06-16T16:04:27Z",
+      "side": 1,
+      "message": "Should we retry if the charger_set_mode() call failed? \n\nif (!r1 \u0026\u0026 !r2 \u0026\u0026 !r3) ...\n\nIf so, we might want restructure this function to return immediately on any failure to keep the expressions simple.",
+      "revId": "bd4469ae4ffbbd6f2cd5549bdb8809838e55d6f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
