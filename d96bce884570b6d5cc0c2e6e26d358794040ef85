@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e44ec981_0b996162",
+        "filename": "board/keyborg/runtime.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-17T17:06:44Z",
+      "side": 1,
+      "message": "you will have a conflict here, you need to rebase",
+      "revId": "d96bce884570b6d5cc0c2e6e26d358794040ef85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f6328c5_97e52472",
+        "filename": "common/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-17T17:06:44Z",
+      "side": 1,
+      "message": "common-$(if $(findstring \"$(CONFIG_COMMON_RUNTIME)\" \"y\"),,\"y\")+\u003dirq_mapper.o ?\nthat\u0027s not better ... maybe we should have some kind of helper",
+      "revId": "d96bce884570b6d5cc0c2e6e26d358794040ef85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e44ec981_8b5d51cd",
+        "filename": "common/irq_mapper.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-17T17:06:44Z",
+      "side": 1,
+      "message": "that\u0027s adding a level of indirection in the IRQ handling :\n08001200 \u003cirq_12_handler\u003e:\n 8001200:       b508            push    {r3, lr}\n 8001202:       f7ff ff89       bl      8001118 \u003cirq_12_handler_optional\u003e\n 8001206:       bd08            pop     {r3, pc}\n\nI\u0027m sure we can do better...",
+      "revId": "d96bce884570b6d5cc0c2e6e26d358794040ef85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
