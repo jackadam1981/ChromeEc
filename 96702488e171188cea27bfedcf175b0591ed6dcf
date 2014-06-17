@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "44587541_91d21e03",
+        "filename": "include/usb.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-17T18:25:49Z",
+      "side": 1,
+      "message": "Done\n\nShould be: total desc size \u003d size of the UTF-16 text + 2x u8 fields (len+type) - string 0 termination",
+      "parentUuid": "643ad9c6_5124b44b",
+      "revId": "96702488e171188cea27bfedcf175b0591ed6dcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a41a1165_76266edf",
         "filename": "include/usb.h",
         "patchSetId": 21
@@ -30,6 +48,24 @@
       "writtenOn": "2014-06-17T18:09:22Z",
       "side": 1,
       "message": "This would miss a byte when \u0027size\u0027 is odd. Need to add something like:\n\n  if (size \u0026 1)\n    *ebuf++ \u003d src[size - 1];",
+      "revId": "96702488e171188cea27bfedcf175b0591ed6dcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44587541_d17ad640",
+        "filename": "include/usb.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-17T18:25:49Z",
+      "side": 1,
+      "message": "my original intention was to let it as is (force the caller to round it) but that\u0027s too error-prone, I will update it.",
+      "parentUuid": "a41a1165_76266edf",
       "revId": "96702488e171188cea27bfedcf175b0591ed6dcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
