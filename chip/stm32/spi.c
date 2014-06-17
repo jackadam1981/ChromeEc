@@ -89,6 +89,8 @@ static uint8_t enabled;
 static struct host_cmd_handler_args args;
 static struct host_packet spi_packet;
 
+static int setup_transaction_later;
+
 enum spi_state {
 	/* SPI not enabled (initial state, and when chipset is off) */
 	SPI_STATE_DISABLED = 0,
@@ -259,6 +261,24 @@ static void setup_for_transaction(void)
 	spi->dr = EC_SPI_OLD_READY;
 }
 
+
+/*
+ * If a setup_for_transaction() was postponed, call it now.
+ */
+static void check_setup_transaction_later(void)
+{
+	if (setup_transaction_later) {
+		setup_transaction_later = 0;
+		setup_for_transaction();
+		/*
+		 * 'state' is set to SPI_STATE_READY_TO_RX. Somehow AP
+		 * de-asserted the SPI NSS during the handler was running.
+		 * Thus, the pending result will be dropped anyway.
+		 */
+	}
+}
+
+
 /**
  * Called for V2 protocol to indicate that a command has completed
  *
@@ -271,6 +291,9 @@ static void spi_send_response(struct host_cmd_handler_args *args)
 	enum ec_status result = args->result;
 	stm32_dma_chan_t *txdma;
 
+	/* Handler releases the Rx buffer. See if RxDMA setup is required. */
+	check_setup_transaction_later();
+
 	/*
 	 * If we're not processing, then the AP has already terminated the
 	 * transaction, and won't be listening for a response.
@@ -282,6 +305,7 @@ static void spi_send_response(struct host_cmd_handler_args *args)
 		result = EC_RES_INVALID_RESPONSE;
 
 	/* Transmit the reply */
+	state = SPI_STATE_SENDING;
 	txdma = dma_get_channel(STM32_DMAC_SPI1_TX);
 	reply(txdma, result, args->response, args->response_size);
 }
@@ -297,6 +321,9 @@ static void spi_send_response_packet(struct host_packet *pkt)
 {
 	stm32_dma_chan_t *txdma;
 
+	/* Handler releases the Rx buffer. See if RxDMA setup is required. */
+	check_setup_transaction_later();
+
 	/*
 	 * If we're not processing, then the AP has already terminated the
 	 * transaction, and won't be listening for a response.
@@ -308,6 +335,7 @@ static void spi_send_response_packet(struct host_packet *pkt)
 	((uint8_t *)pkt->response)[pkt->response_size] = EC_SPI_PAST_END;
 
 	/* Transmit the reply */
+	state = SPI_STATE_SENDING;
 	txdma = dma_get_channel(STM32_DMAC_SPI1_TX);
 	dma_prepare_tx(&dma_tx_option,
 		       sizeof(out_preamble) + pkt->response_size + 1, out_msg);
@@ -336,6 +364,15 @@ void spi_event(enum gpio_signal signal)
 	/* Check chip select.  If it's high, the AP ended a tranaction. */
 	nss_reg = gpio_get_level_reg(GPIO_SPI1_NSS, &nss_mask);
 	if (REG16(nss_reg) & nss_mask) {
+		/*
+		 * If the buffer is still used by the host command, postpone
+		 * the DMA rx setup.
+		 */
+		if (state == SPI_STATE_PROCESSING) {
+			setup_transaction_later = 1;
+			return;
+		}
+
 		/* Set up for the next transaction */
 		setup_for_transaction();
 		return;
