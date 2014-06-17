@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9f439833_b4a9266e",
+        "filename": "util/flash_pd.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-06-17T00:09:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf713c8e_b7fb025a",
+      "revId": "00c2a4292145a3b1440b6bfbf31af91bf2634603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f6328c5_c08a6f0d",
         "filename": "util/flash_pd.py",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2014-06-12T17:23:02Z",
       "side": 1,
       "message": "might be usbpd_uart_pty\n(eg when using samus_pd to flash the brick)\nwe probably need a parameter",
+      "revId": "00c2a4292145a3b1440b6bfbf31af91bf2634603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f439833_948a6a0c",
+        "filename": "util/flash_pd.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-06-17T00:09:30Z",
+      "side": 1,
+      "message": "preferring usbpd_uart_pty during init and then falling back to ec_uart_pty.\n\nWill of course add param instead if that won\u0027t suffice.",
+      "parentUuid": "1f6328c5_c08a6f0d",
       "revId": "00c2a4292145a3b1440b6bfbf31af91bf2634603",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "7f3264d4_b9f12b4b",
+        "filename": "util/flash_pd.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-06-17T00:09:30Z",
+      "side": 1,
+      "message": "I\u0027m not seeing that string ... just:\npd flash reboot\n REBOOT ...DONE",
+      "parentUuid": "9fc0f8c0_eccc9fa0",
+      "revId": "00c2a4292145a3b1440b6bfbf31af91bf2634603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f854c8a_f1c74779",
         "filename": "util/flash_pd.py",
         "patchSetId": 3
@@ -64,6 +118,24 @@
       "writtenOn": "2014-06-12T02:32:06Z",
       "side": 1,
       "message": "I would like to print out the response to this command so that we can verify what version is running. Otherwise there is no point to sending this command.",
+      "revId": "00c2a4292145a3b1440b6bfbf31af91bf2634603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f3264d4_d9f6df3f",
+        "filename": "util/flash_pd.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-06-17T00:09:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f854c8a_f1c74779",
       "revId": "00c2a4292145a3b1440b6bfbf31af91bf2634603",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
