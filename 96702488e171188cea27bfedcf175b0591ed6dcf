@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "643ad9c6_5124b44b",
+        "filename": "include/usb.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-06-17T18:09:22Z",
+      "side": 1,
+      "message": "Add a comment for \"+ 2 - 2\"?",
+      "revId": "96702488e171188cea27bfedcf175b0591ed6dcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a41a1165_76266edf",
+        "filename": "include/usb.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-06-17T18:09:22Z",
+      "side": 1,
+      "message": "This would miss a byte when \u0027size\u0027 is odd. Need to add something like:\n\n  if (size \u0026 1)\n    *ebuf++ \u003d src[size - 1];",
+      "revId": "96702488e171188cea27bfedcf175b0591ed6dcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
