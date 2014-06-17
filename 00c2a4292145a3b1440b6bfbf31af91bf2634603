@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "7f3264d4_1f2857ec",
+        "filename": "util/flash_pd.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-17T00:14:05Z",
+      "side": 1,
+      "message": "definitely, the RW string is on the PSU console which is not connected to your device.",
+      "parentUuid": "7f3264d4_b9f12b4b",
+      "revId": "00c2a4292145a3b1440b6bfbf31af91bf2634603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f854c8a_f1c74779",
         "filename": "util/flash_pd.py",
         "patchSetId": 3
