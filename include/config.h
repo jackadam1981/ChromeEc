@@ -932,7 +932,7 @@
 #undef CONFIG_WATCHDOG_HELP
 
 /* Watchdog period in ms; must be at least twice HOOK_TICK_INTERVAL */
-#define WATCHDOG_PERIOD_MS 1100
+#define CONFIG_WATCHDOG_PERIOD_MS 1100
 
 /*****************************************************************************/
 
