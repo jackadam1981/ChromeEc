@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4cbf13b_b433a67b",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-18T22:11:43Z",
+      "side": 1,
+      "message": "can you merge both of those functions in a single pd_hw_release() somewhat symmetric to pd_hw_init() ?",
+      "revId": "d3c26d4efd2b859a300b866bb6f3e6fcdcf6f226",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4cbf13b_b4f08670",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-18T22:11:43Z",
+      "side": 1,
+      "message": "can you move it below inside the #ifdef",
+      "revId": "d3c26d4efd2b859a300b866bb6f3e6fcdcf6f226",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4cbf13b_d412f2e6",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1033,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-18T22:11:43Z",
+      "side": 1,
+      "message": "you need to add the description\n(and this is not robust, currently they will be all shifted)",
+      "revId": "d3c26d4efd2b859a300b866bb6f3e6fcdcf6f226",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
