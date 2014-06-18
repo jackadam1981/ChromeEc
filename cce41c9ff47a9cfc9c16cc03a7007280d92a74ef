@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2492a112_ee108f70",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1000393
+      },
+      "writtenOn": "2014-06-18T01:46:01Z",
+      "side": 1,
+      "message": "What if AP raises CS (SPI NSS) after here and before state \u003d SPI_STATE_SENDING?",
+      "revId": "cce41c9ff47a9cfc9c16cc03a7007280d92a74ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2492a112_938d6cb5",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1000393
+      },
+      "writtenOn": "2014-06-18T01:46:01Z",
+      "side": 1,
+      "message": "What if AP raises CS (SPI NSS) after state is set to SPI_STATE_SENDING?\n\nSame thing in the next routine, spi_send_response_packet().",
+      "revId": "cce41c9ff47a9cfc9c16cc03a7007280d92a74ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64d659dd_f725b814",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1000393
+      },
+      "writtenOn": "2014-06-18T01:46:01Z",
+      "side": 1,
+      "message": "Same question here.",
+      "revId": "cce41c9ff47a9cfc9c16cc03a7007280d92a74ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
