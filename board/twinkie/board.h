@@ -19,14 +19,6 @@
 #define CONFIG_USB
 #define CONFIG_USB_CONSOLE
 
-#if 1 /* PD message injector mode */
-#define CONFIG_USB_POWER_DELIVERY
-#define CONFIG_USB_PD_DUAL_ROLE
-#define CONFIG_USB_PD_INTERNAL_COMP
-#define CONFIG_PD_USE_DAC_AS_REF
-#define CONFIG_HW_CRC
-#endif
-
 #define CONFIG_ADC
 #define CONFIG_BOARD_PRE_INIT
 #define CONFIG_I2C
