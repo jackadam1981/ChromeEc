@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64d659dd_c0bc68f5",
+        "filename": "board/twinkie/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-06-18T15:30:02Z",
+      "side": 1,
+      "message": "nit, would it be better to write 0x8000 (reset) since this will result in default operation.",
+      "revId": "1842f61a98e8dfc451e4dbd6ba4370edc3cb00a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
