@@ -182,6 +182,9 @@ void pd_power_supply_reset(void)
 	adc_disable_watchdog();
 }
 
+/* record the current when the last watchdog-triggered OCP happened */
+int last_ocp_current;
+
 int pd_board_checks(void)
 {
 	int vbus_volt, vbus_amp;
@@ -202,6 +205,9 @@ int pd_board_checks(void)
 		adc_enable_watchdog(ADC_CH_A_SENSE, MAX_CURRENT, 0);
 
 	if ((fault == FAULT_FAST_OCP) || (vbus_amp > MAX_CURRENT)) {
+		if (fault == FAULT_FAST_OCP)
+			debug_printf("Fast OCP : %d mA\n",  last_ocp_current *
+			      VDDA_MV / CURR_GAIN * 1000 / R_SENSE / ADC_SCALE);
 		debug_printf("OverCurrent : %d mA\n",
 		  vbus_amp * VDDA_MV / CURR_GAIN * 1000 / R_SENSE / ADC_SCALE);
 		fault = FAULT_OCP;
@@ -241,6 +247,8 @@ int pd_power_negotiation_allowed(void)
 
 void IRQ_HANDLER(STM32_IRQ_ADC_COMP)(void)
 {
+	/* record the current spike */
+	last_ocp_current = STM32_ADC_DR;
 	/* cut the power output */
 	pd_power_supply_reset();
 	/* Clear flags */
