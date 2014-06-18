@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "64d659dd_809740f2",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-18T16:45:56Z",
+      "side": 1,
+      "message": "Suggest adding for clarity:\n\nIf we\u0027re not processing (for example, if check_setup_transation_later() just reset the transaction)...",
+      "revId": "cce41c9ff47a9cfc9c16cc03a7007280d92a74ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2492a112_ee108f70",
         "filename": "chip/stm32/spi.c",
         "patchSetId": 1
@@ -19,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "64d659dd_0026f020",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-18T16:45:56Z",
+      "side": 1,
+      "message": "Yes, that\u0027s a problem.  I think we need to check_setup_transaction_later() *after* we set SPI_STATE_SENDING, instead of before.",
+      "parentUuid": "2492a112_ee108f70",
+      "revId": "cce41c9ff47a9cfc9c16cc03a7007280d92a74ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2492a112_938d6cb5",
         "filename": "chip/stm32/spi.c",
         "patchSetId": 1
@@ -30,6 +65,24 @@
       "writtenOn": "2014-06-18T01:46:01Z",
       "side": 1,
       "message": "What if AP raises CS (SPI NSS) after state is set to SPI_STATE_SENDING?\n\nSame thing in the next routine, spi_send_response_packet().",
+      "revId": "cce41c9ff47a9cfc9c16cc03a7007280d92a74ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04975d03_1b0e5454",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-18T16:45:56Z",
+      "side": 1,
+      "message": "It\u0027s ok.  Then state is not SPI_STATE_PROCESSING, and the interrupt handler will call setup_for_transaction() itself.",
+      "parentUuid": "2492a112_938d6cb5",
       "revId": "cce41c9ff47a9cfc9c16cc03a7007280d92a74ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
