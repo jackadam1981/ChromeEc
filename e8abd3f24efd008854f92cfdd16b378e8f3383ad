@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a47691c3_d90a33f0",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-18T23:57:32Z",
+      "side": 1,
+      "message": "This is still only looking at one ADC sample to determine if it has over-currented. Seems like if there is a spike just over 3.6A that happens to coincide with calling board_checks(), then we will trigger the slow OCP. Shouldn\u0027t the slow OCP be more of an average of a couple of readings? Or is the idea that the slower ADC sampling time will help smooth out any spikes?",
+      "revId": "e8abd3f24efd008854f92cfdd16b378e8f3383ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
