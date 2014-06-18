@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c479c5b6_14115424",
+        "filename": "board/zinger/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-18T02:45:55Z",
+      "side": 1,
+      "message": "Typo: CONFIG_WATCHDOG_PERIOD_MS is unused. WATCHDOG_PERIOD_MS is the symbol that is being used.",
+      "revId": "0d0b53e7ca6f7f9bbe0c572a48af809cfc5ac62a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
