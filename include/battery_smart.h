@@ -139,5 +139,10 @@ int sb_read(int cmd, int *param);
 /* Write to battery */
 int sb_write(int cmd, int param);
 
+/**
+ * Return vendor-provided smart battery firmware info.
+ */
+struct smart_battery_firmware_info *smart_battery_get_fw_info(void);
+
 #endif /* __CROS_EC_SMART_BATTERY_H */
 
