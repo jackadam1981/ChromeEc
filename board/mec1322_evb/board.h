@@ -44,6 +44,7 @@ enum gpio_signal {
 	GPIO_PCH_SMI_L,           /* SMI output */
 	GPIO_PCH_WAKE_L,          /* PCH wake pin */
 	GPIO_S1,                  /* Switch S1 */
+	GPIO_SHD_CS0,
 	/*
 	 * Signals which aren't implemented on MEC1322 eval board but we'll
 	 * emulate anyway, to make it more convenient to debug other code.
