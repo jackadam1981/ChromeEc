@@ -23,6 +23,7 @@ const struct gpio_info gpio_list[] = {
 	{"PCH_SMI_L", GPIO_PORT(4), (1 << 4), GPIO_ODR_HIGH, NULL},
 	{"PCH_WAKE_L", GPIO_PORT(20), (1 << 0), GPIO_ODR_HIGH, NULL},
 	{"S1", GPIO_PORT(6), (1 << 3), GPIO_INT_FALLING | GPIO_PULL_UP, NULL},
+	{"SHD_CS0", GPIO_PORT(15), (1 << 0), GPIO_ODR_HIGH, NULL},
 	/* Unimplemented signals which we need to emulate for now */
 	GPIO_SIGNAL_NOT_IMPLEMENTED("RECOVERY_L"),
 	GPIO_SIGNAL_NOT_IMPLEMENTED("WP"),
@@ -48,6 +49,8 @@ const struct gpio_alt_func gpio_alt_funcs[] = {
 	{GPIO_PORT(12), 0x60,     2, MODULE_KEYBOARD_SCAN, GPIO_KB_INPUT},
 	{GPIO_PORT(14), 0x14,     3, MODULE_KEYBOARD_SCAN, GPIO_KB_INPUT},
 	{GPIO_PORT(2),  0x20,     2, MODULE_LPC},
+	{GPIO_PORT(12), 0x14,     1, MODULE_SPI},
+	{GPIO_PORT(6),  0x10,     1, MODULE_SPI},
 };
 const int gpio_alt_funcs_count = ARRAY_SIZE(gpio_alt_funcs);
 
