@@ -203,12 +203,23 @@ int pd_board_checks(void)
 		adc_enable_watchdog(ADC_CH_A_SENSE, MAX_CURRENT_FAST, 0);
 
 	if ((fault == FAULT_FAST_OCP) || (vbus_amp > MAX_CURRENT)) {
-		debug_printf("OverCurrent : %d mA\n",
-		  vbus_amp * VDDA_MV / CURR_GAIN * 1000 / R_SENSE / ADC_SCALE);
-		fault = FAULT_OCP;
-		/* reset over-current after 1 second */
-		fault_deadline.val = get_time().val + OCP_TIMEOUT;
-		return EC_ERROR_INVAL;
+		/* loop for 100us to check whether this is just a transient */
+		uint32_t t0 = get_time().le.lo;
+		int count = 0;
+		int total = 0;
+		while ((get_time().le.lo - t0) < 100) {
+			total += adc_read_channel(ADC_CH_A_SENSE);
+			count++;
+		}
+		if ((total > MAX_CURRENT*count) || (fault == FAULT_FAST_OCP)) {
+			debug_printf("OverCurrent : %d mA\n",
+			  vbus_amp * VDDA_MV / CURR_GAIN * 1000
+				   / R_SENSE / ADC_SCALE);
+			fault = FAULT_OCP;
+			/* reset over-current after 1 second */
+			fault_deadline.val = get_time().val + OCP_TIMEOUT;
+			return EC_ERROR_INVAL;
+		}
 	}
 	if (output_is_enabled() && (vbus_volt > voltages[volt_idx].ovp)) {
 		debug_printf("OverVoltage : %d mV\n",
