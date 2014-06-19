@@ -123,6 +123,9 @@ static void onewire_led_tick(void)
 	case PWR_STATE_ERROR:
 		new_color = LED_RED;
 		break;
+	case PWR_STATE_SB_FW_UPDATE_IN_PROGRESS:
+		new_color = LED_YELLOW;
+		break;
 	default:
 		/* Other states don't change LED color */
 		break;
