@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44b4f5af_bc071936",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 805,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-19T03:41:31Z",
+      "side": 1,
+      "message": "you can move it below just before SNK_DISCONNECTED\nin the existing #ifdef",
+      "revId": "8aded018c99eb0f47b8512390651a00f8151a6a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4ce254b_808d06b5",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-19T03:41:31Z",
+      "side": 1,
+      "message": "you need to do this before hw_release()",
+      "revId": "8aded018c99eb0f47b8512390651a00f8151a6a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
