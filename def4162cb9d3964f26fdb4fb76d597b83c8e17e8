@@ -1,0 +1,225 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24b9c1aa_8dc1c514",
+        "filename": "chip/stm32/spi_flash.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-19T04:38:41Z",
+      "side": 1,
+      "message": "\"char\" is strange beast in C\nyou should use uint8_t or int",
+      "revId": "def4162cb9d3964f26fdb4fb76d597b83c8e17e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4ce254b_7b752ba5",
+        "filename": "chip/stm32/spi_flash.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-19T04:38:41Z",
+      "side": 1,
+      "message": "you mean (sec \u0026\u0026 bp \u003d\u003d 6) ?",
+      "revId": "def4162cb9d3964f26fdb4fb76d597b83c8e17e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24b9c1aa_8dda25f3",
+        "filename": "chip/stm32/spi_flash.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-19T04:38:41Z",
+      "side": 1,
+      "message": "you can  do better by using __builtin_clz()",
+      "revId": "def4162cb9d3964f26fdb4fb76d597b83c8e17e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24b9c1aa_4df66d75",
+        "filename": "chip/stm32/spi_flash.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-19T04:38:41Z",
+      "side": 1,
+      "message": "that\u0027s very dependant on how the debug is initiated on the board, not sure we want that stuff here",
+      "revId": "def4162cb9d3964f26fdb4fb76d597b83c8e17e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4ce254b_3bd1e333",
+        "filename": "chip/stm32/spi_flash.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-19T04:38:41Z",
+      "side": 1,
+      "message": "you should not busy-wait all the time IMO,\nadd a few usleep",
+      "revId": "def4162cb9d3964f26fdb4fb76d597b83c8e17e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24b9c1aa_8df3057d",
+        "filename": "chip/stm32/spi_flash.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-19T04:38:41Z",
+      "side": 1,
+      "message": "it seems that you should factorize that function with the previous one.\nThey have the same code excepted the constants",
+      "revId": "def4162cb9d3964f26fdb4fb76d597b83c8e17e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4ce254b_9bbfb7e8",
+        "filename": "chip/stm32/spi_flash.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-19T04:38:41Z",
+      "side": 1,
+      "message": "do you need to verify that you are 32-kB aligned ?",
+      "revId": "def4162cb9d3964f26fdb4fb76d597b83c8e17e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44b4f5af_3cfd698b",
+        "filename": "chip/stm32/spi_flash.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-19T04:38:41Z",
+      "side": 1,
+      "message": "that\u0027s redundant with your first check on line 565",
+      "revId": "def4162cb9d3964f26fdb4fb76d597b83c8e17e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24b9c1aa_0d115524",
+        "filename": "include/spi_flash.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-19T04:38:41Z",
+      "side": 1,
+      "message": "it would be better to prefix each one with SPI_\neg SPI_WP_NONE",
+      "revId": "def4162cb9d3964f26fdb4fb76d597b83c8e17e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44b4f5af_3c4ec97e",
+        "filename": "include/spi_flash.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-19T04:38:41Z",
+      "side": 1,
+      "message": "content ?",
+      "revId": "def4162cb9d3964f26fdb4fb76d597b83c8e17e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44b4f5af_dc420d51",
+        "filename": "include/spi_flash.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-19T04:38:41Z",
+      "side": 1,
+      "message": "other parameters have a tab after the name",
+      "revId": "def4162cb9d3964f26fdb4fb76d597b83c8e17e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44b4f5af_3c44892d",
+        "filename": "include/spi_flash.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-19T04:38:41Z",
+      "side": 1,
+      "message": "max 256 ?",
+      "revId": "def4162cb9d3964f26fdb4fb76d597b83c8e17e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24b9c1aa_8d60e58b",
+        "filename": "include/spi_flash.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-19T04:38:41Z",
+      "side": 1,
+      "message": "probably not \"Check\"",
+      "revId": "def4162cb9d3964f26fdb4fb76d597b83c8e17e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
