@@ -2069,6 +2069,11 @@ struct ec_response_battery_vendor_param {
 	uint32_t value;
 } __packed;
 
+/*
+ * Set Smart Battery Firmware protection.
+ */
+#define EC_CMD_SB_FIRMWARE_PROTECT 0xb5
+
 /*****************************************************************************/
 /* System commands */
 
