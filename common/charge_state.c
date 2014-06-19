@@ -390,6 +390,9 @@ static enum charge_state state_init(struct charge_state_context *ctx)
 	if (ctx->battery == NULL)
 		ctx->battery = battery_get_info();
 
+	if (ctx->sb_fw_info == NULL)
+		ctx->sb_fw_info = smart_battery_get_fw_info();
+
 	/* Update static battery info */
 	update_battery_info();
 
@@ -575,6 +578,35 @@ static enum charge_state state_discharge(struct charge_state_context *ctx)
 }
 
 /**
+ * Smart Battery Firmware Update state handler
+ *
+ *	- detect battery status change
+ *	- new state: PWR_STATE_IDLE
+ */
+static enum charge_state state_firmware_update(struct charge_state_context *ctx)
+{
+	struct charge_state_data *curr = &ctx->curr;
+	struct smart_battery_firmware_info *fw_info = ctx->sb_fw_info;
+	timestamp_t now;
+
+	if (curr->error)
+		return PWR_STATE_ERROR;
+
+	if (!curr->ac)
+		return PWR_STATE_ERROR;
+
+	now = get_time();
+
+	/* Update firmware update timer */
+	ctx->firmware_update_time.val = now.val;
+
+	if (fw_info->nwrite != fw_info->size)
+		return PWR_STATE_SB_FW_UPDATE_IN_PROGRESS;
+	else
+		return PWR_STATE_IDLE;
+}
+
+/**
  * Error state handler
  *
  *	- check charger and battery communication
@@ -728,6 +760,9 @@ void charger_task(void)
 #endif /* CONFIG_CHARGER_TIMEOUT_HOURS */
 
 		switch (ctx->prev.state) {
+		case PWR_STATE_SB_FW_UPDATE_IN_PROGRESS:
+			new_state = state_firmware_update(ctx);
+			break;
 		case PWR_STATE_INIT:
 		case PWR_STATE_REINIT:
 			new_state = state_init(ctx);
@@ -774,6 +809,7 @@ void charger_task(void)
 		}
 
 		if (state_machine_force_idle &&
+		    ctx->prev.state != PWR_STATE_SB_FW_UPDATE_IN_PROGRESS &&
 		    ctx->prev.state != PWR_STATE_IDLE0 &&
 		    ctx->prev.state != PWR_STATE_IDLE &&
 		    ctx->prev.state != PWR_STATE_INIT &&
@@ -841,9 +877,13 @@ void charger_task(void)
 		case PWR_STATE_UNCHANGE:
 			/* Don't change sleep duration */
 			break;
+		case PWR_STATE_SB_FW_UPDATE_IN_PROGRESS:
+			sleep_usec = POLL_PERIOD_SHORT;
+			break;
 		default:
 			/* Other state; poll quickly and hope it goes away */
 			sleep_usec = POLL_PERIOD_SHORT;
+			break;
 		}
 
 #ifdef CONFIG_EXTPOWER_FALCO
@@ -925,6 +965,7 @@ static void charge_init(void)
 {
 	struct charge_state_context *ctx = &task_ctx;
 
+	ctx->sb_fw_info = smart_battery_get_fw_info();
 	ctx->prev.state = PWR_STATE_INIT;
 	ctx->curr.state = PWR_STATE_INIT;
 	ctx->trickle_charging_time.val = 0;

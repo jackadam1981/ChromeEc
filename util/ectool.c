@@ -21,6 +21,7 @@
 #include "lock/gec_lock.h"
 #include "misc_util.h"
 #include "panic.h"
+#include "ec_sb_firmware.h"
 
 #define GEC_LOCK_TIMEOUT_SECS	30  /* 30 secs */
 
@@ -3805,6 +3806,34 @@ static int cmd_hang_detect(int argc, char *argv[])
 	return -1;
 }
 
+int cmd_sb_firmware_update(int argc, char *argv[])
+{
+	int size;
+	int rv;
+	char *buf;
+
+	if (argc < 2) {
+		fprintf(stderr, "Usage: %s <sb_fw_filename>\n", argv[0]);
+		return -1;
+	}
+
+	/* Read the input file */
+	buf = read_file(argv[2], &size);
+	if (!buf)
+		return -1;
+
+	/* Write data in chunks */
+	rv = ec_sb_firmware_write(buf, size);
+
+	free(buf);
+
+	if (rv < 0)
+		return rv;
+
+	printf("done.\n");
+	return 0;
+}
+
 struct command {
 	const char *name;
 	int (*handler)(int argc, char *argv[]);
@@ -3818,6 +3847,7 @@ const struct command commands[] = {
 	{"battery", cmd_battery},
 	{"batterycutoff", cmd_battery_cut_off},
 	{"batteryparam", cmd_battery_vendor_param},
+	{"batteryfwupdate", cmd_sb_firmware_update},
 	{"boardversion", cmd_board_version},
 	{"chargecurrentlimit", cmd_charge_current_limit},
 	{"chargedump", cmd_charge_dump},

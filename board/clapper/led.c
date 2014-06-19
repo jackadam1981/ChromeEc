@@ -126,6 +126,7 @@ static void battery_led_update(void)
 	case PWR_STATE_CHARGE:
 	case PWR_STATE_CHARGE_NEAR_FULL: /* with AC */
 	case PWR_STATE_IDLE:		 /* with AC */
+	case PWR_STATE_SB_FW_UPDATE_IN_PROGRESS: /* with AC */
 		/* 80% ~ */
 		if (battery >= 80)
 			set_color_battery(LED_WHITE);
