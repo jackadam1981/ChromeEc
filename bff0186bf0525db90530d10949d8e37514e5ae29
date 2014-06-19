@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4ce254b_a0bb625b",
+        "filename": "board/fruitpie/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-19T03:37:55Z",
+      "side": 1,
+      "message": "actually the debug cable might provide the 5V power.\nwe need to something more complicated and switch it if no VBUS is present.",
+      "revId": "bff0186bf0525db90530d10949d8e37514e5ae29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44b4f5af_5cfdbdd4",
+        "filename": "board/fruitpie/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-19T03:37:55Z",
+      "side": 1,
+      "message": "you need to do it before switching 5V which triggers this timer.",
+      "revId": "bff0186bf0525db90530d10949d8e37514e5ae29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24b9c1aa_ed55e1d6",
+        "filename": "board/fruitpie/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-19T03:37:55Z",
+      "side": 1,
+      "message": "we need some timeout here",
+      "revId": "bff0186bf0525db90530d10949d8e37514e5ae29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
