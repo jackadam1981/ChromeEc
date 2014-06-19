@@ -925,6 +925,12 @@
 #undef CONFIG_USBC_SS_MUX
 
 /*****************************************************************************/
+/* USB interfaces config */
+
+/* USB mass storage interface */
+#undef CONFIG_USB_MS
+
+/*****************************************************************************/
 
 /* Support simple control of power to the device's USB ports */
 #undef CONFIG_USB_PORT_POWER_DUMB
