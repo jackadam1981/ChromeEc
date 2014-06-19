@@ -934,14 +934,15 @@
  */
 #undef CONFIG_WATCHDOG_HELP
 
-/* Watchdog period in ms; must be at least twice HOOK_TICK_INTERVAL */
-#define CONFIG_WATCHDOG_PERIOD_MS 1100
+/* Watchdog period in ms; see also AUX_TIMER_PERIOD_MS */
+#define CONFIG_WATCHDOG_PERIOD_MS 1600
 
 /*
- * Fire auxiliary timer 50ms before watchdog timer expires. This leaves
- * some time for debug trace to be printed.
+ * Fire auxiliary timer 500ms before watchdog timer expires. This leaves
+ * some time for debug trace to be printed; must be at least twice
+ * HOOK_TICK_INTERVAL.
  */
-#define CONFIG_AUX_TIMER_PERIOD_MS (CONFIG_WATCHDOG_PERIOD_MS - 50)
+#define CONFIG_AUX_TIMER_PERIOD_MS (CONFIG_WATCHDOG_PERIOD_MS - 500)
 
 /*****************************************************************************/
 
