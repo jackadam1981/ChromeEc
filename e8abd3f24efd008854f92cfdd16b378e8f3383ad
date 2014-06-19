@@ -16,6 +16,24 @@
       "revId": "e8abd3f24efd008854f92cfdd16b378e8f3383ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24b9c1aa_277a3afc",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-19T00:50:57Z",
+      "side": 1,
+      "message": "Yes, that\u0027s the limitation I mentioned in my email.\nThe larger sampling time helps for noise,\nBut for the BQ regulation latency (order of magnitude 100us), we should definitely average once we have detected an issue.\nit\u0027s not fully implemented because I was wondering whether  I should just do a stupid loop here  (and potentially lose the next Pd message) or do something more clever.",
+      "parentUuid": "a47691c3_d90a33f0",
+      "revId": "e8abd3f24efd008854f92cfdd16b378e8f3383ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
