@@ -2020,6 +2020,19 @@ struct ec_params_ext_power_current_limit {
 #define EC_CMD_SB_READ_BLOCK  0xb2
 #define EC_CMD_SB_WRITE_BLOCK 0xb3
 
+/*
+ * Get/set Smart Battery Firmware protection.
+ *
+ * If mask!=0, sets/clear the requested bits of flags.
+ * Check the returned flags bits to see what actually happened.
+ *
+ * If mask=0, simply returns the current flags state.
+ */
+#define EC_CMD_SB_FIRMWARE_PROTECT 0xb4
+#define EC_VER_SB_FIRMWARE_PROTECT 1  /* Command version 1 */
+
+#define EC_SB_FIRMWARE_PROTECT_NOW  (1 << 0)
+
 struct ec_params_sb_rd {
 	uint8_t reg;
 } __packed;

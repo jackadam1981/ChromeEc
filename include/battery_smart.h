@@ -127,6 +127,19 @@
 #define INFO_CHARGER_SPEC(INFO)         ((INFO) & 0xf)
 #define INFO_SELECTOR_SUPPORT(INFO)     (((INFO) >> 4) & 1)
 
+/* Smart Battery Firmware Info */
+struct smart_battery_firmware_info {
+	uint8_t fw_version[8];
+	uint8_t fw_challenge_data[17];
+	uint8_t rsvd0[3];  /* 4 byte align */
+	uint8_t fw_response_data[25];
+	uint8_t rsvd1[3];  /* 4 byte align */
+	uint32_t status; /* firmware udpate status */
+	uint32_t nwrite; /* num of bytes transferred */
+	uint32_t size;   /* firmware image size in byte */
+	char *image;  /* pointer to firmware image */
+};
+
 /* Read from charger */
 int sbc_read(int cmd, int *param);
 
@@ -138,6 +151,11 @@ int sb_read(int cmd, int *param);
 
 /* Write to battery */
 int sb_write(int cmd, int param);
+
+/**
+ * Return vendor-provided smart battery firmware info.
+ */
+struct smart_battery_firmware_info *smart_battery_get_fw_info(void);
 
 #endif /* __CROS_EC_SMART_BATTERY_H */
 

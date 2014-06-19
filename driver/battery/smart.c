@@ -12,6 +12,17 @@
 #include "timer.h"
 #include "util.h"
 
+#ifdef CONFIG_I2C_PASSTHROUGH
+static uint8_t g_smart_battery_firmware_protect;
+#endif
+
+static struct smart_battery_firmware_info sb_fw_info;
+
+struct smart_battery_firmware_info *smart_battery_get_fw_info(void)
+{
+	return &sb_fw_info;
+}
+
 test_mockable int sbc_read(int cmd, int *param)
 {
 	return i2c_read16(I2C_PORT_CHARGER, CHARGER_ADDR, cmd, param);
@@ -268,6 +279,9 @@ static int host_command_sb_read_word(struct host_cmd_handler_args *args)
 	const struct ec_params_sb_rd *p = args->params;
 	struct ec_response_sb_rd_word *r = args->response;
 
+	if (g_smart_battery_firmware_protect)
+		return EC_RES_INVALID_COMMAND;
+
 	if (p->reg > 0x1c)
 		return EC_RES_INVALID_PARAM;
 	rv = i2c_read16(I2C_PORT_BATTERY, BATTERY_ADDR, p->reg, &val);
@@ -288,6 +302,9 @@ static int host_command_sb_write_word(struct host_cmd_handler_args *args)
 	int rv;
 	const struct ec_params_sb_wr_word *p = args->params;
 
+	if (g_smart_battery_firmware_protect)
+		return EC_RES_INVALID_COMMAND;
+
 	if (p->reg > 0x1c)
 		return EC_RES_INVALID_PARAM;
 	rv = i2c_write16(I2C_PORT_BATTERY, BATTERY_ADDR, p->reg, p->value);
@@ -305,6 +322,9 @@ static int host_command_sb_read_block(struct host_cmd_handler_args *args)
 	int rv;
 	const struct ec_params_sb_rd *p = args->params;
 	struct ec_response_sb_rd_block *r = args->response;
+
+	if (g_smart_battery_firmware_protect)
+		return EC_RES_INVALID_COMMAND;
 
 	if ((p->reg != SB_MANUFACTURER_NAME) &&
 	    (p->reg != SB_DEVICE_NAME) &&
@@ -327,9 +347,20 @@ DECLARE_HOST_COMMAND(EC_CMD_SB_READ_BLOCK,
 static int host_command_sb_write_block(struct host_cmd_handler_args *args)
 {
 	/* Not implemented */
+	if (g_smart_battery_firmware_protect)
+		return EC_RES_INVALID_COMMAND;
 	return EC_RES_INVALID_COMMAND;
 }
 DECLARE_HOST_COMMAND(EC_CMD_SB_WRITE_BLOCK,
 		     host_command_sb_write_block,
+		     EC_VER_MASK(0));
+
+static int host_command_sb_firmware_protect(struct host_cmd_handler_args *args)
+{
+	g_smart_battery_firmware_protect = 1;
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_SB_FIRMWARE_PROTECT,
+		     host_command_sb_firmware_protect,
 		     EC_VER_MASK(0));
 #endif
