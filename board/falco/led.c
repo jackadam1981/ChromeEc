@@ -94,6 +94,11 @@ static void led_tick(void)
 		if (chflags & CHARGE_FLAG_FORCE_IDLE)
 			bat_led_set_color((ticks & 0x4) ? LED_AMBER : LED_OFF);
 		break;
+	case PWR_STATE_SB_FW_UPDATE_IN_PROGRESS:
+		/* If firmware update in progress
+		 * blink orange & green, 50% duty cycle, 2 sec period */
+		bat_led_set_color((ticks & 0x4) ? LED_AMBER : LED_WHITE);
+		break;
 	default:
 		/* Other states don't alter LED behavior */
 		break;

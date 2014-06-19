@@ -95,6 +95,13 @@ static void led_tick(void)
 		return;
 	}
 
+	/* If firmware update in progress
+	 * blink orange & green, 50% duty cycle, 2 sec period */
+	if (chstate == PWR_STATE_SB_FW_UPDATE_IN_PROGRESS) {
+		set_color((ticks & 0x4) ? LED_ORANGE : LED_GREEN);
+		return;
+	}
+
 	/* If charge-force-idle, blink green, 50% duty cycle, 2 sec period */
 	if (chstate == PWR_STATE_IDLE &&
 	    (charge_get_flags() & CHARGE_FLAG_FORCE_IDLE)) {

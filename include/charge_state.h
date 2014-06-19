@@ -4,6 +4,7 @@
  */
 
 #include "battery.h"
+#include "battery_smart.h"
 #include "timer.h"
 
 #ifndef __CROS_EC_CHARGE_STATE_H
@@ -32,11 +33,16 @@
 #define F_BATTERY_NOT_CONNECTED   (1 << 12) /* Battery not connected */
 #define F_BATTERY_GET_PARAMS  (1 << 13) /* Any battery parameter bad */
 
+/* Any battery firmware update bad */
+#define F_BATTERY_FIRMWARE_UPDATE  (1 << 14)
+
 #define F_BATTERY_MASK (F_BATTERY_VOLTAGE | \
 			F_BATTERY_MODE | \
 			F_BATTERY_CAPACITY | F_BATTERY_STATE_OF_CHARGE | \
 			F_BATTERY_UNRESPONSIVE | F_BATTERY_NOT_CONNECTED | \
-			F_BATTERY_GET_PARAMS)
+			F_BATTERY_GET_PARAMS | \
+			F_BATTERY_FIRMWARE_UPDATE)
+
 #define F_CHARGER_MASK (F_CHARGER_VOLTAGE | F_CHARGER_CURRENT | \
 			F_CHARGER_INIT)
 
@@ -59,7 +65,9 @@ enum charge_state {
 	/* Charging, almost fully charged */
 	PWR_STATE_CHARGE_NEAR_FULL,
 	/* Charging state machine error */
-	PWR_STATE_ERROR
+	PWR_STATE_ERROR,
+	/* Idle; AC present; Battery Firmware Update in progress */
+	PWR_STATE_SB_FW_UPDATE_IN_PROGRESS
 };
 
 /* Charge state flags */
@@ -80,7 +88,8 @@ enum charge_state {
 		"discharge",	\
 		"charge",	\
 		"charge_near_full",      \
-		"error"		\
+		"error"		, \
+		"sb_fw_update"	\
 	}
 	/* End of CHARGE_STATE_NAME_TABLE macro */
 
@@ -118,6 +127,8 @@ struct charge_state_context {
 	timestamp_t voltage_debounce_time;
 	timestamp_t shutdown_warning_time;
 	int battery_responsive;
+	/* Firmware Updating timestamps */
+	timestamp_t firmware_update_time;
 };
 
 /**

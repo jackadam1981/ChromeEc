@@ -21,6 +21,7 @@
 #include "lock/gec_lock.h"
 #include "misc_util.h"
 #include "panic.h"
+#include "ec_firmware_update.h"
 
 #define GEC_LOCK_TIMEOUT_SECS	30  /* 30 secs */
 
@@ -86,6 +87,10 @@ const char help_str[] =
 	"      Reads from EC flash to a file\n"
 	"  flashwrite <offset> <infile>\n"
 	"      Writes to EC flash from a file\n"
+	"  fwupdate list\n"
+	"      list all firmware update\n"
+	"  fwupdate <fw_id> <image>\n"
+	"      update firmware with <fw_id>\n"
 	"  gpioget <GPIO name>\n"
 	"      Get the value of GPIO signal\n"
 	"  gpioset <GPIO name>\n"
@@ -96,9 +101,9 @@ const char help_str[] =
 	"      Checks for basic communication with EC\n"
 	"  kbpress\n"
 	"      Simulate key press\n"
-	"  i2cread\n"
+	"  i2cread <8 | 16> <port> <addr> <offset>\n"
 	"      Read I2C bus\n"
-	"  i2cwrite\n"
+	"  i2cwrite <8 | 16> <port> <addr> <offset> <data>\n"
 	"      Write I2C bus\n"
 	"  i2cxfer <port> <slave_addr> <read_count> [write bytes...]\n"
 	"      Perform I2C transfer on EC's I2C bus\n"
@@ -3805,6 +3810,25 @@ static int cmd_hang_detect(int argc, char *argv[])
 	return -1;
 }
 
+static int cmd_firmware_update(int argc, char *argv[])
+{
+	uint32_t fw_id;
+
+	if (argc < 2 || argc > 4) {
+		fprintf(stderr, "Usage: %s <list>\n", argv[0]);
+		fprintf(stderr, "Usage: %s <fw_id> <fw_filename>\n", argv[0]);
+		return -1;
+	}
+
+	if (!strncasecmp(argv[2], "list", 4)) {
+		ec_firmware_list();
+	} else {
+		sscanf(argv[2], "%d", &fw_id);
+		ec_firmware_update(fw_id, argv[3]);
+	}
+	return 0;
+}
+
 struct command {
 	const char *name;
 	int (*handler)(int argc, char *argv[]);
@@ -3842,6 +3866,7 @@ const struct command commands[] = {
 	{"flashread", cmd_flash_read},
 	{"flashwrite", cmd_flash_write},
 	{"flashinfo", cmd_flash_info},
+	{"fwupdate", cmd_firmware_update},
 	{"gpioget", cmd_gpio_get},
 	{"gpioset", cmd_gpio_set},
 	{"hangdetect", cmd_hang_detect},
