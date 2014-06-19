@@ -34,6 +34,24 @@
       "revId": "e8abd3f24efd008854f92cfdd16b378e8f3383ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44b4f5af_2ea1b351",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-19T01:11:21Z",
+      "side": 1,
+      "message": "as I\u0027m not sure about the right implementation, I did it in another CL :\nhttps://chromium-review.googlesource.com/204588",
+      "parentUuid": "24b9c1aa_277a3afc",
+      "revId": "e8abd3f24efd008854f92cfdd16b378e8f3383ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
