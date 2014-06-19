@@ -910,6 +910,12 @@
 #undef CONFIG_USB_PD_TX_USES_SPI_MASTER
 
 /*****************************************************************************/
+/* USB interfaces config */
+
+/* USB mass storage interface */
+#undef CONFIG_USB_MS
+
+/*****************************************************************************/
 
 /* Support simple control of power to the device's USB ports */
 #undef CONFIG_USB_PORT_POWER_DUMB
