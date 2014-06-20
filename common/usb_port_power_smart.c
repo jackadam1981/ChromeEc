@@ -75,8 +75,13 @@ static void usb_charge_set_ilim(int port_id, int sel)
 
 static void usb_charge_all_ports_on(void)
 {
+#ifdef CONFIG_USB_PORT_POWER_SMART_DEFAULT_MODE
+	usb_charge_set_mode(0, CONFIG_USB_PORT_POWER_SMART_DEFAULT_MODE);
+	usb_charge_set_mode(1, CONFIG_USB_PORT_POWER_SMART_DEFAULT_MODE);
+#else
 	usb_charge_set_mode(0, USB_CHARGE_MODE_SDP2);
 	usb_charge_set_mode(1, USB_CHARGE_MODE_SDP2);
+#endif
 }
 
 static void usb_charge_all_ports_off(void)
