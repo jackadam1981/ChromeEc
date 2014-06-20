@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e4db2937_a0e97491",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2014-06-20T22:29:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04f11da2_d15d86cc",
+      "revId": "f08920f4c0d7c1d61a4c5a7ffb297e7f145a7103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "240c6177_f50cf0cb",
         "filename": "include/config.h",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-06-20T20:49:41Z",
       "side": 1,
       "message": "Can we verify that via a compile-time assertion?",
+      "revId": "f08920f4c0d7c1d61a4c5a7ffb297e7f145a7103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4db2937_0366b266",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 943,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2014-06-20T22:29:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "240c6177_f50cf0cb",
       "revId": "f08920f4c0d7c1d61a4c5a7ffb297e7f145a7103",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
