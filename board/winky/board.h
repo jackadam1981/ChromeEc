@@ -26,11 +26,11 @@
 #define CONFIG_CMD_GSV
 #define CONFIG_EXTPOWER_GPIO
 #define CONFIG_I2C_PASSTHRU_RESTRICTED
-#define CONFIG_KEYBOARD_COL2_INVERTED
+/*#define CONFIG_KEYBOARD_COL2_INVERTED*/
 #define CONFIG_KEYBOARD_IRQ_GPIO GPIO_KBD_IRQ_L
 #define CONFIG_KEYBOARD_PROTOCOL_8042
 /* TODO(crosbug.com/p/25418): Add LED support */
-#undef  CONFIG_LED_COMMON
+#define CONFIG_LED_COMMON
 #define CONFIG_LOW_POWER_IDLE
 #undef  CONFIG_PECI
 #define CONFIG_POWER_BUTTON
@@ -46,6 +46,7 @@
 #define CONFIG_WIRELESS
 #define CONFIG_WIRELESS_SUSPEND \
 	(EC_WIRELESS_SWITCH_WLAN | EC_WIRELESS_SWITCH_WLAN_POWER)
+#define CONFIG_TEMP_SENSOR_POWER_GPIO	GPIO_PCH_SYS_PWROK
 
 #ifndef __ASSEMBLER__
 
@@ -110,6 +111,7 @@ enum gpio_signal {
 	GPIO_PCH_RCIN_L,           /* Reset line to PCH (for 8042 emulation) */
 	GPIO_PCH_RSMRST_L,         /* Reset PCH resume power plane logic */
 	GPIO_PCH_SMI_L,            /* System management interrupt to PCH */
+	GPIO_LOW_POWER_L,		   /* LV Mode */
 	GPIO_PCH_SOC_OVERRIDE,     /* SOC override signal to PCH; when high, ME
 				    * ignores security descriptor */
 	GPIO_PCH_SYS_PWROK,        /* EC thinks everything is up and ready */
