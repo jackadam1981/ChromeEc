@@ -21,6 +21,7 @@
 #include "lock/gec_lock.h"
 #include "misc_util.h"
 #include "panic.h"
+#include "ec_sb_firmware_update.h"
 
 #define GEC_LOCK_TIMEOUT_SECS	30  /* 30 secs */
 
@@ -86,6 +87,8 @@ const char help_str[] =
 	"      Reads from EC flash to a file\n"
 	"  flashwrite <offset> <infile>\n"
 	"      Writes to EC flash from a file\n"
+        "  fwupdate <fw_id> <image>\n"
+        "      update firmware with <fw_id>\n"
 	"  gpioget <GPIO name>\n"
 	"      Get the value of GPIO signal\n"
 	"  gpioset <GPIO name>\n"
@@ -4426,6 +4429,16 @@ int cmd_port80_read(int argc, char *argv[])
 	return 0;
 }
 
+static int cmd_firmware_update(int argc, char *argv[])
+{
+        if (argc != 3) {
+                fprintf(stderr, "Usage: %s <fw_filename>\n", argv[0]);
+                return -1;
+        }
+        ec_sb_firmware_update(argv[2]);
+        return 0;
+}
+
 struct command {
 	const char *name;
 	int (*handler)(int argc, char *argv[]);
@@ -4463,6 +4476,7 @@ const struct command commands[] = {
 	{"flashread", cmd_flash_read},
 	{"flashwrite", cmd_flash_write},
 	{"flashinfo", cmd_flash_info},
+        {"fwupdate", cmd_firmware_update},
 	{"gpioget", cmd_gpio_get},
 	{"gpioset", cmd_gpio_set},
 	{"hangdetect", cmd_hang_detect},

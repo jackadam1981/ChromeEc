@@ -16,7 +16,8 @@ comm-objs+=comm-lpc.o
 else
 comm-objs+=comm-i2c.o
 endif
-ectool-objs=ectool.o ectool_keyscan.o misc_util.o ec_flash.o $(comm-objs)
+ectool-objs=ectool.o ectool_keyscan.o misc_util.o \
+	ec_flash.o ec_sb_firmware_update.o $(comm-objs)
 lbplay-objs=lbplay.o $(comm-objs)
 burn_my_ec-objs=ec_flash.o $(comm-objs) misc_util.o
 
