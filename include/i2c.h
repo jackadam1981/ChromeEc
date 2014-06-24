@@ -162,5 +162,4 @@ int i2c_unwedge(int port);
  */
 int i2c_read_string(int port, int slave_addr, int offset, uint8_t *data,
 			int len);
-
 #endif  /* __CROS_EC_I2C_H */

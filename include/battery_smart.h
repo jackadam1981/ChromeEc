@@ -34,7 +34,7 @@
 #define SB_TEMPERATURE                  0x08
 #define SB_VOLTAGE                      0x09
 #define SB_CURRENT                      0x0a
-#define SB_AVERAGE_CURRENT              0x0b
+#define SB_AVERAGE_CURRENT              0x0b /*No PEC ?*/
 #define SB_MAX_ERROR                    0x0c
 #define SB_RELATIVE_STATE_OF_CHARGE     0x0d
 #define SB_ABSOLUTE_STATE_OF_CHARGE     0x0e
@@ -52,10 +52,12 @@
 #define SB_SPECIFICATION_INFO           0x1a
 #define SB_MANUFACTURER_DATE            0x1b
 #define SB_SERIAL_NUMBER                0x1c
-#define SB_MANUFACTURER_NAME            0x20
-#define SB_DEVICE_NAME                  0x21
-#define SB_DEVICE_CHEMISTRY             0x22
+#define SB_MANUFACTURER_NAME            0x20 /* 1+0x6+1 */
+#define SB_DEVICE_NAME                  0x21 /* 1+0xB+1 */
+#define SB_DEVICE_CHEMISTRY             0x22 /* 1+0x3+1 */
 #define SB_MANUFACTURER_DATA            0x23
+
+#define SB_MFG_FUNC_FIRST_USED_DATE     0x3F
 
 /* Battery mode */
 #define MODE_INTERNAL_CHARGE_CONTROLLER (1 << 0)
