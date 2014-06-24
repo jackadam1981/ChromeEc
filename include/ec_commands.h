@@ -2070,6 +2070,45 @@ struct ec_response_battery_vendor_param {
 } __packed;
 
 /*****************************************************************************/
+/*
+ * Smart Battery Firmware Update Commands
+ */
+#define EC_CMD_SB_FW_UPDATE 0xb5
+
+enum ec_sb_fw_update_state {
+	EC_CMD_SB_FW_UPDATE_BEGIN    = 0x0, /*check if protected */
+	EC_CMD_SB_FW_UPDATE_WRITE    = 0x1, /*check if protected */
+	EC_CMD_SB_FW_UPDATE_END      = 0x2,
+	EC_CMD_SB_FW_UPDATE_STATUS   = 0x3,
+	EC_CMD_SB_FW_UPDATE_PROTECT  = 0x4,
+	EC_CMD_SB_FW_UPDATE_MAX      = 0x5,
+};
+
+struct ec_sb_fw_update_header {
+	uint16_t state;   /* enum ec_sb_fw_update_state */
+	uint16_t fw_id;   /* firmware id */
+} __packed;
+
+struct ec_sb_fw_update_entry {
+	uint32_t size;      /* firmware size, in bytes */
+	uint32_t nwrite;    /* num of bytes transferred */
+	uint32_t hash_code; /* firmware hash code */
+} __packed;
+
+struct ec_sb_fw_update_status {
+	struct ec_sb_fw_update_header hdr;
+	struct ec_sb_fw_update_entry fw;
+} __packed;
+
+struct ec_sb_fw_update_write {
+	struct ec_sb_fw_update_header hdr;
+	uint32_t offset;   /* Byte offset to write */
+	uint32_t size;     /* Size to write in bytes */
+	/* Followed by data to write */
+	uint16_t data[0];
+} __packed;
+
+/*****************************************************************************/
 /* System commands */
 
 /*
