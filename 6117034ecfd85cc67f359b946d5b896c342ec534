@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44a315b3_8b647e2c",
+        "filename": "board/peppy/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-06-24T23:33:23Z",
+      "side": 1,
+      "message": "whitespace at EOL",
+      "revId": "6117034ecfd85cc67f359b946d5b896c342ec534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44a315b3_2b55522c",
+        "filename": "board/peppy/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-06-24T23:33:23Z",
+      "side": 1,
+      "message": "and here",
+      "revId": "6117034ecfd85cc67f359b946d5b896c342ec534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44a315b3_86de3373",
+        "filename": "board/samus/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-06-24T23:33:23Z",
+      "side": 1,
+      "message": "whitespace",
+      "revId": "6117034ecfd85cc67f359b946d5b896c342ec534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44a315b3_a62b3770",
+        "filename": "include/gpio_list.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-06-24T23:33:23Z",
+      "side": 1,
+      "message": "As a style thing, I\u0027m not sure about this #include here. Every board.c that includes gpio_list.inc has already #included gpio.h",
+      "revId": "6117034ecfd85cc67f359b946d5b896c342ec534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
