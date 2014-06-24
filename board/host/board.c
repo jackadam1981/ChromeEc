@@ -14,22 +14,9 @@
 #include "timer.h"
 #include "util.h"
 
-#define MOCK_GPIO(x) {#x, 0, 0, 0, 0}
-#define MOCK_GPIO_INT(x, i, r) {#x, 0, 0, i, r}
+#define GPIO_0  0
 
-const struct gpio_info gpio_list[] = {
-	MOCK_GPIO(EC_INT),
-	MOCK_GPIO_INT(LID_OPEN, GPIO_INT_BOTH, lid_interrupt),
-	MOCK_GPIO_INT(POWER_BUTTON_L, GPIO_INT_BOTH, power_button_interrupt),
-	MOCK_GPIO(WP),
-	MOCK_GPIO(ENTERING_RW),
-	MOCK_GPIO_INT(AC_PRESENT, GPIO_INT_BOTH, extpower_interrupt),
-	MOCK_GPIO(PCH_BKLTEN),
-	MOCK_GPIO(ENABLE_BACKLIGHT),
-	MOCK_GPIO_INT(BUTTON_VOLUME_DOWN_L, GPIO_INT_BOTH, button_interrupt),
-	MOCK_GPIO_INT(BUTTON_VOLUME_UP, GPIO_INT_BOTH, button_interrupt),
-};
-BUILD_ASSERT(ARRAY_SIZE(gpio_list) == GPIO_COUNT);
+#include "gpio_list.inc"
 
 /* Pins with alternate functions; not on simulated host platform */
 const struct gpio_alt_func gpio_alt_funcs[] = {
