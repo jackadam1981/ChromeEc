@@ -479,6 +479,15 @@
 #undef CONFIG_I2C_PASSTHROUGH
 #undef CONFIG_I2C_PASSTHRU_RESTRICTED
 
+/* smbus configuration */
+#undef CONFIG_SMBUS
+
+/* crc8 util function */
+#undef CONFIG_CRC
+
+/* smart battery firmware update */
+#undef CONFIG_SB_FIRMWARE_UPDATE
+
 /*****************************************************************************/
 
 /* Number of IRQs supported on the EC chip */
