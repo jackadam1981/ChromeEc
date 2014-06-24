@@ -350,6 +350,7 @@ static void i2c_freq_changed(void)
 		/* Round TPR up, so desired kbps is an upper bound */
 		const int tpr = (freq + d - 1) / d - 1;
 
+#define PRINT_I2C_SPEEDS
 #ifdef PRINT_I2C_SPEEDS
 		const int f = freq / (2 * (1 + tpr) * (6 + 4));
 		CPRINTF("[%T I2C%d clk=%d tpr=%d freq=%d]\n",
