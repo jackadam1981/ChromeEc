@@ -71,6 +71,14 @@ struct i2c_port_data {
 static struct i2c_port_data pdata[I2C_PORT_COUNT];
 
 /**
+ * I2C Check if i2c is busy
+ */
+int i2c_is_busy(int port)
+{
+	return LM4_I2C_MCS_BUSBSY & LM4_I2C_MCS(port);
+}
+
+/**
  * I2C transfer engine.
  *
  * @return Zero when done with transfer (ready to wake task).
@@ -296,36 +304,6 @@ int i2c_get_line_levels(int port)
 	return LM4_I2C_MBMON(port) & 0x03;
 }
 
-int i2c_read_string(int port, int slave_addr, int offset, uint8_t *data,
-		    int len)
-{
-	int rv;
-	uint8_t reg, block_length;
-
-	i2c_lock(port, 1);
-
-	reg = offset;
-	/*
-	 * Send device reg space offset, and read back block length.  Keep this
-	 * session open without a stop.
-	 */
-	rv = i2c_xfer(port, slave_addr, &reg, 1, &block_length, 1,
-		      I2C_XFER_START);
-	if (rv)
-		goto exit;
-
-	if (len && block_length > (len - 1))
-		block_length = len - 1;
-
-	rv = i2c_xfer(port, slave_addr, 0, 0, data, block_length,
-		      I2C_XFER_STOP);
-	data[block_length] = 0;
-
-exit:
-	i2c_lock(port, 0);
-	return rv;
-}
-
 /*****************************************************************************/
 /* Hooks */
 
@@ -350,6 +328,7 @@ static void i2c_freq_changed(void)
 		/* Round TPR up, so desired kbps is an upper bound */
 		const int tpr = (freq + d - 1) / d - 1;
 
+#define PRINT_I2C_SPEEDS 1
 #ifdef PRINT_I2C_SPEEDS
 		const int f = freq / (2 * (1 + tpr) * (6 + 4));
 		CPRINTF("[%T I2C%d clk=%d tpr=%d freq=%d]\n",
@@ -377,8 +356,15 @@ static void i2c_init(void)
 	gpio_config_module(MODULE_I2C, 1);
 
 	/* Initialize ports as master, with interrupts enabled */
-	for (i = 0; i < i2c_ports_used; i++)
+	for (i = 0; i < i2c_ports_used; i++) {
+		CPRINTF("[%T MCLKOCNT:%02X]\n",
+			LM4_I2C_MCLKOCNT(i2c_ports[i].port));
+		/* 0xDA0:= 34.88ms @100KHz */
+		LM4_I2C_MCLKOCNT(i2c_ports[i].port) = 0xDA;
+		CPRINTF("[%T MCLKOCNT:%02X]\n",
+			LM4_I2C_MCLKOCNT(i2c_ports[i].port));
 		LM4_I2C_MCR(i2c_ports[i].port) = 0x10;
+	}
 
 	/* Set initial clock frequency */
 	i2c_freq_changed();

@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -20,6 +20,7 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#include "sb_fw_update.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHARGER, outstr)
@@ -63,18 +64,29 @@ static inline void update_charger_time(
  */
 static void update_battery_info(void)
 {
+	int rv;
 	char *batt_str;
 	int batt_serial;
 
+	CPRINTF("[%T Update Smart Battery Info]\n");
+
 	/* Design Capacity of Full */
-	battery_design_capacity((int *)host_get_memmap(EC_MEMMAP_BATT_DCAP));
+	rv = battery_design_capacity(
+		(int *)host_get_memmap(EC_MEMMAP_BATT_DCAP));
+	if (rv)
+		return;
 
 	/* Design Voltage */
-	battery_design_voltage((int *)host_get_memmap(EC_MEMMAP_BATT_DVLT));
+	rv = battery_design_voltage(
+		(int *)host_get_memmap(EC_MEMMAP_BATT_DVLT));
+	if (rv)
+		return;
 
 	/* Last Full Charge Capacity */
-	battery_full_charge_capacity(
+	rv = battery_full_charge_capacity(
 		(int *)host_get_memmap(EC_MEMMAP_BATT_LFCC));
+	if (rv)
+		return;
 
 	/* Cycle Count */
 	battery_cycle_count((int *)host_get_memmap(EC_MEMMAP_BATT_CCNT));
@@ -82,16 +94,22 @@ static void update_battery_info(void)
 	/* Battery Manufacturer string */
 	batt_str = (char *)host_get_memmap(EC_MEMMAP_BATT_MFGR);
 	memset(batt_str, 0, EC_MEMMAP_TEXT_MAX);
-	battery_manufacturer_name(batt_str, EC_MEMMAP_TEXT_MAX);
+	rv = battery_manufacturer_name(batt_str, EC_MEMMAP_TEXT_MAX);
+	if (rv)
+		return;
 
 	/* Battery Model string */
 	batt_str = (char *)host_get_memmap(EC_MEMMAP_BATT_MODEL);
 	memset(batt_str, 0, EC_MEMMAP_TEXT_MAX);
-	battery_device_name(batt_str, EC_MEMMAP_TEXT_MAX);
+	rv = battery_device_name(batt_str, EC_MEMMAP_TEXT_MAX);
+	if (rv)
+		return;
 
 	/* Battery Type string */
 	batt_str = (char *)host_get_memmap(EC_MEMMAP_BATT_TYPE);
-	battery_device_chemistry(batt_str, EC_MEMMAP_TEXT_MAX);
+	rv = battery_device_chemistry(batt_str, EC_MEMMAP_TEXT_MAX);
+	if (rv)
+		return;
 
 	/* Smart battery serial number is 16 bits */
 	batt_str = (char *)host_get_memmap(EC_MEMMAP_BATT_SERIAL);
@@ -257,7 +275,9 @@ static int state_common(struct charge_state_context *ctx)
 #endif
 
 	/* Read params and see if battery is responsive */
-	battery_get_params(batt);
+	if (ctx->prev.state != PWR_STATE_ERROR)
+		battery_get_params(batt);
+
 	if (!(batt->flags & BATT_FLAG_RESPONSIVE)) {
 		/* Check low battery condition and retry */
 		if (curr->ac && ctx->battery_responsive &&
@@ -272,7 +292,8 @@ static int state_common(struct charge_state_context *ctx)
 				       ctx->battery->precharge_current);
 			for (d = 0; d < 30; d++) {
 				sleep(1);
-				battery_get_params(batt);
+				if (ctx->prev.state != PWR_STATE_ERROR)
+					battery_get_params(batt);
 				if (batt->flags & BATT_FLAG_RESPONSIVE) {
 					ctx->battery_responsive = 1;
 					break;
@@ -715,6 +736,12 @@ void charger_task(void)
 	uint8_t batt_flags;
 
 	while (1) {
+#ifdef CONFIG_SB_FIRMWARE_UPDATE
+		if (ec_sb_fw_update_is_inprogress()) {
+			task_wait_event(MAX_SLEEP_USEC);
+			continue;
+		}
+#endif
 		state_common(ctx);
 
 #ifdef CONFIG_CHARGER_TIMEOUT_HOURS
