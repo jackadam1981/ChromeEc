@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -309,6 +309,9 @@
  * case - for example, via a special USB dongle.
  */
 #undef CONFIG_CONSOLE_RESTRICTED_INPUT
+
+/* Select crc util functions */
+#undef CONFIG_CRC
 
 /*****************************************************************************/
 /*
@@ -674,8 +677,17 @@
  */
 #undef CONFIG_SAVE_VBOOT_HASH
 
+/* Enable smart battery firmware update driver */
+#undef CONFIG_SB_FIRMWARE_UPDATE
+
 /* Allow the board to use a GPIO for the SCI# signal. */
 #undef CONFIG_SCI_GPIO
+
+/* Select smbus interface utils */
+#undef CONFIG_SMBUS
+
+/* Enable Debug smart battery firmware update interface */
+#undef CONFIG_SMBUS_DEBUG_FW_UPDATE
 
 /* Support SPI interfaces */
 #undef CONFIG_SPI

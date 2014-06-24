@@ -447,8 +447,10 @@ int accel_init(const enum accel_id id)
 
 	/* Disable the sensor to allow for changing of critical parameters. */
 	ret = disable_sensor(id, &ctrl1);
-	if (ret != EC_SUCCESS)
+	if (ret != EC_SUCCESS) {
+		ccprintf("Line:%d:%d\n", __LINE__, ret);
 		return ret;
+	}
 
 	/*
 	 * This sensor can be powered through an EC reboot, so the state of
@@ -456,8 +458,10 @@ int accel_init(const enum accel_id id)
 	 * sensor to default.
 	 */
 	ret = raw_write8(accel_addr[id], KXCJ9_CTRL2, KXCJ9_CTRL2_SRST);
-	if (ret != EC_SUCCESS)
+	if (ret != EC_SUCCESS) {
+		ccprintf("Line:%d:%d\n", __LINE__, ret);
 		return ret;
+	}
 
 	/* Wait until software reset is complete or timeout. */
 	while (1) {
@@ -483,19 +487,35 @@ int accel_init(const enum accel_id id)
 	ctrl1 |= KXCJ9_CTRL1_WUFE;
 #endif
 	ret = raw_write8(accel_addr[id], KXCJ9_CTRL1, ctrl1);
+	if (ret) {
+		ccprintf("Line:%d:%d\n", __LINE__, ret);
+		return ret;
+	}
 
 #ifdef CONFIG_ACCEL_INTERRUPTS
 	/* Set interrupt polarity to rising edge and keep interrupt disabled. */
 	ret |= raw_write8(accel_addr[id], KXCJ9_INT_CTRL1, KXCJ9_INT_CTRL1_IEA);
+	if (ret) {
+		ccprintf("Line:%d:%d\n", __LINE__, ret);
+		return ret;
+	}
 
 	/* Set output data rate for wake-up interrupt function. */
 	ret |= raw_write8(accel_addr[id], KXCJ9_CTRL2, KXCJ9_OWUF_100_0HZ);
+	if (ret) {
+		ccprintf("Line:%d:%d\n", __LINE__, ret);
+		return ret;
+	}
 
 	/* Set interrupt to trigger on motion on any axis. */
 	ret |= raw_write8(accel_addr[id], KXCJ9_INT_CTRL2,
 			KXCJ9_INT_SRC2_XNWU | KXCJ9_INT_SRC2_XPWU |
 			KXCJ9_INT_SRC2_YNWU | KXCJ9_INT_SRC2_YPWU |
 			KXCJ9_INT_SRC2_ZNWU | KXCJ9_INT_SRC2_ZPWU);
+	if (ret) {
+		ccprintf("Line:%d:%d\n", __LINE__, ret);
+		return ret;
+	}
 
 	/*
 	 * Enable accel interrupts. Note: accels will not initiate an interrupt
@@ -508,9 +528,17 @@ int accel_init(const enum accel_id id)
 	/* Set output data rate. */
 	ret |= raw_write8(accel_addr[id], KXCJ9_DATA_CTRL,
 			datarates[sensor_datarate[id]].reg);
+	if (ret) {
+		ccprintf("Line:%d:%d\n", __LINE__, ret);
+		return ret;
+	}
 
 	/* Enable the sensor. */
 	ret |= enable_sensor(id, ctrl1);
+	if (ret) {
+		ccprintf("Line:%d:%d\n", __LINE__, ret);
+		return ret;
+	}
 
 	return ret;
 }

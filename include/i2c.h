@@ -163,4 +163,9 @@ int i2c_unwedge(int port);
 int i2c_read_string(int port, int slave_addr, int offset, uint8_t *data,
 			int len);
 
+/**
+ * @return TURE if i2c is busy
+ */
+int i2c_is_busy(int port);
+
 #endif  /* __CROS_EC_I2C_H */
