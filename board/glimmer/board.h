@@ -17,6 +17,7 @@
 #define CONFIG_BATTERY_VENDOR_PARAM
 #define CONFIG_BOARD_VERSION
 #define CONFIG_BUTTON_COUNT 2
+#define CONFIG_CMD_CLOCKGATES
 #define CONFIG_CHARGER
 #define CONFIG_CHARGER_BQ24715
 #define CONFIG_CHARGER_DISCHARGE_ON_AC
@@ -26,6 +27,7 @@
 #define CONFIG_CHIPSET_BAYTRAIL
 #define CONFIG_CHIPSET_CAN_THROTTLE
 #define CONFIG_CHIPSET_X86
+#define CONFIG_CMD_ACCELS
 #define CONFIG_CMD_GSV
 #define CONFIG_EXTPOWER_GPIO
 #define CONFIG_FANS 1
@@ -38,6 +40,7 @@
 #define CONFIG_LID_ANGLE_KEY_SCAN
 #define CONFIG_LOW_POWER_IDLE
 #undef  CONFIG_PECI
+#define CONFIG_CMD_PLL
 #define CONFIG_POWER_BUTTON
 #define CONFIG_POWER_BUTTON_IGNORE_LID
 #define CONFIG_POWER_BUTTON_X86
@@ -147,6 +150,8 @@ enum gpio_signal {
 	GPIO_WLAN_OFF_L,           /* Disable WiFi radio */
 	GPIO_PCH_SCI_L,            /* Assert SCI to PCH */
 	GPIO_KBD_IRQ_L,            /* Negative edge triggered irq. */
+	GPIO_I2C0_SCL,             /* I2C port 0, SCL pin */
+	GPIO_I2C0_SDA,             /* I2C port 0, SDA pin */
 	GPIO_I2C2_SCL,             /* I2C port 2, SCL pin */
 	GPIO_I2C2_SDA,             /* I2C port 2, SDA pin */
 	GPIO_ADAPTER_ID,           /* Adapter ID pin */

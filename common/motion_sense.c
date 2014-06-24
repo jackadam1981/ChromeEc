@@ -199,13 +199,16 @@ void motion_sense_task(void)
 	 */
 
 	/* Initialize accelerometers. */
-	ret = accel_init(ACCEL_LID);
-	ret |= accel_init(ACCEL_BASE);
-
 	/* If accelerometers do not initialize, then end task. */
+	ret = accel_init(ACCEL_LID);
 	if (ret != EC_SUCCESS) {
-		CPRINTF("[%T, Accelerometers failed to initialize. Stopping "
-				"motion sense task.\n");
+		CPRINTF("[%T, LID Accelerometer failed to initialize.\n");
+		return;
+	}
+
+	ret |= accel_init(ACCEL_BASE);
+	if (ret != EC_SUCCESS) {
+		CPRINTF("[%T, BASE Accelerometer failed to initialize.\n");
 		return;
 	}
 
