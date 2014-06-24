@@ -21,6 +21,7 @@
 #include "lock/gec_lock.h"
 #include "misc_util.h"
 #include "panic.h"
+#include "ec_sb_firmware_update.h"
 
 #define GEC_LOCK_TIMEOUT_SECS	30  /* 30 secs */
 
@@ -38,6 +39,8 @@ const char help_str[] =
 	"      Cut off battery output power\n"
 	"  batteryparam\n"
 	"      Read or write board-specific battery parameter\n"
+	"  batteryfwupdate <image>\n"
+	"      Update Smart Battery Firmware\n"
 	"  boardversion\n"
 	"      Prints the board version\n"
 	"  chargecurrentlimit\n"
@@ -3805,6 +3808,18 @@ static int cmd_hang_detect(int argc, char *argv[])
 	return -1;
 }
 
+static int cmd_battery_firmware_update(int argc, char *argv[])
+{
+	printf("argc:%d\n", argc);
+	if (argc != 2) {
+		fprintf(stderr, "Usage: %s <fw_filename>\n", argv[0]);
+		return -1;
+	}
+	printf("fw_filename:%s\n", argv[1]);
+	ec_sb_firmware_update(argv[1]);
+	return 0;
+}
+
 struct command {
 	const char *name;
 	int (*handler)(int argc, char *argv[]);
@@ -3818,6 +3833,7 @@ const struct command commands[] = {
 	{"battery", cmd_battery},
 	{"batterycutoff", cmd_battery_cut_off},
 	{"batteryparam", cmd_battery_vendor_param},
+	{"batteryfwupdate", cmd_battery_firmware_update},
 	{"boardversion", cmd_board_version},
 	{"chargecurrentlimit", cmd_charge_current_limit},
 	{"chargedump", cmd_charge_dump},
