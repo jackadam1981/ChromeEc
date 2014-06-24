@@ -9,6 +9,7 @@
 #define __CROS_EC_EXTPOWER_H
 
 #include "common.h"
+#include "gpio.h"
 
 #ifdef CONFIG_EXTPOWER_SPRING
 /* Spring-USB-power-specific methods */

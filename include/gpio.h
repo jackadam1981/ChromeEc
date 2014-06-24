@@ -44,6 +44,15 @@
 #define GPIO_INT_ANY        (GPIO_INT_BOTH | GPIO_INT_LEVEL)
 #define GPIO_INT_BOTH_DSLEEP (GPIO_INT_BOTH | GPIO_INT_DSLEEP)
 
+#define GPIO(name, port, pin, function, signal) GPIO_##name,
+#define UNIMPLEMENTED(name) GPIO_##name,
+
+/* GPIO signal list */
+enum gpio_signal {
+	#include "gpio.inc"
+	GPIO_COUNT
+};
+
 /* GPIO signal definition structure, for use by board.c */
 struct gpio_info {
 	/* Signal name */

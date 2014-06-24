@@ -9,6 +9,7 @@
 #define __CROS_EC_I2C_H
 
 #include "common.h"
+#include "gpio.h"
 
 /* Flags for slave address field, in addition to the 8-bit address */
 #define I2C_FLAG_BIG_ENDIAN 0x100  /* 16 byte values are MSB-first */
