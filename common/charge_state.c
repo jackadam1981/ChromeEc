@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -20,6 +20,7 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#include "sb_fw_update.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHARGER, outstr)
@@ -715,6 +716,12 @@ void charger_task(void)
 	uint8_t batt_flags;
 
 	while (1) {
+#ifdef CONFIG_SB_FIRMWARE_UPDATE
+		if (ec_sb_fw_update_is_inprogress()) {
+			task_wait_event(MAX_SLEEP_USEC);
+			continue;
+		}
+#endif
 		state_common(ctx);
 
 #ifdef CONFIG_CHARGER_TIMEOUT_HOURS

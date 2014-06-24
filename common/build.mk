@@ -1,5 +1,5 @@
 # -*- makefile -*-
-# Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+# Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 #
@@ -68,4 +68,5 @@ common-$(HAS_TASK_KEYSCAN)+=keyboard_scan.o
 common-$(HAS_TASK_LIGHTBAR)+=lightbar.o
 common-$(HAS_TASK_MOTIONSENSE)+=motion_sense.o math_util.o
 common-$(TEST_BUILD)+=test_util.o
-
+common-$(CONFIG_SMBUS)+= smbus.o
+common-$(CONFIG_CRC)+= crc.o
