@@ -48,7 +48,6 @@
 
 #include "common.h"
 
-/* No GPIO abstraction layer */
 enum gpio_signal;
 
 enum adc_channel {
