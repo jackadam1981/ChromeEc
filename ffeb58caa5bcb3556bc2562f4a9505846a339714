@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44ba35ef_dbfa8755",
+        "filename": "chip/mec1322/spi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-25T16:19:18Z",
+      "side": 1,
+      "message": "Perhaps we should usleep(100) in here?  Otherwise this will block other tasks.\n\nOr do you plan to implement DMA TX in a follow-up CL?",
+      "revId": "ffeb58caa5bcb3556bc2562f4a9505846a339714",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24bf01e0_dd539b25",
+        "filename": "chip/mec1322/spi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-25T16:19:18Z",
+      "side": 1,
+      "message": "Can you just do\n\n  MEC1322_SPI_TD(CONFIG_SPI_PORT) \u003d 0;",
+      "revId": "ffeb58caa5bcb3556bc2562f4a9505846a339714",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
