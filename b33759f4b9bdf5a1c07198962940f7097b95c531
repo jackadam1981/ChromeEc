@@ -16,6 +16,24 @@
       "revId": "b33759f4b9bdf5a1c07198962940f7097b95c531",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4ca118f_73b5e0d1",
+        "filename": "include/gpio.wrap",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-06-25T18:09:59Z",
+      "side": 1,
+      "message": "This file provides a few benefits, I left it out of the initial version of this CL, but after talking with Randal I put it in.  It provides a single location to document the GPIO and UNIMPLEMENTED macros.  It also provides a single location to provide default versions and to undefine them.  The latter is more important when there are more possible macros to invoke in a .inc file.  And as this file evolves (to include alt-functions for GPIO\u0027s for instance) this will become more important.  Often you want to include a .inc file for just part of what it defines, then having all of the other macros defined to be empty for you cleans up the site where you are including the .inc file.",
+      "parentUuid": "44ba35ef_5e40a547",
+      "revId": "b33759f4b9bdf5a1c07198962940f7097b95c531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
