@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44ba35ef_5bde77ea",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-25T16:22:29Z",
+      "side": 1,
+      "message": "remove added line",
+      "revId": "afee66115b3b3922ad715cdec3ec76b32f51fce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44ba35ef_3b0d03c6",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 877,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-25T16:22:29Z",
+      "side": 1,
+      "message": "should this be repeated in a loop to avoid some other wake event from causing this state to be exited?\n\nwhile (pd_task_state \u003d\u003d PD_STATE_SUSPENDED)\n  task_wait_event(-1);\n\nfor example, plugging/unplugging raiden will cause VBUS interrupts which will leave this state prematurely.",
+      "revId": "afee66115b3b3922ad715cdec3ec76b32f51fce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
