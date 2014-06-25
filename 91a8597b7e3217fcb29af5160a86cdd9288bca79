@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24bf01e0_5d81cb3a",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-25T16:39:27Z",
+      "side": 1,
+      "message": "should be an else here so that it doesn\u0027t print 2 different OCP messages on a fast OCP fault.",
+      "revId": "91a8597b7e3217fcb29af5160a86cdd9288bca79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
