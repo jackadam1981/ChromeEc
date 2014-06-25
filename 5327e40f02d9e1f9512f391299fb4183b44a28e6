@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a493f168_4e19d30a",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3813,
+      "author": {
+        "id": 1003228
+      },
+      "writtenOn": "2014-06-25T11:31:18Z",
+      "side": 1,
+      "message": "ectool batteryfwupdate  \u003cfw file\u003e\n          argv[0]        argv[1]\nPlease change to \"argc !\u003d 2\"",
+      "revId": "5327e40f02d9e1f9512f391299fb4183b44a28e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a493f168_6e1e8ff5",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3817,
+      "author": {
+        "id": 1003228
+      },
+      "writtenOn": "2014-06-25T11:31:18Z",
+      "side": 1,
+      "message": "change to \"ec_sb_firmware_update(argv[1]);\"",
+      "revId": "5327e40f02d9e1f9512f391299fb4183b44a28e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
