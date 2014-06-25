@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44ba35ef_5e40a547",
+        "filename": "include/gpio.wrap",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-25T17:03:57Z",
+      "side": 1,
+      "message": "I\u0027m not convinced that this file is useful,\nwhy not directly including \"gpio.inc\" in gpio_list.h and gpio_signal.h ?\nAm I missing something ?",
+      "revId": "b33759f4b9bdf5a1c07198962940f7097b95c531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
