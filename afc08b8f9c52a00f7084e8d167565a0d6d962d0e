@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44a315b3_614a193d",
+        "filename": "board/fruitpie/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-25T00:53:49Z",
+      "side": 1,
+      "message": "we might need to do the same for samus_pd to be able to flash from Samus.",
+      "revId": "afc08b8f9c52a00f7084e8d167565a0d6d962d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4466b513_ec9bb3e8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-25T00:53:49Z",
+      "side": 1,
+      "message": "I wrote that, but that\u0027s a pretty implementation to submit...",
+      "revId": "afc08b8f9c52a00f7084e8d167565a0d6d962d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4466b513_4ce65f7c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1117,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-25T00:53:49Z",
+      "side": 1,
+      "message": "\"FLASHING\" hasn\u0027t been updated, it\u0027s something like \"VDM\" or \"VDM COMM\"",
+      "revId": "afc08b8f9c52a00f7084e8d167565a0d6d962d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44a315b3_e15529d7",
+        "filename": "util/flash_pd.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-25T00:53:49Z",
+      "side": 1,
+      "message": "if there is no match, you are getting an exception here.",
+      "revId": "afc08b8f9c52a00f7084e8d167565a0d6d962d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
