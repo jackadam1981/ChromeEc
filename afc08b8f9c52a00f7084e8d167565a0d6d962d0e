@@ -67,6 +67,24 @@
       "revId": "afc08b8f9c52a00f7084e8d167565a0d6d962d0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64c57978_dc016129",
+        "filename": "util/flash_pd.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-06-25T06:29:48Z",
+      "side": 1,
+      "message": "Agreed.  Lets change to \n\n    (found, line) \u003d self.expect(\u0027version:\u0027)\n    logging.debug(\u0027is version in: %s\u0027, line)\n    m \u003d re.match(r\u0027.*version:\\s+(\\w+_v\\d+\\.\\d+\\.\\d+-\\d+).*\u0027, line)\n    if not found or not m:\n        raise FlashPDError(\u0027Unable to determine PD FW version\u0027)\n    return m.group(1)\n\nperhaps?",
+      "parentUuid": "44a315b3_e15529d7",
+      "revId": "afc08b8f9c52a00f7084e8d167565a0d6d962d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
