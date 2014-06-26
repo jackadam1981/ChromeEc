@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4962558_b539a25e",
+        "filename": "driver/battery/sb_fw_update.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1003228
+      },
+      "writtenOn": "2014-06-26T08:56:57Z",
+      "side": 1,
+      "message": "use i2c_write16 instead of  i2c_read_string. (From document)",
+      "revId": "c6f23cc044c8c2945ac1f1d04e4d0bdd234d2caa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
