@@ -14,18 +14,30 @@
 #define BATTERY_LEVEL_FULL		100
 
 /* Tell host we're charged when battery level >= this percentage */
+#ifdef BOARD_GNAWTY
+#define BATTERY_LEVEL_NEAR_FULL		 95
+#else
 #define BATTERY_LEVEL_NEAR_FULL		 97
+#endif
 
 /*
  * Send battery-low host event when discharging and battery level <= this level
  */
+#ifdef BOARD_GNAWTY
+#define BATTERY_LEVEL_LOW		 13
+#else
 #define BATTERY_LEVEL_LOW		 10
+#endif
 
 /*
  * Send battery-critical host event when discharging and battery level <= this
  * level.
  */
-#define BATTERY_LEVEL_CRITICAL		  5
+#ifdef BOARD_GNAWTY
+#define BATTERY_LEVEL_CRITICAL		  7
+#else
+#define BATTERY_LEVEL_CRITICAL		 10
+#endif
 
 /*
  * Shut down main processor and/or hibernate EC when discharging and battery
