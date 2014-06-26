@@ -148,14 +148,14 @@ static void battery_led(void)
 	 */
 	if (batt.state_of_charge <= BATTERY_LEVEL_CRITICAL) {
 		set_color_battery_led((battery_ticks & 0x4) ?
-				     LED_ORANGE : LED_OFF);
+			     LED_ORANGE : LED_OFF);
 		return;
 	}
 
 	/* If Battery Low, blink orange, 25% duty cycle, 4 sec period */
 	if (batt.state_of_charge <= BATTERY_LEVEL_LOW) {
 		set_color_battery_led((battery_ticks % 16) < 4 ?
-				     LED_ORANGE : LED_OFF);
+			     LED_ORANGE : LED_OFF);
 		return;
 	}
 
