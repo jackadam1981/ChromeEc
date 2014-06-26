@@ -336,15 +336,15 @@ static int state_common(struct charge_state_context *ctx)
 	*ctx->memmap_batt_flags |= EC_BATT_FLAG_BATT_PRESENT;
 
 	/* Battery charge level low */
-	if (batt->state_of_charge <= BATTERY_LEVEL_LOW &&
-	    prev->batt.state_of_charge > BATTERY_LEVEL_LOW)
+	if (batt->state_of_charge <= CONFIG_BATTERY_LEVEL_LOW &&
+	    prev->batt.state_of_charge > CONFIG_BATTERY_LEVEL_LOW)
 		host_set_single_event(EC_HOST_EVENT_BATTERY_LOW);
 
 	/* Battery charge level critical */
-	if (batt->state_of_charge <= BATTERY_LEVEL_CRITICAL) {
+	if (batt->state_of_charge <= CONFIG_BATTERY_LEVEL_CRITICAL) {
 		*ctx->memmap_batt_flags |= EC_BATT_FLAG_LEVEL_CRITICAL;
 		/* Send battery critical host event */
-		if (prev->batt.state_of_charge > BATTERY_LEVEL_CRITICAL)
+		if (prev->batt.state_of_charge > CONFIG_BATTERY_LEVEL_CRITICAL)
 			host_set_single_event(EC_HOST_EVENT_BATTERY_CRITICAL);
 	} else {
 		*ctx->memmap_batt_flags &= ~EC_BATT_FLAG_LEVEL_CRITICAL;
@@ -452,10 +452,11 @@ static enum charge_state state_idle(struct charge_state_context *ctx)
 
 		update_charger_time(ctx, get_time());
 
-		if (ctx->curr.batt.state_of_charge < BATTERY_LEVEL_NEAR_FULL)
-			return PWR_STATE_CHARGE;
+		if (ctx->curr.batt.state_of_charge <
+			CONFIG_BATTERY_LEVEL_NEAR_FULL)
+				return PWR_STATE_CHARGE;
 		else
-			return PWR_STATE_CHARGE_NEAR_FULL;
+				return PWR_STATE_CHARGE_NEAR_FULL;
 	}
 
 	return PWR_STATE_UNCHANGE;
@@ -748,7 +749,7 @@ void charger_task(void)
 			new_state = state_charge(ctx);
 			if (new_state == PWR_STATE_UNCHANGE &&
 			    (ctx->curr.batt.state_of_charge >=
-			     BATTERY_LEVEL_NEAR_FULL)) {
+			     CONFIG_BATTERY_LEVEL_NEAR_FULL)) {
 				/* Almost done charging */
 				new_state = PWR_STATE_CHARGE_NEAR_FULL;
 			}
@@ -758,7 +759,7 @@ void charger_task(void)
 			new_state = state_charge(ctx);
 			if (new_state == PWR_STATE_UNCHANGE &&
 			    (ctx->curr.batt.state_of_charge <
-			     BATTERY_LEVEL_NEAR_FULL)) {
+			     CONFIG_BATTERY_LEVEL_NEAR_FULL)) {
 				/* Battery below almost-full threshold. */
 				new_state = PWR_STATE_CHARGE;
 			}
