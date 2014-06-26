@@ -52,6 +52,24 @@
       "revId": "ff9bcd3e13776d216f46c6561a2de2bc2e7f9d5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4ca118f_a84d3f82",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1794,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-06-26T00:23:53Z",
+      "side": 1,
+      "message": "Lost track of this CL. Only purpose of this CL is to report changed. Abandoning since you don\u0027t think it is a good idea to report via the host command.",
+      "parentUuid": "df20b093_987a59c7",
+      "revId": "ff9bcd3e13776d216f46c6561a2de2bc2e7f9d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
