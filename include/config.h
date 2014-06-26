@@ -98,6 +98,14 @@
  */
 #undef CONFIG_BATTERY_CUT_OFF
 
+/*
+ * The board's Led.c implements Battery LED blink function.
+ * If defined, the battery LED will blink according to the new threashold.
+ */
+#undef CONFIG_BATTERY_LEVEL_CRITICAL
+#undef CONFIG_BATTERY_LEVEL_LOW
+#undef CONFIG_BATTERY_LEVEL_NEAR_FULL
+
 /* Compile mock battery support; used by tests. */
 #undef CONFIG_BATTERY_MOCK
 
