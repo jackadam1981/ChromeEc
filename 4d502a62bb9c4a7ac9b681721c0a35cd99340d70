@@ -16,6 +16,24 @@
       "revId": "4d502a62bb9c4a7ac9b681721c0a35cd99340d70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4f851d3_4c248ece",
+        "filename": "common/host_command_pd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-06-27T14:52:22Z",
+      "side": 1,
+      "message": "The subtle issue was that sometimes the EC was not getting the charger connected status change from the PD. I didn\u0027t know what the problem was, so I tried to guess at potential problems.\n\nLooking at the code for task_wait_event() you\u0027re right, it works as desired. I\u0027ll remove this part and leave in the host command retry mechanism which seems to be helping.",
+      "parentUuid": "a4f851d3_9d987360",
+      "revId": "4d502a62bb9c4a7ac9b681721c0a35cd99340d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
