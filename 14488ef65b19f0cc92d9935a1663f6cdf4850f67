@@ -104,6 +104,23 @@
     },
     {
       "key": {
+        "uuid": "64865967_268e2c6b",
+        "filename": "board/winky/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-06-27T22:55:58Z",
+      "side": 1,
+      "message": "Can you explain the logic? Commit message says when system is on led should be BLUE.",
+      "revId": "14488ef65b19f0cc92d9935a1663f6cdf4850f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4fb85cc_fefc01db",
         "filename": "board/winky/led.c",
         "patchSetId": 2
