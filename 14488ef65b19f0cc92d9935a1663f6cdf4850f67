@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "a4f851d3_bb4e92f3",
+        "filename": "board/winky/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-06-27T22:45:14Z",
+      "side": 1,
+      "message": "Why do you want to remove this? In the reference design, the holeless reset (silego) chip inverts these signals.\n\nIf you do need to remove this config option, please delete it or \"#undef\" it.",
+      "revId": "14488ef65b19f0cc92d9935a1663f6cdf4850f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4fec9bb_ba2575a0",
         "filename": "board/winky/board.h",
         "patchSetId": 2
@@ -13,6 +30,74 @@
       "writtenOn": "2014-06-27T15:29:54Z",
       "side": 1,
       "message": "#defines should be ordered alphabetically",
+      "revId": "14488ef65b19f0cc92d9935a1663f6cdf4850f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "448b1570_a4221a2e",
+        "filename": "board/winky/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-06-27T22:45:14Z",
+      "side": 1,
+      "message": "Please change to 2014",
+      "revId": "14488ef65b19f0cc92d9935a1663f6cdf4850f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64865967_abc745da",
+        "filename": "board/winky/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-06-27T22:45:14Z",
+      "side": 1,
+      "message": "Please note that you should add \"#define CONFIG_PWM_DSLEEP\" to board.h if using PWM values other than 0 or 100 while in S3 or S5. This keeps config option keeps the PWM block powered while the EC is in deep sleep. Without this set, you may see uncontrolled flickering of the LEDs.",
+      "revId": "14488ef65b19f0cc92d9935a1663f6cdf4850f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4f851d3_11cd8743",
+        "filename": "board/winky/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-06-27T22:45:14Z",
+      "side": 1,
+      "message": "I don\u0027t understand why you\u0027re checking this GPIO. There is a call to determine chipset state: \nchipset_in_state(CHIPSET_STATE_ANY_OFF)\nchipset_in_state(CHIPSET_STATE_ON)\nchipset_in_state(CHIPSET_STATE_SUSPEND)\n\nif you want to check the state of the host CPU.",
+      "revId": "14488ef65b19f0cc92d9935a1663f6cdf4850f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4f851d3_d13ecfa7",
+        "filename": "board/winky/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-06-27T22:45:14Z",
+      "side": 1,
+      "message": "Please clean up whitespace",
       "revId": "14488ef65b19f0cc92d9935a1663f6cdf4850f67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
