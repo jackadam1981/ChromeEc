@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4f851d3_9d987360",
+        "filename": "common/host_command_pd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-06-27T01:25:37Z",
+      "side": 1,
+      "message": "I don\u0027t understand what you are trying to achieve here.\ntask_wait_event() is designed to work properly whether the event arrived before or after the call.\nWhat was the actuall subtle issue ?",
+      "revId": "4d502a62bb9c4a7ac9b681721c0a35cd99340d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
