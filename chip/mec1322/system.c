@@ -216,6 +216,7 @@ void system_hibernate(uint32_t seconds, uint32_t microseconds)
 	uint32_t int_status[15];
 	uint32_t int_block_status;
 	uint32_t nvic_status[3];
+	int cpu_freq;
 
 	cflush();
 
@@ -236,6 +237,7 @@ void system_hibernate(uint32_t seconds, uint32_t microseconds)
 	MEC1322_INT_BLK_DIS |= 0xffff00;
 
 	/* Set processor clock to lowest, 1MHz */
+	cpu_freq = clock_get_freq();
 	MEC1322_PCR_PROC_CLK_CTL = 48;
 
 	/* Power down ADC VREF */
@@ -345,7 +347,7 @@ void system_hibernate(uint32_t seconds, uint32_t microseconds)
 	MEC1322_ADC_CTRL |= 1 << 0;
 
 	/* Restore processor clock */
-	MEC1322_PCR_PROC_CLK_CTL = 4;
+	MEC1322_PCR_PROC_CLK_CTL = 48000000 / cpu_freq;
 
 	/* Restore interrupts */
 	for (i = 8; i <= 23; ++i)
