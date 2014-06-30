@@ -255,6 +255,9 @@ static void scsi_inquiry(uint8_t *block, uint8_t in_len)
 }
 
 /*
+ * Required by SPC-4. Not necessary/supported.
+ */
+/*
 static void scsi_mode_select6(uint8_t *block, uint8_t in_len)
 {
 	if (in_len < SCSI_CDB6_SIZE)
@@ -342,10 +345,7 @@ static void scsi_read10(uint8_t *block, uint8_t in_len)
 			return;
 		}
 
-		/*
-		 * read in multiples of USB_MS_PACKET_SIZE, then
-		 * (bytes % USB_MS_PACKET_SIZE)
-		 */
+		/* read in multiples of USB_MS_PACKET_SIZE, then bytes */
 		read_len = MIN(bytes, USB_MS_PACKET_SIZE);
 
 		rv = spi_flash_read(temp_buf, offset, read_len);
@@ -370,7 +370,7 @@ static void scsi_read10(uint8_t *block, uint8_t in_len)
 }
 
 /*
- * Required by SPC-4.
+ * Required by SPC-4. Not necessary; flash is < 1 TB.
  */
 /*
 static void scsi_read16(uint8_t *block, uint8_t in_len)
@@ -442,7 +442,7 @@ static void scsi_read_format_capacities(uint8_t *block, uint8_t in_len)
 }
 
 /*
- * Required by SPC-4.
+ * Required by SPC-4. Not necessary/supported.
  */
 /*
 static void scsi_receive_diagnostic(uint8_t *block, uint8_t in_len)
@@ -525,7 +525,7 @@ static void scsi_request_sense(uint8_t *block, uint8_t in_len)
 }
 
 /*
- * Required by SPC-4.
+ * Required by SPC-4. Not necessary/supported.
  */
 /*
 static void scsi_send_diagnostic(uint8_t *block, uint8_t in_len)
