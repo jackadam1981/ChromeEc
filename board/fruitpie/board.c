@@ -14,6 +14,7 @@
 #include "registers.h"
 #include "task.h"
 #include "timer.h"
+#include "usb.h"
 #include "usb_pd.h"
 #include "util.h"
 
@@ -70,6 +71,14 @@ const struct i2c_port_t i2c_ports[] = {
 		GPIO_MASTER_I2C_SCL, GPIO_MASTER_I2C_SDA},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+
+const void * const usb_strings[] = {
+	[USB_STR_DESC] = usb_string_desc,
+	[USB_STR_VENDOR] = USB_STRING_DESC("Google Inc."),
+	[USB_STR_PRODUCT] = USB_STRING_DESC("FruitPie"),
+	[USB_STR_VERSION] = USB_STRING_DESC("vXX.YYY"),
+};
+BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
 
 int board_set_debug(int enable)
 {
