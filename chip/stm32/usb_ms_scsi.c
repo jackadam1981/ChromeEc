@@ -614,14 +614,16 @@ static void scsi_write10(uint8_t *block, uint8_t in_len)
 					    block[4] << 8 | block[5]);
 		bytes = SCSI_BLOCK_SIZE * (block[7] << 8 | block[8]);
 
+		/* Chip has protection */
+		if (spi_flash_check_protect(offset, bytes))
+			return scsi_sense_code(SCSI_SENSE_DATA_PROTECT,
+				SCSI_SENSE_CODE_WRITE_PROTECTED);
+
 		rv = spi_flash_erase(offset, bytes);
 		/* invalid address */
 		if (rv == EC_ERROR_INVAL)
 			return scsi_sense_code(SCSI_SENSE_ILLEGAL_REQUEST,
 				SCSI_SENSE_CODE_LBA_OUT_OF_RANGE);
-		else if (rv == EC_ERROR_ACCESS_DENIED)
-			return scsi_sense_code(SCSI_SENSE_DATA_PROTECT,
-				SCSI_SENSE_CODE_WRITE_PROTECTED);
 		else if (rv != EC_SUCCESS)
 			return scsi_sense_code(SCSI_SENSE_HARDWARE_ERROR,
 				SCSI_SENSE_CODE_UNRECOVERED_READ_ERROR);
@@ -639,9 +641,6 @@ static void scsi_write10(uint8_t *block, uint8_t in_len)
 				return scsi_sense_code(
 					SCSI_SENSE_ILLEGAL_REQUEST,
 					SCSI_SENSE_CODE_LBA_OUT_OF_RANGE);
-			else if (rv == EC_ERROR_ACCESS_DENIED)
-				return scsi_sense_code(SCSI_SENSE_DATA_PROTECT,
-					SCSI_SENSE_CODE_WRITE_PROTECTED);
 			else if (rv != EC_SUCCESS)
 				return scsi_sense_code(
 					SCSI_SENSE_HARDWARE_ERROR,
