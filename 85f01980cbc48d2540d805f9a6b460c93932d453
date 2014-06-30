@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64865967_c90e4c96",
+        "filename": "board/winky/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-06-30T17:01:32Z",
+      "side": 1,
+      "message": "Copyright 2014",
+      "revId": "85f01980cbc48d2540d805f9a6b460c93932d453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "448b1570_f06f75d6",
+        "filename": "board/winky/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-06-30T17:01:32Z",
+      "side": 1,
+      "message": "From Dave\u0027s previous comment - \"Please note that you should add \"#define CONFIG_PWM_DSLEEP\" to board.h if using PWM values other than 0 or 100 while in S3 or S5. This keeps config option keeps the PWM block powered while the EC is in deep sleep. Without this set, you may see uncontrolled flickering of the LEDs.\"",
+      "revId": "85f01980cbc48d2540d805f9a6b460c93932d453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "448b1570_b079eda1",
+        "filename": "board/winky/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-06-30T17:01:32Z",
+      "side": 1,
+      "message": "Dave\u0027s previous comment - \"I don\u0027t understand why you\u0027re checking this GPIO. There is a call to determine chipset state: chipset_in_state(CHIPSET_STATE_ANY_OFF) chipset_in_state(CHIPSET_STATE_ON) chipset_in_state(CHIPSET_STATE_SUSPEND)\nif you want to check the state of the host CPU.\"",
+      "revId": "85f01980cbc48d2540d805f9a6b460c93932d453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "448b1570_d07ef186",
+        "filename": "board/winky/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-06-30T17:01:32Z",
+      "side": 1,
+      "message": "Can you explain the logic? Commit message says when system is on led should be BLUE.",
+      "revId": "85f01980cbc48d2540d805f9a6b460c93932d453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
