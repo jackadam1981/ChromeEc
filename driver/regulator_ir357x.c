@@ -15,7 +15,7 @@
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHIPSET, outstr)
-#define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_CHIPSET, format, ## args)
 
 /* 8-bit I2C address */
 #define IR357x_I2C_ADDR (0x8 << 1)

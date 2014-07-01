@@ -17,7 +17,7 @@
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHARGER, outstr)
-#define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
 
 /* Charger information */
 static const struct charger_info bq24192_charger_info = {
