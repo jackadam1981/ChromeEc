@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "e4efa930_1de5d343",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-01T14:59:37Z",
+      "side": 1,
+      "message": "Ok, looks good for now. Sounds like we might need to revise how this does averaging later.",
+      "parentUuid": "a454d1b1_830efe94",
+      "revId": "d1f55ef7f0f01d80681e9292e0728fe4ccb44f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "646f3977_d2727a67",
         "filename": "board/zinger/usb_pd_policy.c",
         "patchSetId": 2
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "that might be interesting\non the other side, the trace will add far more latency than this small loop.",
       "parentUuid": "646f3977_d2727a67",
+      "revId": "d1f55ef7f0f01d80681e9292e0728fe4ccb44f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4efa930_fddd8778",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-01T14:59:37Z",
+      "side": 1,
+      "message": "that\u0027s true",
+      "parentUuid": "a454d1b1_4329e6ee",
       "revId": "d1f55ef7f0f01d80681e9292e0728fe4ccb44f41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
