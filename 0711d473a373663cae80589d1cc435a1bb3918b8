@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e45a49dc_280a83ae",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-07-01T18:41:07Z",
+      "side": 1,
+      "message": "The gaia should work as well since the PRE_INIT is also called in power_on():\n\n  if (gpio_get_level(GPIO_SOC1V8_XPSHOLD) \u003d\u003d 0) {\n    /* Initialize non-AP components */\n    hook_notify(HOOK_CHIPSET_PRE_INIT);\n\nFor the jumping to EC RW issue, this is no problem since the spi_init() would invoke setup_for_transaction().",
+      "parentUuid": "24ee2135_a28c80b7",
+      "revId": "0711d473a373663cae80589d1cc435a1bb3918b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04f3dd1b_2126a820",
         "filename": "power/tegra.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2014-07-01T18:08:26Z",
       "side": 1,
       "message": "typo: power_on()",
+      "revId": "0711d473a373663cae80589d1cc435a1bb3918b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a454d1b1_86adac77",
+        "filename": "power/tegra.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-07-01T18:41:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04f3dd1b_2126a820",
       "revId": "0711d473a373663cae80589d1cc435a1bb3918b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
