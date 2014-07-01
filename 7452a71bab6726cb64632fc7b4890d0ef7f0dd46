@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04f3dd1b_f3e2d23d",
+        "filename": "chip/mec1322/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-01T23:38:02Z",
+      "side": 1,
+      "message": "is changing the processor clock while in WFI changing the power consumption ?\nthe processor clock should be stopped in WFI",
+      "revId": "7452a71bab6726cb64632fc7b4890d0ef7f0dd46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
