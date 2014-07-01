@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "045e7dcf_6fb5e1b8",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-01T01:54:29Z",
+      "side": 1,
+      "message": "Is all this really necessary? Can we just delay for 100us and check if we are still over the threshold or not? Wouldn\u0027t be perfect, but would be cleaner.",
+      "revId": "d1f55ef7f0f01d80681e9292e0728fe4ccb44f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "646f3977_d2727a67",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-01T01:54:29Z",
+      "side": 1,
+      "message": "Do we want to print anything out for the case where total \u003c\u003d MAX_CURRENT*count? I\u0027m thinking that if we are drawing current right on the edge and are constantly triggering single samples about the OCP limit but the average is always below the limit, then it could potentially cause dropped PD comms. In this case, it sure would be nice to hook up a console and see immediately what the problem is.",
+      "revId": "d1f55ef7f0f01d80681e9292e0728fe4ccb44f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
