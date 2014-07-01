@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24ee2135_a28c80b7",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-07-01T18:08:26Z",
+      "side": 1,
+      "message": "Can you make sure this works with power/gaia.c? It looks like PRE_INIT is not called if the EC jumps to RW while the AP is already on.",
+      "revId": "0711d473a373663cae80589d1cc435a1bb3918b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04f3dd1b_2126a820",
+        "filename": "power/tegra.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-07-01T18:08:26Z",
+      "side": 1,
+      "message": "typo: power_on()",
+      "revId": "0711d473a373663cae80589d1cc435a1bb3918b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
