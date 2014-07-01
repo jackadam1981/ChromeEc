@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c429c520_290595de",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-07-01T23:07:21Z",
+      "side": 1,
+      "message": "ignore this because I move the code to below.",
+      "parentUuid": "64d659dd_809740f2",
+      "revId": "cce41c9ff47a9cfc9c16cc03a7007280d92a74ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2492a112_ee108f70",
         "filename": "chip/stm32/spi.c",
         "patchSetId": 1
@@ -48,6 +66,24 @@
       "side": 1,
       "message": "Yes, that\u0027s a problem.  I think we need to check_setup_transaction_later() *after* we set SPI_STATE_SENDING, instead of before.",
       "parentUuid": "2492a112_ee108f70",
+      "revId": "cce41c9ff47a9cfc9c16cc03a7007280d92a74ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24ee2135_ce58cb34",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-07-01T23:07:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64d659dd_0026f020",
       "revId": "cce41c9ff47a9cfc9c16cc03a7007280d92a74ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -89,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "04f3dd1b_4d37a51b",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-07-01T23:07:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04975d03_1b0e5454",
+      "revId": "cce41c9ff47a9cfc9c16cc03a7007280d92a74ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64d659dd_f725b814",
         "filename": "chip/stm32/spi.c",
         "patchSetId": 1
@@ -100,6 +154,24 @@
       "writtenOn": "2014-06-18T01:46:01Z",
       "side": 1,
       "message": "Same question here.",
+      "revId": "cce41c9ff47a9cfc9c16cc03a7007280d92a74ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04f3dd1b_2d34d914",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-07-01T23:07:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64d659dd_f725b814",
       "revId": "cce41c9ff47a9cfc9c16cc03a7007280d92a74ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
