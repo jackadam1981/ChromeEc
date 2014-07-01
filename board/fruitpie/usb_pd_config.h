@@ -46,9 +46,10 @@ static inline void pd_set_pins_speed(void)
 /* Drive the CC line from the TX block */
 static inline void pd_tx_enable(int polarity)
 {
-	gpio_set_level(GPIO_PD_TX_EN, 1);
 	/* TX_DATA on PB14 is now connected to SPI2 */
 	gpio_set_alternate_function(GPIO_B, 0x4000, 0);
+
+	gpio_set_level(GPIO_PD_TX_EN, 1);
 }
 
 /* Put the TX driver in Hi-Z state */

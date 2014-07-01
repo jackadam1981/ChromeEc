@@ -214,14 +214,20 @@ int pd_write_last_edge(void *ctxt, int bit_off)
 
 	if (bit_idx == 0)
 		msg[word_idx] = 0;
+
 	if (!b_toggle /* last bit was 0 */) {
-		/* transition to 1, then 0 */
-		msg[word_idx] |= 1 << bit_idx;
+		/* transition to 1, another 1, then 0 */
+		if (bit_idx == 31) {
+			msg[word_idx++] |= 1 << bit_idx;
+			msg[word_idx] = 1;
+		} else {
+			msg[word_idx] |= 3 << bit_idx;
+		}
 	}
 	/* ensure that the trailer is 0 */
 	msg[word_idx+1] = 0;
 
-	return bit_off + 2;
+	return bit_off + 3;
 }
 
 #ifdef CONFIG_COMMON_RUNTIME
@@ -273,15 +279,18 @@ void pd_start_tx(void *ctxt, int polarity, int bit_len)
 
 	/* disable RX detection interrupt */
 	pd_rx_disable_monitoring();
-	/*
-	 * Drive the CC line from the TX block :
-	 * - set the low level reference.
-	 * - put SPI function on TX pin.
-	 */
-	pd_tx_enable(polarity);
 
 	/* Kick off the DMA to send the data */
 	dma_go(tx);
+
+	/*
+	 * Drive the CC line from the TX block :
+	 * - put SPI function on TX pin.
+	 * - set the low level reference.
+	 * Call this last before enabling timer in order to meet spec on
+	 * timing between enabling TX and clocking out bits.
+	 */
+	pd_tx_enable(polarity);
 
 #ifndef CONFIG_USB_PD_TX_USES_SPI_MASTER
 	/* Start counting at 300Khz*/
@@ -293,7 +302,10 @@ void pd_tx_done(int polarity)
 {
 	stm32_spi_regs_t *spi = SPI_REGS;
 
+	/* wait for DMA and clear transfer flag */
 	dma_wait(DMAC_SPI_TX);
+	dma_clear_isr(DMAC_SPI_TX);
+
 	/* wait for real end of transmission */
 #ifdef CHIP_FAMILY_STM32F0
 	while (spi->sr & STM32_SPI_SR_FTLVL)
@@ -302,9 +314,6 @@ void pd_tx_done(int polarity)
 	while (!(spi->sr & STM32_SPI_SR_TXE))
 		; /* wait for TXE == 1 */
 #endif
-
-	while (spi->sr & STM32_SPI_SR_BSY)
-		; /* wait for BSY == 0 */
 
 	/*
 	 * At the end of transmitting, the last bit is guaranteed by the
@@ -321,14 +330,28 @@ void pd_tx_done(int polarity)
 #ifndef CONFIG_USB_PD_TX_USES_SPI_MASTER
 	/* ensure that we are not pushing out junk */
 	*(uint8_t *)&spi->dr = 0;
-	/* Stop counting */
-	STM32_TIM_CR1(TIM_TX) &= ~1;
+	while (spi->sr & STM32_SPI_SR_FTLVL)
+		; /* wait for TX FIFO empty */
+#else
+	while (spi->sr & STM32_SPI_SR_BSY)
+		; /* wait for BSY == 0 */
 #endif
-	/* clear transfer flag */
-	dma_clear_isr(DMAC_SPI_TX);
 
 	/* put TX pins and reference in Hi-Z */
 	pd_tx_disable(polarity);
+
+#ifndef CONFIG_USB_PD_TX_USES_SPI_MASTER
+	/*
+	 * After disabling TX pin, continue to clock out bits until the SPI
+	 * buffer is empty. This guarantees that when starting the next
+	 * transaction, the buffer is empty and can be loaded immediately.
+	 */
+	while (spi->sr & STM32_SPI_SR_BSY)
+		; /* wait for BSY == 0 */
+	/* Stop counting */
+	STM32_TIM_CR1(TIM_TX) &= ~1;
+#endif
+
 }
 
 /* --- RX operation using comparator linked to timer --- */

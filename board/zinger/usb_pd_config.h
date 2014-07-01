@@ -46,10 +46,10 @@ static inline void pd_set_pins_speed(void)
 /* Drive the CC line from the TX block */
 static inline void pd_tx_enable(int polarity)
 {
-	/* Drive TX GND on PA4 */
-	STM32_GPIO_BSRR(GPIO_A) = 1 << (4 + 16 /* Reset */);
 	/* Drive SPI MISO on PA6 by putting it in AF mode  */
 	STM32_GPIO_MODER(GPIO_A) |= 0x2 << (2*6);
+	/* Drive TX GND on PA4 */
+	STM32_GPIO_BSRR(GPIO_A) = 1 << (4 + 16 /* Reset */);
 }
 
 /* Put the TX driver in Hi-Z state */

@@ -21,7 +21,7 @@ struct dma_option {
 				   used to select memory size. */
 };
 
-#define DMA_POLLING_INTERVAL_US	100	/* us */
+#define DMA_POLLING_INTERVAL_US	20	/* us */
 #define DMA_TRANSFER_TIMEOUT_US	(100 * MSEC) /* us */
 
 /**
