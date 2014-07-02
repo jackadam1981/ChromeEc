@@ -163,8 +163,21 @@ int charger_get_voltage(int *voltage)
 int charger_set_voltage(int voltage)
 {
 	cached_voltage = voltage;
+
+	#ifdef CONFIG_CHARGER_NVDC_VOLTAGE
+	if(voltage == 0)
+		voltage = CONFIG_CHARGER_NVDC_VOLTAGE;
+	#endif
+
 	return sbc_write(SB_CHARGING_VOLTAGE, voltage);
 }
+
+#ifdef CONFIG_CHARGER_MIN_SYSTEM_VOLTAGE
+int charger_set_min_voltage(int voltage)
+{
+	return sbc_write(BQ24715_MIN_SYSTEM_VOLTAGE, voltage);
+}
+#endif
 
 /* Charging power state initialization */
 int charger_post_init(void)
@@ -191,6 +204,12 @@ int charger_post_init(void)
 		return rv;
 
 	rv = charger_set_input_current(CONFIG_CHARGER_INPUT_CURRENT);
+	#ifdef CONFIG_CHARGER_MIN_SYSTEM_VOLTAGE
+	if(rv)
+		return rv;
+
+	rv = charger_set_min_voltage(CONFIG_CHARGER_MIN_SYSTEM_VOLTAGE);
+	#endif
 	return rv;
 }
 
