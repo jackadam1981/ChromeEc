@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "84d6ed80_1981773c",
+        "filename": "board/firefly/usb_pd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-02T16:45:45Z",
+      "side": 1,
+      "message": "The order does matter. \nat least when SPI is \"idle\", are we sure that the DATA pin is never high ? *(that\u0027s unclear to me, I had issue in the past but also bits were remaining in the FIFO)\nWe really don\u0027t want to have TX_DATA high and TX_EN still Hi-Z.\n\nif gpio_set_alternate is too slow, maybe we need an open coded version here, that\u0027s just one register to set here.",
+      "parentUuid": "84d6ed80_be7ad1fc",
+      "revId": "1aa67779f0de76eff3cd4ea718b46d134c7509ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84d6ed80_3e59c112",
         "filename": "include/dma.h",
         "patchSetId": 1
