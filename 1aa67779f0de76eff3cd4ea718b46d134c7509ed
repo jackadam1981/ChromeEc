@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "84d6ed80_be7ad1fc",
+        "filename": "board/firefly/usb_pd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-02T16:26:18Z",
+      "side": 1,
+      "message": "all i did here was switch the order of instructions. the problem is setting alternate function mode takes a long time (~2us seconds). setting TX_EN low, pulls the CC line down, so we only have 1us from pulling TX_EN low until we need to start transmitting. there should be no harm in setting alternate function mode first because we still haven\u0027t started clocking out bits, so the SPI module is idle.",
+      "parentUuid": "64dbb9ad_09fda918",
+      "revId": "1aa67779f0de76eff3cd4ea718b46d134c7509ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84d6ed80_3e59c112",
         "filename": "include/dma.h",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-07-02T15:06:04Z",
       "side": 1,
       "message": "sleeping for 20us is not really effective,\nyou should do your own PD code for this and let the common code untouched.",
+      "revId": "1aa67779f0de76eff3cd4ea718b46d134c7509ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4a77122_9f2d4321",
+        "filename": "include/dma.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-02T16:26:18Z",
+      "side": 1,
+      "message": "ok, will change",
+      "parentUuid": "84d6ed80_3e59c112",
       "revId": "1aa67779f0de76eff3cd4ea718b46d134c7509ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
