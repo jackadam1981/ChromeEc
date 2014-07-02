@@ -163,6 +163,12 @@ int charger_get_voltage(int *voltage)
 int charger_set_voltage(int voltage)
 {
 	cached_voltage = voltage;
+
+#ifdef CONFIG_CHARGER_NVDC_VOLTAGE
+	if(voltage == 0)
+		voltage = CONFIG_CHARGER_NVDC_VOLTAGE;
+#endif
+
 	return sbc_write(SB_CHARGING_VOLTAGE, voltage);
 }
 
