@@ -16,6 +16,24 @@
       "revId": "6857d0f89536bc447fd30eeb53d184e5430c7660",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04f3dd1b_e8581c34",
+        "filename": "board/keyborg/runtime.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-02T03:27:23Z",
+      "side": 1,
+      "message": "The software division code is only For M0.\nI Will remove this",
+      "parentUuid": "84d6ed80_f093d843",
+      "revId": "6857d0f89536bc447fd30eeb53d184e5430c7660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
