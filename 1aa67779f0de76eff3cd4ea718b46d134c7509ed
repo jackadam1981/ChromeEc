@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64dbb9ad_09fda918",
+        "filename": "board/firefly/usb_pd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-02T15:03:17Z",
+      "side": 1,
+      "message": "I\u0027m not convinced that part is correct for samus_pd / firefly / zinger. It\u0027s working on Fruitpie because the TX_EN is going to the Silego and tri-stating everything, but on other boards you might see a spike to 3.3V.",
+      "revId": "1aa67779f0de76eff3cd4ea718b46d134c7509ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
