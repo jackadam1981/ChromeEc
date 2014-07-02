@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4a77122_3ab89db1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-07-02T17:40:52Z",
+      "side": 1,
+      "message": "Commit-message header should state the fix and not the issue.\n\ne.g.: \"Disabled kbd\u0027s column 2 invert to fix non-working kbd\"\n\nYou should mention the change of the holeless reset ic and what the keyboard issue was in the commit-message along with other details.",
+      "revId": "eaa65af12b9f856ac6427be54721a8c04236993d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
