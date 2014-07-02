@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "24d54179_e7dde278",
+        "filename": "board/firefly/usb_pd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-02T18:12:46Z",
+      "side": 1,
+      "message": "Yeah, the data pin goes high if you have garbage still in the buffer and the first bit of the garbage is high.\n\nIn patch set 2, I changed CPHA to 1, which makes it such that the first bit of the buffer is not put on the wire until the first clock edge. Note, we used to have CPHA \u003d 0, which meant the first bit was on the wire before the first clock, as long as NSS is low, which it always is low. I tested this by changing the default first byte to 0xff and verifying that the data line doesn\u0027t go high until the first clock edge, 0.5us after data line is pulled low.",
+      "parentUuid": "84d6ed80_1981773c",
+      "revId": "1aa67779f0de76eff3cd4ea718b46d134c7509ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84d6ed80_3e59c112",
         "filename": "include/dma.h",
         "patchSetId": 1
