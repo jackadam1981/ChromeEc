@@ -16,6 +16,23 @@
       "revId": "1aa67779f0de76eff3cd4ea718b46d134c7509ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84d6ed80_3e59c112",
+        "filename": "include/dma.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-02T15:06:04Z",
+      "side": 1,
+      "message": "sleeping for 20us is not really effective,\nyou should do your own PD code for this and let the common code untouched.",
+      "revId": "1aa67779f0de76eff3cd4ea718b46d134c7509ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
