@@ -8,37 +8,52 @@
 #ifndef __BOARD_H
 #define __BOARD_H
 
+#define STRAGO_PO
+
 /* Optional features */
 #define CONFIG_SYSTEM_UNLOCKED  /* Allow dangerous commands */
 #define CONFIG_WATCHDOG_HELP
-#define CONFIG_FANS 1
-#define CONFIG_ADC
-#define CONFIG_WAKE_PIN GPIO_S1
-#define CONFIG_SPI_PORT 0
-#define CONFIG_SPI_CS_GPIO GPIO_SHD_CS0
 
-#define CONFIG_CLOCK_CRYSTAL
+#define CONFIG_KEYBOARD_PROTOCOL_8042
+#define CONFIG_KEYBOARD_KSO_BASE 0 /* KSO starts from KSO00 */
+#define CONFIG_POWER_BUTTON
+#define CONFIG_POWER_BUTTON_X86
+#define CONFIG_LID_SWITCH
+
+#define CONFIG_POWER_COMMON
+#define CONFIG_EXTPOWER_GPIO
+
+#define CONFIG_VBOOT_HASH
 
 /* Modules we want to exclude */
 #undef CONFIG_EEPROM
 #undef CONFIG_EOPTION
 #undef CONFIG_PSTORE
-#undef CONFIG_LID_SWITCH
 #undef CONFIG_PECI
 #undef CONFIG_SWITCH
+#undef CONFIG_I2C
+#undef CONFIG_PWM
+#undef CONFIG_FANS
+#undef CONFIG_ADC
+#undef CONFIG_WAKE_PIN
+#undef CONFIG_SPI
+#undef CONFIG_SPI_PORT
+#undef CONFIG_SPI_CS_GPIO
 
 #ifndef __ASSEMBLER__
 
-enum adc_channel {
-	ADC_CH_1 = 0,
-	ADC_CH_2,
-	ADC_CH_3,
-	ADC_CH_4,
-
-	ADC_CH_COUNT
-};
-
 #include "gpio_signal.h"
+
+/* power signal definitions */
+enum power_signal {
+	X86_ALL_SYS_PWRGD = 0,
+	X86_RSMRST_L_PWRGD,
+	X86_SLP_S3_DEASSERTED,
+	X86_SLP_S4_DEASSERTED,
+
+	/* Number of X86 signals */
+	POWER_SIGNAL_COUNT
+};
 
 #endif /* !__ASSEMBLER__ */
 

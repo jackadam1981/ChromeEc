@@ -30,7 +30,7 @@ int clock_get_freq(void)
 
 void clock_init(void)
 {
-#ifdef CONFIG_CLOCK_CRYSTAL
+#ifdef CHIP_EXT_CLOCK_CRYSTAL
 	/* XOSEL: 0 = Parallel resonant crystal */
 	MEC1322_VBAT_CE &= ~0x1;
 #else
@@ -41,7 +41,7 @@ void clock_init(void)
 	/* 32K clock enable */
 	MEC1322_VBAT_CE |= 0x2;
 
-#ifdef CONFIG_CLOCK_CRYSTAL
+#ifdef CHIP_EXT_CLOCK_CRYSTAL
 	/* Wait for crystal to stabilize (OSC_LOCK == 1) */
 	while (!(MEC1322_PCR_CHIP_OSC_ID & 0x100))
 		;

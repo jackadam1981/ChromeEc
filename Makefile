@@ -42,6 +42,10 @@ all: $(out)/$(PROJECT).bin utils
 include board/$(BOARD)/build.mk
 include chip/$(CHIP)/build.mk
 
+# Chip specific default flags if not already set in build.mk above.
+CHIP_EXT_CLOCK ?= default       # External input clock hardware \
+                                  (crystal / oscillator / default).
+
 # Create uppercase config variants, to avoid mixed case constants.
 # Also translate '-' to '_', so 'cortex-m' turns into 'CORTEX_M'.  This must
 # be done before evaluating config.h.
@@ -50,6 +54,7 @@ UC_BOARD:=$(call uppercase,$(BOARD))
 UC_CHIP:=$(call uppercase,$(CHIP))
 UC_CHIP_FAMILY:=$(call uppercase,$(CHIP_FAMILY))
 UC_CHIP_VARIANT:=$(call uppercase,$(CHIP_VARIANT))
+UC_CHIP_EXT_CLOCK:=$(call uppercase,$(CHIP_EXT_CLOCK))
 UC_CORE:=$(call uppercase,$(CORE))
 UC_PROJECT:=$(call uppercase,$(PROJECT))
 

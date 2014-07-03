@@ -208,7 +208,7 @@ static void setup_lpc(void)
 	/* Update host events now that we can copy them to memmap */
 	update_host_event_status();
 }
-DECLARE_HOOK(HOOK_CHIPSET_STARTUP, setup_lpc, HOOK_PRIO_FIRST);
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, setup_lpc, HOOK_PRIO_FIRST);
 
 static void lpc_init(void)
 {
@@ -218,6 +218,7 @@ static void lpc_init(void)
 	/* Initialize host args and memory map to all zero */
 	memset(lpc_host_args, 0, sizeof(*lpc_host_args));
 	memset(lpc_get_memmap_range(), 0, EC_MEMMAP_SIZE);
+
 }
 /*
  * Set prio to higher than default; this way LPC memory mapped data is ready
@@ -391,6 +392,11 @@ void lpc_set_host_event_mask(enum lpc_host_event_type type, uint32_t mask)
 uint32_t lpc_get_host_event_mask(enum lpc_host_event_type type)
 {
 	return event_mask[type];
+}
+
+int lpc_get_pltrst_asserted(void)
+{
+	return (MEC1322_LPC_BUS_MONITOR & (1<<1)) ? 1 : 0;
 }
 
 /* On boards without a host, this command is used to set up LPC */

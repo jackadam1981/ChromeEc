@@ -62,12 +62,14 @@ cmd_pubkey = ./util/pem_extract_pubkey.py $(PEM) > $@
 cmd_rsasign = ./util/ec_sign_rsa.py $(PEM) $(out)/$*.bin.tmp
 ifeq "$(UC_CHIP)" "MEC1322"
 	CHIP_SPI_SIZE ?= 16
-	MEC1322_PACK_EC_FLAG = -i $(out)/$*.bin \
-	                       -o $(out)/$*.spi.bin \
-                               --header_key ./chip/mec1322/util/rsakey_sign_header.pem \
-                               --payload_key ./chip/mec1322/util/rsakey_sign_payload.pem \
-                               -s $(CHIP_SPI_SIZE)
-	cmd_bin_to_mec1322_spi = ./chip/mec1322/util/pack_ec.py $(MEC1322_PACK_EC_FLAG)
+	MEC1322_PACK_EC_FLAG = \
+		-i $(out)/$(PROJECT).bin \
+		-o $(out)/$(PROJECT).spi.bin \
+		--header_key ./chip/mec1322/util/rsakey_sign_header.pem \
+		--payload_key ./chip/mec1322/util/rsakey_sign_payload.pem \
+		-s $(CHIP_SPI_SIZE)
+	cmd_bin_to_mec1322_spi = \
+		./chip/mec1322/util/pack_ec.py $(MEC1322_PACK_EC_FLAG)
 endif
 
 # commands to build optional xref files
@@ -78,6 +80,12 @@ cmd_ctags = ctags -o $@ $(shell cat $<)
 targ_if_prog = $(if $(shell which $(1) 2>/dev/null),$(2),)
 
 .PHONY: all tests utils hosttests
+
+project-y = $(out)/$(PROJECT).bin
+ifeq "$(UC_CHIP)" "MEC1322"
+project-y += $(out)/$(PROJECT).spi.bin
+endif
+all: $(project-y) utils
 
 buildall: $(foreach b, $(boards), proj-$(b)) runtests
 	@touch .tests-passed
@@ -154,7 +162,9 @@ $(out)/%.bin: $(out)/%.obj
 	$(if $(wildcard $(PEM)),$(call quiet,extractrw-y,EXTR_RW), \
 			$(call quiet,copyrw-y,COPY_RW))
 	$(call quiet,mv_from_tmp,MV     )
+
 ifeq "$(UC_CHIP)" "MEC1322"
+$(out)/$(PROJECT).spi.bin: $(out)/$(PROJECT).bin
 	$(call quiet,bin_to_mec1322_spi,GEN_SPI)
 endif
 
