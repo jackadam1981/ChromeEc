@@ -28,7 +28,7 @@
 #undef CONFIG_WATCHDOG_HELP
 #undef CONFIG_TASK_PROFILING
 
-/* Charging configuration */
+/* Charging/Power configuration */
 #undef CONFIG_BATTERY_RYU /* TODO implement */
 #define CONFIG_BATTERY_SMART
 #define CONFIG_BATTERY_REQUESTS_NIL_WHEN_DEAD
@@ -40,6 +40,9 @@
 #define CONFIG_CHARGER_SENSE_RESISTOR_AC 10
 #define CONFIG_CHARGER_INPUT_CURRENT 2048
 #define CONFIG_CHARGER_DISCHARGE_ON_AC
+#define CONFIG_CHIPSET_TEGRA
+#define CONFIG_POWER_COMMON
+#define CONFIG_POWER_BUTTON
 
 /* I2C ports configuration */
 #define I2C_PORT_MASTER 0
@@ -55,6 +58,14 @@
 #define TIM_ADC     3
 
 #include "gpio_signal.h"
+
+enum power_signal {
+	TEGRA_XPSHOLD = 0,
+	TEGRA_SUSPEND_ASSERTED,
+
+	/* Number of power signals */
+	POWER_SIGNAL_COUNT
+};
 
 /* ADC signal */
 enum adc_channel {
