@@ -8,14 +8,17 @@
 /* Interrupts */
 GPIO(CHGR_ACOK,            A, 2,  GPIO_INT_BOTH | GPIO_PULL_UP,    vbus_evt)
 GPIO(BC_TEMP_ALERT_L,      A, 13, GPIO_INT_FALLING,                unhandled_evt)
-GPIO(BTN_EC_PWR_L,         C, 13, GPIO_INT_BOTH,                   unhandled_evt)
+GPIO(POWER_BUTTON_L,       C, 13, GPIO_INT_BOTH,                   power_button_interrupt) /* active high, the name is for compatibility with existing code */
 GPIO(USBC_BC12_INT_L,      D, 11, GPIO_INT_FALLING | GPIO_PULL_UP, unhandled_evt)
 GPIO(LID_OPEN,             E, 1,  GPIO_INT_BOTH | GPIO_PULL_UP,    unhandled_evt)
 GPIO(CHARGE_DONE,          E, 6,  GPIO_INT_RISING,                 unhandled_evt)
 GPIO(LB_INT_L,             E, 7,  GPIO_INT_FALLING | GPIO_PULL_UP, unhandled_evt)
 GPIO(LIGHTBAR_EN_L,        E, 8,  GPIO_INT_FALLING | GPIO_PULL_UP, unhandled_evt)
-GPIO(AP_IN_SUSPEND,        E, 9,  GPIO_INT_BOTH | GPIO_PULL_UP,    chipset_evt)
+GPIO(AP_IN_SUSPEND,        E, 9,  GPIO_INT_BOTH | GPIO_PULL_UP,    power_signal_interrupt)
 GPIO(BASE_PRES_L,          E, 10, GPIO_INT_BOTH | GPIO_PULL_UP,    unhandled_evt)
+/* Temporarily use EC_INT_L as AP HOLD signal */
+GPIO(EC_INT_L,             F, 2,  GPIO_INT_BOTH, power_signal_interrupt)
+/* GPIO(EC_INT_L,             F, 2,  GPIO_ODR_HIGH, NULL) */
 
 /* Buttons */
 GPIO(BTN_VOLD_L,           C, 0,  GPIO_INPUT | GPIO_PULL_UP,       NULL)
@@ -36,10 +39,10 @@ GPIO(USBC_TX_CLKIN,        B, 3,  GPIO_OUT_LOW,  NULL)
 
 /* System power */
 GPIO(PMIC_PWRON_L,         D, 14, GPIO_ODR_HIGH, NULL)
-GPIO(PMIC_RESET_OUT_L,     E, 4,  GPIO_ODR_HIGH, NULL)
+GPIO(PMIC_WARM_RESET_L,    E, 4,  GPIO_ODR_HIGH, NULL)
 GPIO(EN_PP3300_RSVD,       E, 13, GPIO_INPUT,    NULL)
 /* sensor temp output and PMIC reset input */
-GPIO(AP_OVERHEAT_L,        D, 12, GPIO_ODR_HIGH, NULL)
+GPIO(PMIC_THERM_L,         D, 12, GPIO_ODR_HIGH, NULL)
 
 GPIO(VBUS_SENSE,           A, 0,  GPIO_ANALOG,   NULL)
 GPIO(CHGR_IADP,            B, 0,  GPIO_ANALOG,   NULL)
@@ -98,7 +101,6 @@ GPIO(SPI_FLASH_MISO,       B, 15, GPIO_INPUT,    NULL)
 GPIO(VDDSPI_EN,            C, 12, GPIO_OUT_LOW,  NULL)
 GPIO(SH_RESET_L,           C, 4,  GPIO_ODR_HIGH, NULL)
 GPIO(SH_BOOT,              C, 9,  GPIO_ODR_HIGH, NULL)
-GPIO(EC_INT_L,             F, 2,  GPIO_ODR_HIGH, NULL)
 GPIO(ENTERING_RW,          F, 3,  GPIO_OUT_LOW,  NULL)
 GPIO(WP_L,                 F, 6,  GPIO_INPUT,    NULL)
 
@@ -109,3 +111,5 @@ GPIO(SH_UART_RX,           C, 10, GPIO_INPUT,    NULL)
 GPIO(AP_UART_TX,           B, 6,  GPIO_OUT_LOW,  NULL)
 GPIO(AP_UART_RX,           B, 7,  GPIO_INPUT,    NULL)
 #endif
+
+UNIMPLEMENTED(AP_RESET_L)
