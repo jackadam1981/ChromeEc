@@ -13,6 +13,8 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
+#include "power.h"
+#include "power_button.h"
 #include "registers.h"
 #include "task.h"
 #include "usb_pd.h"
@@ -28,11 +30,6 @@ void vbus_evt(enum gpio_signal signal)
 void unhandled_evt(enum gpio_signal signal)
 {
 	ccprintf("Unhandled INT %d,%d!\n", signal, gpio_get_level(signal));
-}
-
-void chipset_evt(enum gpio_signal signal)
-{
-	ccprintf("AP suspend %d,%d!\n", signal, gpio_get_level(signal));
 }
 
 #include "gpio_list.h"
@@ -62,6 +59,13 @@ const struct gpio_alt_func gpio_alt_funcs[] = {
 	{GPIO_B, 0x0F00, 1, MODULE_I2C},   /* I2C SLAVE:PB10/11 MASTER:PB8/9 */
 };
 const int gpio_alt_funcs_count = ARRAY_SIZE(gpio_alt_funcs);
+
+/* power signal list.  Must match order of enum power_signal. */
+const struct power_signal_info power_signal_list[] = {
+	{GPIO_AP_HOLD, 1, "AP_HOLD"},
+	{GPIO_AP_IN_SUSPEND,  1, "SUSPEND_ASSERTED"},
+};
+BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 
 /* ADC channels */
 const struct adc_t adc_channels[] = {
@@ -188,4 +192,10 @@ static const struct battery_info info = {
 const struct battery_info *battery_get_info(void)
 {
 	return &info;
+}
+
+/* Fake lid switch */
+int lid_is_open(void)
+{
+	return 1;
 }
