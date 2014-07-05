@@ -8,7 +8,7 @@
 /* Interrupts */
 GPIO(CHGR_ACOK,            A, 2,  GPIO_INT_BOTH | GPIO_PULL_UP,    vbus_evt)
 GPIO(BC_TEMP_ALERT_L,      A, 13, GPIO_INT_FALLING,                unhandled_evt)
-GPIO(BTN_EC_PWR_L,         C, 13, GPIO_INT_BOTH,                   unhandled_evt)
+GPIO(BTN_EC_PWR_L,         C, 13, GPIO_INT_BOTH,                   power_button_interrupt)
 GPIO(USBC_BC12_INT_L,      D, 11, GPIO_INT_FALLING | GPIO_PULL_UP, unhandled_evt)
 GPIO(LID_OPEN,             E, 1,  GPIO_INT_BOTH | GPIO_PULL_UP,    unhandled_evt)
 GPIO(CHARGE_DONE,          E, 6,  GPIO_INT_RISING,                 unhandled_evt)
