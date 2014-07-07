@@ -263,6 +263,24 @@
       "revId": "4f12cfb9997139a5116617b683f700cd9cc261e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4462542_0199d862",
+        "filename": "common/spi_flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-07-07T21:39:19Z",
+      "side": 1,
+      "message": "FWIW, I changed most functions to use local buffer on the stack. The global buffer is now only used by functions that need a big buffer, namely flash read and flash write. This should minimize the possibility of someone accidentally overwriting the global buffer in the future.",
+      "parentUuid": "e43969b5_f679f607",
+      "revId": "4f12cfb9997139a5116617b683f700cd9cc261e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
