@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c4462542_757c1ac3",
+        "filename": "board/ryu/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-07T20:03:17Z",
+      "side": 1,
+      "message": "This board is using USART2 (which has the right DMA mapping by default)\nI have verified the DMA mappings, all the default are good for now",
+      "parentUuid": "e4c6c9d8_530bc7f4",
+      "revId": "6ca6e96cc735e6764801d80a357d0542cbe162f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4c6c9d8_b3495b49",
         "filename": "board/ryu/board.h",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2014-07-07T17:23:15Z",
       "side": 1,
       "message": "Probably don\u0027t need this, this is a workaround for a battery bug on samus batteries.",
+      "revId": "6ca6e96cc735e6764801d80a357d0542cbe162f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84326dd1_aa770f55",
+        "filename": "board/ryu/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-07T20:03:17Z",
+      "side": 1,
+      "message": "I believe most batteries behave like that ...",
+      "parentUuid": "e4c6c9d8_b3495b49",
       "revId": "6ca6e96cc735e6764801d80a357d0542cbe162f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "643739c4_496781f3",
+        "filename": "board/ryu/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-07T20:03:17Z",
+      "side": 1,
+      "message": "the current (large with floating point) lightbar code is not usable as is. Not sure what we are going to do.",
+      "parentUuid": "c4462542_f2cbc02b",
+      "revId": "6ca6e96cc735e6764801d80a357d0542cbe162f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04cafddd_fc27263c",
         "filename": "board/ryu/gpio.inc",
         "patchSetId": 3
@@ -64,6 +118,24 @@
       "writtenOn": "2014-07-07T17:23:15Z",
       "side": 1,
       "message": "This is BC_TEMP_ALERT_L, so I think it should be GPIO_INT_FALLING",
+      "revId": "6ca6e96cc735e6764801d80a357d0542cbe162f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "643739c4_495301f2",
+        "filename": "board/ryu/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-07T20:03:17Z",
+      "side": 1,
+      "message": "You are right and the EC GPIO spreadsheet is incorrect.\nfixed",
+      "parentUuid": "04cafddd_fc27263c",
       "revId": "6ca6e96cc735e6764801d80a357d0542cbe162f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "643739c4_6937e5d0",
+        "filename": "board/ryu/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-07T20:03:17Z",
+      "side": 1,
+      "message": "You are right,\nthen I can rename it LID_OPEN as other platforms.",
+      "parentUuid": "04cafddd_9c371269",
+      "revId": "6ca6e96cc735e6764801d80a357d0542cbe162f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4462542_f2a900b2",
         "filename": "board/ryu/gpio.inc",
         "patchSetId": 3
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "c4462542_a0c1e26a",
+        "filename": "board/ryu/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-07T20:03:17Z",
+      "side": 1,
+      "message": "that one is complicated ... it\u0027s both the output of the thermal sensor (input for EC) and PMIC reset (output for EC)\nI will probably move it with other PMIC GPIO.",
+      "parentUuid": "c4462542_f2a900b2",
+      "revId": "6ca6e96cc735e6764801d80a357d0542cbe162f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4c6c9d8_987f1cb8",
         "filename": "board/ryu/gpio.inc",
         "patchSetId": 3
@@ -115,6 +223,24 @@
       "writtenOn": "2014-07-07T17:23:15Z",
       "side": 1,
       "message": "This is an output and should move out of the /* Input  */ section.",
+      "revId": "6ca6e96cc735e6764801d80a357d0542cbe162f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4462542_c0c6ee7f",
+        "filename": "board/ryu/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-07T20:03:17Z",
+      "side": 1,
+      "message": "I will fix it.",
+      "parentUuid": "e4c6c9d8_987f1cb8",
       "revId": "6ca6e96cc735e6764801d80a357d0542cbe162f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
