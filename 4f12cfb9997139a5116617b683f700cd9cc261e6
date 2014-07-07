@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "e43969b5_5623aa0f",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1113814
+      },
+      "writtenOn": "2014-07-07T21:35:34Z",
+      "side": 1,
+      "message": "I see, thanks for the explanation.",
+      "parentUuid": "84326dd1_505e44a1",
+      "revId": "4f12cfb9997139a5116617b683f700cd9cc261e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c471c58d_23b894b1",
         "filename": "chip/stm32/spi_master.c",
         "patchSetId": 2
@@ -177,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "a4c051c0_b2d31e6f",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1113814
+      },
+      "writtenOn": "2014-07-07T21:35:34Z",
+      "side": 1,
+      "message": "Fair enough.",
+      "parentUuid": "643739c4_126db2d3",
+      "revId": "4f12cfb9997139a5116617b683f700cd9cc261e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c471c58d_c3236043",
         "filename": "common/spi_flash.c",
         "patchSetId": 2
@@ -206,6 +242,24 @@
       "side": 1,
       "message": "Is be16_to_cpup() available for EC? Also I don\u0027t know a way to avoid this global buffer as the shared memory might be used by SPI master driver. You have any suggestion?",
       "parentUuid": "c471c58d_c3236043",
+      "revId": "4f12cfb9997139a5116617b683f700cd9cc261e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e43969b5_f679f607",
+        "filename": "common/spi_flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1113814
+      },
+      "writtenOn": "2014-07-07T21:35:34Z",
+      "side": 1,
+      "message": "Ah, it probably isn\u0027t available. I am still getting familiar with the code base.",
+      "parentUuid": "c4462542_06cd6ef8",
       "revId": "4f12cfb9997139a5116617b683f700cd9cc261e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
