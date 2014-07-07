@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4c6c9d8_530bc7f4",
+        "filename": "board/ryu/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-07T17:23:15Z",
+      "side": 1,
+      "message": "Don\u0027t we need some board pre_init function to set DMA mappings? I think we need to remap USART1 here to dma chan 4 and 5.",
+      "revId": "6ca6e96cc735e6764801d80a357d0542cbe162f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4c6c9d8_b3495b49",
+        "filename": "board/ryu/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-07T17:23:15Z",
+      "side": 1,
+      "message": "Probably don\u0027t need this, this is a workaround for a battery bug on samus batteries.",
+      "revId": "6ca6e96cc735e6764801d80a357d0542cbe162f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4462542_f2cbc02b",
+        "filename": "board/ryu/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-07T17:23:15Z",
+      "side": 1,
+      "message": "what about lightbar?",
+      "revId": "6ca6e96cc735e6764801d80a357d0542cbe162f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04cafddd_fc27263c",
+        "filename": "board/ryu/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-07T17:23:15Z",
+      "side": 1,
+      "message": "This is BC_TEMP_ALERT_L, so I think it should be GPIO_INT_FALLING",
+      "revId": "6ca6e96cc735e6764801d80a357d0542cbe162f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04cafddd_9c371269",
+        "filename": "board/ryu/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-07T17:23:15Z",
+      "side": 1,
+      "message": "LID_CLOSED_L",
+      "revId": "6ca6e96cc735e6764801d80a357d0542cbe162f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4462542_f2a900b2",
+        "filename": "board/ryu/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-07T17:23:15Z",
+      "side": 1,
+      "message": "Is this an input or not? It\u0027s defined as an output, but is in the /* Inputs */ section of code.",
+      "revId": "6ca6e96cc735e6764801d80a357d0542cbe162f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4c6c9d8_987f1cb8",
+        "filename": "board/ryu/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-07T17:23:15Z",
+      "side": 1,
+      "message": "This is an output and should move out of the /* Input  */ section.",
+      "revId": "6ca6e96cc735e6764801d80a357d0542cbe162f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
