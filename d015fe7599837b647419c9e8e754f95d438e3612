@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "a4c051c0_127b1247",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-07-07T23:23:42Z",
+      "side": 1,
+      "message": "What is the reason for Blue LED controlled by HW?",
+      "revId": "d015fe7599837b647419c9e8e754f95d438e3612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84d6ed80_b914aba7",
         "filename": "board/winky/led.c",
         "patchSetId": 6
