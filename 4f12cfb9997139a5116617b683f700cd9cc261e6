@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c4462542_c62d2620",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-07-07T21:16:45Z",
+      "side": 1,
+      "message": "The check was missing. Done.",
+      "parentUuid": "c471c58d_83d32808",
+      "revId": "4f12cfb9997139a5116617b683f700cd9cc261e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "246381c5_710a5888",
         "filename": "chip/stm32/spi_master.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2014-07-07T18:58:16Z",
       "side": 1,
       "message": "spi_enabled \u003d true;\n\n?",
+      "revId": "4f12cfb9997139a5116617b683f700cd9cc261e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84326dd1_505e44a1",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-07-07T21:16:45Z",
+      "side": 1,
+      "message": "There\u0027s no \u0027true\u0027 or \u0027false\u0027 in EC repo. We always use 0 or 1 for this.",
+      "parentUuid": "246381c5_710a5888",
       "revId": "4f12cfb9997139a5116617b683f700cd9cc261e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "84326dd1_b02dc020",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-07-07T21:16:45Z",
+      "side": 1,
+      "message": "Same here. There\u0027s no \u0027bool\u0027.",
+      "parentUuid": "c471c58d_23b894b1",
+      "revId": "4f12cfb9997139a5116617b683f700cd9cc261e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e474097d_4f81313b",
         "filename": "chip/stm32/spi_master.c",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2014-07-07T18:58:16Z",
       "side": 1,
       "message": "Why are you clobbering return value of spi_dma_start()? Shouldn\u0027t this be:\n\nrv \u003d spi_dma_start(..);\nif (rv !\u003d EC_SUCCESS)\n   goto err_free;\n\nThe same applied to other calls as well.",
+      "revId": "4f12cfb9997139a5116617b683f700cd9cc261e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "643739c4_926fe2d7",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-07-07T21:16:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e474097d_4f81313b",
       "revId": "4f12cfb9997139a5116617b683f700cd9cc261e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "643739c4_126db2d3",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-07-07T21:16:45Z",
+      "side": 1,
+      "message": "That\u0027s inherited from the first SPI implementation (for LM4). I\u0027m not against fixing this, but that\u0027s out of the scope of this CL.",
+      "parentUuid": "e474097d_6f998d97",
+      "revId": "4f12cfb9997139a5116617b683f700cd9cc261e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c471c58d_c3236043",
         "filename": "common/spi_flash.c",
         "patchSetId": 2
@@ -98,6 +188,24 @@
       "writtenOn": "2014-07-07T18:58:16Z",
       "side": 1,
       "message": "Looks like be16_to_cpup(). Also use of a global buffer makes me shiver.",
+      "revId": "4f12cfb9997139a5116617b683f700cd9cc261e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4462542_06cd6ef8",
+        "filename": "common/spi_flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-07-07T21:16:45Z",
+      "side": 1,
+      "message": "Is be16_to_cpup() available for EC? Also I don\u0027t know a way to avoid this global buffer as the shared memory might be used by SPI master driver. You have any suggestion?",
+      "parentUuid": "c471c58d_c3236043",
       "revId": "4f12cfb9997139a5116617b683f700cd9cc261e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
