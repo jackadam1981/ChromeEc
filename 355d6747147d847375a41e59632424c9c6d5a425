@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4c051c0_123af251",
+        "filename": "board/swanky/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-07-08T00:15:52Z",
+      "side": 1,
+      "message": "The lid can be closed when the device is in S0. Chromebooks will work with the lid shut as long as there is an external monitor attached (called docked mode). You can move this check for the lid before the \"if chipset in suspend check\" to make sure the LED is off with the lid closed in all states.",
+      "revId": "355d6747147d847375a41e59632424c9c6d5a425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
