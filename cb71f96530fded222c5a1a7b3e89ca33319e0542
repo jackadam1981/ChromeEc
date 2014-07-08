@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4462542_270501aa",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-08T14:43:40Z",
+      "side": 1,
+      "message": "What about doing something like this for every SRC state? For instance, outside of this switch, we could write:\n\nif (pd_role \u003d\u003d PD_ROLE_SOURCE \u0026\u0026 pd_task_state !\u003d PD_STATE_SRC_DISCONNECTED) {\n  cc1_volt \u003d pd_adc_read(pd_polarity);\n  if (cc1_volt \u003e PD_SRC_VNC) {\n    pd_power_supply_reset();\n    pd_task_state \u003d PD_STATE_SRC_DISCONNECTED;\n  }\n}",
+      "revId": "cb71f96530fded222c5a1a7b3e89ca33319e0542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
