@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4224989_88725766",
+        "filename": "chip/stm32/spi_flash.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-08T22:55:06Z",
+      "side": 1,
+      "message": "factorize your new loop in a function.",
+      "revId": "f55e862d9f8f009a35a1cc94d19e0e84ed8f54c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4c051c0_2c0eb253",
+        "filename": "chip/stm32/spi_flash.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-08T22:55:06Z",
+      "side": 1,
+      "message": "isn\u0027t this killing your read performance ?",
+      "revId": "f55e862d9f8f009a35a1cc94d19e0e84ed8f54c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4224989_086747a6",
+        "filename": "chip/stm32/spi_flash.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-08T22:55:06Z",
+      "side": 1,
+      "message": "I\u0027m not sure we want to check this in every single function,\nprobably we can change slightly the API  and some kind of start_write() / complete_write() functions and it\u0027s up to the caller to call them in a row and complete lazily later.",
+      "revId": "f55e862d9f8f009a35a1cc94d19e0e84ed8f54c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
