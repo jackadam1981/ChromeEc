@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84326dd1_31670fa7",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-08T16:08:49Z",
+      "side": 1,
+      "message": "Wait a second... this code is outside the while(1) loop, so it never gets run.",
+      "revId": "c9f672f877ee5c39f15d9653cf851a5a85c27d40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
