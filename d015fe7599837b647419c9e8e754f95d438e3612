@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a46e91ae_88d34308",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2014-07-08T15:14:03Z",
+      "side": 1,
+      "message": "There in no gpio and no code for blue led in rambi.\nWe want to minimize the variation in source code.",
+      "parentUuid": "a4c051c0_127b1247",
+      "revId": "d015fe7599837b647419c9e8e754f95d438e3612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84d6ed80_b914aba7",
         "filename": "board/winky/led.c",
         "patchSetId": 6
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "Sorry, can you clarify again. In suspend state:\n\n1) Should LED be off?\n2) Should LED follow the same convention as system off?",
       "parentUuid": "84642dc9_a0cc9e48",
+      "revId": "d015fe7599837b647419c9e8e754f95d438e3612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84642dc9_a33f484d",
+        "filename": "board/winky/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2014-07-08T15:14:03Z",
+      "side": 1,
+      "message": "1) Blue LED is off and Red/Green is set by charging state.\n2) Yes.",
+      "parentUuid": "e43969b5_f32ae86c",
       "revId": "d015fe7599837b647419c9e8e754f95d438e3612",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
