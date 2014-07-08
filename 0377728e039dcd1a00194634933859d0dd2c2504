@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e43969b5_c28c30b9",
+        "filename": "chip/stm32/spi_flash.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-08T22:48:43Z",
+      "side": 1,
+      "message": "that should be the first command of _shutdown() rather than the last.",
+      "revId": "0377728e039dcd1a00194634933859d0dd2c2504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e43969b5_029718c1",
+        "filename": "chip/stm32/spi_flash.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-08T22:48:43Z",
+      "side": 1,
+      "message": "i think you should put one more tab before the \"break\"",
+      "revId": "0377728e039dcd1a00194634933859d0dd2c2504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
