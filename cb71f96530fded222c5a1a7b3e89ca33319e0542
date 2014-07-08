@@ -16,6 +16,24 @@
       "revId": "cb71f96530fded222c5a1a7b3e89ca33319e0542",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e43969b5_3cdfdd1e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-08T14:56:15Z",
+      "side": 1,
+      "message": "That would make sense and be more compact, normally the other states should be only transient and ends up disconnected after a transition,but that\u0027s probablty better,\n\nand we should probably do the same kind test with pd_snk_is_vbus_provided() for the sink.",
+      "parentUuid": "c4462542_270501aa",
+      "revId": "cb71f96530fded222c5a1a7b3e89ca33319e0542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
