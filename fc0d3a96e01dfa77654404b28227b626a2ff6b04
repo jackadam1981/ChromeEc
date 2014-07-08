@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4c051c0_32544e82",
+        "filename": "include/battery.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-07-08T00:02:45Z",
+      "side": 1,
+      "message": "I would prefer changing the battery level definitions to config options rather than to put in \"ifdefs\" for gnawty. For each level please define CONFIG_BATTERY_LEVEL_\u003cNEAR_FULL|LOW|CRITICAL\u003e in board.h.\n\nIn this file add the following to set defaults if the board.h does not set them:\n\n#ifndef CONFIG_BATTERY_LEVEL_LOW\n#define CONFIG_BATTERY_LEVEL_LOW 10\n#endif\n\nPlease add descriptions of the new config flags to include/config.h. Make separate changes for the common code and the gnawty board.h code.",
+      "revId": "fc0d3a96e01dfa77654404b28227b626a2ff6b04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
