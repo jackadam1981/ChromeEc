@@ -850,6 +850,14 @@ void pd_task(void)
 			break;
 		case PD_STATE_SRC_NEGOCIATE:
 			/* wait for a "Request" message */
+
+			/* Detect disconnect by monitoring Vnc */
+			cc1_volt = pd_adc_read(pd_polarity);
+			if (cc1_volt > PD_SRC_VNC) {
+				/* The sink disappeared ... */
+				pd_power_supply_reset();
+				pd_task_state = PD_STATE_SRC_DISCONNECTED;
+			}
 			break;
 		case PD_STATE_SRC_ACCEPTED:
 			/* Accept sent, wait for the end of transition */
@@ -865,8 +873,11 @@ void pd_task(void)
 				timeout =  PD_T_SEND_SOURCE_CAP;
 				/* it'a time to ping regularly the sink */
 				pd_task_state = PD_STATE_SRC_READY;
+			} else {
+				/* The sink did not ack, cut the power... */
+				pd_power_supply_reset();
+				pd_task_state = PD_STATE_SRC_DISCOVERY;
 			}
-			/* TODO error fallback */
 			break;
 		case PD_STATE_SRC_READY:
 			/* Verify that the sink is alive */
