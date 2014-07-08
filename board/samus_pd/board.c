@@ -13,6 +13,7 @@
 #include "i2c.h"
 #include "registers.h"
 #include "task.h"
+#include "usb_pd.h"
 #include "usb_pd_config.h"
 #include "util.h"
 
@@ -29,7 +30,22 @@ void bc12_evt(enum gpio_signal signal)
 
 void pch_evt(enum gpio_signal signal)
 {
-	ccprintf("PCH change %d!\n", signal);
+	int slp_s5 = gpio_get_level(GPIO_PCH_SLP_S5_L);
+	int slp_s3 = gpio_get_level(GPIO_PCH_SLP_S3_L);
+
+	if (slp_s5 && slp_s3) {
+		/* Turn dual role toggling on */
+		ccprintf("PCH change -> S0\n");
+		pd_set_dual_role(PD_DRP_TOGGLE_ON);
+	} else if (slp_s5 && !slp_s3) {
+		/* Turn dual role toggling off, maintain PD state */
+		ccprintf("PCH change -> S3\n");
+		pd_set_dual_role(PD_DRP_TOGGLE_OFF);
+	} else {
+		/* Turn dual role toggling off, force PD state to sink */
+		ccprintf("PCH change -> S5\n");
+		pd_set_dual_role(PD_DRP_FORCE_SINK);
+	}
 }
 
 void board_config_pre_init(void)
@@ -67,6 +83,10 @@ static void board_init(void)
 
 	/* Enable interrupts on VBUS transitions. */
 	gpio_enable_interrupt(GPIO_USB_C0_VBUS_WAKE);
+
+	/* Enable interrupts on PCH state change */
+	gpio_enable_interrupt(GPIO_PCH_SLP_S3_L);
+	gpio_enable_interrupt(GPIO_PCH_SLP_S5_L);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 

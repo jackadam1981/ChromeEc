@@ -179,6 +179,11 @@ static const uint8_t dec4b5b[] = {
 #define PD_T_SOURCE_ACTIVITY   (45*MSEC) /* between 40ms and 50ms */
 #define PD_T_SENDER_RESPONSE   (30*MSEC) /* between 24ms and 30ms */
 #define PD_T_PS_TRANSITION    (220*MSEC) /* between 200ms and 220ms */
+#define PD_T_DRP_HOLD         (120*MSEC) /* between 100ms and 150ms */
+#define PD_T_DRP_LOCK         (120*MSEC) /* between 100ms and 150ms */
+/* DRP_SNK + DRP_SRC must be between 50ms and 100ms with 30%-70% duty cycle */
+#define PD_T_DRP_SNK           (40*MSEC) /* toggle time for sink DRP */
+#define PD_T_DRP_SRC           (30*MSEC) /* toggle time for source DRP */
 
 /* Port role at startup */
 #ifdef CONFIG_USB_PD_DUAL_ROLE
@@ -193,6 +198,10 @@ static uint8_t pd_role = PD_ROLE_DEFAULT;
 static uint8_t pd_message_id;
 /* Port polarity : 0 => CC1 is CC line, 1 => CC2 is CC line */
 static uint8_t pd_polarity;
+
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+static uint8_t pd_dual_role_toggle_on;
+#endif
 
 static enum {
 	PD_STATE_DISABLED,
@@ -771,6 +780,38 @@ static void execute_hard_reset(void)
 	CPRINTF("HARD RESET!\n");
 }
 
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+void pd_set_dual_role(int dr_state)
+{
+	pd_dual_role_toggle_on = (dr_state == PD_DRP_TOGGLE_ON);
+
+	/* Change to sink if in source disconnected state or if force sink */
+	if (pd_role == PD_ROLE_SOURCE &&
+			(pd_task_state == PD_STATE_SRC_DISCONNECTED ||
+			 dr_state == PD_DRP_FORCE_SINK)) {
+		pd_role = PD_ROLE_SINK;
+		pd_task_state = PD_STATE_SNK_DISCONNECTED;
+		pd_set_host_mode(0);
+		task_wake(TASK_ID_PD);
+	}
+}
+#endif
+
+/* Return flag for pd state is connected */
+static int pd_is_connected(void)
+{
+	if (pd_task_state == PD_STATE_DISABLED)
+		return 0;
+
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+	/* Check if sink is connected */
+	if (pd_role == PD_ROLE_SINK)
+		return pd_task_state != PD_STATE_SNK_DISCONNECTED;
+#endif
+	/* Must be a source */
+	return pd_task_state != PD_STATE_SRC_DISCONNECTED;
+}
+
 #ifdef BOARD_SAMUS_PD
 extern void pd_charger_change(int c);
 #endif
@@ -782,13 +823,20 @@ void pd_task(void)
 	int timeout = 10*MSEC;
 	int cc1_volt, cc2_volt;
 	int res;
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+	uint64_t next_role_swap = PD_T_DRP_SNK;
+#endif
 
 	/* Ensure the power supply is in the default state */
 	pd_power_supply_reset();
 
 	while (1) {
-		/* monitor for incoming packet */
-		pd_rx_enable_monitoring();
+		/* monitor for incoming packet if in a connected state */
+		if (pd_is_connected())
+			pd_rx_enable_monitoring();
+		else
+			pd_rx_disable_monitoring();
+
 		/* Verify board specific health status : current, voltages... */
 		res = pd_board_checks();
 		if (res != EC_SUCCESS) {
@@ -815,6 +863,8 @@ void pd_task(void)
 			/* Nothing to do */
 			break;
 		case PD_STATE_SRC_DISCONNECTED:
+			timeout = 10*MSEC;
+
 			/* Vnc monitoring */
 			cc1_volt = pd_adc_read(0);
 			cc2_volt = pd_adc_read(1);
@@ -825,8 +875,24 @@ void pd_task(void)
 				/* Enable VBUS */
 				pd_set_power_supply_ready();
 				pd_task_state = PD_STATE_SRC_DISCOVERY;
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+				/* Keep VBUS up for the hold period */
+				next_role_swap = get_time().val + PD_T_DRP_HOLD;
+#endif
 			}
-			timeout = 10*MSEC;
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+			/* Swap roles if time expired or VBUS is present */
+			else if ((get_time().val >= next_role_swap ||
+				 pd_snk_is_vbus_provided())) {
+				pd_role = PD_ROLE_SINK;
+				pd_task_state = PD_STATE_SNK_DISCONNECTED;
+				pd_set_host_mode(0);
+				next_role_swap = get_time().val + PD_T_DRP_SNK;
+
+				/* Swap states quickly */
+				timeout = 2*MSEC;
+			}
+#endif
 			break;
 		case PD_STATE_SRC_DISCOVERY:
 			/* Query capabilites of the other side */
@@ -887,6 +953,8 @@ void pd_task(void)
 			pd_hw_init();
 			break;
 		case PD_STATE_SNK_DISCONNECTED:
+			timeout = 10*MSEC;
+
 			/* Source connection monitoring */
 #ifdef BOARD_SAMUS_PD
 			/*
@@ -904,8 +972,18 @@ void pd_task(void)
 					pd_select_polarity(pd_polarity);
 					pd_task_state = PD_STATE_SNK_DISCOVERY;
 				}
+			} else if (pd_dual_role_toggle_on &&
+				   get_time().val >= next_role_swap) {
+				/* Swap roles to source */
+				pd_role = PD_ROLE_SOURCE;
+				pd_task_state = PD_STATE_SRC_DISCONNECTED;
+				pd_set_host_mode(1);
+				next_role_swap = get_time().val + PD_T_DRP_SRC;
+
+				/* Swap states quickly */
+				timeout = 2*MSEC;
 			}
-			timeout = 50*MSEC;
+
 			break;
 		case PD_STATE_SNK_DISCOVERY:
 			/* Don't continue if power negotiation is not allowed */
@@ -965,11 +1043,19 @@ void pd_task(void)
 		}
 
 		/* Check for disconnection */
-		if (pd_role == PD_ROLE_SOURCE &&
-		    pd_task_state != PD_STATE_SRC_DISCONNECTED) {
+		if (!pd_is_connected())
+			continue;
+		if (pd_role == PD_ROLE_SOURCE) {
 			/* Source: detect disconnect by monitoring CC */
 			cc1_volt = pd_adc_read(pd_polarity);
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+			if (cc1_volt > PD_SRC_VNC &&
+			    get_time().val >= next_role_swap) {
+				/* Stay a source port for lock period */
+				next_role_swap = get_time().val + PD_T_DRP_LOCK;
+#else
 			if (cc1_volt > PD_SRC_VNC) {
+#endif
 				pd_power_supply_reset();
 				pd_task_state = PD_STATE_SRC_DISCONNECTED;
 				/* Debouncing */
@@ -977,12 +1063,11 @@ void pd_task(void)
 			}
 		}
 #ifdef CONFIG_USB_PD_DUAL_ROLE
-		if (pd_role == PD_ROLE_SINK &&
-		    pd_task_state != PD_STATE_SNK_DISCONNECTED &&
-		    !pd_snk_is_vbus_provided()) {
+		if (pd_role == PD_ROLE_SINK && !pd_snk_is_vbus_provided()) {
 			/* Sink: detect disconnect by monitoring VBUS */
 			pd_task_state = PD_STATE_SNK_DISCONNECTED;
-			timeout = 50*MSEC;
+			/* set timeout small to reconnect fast */
+			timeout = 5*MSEC;
 		}
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 	}
@@ -1055,6 +1140,21 @@ static int command_pd(int argc, char **argv)
 		pd_set_host_mode(1);
 		pd_task_state = PD_STATE_SRC_READY;
 		task_wake(TASK_ID_PD);
+	} else if (!strcasecmp(argv[1], "dualrole")) {
+		int on;
+		char *e;
+
+		if (argc < 3) {
+			ccprintf("dual-role toggling: %d\n",
+				 pd_dual_role_toggle_on);
+		} else {
+			on = strtoi(argv[2], &e, 10);
+			if (*e)
+				return EC_ERROR_PARAM3;
+
+			pd_set_dual_role(on ? PD_DRP_TOGGLE_ON :
+					      PD_DRP_FORCE_SINK);
+		}
 	} else if (!strncasecmp(argv[1], "state", 5)) {
 		const char * const state_names[] = {
 			"DISABLED", "SUSPENDED",
