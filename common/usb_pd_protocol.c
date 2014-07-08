@@ -179,6 +179,11 @@ static const uint8_t dec4b5b[] = {
 #define PD_T_SOURCE_ACTIVITY   (45*MSEC) /* between 40ms and 50ms */
 #define PD_T_SENDER_RESPONSE   (30*MSEC) /* between 24ms and 30ms */
 #define PD_T_PS_TRANSITION    (220*MSEC) /* between 200ms and 220ms */
+#define PD_T_DRP_HOLD         (120*MSEC) /* between 100ms and 150ms */
+#define PD_T_DRP_LOCK         (120*MSEC) /* between 100ms and 150ms */
+/* DRP_SNK + DRP_SRC must be between 50ms and 100ms with 30%-70% duty cycle */
+#define PD_T_DRP_SNK           (40*MSEC) /* toggle time for sink DRP */
+#define PD_T_DRP_SRC           (30*MSEC) /* toggle time for source DRP */
 
 /* Port role at startup */
 #ifdef CONFIG_USB_PD_DUAL_ROLE
@@ -782,13 +787,24 @@ void pd_task(void)
 	int timeout = 10*MSEC;
 	int cc1_volt, cc2_volt;
 	int res;
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+	uint64_t next_role_swap = PD_T_DRP_SNK;
+#endif
 
 	/* Ensure the power supply is in the default state */
 	pd_power_supply_reset();
 
 	while (1) {
-		/* monitor for incoming packet */
-		pd_rx_enable_monitoring();
+		/* monitor for incoming packet if in a connected state*/
+		if (pd_task_state != PD_STATE_DISABLED &&
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+		    pd_task_state != PD_STATE_SNK_DISCONNECTED &&
+#endif
+		    pd_task_state != PD_STATE_SRC_DISCONNECTED)
+			pd_rx_enable_monitoring();
+		else
+			pd_rx_disable_monitoring();
+
 		/* Verify board specific health status : current, voltages... */
 		res = pd_board_checks();
 		if (res != EC_SUCCESS) {
@@ -825,7 +841,21 @@ void pd_task(void)
 				/* Enable VBUS */
 				pd_set_power_supply_ready();
 				pd_task_state = PD_STATE_SRC_DISCOVERY;
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+				/* Keep VBUS up for the hold period */
+				next_role_swap = get_time().val + PD_T_DRP_HOLD;
+#endif
 			}
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+			else if (get_time().val >= next_role_swap) {
+				/* Swap roles to sink */
+				next_role_swap = get_time().val + PD_T_DRP_SNK;
+				pd_role = PD_ROLE_SINK;
+				pd_set_host_mode(0);
+				pd_task_state = PD_STATE_SNK_DISCONNECTED;
+				task_wake(TASK_ID_PD);
+			}
+#endif
 			timeout = 10*MSEC;
 			break;
 		case PD_STATE_SRC_DISCOVERY:
@@ -904,8 +934,16 @@ void pd_task(void)
 					pd_select_polarity(pd_polarity);
 					pd_task_state = PD_STATE_SNK_DISCOVERY;
 				}
+			} else if (get_time().val >= next_role_swap) {
+				/* Swap roles to source */
+				next_role_swap = get_time().val + PD_T_DRP_SRC;
+				pd_role = PD_ROLE_SOURCE;
+				pd_set_host_mode(1);
+				pd_task_state = PD_STATE_SRC_DISCONNECTED;
+				task_wake(TASK_ID_PD);
 			}
-			timeout = 50*MSEC;
+
+			timeout = 10*MSEC;
 			break;
 		case PD_STATE_SNK_DISCOVERY:
 			/* Don't continue if power negotiation is not allowed */
@@ -969,7 +1007,14 @@ void pd_task(void)
 		    pd_task_state != PD_STATE_SRC_DISCONNECTED) {
 			/* Source: detect disconnect by monitoring CC */
 			cc1_volt = pd_adc_read(pd_polarity);
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+			if (cc1_volt > PD_SRC_VNC &&
+			    get_time().val >= next_role_swap) {
+				/* Stay a source port for lock period */
+				next_role_swap = get_time().val + PD_T_DRP_LOCK;
+#else
 			if (cc1_volt > PD_SRC_VNC) {
+#endif
 				pd_power_supply_reset();
 				pd_task_state = PD_STATE_SRC_DISCONNECTED;
 				/* Debouncing */
@@ -982,7 +1027,8 @@ void pd_task(void)
 		    !pd_snk_is_vbus_provided()) {
 			/* Sink: detect disconnect by monitoring VBUS */
 			pd_task_state = PD_STATE_SNK_DISCONNECTED;
-			timeout = 50*MSEC;
+			/* set timeout small to reconnect fast */
+			timeout = 5*MSEC;
 		}
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 	}
