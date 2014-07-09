@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e43969b5_7905f2dd",
+        "filename": "chip/stm32/spi_flash.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-09T14:50:08Z",
+      "side": 1,
+      "message": "sleeping for 100us is not terribly efficient,\nbut you can submit that version, we will study later if we can do better.",
+      "revId": "7985c2e5b719502312cba70efe06582cf6365f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4224989_cbf52936",
+        "filename": "include/spi_flash.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-09T14:50:08Z",
+      "side": 1,
+      "message": "you should add parenthesis: (1 \u003c\u003c (x))",
+      "revId": "7985c2e5b719502312cba70efe06582cf6365f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
