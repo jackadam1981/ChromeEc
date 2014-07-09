@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9f75445_e6c08f11",
+        "filename": "board/gnawty/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-07-09T23:55:41Z",
+      "side": 1,
+      "message": "Please separate the gnawty specific changes from the shared code changes. Please move the changes in this file to a new change that depends on the shared code changes.",
+      "revId": "c35909ddaf8e93781cea66c6983e6ebda8ba6af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9045004_16b72cc2",
+        "filename": "board/gnawty/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-07-09T23:55:41Z",
+      "side": 1,
+      "message": "Please put these in alphabetical order (right before CONFIG_BATTERY_SMART)",
+      "revId": "c35909ddaf8e93781cea66c6983e6ebda8ba6af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9045004_3600e899",
+        "filename": "board/gnawty/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-07-09T23:55:41Z",
+      "side": 1,
+      "message": "Please separate the gnawty specific changes from the shared code changes. Please move the changes in this file to a new change (the same as board.h) that depends on the shared code changes.",
+      "revId": "c35909ddaf8e93781cea66c6983e6ebda8ba6af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9f75445_26de77f2",
+        "filename": "include/battery.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-07-09T23:55:41Z",
+      "side": 1,
+      "message": "Please also change this to a \"CONFIG_\" option so it is consistent with the others .",
+      "revId": "c35909ddaf8e93781cea66c6983e6ebda8ba6af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9f75445_c6023397",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-07-09T23:55:41Z",
+      "side": 1,
+      "message": "The main purpose of these options is to have the EC warn the host about the battery state. Using them to control the LEDs is not the main purpose. Please update this comment to:\n\n/*\n * Battery percent thresholds to notify the host or shut down the system.\n * If not specified, default values are set in include/battery.h.\n */",
+      "revId": "c35909ddaf8e93781cea66c6983e6ebda8ba6af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "995e582a_ad64a970",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2014-07-09T23:55:41Z",
+      "side": 1,
+      "message": "Please also add CONFIG_BATTERY_LEVEL_SHUTDOWN",
+      "revId": "c35909ddaf8e93781cea66c6983e6ebda8ba6af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
