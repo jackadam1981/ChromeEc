@@ -12,6 +12,7 @@
 #include "led_common.h"
 #include "pwm.h"
 #include "util.h"
+#include "extpower.h"
 
 const enum ec_led_id supported_led_ids[] = {
 	EC_LED_ID_BATTERY_LED , EC_LED_ID_POWER_LED};
@@ -146,17 +147,21 @@ static void battery_led(void)
 	/* If Battery critical Low, blink orange, 50% duty cycle,
 	 * 2 sec period.
 	 */
-	if (batt.state_of_charge <= BATTERY_LEVEL_CRITICAL) {
-		set_color_battery_led((battery_ticks & 0x4) ?
-			     LED_ORANGE : LED_OFF);
+	if (!extpower_is_present() && chipset_in_state(CHIPSET_STATE_ON)) {
+		if (batt.state_of_charge <= CONFIG_BATTERY_LEVEL_CRITICAL) {
+			set_color_battery_led((battery_ticks & 0x4) ?
+				     LED_ORANGE : LED_OFF);
 		return;
+		}
 	}
 
 	/* If Battery Low, blink orange, 25% duty cycle, 4 sec period */
-	if (batt.state_of_charge <= BATTERY_LEVEL_LOW) {
-		set_color_battery_led((battery_ticks % 16) < 4 ?
-			     LED_ORANGE : LED_OFF);
+	if (!extpower_is_present() && chipset_in_state(CHIPSET_STATE_ON)) {
+		if (batt.state_of_charge <= CONFIG_BATTERY_LEVEL_LOW) {
+			set_color_battery_led((battery_ticks % 16) < 4 ?
+				     LED_ORANGE : LED_OFF);
 		return;
+		}
 	}
 
 	/* If the system is charging, solid orange */
