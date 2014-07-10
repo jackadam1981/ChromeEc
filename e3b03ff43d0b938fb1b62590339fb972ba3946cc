@@ -16,6 +16,24 @@
       "revId": "e3b03ff43d0b938fb1b62590339fb972ba3946cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "396bacde_77d8d08f",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-07-10T20:43:48Z",
+      "side": 1,
+      "message": "spi_transaction_flush() is necessary to drive NSS back high. The reason I think it\u0027s okay to call it is because spi_transaction_flush() is stopping SPI transaction with \"best effort\". If it succeeds, it keep us from weird SPI or DMA state. If it fails, it can\u0027t be worse than current state.\n\nI\u0027m open to how this can be done though. If it seems clearer, I can also make it so that we just disable DMA and restore NSS pin when spi_transaction_async() fails, at the cost of slightly larger binary size. Suggestion?",
+      "parentUuid": "a4c051c0_f2dd9678",
+      "revId": "e3b03ff43d0b938fb1b62590339fb972ba3946cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
