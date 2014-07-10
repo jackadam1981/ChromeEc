@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1980a8c3_1cfbbd58",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1116,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-07-10T23:27:52Z",
+      "side": 1,
+      "message": "agreed. if in the future we need to use the other mapping, that\u0027d be done with another CONFIG_ flag.",
+      "parentUuid": "b976bcc3_335d8826",
+      "revId": "cd614f3d8a1fbb4b7cafdc4e099d4af5e79677ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b976bcc3_73ca2088",
         "filename": "chip/stm32/spi_master.c",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2014-07-10T21:47:59Z",
       "side": 1,
       "message": "I\u0027m somewhat convinced that :\n(void)spi-\u003edr;\nis doing the same\nbut maybe I\u0027m wrong.",
+      "revId": "cd614f3d8a1fbb4b7cafdc4e099d4af5e79677ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1980a8c3_fc0841bb",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-07-10T23:27:52Z",
+      "side": 1,
+      "message": "I used \"unused\" attribute because it\u0027s already used in several places in our code base. If \"(void)\" is preferred, I can change this.",
+      "parentUuid": "b976bcc3_73ca2088",
       "revId": "cd614f3d8a1fbb4b7cafdc4e099d4af5e79677ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
