@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "395d6c32_6a10d727",
+        "filename": "board/veyron/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2014-07-10T16:03:33Z",
+      "side": 1,
+      "message": "Oh right.  This is a copy of the big files for now.  Duh.  ...so you\u0027ll fix this up in the veyron patch which comes next.",
+      "parentUuid": "395d6c32_6ae9f7cd",
+      "revId": "4347ba391f72164b18b2b8df8fff22f68d066935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "395d6c32_0af83b98",
         "filename": "board/veyron/led.c",
         "patchSetId": 1
