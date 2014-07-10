@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9f75445_7fcac287",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2014-07-10T16:01:25Z",
+      "side": 1,
+      "message": "nit: no period at the end of the summary line",
+      "revId": "4347ba391f72164b18b2b8df8fff22f68d066935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d93290f0_2ff305c0",
+        "filename": "board/veyron/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2014-07-10T16:01:25Z",
+      "side": 1,
+      "message": "I think vapier@ says that we should remove the \"(c)\" on new files.",
+      "revId": "4347ba391f72164b18b2b8df8fff22f68d066935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "395d6c32_6ae9f7cd",
+        "filename": "board/veyron/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2014-07-10T16:01:25Z",
+      "side": 1,
+      "message": "Interesting that the schematic shows STM32L151.  Is that right?",
+      "revId": "4347ba391f72164b18b2b8df8fff22f68d066935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "395d6c32_0af83b98",
+        "filename": "board/veyron/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2014-07-10T16:01:25Z",
+      "side": 1,
+      "message": "Veyron",
+      "revId": "4347ba391f72164b18b2b8df8fff22f68d066935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
