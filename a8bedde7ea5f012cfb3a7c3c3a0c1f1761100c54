@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b976bcc3_d36f7436",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-11T00:02:34Z",
+      "side": 1,
+      "message": "unused",
+      "revId": "a8bedde7ea5f012cfb3a7c3c3a0c1f1761100c54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d979b0b6_d4251c0f",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-11T00:02:34Z",
+      "side": 1,
+      "message": "I don\u0027t like that this loop of ADC reads also happens for FAST_OCP faults. Also, it would be nice if we got a different message for FAST_OCP. Why don\u0027t we just seperate it out as a different fault:\n\nif (fault \u003d\u003d FAULT_FAST_OCP) {\n  debug_printf(\"Fast OverCurrent\\n\");\n  fault_deadline.val \u003d get_time().val + OCP_TIMEOUT;\n  return EC_ERROR_INVAL;\n}\n\nthen the check slow over current:\nif (vbus_amp \u003e MAX_CURRENT)\n...",
+      "revId": "a8bedde7ea5f012cfb3a7c3c3a0c1f1761100c54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
