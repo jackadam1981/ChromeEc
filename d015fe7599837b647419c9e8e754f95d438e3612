@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "1980a8c3_73a3f786",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-07-11T21:43:25Z",
+      "side": 1,
+      "message": "There are two other GPIOs reserved for LED. Since we need just one more we can use PN2 for blue led.\n\nCan this be modified now? Or should we target next phase?\n\nThis is the preferred solution since EC will control all LEDs and avoid inconsistent state (possible due to multiple masters controlling LED)",
+      "parentUuid": "a46e91ae_88d34308",
+      "revId": "d015fe7599837b647419c9e8e754f95d438e3612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84d6ed80_b914aba7",
         "filename": "board/winky/led.c",
         "patchSetId": 6
