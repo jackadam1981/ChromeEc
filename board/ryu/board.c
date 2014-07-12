@@ -175,7 +175,7 @@ int extpower_is_present(void)
 /* Battery temperature ranges in degrees C */
 static const struct battery_info info = {
 	/* Design voltage */
-	.voltage_max    = 4400,
+	.voltage_max    = 4200,
 	.voltage_normal = 3800,
 	.voltage_min    = 2800,
 	/* Pre-charge current: I <= 0.01C */
