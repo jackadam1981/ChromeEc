@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "6469f9a1_8d5ef1c5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1112186
+      },
+      "writtenOn": "2014-07-12T03:11:09Z",
+      "side": 1,
+      "message": "H/W was already fixed.\nSo, we could not change about this.\nIf there are some issues, please refer it to our H/W team.",
+      "parentUuid": "a4c051c0_127b1247",
+      "revId": "d015fe7599837b647419c9e8e754f95d438e3612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84d6ed80_b914aba7",
         "filename": "board/winky/led.c",
         "patchSetId": 6
