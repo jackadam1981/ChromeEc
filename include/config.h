@@ -898,6 +898,12 @@
 /* USB PD transmit uses SPI master */
 #undef CONFIG_USB_PD_TX_USES_SPI_MASTER
 
+/* Support PI3USB9281 charger detection chip */
+#undef CONFIG_USB_DETECT_PI3USB9281
+
+/* The GPIO to switch between PI3USB9281 chips if we have two */
+#undef CONFIG_PI3USB9281_MUX_GPIO
+
 /*****************************************************************************/
 
 /* Support simple control of power to the device's USB ports */
