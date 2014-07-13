@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79bfe48c_0bb61414",
+        "filename": "board/firefly/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-13T23:37:03Z",
+      "side": 1,
+      "message": "why not putting that in usb_pd_config.h ?\n\nas long as you don\u0027t need CONFIG_xxx exported to the build system, that seems a better choice ?",
+      "revId": "34dd82d73c2c06acef11f0fd3e0b027f3631ba29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9a7f088_2dfa1523",
+        "filename": "board/firefly/usb_pd_config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-13T23:37:03Z",
+      "side": 1,
+      "message": "we cannot put .data or .rodata here since it\u0027s included several times, they will be duplicated.\n\nIMO you need to push those arrays in usb_pd_phy.c",
+      "revId": "34dd82d73c2c06acef11f0fd3e0b027f3631ba29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9a7f088_cdfee115",
+        "filename": "board/firefly/usb_pd_config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-13T23:37:03Z",
+      "side": 1,
+      "message": "an easier option might be to put  here just \n#define SPI_REGS_C0 STM32_SPI1_REGS\nand use a string concatenation in a global.\nsame thing for TIM_CLOCK_ above",
+      "revId": "34dd82d73c2c06acef11f0fd3e0b027f3631ba29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9a7f088_edfb9d22",
+        "filename": "board/fruitpie/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-13T23:37:03Z",
+      "side": 1,
+      "message": "only 1 port on dual ports system have the debug HW.\nso this might be needed.",
+      "revId": "34dd82d73c2c06acef11f0fd3e0b027f3631ba29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1980a8c3_62b23bd3",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-13T23:37:03Z",
+      "side": 1,
+      "message": "I think we should simply have 2 interrupt handler routines for those 2 cases",
+      "revId": "34dd82d73c2c06acef11f0fd3e0b027f3631ba29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1980a8c3_02b7c7c1",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-13T23:37:03Z",
+      "side": 1,
+      "message": "if the dual role is always set for both ports,\ndo we need to call it tiwce with the port number ?",
+      "revId": "34dd82d73c2c06acef11f0fd3e0b027f3631ba29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1980a8c3_22b443ba",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-13T23:37:03Z",
+      "side": 1,
+      "message": "it would probably be less expensive (in terms of cpu power) to continue passing around an opaque (void *) containing the pointer to the struct pd_physical rather than doing array computation in each function.",
+      "revId": "34dd82d73c2c06acef11f0fd3e0b027f3631ba29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1980a8c3_e2bdeb9e",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-13T23:37:03Z",
+      "side": 1,
+      "message": "since we have possibly 2 different interrupt handlers we can avoid this.\nmaybe just a 2-stage handler\npd_rx_handler(int port)\ncalled from the real interrupt handler \npd_rx_handler(0)\nand \npd_rx_handler(1)",
+      "revId": "34dd82d73c2c06acef11f0fd3e0b027f3631ba29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9a7f088_4d12f1c1",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-13T23:37:03Z",
+      "side": 1,
+      "message": "at that point we should probably split the enum definition from the field declaration",
+      "revId": "34dd82d73c2c06acef11f0fd3e0b027f3631ba29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79bfe48c_8bb1a418",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-13T23:37:03Z",
+      "side": 1,
+      "message": "why are we not doing this in the pd_task prolog ?",
+      "revId": "34dd82d73c2c06acef11f0fd3e0b027f3631ba29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1980a8c3_a2cff33d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 868,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-13T23:37:03Z",
+      "side": 1,
+      "message": "the task can have an optional parameter in ec.tasklist for that purpose.",
+      "revId": "34dd82d73c2c06acef11f0fd3e0b027f3631ba29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
