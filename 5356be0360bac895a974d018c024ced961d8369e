@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1980a8c3_42f37fbe",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-13T19:47:46Z",
+      "side": 1,
+      "message": "I\u0027m fine with this, but maybe we want to create the same chipset transitions hooks we have on other ECs.",
+      "revId": "5356be0360bac895a974d018c024ced961d8369e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9a7f088_adeb657f",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-13T19:47:46Z",
+      "side": 1,
+      "message": "as this is not interactive console code, we should avoid ccprintf here (my bad bringup code has them but it mighr time to remove them).\nWe should either use CH_CHIPSET or remove those printf in interrupt context to please our PD code",
+      "revId": "5356be0360bac895a974d018c024ced961d8369e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79bfe48c_8b4d2488",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-13T19:47:46Z",
+      "side": 1,
+      "message": "shoudl dual_role_mask type be \"enum pd_dual_role_states\" ?",
+      "revId": "5356be0360bac895a974d018c024ced961d8369e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
