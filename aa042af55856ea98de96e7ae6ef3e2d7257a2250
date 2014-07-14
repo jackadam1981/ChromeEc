@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "196c2814_7ca611de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-14T18:49:51Z",
+      "side": 1,
+      "message": "I agree the code is buggy but the right PD voltage is selected,\n I\u0027m asking for the wrong amount of power\n(well after the fix, we are asking for the really available of power, that\u0027s still incorrect from a PD point of view, we should ask for the power we need,\nbut that\u0027s more or less related to implementing crosbug.com/p/30341 )",
+      "revId": "aa042af55856ea98de96e7ae6ef3e2d7257a2250",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
