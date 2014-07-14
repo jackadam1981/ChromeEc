@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1980a8c3_a28133aa",
+        "filename": "board/plankton/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-14T02:49:12Z",
+      "side": 1,
+      "message": "you know about this trap but as a reminder there is no gpio_enable_interrupt , so by default you will never get it",
+      "revId": "61d408820e94a27c38b4d9d58de5301bfdcdffe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79bfe48c_8bc4444a",
+        "filename": "board/plankton/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-14T02:49:12Z",
+      "side": 1,
+      "message": "yes it\u0027s PA5 interesting mistake...",
+      "revId": "61d408820e94a27c38b4d9d58de5301bfdcdffe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9a7f088_38f9f1e5",
+        "filename": "board/plankton/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-14T02:49:12Z",
+      "side": 1,
+      "message": "if you are the slave, I2C_INT_L is an output for you to signal the master",
+      "revId": "61d408820e94a27c38b4d9d58de5301bfdcdffe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9a7f088_18f435ed",
+        "filename": "board/plankton/usb_pd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-14T02:49:12Z",
+      "side": 1,
+      "message": "I think the current hardware is still marginal, don\u0027t rely too much on this at 5V unless they have updated the BOM",
+      "revId": "61d408820e94a27c38b4d9d58de5301bfdcdffe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79bfe48c_0b0134d4",
+        "filename": "board/plankton/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-14T02:49:12Z",
+      "side": 1,
+      "message": "I think Plankton will power Samus at BFT.\nI will provide up to 12V 3A",
+      "revId": "61d408820e94a27c38b4d9d58de5301bfdcdffe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9a7f088_6d624d1b",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-14T02:49:12Z",
+      "side": 1,
+      "message": "as there is an on-board FT230x, to be able to conveniently use the script.\nYou would need to do the following:\n- program the FT230x eeprom with\n  * a Google USB VID/PID (need to assign one in the USB PID spreadsheet)\n  * the right GPIO configuration\n- create a servo configuration in third_party/hdctools\n  (very similar to fruitpie  config)\nLet me know if you need help,\nif you need more interactive help, Todd can probably help on both items.",
+      "revId": "61d408820e94a27c38b4d9d58de5301bfdcdffe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
