@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "196c2814_79f463ee",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-14T18:04:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1980a8c3_42f37fbe",
+      "revId": "5356be0360bac895a974d018c024ced961d8369e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9a7f088_adeb657f",
         "filename": "board/samus_pd/board.c",
         "patchSetId": 4
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "196c2814_59f9a7e4",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-14T18:04:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9a7f088_adeb657f",
+      "revId": "5356be0360bac895a974d018c024ced961d8369e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79bfe48c_8b4d2488",
         "filename": "include/usb_pd.h",
         "patchSetId": 4
@@ -47,6 +83,24 @@
       "writtenOn": "2014-07-13T19:47:46Z",
       "side": 1,
       "message": "shoudl dual_role_mask type be \"enum pd_dual_role_states\" ?",
+      "revId": "5356be0360bac895a974d018c024ced961d8369e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9683404_3595d0f0",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-14T18:04:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79bfe48c_8b4d2488",
       "revId": "5356be0360bac895a974d018c024ced961d8369e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
