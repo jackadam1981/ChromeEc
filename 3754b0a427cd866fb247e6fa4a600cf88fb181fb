@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9c4b462_38c4c548",
+        "filename": "chip/stm32/usb_console.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-07-15T22:31:18Z",
+      "side": 1,
+      "message": "Setting this shouldn\u0027t have an effect for bulk endpoints, I think it will be ignored.",
+      "revId": "3754b0a427cd866fb247e6fa4a600cf88fb181fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19c8a874_dcdca521",
+        "filename": "chip/stm32/usb_console.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-07-15T22:31:18Z",
+      "side": 1,
+      "message": "__tx_char should take a pointer to tx_idx as its context, each location below that uses the global tx_idx above should pass in a pointer to a stack local tx_idx.",
+      "revId": "3754b0a427cd866fb247e6fa4a600cf88fb181fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9c1b053_57c30ed0",
+        "filename": "chip/stm32/usb_console.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-07-15T22:31:18Z",
+      "side": 1,
+      "message": "This usb_wait_console and the ones below should probably move to __tx_char.",
+      "revId": "3754b0a427cd866fb247e6fa4a600cf88fb181fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9c4b462_b8d0d58b",
+        "filename": "chip/stm32/usb_console.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-07-15T22:31:18Z",
+      "side": 1,
+      "message": "Enabling TX happens three times almost exactly the same each time.  We should make a function usb_enable_tx that takes the tx_idx, this function should perform the is_reset check from above.  That way some output can be buffered before the endpoint is reset.",
+      "revId": "3754b0a427cd866fb247e6fa4a600cf88fb181fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9c4b462_b85295f1",
+        "filename": "include/usb_console.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-07-15T22:31:18Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem to be used anywhere.",
+      "revId": "3754b0a427cd866fb247e6fa4a600cf88fb181fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
