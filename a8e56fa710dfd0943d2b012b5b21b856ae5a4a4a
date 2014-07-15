@@ -2,6 +2,108 @@
   "comments": [
     {
       "key": {
+        "uuid": "191a68b4_6cf5cf31",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-07-15T22:35:44Z",
+      "side": 1,
+      "message": "nit, Planton -\u003e Plankton",
+      "revId": "a8e56fa710dfd0943d2b012b5b21b856ae5a4a4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19c8a874_f94c1356",
+        "filename": "board/plankton/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-07-15T22:35:44Z",
+      "side": 1,
+      "message": "my schematic ( Plankton_Raiden_schematic-review_20140618.pdf) shows PA4 for this I think but this needs to be SCK(PA5) ... guess its either been reworked or my schematic is old",
+      "revId": "a8e56fa710dfd0943d2b012b5b21b856ae5a4a4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9c1b053_97b686c3",
+        "filename": "board/plankton/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-07-15T22:35:44Z",
+      "side": 1,
+      "message": "nit, port0 according to pd_adc_read although code just drop port altogether as plankton has only the one",
+      "revId": "a8e56fa710dfd0943d2b012b5b21b856ae5a4a4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19c8a874_fcbfa1e4",
+        "filename": "board/plankton/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-07-15T22:35:44Z",
+      "side": 1,
+      "message": "think this is active high signal ... at least DS5 LED is",
+      "revId": "a8e56fa710dfd0943d2b012b5b21b856ae5a4a4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19c8a874_fc35e1c5",
+        "filename": "board/plankton/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-07-15T22:35:44Z",
+      "side": 1,
+      "message": "Need \n\n  GPIO(USBC_12V_EN, C, 14, GPIO_OUT_LOW,  NULL)",
+      "revId": "a8e56fa710dfd0943d2b012b5b21b856ae5a4a4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9c1b053_f71c1ad0",
+        "filename": "board/plankton/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-07-15T22:35:44Z",
+      "side": 1,
+      "message": "looks like its assertive high",
+      "revId": "a8e56fa710dfd0943d2b012b5b21b856ae5a4a4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79d0c40f_619936fa",
         "filename": "board/plankton/usb_pd_policy.c",
         "patchSetId": 3
