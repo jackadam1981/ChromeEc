@@ -361,6 +361,7 @@ static void jump_to_image(uintptr_t init_addr)
 {
 	void (*resetvec)(void) = (void(*)(void))init_addr;
 
+#ifdef GPIO_ENTERING_RW
 	/*
 	 * Jumping to any image asserts the signal to the Silego chip that that
 	 * EC is not in read-only firmware.  (This is not technically true if
@@ -373,6 +374,7 @@ static void jump_to_image(uintptr_t init_addr)
 	gpio_set_level(GPIO_ENTERING_RW, 1);
 	usleep(MSEC);
 	gpio_set_level(GPIO_ENTERING_RW, 0);
+#endif
 
 	/* Flush UART output unless the UART hasn't been initialized yet */
 	if (uart_init_done())
