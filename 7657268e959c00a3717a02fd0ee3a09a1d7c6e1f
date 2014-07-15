@@ -16,6 +16,24 @@
       "revId": "7657268e959c00a3717a02fd0ee3a09a1d7c6e1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79d0c40f_d611e26f",
+        "filename": "driver/charger/bq24715.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-07-15T18:38:55Z",
+      "side": 1,
+      "message": "I think this would be ok. It basically allows cached_voltage to be returned by charget_get_voltage() whatever charger_set_voltage() does. Now what I don\u0027t understand/remember is how/why we weren\u0027t doing the 0 check before. The only thing I can conclude is that a write of 0 doesn\u0027t stick and reading it back is the lowest possible value.\n\nThis code appears to be wanting to set a minimum voltage that is higher than the minimum enforced by hardware. Is that true?",
+      "parentUuid": "99cbb865_dcb58508",
+      "revId": "7657268e959c00a3717a02fd0ee3a09a1d7c6e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
