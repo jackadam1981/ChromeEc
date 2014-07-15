@@ -52,6 +52,24 @@
       "revId": "7657268e959c00a3717a02fd0ee3a09a1d7c6e1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99cbb865_5cf09542",
+        "filename": "driver/charger/bq24715.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-07-15T19:15:42Z",
+      "side": 1,
+      "message": "Well, my fuzzy recollection is that the charging state machine thinks 0 is valid and wants it to be returned from get(). If someone has this hardware, what is the value read back after writing 0. That would give us a more complete picture.\n\nAccording to the datasheet it says \"Any value below 4.096V results in 4.096V\". So I think we could step down all the way to 4.096V then level out and only when voltage is equal to 0 would be apply CHARGER_NVDC_VOLTAGE.",
+      "parentUuid": "19dfc824_4147d435",
+      "revId": "7657268e959c00a3717a02fd0ee3a09a1d7c6e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
