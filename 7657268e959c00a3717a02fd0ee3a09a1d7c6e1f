@@ -34,6 +34,24 @@
       "revId": "7657268e959c00a3717a02fd0ee3a09a1d7c6e1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19dfc824_4147d435",
+        "filename": "driver/charger/bq24715.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-07-15T18:44:30Z",
+      "side": 1,
+      "message": "A few lines is the following comment:\n\n/* The voltage setting needs to be cached to work with the current charging infrastructure and state machine. The reason is that the state machine expects to be able to set a 0V charging voltage. The bq24715 does not allow this in the hardware register. Therefore 0V is handled specially to appease the state machine. */\n\nIn this case we are actually modifying the voltage value written. Shouldn\u0027t cached_voltage store that value instead? Or should the zero voltage check be done before we call charger_set_voltage?",
+      "parentUuid": "79d0c40f_d611e26f",
+      "revId": "7657268e959c00a3717a02fd0ee3a09a1d7c6e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
