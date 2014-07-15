@@ -11,9 +11,11 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
+#include "pi3usb9281.h"
 #include "power.h"
 #include "registers.h"
 #include "task.h"
+#include "usb.h"
 #include "usb_pd.h"
 #include "usb_pd_config.h"
 #include "util.h"
@@ -147,6 +149,147 @@ const struct i2c_port_t i2c_ports[] = {
 		GPIO_SLAVE_I2C_SCL, GPIO_SLAVE_I2C_SDA},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+
+const void * const usb_strings[] = {
+	[USB_STR_DESC] = usb_string_desc,
+	[USB_STR_VENDOR] = USB_STRING_DESC("Google Inc."),
+	[USB_STR_PRODUCT] = USB_STRING_DESC("Samus"),
+	[USB_STR_VERSION] = USB_STRING_DESC("vXX.YYY"),
+};
+BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
+
+void board_set_i2c_mux(enum i2c_mux mux)
+{
+	gpio_set_level(GPIO_USB_C_BC12_SEL, mux);
+}
+
+static int board_set_usb(int enable)
+{
+	int res = EC_SUCCESS;
+
+	board_set_i2c_mux(USB_SWITCH_C0);
+
+	if (enable) {
+		/* Set pins USB_MCU_DM and USB_MCU_DP to analog mode. */
+		STM32_GPIO_MODER(GPIO_A) |= 0x3c00000;
+
+		/* Switch PI3USB9281 to manual mode */
+		res = pi3usb9281_set_switch_manual(1);
+		if (res)
+			return res;
+
+		/* Disconnect USB from AP */
+		res = pi3usb9281_set_pins(0x00);
+		if (res)
+			return res;
+
+	} else {
+		/* Set pins USB_MCU_DM and USB_MCU_DP to input mode. */
+		STM32_GPIO_MODER(GPIO_A) &= ~0x3c00000;
+
+		/* Switch PI3USB9281 to automatic mode */
+		res = pi3usb9281_set_switch_manual(0);
+		if (res)
+			return res;
+	}
+
+	return res;
+}
+
+static void board_set_spi(int enable)
+{
+	if (enable) {
+		/* Suspend PD */
+		pd_set_suspend(0, 1);
+		pd_set_suspend(1, 1);
+
+		/* Set pins PD_SPI_MISO and PD_SPI_MOSI to alt function. */
+		STM32_GPIO_MODER(GPIO_C) &= ~0x000000f0;
+		STM32_GPIO_MODER(GPIO_C) |= 0x000000a0;
+
+		/* Set pin PD_SPI_CS to output and PD_SPI_CLK to alt function. */
+		STM32_GPIO_MODER(GPIO_D) &= ~0x0000000f;
+		STM32_GPIO_MODER(GPIO_D) |= 0x00000009;
+
+		/* Set pins PD_SPI_MISO and PD_SPI_MOSI to AF1 */
+		STM32_GPIO_AFRL(GPIO_C) &= ~0x0000ff00;
+		STM32_GPIO_AFRL(GPIO_C) |= 0x00001100;
+
+		/* Set pin PD_SPI_CLK to AF1  */
+		STM32_GPIO_AFRL(GPIO_D) &= ~0x000000ff;
+		STM32_GPIO_AFRL(GPIO_D) |= 0x00000010;
+
+		/* Set all four pins to output push-pull */
+		STM32_GPIO_OTYPER(GPIO_C) &= ~0x0000000c;
+		STM32_GPIO_OTYPER(GPIO_D) &= ~0x00000003;
+
+		/* Set pullup on PD_SPI_CS */
+		STM32_GPIO_PUPDR(GPIO_D) |= 0x00000001;
+
+		/* Set all four pins to high speed */
+		STM32_GPIO_OSPEEDR(GPIO_C) |= 0x000000f0;
+		STM32_GPIO_OSPEEDR(GPIO_D) |= 0x0000000f;
+
+		/* Reset SPI2 */
+		STM32_RCC_APB1RSTR |= (1 << 14);
+		STM32_RCC_APB1RSTR &= ~(1 << 14);
+
+		/* Enable clocks to SPI2 module */
+		STM32_RCC_APB1ENR |= STM32_RCC_PB1_SPI2;
+	} else {
+		/* Disable clock to SPI2 module */
+		STM32_RCC_APB1ENR &= ~STM32_RCC_PB1_SPI2;
+
+		/* Reset SPI2 */
+		STM32_RCC_APB1RSTR |= (1 << 14);
+		STM32_RCC_APB1RSTR &= ~(1 << 14);
+
+		/* Unset pullup on PD_SPI_CS */
+		STM32_GPIO_PUPDR(GPIO_D) &= ~0x00000003;
+
+		/* Unset alternate function */
+		STM32_GPIO_AFRL(GPIO_C) &= ~0x0000ff00;
+		STM32_GPIO_AFRL(GPIO_D) &= ~0x000000ff;
+
+		/* Set all to input mode */
+		STM32_GPIO_MODER(GPIO_C) &= ~0x000000f0;
+		STM32_GPIO_MODER(GPIO_D) &= ~0x0000000f;
+
+		/* Re-enable PD */
+		pd_set_suspend(0, 0);
+		pd_set_suspend(1, 0);
+	}
+}
+
+int board_set_debug(int enable)
+{
+	int rv = EC_SUCCESS;
+
+	board_set_spi(enable);
+
+	rv = board_set_usb(enable);
+
+	return rv;
+}
+
+static int command_debug(int argc, char **argv)
+{
+	char *e;
+	int v;
+
+	if (argc < 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	v = strtoi(argv[1], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM1;
+
+	ccprintf("Setting debug: %d...\n", v);
+	board_set_debug(v);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(debugset, command_debug, NULL, "Set debug mode", NULL);
 
 void board_set_usb_mux(int port, enum typec_mux mux, int polarity)
 {
