@@ -18,6 +18,10 @@
 /* Optional features */
 #define CONFIG_BOARD_PRE_INIT
 #define CONFIG_STM_HWTIMER32
+#define CONFIG_USB
+#define CONFIG_USB_INHIBIT
+#define CONFIG_USB_MS
+#define CONFIG_USB_MS_BUFFER_SIZE SPI_FLASH_MAX_WRITE_SIZE
 #define CONFIG_USB_POWER_DELIVERY
 #undef CONFIG_USB_PD_COMM_ENABLED
 #define CONFIG_USB_PD_COMM_ENABLED 0
@@ -29,7 +33,12 @@
 #define CONFIG_ADC
 #define CONFIG_HW_CRC
 #define CONFIG_I2C
-#define CONFIG_USB_SWITCH_TSU6721
+#define CONFIG_USB_SWITCH_PI3USB9281
+#define CONFIG_USB_SWITCH_PI3USB9281_MUX_GPIO GPIO_USB_C_BC12_SEL
+#define CONFIG_SPI_FLASH
+#define CONFIG_SPI_FLASH_SIZE 8388608
+#define CONFIG_SPI_MASTER_PORT 2
+#define CONFIG_SPI_CS_GPIO GPIO_SPI_FLASH_CS_L
 #define CONFIG_VBOOT_HASH
 #undef CONFIG_WATCHDOG_HELP
 #undef CONFIG_LID_SWITCH
@@ -44,6 +53,11 @@
 #ifdef HAS_TASK_HOSTCMD
 #define CONFIG_HOSTCMD_I2C_SLAVE_ADDR CONFIG_USB_PD_I2C_SLAVE_ADDR
 #endif
+
+/* USB configuration */
+#define CONFIG_USB_PID 0x500d
+/* By default, enable all console messages excepted USB */
+#define CC_DEFAULT     (CC_ALL & ~CC_MASK(CC_USB))
 
 /*
  * Allow dangerous commands all the time, since we don't have a write protect
@@ -76,6 +90,32 @@ void board_update_battery_soc(int soc);
 /* Get the last received battery level. */
 int board_get_battery_soc(void);
 
+/*
+ * Used to set GPIO's and clock to SPI module used for debug
+ * @param enable Whether to enable or disable debug
+ */
+int board_set_debug(int enable);
+
+/* USB string indexes */
+enum usb_strings {
+	USB_STR_DESC = 0,
+	USB_STR_VENDOR,
+	USB_STR_PRODUCT,
+	USB_STR_VERSION,
+
+	USB_STR_COUNT
+};
+
 #endif /* !__ASSEMBLER__ */
+
+/* USB interface indexes (use define rather than enum to expand them) */
+#define USB_IFACE_MS	0
+#define USB_IFACE_COUNT	1
+
+/* USB endpoint indexes (use define rather than enum to expand them) */
+#define USB_EP_CONTROL	0
+#define USB_EP_MS_TX	1
+#define USB_EP_MS_RX	2
+#define USB_EP_COUNT	3
 
 #endif /* __BOARD_H */
