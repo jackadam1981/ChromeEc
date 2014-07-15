@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9fa9081_b20398dd",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1003228
+      },
+      "writtenOn": "2014-07-15T14:41:59Z",
+      "side": 1,
+      "message": "\"size\" should be change to \"fw_img_hdr-\u003efw_binary_size\".",
+      "revId": "cd96b4434f167f5754d275440685606f02d216e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
