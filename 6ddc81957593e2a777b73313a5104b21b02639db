@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79c52478_fce8a5cc",
+        "filename": "chip/stm32/gpio-shared.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-07-16T17:17:49Z",
+      "side": 1,
+      "message": "gpio-f0-l.c to make it more explicit which variants use this?  Since this is shared, but not between all variants (or it\u0027d just be in chip/stm32/gpio.c).",
+      "revId": "6ddc81957593e2a777b73313a5104b21b02639db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
