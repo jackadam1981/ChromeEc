@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d9c1b053_a8b88301",
+        "filename": "chip/stm32/usb_console.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-07-16T00:36:10Z",
+      "side": 1,
+      "message": "I\u0027m not so familiar with USB standard. I\u0027ll leave this to Vincent.",
+      "parentUuid": "f9c4b462_38c4c548",
+      "revId": "3754b0a427cd866fb247e6fa4a600cf88fb181fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19c8a874_dcdca521",
         "filename": "chip/stm32/usb_console.c",
         "patchSetId": 14
@@ -30,6 +48,24 @@
       "writtenOn": "2014-07-15T22:31:18Z",
       "side": 1,
       "message": "__tx_char should take a pointer to tx_idx as its context, each location below that uses the global tx_idx above should pass in a pointer to a stack local tx_idx.",
+      "revId": "3754b0a427cd866fb247e6fa4a600cf88fb181fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9c1b053_68f3cbbe",
+        "filename": "chip/stm32/usb_console.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-07-16T00:36:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19c8a874_dcdca521",
       "revId": "3754b0a427cd866fb247e6fa4a600cf88fb181fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "f9c4b462_3ebe6d51",
+        "filename": "chip/stm32/usb_console.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-07-16T00:36:10Z",
+      "side": 1,
+      "message": "__tx_char only queues the data to USB buffer but doesn\u0027t actually send it out. We only need to make sure the buffer is available before starting to write to it. If usb_wait_console is moved to __tx_char, it\u0027ll be called many more times for cputs() and cprintf() calls.",
+      "parentUuid": "d9c1b053_57c30ed0",
+      "revId": "3754b0a427cd866fb247e6fa4a600cf88fb181fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9c4b462_b8d0d58b",
         "filename": "chip/stm32/usb_console.c",
         "patchSetId": 14
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "d9c1b053_28c55376",
+        "filename": "chip/stm32/usb_console.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-07-16T00:36:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9c4b462_b8d0d58b",
+      "revId": "3754b0a427cd866fb247e6fa4a600cf88fb181fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9c4b462_b85295f1",
         "filename": "include/usb_console.h",
         "patchSetId": 14
@@ -81,6 +153,24 @@
       "writtenOn": "2014-07-15T22:31:18Z",
       "side": 1,
       "message": "This doesn\u0027t seem to be used anywhere.",
+      "revId": "3754b0a427cd866fb247e6fa4a600cf88fb181fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19c8a874_ead7cfd0",
+        "filename": "include/usb_console.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-07-16T00:36:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9c4b462_b85295f1",
       "revId": "3754b0a427cd866fb247e6fa4a600cf88fb181fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
