@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "7987e429_49c46120",
+        "filename": "board/plankton/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-16T15:37:25Z",
+      "side": 1,
+      "message": "yeah, it was originally PA4, but we had to change it because PA4 didn\u0027t support alternate function mode SPI1_SCK. So, PA4 and PA5 on the schematics are switched.",
+      "parentUuid": "19c8a874_f94c1356",
+      "revId": "a8e56fa710dfd0943d2b012b5b21b856ae5a4a4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9c1b053_97b686c3",
         "filename": "board/plankton/board.c",
         "patchSetId": 3
@@ -70,6 +88,24 @@
     },
     {
       "key": {
+        "uuid": "597ce0f0_a885dbba",
+        "filename": "board/plankton/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-16T15:37:25Z",
+      "side": 1,
+      "message": "Yes, you are right",
+      "parentUuid": "19c8a874_fcbfa1e4",
+      "revId": "a8e56fa710dfd0943d2b012b5b21b856ae5a4a4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19c8a874_fc35e1c5",
         "filename": "board/plankton/gpio.inc",
         "patchSetId": 3
@@ -87,6 +123,24 @@
     },
     {
       "key": {
+        "uuid": "9982d817_0a47bbdf",
+        "filename": "board/plankton/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-16T15:37:25Z",
+      "side": 1,
+      "message": "yep, got it",
+      "parentUuid": "19c8a874_fc35e1c5",
+      "revId": "a8e56fa710dfd0943d2b012b5b21b856ae5a4a4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9c1b053_f71c1ad0",
         "filename": "board/plankton/gpio.inc",
         "patchSetId": 3
@@ -98,6 +152,24 @@
       "writtenOn": "2014-07-15T22:35:44Z",
       "side": 1,
       "message": "looks like its assertive high",
+      "revId": "a8e56fa710dfd0943d2b012b5b21b856ae5a4a4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "597ce0f0_c8920f02",
+        "filename": "board/plankton/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-16T15:37:25Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "d9c1b053_f71c1ad0",
       "revId": "a8e56fa710dfd0943d2b012b5b21b856ae5a4a4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
