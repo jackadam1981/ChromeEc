@@ -161,8 +161,32 @@ int i2c_do_work(int port)
 	return 0;
 }
 
+#ifdef CONFIG_I2C_RETRY_CNT
+int i2c_xfer_unit(int port, int slave_addr, const uint8_t *out, int out_size,
+	     uint8_t *in, int in_size, int flags);
+
 int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 	     uint8_t *in, int in_size, int flags)
+{
+	int cnt = CONFIG_I2C_RETRY_CNT;
+	int rv;
+
+	for(;cnt > 0; cnt --){
+		rv = i2c_xfer_unit(port, slave_addr, out, out_size, in, in_size, flags);
+		if(rv == 0)
+			break;
+		usleep(100);
+	}
+
+	return rv;
+}
+
+int i2c_xfer_unit(int port, int slave_addr, const uint8_t *out, int out_size,
+	     uint8_t *in, int in_size, int flags)
+#else
+int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
+	     uint8_t *in, int in_size, int flags)
+#endif
 {
 	struct i2c_port_data *pd = pdata + port;
 	uint32_t reg_mcs = LM4_I2C_MCS(port);
