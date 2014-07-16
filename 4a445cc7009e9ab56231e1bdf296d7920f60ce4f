@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9c1b053_69a02d90",
+        "filename": "common/charge_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-07-16T14:54:43Z",
+      "side": 1,
+      "message": "Please add space after \u0027if\u0027. And put the \u0027{\u0027 on the same line as the if. Just like the one above.\n\nBut my larger question is why we are conditionalizing knocking down these flags when battery_is_present() clearly told us it wasn\u0027t.",
+      "revId": "4a445cc7009e9ab56231e1bdf296d7920f60ce4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9c1b053_a9b965ce",
+        "filename": "common/charge_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-07-16T14:54:43Z",
+      "side": 1,
+      "message": "Remove space before \u0027)\u0027",
+      "revId": "4a445cc7009e9ab56231e1bdf296d7920f60ce4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
