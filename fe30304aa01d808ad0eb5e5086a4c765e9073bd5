@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "59ba20ef_3884e982",
+        "filename": "chip/stm32/usb_console.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-07-16T17:30:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79c52478_d97a93cc",
+      "revId": "fe30304aa01d808ad0eb5e5086a4c765e9073bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59ba20ef_b8ceb997",
         "filename": "chip/stm32/usb_console.c",
         "patchSetId": 16
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "79c52478_1cd599c8",
+        "filename": "chip/stm32/usb_console.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-07-16T17:30:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59ba20ef_b8ceb997",
+      "revId": "fe30304aa01d808ad0eb5e5086a4c765e9073bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79c52478_39ad0f0d",
         "filename": "chip/stm32/usb_console.c",
         "patchSetId": 16
@@ -47,6 +83,24 @@
       "writtenOn": "2014-07-16T16:40:26Z",
       "side": 1,
       "message": "What is last_tx_ok doing?  It seems like it will be set to false on a timeout, and then the next transaction will always be dropped (because the else below just updates last_tx_ok without actually doing the transfer), even if it might have been successfully queued.  It seems unneeded.",
+      "revId": "fe30304aa01d808ad0eb5e5086a4c765e9073bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59ba20ef_7b0edb58",
+        "filename": "chip/stm32/usb_console.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-07-16T17:30:44Z",
+      "side": 1,
+      "message": "The host might not be receiving data, and in this case, we don\u0027t want every call to time out after USB_CONSOLE_TIMEOUT_US. Otherwise, this blocks console output and makes UART console very slow. Added comment on this.",
+      "parentUuid": "79c52478_39ad0f0d",
       "revId": "fe30304aa01d808ad0eb5e5086a4c765e9073bd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
