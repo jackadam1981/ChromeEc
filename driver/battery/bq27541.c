@@ -235,3 +235,22 @@ int battery_wait_for_stable(void)
 	/* TODO(crosbug.com/p/30426): implement me */
 	return EC_SUCCESS;
 }
+
+#include "charger.h"
+#include "timer.h"
+
+static int bq27741_rec(int argc, char *argv[])
+{
+	int voltage;
+	int rv;
+
+	if (bq27541_read(REG_VOLTAGE, &voltage))
+		return EC_ERROR_UNKNOWN;
+
+	rv = charger_set_voltage(voltage + 750);
+	usleep(50 * MSEC);
+	rv |= charger_set_voltage(4336);
+
+	return rv;
+}
+DECLARE_CONSOLE_COMMAND(revive_bq27741, bq27741_rec, NULL, NULL, NULL);
