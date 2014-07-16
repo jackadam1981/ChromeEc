@@ -104,6 +104,24 @@
       "revId": "fe30304aa01d808ad0eb5e5086a4c765e9073bd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59ba20ef_db1f274f",
+        "filename": "chip/stm32/usb_console.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-07-16T17:38:27Z",
+      "side": 1,
+      "message": "Ahh, excellent point.  :)  Thanks for clarifying.",
+      "parentUuid": "59ba20ef_7b0edb58",
+      "revId": "fe30304aa01d808ad0eb5e5086a4c765e9073bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
