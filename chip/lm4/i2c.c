@@ -161,7 +161,7 @@ int i2c_do_work(int port)
 	return 0;
 }
 
-int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
+int i2c_xfer_unit(int port, int slave_addr, const uint8_t *out, int out_size,
 	     uint8_t *in, int in_size, int flags)
 {
 	struct i2c_port_data *pd = pdata + port;
@@ -240,6 +240,26 @@ int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 	}
 
 	return pd->err;
+}
+
+#ifndef CONFIG_I2C_RETRY_CNT 
+	#define CONFIG_I2C_RETRY_CNT 1 
+#endif
+
+int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
+	     uint8_t *in, int in_size, int flags)
+{
+	int cnt = CONFIG_I2C_RETRY_CNT;
+	int rv;
+
+	for(;cnt > 0; cnt --){
+		rv = i2c_xfer_unit(port, slave_addr, out, out_size, in, in_size, flags);
+		if(rv == 0)
+			break;
+		usleep(100);
+	}
+
+	return rv;
 }
 
 int i2c_raw_get_scl(int port)
