@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39f48cd0_722f3678",
+        "filename": "common/smbus.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-07-17T04:20:13Z",
+      "side": 1,
+      "message": "TBD: replaced with \n   rv \u003d EC_ERROR_PEC;\n   goto exit;",
+      "revId": "b691812dd988e30e6f0d682a6a3949f67beca9ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
