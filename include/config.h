@@ -927,6 +927,9 @@
 /*****************************************************************************/
 /* USB interfaces config */
 
+/* USB FTDI MPSSE interface */
+#undef CONFIG_USB_FTDI
+
 /* USB mass storage interface */
 #undef CONFIG_USB_MS
 
