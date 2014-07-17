@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_HWTIMER_H
 #define __CROS_EC_HWTIMER_H
 
+#define IRQ_TIM(n) CONCAT2(STM32_IRQ_TIM, n)
+
 /**
  * Programs when the next timer should fire an interrupt.
  * deadline: timestamp of the event.
