@@ -1027,6 +1027,12 @@
 #undef CONFIG_ACCEL_CALIBRATE
 #endif
 
+#ifndef HAS_TASK_HOSTCMD
+/* Address of the EC when connected as a slave to i2c. */
+#undef CONFIG_HOSTCMD_I2C_SLAVE_ADDR
+#endif
+
+
 /*****************************************************************************/
 /*
  * Apply test config overrides last, since tests need to override some of the
