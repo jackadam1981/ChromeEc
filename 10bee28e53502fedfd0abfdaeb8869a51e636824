@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1975083e_1c101727",
+        "filename": "board/samus_pd/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-07-18T23:14:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1975083e_dcdccf84",
+      "revId": "10bee28e53502fedfd0abfdaeb8869a51e636824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "790d24e9_8d62518b",
         "filename": "include/config.h",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2014-07-18T22:46:52Z",
       "side": 1,
       "message": "Description should go here - for example:\n\n/*\n * For ECs where the host command interface is I2C, slave\n * address which the EC will respond to.\n */\n#undef CONFIG_HOSTCMD_I2C_ADDR",
+      "revId": "10bee28e53502fedfd0abfdaeb8869a51e636824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "790d24e9_8d5b7167",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-07-18T23:14:55Z",
+      "side": 1,
+      "message": "Done . Was previously it in the !HOSTCMD section.",
+      "parentUuid": "790d24e9_8d62518b",
       "revId": "10bee28e53502fedfd0abfdaeb8869a51e636824",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
