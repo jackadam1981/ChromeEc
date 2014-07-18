@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99df387f_6b925193",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-07-18T18:49:22Z",
+      "side": 1,
+      "message": "You are making the assumption that host command is only supported on samus USB PD MCU. Don\u0027t you want to make this configuration independant?\n\nLet me file a bug to make it more generic.\nchrome-os-partner:30740",
+      "revId": "31369a69dbf34cff8d9135f5d503efa717e3da35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
