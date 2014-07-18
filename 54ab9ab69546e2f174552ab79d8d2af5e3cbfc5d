@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e43969b5_3611b973",
+        "filename": "chip/stm32/usb_ms_scsi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-07-18T21:54:03Z",
+      "side": 1,
+      "message": "remove unused opcodes.",
+      "revId": "54ab9ab69546e2f174552ab79d8d2af5e3cbfc5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4224989_08e107b1",
+        "filename": "chip/stm32/usb_ms_scsi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-07-18T21:54:03Z",
+      "side": 1,
+      "message": "SCSI_VPD_DESIGNATOR_LENGTH + 4 instead.",
+      "revId": "54ab9ab69546e2f174552ab79d8d2af5e3cbfc5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4224989_48dbfff8",
+        "filename": "chip/stm32/usb_ms_scsi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-07-18T21:54:03Z",
+      "side": 1,
+      "message": "should be unique. might confuse the scsi stack if 2 devices are plugged in.",
+      "revId": "54ab9ab69546e2f174552ab79d8d2af5e3cbfc5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4c051c0_cc6f1ed7",
+        "filename": "chip/stm32/usb_ms_scsi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-07-18T21:54:03Z",
+      "side": 1,
+      "message": "Is SCSI_BLOCK_SIZE  4K? The name is not telling.",
+      "revId": "54ab9ab69546e2f174552ab79d8d2af5e3cbfc5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4224989_a8d1d3df",
+        "filename": "chip/stm32/usb_ms_scsi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-07-18T21:54:03Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "54ab9ab69546e2f174552ab79d8d2af5e3cbfc5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
