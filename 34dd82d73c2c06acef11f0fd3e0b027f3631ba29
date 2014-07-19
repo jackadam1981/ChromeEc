@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "593dc04b_00be6650",
+        "filename": "board/firefly/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-19T00:48:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79bfe48c_0bb61414",
+      "revId": "34dd82d73c2c06acef11f0fd3e0b027f3631ba29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9a7f088_2dfa1523",
         "filename": "board/firefly/usb_pd_config.h",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2014-07-13T23:37:03Z",
       "side": 1,
       "message": "we cannot put .data or .rodata here since it\u0027s included several times, they will be duplicated.\n\nIMO you need to push those arrays in usb_pd_phy.c",
+      "revId": "34dd82d73c2c06acef11f0fd3e0b027f3631ba29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "593dc04b_23f13402",
+        "filename": "board/firefly/usb_pd_config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-19T00:48:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9a7f088_2dfa1523",
       "revId": "34dd82d73c2c06acef11f0fd3e0b027f3631ba29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "1947c8ed_9e665d2b",
+        "filename": "board/firefly/usb_pd_config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-19T00:48:46Z",
+      "side": 1,
+      "message": "i\u0027m not sure what you mean, can you give an example?",
+      "parentUuid": "d9a7f088_cdfee115",
+      "revId": "34dd82d73c2c06acef11f0fd3e0b027f3631ba29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9a7f088_edfb9d22",
         "filename": "board/fruitpie/board.c",
         "patchSetId": 6
@@ -64,6 +118,24 @@
       "writtenOn": "2014-07-13T23:37:03Z",
       "side": 1,
       "message": "only 1 port on dual ports system have the debug HW.\nso this might be needed.",
+      "revId": "34dd82d73c2c06acef11f0fd3e0b027f3631ba29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1947c8ed_213928c3",
+        "filename": "board/fruitpie/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-19T00:48:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9a7f088_edfb9d22",
       "revId": "34dd82d73c2c06acef11f0fd3e0b027f3631ba29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "3942ccdc_df437b79",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-19T00:48:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1980a8c3_62b23bd3",
+      "revId": "34dd82d73c2c06acef11f0fd3e0b027f3631ba29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1980a8c3_02b7c7c1",
         "filename": "board/samus_pd/board.c",
         "patchSetId": 6
@@ -98,6 +188,24 @@
       "writtenOn": "2014-07-13T23:37:03Z",
       "side": 1,
       "message": "if the dual role is always set for both ports,\ndo we need to call it tiwce with the port number ?",
+      "revId": "34dd82d73c2c06acef11f0fd3e0b027f3631ba29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3942ccdc_5f51ab46",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-19T00:48:46Z",
+      "side": 1,
+      "message": "ok, will fix in different patch",
+      "parentUuid": "1980a8c3_02b7c7c1",
       "revId": "34dd82d73c2c06acef11f0fd3e0b027f3631ba29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "39ee4c35_d376b4af",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-19T00:48:46Z",
+      "side": 1,
+      "message": "I went down this road for a little while but it started getting really messy. The problem is some places in usb_pd_phy.c really need port number, for determining which spi registers to use or for pd_tx_enable()/disable(), etc. So, in usb_pd_phy.c you end up converting from void *ctxt to port number in some functions. And then in usb_pd_protocol.c, some functions need port number, others need void *ctxt, and most need both. It gets really messy having these two things that are essentially the same piece of information. So, I was trying to keep it simple by just passing around port.",
+      "parentUuid": "1980a8c3_22b443ba",
+      "revId": "34dd82d73c2c06acef11f0fd3e0b027f3631ba29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1980a8c3_e2bdeb9e",
         "filename": "chip/stm32/usb_pd_phy.c",
         "patchSetId": 6
@@ -132,6 +258,24 @@
       "writtenOn": "2014-07-13T23:37:03Z",
       "side": 1,
       "message": "since we have possibly 2 different interrupt handlers we can avoid this.\nmaybe just a 2-stage handler\npd_rx_handler(int port)\ncalled from the real interrupt handler \npd_rx_handler(0)\nand \npd_rx_handler(1)",
+      "revId": "34dd82d73c2c06acef11f0fd3e0b027f3631ba29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39ee4c35_a2f5a064",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-19T00:48:46Z",
+      "side": 1,
+      "message": "Looks to me like EXTI lines 21 and 22 both go to IRQ 12, the ADC_COMP IRQ.",
+      "parentUuid": "1980a8c3_e2bdeb9e",
       "revId": "34dd82d73c2c06acef11f0fd3e0b027f3631ba29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -155,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "79e44451_47702218",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-19T00:48:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9a7f088_4d12f1c1",
+      "revId": "34dd82d73c2c06acef11f0fd3e0b027f3631ba29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79bfe48c_8bb1a418",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 6
@@ -172,6 +334,24 @@
     },
     {
       "key": {
+        "uuid": "99df387f_d647c464",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-19T00:48:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79bfe48c_8bb1a418",
+      "revId": "34dd82d73c2c06acef11f0fd3e0b027f3631ba29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1980a8c3_a2cff33d",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 6
@@ -183,6 +363,24 @@
       "writtenOn": "2014-07-13T23:37:03Z",
       "side": 1,
       "message": "the task can have an optional parameter in ec.tasklist for that purpose.",
+      "revId": "34dd82d73c2c06acef11f0fd3e0b027f3631ba29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3942ccdc_df2dbb1b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 868,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-19T00:48:46Z",
+      "side": 1,
+      "message": "i\u0027m not sure what you mean. I looked at the definition in task.h and it looks like each task only takes 4 parameters.",
+      "parentUuid": "1980a8c3_a2cff33d",
       "revId": "34dd82d73c2c06acef11f0fd3e0b027f3631ba29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
