@@ -5,10 +5,15 @@
  * Battery pack vendor provided charging profile
  */
 
+#include "battery_smart.h"
 #include "charge_state.h"
 #include "console.h"
 #include "ec_commands.h"
+#include "extpower.h"
+#include "hooks.h"
 #include "util.h"
+
+#define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
 
 static const struct battery_info info = {
 	/*
@@ -152,3 +157,51 @@ DECLARE_CONSOLE_COMMAND(fastcharge, command_fastcharge,
 			NULL);
 
 #endif	/* CONFIG_CHARGER_PROFILE_OVERRIDE */
+
+/*
+ * Check if battery is in disconnect state, a state entered by pulling
+ * BATT_DISCONN_N low, and clear that state if we have external power plugged
+ * and no battery faults are detected. Disconnect state resembles battery
+ * shutdown mode, but extra steps must be taken to get the battery out of this
+ * mode.
+ */
+static void clear_disconnect_state(void)
+{
+	uint8_t data[6];
+	int rv;
+
+	if (extpower_is_present()) {
+		/* Check if battery charging + discharging is disabled. */
+		rv = sb_write(SB_MANUFACTURER_ACCESS, PARAM_OPERATION_STATUS);
+		if (rv)
+			return;
+
+		rv = sb_read_string(I2C_PORT_BATTERY, BATTERY_ADDR,
+				    SB_ALT_MANUFACTURER_ACCESS, data, 6);
+
+		if (rv || !(data[3] & BATTERY_DISCHARGING_DISABLED) ||
+		    !(data[3] & BATTERY_CHARGING_DISABLED))
+			return;
+
+		/*
+		 * Battery seems to be in disconnect state. Verify that
+		 * we didn't enter this state due to a safety fault.
+		 */
+		rv = sb_write(SB_MANUFACTURER_ACCESS, PARAM_SAFETY_STATUS);
+		if (rv)
+			return;
+
+		rv = sb_read_string(I2C_PORT_BATTERY, BATTERY_ADDR,
+				    SB_ALT_MANUFACTURER_ACCESS, data, 6);
+
+		if (rv || data[2] || data[3] || data[4] || data[5])
+			CPRINTS("battery safety fault detected");
+		else {
+			/* No safety fault -- clear disconnect state. */
+			CPRINTS("clear battery disconnect state");
+			/* ?? */
+		}
+	}
+}
+DECLARE_HOOK(HOOK_AC_CHANGE, clear_disconnect_state,
+	     HOOK_PRIO_DEFAULT);
