@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "790d24e9_a75f68c9",
+        "filename": "driver/battery/samus.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-07-19T00:19:15Z",
+      "side": 1,
+      "message": "I need your suggestion here. What steps should I take to enable a charge current and kick the battery out of disconnect state? I can follow your console command sequence (force state machine to idle, enable charge current, wait, then reset), but it\u0027s kind of dirty. Do you see a better way?",
+      "revId": "fc0db3e4758b470f9b171d49d60b523d5c7f3fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
