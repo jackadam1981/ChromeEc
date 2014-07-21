@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d91530f5_941f0450",
+        "filename": "chip/lm4/i2c.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-21T16:46:02Z",
+      "side": 1,
+      "message": "Remember to remove this before committing",
+      "revId": "bbbd906c7bad4d4b88f5413a8c70b3ba58841ac4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d91530f5_d4de9ca1",
+        "filename": "common/smbus.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-21T16:46:02Z",
+      "side": 1,
+      "message": "I think this should be static",
+      "revId": "bbbd906c7bad4d4b88f5413a8c70b3ba58841ac4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9123c0c_33ba88c2",
+        "filename": "common/smbus.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-21T16:46:02Z",
+      "side": 1,
+      "message": "Ditto",
+      "revId": "bbbd906c7bad4d4b88f5413a8c70b3ba58841ac4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d91530f5_1487748a",
+        "filename": "driver/battery/sb_fw_update.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-21T16:46:02Z",
+      "side": 1,
+      "message": "declare a CPRINTF at top of file using CC_I2C:\n\n#define CPRINTF(format, args...) cprintf(CC_I2C, format, ## args)",
+      "revId": "bbbd906c7bad4d4b88f5413a8c70b3ba58841ac4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d91530f5_b45cc065",
+        "filename": "driver/battery/sb_fw_update.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-21T16:46:02Z",
+      "side": 1,
+      "message": "You can make this macro a CONFIG_ option and define it in config.h. CONFIG_SMBUS_DEBUG_FW_UPDATE or something like that",
+      "revId": "bbbd906c7bad4d4b88f5413a8c70b3ba58841ac4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d91530f5_1412d473",
+        "filename": "include/battery_smart.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-21T16:46:02Z",
+      "side": 1,
+      "message": "What do these added comments mean? Either explain with more writing or remove.",
+      "revId": "bbbd906c7bad4d4b88f5413a8c70b3ba58841ac4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9123c0c_93fefcce",
+        "filename": "include/battery_smart.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-21T16:46:02Z",
+      "side": 1,
+      "message": "I don\u0027t see this in the smart battery spec. Are we sure all batteries will support this?",
+      "revId": "bbbd906c7bad4d4b88f5413a8c70b3ba58841ac4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d91530f5_f4411851",
+        "filename": "include/config.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-21T16:46:02Z",
+      "side": 1,
+      "message": "The CONFIG_ options in this file should be alphabetical.",
+      "revId": "bbbd906c7bad4d4b88f5413a8c70b3ba58841ac4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d91530f5_343c30dc",
+        "filename": "include/crc.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-21T16:46:02Z",
+      "side": 1,
+      "message": "Two functions with the same name but different capitalization is confusing.",
+      "revId": "bbbd906c7bad4d4b88f5413a8c70b3ba58841ac4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "191c281e_dc16c5e0",
+        "filename": "include/smbus.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-21T16:46:02Z",
+      "side": 1,
+      "message": "doxygen style headers preferred:\n\n/**\n * Descritpion of function\n *\n * @param Param description\n * @param Param description\n *\n * @return descritpion\n */",
+      "revId": "bbbd906c7bad4d4b88f5413a8c70b3ba58841ac4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9123c0c_73b400d2",
+        "filename": "include/smbus.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-21T16:46:02Z",
+      "side": 1,
+      "message": "I don\u0027t think we need to expose smbus_if_write/read() globally. Can\u0027t they be local to smbus.c?",
+      "revId": "bbbd906c7bad4d4b88f5413a8c70b3ba58841ac4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
