@@ -174,6 +174,8 @@ int spi_transaction_async(const uint8_t *txdata, int txlen,
 	if (rv != EC_SUCCESS)
 		goto err_free;
 
+	memset(buf, 0, txlen);
+
 	rv = spi_dma_wait();
 	if (rv != EC_SUCCESS)
 		goto err_free;

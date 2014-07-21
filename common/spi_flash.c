@@ -219,7 +219,7 @@ static int spi_flash_write_enable(void)
 uint8_t spi_flash_get_status1(void)
 {
 	uint8_t cmd = SPI_FLASH_READ_SR1;
-	uint8_t resp;
+	uint8_t resp = 0;
 
 	if (spi_transaction(&cmd, 1, &resp, 1) != EC_SUCCESS)
 		return -1;
@@ -234,7 +234,7 @@ uint8_t spi_flash_get_status1(void)
 uint8_t spi_flash_get_status2(void)
 {
 	uint8_t cmd = SPI_FLASH_READ_SR2;
-	uint8_t resp;
+	uint8_t resp = 0;
 
 	if (spi_transaction(&cmd, 1, &resp, 1) != EC_SUCCESS)
 		return -1;
@@ -432,7 +432,7 @@ int spi_flash_write(unsigned int offset, unsigned int bytes,
 uint16_t spi_flash_get_id(void)
 {
 	uint8_t cmd[4] = {SPI_FLASH_MFR_DEV_ID, 0, 0, 0};
-	uint8_t resp[2];
+	uint8_t resp[2] = {0};
 
 	if (spi_transaction(cmd, 4, resp, 2) != EC_SUCCESS)
 		return -1;
@@ -448,7 +448,7 @@ uint16_t spi_flash_get_id(void)
 uint32_t spi_flash_get_jedec_id(void)
 {
 	uint8_t cmd = SPI_FLASH_JEDEC_ID;
-	uint32_t resp;
+	uint32_t resp = 0;
 
 	if (spi_transaction(&cmd, 1, (uint8_t *)&resp, 4) != EC_SUCCESS)
 		return -1;
@@ -464,7 +464,7 @@ uint32_t spi_flash_get_jedec_id(void)
 uint64_t spi_flash_get_unique_id(void)
 {
 	uint8_t cmd[5] = {SPI_FLASH_UNIQUE_ID, 0, 0, 0, 0};
-	uint64_t resp;
+	uint64_t resp = 0;
 
 	if (spi_transaction(cmd, 5, (uint8_t *)&resp, 8) != EC_SUCCESS)
 		return -1;
