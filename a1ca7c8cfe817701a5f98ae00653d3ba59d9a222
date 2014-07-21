@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "191c281e_f0f800e4",
+        "filename": "common/spi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-07-21T20:08:39Z",
+      "side": 1,
+      "message": "Why do we need this? If there\u0027s an error regarding DMA, spi_transaction() should return an error code and thus this function returns -1. Is spi_transaction() not reporting the error?",
+      "range": {
+        "startLine": 222,
+        "startChar": 14,
+        "endLine": 222,
+        "endChar": 15
+      },
+      "revId": "a1ca7c8cfe817701a5f98ae00653d3ba59d9a222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
