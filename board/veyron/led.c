@@ -14,7 +14,7 @@
 #include "util.h"
 
 const enum ec_led_id supported_led_ids[] = {
-	EC_LED_ID_BATTERY_LED, EC_LED_ID_POWER_LED};
+	EC_LED_ID_BATTERY_LED};
 
 const int supported_led_ids_count = ARRAY_SIZE(supported_led_ids);
 
@@ -29,15 +29,15 @@ static int bat_led_set_color(enum led_color color)
 {
 	switch (color) {
 	case LED_OFF:
-		gpio_set_level(GPIO_CHARGING, 0);
+		gpio_set_level(GPIO_BAT_LED0, 0);
 		gpio_set_level(GPIO_BAT_LED1, 0);
 		break;
 	case LED_BLUE:
-		gpio_set_level(GPIO_CHARGING, 0);
+		gpio_set_level(GPIO_BAT_LED0, 0);
 		gpio_set_level(GPIO_BAT_LED1, 1);
 		break;
 	case LED_ORANGE:
-		gpio_set_level(GPIO_CHARGING, 1);
+		gpio_set_level(GPIO_BAT_LED0, 1);
 		gpio_set_level(GPIO_BAT_LED1, 0);
 		break;
 	default:
@@ -46,26 +46,6 @@ static int bat_led_set_color(enum led_color color)
 	return EC_SUCCESS;
 }
 
-static int pwr_led_set_color(enum led_color color)
-{
-	switch (color) {
-	case LED_OFF:
-		gpio_set_level(GPIO_LED_POWER_L, 0);
-		gpio_set_level(GPIO_PWR_LED0, 0);
-		break;
-	case LED_BLUE:
-		gpio_set_level(GPIO_LED_POWER_L, 1);
-		gpio_set_level(GPIO_PWR_LED0, 0);
-		break;
-	case LED_ORANGE:
-		gpio_set_level(GPIO_LED_POWER_L, 0);
-		gpio_set_level(GPIO_PWR_LED0, 1);
-		break;
-	default:
-		return EC_ERROR_UNKNOWN;
-	}
-	return EC_SUCCESS;
-}
 
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 {
@@ -76,46 +56,18 @@ void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 
 int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 {
-	switch (led_id) {
-	case EC_LED_ID_BATTERY_LED:
+	if (EC_LED_ID_BATTERY_LED == led_id) {
 		if (brightness[EC_LED_COLOR_BLUE] != 0)
 			bat_led_set_color(LED_BLUE);
 		else if (brightness[EC_LED_COLOR_YELLOW] != 0)
 			bat_led_set_color(LED_ORANGE);
 		else
 			bat_led_set_color(LED_OFF);
-		break;
-	case EC_LED_ID_POWER_LED:
-		if (brightness[EC_LED_COLOR_BLUE] != 0)
-			pwr_led_set_color(LED_BLUE);
-		else if (brightness[EC_LED_COLOR_YELLOW] != 0)
-			pwr_led_set_color(LED_ORANGE);
-		else
-			pwr_led_set_color(LED_OFF);
-		break;
-	default:
+		return EC_SUCCESS;
+	} else {
 		return EC_ERROR_UNKNOWN;
 	}
-	return EC_SUCCESS;
-}
 
-static void veyron_led_set_power(void)
-{
-	static int power_second;
-
-	power_second++;
-
-	/* PWR LED behavior:
-	 * Power on: Blue
-	 * Suspend: Orange in breeze mode ( 1 sec on/ 3 sec off)
-	 * Power off: OFF
-	 */
-	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
-		pwr_led_set_color(LED_OFF);
-	else if (chipset_in_state(CHIPSET_STATE_ON))
-		pwr_led_set_color(LED_BLUE);
-	else if (chipset_in_state(CHIPSET_STATE_SUSPEND))
-		pwr_led_set_color((power_second & 3) ? LED_OFF : LED_ORANGE);
 }
 
 static void veyron_led_set_battery(void)
@@ -170,8 +122,6 @@ static void veyron_led_set_battery(void)
 /**  * Called by hook task every 1 sec  */
 static void led_second(void)
 {
-	if (led_auto_control_is_enabled(EC_LED_ID_POWER_LED))
-		veyron_led_set_power();
 	if (led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED))
 		veyron_led_set_battery();
 }

@@ -277,6 +277,7 @@
 #undef CONFIG_CHIPSET_HASWELL   /* Intel Haswell (x86) */
 #undef CONFIG_CHIPSET_IVYBRIDGE /* Intel Ivy Bridge (x86) */
 #undef CONFIG_CHIPSET_TEGRA     /* nVidia Tegra 5 */
+#undef CONFIG_CHIPSET_ROCKCHIP  /* Rockchip rk32xx */
 
 /* Support chipset throttling */
 #undef CONFIG_CHIPSET_CAN_THROTTLE
