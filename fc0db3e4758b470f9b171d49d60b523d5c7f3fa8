@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "b9123c0c_72aa31f6",
+        "filename": "driver/battery/samus.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-07-22T01:52:18Z",
+      "side": 1,
+      "message": "This fails in my testing -- I\u0027ll check it closer. I think the extra 2 bytes might still be in the battery TX FIFO, so we\u0027ll read them on the next command.",
+      "parentUuid": "790d24e9_3bdd317f",
+      "revId": "fc0db3e4758b470f9b171d49d60b523d5c7f3fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "790d24e9_a75f68c9",
         "filename": "driver/battery/samus.c",
         "patchSetId": 1
@@ -60,6 +78,24 @@
     },
     {
       "key": {
+        "uuid": "b9123c0c_b27a09cb",
+        "filename": "driver/battery/samus.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-07-22T01:52:18Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "1975083e_f0a3ea51",
+      "revId": "fc0db3e4758b470f9b171d49d60b523d5c7f3fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "191c281e_162c9c80",
         "filename": "driver/battery/samus.c",
         "patchSetId": 1
@@ -77,6 +113,24 @@
         "endLine": 206,
         "endChar": 12
       },
+      "revId": "fc0db3e4758b470f9b171d49d60b523d5c7f3fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "191c281e_96326125",
+        "filename": "driver/battery/samus.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-07-22T01:52:18Z",
+      "side": 1,
+      "message": "The hook did get called on initial power-on, but I reworked the function so that it\u0027s called from the state machine.",
+      "parentUuid": "191c281e_162c9c80",
       "revId": "fc0db3e4758b470f9b171d49d60b523d5c7f3fa8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -106,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "b9123c0c_3287198b",
+        "filename": "include/battery_smart.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-07-22T01:52:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "790d24e9_1be2ed37",
+      "revId": "fc0db3e4758b470f9b171d49d60b523d5c7f3fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "191c281e_763990c2",
         "filename": "include/battery_smart.h",
         "patchSetId": 1
@@ -117,6 +189,24 @@
       "writtenOn": "2014-07-20T03:06:28Z",
       "side": 1,
       "message": "i\u0027m not sure this is part of the smart battery spec. If not, maybe it belongs in driver/battery/samus.c or maybe just a comment that this extends the smart battery spec.",
+      "revId": "fc0db3e4758b470f9b171d49d60b523d5c7f3fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9123c0c_72819172",
+        "filename": "include/battery_smart.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-07-22T01:52:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "191c281e_763990c2",
       "revId": "fc0db3e4758b470f9b171d49d60b523d5c7f3fa8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
