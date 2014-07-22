@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39ee4c35_414e49a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-07-22T14:01:55Z",
+      "side": 1,
+      "message": "Why is the i2c communication failing? Is someone looking into this in parallel?",
+      "revId": "c86421d172b44c448c790ed26f1c0be760fdaa41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39ee4c35_c1489998",
+        "filename": "chip/lm4/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-07-22T14:01:55Z",
+      "side": 1,
+      "message": "Just make this static and not conditional on the CONFIG_I2C_RETRY_CNT. Then below have a default count of 1.\n\nThe compiler should take care of the optimization when the default is 1.",
+      "revId": "c86421d172b44c448c790ed26f1c0be760fdaa41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39ee4c35_6138ad09",
+        "filename": "chip/lm4/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-07-22T14:01:55Z",
+      "side": 1,
+      "message": "#ifndef CONFIG_I2C_RETRY_CNT\n#define CONFIG_I2C_RETRY_CNT 1\n#endif",
+      "revId": "c86421d172b44c448c790ed26f1c0be760fdaa41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39ee4c35_0143a178",
+        "filename": "chip/lm4/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-07-22T14:01:55Z",
+      "side": 1,
+      "message": "int cnt \u003d CONFIG_I2C_RETRY_CNT;",
+      "revId": "c86421d172b44c448c790ed26f1c0be760fdaa41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
