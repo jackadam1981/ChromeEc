@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39ee4c35_3cdd287f",
+        "filename": "driver/charger/bq24715.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-07-22T14:04:57Z",
+      "side": 1,
+      "message": "So what I don\u0027t understand is this:\n\nCan\u0027t we go below CONFIG_CHARGER_NVDC_VOLTAGE but when 0 is passed in it will go back up to CONFIG_CHARGER_NVDC_VOLTAGE? \n\nOr is this the absolute minimum voltage? If so shouldn\u0027t we just be setting that at the board level?",
+      "revId": "acdab8da630353b366773db57bc7932104870e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
