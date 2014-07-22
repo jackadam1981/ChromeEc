@@ -16,6 +16,24 @@
       "revId": "62f7cd22a967fbe0835aaf20ba8e639a9de1d5c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9fc50ef_90b424d3",
+        "filename": "common/charge_state.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1112186
+      },
+      "writtenOn": "2014-07-22T04:25:51Z",
+      "side": 1,
+      "message": "When there was no battery, EC made the battery event over and over.\nSo EC needs additional conditions.\nChecking batt_flags could make the event only once when battery was removed.",
+      "parentUuid": "79e44451_4a9dc28a",
+      "revId": "62f7cd22a967fbe0835aaf20ba8e639a9de1d5c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
