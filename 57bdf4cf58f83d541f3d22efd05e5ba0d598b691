@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "191c281e_c778a146",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-22T15:34:56Z",
+      "side": 1,
+      "message": "Please detail your tests",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 9
+      },
+      "revId": "57bdf4cf58f83d541f3d22efd05e5ba0d598b691",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d91530f5_a5b481d2",
+        "filename": "driver/battery/samus.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-22T15:34:56Z",
+      "side": 1,
+      "message": "if you fix comment below, this can go away",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "57bdf4cf58f83d541f3d22efd05e5ba0d598b691",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "191c281e_e7731d67",
+        "filename": "driver/battery/samus.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-22T15:34:56Z",
+      "side": 1,
+      "message": "I would remove the print statements from this function and put them in the charge state machine.",
+      "range": {
+        "startLine": 210,
+        "startChar": 3,
+        "endLine": 210,
+        "endChar": 10
+      },
+      "revId": "57bdf4cf58f83d541f3d22efd05e5ba0d598b691",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
