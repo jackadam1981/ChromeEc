@@ -174,8 +174,8 @@ static const uint8_t dec4b5b[] = {
 #define PD_CAPS_COUNT 50
 
 /* Timers */
-#define PD_T_SEND_SOURCE_CAP (1500*MSEC) /* between 1s and 2s */
-#define PD_T_GET_SOURCE_CAP  (1500*MSEC) /* between 1s and 2s */
+#define PD_T_SEND_SOURCE_CAP  (100*MSEC) /* between 100ms and 200ms */
+#define PD_T_SINK_WAIT_CAP    (240*MSEC) /* between 210ms and 250ms */
 #define PD_T_SOURCE_ACTIVITY   (45*MSEC) /* between 40ms and 50ms */
 #define PD_T_SENDER_RESPONSE   (30*MSEC) /* between 24ms and 30ms */
 #define PD_T_PS_TRANSITION    (220*MSEC) /* between 200ms and 220ms */
@@ -953,7 +953,8 @@ void pd_task(void)
 			timeout = 10*MSEC;
 
 			/* Source connection monitoring */
-			if (pd_snk_is_vbus_provided()) {
+			if (pd_snk_is_vbus_provided() &&
+			    pd_power_negotiation_allowed()) {
 				cc1_volt = pd_adc_read(0);
 				cc2_volt = pd_adc_read(1);
 				if ((cc1_volt >= PD_SNK_VA) ||
@@ -961,6 +962,7 @@ void pd_task(void)
 					pd_polarity = !(cc1_volt >= PD_SNK_VA);
 					pd_select_polarity(pd_polarity);
 					pd_task_state = PD_STATE_SNK_DISCOVERY;
+					timeout = PD_T_SINK_WAIT_CAP;
 				}
 			} else if (pd_dual_role_toggle_on &&
 				   get_time().val >= next_role_swap) {
@@ -976,24 +978,10 @@ void pd_task(void)
 
 			break;
 		case PD_STATE_SNK_DISCOVERY:
-			/* Don't continue if power negotiation is not allowed */
-			if (!pd_power_negotiation_allowed()) {
-				timeout = PD_T_GET_SOURCE_CAP;
-				break;
-			}
+			/* Wait for source cap expired */
+			pd_task_state = PD_STATE_HARD_RESET;
+			timeout = 10*MSEC;
 
-			res = send_control(ctxt, PD_CTRL_GET_SOURCE_CAP);
-			/* packet was acked => PD capable device) */
-			if (res >= 0) {
-				/*
-				 * we should a SOURCE_CAP package which will
-				 * switch to the PD_STATE_SNK_REQUESTED state,
-				 * else retry after the response timeout.
-				 */
-				timeout = PD_T_SENDER_RESPONSE;
-			} else { /* failed, retry later */
-				timeout = PD_T_GET_SOURCE_CAP;
-			}
 			break;
 		case PD_STATE_SNK_REQUESTED:
 			/* Ensure the power supply actually becomes ready */
