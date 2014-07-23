@@ -16,6 +16,23 @@
       "revId": "a432e84a31ef5fb3b809006cc5a16147ecce3b26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9c07cc0_e69e8012",
+        "filename": "chip/lm4/i2c.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-07-23T16:24:56Z",
+      "side": 1,
+      "message": "remove the tab here",
+      "revId": "a432e84a31ef5fb3b809006cc5a16147ecce3b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
