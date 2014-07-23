@@ -864,6 +864,19 @@
 #undef CONFIG_TEMP_SENSOR_POWER_GPIO
 
 /*****************************************************************************/
+/* USART config */
+#undef CONFIG_USART
+
+/*
+ * Each USART can be individually enabled and accessible using the stream
+ * interface provided in the usart_config struct.
+ */
+#undef CONFIG_USART1
+#undef CONFIG_USART2
+#undef CONFIG_USART3
+#undef CONFIG_USART4
+
+/*****************************************************************************/
 /* UART config */
 
 /* Baud rate for UARTs */
