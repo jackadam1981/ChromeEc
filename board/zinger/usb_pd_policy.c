@@ -186,10 +186,13 @@ void pd_power_supply_reset(void)
 	adc_disable_watchdog();
 }
 
+#define CPUREG(addr) (*(volatile uint32_t*)(addr))
+#define CPU_SCB_SYSCTRL        CPUREG(0xe000ed10)
 int pd_board_checks(void)
 {
 	int vbus_volt, vbus_amp;
 	int watchdog_enabled = STM32_ADC_CFGR1 & (1 << 23);
+	static int sleep_cnt;
 
 	/* Reload the watchdog */
 	STM32_IWDG_KR = STM32_IWDG_KR_RELOAD;
@@ -197,6 +200,30 @@ int pd_board_checks(void)
 	if (watchdog_enabled)
 		/* if the watchdog is enabled, stop it to do other readings */
 		adc_disable_watchdog();
+	debug_printf(".");
+	if (!output_is_enabled()) {
+		sleep_cnt++;
+		if (sleep_cnt > 1000) {
+			debug_printf("Sleep\n");
+
+			/* Interrupts off */
+			asm volatile("cpsid i ; isb");
+
+			/* Enable wakeup pin A0 */
+			STM32_PWR_CSR |= (1<<8);
+
+			/* Set to go to standby mode */
+			CPU_SCB_SYSCTRL |= 0x4;
+			STM32_PWR_CR |= 0xe;
+			asm volatile("wfi");
+
+			/* Shouldn't ever get here */
+			while(1)
+				;
+		}
+	} else {
+		sleep_cnt = 0;
+	}
 
 	vbus_volt = adc_read_channel(ADC_CH_V_SENSE);
 	vbus_amp = adc_read_channel(ADC_CH_A_SENSE);

@@ -81,6 +81,14 @@ static void pins_init(void)
 	 * PF0  (OUT - GPIO)       : LM5050 FET driver off
 	 * PF1  (OUT - GPIO)       : discharge FET
 	 */
+
+	/*
+	 * Clear power control/status register to disable wakeup
+	 * pin A0, so that we can change it to an output.
+	 */
+	STM32_PWR_CSR = 0;
+	STM32_PWR_CR |= 0xc;
+
 	STM32_GPIO_ODR(GPIO_A) = HIGH(0) | HIGH(4);
 	STM32_GPIO_AFRL(GPIO_A) = AFx(7, 1);
 	STM32_GPIO_AFRH(GPIO_A) = AFx(9, 1) | AFx(10, 1);
@@ -165,7 +173,7 @@ void hardware_init(void)
 	pins_init();
 	uart_init();
 	timers_init();
-	watchdog_init();
+	//watchdog_init();
 	adc_init();
 	irq_init();
 }
