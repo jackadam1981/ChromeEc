@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "f9c674d8_aba28d80",
+        "filename": "board/hadoken/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-07-23T21:24:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39bc8c31_ec7662af",
+      "revId": "d8521d043d0844230c3456d6e89c3c533785edb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79b2845d_b3eddbdb",
         "filename": "board/hadoken/build.mk",
         "patchSetId": 1
@@ -42,6 +60,24 @@
         "endLine": 8,
         "endChar": 33
       },
+      "revId": "d8521d043d0844230c3456d6e89c3c533785edb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9c07cc0_e63de0fb",
+        "filename": "board/hadoken/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-07-23T21:24:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79b2845d_b3eddbdb",
       "revId": "d8521d043d0844230c3456d6e89c3c533785edb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "f9c674d8_0bb481b9",
+        "filename": "chip/nrf51/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-07-23T21:24:18Z",
+      "side": 1,
+      "message": "No. Data is set at line 30 \u0026 32. If I set the config at line 27, there is a glitch (the default output value is 0) if the pin is changed from INPUT to OUTPUT and new data value is 1.",
+      "parentUuid": "59b7804c_8dceb6eb",
+      "revId": "d8521d043d0844230c3456d6e89c3c533785edb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59b7804c_ed74a2de",
         "filename": "chip/nrf51/hwtimer.c",
         "patchSetId": 1
@@ -94,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "f9c674d8_cbc709da",
+        "filename": "chip/nrf51/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-07-23T21:24:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59b7804c_ed74a2de",
+      "revId": "d8521d043d0844230c3456d6e89c3c533785edb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79b2845d_935097eb",
         "filename": "common/system.c",
         "patchSetId": 1
@@ -111,6 +183,24 @@
         "endLine": 364,
         "endChar": 23
       },
+      "revId": "d8521d043d0844230c3456d6e89c3c533785edb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "997bb85f_05c8f4ea",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-07-23T21:24:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79b2845d_935097eb",
       "revId": "d8521d043d0844230c3456d6e89c3c533785edb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
