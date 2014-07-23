@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59b7804c_cbc38640",
+        "filename": "driver/battery/bq27541.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-23T14:55:29Z",
+      "side": 1,
+      "message": "Should we add a TODO here to get rid of this workaround?",
+      "revId": "9105eb0eb1f98d0eb503942b89240249bcb0adcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39bc8c31_c7bd3955",
+        "filename": "driver/battery/bq27541.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-23T14:55:29Z",
+      "side": 1,
+      "message": "What\u0027s the significance of 4336? Is that the voltage_max or something else?",
+      "range": {
+        "startLine": 252,
+        "startChar": 7,
+        "endLine": 252,
+        "endChar": 26
+      },
+      "revId": "9105eb0eb1f98d0eb503942b89240249bcb0adcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
