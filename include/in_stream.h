@@ -1,0 +1,45 @@
+/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+#ifndef INCLUDE_IN_STREAM_H
+#define INCLUDE_IN_STREAM_H
+
+#include <stddef.h>
+
+struct in_stream_struct;
+
+typedef struct
+{
+	/*
+	 * Read at most count characters from the input stream into the user
+	 * buffer provided.  Return the number of characters actually read
+	 * into the buffer.
+	 */
+	size_t (*read)(struct in_stream_struct const * stream,
+		       uint8_t * buffer,
+		       size_t count);
+} in_stream_ops;
+
+typedef struct in_stream_struct
+{
+	/*
+	 * Ready will be called by the stream every time new characters are
+	 * added to the stream.  This may be called from an interrupt context
+	 * so work done by the ready callback should be minimal.  Likely this
+	 * callback will be used to call task_wake, or some similar signaling
+	 * mechanism.
+	 *
+	 * This callback is part of the user configuration of a stream, and not
+	 * a stream manipulation function (in_stream_ops).  That means that
+	 * each stream can be configured with its own ready callback.
+	 *
+	 * If no callback functionality is required ready can be specified as
+	 * NULL.
+	 */
+	void (*ready)(struct in_stream_struct const * stream);
+
+	in_stream_ops const * ops;
+} in_stream;
+
+#endif //INCLUDE_IN_STREAM_H
