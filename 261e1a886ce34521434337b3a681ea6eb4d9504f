@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f93914b5_217256b1",
+        "filename": "board/samus_pd/ec.tasklist",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-23T22:44:02Z",
+      "side": 1,
+      "message": "Yes, I did test calling a lot of various console commands, never saw a stack overflow.",
+      "parentUuid": "59b7804c_4d896ed6",
+      "range": {
+        "startLine": 22,
+        "startChar": 42,
+        "endLine": 22,
+        "endChar": 57
+      },
+      "revId": "261e1a886ce34521434337b3a681ea6eb4d9504f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "590220bc_db29a775",
         "filename": "board/samus_pd/usb_pd_config.h",
         "patchSetId": 10
@@ -65,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "f93914b5_21b97605",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-23T22:44:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39bc8c31_113e5ff7",
+      "range": {
+        "startLine": 456,
+        "startChar": 39,
+        "endLine": 456,
+        "endChar": 43
+      },
+      "revId": "261e1a886ce34521434337b3a681ea6eb4d9504f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59b7804c_8d2076fd",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 10
@@ -76,6 +124,30 @@
       "writtenOn": "2014-07-23T03:21:10Z",
       "side": 1,
       "message": "This is called once here and once at HOOK_INIT (line 245). Is this intended? Same for initializing role and task_state.",
+      "range": {
+        "startLine": 883,
+        "startChar": 1,
+        "endLine": 883,
+        "endChar": 11
+      },
+      "revId": "261e1a886ce34521434337b3a681ea6eb4d9504f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f93914b5_41b68214",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-23T22:44:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59b7804c_8d2076fd",
       "range": {
         "startLine": 883,
         "startChar": 1,
