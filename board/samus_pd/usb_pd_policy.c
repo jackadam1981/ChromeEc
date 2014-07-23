@@ -17,11 +17,11 @@
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
 /* TODO(crossbug.com/p/28869): update source and sink tables to spec. */
-const uint32_t pd_src_pdo[] = {
+static const uint32_t pd_src_pdo[] = {
 		PDO_FIXED(5000,   500, PDO_FIXED_EXTERNAL),
 		PDO_FIXED(5000,   900, 0),
 };
-const int pd_src_pdo_cnt = ARRAY_SIZE(pd_src_pdo);
+static const int pd_src_pdo_cnt = ARRAY_SIZE(pd_src_pdo);
 
 /* TODO(crossbug.com/p/28869): update source and sink tables to spec. */
 const uint32_t pd_snk_pdo[] = {
@@ -35,6 +35,12 @@ static unsigned max_mv = -1; /* no cap */
 
 /* Flag for battery status */
 static int battery_ok = 1;
+
+int pd_get_source_pdo(const uint32_t **src_pdo)
+{
+	*src_pdo = pd_src_pdo;
+	return pd_src_pdo_cnt;
+}
 
 int pd_choose_voltage(int cnt, uint32_t *src_caps, uint32_t *rdo)
 {

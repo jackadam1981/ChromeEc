@@ -225,11 +225,17 @@ int pd_power_negotiation_allowed(void);
  */
 int pd_custom_vdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload);
 
-/* Power Data Objects for the source and the sink */
-extern const uint32_t pd_src_pdo[];
-extern const int pd_src_pdo_cnt;
+/* Power Data Objects for the sink */
 extern const uint32_t pd_snk_pdo[];
 extern const int pd_snk_pdo_cnt;
+
+/*
+ * Get PD source power data objects.
+ *
+ * @param src_pdo pointer to the data to return.
+ * @return number of PDOs returned.
+ */
+int pd_get_source_pdo(const uint32_t **src_pdo);
 
 /* Muxing for the USB type C */
 enum typec_mux {

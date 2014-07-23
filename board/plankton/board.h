@@ -51,6 +51,14 @@ enum adc_channel {
 	ADC_CH_COUNT
 };
 
+enum board_src_cap {
+	SRC_CAP_5V = 0,
+	SRC_CAP_12V,
+};
+
+/* Set USB PD source capability */
+void board_set_source_cap(enum board_src_cap cap);
+
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __BOARD_H */

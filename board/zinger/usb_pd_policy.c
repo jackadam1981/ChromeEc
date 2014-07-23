@@ -100,13 +100,13 @@ static timestamp_t fault_deadline;
 /* ----------------------- USB Power delivery policy ---------------------- */
 
 /* Power Delivery Objects */
-const uint32_t pd_src_pdo[] = {
+static const uint32_t pd_src_pdo[] = {
 		PDO_FIXED(5000,   500, PDO_FIXED_EXTERNAL),
 		PDO_FIXED(5000,  3000, 0),
 		PDO_FIXED(12000, 3000, 0),
 		PDO_FIXED(20000, 2000, 0),
 };
-const int pd_src_pdo_cnt = ARRAY_SIZE(pd_src_pdo);
+static const int pd_src_pdo_cnt = ARRAY_SIZE(pd_src_pdo);
 
 /* PDO voltages (should match the table above) */
 static const struct {
@@ -123,6 +123,12 @@ static const struct {
 
 /* currently selected PDO entry */
 static int volt_idx;
+
+int pd_get_source_pdo(const uint32_t **src_pdo)
+{
+	*src_pdo = pd_src_pdo;
+	return pd_src_pdo_cnt;
+}
 
 int pd_request_voltage(uint32_t rdo)
 {

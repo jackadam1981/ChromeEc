@@ -21,10 +21,10 @@
 #define MARGIN_MV 400 /* mV */
 
 /* we are not acting as a source */
-const uint32_t pd_src_pdo[] = {
+static const uint32_t pd_src_pdo[] = {
 		PDO_FIXED(5000,   500, PDO_FIXED_EXTERNAL),
 };
-const int pd_src_pdo_cnt = ARRAY_SIZE(pd_src_pdo);
+static const int pd_src_pdo_cnt = ARRAY_SIZE(pd_src_pdo);
 
 /* Fake PDOs : we just want our pre-defined voltages */
 const uint32_t pd_snk_pdo[] = {
@@ -36,6 +36,12 @@ const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
 
 /* Desired voltage requested as a sink (in millivolts) */
 static unsigned select_mv = 5000;
+
+int pd_get_source_pdo(const uint32_t **src_pdo)
+{
+	*src_pdo = pd_src_pdo;
+	return pd_src_pdo_cnt;
+}
 
 int pd_choose_voltage(int cnt, uint32_t *src_caps, uint32_t *rdo)
 {
