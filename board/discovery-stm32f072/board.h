@@ -11,6 +11,11 @@
 /* 48 MHz SYSCLK clock frequency */
 #define CPU_CLOCK 48000000
 
+#define CONFIG_USART
+#define CONFIG_USART1 usart1
+#define CONFIG_USART3 usart3
+#define CONFIG_USART4 usart4
+
 /* the UART console is on USART2 (PA14/PA15) */
 #undef CONFIG_UART_CONSOLE
 #define CONFIG_UART_CONSOLE 2
@@ -29,6 +34,12 @@
 #define CONFIG_SYSTEM_UNLOCKED
 
 #ifndef __ASSEMBLER__
+
+#include "usart.h"
+
+extern usart_config const usart1;
+extern usart_config const usart3;
+extern usart_config const usart4;
 
 /* Timer selection */
 #define TIM_CLOCK32 2
