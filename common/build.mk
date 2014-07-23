@@ -7,7 +7,7 @@
 #
 
 common-y=util.o
-common-y+=version.o printf.o queue.o
+common-y+=version.o printf.o queue.o fifo.o
 
 common-$(CONFIG_ACCEL_CALIBRATE)+=motion_calibrate.o
 common-$(CONFIG_ADC)+=adc.o
