@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39bc8c31_ec7662af",
+        "filename": "board/hadoken/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-07-23T03:47:02Z",
+      "side": 1,
+      "message": "This is defined in gpio.inc. Do we need this here?",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 21
+      },
+      "revId": "d8521d043d0844230c3456d6e89c3c533785edb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79b2845d_b3eddbdb",
+        "filename": "board/hadoken/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-07-23T03:47:02Z",
+      "side": 1,
+      "message": "Update the comment to match the chip",
+      "range": {
+        "startLine": 8,
+        "startChar": 20,
+        "endLine": 8,
+        "endChar": 33
+      },
+      "revId": "d8521d043d0844230c3456d6e89c3c533785edb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59b7804c_8dceb6eb",
+        "filename": "chip/nrf51/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-07-23T03:47:02Z",
+      "side": 1,
+      "message": "Should this be at line 27?",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 14
+      },
+      "revId": "d8521d043d0844230c3456d6e89c3c533785edb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59b7804c_ed74a2de",
+        "filename": "chip/nrf51/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-07-23T03:47:02Z",
+      "side": 1,
+      "message": "You also need to fire this when overflow happens.",
+      "range": {
+        "startLine": 116,
+        "startChar": 16,
+        "endLine": 116,
+        "endChar": 24
+      },
+      "revId": "d8521d043d0844230c3456d6e89c3c533785edb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79b2845d_935097eb",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-07-23T03:47:02Z",
+      "side": 1,
+      "message": "Use UNIMPLEMENTED(ENTERING_RW) in gpio.inc for this. (like bds.)",
+      "range": {
+        "startLine": 364,
+        "startChar": 7,
+        "endLine": 364,
+        "endChar": 23
+      },
+      "revId": "d8521d043d0844230c3456d6e89c3c533785edb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
