@@ -1,0 +1,18 @@
+/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+#ifndef CHIP_STM32_USART_STM32F_H
+#define CHIP_STM32_USART_STM32F_H
+
+#include "chip/stm32/usart.h"
+
+/*
+ * The STM32F series can have as many as three UARTS.  These are the HW configs
+ * for those UARTS.  They can be used to initialize STM32 generic UART configs.
+ */
+extern usart_hw_config const usart1_hw;
+extern usart_hw_config const usart2_hw;
+extern usart_hw_config const usart3_hw;
+
+#endif //CHIP_STM32_USART_STM32F_H
