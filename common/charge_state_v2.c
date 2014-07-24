@@ -306,8 +306,10 @@ static int charge_request(int voltage, int current)
 	 */
 	if (voltage > 0 || current > 0)
 		r3 = charger_set_mode(0);
+#if 0
 	else
 		r3 = charger_set_mode(CHARGE_FLAG_INHIBIT_CHARGE);
+#endif
 	if (r3 != EC_SUCCESS)
 		problem(PR_SET_MODE, r3);
 
