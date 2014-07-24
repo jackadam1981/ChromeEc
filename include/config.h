@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -375,6 +375,9 @@
  * case - for example, via a special USB dongle.
  */
 #undef CONFIG_CONSOLE_RESTRICTED_INPUT
+
+/* Select crc8 util functions */
+#undef CONFIG_CRC8
 
 /*****************************************************************************/
 /*
@@ -778,6 +781,9 @@
 
 /* Emulate the CLZ (Count Leading Zeros) in software for CPU lacking support */
 #undef CONFIG_SOFTWARE_CLZ
+
+/* Select smbus interface utils */
+#undef CONFIG_SMBUS
 
 /* Support SPI interfaces */
 #undef CONFIG_SPI
