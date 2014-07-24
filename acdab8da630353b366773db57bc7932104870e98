@@ -16,6 +16,24 @@
       "revId": "acdab8da630353b366773db57bc7932104870e98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3931ecd1_aa4b8fe9",
+        "filename": "driver/charger/bq24715.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2014-07-24T09:49:40Z",
+      "side": 1,
+      "message": "When I write 0 to the charging voltage register and read it,\nthe value is 9008.\nOur power team thinks the voltage is too high.\nSo we set the voltage to specific value.",
+      "parentUuid": "39ee4c35_3cdd287f",
+      "revId": "acdab8da630353b366773db57bc7932104870e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
