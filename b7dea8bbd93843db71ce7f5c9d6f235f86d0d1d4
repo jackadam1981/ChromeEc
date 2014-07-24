@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9461042_29debaf1",
+        "filename": "board/plankton/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-24T14:50:43Z",
+      "side": 1,
+      "message": "I\u0027m not sure this will be used ever by anyone else.",
+      "range": {
+        "startLine": 23,
+        "startChar": 8,
+        "endLine": 23,
+        "endChar": 37
+      },
+      "revId": "b7dea8bbd93843db71ce7f5c9d6f235f86d0d1d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f93914b5_39428ac3",
+        "filename": "board/plankton/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-24T14:50:43Z",
+      "side": 1,
+      "message": "I would put this function in every usb_pd_policy.c for every board that uses pd: firefly, fruitpie, samus_pd, ryu, zinger, plankton. That way pd_src_pdo[] and pd_src_pdo_cnt can be static.\n\nThen we can take out the CONFIG_ option you added for dynamic source capabilities and just always use this function to get source cap pointer. I don\u0027t anticipate any other boards with dynamic source capabilities, so I think the added board_set_source_cap() in just this file is fine.",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 21
+      },
+      "revId": "b7dea8bbd93843db71ce7f5c9d6f235f86d0d1d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
