@@ -71,6 +71,14 @@ struct i2c_port_data {
 static struct i2c_port_data pdata[I2C_PORT_COUNT];
 
 /**
+ * I2C Check if i2c bus is busy
+ */
+int i2c_is_busy(int port)
+{
+	return LM4_I2C_MCS_BUSBSY & LM4_I2C_MCS(port);
+}
+
+/**
  * I2C transfer engine.
  *
  * @return Zero when done with transfer (ready to wake task).
