@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "f922f488_79332f0a",
+        "filename": "board/samus_pd/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-07-25T17:49:31Z",
+      "side": 1,
+      "message": "I think we can remove this line, afaik TSU6721 is not used.",
+      "range": {
+        "startLine": 29,
+        "startChar": 8,
+        "endLine": 29,
+        "endChar": 33
+      },
+      "revId": "fb406768f89860d3a31b35b28765c0ca93e4e818",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9949f84f_47da0c36",
         "filename": "driver/pi3usb9281.h",
         "patchSetId": 5
