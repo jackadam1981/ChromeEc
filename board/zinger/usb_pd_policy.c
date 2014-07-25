@@ -98,7 +98,7 @@ static timestamp_t fault_deadline;
 #define OVP_REC_MV(mv)  VBUS_MV((mv) * 11 / 10)
 
 /* Time to allow for voltage down stepping */
-/* TODO reduce this time if possible on later hardware */
+/* TODO reduce this time if possible when voltage discharging is implemented */
 #define VOLTAGE_DOWN_STEP_TIME (500*MSEC)
 
 /* ----------------------- USB Power delivery policy ---------------------- */
@@ -256,7 +256,7 @@ int pd_board_checks(void)
 	    (fault && (vbus_volt > voltages[ovp_idx].ovp_rec))) {
 		if (!fault)
 			debug_printf("OverVoltage : %d mV\n",
-			     vbus_volt * VDDA_MV * VOLT_DIV / ADC_SCALE);
+				vbus_volt * VDDA_MV * VOLT_DIV / ADC_SCALE);
 		/* TODO(crosbug.com/p/28331) discharge */
 		fault = FAULT_OVP;
 		/* no timeout */
