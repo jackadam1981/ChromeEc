@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "76ec537a_c1634268",
+        "filename": "chip/stm32/usb_ms_scsi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-07-25T02:58:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e43969b5_3611b973",
+      "revId": "54ab9ab69546e2f174552ab79d8d2af5e3cbfc5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4224989_08e107b1",
         "filename": "chip/stm32/usb_ms_scsi.c",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2014-07-18T21:54:03Z",
       "side": 1,
       "message": "SCSI_VPD_DESIGNATOR_LENGTH + 4 instead.",
+      "revId": "54ab9ab69546e2f174552ab79d8d2af5e3cbfc5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76ec537a_a1603e5c",
+        "filename": "chip/stm32/usb_ms_scsi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-07-25T02:58:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4224989_08e107b1",
       "revId": "54ab9ab69546e2f174552ab79d8d2af5e3cbfc5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "794e0458_e0f20cba",
+        "filename": "chip/stm32/usb_ms_scsi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-07-25T02:58:01Z",
+      "side": 1,
+      "message": "Last time I talked to Vincent about unique product ID\u0027s, he seemed unwilling and said it would require a security/privacy review?",
+      "parentUuid": "e4224989_48dbfff8",
+      "revId": "54ab9ab69546e2f174552ab79d8d2af5e3cbfc5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4c051c0_cc6f1ed7",
         "filename": "chip/stm32/usb_ms_scsi.c",
         "patchSetId": 4
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "595300fd_c44b5ee9",
+        "filename": "chip/stm32/usb_ms_scsi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-07-25T02:58:01Z",
+      "side": 1,
+      "message": "I\u0027ve renamed it. It\u0027s currently set to 4k, but could be changed in the future for better performance or etc.",
+      "parentUuid": "a4c051c0_cc6f1ed7",
+      "revId": "54ab9ab69546e2f174552ab79d8d2af5e3cbfc5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4224989_a8d1d3df",
         "filename": "chip/stm32/usb_ms_scsi.c",
         "patchSetId": 4
@@ -81,6 +153,24 @@
       "writtenOn": "2014-07-18T21:54:03Z",
       "side": 1,
       "message": "remove",
+      "revId": "54ab9ab69546e2f174552ab79d8d2af5e3cbfc5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "595300fd_e4506298",
+        "filename": "chip/stm32/usb_ms_scsi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-07-25T02:58:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4224989_a8d1d3df",
       "revId": "54ab9ab69546e2f174552ab79d8d2af5e3cbfc5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
