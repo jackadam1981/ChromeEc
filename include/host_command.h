@@ -227,4 +227,11 @@ int pd_host_command(int command, int version,
 		    const void *outdata, int outsize,
 		    void *indata, int insize);
 
+
+/**
+ * EC: Get verify boot mode
+ * @return vboot_mode: recovery, dev or normal
+ */
+int ec_get_vboot_mode(void);
+
 #endif  /* __CROS_EC_HOST_COMMAND_H */
