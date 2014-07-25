@@ -22,6 +22,9 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#ifdef CONFIG_SB_FIRMWARE_UPDATE
+#include "sb_fw_update.h"
+#endif
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHARGER, outstr)
@@ -467,6 +470,13 @@ void charger_task(void)
 	battery_seems_to_be_dead = 0;
 
 	while (1) {
+
+#ifdef CONFIG_SB_FIRMWARE_UPDATE
+		if (ec_sb_fw_update_is_inprogress()) {
+			task_wait_event(MAX_SLEEP_USEC);
+			continue;
+		}
+#endif
 
 		/* Let's see what's going on... */
 		curr.ts = get_time();
