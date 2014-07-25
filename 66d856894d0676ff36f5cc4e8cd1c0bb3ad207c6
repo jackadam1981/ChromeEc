@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76ec537a_27ff9e43",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-25T21:30:18Z",
+      "side": 1,
+      "message": "oops, missed this should be port dependent",
+      "range": {
+        "startLine": 520,
+        "startChar": 16,
+        "endLine": 520,
+        "endChar": 27
+      },
+      "revId": "66d856894d0676ff36f5cc4e8cd1c0bb3ad207c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
