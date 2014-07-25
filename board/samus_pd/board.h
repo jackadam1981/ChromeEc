@@ -15,6 +15,12 @@
 #undef CONFIG_UART_CONSOLE
 #define CONFIG_UART_CONSOLE 1
 
+/* Smaller UART Tx/Rx buffer to save RAM space */
+#undef CONFIG_UART_TX_BUF_SIZE
+#define CONFIG_UART_TX_BUF_SIZE 256
+#undef CONFIG_UART_RX_BUF_SIZE
+#define CONFIG_UART_RX_BUF_SIZE 64
+
 /* Optional features */
 #define CONFIG_BOARD_PRE_INIT
 #define CONFIG_STM_HWTIMER32
