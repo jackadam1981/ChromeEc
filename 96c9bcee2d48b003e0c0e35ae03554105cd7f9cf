@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b91cfc52_f229f674",
+        "filename": "board/samus_pd/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-07-25T15:27:40Z",
+      "side": 1,
+      "message": "This will almost certainly cause dropped output during the boot process, where output is very bursty.",
+      "revId": "96c9bcee2d48b003e0c0e35ae03554105cd7f9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96e70794_51437e59",
+        "filename": "board/samus_pd/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-07-25T15:27:40Z",
+      "side": 1,
+      "message": "Note that copy/pasting commands may overflow the buffer now.",
+      "revId": "96c9bcee2d48b003e0c0e35ae03554105cd7f9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
