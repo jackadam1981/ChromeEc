@@ -764,6 +764,9 @@
  */
 #undef CONFIG_SAVE_VBOOT_HASH
 
+/* Enable smart battery firmware update driver */
+#undef CONFIG_SB_FIRMWARE_UPDATE
+
 /* Allow the board to use a GPIO for the SCI# signal. */
 #undef CONFIG_SCI_GPIO
 
@@ -775,6 +778,9 @@
 
 /* Select smbus interface utils */
 #undef CONFIG_SMBUS
+
+/* Enable Debug smart battery firmware update interface */
+#undef CONFIG_SMBUS_DEBUG_FW_UPDATE
 
 /* Support SPI interfaces */
 #undef CONFIG_SPI

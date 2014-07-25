@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -2283,6 +2283,101 @@ struct ec_params_battery_vendor_param {
 
 struct ec_response_battery_vendor_param {
 	uint32_t value;
+} __packed;
+
+/*****************************************************************************/
+/*
+ * Smart Battery Firmware Update Commands
+ */
+#define EC_CMD_SB_FW_UPDATE 0xb5
+
+enum ec_sb_fw_update_state {
+	EC_CMD_SB_FW_UPDATE_PREPARE  = 0x0,
+	EC_CMD_SB_FW_UPDATE_INFO     = 0x1, /*query sb info */
+	EC_CMD_SB_FW_UPDATE_BEGIN    = 0x2, /*check if protected */
+	EC_CMD_SB_FW_UPDATE_WRITE    = 0x3, /*check if protected */
+	EC_CMD_SB_FW_UPDATE_END      = 0x4,
+	EC_CMD_SB_FW_UPDATE_STATUS   = 0x5,
+	EC_CMD_SB_FW_UPDATE_PROTECT  = 0x6,
+	EC_CMD_SB_FW_UPDATE_MAX      = 0x7,
+};
+
+#define SB_FW_UPDATE_CMD_WRITE_WORD_SIZE 2
+#define SB_FW_UPDATE_CMD_WRITE_BLOCK_SIZE 32
+#define SB_FW_UPDATE_CMD_STATUS_SIZE 2
+#define SB_FW_UPDATE_CMD_INFO_SIZE 8
+#define SB_FW_UPDATE_CMD_LEN_SIZE 1
+#define SB_FW_UPDATE_CMD_PEC_SIZE 1
+
+/**
+ * sb.fw.update.cmd.0x35, Read Word
+ *    Firmware Update Status
+ */
+struct sb_fw_update_status {
+	uint16_t v_fail_maker_id:1; /* b0 */
+	uint16_t v_fail_hw_id:1; /* b1 */
+	uint16_t v_fail_fw_version:1; /* b2 */
+	uint16_t v_fail_permanent:1; /* b3 */
+
+	uint16_t rsvd5:1; /* b4 */
+	uint16_t permanent_failure:1; /* b5 */
+	uint16_t abnormal_condition:1; /* b6 */
+	uint16_t fw_update_supported:1; /* b7 */
+
+	uint16_t fw_update_mode:1; /* b8 */
+	uint16_t fw_corrupted:1; /* b9 */
+	uint16_t cmd_reject:1; /* b10 */
+	uint16_t invalid_data:1; /* b11 */
+
+	uint16_t fw_fatal_error:1; /* b12 */
+	uint16_t fec_error:1; /* b13 */
+	uint16_t busy:1; /* b14 */
+	uint16_t rsvd15:1; /* b15 */
+} __packed;
+
+/**
+ * sb.fw.update.cmd.0x37 Read Word
+ *     Get Battery Information
+ *     sequence:=b1,b0,b3,b2,b5,b5,b7,b6
+ */
+struct sb_fw_update_info {
+	uint16_t maker_id;    /* b0, b1 */
+	uint16_t hardware_id; /* b2, b3 */
+	uint16_t fw_version;  /* b4, b5 */
+	uint16_t data_version;/* b6, b7 */
+} __packed;
+
+/**
+ * smart.battery.maker.id
+ */
+enum smart_battery_maker_id {
+	sb_maker_id_lgc       = 0x0001, /* b0=0; b1=1 */
+	sb_maker_id_panasonic = 0x0002,
+	sb_maker_id_sanyo     = 0x0003,
+	sb_maker_id_sony      = 0x0004,
+	sb_maker_id_simplo    = 0x0005,
+	sb_maker_id_celxpert  = 0x0006,
+};
+
+struct ec_sb_fw_update_header {
+	uint16_t state;   /* enum ec_sb_fw_update_state */
+	uint16_t fw_id;   /* firmware id */
+} __packed;
+
+struct ec_sb_fw_update_status {
+	struct ec_sb_fw_update_header hdr;
+	struct sb_fw_update_status status;
+} __packed;
+
+struct ec_sb_fw_update_info {
+	struct ec_sb_fw_update_header hdr;
+	struct sb_fw_update_info info;
+} __packed;
+
+struct ec_sb_fw_update_write_block {
+	struct ec_sb_fw_update_header hdr;
+	uint32_t offset; /* Offset */
+	uint8_t  data[32];
 } __packed;
 
 /*****************************************************************************/
