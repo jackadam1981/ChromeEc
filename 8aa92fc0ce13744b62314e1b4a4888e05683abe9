@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "36f65b4a_4e3d1ba9",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-07-26T06:24:41Z",
+      "side": 1,
+      "message": "To be consistent, use #ifdef HAS_TASK_HOSTCMD",
+      "revId": "8aa92fc0ce13744b62314e1b4a4888e05683abe9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16fb1735_9e60fd5c",
         "filename": "chip/stm32/i2c-stm32f0.c",
         "patchSetId": 1
