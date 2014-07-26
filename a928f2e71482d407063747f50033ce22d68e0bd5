@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9949f84f_529d698a",
+        "filename": "common/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-26T19:09:11Z",
+      "side": 1,
+      "message": "I like the idea of combining all the different implementations, but this changes behavior for lm4. The current lm4 implementation reads the block size first, and then reads in the rest of the block. I like that implementation better because it seems safer not to keep trying to read past where the slave has told you to stop. Why don\u0027t we implement it like that with the two transfers here? Do the stm parts not support that?",
+      "range": {
+        "startLine": 138,
+        "startChar": 6,
+        "endLine": 138,
+        "endChar": 14
+      },
+      "revId": "a928f2e71482d407063747f50033ce22d68e0bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
