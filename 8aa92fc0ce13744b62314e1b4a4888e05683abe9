@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16fb1735_9e60fd5c",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-07-26T01:58:49Z",
+      "side": 1,
+      "message": "what about \n#define IRQ_SLAVE (STM32_IRQ_I2C1+I2C_PORT_EC)",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 7
+      },
+      "revId": "8aa92fc0ce13744b62314e1b4a4888e05683abe9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
