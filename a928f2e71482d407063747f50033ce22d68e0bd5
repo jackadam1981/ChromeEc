@@ -22,6 +22,24 @@
       "revId": "a928f2e71482d407063747f50033ce22d68e0bd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f922f488_dafa5153",
+        "filename": "common/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-07-27T02:24:04Z",
+      "side": 1,
+      "message": "1. Verified that this version (stm) works on lm4. (glimmer).\n2. STM version is simpler and in sync with spec.\n *    [S][i2c addr][Wr\u003d0][A][cmd][A]\n *    [S][i2c addr][Rd\u003d1][A][size][A]...[Di][Ai]...[PEC][A][P]\n  Total Phase captured the trace data and report the format is in sync with datasheet.\n3. The max size is 32 bytes.  The user should find the correct string size based on smbus slave data sheet, allocate enough space (*data), and then call this api. We should not make any assumption based on the size returned.   If the size returned by the device is not same the size define in the datasheet, we should report a error.\n4. i2c_read_string should be replaced with smbus_read_string.",
+      "parentUuid": "9949f84f_529d698a",
+      "revId": "a928f2e71482d407063747f50033ce22d68e0bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
