@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d91ff043_36fa9623",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-07-27T23:47:44Z",
+      "side": 0,
+      "message": "is that correct to no longer disable output ?\ndid you check the current PD spec ?",
+      "revId": "71c55b2f64575546932b09a460746a870411b5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
