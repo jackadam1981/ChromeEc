@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36f65b4a_1973dbb6",
+        "filename": "board/discovery-stm32f072/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-07-27T04:26:15Z",
+      "side": 1,
+      "message": "Looks like CONFIG_USART1 can be either undefined or defined as \"usart1\". Perhaps we can just use:\n\n  #define CONFIG_USART1",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 15,
+        "endChar": 21
+      },
+      "revId": "ed56bc3b590fdc247c030d652bac53be5bd15fe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16fb1735_a44de650",
+        "filename": "chip/stm32/usart-stm32f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-07-27T04:26:15Z",
+      "side": 1,
+      "message": "Also guard this with #if to save binary size?",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 15
+      },
+      "revId": "ed56bc3b590fdc247c030d652bac53be5bd15fe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16fb1735_6448fe44",
+        "filename": "chip/stm32/usart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-07-27T04:26:15Z",
+      "side": 1,
+      "message": "How can a reentrant call happen?",
+      "range": {
+        "startLine": 152,
+        "startChar": 27,
+        "endLine": 152,
+        "endChar": 36
+      },
+      "revId": "ed56bc3b590fdc247c030d652bac53be5bd15fe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16fb1735_84e8aaca",
+        "filename": "include/out_stream.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-07-27T04:26:15Z",
+      "side": 1,
+      "message": "For USB, this implies double-buffering is needed so as not to block the caller all the time.",
+      "range": {
+        "startLine": 34,
+        "startChar": 15,
+        "endLine": 34,
+        "endChar": 63
+      },
+      "revId": "ed56bc3b590fdc247c030d652bac53be5bd15fe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
