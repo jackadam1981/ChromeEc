@@ -210,6 +210,12 @@
  */
 #undef CONFIG_CHARGER_INPUT_CURRENT
 
+/*
+ * NVDC needs to keep voltage level though charging stop.
+ * This value should depend on charger.
+*/
+#undef CONFIG_CHARGER_NVDC_VOLTAGE
+
 /* Value of the charge sense resistor, in mOhms */
 #undef CONFIG_CHARGER_SENSE_RESISTOR
 
