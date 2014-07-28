@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "f974b47c_23c328d2",
+        "filename": "core/cortex-m0/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-28T21:47:25Z",
+      "side": 1,
+      "message": "This change does now wast memory because the vector table is 192 bytes. So, the align 512 here means we skip over 320 bytes. Do we really need the big_align? Maybe Vic can chime in since it is only used for the mec chip.",
+      "range": {
+        "startLine": 165,
+        "startChar": 8,
+        "endLine": 165,
+        "endChar": 17
+      },
+      "revId": "5133a0ad48f7eaaa877db409e47ff14703126e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6041f04_a52f24bb",
+        "filename": "core/cortex-m0/init.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-28T21:47:25Z",
+      "side": 1,
+      "message": "Setting this means that the vector table in use is in RAM, which is a little less secure because a RAM exploit can overwrite the vector table. I thought about making this setting only apply to RW code, but I\u0027m not sure how to do that, and I\u0027m not convinced it really makes a difference. Potentially, an attacker could do that same thing by first writing to the SYSCFG_CFGR1 register which cannot be locked down. So, I think the only big difference is the robustness against bad coding. With this change, a bad pointer that happens to modify this memory can cause serious problems.",
+      "range": {
+        "startLine": 117,
+        "startChar": 56,
+        "endLine": 117,
+        "endChar": 60
+      },
+      "revId": "5133a0ad48f7eaaa877db409e47ff14703126e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7615332e_62e6ac78",
         "filename": "core/cortex-m0/init.S",
         "patchSetId": 1
