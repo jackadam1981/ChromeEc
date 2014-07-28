@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "36f65b4a_48faaeda",
+        "filename": "board/discovery-stm32f072/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-07-28T15:03:09Z",
+      "side": 1,
+      "message": "That feels backwards to me.  It is the board that is defining the usart_config structs, and giving them names.  So I feel like the board should be injecting those names into the usart driver at compile time.",
+      "parentUuid": "36f65b4a_1973dbb6",
+      "revId": "ed56bc3b590fdc247c030d652bac53be5bd15fe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16fb1735_a44de650",
         "filename": "chip/stm32/usart-stm32f.c",
         "patchSetId": 1
@@ -42,6 +60,24 @@
         "endLine": 52,
         "endChar": 15
       },
+      "revId": "ed56bc3b590fdc247c030d652bac53be5bd15fe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d91ff043_d9f09576",
+        "filename": "chip/stm32/usart-stm32f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-07-28T15:03:09Z",
+      "side": 1,
+      "message": "Will do, though I am surprised that we aren\u0027t building with -fdata-sections, which would handle this.",
+      "parentUuid": "16fb1735_a44de650",
       "revId": "ed56bc3b590fdc247c030d652bac53be5bd15fe6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "d91ff043_f9f55163",
+        "filename": "chip/stm32/usart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-07-28T15:03:09Z",
+      "side": 1,
+      "message": "If we are already in an interrupt context, due to a lower priority interrupt perhaps, then the flush routine will directly call this function, then if a real usart interrupt happens we would reenter this handler.  I think.  This is one aspect of the driver I\u0027m still mulling over, so if you don\u0027t think it is possible, that may be the case.  Thanks.",
+      "parentUuid": "16fb1735_6448fe44",
+      "revId": "ed56bc3b590fdc247c030d652bac53be5bd15fe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16fb1735_84e8aaca",
         "filename": "include/out_stream.h",
         "patchSetId": 1
@@ -88,6 +142,24 @@
         "endLine": 34,
         "endChar": 63
       },
+      "revId": "ed56bc3b590fdc247c030d652bac53be5bd15fe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36f65b4a_080ca65b",
+        "filename": "include/out_stream.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-07-28T15:03:09Z",
+      "side": 1,
+      "message": "Given that write doesn\u0027t block, there has to be some form of double buffering yes?  My expectation was that flush for USB would be just a marking of a partially full bulk endpoint buffer as valid.",
+      "parentUuid": "16fb1735_84e8aaca",
       "revId": "ed56bc3b590fdc247c030d652bac53be5bd15fe6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
