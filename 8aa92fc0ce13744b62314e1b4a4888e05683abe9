@@ -81,6 +81,30 @@
       "revId": "8aa92fc0ce13744b62314e1b4a4888e05683abe9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f922f488_713c234b",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-07-28T18:00:09Z",
+      "side": 1,
+      "message": "Got it, the name is used in the irq handler name.\nSo just to be sure we don\u0027t hit the same bug later:\n\n-#else\n+#elif (I2C_PORT_EC \u003d\u003d STM32_I2C2_PORT)\n #define IRQ_SLAVE STM32_IRQ_I2C2\n+#else\n+#error \"Unknown port\"",
+      "parentUuid": "16fb1735_92b8ec64",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 7
+      },
+      "revId": "8aa92fc0ce13744b62314e1b4a4888e05683abe9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
