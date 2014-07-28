@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6041f04_1fa627ad",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-07-28T16:44:32Z",
+      "side": 1,
+      "message": "I think this name should be different? It\u0027s essentially the value to be written when 0V is requested. CONFIG_CHARGE_NVDC_OFF_VOLTAGE?",
+      "revId": "e54aa5fcc0ef953fa2832f2feb6a53d6d01b3ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
