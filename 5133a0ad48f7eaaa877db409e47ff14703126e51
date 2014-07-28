@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7615332e_a85f03c9",
+        "filename": "core/cortex-m0/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-07-28T22:59:31Z",
+      "side": 1,
+      "message": "Yeah this is only used for MEC chip. If the memory usage is an issue here, let\u0027s take it out for cortex-m0.",
+      "parentUuid": "f974b47c_23c328d2",
+      "range": {
+        "startLine": 165,
+        "startChar": 8,
+        "endLine": 165,
+        "endChar": 17
+      },
+      "revId": "5133a0ad48f7eaaa877db409e47ff14703126e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6041f04_a52f24bb",
         "filename": "core/cortex-m0/init.S",
         "patchSetId": 1
