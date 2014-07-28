@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d6041f04_f023a808",
+        "filename": "core/cortex-m0/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-28T23:11:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7615332e_a85f03c9",
+      "range": {
+        "startLine": 165,
+        "startChar": 8,
+        "endLine": 165,
+        "endChar": 17
+      },
+      "revId": "5133a0ad48f7eaaa877db409e47ff14703126e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6041f04_a52f24bb",
         "filename": "core/cortex-m0/init.S",
         "patchSetId": 1
@@ -83,6 +107,24 @@
       "writtenOn": "2014-07-28T21:46:48Z",
       "side": 1,
       "message": "s/0x40010000/SYSCFG_CFGR1/",
+      "revId": "5133a0ad48f7eaaa877db409e47ff14703126e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f974b47c_c603629a",
+        "filename": "core/cortex-m0/init.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-28T23:11:11Z",
+      "side": 1,
+      "message": "Can\u0027t just use the reg name macro here, because then I\u0027d be including chip/stm32/registers.h in the core/cortex-m0/ directory which doesn\u0027t seem right. Instead I put this in a #ifdef for the stm32f0 chip family.",
+      "parentUuid": "7615332e_62e6ac78",
       "revId": "5133a0ad48f7eaaa877db409e47ff14703126e51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
