@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7615332e_62e6ac78",
+        "filename": "core/cortex-m0/init.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-07-28T21:46:48Z",
+      "side": 1,
+      "message": "s/0x40010000/SYSCFG_CFGR1/",
+      "revId": "5133a0ad48f7eaaa877db409e47ff14703126e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
