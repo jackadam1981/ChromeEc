@@ -16,6 +16,24 @@
       "revId": "71c55b2f64575546932b09a460746a870411b5d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16fb1735_724e8083",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-28T14:55:23Z",
+      "side": 0,
+      "message": "Section 7.1.5 of the spec says not to disable the output, and specifies 80ms to get to between 95% and 105% of the new target voltage with a max slew rate of -30mV/us.",
+      "parentUuid": "d91ff043_36fa9623",
+      "revId": "71c55b2f64575546932b09a460746a870411b5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
