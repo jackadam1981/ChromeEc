@@ -158,8 +158,10 @@ SECTIONS
 	 * beginning of the RAM, so there is usually no penalty on aligning
 	 * this.
 	 */
+	. = ALIGN(8);
+	__bss_start = .;
+	*(.bss.vector_table)
         . = ALIGN(512);
-        __bss_start = .;
 	*(.bss.big_align)
 	/* Stacks must be 64-bit aligned */
         . = ALIGN(8);
