@@ -7,6 +7,7 @@
 
 #include "battery.h"
 #include "battery_smart.h"
+#include "charge_state.h"
 #include "console.h"
 #include "gpio.h"
 #include "host_command.h"
@@ -64,3 +65,34 @@ DECLARE_CONSOLE_COMMAND(battcutoff, command_battcutoff,
 			NULL,
 			"Enable battery cutoff (ship mode)",
 			NULL);
+
+#ifdef CONFIG_BATTERY_OVERRIDE_PARAMS
+static int oem_battery_state;
+#define OEM_BATTERY_STATE_ERROR 0x01
+
+inline void oem_battery_not_connected(void)
+{
+	oem_battery_state = 0;
+}
+
+void battery_override_params(struct batt_params *batt)
+{
+	int chstate = charge_get_state();
+
+	if(oem_battery_state == 0) {
+		if(chstate == PWR_STATE_CHARGE) {
+			if(batt->voltage > info.voltage_max) {
+				oem_battery_state |= OEM_BATTERY_STATE_ERROR;
+			}
+		}
+	}
+
+	if(oem_battery_state) {
+		if(oem_battery_state & OEM_BATTERY_STATE_ERROR) {
+			batt->flags |= BATT_FLAG_BAD_ANY;
+			batt->desired_voltage = 0;
+			batt->desired_current = 0;
+		}
+	}
+}
+#endif /* CONFIG_BATTERY_OVERRIDE_PARAMS */
