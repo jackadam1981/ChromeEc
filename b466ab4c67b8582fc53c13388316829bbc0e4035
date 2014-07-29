@@ -22,6 +22,30 @@
       "revId": "b466ab4c67b8582fc53c13388316829bbc0e4035",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "560aef14_75341f68",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-07-29T23:02:17Z",
+      "side": 0,
+      "message": "This ifdef in not needed anymore.\nI guess it was there because this function was not called bysystem_run_image_copy() when EMU_BUILD was not defined. It was not necessary to begin with, the linker would have removed it by itself.",
+      "parentUuid": "36f65b4a_b39e3911",
+      "range": {
+        "startLine": 417,
+        "startChar": 8,
+        "endLine": 417,
+        "endChar": 17
+      },
+      "revId": "b466ab4c67b8582fc53c13388316829bbc0e4035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
