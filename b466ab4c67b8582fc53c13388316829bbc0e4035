@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36f65b4a_b39e3911",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-29T22:29:49Z",
+      "side": 0,
+      "message": "missed this #ifndef when you moved this function",
+      "range": {
+        "startLine": 417,
+        "startChar": 8,
+        "endLine": 417,
+        "endChar": 17
+      },
+      "revId": "b466ab4c67b8582fc53c13388316829bbc0e4035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
