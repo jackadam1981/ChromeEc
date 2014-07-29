@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7615332e_ac194e15",
+        "filename": "board/discovery-stm32f072/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-07-29T19:31:38Z",
+      "side": 1,
+      "message": "It is our convention that we explictly #undef all CONFIG_ macros in include/config.h before using them anywhere.\n\nI thought we had a test to ensure that, but apparently not.",
+      "revId": "094ec211f2746ac180a7486c8883b59ba4a662d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36f65b4a_3a643e70",
+        "filename": "include/out_stream.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-07-29T19:31:38Z",
+      "side": 1,
+      "message": "I suggest \"is_paused()\" instead of \"paused()\", which my fingers would find too similar to \"pause()\".",
+      "revId": "094ec211f2746ac180a7486c8883b59ba4a662d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "560aef14_cddb6925",
+        "filename": "include/out_stream.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-07-29T19:31:38Z",
+      "side": 1,
+      "message": "Maybe \"ready_cb()\" ?",
+      "revId": "094ec211f2746ac180a7486c8883b59ba4a662d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
