@@ -8,15 +8,18 @@
 #include "adc_chip.h"
 #include "battery.h"
 #include "charger.h"
+#include "chipset.h"
 #include "common.h"
 #include "console.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
+#include "pi3usb9281.h"
 #include "power.h"
 #include "power_button.h"
 #include "registers.h"
 #include "task.h"
+#include "usb.h"
 #include "usb_pd.h"
 #include "usb_pd_config.h"
 #include "util.h"
@@ -34,6 +37,17 @@ void unhandled_evt(enum gpio_signal signal)
 
 #include "gpio_list.h"
 
+void board_config_pre_init(void)
+{
+	/* enable SYSCFG clock */
+	STM32_RCC_APB2ENR |= 1 << 0;
+
+	/*
+	 * Remap SPI2 RX/TX to DMA 6/7.
+	 */
+	STM32_SYSCFG_CFGR1 |= (1 << 24);
+}
+
 /* Initialize board. */
 static void board_init(void)
 {
@@ -48,6 +62,20 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_CHGR_ACOK);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+void chipset_pre_init(void)
+{
+	/* set latch for disable debug */
+	gpio_set_level(GPIO_PD_DISABLE_DEBUG, 1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_PRE_INIT, chipset_pre_init, HOOK_PRIO_DEFAULT);
+
+void board_entering_rw(void)
+{
+	/* set latch for disable debug */
+	gpio_set_level(GPIO_PD_DISABLE_DEBUG, 1);
+}
+DECLARE_HOOK(HOOK_SYSJUMP, board_entering_rw, HOOK_PRIO_DEFAULT);
 
 /* power signal list.  Must match order of enum power_signal. */
 const struct power_signal_info power_signal_list[] = {
@@ -77,6 +105,131 @@ const struct i2c_port_t i2c_ports[] = {
 		GPIO_SLAVE_I2C_SCL, GPIO_SLAVE_I2C_SDA},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+
+const void * const usb_strings[] = {
+	[USB_STR_DESC] = usb_string_desc,
+	[USB_STR_VENDOR] = USB_STRING_DESC("Google Inc."),
+	[USB_STR_PRODUCT] = USB_STRING_DESC("Ryu"),
+	[USB_STR_VERSION] = USB_STRING_DESC("v1.0"),
+};
+BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
+
+/*
+ * Used to enable USB on port C0 for debugging.
+ * Note: this disconnects USB lines from AP.
+ */
+static int set_usb_debug(int enable)
+{
+	int res = EC_SUCCESS;
+
+	if (!chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
+		return EC_ERROR_ACCESS_DENIED;
+	}
+
+	if (enable) {
+		/* Switch PI3USB9281 to manual mode */
+		res = pi3usb9281_set_switch_manual(0, 1);
+		if (res)
+			return res;
+
+		/* Disconnect USB from AP */
+		res = pi3usb9281_set_pins(0, 0x00);
+		if (res)
+			return res;
+	} else {
+		/* Switch PI3USB9281 to automatic mode */
+		res = pi3usb9281_set_switch_manual(0, 0);
+		if (res)
+			return res;
+	}
+
+	return res;
+}
+
+/*
+ * Used to enable SPI access to SPI flash for debugging.
+ */
+static int set_spi_debug(int enable)
+{
+	if (!chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
+		return EC_ERROR_ACCESS_DENIED;
+	}
+
+	if (enable) {
+		/* Enable power on PP1800_SPIF rail */
+		gpio_set_level(GPIO_VDDSPI_EN, 1);
+
+		/* Set pins SCK, MOSI, and MISO to alternate function. */
+		gpio_config_module(MODULE_USB_DEBUG, 1);
+
+		/* Set pin NSS to general purpose output mode. */
+		gpio_set_flags(GPIO_SPI_FLASH_NSS,
+			GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_PULL_UP);
+
+		/* Set all four pins to high speed */
+		STM32_GPIO_OSPEEDR(GPIO_B) |= 0xff000000;
+
+		/* Reset SPI2 */
+		STM32_RCC_APB1RSTR |= (1 << 14);
+		STM32_RCC_APB1RSTR &= ~(1 << 14);
+
+		/* Enable clocks to SPI2 module */
+		STM32_RCC_APB1ENR |= STM32_RCC_PB1_SPI2;
+	} else {
+		/* Reset SPI2 */
+		STM32_RCC_APB1RSTR |= (1 << 14);
+		STM32_RCC_APB1RSTR &= ~(1 << 14);
+
+		/* Set pins SCK, MOSI, and MISO to input mode */
+		gpio_config_module(MODULE_USB_DEBUG, 0);
+
+		/* Set pin NSS to input mode. */
+		gpio_set_flags(GPIO_SPI_FLASH_NSS, GPIO_INPUT);
+
+		/* Disable power on PP1800_SPIF rail */
+		gpio_set_level(GPIO_VDDSPI_EN, 0);
+	}
+
+	return EC_SUCCESS;
+}
+
+/*
+ * Used to enable USB on port C0 (disable PD) for debugging, and SPI flash
+ * access on SPI2.
+ *
+ * Note: this will disconnect USB lines from AP.
+ */
+int board_set_debug(int enable)
+{
+	int rv;
+
+	rv = set_spi_debug(enable);
+	if (rv)
+		return rv;
+
+	rv = set_usb_debug(enable);
+
+	return rv;
+}
+
+static int command_debug(int argc, char **argv)
+{
+	char *e;
+	int v;
+
+	if (argc < 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	v = strtoi(argv[1], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM1;
+
+	ccprintf("Setting debug: %d...\n", v);
+	board_set_debug(v);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(debugset, command_debug, NULL, "Set debug mode", NULL);
 
 void board_set_usb_mux(int port, enum typec_mux mux, int polarity)
 {
