@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "560aef14_589ef213",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-07-29T23:58:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9949f84f_f2a57dd0",
+      "range": {
+        "startLine": 12,
+        "startChar": 36,
+        "endLine": 12,
+        "endChar": 42
+      },
+      "revId": "ecc7ce756cb771f98b0bf9b905a5ee92b74b64fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f974b47c_97d51fcb",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2014-07-26T19:00:36Z",
       "side": 1,
       "message": "We\u0027ve been putting commands for PD MCU starting at 0x100",
+      "range": {
+        "startLine": 1413,
+        "startChar": 30,
+        "endLine": 1413,
+        "endChar": 34
+      },
+      "revId": "ecc7ce756cb771f98b0bf9b905a5ee92b74b64fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36f65b4a_69144261",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1413,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-07-29T23:58:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f974b47c_97d51fcb",
       "range": {
         "startLine": 1413,
         "startChar": 30,
