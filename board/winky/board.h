@@ -12,6 +12,7 @@
 #define CONFIG_AP_HANG_DETECT
 #define CONFIG_BACKLIGHT_LID
 #define CONFIG_BATTERY_SMART
+#define CONFIG_BATTERY_OVERRIDE_PARAMS
 #define CONFIG_BATTERY_PRESENT_GPIO GPIO_BAT_DETECT_L
 #define CONFIG_BOARD_VERSION
 #define CONFIG_CHARGER
@@ -195,6 +196,11 @@ enum temp_sensor_id {
 
 /* Discharge battery when on AC power for factory test. */
 int board_discharge_on_ac(int enable);
+
+#ifdef CONFIG_BATTERY_OVERRIDE_PARAMS
+/* OEM battery function when battery is removed. */
+void board_battery_not_connected(void);
+#endif
 
 #endif /* !__ASSEMBLER__ */
 
