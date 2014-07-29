@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "7615332e_0766d5a2",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-29T20:26:38Z",
+      "side": 1,
+      "message": "not needed, globals without assignment are initialized to 0",
+      "range": {
+        "startLine": 471,
+        "startChar": 1,
+        "endLine": 471,
+        "endChar": 33
+      },
+      "revId": "e11588e484d06584008e4e0f036a237391d3956a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "560aef14_52c254ce",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 1
@@ -13,6 +36,24 @@
       "writtenOn": "2014-07-29T18:37:36Z",
       "side": 1,
       "message": "I decided not to put all references to the battery_seems_to_be_disconnected state indicator behind CONFIG_BATTERY_REVIVE_DISCONNECT because it makes the code a mess. Not sure if this was the correct decision. I can change it.",
+      "revId": "e11588e484d06584008e4e0f036a237391d3956a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7615332e_47b16dcc",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-29T20:26:38Z",
+      "side": 1,
+      "message": "Probably fine, as long as it compiles w/o CONFIG_ option defined.",
+      "parentUuid": "560aef14_52c254ce",
       "revId": "e11588e484d06584008e4e0f036a237391d3956a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
