@@ -13,10 +13,12 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
+#include "pi3usb9281.h"
 #include "power.h"
 #include "power_button.h"
 #include "registers.h"
 #include "task.h"
+#include "usb.h"
 #include "usb_pd.h"
 #include "usb_pd_config.h"
 #include "util.h"
@@ -33,6 +35,17 @@ void unhandled_evt(enum gpio_signal signal)
 }
 
 #include "gpio_list.h"
+
+void board_config_pre_init(void)
+{
+	/* enable SYSCFG clock */
+	STM32_RCC_APB2ENR |= 1 << 0;
+
+	/*
+	 * Remap SPI2 RX/TX to DMA 6/7.
+	 */
+	STM32_SYSCFG_CFGR1 |= (1 << 24);
+}
 
 /* Initialize board. */
 static void board_init(void)
@@ -77,6 +90,121 @@ const struct i2c_port_t i2c_ports[] = {
 		GPIO_SLAVE_I2C_SCL, GPIO_SLAVE_I2C_SDA},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+
+const void * const usb_strings[] = {
+	[USB_STR_DESC] = usb_string_desc,
+	[USB_STR_VENDOR] = USB_STRING_DESC("Google Inc."),
+	[USB_STR_PRODUCT] = USB_STRING_DESC("Ryu"),
+	[USB_STR_VERSION] = USB_STRING_DESC("vXX.YYY"),
+};
+BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
+
+static int board_set_usb(int enable)
+{
+	int res = EC_SUCCESS;
+
+	if (enable) {
+		/* Set pins USB_MCU_DM and USB_MCU_DP to analog mode. */
+		STM32_GPIO_MODER(GPIO_A) |= 0x3c00000;
+
+		/* Switch PI3USB9281 to manual mode */
+		res = pi3usb9281_set_switch_manual(1);
+		if (res)
+			return res;
+
+		/* Disconnect USB from AP */
+		res = pi3usb9281_set_pins(0x00);
+		if (res)
+			return res;
+
+	} else {
+		/* Set pins USB_MCU_DM and USB_MCU_DP to input mode. */
+		STM32_GPIO_MODER(GPIO_A) &= ~0x3c00000;
+
+		/* Switch PI3USB9281 to automatic mode */
+		res = pi3usb9281_set_switch_manual(0);
+		if (res)
+			return res;
+	}
+
+	return res;
+}
+
+static void board_set_spi(int enable)
+{
+	if (enable) {
+		/* Enable power on PP1800_SPIF rail */
+		gpio_set_level(GPIO_VDDSPI_EN, 1);
+
+		/* Set pins PD_CLK_IN, PD_TX_DATA, and
+		 * VCONN1_EN to alternate function. */
+		/* Set pin PD_TX_EN (NSS) to general purpose output mode. */
+		STM32_GPIO_MODER(GPIO_B) &= ~0xff000000;
+		STM32_GPIO_MODER(GPIO_B) |= 0xa9000000;
+
+		/* Set all four pins to alternate function 0 */
+		STM32_GPIO_AFRH(GPIO_B) &= ~(0xffff0000);
+
+		/* Set all four pins to output push-pull */
+		STM32_GPIO_OTYPER(GPIO_B) &= ~(0xf000);
+
+		/* Set pullup on PD_TX_EN */
+		STM32_GPIO_PUPDR(GPIO_B) |= 0x1000000;
+
+		/* Set all four pins to high speed */
+		STM32_GPIO_OSPEEDR(GPIO_B) |= 0xff000000;
+
+		/* Reset SPI2 */
+		STM32_RCC_APB1RSTR |= (1 << 14);
+		STM32_RCC_APB1RSTR &= ~(1 << 14);
+
+		/* Enable clocks to SPI2 module */
+		STM32_RCC_APB1ENR |= STM32_RCC_PB1_SPI2;
+	} else {
+		/* Reset SPI2 */
+		STM32_RCC_APB1RSTR |= (1 << 14);
+		STM32_RCC_APB1RSTR &= ~(1 << 14);
+
+		/* Set all but VCONN1_EN to input mode */
+		STM32_GPIO_MODER(GPIO_B) &= ~0x3f000000;
+
+		/* Unset pullup on PD_TX_EN/SPI_NSS */
+		STM32_GPIO_PUPDR(GPIO_B) &= ~0x3000000;
+
+		/* Disable power on PP1800_SPIF rail */
+		gpio_set_level(GPIO_VDDSPI_EN, 0);
+	}
+}
+
+int board_set_debug(int enable)
+{
+	int rv = EC_SUCCESS;
+
+	board_set_spi(enable);
+
+	rv = board_set_usb(enable);
+
+	return rv;
+}
+
+static int command_debug(int argc, char **argv)
+{
+	char *e;
+	int v;
+
+	if (argc < 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	v = strtoi(argv[1], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM1;
+
+	ccprintf("Setting debug: %d...\n", v);
+	board_set_debug(v);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(debugset, command_debug, NULL, "Set debug mode", NULL);
 
 void board_set_usb_mux(int port, enum typec_mux mux, int polarity)
 {
