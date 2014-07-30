@@ -21,7 +21,7 @@
 /*****************************************************************************/
 /* Exported data */
 
-struct ec_thermal_config thermal_params[TEMP_SENSOR_COUNT];
+extern struct ec_thermal_config thermal_params[TEMP_SENSOR_COUNT];
 
 /* The tests below make some assumptions. */
 BUILD_ASSERT(TEMP_SENSOR_COUNT == 4);
