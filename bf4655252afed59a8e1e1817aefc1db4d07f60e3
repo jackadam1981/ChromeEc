@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "963547d4_5516de25",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1002584
+      },
+      "writtenOn": "2014-07-30T17:47:16Z",
+      "side": 1,
+      "message": "Once set where is it cleared? What is the cleared value?",
+      "revId": "bf4655252afed59a8e1e1817aefc1db4d07f60e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36f65b4a_24477ce1",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1002584
+      },
+      "writtenOn": "2014-07-30T17:47:16Z",
+      "side": 1,
+      "message": "charger_closest_voltage() already checks for this condition and clips the voltage to voltage_max. So will this condition ever be true?",
+      "revId": "bf4655252afed59a8e1e1817aefc1db4d07f60e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "963547d4_b5e50aef",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1002584
+      },
+      "writtenOn": "2014-07-30T17:47:16Z",
+      "side": 1,
+      "message": "Once oem_battery_state is set with an error state where is it cleared?",
+      "revId": "bf4655252afed59a8e1e1817aefc1db4d07f60e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36f65b4a_a4d26c0b",
+        "filename": "common/charge_state.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1002584
+      },
+      "writtenOn": "2014-07-30T17:47:16Z",
+      "side": 1,
+      "message": "rename to board_battery_not_connected()",
+      "revId": "bf4655252afed59a8e1e1817aefc1db4d07f60e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
