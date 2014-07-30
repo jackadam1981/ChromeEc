@@ -31,6 +31,9 @@
 
 #ifndef __ASSEMBLER__
 
+/* 48 MHz SYSCLK clock frequency */
+#define CPU_CLOCK 48000000
+
 /* Keyboard output port list */
 #define KB_OUT_PORT_LIST GPIO_A, GPIO_B, GPIO_C
 
@@ -40,10 +43,15 @@
 #define I2C_PORT_CHARGER I2C_PORT_MASTER
 
 /* Timer selection */
-#define TIM_CLOCK_MSB 3
-#define TIM_CLOCK_LSB 9
-#define TIM_POWER_LED 2
+#define TIM_CLOCK32 2
 #define TIM_WATCHDOG  4
+
+#undef CONFIG_WATCHDOG_HELP
+#undef CONFIG_UART_TX_DMA
+
+/* Optional features */
+#define CONFIG_STM_HWTIMER32
+#define CONFIG_HW_CRC
 
 #include "gpio_signal.h"
 
