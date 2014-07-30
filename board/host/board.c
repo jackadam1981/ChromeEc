@@ -5,6 +5,7 @@
 /* Emulator board-specific configuration */
 
 #include "button.h"
+#include "ec_commands.h"
 #include "extpower.h"
 #include "gpio.h"
 #include "lid_switch.h"
@@ -50,6 +51,14 @@ const struct button_config buttons[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(buttons) == CONFIG_BUTTON_COUNT);
 #endif
+
+struct ec_thermal_config thermal_params[] = {
+	{ {C_TO_K(95), C_TO_K(97), C_TO_K(99)}, C_TO_K(55), C_TO_K(85)},
+	{ {0, 0, 0}, 0, 0},
+	{ {0, 0, 0}, 0, 0},
+	{ {0, 0, 0}, 0, 0},
+};
+BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
 
 /* Define the accelerometer orientation matrices. */
 const struct accel_orientation acc_orient = {
