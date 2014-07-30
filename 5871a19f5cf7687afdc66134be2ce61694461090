@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36f65b4a_a43dccd9",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-07-30T17:22:53Z",
+      "side": 1,
+      "message": "SCRIPT_LOCATION is not defined anymore since we are not including src/scripts/common.sh\n\nVic is aware of the issue.",
+      "revId": "5871a19f5cf7687afdc66134be2ce61694461090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
