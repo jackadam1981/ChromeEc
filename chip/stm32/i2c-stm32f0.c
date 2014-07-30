@@ -32,7 +32,7 @@
  */
 #define I2C_MAX_HOST_PACKET_SIZE 128
 
-#ifdef HAS_TASK_HOSTCMD
+#if 0
 #if (I2C_PORT_EC == STM32_I2C1_PORT)
 #define IRQ_SLAVE STM32_IRQ_I2C1
 #else
@@ -119,7 +119,7 @@ static void i2c_init_port(const struct i2c_port_t *p)
 }
 
 /*****************************************************************************/
-#ifdef HAS_TASK_HOSTCMD
+#if 0
 /* Host command slave */
 /* Buffer for host commands (including version, error code and checksum) */
 static uint8_t host_buffer[I2C_MAX_HOST_PACKET_SIZE];
@@ -428,7 +428,7 @@ static void i2c_init(void)
 	for (i = 0; i < i2c_ports_used; i++, p++)
 		i2c_init_port(p);
 
-#ifdef HAS_TASK_HOSTCMD
+#if 0
 	STM32_I2C_CR1(I2C_PORT_EC) |= STM32_I2C_CR1_RXIE | STM32_I2C_CR1_ERRIE
 			| STM32_I2C_CR1_ADDRIE | STM32_I2C_CR1_STOPIE;
 	STM32_I2C_OAR1(I2C_PORT_EC) = 0x8000 | CONFIG_HOSTCMD_I2C_SLAVE_ADDR;
@@ -440,21 +440,21 @@ DECLARE_HOOK(HOOK_INIT, i2c_init, HOOK_PRIO_DEFAULT);
 /**
  * Get protocol information
  */
-static int i2c_get_protocol_info(struct host_cmd_handler_args *args)
-{
-	struct ec_response_get_protocol_info *r = args->response;
-
-	memset(r, 0, sizeof(*r));
-	r->protocol_versions = (1 << 3);
-	r->max_request_packet_size = I2C_MAX_HOST_PACKET_SIZE;
-	r->max_response_packet_size = I2C_MAX_HOST_PACKET_SIZE;
-	r->flags = 0;
-
-	args->response_size = sizeof(*r);
-
-	return EC_SUCCESS;
-}
-DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO,
-		     i2c_get_protocol_info,
-		     EC_VER_MASK(0));
+// static int i2c_get_protocol_info(struct host_cmd_handler_args *args)
+// {
+// 	struct ec_response_get_protocol_info *r = args->response;
+//
+// 	memset(r, 0, sizeof(*r));
+// 	r->protocol_versions = (1 << 3);
+// 	r->max_request_packet_size = I2C_MAX_HOST_PACKET_SIZE;
+// 	r->max_response_packet_size = I2C_MAX_HOST_PACKET_SIZE;
+// 	r->flags = 0;
+//
+// 	args->response_size = sizeof(*r);
+//
+// 	return EC_SUCCESS;
+// }
+// DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO,
+// 		     i2c_get_protocol_info,
+// 		     EC_VER_MASK(0));
 

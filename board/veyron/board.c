@@ -57,3 +57,31 @@ int board_discharge_on_ac(int enable)
 {
 	return charger_discharge_on_ac(enable);
 }
+
+
+
+//Stuff that doesn't belong
+#include "common.h"
+#include "console.h"
+#include "hooks.h"
+#include "host_command.h"
+#include "sha256.h"
+#include "system.h"
+#include "task.h"
+#include "timer.h"
+#include "util.h"
+#include "watchdog.h"
+/* Console output macros */
+#define CPUTS(outstr) cputs(CC_VBOOT, outstr)
+#define CPRINTS(format, args...) cprints(CC_VBOOT, format, ## args)
+
+static void test_uart(void)
+{
+	panic_printf("\n\nBooted!\n");
+	panic_printf("1.panic printf\n");
+
+	CPRINTS("normal_printf YAY!\n");
+
+	panic_printf("2.panic printf\n");
+}
+DECLARE_HOOK(HOOK_INIT, test_uart, HOOK_PRIO_DEFAULT);

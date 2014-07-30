@@ -159,31 +159,31 @@ int vboot_hash_invalidate(int offset, int size)
 /*****************************************************************************/
 /* Hooks */
 
-static void vboot_hash_init(void)
-{
-#ifdef CONFIG_SAVE_VBOOT_HASH
-	const struct vboot_hash_tag *tag;
-	int version, size;
-
-	tag = (const struct vboot_hash_tag *)system_get_jump_tag(
-		VBOOT_HASH_SYSJUMP_TAG, &version, &size);
-	if (tag && version == VBOOT_HASH_SYSJUMP_VERSION &&
-	    size == sizeof(*tag)) {
-		/* Already computed a hash, so don't recompute */
-		CPRINTS("hash precomputed");
-		hash = tag->hash;
-		data_offset = tag->offset;
-		data_size = tag->size;
-	} else
-#endif
-	{
-		/* Start computing the hash of RW firmware */
-		vboot_hash_start(CONFIG_FW_RW_OFF,
-				 system_get_image_used(SYSTEM_IMAGE_RW),
-				 NULL, 0);
-	}
-}
-DECLARE_HOOK(HOOK_INIT, vboot_hash_init, HOOK_PRIO_DEFAULT);
+// static void vboot_hash_init(void)
+// {
+// #ifdef CONFIG_SAVE_VBOOT_HASH
+// 	const struct vboot_hash_tag *tag;
+// 	int version, size;
+//
+// 	tag = (const struct vboot_hash_tag *)system_get_jump_tag(
+// 		VBOOT_HASH_SYSJUMP_TAG, &version, &size);
+// 	if (tag && version == VBOOT_HASH_SYSJUMP_VERSION &&
+// 	    size == sizeof(*tag)) {
+// 		/* Already computed a hash, so don't recompute */
+// 		CPRINTS("hash precomputed");
+// 		hash = tag->hash;
+// 		data_offset = tag->offset;
+// 		data_size = tag->size;
+// 	} else
+// #endif
+// 	{
+// 		/* Start computing the hash of RW firmware */
+// 		vboot_hash_start(CONFIG_FW_RW_OFF,
+// 				 system_get_image_used(SYSTEM_IMAGE_RW),
+// 				 NULL, 0);
+// 	}
+// }
+// DECLARE_HOOK(HOOK_INIT, vboot_hash_init, HOOK_PRIO_DEFAULT);
 
 #ifdef CONFIG_SAVE_VBOOT_HASH
 
