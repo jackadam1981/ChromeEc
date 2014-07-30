@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f922f488_99c1bd16",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-07-30T18:23:35Z",
+      "side": 1,
+      "message": "Don\u0027t we have the same problem here? \nSRC_ROOT is not defined anymore.",
+      "revId": "aa7045fdc7e2795feb0317d97dfa9f7d4eb048ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b61a4b65_d33f943e",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-07-30T18:23:35Z",
+      "side": 1,
+      "message": "Here too.",
+      "revId": "aa7045fdc7e2795feb0317d97dfa9f7d4eb048ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
