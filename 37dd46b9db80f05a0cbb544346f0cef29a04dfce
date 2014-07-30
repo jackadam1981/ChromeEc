@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1624f7a2_47f731ab",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-07-30T21:17:30Z",
+      "side": 1,
+      "message": "You always use ${SCRIPT_DIR}/.., you should have a variable for it.",
+      "revId": "37dd46b9db80f05a0cbb544346f0cef29a04dfce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1624f7a2_07d9393e",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-07-30T21:17:30Z",
+      "side": 1,
+      "message": "No need to use readlink all the time if you have canonized the new variable that contains ${SCRIPT_DIR}/..",
+      "revId": "37dd46b9db80f05a0cbb544346f0cef29a04dfce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
