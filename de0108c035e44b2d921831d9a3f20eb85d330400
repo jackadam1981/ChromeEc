@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "763a93c6_20caf42b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-07-31T00:04:48Z",
+      "side": 1,
+      "message": "the bug was here. used to compare a uint16_t against 0, so even if analyze_rx returned -1, we still ran through this if.",
+      "range": {
+        "startLine": 340,
+        "startChar": 6,
+        "endLine": 340,
+        "endChar": 10
+      },
+      "revId": "de0108c035e44b2d921831d9a3f20eb85d330400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
