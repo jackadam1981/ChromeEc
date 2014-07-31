@@ -203,7 +203,6 @@ enum pd_states {
 	PD_STATE_SNK_REQUESTED,
 	PD_STATE_SNK_TRANSITION,
 	PD_STATE_SNK_READY,
-	PD_STATE_VDM_COMM,
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 
 	PD_STATE_SRC_DISCONNECTED,
@@ -215,6 +214,16 @@ enum pd_states {
 
 	PD_STATE_HARD_RESET,
 	PD_STATE_BIST,
+};
+
+enum vdm_states {
+	VDM_STATE_ERR_BUSY = -3,
+	VDM_STATE_ERR_SEND = -2,
+	VDM_STATE_ERR_TMOUT = -1,
+	VDM_STATE_DONE = 0,
+	/* Anything >0 represents an active state */
+	VDM_STATE_READY = 1,
+	VDM_STATE_BUSY = 2,
 };
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
@@ -237,6 +246,12 @@ static struct pd_protocol {
 	uint8_t polarity;
 	/* PD state for port */
 	enum pd_states task_state;
+
+	/* PD state for Vendor Defined Messages */
+	enum vdm_states vdm_state;
+	/* next Vendor Defined Message to send */
+	uint32_t vdo_data[VDO_MAX_SIZE];
+	uint8_t vdo_count;
 } pd[PD_PORT_COUNT];
 
 struct mutex pd_crc_lock;
@@ -433,10 +448,6 @@ static int send_request(int port, uint32_t rdo)
 
 	return bit_len;
 }
-
-/* next Vendor Defined Message to send */
-static int vdo_count[PD_PORT_COUNT];
-static uint32_t vdo_data[PD_PORT_COUNT][7];
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 
 static int send_bist_cmd(int port)
@@ -512,9 +523,8 @@ static void handle_vdm_request(int port, int cnt, uint32_t *payload)
 #endif
 
 	if (vid == USB_VID_GOOGLE) {
-#ifdef CONFIG_USB_PD_DUAL_ROLE
-		vdo_count[port] = 0; /* Done */
-#endif
+		if (pd[port].vdm_state == VDM_STATE_BUSY)
+			pd[port].vdm_state = VDM_STATE_DONE;
 #ifdef CONFIG_USB_PD_CUSTOM_VDM
 		rlen = pd_custom_vdm(port, cnt, payload, &rdata);
 		if (rlen > 0) {
@@ -846,14 +856,79 @@ static void execute_hard_reset(int port)
 {
 	pd[port].msg_id = 0;
 #ifdef CONFIG_USB_PD_DUAL_ROLE
-	if (pd[port].task_state != PD_STATE_VDM_COMM)
-		pd[port].task_state = pd[port].role == PD_ROLE_SINK ?
-			PD_STATE_SNK_DISCONNECTED : PD_STATE_SRC_DISCONNECTED;
+	pd[port].task_state = pd[port].role == PD_ROLE_SINK ?
+		PD_STATE_SNK_DISCONNECTED : PD_STATE_SRC_DISCONNECTED;
 #else
 	pd[port].task_state = PD_STATE_SRC_DISCONNECTED;
 #endif
 	pd_power_supply_reset(port);
 	CPRINTF("HARD RESET!\n");
+}
+
+/* Return flag for pd state is connected */
+static int pd_is_connected(int port)
+{
+	if (pd[port].task_state == PD_STATE_DISABLED)
+		return 0;
+
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+	/* Check if sink is connected */
+	if (pd[port].role == PD_ROLE_SINK)
+		return pd[port].task_state != PD_STATE_SNK_DISCONNECTED;
+#endif
+	/* Must be a source */
+	return pd[port].task_state != PD_STATE_SRC_DISCONNECTED;
+}
+
+void pd_send_vdm(int port, int cmd, uint32_t *data, int count)
+{
+	int i;
+
+	pd[port].vdo_data[0] = VDO(USB_VID_GOOGLE, cmd);
+	pd[port].vdo_count = count + 1;
+	for (i = 1; i < count + 1; i++)
+		pd[port].vdo_data[i] = data[i-1];
+
+	/* Set ready, pd task will actually send */
+	pd[port].vdm_state = VDM_STATE_READY;
+	task_wake(PORT_TO_TASK_ID(port));
+}
+
+static void pd_vdm_send_state_machine(int port)
+{
+	int res;
+	uint16_t header;
+	static uint64_t vdm_timeout;
+
+	switch (pd[port].vdm_state) {
+	case VDM_STATE_READY:
+		/* Only transmit VDM if connected */
+		if (!pd_is_connected(port)) {
+			pd[port].vdm_state = VDM_STATE_ERR_BUSY;
+			break;
+		}
+
+		/* Prepare and send VDM */
+		header = PD_HEADER(PD_DATA_VENDOR_DEF, pd[port].role,
+			pd[port].msg_id, (int)pd[port].vdo_count);
+		res = send_validate_message(port, header,
+				    pd[port].vdo_count,
+				    pd[port].vdo_data);
+		if (res < 0) {
+			pd[port].vdm_state = VDM_STATE_ERR_SEND;
+		} else {
+			pd[port].vdm_state = VDM_STATE_BUSY;
+			vdm_timeout = get_time().val + 500*MSEC;
+		}
+		break;
+	case VDM_STATE_BUSY:
+		/* Wait for VDM response or timeout */
+		if (get_time().val > vdm_timeout)
+			pd[port].vdm_state = VDM_STATE_ERR_TMOUT;
+		break;
+	default:
+		break;
+	}
 }
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
@@ -893,21 +968,6 @@ void pd_set_dual_role(enum pd_dual_role_states state)
 }
 #endif
 
-/* Return flag for pd state is connected */
-static int pd_is_connected(int port)
-{
-	if (pd[port].task_state == PD_STATE_DISABLED)
-		return 0;
-
-#ifdef CONFIG_USB_PD_DUAL_ROLE
-	/* Check if sink is connected */
-	if (pd[port].role == PD_ROLE_SINK)
-		return pd[port].task_state != PD_STATE_SNK_DISCONNECTED;
-#endif
-	/* Must be a source */
-	return pd[port].task_state != PD_STATE_SRC_DISCONNECTED;
-}
-
 int pd_get_polarity(int port)
 {
 	return pd[port].polarity;
@@ -932,6 +992,7 @@ void pd_task(void)
 	/* Initialize PD protocol state variables for each port. */
 	pd[port].role = PD_ROLE_DEFAULT;
 	pd[port].task_state = PD_DEFAULT_STATE;
+	pd[port].vdm_state = VDM_STATE_DONE;
 
 	/* Ensure the power supply is in the default state */
 	pd_power_supply_reset(port);
@@ -940,6 +1001,9 @@ void pd_task(void)
 	pd_hw_init(port);
 
 	while (1) {
+		/* process VDM messages last */
+		pd_vdm_send_state_machine(port);
+
 		/* monitor for incoming packet if in a connected state */
 		if (pd_is_connected(port))
 			pd_rx_enable_monitoring(port);
@@ -1123,23 +1187,6 @@ void pd_task(void)
 			}
 			timeout = 100*MSEC;
 			break;
-		case PD_STATE_VDM_COMM:
-			if (vdo_count[port] > 7) { /* TIMEOUT */
-				vdo_count[port] = -EC_ERROR_TIMEOUT;
-			} else if (vdo_count[port] > 0) {
-				int len;
-				uint16_t header = PD_HEADER(PD_DATA_VENDOR_DEF,
-					pd[port].role, pd[port].msg_id,
-					vdo_count[port]);
-				len = send_validate_message(port, header,
-							    vdo_count[port],
-							    vdo_data[port]);
-				vdo_count[port] = 8; /* Transmitting */
-				if (len < 0)
-					vdo_count[port] = -EC_ERROR_BUSY;
-			}
-			timeout = 500*MSEC;
-			break;
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 		case PD_STATE_HARD_RESET:
 			send_hard_reset(port);
@@ -1175,12 +1222,10 @@ void pd_task(void)
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 		if (pd[port].role == PD_ROLE_SINK &&
 		    !pd_snk_is_vbus_provided(port)) {
-			if (pd[port].task_state != PD_STATE_VDM_COMM) {
-				/* Sink: detect disconnect by monitoring VBUS */
-				pd[port].task_state = PD_STATE_SNK_DISCONNECTED;
-				/* set timeout small to reconnect fast */
-				timeout = 5*MSEC;
-			}
+			/* Sink: detect disconnect by monitoring VBUS */
+			pd[port].task_state = PD_STATE_SNK_DISCONNECTED;
+			/* set timeout small to reconnect fast */
+			timeout = 5*MSEC;
 		}
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 	}
@@ -1223,60 +1268,61 @@ static int hex8tou32(char *str, uint32_t *val)
 
 static int remote_flashing(int argc, char **argv)
 {
-	int port;
+	int port, cnt, cmd;
+	uint32_t data[VDO_MAX_SIZE-1];
 	char *e;
 	static int flash_offset[PD_PORT_COUNT];
 
-	if (argc < 4)
+	if (argc < 4 || argc > (VDO_MAX_SIZE + 4 - 1))
 		return EC_ERROR_PARAM_COUNT;
 
 	port = strtoi(argv[1], &e, 10);
 	if (*e || port >= PD_PORT_COUNT)
 		return EC_ERROR_PARAM2;
 
+	cnt = 0;
 	if (!strcasecmp(argv[3], "erase")) {
-		vdo_data[port][0] = VDO(USB_VID_GOOGLE, VDO_CMD_FLASH_ERASE);
-		vdo_count[port] = 1;
+		cmd = VDO_CMD_FLASH_ERASE;
 		flash_offset[port] = 0;
 		ccprintf("ERASE ...");
 	} else if (!strcasecmp(argv[3], "reboot")) {
-		vdo_data[port][0] = VDO(USB_VID_GOOGLE, VDO_CMD_REBOOT);
-		vdo_count[port] = 1;
+		cmd = VDO_CMD_REBOOT;
 		ccprintf("REBOOT ...");
 	} else if (!strcasecmp(argv[3], "hash")) {
 		int i;
-		for (i = 4; i < argc; i++)
-			if (hex8tou32(argv[i], vdo_data[port] + i - 3))
+		argc -= 4;
+		for (i = 0; i < argc; i++)
+			if (hex8tou32(argv[i+4], data + i))
 				return EC_ERROR_INVAL;
-		vdo_data[port][0] = VDO(USB_VID_GOOGLE, VDO_CMD_FLASH_HASH);
-		vdo_count[port] = argc - 3;
+		cmd = VDO_CMD_FLASH_HASH;
+		cnt = argc;
 		ccprintf("HASH ...");
 	} else if (!strcasecmp(argv[3], "rw_hash")) {
-		vdo_data[port][0] = VDO(USB_VID_GOOGLE, VDO_CMD_RW_HASH);
-		vdo_count[port] = 1;
+		cmd = VDO_CMD_RW_HASH;
 		ccprintf("RW HASH...");
 	} else if (!strcasecmp(argv[3], "version")) {
-		vdo_data[port][0] = VDO(USB_VID_GOOGLE, VDO_CMD_VERSION);
-		vdo_count[port] = 1;
+		cmd = VDO_CMD_VERSION;
 		ccprintf("VERSION...");
 	} else {
 		int i;
-		for (i = 3; i < argc; i++)
-			if (hex8tou32(argv[i], vdo_data[port] + i - 2))
+		argc -= 3;
+		for (i = 0; i < argc; i++)
+			if (hex8tou32(argv[i+3], data + i))
 				return EC_ERROR_INVAL;
-		vdo_data[port][0] = VDO(USB_VID_GOOGLE, VDO_CMD_FLASH_WRITE);
-		vdo_count[port] = argc - 2;
-		ccprintf("WRITE %d @%04x ...", (argc - 3) * 4,
+		cmd = VDO_CMD_FLASH_WRITE;
+		cnt = argc;
+		ccprintf("WRITE %d @%04x ...", argc * 4,
 			 flash_offset[port]);
-		flash_offset[port] += (argc - 3) * 4;
+		flash_offset[port] += argc * 4;
 	}
-	pd[port].task_state = PD_STATE_VDM_COMM;
-	task_wake(PORT_TO_TASK_ID(port));
 
-	/* Wait until VDO is done */
-	while (vdo_count[port] > 0)
+	pd_send_vdm(port, cmd, data, cnt);
+
+	/* Wait until VDM is done */
+	while (pd[port].vdm_state > 0)
 		task_wait_event(100*MSEC);
-	ccprintf("DONE\n");
+
+	ccprintf("DONE %d\n", pd[port].vdm_state);
 	return EC_SUCCESS;
 }
 
@@ -1381,7 +1427,7 @@ static int command_pd(int argc, char **argv)
 		const char * const state_names[] = {
 			"DISABLED", "SUSPENDED",
 			"SNK_DISCONNECTED", "SNK_DISCOVERY", "SNK_REQUESTED",
-			"SNK_TRANSITION", "SNK_READY", "VDM_COMM",
+			"SNK_TRANSITION", "SNK_READY",
 			"SRC_DISCONNECTED", "SRC_DISCOVERY", "SRC_NEGOCIATE",
 			"SRC_ACCEPTED", "SRC_TRANSITION", "SRC_READY",
 			"HARD_RESET", "BIST",
