@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56582f41_8bb1d1e3",
+        "filename": "common/build.mk",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-07-31T23:48:38Z",
+      "side": 1,
+      "message": "Alphabetical, please",
+      "revId": "a35f79c70778e65036231a0dc86c0185b03533ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6488b79_83d89e29",
+        "filename": "common/smbus.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-07-31T23:48:38Z",
+      "side": 1,
+      "message": "Using these structs seems confusing.  Particularly with typecasts like this between struct types.\n\nMaking them static also increases memory usage, and is not safe if multiple tasks use them functions at the same time.",
+      "revId": "a35f79c70778e65036231a0dc86c0185b03533ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6488b79_a3db9a25",
+        "filename": "common/smbus.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-07-31T23:48:38Z",
+      "side": 1,
+      "message": "typo: up to",
+      "revId": "a35f79c70778e65036231a0dc86c0185b03533ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "365d7b32_ca9ea3df",
+        "filename": "include/common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-07-31T23:48:38Z",
+      "side": 1,
+      "message": "Suggest EC_ERROR_CRC or EC_ERROR_CHECKSUM.  That way we can reuse this error code for other types of checksum/crc errors.",
+      "revId": "a35f79c70778e65036231a0dc86c0185b03533ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6488b79_c301f6d6",
+        "filename": "include/i2c.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-07-31T23:48:38Z",
+      "side": 1,
+      "message": "TURE -\u003e non-zero",
+      "revId": "a35f79c70778e65036231a0dc86c0185b03533ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6488b79_03a6eeac",
+        "filename": "include/smbus.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-07-31T23:48:38Z",
+      "side": 1,
+      "message": "I\u0027m not a big fan of these structs; they seem overly complex for the problem they\u0027re trying to solve.  But even if we do want to keep them, they should be in smbus.c because they\u0027re only used internally there; they\u0027re not part of the interface other modules use.",
+      "revId": "a35f79c70778e65036231a0dc86c0185b03533ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
