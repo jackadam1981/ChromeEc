@@ -20,12 +20,12 @@ int mock_x_acc[ACCEL_COUNT], mock_y_acc[ACCEL_COUNT], mock_z_acc[ACCEL_COUNT];
 /*****************************************************************************/
 /* Mock functions */
 
-int accel_init(enum accel_id id)
+static int accel_init(enum accel_id id)
 {
 	return EC_SUCCESS;
 }
 
-int accel_read(enum accel_id id, int *x_acc, int *y_acc, int *z_acc)
+static int accel_read(enum accel_id id, int *x_acc, int *y_acc, int *z_acc)
 {
 	/* Return the mock values. */
 	*x_acc = mock_x_acc[id];
@@ -35,31 +35,54 @@ int accel_read(enum accel_id id, int *x_acc, int *y_acc, int *z_acc)
 	return EC_SUCCESS;
 }
 
-int accel_set_range(const enum accel_id id, const int range, const int rnd)
-{
-	return EC_SUCCESS;
-}
-int accel_get_range(const enum accel_id id, int * const range)
-{
-	return EC_SUCCESS;
-}
-int accel_set_resolution(const enum accel_id id, const int res, const int rnd)
-{
-	return EC_SUCCESS;
-}
-int accel_get_resolution(const enum accel_id id, int * const res)
-{
-	return EC_SUCCESS;
-}
-int accel_set_datarate(const enum accel_id id, const int rate, const int rnd)
-{
-	return EC_SUCCESS;
-}
-int accel_get_datarate(const enum accel_id id, int * const rate)
+static int accel_set_range(const enum accel_id id,
+			   const int range,
+			   const int rnd)
 {
 	return EC_SUCCESS;
 }
 
+static int accel_get_range(const enum accel_id id, int * const range)
+{
+	return EC_SUCCESS;
+}
+
+static int accel_set_resolution(const enum accel_id id,
+				const int res,
+				const int rnd)
+{
+	return EC_SUCCESS;
+}
+
+static int accel_get_resolution(const enum accel_id id,
+				int * const res)
+{
+	return EC_SUCCESS;
+}
+
+static int accel_set_datarate(const enum accel_id id,
+			      const int rate,
+			      const int rnd)
+{
+	return EC_SUCCESS;
+}
+
+static int accel_get_datarate(const enum accel_id id,
+			      int * const rate)
+{
+	return EC_SUCCESS;
+}
+
+struct accel_gyro_t test_motion_sense = {
+	.init = accel_init,
+	.read = accel_read,
+	.set_range = accel_set_range,
+	.get_range = accel_get_range,
+	.set_resolution = accel_set_resolution,
+	.get_resolution = accel_get_resolution,
+	.set_datarate = accel_set_datarate,
+	.get_datarate = accel_get_datarate,
+}
 
 /*****************************************************************************/
 /* Test utilities */

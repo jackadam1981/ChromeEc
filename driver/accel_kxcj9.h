@@ -112,4 +112,6 @@
 int accel_set_interrupt(const enum accel_id id, unsigned int threshold);
 #endif
 
+extern struct accelgyro_info accel_kxcj9;
+
 #endif /* __CROS_EC_ACCEL_KXCJ9_H */

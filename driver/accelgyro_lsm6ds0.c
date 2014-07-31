@@ -5,7 +5,7 @@
 
 /* LSM6DS0 accelerometer and gyro module for Chrome EC */
 
-#include "accelerometer.h"
+#include "accelgyro.h"
 #include "common.h"
 #include "console.h"
 #include "driver/accelgyro_lsm6ds0.h"
@@ -94,7 +94,9 @@ static int raw_write8(const int addr, const int reg, int data)
 	return i2c_write8(I2C_PORT_ACCEL, addr, reg, data);
 }
 
-int accel_set_range(const enum accel_id id, const int range, const int rnd)
+static int accel_set_range(const enum accel_id id,
+			   const int range,
+			   const int rnd)
 {
 	int ret, index, ctrl_reg6;
 
@@ -123,7 +125,7 @@ accel_cleanup:
 	return EC_SUCCESS;
 }
 
-int accel_get_range(const enum accel_id id, int * const range)
+static int accel_get_range(const enum accel_id id, int * const range)
 {
 	/* Check for valid id. */
 	if (id < 0 || id >= ACCEL_COUNT)
@@ -133,7 +135,9 @@ int accel_get_range(const enum accel_id id, int * const range)
 	return EC_SUCCESS;
 }
 
-int accel_set_resolution(const enum accel_id id, const int res, const int rnd)
+static int accel_set_resolution(const enum accel_id id,
+				const int res,
+				const int rnd)
 {
 	/* Check for valid id. */
 	if (id < 0 || id >= ACCEL_COUNT)
@@ -143,7 +147,8 @@ int accel_set_resolution(const enum accel_id id, const int res, const int rnd)
 	return EC_SUCCESS;
 }
 
-int accel_get_resolution(const enum accel_id id, int * const res)
+static int accel_get_resolution(const enum accel_id id,
+				int * const res)
 {
 	/* Check for valid id. */
 	if (id < 0 || id >= ACCEL_COUNT)
@@ -153,7 +158,9 @@ int accel_get_resolution(const enum accel_id id, int * const res)
 	return EC_SUCCESS;
 }
 
-int accel_set_datarate(const enum accel_id id, const int rate, const int rnd)
+static int accel_set_datarate(const enum accel_id id,
+			      const int rate,
+			      const int rnd)
 {
 	int ret, index, ctrl_reg6;
 
@@ -186,7 +193,8 @@ accel_cleanup:
 	return EC_SUCCESS;
 }
 
-int accel_get_datarate(const enum accel_id id, int * const rate)
+static int accel_get_datarate(const enum accel_id id,
+			      int * const rate)
 {
 	/* Check for valid id. */
 	if (id < 0 || id >= ACCEL_COUNT)
@@ -197,15 +205,18 @@ int accel_get_datarate(const enum accel_id id, int * const rate)
 }
 
 #ifdef CONFIG_ACCEL_INTERRUPTS
-int accel_set_interrupt(const enum accel_id id, unsigned int threshold)
+static int accel_set_interrupt(const enum accel_id id,
+			       unsigned int threshold)
 {
 	/* Currently unsupported. */
 	return EC_ERROR_UNKNOWN;
 }
 #endif
 
-int accel_read(const enum accel_id id, int * const x_acc, int * const y_acc,
-		int * const z_acc)
+static int accel_read(const enum accel_id id,
+		      int * const x_acc,
+		      int * const y_acc,
+		      int * const z_acc)
 {
 	uint8_t acc[6];
 	uint8_t reg = LSM6DS0_OUT_X_L_XL;
@@ -254,7 +265,7 @@ int accel_read(const enum accel_id id, int * const x_acc, int * const y_acc,
 	return EC_SUCCESS;
 }
 
-int accel_init(const enum accel_id id)
+static int accel_init(const enum accel_id id)
 {
 	int ret, ctrl_reg6;
 
@@ -282,4 +293,19 @@ int accel_init(const enum accel_id id)
 accel_cleanup:
 	mutex_unlock(&accel_mutex[id]);
 	return ret;
+}
+
+const struct accelgyro_info accelgyro_lsm6ds0 = {
+	.type = SENSOR_ACCELEROMETER,
+	.init = accel_init,
+	.read = accel_read,
+	.set_range = accel_set_range,
+	.get_range = accel_get_range,
+	.set_resolution = accel_set_resolution,
+	.get_resolution = accel_get_resolution,
+	.set_datarate = accel_set_datarate,
+	.get_datarate = accel_get_datarate,
+#ifdef CONFIG_ACCEL_INTERRUPTS
+	.set_interrupt = accel_set_interrupt,
+#endif
 }

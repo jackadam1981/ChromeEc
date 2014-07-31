@@ -42,4 +42,6 @@
 /* Sensor resolution in number of bits. This sensor has fixed resolution. */
 #define LSM6DS0_RESOLUTION      16
 
+extern struct accelgyro_info accelgyro_lsm6ds0;
+
 #endif /* __CROS_EC_ACCEL_LSM6DS0_H */

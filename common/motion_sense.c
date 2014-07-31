@@ -5,7 +5,7 @@
 
 /* Motion sense module to read from various motion sensors. */
 
-#include "accelerometer.h"
+#include "accelgyro.h"
 #include "common.h"
 #include "console.h"
 #include "hooks.h"

@@ -5,7 +5,7 @@
 
 /* KXCJ9 gsensor module for Chrome EC */
 
-#include "accelerometer.h"
+#include "accelgyro.h"
 #include "common.h"
 #include "console.h"
 #include "driver/accel_kxcj9.h"
@@ -196,7 +196,9 @@ static int enable_sensor(const enum accel_id id, const int ctrl1)
 	return ret;
 }
 
-int accel_set_range(const enum accel_id id, const int range, const int rnd)
+static int accel_set_range(const enum accel_id id,
+			   const int range,
+			   const int rnd)
 {
 	int ret, ctrl1, ctrl1_new, index;
 
@@ -229,7 +231,7 @@ int accel_set_range(const enum accel_id id, const int range, const int rnd)
 	return ret;
 }
 
-int accel_get_range(const enum accel_id id, int * const range)
+static int accel_get_range(const enum accel_id id, int * const range)
 {
 	/* Check for valid id. */
 	if (id < 0 || id >= ACCEL_COUNT)
@@ -239,7 +241,9 @@ int accel_get_range(const enum accel_id id, int * const range)
 	return EC_SUCCESS;
 }
 
-int accel_set_resolution(const enum accel_id id, const int res, const int rnd)
+static int accel_set_resolution(const enum accel_id id,
+				const int res,
+				const int rnd)
 {
 	int ret, ctrl1, ctrl1_new, index;
 
@@ -273,7 +277,7 @@ int accel_set_resolution(const enum accel_id id, const int res, const int rnd)
 	return ret;
 }
 
-int accel_get_resolution(const enum accel_id id, int * const res)
+static int accel_get_resolution(const enum accel_id id, int * const res)
 {
 	/* Check for valid id. */
 	if (id < 0 || id >= ACCEL_COUNT)
@@ -283,7 +287,9 @@ int accel_get_resolution(const enum accel_id id, int * const res)
 	return EC_SUCCESS;
 }
 
-int accel_set_datarate(const enum accel_id id, const int rate, const int rnd)
+static int accel_set_datarate(const enum accel_id id,
+			      const int rate,
+			      const int rnd)
 {
 	int ret, ctrl1, index;
 
@@ -314,7 +320,7 @@ int accel_set_datarate(const enum accel_id id, const int rate, const int rnd)
 	return ret;
 }
 
-int accel_get_datarate(const enum accel_id id, int * const rate)
+static int accel_get_datarate(const enum accel_id id, int * const rate)
 {
 	/* Check for valid id. */
 	if (id < 0 || id >= ACCEL_COUNT)
@@ -326,7 +332,7 @@ int accel_get_datarate(const enum accel_id id, int * const rate)
 
 
 #ifdef CONFIG_ACCEL_INTERRUPTS
-int accel_set_interrupt(const enum accel_id id, unsigned int threshold)
+static int accel_set_interrupt(const enum accel_id id, unsigned int threshold)
 {
 	int ctrl1, tmp, ret;
 
@@ -380,8 +386,10 @@ error_enable_sensor:
 }
 #endif
 
-int accel_read(const enum accel_id id, int * const x_acc, int * const y_acc,
-		int * const z_acc)
+static int accel_read(const enum accel_id id,
+		      int * const x_acc,
+		      int * const y_acc,
+		      int * const z_acc)
 {
 	uint8_t acc[6];
 	uint8_t reg = KXCJ9_XOUT_L;
@@ -436,7 +444,7 @@ int accel_read(const enum accel_id id, int * const x_acc, int * const y_acc,
 	return EC_SUCCESS;
 }
 
-int accel_init(const enum accel_id id)
+static int accel_init(const enum accel_id id)
 {
 	int ret = EC_SUCCESS;
 	int cnt = 0, ctrl1, ctrl2;
@@ -513,4 +521,19 @@ int accel_init(const enum accel_id id)
 	ret |= enable_sensor(id, ctrl1);
 
 	return ret;
+}
+
+const struct accelgyro_info accel_kxcj9 = {
+	.type = SENSOR_ACCELEROMETER,
+	.init = accel_init,
+	.read = accel_read,
+	.set_range = accel_set_range,
+	.get_range = accel_get_range,
+	.set_resolution = accel_set_resolution,
+	.get_resolution = accel_get_resolution,
+	.set_datarate = accel_set_datarate,
+	.get_datarate = accel_get_datarate,
+#ifdef CONFIG_ACCEL_INTERRUPTS
+	.set_interrupt = accel_set_interrupt,
+#endif
 }

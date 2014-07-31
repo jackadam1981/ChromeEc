@@ -92,5 +92,17 @@ void accel_int_lid(enum gpio_signal signal);
  */
 void accel_int_base(enum gpio_signal signal);
 
+enum sensor_location_t {
+	LOCATION_BASE,
+	LOCATION_LID,
+};
+
+struct motion_sensor_t {
+	char *name;
+	enum sensor_location_t location;
+	struct accelgyro_info *drv;
+	void *drv_data;
+	uint8_t i2c_addr;
+};
 
 #endif /* __CROS_EC_MOTION_SENSE_H */
