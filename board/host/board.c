@@ -78,4 +78,3 @@ const struct accel_orientation acc_orient = {
 	},
 	.hinge_axis = {0, 1, 0},
 };
-
