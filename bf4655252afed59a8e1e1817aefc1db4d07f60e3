@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "592ce07a_7d923b93",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1112186
+      },
+      "writtenOn": "2014-07-31T10:50:04Z",
+      "side": 1,
+      "message": "This value is cleared only once when battery is removed.\nThat is, we want to keep battery error state before removing battery.\n\nCleared value is \u00270\u0027, this means battery state is common.",
+      "parentUuid": "963547d4_5516de25",
+      "revId": "bf4655252afed59a8e1e1817aefc1db4d07f60e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36f65b4a_24477ce1",
         "filename": "board/winky/battery.c",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "56f10f4f_8a342c69",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1112186
+      },
+      "writtenOn": "2014-07-31T10:50:04Z",
+      "side": 1,
+      "message": "charger_closest_voltage() just checks configurable voltage about charger.\n\nWe want to stop to charge and enter battery error state when battery pack voltage is higher than charging voltage.",
+      "parentUuid": "36f65b4a_24477ce1",
+      "revId": "bf4655252afed59a8e1e1817aefc1db4d07f60e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "963547d4_b5e50aef",
         "filename": "board/winky/battery.c",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2014-07-30T17:47:16Z",
       "side": 1,
       "message": "Once oem_battery_state is set with an error state where is it cleared?",
+      "revId": "bf4655252afed59a8e1e1817aefc1db4d07f60e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3931ecd1_84f15704",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1112186
+      },
+      "writtenOn": "2014-07-31T10:50:04Z",
+      "side": 1,
+      "message": "This value is cleared only once when battery is removed.\ncommon/charge_state.c",
+      "parentUuid": "963547d4_b5e50aef",
       "revId": "bf4655252afed59a8e1e1817aefc1db4d07f60e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
