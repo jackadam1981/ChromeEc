@@ -360,8 +360,9 @@ static int send_validate_message(int port, uint16_t header,
 			}
 		}
 	}
-	/* we failed all the re-transmissions */
-	/* TODO: try HardReset */
+
+	/* we failed all the re-transmissions, send hard reset */
+	pd[port].task_state = PD_STATE_HARD_RESET;
 	CPRINTF("TX NO ACK %04x/%d\n", header, cnt);
 	return -1;
 }
