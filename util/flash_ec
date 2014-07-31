@@ -178,7 +178,7 @@ else
 	EC_FILE=ec.bin
 fi
 EMERGE_BUILD=${BOARD_ROOT}/firmware/${EC_FILE}
-LOCAL_BUILD="$(readlink -f "${SCRIPT_DIR}/../build/${BOARD}/${EC_FILE}")"
+LOCAL_BUILD=${SCRIPT_DIR}/../build/${BOARD}/${EC_FILE}
 
 # Find the EC image to use
 function ec_image() {
@@ -191,7 +191,7 @@ function ec_image() {
 		die "Invalid image path : ${FLAGS_image}"
 	else
 		if [ -f "${LOCAL_BUILD}" ]; then
-			echo "${LOCAL_BUILD}"
+			echo "$(readlink -f "${LOCAL_BUILD}")"
 			return
 		fi
 		if [ -f "${EMERGE_BUILD}" ]; then
