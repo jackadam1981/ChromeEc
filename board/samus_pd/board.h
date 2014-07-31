@@ -20,12 +20,6 @@
 #define CONFIG_STM_HWTIMER32
 #define CONFIG_USB
 #define CONFIG_USB_FTDI
-#define CONFIG_USB_MS
-#define CONFIG_USB_MS_BUFFER_SIZE SPI_FLASH_MAX_WRITE_SIZE
-#define CONFIG_USB_POWER_DELIVERY
-#define CONFIG_USB_PD_CUSTOM_VDM
-#define CONFIG_USB_PD_DUAL_ROLE
-#define CONFIG_USB_PD_INTERNAL_COMP
 #define CONFIG_USBC_SS_MUX
 #define CONFIG_ADC
 #define CONFIG_HW_CRC
@@ -106,15 +100,12 @@ int board_set_debug(int enable);
 
 /* USB interface indexes (use define rather than enum to expand them) */
 #define USB_IFACE_FTDI		0
-#define USB_IFACE_MS		1
-#define USB_IFACE_COUNT		2
+#define USB_IFACE_COUNT		1
 
 /* USB endpoint indexes (use define rather than enum to expand them) */
 #define USB_EP_CONTROL	0
 #define USB_EP_FTDI_TX	1
 #define USB_EP_FTDI_RX	2
-#define USB_EP_MS_TX	3
-#define USB_EP_MS_RX	4
-#define USB_EP_COUNT	5
+#define USB_EP_COUNT	3
 
 #endif /* __BOARD_H */

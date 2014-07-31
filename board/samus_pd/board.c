@@ -23,18 +23,6 @@
 /* Chipset power state */
 static enum power_state ps;
 
-void vbus0_evt(enum gpio_signal signal)
-{
-	ccprintf("VBUS %d, %d!\n", signal, gpio_get_level(signal));
-	task_wake(TASK_ID_PD_C0);
-}
-
-void vbus1_evt(enum gpio_signal signal)
-{
-	ccprintf("VBUS %d, %d!\n", signal, gpio_get_level(signal));
-	task_wake(TASK_ID_PD_C1);
-}
-
 void bc12_evt(enum gpio_signal signal)
 {
 	ccprintf("PERICOM %d!\n", signal);
@@ -105,10 +93,6 @@ static void board_init(void)
 	 * to specify device mode.
 	 */
 	gpio_set_level(GPIO_USB_C_CC_EN, 1);
-
-	/* Enable interrupts on VBUS transitions. */
-	gpio_enable_interrupt(GPIO_USB_C0_VBUS_WAKE);
-	gpio_enable_interrupt(GPIO_USB_C1_VBUS_WAKE);
 
 	/* Determine initial chipset state */
 	if (slp_s5 && slp_s3) {
@@ -199,10 +183,6 @@ static int board_set_usb(int enable)
 static void board_set_spi(int enable)
 {
 	if (enable) {
-		/* Suspend PD */
-		pd_set_suspend(0, 1);
-		pd_set_suspend(1, 1);
-
 		/* Set pins PD_SPI_MISO and PD_SPI_MOSI to alt function. */
 		STM32_GPIO_MODER(GPIO_C) &= ~0x000000f0;
 		STM32_GPIO_MODER(GPIO_C) |= 0x000000a0;
@@ -254,10 +234,6 @@ static void board_set_spi(int enable)
 		/* Set all to input mode */
 		STM32_GPIO_MODER(GPIO_C) &= ~0x000000f0;
 		STM32_GPIO_MODER(GPIO_D) &= ~0x0000000f;
-
-		/* Re-enable PD */
-		pd_set_suspend(0, 0);
-		pd_set_suspend(1, 0);
 	}
 }
 
