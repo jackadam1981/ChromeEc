@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "3692db12_88c9bb92",
+        "filename": "chip/lm4/i2c.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-01T20:55:02Z",
+      "side": 1,
+      "message": "nit, I think it\u0027s more clear to switch order: register \u0026 flag\nLM4_I2C_MCS(port) \u0026 LM4_I2C_MCS_BUSBSY",
+      "range": {
+        "startLine": 78,
+        "startChar": 8,
+        "endLine": 78,
+        "endChar": 26
+      },
+      "revId": "a35f79c70778e65036231a0dc86c0185b03533ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56582f41_8bb1d1e3",
         "filename": "common/build.mk",
         "patchSetId": 6
@@ -13,6 +36,109 @@
       "writtenOn": "2014-07-31T23:48:38Z",
       "side": 1,
       "message": "Alphabetical, please",
+      "revId": "a35f79c70778e65036231a0dc86c0185b03533ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7688d3e2_a7edce95",
+        "filename": "common/smbus.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-01T20:55:02Z",
+      "side": 1,
+      "message": "multiline comments have nothing on first line:\n/*\n * Multiline comment.\n */",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 2
+      },
+      "revId": "a35f79c70778e65036231a0dc86c0185b03533ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7688d3e2_4755e284",
+        "filename": "common/smbus.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-01T20:55:02Z",
+      "side": 1,
+      "message": "I don\u0027t like this, it only works because slave_addr is the first element of the struct. If someone reordered struct, it would break in a non-obvious way. intf already points to beginning of struct, so just use that.",
+      "revId": "a35f79c70778e65036231a0dc86c0185b03533ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3692db12_c8bca3a3",
+        "filename": "common/smbus.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-01T20:55:02Z",
+      "side": 1,
+      "message": "This is just really confusing. The smbus_wr_if has a data array of size 0, but yet you are accessing element n-1. It only works because you have typecast some other struct with more data elements as a smbus_wr_if struct.\n\nI think we should only have one struct, and it should be private to this file. It should have slave_addr, smbus_cmd, data_size, and pointer to data buffer. We can use that for reads and writes of any size. We can build the CRC incrementally instead of all at once.",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 12
+      },
+      "revId": "a35f79c70778e65036231a0dc86c0185b03533ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "968387c4_7649b878",
+        "filename": "common/smbus.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-01T20:55:02Z",
+      "side": 1,
+      "message": "/** is used for function headers. just one star please.",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 4
+      },
+      "revId": "a35f79c70778e65036231a0dc86c0185b03533ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3692db12_c8d8232b",
+        "filename": "common/smbus.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-01T20:55:02Z",
+      "side": 1,
+      "message": "why is this one static instead of using the shared_mem_acquire()?",
       "revId": "a35f79c70778e65036231a0dc86c0185b03533ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -98,6 +224,24 @@
       "writtenOn": "2014-07-31T23:48:38Z",
       "side": 1,
       "message": "I\u0027m not a big fan of these structs; they seem overly complex for the problem they\u0027re trying to solve.  But even if we do want to keep them, they should be in smbus.c because they\u0027re only used internally there; they\u0027re not part of the interface other modules use.",
+      "revId": "a35f79c70778e65036231a0dc86c0185b03533ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "968387c4_6b45517e",
+        "filename": "include/smbus.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-01T20:55:02Z",
+      "side": 1,
+      "message": "agree",
+      "parentUuid": "b6488b79_03a6eeac",
       "revId": "a35f79c70778e65036231a0dc86c0185b03533ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
