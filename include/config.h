@@ -275,6 +275,9 @@
 /* Charger enable GPIO is active low */
 #undef CONFIG_CHARGER_EN_ACTIVE_LOW
 
+/* Dump the full battery state (all the strings use 1kB of flash) */
+#define CONFIG_CHARGER_VERBOSE_BATTERY_STATE
+
 /*****************************************************************************/
 /* Chipset config */
 

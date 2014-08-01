@@ -223,6 +223,7 @@ static const char * const batt_pres[] = {
 
 static void dump_charge_state(void)
 {
+#ifdef CONFIG_CHARGER_VERBOSE_BATTERY_STATE
 #define DUMP(FLD, FMT) ccprintf(#FLD " = " FMT "\n", curr.FLD)
 #define DUMP_CHG(FLD, FMT) ccprintf("\t" #FLD " = " FMT "\n", curr.chg. FLD)
 #define DUMP_BATT(FLD, FMT) ccprintf("\t" #FLD " = " FMT "\n", curr.batt. FLD)
@@ -255,6 +256,7 @@ static void dump_charge_state(void)
 	ccprintf("battery_seems_to_be_dead = %d\n", battery_seems_to_be_dead);
 	ccprintf("debug output = %s\n", debugging ? "on" : "off");
 #undef DUMP
+#endif /* CONFIG_CHARGER_VERBOSE_BATTERY_STATE */
 }
 
 static void show_charging_progress(void)
