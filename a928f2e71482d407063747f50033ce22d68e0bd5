@@ -40,6 +40,24 @@
       "revId": "a928f2e71482d407063747f50033ce22d68e0bd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3692db12_083a8bdf",
+        "filename": "common/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-01T20:18:09Z",
+      "side": 1,
+      "message": "This may work, and may be a little simpler in code, but it\u0027s less efficient, and I don\u0027t think it\u0027s as safe. The way the code is written, we always read 32 bytes of data when reading various strings: chemistry, manufacturer, etc. Let\u0027s say some device only returns a couple of bytes for that information, we will keep reading past the end, which may confuse the device. Also, an extra 30 bytes transfer is an extra 3ms of transfer time at 100kHz bus speed! That\u0027s a long time. I really think it would be better to do two transfers, like the LM4 driver currently does.",
+      "parentUuid": "f922f488_dafa5153",
+      "revId": "a928f2e71482d407063747f50033ce22d68e0bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
