@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7688d3e2_41f9522b",
+        "filename": "board/ryu/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-08-01T16:13:22Z",
+      "side": 1,
+      "message": "you probably want to disable AP first, then modify EC USB",
+      "revId": "5666e3a0976ec39ec633fc8208c9626a4bab3fae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "968387c4_65fb40e1",
+        "filename": "board/ryu/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-08-01T16:13:22Z",
+      "side": 1,
+      "message": "as the SPI2 pins are not used for anything else than SPI,\nyou should simply have a GPIO ALTERNATE configuration for them and just call gpio_config_module()",
+      "revId": "5666e3a0976ec39ec633fc8208c9626a4bab3fae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7688d3e2_612fb613",
+        "filename": "board/ryu/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-08-01T16:13:22Z",
+      "side": 1,
+      "message": "is it reserved the USB PID spreadsheet ?",
+      "revId": "5666e3a0976ec39ec633fc8208c9626a4bab3fae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7688d3e2_016eea39",
+        "filename": "board/ryu/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-08-01T16:13:22Z",
+      "side": 1,
+      "message": "it seems your tabs are still broken.\nin the EC (and kernel) code base  1 tab \u003d\u003d 8 spaces",
+      "revId": "5666e3a0976ec39ec633fc8208c9626a4bab3fae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3692db12_1fc8835a",
+        "filename": "board/ryu/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-08-01T16:13:22Z",
+      "side": 1,
+      "message": "I think at least PD should have higher priority than USB_MS",
+      "revId": "5666e3a0976ec39ec633fc8208c9626a4bab3fae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
