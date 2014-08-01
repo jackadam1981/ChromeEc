@@ -178,7 +178,7 @@ else
 	EC_FILE=ec.bin
 fi
 EMERGE_BUILD=${BOARD_ROOT}/firmware/${EC_FILE}
-LOCAL_BUILD="$(readlink -f "${SCRIPT_DIR}/../build/${BOARD}/${EC_FILE}")"
+LOCAL_BUILD="$(readlink -f "${SCRIPT_DIR}/../build/${BOARD}/${EC_FILE}" || echo "")"
 
 # Find the EC image to use
 function ec_image() {
@@ -321,7 +321,7 @@ function flash_stm32_dfu() {
 
 function flash_link() {
 	OCD_CFG="servo_v2_slower.cfg"
-	OCD_PATH="${SRC_ROOT}/platform/ec/chip/lm4/openocd"
+	OCD_PATH="${SCRIPT_DIR}/../chip/lm4/openocd"
 	OCD_CMDS="init; flash_lm4 ${IMG} ${FLAGS_offset};"
 	if [ "${FLAGS_unprotect}" = ${FLAGS_TRUE} ] ; then
 		info "Clearing write protect flag."
@@ -338,7 +338,7 @@ function flash_link() {
 
 function flash_lm4() {
 	OCD_CFG="servo_v2_slower.cfg"
-	OCD_PATH="${SRC_ROOT}/platform/ec/chip/lm4/openocd"
+	OCD_PATH="${SCRIPT_DIR}/../chip/lm4/openocd"
 	OCD_CMDS="init; flash_lm4 ${IMG} ${FLAGS_offset};"
 	if [ "${FLAGS_unprotect}" = ${FLAGS_TRUE} ] ; then
 		# Unprotect exists, but isn't needed because erasing pstate is
