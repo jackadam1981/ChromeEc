@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "3692db12_df59bbc0",
+        "filename": "board/discovery-stm32f072/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-08-01T16:26:18Z",
+      "side": 1,
+      "message": "it should find the header with the directories.",
+      "revId": "027f392aa05bc6366d5cf5fccd7bc5defd54b9cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "563f4fb5_5334b667",
         "filename": "chip/stm32/build.mk",
         "patchSetId": 5
@@ -13,6 +30,57 @@
       "writtenOn": "2014-07-30T22:05:02Z",
       "side": 1,
       "message": "You still need to #undefine CONFIG_USART in include/config.h",
+      "revId": "027f392aa05bc6366d5cf5fccd7bc5defd54b9cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3692db12_5f94cbf4",
+        "filename": "chip/stm32/usart.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-08-01T16:26:18Z",
+      "side": 1,
+      "message": "having both chip/stm32/usart.c and chip/stm32/uart.c seems confusing to me, can we have only one or the other ?",
+      "revId": "027f392aa05bc6366d5cf5fccd7bc5defd54b9cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7688d3e2_c11d62ca",
+        "filename": "chip/stm32/usart.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-08-01T16:26:18Z",
+      "side": 1,
+      "message": "if all UART have the same interrupt priority, we should not get re-entrant calls.",
+      "revId": "027f392aa05bc6366d5cf5fccd7bc5defd54b9cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "968387c4_c5332c09",
+        "filename": "include/util.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-08-01T16:26:18Z",
+      "side": 1,
+      "message": "the equivalent kernel macro is called container_of() ?\nmaybe we want it in include/compile_time_macros.h",
       "revId": "027f392aa05bc6366d5cf5fccd7bc5defd54b9cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
