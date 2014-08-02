@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "f67cc3a5_756448ee",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2014-08-02T04:50:35Z",
+      "side": 1,
+      "message": "The parameter of charger_closest_voltage() is batt-\u003edesired_voltage and the value that is compared here is batt-\u003evolatage.\n\ncharger_closest_voltage() is to get voltage that is set to charger.\nThis line is to check battery voltage itself.\nIf battery voltage is higher than maximum voltage, we think that the battery has defect and don\u0027t charge the battery permanently.",
+      "parentUuid": "96d1c7e4_55ad9eb8",
+      "revId": "adbb5bd442863314ad46b3c83c9b1879cca8712b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76d613dd_9191dc00",
         "filename": "board/winky/battery.c",
         "patchSetId": 4
@@ -47,6 +65,24 @@
       "writtenOn": "2014-08-02T03:57:11Z",
       "side": 1,
       "message": "Once the error occurs you need to disconnect and reconnect the battery to clear the error?",
+      "revId": "adbb5bd442863314ad46b3c83c9b1879cca8712b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6797fb6_54490c78",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2014-08-02T04:50:35Z",
+      "side": 1,
+      "message": "Yes. If battery has defect, we don\u0027t charge the battery.\nDisconnection and reconnection can be inserted new battery,\nwe must clear the error.",
+      "parentUuid": "76d613dd_9191dc00",
       "revId": "adbb5bd442863314ad46b3c83c9b1879cca8712b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
