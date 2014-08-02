@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56dbcf05_33483272",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-02T03:57:11Z",
+      "side": 1,
+      "message": "\u003d\u003d OEM_BATTERY_STATE_COMMON",
+      "revId": "adbb5bd442863314ad46b3c83c9b1879cca8712b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96d1c7e4_55ad9eb8",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-02T03:57:11Z",
+      "side": 1,
+      "message": "charger_closest_voltage checks the same condition. How is this different?\n\nAlso please list on the issue tracker the exact steps which cause the issue that you are trying to fix.",
+      "revId": "adbb5bd442863314ad46b3c83c9b1879cca8712b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76d613dd_9191dc00",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-02T03:57:11Z",
+      "side": 1,
+      "message": "Once the error occurs you need to disconnect and reconnect the battery to clear the error?",
+      "revId": "adbb5bd442863314ad46b3c83c9b1879cca8712b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
