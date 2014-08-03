@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3692db12_8b49b07b",
+        "filename": "chip/stm32/usb_ftdi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1104319
+      },
+      "writtenOn": "2014-08-03T22:53:58Z",
+      "side": 1,
+      "message": "I\u0027m confused what pin you are trying to use. Looks like you are setting B7, don\u0027t you want C7?",
+      "revId": "c7a4cbaaa580bb140c58be953be1cbdb0e0b53b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7688d3e2_bbef271c",
+        "filename": "chip/stm32/usb_ftdi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1104319
+      },
+      "writtenOn": "2014-08-03T22:53:58Z",
+      "side": 1,
+      "message": "This is not setting high speed, you want the OSPEEDR reg.",
+      "revId": "c7a4cbaaa580bb140c58be953be1cbdb0e0b53b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7688d3e2_5be13b32",
+        "filename": "chip/stm32/usb_ftdi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1104319
+      },
+      "writtenOn": "2014-08-03T22:53:58Z",
+      "side": 1,
+      "message": "I think this is your major problem. Don\u0027t set ARPE bit (bit 7). When you finally set ARR down at the bottom that change doesn\u0027t take affect until the next UEV, but that will never happen since ARR defaults to 0.",
+      "revId": "c7a4cbaaa580bb140c58be953be1cbdb0e0b53b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7688d3e2_1be3b33b",
+        "filename": "chip/stm32/usb_ftdi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1104319
+      },
+      "writtenOn": "2014-08-03T22:53:58Z",
+      "side": 1,
+      "message": "I thought you were testing on samus? shouldn\u0027t this be #ifdef?",
+      "revId": "c7a4cbaaa580bb140c58be953be1cbdb0e0b53b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
