@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "968387c4_4c96603d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1129,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-04T16:56:59Z",
+      "side": 1,
+      "message": "There\u0027s a problem here. If we timeout from the SNK_TRANSITION state and go back to the SNK_DISCOVERY state, then there is no more PD_T_SINK_WAIT_CAP timeout set for going to HARD_RESET. So, we would just stay in SNK_DISCOVERY forever.\n\nI like where this is going... maybe we need a set_state_timeout() function that is called directly from the state which is setting a timeout. I think it would be more clear with these states to have state entry conditions. For example, the discovery state could look like:\n\ncase PD_STATE_SNK_DISCOVERY:\n  /* On state entry, set source cap expired timeout */\n  if (last_state !\u003d pd[port].task_state)\n    set_state_timeout(get_time().val + PD_T_SINK_WAIT_CAP,\n                      HARD_RESET);\n  break;\n\nYes, it does mean adding a var to keep track of last state, but I think it is much more clear when the state that is waiting for a timeout has the timeout code in it.",
+      "range": {
+        "startLine": 1129,
+        "startChar": 5,
+        "endLine": 1129,
+        "endChar": 27
+      },
+      "revId": "06d47cadbbb8d52b32a58e3289d54d93bdbbb4a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
