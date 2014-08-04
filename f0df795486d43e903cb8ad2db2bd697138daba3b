@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "968387c4_1f24fc10",
+        "filename": "driver/battery/sb_fw_update.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-04T19:05:43Z",
+      "side": 1,
+      "message": "Just to confirm: Is this the standard update protocol for a smart battery, or is this specific to the one part we\u0027re using?",
+      "revId": "f0df795486d43e903cb8ad2db2bd697138daba3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7688d3e2_a7594e6f",
         "filename": "driver/battery/sb_fw_update.c",
         "patchSetId": 8
@@ -19,6 +36,75 @@
         "endLine": 25,
         "endChar": 37
       },
+      "revId": "f0df795486d43e903cb8ad2db2bd697138daba3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7688d3e2_aac90e92",
+        "filename": "driver/battery/sb_fw_update.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-04T19:05:43Z",
+      "side": 1,
+      "message": "Agree. i2c_access_enable would be sufficient",
+      "parentUuid": "7688d3e2_a7594e6f",
+      "revId": "f0df795486d43e903cb8ad2db2bd697138daba3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7688d3e2_4aa722da",
+        "filename": "driver/battery/sb_fw_update.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-04T19:05:43Z",
+      "side": 1,
+      "message": "get_state()",
+      "revId": "f0df795486d43e903cb8ad2db2bd697138daba3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7688d3e2_0aa11ac2",
+        "filename": "driver/battery/sb_fw_update.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-04T19:05:43Z",
+      "side": 1,
+      "message": "set_state()",
+      "revId": "f0df795486d43e903cb8ad2db2bd697138daba3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7688d3e2_4ace429a",
+        "filename": "driver/battery/sb_fw_update.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-04T19:05:43Z",
+      "side": 1,
+      "message": "sb_fw_update_in_progress()",
       "revId": "f0df795486d43e903cb8ad2db2bd697138daba3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -48,6 +134,23 @@
     },
     {
       "key": {
+        "uuid": "3692db12_5c9e0c14",
+        "filename": "driver/battery/sb_fw_update.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-04T19:05:43Z",
+      "side": 1,
+      "message": "Function is only called inside this module, so can be static.  And then the function could just be update_protected()",
+      "revId": "f0df795486d43e903cb8ad2db2bd697138daba3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3692db12_4812d3bf",
         "filename": "driver/battery/sb_fw_update.c",
         "patchSetId": 8
@@ -65,6 +168,74 @@
         "endLine": 49,
         "endChar": 35
       },
+      "revId": "f0df795486d43e903cb8ad2db2bd697138daba3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7688d3e2_cac1f265",
+        "filename": "driver/battery/sb_fw_update.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-04T19:05:43Z",
+      "side": 1,
+      "message": "prepare_update()",
+      "revId": "f0df795486d43e903cb8ad2db2bd697138daba3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3692db12_dc91bcff",
+        "filename": "driver/battery/sb_fw_update.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-04T19:05:43Z",
+      "side": 1,
+      "message": "begin_update()",
+      "revId": "f0df795486d43e903cb8ad2db2bd697138daba3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "968387c4_9fe6cc75",
+        "filename": "driver/battery/sb_fw_update.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-04T19:05:43Z",
+      "side": 1,
+      "message": "end_update()",
+      "revId": "f0df795486d43e903cb8ad2db2bd697138daba3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "968387c4_ffd4b882",
+        "filename": "driver/battery/sb_fw_update.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-04T19:05:43Z",
+      "side": 1,
+      "message": "print_info()\n\n(and similarly shorter names for the rest of the functions...)",
       "revId": "f0df795486d43e903cb8ad2db2bd697138daba3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -94,6 +265,40 @@
     },
     {
       "key": {
+        "uuid": "968387c4_dfcbf4d9",
+        "filename": "driver/battery/sb_fw_update.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-04T19:05:43Z",
+      "side": 1,
+      "message": "EC_RES_INVALID_PARAM",
+      "revId": "f0df795486d43e903cb8ad2db2bd697138daba3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3692db12_9c1334c5",
+        "filename": "driver/battery/sb_fw_update.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-04T19:05:43Z",
+      "side": 1,
+      "message": "These comments and constants should move inside sb_fw_update.c.  They\u0027re not part of the interface the rest of the firmware uses.",
+      "revId": "f0df795486d43e903cb8ad2db2bd697138daba3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3692db12_3343405b",
         "filename": "driver/battery/sb_fw_update.h",
         "patchSetId": 8
@@ -111,6 +316,23 @@
         "endLine": 58,
         "endChar": 57
       },
+      "revId": "f0df795486d43e903cb8ad2db2bd697138daba3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "968387c4_ffa1181b",
+        "filename": "driver/battery/sb_fw_update.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-04T19:05:43Z",
+      "side": 1,
+      "message": "Remove; used only inside the implementation, not by other modules.",
       "revId": "f0df795486d43e903cb8ad2db2bd697138daba3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
