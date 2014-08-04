@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3692db12_9e61ec17",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-08-04T17:07:19Z",
+      "side": 1,
+      "message": "please put a shorter subject and the details on the description paragraph",
+      "revId": "5ae687ea513c05496b83469257bf41850c4ad295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7688d3e2_5685924a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-08-04T17:07:19Z",
+      "side": 1,
+      "message": "it would be nice to verify it on Link and servo v3 before switching.\n\nYou might ask Todd for help for Servo v3",
+      "revId": "5ae687ea513c05496b83469257bf41850c4ad295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "968387c4_ec865404",
+        "filename": "chip/lm4/openocd/servo_v2.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-08-04T17:07:19Z",
+      "side": 1,
+      "message": "as you are cleaning and this parameter name has changed, please remove the 3 commented lines everywhere.",
+      "revId": "5ae687ea513c05496b83469257bf41850c4ad295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
