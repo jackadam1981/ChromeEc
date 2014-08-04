@@ -13,6 +13,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "registers.h"
+#include "system.h"
 #include "task.h"
 #include "timer.h"
 #include "util.h"
@@ -924,6 +925,22 @@ void pd_task(void)
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	uint64_t next_role_swap = PD_T_DRP_SNK;
 	uint64_t state_timeout = 0;
+#endif
+
+	/* TODO(crosbug.com/p/31125): enable this check for EVT */
+#if 0
+	/*
+	 * Do not initialize PD communication in RO as a security measure,
+	 * unless write protect screw is removed. We don't want to allow
+	 * communication to outside world until we jump to RW. Overriding
+	 * this with the removal of the write protect screw allows for
+	 * easier testing, and for booting without a battery.
+	 */
+	if (system_get_image_copy() != SYSTEM_IMAGE_RW
+	    && !gpio_get_level(GPIO_WP_L)) {
+		CPRINTF("[%T PD not allowed]\n");
+		return;
+	}
 #endif
 
 	/* Initialize TX pins and put them in Hi-Z */
