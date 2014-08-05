@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6a7bf88_671fcc50",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-05T16:11:31Z",
+      "side": 1,
+      "message": "Please update the commit message. It currently seems like you are protecting the battery by keeping low voltage for 2 hours.",
+      "revId": "b5872f9ab4f9c707ffe1666c73f2b8bc501598e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36b9fbaa_4a1ad361",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-05T16:11:31Z",
+      "side": 1,
+      "message": "nit: \"for 2 hours\"",
+      "revId": "b5872f9ab4f9c707ffe1666c73f2b8bc501598e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6a7bf88_a797046a",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-05T16:11:31Z",
+      "side": 1,
+      "message": "change variable name to indicate that it is time related.. It sounds like it is storing a voltage value.",
+      "revId": "b5872f9ab4f9c707ffe1666c73f2b8bc501598e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
