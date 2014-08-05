@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "16431782_e7be10e9",
+        "filename": "board/discovery-stm32f072/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-05T16:52:19Z",
+      "side": 1,
+      "message": "Yes, we include the chip (and board) directories in the include path.  Note that we\u0027re including \"registers.h\", not \"chip/stm32/registers.h\".",
+      "parentUuid": "b6496ba6_9e35d912",
+      "revId": "027f392aa05bc6366d5cf5fccd7bc5defd54b9cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "563f4fb5_5334b667",
         "filename": "chip/stm32/build.mk",
         "patchSetId": 5
@@ -142,6 +160,57 @@
     },
     {
       "key": {
+        "uuid": "b6496ba6_a4db68fe",
+        "filename": "include/in_stream.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-05T16:52:19Z",
+      "side": 1,
+      "message": "stream\u0027s",
+      "revId": "027f392aa05bc6366d5cf5fccd7bc5defd54b9cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d64c1fb5_22610a16",
+        "filename": "include/out_stream.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-05T16:52:19Z",
+      "side": 1,
+      "message": "While -\u003e while",
+      "revId": "027f392aa05bc6366d5cf5fccd7bc5defd54b9cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16431782_87590c3c",
+        "filename": "include/out_stream.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-05T16:52:19Z",
+      "side": 1,
+      "message": "stream\u0027s",
+      "revId": "027f392aa05bc6366d5cf5fccd7bc5defd54b9cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "968387c4_c5332c09",
         "filename": "include/util.h",
         "patchSetId": 5
@@ -171,6 +240,24 @@
       "side": 1,
       "message": "I don\u0027t think we can include the kernel version in a BSD licensed project.  DOWNCAST is something I\u0027ve used before and it works, but is missing the safety checks of the kernel version...",
       "parentUuid": "968387c4_c5332c09",
+      "revId": "027f392aa05bc6366d5cf5fccd7bc5defd54b9cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6496ba6_a409a8be",
+        "filename": "include/util.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-05T16:52:19Z",
+      "side": 1,
+      "message": "We can call this macro container_of() and move it to compile_time_macros, though.  Perhaps with a note that it doesn\u0027t have all the safety checks of the kernel version.",
+      "parentUuid": "b6496ba6_81dc5e83",
       "revId": "027f392aa05bc6366d5cf5fccd7bc5defd54b9cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
