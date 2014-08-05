@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b6496ba6_9e35d912",
+        "filename": "board/discovery-stm32f072/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-08-05T05:06:26Z",
+      "side": 1,
+      "message": "I\u0027m not sure what your comment means?  Do you mean that we add a -I to the gcc command line for chip/stm32?  I would argue that the board should explicitly specify the path to the things it wants to include instead of relying on a default search path.  The board is the one place that knows exactly what it wants to include after all.",
+      "parentUuid": "3692db12_df59bbc0",
+      "revId": "027f392aa05bc6366d5cf5fccd7bc5defd54b9cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "563f4fb5_5334b667",
         "filename": "chip/stm32/build.mk",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2014-07-30T22:05:02Z",
       "side": 1,
       "message": "You still need to #undefine CONFIG_USART in include/config.h",
+      "revId": "027f392aa05bc6366d5cf5fccd7bc5defd54b9cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d64c1fb5_3f2f6314",
+        "filename": "chip/stm32/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-08-05T05:06:26Z",
+      "side": 1,
+      "message": "Yes, sorry, I uploaded this new draft to make sure my desktop was in sync when it was moved and possibly damaged/lost, so I hadn\u0027t gotten to this yet, will do though.  thanks.",
+      "parentUuid": "563f4fb5_5334b667",
       "revId": "027f392aa05bc6366d5cf5fccd7bc5defd54b9cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "b6496ba6_fe321d26",
+        "filename": "chip/stm32/usart.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-08-05T05:06:26Z",
+      "side": 1,
+      "message": "Yes, absolutely agreed.  I won\u0027t be able to get rid of uart.c until the generic uart_buffering code is re-written to use the stream based version of the serial API.  And that can\u0027t happen until all cores have been updated to use stream based serial drivers.  In the mean time I am planning on gutting uart.c (probably once we have a DMA capable version of the stream driver) and replacing it with calls out to a stream based usart.  In the mean time we can use the stream based API to write our console multiplexer and work towards a unified serial driver interface over time.",
+      "parentUuid": "3692db12_5f94cbf4",
+      "revId": "027f392aa05bc6366d5cf5fccd7bc5defd54b9cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7688d3e2_c11d62ca",
         "filename": "chip/stm32/usart.c",
         "patchSetId": 5
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "d64c1fb5_3f9483f4",
+        "filename": "chip/stm32/usart.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-08-05T05:06:26Z",
+      "side": 1,
+      "message": "Yes, that is true, however I think the flush operation might cause them.  I should have put a big bold warning here.  The semantics around flushing a stream are the shakiest part of this CL currently.  I need to do more thinking about them and clean this up before it can land.  I think the irq_lock variable will just turn into something that ensures that an uninitialized USARTs data structures don\u0027t get messed with by a shared interrupt.",
+      "parentUuid": "7688d3e2_c11d62ca",
+      "revId": "027f392aa05bc6366d5cf5fccd7bc5defd54b9cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "968387c4_c5332c09",
         "filename": "include/util.h",
         "patchSetId": 5
@@ -81,6 +153,24 @@
       "writtenOn": "2014-08-01T16:26:18Z",
       "side": 1,
       "message": "the equivalent kernel macro is called container_of() ?\nmaybe we want it in include/compile_time_macros.h",
+      "revId": "027f392aa05bc6366d5cf5fccd7bc5defd54b9cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6496ba6_81dc5e83",
+        "filename": "include/util.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-08-05T05:06:26Z",
+      "side": 1,
+      "message": "I don\u0027t think we can include the kernel version in a BSD licensed project.  DOWNCAST is something I\u0027ve used before and it works, but is missing the safety checks of the kernel version...",
+      "parentUuid": "968387c4_c5332c09",
       "revId": "027f392aa05bc6366d5cf5fccd7bc5defd54b9cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
