@@ -67,6 +67,7 @@ DECLARE_CONSOLE_COMMAND(battcutoff, command_battcutoff,
 			NULL);
 
 #ifdef CONFIG_BATTERY_OVERRIDE_PARAMS
+static timestamp_t start_low_voltage;
 static int oem_battery_state;
 #define OEM_BATTERY_STATE_COMMON 0x00
 #define OEM_BATTERY_STATE_ERROR 0x01
@@ -106,6 +107,17 @@ void battery_override_params(struct batt_params *batt)
 			if(batt->voltage > info.voltage_max) {
 				oem_battery_state |= OEM_BATTERY_STATE_ERROR;
 			}
+			else if(batt->voltage < info.voltage_min) {
+				if((get_time().val - start_low_voltage.val) > 2*HOUR) {
+					oem_battery_state |= OEM_BATTERY_STATE_ERROR;
+				}
+			}
+			else {
+				start_low_voltage = get_time();
+			}
+		}
+		else if((chstate == PWR_STATE_IDLE) || (chstate == PWR_STATE_IDLE0)) {
+			start_low_voltage = get_time();
 		}
 	}
 	if(oem_battery_state != OEM_BATTERY_STATE_COMMON) {
