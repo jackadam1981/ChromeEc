@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d64c1fb5_dffbdf87",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 943,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-08-05T03:37:48Z",
+      "side": 1,
+      "message": "We shouldn\u0027t return from a task.\nYou want to loop on a task_wait_event(-1) or something like that",
+      "revId": "d65d5b74e606e3737b04e82f205cef38e2ec3c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
