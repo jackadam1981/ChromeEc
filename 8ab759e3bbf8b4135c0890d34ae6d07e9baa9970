@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "962f07b5_0237aaf8",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1003228
+      },
+      "writtenOn": "2014-08-05T00:59:52Z",
+      "side": 1,
+      "message": "Could you change to \nif (ec_sb_firmware_update(argv[1]))\n        goto out;",
+      "revId": "8ab759e3bbf8b4135c0890d34ae6d07e9baa9970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "962f07b5_4276d2b2",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1003228
+      },
+      "writtenOn": "2014-08-05T00:59:52Z",
+      "side": 1,
+      "message": "release_gec_lock();    \nreturn 0;",
+      "revId": "8ab759e3bbf8b4135c0890d34ae6d07e9baa9970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6a40b88_23854a4c",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1003228
+      },
+      "writtenOn": "2014-08-05T00:59:52Z",
+      "side": 1,
+      "message": "return 1;",
+      "revId": "8ab759e3bbf8b4135c0890d34ae6d07e9baa9970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
