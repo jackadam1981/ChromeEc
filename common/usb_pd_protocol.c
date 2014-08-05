@@ -239,6 +239,13 @@ static struct pd_protocol {
 	enum pd_states task_state;
 } pd[PD_PORT_COUNT];
 
+/*
+ * PD communication enabled flag. When false, PD state machine still
+ * detects source/sink connection and disconnection, and will still
+ * provide VBUS, but never sends any PD communication.
+ */
+static uint8_t pd_comm_enabled = CONFIG_USB_PD_COMM_ENABLED;
+
 struct mutex pd_crc_lock;
 
 /* increment message ID counter */
@@ -307,6 +314,10 @@ static void send_hard_reset(int port)
 {
 	int off;
 
+	/* If PD communication is disabled, return */
+	if (!pd_comm_enabled)
+		return;
+
 	/* 64-bit preamble */
 	off = pd_write_preamble(port);
 	/* Hard-Reset: 3x RST-1 + 1x RST-2 */
@@ -326,6 +337,10 @@ static int send_validate_message(int port, uint16_t header,
 {
 	int r;
 	static uint32_t payload[7];
+
+	/* If PD communication is disabled, return error */
+	if (!pd_comm_enabled)
+		return -2;
 
 	/* retry 3 times if we are not getting a valid answer */
 	for (r = 0; r <= PD_RETRY_COUNT; r++) {
@@ -386,6 +401,10 @@ static void send_goodcrc(int port, int id)
 {
 	uint16_t header = PD_HEADER(PD_CTRL_GOOD_CRC, pd[port].role, id, 0);
 	int bit_len = prepare_message(port, header, 0, NULL);
+
+	/* If PD communication is disabled, return */
+	if (!pd_comm_enabled)
+		return;
 
 	pd_start_tx(port, pd[port].polarity, bit_len);
 	pd_tx_done(port, pd[port].polarity);
@@ -458,6 +477,10 @@ static void bist_mode_2_tx(int port)
 	int bit;
 
 	CPRINTF("BIST carrier 2 - sending on port %d\n", port);
+
+	/* If PD communication is not allowed, return */
+	if (!pd_comm_enabled)
+		return;
 
 	/*
 	 * build context buffer with 5 bytes, where the data is
@@ -913,6 +936,11 @@ int pd_get_polarity(int port)
 	return pd[port].polarity;
 }
 
+void pd_comm_enable(int enable)
+{
+	pd_comm_enabled = enable;
+}
+
 void pd_task(void)
 {
 	int head;
@@ -941,7 +969,7 @@ void pd_task(void)
 
 	while (1) {
 		/* monitor for incoming packet if in a connected state */
-		if (pd_is_connected(port))
+		if (pd_is_connected(port) && pd_comm_enabled)
 			pd_rx_enable_monitoring(port);
 		else
 			pd_rx_disable_monitoring(port);
@@ -957,7 +985,7 @@ void pd_task(void)
 		/* wait for next event/packet or timeout expiration */
 		task_wait_event(timeout);
 		/* incoming packet ? */
-		if (pd_rx_started(port)) {
+		if (pd_rx_started(port) && pd_comm_enabled) {
 			head = analyze_rx(port, payload);
 			pd_rx_complete(port);
 			if (head > 0)
@@ -1337,6 +1365,17 @@ static int command_pd(int argc, char **argv)
 		ccprintf("set TX frequency to %d Hz\n", freq);
 	} else if (!strcasecmp(argv[2], "dump")) {
 		debug_dump = !debug_dump;
+	} else if (!strcasecmp(argv[2], "enable")) {
+		int enable;
+
+		if (argc < 3)
+			return EC_ERROR_PARAM_COUNT;
+
+		enable = strtoi(argv[3], &e, 10);
+		if (*e)
+			return EC_ERROR_PARAM3;
+		pd_comm_enable(enable);
+		ccprintf("Ports %s\n", enable ? "enabled" : "disabled");
 	} else if (!strncasecmp(argv[2], "hard", 4)) {
 		pd[port].task_state = PD_STATE_HARD_RESET;
 		task_wake(PORT_TO_TASK_ID(port));
@@ -1385,8 +1424,9 @@ static int command_pd(int argc, char **argv)
 			"SRC_ACCEPTED", "SRC_TRANSITION", "SRC_READY",
 			"HARD_RESET", "BIST",
 		};
-		ccprintf("Port C%d - Role: %s Polarity: CC%d State: %s\n",
-			port, pd[port].role == PD_ROLE_SOURCE ? "SRC" : "SNK",
+		ccprintf("Port C%d, %s - Role: %s Polarity: CC%d State: %s\n",
+			port, pd_comm_enabled ? "Enabled" : "Disabled",
+			pd[port].role == PD_ROLE_SOURCE ? "SRC" : "SNK",
 			pd[port].polarity + 1,
 			state_names[pd[port].task_state]);
 	} else {
@@ -1397,7 +1437,7 @@ static int command_pd(int argc, char **argv)
 }
 DECLARE_CONSOLE_COMMAND(pd, command_pd,
 			"<port> "
-			"[tx|bist|charger|dev|dump|dualrole"
+			"[tx|bist|charger|dev|dump|dualrole|enable"
 			"|hard|clock|ping|state]",
 			"USB PD",
 			NULL);
