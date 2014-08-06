@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16431782_94b131d0",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 887,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-08-06T17:15:11Z",
+      "side": 1,
+      "message": "to support alternate modes, we will to send VDM with other VIDs.\nwe might want to pass the full VDO as cmd parameter",
+      "revId": "a855cb18f0097108f28611c450ab6d7cfe0fd667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
