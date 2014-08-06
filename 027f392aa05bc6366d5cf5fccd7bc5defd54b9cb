@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "f6684304_816bbdf2",
+        "filename": "board/discovery-stm32f072/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-08-06T14:23:54Z",
+      "side": 1,
+      "message": "OK, I\u0027m happy to change this.  I\u0027ll argue my distaste for defaults some other time.  :)",
+      "parentUuid": "16431782_e7be10e9",
+      "revId": "027f392aa05bc6366d5cf5fccd7bc5defd54b9cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "563f4fb5_5334b667",
         "filename": "chip/stm32/build.mk",
         "patchSetId": 5
