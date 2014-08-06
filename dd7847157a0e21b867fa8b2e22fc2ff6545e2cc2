@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f63f63e6_92a78ad9",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1002584
+      },
+      "writtenOn": "2014-08-06T23:45:29Z",
+      "side": 1,
+      "message": "Move this comment to the next \"if\" statement",
+      "revId": "dd7847157a0e21b867fa8b2e22fc2ff6545e2cc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76029343_91093cbf",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1002584
+      },
+      "writtenOn": "2014-08-06T23:45:29Z",
+      "side": 1,
+      "message": "what about resetting this value for other charge states (such as PWR_STATE_DISCHARGE etc.). See below scenario\n\n1) At time X, chstate \u003d PWR_STATE_CHARGE and assume that batt-\u003evoltage \u003e info.voltage_min. Hence start_lowvoltage_time \u003d X\n\n2) Now assume AC is unplugged. So device goes into chstate \u003d PWR_STATE_DISCHARGE. However start_lowvoltage_time is not updated. \n\n3) After 2.5 hours reconnect AC. Now chstate \u003d PWR_STATE_CHARGE, and assume that batt-\u003evoltage \u003c info.voltage_min. Hence you will set the OEM_BATTER_STATE_ERROR even though it has not been in low voltage for 2 hours.",
+      "revId": "dd7847157a0e21b867fa8b2e22fc2ff6545e2cc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
