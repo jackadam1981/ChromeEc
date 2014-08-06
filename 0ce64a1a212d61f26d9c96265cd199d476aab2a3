@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "363e5beb_e52f32ba",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1112186
+      },
+      "writtenOn": "2014-08-06T23:26:24Z",
+      "side": 1,
+      "message": "The reason why we use \u0027else\u0027 is for immediately setting battery error, voltage and current when there is battery error.",
+      "parentUuid": "f63f63e6_97501c98",
+      "revId": "0ce64a1a212d61f26d9c96265cd199d476aab2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6a7bf88_5e45b57d",
         "filename": "board/winky/battery.c",
         "patchSetId": 5
@@ -47,6 +65,24 @@
       "writtenOn": "2014-08-06T21:47:53Z",
       "side": 1,
       "message": "BATT_FLAG_BAD_VOLTAGE\n\nThis will still trigger errors, but won\u0027t prevent reading battery temperature, etc.",
+      "revId": "0ce64a1a212d61f26d9c96265cd199d476aab2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "962f07b5_97f49638",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1112186
+      },
+      "writtenOn": "2014-08-06T23:26:24Z",
+      "side": 1,
+      "message": "Yes, if there is the battery error by over voltage, battery should be defected.\nAnd battery is not reverted to its common state until battery is removed and reconnected.",
+      "parentUuid": "d6a7bf88_5e45b57d",
       "revId": "0ce64a1a212d61f26d9c96265cd199d476aab2a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
