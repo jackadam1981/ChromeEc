@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "360c9b77_ef36e1fa",
+        "filename": "driver/battery/sb_fw_update.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-06T23:58:18Z",
+      "side": 1,
+      "message": "Tested both LGC and simplo smart battery. \nThey both follow the same spec.",
+      "parentUuid": "968387c4_1f24fc10",
+      "revId": "f0df795486d43e903cb8ad2db2bd697138daba3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7688d3e2_a7594e6f",
         "filename": "driver/battery/sb_fw_update.c",
         "patchSetId": 8
@@ -60,6 +78,24 @@
     },
     {
       "key": {
+        "uuid": "360c9b77_6f80313d",
+        "filename": "driver/battery/sb_fw_update.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-06T23:58:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7688d3e2_a7594e6f",
+      "revId": "f0df795486d43e903cb8ad2db2bd697138daba3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7688d3e2_4aa722da",
         "filename": "driver/battery/sb_fw_update.c",
         "patchSetId": 8
@@ -71,6 +107,24 @@
       "writtenOn": "2014-08-04T19:05:43Z",
       "side": 1,
       "message": "get_state()",
+      "revId": "f0df795486d43e903cb8ad2db2bd697138daba3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96fd4775_b9b4200d",
+        "filename": "driver/battery/sb_fw_update.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-06T23:58:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7688d3e2_4aa722da",
       "revId": "f0df795486d43e903cb8ad2db2bd697138daba3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -94,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "96fd4775_19c28c69",
+        "filename": "driver/battery/sb_fw_update.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-06T23:58:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7688d3e2_0aa11ac2",
+      "revId": "f0df795486d43e903cb8ad2db2bd697138daba3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7688d3e2_4ace429a",
         "filename": "driver/battery/sb_fw_update.c",
         "patchSetId": 8
@@ -105,6 +177,24 @@
       "writtenOn": "2014-08-04T19:05:43Z",
       "side": 1,
       "message": "sb_fw_update_in_progress()",
+      "revId": "f0df795486d43e903cb8ad2db2bd697138daba3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96fd4775_99a79cd9",
+        "filename": "driver/battery/sb_fw_update.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-06T23:58:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7688d3e2_4ace429a",
       "revId": "f0df795486d43e903cb8ad2db2bd697138daba3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -134,6 +224,24 @@
     },
     {
       "key": {
+        "uuid": "360c9b77_ef938195",
+        "filename": "driver/battery/sb_fw_update.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-06T23:58:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7688d3e2_c781f274",
+      "revId": "f0df795486d43e903cb8ad2db2bd697138daba3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3692db12_5c9e0c14",
         "filename": "driver/battery/sb_fw_update.c",
         "patchSetId": 8
@@ -145,6 +253,24 @@
       "writtenOn": "2014-08-04T19:05:43Z",
       "side": 1,
       "message": "Function is only called inside this module, so can be static.  And then the function could just be update_protected()",
+      "revId": "f0df795486d43e903cb8ad2db2bd697138daba3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "360c9b77_8f6f55c5",
+        "filename": "driver/battery/sb_fw_update.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-06T23:58:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3692db12_5c9e0c14",
       "revId": "f0df795486d43e903cb8ad2db2bd697138daba3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -174,6 +300,24 @@
     },
     {
       "key": {
+        "uuid": "96fd4775_391f9051",
+        "filename": "driver/battery/sb_fw_update.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-06T23:58:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3692db12_4812d3bf",
+      "revId": "f0df795486d43e903cb8ad2db2bd697138daba3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7688d3e2_cac1f265",
         "filename": "driver/battery/sb_fw_update.c",
         "patchSetId": 8
@@ -185,6 +329,24 @@
       "writtenOn": "2014-08-04T19:05:43Z",
       "side": 1,
       "message": "prepare_update()",
+      "revId": "f0df795486d43e903cb8ad2db2bd697138daba3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16f157a2_0ed7eb61",
+        "filename": "driver/battery/sb_fw_update.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-06T23:58:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7688d3e2_cac1f265",
       "revId": "f0df795486d43e903cb8ad2db2bd697138daba3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -208,6 +370,24 @@
     },
     {
       "key": {
+        "uuid": "16f157a2_6edcaf82",
+        "filename": "driver/battery/sb_fw_update.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-06T23:58:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3692db12_dc91bcff",
+      "revId": "f0df795486d43e903cb8ad2db2bd697138daba3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "968387c4_9fe6cc75",
         "filename": "driver/battery/sb_fw_update.c",
         "patchSetId": 8
@@ -225,6 +405,24 @@
     },
     {
       "key": {
+        "uuid": "96fd4775_79291872",
+        "filename": "driver/battery/sb_fw_update.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-06T23:58:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "968387c4_9fe6cc75",
+      "revId": "f0df795486d43e903cb8ad2db2bd697138daba3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "968387c4_ffd4b882",
         "filename": "driver/battery/sb_fw_update.c",
         "patchSetId": 8
@@ -236,6 +434,24 @@
       "writtenOn": "2014-08-04T19:05:43Z",
       "side": 1,
       "message": "print_info()\n\n(and similarly shorter names for the rest of the functions...)",
+      "revId": "f0df795486d43e903cb8ad2db2bd697138daba3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "360c9b77_afb7b910",
+        "filename": "driver/battery/sb_fw_update.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-06T23:58:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "968387c4_ffd4b882",
       "revId": "f0df795486d43e903cb8ad2db2bd697138daba3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -265,6 +481,24 @@
     },
     {
       "key": {
+        "uuid": "360c9b77_cfbe7de9",
+        "filename": "driver/battery/sb_fw_update.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-06T23:58:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3692db12_e8388709",
+      "revId": "f0df795486d43e903cb8ad2db2bd697138daba3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "968387c4_dfcbf4d9",
         "filename": "driver/battery/sb_fw_update.c",
         "patchSetId": 8
@@ -276,6 +510,24 @@
       "writtenOn": "2014-08-04T19:05:43Z",
       "side": 1,
       "message": "EC_RES_INVALID_PARAM",
+      "revId": "f0df795486d43e903cb8ad2db2bd697138daba3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16f157a2_8ee2bb34",
+        "filename": "driver/battery/sb_fw_update.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-06T23:58:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "968387c4_dfcbf4d9",
       "revId": "f0df795486d43e903cb8ad2db2bd697138daba3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
