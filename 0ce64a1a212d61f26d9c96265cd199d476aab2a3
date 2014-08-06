@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76345307_cddb2cfe",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-06T21:47:53Z",
+      "side": 1,
+      "message": "COMMON -\u003e DEFAULT",
+      "revId": "0ce64a1a212d61f26d9c96265cd199d476aab2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f63f63e6_97501c98",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-06T21:47:53Z",
+      "side": 1,
+      "message": "else",
+      "revId": "0ce64a1a212d61f26d9c96265cd199d476aab2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6a7bf88_5e45b57d",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-06T21:47:53Z",
+      "side": 1,
+      "message": "BATT_FLAG_BAD_VOLTAGE\n\nThis will still trigger errors, but won\u0027t prevent reading battery temperature, etc.",
+      "revId": "0ce64a1a212d61f26d9c96265cd199d476aab2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f63f63e6_574694e4",
+        "filename": "board/winky/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-06T21:47:53Z",
+      "side": 1,
+      "message": "Don\u0027t need the #ifdef here",
+      "revId": "0ce64a1a212d61f26d9c96265cd199d476aab2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56390f00_879bc560",
+        "filename": "common/charge_state.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-06T21:47:53Z",
+      "side": 1,
+      "message": "CONFIG_BATTERY_NOT_CONNECTED\n\nsince not all boards which override params necessarily provide board_battery_not_connected().\n\nAlso please #undef this in include/config.h (in the correct alphabetical spot)",
+      "revId": "0ce64a1a212d61f26d9c96265cd199d476aab2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
