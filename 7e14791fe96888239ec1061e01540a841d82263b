@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16f157a2_7dfaa353",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-07T17:48:34Z",
+      "side": 1,
+      "message": "remove tab",
+      "revId": "7e14791fe96888239ec1061e01540a841d82263b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16f157a2_fd2053fe",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-07T17:48:34Z",
+      "side": 1,
+      "message": "coding style nit: else should be on the same line as previous }\n\ni.e. } else {",
+      "revId": "7e14791fe96888239ec1061e01540a841d82263b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56202fde_abfdf519",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-07T17:48:34Z",
+      "side": 1,
+      "message": "same as above",
+      "revId": "7e14791fe96888239ec1061e01540a841d82263b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16f157a2_fdab33f6",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-07T17:48:34Z",
+      "side": 1,
+      "message": "Simpler if written as below:\n\nif (temp condition check) {\n    oem_battery_state |\u003d OEM_BATTERY_STATE_STOP_CHARGE;\n} else if (chstate !\u003d PWR_STATE_CHARGE) {\n    oem_battery_state \u0026\u003d ~OEM_BATTERY_STATE_STOP_CHARGE;\n}",
+      "revId": "7e14791fe96888239ec1061e01540a841d82263b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
