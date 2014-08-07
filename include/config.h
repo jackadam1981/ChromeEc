@@ -44,6 +44,7 @@
 
 /* Specify type of accelerometers attached. */
 #undef CONFIG_ACCEL_KXCJ9
+#undef CONFIG_ACCEL_LSM6DS0
 
 /* Compile chip support for analog-to-digital convertor */
 #undef CONFIG_ADC

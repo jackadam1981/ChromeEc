@@ -6,6 +6,8 @@
 #ifndef __CROS_EC_ACCELEROMETER_H
 #define __CROS_EC_ACCELEROMETER_H
 
+#include <stdint.h>
+
 /* Header file for accelerometer drivers. */
 
 /* This array must be defined in board.c. */
@@ -83,5 +85,12 @@ int accel_get_resolution(const enum accel_id id, int * const res);
  */
 int accel_set_datarate(const enum accel_id id, const int rate, const int rnd);
 int accel_get_datarate(const enum accel_id id, int * const rate);
+
+struct motion_sensor_t {
+	uint8_t location;
+	uint8_t type;
+	uint8_t driver;
+	uint8_t i2c_addr;
+};
 
 #endif /* __CROS_EC_ACCELEROMETER_H */
