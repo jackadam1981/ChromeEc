@@ -73,6 +73,7 @@ BOARDS_STM32=(
 
 BOARDS_STM32_DFU=(
 	twinkie
+	hoho
 )
 
 # Flags
@@ -225,7 +226,7 @@ function ec_uart() {
 case "${BOARD}" in
 	ryu_sh ) MCU="sh" ;;
 	samus_pd ) MCU="usbpd" ;;
-	twinkie ) DUT_CONTROL_CMD="true" ; MCU="ec" ;;
+	twinkie|hoho ) DUT_CONTROL_CMD="true" ; MCU="ec" ;;
 	*) MCU="ec" ;;
 esac
 
