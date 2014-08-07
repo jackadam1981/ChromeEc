@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96b467df_9d7227b0",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2014-08-07T22:30:39Z",
+      "side": 1,
+      "message": "Does it make sense to combine this with the above so we don\u0027t need to do an extra read/write from cr2?  I\u0027d imagine that \"spi\" is volatile so it will actually perform a write, then a read, then a write.  That\u0027s slow and wastes code space.",
+      "revId": "2154072137a68978d3096965c482f1b4c5717608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
