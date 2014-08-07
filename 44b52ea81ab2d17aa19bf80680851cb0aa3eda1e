@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6eda3ca_5018720c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-07T01:15:17Z",
+      "side": 1,
+      "message": "this should move after the if() statement, then we don\u0027t need to check if pd_rx_started() in usb_pd_phy.c interrupt handler.",
+      "revId": "44b52ea81ab2d17aa19bf80680851cb0aa3eda1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "360c9b77_3277aee7",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-07T01:15:17Z",
+      "side": 1,
+      "message": "After we wake up we should check if we woke up from a timeout or not. If the 2.7ms expired, then we should jump straight to the next retry without calling analyze_rx(), which still has a blocking delay in it of another 2.7ms.",
+      "range": {
+        "startLine": 382,
+        "startChar": 3,
+        "endLine": 382,
+        "endChar": 18
+      },
+      "revId": "44b52ea81ab2d17aa19bf80680851cb0aa3eda1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "360c9b77_d2cbc2d9",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-07T01:15:17Z",
+      "side": 1,
+      "message": "This timeout is used in two places, here and in usb_pd_phy. Can we make it a macro so you only need to change in one place?",
+      "revId": "44b52ea81ab2d17aa19bf80680851cb0aa3eda1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
