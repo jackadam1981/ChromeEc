@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6a40b88_77c3f842",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1112186
+      },
+      "writtenOn": "2014-08-07T00:16:54Z",
+      "side": 1,
+      "message": "The reason why we don\u0027t use \u0027else\u0027 is for immediately setting battery error, voltage and current when there is battery error.",
+      "revId": "bd372cf52a0db72fb470916a379ca628f7e4f44e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "962f07b5_77e0f257",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1112186
+      },
+      "writtenOn": "2014-08-07T00:16:54Z",
+      "side": 1,
+      "message": "If there is the battery error by over voltage, battery should be defected.\nAnd battery is not reverted to its common state until battery is removed and reconnected.",
+      "revId": "bd372cf52a0db72fb470916a379ca628f7e4f44e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
