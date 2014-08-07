@@ -50,6 +50,24 @@
       "revId": "dd7847157a0e21b867fa8b2e22fc2ff6545e2cc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "363e5beb_6885b74b",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1112186
+      },
+      "writtenOn": "2014-08-07T01:32:34Z",
+      "side": 1,
+      "message": "PWR_STATE_CHARGE is always set after idle or idle0.\nIn case of PWR_STATE_DISCHARGE -\u003e PWR_STATE_CHARGE,\nactual state flow is DISCHARGE -\u003e REINITE -\u003e IDLE -\u003e CHARGE.",
+      "parentUuid": "76029343_91093cbf",
+      "revId": "dd7847157a0e21b867fa8b2e22fc2ff6545e2cc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
