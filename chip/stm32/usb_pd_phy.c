@@ -445,7 +445,8 @@ void pd_rx_handler(void)
 	for (i = 0; i < PD_PORT_COUNT; i++) {
 		if (pending & EXTI_COMP_MASK(i)) {
 			/* start sampling */
-			pd_rx_start(i);
+			if (!pd_rx_started(i))
+				pd_rx_start(i);
 			/*
 			 * ignore the comparator IRQ until we are done with
 			 * current message

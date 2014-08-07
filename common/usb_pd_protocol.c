@@ -372,6 +372,15 @@ static int send_validate_message(int port, uint16_t header,
 		pd_tx_done(port, pd[port].polarity);
 		/* starting waiting for GoodCrc */
 		pd_rx_start(port);
+		/*
+		 * If we failed the first try, enable interrupt and yield
+		 * to other tasks, so that we don't starve them.
+		 */
+		if (r) {
+			pd_rx_enable_monitoring(port);
+			/* Message receive timeout is 2.7ms */
+			task_wait_event(2700);
+		}
 		/* read the incoming packet if any */
 		head = analyze_rx(port, payload);
 		pd_rx_complete(port);
