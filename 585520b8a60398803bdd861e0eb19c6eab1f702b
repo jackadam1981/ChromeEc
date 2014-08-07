@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16f157a2_bd7feb2f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-07T17:30:12Z",
+      "side": 1,
+      "message": "nit: Protect battery from overvoltage.\n\nCurrent message seems to imply that you are protecting the battery by using overvoltage",
+      "revId": "585520b8a60398803bdd861e0eb19c6eab1f702b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "360c9b77_9ed14192",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-07T17:30:12Z",
+      "side": 1,
+      "message": "what about chstate \u003d PWR_STATE_CHARGE_NEAR_FULL?",
+      "revId": "585520b8a60398803bdd861e0eb19c6eab1f702b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
