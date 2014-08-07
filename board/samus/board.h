@@ -154,6 +154,15 @@ enum als_id {
 	ALS_COUNT,
 };
 
+/* Identifiers for each accelerometer used. */
+enum accel_id {
+	ACCEL_BASE,
+	ACCEL_LID,
+
+	/* Number of accelerometers. */
+	ACCEL_COUNT
+};
+
 /* Known board versions for system_get_board_version(). */
 enum board_version {
 	BOARD_VERSION_PROTO_1_9 = 0,
