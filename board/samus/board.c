@@ -5,6 +5,7 @@
 /* EC for Samus board configuration */
 
 #include "als.h"
+#include "ec_commands.h"
 #include "adc.h"
 #include "adc_chip.h"
 #include "backlight.h"
@@ -13,6 +14,8 @@
 #include "charger.h"
 #include "common.h"
 #include "console.h"
+#include "accelerometer.h"
+#include "driver/accelgyro_lsm6ds0.h"
 #include "driver/temp_sensor/tmp006.h"
 #include "driver/als_isl29035.h"
 #include "extpower.h"
@@ -166,6 +169,19 @@ const struct temp_sensor_t temp_sensors[] = {
 	{"I2C-Left D-Object", TEMP_SENSOR_TYPE_CASE, tmp006_get_val, 11, 7},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
+
+
+struct motion_sensor_t motion_sensors[] = {
+	/* location, type, driver, i2c_addr */
+	{  MOTIONSENSE_LOC_BASE, MOTIONSENSE_TYPE_ACCEL,
+		MOTIONSENSE_CHIP_LSM6DS0, LSM6DS0_ADDR0},
+	{  MOTIONSENSE_LOC_LID,  MOTIONSENSE_TYPE_ACCEL,
+		MOTIONSENSE_CHIP_LSM6DS0, LSM6DS0_ADDR1},
+	{  MOTIONSENSE_LOC_BASE, MOTIONSENSE_TYPE_GYRO,
+		MOTIONSENSE_CHIP_LSM6DS0, LSM6DS0_ADDR0},
+	{  MOTIONSENSE_LOC_LID,  MOTIONSENSE_TYPE_GYRO,
+		MOTIONSENSE_CHIP_LSM6DS0, LSM6DS0_ADDR1},
+};
 
 /* ALS instances. Must be in same order as enum als_id. */
 struct als_t als[] = {
