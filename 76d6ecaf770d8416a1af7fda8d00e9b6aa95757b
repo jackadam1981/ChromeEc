@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16f157a2_5dcd276a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1183,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-07T17:23:09Z",
+      "side": 1,
+      "message": "suggest adding comment like:\n\nCheck for state timeout, and if not check if need to adjust timeout value to wake up on the next state timeout.\n\nOr something like that just to explain these 4 lines.",
+      "range": {
+        "startLine": 1183,
+        "startChar": 0,
+        "endLine": 1183,
+        "endChar": 2
+      },
+      "revId": "76d6ecaf770d8416a1af7fda8d00e9b6aa95757b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
