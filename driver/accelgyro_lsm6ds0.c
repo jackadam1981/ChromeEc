@@ -6,6 +6,7 @@
 /* LSM6DS0 accelerometer and gyro module for Chrome EC */
 
 #include "accelerometer.h"
+#include "gyroscope.h"
 #include "common.h"
 #include "console.h"
 #include "driver/accelgyro_lsm6ds0.h"
@@ -24,32 +25,71 @@ struct accel_param_pair {
 };
 
 /* List of range values in +/-G's and their associated register values. */
-const struct accel_param_pair ranges[] = {
+const struct accel_param_pair g_ranges[] = {
 	{2, LSM6DS0_GSEL_2G},
 	{4, LSM6DS0_GSEL_4G},
 	{8, LSM6DS0_GSEL_8G}
 };
 
-/* List of ODR values in mHz and their associated register values. */
-const struct accel_param_pair datarates[] = {
+/*
+ * List of angular rate range values in +/-dps's
+ * and their associated register values.
+ */
+const struct accel_param_pair dps_ranges[] = {
+	{245, LSM6DS0_DPS_SEL_245},
+	{500, LSM6DS0_DPS_SEL_500},
+	{2000, LSM6DS0_DPS_SEL_2000}
+};
+
+#define ODR_TBL_SIZE 6
+
+/* List of ODR (gyro off) values in mHz and their associated register values.*/
+const struct accel_param_pair gyro_on_odr[ODR_TBL_SIZE] = {
+	{15000,    LSM6DS0_ODR_15HZ},
+	{59000,    LSM6DS0_ODR_59HZ},
+	{119000,   LSM6DS0_ODR_119HZ},
+	{238000,   LSM6DS0_ODR_238HZ},
+	{476000,   LSM6DS0_ODR_476HZ},
+	{952000,   LSM6DS0_ODR_952HZ}
+};
+
+/* List of ODR (gyro on) values in mHz and their associated register values. */
+const struct accel_param_pair gyro_off_odr[ODR_TBL_SIZE] = {
 	{10000,    LSM6DS0_ODR_10HZ},
 	{50000,    LSM6DS0_ODR_50HZ},
 	{119000,   LSM6DS0_ODR_119HZ},
 	{238000,   LSM6DS0_ODR_238HZ},
 	{476000,   LSM6DS0_ODR_476HZ},
-	{952000,   LSM6DS0_ODR_982HZ}
+	{952000,   LSM6DS0_ODR_952HZ}
 };
 
-/* Current range of each accelerometer. The value is an index into ranges[]. */
-static int sensor_range[ACCEL_COUNT] = {0, 0};
+/*
+ * Current linear acceleration range of each accelerometer.
+ * The value is an index into g_ranges[].
+ */
+static int sensor_g_range[ACCEL_COUNT] = {0, 0};
 
 /*
- * Current output data rate of each accelerometer. The value is an index into
- * datarates[].
+ * Current angular rate range of each gyro.
+ * The value is an index into dps_ranges[].
  */
-static int sensor_datarate[ACCEL_COUNT] = {1, 1};
+static int sensor_dps_range[ACCEL_COUNT] = {0, 0};
 
-static struct mutex accel_mutex[ACCEL_COUNT];
+/*
+ * Current output data rate of each accelerometer.
+ * The value is an index into g_odr_tbl[id].
+ */
+static int la_sensor_datarate[ACCEL_COUNT] = {1, 1};
+
+/*
+ * Current output data rate of each gyro.
+ * The value is an index into g_odr_tbl[id].
+ */
+static int gyro_sensor_datarate[ACCEL_COUNT] = {1, 1};
+
+static struct mutex lsm6ds0_mutex[ACCEL_COUNT];
+
+static const struct accel_param_pair *g_odr_tbl[ACCEL_COUNT];
 
 /**
  * Find index into a accel_param_pair that matches the given engineering value
@@ -98,27 +138,31 @@ int accel_set_range(const enum accel_id id, const int range, const int rnd)
 {
 	int ret, index, ctrl_reg6;
 
+	/* Check for valid id. */
+	if (id < 0 || id >= ACCEL_COUNT)
+		return EC_ERROR_INVAL;
+
 	/* Find index for interface pair matching the specified range. */
-	index = find_param_index(range, rnd, ranges, ARRAY_SIZE(ranges));
+	index = find_param_index(range, rnd, g_ranges, ARRAY_SIZE(g_ranges));
 
 	/*
 	 * Lock accel resource to prevent another task from attempting
 	 * to write accel parameters until we are done.
 	 */
-	mutex_lock(&accel_mutex[id]);
+	mutex_lock(&lsm6ds0_mutex[id]);
 
-	ret = raw_read8(accel_addr[id], LSM6DS0_CTRL_REG6_XL, &ctrl_reg6);
+	ret = raw_read8(lsm6ds0_addr[id], LSM6DS0_CTRL_REG6_XL, &ctrl_reg6);
 	if (ret != EC_SUCCESS)
 		goto accel_cleanup;
 
-	ctrl_reg6 = (ctrl_reg6 & ~LSM6DS0_GSEL_ALL) | ranges[index].reg;
-	ret = raw_write8(accel_addr[id], LSM6DS0_CTRL_REG6_XL, ctrl_reg6);
+	ctrl_reg6 = (ctrl_reg6 & ~LSM6DS0_GSEL_MASK) | g_ranges[index].reg;
+	ret = raw_write8(lsm6ds0_addr[id], LSM6DS0_CTRL_REG6_XL, ctrl_reg6);
 
 accel_cleanup:
 	/* Unlock accel resource and save new range if written successfully. */
-	mutex_unlock(&accel_mutex[id]);
+	mutex_unlock(&lsm6ds0_mutex[id]);
 	if (ret == EC_SUCCESS)
-		sensor_range[id] = index;
+		sensor_g_range[id] = index;
 
 	return EC_SUCCESS;
 }
@@ -129,7 +173,7 @@ int accel_get_range(const enum accel_id id, int * const range)
 	if (id < 0 || id >= ACCEL_COUNT)
 		return EC_ERROR_INVAL;
 
-	*range = ranges[sensor_range[id]].val;
+	*range = g_ranges[sensor_g_range[id]].val;
 	return EC_SUCCESS;
 }
 
@@ -162,26 +206,26 @@ int accel_set_datarate(const enum accel_id id, const int rate, const int rnd)
 		return EC_ERROR_INVAL;
 
 	/* Find index for interface pair matching the specified range. */
-	index = find_param_index(rate, rnd, datarates, ARRAY_SIZE(datarates));
+	index = find_param_index(rate, rnd, g_odr_tbl[id], ODR_TBL_SIZE);
 
 	/*
 	 * Lock accel resource to prevent another task from attempting
 	 * to write accel parameters until we are done.
 	 */
-	mutex_lock(&accel_mutex[id]);
+	mutex_lock(&lsm6ds0_mutex[id]);
 
-	ret = raw_read8(accel_addr[id], LSM6DS0_CTRL_REG6_XL, &ctrl_reg6);
+	ret = raw_read8(lsm6ds0_addr[id], LSM6DS0_CTRL_REG6_XL, &ctrl_reg6);
 	if (ret != EC_SUCCESS)
 		goto accel_cleanup;
 
-	ctrl_reg6 = (ctrl_reg6 & ~LSM6DS0_ODR_ALL) | datarates[index].reg;
-	ret = raw_write8(accel_addr[id], LSM6DS0_CTRL_REG6_XL, ctrl_reg6);
+	ctrl_reg6 = (ctrl_reg6 & ~LSM6DS0_ODR_MASK) | g_odr_tbl[id][index].reg;
+	ret = raw_write8(lsm6ds0_addr[id], LSM6DS0_CTRL_REG6_XL, ctrl_reg6);
 
 accel_cleanup:
 	/* Unlock accel resource and save new ODR if written successfully. */
-	mutex_unlock(&accel_mutex[id]);
+	mutex_unlock(&lsm6ds0_mutex[id]);
 	if (ret == EC_SUCCESS)
-		sensor_datarate[id] = index;
+		la_sensor_datarate[id] = index;
 
 	return EC_SUCCESS;
 }
@@ -192,7 +236,7 @@ int accel_get_datarate(const enum accel_id id, int * const rate)
 	if (id < 0 || id >= ACCEL_COUNT)
 		return EC_ERROR_INVAL;
 
-	*rate = datarates[sensor_datarate[id]].val;
+	*rate = g_odr_tbl[id][la_sensor_datarate[id]].val;
 	return EC_SUCCESS;
 }
 
@@ -211,19 +255,23 @@ int accel_read(const enum accel_id id, int * const x_acc, int * const y_acc,
 	uint8_t reg = LSM6DS0_OUT_X_L_XL;
 	int ret, multiplier;
 
+	/* Check for valid id. */
+	if (id < 0 || id >= ACCEL_COUNT)
+		return EC_ERROR_INVAL;
+
 	/* Read 6 bytes starting at LSM6DS0_OUT_X_L_XL. */
-	mutex_lock(&accel_mutex[id]);
+	mutex_lock(&lsm6ds0_mutex[id]);
 	i2c_lock(I2C_PORT_ACCEL, 1);
-	ret = i2c_xfer(I2C_PORT_ACCEL, accel_addr[id], &reg, 1, acc, 6,
+	ret = i2c_xfer(I2C_PORT_ACCEL, lsm6ds0_addr[id], &reg, 1, acc, 6,
 			I2C_XFER_SINGLE);
 	i2c_lock(I2C_PORT_ACCEL, 0);
-	mutex_unlock(&accel_mutex[id]);
+	mutex_unlock(&lsm6ds0_mutex[id]);
 
 	if (ret != EC_SUCCESS)
 		return ret;
 
 	/* Determine multiplier based on stored range. */
-	switch (ranges[sensor_range[id]].reg) {
+	switch (g_ranges[sensor_g_range[id]].reg) {
 	case LSM6DS0_GSEL_2G:
 		multiplier = 1;
 		break;
@@ -262,24 +310,175 @@ int accel_init(const enum accel_id id)
 	if (id < 0 || id >= ACCEL_COUNT)
 		return EC_ERROR_INVAL;
 
-	mutex_lock(&accel_mutex[id]);
+	g_odr_tbl[id] = gyro_off_odr;
+	mutex_lock(&lsm6ds0_mutex[id]);
 
 	/*
 	 * This sensor can be powered through an EC reboot, so the state of
 	 * the sensor is unknown here. Initiate software reset to restore
 	 * sensor to default.
 	 */
-	ret = raw_write8(accel_addr[id], LSM6DS0_CTRL_REG8, 1);
+	ret = raw_write8(lsm6ds0_addr[id], LSM6DS0_CTRL_REG8, 1);
 	if (ret != EC_SUCCESS)
 		goto accel_cleanup;
 
-	/* Set ODR and range. */
-	ctrl_reg6 = datarates[sensor_datarate[id]].reg |
-			ranges[sensor_range[id]].reg;
+	/* Set LA ODR and range. */
+	ctrl_reg6 = g_odr_tbl[id][la_sensor_datarate[id]].reg |
+			g_ranges[sensor_g_range[id]].reg;
 
-	ret = raw_write8(accel_addr[id], LSM6DS0_CTRL_REG6_XL, ctrl_reg6);
+	ret = raw_write8(lsm6ds0_addr[id], LSM6DS0_CTRL_REG6_XL, ctrl_reg6);
 
 accel_cleanup:
-	mutex_unlock(&accel_mutex[id]);
+	mutex_unlock(&lsm6ds0_mutex[id]);
 	return ret;
 }
+
+
+int gyro_set_range(const enum accel_id id, const int range, const int rnd)
+{
+	int ret, index, ctrl_reg1;
+
+	/* Check for valid id. */
+	if (id < 0 || id >= ACCEL_COUNT)
+		return EC_ERROR_INVAL;
+
+	/* Find index for interface pair matching the specified range. */
+	index = find_param_index(range, rnd,
+		dps_ranges, ARRAY_SIZE(dps_ranges));
+
+	/*
+	 * Lock accel resource to prevent another task from attempting
+	 * to write accel parameters until we are done.
+	 */
+	mutex_lock(&lsm6ds0_mutex[id]);
+
+	ret = raw_read8(lsm6ds0_addr[id], LSM6DS0_CTRL_REG1_G, &ctrl_reg1);
+	if (ret != EC_SUCCESS)
+		goto accel_cleanup;
+
+	ctrl_reg1 = (ctrl_reg1 & ~LSM6DS0_DPS_SEL_MASK) | dps_ranges[index].reg;
+	ret = raw_write8(lsm6ds0_addr[id], LSM6DS0_CTRL_REG1_G, ctrl_reg1);
+
+accel_cleanup:
+	/* Unlock accel resource and save new range if written successfully. */
+	mutex_unlock(&lsm6ds0_mutex[id]);
+	if (ret == EC_SUCCESS)
+		sensor_dps_range[id] = index;
+
+	return EC_SUCCESS;
+}
+int gyro_get_range(const enum accel_id id, int * const range)
+{
+	/* Check for valid id. */
+	if (id < 0 || id >= ACCEL_COUNT)
+		return EC_ERROR_INVAL;
+
+	*range = dps_ranges[sensor_dps_range[id]].val;
+	return EC_SUCCESS;
+}
+int gyro_set_datarate(const enum accel_id id, const int rate, const int rnd)
+{
+	int ret, index, ctrl_reg1;
+	/* Check for valid id. */
+	if (id < 0 || id >= ACCEL_COUNT)
+		return EC_ERROR_INVAL;
+
+	/* Find index for interface pair matching the specified range. */
+	index = find_param_index(rate, rnd, g_odr_tbl[id], ODR_TBL_SIZE);
+
+	/*
+	 * Lock accel resource to prevent another task from attempting
+	 * to write accel parameters until we are done.
+	 */
+	mutex_lock(&lsm6ds0_mutex[id]);
+
+	ret = raw_read8(lsm6ds0_addr[id], LSM6DS0_CTRL_REG1_G, &ctrl_reg1);
+	if (ret != EC_SUCCESS)
+		goto accel_cleanup;
+
+	ctrl_reg1 = (ctrl_reg1 & ~LSM6DS0_ODR_MASK) | g_odr_tbl[id][index].reg;
+	ret = raw_write8(lsm6ds0_addr[id], LSM6DS0_CTRL_REG1_G, ctrl_reg1);
+
+accel_cleanup:
+	/* Unlock accel resource and save new ODR if written successfully. */
+	mutex_unlock(&lsm6ds0_mutex[id]);
+	if (ret == EC_SUCCESS)
+		gyro_sensor_datarate[id] = index;
+
+	return EC_SUCCESS;
+}
+
+int gyro_get_datarate(const enum accel_id id, int * const rate)
+{
+	/* Check for valid id. */
+	if (id < 0 || id >= ACCEL_COUNT)
+		return EC_ERROR_INVAL;
+
+	*rate = g_odr_tbl[id][gyro_sensor_datarate[id]].val;
+	return EC_SUCCESS;
+}
+
+int gyro_read(const enum accel_id id, int * const x_gyro, int * const y_gyro,
+		int * const z_gyro)
+{
+	uint8_t gyro[6];
+	uint8_t reg = LSM6DS0_OUT_X_L_G;
+	int ret;
+
+	/* Check for valid id. */
+	if (id < 0 || id >= ACCEL_COUNT)
+		return EC_ERROR_INVAL;
+
+	/* Read 6 bytes starting at LSM6DS0_OUT_X_L_G. */
+	mutex_lock(&lsm6ds0_mutex[id]);
+	i2c_lock(I2C_PORT_ACCEL, 1);
+	ret = i2c_xfer(I2C_PORT_ACCEL, lsm6ds0_addr[id], &reg, 1, gyro, 6,
+			I2C_XFER_SINGLE);
+	i2c_lock(I2C_PORT_ACCEL, 0);
+	mutex_unlock(&lsm6ds0_mutex[id]);
+
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	/*
+	 * Convert data to signed 16-bit value. Note order of registers:
+	 *
+	 * gyro[0] = LSM6DS0_OUT_X_L_G
+	 * gyro[1] = LSM6DS0_OUT_X_H_G
+	 * gyro[2] = LSM6DS0_OUT_Y_L_G
+	 * gyro[3] = LSM6DS0_OUT_Y_H_G
+	 * gyro[4] = LSM6DS0_OUT_Z_L_G
+	 * gyro[5] = LSM6DS0_OUT_Z_H_G
+	 */
+	*x_gyro = ((int16_t)(gyro[1] << 8 | gyro[0]));
+	*y_gyro = ((int16_t)(gyro[3] << 8 | gyro[2]));
+	*z_gyro = ((int16_t)(gyro[5] << 8 | gyro[4]));
+
+	return EC_SUCCESS;
+}
+
+int gyro_init(const enum accel_id id)
+{
+	int ret, ctrl_reg1;
+	/* Check for valid id. */
+	if (id < 0 || id >= ACCEL_COUNT)
+		return EC_ERROR_INVAL;
+
+	g_odr_tbl[id] = gyro_on_odr;
+
+	/* Check for valid id. */
+	if (id < 0 || id >= ACCEL_COUNT)
+		return EC_ERROR_INVAL;
+
+	mutex_lock(&lsm6ds0_mutex[id]);
+
+	/* Set Gyro ODR and range. */
+	ctrl_reg1 = g_odr_tbl[id][gyro_sensor_datarate[id]].reg |
+			dps_ranges[sensor_dps_range[id]].reg;
+
+	ret = raw_write8(lsm6ds0_addr[id], LSM6DS0_CTRL_REG1_G, ctrl_reg1);
+
+	mutex_unlock(&lsm6ds0_mutex[id]);
+	return ret;
+}
+

@@ -1300,6 +1300,7 @@ enum motionsensor_location {
 /* List of motion sensor chips. */
 enum motionsensor_chip {
 	MOTIONSENSE_CHIP_KXCJ9 = 0,
+	MOTIONSENSE_CHIP_LSM6DS0 = 1,
 };
 
 /* Module flag masks used for the dump sub-command. */
@@ -2345,15 +2346,16 @@ struct ec_response_sb_fw_update {
 	};
 } __packed;
 
+/* Inform the EC of the verified boot mode selected by the AP */
 #define EC_CMD_ENTERING_MODE 0xb6
 
 struct ec_params_entering_mode {
 	int vboot_mode;
 } __packed;
 
-#define VBOOT_MODE_NORMAL    0
-#define VBOOT_MODE_DEVELOPER 1
-#define VBOOT_MODE_RECOVERY  2
+#define EC_VBOOT_MODE_NORMAL    0
+#define EC_VBOOT_MODE_DEVELOPER 1
+#define EC_VBOOT_MODE_RECOVERY  2
 
 /*****************************************************************************/
 /* System commands */
