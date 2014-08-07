@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "56390f00_6aa768ac",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-07T00:20:54Z",
+      "side": 1,
+      "message": "Why do you need the first \"if\" condition? Isn\u0027t it sufficient to just check the following \"if\" condition?",
+      "parentUuid": "b6a40b88_77c3f842",
+      "revId": "bd372cf52a0db72fb470916a379ca628f7e4f44e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "962f07b5_77e0f257",
         "filename": "board/winky/battery.c",
         "patchSetId": 8
