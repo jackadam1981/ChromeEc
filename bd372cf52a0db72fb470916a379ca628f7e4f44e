@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "f63f63e6_b2656698",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-07T00:48:39Z",
+      "side": 1,
+      "message": "#ifdef CONFIG_BATTERY_NOT_CONNECTED",
+      "revId": "bd372cf52a0db72fb470916a379ca628f7e4f44e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76029343_b126001a",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-07T00:48:39Z",
+      "side": 1,
+      "message": "#endif",
+      "revId": "bd372cf52a0db72fb470916a379ca628f7e4f44e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6a40b88_77c3f842",
         "filename": "board/winky/battery.c",
         "patchSetId": 8
@@ -103,6 +137,24 @@
       "side": 1,
       "message": "battery error state will be set continually with \"if(oem_battery_state \u0026 OEM_BATTERY_STATE_ERROR)\"",
       "parentUuid": "b6a40b88_37a6e0ad",
+      "revId": "bd372cf52a0db72fb470916a379ca628f7e4f44e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56390f00_2ac0c00f",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-07T00:48:39Z",
+      "side": 1,
+      "message": "Actually this is fine. Leave it as is.",
+      "parentUuid": "56390f00_cab2f4cf",
       "revId": "bd372cf52a0db72fb470916a379ca628f7e4f44e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
