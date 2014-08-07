@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "f63f63e6_32167625",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-07T00:23:51Z",
+      "side": 1,
+      "message": "\"Generate battery error if low voltage for more than 2 hours\"",
+      "revId": "dd7847157a0e21b867fa8b2e22fc2ff6545e2cc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f63f63e6_92a78ad9",
         "filename": "board/winky/battery.c",
         "patchSetId": 2
