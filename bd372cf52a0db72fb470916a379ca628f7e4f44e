@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "b6a40b88_57a7dcab",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1112186
+      },
+      "writtenOn": "2014-08-07T00:36:52Z",
+      "side": 1,
+      "message": "\"batt-\u003eflags\" is always cleared battery_get_params().\nSo, it should be continually set error state.\nActually, this function is not called if BATT_FLAG_BAT_ANY is enable.\nBut, I will add more check-items for battery protection on this function.\nSome items will use BATT_FLAG_WANT_CHARGE.\nSo, battery error state should be check separately.",
+      "parentUuid": "56390f00_6aa768ac",
+      "revId": "bd372cf52a0db72fb470916a379ca628f7e4f44e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "962f07b5_77e0f257",
         "filename": "board/winky/battery.c",
         "patchSetId": 8
