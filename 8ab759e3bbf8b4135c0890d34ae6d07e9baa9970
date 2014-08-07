@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "360c9b77_6f0dd19b",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-07T00:19:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "962f07b5_0237aaf8",
+      "revId": "8ab759e3bbf8b4135c0890d34ae6d07e9baa9970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "962f07b5_4276d2b2",
         "filename": "util/ec_sb_firmware_update.c",
         "patchSetId": 23
