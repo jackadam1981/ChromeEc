@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6dbe336_97ff5c41",
+        "filename": "board/veyron/build.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2014-08-07T23:47:47Z",
+      "side": 1,
+      "message": "Can you fix this comment?",
+      "revId": "127fb3eab1b2e437b0d8d06128130d6b974a6cb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56202fde_6f44a280",
+        "filename": "board/veyron/gpio.inc",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2014-08-07T23:47:47Z",
+      "side": 1,
+      "message": "Are these just sorted arbitrarily?  Should we be sorting by name or pin number?",
+      "revId": "127fb3eab1b2e437b0d8d06128130d6b974a6cb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
