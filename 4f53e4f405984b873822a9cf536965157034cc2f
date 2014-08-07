@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "16f157a2_1d4b9fea",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-07T17:38:37Z",
+      "side": 1,
+      "message": "Coding style:  else should be on same line as }\n\n} else if () {",
+      "revId": "4f53e4f405984b873822a9cf536965157034cc2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "360c9b77_5e76b9e7",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-07T17:38:37Z",
+      "side": 1,
+      "message": "Here too",
+      "revId": "4f53e4f405984b873822a9cf536965157034cc2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "363e5beb_88591b3c",
         "filename": "board/winky/battery.c",
         "patchSetId": 3
