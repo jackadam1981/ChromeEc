@@ -33,6 +33,23 @@
       "revId": "585520b8a60398803bdd861e0eb19c6eab1f702b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16f157a2_fdd85303",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-07T17:32:59Z",
+      "side": 1,
+      "message": "This is still confusing.  BATT_FLAG_BAD_ANY is really \"ALL errors\".  And this is just a single error, which for now only comes from reading a bad battery voltage.  So I don\u0027t think we should report an error state which says \"everything is bad\" when the only thing which is bad is the voltage.",
+      "revId": "585520b8a60398803bdd861e0eb19c6eab1f702b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
