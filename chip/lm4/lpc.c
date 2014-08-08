@@ -625,6 +625,8 @@ static void lpc_interrupt(void)
 
 		CPRINTF("[%T LPC RESET# %sasserted]\n",
 			lpc_get_pltrst_asserted() ? "" : "de");
+		if (!lpc_get_pltrst_asserted())
+			hook_notify(HOOK_CHIPSET_WARM_RESET);
 	}
 }
 DECLARE_IRQ(LM4_IRQ_LPC, lpc_interrupt, 2);

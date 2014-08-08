@@ -107,6 +107,15 @@ enum hook_type {
 	HOOK_CHIPSET_SHUTDOWN,
 
 	/*
+	 * The EC may be able to detect a host chipset/AP warm reset through
+	 * various means. This hook is called as an asynchronous indication
+	 * whenever it is possible to detect this condition.
+	 *
+	 * Hook routines are called from the chipset task.
+	 */
+	 HOOK_CHIPSET_WARM_RESET,
+
+	/*
 	 * AC power plugged in or removed.
 	 *
 	 * Hook routines are called from the TICK task.
