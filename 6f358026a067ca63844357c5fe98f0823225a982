@@ -37,6 +37,23 @@
     },
     {
       "key": {
+        "uuid": "161a37b4_8c864b55",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-08T01:19:59Z",
+      "side": 1,
+      "message": "if STOP_CHARGE is set then you don\u0027t want to check for overvoltage condition?",
+      "revId": "6f358026a067ca63844357c5fe98f0823225a982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f616838e_48f9df2b",
         "filename": "board/winky/battery.c",
         "patchSetId": 5
@@ -66,6 +83,24 @@
       "side": 1,
       "message": "OEM_BATTERY_STATE_STOP_CHARGE is not error.\nWe want just to stop charging until battery state is recovered.",
       "parentUuid": "f616838e_48f9df2b",
+      "revId": "6f358026a067ca63844357c5fe98f0823225a982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6133f9f_6a593339",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-08T01:19:59Z",
+      "side": 1,
+      "message": "If you have set both ERROR and STOP_CHARGE (see above comment), then you should treat ERROR as higher priority.",
+      "parentUuid": "16df9724_9ed13d0b",
       "revId": "6f358026a067ca63844357c5fe98f0823225a982",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
