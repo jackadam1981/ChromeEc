@@ -70,6 +70,7 @@ DECLARE_CONSOLE_COMMAND(battcutoff, command_battcutoff,
 static int oem_battery_state;
 #define OEM_BATTERY_STATE_DEFAULT 0x00
 #define OEM_BATTERY_STATE_ERROR 0x01
+#define	OEM_BATTERY_STATE_STOP_CHARGE 0x02
 
 inline void board_battery_not_connected(void)
 {
@@ -78,7 +79,23 @@ inline void board_battery_not_connected(void)
 
 void battery_override_params(struct batt_params *batt)
 {
+	int bat_temp_c = DECI_KELVIN_TO_CELSIUS(batt->temperature);
 	int chstate = charge_get_state();
+
+	/* Check battery temperature */
+	if(chstate == PWR_STATE_CHARGE) {
+		if((bat_temp_c < info.charging_min_c) ||
+			(bat_temp_c >= info.charging_max_c)) {
+			oem_battery_state |= OEM_BATTERY_STATE_STOP_CHARGE;
+		}
+	} else {
+		if((bat_temp_c < info.start_charging_min_c) ||
+			(bat_temp_c >= info.start_charging_max_c)) {
+			oem_battery_state |= OEM_BATTERY_STATE_STOP_CHARGE;
+		} else {
+			oem_battery_state &= ~OEM_BATTERY_STATE_STOP_CHARGE;
+		}
+	}
 
 	if(oem_battery_state == OEM_BATTERY_STATE_DEFAULT) {
 		if((chstate == PWR_STATE_CHARGE) ||
@@ -88,6 +105,12 @@ void battery_override_params(struct batt_params *batt)
 				oem_battery_state |= OEM_BATTERY_STATE_ERROR;
 			}
 		}
+	}
+
+	if(oem_battery_state & OEM_BATTERY_STATE_STOP_CHARGE) {
+		batt->flags &= ~BATT_FLAG_WANT_CHARGE;
+		batt->desired_voltage = 0;
+		batt->desired_current = 0;
 	}
 
 	if(oem_battery_state & OEM_BATTERY_STATE_ERROR) {
