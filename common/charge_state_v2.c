@@ -464,6 +464,7 @@ void charger_task(void)
 	/* Initialize all the state */
 	memset(&curr, 0, sizeof(curr));
 	curr.batt.is_present = BP_NOT_SURE;
+	curr.desired_input_current = CONFIG_CHARGER_INPUT_CURRENT;
 	prev_ac = prev_charge = -1;
 	state_machine_force_idle = 0;
 	shutdown_warning_time.val = 0UL;
@@ -481,9 +482,12 @@ void charger_task(void)
 				/*
 				 * Some chargers are unpowered when the AC is
 				 * off, so we'll reinitialize it when AC
-				 * comes back. Try again if it fails.
+				 * comes back and set the input current limit.
+				 * Try again if it fails.
 				 */
 				int rv = charger_post_init();
+				rv |= charger_set_input_current(
+						curr.desired_input_current);
 				if (rv != EC_SUCCESS)
 					problem(PR_POST_INIT, rv);
 				else
@@ -809,6 +813,12 @@ int charge_temp_sensor_get_val(int idx, int *temp_ptr)
 	/* Battery temp is 10ths of degrees K, temp wants degrees K */
 	*temp_ptr = curr.batt.temperature / 10;
 	return EC_SUCCESS;
+}
+
+int charge_store_input_current_limit(int ma)
+{
+	curr.desired_input_current = ma;
+	return charger_set_input_current(ma);
 }
 
 /*****************************************************************************/
