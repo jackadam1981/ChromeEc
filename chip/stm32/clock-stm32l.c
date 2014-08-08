@@ -13,6 +13,7 @@
 #include "hooks.h"
 #include "registers.h"
 #include "util.h"
+#include "keyboard_raw.h"
 
 #ifdef CONFIG_STM32L_FAKE_HIBERNATE
 #include "extpower.h"
@@ -196,7 +197,6 @@ void clock_enable_module(enum module_id module, int enable)
  */
 void __enter_hibernate(uint32_t seconds, uint32_t microseconds)
 {
-	int i;
 	fake_hibernate = 1;
 
 #ifdef CONFIG_POWER_COMMON
@@ -225,8 +225,7 @@ void __enter_hibernate(uint32_t seconds, uint32_t microseconds)
 	 *
 	 * A little hacky to do this here.
 	 */
-	for (i = GPIO_KB_OUT00; i < GPIO_KB_OUT00 + KEYBOARD_COLS; i++)
-		gpio_set_flags(i, GPIO_INPUT);
+	keyboard_raw_gpio_highz();
 
 	ccprints("fake hibernate. waits for power button/lid/RTC/AC");
 	cflush();

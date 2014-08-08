@@ -134,3 +134,11 @@ void keyboard_raw_gpio_interrupt(enum gpio_signal signal)
 {
 	task_wake(TASK_ID_KEYSCAN);
 }
+
+void keyboard_raw_gpio_highz(void)
+{
+	int i;
+
+	for (i = GPIO_KB_OUT00; i < GPIO_KB_OUT00 + KEYBOARD_COLS; i++)
+		gpio_set_flags(i, GPIO_INPUT);
+}

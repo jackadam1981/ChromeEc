@@ -66,9 +66,10 @@ void keyboard_raw_enable_interrupt(int enable);
  * GPIO interrupt for raw keyboard input
  */
 void keyboard_raw_gpio_interrupt(enum gpio_signal signal);
-
+void keyboard_raw_gpio_highz(void);
 #else
 #define keyboard_raw_gpio_interrupt NULL
+void keyboard_raw_gpio_highz(void) { }
 #endif
 
 #endif  /* __CROS_EC_KEYBOARD_RAW_H */
