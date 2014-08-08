@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16c87774_5977c713",
+        "filename": "board/veyron/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-08-08T17:47:47Z",
+      "side": 1,
+      "message": "Please do not use this workaround,\ninstead just remap the DMA as it has been done on all other STM32F0 boards using USART1 :\nadd a board_config_pre_init() function with the DMA remapping and declare CONFIG_BOARD_PRE_INIT.\nas in https://chromium.googlesource.com/chromiumos/platform/ec/+/master/board/firefly/board.c",
+      "revId": "ae5e938ccf763dd679accf1fa4ad937e3903435c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16c87774_79a3a354",
+        "filename": "board/veyron/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-08-08T17:47:47Z",
+      "side": 1,
+      "message": "it\u0027s probably useless since the USB PD support is not activated.",
+      "revId": "ae5e938ccf763dd679accf1fa4ad937e3903435c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
