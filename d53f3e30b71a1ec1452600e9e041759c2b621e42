@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "360c9b77_c159243b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-08T07:24:12Z",
+      "side": 1,
+      "message": "Fix the method to read full battery capacity",
+      "revId": "d53f3e30b71a1ec1452600e9e041759c2b621e42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "360c9b77_a15ea01f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-08T07:24:12Z",
+      "side": 1,
+      "message": "\u0027struct batt_params\u0027 has no member named \u0027full_capacity\u0027 on this branch.",
+      "revId": "d53f3e30b71a1ec1452600e9e041759c2b621e42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56d58ffe_40934edc",
         "filename": "board/winky/battery.c",
         "patchSetId": 1
@@ -49,6 +83,24 @@
       "side": 1,
       "message": "Error is,\n\u0027struct batt_params\u0027 has no member named \u0027full_capacity\u0027",
       "parentUuid": "360c9b77_a185004e",
+      "revId": "d53f3e30b71a1ec1452600e9e041759c2b621e42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56202fde_437c15c7",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-08T07:24:12Z",
+      "side": 1,
+      "message": "This branch does not have that struct member variable.",
+      "parentUuid": "56d58ffe_c09e7edf",
       "revId": "d53f3e30b71a1ec1452600e9e041759c2b621e42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
