@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56d58ffe_c09d9e8c",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1112186
+      },
+      "writtenOn": "2014-08-08T00:54:37Z",
+      "side": 1,
+      "message": "@Mohammed\nTemperature condition is different as battery state.\nStart charging temperature is check on all state except PWR_STATE_CHARGE.",
+      "revId": "6f358026a067ca63844357c5fe98f0823225a982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
