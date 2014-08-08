@@ -16,6 +16,41 @@
       "revId": "6f358026a067ca63844357c5fe98f0823225a982",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f616838e_088247ae",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-08T01:12:37Z",
+      "side": 1,
+      "message": "Didn\u0027t notice that.",
+      "parentUuid": "56d58ffe_c09d9e8c",
+      "revId": "6f358026a067ca63844357c5fe98f0823225a982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f616838e_48f9df2b",
+        "filename": "board/winky/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-08T01:12:37Z",
+      "side": 1,
+      "message": "The check for STOP_CHARGE should come after the check for ERROR\n\nERROR means it is a bad battery and you want to set that the BAD_VOLTAGE flag instead of the ~WANT_CHARGE flag.",
+      "revId": "6f358026a067ca63844357c5fe98f0823225a982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
