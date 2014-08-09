@@ -33,6 +33,29 @@
       "revId": "bc23bf2af3b74234245c0a0e44a186be821c869d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3681fb17_0a45fb7e",
+        "filename": "include/charge_state_v2.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-08-09T22:26:25Z",
+      "side": 1,
+      "message": "Maybe name this charge_set_input_current_limit for consistency?",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 36
+      },
+      "revId": "bc23bf2af3b74234245c0a0e44a186be821c869d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
