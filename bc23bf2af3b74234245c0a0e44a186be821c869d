@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56a3cfb2_f3334a08",
+        "filename": "board/ryu/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-08-09T01:33:22Z",
+      "side": 1,
+      "message": "Should CONFIG_CHARGER_INPUT_CURRENT be renamed to CONFIG_CHARGER_MIN_INPUT_CURRENT? Or should this call MIN() instead of MAX() ? [same change in host_command_pd.c if so]",
+      "revId": "bc23bf2af3b74234245c0a0e44a186be821c869d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9699c785_15f0b673",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-08-09T01:33:22Z",
+      "side": 1,
+      "message": "The problem() function is supposed to handle one enum ec_error_list value at a time. They\u0027re integers, not bitmasks, so using |\u003d here will detect errors, but may turn two errors into a completely different one. \n\nBest to just add another if..else here.",
+      "revId": "bc23bf2af3b74234245c0a0e44a186be821c869d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
