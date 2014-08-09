@@ -29,6 +29,26 @@ void clock_enable_module(enum module_id module, int enable)
 {
 }
 
+void __enter_hibernate(uint32_t seconds, uint32_t microseconds)
+{
+//	if (seconds || microseconds)
+//		set_rtc_alarm(seconds, microseconds);
+
+	/* interrupts off now */
+	asm volatile("cpsid i");
+
+	/* enable the wake up pin */
+	STM32_PWR_CSR |= (1<<10) | (1<<15);
+	STM32_PWR_CR |= 0xe;
+	CPU_SCB_SYSCTRL |= 0x4;
+	/* go to Standby mode */
+	asm("wfi");
+
+	/* we should never reach that point */
+	while (1)
+		;
+}
+
 void clock_init(void)
 {
 	/*
