@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7687f329_0c8ef7b2",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-09T22:16:34Z",
+      "side": 1,
+      "message": "since we know printing stuff affects PD communication timing, I would shorten this. Perhaps:\n\nCPRINTF(\"C%d st%d\\n\", port, next_state);",
+      "range": {
+        "startLine": 275,
+        "startChar": 1,
+        "endLine": 275,
+        "endChar": 8
+      },
+      "revId": "f3c120bfa3f33e11c5cf50c1075c31330f0f131a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
