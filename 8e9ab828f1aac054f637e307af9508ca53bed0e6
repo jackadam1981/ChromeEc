@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3681fb17_6d9db1e4",
+        "filename": "chip/stm32/usb_ms.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-08-10T18:11:08Z",
+      "side": 1,
+      "message": "USB_DIR_IN | USB_EP_MS_TX ?",
+      "revId": "8e9ab828f1aac054f637e307af9508ca53bed0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7687f329_2f99ed2a",
+        "filename": "chip/stm32/usb_ms.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-08-10T18:11:08Z",
+      "side": 1,
+      "message": "could be in the scope of ms_task rather than globally defined here.\nditto for ms_dir and probably a few others.",
+      "revId": "8e9ab828f1aac054f637e307af9508ca53bed0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "567caff0_ce62178d",
+        "filename": "chip/stm32/usb_ms.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-08-10T18:11:08Z",
+      "side": 1,
+      "message": "why max_lun is external variable rather than a plain old constant/define ?",
+      "revId": "8e9ab828f1aac054f637e307af9508ca53bed0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "567caff0_ee5fdbc7",
+        "filename": "chip/stm32/usb_ms.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-08-10T18:11:08Z",
+      "side": 1,
+      "message": "no ccprintf for non-interactive code",
+      "revId": "8e9ab828f1aac054f637e307af9508ca53bed0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7687f329_6fa3e554",
+        "filename": "chip/stm32/usb_ms.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-08-10T18:11:08Z",
+      "side": 1,
+      "message": "no ccputs in non-interactive command\nshould be CPUTS(",
+      "revId": "8e9ab828f1aac054f637e307af9508ca53bed0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3681fb17_4d71cded",
+        "filename": "chip/stm32/usb_ms_scsi.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-08-10T18:11:08Z",
+      "side": 1,
+      "message": "lower case variable name ?\nstatic ?",
+      "revId": "8e9ab828f1aac054f637e307af9508ca53bed0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "567caff0_6eb12bcd",
+        "filename": "chip/stm32/usb_ms_scsi.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-08-10T18:11:08Z",
+      "side": 1,
+      "message": "not really, maybe something like \"SPIflash\"",
+      "revId": "8e9ab828f1aac054f637e307af9508ca53bed0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7687f329_af84fdbe",
+        "filename": "chip/stm32/usb_ms_scsi.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-08-10T18:11:08Z",
+      "side": 1,
+      "message": "lower case",
+      "revId": "8e9ab828f1aac054f637e307af9508ca53bed0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7687f329_cf913100",
+        "filename": "chip/stm32/usb_ms_scsi.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-08-10T18:11:08Z",
+      "side": 1,
+      "message": "when you start shifting bytes, maybe it\u0027s time to use a packed struct rather than a u8 array",
+      "revId": "8e9ab828f1aac054f637e307af9508ca53bed0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7687f329_8f8739c3",
+        "filename": "chip/stm32/usb_ms_scsi.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-08-10T18:11:08Z",
+      "side": 1,
+      "message": "it\u0027s expensive in RAM footprint to keep both SCSI_STANDARD_INQUIRY and SCSI_VPD_SERIAL_NUMBER in .data just to update the serial number.\nMaybe we want to keep them read-only  in flash (const), and do the serial number update everytime we copy them to USB RAM.",
+      "revId": "8e9ab828f1aac054f637e307af9508ca53bed0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3681fb17_8da1051d",
+        "filename": "include/usb_ms.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-08-10T18:11:08Z",
+      "side": 1,
+      "message": "the whole xCBW prefix is a bit redundant, maybe we should remove it as it is against our coding convention (CamelCase)\nI know I kept the standard names in usb.h but here the CBW prefix adds length for nothing",
+      "revId": "8e9ab828f1aac054f637e307af9508ca53bed0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
