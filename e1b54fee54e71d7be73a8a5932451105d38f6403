@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "7687f329_cf077180",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-08-10T19:02:13Z",
+      "side": 1,
+      "message": "yes, libftdi is using the .bcdDevice to determine which ftdi chip it is talking to.",
+      "parentUuid": "3681fb17_8d8ae590",
+      "revId": "e1b54fee54e71d7be73a8a5932451105d38f6403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3681fb17_0d45157f",
         "filename": "chip/stm32/usb_ftdi.c",
         "patchSetId": 4
@@ -81,6 +99,24 @@
       "writtenOn": "2014-08-10T18:41:06Z",
       "side": 1,
       "message": "I\u0027m not convinced that using the timer interrupt is the right technical choice for the bitbanging.\nit has a high overhead.\nWhy not simply looping in the task ?",
+      "revId": "e1b54fee54e71d7be73a8a5932451105d38f6403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7687f329_ef04357e",
+        "filename": "chip/stm32/usb_ftdi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-08-10T19:02:13Z",
+      "side": 1,
+      "message": "I talked to Alec about looping in the task, and he was concerned that it would be pulling too much CPU from the PD.\n\nAlso, without the timer interrupt, there\u0027s no easy way to toggle the clock at a constant frequency.",
+      "parentUuid": "3681fb17_8d382509",
       "revId": "e1b54fee54e71d7be73a8a5932451105d38f6403",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
