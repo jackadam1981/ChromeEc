@@ -141,6 +141,24 @@
     },
     {
       "key": {
+        "uuid": "7687f329_32d79662",
+        "filename": "chip/stm32/usb_ftdi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-08-10T22:20:39Z",
+      "side": 1,
+      "message": "My bad, I must have gotten mixed up, sorry.\n\nIt sounds like I should just loop in the task then, in which case I\u0027ll just ignore the frequency sent by OpenOCD?",
+      "parentUuid": "7687f329_2f61ed15",
+      "revId": "e1b54fee54e71d7be73a8a5932451105d38f6403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "567caff0_8eb57fbb",
         "filename": "include/config.h",
         "patchSetId": 4
