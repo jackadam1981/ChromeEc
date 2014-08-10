@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7687f329_4f29c10a",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-08-10T17:43:47Z",
+      "side": 1,
+      "message": "\"closed\" is not really straightforward to understand, call it \"typec\" or \"usb\"",
+      "revId": "2be6b4d996973aef339041655a8410bee4cee250",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
