@@ -123,6 +123,24 @@
     },
     {
       "key": {
+        "uuid": "7687f329_2f61ed15",
+        "filename": "chip/stm32/usb_ftdi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-10T21:15:30Z",
+      "side": 1,
+      "message": "No, I\u0027m more concerned this interrupt would interfere with PD communication from firing too often, that\u0027s why I was concerned about running the JTAG clock at a high frequency.\n\nThe tradeoff is with an interrupt you will get a consistent clock frequency at the expense of causing problems on PD. With a task, as long as PD priority is higher, you will have working PD, but your JTAG clock frequency will be inconsistent.\n\nI\u0027m not sure how important it is for JTAG to have a consistent clock.",
+      "parentUuid": "7687f329_ef04357e",
+      "revId": "e1b54fee54e71d7be73a8a5932451105d38f6403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "567caff0_8eb57fbb",
         "filename": "include/config.h",
         "patchSetId": 4
