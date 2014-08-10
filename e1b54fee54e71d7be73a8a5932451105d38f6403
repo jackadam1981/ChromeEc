@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7687f329_2f82cdae",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-08-10T18:41:06Z",
+      "side": 1,
+      "message": "You don\u0027t need to ifdef your include",
+      "revId": "e1b54fee54e71d7be73a8a5932451105d38f6403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3681fb17_8d8ae590",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-08-10T18:41:06Z",
+      "side": 1,
+      "message": "is libftdi using that constant to identify the chip ?\nelse we can remove that special case.",
+      "revId": "e1b54fee54e71d7be73a8a5932451105d38f6403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3681fb17_0d45157f",
+        "filename": "chip/stm32/usb_ftdi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-08-10T18:41:06Z",
+      "side": 1,
+      "message": "rather than doing this polling,\nwe should be able to use the USB interrupt we are getting at the end of each transmission ?",
+      "revId": "e1b54fee54e71d7be73a8a5932451105d38f6403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3681fb17_2d4ad98d",
+        "filename": "chip/stm32/usb_ftdi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-08-10T18:41:06Z",
+      "side": 1,
+      "message": "no ccprintf",
+      "revId": "e1b54fee54e71d7be73a8a5932451105d38f6403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3681fb17_8d382509",
+        "filename": "chip/stm32/usb_ftdi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-08-10T18:41:06Z",
+      "side": 1,
+      "message": "I\u0027m not convinced that using the timer interrupt is the right technical choice for the bitbanging.\nit has a high overhead.\nWhy not simply looping in the task ?",
+      "revId": "e1b54fee54e71d7be73a8a5932451105d38f6403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "567caff0_8eb57fbb",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-08-10T18:41:06Z",
+      "side": 1,
+      "message": "emulation ?",
+      "revId": "e1b54fee54e71d7be73a8a5932451105d38f6403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "567caff0_aeb243ce",
+        "filename": "include/usb_ftdi.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-08-10T18:41:06Z",
+      "side": 1,
+      "message": "remove this ifdef\nthat\u0027s a linker issue to decide whether the symbol is defined.",
+      "revId": "e1b54fee54e71d7be73a8a5932451105d38f6403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
