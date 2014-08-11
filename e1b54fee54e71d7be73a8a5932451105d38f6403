@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "b6ca4b8f_b30c98a0",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-08-11T19:09:08Z",
+      "side": 1,
+      "message": "I believe we can override this from the openocd configs by telling it a specific USB device to talk to as an FTDI device, or is that not the case?",
+      "parentUuid": "7687f329_cf077180",
+      "revId": "e1b54fee54e71d7be73a8a5932451105d38f6403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3681fb17_0d45157f",
         "filename": "chip/stm32/usb_ftdi.c",
         "patchSetId": 4
@@ -188,6 +206,23 @@
       "writtenOn": "2014-08-10T18:41:06Z",
       "side": 1,
       "message": "emulation ?",
+      "revId": "e1b54fee54e71d7be73a8a5932451105d38f6403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6ca4b8f_b3f3784f",
+        "filename": "include/hwtimer.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-08-11T19:09:08Z",
+      "side": 1,
+      "message": "Why did this move out here?  It is STM32 specific and this is a generic timer API definition file.",
       "revId": "e1b54fee54e71d7be73a8a5932451105d38f6403",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
