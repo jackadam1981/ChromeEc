@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7687f329_9d7213b0",
+        "filename": "board/ryu/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-11T16:41:49Z",
+      "side": 1,
+      "message": "No, this is right, it should call MAX(). We want the value to never be below CONFIG_CHARGER_INPUT_LIMIT, but it can be above it. CONFIG_CHARGER_INPUT_LIMIT is now just the default input current limit.",
+      "parentUuid": "56a3cfb2_f3334a08",
+      "revId": "bc23bf2af3b74234245c0a0e44a186be821c869d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9699c785_15f0b673",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "7687f329_bd6fd7c4",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-11T16:41:49Z",
+      "side": 1,
+      "message": "Yes, you\u0027re right. Will fix.",
+      "parentUuid": "9699c785_15f0b673",
+      "revId": "bc23bf2af3b74234245c0a0e44a186be821c869d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3681fb17_0a45fb7e",
         "filename": "include/charge_state_v2.h",
         "patchSetId": 1
@@ -47,6 +83,30 @@
       "writtenOn": "2014-08-09T22:26:25Z",
       "side": 1,
       "message": "Maybe name this charge_set_input_current_limit for consistency?",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 36
+      },
+      "revId": "bc23bf2af3b74234245c0a0e44a186be821c869d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7687f329_dd6c8bd2",
+        "filename": "include/charge_state_v2.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-11T16:41:49Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "3681fb17_0a45fb7e",
       "range": {
         "startLine": 68,
         "startChar": 4,
