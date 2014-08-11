@@ -24,12 +24,6 @@
 #include "usb_pd_config.h"
 #include "util.h"
 
-void vbus_evt(enum gpio_signal signal)
-{
-	ccprintf("VBUS %d, %d!\n", signal, gpio_get_level(signal));
-	task_wake(TASK_ID_PD);
-}
-
 void unhandled_evt(enum gpio_signal signal)
 {
 	ccprintf("Unhandled INT %d,%d!\n", signal, gpio_get_level(signal));
@@ -48,6 +42,8 @@ void board_config_pre_init(void)
 	STM32_SYSCFG_CFGR1 |= (1 << 24);
 }
 
+int board_set_debug(int);
+
 /* Initialize board. */
 static void board_init(void)
 {
@@ -60,6 +56,10 @@ static void board_init(void)
 
 	/* Enable interrupts on VBUS transitions. */
 	gpio_enable_interrupt(GPIO_CHGR_ACOK);
+
+	chipset_force_shutdown();
+
+	board_set_debug(1);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
