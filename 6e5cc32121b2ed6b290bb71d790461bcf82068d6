@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "567caff0_1ce8e5c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2014-08-11T16:39:13Z",
+      "side": 1,
+      "message": "Is there a better way to test this? In order to make sure the CPU actually runs at 8MHz?",
+      "revId": "6e5cc32121b2ed6b290bb71d790461bcf82068d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7687f329_dd62cb8c",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2014-08-11T16:39:13Z",
+      "side": 1,
+      "message": "I\u0027m not happy with this. Any idea what to change it to?",
+      "revId": "6e5cc32121b2ed6b290bb71d790461bcf82068d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
