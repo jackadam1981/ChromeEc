@@ -37,6 +37,7 @@ void clock_init(void)
 	 *  PLL unlocked, RTC enabled on LSE
 	 */
 
+#if (CPU_CLOCK >= 30000)
 	/* put 1 Wait-State for flash access to ensure proper reads at 48Mhz */
 	STM32_FLASH_ACR = 0x1001; /* 1 WS / Prefetch enabled */
 
@@ -48,8 +49,23 @@ void clock_init(void)
 		while (!(STM32_RCC_CR2 & (1 << 17)))
 			;
 	}
+#endif
 
-#if (CPU_CLOCK == HSI48_CLOCK)
+#if (CPU_CLOCK == 8000000)
+	/*
+	 * HSI = 8MHz, no prescaler, no MCO, no PLL
+	 * therefore PCLK = FCLK = SYSCLK = 8MHz
+	 * USB uses HSI48 = 48MHz
+	 */
+
+	/* switch SYSCLK to HSI48 */
+	STM32_RCC_CFGR = 0x00000000;
+
+	/* wait until the HSI48 is the clock source */
+	while ((STM32_RCC_CFGR & 0xc) != 0x0)
+		;
+
+#elif (CPU_CLOCK == HSI48_CLOCK)
 	/*
 	 * HSI48 = 48MHz, no prescaler, no MCO, no PLL
 	 * therefore PCLK = FCLK = SYSCLK = 48MHz
