@@ -13,6 +13,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "registers.h"
+#include "system.h"
 #include "task.h"
 #include "timer.h"
 #include "util.h"
@@ -28,6 +29,12 @@ static int debug_dump;
 #define CPRINTF(format, args...)
 const int debug_dump;
 #endif
+
+#define PD_SYSJUMP_TAG 0x5044  /* "PD" */
+#define PD_HOOK_VERSION 1
+struct pd_sysjump_state {
+	uint8_t has_connection[PD_PORT_COUNT];
+};
 
 /* Encode 5 bits using Biphase Mark Coding */
 #define BMC(x)   ((x &  1 ? 0x001 : 0x3FF) \
@@ -1019,6 +1026,23 @@ void pd_comm_enable(int enable)
 	pd_comm_enabled = enable;
 }
 
+#ifdef CONFIG_COMMON_RUNTIME
+static enum pd_states pd_get_previous_state(int port)
+{
+	const struct pd_sysjump_state *prev;
+	int version, size;
+
+	prev = (const struct pd_sysjump_state *)system_get_jump_tag(
+			PD_SYSJUMP_TAG, &version, &size);
+	if (prev && version == PD_HOOK_VERSION && size == sizeof(*prev))
+		if (prev->has_connection[port])
+			return pd[port].role == PD_ROLE_SINK ?
+			       PD_STATE_SNK_DISCOVERY :
+			       PD_STATE_SRC_DISCOVERY;
+	return PD_DEFAULT_STATE;
+}
+#endif
+
 void pd_task(void)
 {
 	int head;
@@ -1040,7 +1064,11 @@ void pd_task(void)
 	/* Initialize PD protocol state variables for each port. */
 	pd[port].role = PD_ROLE_DEFAULT;
 	pd[port].vdm_state = VDM_STATE_DONE;
+#ifdef CONFIG_COMMON_RUNTIME
+	set_state(port, pd_get_previous_state(port));
+#else
 	set_state(port, PD_DEFAULT_STATE);
+#endif
 
 	/* Ensure the power supply is in the default state */
 	pd_power_supply_reset(port);
@@ -1334,6 +1362,26 @@ void pd_rx_event(int port)
 }
 
 #ifdef CONFIG_COMMON_RUNTIME
+static void pd_sysjump_hook(void)
+{
+	struct pd_sysjump_state state;
+	int i;
+
+	for (i = 0; i < PD_PORT_COUNT; ++i) {
+		if (pd_is_connected(i)) {
+			state.has_connection[i] = 1;
+			execute_soft_reset(i);
+			send_control(i, PD_CTRL_SOFT_RESET);
+		} else {
+			state.has_connection[i] = 0;
+		}
+	}
+
+	system_add_jump_tag(PD_SYSJUMP_TAG, PD_HOOK_VERSION,
+			    sizeof(state), &state);
+}
+DECLARE_HOOK(HOOK_SYSJUMP, pd_sysjump_hook, HOOK_PRIO_DEFAULT);
+
 void pd_set_suspend(int port, int enable)
 {
 	set_state(port, enable ? PD_STATE_SUSPENDED : PD_DEFAULT_STATE);
