@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "b6ca4b8f_0d43252d",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-08-12T00:49:03Z",
+      "side": 1,
+      "message": "Actually, it seems we might be fine without it.\n\nlibftdi makes a check around libftdi/src/ftdi.cpp:609, but since there is no else case and ftdi-\u003etype defaults to TYPE_BM, it ends up assuming we are a FTDI BM chip.\n\nOpenOCD does make a separate check, but we have a samus-specific closed-case debugging configuration file for that. I will add you to the relevant CL\u0027s.",
+      "parentUuid": "b6ca4b8f_b30c98a0",
+      "revId": "e1b54fee54e71d7be73a8a5932451105d38f6403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3681fb17_0d45157f",
         "filename": "chip/stm32/usb_ftdi.c",
         "patchSetId": 4
@@ -223,6 +241,24 @@
       "writtenOn": "2014-08-11T19:09:08Z",
       "side": 1,
       "message": "Why did this move out here?  It is STM32 specific and this is a generic timer API definition file.",
+      "revId": "e1b54fee54e71d7be73a8a5932451105d38f6403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6d0433d_649f54dc",
+        "filename": "include/hwtimer.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-08-12T00:49:03Z",
+      "side": 1,
+      "message": "Sorry, I was using it earlier, and should have put it in chip/stm/registers.h instead. But since we are moving away from timer interrupt, there is no need now.",
+      "parentUuid": "b6ca4b8f_b3f3784f",
       "revId": "e1b54fee54e71d7be73a8a5932451105d38f6403",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
