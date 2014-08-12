@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6ca4b8f_0d20c5b9",
+        "filename": "common/smbus.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-12T00:49:26Z",
+      "side": 1,
+      "message": "style: should be /*",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 3
+      },
+      "revId": "067f6b83c0b75a1720131918b9df74dc4b64f809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6d0433d_049420f3",
+        "filename": "common/smbus.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-12T00:49:26Z",
+      "side": 1,
+      "message": "style: should be /*",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 3
+      },
+      "revId": "067f6b83c0b75a1720131918b9df74dc4b64f809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6d0433d_8471501f",
+        "filename": "include/i2c.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-12T00:49:26Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 154,
+        "startChar": 11,
+        "endLine": 154,
+        "endChar": 15
+      },
+      "revId": "067f6b83c0b75a1720131918b9df74dc4b64f809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6f88bd3_83849e50",
+        "filename": "include/i2c.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-12T00:49:26Z",
+      "side": 1,
+      "message": "typo again. I think Randall\u0027s original comment was to do this:\n\n/**\n * @return non-zero if i2c bus is busy.\n */",
+      "range": {
+        "startLine": 155,
+        "startChar": 4,
+        "endLine": 155,
+        "endChar": 8
+      },
+      "revId": "067f6b83c0b75a1720131918b9df74dc4b64f809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6ca4b8f_4d37ddf7",
+        "filename": "include/smbus.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-12T00:49:26Z",
+      "side": 1,
+      "message": "style: should be /*",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 3
+      },
+      "revId": "067f6b83c0b75a1720131918b9df74dc4b64f809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6ca4b8f_2d34a1f0",
+        "filename": "include/smbus.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-12T00:49:26Z",
+      "side": 1,
+      "message": "style: should be /*",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 3
+      },
+      "revId": "067f6b83c0b75a1720131918b9df74dc4b64f809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6d0433d_64fbd424",
+        "filename": "include/smbus.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-12T00:49:26Z",
+      "side": 1,
+      "message": "style: should be /*",
+      "range": {
+        "startLine": 20,
+        "startChar": 19,
+        "endLine": 20,
+        "endChar": 24
+      },
+      "revId": "067f6b83c0b75a1720131918b9df74dc4b64f809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6f88bd3_23c28a6a",
+        "filename": "include/smbus.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-12T00:49:26Z",
+      "side": 1,
+      "message": "Personally, I still don\u0027t like this. slave_addr_rd is always slave_addr | 0x1. So why should the caller have to bother setting this? Plus, you can eliminate two structs here and just have smbus_word and smbus_block. The only difference inside smbus.c is you have to build the crc incrementally.",
+      "revId": "067f6b83c0b75a1720131918b9df74dc4b64f809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
