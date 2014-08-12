@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b64deb11_c1a2c650",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1272,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-12T22:18:53Z",
+      "side": 1,
+      "message": "Don\u0027t need to timeout after 10 msec, that will just wake us up needlessly. I would just delete this line and use the default 500ms timeout.",
+      "range": {
+        "startLine": 1272,
+        "startChar": 13,
+        "endLine": 1272,
+        "endChar": 15
+      },
+      "revId": "125a1196ee7ed8308f94aac13c4467f4363a0111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
