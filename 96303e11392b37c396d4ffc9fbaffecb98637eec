@@ -1,0 +1,181 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76ea93f0_2bbff5e6",
+        "filename": "driver/accelgyro_lsm6ds0.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-12T00:20:20Z",
+      "side": 1,
+      "message": "suggest shortening name, gyro_on_odr, and gyro_off_odr below",
+      "range": {
+        "startLine": 47,
+        "startChar": 30,
+        "endLine": 47,
+        "endChar": 48
+      },
+      "revId": "96303e11392b37c396d4ffc9fbaffecb98637eec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6ca4b8f_02ead452",
+        "filename": "driver/accelgyro_lsm6ds0.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-12T00:20:20Z",
+      "side": 1,
+      "message": "right now this is unused, but, the gyro uses significantly more power, so we should probably add the gyro_on() and gyro_off() functions that will be necessary.",
+      "range": {
+        "startLine": 57,
+        "startChar": 30,
+        "endLine": 57,
+        "endChar": 49
+      },
+      "revId": "96303e11392b37c396d4ffc9fbaffecb98637eec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76ea93f0_0b8c3128",
+        "filename": "driver/accelgyro_lsm6ds0.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-12T00:20:20Z",
+      "side": 1,
+      "message": "This seems weird, gyro_sensor_datarate[] is an index into la_odr_tbl[]. The ODR table applies to both accel and gyro right? So, the rename suggested above makes more sense.",
+      "range": {
+        "startLine": 86,
+        "startChar": 30,
+        "endLine": 86,
+        "endChar": 40
+      },
+      "revId": "96303e11392b37c396d4ffc9fbaffecb98637eec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6d0433d_0420a0b9",
+        "filename": "driver/accelgyro_lsm6ds0.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-12T00:20:20Z",
+      "side": 1,
+      "message": "this is file static, no need for a complicated name, why not just accel_mutex?",
+      "revId": "96303e11392b37c396d4ffc9fbaffecb98637eec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76ea93f0_cbc4e922",
+        "filename": "driver/accelgyro_lsm6ds0.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-12T00:20:20Z",
+      "side": 1,
+      "message": "do we really need these functions, can\u0027t we just get/set g_la_odr_tbl directly? If you really want them, at least inline them.",
+      "range": {
+        "startLine": 97,
+        "startChar": 38,
+        "endLine": 97,
+        "endChar": 52
+      },
+      "revId": "96303e11392b37c396d4ffc9fbaffecb98637eec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76ea93f0_0b2f9113",
+        "filename": "driver/accelgyro_lsm6ds0.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-12T00:20:20Z",
+      "side": 1,
+      "message": "Is there a reason we can get away with not range checking id here? I can\u0027t think of any, but could be wrong. Add:\nif (id \u003c 0 || id \u003e\u003d ACCEL_COUNT)\n\treturn EC_ERROR_INVAL;",
+      "revId": "96303e11392b37c396d4ffc9fbaffecb98637eec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76ea93f0_ab1765dd",
+        "filename": "driver/accelgyro_lsm6ds0.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-12T00:20:20Z",
+      "side": 1,
+      "message": "Nit: can you put the gyro_* functions in the same order as accel_* functions?",
+      "revId": "96303e11392b37c396d4ffc9fbaffecb98637eec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6ca4b8f_22bdd09c",
+        "filename": "driver/accelgyro_lsm6ds0.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-12T00:20:20Z",
+      "side": 1,
+      "message": "Is there a reason we can get away with not range checking id here? I can\u0027t think of any, but could be wrong. Add:\nif (id \u003c 0 || id \u003e\u003d ACCEL_COUNT)\n\treturn EC_ERROR_INVAL;",
+      "revId": "96303e11392b37c396d4ffc9fbaffecb98637eec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6d0433d_c423c894",
+        "filename": "driver/accelgyro_lsm6ds0.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-12T00:20:20Z",
+      "side": 1,
+      "message": "what is this for?",
+      "revId": "96303e11392b37c396d4ffc9fbaffecb98637eec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
