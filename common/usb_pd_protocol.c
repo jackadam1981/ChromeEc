@@ -1333,6 +1333,18 @@ void pd_rx_event(int port)
 }
 
 #ifdef CONFIG_COMMON_RUNTIME
+static void pd_sysjump_hook(void)
+{
+	int i;
+
+	for (i = 0; i < PD_PORT_COUNT; ++i)
+		if (pd_is_connected(i)) {
+			execute_soft_reset(i);
+			send_control(i, PD_CTRL_SOFT_RESET);
+		}
+}
+DECLARE_HOOK(HOOK_SYSJUMP, pd_sysjump_hook, HOOK_PRIO_DEFAULT);
+
 void pd_set_suspend(int port, int enable)
 {
 	set_state(port, enable ? PD_STATE_SUSPENDED : PD_DEFAULT_STATE);
