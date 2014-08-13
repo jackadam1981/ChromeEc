@@ -97,10 +97,17 @@ enum sensor_location_t {
 	LOCATION_LID,
 };
 
+enum sensor_type_t {
+	SENSOR_ACCELEROMETER,
+	SENSOR_GYRO,
+};
+
 struct motion_sensor_t {
 	char *name;
+	enum sensor_type_t type;
 	enum sensor_location_t location;
-	struct accelgyro_info *drv;
+	struct accelgyro_method *method;
+	struct mutex *mutex;
 	void *drv_data;
 	uint8_t i2c_addr;
 };
