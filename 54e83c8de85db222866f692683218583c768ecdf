@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56166fdd_ed424d27",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1068,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-13T01:28:25Z",
+      "side": 1,
+      "message": "This won\u0027t work for a source. If we were a source before we jumped to RW, we will still reset VBUS in gpio init because the default state of that gpio is off.\n\nAdditionally, we will have problems jumping straight to DISCOVERY state. There are certain things we do on transition to DISCOVERY that are missing, like setting polarity.\n\nI think actually we can do without all of this saving state across a sysjump and change this CL to just issue a soft reset before a sysjump. The only case it won\u0027t handle is when we are a source and sysjump to rw, in which case vbus will go down and back up. I think this case is basically you boot with a USB stick or display plugged in, and during boot we temporarily remove power to the device. If this really does become an issue, maybe the best way to handle is to perhaps not provide power to devices in RO (unless write protect screw removed and no soft write protect bit set).",
+      "range": {
+        "startLine": 1068,
+        "startChar": 1,
+        "endLine": 1068,
+        "endChar": 10
+      },
+      "revId": "54e83c8de85db222866f692683218583c768ecdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
