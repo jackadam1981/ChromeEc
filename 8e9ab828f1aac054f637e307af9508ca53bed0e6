@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7621b330_f91d37ff",
+        "filename": "chip/stm32/usb_ms.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-08-13T02:15:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3681fb17_6d9db1e4",
+      "revId": "8e9ab828f1aac054f637e307af9508ca53bed0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7687f329_2f99ed2a",
         "filename": "chip/stm32/usb_ms.c",
         "patchSetId": 11
@@ -30,6 +48,24 @@
       "writtenOn": "2014-08-10T18:11:08Z",
       "side": 1,
       "message": "could be in the scope of ms_task rather than globally defined here.\nditto for ms_dir and probably a few others.",
+      "revId": "8e9ab828f1aac054f637e307af9508ca53bed0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b64deb11_5bfea315",
+        "filename": "chip/stm32/usb_ms.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-08-13T02:15:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7687f329_2f99ed2a",
       "revId": "8e9ab828f1aac054f637e307af9508ca53bed0e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "b64deb11_7bfb5f24",
+        "filename": "chip/stm32/usb_ms.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-08-13T02:15:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "567caff0_ce62178d",
+      "revId": "8e9ab828f1aac054f637e307af9508ca53bed0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "567caff0_ee5fdbc7",
         "filename": "chip/stm32/usb_ms.c",
         "patchSetId": 11
@@ -64,6 +118,24 @@
       "writtenOn": "2014-08-10T18:11:08Z",
       "side": 1,
       "message": "no ccprintf for non-interactive code",
+      "revId": "8e9ab828f1aac054f637e307af9508ca53bed0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7621b330_590d43c8",
+        "filename": "chip/stm32/usb_ms.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-08-13T02:15:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "567caff0_ee5fdbc7",
       "revId": "8e9ab828f1aac054f637e307af9508ca53bed0e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "56166fdd_f89211d8",
+        "filename": "chip/stm32/usb_ms.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-08-13T02:15:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7687f329_6fa3e554",
+      "revId": "8e9ab828f1aac054f637e307af9508ca53bed0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3681fb17_4d71cded",
         "filename": "chip/stm32/usb_ms_scsi.c",
         "patchSetId": 11
@@ -98,6 +188,24 @@
       "writtenOn": "2014-08-10T18:11:08Z",
       "side": 1,
       "message": "lower case variable name ?\nstatic ?",
+      "revId": "8e9ab828f1aac054f637e307af9508ca53bed0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b64deb11_1b081b8f",
+        "filename": "chip/stm32/usb_ms_scsi.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-08-13T02:15:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3681fb17_4d71cded",
       "revId": "8e9ab828f1aac054f637e307af9508ca53bed0e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "7621b330_1907cbaa",
+        "filename": "chip/stm32/usb_ms_scsi.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-08-13T02:15:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "567caff0_6eb12bcd",
+      "revId": "8e9ab828f1aac054f637e307af9508ca53bed0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7687f329_af84fdbe",
         "filename": "chip/stm32/usb_ms_scsi.c",
         "patchSetId": 11
@@ -132,6 +258,24 @@
       "writtenOn": "2014-08-10T18:11:08Z",
       "side": 1,
       "message": "lower case",
+      "revId": "8e9ab828f1aac054f637e307af9508ca53bed0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56166fdd_58a21d21",
+        "filename": "chip/stm32/usb_ms_scsi.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-08-13T02:15:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7687f329_af84fdbe",
       "revId": "8e9ab828f1aac054f637e307af9508ca53bed0e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -155,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "56166fdd_789fe1db",
+        "filename": "chip/stm32/usb_ms_scsi.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-08-13T02:15:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7687f329_cf913100",
+      "revId": "8e9ab828f1aac054f637e307af9508ca53bed0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7687f329_8f8739c3",
         "filename": "chip/stm32/usb_ms_scsi.c",
         "patchSetId": 11
@@ -172,6 +334,24 @@
     },
     {
       "key": {
+        "uuid": "7621b330_39040fa3",
+        "filename": "chip/stm32/usb_ms_scsi.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-08-13T02:15:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7687f329_8f8739c3",
+      "revId": "8e9ab828f1aac054f637e307af9508ca53bed0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3681fb17_8da1051d",
         "filename": "include/usb_ms.h",
         "patchSetId": 11
@@ -183,6 +363,24 @@
       "writtenOn": "2014-08-10T18:11:08Z",
       "side": 1,
       "message": "the whole xCBW prefix is a bit redundant, maybe we should remove it as it is against our coding convention (CamelCase)\nI know I kept the standard names in usb.h but here the CBW prefix adds length for nothing",
+      "revId": "8e9ab828f1aac054f637e307af9508ca53bed0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b64deb11_db12b3c1",
+        "filename": "include/usb_ms.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-08-13T02:15:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3681fb17_8da1051d",
       "revId": "8e9ab828f1aac054f637e307af9508ca53bed0e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
