@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36901b99_b8febd43",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-08-13T18:42:05Z",
+      "side": 1,
+      "message": "I\u0027m wondering if we should clear the STM32_I2C_ISR_TXIS bit from i2c_isr here so that we don\u0027t stuff an 0xec into the transmitter queue. My current board that uses this will consume these bytes until the end, but I\u0027m not sure about other users. Alec, can you try this patch on samus and see if it behaves?",
+      "revId": "54db972fc98fe703c33e7fcc2d1d0d4847a045b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
