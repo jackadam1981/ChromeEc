@@ -93,14 +93,28 @@ void accel_int_lid(enum gpio_signal signal);
 void accel_int_base(enum gpio_signal signal);
 
 enum sensor_location_t {
-	LOCATION_BASE,
-	LOCATION_LID,
+	LOCATION_BASE = 0,
+	LOCATION_LID  = 1,
+};
+
+enum sensor_type_t {
+	SENSOR_ACCELEROMETER = 0x01,
+	SENSOR_GYRO          = 0x02,
+	SENSOR_ACCELGYRO     = SENSOR_ACCELEROMETER | SENSOR_GYRO,
+};
+
+enum sensor_chip_t {
+	SENSOR_CHIP_KXCJ9 = 0,
+	SENSOR_CHIP_LSM6DS0 = 1,
 };
 
 struct motion_sensor_t {
 	char *name;
+	enum sensor_chip_t chip;
+	enum sensor_type_t type;
 	enum sensor_location_t location;
-	const struct accelgyro_info *drv;
+	const struct accelgyro_drv *drv;
+	struct mutex *mutex;
 	void *drv_data;
 	uint8_t i2c_addr;
 };

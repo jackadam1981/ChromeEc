@@ -13,6 +13,7 @@
 #include "lid_angle.h"
 #include "math_util.h"
 #include "motion_sense.h"
+#include "power.h"
 #include "timer.h"
 #include "task.h"
 #include "util.h"
@@ -23,13 +24,36 @@
 
 /* Minimum time in between running motion sense task loop. */
 #define MIN_MOTION_SENSE_WAIT_TIME (1 * MSEC)
+#define TASK_MOTION_SENSE_WAIT_TIME (1 * MSEC)
 
-static const struct motion_sensor_t *base;
-static const struct motion_sensor_t *lid;
+/* For vector_3_t, define which coordinates are in which location. */
+enum {
+	X, Y, Z
+};
+
+/*
+ * Two Sense control data
+ *  - 0: for base
+ *  - 1: for lid
+ */
+enum sensor_state {
+	NOT_INITIALIZED = 0,
+	INITIALIZED = 1,
+	INIT_ERROR = 2
+};
+
+enum sensor_power {
+	POWER_OFF = 0,
+	POWER_ON  = 1
+};
+
+static struct motion_sensor_ctrl {
+	enum sensor_state state;
+	enum sensor_power power;
+	vector_3_t xyz;
+} sense_ctrl[2];
 
 /* Current acceleration vectors and current lid angle. */
-static vector_3_t acc_lid_raw, acc_lid, acc_base;
-static vector_3_t acc_lid_host, acc_base_host;
 static float lid_angle_deg;
 static int lid_angle_is_reliable;
 
@@ -56,11 +80,6 @@ static int accel_interval_ms;
 static int accel_disp;
 #endif
 
-/* For vector_3_t, define which coordinates are in which location. */
-enum {
-	X, Y, Z
-};
-
 /* Pointer to constant acceleration orientation data. */
 const struct accel_orientation * const p_acc_orient = &acc_orient;
 
@@ -74,7 +93,7 @@ const struct accel_orientation * const p_acc_orient = &acc_orient;
  *
  * @return flag representing if resulting lid angle calculation is reliable.
  */
-static int calculate_lid_angle(vector_3_t base, vector_3_t lid,
+static int calculate_lid_angle(const vector_3_t base, const vector_3_t lid,
 		float *lid_angle)
 {
 	vector_3_t v;
@@ -121,9 +140,9 @@ static int calculate_lid_angle(vector_3_t base, vector_3_t lid,
 	 * estimated 270 degree vector then the result is negative, otherwise
 	 * it is positive.
 	 */
-	rotate(base, &p_acc_orient->rot_hinge_90, &v);
+	rotate(base, &p_acc_orient->rot_hinge_90, v);
 	ang_lid_90 = cosine_of_angle_diff(v, lid);
-	rotate(v, &p_acc_orient->rot_hinge_180, &v);
+	rotate(v, &p_acc_orient->rot_hinge_180, v);
 	ang_lid_270 = cosine_of_angle_diff(v, lid);
 
 	/*
@@ -168,134 +187,193 @@ void motion_get_accel_base(vector_3_t *v)
 }
 #endif
 
-static void set_ap_suspend_polling(void)
+static void clock_chipset_shutdown(void)
 {
 	accel_interval_ms = accel_interval_ap_suspend_ms;
+	sense_ctrl[LOCATION_LID].power = POWER_OFF;
 }
-DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, set_ap_suspend_polling, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, clock_chipset_shutdown, HOOK_PRIO_DEFAULT);
 
-static void set_ap_on_polling(void)
+static void clock_chipset_startup(void)
 {
 	accel_interval_ms = accel_interval_ap_on_ms;
+	sense_ctrl[LOCATION_BASE].power = POWER_ON;
+	sense_ctrl[LOCATION_LID].power  = POWER_ON;
 }
-DECLARE_HOOK(HOOK_CHIPSET_RESUME, set_ap_on_polling, HOOK_PRIO_DEFAULT);
 
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, clock_chipset_startup, HOOK_PRIO_DEFAULT);
 
-void motion_sense_task(void)
+/* Write to LPC status byte to represent that accelerometers are present. */
+static inline void set_present(uint8_t *lpc_status)
 {
-	static timestamp_t ts0, ts1;
-	int wait_us;
-	int ret;
-	uint8_t *lpc_status;
-	uint16_t *lpc_data;
-	int sample_id = 0;
-	int i;
+	*lpc_status |= EC_MEMMAP_ACC_STATUS_PRESENCE_BIT;
+}
 
-	lpc_status = host_get_memmap(EC_MEMMAP_ACC_STATUS);
-	lpc_data = (uint16_t *)host_get_memmap(EC_MEMMAP_ACC_DATA);
+
+/* Update/Write LPC data */
+static inline void update_sense_data(uint8_t *lpc_status,
+		uint16_t *lpc_data, int *psample_id)
+{
+	/*
+	 * Set the busy bit before writing the sensor data. Increment
+	 * the counter and clear the busy bit after writing the sensor
+	 * data. On the host side, the host needs to make sure the busy
+	 * bit is not set and that the counter remains the same before
+	 * and after reading the data.
+	 */
+	*lpc_status |= EC_MEMMAP_ACC_STATUS_BUSY_BIT;
 
 	/*
-	 * TODO(crosbug.com/p/27320): The motion_sense task currently assumes
-	 * one configuration of motion sensors. Namely, it assumes there is
-	 * one accel in the base, one in the lid. Eventually, these
-	 * assumptions will have to be removed when we have other
-	 * configurations of motion sensors.
+	 * Copy sensor data to shared memory. Note that this code
+	 * assumes little endian, which is what the host expects. Also,
+	 * note that we share the lid angle calculation with host only
+	 * for debugging purposes. The EC lid angle is an approximation
+	 * with un-calibrated accels. The AP calculates a separate,
+	 * more accurate lid angle.
 	 */
-	for (i = 0; i <  motion_sensor_count; ++i) {
-		if (motion_sensors[i].location == LOCATION_LID)
-			lid = &motion_sensors[i];
-		else if (motion_sensors[i].location == LOCATION_BASE)
-			base = &motion_sensors[i];
-	}
+	lpc_data[0] = motion_get_lid_angle();
+	lpc_data[1] = sense_ctrl[LOCATION_BASE].xyz[X];
+	lpc_data[2] = sense_ctrl[LOCATION_BASE].xyz[Y];
+	lpc_data[3] = sense_ctrl[LOCATION_BASE].xyz[Z];
+	lpc_data[4] = sense_ctrl[LOCATION_LID].xyz[X];
+	lpc_data[5] = sense_ctrl[LOCATION_LID].xyz[Y];
+	lpc_data[6] = sense_ctrl[LOCATION_LID].xyz[Z];
 
-	if (lid == NULL || base == NULL) {
-		CPRINTS("Invalid motion_sensors list, lid and base required");
+	/*
+	 * Increment sample id and clear busy bit to signal we finished
+	 * updating data.
+	 */
+	*psample_id = (*psample_id + 1) &
+			EC_MEMMAP_ACC_STATUS_SAMPLE_ID_MASK;
+	*lpc_status = EC_MEMMAP_ACC_STATUS_PRESENCE_BIT | *psample_id;
+}
+
+static inline void motion_sense_init(int i)
+{
+	int ret;
+	const struct motion_sensor_t *sensor = &motion_sensors[i];
+	struct motion_sensor_ctrl *ctrl = &sense_ctrl[i];
+
+	if (ctrl->power == POWER_OFF)
 		return;
-	}
+
+	if (ctrl->state != NOT_INITIALIZED)
+		return;
 
 	/* Initialize accelerometers. */
-	ret = lid->drv->init(lid->drv_data, lid->i2c_addr);
-	ret |= base->drv->init(base->drv_data, base->i2c_addr);
-
-	/* If accelerometers do not initialize, then end task. */
+	ret = sensor->drv->init(sensor);
 	if (ret != EC_SUCCESS) {
-		CPRINTS("Accel init failed; stopping MS");
+		ctrl->state = INIT_ERROR;
 		return;
 	}
 
 	/* Initialize sampling interval. */
 	accel_interval_ms = accel_interval_ap_suspend_ms;
 
-	/* Set default accelerometer parameters. */
-	lid->drv->set_range(lid->drv_data,  2, 1);
-	lid->drv->set_resolution(lid->drv_data,  12, 1);
-	lid->drv->set_datarate(lid->drv_data,  100000, 1);
-	base->drv->set_range(base->drv_data, 2, 1);
-	base->drv->set_resolution(base->drv_data, 12, 1);
-	base->drv->set_datarate(base->drv_data, 100000, 1);
+	ctrl->state = INITIALIZED;
+}
 
-	/* Write to status byte to represent that accelerometers are present. */
-	*lpc_status |= EC_MEMMAP_ACC_STATUS_PRESENCE_BIT;
+
+static int motion_sense_read(int i)
+{
+	int ret;
+	const struct motion_sensor_t *sensor = &motion_sensors[i];
+	struct motion_sensor_ctrl *ctrl = &sense_ctrl[i];
+
+	if (ctrl->power == POWER_OFF)
+		return EC_ERROR_UNKNOWN;
+
+	if (ctrl->state != INITIALIZED)
+		return EC_ERROR_UNKNOWN;
+
+	/* Read all raw X,Y,Z accelerations. */
+	ret = sensor->drv->read(sensor,
+		&ctrl->xyz[X],
+		&ctrl->xyz[Y],
+		&ctrl->xyz[Z]);
+
+	if (ret != EC_SUCCESS) {
+		ctrl->state = INIT_ERROR;
+		return EC_ERROR_UNKNOWN;
+	}
+	return EC_SUCCESS;
+}
+
+/*
+ * TODO(crosbug.com/p/27320): The motion_sense task currently assumes
+ * one configuration of motion sensors. Namely, it assumes there is
+ * one accel in the base, one in the lid. Eventually, these
+ * assumptions will have to be removed when we have other
+ * configurations of motion sensors.
+ */
+void motion_sense_task(void)
+{
+	int i;
+	int wait_us;
+	static timestamp_t ts0, ts1;
+	uint8_t *lpc_status;
+	uint16_t *lpc_data;
+	int sample_id = 0;
+	int rd_cnt;
+
+	lpc_status = host_get_memmap(EC_MEMMAP_ACC_STATUS);
+	lpc_data = (uint16_t *)host_get_memmap(EC_MEMMAP_ACC_DATA);
+
+	set_present(lpc_status);
 
 	while (1) {
 		ts0 = get_time();
 
-		/* Read all accelerations. */
-		lid->drv->read(lid->drv_data, &acc_lid_raw[X], &acc_lid_raw[Y],
-			   &acc_lid_raw[Z]);
-		base->drv->read(base->drv_data, &acc_base[X], &acc_base[Y],
-			   &acc_base[Z]);
+		/* assume two sensors: 0 is the base; 1 is the lid */
+		if ((motion_sensor_count != 2) ||
+		    (motion_sensors[LOCATION_BASE].location != LOCATION_BASE) ||
+		    (motion_sensors[LOCATION_LID].location != LOCATION_LID)) {
+			task_wait_event(TASK_MOTION_SENSE_WAIT_TIME);
+			continue;
+		}
 
-		/*
-		 * Rotate the lid vector so the reference frame aligns with
-		 * the base sensor.
-		 */
-		rotate(acc_lid_raw, &p_acc_orient->rot_align, &acc_lid);
+		rd_cnt = 0;
+		for (i = 0; i < motion_sensor_count; ++i) {
+			if (sense_ctrl[i].power == POWER_OFF)
+				continue;
+
+			motion_sense_init(i);
+
+			if (EC_SUCCESS == motion_sense_read(i))
+				rd_cnt++;
+
+			/*
+			 * Rotate the lid vector
+			 * so the reference frame aligns with the base sensor.
+			 */
+			if (LOCATION_LID == i)
+				rotate(sense_ctrl[i].xyz,
+					&p_acc_orient->rot_align,
+					sense_ctrl[i].xyz);
+
+		}
+
+		if (rd_cnt != motion_sensor_count) {
+			task_wait_event(TASK_MOTION_SENSE_WAIT_TIME);
+			continue;
+		}
 
 		/* Calculate angle of lid. */
-		lid_angle_is_reliable = calculate_lid_angle(acc_base, acc_lid,
+		lid_angle_is_reliable = calculate_lid_angle(
+				sense_ctrl[LOCATION_BASE].xyz,
+				sense_ctrl[LOCATION_LID].xyz,
 				&lid_angle_deg);
 
-		/* TODO(crosbug.com/p/25597): Add filter to smooth lid angle. */
-
-		/* Rotate accels into standard reference frame for the host. */
-		rotate(acc_base, &p_acc_orient->rot_standard_ref,
-				&acc_base_host);
-		rotate(acc_lid, &p_acc_orient->rot_standard_ref,
-				&acc_lid_host);
-
-		/*
-		 * Set the busy bit before writing the sensor data. Increment
-		 * the counter and clear the busy bit after writing the sensor
-		 * data. On the host side, the host needs to make sure the busy
-		 * bit is not set and that the counter remains the same before
-		 * and after reading the data.
-		 */
-		*lpc_status |= EC_MEMMAP_ACC_STATUS_BUSY_BIT;
-
-		/*
-		 * Copy sensor data to shared memory. Note that this code
-		 * assumes little endian, which is what the host expects. Also,
-		 * note that we share the lid angle calculation with host only
-		 * for debugging purposes. The EC lid angle is an approximation
-		 * with un-calibrated accels. The AP calculates a separate,
-		 * more accurate lid angle.
-		 */
-		lpc_data[0] = motion_get_lid_angle();
-		lpc_data[1] = acc_base_host[X];
-		lpc_data[2] = acc_base_host[Y];
-		lpc_data[3] = acc_base_host[Z];
-		lpc_data[4] = acc_lid_host[X];
-		lpc_data[5] = acc_lid_host[Y];
-		lpc_data[6] = acc_lid_host[Z];
-
-		/*
-		 * Increment sample id and clear busy bit to signal we finished
-		 * updating data.
-		 */
-		sample_id = (sample_id + 1) &
-				EC_MEMMAP_ACC_STATUS_SAMPLE_ID_MASK;
-		*lpc_status = EC_MEMMAP_ACC_STATUS_PRESENCE_BIT | sample_id;
+		for (i = 0; i < motion_sensor_count; ++i) {
+			/*
+			 * TODO(crosbug.com/p/25597):
+			 * Add filter to smooth lid angle.
+			 */
+			/* Rotate accels into standard reference frame. */
+			rotate(sense_ctrl[i].xyz,
+				&p_acc_orient->rot_standard_ref,
+				sense_ctrl[i].xyz);
+		}
 
 #ifdef CONFIG_LID_ANGLE_KEY_SCAN
 		lidangle_keyscan_update(motion_get_lid_angle());
@@ -305,12 +383,18 @@ void motion_sense_task(void)
 		if (accel_disp) {
 			CPRINTS("ACC base=%-5d, %-5d, %-5d  lid=%-5d, "
 					"%-5d, %-5d  a=%-6.1d r=%d",
-					acc_base[X], acc_base[Y], acc_base[Z],
-					acc_lid[X], acc_lid[Y], acc_lid[Z],
+					sense_ctrl[LOCATION_BASE].xyz[X],
+					sense_ctrl[LOCATION_BASE].xyz[Y],
+					sense_ctrl[LOCATION_BASE].xyz[Z],
+					sense_ctrl[LOCATION_LID].xyz[X],
+					sense_ctrl[LOCATION_LID].xyz[Y],
+					sense_ctrl[LOCATION_LID].xyz[Z],
 					(int)(10*lid_angle_deg),
 					lid_angle_is_reliable);
 		}
 #endif
+
+		update_sense_data(lpc_status, lpc_data, &sample_id);
 
 		/* Delay appropriately to keep sampling time consistent. */
 		ts1 = get_time();
@@ -354,9 +438,13 @@ static const struct motion_sensor_t
 {
 	switch (host_id) {
 	case EC_MOTION_SENSOR_ACCEL_BASE:
-		return base;
+		if ((sense_ctrl[LOCATION_BASE].power == POWER_ON)
+			&& (sense_ctrl[LOCATION_BASE].state == INITIALIZED))
+			return &motion_sensors[LOCATION_BASE];
 	case EC_MOTION_SENSOR_ACCEL_LID:
-		return lid;
+		if ((sense_ctrl[LOCATION_LID].power == POWER_ON)
+			&& (sense_ctrl[LOCATION_LID].state == INITIALIZED))
+			return &motion_sensors[LOCATION_LID];
 	}
 
 	/* If no match then the EC currently doesn't support ID received. */
@@ -384,12 +472,13 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		out->dump.sensor_flags[0] = MOTIONSENSE_SENSOR_FLAG_PRESENT;
 		out->dump.sensor_flags[1] = MOTIONSENSE_SENSOR_FLAG_PRESENT;
 		out->dump.sensor_flags[2] = 0;
-		out->dump.data[0] = acc_base_host[X];
-		out->dump.data[1] = acc_base_host[Y];
-		out->dump.data[2] = acc_base_host[Z];
-		out->dump.data[3] = acc_lid_host[X];
-		out->dump.data[4] = acc_lid_host[Y];
-		out->dump.data[5] = acc_lid_host[Z];
+
+		out->dump.data[0] = sense_ctrl[LOCATION_BASE].xyz[X];
+		out->dump.data[1] = sense_ctrl[LOCATION_BASE].xyz[Y];
+		out->dump.data[2] = sense_ctrl[LOCATION_BASE].xyz[Z];
+		out->dump.data[3] = sense_ctrl[LOCATION_LID].xyz[X];
+		out->dump.data[4] = sense_ctrl[LOCATION_LID].xyz[Y];
+		out->dump.data[5] = sense_ctrl[LOCATION_LID].xyz[Z];
 
 		args->response_size = sizeof(out->dump);
 		break;
@@ -405,9 +494,9 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		if (sensor == NULL)
 			return EC_RES_INVALID_PARAM;
 
-		if (sensor->drv->sensor_type == SENSOR_ACCELEROMETER)
+		if (sensor->type == SENSOR_ACCELEROMETER)
 			out->info.type = MOTIONSENSE_TYPE_ACCEL;
-		else if (sensor->drv->sensor_type == SENSOR_GYRO)
+		else if (sensor->type == SENSOR_GYRO)
 			out->info.type = MOTIONSENSE_TYPE_GYRO;
 
 		if (sensor->location == LOCATION_BASE)
@@ -415,10 +504,14 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		else if (sensor->location == LOCATION_LID)
 			out->info.location = MOTIONSENSE_LOC_LID;
 
-		if (sensor->drv->chip_type == CHIP_KXCJ9)
+#ifdef CONFIG_ACCEL_KXCJ9
+		if (sensor->chip == SENSOR_CHIP_KXCJ9)
 			out->info.chip = MOTIONSENSE_CHIP_KXCJ9;
-		else if (sensor->drv->chip_type == CHIP_LSM6DS0)
+#endif
+#ifdef CONFIG_ACCELGYRO_LSM6DS0
+		if (sensor->chip == SENSOR_CHIP_LSM6DS0)
 			out->info.chip = MOTIONSENSE_CHIP_LSM6DS0;
+#endif
 
 		args->response_size = sizeof(out->info);
 		break;
@@ -452,9 +545,9 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		if (sensor == NULL)
 			return EC_RES_INVALID_PARAM;
 
-		/* Set new datarate if the data arg has a value. */
+		/* Set new data rate if the data arg has a value. */
 		if (in->sensor_odr.data != EC_MOTION_SENSE_NO_VALUE) {
-			if (sensor->drv->set_datarate(sensor->drv_data,
+			if (sensor->drv->set_data_rate(sensor,
 						      in->sensor_odr.data,
 						      in->sensor_odr.roundup)
 						      != EC_SUCCESS) {
@@ -464,7 +557,7 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 			}
 		}
 
-		sensor->drv->get_datarate(sensor->drv_data, &data);
+		sensor->drv->get_data_rate(sensor, &data);
 		out->sensor_odr.ret = data;
 
 		args->response_size = sizeof(out->sensor_odr);
@@ -477,9 +570,9 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		if (sensor == NULL)
 			return EC_RES_INVALID_PARAM;
 
-		/* Set new datarate if the data arg has a value. */
+		/* Set new data rate if the data arg has a value. */
 		if (in->sensor_range.data != EC_MOTION_SENSE_NO_VALUE) {
-			if (sensor->drv->set_range(sensor->drv_data,
+			if (sensor->drv->set_range(sensor,
 						   in->sensor_range.data,
 						   in->sensor_range.roundup)
 						   != EC_SUCCESS) {
@@ -489,7 +582,7 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 			}
 		}
 
-		sensor->drv->get_range(sensor->drv_data, &data);
+		sensor->drv->get_range(sensor, &data);
 		out->sensor_range.ret = data;
 
 		args->response_size = sizeof(out->sensor_range);
@@ -565,16 +658,19 @@ static int command_accelrange(int argc, char **argv)
 {
 	char *e;
 	int id, data, round = 1;
-	struct motion_sensor_t *sensor;
+	const struct motion_sensor_t *sensor;
 
 	if (argc < 2 || argc > 4)
 		return EC_ERROR_PARAM_COUNT;
 
 	/* First argument is sensor id. */
 	id = strtoi(argv[1], &e, 0);
-	if (*e || id < 0 || id > motion_sensor_count)
+	if (*e || id < 0 || id >= motion_sensor_count)
 		return EC_ERROR_PARAM1;
-	sensor = motion_sensors[id];
+
+	if (sense_ctrl[id].power != POWER_ON)
+		return EC_ERROR_NOT_POWERED;
+	sensor = &motion_sensors[id];
 
 	if (argc >= 3) {
 		/* Second argument is data to write. */
@@ -593,12 +689,12 @@ static int command_accelrange(int argc, char **argv)
 		 * Write new range, if it returns invalid arg, then return
 		 * a parameter error.
 		 */
-		if (sensor->drv->set_range(sensor->drv_data,
+		if (sensor->drv->set_range(sensor,
 					   data,
 					   round) == EC_ERROR_INVAL)
 			return EC_ERROR_PARAM2;
 	} else {
-		sensor->drv->get_range(sensor->drv_data, &data);
+		sensor->drv->get_range(sensor, &data);
 		ccprintf("Range for sensor %d: %d\n", id, data);
 	}
 
@@ -612,16 +708,19 @@ static int command_accelresolution(int argc, char **argv)
 {
 	char *e;
 	int id, data, round = 1;
-	struct motion_sensor_t *sensor;
+	const struct motion_sensor_t *sensor;
 
 	if (argc < 2 || argc > 4)
 		return EC_ERROR_PARAM_COUNT;
 
 	/* First argument is sensor id. */
 	id = strtoi(argv[1], &e, 0);
-	if (*e || id < 0 || id > motion_sensor_count)
+	if (*e || id < 0 || id >= motion_sensor_count)
 		return EC_ERROR_PARAM1;
-	sensor = motion_sensors[id];
+
+	if (sense_ctrl[id].power != POWER_ON)
+		return EC_ERROR_NOT_POWERED;
+	sensor = &motion_sensors[id];
 
 	if (argc >= 3) {
 		/* Second argument is data to write. */
@@ -640,11 +739,11 @@ static int command_accelresolution(int argc, char **argv)
 		 * Write new resolution, if it returns invalid arg, then
 		 * return a parameter error.
 		 */
-		if (sensor->drv->set_resolution(sensor->drv_data, data, round)
+		if (sensor->drv->set_resolution(sensor, data, round)
 			== EC_ERROR_INVAL)
 			return EC_ERROR_PARAM2;
 	} else {
-		sensor->drv->get_resolution(sensor->drv_data, &data);
+		sensor->drv->get_resolution(sensor, &data);
 		ccprintf("Resolution for sensor %d: %d\n", id, data);
 	}
 
@@ -654,20 +753,23 @@ DECLARE_CONSOLE_COMMAND(accelres, command_accelresolution,
 	"id [data [roundup]]",
 	"Read or write accelerometer resolution", NULL);
 
-static int command_acceldatarate(int argc, char **argv)
+static int command_accel_data_rate(int argc, char **argv)
 {
 	char *e;
 	int id, data, round = 1;
-	struct motion_sensor_t *sensor;
+	const struct motion_sensor_t *sensor;
 
 	if (argc < 2 || argc > 4)
 		return EC_ERROR_PARAM_COUNT;
 
 	/* First argument is sensor id. */
 	id = strtoi(argv[1], &e, 0);
-	if (*e || id < 0 || id > motion_sensor_count)
+	if (*e || id < 0 || id >= motion_sensor_count)
 		return EC_ERROR_PARAM1;
-	sensor = motion_sensors[id];
+
+	if (sense_ctrl[id].power != POWER_ON)
+		return EC_ERROR_NOT_POWERED;
+	sensor = &motion_sensors[id];
 
 	if (argc >= 3) {
 		/* Second argument is data to write. */
@@ -686,26 +788,82 @@ static int command_acceldatarate(int argc, char **argv)
 		 * Write new data rate, if it returns invalid arg, then
 		 * return a parameter error.
 		 */
-		if (sensor->drv->set_datarate(sensor->drv_data, data, round)
+		if (sensor->drv->set_data_rate(sensor, data, round)
 			== EC_ERROR_INVAL)
 			return EC_ERROR_PARAM2;
 	} else {
-		sensor->drv->get_datarate(sensor->drv_data, &data);
+		sensor->drv->get_data_rate(sensor, &data);
 		ccprintf("Data rate for sensor %d: %d\n", id, data);
 	}
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(accelrate, command_acceldatarate,
+DECLARE_CONSOLE_COMMAND(accelrate, command_accel_data_rate,
 	"id [data [roundup]]",
 	"Read or write accelerometer range", NULL);
+
+static int command_accel_read_xyz(int argc, char **argv)
+{
+	char *e;
+	int id, x, y, z;
+	const struct motion_sensor_t *sensor;
+
+	if (argc != 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	/* First argument is sensor id. */
+	id = strtoi(argv[1], &e, 0);
+
+	if (*e || id < 0 || id >= motion_sensor_count)
+		return EC_ERROR_PARAM1;
+
+	if (sense_ctrl[id].power != POWER_ON)
+		return EC_ERROR_NOT_POWERED;
+
+	sensor = &motion_sensors[id];
+	sensor->drv->read(sensor, &x, &y, &z);
+	ccprintf("XYZ Data for sensor %d: 0x%04X 0x%04X 0x%04X\n",
+		id, x&0xFFFF, y&0xFFFF, z&0xFFFF);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(accelread, command_accel_read_xyz,
+	"id",
+	"Read sensor x/y/z", NULL);
+
+static int command_accel_init(int argc, char **argv)
+{
+	char *e;
+	int id;
+	const struct motion_sensor_t *sensor;
+
+	if (argc < 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	/* First argument is sensor id. */
+	id = strtoi(argv[1], &e, 0);
+
+	if (*e || id < 0 || id >= motion_sensor_count)
+		return EC_ERROR_PARAM1;
+
+	if (sense_ctrl[id].power != POWER_ON)
+		return EC_ERROR_NOT_POWERED;
+
+	sensor = &motion_sensors[id];
+	sensor->drv->init(sensor);
+	ccprintf("%s\n", sensor->name);
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(accelinit, command_accel_init,
+	"id",
+	"Init sensor", NULL);
 
 #ifdef CONFIG_ACCEL_INTERRUPTS
 static int command_accelerometer_interrupt(int argc, char **argv)
 {
 	char *e;
 	int id, thresh;
-	struct motion_sensor_t *sensor;
+	const struct motion_sensor_t *sensor;
 
 	if (argc != 3)
 		return EC_ERROR_PARAM_COUNT;
@@ -714,14 +872,18 @@ static int command_accelerometer_interrupt(int argc, char **argv)
 	id = strtoi(argv[1], &e, 0);
 	if (*e || id < 0 || id >= motion_sensor_count)
 		return EC_ERROR_PARAM1;
-	sensor = motion_sensors[id];
+
+	if (sense_ctrl[id].power != POWER_ON)
+		return EC_ERROR_NOT_POWERED;
+
+	sensor = &motion_sensors[id];
 
 	/* Second argument is interrupt threshold. */
 	thresh = strtoi(argv[2], &e, 0);
 	if (*e)
 		return EC_ERROR_PARAM2;
 
-	sensor->drv->set_interrupt(drv_data, thresh);
+	sensor->drv->set_interrupt(sensor, thresh);
 
 	return EC_SUCCESS;
 }
