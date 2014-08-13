@@ -114,7 +114,7 @@ static int raw_write8(const int addr, const int reg, int data)
  *
  * @return EC_SUCCESS if successful, EC_ERROR_* otherwise
  */
-static int disable_sensor(struct kxcj9_data *data, int *ctrl1)
+static int disable_sensor(struct motion_sensor_t *s, int *ctrl1)
 {
 	int ret;
 
@@ -122,25 +122,15 @@ static int disable_sensor(struct kxcj9_data *data, int *ctrl1)
 	 * Read the current state of the ctrl1 register so that we can restore
 	 * it later.
 	 */
-	ret = raw_read8(data->accel_addr, KXCJ9_CTRL1, ctrl1);
-	if (ret != EC_SUCCESS)
-		return ret;
-
-	/*
-	 * Before disabling the sensor, acquire mutex to prevent another task
-	 * from attempting to access accel parameters until we enable sensor.
-	 */
-	mutex_lock(&data->accel_mutex);
-
-	/* Disable sensor. */
-	*ctrl1 &= ~KXCJ9_CTRL1_PC1;
-	ret = raw_write8(data->accel_addr, KXCJ9_CTRL1, *ctrl1);
+	ret = raw_read8(s->i2c_addr, KXCJ9_CTRL1, ctrl1);
 	if (ret != EC_SUCCESS) {
-		mutex_unlock(&data->accel_mutex);
 		return ret;
 	}
 
-	return EC_SUCCESS;
+	/* Disable sensor. */
+	*ctrl1 &= ~KXCJ9_CTRL1_PC1;
+	ret = raw_write8(s->i2c_addr, KXCJ9_CTRL1, *ctrl1);
+	return ret;
 }
 
 /**
@@ -153,24 +143,20 @@ static int disable_sensor(struct kxcj9_data *data, int *ctrl1)
  *
  * @return EC_SUCCESS if successful, EC_ERROR_* otherwise
  */
-static int enable_sensor(struct kxcj9_data *data, const int ctrl1)
+static int enable_sensor(struct motion_sensor_t *s, const int ctrl1)
 {
 	int i, ret;
 
 	for (i = 0; i < SENSOR_ENABLE_ATTEMPTS; i++) {
 		/* Enable accelerometer based on ctrl1 value. */
-		ret = raw_write8(data->accel_addr, KXCJ9_CTRL1,
+		ret = raw_write8(s->i2c_addr, KXCJ9_CTRL1,
 				ctrl1 | KXCJ9_CTRL1_PC1);
 
 		/* On first success, we are done. */
 		if (ret == EC_SUCCESS) {
-			mutex_unlock(&data->accel_mutex);
 			return EC_SUCCESS;
 		}
 	}
-
-	/* Release mutex. */
-	mutex_unlock(&data->accel_mutex);
 
 	/* Cannot enable accel, print warning and return an error. */
 	CPRINTF("Error trying to enable accelerometer\n");
@@ -178,24 +164,27 @@ static int enable_sensor(struct kxcj9_data *data, const int ctrl1)
 	return ret;
 }
 
-static int accel_set_range(void *drv_data,
+static int accel_set_range(struct motion_sensor_t *s,
 			   const int range,
 			   const int rnd)
 {
 	int ret, ctrl1, ctrl1_new, index;
-	struct kxcj9_data *data = (struct kxcj9_data *)drv_data;
+	struct kxcj9_data *data = (struct kxcj9_data *)s->drv_data;
 
 	/* Find index for interface pair matching the specified range. */
 	index = find_param_index(range, rnd, ranges, ARRAY_SIZE(ranges));
 
 	/* Disable the sensor to allow for changing of critical parameters. */
-	ret = disable_sensor(data, &ctrl1);
-	if (ret != EC_SUCCESS)
+	mutex_lock(s->mutex);
+	ret = disable_sensor(s, &ctrl1);
+	if (ret != EC_SUCCESS) {
+		mutex_unlock(s->mutex);
 		return ret;
+	}
 
 	/* Determine new value of CTRL1 reg and attempt to write it. */
 	ctrl1_new = (ctrl1 & ~KXCJ9_GSEL_ALL) | ranges[index].reg;
-	ret = raw_write8(data->accel_addr,  KXCJ9_CTRL1, ctrl1_new);
+	ret = raw_write8(s->i2c_addr,  KXCJ9_CTRL1, ctrl1_new);
 
 	/* If successfully written, then save the range. */
 	if (ret == EC_SUCCESS) {
@@ -204,38 +193,43 @@ static int accel_set_range(void *drv_data,
 	}
 
 	/* Re-enable the sensor. */
-	if (enable_sensor(data, ctrl1) != EC_SUCCESS)
-		return EC_ERROR_UNKNOWN;
+	if (enable_sensor(s, ctrl1) != EC_SUCCESS)
+		ret = EC_ERROR_UNKNOWN;
+
+	mutex_unlock(s->mutex);
 
 	return ret;
 }
 
-static int accel_get_range(void *drv_data, int * const range)
+static int accel_get_range(struct motion_sensor_t *s, int * const range)
 {
-	struct kxcj9_data *data = (struct kxcj9_data *)drv_data;
+	struct kxcj9_data *data = (struct kxcj9_data *)s->drv_data;
 	*range = ranges[data->sensor_range].val;
 	return EC_SUCCESS;
 }
 
-static int accel_set_resolution(void *drv_data,
+static int accel_set_resolution(struct motion_sensor_t *s,
 				const int res,
 				const int rnd)
 {
 	int ret, ctrl1, ctrl1_new, index;
-	struct kxcj9_data *data = (struct kxcj9_data *)drv_data;
+	struct kxcj9_data *data = (struct kxcj9_data *)s->drv_data;
 
 	/* Find index for interface pair matching the specified resolution. */
 	index = find_param_index(res, rnd, resolutions,
 			ARRAY_SIZE(resolutions));
 
 	/* Disable the sensor to allow for changing of critical parameters. */
-	ret = disable_sensor(data, &ctrl1);
-	if (ret != EC_SUCCESS)
+	mutex_lock(s->mutex);
+	ret = disable_sensor(s, &ctrl1);
+	if (ret != EC_SUCCESS) {
+		mutex_unlock(s->mutex);
 		return ret;
+	}
 
 	/* Determine new value of CTRL1 reg and attempt to write it. */
 	ctrl1_new = (ctrl1 & ~KXCJ9_RES_12BIT) | resolutions[index].reg;
-	ret = raw_write8(data->accel_addr,  KXCJ9_CTRL1, ctrl1_new);
+	ret = raw_write8(s->i2c_addr,  KXCJ9_CTRL1, ctrl1_new);
 
 	/* If successfully written, then save the range. */
 	if (ret == EC_SUCCESS) {
@@ -244,36 +238,40 @@ static int accel_set_resolution(void *drv_data,
 	}
 
 	/* Re-enable the sensor. */
-	if (enable_sensor(data, ctrl1) != EC_SUCCESS)
-		return EC_ERROR_UNKNOWN;
+	if (enable_sensor(s, ctrl1) != EC_SUCCESS)
+		ret = EC_ERROR_UNKNOWN;
 
+	mutex_unlock(s->mutex);
 	return ret;
 }
 
-static int accel_get_resolution(void *drv_data, int * const res)
+static int accel_get_resolution(struct motion_sensor_t *s, int * const res)
 {
-	struct kxcj9_data *data = (struct kxcj9_data *)drv_data;
+	struct kxcj9_data *data = (struct kxcj9_data *)s->drv_data;
 	*res = resolutions[data->sensor_resolution].val;
 	return EC_SUCCESS;
 }
 
-static int accel_set_datarate(void *drv_data,
+static int accel_set_datarate(struct motion_sensor_t *s,
 			      const int rate,
 			      const int rnd)
 {
 	int ret, ctrl1, index;
-	struct kxcj9_data *data = (struct kxcj9_data *)drv_data;
+	struct kxcj9_data *data = (struct kxcj9_data *)s->drv_data;
 
 	/* Find index for interface pair matching the specified rate. */
 	index = find_param_index(rate, rnd, datarates, ARRAY_SIZE(datarates));
 
 	/* Disable the sensor to allow for changing of critical parameters. */
-	ret = disable_sensor(data, &ctrl1);
-	if (ret != EC_SUCCESS)
+	mutex_lock(s->mutex);
+	ret = disable_sensor(s, &ctrl1);
+	if (ret != EC_SUCCESS) {
+		mutex_unlock(s->mutex);
 		return ret;
+	}
 
 	/* Set output data rate. */
-	ret = raw_write8(data->accel_addr,  KXCJ9_DATA_CTRL,
+	ret = raw_write8(s->i2c_addr,  KXCJ9_DATA_CTRL,
 			datarates[index].reg);
 
 	/* If successfully written, then save the range. */
@@ -281,33 +279,38 @@ static int accel_set_datarate(void *drv_data,
 		data->sensor_datarate = index;
 
 	/* Re-enable the sensor. */
-	if (enable_sensor(data, ctrl1) != EC_SUCCESS)
-		return EC_ERROR_UNKNOWN;
+	if (enable_sensor(s, ctrl1) != EC_SUCCESS)
+		ret = EC_ERROR_UNKNOWN;
 
+	mutex_unlock(s->mutex);
 	return ret;
 }
 
-static int accel_get_datarate(void *drv_data, int * const rate)
+static int accel_get_datarate(struct motion_sensor_t *s, int * const rate)
 {
-	struct kxcj9_data *data = (struct kxcj9_data *)drv_data;
+	struct kxcj9_data *data = (struct kxcj9_data *)s->drv_data;
 	*rate = datarates[data->sensor_datarate].val;
 	return EC_SUCCESS;
 }
 
 
 #ifdef CONFIG_ACCEL_INTERRUPTS
-static int accel_set_interrupt(void *drv_data, unsigned int threshold)
+static int accel_set_interrupt(struct motion_sensor_t *s,
+		unsigned int threshold)
 {
 	int ctrl1, tmp, ret;
-	struct kxcj9_data *data = (struct kxcj9_data *)drv_data;
+	struct kxcj9_data *data = (struct kxcj9_data *)s->drv_data;
 
 	/* Disable the sensor to allow for changing of critical parameters. */
-	ret = disable_sensor(data, &ctrl1);
-	if (ret != EC_SUCCESS)
+	mutex_lock(s->mutex);
+	ret = disable_sensor(s, &ctrl1);
+	if (ret != EC_SUCCESS) {
+		mutex_unlock(s->mutex);
 		return ret;
+	}
 
 	/* Set interrupt timer to 1 so it wakes up immediately. */
-	ret = raw_write8(data->accel_addr, KXCJ9_WAKEUP_TIMER, 1);
+	ret = raw_write8(s->i2c_addr, KXCJ9_WAKEUP_TIMER, 1);
 	if (ret != EC_SUCCESS)
 		goto error_enable_sensor;
 
@@ -316,7 +319,7 @@ static int accel_set_interrupt(void *drv_data, unsigned int threshold)
 	 * first we need to divide by 16 to get the value to send.
 	 */
 	threshold >>= 4;
-	ret = raw_write8(data->accel_addr, KXCJ9_WAKEUP_THRESHOLD, threshold);
+	ret = raw_write8(s->i2c_addr, KXCJ9_WAKEUP_THRESHOLD, threshold);
 	if (ret != EC_SUCCESS)
 		goto error_enable_sensor;
 
@@ -325,11 +328,11 @@ static int accel_set_interrupt(void *drv_data, unsigned int threshold)
 	 * function is called once, the interrupt stays enabled and it is
 	 * only necessary to clear KXCJ9_INT_REL to allow the next interrupt.
 	 */
-	ret = raw_read8(data->accel_addr, KXCJ9_INT_CTRL1, &tmp);
+	ret = raw_read8(s->i2c_addr, KXCJ9_INT_CTRL1, &tmp);
 	if (ret != EC_SUCCESS)
 		goto error_enable_sensor;
 	if (!(tmp & KXCJ9_INT_CTRL1_IEN)) {
-		ret = raw_write8(data->accel_addr, KXCJ9_INT_CTRL1,
+		ret = raw_write8(s->i2c_addr, KXCJ9_INT_CTRL1,
 				tmp | KXCJ9_INT_CTRL1_IEN);
 		if (ret != EC_SUCCESS)
 			goto error_enable_sensor;
@@ -340,18 +343,18 @@ static int accel_set_interrupt(void *drv_data, unsigned int threshold)
 	 * Note: this register latches motion detected above threshold. Once
 	 * latched, no interrupt can occur until this register is cleared.
 	 */
-	ret = raw_read8(data->accel_addr, KXCJ9_INT_REL, &tmp);
+	ret = raw_read8(s->i2c_addr, KXCJ9_INT_REL, &tmp);
 
 error_enable_sensor:
 	/* Re-enable the sensor. */
-	if (enable_sensor(data, ctrl1) != EC_SUCCESS)
-		return EC_ERROR_UNKNOWN;
-
+	if (enable_sensor(s, ctrl1) != EC_SUCCESS)
+		ret = EC_ERROR_UNKNOWN;
+	mutex_unlock(s->mutex);
 	return ret;
 }
 #endif
 
-static int accel_read(void *drv_data,
+static int accel_read(struct motion_sensor_t *s,
 		      int * const x_acc,
 		      int * const y_acc,
 		      int * const z_acc)
@@ -359,15 +362,13 @@ static int accel_read(void *drv_data,
 	uint8_t acc[6];
 	uint8_t reg = KXCJ9_XOUT_L;
 	int ret, multiplier;
-	struct kxcj9_data *data = (struct kxcj9_data *)drv_data;
+	struct kxcj9_data *data = (struct kxcj9_data *)s->drv_data;
 
 	/* Read 6 bytes starting at KXCJ9_XOUT_L. */
-	mutex_lock(&data->accel_mutex);
 	i2c_lock(I2C_PORT_ACCEL, 1);
-	ret = i2c_xfer(I2C_PORT_ACCEL, data->accel_addr, &reg, 1, acc, 6,
+	ret = i2c_xfer(I2C_PORT_ACCEL, s->i2c_addr, &reg, 1, acc, 6,
 			I2C_XFER_SINGLE);
 	i2c_lock(I2C_PORT_ACCEL, 0);
-	mutex_unlock(&data->accel_mutex);
 
 	if (ret != EC_SUCCESS)
 		return ret;
@@ -406,42 +407,33 @@ static int accel_read(void *drv_data,
 	return EC_SUCCESS;
 }
 
-static int accel_init(void **drv_data, int i2c_addr)
+static int accel_init(struct motion_sensor_t *s)
 {
 	int ret = EC_SUCCESS;
 	int cnt = 0, ctrl1, ctrl2;
 	struct kxcj9_data *data;
-
-	if (shared_mem_acquire(sizeof(struct kxcj9_data),
-			       (char **)drv_data)) {
-		ccputs("Can't acquire shared memory buffer.\n");
-		return EC_ERROR_UNKNOWN;
-	}
-
-	data = (struct kxcj9_data *)*drv_data;
-	memset(&data->accel_mutex, sizeof(struct mutex), 0);
-	data->sensor_range = 0;
-	data->sensor_datarate = 6;
-	data->sensor_resolution = 1;
-	data->accel_addr = i2c_addr;
+	data = (struct kxcj9_data *)s->drv_data;
 
 	/* Disable the sensor to allow for changing of critical parameters. */
-	ret = disable_sensor(data, &ctrl1);
-	if (ret != EC_SUCCESS)
+	mutex_lock(s->mutex);
+	ret = disable_sensor(s, &ctrl1);
+	if (ret != EC_SUCCESS) {
+		mutex_unlock(s->mutex);
 		return ret;
+	}
 
 	/*
 	 * This sensor can be powered through an EC reboot, so the state of
 	 * the sensor is unknown here. Initiate software reset to restore
 	 * sensor to default.
 	 */
-	ret = raw_write8(data->accel_addr, KXCJ9_CTRL2, KXCJ9_CTRL2_SRST);
+	ret = raw_write8(s->i2c_addr, KXCJ9_CTRL2, KXCJ9_CTRL2_SRST);
 	if (ret != EC_SUCCESS)
 		return ret;
 
 	/* Wait until software reset is complete or timeout. */
 	while (1) {
-		ret = raw_read8(data->accel_addr, KXCJ9_CTRL2, &ctrl2);
+		ret = raw_read8(s->i2c_addr, KXCJ9_CTRL2, &ctrl2);
 
 		/* Reset complete. */
 		if (ret == EC_SUCCESS && !(ctrl2 & KXCJ9_CTRL2_SRST))
@@ -462,19 +454,19 @@ static int accel_init(void **drv_data, int i2c_addr)
 	/* Enable wake up (motion detect) functionality. */
 	ctrl1 |= KXCJ9_CTRL1_WUFE;
 #endif
-	ret = raw_write8(data->accel_addr, KXCJ9_CTRL1, ctrl1);
+	ret = raw_write8(s->i2c_addr, KXCJ9_CTRL1, ctrl1);
 
 #ifdef CONFIG_ACCEL_INTERRUPTS
 	/* Set interrupt polarity to rising edge and keep interrupt disabled. */
-	ret |= raw_write8(data->accel_addr,
+	ret |= raw_write8(s->i2c_addr,
 			  KXCJ9_INT_CTRL1,
 			  KXCJ9_INT_CTRL1_IEA);
 
 	/* Set output data rate for wake-up interrupt function. */
-	ret |= raw_write8(data->accel_addr, KXCJ9_CTRL2, KXCJ9_OWUF_100_0HZ);
+	ret |= raw_write8(s->i2c_addr, KXCJ9_CTRL2, KXCJ9_OWUF_100_0HZ);
 
 	/* Set interrupt to trigger on motion on any axis. */
-	ret |= raw_write8(data->accel_addr, KXCJ9_INT_CTRL2,
+	ret |= raw_write8(s->i2c_addr, KXCJ9_INT_CTRL2,
 			KXCJ9_INT_SRC2_XNWU | KXCJ9_INT_SRC2_XPWU |
 			KXCJ9_INT_SRC2_YNWU | KXCJ9_INT_SRC2_YPWU |
 			KXCJ9_INT_SRC2_ZNWU | KXCJ9_INT_SRC2_ZPWU);
@@ -488,25 +480,25 @@ static int accel_init(void **drv_data, int i2c_addr)
 #endif
 
 	/* Set output data rate. */
-	ret |= raw_write8(data->accel_addr, KXCJ9_DATA_CTRL,
+	ret |= raw_write8(s->i2c_addr, KXCJ9_DATA_CTRL,
 			datarates[data->sensor_datarate].reg);
 
 	/* Enable the sensor. */
-	ret |= enable_sensor(data, ctrl1);
+	ret |= enable_sensor(s, ctrl1);
+	mutex_unlock(s->mutex);
 
 	return ret;
 }
 
-struct accelgyro_info accel_kxcj9 = {
-	.type = SENSOR_ACCELEROMETER,
+struct accelgyro_method kxcj9_method = {
 	.init = accel_init,
 	.read = accel_read,
 	.set_range = accel_set_range,
 	.get_range = accel_get_range,
 	.set_resolution = accel_set_resolution,
 	.get_resolution = accel_get_resolution,
-	.set_datarate = accel_set_datarate,
-	.get_datarate = accel_get_datarate,
+	.set_data_rate = accel_set_datarate,
+	.get_data_rate = accel_get_datarate,
 #ifdef CONFIG_ACCEL_INTERRUPTS
 	.set_interrupt = accel_set_interrupt,
 #endif
