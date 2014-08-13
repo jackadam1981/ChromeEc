@@ -48,6 +48,24 @@
     },
     {
       "key": {
+        "uuid": "b626cb4d_fc175dae",
+        "filename": "chip/lm4/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-13T19:48:35Z",
+      "side": 1,
+      "message": "Couldn\u0027t you just\n\n#ifdef BOARD_kip\nif (!lpc_get_pltrst_asserted())\n  board_ap_warm_reset();\n#endif\n\nand then you don\u0027t need to define the whole hook infrastructure.\n\nJust define that function in board/kip/board.h, and have it call modem_power_cycle().",
+      "parentUuid": "56166fdd_a7da34ad",
+      "revId": "ca8402e65495d5443db4bd90a3875fd037bedcb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56166fdd_8724d012",
         "filename": "core/cortex-m/ec.lds.S",
         "patchSetId": 1
@@ -59,6 +77,23 @@
       "writtenOn": "2014-08-13T00:04:56Z",
       "side": 1,
       "message": "I added this section to all three chips, altough kip will only build one. I guess buildall would fail without it anyway.",
+      "revId": "ca8402e65495d5443db4bd90a3875fd037bedcb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b67b2b36_20b5b0ce",
+        "filename": "include/hooks.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-13T19:48:35Z",
+      "side": 1,
+      "message": "This is not true!  Hook routine may be called from the LPC interrupt handler!\n\nShould describe more what \"an asynchronous indication\" means.  I believe you mean that this will be called when the AP resets, but there is no guarantee whether this is called before, during, or after the reset.",
       "revId": "ca8402e65495d5443db4bd90a3875fd037bedcb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
