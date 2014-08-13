@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b64deb11_8ae3733a",
+        "filename": "chip/lm4/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1002639
+      },
+      "writtenOn": "2014-08-13T00:04:56Z",
+      "side": 1,
+      "message": "Can\u0027t move this function to the board specific file (and listen the interrupt there instead) because IRQs callbacks can\u0027t be overwritten.",
+      "range": {
+        "startLine": 559,
+        "startChar": 12,
+        "endLine": 559,
+        "endChar": 25
+      },
+      "revId": "ca8402e65495d5443db4bd90a3875fd037bedcb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56166fdd_a7da34ad",
+        "filename": "chip/lm4/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1002639
+      },
+      "writtenOn": "2014-08-13T00:04:56Z",
+      "side": 1,
+      "message": "Must add a hook instead of resetting the modem here because the board specific GPIO is not visible here.",
+      "range": {
+        "startLine": 629,
+        "startChar": 3,
+        "endLine": 629,
+        "endChar": 40
+      },
+      "revId": "ca8402e65495d5443db4bd90a3875fd037bedcb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56166fdd_8724d012",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002639
+      },
+      "writtenOn": "2014-08-13T00:04:56Z",
+      "side": 1,
+      "message": "I added this section to all three chips, altough kip will only build one. I guess buildall would fail without it anyway.",
+      "revId": "ca8402e65495d5443db4bd90a3875fd037bedcb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
