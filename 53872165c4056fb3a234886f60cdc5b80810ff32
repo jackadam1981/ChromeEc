@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b64deb11_27913544",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-13T17:18:10Z",
+      "side": 1,
+      "message": "Add comment above function like:\n/*\n * Use to enable USB on port C0 for debugging. Note, this\n * disconnects USB lines from AP.\n */\n\nsuggest renaming: set_usb_debug()",
+      "range": {
+        "startLine": 184,
+        "startChar": 11,
+        "endLine": 184,
+        "endChar": 24
+      },
+      "revId": "53872165c4056fb3a234886f60cdc5b80810ff32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b64deb11_67d97d2c",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-13T17:18:10Z",
+      "side": 1,
+      "message": "will this actually set the mux for which pericom is connected on i2c?",
+      "range": {
+        "startLine": 193,
+        "startChar": 8,
+        "endLine": 193,
+        "endChar": 36
+      },
+      "revId": "53872165c4056fb3a234886f60cdc5b80810ff32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b67b2b36_1f33332d",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-13T17:18:10Z",
+      "side": 1,
+      "message": "Add comment above function like:\n/*\n * Use to enable SPI access to SPI flash for debugging.\n * Note, this disables port C0.\n */\n\nsuggest renaming: set_spi_debug()",
+      "range": {
+        "startLine": 215,
+        "startChar": 12,
+        "endLine": 215,
+        "endChar": 25
+      },
+      "revId": "53872165c4056fb3a234886f60cdc5b80810ff32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b67b2b36_baf9cde6",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-13T17:18:10Z",
+      "side": 1,
+      "message": "I think we need to clean this all up somehow. I know the board file technically knows which gpio\u0027s are connected where, but it\u0027s still a pain for maintenance to have to switch all of these if the gpio map changes, and to port over to another board. Also, it\u0027s difficult to find a bug because you can\u0027t tell at a glance if the correct mask has been set.\n\nI think we need to use standard functions from gpio.c to set these using the gpio table enum.",
+      "range": {
+        "startLine": 222,
+        "startChar": 2,
+        "endLine": 222,
+        "endChar": 18
+      },
+      "revId": "53872165c4056fb3a234886f60cdc5b80810ff32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "766ff376_e9479534",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-13T17:18:10Z",
+      "side": 1,
+      "message": "don\u0027t need to initialize",
+      "range": {
+        "startLine": 280,
+        "startChar": 10,
+        "endLine": 280,
+        "endChar": 20
+      },
+      "revId": "53872165c4056fb3a234886f60cdc5b80810ff32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
