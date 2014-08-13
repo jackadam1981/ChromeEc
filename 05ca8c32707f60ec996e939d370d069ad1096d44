@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "766ff376_23c06610",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-08-13T23:40:00Z",
+      "side": 1,
+      "message": "Nit, add mention of deprecating servo_v2_slower here as well.",
+      "revId": "05ca8c32707f60ec996e939d370d069ad1096d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b64deb11_6e4e324d",
+        "filename": "chip/lm4/openocd/servo_v3.cfg",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-08-13T23:40:00Z",
+      "side": 1,
+      "message": "gardening.  Initial proto servo V3s had default FTDI vid/pid but this should be 0x18d1 0x5004.  Mind changing",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "05ca8c32707f60ec996e939d370d069ad1096d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
