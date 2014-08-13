@@ -13,6 +13,7 @@
 #include "lid_angle.h"
 #include "math_util.h"
 #include "motion_sense.h"
+#include "power.h"
 #include "timer.h"
 #include "task.h"
 #include "util.h"
@@ -23,6 +24,7 @@
 
 /* Minimum time in between running motion sense task loop. */
 #define MIN_MOTION_SENSE_WAIT_TIME (1 * MSEC)
+#define TASK_MOTION_SENSE_WAIT_TIME (1 * MSEC)
 
 static const struct motion_sensor_t *base;
 static const struct motion_sensor_t *lid;
@@ -168,17 +170,22 @@ void motion_get_accel_base(vector_3_t *v)
 }
 #endif
 
-static void set_ap_suspend_polling(void)
+static int motion_sense_active;
+static void clock_chipset_shutdown(void)
 {
 	accel_interval_ms = accel_interval_ap_suspend_ms;
+	motion_sense_active = 0;
 }
-DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, set_ap_suspend_polling, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, clock_chipset_shutdown, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, clock_chipset_shutdown, HOOK_PRIO_DEFAULT);
 
-static void set_ap_on_polling(void)
+static void clock_chipset_startup(void)
 {
 	accel_interval_ms = accel_interval_ap_on_ms;
+	motion_sense_active = 1;
 }
-DECLARE_HOOK(HOOK_CHIPSET_RESUME, set_ap_on_polling, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, clock_chipset_startup, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, clock_chipset_startup, HOOK_PRIO_DEFAULT);
 
 
 void motion_sense_task(void)
@@ -190,6 +197,11 @@ void motion_sense_task(void)
 	uint16_t *lpc_data;
 	int sample_id = 0;
 	int i;
+	const struct motion_sensor_t *sensor;
+
+sleep_ms_task:
+	while (!motion_sense_active)
+		task_wait_event(TASK_MOTION_SENSE_WAIT_TIME);
 
 	lpc_status = host_get_memmap(EC_MEMMAP_ACC_STATUS);
 	lpc_data = (uint16_t *)host_get_memmap(EC_MEMMAP_ACC_DATA);
@@ -201,51 +213,44 @@ void motion_sense_task(void)
 	 * assumptions will have to be removed when we have other
 	 * configurations of motion sensors.
 	 */
-	for (i = 0; i <  motion_sensor_count; ++i) {
-		if (motion_sensors[i].location == LOCATION_LID)
-			lid = &motion_sensors[i];
-		else if (motion_sensors[i].location == LOCATION_BASE)
-			base = &motion_sensors[i];
+	for (i = 0; i < motion_sensor_count; ++i) {
+		sensor = &motion_sensors[i];
+		if ((sensor->location == LOCATION_LID) &&
+				(sensor->type & SENSOR_ACCELEROMETER))
+			lid = sensor;
+		else if ((sensor->location == LOCATION_BASE) &&
+				(sensor->type & SENSOR_ACCELEROMETER))
+			base = sensor;
 	}
 
 	if (lid == NULL || base == NULL) {
 		CPRINTS("Invalid motion_sensors list, lid and base required");
-		return;
+		goto end_ms_task;
 	}
 
 	/* Initialize accelerometers. */
-	ret = lid->drv->init(lid->drv_data, lid->i2c_addr);
-	ret |= base->drv->init(base->drv_data, base->i2c_addr);
+	ret = base->drv->init(base);
+	if (ret != EC_SUCCESS)
+		goto end_ms_task;
 
-	/* If accelerometers do not initialize, then end task. */
-	if (ret != EC_SUCCESS) {
-		CPRINTS("Accel init failed; stopping MS");
-		return;
-	}
+	ret = lid->drv->init(lid);
+	if (ret != EC_SUCCESS)
+		goto end_ms_task;
 
 	/* Initialize sampling interval. */
 	accel_interval_ms = accel_interval_ap_suspend_ms;
 
-	/* Set default accelerometer parameters. */
-	lid->drv->set_range(lid->drv_data,  2, 1);
-	lid->drv->set_resolution(lid->drv_data,  12, 1);
-	lid->drv->set_datarate(lid->drv_data,  100000, 1);
-	base->drv->set_range(base->drv_data, 2, 1);
-	base->drv->set_resolution(base->drv_data, 12, 1);
-	base->drv->set_datarate(base->drv_data, 100000, 1);
-
 	/* Write to status byte to represent that accelerometers are present. */
 	*lpc_status |= EC_MEMMAP_ACC_STATUS_PRESENCE_BIT;
 
-	while (1) {
+	while (motion_sense_active) {
 		ts0 = get_time();
 
 		/* Read all accelerations. */
-		lid->drv->read(lid->drv_data, &acc_lid_raw[X], &acc_lid_raw[Y],
-			   &acc_lid_raw[Z]);
-		base->drv->read(base->drv_data, &acc_base[X], &acc_base[Y],
-			   &acc_base[Z]);
-
+		lid->drv->read(lid,
+			&acc_lid_raw[X], &acc_lid_raw[Y], &acc_lid_raw[Z]);
+		base->drv->read(base,
+			&acc_base[X], &acc_base[Y], &acc_base[Z]);
 		/*
 		 * Rotate the lid vector so the reference frame aligns with
 		 * the base sensor.
@@ -325,6 +330,13 @@ void motion_sense_task(void)
 
 		task_wait_event(wait_us);
 	}
+
+	goto sleep_ms_task;
+
+end_ms_task:
+	while (1)
+		task_wait_event(-1);
+
 }
 
 void accel_int_lid(enum gpio_signal signal)
@@ -370,6 +382,9 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 	const struct motion_sensor_t *sensor;
 	int data;
 
+	if (!motion_sense_active)
+		return EC_RES_ACCESS_DENIED;
+
 	switch (in->cmd) {
 	case MOTIONSENSE_CMD_DUMP:
 		/*
@@ -405,9 +420,9 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		if (sensor == NULL)
 			return EC_RES_INVALID_PARAM;
 
-		if (sensor->drv->sensor_type == SENSOR_ACCELEROMETER)
+		if (sensor->type == SENSOR_ACCELEROMETER)
 			out->info.type = MOTIONSENSE_TYPE_ACCEL;
-		else if (sensor->drv->sensor_type == SENSOR_GYRO)
+		else if (sensor->type == SENSOR_GYRO)
 			out->info.type = MOTIONSENSE_TYPE_GYRO;
 
 		if (sensor->location == LOCATION_BASE)
@@ -415,10 +430,14 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		else if (sensor->location == LOCATION_LID)
 			out->info.location = MOTIONSENSE_LOC_LID;
 
-		if (sensor->drv->chip_type == CHIP_KXCJ9)
+#ifdef CONFIG_ACCEL_KXCJ9
+		if (sensor->chip == SENSOR_CHIP_KXCJ9)
 			out->info.chip = MOTIONSENSE_CHIP_KXCJ9;
-		else if (sensor->drv->chip_type == CHIP_LSM6DS0)
+#endif
+#ifdef CONFIG_ACCELGYRO_LSM6DS0
+		if (sensor->chip == SENSOR_CHIP_LSM6DS0)
 			out->info.chip = MOTIONSENSE_CHIP_LSM6DS0;
+#endif
 
 		args->response_size = sizeof(out->info);
 		break;
@@ -452,9 +471,9 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		if (sensor == NULL)
 			return EC_RES_INVALID_PARAM;
 
-		/* Set new datarate if the data arg has a value. */
+		/* Set new data rate if the data arg has a value. */
 		if (in->sensor_odr.data != EC_MOTION_SENSE_NO_VALUE) {
-			if (sensor->drv->set_datarate(sensor->drv_data,
+			if (sensor->drv->set_data_rate(sensor,
 						      in->sensor_odr.data,
 						      in->sensor_odr.roundup)
 						      != EC_SUCCESS) {
@@ -464,7 +483,7 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 			}
 		}
 
-		sensor->drv->get_datarate(sensor->drv_data, &data);
+		sensor->drv->get_data_rate(sensor, &data);
 		out->sensor_odr.ret = data;
 
 		args->response_size = sizeof(out->sensor_odr);
@@ -477,9 +496,9 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		if (sensor == NULL)
 			return EC_RES_INVALID_PARAM;
 
-		/* Set new datarate if the data arg has a value. */
+		/* Set new data rate if the data arg has a value. */
 		if (in->sensor_range.data != EC_MOTION_SENSE_NO_VALUE) {
-			if (sensor->drv->set_range(sensor->drv_data,
+			if (sensor->drv->set_range(sensor,
 						   in->sensor_range.data,
 						   in->sensor_range.roundup)
 						   != EC_SUCCESS) {
@@ -489,7 +508,7 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 			}
 		}
 
-		sensor->drv->get_range(sensor->drv_data, &data);
+		sensor->drv->get_range(sensor, &data);
 		out->sensor_range.ret = data;
 
 		args->response_size = sizeof(out->sensor_range);
@@ -529,6 +548,9 @@ static int command_ctrl_print_lid_angle_calcs(int argc, char **argv)
 	char *e;
 	int val;
 
+	if (!motion_sense_active)
+		return EC_ERROR_PARAM_COUNT;
+
 	if (argc > 3)
 		return EC_ERROR_PARAM_COUNT;
 
@@ -565,16 +587,20 @@ static int command_accelrange(int argc, char **argv)
 {
 	char *e;
 	int id, data, round = 1;
-	struct motion_sensor_t *sensor;
+	const struct motion_sensor_t *sensor;
+
+	if (!motion_sense_active)
+		return EC_ERROR_PARAM_COUNT;
 
 	if (argc < 2 || argc > 4)
 		return EC_ERROR_PARAM_COUNT;
 
 	/* First argument is sensor id. */
 	id = strtoi(argv[1], &e, 0);
-	if (*e || id < 0 || id > motion_sensor_count)
+	if (*e || id < 0 || id >= motion_sensor_count)
 		return EC_ERROR_PARAM1;
-	sensor = motion_sensors[id];
+
+	sensor = &motion_sensors[id];
 
 	if (argc >= 3) {
 		/* Second argument is data to write. */
@@ -593,12 +619,12 @@ static int command_accelrange(int argc, char **argv)
 		 * Write new range, if it returns invalid arg, then return
 		 * a parameter error.
 		 */
-		if (sensor->drv->set_range(sensor->drv_data,
+		if (sensor->drv->set_range(sensor,
 					   data,
 					   round) == EC_ERROR_INVAL)
 			return EC_ERROR_PARAM2;
 	} else {
-		sensor->drv->get_range(sensor->drv_data, &data);
+		sensor->drv->get_range(sensor, &data);
 		ccprintf("Range for sensor %d: %d\n", id, data);
 	}
 
@@ -612,16 +638,19 @@ static int command_accelresolution(int argc, char **argv)
 {
 	char *e;
 	int id, data, round = 1;
-	struct motion_sensor_t *sensor;
+	const struct motion_sensor_t *sensor;
+
+	if (!motion_sense_active)
+		return EC_ERROR_PARAM_COUNT;
 
 	if (argc < 2 || argc > 4)
 		return EC_ERROR_PARAM_COUNT;
 
 	/* First argument is sensor id. */
 	id = strtoi(argv[1], &e, 0);
-	if (*e || id < 0 || id > motion_sensor_count)
+	if (*e || id < 0 || id >= motion_sensor_count)
 		return EC_ERROR_PARAM1;
-	sensor = motion_sensors[id];
+	sensor = &motion_sensors[id];
 
 	if (argc >= 3) {
 		/* Second argument is data to write. */
@@ -640,11 +669,11 @@ static int command_accelresolution(int argc, char **argv)
 		 * Write new resolution, if it returns invalid arg, then
 		 * return a parameter error.
 		 */
-		if (sensor->drv->set_resolution(sensor->drv_data, data, round)
+		if (sensor->drv->set_resolution(sensor, data, round)
 			== EC_ERROR_INVAL)
 			return EC_ERROR_PARAM2;
 	} else {
-		sensor->drv->get_resolution(sensor->drv_data, &data);
+		sensor->drv->get_resolution(sensor, &data);
 		ccprintf("Resolution for sensor %d: %d\n", id, data);
 	}
 
@@ -654,20 +683,24 @@ DECLARE_CONSOLE_COMMAND(accelres, command_accelresolution,
 	"id [data [roundup]]",
 	"Read or write accelerometer resolution", NULL);
 
-static int command_acceldatarate(int argc, char **argv)
+static int command_accel_data_rate(int argc, char **argv)
 {
 	char *e;
 	int id, data, round = 1;
-	struct motion_sensor_t *sensor;
+	const struct motion_sensor_t *sensor;
+
+	if (!motion_sense_active)
+		return EC_ERROR_PARAM_COUNT;
 
 	if (argc < 2 || argc > 4)
 		return EC_ERROR_PARAM_COUNT;
 
 	/* First argument is sensor id. */
 	id = strtoi(argv[1], &e, 0);
-	if (*e || id < 0 || id > motion_sensor_count)
+	if (*e || id < 0 || id >= motion_sensor_count)
 		return EC_ERROR_PARAM1;
-	sensor = motion_sensors[id];
+
+	sensor = &motion_sensors[id];
 
 	if (argc >= 3) {
 		/* Second argument is data to write. */
@@ -686,26 +719,85 @@ static int command_acceldatarate(int argc, char **argv)
 		 * Write new data rate, if it returns invalid arg, then
 		 * return a parameter error.
 		 */
-		if (sensor->drv->set_datarate(sensor->drv_data, data, round)
+		if (sensor->drv->set_data_rate(sensor, data, round)
 			== EC_ERROR_INVAL)
 			return EC_ERROR_PARAM2;
 	} else {
-		sensor->drv->get_datarate(sensor->drv_data, &data);
+		sensor->drv->get_data_rate(sensor, &data);
 		ccprintf("Data rate for sensor %d: %d\n", id, data);
 	}
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(accelrate, command_acceldatarate,
+DECLARE_CONSOLE_COMMAND(accelrate, command_accel_data_rate,
 	"id [data [roundup]]",
 	"Read or write accelerometer range", NULL);
+
+static int command_accel_read_xyz(int argc, char **argv)
+{
+	char *e;
+	int id, x, y, z;
+	const struct motion_sensor_t *sensor;
+
+	if (!motion_sense_active)
+		return EC_ERROR_PARAM_COUNT;
+
+	if (argc != 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	/* First argument is sensor id. */
+	id = strtoi(argv[1], &e, 0);
+
+	if (*e || id < 0 || id >= motion_sensor_count)
+		return EC_ERROR_PARAM1;
+
+	sensor = &motion_sensors[id];
+	sensor->drv->read(sensor, &x, &y, &z);
+	ccprintf("XYZ Data for sensor %d: 0x%04X 0x%04X 0x%04X\n",
+		id, x&0xFFFF, y&0xFFFF, z&0xFFFF);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(accelread, command_accel_read_xyz,
+	"id",
+	"Read sensor x/y/z", NULL);
+
+static int command_accel_init(int argc, char **argv)
+{
+	char *e;
+	int id;
+	const struct motion_sensor_t *sensor;
+
+	if (!motion_sense_active)
+		return EC_ERROR_PARAM_COUNT;
+
+	if (argc < 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	/* First argument is sensor id. */
+	id = strtoi(argv[1], &e, 0);
+
+	if (*e || id < 0 || id >= motion_sensor_count)
+		return EC_ERROR_PARAM1;
+
+	sensor = &motion_sensors[id];
+	sensor->drv->init(sensor);
+	ccprintf("%s\n", sensor->name);
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(accelinit, command_accel_init,
+	"id",
+	"Init sensor", NULL);
 
 #ifdef CONFIG_ACCEL_INTERRUPTS
 static int command_accelerometer_interrupt(int argc, char **argv)
 {
 	char *e;
 	int id, thresh;
-	struct motion_sensor_t *sensor;
+	const struct motion_sensor_t *sensor;
+
+	if (!motion_sense_active)
+		return EC_ERROR_PARAM_COUNT;
 
 	if (argc != 3)
 		return EC_ERROR_PARAM_COUNT;
@@ -714,14 +806,14 @@ static int command_accelerometer_interrupt(int argc, char **argv)
 	id = strtoi(argv[1], &e, 0);
 	if (*e || id < 0 || id >= motion_sensor_count)
 		return EC_ERROR_PARAM1;
-	sensor = motion_sensors[id];
+	sensor = &motion_sensors[id];
 
 	/* Second argument is interrupt threshold. */
 	thresh = strtoi(argv[2], &e, 0);
 	if (*e)
 		return EC_ERROR_PARAM2;
 
-	sensor->drv->set_interrupt(drv_data, thresh);
+	sensor->drv->set_interrupt(sensor, thresh);
 
 	return EC_SUCCESS;
 }
