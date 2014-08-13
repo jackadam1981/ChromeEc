@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "361bbb08_2bb591ce",
+        "filename": "driver/accel_kxcj9.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-08-13T19:21:13Z",
+      "side": 1,
+      "message": "Is it OK to allocate our struct in this shared mem pool? Size is ~24 bytes.",
+      "revId": "94f3f403fde2a198f5dacf7b6a5b1c896e0ea1c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
