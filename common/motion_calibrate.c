@@ -9,6 +9,7 @@
 #include "console.h"
 #include "math_util.h"
 #include "motion_sense.h"
+#include "accelgyro.h"
 #include "timer.h"
 #include "task.h"
 #include "uart.h"
@@ -222,23 +223,6 @@ static int calibrate_standard_frame(vector_3_t *v_x, vector_3_t *v_y,
 						&acc_orient.rot_standard_ref);
 }
 
-/**
- * Wait until a specific set of keys is pressed: enter, 'q', or 's'. Return
- * key that was pressed.
- */
-static int wait_for_key(void)
-{
-	int c = uart_getc();
-
-	/* Loop until previous character was a new line char, 'q', or 's'. */
-	while (c != '\r' && c != '\n' && c != 'q' && c != 's') {
-		task_wait_event(50 * MSEC);
-		c = uart_getc();
-	}
-
-	return c;
-}
-
 static int command_auto_calibrate(int argc, char **argv)
 {
 	int c;
@@ -257,7 +241,7 @@ static int command_auto_calibrate(int argc, char **argv)
 		"in space until all 3 directions are captured.\n");
 
 	/* Wait for user to press enter, quit, or skip. */
-	c = wait_for_key();
+	c = uart_wait_for_key();
 	if (c == 'q') {
 		ccprintf("Calibration exited.\n");
 		return EC_SUCCESS;
@@ -279,7 +263,7 @@ static int command_auto_calibrate(int argc, char **argv)
 
 
 	/* Wait for user to press enter, quit, or skip. */
-	c = wait_for_key();
+	c = uart_wait_for_key();
 	if (c == 'q') {
 		ccprintf("Calibration exited.\n");
 		return EC_SUCCESS;
@@ -299,7 +283,7 @@ static int command_auto_calibrate(int argc, char **argv)
 	ccprintf("\nStep 3: align hinge with gravity, and press enter.\n");
 
 	/* Wait for user to press enter, quit, or skip. */
-	c = wait_for_key();
+	c = uart_wait_for_key();
 	if (c == 'q') {
 		ccprintf("Calibration exited.\n");
 		return EC_SUCCESS;
@@ -320,7 +304,7 @@ static int command_auto_calibrate(int argc, char **argv)
 		"aligned with gravity, and press enter.\n");
 
 	/* Wait for user to press enter, quit, or skip. */
-	c = wait_for_key();
+	c = uart_wait_for_key();
 	if (c == 'q') {
 		ccprintf("Calibration exited.\n");
 		return EC_SUCCESS;
@@ -336,7 +320,7 @@ static int command_auto_calibrate(int argc, char **argv)
 		"up, and press enter.\n");
 
 	/* Wait for user to press enter, quit, or skip. */
-	c = wait_for_key();
+	c = uart_wait_for_key();
 	if (c == 'q') {
 		ccprintf("Calibration exited.\n");
 		return EC_SUCCESS;
@@ -352,7 +336,7 @@ static int command_auto_calibrate(int argc, char **argv)
 		"the hinge up, and press enter.\n");
 
 	/* Wait for user to press enter, quit, or skip. */
-	c = wait_for_key();
+	c = uart_wait_for_key();
 	if (c == 'q') {
 		ccprintf("Calibration exited.\n");
 		return EC_SUCCESS;

@@ -318,6 +318,25 @@ int uart_buffer_empty(void)
 	return tx_buf_head == tx_buf_tail;
 }
 
+
+/**
+ * Wait until a specific set of keys is pressed: enter, 'q', or 's'. Return
+ * key that was pressed.
+ */
+int uart_wait_for_key(void)
+{
+	int c = uart_getc();
+
+	/* Loop until previous character was a new line char, 'q', or 's'. */
+	while (c != '\r' && c != '\n' && c != 'q' && c != 's') {
+		task_wait_event(50 * MSEC);
+		c = uart_getc();
+	}
+
+	return c;
+}
+
+
 #ifdef CONFIG_UART_RX_DMA
 static void uart_rx_dma_init(void)
 {

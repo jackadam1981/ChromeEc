@@ -246,4 +246,10 @@ int uart_comx_putc_ok(void);
  */
 void uart_comx_putc(int c);
 
+/**
+ * Wait until a specific set of keys is pressed: enter, 'q', or 's'. Return
+ * key that was pressed.
+ */
+int uart_wait_for_key(void);
+
 #endif  /* __CROS_EC_UART_H */
