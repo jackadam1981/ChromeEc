@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "56166fdd_db486778",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-08-13T02:15:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7687f329_2f82cdae",
+      "revId": "e1b54fee54e71d7be73a8a5932451105d38f6403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3681fb17_8d8ae590",
         "filename": "chip/stm32/usb.c",
         "patchSetId": 4
@@ -90,6 +108,24 @@
     },
     {
       "key": {
+        "uuid": "b64deb11_1b857b80",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-08-13T02:15:40Z",
+      "side": 1,
+      "message": "Oops, ignore my last comment. We do pass the libftdi check, but OpenOCD makes a separate check in openocd/jtag/drivers/mpsse.c:221, and doesn\u0027t permit 0x0200 for .bcdDevice, whereas libftdi does permit it in certain cases.",
+      "parentUuid": "b6ca4b8f_0d43252d",
+      "revId": "e1b54fee54e71d7be73a8a5932451105d38f6403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3681fb17_0d45157f",
         "filename": "chip/stm32/usb_ftdi.c",
         "patchSetId": 4
@@ -107,6 +143,24 @@
     },
     {
       "key": {
+        "uuid": "56166fdd_7b111b6f",
+        "filename": "chip/stm32/usb_ftdi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-08-13T02:15:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3681fb17_0d45157f",
+      "revId": "e1b54fee54e71d7be73a8a5932451105d38f6403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3681fb17_2d4ad98d",
         "filename": "chip/stm32/usb_ftdi.c",
         "patchSetId": 4
@@ -118,6 +172,24 @@
       "writtenOn": "2014-08-10T18:41:06Z",
       "side": 1,
       "message": "no ccprintf",
+      "revId": "e1b54fee54e71d7be73a8a5932451105d38f6403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b64deb11_5b8b0397",
+        "filename": "chip/stm32/usb_ftdi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-08-13T02:15:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3681fb17_2d4ad98d",
       "revId": "e1b54fee54e71d7be73a8a5932451105d38f6403",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -213,6 +285,24 @@
     },
     {
       "key": {
+        "uuid": "56166fdd_3b1ba38f",
+        "filename": "chip/stm32/usb_ftdi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-08-13T02:15:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f672031f_c5fe7a7a",
+      "revId": "e1b54fee54e71d7be73a8a5932451105d38f6403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "567caff0_8eb57fbb",
         "filename": "include/config.h",
         "patchSetId": 4
@@ -224,6 +314,24 @@
       "writtenOn": "2014-08-10T18:41:06Z",
       "side": 1,
       "message": "emulation ?",
+      "revId": "e1b54fee54e71d7be73a8a5932451105d38f6403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b64deb11_db5b936b",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-08-13T02:15:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "567caff0_8eb57fbb",
       "revId": "e1b54fee54e71d7be73a8a5932451105d38f6403",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -265,6 +373,24 @@
     },
     {
       "key": {
+        "uuid": "b64deb11_fb60cf13",
+        "filename": "include/hwtimer.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-08-13T02:15:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6d0433d_649f54dc",
+      "revId": "e1b54fee54e71d7be73a8a5932451105d38f6403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "567caff0_aeb243ce",
         "filename": "include/usb_ftdi.h",
         "patchSetId": 4
@@ -276,6 +402,24 @@
       "writtenOn": "2014-08-10T18:41:06Z",
       "side": 1,
       "message": "remove this ifdef\nthat\u0027s a linker issue to decide whether the symbol is defined.",
+      "revId": "e1b54fee54e71d7be73a8a5932451105d38f6403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b64deb11_9b650b23",
+        "filename": "include/usb_ftdi.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-08-13T02:15:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "567caff0_aeb243ce",
       "revId": "e1b54fee54e71d7be73a8a5932451105d38f6403",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
