@@ -22,97 +22,79 @@ int mock_x_acc[ACCEL_COUNT], mock_y_acc[ACCEL_COUNT], mock_z_acc[ACCEL_COUNT];
 /*****************************************************************************/
 /* Mock functions */
 
-static int accel_init(void **drv_data, int i2c_addr)
+static int accel_init(struct motion_sensor_t *s)
 {
 	return EC_SUCCESS;
 }
 
-static int accel_read_base(void *drv_data, int *x_acc, int *y_acc, int *z_acc)
+static int accel_read(struct motion_sensor_t *s,
+	int *x_acc, int *y_acc, int *z_acc)
 {
+	int location = s->location;
+
 	/* Return the mock values. */
-	*x_acc = mock_x_acc[ACCEL_BASE];
-	*y_acc = mock_y_acc[ACCEL_BASE];
-	*z_acc = mock_z_acc[ACCEL_BASE];
+	*x_acc = mock_x_acc[location];
+	*y_acc = mock_y_acc[location];
+	*z_acc = mock_z_acc[location];
 
 	return EC_SUCCESS;
 }
 
-static int accel_read_lid(void *drv_data, int *x_acc, int *y_acc, int *z_acc)
-{
-	/* Return the mock values. */
-	*x_acc = mock_x_acc[ACCEL_LID];
-	*y_acc = mock_y_acc[ACCEL_LID];
-	*z_acc = mock_z_acc[ACCEL_LID];
-
-	return EC_SUCCESS;
-}
-
-static int accel_set_range(void *drv_data,
+static int accel_set_range(struct motion_sensor_t *s,
 			   const int range,
 			   const int rnd)
 {
 	return EC_SUCCESS;
 }
 
-static int accel_get_range(void *drv_data,
+static int accel_get_range(struct motion_sensor_t *s,
 			   int * const range)
 {
 	return EC_SUCCESS;
 }
 
-static int accel_set_resolution(void *drv_data,
+static int accel_set_resolution(struct motion_sensor_t *s,
 				const int res,
 				const int rnd)
 {
 	return EC_SUCCESS;
 }
 
-static int accel_get_resolution(void *drv_data,
+static int accel_get_resolution(struct motion_sensor_t *s,
 				int * const res)
 {
 	return EC_SUCCESS;
 }
 
-static int accel_set_datarate(void *drv_data,
+static int accel_set_data_rate(struct motion_sensor_t *s,
 			      const int rate,
 			      const int rnd)
 {
 	return EC_SUCCESS;
 }
 
-static int accel_get_datarate(void *drv_data,
+static int accel_get_data_rate(struct motion_sensor_t *s,
 			      int * const rate)
 {
 	return EC_SUCCESS;
 }
 
-struct accelgyro_info test_motion_sense_base = {
-	.type = SENSOR_ACCELEROMETER,
+struct accelgyro_method test_motion_sense = {
 	.init = accel_init,
-	.read = accel_read_base,
+	.read = accel_read,
 	.set_range = accel_set_range,
 	.get_range = accel_get_range,
 	.set_resolution = accel_set_resolution,
 	.get_resolution = accel_get_resolution,
-	.set_datarate = accel_set_datarate,
-	.get_datarate = accel_get_datarate,
-};
-
-struct accelgyro_info test_motion_sense_lid = {
-	.type = SENSOR_ACCELEROMETER,
-	.init = accel_init,
-	.read = accel_read_lid,
-	.set_range = accel_set_range,
-	.get_range = accel_get_range,
-	.set_resolution = accel_set_resolution,
-	.get_resolution = accel_get_resolution,
-	.set_datarate = accel_set_datarate,
-	.get_datarate = accel_get_datarate,
+	.set_data_rate = accel_set_data_rate,
+	.get_data_rate = accel_get_data_rate,
 };
 
 struct motion_sensor_t motion_sensors[] = {
-	{"test base sensor", LOCATION_BASE, &test_motion_sense_base, NULL, 0},
-	{"test lid sensor", LOCATION_LID, &test_motion_sense_lid, NULL, 0},
+	{"test base sensor", SENSOR_ACCELEROMETER, LOCATION_BASE,
+		&test_motion_sense, NULL, NULL, 0},
+	{"test lid sensor", SENSOR_ACCELEROMETER, LOCATION_LID,
+		&test_motion_sense, NULL, NULL, 0},
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
