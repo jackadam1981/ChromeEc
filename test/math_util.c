@@ -14,7 +14,7 @@
 
 /*****************************************************************************/
 /* Need to define motion sensor globals just to compile. */
-const struct motion_sensor_t motion_sensors[] = {};
+struct motion_sensor_t motion_sensors[] = {};
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
 /*****************************************************************************/
