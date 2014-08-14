@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b64deb11_611e4080",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-14T16:14:28Z",
+      "side": 1,
+      "message": "This seems hacky.  The sensor struct should just know what its chip type is.",
+      "revId": "c55c233172dc29e0a660cc2f31d7c39a4571aba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b64deb11_c13ab4df",
+        "filename": "driver/accel_kxcj9.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-14T16:14:28Z",
+      "side": 1,
+      "message": "Shared memory is not like a heap.  It\u0027s a single buffer.  If you acquire it at init time, nobody else can use it.\n\nJust statically declare your buffer.",
+      "revId": "c55c233172dc29e0a660cc2f31d7c39a4571aba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "766ff376_e12ec1aa",
+        "filename": "driver/accel_kxcj9.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-14T16:14:28Z",
+      "side": 1,
+      "message": "const?",
+      "revId": "c55c233172dc29e0a660cc2f31d7c39a4571aba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b64deb11_e1581038",
+        "filename": "driver/accelgyro_lsm6ds0.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-14T16:14:28Z",
+      "side": 1,
+      "message": "const?  It\u0027s just a struct of function pointers",
+      "revId": "c55c233172dc29e0a660cc2f31d7c39a4571aba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3669fb74_edeec164",
+        "filename": "include/accelgyro.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-14T16:14:28Z",
+      "side": 1,
+      "message": "There is no heap.  So drv_data can point to a global variable, but it can\u0027t be \"allocated\".",
+      "revId": "c55c233172dc29e0a660cc2f31d7c39a4571aba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "766ff376_465a4364",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-14T16:14:28Z",
+      "side": 1,
+      "message": "uint8_t chip_type;",
+      "revId": "c55c233172dc29e0a660cc2f31d7c39a4571aba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
