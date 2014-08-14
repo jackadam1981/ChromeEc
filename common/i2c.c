@@ -26,7 +26,7 @@
 #define CPUTS(outstr) cputs(CC_I2C, outstr)
 #define CPRINTS(format, args...) cprints(CC_I2C, format, ## args)
 
-static struct mutex port_mutex[I2C_PORT_COUNT];
+struct mutex port_mutex[I2C_PORT_COUNT];
 
 void i2c_lock(int port, int lock)
 {

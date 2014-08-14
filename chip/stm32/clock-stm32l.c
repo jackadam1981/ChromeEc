@@ -11,6 +11,7 @@
 #include "console.h"
 #include "cpu.h"
 #include "hooks.h"
+#include "i2c.h"
 #include "registers.h"
 #include "util.h"
 
@@ -149,6 +150,27 @@ static void clock_set_osc(enum clock_osc osc)
 	}
 }
 
+void lock_module_mutexes(void)
+{
+#ifdef CONFIG_I2C
+	int i = 0;
+
+	/* Make sure no i2c transfer is running while changing freq */
+	for (i = 0; i < I2C_PORT_COUNT; i++)
+		mutex_lock(&port_mutex[i]);
+#endif
+}
+
+void unlock_module_mutexes(void)
+{
+#ifdef CONFIG_I2C
+	int i = 0;
+
+	for (i = 0; i < I2C_PORT_COUNT; i++)
+		mutex_unlock(&port_mutex[i]);
+#endif
+}
+
 void clock_enable_module(enum module_id module, int enable)
 {
 	static uint32_t clock_mask;
@@ -165,7 +187,9 @@ void clock_enable_module(enum module_id module, int enable)
 		/* Flush UART before switching clock speed */
 		cflush();
 
+		lock_module_mutexes();
 		clock_set_osc(new_mask ? OSC_HSI : OSC_MSI);
+		unlock_module_mutexes();
 	}
 
 	clock_mask = new_mask;

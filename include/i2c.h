@@ -9,6 +9,7 @@
 #define __CROS_EC_I2C_H
 
 #include "common.h"
+#include "task.h"
 
 /* Flags for slave address field, in addition to the 8-bit address */
 #define I2C_FLAG_BIG_ENDIAN 0x100  /* 16 byte values are MSB-first */
@@ -24,6 +25,7 @@ struct i2c_port_t {
 
 extern const struct i2c_port_t i2c_ports[];
 extern const unsigned int i2c_ports_used;
+extern struct mutex port_mutex[];
 
 /* Flags for i2c_xfer() */
 #define I2C_XFER_START (1 << 0)  /* Start smbus session from idle state */
