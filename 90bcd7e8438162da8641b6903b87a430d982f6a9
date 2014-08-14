@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b64deb11_367ddcf3",
+        "filename": "chip/stm32/flash-stm32f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-14T13:12:39Z",
+      "side": 1,
+      "message": "Yeah, for hoho, we will need to have a remote update procedure. But, once we remove pings, it should be fine.",
+      "parentUuid": "b64deb11_d62b5868",
+      "range": {
+        "startLine": 285,
+        "startChar": 7,
+        "endLine": 285,
+        "endChar": 38
+      },
+      "revId": "90bcd7e8438162da8641b6903b87a430d982f6a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "766ff376_28927e04",
         "filename": "driver/battery/bq27541.c",
         "patchSetId": 2
