@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "3669fb74_caac03c0",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-14T01:56:44Z",
+      "side": 1,
+      "message": "The safer thing to do here is:\n\nwhile (tx_pending) {\n  STM32_I2C_TXDR(host_i2c_resp_port) \u003d 0xec;\n  usleep(50);\n}\n\nThis will fix your problem without re-enabling tx interrupt, which seems safer. At least behavior would be consistent, we only return from here once the transaction is complete. Are you sure that returning from here before being done isn\u0027t going to cause a problem? I need to look a little closer at the caller.",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 1
+      },
+      "revId": "54db972fc98fe703c33e7fcc2d1d0d4847a045b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36901b99_b8febd43",
         "filename": "chip/stm32/i2c-stm32f0.c",
         "patchSetId": 3
@@ -13,6 +36,24 @@
       "writtenOn": "2014-08-13T18:42:05Z",
       "side": 1,
       "message": "I\u0027m wondering if we should clear the STM32_I2C_ISR_TXIS bit from i2c_isr here so that we don\u0027t stuff an 0xec into the transmitter queue. My current board that uses this will consume these bytes until the end, but I\u0027m not sure about other users. Alec, can you try this patch on samus and see if it behaves?",
+      "revId": "54db972fc98fe703c33e7fcc2d1d0d4847a045b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "766ff376_72886e99",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-14T01:56:44Z",
+      "side": 1,
+      "message": "I don\u0027t think it matters because next time it is our turn transmit, we clear the transmit buffer first (line 232).\n\nAlso, once we get here, the master has issued a STOP on the bus, so I don\u0027t think your board is any different from any other. If we have a STOP condition and a TXIS at the same time, then EC will disable TXIS interrupt, but then stuff \u00270xec\u0027 in the buffer, but the host will never read it because it has stopped clocking out, so same behavior for all hosts.\n\nI will test tomorrow. I don\u0027t have an easy way to test error case where you use the wrong protocol, but I can test returning an error from a host command function, which I think does the same thing.",
+      "parentUuid": "36901b99_b8febd43",
       "revId": "54db972fc98fe703c33e7fcc2d1d0d4847a045b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
