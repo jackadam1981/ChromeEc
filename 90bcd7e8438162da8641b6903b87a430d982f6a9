@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b64deb11_d62b5868",
+        "filename": "chip/stm32/flash-stm32f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-08-14T05:33:59Z",
+      "side": 1,
+      "message": "battery_is_present() is only defined for boards with battery, so I couldn\u0027t just guard this with CONFIG_USB_POWER_DELIVERY. I looked for config flag for battery, but it seemed there is no a single config flag to indicate \"there\u0027s a battery on this board\", so I added a new flag for this. I can change this to something like \"#if defined(CONFIG_USB_POWER_DELIVERY) \u0026\u0026 defined(CONFIG_HAS_BATTERY)\" if that looks better to you.\n\nRegarding PD devices without batteries, is there any of those that we would perform flash erase on?",
+      "parentUuid": "b64deb11_1329d272",
+      "range": {
+        "startLine": 285,
+        "startChar": 7,
+        "endLine": 285,
+        "endChar": 38
+      },
+      "revId": "90bcd7e8438162da8641b6903b87a430d982f6a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "766ff376_28927e04",
         "filename": "driver/battery/bq27541.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2014-08-14T01:33:39Z",
       "side": 1,
       "message": "are we sure we need this. doesn\u0027t charge_state_v2 know battery present status? is there already an API for that?",
+      "range": {
+        "startLine": 192,
+        "startChar": 21,
+        "endLine": 192,
+        "endChar": 39
+      },
+      "revId": "90bcd7e8438162da8641b6903b87a430d982f6a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3669fb74_ea60e713",
+        "filename": "driver/battery/bq27541.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-08-14T05:33:59Z",
+      "side": 1,
+      "message": "charge_state_v2 gets the information from battery_get_params(). Currently we still need to keep battery_is_present() API for charge_state_v1, and thus I think it\u0027s the most suitable API here. In longer term, once we get rid of charge_state_v1, we can merge battery_is_present into battery_get_params, and then get the information from charge_state_v2.",
+      "parentUuid": "766ff376_28927e04",
       "range": {
         "startLine": 192,
         "startChar": 21,
