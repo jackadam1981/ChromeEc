@@ -109,6 +109,30 @@
       "revId": "a97778e595075c1aa56aba79a886be1a75142e34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76e45351_2a54c3de",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2530,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-08-14T23:36:01Z",
+      "side": 1,
+      "message": "I\u0027m not sure how we want to implement the debug mode keybinding. Does the keybinding only enter debug mode, and we use some other mechanism to exit it, do we have the keybinding toggle, or do we have two separate keybindings for entering and exiting?",
+      "parentUuid": "b6540bb2_7d9ef788",
+      "range": {
+        "startLine": 2530,
+        "startChar": 3,
+        "endLine": 2530,
+        "endChar": 9
+      },
+      "revId": "a97778e595075c1aa56aba79a886be1a75142e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
