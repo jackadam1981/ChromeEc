@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76861367_c61160bb",
+        "filename": "board/cranky/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-14T23:07:19Z",
+      "side": 1,
+      "message": "PWM_CH_LED_BLUE_POWER_LED",
+      "revId": "3b564064493d47e65abf95368b8043a44442516e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b626cb4d_7214d160",
+        "filename": "board/cranky/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-14T23:07:19Z",
+      "side": 1,
+      "message": "Need to add EC_LED_ID_POWER_LED",
+      "revId": "3b564064493d47e65abf95368b8043a44442516e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76861367_8624b812",
+        "filename": "board/cranky/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-14T23:07:19Z",
+      "side": 1,
+      "message": "set_color_battery_led",
+      "revId": "3b564064493d47e65abf95368b8043a44442516e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96df077f_855a2461",
+        "filename": "board/cranky/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-14T23:07:19Z",
+      "side": 1,
+      "message": "set_color_power_led",
+      "revId": "3b564064493d47e65abf95368b8043a44442516e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96df077f_c87563a6",
+        "filename": "board/cranky/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-14T23:07:19Z",
+      "side": 1,
+      "message": "PWM_CH_LED_BLUE_POWER_LED",
+      "revId": "3b564064493d47e65abf95368b8043a44442516e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b626cb4d_b2cd899d",
+        "filename": "board/cranky/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-14T23:07:19Z",
+      "side": 1,
+      "message": "Need to update for EC_LED_ID_BATTERY_LED and EC_LED_ID_POWER_LED",
+      "revId": "3b564064493d47e65abf95368b8043a44442516e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b626cb4d_d2d2853e",
+        "filename": "board/cranky/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-14T23:07:19Z",
+      "side": 1,
+      "message": "Need to update for EC_LED_ID_BATTERY_LED and EC_LED_ID_POWER_LED",
+      "revId": "3b564064493d47e65abf95368b8043a44442516e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76861367_1ad7bc61",
+        "filename": "board/cranky/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-14T23:07:19Z",
+      "side": 1,
+      "message": "add pwm_enable(PWM_CH_LED_BLUE_POWER_LED, 1);",
+      "revId": "3b564064493d47e65abf95368b8043a44442516e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76861367_fa1f587e",
+        "filename": "board/cranky/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-14T23:07:19Z",
+      "side": 1,
+      "message": "Power LED should blink in S3 state.",
+      "revId": "3b564064493d47e65abf95368b8043a44442516e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
