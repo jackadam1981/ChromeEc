@@ -18,6 +18,7 @@ const int supported_led_ids_count = ARRAY_SIZE(supported_led_ids);
 
 enum led_color {
 	LED_OFF = 0,
+	LED_BLUE,
 	LED_RED,
 	LED_ORANGE,
 	LED_YELLOW,
@@ -30,6 +31,7 @@ enum led_color {
 /* Brightness vs. color, for {red, green} LEDs */
 static const uint8_t color_brightness[LED_COLOR_COUNT][2] = {
 	{0, 0},
+	{100, 0},
 	{100, 0},
 	{30, 45},
 	{20, 60},
@@ -45,6 +47,11 @@ static void set_color(enum led_color color)
 {
 	pwm_set_duty(PWM_CH_LED_RED, color_brightness[color][0]);
 	pwm_set_duty(PWM_CH_LED_GREEN, color_brightness[color][1]);
+}
+
+static void set_power_led_color(enum led_color color)
+{
+	pwm_set_duty(PWM_CH_POWER_LED_BLUE, color_brightness[color][0]);
 }
 
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
@@ -72,6 +79,7 @@ static void led_init(void)
 	pwm_enable(PWM_CH_LED_RED, 1);
 	pwm_enable(PWM_CH_LED_GREEN, 1);
 	set_color(LED_OFF);
+	set_power_led_color(LED_OFF);
 }
 DECLARE_HOOK(HOOK_INIT, led_init, HOOK_PRIO_DEFAULT);
 
@@ -88,6 +96,12 @@ static void led_tick(void)
 	/* If we don't control the LED, nothing to do */
 	if (!led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED))
 		return;
+
+	if (chipset_in_state(CHIPSET_STATE_ON)) {
+		set_power_led_color(LED_BLUE);
+	} else {
+		set_power_led_color(LED_OFF);
+	}
 
 	/* If charging error, blink orange, 25% duty cycle, 4 sec period */
 	if (chstate == PWR_STATE_ERROR) {
