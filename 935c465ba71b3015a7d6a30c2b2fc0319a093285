@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b6540bb2_e3e5726a",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-08-14T17:33:01Z",
+      "side": 1,
+      "message": "Actually, it seems this line isn\u0027t necessary, so I\u0027ve removed it.",
+      "parentUuid": "b64deb11_167c60f3",
+      "range": {
+        "startLine": 194,
+        "startChar": 2,
+        "endLine": 194,
+        "endChar": 18
+      },
+      "revId": "935c465ba71b3015a7d6a30c2b2fc0319a093285",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "766ff376_46b563cd",
         "filename": "board/samus_pd/gpio.inc",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2014-08-14T13:42:51Z",
       "side": 1,
       "message": "you can combine this line with the next and make the mask 0xc.",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 9
+      },
+      "revId": "935c465ba71b3015a7d6a30c2b2fc0319a093285",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b64deb11_5c38c7bd",
+        "filename": "board/samus_pd/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-08-14T17:33:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "766ff376_46b563cd",
       "range": {
         "startLine": 126,
         "startChar": 0,
