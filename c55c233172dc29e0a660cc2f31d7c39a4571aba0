@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b626cb4d_286b4f2a",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-08-14T19:06:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b64deb11_611e4080",
+      "revId": "c55c233172dc29e0a660cc2f31d7c39a4571aba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b64deb11_c13ab4df",
         "filename": "driver/accel_kxcj9.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2014-08-14T16:14:28Z",
       "side": 1,
       "message": "Shared memory is not like a heap.  It\u0027s a single buffer.  If you acquire it at init time, nobody else can use it.\n\nJust statically declare your buffer.",
+      "revId": "c55c233172dc29e0a660cc2f31d7c39a4571aba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76861367_eb754da5",
+        "filename": "driver/accel_kxcj9.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-08-14T19:06:32Z",
+      "side": 1,
+      "message": "Done. Board-level now must statically declare this buffer + include it in the sensor struct.",
+      "parentUuid": "b64deb11_c13ab4df",
       "revId": "c55c233172dc29e0a660cc2f31d7c39a4571aba0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "36901b99_a41218ee",
+        "filename": "driver/accel_kxcj9.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-08-14T19:06:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "766ff376_e12ec1aa",
+      "revId": "c55c233172dc29e0a660cc2f31d7c39a4571aba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b64deb11_e1581038",
         "filename": "driver/accelgyro_lsm6ds0.h",
         "patchSetId": 3
@@ -64,6 +118,24 @@
       "writtenOn": "2014-08-14T16:14:28Z",
       "side": 1,
       "message": "const?  It\u0027s just a struct of function pointers",
+      "revId": "c55c233172dc29e0a660cc2f31d7c39a4571aba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76861367_cb840952",
+        "filename": "driver/accelgyro_lsm6ds0.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-08-14T19:06:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b64deb11_e1581038",
       "revId": "c55c233172dc29e0a660cc2f31d7c39a4571aba0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "b626cb4d_88fb8323",
+        "filename": "include/accelgyro.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-08-14T19:06:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3669fb74_edeec164",
+      "revId": "c55c233172dc29e0a660cc2f31d7c39a4571aba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "766ff376_465a4364",
         "filename": "include/motion_sense.h",
         "patchSetId": 3
@@ -98,6 +188,24 @@
       "writtenOn": "2014-08-14T16:14:28Z",
       "side": 1,
       "message": "uint8_t chip_type;",
+      "revId": "c55c233172dc29e0a660cc2f31d7c39a4571aba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b626cb4d_e81237c1",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-08-14T19:06:32Z",
+      "side": 1,
+      "message": "I put this in the accelgyro_info structure instead, since it should always be the same for a given driver.",
+      "parentUuid": "766ff376_465a4364",
       "revId": "c55c233172dc29e0a660cc2f31d7c39a4571aba0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
