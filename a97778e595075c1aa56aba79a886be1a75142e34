@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76e45351_67bd669c",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-14T22:57:49Z",
+      "side": 1,
+      "message": "Where does the PD chip check the WP switch to ensure that full EC + SPI debugging is only enabled if WP is clear?\n\nIf this is done in a different CL, let me know which one(s).\n\nJust want to make sure that we\u0027re not committing something which opens a new and entertaining security hole.",
+      "range": {
+        "startLine": 272,
+        "startChar": 4,
+        "endLine": 272,
+        "endChar": 19
+      },
+      "revId": "a97778e595075c1aa56aba79a886be1a75142e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b64deb11_2c426825",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-14T22:57:49Z",
+      "side": 1,
+      "message": "Please define a config option for this (e.g. CONFIG_USB_PD_DEBUG_KEY or something) rather than hard-coding this for Samus.  #undef it in config.h and #define it in board/samus/board.h.",
+      "range": {
+        "startLine": 310,
+        "startChar": 7,
+        "endLine": 310,
+        "endChar": 18
+      },
+      "revId": "a97778e595075c1aa56aba79a886be1a75142e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6540bb2_9d6e537b",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-14T22:57:49Z",
+      "side": 1,
+      "message": "Should we check system_is_locked() first?  Or is it safe to allow this key combo even in MP consumer systems in normal mode?",
+      "revId": "a97778e595075c1aa56aba79a886be1a75142e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6540bb2_7d9ef788",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2530,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-14T22:57:49Z",
+      "side": 1,
+      "message": "Toggles are fragile and hard to test.\n\nMuch better to include a parameter to specify explicitly which state is requested.",
+      "range": {
+        "startLine": 2530,
+        "startChar": 3,
+        "endLine": 2530,
+        "endChar": 9
+      },
+      "revId": "a97778e595075c1aa56aba79a886be1a75142e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
