@@ -43,6 +43,24 @@
     },
     {
       "key": {
+        "uuid": "3669fb74_edab2174",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-14T14:53:13Z",
+      "side": 1,
+      "message": "Ok, I looked at this and don\u0027t see any potential problems with the way it is. It can be called from interrupt context, in which case it would be better to leave this function as early as possible, and it can be called from host command task. But,  the task doesn\u0027t do anything but wait for host commands and process them, so no concern for exiting from here before finished since the host command task normally will just wait to receive the next command, which can\u0027t come until this one is finished anyway.\n\nOne style comment though, brackets aren\u0027t needed around single line if\u0027s.",
+      "parentUuid": "36901b99_a928b108",
+      "revId": "54db972fc98fe703c33e7fcc2d1d0d4847a045b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36901b99_b8febd43",
         "filename": "chip/stm32/i2c-stm32f0.c",
         "patchSetId": 3
@@ -90,6 +108,24 @@
       "side": 1,
       "message": "Well, if we stuff that byte into the buffer does it get clocked out on the subsequent read? Or is the fifo actually cleared? That\u0027s why I suggested it was easier to just knock down that bit for sure here. Granted, this worked on ryu, but I didn\u0027t want to cause any errant 0xec bytes.",
       "parentUuid": "766ff376_72886e99",
+      "revId": "54db972fc98fe703c33e7fcc2d1d0d4847a045b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "766ff376_86bb5bc4",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-14T14:53:13Z",
+      "side": 1,
+      "message": "There isn\u0027t a FIFO, the buffer is just a single byte.\nThe tx buffer gets cleared by setting ISR register TXE bit: \"This bit can be written to ‘1’ by software in order to flush the transmit data register I2Cx_TXDR.\"\n\nAlso, how would you clear TXIS interrupt? You can\u0027t clear it by writing a 1, the only way I see to clear it is to write to the transmit buffer (TXDR). So, I don\u0027t think there is any concern for getting errant 0xec bytes on the next transfer.",
+      "parentUuid": "b626cb4d_2d07e1aa",
       "revId": "54db972fc98fe703c33e7fcc2d1d0d4847a045b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
