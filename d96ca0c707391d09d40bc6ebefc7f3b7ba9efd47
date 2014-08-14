@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "766ff376_68acf621",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-14T01:40:07Z",
+      "side": 1,
+      "message": "Do we need a warning here that setting debug level can cause performance changes because it affects timing of PD transactions? Also, maybe a table similar to what you have the commit log about what each level represents.",
+      "range": {
+        "startLine": 25,
+        "startChar": 3,
+        "endLine": 25,
+        "endChar": 8
+      },
+      "revId": "d96ca0c707391d09d40bc6ebefc7f3b7ba9efd47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3669fb74_4ae6d34c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-14T01:40:07Z",
+      "side": 1,
+      "message": "can we remove the check for ping now. question is, when debug level is 1, do you want to see pings? maybe pings should be shown at debug_level \u003e\u003d 2?",
+      "range": {
+        "startLine": 754,
+        "startChar": 49,
+        "endLine": 754,
+        "endChar": 61
+      },
+      "revId": "d96ca0c707391d09d40bc6ebefc7f3b7ba9efd47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
