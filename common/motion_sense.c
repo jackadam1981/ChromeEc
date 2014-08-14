@@ -384,10 +384,6 @@ void motion_sense_task(void)
 
 		for (i = 0; i < motion_sensor_count; ++i) {
 			sensor = &motion_sensors[i];
-			/*
-			 * TODO(crosbug.com/p/25597):
-			 * Add filter to smooth lid angle.
-			 */
 			/* Rotate accels into standard reference frame. */
 			if (sensor->type == SENSOR_ACCELEROMETER)
 				rotate(sensor->xyz,
