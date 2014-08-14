@@ -37,6 +37,9 @@
 #include "thermal.h"
 #include "uart.h"
 #include "util.h"
+#include "task.h"
+#include "motion_sense.h"
+#include "driver/accelgyro_lsm6ds0.h"
 
 static void pd_mcu_interrupt(enum gpio_signal signal)
 {
@@ -238,3 +241,51 @@ int board_discharge_on_ac(int enable)
 {
 	return charger_discharge_on_ac(enable);
 }
+
+/* Two Mutex: one is for base device; other is for LID device */
+static struct mutex g_lsm6ds0_mutex[2];
+
+/* Four Motion sensors */
+struct motion_sensor_t motion_sensors[] = {
+	{"Accel Base", SENSOR_ACCELEROMETER, LOCATION_BASE, &lsm6ds0_method,
+		&g_lsm6ds0_mutex[0], NULL, LSM6DS0_ADDR0},
+	{"Accel Lid",  SENSOR_ACCELEROMETER, LOCATION_LID,  &lsm6ds0_method,
+		&g_lsm6ds0_mutex[1], NULL, LSM6DS0_ADDR1},
+	{"Gyro Base",  SENSOR_GYRO, LOCATION_BASE, &lsm6ds0_method,
+		&g_lsm6ds0_mutex[0], NULL, LSM6DS0_ADDR0},
+	{"Gyro Lid",   SENSOR_GYRO, LOCATION_LID,  &lsm6ds0_method,
+		&g_lsm6ds0_mutex[1], NULL, LSM6DS0_ADDR1},
+};
+const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+
+/* Define the accelerometer orientation matrices. */
+#ifndef CONFIG_ACCEL_CALIBRATE
+const
+#endif
+struct accel_orientation acc_orient = {
+	/* Lid and base sensor are already aligned. */
+	.rot_align = {
+		{ 1,  0,  0},
+		{ 0,  1,  0},
+		{ 0,  0,  1}
+	},
+
+	/* Hinge aligns with y axis. */
+	.rot_hinge_90 = {
+		{ 0,  0,  1},
+		{ 0,  1,  0},
+		{ -1, 0,  0}
+	},
+	.rot_hinge_180 = {
+		{-1,  0,  0},
+		{ 0,  1,  0},
+		{ 0,  0, -1}
+	},
+	.rot_standard_ref = {
+		{ 1,  0,  0},
+		{ 0,  1,  0},
+		{ 0,  0,  1}
+	},
+	.hinge_axis = {0, 1, 0},
+};
+
