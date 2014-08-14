@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "36901b99_a928b108",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-08-14T13:00:08Z",
+      "side": 1,
+      "message": "I don\u0027t think it would cause a problem. My concerns were that this function is called both in interrupt context and not. I need to go back over the potential paths. Also, I wasn\u0027t clear what the SM32_I2C transmit fifo was like. Is it 1 byte? And does it actually get cleared by setting CR1_TXIE like the comment on line 231?",
+      "parentUuid": "3669fb74_caac03c0",
+      "revId": "54db972fc98fe703c33e7fcc2d1d0d4847a045b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36901b99_b8febd43",
         "filename": "chip/stm32/i2c-stm32f0.c",
         "patchSetId": 3
@@ -54,6 +72,24 @@
       "side": 1,
       "message": "I don\u0027t think it matters because next time it is our turn transmit, we clear the transmit buffer first (line 232).\n\nAlso, once we get here, the master has issued a STOP on the bus, so I don\u0027t think your board is any different from any other. If we have a STOP condition and a TXIS at the same time, then EC will disable TXIS interrupt, but then stuff \u00270xec\u0027 in the buffer, but the host will never read it because it has stopped clocking out, so same behavior for all hosts.\n\nI will test tomorrow. I don\u0027t have an easy way to test error case where you use the wrong protocol, but I can test returning an error from a host command function, which I think does the same thing.",
       "parentUuid": "36901b99_b8febd43",
+      "revId": "54db972fc98fe703c33e7fcc2d1d0d4847a045b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b626cb4d_2d07e1aa",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-08-14T13:00:08Z",
+      "side": 1,
+      "message": "Well, if we stuff that byte into the buffer does it get clocked out on the subsequent read? Or is the fifo actually cleared? That\u0027s why I suggested it was easier to just knock down that bit for sure here. Granted, this worked on ryu, but I didn\u0027t want to cause any errant 0xec bytes.",
+      "parentUuid": "766ff376_72886e99",
       "revId": "54db972fc98fe703c33e7fcc2d1d0d4847a045b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
