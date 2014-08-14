@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76e45351_c78d52b7",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-14T23:04:14Z",
+      "side": 1,
+      "message": "We need a more robust check than this.  This is only on the PD chip, so full debugging of the AP will be available all the way through recovery mode (since PD software sync is not done in recovery mode).  I don\u0027t think that\u0027s what we want for MP devices.\n\nAt the very least we should also check the WP signal.",
+      "range": {
+        "startLine": 279,
+        "startChar": 5,
+        "endLine": 279,
+        "endChar": 22
+      },
+      "revId": "f76d7b1d200a8602a85a2dee93dc7271010ccfef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
