@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b64deb11_1329d272",
+        "filename": "chip/stm32/flash-stm32f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-14T01:33:39Z",
+      "side": 1,
+      "message": "can we just put this behind CONFIG_USB_POWER_DELIVERY? i guess some PD devices don\u0027t have batteries, like hoho, twinkie, or firefly. But, for those it would be really bad hoho we can\u0027t lose power while flashing, so that\u0027s another argument for taking away pings.\n\nshould we remove this check once we remove pings?",
+      "range": {
+        "startLine": 285,
+        "startChar": 7,
+        "endLine": 285,
+        "endChar": 38
+      },
+      "revId": "90bcd7e8438162da8641b6903b87a430d982f6a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "766ff376_28927e04",
+        "filename": "driver/battery/bq27541.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-14T01:33:39Z",
+      "side": 1,
+      "message": "are we sure we need this. doesn\u0027t charge_state_v2 know battery present status? is there already an API for that?",
+      "range": {
+        "startLine": 192,
+        "startChar": 21,
+        "endLine": 192,
+        "endChar": 39
+      },
+      "revId": "90bcd7e8438162da8641b6903b87a430d982f6a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
