@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b64deb11_8f384ebf",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-14T23:39:25Z",
+      "side": 1,
+      "message": "Ok, as long as the bug is made a DVT blocker (next build \u003d EVT?)",
+      "parentUuid": "b64deb11_8f94ce7f",
+      "range": {
+        "startLine": 272,
+        "startChar": 4,
+        "endLine": 272,
+        "endChar": 19
+      },
+      "revId": "a97778e595075c1aa56aba79a886be1a75142e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b64deb11_2c426825",
         "filename": "common/keyboard_scan.c",
         "patchSetId": 1
