@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b626cb4d_12ef9d62",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-15T02:13:20Z",
+      "side": 1,
+      "message": "I don\u0027t think we should require lid and base sensors. We should just run without the lid angle calculation and only update the data we have.",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 1
+      },
+      "revId": "a7068e8a7b4cd957079ebb2f7d04a26b7d9b61d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76861367_9acf2c61",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-15T02:13:20Z",
+      "side": 1,
+      "message": "I know this was part hasn\u0027t been changed, but looked at it, it seems not desire-able to return if we fail to initialize, this would require an EC reset to get the accels back. I think we need to at least add a retry, maybe after a small delay. Probably need a different CL for that.",
+      "range": {
+        "startLine": 223,
+        "startChar": 2,
+        "endLine": 223,
+        "endChar": 8
+      },
+      "revId": "a7068e8a7b4cd957079ebb2f7d04a26b7d9b61d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
