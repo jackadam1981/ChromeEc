@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6c683d8_689b7b97",
+        "filename": "board/cranky/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-15T16:49:54Z",
+      "side": 1,
+      "message": "Need a check for \nif (!led_auto_control_is_enabled(EC_LED_ID_POWER_LED))\n\nMight be better to define a power_led() and put all power led related functionality in that  and a battery_led() and put all battery led related functionality in that.\n\nstatic void led_tick(void)\n{\n     battery_led();\n     power_led();\n}",
+      "revId": "9855879171156ea5943d07fcc5a5e731db9c0a8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
