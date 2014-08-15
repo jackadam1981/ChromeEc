@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "76e45351_2afb2325",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-08-15T02:18:04Z",
+      "side": 1,
+      "message": "P2 build does have access to WP screw, I have made the change in the other CL#210753.",
+      "parentUuid": "b64deb11_8f384ebf",
+      "range": {
+        "startLine": 272,
+        "startChar": 4,
+        "endLine": 272,
+        "endChar": 19
+      },
+      "revId": "a97778e595075c1aa56aba79a886be1a75142e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b64deb11_2c426825",
         "filename": "common/keyboard_scan.c",
         "patchSetId": 1
@@ -120,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "76e45351_aa1733af",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-08-15T02:18:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b64deb11_2c426825",
+      "range": {
+        "startLine": 310,
+        "startChar": 7,
+        "endLine": 310,
+        "endChar": 18
+      },
+      "revId": "a97778e595075c1aa56aba79a886be1a75142e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6540bb2_9d6e537b",
         "filename": "common/keyboard_scan.c",
         "patchSetId": 1
@@ -131,6 +179,24 @@
       "writtenOn": "2014-08-14T22:57:49Z",
       "side": 1,
       "message": "Should we check system_is_locked() first?  Or is it safe to allow this key combo even in MP consumer systems in normal mode?",
+      "revId": "a97778e595075c1aa56aba79a886be1a75142e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b64deb11_0f299e0b",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-08-15T02:18:04Z",
+      "side": 1,
+      "message": "I believe there was talk of wanting USB console access for consumer use, just no firmware/JTAG access without removing the WP screw? For now, I will add the check (it is also checked in PD), we can remove it later if necessary.",
+      "parentUuid": "b6540bb2_9d6e537b",
       "revId": "a97778e595075c1aa56aba79a886be1a75142e34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -172,6 +238,30 @@
       "side": 1,
       "message": "I\u0027m not sure how we want to implement the debug mode keybinding. Does the keybinding only enter debug mode, and we use some other mechanism to exit it, do we have the keybinding toggle, or do we have two separate keybindings for entering and exiting?",
       "parentUuid": "b6540bb2_7d9ef788",
+      "range": {
+        "startLine": 2530,
+        "startChar": 3,
+        "endLine": 2530,
+        "endChar": 9
+      },
+      "revId": "a97778e595075c1aa56aba79a886be1a75142e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6540bb2_ecd1da6d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2530,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-08-15T02:18:04Z",
+      "side": 1,
+      "message": "I talked to Vincent, and will have the keybinding enter debug mode, then disconnection of the USB on C0 automatically exit debug mode.",
+      "parentUuid": "76e45351_2a54c3de",
       "range": {
         "startLine": 2530,
         "startChar": 3,
