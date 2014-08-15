@@ -13,6 +13,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
+#include "inductive_charging.h"
 #include "power.h"
 #include "power_button.h"
 #include "registers.h"
