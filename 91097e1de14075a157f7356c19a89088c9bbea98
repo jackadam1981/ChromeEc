@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "760d33e9_3f5a4fb5",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-15T18:00:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5664af99_9c42d554",
+      "revId": "91097e1de14075a157f7356c19a89088c9bbea98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1630777d_6b71411c",
         "filename": "driver/accelgyro_lsm6ds0.c",
         "patchSetId": 12
@@ -42,6 +60,24 @@
     },
     {
       "key": {
+        "uuid": "760d33e9_3fd24f0e",
+        "filename": "driver/accelgyro_lsm6ds0.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-15T18:00:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1630777d_6b71411c",
+      "revId": "91097e1de14075a157f7356c19a89088c9bbea98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1630777d_8b6e1d38",
         "filename": "driver/accelgyro_lsm6ds0.c",
         "patchSetId": 12
@@ -53,6 +89,24 @@
       "writtenOn": "2014-08-15T02:35:53Z",
       "side": 1,
       "message": "My opinion is all this operating mode stuff shouldn\u0027t be here. It\u0027s just a distraction. Anyone can look up the datasheet for the part. And, if the datasheet changes or they have a new addition, no one is going to remember to modify this comment.",
+      "revId": "91097e1de14075a157f7356c19a89088c9bbea98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5602efbb_deccf570",
+        "filename": "driver/accelgyro_lsm6ds0.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-15T18:00:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1630777d_8b6e1d38",
       "revId": "91097e1de14075a157f7356c19a89088c9bbea98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -82,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "f6c683d8_68853b80",
+        "filename": "driver/accelgyro_lsm6ds0.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-15T18:00:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f62cc32f_3e94e87d",
+      "revId": "91097e1de14075a157f7356c19a89088c9bbea98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5664af99_1c37c5f8",
         "filename": "driver/accelgyro_lsm6ds0.c",
         "patchSetId": 12
@@ -105,6 +177,24 @@
     },
     {
       "key": {
+        "uuid": "f6c683d8_685a5b64",
+        "filename": "driver/accelgyro_lsm6ds0.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-15T18:00:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5664af99_1c37c5f8",
+      "revId": "91097e1de14075a157f7356c19a89088c9bbea98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f62cc32f_fe5e7023",
         "filename": "include/motion_sense.h",
         "patchSetId": 12
@@ -122,6 +212,24 @@
         "endLine": 116,
         "endChar": 32
       },
+      "revId": "91097e1de14075a157f7356c19a89088c9bbea98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5602efbb_de54f58b",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-15T18:00:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f62cc32f_fe5e7023",
       "revId": "91097e1de14075a157f7356c19a89088c9bbea98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
