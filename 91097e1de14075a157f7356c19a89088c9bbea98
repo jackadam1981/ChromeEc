@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5664af99_9c42d554",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-15T02:35:53Z",
+      "side": 1,
+      "message": "Actually, I think it would be better to change this to not return from function, in the case that somebody tries to wake up this task. Change to:\n\nwhile(1)\n  task_wait_event(-1);\n\nMaybe in a different CL?",
+      "revId": "91097e1de14075a157f7356c19a89088c9bbea98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1630777d_6b71411c",
+        "filename": "driver/accelgyro_lsm6ds0.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-15T02:35:53Z",
+      "side": 1,
+      "message": "Please use multiline comment style",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 3
+      },
+      "revId": "91097e1de14075a157f7356c19a89088c9bbea98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1630777d_8b6e1d38",
+        "filename": "driver/accelgyro_lsm6ds0.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-15T02:35:53Z",
+      "side": 1,
+      "message": "My opinion is all this operating mode stuff shouldn\u0027t be here. It\u0027s just a distraction. Anyone can look up the datasheet for the part. And, if the datasheet changes or they have a new addition, no one is going to remember to modify this comment.",
+      "revId": "91097e1de14075a157f7356c19a89088c9bbea98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f62cc32f_3e94e87d",
+        "filename": "driver/accelgyro_lsm6ds0.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-15T02:35:53Z",
+      "side": 1,
+      "message": "I don\u0027t like this change, I think the old way was more robust using ARRAY_SIZE to get the size and leave it initialized with no size.",
+      "range": {
+        "startLine": 87,
+        "startChar": 8,
+        "endLine": 87,
+        "endChar": 20
+      },
+      "revId": "91097e1de14075a157f7356c19a89088c9bbea98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5664af99_1c37c5f8",
+        "filename": "driver/accelgyro_lsm6ds0.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-15T02:35:53Z",
+      "side": 1,
+      "message": "make this const",
+      "range": {
+        "startLine": 411,
+        "startChar": 7,
+        "endLine": 411,
+        "endChar": 23
+      },
+      "revId": "91097e1de14075a157f7356c19a89088c9bbea98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f62cc32f_fe5e7023",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-15T02:35:53Z",
+      "side": 1,
+      "message": "i think drv was a better name",
+      "range": {
+        "startLine": 116,
+        "startChar": 26,
+        "endLine": 116,
+        "endChar": 32
+      },
+      "revId": "91097e1de14075a157f7356c19a89088c9bbea98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f62cc32f_be58f836",
+        "filename": "test/motion_sense.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-15T02:35:53Z",
+      "side": 1,
+      "message": "const",
+      "revId": "91097e1de14075a157f7356c19a89088c9bbea98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
