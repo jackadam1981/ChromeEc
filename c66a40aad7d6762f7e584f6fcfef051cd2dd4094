@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f69da3d4_4db219e8",
+        "filename": "util/comm-i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-08-15T17:03:32Z",
+      "side": 1,
+      "message": "Do we have the listing output for sysfs on the different kernel versions? I suspect this path is kernel version specific.",
+      "revId": "c66a40aad7d6762f7e584f6fcfef051cd2dd4094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76db73ad_295a2db5",
+        "filename": "util/comm-i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-08-15T17:03:32Z",
+      "side": 1,
+      "message": "Also would be good to see the name file contents across the devices which have EC on i2c. At first pass this looks ok, but I don\u0027t have any devices to check nor which ones even have i2c connected EC.",
+      "revId": "c66a40aad7d6762f7e584f6fcfef051cd2dd4094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
