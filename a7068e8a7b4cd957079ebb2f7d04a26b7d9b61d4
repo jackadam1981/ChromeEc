@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "b64deb11_8aacbc10",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-08-15T02:31:34Z",
+      "side": 1,
+      "message": "I understand, but that task seems like it can be separated from this re-factoring and is large enough to be its own CL. What do you think?",
+      "parentUuid": "b626cb4d_12ef9d62",
+      "revId": "a7068e8a7b4cd957079ebb2f7d04a26b7d9b61d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76861367_9acf2c61",
         "filename": "common/motion_sense.c",
         "patchSetId": 6
@@ -42,6 +60,24 @@
         "endLine": 223,
         "endChar": 8
       },
+      "revId": "a7068e8a7b4cd957079ebb2f7d04a26b7d9b61d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6540bb2_2fc04410",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-08-15T02:31:34Z",
+      "side": 1,
+      "message": "I\u0027ll ping ssl@ to add this, he has a pending change which fixes a few small bugs in this driver.",
+      "parentUuid": "76861367_9acf2c61",
       "revId": "a7068e8a7b4cd957079ebb2f7d04a26b7d9b61d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
