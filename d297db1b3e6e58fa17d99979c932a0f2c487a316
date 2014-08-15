@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7669b3a1_b97bffce",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-15T23:13:37Z",
+      "side": 1,
+      "message": "use system_is_locked() here instead of directly reading WP gpio.\n\nwe shouldn\u0027t ever read the WP directly to determine locked state, better for everything to go through that one function which also looks at soft write protect bit",
+      "range": {
+        "startLine": 192,
+        "startChar": 6,
+        "endLine": 192,
+        "endChar": 20
+      },
+      "revId": "d297db1b3e6e58fa17d99979c932a0f2c487a316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b695ebbe_fe739d64",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-15T23:13:37Z",
+      "side": 1,
+      "message": "I think it\u0027s about time we made a seperate GPIO function to set the output speed, or better yet make it a flag for gpio_set_flags, but that should be a different CL.",
+      "range": {
+        "startLine": 238,
+        "startChar": 2,
+        "endLine": 238,
+        "endChar": 20
+      },
+      "revId": "d297db1b3e6e58fa17d99979c932a0f2c487a316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b695ebbe_5e63b191",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-15T23:13:37Z",
+      "side": 1,
+      "message": "we have a function spi_enable_clock() which might be better to use here.",
+      "range": {
+        "startLine": 246,
+        "startChar": 2,
+        "endLine": 246,
+        "endChar": 20
+      },
+      "revId": "d297db1b3e6e58fa17d99979c932a0f2c487a316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3663bbc5_975b646c",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-15T23:13:37Z",
+      "side": 1,
+      "message": "we also have pd_tx_spi_reset()\n\nI\u0027m thinking maybe we should define spi clock enable and spi reset macros in chip/stm32/registers.h, that take in SPI1 or SPI2, and then we can define SPI1 as used for raiden port 0 in the board.h or usb_pd_config.h, and then here we can just call SPI_RESET(PORT_C0) kind of thing. But all that clean up would be in a different CL. My only concern here is eventually we have to swap SPI busses on samus, and it\u0027s easy to forget all of these places where we have hard coded assumptions.",
+      "range": {
+        "startLine": 252,
+        "startChar": 2,
+        "endLine": 252,
+        "endChar": 20
+      },
+      "revId": "d297db1b3e6e58fa17d99979c932a0f2c487a316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b695ebbe_5ed9f104",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-15T23:13:37Z",
+      "side": 1,
+      "message": "I think system_is_locked() should also go here, to avoid weird USB problems if people hit the key-binding for entering debug mode.",
+      "revId": "d297db1b3e6e58fa17d99979c932a0f2c487a316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7669b3a1_dc2981a5",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-15T23:13:37Z",
+      "side": 1,
+      "message": "i think we probably want this check at init time, board_init():\nif (system_is_locked())\n  gpio_set_level(GPIO_PD_DISABLE_DEBUG, 1);",
+      "range": {
+        "startLine": 297,
+        "startChar": 0,
+        "endLine": 297,
+        "endChar": 1
+      },
+      "revId": "d297db1b3e6e58fa17d99979c932a0f2c487a316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7669b3a1_1c14d95f",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-15T23:13:37Z",
+      "side": 1,
+      "message": "check system_is_locked() here, and print fail message if system is locked.",
+      "revId": "d297db1b3e6e58fa17d99979c932a0f2c487a316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
