@@ -104,6 +104,7 @@ enum gpio_signal {
 	GPIO_ENABLE_BACKLIGHT,     /* Enable backlight power */
 	GPIO_ENABLE_TOUCHPAD,      /* Enable touchpad power */
 	GPIO_ENTERING_RW,          /* Indicate when EC is entering RW code */
+	GPIO_LAN_POWER,            /* Enable LAN power supplies*/
 	GPIO_LPC_CLKRUN_L,         /* Request that PCH drive LPC clock */
 	GPIO_PCH_CORE_PWROK,       /* Indicate core well power is stable */
 	GPIO_PCH_PWRBTN_L,         /* Power button output to PCH */
