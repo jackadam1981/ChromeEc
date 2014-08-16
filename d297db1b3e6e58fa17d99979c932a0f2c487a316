@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b6432b33_f1e02032",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-08-16T00:45:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7669b3a1_b97bffce",
+      "range": {
+        "startLine": 192,
+        "startChar": 6,
+        "endLine": 192,
+        "endChar": 20
+      },
+      "revId": "d297db1b3e6e58fa17d99979c932a0f2c487a316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b695ebbe_fe739d64",
         "filename": "board/samus_pd/board.c",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2014-08-15T23:13:37Z",
       "side": 1,
       "message": "I think it\u0027s about time we made a seperate GPIO function to set the output speed, or better yet make it a flag for gpio_set_flags, but that should be a different CL.",
+      "range": {
+        "startLine": 238,
+        "startChar": 2,
+        "endLine": 238,
+        "endChar": 20
+      },
+      "revId": "d297db1b3e6e58fa17d99979c932a0f2c487a316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7680d379_75cfb0e8",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-08-16T00:45:39Z",
+      "side": 1,
+      "message": "I will leave this to someone else, the masks are a little tricky and the comment about setting max speed doesn\u0027t seem correct in gpio-stm32f.c, since OSPEEDR is never touched.",
+      "parentUuid": "b695ebbe_fe739d64",
       "range": {
         "startLine": 238,
         "startChar": 2,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f68be3a0_ec65b321",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-08-16T00:45:39Z",
+      "side": 1,
+      "message": "Done, and added a spi_disable_clock() as well.",
+      "parentUuid": "b695ebbe_5e63b191",
+      "range": {
+        "startLine": 246,
+        "startChar": 2,
+        "endLine": 246,
+        "endChar": 20
+      },
+      "revId": "d297db1b3e6e58fa17d99979c932a0f2c487a316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3663bbc5_975b646c",
         "filename": "board/samus_pd/board.c",
         "patchSetId": 8
@@ -82,6 +154,30 @@
       "writtenOn": "2014-08-15T23:13:37Z",
       "side": 1,
       "message": "we also have pd_tx_spi_reset()\n\nI\u0027m thinking maybe we should define spi clock enable and spi reset macros in chip/stm32/registers.h, that take in SPI1 or SPI2, and then we can define SPI1 as used for raiden port 0 in the board.h or usb_pd_config.h, and then here we can just call SPI_RESET(PORT_C0) kind of thing. But all that clean up would be in a different CL. My only concern here is eventually we have to swap SPI busses on samus, and it\u0027s easy to forget all of these places where we have hard coded assumptions.",
+      "range": {
+        "startLine": 252,
+        "startChar": 2,
+        "endLine": 252,
+        "endChar": 20
+      },
+      "revId": "d297db1b3e6e58fa17d99979c932a0f2c487a316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7680d379_b58db8b7",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-08-16T00:45:39Z",
+      "side": 1,
+      "message": "I will leave that to someone else, especially since we will be switching the SPI ports for next board revision.",
+      "parentUuid": "3663bbc5_975b646c",
       "range": {
         "startLine": 252,
         "startChar": 2,
@@ -111,6 +207,24 @@
     },
     {
       "key": {
+        "uuid": "7680d379_35dc482f",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-08-16T00:45:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b695ebbe_5ed9f104",
+      "revId": "d297db1b3e6e58fa17d99979c932a0f2c487a316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7669b3a1_dc2981a5",
         "filename": "board/samus_pd/board.c",
         "patchSetId": 8
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "7680d379_8a308f1f",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-08-16T00:45:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7669b3a1_dc2981a5",
+      "range": {
+        "startLine": 297,
+        "startChar": 0,
+        "endLine": 297,
+        "endChar": 1
+      },
+      "revId": "d297db1b3e6e58fa17d99979c932a0f2c487a316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7669b3a1_1c14d95f",
         "filename": "board/samus_pd/board.c",
         "patchSetId": 8
@@ -145,6 +283,24 @@
       "writtenOn": "2014-08-15T23:13:37Z",
       "side": 1,
       "message": "check system_is_locked() here, and print fail message if system is locked.",
+      "revId": "d297db1b3e6e58fa17d99979c932a0f2c487a316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6432b33_71ed1022",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1112304
+      },
+      "writtenOn": "2014-08-16T00:45:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7669b3a1_1c14d95f",
       "revId": "d297db1b3e6e58fa17d99979c932a0f2c487a316",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
