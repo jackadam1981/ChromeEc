@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "966467c9_ba9211d7",
+        "filename": "board/cranky/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-16T00:21:54Z",
+      "side": 1,
+      "message": "#define CONFIG_LAN_POWER_S3 GPIO_LAN_POWER\n\nIn power_handle_state in baytrail.c for POWER_S3\n\n#ifdef CONFIG_LAN_POWER_S3\n     gpio_set_level(CONFIG_LAN_POWER_S3, 1);\n#endif\n\nAdd the CONFIG_LAN_POWER_S3 in include/config.h with an short summary. Also undef it there",
+      "revId": "7060d6ffda21697653d727357ab6b78bd01f7f99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1678776e_791b238e",
+        "filename": "board/cranky/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-16T00:21:54Z",
+      "side": 1,
+      "message": "not needed.",
+      "revId": "7060d6ffda21697653d727357ab6b78bd01f7f99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "966467c9_fd41e320",
+        "filename": "board/cranky/lan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-16T00:21:54Z",
+      "side": 1,
+      "message": "remove this file. No point adding additional hooks for power states. We should use the power states already defined in power/baytrail.c",
+      "revId": "7060d6ffda21697653d727357ab6b78bd01f7f99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
