@@ -43,6 +43,24 @@
     },
     {
       "key": {
+        "uuid": "3631fbd1_aac8ef8d",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-17T00:46:12Z",
+      "side": 1,
+      "message": "Sounds good, separate CL.",
+      "parentUuid": "b64deb11_8aacbc10",
+      "revId": "a7068e8a7b4cd957079ebb2f7d04a26b7d9b61d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76861367_9acf2c61",
         "filename": "common/motion_sense.c",
         "patchSetId": 6
@@ -78,6 +96,70 @@
       "side": 1,
       "message": "I\u0027ll ping ssl@ to add this, he has a pending change which fixes a few small bugs in this driver.",
       "parentUuid": "76861367_9acf2c61",
+      "revId": "a7068e8a7b4cd957079ebb2f7d04a26b7d9b61d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3631fbd1_cacd239d",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-17T00:46:12Z",
+      "side": 1,
+      "message": "Yeah, don\u0027t change for this CL, but I think this is important, could cause problems for a user. Can you make a bug and add a todo to the code?",
+      "parentUuid": "b6540bb2_2fc04410",
+      "revId": "a7068e8a7b4cd957079ebb2f7d04a26b7d9b61d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1626b79c_693a814f",
+        "filename": "driver/accel_kxcj9.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-17T00:46:12Z",
+      "side": 1,
+      "message": "not needed?",
+      "range": {
+        "startLine": 14,
+        "startChar": 10,
+        "endLine": 14,
+        "endChar": 20
+      },
+      "revId": "a7068e8a7b4cd957079ebb2f7d04a26b7d9b61d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7637f3c3_2c709ba7",
+        "filename": "driver/accelgyro_lsm6ds0.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-17T00:46:12Z",
+      "side": 1,
+      "message": "not needed?",
+      "range": {
+        "startLine": 14,
+        "startChar": 10,
+        "endLine": 14,
+        "endChar": 20
+      },
       "revId": "a7068e8a7b4cd957079ebb2f7d04a26b7d9b61d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
