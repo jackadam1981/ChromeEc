@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3631fbd1_6abfd7e5",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-17T01:14:32Z",
+      "side": 1,
+      "message": "I think this is delay is necessary for the accel in the lid because the accel in the lid is powered by PP5000, which isn\u0027t enabled until AP is turned on, for p2b. I think we need to look at schematics for p2b and for EVT a little closer to determine how exactly the kxcj9 in the lid is powered.",
+      "range": {
+        "startLine": 196,
+        "startChar": 17,
+        "endLine": 196,
+        "endChar": 44
+      },
+      "revId": "474e5c04ebf3643eaa9b2f237be613431b3e0d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1626b79c_09fe6d14",
+        "filename": "driver/accel_kxcj9.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-17T01:14:32Z",
+      "side": 1,
+      "message": "shouldn\u0027t need mutex around just one i2c_write()",
+      "range": {
+        "startLine": 481,
+        "startChar": 1,
+        "endLine": 481,
+        "endChar": 11
+      },
+      "revId": "474e5c04ebf3643eaa9b2f237be613431b3e0d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7637f3c3_cca61fdd",
+        "filename": "driver/accel_kxcj9.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-17T01:14:32Z",
+      "side": 1,
+      "message": "why? if necessary add a comment why you need to delay.",
+      "range": {
+        "startLine": 487,
+        "startChar": 1,
+        "endLine": 487,
+        "endChar": 7
+      },
+      "revId": "474e5c04ebf3643eaa9b2f237be613431b3e0d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3631fbd1_0aa1fbc2",
+        "filename": "driver/accelgyro_lsm6ds0.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-17T01:14:32Z",
+      "side": 1,
+      "message": "shouldn\u0027t need mutex_lock here either",
+      "range": {
+        "startLine": 222,
+        "startChar": 1,
+        "endLine": 222,
+        "endChar": 11
+      },
+      "revId": "474e5c04ebf3643eaa9b2f237be613431b3e0d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

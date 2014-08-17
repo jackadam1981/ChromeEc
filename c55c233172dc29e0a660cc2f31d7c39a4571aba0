@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1626b79c_e9f8312b",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-17T01:14:32Z",
+      "side": 0,
+      "message": "These settings moved into the individual driver files, but I don\u0027t think they belong down there, I think the defaults should stay up here in motion_sense.c. They can either be args to the init() function, or you can call the set_*() functions after init().",
+      "range": {
+        "startLine": 231,
+        "startChar": 8,
+        "endLine": 231,
+        "endChar": 15
+      },
+      "revId": "c55c233172dc29e0a660cc2f31d7c39a4571aba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
