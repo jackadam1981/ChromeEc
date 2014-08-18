@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1626b79c_55e636fa",
+        "filename": "board/cranky/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-18T17:26:57Z",
+      "side": 1,
+      "message": "power_ticks",
+      "revId": "2febcfd0edec0080670c649d03bcd23f9df796c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1626b79c_55dc761d",
+        "filename": "board/cranky/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-18T17:26:57Z",
+      "side": 1,
+      "message": "add logic to set power_ticks\u003d0 if entering suspend for the first time. See https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/firmware-rambi-5216.B/board/gnawty/led.c",
+      "revId": "2febcfd0edec0080670c649d03bcd23f9df796c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1626b79c_9510ae2a",
+        "filename": "board/cranky/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-18T17:26:57Z",
+      "side": 1,
+      "message": "battery_ticks",
+      "revId": "2febcfd0edec0080670c649d03bcd23f9df796c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
