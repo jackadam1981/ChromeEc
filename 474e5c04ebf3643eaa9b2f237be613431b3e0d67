@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7637f3c3_e80ca6a1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-18T23:50:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6220389_0b8bc197",
+      "revId": "474e5c04ebf3643eaa9b2f237be613431b3e0d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7637f3c3_2cd25b95",
         "filename": "/COMMIT_MSG",
         "patchSetId": 16
@@ -36,6 +54,24 @@
         "endLine": 11,
         "endChar": 8
       },
+      "revId": "474e5c04ebf3643eaa9b2f237be613431b3e0d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7637f3c3_c817e2ae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-18T23:50:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7637f3c3_2cd25b95",
       "revId": "474e5c04ebf3643eaa9b2f237be613431b3e0d67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -117,6 +153,24 @@
     },
     {
       "key": {
+        "uuid": "933559d4_58cdf546",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-18T23:50:36Z",
+      "side": 1,
+      "message": "Following C++ design (or many OO interface design), a implementation in C.\nHere, base is the same as \"this\" pointer in C++.\n\nDone",
+      "parentUuid": "7637f3c3_95fc2782",
+      "revId": "474e5c04ebf3643eaa9b2f237be613431b3e0d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b31a5d65_16285a70",
         "filename": "common/motion_sense.c",
         "patchSetId": 16
@@ -128,6 +182,24 @@
       "writtenOn": "2014-08-18T22:29:15Z",
       "side": 1,
       "message": "is a chip field required? can you use still drv, and just add a macro for readability.",
+      "revId": "474e5c04ebf3643eaa9b2f237be613431b3e0d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7637f3c3_c860c214",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-18T23:50:36Z",
+      "side": 1,
+      "message": "The chip field is not used by sensor driver.\nIt is only used by here. (original code).\nFor some reason, the upper layer need to know the chip type.\n\nDone",
+      "parentUuid": "b31a5d65_16285a70",
       "revId": "474e5c04ebf3643eaa9b2f237be613431b3e0d67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
