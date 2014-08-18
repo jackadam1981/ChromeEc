@@ -622,7 +622,12 @@ static void execute_hard_reset(int port)
 static void execute_soft_reset(int port)
 {
 	pd[port].msg_id = 0;
-	set_state(port, PD_STATE_SOFT_RESET);
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+	set_state(port, pd[port].role == PD_ROLE_SINK ?
+			PD_STATE_SNK_DISCOVERY : PD_STATE_SRC_DISCOVERY);
+#else
+	set_state(port, PD_STATE_SRC_DISCOVERY);
+#endif
 	CPRINTF("Soft Reset\n");
 }
 
@@ -634,6 +639,7 @@ void pd_soft_reset(void)
 		if (pd_is_connected(i)) {
 			execute_soft_reset(i);
 			send_control(i, PD_CTRL_SOFT_RESET);
+			set_state(i, PD_STATE_SOFT_RESET);
 		}
 }
 
@@ -757,6 +763,15 @@ static void handle_ctrl_request(int port, uint16_t head,
 		break;
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 	case PD_CTRL_ACCEPT:
+		if (pd[port].task_state == PD_STATE_SOFT_RESET) {
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+			set_state(port, pd[port].role == PD_ROLE_SINK ?
+					PD_STATE_SNK_DISCOVERY :
+					PD_STATE_SRC_DISCOVERY);
+#else
+			set_state(port, PD_STATE_SRC_DISCOVERY);
+#endif
+		}
 		break;
 	case PD_CTRL_SOFT_RESET:
 		execute_soft_reset(port);
@@ -1320,25 +1335,11 @@ void pd_task(void)
 			break;
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 		case PD_STATE_SOFT_RESET:
-			/*
-			 * Delay for 30 ms in case the port partner is not
-			 * ready
-			 */
-			if (pd[port].last_state != pd[port].task_state) {
-#ifdef CONFIG_USB_PD_DUAL_ROLE
-				enum pd_states discovery_state =
-					(pd[port].role == PD_ROLE_SINK ?
-					 PD_STATE_SNK_DISCOVERY :
-					 PD_STATE_SRC_DISCOVERY);
-#else
-				enum pd_states discovery_state =
-					PD_STATE_SRC_DISCOVERY;
-#endif
+			if (pd[port].last_state != pd[port].task_state)
 				set_state_timeout(
 					port,
-					get_time().val + (30 * MSEC),
-					discovery_state);
-			}
+					get_time().val + PD_T_SENDER_RESPONSE,
+					PD_STATE_HARD_RESET);
 			break;
 		case PD_STATE_HARD_RESET:
 			send_hard_reset(port);
@@ -1599,6 +1600,7 @@ static int command_pd(int argc, char **argv)
 	} else if (!strncasecmp(argv[2], "soft", 4)) {
 		execute_soft_reset(port);
 		send_control(port, PD_CTRL_SOFT_RESET);
+		set_state(port, PD_STATE_SOFT_RESET);
 		task_wake(PORT_TO_TASK_ID(port));
 	} else if (!strncasecmp(argv[2], "ping", 4)) {
 		int enable;
@@ -1668,7 +1670,7 @@ static int command_pd(int argc, char **argv)
 			"SNK_TRANSITION", "SNK_READY",
 			"SRC_DISCONNECTED", "SRC_DISCOVERY", "SRC_NEGOCIATE",
 			"SRC_ACCEPTED", "SRC_TRANSITION", "SRC_READY",
-			"HARD_RESET", "BIST",
+			"SOFT_RESET", "HARD_RESET", "BIST",
 		};
 		ccprintf("Port C%d, %s - Role: %s Polarity: CC%d State: %s\n",
 			port, pd_comm_enabled ? "Enabled" : "Disabled",
