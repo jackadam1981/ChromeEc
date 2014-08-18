@@ -165,6 +165,7 @@ enum pd_states {
 	PD_STATE_SRC_TRANSITION,
 	PD_STATE_SRC_READY,
 
+	PD_STATE_SOFT_RESET_SENT,
 	PD_STATE_SOFT_RESET,
 	PD_STATE_HARD_RESET,
 	PD_STATE_BIST,
@@ -623,6 +624,7 @@ void pd_soft_reset(void)
 		if (pd_is_connected(i)) {
 			execute_soft_reset(i);
 			send_control(i, PD_CTRL_SOFT_RESET);
+			set_state(i, PD_STATE_SOFT_RESET_SENT);
 		}
 }
 
@@ -672,9 +674,17 @@ static void handle_data_request(int port, uint16_t head,
 	switch (type) {
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	case PD_DATA_SOURCE_CAP:
-		if ((pd[port].task_state == PD_STATE_SNK_DISCOVERY)
-			|| (pd[port].task_state == PD_STATE_SNK_TRANSITION)
-			|| (pd[port].task_state == PD_STATE_SNK_READY)) {
+		/*
+		 * Respond to source cap packet only when we expect it.
+		 * Note that we also respond to it if we just performed a
+		 * soft reset as sink. Otherwise, we might miss the first
+		 * source cap packet after a soft reset.
+		 */
+		if ((pd[port].task_state == PD_STATE_SNK_DISCOVERY) ||
+		    (pd[port].task_state == PD_STATE_SNK_TRANSITION) ||
+		    (pd[port].task_state == PD_STATE_SNK_READY) ||
+		    (pd[port].role == PD_ROLE_SINK &&
+		     pd[port].task_state == PD_STATE_SOFT_RESET)) {
 			pd_store_src_cap(port, cnt, payload);
 			pd_send_request_msg(port);
 		}
@@ -746,6 +756,8 @@ static void handle_ctrl_request(int port, uint16_t head,
 		break;
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 	case PD_CTRL_ACCEPT:
+		if (pd[port].task_state == PD_STATE_SOFT_RESET_SENT)
+			set_state(port, PD_STATE_SOFT_RESET);
 		break;
 	case PD_CTRL_SOFT_RESET:
 		execute_soft_reset(port);
@@ -780,9 +792,12 @@ static void handle_request(int port, uint16_t head,
 
 	/*
 	 * If we are in disconnected state, we shouldn't get a request. Do
-	 * a hard reset if we get one.
+	 * a hard reset if we get one. An exception is the ACCEPT packet in
+	 * SOFT_RESET state.
 	 */
-	if (!pd_is_connected(port))
+	if (!pd_is_connected(port) &&
+	    !(pd[port].task_state == PD_STATE_SOFT_RESET_SENT &&
+	      PD_HEADER_TYPE(head) == PD_CTRL_ACCEPT))
 		set_state(port, PD_STATE_HARD_RESET);
 
 	if (cnt)
@@ -1279,6 +1294,13 @@ void pd_task(void)
 			timeout = 100*MSEC;
 			break;
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
+		case PD_STATE_SOFT_RESET_SENT:
+			if (pd[port].last_state != pd[port].task_state)
+				set_state_timeout(
+					port,
+					get_time().val + PD_T_SENDER_RESPONSE,
+					PD_STATE_HARD_RESET);
+			break;
 		case PD_STATE_SOFT_RESET:
 			/*
 			 * Delay for 30 ms in case the port partner is not
@@ -1535,6 +1557,7 @@ static int command_pd(int argc, char **argv)
 	} else if (!strncasecmp(argv[2], "soft", 4)) {
 		execute_soft_reset(port);
 		send_control(port, PD_CTRL_SOFT_RESET);
+		set_state(port, PD_STATE_SOFT_RESET_SENT);
 		task_wake(PORT_TO_TASK_ID(port));
 	} else if (!strncasecmp(argv[2], "ping", 4)) {
 		pd[port].role = PD_ROLE_SOURCE;
@@ -1579,7 +1602,7 @@ static int command_pd(int argc, char **argv)
 			"SNK_TRANSITION", "SNK_READY",
 			"SRC_DISCONNECTED", "SRC_DISCOVERY", "SRC_NEGOCIATE",
 			"SRC_ACCEPTED", "SRC_TRANSITION", "SRC_READY",
-			"HARD_RESET", "BIST",
+			"SOFT_RESET_SENT", "SOFT_RESET", "HARD_RESET", "BIST",
 		};
 		ccprintf("Port C%d, %s - Role: %s Polarity: CC%d State: %s\n",
 			port, pd_comm_enabled ? "Enabled" : "Disabled",
