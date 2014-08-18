@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33f66d4a_45c73e4f",
+        "filename": "common/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-18T20:47:21Z",
+      "side": 1,
+      "message": "Please #undef CONFIG_INDUCTIVE_CHARGING in config.h",
+      "range": {
+        "startLine": 48,
+        "startChar": 9,
+        "endLine": 48,
+        "endChar": 34
+      },
+      "revId": "0d79b6b3287c787baff0a8d89c7104ad16e29d76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
