@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "93e71994_882c3b22",
+        "filename": "board/cranky/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1114730
+      },
+      "writtenOn": "2014-08-18T13:02:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "966467c9_ba9211d7",
+      "revId": "7060d6ffda21697653d727357ab6b78bd01f7f99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1678776e_791b238e",
         "filename": "board/cranky/build.mk",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "d61fbf43_274d14a9",
+        "filename": "board/cranky/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1114730
+      },
+      "writtenOn": "2014-08-18T13:02:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1678776e_791b238e",
+      "revId": "7060d6ffda21697653d727357ab6b78bd01f7f99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "966467c9_fd41e320",
         "filename": "board/cranky/lan.c",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2014-08-16T00:21:54Z",
       "side": 1,
       "message": "remove this file. No point adding additional hooks for power states. We should use the power states already defined in power/baytrail.c",
+      "revId": "7060d6ffda21697653d727357ab6b78bd01f7f99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b61c0b53_c6a0c493",
+        "filename": "board/cranky/lan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1114730
+      },
+      "writtenOn": "2014-08-18T13:02:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "966467c9_fd41e320",
       "revId": "7060d6ffda21697653d727357ab6b78bd01f7f99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
