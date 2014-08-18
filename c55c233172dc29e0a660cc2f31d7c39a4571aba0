@@ -22,6 +22,24 @@
       "revId": "c55c233172dc29e0a660cc2f31d7c39a4571aba0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b31a5d65_f6883e66",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-18T22:22:05Z",
+      "side": 0,
+      "message": "motion_sense.c is the middle man. It should not have any knowledge of the default params.\n\nIt is better to keep a default init within the driver itself. \n\nIf need, a user (upper layer) can re-config the device with these public APIs (set_range, set_resolution, set_data_rate) from AP host commands.",
+      "parentUuid": "1626b79c_e9f8312b",
+      "revId": "c55c233172dc29e0a660cc2f31d7c39a4571aba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
