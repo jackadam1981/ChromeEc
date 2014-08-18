@@ -16,6 +16,24 @@
       "revId": "2c719b6d9d26f969372fdf59bb58cac2d5a0d3ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d61fbf43_e454da8b",
+        "filename": "board/cranky/ec.tasklist",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1114730
+      },
+      "writtenOn": "2014-08-18T01:48:03Z",
+      "side": 1,
+      "message": "Volume up/down and power button issues scan code to notify OS. We think this task is still needed.",
+      "parentUuid": "168f97ae_c117e4ae",
+      "revId": "2c719b6d9d26f969372fdf59bb58cac2d5a0d3ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
