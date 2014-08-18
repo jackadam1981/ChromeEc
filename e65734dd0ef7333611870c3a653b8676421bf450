@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7637f3c3_6f87e500",
+        "filename": "board/samus/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-18T00:30:50Z",
+      "side": 1,
+      "message": "alphabetical order",
+      "range": {
+        "startLine": 40,
+        "startChar": 10,
+        "endLine": 40,
+        "endChar": 14
+      },
+      "revId": "e65734dd0ef7333611870c3a653b8676421bf450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1626b79c_af4d5986",
+        "filename": "board/samus/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-18T00:30:50Z",
+      "side": 1,
+      "message": "suggest g_base_mutex and g_lid_mutex. better not to tie the location and part number in more places than needed.",
+      "range": {
+        "startLine": 247,
+        "startChar": 20,
+        "endLine": 247,
+        "endChar": 35
+      },
+      "revId": "e65734dd0ef7333611870c3a653b8676421bf450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3631fbd1_ad7ac991",
+        "filename": "board/samus/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-18T00:30:50Z",
+      "side": 1,
+      "message": "why is there only one for the kxcj9 and not for the lsm6ds0? also, i don\u0027t like that it uses index values instead of engineering values. better to keep the index value abstracted away. maybe we can just declare default range, resolution, and datarate in engineering values with a round up flag to make sure value is at least the default value.",
+      "range": {
+        "startLine": 250,
+        "startChar": 18,
+        "endLine": 250,
+        "endChar": 30
+      },
+      "revId": "e65734dd0ef7333611870c3a653b8676421bf450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7637f3c3_4f630192",
+        "filename": "board/samus/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-18T00:30:50Z",
+      "side": 1,
+      "message": "again, just \"Base\" and \"Lid\"",
+      "range": {
+        "startLine": 259,
+        "startChar": 8,
+        "endLine": 259,
+        "endChar": 15
+      },
+      "revId": "e65734dd0ef7333611870c3a653b8676421bf450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1626b79c_8f489d77",
+        "filename": "board/samus/ec.tasklist",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-18T00:30:50Z",
+      "side": 1,
+      "message": "this list is in priority order, it should not be highest priority task. i think maybe between console and powerbtn is appropriate? i suggest comparing where it is in glimmer/clapper.",
+      "range": {
+        "startLine": 31,
+        "startChar": 13,
+        "endLine": 31,
+        "endChar": 24
+      },
+      "revId": "e65734dd0ef7333611870c3a653b8676421bf450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
