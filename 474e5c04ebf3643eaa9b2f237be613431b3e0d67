@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "7637f3c3_2cd25b95",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-08-18T22:29:15Z",
+      "side": 1,
+      "message": "complete before submitting.",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "474e5c04ebf3643eaa9b2f237be613431b3e0d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3631fbd1_6abfd7e5",
         "filename": "common/motion_sense.c",
         "patchSetId": 16
@@ -54,6 +77,57 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "3631fbd1_6abfd7e5",
+      "revId": "474e5c04ebf3643eaa9b2f237be613431b3e0d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1626b79c_acf48768",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-08-18T22:29:15Z",
+      "side": 1,
+      "message": "is this part of the common code? EC_MEMMAP_ACC_STATUS is not valid for all, just samus. Same thing for DATA.",
+      "revId": "474e5c04ebf3643eaa9b2f237be613431b3e0d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7637f3c3_95fc2782",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-08-18T22:29:15Z",
+      "side": 1,
+      "message": "I feel code duplication here. An array of sensor to look at and a for loop would prevent this.",
+      "revId": "474e5c04ebf3643eaa9b2f237be613431b3e0d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b31a5d65_16285a70",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-08-18T22:29:15Z",
+      "side": 1,
+      "message": "is a chip field required? can you use still drv, and just add a macro for readability.",
       "revId": "474e5c04ebf3643eaa9b2f237be613431b3e0d67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
