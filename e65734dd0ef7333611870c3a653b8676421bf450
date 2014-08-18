@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "1626b79c_35fb7a25",
+        "filename": "board/samus/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-18T17:48:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7637f3c3_6f87e500",
+      "revId": "e65734dd0ef7333611870c3a653b8676421bf450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1626b79c_af4d5986",
         "filename": "board/samus/board.c",
         "patchSetId": 8
@@ -42,6 +60,24 @@
         "endLine": 247,
         "endChar": 35
       },
+      "revId": "e65734dd0ef7333611870c3a653b8676421bf450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1626b79c_f52d6217",
+        "filename": "board/samus/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-18T17:48:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1626b79c_af4d5986",
       "revId": "e65734dd0ef7333611870c3a653b8676421bf450",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "7637f3c3_3dfb6725",
+        "filename": "board/samus/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-18T17:48:40Z",
+      "side": 1,
+      "message": "I modified lsm6ds0 driver code so that this private data structure is not need any more.   I kept kxcj9 unchanged.  I can do the same modification for kxcj9 driver--remove this private data structure.",
+      "parentUuid": "3631fbd1_ad7ac991",
+      "revId": "e65734dd0ef7333611870c3a653b8676421bf450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7637f3c3_4f630192",
         "filename": "board/samus/board.c",
         "patchSetId": 8
@@ -94,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "7637f3c3_3d8527ba",
+        "filename": "board/samus/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-18T17:48:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7637f3c3_4f630192",
+      "revId": "e65734dd0ef7333611870c3a653b8676421bf450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1626b79c_8f489d77",
         "filename": "board/samus/ec.tasklist",
         "patchSetId": 8
@@ -111,6 +183,24 @@
         "endLine": 31,
         "endChar": 24
       },
+      "revId": "e65734dd0ef7333611870c3a653b8676421bf450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3631fbd1_9bca9b2d",
+        "filename": "board/samus/ec.tasklist",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-18T17:48:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1626b79c_8f489d77",
       "revId": "e65734dd0ef7333611870c3a653b8676421bf450",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
