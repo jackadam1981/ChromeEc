@@ -2,7 +2,11 @@
 # Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
-"""Flash PD PSU RW firmware over the USBPD comm channel using console."""
+"""Flash PD PSU RW firmware over the USBPD comm channel using console.
+
+  Example:
+    util/flash_pd.py ./build/zinger/ec.RW.flat
+"""
 
 import array
 import errno
@@ -121,18 +125,34 @@ class FlashPD(client.ServoClient):
       logging.error('\"%s\" missing', val)
     return (done, l)
 
-  def flash_command(self, cmd, expect='DONE'):
+  def flash_command(self, cmd, expect='DONE 0', retries=2):
     """Send PD Flash command and interrogate output.
 
     Args:
-      cmd    : string of 'pd port flash' command to execute
-      expect : string of expected response after 'cmd'
+      cmd     : string of 'pd port flash' command to execute
+      expect  : string of expected response after 'cmd'
+      retries : integer number of times to repeat command if it fails.
 
     Returns:
-      found : boolean, whether response matches expected.
+      tuple :
+        found : boolean, whether response matches expected.
+        line  : string of line returned by expect method.
+
+    Raises:
+      FlashPDError: if command failed to match expected return string after
+        retries.
     """
-    self._serial.write('pd %d flash %s\n' % (self._options.multiport, cmd))
-    (found, line) = self.expect(expect)
+    tries = retries + 1
+    for i in xrange(tries):
+      self._serial.write('pd %d flash %s\n' % (self._options.multiport, cmd))
+      (found, line) = self.expect(expect)
+      if i:
+        logging.warn("pd flash cmd Retry%d for '%s'\n", i, cmd)
+      if found:
+        break
+    if (i + 1) == tries and not found:
+      raise FlashPDError("Failed pd flash cmd: '%s' after %d retries\n" %
+                         (cmd, retries))
     return (found, line)
 
   def get_version(self):
@@ -208,6 +228,8 @@ def flash_pd(options):
     chunk = words[i * 6: (i + 1) * 6]
     cmd = ' '.join(['%08x' % (w) for w in chunk])
     ec.flash_command(cmd)
+    if not i % 0x10:
+      logging.info('Chunk%d of %d done.', chunk, len(words) / 6)
 
   # write new firmware hash
   ec.flash_command('hash ' + sha_str)
