@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33f66d4a_198bdbd2",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-19T20:17:39Z",
+      "side": 1,
+      "message": "nit: move to top with other static vars",
+      "range": {
+        "startLine": 173,
+        "startChar": 11,
+        "endLine": 173,
+        "endChar": 30
+      },
+      "revId": "ba15a9fde175724d269089e355b8b1c6b0c793f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33f66d4a_b9918ffc",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-19T20:17:39Z",
+      "side": 1,
+      "message": "remove this line, we don\u0027t want to shutdown motion_sense on suspend",
+      "range": {
+        "startLine": 180,
+        "startChar": 13,
+        "endLine": 180,
+        "endChar": 33
+      },
+      "revId": "ba15a9fde175724d269089e355b8b1c6b0c793f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6220389_daf9715f",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-19T20:17:39Z",
+      "side": 1,
+      "message": "remove this line too",
+      "range": {
+        "startLine": 188,
+        "startChar": 13,
+        "endLine": 188,
+        "endChar": 32
+      },
+      "revId": "ba15a9fde175724d269089e355b8b1c6b0c793f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6220389_7a687d2b",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-19T20:17:39Z",
+      "side": 1,
+      "message": "I don\u0027t like having an unnecessary goto here. Look a couple comments down at how to refactor.",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 13
+      },
+      "revId": "ba15a9fde175724d269089e355b8b1c6b0c793f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6220389_5aee6191",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-19T20:17:39Z",
+      "side": 1,
+      "message": "replace with task_wait_event(-1), and add to hook functions above task_wake(MOTION_SENSE)",
+      "range": {
+        "startLine": 204,
+        "startChar": 18,
+        "endLine": 204,
+        "endChar": 45
+      },
+      "revId": "ba15a9fde175724d269089e355b8b1c6b0c793f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33f66d4a_f9203700",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-19T20:17:39Z",
+      "side": 1,
+      "message": "I think we should pull this for loop out into a new function, i.e. motion_sensors_init(). Then we can restructure this function like\n\nmotion_sense_task(void)\n{\n  static int sensors_initialized \u003d 0;\n\n  /* init LPC interface */\n\n  while (1) {\n    if (!motion_sense_active)\n      task_wait_event(-1);\n\n    if (motion_sense_active \u0026\u0026 !sensors_initialized)\n      motion_sensors_init();\n\n    /* read sensors, process them, post to LPC */\n  }\n}",
+      "range": {
+        "startLine": 216,
+        "startChar": 1,
+        "endLine": 216,
+        "endChar": 4
+      },
+      "revId": "ba15a9fde175724d269089e355b8b1c6b0c793f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33f66d4a_79c0a7c6",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-19T20:17:39Z",
+      "side": 1,
+      "message": "I don\u0027t think we should end the task anymore if lid and base aren\u0027t present. I think we can just set motion_sense_active to 0 if it fails. That way if the user turns off their machine and turns it back on (without rebooting EC), then accels have another chance to initialize correctly",
+      "range": {
+        "startLine": 234,
+        "startChar": 7,
+        "endLine": 234,
+        "endChar": 18
+      },
+      "revId": "ba15a9fde175724d269089e355b8b1c6b0c793f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33f66d4a_39f8df26",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-19T20:17:39Z",
+      "side": 1,
+      "message": "it\u0027s actually more complicated than this. we want the accel in the base to be sampled even when in sleep for tap for battery. but, for now i think you should keep the way you have it, and we\u0027ll have to make the change when tap for battery is added.",
+      "range": {
+        "startLine": 243,
+        "startChar": 8,
+        "endLine": 243,
+        "endChar": 27
+      },
+      "revId": "ba15a9fde175724d269089e355b8b1c6b0c793f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f3f77545_32ca36e7",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-19T20:17:39Z",
+      "side": 1,
+      "message": "see above comment and remove",
+      "range": {
+        "startLine": 333,
+        "startChar": 0,
+        "endLine": 333,
+        "endChar": 11
+      },
+      "revId": "ba15a9fde175724d269089e355b8b1c6b0c793f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33f66d4a_d9069386",
+        "filename": "driver/accelgyro_lsm6ds0.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-19T20:17:39Z",
+      "side": 1,
+      "message": "shouldn\u0027t need this mutex either.",
+      "range": {
+        "startLine": 351,
+        "startChar": 1,
+        "endLine": 351,
+        "endChar": 11
+      },
+      "revId": "ba15a9fde175724d269089e355b8b1c6b0c793f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
