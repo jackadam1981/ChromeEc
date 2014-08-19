@@ -22,6 +22,30 @@
       "revId": "dc0f66218875698f4be84490f3444e61f87db745",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f3f77545_ccf0176e",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-19T14:32:22Z",
+      "side": 1,
+      "message": "Ok, changed order of operations to guarantee no overflow. For reference vbus ~2700 is 4.5A, about as high as we typically read, but I guess it could always go up to 4096 if ADC is saturated.",
+      "parentUuid": "533f61b5_33ab7261",
+      "range": {
+        "startLine": 86,
+        "startChar": 31,
+        "endLine": 86,
+        "endChar": 35
+      },
+      "revId": "dc0f66218875698f4be84490f3444e61f87db745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
