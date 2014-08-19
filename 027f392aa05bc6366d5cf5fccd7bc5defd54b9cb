@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "933559d4_9940fc20",
+        "filename": "board/discovery-stm32f072/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-08-19T17:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6684304_816bbdf2",
+      "revId": "027f392aa05bc6366d5cf5fccd7bc5defd54b9cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "563f4fb5_5334b667",
         "filename": "chip/stm32/build.mk",
         "patchSetId": 5
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "Yes, sorry, I uploaded this new draft to make sure my desktop was in sync when it was moved and possibly damaged/lost, so I hadn\u0027t gotten to this yet, will do though.  thanks.",
       "parentUuid": "563f4fb5_5334b667",
+      "revId": "027f392aa05bc6366d5cf5fccd7bc5defd54b9cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f3f77545_972c5c22",
+        "filename": "chip/stm32/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-08-19T17:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d64c1fb5_3f2f6314",
       "revId": "027f392aa05bc6366d5cf5fccd7bc5defd54b9cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -195,6 +231,24 @@
     },
     {
       "key": {
+        "uuid": "f3f77545_d739c459",
+        "filename": "include/in_stream.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-08-19T17:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6496ba6_a4db68fe",
+      "revId": "027f392aa05bc6366d5cf5fccd7bc5defd54b9cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d64c1fb5_22610a16",
         "filename": "include/out_stream.h",
         "patchSetId": 5
@@ -212,6 +266,24 @@
     },
     {
       "key": {
+        "uuid": "f3f77545_779c301a",
+        "filename": "include/out_stream.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-08-19T17:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d64c1fb5_22610a16",
+      "revId": "027f392aa05bc6366d5cf5fccd7bc5defd54b9cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16431782_87590c3c",
         "filename": "include/out_stream.h",
         "patchSetId": 5
@@ -223,6 +295,24 @@
       "writtenOn": "2014-08-05T16:52:19Z",
       "side": 1,
       "message": "stream\u0027s",
+      "revId": "027f392aa05bc6366d5cf5fccd7bc5defd54b9cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6220389_bf4ae7e3",
+        "filename": "include/out_stream.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-08-19T17:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16431782_87590c3c",
       "revId": "027f392aa05bc6366d5cf5fccd7bc5defd54b9cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -276,6 +366,24 @@
       "side": 1,
       "message": "We can call this macro container_of() and move it to compile_time_macros, though.  Perhaps with a note that it doesn\u0027t have all the safety checks of the kernel version.",
       "parentUuid": "b6496ba6_81dc5e83",
+      "revId": "027f392aa05bc6366d5cf5fccd7bc5defd54b9cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33f66d4a_6e9c5f1a",
+        "filename": "include/util.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-08-19T17:48:37Z",
+      "side": 1,
+      "message": "Would you like CONTAINER_OF, or container_of?  All of our other macro\u0027s are ALL_CAPS.  Thanks.",
+      "parentUuid": "b6496ba6_a409a8be",
       "revId": "027f392aa05bc6366d5cf5fccd7bc5defd54b9cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
