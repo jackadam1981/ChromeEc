@@ -11,6 +11,11 @@
 /* 48 MHz SYSCLK clock frequency */
 #define CPU_CLOCK 48000000
 
+#define CONFIG_USART
+#define CONFIG_USART1
+#define CONFIG_USART3
+#define CONFIG_USART4
+
 /* the UART console is on USART2 (PA14/PA15) */
 #undef CONFIG_UART_CONSOLE
 #define CONFIG_UART_CONSOLE 2
