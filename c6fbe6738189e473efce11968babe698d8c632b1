@@ -34,6 +34,24 @@
       "revId": "c6fbe6738189e473efce11968babe698d8c632b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f325b5a9_f353a8f4",
+        "filename": "board/cranky/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-08-19T23:59:32Z",
+      "side": 1,
+      "message": "This is not required for volume or power buttons. Please remove.",
+      "parentUuid": "93e71994_4b23cd96",
+      "revId": "c6fbe6738189e473efce11968babe698d8c632b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
