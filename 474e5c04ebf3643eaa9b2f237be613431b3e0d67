@@ -189,6 +189,24 @@
     },
     {
       "key": {
+        "uuid": "13296985_8ecc3bf7",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-19T17:15:21Z",
+      "side": 1,
+      "message": "Thanks. I got it. Revised on next patch.\nNote: More clean up can be done in the motion_sense.c, I will delay it to next CL.",
+      "parentUuid": "7637f3c3_6b5190ee",
+      "revId": "474e5c04ebf3643eaa9b2f237be613431b3e0d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b31a5d65_16285a70",
         "filename": "common/motion_sense.c",
         "patchSetId": 16
@@ -236,6 +254,24 @@
       "side": 1,
       "message": "My point is sensor-\u003edrv and senor-\u003echip contains duplicated information. Look at the next CL: board.c:\n{\"Lid kxcj9\",  SENSOR_CHIP_KXCJ9, SENSOR_ACCELEROMETER, LOCATION_LID, \u0026kxcj9_drv, \u0026g_kxcj9_mutex, \u0026g_kxcj9_data, KXCJ9_ADDR0},\n\nSENSOR_CHIP_KXCJ9 is linked to kxcj9_drv: if -\u003edrv is set to kxcj9_drv, -\u003echip must be set to SENSOR_CHIP_KXCJ9 and is therefore redundant.",
       "parentUuid": "7637f3c3_c860c214",
+      "revId": "474e5c04ebf3643eaa9b2f237be613431b3e0d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3344ad56_b562a864",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-19T17:15:21Z",
+      "side": 1,
+      "message": "Agree. It is redundant.  \nI did not find any other solution to avoid it since motion sense is a generic layer and it can not differentiate two pointers between \u0026lsm6ds0_drv and \u0026kxcj9_drv.",
+      "parentUuid": "933559d4_3b234b98",
       "revId": "474e5c04ebf3643eaa9b2f237be613431b3e0d67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
