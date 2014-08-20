@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b32fbd8b_51c034c6",
+        "filename": "board/veyron/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-08-20T16:59:42Z",
+      "side": 1,
+      "message": "Use PMIC_PWRON as our convention in code. Only low-active needs _L.",
+      "revId": "b297d8323cbdde85fd2af12563df6051f86edf62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
