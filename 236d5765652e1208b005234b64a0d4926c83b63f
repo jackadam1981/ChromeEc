@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d34b5172_8abb0fa8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1758,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-20T23:45:12Z",
+      "side": 1,
+      "message": "Do we need to make sure this is a multiple of the flash write size on the adapter side?  Or do we assume the adapter will buffer any extra bits until the next write?",
+      "range": {
+        "startLine": 1758,
+        "startChar": 29,
+        "endLine": 1758,
+        "endChar": 45
+      },
+      "revId": "236d5765652e1208b005234b64a0d4926c83b63f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3344ad56_b05f4457",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-20T23:45:12Z",
+      "side": 1,
+      "message": "We\u0027d talked about building the RW has into the image at build time.  That way, ectool doesn\u0027t need to have sha1 code, and this can simply be 16KB.",
+      "range": {
+        "startLine": 781,
+        "startChar": 24,
+        "endLine": 781,
+        "endChar": 53
+      },
+      "revId": "236d5765652e1208b005234b64a0d4926c83b63f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
