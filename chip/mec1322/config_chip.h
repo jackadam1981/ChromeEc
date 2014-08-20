@@ -49,7 +49,7 @@
 
 #define CONFIG_FLASH_BASE           0x00100000
 
-#define CONFIG_FLASH_PHYSICAL_SIZE  0x00018000
+#define CONFIG_FLASH_PHYSICAL_SIZE  0x00030000
 
 /* Size of one firmware image in RAM */
 

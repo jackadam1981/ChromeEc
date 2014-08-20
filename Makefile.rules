@@ -7,6 +7,7 @@
 # Embedded Controller firmware build system - common targets
 #
 
+
 objs := $(all-y)
 deps := $(objs:%.o=%.o.d)
 build-utils := $(foreach u,$(build-util-bin),$(out)/util/$(u))
@@ -63,7 +64,7 @@ cmd_rsasign = ./util/ec_sign_rsa.py $(PEM) $(out)/$*.bin.tmp
 ifeq "$(UC_CHIP)" "MEC1322"
 	CHIP_SPI_SIZE ?= 16
 	MEC1322_PACK_EC_FLAG = \
-		-i $(out)/$(PROJECT).bin \
+		-i $(out)/$(PROJECT).RO.flat \
 		-o $(out)/$(PROJECT).spi.bin \
 		--header_key ./chip/mec1322/util/rsakey_sign_header.pem \
 		--payload_key ./chip/mec1322/util/rsakey_sign_payload.pem \

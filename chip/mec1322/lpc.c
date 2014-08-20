@@ -227,6 +227,9 @@ static void setup_lpc(void)
 	MEC1322_INT_ENABLE(15) |= 1 << 14;
 	MEC1322_INT_BLK_EN |= 1 << 15;
 	task_enable_irq(MEC1322_IRQ_8042EM_IBF);
+	MEC1322_INT_ENABLE(15) |= 1 << 13;
+	MEC1322_INT_BLK_EN |= 1 << 15;
+	task_enable_irq(MEC1322_IRQ_8042EM_OBF);
 
 	/* Set up MailBox interface at 0x800/0x801 */
 	MEC1322_LPC_MAILBOX_BAR = 0x08008901;
@@ -450,6 +453,12 @@ void kb_ibf_interrupt(void)
 	task_wake(TASK_ID_KEYPROTO);
 }
 DECLARE_IRQ(MEC1322_IRQ_8042EM_IBF, kb_ibf_interrupt, 1);
+
+void kb_obf_interrupt(void)
+{
+	task_wake(TASK_ID_KEYPROTO);
+}
+DECLARE_IRQ(MEC1322_IRQ_8042EM_OBF, kb_obf_interrupt, 1);
 #endif
 
 int lpc_keyboard_has_char(void)
