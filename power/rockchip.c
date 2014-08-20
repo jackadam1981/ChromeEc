@@ -16,8 +16,6 @@
  *    it off until pwron is released and pressed again
  *
  *  When powered on:
- *  - The PMIC PWRON signal is released <= 1 second after the power button is
- *    released
  *  - Holding pwron for 10.2s powers off the AP
  *  - Pressing and releasing pwron within that 10.2s is ignored
  *  - If POWER_GOOD is dropped by the pmic, then we cut off the pmic source
@@ -145,8 +143,8 @@ static void set_ap_reset(int asserted)
  */
 static void set_pmic_pwron(int asserted)
 {
-	/* Signal is active-low */
-	gpio_set_level(GPIO_PMIC_PWRON_L, asserted ? 0 : 1);
+	/* Signal is active-high */
+	gpio_set_level(GPIO_PMIC_PWRON_H, asserted ? 1 : 0);
 }
 
 /**
@@ -513,7 +511,6 @@ enum power_state power_handle_state(enum power_state state)
 			if (wait_for_power_button_release(
 					DELAY_SHUTDOWN_ON_POWER_HOLD) ==
 					EC_SUCCESS) {
-				set_pmic_pwron(0);
 				return POWER_S3;
 			} else {
 				CPRINTS("long-press button, shutdown");
