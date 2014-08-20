@@ -55,19 +55,6 @@
 #define DELAY_FORCE_SHUTDOWN  (10200 * MSEC)  /* 10.2 seconds */
 
 /*
- * The minimum time to assert the PMIC PWRON pin is 20ms.
- * Give it longer to ensure the PMIC doesn't lose it.
- */
-#define PMIC_PWRON_DEBOUNCE_TIME  (200 * MSEC * 3)
-
-/*
- * The minimum time to assert the PMIC THERM pin is 32us. However,
- * it needs to be extended to about 50ms to let the 5V rail
- * dissipate fully.
- */
-#define PMIC_THERM_HOLD_TIME  (50 * MSEC)
-
-/*
  * If the power key is pressed to turn on, then held for this long, we
  * power off.
  *
@@ -138,8 +125,6 @@ static void set_ap_reset(int asserted)
 /**
  * Set the PMIC PWRON signal.
  *
- * Note that asserting requires holding for PMIC_PWRON_DEBOUNCE_TIME.
- *
  * @param asserted	Assert (=1) or deassert (=0) the signal.  This is the
  *			logical level of the pin, not the physical level.
  */
@@ -193,7 +178,6 @@ static int check_for_power_off_event(void)
 	now = get_time();
 	if (pressed) {
 		set_pmic_pwron(1);
-		usleep(PMIC_PWRON_DEBOUNCE_TIME);
 
 		if (!power_button_was_pressed) {
 			power_off_deadline.val = now.val + DELAY_FORCE_SHUTDOWN;
@@ -391,9 +375,8 @@ static void power_on(void)
 	 * until AP running
 	 */
 	gpio_set_flags(GPIO_SPI1_NSS, GPIO_INPUT);
-	/* Push the power button */
+
 	set_pmic_pwron(1);
-	usleep(PMIC_PWRON_DEBOUNCE_TIME);
 	gpio_set_flags(GPIO_SPI1_NSS, GPIO_INPUT | GPIO_INT_BOTH
 			| GPIO_PULL_UP);
 	disable_sleep(SLEEP_MASK_AP_RUN);
@@ -453,8 +436,7 @@ static void power_off(void)
 	lid_opened = 0;
 	enable_sleep(SLEEP_MASK_AP_RUN);
 	powerled_set_state(POWERLED_STATE_OFF);
-	/* Wait POWER GOOD pin to low */
-	usleep(PMIC_THERM_HOLD_TIME);
+
 	CPRINTS("power shutdown complete");
 }
 
