@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d33271f0_16d17905",
+        "filename": "power/rockchip.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2014-08-20T18:23:46Z",
+      "side": 0,
+      "message": "I renamed the nets in https://chromium-review.googlesource.com/#/c/213246/ so it\u0027s more clear what it does.",
+      "parentUuid": "d33271f0_13d62b87",
+      "revId": "a048d76e0df9244e2deb104201e14afc80e0864c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3344ad56_5d0a7688",
         "filename": "power/rockchip.c",
         "patchSetId": 2
