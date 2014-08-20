@@ -16,6 +16,24 @@
       "revId": "a048d76e0df9244e2deb104201e14afc80e0864c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3344ad56_7d61badd",
+        "filename": "power/rockchip.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2014-08-20T17:48:36Z",
+      "side": 0,
+      "message": "I confirmed with the hardware engineers, PMIC_PWRON_H has to be high while the system is on, the whole time. It\u0027s not just a pulse that signifies the power on event.\n\nI renamed it so it makes more sense.",
+      "parentUuid": "d33271f0_c1ffb074",
+      "revId": "a048d76e0df9244e2deb104201e14afc80e0864c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
