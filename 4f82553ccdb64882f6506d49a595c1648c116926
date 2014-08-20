@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3f77545_3f455a7d",
+        "filename": "power/rockchip.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-08-20T18:46:40Z",
+      "side": 1,
+      "message": "Remove the line. It is redundant.\n\"This is the level logical level of the pin, not the physical level.\"",
+      "revId": "4f82553ccdb64882f6506d49a595c1648c116926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
