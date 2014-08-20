@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d33271f0_13d62b87",
+        "filename": "power/rockchip.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-08-20T18:17:52Z",
+      "side": 0,
+      "message": "Replace the comment and describe the PMIC PWRON is level triggered and work with another pin to present the power rail state.",
+      "revId": "a048d76e0df9244e2deb104201e14afc80e0864c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3344ad56_5d0a7688",
+        "filename": "power/rockchip.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2014-08-20T18:17:52Z",
+      "side": 0,
+      "message": "I guess you would need to modify this function soon. :-)",
+      "revId": "a048d76e0df9244e2deb104201e14afc80e0864c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
