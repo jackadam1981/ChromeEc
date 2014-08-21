@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "33b90dab_aad26fdd",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1758,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-21T17:34:59Z",
+      "side": 1,
+      "message": "Ok, good enough.",
+      "parentUuid": "938399c4_a5638891",
+      "range": {
+        "startLine": 1758,
+        "startChar": 29,
+        "endLine": 1758,
+        "endChar": 45
+      },
+      "revId": "236d5765652e1208b005234b64a0d4926c83b63f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3344ad56_b05f4457",
         "filename": "util/ectool.c",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "yes, i would still like to do that, but i wanted to get something up for shawn to help him implement the kernel driver that will basically do the same as this.\n\nalso, had trouble matching sha1sum of the file on my workstation to the hash calculated in our code. which is weird because we have a python script: util/flash_pd.py that uses a built-in sha1 library to calculate the sha1 and that matches our code, so I have to dig deeper.",
       "parentUuid": "3344ad56_b05f4457",
+      "range": {
+        "startLine": 781,
+        "startChar": 24,
+        "endLine": 781,
+        "endChar": 53
+      },
+      "revId": "236d5765652e1208b005234b64a0d4926c83b63f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13aec965_498d05b8",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-21T17:34:59Z",
+      "side": 1,
+      "message": "Can you file a bug to store the SHA1 of the firmware at build time, and reference it here?  Then we can check the current code in without worrying we\u0027ll forget about the long-term fix.",
+      "parentUuid": "538da1f1_83cd204a",
       "range": {
         "startLine": 781,
         "startChar": 24,
