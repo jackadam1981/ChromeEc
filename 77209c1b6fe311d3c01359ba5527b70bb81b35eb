@@ -45,6 +45,29 @@
       "revId": "77209c1b6fe311d3c01359ba5527b70bb81b35eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33b90dab_fb36f718",
+        "filename": "board/samus/board.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-21T21:26:50Z",
+      "side": 1,
+      "message": "As I mentioned in person, you can\u0027t just copy this set of matrices from glimmer, it is board dependent based on the mounting of the chips. Please run the calibration routine by enabling CONFIG_ACCEL_CALIBRATE, and update matrices here if necessary.",
+      "range": {
+        "startLine": 274,
+        "startChar": 25,
+        "endLine": 274,
+        "endChar": 35
+      },
+      "revId": "77209c1b6fe311d3c01359ba5527b70bb81b35eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
