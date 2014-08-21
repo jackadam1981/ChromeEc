@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3497da6_a1b7da0c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 23
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-21T19:46:57Z",
+      "side": 1,
+      "message": "please add detail to how you tested. what console commands you used and what results you saw.",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 13
+      },
+      "revId": "c9194295fb62406897650942cbf78037596bd71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13432982_84f3ca4b",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-21T19:46:57Z",
+      "side": 1,
+      "message": "remove TODO, the bug has been closed",
+      "range": {
+        "startLine": 360,
+        "startChar": 11,
+        "endLine": 360,
+        "endChar": 18
+      },
+      "revId": "c9194295fb62406897650942cbf78037596bd71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b3497da6_41c7f680",
+        "filename": "driver/accel_kxcj9.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-21T19:46:57Z",
+      "side": 1,
+      "message": "not sure why const was removed here, looks to me like it can be const. same on a lot of args in this file. is there a reason const was removed?",
+      "range": {
+        "startLine": 174,
+        "startChar": 4,
+        "endLine": 174,
+        "endChar": 7
+      },
+      "revId": "c9194295fb62406897650942cbf78037596bd71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13432982_e403ae73",
+        "filename": "include/math_util.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-21T19:46:57Z",
+      "side": 1,
+      "message": "there\u0027s a good reason for passing in pointers here. these are big data structures, and if you pass in by value it adds a lot to the stack.",
+      "range": {
+        "startLine": 46,
+        "startChar": 51,
+        "endLine": 46,
+        "endChar": 52
+      },
+      "revId": "c9194295fb62406897650942cbf78037596bd71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
