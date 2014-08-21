@@ -56,7 +56,7 @@ void tim2_interrupt(void)
 {
 	STM32_TIM_DIER(2) = 0; /* disable match interrupt */
 	task_clear_pending_irq(STM32_IRQ_TIM2);
-	last_event = 1 << 29 /* task event wake */;
+	last_event = 1 << 31 /* task event timer */;
 }
 DECLARE_IRQ(STM32_IRQ_TIM2, tim2_interrupt, 1);
 
