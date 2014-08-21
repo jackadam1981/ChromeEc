@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13aec965_26f8f626",
+        "filename": "board/zinger/runtime.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-08-21T16:20:25Z",
+      "side": 1,
+      "message": "agreed.  Looks like http://infocenter.arm.com/help/index.jsp?topic\u003d/com.arm.doc.dai0321a/BIHBFEIB.html does a decent job of explaining cpsie i ; isb relationship",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 0
+      },
+      "revId": "688708b487b26f05ccd322ea77e6757247508fc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
