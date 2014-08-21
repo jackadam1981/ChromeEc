@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "d3a7d188_38ca51e7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 23
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-21T20:35:51Z",
+      "side": 1,
+      "message": "Sure, I add detail test message here.",
+      "parentUuid": "b3497da6_a1b7da0c",
+      "revId": "c9194295fb62406897650942cbf78037596bd71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13432982_84f3ca4b",
         "filename": "common/motion_sense.c",
         "patchSetId": 23
@@ -42,6 +60,24 @@
         "endLine": 360,
         "endChar": 18
       },
+      "revId": "c9194295fb62406897650942cbf78037596bd71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33b90dab_7079c6d4",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-21T20:35:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13432982_84f3ca4b",
       "revId": "c9194295fb62406897650942cbf78037596bd71b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "13aec965_da0535e5",
+        "filename": "driver/accel_kxcj9.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-21T20:35:51Z",
+      "side": 1,
+      "message": "The arg type is int, a copy by value type.\n\nconst is not required for a copy by value argument. \nconst is required for a pointer or reference type if the function does not change its value.",
+      "parentUuid": "b3497da6_41c7f680",
+      "revId": "c9194295fb62406897650942cbf78037596bd71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13432982_e403ae73",
         "filename": "include/math_util.h",
         "patchSetId": 23
@@ -88,6 +142,24 @@
         "endLine": 46,
         "endChar": 52
       },
+      "revId": "c9194295fb62406897650942cbf78037596bd71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3a7d188_f89d99e2",
+        "filename": "include/math_util.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-21T20:35:51Z",
+      "side": 1,
+      "message": "matrix_3x3_t is a array type, indeed it is a pointer type already.\nWe do not need to pass a pointer to a pointer type.\n\nBoth works, keep array type is simpler.  There is no stack overhead at all.\n\nI did the following tests.\n$ cat ~/t.c \n#include\u003cstdio.h\u003e\n#include\u003cstdlib.h\u003e\n#include\u003cstdint.h\u003e\n\ntypedef int vector_3_t[3];\ntypedef float matrix_3x3_t[3][3];\n\nvoid r(vector_3_t a, vector_3_t b)\n{\n  b[0] \u003d 2*a[0];\n  b[1] \u003d 2*a[1];\n  b[2] \u003d 2*a[2];\n}\nvoid f(matrix_3x3_t m)\n{\n  int t \u003d 11;\n  m[1][1] \u003d t;\n  printf(\"%p\\n\", \u0026t);\n}\nvoid g(matrix_3x3_t *m)\n{\n  int t \u003d 12;\n  (*m)[1][1] \u003d t;\n  printf(\"%p\\n\", \u0026t);\n}\nint main(void)\n{\n   matrix_3x3_t m;\n   vector_3_t a,b;\n   a[0]\u003d1;\n   a[1]\u003d2;\n   a[2]\u003d3;\n   r(a, b);\n   f(m);\n   printf(\"%d %d %d\\n\", b[0], b[1], b[2]);\n   printf(\"%f\\n\", m[1][1]);\n   g(\u0026m);\n   printf(\"%f\\n\", m[1][1]);\n   return 0;\n}\n\nOutput:\n$ ~/a.out \n0x7fffc26d416c\n2 4 6\n11.000000\n0x7fffc26d416c\n12.000000",
+      "parentUuid": "13432982_e403ae73",
       "revId": "c9194295fb62406897650942cbf78037596bd71b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
