@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13432982_04b97a60",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-21T19:49:56Z",
+      "side": 1,
+      "message": "need more detail in commit notes",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "77209c1b6fe311d3c01359ba5527b70bb81b35eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13432982_24c0f6c5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-21T19:49:56Z",
+      "side": 1,
+      "message": "please add more detail to test. also, please test sysfs interface to accels works with this CL.",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 13
+      },
+      "revId": "77209c1b6fe311d3c01359ba5527b70bb81b35eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
