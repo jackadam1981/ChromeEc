@@ -22,6 +22,30 @@
       "revId": "cd02d6b05e619d461c7337d8a9b67f444ff2b2e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53076152_65320c11",
+        "filename": "common/usb_port_power_smart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2014-08-22T18:22:52Z",
+      "side": 1,
+      "message": "That makes it \u003e80col which becomes a wrapping mess that makes it harder to read than it is now.",
+      "parentUuid": "13f169a2_a3d86802",
+      "range": {
+        "startLine": 75,
+        "startChar": 17,
+        "endLine": 75,
+        "endChar": 37
+      },
+      "revId": "cd02d6b05e619d461c7337d8a9b67f444ff2b2e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
