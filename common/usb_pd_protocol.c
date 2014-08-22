@@ -1269,8 +1269,9 @@ void pd_task(void)
 
 			break;
 		case PD_STATE_SNK_DISCOVERY:
-			/* Wait for source cap expired */
-			if (pd[port].last_state != pd[port].task_state)
+			/* Wait for source cap expired only if we are enabled */
+			if ((pd[port].last_state != pd[port].task_state)
+			    && pd_comm_enabled)
 				set_state_timeout(port,
 						  get_time().val +
 						  PD_T_SINK_WAIT_CAP,
