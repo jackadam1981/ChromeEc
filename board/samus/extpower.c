@@ -14,10 +14,25 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "timer.h"
+
+#define EXTPOWER_DEBOUNCE_US  (30 * MSEC)
+
+static int debounced_extpower_presence;
 
 int extpower_is_present(void)
 {
-	return gpio_get_level(GPIO_AC_PRESENT);
+	return debounced_extpower_presence;
+}
+
+static int is_ac_present(void)
+{
+	int i = 0;
+	int cnt = 0;
+	for (i = 0; i < 9; i++)
+		if (gpio_get_level(GPIO_AC_PRESENT))
+			cnt++;
+	return cnt > 6;
 }
 
 /**
@@ -25,10 +40,17 @@ int extpower_is_present(void)
  */
 static void extpower_deferred(void)
 {
+	int extpower_presence = is_ac_present();
+
+	if (extpower_presence == debounced_extpower_presence)
+		return;
+
+	debounced_extpower_presence = extpower_presence;
+
 	hook_notify(HOOK_AC_CHANGE);
 
 	/* Forward notification to host */
-	if (extpower_is_present())
+	if (extpower_presence)
 		host_set_single_event(EC_HOST_EVENT_AC_CONNECTED);
 	else
 		host_set_single_event(EC_HOST_EVENT_AC_DISCONNECTED);
@@ -37,6 +59,8 @@ DECLARE_DEFERRED(extpower_deferred);
 
 static void extpower_buffer_to_pch(void)
 {
+	debounced_extpower_presence = is_ac_present();
+
 	if (chipset_in_state(CHIPSET_STATE_HARD_OFF)) {
 		/* Drive low in G3 state */
 		gpio_set_level(GPIO_PCH_ACOK, 0);
@@ -59,7 +83,7 @@ void extpower_interrupt(enum gpio_signal signal)
 	extpower_buffer_to_pch();
 
 	/* Trigger deferred notification of external power change */
-	hook_call_deferred(extpower_deferred, 0);
+	hook_call_deferred(extpower_deferred, EXTPOWER_DEBOUNCE_US);
 }
 
 static void extpower_init(void)
