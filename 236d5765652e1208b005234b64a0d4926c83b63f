@@ -141,6 +141,30 @@
       "revId": "236d5765652e1208b005234b64a0d4926c83b63f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13f169a2_b587ffc2",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-08-22T19:31:56Z",
+      "side": 1,
+      "message": "filed crosbug.com/p/31552",
+      "parentUuid": "13aec965_498d05b8",
+      "range": {
+        "startLine": 781,
+        "startChar": 24,
+        "endLine": 781,
+        "endChar": 53
+      },
+      "revId": "236d5765652e1208b005234b64a0d4926c83b63f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
