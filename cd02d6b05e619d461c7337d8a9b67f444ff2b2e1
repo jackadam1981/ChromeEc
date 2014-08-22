@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13f169a2_a3d86802",
+        "filename": "common/usb_port_power_smart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-22T18:16:00Z",
+      "side": 1,
+      "message": "you can make this even better:\ngpio_set_level(port_id ? GPIO_USB2_ILIM_SEL_L : GPIO_USB1_ILIM_SEL_L, !sel)\n\nbut, just like before then you would have to change it in the #else below. up to you",
+      "range": {
+        "startLine": 75,
+        "startChar": 17,
+        "endLine": 75,
+        "endChar": 37
+      },
+      "revId": "cd02d6b05e619d461c7337d8a9b67f444ff2b2e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
