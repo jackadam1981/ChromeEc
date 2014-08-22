@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33b3cdfb_da92e18f",
+        "filename": "board/samus/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-22T18:20:44Z",
+      "side": 1,
+      "message": "this will need to rebase on top of randall\u0027s change that is in CQ: https://chromium-review.googlesource.com/#/c/210570/\n\nHe added code to reset PD MCU when hard reboot, so you\u0027ll have to modify his code to change the name of the GPIO and toggle with opposite polarity.",
+      "range": {
+        "startLine": 63,
+        "startChar": 5,
+        "endLine": 63,
+        "endChar": 16
+      },
+      "revId": "255db4bf8d7bc0c82625ccdcb8b16b89885998fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
