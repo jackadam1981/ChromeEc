@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53076152_93f93e2c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-22T01:27:30Z",
+      "side": 1,
+      "message": "don\u0027t need this part of the if(). pd_is_connected() includes all states but DISCONNECTED and DISABLED.",
+      "range": {
+        "startLine": 799,
+        "startChar": 30,
+        "endLine": 799,
+        "endChar": 54
+      },
+      "revId": "cb00946fe857fbd4bd9144c153b80103e998bcaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53076152_d303c673",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1321,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-22T01:27:30Z",
+      "side": 1,
+      "message": "would like to try to get rid of this delay. if so, maybe we can combine again SOFT_RESET with SOFT_RESET_SENT to have one state",
+      "range": {
+        "startLine": 1321,
+        "startChar": 23,
+        "endLine": 1321,
+        "endChar": 25
+      },
+      "revId": "cb00946fe857fbd4bd9144c153b80103e998bcaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
