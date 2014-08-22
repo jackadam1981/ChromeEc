@@ -152,7 +152,7 @@ int pd_custom_vdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 		*(payload + cnt - 1) = 0;
 		ccprintf("version: %s\n", (char *)(payload+1));
 		break;
-	case VDO_CMD_RW_HASH:
+	case VDO_CMD_READ_INFO:
 		ccprintf("RW Hash: ");
 		payload++; /* skip cmd */
 		for (i = 0; i < cnt - 1; i++)
