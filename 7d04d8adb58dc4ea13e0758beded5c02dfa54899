@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "13f169a2_eed53fc9",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-22T00:14:08Z",
+      "side": 1,
+      "message": "Done, couldn\u0027t quite use that macro since it converts in the wrong direction, but since we do it twice, I just added the inverted macro.",
+      "parentUuid": "d3a7d188_cd0581e5",
+      "range": {
+        "startLine": 295,
+        "startChar": 4,
+        "endLine": 295,
+        "endChar": 46
+      },
+      "revId": "7d04d8adb58dc4ea13e0758beded5c02dfa54899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33b90dab_2d0f7998",
         "filename": "board/zinger/usb_pd_policy.c",
         "patchSetId": 20
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "13f169a2_2ef3c77f",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-22T00:14:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33b90dab_2d0f7998",
+      "range": {
+        "startLine": 296,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 43
+      },
+      "revId": "7d04d8adb58dc4ea13e0758beded5c02dfa54899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13aec965_4f4ae572",
         "filename": "board/zinger/usb_pd_policy.c",
         "patchSetId": 20
@@ -59,6 +107,30 @@
       "writtenOn": "2014-08-21T18:52:08Z",
       "side": 1,
       "message": "nit, VBUS_MV(vbus_volt)",
+      "range": {
+        "startLine": 311,
+        "startChar": 8,
+        "endLine": 311,
+        "endChar": 50
+      },
+      "revId": "7d04d8adb58dc4ea13e0758beded5c02dfa54899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53076152_704f70f8",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-22T00:14:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13aec965_4f4ae572",
       "range": {
         "startLine": 311,
         "startChar": 8,
