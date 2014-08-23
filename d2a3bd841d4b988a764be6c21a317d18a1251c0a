@@ -1,0 +1,343 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53076152_06906385",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 26
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-23T01:39:23Z",
+      "side": 1,
+      "message": "move this reference to the BUGs label. You can have more than one BUG seperated by a comma.",
+      "range": {
+        "startLine": 10,
+        "startChar": 23,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "d2a3bd841d4b988a764be6c21a317d18a1251c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33b3cdfb_f1334826",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 26
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-23T01:39:23Z",
+      "side": 1,
+      "message": "this is samus specific, don\u0027t say this. i would write:\n\n\"changed motion_sense task to assume sensors are unpowered in G3 and re-initialize sensors every time coming out of G3\"",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 39
+      },
+      "revId": "d2a3bd841d4b988a764be6c21a317d18a1251c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13f169a2_3fc2c83f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 26
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-23T01:39:23Z",
+      "side": 1,
+      "message": "you don\u0027t need to list sysfs directory. just a oneliner that you verified sysfs interface:\ncd /sys/bus/iio/devices/iio:device1\ncat in_accel_z_base_input\n1024 when sitting flat",
+      "range": {
+        "startLine": 21,
+        "startChar": 16,
+        "endLine": 21,
+        "endChar": 23
+      },
+      "revId": "d2a3bd841d4b988a764be6c21a317d18a1251c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53076152_e66f1fc8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 26
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-23T01:39:23Z",
+      "side": 1,
+      "message": "again don\u0027t need to list the results of calibration. just that you ran calibration and it succeeded.",
+      "range": {
+        "startLine": 100,
+        "startChar": 7,
+        "endLine": 100,
+        "endChar": 17
+      },
+      "revId": "d2a3bd841d4b988a764be6c21a317d18a1251c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33b3cdfb_4cd61b63",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 26
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-23T01:39:23Z",
+      "side": 1,
+      "message": "Also, did you test the ectool interface to motion_sense? You should verify that ectool motion_sense works. just verify the accel magnitude matches and you don\u0027t get any errors.",
+      "revId": "d2a3bd841d4b988a764be6c21a317d18a1251c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13f169a2_ffc16065",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-23T01:39:23Z",
+      "side": 1,
+      "message": "This needs a comment:\n\n/* Time to wait in between failed attempts to initialize sensors */\n\nAnd the value is way too small. If we are failing to initialize, I would retry at more like 1 second, or 500ms.",
+      "range": {
+        "startLine": 27,
+        "startChar": 8,
+        "endLine": 27,
+        "endChar": 35
+      },
+      "revId": "d2a3bd841d4b988a764be6c21a317d18a1251c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53076152_8649f37b",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-23T01:39:23Z",
+      "side": 1,
+      "message": "can this todo be removed now or do you think it is still relevant?",
+      "range": {
+        "startLine": 312,
+        "startChar": 3,
+        "endLine": 312,
+        "endChar": 7
+      },
+      "revId": "d2a3bd841d4b988a764be6c21a317d18a1251c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33b3cdfb_f11d08ca",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-23T01:39:23Z",
+      "side": 1,
+      "message": "why did you take out roundup from the help description?",
+      "range": {
+        "startLine": 788,
+        "startChar": 10,
+        "endLine": 788,
+        "endChar": 13
+      },
+      "revId": "d2a3bd841d4b988a764be6c21a317d18a1251c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33b3cdfb_111b5cd5",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 835,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-23T01:39:23Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 835,
+        "startChar": 10,
+        "endLine": 835,
+        "endChar": 13
+      },
+      "revId": "d2a3bd841d4b988a764be6c21a317d18a1251c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33b3cdfb_f1b8a85e",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 857,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-23T01:39:23Z",
+      "side": 1,
+      "message": "don\u0027t think the masks really provide anything here, the data should always by \u003c 16 bits.",
+      "range": {
+        "startLine": 857,
+        "startChar": 8,
+        "endLine": 857,
+        "endChar": 14
+      },
+      "revId": "d2a3bd841d4b988a764be6c21a317d18a1251c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53076152_86e0d331",
+        "filename": "driver/accelgyro_lsm6ds0.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-23T01:39:23Z",
+      "side": 1,
+      "message": "should we return an error here?",
+      "range": {
+        "startLine": 337,
+        "startChar": 2,
+        "endLine": 337,
+        "endChar": 8
+      },
+      "revId": "d2a3bd841d4b988a764be6c21a317d18a1251c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13f169a2_7f5bb030",
+        "filename": "driver/accelgyro_lsm6ds0.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-23T01:39:23Z",
+      "side": 1,
+      "message": "maybe add a comment for what units you are trying to scale to. i.e. for accel 1G\u003d1024, for gyro I don\u0027t even know",
+      "range": {
+        "startLine": 358,
+        "startChar": 5,
+        "endLine": 358,
+        "endChar": 25
+      },
+      "revId": "d2a3bd841d4b988a764be6c21a317d18a1251c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53076152_46fd4bd1",
+        "filename": "driver/accelgyro_lsm6ds0.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-23T01:39:23Z",
+      "side": 1,
+      "message": "combine this line and previous line",
+      "range": {
+        "startLine": 404,
+        "startChar": 8,
+        "endLine": 404,
+        "endChar": 9
+      },
+      "revId": "d2a3bd841d4b988a764be6c21a317d18a1251c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33b3cdfb_d14f24a3",
+        "filename": "include/accelgyro.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-23T01:39:23Z",
+      "side": 1,
+      "message": "is this true? i thought it was Hz.",
+      "range": {
+        "startLine": 74,
+        "startChar": 38,
+        "endLine": 74,
+        "endChar": 41
+      },
+      "revId": "d2a3bd841d4b988a764be6c21a317d18a1251c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33b3cdfb_919ccce9",
+        "filename": "test/math_util.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-23T01:39:23Z",
+      "side": 1,
+      "message": "yeah, this test is not very interesting. what I was more trying to get at is testing the matrix multiplication and other math functions. if you have time, can you replace these tests with tests for some of the math operations like rotate and multiple.",
+      "range": {
+        "startLine": 47,
+        "startChar": 8,
+        "endLine": 47,
+        "endChar": 19
+      },
+      "revId": "d2a3bd841d4b988a764be6c21a317d18a1251c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
