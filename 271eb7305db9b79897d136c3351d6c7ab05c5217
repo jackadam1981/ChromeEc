@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33a82d90_75490079",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-25T17:13:46Z",
+      "side": 1,
+      "message": "This won\u0027t compile if both BATTERY_CUT_OFF and SMBUS configs are defined.\n\nSuggest putting this inside its own block\n\n#ifdef CONFIG_SMBUS\n        {\n        // code goes here\n        }\n#endif",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 4
+      },
+      "revId": "271eb7305db9b79897d136c3351d6c7ab05c5217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
