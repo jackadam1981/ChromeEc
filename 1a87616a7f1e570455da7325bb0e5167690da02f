@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9399d985_7b32d310",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-25T17:07:23Z",
+      "side": 1,
+      "message": "send use?",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 16
+      },
+      "revId": "1a87616a7f1e570455da7325bb0e5167690da02f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9399d985_1b4aa771",
+        "filename": "board/fruitpie/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-25T17:07:23Z",
+      "side": 1,
+      "message": "info?\n\nShould this print the sub-fields, or just the hex-dump of the entire payload?",
+      "range": {
+        "startLine": 156,
+        "startChar": 15,
+        "endLine": 156,
+        "endChar": 19
+      },
+      "revId": "1a87616a7f1e570455da7325bb0e5167690da02f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f3c4d562_beb7dd0c",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-25T17:07:23Z",
+      "side": 1,
+      "message": "device \u003d model?\n\nObviously, with only 8 bits, it won\u0027t be unique to each specific charger...\n\nIs 8 bits enough?",
+      "range": {
+        "startLine": 139,
+        "startChar": 53,
+        "endLine": 139,
+        "endChar": 59
+      },
+      "revId": "1a87616a7f1e570455da7325bb0e5167690da02f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
