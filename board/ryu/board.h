@@ -34,6 +34,13 @@
 #undef CONFIG_TASK_PROFILING
 #undef CONFIG_CONSOLE_CMDHELP
 
+/*
+ * Pericom I2C workaround
+ * TODO(crosbug.com/p/31529): Remove this.
+ */
+#define CONFIG_I2C_SCL_GATE_ADDR 0x4a
+#define CONFIG_I2C_SCL_GATE_GPIO GPIO_PERICOM_CLK_EN
+
 /* Charging/Power configuration */
 #undef CONFIG_BATTERY_RYU /* TODO implement */
 #define CONFIG_BATTERY_BQ27541
