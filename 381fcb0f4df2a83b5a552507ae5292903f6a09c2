@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f389353b_3364f026",
+        "filename": "common/motion_calibrate.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-25T21:52:00Z",
+      "side": 1,
+      "message": "There is a reason this was static and only local to this file. It is very specific to this module, and this module only gets compiled in under certain test cases. I don\u0027t think it should be made global unless other modules start using this.\n\nCan you please revert it. If we start using it in other places we can add a CL specifically for that.",
+      "revId": "381fcb0f4df2a83b5a552507ae5292903f6a09c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9399d985_b96fe0c8",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-25T21:52:00Z",
+      "side": 1,
+      "message": "is this needed? doesn\u0027t look like it.",
+      "range": {
+        "startLine": 20,
+        "startChar": 10,
+        "endLine": 20,
+        "endChar": 14
+      },
+      "revId": "381fcb0f4df2a83b5a552507ae5292903f6a09c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f3c4d562_5e17a41d",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-25T21:52:00Z",
+      "side": 1,
+      "message": "put back in motion_calibrate.c",
+      "range": {
+        "startLine": 326,
+        "startChar": 4,
+        "endLine": 326,
+        "endChar": 21
+      },
+      "revId": "381fcb0f4df2a83b5a552507ae5292903f6a09c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f389353b_736e7808",
+        "filename": "include/uart.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-25T21:52:00Z",
+      "side": 1,
+      "message": "remove this.",
+      "range": {
+        "startLine": 253,
+        "startChar": 4,
+        "endLine": 253,
+        "endChar": 21
+      },
+      "revId": "381fcb0f4df2a83b5a552507ae5292903f6a09c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
