@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3c4d562_7b32b710",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 21
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-25T15:03:12Z",
+      "side": 1,
+      "message": "too vague, maybe \"samus: enable accel \u0026 gyro sensors\"\nor \"samus: enable motion sensors\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 21
+      },
+      "revId": "09e23a90798ce2b928f6ec0e112d717eb840f3dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9399d985_157436dd",
+        "filename": "board/samus/board.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-25T15:03:12Z",
+      "side": 1,
+      "message": "do we need this? doesn\u0027t seem like it.",
+      "range": {
+        "startLine": 19,
+        "startChar": 29,
+        "endLine": 19,
+        "endChar": 35
+      },
+      "revId": "09e23a90798ce2b928f6ec0e112d717eb840f3dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f3c4d562_3b283fa3",
+        "filename": "board/samus/board.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-25T15:03:12Z",
+      "side": 1,
+      "message": "this should not be defined. it\u0027s only meant to be defined in order to do calibration, we shouldn\u0027t leave it on as it takes a lot of memory.",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 30
+      },
+      "revId": "09e23a90798ce2b928f6ec0e112d717eb840f3dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
