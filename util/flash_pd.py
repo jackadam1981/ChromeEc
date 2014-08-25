@@ -5,12 +5,11 @@
 """Flash PD PSU RW firmware over the USBPD comm channel using console.
 
   Example:
-    util/flash_pd.py ./build/zinger/ec.RW.flat
+    util/flash_pd.py --board zinger ./build/zinger/ec.RW.flat
 """
 
 import array
 import errno
-import hashlib
 import logging
 import optparse
 import os
@@ -23,11 +22,10 @@ import serial
 # TODO(tbroch): Discuss adding hdctools as an EC package RDEPENDS
 from servo import client
 from servo import multiservo
+from flash_utils import get_rw_flash_size
 
 VERSION = '0.0.1'
 
-# RW area is half of the 32-kB flash minus the hash storage area
-MAX_FW_SIZE = 16 * 1024 - 32
 # Hash of RW when erased (set to all F's)
 ERASED_RW_HASH = 'd582e94d 0d12a61c 1199927e 5610c036 2e2870a9'
 
@@ -199,16 +197,12 @@ def flash_pd(options):
 
   with open(options.firmware) as fd:
     fw = fd.read()
-    fw_size = len(fw)
-    # Compute SHA-1 hash for the full (padded) RW firmware
-    padded_fw = fw + '\xff' * (MAX_FW_SIZE - fw_size)
-    sha = hashlib.sha1(padded_fw).digest()
-    sha_str = ' '.join(['%08x' % (w) for w in array.array('I', sha)])
 
-    # pad the firmware to a multiple of 6 U32
-    if fw_size % 24:
-      fw += '\xff'*(24 - fw_size % 24)
-    words = array.array('I', fw)
+  # pad the firmware to a multiple of 6 U32
+  fw_size = len(fw)
+  if fw_size % 24:
+    fw += '\xff'*(24 - fw_size % 24)
+  words = array.array('I', fw)
 
   logging.info('Current PD FW version is %s', ec.get_version())
   if options.versiononly:
@@ -244,6 +238,8 @@ def flash_pd(options):
 
   if not done:
     raise FlashPDError('Erase failed')
+  if in_rw:
+    raise FlashPDError('Not in RO after erase')
 
   logging.info('Successfully erased flash.')
 
@@ -260,13 +256,10 @@ def flash_pd(options):
     if not i % 0x10:
       logging.info('Chunk %d of %d done.', i, len(words) / 6)
 
-  # write new firmware hash
-  ec.flash_command('hash ' + sha_str)
   # reboot in RW
   ec.reboot()
 
   logging.info('Flashing DONE.')
-  logging.info('SHA-1: %s', sha_str)
   logging.info('New PD FW version is %s', ec.get_version())
 
 
@@ -293,6 +286,8 @@ def parse_args():
       )
   parser = optparse.OptionParser(version='%prog ' + VERSION)
   parser.description = description
+  parser.add_option('-b', '--board', action='store', type='string',
+                    default=None, help='board name to flash pd to')
   parser.add_option('-d', '--debug', action='store_true', default=False,
                     help='enable debug messages.')
   parser.add_option('-s', '--server', help='host where servod is running',
@@ -328,8 +323,9 @@ def parse_args():
     raise FlashPDError('Unable to find file %s' % options.firmware)
 
   fw_size = os.path.getsize(options.firmware)
-  if fw_size > MAX_FW_SIZE:
-    raise FlashPDError('Firmware too large %d/%d' % (fw_size, MAX_FW_SIZE))
+  max_rw_fw_size = get_rw_flash_size(options.board)
+  if fw_size > max_rw_fw_size:
+    raise FlashPDError('Firmware too large %d/%d' % (fw_size, max_rw_fw_size))
 
   return options
 
