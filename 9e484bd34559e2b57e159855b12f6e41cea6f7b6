@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "739e256e_1aae21ba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-08-25T20:19:42Z",
+      "side": 1,
+      "message": "hub?",
+      "range": {
+        "startLine": 7,
+        "startChar": 25,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "9e484bd34559e2b57e159855b12f6e41cea6f7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13c88974_8502cca3",
+        "filename": "board/ryu_sh/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-08-25T20:19:42Z",
+      "side": 1,
+      "message": "Please remove unused header files. (e.g. batter/charger)",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 17
+      },
+      "revId": "9e484bd34559e2b57e159855b12f6e41cea6f7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "739e256e_3a1e8553",
+        "filename": "board/ryu_sh/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-08-25T20:19:42Z",
+      "side": 1,
+      "message": "vbus_evt and unhandled_evt are not used.",
+      "revId": "9e484bd34559e2b57e159855b12f6e41cea6f7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13c88974_e5f0e06d",
+        "filename": "board/ryu_sh/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-08-25T20:19:42Z",
+      "side": 1,
+      "message": "USB_PD related config flags are undefined by default, so you don\u0027t need them here.",
+      "revId": "9e484bd34559e2b57e159855b12f6e41cea6f7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
