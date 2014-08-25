@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3c4d562_1b40e31e",
+        "filename": "driver/accelgyro_lsm6ds0.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-25T15:54:31Z",
+      "side": 1,
+      "message": "have you seen this error before? seems like we would want to return an error here, but I don\u0027t know how often, if ever, this happens.\n\nI think it\u0027s fine for now, but if we end up seeing this error, we may want to revisit how to respond to it.",
+      "range": {
+        "startLine": 343,
+        "startChar": 9,
+        "endLine": 343,
+        "endChar": 19
+      },
+      "revId": "da2d226718b486efc32318cd93c754a8f7e0dba5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
