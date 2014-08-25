@@ -118,7 +118,7 @@ static void set_pwrbtn_to_pch(int high)
 	 * If the battery is discharging and low enough we'd shut down the
 	 * system, don't press the power button.
 	 */
-#ifndef BOARD_STRAGO /* STRAGO ToDo CleanUp */
+#ifndef STRAGO_PO /* STRAGO ToDo CleanUp */
 	if (!high && charge_want_shutdown()) {
 		CPRINTS("PB PCH pwrbtn ignored due to battery level");
 		high = 1;
