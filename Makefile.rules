@@ -18,6 +18,9 @@ host-srcs := $(foreach u,$(host-util-bin),$(sort $($(u)-objs:%.o=util/%.c) util/
 skip_boards = OWNERS host it8380dev
 boards := $(filter-out $(skip_boards),$(subst board/,,$(wildcard board/*)))
 
+# TODO(tbroch): Find better way to generate this list
+rw_hash_boards = hoho zinger
+
 # Create output directories if necessary
 _dir_create := $(foreach d,$(dirs),$(shell [ -d $(out)/$(d) ] || \
 	    mkdir -p $(out)/$(d)))
@@ -39,6 +42,7 @@ cmd_obj_to_bin = $(OBJCOPY) --gap-fill=0xff -O binary $^ $(out)/$*.bin.tmp
 cmd_flat_to_obj = $(CC) -T $(out)/firmware_image.lds -nostdlib $(CPPFLAGS) \
                   -Wl,--build-id=none -o $@ $<
 cmd_elf_to_flat = $(OBJCOPY) -O binary $^ $@
+cmd_add_rw_hash = util/add_rw_hash.py $(BOARD) $@ $@
 cmd_elf_to_dis = $(OBJDUMP) -D $< > $@
 cmd_elf = $(LD) $(objs) $(LDFLAGS) -o $@ -T $< -Map $(out)/$*.map
 cmd_exe = $(CC) $(objs) $(HOST_TEST_LDFLAGS) -o $@
@@ -151,8 +155,13 @@ $(out)/%.obj: common/firmware_image.S $(out)/firmware_image.lds $(flat-y)
 $(out)/%.dis: $(out)/%.elf
 	$(call quiet,elf_to_dis,OBJDUMP)
 
-$(out)/%.flat: $(out)/%.elf
+$(out)/%.RO.flat: $(out)/%.RO.elf
 	$(call quiet,elf_to_flat,OBJCOPY)
+
+$(out)/%.RW.flat: $(out)/%.RW.elf
+	$(call quiet,elf_to_flat,OBJCOPY)
+	$(if $(filter $(BOARD),$(rw_hash_boards)),\
+		$(call quiet,add_rw_hash,RW_HASH))
 
 $(out)/%.elf: $(out)/%.lds $(objs)
 	$(call quiet,elf,LD     )

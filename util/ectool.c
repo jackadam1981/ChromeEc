@@ -22,7 +22,6 @@
 #include "lock/gec_lock.h"
 #include "misc_util.h"
 #include "panic.h"
-#include "sha1.h"
 
 /* Command line options */
 enum {
@@ -780,7 +779,6 @@ int cmd_flash_protect(int argc, char *argv[])
 
 /* PD image size is 16k minus 32 bits for the RW hash */
 #define PD_RW_IMAGE_SIZE (16 * 1024 - 32)
-static struct sha1_ctx ctx;
 int cmd_flash_pd(int argc, char *argv[])
 {
 	struct ec_params_usb_pd_fw_update *p =
@@ -869,30 +867,6 @@ int cmd_flash_pd(int argc, char *argv[])
 		if (rv < 0)
 			goto pd_flash_error;
 	}
-
-	/*
-	 * TODO(crosbug.com/p/31552): Would be better to have sha1 in the RW
-	 * binary and we won't have to calculate it here and send it down.
-	 */
-	/* Calculate sha1 of new RW flash */
-	sha1_init(&ctx);
-	sha1_update(&ctx, buf, fsize);
-	sha1_update(&ctx, fw_padding, padding_size);
-	sha1_final(&ctx);
-
-	/* Write expected flash hash */
-	fprintf(stderr, "Setting expected RW hash\n");
-	p->cmd = USB_PD_FW_FLASH_HASH;
-	p->size = 20;
-	memcpy(data, ctx.buf.b, p->size);
-	for (i = 0; i < 5; i++)
-		fprintf(stderr, "%08x ", *(data + i));
-	fprintf(stderr, "\n");
-	rv = ec_command(EC_CMD_USB_PD_FW_UPDATE, 0,
-			p, p->size + sizeof(*p), NULL, 0);
-
-	if (rv < 0)
-		goto pd_flash_error;
 
 	free(buf);
 	fprintf(stderr, "Complete\n");
