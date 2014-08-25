@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 /* EC for Cranky board configuration */
+/* *** */
 
 #include "adc.h"
 #include "adc_chip.h"
