@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f3c4d562_4ff0d1b0",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-25T20:06:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33b90dab_4aa1737e",
+      "range": {
+        "startLine": 240,
+        "startChar": 1,
+        "endLine": 240,
+        "endChar": 23
+      },
+      "revId": "b8e49296baf5d730e172db083e9393ffcaa9179e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13aec965_691561a4",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f3c4d562_8ffae98e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-25T20:06:56Z",
+      "side": 1,
+      "message": "renamed",
+      "parentUuid": "13aec965_691561a4",
+      "range": {
+        "startLine": 275,
+        "startChar": 1,
+        "endLine": 275,
+        "endChar": 30
+      },
+      "revId": "b8e49296baf5d730e172db083e9393ffcaa9179e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3a7d188_07f3784d",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2014-08-21T17:32:37Z",
       "side": 1,
       "message": "EC_PD_STATUS_HOST_EVENT?\n\n(EC_CMD_* implies it\u0027s a host command code)",
+      "range": {
+        "startLine": 2503,
+        "startChar": 8,
+        "endLine": 2503,
+        "endChar": 35
+      },
+      "revId": "b8e49296baf5d730e172db083e9393ffcaa9179e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f389353b_ad36bd17",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2503,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-25T20:06:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3a7d188_07f3784d",
       "range": {
         "startLine": 2503,
         "startChar": 8,
