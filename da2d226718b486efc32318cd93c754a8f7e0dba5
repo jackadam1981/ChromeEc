@@ -22,6 +22,24 @@
       "revId": "da2d226718b486efc32318cd93c754a8f7e0dba5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13c88974_e55c605f",
+        "filename": "driver/accelgyro_lsm6ds0.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-25T22:29:58Z",
+      "side": 1,
+      "message": "I saw this error that is due to the sensor data is not ready yet.\n\nDone",
+      "parentUuid": "f3c4d562_1b40e31e",
+      "revId": "da2d226718b486efc32318cd93c754a8f7e0dba5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
