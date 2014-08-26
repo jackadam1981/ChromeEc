@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3cd11a8_bd2c63b7",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-08-26T22:53:24Z",
+      "side": 1,
+      "message": "This function is getting obscured. Can we make a separate function for I2C?",
+      "range": {
+        "startLine": 518,
+        "startChar": 5,
+        "endLine": 518,
+        "endChar": 64
+      },
+      "revId": "61a148687aebd540665b7222a11f5334594ed849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3cd11a8_1d1eb77c",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-08-26T22:53:24Z",
+      "side": 1,
+      "message": "Is this correct? There was no wait_for_ack in the original code.",
+      "range": {
+        "startLine": 569,
+        "startChar": 54,
+        "endLine": 569,
+        "endChar": 55
+      },
+      "revId": "61a148687aebd540665b7222a11f5334594ed849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
