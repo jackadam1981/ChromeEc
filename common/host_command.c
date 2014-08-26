@@ -576,6 +576,24 @@ DECLARE_HOST_COMMAND(EC_CMD_RESEND_RESPONSE,
 		     EC_VER_MASK(0));
 #endif /* CONFIG_HOST_COMMAND_STATUS */
 
+
+static int g_vboot_mode;
+static int host_command_entering_mode(struct host_cmd_handler_args *args)
+{
+	struct ec_params_entering_mode *param =
+		(struct ec_params_entering_mode *)args->params;
+	args->response_size = 0;
+	g_vboot_mode = param->vboot_mode;
+	return EC_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_ENTERING_MODE,
+		host_command_entering_mode, EC_VER_MASK(0));
+
+int ec_get_vboot_mode(void)
+{
+	return g_vboot_mode;
+}
+
 /* Returns what we tell it to. */
 static int host_command_test_protocol(struct host_cmd_handler_args *args)
 {

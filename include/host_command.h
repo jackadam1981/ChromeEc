@@ -207,4 +207,10 @@ void host_packet_receive(struct host_packet *pkt);
  */
 void host_throttle_cpu(int throttle);
 
+/**
+ * EC: Get verify boot mode
+ * @return vboot_mode: recovery, dev or normal
+ */
+int ec_get_vboot_mode(void);
+
 #endif  /* __CROS_EC_HOST_COMMAND_H */
