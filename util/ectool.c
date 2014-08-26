@@ -778,6 +778,38 @@ int cmd_flash_protect(int argc, char *argv[])
 	return 0;
 }
 
+int cmd_rw_hash_pd(int argc, char *argv[])
+{
+	struct ec_params_usb_pd_rw_hash_entry *p =
+		(struct ec_params_usb_pd_rw_hash_entry *)ec_outbuf;
+	int i, rv;
+	char *e;
+
+	if (argc < 7) {
+		fprintf(stderr, "Usage: %s <dev_id> <SHA1[0]> ... <SHA1[4]>\n",
+			argv[0]);
+		return -1;
+	}
+
+	p->dev_id = strtol(argv[1], &e, 0);
+	if (e && *e) {
+		fprintf(stderr, "Bad device ID\n");
+		return -1;
+	}
+
+	for (i = 2; i < 7; i++) {
+		p->dev_rw_hash.w[i - 2] = strtol(argv[i], &e, 0);
+		if (e && *e) {
+			fprintf(stderr, "Bad SHA1 digest\n");
+			return -1;
+		}
+	}
+	rv = ec_command(EC_CMD_USB_PD_RW_HASH_ENTRY, 0, p, sizeof(*p), NULL, 0);
+
+	return rv;
+}
+
+
 /* PD image size is 16k minus 32 bits for the RW hash */
 #define PD_RW_IMAGE_SIZE (16 * 1024 - 32)
 static struct sha1_ctx ctx;
@@ -4703,6 +4735,7 @@ const struct command commands[] = {
 	{"gpioget", cmd_gpio_get},
 	{"gpioset", cmd_gpio_set},
 	{"hangdetect", cmd_hang_detect},
+	{"rwhashpd", cmd_rw_hash_pd},
 	{"hello", cmd_hello},
 	{"kbpress", cmd_kbpress},
 	{"i2cread", cmd_i2c_read},
