@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "13d4092d_992adf01",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-08-26T17:20:43Z",
+      "side": 1,
+      "message": "Now that the image is already padded, could we also get rid of this fixed number here?",
+      "range": {
+        "startLine": 781,
+        "startChar": 8,
+        "endLine": 781,
+        "endChar": 24
+      },
+      "revId": "e596d68b35f4cda6a0801c0119d6395a416340e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1376c912_9a885d66",
         "filename": "util/ectool.c",
         "patchSetId": 3
