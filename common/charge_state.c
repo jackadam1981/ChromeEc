@@ -20,6 +20,9 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#ifdef CONFIG_SB_FIRMWARE_UPDATE
+#include "sb_fw_update.h"
+#endif
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHARGER, outstr)
@@ -715,6 +718,12 @@ void charger_task(void)
 	uint8_t batt_flags;
 
 	while (1) {
+#ifdef CONFIG_SB_FIRMWARE_UPDATE
+		if (sb_fw_update_in_progress()) {
+			task_wait_event(MAX_SLEEP_USEC);
+			continue;
+		}
+#endif
 		state_common(ctx);
 
 #ifdef CONFIG_CHARGER_TIMEOUT_HOURS
