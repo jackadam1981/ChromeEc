@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73c54578_59ac4323",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-26T14:59:09Z",
+      "side": 1,
+      "message": "I think this -32 needs to be removed now",
+      "range": {
+        "startLine": 781,
+        "startChar": 38,
+        "endLine": 781,
+        "endChar": 40
+      },
+      "revId": "e596d68b35f4cda6a0801c0119d6395a416340e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1376c912_9a885d66",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-26T14:59:09Z",
+      "side": 1,
+      "message": "Also need to revert changes in Makefile.toolchain and include/sha1.h, and util/build.mk from when I added the sha1 common code to util build.",
+      "revId": "e596d68b35f4cda6a0801c0119d6395a416340e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
