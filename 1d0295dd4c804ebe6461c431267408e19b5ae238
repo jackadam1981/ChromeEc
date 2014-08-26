@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73c54578_825940c1",
+        "filename": "util/add_rw_hash.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-08-26T18:19:29Z",
+      "side": 1,
+      "message": "I think we are only using 20 bytes in the PD.",
+      "range": {
+        "startLine": 66,
+        "startChar": 13,
+        "endLine": 66,
+        "endChar": 16
+      },
+      "revId": "1d0295dd4c804ebe6461c431267408e19b5ae238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
