@@ -69,10 +69,25 @@
 #define PMIC_WARM_RESET_L_HOLD_TIME (4 * MSEC)
 
 /*
- * The first time the PMIC sees power (AC or battery) it needs 200ms (+/-12%
- * oscillator tolerance) for the RTC startup. In addition there is a startup
- * time of approx. 0.5msec until V2_5 regulator starts up. */
-#define PMIC_RTC_STARTUP (225 * MSEC)
+ * Startup time for the PMIC source regulator.
+ */
+#define PMIC_SOURCE_STARTUP_TIME (50 * MSEC)
+
+/*
+ * Time before PMIC can be reset.
+ */
+#define PMIC_STARTUP_MS 300
+
+/*
+ * Hold time fo the RK808 PMIC reset.
+ */
+#define PMIC_RESET_HOLD_TIME (50 * MSEC)
+
+/*
+ * Time until AP is ready to talk SPI, before then there's SPI garbage
+ */
+#define PMIC_SPI_READY_TIME (100 * MSEC)
+
 
 /* TODO(crosbug.com/p/25047): move to HOOK_POWER_BUTTON_CHANGE */
 /* 1 if the power button was pressed last time we checked */
@@ -103,14 +118,14 @@ static void chipset_turn_off_power_rails(void);
 
 
 /**
- * Set the AP RESET signal.
+ * Set the PMIC RESET signal.
  *
  * @param asserted	Resetting (=1) or idle (=0)
  */
-static void set_ap_reset(int asserted)
+static void set_pmic_reset(int asserted)
 {
 	/* Signal is active-high */
-	gpio_set_level(GPIO_AP_RESET, asserted ? 1 : 0);
+	gpio_set_level(GPIO_PMIC_RESET, asserted ? 1 : 0);
 }
 
 
@@ -260,9 +275,6 @@ static void chipset_turn_off_power_rails(void)
 	set_pmic_pwren(0);
 	/* Close the pmic power source immediately */
 	set_pmic_source(0);
-
-	/* Hold the reset pin so that the AP stays in off mode (rev <= 2.0) */
-	set_ap_reset(1);
 }
 
 void chipset_force_shutdown(void)
@@ -335,44 +347,43 @@ static int check_for_power_on_event(void)
  */
 static void power_on(void)
 {
-	uint64_t t;
+	int i;
+
+	set_pmic_source(1);
+	usleep(PMIC_SOURCE_STARTUP_TIME);
+
+	set_pmic_pwren(1);
+	for (i = 0; i < PMIC_STARTUP_MS; i++)
+		usleep(1 * MSEC);
+	/* BUG: usleep does not work for large ammounts of time.
+	 * TODO: Link bug #
+	 */
+
+	/* Reset the PMIC to make sure it's in a known state. */
+	set_pmic_reset(1);
+	usleep(PMIC_RESET_HOLD_TIME);
+	set_pmic_reset(0);
+
+	/* Wait till the AP has SPI ready */
+	usleep(PMIC_SPI_READY_TIME);
+
+
+	gpio_set_flags(GPIO_SPI1_NSS, GPIO_INPUT | GPIO_INT_BOTH
+			| GPIO_PULL_UP);
 
 	/* enable interrupt */
 	gpio_set_flags(GPIO_SUSPEND_L, GPIO_INPUT | GPIO_INT_BOTH
 			| GPIO_PULL_DOWN);
 
 	gpio_set_flags(GPIO_EC_INT, GPIO_OUTPUT | GPIO_OUT_HIGH);
-	/* Make sure we de-assert the PMI_SOURCE and AP_RESET_L pin. */
-	set_pmic_source(1);
-	set_ap_reset(0);
-
-	/*
-	 * Before we push PMIC power button, wait for the PMI RTC ready, which
-	 * takes PMIC_RTC_STARTUP from the AC/battery is plugged in.
-	 */
-	t = get_time().val;
-	if (t < PMIC_RTC_STARTUP) {
-		uint32_t wait = PMIC_RTC_STARTUP - t;
-		CPRINTS("wait for %dms for PMIC RTC start-up",
-			wait / MSEC);
-		usleep(wait);
-	}
 
 	/*
 	 * When power_on() is called, we are at S5S3. Initialize components
 	 * to ready state before AP is up.
 	 */
 	hook_notify(HOOK_CHIPSET_PRE_INIT);
-	/* Change SPI1_NSS pin to high-Z to reduce power draw,
-	 * until AP running
-	 */
-	gpio_set_flags(GPIO_SPI1_NSS, GPIO_INPUT);
 
-	set_pmic_pwren(1);
-	gpio_set_flags(GPIO_SPI1_NSS, GPIO_INPUT | GPIO_INT_BOTH
-			| GPIO_PULL_UP);
 	disable_sleep(SLEEP_MASK_AP_RUN);
-
 	powerled_set_state(POWERLED_STATE_ON);
 
 	/* Call hooks now that AP is running */
