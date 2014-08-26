@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3d0553d_0183edb4",
+        "filename": "power/rockchip.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2014-08-26T23:38:15Z",
+      "side": 1,
+      "message": "It always hangs here if reset_hold\u003e~100ms. Why?",
+      "revId": "b6a617341d5032763664a0d76c703cf6cbe125e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
