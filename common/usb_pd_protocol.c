@@ -1888,4 +1888,28 @@ DECLARE_HOST_COMMAND(EC_CMD_USB_PD_FW_UPDATE,
 		     hc_remote_flash,
 		     EC_VER_MASK(0));
 
+#define RW_HASH_ENTRIES 4
+static struct ec_params_usb_pd_rw_hash_entry rw_hash_table[RW_HASH_ENTRIES];
+
+static int hc_remote_rw_hash_entry(struct host_cmd_handler_args *args)
+{
+	int i, idx = 0;
+	const struct ec_params_usb_pd_rw_hash_entry *p = args->params;
+	for (i = 0; i < RW_HASH_ENTRIES; i++) {
+		if (p->dev_id == rw_hash_table[i].dev_id) {
+			idx = i;
+			break;
+		}
+	}
+	/* TODO(tbroch): Add LRU policy instead of 1st entry */
+	memcpy(&rw_hash_table[idx], p, sizeof(*p));
+	ccprintf("PD RW_HASH - stored dev_id:%d at index:%d\n",
+		 rw_hash_table[idx].dev_id, idx);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_USB_PD_RW_HASH_ENTRY,
+		     hc_remote_rw_hash_entry,
+		     EC_VER_MASK(0));
+
 #endif /* CONFIG_COMMON_RUNTIME */
