@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "73c54578_c29df85d",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-08-26T18:08:18Z",
+      "side": 1,
+      "message": "I don\u0027t know of a way to retrieve this. How about we just remove the padding code (line 819) and compare the size of the input image to PD_RW_IMAGE_SIZE? This way we can warn the user if the input image does not have hash appended.",
+      "parentUuid": "73c54578_df14b3aa",
+      "range": {
+        "startLine": 781,
+        "startChar": 8,
+        "endLine": 781,
+        "endChar": 24
+      },
+      "revId": "e596d68b35f4cda6a0801c0119d6395a416340e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1376c912_9a885d66",
         "filename": "util/ectool.c",
         "patchSetId": 3
