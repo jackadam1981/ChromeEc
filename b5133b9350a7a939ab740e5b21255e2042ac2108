@@ -22,6 +22,23 @@
       "revId": "b5133b9350a7a939ab740e5b21255e2042ac2108",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "533da14b_a343045a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2560,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-08-27T16:14:16Z",
+      "side": 1,
+      "message": "Should we change this to uint8_t dev_rw_hash[SHA1_DIGEST_SIZE]? I\u0027m worried about possible endian mismatch issues.",
+      "revId": "b5133b9350a7a939ab740e5b21255e2042ac2108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
