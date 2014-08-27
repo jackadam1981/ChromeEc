@@ -1173,6 +1173,11 @@ void pd_task(void)
 			    (cc2_volt < PD_SRC_VNC)) {
 				pd[port].polarity = !(cc1_volt < PD_SRC_VNC);
 				pd_select_polarity(port, pd[port].polarity);
+				/* Set to USB SS initially */
+#ifdef CONFIG_USBC_SS_MUX
+				board_set_usb_mux(port, TYPEC_MUX_USB,
+						  pd[port].polarity);
+#endif
 				/* Enable VBUS */
 				pd_set_power_supply_ready(port);
 				set_state(port, PD_STATE_SRC_DISCOVERY);
