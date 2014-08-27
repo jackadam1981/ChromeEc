@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73eaa5f0_54ce6269",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1904,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-08-27T13:58:20Z",
+      "side": 1,
+      "message": "Doesn\u0027t even need to be least recently used for now, could make it easy and just increment the index every time this HC is received, and loop back to 0 after all have been written.",
+      "range": {
+        "startLine": 1904,
+        "startChar": 22,
+        "endLine": 1904,
+        "endChar": 25
+      },
+      "revId": "b5133b9350a7a939ab740e5b21255e2042ac2108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
