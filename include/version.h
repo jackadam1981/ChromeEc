@@ -23,4 +23,5 @@ extern const struct version_struct version_data;
 extern const char build_info[];
 extern const char __version_struct_offset[];
 
+uint32_t ver_get_numcommits(void);
 #endif  /* __CROS_EC_VERSION_H */
