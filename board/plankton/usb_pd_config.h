@@ -83,8 +83,9 @@ static inline void pd_tx_enable(int port, int polarity)
 	/* PA6 is SPI1 MISO */
 	gpio_set_alternate_function(GPIO_A, 0x0040, 0);
 
-	/* set the low level reference */
-	gpio_set_level(GPIO_USBC_CC_TX_EN, 1);
+	/* set the polarity */
+	gpio_set_level(GPIO_USBC_CC1_TX_EN, !polarity);
+	gpio_set_level(GPIO_USBC_CC2_TX_EN, polarity);
 }
 
 /* Put the TX driver in Hi-Z state */
@@ -96,7 +97,8 @@ static inline void pd_tx_disable(int port, int polarity)
 				   & ~(3 << (2*6)))
 				   |  (1 << (2*6));
 	/* put the low level reference in Hi-Z */
-	gpio_set_level(GPIO_USBC_CC_TX_EN, 0);
+	gpio_set_level(GPIO_USBC_CC1_TX_EN, 0);
+	gpio_set_level(GPIO_USBC_CC2_TX_EN, 0);
 }
 
 /* we know the plug polarity, do the right configuration */
@@ -104,8 +106,10 @@ static inline void pd_select_polarity(int port, int polarity)
 {
 	/* use the right comparator non inverted input for COMP1 */
 	STM32_COMP_CSR = (STM32_COMP_CSR & ~STM32_COMP_CMP1INSEL_MASK)
-			| STM32_COMP_CMP1EN
-			| STM32_COMP_CMP1INSEL_INM6;
+			| STM32_COMP_CMP1EN | STM32_COMP_CMP1POL
+			| (polarity ?
+			   STM32_COMP_CMP1INSEL_INM4 :
+			   STM32_COMP_CMP1INSEL_INM6);
 }
 
 /* Initialize pins used for TX and put them in Hi-Z */
@@ -121,18 +125,27 @@ static inline void pd_set_host_mode(int port, int enable)
 	if (enable) {
 		/* Source mode, disable charging */
 		gpio_set_level(GPIO_USBC_CHARGE_EN, 0);
-		/* High Z for no pull-down resistor on CC */
+		/* High Z for no pull-down resistor on CC1 */
 		gpio_set_flags_by_mask(GPIO_A, (1 << 9), GPIO_INPUT);
-		/* Set pull-up resistor on CC */
+		/* Set pull-up resistor on CC1 */
 		gpio_set_flags_by_mask(GPIO_A, (1 << 2), GPIO_OUT_HIGH);
+		/* High Z for no pull-down resistor on CC2 */
+		gpio_set_flags_by_mask(GPIO_B, (1 << 7), GPIO_INPUT);
+		/* Set pull-up resistor on CC2 */
+		gpio_set_flags_by_mask(GPIO_B, (1 << 6), GPIO_OUT_HIGH);
 	} else {
 		/* Device mode, disable VBUS */
-		gpio_set_level(GPIO_USBC_5V_EN, 0);
-		gpio_set_level(GPIO_USBC_12V_EN, 0);
-		/* High Z for no pull-up resistor on CC */
+		gpio_set_level(GPIO_VBUS_CHARGER_EN, 0);
+		gpio_set_level(GPIO_USBC_VSEL_0, 0);
+		gpio_set_level(GPIO_USBC_VSEL_1, 0);
+		/* High Z for no pull-up resistor on CC1 */
 		gpio_set_flags_by_mask(GPIO_A, (1 << 2), GPIO_INPUT);
-		/* Set pull-down resistor on CC. */
+		/* Set pull-down resistor on CC1 */
 		gpio_set_flags_by_mask(GPIO_A, (1 << 9), GPIO_OUT_LOW);
+		/* High Z for no pull-up resistor on CC2 */
+		gpio_set_flags_by_mask(GPIO_B, (1 << 6), GPIO_INPUT);
+		/* Set pull-down resistor on CC2 */
+		gpio_set_flags_by_mask(GPIO_B, (1 << 7), GPIO_OUT_LOW);
 		/* Set charge enable */
 		gpio_set_level(GPIO_USBC_CHARGE_EN, 1);
 	}
@@ -140,8 +153,10 @@ static inline void pd_set_host_mode(int port, int enable)
 
 static inline int pd_adc_read(int port, int cc)
 {
-	/* Always return CC1 */
-	return adc_read_channel(ADC_CH_CC1_PD);
+	if (cc == 0)
+		return adc_read_channel(ADC_CH_CC1_PD);
+	else
+		return adc_read_channel(ADC_CH_CC2_PD);
 }
 
 static inline int pd_snk_is_vbus_provided(int port)
