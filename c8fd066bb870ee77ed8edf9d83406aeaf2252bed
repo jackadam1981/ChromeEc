@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f35a15dc_45a24aca",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-28T17:52:12Z",
+      "side": 1,
+      "message": "Is it harmful to include smbus.h without CONFIG_SMBUS?\n\nIf it is not harmful, no need for the #ifdef here.\n\nIf it is harmful, then I suggest putting the #ifdef CONFIG_SMBUS check inside smbus.h.",
+      "range": {
+        "startLine": 13,
+        "startChar": 7,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "c8fd066bb870ee77ed8edf9d83406aeaf2252bed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
