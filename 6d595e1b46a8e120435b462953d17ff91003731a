@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "f35a15dc_f99bdf20",
+        "filename": "common/charge_state_v1.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-28T19:46:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f35a15dc_45400abc",
+      "revId": "6d595e1b46a8e120435b462953d17ff91003731a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f35a15dc_25370e65",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 23
@@ -42,6 +60,24 @@
         "endLine": 25,
         "endChar": 32
       },
+      "revId": "6d595e1b46a8e120435b462953d17ff91003731a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f35a15dc_598b13d2",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-28T19:46:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f35a15dc_25370e65",
       "revId": "6d595e1b46a8e120435b462953d17ff91003731a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "f35a15dc_39697732",
+        "filename": "common/host_command.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-28T19:46:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "736f0577_c9e8915f",
+      "revId": "6d595e1b46a8e120435b462953d17ff91003731a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f35a15dc_056c5241",
         "filename": "common/host_command.c",
         "patchSetId": 23
@@ -88,6 +142,24 @@
         "endLine": 622,
         "endChar": 21
       },
+      "revId": "6d595e1b46a8e120435b462953d17ff91003731a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f35a15dc_b90ec798",
+        "filename": "common/host_command.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-28T19:46:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f35a15dc_056c5241",
       "revId": "6d595e1b46a8e120435b462953d17ff91003731a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -117,6 +189,24 @@
     },
     {
       "key": {
+        "uuid": "d37ef124_92f2bc47",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 2349,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-28T19:46:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f35a15dc_281b63d6",
+      "revId": "6d595e1b46a8e120435b462953d17ff91003731a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d37ef124_0cd0f786",
         "filename": "include/host_command.h",
         "patchSetId": 23
@@ -128,6 +218,24 @@
       "writtenOn": "2014-08-28T18:56:57Z",
       "side": 1,
       "message": "(VBOOT_MODE_* in ec_commands.h)\n\nOtherwise, the code which calls this doesn\u0027t know what constants to use.",
+      "revId": "6d595e1b46a8e120435b462953d17ff91003731a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d37ef124_121eccc5",
+        "filename": "include/host_command.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-08-28T19:46:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d37ef124_0cd0f786",
       "revId": "6d595e1b46a8e120435b462953d17ff91003731a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
