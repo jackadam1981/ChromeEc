@@ -22,6 +22,30 @@
       "revId": "fd5692b0ab78c8afbecfa221a9c134e0430a02bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33ee6d35_82085cbc",
+        "filename": "util/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-08-28T22:29:01Z",
+      "side": 1,
+      "message": "When you build locally (from platform/ec), BUILDCC\u003d\u003dHOSTCC, so we are fine.\nWhen you build an image, HOSTCC is the crosscompiler, but the output is put in /build/$BOARD, so we should be fine as well.",
+      "parentUuid": "f35a15dc_3aaf2580",
+      "range": {
+        "startLine": 9,
+        "startChar": 39,
+        "endLine": 9,
+        "endChar": 47
+      },
+      "revId": "fd5692b0ab78c8afbecfa221a9c134e0430a02bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
