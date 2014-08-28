@@ -194,8 +194,6 @@ static int check_for_power_off_event(void)
 
 	now = get_time();
 	if (pressed) {
-		set_pmic_pwren(1);
-
 		if (!power_button_was_pressed) {
 			power_off_deadline.val = now.val + DELAY_FORCE_SHUTDOWN;
 			CPRINTS("power waiting for long press %u",
@@ -210,7 +208,6 @@ static int check_for_power_off_event(void)
 		}
 	} else if (power_button_was_pressed) {
 		CPRINTS("power off cancel");
-		set_pmic_pwren(0);
 		timer_cancel(TASK_ID_CHIPSET);
 	}
 
@@ -515,6 +512,7 @@ enum power_state power_handle_state(enum power_state state)
 			if (wait_for_power_button_release(
 					DELAY_SHUTDOWN_ON_POWER_HOLD) ==
 					EC_SUCCESS) {
+				set_pmic_pwren(0);
 				return POWER_S3;
 			} else {
 				CPRINTS("long-press button, shutdown");
