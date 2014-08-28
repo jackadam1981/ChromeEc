@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "736f0577_89fcd94d",
+        "filename": "common/crc8.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-28T18:05:07Z",
+      "side": 1,
+      "message": "Style nit: the function comment only needs to where it\u0027s declared, not also where it\u0027s implemented.\n\nIt only needs to be above the implementation for static functions (which don\u0027t have a separate declaration).\n\n(this applies to several other places in the code, too)",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 3
+      },
+      "revId": "c1fec7b757388c654a3504094829badb7ab70b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f35a15dc_45b56ab4",
+        "filename": "include/config.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-28T18:05:07Z",
+      "side": 1,
+      "message": "Include CRC-8 utility function",
+      "range": {
+        "startLine": 379,
+        "startChar": 3,
+        "endLine": 379,
+        "endChar": 19
+      },
+      "revId": "c1fec7b757388c654a3504094829badb7ab70b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f35a15dc_c5c71a27",
+        "filename": "include/config.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-28T18:05:07Z",
+      "side": 1,
+      "message": "Support smbus interface",
+      "range": {
+        "startLine": 798,
+        "startChar": 0,
+        "endLine": 798,
+        "endChar": 34
+      },
+      "revId": "c1fec7b757388c654a3504094829badb7ab70b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "736f0577_a953dd9e",
+        "filename": "include/i2c.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-28T18:05:07Z",
+      "side": 1,
+      "message": "/**\n * @return non-zero if I2C bus is busy.\n */",
+      "range": {
+        "startLine": 154,
+        "startChar": 11,
+        "endLine": 154,
+        "endChar": 15
+      },
+      "revId": "c1fec7b757388c654a3504094829badb7ab70b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f35a15dc_0563f26b",
+        "filename": "include/smbus.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-28T18:05:07Z",
+      "side": 1,
+      "message": "These are not part of the API used by other EC functions.  They are an implementation detail.\n\nMove to smbus.c, or to a separate header file.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 11
+      },
+      "revId": "c1fec7b757388c654a3504094829badb7ab70b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
