@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f35a15dc_3aaf2580",
+        "filename": "util/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-08-28T20:28:28Z",
+      "side": 1,
+      "message": "I think this is going to break flash_ec, as now you have cross compiled stm32mon. Perhaps we need to compile two stm32mon, one for our workstations and one for target host.",
+      "range": {
+        "startLine": 9,
+        "startChar": 39,
+        "endLine": 9,
+        "endChar": 47
+      },
+      "revId": "fd5692b0ab78c8afbecfa221a9c134e0430a02bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
