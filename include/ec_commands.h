@@ -2540,6 +2540,7 @@ enum usb_pd_fw_update_cmds {
 	USB_PD_FW_FLASH_ERASE,
 	USB_PD_FW_FLASH_WRITE,
 	USB_PD_FW_FLASH_HASH,
+	USB_PD_FW_GET_HASH,
 };
 
 struct ec_params_usb_pd_fw_update {
@@ -2549,6 +2550,10 @@ struct ec_params_usb_pd_fw_update {
 	uint8_t reserved;  /* reserved */
 	uint32_t size;     /* Size to write in bytes */
 	/* Followed by data to write */
+} __packed;
+
+struct ec_response_usb_pd_fw_update {
+	uint32_t hash[5];
 } __packed;
 
 

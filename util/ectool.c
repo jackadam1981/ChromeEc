@@ -785,6 +785,7 @@ int cmd_flash_pd(int argc, char *argv[])
 {
 	struct ec_params_usb_pd_fw_update *p =
 		(struct ec_params_usb_pd_fw_update *)ec_outbuf;
+	struct ec_response_usb_pd_fw_update r;
 	int i;
 	int rv, fsize, step = 96, padding_size;
 	char *e;
@@ -893,6 +894,29 @@ int cmd_flash_pd(int argc, char *argv[])
 
 	if (rv < 0)
 		goto pd_flash_error;
+
+	/* Reboot */
+	fprintf(stderr, "Rebooting\n");
+	p->cmd = USB_PD_FW_REBOOT;
+	p->size = 0;
+	rv = ec_command(EC_CMD_USB_PD_FW_UPDATE, 0,
+			p, p->size + sizeof(*p), NULL, 0);
+
+	if (rv < 0)
+		goto pd_flash_error;
+
+	/* Check hash */
+	fprintf(stderr, "Check hash\n");
+	p->cmd = USB_PD_FW_GET_HASH;
+	p->size = 0;
+	rv = ec_command(EC_CMD_USB_PD_FW_UPDATE, 0,
+			p, p->size + sizeof(*p), &r, sizeof(r));
+	if (memcmp(r.hash, ctx.buf.b, SHA1_DIGEST_SIZE)) {
+		for (i = 0; i < 5; i++)
+			fprintf(stderr, "%08x ", r.hash[i]);
+		fprintf(stderr, "\n");
+		goto pd_flash_error;
+	}
 
 	free(buf);
 	fprintf(stderr, "Complete\n");

@@ -1816,6 +1816,7 @@ DECLARE_HOST_COMMAND(EC_CMD_USB_PD_CONTROL,
 static int hc_remote_flash(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_usb_pd_fw_update *p = args->params;
+	struct ec_response_usb_pd_fw_update *r=args->response;
 	int port = p->port;
 	const uint32_t *data = &(p->size) + 1;
 	int i, size;
@@ -1873,6 +1874,14 @@ static int hc_remote_flash(struct host_cmd_handler_args *args)
 				task_wait_event(10*MSEC);
 		}
 		break;
+	case USB_PD_FW_GET_HASH:
+		ccprintf("PD Update - Get hash\n");
+		memcpy(r->hash, pd[port].dev_rw_hash, SHA1_DIGEST_SIZE);
+		for (i=0; i<5; i++)
+			ccprintf("%08x ", r->hash[i]);
+		ccprintf("\n");
+		args->response_size = sizeof(*r);
+		return EC_RES_SUCCESS;
 
 	default:
 		return EC_RES_INVALID_PARAM;
