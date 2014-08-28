@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "736f0577_c9a0917e",
+        "filename": "common/i2c.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-28T17:57:01Z",
+      "side": 1,
+      "message": "Please do not use attribute(weak).  It makes it hard to determine what version of a function will be used without actually seeing what gets linked.\n\nInstead, move this implementation to chip/stm32/i2c.c, where it can be compiled all the time and shared between the STM32 variants.",
+      "range": {
+        "startLine": 125,
+        "startChar": 2,
+        "endLine": 125,
+        "endChar": 22
+      },
+      "revId": "12457c71f0a175f7e81d5882a0ea75e1d1ebb1c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
