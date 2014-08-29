@@ -452,6 +452,9 @@
 /* Support DMA transfers inside the EC */
 #undef CONFIG_DMA
 
+/* Use the common interrupt handlers for DMA IRQs */
+#define CONFIG_DMA_DEFAULT_HANDLERS
+
 /* Compile extra debugging and tests for the DMA module */
 #undef CONFIG_DMA_HELP
 
