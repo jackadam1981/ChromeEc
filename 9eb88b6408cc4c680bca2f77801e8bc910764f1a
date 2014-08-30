@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b3a7bd22_5ffd9b7a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-08-30T02:43:43Z",
+      "side": 1,
+      "message": "Added todo",
+      "parentUuid": "13a1690c_f46d9013",
+      "revId": "9eb88b6408cc4c680bca2f77801e8bc910764f1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53b7614c_b98e6323",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "53b7614c_24ceca68",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-08-30T02:43:43Z",
+      "side": 1,
+      "message": "Just split the difference between current measurements on hoho.  Presently w/ Ra \u003d\u003d 1K and Rd \u003d\u003d 5.1K I was seeing ~400mV w/ Rd and ~100mV on Ra\n\n\n+DavidS for comment",
+      "parentUuid": "53b7614c_b98e6323",
+      "revId": "9eb88b6408cc4c680bca2f77801e8bc910764f1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13a1690c_b47308f6",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2014-08-30T01:37:43Z",
       "side": 1,
       "message": "bikeshedding of the day : it\u0027s more GET_POLARITY than SET_POLARITY.",
+      "revId": "9eb88b6408cc4c680bca2f77801e8bc910764f1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13a1690c_d718560e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-08-30T02:43:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13a1690c_b47308f6",
       "revId": "9eb88b6408cc4c680bca2f77801e8bc910764f1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
