@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13a1690c_f46d9013",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-08-30T01:37:43Z",
+      "side": 1,
+      "message": "we need to implement that case even though we don\u0027t have cable ...\nbut that will be another CL I guess",
+      "revId": "9eb88b6408cc4c680bca2f77801e8bc910764f1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53b7614c_b98e6323",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-08-30T01:37:43Z",
+      "side": 1,
+      "message": "with ground offsets and all the margins, I\u0027m not sure this number is right,\nwe need to review with David S if this hasn\u0027t be done.",
+      "revId": "9eb88b6408cc4c680bca2f77801e8bc910764f1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13a1690c_b47308f6",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-08-30T01:37:43Z",
+      "side": 1,
+      "message": "bikeshedding of the day : it\u0027s more GET_POLARITY than SET_POLARITY.",
+      "revId": "9eb88b6408cc4c680bca2f77801e8bc910764f1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
