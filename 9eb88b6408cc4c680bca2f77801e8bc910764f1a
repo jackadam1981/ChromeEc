@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "b3c09dc0_63ef2220",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2014-08-30T02:52:01Z",
+      "side": 1,
+      "message": "With all the margining and whatnot, the best threshold is 200mV.",
+      "parentUuid": "53b7614c_24ceca68",
+      "revId": "9eb88b6408cc4c680bca2f77801e8bc910764f1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13a1690c_b47308f6",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
