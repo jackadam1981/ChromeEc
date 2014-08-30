@@ -1,0 +1,51 @@
+#!/usr/bin/env python
+# Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+import os
+import sys
+import time
+import usb
+
+TWINKIE_VID=0x18d1
+TWINKIE_PID=0x500a
+
+EP_CON_TX=0x02
+EP_CON_RX=0x81
+EP_SNIFFER=0x83
+
+def findTwinkie():
+	busses = usb.busses()
+	for bus in busses:
+		devices = bus.devices
+		for dev in devices:
+			if dev.idVendor == TWINKIE_VID and dev.idProduct == TWINKIE_PID:
+				print "Twinkie FOUND"
+				return dev
+	return None
+
+def twinkieConsole(hnd):
+	hnd.bulkWrite(EP_CON_TX,"help\r\n")
+	while True:
+		try:
+			txt = hnd.bulkRead(EP_CON_RX,64)
+		except usb.core.USBError:
+			inp = os.read(sys.stdin.fileno(),64)
+			hnd.bulkWrite(EP_CON_TX, inp)
+			continue
+		if len(txt):
+			sys.stdout.write(txt.tostring())
+
+def main():
+	dev = findTwinkie()
+	if not dev:
+		sys.stderr.write("No Twinkie found\n")
+		return
+	hnd = dev.open()
+	hnd.claimInterface(0)
+
+	twinkieConsole(hnd)
+
+if __name__=="__main__":
+	main()
