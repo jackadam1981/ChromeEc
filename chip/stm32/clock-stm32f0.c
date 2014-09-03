@@ -13,12 +13,96 @@
 #include "hooks.h"
 #include "registers.h"
 #include "util.h"
+#include "system.h"
 
 /* use 48Mhz USB-synchronized High-speed oscillator */
 #define HSI48_CLOCK 48000000
 
 /* use PLL at 38.4MHz as system clock. */
 #define PLL_CLOCK 38400000
+
+#ifdef CONFIG_LOW_POWER_IDLE
+void clock_refresh_console_in_use(void)
+{
+}
+
+
+
+#ifdef CONFIG_FORCE_CONSOLE_RESUME
+static void enable_serial_wakeup(int enable)
+{
+	static uint32_t save_exticr;
+
+	if (enable) {
+		/**
+		 * allow to wake up from serial port (RX on pin PA10)
+		 * by setting it as a GPIO with an external interrupt.
+		 */
+		save_exticr = STM32_SYSCFG_EXTICR(10 / 4);
+		STM32_SYSCFG_EXTICR(10 / 4) = (save_exticr & ~(0xf << 8));
+		STM32_EXTI_RTSR |= (1<<10);
+	} else {
+		/* serial port wake up : don't go back to sleep */
+		if (STM32_EXTI_PR & (1 << 10))
+			disable_sleep(SLEEP_MASK_FORCE_NO_DSLEEP);
+		/* restore keyboard external IT on PC10 */
+		STM32_SYSCFG_EXTICR(10 / 4) = save_exticr;
+	}
+}
+#else
+static void enable_serial_wakeup(int enable)
+{
+}
+#endif
+
+/* Idle task.  Executed when no tasks are ready to be scheduled. */
+void __idle(void)
+{
+	while (1) {
+		asm volatile("cpsid i");
+
+// 		if (DEEP_SLEEP_ALLOWED && (next_delay > STOP_MODE_LATENCY)) {
+			/* deep-sleep in STOP mode */
+
+// 			enable_serial_wakeup(1);
+
+			/* set deep sleep bit */
+// 			CPU_SCB_SYSCTRL |= 0x4;
+//
+// 			asm("wfi");
+//
+// 			CPU_SCB_SYSCTRL &= ~0x4;
+
+// 			enable_serial_wakeup(0);
+
+			/* re-lock the PLL */
+// 			config_hispeed_clock();
+// 		} else {
+// 			/* normal idle : only CPU clock stopped */
+			asm("wfi");
+// 		}
+		asm volatile("cpsie i");
+	}
+}
+
+static int command_sleep(int argc, char **argv)
+{
+	asm volatile("cpsid i");
+	enable_serial_wakeup(1);
+	CPU_SCB_SYSCTRL |= 0x4;
+	asm("wfi");
+	CPU_SCB_SYSCTRL &= ~0x4;
+	clock_init();
+	enable_serial_wakeup(0); /*BUG: first character gets corrupted */
+	asm volatile("cpsie i");
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(sleep, command_sleep,
+			"sleep",
+			"sleep",
+			NULL);
+#endif /* CONFIG_LOW_POWER_IDLE */
 
 int clock_get_freq(void)
 {
