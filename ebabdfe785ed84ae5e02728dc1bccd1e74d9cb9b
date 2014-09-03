@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10523f23_692221c7",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-09-03T17:59:19Z",
+      "side": 1,
+      "message": "Also need to add prog_en here as well for plankton",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 31
+      },
+      "revId": "ebabdfe785ed84ae5e02728dc1bccd1e74d9cb9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
