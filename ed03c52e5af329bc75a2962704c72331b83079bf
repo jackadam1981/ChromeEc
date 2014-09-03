@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "10523f23_205c3626",
+        "filename": "power/rockchip.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2014-09-03T22:54:21Z",
+      "side": 1,
+      "message": "Yep... Done.",
+      "parentUuid": "50583741_57ced644",
+      "revId": "ed03c52e5af329bc75a2962704c72331b83079bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10523f23_1583be4b",
         "filename": "power/rockchip.c",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2014-09-03T22:10:38Z",
       "side": 1,
       "message": "Any reason not to match the old code and put this in chipset_turn_off_power_rails()?",
+      "revId": "ed03c52e5af329bc75a2962704c72331b83079bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10523f23_80c64a84",
+        "filename": "power/rockchip.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2014-09-03T22:54:21Z",
+      "side": 1,
+      "message": "I\u0027m not really sure. I moved it there but I\u0027m a little unclear why we have 2 functions that do this. Or why \"apshutdown\" only calls chipset_turn_off_power_rails() yet it still does all the work that \"power off\" does.",
+      "parentUuid": "10523f23_1583be4b",
       "revId": "ed03c52e5af329bc75a2962704c72331b83079bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
