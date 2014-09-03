@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50583741_57ced644",
+        "filename": "power/rockchip.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2014-09-03T22:10:38Z",
+      "side": 1,
+      "message": "nit: comment is wrong, right?  Signal is active low.",
+      "revId": "ed03c52e5af329bc75a2962704c72331b83079bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10523f23_1583be4b",
+        "filename": "power/rockchip.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2014-09-03T22:10:38Z",
+      "side": 1,
+      "message": "Any reason not to match the old code and put this in chipset_turn_off_power_rails()?",
+      "revId": "ed03c52e5af329bc75a2962704c72331b83079bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
