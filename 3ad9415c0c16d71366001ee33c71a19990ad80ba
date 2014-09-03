@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10523f23_6020ee33",
+        "filename": "power/rockchip.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2014-09-03T23:16:14Z",
+      "side": 1,
+      "message": "In both the base code and your previous patch set this was equivalent to the last thing in this function (not the first).  Why move it?",
+      "revId": "3ad9415c0c16d71366001ee33c71a19990ad80ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
