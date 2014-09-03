@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f04e8b81_8bb43169",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-09-03T22:18:31Z",
+      "side": 1,
+      "message": "you need a BUG\u003d entry afaik\n(even if it is BUG\u003dnone)",
+      "revId": "28bbc5942a0e5d3ac7e22b8d4bf5626d13c22cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f04e8b81_3f41f772",
+        "filename": "chip/stm32/usb-stream.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-09-03T22:18:31Z",
+      "side": 1,
+      "message": "typo: employed ?",
+      "revId": "28bbc5942a0e5d3ac7e22b8d4bf5626d13c22cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10523f23_6c410f24",
+        "filename": "chip/stm32/usb-stream.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-09-03T22:18:31Z",
+      "side": 1,
+      "message": "typo: receive",
+      "revId": "28bbc5942a0e5d3ac7e22b8d4bf5626d13c22cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50583741_f724aa16",
+        "filename": "chip/stm32/usb-stream.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-09-03T22:18:31Z",
+      "side": 1,
+      "message": "should not be hardcoded to 82 here ?",
+      "revId": "28bbc5942a0e5d3ac7e22b8d4bf5626d13c22cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10523f23_b5006ad3",
+        "filename": "chip/stm32/usb-stream.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-09-03T22:18:31Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "28bbc5942a0e5d3ac7e22b8d4bf5626d13c22cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f04e8b81_2bc41dda",
+        "filename": "chip/stm32/usb-stream.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-09-03T22:18:31Z",
+      "side": 1,
+      "message": "the patch checker is not barfing at the comment style ?",
+      "revId": "28bbc5942a0e5d3ac7e22b8d4bf5626d13c22cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
