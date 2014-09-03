@@ -127,7 +127,7 @@ enum power_state power_chipset_init(void)
 			CPRINTS("forcing G3");
 			gpio_set_level(GPIO_PCH_SYS_PWROK, 0);
 			gpio_set_level(GPIO_PCH_RSMRST_L, 0);
-/*STRAGO TODO
+			/*STRAGO TODO
 			wireless_set_state(WIRELESS_OFF);*/
 		}
 	}
@@ -142,17 +142,6 @@ enum power_state power_handle_state(enum power_state state)
 		break;
 
 	case POWER_G3S5:
-		/*
-		 * Wait 10ms after +3VALW good, since that powers VccDSW and
-		 * VccSUS.
-		 */
-		msleep(10); /*STRAGO TODO - Needed??*/
-
-		/* Check for S5 rail */
-#ifdef STRAGO_PO
-		while (power_wait_signals(IN_PGOOD_S5))
-			msleep(10);
-#endif
 		if (power_wait_signals(IN_PGOOD_S5)) {
 			chipset_force_shutdown();
 			return POWER_G3;
@@ -160,17 +149,7 @@ enum power_state power_handle_state(enum power_state state)
 
 		/* Deassert RSMRST# */
 		gpio_set_level(GPIO_PCH_RSMRST_L, 1);
-
-		/* Wait 10ms for SUSCLK to stabilize */
-		msleep(10); /*STRAGO TODO - Needed??*/
-
 		return POWER_S5;
-
-	case POWER_S5G3:
-		/* Assert RSMRST# */
-		gpio_set_level(GPIO_PCH_RSMRST_L, 0);
-
-		return POWER_G3;
 
 	case POWER_S5:
 		/* Check for SLP S4 */
@@ -179,50 +158,14 @@ enum power_state power_handle_state(enum power_state state)
 		break;
 
 	case POWER_S5S3:
-		/* Check for S3 rail */
-#ifdef STRAGO_PO
-		while (power_wait_signals(IN_PGOOD_S3))
-			msleep(10);
-#endif
-		if (power_wait_signals(IN_PGOOD_S3)) {
-			chipset_force_shutdown();
-			return POWER_S5G3;
-		}
-
-		/*
-		 * Enable touchpad power so it can wake the system from
-		 * suspend.
-		 */
-		gpio_set_level(GPIO_ENABLE_TOUCHPAD, 1);
 
 		/* Call hooks now that rails are up */
 		hook_notify(HOOK_CHIPSET_STARTUP);
 
 		return POWER_S3;
 
-	case POWER_S3S5:
-		/* Call hooks before we remove power rails */
-		hook_notify(HOOK_CHIPSET_SHUTDOWN);
-
-		/* Disable wireless */
-/*STRAGO TODO
-		wireless_set_state(WIRELESS_OFF);*/
-
-		/* Disable touchpad power and hold touchscreen in reset */
-		gpio_set_level(GPIO_ENABLE_TOUCHPAD, 0);
-		gpio_set_level(GPIO_TOUCHSCREEN_RESET_L, 0);
-
-		/* Start shutting down */
-		return pause_in_s5 ? POWER_S5 : POWER_S5G3;
 
 	case POWER_S3:
-		/*
-		 * If lid is closed; hold touchscreen in reset to cut power
-		 * usage.  If lid is open, take touchscreen out of reset so it
-		 * can wake the processor. Chipset task is awakened on lid
-		 * switch transitions.
-		 */
-		gpio_set_level(GPIO_TOUCHSCREEN_RESET_L, lid_is_open());
 
 		/* Check for state transitions */
 		if (!power_has_signals(IN_PGOOD_S3)) {
@@ -240,26 +183,14 @@ enum power_state power_handle_state(enum power_state state)
 
 	case POWER_S3S0:
 		/* Enable wireless */
-/*STRAGO TODO
+		/*STRAGO TODO
 		wireless_set_state(WIRELESS_ON);*/
 
-		/*
-		 * Make sure touchscreen is out if reset (even if the lid is
-		 * still closed); it may have been turned off if the lid was
-		 * closed in S3.
-		 */
-		gpio_set_level(GPIO_TOUCHSCREEN_RESET_L, 1);
-
-		/* Check for S0 rail */
-#ifdef STRAGO_PO
-		while (power_wait_signals(IN_PGOOD_S0))
-			msleep(10);
-#endif
 		if (power_wait_signals(IN_PGOOD_S0)) {
 			chipset_force_shutdown();
-/*STRAGO TODO
-			wireless_set_state(WIRELESS_OFF);*/
-			gpio_set_level(GPIO_TOUCHSCREEN_RESET_L, 0);
+
+		/*STRAGO TODO
+		wireless_set_state(WIRELESS_OFF);*/
 			return POWER_S3;
 		}
 
@@ -296,9 +227,8 @@ enum power_state power_handle_state(enum power_state state)
 			if (i >= 50) {
 				CPRINTS("power timeout on PLTRST#");
 				chipset_force_shutdown();
-/*STRAGO TODO
+				/*STRAGO TODO
 				wireless_set_state(WIRELESS_OFF);*/
-				gpio_set_level(GPIO_TOUCHSCREEN_RESET_L, 0);
 				return POWER_S3;
 			}
 		  }
@@ -309,6 +239,18 @@ enum power_state power_handle_state(enum power_state state)
 
 		return POWER_S0;
 
+
+	case POWER_S0:
+		if (!power_has_signals(IN_PGOOD_S0)) {
+			/* Required rail went away */
+			chipset_force_shutdown();
+			return POWER_S0S3;
+		} else if (gpio_get_level(GPIO_PCH_SLP_S3_L) == 0) {
+			/* Power down to next state */
+			return POWER_S0S3;
+		}
+
+		break;
 	case POWER_S0S3:
 		/* Call hooks before we remove power rails */
 		hook_notify(HOOK_CHIPSET_SUSPEND);
@@ -320,7 +262,7 @@ enum power_state power_handle_state(enum power_state state)
 		udelay(1);
 
 		/* Suspend wireless */
-/*STRAGO TODO
+		/*STRAGO TODO
 		wireless_set_state(WIRELESS_SUSPEND);*/
 
 		/*
@@ -335,34 +277,24 @@ enum power_state power_handle_state(enum power_state state)
 		 */
 		gpio_set_level(GPIO_CPU_PROCHOT, 0);
 
-		/* Turn off power rails */
-		msleep(7);  /* Small delay; see crosbug.com/p/26561 */
-
-#ifdef CONFIG_USB_PORT_POWER_IN_S3
-		/*
-		 * Disable the 5V rail if all USB ports are disabled.  Else
-		 * leave 5V enabled so the ports will continue to work in S3.
-		 */
-/*STRAGO TODO
-		if (!usb_charge_ports_enabled())
-			gpio_set_level(GPIO_PP5000_EN, 0);*/
-#else
-/*STRAGO TODO
-		gpio_set_level(GPIO_PP5000_EN, 0);*/
-#endif
-
 		return POWER_S3;
 
-	case POWER_S0:
-		if (!power_has_signals(IN_PGOOD_S0)) {
-			/* Required rail went away */
-			chipset_force_shutdown();
-			return POWER_S0S3;
-		} else if (gpio_get_level(GPIO_PCH_SLP_S3_L) == 0) {
-			/* Power down to next state */
-			return POWER_S0S3;
-		}
-		break;
+	case POWER_S3S5:
+		/* Call hooks before we remove power rails */
+		hook_notify(HOOK_CHIPSET_SHUTDOWN);
+
+		/* Disable wireless */
+		/*STRAGO TODO
+		wireless_set_state(WIRELESS_OFF);*/
+
+
+		/* Start shutting down */
+		return pause_in_s5 ? POWER_S5 : POWER_S5G3;
+
+	case POWER_S5G3:
+		/* Assert RSMRST# */
+		gpio_set_level(GPIO_PCH_RSMRST_L, 0);
+		return POWER_G3;
 	}
 
 	return state;
