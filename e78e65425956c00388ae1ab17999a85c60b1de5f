@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d01d075e_34c3501d",
+        "filename": "common/in_stream.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-09-03T16:49:31Z",
+      "side": 1,
+      "message": "Coding style nit: seems to be an extra space here.\n\nWe\u0027re trying to stay consistent with kernel C style, which says:\n\n  uint8_t *buffer\n\nnot\n\n  uint8_t * buffer",
+      "range": {
+        "startLine": 8,
+        "startChar": 37,
+        "endLine": 8,
+        "endChar": 40
+      },
+      "revId": "e78e65425956c00388ae1ab17999a85c60b1de5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
