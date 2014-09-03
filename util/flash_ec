@@ -76,6 +76,10 @@ BOARDS_STM32=(
 	zinger
 )
 
+BOARDS_STM32_PROG_EN=(
+	plankton
+)
+
 BOARDS_STM32_DFU=(
 	twinkie
 	hoho
@@ -159,6 +163,9 @@ servo_ec_boot0() {
 }
 
 servo_usbpd_boot0() {
+	# Enable programming GPIOs
+	if $(in_array "${BOARDS_STM32_PROG_EN[@]}" "$(BOARD)"); then
+		dut_control prog_en:on
 	dut_control usbpd_boot_mode:on
 }
 
