@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50583741_f9e258a7",
+        "filename": "board/ryu_sh/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-09-04T17:27:25Z",
+      "side": 1,
+      "message": "you need to remap the DMA to get USART1 to work,\nsee board_config_pre_init() in board/firefly/board.c\nyou can just copy the routine and define here CONFIG_BOARD_PRE_INIT",
+      "revId": "125a8415c3bbc1a9fea0c8db7bdb27a7a83186fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
