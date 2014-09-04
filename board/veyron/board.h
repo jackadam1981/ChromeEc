@@ -30,8 +30,8 @@
 #define CONFIG_BOARD_PRE_INIT
 #define CONFIG_STM_HWTIMER32
 #define CONFIG_LOW_POWER_IDLE
-#undef CONFIG_WATCHDOG
-#undef CONFIG_WATCHDOG_HELP
+/*#undef CONFIG_WATCHDOG*/
+/*#undef CONFIG_WATCHDOG_HELP*/
 
 #ifndef __ASSEMBLER__
 
@@ -48,7 +48,7 @@
 
 /* Timer selection */
 #define TIM_CLOCK32  2
-#define TIM_WATCHDOG 4
+#define TIM_WATCHDOG 15
 
 #include "gpio_signal.h"
 
