@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50dbd705_1045e45e",
+        "filename": "board/ryu_sh/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-09-04T17:55:40Z",
+      "side": 1,
+      "message": "you actually need to copy the full function including :\n/* enable SYSCFG clock */\nSTM32_RCC_APB2ENR |\u003d 1 \u003c\u003c 0;\nat the beginning else the SYSCFG peripheral is not clocked during the pre-init and the register write as no effect.",
+      "revId": "edaee380f33b134ba5ef7a59f3d1612741f44de0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
