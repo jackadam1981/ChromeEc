@@ -53,8 +53,7 @@
 		   IN_PGOOD_ALL_CORE | IN_ALL_PM_SLP_DEASSERTED)
 
 static int throttle_cpu;      /* Throttle CPU? */
-/*STRAGO TODO - Why pause_in_s5?*/
-static int pause_in_s5 = 1;   /* Pause in S5 when shutting down? */
+static int pause_in_s5;       /* Pause in S5 when shutting down? */
 
 void chipset_force_shutdown(void)
 {

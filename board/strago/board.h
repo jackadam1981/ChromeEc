@@ -9,6 +9,7 @@
 #define __BOARD_H
 
 #define STRAGO_PO
+#undef BSW_RVP
 
 /* Optional features */
 #define CONFIG_SYSTEM_UNLOCKED  /* Allow dangerous commands */
@@ -16,6 +17,7 @@
 
 #define CONFIG_KEYBOARD_PROTOCOL_8042
 #define CONFIG_KEYBOARD_KSO_BASE 0 /* KSO starts from KSO00 */
+#define CONFIG_KEYBOARD_IRQ_GPIO GPIO_KBD_IRQ_L
 #define CONFIG_POWER_BUTTON
 #define CONFIG_POWER_BUTTON_X86
 #define CONFIG_LID_SWITCH

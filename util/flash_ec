@@ -87,6 +87,10 @@ BOARDS_STM32_DFU=(
 	twinkie
 )
 
+BOARDS_MEC1322=(
+	strago
+)
+
 # Flags
 DEFINE_string board "${DEFAULT_BOARD}" \
 	"The board to run debugger on."
@@ -198,7 +202,11 @@ BOARD_ROOT=/build/${BOARD}
 if [ "${FLAGS_ro}" = ${FLAGS_TRUE} ] ; then
 	EC_FILE=ec.RO.flat
 else
-	EC_FILE=ec.bin
+	if $(in_array "${BOARDS_MEC1322[@]}" "${BOARD}"); then
+		EC_FILE=ec.spi.bin
+	else
+		EC_FILE=ec.bin
+	fi
 fi
 
 EMERGE_BUILD=${BOARD_ROOT}/firmware/${EC_FILE}
@@ -248,16 +256,20 @@ case "${BOARD}" in
 	*) MCU="ec" ;;
 esac
 
-servo_VARS="${MCU}_uart_en ${MCU}_uart_parity \
-${MCU}_uart_baudrate jtag_buf_on_flex_en jtag_buf_en spi1_vref"
-if [[ "${MCU}" == "usbpd" ]] ; then
-	servo_VARS+=" usbpd_boot_mode"
-	if $(in_array "${BOARDS_STM32_PROG_EN[@]}" "${BOARD}"); then
-		servo_VARS+=" prog_en"
+if [[ "${BOARD}" == "strago" ]] ; then
+	# Don't need to restore servo setting for strago
+	# put a dummy variable in servo_VARS
+	servo_VARS="uart1_en"
+else
+	servo_VARS="${MCU}_uart_en ${MCU}_uart_parity \
+	${MCU}_uart_baudrate jtag_buf_on_flex_en jtag_buf_en spi1_vref"
+	if [[ "${MCU}" == "usbpd" ]] ; then
+		servo_VARS+=" usbpd_boot_mode"
+		if $(in_array "${BOARDS_STM32_PROG_EN[@]}" "${BOARD}"); then
+			servo_VARS+=" prog_en"
+		fi
 	fi
 fi
-toad_VARS="${MCU}_uart_parity \
-${MCU}_uart_baudrate boot_mode"
 
 function dut_control() {
 	$DUT_CONTROL_CMD "$@" >/dev/null
@@ -329,6 +341,20 @@ function flash_stm32() {
 	ec_reset
 	# Unprotect flash, erase, and write
 	${STM32MON} -d ${EC_UART} -u -e -w "${IMG}"
+}
+
+function flash_mec1322() {
+	TOOL_PATH="${EC_DIR}/build/${BOARD}/util:/usr/sbin/:$PATH"
+	FLASHROM=$(PATH="${TOOL_PATH}" which flashrom)
+
+	if [ ! -x "$FLASHROM" ]; then
+		die "no flashrom util found."
+	fi
+
+	dut_control spi1_vref:pp3300 spi1_buf_en:on spi1_buf_on_flex_en:on cold_reset:on
+	sudo ${FLASHROM} -p ft2232_spi:type=servo-v2,port=B -w "${IMG}"
+	dut_control spi1_vref:off spi1_buf_en:off spi1_buf_on_flex_en:off cold_reset:off
+
 }
 
 function flash_stm32_dfu() {
@@ -422,6 +448,8 @@ elif $(in_array "${BOARDS_STM32[@]}" "${BOARD}"); then
 	flash_stm32
 elif $(in_array "${BOARDS_STM32_DFU[@]}" "${BOARD}"); then
 	flash_stm32_dfu
+elif $(in_array "${BOARDS_MEC1322[@]}" "${BOARD}"); then
+	flash_mec1322
 elif [ "${BOARD}" == "link" ]; then
 	flash_link
 else

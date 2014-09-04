@@ -32,6 +32,44 @@ static int init_done;
 static struct ec_lpc_host_args * const lpc_host_args =
 	(struct ec_lpc_host_args *)mem_mapped;
 
+static void wait_irq_sent(void)
+{
+	/*
+	 * A hard-coded delay here isn't very elegant, but it's the best we can
+	 * manage (and it's a short delay, so it's not that horrible).  We need
+	 * this because SIRQRIS isn't cleared in continuous mode, and the EC
+	 * has trouble sending more than 1 frame in quiet mode.  Waiting 4 us =
+	 * 2 SERIRQ frames ensures the IRQ has been sent out.
+	*/
+	udelay(4);
+}
+
+#ifdef CONFIG_KEYBOARD_IRQ_GPIO
+static void keyboard_irq_assert(void)
+{
+	/*
+	 * Enforce signal-high for long enough for the signal to be pulled high
+	 * by the external pullup resistor.  This ensures the host will see the
+	 * following falling edge, regardless of the line state before this
+	 * function call.
+	 */
+	gpio_set_level(CONFIG_KEYBOARD_IRQ_GPIO, 1);
+	udelay(4);
+	/* Generate a falling edge */
+	gpio_set_level(CONFIG_KEYBOARD_IRQ_GPIO, 0);
+	udelay(4);
+	/* Set signal high, now that we've generated the edge */
+	gpio_set_level(CONFIG_KEYBOARD_IRQ_GPIO, 1);
+}
+#else
+static void keyboard_irq_assert(void)
+{
+	/*
+	 * TODO(crosbug.com/p/24107): Implement SER_IRQ
+	 */
+}
+#endif
+
 /**
  * Generate SMI pulse to the host chipset via GPIO.
  *
@@ -474,21 +512,25 @@ int lpc_keyboard_input_pending(void)
 void lpc_keyboard_put_char(uint8_t chr, int send_irq)
 {
 	MEC1322_8042_E2H = chr;
-	/*
-	 * TODO(crosbug.com/p/24107): Implement SER_IRQ and handle
-	 *                            send_irq.
-	 */
+	if (send_irq)
+		keyboard_irq_assert();
 }
 
 void lpc_keyboard_clear_buffer(void)
 {
 	volatile char dummy __attribute__((unused));
+
+	wait_irq_sent();
+
 	dummy = MEC1322_8042_OBF_CLR;
+
+	wait_irq_sent();
 }
 
 void lpc_keyboard_resume_irq(void)
 {
-	/* TODO(crosbug.com/p/24107): Implement SER_IRQ */
+	if (lpc_keyboard_has_char())
+		keyboard_irq_assert();
 }
 
 void lpc_set_host_event_state(uint32_t mask)
