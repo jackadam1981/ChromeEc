@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50583741_fe7ebe30",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-09-04T16:01:51Z",
+      "side": 1,
+      "message": "Seems like with all these steps it might be tidier to write a real state machine.\n\n  struct params (all the stuff that needs to be passed between states)\n\n  while (state \u003c terminal_states)\n    state \u003d state_table[state](params);\n\nAnd then you won\u0027t need all the goto\u0027s",
+      "range": {
+        "startLine": 281,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 5
+      },
+      "revId": "2f37d1e8ecd4680ff23359e2a58ad7a6d6ac118a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d07987b6_88a5478e",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-09-04T16:01:51Z",
+      "side": 1,
+      "message": "What happened to step 3? :)",
+      "range": {
+        "startLine": 360,
+        "startChar": 7,
+        "endLine": 360,
+        "endChar": 9
+      },
+      "revId": "2f37d1e8ecd4680ff23359e2a58ad7a6d6ac118a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50583741_dee77af6",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-09-04T16:01:51Z",
+      "side": 1,
+      "message": "The first blocks have a different delay?",
+      "range": {
+        "startLine": 396,
+        "startChar": 1,
+        "endLine": 401,
+        "endChar": 3
+      },
+      "revId": "2f37d1e8ecd4680ff23359e2a58ad7a6d6ac118a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10807fc3_303b38b6",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-09-04T16:01:51Z",
+      "side": 1,
+      "message": "dump_data(ptr, i, bsize)\n\nand print the offset in dump_data",
+      "range": {
+        "startLine": 415,
+        "startChar": 1,
+        "endLine": 416,
+        "endChar": 27
+      },
+      "revId": "2f37d1e8ecd4680ff23359e2a58ad7a6d6ac118a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d07987b6_087ff72e",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-09-04T16:01:51Z",
+      "side": 1,
+      "message": "Poll?",
+      "range": {
+        "startLine": 462,
+        "startChar": 3,
+        "endLine": 462,
+        "endChar": 7
+      },
+      "revId": "2f37d1e8ecd4680ff23359e2a58ad7a6d6ac118a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d07987b6_e86abb67",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-09-04T16:01:51Z",
+      "side": 1,
+      "message": "Rather than all the goto\u0027s to get down here, just put allocating and freeing the buffer in a wrapper function.  Then the sub-function can simply return -1.\n\n\nupdate()\n{\n  int rv;\n  buf \u003d malloc()\n  rv \u003d update_steps()\n  free(buf)\n  return rv;\n}",
+      "revId": "2f37d1e8ecd4680ff23359e2a58ad7a6d6ac118a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d07987b6_c861ff8a",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-09-04T16:01:51Z",
+      "side": 1,
+      "message": "Usage does not describe delay or debug args",
+      "range": {
+        "startLine": 494,
+        "startChar": 49,
+        "endLine": 494,
+        "endChar": 51
+      },
+      "revId": "2f37d1e8ecd4680ff23359e2a58ad7a6d6ac118a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
