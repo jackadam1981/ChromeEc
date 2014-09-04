@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "30e023af_d2d68287",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-09-04T19:00:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50583741_fe7ebe30",
+      "revId": "2f37d1e8ecd4680ff23359e2a58ad7a6d6ac118a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d07987b6_88a5478e",
         "filename": "util/ec_sb_firmware_update.c",
         "patchSetId": 5
@@ -42,6 +60,24 @@
         "endLine": 360,
         "endChar": 9
       },
+      "revId": "2f37d1e8ecd4680ff23359e2a58ad7a6d6ac118a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30e023af_528cd2bb",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-09-04T19:00:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d07987b6_88a5478e",
       "revId": "2f37d1e8ecd4680ff23359e2a58ad7a6d6ac118a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "50dbd705_d389a6d8",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-09-04T19:00:41Z",
+      "side": 1,
+      "message": "Note: Simplo Battery: Required 10 seconds delay for 1st 10 block write.",
+      "parentUuid": "50583741_dee77af6",
+      "revId": "2f37d1e8ecd4680ff23359e2a58ad7a6d6ac118a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10807fc3_303b38b6",
         "filename": "util/ec_sb_firmware_update.c",
         "patchSetId": 5
@@ -88,6 +142,24 @@
         "endLine": 416,
         "endChar": 27
       },
+      "revId": "2f37d1e8ecd4680ff23359e2a58ad7a6d6ac118a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30e023af_b2909ef8",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-09-04T19:00:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10807fc3_303b38b6",
       "revId": "2f37d1e8ecd4680ff23359e2a58ad7a6d6ac118a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -117,6 +189,24 @@
     },
     {
       "key": {
+        "uuid": "10807fc3_60a47ba6",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-09-04T19:00:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d07987b6_087ff72e",
+      "revId": "2f37d1e8ecd4680ff23359e2a58ad7a6d6ac118a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d07987b6_e86abb67",
         "filename": "util/ec_sb_firmware_update.c",
         "patchSetId": 5
@@ -128,6 +218,24 @@
       "writtenOn": "2014-09-04T16:01:51Z",
       "side": 1,
       "message": "Rather than all the goto\u0027s to get down here, just put allocating and freeing the buffer in a wrapper function.  Then the sub-function can simply return -1.\n\n\nupdate()\n{\n  int rv;\n  buf \u003d malloc()\n  rv \u003d update_steps()\n  free(buf)\n  return rv;\n}",
+      "revId": "2f37d1e8ecd4680ff23359e2a58ad7a6d6ac118a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10807fc3_a07cd335",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-09-04T19:00:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d07987b6_e86abb67",
       "revId": "2f37d1e8ecd4680ff23359e2a58ad7a6d6ac118a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -151,6 +259,24 @@
         "endLine": 494,
         "endChar": 51
       },
+      "revId": "2f37d1e8ecd4680ff23359e2a58ad7a6d6ac118a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50dbd705_f30b8ab5",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-09-04T19:00:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d07987b6_c861ff8a",
       "revId": "2f37d1e8ecd4680ff23359e2a58ad7a6d6ac118a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
