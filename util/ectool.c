@@ -810,6 +810,42 @@ int cmd_rw_hash_pd(int argc, char *argv[])
 }
 
 
+int cmd_pd_device_info(int argc, char *argv[])
+{
+	int i, rv;
+	char *e;
+	uint8_t *port = (uint8_t *)ec_outbuf;
+	struct ec_params_usb_pd_rw_hash_entry *r =
+		(struct ec_params_usb_pd_rw_hash_entry *) ec_inbuf;
+
+	if (argc < 2) {
+		fprintf(stderr, "Usage: %s <port>\n", argv[0]);
+		return -1;
+	}
+
+	*port = strtol(argv[1], &e, 0);
+	if (e && *e) {
+		fprintf(stderr, "Bad port\n");
+		return -1;
+	}
+
+	rv = ec_command(EC_CMD_USB_PD_DEV_INFO, 0, port, sizeof(*port),
+			ec_inbuf, ec_max_insize);
+	if (rv < 0)
+		return rv;
+
+	if (!r->dev_id)
+		printf("Port:%d has no valid device\n", *port);
+	else {
+		printf("Port:%d Device:%d Hash: ", *port, r->dev_id);
+		for (i = 0; i < 5; i++)
+			printf(" 0x%08x", r->dev_rw_hash.w[i]);
+		printf("\n");
+	}
+	return rv;
+}
+
+
 /* PD image size is 16k minus 32 bits for the RW hash */
 #define PD_RW_IMAGE_SIZE (16 * 1024 - 32)
 static struct sha1_ctx ctx;
@@ -4741,6 +4777,7 @@ const struct command commands[] = {
 	{"i2cread", cmd_i2c_read},
 	{"i2cwrite", cmd_i2c_write},
 	{"i2cxfer", cmd_i2c_xfer},
+	{"infopddev", cmd_pd_device_info},
 	{"led", cmd_led},
 	{"lightbar", cmd_lightbar},
 	{"keyconfig", cmd_keyconfig},
