@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "50dbd705_19450f5f",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1904,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-09-05T01:22:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73eaa5f0_54ce6269",
+      "range": {
+        "startLine": 1904,
+        "startChar": 22,
+        "endLine": 1904,
+        "endChar": 25
+      },
+      "revId": "b5133b9350a7a939ab740e5b21255e2042ac2108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "533da14b_a343045a",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2014-08-27T16:14:16Z",
       "side": 1,
       "message": "Should we change this to uint8_t dev_rw_hash[SHA1_DIGEST_SIZE]? I\u0027m worried about possible endian mismatch issues.",
+      "revId": "b5133b9350a7a939ab740e5b21255e2042ac2108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50dbd705_394a536e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2560,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-09-05T01:22:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "533da14b_a343045a",
       "revId": "b5133b9350a7a939ab740e5b21255e2042ac2108",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
