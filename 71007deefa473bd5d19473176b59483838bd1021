@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0cee74a_0cc63754",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-09-05T03:49:38Z",
+      "side": 1,
+      "message": "this code is copied from clock-stm32f.c and it looks hard-coded for a particular pin. is your UART RX pin on PA10? Are these the right registers to set for the f0 core?",
+      "range": {
+        "startLine": 37,
+        "startChar": 50,
+        "endLine": 37,
+        "endChar": 54
+      },
+      "revId": "71007deefa473bd5d19473176b59483838bd1021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7088dbe2_caba57a3",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-09-05T03:49:38Z",
+      "side": 1,
+      "message": "I think you want to put these lines in to disable/re-enable interrupts",
+      "range": {
+        "startLine": 88,
+        "startChar": 18,
+        "endLine": 88,
+        "endChar": 23
+      },
+      "revId": "71007deefa473bd5d19473176b59483838bd1021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
