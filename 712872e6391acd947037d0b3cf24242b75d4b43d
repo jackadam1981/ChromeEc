@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "508d97f1_4346388c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1637,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-09-05T03:28:02Z",
+      "side": 1,
+      "message": "actually, since you added this, there are a few commands below that should go up here before reading the port number, like \"clock\", \"dump\", \"enabled\", and \"dualrole\". would be worth moving them up next to \"rwhashtable\". maybe a different CL though, up to you.",
+      "range": {
+        "startLine": 1637,
+        "startChar": 5,
+        "endLine": 1637,
+        "endChar": 9
+      },
+      "revId": "712872e6391acd947037d0b3cf24242b75d4b43d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7088dbe2_8a7c4f36",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1984,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-09-05T03:28:02Z",
+      "side": 1,
+      "message": "only used in next function, move it there.",
+      "range": {
+        "startLine": 1984,
+        "startChar": 11,
+        "endLine": 1984,
+        "endChar": 27
+      },
+      "revId": "712872e6391acd947037d0b3cf24242b75d4b43d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "508d97f1_a334e411",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1990,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-09-05T03:28:02Z",
+      "side": 1,
+      "message": "yeah, i think this assumption makes sense for now.",
+      "range": {
+        "startLine": 1990,
+        "startChar": 1,
+        "endLine": 1990,
+        "endChar": 18
+      },
+      "revId": "712872e6391acd947037d0b3cf24242b75d4b43d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7088dbe2_6aa0eb7c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2004,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-09-05T03:28:02Z",
+      "side": 1,
+      "message": "i think this will only work of RW_HASH_ENTRIES is a power of 2",
+      "range": {
+        "startLine": 2004,
+        "startChar": 47,
+        "endLine": 2004,
+        "endChar": 62
+      },
+      "revId": "712872e6391acd947037d0b3cf24242b75d4b43d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
