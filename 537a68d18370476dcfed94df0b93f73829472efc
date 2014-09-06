@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0cee74a_6fbfad4a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1236,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-09-06T09:15:17Z",
+      "side": 1,
+      "message": "Do we need to unset USB mux here?",
+      "range": {
+        "startLine": 1236,
+        "startChar": 5,
+        "endLine": 1236,
+        "endChar": 10
+      },
+      "revId": "537a68d18370476dcfed94df0b93f73829472efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
