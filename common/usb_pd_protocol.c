@@ -1226,13 +1226,16 @@ void pd_task(void)
 				pd[port].polarity =
 					GET_POLARITY(cc1_volt, cc2_volt);
 				pd_select_polarity(port, pd[port].polarity);
+
 				/* Set to USB SS initially */
 #ifdef CONFIG_USBC_SS_MUX
 				board_set_usb_mux(port, TYPEC_MUX_USB,
 						  pd[port].polarity);
 #endif
 				/* Enable VBUS */
-				pd_set_power_supply_ready(port);
+				if (pd_set_power_supply_ready(port))
+					break;
+
 				set_state(port, PD_STATE_SRC_DISCOVERY);
 				caps_count = 0;
 #ifdef CONFIG_USB_PD_DUAL_ROLE
