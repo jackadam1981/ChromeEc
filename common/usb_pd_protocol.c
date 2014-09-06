@@ -1232,7 +1232,9 @@ void pd_task(void)
 						  pd[port].polarity);
 #endif
 				/* Enable VBUS */
-				pd_set_power_supply_ready(port);
+				if (pd_set_power_supply_ready(port))
+					break;
+
 				set_state(port, PD_STATE_SRC_DISCOVERY);
 				caps_count = 0;
 #ifdef CONFIG_USB_PD_DUAL_ROLE
