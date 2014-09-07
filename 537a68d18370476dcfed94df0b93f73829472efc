@@ -22,6 +22,30 @@
       "revId": "537a68d18370476dcfed94df0b93f73829472efc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5052f751_98097551",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1236,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-09-07T01:57:03Z",
+      "side": 1,
+      "message": "Done. Good catch, thanks.",
+      "parentUuid": "d0cee74a_6fbfad4a",
+      "range": {
+        "startLine": 1236,
+        "startChar": 5,
+        "endLine": 1236,
+        "endChar": 10
+      },
+      "revId": "537a68d18370476dcfed94df0b93f73829472efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
