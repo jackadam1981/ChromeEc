@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f0684b04_3ebc8dc5",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1102,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-09-08T18:47:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7088dbe2_fb404fbe",
+      "range": {
+        "startLine": 1102,
+        "startChar": 1,
+        "endLine": 1102,
+        "endChar": 17
+      },
+      "revId": "efa6a14a910b51d2159218cbc923c7154ee9b633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0cee74a_afd355e3",
         "filename": "util/ectool.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "b04973a6_8f7e4583",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-09-08T18:47:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0cee74a_afd355e3",
+      "range": {
+        "startLine": 817,
+        "startChar": 1,
+        "endLine": 817,
+        "endChar": 8
+      },
+      "revId": "efa6a14a910b51d2159218cbc923c7154ee9b633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7088dbe2_3027b63d",
         "filename": "util/ectool.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2014-09-06T02:15:04Z",
       "side": 1,
       "message": "Also need to add help text above.",
+      "range": {
+        "startLine": 4780,
+        "startChar": 3,
+        "endLine": 4780,
+        "endChar": 12
+      },
+      "revId": "efa6a14a910b51d2159218cbc923c7154ee9b633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b04973a6_6f83f94a",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4780,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-09-08T18:47:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7088dbe2_3027b63d",
       "range": {
         "startLine": 4780,
         "startChar": 3,
