@@ -270,6 +270,9 @@ static void setup_for_transaction(void)
 	/* Ready to receive */
 	state = SPI_STATE_READY_TO_RX;
 	spi->dr = EC_SPI_OLD_READY;
+	spi->dr = EC_SPI_OLD_READY;
+	spi->dr = EC_SPI_OLD_READY;
+	spi->dr = EC_SPI_OLD_READY;
 }
 
 
@@ -414,6 +417,9 @@ void spi_event(enum gpio_signal signal)
 	/* We're now inside a transaction */
 	state = SPI_STATE_RECEIVING;
 	spi->dr = EC_SPI_RECEIVING;
+	spi->dr = EC_SPI_RECEIVING;
+	spi->dr = EC_SPI_RECEIVING;
+	spi->dr = EC_SPI_RECEIVING;
 	rxdma = dma_get_channel(STM32_DMAC_SPI1_RX);
 
 	/* Wait for version, command, length bytes */
@@ -462,6 +468,9 @@ void spi_event(enum gpio_signal signal)
 		/* Move to processing state */
 		state = SPI_STATE_PROCESSING;
 		spi->dr = EC_SPI_PROCESSING;
+		spi->dr = EC_SPI_PROCESSING;
+		spi->dr = EC_SPI_PROCESSING;
+		spi->dr = EC_SPI_PROCESSING;
 
 		host_packet_receive(&spi_packet);
 		return;
@@ -501,6 +510,9 @@ void spi_event(enum gpio_signal signal)
 
 		/* Move to processing state */
 		state = SPI_STATE_PROCESSING;
+		spi->dr = EC_SPI_PROCESSING;
+		spi->dr = EC_SPI_PROCESSING;
+		spi->dr = EC_SPI_PROCESSING;
 		spi->dr = EC_SPI_PROCESSING;
 
 		host_command_received(&args);
