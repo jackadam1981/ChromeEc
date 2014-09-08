@@ -93,6 +93,24 @@
       "revId": "71007deefa473bd5d19473176b59483838bd1021",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b04973a6_a496c3c7",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-09-08T22:21:39Z",
+      "side": 1,
+      "message": "No, that\u0027s right.\nIf you go to WFI with interrupts enabled, when you get the wake-up interrupt, you will go directly to the IRQ handler after the WFI without going through the house-keeping code restoring everything in a normal state at resume. This will likely result in crashes at resume time.\nIf you read the ARM Architecture Reference Manual, WFI is designed to work with the global interrupt mask set.",
+      "parentUuid": "10807fc3_2a73b924",
+      "revId": "71007deefa473bd5d19473176b59483838bd1021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
