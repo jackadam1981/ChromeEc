@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0684b04_a1c6b951",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2014-09-08T22:01:36Z",
+      "side": 1,
+      "message": "Is it worth only doing this on stm32 devices with a FIFO?",
+      "revId": "175b1a493d1b546176bebe8a844c88bbabcbec48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
