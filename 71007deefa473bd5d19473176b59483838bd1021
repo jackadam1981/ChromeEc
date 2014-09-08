@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "30b903ab_aacd8ff2",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2014-09-08T21:48:20Z",
+      "side": 1,
+      "message": "I didn\u0027t realize this is how the UART wakeup happens. I guess I should have paid more attention. Though... PA10 is the right pin.",
+      "parentUuid": "d0cee74a_0cc63754",
+      "range": {
+        "startLine": 37,
+        "startChar": 50,
+        "endLine": 37,
+        "endChar": 54
+      },
+      "revId": "71007deefa473bd5d19473176b59483838bd1021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7088dbe2_caba57a3",
         "filename": "chip/stm32/clock-stm32f0.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2014-09-05T03:49:38Z",
       "side": 1,
       "message": "I think you want to put these lines in to disable/re-enable interrupts",
+      "range": {
+        "startLine": 88,
+        "startChar": 18,
+        "endLine": 88,
+        "endChar": 23
+      },
+      "revId": "71007deefa473bd5d19473176b59483838bd1021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10807fc3_2a73b924",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2014-09-08T21:48:20Z",
+      "side": 1,
+      "message": "Why do we want the chip to have disabled interrupts during the wfi? Isn\u0027t this the opposite of what we want?",
+      "parentUuid": "7088dbe2_caba57a3",
       "range": {
         "startLine": 88,
         "startChar": 18,
