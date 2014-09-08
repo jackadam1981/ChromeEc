@@ -96,6 +96,10 @@ BOARDS_NPCX=(
 	npcx_evb
 )
 
+BOARDS_MEC1322=(
+	strago
+)
+
 # Flags
 DEFINE_string board "${DEFAULT_BOARD}" \
 	"The board to run debugger on."
@@ -359,6 +363,40 @@ function flash_stm32() {
 	${STM32MON} -d ${EC_UART} -U -u -e -w "${IMG}"
 }
 
+function flash_mec1322() {
+	TOOL_PATH="${EC_DIR}/build/${BOARD}/util:/usr/sbin/:$PATH"
+	FLASHROM=$(PATH="${TOOL_PATH}" which flashrom)
+	FLASHROM_PARAM="-p ft2232_spi:type=servo-v2,port=B"
+
+	if [ ! -x "$FLASHROM" ]; then
+		die "no flashrom util found."
+	fi
+
+	# Do not save/restore servo settings
+	save=
+
+	# Temp image
+	T=/tmp/flash_mec_$$
+
+	dut_control spi1_vref:pp3300 spi1_buf_en:on spi1_buf_on_flex_en:on cold_reset:on
+	SPI_SIZE=$(sudo ${FLASHROM} ${FLASHROM_PARAM} --get-size 2>/dev/null | tail -n 1)
+
+	IMG_SIZE=$(stat -c%s "$IMG")
+	PATCH_SIZE=$((${SPI_SIZE} - ${IMG_SIZE}))
+
+	{   # Patch temp image up to SPI_SIZE
+	    if [[ ${IMG_SIZE} -lt ${SPI_SIZE} ]] ; then
+		dd if=/dev/zero bs=${PATCH_SIZE} count=1 | tr '\0' '\377'
+	    fi
+	    cat $IMG
+	} > $T
+
+	sudo ${FLASHROM} ${FLASHROM_PARAM} -w "${T}"
+	dut_control spi1_vref:off spi1_buf_en:off spi1_buf_on_flex_en:off cold_reset:off
+
+	rm $T
+}
+
 function flash_stm32_dfu() {
 	DFU_DEVICE=0483:df11
 	ADDR=0x08000000
@@ -478,6 +516,8 @@ elif [ "${BOARD}" == "link" ]; then
 	flash_link
 elif $(in_array "${BOARDS_NPCX[@]}" "${BOARD}"); then
 	flash_npcx
+elif $(in_array "${BOARDS_MEC1322[@]}" "${BOARD}"); then
+	flash_mec1322
 else
 	die "board ${BOARD} not supported"
 fi
