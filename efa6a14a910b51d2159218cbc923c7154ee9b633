@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "7088dbe2_fb404fbe",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1102,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-09-08T07:23:41Z",
+      "side": 1,
+      "message": "I was avoiding printing this out every time something is attached because it is a big print out and affects the timing of the PD state machine.That\u0027s why I opted to print out device ID, HW and SW versions only in the policy layer.\n\nMaybe we can leave this is in and only print it when debug_level \u003e\u003d 1.",
+      "range": {
+        "startLine": 1102,
+        "startChar": 1,
+        "endLine": 1102,
+        "endChar": 17
+      },
+      "revId": "efa6a14a910b51d2159218cbc923c7154ee9b633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0cee74a_afd355e3",
         "filename": "util/ectool.c",
         "patchSetId": 1
