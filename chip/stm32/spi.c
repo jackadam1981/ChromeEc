@@ -232,6 +232,23 @@ static void reply(stm32_dma_chan_t *txdma,
 }
 
 /**
+ * Sends a byte over SPI without DMA
+ *
+ * This is mostly used when we want to relay status bytes to the AP while we're
+ * recieving the message and we're thinking about it.
+ * It sends the byte 4 times in order to be sure it bypassed the FIFO from the
+ * STM32F0 line.
+ */
+static void tx_byte(uint8_t byte) {
+	stm32_spi_regs_t *spi = STM32_SPI1_REGS;
+
+	spi->dr = byte;
+	spi->dr = byte;
+	spi->dr = byte;
+	spi->dr = byte;
+}
+
+/**
  * Get ready to receive a message from the master.
  *
  * Set up our RX DMA and disable our TX DMA. Set up the data output so that
@@ -246,7 +263,7 @@ static void setup_for_transaction(void)
 	setup_transaction_later = 0;
 
 	/* Not ready to receive yet */
-	spi->dr = EC_SPI_NOT_READY;
+	tx_byte(EC_SPI_NOT_READY);
 
 	/* We are no longer actively processing a transaction */
 	state = SPI_STATE_PREPARE_RX;
@@ -269,7 +286,7 @@ static void setup_for_transaction(void)
 
 	/* Ready to receive */
 	state = SPI_STATE_READY_TO_RX;
-	spi->dr = EC_SPI_OLD_READY;
+	tx_byte(EC_SPI_OLD_READY);
 }
 
 
@@ -373,7 +390,6 @@ static void spi_send_response_packet(struct host_packet *pkt)
  */
 void spi_event(enum gpio_signal signal)
 {
-	stm32_spi_regs_t *spi = STM32_SPI1_REGS;
 	stm32_dma_chan_t *rxdma;
 	uint16_t *nss_reg;
 	uint32_t nss_mask;
@@ -406,14 +422,14 @@ void spi_event(enum gpio_signal signal)
 		 * Tell AP we weren't ready, and ignore the received data.
 		 */
 		CPRINTS("SPI not ready");
-		spi->dr = EC_SPI_NOT_READY;
+		tx_byte(EC_SPI_NOT_READY);
 		state = SPI_STATE_RX_BAD;
 		return;
 	}
 
 	/* We're now inside a transaction */
 	state = SPI_STATE_RECEIVING;
-	spi->dr = EC_SPI_RECEIVING;
+	tx_byte(EC_SPI_RECEIVING);
 	rxdma = dma_get_channel(STM32_DMAC_SPI1_RX);
 
 	/* Wait for version, command, length bytes */
@@ -461,7 +477,7 @@ void spi_event(enum gpio_signal signal)
 
 		/* Move to processing state */
 		state = SPI_STATE_PROCESSING;
-		spi->dr = EC_SPI_PROCESSING;
+		tx_byte(EC_SPI_PROCESSING);
 
 		host_packet_receive(&spi_packet);
 		return;
@@ -501,7 +517,7 @@ void spi_event(enum gpio_signal signal)
 
 		/* Move to processing state */
 		state = SPI_STATE_PROCESSING;
-		spi->dr = EC_SPI_PROCESSING;
+		tx_byte(EC_SPI_PROCESSING);
 
 		host_command_received(&args);
 		return;
@@ -509,7 +525,7 @@ void spi_event(enum gpio_signal signal)
 
  spi_event_error:
 	/* Error, timeout, or protocol we can't handle.  Ignore data. */
-	spi->dr = EC_SPI_RX_BAD_DATA;
+	tx_byte(EC_SPI_RX_BAD_DATA);
 	state = SPI_STATE_RX_BAD;
 	CPRINTS("SPI rx bad data");
 }
