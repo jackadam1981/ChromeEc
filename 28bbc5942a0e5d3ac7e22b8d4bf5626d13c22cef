@@ -124,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "b04973a6_7c13a333",
+        "filename": "chip/stm32/usb-stream.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-09-09T23:51:33Z",
+      "side": 1,
+      "message": "Yes they are sorted first on INTERFACE, so the value is not really important.\nthe linker might choke on 0x80 | TX_ENDPOINT ?\nTX_ENDPOINT and RX_ENDPOINT might be good enough and slightly better than the current number.",
+      "parentUuid": "10c5df23_75ba175c",
+      "revId": "28bbc5942a0e5d3ac7e22b8d4bf5626d13c22cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10523f23_b5006ad3",
         "filename": "chip/stm32/usb-stream.h",
         "patchSetId": 1
