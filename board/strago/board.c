@@ -11,6 +11,8 @@
 #include "lid_switch.h"
 #include "power.h"
 #include "extpower.h"
+#include "i2c.h"
+#include "charger.h"
 
 #define GPIO_KB_INPUT (GPIO_INPUT | GPIO_PULL_UP)
 #define GPIO_KB_OUTPUT (GPIO_ODR_HIGH)
@@ -25,3 +27,22 @@ const struct power_signal_info power_signal_list[] = {
 	{GPIO_PCH_SLP_S4_L,      1, "SLP_S4#_DEASSERTED"},
 };
 BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
+
+
+
+const struct i2c_port_t i2c_ports[]  = {
+	{ "batt_chg", I2C_PORT_CHARGER , 100},
+
+};
+
+const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+
+
+/**
+ * Discharge battery when on AC power for factory test.
+ */
+int board_discharge_on_ac(int enable)
+{
+	return charger_discharge_on_ac(enable);
+}
+

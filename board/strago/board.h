@@ -24,8 +24,43 @@
 
 #define CONFIG_POWER_COMMON
 #define CONFIG_EXTPOWER_GPIO
+#define CONFIG_I2C
 
 #define CONFIG_VBOOT_HASH
+
+#define CONFIG_CHARGER
+#ifdef BSW_RVP
+
+#define CONFIG_CHARGER_V1
+#define CONFIG_CHARGER_BQ24715
+#define CONFIG_CHARGER_DISCHARGE_ON_AC
+#define CONFIG_CHARGER_INPUT_CURRENT 1700   /* 33 W adapter, 19 V, 1.75 A */
+#define CONFIG_CHARGER_SENSE_RESISTOR 10    /* Charge sense resistor, mOhm */
+#define CONFIG_CHARGER_SENSE_RESISTOR_AC 10 /* Input senso resistor, mOhm */
+#define CONFIG_BATTERY_SMART
+
+
+
+/* I2C ports */
+#define I2C_PORT_BATTERY 3
+#define I2C_PORT_CHARGER 3
+
+#else
+#define CONFIG_BATTERY_SMART
+#define CONFIG_CHARGER_V2
+#define CONFIG_CHARGER_BQ24770
+#define CONFIG_CHARGER_ILIM_PIN_DISABLED
+#define CONFIG_CHARGER_SENSE_RESISTOR 5
+#define CONFIG_CHARGER_SENSE_RESISTOR_AC 10
+#define CONFIG_CHARGER_INPUT_CURRENT 512
+#define CONFIG_CHARGER_DISCHARGE_ON_AC
+#define BAT_DISABLECHARGING
+
+/* I2C ports */
+#define I2C_PORT_BATTERY 0
+#define I2C_PORT_CHARGER 0
+
+#endif
 
 /* Modules we want to exclude */
 #undef CONFIG_EEPROM
@@ -33,7 +68,7 @@
 #undef CONFIG_PSTORE
 #undef CONFIG_PECI
 #undef CONFIG_SWITCH
-#undef CONFIG_I2C
+
 #undef CONFIG_PWM
 #undef CONFIG_FANS
 #undef CONFIG_ADC
@@ -56,6 +91,12 @@ enum power_signal {
 	/* Number of X86 signals */
 	POWER_SIGNAL_COUNT
 };
+
+
+
+/* Discharge battery when on AC power for factory test. */
+int board_discharge_on_ac(int enable);
+
 
 #endif /* !__ASSEMBLER__ */
 

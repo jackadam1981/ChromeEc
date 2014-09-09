@@ -13,3 +13,4 @@ CHIP_EXT_CLOCK:=crystal
 
 board-y=board.o
 board-$(HAS_TASK_CHIPSET)+=power_sequence.o
+board-$(CONFIG_BATTERY_SMART)+=battery.o

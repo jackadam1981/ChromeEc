@@ -331,7 +331,11 @@ static int charge_request(int voltage, int current)
 	 * power in some cases (e.g. Nyan with BQ24735).
 	 */
 	if (voltage > 0 || current > 0)
+		#ifdef BAT_DISABLECHARGING
+		r3 = charger_set_mode(CHARGE_FLAG_INHIBIT_CHARGE);
+		#else
 		r3 = charger_set_mode(0);
+		#endif
 	else
 		r3 = charger_set_mode(CHARGE_FLAG_INHIBIT_CHARGE);
 	if (r3 != EC_SUCCESS)
@@ -603,15 +607,15 @@ void charger_task(void)
 			} else {
 				/* See if we can wake it up */
 				if (curr.state != ST_PRECHARGE) {
-					CPRINTS("try to wake battery");
+					/*CPRINTS("try to wake battery");*/
 					precharge_start_time = get_time();
 					need_static = 1;
 				}
 				curr.state = ST_PRECHARGE;
 				curr.requested_voltage =
-					batt_info->voltage_max;
+				batt_info->voltage_max;
 				curr.requested_current =
-					batt_info->precharge_current;
+				batt_info->precharge_current;
 			}
 			goto wait_for_it;
 		} else {
@@ -652,8 +656,7 @@ void charger_task(void)
 #endif
 			if (curr.state == ST_PRECHARGE ||
 			    battery_seems_to_be_dead) {
-				CPRINTS("battery woke up");
-
+				/*CPRINTS("battery woke up");*/
 				/* Update the battery-specific values */
 				batt_info = battery_get_info();
 				need_static = 1;
