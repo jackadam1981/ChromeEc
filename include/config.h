@@ -89,6 +89,7 @@
  */
 #undef CONFIG_BATTERY_BQ20Z453	/* BQ20Z453 battery used on some ARM laptops */
 #undef CONFIG_BATTERY_BQ27541	/* BQ27541 battery */
+#undef CONFIG_BATTERY_BQ27742	/* BQ27742 battery */
 #undef CONFIG_BATTERY_LINK	/* Battery used on Link */
 
 /* Compile mock battery support; used by tests. */

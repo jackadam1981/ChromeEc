@@ -175,7 +175,11 @@ static int battery_charging_allowed(int *allowed)
 	rv = bq27541_read(REG_FLAGS, &val);
 	if (rv)
 		return rv;
+#if defined(CONFIG_BATTERY_BQ27541)
 	*allowed = (val & 0x100);
+#elif defined(CONFIG_BATTERY_BQ27742)
+	*allowed = (val & 0x8);
+#endif
 	return EC_SUCCESS;
 }
 
