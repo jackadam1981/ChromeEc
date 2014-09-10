@@ -20,6 +20,9 @@
 /* Host command timeout */
 #define HOST_COMMAND_TIMEOUT_US SECOND
 
+/* Number of attempts for each PD host command */
+#define PD_HOST_COMMAND_ATTEMPTS 3
+
 static struct mutex pd_mutex;
 
 /**
@@ -163,16 +166,22 @@ int pd_host_command(int command, int version,
 		    void *indata, int insize)
 {
 	int rv;
+	int tries = 0;
 
-	/* Acquire mutex */
-	mutex_lock(&pd_mutex);
+	/* Try multiple times to send host command. */
+	for (tries = 0; tries < PD_HOST_COMMAND_ATTEMPTS; tries++) {
+		/* Acquire mutex */
+		mutex_lock(&pd_mutex);
+		/* Call internal version of host command */
+		rv = pd_host_command_internal(command, version, outdata,
+					      outsize, indata, insize);
+		/* Release mutex */
+		mutex_unlock(&pd_mutex);
 
-	/* Call internal version of host command */
-	rv = pd_host_command_internal(command, version, outdata, outsize,
-				      indata, insize);
-
-	/* Release mutex */
-	mutex_unlock(&pd_mutex);
+		if (rv >= 0)
+			break;
+		task_wait_event(50*MSEC);
+	}
 
 	return rv;
 }
