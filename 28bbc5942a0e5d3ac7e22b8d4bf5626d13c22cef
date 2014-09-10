@@ -142,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "f0168b8e_2e1bcb0b",
+        "filename": "chip/stm32/usb-stream.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-09-10T15:21:06Z",
+      "side": 1,
+      "message": "Hmm, so thinking about this some more, wouldn\u0027t we want to just use 0 and 1 for these (or some other meaningless but sort-able identifiers?  These numbers are just used to make the endpoint descriptor variable names, which are never used, other than by the linker, so using TX_ENDPOINT and RX_ENDPOINT sort of suggests that there is some deeper meaning to these numbers.  0 and 1 would make it a bit more clear that they are just for sorting purposes.  If we didn\u0027t have to name the variables we could leave them out all together since the order of the endpoint descriptors returned along with the interface descriptor is not relevant.",
+      "parentUuid": "b04973a6_7c13a333",
+      "revId": "28bbc5942a0e5d3ac7e22b8d4bf5626d13c22cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10523f23_b5006ad3",
         "filename": "chip/stm32/usb-stream.h",
         "patchSetId": 1
