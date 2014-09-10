@@ -34,6 +34,11 @@ static const struct dma_option dma_rx_option = {
 	STM32_DMA_CCR_MSIZE_8_BIT | STM32_DMA_CCR_PSIZE_8_BIT
 };
 
+int savedrxoffset=0;
+
+// Forward declaraction
+static void spi_reset(void);
+
 /*
  * Timeout to wait for SPI request packet
  *
@@ -285,6 +290,9 @@ static void setup_for_transaction(void)
 	stm32_spi_regs_t *spi = STM32_SPI1_REGS;
 	volatile uint8_t dummy __attribute__((unused));
 
+	//This crashed the cpu, constantly reboots
+	//spi_reset();
+
 	/* clear this as soon as possible */
 	setup_transaction_later = 0;
 
@@ -325,6 +333,7 @@ static void setup_for_transaction(void)
 static void check_setup_transaction_later(void)
 {
 	if (setup_transaction_later) {
+		spi_reset();
 		setup_for_transaction();
 		/*
 		 * 'state' is set to SPI_STATE_READY_TO_RX. Somehow AP
@@ -429,10 +438,16 @@ void spi_event(enum gpio_signal signal)
 	stm32_dma_chan_t *rxdma;
 	uint16_t *nss_reg;
 	uint32_t nss_mask;
+	uint16_t i;
+	int rxoffset=0;
 
 	/* If not enabled, ignore glitches on NSS */
-	if (!enabled)
+	if (!enabled) {
 		return;
+	}
+
+	//I wanted to put spi reset here, but the dma later on will just yield 00s if i do.
+	//spi_reset();
 
 	/* Check chip select.  If it's high, the AP ended a transaction. */
 	nss_reg = gpio_get_level_reg(GPIO_SPI1_NSS, &nss_mask);
@@ -445,6 +460,9 @@ void spi_event(enum gpio_signal signal)
 			setup_transaction_later = 1;
 			return;
 		}
+
+		//Maybe works here?
+		spi_reset();
 
 		/* Set up for the next transaction */
 		setup_for_transaction();
@@ -460,6 +478,15 @@ void spi_event(enum gpio_signal signal)
 		CPRINTS("SPI not ready");
 		tx_status(EC_SPI_NOT_READY);
 		state = SPI_STATE_RX_BAD;
+
+		for(i=0;i<10;i++) {
+			if(i==rxoffset) {
+				ccprintf("|");
+			}
+			ccprintf("%02x ",in_msg[i]);
+		}
+		ccprintf("\n");
+
 		return;
 	}
 
@@ -472,13 +499,25 @@ void spi_event(enum gpio_signal signal)
 	if (wait_for_bytes(rxdma, 3, nss_reg, nss_mask))
 		goto spi_event_error;
 
-	if (in_msg[0] == EC_HOST_REQUEST_VERSION) {
+	while(in_msg[rxoffset]==0x00) {
+		rxoffset+=1;
+		if (wait_for_bytes(rxdma, 3+rxoffset, nss_reg, nss_mask))
+			goto spi_event_error;
+		if (rxoffset>3)
+			goto spi_event_error;
+	}
+	if(savedrxoffset!=rxoffset) {
+		CPRINTS("RX offset is now %d", rxoffset);
+		savedrxoffset=rxoffset;
+	}
+
+	if (in_msg[0+rxoffset] == EC_HOST_REQUEST_VERSION) {
 		/* Protocol version 3 */
-		struct ec_host_request *r = (struct ec_host_request *)in_msg;
+		struct ec_host_request *r = (struct ec_host_request *)(in_msg+rxoffset);
 		int pkt_size;
 
 		/* Wait for the rest of the command header */
-		if (wait_for_bytes(rxdma, sizeof(*r), nss_reg, nss_mask))
+		if (wait_for_bytes(rxdma, sizeof(*r)+rxoffset, nss_reg, nss_mask))
 			goto spi_event_error;
 
 		/*
@@ -491,14 +530,14 @@ void spi_event(enum gpio_signal signal)
 			goto spi_event_error;
 
 		/* Wait for the packet data */
-		if (wait_for_bytes(rxdma, pkt_size, nss_reg, nss_mask))
+		if (wait_for_bytes(rxdma, pkt_size+rxoffset, nss_reg, nss_mask))
 			goto spi_event_error;
 
 		spi_packet.send_response = spi_send_response_packet;
 
-		spi_packet.request = in_msg;
+		spi_packet.request = in_msg+rxoffset;
 		spi_packet.request_temp = NULL;
-		spi_packet.request_max = sizeof(in_msg);
+		spi_packet.request_max = sizeof(in_msg)-rxoffset;
 		spi_packet.request_size = pkt_size;
 
 		/* Response must start with the preamble */
@@ -516,6 +555,7 @@ void spi_event(enum gpio_signal signal)
 		tx_status(EC_SPI_PROCESSING);
 
 		host_packet_receive(&spi_packet);
+
 		return;
 
 	} else if (in_msg[0] >= EC_CMD_VERSION0) {
@@ -570,6 +610,20 @@ void spi_event(enum gpio_signal signal)
 	tx_status(EC_SPI_RX_BAD_DATA);
 	state = SPI_STATE_RX_BAD;
 	CPRINTS("SPI rx bad data");
+
+
+	ccprintf("in_msg 0x ");
+	for(i=0;i<10;i++) {
+		if(i==rxoffset) {
+			ccprintf("|");
+		}
+		ccprintf("%02x ",in_msg[i]);
+	}
+	ccprintf("\n");
+
+	//very very rarely happens
+	spi_reset();
+	tx_status(EC_SPI_RX_BAD_DATA);
 }
 
 static void spi_chipset_startup(void)
@@ -650,3 +704,87 @@ static int spi_get_protocol_info(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO,
 		     spi_get_protocol_info,
 		     EC_VER_MASK(0));
+
+static int command_fifostatus(int argc, char **argv)
+{
+	stm32_spi_regs_t *spi = STM32_SPI1_REGS;
+
+	ccprintf("SPI_sr=0x%04x, FTLVL=%d FRLVL=%d\n",
+		 spi->sr,
+		(spi->sr & 0x1800)>>11,
+		(spi->sr & 0x0600)>>9
+	);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(fifostatus, command_fifostatus,
+			"",
+			"Print lengths of the fifo",
+			NULL);
+
+static int command_unwedgerx(int argc, char **argv)
+{
+	char *e;
+	int v;
+	int i;
+	stm32_spi_regs_t *spi = STM32_SPI1_REGS;
+	volatile uint8_t dummy __attribute__((unused));
+
+	v = strtoi(argv[1], &e, 0);
+
+	ccprintf("Consuming %d bytes: ", v);
+	for(i=0;i<v;i++) {
+		ccprintf("%02x ", spi->dr);
+	}
+	ccprintf("done\n", v);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(unwedgerx, command_unwedgerx,
+			"",
+			"Unwedges the rx fifo by consuming things",
+			NULL);
+
+static int command_sendtx(int argc, char **argv)
+{
+	char *e;
+	int v;
+	uint8_t byte;
+	int i;
+	stm32_spi_regs_t *spi = STM32_SPI1_REGS;
+
+	v = strtoi(argv[1], &e, 0);
+	byte = strtoi(argv[2], &e, 0);
+
+	ccprintf("Sending %d bytes: ", v);
+	for(i=0;i<v;i++) {
+		ccprintf("%02x ", byte);
+		spi->dr=byte;
+	}
+	ccprintf("done\n", v);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(sendtx, command_sendtx,
+			"",
+			"Unwedges the tx fifo by sending things",
+			NULL);
+
+static void spi_reset(void) {
+	/* Reset SPI1 peripheral */
+	STM32_RCC_APB2RSTR |= (1 << 12);
+	STM32_RCC_APB2RSTR &= ~(1 << 12);
+	spi_init();
+	//ccprintf("r"); //not a good idea to have printing here
+}
+
+static int command_spi_reset(int argc, char **argv)
+{
+	ccprintf("Restarting spi...");
+	spi_reset();
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(spireset, command_spi_reset,
+			"",
+			"spireset",
+			NULL);

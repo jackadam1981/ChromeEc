@@ -522,7 +522,7 @@ static void host_command_debug_request(struct host_cmd_handler_args *args)
 		if (args->command == hc_prev_cmd &&
 		    t - hc_prev_time < HCDEBUG_MAX_REPEAT_DELAY) {
 			hc_prev_time = t;
-			CPUTS("+");
+			//CPUTS("+");
 			return;
 		}
 		hc_prev_time = t;
