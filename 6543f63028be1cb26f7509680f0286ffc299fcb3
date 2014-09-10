@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0dbeb36_03b072da",
+        "filename": "include/queue.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-09-10T20:34:49Z",
+      "side": 1,
+      "message": "typo: dequeue (elsewhere, too)",
+      "range": {
+        "startLine": 34,
+        "startChar": 31,
+        "endLine": 34,
+        "endChar": 38
+      },
+      "revId": "6543f63028be1cb26f7509680f0286ffc299fcb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "101a3fb4_30e84542",
+        "filename": "include/util.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-09-10T20:34:49Z",
+      "side": 1,
+      "message": "well, technically, (x \u0026\u0026 !(x \u0026 (x-1))), since x\u003d0 is not a (finite integer) power of 2.",
+      "range": {
+        "startLine": 60,
+        "startChar": 24,
+        "endLine": 60,
+        "endChar": 26
+      },
+      "revId": "6543f63028be1cb26f7509680f0286ffc299fcb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
