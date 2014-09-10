@@ -23,6 +23,8 @@
 #define CPUTS(outstr) cputs(CC_SPI, outstr)
 #define CPRINTS(format, args...) cprints(CC_SPI, format, ## args)
 
+int rxoffset;
+
 /* DMA channel option */
 static const struct dma_option dma_tx_option = {
 	STM32_DMAC_SPI1_TX, (void *)&STM32_SPI1_REGS->dr,
@@ -429,6 +431,7 @@ void spi_event(enum gpio_signal signal)
 	stm32_dma_chan_t *rxdma;
 	uint16_t *nss_reg;
 	uint32_t nss_mask;
+	uint16_t i;
 
 	/* If not enabled, ignore glitches on NSS */
 	if (!enabled)
@@ -469,12 +472,20 @@ void spi_event(enum gpio_signal signal)
 	rxdma = dma_get_channel(STM32_DMAC_SPI1_RX);
 
 	/* Wait for version, command, length bytes */
-	if (wait_for_bytes(rxdma, 3, nss_reg, nss_mask))
+	if (wait_for_bytes(rxdma, 3+rxoffset, nss_reg, nss_mask))
 		goto spi_event_error;
 
-	if (in_msg[0] == EC_HOST_REQUEST_VERSION) {
+	ccprintf("in_msg 0x ");
+	for(i=0;i<10;i++) {
+		if(i==rxoffset) {
+			ccprintf("|");
+		}
+		ccprintf("%02x ",in_msg[i]);
+	}
+	ccprintf("\n");
+	if (in_msg[0+rxoffset] == EC_HOST_REQUEST_VERSION) {
 		/* Protocol version 3 */
-		struct ec_host_request *r = (struct ec_host_request *)in_msg;
+		struct ec_host_request *r = (struct ec_host_request *)(in_msg+rxoffset);
 		int pkt_size;
 
 		/* Wait for the rest of the command header */
@@ -496,9 +507,9 @@ void spi_event(enum gpio_signal signal)
 
 		spi_packet.send_response = spi_send_response_packet;
 
-		spi_packet.request = in_msg;
+		spi_packet.request = in_msg+rxoffset;
 		spi_packet.request_temp = NULL;
-		spi_packet.request_max = sizeof(in_msg);
+		spi_packet.request_max = sizeof(in_msg)-rxoffset;
 		spi_packet.request_size = pkt_size;
 
 		/* Response must start with the preamble */
@@ -650,3 +661,87 @@ static int spi_get_protocol_info(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO,
 		     spi_get_protocol_info,
 		     EC_VER_MASK(0));
+
+static int command_fifostatus(int argc, char **argv)
+{
+	stm32_spi_regs_t *spi = STM32_SPI1_REGS;
+
+	ccprintf("SPI_sr=0x%04x, FTLVL=%d FRLVL=%d\n",
+		 spi->sr,
+		(spi->sr & 0x1800)>>11,
+		(spi->sr & 0x0600)>>9
+	);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(fifostatus, command_fifostatus,
+			"",
+			"Print lengths of the fifo",
+			NULL);
+
+static int command_unwedgerx(int argc, char **argv)
+{
+	char *e;
+	int v;
+	int i;
+	stm32_spi_regs_t *spi = STM32_SPI1_REGS;
+	volatile uint8_t dummy __attribute__((unused));
+
+	v = strtoi(argv[1], &e, 0);
+
+	ccprintf("Consuming %d bytes: ", v);
+	for(i=0;i<v;i++) {
+		ccprintf("%02x ", spi->dr);
+	}
+	ccprintf("done\n", v);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(unwedgerx, command_unwedgerx,
+			"",
+			"Unwedges the rx fifo by consuming things",
+			NULL);
+
+static int command_sendtx(int argc, char **argv)
+{
+	char *e;
+	int v;
+	uint8_t byte;
+	int i;
+	stm32_spi_regs_t *spi = STM32_SPI1_REGS;
+
+	v = strtoi(argv[1], &e, 0);
+	byte = strtoi(argv[2], &e, 0);
+
+	ccprintf("Sending %d bytes: ", v);
+	for(i=0;i<v;i++) {
+		ccprintf("%02x ", byte);
+		spi->dr=byte;
+	}
+	ccprintf("done\n", v);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(sendtx, command_sendtx,
+			"",
+			"Unwedges the tx fifo by sending things",
+			NULL);
+
+
+static int command_rxoffset(int argc, char **argv)
+{
+	char *e;
+	int v;
+
+	v = strtoi(argv[1], &e, 0);
+
+	ccprintf("rxoffset is now=%d", v);
+	rxoffset=v;
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(rxoffset, command_rxoffset,
+			"",
+			"rxoffset",
+			NULL);
+
