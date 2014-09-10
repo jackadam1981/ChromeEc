@@ -22,8 +22,10 @@ GPIO(PCH_SLP_S3_L,      PORT(20), 6, GPIO_INT_BOTH_DSLEEP | GPIO_PULL_UP,       
 GPIO(ALL_SYS_PGOOD,     PORT(13),  0, GPIO_INT_BOTH_DSLEEP,                      power_signal_interrupt) /* ALL_SYS_PWRGD from power logic */
 GPIO(PCH_SYS_PWROK,     PORT(6), 5, GPIO_OUT_LOW,                              NULL)                   /* EC thinks everything is up and ready (DELAY_ALL_SYS_PWRGD) */
 
-GPIO(USB3_PWR_EN,       PORT(5),  7, GPIO_OUT_HIGH,                             NULL)                   /* Enable power for USB Port */
+GPIO(USB3_PWR_EN,       PORT(5),  7, GPIO_OUT_HIGH,                             NULL)                   /* Enable power for USB3 Port */
+GPIO(USB2_PWR_EN,       PORT(3),  6, GPIO_OUT_HIGH,                             NULL)                   /* Enable power for USB2 Port */
 GPIO(USB_CTL1,          PORT(10), 5, GPIO_OUT_HIGH,                             NULL)                   /* USB charging mode control */
+GPIO(USB_ILIM_SEL,      PORT(1),  3, GPIO_OUT_HIGH,                             NULL)                   /* USB current control */
 
 GPIO(KBD_IRQ_L,         PORT(15), 2, GPIO_ODR_HIGH,                             NULL)                   /* Negative edge triggered irq. */
 
