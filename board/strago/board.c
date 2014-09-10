@@ -16,6 +16,8 @@
 
 #define GPIO_KB_INPUT (GPIO_INPUT | GPIO_PULL_UP)
 #define GPIO_KB_OUTPUT (GPIO_ODR_HIGH)
+#define GPIO_KB_OUTPUT_ROW2 (GPIO_OUT_HIGH)
+
 
 #include "gpio_list.h"
 
