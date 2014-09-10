@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f0dbeb36_bd099f50",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-09-10T17:32:37Z",
+      "side": 1,
+      "message": "We directly cast the I/O buffers to structs for use in command processing.  32-bit integers in those structs must be aligned.",
+      "parentUuid": "b04973a6_a7afd868",
+      "range": {
+        "startLine": 97,
+        "startChar": 53,
+        "endLine": 97,
+        "endChar": 67
+      },
+      "revId": "700b3557a243b9fd4e90e342daa50819eb9540ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "101a3fb4_06bfda4a",
         "filename": "chip/stm32/spi.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2014-09-10T00:51:54Z",
       "side": 1,
       "message": "What happens if a byte goes through in between one of these? Is this a big deal?",
+      "range": {
+        "startLine": 262,
+        "startChar": 16,
+        "endLine": 262,
+        "endChar": 16
+      },
+      "revId": "700b3557a243b9fd4e90e342daa50819eb9540ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0168b8e_f46a26b5",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-09-10T17:32:37Z",
+      "side": 1,
+      "message": "Do you mean one of these bytes being sent to the host, or another byte entering the FIFO?",
+      "parentUuid": "101a3fb4_06bfda4a",
       "range": {
         "startLine": 262,
         "startChar": 16,
