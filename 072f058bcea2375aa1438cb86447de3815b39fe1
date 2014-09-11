@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "101a3fb4_03033677",
+        "filename": "power/rockchip.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2014-09-11T16:25:24Z",
+      "side": 0,
+      "message": "Why do you want to do this just before S0? You still need a pullup on the NSS otherwise the line might be in a weird state since the AP might not be driving it yet.",
+      "range": {
+        "startLine": 385,
+        "startChar": 0,
+        "endLine": 386,
+        "endChar": 19
+      },
+      "revId": "072f058bcea2375aa1438cb86447de3815b39fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
