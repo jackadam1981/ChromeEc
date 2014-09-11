@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0168b8e_d67e0431",
+        "filename": "power/rockchip.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2014-09-11T16:28:18Z",
+      "side": 1,
+      "message": "This should probably get renamed back since it\u0027s not an Enable anymore, it\u0027s a pulse.",
+      "revId": "072f058bcea2375aa1438cb86447de3815b39fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
