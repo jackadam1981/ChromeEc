@@ -39,8 +39,6 @@
 #define CONFIG_CHARGER_SENSE_RESISTOR_AC 10 /* Input senso resistor, mOhm */
 #define CONFIG_BATTERY_SMART
 
-
-
 /* I2C ports */
 #define I2C_PORT_BATTERY 3
 #define I2C_PORT_CHARGER 3
@@ -60,6 +58,12 @@
 #define I2C_PORT_BATTERY 0
 #define I2C_PORT_CHARGER 0
 
+#endif
+
+#ifndef BSW_RVP
+#define CONFIG_TEMP_SENSOR
+#define CONFIG_TEMP_SENSOR_TMP432
+#define I2C_PORT_THERMAL 1
 #endif
 
 /* Modules we want to exclude */
@@ -92,11 +96,20 @@ enum power_signal {
 	POWER_SIGNAL_COUNT
 };
 
+enum temp_sensor_id {
+	/* TMP432 local and remote sensors */
+	TEMP_SENSOR_I2C_TMP432_LOCAL,
+	TEMP_SENSOR_I2C_TMP432_REMOTE1,
+	TEMP_SENSOR_I2C_TMP432_REMOTE2,
 
+	/* Battery temperature sensor */
+	TEMP_SENSOR_BATTERY,
+
+	TEMP_SENSOR_COUNT
+};
 
 /* Discharge battery when on AC power for factory test. */
 int board_discharge_on_ac(int enable);
-
 
 #endif /* !__ASSEMBLER__ */
 

@@ -45,11 +45,8 @@ UNIMPLEMENTED(ENTERING_RW) /* EC entering RW code */
 ALTERNATE(PORT(16), 0x24,     1, MODULE_UART,          0) /* UART0 */
 /*ALTERNATE(PORT(3),  (1 << 4), 3, MODULE_PWM_FAN,       0)
 ALTERNATE(PORT(14), (1 << 0), 3, MODULE_PWM_FAN,       0)*/
-/*
- * I2C0: External pull-up resistors on EVB are too weak. Let's
- * also enable internal pull-up here.
- */
-ALTERNATE(PORT(1),  0x60,     2, MODULE_I2C,           GPIO_PULL_UP)
+ALTERNATE(PORT(1),  0x60,     2, MODULE_I2C,           GPIO_PULL_UP)            /* I2C0: Battery Charger */
+ALTERNATE(PORT(2),  0x0C,     2, MODULE_I2C,           GPIO_PULL_UP)            /* I2C1: Temp Sensor */
 ALTERNATE(PORT(0),  0x3f,     3, MODULE_KEYBOARD_SCAN, GPIO_KB_OUTPUT)
 ALTERNATE(PORT(10), 0xdd,     3, MODULE_KEYBOARD_SCAN, GPIO_KB_OUTPUT)
 ALTERNATE(PORT(10), 0x02,     3, MODULE_KEYBOARD_SCAN, GPIO_KB_OUTPUT_ROW2)
@@ -66,7 +63,6 @@ ALTERNATE(PORT(5),  0x10,     1, MODULE_SPI,           0)
 ALTERNATE(PORT(16),  0x10,     1, MODULE_SPI,           0)
 ALTERNATE(PORT(15), 0x8,     1, MODULE_SPI,           0)
 ALTERNATE(PORT(14), 0x40,     1, MODULE_SPI,           0)
-
 
 #else
 
@@ -100,11 +96,7 @@ UNIMPLEMENTED(ENTERING_RW) /* EC entering RW code */
 ALTERNATE(PORT(16), 0x24,     1, MODULE_UART,          0) /* UART0 */
 /*ALTERNATE(PORT(3),  (1 << 4), 3, MODULE_PWM_FAN,       0)
 ALTERNATE(PORT(14), (1 << 0), 3, MODULE_PWM_FAN,       0)*/
-/*
- * I2C0: External pull-up resistors on EVB are too weak. Let's
- * also enable internal pull-up here.
- */
-ALTERNATE(PORT(2),  0x30,     2, MODULE_I2C,           GPIO_PULL_UP)
+ALTERNATE(PORT(2),  0x30,     2, MODULE_I2C,           GPIO_PULL_UP)            /* I2C3: Battery Charger */
 ALTERNATE(PORT(0),  0x3f,     3, MODULE_KEYBOARD_SCAN, GPIO_KB_OUTPUT)
 ALTERNATE(PORT(10), 0xdf,     3, MODULE_KEYBOARD_SCAN, GPIO_KB_OUTPUT)
 ALTERNATE(PORT(3),  0x04,     3, MODULE_KEYBOARD_SCAN, GPIO_KB_INPUT)
