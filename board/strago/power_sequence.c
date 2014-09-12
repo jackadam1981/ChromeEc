@@ -53,7 +53,7 @@
 		   IN_PGOOD_ALL_CORE | IN_ALL_PM_SLP_DEASSERTED)
 
 static int throttle_cpu;      /* Throttle CPU? */
-static int pause_in_s5;       /* Pause in S5 when shutting down? */
+static int pause_in_s5 = 1;   /* Pause in S5 when shutting down? */
 
 void chipset_force_shutdown(void)
 {
@@ -193,6 +193,9 @@ enum power_state power_handle_state(enum power_state state)
 			return POWER_S3;
 		}
 
+		/* Call hooks now that rails are up */
+		hook_notify(HOOK_CHIPSET_RESUME);
+
 		/*
 		 * Disable idle task deep sleep. This means that the low
 		 * power idle task will not go into deep sleep while in S0.
@@ -218,6 +221,7 @@ enum power_state power_handle_state(enum power_state state)
 		{
 		  int i = 0;
 		  CPRINTS("power wait for PLTRST# to deassert");
+
 		  while (lpc_get_pltrst_asserted()) {
 			usleep(MSEC);
 #ifndef STRAGO_PO
@@ -233,16 +237,12 @@ enum power_state power_handle_state(enum power_state state)
 		  }
 		}
 
-		/* Call hooks now that rails are up */
-		hook_notify(HOOK_CHIPSET_RESUME);
-
 		return POWER_S0;
 
 
 	case POWER_S0:
 		if (!power_has_signals(IN_PGOOD_S0)) {
-			/* Required rail went away */
-			chipset_force_shutdown();
+			/* Required rail went away - Cold Reset? */
 			return POWER_S0S3;
 		} else if (gpio_get_level(GPIO_PCH_SLP_S3_L) == 0) {
 			/* Power down to next state */

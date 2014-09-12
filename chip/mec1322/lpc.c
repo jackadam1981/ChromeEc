@@ -18,6 +18,10 @@
 #include "timer.h"
 #include "util.h"
 
+/* Console output macros */
+#define CPUTS(outstr) cputs(CC_LPC, outstr)
+#define CPRINTS(format, args...) cprints(CC_LPC, format, ## args)
+
 static uint8_t mem_mapped[0x200] __attribute__((section(".bss.big_align")));
 
 static uint32_t host_events;     /* Currently pending SCI/SMI events */
@@ -316,8 +320,15 @@ void girq19_interrupt(void)
 	/* Check interrupt result for LRESET# trigger */
 	if (MEC1322_INT_RESULT(19) & (1 << 1)) {
 		/* Initialize LPC module when LRESET# is deasserted */
-		if (!lpc_get_pltrst_asserted())
+		if (!lpc_get_pltrst_asserted()) {
 			setup_lpc();
+		} else {
+			/* Store port 80 reset event */
+			port_80_write(PORT_80_EVENT_RESET);
+		}
+
+		CPRINTS("LPC RESET# %sasserted",
+			lpc_get_pltrst_asserted() ? "" : "de");
 
 		/* Clear interrupt source */
 		MEC1322_INT_SOURCE(19) |= 1 << 1;

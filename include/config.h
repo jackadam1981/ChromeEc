@@ -646,12 +646,6 @@
 /* Enable extra debugging output from keyboard modules */
 #undef CONFIG_KEYBOARD_DEBUG
 
-/*
- * Config KSO to start from a different KSO pin. This is to allow some chip
- * to use its alternate funcion on KSO pin.
- */
-#undef CONFIG_KEYBOARD_KSO_BASE
-
 /* The board uses a negative edge-triggered GPIO for keyboard interrupts. */
 #undef CONFIG_KEYBOARD_IRQ_GPIO
 
