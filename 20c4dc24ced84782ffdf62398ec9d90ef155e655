@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "709e1b6e_00323024",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-09-12T22:33:16Z",
+      "side": 1,
+      "message": "Should be no harm to do this in spi_init().\n\nSo then you can just call spi_init() instead of having 2 funcs.",
+      "range": {
+        "startLine": 774,
+        "startChar": 4,
+        "endLine": 774,
+        "endChar": 25
+      },
+      "revId": "20c4dc24ced84782ffdf62398ec9d90ef155e655",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
