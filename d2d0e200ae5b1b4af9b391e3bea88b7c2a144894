@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f0c4cb62_66c68e87",
+        "filename": "chip/stm32/gpio.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-09-12T20:07:16Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "709e1b6e_97b82cc7",
+      "range": {
+        "startLine": 82,
+        "startChar": 27,
+        "endLine": 82,
+        "endChar": 48
+      },
+      "revId": "d2d0e200ae5b1b4af9b391e3bea88b7c2a144894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0c4cb62_c3c914f2",
         "filename": "chip/stm32/spi.c",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2014-09-12T18:37:34Z",
       "side": 1,
       "message": "any idea why it causes this?",
+      "range": {
+        "startLine": 443,
+        "startChar": 1,
+        "endLine": 443,
+        "endChar": 84
+      },
+      "revId": "d2d0e200ae5b1b4af9b391e3bea88b7c2a144894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "709e1b6e_3a46853d",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-09-12T20:07:16Z",
+      "side": 1,
+      "message": "Maybe resetting SPI also requires redoing some of the DMA setup?\n\nAlso, should only reset SPI if chip select is high.  If it\u0027s low, you\u0027ll kill SPI just as a transfer starts...\n\nCould also be that when chip select goes high, there\u0027s still data in the FIFO that DMA hasn\u0027t finished reading out.  So might need to delay SPI reset a bit.",
+      "parentUuid": "f0c4cb62_c3c914f2",
       "range": {
         "startLine": 443,
         "startChar": 1,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b0bed3c4_dc281c71",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-09-12T20:07:16Z",
+      "side": 1,
+      "message": "Right.  It means \"wait for X bytes total to have been transferred into the DMA buffer\".",
+      "parentUuid": "b0bed3c4_4820cb33",
+      "range": {
+        "startLine": 485,
+        "startChar": 28,
+        "endLine": 485,
+        "endChar": 38
+      },
+      "revId": "d2d0e200ae5b1b4af9b391e3bea88b7c2a144894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "709e1b6e_f7afb87b",
         "filename": "chip/stm32/spi.c",
         "patchSetId": 7
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "b0bed3c4_5c46cc3d",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-09-12T20:07:16Z",
+      "side": 1,
+      "message": "Suggest \"SPI RX offs\u003d%d\"\n\nThat is, it\u0027s nice to know which module is generating the output.",
+      "parentUuid": "709e1b6e_f7afb87b",
+      "range": {
+        "startLine": 489,
+        "startChar": 2,
+        "endLine": 489,
+        "endChar": 43
+      },
+      "revId": "d2d0e200ae5b1b4af9b391e3bea88b7c2a144894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0bed3c4_08bb33a8",
         "filename": "chip/stm32/spi.c",
         "patchSetId": 7
@@ -105,6 +201,30 @@
       "writtenOn": "2014-09-12T18:37:34Z",
       "side": 1,
       "message": "I\u0027m still not sure I have the offsets in the right places.\n\nRandall: could you confirm?",
+      "range": {
+        "startLine": 493,
+        "startChar": 0,
+        "endLine": 526,
+        "endChar": 43
+      },
+      "revId": "d2d0e200ae5b1b4af9b391e3bea88b7c2a144894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0bed3c4_9c2ce41e",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-09-12T20:07:16Z",
+      "side": 1,
+      "message": "Looks ok.\n\nA little surprised this is all happy with unaligned data, since the host command handler functions typecast spi_packet.request to assorted structs.",
+      "parentUuid": "b0bed3c4_08bb33a8",
       "range": {
         "startLine": 493,
         "startChar": 0,
@@ -151,6 +271,30 @@
       "writtenOn": "2014-09-12T18:37:34Z",
       "side": 1,
       "message": "This is super useful for debugging. Perhaps we should think about having this implemented for real. Any suggestions?",
+      "range": {
+        "startLine": 593,
+        "startChar": 1,
+        "endLine": 600,
+        "endChar": 16
+      },
+      "revId": "d2d0e200ae5b1b4af9b391e3bea88b7c2a144894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0bed3c4_dc549c88",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-09-12T20:07:16Z",
+      "side": 1,
+      "message": "#ifdef CONFIG_SPI_DEBUG_OFFSET ?",
+      "parentUuid": "b0bed3c4_28446fdc",
       "range": {
         "startLine": 593,
         "startChar": 1,
