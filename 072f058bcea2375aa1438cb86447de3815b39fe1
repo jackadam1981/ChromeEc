@@ -64,6 +64,24 @@
       "revId": "072f058bcea2375aa1438cb86447de3815b39fe1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0c18753_487a8fca",
+        "filename": "power/rockchip.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2014-09-12T01:28:26Z",
+      "side": 0,
+      "message": "Alright. I understand... this line has no point in being here. It\u0027s redundant with what spi_chipset_startup does.\n\nHe\u0027s essentially just undoing line 394(https://chromium-review.googlesource.com/#/c/209231/5/power/rockchip.c) which was not in tegra.c",
+      "parentUuid": "f0c4cb62_e151b1ee",
+      "revId": "072f058bcea2375aa1438cb86447de3815b39fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
