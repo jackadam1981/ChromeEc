@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "709e1b6e_97b82cc7",
+        "filename": "chip/stm32/gpio.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2014-09-12T18:37:34Z",
+      "side": 1,
+      "message": "I added this because messages like:\n[147901.499853 Overriding SPI1_NSS with SPI1_NSS on EXTI4]\nWere getting annoying.\n\nIs this worth implementing? (in a separate CL of course)",
+      "range": {
+        "startLine": 82,
+        "startChar": 27,
+        "endLine": 82,
+        "endChar": 48
+      },
+      "revId": "d2d0e200ae5b1b4af9b391e3bea88b7c2a144894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0c4cb62_c3c914f2",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2014-09-12T18:37:34Z",
+      "side": 1,
+      "message": "any idea why it causes this?",
+      "range": {
+        "startLine": 443,
+        "startChar": 1,
+        "endLine": 443,
+        "endChar": 84
+      },
+      "revId": "d2d0e200ae5b1b4af9b391e3bea88b7c2a144894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0bed3c4_4820cb33",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2014-09-12T18:37:34Z",
+      "side": 1,
+      "message": "wait for bytes seems to be stuff so far in the buffer. And it\u0027s not incremental correct?\n\nas in...\nwait_for_bytes(len\u003d1)\nwait_for_bytes(len\u003d1)\n\nis not equivalent to\nwait_for_bytes(len\u003d2)\n\nbut to just a single one:\nwait_for_bytes(len\u003d1)\n\nSo the way i have it now is correct? (instead of what I had before: \"wait_for_bytes(rxdma, ***1***, nss_reg, nss_mask)\")",
+      "range": {
+        "startLine": 485,
+        "startChar": 28,
+        "endLine": 485,
+        "endChar": 38
+      },
+      "revId": "d2d0e200ae5b1b4af9b391e3bea88b7c2a144894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "709e1b6e_f7afb87b",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2014-09-12T18:37:34Z",
+      "side": 1,
+      "message": "It\u0027s nice to know when it changes.",
+      "range": {
+        "startLine": 489,
+        "startChar": 2,
+        "endLine": 489,
+        "endChar": 43
+      },
+      "revId": "d2d0e200ae5b1b4af9b391e3bea88b7c2a144894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0bed3c4_08bb33a8",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2014-09-12T18:37:34Z",
+      "side": 1,
+      "message": "I\u0027m still not sure I have the offsets in the right places.\n\nRandall: could you confirm?",
+      "range": {
+        "startLine": 493,
+        "startChar": 0,
+        "endLine": 526,
+        "endChar": 43
+      },
+      "revId": "d2d0e200ae5b1b4af9b391e3bea88b7c2a144894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0bed3c4_e88b570c",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2014-09-12T18:37:34Z",
+      "side": 1,
+      "message": "This is going to be totally broken because of this bug. not even the warning will show up. It will jump straight to BAD DATA.\n\nOne could change :539 to \"} else if (in_msg[rxoffset] \u003e\u003d EC_CMD_VERSION0) {\" for the message to show up.\n\nPlease remind me if we end up committing this hack and i forget to fix warn on v2.",
+      "range": {
+        "startLine": 548,
+        "startChar": 2,
+        "endLine": 549,
+        "endChar": 35
+      },
+      "revId": "d2d0e200ae5b1b4af9b391e3bea88b7c2a144894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0bed3c4_28446fdc",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2014-09-12T18:37:34Z",
+      "side": 1,
+      "message": "This is super useful for debugging. Perhaps we should think about having this implemented for real. Any suggestions?",
+      "range": {
+        "startLine": 593,
+        "startChar": 1,
+        "endLine": 600,
+        "endChar": 16
+      },
+      "revId": "d2d0e200ae5b1b4af9b391e3bea88b7c2a144894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
