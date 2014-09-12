@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "b0bed3c4_9ff856e0",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2014-09-12T22:26:52Z",
+      "side": 1,
+      "message": "Ah, the 32 bit stuff again. Yeah, no problems from there.",
+      "parentUuid": "b0bed3c4_9c2ce41e",
+      "range": {
+        "startLine": 493,
+        "startChar": 0,
+        "endLine": 526,
+        "endChar": 43
+      },
+      "revId": "d2d0e200ae5b1b4af9b391e3bea88b7c2a144894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0bed3c4_e88b570c",
         "filename": "chip/stm32/spi.c",
         "patchSetId": 7
@@ -295,6 +319,30 @@
       "side": 1,
       "message": "#ifdef CONFIG_SPI_DEBUG_OFFSET ?",
       "parentUuid": "b0bed3c4_28446fdc",
+      "range": {
+        "startLine": 593,
+        "startChar": 1,
+        "endLine": 600,
+        "endChar": 16
+      },
+      "revId": "d2d0e200ae5b1b4af9b391e3bea88b7c2a144894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0bed3c4_7f2c5ab6",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2014-09-12T22:26:52Z",
+      "side": 1,
+      "message": "It\u0027s good for any bad data errors, on other EC families too.\n\nI might just remove the | stuff though.\n\nPerhaps i\u0027ll change the 10 lenght to something else.",
+      "parentUuid": "b0bed3c4_dc549c88",
       "range": {
         "startLine": 593,
         "startChar": 1,
