@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-/* Strago board configuration */
+/* BSW RVP board configuration */
 
 #ifndef __BOARD_H
 #define __BOARD_H
@@ -28,25 +28,17 @@
 #define CONFIG_VBOOT_HASH
 
 #define CONFIG_CHARGER
-#define CONFIG_BATTERY_SMART
-#define CONFIG_CHARGER_V2
-#define CONFIG_CHARGER_BQ24770
-#define CONFIG_CHARGER_ILIM_PIN_DISABLED
-#define CONFIG_CHARGER_SENSE_RESISTOR 5
-#define CONFIG_CHARGER_SENSE_RESISTOR_AC 10
-#define CONFIG_CHARGER_INPUT_CURRENT 512
+#define CONFIG_CHARGER_V1
+#define CONFIG_CHARGER_BQ24715
 #define CONFIG_CHARGER_DISCHARGE_ON_AC
-#define BAT_DISABLECHARGING
+#define CONFIG_CHARGER_INPUT_CURRENT 1700   /* 33 W adapter, 19 V, 1.75 A */
+#define CONFIG_CHARGER_SENSE_RESISTOR 10    /* Charge sense resistor, mOhm */
+#define CONFIG_CHARGER_SENSE_RESISTOR_AC 10 /* Input senso resistor, mOhm */
+#define CONFIG_BATTERY_SMART
 
-/* Battery / Charger I2C ports */
-#define I2C_PORT_BATTERY 0
-#define I2C_PORT_CHARGER 0
-
-#define CONFIG_TEMP_SENSOR
-#define CONFIG_TEMP_SENSOR_TMP432
-
-/* Temperature Sensor I2C ports */
-#define I2C_PORT_THERMAL 1
+/* I2C ports */
+#define I2C_PORT_BATTERY 3
+#define I2C_PORT_CHARGER 3
 
 /* Modules we want to exclude */
 #undef CONFIG_EEPROM
@@ -76,18 +68,6 @@ enum power_signal {
 
 	/* Number of X86 signals */
 	POWER_SIGNAL_COUNT
-};
-
-enum temp_sensor_id {
-	/* TMP432 local and remote sensors */
-	TEMP_SENSOR_I2C_TMP432_LOCAL,
-	TEMP_SENSOR_I2C_TMP432_REMOTE1,
-	TEMP_SENSOR_I2C_TMP432_REMOTE2,
-
-	/* Battery temperature sensor */
-	TEMP_SENSOR_BATTERY,
-
-	TEMP_SENSOR_COUNT
 };
 
 /* Discharge battery when on AC power for factory test. */
