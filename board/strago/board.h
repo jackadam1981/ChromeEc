@@ -39,15 +39,18 @@
 #define CONFIG_CHARGER_DISCHARGE_ON_AC
 #define BAT_DISABLECHARGING
 
-/* Battery / Charger I2C ports */
+/* I2C ports */
 #define I2C_PORT_BATTERY 0
 #define I2C_PORT_CHARGER 0
+#define I2C_PORT_THERMAL 1
+#define I2C_PORT_ACCEL 0
+
 
 #define CONFIG_TEMP_SENSOR
 #define CONFIG_TEMP_SENSOR_TMP432
 
-/* Temperature Sensor I2C ports */
-#define I2C_PORT_THERMAL 1
+
+
 
 /* Modules we want to exclude */
 #undef CONFIG_EEPROM

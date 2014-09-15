@@ -43,6 +43,10 @@ ALTERNATE(PORT(16), 0x24,     1, MODULE_UART,          0) /* UART0 */
 ALTERNATE(PORT(14), (1 << 0), 3, MODULE_PWM_FAN,       0)*/
 ALTERNATE(PORT(1),  0x60,     2, MODULE_I2C,           GPIO_PULL_UP)            /* I2C0: Battery Charger */
 ALTERNATE(PORT(2),  0x0C,     2, MODULE_I2C,           GPIO_PULL_UP)            /* I2C1: Temp Sensor */
+/* PORT SEL [3:0] has to be set to 1 to access this port 1 of controller 0 */
+ALTERNATE(PORT(13),  0x10,     2, MODULE_I2C,           GPIO_PULL_UP)		/* I2C0 - Port 1 : Accel SCL  */
+ALTERNATE(PORT(1),  0x80,     2, MODULE_I2C,           GPIO_PULL_UP)		/* I2C0 - Port 1 : Accel SDA*/
+
 ALTERNATE(PORT(0),  0x3f,     3, MODULE_KEYBOARD_SCAN, GPIO_KB_OUTPUT)
 ALTERNATE(PORT(10), 0xdd,     3, MODULE_KEYBOARD_SCAN, GPIO_KB_OUTPUT)
 #ifdef CONFIG_KEYBOARD_COL2_INVERTED
