@@ -213,10 +213,13 @@ static int check_for_power_off_event(void)
 
 	power_button_was_pressed = pressed;
 
-	/* POWER_GOOD released by AP : shutdown immediately */
-	if (!power_has_signals(IN_POWER_GOOD))
-		return 3;
-
+	/* POWER_GOOD released by AP : if AP wants to reboot, POWER_GOOD
+	 * will re-open in one second, otherwise shut down.
+	 */
+	if (!power_has_signals(IN_POWER_GOOD)) {
+		if (power_wait_signals(IN_POWER_GOOD) != EC_SUCCESS)
+			return 3;
+	}
 	return 0;
 }
 
