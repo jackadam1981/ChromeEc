@@ -25,6 +25,10 @@ GPIO(USB_ILIM_SEL,      PORT(1),  3, GPIO_OUT_HIGH,                             
 
 GPIO(KBD_IRQ_L,         PORT(15), 2, GPIO_ODR_HIGH,                             NULL)                   /* Negative edge triggered irq. */
 
+GPIO(CHGR_PMON,          PORT(6), 0,GPIO_ANALOG,   NULL)
+GPIO(CHGR_IADP,          PORT(6), 1,GPIO_ANALOG,   NULL)
+GPIO(CHGR_IDHG,          PORT(6), 2,GPIO_ANALOG,   NULL)
+
 UNIMPLEMENTED(CPU_PROCHOT)
 UNIMPLEMENTED(PCH_RCIN_L)
 

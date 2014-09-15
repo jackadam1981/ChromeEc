@@ -12,7 +12,8 @@
 #include "power.h"
 #include "extpower.h"
 #include "i2c.h"
-
+#include "adc.h"
+#include "adc_chip.h"
 #include "charger.h"
 #include "charge_state.h"
 
@@ -30,6 +31,16 @@
 #endif
 
 #include "gpio_list.h"
+
+/* ADC channels */
+const struct adc_t adc_channels[] = {
+	[ADC_BC_PMON] = {"BC_PMON", 1, 1, 0, MEC1322_ADC_CH(1)},
+	[ADC_BC_IADP] = {"BC_IADP", 1, 1, 0, MEC1322_ADC_CH(2)},
+	[ADC_BC_IDHG] = {"BC_IDHG", 1, 1, 0, MEC1322_ADC_CH(3)},
+};
+
+BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
+
 
 /* power signal list.  Must match order of enum power_signal. */
 const struct power_signal_info power_signal_list[] = {

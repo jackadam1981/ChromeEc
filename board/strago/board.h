@@ -25,6 +25,8 @@
 #define CONFIG_POWER_COMMON
 #define CONFIG_EXTPOWER_GPIO
 #define CONFIG_I2C
+#define CONFIG_ADC
+
 
 #define CONFIG_VBOOT_HASH
 
@@ -61,7 +63,6 @@
 
 #undef CONFIG_PWM
 #undef CONFIG_FANS
-#undef CONFIG_ADC
 #undef CONFIG_WAKE_PIN
 #undef CONFIG_SPI
 #undef CONFIG_SPI_PORT
@@ -93,6 +94,15 @@ enum temp_sensor_id {
 
 	TEMP_SENSOR_COUNT
 };
+
+enum adc_channel {
+	ADC_BC_PMON = 0,
+	ADC_BC_IADP,
+	ADC_BC_IDHG,
+
+	ADC_CH_COUNT
+};
+
 
 /* Discharge battery when on AC power for factory test. */
 int board_discharge_on_ac(int enable);
