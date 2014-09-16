@@ -429,6 +429,7 @@ void spi_event(enum gpio_signal signal)
 	stm32_dma_chan_t *rxdma;
 	uint16_t *nss_reg;
 	uint32_t nss_mask;
+	uint16_t i;
 
 	/* If not enabled, ignore glitches on NSS */
 	if (!enabled)
@@ -570,6 +571,11 @@ void spi_event(enum gpio_signal signal)
 	tx_status(EC_SPI_RX_BAD_DATA);
 	state = SPI_STATE_RX_BAD;
 	CPRINTS("SPI rx bad data");
+
+	ccprintf("in_msg=[");
+	for (i = 0; i < dma_bytes_done(rxdma, sizeof(in_msg)); i++)
+		ccprintf("%02x ", in_msg[i]);
+	ccprintf("]\n");
 }
 
 static void spi_chipset_startup(void)
