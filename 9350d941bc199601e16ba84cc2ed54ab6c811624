@@ -134,6 +134,30 @@
     },
     {
       "key": {
+        "uuid": "10ab1f9f_928aaccb",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-09-17T21:22:27Z",
+      "side": 1,
+      "message": "actually, i left this here because it will be used in the next CL which adds the low power idle function and uses the return value from set() and reset() functions.",
+      "parentUuid": "f0fe8bbb_4ed4877d",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 43
+      },
+      "revId": "9350d941bc199601e16ba84cc2ed54ab6c811624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "300d83bc_16b58263",
         "filename": "chip/stm32/clock-stm32f0.c",
         "patchSetId": 2
@@ -191,6 +215,30 @@
       "writtenOn": "2014-09-17T18:06:45Z",
       "side": 1,
       "message": "nit for clarity define RTC_PREDIV_A(x) (x \u003c\u003c 16)\n\nAlso note ref manual (RM0091) states that when both prescalers are used PREDIV_A should be high to avoid power consumption so this choice of DIV2 might impact power.",
+      "range": {
+        "startLine": 239,
+        "startChar": 18,
+        "endLine": 239,
+        "endChar": 27
+      },
+      "revId": "9350d941bc199601e16ba84cc2ed54ab6c811624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70137bdc_ef5d755e",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-09-17T21:22:27Z",
+      "side": 1,
+      "message": "yes, it\u0027s a tradeoff of power vs. resolution on RTC tick. i\u0027m using the max resolution of 50us, which is still pretty bad, worse than all the other ECs.",
+      "parentUuid": "d0fb47cc_a4f1e246",
       "range": {
         "startLine": 239,
         "startChar": 18,
