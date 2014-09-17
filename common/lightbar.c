@@ -907,6 +907,293 @@ static uint32_t sequence_TAP(void)
 }
 
 /****************************************************************************/
+/* Lightbar bytecode interpreter: Lightbyte. */
+/****************************************************************************/
+
+static struct lb_program cur_prog;
+static struct lb_program next_prog;
+static lb_prog_pc pc;
+
+struct lb_color {
+	uint8_t red;
+	uint8_t green;
+	uint8_t blue;
+};
+enum lb_color_bits {
+	LB_COL_RED,
+	LB_COL_GREEN,
+	LB_COL_BLUE,
+	LB_COL_ALL
+};
+
+enum lb_control {
+	LB_CONT_COLOR0,
+	LB_CONT_COLOR1,
+	LB_CONT_PHASE,
+	LB_CONT_MAX
+};
+
+static struct lb_color led_desc[NUM_LEDS][LB_CONT_MAX];
+static uint32_t lb_ramp_delay;
+
+#define PC_OB_CHECK do {						\
+		if (pc >= cur_prog.size) {				\
+			ccprintf("pc 0x%02x out of bounds\n", pc);	\
+			return EC_RES_INVALID_PARAM;			\
+		}							\
+	} while (0)
+#define DECODE_8(var) do {				\
+		PC_OB_CHECK;				\
+		(var) = cur_prog.data[pc++];		\
+	} while (0)
+#define DECODE_32(var) do {				\
+		PC_OB_CHECK;				\
+		(var)  = cur_prog.data[pc++] << 24;	\
+		PC_OB_CHECK;				\
+		(var) |= cur_prog.data[pc++] << 16;	\
+		PC_OB_CHECK;				\
+		(var) |= cur_prog.data[pc++] <<  8;	\
+		PC_OB_CHECK;				\
+		(var) |= cur_prog.data[pc++];		\
+	} while (0)
+
+static uint32_t lightbyte_JUMP(void)
+{
+	uint8_t new_pc;
+	DECODE_8(new_pc);
+
+	pc = new_pc;
+	return 0;
+}
+
+static uint32_t lightbyte_DELAY(void)
+{
+	uint32_t delay_us;
+	DECODE_32(delay_us);
+
+	WAIT_OR_RET(delay_us);
+	return 0;
+}
+
+
+static uint32_t lightbyte_SET_BRIGHTNESS(void)
+{
+	uint8_t val;
+	DECODE_8(val);
+
+	lb_set_brightness(val);
+	return 0;
+}
+
+static uint32_t lightbyte_SET_COLOR(void)
+{
+
+	uint8_t packed_loc, led, control, color, value;
+	int start_led, end_led, i;
+	DECODE_8(packed_loc);
+
+	led = packed_loc >> 4;
+	control = (packed_loc >> 2) & 0x3;
+	color = packed_loc & 0x3;
+
+	if (control >= LB_CONT_MAX)
+		return EC_RES_INVALID_PARAM;
+
+	if (led >= NUM_LEDS) {
+		start_led = 0;
+		end_led = NUM_LEDS - 1;
+	} else
+		start_led = end_led = led;
+
+#define SET_COLORS(col) do {					\
+		DECODE_8(value);				\
+		for (i = start_led; i <= end_led; i++) {	\
+			led_desc[i][control].col = value;	\
+		}						\
+	} while (0)
+
+	if (color == LB_COL_RED || color == LB_COL_ALL)
+		SET_COLORS(red);
+	if (color == LB_COL_GREEN || color == LB_COL_ALL)
+		SET_COLORS(green);
+	if (color == LB_COL_BLUE || color == LB_COL_ALL)
+		SET_COLORS(blue);
+
+#undef SET_COLORS
+
+	return 0;
+}
+
+static uint32_t lightbyte_SET_DELAY_TIME(void)
+{
+	uint32_t delay_us;
+	DECODE_32(delay_us);
+
+	lb_ramp_delay = delay_us;
+	return 0;
+}
+
+#define GET_INTERP_VALUE(led, color, interp)		\
+	(led_desc[(led)][LB_CONT_COLOR0].color +	\
+	 (led_desc[(led)][LB_CONT_COLOR1].color -	\
+	  led_desc[(led)][LB_CONT_COLOR0].color) * (interp))
+
+static uint32_t lightbyte_RAMP_ONCE(void)
+{
+	int w, i, r, g, b;
+	float f;
+
+	/* special case for instantaneous set */
+	if (lb_ramp_delay == 0) {
+		for (i = 0; i < NUM_LEDS; i++) {
+			r = led_desc[i][LB_CONT_COLOR1].red;
+			g = led_desc[i][LB_CONT_COLOR1].green;
+			b = led_desc[i][LB_CONT_COLOR1].blue;
+			lb_set_rgb(i, r, g, b);
+		}
+		return 0;
+	}
+
+	for (w = 0; w < 128; w++) {
+		f = cycle_010(w);
+		for (i = 0; i < NUM_LEDS; i++) {
+			r = GET_INTERP_VALUE(i, red, f);
+			g = GET_INTERP_VALUE(i, green, f);
+			b = GET_INTERP_VALUE(i, blue, f);
+			lb_set_rgb(i, r, g, b);
+		}
+		WAIT_OR_RET(lb_ramp_delay);
+	}
+	return 0;
+}
+
+static uint32_t lightbyte_CYCLE_ONCE(void)
+{
+	int w, i, r, g, b;
+	float f;
+
+	/* what does it mean to cycle with 0 delay? */
+	if (lb_ramp_delay == 0)
+		return EC_RES_INVALID_PARAM;
+
+	for (w = 0; w < 256; w++) {
+		f = cycle_010(w);
+		for (i = 0; i < NUM_LEDS; i++) {
+			r = GET_INTERP_VALUE(i, red, f);
+			g = GET_INTERP_VALUE(i, green, f);
+			b = GET_INTERP_VALUE(i, blue, f);
+			lb_set_rgb(i, r, g, b);
+		}
+		WAIT_OR_RET(lb_ramp_delay);
+	}
+	return 0;
+}
+
+static uint32_t lightbyte_CYCLE(void)
+{
+	int w, i, r, g, b;
+
+	/* ditto to comment in CYCLE_ONCE */
+	if (lb_ramp_delay == 0)
+		return EC_RES_INVALID_PARAM;
+
+	for (w = 0;; w++) {
+		for (i = 0; i < NUM_LEDS; i++) {
+			r = GET_INTERP_VALUE(i, red,
+				cycle_010((w & 0xff) +
+				led_desc[i][LB_CONT_PHASE].red));
+			g = GET_INTERP_VALUE(i, green,
+				cycle_010((w & 0xff) +
+				led_desc[i][LB_CONT_PHASE].green));
+			b = GET_INTERP_VALUE(i, blue,
+				cycle_010((w & 0xff) +
+				led_desc[i][LB_CONT_PHASE].blue));
+			lb_set_rgb(i, r, g, b);
+		}
+		WAIT_OR_RET(lb_ramp_delay);
+	}
+	return 0;
+}
+
+#undef GET_INTERP_VALUE
+
+#define OPCODE_TABLE		\
+	OP(JUMP),		\
+	OP(DELAY),		\
+	OP(SET_BRIGHTNESS),	\
+	OP(SET_COLOR),		\
+	OP(SET_DELAY_TIME),	\
+	OP(RAMP_ONCE),		\
+	OP(CYCLE_ONCE),		\
+	OP(CYCLE),
+
+#define OP(X) X
+enum lightbyte_opcode {
+	OPCODE_TABLE
+	HALT,
+	MAX_OPCODE
+};
+#undef OP
+
+#define OP(X) lightbyte_ ## X
+static uint32_t (*lightbyte_dispatch[])(void) = {
+	OPCODE_TABLE
+};
+#undef OP
+
+#define OP(X) # X
+static const char * const lightbyte_names[] = {
+	OPCODE_TABLE
+	"HALT"
+};
+#undef OP
+
+static uint32_t sequence_PROGRAM(void)
+{
+	uint8_t saved_brightness;
+	uint8_t next_inst;
+	uint32_t rc;
+
+	/* load next program */
+	memcpy(&cur_prog, &next_prog, sizeof(struct lb_program));
+
+	/* reset program state */
+	saved_brightness = lb_get_brightness();
+	pc = 0;
+	memset(led_desc, 0, sizeof(led_desc));
+	lb_ramp_delay = 0;
+
+	/* decode-execute loop */
+	for (;;) {
+		ccprintf("pc: 0x%02x, ", pc);
+		DECODE_8(next_inst);
+		if (next_inst == HALT) {
+			ccprintf("halting\n");
+			lb_set_brightness(saved_brightness);
+			return 0;
+		} else if (next_inst >= MAX_OPCODE) {
+			ccprintf("found invalid opcode 0x%x\n", next_inst);
+			lb_set_brightness(saved_brightness);
+			return EC_RES_INVALID_PARAM;
+		} else {
+			ccprintf("opcode 0x%x -> %s\n",
+				 next_inst, lightbyte_names[next_inst]);
+			rc = lightbyte_dispatch[next_inst]();
+			if (rc) {
+				lb_set_brightness(saved_brightness);
+				return rc;
+			}
+		}
+
+		/* yield processor in case we are stuck in a tight loop */
+		WAIT_OR_RET(100);
+	}
+}
+
+#undef DECODE_8
+#undef DECODE_32
+
+/****************************************************************************/
 /* The main lightbar task. It just cycles between various pretty patterns. */
 /****************************************************************************/
 
@@ -970,6 +1257,7 @@ void lightbar_task(void)
 			case LIGHTBAR_ERROR:
 			case LIGHTBAR_KONAMI:
 			case LIGHTBAR_TAP:
+			case LIGHTBAR_PROGRAM:
 				st.cur_seq = st.prev_seq;
 			default:
 				break;
@@ -1099,6 +1387,10 @@ static int lpc_cmd_lightbar(struct host_cmd_handler_args *args)
 		CPRINTS("LB_set_params_v1");
 		memcpy(&st.p, &in->set_params_v1, sizeof(st.p));
 		break;
+	case LIGHTBAR_CMD_SET_PROGRAM:
+		CPRINTS("LB_set_program");
+		memcpy(&next_prog, &in->set_program, sizeof(struct lb_program));
+		break;
 	case LIGHTBAR_CMD_VERSION:
 		CPRINTS("LB_version");
 		out->version.num = LIGHTBAR_IMPLEMENTATION_VERSION;
@@ -1138,6 +1430,7 @@ static int help(const char *cmd)
 	ccprintf("  %s LED                   - get current LED color\n", cmd);
 	ccprintf("  %s demo [0|1]            - turn demo mode on & off\n", cmd);
 	ccprintf("  %s params                - show current params\n", cmd);
+	ccprintf("  %s program filename      - load lightbyte program\n", cmd);
 	ccprintf("  %s version               - show current version\n", cmd);
 	return EC_SUCCESS;
 }
@@ -1307,6 +1600,15 @@ static int command_lightbar(int argc, char **argv)
 			return EC_ERROR_PARAM2;
 		lightbar_sequence(num);
 		return EC_SUCCESS;
+	}
+
+	if (argc >= 3 && !strcasecmp(argv[1], "program")) {
+#ifdef LIGHTBAR_SIMULATION
+		return lb_load_program(argv[2], &next_prog);
+#else
+		ccprintf("can't load program from console\n");
+		return EC_ERROR_INVAL;
+#endif
 	}
 
 	if (argc == 4) {
