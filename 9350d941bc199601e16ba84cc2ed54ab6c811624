@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "300d83bc_e14b4a92",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2014-09-17T18:12:28Z",
+      "side": 1,
+      "message": "Do we perhaps want to split the rtc stuff in a separate file, instead of including it in clock?",
+      "revId": "9350d941bc199601e16ba84cc2ed54ab6c811624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "300d83bc_616e3acd",
         "filename": "chip/stm32/clock-stm32f0.c",
         "patchSetId": 2
