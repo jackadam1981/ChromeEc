@@ -1130,6 +1130,13 @@
 #undef CONFIG_USB_GPIO
 
 /*****************************************************************************/
+/* USB SPI config */
+#undef CONFIG_USB_SPI
+
+#undef CONFIG_USB_SPI_INTERFACE
+#undef CONFIG_USB_SPI_ENDPOINT
+
+/*****************************************************************************/
 
 /* Support computing hash of code for verified boot */
 #undef CONFIG_VBOOT_HASH
