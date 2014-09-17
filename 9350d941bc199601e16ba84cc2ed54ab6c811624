@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "300d83bc_616e3acd",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-09-17T18:06:45Z",
+      "side": 1,
+      "message": "Seems like you also need to STM32_RTC_ISR\u003cRSF\u003e unless STM32_RTC_CR\u003cBYPSHAD\u003e is set which I can\u0027t find",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 0
+      },
+      "revId": "9350d941bc199601e16ba84cc2ed54ab6c811624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0fe8bbb_6eae231e",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-09-17T18:06:45Z",
+      "side": 1,
+      "message": "nit, make static inline as it appears in multiple places",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 20
+      },
+      "revId": "9350d941bc199601e16ba84cc2ed54ab6c811624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0fe8bbb_399d1788",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-09-17T18:06:45Z",
+      "side": 1,
+      "message": "nit #define EXTI_RTC_ALR_EVENT (1 \u003c\u003c 17) in registers.h? and then use here.",
+      "range": {
+        "startLine": 123,
+        "startChar": 19,
+        "endLine": 123,
+        "endChar": 28
+      },
+      "revId": "9350d941bc199601e16ba84cc2ed54ab6c811624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0fe8bbb_2e094bbe",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-09-17T18:06:45Z",
+      "side": 1,
+      "message": "same RSF check if BYPSHAD\u003d0",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 0
+      },
+      "revId": "9350d941bc199601e16ba84cc2ed54ab6c811624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0fe8bbb_4ed4877d",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-09-17T18:06:45Z",
+      "side": 1,
+      "message": "remove and change function to void ... looks like nobody uses value.",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 43
+      },
+      "revId": "9350d941bc199601e16ba84cc2ed54ab6c811624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "300d83bc_16b58263",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-09-17T18:06:45Z",
+      "side": 1,
+      "message": "should this be inline function (providing we need elsewhere)",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 22
+      },
+      "revId": "9350d941bc199601e16ba84cc2ed54ab6c811624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "300d83bc_7625de0f",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-09-17T18:06:45Z",
+      "side": 1,
+      "message": "curious why keep writing here and not below",
+      "range": {
+        "startLine": 233,
+        "startChar": 2,
+        "endLine": 233,
+        "endChar": 37
+      },
+      "revId": "9350d941bc199601e16ba84cc2ed54ab6c811624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0fb47cc_a4f1e246",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-09-17T18:06:45Z",
+      "side": 1,
+      "message": "nit for clarity define RTC_PREDIV_A(x) (x \u003c\u003c 16)\n\nAlso note ref manual (RM0091) states that when both prescalers are used PREDIV_A should be high to avoid power consumption so this choice of DIV2 might impact power.",
+      "range": {
+        "startLine": 239,
+        "startChar": 18,
+        "endLine": 239,
+        "endChar": 27
+      },
+      "revId": "9350d941bc199601e16ba84cc2ed54ab6c811624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90c0ef69_f13f9c9d",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-09-17T18:06:45Z",
+      "side": 1,
+      "message": "Should we write-protect here?\n\n  STM32_RTC_WPR \u003d 0xff",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 1
+      },
+      "revId": "9350d941bc199601e16ba84cc2ed54ab6c811624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
