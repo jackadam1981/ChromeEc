@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0fe8bbb_99e1ab60",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2014-09-17T18:28:16Z",
+      "side": 1,
+      "message": "It seems to always reset to 8MHz here. Uart will just not work after this because the baud is going to be wrong.\n\nEven if we do clock_init(), uart will not parse the first character properly(perhaps turning on the pll takes too long).\n\nIf i run everything at 8Mhz(before sleep), the first character is good. Perhaps we need to somehow temporarily adjust the cpu_freq in the uart module while the pll is turning on.",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 25
+      },
+      "revId": "c6afb5aac91f987e013bb49f3f138fb704bb17db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
