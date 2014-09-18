@@ -981,6 +981,12 @@
 /* Default state of PD communication enabled flag */
 #define CONFIG_USB_PD_COMM_ENABLED 1
 
+/* Support for USB PD alternate mode */
+#undef CONFIG_USB_PD_ALT_MODE
+
+/* Support for USB PD alternate mode of Downward Facing Port */
+#undef CONFIG_USB_PD_ALT_MODE_DFP
+
 /* Respond to custom vendor-defined messages over PD */
 #undef CONFIG_USB_PD_CUSTOM_VDM
 

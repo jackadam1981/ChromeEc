@@ -151,7 +151,7 @@ int pd_board_checks(void)
 }
 
 /* ----------------- Vendor Defined Messages ------------------ */
-int pd_custom_vdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
+int pd_vdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 {
 	int cmd = PD_VDO_CMD(payload[0]);
 	uint8_t dev_id = 0;

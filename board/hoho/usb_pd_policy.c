@@ -14,6 +14,7 @@
 #include "timer.h"
 #include "util.h"
 #include "usb_pd.h"
+#include "version.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
@@ -23,7 +24,7 @@ const int pd_src_pdo_cnt = ARRAY_SIZE(pd_src_pdo);
 
 /* Fake PDOs : we just want our pre-defined voltages */
 const uint32_t pd_snk_pdo[] = {
-		PDO_FIXED(5000,   500, 0),
+		PDO_FIXED(5000, 500, 0),
 };
 const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
 
@@ -88,3 +89,103 @@ int pd_board_checks(void)
 	return EC_SUCCESS;
 }
 
+/* ----------------- Vendor Defined Messages ------------------ */
+static int svdm_response_identity(int port, uint32_t *payload)
+{
+	payload[VDO_I(IDH)] = VDO_IDH(0, /* data caps as USB host */
+				      0, /* data caps as USB device */
+				      IDH_PTYPE_AMA, /* Alternate mode */
+				      1, /* supports alt modes */
+				      USB_VID_GOOGLE);
+	/* TODO(tbroch): Do we plan to obtain TID (test ID) for hoho */
+	payload[VDO_I(CSTAT)] = VDO_CSTAT(0);
+	payload[VDO_I(AMA)] = VDO_AMA(CONFIG_USB_PD_IDENTITY_HW_ID,
+				      ver_get_numcommits(),
+				      0, 0, 0, 0, /* SS[TR][12] */
+				      0, /* Vconn power */
+				      0, /* Vconn power required */
+				      1, /* Vbus power required */
+				      0	 /* USB SS support */);
+	return 4;
+}
+
+static int svdm_response_svids(int port, uint32_t *payload)
+{
+	payload[1] = VDO_SVID(USB_SID_DISPLAYPORT, 0);
+	return 2;
+}
+
+static int svdm_response_modes(int port, uint32_t *payload)
+{
+	if (PD_VDO_VID(payload[0]) != USB_SID_DISPLAYPORT) {
+		/* TODO(tbroch) USB billboard enabled here then */
+		return 1; /* will generate a NAK */
+	}
+	memset(payload + 1, 0, sizeof(uint32_t) * PDO_MODES);
+	payload[1] = VDO_MODE_DP(MODE_DP_PIN_E, /* sink pins	    */
+				 0,		/* no src pin cfg   */
+				 1,		/* no usb2.0	    */
+				 CABLE_PLUG,	/* its a plug	    */
+				 0,		/* no GEN2 usb	    */
+				 0,		/* dp 1.3 support   */
+				 MODE_DP_SNK);	/* Its a sink only  */
+	/* TODO(tbroch) does spec have mechanism for identifying valid modes
+	 * returned for svid? */
+	return 7;
+}
+
+static int svdm_enter_mode(int port, uint32_t *payload)
+{
+	/* Enable SBU */
+	gpio_set_level(GPIO_PD_SBU_ENABLE, 1);
+	payload[1] = 0;
+	return 1;
+}
+
+static int svdm_exit_mode(int port, uint32_t *payload)
+{
+	/* Enable SBU */
+	gpio_set_level(GPIO_PD_SBU_ENABLE, 0);
+	payload[1] = 0;
+	return 1;
+}
+
+const struct svdm_response svdm_rsp = {
+	.identity = &svdm_response_identity,
+	.svids = &svdm_response_svids,
+	.modes = &svdm_response_modes,
+	.enter_mode = &svdm_enter_mode,
+	.exit_mode = &svdm_exit_mode,
+};
+
+static int pd_custom_vdm(int port, int cnt, uint32_t *payload,
+			 uint32_t **rpayload)
+{
+	int cmd = PD_VDO_CMD(payload[0]);
+	int rsize = 1;
+	ccprintf("%T] VDM/%d [%d] %08x\n", cnt, cmd, payload[0]);
+
+	*rpayload = payload;
+	switch (cmd) {
+	case VDO_CMD_VERSION:
+		memcpy(payload + 1, &version_data.version, 24);
+		rsize = 7;
+		break;
+	default:
+		/* Unknown : do not answer */
+		return 0;
+	}
+	ccprintf("%T] DONE\n");
+	/* respond (positively) to the request */
+	payload[0] |= VDO_SRC_RESPONDER;
+
+	return rsize;
+}
+
+int pd_vdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
+{
+	if (PD_VDO_SVDM(payload[0]))
+		return pd_svdm(port, cnt, payload, rpayload);
+	else
+		return pd_custom_vdm(port, cnt, payload, rpayload);
+}
