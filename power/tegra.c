@@ -218,7 +218,6 @@ static int check_for_power_off_event(void)
 	return 0;
 }
 
-
 static void tegra_lid_event(void)
 {
 	/* Power task only cares about lid-open events */

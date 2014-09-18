@@ -20,10 +20,9 @@
 #define CONFIG_POWER_BUTTON
 #define CONFIG_VBOOT_HASH
 #define CONFIG_LED_COMMON
+#undef CONFIG_LID_SWITCH
 
 #ifndef __ASSEMBLER__
-
-
 
 /* Single I2C port, where the EC is the master. */
 #define I2C_PORT_MASTER 0
@@ -77,8 +76,6 @@ enum pwm_channel {
 	/* Number of PWM channels */
 	PWM_CH_COUNT
 };
-
-
 
 #endif /* !__ASSEMBLER__ */
 
