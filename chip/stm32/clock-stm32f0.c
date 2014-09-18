@@ -11,16 +11,40 @@
 #include "console.h"
 #include "cpu.h"
 #include "hooks.h"
+#include "hwtimer.h"
 #include "registers.h"
+#include "system.h"
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+
+/* Console output macros */
+#define CPUTS(outstr) cputs(CC_CLOCK, outstr)
+#define CPRINTS(format, args...) cprints(CC_CLOCK, format, ## args)
 
 /* use 48Mhz USB-synchronized High-speed oscillator */
 #define HSI48_CLOCK 48000000
 
 /* use PLL at 38.4MHz as system clock. */
 #define PLL_CLOCK 38400000
+
+/* Low power idle statistics */
+#ifdef CONFIG_LOW_POWER_IDLE
+static int idle_sleep_cnt;
+static int idle_dsleep_cnt;
+static uint64_t idle_dsleep_time_us;
+static int dsleep_recovery_margin_us = 1000000;
+
+/*
+ * minimum delay to enter stop mode
+ * STOP_MODE_LATENCY: max time to wake up from STOP mode with regulator in low
+ * power mode is 5 us + PLL locking time is 200us.
+ * SET_RTC_MATCH_DELAY: max time to set RTC match alarm. if we set the alarm
+ * in the past, it will never wake up and cause a watchdog.
+ */
+#define STOP_MODE_LATENCY 300 /* us */
+#define SET_RTC_MATCH_DELAY 200 /* us */
+#endif
 
 /*
  * RTC clock frequency (connected to LSI clock)
@@ -81,6 +105,11 @@ static inline uint32_t sec_to_rtc(uint32_t sec)
 static inline int32_t rtc_mod_10s(uint32_t rtc, uint32_t rtcss)
 {
 	return (rtc & 0xf) * SECOND + (RTC_PREDIV_S - rtcss) * US_PER_RTC_TICK;
+}
+static inline int32_t get_rtc_diff(int32_t rtc_t1, int32_t rtc_t0)
+{
+	int32_t diff = rtc_t1 - rtc_t0;
+	return (diff < 0) ? (diff + 10*SECOND) : diff;
 }
 
 static inline void rtc_read(uint32_t *rtc, uint32_t *rtcss)
@@ -163,26 +192,8 @@ void __rtc_alarm_irq(void)
 }
 DECLARE_IRQ(STM32_IRQ_RTC_WAKEUP, __rtc_alarm_irq, 1);
 
-int clock_get_freq(void)
+static void config_hispeed_clock(void)
 {
-	return CPU_CLOCK;
-}
-
-void clock_enable_module(enum module_id module, int enable)
-{
-}
-
-void clock_init(void)
-{
-	/*
-	 * The initial state :
-	 *  SYSCLK from HSI (=8MHz), no divider on AHB, APB1, APB2
-	 *  PLL unlocked, RTC enabled on LSE
-	 */
-
-	/* put 1 Wait-State for flash access to ensure proper reads at 48Mhz */
-	STM32_FLASH_ACR = 0x1001; /* 1 WS / Prefetch enabled */
-
 	/* Ensure that HSI48 is ON */
 	if (!(STM32_RCC_CR2 & (1 << 17))) {
 		/* Enable HSI */
@@ -241,6 +252,122 @@ void clock_init(void)
 #else
 #error "CPU_CLOCK must be either 48MHz or 38.4MHz"
 #endif
+}
+
+#ifdef CONFIG_LOW_POWER_IDLE
+
+void clock_refresh_console_in_use(void)
+{
+}
+
+#ifdef CONFIG_FORCE_CONSOLE_RESUME
+static void enable_serial_wakeup(int enable)
+{
+	static uint32_t save_exticr;
+
+	if (enable) {
+		/*
+		 * allow to wake up from serial port (RX on pin PA10)
+		 * by setting it as a GPIO with an external interrupt.
+		 */
+		STM32_EXTI_IMR |= (1<<10);
+		STM32_EXTI_RTSR |= (1<<10);
+		save_exticr = STM32_SYSCFG_EXTICR(10 / 4);
+		STM32_SYSCFG_EXTICR(10 / 4) = (save_exticr & ~(0xf << 8));
+	} else {
+		/* restore keyboard external IT on PC10 */
+		STM32_SYSCFG_EXTICR(10 / 4) = save_exticr;
+	}
+}
+#else
+static void enable_serial_wakeup(int enable)
+{
+}
+#endif
+
+/* Idle task.  Executed when no tasks are ready to be scheduled. */
+void __idle(void)
+{
+	timestamp_t t0;
+	int next_delay, margin_us;
+	int32_t rtc_t0, rtc_t1;
+
+	while (1) {
+		asm volatile("cpsid i");
+
+		t0 = get_time();
+		next_delay = __hw_clock_event_get() - t0.le.lo;
+
+		if (DEEP_SLEEP_ALLOWED &&
+		    (next_delay > (STOP_MODE_LATENCY + SET_RTC_MATCH_DELAY))) {
+			/* deep-sleep in STOP mode */
+			idle_dsleep_cnt++;
+
+			enable_serial_wakeup(1);
+
+			/* set deep sleep bit */
+			CPU_SCB_SYSCTRL |= 0x4;
+
+			rtc_t0 = set_rtc_alarm(0,
+					       next_delay - STOP_MODE_LATENCY);
+			asm("wfi");
+
+			CPU_SCB_SYSCTRL &= ~0x4;
+
+			enable_serial_wakeup(0);
+
+			/* re-lock the PLL */
+			config_hispeed_clock();
+
+			/* fast forward timer according to RTC counter */
+			rtc_t1 = reset_rtc_alarm();
+			rtc_t1 = get_rtc_diff(rtc_t1, rtc_t0);
+			t0.val = t0.val + rtc_t1;
+			force_time(t0);
+
+			/* Record time spent in deep sleep. */
+			idle_dsleep_time_us += rtc_t1;
+
+			/* Calculate how close we were to missing deadline */
+			margin_us = next_delay - rtc_t1;
+			if (margin_us < 0)
+				CPRINTS("overslept by %dus", -margin_us);
+
+			/* Record the closest to missing a deadline. */
+			if (margin_us < dsleep_recovery_margin_us)
+				dsleep_recovery_margin_us = margin_us;
+		} else {
+			idle_sleep_cnt++;
+
+			/* normal idle : only CPU clock stopped */
+			asm("wfi");
+		}
+		asm volatile("cpsie i");
+	}
+}
+#endif /* CONFIG_LOW_POWER_IDLE */
+
+int clock_get_freq(void)
+{
+	return CPU_CLOCK;
+}
+
+void clock_enable_module(enum module_id module, int enable)
+{
+}
+
+void clock_init(void)
+{
+	/*
+	 * The initial state :
+	 *  SYSCLK from HSI (=8MHz), no divider on AHB, APB1, APB2
+	 *  PLL unlocked, RTC enabled on LSE
+	 */
+
+	/* put 1 Wait-State for flash access to ensure proper reads at 48Mhz */
+	STM32_FLASH_ACR = 0x1001; /* 1 WS / Prefetch enabled */
+
+	config_hispeed_clock();
 
 	rtc_unlock_regs();
 
@@ -297,4 +424,28 @@ DECLARE_CONSOLE_COMMAND(rtc_alarm, command_rtc_alarm_test,
 			"Test alarm",
 			NULL);
 #endif /* CONFIG_CMD_RTC_ALARM */
+
+#ifdef CONFIG_LOW_POWER_IDLE
+/**
+ * Print low power idle statistics
+ */
+static int command_idle_stats(int argc, char **argv)
+{
+	timestamp_t ts = get_time();
+
+	ccprintf("Num idle calls that sleep:           %d\n", idle_sleep_cnt);
+	ccprintf("Num idle calls that deep-sleep:      %d\n", idle_dsleep_cnt);
+	ccprintf("Time spent in deep-sleep:            %.6lds\n",
+			idle_dsleep_time_us);
+	ccprintf("Total time on:                       %.6lds\n", ts.val);
+	ccprintf("Deep-sleep closest to wake deadline: %dus\n",
+			dsleep_recovery_margin_us);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(idlestats, command_idle_stats,
+			"",
+			"Print last idle stats",
+			NULL);
+#endif
 
