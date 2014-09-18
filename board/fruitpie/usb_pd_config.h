@@ -4,7 +4,6 @@
  */
 
 /* USB Power delivery board configuration */
-
 #ifndef __USB_PD_CONFIG_H
 #define __USB_PD_CONFIG_H
 

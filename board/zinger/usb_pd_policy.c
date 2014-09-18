@@ -350,7 +350,8 @@ void pd_adc_interrupt(void)
 DECLARE_IRQ(STM32_IRQ_ADC_COMP, pd_adc_interrupt, 1);
 
 /* ----------------- Vendor Defined Messages ------------------ */
-int pd_custom_vdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
+static int pd_custom_vdm(int port, int cnt, uint32_t *payload,
+			 uint32_t **rpayload)
 {
 	static int flash_offset;
 	void *hash;
@@ -417,4 +418,12 @@ int pd_custom_vdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 	payload[0] |= VDO_SRC_RESPONDER;
 
 	return rsize;
+}
+
+int pd_vdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
+{
+	if (PD_VDO_SVDM(payload[0]))
+		return pd_svdm(port, cnt, payload, rpayload);
+	else
+		return pd_custom_vdm(port, cnt, payload, rpayload);
 }
