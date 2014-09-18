@@ -190,20 +190,21 @@ def flash_pd(options):
 
   ec = FlashPD(options)
 
-  with open(options.firmware) as fd:
-    fw = fd.read()
-
-  # pad the firmware to a multiple of 6 U32
-  fw_size = len(fw)
-  if fw_size % 24:
-    fw += '\xff'*(24 - fw_size % 24)
-  words = array.array('I', fw)
-
   logging.info('Current PD FW version is %s', ec.get_version())
   if options.versiononly:
     return
 
-  logging.info('Flashing %d bytes', fw_size)
+  if not options.eraseonly:
+    with open(options.firmware) as fd:
+      fw = fd.read()
+
+    # pad the firmware to a multiple of 6 U32
+    fw_size = len(fw)
+    if fw_size % 24:
+      fw += '\xff'*(24 - fw_size % 24)
+    words = array.array('I', fw)
+
+    logging.info('Flashing %d bytes', fw_size)
 
   # reset flashed hash to reboot in RO
   ec.flash_command('hash' + ' 00000000' * 5)
@@ -306,17 +307,21 @@ def parse_args():
   # Add after to enumerate options.firmware but outside 'help' generation
   parser.add_option('-f', '', action='store', type='string', dest='firmware')
 
-  if len(args) != 1:
-    raise FlashPDError('Must supply power delivery firmware to write.')
+  if not options.eraseonly:
+    if not options.board:
+      raise FlashPDError('Must supply --board <board>')
 
-  options.firmware = args[0]
-  if not os.path.exists(options.firmware):
-    raise FlashPDError('Unable to find file %s' % options.firmware)
+    if len(args) != 1:
+      raise FlashPDError('Must supply power delivery firmware to write.')
 
-  fw_size = os.path.getsize(options.firmware)
-  max_rw_fw_size = get_rw_flash_size(options.board)
-  if fw_size > max_rw_fw_size:
-    raise FlashPDError('Firmware too large %d/%d' % (fw_size, max_rw_fw_size))
+    options.firmware = args[0]
+    if not os.path.exists(options.firmware):
+      raise FlashPDError('Unable to find file %s' % options.firmware)
+
+    fw_size = os.path.getsize(options.firmware)
+    max_rw_fw_size = get_rw_flash_size(options.board)
+    if fw_size > max_rw_fw_size:
+      raise FlashPDError('Firmware too large %d/%d' % (fw_size, max_rw_fw_size))
 
   return options
 
