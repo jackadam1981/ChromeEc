@@ -170,3 +170,7 @@ int pd_custom_vdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 	return 0;
 }
 
+struct svdm_response svdm_rsp = {
+	.identity = NULL,
+};
+

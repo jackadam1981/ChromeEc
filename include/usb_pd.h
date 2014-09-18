@@ -102,22 +102,55 @@ enum pd_errors {
 
 #define BDO(mode, cnt)      ((mode) | ((cnt) & 0xFFFF))
 
-/* VDO : Vendor Defined Message Object */
-#define VDO(vid, custom) (((vid) << 16) | ((custom) & 0xFFFF))
+/*
+   VDO : Vendor Defined Message Object
+   VDM object is minimum of VDM header + 6 additional data objects.
+
+*/
+struct svdm_response {
+	int (*identity)(uint32_t *payload);
+	int (*svids)(uint32_t *payload);
+	int (*modes)(uint32_t *payload);
+};
+
+/*
+   VDM header
+   ----------
+   <31:16>  :: SVID
+   <15>     :: VDM type ( 1b == structured, 0b == unstructured )
+   <14:13>  :: Structured VDM version
+   <12:11>  :: reserved
+   <10:8>   :: object position
+   <7:6>    :: command type (SVDM only?)
+   <5>      :: reserved (SVDM), command type (UVDM)
+   <4:0>    :: command
+*/
 #define VDO_MAX_SIZE 7
+#define VDO(vid, type, custom)				\
+	(((vid) << 16) |				\
+	 ((type) << 15) |				\
+	 ((custom) & 0x7FFF))
 
-#define VDO_ACK     (0 << 6)
-#define VDO_NAK     (1 << 6)
-#define VDO_PENDING (2 << 6)
+#define VDO_SVDM_TYPE     (1 << 15)
+#define VDO_SVDM_VERS(x)  (x << 13)
+#define VDO_OPOS(x)       (x << 8)
+#define VDO_CMDT(x)       (x << 6)
 
+#define CMDT_INIT     0
+#define CMDT_RSP_NAK  1
+#define CMDT_RSP_ACK  2
+#define CDMT_RSP_BUSY 3
+
+/* reserved for SVDM ... for Google UVDM */
 #define VDO_SRC_INITIATOR (0 << 5)
 #define VDO_SRC_RESPONDER (1 << 5)
 
-#define VDO_CMD_DISCOVER_VID (1 << 0)
-#define VDO_CMD_DISCOVER_ALT (2 << 0)
-#define VDO_CMD_AUTHENTICATE (3 << 0)
-#define VDO_CMD_ENTER_ALT    (4 << 0)
-#define VDO_CMD_EXIT_ALT     (5 << 0)
+#define VDO_CMD_DISCOVER_IDENT (1 << 0)
+#define VDO_CMD_DISCOVER_SVID  (2 << 0)
+#define VDO_CMD_DISCOVER_MODES (3 << 0)
+#define VDO_CMD_ENTER_MODE     (4 << 0)
+#define VDO_CMD_EXIT_MODE      (5 << 0)
+#define VDO_CMD_ATTENTION      (6 << 0)
 #define VDO_CMD_VENDOR(x)    (((10 + (x)) & 0x1f))
 
 /* ChromeOS specific commands */
@@ -130,8 +163,79 @@ enum pd_errors {
 #define VDO_CMD_PING_ENABLE  VDO_CMD_VENDOR(10)
 #define VDO_CMD_CURRENT      VDO_CMD_VENDOR(11)
 
-#define PD_VDO_VID(vdo) ((vdo) >> 16)
-#define PD_VDO_CMD(vdo) ((vdo) & 0x1f)
+#define PD_VDO_VID(vdo)  ((vdo) >> 16)
+#define PD_VDO_SVDM(vdo) (((vdo) >> 15) & 1)
+#define PD_VDO_CMD(vdo)  ((vdo) & 0x1f)
+#define PD_VDO_CMDT(vdo) (((vdo) >> 6) & 0x3)
+
+/*
+   SVDM Identity request -> response
+
+   Request is simply properly formatted SVDM header
+
+   Response is 4 data objects:
+     [0] :: SVDM header
+     [1] :: Identitiy header
+     [2] :: Cert Stat VDO
+     [3] :: Cable VDO
+
+   SVDM Identity Header
+   --------------------
+   <31>     :: data capable as a USB host
+   <30>     :: data capable as a USB device
+   <29:27>  :: product type
+   <26>     :: modal operation supported (1b == yes)
+   <25:16>  :: SBZ
+   <15:0>   :: USB-IF assigned VID for this cable vendor
+*/
+#define IDH_PTYPE_ACABLE 0x4
+#define IDH_MODE_SUPPORT 0x1
+
+#define VDO_IDH(usbh, usbd, ptype, is_modal, vid)		\
+	((usbh) << 31 | (usbd) << 30 | ((ptype) & 0x7) << 27	\
+	 | (is_modal) << 26 | ((vid) & 0xffff))
+
+#define PD_IDH_PTYPE(vdo) (((vdo) >> 27) & 0x7)
+#define PD_IDHDR_VID(vdo) ((vdo) & 0xffff)
+
+/*
+   Cert Stat VDO
+   -------------
+   <31:20> : SBZ
+   <19:0>  : USB-IF assigned TID for this cable
+*/
+#define VDO_CSTAT(tid)    ((tid) & 0xfffff)
+#define PD_CSTAT_TID(vdo) ((vdo) & 0xfffff)
+/*
+   Cable VDO
+   ---------
+   <31:28> :: Cable HW version
+   <27:24> :: Cable FW version
+   <23:20> :: SBZ
+   <19:18> :: type-C to Type-A/B/C (00b == A, 01 == B, 10 == C)
+   <17>    :: Type-C to Plug/Receptacle (0b == plug, 1b == receptacle)
+   <16:13> :: cable latency (0001 == <10ns(~1m length))
+   <12:11> :: cable termination type (11b == both ends active VCONN req)
+   <10>    :: SSTX1 Directionality support (0b == fixed, 1b == mux?)
+   <9>     :: SSTX2 Directionality support (0b == fixed, 1b == mux?)
+   <8>     :: SSRX1 Directionality support (0b == fixed, 1b == mux?)
+   <7>     :: SSRX2 Directionality support (0b == fixed, 1b == mux?)
+   <6:5>   :: Vbus current handling capability
+   <4>     :: Vbus through cable (0b == no, 1b == yes)
+   <3>     :: SOP" controller present? (0b == no, 1b == yes)
+   <2:0>   :: USB SS Signaling support (010b == USB3.1)
+*/
+#define CABLE_ATYPE 0
+#define CABLE_BTYPE 1
+#define CABLE_CTYPE 2
+#define CABLE_GENDER_MALE   0
+#define CABLE_GENDER_FEMALE 1
+#define VDO_CABLE(hw, fw, cbl, gdr, lat, term, tx1d, tx2d, rx1d, rx2d, cur, vps, sopp, usbss) \
+	(((hw) & 0x7) << 28 | ((fw) & 0x7) << 24 | ((cbl) & 0x3) << 18	\
+	 | (gdr) << 17 | ((lat) & 0x7) << 13 | ((term) & 0x3) << 11	\
+	 | (tx1d) << 10 | (tx2d) << 9 | (rx1d) << 8 | (rx2d) << 7	\
+	 | ((cur) & 0x3) << 5 | (vps) << 4 | (sopp) << 3		\
+	 | ((usbss) & 0x7))
 
 /*
  * ChromeOS specific VDO_CMD_READ_INFO responds with device info including:
@@ -147,6 +251,9 @@ enum pd_errors {
 #define VDO_INFO_SW_DBG_VER(x)   (((x) >> 1) & 0x7fff)
 #define VDO_INFO_IS_RW(x)        ((x) & 1)
 
+/* USB-IF SIDs */
+#define USB_SID_PD          0xff00 /* power delivery */
+#define USB_SID_DISPLAYPORT 0xff01
 /* USB Vendor ID assigned to Google Inc. */
 #define USB_VID_GOOGLE 0x18d1
 
@@ -296,7 +403,27 @@ void pd_set_input_current_limit(uint32_t max_ma);
 int pd_board_checks(void);
 
 /**
- * Handle Vendor Defined Message with our vendor ID.
+ * Generate SVDM payload
+ *
+ * @param cmd      number of data objects in the payload.
+ * @param payload  payload data.
+ * @return if >0, number of VDOs to send back.
+ */
+int pd_svdm_response_identity(uint32_t *payload);
+
+/**
+ * Handle Vendor Defined Message with Standard IDs
+ *
+ * @param port     USB-C port number
+ * @param cnt      number of data objects in the payload.
+ * @param payload  payload data.
+ * @param rpayload pointer to the data to send back.
+ * @return if >0, number of VDOs to send back.
+ */
+int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload);
+
+/**
+ * Handle Vendor Defined Message with Google vendor ID.
  *
  * @param port     USB-C port number
  * @param cnt      number of data objects in the payload.

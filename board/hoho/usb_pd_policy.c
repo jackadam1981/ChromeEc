@@ -14,6 +14,7 @@
 #include "timer.h"
 #include "util.h"
 #include "usb_pd.h"
+#include "version.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
@@ -88,3 +89,54 @@ int pd_board_checks(void)
 	return EC_SUCCESS;
 }
 
+/* ----------------- Vendor Defined Messages ------------------ */
+#define HOHO_HW_ID 0
+int pd_svdm_response_identity(uint32_t *payload)
+{
+	payload[1] = VDO_IDH(0, /* data caps as USB host */
+			     0, /* data caps as USB device */
+			     IDH_PTYPE_ACABLE, /* active cable */
+			     IDH_MODE_SUPPORT, /* supports alt modes */
+			     USB_VID_GOOGLE);
+	/* TODO(tbroch): Do we plan to obtain TID (test ID) for hoho */
+	payload[2] = VDO_CSTAT(0);
+	payload[3] = VDO_CABLE(HOHO_HW_ID,
+			       ver_get_numcommits(),
+			       CABLE_CTYPE,
+			       CABLE_GENDER_MALE,
+			       0 /* latency */,
+			       0 /* termination */,
+			       0, 0, 0, 0, /* SS[TR][12] */
+			       0 /* vbus current */,
+			       0 /* vbus through */,
+			       0 /* SOP" controller */,
+			       0 /* USB SS support*/);
+	return 4;
+}
+
+struct svdm_response svdm_rsp = {
+	.identity = &pd_svdm_response_identity
+};
+
+int pd_custom_vdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
+{
+	int cmd = PD_VDO_CMD(payload[0]);
+	int rsize = 1;
+	ccprintf("%T] VDM/%d [%d] %08x\n", cnt, cmd, payload[0]);
+
+	*rpayload = payload;
+	switch (cmd) {
+	case VDO_CMD_VERSION:
+		memcpy(payload + 1, &version_data.version, 24);
+		rsize = 7;
+		break;
+	default:
+		/* Unknown : do not answer */
+		return 0;
+	}
+	ccprintf("%T] DONE\n");
+	/* respond (positively) to the request */
+	payload[0] |= VDO_SRC_RESPONDER;
+
+	return rsize;
+}
