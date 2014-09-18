@@ -597,6 +597,9 @@
 /* Support common LED interface */
 #undef CONFIG_LED_COMMON
 
+/* Support OEM LED control method */
+#undef CONFIG_LED_CUSTOM
+
 /* Support for LED driver chip(s) */
 #undef CONFIG_LED_DRIVER_DS2413  /* Maxim DS2413, on one-wire interface */
 #undef CONFIG_LED_DRIVER_LP5562  /* LP5562, on I2C interface */
@@ -614,6 +617,11 @@
  * are for laptops with lid switchs.  Reference boards #undef it.
  */
 #define CONFIG_LID_SWITCH
+
+/*
+ * Compile lid switch Not support.
+ */
+#undef CONFIG_NOLID
 
 /*
  * Low power idle options. These are disabled by default and all boards that
