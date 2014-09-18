@@ -2559,8 +2559,6 @@ struct ec_params_reboot_ec {
  */
 #define EC_CMD_VERSION0 0xdc
 
-#endif  /* !__ACPI__ */
-
 /*****************************************************************************/
 /*
  * PD commands
@@ -2692,4 +2690,5 @@ struct ec_params_usb_pd_info_request {
 #define EC_LPC_ADDR_OLD_PARAM   EC_HOST_CMD_REGION1
 #define EC_OLD_PARAM_SIZE       EC_HOST_CMD_REGION_SIZE
 
+#endif  /* !__ACPI__ */
 #endif  /* __CROS_EC_COMMANDS_H */
