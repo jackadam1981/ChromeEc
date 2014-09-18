@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10479fed_59f0e46c",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-09-18T17:48:20Z",
+      "side": 1,
+      "message": "I know this is kinda ugly, but the goal here is to return the current time, and I\u0027m trying to avoid returning int64_t. So, instead I\u0027m basically returning the current time in us % 10 seconds, so a number between 0 and 10,000,000. This is good enough because the only purpose for returning this information is for the low power idle task which will use this info to know how much to forward the clock by. Suggestions welcome.",
+      "range": {
+        "startLine": 144,
+        "startChar": 8,
+        "endLine": 144,
+        "endChar": 19
+      },
+      "revId": "5bcdf859675fbcf8f41f46de3709be538607b2e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
