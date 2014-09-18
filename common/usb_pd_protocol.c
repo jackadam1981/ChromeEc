@@ -152,6 +152,7 @@ static const uint8_t dec4b5b[] = {
 #define CC_RA(cc)  (cc < PD_SRC_RD_THRESHOLD)
 #define CC_RD(cc) ((cc > PD_SRC_RD_THRESHOLD) && (cc < PD_SRC_VNC))
 #define GET_POLARITY(cc1, cc2) (CC_RD(cc2) || CC_RA(cc1))
+#define IS_CABLE(cc1, cc2)     (CC_RD(cc1) || CC_RD(cc2))
 
 /* PD counter definitions */
 #define PD_MESSAGE_ID_COUNT 7
@@ -214,6 +215,20 @@ enum vdm_states {
 	VDM_STATE_BUSY = 2,
 };
 
+/* Section 8.3.3.7 Structured VDM states. */
+enum svdm_states {
+	SVDM_STATE_ERR = -1,
+	SVDM_STATE_DONE = 0,
+	SVDM_STATE_READY,
+	SVDM_STATE_IDENTITY,
+/*
+	SVDM_STATE_SVIDS,
+	SVDM_STATE_MODES,
+	SVDM_STATE_MODE_ENTRY,
+	SVDM_STATE_MODE_EXIT,
+*/
+};
+
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 /* Port dual-role state */
 enum pd_dual_role_states drp_state = PD_DRP_TOGGLE_OFF;
@@ -250,6 +265,8 @@ static struct pd_protocol {
 
 	/* PD state for Vendor Defined Messages */
 	enum vdm_states vdm_state;
+	/* PD state for Structured VDMs */
+	enum svdm_states svdm_state;
 	/* next Vendor Defined Message to send */
 	uint32_t vdo_data[VDO_MAX_SIZE];
 	uint8_t vdo_count;
@@ -309,13 +326,14 @@ static inline void set_state(int port, enum pd_states next_state)
 	set_state_timeout(port, 0, 0);
 	pd[port].task_state = next_state;
 
-#ifdef CONFIG_USBC_SS_MUX
 	if (next_state == PD_STATE_SRC_DISCONNECTED) {
+		pd[port].svdm_state = SVDM_STATE_DONE;
+#ifdef CONFIG_USBC_SS_MUX
 		pd[port].dev_id = 0;
 		board_set_usb_mux(port, TYPEC_MUX_NONE,
 				  pd[port].polarity);
-	}
 #endif
+	}
 
 #ifdef CONFIG_LOW_POWER_IDLE
 	/* If any PD port is connected, then disable deep sleep */
@@ -647,23 +665,22 @@ static void bist_mode_2_rx(int port)
 static void handle_vdm_request(int port, int cnt, uint32_t *payload)
 {
 	uint16_t vid = PD_VDO_VID(payload[0]);
-#ifdef CONFIG_USB_PD_CUSTOM_VDM
-	int rlen;
+	int rlen = 0;
 	uint32_t *rdata;
-#endif
 
-	if (vid == USB_VID_GOOGLE) {
-		if (pd[port].vdm_state == VDM_STATE_BUSY)
-			pd[port].vdm_state = VDM_STATE_DONE;
-#ifdef CONFIG_USB_PD_CUSTOM_VDM
+	if (pd[port].vdm_state == VDM_STATE_BUSY)
+		pd[port].vdm_state = VDM_STATE_DONE;
+
+	if (PD_VDO_SVDM(payload[0]))
+		rlen = pd_svdm(port, cnt, payload, &rdata);
+	else if (vid == USB_VID_GOOGLE)
 		rlen = pd_custom_vdm(port, cnt, payload, &rdata);
-		if (rlen > 0) {
-			uint16_t header = PD_HEADER(PD_DATA_VENDOR_DEF,
-						pd[port].role, pd[port].msg_id,
-						rlen);
-			send_validate_message(port, header, rlen, rdata);
-		}
-#endif
+
+	if (rlen > 0) {
+		uint16_t header = PD_HEADER(PD_DATA_VENDOR_DEF,
+					    pd[port].role, pd[port].msg_id,
+					    rlen);
+		send_validate_message(port, header, rlen, rdata);
 		return;
 	}
 	if (debug_level >= 1)
@@ -1055,7 +1072,8 @@ void pd_send_vdm(int port, uint32_t vid, int cmd, const uint32_t *data,
 		return;
 	}
 
-	pd[port].vdo_data[0] = VDO(vid, cmd);
+	pd[port].vdo_data[0] = 0;
+	pd[port].vdo_data[0] = VDO(vid, (vid == USB_SID_PD) ? 1 : 0, cmd);
 	pd[port].vdo_count = count + 1;
 	for (i = 1; i < count + 1; i++)
 		pd[port].vdo_data[i] = data[i-1];
@@ -1063,6 +1081,22 @@ void pd_send_vdm(int port, uint32_t vid, int cmd, const uint32_t *data,
 	/* Set ready, pd task will actually send */
 	pd[port].vdm_state = VDM_STATE_READY;
 	task_wake(PORT_TO_TASK_ID(port));
+}
+
+static void pd_send_svdm(int port, enum svdm_states new_state)
+{
+	if (new_state == pd[port].svdm_state)
+		return;
+
+	pd[port].svdm_state = new_state;
+	switch (new_state) {
+	case SVDM_STATE_IDENTITY:
+		pd_send_vdm(port, USB_SID_PD, VDO_CMD_DISCOVER_IDENT,
+			    NULL, 0);
+		break;
+	default:
+		break;
+	}
 }
 
 static void pd_vdm_send_state_machine(int port)
@@ -1209,6 +1243,7 @@ void pd_task(void)
 	/* Initialize PD protocol state variables for each port. */
 	pd[port].role = PD_ROLE_DEFAULT;
 	pd[port].vdm_state = VDM_STATE_DONE;
+	pd[port].svdm_state = SVDM_STATE_DONE;
 	pd[port].ping_enabled = 0;
 	set_state(port, PD_DEFAULT_STATE);
 
@@ -1340,6 +1375,8 @@ void pd_task(void)
 				timeout =  PD_T_SEND_SOURCE_CAP;
 				/* it'a time to ping regularly the sink */
 				set_state(port, PD_STATE_SRC_READY);
+				/* SRC default DFP and should initiate SVDM */
+				pd[port].svdm_state = SVDM_STATE_READY;
 			} else {
 				/* The sink did not ack, cut the power... */
 				pd_power_supply_reset(port);
@@ -1347,6 +1384,8 @@ void pd_task(void)
 			}
 			break;
 		case PD_STATE_SRC_READY:
+			if (pd[port].svdm_state != SVDM_STATE_DONE)
+				pd_send_svdm(port, SVDM_STATE_IDENTITY);
 			if (!pd[port].ping_enabled) {
 				timeout = PD_T_SOURCE_ACTIVITY;
 				break;
@@ -1824,18 +1863,25 @@ static int command_pd(int argc, char **argv)
 	} else if (!strncasecmp(argv[2], "state", 5)) {
 		const char * const state_names[] = {
 			"DISABLED", "SUSPENDED",
+#ifdef CONFIG_USB_PD_DUAL_ROLE
 			"SNK_DISCONNECTED", "SNK_DISCOVERY", "SNK_REQUESTED",
 			"SNK_TRANSITION", "SNK_READY",
+#endif /* CONFIG_USB_PD_DUAL_ROLE */
 			"SRC_DISCONNECTED", "SRC_DISCOVERY", "SRC_NEGOCIATE",
 			"SRC_ACCEPTED", "SRC_TRANSITION", "SRC_READY",
 			"SOFT_RESET", "HARD_RESET", "BIST",
 		};
+		const char * const svdm_names[] = {
+			"DONE", "READY", "IDENTITY", "SVIDS", "MODES",
+			"MODE_ENTER", "MODE_EXIT",
+		};
 		BUILD_ASSERT(ARRAY_SIZE(state_names) == PD_STATE_COUNT);
-		ccprintf("Port C%d, %s - Role: %s Polarity: CC%d State: %s\n",
+		ccprintf("Port C%d, %s - Role: %s Polarity: CC%d State: %s ",
 			port, pd_comm_enabled ? "Enabled" : "Disabled",
 			pd[port].role == PD_ROLE_SOURCE ? "SRC" : "SNK",
 			pd[port].polarity + 1,
 			state_names[pd[port].task_state]);
+		ccprintf("SVDM: %s\n", svdm_names[pd[port].svdm_state]);
 	} else {
 		return EC_ERROR_PARAM1;
 	}
