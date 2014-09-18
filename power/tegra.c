@@ -218,7 +218,6 @@ static int check_for_power_off_event(void)
 	return 0;
 }
 
-
 static void tegra_lid_event(void)
 {
 	/* Power task only cares about lid-open events */
@@ -545,10 +544,14 @@ enum power_state power_handle_state(enum power_state state)
 		return state;
 
 	case POWER_S0S3:
+	#ifdef CONFIG_LID_SWITCH
 		if (lid_is_open())
 			powerled_set_state(POWERLED_STATE_SUSPEND);
 		else
 			powerled_set_state(POWERLED_STATE_OFF);
+	#else
+		powerled_set_state(POWERLED_STATE_SUSPEND);
+	#endif
 		/* Call hooks here since we don't know it prior to AP suspend */
 		hook_notify(HOOK_CHIPSET_SUSPEND);
 		return POWER_S3;
