@@ -250,6 +250,7 @@ void __enter_hibernate(uint32_t seconds, uint32_t microseconds)
 	system_reset(SYSTEM_RESET_HARD);
 }
 
+#ifdef CONFIG_LID_SWITCH
 static void fake_hibernate_power_button_hook(void)
 {
 	if (fake_hibernate && lid_is_open() && !power_button_is_pressed()) {
@@ -270,6 +271,7 @@ static void fake_hibernate_lid_hook(void)
 	}
 }
 DECLARE_HOOK(HOOK_LID_CHANGE, fake_hibernate_lid_hook, HOOK_PRIO_DEFAULT);
+#endif
 
 static void fake_hibernate_ac_hook(void)
 {

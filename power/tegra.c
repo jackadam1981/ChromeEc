@@ -42,6 +42,7 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#include "board.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHIPSET, outstr)
@@ -219,6 +220,7 @@ static int check_for_power_off_event(void)
 }
 
 
+#ifdef CONFIG_LID_SWITCH
 static void tegra_lid_event(void)
 {
 	/* Power task only cares about lid-open events */
@@ -229,6 +231,7 @@ static void tegra_lid_event(void)
 	task_wake(TASK_ID_CHIPSET);
 }
 DECLARE_HOOK(HOOK_LID_CHANGE, tegra_lid_event, HOOK_PRIO_DEFAULT);
+#endif
 
 enum power_state power_chipset_init(void)
 {
@@ -545,10 +548,14 @@ enum power_state power_handle_state(enum power_state state)
 		return state;
 
 	case POWER_S0S3:
+	#ifdef CONFIG_LID_SWITCH
 		if (lid_is_open())
 			powerled_set_state(POWERLED_STATE_SUSPEND);
 		else
 			powerled_set_state(POWERLED_STATE_OFF);
+	#else
+		powerled_set_state(POWERLED_STATE_SUSPEND);
+	#endif
 		/* Call hooks here since we don't know it prior to AP suspend */
 		hook_notify(HOOK_CHIPSET_SUSPEND);
 		return POWER_S3;

@@ -118,6 +118,7 @@ static void hang_detect_power_button(void)
 DECLARE_HOOK(HOOK_POWER_BUTTON_CHANGE, hang_detect_power_button,
 	     HOOK_PRIO_DEFAULT);
 
+#ifdef CONFIG_LID_SWITCH
 static void hang_detect_lid(void)
 {
 	if (lid_is_open()) {
@@ -129,6 +130,7 @@ static void hang_detect_lid(void)
 	}
 }
 DECLARE_HOOK(HOOK_LID_CHANGE, hang_detect_lid, HOOK_PRIO_DEFAULT);
+#endif
 
 static void hang_detect_resume(void)
 {
