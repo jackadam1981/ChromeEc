@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "906aaf64_adc76925",
+        "filename": "power/tegra.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1002584
+      },
+      "writtenOn": "2014-09-18T21:17:32Z",
+      "side": 1,
+      "message": "might be easier to define a new CONFIG_NOLID instead of making this board specific. Add to config.h (undef it since it should not be the default) and define in board.h",
+      "revId": "6cc6668d64cb08e92995cd3c8e3757660f712920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0712b54_f648d6f0",
+        "filename": "power/tegra.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1002584
+      },
+      "writtenOn": "2014-09-18T21:17:32Z",
+      "side": 1,
+      "message": "This state is already set in power_off(). What is the need to set it here?",
+      "revId": "6cc6668d64cb08e92995cd3c8e3757660f712920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
