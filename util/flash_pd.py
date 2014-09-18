@@ -125,13 +125,14 @@ class FlashPD(client.ServoClient):
       logging.debug("Expect '%s' missing", val)
     return (done, l)
 
-  def flash_command(self, cmd, expect='DONE 0', retries=2):
+  def flash_command(self, cmd, expect='DONE 0', retries=2, ignore_fail=False):
     """Send PD Flash command and interrogate output.
 
     Args:
-      cmd     : string of 'pd port flash' command to execute
-      expect  : string of expected response after 'cmd'
-      retries : integer number of times to repeat command if it fails.
+      cmd         : string of 'pd port flash' command to execute
+      expect      : string of expected response after 'cmd'
+      retries     : integer number of times to repeat command if it fails.
+      ignore_fail : boolean to ignore failure
 
     Returns:
       tuple :
@@ -151,7 +152,7 @@ class FlashPD(client.ServoClient):
         logging.debug("pd flash cmd Retry%d for '%s'", i, cmd)
       if found:
         break
-    if (i + 1) == tries and not found:
+    if (i + 1) == tries and not found and not ignore_fail:
       raise FlashPDError("Failed pd flash cmd: '%s' after %d retries\n" %
                          (cmd, retries))
     return (found, line)
@@ -217,10 +218,20 @@ def flash_pd(options):
   # erase all RW partition
   ec.flash_command('erase')
 
-  # verify that erase was successful by reading hash of RW
-  (done, _) = ec.flash_command('rw_hash', expect=ERASED_RW_HASH)
+  # TODO(tbroch) deprecate rw_hash if/when command is completely deprecated in
+  # favor of 'info'
+  in_rw = 0
+  (done, _) = ec.flash_command('rw_hash', expect=ERASED_RW_HASH, retries=0,
+                               ignore_fail=True)
   if done:
     done = ec.expect('DONE')
+  else:
+    # verify that erase was successful by reading hash of RW
+    (done, line) = ec.flash_command('info', expect=r'INFO')
+    m = re.match(r'INFO.*(18d1\S{4})', line)
+    if done and m:
+      done = ec.expect('DONE 0')
+      in_rw = int(m.group(1), 16) & 0x1
 
   if not done:
     raise FlashPDError('Erase failed')
