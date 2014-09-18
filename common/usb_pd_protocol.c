@@ -152,6 +152,7 @@ static const uint8_t dec4b5b[] = {
 #define CC_RA(cc)  (cc < PD_SRC_RD_THRESHOLD)
 #define CC_RD(cc) ((cc > PD_SRC_RD_THRESHOLD) && (cc < PD_SRC_VNC))
 #define GET_POLARITY(cc1, cc2) (CC_RD(cc2) || CC_RA(cc1))
+#define IS_CABLE(cc1, cc2)     (CC_RD(cc1) || CC_RD(cc2))
 
 /* PD counter definitions */
 #define PD_MESSAGE_ID_COUNT 7
@@ -309,13 +310,13 @@ static inline void set_state(int port, enum pd_states next_state)
 	set_state_timeout(port, 0, 0);
 	pd[port].task_state = next_state;
 
-#ifdef CONFIG_USBC_SS_MUX
 	if (next_state == PD_STATE_SRC_DISCONNECTED) {
+#ifdef CONFIG_USBC_SS_MUX
 		pd[port].dev_id = 0;
 		board_set_usb_mux(port, TYPEC_MUX_NONE,
 				  pd[port].polarity);
-	}
 #endif
+	}
 
 #ifdef CONFIG_LOW_POWER_IDLE
 	/* If any PD port is connected, then disable deep sleep */
@@ -647,23 +648,20 @@ static void bist_mode_2_rx(int port)
 static void handle_vdm_request(int port, int cnt, uint32_t *payload)
 {
 	uint16_t vid = PD_VDO_VID(payload[0]);
-#ifdef CONFIG_USB_PD_CUSTOM_VDM
-	int rlen;
+	int rlen = 0;
 	uint32_t *rdata;
-#endif
 
-	if (vid == USB_VID_GOOGLE) {
-		if (pd[port].vdm_state == VDM_STATE_BUSY)
-			pd[port].vdm_state = VDM_STATE_DONE;
-#ifdef CONFIG_USB_PD_CUSTOM_VDM
-		rlen = pd_custom_vdm(port, cnt, payload, &rdata);
-		if (rlen > 0) {
-			uint16_t header = PD_HEADER(PD_DATA_VENDOR_DEF,
-						pd[port].role, pd[port].msg_id,
-						rlen);
-			send_validate_message(port, header, rlen, rdata);
-		}
-#endif
+	if (pd[port].vdm_state == VDM_STATE_BUSY)
+		pd[port].vdm_state = VDM_STATE_DONE;
+
+	if (PD_VDO_SVDM(payload[0]) || (vid == USB_VID_GOOGLE))
+		rlen = pd_vdm(port, cnt, payload, &rdata);
+
+	if (rlen > 0) {
+		uint16_t header = PD_HEADER(PD_DATA_VENDOR_DEF,
+					    pd[port].role, pd[port].msg_id,
+					    rlen);
+		send_validate_message(port, header, rlen, rdata);
 		return;
 	}
 	if (debug_level >= 1)
@@ -1054,7 +1052,7 @@ void pd_send_vdm(int port, uint32_t vid, int cmd, const uint32_t *data,
 		return;
 	}
 
-	pd[port].vdo_data[0] = VDO(vid, cmd);
+	pd[port].vdo_data[0] = VDO(vid, (vid == USB_SID_PD) ? 1 : 0, cmd);
 	pd[port].vdo_count = count + 1;
 	for (i = 1; i < count + 1; i++)
 		pd[port].vdo_data[i] = data[i-1];
@@ -1346,6 +1344,9 @@ void pd_task(void)
 			}
 			break;
 		case PD_STATE_SRC_READY:
+			if (pd[port].last_state != pd[port].task_state)
+				pd_send_vdm(port, USB_SID_PD,
+					    CMD_DISCOVER_IDENT, NULL, 0);
 			if (!pd[port].ping_enabled) {
 				timeout = PD_T_SOURCE_ACTIVITY;
 				break;
@@ -1460,6 +1461,7 @@ void pd_task(void)
 					PD_STATE_HARD_RESET);
 			break;
 		case PD_STATE_HARD_RESET:
+			pd_exit_modes(port, payload);
 			send_hard_reset(port);
 			/* reset our own state machine */
 			execute_hard_reset(port);
@@ -1820,8 +1822,10 @@ static int command_pd(int argc, char **argv)
 	} else if (!strncasecmp(argv[2], "state", 5)) {
 		const char * const state_names[] = {
 			"DISABLED", "SUSPENDED",
+#ifdef CONFIG_USB_PD_DUAL_ROLE
 			"SNK_DISCONNECTED", "SNK_DISCOVERY", "SNK_REQUESTED",
 			"SNK_TRANSITION", "SNK_READY",
+#endif /* CONFIG_USB_PD_DUAL_ROLE */
 			"SRC_DISCONNECTED", "SRC_DISCOVERY", "SRC_NEGOCIATE",
 			"SRC_ACCEPTED", "SRC_TRANSITION", "SRC_READY",
 			"SOFT_RESET", "HARD_RESET", "BIST",
