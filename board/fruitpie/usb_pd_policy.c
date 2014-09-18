@@ -136,7 +136,14 @@ int pd_board_checks(void)
 }
 
 /* ----------------- Vendor Defined Messages ------------------ */
-int pd_custom_vdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
+const struct svdm_response svdm_rsp = {
+	.identity = NULL,
+	.svids = NULL,
+	.modes = NULL,
+};
+
+static int pd_custom_vdm(int port, int cnt, uint32_t *payload,
+			 uint32_t **rpayload)
 {
 	int cmd = PD_VDO_CMD(payload[0]);
 	uint8_t dev_id = 0;
@@ -170,3 +177,49 @@ int pd_custom_vdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 	return 0;
 }
 
+int pd_vdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
+{
+	if (PD_VDO_SVDM(payload[0]))
+		return pd_svdm(port, cnt, payload, rpayload);
+	else
+		return pd_custom_vdm(port, cnt, payload, rpayload);
+}
+
+static void svdm_enter_dp_mode(uint32_t mode_vdo)
+{
+	ccprintf("Entering mode w/ vdo = %08x\n", mode_vdo);
+}
+
+static void svdm_exit_dp_mode(void)
+{
+	ccprintf("Exiting mode\n");
+	/* return to safe config */
+}
+
+struct svdm_mode_data modes[] = {
+	{
+		.svid = 0xff01,
+		.enter = &svdm_enter_dp_mode,
+		.exit = &svdm_exit_dp_mode,
+	},
+	{},
+};
+
+struct svdm_mode_data *pd_dfp_choose_mode(int cnt, struct svdm_svid_data *svids,
+					  uint32_t **mode_vdo, int *mode_idx)
+{
+	int i;
+	struct svdm_mode_data *modep;
+	modep = modes;
+	for (i = 0; i < cnt; i++) {
+		if (!modep)
+			break;
+		if (modep && svids[i].svid == modep->svid) {
+			*mode_vdo = svids[i].mode_vdo;
+			*mode_idx = 0;
+			return modep;
+		}
+		modep++;
+	}
+	return NULL;
+}

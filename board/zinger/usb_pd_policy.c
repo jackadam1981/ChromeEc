@@ -350,7 +350,7 @@ void pd_adc_interrupt(void)
 DECLARE_IRQ(STM32_IRQ_ADC_COMP, pd_adc_interrupt, 1);
 
 /* ----------------- Vendor Defined Messages ------------------ */
-int pd_custom_vdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
+int pd_vdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 {
 	static int flash_offset;
 	void *hash;
