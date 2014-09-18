@@ -198,3 +198,16 @@ DECLARE_CONSOLE_COMMAND(usbc_action, cmd_usbc_action,
 			"<5v|12v|20v|dev|usb|dp|flip|pol0|pol1>",
 			"Set Plankton type-C port state",
 			NULL);
+
+static int cmd_usb_hub_reset(int argc, char *argv[])
+{
+	i2c_write8(I2C_PORT_MASTER, 0x40, 0x00, 0x1);
+	i2c_write8(I2C_PORT_MASTER, 0x40, 0x03, 0x7f);
+	i2c_write8(I2C_PORT_MASTER, 0x40, 0x01, 0x7f);
+	usleep(100 * MSEC);
+	i2c_write8(I2C_PORT_MASTER, 0x40, 0x01, 0xff);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(hub_reset, cmd_usb_hub_reset,
+			NULL, "Reset USB hub", NULL);
