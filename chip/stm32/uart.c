@@ -260,6 +260,11 @@ void uart_init(void)
 	STM32_USART_CR1(UARTN_BASE) =
 		STM32_USART_CR1_UE | STM32_USART_CR1_TE | STM32_USART_CR1_RE;
 
+#if defined(CONFIG_LOW_POWER_IDLE) && defined(CONFIG_FORCE_CONSOLE_RESUME)
+	/* Allow wake up from STOP mode. Note UART clock must be HSI(8MHz) */
+	STM32_USART_CR1(UARTN_BASE) |= STM32_USART_CR1_UESM;
+#endif
+
 	/* 1 stop bit, no fancy stuff */
 	STM32_USART_CR2(UARTN_BASE) = 0x0000;
 
