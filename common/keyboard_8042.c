@@ -658,6 +658,7 @@ static int handle_keyboard_data(uint8_t data, uint8_t *output)
 			output[out_len++] = I8042_RET_ACK;
 			output[out_len++] = 0xab;  /* Regular keyboards */
 			output[out_len++] = 0x83;
+		CPRINTS5("KB eaten by I8042_CMD_OK_GETID:ret value : 0xFaab83");
 			break;
 
 		case I8042_CMD_SETREP:

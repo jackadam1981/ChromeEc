@@ -58,12 +58,15 @@ static void keyboard_irq_assert(void)
 	 * function call.
 	 */
 	gpio_set_level(CONFIG_KEYBOARD_IRQ_GPIO, 1);
-	udelay(4);
+	msleep(1);
 	/* Generate a falling edge */
 	gpio_set_level(CONFIG_KEYBOARD_IRQ_GPIO, 0);
-	udelay(4);
+	msleep(1);
+
 	/* Set signal high, now that we've generated the edge */
 	gpio_set_level(CONFIG_KEYBOARD_IRQ_GPIO, 1);
+
+	CPRINTS("KR Irq sent ");
 }
 #else
 static void keyboard_irq_assert(void)

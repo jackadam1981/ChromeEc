@@ -331,11 +331,7 @@ static int charge_request(int voltage, int current)
 	 * power in some cases (e.g. Nyan with BQ24735).
 	 */
 	if (voltage > 0 || current > 0)
-		#ifdef BAT_DISABLECHARGING
-		r3 = charger_set_mode(CHARGE_FLAG_INHIBIT_CHARGE);
-		#else
 		r3 = charger_set_mode(0);
-		#endif
 	else
 		r3 = charger_set_mode(CHARGE_FLAG_INHIBIT_CHARGE);
 	if (r3 != EC_SUCCESS)

@@ -107,6 +107,7 @@ int charger_get_status(int *status)
 
 int charger_set_mode(int mode)
 {
+
 	int rv;
 	int option;
 
@@ -172,19 +173,6 @@ int charger_post_init(void)
 		rv = sbc_write(BQ24770_CHARGE_OPTION2, option);
 	}
 
-#ifdef BAT_DISABLECHARGING
-		/* Read the external ILIM pin enabled flag. */
-		rv = sbc_read(BQ24770_CHARGE_OPTION1, &option);
-		if (rv)
-			return rv;
-
-		if (option & OPTION1_AUTOWAKE_EN) {
-			option &= ~OPTION1_AUTOWAKE_EN;
-			rv = sbc_write(BQ24770_CHARGE_OPTION1, option);
-		}
-
-		CPRINTS("BATTERY CHARGING DISABLED for PO ");
-#endif
 	return rv;
 #else
 	return EC_SUCCESS;
