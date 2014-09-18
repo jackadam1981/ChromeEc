@@ -545,15 +545,22 @@ enum power_state power_handle_state(enum power_state state)
 		return state;
 
 	case POWER_S0S3:
+	#ifdef BOARD_KITTY
+		powerled_set_state(POWERLED_STATE_SUSPEND);
+	#else
 		if (lid_is_open())
 			powerled_set_state(POWERLED_STATE_SUSPEND);
 		else
 			powerled_set_state(POWERLED_STATE_OFF);
+	#endif
 		/* Call hooks here since we don't know it prior to AP suspend */
 		hook_notify(HOOK_CHIPSET_SUSPEND);
 		return POWER_S3;
 
 	case POWER_S3S5:
+	#ifdef CONFIG_LED_CUSTOM
+		powerled_set_state(POWERLED_STATE_OFF);
+	#endif
 		wait_for_power_button_release(-1);
 		return POWER_S5;
 

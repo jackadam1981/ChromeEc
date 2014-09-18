@@ -20,6 +20,7 @@
 #define CONFIG_POWER_BUTTON
 #define CONFIG_VBOOT_HASH
 #define CONFIG_LED_COMMON
+#define CONFIG_LED_CUSTOM
 
 #ifndef __ASSEMBLER__
 
