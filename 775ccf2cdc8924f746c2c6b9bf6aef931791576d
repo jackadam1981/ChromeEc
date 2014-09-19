@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5064b799_2f5cca5a",
+        "filename": "util/flash_pd.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-09-19T05:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0712b54_3665f996",
+      "range": {
+        "startLine": 132,
+        "startChar": 39,
+        "endLine": 132,
+        "endChar": 44
+      },
+      "revId": "775ccf2cdc8924f746c2c6b9bf6aef931791576d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "105ebfcf_a96c390d",
         "filename": "util/flash_pd.py",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f05a0bdc_c59f1a3d",
+        "filename": "util/flash_pd.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-09-19T05:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "105ebfcf_a96c390d",
+      "range": {
+        "startLine": 152,
+        "startChar": 26,
+        "endLine": 152,
+        "endChar": 31
+      },
+      "revId": "775ccf2cdc8924f746c2c6b9bf6aef931791576d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5064b799_b77332f4",
         "filename": "util/flash_pd.py",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2014-09-19T01:38:37Z",
       "side": 1,
       "message": "well to be more accurate, they share their hash when you send the \"info\" custom VDM",
+      "range": {
+        "startLine": 242,
+        "startChar": 43,
+        "endLine": 242,
+        "endChar": 50
+      },
+      "revId": "775ccf2cdc8924f746c2c6b9bf6aef931791576d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0712b54_f92c4221",
+        "filename": "util/flash_pd.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-09-19T05:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5064b799_b77332f4",
       "range": {
         "startLine": 242,
         "startChar": 43,
