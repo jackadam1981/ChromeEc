@@ -31,6 +31,10 @@
 #define CONFIG_STM_HWTIMER32
 #undef CONFIG_WATCHDOG_HELP
 
+#define CONFIG_FORCE_CONSOLE_RESUME
+#define CONFIG_UART_RX_DMA
+#define CONFIG_LOW_POWER_IDLE
+
 #ifndef __ASSEMBLER__
 
 /* 48 MHz SYSCLK clock frequency */
