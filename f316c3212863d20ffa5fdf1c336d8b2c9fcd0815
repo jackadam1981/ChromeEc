@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5064b799_23f7016c",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-09-19T17:19:36Z",
+      "side": 1,
+      "message": "Nit, Should really make defines for all these constants and hide the / 4.\n\nAdd space between \u0027\u003c\u003c\u0027 operator ( 1 \u003c\u003c 10 )",
+      "range": {
+        "startLine": 277,
+        "startChar": 21,
+        "endLine": 277,
+        "endChar": 26
+      },
+      "revId": "f316c3212863d20ffa5fdf1c336d8b2c9fcd0815",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d057c7b2_2a911bfc",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-09-19T17:19:36Z",
+      "side": 1,
+      "message": "STM32_FLASH_ACR |\u003d STM32_FLASH_ACR_LATENCY ?",
+      "range": {
+        "startLine": 371,
+        "startChar": 19,
+        "endLine": 371,
+        "endChar": 25
+      },
+      "revId": "f316c3212863d20ffa5fdf1c336d8b2c9fcd0815",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50e9172a_40b92ec9",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-09-19T17:19:36Z",
+      "side": 1,
+      "message": "Awesome ... should definitely remember to add this back to the F series idle loop too!",
+      "range": {
+        "startLine": 432,
+        "startChar": 0,
+        "endLine": 454,
+        "endChar": 6
+      },
+      "revId": "f316c3212863d20ffa5fdf1c336d8b2c9fcd0815",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
