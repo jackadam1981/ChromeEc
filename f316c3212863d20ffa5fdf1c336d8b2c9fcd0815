@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "901c6ffc_34d1708d",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-09-19T18:08:12Z",
+      "side": 1,
+      "message": "don\u0027t really like this function at all since it\u0027s hard-coded only for PA10, so I found a better way to do serial wakeup and removed this whole function.",
+      "parentUuid": "5064b799_23f7016c",
+      "range": {
+        "startLine": 277,
+        "startChar": 21,
+        "endLine": 277,
+        "endChar": 26
+      },
+      "revId": "f316c3212863d20ffa5fdf1c336d8b2c9fcd0815",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d057c7b2_2a911bfc",
         "filename": "chip/stm32/clock-stm32f0.c",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "b04df311_6a3b8703",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-09-19T18:08:12Z",
+      "side": 1,
+      "message": "Added macro, but leaving \u003d, this is the one place we set the register and I don\u0027t want to risk or\u0027ing with the default.",
+      "parentUuid": "d057c7b2_2a911bfc",
+      "range": {
+        "startLine": 371,
+        "startChar": 19,
+        "endLine": 371,
+        "endChar": 25
+      },
+      "revId": "f316c3212863d20ffa5fdf1c336d8b2c9fcd0815",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50e9172a_40b92ec9",
         "filename": "chip/stm32/clock-stm32f0.c",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2014-09-19T17:19:36Z",
       "side": 1,
       "message": "Awesome ... should definitely remember to add this back to the F series idle loop too!",
+      "range": {
+        "startLine": 432,
+        "startChar": 0,
+        "endLine": 454,
+        "endChar": 6
+      },
+      "revId": "f316c3212863d20ffa5fdf1c336d8b2c9fcd0815",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b04df311_ca45fb7e",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-09-19T18:08:12Z",
+      "side": 1,
+      "message": "Yes, I would like to, except I can\u0027t test right now, don\u0027t have spring or snow.",
+      "parentUuid": "50e9172a_40b92ec9",
       "range": {
         "startLine": 432,
         "startChar": 0,
