@@ -46,6 +46,30 @@
       "revId": "aa0df099d3f281119f11f89664035fda28b576f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0712b54_d6f83599",
+        "filename": "board/plankton/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2014-09-19T02:20:25Z",
+      "side": 1,
+      "message": "Yes, 0x40 is I/O expander, and bit7 is reset signal of hub.",
+      "parentUuid": "906aaf64_fee74972",
+      "range": {
+        "startLine": 204,
+        "startChar": 29,
+        "endLine": 204,
+        "endChar": 33
+      },
+      "revId": "aa0df099d3f281119f11f89664035fda28b576f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
