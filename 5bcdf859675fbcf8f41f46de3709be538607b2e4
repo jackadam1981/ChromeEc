@@ -22,6 +22,30 @@
       "revId": "5bcdf859675fbcf8f41f46de3709be538607b2e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d07ee724_1539d6e7",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2014-09-19T01:07:25Z",
+      "side": 1,
+      "message": "What happens if it overflows(over 10000) between 2 calls? Could we somehow do mod_power_of_2_us? I guess we can\u0027t really because the rtc itself overflows after 86400 seconds.\n\nDo we just need to expect other code to just know it\u0027s mod by 10s when calculating time differences? In clock-stm32f.c/__idle there\u0027s a line that looks like \"t1.val \u003d t0.val + (rtc_t1 - rtc_t0) * US_PER_RTC_TICK;\". The \"rtc_t1 - rtc_t0\" will need to be modified in case rtct1 is 0.1s and rtc2 is 9.8s, the real time difference would be 0.3s but this code will give you 4285.200064s.\n\nThe other f series chips mod by a power of 2, so they need no mod code to calculate with things like this.\n\nIf the only place we use this rtc_alarm is in the __idle task I guess we can add the %10,000,000 stuff when doing that line.",
+      "parentUuid": "10479fed_59f0e46c",
+      "range": {
+        "startLine": 144,
+        "startChar": 8,
+        "endLine": 144,
+        "endChar": 19
+      },
+      "revId": "5bcdf859675fbcf8f41f46de3709be538607b2e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
