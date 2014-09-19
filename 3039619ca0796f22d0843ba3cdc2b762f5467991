@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5064b799_11656e96",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-09-19T00:19:45Z",
+      "side": 1,
+      "message": "this function needs to be rewritten, hard-coded for UART RX on pin A10.",
+      "range": {
+        "startLine": 264,
+        "startChar": 12,
+        "endLine": 264,
+        "endChar": 32
+      },
+      "revId": "3039619ca0796f22d0843ba3cdc2b762f5467991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
