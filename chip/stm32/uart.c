@@ -233,6 +233,20 @@ static void uart_freq_change(void)
 }
 DECLARE_HOOK(HOOK_FREQ_CHANGE, uart_freq_change, HOOK_PRIO_DEFAULT);
 
+/* TODO (crosbug.com/p/32143): remove this code once we do an update */
+#ifdef CHIP_FAMILY_STM32F0
+/* On sysjump, restore the console UART clock to default PCLK. */
+void reset_uart_console_clock(void)
+{
+#if (UARTN == 1)
+	STM32_RCC_CFGR3 &= ~0x3;
+#elif (UARTN == 2)
+	STM32_RCC_CFGR3 &= ~0x300;
+#endif
+}
+DECLARE_HOOK(HOOK_SYSJUMP, reset_uart_console_clock, HOOK_PRIO_LAST);
+#endif /* CHIP_FAMILY_STM32F0 */
+
 void uart_init(void)
 {
 	/* Enable USART clock */
