@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50e9172a_c6e7168c",
+        "filename": "chip/stm32/uart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-09-19T19:06:22Z",
+      "side": 1,
+      "message": "Data sheet recommends setting this just before stop mode entry and disabling after so this should go inside idle I think.",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 6
+      },
+      "revId": "b063c530979b3d0d54cb94339c8e5e5c509d3bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
