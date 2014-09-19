@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d057c7b2_cd4ae170",
+        "filename": "board/kitty/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-09-19T17:38:41Z",
+      "side": 1,
+      "message": "Remove this",
+      "revId": "8db48f67afdd009aff380854199c0b7aea80f693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f05a0bdc_4eaee71d",
+        "filename": "board/kitty/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-09-19T17:38:41Z",
+      "side": 1,
+      "message": "Reuse CONFIG_LID_SWITCH\n\n#undef CONFIG_LID_SWITCH",
+      "revId": "8db48f67afdd009aff380854199c0b7aea80f693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50e9172a_806df63f",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-09-19T17:38:41Z",
+      "side": 1,
+      "message": "remove this",
+      "revId": "8db48f67afdd009aff380854199c0b7aea80f693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f05a0bdc_2e1ccbc9",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-09-19T17:38:41Z",
+      "side": 1,
+      "message": "Remove this\n\nActually better to reuse the config CONFIG_LID_SWITCH",
+      "revId": "8db48f67afdd009aff380854199c0b7aea80f693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f05a0bdc_0eb8ef5a",
+        "filename": "power/tegra.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-09-19T17:38:41Z",
+      "side": 1,
+      "message": "#ifndef CONFIG_LID_SWITCH",
+      "revId": "8db48f67afdd009aff380854199c0b7aea80f693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
