@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10f31f1c_9ecd5d49",
+        "filename": "util/comm-host.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-09-19T23:06:55Z",
+      "side": 1,
+      "message": "remove allocation from here.",
+      "revId": "b1c93a7c35c1800e29da1d30d898c32587b4dbc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50e9172a_074a956d",
+        "filename": "util/comm-host.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-09-19T23:06:55Z",
+      "side": 1,
+      "message": "instead of allocating and then reallocating buffers, wouldn\u0027t it be easier to calculate size of buffers required and then allocate at the end.",
+      "revId": "b1c93a7c35c1800e29da1d30d898c32587b4dbc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10f31f1c_bec81939",
+        "filename": "util/comm-host.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-09-19T23:06:55Z",
+      "side": 1,
+      "message": "allocate buffers here once you know the size.",
+      "revId": "b1c93a7c35c1800e29da1d30d898c32587b4dbc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
