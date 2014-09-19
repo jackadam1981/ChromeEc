@@ -22,6 +22,30 @@
       "revId": "b063c530979b3d0d54cb94339c8e5e5c509d3bc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b04df311_706b766d",
+        "filename": "chip/stm32/uart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-09-19T21:55:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50e9172a_c6e7168c",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 6
+      },
+      "revId": "b063c530979b3d0d54cb94339c8e5e5c509d3bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
