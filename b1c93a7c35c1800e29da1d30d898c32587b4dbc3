@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7021bb30_288cb324",
+        "filename": "util/comm-host.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2014-09-19T23:18:39Z",
+      "side": 1,
+      "message": "We need to allocate now to send \"EC_CMD_GET_PROTOCOL_INFO\" to the ec in line 113",
+      "parentUuid": "10f31f1c_9ecd5d49",
+      "revId": "b1c93a7c35c1800e29da1d30d898c32587b4dbc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50e9172a_074a956d",
         "filename": "util/comm-host.c",
         "patchSetId": 1
