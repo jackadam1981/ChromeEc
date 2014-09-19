@@ -22,6 +22,30 @@
       "revId": "aa0df099d3f281119f11f89664035fda28b576f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "906aaf64_fee74972",
+        "filename": "board/plankton/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-09-19T00:17:00Z",
+      "side": 1,
+      "message": "I believe 0x40 is the I/O expander. I\u0027ll double check and make proper change in a new patchset.",
+      "parentUuid": "10479fed_5bfe9c78",
+      "range": {
+        "startLine": 204,
+        "startChar": 29,
+        "endLine": 204,
+        "endChar": 33
+      },
+      "revId": "aa0df099d3f281119f11f89664035fda28b576f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
