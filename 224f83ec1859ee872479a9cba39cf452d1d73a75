@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0fc27ef_fcc2a916",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-09-20T17:48:31Z",
+      "side": 1,
+      "message": "why do we need to disable it every time ?",
+      "revId": "224f83ec1859ee872479a9cba39cf452d1d73a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0fc27ef_dcc7ed24",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-09-20T17:48:31Z",
+      "side": 1,
+      "message": "comment nit: sure if we are using the PLL, often we are not ...",
+      "revId": "224f83ec1859ee872479a9cba39cf452d1d73a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
