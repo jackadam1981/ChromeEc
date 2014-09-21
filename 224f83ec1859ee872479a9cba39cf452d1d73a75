@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d0fc27ef_3f0fe3c5",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-09-21T02:07:05Z",
+      "side": 1,
+      "message": "The datasheet for the USART_CR1 UESM bit recommends that you set the bit just before going into stop mode and clear it after coming out of stom mode.\n\nI did try it with just keeping that bit set, and it worked fine, but I went with the recommendation from the datasheet to be safe.",
+      "parentUuid": "d0fc27ef_fcc2a916",
+      "revId": "224f83ec1859ee872479a9cba39cf452d1d73a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0fc27ef_dcc7ed24",
         "filename": "chip/stm32/clock-stm32f0.c",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2014-09-20T17:48:31Z",
       "side": 1,
       "message": "comment nit: sure if we are using the PLL, often we are not ...",
+      "revId": "224f83ec1859ee872479a9cba39cf452d1d73a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0fc27ef_1f0ca7cd",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-09-21T02:07:05Z",
+      "side": 1,
+      "message": "yes, copied code, my mistake",
+      "parentUuid": "d0fc27ef_dcc7ed24",
       "revId": "224f83ec1859ee872479a9cba39cf452d1d73a75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
