@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "700d3be9_220b4f8c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-09-22T22:56:12Z",
+      "side": 1,
+      "message": "I would clean up the wording here, it\u0027s kind of vague. Perhaps something like \"Add warning when using UART RX DMA with deep-sleep console resume\".",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 76
+      },
+      "revId": "2a2f083c74aeed24486053eebdac90e87cc1d3d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d01507f5_b4404022",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-09-22T22:56:12Z",
+      "side": 1,
+      "message": "remove tab. Preprocessor directive \u0027#\u0027 should always be in first column.",
+      "range": {
+        "startLine": 272,
+        "startChar": 2,
+        "endLine": 272,
+        "endChar": 7
+      },
+      "revId": "2a2f083c74aeed24486053eebdac90e87cc1d3d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d01507f5_d4f85c99",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-09-22T22:56:12Z",
+      "side": 1,
+      "message": "typically, for TODO\u0027s we write a bug report and link to the bug report in the code: \"TODO (crosbug.com/p/12345):\"",
+      "range": {
+        "startLine": 274,
+        "startChar": 4,
+        "endLine": 274,
+        "endChar": 8
+      },
+      "revId": "2a2f083c74aeed24486053eebdac90e87cc1d3d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
