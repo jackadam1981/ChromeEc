@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d01507f5_17b656da",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-09-22T23:49:18Z",
+      "side": 1,
+      "message": "Use cprintf(CC_SPI, ...) so the output goes to the SPI channel.  Or really, define a CPRINTF() macro at the top like the CPRINTS() macro, and use CPRINTF() here.",
+      "range": {
+        "startLine": 575,
+        "startChar": 1,
+        "endLine": 575,
+        "endChar": 9
+      },
+      "revId": "c21ffd0a38e8e2655a562eaa1b6ec36ca41631a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
