@@ -268,6 +268,13 @@ void clock_refresh_console_in_use(void)
 #define UARTN_BASE STM32_USART_BASE(CONFIG_UART_CONSOLE)
 static void enable_serial_wakeup(int enable)
 {
+#ifdef CONFIG_UART_RX_DMA
+	#error "UART RX DMA not compatible with serial wakeup from STOP mode"
+	/*
+	 * TODO: 26.5.17 "When DMA is used for reception, it must be disabled
+	 * before entering Stop mode and re-enabled upon exit from Stop mode".
+	 */
+#endif
 	if (enable)
 		/*
 		 * Allow UART wake up from STOP mode. Note, UART clock must
