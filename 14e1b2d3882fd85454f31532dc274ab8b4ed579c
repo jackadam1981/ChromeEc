@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7080db79_caca9787",
+        "filename": "chip/stm32/power_led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2014-09-23T23:47:13Z",
+      "side": 0,
+      "message": "This actually overrides the POWERLED_STATE_SUSPEND case. It will always be 96%.",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 25
+      },
+      "revId": "14e1b2d3882fd85454f31532dc274ab8b4ed579c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30bca331_11aadf5a",
+        "filename": "power/rockchip.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2014-09-23T23:47:13Z",
+      "side": 0,
+      "message": "Lots of things in the wrong spot.",
+      "revId": "14e1b2d3882fd85454f31532dc274ab8b4ed579c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
