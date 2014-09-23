@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0c093c0_a3175a36",
+        "filename": "chip/stm32/pwm_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-09-23T21:41:49Z",
+      "side": 1,
+      "message": "Let me explain why I added this. The alt-func mapping for STM32F0 is not straightforward like the other two ST families. I started to write a LUT for alt-func (a function of GPIO bank and timer ID), but then I realized -- we\u0027re already requiring definition of timer ID and channel ID at the board level. Requiring alt func # is basically no additional work, it\u0027s the same table from the datasheet.",
+      "revId": "14e1b2d3882fd85454f31532dc274ab8b4ed579c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
