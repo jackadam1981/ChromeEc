@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7080db79_a48bcca3",
+        "filename": "common/lightbar.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 941,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-09-23T22:43:04Z",
+      "side": 1,
+      "message": "Use CPRINTS() not ccprintf().",
+      "range": {
+        "startLine": 941,
+        "startChar": 3,
+        "endLine": 941,
+        "endChar": 11
+      },
+      "revId": "d24a2a5a2122f628bd7a656df36241fffe5bdf35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d01507f5_1471295d",
+        "filename": "common/lightbar.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-09-23T22:43:04Z",
+      "side": 1,
+      "message": "Those macros up there are perhaps too clever to be easily readable/maintainable.\n\nI\u0027d rather see\n\nif (decode_8(\u0026new_pc) !\u003d EC_SUCCESS)\n    return EC_RES_INVALID_PARAM;\n\nSame in general with other heavy use of macros.",
+      "range": {
+        "startLine": 963,
+        "startChar": 1,
+        "endLine": 963,
+        "endChar": 18
+      },
+      "revId": "d24a2a5a2122f628bd7a656df36241fffe5bdf35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
