@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d01507f5_69ed2d94",
+        "filename": "board/hoho/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-09-23T18:32:57Z",
+      "side": 1,
+      "message": "rather than having a function filling constant data in RAM, can we manage to just store those data in .rodata ?",
+      "revId": "d8ae545801817e65fbee94551665aed582944b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30bca331_e39afaea",
+        "filename": "board/hoho/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-09-23T18:32:57Z",
+      "side": 1,
+      "message": "we should have a descriptor with USB_SID_DISPLAYPORT ?",
+      "revId": "d8ae545801817e65fbee94551665aed582944b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30bca331_63bbaaa8",
+        "filename": "board/hoho/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-09-23T18:32:57Z",
+      "side": 1,
+      "message": "should be const ?",
+      "revId": "d8ae545801817e65fbee94551665aed582944b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d01507f5_c9760157",
+        "filename": "common/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-09-23T18:32:57Z",
+      "side": 1,
+      "message": "we don\u0027t have a common/usb_pd_policy.c file, do we ?",
+      "revId": "d8ae545801817e65fbee94551665aed582944b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d01507f5_a91f45f4",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-09-23T18:32:57Z",
+      "side": 1,
+      "message": "I\u0027m not seeing it in HoHo descriptors.",
+      "revId": "d8ae545801817e65fbee94551665aed582944b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
