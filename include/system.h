@@ -291,6 +291,7 @@ enum {
 	SLEEP_MASK_I2C      = (1 << 2), /* I2C master communication on-going */
 	SLEEP_MASK_CHARGING = (1 << 3), /* Charging loop on-going */
 	SLEEP_MASK_USB_PWR  = (1 << 4), /* USB power loop on-going */
+	SLEEP_MASK_SPI      = (1 << 5), /* SPI communications on-going */
 
 	SLEEP_MASK_FORCE_NO_DSLEEP    = (1 << 15), /* Force disable. */
 
@@ -314,7 +315,13 @@ extern uint32_t sleep_mask;
  * Macros to use to get whether deep sleep is allowed or whether
  * low speed deep sleep is allowed.
  */
+
+#ifndef CONFIG_LOW_POWER_S0
 #define DEEP_SLEEP_ALLOWED           (!(sleep_mask & 0x0000ffff))
+#else
+#define DEEP_SLEEP_ALLOWED           (!(sleep_mask & 0x0000ffff & \
+				       (~SLEEP_MASK_AP_RUN)))
+#endif
 #define LOW_SPEED_DEEP_SLEEP_ALLOWED (!(sleep_mask & 0xffff0000))
 
 /**

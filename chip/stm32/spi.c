@@ -16,6 +16,7 @@
 #include "host_command.h"
 #include "registers.h"
 #include "spi.h"
+#include "system.h"
 #include "timer.h"
 #include "util.h"
 
@@ -442,6 +443,8 @@ void spi_event(enum gpio_signal signal)
 	/* Check chip select.  If it's high, the AP ended a transaction. */
 	nss_reg = gpio_get_level_reg(GPIO_SPI1_NSS, &nss_mask);
 	if (REG16(nss_reg) & nss_mask) {
+		enable_sleep(SLEEP_MASK_SPI);
+
 		/*
 		 * If the buffer is still used by the host command, postpone
 		 * the DMA rx setup.
@@ -456,6 +459,7 @@ void spi_event(enum gpio_signal signal)
 		setup_for_transaction();
 		return;
 	}
+	disable_sleep(SLEEP_MASK_SPI);
 
 	/* Chip select is low = asserted */
 	if (state != SPI_STATE_READY_TO_RX) {
