@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "308ae39d_df441b65",
+        "filename": "chip/stm32/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-09-23T22:26:51Z",
+      "side": 1,
+      "message": "Yes, the table is specified at the board level, and I have the samus_pd changes on my local machine. I plan to check them in with a future commit that properly sets the current limit based on the charger.",
+      "parentUuid": "7080db79_c4cd3048",
+      "revId": "14e1b2d3882fd85454f31532dc274ab8b4ed579c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0c093c0_a3175a36",
         "filename": "chip/stm32/pwm_chip.h",
         "patchSetId": 1
