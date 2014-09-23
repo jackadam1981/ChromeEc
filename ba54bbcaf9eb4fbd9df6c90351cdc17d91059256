@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70b29b5d_da5b592e",
+        "filename": "board/kitty/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-09-23T17:07:18Z",
+      "side": 1,
+      "message": "Why is this needed?",
+      "revId": "ba54bbcaf9eb4fbd9df6c90351cdc17d91059256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d01507f5_8e4fef49",
+        "filename": "board/kitty/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-09-23T17:07:18Z",
+      "side": 1,
+      "message": "remove extra line",
+      "revId": "ba54bbcaf9eb4fbd9df6c90351cdc17d91059256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30bca331_75d7e0d1",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-09-23T17:07:18Z",
+      "side": 1,
+      "message": "Remove this item.",
+      "revId": "ba54bbcaf9eb4fbd9df6c90351cdc17d91059256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d01507f5_ce172736",
+        "filename": "power/tegra.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-09-23T17:07:18Z",
+      "side": 1,
+      "message": "This is not required after implementing the fake lid switch.",
+      "revId": "ba54bbcaf9eb4fbd9df6c90351cdc17d91059256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
