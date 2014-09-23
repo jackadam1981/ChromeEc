@@ -28,7 +28,7 @@ static int bat_led_set(enum led_color color, int on)
 {
 	switch (color) {
 	case LED_GREEN:
-		gpio_set_level(GPIO_BAT_LED1, on ? 0 : 1);
+		//gpio_set_level(GPIO_BAT_LED1, on ? 0 : 1);
 		break;
 	case LED_ORANGE:
 		gpio_set_level(GPIO_BAT_LED0, on ? 0 : 1);

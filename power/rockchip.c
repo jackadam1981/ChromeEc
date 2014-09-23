@@ -395,7 +395,6 @@ static void power_on(void)
 	hook_notify(HOOK_CHIPSET_PRE_INIT);
 
 	disable_sleep(SLEEP_MASK_AP_RUN);
-	powerled_set_state(POWERLED_STATE_ON);
 
 	/* Call hooks now that AP is running */
 	hook_notify(HOOK_CHIPSET_STARTUP);
@@ -449,7 +448,6 @@ static void power_off(void)
 
 	lid_opened = 0;
 	enable_sleep(SLEEP_MASK_AP_RUN);
-	powerled_set_state(POWERLED_STATE_OFF);
 
 	CPRINTS("power shutdown complete");
 }
@@ -504,6 +502,7 @@ enum power_state power_handle_state(enum power_state state)
 
 	case POWER_S5S3:
 		power_on();
+		powerled_set_state(POWERLED_STATE_ON);
 		if (power_wait_signals(IN_POWER_GOOD) == EC_SUCCESS) {
 			CPRINTS("POWER_GOOD seen");
 			if (wait_for_power_button_release(
@@ -558,6 +557,7 @@ enum power_state power_handle_state(enum power_state state)
 		return POWER_S3;
 
 	case POWER_S3S5:
+		powerled_set_state(POWERLED_STATE_OFF);
 		wait_for_power_button_release(-1);
 		return POWER_S5;
 

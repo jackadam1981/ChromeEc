@@ -52,7 +52,7 @@ static void power_led_set_duty(int percent)
 static void power_led_use_pwm(void)
 {
 	pwm_enable(PWM_CH_POWER_LED, 1);
-	power_led_set_duty(100);
+	//power_led_set_duty(100);
 }
 
 static void power_led_manual_off(void)
@@ -158,7 +158,11 @@ static int command_powerled(int argc, char **argv)
 	else
 		return EC_ERROR_INVAL;
 
-	powerled_set_state(state);
+	//powerled_set_state(state);
+	led_state = state;
+	/* Wake up the task */
+	task_wake(TASK_ID_POWERLED);
+
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(powerled, command_powerled,
