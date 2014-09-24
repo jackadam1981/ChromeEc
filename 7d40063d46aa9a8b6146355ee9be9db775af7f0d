@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f074cb7c_3b851f4c",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-09-24T22:05:27Z",
+      "side": 1,
+      "message": "why do we initialize the sensors in every loop? The setting from host are lost.",
+      "revId": "7d40063d46aa9a8b6146355ee9be9db775af7f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f08beba0_a962b88c",
+        "filename": "driver/accelgyro_lsm6ds0.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-09-24T22:05:27Z",
+      "side": 1,
+      "message": "Why do we need to power donw the Gyro all the time?",
+      "revId": "7d40063d46aa9a8b6146355ee9be9db775af7f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f08beba0_89d7bcd0",
+        "filename": "driver/accelgyro_lsm6ds0.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-09-24T22:05:27Z",
+      "side": 1,
+      "message": "Do we have to do it at every init? Won\u0027t we lose the host setting?",
+      "revId": "7d40063d46aa9a8b6146355ee9be9db775af7f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
