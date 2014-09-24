@@ -81,8 +81,13 @@ void panic_reboot(void)
 void panic_assert_fail(const char *msg, const char *func, const char *fname,
 		       int linenum)
 {
+#ifdef CONFIG_DEBUG_ASSERT_EXPR
 	panic_printf("\nASSERTION FAILURE '%s' in %s() at %s:%d\n",
 		     msg, func, fname, linenum);
+#else
+	panic_printf("\nASSERTION FAILURE in %s() at %s:%d\n",
+		     func, fname, linenum);
+#endif
 
 	panic_reboot();
 }

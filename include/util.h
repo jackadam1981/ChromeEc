@@ -18,9 +18,16 @@
  */
 #ifdef CONFIG_DEBUG_ASSERT
 #ifdef CONFIG_DEBUG_ASSERT_REBOOTS
+
+#ifdef CONFIG_DEBUG_ASSERT_EXPR
+#define EXPR(cond) STRINGIFY(cond)
+#else
+#define EXPR(cond) NULL
+#endif
+
 #define ASSERT(cond) do {			\
 		if (!(cond))			\
-			panic_assert_fail(#cond, __func__, __FILE__, \
+			panic_assert_fail(EXPR(cond), __func__, __FILE__, \
 				__LINE__);	\
 	} while (0)
 #else

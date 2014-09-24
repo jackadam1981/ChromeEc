@@ -417,6 +417,15 @@
 #define CONFIG_DEBUG_ASSERT_REBOOTS
 
 /*
+ * On assertion failure, prints the condition in the error message.
+ *
+ * Ignored if CONFIG_DEBUG_ASSERT_REBOOTS is not defined.
+ *
+ * Boards may #undef this to reduce image size.
+ */
+#define CONFIG_DEBUG_ASSERT_EXPR
+
+/*
  * Disable the write buffer used for default memory map accesses.
  * This turns "Imprecise data bus errors" into "Precise" errors
  * in exception traces at the cost of some performance.
