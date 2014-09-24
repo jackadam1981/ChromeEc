@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f074cb7c_5e35690b",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-09-24T23:43:00Z",
+      "side": 1,
+      "message": "if you look at the init function, it checks if the sensors have already been initialized.\n\nif (sensor-\u003estate !\u003d SENSOR_NOT_INITIALIZED)\n  return;\n\nOf course, you could argue that line should go here to avoid the function call, which I would agree with.",
+      "parentUuid": "f074cb7c_3b851f4c",
+      "revId": "7d40063d46aa9a8b6146355ee9be9db775af7f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f08beba0_a962b88c",
         "filename": "driver/accelgyro_lsm6ds0.c",
         "patchSetId": 31
