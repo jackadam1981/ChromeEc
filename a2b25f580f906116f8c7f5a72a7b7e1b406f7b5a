@@ -16,6 +16,24 @@
       "revId": "a2b25f580f906116f8c7f5a72a7b7e1b406f7b5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3063c3c5_0b6d6d08",
+        "filename": "common/lightbar.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-09-24T19:45:13Z",
+      "side": 1,
+      "message": "The problem is that \u0027red\u0027, \u0027green\u0027, and \u0027blue\u0027 are member names.  If they were 0, 1, and 2, you could make a loop.\n\n color_mask \u003d color \u003d\u003d LB_COL_ALL ? 7 : (1 \u003c\u003c color);\n\n for (i \u003d 0; i \u003c 3; i++) {\n   if (color_mask \u0026 (1 \u003c\u003c i) {\n     //contents of SET_COLORS macro\n   }\n }",
+      "parentUuid": "308ae39d_1fd76384",
+      "revId": "a2b25f580f906116f8c7f5a72a7b7e1b406f7b5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
