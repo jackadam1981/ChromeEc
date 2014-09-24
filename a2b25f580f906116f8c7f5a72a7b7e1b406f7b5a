@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "308ae39d_1fd76384",
+        "filename": "common/lightbar.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2014-09-24T01:57:37Z",
+      "side": 1,
+      "message": "I\u0027m not really sure what to do about this macro. I think it\u0027s really ugly, since after I push the bit that changes the DECODE_* macros to inline functions, keeping this the same would require the same sort of control-flow hiding (i.e. wrapping the return on error) that made DECODE_* too clever.\n\nHowever, I\u0027m looking at the alternative, and it does seem really repetitive. Any suggestions?",
+      "revId": "a2b25f580f906116f8c7f5a72a7b7e1b406f7b5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
