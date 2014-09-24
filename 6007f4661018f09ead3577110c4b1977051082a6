@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f08beba0_5cabb40b",
+        "filename": "common/lightbar.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1140,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-09-24T23:21:20Z",
+      "side": 1,
+      "message": "I think it should mean set it immediately to COLOR0 and return.",
+      "revId": "6007f4661018f09ead3577110c4b1977051082a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d071878d_7dceabee",
+        "filename": "common/lightbar.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1268,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-09-24T23:21:20Z",
+      "side": 1,
+      "message": "We could go slower than that. Any change faster than ~20ms probably isn\u0027t visible.",
+      "revId": "6007f4661018f09ead3577110c4b1977051082a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d071878d_7d806b72",
+        "filename": "extra/lightbar/simulation.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-09-24T23:21:20Z",
+      "side": 1,
+      "message": "struct lb_program *prog",
+      "revId": "6007f4661018f09ead3577110c4b1977051082a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f08beba0_5c557480",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1036,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-09-24T23:21:20Z",
+      "side": 1,
+      "message": "I\u0027m not sure what we accomplish by using a typedef here.",
+      "revId": "6007f4661018f09ead3577110c4b1977051082a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
