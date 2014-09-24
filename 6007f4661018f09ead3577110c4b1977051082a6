@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d071878d_6806eb88",
+        "filename": "common/lightbar.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1140,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2014-09-24T23:52:54Z",
+      "side": 1,
+      "message": "I guess that does make sense. CYCLE should still error out, though.",
+      "parentUuid": "f08beba0_5cabb40b",
+      "revId": "6007f4661018f09ead3577110c4b1977051082a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d071878d_7dceabee",
         "filename": "common/lightbar.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2014-09-24T23:21:20Z",
       "side": 1,
       "message": "We could go slower than that. Any change faster than ~20ms probably isn\u0027t visible.",
+      "revId": "6007f4661018f09ead3577110c4b1977051082a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b06ed3ae_93f8dce3",
+        "filename": "common/lightbar.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1268,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2014-09-24T23:52:54Z",
+      "side": 1,
+      "message": "Long sequences of instructions which are supposed to execute \"instantaneously\" might look a little weird though (when you get the rainbow program, it does a large number of SET_COLORs at first, so there\u0027d possibly be visible lag in that case).\n\nI can turn it up to 1ms (\u003d 1000) and see how that works, if you want.",
+      "parentUuid": "d071878d_7dceabee",
       "revId": "6007f4661018f09ead3577110c4b1977051082a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
