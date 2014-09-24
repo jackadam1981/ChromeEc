@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7080db79_83923590",
+        "filename": "include/util.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-09-24T19:16:54Z",
+      "side": 1,
+      "message": "This is the only place panic_assert_fail() is called.\n\nSo #ifndef CONFIG_DEBUG_ASSERT_EXPR, why not just remove the param entirely.  That should make the code smaller still.\n\nAnd really, __func__ is redundant with __FILE__/__LINE__.  So we could get rid of that param too.  So just\n\n  #ifdef CONFIG_DEBUG_ASSERT_BRIEF\n  panic_assert_fail(__FILE__,__LINE__)\n  #else\n  panic_assert_fail(EXPR(cond), __func__, __FILE__, __LINE__)\n  #endif",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 31,
+        "endChar": 16
+      },
+      "revId": "2fbedbeaa983b327df06414503a73bdba277f514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
