@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f08beba0_4ba04419",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-09-25T17:14:00Z",
+      "side": 1,
+      "message": "Kitty: Implement fake lid switch",
+      "revId": "e5f6fb48cd361544e22646d5aad9d0a4a6f481e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f08beba0_8baa4cf5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-09-25T17:14:00Z",
+      "side": 1,
+      "message": "powerled should remain enabled in S3 state. Implement fake lid switch that always returns lid is open.",
+      "revId": "e5f6fb48cd361544e22646d5aad9d0a4a6f481e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
