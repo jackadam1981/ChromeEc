@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "b06ed3ae_b315d8a7",
+        "filename": "driver/accelgyro_lsm6ds0.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-09-25T00:40:01Z",
+      "side": 1,
+      "message": "Good Question!\n\nAccelerometer is a required sensor on ChromeBook device.\nGyro is a optional sensor.\n\nThis is assume that Accelerometer is init before Gyro. I should document it in the code.\n\nIf a user (board device) only init accelerometer, then the gyro is power down all the time.\n\nIf a user (board device config table) init gyro logic of the same chip, then gyro will get init and power on properly via set_rate().",
+      "parentUuid": "f08beba0_a962b88c",
+      "revId": "7d40063d46aa9a8b6146355ee9be9db775af7f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f08beba0_89d7bcd0",
         "filename": "driver/accelgyro_lsm6ds0.c",
         "patchSetId": 31
@@ -65,6 +83,24 @@
       "writtenOn": "2014-09-24T22:05:27Z",
       "side": 1,
       "message": "Do we have to do it at every init? Won\u0027t we lose the host setting?",
+      "revId": "7d40063d46aa9a8b6146355ee9be9db775af7f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d071878d_e395bcbd",
+        "filename": "driver/accelgyro_lsm6ds0.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-09-25T00:40:01Z",
+      "side": 1,
+      "message": "motion sensor code only init the device 1 time on power on.\n\nAfter the default initialization, a linux upper layer application can call set_data_rate with any value at any time.   \n\nIf power cycle is triggered, the sensor device will be re-initialized .  Then, the upper layer application need re-configure the data rate accordingly.  If upper layer application does not re-configure the date rate, then they use the default data rate, 119K.",
+      "parentUuid": "f08beba0_89d7bcd0",
       "revId": "7d40063d46aa9a8b6146355ee9be9db775af7f0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
