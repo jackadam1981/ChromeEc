@@ -114,6 +114,7 @@ const struct gpio_info gpio_list[] = {
 	{"KBD_IRQ_L",            LM4_GPIO_M, (1<<3), GPIO_ODR_HIGH, NULL},
 	{"BAT_LED0",             LM4_GPIO_N, (1<<6), GPIO_OUT_LOW, NULL},
 	{"BAT_LED1",             LM4_GPIO_N, (1<<4), GPIO_OUT_LOW, NULL},
+	{"TOUCHSCREEN_RESETB",   LM4_GPIO_J, (1<<5), GPIO_OUT_LOW, NULL},
 };
 BUILD_ASSERT(ARRAY_SIZE(gpio_list) == GPIO_COUNT);
 
