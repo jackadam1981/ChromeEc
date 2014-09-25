@@ -17,6 +17,7 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#include "gpio.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CLOCK, outstr)
@@ -301,6 +302,8 @@ void __idle(void)
 			/* deep-sleep in STOP mode */
 			idle_dsleep_cnt++;
 
+			gpio_set_level(GPIO_TX, 0);
+
 			enable_serial_wakeup(1);
 
 			/* set deep sleep bit */
@@ -319,6 +322,7 @@ void __idle(void)
 			 * high-speed clock if in use.
 			 */
 			config_hispeed_clock();
+			gpio_set_level(GPIO_TX, 1);
 
 			/* fast forward timer according to RTC counter */
 			reset_rtc_alarm(&rtc1, &rtc1ss);

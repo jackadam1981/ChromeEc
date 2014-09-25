@@ -18,6 +18,7 @@
 #include "spi.h"
 #include "system.h"
 #include "timer.h"
+
 #include "util.h"
 
 /* Console output macros */
