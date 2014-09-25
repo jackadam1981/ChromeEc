@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b06ed3ae_47cd9e69",
+        "filename": "board/zinger/runtime.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-09-25T16:44:35Z",
+      "side": 1,
+      "message": "not sure it\u0027s worth adding a new include file for clock-stm32f0.c just to clean this up.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 39
+      },
+      "revId": "bf110dab139f546aefe06951af9009844a86803a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
