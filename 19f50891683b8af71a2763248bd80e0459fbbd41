@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b06ed3ae_c748cef1",
+        "filename": "board/candy/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-09-25T16:59:00Z",
+      "side": 1,
+      "message": "What is the TOUCHSCREEN_RESETB? How is it different from TOUCHSCREEN_RESET_L?\n\nAs per schematics TOUCHSCREEN_RESET_L is on PJ5 and TS_EN is on PN7? That doesn\u0027t match the board definition.\n\nIn any case we should avoid deviation from reference board. So TOUCHSCREEN_RESET_L should be on PN7.",
+      "revId": "19f50891683b8af71a2763248bd80e0459fbbd41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
