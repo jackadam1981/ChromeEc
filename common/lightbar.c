@@ -1154,7 +1154,7 @@ static inline int get_interp_value(int led, int color, int interp)
 static uint32_t lightbyte_RAMP_ONCE(void)
 {
 	int w, i, r, g, b;
-	float f;
+	int f;
 
 	/* special case for instantaneous set */
 	if (lb_ramp_delay == 0) {
@@ -1168,7 +1168,7 @@ static uint32_t lightbyte_RAMP_ONCE(void)
 	}
 
 	for (w = 0; w < 128; w++) {
-		f = cycle_010(w);
+		f = cycle_010(w) * FP_SCALE;
 		for (i = 0; i < NUM_LEDS; i++) {
 			r = get_interp_value(i, LB_COL_RED, f);
 			g = get_interp_value(i, LB_COL_GREEN, f);
@@ -1190,7 +1190,7 @@ static uint32_t lightbyte_RAMP_ONCE(void)
 static uint32_t lightbyte_CYCLE_ONCE(void)
 {
 	int w, i, r, g, b;
-	float f;
+	int f;
 
 	/* special case for instantaneous set */
 	if (lb_ramp_delay == 0) {
@@ -1204,7 +1204,7 @@ static uint32_t lightbyte_CYCLE_ONCE(void)
 	}
 
 	for (w = 0; w < 256; w++) {
-		f = cycle_010(w);
+		f = cycle_010(w) * FP_SCALE;
 		for (i = 0; i < NUM_LEDS; i++) {
 			r = get_interp_value(i, LB_COL_RED, f);
 			g = get_interp_value(i, LB_COL_GREEN, f);
