@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "5053d7fc_64c47277",
+        "filename": "board/twinkie/sniffer.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-09-26T03:07:31Z",
+      "side": 1,
+      "message": "I\u0027m updating it in interrupt context and I want an accurate count in the task.",
+      "parentUuid": "704e1b58_208974a0",
+      "revId": "48fbccc29f1dceedf45220aca47724a48f23ac12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "704e1b58_cbd4495c",
         "filename": "board/twinkie/sniffer.c",
         "patchSetId": 19
@@ -42,6 +60,24 @@
         "endLine": 146,
         "endChar": 22
       },
+      "revId": "48fbccc29f1dceedf45220aca47724a48f23ac12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "704e1b58_eb266d3e",
+        "filename": "board/twinkie/sniffer.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-09-26T03:07:31Z",
+      "side": 1,
+      "message": "I might update that code to match better the updated usb_pd_phy.c code,\nbut I was planning to do that update later when I\u0027m adding the 2nd CCx channel sampling.\nI will erase it for now.\n\nI think CCR_IDX \u003d\u003d 4 was used on the STM32L15x Discovery board for the first demo/interop testing, might have bit-rotten since though.",
+      "parentUuid": "704e1b58_cbd4495c",
       "revId": "48fbccc29f1dceedf45220aca47724a48f23ac12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "3058231a_d2cfa294",
+        "filename": "board/twinkie/sniffer.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-09-26T03:07:31Z",
+      "side": 1,
+      "message": "oh well non documented magic, I should have put at least a small comment :\nCC2 trigger a DMA transfer to store a value in the sample buffer when the counter timer roll-back (when reaching 0xFF, as per CCR2 init above)",
+      "parentUuid": "5053d7fc_b99a031c",
+      "revId": "48fbccc29f1dceedf45220aca47724a48f23ac12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3058231a_ef5be12d",
         "filename": "board/twinkie/sniffer.c",
         "patchSetId": 19
@@ -94,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "704e1b58_cb9a891d",
+        "filename": "board/twinkie/sniffer.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-09-26T03:07:31Z",
+      "side": 1,
+      "message": "No that I really love replacing a constant by a division at runtime, but I will update it ...",
+      "parentUuid": "3058231a_ef5be12d",
+      "revId": "48fbccc29f1dceedf45220aca47724a48f23ac12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5053d7fc_79a7bb2e",
         "filename": "board/twinkie/sniffer.c",
         "patchSetId": 19
@@ -111,6 +183,24 @@
         "endLine": 174,
         "endChar": 64
       },
+      "revId": "48fbccc29f1dceedf45220aca47724a48f23ac12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5053d7fc_04ae46b5",
+        "filename": "board/twinkie/sniffer.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-09-26T03:07:31Z",
+      "side": 1,
+      "message": "That\u0027s actually somewhat important :\nnormally we are just interested in receiving 600kHz bitstreams, so low speed is lower power (and a bit of \"averaging\" cannot be bad for noise immunity)\nhere we are trying to get precise edge timings to record packet jitter and other timing characteristics.",
+      "parentUuid": "5053d7fc_79a7bb2e",
       "revId": "48fbccc29f1dceedf45220aca47724a48f23ac12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
