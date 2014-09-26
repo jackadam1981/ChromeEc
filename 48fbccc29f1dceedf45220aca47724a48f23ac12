@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "704e1b58_208974a0",
+        "filename": "board/twinkie/sniffer.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-09-26T01:41:35Z",
+      "side": 1,
+      "message": "not sure why you need volatile here. is the compiler doing something funny with it otherwise?",
+      "range": {
+        "startLine": 114,
+        "startChar": 7,
+        "endLine": 114,
+        "endChar": 15
+      },
+      "revId": "48fbccc29f1dceedf45220aca47724a48f23ac12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "704e1b58_cbd4495c",
+        "filename": "board/twinkie/sniffer.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-09-26T01:41:35Z",
+      "side": 1,
+      "message": "we removed this #else in chip/stm/usb_pd_phy.c because even if CCR_IDX were equal to 4 (which no boards use), it wouldn\u0027t work right. CCER isn\u0027t the same for CC4 as it is for the rest of the CC units, and I think there was another problem I found. anyway, it def. can be removed here since twinkie uses CCR_IDX of 1.",
+      "range": {
+        "startLine": 146,
+        "startChar": 6,
+        "endLine": 146,
+        "endChar": 22
+      },
+      "revId": "48fbccc29f1dceedf45220aca47724a48f23ac12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5053d7fc_b99a031c",
+        "filename": "board/twinkie/sniffer.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-09-26T01:41:35Z",
+      "side": 1,
+      "message": "what is this part here for? it enables CC2 DMA request, which I think is a mistake.",
+      "range": {
+        "startLine": 154,
+        "startChar": 53,
+        "endLine": 154,
+        "endChar": 65
+      },
+      "revId": "48fbccc29f1dceedf45220aca47724a48f23ac12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3058231a_ef5be12d",
+        "filename": "board/twinkie/sniffer.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-09-26T01:41:35Z",
+      "side": 1,
+      "message": "we got rid of this constant in chip/stm/usb_pd_phy.c and instead used: (clock_get_freq() / 2400000) - 1;",
+      "range": {
+        "startLine": 156,
+        "startChar": 25,
+        "endLine": 156,
+        "endChar": 37
+      },
+      "revId": "48fbccc29f1dceedf45220aca47724a48f23ac12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5053d7fc_79a7bb2e",
+        "filename": "board/twinkie/sniffer.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-09-26T01:41:35Z",
+      "side": 1,
+      "message": "all our other boards use low speed. should we change either? or does it not matter?",
+      "range": {
+        "startLine": 174,
+        "startChar": 38,
+        "endLine": 174,
+        "endChar": 64
+      },
+      "revId": "48fbccc29f1dceedf45220aca47724a48f23ac12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
