@@ -25,6 +25,8 @@
 #include "task.h"
 #include "timer.h"
 #include "uart.h"
+#include "uecc.h"
+#include "util.h"
 #include "watchdog.h"
 
 /* Console output macros */
@@ -146,6 +148,30 @@ test_mockable int main(void)
 	 * the majority of the time.
 	 */
 	CPRINTS("Inits done");
+
+	{
+		uint8_t l_public[uECC_BYTES*2];
+		uint8_t l_private[uECC_BYTES];
+		uint8_t l_hash[uECC_BYTES];
+		uint8_t l_sig[uECC_BYTES*2];
+
+		int i;
+		for(i=0; i<256; ++i)
+		{
+			if(!uECC_make_key(l_public, l_private)) {
+				ccprintf("uECC_make_key() failed\n");
+				continue;
+			}
+			memcpy(l_hash, l_public, uECC_BYTES);
+			if(!uECC_sign(l_private, l_hash, l_sig)) {
+				ccprintf("uECC_sign() failed\n");
+				continue;
+			}
+			if(!uECC_verify(l_public, l_hash, l_sig)) {
+				ccprintf("uECC_verify() failed\n");
+			}
+		}
+	}
 
 	/* Launch task scheduling (never returns) */
 	return task_start();
