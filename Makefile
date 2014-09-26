@@ -30,7 +30,12 @@ PROJECT?=ec
 # Output directory for build objects
 out?=build/$(BOARD)
 
+# If no key file is provided, use the default dev key
+PEM ?= board/$(BOARD)/$(BOARD)_dev_key.pem
+
 include Makefile.toolchain
+
+all: $(out)/$(PROJECT).bin utils
 
 # The board makefile sets $CHIP and the chip makefile sets $CORE.
 # Include those now, since they must be defined for _flag_cfg below.
