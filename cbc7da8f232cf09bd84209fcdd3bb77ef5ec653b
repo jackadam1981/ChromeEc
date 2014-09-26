@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "704e1b58_5d3c9ed8",
+        "filename": "common/panic_output.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-09-26T16:45:21Z",
+      "side": 1,
+      "message": "I wonder if this should be just around panic_reboot(), so we can get asserts without rebooting.  Leave that for a later CL if we do decide to do that...",
+      "range": {
+        "startLine": 80,
+        "startChar": 7,
+        "endLine": 80,
+        "endChar": 34
+      },
+      "revId": "cbc7da8f232cf09bd84209fcdd3bb77ef5ec653b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
