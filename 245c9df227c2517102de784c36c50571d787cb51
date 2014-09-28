@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "502cb77a_51dac621",
+        "filename": "common/rsa.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-09-28T20:06:20Z",
+      "side": 1,
+      "message": "Is this just to save flash space? Seems like we could compare buf with padding and be done quicker, but it would take (256-32) more bytes. But, we\u0027re not that size constrained, I think think the 50ms saved is worth it.",
+      "range": {
+        "startLine": 218,
+        "startChar": 1,
+        "endLine": 221,
+        "endChar": 19
+      },
+      "revId": "245c9df227c2517102de784c36c50571d787cb51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
