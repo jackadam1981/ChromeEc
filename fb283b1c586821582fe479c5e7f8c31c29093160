@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7037fbc3_ddfb2b53",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-09-28T20:15:20Z",
+      "side": 1,
+      "message": "so, this means that if we happen to release two version of zinger SW that share the first 20 bytes of the hash, then we would be unable to update to the second one because the host uses this hash to determine if it needs to send an update. that seems ok. we shouldn\u0027t be doing updates very often, and it seems very unlikely that the first 20 bytes will match, and if so we can change a printf or something.",
+      "range": {
+        "startLine": 374,
+        "startChar": 10,
+        "endLine": 374,
+        "endChar": 28
+      },
+      "revId": "fb283b1c586821582fe479c5e7f8c31c29093160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
