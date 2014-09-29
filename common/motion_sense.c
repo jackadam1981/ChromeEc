@@ -11,6 +11,8 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "lid_angle.h"
+#include "lid_switch.h"
+#include "lightbar.h"
 #include "math_util.h"
 #include "motion_sense.h"
 #include "power.h"
@@ -43,8 +45,12 @@ static int lid_angle_is_reliable;
 #define MAX_POLLING_INTERVAL_MS 1000
 
 /* Accelerometer polling intervals based on chipset state. */
+#define TAP_SAMPLE_INTERVAL 2
 static int accel_interval_ap_on_ms = 10;
-static const int accel_interval_ap_suspend_ms = 100;
+static const int accel_interval_ap_suspend_ms = TAP_SAMPLE_INTERVAL;
+
+/* Tap detection flag, defaults to on. */
+static int tap_detection = 1;
 
 /*
  * Angle threshold for how close the hinge aligns with gravity before
@@ -178,6 +184,8 @@ static void clock_chipset_suspend(void)
 {
 	int i;
 	struct motion_sensor_t *sensor;
+
+	tap_detection = 1;
 	accel_interval_ms = accel_interval_ap_suspend_ms;
 
 	for (i = 0; i < motion_sensor_count; i++) {
@@ -199,6 +207,7 @@ static void clock_chipset_resume(void)
 	int i;
 	struct motion_sensor_t *sensor;
 
+	tap_detection = 0;
 	accel_interval_ms = accel_interval_ap_on_ms;
 
 	for (i = 0; i < motion_sensor_count; i++) {
@@ -289,6 +298,128 @@ static int motion_sense_read(struct motion_sensor_t *sensor)
 	return EC_SUCCESS;
 }
 
+#undef TAP_DEBUGGING
+
+#define OUTER_WINDOW_TIME 200
+#define INNER_WINDOW_TIME 30
+#define OUTER_WINDOW (OUTER_WINDOW_TIME / TAP_SAMPLE_INTERVAL)
+#define INNER_WINDOW (INNER_WINDOW_TIME / TAP_SAMPLE_INTERVAL)
+#define MAX_WINDOW (OUTER_WINDOW)
+
+static int history_z[MAX_WINDOW];
+static int history_xy[MAX_WINDOW];
+
+static int gesture_recognize_tap(int x, int y, int z)
+{
+	static int x_p, y_p, z_p;
+	static int state, state_cnt;
+	static int history_idx_inner, history_idx;
+	static int sum_z_inner, sum_z_outer, sum_xy_inner, sum_xy_outer;
+	static int delta_z_inner_max;
+	static int cnts_since_max;
+	static int init;
+	int delta_z_outer, delta_z_inner, delta_xy_outer, delta_xy_inner;
+	int ret = 0;
+
+	/*
+	 * Calculate history of change in Z sensor and keeping
+	 * running sums for the past.
+	 */
+	history_idx_inner = history_idx - INNER_WINDOW;
+	if (history_idx_inner < 0)
+		history_idx_inner += MAX_WINDOW;
+	sum_z_inner -= history_z[history_idx_inner];
+	sum_z_outer -= history_z[history_idx];
+	history_z[history_idx] = ABS(z - z_p);
+	sum_z_inner += history_z[history_idx];
+	sum_z_outer += history_z[history_idx];
+
+	/*
+	 * Calculate history of change in X and Y sensors combined
+	 * and keep a running sum of the change over the past.
+	 */
+	sum_xy_inner -= history_xy[history_idx_inner];
+	sum_xy_outer -= history_xy[history_idx];
+	history_xy[history_idx] = ABS(x - x_p) + ABS(y - y_p);
+	sum_xy_inner += history_xy[history_idx];
+	sum_xy_outer += history_xy[history_idx];
+
+	history_idx = (history_idx == MAX_WINDOW - 1) ? 0 : (history_idx + 1);
+
+	/* Store previous X, Y, Z data */
+	x_p = x;
+	y_p = y;
+	z_p = z;
+
+	/* Ignore data until we fill history buffer and wrap around */
+	if (history_idx == 0)
+		init = 1;
+	if (init == 0)
+		return 0;
+
+	delta_z_outer = (sum_z_outer - sum_z_inner) * 1000 /
+			(OUTER_WINDOW - INNER_WINDOW);
+	delta_z_inner = sum_z_inner * 1000 / INNER_WINDOW;
+	delta_xy_outer = (sum_xy_outer - sum_xy_inner) * 1000 /
+			(OUTER_WINDOW - INNER_WINDOW);
+	delta_xy_inner = sum_xy_inner * 1000 / INNER_WINDOW;
+
+	state_cnt++;
+	switch (state) {
+	case 0:
+		/* Look for a sudden increase in Z movement */
+		if (delta_z_inner > 30 * delta_z_outer &&
+		    delta_z_inner > 1 * delta_xy_inner) {
+			delta_z_inner_max = delta_z_inner;
+			state_cnt = 0;
+			state++;
+#ifndef TAP_DEBUGGING
+		}
+#else
+			ccprintf("Started, %d %d\n", delta_z_inner / delta_z_outer, delta_z_inner / delta_xy_inner);
+		} else if (delta_z_inner > 10 * delta_z_outer)
+			ccprintf("Almost Started, %d %d\n", delta_z_inner / delta_z_outer, delta_z_inner / delta_xy_inner);
+#endif
+		break;
+	case 1:
+		/* Find the peak inner window of Z movement */
+		if (delta_z_inner > delta_z_inner_max) {
+			delta_z_inner_max = delta_z_inner;
+			cnts_since_max = state_cnt;
+		}
+
+		/* After inner window has passed, move to next state */
+		if (state_cnt >= INNER_WINDOW) {
+			state++;
+			state_cnt += INNER_WINDOW - cnts_since_max;
+#ifdef TAP_DEBUGGING
+			ccprintf("Max recorded, %d %d\n", delta_z_inner_max, cnts_since_max);
+#endif
+		}
+		break;
+	case 2:
+		/* Check for low Z movement after the event */
+		if (state_cnt >= OUTER_WINDOW) {
+			if (delta_z_inner_max > 3 * delta_z_outer &&
+			    delta_z_outer > 1 * delta_xy_outer) {
+				CPRINTS("tap");
+				ret = 1;
+#ifndef TAP_DEBUGGING
+			}
+#else
+				ccprintf("TAP  %d %d\n", delta_z_inner_max / delta_z_outer, delta_z_outer / delta_xy_outer);
+			} else {
+				ccprintf("Too much post motion %d %d\n", delta_z_inner_max / delta_z_outer, delta_z_outer / delta_xy_outer);
+			}
+#endif
+			state = 0;
+		}
+		break;
+	}
+
+	return ret;
+}
+
 /*
  * Motion Sense Task
  * Requirement: motion_sensors[] are defined in board.c file.
@@ -300,7 +431,7 @@ void motion_sense_task(void)
 {
 	int i;
 	int wait_us;
-	static timestamp_t ts0, ts1;
+	static timestamp_t ts0, ts1, ts_tap;
 	uint8_t *lpc_status;
 	uint16_t *lpc_data;
 	int sample_id = 0;
@@ -308,6 +439,7 @@ void motion_sense_task(void)
 	struct motion_sensor_t *sensor;
 	struct motion_sensor_t *accel_base = NULL;
 	struct motion_sensor_t *accel_lid = NULL;
+	int tap;
 
 	lpc_status = host_get_memmap(EC_MEMMAP_ACC_STATUS);
 	lpc_data = (uint16_t *)host_get_memmap(EC_MEMMAP_ACC_DATA);
@@ -365,10 +497,22 @@ void motion_sense_task(void)
 					sizeof(vector_3_t));
 		}
 
-		if (rd_cnt != motion_sensor_count) {
-			task_wait_event(TASK_MOTION_SENSE_WAIT_TIME);
-			continue;
+		if (tap_detection && !lid_is_open()) {
+			tap = gesture_recognize_tap(motion_sensors[0].xyz[X],
+						    motion_sensors[0].xyz[Y],
+						    motion_sensors[0].xyz[Z]);
+			if (tap) {
+				if (ts0.val - ts_tap.val <= 500 * MSEC) {
+					lightbar_sequence(LIGHTBAR_TAP);
+					task_wait_event(500*MSEC);
+				} else {
+					ts_tap = ts0;
+				}
+			}
 		}
+
+		if (rd_cnt != motion_sensor_count)
+			goto motion_wait;
 
 		/* Calculate angle of lid accel. */
 		lid_angle_is_reliable = calculate_lid_angle(
@@ -406,6 +550,7 @@ void motion_sense_task(void)
 #endif
 		update_sense_data(lpc_status, lpc_data, &sample_id);
 
+motion_wait:
 		/* Delay appropriately to keep sampling time consistent. */
 		ts1 = get_time();
 		wait_us = accel_interval_ms * MSEC - (ts1.val-ts0.val);
