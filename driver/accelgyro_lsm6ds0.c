@@ -425,23 +425,23 @@ static int init(const struct motion_sensor_t *s)
 		if (ret)
 			return EC_ERROR_UNKNOWN;
 
-		ret = set_range(s, 2, 1);
+		ret = set_range(s, s->default_range, 1);
 		if (ret)
 			return EC_ERROR_UNKNOWN;
 
-		ret = set_data_rate(s, 119000, 1);
+		ret = set_data_rate(s, s->default_odr, 1);
 		if (ret)
 			return EC_ERROR_UNKNOWN;
 	}
 
 	if (SENSOR_GYRO == s->type) {
 		/* Config GYRO Range */
-		ret = set_range(s, 2000, 1);
+		ret = set_range(s, s->default_range, 1);
 		if (ret)
 			return EC_ERROR_UNKNOWN;
 
 		/* Config ACCEL & GYRO ODR */
-		ret = set_data_rate(s, 119000, 1);
+		ret = set_data_rate(s, s->default_odr, 1);
 		if (ret)
 			return EC_ERROR_UNKNOWN;
 	}
