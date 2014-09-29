@@ -163,8 +163,12 @@ static void clock_chipset_shutdown(void)
 	accel_interval_ms = accel_interval_ap_suspend_ms;
 	for (i = 0; i < motion_sensor_count; i++) {
 		sensor = &motion_sensors[i];
+		if ((sensor->state == SENSOR_INITIALIZED) &&
+			!(sensor->active_flags & SENSOR_ACTIVE_S5)) {
+			sensor->drv->set_data_rate(sensor, 0, 0);
+		}
 		sensor->state = SENSOR_NOT_INITIALIZED;
-		sensor->power = SENSOR_POWER_OFF;
+		sensor->power = POWER_S5;
 	}
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, clock_chipset_shutdown, HOOK_PRIO_DEFAULT);
@@ -176,10 +180,40 @@ static void clock_chipset_startup(void)
 	accel_interval_ms = accel_interval_ap_on_ms;
 	for (i = 0; i < motion_sensor_count; i++) {
 		sensor = &motion_sensors[i];
-		sensor->power = SENSOR_POWER_ON;
+		sensor->power = POWER_S0;
 	}
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, clock_chipset_startup, HOOK_PRIO_DEFAULT);
+
+static void clock_chipset_suspend(void)
+{
+	int i;
+	struct motion_sensor_t *sensor;
+	for (i = 0; i < motion_sensor_count; i++) {
+		sensor = &motion_sensors[i];
+		/* Saving power if the sensor is not active in S3 */
+		if ((sensor->state == SENSOR_INITIALIZED) &&
+			!(sensor->active_flags & SENSOR_ACTIVE_S3)) {
+			sensor->drv->set_data_rate(sensor, 0, 0);
+		}
+		sensor->power = POWER_S3;
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, clock_chipset_suspend, HOOK_PRIO_DEFAULT);
+
+static void clock_chipset_resume(void)
+{
+	int i;
+	struct motion_sensor_t *sensor;
+	for (i = 0; i < motion_sensor_count; i++) {
+		sensor = &motion_sensors[i];
+		/* Restore pre-configured data ODR in S0 */
+		if ((sensor->state == SENSOR_INITIALIZED) &&
+			!(sensor->active_flags & SENSOR_ACTIVE_S3))
+			sensor->drv->set_data_rate(sensor, sensor->odr, 1);
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, clock_chipset_resume, HOOK_PRIO_DEFAULT);
 
 /* Write to LPC status byte to represent that accelerometers are present. */
 static inline void set_present(uint8_t *lpc_status)
@@ -231,12 +265,6 @@ static inline void motion_sense_init(struct motion_sensor_t *sensor)
 {
 	int ret;
 
-	if (sensor->power == SENSOR_POWER_OFF)
-		return;
-
-	if (sensor->state != SENSOR_NOT_INITIALIZED)
-		return;
-
 	/* Initialize accelerometers. */
 	ret = sensor->drv->init(sensor);
 	if (ret != EC_SUCCESS) {
@@ -247,6 +275,9 @@ static inline void motion_sense_init(struct motion_sensor_t *sensor)
 	/* Initialize sampling interval. */
 	accel_interval_ms = accel_interval_ap_suspend_ms;
 
+	sensor->range = sensor->default_range;
+	sensor->resolution = sensor->default_resolution;
+	sensor->odr = sensor->default_odr;
 	sensor->state = SENSOR_INITIALIZED;
 }
 
@@ -254,9 +285,6 @@ static inline void motion_sense_init(struct motion_sensor_t *sensor)
 static int motion_sense_read(struct motion_sensor_t *sensor)
 {
 	int ret;
-
-	if (sensor->power == SENSOR_POWER_OFF)
-		return EC_ERROR_UNKNOWN;
 
 	if (sensor->state != SENSOR_INITIALIZED)
 		return EC_ERROR_UNKNOWN;
@@ -320,13 +348,15 @@ void motion_sense_task(void)
 
 			sensor = &motion_sensors[i];
 
-			if (sensor->power == SENSOR_POWER_OFF)
-				continue;
+			/* if sensir is active in the current power state */
+			if ((1 << sensor->power) & sensor->active_flags) {
 
-			motion_sense_init(sensor);
+				if (sensor->state == SENSOR_NOT_INITIALIZED)
+					motion_sense_init(sensor);
 
-			if (EC_SUCCESS == motion_sense_read(sensor))
-				rd_cnt++;
+				if (EC_SUCCESS == motion_sense_read(sensor))
+					rd_cnt++;
+			}
 
 			/*
 			 * Rotate the lid accel vector
@@ -355,10 +385,6 @@ void motion_sense_task(void)
 
 		for (i = 0; i < motion_sensor_count; ++i) {
 			sensor = &motion_sensors[i];
-			/*
-			 * TODO(crosbug.com/p/25597):
-			 * Add filter to smooth lid angle.
-			 */
 			/* Rotate accels into standard reference frame. */
 			if (sensor->type == SENSOR_ACCELEROMETER)
 				rotate(sensor->xyz,
@@ -460,9 +486,9 @@ static struct motion_sensor_t
 	if (!sensor)
 		return NULL;
 
-	if ((sensor->power == SENSOR_POWER_ON)
+	if (((1 << sensor->power) & sensor->active_flags)
 		&& (sensor->state == SENSOR_INITIALIZED))
-		return sensor;
+			return sensor;
 
 	/* If no match then the EC currently doesn't support ID received. */
 	return NULL;
@@ -565,6 +591,8 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		}
 
 		sensor->drv->get_data_rate(sensor, &data);
+		/* Save configuration parameter: ODR */
+		sensor->odr = data;
 		out->sensor_odr.ret = data;
 
 		args->response_size = sizeof(out->sensor_odr);
@@ -590,8 +618,9 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		}
 
 		sensor->drv->get_range(sensor, &data);
+		/* Save configuration parameter: range */
+		sensor->range = data;
 		out->sensor_range.ret = data;
-
 		args->response_size = sizeof(out->sensor_range);
 		break;
 
@@ -853,7 +882,8 @@ static int command_accel_init(int argc, char **argv)
 		return EC_ERROR_PARAM1;
 
 	sensor = &motion_sensors[id];
-	sensor->drv->init(sensor);
+	motion_sense_init(sensor);
+
 	ccprintf("%s\n", sensor->name);
 	return EC_SUCCESS;
 }

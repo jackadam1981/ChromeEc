@@ -89,10 +89,14 @@ const struct accelgyro_drv test_motion_sense = {
 };
 
 struct motion_sensor_t motion_sensors[] = {
-	{"base", SENSOR_CHIP_LSM6DS0, SENSOR_ACCELEROMETER, LOCATION_BASE,
-		&test_motion_sense, NULL, NULL, 0},
-	{"lid", SENSOR_CHIP_KXCJ9, SENSOR_ACCELEROMETER, LOCATION_LID,
-		&test_motion_sense, NULL, NULL, 0},
+	{SENSOR_ACTIVE_S0_S3, "base", SENSOR_CHIP_LSM6DS0,
+		SENSOR_ACCELEROMETER, LOCATION_BASE,
+		&test_motion_sense, NULL, NULL,
+		0, 119000, 2},
+	{SENSOR_ACTIVE_S0, "lid", SENSOR_CHIP_KXCJ9,
+		SENSOR_ACCELEROMETER, LOCATION_LID,
+		&test_motion_sense, NULL, NULL,
+		0, 100000, 2},
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
