@@ -181,6 +181,32 @@ static void clock_chipset_startup(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, clock_chipset_startup, HOOK_PRIO_DEFAULT);
 
+static void clock_chipset_suspend(void)
+{
+	int i;
+	struct motion_sensor_t *sensor;
+	for (i = 0; i < motion_sensor_count; i++) {
+		sensor = &motion_sensors[i];
+		/* Set Data ODR to 0; saving power */
+		if (sensor->state == SENSOR_INITIALIZED)
+			sensor->drv->set_data_rate(sensor, 0, 0);
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, clock_chipset_suspend, HOOK_PRIO_DEFAULT);
+
+static void clock_chipset_resume(void)
+{
+	int i;
+	struct motion_sensor_t *sensor;
+	for (i = 0; i < motion_sensor_count; i++) {
+		sensor = &motion_sensors[i];
+		/* Restore original data ODR */
+		if (sensor->state == SENSOR_INITIALIZED)
+			sensor->drv->set_data_rate(sensor, sensor->odr, 1);
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, clock_chipset_resume, HOOK_PRIO_DEFAULT);
+
 /* Write to LPC status byte to represent that accelerometers are present. */
 static inline void set_present(uint8_t *lpc_status)
 {
@@ -355,10 +381,6 @@ void motion_sense_task(void)
 
 		for (i = 0; i < motion_sensor_count; ++i) {
 			sensor = &motion_sensors[i];
-			/*
-			 * TODO(crosbug.com/p/25597):
-			 * Add filter to smooth lid angle.
-			 */
 			/* Rotate accels into standard reference frame. */
 			if (sensor->type == SENSOR_ACCELEROMETER)
 				rotate(sensor->xyz,
@@ -562,6 +584,8 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		}
 
 		sensor->drv->get_data_rate(sensor, &data);
+		/* Save configuration parameter: ODR */
+		sensor->odr = data;
 		out->sensor_odr.ret = data;
 
 		args->response_size = sizeof(out->sensor_odr);
@@ -587,6 +611,8 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		}
 
 		sensor->drv->get_range(sensor, &data);
+		/* Save configuration parameter: range */
+		sensor->range = data;
 		out->sensor_range.ret = data;
 
 		args->response_size = sizeof(out->sensor_range);
@@ -851,6 +877,11 @@ static int command_accel_init(int argc, char **argv)
 
 	sensor = &motion_sensors[id];
 	sensor->drv->init(sensor);
+
+	/* Save default configuration parameters: ODR and range */
+	sensor->drv->get_data_rate(sensor, &sensor->odr);
+	sensor->drv->get_range(sensor, &sensor->range);
+
 	ccprintf("%s\n", sensor->name);
 	return EC_SUCCESS;
 }

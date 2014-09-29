@@ -108,11 +108,16 @@ struct motion_sensor_t {
 	void *drv_data;
 	uint8_t i2c_addr;
 
-	/* RW fields */
+	/* configurations parameters */
+	int odr;
+	int range;
+
+	/* state parameters */
 	enum sensor_state state;
 	enum sensor_power power;
 	vector_3_t raw_xyz;
 	vector_3_t xyz;
+
 };
 
 /* Defined at board level. */
