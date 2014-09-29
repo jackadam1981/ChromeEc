@@ -255,14 +255,20 @@ struct kxcj9_data g_kxcj9_data;
 /* Four Motion sensors */
 struct motion_sensor_t motion_sensors[] = {
 
-	{"Base", SENSOR_CHIP_LSM6DS0, SENSOR_ACCELEROMETER, LOCATION_BASE,
-		&lsm6ds0_drv, &g_base_mutex, NULL, LSM6DS0_ADDR1},
+	{SENSOR_ACTIVE_S0_S3, "Base", SENSOR_CHIP_LSM6DS0,
+		SENSOR_ACCELEROMETER, LOCATION_BASE,
+		&lsm6ds0_drv, &g_base_mutex, NULL,
+		LSM6DS0_ADDR1, 119000, 2},
 
-	{"Lid",  SENSOR_CHIP_KXCJ9, SENSOR_ACCELEROMETER, LOCATION_LID,
-		&kxcj9_drv, &g_lid_mutex, &g_kxcj9_data, KXCJ9_ADDR0},
+	{SENSOR_ACTIVE_S0, "Lid",  SENSOR_CHIP_KXCJ9,
+		SENSOR_ACCELEROMETER, LOCATION_LID,
+		&kxcj9_drv, &g_lid_mutex, &g_kxcj9_data,
+		KXCJ9_ADDR0, 100000, 2},
 
-	{"Base Gyro", SENSOR_CHIP_LSM6DS0, SENSOR_GYRO, LOCATION_BASE,
-		&lsm6ds0_drv, &g_base_mutex, NULL, LSM6DS0_ADDR1},
+	{SENSOR_ACTIVE_S0, "Base Gyro", SENSOR_CHIP_LSM6DS0,
+		SENSOR_GYRO, LOCATION_BASE,
+		&lsm6ds0_drv, &g_base_mutex, NULL,
+		LSM6DS0_ADDR1, 119000, 2000},
 
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
