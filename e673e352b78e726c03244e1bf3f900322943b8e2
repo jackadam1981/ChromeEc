@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7037fbc3_f80f1d93",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-09-29T14:56:03Z",
+      "side": 1,
+      "message": "I think we want to change this command to erase the 256 byte signature.",
+      "range": {
+        "startLine": 397,
+        "startChar": 6,
+        "endLine": 397,
+        "endChar": 24
+      },
+      "revId": "e673e352b78e726c03244e1bf3f900322943b8e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
