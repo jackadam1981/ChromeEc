@@ -507,15 +507,15 @@ static int init(const struct motion_sensor_t *s)
 		}
 	} while (1);
 
-	ret = set_range(s, 2, 1);
+	ret = set_range(s, s->default_range, 1);
 	if (ret != EC_SUCCESS)
 		return ret;
 
-	ret = set_resolution(s, 12, 1);
+	ret = set_resolution(s, s->default_resolution, 1);
 	if (ret != EC_SUCCESS)
 		return ret;
 
-	ret = set_data_rate(s, 100000, 1);
+	ret = set_data_rate(s, s->default_odr, 1);
 	if (ret != EC_SUCCESS)
 		return ret;
 
