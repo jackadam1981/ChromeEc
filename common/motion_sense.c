@@ -163,6 +163,9 @@ static void clock_chipset_shutdown(void)
 	accel_interval_ms = accel_interval_ap_suspend_ms;
 	for (i = 0; i < motion_sensor_count; i++) {
 		sensor = &motion_sensors[i];
+		sensor->odr   = 0;
+		if (sensor->state == SENSOR_INITIALIZED)
+			sensor->drv->set_data_rate(sensor, sensor->odr, 0);
 		sensor->state = SENSOR_NOT_INITIALIZED;
 		sensor->power = SENSOR_POWER_OFF;
 	}
@@ -180,6 +183,34 @@ static void clock_chipset_startup(void)
 	}
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, clock_chipset_startup, HOOK_PRIO_DEFAULT);
+
+static void clock_chipset_suspend(void)
+{
+	int i;
+	struct motion_sensor_t *sensor;
+	for (i = 0; i < motion_sensor_count; i++) {
+		sensor = &motion_sensors[i];
+		/* Saving power if the sensor is not active in S3 */
+		if ((sensor->state == SENSOR_INITIALIZED) &&
+			!(sensor->active_flags & SENSOR_ACTIVE_S3))
+			sensor->drv->set_data_rate(sensor, 0, 0);
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, clock_chipset_suspend, HOOK_PRIO_DEFAULT);
+
+static void clock_chipset_resume(void)
+{
+	int i;
+	struct motion_sensor_t *sensor;
+	for (i = 0; i < motion_sensor_count; i++) {
+		sensor = &motion_sensors[i];
+		/* Restore pre-configured data ODR in S0 */
+		if ((sensor->state == SENSOR_INITIALIZED) &&
+			!(sensor->active_flags & SENSOR_ACTIVE_S3))
+			sensor->drv->set_data_rate(sensor, sensor->odr, 1);
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, clock_chipset_resume, HOOK_PRIO_DEFAULT);
 
 /* Write to LPC status byte to represent that accelerometers are present. */
 static inline void set_present(uint8_t *lpc_status)
@@ -231,12 +262,6 @@ static inline void motion_sense_init(struct motion_sensor_t *sensor)
 {
 	int ret;
 
-	if (sensor->power == SENSOR_POWER_OFF)
-		return;
-
-	if (sensor->state != SENSOR_NOT_INITIALIZED)
-		return;
-
 	/* Initialize accelerometers. */
 	ret = sensor->drv->init(sensor);
 	if (ret != EC_SUCCESS) {
@@ -247,6 +272,9 @@ static inline void motion_sense_init(struct motion_sensor_t *sensor)
 	/* Initialize sampling interval. */
 	accel_interval_ms = accel_interval_ap_suspend_ms;
 
+	sensor->range = sensor->default_range;
+	sensor->resolution = sensor->default_resolution;
+	sensor->odr = sensor->default_odr;
 	sensor->state = SENSOR_INITIALIZED;
 }
 
@@ -323,7 +351,12 @@ void motion_sense_task(void)
 			if (sensor->power == SENSOR_POWER_OFF)
 				continue;
 
-			motion_sense_init(sensor);
+			if (sensor->state == SENSOR_NOT_INITIALIZED)
+				motion_sense_init(sensor);
+
+			/* If sensor is in power saving mode */
+			if (0 == sensor->odr)
+				continue;
 
 			if (EC_SUCCESS == motion_sense_read(sensor))
 				rd_cnt++;
@@ -355,10 +388,6 @@ void motion_sense_task(void)
 
 		for (i = 0; i < motion_sensor_count; ++i) {
 			sensor = &motion_sensors[i];
-			/*
-			 * TODO(crosbug.com/p/25597):
-			 * Add filter to smooth lid angle.
-			 */
 			/* Rotate accels into standard reference frame. */
 			if (sensor->type == SENSOR_ACCELEROMETER)
 				rotate(sensor->xyz,
@@ -428,28 +457,31 @@ static struct motion_sensor_t
 	*host_sensor_id_to_motion_sensor(int host_id)
 {
 	int i;
+	struct motion_sensor_t *s = NULL;
 	struct motion_sensor_t *sensor = NULL;
 
 	for (i = 0; i < motion_sensor_count; ++i) {
 
-		if ((LOCATION_BASE == sensor->location)
-			&& (SENSOR_ACCELEROMETER == sensor->type)
+		s = &motion_sensors[i];
+
+		if ((LOCATION_BASE == s->location)
+			&& (SENSOR_ACCELEROMETER == s->type)
 			&& (host_id == EC_MOTION_SENSOR_ACCEL_BASE)) {
-			sensor = &motion_sensors[i];
+			sensor = s;
 			break;
 		}
 
-		if ((LOCATION_LID == sensor->location)
-			&& (SENSOR_ACCELEROMETER == sensor->type)
+		if ((LOCATION_LID == s->location)
+			&& (SENSOR_ACCELEROMETER == s->type)
 			&& (host_id == EC_MOTION_SENSOR_ACCEL_LID)) {
-			sensor = &motion_sensors[i];
+			sensor = s;
 			break;
 		}
 
-		if ((LOCATION_BASE == sensor->location)
-			&& (SENSOR_GYRO == sensor->type)
+		if ((LOCATION_BASE == s->location)
+			&& (SENSOR_GYRO == s->type)
 			&& (host_id == EC_MOTION_SENSOR_GYRO)) {
-			sensor = &motion_sensors[i];
+			sensor = s;
 			break;
 		}
 	}
@@ -562,6 +594,8 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		}
 
 		sensor->drv->get_data_rate(sensor, &data);
+		/* Save configuration parameter: ODR */
+		sensor->odr = data;
 		out->sensor_odr.ret = data;
 
 		args->response_size = sizeof(out->sensor_odr);
@@ -587,8 +621,9 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		}
 
 		sensor->drv->get_range(sensor, &data);
+		/* Save configuration parameter: range */
+		sensor->range = data;
 		out->sensor_range.ret = data;
-
 		args->response_size = sizeof(out->sensor_range);
 		break;
 
@@ -851,6 +886,11 @@ static int command_accel_init(int argc, char **argv)
 
 	sensor = &motion_sensors[id];
 	sensor->drv->init(sensor);
+
+	/* Save default configuration parameters: ODR and range */
+	sensor->drv->get_data_rate(sensor, &sensor->odr);
+	sensor->drv->get_range(sensor, &sensor->range);
+
 	ccprintf("%s\n", sensor->name);
 	return EC_SUCCESS;
 }

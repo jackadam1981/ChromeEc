@@ -10,6 +10,7 @@
 
 #include "gpio.h"
 #include "math_util.h"
+#include "power.h"
 
 /* Anything outside of lid angle range [-180, 180] should work. */
 #define LID_ANGLE_UNRELIABLE 500.0F
@@ -97,8 +98,13 @@ enum sensor_power {
 	SENSOR_POWER_ON  = 1
 };
 
+#define SENSOR_ACTIVE_S3 (1<<POWER_S3)
+#define SENSOR_ACTIVE_S0 (1<<POWER_S0)
+#define SENSOR_ACTIVE_S0_S3 (SENSOR_ACTIVE_S3 | SENSOR_ACTIVE_S0)
+
 struct motion_sensor_t {
 	/* RO fields */
+	int active_flags;
 	char *name;
 	enum sensor_chip_t chip;
 	enum sensor_type_t type;
@@ -108,11 +114,22 @@ struct motion_sensor_t {
 	void *drv_data;
 	uint8_t i2c_addr;
 
-	/* RW fields */
+	/* Default Configurations Parameters, RO only */
+	int default_odr;
+	int default_range;
+	int default_resolution;
+
+	/* Run-Time configurations parameters, RW */
+	int odr;
+	int range;
+	int resolution;
+
+	/* state parameters */
 	enum sensor_state state;
 	enum sensor_power power;
 	vector_3_t raw_xyz;
 	vector_3_t xyz;
+
 };
 
 /* Defined at board level. */
