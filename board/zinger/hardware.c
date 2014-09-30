@@ -280,14 +280,18 @@ int adc_disable_watchdog(void)
 #define STRT     (1<<6)
 #define CR_LOCK  (1<<7)
 
-int flash_write_rw(int offset, int size, const char *data)
+#include "debug.h"
+int flash_write_z(enum flash_section section, int offset, int size,
+		const char *data)
 {
-	uint16_t *address = (uint16_t *)
-		(CONFIG_FLASH_BASE + CONFIG_FW_RW_OFF + offset);
+	int base = (section == FLASH_RW ? CONFIG_FW_RW_OFF : CONFIG_FW_RO_OFF);
+	int end = CONFIG_FLASH_BASE +
+		(section == FLASH_RW ? CONFIG_FLASH_SIZE : CONFIG_FW_RO_SIZE);
+	uint16_t *address = (uint16_t *)(CONFIG_FLASH_BASE + base + offset);
 	int res = EC_SUCCESS;
 	int i;
 
-	if ((uint32_t)address > CONFIG_FLASH_BASE + CONFIG_FLASH_SIZE)
+	if ((uint32_t)address > end)
 		return EC_ERROR_INVAL;
 
 	/* unlock CR if needed */
@@ -332,11 +336,11 @@ exit_wr:
 	return res;
 }
 
-int flash_erase_rw(void)
+int flash_erase_z(enum flash_section section)
 {
 	int res = EC_SUCCESS;
-	int offset = CONFIG_FW_RW_OFF;
-	int size = CONFIG_FW_RW_SIZE;
+	int offset = (section == FLASH_RW ? CONFIG_FW_RW_OFF:CONFIG_FW_RO_OFF);
+	int size = (section == FLASH_RW ? CONFIG_FW_RW_SIZE:CONFIG_FW_RO_SIZE);
 
 	/* unlock CR if needed */
 	if (STM32_FLASH_CR & CR_LOCK) {

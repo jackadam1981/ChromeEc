@@ -69,8 +69,14 @@ void hardware_init(void);
 extern volatile uint32_t last_event;
 
 /* RW section flashing */
-int flash_erase_rw(void);
-int flash_write_rw(int offset, int size, const char *data);
+enum flash_section {
+	FLASH_RO,
+	FLASH_RW
+};
+
+int flash_erase_z(enum flash_section section);
+int flash_write_z(enum flash_section section, int offset, int size,
+		   const char *data);
 uint8_t *flash_hash_rw(void);
 int is_ro_mode(void);
 
