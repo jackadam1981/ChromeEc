@@ -24,6 +24,8 @@ UNIMPLEMENTED(PCH_RCIN_L)
 
 GPIO(PCH_SMI_L,         PORT(4),  4, GPIO_ODR_HIGH,                             NULL)                   /* SMI output */
 GPIO(PCH_WAKE_L,        PORT(20), 0, GPIO_ODR_HIGH,                             NULL)                   /* PCH wake pin */
+GPIO(PVT_CS0,        PORT(14), 6, GPIO_ODR_HIGH,                             NULL)                   /* SPI PVT Chip select */
+GPIO(SHD_CS0,        PORT(15), 0, GPIO_ODR_HIGH,                             NULL)                   /* SPI SHARED Chip Select */
 
 /*
  * Signals which aren't implemented on MEC1322 eval board but we'll

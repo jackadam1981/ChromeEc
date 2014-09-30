@@ -17,6 +17,7 @@ GPIO(PCH_SLP_S4_L,      PORT(20),  0, GPIO_INT_BOTH_DSLEEP | GPIO_PULL_UP,      
 GPIO(PCH_SLP_S3_L,      PORT(20), 6, GPIO_INT_BOTH_DSLEEP | GPIO_PULL_UP,       power_signal_interrupt) /* SLP_S3# signal from PCH */
 GPIO(ALL_SYS_PGOOD,     PORT(13),  0, GPIO_INT_BOTH_DSLEEP,                      power_signal_interrupt) /* ALL_SYS_PWRGD from power logic */
 GPIO(PCH_SYS_PWROK,     PORT(6), 5, GPIO_OUT_LOW,                              NULL)                   /* EC thinks everything is up and ready (DELAY_ALL_SYS_PWRGD) */
+GPIO(WP,            	PORT(3),  3, GPIO_INT_BOTH,                       switch_interrupt)         /* Write protect input */
 
 GPIO(USB3_PWR_EN,       PORT(5),  7, GPIO_OUT_HIGH,                             NULL)                   /* Enable power for USB3 Port */
 GPIO(USB2_PWR_EN,       PORT(3),  6, GPIO_OUT_HIGH,                             NULL)                   /* Enable power for USB2 Port */
@@ -34,6 +35,9 @@ UNIMPLEMENTED(PCH_RCIN_L)
 
 GPIO(PCH_SMI_L,         PORT(4),  4, GPIO_ODR_HIGH,                             NULL)                   /* SMI output */
 GPIO(PCH_WAKE_L,        PORT(6), 6, GPIO_ODR_HIGH,                             NULL)                   /* PCH wake pin */
+GPIO(PVT_CS0,        PORT(14), 6, GPIO_ODR_HIGH,                             NULL)                   /* SPI PVT Chip select */
+GPIO(SHD_CS0,        PORT(15), 0, GPIO_ODR_HIGH,                             NULL)                   /* SPI SHARED Chip Select */
+
 
 /*
  * Signals which aren't implemented on MEC1322 eval board but we'll
@@ -70,4 +74,3 @@ ALTERNATE(PORT(12), 0x01,     1, MODULE_LPC,           0)                       
 ALTERNATE(PORT(5),  0x10,     1, MODULE_SPI,           0)
 ALTERNATE(PORT(16),  0x10,     1, MODULE_SPI,           0)
 ALTERNATE(PORT(15), 0x8,     1, MODULE_SPI,           0)
-ALTERNATE(PORT(14), 0x40,     1, MODULE_SPI,           0)

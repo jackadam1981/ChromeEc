@@ -203,6 +203,29 @@ int spi_flash_wait(void)
 	return EC_SUCCESS;
 }
 
+
+/**
+ * Waits for chip to finish current operation. Must be called after
+ * erase/write operations to ensure successive commands are executed.
+ *
+ * @return EC_SUCCESS or error on timeout
+ */
+int spi_flash_wel_wait(void)
+{
+	timestamp_t timeout;
+
+	timeout.val = get_time().val + SPI_FLASH_TIMEOUT_USEC;
+	/* Wait until chip is not busy */
+	while (!(spi_flash_get_status1() & SPI_FLASH_SR1_WEL)) {
+		usleep(SPI_FLASH_SLEEP_USEC);
+
+		if (get_time().val > timeout.val)
+			return EC_ERROR_TIMEOUT;
+	}
+
+	return EC_SUCCESS;
+}
+
 /**
  * Set the write enable latch
  */
@@ -211,6 +234,16 @@ static int spi_flash_write_enable(void)
 	uint8_t cmd = SPI_FLASH_WRITE_ENABLE;
 	return spi_transaction(&cmd, 1, NULL, 0);
 }
+
+/**
+ * Set the write enable latch
+ */
+int spi_flash_write_disable(void)
+{
+	uint8_t cmd = SPI_FLASH_WRITE_DISABLE;
+	return spi_transaction(&cmd, 1, NULL, 0);
+}
+
 
 /**
  * Returns the contents of SPI flash status register 1
@@ -383,7 +416,6 @@ int spi_flash_erase(unsigned int offset, unsigned int bytes)
 		bytes -= 4 * 1024;
 		offset += 4 * 1024;
 	}
-
 	return rv;
 }
 
@@ -400,12 +432,17 @@ int spi_flash_erase(unsigned int offset, unsigned int bytes)
 int spi_flash_write(unsigned int offset, unsigned int bytes,
 	const uint8_t const *data)
 {
-	int rv;
+	int rv = EC_SUCCESS;
 
 	/* Invalid input */
 	if (!data || offset + bytes > CONFIG_SPI_FLASH_SIZE ||
 	    bytes > SPI_FLASH_MAX_WRITE_SIZE)
 		return EC_ERROR_INVAL;
+
+
+	rv = spi_flash_wait();
+	if (rv)
+		return rv;
 
 	/* Enable writing to SPI flash */
 	rv = spi_flash_write_enable();
@@ -421,7 +458,11 @@ int spi_flash_write(unsigned int offset, unsigned int bytes,
 	buf[2] = (offset >> 8) & 0xFF;
 	buf[3] = offset & 0xFF;
 
-	return spi_transaction(buf, 4 + bytes, NULL, 0);
+	rv = spi_transaction(buf, 4 + bytes, NULL, 0);
+	if (rv)
+		return rv;
+
+	return rv;
 }
 
 /**
