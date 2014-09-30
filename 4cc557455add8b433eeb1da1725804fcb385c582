@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "103080e8_4e60937c",
+        "filename": "board/zinger/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-09-30T22:18:17Z",
+      "side": 1,
+      "message": "put this at top of file",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 8
+      },
+      "revId": "4cc557455add8b433eeb1da1725804fcb385c582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "502678b6_3c9d7dcb",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-09-30T22:18:17Z",
+      "side": 1,
+      "message": "As you said, this is just here to invalidate the signature. It doesn\u0027t matter if this writes just 20 bytes or the whole signature. But, I think for cleanliness and matching the design, we should change this soon. Things should get simpler because we don\u0027t need a hash payload for this VDO, this VDO will just write 1\u0027s to signature, and ectool, flash_pd.py, and kernel driver will all simplify a little too.",
+      "range": {
+        "startLine": 397,
+        "startChar": 6,
+        "endLine": 397,
+        "endChar": 24
+      },
+      "revId": "4cc557455add8b433eeb1da1725804fcb385c582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0150830_9807ec0a",
+        "filename": "board/zinger/zinger_dev_key.pem",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-09-30T22:18:17Z",
+      "side": 1,
+      "message": "File name is redundant with folder, how about just dev_key.pem",
+      "revId": "4cc557455add8b433eeb1da1725804fcb385c582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
