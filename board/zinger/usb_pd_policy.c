@@ -382,22 +382,22 @@ int pd_custom_vdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 		break;
 	case VDO_CMD_FLASH_ERASE:
 		/* do not kill the code under our feet */
-		if (!is_ro_mode())
+		if (is_ro_mode())
 			break;
 		flash_offset = 0;
-		flash_erase_rw();
+		flash_erase_z(FLASH_RO);
 		break;
 	case VDO_CMD_FLASH_WRITE:
 		/* do not kill the code under our feet */
-		if (!is_ro_mode())
+		if (is_ro_mode())
 			break;
-		flash_write_rw(flash_offset, 4*(cnt - 1),
+		flash_write_z(FLASH_RO, flash_offset, 4*(cnt - 1),
 			       (const char *)(payload+1));
 		flash_offset += 4*(cnt - 1);
 		break;
 	case VDO_CMD_FLASH_HASH:
 		/* this is not touching the code area */
-		flash_write_rw(CONFIG_FW_RW_SIZE - 32, 4*cnt,
+		flash_write_z(FLASH_RW, CONFIG_FW_RW_SIZE - 32, 4*cnt,
 			       (const char *)(payload+1));
 		break;
 	case VDO_CMD_PING_ENABLE:

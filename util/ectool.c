@@ -866,8 +866,8 @@ int cmd_flash_pd(int argc, char *argv[])
 	char *buf, *fw_padding;
 	uint32_t *data = &(p->size) + 1;
 
-	if (argc < 4) {
-		fprintf(stderr, "Usage: %s <dev_id> <port> <filename>\n",
+	if (argc < 5) {
+		fprintf(stderr, "Usage: %s <dev_id> <port> <filename RW> <filename RO>\n",
 			argv[0]);
 		return -1;
 	}
@@ -969,6 +969,79 @@ int cmd_flash_pd(int argc, char *argv[])
 	if (rv < 0)
 		goto pd_flash_error;
 
+	/* Reboot */
+	fprintf(stderr, "Rebooting into RW\n");
+	p->cmd = USB_PD_FW_REBOOT;
+	p->size = 0;
+	rv = ec_command(EC_CMD_USB_PD_FW_UPDATE, 0,
+			p, p->size + sizeof(*p), NULL, 0);
+
+	if (rv < 0)
+		goto pd_flash_error;
+
+	free(buf);
+
+	/************************************/
+	/* Load second file to load into RO */
+
+	/* Read the RO input file */
+	buf = read_file(argv[4], &fsize);
+	if (!buf)
+		return -1;
+
+	/* Verify size of file */
+	if (fsize > PD_RW_IMAGE_SIZE)
+		goto pd_flash_error;
+
+	fprintf(stderr, "File size %d\n", fsize);
+
+	/* Erase RO flash */
+	fprintf(stderr, "Erasing RO flash\n");
+	p->cmd = USB_PD_FW_FLASH_ERASE;
+	p->size = 0;
+	rv = ec_command(EC_CMD_USB_PD_FW_UPDATE, 0,
+			p, p->size + sizeof(*p), NULL, 0);
+
+	if (rv < 0)
+		goto pd_flash_error;
+
+	/* Write RO flash */
+	fprintf(stderr, "Writing RO flash\n");
+	p->cmd = USB_PD_FW_FLASH_WRITE;
+	p->size = step;
+
+	for (i = 0; i < fsize; i += step) {
+		p->size = MIN(fsize - i, step);
+		memcpy(data, buf + i, p->size);
+		rv = ec_command(EC_CMD_USB_PD_FW_UPDATE, 0,
+				p, p->size + sizeof(*p), NULL, 0);
+		if (rv < 0)
+			goto pd_flash_error;
+	}
+
+	/* Reboot */
+	fprintf(stderr, "Rebooting into RO\n");
+	p->cmd = USB_PD_FW_REBOOT;
+	p->size = 0;
+	rv = ec_command(EC_CMD_USB_PD_FW_UPDATE, 0,
+			p, p->size + sizeof(*p), NULL, 0);
+
+	if (rv < 0)
+		goto pd_flash_error;
+
+	/* Write expected flash hash to all 0s */
+	/* May be useful, but if it succeeds it at least tells us that RO is working */
+	fprintf(stderr, "Erasing expected RW hash\n");
+	p->cmd = USB_PD_FW_FLASH_HASH;
+	p->size = 20;
+	for (i = 0; i < 5; i++)
+		*(data + i) = 0;
+	rv = ec_command(EC_CMD_USB_PD_FW_UPDATE, 0,
+			p, p->size + sizeof(*p), NULL, 0);
+
+	if (rv < 0)
+		goto pd_flash_error;
+	
 	free(buf);
 	fprintf(stderr, "Complete\n");
 	return 0;
