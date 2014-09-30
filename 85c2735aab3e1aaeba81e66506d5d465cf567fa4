@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d071878d_14dd94f1",
+        "filename": "board/fruitpie/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-09-30T01:27:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30bca331_5152a74c",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 29
+      },
+      "revId": "85c2735aab3e1aaeba81e66506d5d465cf567fa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30bca331_71808b72",
         "filename": "board/hoho/usb_pd_policy.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2014-09-24T00:07:26Z",
       "side": 1,
       "message": "const",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 29
+      },
+      "revId": "85c2735aab3e1aaeba81e66506d5d465cf567fa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f074cb7c_b5e78073",
+        "filename": "board/hoho/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-09-30T01:27:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30bca331_71808b72",
       "range": {
         "startLine": 117,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f08beba0_6668df6f",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-09-30T01:27:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7080db79_ca2617d8",
+      "range": {
+        "startLine": 41,
+        "startChar": 3,
+        "endLine": 41,
+        "endChar": 11
+      },
+      "revId": "85c2735aab3e1aaeba81e66506d5d465cf567fa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7080db79_eaf3dbbb",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2014-09-24T00:07:26Z",
       "side": 1,
       "message": "I think we should treat custom VDM\u0027s and standard VDM\u0027s the same way at the protocol layer and differentiate between them in the policy layer. I would combine these and make one pd_vdm() function.\n\nI think this allows us to get rid of svdm_state variable.",
+      "range": {
+        "startLine": 674,
+        "startChar": 1,
+        "endLine": 677,
+        "endChar": 51
+      },
+      "revId": "85c2735aab3e1aaeba81e66506d5d465cf567fa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d071878d_b4314078",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-09-30T01:27:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7080db79_eaf3dbbb",
       "range": {
         "startLine": 674,
         "startChar": 1,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "f08beba0_06155bd4",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1086,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-09-30T01:27:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7080db79_4acda769",
+      "range": {
+        "startLine": 1086,
+        "startChar": 12,
+        "endLine": 1086,
+        "endChar": 24
+      },
+      "revId": "85c2735aab3e1aaeba81e66506d5d465cf567fa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d01507f5_cf4b9e92",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
@@ -128,6 +248,30 @@
       "writtenOn": "2014-09-24T00:07:26Z",
       "side": 1,
       "message": "I think we can remove the svdm_state variable, and do:\n\nif (pd[port].last_state !\u003d pd[port].task_state)\n  pd_send_vdm(port, USB_SID_PD, VDO_CMD_DISCOVER_IDENT, NULL, 0);",
+      "range": {
+        "startLine": 1387,
+        "startChar": 3,
+        "endLine": 1388,
+        "endChar": 44
+      },
+      "revId": "85c2735aab3e1aaeba81e66506d5d465cf567fa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f08beba0_a6ed8796",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1388,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-09-30T01:27:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d01507f5_cf4b9e92",
       "range": {
         "startLine": 1387,
         "startChar": 3,
