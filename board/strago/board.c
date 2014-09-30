@@ -16,7 +16,7 @@
 #include "adc_chip.h"
 #include "charger.h"
 #include "charge_state.h"
-
+#include "switch.h"
 #include "thermal.h"
 #include "driver/temp_sensor/tmp432.h"
 #include "temp_sensor.h"

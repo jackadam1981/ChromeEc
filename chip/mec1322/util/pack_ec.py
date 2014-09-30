@@ -18,6 +18,8 @@ LOAD_ADDR = 0x100000
 HEADER_SIZE = 0x140
 SPI_CLOCK_LIST = [48, 24, 12, 8]
 SPI_READ_CMD_LIST = [0x3, 0xb, 0x3b]
+IMAGE_SIZE = 88 * 1024
+SPI_RWIMAGE_ADDR = 0x190000
 
 CRC_TABLE = [0x00, 0x07, 0x0e, 0x09, 0x1c, 0x1b, 0x12, 0x15,
              0x38, 0x3f, 0x36, 0x31, 0x24, 0x23, 0x2a, 0x2d]
@@ -36,6 +38,16 @@ def GetEntryPoint(payload_file):
     f.seek(4)
     s = f.read(4)
   return struct.unpack('<I', s)[0]
+
+def GetPayloadfromoffset(payload_file,offset):
+  """Read payload and pad it to 64-byte aligned."""
+  with open(payload_file, 'rb') as f:
+    f.seek(IMAGE_SIZE)
+    payload = bytearray(f.read())
+  rem_len = len(payload) % 64
+  if rem_len:
+    payload += '\0' * (64 - rem_len)
+  return payload
 
 def GetPayload(payload_file):
   """Read payload and pad it to 64-byte aligned."""
@@ -88,7 +100,7 @@ def BuildHeader(args, payload_len):
   header.append(GetSpiReadCmdParameter(args))
 
   header.extend(struct.pack('<I', LOAD_ADDR))
-  header.extend(struct.pack('<I', GetEntryPoint(args.input)))
+  header.extend(struct.pack('<I', GetEntryPoint("ecproro.bin")))
   header.append((payload_len >> 6) & 0xff)
   header.append((payload_len >> 14) & 0xff)
   PadZeroTo(header, 0x14)
@@ -127,6 +139,15 @@ def BuildTag(args):
   tag.append(Crc8(0, tag))
   return tag
 
+def PackProRoImage(rorw_file):
+  os.path.exists("ecproro.bin") and os.remove("ecproro.bin")
+  with open(rorw_file, 'rb') as fin:
+    ro = fin.read(IMAGE_SIZE)
+  with open("ecloader.bin",'rb') as fin1:
+    pro = fin1.read()
+  with open("ecproro.bin", 'a+') as fo:
+    fo.write(pro)
+    fo.write(ro)
 
 def main():
   parser = argparse.ArgumentParser()
@@ -165,12 +186,15 @@ def main():
   spi_size = args.spi_size * 1024 * 1024
   spi_list = []
 
-  payload = GetPayload(args.input)
+  PackProRoImage(args.input)
+  payload = GetPayload("ecproro.bin")
   payload_len = len(payload)
+  print payload_len
   payload_signature = SignByteArray(payload, args.payload_key)
   header = BuildHeader(args, payload_len)
   header_signature = SignByteArray(header, args.header_key)
   tag = BuildTag(args)
+  payloadrw = GetPayloadfromoffset(args.input,IMAGE_SIZE)
 
   spi_list.append((args.header_loc, header))
   spi_list.append((args.header_loc + HEADER_SIZE, header_signature))
@@ -178,6 +202,8 @@ def main():
   spi_list.append((args.header_loc + args.payload_offset + payload_len,
                    payload_signature))
   spi_list.append((spi_size - 256, tag))
+  spi_list.append((SPI_RWIMAGE_ADDR,payloadrw))
+
 
   spi_list = sorted(spi_list)
 

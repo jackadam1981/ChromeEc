@@ -23,6 +23,7 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#include "flash.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHARGER, outstr)
@@ -30,6 +31,7 @@
 
 #define LOW_BATTERY_SHUTDOWN_TIMEOUT_US (LOW_BATTERY_SHUTDOWN_TIMEOUT * SECOND)
 #define PRECHARGE_TIMEOUT_US (PRECHARGE_TIMEOUT * SECOND)
+#define NOTIFICATION_HOLD_TIMEOUT_US (30 * SECOND)
 #define LFCC_EVENT_THRESH 5 /* Full-capacity change reqd for host event */
 
 /*
@@ -457,6 +459,8 @@ static void notify_host_of_low_battery(void)
 		host_set_single_event(EC_HOST_EVENT_BATTERY_CRITICAL);
 }
 
+DECLARE_DEFERRED(notify_host_of_low_battery);
+
 const struct batt_params *charger_current_battery_params(void)
 {
 	return &curr.batt;
@@ -493,7 +497,6 @@ void charger_task(void)
 			continue;
 		}
 #endif
-
 		/* Let's see what's going on... */
 		curr.ts = get_time();
 		sleep_usec = 0;
@@ -685,6 +688,11 @@ void charger_task(void)
 #endif
 
 wait_for_it:
+#ifdef CONFIG_CHARGER_NOTIFICATION_DELAY
+		if (flash_write_in_progress())
+			hook_call_deferred(notify_host_of_low_battery,
+				NOTIFICATION_HOLD_TIMEOUT_US);
+#endif
 		/* Keep the AP informed */
 		if (need_static)
 			need_static = update_static_battery_info();

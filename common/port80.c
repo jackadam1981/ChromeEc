@@ -26,9 +26,9 @@ void port_80_write(int data)
 	/*
 	 * Note that this currently prints from inside the LPC interrupt
 	 * itself.  If you're dropping events, turn print_in_int off.
-	 */
+	 *
 	if (print_in_int)
-		CPRINTF("%c[%T Port 80: 0x%02x]", scroll ? '\n' : '\r', data);
+		CPRINTF("%c[%T Port 80: 0x%02x]", scroll ? '\n' : '\r', data);*/
 
 	/* Save current port80 code if system is resetting */
 	if (data == PORT_80_EVENT_RESET && writes) {

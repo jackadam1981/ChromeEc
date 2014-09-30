@@ -83,9 +83,6 @@ targ_if_prog = $(if $(shell which $(1) 2>/dev/null),$(2),)
 .PHONY: all tests utils hosttests
 
 project-y = $(out)/$(PROJECT).bin
-ifeq "$(UC_CHIP)" "MEC1322"
-project-y += $(out)/$(PROJECT).spi.bin
-endif
 all: $(project-y) utils
 
 buildall: $(foreach b, $(boards), proj-$(b)) runtests
@@ -163,11 +160,6 @@ $(out)/%.bin: $(out)/%.obj
 	$(if $(wildcard $(PEM)),$(call quiet,extractrw-y,EXTR_RW), \
 			$(call quiet,copyrw-y,COPY_RW))
 	$(call quiet,mv_from_tmp,MV     )
-
-ifeq "$(UC_CHIP)" "MEC1322"
-$(out)/$(PROJECT).spi.bin: $(out)/$(PROJECT).bin
-	$(call quiet,bin_to_mec1322_spi,GEN_SPI)
-endif
 
 flat-y = $(out)/$(PROJECT).RO.flat $(out)/$(PROJECT).RW.flat
 

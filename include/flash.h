@@ -225,4 +225,12 @@ uint32_t flash_get_protect(void);
  */
 int flash_set_protect(uint32_t mask, uint32_t flags);
 
+/**
+ * Return if flash write is in progress.
+ *
+ * Applies durinf RW image software sync
+ */
+int flash_write_in_progress(void);
+
+
 #endif  /* __CROS_EC_FLASH_H */

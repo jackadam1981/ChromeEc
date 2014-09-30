@@ -307,10 +307,43 @@ void system_disable_jump(void)
 #endif
 }
 
+test_mockable enum system_image_copy_t system_get_image_copy_alt(void)
+{
+	const uint8_t *image;
+	int size = 0;
+
+	image = (const uint8_t *)CONFIG_FLASH_BASE + CONFIG_FW_RO_OFF;
+	size = (CONFIG_FW_RO_SIZE > CONFIG_FW_RW_SIZE) ?
+			 CONFIG_FW_RO_SIZE : CONFIG_FW_RW_SIZE;
+
+	if (size <= 0)
+		return 0;
+
+	/*
+	 * Scan backwards looking for 0xea byte, which is by definition the
+	 * last byte of the image.  See ec.lds.S for how this is inserted at
+	 * the end of the image.
+	 */
+	for (size--; size > 0 && image[size] != 0xea; size--)
+		;
+
+
+	if (image[size] == 0xea) {
+		if (image[size-1] == 0xea)
+			return SYSTEM_IMAGE_RO;
+
+		return SYSTEM_IMAGE_RW;
+	}
+
+	return SYSTEM_IMAGE_UNKNOWN;
+}
 test_mockable enum system_image_copy_t system_get_image_copy(void)
 {
 	uintptr_t my_addr = (uintptr_t)system_get_image_copy -
 			    CONFIG_FLASH_BASE;
+
+	if (CONFIG_FW_RO_OFF == CONFIG_FW_RW_OFF)
+		return system_get_image_copy_alt();
 
 	if (my_addr >= CONFIG_FW_RO_OFF &&
 	    my_addr < (CONFIG_FW_RO_OFF + CONFIG_FW_RO_SIZE))
@@ -350,6 +383,10 @@ test_mockable int system_unsafe_to_overwrite(uint32_t offset, uint32_t size)
 	uint32_t r_offset;
 	uint32_t r_size;
 
+#ifndef FLASH_PROTET_SUPPORT
+	return 0;
+#endif
+
 	switch (system_get_image_copy()) {
 	case SYSTEM_IMAGE_RO:
 		r_offset = CONFIG_FW_RO_OFF;
@@ -383,7 +420,7 @@ const char *system_get_image_copy_string(void)
  *
  * @param init_addr	Init address of target image
  */
-static void jump_to_image(uintptr_t init_addr)
+void jump_to_image(uintptr_t init_addr)
 {
 	void (*resetvec)(void) = (void(*)(void))init_addr;
 
@@ -611,7 +648,11 @@ static int handle_pending_reboot(enum ec_reboot_cmd cmd)
 	case EC_REBOOT_JUMP_RO:
 		return system_run_image_copy(SYSTEM_IMAGE_RO);
 	case EC_REBOOT_JUMP_RW:
+#ifndef CONFIG_FLASH_EXT_SPI
 		return system_run_image_copy(SYSTEM_IMAGE_RW);
+#else
+		return system_run_image_copy_ext_spi(SYSTEM_IMAGE_RW);
+#endif
 	case EC_REBOOT_COLD:
 #ifdef HAS_TASK_PDCMD
 		/* Reboot the PD chip as well */
