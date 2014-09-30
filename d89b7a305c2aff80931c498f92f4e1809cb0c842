@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "b00a5412_a175e43a",
+        "filename": "chip/stm32/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-09-30T15:37:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "103ddf9e_bd266bd6",
+      "revId": "d89b7a305c2aff80931c498f92f4e1809cb0c842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0433333_51b3b4e9",
         "filename": "chip/stm32/usb_spi.c",
         "patchSetId": 1
@@ -42,6 +60,24 @@
         "endLine": 116,
         "endChar": 27
       },
+      "revId": "d89b7a305c2aff80931c498f92f4e1809cb0c842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b00a5412_4165e88a",
+        "filename": "chip/stm32/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-09-30T15:37:57Z",
+      "side": 1,
+      "message": "Yup, I mentioned this block in the commit message saying that this wasn\u0027t going to be committed.  I should have added a comment here as well.",
+      "parentUuid": "b0433333_51b3b4e9",
       "revId": "d89b7a305c2aff80931c498f92f4e1809cb0c842",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "d0150830_a2bf2432",
+        "filename": "chip/stm32/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-09-30T15:37:57Z",
+      "side": 1,
+      "message": "Doh, debug printf\u0027s, deleting.",
+      "parentUuid": "103ddf9e_dd7df788",
+      "revId": "d89b7a305c2aff80931c498f92f4e1809cb0c842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0433333_919fdc3d",
         "filename": "chip/stm32/usb_spi.c",
         "patchSetId": 1
@@ -88,6 +142,24 @@
         "endLine": 186,
         "endChar": 29
       },
+      "revId": "d89b7a305c2aff80931c498f92f4e1809cb0c842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "101b206c_161cda0c",
+        "filename": "chip/stm32/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-09-30T15:37:57Z",
+      "side": 1,
+      "message": "More debug cruft I forgot to delete before putting this up, sorry about that.",
+      "parentUuid": "b0433333_919fdc3d",
       "revId": "d89b7a305c2aff80931c498f92f4e1809cb0c842",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
