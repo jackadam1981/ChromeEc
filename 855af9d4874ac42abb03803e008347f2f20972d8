@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "502678b6_168f42ba",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-09-30T20:57:59Z",
+      "side": 1,
+      "message": "We don\u0027t want to do this for every sensor. I think now is the time to generalize this code.\n\nI think we need to add fields to struct motion_sensor_t, representing whether we want to sample the sensor in S3 and lower.\n\nFor example, on samus. The lid accel we don\u0027t need to sample in S3 and lower. The base accel we want to sample in all states. The base gyro we don\u0027t want to sample in S3 and lower.\n\nSo, we can rename, clean this up, and generalize:\n\nS0-\u003eS3:\n- Store settings for all sensors (datarate, range, resolution).\n- Check for sensors which we are not sampling in S3, set datarate to 0, and stop trying to read those sensors.\n\nS3-\u003eS5:\n- Clear stored settings back to sensor default.\n\nS3-\u003eS0:\n- Restore settings.\n- Continue sampling sensors.",
+      "range": {
+        "startLine": 190,
+        "startChar": 2,
+        "endLine": 190,
+        "endChar": 39
+      },
+      "revId": "855af9d4874ac42abb03803e008347f2f20972d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
