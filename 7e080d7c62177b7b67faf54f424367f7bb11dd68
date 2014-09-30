@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b00a5412_216af45c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1915,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-09-30T15:37:41Z",
+      "side": 1,
+      "message": "what if role or mux are negative?",
+      "range": {
+        "startLine": 1914,
+        "startChar": 0,
+        "endLine": 1915,
+        "endChar": 37
+      },
+      "revId": "7e080d7c62177b7b67faf54f424367f7bb11dd68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
