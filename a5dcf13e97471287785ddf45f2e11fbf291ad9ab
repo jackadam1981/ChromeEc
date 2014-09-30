@@ -22,6 +22,29 @@
       "revId": "a5dcf13e97471287785ddf45f2e11fbf291ad9ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "101b206c_2de421ee",
+        "filename": "chip/stm32/keyboard_raw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-09-30T20:08:09Z",
+      "side": 1,
+      "message": "I think this needs to go up in the loop over the outputs and is dependent on j \u003d\u003d GPIO_KB_OUT02.\n\nThat is,\n\n  #ifdef...\n  if (j \u003d\u003d GPIO_KB_OUT02) {\n     bsrr ^\u003d ...\n  }\n  #endif",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 7
+      },
+      "revId": "a5dcf13e97471287785ddf45f2e11fbf291ad9ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
