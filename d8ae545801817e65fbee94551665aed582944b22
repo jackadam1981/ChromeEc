@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "f074cb7c_d54ddcfe",
+        "filename": "board/hoho/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-09-30T01:27:36Z",
+      "side": 1,
+      "message": "USB tyep-C DisplayPort Spec mentions I can insert that into the VDM header || just 0xff00.  I assumed it would be broadcast in the discover svids phase of alternate mode.",
+      "parentUuid": "30bca331_e39afaea",
+      "revId": "d8ae545801817e65fbee94551665aed582944b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30bca331_63bbaaa8",
         "filename": "board/hoho/usb_pd_policy.c",
         "patchSetId": 2
@@ -47,6 +65,24 @@
       "writtenOn": "2014-09-23T18:32:57Z",
       "side": 1,
       "message": "should be const ?",
+      "revId": "d8ae545801817e65fbee94551665aed582944b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f074cb7c_f552d89b",
+        "filename": "board/hoho/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-09-30T01:27:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30bca331_63bbaaa8",
       "revId": "d8ae545801817e65fbee94551665aed582944b22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "f08beba0_46a3e3cd",
+        "filename": "common/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-09-30T01:27:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d01507f5_c9760157",
+      "revId": "d8ae545801817e65fbee94551665aed582944b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d01507f5_a91f45f4",
         "filename": "include/usb_pd.h",
         "patchSetId": 2
@@ -81,6 +135,24 @@
       "writtenOn": "2014-09-23T18:32:57Z",
       "side": 1,
       "message": "I\u0027m not seeing it in HoHo descriptors.",
+      "revId": "d8ae545801817e65fbee94551665aed582944b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f08beba0_46d04303",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-09-30T01:27:36Z",
+      "side": 1,
+      "message": "Later CL with \u0027discover svids\u0027 VDM",
+      "parentUuid": "d01507f5_a91f45f4",
       "revId": "d8ae545801817e65fbee94551665aed582944b22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
