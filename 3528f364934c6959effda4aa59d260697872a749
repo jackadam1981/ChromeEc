@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b066d410_d8654d03",
+        "filename": "board/twinkie/usb_pd_policy.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-01T01:04:53Z",
+      "side": 1,
+      "message": "should be 3000?",
+      "range": {
+        "startLine": 22,
+        "startChar": 19,
+        "endLine": 22,
+        "endChar": 23
+      },
+      "revId": "3528f364934c6959effda4aa59d260697872a749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
