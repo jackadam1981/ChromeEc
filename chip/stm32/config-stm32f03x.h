@@ -27,15 +27,14 @@
 #define CONFIG_FW_WP_RO_OFF     CONFIG_FW_RO_OFF
 #define CONFIG_FW_WP_RO_SIZE    CONFIG_FW_IMAGE_SIZE
 
+#ifdef CONFIG_FLASH_RESERVE_PSTATE
 /*
  * Put pstate after RO to give RW more space and make RO write protect region
  * contiguous.
  */
-#ifdef BOARD_ZINGER
-/* Do not use pstate for zinger. Flash space is limited */
-#define CONFIG_FW_PSTATE_SIZE   0
-#else
 #define CONFIG_FW_PSTATE_SIZE   CONFIG_FLASH_BANK_SIZE
+#else
+#define CONFIG_FW_PSTATE_SIZE   0
 #endif
 #define CONFIG_FW_PSTATE_OFF    (CONFIG_FW_RO_OFF + CONFIG_FW_RO_SIZE)
 
