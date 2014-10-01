@@ -22,6 +22,30 @@
       "revId": "7e080d7c62177b7b67faf54f424367f7bb11dd68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b08df4f4_2601c273",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1915,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-01T00:53:29Z",
+      "side": 1,
+      "message": "looks like they are both defined as unsigned:\n\nstruct ec_params_usb_pd_control {\n\tuint8_t port;\n\tuint8_t role;\n\tuint8_t mux;\n} __packed;",
+      "parentUuid": "b00a5412_216af45c",
+      "range": {
+        "startLine": 1914,
+        "startChar": 0,
+        "endLine": 1915,
+        "endChar": 37
+      },
+      "revId": "7e080d7c62177b7b67faf54f424367f7bb11dd68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
