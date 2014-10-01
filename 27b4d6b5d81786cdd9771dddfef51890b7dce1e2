@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d088a8e4_21e68e71",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-01T10:21:01Z",
+      "side": 1,
+      "message": "How about checking for BOARD_MINIMUFFIN here? This way we won\u0027t miss this if we want to clone Zinger again in the future.",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 5
+      },
+      "revId": "27b4d6b5d81786cdd9771dddfef51890b7dce1e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
