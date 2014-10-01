@@ -356,6 +356,18 @@ DECLARE_HOST_COMMAND(EC_CMD_THERMAL_AUTO_FAN_CTRL,
 		     hc_thermal_auto_fan_ctrl,
 		     EC_VER_MASK(0));
 
+static int hc_pwm_get_num_fans(struct host_cmd_handler_args *args)
+{
+	struct ec_response_pwm_get_num_fans *r = args->response;
+
+	r->num_fans = CONFIG_FANS;
+	args->response_size = sizeof(*r);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_PWM_GET_NUM_FANS,
+		     hc_pwm_get_num_fans,
+		     EC_VER_MASK(0));
 
 /*****************************************************************************/
 /* Hooks */

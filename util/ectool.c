@@ -153,6 +153,8 @@ const char help_str[] =
 	"      Prints current fan RPM\n"
 	"  pwmgetkblight\n"
 	"      Prints current keyboard backlight percent\n"
+	"  pwmgetnumfans\n"
+	"      Prints the number of fans present\n"
 	"  pwmsetfanrpm <targetrpm>\n"
 	"      Set target fan RPM\n"
 	"  pwmsetkblight <percent>\n"
@@ -1416,6 +1418,21 @@ static int print_fan(int idx)
 		printf("Fan %d RPM: %d\n", idx, rv);
 		break;
 	}
+
+	return 0;
+}
+
+int cmd_pwm_get_num_fans(int argc, char *argv[])
+{
+	struct ec_response_pwm_get_num_fans r;
+	int rv;
+
+	rv = ec_command(EC_CMD_PWM_GET_NUM_FANS, 0,
+			NULL, 0, &r, sizeof(r));
+	if (rv < 0)
+		return rv;
+
+	printf("Number of fans = %d\n", r.num_fans);
 
 	return 0;
 }
@@ -4854,6 +4871,7 @@ const struct command commands[] = {
 	{"pstorewrite", cmd_pstore_write},
 	{"pwmgetfanrpm", cmd_pwm_get_fan_rpm},
 	{"pwmgetkblight", cmd_pwm_get_keyboard_backlight},
+	{"pwmgetnumfans", cmd_pwm_get_num_fans},
 	{"pwmsetfanrpm", cmd_pwm_set_fan_rpm},
 	{"pwmsetkblight", cmd_pwm_set_keyboard_backlight},
 	{"readtest", cmd_read_test},

@@ -938,6 +938,12 @@ struct ec_params_pwm_set_fan_duty {
 	uint32_t percent;
 } __packed;
 
+/* Get number of fans */
+#define EC_CMD_PWM_GET_NUM_FANS 0x25
+struct ec_response_pwm_get_num_fans {
+	uint8_t num_fans;
+} __packed;
+
 /*****************************************************************************/
 /*
  * Lightbar commands. This looks worse than it is. Since we only use one HOST
