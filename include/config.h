@@ -505,6 +505,9 @@
 #undef CONFIG_FLASH_WRITE_IDEAL_SIZE
 #undef CONFIG_FLASH_WRITE_SIZE
 
+/* Rerserve flash space for persistent state (PSTATE) */
+#define CONFIG_FLASH_RESERVE_PSTATE
+
 /*****************************************************************************/
 
 /* Include a flashmap in the compiled firmware image */
@@ -1001,6 +1004,9 @@
 
 /* Define to have PD state machine send read info VDM on connection */
 #undef CONFIG_USB_PD_READ_INFO_ON_CONNECT
+
+/* Use comparator module for PD RX interrupt */
+#define CONFIG_USB_PD_RX_COMP_IRQ
 
 /* USB PD transmit uses SPI master */
 #undef CONFIG_USB_PD_TX_USES_SPI_MASTER

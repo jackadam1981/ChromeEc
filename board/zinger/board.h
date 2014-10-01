@@ -19,6 +19,7 @@
 #undef CONFIG_USB_PD_DUAL_ROLE
 #undef CONFIG_USB_PD_INTERNAL_COMP
 #define CONFIG_USB_PD_CUSTOM_VDM
+#undef CONFIG_USB_PD_RX_COMP_IRQ
 #define CONFIG_HW_CRC
 #define CONFIG_SHA1
 #undef CONFIG_WATCHDOG_HELP
@@ -35,6 +36,7 @@
 #undef CONFIG_DEBUG_EXCEPTIONS
 #undef CONFIG_DEBUG_STACK_OVERFLOW
 #undef CONFIG_FLASH
+#undef CONFIG_FLASH_RESERVE_PSTATE
 #undef CONFIG_FMAP
 
 /* debug printf flash footprinf is about 1400 bytes */
@@ -43,7 +45,13 @@
 #define UARTN_BASE STM32_USART_BASE(CONFIG_UART_CONSOLE)
 
 /* USB PD ChromeOS VDM information */
+#if defined(BOARD_ZINGER)
 #define USB_PD_HARDWARE_DEVICE_ID 1
+#elif defined(BOARD_MINIMUFFIN)
+#define USB_PD_HARDWARE_DEVICE_ID 2
+#else
+#error "Board does not have a USB-PD HW Device ID"
+#endif
 
 #ifndef __ASSEMBLER__
 
