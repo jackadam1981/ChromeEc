@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b08df4f4_d5bf5631",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-01T18:17:48Z",
+      "side": 1,
+      "message": "not sure if this is exactly the condition we want to check to go into hibernate. is there a different condition that would be better?",
+      "range": {
+        "startLine": 261,
+        "startChar": 6,
+        "endLine": 261,
+        "endChar": 23
+      },
+      "revId": "4d58c0e33f3d96cfb08aef3f358575b3b7e900e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
