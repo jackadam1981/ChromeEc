@@ -4,82 +4,124 @@
  *
  * Power LED control for Kitty
  */
-
+#include "clock.h"
+#include "console.h"
 #include "gpio.h"
 #include "hooks.h"
-#include "chipset.h"
-#include "led_common.h"
+#include "hwtimer.h"
+#include "power_led.h"
+#include "pwm.h"
+#include "pwm_chip.h"
+#include "registers.h"
+#include "task.h"
+#include "timer.h"
 #include "util.h"
 
-const enum ec_led_id supported_led_ids[] = {EC_LED_ID_POWER_LED};
+#ifdef CONFIG_LED_CUSTOM
 
-const int supported_led_ids_count = ARRAY_SIZE(supported_led_ids);
+/* Define blink time */
+#define LED_LIGHT_TIME		(1000 * MSEC)  /* LED light 1 second */
+#define LED_DARK_TIME		(3000 * MSEC) /* LED dark 3 second */
 
-enum led_color {
-	LED_OFF = 0,
-	LED_WHITE,
-	LED_COLOR_COUNT  /* Number of colors, not a color itself */
-};
+static enum powerled_state led_state = POWERLED_STATE_ON;
+static int power_led_percent = 100;
 
-static int pwr_led_set_color(enum led_color color)
+void powerled_set_state(enum powerled_state new_state)
 {
-	switch (color) {
-	case LED_OFF:
-		gpio_set_level(GPIO_PWR_LED0, 0);
-		break;
-	case LED_WHITE:
-		gpio_set_level(GPIO_PWR_LED0, 1);
-		break;
-	default:
-		return EC_ERROR_UNKNOWN;
+	led_state = new_state;
+	/* Wake up the task */
+	task_wake(TASK_ID_POWERLED);
+}
+
+static void power_led_set_duty(int percent)
+{
+	ASSERT((percent >= 0) && (percent <= 100));
+	power_led_percent = percent;
+	pwm_set_duty(PWM_CH_POWER_LED, percent);
+}
+
+static void power_led_use_pwm(void)
+{
+	pwm_enable(PWM_CH_POWER_LED, 1);
+	power_led_set_duty(100);
+}
+
+static int power_led_step(void)
+{
+	static enum { DARK = 0, LIGHT = 1 } led = DARK;
+	int state_timeout = 0;
+
+	if (led == DARK) {
+		power_led_set_duty(0);
+		state_timeout = LED_DARK_TIME;
+		led = LIGHT;
+	} else {
+		power_led_set_duty(100);
+		state_timeout = LED_LIGHT_TIME;
+		led = DARK;
 	}
+	return state_timeout;
+}
+
+void power_led_task(void)
+{
+	while (1) {
+		int state_timeout = -1;
+
+		switch (led_state) {
+		case POWERLED_STATE_ON:
+			/*
+			 * "ON" implies driving the LED using the PWM with a
+			 * duty duty cycle of 100%. This produces a softer
+			 * brightness than setting the GPIO to solid ON.
+			 */
+			power_led_use_pwm();
+			power_led_set_duty(100);
+			state_timeout = -1;
+			break;
+		case POWERLED_STATE_OFF:
+			/* Reconfigure GPIO to disable the LED */
+			power_led_use_pwm();
+			power_led_set_duty(0);
+			state_timeout = -1;
+			break;
+		case POWERLED_STATE_SUSPEND:
+			/* Drive using PWM with variable duty cycle */
+			power_led_use_pwm();
+			state_timeout = power_led_step();
+			break;
+		default:
+			break;
+		}
+
+		task_wait_event(state_timeout);
+	}
+}
+
+#define CONFIG_CMD_POWERLED
+#ifdef CONFIG_CMD_POWERLED
+static int command_powerled(int argc, char **argv)
+{
+	enum powerled_state state;
+
+	if (argc != 2)
+		return EC_ERROR_INVAL;
+
+	if (!strcasecmp(argv[1], "off"))
+		state = POWERLED_STATE_OFF;
+	else if (!strcasecmp(argv[1], "on"))
+		state = POWERLED_STATE_ON;
+	else if (!strcasecmp(argv[1], "suspend"))
+		state = POWERLED_STATE_SUSPEND;
+	else
+		return EC_ERROR_INVAL;
+
+	powerled_set_state(state);
 	return EC_SUCCESS;
 }
-
-void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
-{
-	brightness_range[EC_LED_COLOR_WHITE] = 1;
-}
-
-int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
-{
-	switch (led_id) {
-	case EC_LED_ID_POWER_LED:
-		if (brightness[EC_LED_COLOR_WHITE] != 0)
-			pwr_led_set_color(LED_WHITE);
-		else
-			pwr_led_set_color(LED_OFF);
-		break;
-	default:
-		return EC_ERROR_UNKNOWN;
-	}
-	return EC_SUCCESS;
-}
-
-static void kitty_led_set_power(void)
-{
-	static int power_second;
-
-	power_second++;
-
-	/* PWR LED behavior:
-	 * Power on: White
-	 * Suspend: White in breeze mode ( 1 sec on/ 3 sec off)
-	 * Power off: OFF
-	 */
-	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
-		pwr_led_set_color(LED_OFF);
-	else if (chipset_in_state(CHIPSET_STATE_ON))
-		pwr_led_set_color(LED_WHITE);
-	else if (chipset_in_state(CHIPSET_STATE_SUSPEND))
-		pwr_led_set_color((power_second & 3) ? LED_OFF : LED_WHITE);
-}
-
-/**  * Called by hook task every 1 sec  */
-static void led_second(void)
-{
-	if (led_auto_control_is_enabled(EC_LED_ID_POWER_LED))
-		kitty_led_set_power();
-}
-DECLARE_HOOK(HOOK_SECOND, led_second, HOOK_PRIO_DEFAULT);
-
+DECLARE_CONSOLE_COMMAND(powerled, command_powerled,
+		"[off | on | suspend]",
+		"Change power LED state",
+		NULL);
+#endif
+#endif
