@@ -21,6 +21,7 @@
 #define LID_DEBOUNCE_US    (30 * MSEC)  /* Debounce time for lid switch */
 
 static int debounced_lid_open;		/* Debounced lid state */
+static int forced_lid_opened;	/* Forced lid opened */
 
 /**
  * Get raw lid switch state.
@@ -96,7 +97,7 @@ static void lid_change_deferred(void)
 	if (new_open)
 		lid_switch_open();
 	else
-		lid_switch_close();
+		forced_lid_opened ? lid_switch_open() : lid_switch_close();
 }
 DECLARE_DEFERRED(lid_change_deferred);
 
@@ -125,3 +126,15 @@ DECLARE_CONSOLE_COMMAND(lidclose, command_lidclose,
 			NULL,
 			"Simulate lid close",
 			NULL);
+
+/**
+ * Host command to enable/disable lid opened.
+ */
+static int hc_force_lid_open(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_force_lid_open *p = args->params;
+	lid_opened = p->enabled;
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FORCE_LID_OPEN, hc_force_lid_open,
+		     EC_VER_MASK(0));
