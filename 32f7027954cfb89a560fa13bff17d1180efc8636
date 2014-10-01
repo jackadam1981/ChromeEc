@@ -36,6 +36,29 @@
     },
     {
       "key": {
+        "uuid": "70ae1c67_c937b503",
+        "filename": "common/lid_switch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-01T23:57:40Z",
+      "side": 1,
+      "message": "This should just do the same thing as the lidopen or lidclose console command",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 43
+      },
+      "revId": "32f7027954cfb89a560fa13bff17d1180efc8636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b066d410_1262bcb1",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -47,6 +70,29 @@
       "writtenOn": "2014-10-01T18:24:05Z",
       "side": 1,
       "message": "*****************************************************************************/\n/* Force lid open command",
+      "revId": "32f7027954cfb89a560fa13bff17d1180efc8636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70ae1c67_a92ef9aa",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1046,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-01T23:57:40Z",
+      "side": 1,
+      "message": "EC_CMD_SET_LID_POSITION\n\nand then take an enum\n\n0 \u003d close\n1 \u003d open",
+      "range": {
+        "startLine": 1046,
+        "startChar": 0,
+        "endLine": 1046,
+        "endChar": 34
+      },
       "revId": "32f7027954cfb89a560fa13bff17d1180efc8636",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
