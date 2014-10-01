@@ -28,6 +28,7 @@
 #include "timer.h"
 #include "util.h"
 
+#ifndef CONFIG_LED_CUSTOM
 #define LED_STATE_TIMEOUT_MIN	(15 * MSEC)  /* Minimum of 15ms per step */
 #define LED_HOLD_TIME		(330 * MSEC) /* Hold for 330ms at min/max */
 #define LED_STEP_PERCENT	4	/* Incremental value of each step */
@@ -165,4 +166,5 @@ DECLARE_CONSOLE_COMMAND(powerled, command_powerled,
 		"[off | on | suspend]",
 		"Change power LED state",
 		NULL);
+#endif
 #endif

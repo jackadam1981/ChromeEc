@@ -597,6 +597,9 @@
 /* Support common LED interface */
 #undef CONFIG_LED_COMMON
 
+/* Support custom LED interface */
+#undef CONFIG_LED_CUSTOM
+
 /* Support for LED driver chip(s) */
 #undef CONFIG_LED_DRIVER_DS2413  /* Maxim DS2413, on one-wire interface */
 #undef CONFIG_LED_DRIVER_LP5562  /* LP5562, on I2C interface */
