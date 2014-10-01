@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b08df4f4_0f3ff1ad",
+        "filename": "board/fruitpie/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-01T19:00:10Z",
+      "side": 1,
+      "message": "Doesn\u0027t have to be this CL, but I think this function and pd_set_max_voltage(), and pd_request_voltage() are all good candidates to move to common/usb_pd_policy.c",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 21
+      },
+      "revId": "f8d8ba48fb1604df67fb4b4b9ecf39c468eca804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b066d410_d8830d91",
         "filename": "board/hoho/usb_pd_policy.c",
         "patchSetId": 4
@@ -18,6 +41,98 @@
         "startChar": 10,
         "endLine": 103,
         "endChar": 28
+      },
+      "revId": "f8d8ba48fb1604df67fb4b4b9ecf39c468eca804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b08df4f4_8f3301eb",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-01T19:00:10Z",
+      "side": 1,
+      "message": "I assume we still need to check SVDM vs. CVDM here?",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 1
+      },
+      "revId": "f8d8ba48fb1604df67fb4b4b9ecf39c468eca804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b08df4f4_2f28b573",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-01T19:00:10Z",
+      "side": 1,
+      "message": "Check SVDM vs. CVDM here too",
+      "range": {
+        "startLine": 355,
+        "startChar": 0,
+        "endLine": 355,
+        "endChar": 1
+      },
+      "revId": "f8d8ba48fb1604df67fb4b4b9ecf39c468eca804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d07188c8_2211b445",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-01T19:00:10Z",
+      "side": 1,
+      "message": "add comment that this is defined in board specific usb_pd_policy.c",
+      "range": {
+        "startLine": 17,
+        "startChar": 28,
+        "endLine": 17,
+        "endChar": 36
+      },
+      "revId": "f8d8ba48fb1604df67fb4b4b9ecf39c468eca804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b066d410_01d030d5",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-01T19:00:10Z",
+      "side": 1,
+      "message": "Is this really necessary? Any board that compiles this file should declare PD_PORT_COUNT in board usb_pd_config.h.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 6
       },
       "revId": "f8d8ba48fb1604df67fb4b4b9ecf39c468eca804",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
