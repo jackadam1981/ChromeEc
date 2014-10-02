@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10632029_d61e22fa",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1107,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-02T22:52:28Z",
+      "side": 1,
+      "message": "%04x ?",
+      "revId": "5953e527151dd4f8ba3a8dabbd35cb0f5d43bde2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30666437_b7df2291",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2646,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-02T22:52:28Z",
+      "side": 1,
+      "message": "please remove the reserved used for alignment.",
+      "revId": "5953e527151dd4f8ba3a8dabbd35cb0f5d43bde2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0fdac73_527994f0",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-02T22:52:28Z",
+      "side": 1,
+      "message": "you can probably create a USB_PD_HW_DEV_ID_BOARD magic macro which automatically concatenates the board name.\nand simplify usb_pd_policy.c\nor maybe not actually due to the minor number business.",
+      "revId": "5953e527151dd4f8ba3a8dabbd35cb0f5d43bde2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
