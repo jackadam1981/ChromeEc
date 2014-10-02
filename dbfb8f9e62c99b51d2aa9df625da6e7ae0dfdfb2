@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70437c81_a76248f7",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-02T01:57:07Z",
+      "side": 1,
+      "message": "shouldn\u0027t this go in the above if statement? if a sensor is on in S5, then it should be still considered initialized.",
+      "range": {
+        "startLine": 170,
+        "startChar": 2,
+        "endLine": 170,
+        "endChar": 41
+      },
+      "revId": "dbfb8f9e62c99b51d2aa9df625da6e7ae0dfdfb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "104a4099_617af2af",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-02T01:57:07Z",
+      "side": 1,
+      "message": "should be S3",
+      "range": {
+        "startLine": 183,
+        "startChar": 18,
+        "endLine": 183,
+        "endChar": 26
+      },
+      "revId": "dbfb8f9e62c99b51d2aa9df625da6e7ae0dfdfb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70437c81_c7415433",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-02T01:57:07Z",
+      "side": 1,
+      "message": "This is just mirroring the chipset state. We shouldn\u0027t have to have a variable in motion_sensor_t for this.\n\nhow about using chipset_in_state() and changing active_flags to match the masks required for that function?",
+      "range": {
+        "startLine": 199,
+        "startChar": 2,
+        "endLine": 199,
+        "endChar": 15
+      },
+      "revId": "dbfb8f9e62c99b51d2aa9df625da6e7ae0dfdfb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70437c81_e721f093",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-02T01:57:07Z",
+      "side": 1,
+      "message": "don\u0027t think this should go in the motion_sense_init() because we might overwrite the value we want when one sensor gets re-initialized. I think this should be set once in motion_sense_task() before the while(1) loop.",
+      "range": {
+        "startLine": 276,
+        "startChar": 1,
+        "endLine": 276,
+        "endChar": 18
+      },
+      "revId": "dbfb8f9e62c99b51d2aa9df625da6e7ae0dfdfb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "104a4099_a17b5aaf",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-02T01:57:07Z",
+      "side": 1,
+      "message": "I don\u0027t think we need range and resolution. We never have to change and restore them.",
+      "range": {
+        "startLine": 278,
+        "startChar": 1,
+        "endLine": 279,
+        "endChar": 49
+      },
+      "revId": "dbfb8f9e62c99b51d2aa9df625da6e7ae0dfdfb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "104a4099_c1102672",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-02T01:57:07Z",
+      "side": 1,
+      "message": "Add comment: \"if sensor is powered and initialized, return match\"",
+      "revId": "dbfb8f9e62c99b51d2aa9df625da6e7ae0dfdfb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
