@@ -43,6 +43,24 @@
     },
     {
       "key": {
+        "uuid": "30666437_d7ad7ef9",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-02T22:49:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0584c71_4e1d538c",
+      "revId": "4d58c0e33f3d96cfb08aef3f358575b3b7e900e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0584c71_8e276bdc",
         "filename": "board/zinger/usb_pd_policy.c",
         "patchSetId": 1
@@ -54,6 +72,24 @@
       "writtenOn": "2014-10-02T18:16:01Z",
       "side": 1,
       "message": "should set this only if the hibernation above is true (SRC_DISCONNECTED)",
+      "revId": "4d58c0e33f3d96cfb08aef3f358575b3b7e900e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30666437_77746afa",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-02T22:49:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0584c71_8e276bdc",
       "revId": "4d58c0e33f3d96cfb08aef3f358575b3b7e900e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
