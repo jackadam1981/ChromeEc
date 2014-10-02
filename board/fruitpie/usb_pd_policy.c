@@ -185,12 +185,12 @@ int pd_vdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 		return pd_custom_vdm(port, cnt, payload, rpayload);
 }
 
-static void svdm_enter_dp_mode(uint32_t mode_caps)
+static void svdm_enter_dp_mode(int port, uint32_t mode_caps)
 {
 	ccprintf("Entering mode w/ vdo = %08x\n", mode_caps);
 }
 
-static void svdm_exit_dp_mode(void)
+static void svdm_exit_dp_mode(int port)
 {
 	ccprintf("Exiting mode\n");
 	/* return to safe config */
