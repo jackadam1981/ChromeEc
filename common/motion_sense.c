@@ -428,28 +428,31 @@ static struct motion_sensor_t
 	*host_sensor_id_to_motion_sensor(int host_id)
 {
 	int i;
+	struct motion_sensor_t *s = NULL;
 	struct motion_sensor_t *sensor = NULL;
 
 	for (i = 0; i < motion_sensor_count; ++i) {
 
-		if ((LOCATION_BASE == sensor->location)
-			&& (SENSOR_ACCELEROMETER == sensor->type)
+		s = &motion_sensors[i];
+
+		if ((LOCATION_BASE == s->location)
+			&& (SENSOR_ACCELEROMETER == s->type)
 			&& (host_id == EC_MOTION_SENSOR_ACCEL_BASE)) {
-			sensor = &motion_sensors[i];
+			sensor = s;
 			break;
 		}
 
-		if ((LOCATION_LID == sensor->location)
-			&& (SENSOR_ACCELEROMETER == sensor->type)
+		if ((LOCATION_LID == s->location)
+			&& (SENSOR_ACCELEROMETER == s->type)
 			&& (host_id == EC_MOTION_SENSOR_ACCEL_LID)) {
-			sensor = &motion_sensors[i];
+			sensor = s;
 			break;
 		}
 
-		if ((LOCATION_BASE == sensor->location)
-			&& (SENSOR_GYRO == sensor->type)
+		if ((LOCATION_BASE == s->location)
+			&& (SENSOR_GYRO == s->type)
 			&& (host_id == EC_MOTION_SENSOR_GYRO)) {
-			sensor = &motion_sensors[i];
+			sensor = s;
 			break;
 		}
 	}
