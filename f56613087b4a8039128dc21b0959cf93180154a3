@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "104a4099_1b7f1bda",
+        "filename": "chip/stm32/config-stm32f03x.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-02T00:15:09Z",
+      "side": 1,
+      "message": "This wasn\u0027t working because this file gets included before the board.h file which was attempting to undefine this. Therefore the RO size was only 12kB, and when it tried to apply this on top of ToT it went just over the limit.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 34
+      },
+      "revId": "f56613087b4a8039128dc21b0959cf93180154a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
