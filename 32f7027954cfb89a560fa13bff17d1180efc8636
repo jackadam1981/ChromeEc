@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d0342809_612cb6c0",
+        "filename": "common/lid_switch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1003228
+      },
+      "writtenOn": "2014-10-02T01:13:36Z",
+      "side": 1,
+      "message": "Got it",
+      "parentUuid": "b066d410_b25f502f",
+      "revId": "32f7027954cfb89a560fa13bff17d1180efc8636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b08df4f4_d5d67679",
         "filename": "common/lid_switch.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-10-01T18:24:05Z",
       "side": 1,
       "message": "hc_force_lid_open",
+      "revId": "32f7027954cfb89a560fa13bff17d1180efc8636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0342809_c1102272",
+        "filename": "common/lid_switch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1003228
+      },
+      "writtenOn": "2014-10-02T01:13:36Z",
+      "side": 1,
+      "message": "Got it",
+      "parentUuid": "b08df4f4_d5d67679",
       "revId": "32f7027954cfb89a560fa13bff17d1180efc8636",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -77,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "903e30e9_1fda632c",
+        "filename": "common/lid_switch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1003228
+      },
+      "writtenOn": "2014-10-02T01:13:36Z",
+      "side": 1,
+      "message": "Yes, this is for warm reboot  keeping status (lid open).",
+      "parentUuid": "30a8245b_c70000a0",
+      "revId": "32f7027954cfb89a560fa13bff17d1180efc8636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b066d410_1262bcb1",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -88,6 +142,24 @@
       "writtenOn": "2014-10-01T18:24:05Z",
       "side": 1,
       "message": "*****************************************************************************/\n/* Force lid open command",
+      "revId": "32f7027954cfb89a560fa13bff17d1180efc8636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "903e30e9_bfc8975f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1044,
+      "author": {
+        "id": 1003228
+      },
+      "writtenOn": "2014-10-02T01:13:36Z",
+      "side": 1,
+      "message": "Got it.",
+      "parentUuid": "b066d410_1262bcb1",
       "revId": "32f7027954cfb89a560fa13bff17d1180efc8636",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -117,6 +189,24 @@
     },
     {
       "key": {
+        "uuid": "d0342809_a10d1e58",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1046,
+      "author": {
+        "id": 1003228
+      },
+      "writtenOn": "2014-10-02T01:13:36Z",
+      "side": 1,
+      "message": "Should I still change this?\nI think this command works to keep lid open status. Not for set lid position.",
+      "parentUuid": "70ae1c67_a92ef9aa",
+      "revId": "32f7027954cfb89a560fa13bff17d1180efc8636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d07188c8_08ddaf97",
         "filename": "util/ectool.c",
         "patchSetId": 1
@@ -128,6 +218,24 @@
       "writtenOn": "2014-10-01T18:24:05Z",
       "side": 1,
       "message": "Forces the lid switch to open position",
+      "revId": "32f7027954cfb89a560fa13bff17d1180efc8636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "903e30e9_9fc5d347",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1003228
+      },
+      "writtenOn": "2014-10-02T01:13:36Z",
+      "side": 1,
+      "message": "Got it.",
+      "parentUuid": "d07188c8_08ddaf97",
       "revId": "32f7027954cfb89a560fa13bff17d1180efc8636",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
