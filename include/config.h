@@ -1011,8 +1011,8 @@
 /* Define if using internal comparator for PD receive */
 #undef CONFIG_USB_PD_INTERNAL_COMP
 
-/* Define to have PD state machine send read info VDM on connection */
-#undef CONFIG_USB_PD_READ_INFO_ON_CONNECT
+/* Simple DFP, such as power adapter, will send info CVDM on connect */
+#undef CONFIG_USB_PD_SIMPLE_DFP
 
 /* USB PD transmit uses SPI master */
 #undef CONFIG_USB_PD_TX_USES_SPI_MASTER
