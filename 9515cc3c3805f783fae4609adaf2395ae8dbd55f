@@ -46,6 +46,30 @@
       "revId": "9515cc3c3805f783fae4609adaf2395ae8dbd55f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70437c81_8d4c8d8e",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-02T14:49:26Z",
+      "side": 1,
+      "message": "just change the check below to:\n\nif (i\u003d\u003dmotion_sensor_count)\n  return NULL;",
+      "parentUuid": "50403875_5d519b23",
+      "range": {
+        "startLine": 441,
+        "startChar": 3,
+        "endLine": 441,
+        "endChar": 9
+      },
+      "revId": "9515cc3c3805f783fae4609adaf2395ae8dbd55f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
