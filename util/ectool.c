@@ -1474,27 +1474,78 @@ int cmd_pwm_get_fan_rpm(int argc, char *argv[])
 
 int cmd_pwm_set_fan_rpm(int argc, char *argv[])
 {
-	struct ec_params_pwm_set_fan_target_rpm p;
+	struct ec_params_pwm_set_fan_target_rpm_v1 p_v1;
 	char *e;
-	int rv;
+	int rv, idx, num_fans;
+	int cmdver = 1;
 
-	if (argc != 2) {
-		fprintf(stderr,
-			"Usage: %s <targetrpm>\n", argv[0]);
+	if (!ec_cmd_version_supported(EC_CMD_PWM_SET_FAN_TARGET_RPM, cmdver)) {
+		struct ec_params_pwm_set_fan_target_rpm p;
+
+		/* Fall back to command version 0 command */
+		cmdver = 0;
+
+		if (argc != 2) {
+			fprintf(stderr,
+				"Usage: %s <targetrpm>\n", argv[0]);
+			return -1;
+		}
+		p.rpm = strtol(argv[1], &e, 0);
+		if (e && *e) {
+			fprintf(stderr, "Bad RPM.\n");
+			return -1;
+		}
+
+		rv = ec_command(EC_CMD_PWM_SET_FAN_TARGET_RPM, cmdver,
+				&p, sizeof(p), NULL, 0);
+		if (rv < 0)
+			return rv;
+
+		printf("Fan target RPM set.\n");
+		return 0;
+	}
+
+	if (argc > 3 || (argc == 2 && !strcmp(argv[1], "help")) || argc == 1) {
+		printf("Usage: %s [idx|all] <targetrpm>\n", argv[0]);
+		printf("'pwmfansetrpm 0 3000' - Set fan 0 RPM to 3000\n");
+		printf("'pwmfansetrpm all 3000' - Set all fans RPM to 3000\n");
+		printf("'pwmfansetrpm 3000' - Set all fans RPM to 3000\n");
 		return -1;
 	}
-	p.rpm = strtol(argv[1], &e, 0);
+
+	num_fans = get_num_fans();
+	p_v1.rpm = strtol(argv[argc - 1], &e, 0);
 	if (e && *e) {
 		fprintf(stderr, "Bad RPM.\n");
 		return -1;
 	}
 
-	rv = ec_command(EC_CMD_PWM_SET_FAN_TARGET_RPM, 0,
-			&p, sizeof(p), NULL, 0);
-	if (rv < 0)
-		return rv;
+	if (argc == 2 || (argc == 3 && !strcmp(argv[1], "all"))) {
+		for (idx = 0; idx < num_fans; idx++) {
+			p_v1.fan_idx = idx;
+			rv = ec_command(EC_CMD_PWM_SET_FAN_TARGET_RPM, cmdver,
+					&p_v1, sizeof(p_v1), NULL, 0);
+			if (rv < 0)
+				return rv;
 
-	printf("Fan target RPM set.\n");
+			printf("Fan %d target RPM set.\n", idx);
+		}
+
+	} else {
+		p_v1.fan_idx = strtol(argv[1], &e, 0);
+		if ((e && *e) || (p_v1.fan_idx >= num_fans)) {
+			fprintf(stderr, "Bad fan index.\n");
+			return -1;
+		}
+
+		rv = ec_command(EC_CMD_PWM_SET_FAN_TARGET_RPM, cmdver,
+				&p_v1, sizeof(p_v1), NULL, 0);
+		if (rv < 0)
+			return rv;
+
+		printf("Fan %d target RPM set.\n", p_v1.fan_idx);
+	}
+
 	return 0;
 }
 

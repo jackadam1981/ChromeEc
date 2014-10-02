@@ -919,6 +919,11 @@ struct ec_params_pwm_set_fan_target_rpm {
 	uint32_t rpm;
 } __packed;
 
+struct ec_params_pwm_set_fan_target_rpm_v1 {
+	uint32_t rpm;
+	uint8_t fan_idx;
+} __packed;
+
 /* Get keyboard backlight */
 #define EC_CMD_PWM_GET_KEYBOARD_BACKLIGHT 0x22
 
