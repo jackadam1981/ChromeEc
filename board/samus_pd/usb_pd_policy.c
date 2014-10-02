@@ -158,6 +158,12 @@ static void pd_send_host_event(void)
 }
 
 /* ----------------- Vendor Defined Messages ------------------ */
+const struct svdm_response svdm_rsp = {
+	.identity = NULL,
+	.svids = NULL,
+	.modes = NULL,
+};
+
 static int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 			 uint32_t **rpayload)
 {
@@ -208,6 +214,44 @@ int pd_vdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 		return pd_custom_vdm(port, cnt, payload, rpayload);
 }
 
+static void svdm_enter_dp_mode(int port, uint32_t mode_caps)
+{
+	board_set_usb_mux(port, TYPEC_MUX_DP, pd_get_polarity(port));
+}
+
+static void svdm_exit_dp_mode(int port)
+{
+	board_set_usb_mux(port, TYPEC_MUX_NONE, pd_get_polarity(port));
+}
+
+static struct svdm_amode_data supported_modes[] = {
+	{
+		.svid = 0xff01,
+		.enter = &svdm_enter_dp_mode,
+		.exit = &svdm_exit_dp_mode,
+	},
+};
+
+void pd_dfp_choose_modes(struct pd_policy *pe)
+{
+	int i, j;
+	struct svdm_amode_data *modep;
+	pe->amode_cnt = sizeof(supported_modes) / sizeof(struct
+							 svdm_amode_data);
+	pe->amodes = modep = supported_modes;
+	for (j = 0; j < pe->amode_cnt; j++) {
+		for (i = 0; i < pe->svid_cnt; i++) {
+			if (pe->svids[i].svid == modep->svid) {
+				/* TODO(tbroch) need more elaborate mode
+				   resolution */
+				modep->mode_caps = &pe->svids[i].mode_vdo[0];
+				modep->amode = dfp_amode1;
+				break;
+			}
+		}
+		modep++;
+	}
+}
 /****************************************************************************/
 /* Console commands */
 static int command_ec_int(int argc, char **argv)

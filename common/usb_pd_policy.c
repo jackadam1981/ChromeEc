@@ -106,7 +106,7 @@ static int dfp_enter_modes(int port, uint32_t *payload)
 	if (modep->amode == dfp_amode_none)
 		return 0;
 
-	modep->enter(*modep->mode_caps);
+	modep->enter(port, *modep->mode_caps);
 	payload[0] = VDO(modep->svid, 1,
 			 CMD_ENTER_MODE |
 			 VDO_OPOS(modep->amode));
@@ -124,7 +124,7 @@ int pd_exit_modes(int port, uint32_t *payload)
 	if (modep->amode == dfp_amode_none)
 		return 1;
 
-	modep->exit();
+	modep->exit(port);
 	payload[0] = VDO(modep->svid, 1,
 			 CMD_EXIT_MODE |
 			 VDO_OPOS(modep->amode));

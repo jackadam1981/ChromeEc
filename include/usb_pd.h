@@ -138,8 +138,8 @@ struct svdm_amode_data {
 	uint16_t svid;
 	enum dfp_amode amode;
 	uint32_t *mode_caps;
-	void (*enter)(uint32_t mode_caps);
-	void (*exit)(void);
+	void (*enter)(int port, uint32_t mode_caps);
+	void (*exit)(int port);
 };
 
 /* Policy structure for driving alternate mode */
