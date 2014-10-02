@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "104a4099_de5be178",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-02T01:30:32Z",
+      "side": 1,
+      "message": "seems like we don\u0027t need two motion_sensor_t pointers. if we get rid of setting \"sensor \u003d s\" and just break from the for loop, then \"s\" will point to the object we are interested in and we don\u0027t need \"sensor\" var.",
+      "range": {
+        "startLine": 441,
+        "startChar": 3,
+        "endLine": 441,
+        "endChar": 9
+      },
+      "revId": "9515cc3c3805f783fae4609adaf2395ae8dbd55f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
