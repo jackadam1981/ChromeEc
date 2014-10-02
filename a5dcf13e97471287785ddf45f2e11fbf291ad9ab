@@ -45,6 +45,30 @@
       "revId": "a5dcf13e97471287785ddf45f2e11fbf291ad9ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70437c81_07a7bc49",
+        "filename": "chip/stm32/keyboard_raw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2014-10-02T02:38:59Z",
+      "side": 1,
+      "message": "Doing it that way would require us to still check if any of the COL2 bits are set or reset, because if it\u0027s not either we will xor both and end up with the case where we\u0027re both setting and resetting the pin.\n\nI think we should leave it like that, it\u0027s cleaner this way.",
+      "parentUuid": "101b206c_2de421ee",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 7
+      },
+      "revId": "a5dcf13e97471287785ddf45f2e11fbf291ad9ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
