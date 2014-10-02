@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0584c71_5d706ffc",
+        "filename": "board/hoho/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-02T15:13:44Z",
+      "side": 1,
+      "message": "is each board going to have a different HW ID? If so we should collect them all in one place (usb_pd.h?) so that it\u0027s easier to see the full list and prevent collisions.",
+      "range": {
+        "startLine": 33,
+        "startChar": 8,
+        "endLine": 33,
+        "endChar": 36
+      },
+      "revId": "fb8b09f7e9014587cf3f0d22f164958204819505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0584c71_9d51675d",
+        "filename": "board/hoho/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-02T15:13:44Z",
+      "side": 1,
+      "message": "is this needed?",
+      "range": {
+        "startLine": 17,
+        "startChar": 10,
+        "endLine": 17,
+        "endChar": 17
+      },
+      "revId": "fb8b09f7e9014587cf3f0d22f164958204819505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70437c81_4d07250b",
+        "filename": "board/hoho/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-02T15:13:44Z",
+      "side": 1,
+      "message": "SW_ID?",
+      "range": {
+        "startLine": 103,
+        "startChar": 10,
+        "endLine": 103,
+        "endChar": 28
+      },
+      "revId": "fb8b09f7e9014587cf3f0d22f164958204819505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70437c81_0d251da0",
+        "filename": "board/hoho/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-02T15:13:44Z",
+      "side": 1,
+      "message": "Do we need to check which mode the DFP has selected? or are we just assuming this is the correct mode because we only return one mode above?",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 1
+      },
+      "revId": "fb8b09f7e9014587cf3f0d22f164958204819505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0584c71_5d47cf97",
+        "filename": "board/hoho/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-02T15:13:44Z",
+      "side": 1,
+      "message": "when we receive a hard reset command we need to call this",
+      "range": {
+        "startLine": 145,
+        "startChar": 11,
+        "endLine": 145,
+        "endChar": 25
+      },
+      "revId": "fb8b09f7e9014587cf3f0d22f164958204819505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
