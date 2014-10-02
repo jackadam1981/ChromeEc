@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "104a4099_bb4b8722",
+        "filename": "board/fruitpie/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-02T00:52:20Z",
+      "side": 1,
+      "message": "later for sure.  There\u0027s definitely some little idiosyncrasies pd_request_voltage for plankton \u0026 zinger that may rule out refactor there.",
+      "parentUuid": "b08df4f4_0f3ff1ad",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 21
+      },
+      "revId": "f8d8ba48fb1604df67fb4b4b9ecf39c468eca804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b066d410_d8830d91",
         "filename": "board/hoho/usb_pd_policy.c",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2014-10-01T02:03:12Z",
       "side": 1,
       "message": "I think this field is only 4 bits, so doing ver_get_numcommits() isn\u0027t very helpful. we should probably just have a macro for SW version number like we do for HW_ID\n\nBigger question. How does this AMA response fit in with our custom VDM to get a device ID and SW version?",
+      "range": {
+        "startLine": 103,
+        "startChar": 10,
+        "endLine": 103,
+        "endChar": 28
+      },
+      "revId": "f8d8ba48fb1604df67fb4b4b9ecf39c468eca804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70437c81_04605aee",
+        "filename": "board/hoho/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-02T00:52:20Z",
+      "side": 1,
+      "message": "Done (CONFIG_USB_PD_IDENTITY_SW_ID\n\nTo big question ... not sure what purpose of these fields are meant to be.",
+      "parentUuid": "b066d410_d8830d91",
       "range": {
         "startLine": 103,
         "startChar": 10,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "70437c81_e421ee93",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-02T00:52:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b08df4f4_8f3301eb",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 1
+      },
+      "revId": "f8d8ba48fb1604df67fb4b4b9ecf39c468eca804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b08df4f4_2f28b573",
         "filename": "board/zinger/usb_pd_policy.c",
         "patchSetId": 4
@@ -82,6 +154,30 @@
       "writtenOn": "2014-10-01T19:00:10Z",
       "side": 1,
       "message": "Check SVDM vs. CVDM here too",
+      "range": {
+        "startLine": 355,
+        "startChar": 0,
+        "endLine": 355,
+        "endChar": 1
+      },
+      "revId": "f8d8ba48fb1604df67fb4b4b9ecf39c468eca804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "104a4099_1bfc3b1b",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-02T00:52:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b08df4f4_2f28b573",
       "range": {
         "startLine": 355,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "b0397403_a624124e",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-02T00:52:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d07188c8_2211b445",
+      "range": {
+        "startLine": 17,
+        "startChar": 28,
+        "endLine": 17,
+        "endChar": 36
+      },
+      "revId": "f8d8ba48fb1604df67fb4b4b9ecf39c468eca804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b066d410_01d030d5",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 4
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "b0397403_06221e40",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-02T00:52:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b066d410_01d030d5",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 6
+      },
+      "revId": "f8d8ba48fb1604df67fb4b4b9ecf39c468eca804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b066d410_3841e9d2",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 4
@@ -151,6 +295,30 @@
       "writtenOn": "2014-10-01T02:03:12Z",
       "side": 1,
       "message": "this line not doing anything",
+      "range": {
+        "startLine": 1055,
+        "startChar": 1,
+        "endLine": 1055,
+        "endChar": 26
+      },
+      "revId": "f8d8ba48fb1604df67fb4b4b9ecf39c468eca804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "104a4099_fb2b4feb",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-02T00:52:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b066d410_3841e9d2",
       "range": {
         "startLine": 1055,
         "startChar": 1,
