@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "30666437_3b12d8fb",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-10-03T17:08:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "900c7079_f297e61c",
+      "revId": "e9d7d8a4f77c6477ba05902bbf681ee19a62ce99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30666437_a90d0558",
         "filename": "include/motion_sense.h",
         "patchSetId": 12
@@ -36,6 +54,24 @@
         "endLine": 120,
         "endChar": 10
       },
+      "revId": "e9d7d8a4f77c6477ba05902bbf681ee19a62ce99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30666437_bb24284e",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-10-03T17:08:46Z",
+      "side": 1,
+      "message": "Used for re-store S3 or S5 configurations.",
+      "parentUuid": "30666437_a90d0558",
       "revId": "e9d7d8a4f77c6477ba05902bbf681ee19a62ce99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
