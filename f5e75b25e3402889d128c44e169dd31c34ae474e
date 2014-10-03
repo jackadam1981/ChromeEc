@@ -22,6 +22,24 @@
       "revId": "f5e75b25e3402889d128c44e169dd31c34ae474e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30666437_0fda36f6",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-10-03T20:33:50Z",
+      "side": 1,
+      "message": "There is no API to change the resolution from AP.\nI think, it is ok to support odr and range for now.",
+      "parentUuid": "70f1bca1_d485742c",
+      "revId": "f5e75b25e3402889d128c44e169dd31c34ae474e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
