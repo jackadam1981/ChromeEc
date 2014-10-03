@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0fdac73_75e64272",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-03T00:11:34Z",
+      "side": 1,
+      "message": "this should move to chipset_suspend()",
+      "range": {
+        "startLine": 163,
+        "startChar": 1,
+        "endLine": 163,
+        "endChar": 50
+      },
+      "revId": "1f7922c044e4d2b0b4081fdf75e1781aad7ca653",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0fdac73_f587d26a",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-03T00:11:34Z",
+      "side": 1,
+      "message": "I think we need to add sensor-\u003estate \u003d SENSOR_NOT_INITIALIZED to this if statement. Otherwise it won\u0027t re-initialize the sensor when we come out of S5.",
+      "range": {
+        "startLine": 171,
+        "startChar": 42,
+        "endLine": 171,
+        "endChar": 44
+      },
+      "revId": "1f7922c044e4d2b0b4081fdf75e1781aad7ca653",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
