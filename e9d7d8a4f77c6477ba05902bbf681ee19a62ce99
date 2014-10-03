@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "900c7079_f297e61c",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-03T15:02:30Z",
+      "side": 1,
+      "message": "I still think something is off with these hooks. The way it is now, if you shutdown (go to S5) and then boot the AP (S0), then the sensors will still have the same ODR, range, and res as they had last boot. This doesn\u0027t make sense, I think the goals here should be:\n- every time the AP boots, we should have the same default sensor settings.\n- if the AP goes to suspend (S3) and wakes back up (S0) the settings shall not have changed.\n- in S3, and in S5, only sample specific sensors that are needed.\n\nThe last two goals are currently met, but not the first.\n\nI think you can fix it by changing clock_chipset_shutdown() above to:\nfor (i \u003d 0; i \u003c motion_sensor_count; i++) {\n\tsensor \u003d \u0026motion_sensors[i];\n\tsensor-\u003eactive \u003d SENSOR_ACTIVE_S5;\n\tsensor-\u003estate \u003d SENSOR_NOT_INITIALIZED;\n\tsensor-\u003eodr \u003d sensor-\u003edefault_odr;\n\n\tif ((sensor-\u003estate \u003d\u003d SENSOR_INITIALIZED) \u0026\u0026\n\t\t!(sensor-\u003eactive_mask \u0026 sensor-\u003eactive)) {\n\t\tsensor-\u003edrv-\u003eset_data_rate(sensor, 0, 0);\t\t\n\t}\n}",
+      "revId": "e9d7d8a4f77c6477ba05902bbf681ee19a62ce99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30666437_a90d0558",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-03T15:02:30Z",
+      "side": 1,
+      "message": "not sure why you added back range variable. doesn\u0027t seem that we use anything other than the default_range.",
+      "range": {
+        "startLine": 120,
+        "startChar": 5,
+        "endLine": 120,
+        "endChar": 10
+      },
+      "revId": "e9d7d8a4f77c6477ba05902bbf681ee19a62ce99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
