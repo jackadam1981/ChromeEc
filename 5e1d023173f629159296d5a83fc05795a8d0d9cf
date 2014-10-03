@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10632029_3c8ad5fb",
+        "filename": "common/lid_switch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-03T01:00:41Z",
+      "side": 1,
+      "message": "forced_lid_open",
+      "range": {
+        "startLine": 24,
+        "startChar": 11,
+        "endLine": 24,
+        "endChar": 28
+      },
+      "revId": "5e1d023173f629159296d5a83fc05795a8d0d9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10632029_3cfc9584",
+        "filename": "common/lid_switch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-03T01:00:41Z",
+      "side": 1,
+      "message": "return (forced_lid_open || gpio_get_level(GPIO_LID_OPEN) ? 1 : 0;\n\nThat is, if we\u0027re forcing the lid open, we never look at the GPIO.",
+      "range": {
+        "startLine": 33,
+        "startChar": 8,
+        "endLine": 33,
+        "endChar": 37
+      },
+      "revId": "5e1d023173f629159296d5a83fc05795a8d0d9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10632029_7cad6d7c",
+        "filename": "common/lid_switch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-03T01:00:41Z",
+      "side": 1,
+      "message": "Don\u0027t need this with the change above.",
+      "range": {
+        "startLine": 100,
+        "startChar": 2,
+        "endLine": 100,
+        "endChar": 60
+      },
+      "revId": "5e1d023173f629159296d5a83fc05795a8d0d9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10632029_bcb6e5ce",
+        "filename": "common/lid_switch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-03T01:00:41Z",
+      "side": 1,
+      "message": "You\u0027re forcing a lid state change but not going through the state transitions for that.  So I think you need to do:\n\n  /* Override lid open if necessary */\n  forced_lid_open \u003d p-\u003eenabled ? 1 : 0;\n\n  /* Make this take effect immediately; no debounce time */\n  hook_call_deferred(lid_change_deferred, 0);\n\nThat way, you\u0027re effectively overriding the lid switch GPIO, and allowing everything to remain in a consistent state.\n\nAnd if you send the host command to UN-override the lid open state, it\u0027ll cause a lid-close transition if the lid really is closed.",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 25
+      },
+      "revId": "5e1d023173f629159296d5a83fc05795a8d0d9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
