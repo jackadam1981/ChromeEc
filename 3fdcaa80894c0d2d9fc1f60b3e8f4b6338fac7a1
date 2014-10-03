@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "900c7079_cf179d64",
+        "filename": "common/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-10-03T02:03:01Z",
+      "side": 1,
+      "message": "Yes. Lots of processes can talk to the EC. We can\u0027t trust that they\u0027ll only ever use ectool to do it.",
+      "parentUuid": "30666437_9d07a785",
+      "revId": "3fdcaa80894c0d2d9fc1f60b3e8f4b6338fac7a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0fdac73_f22b68eb",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -83,6 +101,24 @@
       "side": 1,
       "message": "Should I just drop support for the \"all\" version. I\u0027ll support just the following version:\n\npwmfansetrpm [fan_idx] rpm\n\nThat way I can just differentiate based on the number of arguments whether to call v0 or v1.",
       "parentUuid": "10632029_76b3ce92",
+      "revId": "3fdcaa80894c0d2d9fc1f60b3e8f4b6338fac7a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0fdac73_bb09bb54",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1526,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-10-03T02:03:01Z",
+      "side": 1,
+      "message": "That would work too. I don\u0027t have a strong preference.",
+      "parentUuid": "10632029_7c11ed44",
       "revId": "3fdcaa80894c0d2d9fc1f60b3e8f4b6338fac7a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
