@@ -1034,6 +1034,9 @@
 /*****************************************************************************/
 /* USB interfaces config */
 
+/* USB Billboard interface */
+#undef CONFIG_USB_BB
+
 /* USB mass storage interface */
 #undef CONFIG_USB_MS
 

@@ -103,6 +103,7 @@ struct usb_endpoint_descriptor {
 #define USB_CLASS_CSCID                   0x0b
 #define USB_CLASS_CONTENT_SEC             0x0d
 #define USB_CLASS_VIDEO                   0x0e
+#define USB_CLASS_BILLBOARD               0x11
 #define USB_CLASS_WIRELESS_CONTROLLER     0xe0
 #define USB_CLASS_MISC                    0xef
 #define USB_CLASS_APP_SPEC                0xfe
