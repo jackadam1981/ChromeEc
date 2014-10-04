@@ -1044,6 +1044,9 @@
 /* Support for USB type-c vconn. Not needed for captive cables. */
 #undef CONFIG_USBC_VCONN
 
+/* USB Binary device Object Store support */
+#undef CONFIG_USB_BOS
+
 /*****************************************************************************/
 /* USB interfaces config */
 
