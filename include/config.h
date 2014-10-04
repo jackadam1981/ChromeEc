@@ -1034,9 +1034,10 @@
 /* USB Binary device Object Store support */
 #undef CONFIG_USB_BOS
 
+/* USB Binary device Object Store support */
+#undef CONFIG_USB_BOS
 /*****************************************************************************/
 /* USB interfaces config */
-
 /* USB mass storage interface */
 #undef CONFIG_USB_MS
 
