@@ -158,6 +158,7 @@ enum pd_errors {
 #define VDO_INFO_SW_DBG_VER(x)   (((x) >> 1) & 0x7fff)
 #define VDO_INFO_IS_RW(x)        ((x) & 1)
 
+#define USB_GOOGLE_TYPEC_URL "www.google.com/chrome/devices/typec"
 /* USB Vendor ID assigned to Google Inc. */
 #define USB_VID_GOOGLE 0x18d1
 

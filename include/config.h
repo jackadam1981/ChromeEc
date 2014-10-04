@@ -1036,7 +1036,6 @@
 
 /*****************************************************************************/
 /* USB interfaces config */
-
 /* USB mass storage interface */
 #undef CONFIG_USB_MS
 
