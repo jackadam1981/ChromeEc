@@ -292,6 +292,14 @@ DECLARE_IRQ(STM32_IRQ_DMA_CHANNEL_4_7, dma_event_interrupt_channel_4_7, 3);
 
 #else /* !CHIP_FAMILY_STM32F0 */
 
+void dma_event_interrupt_channel_3(void)
+{
+	dma_clear_isr(STM32_DMAC_CH3);
+	if (id[STM32_DMAC_CH3] != TASK_ID_INVALID)
+		task_wake(id[STM32_DMAC_CH3]);
+}
+DECLARE_IRQ(STM32_IRQ_DMA_CHANNEL_3, dma_event_interrupt_channel_3, 3);
+
 void dma_event_interrupt_channel_4(void)
 {
 	dma_clear_isr(STM32_DMAC_CH4);

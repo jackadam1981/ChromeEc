@@ -17,15 +17,17 @@
 #include "util.h"
 
 /* Console USART index */
-#define UARTN      CONFIG_UART_CONSOLE
-#define UARTN_BASE STM32_USART_BASE(CONFIG_UART_CONSOLE)
+#define UARTN           CONFIG_UART_CONSOLE
+#define UARTN_BASE      STM32_USART_BASE(CONFIG_UART_CONSOLE)
+#define UART_TX_DMAC(x) CONCAT3(STM32_DMAC_USART, x, _TX)
+#define UART_RX_DMAC(x) CONCAT3(STM32_DMAC_USART, x, _RX)
 
 #ifdef CONFIG_UART_TX_DMA
 #define UART_TX_INT_ENABLE STM32_USART_CR1_TCIE
 
 /* DMA channel options; assumes UART1 */
 static const struct dma_option dma_tx_option = {
-	STM32_DMAC_USART1_TX, (void *)&STM32_USART_TDR(UARTN_BASE),
+	UART_TX_DMAC(UARTN), (void *)&STM32_USART_TDR(UARTN_BASE),
 	STM32_DMA_CCR_MSIZE_8_BIT | STM32_DMA_CCR_PSIZE_8_BIT
 };
 
@@ -36,7 +38,7 @@ static const struct dma_option dma_tx_option = {
 #ifdef CONFIG_UART_RX_DMA
 /* DMA channel options; assumes UART1 */
 static const struct dma_option dma_rx_option = {
-	STM32_DMAC_USART1_RX, (void *)&STM32_USART_RDR(UARTN_BASE),
+	UART_RX_DMAC(UARTN), (void *)&STM32_USART_RDR(UARTN_BASE),
 	STM32_DMA_CCR_MSIZE_8_BIT | STM32_DMA_CCR_PSIZE_8_BIT |
 	STM32_DMA_CCR_CIRC
 };

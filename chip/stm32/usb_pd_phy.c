@@ -511,10 +511,16 @@ void pd_hw_init(int port)
 	/* Auto-reload value : 600000 Khz overflow */
 	phy->tim_tx->arr = TX_CLOCK_DIV;
 	/* 50% duty cycle on the output */
-	phy->tim_tx->ccr[1] = phy->tim_tx->arr / 2;
+	phy->tim_tx->ccr[TIM_TX_CCR(port)] = phy->tim_tx->arr / 2;
 	/* Timer CH1 output configuration */
-	phy->tim_tx->ccmr1 = (6 << 4) | (1 << 3);
-	phy->tim_tx->ccer = 1;
+	if (TIM_TX_CCR(port) == 1)
+		phy->tim_tx->ccmr1 = (6 << 4) | (1 << 3);
+	else if (TIM_TX_CCR(port) == 4)
+		phy->tim_tx->ccmr2 = (6 << 12) | (1 << 11);
+	else
+		/* Unsupported TX timer channel */
+		ASSERT(0);
+	phy->tim_tx->ccer = 1 << ((TIM_TX_CCR(port) - 1) * 4);
 	phy->tim_tx->bdtr = 0x8000;
 	/* set prescaler to /1 */
 	phy->tim_tx->psc = 0;
@@ -536,6 +542,8 @@ void pd_hw_init(int port)
 	/* Timer ICx input configuration */
 	if (TIM_CCR_IDX(port) == 1)
 		phy->tim_rx->ccmr1 |= TIM_CCR_CS << 0;
+	else if (TIM_CCR_IDX(port) == 4)
+		phy->tim_rx->ccmr2 |= TIM_CCR_CS << 8;
 	else
 		/*  Unsupported RX timer capture input */
 		ASSERT(0);

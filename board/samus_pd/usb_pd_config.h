@@ -25,6 +25,10 @@
 /* Timer channel */
 #define TIM_RX_CCR_C0 1
 #define TIM_RX_CCR_C1 1
+#define TIM_TX_CCR_C0 1
+#define TIM_TX_CCR_C1 1
+
+#define TIM_TX_CCR(p) ((p) ? TIM_TX_CCR_C1 : TIM_TX_CCR_C0)
 
 /* RX timer capture/compare register */
 #define TIM_CCR_C0 (&STM32_TIM_CCRx(TIM_CLOCK_PD_RX_C0, TIM_RX_CCR_C0))
