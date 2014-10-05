@@ -73,7 +73,7 @@ const struct adc_t adc_channels[] = {
 	[ADC_VBUS] = {"VBUS",  30000, 4096, 0, STM32_AIN(0)},
 	/* USB PD CC lines sensing. Converted to mV (3000mV/4096). */
 	[ADC_CC1_PD] = {"CC1_PD", 3000, 4096, 0, STM32_AIN(1)},
-	[ADC_CC2_PD] = {"CC1_PD", 3000, 4096, 0, STM32_AIN(3)},
+	[ADC_CC2_PD] = {"CC2_PD", 3000, 4096, 0, STM32_AIN(3)},
 	/* Charger current sensing. Converted to mA. */
 	[ADC_IADP] = {"IADP",  7500, 4096, 0, STM32_AIN(8)},
 	[ADC_IBAT] = {"IBAT", 37500, 4096, 0, STM32_AIN(13)},

@@ -11,7 +11,7 @@
 /* 48 MHz SYSCLK clock frequency */
 #define CPU_CLOCK 48000000
 
-/* the UART console is on USART2 (PA14/PA15) */
+/* the UART console is on USART2 (PD4/PD5) */
 #undef CONFIG_UART_CONSOLE
 #define CONFIG_UART_CONSOLE 2
 
@@ -33,13 +33,9 @@
 #define CONFIG_VBOOT_HASH
 #undef CONFIG_WATCHDOG_HELP
 #undef CONFIG_TASK_PROFILING
-#undef CONFIG_CONSOLE_CMDHELP
 #define CONFIG_INDUCTIVE_CHARGING
 #undef CONFIG_HIBERNATE
-#define CONFIG_DEBUG_ASSERT_BRIEF
-
-/* Disable unused console command to save flash space */
-#undef CONFIG_CMD_POWERINDEBUG
+#undef CONFIG_UART_TX_DMA /* DMAC_CH7 is used by USB PD */
 
 /*
  * Pericom I2C workaround
@@ -83,8 +79,7 @@
 #ifndef __ASSEMBLER__
 
 /* Timer selection */
-#define TIM_CLOCK32 2
-#define TIM_ADC     3
+#define TIM_CLOCK32 5
 
 #include "gpio_signal.h"
 
