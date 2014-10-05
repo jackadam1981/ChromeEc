@@ -11,7 +11,7 @@
 /* 48 MHz SYSCLK clock frequency */
 #define CPU_CLOCK 48000000
 
-/* the UART console is on USART2 (PA14/PA15) */
+/* the UART console is on USART2 (PD5/PD6) */
 #undef CONFIG_UART_CONSOLE
 #define CONFIG_UART_CONSOLE 2
 
@@ -83,8 +83,8 @@
 #ifndef __ASSEMBLER__
 
 /* Timer selection */
-#define TIM_CLOCK32 2
-#define TIM_ADC     3
+#define TIM_CLOCK32 4
+#define TIM_ADC     5
 
 #include "gpio_signal.h"
 
