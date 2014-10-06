@@ -141,6 +141,12 @@ static void pd_send_ec_int(void)
 
 void pd_set_input_current_limit(int port, uint32_t max_ma)
 {
+	struct charge_port_info charge;
+	charge.current = max_ma;
+	charge.voltage = 5000;
+
+	charge_manager_update(CHARGE_SUPPLIER_BC12, port, &charge);
+
 	pd_status.curr_lim_ma = max_ma;
 	pd_send_ec_int();
 }

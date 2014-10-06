@@ -3,6 +3,10 @@
  * found in the LICENSE file.
  */
 
+#include "adc.h"
+#include "chip/stm32/registers.h"
+#include "gpio.h"
+
 /* USB Power delivery board configuration */
 
 #ifndef __USB_PD_CONFIG_H

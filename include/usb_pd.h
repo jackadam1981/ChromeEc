@@ -456,6 +456,13 @@ enum pd_dual_role_states {
  *              enum pd_dual_role_states
  */
 void pd_set_dual_role(enum pd_dual_role_states state);
+
+/**
+ * Get role, from among PD_ROLE_SINK and PD_ROLE_SOURCE
+ *
+ * @param port Port number from which to get role
+ */
+int pd_get_role(int port);
 #endif
 
 /* Control Message type */
