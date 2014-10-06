@@ -17,7 +17,7 @@ enum powerled_state {
 	POWERLED_STATE_COUNT
 };
 
-#ifdef HAS_TASK_POWERLED
+#if defined(HAS_TASK_POWERLED) | defined(HAS_TASK_POWERLED_KITTY)
 
 /**
  * Set the power LED
