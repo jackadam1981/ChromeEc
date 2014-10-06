@@ -18,12 +18,15 @@
 /* Optional features */
 #define CONFIG_ADC
 #define CONFIG_BOARD_PRE_INIT
+#define CONFIG_CHARGE_MANAGER_TASK
+#define CONFIG_EXTPOWER_SAMUS_PD
 #define CONFIG_FORCE_CONSOLE_RESUME
 #define CONFIG_HIBERNATE_WAKEUP_PINS (STM32_PWR_CSR_EWUP3|STM32_PWR_CSR_EWUP8)
 #define CONFIG_HW_CRC
 #define CONFIG_I2C
 #undef  CONFIG_LID_SWITCH
 #define CONFIG_LOW_POWER_IDLE
+#define CONFIG_PWM
 #define CONFIG_STM_HWTIMER32
 #undef  CONFIG_TASK_PROFILING
 #define CONFIG_USB_POWER_DELIVERY
@@ -34,8 +37,10 @@
 #define CONFIG_USB_PD_FLASH_ERASE_CHECK
 #define CONFIG_USB_PD_INTERNAL_COMP
 #define CONFIG_USB_PD_READ_INFO_ON_CONNECT
+#define CONFIG_USB_SWITCH_PI3USB9281
+#undef CONFIG_USB_SWITCH_PI3USB9281_MUX_GPIO
+#define CONFIG_USB_SWITCH_PI3USB9281_MUX_GPIO GPIO_USB_C_BC12_SEL
 #define CONFIG_USBC_SS_MUX
-#define CONFIG_USB_SWITCH_TSU6721
 #define CONFIG_VBOOT_HASH
 #undef  CONFIG_WATCHDOG_HELP
 
@@ -61,6 +66,7 @@
 #define TIM_CLOCK32 2
 #define TIM_ADC     3
 
+#include "charge_manager.h"
 #include "gpio_signal.h"
 
 /* ADC signal */
@@ -74,11 +80,20 @@ enum adc_channel {
 	ADC_CH_COUNT
 };
 
+enum pwm_channel {
+	PWM_CH_ILIM = 0,
+	/* Number of PWM channels */
+	PWM_CH_COUNT
+};
+
 /* Called when we receive battery level info from the EC. */
 void board_update_battery_soc(int soc);
 
 /* Get the last received battery level. */
 int board_get_battery_soc(void);
+
+/* Check for plugged / unplugged USB charger. */
+void usb_charger_update(int port);
 
 #endif /* !__ASSEMBLER__ */
 
