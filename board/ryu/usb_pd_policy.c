@@ -67,8 +67,8 @@ int pd_choose_voltage(int cnt, uint32_t *src_caps, uint32_t *rdo,
 		int uw = 250000 * (src_caps[max_i] & 0x3FF);
 		max_ma = uw / sel_mv;
 		*rdo = RDO_BATT(max_i + 1, uw/2, uw, 0);
-		ccprintf("Request [%d] %dV %dmA\n",
-			 max_i, sel_mv/1000, max_ma);
+		ccprintf("Request [%d] %dV %dmW\n",
+			 max_i, sel_mv/1000, uw/1000);
 	} else {
 		int ma = 10 * (src_caps[max_i] & 0x3FF);
 		max_ma = ma;

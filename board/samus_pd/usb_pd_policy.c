@@ -69,8 +69,8 @@ int pd_choose_voltage(int cnt, uint32_t *src_caps, uint32_t *rdo,
 		int uw = 250000 * (src_caps[max_i] & 0x3FF);
 		max_ma = uw / sel_mv;
 		*rdo = RDO_BATT(max_i + 1, uw/2, uw, 0);
-		ccprintf("Request [%d] %dV %dmA\n",
-			 max_i, sel_mv/1000, max_ma);
+		ccprintf("Request [%d] %dV %dmW\n",
+			 max_i, sel_mv/1000, uw/1000);
 	} else {
 		int ma = 10 * (src_caps[max_i] & 0x3FF);
 		max_ma = ma;
@@ -145,8 +145,22 @@ static void pd_send_ec_int(void)
 void pd_set_input_current_limit(int port, uint32_t max_ma,
 				uint32_t supply_voltage)
 {
+	struct charge_port_info charge;
+	charge.current = max_ma;
+	charge.voltage = supply_voltage;
+	charge_manager_update(CHARGE_SUPPLIER_PD, port, &charge);
+
 	pd_status.curr_lim_ma = max_ma;
 	pd_send_ec_int();
+}
+
+void typec_set_input_current_limit(int port, uint32_t max_ma,
+				   uint32_t supply_voltage)
+{
+	struct charge_port_info charge;
+	charge.current = max_ma;
+	charge.voltage = supply_voltage;
+	charge_manager_update(CHARGE_SUPPLIER_TYPEC, port, &charge);
 }
 
 int pd_board_checks(void)

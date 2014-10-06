@@ -55,14 +55,14 @@ int pd_choose_voltage(int cnt, uint32_t *src_caps, uint32_t *rdo,
 		int uw = 250000 * (src_caps[max_i] & 0x3FF);
 		*rdo = RDO_BATT(max_i + 1, uw/2, uw, 0);
 		*curr_limit = uw/sel_mv;
-		ccprintf("Request [%d] %dV %dmA\n",
-			 max_i, sel_mv/1000, uw/sel_mv);
+		ccprintf("Request [%d] %dV %dmW\n",
+			 max_i, sel_mv/1000, uw/1000);
 	} else {
 		int ma = 10 * (src_caps[max_i] & 0x3FF);
 		*rdo = RDO_FIXED(max_i + 1, ma / 2, ma, 0);
 		*curr_limit = ma;
-		ccprintf("Request [%d] %dV %d/%dmA\n",
-			 max_i, sel_mv/1000, max_i, ma/2, ma);
+		ccprintf("Request [%d] %dV %dmA\n",
+			 max_i, sel_mv/1000, ma);
 	}
 	*supply_voltage = sel_mv;
 	return EC_SUCCESS;
