@@ -12,7 +12,10 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
+#include "pi3usb9281.h"
 #include "power.h"
+#include "pwm.h"
+#include "pwm_chip.h"
 #include "registers.h"
 #include "switch.h"
 #include "system.h"
@@ -27,6 +30,12 @@ static enum power_state ps;
 /* Battery state of charge */
 int batt_soc;
 
+/* PWM channels. Must be in the exact same order as in enum pwm_channel. */
+const struct pwm_t pwm_channels[] = {
+	{STM32_TIM(15), STM32_TIM_CH(2), 0, GPIO_ILIM_ADJ_PWM, GPIO_ALT_F1},
+};
+BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
+
 void vbus0_evt(enum gpio_signal signal)
 {
 	ccprintf("VBUS %d, %d!\n", signal, gpio_get_level(signal));
@@ -39,9 +48,29 @@ void vbus1_evt(enum gpio_signal signal)
 	task_wake(TASK_ID_PD_C1);
 }
 
-void bc12_evt(enum gpio_signal signal)
+/* Pericom USB deferred tasks -- called after USB device insert / removal */
+static void usb_port0_charger_update(void)
 {
-	ccprintf("PERICOM %d!\n", signal);
+	usb_charger_update(CHARGE_PORT_0);
+}
+DECLARE_DEFERRED(usb_port0_charger_update);
+
+static void usb_port1_charger_update(void)
+{
+	usb_charger_update(CHARGE_PORT_1);
+}
+DECLARE_DEFERRED(usb_port1_charger_update);
+
+void usb0_evt(enum gpio_signal signal)
+{
+	ccprintf("PERICOM0 %d!\n", signal);
+	hook_call_deferred(usb_port0_charger_update, 0);
+}
+
+void usb1_evt(enum gpio_signal signal)
+{
+	ccprintf("PERICOM1 %d!\n", signal);
+	hook_call_deferred(usb_port1_charger_update, 0);
 }
 
 void pch_evt(enum gpio_signal signal)
@@ -121,6 +150,14 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_USB_C0_VBUS_WAKE);
 	gpio_enable_interrupt(GPIO_USB_C1_VBUS_WAKE);
 
+	/* Enable pericom BC1.2 interrupts. */
+	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_L);
+	gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_L);
+	pi3usb9281_set_interrupt_mask(0, 0xff);
+	pi3usb9281_set_interrupt_mask(1, 0xff);
+	pi3usb9281_enable_interrupts(0);
+	pi3usb9281_enable_interrupts(1);
+
 	/* Determine initial chipset state */
 	if (slp_s5 && slp_s3) {
 		disable_sleep(SLEEP_MASK_AP_RUN);
@@ -155,6 +192,10 @@ static void board_init(void)
 		pd_enable = 1;
 	}
 	pd_comm_enable(pd_enable);
+
+	/* Enable ILIM PWM: initial duty cycle 0% */
+	pwm_enable(PWM_CH_ILIM, 1);
+	pwm_set_duty(PWM_CH_ILIM, 0);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
