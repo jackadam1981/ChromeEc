@@ -13,6 +13,8 @@
 #define PORT_TO_TASK_ID(port) ((port) ? TASK_ID_PD_C1 : TASK_ID_PD_C0)
 #define TASK_ID_TO_PORT(id)   ((id) == TASK_ID_PD_C0 ? 0 : 1)
 
+#define USB_TASK_ID_TO_PORT(id)	((id) == TASK_ID_BC12_C0 ? 0 : 1)
+
 /* Timer selection for baseband PD communication */
 #define TIM_CLOCK_PD_TX_C0 17
 #define TIM_CLOCK_PD_RX_C0 1
