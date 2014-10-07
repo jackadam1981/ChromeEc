@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70c8dc75_6a8adfaa",
+        "filename": "board/zinger/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-07T23:11:46Z",
+      "side": 0,
+      "message": "CONFIG_HIBERNATE is defined by default, and we want to undefine it right now because some EVT zingers have problems waking up from hibernate.",
+      "range": {
+        "startLine": 45,
+        "startChar": 7,
+        "endLine": 45,
+        "endChar": 23
+      },
+      "revId": "7b305b752b6b22e48ce71160cc18b3ddcd0dfa89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
