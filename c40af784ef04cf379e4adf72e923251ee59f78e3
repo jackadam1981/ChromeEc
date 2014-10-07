@@ -16,6 +16,24 @@
       "revId": "c40af784ef04cf379e4adf72e923251ee59f78e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10116099_d8bf5931",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-07T16:29:55Z",
+      "side": 1,
+      "message": "Yes, actually Alec proposed the same change. I will need to modify pd_set_input_current_limit to take a new port# parameter (also modifying it for several other boards, where it might not be needed) -- is it ok?",
+      "parentUuid": "30e904d0_45f1a029",
+      "revId": "c40af784ef04cf379e4adf72e923251ee59f78e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
