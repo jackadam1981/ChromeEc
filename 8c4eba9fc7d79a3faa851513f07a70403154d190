@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30e904d0_a5efc4c2",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-07T15:53:03Z",
+      "side": 1,
+      "message": "should either remove printf or move to deferred function to avoid printf in interrupt context.",
+      "range": {
+        "startLine": 66,
+        "startChar": 11,
+        "endLine": 66,
+        "endChar": 19
+      },
+      "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30e904d0_05e798e8",
+        "filename": "board/samus_pd/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-07T15:53:03Z",
+      "side": 1,
+      "message": "not a good place for this",
+      "range": {
+        "startLine": 96,
+        "startChar": 5,
+        "endLine": 96,
+        "endChar": 23
+      },
+      "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0b988d9_5ff083f5",
+        "filename": "board/samus_pd/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-07T15:53:03Z",
+      "side": 1,
+      "message": "not sure this file needs to be in board specific directory. we will use the same thing for ryu also. would be better to add the appropriate CONFIG_ options to put this in common code.",
+      "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0aed491_988dd591",
+        "filename": "board/samus_pd/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-07T15:53:03Z",
+      "side": 1,
+      "message": "in order to do this right, we\u0027ll have to coordinate the setting of this GPIO with board/samus_pd/usb_pd_config.h. I think we can remove setting this low in board/samus_pd/usb_pd_config.h, but we may need to guarantee we never set it low at the same time as 5V_EN. So, we need to think about where CHARGE_EN_L gets set back to high.",
+      "range": {
+        "startLine": 68,
+        "startChar": 16,
+        "endLine": 68,
+        "endChar": 39
+      },
+      "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0b988d9_3cf11d2b",
+        "filename": "board/samus_pd/charge_manager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-07T15:53:03Z",
+      "side": 1,
+      "message": "if we move this file out of board specific directory, we\u0027ll need to move this.\n\nprobably setting PWM can go in board.c.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 77
+      },
+      "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0aed491_189385c1",
+        "filename": "board/samus_pd/charge_manager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-07T15:53:03Z",
+      "side": 1,
+      "message": "we have a macro for number of type-C ports, PD_PORT_COUNT which would help get us away from board specific.",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 17
+      },
+      "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30e904d0_65adbc7c",
+        "filename": "board/samus_pd/extpower_samus_pd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-07T15:53:03Z",
+      "side": 1,
+      "message": "this can go in the pi3usb9281 driver (other boards that use pericom like ryu will also want this function).",
+      "range": {
+        "startLine": 17,
+        "startChar": 11,
+        "endLine": 17,
+        "endChar": 23
+      },
+      "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30e904d0_051f98f7",
+        "filename": "board/samus_pd/extpower_samus_pd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-07T15:53:03Z",
+      "side": 1,
+      "message": "this can go in board.c",
+      "range": {
+        "startLine": 43,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 23
+      },
+      "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30e904d0_e5c0ec25",
+        "filename": "board/samus_pd/extpower_samus_pd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-07T15:53:03Z",
+      "side": 1,
+      "message": "don\u0027t you have to set the pericom switch first to set which pericom the i2c bus is connected to? or is that done somewhere else?",
+      "range": {
+        "startLine": 46,
+        "startChar": 18,
+        "endLine": 46,
+        "endChar": 43
+      },
+      "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0b988d9_dcd901ac",
+        "filename": "board/samus_pd/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-07T15:53:03Z",
+      "side": 1,
+      "message": "these have to default low in order to run without a battery or with a dead battery",
+      "range": {
+        "startLine": 45,
+        "startChar": 36,
+        "endLine": 45,
+        "endChar": 49
+      },
+      "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
