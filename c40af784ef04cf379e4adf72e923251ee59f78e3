@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30e904d0_45f1a029",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-07T16:24:23Z",
+      "side": 1,
+      "message": "it\u0027s always called along with pd_set_input_current_limit() \ncan we put the call there ?",
+      "revId": "c40af784ef04cf379e4adf72e923251ee59f78e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
