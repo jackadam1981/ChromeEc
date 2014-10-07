@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30e904d0_43719582",
+        "filename": "board/fruitpie/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-07T23:17:35Z",
+      "side": 1,
+      "message": "nit: suggest swapping i and j, i is usually outer most loop",
+      "range": {
+        "startLine": 214,
+        "startChar": 6,
+        "endLine": 214,
+        "endChar": 7
+      },
+      "revId": "70b9426db29caf06ce22db2cdf3b09ba62924d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70c8dc75_6ac3bf64",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-07T23:17:35Z",
+      "side": 1,
+      "message": "why did this move? looks like it\u0027s better for if() to be included in the #ifdef.",
+      "range": {
+        "startLine": 314,
+        "startChar": 7,
+        "endLine": 314,
+        "endChar": 25
+      },
+      "revId": "70b9426db29caf06ce22db2cdf3b09ba62924d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70c8dc75_ea8d0f3e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-07T23:17:35Z",
+      "side": 1,
+      "message": "in pd_vdm() we check again for SVDM to distinguish SVDM and CVDM. would be more efficient to remove this check here, and rewrite pd_vdm() to distinguish the two or return 0 if neither.",
+      "range": {
+        "startLine": 657,
+        "startChar": 1,
+        "endLine": 657,
+        "endChar": 56
+      },
+      "revId": "70b9426db29caf06ce22db2cdf3b09ba62924d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70c8dc75_ea242fa6",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1347,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-07T23:17:35Z",
+      "side": 1,
+      "message": "need rebase, conflicts with one of my recent changes",
+      "range": {
+        "startLine": 1347,
+        "startChar": 3,
+        "endLine": 1347,
+        "endChar": 5
+      },
+      "revId": "70b9426db29caf06ce22db2cdf3b09ba62924d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
