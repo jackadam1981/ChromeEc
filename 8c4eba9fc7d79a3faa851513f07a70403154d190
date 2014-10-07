@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "d0b988d9_9f005b9f",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-07T16:59:14Z",
+      "side": 1,
+      "message": "we need to be extremely careful with this transition to avoid browning out when the battery is dead or overcurrenting the charger.\nIt seems that 0% PWM is 500mA, so that should be good, please comment that you are putting the 500mA limit here.",
+      "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30e904d0_05e798e8",
         "filename": "board/samus_pd/board.h",
         "patchSetId": 3
@@ -89,6 +106,23 @@
     },
     {
       "key": {
+        "uuid": "b0aed491_5b65f78a",
+        "filename": "board/samus_pd/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-07T16:59:14Z",
+      "side": 1,
+      "message": "this access is more or less atomic, I don\u0027t see the point of the mutex here",
+      "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0aed491_988dd591",
         "filename": "board/samus_pd/charge_manager.c",
         "patchSetId": 3
@@ -106,6 +140,40 @@
         "endLine": 68,
         "endChar": 39
       },
+      "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30e904d0_b07e20a0",
+        "filename": "board/samus_pd/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-07T16:59:14Z",
+      "side": 1,
+      "message": "IMO it\u0027s a very convoluted way of writing\ngpio_set_level(GPIO_USB_C1_CHARGE_EN_L, !(port \u003d\u003d CHARGE_PORT_1));",
+      "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30e904d0_709ad87c",
+        "filename": "board/samus_pd/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-07T16:59:14Z",
+      "side": 1,
+      "message": "please no ccprintf in non-interactive code,\nuse a CPRINTF macro as other files.",
       "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -158,6 +226,23 @@
     },
     {
       "key": {
+        "uuid": "b0aed491_5b17b7ea",
+        "filename": "board/samus_pd/ec.tasklist",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-07T16:59:14Z",
+      "side": 1,
+      "message": "I\u0027m not convinced that we need to waste the RAM needed for the stack of the task just for a policy decision. I will read again that part of your CL.",
+      "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30e904d0_65adbc7c",
         "filename": "board/samus_pd/extpower_samus_pd.c",
         "patchSetId": 3
@@ -175,6 +260,24 @@
         "endLine": 17,
         "endChar": 23
       },
+      "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0aed491_dbf3c77c",
+        "filename": "board/samus_pd/extpower_samus_pd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-07T16:59:14Z",
+      "side": 1,
+      "message": "I agree",
+      "parentUuid": "30e904d0_65adbc7c",
       "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
