@@ -34,6 +34,24 @@
       "revId": "c40af784ef04cf379e4adf72e923251ee59f78e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0b988d9_5f2ec332",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-07T16:32:34Z",
+      "side": 1,
+      "message": "Yes that\u0027s ok, that\u0027s missing in the current API",
+      "parentUuid": "10116099_d8bf5931",
+      "revId": "c40af784ef04cf379e4adf72e923251ee59f78e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
