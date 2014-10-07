@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0b988d9_e8451b0d",
+        "filename": "extra/usb_gpio/usb_gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-07T18:47:28Z",
+      "side": 1,
+      "message": "all other utilities are in util/\nand use the common makefiles",
+      "revId": "d9400c43a9f6162becf1a3b709329b1904257405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70c8dc75_d903d72e",
+        "filename": "extra/usb_gpio/usb_gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-07T18:47:28Z",
+      "side": 1,
+      "message": "write error messages to stderr ?",
+      "revId": "d9400c43a9f6162becf1a3b709329b1904257405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70c8dc75_99107f71",
+        "filename": "extra/usb_gpio/usb_gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-07T18:47:28Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "d9400c43a9f6162becf1a3b709329b1904257405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30e904d0_4b237119",
+        "filename": "extra/usb_gpio/usb_gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-07T18:47:28Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "d9400c43a9f6162becf1a3b709329b1904257405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
