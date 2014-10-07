@@ -123,6 +123,24 @@
     },
     {
       "key": {
+        "uuid": "30e904d0_4ba531bc",
+        "filename": "board/samus_pd/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-07T18:03:52Z",
+      "side": 1,
+      "message": "Agree. If you are worried that the value may change when charge_manager_task runs, you can just make a copy at the beginning of the loop.",
+      "parentUuid": "b0aed491_5b65f78a",
+      "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0aed491_988dd591",
         "filename": "board/samus_pd/charge_manager.c",
         "patchSetId": 3
@@ -163,6 +181,24 @@
     },
     {
       "key": {
+        "uuid": "30e904d0_0b224997",
+        "filename": "board/samus_pd/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-07T18:03:52Z",
+      "side": 1,
+      "message": "Plus it\u0027s likely making code size bigger.",
+      "parentUuid": "30e904d0_b07e20a0",
+      "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30e904d0_709ad87c",
         "filename": "board/samus_pd/charge_manager.c",
         "patchSetId": 3
@@ -174,6 +210,29 @@
       "writtenOn": "2014-10-07T16:59:14Z",
       "side": 1,
       "message": "please no ccprintf in non-interactive code,\nuse a CPRINTF macro as other files.",
+      "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0b988d9_2dbf258b",
+        "filename": "board/samus_pd/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-07T18:03:52Z",
+      "side": 1,
+      "message": "If this task only runs when woken up by available_charge_ma, then you can just put this in a deferred function.",
+      "range": {
+        "startLine": 110,
+        "startChar": 2,
+        "endLine": 110,
+        "endChar": 17
+      },
       "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -219,6 +278,29 @@
         "startChar": 1,
         "endLine": 21,
         "endChar": 17
+      },
+      "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0b988d9_a2a6e41c",
+        "filename": "board/samus_pd/charge_manager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-07T18:03:52Z",
+      "side": 1,
+      "message": "Just for consistency: Usually we call this CHARGE_SUPPLIERS_COUNT.",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 21
       },
       "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -318,6 +400,30 @@
       "writtenOn": "2014-10-07T15:53:03Z",
       "side": 1,
       "message": "don\u0027t you have to set the pericom switch first to set which pericom the i2c bus is connected to? or is that done somewhere else?",
+      "range": {
+        "startLine": 46,
+        "startChar": 18,
+        "endLine": 46,
+        "endChar": 43
+      },
+      "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0b988d9_e2c29cbb",
+        "filename": "board/samus_pd/extpower_samus_pd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-07T18:03:52Z",
+      "side": 1,
+      "message": "This is done in the Pericom driver.",
+      "parentUuid": "30e904d0_e5c0ec25",
       "range": {
         "startLine": 46,
         "startChar": 18,
