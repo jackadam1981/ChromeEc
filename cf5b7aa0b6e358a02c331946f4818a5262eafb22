@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0aed491_db3bc7bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-10-07T16:13:33Z",
+      "side": 1,
+      "message": "Defined Power LED behavior in led.c. Removed POWERLED task as it doesn\u0027t match kitty power led spec.",
+      "revId": "cf5b7aa0b6e358a02c331946f4818a5262eafb22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
