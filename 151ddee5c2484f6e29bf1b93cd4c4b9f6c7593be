@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "30e904d0_061b1b94",
+        "filename": "board/dingdong/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-07T23:20:14Z",
+      "side": 1,
+      "message": "also useless",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 20
+      },
+      "revId": "151ddee5c2484f6e29bf1b93cd4c4b9f6c7593be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0b988d9_6e3e73e5",
         "filename": "board/dingdong/board.c",
         "patchSetId": 3
@@ -19,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "70c8dc75_aa9cf7fd",
+        "filename": "board/dingdong/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-07T23:20:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0b988d9_6e3e73e5",
+      "revId": "151ddee5c2484f6e29bf1b93cd4c4b9f6c7593be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70c8dc75_5cadf57b",
         "filename": "board/dingdong/board.c",
         "patchSetId": 3
@@ -30,6 +71,24 @@
       "writtenOn": "2014-10-07T20:37:08Z",
       "side": 1,
       "message": "probably useless",
+      "revId": "151ddee5c2484f6e29bf1b93cd4c4b9f6c7593be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70c8dc75_eaa6ef4b",
+        "filename": "board/dingdong/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-07T23:20:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70c8dc75_5cadf57b",
       "revId": "151ddee5c2484f6e29bf1b93cd4c4b9f6c7593be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -64,6 +123,24 @@
       "writtenOn": "2014-10-07T20:37:08Z",
       "side": 1,
       "message": "nit:  one more space would be prettier",
+      "revId": "151ddee5c2484f6e29bf1b93cd4c4b9f6c7593be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30e904d0_66493f8d",
+        "filename": "board/dingdong/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-07T23:20:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0b988d9_ce069f41",
       "revId": "151ddee5c2484f6e29bf1b93cd4c4b9f6c7593be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
