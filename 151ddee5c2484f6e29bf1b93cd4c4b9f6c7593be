@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0b988d9_6e3e73e5",
+        "filename": "board/dingdong/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-07T20:37:08Z",
+      "side": 1,
+      "message": "useless include",
+      "revId": "151ddee5c2484f6e29bf1b93cd4c4b9f6c7593be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70c8dc75_5cadf57b",
+        "filename": "board/dingdong/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-07T20:37:08Z",
+      "side": 1,
+      "message": "probably useless",
+      "revId": "151ddee5c2484f6e29bf1b93cd4c4b9f6c7593be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0b988d9_6ef033f6",
+        "filename": "board/dingdong/ec.tasklist",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-07T20:37:08Z",
+      "side": 1,
+      "message": "Having a mix of symlink and real files in that directory is a bit error-prone.\nI would vote to simply duplicate them as they are quite simple.",
+      "revId": "151ddee5c2484f6e29bf1b93cd4c4b9f6c7593be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0b988d9_ce069f41",
+        "filename": "board/dingdong/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-07T20:37:08Z",
+      "side": 1,
+      "message": "nit:  one more space would be prettier",
+      "revId": "151ddee5c2484f6e29bf1b93cd4c4b9f6c7593be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
