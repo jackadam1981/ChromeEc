@@ -78,6 +78,7 @@ static int bkpdata_write(enum bkpdata_index index, uint16_t value)
 
 void __no_hibernate(uint32_t seconds, uint32_t microseconds)
 {
+#ifdef CONFIG_COMMON_RUNTIME
 	/*
 	 * Hibernate not implemented on this platform.
 	 *
@@ -86,6 +87,7 @@ void __no_hibernate(uint32_t seconds, uint32_t microseconds)
 	cprints(CC_SYSTEM, "hibernate not supported, so rebooting");
 	cflush();
 	system_reset(SYSTEM_RESET_HARD);
+#endif
 }
 
 void __enter_hibernate(uint32_t seconds, uint32_t microseconds)
