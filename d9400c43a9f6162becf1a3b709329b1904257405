@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "10116099_2fa584bd",
+        "filename": "extra/usb_gpio/usb_gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-10-07T19:13:46Z",
+      "side": 1,
+      "message": "This is not intended to be a host tool or utility, it is just an example to be used when writing servod support.",
+      "parentUuid": "d0b988d9_e8451b0d",
+      "revId": "d9400c43a9f6162becf1a3b709329b1904257405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70c8dc75_d903d72e",
         "filename": "extra/usb_gpio/usb_gpio.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2014-10-07T18:47:28Z",
       "side": 1,
       "message": "write error messages to stderr ?",
+      "revId": "d9400c43a9f6162becf1a3b709329b1904257405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30fbc487_d31aa360",
+        "filename": "extra/usb_gpio/usb_gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-10-07T19:13:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70c8dc75_d903d72e",
       "revId": "d9400c43a9f6162becf1a3b709329b1904257405",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "10116099_6f9f7c6b",
+        "filename": "extra/usb_gpio/usb_gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-10-07T19:13:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70c8dc75_99107f71",
+      "revId": "d9400c43a9f6162becf1a3b709329b1904257405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30e904d0_4b237119",
         "filename": "extra/usb_gpio/usb_gpio.c",
         "patchSetId": 3
@@ -64,6 +118,24 @@
       "writtenOn": "2014-10-07T18:47:28Z",
       "side": 1,
       "message": "ditto",
+      "revId": "d9400c43a9f6162becf1a3b709329b1904257405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10116099_cf931063",
+        "filename": "extra/usb_gpio/usb_gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-10-07T19:13:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30e904d0_4b237119",
       "revId": "d9400c43a9f6162becf1a3b709329b1904257405",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
