@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30e904d0_f95ed06a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1318,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-08T01:52:27Z",
+      "side": 1,
+      "message": "this #ifdef can go in if() to be more clear\n\nif (pd[port].last_state !\u003d pd[port].task_state) {\n#ifdef CONFIG_USB_PD_SIMPLE_DFP\n  pd_send_vdm( USB_VID_GOOGLE ...);\n#else\n  pd_send_vdm( USB_SID_PD ...);\n#endif\n}",
+      "range": {
+        "startLine": 1318,
+        "startChar": 7,
+        "endLine": 1318,
+        "endChar": 31
+      },
+      "revId": "9dc997c9532bad198dadd1236168846e29435ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
