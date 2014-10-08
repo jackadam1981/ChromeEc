@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70c8dc75_c56124ae",
+        "filename": "board/dingdong/Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-08T00:09:06Z",
+      "side": 1,
+      "message": "that one needs to be a symlink in all directories ...",
+      "revId": "f632f21a576c0d4c7abff02e1f4f25e520cb9ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30e904d0_a647c796",
+        "filename": "board/dingdong/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-08T00:09:06Z",
+      "side": 1,
+      "message": "re-nit: I still don\u0027t see then right indentation here ?",
+      "revId": "f632f21a576c0d4c7abff02e1f4f25e520cb9ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
