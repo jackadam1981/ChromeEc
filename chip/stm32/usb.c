@@ -63,11 +63,15 @@ static usb_uint ep0_buf_tx[USB_MAX_PACKET_SIZE / 2] __usb_ram;
 static usb_uint ep0_buf_rx[USB_MAX_PACKET_SIZE / 2] __usb_ram;
 
 static int set_addr;
+static int desc_left;
+static const uint8_t *desc_ptr;
 
 /* Requests on the control endpoint (aka EP0) */
 static void ep0_rx(void)
 {
 	uint16_t req = ep0_buf_rx[0]; /* bRequestType | bRequest */
+
+	desc_left = 0;
 
 	/* interface specific requests */
 	if ((req & USB_RECIP_MASK) == USB_RECIP_INTERFACE) {
@@ -82,6 +86,7 @@ static void ep0_rx(void)
 		uint8_t type = ep0_buf_rx[1] >> 8;
 		uint8_t idx = ep0_buf_rx[1] & 0xff;
 		const uint8_t *str_desc;
+		int len;
 
 		switch (type) {
 		case USB_DT_DEVICE: /* Setup : Get device descriptor */
@@ -110,10 +115,16 @@ static void ep0_rx(void)
 				return; /* don't remove the STALL */
 			}
 			str_desc = usb_strings[idx];
-			memcpy_usbram(ep0_buf_tx, str_desc, str_desc[0]);
-			btable_ep[0].tx_count = MIN(ep0_buf_rx[3], str_desc[0]);
+			len = MIN(ep0_buf_rx[3], str_desc[0]);
+			if (len > USB_MAX_PACKET_SIZE) {
+				desc_left = len - USB_MAX_PACKET_SIZE;
+				desc_ptr = str_desc + USB_MAX_PACKET_SIZE;
+				len = USB_MAX_PACKET_SIZE;
+			}
+			memcpy_usbram(ep0_buf_tx, str_desc, len);
+			btable_ep[0].tx_count = len;
 			STM32_TOGGLE_EP(0, EP_TX_RX_MASK, EP_TX_RX_VALID,
-				  EP_STATUS_OUT /*null OUT transaction */);
+				  desc_left ? 0 : EP_STATUS_OUT /*null OUT transaction */);
 			break;
 		case USB_DT_DEVICE_QUALIFIER: /* Get device qualifier desc */
 			/* Not high speed : STALL next IN used as handshake */
@@ -165,7 +176,16 @@ static void ep0_tx(void)
 		set_addr = 0;
 		CPRINTF("SETAD %02x\n", STM32_USB_DADDR);
 	}
-
+	if (desc_left) {
+		int len = MIN(desc_left, USB_MAX_PACKET_SIZE);
+		memcpy_usbram(ep0_buf_tx, desc_ptr, len);
+		btable_ep[0].tx_count = len;
+		desc_left -= len;
+		desc_ptr += len;
+		STM32_TOGGLE_EP(0, EP_TX_MASK, EP_TX_VALID,
+			  desc_left ? 0 : EP_STATUS_OUT /*null OUT transaction */);
+		return;
+	}
 	STM32_TOGGLE_EP(0, EP_TX_MASK, EP_TX_VALID, 0);
 }
 
