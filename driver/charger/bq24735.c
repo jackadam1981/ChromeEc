@@ -162,6 +162,18 @@ int charger_post_init(void)
 	 */
 
 	/* Set charger input current limit */
+
+	int rv, option;
+
+	rv = charger_get_option(&option);
+	if (rv)
+		return rv;
+
+	option &= ~OPTION_LEARN_ENABLE;
+	rv = charger_set_option(option);
+	if (rv)
+		return rv;
+
 	return charger_set_input_current(CONFIG_CHARGER_INPUT_CURRENT);
 }
 
