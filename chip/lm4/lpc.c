@@ -282,7 +282,7 @@ int lpc_keyboard_input_pending(void)
 /* Put a char to host buffer and send IRQ if specified. */
 void lpc_keyboard_put_char(uint8_t chr, int send_irq)
 {
-	LPC_POOL_KEYBOARD[1] = chr;
+	*((volatile unsigned char *)(LPC_POOL_KEYBOARD) + 1) = chr;
 	if (send_irq)
 		keyboard_irq_assert();
 }
