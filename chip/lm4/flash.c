@@ -204,6 +204,13 @@ int flash_physical_protect_now(int all)
 	return EC_SUCCESS;
 }
 
+uint32_t flash_physical_get_valid_flags(void)
+{
+	return EC_FLASH_PROTECT_RO_AT_BOOT |
+	       EC_FLASH_PROTECT_RO_NOW |
+	       EC_FLASH_PROTECT_ALL_NOW;
+}
+
 
 /*****************************************************************************/
 /* High-level APIs */

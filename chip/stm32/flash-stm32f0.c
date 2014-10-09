@@ -42,3 +42,9 @@ int flash_physical_restore_state(void)
 	/* Nothing to restore */
 	return 0;
 }
+
+uint32_t flash_physical_get_valid_flags(void)
+{
+	return EC_FLASH_PROTECT_RO_AT_BOOT |
+	       EC_FLASH_PROTECT_ALL_AT_BOOT;
+}
