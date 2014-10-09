@@ -426,8 +426,9 @@ int flash_pre_init(void)
 			 * to the check above.  One of them should be able to
 			 * go away.
 			 */
-			flash_protect_ro_at_boot(
-				prot_flags & EC_FLASH_PROTECT_RO_AT_BOOT);
+			flash_protect_at_boot(
+				prot_flags & EC_FLASH_PROTECT_RO_AT_BOOT ?
+					FLASH_WP_RO : FLASH_WP_NONE);
 			need_reset = 1;
 		}
 	} else {
@@ -439,6 +440,16 @@ int flash_pre_init(void)
 			unprotect_all_blocks();
 			need_reset = 1;
 		}
+	}
+
+	if (!!(prot_flags & EC_FLASH_PROTECT_ALL_AT_BOOT) !=
+	    !!(prot_flags & EC_FLASH_PROTECT_ALL_NOW)) {
+		/*
+		 * ALL_AT_BOOT and ALL_NOW are the same. The only
+		 * way this can happen is because the chip requires
+		 * OBL_LAUNCH to be set to reload option bytes.
+		 */
+		need_reset = 1;
 	}
 
 	if (need_reset)
