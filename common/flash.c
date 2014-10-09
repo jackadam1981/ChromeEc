@@ -605,10 +605,8 @@ static int flash_command_protect(struct host_cmd_handler_args *args)
 	r->valid_flags =
 		EC_FLASH_PROTECT_GPIO_ASSERTED |
 		EC_FLASH_PROTECT_ERROR_STUCK |
-		EC_FLASH_PROTECT_RO_AT_BOOT |
-		EC_FLASH_PROTECT_RO_NOW |
-		EC_FLASH_PROTECT_ALL_NOW |
-		EC_FLASH_PROTECT_ERROR_INCONSISTENT;
+		EC_FLASH_PROTECT_ERROR_INCONSISTENT |
+		flash_physical_get_valid_flags();
 	r->writable_flags = 0;
 
 	/* If RO protection isn't enabled, its at-boot state can be changed. */
