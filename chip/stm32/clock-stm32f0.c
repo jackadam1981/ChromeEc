@@ -270,9 +270,12 @@ void __enter_hibernate(uint32_t seconds, uint32_t microseconds)
 	asm volatile("cpsid i");
 
 #ifdef CONFIG_HIBERNATE_WAKEUP_PINS
+	ccprintf("pins\n");
 	/* enable the wake up pins */
 	STM32_PWR_CSR |= CONFIG_HIBERNATE_WAKEUP_PINS;
 #endif
+	ccprintf("hib\n");
+	usleep(100000);
 	STM32_PWR_CR |= 0xe;
 	CPU_SCB_SYSCTRL |= 0x4;
 	/* go to Standby mode */
