@@ -269,14 +269,21 @@ void __enter_hibernate(uint32_t seconds, uint32_t microseconds)
 	/* interrupts off now */
 	asm volatile("cpsid i");
 
+	STM32_PWR_CR |= 0x2; //enable stop mode when deepsleep
+	CPU_SCB_SYSCTRL |= 0x4; //SLEEPDEEP
+
+	STM32_PWR_CSR&=0xf; // Disable all used wakeup sources,
+
+	STM32_PWR_CR |= 0xc; // Clear all related wakeup flags,
+	//usleep(1);
 #ifdef CONFIG_HIBERNATE_WAKEUP_PINS
+
 	/* enable the wake up pins */
-	STM32_PWR_CSR |= CONFIG_HIBERNATE_WAKEUP_PINS;
+	STM32_PWR_CSR |= CONFIG_HIBERNATE_WAKEUP_PINS; // Re-enable all used wakeup sources
 #endif
-	STM32_PWR_CR |= 0xe;
-	CPU_SCB_SYSCTRL |= 0x4;
+
 	/* go to Standby mode */
-	asm("wfi");
+	asm("wfi"); //standby mode
 
 	/* we should never reach that point */
 	while (1)

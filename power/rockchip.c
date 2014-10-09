@@ -275,7 +275,7 @@ enum power_state power_chipset_init(void)
 	    !(reset_flags & RESET_FLAG_SYSJUMP)) {
 		CPRINTS("auto_power_on set due to reset_flag 0x%x",
 			system_get_reset_flags());
-		auto_power_on = 1;
+		auto_power_on = 0;
 	}
 
 	/*
