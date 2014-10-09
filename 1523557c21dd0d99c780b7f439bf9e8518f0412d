@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0820c18_b127ff51",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-09T19:47:03Z",
+      "side": 1,
+      "message": "Please describe the ALL_AT_BOOT approach and how it differs from the current approach.  It\u0027s hard to evaluate whether the current code does what it\u0027s supposed to, when I\u0027m not sure what that is.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 11
+      },
+      "revId": "1523557c21dd0d99c780b7f439bf9e8518f0412d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0820c18_f1dc17f5",
+        "filename": "chip/stm32/flash-stm32f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-09T19:47:03Z",
+      "side": 1,
+      "message": "Should fix this in the makefile, rather than including a bunch of .c code.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 23
+      },
+      "revId": "1523557c21dd0d99c780b7f439bf9e8518f0412d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b07c14f2_1cb9c5f4",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-09T19:47:03Z",
+      "side": 1,
+      "message": "Please comment what this line does.",
+      "range": {
+        "startLine": 235,
+        "startChar": 2,
+        "endLine": 235,
+        "endChar": 30
+      },
+      "revId": "1523557c21dd0d99c780b7f439bf9e8518f0412d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0820c18_11f1ab74",
+        "filename": "include/flash.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-09T19:47:03Z",
+      "side": 1,
+      "message": "It looks like this should now be a 3-state enum:\n\n0 \u003d nothing protected\n1 \u003d RO,pstate protected\n2 \u003d all protected",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 63
+      },
+      "revId": "1523557c21dd0d99c780b7f439bf9e8518f0412d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
