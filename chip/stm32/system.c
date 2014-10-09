@@ -231,6 +231,11 @@ void system_reset(int flags)
 		/* Fall through to watchdog if that fails */
 #endif
 
+#if defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32F3)
+		STM32_FLASH_CR |= (1 << 13);
+		while (1)
+			;
+#else
 		/* Ask the watchdog to trigger a hard reboot */
 		STM32_IWDG_KR = 0x5555;
 		STM32_IWDG_RLR = 0x1;
@@ -238,6 +243,7 @@ void system_reset(int flags)
 		/* wait for the watchdog */
 		while (1)
 			;
+#endif
 	} else {
 		CPU_NVIC_APINT = 0x05fa0004;
 	}

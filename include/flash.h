@@ -70,12 +70,13 @@ int flash_physical_get_protect(int bank);
 uint32_t flash_physical_get_protect_flags(void);
 
 /**
- * Enable/disable protecting RO firmware and pstate at boot.
+ * Enable/disable protecting firmware/pstate at boot.
  *
+ * @param all		Protect all (=1) or just read-only and pstate (=0).
  * @param enable	Enable (non-zero) or disable (zero) protection
  * @return non-zero if error.
  */
-int flash_physical_protect_ro_at_boot(int enable);
+int flash_physical_protect_at_boot(int all, int enable);
 
 /**
  * Protect flash now.

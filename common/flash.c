@@ -188,10 +188,30 @@ int flash_protect_ro_at_boot(int enable)
 	 * This assumes PSTATE immediately follows RO, which it does on
 	 * all STM32 platforms (which are the only ones with this config).
 	 */
-	flash_physical_protect_ro_at_boot(new_flags);
+	flash_physical_protect_at_boot(0, new_flags);
 #endif
 
 	return EC_SUCCESS;
+}
+
+int flash_protect_all_at_boot(int enable)
+{
+	int rv = EC_SUCCESS;
+#ifdef CONFIG_FLASH_PROTECT_NEXT_BOOT
+	struct persist_state pstate;
+
+	rv = flash_physical_protect_at_boot(1, enable);
+	if (rv)
+		return rv;
+
+	if (enable == 0) {
+		flash_read_pstate(&pstate);
+		if (pstate.flags & PERSIST_FLAG_PROTECT_RO)
+			rv = flash_physical_protect_at_boot(0, 1);
+	}
+#endif
+
+	return rv;
 }
 
 uint32_t flash_get_protect(void)
@@ -266,6 +286,13 @@ int flash_set_protect(uint32_t mask, uint32_t flags)
 	 * Process flags we can set.  Track the most recent error, but process
 	 * all flags before returning.
 	 */
+	if (mask & EC_FLASH_PROTECT_ALL_AT_BOOT) {
+		rv = flash_protect_all_at_boot(
+				flags & EC_FLASH_PROTECT_ALL_AT_BOOT);
+		if (rv)
+			retval = rv;
+	}
+
 	if (mask & EC_FLASH_PROTECT_RO_AT_BOOT) {
 		rv = flash_protect_ro_at_boot(
 			      flags & EC_FLASH_PROTECT_RO_AT_BOOT);

@@ -316,12 +316,23 @@ int flash_physical_get_protect(int block)
 	return STM32_FLASH_WRPR & (1 << block);
 }
 
-int flash_physical_protect_ro_at_boot(int enable)
+int flash_physical_protect_at_boot(int all, int enable)
 {
 	uint32_t prot;
-	uint32_t mask = ((1 << (RO_BANK_COUNT + PSTATE_BANK_COUNT)) - 1)
-			<< RO_BANK_OFFSET;
+	uint32_t mask;
 	int rv;
+
+	if (all) {
+#if PHYSICAL_BANKS == 32
+		BUILD_ASSERT(RO_BANK_OFFSET == 0);
+		mask = 0xffffffff << RO_BANK_OFFSET;
+#else
+		mask = ((1 << PHYSICAL_BANKS) - 1) << RO_BANK_OFFSET;
+#endif
+	} else {
+		mask = ((1 << (RO_BANK_COUNT + PSTATE_BANK_COUNT)) - 1)
+		       << RO_BANK_OFFSET;
+	}
 
 	/* Read the current protection status */
 	prot = read_optb_wrp();
