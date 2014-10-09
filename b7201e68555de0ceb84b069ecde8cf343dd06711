@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b007b451_6560427d",
+        "filename": "board/hoho/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-09T18:34:15Z",
+      "side": 1,
+      "message": "use USB_GOOGLE_TYPEC_URL ?",
+      "revId": "b7201e68555de0ceb84b069ecde8cf343dd06711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10940050_14a35a93",
+        "filename": "board/hoho/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-09T18:34:15Z",
+      "side": 1,
+      "message": "should be const ?\nunless we need to change a field in bb_caps",
+      "revId": "b7201e68555de0ceb84b069ecde8cf343dd06711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10940050_34a8566d",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-09T18:34:15Z",
+      "side": 1,
+      "message": "that\u0027s not a URL (ie missing http://),\nwhat the standard is saying ?",
+      "revId": "b7201e68555de0ceb84b069ecde8cf343dd06711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
