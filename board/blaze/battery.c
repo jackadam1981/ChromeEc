@@ -9,6 +9,7 @@
 #include "battery_smart.h"
 #include "gpio.h"
 #include "host_command.h"
+#include "i2c.h"
 #include "util.h"
 #include "console.h"
 
@@ -16,7 +17,8 @@
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
 
 /* Shutdown mode parameter to write to manufacturer access register */
-#define SB_SHUTDOWN_DATA	0x0010
+#define PARAM_CUT_OFF_LOW  0x10
+#define PARAM_CUT_OFF_HIGH 0x00
 
 static struct battery_info *battery_info;
 static int support_cut_off;
@@ -239,18 +241,23 @@ const struct battery_info *battery_get_info(void)
 int board_cut_off_battery(void)
 {
 	int rv;
+	uint8_t buf[3];
+
+	buf[0] = SB_MANUFACTURER_ACCESS & 0xff;
+	buf[1] = PARAM_CUT_OFF_LOW;
+	buf[2] = PARAM_CUT_OFF_HIGH;
 
 	if (!support_cut_off)
 		return EC_RES_INVALID_COMMAND;
 
 	/* Ship mode command must be sent twice to take effect */
-	rv = sb_write(SB_MANUFACTURER_ACCESS, SB_SHUTDOWN_DATA);
+	i2c_lock(I2C_PORT_BATTERY, 1);
+	rv = i2c_xfer(I2C_PORT_BATTERY, BATTERY_ADDR,
+		      buf, 3, NULL, 0, I2C_XFER_SINGLE);
+	rv = i2c_xfer(I2C_PORT_BATTERY, BATTERY_ADDR,
+		      buf, 3, NULL, 0, I2C_XFER_SINGLE);
+	i2c_lock(I2C_PORT_BATTERY, 0);
 
-	if (rv != EC_SUCCESS)
-		goto out;
-
-	rv = sb_write(SB_MANUFACTURER_ACCESS, SB_SHUTDOWN_DATA);
-out:
 	if (rv)
 		return EC_RES_ERROR;
 	else
