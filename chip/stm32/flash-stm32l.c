@@ -400,6 +400,12 @@ int flash_physical_protect_now(int all)
 	}
 }
 
+uint32_t flash_physical_get_valid_flags(void)
+{
+	return EC_FLASH_PROTECT_RO_AT_BOOT |
+	       EC_FLASH_PROTECT_ALL_NOW;
+}
+
 int flash_pre_init(void)
 {
 	uint32_t reset_flags = system_get_reset_flags();
@@ -422,7 +428,7 @@ int flash_pre_init(void)
 			 * update to the write protect register and reboot so
 			 * it takes effect.
 			 */
-			flash_protect_ro_at_boot(1);
+			flash_protect_at_boot(FLASH_WP_RO);
 			need_reset = 1;
 		}
 
@@ -431,8 +437,9 @@ int flash_pre_init(void)
 			 * Write protect register was in an inconsistent state.
 			 * Set it back to a good state and reboot.
 			 */
-			flash_protect_ro_at_boot(
-				prot_flags & EC_FLASH_PROTECT_RO_AT_BOOT);
+			flash_protect_at_boot(
+				(prot_flags & EC_FLASH_PROTECT_RO_AT_BOOT) ?
+				FLASH_WP_RO : FLASH_WP_NONE);
 			need_reset = 1;
 		}
 	} else if (prot_flags & (EC_FLASH_PROTECT_RO_NOW |

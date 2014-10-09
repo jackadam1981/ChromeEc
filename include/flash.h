@@ -110,6 +110,14 @@ int flash_physical_force_reload(void);
  */
 int flash_physical_restore_state(void);
 
+/**
+ * Return the valid flash protect flags.
+ *
+ * The return value is a combination of EC_FLASH_PROTECT_* flags
+ * from ec_commands.h
+ */
+uint32_t flash_physical_get_valid_flags(void);
+
 /*****************************************************************************/
 /* Low-level common code for use by flash modules. */
 
