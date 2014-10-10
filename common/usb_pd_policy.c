@@ -102,11 +102,12 @@ static int dfp_enter_modes(int port, uint32_t *payload)
 	if (pe[port].amodes == NULL)
 		pd_dfp_choose_modes(&pe[port]);
 
-	modep = &pe[port].amodes[pe[port].amode_idx];
-	if (modep->amode == dfp_amode_none)
+	if (pe[port].amode_idx == pe[port].amode_cnt)
 		return 0;
+	modep = &pe[port].amodes[pe[port].amode_idx];
 
 	modep->fx->enter(port, *modep->mode_caps);
+	pe[port].cur_mode = modep;
 	payload[0] = VDO(modep->fx->svid, 1,
 			 CMD_ENTER_MODE |
 			 VDO_OPOS(modep->amode));
@@ -125,6 +126,7 @@ int pd_exit_modes(int port, uint32_t *payload)
 		return 1;
 
 	modep->fx->exit(port);
+	pe[port].cur_mode = NULL;
 	payload[0] = VDO(modep->fx->svid, 1,
 			 CMD_EXIT_MODE |
 			 VDO_OPOS(modep->amode));
@@ -203,15 +205,22 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 		case CMD_ENTER_MODE:
 			rsize = svdm_rsp.enter_mode(port, payload);
 			break;
+		case CMD_DP_STATUS:
+			rsize = svdm_rsp.amode->status(port, payload);
+			break;
+		case CMD_DP_CONFIG:
+			rsize = svdm_rsp.amode->config(port, payload);
+			break;
 		case CMD_EXIT_MODE:
 			rsize = svdm_rsp.exit_mode(port, payload);
 			break;
 		}
-		if (rsize > 1)
+		if (rsize >= 1)
 			payload[0] |= VDO_CMDT(CMDT_RSP_ACK);
-		else if (rsize == 1)
+		else if (!rsize) {
 			payload[0] |= VDO_CMDT(CMDT_RSP_NAK);
-		else {
+			rsize = 1;
+		} else {
 			payload[0] |= VDO_CMDT(CMDT_RSP_BUSY);
 			rsize = 1;
 		}
@@ -233,7 +242,19 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 				rsize = dfp_enter_modes(port, payload);
 			break;
 		case CMD_ENTER_MODE:
-			rsize = dfp_enter_modes(port, payload);
+			if (!pe[port].cur_mode)
+				rsize = dfp_enter_modes(port, payload);
+
+			if ((!rsize) && pe[port].cur_mode->fx->status)
+				rsize = pe[port].cur_mode->fx->status(port,
+								      payload);
+			break;
+		case CMD_DP_STATUS:
+			rsize = pe[port].cur_mode->fx->config(port, payload);
+			break;
+		case CMD_DP_CONFIG:
+			rsize = 0;
+			break;
 		case CMD_EXIT_MODE:
 			rsize = pd_exit_modes(port, payload);
 			break;
