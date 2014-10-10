@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10b24012_9bcd2b42",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-10-10T04:18:33Z",
+      "side": 1,
+      "message": "This is called pass through mode. The IOAPIC (which detects the IRQ) is configured as edge trigger. The IOAPIC is the only thing that generates the interrupt. I don\u0027t see how multiple IRQs will be sensed in this case.",
+      "revId": "aa29df439d617ae45eee97aff76aafd75a010880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0c04c6a_baf59197",
+        "filename": "chip/lm4/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-10-10T04:18:33Z",
+      "side": 1,
+      "message": "I think the memory barrier should be placed in the keyboard_irq_assert(). I am surprised this write didn\u0027t make it to the lpc unit in time for the gpio writes + udelay, though.",
+      "revId": "aa29df439d617ae45eee97aff76aafd75a010880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
