@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "10f960d6_43fea641",
+        "filename": "chip/stm32/flash-f-f0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-10T20:00:45Z",
+      "side": 1,
+      "message": "It was a typo. I meant to say \"different\" not \"the same\". Modified the comment to be more verbose.",
+      "parentUuid": "d038a85e_a1645e90",
+      "range": {
+        "startLine": 448,
+        "startChar": 0,
+        "endLine": 450,
+        "endChar": 49
+      },
+      "revId": "9e184c367dff694e9df6776d09486196f52d177c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10f960d6_e3fb528c",
         "filename": "common/flash.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2014-10-10T16:41:27Z",
       "side": 1,
       "message": "This logic is tricky and should be commented/described.  I\u0027m not convinced that\n\nflash_set_protect(mask\u003dRO_AT_BOOT|ALL_AT_BOOT, flags\u003dRO_AT_BOOT) \n\nwill do the right thing as written.\n\nThat is, it\u0027s a bit confusing to me whether setting or clearing ALL_AT_BOOT will also set or clear RO_AT_BOOT, and whether RO_AT_BOOT unset, ALL_AT_BOOT set means that everything will be protected or not.",
+      "range": {
+        "startLine": 272,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 2
+      },
+      "revId": "9e184c367dff694e9df6776d09486196f52d177c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d038a85e_6a94eb4b",
+        "filename": "common/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-10T20:00:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10f960d6_e3fb528c",
       "range": {
         "startLine": 272,
         "startChar": 0,
