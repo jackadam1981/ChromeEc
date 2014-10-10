@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b0a174bc_8394a04c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1107030
+      },
+      "writtenOn": "2014-10-10T05:52:38Z",
+      "side": 1,
+      "message": "i think this is my assuming, so i use the term \"could\". Except for multiple IRQs, i has no idea of why the longer KBC IRQ pulse eliminates the symptom, since the timing of the KBC IRQ low edge isn\u0027t affected. i just make the pulse duration longer. i was thinking there are pulses from the view of IOAPIC input, even the pulse is remained low from the view of EC. Why i was thinking so is because the GPIO configuration is level-low active. i am curious with what will happen at each end of KB ISR and the EOI to IOAPIC. Since GPIO driver will try to clear the level IRQ state and it will got another active state since the pin is configured as level-low active and the original pulse is longer. At the point gpio driver clears the previous IRQ, there would/could(not sure now) be (an)other pulse(s) output from GPIO to IOAPIC. i think i have experiments to do. 1. check multiple IRQs from Kernel(SoC) side with longer KBC pulse. 2. change the GPIO configuration to Edge instead of level to see if symptom occurs because the multiple IRQs possibility is eliminated. thanks for the ideas sharing.",
+      "parentUuid": "10b24012_9bcd2b42",
+      "revId": "aa29df439d617ae45eee97aff76aafd75a010880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0c04c6a_baf59197",
         "filename": "chip/lm4/lpc.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-10-10T04:18:33Z",
       "side": 1,
       "message": "I think the memory barrier should be placed in the keyboard_irq_assert(). I am surprised this write didn\u0027t make it to the lpc unit in time for the gpio writes + udelay, though.",
+      "revId": "aa29df439d617ae45eee97aff76aafd75a010880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90a630d2_2586fa37",
+        "filename": "chip/lm4/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1107030
+      },
+      "writtenOn": "2014-10-10T05:52:38Z",
+      "side": 1,
+      "message": "me, too. will co-work with HW guys F2F to see what really happens when failure failure occurs by setting proper trigger condition for LPC trace log. expecting: KBC IRQ is asserted, SoC issues IO 60/64 read and gets not 0xFA data.",
+      "parentUuid": "f0c04c6a_baf59197",
       "revId": "aa29df439d617ae45eee97aff76aafd75a010880",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
