@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "305104a9_b06a600c",
+        "filename": "chip/stm32/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-10T22:04:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10bfa0c3_952cb7c1",
+      "revId": "6386a137dcbcedb69e1b0e328ea9f148424614eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10bfa0c3_b510d370",
         "filename": "chip/stm32/build.mk",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-10-09T23:12:17Z",
       "side": 1,
       "message": "given those family flags are mutually exclusive,\nisn\u0027t this equivalent to :\nchip-$(CHIP_FAMILY_STM32F0)$(CHIP_FAMILY_STM32F)$(CHIP_FAMILY_STM32F3)+\u003dflash-f-f0.o",
+      "revId": "6386a137dcbcedb69e1b0e328ea9f148424614eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "104ec00c_352c0004",
+        "filename": "chip/stm32/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-10T22:04:40Z",
+      "side": 1,
+      "message": "Yeah it is, but that way it\u0027s going to go over 80 characters and become ugly easily.",
+      "parentUuid": "10bfa0c3_b510d370",
       "revId": "6386a137dcbcedb69e1b0e328ea9f148424614eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
