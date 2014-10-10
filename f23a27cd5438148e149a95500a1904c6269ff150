@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10f960d6_23504a9d",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-10T17:37:55Z",
+      "side": 1,
+      "message": "I don\u0027t think this does what you want. doesn\u0027t it just set [0][0] to 500, and the rest of the array to 0? I think you may need an init function (HOOK_INIT) that loops over all and sets to 500.",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 8
+      },
+      "revId": "f23a27cd5438148e149a95500a1904c6269ff150",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d038a85e_24461c19",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-10T17:37:55Z",
+      "side": 1,
+      "message": "local array here could use up a lot of stack space. suggest making static. this function is only called from hooks task so doesn\u0027t need to be re-entrant.",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 55
+      },
+      "revId": "f23a27cd5438148e149a95500a1904c6269ff150",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30fca4c4_a451e2d7",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-10T17:37:55Z",
+      "side": 1,
+      "message": "do you need to loop. can you not just use a single memcpy?\n\nmemcpy(charge_copy, available_charge_ma, sizeof(available_charge_ma));",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 36
+      },
+      "revId": "f23a27cd5438148e149a95500a1904c6269ff150",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10f960d6_43810688",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-10T17:37:55Z",
+      "side": 1,
+      "message": "if we initialize every element to 500mA, and then a charger is plugged in that wants to set limit at 500mA, then it seems we aren\u0027t guaranteed to set new_port to the port that is actually attached. should we just initialize to 0?",
+      "range": {
+        "startLine": 59,
+        "startChar": 8,
+        "endLine": 60,
+        "endChar": 43
+      },
+      "revId": "f23a27cd5438148e149a95500a1904c6269ff150",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d038a85e_24f4dc64",
+        "filename": "include/charge_manager.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-10T17:37:55Z",
+      "side": 1,
+      "message": "there is another one, type-C resistor strapping on CC line (CHARGE_SUPPLIER_TYPEC?), which I think should have lower priority than PD comm and higher than BC1.2",
+      "revId": "f23a27cd5438148e149a95500a1904c6269ff150",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
