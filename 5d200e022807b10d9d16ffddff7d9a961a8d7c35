@@ -16,6 +16,24 @@
       "revId": "5d200e022807b10d9d16ffddff7d9a961a8d7c35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90a630d2_bf51f7d7",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-10T01:24:13Z",
+      "side": 1,
+      "message": "discussed w/ Vincent in person and he was kind enough to code up a method to address descriptors \u003e 64bytes.  I\u0027ve adapted his initial POC to fit my needs (patch 2of3).  Plan is to evaluate generalizing it as it pertains to other descriptors (strings).",
+      "parentUuid": "10bfa0c3_5f331eeb",
+      "revId": "5d200e022807b10d9d16ffddff7d9a961a8d7c35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
