@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30fca4c4_440eae53",
+        "filename": "board/twinkie/usb_pd_policy.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-10T16:09:19Z",
+      "side": 1,
+      "message": "I think this should be 3000, if we want to advertise what zinger is advertising.",
+      "range": {
+        "startLine": 22,
+        "startChar": 19,
+        "endLine": 22,
+        "endChar": 23
+      },
+      "revId": "3775a7bab2e778852485792bd77d6e186cd3081e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
