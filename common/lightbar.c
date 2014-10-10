@@ -346,6 +346,8 @@ static uint32_t pending_msg;
 /* Here are the preprogrammed sequences. */
 /******************************************************************************/
 
+#ifdef BLUE_PULSING
+
 /* Pulse google colors once, off to on to off. */
 static uint32_t pulse_google_colors(void)
 {
@@ -392,10 +394,6 @@ static uint32_t sequence_S3S0(void)
 	if (res)
 		return res;
 
-#ifndef BLUE_PULSING
-	return 0;
-#endif
-
 	/* Ramp up to starting brightness, using S0 colors */
 	ci = st.p.s0_idx[st.battery_is_charging][st.battery_level];
 	if (ci >= ARRAY_SIZE(st.p.color))
@@ -420,7 +418,32 @@ static uint32_t sequence_S3S0(void)
 	return 0;
 }
 
-#ifdef BLUE_PULSING
+/* CPU is going to sleep. */
+static uint32_t sequence_S0S3(void)
+{
+	int w, i, r, g, b;
+	int f;
+	uint8_t drop[NUM_LEDS][3];
+
+	/* Grab current colors */
+	for (i = 0; i < NUM_LEDS; i++)
+		lb_get_rgb(i, &drop[i][0], &drop[i][1], &drop[i][2]);
+
+	/* Fade down to black */
+	for (w = 128; w <= 256; w++) {
+		f = cycle_010(w);
+		for (i = 0; i < NUM_LEDS; i++) {
+			r = drop[i][0] * f / FP_SCALE;
+			g = drop[i][1] * f / FP_SCALE;
+			b = drop[i][2] * f / FP_SCALE;
+			lb_set_rgb(i, r, g, b);
+		}
+		WAIT_OR_RET(st.p.s0s3_ramp_down);
+	}
+
+	/* pulse once and done */
+	return pulse_google_colors();
+}
 
 /* CPU is fully on */
 static uint32_t sequence_S0(void)
@@ -487,127 +510,7 @@ static uint32_t sequence_S0(void)
 	return 0;
 }
 
-#else  /* just simple google colors */
-
-static uint32_t sequence_S0(void)
-{
-	int w, i, r, g, b;
-	int f;
-
-	lb_set_rgb(NUM_LEDS, 0, 0, 0);
-	lb_on();
-
-	/* Ramp up */
-	for (w = 0; w < 128; w += 2) {
-		f = cycle_010(w);
-		for (i = 0; i < NUM_LEDS; i++) {
-			r = st.p.color[i].r * f / FP_SCALE;
-			g = st.p.color[i].g * f / FP_SCALE;
-			b = st.p.color[i].b * f / FP_SCALE;
-			lb_set_rgb(i, r, g, b);
-		}
-		WAIT_OR_RET(st.p.google_ramp_up);
-	}
-
-	while (1) {
-
-		get_battery_level();
-
-		/* Not really low use google colors */
-		if (st.battery_level) {
-			for (i = 0; i < NUM_LEDS; i++) {
-				r = st.p.color[i].r;
-				g = st.p.color[i].g;
-				b = st.p.color[i].b;
-				lb_set_rgb(i, r, g, b);
-			}
-		} else {
-			r = st.p.color[5].r;
-			g = st.p.color[5].g;
-			b = st.p.color[5].b;
-			lb_set_rgb(4, r, g, b);
-		}
-
-		WAIT_OR_RET(1 * SECOND);
-	}
-	return 0;
-}
-
 #endif
-
-/* CPU is going to sleep. */
-static uint32_t sequence_S0S3(void)
-{
-	int w, i, r, g, b;
-	int f;
-	uint8_t drop[NUM_LEDS][3];
-
-	/* Grab current colors */
-	for (i = 0; i < NUM_LEDS; i++)
-		lb_get_rgb(i, &drop[i][0], &drop[i][1], &drop[i][2]);
-
-	/* Fade down to black */
-	for (w = 128; w <= 256; w++) {
-		f = cycle_010(w);
-		for (i = 0; i < NUM_LEDS; i++) {
-			r = drop[i][0] * f / FP_SCALE;
-			g = drop[i][1] * f / FP_SCALE;
-			b = drop[i][2] * f / FP_SCALE;
-			lb_set_rgb(i, r, g, b);
-		}
-		WAIT_OR_RET(st.p.s0s3_ramp_down);
-	}
-
-	/* pulse once and done */
-	return pulse_google_colors();
-}
-
-/* CPU is sleeping */
-static uint32_t sequence_S3(void)
-{
-	int r, g, b;
-	int w;
-	int f;
-	int ci;
-
-	lb_off();
-	lb_init();
-	lb_set_rgb(NUM_LEDS, 0, 0, 0);
-	while (1) {
-		WAIT_OR_RET(st.p.s3_sleep_for);
-		get_battery_level();
-
-		/* only pulse if we've been given a valid color index */
-		ci = st.p.s3_idx[st.battery_is_charging][st.battery_level];
-		if (ci >= ARRAY_SIZE(st.p.color))
-			continue;
-
-		/* pulse once */
-		lb_on();
-
-		for (w = 0; w < 128; w += 2) {
-			f = cycle_010(w);
-			r = st.p.color[ci].r * f / FP_SCALE;
-			g = st.p.color[ci].g * f / FP_SCALE;
-			b = st.p.color[ci].b * f / FP_SCALE;
-			lb_set_rgb(NUM_LEDS, r, g, b);
-			WAIT_OR_RET(st.p.s3_ramp_up);
-		}
-		for (w = 128; w <= 256; w++) {
-			f = cycle_010(w);
-			r = st.p.color[ci].r * f / FP_SCALE;
-			g = st.p.color[ci].g * f / FP_SCALE;
-			b = st.p.color[ci].b * f / FP_SCALE;
-			lb_set_rgb(NUM_LEDS, r, g, b);
-			WAIT_OR_RET(st.p.s3_ramp_down);
-		}
-
-		lb_set_rgb(NUM_LEDS, 0, 0, 0);
-		lb_off();
-	}
-	return 0;
-}
-
 
 /* CPU is powering up. We generally boot fast enough that we don't have time
  * to do anything interesting in the S3 state, but go straight on to S0. */
@@ -683,108 +586,6 @@ static uint32_t sequence_ERROR(void)
 
 	WAIT_OR_RET(10 * SECOND);
 	return 0;
-}
-
-static const struct {
-	uint8_t led;
-	uint8_t r, g, b;
-	unsigned int delay;
-} konami[] = {
-
-	{1, 0xff, 0xff, 0x00, 0},
-	{2, 0xff, 0xff, 0x00, 100000},
-	{1, 0x00, 0x00, 0x00, 0},
-	{2, 0x00, 0x00, 0x00, 100000},
-
-	{1, 0xff, 0xff, 0x00, 0},
-	{2, 0xff, 0xff, 0x00, 100000},
-	{1, 0x00, 0x00, 0x00, 0},
-	{2, 0x00, 0x00, 0x00, 100000},
-
-	{0, 0x00, 0x00, 0xff, 0},
-	{3, 0x00, 0x00, 0xff, 100000},
-	{0, 0x00, 0x00, 0x00, 0},
-	{3, 0x00, 0x00, 0x00, 100000},
-
-	{0, 0x00, 0x00, 0xff, 0},
-	{3, 0x00, 0x00, 0xff, 100000},
-	{0, 0x00, 0x00, 0x00, 0},
-	{3, 0x00, 0x00, 0x00, 100000},
-
-	{0, 0xff, 0x00, 0x00, 0},
-	{1, 0xff, 0x00, 0x00, 100000},
-	{0, 0x00, 0x00, 0x00, 0},
-	{1, 0x00, 0x00, 0x00, 100000},
-
-	{2, 0x00, 0xff, 0x00, 0},
-	{3, 0x00, 0xff, 0x00, 100000},
-	{2, 0x00, 0x00, 0x00, 0},
-	{3, 0x00, 0x00, 0x00, 100000},
-
-	{0, 0xff, 0x00, 0x00, 0},
-	{1, 0xff, 0x00, 0x00, 100000},
-	{0, 0x00, 0x00, 0x00, 0},
-	{1, 0x00, 0x00, 0x00, 100000},
-
-	{2, 0x00, 0xff, 0x00, 0},
-	{3, 0x00, 0xff, 0x00, 100000},
-	{2, 0x00, 0x00, 0x00, 0},
-	{3, 0x00, 0x00, 0x00, 100000},
-
-	{0, 0x00, 0xff, 0xff, 0},
-	{2, 0x00, 0xff, 0xff, 100000},
-	{0, 0x00, 0x00, 0x00, 0},
-	{2, 0x00, 0x00, 0x00, 150000},
-
-	{1, 0xff, 0x00, 0xff, 0},
-	{3, 0xff, 0x00, 0xff, 100000},
-	{1, 0x00, 0x00, 0x00, 0},
-	{3, 0x00, 0x00, 0x00, 250000},
-
-	{4, 0xff, 0xff, 0xff, 100000},
-	{4, 0x00, 0x00, 0x00, 100000},
-
-	{4, 0xff, 0xff, 0xff, 100000},
-	{4, 0x00, 0x00, 0x00, 100000},
-
-	{4, 0xff, 0xff, 0xff, 100000},
-	{4, 0x00, 0x00, 0x00, 100000},
-
-	{4, 0xff, 0xff, 0xff, 100000},
-	{4, 0x00, 0x00, 0x00, 100000},
-
-	{4, 0xff, 0xff, 0xff, 100000},
-	{4, 0x00, 0x00, 0x00, 100000},
-
-	{4, 0xff, 0xff, 0xff, 100000},
-	{4, 0x00, 0x00, 0x00, 100000},
-};
-
-static uint32_t sequence_KONAMI_inner(void)
-{
-	int i;
-
-	for (i = 0; i < ARRAY_SIZE(konami); i++) {
-		lb_set_rgb(konami[i].led,
-			   konami[i].r, konami[i].g, konami[i].b);
-		if (konami[i].delay)
-			WAIT_OR_RET(konami[i].delay);
-	}
-
-	return 0;
-}
-
-static uint32_t sequence_KONAMI(void)
-{
-	int tmp;
-	uint32_t r;
-
-	/* Force brightness to max, then restore it */
-	tmp = lb_get_brightness();
-	lb_set_brightness(255);
-	r = sequence_KONAMI_inner();
-	lb_set_brightness(tmp);
-	return r;
 }
 
 /* Returns 0.0 to 1.0 for val in [min, min + ofs] */
@@ -1285,12 +1086,14 @@ static uint32_t (*lightbyte_dispatch[])(void) = {
 };
 #undef OP
 
+#ifdef LIGHTBAR_SIMULATION
 #define OP(NAME, BYTES, MNEMONIC) MNEMONIC,
 #include "lightbar_opcode_list.h"
 static const char * const lightbyte_names[] = {
 	LIGHTBAR_OPCODE_TABLE
 };
 #undef OP
+#endif
 
 static uint32_t sequence_PROGRAM(void)
 {
@@ -1325,8 +1128,10 @@ static uint32_t sequence_PROGRAM(void)
 			lb_set_brightness(saved_brightness);
 			return EC_RES_INVALID_PARAM;
 		} else {
+#ifdef LIGHTBAR_SIMULATION
 			CPRINTS("LB PROGRAM pc: 0x%02x, opcode 0x%02x -> %s",
 				 old_pc, next_inst, lightbyte_names[next_inst]);
+#endif
 			rc = lightbyte_dispatch[next_inst]();
 			if (rc) {
 				lb_set_brightness(saved_brightness);
@@ -1337,6 +1142,99 @@ static uint32_t sequence_PROGRAM(void)
 		/* yield processor in case we are stuck in a tight loop */
 		WAIT_OR_RET(100);
 	}
+}
+
+static uint32_t load_and_run(const uint8_t prog[], uint8_t size)
+{
+	memcpy(next_prog.data, prog, size);
+	next_prog.size = size;
+	return sequence_PROGRAM();
+}
+
+#ifndef BLUE_PULSING  /* just simple google colors */
+
+static uint32_t sequence_S3S0(void)
+{
+	static const uint8_t s3s0_prog[] = {
+		0x0a, 0x14, 0x33, 0x69, 0xe8, 0x0a, 0x24, 0xd5,
+		0x0f, 0x25, 0x0a, 0x44, 0xee, 0xb2, 0x11, 0x0a,
+		0x84, 0x00, 0x99, 0x25, 0x06, 0x00, 0x00, 0x04,
+		0xe2, 0x0d, 0x0c, 0x06, 0x00, 0x00, 0x27, 0x10,
+		0x0d, 0x10
+	};
+
+	return load_and_run(s3s0_prog, ARRAY_SIZE(s3s0_prog));
+}
+
+static uint32_t sequence_S0(void)
+{
+	static const uint8_t s0_prog[] = {
+		0x0a, 0x14, 0x33, 0x69, 0xe8, 0x0a, 0x24, 0xd5,
+		0x0f, 0x25, 0x0a, 0x44, 0xee, 0xb2, 0x11, 0x0a,
+		0x84, 0x00, 0x99, 0x25, 0x06, 0x00, 0x00, 0x04,
+		0xe2, 0x0d, 0x09, 0xf0, 0xff, 0x06, 0x00, 0x00,
+		0x09, 0xc4, 0x05, 0x00, 0x0f, 0x42, 0x40, 0x07,
+		0x02, 0x2d, 0x0c, 0x0d, 0x07, 0x03, 0x32, 0x2c,
+		0x02, 0x2c, 0x0c, 0x0d, 0x07, 0x03, 0x34, 0x2a,
+		0x02, 0x2a
+	};
+
+	return load_and_run(s0_prog, ARRAY_SIZE(s0_prog));
+}
+
+static uint32_t sequence_S0S3(void)
+{
+	static const uint8_t s0s3_prog[] = {
+		0x0b, 0x06, 0x00, 0x00, 0x07, 0xd0, 0x0d, 0x0c,
+		0x0a, 0x14, 0x33, 0x69, 0xe8, 0x0a, 0x24, 0xd5,
+		0x0f, 0x25, 0x0a, 0x44, 0xee, 0xb2, 0x11, 0x0a,
+		0x84, 0x00, 0x99, 0x25, 0x06, 0x00, 0x00, 0x04,
+		0xe2, 0x0d, 0x0c, 0x06, 0x00, 0x00, 0x27, 0x10,
+		0x0d, 0x01, 0x10
+	};
+
+	return load_and_run(s0s3_prog, ARRAY_SIZE(s0s3_prog));
+}
+
+#endif
+
+static uint32_t sequence_S3(void)
+{
+	static const uint8_t s3_prog[] = {
+		0x0a, 0xf4, 0xff, 0x00, 0x00, 0x0e, 0x05, 0x00,
+		0x4c, 0x4b, 0x40, 0x01, 0x07, 0x04, 0x0b, 0x03,
+		0x14, 0x0b, 0x02, 0x0b, 0x00, 0x06, 0x00, 0x00,
+		0x04, 0xe2, 0x0d, 0x0c, 0x06, 0x00, 0x00, 0x27,
+		0x10, 0x0d, 0x0c, 0x02, 0x0b
+	};
+
+	return load_and_run(s3_prog, ARRAY_SIZE(s3_prog));
+}
+
+static uint32_t sequence_KONAMI(void)
+{
+	static const uint8_t konami_prog[] = {
+		0x05, 0x00, 0x01, 0x86, 0xa0, 0x0a, 0x64, 0xff,
+		0xff, 0x00, 0x0d, 0x07, 0x0e, 0x07, 0x0d, 0x07,
+		0x0e, 0x07, 0x0a, 0x64, 0x00, 0x00, 0x00, 0x09,
+		0x96, 0xff, 0x0d, 0x07, 0x0e, 0x07, 0x0d, 0x07,
+		0x0e, 0x07, 0x09, 0x96, 0x00, 0x09, 0x34, 0xff,
+		0x0d, 0x07, 0x0e, 0x07, 0x09, 0x34, 0x00, 0x09,
+		0xc5, 0xff, 0x0d, 0x07, 0x0e, 0x07, 0x09, 0xc5,
+		0x00, 0x09, 0x34, 0xff, 0x0d, 0x07, 0x0e, 0x07,
+		0x09, 0x34, 0x00, 0x09, 0xc5, 0xff, 0x0d, 0x07,
+		0x0e, 0x07, 0x09, 0xc5, 0x00, 0x0a, 0x54, 0x00,
+		0xff, 0xff, 0x0d, 0x07, 0x0e, 0x07, 0x05, 0x00,
+		0x00, 0xc3, 0x50, 0x07, 0x0a, 0x54, 0x00, 0x00,
+		0x00, 0x0a, 0xa4, 0xff, 0x00, 0xff, 0x0d, 0x07,
+		0x07, 0x0e, 0x07, 0x05, 0x00, 0x01, 0x86, 0xa0,
+		0x07, 0x07, 0x0a, 0xf4, 0xff, 0xff, 0xff, 0x0d,
+		0x07, 0x0e, 0x07, 0x0d, 0x07, 0x0e, 0x07, 0x0d,
+		0x07, 0x0e, 0x07, 0x0d, 0x07, 0x0e, 0x07, 0x0d,
+		0x07, 0x0e, 0x07, 0x0d, 0x07, 0x0e, 0x07, 0x10
+	};
+
+	return load_and_run(konami_prog, ARRAY_SIZE(konami_prog));
 }
 
 /****************************************************************************/
