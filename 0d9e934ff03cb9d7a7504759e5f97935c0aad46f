@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b007b451_4b46ef19",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-10T00:45:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10940050_3449368e",
+      "revId": "0d9e934ff03cb9d7a7504759e5f97935c0aad46f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b07c14f2_eea35b39",
         "filename": "board/samus_pd/usb_pd_policy.c",
         "patchSetId": 7
@@ -30,6 +48,24 @@
       "writtenOn": "2014-10-09T18:11:24Z",
       "side": 1,
       "message": "\u003d ARRAY_SIZE(supported_modes)",
+      "revId": "0d9e934ff03cb9d7a7504759e5f97935c0aad46f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10940050_7a06458d",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-10T00:45:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b07c14f2_eea35b39",
       "revId": "0d9e934ff03cb9d7a7504759e5f97935c0aad46f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
