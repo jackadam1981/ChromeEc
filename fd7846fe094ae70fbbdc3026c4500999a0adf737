@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0218832_7907e73d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1385,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-10T22:40:00Z",
+      "side": 1,
+      "message": "Shawn, right in this if() statement is where you will need to set the input current limit based on CC pull-up value. This gets run everytime we first detect a type-C power source has been plugged in. The values should be:\n\n200mV \u003c VBUS \u003c\u003d 660mV  : 500mA limit\n660mV \u003c VBUS \u003c\u003d 1230mV : 1.5A limit\n1230mV \u003c VBUS          : 3.0A limit\n\nCheckout macros for PD_SRC_RD_THRESHOLD, you\u0027ll want to make some more. And then in this location you just call pd_set_input_current_limit().\n\nOne note is that if you have both a type-C resistor strapping and BC1.2, then I believe you are supposed to take the higher of the two. For instance, apple chargers will have a CC pull-up for 1.5A limit, but BC1.2 will say 2.4A ok, and in that case we want to do 2.4A. Might want to check with schneider on this, but that\u0027s my recollection.",
+      "range": {
+        "startLine": 1385,
+        "startChar": 5,
+        "endLine": 1385,
+        "endChar": 45
+      },
+      "revId": "fd7846fe094ae70fbbdc3026c4500999a0adf737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
