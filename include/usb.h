@@ -214,6 +214,8 @@ static inline void memcpy_usbram(usb_uint *ebuf, const uint8_t *src, int size)
 /* String descriptors are defined in the board code */
 extern const void * const usb_strings[];
 extern const uint8_t usb_string_desc[];
+/* USB string descriptor with the firmware version */
+extern const void * const usb_fw_version;
 
 /* Helpers for endpoint declaration */
 
