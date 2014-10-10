@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "90a8f091_c9905559",
+        "filename": "board/hoho/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-10T01:23:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b007b451_6560427d",
+      "revId": "b7201e68555de0ceb84b069ecde8cf343dd06711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10940050_14a35a93",
         "filename": "board/hoho/board.c",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2014-10-09T18:34:15Z",
       "side": 1,
       "message": "should be const ?\nunless we need to change a field in bb_caps",
+      "revId": "b7201e68555de0ceb84b069ecde8cf343dd06711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70761c14_c6ecc227",
+        "filename": "board/hoho/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-10T01:23:39Z",
+      "side": 1,
+      "message": "Does need to be write-able for parts of the bb_caps as you suggest.",
+      "parentUuid": "10940050_14a35a93",
       "revId": "b7201e68555de0ceb84b069ecde8cf343dd06711",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "70761c14_e6e9be14",
+        "filename": "board/hoho/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-10T01:23:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10940050_74b2dede",
+      "revId": "b7201e68555de0ceb84b069ecde8cf343dd06711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10940050_34a8566d",
         "filename": "include/usb_pd.h",
         "patchSetId": 4
@@ -64,6 +118,24 @@
       "writtenOn": "2014-10-09T18:34:15Z",
       "side": 1,
       "message": "that\u0027s not a URL (ie missing http://),\nwhat the standard is saying ?",
+      "revId": "b7201e68555de0ceb84b069ecde8cf343dd06711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "508af82f_131e14d2",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-10T01:23:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10940050_34a8566d",
       "revId": "b7201e68555de0ceb84b069ecde8cf343dd06711",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
