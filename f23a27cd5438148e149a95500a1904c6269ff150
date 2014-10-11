@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "30fca4c4_a77a045e",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-11T18:29:12Z",
+      "side": 1,
+      "message": "You\u0027re right, thanks. Done.",
+      "parentUuid": "10f960d6_23504a9d",
+      "revId": "f23a27cd5438148e149a95500a1904c6269ff150",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d038a85e_24461c19",
         "filename": "common/charge_manager.c",
         "patchSetId": 2
@@ -42,6 +60,24 @@
         "endLine": 30,
         "endChar": 55
       },
+      "revId": "f23a27cd5438148e149a95500a1904c6269ff150",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30fca4c4_2798544e",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-11T18:29:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d038a85e_24461c19",
       "revId": "f23a27cd5438148e149a95500a1904c6269ff150",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "30fca4c4_07955814",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-11T18:29:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30fca4c4_a451e2d7",
+      "revId": "f23a27cd5438148e149a95500a1904c6269ff150",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10f960d6_43810688",
         "filename": "common/charge_manager.c",
         "patchSetId": 2
@@ -94,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "30fca4c4_c7750070",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-11T18:29:12Z",
+      "side": 1,
+      "message": "I changed the initialization, and now we require all ports / suppliers to report in before we actually change anything.",
+      "parentUuid": "10f960d6_43810688",
+      "revId": "f23a27cd5438148e149a95500a1904c6269ff150",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d038a85e_24f4dc64",
         "filename": "include/charge_manager.h",
         "patchSetId": 2
@@ -105,6 +177,24 @@
       "writtenOn": "2014-10-10T17:37:55Z",
       "side": 1,
       "message": "there is another one, type-C resistor strapping on CC line (CHARGE_SUPPLIER_TYPEC?), which I think should have lower priority than PD comm and higher than BC1.2",
+      "revId": "f23a27cd5438148e149a95500a1904c6269ff150",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10f960d6_770b9894",
+        "filename": "include/charge_manager.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-11T18:29:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d038a85e_24f4dc64",
       "revId": "f23a27cd5438148e149a95500a1904c6269ff150",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
