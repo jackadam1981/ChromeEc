@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10f960d6_125d9235",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-12T15:42:50Z",
+      "side": 1,
+      "message": "I think that would generate better code if you swap the 2 dimensions of the array.",
+      "revId": "b7edc2de7a3027a0991e233bfe456ce47730e7e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d038a85e_0ae67ac2",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-12T15:42:50Z",
+      "side": 1,
+      "message": "I read it again and I still don\u0027t really understand how this copy helps.\nGiven we are doing the copy at a random point in time, how the copy is more coherent than the original data we would read in real-time ?",
+      "revId": "b7edc2de7a3027a0991e233bfe456ce47730e7e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b016d4da_fb00cbda",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-12T15:42:50Z",
+      "side": 1,
+      "message": "That\u0027s for multiple voltage sources (ie PD), we would prefer higher power sources but they might be lower current (ie 20V 2A vs 5V 3A)\nis that current scaled to 5V ? should we use power here ?",
+      "revId": "b7edc2de7a3027a0991e233bfe456ce47730e7e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
