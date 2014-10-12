@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "10f960d6_32b76efc",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-12T16:41:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10f960d6_125d9235",
+      "revId": "b7edc2de7a3027a0991e233bfe456ce47730e7e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d038a85e_0ae67ac2",
         "filename": "common/charge_manager.c",
         "patchSetId": 4
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "b016d4da_3be723e9",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-12T16:41:59Z",
+      "side": 1,
+      "message": "I\u0027d like to determine supplier + charge port based on data that I know not to be changing. With the current code, I cannot find any fatal bugs that can happen as a result of data changing mid-calculation. But, it would be easy to write such code -- for example, determine supplier by checking for non-zero current, then make another complete pass through the table with the wrong assumption that we have non-zero charge current for that supplier.\n\nLet\u0027s get another opinion about it.",
+      "parentUuid": "d038a85e_0ae67ac2",
+      "revId": "b7edc2de7a3027a0991e233bfe456ce47730e7e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b016d4da_fb00cbda",
         "filename": "common/charge_manager.c",
         "patchSetId": 4
@@ -47,6 +83,24 @@
       "writtenOn": "2014-10-12T15:42:50Z",
       "side": 1,
       "message": "That\u0027s for multiple voltage sources (ie PD), we would prefer higher power sources but they might be lower current (ie 20V 2A vs 5V 3A)\nis that current scaled to 5V ? should we use power here ?",
+      "revId": "b7edc2de7a3027a0991e233bfe456ce47730e7e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10f960d6_92c7426f",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-12T16:41:59Z",
+      "side": 1,
+      "message": "I think we\u0027re always scaled to 5V, but let\u0027s double check with Alec.",
+      "parentUuid": "b016d4da_fb00cbda",
       "revId": "b7edc2de7a3027a0991e233bfe456ce47730e7e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
