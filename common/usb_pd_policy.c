@@ -266,7 +266,6 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 			break;
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
 		case CMD_ATTENTION:
-			/* This is DFP response */
 			func = &dfp_consume_attention;
 			break;
 #endif
@@ -287,9 +286,9 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 			payload[0] |= VDO_CMDT(CMDT_RSP_BUSY);
 			rsize = 1;
 		}
-#ifdef CONFIG_USB_PD_ALT_MODE_DFP
 	} else if (cmd_type == CMDT_RSP_ACK) {
 		switch (cmd) {
+#ifdef CONFIG_USB_PD_ALT_MODE_DFP
 		case CMD_DISCOVER_IDENT:
 			dfp_consume_identity(port, payload);
 			rsize = dfp_discover_svids(port, payload);
@@ -332,6 +331,7 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 			/* no response after DFPs ack */
 			rsize = 0;
 			break;
+#endif
 		case CMD_ATTENTION:
 			/* no response after DFPs ack */
 			rsize = 0;
@@ -342,6 +342,7 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 		}
 
 		payload[0] |= VDO_CMDT(CMDT_INIT);
+#ifdef CONFIG_USB_PD_ALT_MODE_DFP
 	} else if (cmd_type == CMDT_RSP_BUSY) {
 		switch (cmd) {
 		case CMD_DISCOVER_IDENT:
@@ -369,7 +370,7 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 	} else {
 		CPRINTF("PE ERR: unknown cmd type %d\n", cmd);
 	}
-	CPRINTS("DONE");
+	CPRINTS("DONE rs:%d p[0]:%08x", rsize, payload[0]);
 	return rsize;
 }
 
@@ -380,6 +381,10 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 	return 0;
 }
 
+int pd_alt_mode(int port)
+{
+	return 0;
+}
 #endif /* CONFIG_USB_PD_ALT_MODE */
 
 #ifndef CONFIG_USB_PD_CUSTOM_VDM

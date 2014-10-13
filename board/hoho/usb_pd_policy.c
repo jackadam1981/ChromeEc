@@ -12,8 +12,9 @@
 #include "registers.h"
 #include "task.h"
 #include "timer.h"
-#include "util.h"
+#include "usb.h"
 #include "usb_pd.h"
+#include "util.h"
 #include "version.h"
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
@@ -176,18 +177,28 @@ static int dp_config(int port, uint32_t *payload)
 	return 1;
 }
 
+static int alt_mode;
+
 static int svdm_enter_mode(int port, uint32_t *payload)
 {
 	/* SID & mode request is valid */
 	if ((PD_VDO_VID(payload[0]) != USB_SID_DISPLAYPORT) ||
 	    (PD_VDO_OPOS(payload[0]) != OPOS))
 		return 0; /* will generate a NAK */
+
+	alt_mode = OPOS;
 	return 1;
+}
+
+int pd_alt_mode(int port)
+{
+	return alt_mode;
 }
 
 static int svdm_exit_mode(int port, uint32_t *payload)
 {
 	gpio_set_level(GPIO_PD_SBU_ENABLE, 0);
+	alt_mode = 0;
 	return 1; /* Must return ACK */
 }
 
