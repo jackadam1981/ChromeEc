@@ -16,7 +16,27 @@
 #include "usb.h"
 #include "usb_bb.h"
 #include "usb_pd.h"
+#include "timer.h"
 #include "util.h"
+
+static struct hpd_data hpds[6];
+static int idx;
+
+void hpd_deferred(void)
+{
+}
+DECLARE_DEFERRED(hpd_deferred);
+
+void hpd_event(enum gpio_signal signal)
+{
+	int prev_idx = idx;
+	idx = (idx + 1) % 6;
+	hpds[idx].level = gpio_get_level(signal);
+	hpds[idx].time = get_time();
+	ccprintf("HPD! level:%d deltaT(us):%d\n", hpds[idx].level,
+		 (hpds[idx].time.val - hpds[prev_idx].time.val));
+	hook_call_deferred(hpd_deferred, 2 * MSEC);
+}
 
 #include "gpio_list.h"
 
@@ -60,14 +80,18 @@ static void board_init_spi2(void)
 	/* Enable clocks to SPI2 module */
 	STM32_RCC_APB1ENR |= STM32_RCC_PB1_SPI2;
 }
+#endif /* CONFIG_SPI_FLASH */
 
 /* Initialize board. */
 static void board_init(void)
 {
+#ifdef CONFIG_SPI_FLASH
 	board_init_spi2();
+#endif
+	gpio_enable_interrupt(GPIO_DP_HPD);
 }
+
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
-#endif /* CONFIG_SPI_FLASH */
 
 /* ADC channels */
 const struct adc_t adc_channels[] = {
