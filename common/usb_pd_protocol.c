@@ -234,6 +234,8 @@ static struct pd_protocol {
 	/* Attached ChromeOS device id & RW hash */
 	uint16_t dev_id;
 	uint32_t dev_rw_hash[PD_RW_HASH_SIZE/4];
+	/* hot-plug detect queue */
+	struct hpd_queue hpd;
 } pd[PD_PORT_COUNT];
 
 /*
@@ -1039,11 +1041,92 @@ void pd_send_vdm(int port, uint32_t vid, int cmd, const uint32_t *data,
 	task_wake(PORT_TO_TASK_ID(port));
 }
 
+#ifdef CONFIG_USB_PD_ALT_MODE
+static void insert_hpd(int port, enum hpd_event event)
+{
+	int idx;
+
+	CPRINTS("tab insert_hpd\n");
+	/* don't clobber full queue */
+	if (pd[port].hpd.cnt == HPD_QUEUE_SIZE)
+		return;
+
+	idx = (pd[port].hpd.head + pd[port].hpd.cnt) % HPD_QUEUE_SIZE;
+	pd[port].hpd.q[idx] = event;
+	pd[port].hpd.cnt++;
+}
+
+enum hpd_event pd_ufp_dequeue_hpd(int port)
+{
+	enum hpd_event rv;
+	CPRINTS("tab dequeue_hpd\n");
+	if (!pd[port].hpd.cnt)
+		return hpd_none;
+	rv = pd[port].hpd.q[pd[port].hpd.head];
+	pd[port].hpd.cnt--;
+	pd[port].hpd.head = (pd[port].hpd.head + 1) % HPD_QUEUE_SIZE;
+	return rv;
+}
+
+void pd_ufp_queue_hpd(int port, enum hpd_event event)
+{
+	int i, idx, cnt;
+
+	/* no queuing prior to alternate mode */
+	if (!pd_alt_mode(port)) {
+		CPRINTS("tab: not in alt_mode yet\n");
+		return;
+	}
+	CPRINTS("tab queue_hpd hpd = %d\n", event);
+
+	switch (event) {
+	case hpd_low:
+		/* dequeue any outstanding hpd events in shadow of low */
+		pd[port].hpd.head = 0;
+		pd[port].hpd.q[0] = event;
+		pd[port].hpd.cnt = 1;
+		break;
+	case hpd_irq:
+		/* keep at most 2 outstanding IRQs */
+		cnt = 0;
+		for (i = pd[port].hpd.head; i < pd[port].hpd.cnt; i++) {
+			idx = i % HPD_QUEUE_SIZE;
+			if (pd[port].hpd.q[idx] == hpd_irq)
+				cnt++;
+			if (cnt == 2)
+				break;
+		}
+		if (cnt < 2)
+			insert_hpd(port, event);
+		break;
+	case hpd_high:
+		/* just queue it */
+		insert_hpd(port, event);
+		break;
+	default:
+		break;
+	}
+}
+#endif /* CONFIG_USB_PD_ALT_MODE */
+
 static void pd_vdm_send_state_machine(int port)
 {
 	int res;
 	uint16_t header;
 	static uint64_t vdm_timeout;
+
+#ifdef CONFIG_USB_PD_ALT_MODE
+	/* inject lower priority VDMs here */
+	if (pd[port].vdm_state < 0)
+		if (pd[port].hpd.cnt) {
+			enum hpd_event hpd = pd_ufp_dequeue_hpd(port);
+			uint32_t data[1] = {VDO_DP_STATUS((hpd == hpd_irq),
+							  (hpd == hpd_high),
+							  0, 0, 0, 0, 0, 0x3)};
+			pd_send_vdm(port, USB_SID_DISPLAYPORT, CMD_ATTENTION,
+				    data, 1);
+		}
+#endif
 
 	switch (pd[port].vdm_state) {
 	case VDM_STATE_READY:
@@ -1160,6 +1243,11 @@ void pd_comm_enable(int enable)
 void pd_ping_enable(int port, int enable)
 {
 	pd[port].ping_enabled = enable;
+}
+
+enum vdm_states pd_get_vdm_state(int port)
+{
+	return pd[port].vdm_state;
 }
 
 void pd_task(void)

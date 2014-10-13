@@ -16,7 +16,55 @@
 #include "usb.h"
 #include "usb_bb.h"
 #include "usb_pd.h"
+#include "timer.h"
 #include "util.h"
+
+#define HPD_DEBOUNCE_LVL (2*MSEC)
+#define HPD_DEBOUNCE_IRQ (1*MSEC)
+#define HPD_ARR_SIZE 2
+
+static struct hpd_data {
+	timestamp_t time;
+	int level;
+} hpds[HPD_ARR_SIZE];
+static int hpd_idx = 1;
+
+void hpd_deferred(void)
+{
+	int level = gpio_get_level(GPIO_DP_HPD);
+	int prev_level = hpds[hpd_idx].level;
+	timestamp_t now = get_time();
+	int delta_us = now.val - hpds[hpd_idx].time.val;
+
+	ccprints("HPD DEFER! prev:%d now:%d dT(us):%d",
+		 prev_level, level, delta_us);
+
+	return;
+	/* debounce */
+	if (level == prev_level)
+		return;
+
+	if (!level && delta_us >= HPD_DEBOUNCE_LVL)
+		pd_ufp_queue_hpd(0, hpd_low);
+	else if (level && (delta_us > HPD_DEBOUNCE_IRQ) &&
+		 (delta_us < HPD_DEBOUNCE_LVL))
+		pd_ufp_queue_hpd(0, hpd_irq);
+	else
+		pd_ufp_queue_hpd(0, hpd_high);
+}
+DECLARE_DEFERRED(hpd_deferred);
+
+void hpd_event(enum gpio_signal signal)
+{
+	ccprints("HPD EVENT!");
+	hpds[hpd_idx].level = gpio_get_level(signal);
+	hpds[hpd_idx].time = get_time();
+	if (!hpds[hpd_idx].level)
+		hook_call_deferred(hpd_deferred, HPD_DEBOUNCE_IRQ);
+	else
+		hook_call_deferred(hpd_deferred, HPD_DEBOUNCE_LVL);
+	hpd_idx = !hpd_idx;
+}
 
 #include "gpio_list.h"
 
@@ -60,14 +108,18 @@ static void board_init_spi2(void)
 	/* Enable clocks to SPI2 module */
 	STM32_RCC_APB1ENR |= STM32_RCC_PB1_SPI2;
 }
+#endif /* CONFIG_SPI_FLASH */
 
 /* Initialize board. */
 static void board_init(void)
 {
+#ifdef CONFIG_SPI_FLASH
 	board_init_spi2();
+#endif
+	gpio_enable_interrupt(GPIO_DP_HPD);
 }
+
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
-#endif /* CONFIG_SPI_FLASH */
 
 /* ADC channels */
 const struct adc_t adc_channels[] = {
