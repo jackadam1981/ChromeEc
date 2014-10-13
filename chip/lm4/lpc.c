@@ -86,6 +86,8 @@ static void wait_irq_sent(void)
 #ifdef CONFIG_KEYBOARD_IRQ_GPIO
 static void keyboard_irq_assert(void)
 {
+	int debounce = 3;
+
 	/*
 	 * Enforce signal-high for long enough for the signal to be pulled high
 	 * by the external pullup resistor.  This ensures the host will see the
@@ -93,10 +95,26 @@ static void keyboard_irq_assert(void)
 	 * function call.
 	 */
 	gpio_set_level(CONFIG_KEYBOARD_IRQ_GPIO, 1);
-	udelay(4);
+	while (debounce) {
+		if (!gpio_get_level(CONFIG_KEYBOARD_IRQ_GPIO))
+			debounce = 3;
+		else
+			debounce--;
+		udelay(1);
+	}
+	udelay(1);
+
 	/* Generate a falling edge */
 	gpio_set_level(CONFIG_KEYBOARD_IRQ_GPIO, 0);
-	udelay(4);
+	while (debounce) {
+		if (gpio_get_level(CONFIG_KEYBOARD_IRQ_GPIO))
+			debounce = 3;
+		else
+			debounce--;
+		udelay(1);
+	}
+	udelay(1);
+
 	/* Set signal high, now that we've generated the edge */
 	gpio_set_level(CONFIG_KEYBOARD_IRQ_GPIO, 1);
 }
