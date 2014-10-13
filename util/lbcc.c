@@ -464,6 +464,8 @@ static void compile(FILE *fp, struct safe_lightbar_program *prog)
 			/* save the magic number */
 			prog->p.data[addr++] = token[wnum++].val;
 			while (i--) {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Warray-bounds"
 				/* and the others */
 				if (token[wnum].is_num) {
 					prog->p.data[addr++] =
@@ -473,6 +475,7 @@ static void compile(FILE *fp, struct safe_lightbar_program *prog)
 					      "at line %d\n", line);
 					break;
 				}
+#pragma GCC diagnostic pop
 			}
 			break;
 
