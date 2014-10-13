@@ -1226,6 +1226,11 @@ void pd_init_current_limits(int port, int cc_voltage)
 }
 #endif /* CONFIG_CHARGE_MANAGER */
 
+enum vdm_states pd_get_vdm_state(int port)
+{
+	return pd[port].vdm_state;
+}
+
 void pd_task(void)
 {
 	int head;
@@ -1750,6 +1755,20 @@ static int remote_flashing(int argc, char **argv)
 	ccprintf("DONE %d\n", pd[port].vdm_state);
 	return EC_SUCCESS;
 }
+
+#if defined(CONFIG_USB_PD_ALT_MODE) && !defined(CONFIG_USB_PD_ALT_MODE_DFP)
+void pd_send_hpd(enum hpd_event hpd)
+{
+	uint32_t data[1];
+	data[0] = VDO_DP_STATUS((hpd == hpd_irq),
+				(hpd == hpd_high),
+				0, 0, 0, 0, 0, 0);
+	pd_send_vdm(0, USB_SID_DISPLAYPORT, CMD_DP_STATUS, data, 1);
+	/* Wait until VDM is done */
+	while (pd[0].vdm_state > 0)
+		task_wait_event(300);
+}
+#endif
 
 void pd_request_source_voltage(int port, int mv)
 {
