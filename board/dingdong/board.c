@@ -7,12 +7,62 @@
 #include "adc.h"
 #include "adc_chip.h"
 #include "common.h"
+#include "console.h"
 #include "gpio.h"
+#include "hooks.h"
 #include "registers.h"
 #include "usb.h"
 #include "usb_bb.h"
 #include "usb_pd.h"
+#include "task.h"
+#include "timer.h"
 #include "util.h"
+
+#define HPD_ARR_SIZE 2
+
+static struct hpd_data {
+	timestamp_t time;
+	int level;
+} hpds[HPD_ARR_SIZE];
+static int hpd_idx = 1;
+
+void hpd_deferred(void)
+{
+	enum hpd_event hpd = hpd_none;
+	int level = gpio_get_level(GPIO_DP_HPD);
+	int prev_level = hpds[hpd_idx].level;
+	timestamp_t now = get_time();
+	int prev_delta_us = hpds[hpd_idx].time.val - hpds[!hpd_idx].time.val;
+	int delta_us = now.val - hpds[hpd_idx].time.val;
+	cprints(CC_HOOK, "HPD DEFER! prev:%d now:%d dT(us):%d",
+		prev_level, level, delta_us);
+
+	if (prev_delta_us < HPD_DEBOUNCE_LVL) {
+		if (level && !prev_level)
+			hpd = hpd_irq;
+		else
+			hook_call_deferred(hpd_deferred, HPD_DEBOUNCE_IRQ);
+		/* hpd_irq possible */
+	} else {
+		/* level only */
+		hpd = (level) ? hpd_high : hpd_low;
+	}
+	if (hpd != hpd_none)
+		pd_send_hpd(0, hpd);
+}
+DECLARE_DEFERRED(hpd_deferred);
+
+void hpd_event(enum gpio_signal signal)
+{
+	ccprints("HPD_EVT!");
+	hpds[hpd_idx].level = gpio_get_level(signal);
+	hpds[hpd_idx].time = get_time();
+	if (!hpds[hpd_idx].level)
+		hook_call_deferred(hpd_deferred, HPD_DEBOUNCE_IRQ);
+	else
+		hook_call_deferred(hpd_deferred, HPD_DEBOUNCE_LVL);
+	hpd_idx = !hpd_idx;
+}
 
 #include "gpio_list.h"
 
@@ -24,6 +74,14 @@ void board_config_pre_init(void)
 	/* Remap USART DMA to match the USART driver */
 	STM32_SYSCFG_CFGR1 |= (1 << 9) | (1 << 10);/* Remap USART1 RX/TX DMA */
 }
+
+/* Initialize board. */
+static void board_init(void)
+{
+	gpio_enable_interrupt(GPIO_DP_HPD);
+}
+
+DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
 /* ADC channels */
 const struct adc_t adc_channels[] = {
