@@ -378,6 +378,10 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 	return 0;
 }
 
+int pd_alt_mode(int port)
+{
+	return 0;
+}
 #endif /* CONFIG_USB_PD_ALT_MODE */
 
 #ifndef CONFIG_USB_PD_CUSTOM_VDM

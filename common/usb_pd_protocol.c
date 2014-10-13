@@ -1053,7 +1053,9 @@ void pd_send_vdm(int port, uint32_t vid, int cmd, const uint32_t *data,
 		return;
 	}
 
-	pd[port].vdo_data[0] = VDO(vid, (vid == USB_SID_PD) ? 1 : 0, cmd);
+	pd[port].vdo_data[0] = VDO(vid, ((vid & USB_SID_PD) == USB_SID_PD) ?
+				   1 : 0, cmd);
+
 	pd[port].vdo_count = count + 1;
 	for (i = 1; i < count + 1; i++)
 		pd[port].vdo_data[i] = data[i-1];
@@ -1750,6 +1752,22 @@ static int remote_flashing(int argc, char **argv)
 	ccprintf("DONE %d\n", pd[port].vdm_state);
 	return EC_SUCCESS;
 }
+
+#if defined(CONFIG_USB_PD_ALT_MODE) && !defined(CONFIG_USB_PD_ALT_MODE_DFP)
+void pd_send_hpd(int port, enum hpd_event hpd)
+{
+	uint32_t data[1];
+	int opos = pd_alt_mode(port);
+	data[0] = VDO_DP_STATUS((hpd == hpd_irq),
+				(hpd == hpd_high),
+				0, 0, 0, 0, 0, 0);
+	pd_send_vdm(port, USB_SID_DISPLAYPORT,
+		    VDO_OPOS(opos) | CMD_ATTENTION, data, 1);
+	/* Wait until VDM is done */
+	while (pd[0].vdm_state > 0)
+		task_wait_event(250);
+}
+#endif
 
 void pd_request_source_voltage(int port, int mv)
 {
