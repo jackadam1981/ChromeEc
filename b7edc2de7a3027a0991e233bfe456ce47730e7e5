@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "104ec00c_9828a424",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-13T16:50:09Z",
+      "side": 1,
+      "message": "I think the copy is not necessary, as long as your code doesn\u0027t make the assumption that the data won\u0027t change. there are lots of ways this code could be broken by someone who doesn\u0027t know what they are doing. you can add a comment that your algorithm for finding active current purposely assumes data in the array can change at any time.",
+      "parentUuid": "b016d4da_3be723e9",
+      "revId": "b7edc2de7a3027a0991e233bfe456ce47730e7e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b016d4da_fb00cbda",
         "filename": "common/charge_manager.c",
         "patchSetId": 4
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "I think we\u0027re always scaled to 5V, but let\u0027s double check with Alec.",
       "parentUuid": "b016d4da_fb00cbda",
+      "revId": "b7edc2de7a3027a0991e233bfe456ce47730e7e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0218832_e21d7cd5",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-13T16:50:09Z",
+      "side": 1,
+      "message": "it is not currently scaled to 5V because you are calling board_set_charge_limit() with that value, and that function expects a current.\n\nvincent is right, we should check for power. for type-C and bc1.2 I think the voltage is always 5V, or if it\u0027s not, we don\u0027t have any way to detect otherwise. for PD, I think we will need to take another argument for voltage.",
+      "parentUuid": "10f960d6_92c7426f",
       "revId": "b7edc2de7a3027a0991e233bfe456ce47730e7e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
