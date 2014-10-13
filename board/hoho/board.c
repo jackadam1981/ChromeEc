@@ -16,9 +16,101 @@
 #include "usb.h"
 #include "usb_bb.h"
 #include "usb_pd.h"
+#include "timer.h"
 #include "util.h"
 
+#define HPD_ARR_SIZE 2
+
+static struct hpd_data {
+	uint64_t ts;
+	int level;
+} hpds[HPD_ARR_SIZE];
+static volatile int hpd_idx;
+
+void hpd_event(enum gpio_signal signal);
 #include "gpio_list.h"
+
+/**
+ * Hotplug detect deferred task
+ *
+ * Called after level change on hpd GPIO to evaluate (and debounce) what event
+ * has occurred.  There are 3 events that occur on HPD:
+ *    1. low  : downstream display sink is deattached
+ *    2. high : downstream display sink is attached
+ *    3. irq  : downstream display sink signalling an interrupt.
+ *
+ * The debounce times for these various events are:
+ *  100MSEC : min pulse width of level value.
+ *    2MSEC : min pulse width of IRQ low pulse.  Max is level debounce min.
+ *
+ * lvl(n-2) lvl(n-1)  lvl   prev_delta  now_delta event
+ * ----------------------------------------------------
+ * 1        0         1     <2ms        n/a       low glitch (ignore)
+ * 1        0         1     >2ms        <100ms    irq
+ * x        0         1     n/a         >100ms    high
+ * 0        1         0     <100ms      n/a       high glitch (ignore)
+ * x        1         0     n/a         >100ms    low
+ */
+void hpd_deferred(void)
+{
+	timestamp_t now;
+	uint64_t ts0, ts1, prev_delta, now_delta;
+	int level;
+	enum hpd_event hpd = hpd_none;
+
+	/* disable interrupts briefly to capture level and delays */
+	STM32_EXTI_IMR &= ~gpio_list[GPIO_DP_HPD].mask;
+
+	level = hpds[hpd_idx].level;
+	ts0 = hpds[!hpd_idx].ts;
+	ts1 = hpds[hpd_idx].ts;
+
+	STM32_EXTI_IMR |= gpio_list[GPIO_DP_HPD].mask;
+
+	now = get_time();
+
+	prev_delta = ts1 - ts0;
+	if (level) {
+		now_delta = now.val - ts1;
+		if (prev_delta < HPD_DEBOUNCE_IRQ)
+			/* debounce glitch */
+			return;
+		if (prev_delta < HPD_DEBOUNCE_LVL)
+			hpd = hpd_irq;
+		else if (now_delta > HPD_DEBOUNCE_LVL)
+			hpd = hpd_high;
+		else
+			hook_call_deferred(hpd_deferred,
+					   HPD_DEBOUNCE_LVL - HPD_DEBOUNCE_IRQ);
+	} else {
+		if (prev_delta < HPD_DEBOUNCE_LVL)
+			/* debounce glitch */
+			return;
+		hpd = hpd_low;
+	}
+
+	if (hpd != hpd_none)
+		pd_send_hpd(0, hpd);
+}
+DECLARE_DEFERRED(hpd_deferred);
+
+void hpd_event(enum gpio_signal signal)
+{
+	timestamp_t now = get_time();
+	int level = gpio_get_level(signal);
+
+	/* make sure interrupts still enabled if not its because of deferred */
+	while (!(STM32_EXTI_IMR & gpio_list[GPIO_DP_HPD].mask))
+		usleep(100);
+
+	hpd_idx = !hpd_idx;
+	hpds[hpd_idx].level = level;
+	hpds[hpd_idx].ts = now.val;
+	if (level)
+		hook_call_deferred(hpd_deferred, HPD_DEBOUNCE_IRQ);
+	else
+		hook_call_deferred(hpd_deferred, HPD_DEBOUNCE_LVL);
+}
 
 /* Initialize board. */
 void board_config_pre_init(void)
@@ -60,14 +152,22 @@ static void board_init_spi2(void)
 	/* Enable clocks to SPI2 module */
 	STM32_RCC_APB1ENR |= STM32_RCC_PB1_SPI2;
 }
+#endif /* CONFIG_SPI_FLASH */
 
 /* Initialize board. */
 static void board_init(void)
 {
+	timestamp_t now;
+#ifdef CONFIG_SPI_FLASH
 	board_init_spi2();
+#endif
+	now = get_time();
+	hpds[hpd_idx].level = gpio_get_level(GPIO_DP_HPD);
+	hpds[hpd_idx].ts = now.val;
+	gpio_enable_interrupt(GPIO_DP_HPD);
 }
+
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
-#endif /* CONFIG_SPI_FLASH */
 
 /* ADC channels */
 const struct adc_t adc_channels[] = {
