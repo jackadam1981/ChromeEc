@@ -16,6 +16,24 @@
       "revId": "07c0bc7518f327d9261da8840927b4db6827edb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70029c8e_89c71d6f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2014-10-13T01:07:18Z",
+      "side": 1,
+      "message": "ok, I will file on issue, I know the i2c_write16 has internally mutex lock/unlock, but blaze battery need to send twice ship mode command continually. if someone passthru command come out between ship mode command, the ship mode will failed.",
+      "parentUuid": "30fca4c4_841b8616",
+      "revId": "07c0bc7518f327d9261da8840927b4db6827edb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
