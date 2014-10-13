@@ -9,6 +9,7 @@
 #define __USB_PD_H
 
 #include "common.h"
+#include "timer.h"
 
 enum pd_errors {
 	PD_ERR_INVAL = -1,      /* Invalid packet */

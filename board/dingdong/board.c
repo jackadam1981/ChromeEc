@@ -7,12 +7,20 @@
 #include "adc.h"
 #include "adc_chip.h"
 #include "common.h"
+#include "console.h"
 #include "gpio.h"
+#include "hooks.h"
 #include "registers.h"
 #include "usb.h"
 #include "usb_bb.h"
 #include "usb_pd.h"
+#include "task.h"
 #include "util.h"
+
+void hpd_event(enum gpio_signal signal)
+{
+	ccprintf("HPD! =%d\n", gpio_get_level(signal));
+}
 
 #include "gpio_list.h"
 
@@ -24,6 +32,14 @@ void board_config_pre_init(void)
 	/* Remap USART DMA to match the USART driver */
 	STM32_SYSCFG_CFGR1 |= (1 << 9) | (1 << 10);/* Remap USART1 RX/TX DMA */
 }
+
+/* Initialize board. */
+static void board_init(void)
+{
+	gpio_enable_interrupt(GPIO_DP_HPD);
+}
+
+DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
 /* ADC channels */
 const struct adc_t adc_channels[] = {
