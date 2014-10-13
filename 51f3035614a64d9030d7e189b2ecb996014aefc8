@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d038a85e_0d1e94d1",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-13T16:50:17Z",
+      "side": 1,
+      "message": "nit: /* for comments, /** for function headers",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 4
+      },
+      "revId": "51f3035614a64d9030d7e189b2ecb996014aefc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "104ec00c_58ea1cb3",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-13T16:50:17Z",
+      "side": 1,
+      "message": "same nit",
+      "range": {
+        "startLine": 124,
+        "startChar": 2,
+        "endLine": 124,
+        "endChar": 5
+      },
+      "revId": "51f3035614a64d9030d7e189b2ecb996014aefc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "104ec00c_b8d000d8",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-13T16:50:17Z",
+      "side": 1,
+      "message": "the code that calls charge_manager_update() for each supplier will be a different CL?\n\nit might be a little tricky to implement that side because on boot it may take some time to recognize a PD or type-C power source. we don\u0027t want to set limit to 0 until we know for sure no power source is attached because otherwise we break the dead battery case.",
+      "range": {
+        "startLine": 130,
+        "startChar": 6,
+        "endLine": 130,
+        "endChar": 30
+      },
+      "revId": "51f3035614a64d9030d7e189b2ecb996014aefc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
