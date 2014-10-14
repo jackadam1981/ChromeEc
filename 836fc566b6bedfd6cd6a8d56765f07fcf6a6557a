@@ -22,6 +22,24 @@
       "revId": "836fc566b6bedfd6cd6a8d56765f07fcf6a6557a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b00894ac_cf262ee0",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-14T19:09:16Z",
+      "side": 1,
+      "message": "I had prints in boardset_active_charge_port + board_set_charge_limit previously, but I agree it\u0027s better to put them here since we can print voltage too. Done.",
+      "parentUuid": "d038a85e_d2aa8492",
+      "revId": "836fc566b6bedfd6cd6a8d56765f07fcf6a6557a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
