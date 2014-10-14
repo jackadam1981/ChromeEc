@@ -234,6 +234,17 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 		case CMD_EXIT_MODE:
 			func = svdm_rsp.exit_mode;
 			break;
+#ifdef CONFIG_USB_PD_ALT_MODE_DFP
+		case CMD_ATTENTION:
+			/* This is DFP response */
+			if (pe[port].amode.fx->status)
+				rsize = pe[port].amode.fx->status(port,
+								  payload);
+			break;
+#endif
+		default:
+			CPRINTF("PE ERR: unknown command %d\n", cmd);
+			rsize = 0;
 		}
 		if (func)
 			rsize = func(port, payload);
@@ -279,7 +290,15 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 		case CMD_EXIT_MODE:
 			rsize = pd_exit_mode(port, payload);
 			break;
+		case CMD_ATTENTION:
+			CPRINTF("PE ERR: No rsp to attention cmd\n");
+			rsize = 0;
+			break;
+		default:
+			CPRINTF("PE ERR: unknown command %d\n", cmd);
+			rsize = 0;
 		}
+
 		payload[0] &= ~VDO_CMDT(0);
 		payload[0] |= VDO_CMDT(CMDT_INIT);
 	} else if (cmd_type == CMDT_RSP_BUSY) {
