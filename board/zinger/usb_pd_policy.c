@@ -360,11 +360,13 @@ void pd_adc_interrupt(void)
 
 	if (discharge_is_enabled()) { /* discharge completed */
 		discharge_disable();
+		task_clear_pending_irq(STM32_IRQ_ADC_COMP);
 		/* enable over-current monitoring */
 		adc_enable_watchdog(ADC_CH_A_SENSE, MAX_CURRENT_FAST, 0);
 	} else {/* Over-current detection */
 		/* cut the power output */
 		pd_power_supply_reset(0);
+		task_clear_pending_irq(STM32_IRQ_ADC_COMP);
 		/* record a special fault */
 		fault = FAULT_FAST_OCP;
 		/* pd_board_checks() will record the timeout later */
