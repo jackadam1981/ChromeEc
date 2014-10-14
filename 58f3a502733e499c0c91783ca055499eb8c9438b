@@ -43,6 +43,24 @@
     },
     {
       "key": {
+        "uuid": "d038a85e_04518224",
+        "filename": "chip/lm4/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1107030
+      },
+      "writtenOn": "2014-10-14T21:40:45Z",
+      "side": 1,
+      "message": "got your point. not the actual state returned.",
+      "parentUuid": "d038a85e_a39d30fa",
+      "revId": "58f3a502733e499c0c91783ca055499eb8c9438b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10f960d6_629bd34d",
         "filename": "chip/lm4/lpc.c",
         "patchSetId": 1
