@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d038a85e_3e0cd72c",
+        "filename": "board/samus/gesture.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-14T19:26:42Z",
+      "side": 1,
+      "message": "What units?  Given that you\u0027re dividing by MS, I\u0027d think this would be 1000.",
+      "range": {
+        "startLine": 24,
+        "startChar": 17,
+        "endLine": 24,
+        "endChar": 24
+      },
+      "revId": "42a577fe90a2dc992130c32a9a4daa31248561d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "901b9006_ebbeb98c",
+        "filename": "board/samus/gesture.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-14T19:26:42Z",
+      "side": 1,
+      "message": "+y",
+      "range": {
+        "startLine": 31,
+        "startChar": 54,
+        "endLine": 31,
+        "endChar": 64
+      },
+      "revId": "42a577fe90a2dc992130c32a9a4daa31248561d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
