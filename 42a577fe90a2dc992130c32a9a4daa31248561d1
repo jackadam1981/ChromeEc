@@ -107,6 +107,47 @@
     },
     {
       "key": {
+        "uuid": "70753c3d_917abe5e",
+        "filename": "board/samus/gesture.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-10-14T23:28:44Z",
+      "side": 1,
+      "message": "I found it difficult to read which variables were static from those that weren\u0027t.",
+      "parentUuid": "104ec00c_e539f318",
+      "revId": "42a577fe90a2dc992130c32a9a4daa31248561d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d038a85e_780112dc",
+        "filename": "board/samus/gesture.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-10-14T23:28:44Z",
+      "side": 1,
+      "message": "You should set them back to 0 when you exit the state machine (on double tap or not), otherwise we will need stronger and stronger taps :-)",
+      "range": {
+        "startLine": 81,
+        "startChar": 12,
+        "endLine": 81,
+        "endChar": 49
+      },
+      "revId": "42a577fe90a2dc992130c32a9a4daa31248561d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "901b9006_4b5c8571",
         "filename": "board/samus/gesture.c",
         "patchSetId": 3
@@ -136,6 +177,24 @@
       "side": 1,
       "message": "sum_z_inner is a sum over the inner window, therefore sum_z_inner subtracts the oldest element in that window which is history_z[history_idx_inner].\n\nsum_z_outer is a sum over the outer window, so we subtract the oldest element in that window, history_z[history_idx].",
       "parentUuid": "901b9006_4b5c8571",
+      "revId": "42a577fe90a2dc992130c32a9a4daa31248561d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "901b9006_c61bac15",
+        "filename": "board/samus/gesture.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-10-14T23:28:44Z",
+      "side": 1,
+      "message": "got it.",
+      "parentUuid": "9090f09a_18a7c949",
       "revId": "42a577fe90a2dc992130c32a9a4daa31248561d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -188,6 +247,24 @@
       "side": 1,
       "message": "In the EC code base, all non-initialized variables are set to 0. But, this throws off the initial calculation. So, I\u0027m just forcing that we make one full pass through the history buffer before trying to recognize the tap. Can\u0027t move this higher because we want to be filling the history buffer as we move along and all the code above here is about filling the historical info.",
       "parentUuid": "70753c3d_2ed04704",
+      "revId": "42a577fe90a2dc992130c32a9a4daa31248561d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70753c3d_113c8eb5",
+        "filename": "board/samus/gesture.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-10-14T23:28:44Z",
+      "side": 1,
+      "message": "if history_XX is all 0s at first we\u0027re fine.",
+      "parentUuid": "9090f09a_f8fbe522",
       "revId": "42a577fe90a2dc992130c32a9a4daa31248561d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -258,6 +335,41 @@
       "side": 1,
       "message": "yes, this is on purpose. if you look at a plot of sum_z, it is clear why. before the first tap, the data is very near 0. but after a tap, the delta_z slowly decreases back down to 0 because it is still vibrating a little. So, the outer window after the last tap has a much higher delta_z than the outer window before the first tap. It is not symmetric.",
       "parentUuid": "901b9006_e61cb092",
+      "revId": "42a577fe90a2dc992130c32a9a4daa31248561d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d038a85e_78da722e",
+        "filename": "board/samus/gesture.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-10-14T23:28:44Z",
+      "side": 1,
+      "message": "I see. You could also check that delta_z_inner_max2 ~\u003d delta_z_inner_max.",
+      "parentUuid": "d0218832_c73ddde7",
+      "revId": "42a577fe90a2dc992130c32a9a4daa31248561d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d038a85e_781272fd",
+        "filename": "board/samus/gesture.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-10-14T23:28:44Z",
+      "side": 1,
+      "message": "You are not checking that the second tap is really a tap by waiting for delta_z_inner to go below z_drop_thresh.",
       "revId": "42a577fe90a2dc992130c32a9a4daa31248561d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
