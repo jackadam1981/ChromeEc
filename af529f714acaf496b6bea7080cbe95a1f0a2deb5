@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "901b9006_404d4402",
+        "filename": "board/blaze/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-10-14T16:08:20Z",
+      "side": 1,
+      "message": "remove this i2c_lock. The next i2c_lock after \"out:\" label will be called anyways.",
+      "revId": "af529f714acaf496b6bea7080cbe95a1f0a2deb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
