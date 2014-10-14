@@ -23,7 +23,7 @@
 
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
 
-struct pd_policy pe[PD_PORT_COUNT];
+static struct pd_policy pe[PD_PORT_COUNT];
 
 static void pe_init(int port)
 {
@@ -137,13 +137,37 @@ static int dfp_enter_mode(int port, uint32_t *payload)
 	return 1;
 }
 
+static int dfp_consume_attention(int port, uint32_t *payload)
+{
+	int svid = PD_VDO_VID(payload[0]);
+	int opos = PD_VDO_OPOS(payload[0]);
+
+	if (svid != pe[port].amode.fx->svid) {
+		CPRINTF("PE ERR: svid s:0x%04x != m:0x%04x\n",
+			svid, pe[port].amode.fx->svid);
+		return 0; /* NAK */
+	}
+	if (opos != pe[port].amode.index + 1) {
+		CPRINTF("PE ERR: opos s:%d != m:%d\n",
+			opos, pe[port].amode.index + 1);
+		return 0; /* NAK */
+	}
+	if (!pe[port].amode.fx->attention)
+		return 0;
+	return pe[port].amode.fx->attention(port, payload);
+}
+
 int pd_exit_mode(int port, uint32_t *payload)
 {
 	struct svdm_amode_data *modep = &pe[port].amode;
+	if (!modep->fx)
+		return 0;
 	modep->fx->exit(port);
+	if (!payload)
+		return 0;
+
 	payload[0] = VDO(modep->fx->svid, 1,
-			 CMD_EXIT_MODE |
-			 VDO_OPOS((modep->index + 1)));
+			 CMD_EXIT_MODE | VDO_OPOS((modep->index + 1)));
 	return 1;
 }
 
@@ -234,6 +258,15 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 		case CMD_EXIT_MODE:
 			func = svdm_rsp.exit_mode;
 			break;
+#ifdef CONFIG_USB_PD_ALT_MODE_DFP
+		case CMD_ATTENTION:
+			/* This is DFP response */
+			func = &dfp_consume_attention;
+			break;
+#endif
+		default:
+			CPRINTF("PE ERR: unknown command %d\n", cmd);
+			rsize = 0;
 		}
 		if (func)
 			rsize = func(port, payload);
@@ -266,23 +299,36 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 				rsize = dfp_enter_mode(port, payload);
 			break;
 		case CMD_ENTER_MODE:
-			if (pe[port].amode.index != -1)
+			if (pe[port].amode.index != -1) {
 				rsize = pe[port].amode.fx->status(port,
 								  payload);
+				payload[0] |=
+					VDO_OPOS((pe[port].amode.index + 1));
+			}
 			break;
 		case CMD_DP_STATUS:
+			/* DP status response & UFP's DP attention have same
+			   payload */
+			dfp_consume_attention(port, payload);
 			rsize = pe[port].amode.fx->config(port, payload);
 			break;
 		case CMD_DP_CONFIG:
+			/* no response after DFPs ack */
 			rsize = 0;
 			break;
 		case CMD_EXIT_MODE:
-			rsize = pd_exit_mode(port, payload);
+			/* no response after DFPs ack */
+			rsize = 0;
+			break;
+		case CMD_ATTENTION:
+			/* no response after DFPs ack */
+			rsize = 0;
 			break;
 		default:
+			CPRINTF("PE ERR: unknown command %d\n", cmd);
 			rsize = 0;
 		}
-		payload[0] &= ~VDO_CMDT(0);
+
 		payload[0] |= VDO_CMDT(CMDT_INIT);
 	} else if (cmd_type == CMDT_RSP_BUSY) {
 		switch (cmd) {
@@ -290,7 +336,6 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 		case CMD_DISCOVER_SVID:
 		case CMD_DISCOVER_MODES:
 			/* resend if its discovery */
-			payload[0] &= ~VDO_CMDT(0);
 			payload[0] |= VDO_CMDT(CMDT_INIT);
 			rsize = 1;
 			break;
