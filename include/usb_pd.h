@@ -215,6 +215,7 @@ struct pd_policy {
 #define VDO_CMD_ERASE_SIG    VDO_CMD_VENDOR(8)
 #define VDO_CMD_PING_ENABLE  VDO_CMD_VENDOR(10)
 #define VDO_CMD_CURRENT      VDO_CMD_VENDOR(11)
+#define VDO_CMD_FLIP         VDO_CMD_VENDOR(12)
 
 #define PD_VDO_VID(vdo)  ((vdo) >> 16)
 #define PD_VDO_SVDM(vdo) (((vdo) >> 15) & 1)
@@ -680,6 +681,13 @@ void board_set_usb_mux(int port, enum typec_mux mux, int polarity);
  * @return Non-zero if superspeed connection is enabled; otherwise, zero.
  */
 int board_get_usb_mux(int port, const char **dp_str, const char **usb_str);
+
+/**
+ * Flip the superspeed muxes on type-C port.
+ *
+ * @param port port number.
+ */
+void board_flip_usb_mux(int port);
 
 /* --- Physical layer functions : chip specific --- */
 
