@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d038a85e_a39d30fa",
+        "filename": "chip/lm4/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-14T17:53:23Z",
+      "side": 1,
+      "message": "This will not work on LM4.  LM4 GPIO circuitry for get-level does not return the actual pin state, only the value which was set.",
+      "range": {
+        "startLine": 99,
+        "startChar": 7,
+        "endLine": 99,
+        "endChar": 47
+      },
+      "revId": "58f3a502733e499c0c91783ca055499eb8c9438b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
