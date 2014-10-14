@@ -124,7 +124,13 @@ static int svdm_response_svids(int port, uint32_t *payload)
 	return 2;
 }
 
-const uint32_t vdo_dp_mode[1] =  {
+/* Will only ever be a single mode for this UFP_D device as it has no USB
+ * support (2.0 or 3.0) making it only PIN_E configureable nor does it have any
+ * source functionality.
+ */
+#define OPOS 1
+
+const uint32_t vdo_dp_mode[OPOS] =  {
 	VDO_MODE_DP(MODE_DP_PIN_E, /* sink pin cfg */
 		    0,		   /* no src pin cfg */
 		    1,		   /* no usb2.0	signalling in AMode */
@@ -161,7 +167,10 @@ static enum hpd_level hpd_get_level(int port)
 
 static int dp_status(int port, uint32_t *payload)
 {
-	uint32_t ufp_dp_sts = payload[1] & 0x3;
+	uint32_t ufp_dp_sts;
+	payload[0] &= ~VDO_OPOS_MASK;
+	payload[0] |= VDO_OPOS(OPOS);
+	ufp_dp_sts = payload[1] & 0x3;
 	payload[1] = VDO_DP_STATUS(hpd_get_irq(port), /* IRQ_HPD */
 				   hpd_get_level(port), /* HPD_HI|LOW */
 				   0,		     /* request exit DP */
@@ -186,7 +195,7 @@ static int svdm_enter_mode(int port, uint32_t *payload)
 {
 	/* SID & mode request is valid */
 	if ((PD_VDO_VID(payload[0]) != USB_SID_DISPLAYPORT) ||
-	    (PD_VDO_OPOS(payload[0]) != 1))
+	    (PD_VDO_OPOS(payload[0]) != OPOS))
 		return 0; /* will generate NAK */
 	return 1;
 }
