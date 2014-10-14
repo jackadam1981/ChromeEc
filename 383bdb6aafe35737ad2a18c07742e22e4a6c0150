@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "901b9006_66f0a0a4",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2014-10-14T22:08:31Z",
+      "side": 1,
+      "message": "I have not.\n\nBut even for systems like those. I can\u0027t see how this would not cause a current leak. The SPI line that we\u0027re driving MISO(which is enabled on line 594) should only turn to an output after we\u0027re 100% sure the AP is up.",
+      "parentUuid": "901b9006_cb5655cd",
+      "range": {
+        "startLine": 601,
+        "startChar": 13,
+        "endLine": 601,
+        "endChar": 33
+      },
+      "revId": "383bdb6aafe35737ad2a18c07742e22e4a6c0150",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d038a85e_7e2fbfa8",
         "filename": "power/rockchip.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2014-10-14T18:28:43Z",
       "side": 1,
       "message": "This is a little bit of a redefinition of HOOK_CHIPSET_PRE_INIT, which currently means:\n\n\t/*\n\t * Initialization for components such as PMU to be done before host\n\t * chipset/AP starts up.\n\t *\n\t * Hook routines are called from the chipset task.\n\t */\n\nbut now is taking place after the chipset is powered on.  Is this now creating a race condition between the chipset initializing, and anything hooking pre-init?\n\nGiven that the change to spi.c hooks CHIPSET_STARTUP, and the change to EC_INT is also below, can you leave CHIPSET_PRE_INIT where it was?  Or is there some interaction with the PMU (which appears to be the only other thing which hooks PRE_INIT)?",
+      "range": {
+        "startLine": 500,
+        "startChar": 14,
+        "endLine": 500,
+        "endChar": 35
+      },
+      "revId": "383bdb6aafe35737ad2a18c07742e22e4a6c0150",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70753c3d_cec423d0",
+        "filename": "power/rockchip.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2014-10-14T22:08:31Z",
+      "side": 1,
+      "message": "\u003e but now is taking place after the chipset is powered on.  Is this now creating a race condition between the chipset initializing, and anything hooking pre-init?\n\nFunctionally hook_notify(HOOK_CHIPSET_PRE_INIT); still happens in the same spot. The ap is only guaranteed to be on after power_wait_signals. Though perhaps HOOK_CHIPSET_PRE_INIT should be moved before power_on()",
+      "parentUuid": "d038a85e_7e2fbfa8",
       "range": {
         "startLine": 500,
         "startChar": 14,
