@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "901b9006_c6f40ceb",
+        "filename": "common/lightbar.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 974,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-10-14T20:56:57Z",
+      "side": 1,
+      "message": "There are actually four battery levels. You could make this\n\nJUMP_BATTERY aa bb cc dd\n\nTo mean jump to arg[ batt_level ]\n\n(or just use three args and fall though if it\u0027s NOT 1, 2, or 3)",
+      "revId": "cc5d73fe3a6015da76862ecbdb0fab9efa3ae655",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
