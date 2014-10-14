@@ -22,6 +22,30 @@
       "revId": "892f687364cf48593383d003cca23a1ce5b75caf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7030dc7e_c5e3a4e6",
+        "filename": "chip/stm32/flash-stm32f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-14T17:08:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10f960d6_8cfa8654",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 11
+      },
+      "revId": "892f687364cf48593383d003cca23a1ce5b75caf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
