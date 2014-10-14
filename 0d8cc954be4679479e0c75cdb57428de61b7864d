@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10f960d6_c2d84785",
+        "filename": "board/dingdong/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-14T17:18:06Z",
+      "side": 1,
+      "message": "unrelated change",
+      "revId": "0d8cc954be4679479e0c75cdb57428de61b7864d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10f960d6_a2dd4b73",
+        "filename": "board/dingdong/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-14T17:18:06Z",
+      "side": 1,
+      "message": "the easiest implementation for debouncing IRQ input is to use  hook_call_deferred() in the IRQ handler",
+      "revId": "0d8cc954be4679479e0c75cdb57428de61b7864d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d038a85e_c3c63451",
+        "filename": "board/fruitpie/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-14T17:18:06Z",
+      "side": 1,
+      "message": "unrelated change",
+      "revId": "0d8cc954be4679479e0c75cdb57428de61b7864d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "901b9006_ebf559e8",
+        "filename": "board/fruitpie/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-14T17:18:06Z",
+      "side": 1,
+      "message": "unrelated change",
+      "revId": "0d8cc954be4679479e0c75cdb57428de61b7864d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10f960d6_42ed771f",
+        "filename": "board/fruitpie/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-14T17:18:06Z",
+      "side": 1,
+      "message": "why not applicable ?",
+      "revId": "0d8cc954be4679479e0c75cdb57428de61b7864d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
