@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d038a85e_d2aa8492",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-14T01:52:27Z",
+      "side": 1,
+      "message": "can we add a CPRINTF here to help us debug in the future? Should include which port we are charging from, supplier, current, and voltage.",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 2
+      },
+      "revId": "836fc566b6bedfd6cd6a8d56765f07fcf6a6557a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
