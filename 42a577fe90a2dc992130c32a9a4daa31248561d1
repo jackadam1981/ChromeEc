@@ -172,6 +172,30 @@
     },
     {
       "key": {
+        "uuid": "901b9006_1101dcdc",
+        "filename": "board/samus/gesture.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-10-15T17:03:44Z",
+      "side": 1,
+      "message": "now I see them.",
+      "parentUuid": "d0218832_a7fa2854",
+      "range": {
+        "startLine": 81,
+        "startChar": 12,
+        "endLine": 81,
+        "endChar": 49
+      },
+      "revId": "42a577fe90a2dc992130c32a9a4daa31248561d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "901b9006_4b5c8571",
         "filename": "board/samus/gesture.c",
         "patchSetId": 3
