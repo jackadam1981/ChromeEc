@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d038a85e_ae33d034",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-15T03:29:54Z",
+      "side": 1,
+      "message": "why not pushing the call at the end of the routine rather than having 2 call sites ?",
+      "revId": "fcd2f29300b9a9d4f81f67764f6b756b402c9045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
