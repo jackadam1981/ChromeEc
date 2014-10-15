@@ -16,6 +16,24 @@
       "revId": "1c80a559f3a6ce55917e12b3177d7505aa7e5016",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "505bd8e0_480a5f49",
+        "filename": "driver/ina2xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-15T17:21:24Z",
+      "side": 1,
+      "message": "I thought about that and decided to do the runtime thing in case we have a system with both INA231 and INA219 in the future. Maybe that\u0027s not what people would put on a single board?",
+      "parentUuid": "901b9006_20a5abbc",
+      "revId": "1c80a559f3a6ce55917e12b3177d7505aa7e5016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
