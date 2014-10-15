@@ -36,7 +36,8 @@ static unsigned max_mv = -1; /* no cap */
 /* PD MCU status for host response */
 static struct ec_response_pd_status pd_status;
 
-int pd_choose_voltage(int cnt, uint32_t *src_caps, uint32_t *rdo)
+int pd_choose_voltage(int cnt, uint32_t *src_caps, uint32_t *rdo,
+		      uint32_t *curr_limit, uint32_t *supply_voltage)
 {
 	int i;
 	int sel_mv;
@@ -77,7 +78,9 @@ int pd_choose_voltage(int cnt, uint32_t *src_caps, uint32_t *rdo)
 		ccprintf("Request [%d] %dV %dmA\n",
 			 max_i, sel_mv/1000, ma);
 	}
-	return max_ma;
+	*curr_limit = max_ma;
+	*supply_voltage = sel_mv;
+	return EC_SUCCESS;
 }
 
 void pd_set_max_voltage(unsigned mv)
@@ -139,7 +142,8 @@ static void pd_send_ec_int(void)
 	gpio_set_level(GPIO_EC_INT, 0);
 }
 
-void pd_set_input_current_limit(int port, uint32_t max_ma)
+void pd_set_input_current_limit(int port, uint32_t max_ma,
+				uint32_t supply_voltage)
 {
 	pd_status.curr_lim_ma = max_ma;
 	pd_send_ec_int();
