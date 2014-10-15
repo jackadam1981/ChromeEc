@@ -16,6 +16,24 @@
       "revId": "fcd2f29300b9a9d4f81f67764f6b756b402c9045",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70753c3d_178ebe39",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-15T14:48:53Z",
+      "side": 1,
+      "message": "just because if you enable the fast OCP watchdog, and then you clear the pending isr, then there is the possibility that a fast OCP occurs in between those two and we miss it. \n\ni agree this is unlikely though, and even if it were to happen, it wouldn\u0027t really be a problem, either the next ADC interrupt will catch, or else the overcurrent condition went away really quickly. i\u0027ll change it.",
+      "parentUuid": "d038a85e_ae33d034",
+      "revId": "fcd2f29300b9a9d4f81f67764f6b756b402c9045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
