@@ -48,7 +48,11 @@ BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 const int supplier_priority[] = {
 	[CHARGE_SUPPLIER_PD] = 0,
 	[CHARGE_SUPPLIER_TYPEC] = 1,
-	[CHARGE_SUPPLIER_BC12] = 1,
+	[CHARGE_SUPPLIER_PROPRIETARY] = 1,
+	[CHARGE_SUPPLIER_BC12_DCP] = 1,
+	[CHARGE_SUPPLIER_BC12_CDP] = 2,
+	[CHARGE_SUPPLIER_BC12_SDP] = 3,
+	[CHARGE_SUPPLIER_OTHER] = 3
 };
 BUILD_ASSERT(ARRAY_SIZE(supplier_priority) == CHARGE_SUPPLIER_COUNT);
 
@@ -72,23 +76,40 @@ static void board_usb_charger_update(int port)
 {
 	int device_type, charger_status;
 	struct charge_port_info charge;
+	int type;
 	charge.voltage = USB_BC12_CHARGE_VOLTAGE;
 
 	/* Read interrupt register to clear*/
 	pi3usb9281_get_interrupts(port);
+
+	/* Set device type */
 	device_type = pi3usb9281_get_device_type(port);
 	charger_status = pi3usb9281_get_charger_status(port);
+	if (charger_status & PI3USB9281_CHG_STATUS_ANY)
+		type = CHARGE_SUPPLIER_PROPRIETARY;
+	else if (device_type & PI3USB9281_TYPE_CDP)
+		type = CHARGE_SUPPLIER_BC12_CDP;
+	else if (device_type & PI3USB9281_TYPE_DCP)
+		type = CHARGE_SUPPLIER_BC12_DCP;
+	else if (device_type & PI3USB9281_TYPE_SDP)
+		type = CHARGE_SUPPLIER_BC12_SDP;
+	else
+		type = CHARGE_SUPPLIER_OTHER;
 
 	/* Attachment: decode + update available charge */
-	if (device_type || (charger_status & 0x1f))
+	if (device_type || (charger_status & PI3USB9281_CHG_STATUS_ANY)) {
 		charge.current = pi3usb9281_get_ilim(device_type,
 						     charger_status);
-	/* Detachment: update available charge to 0 */
-	else
+		charge_manager_update(type, port, &charge);
+	} else { /* Detachment: update available charge to 0 */
 		charge.current = 0;
-
-	charge_manager_update(CHARGE_SUPPLIER_BC12, port, &charge);
-
+		charge_manager_update(CHARGE_SUPPLIER_PROPRIETARY, port,
+				      &charge);
+		charge_manager_update(CHARGE_SUPPLIER_BC12_CDP, port, &charge);
+		charge_manager_update(CHARGE_SUPPLIER_BC12_DCP, port, &charge);
+		charge_manager_update(CHARGE_SUPPLIER_BC12_SDP, port, &charge);
+		charge_manager_update(CHARGE_SUPPLIER_OTHER, port, &charge);
+	}
 }
 
 /* Pericom USB deferred tasks -- called after USB device insert / removal */
