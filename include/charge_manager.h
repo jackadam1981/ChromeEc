@@ -24,6 +24,13 @@ enum charge_supplier {
 	CHARGE_SUPPLIER_COUNT
 };
 
+enum bc12_subtypes {
+	BC12_OTHER,
+	BC12_DCP,
+	BC12_CDP,
+	BC12_SDP,
+};
+
 /* Charge tasks report available current and voltage */
 struct charge_port_info {
 	int current;
@@ -33,6 +40,7 @@ struct charge_port_info {
 /* Called by charging tasks to update their available charge */
 void charge_manager_update(enum charge_supplier supplier,
 			   int charge_port,
-			   struct charge_port_info *charge);
+			   struct charge_port_info *charge,
+			   enum bc12_subtypes bc_type);
 
 #endif /* __CHARGE_MANAGER_H */

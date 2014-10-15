@@ -60,14 +60,25 @@ static void board_usb_charger_update(int port)
 {
 	int device_type, charger_status;
 	struct charge_port_info charge;
+	enum bc12_subtypes type;
 	charge.voltage = USB_BC12_CHARGE_VOLTAGE;
 
 	/* Read interrupt register to clear*/
 	pi3usb9281_get_interrupts(port);
+
+	/* Set device type */
 	device_type = pi3usb9281_get_device_type(port);
-	charger_status = pi3usb9281_get_charger_status(port);
+	if (device_type & PI3USB9281_TYPE_CDP)
+		type = BC12_CDP;
+	else if (device_type & PI3USB9281_TYPE_DCP)
+		type = BC12_DCP;
+	else if (device_type & PI3USB9281_TYPE_SDP)
+		type = BC12_SDP;
+	else
+		type = BC12_OTHER;
 
 	/* Attachment: decode + update available charge */
+	charger_status = pi3usb9281_get_charger_status(port);
 	if (device_type || (charger_status & 0x1f))
 		charge.current = pi3usb9281_get_ilim(device_type,
 						     charger_status);
@@ -75,7 +86,7 @@ static void board_usb_charger_update(int port)
 	else
 		charge.current = 0;
 
-	charge_manager_update(CHARGE_SUPPLIER_BC12, port, &charge);
+	charge_manager_update(CHARGE_SUPPLIER_BC12, port, &charge, type);
 
 }
 
