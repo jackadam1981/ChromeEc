@@ -148,6 +148,30 @@
     },
     {
       "key": {
+        "uuid": "d0218832_a7fa2854",
+        "filename": "board/samus/gesture.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-15T00:13:08Z",
+      "side": 1,
+      "message": "they are set in states 0 and 2 right before transitioning to states 1 and 3 where they are used.",
+      "parentUuid": "d038a85e_780112dc",
+      "range": {
+        "startLine": 81,
+        "startChar": 12,
+        "endLine": 81,
+        "endChar": 49
+      },
+      "revId": "42a577fe90a2dc992130c32a9a4daa31248561d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "901b9006_4b5c8571",
         "filename": "board/samus/gesture.c",
         "patchSetId": 3
@@ -271,6 +295,24 @@
     },
     {
       "key": {
+        "uuid": "307f4423_4c9eff3e",
+        "filename": "board/samus/gesture.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-15T00:13:08Z",
+      "side": 1,
+      "message": "the problem is it often causes taps on boot just from the small amount of noise being much greater than 0.\n\nalso, this takes care of the case that you just enter S3, because this code doesn\u0027t run in S0. so, when you go to sleep, we don\u0027t want to use stale data and accidentally cause a tap.",
+      "parentUuid": "70753c3d_113c8eb5",
+      "revId": "42a577fe90a2dc992130c32a9a4daa31248561d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10f960d6_82848f9a",
         "filename": "board/samus/gesture.c",
         "patchSetId": 3
@@ -359,6 +401,24 @@
     },
     {
       "key": {
+        "uuid": "307f4423_ac7f634d",
+        "filename": "board/samus/gesture.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-15T00:13:08Z",
+      "side": 1,
+      "message": "My plan was to do that check, that\u0027s why it\u0027s actually two seperate variables instead of just using one, which I will probably change. But, unfortunately the *limited* data I took showed that often people tap very differently on first and second tap and expect it to work. So, forcing this caused us to miss a lot of taps without really reducing false positives.",
+      "parentUuid": "d038a85e_78da722e",
+      "revId": "42a577fe90a2dc992130c32a9a4daa31248561d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d038a85e_781272fd",
         "filename": "board/samus/gesture.c",
         "patchSetId": 3
@@ -370,6 +430,24 @@
       "writtenOn": "2014-10-14T23:28:44Z",
       "side": 1,
       "message": "You are not checking that the second tap is really a tap by waiting for delta_z_inner to go below z_drop_thresh.",
+      "revId": "42a577fe90a2dc992130c32a9a4daa31248561d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "307f4423_ac5683cb",
+        "filename": "board/samus/gesture.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-15T00:13:08Z",
+      "side": 1,
+      "message": "The check for delta_z_inner_max2 \u003e 2 * delta_z_outer suffices to make sure z disturbance drops back to normal. On my first attempt I used this z_inner_max compared to z_outer for the criteria during the interstice, but the problem is the outer window is 200ms and often times the second tap comes in \u003c200ms. So, we were missing fast double taps. That\u0027s why I changed the interstice criteria.",
+      "parentUuid": "d038a85e_781272fd",
       "revId": "42a577fe90a2dc992130c32a9a4daa31248561d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
