@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "901b9006_20a5abbc",
+        "filename": "driver/ina2xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-15T17:07:13Z",
+      "side": 1,
+      "message": "I\u0027m not a big fan of doing at runtime what we can do at compile-time.\nWhy are we not simply defining 2 sets of macros depending on the chip type with CONFIG_INAnnn",
+      "revId": "1c80a559f3a6ce55917e12b3177d7505aa7e5016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
