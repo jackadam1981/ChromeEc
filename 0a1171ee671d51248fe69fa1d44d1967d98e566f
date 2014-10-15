@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "70753c3d_d4f6f43b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-15T05:05:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70753c3d_340898c3",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 6
+      },
+      "revId": "0a1171ee671d51248fe69fa1d44d1967d98e566f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70753c3d_5401a4a0",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2014-10-15T03:39:41Z",
       "side": 1,
       "message": "Why?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 13
+      },
+      "revId": "0a1171ee671d51248fe69fa1d44d1967d98e566f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70753c3d_f4fbf022",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-15T05:05:35Z",
+      "side": 1,
+      "message": "I put it here when this CL wasn\u0027t ready and forgot to remove this line. Thanks for pointing it out!",
+      "parentUuid": "70753c3d_5401a4a0",
       "range": {
         "startLine": 17,
         "startChar": 0,
