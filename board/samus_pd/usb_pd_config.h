@@ -233,6 +233,12 @@ static inline int pd_snk_is_vbus_provided(int port)
 				     GPIO_USB_C0_VBUS_WAKE);
 }
 
+static inline int pd_is_charging(int port)
+{
+	return !gpio_get_level(port ? GPIO_USB_C1_CHARGE_EN_L :
+				      GPIO_USB_C0_CHARGE_EN_L);
+}
+
 /* Standard-current DFP : no-connect voltage is 1.55V */
 #define PD_SRC_VNC 1550 /* mV */
 

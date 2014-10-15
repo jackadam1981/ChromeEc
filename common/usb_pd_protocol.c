@@ -2036,9 +2036,33 @@ static int hc_remote_pd_dev_info(struct host_cmd_handler_args *args)
 	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;
 }
-
 DECLARE_HOST_COMMAND(EC_CMD_USB_PD_DEV_INFO,
 		     hc_remote_pd_dev_info,
+		     EC_VER_MASK(0));
+
+static int hc_port_status(struct host_cmd_handler_args *args)
+{
+	struct ec_response_usb_pd_port_status *r = args->response;
+	uint8_t *status = &r->num_ports + 1;
+	int i;
+
+	r->num_ports = PD_PORT_COUNT;
+	for (i = 0; i < PD_PORT_COUNT; i++, status++) {
+		if (!pd_is_connected(i))
+			*status = USB_PD_PORT_DISCONNECTED;
+		else if (pd[i].role == PD_ROLE_SOURCE)
+			*status = USB_PD_PORT_SOURCE;
+		else if (pd_is_charging(i))
+			*status = USB_PD_PORT_SINK;
+		else
+			*status = USB_PD_PORT_UNUSED;
+	}
+
+	args->response_size = sizeof(*r) + PD_PORT_COUNT;
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_USB_PD_PORT_STATUS,
+		     hc_port_status,
 		     EC_VER_MASK(0));
 
 #endif /* CONFIG_COMMON_RUNTIME */

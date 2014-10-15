@@ -191,6 +191,8 @@ const char help_str[] =
 	"  usbpd <port> <auto | "
 			"[toggle|toggle-off|sink|source] [none|usb|dp|dock]>\n"
 	"      Control USB PD/type-C\n"
+	"  usbc\n"
+	"      Get USB type-C port status\n"
 	"  version\n"
 	"      Prints EC version\n"
 	"  wireless <flags> [<mask> [<suspend_flags> <suspend_mask>]]\n"
@@ -2830,6 +2832,41 @@ int cmd_usb_pd(int argc, char *argv[])
 	return (rv < 0 ? rv : 0);
 }
 
+int cmd_usbc_status(int argc, char *argv[])
+{
+	int port_cnt, i, rv;
+	uint8_t *status;
+	struct ec_response_usb_pd_port_status *r =
+		(struct ec_response_usb_pd_port_status *)ec_inbuf;
+
+	rv = ec_command(EC_CMD_USB_PD_PORT_STATUS, 0, NULL, 0,
+			ec_inbuf, ec_max_insize);
+
+	if (rv < 0)
+		return rv;
+
+	port_cnt = r->num_ports;
+	status = ((uint8_t *)&(r->num_ports)) + 1;
+	for (i = 0; i < port_cnt; i++, status++) {
+		printf("Port %d: ", i);
+		switch (*status) {
+		case USB_PD_PORT_DISCONNECTED:
+			printf("Disconnected\n");
+			break;
+		case USB_PD_PORT_SOURCE:
+			printf("Sourcing power\n");
+			break;
+		case USB_PD_PORT_SINK:
+			printf("Sinking power\n");
+			break;
+		case USB_PD_PORT_UNUSED:
+			printf("Unused\n");
+			break;
+		}
+	}
+
+	return 0;
+}
 
 int cmd_kbpress(int argc, char *argv[])
 {
@@ -4956,6 +4993,7 @@ const struct command commands[] = {
 	{"usbchargemode", cmd_usb_charge_set_mode},
 	{"usbmux", cmd_usb_mux},
 	{"usbpd", cmd_usb_pd},
+	{"usbc", cmd_usbc_status},
 	{"version", cmd_version},
 	{"wireless", cmd_wireless},
 	{NULL, NULL}
