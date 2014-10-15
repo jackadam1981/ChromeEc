@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "901b9006_31b18056",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-15T05:11:51Z",
+      "side": 1,
+      "message": "I should probably put this in a comment: this \"flip\" is not actually flipping the whole thing. This is only flipping the USB mux (because we don\u0027t have a cable with two CC lines.) It\u0027s fine when the protocol layer sets the muxes to NONE, because polarity has no meaning in this case. And since this is only used for testing purpose (which is another thing that I\u0027ll put into a comment), we can make sure we don\u0027t switch between USB and DP after flipping the muxes.\n\nI\u0027ll update the comment in a new patchset.",
+      "parentUuid": "d038a85e_6e76287d",
+      "range": {
+        "startLine": 265,
+        "startChar": 5,
+        "endLine": 265,
+        "endChar": 23
+      },
+      "revId": "3380d59357546d9275fe20804b52443ceb1f4c84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d038a85e_2efb408c",
         "filename": "board/samus_pd/usb_pd_policy.c",
         "patchSetId": 1
