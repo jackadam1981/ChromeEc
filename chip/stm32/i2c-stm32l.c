@@ -329,11 +329,13 @@ int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
 		}
 
 		/*
-		 * Allow bus to idle for at least one 100KHz clock = 10 us.
+		 * Allow bus to idle for at least 2 ms, some batteries need
+		 * more response time for ready the data report.
 		 * This allows slaves on the bus to detect bus-idle before
 		 * the next start condition.
 		 */
-		udelay(10);
+		for (i = 0; i < 20; i++)
+			udelay(100);
 	}
 
 	return rv;
