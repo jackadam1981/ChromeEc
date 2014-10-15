@@ -34,6 +34,24 @@
       "revId": "1c80a559f3a6ce55917e12b3177d7505aa7e5016",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b064149b_5c01bda0",
+        "filename": "driver/ina2xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-15T19:11:34Z",
+      "side": 1,
+      "message": "my 2cents is we should discourage mixing them and given the footprint of ina231 (over ina219) be choosing that moving forward unless cost factors in as 219 is ~70% (digikey) of 231 in qty 3k.",
+      "parentUuid": "505bd8e0_480a5f49",
+      "revId": "1c80a559f3a6ce55917e12b3177d7505aa7e5016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
