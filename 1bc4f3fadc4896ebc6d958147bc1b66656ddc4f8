@@ -22,6 +22,23 @@
       "revId": "1bc4f3fadc4896ebc6d958147bc1b66656ddc4f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70753c3d_778b827b",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-10-15T16:51:53Z",
+      "side": 1,
+      "message": "Make the change specific to blaze\n\n#ifdef BOARD_BLAZE\n    mdelay(2);\n#else\n    udelay(10);\n#endif",
+      "revId": "1bc4f3fadc4896ebc6d958147bc1b66656ddc4f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
