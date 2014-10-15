@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "307f4423_95ace681",
+        "filename": "chip/stm32/i2c-stm32l.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-15T16:50:22Z",
+      "side": 1,
+      "message": "This is a sufficiently long delay that you should use msleep(2) instead so that other tasks can run.",
+      "range": {
+        "startLine": 337,
+        "startChar": 0,
+        "endLine": 338,
+        "endChar": 15
+      },
+      "revId": "1bc4f3fadc4896ebc6d958147bc1b66656ddc4f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
