@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "901b9006_096a0b5d",
+        "filename": "board/samus/gesture.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-16T01:53:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "104ec00c_0542df88",
+      "range": {
+        "startLine": 24,
+        "startChar": 17,
+        "endLine": 24,
+        "endChar": 24
+      },
+      "revId": "42a577fe90a2dc992130c32a9a4daa31248561d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "901b9006_ebbeb98c",
         "filename": "board/samus/gesture.c",
         "patchSetId": 3
@@ -60,6 +84,30 @@
       "writtenOn": "2014-10-14T19:26:42Z",
       "side": 1,
       "message": "+y",
+      "range": {
+        "startLine": 31,
+        "startChar": 54,
+        "endLine": 31,
+        "endChar": 64
+      },
+      "revId": "42a577fe90a2dc992130c32a9a4daa31248561d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "901b9006_a96f5f6a",
+        "filename": "board/samus/gesture.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-16T01:53:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "901b9006_ebbeb98c",
       "range": {
         "startLine": 31,
         "startChar": 54,
@@ -118,6 +166,24 @@
       "writtenOn": "2014-10-14T23:28:44Z",
       "side": 1,
       "message": "I found it difficult to read which variables were static from those that weren\u0027t.",
+      "parentUuid": "104ec00c_e539f318",
+      "revId": "42a577fe90a2dc992130c32a9a4daa31248561d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0e42853_41b772cc",
+        "filename": "board/samus/gesture.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-16T01:53:52Z",
+      "side": 1,
+      "message": "Left as is",
       "parentUuid": "104ec00c_e539f318",
       "revId": "42a577fe90a2dc992130c32a9a4daa31248561d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -184,6 +250,30 @@
       "side": 1,
       "message": "now I see them.",
       "parentUuid": "d0218832_a7fa2854",
+      "range": {
+        "startLine": 81,
+        "startChar": 12,
+        "endLine": 81,
+        "endChar": 49
+      },
+      "revId": "42a577fe90a2dc992130c32a9a4daa31248561d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0e42853_81c17a2a",
+        "filename": "board/samus/gesture.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-16T01:53:52Z",
+      "side": 1,
+      "message": "removed delta_z_inner_max2 and just reused delta_z_inner max",
+      "parentUuid": "901b9006_1101dcdc",
       "range": {
         "startLine": 81,
         "startChar": 12,
@@ -337,6 +427,24 @@
     },
     {
       "key": {
+        "uuid": "d0e42853_01844aea",
+        "filename": "board/samus/gesture.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-16T01:53:52Z",
+      "side": 1,
+      "message": "left as is",
+      "parentUuid": "307f4423_4c9eff3e",
+      "revId": "42a577fe90a2dc992130c32a9a4daa31248561d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10f960d6_82848f9a",
         "filename": "board/samus/gesture.c",
         "patchSetId": 3
@@ -366,6 +474,24 @@
       "side": 1,
       "message": "I will clean up a little. Although I think a function for each state is overkill here. Each state is pretty simple, espcially if you remove the printf\u0027s which take up the most room.",
       "parentUuid": "10f960d6_82848f9a",
+      "revId": "42a577fe90a2dc992130c32a9a4daa31248561d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "901b9006_29a90f23",
+        "filename": "board/samus/gesture.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-16T01:53:52Z",
+      "side": 1,
+      "message": "Added state enum, added comments, and cleaned up state machine. Did not add seperate functions for each state or a state transition function.",
+      "parentUuid": "d0218832_67017126",
       "revId": "42a577fe90a2dc992130c32a9a4daa31248561d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -437,6 +563,24 @@
       "side": 1,
       "message": "My plan was to do that check, that\u0027s why it\u0027s actually two seperate variables instead of just using one, which I will probably change. But, unfortunately the *limited* data I took showed that often people tap very differently on first and second tap and expect it to work. So, forcing this caused us to miss a lot of taps without really reducing false positives.",
       "parentUuid": "d038a85e_78da722e",
+      "revId": "42a577fe90a2dc992130c32a9a4daa31248561d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "305824e5_beea2933",
+        "filename": "board/samus/gesture.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-16T01:53:52Z",
+      "side": 1,
+      "message": "left as is",
+      "parentUuid": "307f4423_ac7f634d",
       "revId": "42a577fe90a2dc992130c32a9a4daa31248561d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
