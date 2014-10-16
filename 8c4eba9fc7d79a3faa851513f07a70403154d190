@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "50c5985b_5bcfbbe9",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-16T22:13:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30e904d0_a5efc4c2",
+      "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0b988d9_9f005b9f",
         "filename": "board/samus_pd/board.c",
         "patchSetId": 3
@@ -36,6 +54,24 @@
       "writtenOn": "2014-10-07T16:59:14Z",
       "side": 1,
       "message": "we need to be extremely careful with this transition to avoid browning out when the battery is dead or overcurrenting the charger.\nIt seems that 0% PWM is 500mA, so that should be good, please comment that you are putting the 500mA limit here.",
+      "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0a334b2_f05c203c",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-16T22:13:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0b988d9_9f005b9f",
       "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -89,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "d0b988d9_27e739e9",
+        "filename": "board/samus_pd/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-16T22:13:16Z",
+      "side": 1,
+      "message": "Prototype no longer needed since function is now in board.c.",
+      "parentUuid": "b0aed491_5b4c178d",
+      "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0b988d9_5ff083f5",
         "filename": "board/samus_pd/charge_manager.c",
         "patchSetId": 3
@@ -100,6 +154,24 @@
       "writtenOn": "2014-10-07T15:53:03Z",
       "side": 1,
       "message": "not sure this file needs to be in board specific directory. we will use the same thing for ryu also. would be better to add the appropriate CONFIG_ options to put this in common code.",
+      "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70761c14_499d45ca",
+        "filename": "board/samus_pd/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-16T22:13:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0b988d9_5ff083f5",
       "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -135,6 +207,24 @@
       "side": 1,
       "message": "Agree. If you are worried that the value may change when charge_manager_task runs, you can just make a copy at the beginning of the loop.",
       "parentUuid": "b0aed491_5b65f78a",
+      "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90a8f091_7e439d6b",
+        "filename": "board/samus_pd/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-16T22:13:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30e904d0_4ba531bc",
       "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -199,6 +289,24 @@
     },
     {
       "key": {
+        "uuid": "708d3c44_4e2713dd",
+        "filename": "board/samus_pd/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-16T22:13:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30e904d0_0b224997",
+      "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30e904d0_709ad87c",
         "filename": "board/samus_pd/charge_manager.c",
         "patchSetId": 3
@@ -210,6 +318,24 @@
       "writtenOn": "2014-10-07T16:59:14Z",
       "side": 1,
       "message": "please no ccprintf in non-interactive code,\nuse a CPRINTF macro as other files.",
+      "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0a334b2_b09a9846",
+        "filename": "board/samus_pd/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-16T22:13:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30e904d0_709ad87c",
       "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -239,6 +365,24 @@
     },
     {
       "key": {
+        "uuid": "70761c14_a9a3190c",
+        "filename": "board/samus_pd/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-16T22:13:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0b988d9_2dbf258b",
+      "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0b988d9_3cf11d2b",
         "filename": "board/samus_pd/charge_manager.h",
         "patchSetId": 3
@@ -256,6 +400,24 @@
         "endLine": 14,
         "endChar": 77
       },
+      "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "305104a9_1f25679f",
+        "filename": "board/samus_pd/charge_manager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-16T22:13:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0b988d9_3cf11d2b",
       "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -285,6 +447,24 @@
     },
     {
       "key": {
+        "uuid": "b0a334b2_90c83460",
+        "filename": "board/samus_pd/charge_manager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-16T22:13:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0aed491_189385c1",
+      "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0b988d9_a2a6e41c",
         "filename": "board/samus_pd/charge_manager.h",
         "patchSetId": 3
@@ -308,6 +488,24 @@
     },
     {
       "key": {
+        "uuid": "90a8f091_0f442575",
+        "filename": "board/samus_pd/charge_manager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-16T22:13:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0b988d9_a2a6e41c",
+      "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0aed491_5b17b7ea",
         "filename": "board/samus_pd/ec.tasklist",
         "patchSetId": 3
@@ -319,6 +517,24 @@
       "writtenOn": "2014-10-07T16:59:14Z",
       "side": 1,
       "message": "I\u0027m not convinced that we need to waste the RAM needed for the stack of the task just for a policy decision. I will read again that part of your CL.",
+      "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90a8f091_49238519",
+        "filename": "board/samus_pd/ec.tasklist",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-16T22:13:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0aed491_5b17b7ea",
       "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -366,6 +582,24 @@
     },
     {
       "key": {
+        "uuid": "50c5985b_3b667f4a",
+        "filename": "board/samus_pd/extpower_samus_pd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-16T22:13:16Z",
+      "side": 1,
+      "message": "Done, moved to another CL.",
+      "parentUuid": "b0aed491_dbf3c77c",
+      "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30e904d0_051f98f7",
         "filename": "board/samus_pd/extpower_samus_pd.c",
         "patchSetId": 3
@@ -383,6 +617,24 @@
         "endLine": 43,
         "endChar": 23
       },
+      "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0b988d9_c7d2fddf",
+        "filename": "board/samus_pd/extpower_samus_pd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-16T22:13:16Z",
+      "side": 1,
+      "message": "Done, and renamed board_usb_charger_update.",
+      "parentUuid": "30e904d0_051f98f7",
       "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -453,6 +705,24 @@
         "endLine": 45,
         "endChar": 49
       },
+      "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50c5985b_dbc2ebbb",
+        "filename": "board/samus_pd/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-16T22:13:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0b988d9_dcd901ac",
       "revId": "8c4eba9fc7d79a3faa851513f07a70403154d190",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
