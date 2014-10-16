@@ -270,18 +270,25 @@ static inline void motion_sense_init(struct motion_sensor_t *sensor)
 
 static int motion_sense_read(struct motion_sensor_t *sensor)
 {
-	int ret;
+	int ret, cnt = 3;
 
 	if (sensor->state != SENSOR_INITIALIZED)
 		return EC_ERROR_UNKNOWN;
 
-	/* Read all raw X,Y,Z accelerations. */
-	ret = sensor->drv->read(sensor,
-		&sensor->raw_xyz[X],
-		&sensor->raw_xyz[Y],
-		&sensor->raw_xyz[Z]);
+	/* Read all raw X,Y,Z accelerations.
+	 * Added i2c read retry logic
+	 */
+	do {
+		ret = sensor->drv->read(sensor,
+			&sensor->raw_xyz[X],
+			&sensor->raw_xyz[Y],
+			&sensor->raw_xyz[Z]);
+		if (ret != EC_SUCCESS)
+			CPRINTS("MS rd retry %d\n", cnt);
+	} while ((ret != EC_SUCCESS) && (--cnt > 0));
 
 	if (ret != EC_SUCCESS) {
+		CPRINTS("MS rd error %d\n", ret);
 		sensor->state = SENSOR_INIT_ERROR;
 		return EC_ERROR_UNKNOWN;
 	}
