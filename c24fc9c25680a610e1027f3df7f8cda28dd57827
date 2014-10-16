@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "901b9006_8fbe1ba5",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-16T14:55:10Z",
+      "side": 1,
+      "message": "I don\u0027t think we need a retry here, although I guess it doesn\u0027t hurt much.\n\nI was thinking motion_sense_init() should have a retry because if that fails once, you are screwed.\n\nIn motion_sense_read(), I don\u0027t think we should set sensor-\u003estate to SENSOR_INIT_ERROR on a failure, because that means that it will never read the sensor again until you go to S5 and back to S0. I think it would be ok to just remove line 292.",
+      "range": {
+        "startLine": 279,
+        "startChar": 4,
+        "endLine": 279,
+        "endChar": 30
+      },
+      "revId": "c24fc9c25680a610e1027f3df7f8cda28dd57827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
