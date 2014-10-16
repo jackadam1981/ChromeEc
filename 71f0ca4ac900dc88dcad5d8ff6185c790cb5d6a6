@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "307f4423_a151a4d7",
+        "filename": "board/hoho/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-16T15:52:59Z",
+      "side": 1,
+      "message": "please #undef rather than commenting out #define else you can get strange effects in the build files",
+      "revId": "71f0ca4ac900dc88dcad5d8ff6185c790cb5d6a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
