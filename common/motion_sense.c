@@ -256,17 +256,18 @@ static inline void update_sense_data(uint8_t *lpc_status,
 
 static inline void motion_sense_init(struct motion_sensor_t *sensor)
 {
-	int ret;
+	int ret, cnt = 3;
 
 	/* Initialize accelerometers. */
-	ret = sensor->drv->init(sensor);
-	if (ret != EC_SUCCESS) {
-		sensor->state = SENSOR_INIT_ERROR;
-		return;
-	}
-	sensor->state = SENSOR_INITIALIZED;
-}
+	do {
+		ret = sensor->drv->init(sensor);
+	} while ((ret != EC_SUCCESS) && (--cnt > 0));
 
+	if (ret != EC_SUCCESS)
+		sensor->state = SENSOR_INIT_ERROR;
+	else
+		sensor->state = SENSOR_INITIALIZED;
+}
 
 static int motion_sense_read(struct motion_sensor_t *sensor)
 {
@@ -281,10 +282,8 @@ static int motion_sense_read(struct motion_sensor_t *sensor)
 		&sensor->raw_xyz[Y],
 		&sensor->raw_xyz[Z]);
 
-	if (ret != EC_SUCCESS) {
-		sensor->state = SENSOR_INIT_ERROR;
+	if (ret != EC_SUCCESS)
 		return EC_ERROR_UNKNOWN;
-	}
 
 	return EC_SUCCESS;
 }
