@@ -131,15 +131,18 @@ const uint32_t vdo_dp_mode[1] =  {
 
 static int svdm_response_modes(int port, uint32_t *payload)
 {
+	int mode_cnt = ARRAY_SIZE(vdo_dp_mode);
+
 	if (PD_VDO_VID(payload[0]) != USB_SID_DISPLAYPORT) {
 		/* TODO(tbroch) USB billboard enabled here then */
 		return 1; /* will generate a NAK */
 	}
-	memset(payload + 1, 0, sizeof(uint32_t) * PDO_MODES);
-	payload[1] = vdo_dp_mode[0];
-	/* TODO(tbroch) does spec have mechanism for identifying valid modes
-	 * returned for svid? */
-	return PDO_MAX_OBJECTS;
+
+	/* 6.4.4.3.3 : object position equals modes + 1 */
+	payload[0] &= ~VDO_OPOS_MASK;
+	payload[0] |= VDO_OPOS((mode_cnt + 1));
+	memcpy(payload + 1, vdo_dp_mode, sizeof(uint32_t) * mode_cnt);
+	return mode_cnt + 1;
 }
 
 static int svdm_enter_mode(int port, uint32_t *payload)
