@@ -205,20 +205,20 @@ const struct svdm_amode_fx supported_modes[] = {
 	},
 };
 
-void pd_dfp_choose_modes(struct pd_policy *pe)
+/* TODO(tbroch) this function likely needs to move up the stack to where system
+ * policy decisions are made. */
+void pd_dfp_choose_mode(struct pd_policy *pe)
 {
 	int i, j;
-	pe->amode_cnt = ARRAY_SIZE(supported_modes);
-	pe->amodes->fx = supported_modes;
-	for (i = 0; i < pe->amode_cnt; i++) {
+	pe->amode.index = -1; /* Error condition */
+	for (i = 0; i < ARRAY_SIZE(supported_modes); i++) {
 		for (j = 0; j < pe->svid_cnt; j++) {
-			if (pe->svids[j].svid == pe->amodes->fx[i].svid) {
-				/* TODO(tbroch) need more elaborate mode
-				   resolution */
-				pe->amodes[i].mode_caps = pe->svids[j].mode_vdo;
-				pe->amodes[i].amode = dfp_amode1;
-				break;
-			}
+			if (pe->svids[j].svid != supported_modes[i].svid)
+				continue;
+			pe->amode.fx = &supported_modes[i];
+			pe->amode.mode_caps = pe->svids[j].mode_vdo[0];
+			pe->amode.index = 0;
+			return;
 		}
 	}
 }

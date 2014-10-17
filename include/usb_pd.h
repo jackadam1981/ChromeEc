@@ -142,8 +142,8 @@ struct svdm_amode_fx {
 
 struct svdm_amode_data {
 	const struct svdm_amode_fx *fx;
-	enum dfp_amode amode;
-	uint32_t *mode_caps;
+	int index;
+	uint32_t mode_caps;
 };
 
 /* Policy structure for driving alternate mode */
@@ -154,12 +154,8 @@ struct pd_policy {
 	int svid_cnt;
 	/* supported svids & corresponding vdo mode data */
 	struct svdm_svid_data svids[SVID_DISCOVERY_MAX];
-	/* index of amode currently being operated on */
-	int amode_idx;
-	/* count of amodes discovered */
-	int amode_cnt;
-	/* supported amodes */
-	struct svdm_amode_data *amodes;
+	/*  active mode */
+	struct svdm_amode_data amode;
 };
 
 /*
@@ -611,11 +607,11 @@ int pd_vdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload);
 int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload);
 
 /**
- * Choose appropriate alternate modes.
+ * Choose appropriate alternate mode.
  *
- * @param pe        pd_policy data structure
+ * @param pe        pd_policy data structure.
  */
-void pd_dfp_choose_modes(struct pd_policy *pe);
+void pd_dfp_choose_mode(struct pd_policy *pe);
 
 /**
  * Exit alternate mode
@@ -624,7 +620,7 @@ void pd_dfp_choose_modes(struct pd_policy *pe);
  * @param payload  payload data.
  * @return if >0, number of VDOs to send back.
  */
-int pd_exit_modes(int port, uint32_t *payload);
+int pd_exit_mode(int port, uint32_t *payload);
 
 /**
  * Store Device ID & RW hash of device
