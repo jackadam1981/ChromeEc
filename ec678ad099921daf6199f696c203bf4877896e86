@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "f0492c4e_7286f838",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-17T17:24:09Z",
+      "side": 1,
+      "message": "nm, i see the warning in next CL",
+      "parentUuid": "106fa0ad_13e3ec37",
+      "range": {
+        "startLine": 247,
+        "startChar": 21,
+        "endLine": 247,
+        "endChar": 23
+      },
+      "revId": "ec678ad099921daf6199f696c203bf4877896e86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b085f48b_407caea7",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 2
