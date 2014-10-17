@@ -275,6 +275,7 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 			payload[0] &= ~VDO_CMDT(0);
 			payload[0] |= VDO_CMDT(CMDT_INIT);
 			rsize = 1;
+			task_wait_event(PD_T_VDM_BUSY);
 			break;
 		case CMD_ENTER_MODE:
 			/* Error */
