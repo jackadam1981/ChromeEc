@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "708ffcad_93d7ee74",
+        "filename": "board/samus/gesture.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-10-17T22:16:32Z",
+      "side": 1,
+      "message": "gesture_tap_for_battery()\n- Please add TODO:\n     1. split gesture_tap_for_battery into smaller functions\n            (so that some common functions can move up to a common dir.)\n\n     2. split history_xy (no combined is required.)\n            foreach axis X, Y, Z\n                call same help function to process data independently\n\n    3. state machine will make decision based processed X,Y,Z data",
+      "revId": "2ec8f7cb8eb3d93433c4e88fefc2e50fc73a9e15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "908ab09b_330aa048",
+        "filename": "board/samus/gesture.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-10-17T22:16:32Z",
+      "side": 1,
+      "message": "Re-order:\nsensor-\u003edrv-\u003eget_data_rate(sensor, \u0026saved_odr);\n\nsensor-\u003edrv-\u003eset_data_rate(sensor, TAP_ODR, 1);",
+      "revId": "2ec8f7cb8eb3d93433c4e88fefc2e50fc73a9e15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
