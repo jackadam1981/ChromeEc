@@ -131,6 +131,7 @@ enum dfp_amode {
 
 struct svdm_svid_data {
 	uint16_t svid;
+	int mode_cnt;
 	uint32_t mode_vdo[PDO_MODES];
 };
 
@@ -185,6 +186,7 @@ struct pd_policy {
 #define VDO_SVDM_VERS(x)  (x << 13)
 #define VDO_OPOS(x)       (x << 8)
 #define VDO_CMDT(x)       (x << 6)
+#define VDO_OPOS_MASK     VDO_OPOS(0x7)
 #define VDO_CMDT_MASK     VDO_CMDT(0x3)
 
 #define CMDT_INIT     0

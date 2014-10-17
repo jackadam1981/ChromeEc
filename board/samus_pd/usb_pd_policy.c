@@ -242,9 +242,13 @@ void pd_dfp_choose_mode(struct pd_policy *pe)
 		for (j = 0; j < pe->svid_cnt; j++) {
 			if (pe->svids[j].svid != supported_modes[i].svid)
 				continue;
+			if (pe->svids[j].mode_cnt < 1)
+				continue;
 			pe->amode.fx = &supported_modes[i];
 			pe->amode.mode_caps = pe->svids[j].mode_vdo[0];
 			pe->amode.index = 0;
+			if (pe->svids[j].mode_cnt > 1)
+				ccprintf("PE WARN: always picking mode 1\n");
 		}
 	}
 }

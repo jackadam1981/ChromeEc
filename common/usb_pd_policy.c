@@ -90,8 +90,15 @@ static int dfp_discover_modes(int port, uint32_t *payload)
 
 static int dfp_consume_modes(int port, uint32_t *payload)
 {
-	memcpy(pe[port].svids[pe[port].svid_idx].mode_vdo, &payload[1],
-	       sizeof(uint32_t) * PDO_MODES);
+	int idx = pe[port].svid_idx;
+	pe[port].svids[idx].mode_cnt = PD_VDO_OPOS(payload[0]) - 1;
+	if (pe[port].svids[idx].mode_cnt < 0) {
+		ccprintf("PE ERR: OPOS (mode_cnt) should be between 1 & 7\n");
+	} else {
+		memcpy(pe[port].svids[pe[port].svid_idx].mode_vdo, &payload[1],
+		       sizeof(uint32_t) * pe[port].svids[idx].mode_cnt);
+	}
+
 	pe[port].svid_idx++;
 	return (pe[port].svid_idx < pe[port].svid_cnt);
 }
@@ -125,15 +132,25 @@ static void dump_pe(int port)
 	int i, j;
 	struct svdm_amode_data *modep = &pe[port].amode;
 
+	if (pe[port].svid_cnt < 1) {
+		ccprintf("No SVIDS discovered yet.\n");
+		return;
+	}
+
 	for (i = 0; i < pe[port].svid_cnt; i++) {
-		ccprintf("SVID[%d]: %04x", i, pe[port].svids[i].svid);
-		for (j = 0; j < (PDO_MAX_OBJECTS - 1); j++)
-			ccprintf(" [%d] %08x", j,
+		ccprintf("SVID[%d]: %04x MODES:", i, pe[port].svids[i].svid);
+		for (j = 0; j < pe[port].svids[j].mode_cnt; j++)
+			ccprintf(" [%d] %08x", j + 1,
 				 pe[port].svids[i].mode_vdo[j]);
 		ccprintf("\n");
 	}
-	ccprintf("MODE[%d]: svid:%04x mode:%d caps:%08x\n", i,
-		 modep->fx->svid, modep->index + 1, modep->mode_caps);
+	if (pe->amode.index == -1) {
+		ccprintf("No mode chosen yet.\n");
+		return;
+	}
+
+	ccprintf("MODE[%d]: svid:%04x caps:%08x\n", modep->index + 1,
+		 modep->fx->svid, modep->mode_caps);
 }
 
 static int command_pe(int argc, char **argv)
@@ -223,7 +240,8 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 				rsize = dfp_enter_mode(port, payload);
 			break;
 		case CMD_ENTER_MODE:
-			rsize = dfp_enter_mode(port, payload);
+			rsize = 0;
+			break;
 		case CMD_EXIT_MODE:
 			rsize = pd_exit_mode(port, payload);
 			break;
