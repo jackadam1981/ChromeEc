@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "708ffcad_122d9c83",
+        "filename": "board/host/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-17T23:26:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "708ffcad_0141ccd2",
+      "revId": "afd2ee2b191c1b04b4199f5c3b97c04ffbdabaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "708ffcad_61c370c1",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
@@ -42,6 +60,24 @@
         "endLine": 1404,
         "endChar": 16
       },
+      "revId": "afd2ee2b191c1b04b4199f5c3b97c04ffbdabaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9058f01b_6f337136",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1404,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-17T23:26:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "708ffcad_61c370c1",
       "revId": "afd2ee2b191c1b04b4199f5c3b97c04ffbdabaca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "9058f01b_120a0a48",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1462,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-17T23:26:53Z",
+      "side": 1,
+      "message": "I moved the code to a function call as you suggest, but I think we do need the initialized variable -- we need to initialize charge manager for the PD and type-C supply on power-up somehow.",
+      "parentUuid": "b085f48b_237fb49e",
+      "revId": "afd2ee2b191c1b04b4199f5c3b97c04ffbdabaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b085f48b_c348c88c",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
@@ -94,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "9058f01b_f242e666",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1465,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-17T23:26:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b085f48b_c348c88c",
+      "revId": "afd2ee2b191c1b04b4199f5c3b97c04ffbdabaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "708ffcad_e426aedf",
         "filename": "include/usb_pd.h",
         "patchSetId": 3
@@ -111,6 +183,24 @@
         "endLine": 527,
         "endChar": 31
       },
+      "revId": "afd2ee2b191c1b04b4199f5c3b97c04ffbdabaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "703d3c9e_0e382bf4",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-17T23:26:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "708ffcad_e426aedf",
       "revId": "afd2ee2b191c1b04b4199f5c3b97c04ffbdabaca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
