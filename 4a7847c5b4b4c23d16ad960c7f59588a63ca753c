@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f0492c4e_7218b896",
+        "filename": "board/dingdong/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-17T17:16:08Z",
+      "side": 1,
+      "message": "Yes, I agree, but he is returning the mode_cnt, which sets the number of data objects in message header correctly.\n\nI think we just need to remove lines 142/143, the VDM header should not have a mode specified, the OPOS field is only to be used for enter/exit mode.",
+      "parentUuid": "708ffcad_9eeb7d3b",
+      "revId": "4a7847c5b4b4c23d16ad960c7f59588a63ca753c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "908ab09b_1fd3e3e5",
         "filename": "board/hoho/usb_pd_policy.c",
         "patchSetId": 2
