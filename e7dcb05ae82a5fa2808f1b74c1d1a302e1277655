@@ -22,6 +22,30 @@
       "revId": "e7dcb05ae82a5fa2808f1b74c1d1a302e1277655",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90bc7033_8f0b5516",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-17T06:21:31Z",
+      "side": 1,
+      "message": "Updated the comment. Regarding security, as long as we only expose this through VDM on consumer devices, it\u0027s okay. If the port partner can send a VDM to break superspeed lanes, it may as well break them on its side. I can guard this with WP if you feel strongly about this.",
+      "parentUuid": "5019182f_bb702f81",
+      "range": {
+        "startLine": 688,
+        "startChar": 0,
+        "endLine": 692,
+        "endChar": 20
+      },
+      "revId": "e7dcb05ae82a5fa2808f1b74c1d1a302e1277655",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
