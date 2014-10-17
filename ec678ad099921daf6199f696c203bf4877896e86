@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b085f48b_e03dc2e7",
+        "filename": "board/fruitpie/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-17T15:58:54Z",
+      "side": 1,
+      "message": "why the function is not in the common file ?",
+      "revId": "ec678ad099921daf6199f696c203bf4877896e86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b085f48b_407caea7",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-17T15:58:54Z",
+      "side": 1,
+      "message": "we should probably comment here that this function has a side effect and will fill the _amode_data pointed by modep",
+      "revId": "ec678ad099921daf6199f696c203bf4877896e86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "908ab09b_5f1bab93",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-17T15:58:54Z",
+      "side": 1,
+      "message": "we shouldn\u0027t have a ccprintf here (should be CPRINTF), but it was there before.",
+      "revId": "ec678ad099921daf6199f696c203bf4877896e86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
