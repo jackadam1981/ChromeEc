@@ -152,6 +152,15 @@ struct pd_policy {
 	struct svdm_amode_data amode;
 };
 
+/* VDM Timers ( USB PD Spec Rev2.0 Table 6-30 )*/
+#define PD_T_VDM_BUSY            (100*MSEC) /* between 100ms and ?ms */
+#define PD_T_VDM_ENTER_MODE      (25*MSEC)  /* between ?ms and 25ms */
+#define PD_T_VDM_EXIT_MODE       (25*MSEC)  /* between ?ms and 25ms */
+#define PD_T_VDM_RCVR_RSP        (15*MSEC)  /* between ?ms and 15ms */
+#define PD_T_VDM_SNDR_RSP        (28*MSEC)  /* between 24ms and 30ms */
+#define PD_T_VDM_WAIT_MODE_ENTER (100*MSEC) /* between ?ms and 100ms */
+#define PD_T_VDM_WAIT_MODE_EXIT  (100*MSEC) /* between ?ms and 100ms */
+
 /*
  * VDO : Vendor Defined Message Object
  * VDM object is minimum of VDM header + 6 additional data objects.
