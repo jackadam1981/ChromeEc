@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "708ffcad_9eeb7d3b",
+        "filename": "board/dingdong/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-17T16:49:14Z",
+      "side": 1,
+      "message": "IMO, it\u0027s actually saying the contrary :\n\"The Responder to the Discover Modes Command request shall return a Message Header with \n9 the Number of Data Objects field set to a value of 1 to 7 (the actual value is the number of Mode objects plus one\"\n\nit is stored in the message header not in the payload[0] (aka VDM header)",
+      "revId": "4a7847c5b4b4c23d16ad960c7f59588a63ca753c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "908ab09b_1fd3e3e5",
+        "filename": "board/hoho/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-17T16:49:14Z",
+      "side": 1,
+      "message": "I think the number of modes is stored (automatically) in the header not in object position ?",
+      "revId": "4a7847c5b4b4c23d16ad960c7f59588a63ca753c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b085f48b_209eca3d",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-17T16:49:14Z",
+      "side": 1,
+      "message": "no, the number of modes is in the header of the packet, not in the payload 0",
+      "revId": "4a7847c5b4b4c23d16ad960c7f59588a63ca753c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "708ffcad_3e3fc9ad",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-17T16:49:14Z",
+      "side": 1,
+      "message": "CPRINTF",
+      "revId": "4a7847c5b4b4c23d16ad960c7f59588a63ca753c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
