@@ -43,6 +43,24 @@
     },
     {
       "key": {
+        "uuid": "908ab09b_ce8e2b0e",
+        "filename": "board/host/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-17T23:28:09Z",
+      "side": 1,
+      "message": "Checking closer, I may have misinterpreted your comment. Did you want to change all of these to mA (not mW)?",
+      "parentUuid": "708ffcad_122d9c83",
+      "revId": "afd2ee2b191c1b04b4199f5c3b97c04ffbdabaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "708ffcad_61c370c1",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
