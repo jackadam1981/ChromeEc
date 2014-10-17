@@ -37,6 +37,29 @@
     },
     {
       "key": {
+        "uuid": "3072e491_74016826",
+        "filename": "board/dingdong/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-17T17:23:49Z",
+      "side": 1,
+      "message": "can\u0027t this just be sizeof(vdo_dp_mode) and remove the *",
+      "range": {
+        "startLine": 144,
+        "startChar": 34,
+        "endLine": 144,
+        "endChar": 61
+      },
+      "revId": "4a7847c5b4b4c23d16ad960c7f59588a63ca753c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "908ab09b_1fd3e3e5",
         "filename": "board/hoho/usb_pd_policy.c",
         "patchSetId": 2
@@ -71,6 +94,24 @@
     },
     {
       "key": {
+        "uuid": "3072e491_541b8c93",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-17T17:23:49Z",
+      "side": 1,
+      "message": "yeah, this needs to be set to cnt in pd_svdm() before coming here",
+      "parentUuid": "b085f48b_209eca3d",
+      "revId": "4a7847c5b4b4c23d16ad960c7f59588a63ca753c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "708ffcad_3e3fc9ad",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 2
@@ -82,6 +123,29 @@
       "writtenOn": "2014-10-17T16:49:14Z",
       "side": 1,
       "message": "CPRINTF",
+      "revId": "4a7847c5b4b4c23d16ad960c7f59588a63ca753c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3072e491_b42140cb",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-17T17:23:49Z",
+      "side": 1,
+      "message": "wait, why did we remove calling dfp_enter_mode?",
+      "range": {
+        "startLine": 243,
+        "startChar": 3,
+        "endLine": 243,
+        "endChar": 13
+      },
       "revId": "4a7847c5b4b4c23d16ad960c7f59588a63ca753c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
