@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b085f48b_e3106c44",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-17T18:01:43Z",
+      "side": 1,
+      "message": "are all legacy devices here 5V? should we make a macro for this?",
+      "range": {
+        "startLine": 62,
+        "startChar": 18,
+        "endLine": 62,
+        "endChar": 22
+      },
+      "revId": "e856eadbde3ec87c9dc4fdda1f6a9abdd6ebbead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
