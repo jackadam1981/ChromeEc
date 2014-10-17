@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90bc7033_6fa71149",
+        "filename": "driver/ina2xx.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-17T13:22:11Z",
+      "side": 1,
+      "message": "Should we just add something like:\n\n\n  #if defined(CONFIG_INA231) \u0026\u0026 defined(CONFIG_INA219)\n     \u003cbuild failure\u003e\n  #endif\n\nlest someone configuring both quietly only gets ina231 params",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 0
+      },
+      "revId": "60320b637678954ea79ad3502e51cca6869ef4b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
