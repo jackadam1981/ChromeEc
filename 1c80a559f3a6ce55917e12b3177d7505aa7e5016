@@ -52,6 +52,24 @@
       "revId": "1c80a559f3a6ce55917e12b3177d7505aa7e5016",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "509e78d1_cd79e9bb",
+        "filename": "driver/ina2xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-17T06:28:53Z",
+      "side": 1,
+      "message": "ok then let me update this driver to be either ina219 or ina231 (at compile time). Thanks for the input!",
+      "parentUuid": "b064149b_5c01bda0",
+      "revId": "1c80a559f3a6ce55917e12b3177d7505aa7e5016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
