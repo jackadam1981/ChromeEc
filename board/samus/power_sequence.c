@@ -378,13 +378,6 @@ enum power_state power_handle_state(enum power_state state)
 		disable_sleep(SLEEP_MASK_AP_RUN);
 
 		/*
-		 * Wait a bit for all voltages to be good. PCIe devices need
-		 * 99ms, but mini-PCIe devices only need 1ms. Intel recommends
-		 * at least 5ms between ALL_SYS_PWRGD and SYS_PWROK.
-		 */
-		msleep(5);
-
-		/*
 		 * Throttle CPU if necessary.  This should only be asserted
 		 * when +VCCP is powered (it is by now).
 		 */
@@ -392,6 +385,22 @@ enum power_state power_handle_state(enum power_state state)
 
 		/* Set PCH_PWROK */
 		gpio_set_level(GPIO_PCH_PWROK, 1);
+
+		/* Wait for VCORE_PGOOD before enabling SYS_PWROK */
+		if (power_wait_signals(IN_PGOOD_VCORE)) {
+			chipset_force_shutdown();
+			wireless_set_state(WIRELESS_OFF);
+			return POWER_S3;
+		}
+
+		/*
+		 * Wait a bit for all voltages to be good. PCIe devices need
+		 * 99ms, but mini-PCIe devices only need 1ms. Intel recommends
+		 * at least 5ms between ALL_SYS_PWRGD and SYS_PWROK.
+		 */
+		msleep(5);
+
+		/* Set SYS_PWROK */
 		gpio_set_level(GPIO_SYS_PWROK, 1);
 		return POWER_S0;
 
