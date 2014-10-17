@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "708ffcad_0141ccd2",
+        "filename": "board/host/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-17T17:49:25Z",
+      "side": 1,
+      "message": "while you are at it, can you make this ccprintf() match the one in all the other files.",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 42
+      },
+      "revId": "afd2ee2b191c1b04b4199f5c3b97c04ffbdabaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "708ffcad_61c370c1",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1404,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-17T17:49:25Z",
+      "side": 1,
+      "message": "suggest rename to cc_voltage, or cc_active_volt. it\u0027s not really vbus",
+      "range": {
+        "startLine": 1404,
+        "startChar": 4,
+        "endLine": 1404,
+        "endChar": 16
+      },
+      "revId": "afd2ee2b191c1b04b4199f5c3b97c04ffbdabaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b085f48b_237fb49e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1462,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-17T17:49:25Z",
+      "side": 1,
+      "message": "dont\u0027 need initialized variable.\n\ni think this whole thing can be simplified a lot. Just make this whole block within #ifdef CONFIG_CHARGE_MANAGER into a function that takes the active cc voltage as an arg, and then call that function around line 1410, on transition from SNK_DISCONNECTED to SNK_DISCOVERY.",
+      "range": {
+        "startLine": 1462,
+        "startChar": 8,
+        "endLine": 1462,
+        "endChar": 25
+      },
+      "revId": "afd2ee2b191c1b04b4199f5c3b97c04ffbdabaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b085f48b_c348c88c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1465,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-17T17:49:25Z",
+      "side": 1,
+      "message": "make into a macro. this is the assumed minimum current for PD, which might change.",
+      "range": {
+        "startLine": 1465,
+        "startChar": 22,
+        "endLine": 1465,
+        "endChar": 25
+      },
+      "revId": "afd2ee2b191c1b04b4199f5c3b97c04ffbdabaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "708ffcad_e426aedf",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-17T17:49:25Z",
+      "side": 1,
+      "message": "suggest moving to common/usb_pd_protocol.c where we define GET_POLARITY macro and we have a big comment block specifying how we tell something is connected when we are a DFP.\n\nyou can add your own big comment block about detecting connection when we are a UFP and what the different values of Ru mean.",
+      "range": {
+        "startLine": 524,
+        "startChar": 0,
+        "endLine": 527,
+        "endChar": 31
+      },
+      "revId": "afd2ee2b191c1b04b4199f5c3b97c04ffbdabaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
