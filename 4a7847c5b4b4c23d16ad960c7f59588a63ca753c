@@ -37,6 +37,42 @@
     },
     {
       "key": {
+        "uuid": "d06988a3_791fa7f6",
+        "filename": "board/dingdong/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-17T18:11:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "708ffcad_9eeb7d3b",
+      "revId": "4a7847c5b4b4c23d16ad960c7f59588a63ca753c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d06988a3_d9b2738e",
+        "filename": "board/dingdong/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-17T18:11:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0492c4e_7218b896",
+      "revId": "4a7847c5b4b4c23d16ad960c7f59588a63ca753c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3072e491_74016826",
         "filename": "board/dingdong/usb_pd_policy.c",
         "patchSetId": 2
@@ -60,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "b05ed4fb_386289b2",
+        "filename": "board/dingdong/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-17T18:11:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3072e491_74016826",
+      "range": {
+        "startLine": 144,
+        "startChar": 34,
+        "endLine": 144,
+        "endChar": 61
+      },
+      "revId": "4a7847c5b4b4c23d16ad960c7f59588a63ca753c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "908ab09b_1fd3e3e5",
         "filename": "board/hoho/usb_pd_policy.c",
         "patchSetId": 2
@@ -71,6 +131,24 @@
       "writtenOn": "2014-10-17T16:49:14Z",
       "side": 1,
       "message": "I think the number of modes is stored (automatically) in the header not in object position ?",
+      "revId": "4a7847c5b4b4c23d16ad960c7f59588a63ca753c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b05ed4fb_586f3d99",
+        "filename": "board/hoho/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-17T18:11:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "908ab09b_1fd3e3e5",
       "revId": "4a7847c5b4b4c23d16ad960c7f59588a63ca753c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -112,6 +190,24 @@
     },
     {
       "key": {
+        "uuid": "b05ed4fb_58465d19",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-17T18:11:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3072e491_541b8c93",
+      "revId": "4a7847c5b4b4c23d16ad960c7f59588a63ca753c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "708ffcad_3e3fc9ad",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 2
@@ -129,6 +225,24 @@
     },
     {
       "key": {
+        "uuid": "906390c3_97e524b8",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-17T18:11:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "708ffcad_3e3fc9ad",
+      "revId": "4a7847c5b4b4c23d16ad960c7f59588a63ca753c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3072e491_b42140cb",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 2
@@ -140,6 +254,30 @@
       "writtenOn": "2014-10-17T17:23:49Z",
       "side": 1,
       "message": "wait, why did we remove calling dfp_enter_mode?",
+      "range": {
+        "startLine": 243,
+        "startChar": 3,
+        "endLine": 243,
+        "endChar": 13
+      },
+      "revId": "4a7847c5b4b4c23d16ad960c7f59588a63ca753c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d06988a3_1956ab9c",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-17T18:11:24Z",
+      "side": 1,
+      "message": "Because we\u0027ll not try to enter more than one mode now.",
+      "parentUuid": "3072e491_b42140cb",
       "range": {
         "startLine": 243,
         "startChar": 3,
