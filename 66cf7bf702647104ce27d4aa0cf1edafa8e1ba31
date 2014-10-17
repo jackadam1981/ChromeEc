@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3072e491_74bec8a7",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-17T18:22:43Z",
+      "side": 1,
+      "message": "this won\u0027t quite work the way you want it to. the task can wake up on any PD packet received, so for instance if we receive a new power request before this 100ms is up, we will wake up here, send this command, and then fail to receive the power request, and probably end up hard resetting.\n\nAlthough, I guess that isn\u0027t too bad, considering it is very unlikely that we will receive a busy and then some other communication packet.",
+      "range": {
+        "startLine": 278,
+        "startChar": 19,
+        "endLine": 278,
+        "endChar": 32
+      },
+      "revId": "66cf7bf702647104ce27d4aa0cf1edafa8e1ba31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
