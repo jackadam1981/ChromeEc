@@ -128,6 +128,7 @@ enum dfp_amode {
 
 struct svdm_svid_data {
 	uint16_t svid;
+	int mode_cnt;
 	uint32_t mode_vdo[PDO_MODES];
 };
 
