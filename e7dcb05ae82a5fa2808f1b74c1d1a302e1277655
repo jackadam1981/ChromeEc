@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5019182f_bb702f81",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-17T01:28:42Z",
+      "side": 1,
+      "message": "I don\u0027t like this statement. This is a VDM, and as such anyone can write their own code on a device that sends this VDM, and send it to us. We should act in a KNOWN behavior if this happens to avoid this becoming a security vulnerability.",
+      "range": {
+        "startLine": 688,
+        "startChar": 0,
+        "endLine": 692,
+        "endChar": 20
+      },
+      "revId": "e7dcb05ae82a5fa2808f1b74c1d1a302e1277655",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
