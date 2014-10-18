@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "703d3c9e_b7a4cac1",
+        "filename": "board/fruitpie/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-18T01:35:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "908ab09b_88333b35",
+      "revId": "d69a6890945847ea2516548516d6b70c010e5dd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "708ffcad_13c83e7f",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2014-10-17T21:49:40Z",
       "side": 1,
       "message": "nit: isn\u0027t our ill-defined style :\nint i \u003d 0, done \u003d 0;\nOR\nint i \u003d 0;\nint done \u003d 0;",
+      "revId": "d69a6890945847ea2516548516d6b70c010e5dd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "703d3c9e_5798064f",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-18T01:35:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "708ffcad_13c83e7f",
       "revId": "d69a6890945847ea2516548516d6b70c010e5dd0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "703d3c9e_77226299",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-18T01:35:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "703d3c9e_14111c74",
+      "revId": "d69a6890945847ea2516548516d6b70c010e5dd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "908ab09b_5307243d",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 3
@@ -64,6 +118,24 @@
       "writtenOn": "2014-10-17T21:49:40Z",
       "side": 1,
       "message": "for (i \u003d 0, done \u003d 0; !done \u0026\u0026 (i \u003c supported_modes_cnt); i++) ?",
+      "revId": "d69a6890945847ea2516548516d6b70c010e5dd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "708ffcad_392c38bf",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-18T01:35:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "908ab09b_5307243d",
       "revId": "d69a6890945847ea2516548516d6b70c010e5dd0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -98,6 +170,24 @@
       "writtenOn": "2014-10-17T21:49:40Z",
       "side": 1,
       "message": "is it still used ?",
+      "revId": "d69a6890945847ea2516548516d6b70c010e5dd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "708ffcad_193e9ce3",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-18T01:35:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "708ffcad_93b44ef6",
       "revId": "d69a6890945847ea2516548516d6b70c010e5dd0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
