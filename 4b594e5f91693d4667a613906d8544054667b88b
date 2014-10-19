@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "703d3c9e_9df52fea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-19T15:05:11Z",
+      "side": 1,
+      "message": "you need to test with \u0027chan 1\u0027 which keeps the interactive ccprintf, \u0027chan 0\u0027 de-activates them",
+      "revId": "4b594e5f91693d4667a613906d8544054667b88b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "908ab09b_a808fac4",
+        "filename": "board/dingdong/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-19T15:05:11Z",
+      "side": 1,
+      "message": "you should use CPRINTS here\n(which is the version including the timestamp)\nand remove \"%T] \" to save flash space.",
+      "revId": "4b594e5f91693d4667a613906d8544054667b88b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "708ffcad_cf2d4288",
+        "filename": "board/dingdong/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-19T15:05:11Z",
+      "side": 1,
+      "message": "CPRINTS",
+      "revId": "4b594e5f91693d4667a613906d8544054667b88b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "708ffcad_ef32fee6",
+        "filename": "board/hoho/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-19T15:05:11Z",
+      "side": 1,
+      "message": "CPRINTS",
+      "revId": "4b594e5f91693d4667a613906d8544054667b88b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "708ffcad_0f280a74",
+        "filename": "board/hoho/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-19T15:05:11Z",
+      "side": 1,
+      "message": "CPRINTS",
+      "revId": "4b594e5f91693d4667a613906d8544054667b88b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
