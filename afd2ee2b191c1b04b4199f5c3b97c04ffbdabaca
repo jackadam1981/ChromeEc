@@ -61,6 +61,47 @@
     },
     {
       "key": {
+        "uuid": "3072e491_48edafc8",
+        "filename": "board/host/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-20T17:05:00Z",
+      "side": 1,
+      "message": "no, mW vs. mA depends on whether or not we have PDO_TYPE_BATTERY (see the else case).\n\nI just want the ccprintf() to match the same format as the other boards. Look at fruitpie: there are two ccprintf\u0027s, make these two match fruitpie.",
+      "parentUuid": "908ab09b_ce8e2b0e",
+      "revId": "afd2ee2b191c1b04b4199f5c3b97c04ffbdabaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "106fa0ad_dc4b4174",
+        "filename": "board/host/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-20T17:05:00Z",
+      "side": 1,
+      "message": "this is the second ccprintf() that needs to be changed to match.",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 41
+      },
+      "revId": "afd2ee2b191c1b04b4199f5c3b97c04ffbdabaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "708ffcad_61c370c1",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
