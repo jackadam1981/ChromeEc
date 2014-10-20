@@ -22,6 +22,75 @@
       "revId": "2393edd7dd9bc6dbdebc3ef088f3618141991ef3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0492c4e_a133a89b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1457,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-20T17:33:07Z",
+      "side": 1,
+      "message": "I\u0027m a little worried about this. The logic behind GET_POLARITY () is different from your logic to get cc_voltage based on which is higher. I haven\u0027t thought through it, but my concern is that the polarity selected on this line will differ from the current limit set. Not sure if this is a problem, but would like these two to match.",
+      "range": {
+        "startLine": 1455,
+        "startChar": 5,
+        "endLine": 1457,
+        "endChar": 22
+      },
+      "revId": "2393edd7dd9bc6dbdebc3ef088f3618141991ef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "106fa0ad_bcd9253a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1473,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-20T17:33:07Z",
+      "side": 1,
+      "message": "I still think this can be simpler. Can\u0027t we call pd_init_current_limits(port, 0); up above before the while(1)? Then we can get rid of the initialized[] variable, and we can move pd_init_current_limit(port, cc_voltage) up to line 1458.",
+      "range": {
+        "startLine": 1470,
+        "startChar": 3,
+        "endLine": 1473,
+        "endChar": 4
+      },
+      "revId": "2393edd7dd9bc6dbdebc3ef088f3618141991ef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0492c4e_a10c88df",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1475,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-20T17:33:07Z",
+      "side": 1,
+      "message": "this isn\u0027t quite right. It should be run if either vbus is not present, or if cc_voltage \u003c PD_SNK_VA. But if you do the above simplication, then you can go back to the way this check was done before.",
+      "range": {
+        "startLine": 1475,
+        "startChar": 3,
+        "endLine": 1475,
+        "endChar": 32
+      },
+      "revId": "2393edd7dd9bc6dbdebc3ef088f3618141991ef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
