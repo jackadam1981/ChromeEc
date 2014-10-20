@@ -16,6 +16,24 @@
       "revId": "c4edc70488e7ad3692b1064d89ae910bccecbb5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b05ed4fb_c700c8db",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-20T17:27:26Z",
+      "side": 1,
+      "message": "Similar to pd_src_vdo I believe at some point I\u0027ll have an varying set of array elements.  So w/o knowing array size at compile I\u0027ll get:\n\n  include/compile_time_macros.h:19:30: error: invalid application of ‘sizeof’ to incomplete type ‘const struct svdm_amode_fx[]’",
+      "parentUuid": "d06988a3_732c2005",
+      "revId": "c4edc70488e7ad3692b1064d89ae910bccecbb5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
