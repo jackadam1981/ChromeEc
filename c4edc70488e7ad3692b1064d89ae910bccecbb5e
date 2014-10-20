@@ -34,6 +34,24 @@
       "revId": "c4edc70488e7ad3692b1064d89ae910bccecbb5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d06988a3_6e25139f",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-20T17:29:13Z",
+      "side": 1,
+      "message": "ok let stop bikeshedding : that\u0027s just 4 bytes of flash not RAM,\nso that\u0027s good enough, let\u0027s use that version",
+      "parentUuid": "b05ed4fb_c700c8db",
+      "revId": "c4edc70488e7ad3692b1064d89ae910bccecbb5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
