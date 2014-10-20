@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0492c4e_616f009a",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-20T17:06:14Z",
+      "side": 1,
+      "message": "no, I didn\u0027t want to change other boards, this should be uW here because of the PDO_TYPE_BATTERY",
+      "range": {
+        "startLine": 73,
+        "startChar": 24,
+        "endLine": 73,
+        "endChar": 29
+      },
+      "revId": "2393edd7dd9bc6dbdebc3ef088f3618141991ef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
