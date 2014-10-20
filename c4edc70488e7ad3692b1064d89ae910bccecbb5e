@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d06988a3_732c2005",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-20T16:38:14Z",
+      "side": 1,
+      "message": "this is still costing you 4 bytes for not much benefit since you know it at compile time.\nPlease move it to dfp_enter_mode() unless there is a downside.",
+      "revId": "c4edc70488e7ad3692b1064d89ae910bccecbb5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
