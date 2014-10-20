@@ -800,6 +800,8 @@ int pd_alt_mode(int port);
  * @param hpd hotplug detect type.
  */
 void pd_send_hpd(int port, enum hpd_event hpd);
+
+void pd_usb_billboard_deferred(void);
 /* --- Physical layer functions : chip specific --- */
 
 /* Packet preparation/retrieval */
