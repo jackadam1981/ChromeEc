@@ -135,10 +135,8 @@ static int svdm_response_modes(int port, uint32_t *payload)
 {
 	int mode_cnt = ARRAY_SIZE(vdo_dp_mode);
 
-	if (PD_VDO_VID(payload[0]) != USB_SID_DISPLAYPORT) {
-		/* TODO(tbroch) USB billboard enabled here then */
+	if (PD_VDO_VID(payload[0]) != USB_SID_DISPLAYPORT)
 		return 1; /* will generate a NAK */
-	}
 
 	memcpy(payload + 1, vdo_dp_mode, sizeof(vdo_dp_mode));
 	return mode_cnt + 1;
@@ -175,6 +173,7 @@ static int svdm_enter_mode(int port, uint32_t *payload)
 	    (PD_VDO_OPOS(payload[0]) != 1))
 		return 0; /* will generate a NAK */
 
+	/* TODO(tbroch) Enumerate USB BB here with updated mode choice */
 	alt_mode = 1;
 	return 1;
 }
@@ -183,6 +182,13 @@ int pd_alt_mode(int port)
 {
 	return alt_mode;
 }
+
+void pd_usb_billboard_deferred(void)
+{
+	if (!alt_mode)
+		usb_init();
+}
+DECLARE_DEFERRED(pd_usb_billboard_deferred);
 
 static int svdm_exit_mode(int port, uint32_t *payload)
 {
