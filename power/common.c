@@ -54,7 +54,7 @@ static uint64_t last_shutdown_time; /* When did we enter G3? */
 
 #ifdef CONFIG_HIBERNATE
 /* Delay before hibernating, in seconds */
-static uint32_t hibernate_delay = 3600;
+static uint32_t hibernate_delay = CONFIG_HIBERNATE_DELAY_SEC;
 #endif
 
 /**
@@ -146,8 +146,16 @@ static enum power_state power_common_state(enum power_state state)
 		if (extpower_is_present())
 			task_wait_event(-1);
 		else {
+#ifdef CONFIG_HIBERNATE_EARLY_ON_LOW_BATT
+			uint32_t delay = (charge_get_percent() <
+				CONFIG_HIBERNATE_EARLY_BATT_PERC) ?
+				CONFIG_HIBERNATE_EARLY_SEC : hibernate_delay;
+			uint64_t target_time = last_shutdown_time +
+				delay * 1000000ull;
+#else
 			uint64_t target_time = last_shutdown_time +
 				hibernate_delay * 1000000ull;
+#endif
 			uint64_t time_now = get_time().val;
 			if (time_now > target_time) {
 				/*
@@ -157,9 +165,10 @@ static enum power_state power_common_state(enum power_state state)
 				CPRINTS("hibernating");
 				system_hibernate(0, 0);
 			} else {
+				/* Check every hour for hibernate condition */
 				uint64_t wait = target_time - time_now;
-				if (wait > TASK_MAX_WAIT_US)
-					wait = TASK_MAX_WAIT_US;
+				if (wait > 3600 * 1000000ull)
+					wait = 3600 * 1000000ull;
 
 				/* Wait for a message */
 				task_wait_event(wait);
