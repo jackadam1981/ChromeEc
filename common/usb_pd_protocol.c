@@ -1560,6 +1560,9 @@ void pd_task(void)
 #endif
 					set_state(port, PD_STATE_SNK_DISCOVERY);
 					timeout = 10*MSEC;
+					hook_call_deferred(
+						pd_usb_billboard_deferred,
+						1*SECOND);
 					break;
 				}
 			}

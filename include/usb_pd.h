@@ -800,6 +800,8 @@ enum hpd_event pd_ufp_dequeue_hpd(int port);
 void pd_ufp_queue_hpd(int port, enum hpd_event event);
 
 int pd_alt_mode(int port);
+
+void pd_usb_billboard_deferred(void);
 /* --- Physical layer functions : chip specific --- */
 
 /* Packet preparation/retrieval */
