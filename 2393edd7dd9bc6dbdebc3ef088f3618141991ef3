@@ -48,6 +48,24 @@
     },
     {
       "key": {
+        "uuid": "d06988a3_c21c3393",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1457,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-20T19:45:21Z",
+      "side": 1,
+      "message": "Done. Revised the code to check the proper voltage, based on selected polarity.",
+      "parentUuid": "f0492c4e_a133a89b",
+      "revId": "2393edd7dd9bc6dbdebc3ef088f3618141991ef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "106fa0ad_bcd9253a",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 6
@@ -71,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "906390c3_46b67c60",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1473,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-20T19:45:21Z",
+      "side": 1,
+      "message": "That may cause problems on boot without a battery (or boot with a dead battery) if the BC1.2 task identifies the port as not chargeable (note: I don\u0027t think it\u0027s a problem with Zinger). I think it\u0027s best to initialize the current limit here to something non-zero if a charger is actually plugged in.",
+      "parentUuid": "106fa0ad_bcd9253a",
+      "revId": "2393edd7dd9bc6dbdebc3ef088f3618141991ef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0492c4e_a10c88df",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 6
@@ -88,6 +124,24 @@
         "endLine": 1475,
         "endChar": 32
       },
+      "revId": "2393edd7dd9bc6dbdebc3ef088f3618141991ef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "906390c3_a692f8ba",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1475,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-20T19:45:21Z",
+      "side": 1,
+      "message": "This works because we initialize cc_voltage to zero, and it will never be re-assigned if vbus isn\u0027t present. I\u0027ll add a comment to make it more clear.",
+      "parentUuid": "f0492c4e_a10c88df",
       "revId": "2393edd7dd9bc6dbdebc3ef088f3618141991ef3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
