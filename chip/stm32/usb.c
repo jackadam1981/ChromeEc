@@ -312,6 +312,30 @@ void usb_init(void)
 DECLARE_HOOK(HOOK_INIT, usb_init, HOOK_PRIO_DEFAULT);
 #endif
 
+void usb_disconnect(void)
+{
+	/* disable pull-up on DP to disconnect */
+#ifdef CHIP_VARIANT_STM32L15X
+	STM32_SYSCFG_PMC &= ~1;
+#elif defined(CHIP_FAMILY_STM32F0)
+	STM32_USB_BCDR &= ~(1 << 15) /* DPPU */;
+#else
+#error "usb disconnect not implemented for this chip family"
+#endif
+}
+
+void usb_connect(void)
+{
+	/* enable pull-up on DP to connect */
+#ifdef CHIP_VARIANT_STM32L15X
+	STM32_SYSCFG_PMC |= 1;
+#elif defined(CHIP_FAMILY_STM32F0)
+	STM32_USB_BCDR |= (1 << 15) /* DPPU */;
+#else
+#error "usb connect not implemented for this chip family"
+#endif
+}
+
 void usb_release(void)
 {
 	/* signal disconnect to host */
