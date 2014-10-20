@@ -7,6 +7,7 @@
 #include "common.h"
 #include "console.h"
 #include "gpio.h"
+#include "hooks.h"
 #include "host_command.h"
 #include "registers.h"
 #include "task.h"
@@ -369,6 +370,14 @@ int pd_vdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 	return 0;
 }
 #endif /* !CONFIG_USB_PD_CUSTOM_VDM */
+
+#if defined(CONFIG_USB_PD_ALT_MODE_DFP) || defined(CONFIG_USB_PD_SIMPLE_DFP) \
+	|| !defined(CONFIG_USB_PD_ALT_MODE)
+void pd_usb_billboard_deferred(void)
+{
+}
+DECLARE_DEFERRED(pd_usb_billboard_deferred);
+#endif
 
 #ifndef CONFIG_USB_PD_ALT_MODE_DFP
 int pd_exit_mode(int port, uint32_t *payload)
