@@ -791,6 +791,7 @@ void board_flip_usb_mux(int port);
 int pd_alt_mode(int port);
 
 void pd_send_hpd(enum hpd_event hpd);
+void pd_usb_billboard_deferred(void);
 /* --- Physical layer functions : chip specific --- */
 
 /* Packet preparation/retrieval */
