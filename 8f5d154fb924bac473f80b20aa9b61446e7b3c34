@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70261c9e_5ab745fa",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-21T01:17:38Z",
+      "side": 1,
+      "message": "Why do we need to restrict this to usb_uint\u003d\u003duint16_t? On Ryu, this is going to fail as we have STM32F373.",
+      "revId": "8f5d154fb924bac473f80b20aa9b61446e7b3c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
