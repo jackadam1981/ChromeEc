@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5103e40_43e16ca7",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-21T21:22:23Z",
+      "side": 1,
+      "message": "Kaboom ! when you plug your 2 ports ?",
+      "revId": "9d5648268e8a41f5c66892068afd7b89923e70c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "151b126c_73fd607f",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-21T21:22:23Z",
+      "side": 1,
+      "message": "shouldn\u0027t we nack irq \u0026\u0026 !lvl ?\nthat seems invalid from my reading of the spec.",
+      "revId": "9d5648268e8a41f5c66892068afd7b89923e70c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
