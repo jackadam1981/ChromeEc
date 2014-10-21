@@ -414,8 +414,11 @@ static inline int battery_too_low(void)
 /* Shut everything down before the battery completely dies. */
 static void prevent_deep_discharge(void)
 {
-	if (!battery_too_low())
+	if (!battery_too_low()) {
+		/* Reset shutdown warning time */
+		shutdown_warning_time.val = 0;
 		return;
+	}
 
 	if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
 #ifdef CONFIG_HIBERNATE
