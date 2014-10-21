@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30202482_194cf739",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-21T15:41:17Z",
+      "side": 1,
+      "message": "Can you just check if CONFIG_HIBERNATE_EARLY_BATT_PERCENT is defined?",
+      "range": {
+        "startLine": 592,
+        "startChar": 7,
+        "endLine": 592,
+        "endChar": 41
+      },
+      "revId": "da470fe7b7dcd610821f73aa3e1ba937bc95d02c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30202482_b95cc3f0",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-21T15:41:17Z",
+      "side": 1,
+      "message": "Might as well spell out PERCENT, or use PCT\n\nCONFIG_HIBERNATE_BATT_PERCENT?",
+      "range": {
+        "startLine": 593,
+        "startChar": 7,
+        "endLine": 593,
+        "endChar": 39
+      },
+      "revId": "da470fe7b7dcd610821f73aa3e1ba937bc95d02c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b5f16652_80a8961e",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-21T15:41:17Z",
+      "side": 1,
+      "message": "CONFIG_HIBERNATE_BATT_SEC?",
+      "range": {
+        "startLine": 594,
+        "startChar": 7,
+        "endLine": 594,
+        "endChar": 33
+      },
+      "revId": "da470fe7b7dcd610821f73aa3e1ba937bc95d02c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30202482_19d317e6",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-21T15:41:17Z",
+      "side": 1,
+      "message": "Should pick the *shorter* of hibernate_delay and EARLY_SEC.\n\nOtherwise, \"hibdelay 1\" command won\u0027t work if the battery is low.\n\nSo\n\n   delay \u003d hibernate_delay;\n   if (charge_get_percent() \u003c BATT_PERC \u0026\u0026 EARLY_SEC \u003c delay)\n      delay \u003d EARLY_SEC;",
+      "range": {
+        "startLine": 150,
+        "startChar": 4,
+        "endLine": 152,
+        "endChar": 49
+      },
+      "revId": "da470fe7b7dcd610821f73aa3e1ba937bc95d02c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
