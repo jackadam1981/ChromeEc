@@ -22,6 +22,30 @@
       "revId": "7681919908283737c452f47d980e4f4fdb30a579",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3072e491_3ba7d81b",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-21T17:07:07Z",
+      "side": 1,
+      "message": "oops, didn\u0027t check that.\n\nI just changed it back to what it was. The rate it was waking up before, 2^31 us is fine.",
+      "parentUuid": "3072e491_7b15d0ac",
+      "range": {
+        "startLine": 167,
+        "startChar": 19,
+        "endLine": 167,
+        "endChar": 23
+      },
+      "revId": "7681919908283737c452f47d980e4f4fdb30a579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
