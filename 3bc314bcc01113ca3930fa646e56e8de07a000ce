@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70261c9e_9ae53db8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1471,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-21T01:49:19Z",
+      "side": 1,
+      "message": "I think the logic is still broken. If we have cc_voltage \u003e\u003d PD_SNK_VA, but we don\u0027t have vbus, this will incorrectly set current limit. We need both conditions, which is why I keep proposing moving setting current limit to above if statement. Then we can leave the break statement in, and change this if block to:\n\nif (!initalized[port]) {\n  initialized[port] \u003d 0;\n  pd_init_current_limits(port, 0);\n}",
+      "range": {
+        "startLine": 1471,
+        "startChar": 29,
+        "endLine": 1471,
+        "endChar": 52
+      },
+      "revId": "3bc314bcc01113ca3930fa646e56e8de07a000ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30202482_13c93663",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1476,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-21T01:49:19Z",
+      "side": 1,
+      "message": "this is not true. we could be connected to a source that has it\u0027s output inhibited for some other reason. in that case we wan to be running this block to check for role swap.",
+      "range": {
+        "startLine": 1476,
+        "startChar": 3,
+        "endLine": 1476,
+        "endChar": 53
+      },
+      "revId": "3bc314bcc01113ca3930fa646e56e8de07a000ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
