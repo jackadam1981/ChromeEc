@@ -16,6 +16,24 @@
       "revId": "8f5d154fb924bac473f80b20aa9b61446e7b3c34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b5f16652_e6de5a6b",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-10-21T17:15:11Z",
+      "side": 1,
+      "message": "Good point, and this is a holdover from old code that actually cared.\n\nDone",
+      "parentUuid": "70261c9e_5ab745fa",
+      "revId": "8f5d154fb924bac473f80b20aa9b61446e7b3c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
