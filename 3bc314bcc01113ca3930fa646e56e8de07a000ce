@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "106fa0ad_edc20960",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1471,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-21T15:52:21Z",
+      "side": 1,
+      "message": "Ok, after talking w/ Shawn I realize this logic is actually correct because cc_voltage var is initialized to 0 and only set up above when vbus is provided.\n\nStill think it can be refactored to be more readable. But, it looks correct.",
+      "parentUuid": "70261c9e_9ae53db8",
+      "range": {
+        "startLine": 1471,
+        "startChar": 29,
+        "endLine": 1471,
+        "endChar": 52
+      },
+      "revId": "3bc314bcc01113ca3930fa646e56e8de07a000ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30202482_13c93663",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 8
