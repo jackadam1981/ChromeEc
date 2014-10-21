@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3072e491_7b15d0ac",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-21T16:53:52Z",
+      "side": 1,
+      "message": "What if that\u0027s longer than TASK_MAX_WAIT_US?\n\nNote that task_wait_event() takes an int parameter, not a uint64_t parameter.\n\nSeems like we should wait for min(HOUR, TASK_MAX_WAIT_US).",
+      "range": {
+        "startLine": 167,
+        "startChar": 19,
+        "endLine": 167,
+        "endChar": 23
+      },
+      "revId": "7681919908283737c452f47d980e4f4fdb30a579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
