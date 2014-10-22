@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55210a94_ea984b08",
+        "filename": "board/dingdong/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-22T23:26:23Z",
+      "side": 1,
+      "message": "the low to high debouncing recommended by the DP spec is 100ms ?",
+      "revId": "9cbafd8d8b9fb71eacfcbf589d0fe83b86270383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "950f0224_b15d3037",
+        "filename": "board/dingdong/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-22T23:26:23Z",
+      "side": 1,
+      "message": "of course you don\u0027t want a trace when entering the handler, maybe before exiting or none",
+      "revId": "9cbafd8d8b9fb71eacfcbf589d0fe83b86270383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "55210a94_8a4317df",
+        "filename": "board/hoho/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-22T23:26:23Z",
+      "side": 1,
+      "message": "if you need a per-port value , store it per port in their context ...",
+      "revId": "9cbafd8d8b9fb71eacfcbf589d0fe83b86270383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
