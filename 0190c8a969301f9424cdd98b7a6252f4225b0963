@@ -16,6 +16,24 @@
       "revId": "0190c8a969301f9424cdd98b7a6252f4225b0963",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "55210a94_3be1ffa8",
+        "filename": "board/samus/gesture.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-22T00:29:51Z",
+      "side": 1,
+      "message": "the idea is that every time you boot, we want the ODR to start at the same value. so, if chrome sets ODR to 50Hz, then on the next boot, we want to restore to default. but, if they only go to S3 and back to S0, it should still be 50Hz.",
+      "parentUuid": "150232f8_0afb8359",
+      "revId": "0190c8a969301f9424cdd98b7a6252f4225b0963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
