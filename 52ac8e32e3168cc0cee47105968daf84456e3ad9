@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1549527c_29de691f",
+        "filename": "board/plankton/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-22T18:46:07Z",
+      "side": 1,
+      "message": "the way it is now is still broken, because when we send source capabilities, we only send one row depending on which button has been pressed: see line 58 in pd_get_source_pdo().\n\nSo, normally the device (samus) will not see the 5V, 500mA.\n\nConsidering this is just a testing board, I don\u0027t think it really matters though if the source advertisement is exactly to spec, only our devices will ever see it.",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 18
+      },
+      "revId": "52ac8e32e3168cc0cee47105968daf84456e3ad9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
