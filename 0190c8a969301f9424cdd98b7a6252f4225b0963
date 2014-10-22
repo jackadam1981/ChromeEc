@@ -34,6 +34,24 @@
       "revId": "0190c8a969301f9424cdd98b7a6252f4225b0963",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "151b126c_62a7c89f",
+        "filename": "board/samus/gesture.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-10-22T05:12:22Z",
+      "side": 1,
+      "message": "I understand for suspend/resume, not shutdown.",
+      "parentUuid": "55210a94_3be1ffa8",
+      "revId": "0190c8a969301f9424cdd98b7a6252f4225b0963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
