@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "150232f8_0afb8359",
+        "filename": "board/samus/gesture.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-10-22T00:12:00Z",
+      "side": 1,
+      "message": "Why doe we need to set save_odr the ODR here?\nIt is only used at resume, and will be set by suspend before.",
+      "revId": "0190c8a969301f9424cdd98b7a6252f4225b0963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
