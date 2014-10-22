@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "151b126c_fc6dbd72",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-10-22T00:14:53Z",
+      "side": 1,
+      "message": "Why do we set NOT_INITIALIZED even when the sensor is active in S5? Sure it will be reinitialized in the while loop of motion_sense_task, but that is not necessary.",
+      "revId": "1246bca1f87661d2f316471e16c9281fa4a036c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
