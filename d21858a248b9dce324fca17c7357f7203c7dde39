@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "354c968a_4ad99735",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1000434
+      },
+      "writtenOn": "2014-10-22T03:46:53Z",
+      "side": 1,
+      "message": "would be cheaper to just put :\ngpio_set_level(GPIO_USB_C0_DP_HPD, 1);\nhere and skip the debug trace.",
+      "revId": "d21858a248b9dce324fca17c7357f7203c7dde39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "151b126c_2748c2a5",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1000434
+      },
+      "writtenOn": "2014-10-22T03:46:53Z",
+      "side": 1,
+      "message": "style bikeshedding of the day : I think kernel style would have brackets around the last clause.",
+      "revId": "d21858a248b9dce324fca17c7357f7203c7dde39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "354c968a_0a7f1f4f",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000434
+      },
+      "writtenOn": "2014-10-22T03:46:53Z",
+      "side": 1,
+      "message": "where are we using the payload parameter ?\nI\u0027m no longer seeing any callsite",
+      "revId": "d21858a248b9dce324fca17c7357f7203c7dde39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
