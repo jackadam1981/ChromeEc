@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "354c968a_383fd1e0",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-22T19:25:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "354c968a_4ad99735",
+      "revId": "d21858a248b9dce324fca17c7357f7203c7dde39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "151b126c_2748c2a5",
         "filename": "board/samus_pd/usb_pd_policy.c",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "150232f8_a4a163b4",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-22T19:25:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "151b126c_2748c2a5",
+      "revId": "d21858a248b9dce324fca17c7357f7203c7dde39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "354c968a_0a7f1f4f",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2014-10-22T03:46:53Z",
       "side": 1,
       "message": "where are we using the payload parameter ?\nI\u0027m no longer seeing any callsite",
+      "revId": "d21858a248b9dce324fca17c7357f7203c7dde39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "354c968a_f894994e",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-22T19:25:18Z",
+      "side": 1,
+      "message": "Can drop for now but it will likely come back in for host command and eventually be part of the kernel/userland once we understand interactions with UFPs that have multiple modes.",
+      "parentUuid": "354c968a_0a7f1f4f",
       "revId": "d21858a248b9dce324fca17c7357f7203c7dde39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
