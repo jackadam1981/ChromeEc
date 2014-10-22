@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75244ea4_8a1c3b91",
+        "filename": "board/dingdong/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-22T23:15:19Z",
+      "side": 1,
+      "message": "it\u0027s both a position and a count,\nit\u0027s a bit confusing (for the reviewer)",
+      "revId": "d4d81d1109e3e5798bdf2dce5c46e9dc7d335538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "55210a94_aad813fd",
+        "filename": "board/dingdong/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-22T23:15:19Z",
+      "side": 1,
+      "message": "what is the intent of forcing the object position here ?\nas we never enter other mode than OPOS, we should NAK invalid status request ?",
+      "revId": "d4d81d1109e3e5798bdf2dce5c46e9dc7d335538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75244ea4_0a394bf7",
+        "filename": "board/dingdong/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-22T23:15:19Z",
+      "side": 1,
+      "message": "I don\u0027t understand the whole bit manipulation for DFP_D/UFP_D connected.\nyou keep the low bits here from ENTER_MODE payload ???, than you force UFP_D below (which seems right)\nplease can you comment",
+      "revId": "d4d81d1109e3e5798bdf2dce5c46e9dc7d335538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
