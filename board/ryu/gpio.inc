@@ -34,6 +34,8 @@ GPIO(USBC_CC_TX_EN,        D, 7,  GPIO_OUT_LOW,  NULL)
 GPIO(USBC_TX_CLKOUT,       B, 1,  GPIO_OUT_LOW,  NULL)
 GPIO(USBC_TX_CLKIN,        B, 3,  GPIO_OUT_LOW,  NULL)
 #endif
+/* TODO(tbroch) Should be PC1 in later revisions this is TP17 */
+GPIO(HPD_IN,               B, 4,  GPIO_OUT_LOW,  NULL)
 
 /* System power */
 GPIO(PMIC_PWRON_L,         D, 14, GPIO_ODR_HIGH, NULL)

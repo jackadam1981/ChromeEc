@@ -19,6 +19,7 @@
 #include "power.h"
 #include "power_button.h"
 #include "registers.h"
+#include "system.h"
 #include "task.h"
 #include "usb_pd.h"
 #include "usb_pd_config.h"
@@ -40,6 +41,7 @@ void unhandled_evt(enum gpio_signal signal)
 /* Initialize board. */
 static void board_init(void)
 {
+	int pd_enable;
 	/*
 	 * Determine recovery mode is requested by the power, volup, and
 	 * voldown buttons being pressed.
@@ -58,6 +60,22 @@ static void board_init(void)
 
 	/* Enable interrupts on VBUS transitions. */
 	gpio_enable_interrupt(GPIO_CHGR_ACOK);
+
+	/*
+	 * Do not enable PD communication in RO as a security measure.
+	 * We don't want to allow communication to outside world until
+	 * we jump to RW. This can by overridden with the removal of
+	 * the write protect screw to allow for easier testing, and for
+	 * booting without a battery.
+	 */
+	if (system_get_image_copy() != SYSTEM_IMAGE_RW
+	    && system_is_locked()) {
+		ccprintf("[%T PD communication disabled]\n");
+		pd_enable = 0;
+	} else {
+		pd_enable = 1;
+	}
+	pd_comm_enable(pd_enable);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
