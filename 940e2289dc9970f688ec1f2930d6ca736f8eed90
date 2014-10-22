@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "150232f8_1a1aac60",
+        "filename": "board/plankton/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-22T18:31:30Z",
+      "side": 1,
+      "message": "hum I think the standard is telling you that the first entry is always vSafe5V with PDO_FIXED_EXTERNAL set\nunless the spec has changed since my last reading (that\u0027s definitely possible) you should have :\n          PDO_FIXED(5000,   500, PDO_FIXED_EXTERNAL),\n          PDO_FIXED(5000,  3000, PDO_FIXED_EXTERNEL),",
+      "revId": "940e2289dc9970f688ec1f2930d6ca736f8eed90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
