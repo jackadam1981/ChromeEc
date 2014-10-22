@@ -22,6 +22,24 @@
       "revId": "43c95c67e7be2a081cfd20eb52e529a7079b50e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "55210a94_2f52d52a",
+        "filename": "board/discovery-stm32f072/spi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-10-22T20:41:16Z",
+      "side": 1,
+      "message": "Certainly, my eventual goal is to have a single case closed debugging task that manages this as well as console forwarding and whatever else is required.  But I\u0027m happy to change this around for now.",
+      "parentUuid": "55210a94_4fd87181",
+      "revId": "43c95c67e7be2a081cfd20eb52e529a7079b50e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
