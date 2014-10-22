@@ -40,6 +40,24 @@
       "revId": "43c95c67e7be2a081cfd20eb52e529a7079b50e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "950f0224_eb505959",
+        "filename": "board/discovery-stm32f072/spi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-22T20:44:13Z",
+      "side": 1,
+      "message": "I think it\u0027s okay for discovery board. I asked because this is likely going to be the example when we enable this on Ryu and Samus. If this is going to move out to a common task, then you don\u0027t necessarily have to change it now.",
+      "parentUuid": "55210a94_2f52d52a",
+      "revId": "43c95c67e7be2a081cfd20eb52e529a7079b50e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
