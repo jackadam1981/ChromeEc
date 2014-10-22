@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55210a94_4fd87181",
+        "filename": "board/discovery-stm32f072/spi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-22T20:27:37Z",
+      "side": 1,
+      "message": "This task looks pretty simple. Can we use hooks and deferred functions instead of adding a task for this?",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 17
+      },
+      "revId": "43c95c67e7be2a081cfd20eb52e529a7079b50e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
