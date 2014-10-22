@@ -34,6 +34,24 @@
       "revId": "940e2289dc9970f688ec1f2930d6ca736f8eed90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "150232f8_5a7a745f",
+        "filename": "board/plankton/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-22T18:42:26Z",
+      "side": 1,
+      "message": "That\u0027s section \"6.4.1 Capabilites Messages\" :\n\"The vSafe5V Fixed Supply Object shall always be the first object.\"\nfinding how much current vSafe5V can provide is another challenge :\ngiven the standard says :\n\" vSafe5V output offered by [USB2.0], [USB3.1], [USBType-C1.0] or [BC1.2], in \norder to enable future power negotiation.\"\nI\u0027m not findi vSafe5V definition in typeC1.0, if we have the 3A Rp pull-up, you might be allowed to put 3A in the first entry, I don\u0027t know.",
+      "parentUuid": "150232f8_1a1aac60",
+      "revId": "940e2289dc9970f688ec1f2930d6ca736f8eed90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
