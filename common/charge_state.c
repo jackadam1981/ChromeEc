@@ -252,17 +252,18 @@ static int state_common(struct charge_state_context *ctx)
 		state_machine_force_idle = 0;
 	}
 
-#if defined(CONFIG_BATTERY_PRESENT_CUSTOM) || \
-	defined(CONFIG_BATTERY_PRESENT_GPIO)
-	if (!battery_is_present()) {
-		curr->error |= F_BATTERY_NOT_CONNECTED;
-		return curr->error;
-	}
-#endif
-
 	/* Read params and see if battery is responsive */
 	battery_get_params(batt);
-	if (!(batt->flags & BATT_FLAG_RESPONSIVE)) {
+	if (batt->flags & BATT_FLAG_RESPONSIVE) {
+		ctx->battery_responsive = 1;
+	} else {
+#if defined(CONFIG_BATTERY_PRESENT_CUSTOM) || \
+	defined(CONFIG_BATTERY_PRESENT_GPIO)
+		if (!battery_is_present()) {
+			curr->error |= F_BATTERY_NOT_CONNECTED;
+			return curr->error;
+		}
+#endif
 		/* Check low battery condition and retry */
 		if (curr->ac && ctx->battery_responsive &&
 		    !(curr->error & F_CHARGER_MASK)) {
@@ -289,8 +290,6 @@ static int state_common(struct charge_state_context *ctx)
 			curr->error |= F_BATTERY_UNRESPONSIVE;
 			return curr->error;
 		}
-	} else {
-		ctx->battery_responsive = 1;
 	}
 
 	/* Translate flags */
