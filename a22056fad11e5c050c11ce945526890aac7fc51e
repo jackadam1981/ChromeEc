@@ -16,6 +16,24 @@
       "revId": "a22056fad11e5c050c11ce945526890aac7fc51e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b58de6f4_462e4681",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-23T15:18:44Z",
+      "side": 1,
+      "message": "Could use deferred task then with function like \n\n  if !alt_mode || disconnect\n      return\n  if cc_busy {\n     defer again\n     return\n  }\n  pd_send_vdm()\n  while (vdm_busy)\n     task_wait_event()\n\nprobably need something in here about data role swap too but hopefully that would fall under alt_mode bool.",
+      "parentUuid": "906390c3_4b9a0502",
+      "revId": "a22056fad11e5c050c11ce945526890aac7fc51e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
