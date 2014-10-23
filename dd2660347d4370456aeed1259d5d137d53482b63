@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5594aafe_dda54b14",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-23T20:36:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b58de6f4_497f394e",
+      "range": {
+        "startLine": 83,
+        "startChar": 25,
+        "endLine": 83,
+        "endChar": 26
+      },
+      "revId": "dd2660347d4370456aeed1259d5d137d53482b63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b58de6f4_e963adb5",
         "filename": "common/host_event_commands.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "75244ea4_a543a807",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-23T20:36:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b58de6f4_e963adb5",
+      "range": {
+        "startLine": 85,
+        "startChar": 8,
+        "endLine": 85,
+        "endChar": 9
+      },
+      "revId": "dd2660347d4370456aeed1259d5d137d53482b63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f583dec2_df5a1475",
         "filename": "common/mkbp_event.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2014-10-23T17:49:56Z",
       "side": 1,
       "message": "We only have 2 events defined, so supporting 32 seems plenty for now and the code is simpler.  So just use uint32_t events for now, and we can add in the array stuff if we end up with more than 32 someday.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 62
+      },
+      "revId": "dd2660347d4370456aeed1259d5d137d53482b63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5594aafe_5d605b2e",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-23T20:36:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f583dec2_df5a1475",
       "range": {
         "startLine": 15,
         "startChar": 0,
