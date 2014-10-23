@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "150232f8_6ece92ee",
+        "filename": "board/dingdong/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-23T04:44:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75244ea4_8a1c3b91",
+      "revId": "d4d81d1109e3e5798bdf2dce5c46e9dc7d335538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55210a94_aad813fd",
         "filename": "board/dingdong/usb_pd_policy.c",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "150232f8_eeaf42ef",
+        "filename": "board/dingdong/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-23T04:44:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55210a94_aad813fd",
+      "revId": "d4d81d1109e3e5798bdf2dce5c46e9dc7d335538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75244ea4_0a394bf7",
         "filename": "board/dingdong/usb_pd_policy.c",
         "patchSetId": 3
@@ -47,6 +83,24 @@
       "writtenOn": "2014-10-22T23:15:19Z",
       "side": 1,
       "message": "I don\u0027t understand the whole bit manipulation for DFP_D/UFP_D connected.\nyou keep the low bits here from ENTER_MODE payload ???, than you force UFP_D below (which seems right)\nplease can you comment",
+      "revId": "d4d81d1109e3e5798bdf2dce5c46e9dc7d335538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5889ae4_6706e611",
+        "filename": "board/dingdong/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-23T04:44:34Z",
+      "side": 1,
+      "message": "Discussed in person with Vincent.  Remembered also that spec said the dp status from the DFP is simply informational / debug and can be ignored.\n\nSo removing this and just asserting the UFP\u0027s bit.",
+      "parentUuid": "75244ea4_0a394bf7",
       "revId": "d4d81d1109e3e5798bdf2dce5c46e9dc7d335538",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
