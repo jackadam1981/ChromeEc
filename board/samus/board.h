@@ -182,6 +182,9 @@ enum board_version {
 /* Discharge battery when on AC power for factory test. */
 int board_discharge_on_ac(int enable);
 
+/* Define for sensor tasks */
+#define CONFIG_SENSOR_BATTERY_TAP 0
+
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __BOARD_H */

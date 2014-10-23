@@ -164,7 +164,7 @@ int motion_get_lid_angle(void)
 		return (int)LID_ANGLE_UNRELIABLE;
 }
 
-static void clock_chipset_shutdown(void)
+static void motion_sense_shutdown(void)
 {
 	int i;
 	struct motion_sensor_t *sensor;
@@ -175,9 +175,10 @@ static void clock_chipset_shutdown(void)
 		sensor->odr    = sensor->default_odr;
 		sensor->range  = sensor->default_range;
 		if ((sensor->state == SENSOR_INITIALIZED) &&
-			!(sensor->active_mask & sensor->active))
+		   !(sensor->active_mask & sensor->active)) {
 			sensor->drv->set_data_rate(sensor, 0, 0);
-		sensor->state = SENSOR_NOT_INITIALIZED;
+			sensor->state = SENSOR_NOT_INITIALIZED;
+		}
 	}
 
 #ifdef CONFIG_GESTURE_DETECTION
@@ -185,9 +186,9 @@ static void clock_chipset_shutdown(void)
 	gesture_chipset_shutdown();
 #endif
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, clock_chipset_shutdown, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, motion_sense_shutdown, HOOK_PRIO_DEFAULT);
 
-static void clock_chipset_suspend(void)
+static void motion_sense_suspend(void)
 {
 	int i;
 	struct motion_sensor_t *sensor;
@@ -200,7 +201,7 @@ static void clock_chipset_suspend(void)
 
 		/* Saving power if the sensor is not active in S3 */
 		if ((sensor->state == SENSOR_INITIALIZED) &&
-			!(sensor->active_mask & sensor->active)) {
+		    !(sensor->active_mask & sensor->active)) {
 			sensor->drv->set_data_rate(sensor, 0, 0);
 			sensor->state = SENSOR_NOT_INITIALIZED;
 		}
@@ -211,9 +212,9 @@ static void clock_chipset_suspend(void)
 	gesture_chipset_suspend();
 #endif
 }
-DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, clock_chipset_suspend, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, motion_sense_suspend, HOOK_PRIO_DEFAULT);
 
-static void clock_chipset_resume(void)
+static void motion_sense_resume(void)
 {
 	int i;
 	struct motion_sensor_t *sensor;
@@ -223,6 +224,10 @@ static void clock_chipset_resume(void)
 	for (i = 0; i < motion_sensor_count; i++) {
 		sensor = &motion_sensors[i];
 		sensor->active = SENSOR_ACTIVE_S0;
+		if (sensor->state == SENSOR_INITIALIZED) {
+			/* Put back the odr previously set. */
+			sensor->drv->set_data_rate(sensor, sensor->odr, 1);
+		}
 	}
 
 #ifdef CONFIG_GESTURE_DETECTION
@@ -230,7 +235,7 @@ static void clock_chipset_resume(void)
 	gesture_chipset_resume();
 #endif
 }
-DECLARE_HOOK(HOOK_CHIPSET_RESUME, clock_chipset_resume, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, motion_sense_resume, HOOK_PRIO_DEFAULT);
 
 /* Write to LPC status byte to represent that accelerometers are present. */
 static inline void set_present(uint8_t *lpc_status)

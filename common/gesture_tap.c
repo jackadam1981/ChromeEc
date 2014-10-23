@@ -16,9 +16,9 @@
 #include "util.h"
 
 /* Console output macros */
-#define CPUTS(outstr) cputs(CC_MOTION_SENSE, outstr)
-#define CPRINTS(format, args...) cprints(CC_MOTION_SENSE, format, ## args)
-#define CPRINTF(format, args...) cprintf(CC_MOTION_SENSE, format, ## args)
+#define CPUTS(outstr) cputs(CC_GESTURE_TAP, outstr)
+#define CPRINTS(format, args...) cprints(CC_GESTURE_TAP, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_GESTURE_TAP, format, ## args)
 
 /* Output datarate for tap sensor (in milli-Hz) */
 #define TAP_ODR (1000000 / CONFIG_GESTURE_SAMPLING_INTERVAL_MS)
@@ -63,7 +63,8 @@ enum tap_states {
 };
 
 /* Tap sensor to use */
-static struct motion_sensor_t *sensor = &motion_sensors[0];
+static struct motion_sensor_t *sensor =
+&motion_sensors[CONFIG_SENSOR_BATTERY_TAP];
 
 /* Tap state information */
 static int history_z[MAX_WINDOW];  /* Changes in Z */
@@ -74,7 +75,6 @@ static int tap_debug;
 
 /* Tap detection flag */
 static int tap_detection;
-static int saved_odr;
 
 /*
  * TODO(crosbug.com/p/33102): Cleanup this function: break into multiple
@@ -250,12 +250,12 @@ static int gesture_tap_for_battery(void)
 			CPRINTS("tap st %d->%d, error div by 0",
 				state_p, state);
 		else
-			CPRINTS("tap st %d->%d, st_cnt %-3d, Z_in:Z_out %-3d, "
-				"Z_in:XY_in %-3d, dZ_in %-8.3d, "
-				"dZ_in_max %-8.3d, dZ_out %-8.3d",
-				state_p, state, state_cnt,
+			CPRINTS("tap st %d->%d, st_cnt %-3d",
+				state_p, state, state_cnt);
+			CPRINTS("Z_in:Z_out %-3d, Z_in:XY_in %-3d",
 				delta_z_inner / delta_z_outer,
-				delta_z_inner / delta_xy_inner,
+				delta_z_inner / delta_xy_inner);
+			CPRINTS("dZ_in %-8.3d, dZ_in_max %-8.3d, dZ_out %-8.3d",
 				delta_z_inner, delta_z_inner_max,
 				delta_z_outer);
 	}
@@ -265,15 +265,13 @@ static int gesture_tap_for_battery(void)
 
 void gesture_chipset_resume(void)
 {
-	/* Restore ODR and disable tap detection */
+	/* disable tap detection */
 	tap_detection = 0;
-	sensor->drv->set_data_rate(sensor, saved_odr, 1);
 }
 
 void gesture_chipset_suspend(void)
 {
-	/* Record active ODR, set ODR to desired value */
-	sensor->drv->get_data_rate(sensor, &saved_odr);
+	/* Set ODR to desired value */
 	sensor->drv->set_data_rate(sensor, TAP_ODR, 1);
 
 	/*
@@ -288,8 +286,7 @@ void gesture_chipset_suspend(void)
 
 void gesture_chipset_shutdown(void)
 {
-	sensor->odr = TAP_ODR;
-	saved_odr = sensor->default_odr;
+	/* suspend has been called to enable tap recognition already */
 }
 
 void gesture_calc(void)
