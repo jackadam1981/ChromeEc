@@ -51,6 +51,24 @@
       "revId": "558385bfcd5c4ceec56b28b29d3e087145ecfedf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "159eb222_3be317ea",
+        "filename": "include/charge_manager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-23T22:16:02Z",
+      "side": 1,
+      "message": "Yeah, that seems like a good idea. I\u0027ll abandon this change and implement it as you suggested.",
+      "parentUuid": "9592a210_348566e9",
+      "revId": "558385bfcd5c4ceec56b28b29d3e087145ecfedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
