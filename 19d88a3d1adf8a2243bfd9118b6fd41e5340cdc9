@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "b58de6f4_e6667a0f",
+        "filename": "board/dingdong/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1000434
+      },
+      "writtenOn": "2014-10-23T13:59:14Z",
+      "side": 1,
+      "message": "that\u0027s incorrect but I imagine your next CL fixes it",
+      "revId": "19d88a3d1adf8a2243bfd9118b6fd41e5340cdc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9592a210_e219886c",
         "filename": "board/dingdong/usb_pd_policy.c",
         "patchSetId": 4
