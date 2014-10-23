@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9592a210_e219886c",
+        "filename": "board/dingdong/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-23T04:44:59Z",
+      "side": 1,
+      "message": "no payload beyond vdm header w/ ack ... was correct in hoho.",
+      "range": {
+        "startLine": 178,
+        "startChar": 9,
+        "endLine": 178,
+        "endChar": 10
+      },
+      "revId": "19d88a3d1adf8a2243bfd9118b6fd41e5340cdc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
