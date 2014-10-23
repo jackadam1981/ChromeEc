@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b58de6f4_c916e96a",
+        "filename": "include/charge_manager.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-23T17:21:42Z",
+      "side": 1,
+      "message": "adding the bc1.2 subtypes here is ugly. would prefer to put them in charge_supplier enum, but it would mean there is a strict priority between them. not sure we want that.\n\none possibility is to change the way the charge_suppliers are treated such that PD is highest priority, but all the rest are the same priority and the power advertisement is used to break the tie.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 2
+      },
+      "revId": "dc3dff299aed1447693de45e0c7c0e9d43c6099f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
