@@ -539,11 +539,31 @@
 #undef CONFIG_FW_WP_RO_SIZE
 
 /*****************************************************************************/
-/* Motion sensor based gesture recognition */
+/* Motion sensor based gesture recognition information */
 #undef CONFIG_GESTURE_DETECTION
-
+#ifndef CONFIG_GESTURE_DETECTION
+/* Which sensor to look for gesture recognition */
+#undef CONFIG_SENSOR_BATTERY_TAP
 /* Sensor sampling interval for gesture recognition */
 #undef CONFIG_GESTURE_SAMPLING_INTERVAL_MS
+/*
+ * Double tap detection parameters
+ * Double tap works by looking for two isolated Z-axis accelerometer impulses
+ * preceded and followed by relatively calm periods of accelerometer motion.
+ *
+ * Define an outer and inner window. The inner window specifies how
+ * long the tap impulse is expected to last. The outer window specifies the
+ * period before the initial tap impluse and after the final tap impulse for
+ * which to check for relatively calm periods. In between the two impulses
+ * there is a minimum and maximum interstice time allowed.
+ */
+#define CONFIG_OUTER_WINDOW_T 200
+#define CONFIG_INNER_WINDOW_T 30
+#define CONFIG_MIN_INTERSTICE_T 120
+#define CONFIG_MAX_INTERSTICE_T 500
+
+#endif
+
 
 
 /*****************************************************************************/
