@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9592a210_48341382",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-23T17:55:54Z",
+      "side": 1,
+      "message": "missed inserting opos once we started checking for it which was why UFP was nacking",
+      "range": {
+        "startLine": 307,
+        "startChar": 0,
+        "endLine": 307,
+        "endChar": 4
+      },
+      "revId": "8f8d2555fa5ed822e9252177b603b3f82558b2a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
