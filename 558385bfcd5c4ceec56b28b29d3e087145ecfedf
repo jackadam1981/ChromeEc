@@ -33,6 +33,24 @@
       "revId": "558385bfcd5c4ceec56b28b29d3e087145ecfedf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9592a210_348566e9",
+        "filename": "include/charge_manager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-23T22:05:19Z",
+      "side": 1,
+      "message": "actually thinking through this I\u0027m thinking of something different. What if the board.h file defines an enum and a table of priorities like such:\n\nenum charge_supplier {\n  CHARGE_SUPPLIER_PD \u003d 0,\n  CHARGE_SUPPLIER_TYPEC \u003d 1,\n  CHARGE_SUPPLIER_BC12 \u003d 2,\n  CHARGE_SUPPLIER_COUNT\n}\n\nconst int supplier_priority[CHARGE_SUPPLIER_COUNT] \u003d {\n  /* lower number is higher priority */\n  [CHARGE_SUPPLIER_PD] \u003d 0,\n  [CHARGE_SUPPLIER_TYPEC] \u003d 1,\n  [CHARGE_SUPPLIER_BC12] \u003d 1\n}\n\nthen in charge_manager.c, we loop over all suppliers, and find the supplier with highest priority and highest power to break ties.\n\nthis is flexible for boards, since each board can define it\u0027s own suppliers and priority structure.",
+      "parentUuid": "153072e8_c019ec9a",
+      "revId": "558385bfcd5c4ceec56b28b29d3e087145ecfedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
