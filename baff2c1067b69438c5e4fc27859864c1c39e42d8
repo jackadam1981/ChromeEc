@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "354c968a_f88ed989",
+        "filename": "chip/it83xx/pwm_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-23T18:14:30Z",
+      "side": 1,
+      "message": "you forgot the volatile here ?",
+      "revId": "baff2c1067b69438c5e4fc27859864c1c39e42d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
