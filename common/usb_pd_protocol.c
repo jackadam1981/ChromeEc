@@ -5,7 +5,9 @@
 
 #include "adc.h"
 #include "board.h"
+#ifdef CONFIG_CHARGE_MANAGER
 #include "charge_manager.h"
+#endif
 #include "chipset.h"
 #include "common.h"
 #include "console.h"

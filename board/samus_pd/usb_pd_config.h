@@ -4,6 +4,7 @@
  */
 
 #include "adc.h"
+#include "board.h"
 #include "chip/stm32/registers.h"
 #include "gpio.h"
 
@@ -13,7 +14,6 @@
 #define __USB_PD_CONFIG_H
 
 /* Port and task configuration */
-#define PD_PORT_COUNT 2
 #define PORT_TO_TASK_ID(port) ((port) ? TASK_ID_PD_C1 : TASK_ID_PD_C0)
 #define TASK_ID_TO_PORT(id)   ((id) == TASK_ID_PD_C0 ? 0 : 1)
 
