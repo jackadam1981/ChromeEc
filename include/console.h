@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+/*
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -43,6 +43,7 @@ enum console_channel {
 	CC_LIDANGLE,
 	CC_LIGHTBAR,
 	CC_LPC,
+	CC_MOTION_LID,
 	CC_MOTION_SENSE,
 	CC_PD_HOST_CMD,
 	CC_PORT80,
