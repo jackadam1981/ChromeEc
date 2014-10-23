@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b58de6f4_c6201692",
+        "filename": "board/dingdong/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-23T15:13:24Z",
+      "side": 1,
+      "message": "Agreed its w/o debounce but from a functional/testing perspective it does allow me to drive external monitor providing the cable is connected at insertion.\n\nYes will get fixed in subsequent CL",
+      "parentUuid": "b58de6f4_e6667a0f",
+      "revId": "19d88a3d1adf8a2243bfd9118b6fd41e5340cdc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9592a210_e219886c",
         "filename": "board/dingdong/usb_pd_policy.c",
         "patchSetId": 4
