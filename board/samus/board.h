@@ -26,6 +26,7 @@
 #define CONFIG_KEYBOARD_BOARD_CONFIG
 #define CONFIG_KEYBOARD_PROTOCOL_8042
 #define CONFIG_KEYBOARD_COL2_INVERTED
+#define CONFIG_LID_ANGLE
 #define CONFIG_LIGHTBAR_POWER_RAILS
 #define CONFIG_LOW_POWER_IDLE
 #define CONFIG_POWER_BUTTON
@@ -184,6 +185,10 @@ int board_discharge_on_ac(int enable);
 
 /* Define for sensor tasks */
 #define CONFIG_SENSOR_BATTERY_TAP 0
+
+#define CONFIG_CMD_LID_ANGLE
+#define CONFIG_SENSOR_BASE 0
+#define CONFIG_SENSOR_LID 1
 
 #endif /* !__ASSEMBLER__ */
 
