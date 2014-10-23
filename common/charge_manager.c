@@ -6,7 +6,6 @@
 #include "charge_manager.h"
 #include "console.h"
 #include "hooks.h"
-#include "usb_pd_config.h"
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
@@ -68,32 +67,12 @@ static int charge_manager_is_seeded(void)
  */
 static void charge_manager_refresh(void)
 {
-	enum charge_supplier new_supplier = CHARGE_SUPPLIER_NONE;
-	int new_port = CHARGE_PORT_NONE;
-	int new_charge_current, new_charge_voltage, i, j;
+	int new_supplier, new_port;
+	int new_charge_current, new_charge_voltage;
 
-	/*
-	 * Charge supplier selection logic:
-	 * 1. Prefer higher priority (lower CHARGE_SUPPLIER index) supply.
-	 * 2. Prefer higher power over lower.
-	 * available_charge can be changed at any time by other tasks,
-	 * so make no assumptions about its consistency.
-	 */
-	for (i = 0; i < CHARGE_SUPPLIER_COUNT; ++i)
-		for (j = 0; j < PD_PORT_COUNT; ++j)
-			if (available_charge[i][j].current > 0 &&
-			    available_charge[i][j].voltage > 0) {
-				new_supplier = i;
-				new_port = j;
-				goto got_supplier;
-			}
-
-got_supplier:
-	if (new_supplier != CHARGE_SUPPLIER_NONE)
-		for (i = new_port + 1; i < PD_PORT_COUNT; ++i)
-			if (POWER(available_charge[new_supplier][i]) >
-			    POWER(available_charge[new_supplier][new_port]))
-				new_port = i;
+	board_charge_manager_refresh(available_charge,
+				     &new_supplier,
+				     &new_port);
 
 	if (new_supplier == CHARGE_SUPPLIER_NONE)
 		new_charge_current = new_charge_voltage = 0;
@@ -104,7 +83,7 @@ got_supplier:
 			available_charge[new_supplier][new_port].voltage;
 	}
 
-	/* Change the charge limit + charge port if changed. */
+	/* Update the charge limit + charge port if changed. */
 	if (new_port != charge_port || new_charge_current != charge_current) {
 		CPRINTS("New charge limit: supplier %d port %d current %d "
 			"voltage %d", new_supplier, new_port,

@@ -417,3 +417,58 @@ void board_set_charge_limit(int charge_ma)
 	pwm_set_duty(PWM_CH_ILIM, pwm_duty);
 	CPRINTS("Set ilim duty %d", pwm_duty);
 }
+
+/**
+ * Select a new charge supplier + active charge port based upon reported
+ * current limits. Writes new selected supplier/port to new_supplier /
+ * new_port, or writes CHARGE_SUPPLIER_NONE / CHARGE_PORT_NONE if no
+ * valid charge port found.
+ *
+ * @param available_charge	Charge limit table.
+ * @param new_supplier		Selected supplier.
+ * @param new_port		Selected port.
+ */
+void board_charge_manager_refresh(struct charge_port_info
+				    available_charge[CHARGE_SUPPLIER_COUNT]
+						    [PD_PORT_COUNT],
+				  int *new_supplier,
+				  int *new_port) {
+	int i, j;
+	struct charge_port_info *supplier;
+
+	*new_supplier = CHARGE_SUPPLIER_NONE;
+	*new_port = CHARGE_PORT_NONE;
+
+	/*
+	 * Charge supplier selection logic:
+	 * 1. Prefer PD supplier over all others.
+	 * 2. Prefer higher power over lower.
+	 * available_charge can be changed at any time by other tasks,
+	 * so make no assumptions about its consistency.
+	 */
+	supplier = available_charge[CHARGE_SUPPLIER_PD];
+	for (i = 0; i < PD_PORT_COUNT; ++i)
+		if (supplier[i].current > 0 && supplier[i].voltage > 0 &&
+		   (*new_port == CHARGE_PORT_NONE ||
+		    POWER(supplier[i]) > POWER(supplier[*new_port]))) {
+			*new_supplier = CHARGE_SUPPLIER_PD;
+			*new_port = i;
+		}
+
+	if (*new_supplier != CHARGE_SUPPLIER_NONE)
+		return;
+
+	for (i = 0; i < CHARGE_SUPPLIER_COUNT; ++i) {
+		if (i == CHARGE_SUPPLIER_PD)
+			continue;
+		supplier = available_charge[i];
+		for (j = 0; j < PD_PORT_COUNT; ++j)
+			if (supplier[j].current > 0 &&
+			    supplier[j].voltage > 0 &&
+			   (*new_port == CHARGE_PORT_NONE ||
+			    POWER(supplier[j]) > POWER(supplier[*new_port]))) {
+				*new_supplier = i;
+				*new_port = j;
+			}
+	}
+}

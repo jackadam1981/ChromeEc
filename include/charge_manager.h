@@ -6,8 +6,10 @@
 #ifndef __CHARGE_MANAGER_H
 #define __CHARGE_MANAGER_H
 
-/* Charge port that indicates no active port */
+/* Charge supplier/port that indicates no active port */
+#define CHARGE_SUPPLIER_NONE -1
 #define CHARGE_PORT_NONE -1
+
 /* Initial charge state */
 #define CHARGE_CURRENT_UNINITIALIZED -1
 #define CHARGE_VOLTAGE_UNINITIALIZED -1
@@ -16,7 +18,6 @@
 
 /* Charge suppliers, sorted by priority */
 enum charge_supplier {
-	CHARGE_SUPPLIER_NONE = -1,
 	/* Highest priority supplier first */
 	CHARGE_SUPPLIER_PD = 0,
 	CHARGE_SUPPLIER_TYPEC = 1,

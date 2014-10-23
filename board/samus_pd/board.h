@@ -94,6 +94,8 @@ enum pwm_channel {
 /* Map current in milli-amps to PWM duty cycle percentage */
 #define MA_TO_PWM(curr) (((curr) - PWM_0_MA) * 100 / (PWM_100_MA - PWM_0_MA))
 
+#define PD_PORT_COUNT	2
+
 /* Called when we receive battery level info from the EC. */
 void board_update_battery_soc(int soc);
 
@@ -105,6 +107,13 @@ void board_set_active_charge_port(int charge_port);
 
 /* Set the charge current limit. */
 void board_set_charge_limit(int charge_ma);
+
+/* Choose the active charge port and supplier from among all options. */
+void board_charge_manager_refresh(struct charge_port_info
+				    available_charge[CHARGE_SUPPLIER_COUNT]
+						    [PD_PORT_COUNT],
+				  int *new_supplier,
+				  int *new_port);
 
 #endif /* !__ASSEMBLER__ */
 
