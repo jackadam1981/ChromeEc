@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "153072e8_403f3cdf",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-23T20:52:54Z",
+      "side": 1,
+      "message": "Thinking about the extra selection criteria we discussed (selecting port based upon what we think it can provide, not what has been negotiated yet), maybe we can just modify the logic here (rather than keeping track of an extra set of data from within charge manager). Ex. if we have two (or more) PD ports, check our attribute data and make a (possibly) different selection.",
+      "revId": "558385bfcd5c4ceec56b28b29d3e087145ecfedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "153072e8_c019ec9a",
         "filename": "include/charge_manager.h",
         "patchSetId": 1
