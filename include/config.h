@@ -539,11 +539,15 @@
 #undef CONFIG_FW_WP_RO_SIZE
 
 /*****************************************************************************/
-/* Motion sensor based gesture recognition */
+/* Motion sensor based gesture recognition information */
 #undef CONFIG_GESTURE_DETECTION
-
+#ifndef CONFIG_GESTURE_DETECTION
+/* Which sensor to look for gesture recognition */
+#undef CONFIG_SENSOR_BATTERY_TAP
 /* Sensor sampling interval for gesture recognition */
 #undef CONFIG_GESTURE_SAMPLING_INTERVAL_MS
+#endif
+
 
 
 /*****************************************************************************/
