@@ -70,6 +70,162 @@
       "revId": "0ea2c5437f6034a46176fd62382ed467c68d194e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35a1f65e_f666200f",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-24T01:40:55Z",
+      "side": 1,
+      "message": "How does this work?\n PD \u003e Type-C\u003dPROP \u003e DCP\u003dCDP \u003e SDP\n\nFor any ties, the power advertised will break the tie.",
+      "parentUuid": "9592a210_ab65943f",
+      "revId": "0ea2c5437f6034a46176fd62382ed467c68d194e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35a1f65e_76b8d0ef",
+        "filename": "board/samus_pd/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-24T01:40:55Z",
+      "side": 1,
+      "message": "comment incorrect",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 38
+      },
+      "revId": "0ea2c5437f6034a46176fd62382ed467c68d194e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35a1f65e_d65d2436",
+        "filename": "board/samus_pd/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-24T01:40:55Z",
+      "side": 1,
+      "message": "don\u0027t need to number anymore",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 26
+      },
+      "revId": "0ea2c5437f6034a46176fd62382ed467c68d194e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5717ac8_590ce3dd",
+        "filename": "board/samus_pd/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-24T01:40:55Z",
+      "side": 1,
+      "message": "is there a reason to move this here? if so, we should move it for all boards, not just samus.",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 23
+      },
+      "revId": "0ea2c5437f6034a46176fd62382ed467c68d194e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5717ac8_19166bf0",
+        "filename": "board/samus_pd/usb_pd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-24T01:40:55Z",
+      "side": 1,
+      "message": "shouldn\u0027t be needed if you keep PD_PORT_COUNT here.",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "0ea2c5437f6034a46176fd62382ed467c68d194e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75244ea4_2b2be9a8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-24T01:40:55Z",
+      "side": 1,
+      "message": "it\u0027s an include file, you can always include it",
+      "range": {
+        "startLine": 8,
+        "startChar": 7,
+        "endLine": 8,
+        "endChar": 28
+      },
+      "revId": "0ea2c5437f6034a46176fd62382ed467c68d194e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9592a210_9e5ecce6",
+        "filename": "include/charge_manager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-24T01:40:55Z",
+      "side": 1,
+      "message": "would this be better in board.h?",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 37
+      },
+      "revId": "0ea2c5437f6034a46176fd62382ed467c68d194e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
