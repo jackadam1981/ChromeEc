@@ -16,6 +16,24 @@
       "revId": "0ea2c5437f6034a46176fd62382ed467c68d194e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5594aafe_4652c82b",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-24T00:21:49Z",
+      "side": 1,
+      "message": "The problem is if a device has a type-C resistor AND has BC1.2, then we are guaranteed at least the value advertised by the pull-up, but we could get more as given by BC1.2. For example, an Apple charger will show as a 1.5A pull-up, but for BC1.2 it will show up as a 2.4A device. So, we are treating them as the same priority, and the power that is advertised will be a tie break.\n\nThis may not need to be in board directory, but we were imagining that for a given product we might want to prefer a specific charger (like samus might prefer zinger specifically), in which case we would another supplier to this table and give it higher priority.",
+      "parentUuid": "35a1f65e_70a8d81d",
+      "revId": "0ea2c5437f6034a46176fd62382ed467c68d194e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
