@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7580cec4_6a43ffdf",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-24T21:24:28Z",
+      "side": 1,
+      "message": "isn\u0027t modep-\u003eindex equal to pe[port].amode.index ?\nthen you just reset it above.",
+      "revId": "2fcd85fc1ad906c1b7841affd5341c7b8dba61ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
