@@ -114,6 +114,24 @@
     },
     {
       "key": {
+        "uuid": "7580cec4_16107c41",
+        "filename": "board/samus_pd/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-24T15:14:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35a1f65e_76b8d0ef",
+      "revId": "0ea2c5437f6034a46176fd62382ed467c68d194e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35a1f65e_d65d2436",
         "filename": "board/samus_pd/board.h",
         "patchSetId": 1
@@ -131,6 +149,24 @@
         "endLine": 94,
         "endChar": 26
       },
+      "revId": "0ea2c5437f6034a46176fd62382ed467c68d194e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7580cec4_36157832",
+        "filename": "board/samus_pd/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-24T15:14:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35a1f65e_d65d2436",
       "revId": "0ea2c5437f6034a46176fd62382ed467c68d194e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -160,6 +196,24 @@
     },
     {
       "key": {
+        "uuid": "d5717ac8_dce0e154",
+        "filename": "board/samus_pd/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-24T15:14:27Z",
+      "side": 1,
+      "message": "It seems awkward to include usb_pd_config.h from charge_manager just to pick up this one constant. Let\u0027s discuss, and I can save it for another CL.",
+      "parentUuid": "d5717ac8_590ce3dd",
+      "revId": "0ea2c5437f6034a46176fd62382ed467c68d194e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5717ac8_19166bf0",
         "filename": "board/samus_pd/usb_pd_config.h",
         "patchSetId": 1
@@ -177,6 +231,24 @@
         "endLine": 7,
         "endChar": 15
       },
+      "revId": "0ea2c5437f6034a46176fd62382ed467c68d194e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5717ac8_fcdda597",
+        "filename": "board/samus_pd/usb_pd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-24T15:14:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5717ac8_19166bf0",
       "revId": "0ea2c5437f6034a46176fd62382ed467c68d194e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -206,6 +278,24 @@
     },
     {
       "key": {
+        "uuid": "35a1f65e_83a2fd8d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-24T15:14:27Z",
+      "side": 1,
+      "message": "Moved the ifdef to charge_manager.h, around prototype that takes enum supplier parameter.",
+      "parentUuid": "75244ea4_2b2be9a8",
+      "revId": "0ea2c5437f6034a46176fd62382ed467c68d194e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9592a210_9e5ecce6",
         "filename": "include/charge_manager.h",
         "patchSetId": 1
@@ -223,6 +313,24 @@
         "endLine": 30,
         "endChar": 37
       },
+      "revId": "0ea2c5437f6034a46176fd62382ed467c68d194e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35a1f65e_a3a7f99d",
+        "filename": "include/charge_manager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-24T15:14:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9592a210_9e5ecce6",
       "revId": "0ea2c5437f6034a46176fd62382ed467c68d194e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
