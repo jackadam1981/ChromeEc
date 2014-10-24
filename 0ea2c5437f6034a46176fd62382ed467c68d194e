@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35a1f65e_70a8d81d",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1001164
+      },
+      "writtenOn": "2014-10-24T00:14:52Z",
+      "side": 1,
+      "message": "Should that one be \u003d 2 since BC1.2 is always lower priority than the type-c resistors?\n\nNot sure why this would be per-board? Isn\u0027t the order set strictly by the standard? (Didn\u0027t see anything in the bug that helped me understand this)",
+      "revId": "0ea2c5437f6034a46176fd62382ed467c68d194e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
