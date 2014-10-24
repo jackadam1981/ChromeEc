@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "35a1f65e_99210ccc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-24T17:37:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5717ac8_ffdef76a",
+      "revId": "bee1dfbd3830cb51048a30dae0697b0a6f4ec33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5717ac8_3ff6aff3",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2014-10-24T15:50:46Z",
       "side": 1,
       "message": "if a (questionable) device is sending me \"Attention\" before EnterMode, I\u0027m panicing here on a null pointer ?",
+      "revId": "bee1dfbd3830cb51048a30dae0697b0a6f4ec33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5717ac8_5f1fe3cc",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-24T17:37:54Z",
+      "side": 1,
+      "message": "good point and extending it to any malformed commands that would try to call fx-\u003efunc.",
+      "parentUuid": "d5717ac8_3ff6aff3",
       "revId": "bee1dfbd3830cb51048a30dae0697b0a6f4ec33c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
