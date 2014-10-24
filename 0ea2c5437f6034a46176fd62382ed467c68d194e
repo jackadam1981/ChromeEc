@@ -34,6 +34,24 @@
       "revId": "0ea2c5437f6034a46176fd62382ed467c68d194e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75244ea4_108f3c88",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-24T00:23:19Z",
+      "side": 1,
+      "message": "BTW Mark, since we have you thinking about this, I\u0027m planning to break up BC1.2 into CDP, DCP, SDP, and apple charger. Should we prioritize those or should they all be treated the same priority (default to which will give most power)?",
+      "parentUuid": "5594aafe_4652c82b",
+      "revId": "0ea2c5437f6034a46176fd62382ed467c68d194e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
