@@ -16,6 +16,24 @@
       "revId": "2fcd85fc1ad906c1b7841affd5341c7b8dba61ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "157792c2_bcf16577",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-24T21:31:29Z",
+      "side": 1,
+      "message": "Doh ... fixed.",
+      "parentUuid": "7580cec4_6a43ffdf",
+      "revId": "2fcd85fc1ad906c1b7841affd5341c7b8dba61ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
