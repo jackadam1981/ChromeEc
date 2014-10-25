@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "7580cec4_7d7bc8ec",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-25T17:00:22Z",
+      "side": 1,
+      "message": "It\u0027s needed due to the calls to charge_manager_update in this file. Previously it wasn\u0027t needed because I includeded charge_manager_update.h in board.h.",
+      "parentUuid": "95e0e2b0_953c64b7",
+      "revId": "23f78d536070a6305772b717ee5257b5d575cf4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95e0e2b0_f53ff0a9",
         "filename": "include/charge_manager.h",
         "patchSetId": 3
@@ -42,6 +60,24 @@
         "endLine": 31,
         "endChar": 56
       },
+      "revId": "23f78d536070a6305772b717ee5257b5d575cf4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7580cec4_9d80245b",
+        "filename": "include/charge_manager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-25T17:00:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95e0e2b0_f53ff0a9",
       "revId": "23f78d536070a6305772b717ee5257b5d575cf4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
