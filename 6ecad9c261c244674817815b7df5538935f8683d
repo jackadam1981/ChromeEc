@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5d6dada_c516ba6a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1056,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-25T03:05:10Z",
+      "side": 1,
+      "message": "couldn\u0027t confirm via USB docs I grepped whether ffxx will always be an SVDM but I\u0027m assumming it based off first allocation of DP being 0xff01\n\nFound this bug when I started sending attentions via pd_send_hpd.",
+      "range": {
+        "startLine": 1056,
+        "startChar": 0,
+        "endLine": 1056,
+        "endChar": 69
+      },
+      "revId": "6ecad9c261c244674817815b7df5538935f8683d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7580cec4_5de60cc2",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1776,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-25T03:05:10Z",
+      "side": 1,
+      "message": "As suggested ... modeled this vdm\u0027s dispatch after those in console task for flashing.  Not sure how long to set this timeout other than low so it guarantees delivery of most/all hpd IRQs which can come at a rate of 2ms.  Please comment.",
+      "range": {
+        "startLine": 1776,
+        "startChar": 18,
+        "endLine": 1776,
+        "endChar": 21
+      },
+      "revId": "6ecad9c261c244674817815b7df5538935f8683d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
