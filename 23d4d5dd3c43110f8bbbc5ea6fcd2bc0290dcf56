@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5d6dada_5a60692e",
+        "filename": "board/pinky/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-25T01:33:40Z",
+      "side": 1,
+      "message": "nit: we don\u0027t use //\n\nplease use /*",
+      "range": {
+        "startLine": 11,
+        "startChar": 73,
+        "endLine": 11,
+        "endChar": 75
+      },
+      "revId": "23d4d5dd3c43110f8bbbc5ea6fcd2bc0290dcf56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
