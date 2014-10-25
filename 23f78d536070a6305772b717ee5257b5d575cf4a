@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95e0e2b0_953c64b7",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-25T02:00:12Z",
+      "side": 1,
+      "message": "not needed?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "23f78d536070a6305772b717ee5257b5d575cf4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "95e0e2b0_f53ff0a9",
+        "filename": "include/charge_manager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-25T02:00:12Z",
+      "side": 1,
+      "message": "I think it would be cleaner if we passed in an int, and then in the function we just did a range check to make sure the value passed in is valid. Then we don\u0027t need to include config.h and we don\u0027t need #ifdef around this prototype.",
+      "range": {
+        "startLine": 31,
+        "startChar": 27,
+        "endLine": 31,
+        "endChar": 56
+      },
+      "revId": "23f78d536070a6305772b717ee5257b5d575cf4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
