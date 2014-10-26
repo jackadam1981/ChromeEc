@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "956b82dc_0630445a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-26T21:27:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95e0e2b0_58a151b1",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "dc3dff299aed1447693de45e0c7c0e9d43c6099f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5d6dada_c5ceba67",
         "filename": "common/charge_manager.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2014-10-25T13:24:17Z",
       "side": 1,
       "message": "nit, @param bc_type",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 1
+      },
+      "revId": "dc3dff299aed1447693de45e0c7c0e9d43c6099f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5594aafe_726a1ee0",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-26T21:27:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5d6dada_c5ceba67",
       "range": {
         "startLine": 132,
         "startChar": 0,
