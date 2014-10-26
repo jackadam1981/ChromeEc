@@ -22,6 +22,7 @@
 #include "timer.h"
 #include "uart.h"
 #include "util.h"
+#include "hwtimer.h"
 
 /* LPC channels */
 #define LPC_CH_ACPI     0  /* ACPI commands */
@@ -92,11 +93,19 @@ static void keyboard_irq_assert(void)
 	 * following falling edge, regardless of the line state before this
 	 * function call.
 	 */
+	unsigned us = 1000;
+	unsigned t0, t1;
 	gpio_set_level(CONFIG_KEYBOARD_IRQ_GPIO, 1);
 	udelay(4);
 	/* Generate a falling edge */
 	gpio_set_level(CONFIG_KEYBOARD_IRQ_GPIO, 0);
-	udelay(4);
+	/* Wait for host senses the interrupt and gets the char. */
+	t0 = __hw_clock_source_read();
+	do {
+		t1 = __hw_clock_source_read() - t0;
+		if (t1 > us)
+			break;
+	} while (lpc_keyboard_has_char());
 	/* Set signal high, now that we've generated the edge */
 	gpio_set_level(CONFIG_KEYBOARD_IRQ_GPIO, 1);
 }
