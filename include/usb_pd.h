@@ -468,6 +468,12 @@ enum pd_states {
 	PD_STATE_SNK_REQUESTED,
 	PD_STATE_SNK_TRANSITION,
 	PD_STATE_SNK_READY,
+
+	PD_STATE_SNK_SWAP_INIT,
+	PD_STATE_SNK_SWAP_SNK_DISABLE,
+	PD_STATE_SNK_SWAP_SRC_DISABLE,
+	PD_STATE_SNK_SWAP_STANDBY,
+	PD_STATE_SNK_SWAP_COMPLETE,
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 
 	PD_STATE_SRC_DISCONNECTED,
@@ -476,6 +482,13 @@ enum pd_states {
 	PD_STATE_SRC_ACCEPTED,
 	PD_STATE_SRC_TRANSITION,
 	PD_STATE_SRC_READY,
+
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+	PD_STATE_SRC_SWAP_INIT,
+	PD_STATE_SRC_SWAP_SNK_DISABLE,
+	PD_STATE_SRC_SWAP_SRC_DISABLE,
+	PD_STATE_SRC_SWAP_STANDBY,
+#endif /* CONFIG_USB_PD_DUAL_ROLE */
 
 	PD_STATE_SOFT_RESET,
 	PD_STATE_HARD_RESET,
@@ -520,7 +533,7 @@ enum pd_ctrl_msg_type {
 	PD_CTRL_GET_SOURCE_CAP = 7,
 	PD_CTRL_GET_SINK_CAP = 8,
 	PD_CTRL_PROTOCOL_ERR = 9,
-	PD_CTRL_SWAP = 10,
+	PD_CTRL_PR_SWAP = 10,
 	/* 11 Reserved */
 	PD_CTRL_WAIT = 12,
 	PD_CTRL_SOFT_RESET = 13,
@@ -653,6 +666,13 @@ void typec_set_input_current_limit(int port, uint32_t max_ma,
  * @return EC_SUCCESS if the board is good, <0 else.
  */
 int pd_board_checks(void);
+
+/**
+ * Check if power swap is allowed.
+ *
+ * @return True if power swap is allowed, False otherwise
+ */
+int pd_power_swap(int port);
 
 /**
  * Get PD device info used for VDO_CMD_SEND_INFO / VDO_CMD_READ_INFO
