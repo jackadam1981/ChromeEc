@@ -16,6 +16,24 @@
       "revId": "14836467abf8f810e1be0fd85f582dc55617f06a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35cf3649_4c1f5fcd",
+        "filename": "chip/lm4/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1107030
+      },
+      "writtenOn": "2014-10-27T01:00:33Z",
+      "side": 1,
+      "message": "yeah. looks the get_time() won\u0027t expire with mankind usage.",
+      "parentUuid": "35cf3649_2c52132b",
+      "revId": "14836467abf8f810e1be0fd85f582dc55617f06a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
