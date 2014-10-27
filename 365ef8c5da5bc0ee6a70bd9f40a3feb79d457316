@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "956b82dc_96c31d16",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-27T21:40:44Z",
+      "side": 1,
+      "message": "PI3USB9281_CHG_STATUS_ANY should detect only the following chargers:\n\n- Car type 1\n- Car type 2\n- \"Reserved charger\" (??)\n- Various Apple chargers\n\nAll of these chargers (except maybe the \"reserved charger\"?) should have higher priority than a *DP port.\n\nRegarding \"other random stuffs which will provide at best 500mA\" -- do you have a sample part we can borrow?",
+      "parentUuid": "15a5d282_e63f40aa",
+      "revId": "365ef8c5da5bc0ee6a70bd9f40a3feb79d457316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35a8165b_aa958b17",
         "filename": "common/charge_manager.c",
         "patchSetId": 5
