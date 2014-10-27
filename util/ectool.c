@@ -2382,32 +2382,74 @@ static int cmd_motionsense(int argc, char **argv)
 				&param, ms_command_sizes[param.cmd].insize,
 				&resp, ms_command_sizes[param.cmd].outsize);
 
-		if (rv < 0)
-			return rv;
-
-		if (resp.dump.module_flags & MOTIONSENSE_MODULE_FLAG_ACTIVE)
-			printf("Motion sensing active\n");
-		else
-			printf("Motion sensing inactive\n");
-
-		for (i = 0; i < EC_MOTION_SENSOR_COUNT; i++) {
-			printf("Sensor %d: ", i);
-			if (resp.dump.sensor_flags[i] &
-					MOTIONSENSE_SENSOR_FLAG_PRESENT)
-				printf("%d\t%d\t%d\n", resp.dump.data[3*i],
-							resp.dump.data[3*i+1],
-							resp.dump.data[3*i+2]);
+		if (rv > 0) {
+			if (resp.dump.module_flags &
+			    MOTIONSENSE_MODULE_FLAG_ACTIVE)
+				printf("Motion sensing active\n");
 			else
+				printf("Motion sensing inactive\n");
+
+			for (i = 0; i < EC_MOTION_SENSOR_COUNT; i++) {
 				/*
 				 * Warning: the following string printed out
 				 * is read by an autotest. Do not change string
 				 * without consulting autotest for
 				 * kernel_CrosECSysfsAccel.
 				 */
-				printf("None\n");
+				printf("Sensor %d: ", i);
+				if (resp.dump.sensor_flags[i] &
+						MOTIONSENSE_SENSOR_FLAG_PRESENT)
+					printf("%d\t%d\t%d\n",
+					       resp.dump.data[3*i],
+					       resp.dump.data[3*i+1],
+					       resp.dump.data[3*i+2]);
+				else
+					printf("None\n");
+			}
+			return 0;
 		}
+		if (rv == -EC_RES_INVALID_COMMAND) {
+			/* Let's try the new version */
+			param.cmd = MOTIONSENSE_CMD_GET_DATA;
+			rv = ec_command(
+				EC_CMD_MOTION_SENSE_CMD, 0,
+				&param, ms_command_sizes[param.cmd].insize,
+				&resp, ms_command_sizes[param.cmd].outsize);
+			if (rv < 0)
+				return rv;
 
-		return 0;
+			if (resp.data.module_flags &
+			    MOTIONSENSE_MODULE_FLAG_ACTIVE)
+				printf("Motion sensing active\n");
+			else
+				printf("Motion sensing inactive\n");
+
+			if (resp.data.sensor_number > ECTOOL_MAX_SENSOR) {
+				printf("Too many sensors to handle: %d",
+				       resp.data.sensor_number);
+				return -1;
+			}
+			for (i = 0; i < resp.data.sensor_number; i++) {
+				/*
+				 * Warning: the following string printed out
+				 * is read by an autotest. Do not change string
+				 * without consulting autotest for
+				 * kernel_CrosECSysfsAccel.
+				 */
+				printf("Sensor %d: ", i);
+				if (resp.data.sensor[i].flags &
+				    MOTIONSENSE_SENSOR_FLAG_PRESENT)
+					printf("%d\t%d\t%d\n",
+					       resp.data.sensor[i].data[0],
+					       resp.data.sensor[i].data[1],
+					       resp.data.sensor[i].data[2]);
+				else
+					printf("None\n");
+			}
+			return 0;
+		} else {
+			return rv;
+		}
 	}
 
 	if (argc == 2 && !strcasecmp(argv[1], "active")) {
