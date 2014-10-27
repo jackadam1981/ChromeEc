@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5d6dada_4042b8d9",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-10-27T15:24:46Z",
+      "side": 1,
+      "message": "I think we may need to initialize all BC1.2 suppliers to 0 (ex. in board.c init) since we cannot guarantee they will be initialized here (ex. if the system is powered with a charge supplier connected). Alternatively, we can zero all the suppliers that we aren\u0027t updating with a non-zero charge in the if statement right above.",
+      "revId": "39021fe923ccdb039ad3a29b5ad7e3124ff999e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
