@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5d6dada_cb5d6936",
+        "filename": "chip/lm4/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-27T17:43:57Z",
+      "side": 1,
+      "message": "Use MSEC constant instead of 1000",
+      "range": {
+        "startLine": 95,
+        "startChar": 35,
+        "endLine": 95,
+        "endChar": 39
+      },
+      "revId": "1e9e6ab11bf5739f3c0300a8e506f7ab762d6744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
