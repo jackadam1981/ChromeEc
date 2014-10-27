@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "15a5d282_86468c18",
+        "filename": "board/dingdong/board.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-27T21:56:25Z",
+      "side": 1,
+      "message": "then, store it as a timestamp_t (which is the same size as uint64_t)",
+      "parentUuid": "7580cec4_532b5ba7",
+      "revId": "6ecad9c261c244674817815b7df5538935f8683d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35cf3649_6ffb2d24",
         "filename": "board/dingdong/board.c",
         "patchSetId": 15
@@ -175,6 +193,24 @@
         "endLine": 1776,
         "endChar": 21
       },
+      "revId": "6ecad9c261c244674817815b7df5538935f8683d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f52f5eb3_e5e730e7",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1776,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-27T21:56:25Z",
+      "side": 1,
+      "message": "250 us is indeed shorter than a message with 2 words in the payload.\nwe are going to get the GoodCRC+the VDM ACK I imagine.",
+      "parentUuid": "7580cec4_33101f42",
       "revId": "6ecad9c261c244674817815b7df5538935f8683d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
