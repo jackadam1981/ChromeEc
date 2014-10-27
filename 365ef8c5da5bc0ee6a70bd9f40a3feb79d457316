@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15a5d282_e63f40aa",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-27T21:28:40Z",
+      "side": 1,
+      "message": "IMO priority-wise that\u0027s broken because we are mixing\nYoshi chargers which will provide 3A with other random stuffs which will provide at best 500mA (and should have less priority than DCP for example).\nProprietary should be only PI3USB9281_CHG_CAR_TYPE1 or PI3USB9281_CHG_CAR_TYPE2.",
+      "revId": "365ef8c5da5bc0ee6a70bd9f40a3feb79d457316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35a8165b_aa958b17",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-27T21:28:40Z",
+      "side": 1,
+      "message": "I don\u0027t understand the port selection algorithm,\nlet\u0027s imagine my charger is on port 0\nif I call EC_CMD_USB_PD_POWER_INFO{port:0}, I\u0027m getting the info about Port 0.\nif I call EC_CMD_USB_PD_POWER_INFO{port:1}, I\u0027m still getting the info about Port 0...\nwe should use a special port number (eg 0xff) to get the highest priority supplier",
+      "revId": "365ef8c5da5bc0ee6a70bd9f40a3feb79d457316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15a5d282_e660a0ab",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-27T21:28:40Z",
+      "side": 1,
+      "message": "what is exactly the SINK_NOT_CHARGING state on a real system ?",
+      "revId": "365ef8c5da5bc0ee6a70bd9f40a3feb79d457316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
