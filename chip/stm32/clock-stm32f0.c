@@ -391,8 +391,6 @@ void __idle(void)
 
 			/* Calculate how close we were to missing deadline */
 			margin_us = next_delay - rtc_diff;
-			if (margin_us < 0)
-				CPRINTS("overslept by %dus", -margin_us);
 
 			/* Record the closest to missing a deadline. */
 			if (margin_us < dsleep_recovery_margin_us)
