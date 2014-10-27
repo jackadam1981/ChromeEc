@@ -10,11 +10,14 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "sha256.h"
+#include "spi.h"
+#include "spi_flash.h"
 #include "system.h"
 #include "task.h"
 #include "timer.h"
 #include "util.h"
 #include "watchdog.h"
+#include "vboot_hash.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_VBOOT, outstr)
@@ -40,7 +43,9 @@ static int want_abort;
 static int in_progress;
 
 static struct sha256_ctx ctx;
-
+#ifdef CONFIG_FLASH_EXTERNAL
+static const uint8_t vbootbuf[CHUNK_SIZE];
+#endif
 /**
  * Abort hash currently in progress, and invalidate any completed hash.
  */
@@ -54,6 +59,27 @@ static void vboot_hash_abort(void)
 		data_size = 0;
 		hash = NULL;
 	}
+}
+
+static const uint8_t *get_next_chunk_data(uint32_t offset,
+					uint32_t nbytes)
+{
+#ifdef CONFIG_FLASH_EXTERNAL
+
+	spi_enable(1);
+
+	spi_flash_read((uint8_t *)vbootbuf,
+			 CONFIG_RW_IMAGE_FLASHADDR + offset,
+			 nbytes);
+
+	spi_enable(0);
+
+	return vbootbuf;
+#else
+	/* to avoid warning */
+	nbytes = nbytes;
+	return (const uint8_t *)(CONFIG_FLASH_BASE + offset);
+#endif
 }
 
 /**
@@ -72,8 +98,10 @@ static void vboot_hash_next_chunk(void)
 
 	/* Compute the next chunk of hash */
 	size = MIN(CHUNK_SIZE, data_size - curr_pos);
-	SHA256_update(&ctx, (const uint8_t *)(CONFIG_FLASH_BASE +
-					      data_offset + curr_pos), size);
+
+	SHA256_update(&ctx,
+		get_next_chunk_data(data_offset + curr_pos, size),
+		size);
 
 	curr_pos += size;
 	if (curr_pos >= data_size) {
