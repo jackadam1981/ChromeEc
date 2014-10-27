@@ -2,6 +2,115 @@
   "comments": [
     {
       "key": {
+        "uuid": "7580cec4_532b5ba7",
+        "filename": "board/dingdong/board.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-27T16:00:08Z",
+      "side": 1,
+      "message": "time, or ts would be better name",
+      "range": {
+        "startLine": 24,
+        "startChar": 10,
+        "endLine": 24,
+        "endChar": 13
+      },
+      "revId": "6ecad9c261c244674817815b7df5538935f8683d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35cf3649_6ffb2d24",
+        "filename": "board/dingdong/board.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-27T16:00:08Z",
+      "side": 1,
+      "message": "A comment explaining what this code is trying to do would be nice. It appears it is analyzing the amount of time the gpio is high/low and deciding which hpd event occurred, but it\u0027s hard to know exactly what timing leads to what hpd event.",
+      "revId": "6ecad9c261c244674817815b7df5538935f8683d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35cf3649_0f00696f",
+        "filename": "board/dingdong/board.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-27T16:00:08Z",
+      "side": 1,
+      "message": "Does this code work if there is an hpd interrupt right here? it will change hpd_idx, so now_delta will actually be negative, or since  it is unsigned, a very large number.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 2
+      },
+      "revId": "6ecad9c261c244674817815b7df5538935f8683d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7580cec4_d3844b32",
+        "filename": "board/dingdong/usb_pd_policy.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-27T16:00:08Z",
+      "side": 1,
+      "message": "nit: move to top of file with other static vars",
+      "range": {
+        "startLine": 180,
+        "startChar": 11,
+        "endLine": 180,
+        "endChar": 19
+      },
+      "revId": "6ecad9c261c244674817815b7df5538935f8683d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35cf3649_ef063d8a",
+        "filename": "board/hoho/usb_pd_policy.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-27T16:00:08Z",
+      "side": 1,
+      "message": "needed?",
+      "range": {
+        "startLine": 15,
+        "startChar": 10,
+        "endLine": 15,
+        "endChar": 13
+      },
+      "revId": "6ecad9c261c244674817815b7df5538935f8683d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5d6dada_c516ba6a",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 15
@@ -41,6 +150,53 @@
         "startChar": 18,
         "endLine": 1776,
         "endChar": 21
+      },
+      "revId": "6ecad9c261c244674817815b7df5538935f8683d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7580cec4_33101f42",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1776,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-27T16:00:08Z",
+      "side": 1,
+      "message": "250us seems really fast. I\u0027m not even sure we can transmit the whole packet in this amount of time, and if there is a collision and retry, we don\u0027t have a chance.\n\nWhen we send this command, do we get a response, or just goodCRC? If we just get goodCRC, then we can change the statement to, if (pd[0].vdm_state !\u003d VDM_STATE_READY) to make it faster, since the normal vdm state machine always expects a response and will timeout on these.",
+      "parentUuid": "7580cec4_5de60cc2",
+      "range": {
+        "startLine": 1776,
+        "startChar": 18,
+        "endLine": 1776,
+        "endChar": 21
+      },
+      "revId": "6ecad9c261c244674817815b7df5538935f8683d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35cf3649_8f13f9ca",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-27T16:00:08Z",
+      "side": 1,
+      "message": "nit: don\u0027t need \u003d 0, values should be irrelevant",
+      "range": {
+        "startLine": 154,
+        "startChar": 9,
+        "endLine": 154,
+        "endChar": 13
       },
       "revId": "6ecad9c261c244674817815b7df5538935f8683d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
