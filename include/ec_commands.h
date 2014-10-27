@@ -1302,16 +1302,9 @@ enum motionsense_command {
 	MOTIONSENSE_CMD_KB_WAKE_ANGLE = 5,
 
 	/*
-	 * Sensor subsytem status.
-	 * Same format as EC_MEMMAP_ACC_STATUS
-	 * - for system without LPC -
-	 */
-	MOTIONSENSE_CMD_GET_STATUS = 6,
-
-	/*
 	 * Retrieve data and flags from all accel/gyro sensors.
 	 */
-	MOTIONSENSE_CMD_GET_DATA = 7,
+	MOTIONSENSE_CMD_GET_DATA = 6,
 
 	/* Number of motionsense sub-commands. */
 	MOTIONSENSE_NUM_CMDS
@@ -1363,10 +1356,20 @@ enum motionsensor_chip {
 struct ec_params_motion_sense {
 	uint8_t cmd;
 	union {
-		/* Used for MOTIONSENSE_CMD_DUMP, GET_STATUS, GET_DATA. */
+		/* Used for MOTIONSENSE_CMD_DUMP */
 		struct {
 			/* no args */
-		} data, dump, status;
+		} dump;
+
+		/* Used for MOTIONSENSE_CMD_GET_DATA. */
+		struct {
+			/*
+			 * Maximal number of sensor the host is expecting.
+			 * 0 means the host is only interested in the number
+			 * of sensors controlled by the EC.
+			 */
+			uint8_t max_sensor_count;
+		} data;
 
 		/*
 		 * Used for MOTIONSENSE_CMD_EC_RATE and
@@ -1400,6 +1403,15 @@ struct ec_params_motion_sense {
 	};
 } __packed;
 
+struct ec_response_motion_sensor_data {
+	/* Flags for each sensor. */
+	uint8_t flags;
+	uint8_t padding;
+
+	/* Each sensor is up to 3-axis. */
+	int16_t data[3];
+} __packed;
+
 struct ec_response_motion_sense {
 	union {
 		/* Used for MOTIONSENSE_CMD_DUMP */
@@ -1420,20 +1432,13 @@ struct ec_response_motion_sense {
 			uint8_t module_flags;
 
 			/* Number of sensors managed directly by the EC */
-			uint8_t sensor_number;
+			uint8_t sensor_count;
 
 			/*
 			 * sensor data is truncated if response_max is too small
 			 * for holding all the data.
 			 */
-			struct sensor_data {
-				/* Flags for each sensor. */
-				uint8_t flags;
-				uint8_t padding;
-
-				/* Each sensor is up to 3-axis. */
-				int16_t data[3];
-			} sensor[0];
+			struct ec_response_motion_sensor_data sensor[0];
 		} data;
 
 		/* Used for MOTIONSENSE_CMD_INFO. */
@@ -1447,11 +1452,6 @@ struct ec_response_motion_sense {
 			/* Should be element of enum motionsensor_chip. */
 			uint8_t chip;
 		} info;
-
-		/* Used for MOTIONSENSE_CMD_GET_STATUS */
-		struct {
-			uint8_t value;
-		} status;
 
 		/*
 		 * Used for MOTIONSENSE_CMD_EC_RATE, MOTIONSENSE_CMD_SENSOR_ODR,
