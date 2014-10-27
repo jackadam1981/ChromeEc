@@ -15,6 +15,7 @@
 #include "timer.h"
 #include "util.h"
 #include "watchdog.h"
+#include "vboot_hash.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_VBOOT, outstr)
@@ -40,7 +41,7 @@ static int want_abort;
 static int in_progress;
 
 static struct sha256_ctx ctx;
-
+static const uint8_t vbootbuf[CHUNK_SIZE];
 /**
  * Abort hash currently in progress, and invalidate any completed hash.
  */
@@ -72,9 +73,14 @@ static void vboot_hash_next_chunk(void)
 
 	/* Compute the next chunk of hash */
 	size = MIN(CHUNK_SIZE, data_size - curr_pos);
+#ifdef CONFIG_FLASH_EXTERNAL
+	vboot_hash_get_next_chunk_addr(vbootbuf , data_offset + curr_pos,
+					size);
+	SHA256_update(&ctx, vbootbuf , size);
+#else
 	SHA256_update(&ctx, (const uint8_t *)(CONFIG_FLASH_BASE +
 					      data_offset + curr_pos), size);
-
+#endif
 	curr_pos += size;
 	if (curr_pos >= data_size) {
 		/* Store the final hash */
@@ -178,9 +184,15 @@ static void vboot_hash_init(void)
 #endif
 	{
 		/* Start computing the hash of RW firmware */
+#ifdef CONFIG_FLASH_EXTERNAL
+		vboot_hash_start(0,
+				 vboot_hash_get_image_size(SYSTEM_IMAGE_RW),
+				 NULL, 0);
+#else
 		vboot_hash_start(CONFIG_FW_RW_OFF,
 				 system_get_image_used(SYSTEM_IMAGE_RW),
 				 NULL, 0);
+#endif
 	}
 }
 DECLARE_HOOK(HOOK_INIT, vboot_hash_init, HOOK_PRIO_DEFAULT);
@@ -238,13 +250,23 @@ static int command_hash(int argc, char **argv)
 			return EC_SUCCESS;
 		} else if (!strcasecmp(argv[1], "rw")) {
 			return vboot_hash_start(
+#ifdef CONFIG_FLASH_EXTERNAL
+				0,
+				vboot_hash_get_image_size(SYSTEM_IMAGE_RW),
+#else
 				CONFIG_FW_RW_OFF,
 				system_get_image_used(SYSTEM_IMAGE_RW),
+#endif
 				NULL, 0);
 		} else if (!strcasecmp(argv[1], "ro")) {
 			return vboot_hash_start(
+#ifdef CONFIG_FLASH_EXTERNAL
+				0,
+				vboot_hash_get_image_size(SYSTEM_IMAGE_RO),
+#else
 				CONFIG_FW_RO_OFF,
 				system_get_image_used(SYSTEM_IMAGE_RO),
+#endif
 				NULL, 0);
 		}
 	}

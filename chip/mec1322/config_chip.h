@@ -75,15 +75,33 @@
 #define CONFIG_FW_WP_RO_OFF		CONFIG_FW_RO_OFF
 #define CONFIG_FW_WP_RO_SIZE		CONFIG_FW_RO_SIZE
 
-#define CONFIG_FLASH_BANK_SIZE          4
+#define CONFIG_FLASH_BANK_SIZE		FLASH_BANK_SIZE  /* protect bank size */
+#define CONFIG_FLASH_ERASE_SIZE		FLASH_ERASE_SIZE /* erase bank size */
+#define CONFIG_FLASH_WRITE_SIZE		FLASH_WRITE_SIZE /* min write size */
+
+/* Ideal flash write size fills the 32-entry flash write buffer */
+#define CONFIG_FLASH_WRITE_IDEAL_SIZE	FLASH_WRITE_IDEAL_SIZE
+
 
 /****************************************************************************/
+
+/*
+ * The EC uses the one bank of flash to emulate a SPI-like write protect
+ * register with persistent state.
+ */
+#define CONFIG_FW_PSTATE_SIZE		CONFIG_FLASH_BANK_SIZE
+
+#define CONFIG_FLASH_BASE_EXTERNAL	FLASH_BASE_EXTERNAL
+
+#define CONFIG_RO_WP_SPI_OFF		0x20000
+#define CONFIG_RO_SPI_OFF		0x20000
+#define CONFIG_RW_SPI_OFF		0
+#define CONFIG_FW_PSTATE_OFF		0
 /* Customize the build */
 /* Optional features present on this chip */
 #if 0
 #define CONFIG_ADC
 #define CONFIG_PECI
-#define CONFIG_SWITCH
 #define CONFIG_MPU
 #endif
 #define CONFIG_I2C
@@ -91,7 +109,8 @@
 #define CONFIG_FPU
 #define CONFIG_SPI
 #define CONFIG_DMA
-
-#undef CONFIG_FLASH
+#define CONFIG_FLASH_EXTERNAL
+#undef  CONFIG_FLASH
 
 #endif  /* __CROS_EC_CONFIG_CHIP_H */
+

@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-/* Flash memory module for Chrome EC - common functions */
+/* Flash memory module for Flash External to Chrome EC - common functions */
 
 #include "common.h"
 #include "console.h"
@@ -14,7 +14,9 @@
 #include "system.h"
 #include "util.h"
 #include "vboot_hash.h"
-
+#include "spi_flash.h"
+#include "watchdog.h"
+#include "spi.h"
 /*
  * Contents of erased flash, as a 32-bit value.  Most platforms erase flash
  * bits to 1.
@@ -30,11 +32,96 @@ struct persist_state {
 	uint8_t reserved[2];        /* Reserved; set 0 */
 };
 
+struct persist_state pstate;
+static int flashwrite_inprogress;
+
 #define PERSIST_STATE_VERSION 2  /* Expected persist_state.version */
+int all_protected; /* Has all-flash protection been requested? */
 
 /* Flags for persist_state.flags */
 /* Protect persist state and RO firmware at boot */
 #define PERSIST_FLAG_PROTECT_RO 0x02
+
+/*****************************************************************************/
+/* Physical layer APIs */
+
+int flash_physical_write(int offset, int size, const char *data)
+{
+	int i;
+
+	if (all_protected)
+		return EC_ERROR_ACCESS_DENIED;
+
+	/* Fail if offset, size, and data aren't at least word-aligned */
+	if ((offset | size | (uint32_t)(uintptr_t)data) & 3)
+		return EC_ERROR_INVAL;
+
+	spi_enable(1);
+
+	for (i = 0; i < size; i += 16)
+		spi_flash_write(offset+i, 16, &data[i]);
+
+	spi_enable(0);
+
+	return EC_SUCCESS;
+}
+
+int flash_physical_read(int offset, int size, const char *data)
+{
+	/* Fail if offset, size, and data aren't at least word-aligned */
+	if ((offset | size | (uint32_t)(uintptr_t)data) & 3)
+		return EC_ERROR_INVAL;
+
+	spi_enable(1);
+
+	spi_flash_read((uint8_t *)data, offset, size);
+
+	spi_enable(0);
+
+	return EC_SUCCESS;
+}
+
+
+int flash_physical_erase(int offset, int size)
+{
+
+	if (all_protected)
+		return EC_ERROR_ACCESS_DENIED;
+
+	spi_enable(1);
+
+	for (; size > 0; size -= CONFIG_FLASH_ERASE_SIZE,
+		     offset += CONFIG_FLASH_ERASE_SIZE) {
+
+		/* Do nothing if already erased */
+		if (spi_flash_erase(offset, CONFIG_FLASH_ERASE_SIZE))
+			return EC_ERROR_UNKNOWN;
+
+		/*
+		 * Reload the watchdog timer, so that erasing many flash pages
+		 * doesn't cause a watchdog reset.  May not need this now that
+		 * we're using msleep() below.
+		 */
+		watchdog_reload();
+	}
+	spi_enable(0);
+
+	return EC_SUCCESS;
+}
+
+
+int flash_physical_get_protect(int bank)
+{
+	/*TBD*/
+	return 1;
+}
+
+int flash_physical_protect_now(int bank)
+{
+	/*TBD*/
+	return 1;
+}
+
 
 /**
  * Get the physical memory address of a flash offset
@@ -49,7 +136,7 @@ struct persist_state {
  */
 static const char *flash_physical_dataptr(int offset)
 {
-	return (char *)((uintptr_t)CONFIG_FLASH_BASE + offset);
+	return (char *)((uintptr_t)CONFIG_FLASH_BASE_EXTERNAL + offset);
 }
 
 /**
@@ -129,32 +216,35 @@ int flash_is_erased(uint32_t offset, int size)
 
 int flash_write(int offset, int size, const char *data)
 {
-	if (flash_dataptr(offset, size, CONFIG_FLASH_WRITE_SIZE, NULL) < 0)
+	const char *pptr;
+
+	if (flash_dataptr(offset, size, CONFIG_FLASH_WRITE_SIZE, &pptr) < 0)
 		return EC_ERROR_INVAL;  /* Invalid range */
 
 #ifdef CONFIG_VBOOT_HASH
 	vboot_hash_invalidate(offset, size);
 #endif
 
-	return flash_physical_write(offset, size, data);
+	return flash_physical_write((int)pptr, size, data);
 }
 
 int flash_erase(int offset, int size)
 {
-	if (flash_dataptr(offset, size, CONFIG_FLASH_ERASE_SIZE, NULL) < 0)
+	const char *pptr;
+
+	if (flash_dataptr(offset, size, CONFIG_FLASH_ERASE_SIZE, &pptr) < 0)
 		return EC_ERROR_INVAL;  /* Invalid range */
 
 #ifdef CONFIG_VBOOT_HASH
 	vboot_hash_invalidate(offset, size);
 #endif
-
-	return flash_physical_erase(offset, size);
+	return flash_physical_erase((int)pptr, size);
 }
 
-int flash_protect_at_boot(enum flash_wp_range range)
+int flash_protect_ro_at_boot(int enable)
 {
 	struct persist_state pstate;
-	int new_flags = (range != FLASH_WP_NONE) ? PERSIST_FLAG_PROTECT_RO : 0;
+	int new_flags = enable ? PERSIST_FLAG_PROTECT_RO : 0;
 
 	/* Read the current persist state from flash */
 	flash_read_pstate(&pstate);
@@ -188,7 +278,7 @@ int flash_protect_at_boot(enum flash_wp_range range)
 	 * This assumes PSTATE immediately follows RO, which it does on
 	 * all STM32 platforms (which are the only ones with this config).
 	 */
-	flash_physical_protect_at_boot(range);
+	flash_physical_protect_ro_at_boot(new_flags);
 #endif
 
 	return EC_SUCCESS;
@@ -200,7 +290,7 @@ uint32_t flash_get_protect(void)
 	uint32_t flags = 0;
 	int not_protected[2] = {0};
 	int i;
-
+#ifdef FLASH_PROTET_SUPPORT
 	/* Read write protect GPIO */
 #ifdef CONFIG_WP_ACTIVE_HIGH
 	if (gpio_get_level(GPIO_WP))
@@ -208,6 +298,7 @@ uint32_t flash_get_protect(void)
 #else
 	if (!gpio_get_level(GPIO_WP_L))
 		flags |= EC_FLASH_PROTECT_GPIO_ASSERTED;
+#endif
 #endif
 
 	/* Read persistent state of RO-at-boot flag */
@@ -254,52 +345,26 @@ uint32_t flash_get_protect(void)
 		flags |= EC_FLASH_PROTECT_ERROR_INCONSISTENT;
 
 	/* Add in flags from physical layer */
+#ifdef FLASH_PROTET_SUPPORT
 	return flags | flash_physical_get_protect_flags();
+#else
+	return 0;
+#endif
 }
+
 
 int flash_set_protect(uint32_t mask, uint32_t flags)
 {
 	int retval = EC_SUCCESS;
 	int rv;
-	enum flash_wp_range range = FLASH_WP_NONE;
-	int need_set_protect = 0;
 
 	/*
 	 * Process flags we can set.  Track the most recent error, but process
 	 * all flags before returning.
 	 */
-
-	/*
-	 * AT_BOOT flags are trickier than NOW flags, as they can be set
-	 * when HW write protection is disabled and can be unset without
-	 * a reboot.
-	 *
-	 * If we are only setting/clearing RO_AT_BOOT, things are simple.
-	 * Setting ALL_AT_BOOT is processed only if HW write protection is
-	 * enabled and RO_AT_BOOT is set, so it's also simple.
-	 *
-	 * The most tricky one is when we want to clear ALL_AT_BOOT. We need
-	 * to determine whether to clear protection for the entire flash or
-	 * leave RO protected. There are two cases that we want to keep RO
-	 * protected:
-	 *   1. RO_AT_BOOT was already set before flash_set_protect() is
-	 *      called.
-	 *   2. RO_AT_BOOT was not set, but it's requested to be set by
-	 *      the caller of flash_set_protect().
-	 */
 	if (mask & EC_FLASH_PROTECT_RO_AT_BOOT) {
-		range = (flags & EC_FLASH_PROTECT_RO_AT_BOOT) ?
-			FLASH_WP_RO : FLASH_WP_NONE;
-		need_set_protect = 1;
-	}
-	if ((mask & EC_FLASH_PROTECT_ALL_AT_BOOT) &&
-	    !(flags & EC_FLASH_PROTECT_ALL_AT_BOOT)) {
-		if (flash_get_protect() & EC_FLASH_PROTECT_RO_AT_BOOT)
-			range = FLASH_WP_RO;
-		need_set_protect = 1;
-	}
-	if (need_set_protect) {
-		rv = flash_protect_at_boot(range);
+		rv = flash_protect_ro_at_boot(
+			      flags & EC_FLASH_PROTECT_RO_AT_BOOT);
 		if (rv)
 			retval = rv;
 	}
@@ -309,15 +374,10 @@ int flash_set_protect(uint32_t mask, uint32_t flags)
 	 * hardware WP flag) *and* RO is protected at boot (software WP flag).
 	 */
 	if ((~flash_get_protect()) & (EC_FLASH_PROTECT_GPIO_ASSERTED |
-				      EC_FLASH_PROTECT_RO_AT_BOOT))
+				      EC_FLASH_PROTECT_RO_AT_BOOT)){
 		return retval;
 
-	if ((mask & EC_FLASH_PROTECT_ALL_AT_BOOT) &&
-	    (flags & EC_FLASH_PROTECT_ALL_AT_BOOT)) {
-		rv = flash_protect_at_boot(FLASH_WP_ALL);
-		if (rv)
-			retval = rv;
-	}
+		}
 
 	if ((mask & EC_FLASH_PROTECT_RO_NOW) &&
 	    (flags & EC_FLASH_PROTECT_RO_NOW)) {
@@ -565,6 +625,7 @@ static int flash_command_write(struct host_cmd_handler_args *args)
 	if (system_unsafe_to_overwrite(p->offset, p->size))
 		return EC_RES_ACCESS_DENIED;
 
+	flashwrite_inprogress = 1;
 	if (flash_write(p->offset, p->size, (const uint8_t *)(p + 1)))
 		return EC_RES_ERROR;
 
@@ -573,6 +634,7 @@ static int flash_command_write(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_FLASH_WRITE,
 		     flash_command_write,
 		     EC_VER_MASK(0) | EC_VER_MASK(EC_VER_FLASH_WRITE));
+
 
 static int flash_command_erase(struct host_cmd_handler_args *args)
 {
@@ -598,8 +660,10 @@ DECLARE_HOST_COMMAND(EC_CMD_FLASH_ERASE,
 		     flash_command_erase,
 		     EC_VER_MASK(0));
 
+#ifdef FLASH_PROTET_SUPPORT
 static int flash_command_protect(struct host_cmd_handler_args *args)
 {
+
 	const struct ec_params_flash_protect *p = args->params;
 	struct ec_response_flash_protect *r = args->response;
 
@@ -624,9 +688,23 @@ static int flash_command_protect(struct host_cmd_handler_args *args)
 	r->valid_flags =
 		EC_FLASH_PROTECT_GPIO_ASSERTED |
 		EC_FLASH_PROTECT_ERROR_STUCK |
-		EC_FLASH_PROTECT_ERROR_INCONSISTENT |
-		flash_physical_get_valid_flags();
-	r->writable_flags = flash_physical_get_writable_flags(r->flags);
+		EC_FLASH_PROTECT_RO_AT_BOOT |
+		EC_FLASH_PROTECT_RO_NOW |
+		EC_FLASH_PROTECT_ALL_NOW |
+		EC_FLASH_PROTECT_ERROR_INCONSISTENT;
+	r->writable_flags = 0;
+
+	/* If RO protection isn't enabled, its at-boot state can be changed. */
+	if (!(r->flags & EC_FLASH_PROTECT_RO_NOW))
+		r->writable_flags |= EC_FLASH_PROTECT_RO_AT_BOOT;
+
+	/*
+	 * If entire flash isn't protected at this boot, it can be enabled if
+	 * the WP GPIO is asserted.
+	 */
+	if (!(r->flags & EC_FLASH_PROTECT_ALL_NOW) &&
+	    (r->flags & EC_FLASH_PROTECT_GPIO_ASSERTED))
+		r->writable_flags |= EC_FLASH_PROTECT_ALL_NOW;
 
 	args->response_size = sizeof(*r);
 
@@ -641,7 +719,7 @@ static int flash_command_protect(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_FLASH_PROTECT,
 		     flash_command_protect,
 		     EC_VER_MASK(0) | EC_VER_MASK(1));
-
+#endif
 static int flash_command_region_info(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_flash_region_info *p = args->params;
@@ -649,15 +727,15 @@ static int flash_command_region_info(struct host_cmd_handler_args *args)
 
 	switch (p->region) {
 	case EC_FLASH_REGION_RO:
-		r->offset = CONFIG_FW_RO_OFF;
+		r->offset = CONFIG_RO_SPI_OFF;
 		r->size = CONFIG_FW_RO_SIZE;
 		break;
 	case EC_FLASH_REGION_RW:
-		r->offset = CONFIG_FW_RW_OFF;
+		r->offset = CONFIG_RW_SPI_OFF;
 		r->size = CONFIG_FW_RW_SIZE;
 		break;
 	case EC_FLASH_REGION_WP_RO:
-		r->offset = CONFIG_FW_WP_RO_OFF;
+		r->offset = CONFIG_RO_WP_SPI_OFF;
 		r->size = CONFIG_FW_WP_RO_SIZE;
 		break;
 	default:
@@ -670,3 +748,9 @@ static int flash_command_region_info(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_FLASH_REGION_INFO,
 		     flash_command_region_info,
 		     EC_VER_MASK(EC_VER_FLASH_REGION_INFO));
+
+int flash_write_in_progress(void)
+{
+	return flashwrite_inprogress;
+}
+
