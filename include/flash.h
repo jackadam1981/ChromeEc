@@ -10,6 +10,7 @@
 
 #include "common.h"
 #include "ec_commands.h"  /* For EC_FLASH_PROTECT_* flags */
+#include "system.h" /* For System Image Info */
 
 /* Number of physical flash banks */
 #define PHYSICAL_BANKS (CONFIG_FLASH_PHYSICAL_SIZE / CONFIG_FLASH_BANK_SIZE)
@@ -22,12 +23,13 @@
 #define RW_BANK_OFFSET		(CONFIG_FW_RW_OFF / CONFIG_FLASH_BANK_SIZE)
 #define RW_BANK_COUNT		(CONFIG_FW_RW_SIZE / CONFIG_FLASH_BANK_SIZE)
 
+#ifdef CONFIG_FLASH
 /* Persistent protection state flash offset / size / bank */
 #define PSTATE_OFFSET		CONFIG_FW_PSTATE_OFF
 #define PSTATE_SIZE		CONFIG_FW_PSTATE_SIZE
 #define PSTATE_BANK		(PSTATE_OFFSET / CONFIG_FLASH_BANK_SIZE)
 #define PSTATE_BANK_COUNT	(PSTATE_SIZE / CONFIG_FLASH_BANK_SIZE)
-
+#endif
 /* Range of write protection */
 enum flash_wp_range {
 	FLASH_WP_NONE = 0,
@@ -36,7 +38,72 @@ enum flash_wp_range {
 };
 
 /*****************************************************************************/
+/* For use by system level functions. */
+/**
+ * Get the memory address of a flash offset where code starts executing
+ *
+ * @param copy	system image type
+ * @return pointer to flash address offset, if ok, else 0xffffffff
+  */
+uintptr_t flash_image_get_base(enum system_image_copy_t copy);
+
+/**
+ * Get the MAX size if the image in the flash
+ *
+ * @param offset	Flash offset to get address of
+ * @return size of he image in the flash memory , if ok, else 0
+ */
+uint32_t flash_image_get_size(enum system_image_copy_t copy);
+
+#ifdef CONFIG_FLASH_SPI
+/**
+ * Get the memory address of a SPI flash offset where code is loaded
+ *
+ * @param copy	system image type
+ * @return pointer to flash address offset, if ok, else 0xffffffff
+ */
+uintptr_t flash_image_get_base_spi(enum system_image_copy_t copy);
+
+/**
+ * Calculate the actual size of the image loaded in the SPI flash
+ *
+ * @param copy	system image type
+ * @return pointer to flash address offset, if ok, else 0
+ */
+uint32_t flash_get_image_used_spi(enum system_image_copy_t copy);
+#else
+/**
+  * Calculate the actual size of the image loaded in the internal flash
+  *
+  * @param copy	system image type
+  * @return pointer to flash address offset, if ok, else 0
+  */
+uint32_t flash_get_image_used_internal(enum system_image_copy_t copy);
+
+#endif
+
+/*****************************************************************************/
 /* Low-level methods, for use by flash_common. */
+/**
+ * Get the physical memory address of a flash offset
+ *
+ * @param offset	Flash offset to get address of
+ * @param dataptrp	Returns pointer to memory address of flash offset
+ * @return pointer to flash memory offset, if ok, else NULL
+  */
+
+const char *flash_physical_dataptr(int offset);
+/**
+ * Read from physical flash.
+ *
+ * Offset and size must be a multiple of CONFIG_FLASH_READ_SIZE.
+ *
+ * @param offset	Flash offset to read from.
+ * @param size	        Number of bytes to read.
+ * @param data          Data buffer to read from flash.  Must be 32-bit aligned.
+ */
+int flash_physical_read(int offset, int size, char *data);
+
 
 /**
  * Write to physical flash.
