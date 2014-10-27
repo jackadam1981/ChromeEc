@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "d5d6dada_66359480",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2732,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-27T18:57:40Z",
+      "side": 1,
+      "message": "we can\u0027t measure the voltage on a given port.\n\nWe could invent the logic based on other information:\n- if source, voltage \u003d 5V\n- if sink, voltage \u003d voltage_max\n- if sink but not charging, voltage \u003d 5V\n\nActually, if this is the active charging port (sink), then we actually do know the voltage on vbus, so we could read the ADC instead of assuming it is the same as voltage_max.",
+      "parentUuid": "b5db2605_9650ec9f",
+      "revId": "39021fe923ccdb039ad3a29b5ad7e3124ff999e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3533b6f6_422bbba7",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
