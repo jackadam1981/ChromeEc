@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "35cf3649_d5faee53",
+        "filename": "common/gesture_tap.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-10-27T21:23:24Z",
+      "side": 1,
+      "message": "Done. But the code is still tap heavy.",
+      "parentUuid": "7580cec4_c0322f13",
+      "range": {
+        "startLine": 19,
+        "startChar": 28,
+        "endLine": 19,
+        "endChar": 42
+      },
+      "revId": "b3b4447460b513260160ac2a244dfc58744a87c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95e0e2b0_b5bc08ae",
         "filename": "common/gesture_tap.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d5d6dada_2b643590",
+        "filename": "common/gesture_tap.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-10-27T21:23:24Z",
+      "side": 1,
+      "message": "Moved in config.h, defined in samus/board.h",
+      "parentUuid": "95e0e2b0_b5bc08ae",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 28
+      },
+      "revId": "b3b4447460b513260160ac2a244dfc58744a87c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5d6dada_a504d639",
         "filename": "common/motion_sense.c",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2014-10-26T01:40:36Z",
       "side": 1,
       "message": "I don\u0027t really like these call backs into gesture.c. Since you cleaned up the gesture_chipset_*() functions, I think this would be nice to cleanup too. We should just create our own DECLARE_HOOK() for the chipset functions we need in gesture.c instead of calling them from here. If they have to run after these, then they can set the HOOK_PRIO_ field.",
+      "range": {
+        "startLine": 235,
+        "startChar": 1,
+        "endLine": 235,
+        "endChar": 26
+      },
+      "revId": "b3b4447460b513260160ac2a244dfc58744a87c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35a8165b_e7a89c9a",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-10-27T21:23:24Z",
+      "side": 1,
+      "message": "Done, much cleaner.",
+      "parentUuid": "d5d6dada_a504d639",
       "range": {
         "startLine": 235,
         "startChar": 1,
