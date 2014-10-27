@@ -16,6 +16,40 @@
       "revId": "39021fe923ccdb039ad3a29b5ad7e3124ff999e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b5db2605_9650ec9f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2732,
+      "author": {
+        "id": 1000030
+      },
+      "writtenOn": "2014-10-27T16:45:45Z",
+      "side": 1,
+      "message": "can you split this into two fields:\n- voltage_max: max voltage supported by the connected Source.  Valid only if we are a Sink.\n- voltage_now: current voltage on the port.  Valid for both Source \u0026 Sink cases.",
+      "revId": "39021fe923ccdb039ad3a29b5ad7e3124ff999e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3533b6f6_422bbba7",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2733,
+      "author": {
+        "id": 1000030
+      },
+      "writtenOn": "2014-10-27T16:45:45Z",
+      "side": 1,
+      "message": "rename to current_max (or rename voltage_max to voltage_limit in the comment above)?",
+      "revId": "39021fe923ccdb039ad3a29b5ad7e3124ff999e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
