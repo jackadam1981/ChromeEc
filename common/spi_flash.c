@@ -407,6 +407,11 @@ int spi_flash_write(unsigned int offset, unsigned int bytes,
 	    bytes > SPI_FLASH_MAX_WRITE_SIZE)
 		return EC_ERROR_INVAL;
 
+
+	rv = spi_flash_wait();
+	if (rv)
+		return rv;
+
 	/* Enable writing to SPI flash */
 	rv = spi_flash_write_enable();
 	if (rv)
