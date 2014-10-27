@@ -17,6 +17,8 @@
 #include "mpu.h"
 #endif
 #include "panic.h"
+#include "spi.h"
+#include "spi_flash.h"
 #include "system.h"
 #include "task.h"
 #include "timer.h"
@@ -24,6 +26,7 @@
 #include "usb_pd.h"
 #include "util.h"
 #include "version.h"
+#include "watchdog.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_SYSTEM, outstr)
@@ -91,6 +94,29 @@ static enum ec_reboot_cmd reboot_at_shutdown;
 /* On-going actions preventing going into deep-sleep mode */
 uint32_t sleep_mask;
 
+#ifdef CONFIG_FLASH_EXTERNAL
+/*
+  * Buffer allocated to read data from external Flash
+  *
+  */
+#define FLASH_EXT_DATACHUNK_SIZE 256
+static uint8_t flash_data[FLASH_EXT_DATACHUNK_SIZE];
+
+/**
+ * Return the base pointer for the image copy, or 0xffffffff if error.
+ */
+static uintptr_t get_base_external(enum system_image_copy_t copy)
+{
+	switch (copy) {
+	case SYSTEM_IMAGE_RO:
+		return CONFIG_RO_IMAGE_FLASHADDR;
+	case SYSTEM_IMAGE_RW:
+		return CONFIG_RW_IMAGE_FLASHADDR;
+	default:
+		return 0xffffffff;
+	}
+}
+#endif
 /**
  * Return the base pointer for the image copy, or 0xffffffff if error.
  */
@@ -324,7 +350,58 @@ test_mockable enum system_image_copy_t system_get_image_copy(void)
 	return SYSTEM_IMAGE_UNKNOWN;
 }
 
-int system_get_image_used(enum system_image_copy_t copy)
+#ifdef CONFIG_FLASH_EXTERNAL
+uint32_t system_get_image_flash_external(enum system_image_copy_t copy)
+{
+	uint32_t image;
+	int size = 0;
+	uint32_t data_size = 0;
+	uint16_t i = 0;
+
+	image = get_base_external(copy);
+	size = get_size(copy);
+
+	CPRINTS("image addr %x\n!!!", image);
+
+	/*
+	 * Scan backwards looking for 0xea byte, which is by definition the
+	 * last byte of the image.  See ec.lds.S for how this is inserted at
+	 * the end of the image.
+	 */
+	spi_enable(1);
+
+	while (size > 0) {
+
+		watchdog_reload();
+		data_size = MIN(FLASH_EXT_DATACHUNK_SIZE, size);
+
+		spi_flash_read((uint8_t *)flash_data,
+				(image + size - data_size),
+				data_size);
+
+		for (i = data_size; i > 0; i--) {
+
+			if (flash_data[i - 1] == 0xea) {
+
+				/* 0xea byte IS part of the image */
+				image -= (data_size - i);
+				CPRINTS("size = 0x%x\n",
+					size);
+				return size;
+			}
+		}
+
+		size -= data_size;
+	}
+
+	spi_enable(0);
+
+	CPRINTS("Did not find 0xea size = 0x%x\n", size);
+	return size;
+}
+#else
+
+int system_get_image_flash_internal(enum system_image_copy_t copy)
 {
 	const uint8_t *image;
 	int size = 0;
@@ -344,6 +421,17 @@ int system_get_image_used(enum system_image_copy_t copy)
 		;
 
 	return size ? size + 1 : 0;  /* 0xea byte IS part of the image */
+}
+#endif
+
+int system_get_image_used(enum system_image_copy_t copy)
+{
+#ifdef CONFIG_FLASH_EXTERNAL
+	return system_get_image_flash_external(copy);
+#else
+	return system_get_image_flash_internal(copy);
+#endif
+
 }
 
 test_mockable int system_unsafe_to_overwrite(uint32_t offset, uint32_t size)
@@ -488,6 +576,37 @@ int system_run_image_copy(enum system_image_copy_t copy)
 	return EC_ERROR_UNKNOWN;
 }
 
+#ifdef CONFIG_FLASH_EXTERNAL
+const char *system_get_version(enum system_image_copy_t copy)
+{
+	uint32_t version_offset;
+	const struct version_struct *v;
+
+	/* Handle version of current image */
+	if (copy == system_get_image_copy() || copy == SYSTEM_IMAGE_UNKNOWN)
+		return &RO(version_data).version[0];
+
+	/* The version string is always located after the reset vectors, so
+	 * it's the same as in the current image. */
+	version_offset = ((uintptr_t)&version_data -
+				 get_base(system_get_image_copy()));
+
+	spi_enable(1);
+	spi_flash_read((uint8_t *)flash_data,
+				get_base_external(copy) + version_offset,
+				FLASH_EXT_DATACHUNK_SIZE);
+	spi_enable(0);
+
+	/* Make sure the version struct cookies match before returning the
+	 * version string. */
+	v = (const struct version_struct *)flash_data;
+	if (v->cookie1 == RO(version_data).cookie1 &&
+	    v->cookie2 == RO(version_data).cookie2)
+		return v->version;
+
+	return "";
+}
+#else
 const char *system_get_version(enum system_image_copy_t copy)
 {
 	uintptr_t addr;
@@ -514,6 +633,7 @@ const char *system_get_version(enum system_image_copy_t copy)
 
 	return "";
 }
+#endif
 
 int system_get_board_version(void)
 {
