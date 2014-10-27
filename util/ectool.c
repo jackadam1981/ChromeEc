@@ -2368,67 +2368,104 @@ static int ms_help(const char *cmd)
 
 static int cmd_motionsense(int argc, char **argv)
 {
-	int i, rv;
+	int i, rv, status_only = 0;
 	struct ec_params_motion_sense param;
 	struct ec_response_motion_sense resp;
 	char *e;
+	/*
+	 * Warning: the following strings printed out are read in an
+	 * autotest. Do not change string without consulting autotest
+	 * for kernel_CrosECSysfsAccel.
+	 */
+	const char *motion_status_string[2][2] = {
+		{ "Motion sensing inactive", "0"},
+		{ "Motion sensing active", "1"},
+	};
 
 	/* No motionsense command has more than 5 args. */
 	if (argc > 5)
 		return ms_help(argv[0]);
 
-	if (argc == 1) {
-		/* No args, dump motion data. */
-		param.cmd = MOTIONSENSE_CMD_DUMP;
-		rv = ec_command(EC_CMD_MOTION_SENSE_CMD, 0,
-				&param, ms_command_sizes[param.cmd].insize,
-				&resp, ms_command_sizes[param.cmd].outsize);
+	if ((argc == 1) ||
+	    (argc == 2 && !strcasecmp(argv[1], "active"))) {
+		if (argc == 2)
+			status_only = 1;
+		/* Let's try the new version first */
+		param.cmd = MOTIONSENSE_CMD_GET_DATA;
+		rv = ec_command(
+			EC_CMD_MOTION_SENSE_CMD, 0,
+			&param, ms_command_sizes[param.cmd].insize,
+			&resp, ms_command_sizes[param.cmd].outsize);
+		if (rv > 0) {
+			printf("%s\n", motion_status_string[
+					!!(resp.data.module_flags &
+					   MOTIONSENSE_MODULE_FLAG_ACTIVE)][
+					status_only]);
+			if (status_only)
+				return 0;
 
-		if (rv < 0)
-			return rv;
-
-		if (resp.dump.module_flags & MOTIONSENSE_MODULE_FLAG_ACTIVE)
-			printf("Motion sensing active\n");
-		else
-			printf("Motion sensing inactive\n");
-
-		for (i = 0; i < EC_MOTION_SENSOR_COUNT; i++) {
-			printf("Sensor %d: ", i);
-			if (resp.dump.sensor_flags[i] &
-					MOTIONSENSE_SENSOR_FLAG_PRESENT)
-				printf("%d\t%d\t%d\n", resp.dump.data[3*i],
-							resp.dump.data[3*i+1],
-							resp.dump.data[3*i+2]);
-			else
+			if (resp.data.sensor_number > ECTOOL_MAX_SENSOR) {
+				printf("Too many sensors to handle: %d",
+						resp.data.sensor_number);
+				return -1;
+			}
+			for (i = 0; i < resp.data.sensor_number; i++) {
 				/*
 				 * Warning: the following string printed out
 				 * is read by an autotest. Do not change string
 				 * without consulting autotest for
 				 * kernel_CrosECSysfsAccel.
 				 */
-				printf("None\n");
+				printf("Sensor %d: ", i);
+				if (resp.data.sensor[i].flags &
+						MOTIONSENSE_SENSOR_FLAG_PRESENT)
+					printf("%d\t%d\t%d\n",
+						resp.data.sensor[i].data[0],
+						resp.data.sensor[i].data[1],
+						resp.data.sensor[i].data[2]);
+				else
+					printf("None\n");
+			}
+			return 0;
 		}
-
-		return 0;
-	}
-
-	if (argc == 2 && !strcasecmp(argv[1], "active")) {
-		param.cmd = MOTIONSENSE_CMD_DUMP;
-		rv = ec_command(EC_CMD_MOTION_SENSE_CMD, 0,
+		if (rv == -EECRESULT - EC_RES_INVALID_PARAM) {
+			/* dump motion data. */
+			param.cmd = MOTIONSENSE_CMD_DUMP;
+			rv = ec_command(
+				EC_CMD_MOTION_SENSE_CMD, 0,
 				&param, ms_command_sizes[param.cmd].insize,
 				&resp, ms_command_sizes[param.cmd].outsize);
+			if (rv < 0)
+				return rv;
 
-		/*
-		 * Warning: the following strings printed out are read in an
-		 * autotest. Do not change string without consulting autotest
-		 * for kernel_CrosECSysfsAccel.
-		 */
-		if (resp.dump.module_flags & MOTIONSENSE_MODULE_FLAG_ACTIVE)
-			printf("1\n");
-		else
-			printf("0\n");
+			printf("%s\n", motion_status_string[
+					!!(resp.dump.module_flags &
+					   MOTIONSENSE_MODULE_FLAG_ACTIVE)][
+					status_only]);
+			if (status_only)
+				return 0;
 
-		return 0;
+			for (i = 0; i < EC_MOTION_SENSOR_COUNT; i++) {
+				/*
+				 * Warning: the following string printed out
+				 * is read by an autotest. Do not change string
+				 * without consulting autotest for
+				 * kernel_CrosECSysfsAccel.
+				 */
+				printf("Sensor %d: ", i);
+				if (resp.dump.sensor_flags[i] &
+						MOTIONSENSE_SENSOR_FLAG_PRESENT)
+					printf("%d\t%d\t%d\n",
+							resp.dump.data[3*i],
+							resp.dump.data[3*i+1],
+							resp.dump.data[3*i+2]);
+				else
+					printf("None\n");
+			}
+			return 0;
+		} else {
+			return rv;
+		}
 	}
 
 	if (argc == 3 && !strcasecmp(argv[1], "info")) {
