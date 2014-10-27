@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "f52f5eb3_e5b29009",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-27T21:49:01Z",
+      "side": 1,
+      "message": "My intent was to only include car types 1 \u0026 2 and various apple chargers. I assumed that the \"reserved charger\" was a combo that would never come up.",
+      "parentUuid": "956b82dc_96c31d16",
+      "revId": "365ef8c5da5bc0ee6a70bd9f40a3feb79d457316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35a8165b_aa958b17",
         "filename": "common/charge_manager.c",
         "patchSetId": 5
@@ -54,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "35a8165b_0a193fe5",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-27T21:49:01Z",
+      "side": 1,
+      "message": "no, if you have a charger plugged into port 0, then calling  EC_CMD_USB_PD_POWER_INFO{port:1}, will get you info about port 1.\n\nthe idea is that this host command gives you info about the power state of each type-c port.\n\nyes, i can create a special port number that gives you the port we are currently charging from.",
+      "parentUuid": "35a8165b_aa958b17",
+      "revId": "365ef8c5da5bc0ee6a70bd9f40a3feb79d457316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15a5d282_e660a0ab",
         "filename": "common/charge_manager.c",
         "patchSetId": 5
@@ -65,6 +101,24 @@
       "writtenOn": "2014-10-27T21:28:40Z",
       "side": 1,
       "message": "what is exactly the SINK_NOT_CHARGING state on a real system ?",
+      "revId": "365ef8c5da5bc0ee6a70bd9f40a3feb79d457316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f52f5eb3_45453c72",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-27T21:49:01Z",
+      "side": 1,
+      "message": "SINK_NOT_CHARGING is a port that is acting as a sink, but we are not charging from it (CHARGE_EN gpio is not set). This will happen when you plug in two chargers, one port will be SINK and the other SINK_NOT_CHARGING. That way the host can tell which side we are charging from.",
+      "parentUuid": "15a5d282_e660a0ab",
       "revId": "365ef8c5da5bc0ee6a70bd9f40a3feb79d457316",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
