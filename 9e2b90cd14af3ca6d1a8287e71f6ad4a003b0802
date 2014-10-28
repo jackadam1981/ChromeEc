@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "154a3299_db201392",
+        "filename": "board/samus/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-10-28T21:14:48Z",
+      "side": 1,
+      "message": "To fix the orientation? It would be similar to base_standard_ref then.",
+      "parentUuid": "b5396603_c68e768a",
+      "range": {
+        "startLine": 301,
+        "startChar": 17,
+        "endLine": 301,
+        "endChar": 21
+      },
+      "revId": "9e2b90cd14af3ca6d1a8287e71f6ad4a003b0802",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5396603_866aae0a",
         "filename": "common/motion_lid.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2014-10-28T15:12:41Z",
       "side": 1,
       "message": "The name of this command is misleading. Should be renamed and put into motion_sense.c to be used to debug accel issues in general.",
+      "range": {
+        "startLine": 168,
+        "startChar": 7,
+        "endLine": 168,
+        "endChar": 27
+      },
+      "revId": "9e2b90cd14af3ca6d1a8287e71f6ad4a003b0802",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "154a3299_5bfc0381",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-10-28T21:14:48Z",
+      "side": 1,
+      "message": "Got it. Named changed and moved to the right place.\nI need to change the function, lidangle is too specific.",
+      "parentUuid": "b5396603_866aae0a",
       "range": {
         "startLine": 168,
         "startChar": 7,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "154a3299_7b2f3f2d",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-10-28T21:14:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5396603_e3bc4caf",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 6
+      },
+      "revId": "9e2b90cd14af3ca6d1a8287e71f6ad4a003b0802",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75436e81_816a9c0a",
         "filename": "common/motion_sense.c",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2014-10-28T15:12:41Z",
       "side": 1,
       "message": "remove",
+      "range": {
+        "startLine": 479,
+        "startChar": 0,
+        "endLine": 480,
+        "endChar": 6
+      },
+      "revId": "9e2b90cd14af3ca6d1a8287e71f6ad4a003b0802",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "154a3299_bb28a722",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-10-28T21:14:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75436e81_816a9c0a",
       "range": {
         "startLine": 479,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "f5583e71_dad76575",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-10-28T21:14:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "953e22e9_051a168e",
+      "range": {
+        "startLine": 702,
+        "startChar": 3,
+        "endLine": 702,
+        "endChar": 50
+      },
+      "revId": "9e2b90cd14af3ca6d1a8287e71f6ad4a003b0802",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75436e81_4149b4ac",
         "filename": "include/console.h",
         "patchSetId": 2
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "f5583e71_3a92e1bd",
+        "filename": "include/console.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-10-28T21:14:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75436e81_4149b4ac",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 2
+      },
+      "revId": "9e2b90cd14af3ca6d1a8287e71f6ad4a003b0802",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "953e22e9_a5352afe",
         "filename": "test/motion_sense.c",
         "patchSetId": 2
@@ -151,6 +295,24 @@
       "writtenOn": "2014-10-28T15:12:41Z",
       "side": 1,
       "message": "this file is mostly testing lid angle claculation. rename to test/motion_lid.c?",
+      "revId": "9e2b90cd14af3ca6d1a8287e71f6ad4a003b0802",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "154a3299_7b3d7f55",
+        "filename": "test/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-10-28T21:14:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "953e22e9_a5352afe",
       "revId": "9e2b90cd14af3ca6d1a8287e71f6ad4a003b0802",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
