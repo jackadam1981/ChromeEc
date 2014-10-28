@@ -16,6 +16,24 @@
       "revId": "baff2c1067b69438c5e4fc27859864c1c39e42d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "55266ab6_c119f29a",
+        "filename": "chip/it83xx/pwm_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1109909
+      },
+      "writtenOn": "2014-10-28T01:37:54Z",
+      "side": 1,
+      "message": "No, I think the pwm_pcfsr_ctrl is constant value so I remove it.",
+      "parentUuid": "354c968a_f88ed989",
+      "revId": "baff2c1067b69438c5e4fc27859864c1c39e42d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
