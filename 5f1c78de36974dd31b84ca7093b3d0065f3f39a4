@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "b5396603_e3a28c37",
+        "filename": "board/dingdong/board.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000434
+      },
+      "writtenOn": "2014-10-28T03:34:13Z",
+      "side": 1,
+      "message": "Indeed, on Cortex-M0, 64-bit operations are really not atomic (ie half a dozen of instructions)",
+      "parentUuid": "b5396603_40ed2e4d",
+      "revId": "5f1c78de36974dd31b84ca7093b3d0065f3f39a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75436e81_9eedddcb",
         "filename": "board/dingdong/board.c",
         "patchSetId": 16
@@ -42,6 +60,23 @@
         "endLine": 103,
         "endChar": 14
       },
+      "revId": "5f1c78de36974dd31b84ca7093b3d0065f3f39a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75436e81_feda219d",
+        "filename": "board/dingdong/board.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000434
+      },
+      "writtenOn": "2014-10-28T03:34:13Z",
+      "side": 1,
+      "message": "that might actually delay IRQ_HPD propagation by up to 46ms ?\nsince we wait 50 ms after the falling edge.\nAs IRQ_HPD is a pulse, I don\u0027t think you need to debounce that way :\nyou can keep the deferred function for the low/high slow transitions\nbut for IRQ_HPD, you probably just want to keep the timestamp of the last falling edge and verify in interrupt context on each raising edge if the pulse was \u003e2ms \u003c50ms then immediatly schedule the deferred function for IRQ_PULSE sending.\nthat should get rid of most atomicity issues.\nThen you can also simplify the slow transitions : you trigger HPD_DEBOUNCE_LVL delay on every falling edge (but don\u0027t forget to cancel it in the IRQ_HPD treatment if needed) and every raising edge not part of a IRQ_HPD.\nWith such a mechanism, you might be able to store only :\ntimestamp_t last_edge_ts;\nint last_debounce_level; /* \u003d\u003d -1 if the last debounce was canceled by IRQ_HPD */",
       "revId": "5f1c78de36974dd31b84ca7093b3d0065f3f39a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
