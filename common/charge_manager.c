@@ -17,6 +17,12 @@
 static struct charge_port_info available_charge[CHARGE_SUPPLIER_COUNT]
 					       [PD_PORT_COUNT];
 
+/*
+ * Charge ceiling for ports. This can be set to temporarily limit the charge
+ * pulled from a port, without influencing the charge selection logic.
+ */
+static int charge_ceil[PD_PORT_COUNT];
+
 /* Store current state of port enable / charge current. */
 static int charge_port = CHARGE_PORT_NONE;
 static int charge_current = CHARGE_CURRENT_UNINITIALIZED;
@@ -30,13 +36,15 @@ static void charge_manager_init(void)
 {
 	int i, j;
 
-	for (i = 0; i < CHARGE_SUPPLIER_COUNT; ++i)
-		for (j = 0; j < PD_PORT_COUNT; ++j) {
-			available_charge[i][j].current =
+	for (i = 0; i < PD_PORT_COUNT; ++i) {
+		for (j = 0; j < CHARGE_SUPPLIER_COUNT; ++j) {
+			available_charge[j][i].current =
 				CHARGE_CURRENT_UNINITIALIZED;
-			available_charge[i][j].voltage =
+			available_charge[j][i].voltage =
 				CHARGE_VOLTAGE_UNINITIALIZED;
 		}
+		charge_ceil[i] = CHARGE_CEIL_NONE;
+	}
 }
 DECLARE_HOOK(HOOK_INIT, charge_manager_init, HOOK_PRIO_DEFAULT-1);
 
@@ -102,7 +110,13 @@ static void charge_manager_refresh(void)
 		new_charge_current = new_charge_voltage = 0;
 	else {
 		new_charge_current =
-			available_charge[new_supplier][new_port].current;
+			available_charge[new_supplier]
+					[new_port].current;
+		/* Enforce port charge ceiling. */
+		if (charge_ceil[new_port] != CHARGE_CEIL_NONE &&
+		    charge_ceil[new_port] < new_charge_current)
+			new_charge_current = charge_ceil[new_port];
+
 		new_charge_voltage =
 			available_charge[new_supplier][new_port].voltage;
 	}
@@ -126,11 +140,11 @@ DECLARE_DEFERRED(charge_manager_refresh);
  * Update available charge for a given port / supplier.
  *
  * @param supplier		Charge supplier to update.
- * @param charge_port		Charge port to update.
+ * @param port			Charge port to update.
  * @param charge		Charge port current / voltage.
  */
 void charge_manager_update(int supplier,
-			   int charge_port,
+			   int port,
 			   struct charge_port_info *charge)
 {
 	if (supplier < 0 || supplier >= CHARGE_SUPPLIER_COUNT) {
@@ -138,15 +152,16 @@ void charge_manager_update(int supplier,
 		return;
 	}
 
+	if (port < 0 || port >= PD_PORT_COUNT) {
+		CPRINTS("Invalid charge port: %d", port);
+		return;
+	}
+
 	/* Update charge table if needed. */
-	if (available_charge[supplier][charge_port].current !=
-		charge->current ||
-		available_charge[supplier][charge_port].voltage !=
-		charge->voltage) {
-		available_charge[supplier][charge_port].current =
-			charge->current;
-		available_charge[supplier][charge_port].voltage =
-			charge->voltage;
+	if (available_charge[supplier][port].current != charge->current ||
+		available_charge[supplier][port].voltage != charge->voltage) {
+		available_charge[supplier][port].current = charge->current;
+		available_charge[supplier][port].voltage = charge->voltage;
 
 		/*
 		 * Don't call charge_manager_refresh unless all ports +
@@ -155,6 +170,26 @@ void charge_manager_update(int supplier,
 		 * attached.
 		 */
 		if (charge_manager_is_seeded())
+			hook_call_deferred(charge_manager_refresh, 0);
+	}
+}
+
+/**
+ * Update charge ceiling for a given port.
+ *
+ * @param port			Charge port to update.
+ * @param ceil			Charge ceiling (mA).
+ */
+void charge_manager_set_ceil(int port, int ceil)
+{
+	if (port < 0 || port >= PD_PORT_COUNT) {
+		CPRINTS("Invalid charge port: %d", port);
+		return;
+	}
+
+	if (charge_ceil[port] != ceil) {
+		charge_ceil[port] = ceil;
+		if (port == charge_port)
 			hook_call_deferred(charge_manager_refresh, 0);
 	}
 }

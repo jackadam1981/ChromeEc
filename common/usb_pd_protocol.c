@@ -673,6 +673,7 @@ static void execute_hard_reset(int port)
 	/* Clear the input current limit */
 	pd_set_input_current_limit(port, 0, 0);
 #ifdef CONFIG_CHARGE_MANAGER
+	charge_manager_set_ceil(port, CHARGE_CEIL_NONE);
 	typec_set_input_current_limit(port, 0, 0);
 #endif /* CONFIG_CHARGE_MANAGER */
 #else
@@ -820,6 +821,9 @@ static void handle_ctrl_request(int port, uint16_t head,
 			set_state(port, PD_STATE_HARD_RESET);
 		} else if (pd[port].role == PD_ROLE_SINK) {
 			set_state(port, PD_STATE_SNK_READY);
+#ifdef CONFIG_CHARGE_MANAGER
+			charge_manager_set_ceil(port, CHARGE_CEIL_NONE);
+#endif
 			pd_set_input_current_limit(port, pd[port].curr_limit,
 						   pd[port].supply_voltage);
 		}
@@ -1519,6 +1523,14 @@ void pd_task(void)
 			break;
 		case PD_STATE_SNK_REQUESTED:
 			/* Ensure the power supply actually becomes ready */
+#ifdef CONFIG_CHARGE_MANAGER
+			charge_manager_set_ceil(port, PD_MIN_MA);
+			pd_set_input_current_limit(port,
+						   pd[port].curr_limit,
+						   pd[port].supply_voltage);
+#else
+			pd_set_input_current_limit(port, PD_MIN_MA, PD_MIN_MV);
+#endif
 			set_state(port, PD_STATE_SNK_TRANSITION);
 			hard_reset_count = 0;
 			timeout = 10 * MSEC;
@@ -1617,6 +1629,7 @@ void pd_task(void)
 			/* Clear the input current limit */
 			pd_set_input_current_limit(port, 0, 0);
 #ifdef CONFIG_CHARGE_MANAGER
+			charge_manager_set_ceil(port, CHARGE_CEIL_NONE);
 			typec_set_input_current_limit(port, 0, 0);
 #endif
 			/* set timeout small to reconnect fast */
