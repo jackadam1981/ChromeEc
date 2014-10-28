@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f5583e71_7af739a0",
+        "filename": "extra/usb_serial/raiden.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-10-28T19:04:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5583e71_7ac29962",
+      "revId": "8947594b259ec1b317d51b7192b23f52b5d339e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d55dfa60_797467c3",
         "filename": "extra/usb_serial/raiden.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-10-28T19:02:59Z",
       "side": 1,
       "message": "how that\u0027s working for 3 ports ?\ndon\u0027t you need to implement a calc_num_ports() callback ?",
+      "revId": "8947594b259ec1b317d51b7192b23f52b5d339e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f5583e71_1a027de2",
+        "filename": "extra/usb_serial/raiden.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-10-28T19:04:57Z",
+      "side": 1,
+      "message": "Nope, I thought the same thing as well, but this is num_ports_per_interface really.  :)  So if you have three interfaces with one pair of bulk IN/OUT endpoints per interface it generates three /dev/ entries.  The num_ports thing is if you have one interface with three IN and three OUT endpoints all defined for that interface, then you would set num_ports \u003d 3.",
+      "parentUuid": "d55dfa60_797467c3",
       "revId": "8947594b259ec1b317d51b7192b23f52b5d339e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
