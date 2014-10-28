@@ -34,8 +34,9 @@ const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
 /* Cap on the max voltage requested as a sink (in millivolts) */
 static unsigned max_mv = -1; /* no cap */
 
-int pd_choose_voltage(int cnt, uint32_t *src_caps, uint32_t *rdo,
-		      uint32_t *curr_limit, uint32_t *supply_voltage)
+int pd_choose_voltage_common(int cnt, uint32_t *src_caps, uint32_t *rdo,
+			     uint32_t *curr_limit, uint32_t *supply_voltage,
+			     int min)
 {
 	int i;
 	int sel_mv;
@@ -58,6 +59,9 @@ int pd_choose_voltage(int cnt, uint32_t *src_caps, uint32_t *rdo,
 			max_uw = uw;
 			sel_mv = mv;
 		}
+		/* Choose the first entry, if seaching for min */
+		if (min)
+			break;
 	}
 	if (max_i < 0)
 		return -EC_ERROR_UNKNOWN;
@@ -79,6 +83,20 @@ int pd_choose_voltage(int cnt, uint32_t *src_caps, uint32_t *rdo,
 	*curr_limit = max_ma;
 	*supply_voltage = sel_mv;
 	return EC_SUCCESS;
+}
+
+int pd_choose_voltage_min(int cnt, uint32_t *src_caps, uint32_t *rdo,
+			  uint32_t *curr_limit, uint32_t *supply_voltage)
+{
+	return pd_choose_voltage_common(cnt, src_caps, rdo, curr_limit,
+					supply_voltage, 1);
+}
+
+int pd_choose_voltage(int cnt, uint32_t *src_caps, uint32_t *rdo,
+		      uint32_t *curr_limit, uint32_t *supply_voltage)
+{
+	return pd_choose_voltage_common(cnt, src_caps, rdo, curr_limit,
+					supply_voltage, 0);
 }
 
 void pd_set_max_voltage(unsigned mv)
