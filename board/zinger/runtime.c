@@ -12,6 +12,7 @@
 #include "system.h"
 #include "task.h"
 #include "timer.h"
+#include "usb_pd.h"
 #include "util.h"
 
 volatile uint32_t last_event;
@@ -188,6 +189,10 @@ uint32_t task_wait_event(int timeout_us)
 
 		asm volatile("cpsid i");
 	}
+
+	/* if it's been a while since last edge, then allow deep sleep */
+	if (get_time_since_last_edge(0) > 20)
+		enable_sleep(SLEEP_MASK_USB_PD);
 
 	evt = last_event;
 	last_event = 0;

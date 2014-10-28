@@ -144,7 +144,7 @@ static void discharge_voltage(int target_volt)
 	discharge_deadline.val = get_time().val + DISCHARGE_TIMEOUT;
 	/* Monitor VBUS voltage */
 	target_volt -= DISCHARGE_OVERSHOOT_MV;
-	disable_sleep(SLEEP_MASK_USB_PD);
+	disable_sleep(SLEEP_MASK_USB_PWR);
 	adc_enable_watchdog(ADC_CH_V_SENSE, 0xFFF, target_volt);
 }
 
@@ -340,9 +340,9 @@ int pd_board_checks(void)
 	 */
 	if (vbus_amp < SINK_IDLE_CURRENT && !discharge_is_enabled())
 		/* override the PD state machine sleep mask */
-		enable_sleep(SLEEP_MASK_USB_PD);
+		enable_sleep(SLEEP_MASK_USB_PWR);
 	else if (vbus_amp > SINK_IDLE_CURRENT)
-		disable_sleep(SLEEP_MASK_USB_PD);
+		disable_sleep(SLEEP_MASK_USB_PWR);
 
 	/*
 	 * Set the voltage index to use for checking OVP. During a down step
