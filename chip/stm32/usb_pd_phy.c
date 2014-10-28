@@ -42,6 +42,10 @@
 /* maximum number of consecutive similar bits with Biphase Mark Coding */
 #define MAX_BITS 2
 
+/* number of edges and time window to detect CC line is not idle */
+#define TRANSITION_COUNT  3
+#define TRANSITION_WINDOW 20 /* between 12us and 20us */
+
 /* alternating bit sequence used for packet preamble : 00 10 11 01 00 ..  */
 #define PD_PREAMBLE 0xB4B4B4B4 /* starts with 0, ends with 1 */
 
@@ -295,9 +299,13 @@ void pd_tx_set_circular_mode(int port)
 	pd_phy[port].dma_tx_option.flags |= STM32_DMA_CCR_CIRC;
 }
 
-void pd_start_tx(int port, int polarity, int bit_len)
+int pd_start_tx(int port, int polarity, int bit_len)
 {
 	stm32_dma_chan_t *tx = dma_get_channel(DMAC_SPI_TX(port));
+
+	/* Check that we are not receiving a frame to avoid collisions */
+	if (pd_rx_started(port))
+		return -1;
 
 	/* Initialize spi peripheral to prepare for transmission. */
 	pd_tx_spi_init(port);
@@ -338,6 +346,8 @@ void pd_start_tx(int port, int polarity, int bit_len)
 	/* Start counting at 300Khz*/
 	pd_phy[port].tim_tx->cr1 |= 1;
 #endif
+
+	return bit_len;
 }
 
 void pd_tx_done(int port, int polarity)
@@ -412,6 +422,8 @@ void pd_rx_complete(int port)
 	pd_phy[port].tim_rx->cr1 &= ~1;
 	/* stop DMA */
 	dma_disable(DMAC_TIM_RX(port));
+	/* enable RX monitoring */
+	pd_rx_enable_monitoring(port);
 }
 
 int pd_rx_started(int port)
@@ -440,19 +452,41 @@ void pd_rx_disable_monitoring(int port)
 void pd_rx_handler(void)
 {
 	int pending, i;
+	static timestamp_t ts[TRANSITION_COUNT];
+	static int ts_idx;
+	int next_idx, trigger = 0;
 	pending = STM32_EXTI_PR;
+
+
+	ts[ts_idx].val = get_time().val;
+	next_idx = (ts_idx == TRANSITION_COUNT - 1) ? 0 : ts_idx + 1;
+
+	/*
+	 * If we have seen enough edges in a certain amount of time, then
+	 * trigger RX start
+	 */
+	if (ts[ts_idx].val - ts[next_idx].val < TRANSITION_WINDOW)
+		trigger = 1;
+
+	ts_idx = next_idx;
 
 	for (i = 0; i < PD_PORT_COUNT; i++) {
 		if (pending & EXTI_COMP_MASK(i)) {
-			/* start sampling */
-			pd_rx_start(i);
-			/*
-			 * ignore the comparator IRQ until we are done with
-			 * current message
-			 */
-			pd_rx_disable_monitoring(i);
-			/* trigger the analysis in the task */
-			pd_rx_event(i);
+			if (trigger) {
+				/* start sampling */
+				pd_rx_start(i);
+				/*
+				 * ignore the comparator IRQ until we are done
+				 * with current message
+				 */
+				pd_rx_disable_monitoring(i);
+				/* trigger the analysis in the task */
+				pd_rx_event(i);
+			} else {
+				/* do not trigger RX start, just clear int */
+				STM32_EXTI_PR = EXTI_COMP_MASK(i);
+			}
+
 		}
 	}
 }

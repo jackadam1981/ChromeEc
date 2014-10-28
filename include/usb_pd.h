@@ -860,8 +860,9 @@ void pd_set_clock(int port, int freq);
  * @param port USB-C port number
  * @param polarity plug polarity (0=CC1, 1=CC2).
  * @param bit_len size of the packet in bits.
+ * @return length transmitted or negative if error
  */
-void pd_start_tx(int port, int polarity, int bit_len);
+int pd_start_tx(int port, int polarity, int bit_len);
 
 /**
  * Set PD TX DMA to use circular mode. Call this before pd_start_tx() to
