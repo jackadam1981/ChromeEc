@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3533b6f6_c460d430",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-10-28T22:24:39Z",
+      "side": 1,
+      "message": "In shutdown state, we force sensor-\u003estate to be SENSOR_NOT_INITIALIZED so that all sensors will be re-init to the original default values after come out the shutdown state.  Kernel will get the same default values if boot up from shutdown state.\n\nYou may need roll back the left code.",
+      "revId": "acacf3b5ccf6f8001611a2e700d2c87abc1fe254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
