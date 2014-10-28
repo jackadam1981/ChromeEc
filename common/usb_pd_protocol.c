@@ -240,6 +240,11 @@ static struct pd_protocol {
 	/* Current limit / voltage based on the last request message */
 	uint32_t curr_limit;
 	uint32_t supply_voltage;
+#ifdef CONFIG_CHARGE_MANAGER
+	uint32_t wait_id;
+	uint32_t rdo_min;
+	uint32_t rdo_max;
+#endif
 #endif
 
 	/* PD state for Vendor Defined Messages */
@@ -677,6 +682,7 @@ static void execute_hard_reset(int port)
 	pd_set_input_current_limit(port, 0, 0);
 #ifdef CONFIG_CHARGE_MANAGER
 	typec_set_input_current_limit(port, 0, 0);
+	charge_manager_set_ceil(port, CHARGE_CEIL_NONE);
 #endif /* CONFIG_CHARGE_MANAGER */
 #else
 	set_state(port, PD_STATE_SRC_DISCONNECTED);
@@ -730,6 +736,21 @@ static void pd_send_request_msg(int port)
 	if (res == EC_SUCCESS) {
 		pd[port].curr_limit = curr_limit;
 		pd[port].supply_voltage = supply_voltage;
+
+#ifdef CONFIG_CHARGE_MANAGER
+		pd[port].rdo_max = rdo;
+
+		pd_set_input_current_limit(port,
+					   pd[port].curr_limit,
+					   pd[port].supply_voltage);
+		pd[port].wait_id = charge_manager_set_ceil(port, PD_MIN_MA);
+
+		res = pd_choose_voltage_min(pd_src_cap_cnt[port],
+					    pd_src_caps[port], &rdo,
+					    &curr_limit, &supply_voltage);
+		pd[port].rdo_min = rdo;
+		set_state(port, PD_STATE_SNK_CHECK_ACTIVE);
+#else
 		res = send_request(port, rdo);
 		if (res >= 0)
 			set_state(port, PD_STATE_SNK_REQUESTED);
@@ -740,6 +761,7 @@ static void pd_send_request_msg(int port)
 			 * TODO(crosbug.com/p/28332)
 			 */
 			set_state(port, PD_STATE_SNK_REQUESTED);
+#endif
 	}
 	/*
 	 * TODO(crosbug.com/p/28332): if pd_choose_voltage
@@ -825,6 +847,9 @@ static void handle_ctrl_request(int port, uint16_t head,
 			set_state(port, PD_STATE_SNK_READY);
 			pd_set_input_current_limit(port, pd[port].curr_limit,
 						   pd[port].supply_voltage);
+#ifdef CONFIG_CHARGE_MANAGER
+			charge_manager_set_ceil(port, CHARGE_CEIL_NONE);
+#endif
 		}
 		break;
 	case PD_CTRL_REJECT:
@@ -1232,6 +1257,7 @@ void pd_task(void)
 	int hard_reset_count = 0;
 #ifdef CONFIG_CHARGE_MANAGER
 	static int initialized[PD_PORT_COUNT];
+	uint32_t rdo;
 #endif /* CONFIG_CHARGE_MANAGER */
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 	enum pd_states this_state;
@@ -1516,9 +1542,41 @@ void pd_task(void)
 						  PD_STATE_HARD_RESET);
 			timeout = 10 * MSEC;
 			break;
+		case PD_STATE_SNK_CHECK_ACTIVE:
+#ifdef CONFIG_CHARGE_MANAGER
+			/* Wait for our CM request to be processed */
+			if (pd[port].wait_id >=
+			    charge_manager_get_processed_id()) {
+				/*
+				 * If our port was selected to be active,
+				 * use the maximum charge mode. Otherwise,
+				 * use the minimum.
+				 */
+				if (charge_manager_get_active_charge_port() ==
+				    port)
+					rdo = pd[port].rdo_max;
+				else
+					rdo = pd[port].rdo_min;
+
+				res = send_request(port, rdo);
+				if (res >= 0)
+					set_state(port, PD_STATE_SNK_REQUESTED);
+				else
+					/*
+					 * for now: ignore failure here,
+					 * we will retry ...
+					 * TODO(crosbug.com/p/28332)
+					 */
+					set_state(port, PD_STATE_SNK_REQUESTED);
+			}
+#endif
+			timeout = 10 * MSEC;
+			break;
 		case PD_STATE_SNK_REQUESTED:
 			/* Ensure the power supply actually becomes ready */
+#ifndef CONFIG_CHARGE_MANAGER
 			pd_set_input_current_limit(port, PD_MIN_MA, PD_MIN_MV);
+#endif
 			set_state(port, PD_STATE_SNK_TRANSITION);
 			hard_reset_count = 0;
 			timeout = 10 * MSEC;
@@ -1618,6 +1676,7 @@ void pd_task(void)
 			pd_set_input_current_limit(port, 0, 0);
 #ifdef CONFIG_CHARGE_MANAGER
 			typec_set_input_current_limit(port, 0, 0);
+			charge_manager_set_ceil(port, CHARGE_CEIL_NONE);
 #endif
 			/* set timeout small to reconnect fast */
 			timeout = 5*MSEC;
@@ -1947,8 +2006,8 @@ static int command_pd(int argc, char **argv)
 		const char * const state_names[] = {
 			"DISABLED", "SUSPENDED",
 #ifdef CONFIG_USB_PD_DUAL_ROLE
-			"SNK_DISCONNECTED", "SNK_DISCOVERY", "SNK_REQUESTED",
-			"SNK_TRANSITION", "SNK_READY",
+			"SNK_DISCONNECTED", "SNK_DISCOVERY", "SNK_CHECK_ACTIVE",
+			"SNK_REQUESTED", "SNK_TRANSITION", "SNK_READY",
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 			"SRC_DISCONNECTED", "SRC_DISCOVERY", "SRC_NEGOCIATE",
 			"SRC_ACCEPTED", "SRC_TRANSITION", "SRC_READY",
