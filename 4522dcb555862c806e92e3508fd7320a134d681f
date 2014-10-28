@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b5396603_8fc2c15f",
+        "filename": "board/dingdong/board.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-28T18:12:37Z",
+      "side": 1,
+      "message": "I still believe you only need one entry here\nand you can simplify your code.\nmore details below",
+      "revId": "4522dcb555862c806e92e3508fd7320a134d681f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "953e22e9_68ec974f",
+        "filename": "board/dingdong/board.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-28T18:12:37Z",
+      "side": 1,
+      "message": "then you can kill that guy.",
+      "revId": "4522dcb555862c806e92e3508fd7320a134d681f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "953e22e9_08b06b51",
+        "filename": "board/dingdong/board.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-28T18:12:37Z",
+      "side": 1,
+      "message": "even though you record the level value, this interrupt handler actually records edges :\n level \u003d\u003d1 \u003d\u003d\u003e rising edge\n level \u003d\u003d 0 \u003d\u003e falling edge\nin order to detect am IRQ_HPD pulse, you need *only* 2 edges : falling then rising.\nhpds[!hpd_idx].level is too far in the past, you don\u0027t care.\nyou can really want to check :\nif ((prev_level \u003d\u003d 0 /* falling*/) \u0026\u0026 (level \u003d\u003d 1 /* rising*/))",
+      "revId": "4522dcb555862c806e92e3508fd7320a134d681f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
