@@ -16,6 +16,24 @@
       "revId": "7bd32ef767b62fa3f1a691a9b783bee451d4c83e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75436e81_5edd1570",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-28T00:56:59Z",
+      "side": 1,
+      "message": "I checked the reference manual for STM32F103, STM32L151, STM32F0x2 and STM32F37x. On F0x2 and F37x, high bits are defined and used. On F103 and L151, high bits are reserved, but the manuals say the registers may be accessed by half-word or word.",
+      "parentUuid": "15a5d282_ec8b9f77",
+      "revId": "7bd32ef767b62fa3f1a691a9b783bee451d4c83e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
