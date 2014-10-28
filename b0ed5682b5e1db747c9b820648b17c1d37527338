@@ -22,6 +22,30 @@
       "revId": "b0ed5682b5e1db747c9b820648b17c1d37527338",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f5583e71_5a7fd54d",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-10-28T21:14:25Z",
+      "side": 1,
+      "message": "Done. Mark them as undef as they should be in config.h",
+      "parentUuid": "953e22e9_bf6d3774",
+      "range": {
+        "startLine": 560,
+        "startChar": 7,
+        "endLine": 563,
+        "endChar": 31
+      },
+      "revId": "b0ed5682b5e1db747c9b820648b17c1d37527338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
