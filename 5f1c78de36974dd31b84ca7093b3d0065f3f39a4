@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b5396603_40ed2e4d",
+        "filename": "board/dingdong/board.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-28T01:36:38Z",
+      "side": 1,
+      "message": "instead of disabling interrupts could:\n\ndo {\n ts0 \u003d hpds[!hpd_idx].ts;\n ts1 \u003d hpds[hpd_idx].ts;\n level \u003d hpds[hpd_idx].level;\n} while (ts0 !\u003d hpds[!hpd_idx.ts);\n\nwould almost never go through more than once. problem is ts is an int64, I don\u0027t think copying or comparing uint64 is atomic. So, it might be trickier.",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 48
+      },
+      "revId": "5f1c78de36974dd31b84ca7093b3d0065f3f39a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75436e81_9eedddcb",
+        "filename": "board/dingdong/board.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-28T01:36:38Z",
+      "side": 1,
+      "message": "why do you need this? if the interrupt is disabled how could this get fired?\n\ngenerally not a good idea to usleep() in an interrupt.",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 14
+      },
+      "revId": "5f1c78de36974dd31b84ca7093b3d0065f3f39a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
