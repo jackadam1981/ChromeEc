@@ -68,7 +68,15 @@ cmd_etags = etags -o $@ $(shell cat $<)
 cmd_ctags = ctags -o $@ $(shell cat $<)
 targ_if_prog = $(if $(shell which $(1) 2>/dev/null),$(2),)
 
+# commands to package something
+cmd_packpackage = ${SCRIPTDIR}/pack_ec.py -o $@ -i $^ --payload_key ${SCRIPTDIR}/rsakey_sign_payload.pem \
+		--header_key ${SCRIPTDIR}/rsakey_sign_header.pem
+#--loader_file ${SCRIPTDIR}/ecloader.bin
+
 .PHONY: all tests utils hosttests
+
+project-y = $(out)/$(PROJECT).bin ${spi-y}
+all: $(project-y) utils
 
 buildall: $(foreach b, $(boards), proj-$(b)) runtests
 	@touch .tests-passed
@@ -145,6 +153,10 @@ $(out)/%.bin: $(out)/%.obj
 	$(if $(wildcard $(PEM)),$(call quiet,extractrw-y,EXTR_RW), \
 			$(call quiet,copyrw-y,COPY_RW))
 	$(call quiet,mv_from_tmp,MV     )
+
+# Beware of ec.spi.spi.bin.
+${out}/%.spi.bin: ${out}/%.bin
+	$(call quiet,packpackage,PACK   )
 
 flat-y = $(out)/$(PROJECT).RO.flat $(out)/$(PROJECT).RW.flat
 

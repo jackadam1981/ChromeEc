@@ -10,6 +10,12 @@
 CHIP:=mec1322
 CHIP_SPI_SIZE:=4
 CHIP_EXT_CLOCK:=crystal
+# location of the scripts and keys used to pack the 4MB spi flash
+SCRIPTDIR:=./chip/${CHIP}/util
 
 board-y=board.o
 board-$(HAS_TASK_CHIPSET)+=power_sequence.o
+# As this file is read more than once, must put the rules
+# elsewhere (Makefile.rules) and just use variable to trigger them
+# Use a variable ending in -y to keep style consistent
+spi-y=${out}/ec.spi.bin
