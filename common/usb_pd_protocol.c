@@ -235,6 +235,8 @@ static struct pd_protocol {
 	uint64_t src_recover;
 	/* Flag for sending pings in SRC_READY */
 	uint8_t ping_enabled;
+	/* Error sending message and message was dropped */
+	int8_t send_error;
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	/* Current limit / voltage based on the last request message */
@@ -428,6 +430,8 @@ static void send_hard_reset(int port)
 	/* Transmit the packet */
 	pd_start_tx(port, pd[port].polarity, off);
 	pd_tx_done(port, pd[port].polarity);
+	/* Keep RX monitoring on */
+	pd_rx_enable_monitoring(port);
 }
 
 static int send_validate_message(int port, uint16_t header,
@@ -446,11 +450,21 @@ static int send_validate_message(int port, uint16_t header,
 		/* write the encoded packet in the transmission buffer */
 		bit_len = prepare_message(port, header, cnt, data);
 		/* Transmit the packet */
-		pd_start_tx(port, pd[port].polarity, bit_len);
+		if (pd_start_tx(port, pd[port].polarity, bit_len) < 0) {
+			/*
+			 * Collision detected, return immediately so we can
+			 * respond to what we have received.
+			 */
+			pd[port].send_error = -5;
+			return -5;
+		}
 		pd_tx_done(port, pd[port].polarity);
 		/*
-		 * If we failed the first try, enable interrupt and yield
-		 * to other tasks, so that we don't starve them.
+		 * If this is the first attempt, leave RX monitoring off,
+		 * and do a blocking read of the channel until timeout or
+		 * packet received. If we failed the first try, enable
+		 * interrupt and yield to other tasks, so that we don't
+		 * starve them.
 		 */
 		if (r) {
 			pd_rx_enable_monitoring(port);
@@ -491,8 +505,8 @@ static int send_validate_message(int port, uint16_t header,
 				 * the other side is trying to contact us,
 				 * bail out immediatly so we can get the retry.
 				 */
+				pd[port].send_error = -4;
 				return -4;
-				/* CPRINTF("ERR ACK/%d %04x\n", id, head); */
 			}
 		}
 	}
@@ -528,6 +542,8 @@ static void send_goodcrc(int port, int id)
 
 	pd_start_tx(port, pd[port].polarity, bit_len);
 	pd_tx_done(port, pd[port].polarity);
+	/* Keep RX monitoring on */
+	pd_rx_enable_monitoring(port);
 }
 
 static int send_source_cap(int port)
@@ -966,7 +982,7 @@ static int analyze_rx(int port, uint32_t *payload)
 	uint16_t header;
 	uint32_t pcrc, ccrc;
 	int p, cnt;
-	/* uint32_t eop; */
+	uint32_t eop;
 
 	pd_init_dequeue(port);
 
@@ -1029,13 +1045,11 @@ static int analyze_rx(int port, uint32_t *payload)
 	}
 
 	/* check End Of Packet */
-	/* SKIP EOP for now
 	bit = pd_dequeue_bits(port, bit, 5, &eop);
 	if (bit < 0 || eop != PD_EOP) {
 		msg = "EOP";
 		goto packet_err;
 	}
-	*/
 
 	return header;
 packet_err:
@@ -1271,6 +1285,20 @@ void pd_task(void)
 			/* notify the other side of the issue */
 			send_hard_reset(port);
 		}
+
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+		/* Print error if did not transmit last message */
+		if (pd[port].send_error < 0) {
+			if (pd[port].send_error == -5)
+				/* Bus was not idle */
+				ccprintf("TX ERR NIDLE\n");
+			else if (pd[port].send_error == -4)
+				/* Incoming packed recvd instead of ack */
+				ccprintf("TX ERR ACK\n");
+			pd[port].send_error = 0;
+		}
+#endif
+
 		/* wait for next event/packet or timeout expiration */
 		task_wait_event(timeout);
 		/* incoming packet ? */
