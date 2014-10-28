@@ -208,6 +208,11 @@ enum vdm_states {
 	VDM_STATE_BUSY = 2,
 };
 
+enum pd_request_types {
+	PD_REQUEST_MIN,
+	PD_REQUEST_MAX,
+};
+
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 /* Port dual-role state */
 enum pd_dual_role_states drp_state = PD_DRP_TOGGLE_OFF;
@@ -215,8 +220,6 @@ enum pd_dual_role_states drp_state = PD_DRP_TOGGLE_OFF;
 /* Last received source cap */
 static uint32_t pd_src_caps[PD_PORT_COUNT][PDO_MAX_OBJECTS];
 static int pd_src_cap_cnt[PD_PORT_COUNT];
-
-static int new_power_request;
 #endif
 
 static struct pd_protocol {
@@ -247,6 +250,12 @@ static struct pd_protocol {
 	/* Current limit / voltage based on the last request message */
 	uint32_t curr_limit;
 	uint32_t supply_voltage;
+	/* Signal charging update that affects the port */
+	int new_power_request;
+#ifdef CONFIG_CHARGE_MANAGER
+	/* Track last requested charge type (min / max) */
+	enum pd_request_types last_charge_request;
+#endif
 #endif
 
 	/* PD state for Vendor Defined Messages */
@@ -696,6 +705,7 @@ static void execute_hard_reset(int port)
 	pd_set_input_current_limit(port, 0, 0);
 #ifdef CONFIG_CHARGE_MANAGER
 	typec_set_input_current_limit(port, 0, 0);
+	charge_manager_set_ceil(port, CHARGE_CEIL_NONE);
 #endif /* CONFIG_CHARGE_MANAGER */
 #else
 	set_state(port, PD_STATE_SRC_DISCONNECTED);
@@ -738,7 +748,7 @@ static void pd_store_src_cap(int port, int cnt, uint32_t *src_caps)
 		pd_src_caps[port][i] = *src_caps++;
 }
 
-static void pd_send_request_msg(int port)
+static void pd_send_request_msg(int port, enum pd_request_types request)
 {
 	uint32_t rdo, curr_limit, supply_voltage;
 	int res;
@@ -747,6 +757,21 @@ static void pd_send_request_msg(int port)
 	res = pd_choose_voltage(pd_src_cap_cnt[port], pd_src_caps[port], &rdo,
 				&curr_limit, &supply_voltage);
 	if (res == EC_SUCCESS) {
+#ifdef CONFIG_CHARGE_MANAGER
+		/* Set max. limit, but apply 500mA ceiling */
+		charge_manager_set_ceil(port, PD_MIN_MA);
+		pd_set_input_current_limit(port,
+					   curr_limit,
+					   supply_voltage);
+		/* Negotiate for Vsafe5V, if requested */
+		if (request == PD_REQUEST_MIN)
+			res = pd_choose_voltage_min(pd_src_cap_cnt[port],
+						    pd_src_caps[port],
+						    &rdo,
+						    &curr_limit,
+						    &supply_voltage);
+		pd[port].last_charge_request = request;
+#endif
 		pd[port].curr_limit = curr_limit;
 		pd[port].supply_voltage = supply_voltage;
 		/* src cap 0 should be fixed PDO, get dualrole power capable */
@@ -784,7 +809,7 @@ static void handle_data_request(int port, uint16_t head,
 			|| (pd[port].task_state == PD_STATE_SNK_TRANSITION)
 			|| (pd[port].task_state == PD_STATE_SNK_READY)) {
 			pd_store_src_cap(port, cnt, payload);
-			pd_send_request_msg(port);
+			pd_send_request_msg(port, PD_REQUEST_MIN);
 		}
 		break;
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
@@ -857,8 +882,13 @@ static void handle_ctrl_request(int port, uint16_t head,
 			set_state(port, PD_STATE_HARD_RESET);
 		} else if (pd[port].power_role == PD_ROLE_SINK) {
 			set_state(port, PD_STATE_SNK_READY);
+#ifdef CONFIG_CHARGE_MANAGER
+			/* Set ceiling based on what's negotiated */
+			charge_manager_set_ceil(port, pd[port].curr_limit);
+#else
 			pd_set_input_current_limit(port, pd[port].curr_limit,
 						   pd[port].supply_voltage);
+#endif
 		}
 		break;
 	case PD_CTRL_REJECT:
@@ -1303,6 +1333,14 @@ static inline int get_typec_current_limit(int cc_voltage)
 
 	return charge;
 }
+
+/**
+ * Signal power request to indicate a charger update that affects the port.
+ */
+void pd_set_new_power_request(int port)
+{
+	pd[port].new_power_request = 1;
+}
 #endif /* CONFIG_CHARGE_MANAGER */
 
 void pd_task(void)
@@ -1655,7 +1693,6 @@ void pd_task(void)
 			break;
 		case PD_STATE_SNK_REQUESTED:
 			/* Ensure the power supply actually becomes ready */
-			pd_set_input_current_limit(port, PD_MIN_MA, PD_MIN_MV);
 			set_state(port, PD_STATE_SNK_TRANSITION);
 			hard_reset_count = 0;
 			timeout = 10 * MSEC;
@@ -1677,9 +1714,20 @@ void pd_task(void)
 			}
 
 			/* we have power, check vitals from time to time */
-			if (new_power_request) {
-				pd_send_request_msg(port);
-				new_power_request = 0;
+			if (pd[port].new_power_request) {
+				pd[port].new_power_request = 0;
+#ifdef CONFIG_CHARGE_MANAGER
+				if (charge_manager_get_active_charge_port()
+				    != port && pd[port].last_charge_request
+				    == PD_REQUEST_MAX)
+					pd_send_request_msg(port,
+							    PD_REQUEST_MIN);
+				else if (charge_manager_get_active_charge_port()
+					 == port && pd[port].last_charge_request
+					 == PD_REQUEST_MIN)
+#endif
+					pd_send_request_msg(port,
+							    PD_REQUEST_MAX);
 			}
 			timeout = 100*MSEC;
 			break;
@@ -1699,6 +1747,7 @@ void pd_task(void)
 			pd_set_input_current_limit(port, 0, 0);
 #ifdef CONFIG_CHARGE_MANAGER
 			typec_set_input_current_limit(port, 0, 0);
+			charge_manager_set_ceil(port, CHARGE_CEIL_NONE);
 #endif
 			set_state(port, PD_STATE_SNK_SWAP_SRC_DISABLE);
 			timeout = 10*MSEC;
@@ -1822,6 +1871,7 @@ void pd_task(void)
 			pd_set_input_current_limit(port, 0, 0);
 #ifdef CONFIG_CHARGE_MANAGER
 			typec_set_input_current_limit(port, 0, 0);
+			charge_manager_set_ceil(port, CHARGE_CEIL_NONE);
 #endif
 			/* set timeout small to reconnect fast */
 			timeout = 5*MSEC;
@@ -1986,7 +2036,7 @@ void pd_request_source_voltage(int port, int mv)
 
 	if (pd[port].task_state == PD_STATE_SNK_READY) {
 		/* Set flag to send new power request in pd_task */
-		new_power_request = 1;
+		pd[port].new_power_request = 1;
 	} else {
 		pd[port].power_role = PD_ROLE_SINK;
 		pd_set_host_mode(port, 0);
