@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b5396603_e3bc4caf",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-28T02:05:47Z",
+      "side": 1,
+      "message": "this really belongs in motion_sense.c. It\u0027s useful for looking at the values of all the sensors and should be included regardless of whether or not lid angle is being calculated. if lid angle is calculated, it\u0027s helpful to append that value in the printf, but it\u0027s still useful if not.",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 6
+      },
+      "revId": "9e2b90cd14af3ca6d1a8287e71f6ad4a003b0802",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
