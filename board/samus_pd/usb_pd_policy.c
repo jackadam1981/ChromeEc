@@ -36,16 +36,17 @@ const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
 /* Cap on the max voltage requested as a sink (in millivolts) */
 static unsigned max_mv = -1; /* no cap */
 
-int pd_choose_voltage(int cnt, uint32_t *src_caps, uint32_t *rdo,
-		      uint32_t *curr_limit, uint32_t *supply_voltage)
+static int pd_choose_voltage_common(int cnt, uint32_t *src_caps, uint32_t *rdo,
+				    uint32_t *curr_limit,
+				    uint32_t *supply_voltage, int min)
 {
 	int i;
 	int sel_mv;
-	int max_uw = 0;
-	int max_ma;
-	int max_i = -1;
+	int lim_uw;
+	int lim_ma;
+	int lim_i = -1;
 
-	/* Get max power */
+	/* Get max/min power */
 	for (i = 0; i < cnt; i++) {
 		int uw;
 		int mv = ((src_caps[i] >> 10) & 0x3FF) * 50;
@@ -55,33 +56,51 @@ int pd_choose_voltage(int cnt, uint32_t *src_caps, uint32_t *rdo,
 			int ma = (src_caps[i] & 0x3FF) * 10;
 			uw = ma * mv;
 		}
-		if ((uw > max_uw) && (mv <= max_mv)) {
-			max_i = i;
-			max_uw = uw;
+		if (mv <= max_mv &&
+		   (lim_i < 0 ||
+		   (!min && uw > lim_uw) || (min && uw < lim_uw))) {
+			lim_i = i;
+			lim_uw = uw;
 			sel_mv = mv;
 		}
 	}
-	if (max_i < 0)
+	if (lim_i < 0)
 		return -EC_ERROR_UNKNOWN;
 
 	/* request all the power ... */
-	if ((src_caps[max_i] & PDO_TYPE_MASK) == PDO_TYPE_BATTERY) {
-		int uw = 250000 * (src_caps[max_i] & 0x3FF);
-		max_ma = uw / sel_mv;
-		*rdo = RDO_BATT(max_i + 1, uw/2, uw, 0);
+	if ((src_caps[lim_i] & PDO_TYPE_MASK) == PDO_TYPE_BATTERY) {
+		int uw = 250000 * (src_caps[lim_i] & 0x3FF);
+		lim_ma = uw / sel_mv;
+		*rdo = RDO_BATT(lim_i + 1, uw/2, uw, 0);
 		CPRINTF("Request [%d] %dV %dmW\n",
-			max_i, sel_mv/1000, uw/1000);
+			lim_i, sel_mv/1000, uw/1000);
 	} else {
-		int ma = 10 * (src_caps[max_i] & 0x3FF);
-		max_ma = ma;
-		*rdo = RDO_FIXED(max_i + 1, ma / 2, ma, 0);
+		int ma = 10 * (src_caps[lim_i] & 0x3FF);
+		lim_ma = ma;
+		*rdo = RDO_FIXED(lim_i + 1, ma / 2, ma, 0);
 		CPRINTF("Request [%d] %dV %dmA\n",
-			max_i, sel_mv/1000, ma);
+			lim_i, sel_mv/1000, ma);
 	}
-	*curr_limit = max_ma;
+	*curr_limit = lim_ma;
 	*supply_voltage = sel_mv;
 	return EC_SUCCESS;
 }
+
+int pd_choose_voltage_min(int cnt, uint32_t *src_caps, uint32_t *rdo,
+			  uint32_t *curr_limit, uint32_t *supply_voltage)
+{
+	return pd_choose_voltage_common(cnt, src_caps, rdo, curr_limit,
+					supply_voltage, 1);
+}
+
+
+int pd_choose_voltage(int cnt, uint32_t *src_caps, uint32_t *rdo,
+		      uint32_t *curr_limit, uint32_t *supply_voltage)
+{
+	return pd_choose_voltage_common(cnt, src_caps, rdo, curr_limit,
+					supply_voltage, 0);
+}
+
 
 void pd_set_max_voltage(unsigned mv)
 {
