@@ -16,6 +16,24 @@
       "revId": "acacf3b5ccf6f8001611a2e700d2c87abc1fe254",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b552464f_7bf73ba0",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-10-28T23:43:40Z",
+      "side": 1,
+      "message": "But, if the sensor is used in S5 (shutdown), the task loop will reinitialize them (line 362 - 364 ) right away, not at resume time.",
+      "parentUuid": "3533b6f6_c460d430",
+      "revId": "acacf3b5ccf6f8001611a2e700d2c87abc1fe254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
