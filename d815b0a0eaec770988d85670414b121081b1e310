@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75436e81_3ec489ce",
+        "filename": "board/dingdong/usb_pd_policy.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1000434
+      },
+      "writtenOn": "2014-10-28T03:08:46Z",
+      "side": 1,
+      "message": "rather than delaying the whole usb_init()\nyou should just set/reset the pull-up on D+ (that\u0027s what is triggering the enumeration)",
+      "revId": "d815b0a0eaec770988d85670414b121081b1e310",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
