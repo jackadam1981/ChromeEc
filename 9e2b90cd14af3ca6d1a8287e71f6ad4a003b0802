@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "b5396603_c68e768a",
+        "filename": "board/samus/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-28T15:12:41Z",
+      "side": 1,
+      "message": "THis comment is for Sheng. We still need a standard ref matrix for the gyro. Is it the same as the base_standard_ref?",
+      "range": {
+        "startLine": 301,
+        "startChar": 17,
+        "endLine": 301,
+        "endChar": 21
+      },
+      "revId": "9e2b90cd14af3ca6d1a8287e71f6ad4a003b0802",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b5396603_866aae0a",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-28T15:12:41Z",
+      "side": 1,
+      "message": "The name of this command is misleading. Should be renamed and put into motion_sense.c to be used to debug accel issues in general.",
+      "range": {
+        "startLine": 168,
+        "startChar": 7,
+        "endLine": 168,
+        "endChar": 27
+      },
+      "revId": "9e2b90cd14af3ca6d1a8287e71f6ad4a003b0802",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5396603_e3bc4caf",
         "filename": "common/motion_lid.c",
         "patchSetId": 2
@@ -19,6 +65,92 @@
         "endLine": 182,
         "endChar": 6
       },
+      "revId": "9e2b90cd14af3ca6d1a8287e71f6ad4a003b0802",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75436e81_816a9c0a",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-28T15:12:41Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 479,
+        "startChar": 0,
+        "endLine": 480,
+        "endChar": 6
+      },
+      "revId": "9e2b90cd14af3ca6d1a8287e71f6ad4a003b0802",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "953e22e9_051a168e",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-28T15:12:41Z",
+      "side": 1,
+      "message": "that\u0027s not the correct formatting for TODO\u0027s in the EC. See other TODO\u0027s, I think it\u0027s:\n\nTODO (crosbug.com/p/426659): description of bug",
+      "range": {
+        "startLine": 702,
+        "startChar": 3,
+        "endLine": 702,
+        "endChar": 50
+      },
+      "revId": "9e2b90cd14af3ca6d1a8287e71f6ad4a003b0802",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75436e81_4149b4ac",
+        "filename": "include/console.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-28T15:12:41Z",
+      "side": 1,
+      "message": "accidental deletion of copyright",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 2
+      },
+      "revId": "9e2b90cd14af3ca6d1a8287e71f6ad4a003b0802",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "953e22e9_a5352afe",
+        "filename": "test/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-28T15:12:41Z",
+      "side": 1,
+      "message": "this file is mostly testing lid angle claculation. rename to test/motion_lid.c?",
       "revId": "9e2b90cd14af3ca6d1a8287e71f6ad4a003b0802",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
