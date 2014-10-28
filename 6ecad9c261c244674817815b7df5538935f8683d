@@ -355,6 +355,30 @@
     },
     {
       "key": {
+        "uuid": "b5396603_0014c6b1",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1776,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-28T01:36:24Z",
+      "side": 1,
+      "message": "I think it\u0027s actually divided by 300bits/ms, so .763ms. I would go for a few ms to account for any possible retries.",
+      "parentUuid": "35cf3649_357fb24f",
+      "range": {
+        "startLine": 1776,
+        "startChar": 18,
+        "endLine": 1776,
+        "endChar": 21
+      },
+      "revId": "6ecad9c261c244674817815b7df5538935f8683d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35cf3649_8f13f9ca",
         "filename": "include/usb_pd.h",
         "patchSetId": 15
