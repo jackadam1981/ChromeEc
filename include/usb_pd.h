@@ -489,6 +489,7 @@ enum pd_states {
 	PD_STATE_SUSPENDED,
 	PD_STATE_SNK_DISCONNECTED,
 	PD_STATE_SNK_DISCOVERY,
+	PD_STATE_SNK_CHECK_ACTIVE,
 	PD_STATE_SNK_REQUESTED,
 	PD_STATE_SNK_TRANSITION,
 	PD_STATE_SNK_READY,
@@ -601,7 +602,8 @@ enum pd_data_msg_type {
 /* --- Policy layer functions --- */
 
 /**
- * Decide which voltage to use from the source capabilities.
+ * Decide which voltage to use from the source capabilities - prefer the
+ * mode which delivers the maximum allowable power.
  *
  * @param cnt  the number of Power Data Objects.
  * @param src_caps Power Data Objects representing the source capabilities.
@@ -612,6 +614,20 @@ enum pd_data_msg_type {
  */
 int pd_choose_voltage(int cnt, uint32_t *src_caps, uint32_t *rdo,
 		      uint32_t *curr_limit, uint32_t *supply_voltage);
+
+/**
+ * Decide which voltage to use from the source capabilities - prefer the
+ * mode which delivers the minimum allowable power.
+ *
+ * @param cnt  the number of Power Data Objects.
+ * @param src_caps Power Data Objects representing the source capabilities.
+ * @param rdo  requested Request Data Object.
+ * @param curr_limit  selected current limit (stored on success)
+ * @param supply_voltage  selected supply voltage (stored on success)
+ * @return <0 if invalid, else EC_SUCCESS
+ */
+int pd_choose_voltage_min(int cnt, uint32_t *src_caps, uint32_t *rdo,
+			  uint32_t *curr_limit, uint32_t *supply_voltage);
 
 /**
  * Put a cap on the max voltage requested as a sink.

@@ -7,6 +7,8 @@
 #include "console.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "task.h"
+#include "timer.h"
 #include "usb_pd.h"
 #include "usb_pd_config.h"
 #include "util.h"
@@ -17,10 +19,29 @@
 static struct charge_port_info available_charge[CHARGE_SUPPLIER_COUNT]
 					       [PD_PORT_COUNT];
 
+/*
+ * Charge ceiling for ports. This can be set to temporarily limit the charge
+ * pulled from a port, without influencing the port selection logic.
+ */
+static int charge_ceil[PD_PORT_COUNT];
+
 /* Store current state of port enable / charge current. */
 static int charge_port = CHARGE_PORT_NONE;
 static int charge_current = CHARGE_CURRENT_UNINITIALIZED;
 static int charge_supplier = CHARGE_SUPPLIER_NONE;
+
+/*
+ * Keep track of update requests with an incrementing ID so that callers
+ * can determine if their updates have been processed.
+ */
+static unsigned int requested_id;
+static unsigned int processed_id;
+
+/*
+ * Block updates to the charge table when the port selection task is
+ * running to ensure accuracy of our IDs.
+ */
+static struct mutex charge_manager_mutex;
 
 /**
  * Initialize available charge. Run before board init, so board init can
@@ -30,13 +51,15 @@ static void charge_manager_init(void)
 {
 	int i, j;
 
-	for (i = 0; i < CHARGE_SUPPLIER_COUNT; ++i)
-		for (j = 0; j < PD_PORT_COUNT; ++j) {
-			available_charge[i][j].current =
+	for (i = 0; i < PD_PORT_COUNT; ++i) {
+		for (j = 0; j < CHARGE_SUPPLIER_COUNT; ++j) {
+			available_charge[j][i].current =
 				CHARGE_CURRENT_UNINITIALIZED;
-			available_charge[i][j].voltage =
+			available_charge[j][i].voltage =
 				CHARGE_VOLTAGE_UNINITIALIZED;
 		}
+		charge_ceil[i] = CHARGE_CEIL_NONE;
+	}
 }
 DECLARE_HOOK(HOOK_INIT, charge_manager_init, HOOK_PRIO_DEFAULT-1);
 
@@ -75,6 +98,8 @@ static void charge_manager_refresh(void)
 	int new_port = CHARGE_PORT_NONE;
 	int new_charge_current, new_charge_voltage, i, j;
 
+	mutex_lock(&charge_manager_mutex);
+
 	/*
 	 * Charge supplier selection logic:
 	 * 1. Prefer higher priority supply.
@@ -103,11 +128,16 @@ static void charge_manager_refresh(void)
 	else {
 		new_charge_current =
 			available_charge[new_supplier][new_port].current;
+		/* Enforce port charge ceiling. */
+		if (charge_ceil[new_port] != CHARGE_CEIL_NONE &&
+		    charge_ceil[new_port] < new_charge_current)
+			new_charge_current = charge_ceil[new_port];
+
 		new_charge_voltage =
 			available_charge[new_supplier][new_port].voltage;
 	}
 
-	/* Change the charge limit + charge port if changed. */
+	/* Change the charge limit + charge port if modified. */
 	if (new_port != charge_port || new_charge_current != charge_current) {
 		CPRINTS("New charge limit: supplier %d port %d current %d "
 			"voltage %d", new_supplier, new_port,
@@ -119,34 +149,35 @@ static void charge_manager_refresh(void)
 		charge_supplier = new_supplier;
 		charge_port = new_port;
 	}
+
+	processed_id = requested_id;
+	mutex_unlock(&charge_manager_mutex);
 }
 DECLARE_DEFERRED(charge_manager_refresh);
 
 /**
  * Update available charge for a given port / supplier.
+ * Returns request ID.
  *
  * @param supplier		Charge supplier to update.
- * @param charge_port		Charge port to update.
+ * @param port			Charge port to update.
  * @param charge		Charge port current / voltage.
  */
-void charge_manager_update(int supplier,
-			   int charge_port,
+int charge_manager_update(int supplier,
+			   int port,
 			   struct charge_port_info *charge)
 {
-	if (supplier < 0 || supplier >= CHARGE_SUPPLIER_COUNT) {
-		CPRINTS("Invalid charge supplier: %d", supplier);
-		return;
-	}
+	int ret;
+	ASSERT(supplier >= 0 && supplier < CHARGE_SUPPLIER_COUNT);
+	ASSERT(port >= 0 && port < PD_PORT_COUNT);
+	mutex_lock(&charge_manager_mutex);
 
 	/* Update charge table if needed. */
-	if (available_charge[supplier][charge_port].current !=
-		charge->current ||
-		available_charge[supplier][charge_port].voltage !=
-		charge->voltage) {
-		available_charge[supplier][charge_port].current =
-			charge->current;
-		available_charge[supplier][charge_port].voltage =
-			charge->voltage;
+	if (available_charge[supplier][port].current != charge->current ||
+		available_charge[supplier][port].voltage != charge->voltage) {
+		available_charge[supplier][port].current = charge->current;
+		available_charge[supplier][port].voltage = charge->voltage;
+		requested_id++;
 
 		/*
 		 * Don't call charge_manager_refresh unless all ports +
@@ -157,6 +188,45 @@ void charge_manager_update(int supplier,
 		if (charge_manager_is_seeded())
 			hook_call_deferred(charge_manager_refresh, 0);
 	}
+	ret = requested_id;
+	mutex_unlock(&charge_manager_mutex);
+	return ret;
+}
+
+/**
+ * Update charge ceiling for a given port.
+ * Returns request ID.
+ *
+ * @param port			Charge port to update.
+ * @param ceil			Charge ceiling (mA).
+ */
+int charge_manager_set_ceil(int port, int ceil)
+{
+	int ret;
+	ASSERT(port >= 0 && port < PD_PORT_COUNT);
+	mutex_lock(&charge_manager_mutex);
+
+	if (charge_ceil[port] != ceil) {
+		charge_ceil[port] = ceil;
+		if (port == charge_port) {
+			requested_id++;
+			if (charge_manager_is_seeded())
+				hook_call_deferred(charge_manager_refresh, 0);
+		}
+	}
+	ret = requested_id;
+	mutex_unlock(&charge_manager_mutex);
+	return ret;
+}
+
+int charge_manager_get_processed_id(void)
+{
+	return processed_id;
+}
+
+int charge_manager_get_active_charge_port(void)
+{
+	return charge_port;
 }
 
 static int hc_pd_power_info(struct host_cmd_handler_args *args)
