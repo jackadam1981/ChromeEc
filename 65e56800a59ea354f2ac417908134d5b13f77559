@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "956b82dc_65056d7f",
+        "filename": "board/dingdong/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-28T20:37:32Z",
+      "side": 1,
+      "message": "nit, use multi-line comment style:\n\n/*\n * multi-line comment\n */\n\nalso should be \"it\u0027s\"",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 8
+      },
+      "revId": "65e56800a59ea354f2ac417908134d5b13f77559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "956b82dc_c51319ca",
+        "filename": "board/dingdong/gpio.inc",
+        "patchSetId": 18
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-28T20:37:32Z",
+      "side": 1,
+      "message": "nit: add back in space to align A column",
+      "range": {
+        "startLine": 7,
+        "startChar": 23,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "65e56800a59ea354f2ac417908134d5b13f77559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5594aafe_b5808b5a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1777,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-28T20:37:32Z",
+      "side": 1,
+      "message": "is this too long? seems like it should be done much faster than that",
+      "range": {
+        "startLine": 1777,
+        "startChar": 18,
+        "endLine": 1777,
+        "endChar": 21
+      },
+      "revId": "65e56800a59ea354f2ac417908134d5b13f77559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
