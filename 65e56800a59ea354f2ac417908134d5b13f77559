@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "154a3299_feb5fdf3",
+        "filename": "board/dingdong/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-28T20:37:38Z",
+      "side": 1,
+      "message": "nit: you don\u0027t need that",
+      "revId": "65e56800a59ea354f2ac417908134d5b13f77559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "154a3299_deb2c109",
+        "filename": "board/dingdong/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-28T20:37:38Z",
+      "side": 1,
+      "message": "nit: or canceled action",
+      "revId": "65e56800a59ea354f2ac417908134d5b13f77559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "956b82dc_65056d7f",
         "filename": "board/dingdong/board.c",
         "patchSetId": 18
@@ -19,6 +53,40 @@
         "endLine": 76,
         "endChar": 8
       },
+      "revId": "65e56800a59ea354f2ac417908134d5b13f77559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "154a3299_3e064510",
+        "filename": "board/dingdong/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-28T20:37:38Z",
+      "side": 1,
+      "message": "is hpd_prev_level right in that case ?",
+      "revId": "65e56800a59ea354f2ac417908134d5b13f77559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d55dfa60_3c5addcc",
+        "filename": "board/dingdong/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-28T20:37:38Z",
+      "side": 1,
+      "message": "nit: maybe worth commenting that we are \"canceling\" the deferred action here.",
       "revId": "65e56800a59ea354f2ac417908134d5b13f77559",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
