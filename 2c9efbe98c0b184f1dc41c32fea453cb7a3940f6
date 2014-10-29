@@ -34,6 +34,24 @@
       "revId": "2c9efbe98c0b184f1dc41c32fea453cb7a3940f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "154a3299_55920cbe",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-10-29T01:22:10Z",
+      "side": 1,
+      "message": "For some reason, I thought raw_xyz is stored in the shared memory for the AP.  My mistake.\n\nYes, you are right. After I changed the rotate() take the same vector as input and output, the raw_xyz is not required any more.",
+      "parentUuid": "5594aafe_6b79c0b7",
+      "revId": "2c9efbe98c0b184f1dc41c32fea453cb7a3940f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
