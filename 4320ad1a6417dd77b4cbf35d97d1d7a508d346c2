@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "35665637_17bd36df",
+        "filename": "board/dingdong/board.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-29T20:26:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5594aafe_cbd9f337",
+      "revId": "4320ad1a6417dd77b4cbf35d97d1d7a508d346c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5bfba8a_fe3fc5a9",
         "filename": "chip/stm32/usb.c",
         "patchSetId": 21
@@ -30,6 +48,24 @@
       "writtenOn": "2014-10-29T16:27:41Z",
       "side": 1,
       "message": "we should conditionally call connect here\n#ifndef CONFIG_USB_INHIBIT\nusb_connect()\n#endif",
+      "revId": "4320ad1a6417dd77b4cbf35d97d1d7a508d346c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "756c4e15_19c3af17",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-29T20:26:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5bfba8a_fe3fc5a9",
       "revId": "4320ad1a6417dd77b4cbf35d97d1d7a508d346c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "756c4e15_59cd273e",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-29T20:26:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5594aafe_0b3a7bb9",
+      "revId": "4320ad1a6417dd77b4cbf35d97d1d7a508d346c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "956b82dc_5d3fd9de",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 21
@@ -64,6 +118,24 @@
       "writtenOn": "2014-10-29T16:27:41Z",
       "side": 1,
       "message": "where the 1 second delay comes from ?",
+      "revId": "4320ad1a6417dd77b4cbf35d97d1d7a508d346c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "756c4e15_39a82b1d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 1469,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-29T20:26:54Z",
+      "side": 1,
+      "message": "Done.  Added define",
+      "parentUuid": "956b82dc_5d3fd9de",
       "revId": "4320ad1a6417dd77b4cbf35d97d1d7a508d346c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
