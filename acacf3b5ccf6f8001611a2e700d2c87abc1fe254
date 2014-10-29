@@ -34,6 +34,24 @@
       "revId": "acacf3b5ccf6f8001611a2e700d2c87abc1fe254",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5bfba8a_833432d5",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-10-29T00:05:21Z",
+      "side": 1,
+      "message": "Thanks for the explanation--restoring odr in motion_sense_resume.",
+      "parentUuid": "b552464f_7bf73ba0",
+      "revId": "acacf3b5ccf6f8001611a2e700d2c87abc1fe254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
