@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "956b82dc_f8959b16",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-29T18:10:13Z",
+      "side": 1,
+      "message": "yes, you guys are right, this needs to be port specific.",
+      "parentUuid": "756c4e15_d9b2d709",
+      "range": {
+        "startLine": 455,
+        "startChar": 20,
+        "endLine": 455,
+        "endChar": 22
+      },
+      "revId": "c954055994072551069efaac008f7ca5fa805c62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5bfba8a_de63e1b5",
         "filename": "chip/stm32/usb_pd_phy.c",
         "patchSetId": 1
@@ -104,6 +128,24 @@
       "writtenOn": "2014-10-29T16:57:16Z",
       "side": 1,
       "message": "this has a large side effect since we try to process retries as fast as we can at this point.\nI would leave it commented.",
+      "revId": "c954055994072551069efaac008f7ca5fa805c62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "956b82dc_7d05fd7e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-29T18:10:13Z",
+      "side": 1,
+      "message": "yes, but since we are just dropping the packet, i think it\u0027s important for us to realize it. maybe I can set a global flag to tell PD task to print this information later on.",
+      "parentUuid": "d5bfba8a_5e5931fe",
       "revId": "c954055994072551069efaac008f7ca5fa805c62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
