@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5bfba8a_95a7879e",
+        "filename": "board/dingdong/board.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-29T21:06:48Z",
+      "side": 1,
+      "message": "nit: given we are canceling lvl_deferred in all cases excepted when we set it to a new value :\nyou can move : hook_call_deferred(hpd_lvl_deferred, -1); at line 74 and do it once",
+      "revId": "86ae160a898465ed59f49e7865058d6203930ae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
