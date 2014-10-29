@@ -19,6 +19,8 @@
 #define LED_TOTAL_2SECS_TICKS 8
 #define LED_ON_1SEC_TICKS 4
 #define LED_ON_2SECS_TICKS 8
+#define SHUTDOWN_FACTOR 4.0F
+#define FULL_FACTOR 97.0F
 
 enum led_color {
 	LED_OFF = 0,
@@ -145,24 +147,40 @@ static void yuna_led_set_battery(void)
 {
 	static int battery_ticks;
 	uint32_t chflags = charge_get_flags();
+	int remaining_capacity;
+	int full_charge_capacity;
+	float percentage;
+	int disp_percentage;
 
 	battery_ticks++;
 
+	remaining_capacity = *(int *)host_get_memmap(EC_MEMMAP_BATT_CAP);
+	full_charge_capacity = *(int *)host_get_memmap(EC_MEMMAP_BATT_LFCC);
+	percentage = !full_charge_capacity ? 0 :
+		100.0F * ((float)remaining_capacity / full_charge_capacity);
+	disp_percentage = percentage < SHUTDOWN_FACTOR ? 0 :
+		(int)(100.0F * (percentage - SHUTDOWN_FACTOR) /
+		(FULL_FACTOR - SHUTDOWN_FACTOR) + 0.45F);
+
 	switch (charge_get_state()) {
 	case PWR_STATE_CHARGE:
-		yuna_led_set_color_battery(LED_AMBER);
+		/* Make the percentage same to UI shown */
+		yuna_led_set_color_battery(disp_percentage <
+			BATTERY_LEVEL_NEAR_FULL ? LED_AMBER : LED_BLUE);
 		break;
 	case PWR_STATE_CHARGE_NEAR_FULL:
 		yuna_led_set_color_battery(LED_BLUE);
 		break;
 	case PWR_STATE_DISCHARGE:
 		/* Less than 3%, blink one second every two seconds */
-		if (charge_get_percent() < BATTERY_LEVEL_SHUTDOWN)
+		if (!chipset_in_state(CHIPSET_STATE_ANY_OFF) &&
+		    disp_percentage <= BATTERY_LEVEL_SHUTDOWN)
 			yuna_led_set_color_battery(
 				(battery_ticks % LED_TOTAL_2SECS_TICKS <
 				 LED_ON_1SEC_TICKS) ? LED_AMBER : LED_OFF);
 		/* Less than 10%, blink one second every four seconds */
-		else if (charge_get_percent() < BATTERY_LEVEL_LOW)
+		else if (!chipset_in_state(CHIPSET_STATE_ANY_OFF) &&
+			 disp_percentage <= BATTERY_LEVEL_LOW)
 			yuna_led_set_color_battery(
 				(battery_ticks % LED_TOTAL_4SECS_TICKS <
 				 LED_ON_1SEC_TICKS) ? LED_AMBER : LED_OFF);
