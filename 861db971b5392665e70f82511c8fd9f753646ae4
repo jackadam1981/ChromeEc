@@ -22,6 +22,30 @@
       "revId": "861db971b5392665e70f82511c8fd9f753646ae4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b507a651_d33906c6",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 1775,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-29T20:43:56Z",
+      "side": 1,
+      "message": "ignore previous ... swear gerrit was mixing diffs across patches ...",
+      "parentUuid": "950c6279_0f4ec5b5",
+      "range": {
+        "startLine": 1775,
+        "startChar": 0,
+        "endLine": 1775,
+        "endChar": 61
+      },
+      "revId": "861db971b5392665e70f82511c8fd9f753646ae4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
