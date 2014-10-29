@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "756c4e15_d9b2d709",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-29T16:49:24Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be port specific? Otherwise, two edges on port 0 + one edge on port 1 triggers Rx on port 1.",
+      "range": {
+        "startLine": 455,
+        "startChar": 20,
+        "endLine": 455,
+        "endChar": 22
+      },
+      "revId": "c954055994072551069efaac008f7ca5fa805c62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
