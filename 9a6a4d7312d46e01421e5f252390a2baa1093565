@@ -46,6 +46,30 @@
       "revId": "9a6a4d7312d46e01421e5f252390a2baa1093565",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "154a3299_f08b6625",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 1769,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-29T02:00:06Z",
+      "side": 1,
+      "message": "if you wait here, all you\u0027re doing is preventing the hooks task from sending another VDM, but another task could still send a VDM. we may need to address this at some point by queuing things up in pd_send_vdm(), but that\u0027s a seperate CL.\n\nif you are worried about another hpd event that calls pd_send_hpd() from the hooks task before the previous vdm finished, then the timeout here should be 3*2.7ms (3 tries, 2.7ms timeout) to handle longest possible time.",
+      "parentUuid": "95570241_57420cd9",
+      "range": {
+        "startLine": 1768,
+        "startChar": 1,
+        "endLine": 1769,
+        "endChar": 26
+      },
+      "revId": "9a6a4d7312d46e01421e5f252390a2baa1093565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
