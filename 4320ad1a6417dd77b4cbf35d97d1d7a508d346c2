@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5594aafe_cbd9f337",
+        "filename": "board/dingdong/board.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-29T16:27:41Z",
+      "side": 1,
+      "message": "please use CONFIG_USB_INHIBIT rather than connecting then disconnecting in a *random* order",
+      "revId": "4320ad1a6417dd77b4cbf35d97d1d7a508d346c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5bfba8a_fe3fc5a9",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-29T16:27:41Z",
+      "side": 1,
+      "message": "we should conditionally call connect here\n#ifndef CONFIG_USB_INHIBIT\nusb_connect()\n#endif",
+      "revId": "4320ad1a6417dd77b4cbf35d97d1d7a508d346c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5594aafe_0b3a7bb9",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-29T16:27:41Z",
+      "side": 1,
+      "message": "we should always do the init, just no set the pull-up",
+      "revId": "4320ad1a6417dd77b4cbf35d97d1d7a508d346c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "956b82dc_5d3fd9de",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 1469,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-29T16:27:41Z",
+      "side": 1,
+      "message": "where the 1 second delay comes from ?",
+      "revId": "4320ad1a6417dd77b4cbf35d97d1d7a508d346c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
