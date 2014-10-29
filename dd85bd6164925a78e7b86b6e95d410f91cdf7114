@@ -1,0 +1,180 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "956b82dc_3eb3fbe1",
+        "filename": "board/strago/Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-29T21:18:52Z",
+      "side": 1,
+      "message": "This file should be a symlink to ../../Makefile",
+      "revId": "dd85bd6164925a78e7b86b6e95d410f91cdf7114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5594aafe_7410c042",
+        "filename": "board/strago/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-29T21:18:52Z",
+      "side": 1,
+      "message": "Sort includes in alphabetic order.",
+      "revId": "dd85bd6164925a78e7b86b6e95d410f91cdf7114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "956b82dc_9e700782",
+        "filename": "board/strago/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-29T21:18:52Z",
+      "side": 1,
+      "message": "This should move to the CL where this is used.",
+      "revId": "dd85bd6164925a78e7b86b6e95d410f91cdf7114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5594aafe_f48e1038",
+        "filename": "board/strago/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-29T21:18:52Z",
+      "side": 1,
+      "message": "Same for this variable. Also, if this variable isn\u0027t used by \u0027make\u0027, it should go to board.h as a define flag.",
+      "revId": "dd85bd6164925a78e7b86b6e95d410f91cdf7114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "956b82dc_9ebec78b",
+        "filename": "board/strago/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-29T21:18:52Z",
+      "side": 1,
+      "message": "Align columns.",
+      "revId": "dd85bd6164925a78e7b86b6e95d410f91cdf7114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5594aafe_3443183d",
+        "filename": "board/strago/power_sequence.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-29T21:18:52Z",
+      "side": 1,
+      "message": "2014",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "dd85bd6164925a78e7b86b6e95d410f91cdf7114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5bfba8a_f5c7e34d",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-29T21:18:52Z",
+      "side": 1,
+      "message": "Is it necessary to delay for this long? What\u0027s the minimum delay required here?",
+      "revId": "dd85bd6164925a78e7b86b6e95d410f91cdf7114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "956b82dc_1e43973c",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-29T21:18:52Z",
+      "side": 1,
+      "message": "Instead of sleeping here, can we wait until lpc_keyboard_has_char() \u003d\u003d 0 (for a maximum of 1ms)?",
+      "revId": "dd85bd6164925a78e7b86b6e95d410f91cdf7114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5bfba8a_b5eacbae",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-29T21:18:52Z",
+      "side": 1,
+      "message": "Just merge this line with line 227:\n\n  MEC1322_INT_ENABLE(15) |\u003d (1 \u003c\u003c 13) | (1 \u003c\u003c 14);\n\nand remove line 231.",
+      "revId": "dd85bd6164925a78e7b86b6e95d410f91cdf7114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "956b82dc_5edeef1f",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-29T21:18:52Z",
+      "side": 1,
+      "message": "Please comment why we two need wait_irq_sent (like in chip/lm4/lpc.c)",
+      "revId": "dd85bd6164925a78e7b86b6e95d410f91cdf7114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
