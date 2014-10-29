@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5bfba8a_de38c1f5",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-29T15:57:45Z",
+      "side": 1,
+      "message": "2014",
+      "revId": "4c1e8066d2eb8849308e96e8a7246f546f28579a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5bfba8a_5e537131",
+        "filename": "chip/g/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-29T15:57:45Z",
+      "side": 1,
+      "message": "Our usual style is more something like :\n\n#define G_PINMUX_BASE             0x40060000\n\n#define G_PINMUX_DIOA0_SEL    REG32(G_PINMUX_BASE + 0x28)\n\nin order to support variants with peripherals moved around",
+      "revId": "4c1e8066d2eb8849308e96e8a7246f546f28579a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5bfba8a_1e7419c2",
+        "filename": "chip/g/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-29T15:57:45Z",
+      "side": 1,
+      "message": "this \"official\" TODO style for this codebase includes a pointer to a bug number.",
+      "revId": "4c1e8066d2eb8849308e96e8a7246f546f28579a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "956b82dc_52dee894",
+        "filename": "chip/g/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-29T15:57:45Z",
+      "side": 1,
+      "message": "_TXINT should just call process_output (and irq ACK)\n_RXINT should just call process_input (and irq ACK)",
+      "revId": "4c1e8066d2eb8849308e96e8a7246f546f28579a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5bfba8a_9e87a935",
+        "filename": "chip/g/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-29T15:57:45Z",
+      "side": 1,
+      "message": "this should live in clock.c",
+      "revId": "4c1e8066d2eb8849308e96e8a7246f546f28579a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "956b82dc_52a3480e",
+        "filename": "chip/g/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-29T15:57:45Z",
+      "side": 1,
+      "message": "no that\u0027s hardcoded according to the doc",
+      "revId": "4c1e8066d2eb8849308e96e8a7246f546f28579a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
