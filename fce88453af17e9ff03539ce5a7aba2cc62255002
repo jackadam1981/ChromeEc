@@ -16,6 +16,24 @@
       "revId": "fce88453af17e9ff03539ce5a7aba2cc62255002",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75f1aea1_6e7aef5f",
+        "filename": "board/dingdong/board.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-29T20:23:08Z",
+      "side": 1,
+      "message": "Done.\n\nLight bulb around canceling deferred tasks in-flight went off and I think below simplification is better than using the -1 level.\n\nPrevious implementation also had bug in that if glitch was \u003e IRQ but less than level it would produce a redundant hpd level.",
+      "parentUuid": "5594aafe_ebd14f0b",
+      "revId": "fce88453af17e9ff03539ce5a7aba2cc62255002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
