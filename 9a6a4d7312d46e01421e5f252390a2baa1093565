@@ -22,6 +22,30 @@
       "revId": "9a6a4d7312d46e01421e5f252390a2baa1093565",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "95570241_57420cd9",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 1769,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-29T01:43:20Z",
+      "side": 1,
+      "message": "I\u0027m waiting here until the vdm state is NOT busy ... meaning its been transmitted and either ack\u0027d or timed out.  If I don\u0027t wait for that other vdm traffic could happen.",
+      "parentUuid": "d5bfba8a_c36a2a87",
+      "range": {
+        "startLine": 1768,
+        "startChar": 1,
+        "endLine": 1769,
+        "endChar": 26
+      },
+      "revId": "9a6a4d7312d46e01421e5f252390a2baa1093565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
