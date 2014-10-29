@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5594aafe_8bc76b70",
+        "filename": "chip/g/config_std_flash.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-29T16:13:23Z",
+      "side": 1,
+      "message": "what is that file used for ?",
+      "revId": "8558e598404cab380b2aa692ddf37d1916a31bf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5bfba8a_1e9bb97f",
+        "filename": "chip/g/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-29T16:13:23Z",
+      "side": 1,
+      "message": "do we need this dirty trick since the TX interrupt is triggered on half FIFO threshold ?\nin other words, in the interrupt triggered on crossing the level  or being below the level ?",
+      "revId": "8558e598404cab380b2aa692ddf37d1916a31bf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5bfba8a_fea8259a",
+        "filename": "chip/g/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-29T16:13:23Z",
+      "side": 1,
+      "message": "should we actually wait for TX idle (the last data bit is output of the shift register) rather than FIFO empty ?",
+      "revId": "8558e598404cab380b2aa692ddf37d1916a31bf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5bfba8a_3ec79d72",
+        "filename": "chip/g/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-29T16:13:23Z",
+      "side": 1,
+      "message": "UART_FIFO register has a Rx FIFO reset bit",
+      "revId": "8558e598404cab380b2aa692ddf37d1916a31bf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
