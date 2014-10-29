@@ -16,6 +16,24 @@
       "revId": "2c9efbe98c0b184f1dc41c32fea453cb7a3940f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5594aafe_6b79c0b7",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-29T00:32:37Z",
+      "side": 1,
+      "message": "not sure what you mean. this function does return raw x,y,z.\n\nthe rotated version is calculated below on line 274, and the rotated version is stored in shared memory for the AP.",
+      "parentUuid": "154a3299_e133a234",
+      "revId": "2c9efbe98c0b184f1dc41c32fea453cb7a3940f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
