@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "956b82dc_be75cb71",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-29T21:14:38Z",
+      "side": 1,
+      "message": "it\u0027s not very nice to put the #ifdef both here and below in usb_connect()\nwhy soft failing here if we hard-fail below.\njust remove that one ?",
+      "revId": "861db971b5392665e70f82511c8fd9f753646ae4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "956b82dc_3e9c5b42",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-29T21:14:38Z",
+      "side": 1,
+      "message": "how is that stuff compiling on ryu_p2 ?\nI see CONFIG_USB is not set there",
+      "revId": "861db971b5392665e70f82511c8fd9f753646ae4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "956b82dc_fe434306",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-29T21:14:38Z",
+      "side": 1,
+      "message": "why the real implementation is not here rather than in the board file ?",
+      "revId": "861db971b5392665e70f82511c8fd9f753646ae4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "950c6279_0f4ec5b5",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 22
