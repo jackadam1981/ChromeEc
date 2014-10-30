@@ -83,6 +83,24 @@
     },
     {
       "key": {
+        "uuid": "15f87289_341cb68f",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-30T20:52:06Z",
+      "side": 1,
+      "message": "I\u0027d prefer this deleted here and added when it\u0027s actually used. It\u0027s good to keep every commit clean and concise.",
+      "parentUuid": "15bf92c3_161fdacd",
+      "revId": "0be80ce96799257ecf138c458c5316d4abfda564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55c58a5b_75a008ac",
         "filename": "Makefile.rules",
         "patchSetId": 1
