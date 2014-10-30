@@ -245,9 +245,21 @@ void motion_sense_task(void)
 
 	set_present(lpc_status);
 
-	/* Initialize sampling interval. */
-	accel_interval_ms = chipset_in_state(CHIPSET_STATE_ON) ?
-			accel_interval_ap_on_ms : SUSPEND_SAMPLING_INTERVAL;
+	if (chipset_in_state(CHIPSET_STATE_ON)) {
+		/* Update the sensor current active state to S0. */
+		for (i = 0; i < motion_sensor_count; ++i) {
+			sensor = &motion_sensors[i];
+			sensor->active = SENSOR_ACTIVE_S0;
+		}
+
+		accel_interval_ms = accel_interval_ap_on_ms;
+	} else {
+		/* do-nothing on sensor->active:
+		 *  - default to SENSOR_ACTIVE_S5
+		 *  - hook resume function updated it to S0.
+		 */
+		accel_interval_ms = SUSPEND_SAMPLING_INTERVAL;
+	}
 
 	while (1) {
 		ts0 = get_time();
@@ -681,6 +693,7 @@ static int command_accel_read_xyz(int argc, char **argv)
 	sensor = &motion_sensors[id];
 
 	while ((n == -1) || (n-- > 0)) {
+		x = y = z = 0;
 		sensor->drv->read(sensor, &x, &y, &z);
 		ccprintf("Current raw data %d: %-5d %-5d %-5d\n", id, x, y, z);
 		ccprintf("Last calib. data %d: %-5d %-5d %-5d\n", id,
