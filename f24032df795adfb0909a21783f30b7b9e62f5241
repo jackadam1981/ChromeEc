@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5cbde63_e509d0c8",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-30T03:09:26Z",
+      "side": 1,
+      "message": "For STM32F3, I\u0027m planning to add a config flag CONFIG_USB_DP_PULLUP_GPIO, which, if defined, will be used to enable/disable the external pull-up on D+. The external pull-up doesn\u0027t exist on ryu p2 (I tested USB on a reworked ryu p2), but will be there in the next rev.",
+      "revId": "f24032df795adfb0909a21783f30b7b9e62f5241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
