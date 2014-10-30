@@ -249,6 +249,24 @@
     },
     {
       "key": {
+        "uuid": "d5d09a11_d0980a09",
+        "filename": "board/strago/power_sequence.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2014-10-30T18:08:30Z",
+      "side": 1,
+      "message": "We can. We just followed how samus was set up.",
+      "parentUuid": "35fbb687_32068810",
+      "revId": "dd85bd6164925a78e7b86b6e95d410f91cdf7114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5bfba8a_f5c7e34d",
         "filename": "chip/mec1322/lpc.c",
         "patchSetId": 1
