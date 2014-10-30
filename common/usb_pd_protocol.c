@@ -364,8 +364,8 @@ static inline int encode_word(int port, int off, uint32_t val32)
 }
 
 /* prepare a 4b/5b-encoded PD message to send */
-static int prepare_message(int port, uint16_t header, uint8_t cnt,
-			   const uint32_t *data)
+int prepare_message(int port, uint16_t header, uint8_t cnt,
+		   const uint32_t *data)
 {
 	int off, i;
 	/* 64-bit preamble */

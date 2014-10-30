@@ -872,6 +872,19 @@ int pd_write_sym(int port, int bit_off, uint32_t val10);
 int pd_write_last_edge(int port, int bit_off);
 
 /**
+ * Ensure that we have an edge after EOP and we end up at level 0,
+ * also fill the last byte.
+ *
+ * @param port USB-C port number
+ * @param header PD packet header
+ * @param cnt number of payload words
+ * @param data payload content
+ * @return length of the message in bits.
+ */
+int prepare_message(int port, uint16_t header, uint8_t cnt,
+		    const uint32_t *data);
+
+/**
  * Dump the current PD packet on the console for debug.
  *
  * @param port USB-C port number
