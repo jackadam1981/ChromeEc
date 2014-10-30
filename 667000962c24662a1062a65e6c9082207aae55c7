@@ -16,6 +16,24 @@
       "revId": "667000962c24662a1062a65e6c9082207aae55c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "952542f1_2ded994e",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-30T00:31:18Z",
+      "side": 1,
+      "message": "It should be checked by the EC to know whether or not to pass up a host event to the AP, it\u0027s in common/host_command_pd.c",
+      "parentUuid": "75ae0e67_ba85d965",
+      "revId": "667000962c24662a1062a65e6c9082207aae55c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
