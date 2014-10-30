@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "f5fd9e73_55f69ef3",
+        "filename": "board/strago/Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-30T00:32:51Z",
+      "side": 1,
+      "message": "should be a symbolic link to the root directory Makefile",
+      "revId": "dd85bd6164925a78e7b86b6e95d410f91cdf7114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5594aafe_7410c042",
         "filename": "board/strago/board.c",
         "patchSetId": 1
@@ -30,6 +47,23 @@
       "writtenOn": "2014-10-29T21:18:52Z",
       "side": 1,
       "message": "Sort includes in alphabetic order.",
+      "revId": "dd85bd6164925a78e7b86b6e95d410f91cdf7114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "756c4e15_fca50142",
+        "filename": "board/strago/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-30T00:32:51Z",
+      "side": 1,
+      "message": "it seems that\u0027s always inverted on that board hardware,\nso remove the other case",
       "revId": "dd85bd6164925a78e7b86b6e95d410f91cdf7114",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -110,6 +144,57 @@
     },
     {
       "key": {
+        "uuid": "756c4e15_5c9075d9",
+        "filename": "board/strago/power_sequence.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-30T00:32:51Z",
+      "side": 1,
+      "message": "2014",
+      "revId": "dd85bd6164925a78e7b86b6e95d410f91cdf7114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "756c4e15_bc09c99b",
+        "filename": "board/strago/power_sequence.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-30T00:32:51Z",
+      "side": 1,
+      "message": "is that really baytrail ?",
+      "revId": "dd85bd6164925a78e7b86b6e95d410f91cdf7114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "756c4e15_bc326963",
+        "filename": "board/strago/power_sequence.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-30T00:32:51Z",
+      "side": 1,
+      "message": "is there a reason for duplicated that code in the board directory ?",
+      "revId": "dd85bd6164925a78e7b86b6e95d410f91cdf7114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5bfba8a_f5c7e34d",
         "filename": "chip/mec1322/lpc.c",
         "patchSetId": 1
@@ -121,6 +206,23 @@
       "writtenOn": "2014-10-29T21:18:52Z",
       "side": 1,
       "message": "Is it necessary to delay for this long? What\u0027s the minimum delay required here?",
+      "revId": "dd85bd6164925a78e7b86b6e95d410f91cdf7114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "756c4e15_7cce11ee",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-30T00:32:51Z",
+      "side": 1,
+      "message": "that\u0027s a huge delay, something is broken",
       "revId": "dd85bd6164925a78e7b86b6e95d410f91cdf7114",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
