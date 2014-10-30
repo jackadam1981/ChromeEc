@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d5d09a11_301cd68f",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-10-30T19:46:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5bfba8a_de38c1f5",
+      "revId": "4c1e8066d2eb8849308e96e8a7246f546f28579a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5bfba8a_5e537131",
         "filename": "chip/g/registers.h",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-10-29T15:57:45Z",
       "side": 1,
       "message": "Our usual style is more something like :\n\n#define G_PINMUX_BASE             0x40060000\n\n#define G_PINMUX_DIOA0_SEL    REG32(G_PINMUX_BASE + 0x28)\n\nin order to support variants with peripherals moved around",
+      "revId": "4c1e8066d2eb8849308e96e8a7246f546f28579a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5d09a11_504a3a82",
+        "filename": "chip/g/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-10-30T19:46:31Z",
+      "side": 1,
+      "message": "The LM4 does it this way, but I don\u0027t have a preference.\n\nDone.",
+      "parentUuid": "d5bfba8a_5e537131",
       "revId": "4c1e8066d2eb8849308e96e8a7246f546f28579a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "d5d09a11_90b7627e",
+        "filename": "chip/g/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-10-30T19:46:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5bfba8a_1e7419c2",
+      "revId": "4c1e8066d2eb8849308e96e8a7246f546f28579a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "956b82dc_52dee894",
         "filename": "chip/g/uart.c",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2014-10-29T15:57:45Z",
       "side": 1,
       "message": "_TXINT should just call process_output (and irq ACK)\n_RXINT should just call process_input (and irq ACK)",
+      "revId": "4c1e8066d2eb8849308e96e8a7246f546f28579a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5d09a11_b032a663",
+        "filename": "chip/g/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-10-30T19:46:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "956b82dc_52dee894",
       "revId": "4c1e8066d2eb8849308e96e8a7246f546f28579a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "35c2d657_548b0cac",
+        "filename": "chip/g/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-10-30T19:46:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5bfba8a_9e87a935",
+      "revId": "4c1e8066d2eb8849308e96e8a7246f546f28579a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "956b82dc_52a3480e",
         "filename": "chip/g/uart.c",
         "patchSetId": 1
@@ -98,6 +188,24 @@
       "writtenOn": "2014-10-29T15:57:45Z",
       "side": 1,
       "message": "no that\u0027s hardcoded according to the doc",
+      "revId": "4c1e8066d2eb8849308e96e8a7246f546f28579a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b5d5e601_b428d822",
+        "filename": "chip/g/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-10-30T19:46:31Z",
+      "side": 1,
+      "message": "I couldn\u0027t find it. Okay.",
+      "parentUuid": "956b82dc_52a3480e",
       "revId": "4c1e8066d2eb8849308e96e8a7246f546f28579a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
