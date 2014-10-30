@@ -16,6 +16,40 @@
       "revId": "f24032df795adfb0909a21783f30b7b9e62f5241",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f5267ef7_f3d1a20b",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-30T15:52:44Z",
+      "side": 1,
+      "message": "style wise, do we want to move the #ifdef inside the function ?",
+      "revId": "f24032df795adfb0909a21783f30b7b9e62f5241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15f87289_8e53dbab",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-30T15:52:44Z",
+      "side": 1,
+      "message": "worth adding a short description :\nenable the USB billboard descriptor",
+      "revId": "f24032df795adfb0909a21783f30b7b9e62f5241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
