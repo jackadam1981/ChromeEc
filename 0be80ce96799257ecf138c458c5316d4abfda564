@@ -118,6 +118,24 @@
     },
     {
       "key": {
+        "uuid": "15bf92c3_968e8a89",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2014-10-30T21:31:14Z",
+      "side": 1,
+      "message": "\"all is already defined\"\nMake has always allowed additional prerequisites to be added to a target. If it didn\u0027t then all the various automatic and manual dependency management scripts wouldn\u0027t work.\n  \n\n\"make spi_image a new phony target and have a 5 line ifeq-else-endif to make it depend on something\"\n\nOne could make such a change. I think it goes against the spirit of the existing makefile structure. The typical use of \"ifeq\" in a \"Dancing Makefiles\" setup is to set up a series of variables. Then the variables are used elsewhere.\n\nI don\u0027t see any advantage in your proposal. The 5 line ifeq...endif could be written as the 1 line in Makefile\nspi_image: $(PACK_SPI_IMAGE)\nand in board/strago/build.mk\nPACK_SPI_IMAGE\u003d $(out)/$(PROJECT).spi.bin\n\n(obviously add spi_image to the .PHONY as well). This just adds another indirection. Perhaps change the name of spi-y to PROJECT_EXTRAS?",
+      "parentUuid": "55c58a5b_75a008ac",
+      "revId": "0be80ce96799257ecf138c458c5316d4abfda564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55c58a5b_f58b3825",
         "filename": "Makefile.rules",
         "patchSetId": 1
@@ -129,6 +147,24 @@
       "writtenOn": "2014-10-30T17:57:10Z",
       "side": 1,
       "message": "${out} -\u003e $(out) for consistency.",
+      "revId": "0be80ce96799257ecf138c458c5316d4abfda564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15bf92c3_d62c8206",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2014-10-30T21:31:14Z",
+      "side": 1,
+      "message": "Some of us use ${out} for straight forward variable references and $(text) for things which are designed to be used as function calls for consistency with posix shells. Do you feel strongly about this?",
+      "parentUuid": "55c58a5b_f58b3825",
       "revId": "0be80ce96799257ecf138c458c5316d4abfda564",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -152,6 +188,24 @@
         "endLine": 29,
         "endChar": 25
       },
+      "revId": "0be80ce96799257ecf138c458c5316d4abfda564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b5d5e601_3a0cb1dd",
+        "filename": "util/getversion.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2014-10-30T21:31:14Z",
+      "side": 1,
+      "message": "When building packages for chromeos, the package manager (portage) puts this into the environment.\n\nIn general this change gives a way to provide something more informative than \"no_version\" if you are not building inside a git repository.",
+      "parentUuid": "55c58a5b_f52fb8a5",
       "revId": "0be80ce96799257ecf138c458c5316d4abfda564",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
