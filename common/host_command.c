@@ -522,18 +522,12 @@ static void host_command_debug_request(struct host_cmd_handler_args *args)
 		if (args->command == hc_prev_cmd &&
 		    t - hc_prev_time < HCDEBUG_MAX_REPEAT_DELAY) {
 			hc_prev_time = t;
-			CPUTS("+");
 			return;
 		}
 		hc_prev_time = t;
 		hc_prev_cmd = args->command;
 	}
 
-	if (hcdebug >= HCDEBUG_PARAMS && args->params_size)
-		CPRINTS("HC 0x%02x.%d:%.*h", args->command,
-			args->version, args->params_size, args->params);
-	else
-		CPRINTS("HC 0x%02x", args->command);
 }
 
 enum ec_status host_command_process(struct host_cmd_handler_args *args)

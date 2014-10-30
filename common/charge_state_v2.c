@@ -270,26 +270,6 @@ static void dump_charge_state(void)
 
 static void show_charging_progress(void)
 {
-	int rv, minutes, to_full;
-
-	if (curr.state == ST_IDLE ||
-	    curr.state == ST_DISCHARGE) {
-		rv = battery_time_to_empty(&minutes);
-		to_full = 0;
-	} else {
-		rv = battery_time_to_full(&minutes);
-		to_full = 1;
-	}
-
-	if (rv)
-		CPRINTS("Battery %d%% / ??h:?? %s",
-			curr.batt.state_of_charge,
-			to_full ? "to full" : "to empty");
-	else
-		CPRINTS("Battery %d%% / %dh:%d %s",
-			curr.batt.state_of_charge,
-			minutes / 60, minutes % 60,
-			to_full ? "to full" : "to empty");
 
 	if (debugging) {
 		ccprintf("battery:\n");
