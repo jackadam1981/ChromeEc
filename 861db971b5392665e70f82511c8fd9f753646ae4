@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "952542f1_6dc2f162",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-30T01:47:29Z",
+      "side": 1,
+      "message": "Yeah ... it would most certainly break if USB was enabled there (STM32F3xx).  There\u0027s definitely no BCD (Battery Charge Detection) on that chip according to RM ... and I can\u0027t find anything in general mentioning how I\u0027d simulate a disconnect.\n\nWill let Vic know",
+      "parentUuid": "956b82dc_3e9c5b42",
+      "revId": "861db971b5392665e70f82511c8fd9f753646ae4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "956b82dc_fe434306",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 22
@@ -47,6 +65,24 @@
       "writtenOn": "2014-10-29T21:14:38Z",
       "side": 1,
       "message": "why the real implementation is not here rather than in the board file ?",
+      "revId": "861db971b5392665e70f82511c8fd9f753646ae4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "751a8eb5_a9ffb93b",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-10-30T01:47:29Z",
+      "side": 1,
+      "message": "Done.  Note as discussed removed the \u0027port\u0027 arg to pd_alt_mode as for the foreseeable future we will NOT have devices with multiple ports that can advertise Billboard ;)",
+      "parentUuid": "956b82dc_fe434306",
       "revId": "861db971b5392665e70f82511c8fd9f753646ae4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
