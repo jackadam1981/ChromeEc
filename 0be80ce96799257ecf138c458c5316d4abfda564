@@ -136,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "15f87289_f4afceee",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-30T21:45:29Z",
+      "side": 1,
+      "message": "I\u0027m sure it works, but defining \"all\" in 2 places makes it more difficult to figure out what happens when you do \"make all\".\n\nThe reason that I prefer not to put the output file name in board/strago/build.mk is that we\u0027ll have other board/chip that need SPI image, and the file name of the SPI image should be the same. Therefore, putting the file name there would just force us to copy-and-paste in the future. As for the 5-line ifeq, yes, you can do without it by:\n\n  SPI_IMAGE-$(PACK_SPI_IMAGE)\u003d$(out)/$(PROJECT).spi.bin\n  spi_image: $(SPI_IMAGE-y)",
+      "parentUuid": "15bf92c3_968e8a89",
+      "revId": "0be80ce96799257ecf138c458c5316d4abfda564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55c58a5b_f58b3825",
         "filename": "Makefile.rules",
         "patchSetId": 1
@@ -165,6 +183,24 @@
       "side": 1,
       "message": "Some of us use ${out} for straight forward variable references and $(text) for things which are designed to be used as function calls for consistency with posix shells. Do you feel strongly about this?",
       "parentUuid": "55c58a5b_f58b3825",
+      "revId": "0be80ce96799257ecf138c458c5316d4abfda564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15f87289_746abe0d",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-30T21:45:29Z",
+      "side": 1,
+      "message": "I don\u0027t feel strongly about $() vs ${}, but I do think consistency within a file is important.",
+      "parentUuid": "15bf92c3_d62c8206",
       "revId": "0be80ce96799257ecf138c458c5316d4abfda564",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
