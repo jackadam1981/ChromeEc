@@ -316,10 +316,7 @@ static int is_data_ready(const struct motion_sensor_t *s, int *ready)
 	return EC_SUCCESS;
 }
 
-static int read(const struct motion_sensor_t *s,
-			int *x,
-			int *y,
-			int *z)
+static int read(const struct motion_sensor_t *s, vector_3_t v)
 {
 	uint8_t data[6];
 	uint8_t xyz_reg;
@@ -335,9 +332,9 @@ static int read(const struct motion_sensor_t *s,
 	 * to get the latest updated sensor data quickly.
 	 */
 	if (!tmp) {
-		*x = s->xyz[0];
-		*y = s->xyz[1];
-		*z = s->xyz[2];
+		v[0] = s->xyz[0];
+		v[1] = s->xyz[1];
+		v[2] = s->xyz[2];
 		return EC_SUCCESS;
 	}
 
@@ -355,27 +352,27 @@ static int read(const struct motion_sensor_t *s,
 		return ret;
 	}
 
-	*x = ((int16_t)((data[1] << 8) | data[0]));
-	*y = ((int16_t)((data[3] << 8) | data[2]));
-	*z = ((int16_t)((data[5] << 8) | data[4]));
+	v[0] = ((int16_t)((data[1] << 8) | data[0]));
+	v[1] = ((int16_t)((data[3] << 8) | data[2]));
+	v[2] = ((int16_t)((data[5] << 8) | data[4]));
 
 	ret = get_range(s, &range);
 	if (ret)
 		return EC_ERROR_UNKNOWN;
 
-	*x *= range;
-	*y *= range;
-	*z *= range;
+	v[0] *= range;
+	v[1] *= range;
+	v[2] *= range;
 
 	/* normalize the accel scale: 1G = 1024 */
 	if (SENSOR_ACCELEROMETER == s->type) {
-		*x >>= 5;
-		*y >>= 5;
-		*z >>= 5;
+		v[0] >>= 5;
+		v[1] >>= 5;
+		v[2] >>= 5;
 	} else {
-		*x >>= 8;
-		*y >>= 8;
-		*z >>= 8;
+		v[0] >>= 8;
+		v[1] >>= 8;
+		v[2] >>= 8;
 	}
 
 	return EC_SUCCESS;

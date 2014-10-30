@@ -2335,7 +2335,8 @@ static int cmd_lightbar(int argc, char **argv)
 		sizeof(((struct ec_params_motion_sense *)0)->data) \
 		+ sizeof(((struct ec_params_motion_sense *)0)->cmd), \
 		sizeof(((struct ec_response_motion_sense *)0)->data) \
-		+ ECTOOL_MAX_SENSOR * sizeof(struct sensor_data) }
+		+ sizeof(struct ec_response_motion_sensor_data) * \
+		  ECTOOL_MAX_SENSOR}
 static const struct {
 	uint8_t insize;
 	uint8_t outsize;
@@ -2346,7 +2347,6 @@ static const struct {
 	MS_SIZES(sensor_odr),
 	MS_SIZES(sensor_range),
 	MS_SIZES(kb_wake_angle),
-	MS_SIZES(status),
 	MS_DATA_SIZE(),
 };
 BUILD_ASSERT(ARRAY_SIZE(ms_command_sizes) == MOTIONSENSE_NUM_CMDS);

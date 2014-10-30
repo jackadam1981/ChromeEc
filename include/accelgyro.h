@@ -32,10 +32,7 @@ struct accelgyro_drv {
 	 * @z_acc Pointer to store Z-axis acceleration (in counts).
 	 * @return EC_SUCCESS if successful, non-zero if error.
 	 */
-	int (*read)(const struct motion_sensor_t *s,
-			int *x_acc,
-			int *y_acc,
-			int *z_acc);
+	int (*read)(const struct motion_sensor_t *s, vector_3_t v);
 
 	/**
 	 * Setter and getter methods for the sensor range. The sensor range

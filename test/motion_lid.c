@@ -30,12 +30,11 @@ static int accel_init(const struct motion_sensor_t *s)
 	return EC_SUCCESS;
 }
 
-static int accel_read(const struct motion_sensor_t *s,
-	int *x_acc, int *y_acc, int *z_acc)
+static int accel_read(const struct motion_sensor_t *s, vector_3_t v)
 {
-	*x_acc = s->xyz[X];
-	*y_acc = s->xyz[Y];
-	*z_acc = s->xyz[Z];
+	v[X] = s->xyz[X];
+	v[Y] = s->xyz[Y];
+	v[Z] = s->xyz[Z];
 	return EC_SUCCESS;
 }
 

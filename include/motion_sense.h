@@ -63,6 +63,7 @@ struct motion_sensor_t {
 	/* state parameters */
 	enum sensor_state state;
 	enum chipset_state_mask active;
+	vector_3_t raw_xyz;
 	vector_3_t xyz;
 };
 
