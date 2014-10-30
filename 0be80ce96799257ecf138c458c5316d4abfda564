@@ -65,6 +65,24 @@
     },
     {
       "key": {
+        "uuid": "15bf92c3_161fdacd",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2014-10-30T20:45:22Z",
+      "side": 1,
+      "message": "This is enabled when Mec SRAM architectural change is uplloaded. we can remove if you wish. I have just disable it here and enabled in the next commit.",
+      "parentUuid": "d5b97ad9_9f9e9b3b",
+      "revId": "0be80ce96799257ecf138c458c5316d4abfda564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55c58a5b_75a008ac",
         "filename": "Makefile.rules",
         "patchSetId": 1
