@@ -336,34 +336,11 @@ void motion_sense_task(void)
 static struct motion_sensor_t
 	*host_sensor_id_to_motion_sensor(int host_id)
 {
-	int i;
-	struct motion_sensor_t *sensor = NULL;
+	struct motion_sensor_t *sensor;
 
-	for (i = 0; i < motion_sensor_count; ++i) {
-
-		sensor = &motion_sensors[i];
-
-		if ((LOCATION_BASE == sensor->location)
-			&& (SENSOR_ACCELEROMETER == sensor->type)
-			&& (host_id == EC_MOTION_SENSOR_ACCEL_BASE)) {
-			break;
-		}
-
-		if ((LOCATION_LID == sensor->location)
-			&& (SENSOR_ACCELEROMETER == sensor->type)
-			&& (host_id == EC_MOTION_SENSOR_ACCEL_LID)) {
-			break;
-		}
-
-		if ((LOCATION_BASE == sensor->location)
-			&& (SENSOR_GYRO == sensor->type)
-			&& (host_id == EC_MOTION_SENSOR_GYRO)) {
-			break;
-		}
-	}
-
-	if (i == motion_sensor_count)
+	if (host_id >= motion_sensor_count)
 		return NULL;
+	sensor = &motion_sensors[host_id];
 
 	/* if sensor is powered and initialized, return match */
 	if ((sensor->active & sensor->active_mask)
@@ -379,30 +356,31 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 	const struct ec_params_motion_sense *in = args->params;
 	struct ec_response_motion_sense *out = args->response;
 	struct motion_sensor_t *sensor;
-	int i, data, ret = EC_RES_INVALID_PARAM;
+	int i, data, ret = EC_RES_INVALID_PARAM, reported;
 
 	switch (in->cmd) {
-	case MOTIONSENSE_CMD_DUMP:
-		out->dump.module_flags =
+	case MOTIONSENSE_CMD_GET_DATA:
+		out->data.module_flags =
 			(*(host_get_memmap(EC_MEMMAP_ACC_STATUS)) &
-				EC_MEMMAP_ACC_STATUS_PRESENCE_BIT) ?
-					MOTIONSENSE_MODULE_FLAG_ACTIVE : 0;
-
-		for (i = 0; i < motion_sensor_count; i++) {
+			 EC_MEMMAP_ACC_STATUS_PRESENCE_BIT) ?
+			MOTIONSENSE_MODULE_FLAG_ACTIVE : 0;
+		out->data.sensor_number = motion_sensor_count;
+		args->response_size = sizeof(out->data);
+		reported = MIN(motion_sensor_count, in->data.sensor_number);
+		for (i = 0; i < reported; i++) {
 			sensor = &motion_sensors[i];
-			out->dump.sensor_flags[i] =
+			out->data.sensor[i].flags =
 				MOTIONSENSE_SENSOR_FLAG_PRESENT;
-			out->dump.data[0+3*i] = sensor->xyz[X];
-			out->dump.data[1+3*i] = sensor->xyz[Y];
-			out->dump.data[2+3*i] = sensor->xyz[Z];
+			out->data.sensor[i].data[X] = sensor->xyz[X];
+			out->data.sensor[i].data[Y] = sensor->xyz[Y];
+			out->data.sensor[i].data[Z] = sensor->xyz[Z];
 		}
-
-		args->response_size = sizeof(out->dump);
+		args->response_size += sizeof(struct sensor_data) * reported;
 		break;
 
 	case MOTIONSENSE_CMD_INFO:
 		sensor = host_sensor_id_to_motion_sensor(
-			in->sensor_odr.sensor_num);
+				in->sensor_odr.sensor_num);
 
 		if (sensor == NULL)
 			return EC_RES_INVALID_PARAM;
@@ -454,16 +432,16 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 	case MOTIONSENSE_CMD_SENSOR_ODR:
 		/* Verify sensor number is valid. */
 		sensor = host_sensor_id_to_motion_sensor(
-			in->sensor_odr.sensor_num);
+				in->sensor_odr.sensor_num);
 		if (sensor == NULL)
 			return EC_RES_INVALID_PARAM;
 
 		/* Set new data rate if the data arg has a value. */
 		if (in->sensor_odr.data != EC_MOTION_SENSE_NO_VALUE) {
 			if (sensor->drv->set_data_rate(sensor,
-						      in->sensor_odr.data,
-						      in->sensor_odr.roundup)
-						      != EC_SUCCESS) {
+						in->sensor_odr.data,
+						in->sensor_odr.roundup)
+					!= EC_SUCCESS) {
 				CPRINTS("MS bad sensor rate %d",
 						in->sensor_odr.data);
 				return EC_RES_INVALID_PARAM;
@@ -482,16 +460,16 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 	case MOTIONSENSE_CMD_SENSOR_RANGE:
 		/* Verify sensor number is valid. */
 		sensor = host_sensor_id_to_motion_sensor(
-			in->sensor_odr.sensor_num);
+				in->sensor_odr.sensor_num);
 		if (sensor == NULL)
 			return EC_RES_INVALID_PARAM;
 
 		/* Set new data rate if the data arg has a value. */
 		if (in->sensor_range.data != EC_MOTION_SENSE_NO_VALUE) {
 			if (sensor->drv->set_range(sensor,
-						   in->sensor_range.data,
-						   in->sensor_range.roundup)
-						   != EC_SUCCESS) {
+						in->sensor_range.data,
+						in->sensor_range.roundup)
+					!= EC_SUCCESS) {
 				CPRINTS("MS bad sensor range %d",
 						in->sensor_range.data);
 				return EC_RES_INVALID_PARAM;

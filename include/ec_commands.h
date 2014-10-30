@@ -1264,6 +1264,7 @@ enum motionsense_command {
 	/*
 	 * Dump command returns all motion sensor data including motion sense
 	 * module flags and individual sensor flags.
+	 * DEPRECATED
 	 */
 	MOTIONSENSE_CMD_DUMP = 0,
 
@@ -1317,18 +1318,6 @@ enum motionsense_command {
 	MOTIONSENSE_NUM_CMDS
 };
 
-enum motionsensor_id {
-	EC_MOTION_SENSOR_ACCEL_BASE = 0,
-	EC_MOTION_SENSOR_ACCEL_LID = 1,
-	EC_MOTION_SENSOR_GYRO = 2,
-
-	/*
-	 * Note, if more sensors are added and this count changes, the padding
-	 * in ec_response_motion_sense dump command must be modified.
-	 */
-	EC_MOTION_SENSOR_COUNT = 3
-};
-
 /* List of motion sensor types. */
 enum motionsensor_type {
 	MOTIONSENSE_TYPE_ACCEL = 0,
@@ -1363,11 +1352,15 @@ enum motionsensor_chip {
 struct ec_params_motion_sense {
 	uint8_t cmd;
 	union {
-		/* Used for MOTIONSENSE_CMD_DUMP, GET_STATUS, GET_DATA. */
+		/* Used for MOTIONSENSE_CMD_DUMP, GET_STATUS */
 		struct {
 			/* no args */
-		} data, dump, status;
+		} dump, status;
 
+		/* Used for MOTIONSENSE_CMD_DUMP, GET_STATUS, GET_DATA. */
+		struct {
+			uint8_t sensor_number;   /* number of sensor expected */
+		} data;
 		/*
 		 * Used for MOTIONSENSE_CMD_EC_RATE and
 		 * MOTIONSENSE_CMD_KB_WAKE_ANGLE.
@@ -1399,6 +1392,9 @@ struct ec_params_motion_sense {
 		} sensor_odr, sensor_range;
 	};
 } __packed;
+
+/* Deprecated: Only for MOTIONSENSE_CMD_DUMP */
+#define EC_MOTION_SENSOR_COUNT 3
 
 struct ec_response_motion_sense {
 	union {
