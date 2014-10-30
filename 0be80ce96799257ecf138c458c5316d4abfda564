@@ -22,6 +22,103 @@
       "revId": "0be80ce96799257ecf138c458c5316d4abfda564",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5b97ad9_9ffa1b53",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-30T17:57:10Z",
+      "side": 1,
+      "message": "This command is chip-specific, so it should go to chip/mec1322/build.mk",
+      "revId": "0be80ce96799257ecf138c458c5316d4abfda564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5b97ad9_9f9e9b3b",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-30T17:57:10Z",
+      "side": 1,
+      "message": "What\u0027s this?",
+      "range": {
+        "startLine": 74,
+        "startChar": 3,
+        "endLine": 74,
+        "endChar": 14
+      },
+      "revId": "0be80ce96799257ecf138c458c5316d4abfda564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "55c58a5b_75a008ac",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-30T17:57:10Z",
+      "side": 1,
+      "message": "\"all\" is already defined in Makefile. How about this:\n\nIn Makefile, change \"all\" to:\n\n  all: $(out)/$(PROJECT).bin utils spi_image\n\nand here, do something like:\n\n  ifeq \"$(PACK_SPI_IMAGE)\" \"y\"\n  spi_image: $(out)/$(PROJECT).spi.bin\n  else\n  spi_image:\n  endif\n\nand in board/strago/build.mk:\n\n  PACK_SPI_IMAGE:\u003dy",
+      "revId": "0be80ce96799257ecf138c458c5316d4abfda564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "55c58a5b_f58b3825",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-30T17:57:10Z",
+      "side": 1,
+      "message": "${out} -\u003e $(out) for consistency.",
+      "revId": "0be80ce96799257ecf138c458c5316d4abfda564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "55c58a5b_f52fb8a5",
+        "filename": "util/getversion.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-30T17:57:10Z",
+      "side": 1,
+      "message": "Where does this VCSID come from?",
+      "range": {
+        "startLine": 29,
+        "startChar": 20,
+        "endLine": 29,
+        "endChar": 25
+      },
+      "revId": "0be80ce96799257ecf138c458c5316d4abfda564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
