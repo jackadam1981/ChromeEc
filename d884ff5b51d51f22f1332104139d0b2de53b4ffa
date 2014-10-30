@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55c58a5b_55106c42",
+        "filename": "chip/mec1322/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-30T18:06:59Z",
+      "side": 1,
+      "message": "Remove this line",
+      "revId": "d884ff5b51d51f22f1332104139d0b2de53b4ffa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "55c58a5b_9519246e",
+        "filename": "chip/mec1322/dma.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-30T18:06:59Z",
+      "side": 1,
+      "message": "No need to check this here. The caller should ensure \u0027memory\u0027 is not NULL. I suppose memory \u003d\u003d NULL triggers a fault? If so, then that\u0027s a good enough indication for developer to notice a bad parameter here.",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 20
+      },
+      "revId": "d884ff5b51d51f22f1332104139d0b2de53b4ffa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f5b4bedf_fda24337",
+        "filename": "chip/mec1322/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-30T18:06:59Z",
+      "side": 1,
+      "message": "Not used?",
+      "revId": "d884ff5b51d51f22f1332104139d0b2de53b4ffa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f5b4bedf_3d967bd9",
+        "filename": "chip/mec1322/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-30T18:06:59Z",
+      "side": 1,
+      "message": "Check rxlen instead. It\u0027s more explicit.",
+      "range": {
+        "startLine": 79,
+        "startChar": 5,
+        "endLine": 79,
+        "endChar": 19
+      },
+      "revId": "d884ff5b51d51f22f1332104139d0b2de53b4ffa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5b97ad9_7f42a7d9",
+        "filename": "chip/mec1322/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-10-30T18:06:59Z",
+      "side": 1,
+      "message": "Other SPI usage in our codebase follows the convention that the caller enables SPI module when it\u0027s in use and disables it after. We should do the same here for consistency. This is SPI \"master\" module, so it should be easy to just do spi_enable(1) before where you use SPI and spi_enable(0) after.",
+      "revId": "d884ff5b51d51f22f1332104139d0b2de53b4ffa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
