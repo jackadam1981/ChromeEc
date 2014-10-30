@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b5d5e601_a9a5e514",
+        "filename": "chip/g/config_std_flash.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-10-30T19:46:22Z",
+      "side": 1,
+      "message": "This file? As the comments below say, these constants are used to mimic a SPI flash chip, with a HW WP and a SW WP.",
+      "parentUuid": "5594aafe_8bc76b70",
+      "revId": "8558e598404cab380b2aa692ddf37d1916a31bf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5bfba8a_1e9bb97f",
         "filename": "chip/g/uart.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2014-10-29T16:13:23Z",
       "side": 1,
       "message": "do we need this dirty trick since the TX interrupt is triggered on half FIFO threshold ?\nin other words, in the interrupt triggered on crossing the level  or being below the level ?",
+      "revId": "8558e598404cab380b2aa692ddf37d1916a31bf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35fbb687_12242c21",
+        "filename": "chip/g/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-10-30T19:46:22Z",
+      "side": 1,
+      "message": "You mean the forced trigger in uart_tx_start() ?\n\nI don\u0027t know. The problem only showed up on other systems when we hit Ctrl-S and Ctrl-Q. The output wouldn\u0027t always resume, so it was tricky to find.\n\nI\u0027ll add a TODO to write some tests and find out.",
+      "parentUuid": "d5bfba8a_1e9bb97f",
       "revId": "8558e598404cab380b2aa692ddf37d1916a31bf2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "35c2d657_3424d021",
+        "filename": "chip/g/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-10-30T19:46:22Z",
+      "side": 1,
+      "message": "Probably wouldn\u0027t hurt. Done.",
+      "parentUuid": "d5bfba8a_fea8259a",
+      "revId": "8558e598404cab380b2aa692ddf37d1916a31bf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5bfba8a_3ec79d72",
         "filename": "chip/g/uart.c",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2014-10-29T16:13:23Z",
       "side": 1,
       "message": "UART_FIFO register has a Rx FIFO reset bit",
+      "revId": "8558e598404cab380b2aa692ddf37d1916a31bf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35fbb687_d22904f4",
+        "filename": "chip/g/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-10-30T19:46:22Z",
+      "side": 1,
+      "message": "Yes, and poke it before calling this function, so this isn\u0027t needed at all.",
+      "parentUuid": "d5bfba8a_3ec79d72",
       "revId": "8558e598404cab380b2aa692ddf37d1916a31bf2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
