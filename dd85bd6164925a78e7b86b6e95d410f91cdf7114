@@ -70,6 +70,24 @@
     },
     {
       "key": {
+        "uuid": "f5cbde63_88a01bad",
+        "filename": "board/strago/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2014-10-30T06:02:18Z",
+      "side": 1,
+      "message": "In Braswell Refence design the inversion is handled in the software",
+      "parentUuid": "756c4e15_fca50142",
+      "revId": "dd85bd6164925a78e7b86b6e95d410f91cdf7114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "956b82dc_9e700782",
         "filename": "board/strago/build.mk",
         "patchSetId": 1
@@ -195,6 +213,24 @@
     },
     {
       "key": {
+        "uuid": "d5d09a11_a7f0aea5",
+        "filename": "board/strago/power_sequence.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2014-10-30T06:02:18Z",
+      "side": 1,
+      "message": "This is the only file related to braswell power sequencing. Please give more details on what duplication meant",
+      "parentUuid": "756c4e15_bc326963",
+      "revId": "dd85bd6164925a78e7b86b6e95d410f91cdf7114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5bfba8a_f5c7e34d",
         "filename": "chip/mec1322/lpc.c",
         "patchSetId": 1
@@ -229,6 +265,24 @@
     },
     {
       "key": {
+        "uuid": "b5d5e601_a3ab4495",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2014-10-30T06:02:18Z",
+      "side": 1,
+      "message": "Yes this needs to be cleaned. Had added this during Power On. Needs to be fine tuned and cleaned up",
+      "parentUuid": "756c4e15_7cce11ee",
+      "revId": "dd85bd6164925a78e7b86b6e95d410f91cdf7114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "956b82dc_1e43973c",
         "filename": "chip/mec1322/lpc.c",
         "patchSetId": 1
@@ -240,6 +294,24 @@
       "writtenOn": "2014-10-29T21:18:52Z",
       "side": 1,
       "message": "Instead of sleeping here, can we wait until lpc_keyboard_has_char() \u003d\u003d 0 (for a maximum of 1ms)?",
+      "revId": "dd85bd6164925a78e7b86b6e95d410f91cdf7114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5d09a11_c7edb2ca",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2014-10-30T06:02:18Z",
+      "side": 1,
+      "message": "Will fine tune and reduce the delay.",
+      "parentUuid": "956b82dc_1e43973c",
       "revId": "dd85bd6164925a78e7b86b6e95d410f91cdf7114",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
