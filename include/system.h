@@ -36,6 +36,8 @@ enum system_image_copy_t {
 	SYSTEM_IMAGE_RW
 };
 
+void jump_to_image(uintptr_t init_addr);
+
 /**
  * Pre-initializes the module.  This occurs before clocks or tasks are
  * set up.
@@ -162,6 +164,10 @@ int system_get_image_used(enum system_image_copy_t copy);
  */
 int system_run_image_copy(enum system_image_copy_t copy);
 
+/**
+ * Jump to the specified image copy in external SPI.
+ */
+int system_run_image_copy_ext_spi(enum system_image_copy_t copy);
 /**
  * Get the version string for an image
  *

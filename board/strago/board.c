@@ -11,6 +11,7 @@
 #include "lid_switch.h"
 #include "power.h"
 #include "extpower.h"
+#include "switch.h"
 
 #define GPIO_KB_INPUT (GPIO_INPUT | GPIO_PULL_UP)
 #define GPIO_KB_OUTPUT (GPIO_ODR_HIGH)

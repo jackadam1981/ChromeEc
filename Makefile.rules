@@ -70,8 +70,8 @@ targ_if_prog = $(if $(shell which $(1) 2>/dev/null),$(2),)
 
 # commands to package something
 cmd_packpackage = ${SCRIPTDIR}/pack_ec.py -o $@ -i $^ --payload_key ${SCRIPTDIR}/rsakey_sign_payload.pem \
-		--header_key ${SCRIPTDIR}/rsakey_sign_header.pem
-#--loader_file ${SCRIPTDIR}/ecloader.bin
+		--header_key ${SCRIPTDIR}/rsakey_sign_header.pem \
+		--loader_file ${SCRIPTDIR}/ecloader.bin
 
 .PHONY: all tests utils hosttests
 

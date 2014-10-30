@@ -22,3 +22,6 @@ chip-$(CONFIG_WATCHDOG)+=watchdog.o
 chip-$(HAS_TASK_KEYSCAN)+=keyboard_raw.o
 chip-$(CONFIG_DMA)+=dma.o
 chip-$(CONFIG_SPI)+=spi.o
+chip-$(CONFIG_FLASH_EXT_SPI)+=flash.o
+chip-$(CONFIG_VBOOT_HASH_EXT_SPI)+=vbootparse.o
+

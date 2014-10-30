@@ -1157,7 +1157,7 @@
 
 /* Support computing hash of code for verified boot */
 #undef CONFIG_VBOOT_HASH
-
+#undef CONFIG_VBOOT_HASH_EXT_SPI
 /*****************************************************************************/
 /* Watchdog config */
 

@@ -17,6 +17,7 @@ GPIO(PCH_SLP_S4_L,      PORT(20),  0, GPIO_INT_BOTH_DSLEEP | GPIO_PULL_UP,      
 GPIO(PCH_SLP_S3_L,      PORT(20), 6, GPIO_INT_BOTH_DSLEEP | GPIO_PULL_UP,       power_signal_interrupt) /* SLP_S3# signal from PCH */
 GPIO(ALL_SYS_PGOOD,     PORT(13),  0, GPIO_INT_BOTH_DSLEEP,                      power_signal_interrupt) /* ALL_SYS_PWRGD from power logic */
 GPIO(PCH_SYS_PWROK,     PORT(6), 5, GPIO_OUT_LOW,                              NULL)                   /* EC thinks everything is up and ready (DELAY_ALL_SYS_PWRGD) */
+GPIO(WP,            	PORT(3),  3, GPIO_INT_BOTH,                       switch_interrupt)         /* Write protect input */
 
 GPIO(USB3_PWR_EN,       PORT(5),  7, GPIO_OUT_HIGH,                             NULL)                   /* Enable power for USB3 Port */
 GPIO(USB2_PWR_EN,       PORT(3),  6, GPIO_OUT_HIGH,                             NULL)                   /* Enable power for USB2 Port */

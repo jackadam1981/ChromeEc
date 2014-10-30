@@ -182,6 +182,49 @@ static void update_host_event_status(void)
 		lpc_generate_sci();
 }
 
+static void lpc_send_response(struct host_cmd_handler_args *args)
+{
+	uint8_t *out;
+	int size = args->response_size;
+	int csum;
+	int i;
+
+	/* Ignore in-progress on LPC since interface is synchronous anyway */
+	if (args->result == EC_RES_IN_PROGRESS)
+		return;
+
+	/* Handle negative size */
+	if (size < 0) {
+		args->result = EC_RES_INVALID_RESPONSE;
+		size = 0;
+	}
+
+	/* New-style response */
+	lpc_host_args->flags = (host_cmd_flags & ~EC_HOST_ARGS_FLAG_FROM_HOST) |
+			       EC_HOST_ARGS_FLAG_TO_HOST;
+
+	lpc_host_args->data_size = size;
+
+	csum = args->command + lpc_host_args->flags +
+	       lpc_host_args->command_version +
+	       lpc_host_args->data_size;
+
+	for (i = 0, out = (uint8_t *)args->response; i < size; i++, out++)
+		csum += *out;
+
+	lpc_host_args->checksum = (uint8_t)csum;
+
+	/* Fail if response doesn't fit in the param buffer */
+	if (size > EC_PROTO2_MAX_PARAM_SIZE)
+		args->result = EC_RES_INVALID_RESPONSE;
+
+	/* Write result to the data byte. */
+	MEC1322_ACPI_EC_EC2OS(1, 0) = args->result;
+
+	/* Clear the busy bit, so the host knows the EC is done. */
+	MEC1322_ACPI_EC_STATUS(1) &= ~EC_LPC_STATUS_PROCESSING;
+}
+
 static void lpc_send_response_packet(struct host_packet *pkt)
 {
 	/* Ignore in-progress on LPC since interface is synchronous anyway */
@@ -231,9 +274,15 @@ static void setup_lpc(void)
 	MEC1322_INT_BLK_EN |= 1 << 15;
 	task_enable_irq(MEC1322_IRQ_8042EM_OBF);
 
+	/* Set up MailBox interface at 0x800/0x801 */
+	MEC1322_LPC_MAILBOX_BAR = 0x08008901;
+	MEC1322_INT_ENABLE(15) |= (1 << 16);
+	MEC1322_INT_BLK_EN |= 1 << 15;
+	task_enable_irq(MEC1322_IRQ_MAILBOX_DATA);
+
 	/* TODO(crosbug.com/p/24107): Route KIRQ to SER_IRQ1 */
 
-	/* Set up EMI module for memory mapped region and port 80 */
+	/* Set up EMI module for port 80 */
 	MEC1322_LPC_EMI_BAR = 0x0080800f;
 	MEC1322_INT_ENABLE(15) |= 1 << 2;
 	MEC1322_INT_BLK_EN |= 1 << 15;
@@ -294,6 +343,41 @@ void emi_interrupt(void)
 }
 DECLARE_IRQ(MEC1322_IRQ_EMI, emi_interrupt, 1);
 
+void mailbox_data_interrupt(void)
+{
+	uint32_t addr_offset = 0;
+
+	/* Use MailBox interface for EC memory access
+		MailBox 0-3: 32-bit address offset of Memory Mapped region
+		MailBox 4  : 8-bit data to/from the specific addr offset */
+
+	/* Check interrupt result for MailBox Data trigger */
+	if (MEC1322_INT_RESULT(15) & (1 << 16)) {
+		/* Construct address offset from Mailbox 0-3 */
+		addr_offset = MEC1322_MBX_REG32(0);
+
+		/* Check if address offset is valid */
+		if (addr_offset < sizeof(mem_mapped)) {
+			/* Check if writing to MailBox 4 */
+			if (MEC1322_MBX_INDEX_REG ==
+			    MEC1322_MBX_REG_HOST_INDEX(4)) {
+				/* Update Memory Mapped region */
+				mem_mapped[addr_offset] = MEC1322_MBX_REG(4);
+			}
+
+			/* Return value from Memory Mapped region */
+			MEC1322_MBX_REG(4) = mem_mapped[addr_offset];
+		} else {
+			/* Return 0 for invalid address offset */
+			MEC1322_MBX_REG(4) = 0;
+		}
+
+		/* Clear interrupt source */
+		MEC1322_INT_SOURCE(15) |= 1 << 16;
+	}
+}
+DECLARE_IRQ(MEC1322_IRQ_MAILBOX_DATA, mailbox_data_interrupt, 1);
+
 void acpi_0_interrupt(void)
 {
 	uint8_t value, result, is_cmd;
@@ -338,6 +422,7 @@ void acpi_1_interrupt(void)
 	host_cmd_args.command = MEC1322_ACPI_EC_OS2EC(1, 0);
 
 	host_cmd_args.result = EC_RES_SUCCESS;
+	host_cmd_args.send_response = lpc_send_response;
 	host_cmd_flags = lpc_host_args->flags;
 
 	/* We only support new style command (v3) now */
@@ -357,6 +442,48 @@ void acpi_1_interrupt(void)
 		lpc_packet.driver_result = EC_RES_SUCCESS;
 		host_packet_receive(&lpc_packet);
 		return;
+	} else if (host_cmd_flags & EC_HOST_ARGS_FLAG_FROM_HOST) {
+		/* Version 2 (link) style command */
+		int size = lpc_host_args->data_size;
+		int csum, i;
+
+		host_cmd_args.version = lpc_host_args->command_version;
+		host_cmd_args.params = params_copy;
+		host_cmd_args.params_size = size;
+		host_cmd_args.response =
+				(void *)lpc_get_hostcmd_data_range() +
+				EC_LPC_ADDR_HOST_PARAM - EC_LPC_ADDR_HOST_ARGS;
+		host_cmd_args.response_max = EC_PROTO2_MAX_PARAM_SIZE;
+		host_cmd_args.response_size = 0;
+
+		/* Verify params size */
+		if (size > EC_PROTO2_MAX_PARAM_SIZE) {
+			host_cmd_args.result = EC_RES_INVALID_PARAM;
+		} else {
+			const uint8_t *src =
+				(void *)lpc_get_hostcmd_data_range() +
+				EC_LPC_ADDR_HOST_PARAM - EC_LPC_ADDR_HOST_ARGS;
+			uint8_t *copy = params_copy;
+
+			/*
+			 * Verify checksum and copy params out of LPC space.
+			 * This ensures the data acted on by the host command
+			 * handler can't be changed by host writes after the
+			 * checksum is verified.
+			 */
+			csum = host_cmd_args.command +
+				host_cmd_flags +
+				host_cmd_args.version +
+				host_cmd_args.params_size;
+
+			for (i = 0; i < size; i++) {
+				csum += *src;
+				*(copy++) = *(src++);
+			}
+
+			if ((uint8_t)csum != lpc_host_args->checksum)
+				host_cmd_args.result = EC_RES_INVALID_CHECKSUM;
+		}
 	} else {
 		/* Old style command unsupported */
 		host_cmd_args.result = EC_RES_INVALID_COMMAND;
@@ -478,3 +605,24 @@ static int lpc_command_init(int argc, char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(lpcinit, lpc_command_init, NULL, NULL, NULL);
+
+/**
+ * Get protocol information
+ */
+static int lpc_get_protocol_info(struct host_cmd_handler_args *args)
+{
+	struct ec_response_get_protocol_info *r = args->response;
+
+	memset(r, 0, sizeof(*r));
+	r->protocol_versions = (1 << 2) | (1 << 3);
+	r->max_request_packet_size = EC_LPC_HOST_PACKET_SIZE;
+	r->max_response_packet_size = EC_LPC_HOST_PACKET_SIZE;
+	r->flags = 0;
+
+	args->response_size = sizeof(*r);
+
+	return EC_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO,
+		     lpc_get_protocol_info,
+		     EC_VER_MASK(0));
