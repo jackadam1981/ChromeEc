@@ -1063,6 +1063,9 @@
 /* Include all USB Power Delivery modules */
 #undef CONFIG_USB_POWER_DELIVERY
 
+/* Alternative configuration keeping only the TX part of PHY */
+#undef CONFIG_USB_PD_TX_PHY_ONLY
+
 /* Default state of PD communication enabled flag */
 #define CONFIG_USB_PD_COMM_ENABLED 1
 
