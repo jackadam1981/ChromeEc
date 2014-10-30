@@ -52,6 +52,24 @@
       "revId": "b8e4f1b66a06d556b4443c182de541b187da32ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d587ba27_899bb903",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1029,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-30T22:31:54Z",
+      "side": 0,
+      "message": "hum that\u0027s closer to the 195us of tTransmit.",
+      "parentUuid": "d587ba27_a9f79d6b",
+      "revId": "b8e4f1b66a06d556b4443c182de541b187da32ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
