@@ -327,34 +327,7 @@ void motion_sense_task(void)
 static struct motion_sensor_t
 	*host_sensor_id_to_motion_sensor(int host_id)
 {
-	int i;
-	struct motion_sensor_t *sensor = NULL;
-
-	for (i = 0; i < motion_sensor_count; ++i) {
-
-		sensor = &motion_sensors[i];
-
-		if ((LOCATION_BASE == sensor->location)
-			&& (SENSOR_ACCELEROMETER == sensor->type)
-			&& (host_id == EC_MOTION_SENSOR_ACCEL_BASE)) {
-			break;
-		}
-
-		if ((LOCATION_LID == sensor->location)
-			&& (SENSOR_ACCELEROMETER == sensor->type)
-			&& (host_id == EC_MOTION_SENSOR_ACCEL_LID)) {
-			break;
-		}
-
-		if ((LOCATION_BASE == sensor->location)
-			&& (SENSOR_GYRO == sensor->type)
-			&& (host_id == EC_MOTION_SENSOR_GYRO)) {
-			break;
-		}
-	}
-
-	if (i == motion_sensor_count)
-		return NULL;
+	struct motion_sensor_t *sensor = &motion_sensors[host_id];
 
 	/* if sensor is powered and initialized, return match */
 	if ((sensor->active & sensor->active_mask)
@@ -373,27 +346,32 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 	int i, data, ret = EC_RES_INVALID_PARAM;
 
 	switch (in->cmd) {
-	case MOTIONSENSE_CMD_DUMP:
-		out->dump.module_flags =
+	case MOTIONSENSE_CMD_GET_DATA:
+		out->data.module_flags =
 			(*(host_get_memmap(EC_MEMMAP_ACC_STATUS)) &
 				EC_MEMMAP_ACC_STATUS_PRESENCE_BIT) ?
 					MOTIONSENSE_MODULE_FLAG_ACTIVE : 0;
-
-		for (i = 0; i < motion_sensor_count; i++) {
-			sensor = &motion_sensors[i];
-			out->dump.sensor_flags[i] =
-				MOTIONSENSE_SENSOR_FLAG_PRESENT;
-			out->dump.data[0+3*i] = sensor->xyz[X];
-			out->dump.data[1+3*i] = sensor->xyz[Y];
-			out->dump.data[2+3*i] = sensor->xyz[Z];
+		out->data.sensor_number = motion_sensor_count;
+		args->response_size = sizeof(out->data);
+		if (args->response_max >=
+		    sizeof(out->data) +
+		    motion_sensor_count * sizeof(struct sensor_data)) {
+			for (i = 0; i < motion_sensor_count; i++) {
+				sensor = &motion_sensors[i];
+				out->data.sensor[i].flags =
+					MOTIONSENSE_SENSOR_FLAG_PRESENT;
+				out->data.sensor[i].data[X] = sensor->xyz[X];
+				out->data.sensor[i].data[Y] = sensor->xyz[Y];
+				out->data.sensor[i].data[Z] = sensor->xyz[Z];
+			}
+			args->response_size += sizeof(struct sensor_data) *
+				motion_sensor_count;
 		}
-
-		args->response_size = sizeof(out->dump);
 		break;
 
 	case MOTIONSENSE_CMD_INFO:
 		sensor = host_sensor_id_to_motion_sensor(
-			in->sensor_odr.sensor_num);
+				in->sensor_odr.sensor_num);
 
 		if (sensor == NULL)
 			return EC_RES_INVALID_PARAM;

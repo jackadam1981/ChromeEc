@@ -1264,6 +1264,7 @@ enum motionsense_command {
 	/*
 	 * Dump command returns all motion sensor data including motion sense
 	 * module flags and individual sensor flags.
+	 * DEPRECATED
 	 */
 	MOTIONSENSE_CMD_DUMP = 0,
 
@@ -1315,18 +1316,6 @@ enum motionsense_command {
 
 	/* Number of motionsense sub-commands. */
 	MOTIONSENSE_NUM_CMDS
-};
-
-enum motionsensor_id {
-	EC_MOTION_SENSOR_ACCEL_BASE = 0,
-	EC_MOTION_SENSOR_ACCEL_LID = 1,
-	EC_MOTION_SENSOR_GYRO = 2,
-
-	/*
-	 * Note, if more sensors are added and this count changes, the padding
-	 * in ec_response_motion_sense dump command must be modified.
-	 */
-	EC_MOTION_SENSOR_COUNT = 3
 };
 
 /* List of motion sensor types. */
@@ -1399,6 +1388,9 @@ struct ec_params_motion_sense {
 		} sensor_odr, sensor_range;
 	};
 } __packed;
+
+/* Deprecated: Only for MOTIONSENSE_CMD_DUMP */
+#define EC_MOTION_SENSOR_COUNT 3
 
 struct ec_response_motion_sense {
 	union {
