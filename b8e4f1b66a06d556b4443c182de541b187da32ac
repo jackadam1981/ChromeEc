@@ -34,6 +34,24 @@
       "revId": "b8e4f1b66a06d556b4443c182de541b187da32ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d587ba27_a9f79d6b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1029,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-30T22:27:08Z",
+      "side": 0,
+      "message": "ok, measured for samus and zinger the time on oscilliscope from last bit of incoming packet to first bit of goodCRC response.\n\non samus,  this CL increases the time from ~42us to ~65us\non zinger, this CL increases the time from ~150us to ~175us",
+      "parentUuid": "956b82dc_3d078588",
+      "revId": "b8e4f1b66a06d556b4443c182de541b187da32ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

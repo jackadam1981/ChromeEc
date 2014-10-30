@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "15f87289_31fde880",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-30T22:27:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5bfba8a_bebcedad",
+      "revId": "c954055994072551069efaac008f7ca5fa805c62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "756c4e15_d9b2d709",
         "filename": "chip/stm32/usb_pd_phy.c",
         "patchSetId": 1
@@ -83,6 +101,30 @@
     },
     {
       "key": {
+        "uuid": "35fbb687_1280ac58",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-30T22:27:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "956b82dc_f8959b16",
+      "range": {
+        "startLine": 455,
+        "startChar": 20,
+        "endLine": 455,
+        "endChar": 22
+      },
+      "revId": "c954055994072551069efaac008f7ca5fa805c62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5bfba8a_de63e1b5",
         "filename": "chip/stm32/usb_pd_phy.c",
         "patchSetId": 1
@@ -100,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "f5267ef7_5e6fd51b",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-30T22:27:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5bfba8a_de63e1b5",
+      "revId": "c954055994072551069efaac008f7ca5fa805c62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "956b82dc_5df7d99f",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -111,6 +171,24 @@
       "writtenOn": "2014-10-29T16:57:16Z",
       "side": 1,
       "message": "that\u0027s not collision, that\u0027s busy.\nIt\u0027s slightly different, probably -5 ;-)",
+      "revId": "c954055994072551069efaac008f7ca5fa805c62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f5267ef7_7e6a990d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-30T22:27:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "956b82dc_5df7d99f",
       "revId": "c954055994072551069efaac008f7ca5fa805c62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -146,6 +224,24 @@
       "side": 1,
       "message": "yes, but since we are just dropping the packet, i think it\u0027s important for us to realize it. maybe I can set a global flag to tell PD task to print this information later on.",
       "parentUuid": "d5bfba8a_5e5931fe",
+      "revId": "c954055994072551069efaac008f7ca5fa805c62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15f87289_b14c383b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-30T22:27:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "956b82dc_7d05fd7e",
       "revId": "c954055994072551069efaac008f7ca5fa805c62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
