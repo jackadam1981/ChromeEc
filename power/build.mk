@@ -7,6 +7,7 @@
 #
 
 power-$(CONFIG_CHIPSET_BAYTRAIL)+=baytrail.o
+power-$(CONFIG_CHIPSET_DUMMY_SH)+=dummy_sh.o
 power-$(CONFIG_CHIPSET_GAIA)+=gaia.o
 power-$(CONFIG_CHIPSET_HASWELL)+=haswell.o
 power-$(CONFIG_CHIPSET_IVYBRIDGE)+=ivybridge.o
