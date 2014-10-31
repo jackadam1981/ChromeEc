@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "758d2e44_d18e4638",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-10-31T05:40:15Z",
+      "side": 1,
+      "message": "sensor",
+      "range": {
+        "startLine": 10,
+        "startChar": 43,
+        "endLine": 10,
+        "endChar": 49
+      },
+      "revId": "171e517436ffea1249ce89a957446c07525a38fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d587ba27_92320264",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -19,6 +42,23 @@
         "endLine": 17,
         "endChar": 28
       },
+      "revId": "171e517436ffea1249ce89a957446c07525a38fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "95a8e291_2f248921",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-10-31T05:40:15Z",
+      "side": 1,
+      "message": "Not a fan of this code, how we set the interval polling period is not clean.\nCould we use HOOK_SYSJUMP hook to set up the period on sysjump?\nIf so, we can get rid of this code, accel_interval_ms is done on suspend and resume already.",
       "revId": "171e517436ffea1249ce89a957446c07525a38fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
