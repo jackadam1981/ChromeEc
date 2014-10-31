@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "d587ba27_0375e239",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-10-31T14:33:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "758d2e44_d18e4638",
+      "revId": "171e517436ffea1249ce89a957446c07525a38fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d587ba27_92320264",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -42,6 +60,24 @@
         "endLine": 17,
         "endChar": 28
       },
+      "revId": "171e517436ffea1249ce89a957446c07525a38fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1594f24f_5f85fbe7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-10-31T14:33:31Z",
+      "side": 1,
+      "message": "Tested on S0 state only.\n- boot up to S0 state\n- sysjump RW\n- accelread 0  //before failed here; now passed here.\n\n\nHow do I test it in S5 state?\n\nsysjump from S5 to S0 (without go through S3) is not a valid, right?\nIf go through S5-\u003eS3-\u003eS0 state, the original code has handled that case already.",
+      "parentUuid": "d587ba27_92320264",
       "revId": "171e517436ffea1249ce89a957446c07525a38fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -100,6 +136,24 @@
         "endLine": 255,
         "endChar": 7
       },
+      "revId": "171e517436ffea1249ce89a957446c07525a38fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1594f24f_7f8ab7f8",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-10-31T14:33:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1594f24f_14351a81",
       "revId": "171e517436ffea1249ce89a957446c07525a38fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
