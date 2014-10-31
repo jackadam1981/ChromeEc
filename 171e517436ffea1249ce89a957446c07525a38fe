@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d587ba27_92320264",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-31T00:56:14Z",
+      "side": 1,
+      "message": "did you test sysjump when the unit is in S0 AND when it is in S5 to make sure it works for both?",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 28
+      },
+      "revId": "171e517436ffea1249ce89a957446c07525a38fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1594f24f_14351a81",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-31T00:56:14Z",
+      "side": 1,
+      "message": "nit, i think official style here is you need {} around a single line else if the if statement had {}.",
+      "range": {
+        "startLine": 255,
+        "startChar": 3,
+        "endLine": 255,
+        "endChar": 7
+      },
+      "revId": "171e517436ffea1249ce89a957446c07525a38fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
