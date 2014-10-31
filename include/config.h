@@ -321,6 +321,7 @@
 #undef CONFIG_CMD_JUMPTAGS
 #undef CONFIG_CMD_PLL
 #undef CONFIG_CMD_PMU
+#define CONFIG_CMD_POWER_AP
 #define CONFIG_CMD_POWERINDEBUG
 #undef CONFIG_CMD_POWERLED
 #undef CONFIG_CMD_RTC_ALARM
@@ -473,6 +474,9 @@
  * options stored in internal data EEPROM.
  */
 #undef CONFIG_EOPTION
+
+/* Include code for handling external power */
+#define CONFIG_EXTPOWER
 
 /* Support turbo-mode chargers */
 #undef CONFIG_EXTPOWER_FALCO
