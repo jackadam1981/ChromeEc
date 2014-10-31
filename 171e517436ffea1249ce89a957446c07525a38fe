@@ -65,6 +65,24 @@
     },
     {
       "key": {
+        "uuid": "1594f24f_ff85c764",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-31T14:25:11Z",
+      "side": 1,
+      "message": "We can\u0027t use HOOK_SYSJUMP, that hook is called before a sysjump to give tasks time to do any cleanup.\n\nSheng and I talked about making a new hook for this, but in my opinion it\u0027s a waste to make a hook if this is the only place we use it. If it\u0027s needed in other places, then I\u0027m ok with it.\n\nAlso, I think tying it to chipset state is more appropriate than sysjump. If you imagine on the sensor hub, if the sensor hub is reset at any time, for example if it crashes and reboots, then when it comes up, it will be important to initialize the sensor state variables appropriately based on what state the AP is in. So, it\u0027s not just a sysjump that could cause this problem, the problem is simply that the state variables depend on chipset state, and therefore at init we have to know the chipset state.",
+      "parentUuid": "95a8e291_2f248921",
+      "revId": "171e517436ffea1249ce89a957446c07525a38fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1594f24f_14351a81",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
