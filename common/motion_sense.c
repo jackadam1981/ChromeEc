@@ -359,26 +359,11 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		if (sensor == NULL)
 			return EC_RES_INVALID_PARAM;
 
-		if (sensor->type == SENSOR_ACCELEROMETER)
-			out->info.type = MOTIONSENSE_TYPE_ACCEL;
-
-		else if (sensor->type == SENSOR_GYRO)
-			out->info.type = MOTIONSENSE_TYPE_GYRO;
-
-		if (sensor->location == LOCATION_BASE)
-			out->info.location = MOTIONSENSE_LOC_BASE;
-
-		else if (sensor->location == LOCATION_LID)
-			out->info.location = MOTIONSENSE_LOC_LID;
-
-		if (sensor->chip == SENSOR_CHIP_KXCJ9)
-			out->info.chip = MOTIONSENSE_CHIP_KXCJ9;
-
-		if (sensor->chip == SENSOR_CHIP_LSM6DS0)
-			out->info.chip = MOTIONSENSE_CHIP_LSM6DS0;
+		out->info.type = sensor->type;
+		out->info.location = sensor->location;
+		out->info.chip = sensor->chip;
 
 		args->response_size = sizeof(out->info);
-
 		break;
 
 	case MOTIONSENSE_CMD_EC_RATE:
