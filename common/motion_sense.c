@@ -60,14 +60,6 @@ static int accel_interval_ms;
 static int accel_disp;
 #endif
 
-/*
- * Angle threshold for how close the hinge aligns with gravity before
- * considering the lid angle calculation unreliable. For computational
- * efficiency, value is given unit-less, so if you want the threshold to be
- * at 15 degrees, the value would be cos(15 deg) = 0.96593.
- */
-#define HINGE_ALIGNED_WITH_GRAVITY_THRESHOLD 0.96593F
-
 static struct mutex g_sensor_mutex;
 
 static void motion_sense_shutdown(void)
@@ -198,18 +190,11 @@ static inline void motion_sense_init(struct motion_sensor_t *sensor)
 
 static int motion_sense_read(struct motion_sensor_t *sensor)
 {
-	int ret;
-
 	if (sensor->state != SENSOR_INITIALIZED)
 		return EC_ERROR_UNKNOWN;
 
 	/* Read all raw X,Y,Z accelerations. */
-	ret = sensor->drv->read(sensor, sensor->raw_xyz);
-
-	if (ret != EC_SUCCESS)
-		return EC_ERROR_UNKNOWN;
-
-	return EC_SUCCESS;
+	return sensor->drv->read(sensor, sensor->raw_xyz);
 }
 
 /*
@@ -296,7 +281,6 @@ void motion_sense_task(void)
 #ifdef CONFIG_LID_ANGLE
 		if (rd_cnt == motion_sensor_count)
 			motion_lid_calc();
-
 #endif
 #ifdef CONFIG_CMD_ACCEL_INFO
 		if (accel_disp) {
