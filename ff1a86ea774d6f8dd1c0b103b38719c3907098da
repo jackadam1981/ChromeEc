@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f582fe17_19455773",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-31T16:52:24Z",
+      "side": 1,
+      "message": "nit: multi-line comments don\u0027t have anything on first line:\n/*\n * comment\n */",
+      "range": {
+        "startLine": 257,
+        "startChar": 2,
+        "endLine": 257,
+        "endChar": 34
+      },
+      "revId": "ff1a86ea774d6f8dd1c0b103b38719c3907098da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d587ba27_1ee7f9c0",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-31T16:52:24Z",
+      "side": 1,
+      "message": "this is sorta confusing, i think you mean hook resume function will update it to S0 when AP boots. i think you can remove and make this a one line comment. \"sensor-\u003eactive already initializes to SENSOR_ACTIVE_S5\"",
+      "range": {
+        "startLine": 259,
+        "startChar": 6,
+        "endLine": 259,
+        "endChar": 46
+      },
+      "revId": "ff1a86ea774d6f8dd1c0b103b38719c3907098da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
