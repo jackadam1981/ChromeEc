@@ -29,10 +29,6 @@ static uint32_t info_data[6];
 
 extern void pd_rx_handler(void);
 
-/* RW firmware reset vector */
-static uint32_t * const rw_rst =
-	(uint32_t *)(CONFIG_FLASH_BASE+CONFIG_FW_RW_OFF+4);
-
 /* External interrupt EXTINT7 for external comparator on PA7 */
 void pd_rx_interrupt(void)
 {
@@ -41,21 +37,7 @@ void pd_rx_interrupt(void)
 }
 DECLARE_IRQ(STM32_IRQ_EXTI4_15, pd_rx_interrupt, 1);
 
-static void jump_to_rw(void)
-{
-	void (*jump_rw_rst)(void) = (void *)*rw_rst;
-
-	debug_printf("Jump to RW\n");
-	/* Disable interrupts */
-	asm volatile("cpsid i");
-	/* Call RW firmware reset vector */
-	jump_rw_rst();
-}
-
-int is_ro_mode(void)
-{
-	return (uint32_t)&jump_to_rw < (uint32_t)rw_rst;
-}
+extern uint32_t * const rw_rst;
 
 static int check_rw_valid(void)
 {
@@ -104,14 +86,14 @@ int main(void)
 {
 	hardware_init();
 	debug_printf("Power supply started ... %s\n",
-		is_ro_mode() ? "RO" : "RW");
+		pd_is_ro_mode() ? "RO" : "RW");
 
 	/* calculate hash of RW */
 	rw_hash = flash_hash_rw();
 
 	/* Verify RW firmware and use it if valid */
-	if (is_ro_mode() && check_rw_valid())
-		jump_to_rw();
+	if (pd_is_ro_mode() && check_rw_valid())
+		pd_jump_to_rw();
 
 	/* background loop for PD events */
 	pd_task();

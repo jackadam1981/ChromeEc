@@ -795,6 +795,13 @@ void pd_new_contract(int port, int pr_role, int dr_role,
 void pd_execute_data_swap(int port, int data_role);
 
 /**
+ * Get PD device info used for VDO_CMD_SEND_INFO / VDO_CMD_READ_INFO
+ *
+ * @param info_data pointer to info data array
+ */
+void pd_get_info(uint32_t *info_data);
+
+/**
  * Handle Vendor Defined Messages
  *
  * @param port     USB-C port number
@@ -1161,4 +1168,11 @@ void pd_soft_reset(void);
  * @param port USB-C port number
  */
 void pd_set_new_power_request(int port);
+
+/* */
+int pd_is_ro_mode(void);
+
+/* */
+void pd_jump_to_rw(void);
+
 #endif  /* __USB_PD_H */

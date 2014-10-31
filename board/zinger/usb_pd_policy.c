@@ -513,19 +513,19 @@ static int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 		break;
 	case VDO_CMD_READ_INFO:
 		/* copy info into response */
-		memcpy(payload + 1, board_get_info(), 24);
+		pd_get_info(payload + 1);
 		rsize = 7;
 		break;
 	case VDO_CMD_FLASH_ERASE:
 		/* do not kill the code under our feet */
-		if (!is_ro_mode())
+		if (!pd_is_ro_mode())
 			break;
 		flash_offset = 0;
 		flash_erase_rw();
 		break;
 	case VDO_CMD_FLASH_WRITE:
 		/* do not kill the code under our feet */
-		if (!is_ro_mode())
+		if (!pd_is_ro_mode())
 			break;
 		flash_write_rw(flash_offset, 4*(cnt - 1),
 			       (const char *)(payload+1));
