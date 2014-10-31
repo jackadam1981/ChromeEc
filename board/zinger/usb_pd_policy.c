@@ -376,29 +376,6 @@ void pd_adc_interrupt(void)
 DECLARE_IRQ(STM32_IRQ_ADC_COMP, pd_adc_interrupt, 1);
 
 /* ----------------- Vendor Defined Messages ------------------ */
-static uint32_t info_data[6];
-uint32_t *pd_get_info(void)
-{
-	void *hash;
-
-	/* calculate RW hash */
-	hash = flash_hash_rw();
-	/* copy first 20 bytes of RW hash */
-	memcpy(info_data, hash, 5 * sizeof(uint32_t));
-	/* copy other info into data msg */
-#ifdef BOARD_ZINGER
-	info_data[5] = VDO_INFO(USB_PD_HW_DEV_ID_ZINGER, 1,
-				ver_get_numcommits(), !is_ro_mode());
-#elif defined(BOARD_MINIMUFFIN)
-	info_data[5] = VDO_INFO(USB_PD_HW_DEV_ID_MINIMUFFIN, 0,
-				ver_get_numcommits(), !is_ro_mode());
-#else
-#error "Board does not have a USB-PD HW Device ID"
-#endif
-
-	return info_data;
-}
-
 static int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 			 uint32_t **rpayload)
 {
@@ -420,7 +397,7 @@ static int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 		break;
 	case VDO_CMD_READ_INFO:
 		/* copy info into response */
-		memcpy(payload + 1, pd_get_info(), 24);
+		pd_get_info(payload + 1);
 		rsize = 7;
 		break;
 	case VDO_CMD_FLASH_ERASE:

@@ -131,6 +131,12 @@ static void board_init_spi2(void)
 }
 #endif /* CONFIG_SPI_FLASH */
 
+int is_ro_mode(void)
+{
+	/* TODO(tbroch) : This is absolutely wrong and I should be flogged */
+	return 0;
+}
+
 /* Initialize board. */
 static void board_init(void)
 {
