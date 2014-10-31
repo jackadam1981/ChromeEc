@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1594f24f_5af189f9",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-31T14:38:05Z",
+      "side": 1,
+      "message": "in this else case, you should either set the active variable to ACTIVE_S5, or you should add a comment that the active variable defaults to S5. Just for readability.",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 2
+      },
+      "revId": "d93303146c2739f5c82c29a8fe0848e2cb15302b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
