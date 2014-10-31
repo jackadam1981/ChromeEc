@@ -142,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "d587ba27_4bc36c16",
+        "filename": "board/strago/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-10-31T19:50:24Z",
+      "side": 1,
+      "message": "we have currently only one piece of hardware as far as I understand. So I don\u0027t see why we have 2 options in that file.\nIf that\u0027s (always) inverted, great ... keep only the first option.",
+      "parentUuid": "758d2e44_f406d0b7",
+      "revId": "dd85bd6164925a78e7b86b6e95d410f91cdf7114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "956b82dc_9e700782",
         "filename": "board/strago/build.mk",
         "patchSetId": 1
