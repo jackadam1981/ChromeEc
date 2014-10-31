@@ -21,6 +21,8 @@
 #define CONFIG_CMD_SPI_FLASH
 #define CONFIG_HW_CRC
 #define CONFIG_I2C
+#define CONFIG_RSA
+#define CONFIG_SHA256
 /* TODO(tbroch) Re-enable once STM spi master can be inhibited at boot so it
    doesn't interfere with HDMI loading its f/w */
 #undef CONFIG_SPI_FLASH
@@ -34,6 +36,7 @@
 #define CONFIG_USB_PD_ALT_MODE
 #define CONFIG_USB_PD_DUAL_ROLE
 #define CONFIG_USB_PD_CUSTOM_VDM
+#define CONFIG_USB_PD_FLASH
 #define CONFIG_USB_PD_INTERNAL_COMP
 #define CONFIG_USB_PD_IDENTITY_HW_VERS 1
 #define CONFIG_USB_PD_IDENTITY_SW_VERS 1

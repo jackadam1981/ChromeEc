@@ -1087,6 +1087,9 @@
 /* Dynamic USB PD source capability */
 #undef CONFIG_USB_PD_DYNAMIC_SRC_CAP
 
+/* Support USB PD on-chip flash programming */
+#undef CONFIG_USB_PD_FLASH
+
 /* Check whether PD is the sole power source before flash erase operation */
 #undef CONFIG_USB_PD_FLASH_ERASE_CHECK
 
