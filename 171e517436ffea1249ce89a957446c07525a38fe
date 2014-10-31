@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "d587ba27_c3982a09",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-10-31T14:36:33Z",
+      "side": 1,
+      "message": "I\u0027m just saying that I would like to see that if you sysjump when in S0 and in S5 that it works for both. Yes, the old code should have handled the S5 case, but now that the code was changed, I just wanted to be sure that this still works.",
+      "parentUuid": "1594f24f_5f85fbe7",
+      "revId": "171e517436ffea1249ce89a957446c07525a38fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95a8e291_2f248921",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
