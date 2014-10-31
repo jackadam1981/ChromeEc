@@ -163,6 +163,8 @@ struct pd_policy {
 	int svid_idx;
 	/* count of svids discovered */
 	int svid_cnt;
+	/* SVDM identity info (Id, Cert Stat, 0-4 Typec specific) */
+	uint32_t identity[PDO_MAX_OBJECTS - 1];
 	/* supported svids & corresponding vdo mode data */
 	struct svdm_svid_data svids[SVID_DISCOVERY_MAX];
 	/*  active mode */
@@ -272,9 +274,9 @@ struct pd_policy {
 #define IDH_PTYPE_UNDEF  0
 #define IDH_PTYPE_HUB    1
 #define IDH_PTYPE_PERIPH 2
+#define IDH_PTYPE_PCABLE 3
 #define IDH_PTYPE_ACABLE 4
-#define IDH_PTYPE_PCABLE 5
-#define IDH_PTYPE_AMA    6
+#define IDH_PTYPE_AMA    5
 
 #define VDO_IDH(usbh, usbd, ptype, is_modal, vid)		\
 	((usbh) << 31 | (usbd) << 30 | ((ptype) & 0x7) << 27	\
@@ -299,6 +301,7 @@ struct pd_policy {
  * <15:0>  : USB bcdDevice
  */
 #define VDO_PRODUCT(pid, bcd) (((pid) & 0xffff) << 16 | ((bcd) & 0xffff))
+#define PD_PRODUCT_PID(vdo) (((vdo) >> 16) & 0xffff)
 
 /*
  * Cable VDO
