@@ -454,6 +454,8 @@ struct pd_policy {
 #define USB_PD_HW_DEV_ID_RESERVED    0
 #define USB_PD_HW_DEV_ID_ZINGER      1
 #define USB_PD_HW_DEV_ID_MINIMUFFIN  2
+#define USB_PD_HW_DEV_ID_DINGDONG    3
+#define USB_PD_HW_DEV_ID_HOHO        4
 
 /*
  * ChromeOS specific VDO_CMD_READ_INFO responds with device info including:
@@ -704,9 +706,9 @@ int pd_power_swap(int port);
 /**
  * Get PD device info used for VDO_CMD_SEND_INFO / VDO_CMD_READ_INFO
  *
- * @return Pointer to data payload for VDO_CMD_*_INFO
+ * @param info_data pointer to info data array
  */
-uint32_t *pd_get_info(void);
+void pd_get_info(uint32_t *info_data);
 
 /**
  * Handle Vendor Defined Messages
@@ -1022,5 +1024,11 @@ void pd_ping_enable(int port, int enable);
 
 /* Issue PD soft reset */
 void pd_soft_reset(void);
+
+/* */
+int pd_is_ro_mode(void);
+
+/* */
+void pd_jump_to_rw(void);
 
 #endif  /* __USB_PD_H */

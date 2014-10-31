@@ -109,6 +109,12 @@ static void board_init(void)
 
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
+int is_ro_mode(void)
+{
+	/* TODO(tbroch) : This is absolutely wrong and I should be flogged */
+	return 0;
+}
+
 /* ADC channels */
 const struct adc_t adc_channels[] = {
 	/* USB PD CC lines sensing. Converted to mV (3300mV/4096). */
