@@ -48,9 +48,9 @@ const struct accel_param_pair dps_ranges[] = {
 };
 
 static inline const struct accel_param_pair *get_range_table(
-		enum sensor_type_t type, int *psize)
+		enum motionsensor_type type, int *psize)
 {
-	if (SENSOR_ACCELEROMETER == type) {
+	if (MOTIONSENSE_TYPE_ACCEL == type) {
 		if (psize)
 			*psize = ARRAY_SIZE(g_ranges);
 		return g_ranges;
@@ -84,9 +84,9 @@ const struct accel_param_pair gyro_off_odr[] = {
 };
 
 static inline const struct accel_param_pair *get_odr_table(
-		enum sensor_type_t type, int *psize)
+		enum motionsensor_type type, int *psize)
 {
-	if (SENSOR_ACCELEROMETER == type) {
+	if (MOTIONSENSE_TYPE_ACCEL == type) {
 		if (psize)
 			*psize = ARRAY_SIZE(gyro_off_odr);
 		return gyro_off_odr;
@@ -97,15 +97,15 @@ static inline const struct accel_param_pair *get_odr_table(
 	}
 }
 
-static inline int get_ctrl_reg(enum sensor_type_t type)
+static inline int get_ctrl_reg(enum motionsensor_type type)
 {
-	return (SENSOR_ACCELEROMETER == type) ?
+	return (MOTIONSENSE_TYPE_ACCEL == type) ?
 		LSM6DS0_CTRL_REG6_XL : LSM6DS0_CTRL_REG1_G;
 }
 
-static inline int get_xyz_reg(enum sensor_type_t type)
+static inline int get_xyz_reg(enum motionsensor_type type)
 {
-	return (SENSOR_ACCELEROMETER == type) ?
+	return (MOTIONSENSE_TYPE_ACCEL == type) ?
 		LSM6DS0_OUT_X_L_XL : LSM6DS0_OUT_X_L_G;
 }
 
@@ -254,7 +254,7 @@ static int set_data_rate(const struct motion_sensor_t *s,
 	 * [3:0] HPCF_G
 	 *       Table 48 Gyroscope high-pass filter cutoff frequency
 	 */
-	if (SENSOR_GYRO == s->type) {
+	if (MOTIONSENSE_TYPE_GYRO == s->type) {
 		ret = raw_read8(s->i2c_addr, LSM6DS0_CTRL_REG3_G, &val);
 		if (ret != EC_SUCCESS)
 			goto accel_cleanup;
@@ -308,7 +308,7 @@ static int is_data_ready(const struct motion_sensor_t *s, int *ready)
 		return ret;
 	}
 
-	if (SENSOR_ACCELEROMETER == s->type)
+	if (MOTIONSENSE_TYPE_ACCEL == s->type)
 		*ready = (LSM6DS0_STS_XLDA_UP == (tmp & LSM6DS0_STS_XLDA_MASK));
 	else
 		*ready = (LSM6DS0_STS_GDA_UP == (tmp & LSM6DS0_STS_GDA_MASK));
@@ -365,7 +365,7 @@ static int read(const struct motion_sensor_t *s, vector_3_t v)
 	v[2] *= range;
 
 	/* normalize the accel scale: 1G = 1024 */
-	if (SENSOR_ACCELEROMETER == s->type) {
+	if (MOTIONSENSE_TYPE_ACCEL == s->type) {
 		v[0] >>= 5;
 		v[1] >>= 5;
 		v[2] >>= 5;
@@ -401,7 +401,7 @@ static int init(const struct motion_sensor_t *s)
 	 * Requirement: Accel need be init before gyro.
 	 * SW_RESET is down for accel only!
 	 */
-	if (SENSOR_ACCELEROMETER == s->type) {
+	if (MOTIONSENSE_TYPE_ACCEL == s->type) {
 
 		mutex_lock(s->mutex);
 		ret = raw_read8(s->i2c_addr, LSM6DS0_CTRL_REG8, &tmp);
@@ -431,7 +431,7 @@ static int init(const struct motion_sensor_t *s)
 			return EC_ERROR_UNKNOWN;
 	}
 
-	if (SENSOR_GYRO == s->type) {
+	if (MOTIONSENSE_TYPE_GYRO == s->type) {
 		/* Config GYRO Range */
 		ret = set_range(s, s->range, 1);
 		if (ret)
