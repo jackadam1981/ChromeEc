@@ -513,7 +513,7 @@ static int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 		break;
 	case VDO_CMD_READ_INFO:
 		/* copy info into response */
-		memcpy(payload + 1, board_get_info(), 24);
+		pd_get_info(payload + 1);
 		rsize = 7;
 		break;
 	case VDO_CMD_FLASH_ERASE:
