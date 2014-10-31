@@ -115,8 +115,10 @@ uint32_t task_wait_event(int timeout_us)
 {
 	uint32_t evt;
 	timestamp_t t0, t1;
+#if 0
 	uint32_t rtc0, rtc0ss, rtc1, rtc1ss;
 	int rtc_diff;
+#endif
 
 	t1.val = get_time().val + timeout_us;
 
@@ -144,7 +146,9 @@ uint32_t task_wait_event(int timeout_us)
 			asm volatile("wfi");
 
 			STM32_TIM_DIER(2) = 0; /* disable match interrupt */
-		} else {
+		}
+#if 0
+ else {
 			t0 = get_time();
 
 			/* set deep sleep bit */
@@ -165,6 +169,7 @@ uint32_t task_wait_event(int timeout_us)
 			t0.val = t0.val + rtc_diff;
 			force_time(t0);
 		}
+#endif
 
 		asm volatile("cpsie i ; isb");
 		/* note: interrupt that woke us up will run here */
