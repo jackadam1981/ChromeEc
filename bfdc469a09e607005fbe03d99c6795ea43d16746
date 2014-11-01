@@ -16,6 +16,24 @@
       "revId": "bfdc469a09e607005fbe03d99c6795ea43d16746",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35b576f8_b0f5a0e7",
+        "filename": "board/ryu_sh/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-11-01T00:22:57Z",
+      "side": 1,
+      "message": "If use EC_MOTION_SENSOR_...,\n  \n        [EC_MOTION_SENSOR_ACCEL_BASE] \u003d { },\n        [EC_MOTION_SENSOR_ACCEL_LID    ] \u003d { },\n        [EC_MOTION_SENSOR_GYRO             ] \u003d { }",
+      "parentUuid": "156dd243_6ce3efe8",
+      "revId": "bfdc469a09e607005fbe03d99c6795ea43d16746",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
