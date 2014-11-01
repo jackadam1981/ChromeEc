@@ -16,6 +16,24 @@
       "revId": "b3515ce214159c6a76b6ea5eb08988a4206af8fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "758d2e44_82a0eaac",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-11-01T21:26:17Z",
+      "side": 1,
+      "message": "Nobody is using host_id; even ectool, we can retrieve the type of sensor with \u0027motiontion info\u0027 command.\nI can not change the order of sensor in motion_sensors:\ncros_ec_accel driver (currently) makes assumption on the sensors order in motion_sensors: accel base, accel lid, gyro. As written today it works only on samus.\n\nAdded argument check.",
+      "parentUuid": "156dd243_8c42eb35",
+      "revId": "b3515ce214159c6a76b6ea5eb08988a4206af8fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
