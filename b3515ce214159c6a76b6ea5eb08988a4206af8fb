@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "156dd243_8c42eb35",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-11-01T00:01:46Z",
+      "side": 1,
+      "message": "Before: The array index of motion_sensors is a different type than host_id.\nI have to do a search to find the sensor pointer.  I don\u0027t like the code in the left either.\n\n(your patch):  map host_id indirectly into index.  It will keep this logic simpler too.  I thought the same things when I modified these piece of logic.\n\nThe only cons is that a user need define motion sensor array in the same order as the host IDs. \n\nIn board.c, we need change the array init code as the following:\n{\n  [MOTION_SENSOR_HOST_ID_0] \u003d ...\n  [MOTION_SENSOR_HOST_ID_1] \u003d ...\n    ...\n}\n\nNote: Please add a argument check in the host_id.\n\nif (host_id \u003e motion_sensor_count)\n     return NULL;\n\nsensor \u003d \u0026motion_sensors[host_id];",
+      "revId": "b3515ce214159c6a76b6ea5eb08988a4206af8fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
