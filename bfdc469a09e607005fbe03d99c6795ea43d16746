@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "156dd243_6ce3efe8",
+        "filename": "board/ryu_sh/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-11-01T00:08:08Z",
+      "side": 1,
+      "message": "Please add note for the order is important here: array index is the same host_id.\n\n[SENSOR_HOST_ID_...] \u003d { },\n[SENSOR_HOST_ID_...] \u003d { },\n...",
+      "revId": "bfdc469a09e607005fbe03d99c6795ea43d16746",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
