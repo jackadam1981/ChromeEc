@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35973656_32ece8a0",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2394,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-02T21:12:35Z",
+      "side": 1,
+      "message": "Do we really need to support old firmware? The only products this has been released on are clapper/glimmer which are running on a branch anyway. I think for ToT, we can remove support for this.",
+      "range": {
+        "startLine": 2394,
+        "startChar": 14,
+        "endLine": 2394,
+        "endChar": 34
+      },
+      "revId": "3ba0fa9f0ad63fe38889ae093bd9dbc43669c1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
