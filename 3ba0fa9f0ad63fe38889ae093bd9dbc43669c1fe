@@ -22,6 +22,30 @@
       "revId": "3ba0fa9f0ad63fe38889ae093bd9dbc43669c1fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "758d2e44_22ed764e",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2394,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-11-02T23:01:26Z",
+      "side": 1,
+      "message": "yes we do. firmware is on a branch, but cros image can be compiled from ToT. ectool is part of cros image (with ec-[dev]utils packages).",
+      "parentUuid": "35973656_32ece8a0",
+      "range": {
+        "startLine": 2394,
+        "startChar": 14,
+        "endLine": 2394,
+        "endChar": 34
+      },
+      "revId": "3ba0fa9f0ad63fe38889ae093bd9dbc43669c1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
