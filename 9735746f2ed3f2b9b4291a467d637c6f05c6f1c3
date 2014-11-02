@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75ab6e9e_3e896980",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-02T20:52:57Z",
+      "side": 1,
+      "message": "is it worth extracting this information? i feel like we might as well just give the host the entire result. the kernel will eventually need a usb_pd header file and will can parse the packet itself.",
+      "range": {
+        "startLine": 447,
+        "startChar": 1,
+        "endLine": 448,
+        "endChar": 9
+      },
+      "revId": "9735746f2ed3f2b9b4291a467d637c6f05c6f1c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35973656_92d11cdf",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2827,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-02T20:52:57Z",
+      "side": 1,
+      "message": "nit, add one more space to align comment",
+      "range": {
+        "startLine": 2827,
+        "startChar": 14,
+        "endLine": 2827,
+        "endChar": 15
+      },
+      "revId": "9735746f2ed3f2b9b4291a467d637c6f05c6f1c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
