@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35973656_b2ce1838",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1393,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-02T21:01:12Z",
+      "side": 1,
+      "message": "not all platforms will have 3 sensors, can\u0027t we get rid of this, and in host_sensor_id_to_motion_sensor() we can use motion_sensor_count from board.c",
+      "range": {
+        "startLine": 1393,
+        "startChar": 8,
+        "endLine": 1393,
+        "endChar": 32
+      },
+      "revId": "35362fe267682a101405cef9d9dcadcd8a79e74e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
