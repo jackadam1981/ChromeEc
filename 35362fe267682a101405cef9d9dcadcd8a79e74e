@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75ab6e9e_be69f919",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-02T21:24:15Z",
+      "side": 0,
+      "message": "shouldn\u0027t this be in motion_lid.c?",
+      "range": {
+        "startLine": 69,
+        "startChar": 8,
+        "endLine": 69,
+        "endChar": 53
+      },
+      "revId": "35362fe267682a101405cef9d9dcadcd8a79e74e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
