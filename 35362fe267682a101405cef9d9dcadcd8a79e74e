@@ -22,6 +22,30 @@
       "revId": "35362fe267682a101405cef9d9dcadcd8a79e74e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "156dd243_2c249721",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-11-03T01:49:41Z",
+      "side": 0,
+      "message": "Yes it is (line 44). I forgot to remove it from motion_sense.c",
+      "parentUuid": "75ab6e9e_be69f919",
+      "range": {
+        "startLine": 69,
+        "startChar": 8,
+        "endLine": 69,
+        "endChar": 53
+      },
+      "revId": "35362fe267682a101405cef9d9dcadcd8a79e74e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
