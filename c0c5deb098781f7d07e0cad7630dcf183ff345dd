@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5c5fa79_e2691719",
+        "filename": "board/strago/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-11-03T21:26:17Z",
+      "side": 1,
+      "message": "This is always defined for board/strago, so you can just remove the #ifdef.",
+      "range": {
+        "startLine": 45,
+        "startChar": 7,
+        "endLine": 45,
+        "endChar": 36
+      },
+      "revId": "c0c5deb098781f7d07e0cad7630dcf183ff345dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15b23212_67619df4",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-11-03T21:26:17Z",
+      "side": 1,
+      "message": "This line is redundant. (already enabled at line 228)",
+      "revId": "c0c5deb098781f7d07e0cad7630dcf183ff345dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
