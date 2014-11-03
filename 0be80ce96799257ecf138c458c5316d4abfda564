@@ -190,6 +190,24 @@
     },
     {
       "key": {
+        "uuid": "d5c5fa79_6ec5f344",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-11-03T20:00:48Z",
+      "side": 1,
+      "message": "I agree that if you are used to working with Makefiles, you can figure it out without a problem. Still, I\u0027m against defining \u0027all\u0027 in 2 places if we can avoid it. Imagine someone wants to figure out what \u0027all\u0027 builds and he find one of the two definition and doesn\u0027t think of checking if there\u0027s a second one, it\u0027ll be quite confusing if he\u0027s not so familiar with debugging Makefiles. (I\u0027m not Makefile expert, and I\u0027m sure I\u0027d be confused if I stumble on this code.)\n\nAs for cut-and-pasting, you\u0027re right. We\u0027ll need to do cut and paste anyhow. However, duplicating something like \u0027PACK_SPI_IMAGE\u003dy\u0027 is less maintenance work then duplicating the full image path. And for your example, I would also prefer not to do different things based on the file name. (So far, we\u0027ve tried to make things explicit if possible.)",
+      "parentUuid": "75ab6e9e_81fb7c58",
+      "revId": "0be80ce96799257ecf138c458c5316d4abfda564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55c58a5b_f58b3825",
         "filename": "Makefile.rules",
         "patchSetId": 1
