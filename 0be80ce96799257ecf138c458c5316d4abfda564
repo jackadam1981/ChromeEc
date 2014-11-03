@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "758d2e44_aec4f74a",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2014-11-03T19:32:07Z",
+      "side": 1,
+      "message": "OK.",
+      "parentUuid": "d5b97ad9_9ffa1b53",
+      "revId": "0be80ce96799257ecf138c458c5316d4abfda564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5b97ad9_9f9e9b3b",
         "filename": "Makefile.rules",
         "patchSetId": 1
@@ -148,6 +166,24 @@
       "side": 1,
       "message": "I\u0027m sure it works, but defining \"all\" in 2 places makes it more difficult to figure out what happens when you do \"make all\".\n\nThe reason that I prefer not to put the output file name in board/strago/build.mk is that we\u0027ll have other board/chip that need SPI image, and the file name of the SPI image should be the same. Therefore, putting the file name there would just force us to copy-and-paste in the future. As for the 5-line ifeq, yes, you can do without it by:\n\n  SPI_IMAGE-$(PACK_SPI_IMAGE)\u003d$(out)/$(PROJECT).spi.bin\n  spi_image: $(SPI_IMAGE-y)",
       "parentUuid": "15bf92c3_968e8a89",
+      "revId": "0be80ce96799257ecf138c458c5316d4abfda564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75ab6e9e_81fb7c58",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2014-11-03T19:32:07Z",
+      "side": 1,
+      "message": "\"defining all in 2 places...\"\n\"More difficult\" depends on what you are used to. Dancing Makefiles are pretty mind boggling - why define a variable called \"SPI_IMAGE-\" if you are not going to use it - until you understand them. However we will change that.\n\n\"Force us to cut-and-paste\"\nYou are probably going to be doing cut and paste anyhow, the variable might be PACK_SPI_IMAGE or PACK_SPIIMAGE or PACK_SPI_Image. One can even make the case that the pack_ec.py script could look at the output filename and produce two different versions for a 4MB or 8MB device. In that case you would positively want to specify the filename. As it is your system just introduces an extra indirection which you need to follow to see what what it does.",
+      "parentUuid": "15f87289_f4afceee",
       "revId": "0be80ce96799257ecf138c458c5316d4abfda564",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
