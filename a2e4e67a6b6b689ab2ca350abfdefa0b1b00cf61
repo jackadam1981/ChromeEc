@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "75d9ae6e_ae2537d6",
+        "filename": "include/usb.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-11-04T14:48:33Z",
+      "side": 0,
+      "message": "No, not explicitly, but since no boards that use those chips seem to use USB right now there were no obvious candidates to condition on.  I would be happy to go to the STM docs to figure out which chips use which access method, but I\u0027d also be happy to do that later as we decide to use USB on one of those parts.  Unless I\u0027m missing something, and there are boards that use this functionality that I missed with a buildall.",
+      "parentUuid": "15b23212_dde6fe70",
+      "revId": "a2e4e67a6b6b689ab2ca350abfdefa0b1b00cf61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15b23212_dd695e19",
         "filename": "util/getversion.sh",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-11-04T00:09:27Z",
       "side": 0,
       "message": "I much prefer $(cmd) to `cmd`. Cleaner to parse, and can be nested.",
+      "revId": "a2e4e67a6b6b689ab2ca350abfdefa0b1b00cf61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15b23212_6db3b70f",
+        "filename": "util/getversion.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-11-04T14:48:33Z",
+      "side": 0,
+      "message": "I agree, but am not sure what your comment is requesting.  :)  Are you asking me to make the change in this lines new home in getdate.sh?",
+      "parentUuid": "15b23212_dd695e19",
       "revId": "a2e4e67a6b6b689ab2ca350abfdefa0b1b00cf61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
