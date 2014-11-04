@@ -160,9 +160,9 @@ static int dfp_consume_attention(int port, uint32_t *payload)
 			opos, pe[port].amode.index + 1);
 		return 0; /* NAK */
 	}
-	if (!pe[port].amode.fx->attention)
-		return 0;
-	return pe[port].amode.fx->attention(port, payload);
+	if (pe[port].amode.fx->attention)
+		pe[port].amode.fx->attention(port, payload);
+	return 0;
 }
 
 int pd_exit_mode(int port, uint32_t *payload)
@@ -269,7 +269,12 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 			break;
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
 		case CMD_ATTENTION:
-			func = &dfp_consume_attention;
+			/*
+			 * attention is only SVDM with no response
+			 * (just goodCRC) return zero here.
+			 */
+			dfp_consume_attention(port, payload);
+			return 0;
 			break;
 #endif
 		default:
