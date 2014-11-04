@@ -208,6 +208,24 @@
     },
     {
       "key": {
+        "uuid": "35ce56a4_174e96ff",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2014-11-04T18:36:22Z",
+      "side": 1,
+      "message": "How about the following?\nIn Makefile, change the \"all: $(out)/$(PROJECT).spi.bin\" to\n\"# mention the traditional all target here so it is the first one defined if  SYMLINK is false. The targets for it are at the bottom of this file as they depend on values defined in the chip and board specific files\n\"\n\nand then add the line for all the prerequisites near the bottom?\nThen remove these lines from this file.",
+      "parentUuid": "d5c5fa79_6ec5f344",
+      "revId": "0be80ce96799257ecf138c458c5316d4abfda564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55c58a5b_f58b3825",
         "filename": "Makefile.rules",
         "patchSetId": 1
