@@ -1434,6 +1434,15 @@ void pd_task(void)
 			}
 #endif
 			break;
+		case PD_STATE_SRC_STARTUP:
+			/* Wait for power source to enable */
+			if (pd[port].last_state != pd[port].task_state)
+				set_state_timeout(
+					port,
+					get_time().val +
+					PD_POWER_SUPPLY_TRANSITION_DELAY,
+					PD_STATE_SRC_DISCOVERY);
+			break;
 		case PD_STATE_SRC_DISCOVERY:
 			/* Send source cap some minimum number of times */
 			if (caps_count < PD_CAPS_COUNT) {
@@ -2172,8 +2181,9 @@ static int command_pd(int argc, char **argv)
 			"SNK_SWAP_SNK_DISABLE", "SNK_SWAP_SRC_DISABLE",
 			"SNK_SWAP_STANDBY", "SNK_SWAP_COMPLETE",
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
-			"SRC_DISCONNECTED", "SRC_DISCOVERY", "SRC_NEGOCIATE",
-			"SRC_ACCEPTED", "SRC_TRANSITION", "SRC_READY",
+			"SRC_DISCONNECTED", "SRC_STARTUP", "SRC_DISCOVERY",
+			"SRC_NEGOCIATE", "SRC_ACCEPTED", "SRC_TRANSITION",
+			"SRC_READY",
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 			"SRC_SWAP_INIT", "SRC_SWAP_SNK_DISABLE",
 			"SRC_SWAP_SRC_DISABLE", "SRC_SWAP_STANDBY",
