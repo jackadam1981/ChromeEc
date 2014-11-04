@@ -226,6 +226,24 @@
     },
     {
       "key": {
+        "uuid": "f50e7eb4_2a249fa3",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-11-04T22:22:11Z",
+      "side": 1,
+      "message": "Moving both definitions for \u0027all\u0027 to Makefile and adding comment for this sounds reasonable to me. Do you mind making the change to this CL so that I can make sure I understand your proposal correctly?",
+      "parentUuid": "35ce56a4_174e96ff",
+      "revId": "0be80ce96799257ecf138c458c5316d4abfda564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55c58a5b_f58b3825",
         "filename": "Makefile.rules",
         "patchSetId": 1
