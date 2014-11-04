@@ -87,6 +87,24 @@
       "revId": "a2e4e67a6b6b689ab2ca350abfdefa0b1b00cf61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75d9ae6e_0e856b2b",
+        "filename": "util/getversion.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-11-04T15:25:39Z",
+      "side": 0,
+      "message": "Assuming that that is what you meant, I\u0027ve changed getdate.sh.",
+      "parentUuid": "15b23212_6db3b70f",
+      "revId": "a2e4e67a6b6b689ab2ca350abfdefa0b1b00cf61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
