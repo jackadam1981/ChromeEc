@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35e3b620_e0646a43",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-04T23:22:41Z",
+      "side": 1,
+      "message": "typo?",
+      "revId": "cd8860cd61f03601284ea3ae04677f18adde4777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15e07212_1ab36110",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-04T23:22:41Z",
+      "side": 1,
+      "message": "the behavior has changed : the attention() function is now called when the opos or the svid are invalid",
+      "revId": "cd8860cd61f03601284ea3ae04677f18adde4777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
