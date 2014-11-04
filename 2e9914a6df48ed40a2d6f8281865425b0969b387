@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95f462d2_32788e31",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-04T23:10:16Z",
+      "side": 1,
+      "message": "nit: don\u0027t need break here",
+      "range": {
+        "startLine": 276,
+        "startChar": 3,
+        "endLine": 276,
+        "endChar": 8
+      },
+      "revId": "2e9914a6df48ed40a2d6f8281865425b0969b387",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
