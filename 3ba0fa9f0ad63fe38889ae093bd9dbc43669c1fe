@@ -46,6 +46,30 @@
       "revId": "3ba0fa9f0ad63fe38889ae093bd9dbc43669c1fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75d44e2e_f659e0d8",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2394,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-04T08:39:51Z",
+      "side": 1,
+      "message": "yes, but I don\u0027t think anyone uses this command, so it\u0027s ok for it to break temporarily.",
+      "parentUuid": "758d2e44_22ed764e",
+      "range": {
+        "startLine": 2394,
+        "startChar": 14,
+        "endLine": 2394,
+        "endChar": 34
+      },
+      "revId": "3ba0fa9f0ad63fe38889ae093bd9dbc43669c1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
