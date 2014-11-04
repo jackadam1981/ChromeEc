@@ -21,6 +21,11 @@
 /* Acceptable margin between requested VBUS and measured value */
 #define MARGIN_MV 400 /* mV */
 
+/* Define typical operating power and max power */
+#define OPERATING_POWER_MW 1000
+#define MAX_POWER_MW       1500
+#define MAX_CURRENT_MA     300
+
 /* we are not acting as a source */
 const uint32_t pd_src_pdo[] = {
 		PDO_FIXED(5000,   500, PDO_FIXED_EXTERNAL),
@@ -44,6 +49,7 @@ int pd_choose_voltage(int cnt, uint32_t *src_caps, uint32_t *rdo,
 	int i;
 	int ma;
 	int set_mv = select_mv;
+	int opr, max;
 
 	/* Default to 5V */
 	if (set_mv <= 0)
@@ -61,9 +67,11 @@ int pd_choose_voltage(int cnt, uint32_t *src_caps, uint32_t *rdo,
 
 	/* request all the power ... */
 	ma = 10 * (src_caps[i] & 0x3FF);
+	opr = MIN(ma, 1000 * OPERATING_POWER_MW / set_mv);
+	max = MIN(ma, MAX_CURRENT_MA);
 	*rdo = RDO_FIXED(i + 1, ma, ma, 0);
-	CPRINTF("Request [%d] %dV %dmA\n", i, set_mv/1000, ma);
-	*curr_limit = ma;
+	CPRINTF("Request [%d] %dV %d/%dmA\n", i, set_mv/1000, opr, max);
+	*curr_limit = max;
 	*supply_voltage = set_mv;
 	return EC_SUCCESS;
 }
