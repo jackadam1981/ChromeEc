@@ -912,8 +912,10 @@ static void handle_ctrl_request(int port, uint16_t head,
 		} else {
 			send_control(port, PD_CTRL_REJECT);
 		}
-		break;
+#else
+		send_control(port, PD_CTRL_REJECT);
 #endif
+		break;
 	case PD_CTRL_PROTOCOL_ERR:
 	case PD_CTRL_WAIT:
 	default:
