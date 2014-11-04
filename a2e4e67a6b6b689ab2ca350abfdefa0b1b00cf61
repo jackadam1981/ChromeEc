@@ -16,6 +16,23 @@
       "revId": "a2e4e67a6b6b689ab2ca350abfdefa0b1b00cf61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15b23212_dd695e19",
+        "filename": "util/getversion.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-11-04T00:09:27Z",
+      "side": 0,
+      "message": "I much prefer $(cmd) to `cmd`. Cleaner to parse, and can be nested.",
+      "revId": "a2e4e67a6b6b689ab2ca350abfdefa0b1b00cf61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
