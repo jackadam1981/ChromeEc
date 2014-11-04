@@ -17,6 +17,11 @@
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
+/* Define typical operating power and max power */
+#define OPERATING_POWER_MW 15000
+#define MAX_POWER_MW       60000
+#define MAX_CURRENT_MA     3000
+
 const uint32_t pd_src_pdo[] = {
 		PDO_FIXED(5000,  3000, PDO_FIXED_EXTERNAL|PDO_FIXED_DUAL_ROLE),
 		PDO_FIXED(12000, 3000, PDO_FIXED_EXTERNAL|PDO_FIXED_DUAL_ROLE),
@@ -41,6 +46,7 @@ int pd_choose_voltage(int cnt, uint32_t *src_caps, uint32_t *rdo,
 	int sel_mv;
 	int max_uw = 0;
 	int max_i = -1;
+	int opr, max;
 
 	/* Get max power */
 	for (i = 0; i < cnt; i++) {
@@ -63,18 +69,23 @@ int pd_choose_voltage(int cnt, uint32_t *src_caps, uint32_t *rdo,
 
 	/* request all the power ... */
 	if ((src_caps[max_i] & PDO_TYPE_MASK) == PDO_TYPE_BATTERY) {
-		int uw = 250000 * (src_caps[i] & 0x3FF);
-		*rdo = RDO_BATT(max_i + 1, uw/2, uw, 0);
-		*curr_limit = uw/sel_mv;
-		CPRINTF("Request [%d] %dV %dmW\n",
-			 max_i, sel_mv/1000, uw/1000);
+		int uw = 250000 * (src_caps[max_i] & 0x3FF);
+		opr = MIN(1000 * uw, OPERATING_POWER_MW);
+		max = MIN(1000 * uw, MAX_POWER_MW);
+		max_ma = 1000 * max / sel_mv;
+		*rdo = RDO_BATT(max_i + 1, opr, max, 0);
+		CPRINTF("Request [%d] %dV %d/%dmW\n",
+			max_i, sel_mv/1000, opr, max);
 	} else {
 		int ma = 10 * (src_caps[max_i] & 0x3FF);
-		*rdo = RDO_FIXED(max_i + 1, ma / 2, ma, 0);
-		*curr_limit = ma;
-		CPRINTF("Request [%d] %dV %dmA\n",
-			 max_i, sel_mv/1000, ma);
+		opr = MIN(ma, 1000 * OPERATING_POWER_MW / sel_mv);
+		max = MIN(ma, MAX_CURRENT_MA);
+		max_ma = max;
+		*rdo = RDO_FIXED(max_i + 1, opr, max, 0);
+		CPRINTF("Request [%d] %dV %d/%dmA\n",
+			max_i, sel_mv/1000, opr, max);
 	}
+	*curr_limit = max_ma;
 	*supply_voltage = sel_mv;
 	return EC_SUCCESS;
 }
