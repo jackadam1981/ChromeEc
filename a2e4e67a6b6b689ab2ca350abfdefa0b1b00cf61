@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "15b23212_2d348fd2",
+        "filename": "include/usb.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-11-04T15:23:10Z",
+      "side": 0,
+      "message": "OK, it took some reading, because the STM docs are not very consistent across families, but I found the correct information for each of our used families and will update this table.",
+      "parentUuid": "75d9ae6e_ae2537d6",
+      "revId": "a2e4e67a6b6b689ab2ca350abfdefa0b1b00cf61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15b23212_dd695e19",
         "filename": "util/getversion.sh",
         "patchSetId": 1
