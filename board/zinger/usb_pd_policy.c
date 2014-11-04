@@ -148,7 +148,6 @@ static void discharge_voltage(int target_volt)
 
 /* Power Delivery Objects */
 const uint32_t pd_src_pdo[] = {
-		PDO_FIXED(5000,   500, PDO_FIXED_EXTERNAL),
 		PDO_FIXED(5000,  RATED_CURRENT, PDO_FIXED_EXTERNAL),
 		PDO_FIXED(12000, RATED_CURRENT, PDO_FIXED_EXTERNAL),
 		PDO_FIXED(20000, RATED_CURRENT, PDO_FIXED_EXTERNAL),
