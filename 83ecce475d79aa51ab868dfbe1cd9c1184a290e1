@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b564069b_4b957947",
+        "filename": "board/ryu/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-05T23:58:10Z",
+      "side": 1,
+      "message": "actually setting the PDO_FIXED_EXTERNAL bit is more complicated than that, if Ryu is plugged on an AC adapter and not depleting its battery (total consumption \u003c AC max power) we should set it here.",
+      "revId": "83ecce475d79aa51ab868dfbe1cd9c1184a290e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "555bcae0_e57fb6d5",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 976,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-05T23:58:10Z",
+      "side": 1,
+      "message": "I feel the terminology is a bit confusing here :\nwe should explicitly state that has to do with the remote guy being dual-role capable rather than the port.",
+      "revId": "83ecce475d79aa51ab868dfbe1cd9c1184a290e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
