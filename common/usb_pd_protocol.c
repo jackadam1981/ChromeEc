@@ -1418,8 +1418,6 @@ void pd_task(void)
 				caps_count = 0;
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 				pd[port].original_power_role = PD_ROLE_SOURCE;
-				/* Keep VBUS up for the hold period */
-				next_role_swap = get_time().val + PD_T_DRP_HOLD;
 #endif
 			}
 #ifdef CONFIG_USB_PD_DUAL_ROLE
@@ -1447,6 +1445,11 @@ void pd_task(void)
 					PD_STATE_SRC_DISCOVERY);
 			break;
 		case PD_STATE_SRC_DISCOVERY:
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+			/* Keep VBUS up for the hold period */
+			if (pd[port].last_state != pd[port].task_state)
+				next_role_swap = get_time().val + PD_T_DRP_HOLD;
+#endif
 			/* Send source cap some minimum number of times */
 			if (caps_count < PD_CAPS_COUNT) {
 				/* Query capabilites of the other side */
@@ -1811,7 +1814,8 @@ void pd_task(void)
 		if (!pd_is_connected(port) || pd_is_power_swapping(port))
 			continue;
 #endif
-		if (pd[port].power_role == PD_ROLE_SOURCE) {
+		if (pd[port].power_role == PD_ROLE_SOURCE &&
+		    pd[port].task_state != PD_STATE_SRC_STARTUP) {
 			/* Source: detect disconnect by monitoring CC */
 			cc1_volt = pd_adc_read(port, pd[port].polarity);
 #ifdef CONFIG_USB_PD_DUAL_ROLE
