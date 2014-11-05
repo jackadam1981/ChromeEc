@@ -27,6 +27,7 @@ static int charge_ceil[PD_PORT_COUNT];
 static int charge_port = CHARGE_PORT_NONE;
 static int charge_current = CHARGE_CURRENT_UNINITIALIZED;
 static int charge_supplier = CHARGE_SUPPLIER_NONE;
+static int override_port = CHARGE_PORT_NONE;
 
 /**
  * Initialize available charge. Run before board init, so board init can
@@ -91,12 +92,19 @@ static void charge_manager_refresh(void)
 	 * so make no assumptions about its consistency.
 	 */
 	for (i = 0; i < CHARGE_SUPPLIER_COUNT; ++i)
-		for (j = 0; j < PD_PORT_COUNT; ++j)
+		for (j = 0; j < PD_PORT_COUNT; ++j) {
+			if (override_port != CHARGE_PORT_NONE &&
+			    override_port == new_port &&
+			    override_port != j)
+				continue;
+
 			if (available_charge[i][j].current > 0 &&
 			    available_charge[i][j].voltage > 0 &&
 			    (new_supplier == CHARGE_SUPPLIER_NONE ||
 			     supplier_priority[i] <
 			     supplier_priority[new_supplier] ||
+			    (j == override_port &&
+			     new_port != override_port) ||
 			    (supplier_priority[i] ==
 			     supplier_priority[new_supplier] &&
 			     POWER(available_charge[i][j]) >
@@ -105,6 +113,11 @@ static void charge_manager_refresh(void)
 				new_supplier = i;
 				new_port = j;
 			}
+		}
+
+	/* Clear override if no charge is available on override port */
+	if (override_port != CHARGE_PORT_NONE && override_port != new_port)
+		override_port = CHARGE_PORT_NONE;
 
 	if (new_supplier == CHARGE_SUPPLIER_NONE)
 		new_charge_current = new_charge_voltage = 0;
@@ -186,6 +199,23 @@ void charge_manager_set_ceil(int port, int ceil)
 		charge_ceil[port] = ceil;
 		if (port == charge_port && charge_manager_is_seeded())
 				hook_call_deferred(charge_manager_refresh, 0);
+	}
+}
+
+/**
+ * Select an 'override port', a port which is always the preferred charge port.
+ *
+ * @param port			Charge port to select as override, or
+ *				CHARGE_PORT_NONE to select no override port.
+ */
+void charge_manager_set_override(int port)
+{
+	ASSERT(port >= CHARGE_PORT_NONE && port < PD_PORT_COUNT);
+
+	if (override_port != port) {
+		override_port = port;
+		if (charge_manager_is_seeded())
+			hook_call_deferred(charge_manager_refresh, 0);
 	}
 }
 
@@ -291,3 +321,23 @@ DECLARE_HOST_COMMAND(EC_CMD_USB_PD_POWER_INFO,
 		     hc_pd_power_info,
 		     EC_VER_MASK(0));
 #endif /* TEST_CHARGE_MANAGER */
+
+static int command_charge_override(int argc, char **argv)
+{
+	int port = CHARGE_PORT_NONE;
+	char *e;
+
+	if (argc >= 2) {
+		port = strtoi(argv[1], &e, 0);
+		if (*e || port < CHARGE_PORT_NONE || port >= PD_PORT_COUNT)
+			return EC_ERROR_PARAM1;
+	}
+
+	charge_manager_set_override(port);
+	ccprintf("Force charge from port: %d\n", port);
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(chargeoverride, command_charge_override,
+	"[port | -1]",
+	"Force charging from a given port (-1 to disable override)",
+	NULL);
