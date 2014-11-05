@@ -438,6 +438,7 @@ enum pd_states {
 	PD_STATE_SOFT_RESET,
 	PD_STATE_HARD_RESET,
 	PD_STATE_BIST,
+	PD_STATE_BIST_TX,
 
 	/* Number of states. Not an actual state. */
 	PD_STATE_COUNT,

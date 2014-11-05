@@ -579,6 +579,7 @@ static void bist_mode_2_tx(int port)
 		return;
 
 	CPRINTF("BIST carrier 2 - sending on port %d\n", port);
+	set_state(port, PD_STATE_BIST_TX);
 
 	/*
 	 * build context buffer with 5 bytes, where the data is
@@ -1488,6 +1489,8 @@ void pd_task(void)
 			send_bist_cmd(port);
 			bist_mode_2_rx(port);
 			break;
+		case PD_STATE_BIST_TX:
+			bist_mode_2_tx(port);
 		default:
 			break;
 		}
@@ -1766,6 +1769,9 @@ static int command_pd(int argc, char **argv)
 	} else if (!strcasecmp(argv[2], "bist")) {
 		set_state(port, PD_STATE_BIST);
 		task_wake(PORT_TO_TASK_ID(port));
+	} else if (!strcasecmp(argv[2], "bisttx")) {
+		set_state(port, PD_STATE_BIST_TX);
+		task_wake(PORT_TO_TASK_ID(port));
 	} else if (!strcasecmp(argv[2], "charger")) {
 		pd[port].role = PD_ROLE_SOURCE;
 		pd_set_host_mode(port, 1);
@@ -1840,7 +1846,7 @@ static int command_pd(int argc, char **argv)
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 			"SRC_DISCONNECTED", "SRC_DISCOVERY", "SRC_NEGOCIATE",
 			"SRC_ACCEPTED", "SRC_TRANSITION", "SRC_READY",
-			"SOFT_RESET", "HARD_RESET", "BIST",
+			"SOFT_RESET", "HARD_RESET", "BIST", "BISTTX",
 		};
 		BUILD_ASSERT(ARRAY_SIZE(state_names) == PD_STATE_COUNT);
 		ccprintf("Port C%d, %s - Role: %s Polarity: CC%d State: %s\n",
