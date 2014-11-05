@@ -916,7 +916,10 @@ static void handle_ctrl_request(int port, uint16_t head,
 #else
 		send_control(port, PD_CTRL_REJECT);
 #endif
-	case PD_CTRL_PROTOCOL_ERR:
+	case PD_CTRL_DR_SWAP:
+	case PD_CTRL_VCONN_SWAP:
+		send_control(port, PD_CTRL_REJECT);
+		break;
 	case PD_CTRL_WAIT:
 	default:
 		CPRINTF("Unhandled ctrl message type %d\n", type);
