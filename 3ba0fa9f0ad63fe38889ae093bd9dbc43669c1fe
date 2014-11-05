@@ -70,6 +70,30 @@
       "revId": "3ba0fa9f0ad63fe38889ae093bd9dbc43669c1fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15e07212_28537233",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2394,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-11-05T16:48:44Z",
+      "side": 1,
+      "message": "I double check it works on older firmware. I can revert the order, so that we don\u0027t see error message on stderr, minimizing a personal script break.",
+      "parentUuid": "75d44e2e_f659e0d8",
+      "range": {
+        "startLine": 2394,
+        "startChar": 14,
+        "endLine": 2394,
+        "endChar": 34
+      },
+      "revId": "3ba0fa9f0ad63fe38889ae093bd9dbc43669c1fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
