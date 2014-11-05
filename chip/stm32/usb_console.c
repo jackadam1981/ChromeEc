@@ -107,7 +107,7 @@ USB_DECLARE_EP(USB_EP_CONSOLE, con_ep_tx, con_ep_rx, ep_reset);
 
 static int __tx_char(void *context, int c)
 {
-	uint16_t *buf = (uint16_t *)ep_buf_tx;
+	usb_uint *buf = (usb_uint *)ep_buf_tx;
 	int *tx_idx = context;
 
 	/* Do newline to CRLF translation */
