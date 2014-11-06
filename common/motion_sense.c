@@ -59,6 +59,8 @@ static int accel_interval_ms;
 #ifdef CONFIG_CMD_ACCEL_INFO
 static int accel_disp;
 #endif
+static uint8_t *lpc_status;
+static int16_t *lpc_data;
 
 static void motion_sense_shutdown(void)
 {
@@ -122,14 +124,13 @@ DECLARE_HOOK(HOOK_CHIPSET_RESUME, motion_sense_resume,
 	     MOTION_SENSE_HOOK_PRIO);
 
 /* Write to LPC status byte to represent that accelerometers are present. */
-static inline void set_present(uint8_t *lpc_status)
+static inline void set_present(void)
 {
 	*lpc_status |= EC_MEMMAP_ACC_STATUS_PRESENCE_BIT;
 }
 
 /* Update/Write LPC data */
-static inline void update_sense_data(uint8_t *lpc_status,
-		uint16_t *lpc_data, int *psample_id)
+static inline void update_sense_data(int *psample_id)
 {
 	int i;
 	struct motion_sensor_t *sensor;
@@ -210,8 +211,6 @@ void motion_sense_task(void)
 	int i;
 	int wait_us;
 	static timestamp_t ts0, ts1;
-	uint8_t *lpc_status;
-	uint16_t *lpc_data;
 	int sample_id = 0;
 	int rd_cnt;
 	struct motion_sensor_t *sensor;
@@ -227,7 +226,7 @@ void motion_sense_task(void)
 		sensor->range = sensor->default_range;
 	}
 
-	set_present(lpc_status);
+	set_present();
 
 	if (chipset_in_state(CHIPSET_STATE_ON)) {
 		/* Update the sensor current active state to S0. */
@@ -295,7 +294,7 @@ void motion_sense_task(void)
 			CPRINTF("]\n");
 		}
 #endif
-		update_sense_data(lpc_status, lpc_data, &sample_id);
+		update_sense_data(&sample_id);
 
 		/* Delay appropriately to keep sampling time consistent. */
 		ts1 = get_time();
@@ -363,6 +362,10 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 			args->response_size += sizeof(struct sensor_data) *
 				motion_sensor_count;
 		}
+		break;
+	case MOTIONSENSE_CMD_GET_STATUS:
+		out->status.value = *lpc_status;
+		args->response_size = sizeof(out->status);
 		break;
 
 	case MOTIONSENSE_CMD_INFO:
