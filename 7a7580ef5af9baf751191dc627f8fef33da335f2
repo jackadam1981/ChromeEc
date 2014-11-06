@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "950702cb_9a9569ce",
+        "filename": "board/dingdong/usb_pd_config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-11-06T17:02:44Z",
+      "side": 1,
+      "message": "nit, comment could mention its zero because this device is only a UFP, power consumer",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 68
+      },
+      "revId": "7a7580ef5af9baf751191dc627f8fef33da335f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
