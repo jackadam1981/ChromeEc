@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7578ce6f_16391cf8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-11-06T18:18:58Z",
+      "side": 1,
+      "message": "Would prefer this be sum of the other specifications like\n\n    (PD_T_SRC_REC + PD_T_SAFE_0V + PD_T_SRC_TURN_ON)\n\nsince when they change you\u0027re relying on someone finding the comment to fix.",
+      "range": {
+        "startLine": 194,
+        "startChar": 30,
+        "endLine": 194,
+        "endChar": 34
+      },
+      "revId": "3bbd64710ad903c8d6c68a7dfbd7e6e46362207c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "956382c3_17acb4ac",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1446,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-11-06T18:18:58Z",
+      "side": 1,
+      "message": "where does this come from?  More general, why do we use hardcoded numbers for these timeouts yet have some timers spec\u0027d PD_T_*",
+      "range": {
+        "startLine": 1446,
+        "startChar": 14,
+        "endLine": 1446,
+        "endChar": 21
+      },
+      "revId": "3bbd64710ad903c8d6c68a7dfbd7e6e46362207c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
