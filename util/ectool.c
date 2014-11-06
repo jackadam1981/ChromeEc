@@ -2426,6 +2426,7 @@ static int cmd_motionsense(int argc, char **argv)
 		if (rv == -EECRESULT - EC_RES_INVALID_PARAM) {
 			/* Let's try the new version */
 			param.cmd = MOTIONSENSE_CMD_GET_DATA;
+			param.data.sensor_number = ECTOOL_MAX_SENSOR;
 			rv = ec_command(
 				EC_CMD_MOTION_SENSE_CMD, 0,
 				&param, ms_command_sizes[param.cmd].insize,
