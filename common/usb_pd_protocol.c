@@ -191,6 +191,8 @@ static const uint8_t dec4b5b[] = {
 #define PD_T_DRP_SNK           (40*MSEC) /* toggle time for sink DRP */
 #define PD_T_DRP_SRC           (30*MSEC) /* toggle time for source DRP */
 #define PD_T_SRC_RECOVER      (760*MSEC) /* between 660ms and 1000ms */
+#define PD_T_SNK_RECOVER     (1925*MSEC) /* tSrcRecovery+tSafe0V+tSrcTurnOn */
+#define PD_T_NO_RESPONSE     (5000*MSEC) /* between 4.5s and 5.5s */
 
 /* from USB Type-C Specification Table 5-1 */
 #define PD_T_AME (1*SECOND) /* timeout from UFP attach to Alt Mode Entry */
@@ -248,6 +250,8 @@ static struct pd_protocol {
 	uint8_t drp_partner;
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
+	/* Time for sink recovery after hard reset */
+	uint64_t snk_recover;
 	/* Current limit / voltage based on the last request message */
 	uint32_t curr_limit;
 	uint32_t supply_voltage;
@@ -694,7 +698,8 @@ static void execute_hard_reset(int port)
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	/* Go to source or sink role based on original power role */
 	set_state(port, pd[port].power_role == PD_ROLE_SINK ?
-		PD_STATE_SNK_DISCONNECTED : PD_STATE_SRC_DISCONNECTED);
+		PD_STATE_SNK_HARD_RESET_RECOVER :
+		PD_STATE_SRC_HARD_RESET_RECOVER);
 
 	/* Clear the input current limit */
 	pd_set_input_current_limit(port, 0, 0);
@@ -702,7 +707,7 @@ static void execute_hard_reset(int port)
 	typec_set_input_current_limit(port, 0, 0);
 #endif /* CONFIG_CHARGE_MANAGER */
 #else
-	set_state(port, PD_STATE_SRC_DISCONNECTED);
+	set_state(port, PD_STATE_SRC_HARD_RESET_RECOVER);
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 	pd_power_supply_reset(port);
 	pd[port].src_recover = get_time().val + PD_T_SRC_RECOVER;
@@ -785,6 +790,7 @@ static void handle_data_request(int port, uint16_t head,
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	case PD_DATA_SOURCE_CAP:
 		if ((pd[port].task_state == PD_STATE_SNK_DISCOVERY)
+			|| (pd[port].task_state == PD_STATE_SNK_HARD_RESET_RECOVER)
 			|| (pd[port].task_state == PD_STATE_SNK_TRANSITION)
 			|| (pd[port].task_state == PD_STATE_SNK_READY)) {
 			pd_store_src_cap(port, cnt, payload);
@@ -1388,15 +1394,9 @@ void pd_task(void)
 			cc2_volt = pd_adc_read(port, 1);
 			if ((cc1_volt < PD_SRC_VNC) ||
 			    (cc2_volt < PD_SRC_VNC)) {
-				/* Break if in hard reset recovery time */
-				if (get_time().val < pd[port].src_recover)
-					break;
-
 				pd[port].polarity =
 					GET_POLARITY(cc1_volt, cc2_volt);
 				pd_select_polarity(port, pd[port].polarity);
-				/* reset message ID counter on connection */
-				pd[port].msg_id = 0;
 				/* Set to USB SS initially */
 #ifdef CONFIG_USBC_SS_MUX
 				board_set_usb_mux(port, TYPEC_MUX_USB,
@@ -1432,11 +1432,28 @@ void pd_task(void)
 			}
 #endif
 			break;
+		case PD_STATE_SRC_HARD_RESET_RECOVER:
+			/* Do not continue until hard reset recovery time */
+			if (get_time().val < pd[port].src_recover) {
+				timeout = 50*MSEC;
+				break;
+			}
+
+			/* Enable VBUS */
+			timeout = 10*MSEC;
+			if (pd_set_power_supply_ready(port)) {
+				set_state(port, PD_STATE_SRC_DISCONNECTED);
+				break;
+			}
+			set_state(port, PD_STATE_SRC_STARTUP);
+			break;
 		case PD_STATE_SRC_STARTUP:
 			/* Wait for power source to enable */
 			if (pd[port].last_state != pd[port].task_state) {
+				/* reset various counters */
 				caps_count = 0;
 				src_connected = 0;
+				pd[port].msg_id = 0;
 				set_state_timeout(
 					port,
 					get_time().val +
@@ -1671,6 +1688,15 @@ void pd_task(void)
 				timeout = 2*MSEC;
 			}
 			break;
+		case PD_STATE_SNK_HARD_RESET_RECOVER:
+			if (pd[port].last_state != pd[port].task_state) {
+				pd[port].snk_recover = get_time().val + PD_T_SNK_RECOVER;
+				set_state_timeout(port,
+						  get_time().val +
+						  PD_T_NO_RESPONSE,
+						  PD_STATE_HARD_RESET);
+			}
+			break;
 		case PD_STATE_SNK_DISCOVERY:
 			/*
 			 * Wait for source cap expired only if we are enabled
@@ -1846,8 +1872,14 @@ void pd_task(void)
 			}
 		}
 #ifdef CONFIG_USB_PD_DUAL_ROLE
+		/*
+		 * Sink disconnect if VBUS is low and we are not recovering
+		 * a hard reset.
+		 */
 		if (pd[port].power_role == PD_ROLE_SINK &&
-		    !pd_snk_is_vbus_provided(port)) {
+		    !pd_snk_is_vbus_provided(port) &&
+		    (pd[port].task_state != PD_STATE_SNK_HARD_RESET_RECOVER ||
+		     get_time().val >= pd[port].snk_recover)) {
 			/* Sink: detect disconnect by monitoring VBUS */
 			set_state(port, PD_STATE_SNK_DISCONNECTED);
 			/* Clear the input current limit */
@@ -2196,12 +2228,14 @@ static int command_pd(int argc, char **argv)
 		const char * const state_names[] = {
 			"DISABLED", "SUSPENDED",
 #ifdef CONFIG_USB_PD_DUAL_ROLE
-			"SNK_DISCONNECTED", "SNK_DISCOVERY", "SNK_REQUESTED",
+			"SNK_DISCONNECTED", "SNK_HARD_RESET_RECOVER",
+			"SNK_DISCOVERY", "SNK_REQUESTED",
 			"SNK_TRANSITION", "SNK_READY", "SNK_SWAP_INIT",
 			"SNK_SWAP_SNK_DISABLE", "SNK_SWAP_SRC_DISABLE",
 			"SNK_SWAP_STANDBY", "SNK_SWAP_COMPLETE",
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
-			"SRC_DISCONNECTED", "SRC_STARTUP", "SRC_DISCOVERY",
+			"SRC_DISCONNECTED", "SRC_HARD_RESET_RECOVER",
+			"SRC_STARTUP", "SRC_DISCOVERY",
 			"SRC_NEGOCIATE", "SRC_ACCEPTED", "SRC_TRANSITION",
 			"SRC_READY",
 #ifdef CONFIG_USB_PD_DUAL_ROLE
