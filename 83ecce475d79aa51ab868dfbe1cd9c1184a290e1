@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "35165601_f4d75851",
+        "filename": "board/ryu/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-06T06:55:00Z",
+      "side": 1,
+      "message": "Yes, I was putting that off in this CL, we still have to do it correctly.",
+      "parentUuid": "b564069b_4b957947",
+      "revId": "83ecce475d79aa51ab868dfbe1cd9c1184a290e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "555bcae0_e57fb6d5",
         "filename": "include/usb_pd.h",
         "patchSetId": 3
