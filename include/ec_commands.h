@@ -1363,10 +1363,20 @@ enum motionsensor_chip {
 struct ec_params_motion_sense {
 	uint8_t cmd;
 	union {
-		/* Used for MOTIONSENSE_CMD_DUMP, GET_STATUS, GET_DATA. */
+		/* Used for MOTIONSENSE_CMD_DUMP, GET_STATUS */
 		struct {
 			/* no args */
-		} data, dump, status;
+		} dump, status;
+
+		/* Used for MOTIONSENSE_CMD_DUMP, GET_STATUS, GET_DATA. */
+		struct {
+			/*
+			 * Maximal number of sensor the host is expecting.
+			 * 0 means the host is only interested in the number
+			 * of sensors controlled by the EC.
+			 */
+			uint8_t max_sensor_count;
+		} data;
 
 		/*
 		 * Used for MOTIONSENSE_CMD_EC_RATE and
@@ -1420,7 +1430,7 @@ struct ec_response_motion_sense {
 			uint8_t module_flags;
 
 			/* Number of sensors managed directly by the EC */
-			uint8_t sensor_number;
+			uint8_t sensor_count;
 
 			/*
 			 * sensor data is truncated if response_max is too small

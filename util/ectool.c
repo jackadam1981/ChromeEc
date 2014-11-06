@@ -2392,6 +2392,7 @@ static int cmd_motionsense(int argc, char **argv)
 			status_only = 1;
 		/* Let's try the new version first */
 		param.cmd = MOTIONSENSE_CMD_GET_DATA;
+		param.data.max_sensor_count = ECTOOL_MAX_SENSOR;
 		rv = ec_command(
 			EC_CMD_MOTION_SENSE_CMD, 0,
 			&param, ms_command_sizes[param.cmd].insize,
@@ -2404,12 +2405,12 @@ static int cmd_motionsense(int argc, char **argv)
 			if (status_only)
 				return 0;
 
-			if (resp.data.sensor_number > ECTOOL_MAX_SENSOR) {
+			if (resp.data.sensor_count > ECTOOL_MAX_SENSOR) {
 				printf("Too many sensors to handle: %d",
-						resp.data.sensor_number);
+						resp.data.sensor_count);
 				return -1;
 			}
-			for (i = 0; i < resp.data.sensor_number; i++) {
+			for (i = 0; i < resp.data.sensor_count; i++) {
 				/*
 				 * Warning: the following string printed out
 				 * is read by an autotest. Do not change string
