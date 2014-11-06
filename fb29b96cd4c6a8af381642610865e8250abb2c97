@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "950702cb_9a5e09be",
+        "filename": "board/ryu_p2/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-11-06T16:55:20Z",
+      "side": 1,
+      "message": "why different then ryu?",
+      "range": {
+        "startLine": 22,
+        "startChar": 27,
+        "endLine": 22,
+        "endChar": 32
+      },
+      "revId": "fb29b96cd4c6a8af381642610865e8250abb2c97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15131213_b65846fd",
+        "filename": "board/twinkie/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-11-06T16:55:20Z",
+      "side": 1,
+      "message": "crosbug.com/p/28337#c18 has my best guess for this power at 1 -\u003e 1.5W",
+      "range": {
+        "startLine": 21,
+        "startChar": 27,
+        "endLine": 21,
+        "endChar": 32
+      },
+      "revId": "fb29b96cd4c6a8af381642610865e8250abb2c97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
