@@ -22,6 +22,30 @@
       "revId": "e7f3c299aca055c5096216dc95071463e85e5eae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "156f92ad_5cdbb1a2",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1373,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-11-06T21:26:41Z",
+      "side": 1,
+      "message": "No I am asking for up to X sensor. Does max_sensor_count makes more sense?",
+      "parentUuid": "15c152c3_4cd853a5",
+      "range": {
+        "startLine": 1373,
+        "startChar": 11,
+        "endLine": 1373,
+        "endChar": 24
+      },
+      "revId": "e7f3c299aca055c5096216dc95071463e85e5eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
