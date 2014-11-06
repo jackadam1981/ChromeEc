@@ -22,6 +22,30 @@
       "revId": "7d49ef7b720348ce6296a9390c0e7e5647b7d6ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "156f92ad_dc7421fd",
+        "filename": "util/comm-i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-11-06T21:31:07Z",
+      "side": 1,
+      "message": "There was a bug: nobody was testing the return code of ec_command if a negative number.\n-1 ... -EECRESULT+1 is for failure in the host, -EECRESULT-1.. oo is for reporting error from the EC.\ncom_dev is compliant, but neither i2c nor lpc where.\n\nI split in its own CL.",
+      "parentUuid": "15c152c3_8c96cbae",
+      "range": {
+        "startLine": 144,
+        "startChar": 9,
+        "endLine": 144,
+        "endChar": 19
+      },
+      "revId": "7d49ef7b720348ce6296a9390c0e7e5647b7d6ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
