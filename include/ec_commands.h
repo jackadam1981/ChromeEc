@@ -1352,11 +1352,15 @@ enum motionsensor_chip {
 struct ec_params_motion_sense {
 	uint8_t cmd;
 	union {
-		/* Used for MOTIONSENSE_CMD_DUMP, GET_STATUS, GET_DATA. */
+		/* Used for MOTIONSENSE_CMD_DUMP, GET_STATUS */
 		struct {
 			/* no args */
-		} data, dump, status;
+		} dump, status;
 
+		/* Used for MOTIONSENSE_CMD_DUMP, GET_STATUS, GET_DATA. */
+		struct {
+			uint8_t sensor_number;   /* number of sensor expected */
+		} data;
 		/*
 		 * Used for MOTIONSENSE_CMD_EC_RATE and
 		 * MOTIONSENSE_CMD_KB_WAKE_ANGLE.

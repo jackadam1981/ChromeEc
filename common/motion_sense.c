@@ -338,33 +338,29 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 	const struct ec_params_motion_sense *in = args->params;
 	struct ec_response_motion_sense *out = args->response;
 	struct motion_sensor_t *sensor;
-	int i, data, ret = EC_RES_INVALID_PARAM;
+	int i, data, ret = EC_RES_INVALID_PARAM, reported;
 
 	switch (in->cmd) {
 	case MOTIONSENSE_CMD_GET_DATA:
 		out->data.module_flags =
 			(*(host_get_memmap(EC_MEMMAP_ACC_STATUS)) &
-				EC_MEMMAP_ACC_STATUS_PRESENCE_BIT) ?
-					MOTIONSENSE_MODULE_FLAG_ACTIVE : 0;
+			 EC_MEMMAP_ACC_STATUS_PRESENCE_BIT) ?
+			MOTIONSENSE_MODULE_FLAG_ACTIVE : 0;
 		out->data.sensor_number = motion_sensor_count;
 		args->response_size = sizeof(out->data);
-		if (args->response_max >=
-		    sizeof(out->data) +
-		    motion_sensor_count * sizeof(struct sensor_data)) {
-			for (i = 0; i < motion_sensor_count; i++) {
-				sensor = &motion_sensors[i];
-				out->data.sensor[i].flags =
-					MOTIONSENSE_SENSOR_FLAG_PRESENT;
-				out->data.sensor[i].data[X] = sensor->xyz[X];
-				out->data.sensor[i].data[Y] = sensor->xyz[Y];
-				out->data.sensor[i].data[Z] = sensor->xyz[Z];
-			}
-			args->response_size += sizeof(struct sensor_data) *
-				motion_sensor_count;
+		reported = MIN(motion_sensor_count, in->data.sensor_number);
+		for (i = 0; i < reported; i++) {
+			sensor = &motion_sensors[i];
+			out->data.sensor[i].flags =
+				MOTIONSENSE_SENSOR_FLAG_PRESENT;
+			out->data.sensor[i].data[X] = sensor->xyz[X];
+			out->data.sensor[i].data[Y] = sensor->xyz[Y];
+			out->data.sensor[i].data[Z] = sensor->xyz[Z];
 		}
+		args->response_size += sizeof(struct sensor_data) * reported;
 		break;
 	case MOTIONSENSE_CMD_GET_STATUS:
-		out->status = *lpc_status;
+		out->status.value = *lpc_status;
 		args->response_size = sizeof(out->status);
 		break;
 
@@ -407,16 +403,16 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 	case MOTIONSENSE_CMD_SENSOR_ODR:
 		/* Verify sensor number is valid. */
 		sensor = host_sensor_id_to_motion_sensor(
-			in->sensor_odr.sensor_num);
+				in->sensor_odr.sensor_num);
 		if (sensor == NULL)
 			return EC_RES_INVALID_PARAM;
 
 		/* Set new data rate if the data arg has a value. */
 		if (in->sensor_odr.data != EC_MOTION_SENSE_NO_VALUE) {
 			if (sensor->drv->set_data_rate(sensor,
-						      in->sensor_odr.data,
-						      in->sensor_odr.roundup)
-						      != EC_SUCCESS) {
+						in->sensor_odr.data,
+						in->sensor_odr.roundup)
+					!= EC_SUCCESS) {
 				CPRINTS("MS bad sensor rate %d",
 						in->sensor_odr.data);
 				return EC_RES_INVALID_PARAM;
@@ -435,16 +431,16 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 	case MOTIONSENSE_CMD_SENSOR_RANGE:
 		/* Verify sensor number is valid. */
 		sensor = host_sensor_id_to_motion_sensor(
-			in->sensor_odr.sensor_num);
+				in->sensor_odr.sensor_num);
 		if (sensor == NULL)
 			return EC_RES_INVALID_PARAM;
 
 		/* Set new data rate if the data arg has a value. */
 		if (in->sensor_range.data != EC_MOTION_SENSE_NO_VALUE) {
 			if (sensor->drv->set_range(sensor,
-						   in->sensor_range.data,
-						   in->sensor_range.roundup)
-						   != EC_SUCCESS) {
+						in->sensor_range.data,
+						in->sensor_range.roundup)
+					!= EC_SUCCESS) {
 				CPRINTS("MS bad sensor range %d",
 						in->sensor_range.data);
 				return EC_RES_INVALID_PARAM;
