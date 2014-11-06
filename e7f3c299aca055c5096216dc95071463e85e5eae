@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15c152c3_4cd853a5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1373,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-11-06T20:59:22Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand.\n\nSensor number seems to mean it\u0027s asking for a dump/status/data on a single sensor.\n\nBut the comment implies this is a count of sensors?\n\nCan you add a comment describing expected usage?\n\nAnd perhaps rename to sensor_count (if it\u0027s really a count) or sensor_index (if it\u0027s really an index)?",
+      "range": {
+        "startLine": 1373,
+        "startChar": 11,
+        "endLine": 1373,
+        "endChar": 24
+      },
+      "revId": "e7f3c299aca055c5096216dc95071463e85e5eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
