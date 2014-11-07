@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b55326fc_107e84a0",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-11-07T00:30:15Z",
+      "side": 1,
+      "message": "1. Keep them as local variables. \n     uint8_t *lpc_status;\t\t\n     uint16_t *lpc_data;\t\t\n\n2. use host_get_memmap() API to get pointers.\n\n      lpc_status \u003d host_get_memmap(EC_MEMMAP_ACC_STATUS);\t\n      lpc_data \u003d (uint16_t *)host_get_memmap(EC_MEMMAP_ACC_DATA);",
+      "revId": "ac634977f8628e7b3a5631424ffaee550ec9b75c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
