@@ -91,6 +91,29 @@
       "revId": "f45524cf50f3d8fa085c17d0094a62ab79acde37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baf15352_83366089",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1592,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-08T18:05:52Z",
+      "side": 1,
+      "message": "based on the big long comment above, we should always ask for vSafe5V on connect, and in this state we can check if we are charging port. but, take note of https://chromium-review.googlesource.com/#/c/227170/. We now know whether the port partner is a dual-role device or a dedicated charger. You need to have another CL to take this into account. We should never charge from a dual-role device unless the override is selected.",
+      "range": {
+        "startLine": 1592,
+        "startChar": 3,
+        "endLine": 1592,
+        "endChar": 27
+      },
+      "revId": "f45524cf50f3d8fa085c17d0094a62ab79acde37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
