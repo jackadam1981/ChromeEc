@@ -50,6 +50,24 @@
       "revId": "1a31ef0bd1588e68f1bdb25e8d3f365459eeb700",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "151dd24d_c32ef62f",
+        "filename": "board/samus_pd/ec.tasklist",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-08T18:12:42Z",
+      "side": 1,
+      "message": "oh yes, i forgot to answer this. i\u0027m not sure where the extra stack size is coming from, but w/o this CL we are very close to stack size (I think 4 bytes away), and with this CL I got a task overflow. So, I think it was just an incremental change.",
+      "parentUuid": "555bcae0_458faa86",
+      "revId": "1a31ef0bd1588e68f1bdb25e8d3f365459eeb700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
