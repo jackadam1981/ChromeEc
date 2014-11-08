@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "baf15352_a34a84ec",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-11-08T22:50:19Z",
+      "side": 1,
+      "message": "see previous CL. I prefer to have mutex used in a single file, much easier to debug.",
+      "parentUuid": "ba0a3312_f86cb17a",
+      "revId": "efb0a6b5557e29902015eaf62ec4032e933945c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba0a3312_b8763943",
         "filename": "include/motion_sense.h",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2014-11-08T18:53:18Z",
       "side": 1,
       "message": "Remember that you remove this var.  Why do you add it back?",
+      "revId": "efb0a6b5557e29902015eaf62ec4032e933945c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baf15352_83ab001d",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-11-08T22:50:19Z",
+      "side": 1,
+      "message": "Yes I did. As I said earlier, for GET_DATA data to be atomic.",
+      "parentUuid": "ba0a3312_b8763943",
       "revId": "efb0a6b5557e29902015eaf62ec4032e933945c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
