@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "151dd24d_c38a76a8",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-11-08T22:45:53Z",
+      "side": 1,
+      "message": "No, \n1 that would break the layering, read would need to be call under mutex\n2 the mutex would be held on the longer time, holding the host i2c line, eating host i2c bandwidth.",
+      "parentUuid": "fa102b40_5a9715d2",
+      "revId": "5fbb34c38d3f207e3f6e5f7b796d0eb8a5eea8eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa102b40_7a92d9e3",
         "filename": "include/motion_sense.h",
         "patchSetId": 6
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "151dd24d_e38f72b5",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-11-08T22:45:53Z",
+      "side": 1,
+      "message": "see other comment.",
+      "parentUuid": "fa102b40_7a92d9e3",
+      "revId": "5fbb34c38d3f207e3f6e5f7b796d0eb8a5eea8eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba0a3312_984a55ed",
         "filename": "include/motion_sense.h",
         "patchSetId": 6
@@ -47,6 +83,24 @@
       "writtenOn": "2014-11-08T19:14:18Z",
       "side": 1,
       "message": "Do we still need this copy of xyz?",
+      "revId": "5fbb34c38d3f207e3f6e5f7b796d0eb8a5eea8eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fae74b92_c2f10275",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-11-08T22:45:53Z",
+      "side": 1,
+      "message": "Yes it put it back. I do memcpy from raw_xyz to xyz under mutex, so it guarantee that when i2c task copy the vector it is done atomically.",
+      "parentUuid": "ba0a3312_984a55ed",
       "revId": "5fbb34c38d3f207e3f6e5f7b796d0eb8a5eea8eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
