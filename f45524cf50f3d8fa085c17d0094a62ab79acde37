@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "151dd24d_a3ebba88",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-08T17:37:09Z",
+      "side": 1,
+      "message": "I think choosing the minimum can actually be easier than this. We should just pick the first PDO (section 6.4.1 specifies that \"The vSafe5V Fixed Supply Object shall always be the first object.\"",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 24
+      },
+      "revId": "f45524cf50f3d8fa085c17d0094a62ab79acde37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "151dd24d_e3e5b2b4",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-08T17:37:09Z",
+      "side": 1,
+      "message": "as commented, later, we should set input current limit of PD right before we send request.",
+      "range": {
+        "startLine": 749,
+        "startChar": 0,
+        "endLine": 749,
+        "endChar": 2
+      },
+      "revId": "f45524cf50f3d8fa085c17d0094a62ab79acde37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fae74b92_a26ddea3",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1539,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-08T17:37:09Z",
+      "side": 1,
+      "message": "Looking at this, I think this unnecessarily complicates some things. One problem is that if the charge port changes (ie a charger is plugged/unplugged on another port), then we don\u0027t update our requested power. I think we can clean this up, and fix that problem at the same time. On connect, we can always negotiate for PDO 0 (Vsafe5V), but use the PDO contents to update charge manager with the largest power we could possibly draw. Then, in PD_STATE_SNK_READY, every time through we can check if charge manager has changed the charge port, and if so, we can change our request. So, if the charge port is this port, we can change our request to the max, and if the charge port isn\u0027t this port we can change our request to Vsafe5V.\n\nSo, we can get rid of this state, and processed_id and requested_id. Instead, in pd_send_request_msg() we should take an extra arg for either sending request message for the max, or for vSafe5V.",
+      "range": {
+        "startLine": 1539,
+        "startChar": 7,
+        "endLine": 1539,
+        "endChar": 32
+      },
+      "revId": "f45524cf50f3d8fa085c17d0094a62ab79acde37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "151dd24d_c3e0b6a7",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1576,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-08T17:37:09Z",
+      "side": 1,
+      "message": "technically, this should move up to right before the request",
+      "range": {
+        "startLine": 1574,
+        "startChar": 0,
+        "endLine": 1576,
+        "endChar": 6
+      },
+      "revId": "f45524cf50f3d8fa085c17d0094a62ab79acde37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
