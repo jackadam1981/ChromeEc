@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baf15352_83e420bd",
+        "filename": "test/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-08T17:40:12Z",
+      "side": 1,
+      "message": "what about a test for removing the charger we are currently charging from to make sure it reverts to next highest port?",
+      "revId": "3d8c584e390263d2116e5f55417ff939d5c259c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
