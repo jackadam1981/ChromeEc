@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "151dd24d_4323e645",
+        "filename": "util/ectool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2392,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-08T18:55:27Z",
+      "side": 1,
+      "message": "nit: don\u0027t need to initialize status_only to 0, can just do \nstatus_only \u003d (argc \u003d\u003d 2);",
+      "range": {
+        "startLine": 2392,
+        "startChar": 3,
+        "endLine": 2392,
+        "endChar": 19
+      },
+      "revId": "8af3d86764f05d0d744627e4d03f1445843610da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fae74b92_22cc2e45",
+        "filename": "util/ectool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2397,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-08T18:55:27Z",
+      "side": 1,
+      "message": "it seems like you should really increment the version of the host command to 1. you are changing the host command pretty significantly and relying on the value of MOTIONSENSE_CMD_GET_DATA. (See version field in DECLARE_HOST_COMMAND()).\n\nThen this would be more clear: This function tries the new version of EC_CMD_MOTION_SENSE_CMD, and if it is not supported, it falls back on the old version, which is needed to pass an autotest with old firmware.",
+      "range": {
+        "startLine": 2397,
+        "startChar": 27,
+        "endLine": 2397,
+        "endChar": 29
+      },
+      "revId": "8af3d86764f05d0d744627e4d03f1445843610da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
