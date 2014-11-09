@@ -93,6 +93,30 @@
       "revId": "8af3d86764f05d0d744627e4d03f1445843610da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fae74b92_621476e5",
+        "filename": "util/ectool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2397,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-09T00:23:52Z",
+      "side": 1,
+      "message": "ok. I would still prefer to find a way to not have to support the old DUMP command, since nobody uses but an autotest, but this is ok.",
+      "parentUuid": "fae74b92_a2eefe94",
+      "range": {
+        "startLine": 2397,
+        "startChar": 27,
+        "endLine": 2397,
+        "endChar": 29
+      },
+      "revId": "8af3d86764f05d0d744627e4d03f1445843610da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
