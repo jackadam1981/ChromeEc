@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fae74b92_e2b76658",
+        "filename": "util/comm-lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-09T21:27:07Z",
+      "side": 1,
+      "message": "shouldn\u0027t this also be -EECRESULT - i?",
+      "range": {
+        "startLine": 86,
+        "startChar": 2,
+        "endLine": 86,
+        "endChar": 12
+      },
+      "revId": "bbfe54030a8133a1784cc53990ec911948b12edd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fae74b92_c2c462cc",
+        "filename": "util/comm-mec1322.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-09T21:27:07Z",
+      "side": 1,
+      "message": "and here, -EECRESULT - i;",
+      "range": {
+        "startLine": 239,
+        "startChar": 2,
+        "endLine": 239,
+        "endChar": 12
+      },
+      "revId": "bbfe54030a8133a1784cc53990ec911948b12edd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
