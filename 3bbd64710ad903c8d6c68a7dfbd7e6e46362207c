@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "baf15352_e3888c81",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-09T18:29:33Z",
+      "side": 1,
+      "message": "The problem is each of those fields have min and max parameters and we usually choose something in the middle. But for this sum of all three, we want to sum the max of each parameter, which is why I didn\u0027t do what you were suggesting.\n\nBut, I don\u0027t think it will matter once I change the code. I need to break this up into more states and wait for VBUS to go low, then wait for it to come back high again.",
+      "parentUuid": "7578ce6f_16391cf8",
+      "range": {
+        "startLine": 194,
+        "startChar": 30,
+        "endLine": 194,
+        "endChar": 34
+      },
+      "revId": "3bbd64710ad903c8d6c68a7dfbd7e6e46362207c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "956382c3_17acb4ac",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2014-11-06T18:18:58Z",
       "side": 1,
       "message": "where does this come from?  More general, why do we use hardcoded numbers for these timeouts yet have some timers spec\u0027d PD_T_*",
+      "range": {
+        "startLine": 1446,
+        "startChar": 14,
+        "endLine": 1446,
+        "endChar": 21
+      },
+      "revId": "3bbd64710ad903c8d6c68a7dfbd7e6e46362207c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fae74b92_421612b6",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1446,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-09T18:29:33Z",
+      "side": 1,
+      "message": "This value is not a value in the spec, it\u0027s just setting the maximum time before this state machine runs again. In this case the value doesn\u0027t matter much because we just have to re-enable VBUS sometime within the next couple 100ms after src_recover is passed. I can add a comment.",
+      "parentUuid": "956382c3_17acb4ac",
       "range": {
         "startLine": 1446,
         "startChar": 14,
