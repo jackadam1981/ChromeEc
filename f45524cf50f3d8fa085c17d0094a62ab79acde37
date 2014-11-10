@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "ba3f93b4_d6ee54c8",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-11-10T22:49:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "151dd24d_a3ebba88",
+      "revId": "f45524cf50f3d8fa085c17d0094a62ab79acde37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "151dd24d_e3e5b2b4",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 5
@@ -42,6 +60,24 @@
         "endLine": 749,
         "endChar": 2
       },
+      "revId": "f45524cf50f3d8fa085c17d0094a62ab79acde37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a497f7c_f2ba7642",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-11-10T22:49:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "151dd24d_e3e5b2b4",
       "revId": "f45524cf50f3d8fa085c17d0094a62ab79acde37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "1a497f7c_d2b77a58",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1539,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-11-10T22:49:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fae74b92_a26ddea3",
+      "revId": "f45524cf50f3d8fa085c17d0094a62ab79acde37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "151dd24d_c3e0b6a7",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 5
@@ -94,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "1a497f7c_b2c4feca",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1576,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-11-10T22:49:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "151dd24d_c3e0b6a7",
+      "revId": "f45524cf50f3d8fa085c17d0094a62ab79acde37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "baf15352_83366089",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 5
@@ -111,6 +183,24 @@
         "endLine": 1592,
         "endChar": 27
       },
+      "revId": "f45524cf50f3d8fa085c17d0094a62ab79acde37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a497f7c_72ee864f",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1592,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-11-10T22:49:40Z",
+      "side": 1,
+      "message": "Noted. Will add another CL for dual-role special handling.",
+      "parentUuid": "baf15352_83366089",
       "revId": "f45524cf50f3d8fa085c17d0094a62ab79acde37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
