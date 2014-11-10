@@ -6,34 +6,17 @@
 import array
 import os
 import sys
-import time
+import twinkie
 import usb
 
-TWINKIE_VID=0x18d1
-TWINKIE_PID=0x500a
-
-EP_CON_TX=0x01
-EP_CON_RX=0x81
-EP_SNIFFER=0x83
-
-def findTwinkie():
-	busses = usb.busses()
-	for bus in busses:
-		devices = bus.devices
-		for dev in devices:
-			if dev.idVendor == TWINKIE_VID and dev.idProduct == TWINKIE_PID:
-				print "Twinkie FOUND"
-				return dev
-	return None
-
-def twinkieConsole(hnd):
-	hnd.bulkWrite(EP_CON_TX,"help\r\n")
+def twinkieConsole(tw):
+	tw.writeCon("help\r\n")
 	while True:
 		try:
-			txt = hnd.bulkRead(EP_CON_RX,64)
+			txt = tw.readCon()
 		except usb.core.USBError:
 			inp = os.read(sys.stdin.fileno(),64)
-			hnd.bulkWrite(EP_CON_TX, inp)
+			tw.writeCon(inp)
 			continue
 		if len(txt):
 			sys.stdout.write(txt.tostring())
@@ -81,13 +64,13 @@ def decodeBuffer(packets, store):
 	print "Overflow packets %d/%d %f%%" % (invalid, cnt, invalid * 100.0 / cnt)
 
 
-def twinkieRecord(hnd, filename):
+def twinkieRecord(tw, filename):
 	store = open(filename,"w")
 	try:
 		total = 0
 		packets = []
 		while total < MAX_RECORD_SIZE:
-			pkt = hnd.bulkRead(EP_SNIFFER, 10*1024)
+			pkt = tw.readSniffer(10*1024)
 			total += len(pkt)
 			packets.append(pkt)
 	except KeyboardInterrupt:
@@ -98,18 +81,17 @@ def twinkieRecord(hnd, filename):
 	print "Done"
 
 def main():
-	dev = findTwinkie()
-	if not dev:
+	tw = twinkie.Twinkie(consoleOnly=len(sys.argv) < 2)
+	if not tw.isValid():
 		sys.stderr.write("No Twinkie found\n")
 		return
-	hnd = dev.open()
 
 	if len(sys.argv) > 1:
-		hnd.claimInterface(1)
-		twinkieRecord(hnd, sys.argv[1])
+		twinkieRecord(tw, sys.argv[1])
 	else:
-		hnd.claimInterface(0)
-		twinkieConsole(hnd)
+		val = tw.sendCommand("tw vbus")
+		print "{%s}" % (val)
+		#twinkieConsole(tw)
 
 if __name__=="__main__":
 	main()
