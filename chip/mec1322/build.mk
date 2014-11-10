@@ -22,3 +22,11 @@ chip-$(CONFIG_WATCHDOG)+=watchdog.o
 chip-$(HAS_TASK_KEYSCAN)+=keyboard_raw.o
 chip-$(CONFIG_DMA)+=dma.o
 chip-$(CONFIG_SPI)+=spi.o
+
+# location of the scripts and keys used to pack the 4MB spi flash
+SCRIPTDIR:=./chip/${CHIP}/util
+
+# commands to package something
+cmd_pack_package = ${SCRIPTDIR}/pack_ec.py -o $@ -i $^ \
+	--payload_key ${SCRIPTDIR}/rsakey_sign_payload.pem \
+	--header_key ${SCRIPTDIR}/rsakey_sign_header.pem
