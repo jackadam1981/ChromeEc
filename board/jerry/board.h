@@ -28,6 +28,7 @@
 #define CONFIG_LOW_POWER_IDLE
 #define CONFIG_LOW_POWER_S0
 #define CONFIG_POWER_BUTTON
+#define CONFIG_POWER_BUTTON_ACTIVE_STATE 1
 #define CONFIG_POWER_COMMON
 #define CONFIG_PWM
 #define CONFIG_SPI
@@ -57,7 +58,7 @@
 enum power_signal {
 	RK_POWER_GOOD = 0,
 	RK_SUSPEND_ASSERTED,
-
+	RK_EC_WAKE,
 	/* Number of power signals */
 	POWER_SIGNAL_COUNT
 };
