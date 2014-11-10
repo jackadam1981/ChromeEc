@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ba3f93b4_16873cf3",
+        "filename": "board/dingdong/usb_pd_policy.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-10T16:37:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da152730_a80f039e",
+      "revId": "0cc160c53b10aac0f9325a933a4b9583cd86380d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a1b3f6c_2777a2fd",
         "filename": "board/ryu/usb_pd_policy.c",
         "patchSetId": 8
@@ -30,6 +48,24 @@
       "writtenOn": "2014-11-10T15:51:50Z",
       "side": 1,
       "message": "probably worth fixing my snarky comment",
+      "revId": "0cc160c53b10aac0f9325a933a4b9583cd86380d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba3f93b4_f69b9849",
+        "filename": "board/ryu/usb_pd_policy.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-10T16:37:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a1b3f6c_2777a2fd",
       "revId": "0cc160c53b10aac0f9325a933a4b9583cd86380d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "1a1b3f6c_e204f83c",
+        "filename": "board/ryu/usb_pd_policy.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-10T16:37:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba3f93b4_369c8074",
+      "revId": "0cc160c53b10aac0f9325a933a4b9583cd86380d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fae74b92_e515302e",
         "filename": "board/ryu_p2/usb_pd_policy.c",
         "patchSetId": 8
@@ -64,6 +118,30 @@
       "writtenOn": "2014-11-10T16:01:51Z",
       "side": 1,
       "message": "Still different than ryu ... is that intentional?",
+      "range": {
+        "startLine": 22,
+        "startChar": 27,
+        "endLine": 22,
+        "endChar": 32
+      },
+      "revId": "0cc160c53b10aac0f9325a933a4b9583cd86380d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da152730_e83a9b09",
+        "filename": "board/ryu_p2/usb_pd_policy.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-10T16:37:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fae74b92_e515302e",
       "range": {
         "startLine": 22,
         "startChar": 27,
