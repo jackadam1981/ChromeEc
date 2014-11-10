@@ -16,6 +16,24 @@
       "revId": "b7e33ef3940273b5c9780752f72a9d68f763e962",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a94d7fe_7dc2f714",
+        "filename": "chip/stm32/config-stm32f03x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-11-10T21:23:10Z",
+      "side": 1,
+      "message": "Doh!   Thanks, I was looking at the STM32F0x[128] reference manual, which is different from the STM32F03xx reference manual...  phhphph!",
+      "parentUuid": "1a497f7c_cc4a4320",
+      "revId": "b7e33ef3940273b5c9780752f72a9d68f763e962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
