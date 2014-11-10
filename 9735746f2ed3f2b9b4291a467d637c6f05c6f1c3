@@ -49,6 +49,53 @@
     },
     {
       "key": {
+        "uuid": "1a497f7c_a985b967",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-10T20:30:20Z",
+      "side": 1,
+      "message": "Yeah, you\u0027re right, I think this is good for now.",
+      "parentUuid": "1a497f7c_696901ec",
+      "range": {
+        "startLine": 447,
+        "startChar": 1,
+        "endLine": 448,
+        "endChar": 9
+      },
+      "revId": "9735746f2ed3f2b9b4291a467d637c6f05c6f1c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a4c838a_f89b7949",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-10T20:30:20Z",
+      "side": 1,
+      "message": "isn\u0027t this what the new ECR is about? cables will now have a PID.",
+      "range": {
+        "startLine": 449,
+        "startChar": 1,
+        "endLine": 451,
+        "endChar": 49
+      },
+      "revId": "9735746f2ed3f2b9b4291a467d637c6f05c6f1c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35973656_92d11cdf",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
