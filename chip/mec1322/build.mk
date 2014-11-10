@@ -22,3 +22,8 @@ chip-$(CONFIG_WATCHDOG)+=watchdog.o
 chip-$(HAS_TASK_KEYSCAN)+=keyboard_raw.o
 chip-$(CONFIG_DMA)+=dma.o
 chip-$(CONFIG_SPI)+=spi.o
+
+# commands to package something
+cmd_packpackage = ${SCRIPTDIR}/pack_ec.py -o $@ -i $^ \
+	--payload_key ${SCRIPTDIR}/rsakey_sign_payload.pem \
+	--header_key ${SCRIPTDIR}/rsakey_sign_header.pem
