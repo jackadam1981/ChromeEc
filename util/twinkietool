@@ -1,0 +1,146 @@
+#!/usr/bin/env python
+# Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+"""Simple standalone test utility to validate the Twinkie python classes."""
+
+from __future__ import print_function
+
+import array
+import os
+import sys
+import time
+import twinkie
+import usb
+
+def twinkieConsole(tw):
+  tw.writeCon("help\r\n")
+  while True:
+    try:
+      txt = tw.readCon()
+    except usb.core.USBError:
+      inp = os.read(sys.stdin.fileno(), 64)
+      tw.writeCon(inp)
+      continue
+    if len(txt):
+      sys.stdout.write(txt.tostring())
+
+MAX_RECORD_SIZE = 1024 * 1024 * 256
+
+def decodeBuffer(packets, store):
+  prev_src = 0
+  rollbacks = 0
+  #last_tstamp = 0
+  last_seqn = [0, 0]
+  invalid = 0
+  cnt = 0
+  seqn = [0, 0]
+  state = False
+  for p in packets:
+    a = array.array("B", p)
+    if len(a) % 64:
+      print("Invalid size")
+    n = len(a) / 64
+    for i in range(n):
+      samples = a[i * 64:(i + 1)*64]
+      #tstamp = (samples[3] << 8) | samples[2]
+      ch = (samples[1] >> 4) & 0x7
+      seqn[ch] = ((samples[1] & 0xF) << 8) | samples[0]
+      cnt += 1
+      if (seqn[ch] - last_seqn[ch]) % 0x1000 != 1:
+        print("invalid seq/%d %d->%d" % (ch, last_seqn[ch], seqn[ch]))
+        invalid += 1
+      last_seqn[ch] = seqn[ch]
+      #last_tstamp = tstamp
+      for s in samples[4:]:
+        if s == prev_src:
+          rollbacks += 1
+        else:
+          diff = (s - prev_src) % 256
+          fixup = rollbacks and ((s < prev_src) or (s == 0xff))
+          if fixup:
+            rollbacks -= 1
+          total = rollbacks * 256 + diff
+          store.write("\x01" * total if state else "\0" * total)
+          rollbacks = 0
+          prev_src = s
+          state = not state
+  print("Overflow packets %d/%d %f%%" % (invalid, cnt, invalid * 100.0 / cnt))
+
+
+def twinkieRecord(tw, filename):
+  store = open(filename, "w")
+  try:
+    total = 0
+    packets = []
+    while total < MAX_RECORD_SIZE:
+      pkt = tw.readSniffer(10*1024)
+      total += len(pkt)
+      packets.append(pkt)
+  except KeyboardInterrupt:
+    print("Acquisition stopped by Ctrl-C")
+  print("Decoding ...")
+  decodeBuffer(packets, store)
+  store.close()
+  print("Done")
+
+def syncTimeStamp(tw):
+  ts = tw.sendCommand("gettime")
+  tw_time = float(ts.strip().split('=')[-1].split()[0])
+  local_time = time.time()
+  return local_time - tw_time
+
+DIFF_MV=500
+DIFF_MA=100
+
+def twinkieTrace(tw, tracePacket=True, diffmV=DIFF_MV, diffmA=DIFF_MA):
+  if tracePacket:
+    tw.sendCommand("tw trace on")
+  last_mv = 0
+  last_ma = 0
+  deltat = syncTimeStamp(tw)
+  while True:
+    tw.writeCon("tw vbus\r\n")
+    t = time.time() - deltat
+    while True:
+      pkt = tw.readCon()
+      if not pkt:
+        continue
+      line = pkt.tostring()
+
+      if "VBUS" in line:
+        fields = line.strip().split()
+        try:
+          mv = int(fields[2])
+          ma = int(fields[5])
+        except ValueError:
+	  continue
+        if abs(ma - last_ma)>diffmA or abs(mv-last_mv)>diffmV:
+          sys.stdout.write("%10.6f VBUS %5d mV %5d mA\n" % (t,mv,ma))
+          last_ma = ma
+          last_mv = mv
+        else:
+          sys.stdout.write("%10.6f VBUS %5d mV %5d mA\r" % (t,mv,ma))
+      elif 'SNK/' in line or 'SRC/' in line:
+        sys.stdout.write(line.strip()+"        \n")
+	# get the next VBUS measurement
+        last_ma = 0
+        last_mv = 0
+      if '>' in line:
+        break
+
+
+def main():
+  tw = twinkie.Twinkie()
+  if not tw.isValid():
+    sys.stderr.write("No Twinkie found\n")
+    return
+
+  if len(sys.argv) > 1:
+    twinkieRecord(tw, sys.argv[1])
+  else:
+    twinkieTrace(tw)
+    #twinkieConsole(tw)
+
+if __name__ == "__main__":
+  main()
