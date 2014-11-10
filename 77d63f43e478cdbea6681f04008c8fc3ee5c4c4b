@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a4f777e_eb3de503",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-10T20:07:49Z",
+      "side": 1,
+      "message": "no ccprintf on host command,\nactually no *print* at all, devs are supposed to use hcdebug",
+      "revId": "77d63f43e478cdbea6681f04008c8fc3ee5c4c4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
