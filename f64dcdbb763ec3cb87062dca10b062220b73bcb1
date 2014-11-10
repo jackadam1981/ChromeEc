@@ -16,6 +16,24 @@
       "revId": "f64dcdbb763ec3cb87062dca10b062220b73bcb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da152730_88ab1f1d",
+        "filename": "chip/stm32/usb_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-11-10T15:12:49Z",
+      "side": 1,
+      "message": "Nope, that needs fixing too.  :)  Missed it because I didn\u0027t try cut and pasting into the console.",
+      "parentUuid": "9569c276_6736720a",
+      "revId": "f64dcdbb763ec3cb87062dca10b062220b73bcb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
