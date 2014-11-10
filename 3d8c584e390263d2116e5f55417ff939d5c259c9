@@ -16,6 +16,24 @@
       "revId": "3d8c584e390263d2116e5f55417ff939d5c259c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a4c838a_5396eeae",
+        "filename": "test/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-11-10T21:47:30Z",
+      "side": 1,
+      "message": "That\u0027s our \"Zero our HP charge and verify fallback to next highest priority\" test. I added extra comments to clarify.",
+      "parentUuid": "baf15352_83e420bd",
+      "revId": "3d8c584e390263d2116e5f55417ff939d5c259c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
