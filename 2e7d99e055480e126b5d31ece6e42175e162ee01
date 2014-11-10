@@ -22,6 +22,30 @@
       "revId": "2e7d99e055480e126b5d31ece6e42175e162ee01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fae74b92_453a9c5e",
+        "filename": "board/ryu_sh/ec.tasklist",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-11-10T21:33:45Z",
+      "side": 1,
+      "message": "Done. Note however that I will certainly put back in larger_task_stack_size when we will add lift detection.",
+      "parentUuid": "151dd24d_430a06be",
+      "range": {
+        "startLine": 23,
+        "startChar": 51,
+        "endLine": 23,
+        "endChar": 73
+      },
+      "revId": "2e7d99e055480e126b5d31ece6e42175e162ee01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
