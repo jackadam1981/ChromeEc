@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a497f7c_cc4a4320",
+        "filename": "chip/stm32/config-stm32f03x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-10T21:06:58Z",
+      "side": 1,
+      "message": "stm32f030 doesn\u0027t have USB support",
+      "revId": "b7e33ef3940273b5c9780752f72a9d68f763e962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
