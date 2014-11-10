@@ -52,4 +52,10 @@ extern char __host_flash[CONFIG_FLASH_PHYSICAL_SIZE];
 /* Do NOT use common timer code which is designed for hardware counters. */
 #undef CONFIG_COMMON_TIMER
 
+/*
+ * This needs to be defined because the host code includes the common USB PD
+ * code, which relies on a valid definition of usb_uint.
+ */
+#define CONFIG_USB_RAM_ACCESS_TYPE unsigned int
+
 #endif /* __CROS_EC_CONFIG_CHIP_H */

@@ -44,3 +44,9 @@
 /* Reduced history because of limited RAM */
 #undef CONFIG_CONSOLE_HISTORY
 #define CONFIG_CONSOLE_HISTORY 3
+
+/* USB packet ram config */
+#define CONFIG_USB_RAM_BASE        0x40006000
+#define CONFIG_USB_RAM_SIZE        1024
+#define CONFIG_USB_RAM_ACCESS_TYPE uint16_t
+#define CONFIG_USB_RAM_ACCESS_SIZE 2
