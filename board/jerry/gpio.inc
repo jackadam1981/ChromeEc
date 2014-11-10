@@ -6,12 +6,13 @@
  */
 
 /* Inputs with interrupt handlers are first for efficiency */
-GPIO(POWER_BUTTON_L, B, 5,  GPIO_INT_BOTH,                power_button_interrupt)
+GPIO(EC_WAKE_H,      A, 0,  GPIO_INT_BOTH,                power_signal_interrupt)
+GPIO(POWER_BUTTON_L, B, 5,  GPIO_INT_BOTH,                power_button_interrupt) /* active high, the name is for compatibility with existing code */
 GPIO(SOC_POWER_GOOD, A, 3,  GPIO_INT_BOTH,                power_signal_interrupt)
 GPIO(LID_OPEN,       C, 13, GPIO_INT_BOTH,                lid_interrupt)
 GPIO(SUSPEND_L,      C, 7,  GPIO_INT_BOTH,                power_signal_interrupt)
 GPIO(SPI1_NSS,       A, 4,  GPIO_INT_BOTH,                spi_event)
-GPIO(AC_PRESENT,     A, 0,  GPIO_INT_BOTH | GPIO_PULL_UP, extpower_interrupt)
+GPIO(AC_PRESENT,     A, 8,  GPIO_INT_BOTH | GPIO_PULL_UP, extpower_interrupt)
 
 /* Keyboard inputs */
 GPIO(KB_IN00, C, 8,  GPIO_KB_INPUT, keyboard_raw_gpio_interrupt)
@@ -27,7 +28,6 @@ GPIO(KB_IN07, D, 2,  GPIO_KB_INPUT, keyboard_raw_gpio_interrupt)
 GPIO(WP_L, B, 4, GPIO_INPUT, NULL)
 
 /* Outputs */
-GPIO(5V_DRV,            A, 8,  GPIO_OUT_LOW,   NULL)
 GPIO(BAT_LED0,          B, 11, GPIO_OUT_LOW,   NULL)
 GPIO(BAT_LED1,          A, 11, GPIO_OUT_LOW,   NULL)
 GPIO(EC_BL_OVERRIDE,    F, 1,  GPIO_OUT_LOW,   NULL)
@@ -48,6 +48,7 @@ GPIO(KB_OUT09,          B, 1,  GPIO_KB_OUTPUT, NULL)
 GPIO(KB_OUT10,          C, 5,  GPIO_KB_OUTPUT, NULL)
 GPIO(KB_OUT11,          C, 4,  GPIO_KB_OUTPUT, NULL)
 GPIO(KB_OUT12,          A, 13, GPIO_KB_OUTPUT, NULL)
+GPIO(POWER_LED,         A, 2,  GPIO_OUT_LOW,   NULL)
 GPIO(PMIC_PWRON,        A, 12, GPIO_OUT_LOW,   NULL)
 GPIO(PMIC_RESET,        B, 3,  GPIO_OUT_LOW,   NULL)
 GPIO(PMIC_SOURCE_PWREN, B, 10, GPIO_OUT_LOW,   NULL)

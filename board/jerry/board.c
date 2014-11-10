@@ -34,6 +34,7 @@
 const struct power_signal_info power_signal_list[] = {
 	{GPIO_SOC_POWER_GOOD, 1, "POWER_GOOD"},
 	{GPIO_SUSPEND_L,      1, "SUSPEND#_ASSERTED"},
+	{GPIO_EC_WAKE_H,      1, "EC_WAKE"},
 };
 BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 

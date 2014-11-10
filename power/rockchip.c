@@ -165,8 +165,10 @@ static void set_pmic_source(int asserted)
  */
 static void set_5v_power(int asserted)
 {
+#ifdef GPIO_5V_DRV
 	/* Signal is active-high */
 	gpio_set_level(GPIO_5V_DRV, asserted ? 1 : 0);
+#endif
 }
 
 /**
