@@ -26,7 +26,9 @@ if ghash=`git rev-parse --short --verify HEAD 2>/dev/null`; then
 	dirty=`sh -c "[ '$(git diff-index --name-only HEAD)' ] && echo '-dirty'"`
 	vbase="${ver_major}.${ver_branch}.${numcommits}-${ghash}${dirty}"
 else
-	vbase="no_version"
+	# Fall back to the VCSID provided by the environment, and if that
+	# fails then "no_version"
+	vbase=${VCSID:-"no_version"}
 fi
 
 ver="${BOARD}_${vbase}"
