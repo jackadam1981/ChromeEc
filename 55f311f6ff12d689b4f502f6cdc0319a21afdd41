@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a4f777e_eee0532d",
+        "filename": "board/jerry/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-11-10T20:10:45Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this just be EC_WAKE?  (That is, signals are assumed to be active high unless followed by _L)",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 14
+      },
+      "revId": "55f311f6ff12d689b4f502f6cdc0319a21afdd41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a4c838a_0d1bb9dd",
+        "filename": "board/jerry/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-11-10T20:10:45Z",
+      "side": 1,
+      "message": "gpio_set_level(GPIO_POWER_LED, on)",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 36
+      },
+      "revId": "55f311f6ff12d689b4f502f6cdc0319a21afdd41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a497f7c_e96611c8",
+        "filename": "board/jerry/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-11-10T20:10:45Z",
+      "side": 1,
+      "message": "pwr_led_set(brightness[EC_LED_COLOR_BLUE])",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 18
+      },
+      "revId": "55f311f6ff12d689b4f502f6cdc0319a21afdd41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a4f777e_ce0fd74f",
+        "filename": "power/rockchip.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-11-10T20:10:45Z",
+      "side": 1,
+      "message": "I don\u0027t think this works for the older boards.  GPIO_5V_DRV is an enumerated value, not a #defined constant, so isn\u0027t defined for either old or new boards.",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 18
+      },
+      "revId": "55f311f6ff12d689b4f502f6cdc0319a21afdd41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
