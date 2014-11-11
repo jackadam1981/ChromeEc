@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dabfe78a_cc4d7f3a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-11-11T19:13:45Z",
+      "side": 1,
+      "message": "Attached where?",
+      "revId": "0e2f317073dde3a2d14578b90bd8a440fc2912c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabfe78a_2c877bf3",
+        "filename": "board/candy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-11-11T19:13:45Z",
+      "side": 1,
+      "message": "Add below TOUCHSCREEN_RESET_L",
+      "revId": "0e2f317073dde3a2d14578b90bd8a440fc2912c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabfe78a_4c598fd5",
+        "filename": "power/baytrail.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-11-11T19:13:45Z",
+      "side": 1,
+      "message": "Instead of making it board specific add a new config option.\n\ninclude/config.h\n/* Some touch screens require additional enable signal for proper power sequencing */\n#undef CONFIG_TOUCHSCREEN_ENABLE_CONTROL \n \nboard/candy/board.h\n#define CONFIG_TOUCHSCREEN_ENABLE_CONTROL GPIO_TOUCHSCREEN_ENABLE\n \npower/baytrail.c\n#ifdef CONFIG_TOUCHSCREEN_ENABLE_CONTROL\n     gpio_set_level(CONFIG_TOUCHSCREEN_ENABLE_CONTROL, \u003cvalue\u003e);\n#endif",
+      "revId": "0e2f317073dde3a2d14578b90bd8a440fc2912c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabfe78a_4c366f8c",
+        "filename": "power/baytrail.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-11-11T19:13:45Z",
+      "side": 1,
+      "message": "When enabling touchscreen, does ENABLE need to happen before RESET? What is the proper sequence?",
+      "revId": "0e2f317073dde3a2d14578b90bd8a440fc2912c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
