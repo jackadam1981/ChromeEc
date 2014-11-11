@@ -43,6 +43,24 @@
     },
     {
       "key": {
+        "uuid": "fabaeb9a_aad82fa4",
+        "filename": "board/jerry/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2014-11-11T18:40:58Z",
+      "side": 1,
+      "message": "The reason i said this is not required is because it doesn\u0027t do what you want it to. Having EC_WAKE in the power_signal_list does not make the EC wakeup from hibernate when it\u0027s asserted. All you\u0027re doing is setting it as an interrupt in normal mode.\n\nIf you want it to wakeup you need to do something like this: https://chromium-review.googlesource.com/#/c/224195/3/board/pinky/board.h\n\nThat should be all you need, because once you wakeup it\u0027ll use the normal AC_PRESENT and LID pins for the real interrupt.",
+      "parentUuid": "dad607db_71a6b8a5",
+      "revId": "55f311f6ff12d689b4f502f6cdc0319a21afdd41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba0a3312_de04353d",
         "filename": "board/jerry/board.h",
         "patchSetId": 1
