@@ -39,6 +39,7 @@
 #define CONFIG_SCI_GPIO GPIO_PCH_SCI_L
 #define CONFIG_TEMP_SENSOR
 #define CONFIG_TEMP_SENSOR_TMP432
+#define CONFIG_TOUCHSCREEN_ENABLE_CONTROL GPIO_TOUCHSCREEN_ENABLE
 #define CONFIG_USB_PORT_POWER_IN_S3
 #define CONFIG_USB_PORT_POWER_SMART
 #define CONFIG_USB_PORT_POWER_SMART_DEFAULT_MODE USB_CHARGE_MODE_CDP
@@ -134,6 +135,7 @@ enum gpio_signal {
 	GPIO_KBD_IRQ_L,            /* Negative edge triggered irq. */
 	GPIO_BAT_LED0,             /* Battery charger status */
 	GPIO_BAT_LED1,             /* Battery charger status */
+	GPIO_TOUCHSCREEN_ENABLE,   /* Touch screen enable */
 
 	/* Number of GPIOs; not an actual GPIO */
 	GPIO_COUNT
