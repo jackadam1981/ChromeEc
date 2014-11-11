@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6cabf2_a360682a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2014-11-11T18:45:45Z",
+      "side": 1,
+      "message": "Can you explain a little more what your change is about in here? How does the EC_wake pin work?",
+      "revId": "e7b84395ff69c665e3c693a9f434fbb9ec48c7b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6cabf2_e3566052",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2014-11-11T18:45:45Z",
+      "side": 1,
+      "message": "How have you tested this?",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 21
+      },
+      "revId": "e7b84395ff69c665e3c693a9f434fbb9ec48c7b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
