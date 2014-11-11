@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6bafdc_97f1e475",
+        "filename": "Makefile.rules",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-11-11T04:43:10Z",
+      "side": 1,
+      "message": "How about rename this to pack_package?",
+      "range": {
+        "startLine": 156,
+        "startChar": 14,
+        "endLine": 156,
+        "endChar": 25
+      },
+      "revId": "43e766c7cfcc129b01dd0eb81e1f5f9b257ea521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a80bbc4_5636f48b",
+        "filename": "board/strago/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-11-11T04:43:10Z",
+      "side": 1,
+      "message": "This line doesn\u0027t belong to this CL?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 14
+      },
+      "revId": "43e766c7cfcc129b01dd0eb81e1f5f9b257ea521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7db79e_7b03d7e7",
+        "filename": "board/strago/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-11-11T04:43:10Z",
+      "side": 1,
+      "message": "The definition of SCRIPTDIR should go to chip/mec1322/build.mk as this is chip-specific, not board-specific.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 9
+      },
+      "revId": "43e766c7cfcc129b01dd0eb81e1f5f9b257ea521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6bafdc_b7ee6895",
+        "filename": "util/getversion.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-11-11T04:43:10Z",
+      "side": 1,
+      "message": "This affects all boards, not just Strago. Please move this to a separate CL.",
+      "revId": "43e766c7cfcc129b01dd0eb81e1f5f9b257ea521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
