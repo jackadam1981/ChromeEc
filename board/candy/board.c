@@ -103,6 +103,7 @@ const struct gpio_info gpio_list[] = {
 	{"PP5000_EN",            LM4_GPIO_H, (1<<7), GPIO_OUT_LOW, NULL},
 	{"PPSX_EN",              LM4_GPIO_L, (1<<6), GPIO_OUT_LOW, NULL},
 	{"SUSP_VR_EN",           LM4_GPIO_C, (1<<7), GPIO_OUT_LOW, NULL},
+	{"TOUCHSCREEN_ENABLE",   LM4_GPIO_J, (1<<5), GPIO_OUT_LOW, NULL},
 	{"TOUCHSCREEN_RESET_L",  LM4_GPIO_N, (1<<7), GPIO_OUT_LOW, NULL},
 	{"USB_CTL1",             LM4_GPIO_E, (1<<6), GPIO_OUT_LOW, NULL},
 	{"USB_ILIM_SEL",         LM4_GPIO_E, (1<<5), GPIO_OUT_LOW, NULL},
