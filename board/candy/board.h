@@ -134,6 +134,7 @@ enum gpio_signal {
 	GPIO_KBD_IRQ_L,            /* Negative edge triggered irq. */
 	GPIO_BAT_LED0,             /* Battery charger status */
 	GPIO_BAT_LED1,             /* Battery charger status */
+	GPIO_TOUCHSCREEN_ENABLE,   /* Touch screen enable */
 
 	/* Number of GPIOs; not an actual GPIO */
 	GPIO_COUNT

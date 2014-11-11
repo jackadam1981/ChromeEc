@@ -160,6 +160,10 @@ enum power_state power_handle_state(enum power_state state)
 		 */
 		gpio_set_level(GPIO_TOUCHSCREEN_RESET_L, lid_is_open());
 
+#ifdef BOARD_CANDY
+		gpio_set_level(GPIO_TOUCHSCREEN_ENABLE, lid_is_open());
+#endif
+
 		/* Check for state transitions */
 		if (!power_has_signals(IN_PGOOD_S3)) {
 			/* Required rail went away */
@@ -252,6 +256,10 @@ enum power_state power_handle_state(enum power_state state)
 		 */
 		gpio_set_level(GPIO_TOUCHSCREEN_RESET_L, 1);
 
+#ifdef BOARD_CANDY
+		gpio_set_level(GPIO_TOUCHSCREEN_ENABLE, 1);
+#endif
+
 		/* Wait for non-core power rails good */
 		if (power_wait_signals(IN_PGOOD_S0)) {
 			chipset_force_shutdown();
@@ -259,6 +267,9 @@ enum power_state power_handle_state(enum power_state state)
 			gpio_set_level(GPIO_PP3300_DX_EN, 0);
 			gpio_set_level(GPIO_PP5000_EN, 0);
 			gpio_set_level(GPIO_TOUCHSCREEN_RESET_L, 0);
+#ifdef BOARD_CANDY
+			gpio_set_level(GPIO_TOUCHSCREEN_ENABLE, 0);
+#endif
 			return POWER_S3;
 		}
 
@@ -388,6 +399,10 @@ enum power_state power_handle_state(enum power_state state)
 		/* Disable touchpad power and hold touchscreen in reset */
 		gpio_set_level(GPIO_ENABLE_TOUCHPAD, 0);
 		gpio_set_level(GPIO_TOUCHSCREEN_RESET_L, 0);
+
+#ifdef BOARD_CANDY
+		gpio_set_level(GPIO_TOUCHSCREEN_ENABLE, 0);
+#endif
 
 #ifdef CONFIG_LAN_POWER_S3
 		/* Turn off LAN controller power */
