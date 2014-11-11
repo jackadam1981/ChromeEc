@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a4c838a_24720704",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-11T02:14:13Z",
+      "side": 1,
+      "message": "don\u0027t you need to check if res !\u003d EC_SUCCESS?",
+      "range": {
+        "startLine": 768,
+        "startChar": 3,
+        "endLine": 768,
+        "endChar": 10
+      },
+      "revId": "9c4e790c564052b5ef0fa184109c8571a77d341f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a4c838a_ff7918b6",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-11T02:14:13Z",
+      "side": 1,
+      "message": "There is one hole here that I\u0027m not sure the best way to fix. The request message can be rejected, in which case last_charge_request will be wrong. The other side can send REJECT, WAIT, or ACCEPT. If the other side sends REJECT or WAIT, we are supposed to jump straight to SNK_READY. But, that isn\u0027t implemented yet. maybe just add a TODO here, you can reference crosbug.com/p/33692.",
+      "range": {
+        "startLine": 773,
+        "startChar": 2,
+        "endLine": 773,
+        "endChar": 41
+      },
+      "revId": "9c4e790c564052b5ef0fa184109c8571a77d341f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
