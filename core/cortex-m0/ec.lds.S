@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 #include "config.h"
+#include "rsa.h"
 
 #define FW_OFF_(section) CONFIG_FW_##section##_OFF
 #define FW_OFF(section) (CONFIG_FLASH_BASE + FW_OFF_(section))
@@ -204,12 +205,14 @@ SECTIONS
 	/* NOTHING MAY GO AFTER THIS! */
     } > IRAM
 
+#ifdef RSA_PUBLIC_KEY_SIZE
     .flash_suffix  : AT(LOADADDR(.data) + SIZEOF(.data)) {
         FILL(0xff);
         /* Put the public key coefficients at the end of the partition */
-        . = ORIGIN(FLASH) + LENGTH(FLASH) - 528;
+        . = ORIGIN(FLASH) + LENGTH(FLASH) - RSA_PUBLIC_KEY_SIZE;
         *(.rsa_pubkey)
     } > FLASH
+#endif
 
     /* The linker won't notice if the .data section is too big to fit,
      * apparently because we're sending it into IRAM, not FLASH. The following

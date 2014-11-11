@@ -91,7 +91,7 @@ class DER:
     self._idx += length
     return {"tag" : tag, "length" : length, "data" : data}
 
-def pem_get_mod(filename):
+def pem_get_mod(filename, rsaSigSize):
   """Extract the modulus from a PEM private key file.
 
   the PEM file is DER encoded according the structure quoted above.
@@ -130,8 +130,8 @@ def pem_get_mod(filename):
   if mod["tag"] != DER_INTEGER:
     raise PEMError('modulus field should be an integer')
   # 2048 bits + mandatory ASN.1 sign (0) => 257 Bytes
-  if mod["length"] != 257 or mod["data"][0] != '\x00':
-    raise PEMError('Invalid key length (expecting 2048 bits)')
+  if mod["length"] != rsaSigSize + 1 or mod["data"][0] != '\x00':
+    raise PEMError('Invalid key length (expecting %d bits)' % (rsaSigSize*8))
 
   # 3rd field is Public Exponent
   exp = seq.get_tag()
@@ -165,7 +165,7 @@ def to_words(n, count):
   s = ('0'*(len(h) % 2) + h).zfill(count*8).decode('hex')
   return array.array("I", s[::-1])
 
-def compute_mod_parameters(modulus):
+def compute_mod_parameters(modulus, wordCount):
   ''' Prepare/pre-compute coefficients for the RSA public key signature
     verification code.
   '''
@@ -183,7 +183,7 @@ def compute_mod_parameters(modulus):
   n0inv = B - modinv(w[0], B)
   # R = 2^(modulo size); RR = (R * R) % N
   RR = pow(2, 4096, N)
-  rr_words = to_words(RR, 64)
+  rr_words = to_words(RR, wordCount)
 
   return {'mod':w, 'rr':rr_words, 'n0inv':n0inv}
 
@@ -198,11 +198,11 @@ def dump_blob(params):
   n0inv_bin = array.array("I",[params['n0inv']]).tostring()
   return mod_bin + rr_bin + n0inv_bin
 
-def extract_pubkey(pemfile, headerMode=True):
+def extract_pubkey(pemfile, headerMode=True, rsaSigSize=2048/8):
   # Read the modulus in the .pem file
-  mod = pem_get_mod(sys.argv[1])
+  mod = pem_get_mod(sys.argv[1], rsaSigSize)
   # Pre-compute the parameters used by the verification code
-  p = compute_mod_parameters(mod)
+  p = compute_mod_parameters(mod, rsaSigSize/4)
 
   if headerMode:
     # Generate a C header file with the parameters
