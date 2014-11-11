@@ -217,7 +217,7 @@ SECTIONS
     .flash_suffix  : AT(LOADADDR(.data) + SIZEOF(.data)) {
         FILL(0xff);
         /* Put the public key coefficients at the end of the partition */
-        . = ORIGIN(FLASH) + LENGTH(FLASH) - 528;
+        . = ORIGIN(FLASH) + LENGTH(FLASH) - RSA_PUBLIC_KEY_SIZE;
         *(.rsa_pubkey)
     } > FLASH
 
