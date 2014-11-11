@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a80bbc4_b6266824",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-11-11T07:14:18Z",
+      "side": 1,
+      "message": "This should go with the VCSID CL.",
+      "revId": "8e2722bf06002552d181de9fc654fe38d3b1ac4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7db79e_bba5ef42",
+        "filename": "board/strago/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-11-11T07:14:18Z",
+      "side": 1,
+      "message": "Please rename this to CHIP_SPI_SIZE_MB and add it to the argument of cmd_pack_package.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 13
+      },
+      "revId": "8e2722bf06002552d181de9fc654fe38d3b1ac4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a80bbc4_9629ecf8",
+        "filename": "chip/mec1322/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-11-11T07:14:18Z",
+      "side": 1,
+      "message": "pack the 4MB spi flash -\u003e pack the SPI flash image",
+      "range": {
+        "startLine": 26,
+        "startChar": 43,
+        "endLine": 26,
+        "endChar": 65
+      },
+      "revId": "8e2722bf06002552d181de9fc654fe38d3b1ac4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
