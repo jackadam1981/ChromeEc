@@ -16,6 +16,24 @@
       "revId": "455ee483cd22f809baf8a55e582696ccadd4eb84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da344709_8129fab4",
+        "filename": "Makefile",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2014-11-12T19:23:02Z",
+      "side": 1,
+      "message": "We need to have \"all\" as the first target, so that \"make\" and \"make all\" have the same effect. Vic objected a lot (15 comments back and fourth) to having two \"all\" targets which each add prerequisites as it might confuse people. We either need to have something near the end of the file which can depend on things set up by the board. The compromise was to add in this explanatory comment. I don\u0027t need it, but the comment is designed to be helpful to people who are not as well versed in Make.",
+      "parentUuid": "5a405775_5d723b04",
+      "revId": "455ee483cd22f809baf8a55e582696ccadd4eb84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
