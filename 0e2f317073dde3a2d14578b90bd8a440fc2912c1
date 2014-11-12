@@ -85,6 +85,24 @@
       "revId": "0e2f317073dde3a2d14578b90bd8a440fc2912c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aabf756_b90967cb",
+        "filename": "power/baytrail.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-11-12T01:40:36Z",
+      "side": 1,
+      "message": "I would still prefer you follow a convention:\n\nWhen enabling:\nENABLE, 1\nRESET, 1\n \nWhen disabling:\nRESET, 0\nENABLE, 0",
+      "parentUuid": "fad10be3_981c9d8a",
+      "revId": "0e2f317073dde3a2d14578b90bd8a440fc2912c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
