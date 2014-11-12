@@ -1920,6 +1920,7 @@ void pd_set_suspend(int port, int enable)
 	task_wake(PORT_TO_TASK_ID(port));
 }
 
+#ifdef CONFIG_CMD_PD
 static int hex8tou32(char *str, uint32_t *val)
 {
 	char *ptr = str;
@@ -1995,6 +1996,7 @@ static int remote_flashing(int argc, char **argv)
 	ccprintf("DONE %d\n", pd[port].vdm_state);
 	return EC_SUCCESS;
 }
+#endif
 
 #if defined(CONFIG_USB_PD_ALT_MODE) && !defined(CONFIG_USB_PD_ALT_MODE_DFP)
 void pd_send_hpd(int port, enum hpd_event hpd)
@@ -2044,6 +2046,7 @@ static int command_pd(int argc, char **argv)
 	if (argc < 2)
 		return EC_ERROR_PARAM_COUNT;
 
+#ifdef CONFIG_CMD_PD
 	/* command: pd <subcmd> <args> */
 	if (!strcasecmp(argv[1], "dualrole")) {
 		if (argc < 3) {
@@ -2109,12 +2112,14 @@ static int command_pd(int argc, char **argv)
 		return EC_SUCCESS;
 	}
 
+#endif
 	/* command: pd <port> <subcmd> [args] */
 	port = strtoi(argv[1], &e, 10);
 	if (argc < 3)
 		return EC_ERROR_PARAM_COUNT;
 	if (*e || port >= PD_PORT_COUNT)
 		return EC_ERROR_PARAM2;
+#ifdef CONFIG_CMD_PD
 
 	if (!strcasecmp(argv[2], "tx")) {
 		set_state(port, PD_STATE_SNK_DISCOVERY);
@@ -2200,7 +2205,9 @@ static int command_pd(int argc, char **argv)
 		}
 	} else if (!strncasecmp(argv[2], "flash", 4)) {
 		return remote_flashing(argc, argv);
-	} else if (!strncasecmp(argv[2], "state", 5)) {
+	} else
+#endif
+	if (!strncasecmp(argv[2], "state", 5)) {
 		const char * const state_names[] = {
 			"DISABLED", "SUSPENDED",
 #ifdef CONFIG_USB_PD_DUAL_ROLE

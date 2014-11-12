@@ -40,6 +40,7 @@
 #define CONFIG_DEBUG_ASSERT_BRIEF
 
 /* Disable unused console command to save flash space */
+#undef CONFIG_CMD_PD
 #undef CONFIG_CMD_POWERINDEBUG
 
 /*
