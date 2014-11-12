@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aa5ff82_a3c13aba",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-12T02:31:29Z",
+      "side": 1,
+      "message": "From talking to Sameer, I think we want to change this slightly. We want to break this into two for these two different functionalities:\n- Override charge manager and don\u0027t charge from any port.\n- Stop the override behavior and allow charge manager to choose port.",
+      "range": {
+        "startLine": 30,
+        "startChar": 27,
+        "endLine": 30,
+        "endChar": 43
+      },
+      "revId": "46a155b9e98130266fff20f4db4f674b7a730925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
