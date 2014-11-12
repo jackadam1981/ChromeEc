@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "da028741_3492fee2",
+        "filename": "board/twinkie/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-12T22:16:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aa8035b_93b806ea",
+      "revId": "7bc3060134f930bbcdda2eda11ef73cd3eeddac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aa8035b_53460e82",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "da028741_549182d9",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-12T22:16:52Z",
+      "side": 1,
+      "message": "Done. Added a mask for flags to clear on disconnect.",
+      "parentUuid": "3aa8035b_53460e82",
+      "revId": "7bc3060134f930bbcdda2eda11ef73cd3eeddac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a405775_8330e28c",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2014-11-12T18:58:24Z",
       "side": 1,
       "message": "IMO we should either just do data_role \u003d !data_role\nor use a flag inside a bitfield for it",
+      "revId": "7bc3060134f930bbcdda2eda11ef73cd3eeddac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa8035b_4e450470",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-12T22:16:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a405775_8330e28c",
       "revId": "7bc3060134f930bbcdda2eda11ef73cd3eeddac0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
