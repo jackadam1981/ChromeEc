@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a405775_5d2ebbbb",
+        "filename": "board/samus/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-12T17:11:55Z",
+      "side": 1,
+      "message": "will revert this after verification. it is being used right now as a test point to scope.",
+      "range": {
+        "startLine": 35,
+        "startChar": 22,
+        "endLine": 35,
+        "endChar": 34
+      },
+      "revId": "0ef745b7298c5ec1ee2024907af2097af07c10b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
