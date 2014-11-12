@@ -32,7 +32,7 @@ GPIO(ACCEL_INT, F, 7, GPIO_INPUT, NULL)
 /*
  * Ambient Light Sensor input.  This could become an interrupt once supported.
  */
-GPIO(ALS_INT_L, N, 0, GPIO_INPUT, NULL)
+GPIO(ALS_INT_L, N, 0, GPIO_OUT_LOW, NULL)
 
 /* Interrupt signal from PD MCU, external pull-down */
 GPIO(PD_MCU_INT, J, 5, GPIO_INT_RISING | GPIO_INT_DSLEEP, pd_mcu_interrupt)
