@@ -41,6 +41,9 @@
 #define CONFIG_UART_RX_DMA
 #define CONFIG_UART_RX_DMA_CH STM32_DMAC_USART2_RX
 
+/* Disable unused console command to save flash space */
+#undef CONFIG_CMD_PD
+
 /*
  * Pericom I2C workaround
  * TODO(crosbug.com/p/31529): Remove this.
