@@ -197,6 +197,14 @@ void pd_execute_data_swap(int port, int data_role)
 {
 	/* TODO: when switching to UFP need to open D+/D- switches */
 }
+
+void pd_contract(int port, int pr_role, int dr_role,
+		 int partner_pr_swap, int partner_dr_swap)
+{
+	/* If UFP, try to switch to DFP */
+	if (partner_dr_swap && dr_role == PD_ROLE_UFP)
+		pd_request_data_swap(port);
+}
 /* ----------------- Vendor Defined Messages ------------------ */
 const struct svdm_response svdm_rsp = {
 	.identity = NULL,
