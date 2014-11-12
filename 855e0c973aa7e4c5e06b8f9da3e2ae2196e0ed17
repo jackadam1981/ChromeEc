@@ -52,6 +52,24 @@
       "revId": "855e0c973aa7e4c5e06b8f9da3e2ae2196e0ed17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aabf756_5a63813c",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-12T16:08:33Z",
+      "side": 1,
+      "message": "No but the spec \"lawyers\" and my co-workers decided that the 500mA entry was not mandatory/not useful, the vSafe5V entry is now 3A on our chargers.\n\nBy the way we can go even lower if we don\u0027t plan to suck any current : 10mA",
+      "parentUuid": "5aabf756_3a77a5fd",
+      "revId": "855e0c973aa7e4c5e06b8f9da3e2ae2196e0ed17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
