@@ -22,6 +22,24 @@
       "revId": "46a155b9e98130266fff20f4db4f674b7a730925",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa8035b_b30982cb",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-11-12T19:22:14Z",
+      "side": 1,
+      "message": "If I understand correctly, we need the ability to set a \"don\u0027t charge from any port\" mode, and the ability to turn this mode off. I think we can extend the existing override API very slightly:\n\noverride value: function\n\n-1: disable override\n\nport#: only charge from port#, until disconnect\n\nPD_PORT_COUNT (or maybe \u003e\u003d PD_PORT_COUNT): only charge from this non-existing port (ex. don\u0027t charge) until disconnect (ex. never disconnect, unless override value is manually changed)\n\nDoes this make sense? I\u0027ll have to change the code slightly.",
+      "parentUuid": "1aa5ff82_a3c13aba",
+      "revId": "46a155b9e98130266fff20f4db4f674b7a730925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
