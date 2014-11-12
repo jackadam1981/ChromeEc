@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3e4fe9_5f2eabbb",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-12T17:08:23Z",
+      "side": 1,
+      "message": "can we use CONFIG_CHARGER_INPUT_CURRENT and define that to be PWM_0_MA for samus_pd board. That way this code can more easily move to common/usb_pd_policy.c which we want to do to reduce code redundancy.",
+      "range": {
+        "startLine": 94,
+        "startChar": 29,
+        "endLine": 94,
+        "endChar": 37
+      },
+      "revId": "67c81b0fb8839c532bac123b3e38750ebf85eaf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
