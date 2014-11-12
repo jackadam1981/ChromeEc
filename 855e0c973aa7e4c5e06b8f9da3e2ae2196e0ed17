@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aa5ff82_0c9cfb73",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-12T15:58:45Z",
+      "side": 1,
+      "message": "why are we requesting so much current if min is set and we don\u0027t want current ?",
+      "revId": "855e0c973aa7e4c5e06b8f9da3e2ae2196e0ed17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
