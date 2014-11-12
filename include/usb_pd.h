@@ -719,7 +719,7 @@ int pd_board_checks(void);
  * @port USB-C port number
  * @return True if power swap is allowed, False otherwise
  */
-int pd_power_swap(int port);
+int pd_check_power_swap(int port);
 
 /**
  * Check if data swap is allowed.
@@ -728,7 +728,19 @@ int pd_power_swap(int port);
  * @data_role current data role
  * @return True if data swap is allowed, False otherwise
  */
-int pd_data_swap(int port, int data_role);
+int pd_check_data_swap(int port, int data_role);
+
+/**
+ * A new power contract has been established
+ *
+ * @port USB-C port number
+ * @pr_role Our power role
+ * @dr_role Our data role
+ * @partner_pr_swap Partner supports PR_SWAP
+ * @partner_dr_swap Partner supports DR_SWAP
+ */
+void pd_new_contract(int port, int pr_role, int dr_role,
+		     int partner_pr_swap, int partner_dr_swap);
 
 /**
  * Execute data swap.
@@ -1045,6 +1057,16 @@ int pd_get_partner_dualrole_capable(int port);
  * @param port USB-C port number
  */
 int pd_get_partner_data_swap_capable(int port);
+
+/**
+ * Request power swap command to be issued
+ */
+void pd_request_power_swap(int port);
+
+/**
+ * Request data swap command to be issued
+ */
+void pd_request_data_swap(int port);
 
 /**
  * Set the PD communication enabled flag. When communication is disabled,
