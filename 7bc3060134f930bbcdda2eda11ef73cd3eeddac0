@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3aa8035b_93b806ea",
+        "filename": "board/twinkie/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-12T18:58:24Z",
+      "side": 1,
+      "message": "shouldn\u0027t we have | PDO_FIXED_DATA_SWAP ?",
+      "revId": "7bc3060134f930bbcdda2eda11ef73cd3eeddac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa8035b_53460e82",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-12T18:58:24Z",
+      "side": 1,
+      "message": "should we erase PD_FLAGS_SNK_DATA_SWAPPED also ?\n\nmaybe it would be cheaper to split temporary flags and permanent features (eg ping) in 2 different fields",
+      "revId": "7bc3060134f930bbcdda2eda11ef73cd3eeddac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a405775_8330e28c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-12T18:58:24Z",
+      "side": 1,
+      "message": "IMO we should either just do data_role \u003d !data_role\nor use a flag inside a bitfield for it",
+      "revId": "7bc3060134f930bbcdda2eda11ef73cd3eeddac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
