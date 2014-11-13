@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "9ab3aff9_5a26d1ab",
+        "filename": "board/hoho/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-11-13T16:49:20Z",
+      "side": 1,
+      "message": "Agreed, my recollection is that we\u0027d likely see this field collapse into only one as the port partners know their roles.",
+      "parentUuid": "9adacf31_a53fcaaa",
+      "revId": "a56d814cc730e2e92031b21a3ba0e9a269a3e15a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5adcd72f_c3abea96",
         "filename": "include/usb_pd.h",
         "patchSetId": 1
