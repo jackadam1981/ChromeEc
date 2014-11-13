@@ -40,7 +40,11 @@ GPIO(PMIC_PWRON_L,         D, 14, GPIO_ODR_HIGH, NULL)
 GPIO(PMIC_WARM_RESET_L,    E, 4,  GPIO_ODR_HIGH, NULL)
 GPIO(EN_PP3300_RSVD,       E, 13, GPIO_INPUT,    NULL)
 /* sensor temp output and PMIC reset input */
+#if 0
 GPIO(PMIC_THERM_L,         D, 12, GPIO_ODR_HIGH, NULL)
+#else
+GPIO(PMIC_THERM_L,         D, 12, GPIO_INT_BOTH, unhandled_evt)
+#endif
 
 GPIO(VBUS_SENSE,           A, 0,  GPIO_ANALOG,   NULL)
 GPIO(CHGR_IADP,            B, 0,  GPIO_ANALOG,   NULL)

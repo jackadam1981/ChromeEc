@@ -297,9 +297,12 @@ static void chipset_turn_off_power_rails(void)
 	set_pmic_pwron(0);
 
 	/* Assert AP reset to shutdown immediately */
+	gpio_set_flags(GPIO_PMIC_THERM_L, GPIO_ODR_HIGH);
 	set_pmic_therm(1);
 	usleep(PMIC_THERM_HOLD_TIME);
 	set_pmic_therm(0);
+	gpio_set_flags(GPIO_PMIC_THERM_L, GPIO_INT_BOTH);
+	gpio_enable_interrupt(GPIO_PMIC_THERM_L);
 
 	/* Hold the reset pin so that the AP stays in off mode (rev <= 2.0) */
 	set_ap_reset(1);
@@ -382,7 +385,10 @@ static void power_on(void)
 		       GPIO_INPUT | GPIO_PULL_UP | GPIO_INT_BOTH);
 
 	/* Make sure we de-assert the PMI_THERM_L and AP_RESET_L pin. */
+	gpio_set_flags(GPIO_PMIC_THERM_L, GPIO_ODR_HIGH);
 	set_pmic_therm(0);
+	gpio_set_flags(GPIO_PMIC_THERM_L, GPIO_INT_BOTH);
+	gpio_enable_interrupt(GPIO_PMIC_THERM_L);
 	set_ap_reset(0);
 
 	/*
