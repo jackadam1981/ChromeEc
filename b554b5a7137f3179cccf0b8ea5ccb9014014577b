@@ -69,6 +69,24 @@
       "revId": "b554b5a7137f3179cccf0b8ea5ccb9014014577b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7adfdb23_33921ae3",
+        "filename": "chip/g/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000434
+      },
+      "writtenOn": "2014-11-13T23:28:59Z",
+      "side": 1,
+      "message": "#define CLOCK_MUL_FACTOR 26\n#define CLOCK_DIV_FACTOR (0xffffffff / CLOCK_MUL_FACTOR)\nwill allow the compiler to simplify where the division is used\nand replace it by simpler integer operation.\n\noh yes that\u0027s Cortex-M3 rather than M0, division is cheaper.\nyou can let it as is if you want that won\u0027t change much.",
+      "parentUuid": "da9e076c_141c3ad6",
+      "revId": "b554b5a7137f3179cccf0b8ea5ccb9014014577b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
