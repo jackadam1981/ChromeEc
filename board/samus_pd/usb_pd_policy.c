@@ -15,6 +15,7 @@
 #include "timer.h"
 #include "util.h"
 #include "usb_pd.h"
+#include "usb_pd_config.h"
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
@@ -40,6 +41,9 @@ const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
 
 /* Cap on the max voltage requested as a sink (in millivolts) */
 static unsigned max_mv = -1; /* no cap */
+
+/* port mask for available displayport sinks */
+volatile static uint32_t dp_port_mask;
 
 int pd_choose_voltage_common(int cnt, uint32_t *src_caps, uint32_t *rdo,
 			     uint32_t *curr_limit, uint32_t *supply_voltage,
@@ -296,15 +300,37 @@ static void svdm_safe_dp_mode(int port)
 	board_set_usb_mux(port, TYPEC_MUX_NONE, pd_get_polarity(port));
 }
 
+void enter_dp_mode_deferred(void)
+{
+	int port = TASK_ID_TO_PORT(task_get_current());
+	if (dp_port_mask & ~(1 << port))
+		/* other ports still occupy DP ... re-schedule */
+		hook_call_deferred(enter_dp_mode_deferred, 500*MSEC);
+	else {
+		/* resend enter mode */
+		/* TODO(tbroch): remove this after testing */
+		CPRINTF("enter DP mode port mask:0x%08x\n", dp_port_mask);
+		/* TODO(tbroch): schedule re-send of enter_mode */
+	}
+}
+DECLARE_DEFERRED(enter_dp_mode_deferred);
+
 static int svdm_enter_dp_mode(int port, uint32_t mode_caps)
 {
+	int rv = -1;
+
 	/* Only enter mode if device is DFP_D capable */
 	if (mode_caps & MODE_DP_SNK) {
-		svdm_safe_dp_mode(port);
-		return 0;
+		if (!dp_port_mask) {
+			svdm_safe_dp_mode(port);
+			rv = 0;
+		} else {
+			/* Theres already someone driving dp */
+			hook_call_deferred(enter_dp_mode_deferred, 500*MSEC);
+		}
+		dp_port_mask |= (1 << port);
 	}
-
-	return -1;
+	return rv;
 }
 
 static int dp_on;
@@ -380,6 +406,7 @@ static void svdm_exit_dp_mode(int port)
 {
 	svdm_safe_dp_mode(port);
 	gpio_set_level(PORT_TO_HPD(port), 0);
+	dp_port_mask &= ~(1 << port);
 }
 
 static int svdm_enter_gfu_mode(int port, uint32_t mode_caps)
