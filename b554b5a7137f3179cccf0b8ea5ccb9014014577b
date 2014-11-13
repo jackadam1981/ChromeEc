@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7adfdb23_9345ae73",
+        "filename": "chip/g/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-13T22:56:37Z",
+      "side": 1,
+      "message": "you don\u0027t need this guy",
+      "revId": "b554b5a7137f3179cccf0b8ea5ccb9014014577b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7adfdb23_53a7a6c7",
+        "filename": "chip/g/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-13T22:56:37Z",
+      "side": 1,
+      "message": "a  real division every time we read the timestamp will be really slow.\nCan we use a constant division for now ?\nsee later if we need this fancyness.",
+      "revId": "b554b5a7137f3179cccf0b8ea5ccb9014014577b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
