@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7adfdb23_445fe2e2",
+        "filename": "common/usb_pd_flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-13T18:15:08Z",
+      "side": 1,
+      "message": "with the full runtime it\u0027s implemented as :\nsystem_run_image_copy(SYSTEM_IMAGE_RW)",
+      "revId": "0d3049bd4910fb285ae45c154ac113a08dbdff56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7adfdb23_e470ee79",
+        "filename": "common/usb_pd_flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-13T18:15:08Z",
+      "side": 1,
+      "message": "with the full runtime, it\u0027s implemented as :\nsystem_get_image_copy() \u003d\u003d SYSTEM_IMAGE_RO",
+      "revId": "0d3049bd4910fb285ae45c154ac113a08dbdff56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
