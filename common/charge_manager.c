@@ -95,8 +95,20 @@ static void charge_manager_refresh(void)
 		 */
 		for (i = 0; i < CHARGE_SUPPLIER_COUNT; ++i)
 			for (j = 0; j < PD_PORT_COUNT; ++j) {
+				/*
+				 * Don't select this port if we have a
+				 * charge on another override port.
+				 */
 				if (override_port != OVERRIDE_OFF &&
 				    override_port == new_port &&
+				    override_port != j)
+					continue;
+
+				/*
+				 * Don't charge from a dual-role port unless
+				 * it is our override port.
+				 */
+				if (pd_get_partner_dualrole_capable(j) &&
 				    override_port != j)
 					continue;
 
