@@ -12,6 +12,7 @@
 #include "task.h"
 #include "usb_pd.h"
 #include "util.h"
+#include "version.h"
 
 /* Insert the RSA public key definition */
 const struct rsa_public_key pkey __attribute__((section(".rsa_pubkey"))) =
@@ -21,6 +22,10 @@ static const void *rw_sig = (void *)CONFIG_FLASH_BASE + CONFIG_FW_RW_OFF
 				 + CONFIG_FW_RW_SIZE - RSANUMBYTES;
 /* Large 768-Byte buffer for RSA computation : could be re-use afterwards... */
 static uint32_t rsa_workbuf[3 * RSANUMWORDS];
+
+static uint8_t *rw_hash;
+static uint8_t rw_flash_changed;
+static uint32_t info_data[6];
 
 extern void pd_rx_handler(void);
 
@@ -55,20 +60,48 @@ int is_ro_mode(void)
 static int check_rw_valid(void)
 {
 	int good;
-	uint8_t *hash;
 
 	/* Check if we have a RW firmware flashed */
 	if (*rw_rst == 0xffffffff)
 		return 0;
 
-	hash = flash_hash_rw();
-	good = rsa_verify(&pkey, (void *)rw_sig, (void *)hash, rsa_workbuf);
+	good = rsa_verify(&pkey, (void *)rw_sig, (void *)rw_hash, rsa_workbuf);
 	if (!good) {
 		debug_printf("RSA verify FAILED\n");
 		return 0;
 	}
 
 	return 1;
+}
+
+uint32_t *board_get_info(void)
+{
+	if (rw_flash_changed) {
+		/* re-calculate RW hash */
+		rw_hash = flash_hash_rw();
+		rw_flash_changed = 0;
+	}
+
+	/* copy first 20 bytes of RW hash */
+	memcpy(info_data, rw_hash, 5 * sizeof(uint32_t));
+
+	/* copy other info into data msg */
+#ifdef BOARD_ZINGER
+	info_data[5] = VDO_INFO(USB_PD_HW_DEV_ID_ZINGER, 1,
+				ver_get_numcommits(), !is_ro_mode());
+#elif defined(BOARD_MINIMUFFIN)
+	info_data[5] = VDO_INFO(USB_PD_HW_DEV_ID_MINIMUFFIN, 0,
+				ver_get_numcommits(), !is_ro_mode());
+#else
+#error "Board does not have a USB-PD HW Device ID"
+#endif
+
+	return info_data;
+}
+
+void board_rw_contents_change(void)
+{
+	rw_flash_changed = 1;
 }
 
 extern void pd_task(void);
@@ -78,6 +111,9 @@ int main(void)
 	hardware_init();
 	debug_printf("Power supply started ... %s\n",
 		is_ro_mode() ? "RO" : "RW");
+
+	/* calculate hash of RW */
+	rw_hash = flash_hash_rw();
 
 	/* Verify RW firmware and use it if valid */
 	if (is_ro_mode() && check_rw_valid())
