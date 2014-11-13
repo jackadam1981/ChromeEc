@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9adacf31_e539d2c5",
+        "filename": "board/hoho/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-13T16:00:57Z",
+      "side": 1,
+      "message": "also need this change in board/dingdong/usb_pd_policy.c",
+      "revId": "a56d814cc730e2e92031b21a3ba0e9a269a3e15a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adacf31_a53fcaaa",
+        "filename": "board/hoho/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-13T16:00:57Z",
+      "side": 1,
+      "message": "for UFP vs DFP, we did the opposite change not long ago :\nhttps://chromium-review.googlesource.com/225231\nthe rationale is : when we are a UFP, we need to state which DFP pin configuration we support on the other side.\nWe discussed the resolution of that item with Colin WS and David S (who are my definitive reference for USBC/DP standard interpretation)",
+      "revId": "a56d814cc730e2e92031b21a3ba0e9a269a3e15a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5adcd72f_c3abea96",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-13T16:00:57Z",
+      "side": 1,
+      "message": "in other places, we have used the following syntax : 1A5\nthen CABLE_CURR_1A5",
+      "revId": "a56d814cc730e2e92031b21a3ba0e9a269a3e15a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5adcd72f_23a2ceb8",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-13T16:00:57Z",
+      "side": 1,
+      "message": "ditto 1W5",
+      "revId": "a56d814cc730e2e92031b21a3ba0e9a269a3e15a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
