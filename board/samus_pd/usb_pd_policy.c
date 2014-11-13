@@ -39,6 +39,9 @@ const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
 /* Cap on the max voltage requested as a sink (in millivolts) */
 static unsigned max_mv = -1; /* no cap */
 
+/* port mask for available displayport sinks */
+volatile static uint32_t dp_port_mask;
+
 int pd_choose_voltage_common(int cnt, uint32_t *src_caps, uint32_t *rdo,
 			     uint32_t *curr_limit, uint32_t *supply_voltage,
 			     int choose_min)
@@ -278,13 +281,17 @@ static void svdm_safe_dp_mode(int port)
 
 static int svdm_enter_dp_mode(int port, uint32_t mode_caps)
 {
+	int rv = -1;
+
 	/* Only enter mode if device is DFP_D capable */
 	if (mode_caps & MODE_DP_SNK) {
-		svdm_safe_dp_mode(port);
-		return 0;
+		dp_port_mask |= (1 << port);
+		if (!dp_port_mask) {
+			svdm_safe_dp_mode(port);
+			rv = 0;
+		}
 	}
-
-	return -1;
+	return rv;
 }
 
 static int dp_on;
@@ -360,6 +367,12 @@ static void svdm_exit_dp_mode(int port)
 {
 	svdm_safe_dp_mode(port);
 	gpio_set_level(PORT_TO_HPD(port), 0);
+	dp_port_mask &= ~(1 << port);
+	if (dp_port_mask) {
+		int next_dp_port = mask_to_port(dp_port_mask);
+		/* TODO(tbroch) This is across threads.  How do we schedule? */
+		CPRINTF("Switch dp snk @ port %d\n", next_dp_port);
+	}
 }
 
 const struct svdm_amode_fx supported_modes[] = {
