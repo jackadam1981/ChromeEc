@@ -121,7 +121,7 @@ int pd_power_swap(int port)
 }
 /* ----------------- Vendor Defined Messages ------------------ */
 const uint32_t vdo_idh = VDO_IDH(0, /* data caps as USB host */
-				 0, /* data caps as USB device */
+				 1, /* data caps as USB device */
 				 IDH_PTYPE_AMA, /* Alternate mode */
 				 1, /* supports alt modes */
 				 USB_VID_GOOGLE);
@@ -160,8 +160,8 @@ static int svdm_response_svids(int port, uint32_t *payload)
 #define OPOS 1
 
 const uint32_t vdo_dp_mode[MODE_CNT] =  {
-	VDO_MODE_DP(0,		   /* UFP pin cfg supported : none */
-		    MODE_DP_PIN_C, /* DFP pin cfg supported */
+	VDO_MODE_DP(MODE_DP_PIN_C, /* UFP pin cfg supported */
+		    0,		   /* DFP pin cfg supported : none */
 		    1,		   /* no usb2.0	signalling in AMode */
 		    CABLE_PLUG,	   /* its a plug */
 		    MODE_DP_V13,   /* DPv1.3 Support, no Gen2 */
