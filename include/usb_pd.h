@@ -376,6 +376,15 @@ struct pd_policy {
 #define PD_VDO_SVID_SVID1(vdo) ((vdo) & 0xffff)
 
 /*
+ * Google modes capabilities
+ * <31:8> : reserved
+ * <7:0>  : mode
+ */
+#define VDO_MODE_GOOGLE(mode) (mode & 0xff)
+
+#define MODE_GOOGLE_FU 1 /* Firmware Update mode */
+
+/*
  * Mode Capabilities
  *
  * Number of VDOs supplied is SID dependent (but <= 6 VDOS?)
