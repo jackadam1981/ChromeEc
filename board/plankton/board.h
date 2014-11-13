@@ -64,6 +64,18 @@ enum board_src_cap {
 /* Set USB PD source capability */
 void board_set_source_cap(enum board_src_cap cap);
 
+/* Whether faking PD disconnected or not */
+int board_pd_fake_disconnected(void);
+
+/* Get fake ADC reading */
+int board_fake_pd_adc_read(void);
+
+/* Set fake PD pull-up/pull-down */
+void board_update_fake_adc_value(int host_mode);
+
+/* Set pull-up/pull-down on CC lines */
+void board_pd_set_host_mode(int enable);
+
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __BOARD_H */
