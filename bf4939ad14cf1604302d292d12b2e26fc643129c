@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7adfdb23_cdddd56f",
+        "filename": "chip/mec1322/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-11-13T20:49:19Z",
+      "side": 1,
+      "message": "yet...keep the original blank line. We don\u0027t want a change in a file which we don\u0027t need to change. This only adds to trouble when we want to cherry-pick/revert/whatever in the future.",
+      "revId": "bf4939ad14cf1604302d292d12b2e26fc643129c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7adfdb23_ed01b12a",
+        "filename": "chip/mec1322/spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-11-13T20:49:19Z",
+      "side": 1,
+      "message": "The caller of spi_transaction and spi_transaction_flush should control spi_enable(). Imagine if you have consecutive SPI transactions, you\u0027d be enabling and disabling SPI peripheral all the time if you keep spi_enable() here.",
+      "revId": "bf4939ad14cf1604302d292d12b2e26fc643129c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
