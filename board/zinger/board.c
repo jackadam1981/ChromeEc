@@ -22,6 +22,8 @@ static const void *rw_sig = (void *)CONFIG_FLASH_BASE + CONFIG_FW_RW_OFF
 /* Large 768-Byte buffer for RSA computation : could be re-use afterwards... */
 static uint32_t rsa_workbuf[3 * RSANUMWORDS];
 
+uint8_t *rw_hash;
+
 extern void pd_rx_handler(void);
 
 /* RW firmware reset vector */
@@ -55,14 +57,12 @@ int is_ro_mode(void)
 static int check_rw_valid(void)
 {
 	int good;
-	uint8_t *hash;
 
 	/* Check if we have a RW firmware flashed */
 	if (*rw_rst == 0xffffffff)
 		return 0;
 
-	hash = flash_hash_rw();
-	good = rsa_verify(&pkey, (void *)rw_sig, (void *)hash, rsa_workbuf);
+	good = rsa_verify(&pkey, (void *)rw_sig, (void *)rw_hash, rsa_workbuf);
 	if (!good) {
 		debug_printf("RSA verify FAILED\n");
 		return 0;
@@ -78,6 +78,9 @@ int main(void)
 	hardware_init();
 	debug_printf("Power supply started ... %s\n",
 		is_ro_mode() ? "RO" : "RW");
+
+	/* calculate hash of RW */
+	rw_hash = flash_hash_rw();
 
 	/* Verify RW firmware and use it if valid */
 	if (is_ro_mode() && check_rw_valid())
