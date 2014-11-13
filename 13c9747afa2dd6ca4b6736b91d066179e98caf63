@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da2b67c1_0c789764",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-11-13T21:50:01Z",
+      "side": 1,
+      "message": "added 0x5012 to alloc for now.  Do we need separate for minimuffin or can we just assume this is a class of chargers and since we don\u0027t actually have usb descriptors \u0026 functionality thats good enough",
+      "range": {
+        "startLine": 404,
+        "startChar": 41,
+        "endLine": 404,
+        "endChar": 55
+      },
+      "revId": "13c9747afa2dd6ca4b6736b91d066179e98caf63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a1a7bb5_3ae4a9bb",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-11-13T21:50:01Z",
+      "side": 1,
+      "message": "it won\u0027t have this ... which is a violation that I\u0027m ok with but we should probably make this 0",
+      "range": {
+        "startLine": 412,
+        "startChar": 5,
+        "endLine": 412,
+        "endChar": 21
+      },
+      "revId": "13c9747afa2dd6ca4b6736b91d066179e98caf63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a1a7bb5_7ade21e7",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-11-13T21:50:01Z",
+      "side": 1,
+      "message": "we\u0027ve got \u0027fu\u0027 functionality",
+      "range": {
+        "startLine": 437,
+        "startChar": 17,
+        "endLine": 437,
+        "endChar": 31
+      },
+      "revId": "13c9747afa2dd6ca4b6736b91d066179e98caf63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da2b67c1_2c5abbf3",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-11-13T21:50:01Z",
+      "side": 1,
+      "message": "part of me thinks zero should be reserved and fu should be \u00271\u0027",
+      "range": {
+        "startLine": 385,
+        "startChar": 23,
+        "endLine": 385,
+        "endChar": 24
+      },
+      "revId": "13c9747afa2dd6ca4b6736b91d066179e98caf63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
