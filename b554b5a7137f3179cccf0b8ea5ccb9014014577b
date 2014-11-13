@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "baa313b2_906cb47a",
+        "filename": "chip/g/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-11-13T23:02:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7adfdb23_9345ae73",
+      "revId": "b554b5a7137f3179cccf0b8ea5ccb9014014577b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7adfdb23_53a7a6c7",
         "filename": "chip/g/hwtimer.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-11-13T22:56:37Z",
       "side": 1,
       "message": "a  real division every time we read the timestamp will be really slow.\nCan we use a constant division for now ?\nsee later if we need this fancyness.",
+      "revId": "b554b5a7137f3179cccf0b8ea5ccb9014014577b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da9e076c_141c3ad6",
+        "filename": "chip/g/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-11-13T23:02:20Z",
+      "side": 1,
+      "message": "clock_mul_factor is constant. It only changes when the clock frequency does. And worst case for a 32-bit UDIV is only 12 clock cycles. I\u0027m not sure how else to do it.",
+      "parentUuid": "7adfdb23_53a7a6c7",
       "revId": "b554b5a7137f3179cccf0b8ea5ccb9014014577b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
