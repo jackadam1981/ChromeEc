@@ -21,6 +21,78 @@
 #include "usb_pd_config.h"
 #include "util.h"
 
+static volatile uint64_t hpd_prev_ts;
+static volatile int hpd_prev_level;
+
+void button_event(enum gpio_signal signal);
+void hpd_event(enum gpio_signal signal);
+void vbus_event(enum gpio_signal signal);
+#include "gpio_list.h"
+
+/**
+ * Hotplug detect deferred task
+ *
+ * Called after level change on hpd GPIO to evaluate (and debounce) what event
+ * has occurred.  There are 3 events that occur on HPD:
+ *    1. low  : downstream display sink is deattached
+ *    2. high : downstream display sink is attached
+ *    3. irq  : downstream display sink signalling an interrupt.
+ *
+ * The debounce times for these various events are:
+ *  100MSEC : min pulse width of level value.
+ *    2MSEC : min pulse width of IRQ low pulse.  Max is level debounce min.
+ *
+ * lvl(n-2) lvl(n-1)  lvl   prev_delta  now_delta event
+ * ----------------------------------------------------
+ * 1        0         1     <2ms        n/a       low glitch (ignore)
+ * 1        0         1     >2ms        <100ms    irq
+ * x        0         1     n/a         >100ms    high
+ * 0        1         0     <100ms      n/a       high glitch (ignore)
+ * x        1         0     n/a         >100ms    low
+ */
+
+void hpd_irq_deferred(void)
+{
+	pd_send_hpd(0, hpd_irq);
+}
+DECLARE_DEFERRED(hpd_irq_deferred);
+
+void hpd_lvl_deferred(void)
+{
+	int level = gpio_get_level(GPIO_DPSRC_HPD);
+	if (level != hpd_prev_level)
+		/* It's a glitch while in deferred or canceled action */
+		return;
+
+	pd_send_hpd(0, (level) ? hpd_high : hpd_low);
+}
+DECLARE_DEFERRED(hpd_lvl_deferred);
+
+void hpd_event(enum gpio_signal signal)
+{
+	timestamp_t now = get_time();
+	int level = gpio_get_level(signal);
+	uint64_t cur_delta = now.val - hpd_prev_ts;
+
+	/* store current time */
+	hpd_prev_ts = now.val;
+
+	/* All previous hpd level events need to be re-triggered */
+	hook_call_deferred(hpd_lvl_deferred, -1);
+
+	/* It's a glitch.  Previous time moves but level is the same. */
+	if (cur_delta < HPD_DEBOUNCE_IRQ)
+		return;
+
+	if ((!hpd_prev_level && level) && (cur_delta < HPD_DEBOUNCE_LVL))
+		/* It's an irq */
+		hook_call_deferred(hpd_irq_deferred, 0);
+	else if (cur_delta >= HPD_DEBOUNCE_LVL)
+		hook_call_deferred(hpd_lvl_deferred, HPD_DEBOUNCE_LVL);
+
+	hpd_prev_level = level;
+}
+
 /* Debounce time for voltage buttons */
 #define BUTTON_DEBOUNCE_US (100 * MSEC)
 
@@ -92,9 +164,23 @@ static void set_usbc_action(enum usbc_action act)
 	}
 }
 
+static int prev_dbg20v;
+static void button_dbg20v_deferred(void);
+static void enable_dbg20v_poll(void)
+{
+	hook_call_deferred(button_dbg20v_deferred, 10 * MSEC);
+}
+
 /* Handle debounced button press */
 static void button_deferred(void)
 {
+	if (button_pressed == GPIO_DBG_20V_TO_DUT_L) {
+		enable_dbg20v_poll();
+		if (gpio_get_level(GPIO_DBG_20V_TO_DUT_L) == prev_dbg20v)
+			return;
+		else
+			prev_dbg20v = !prev_dbg20v;
+	}
 	/* bounce ? */
 	if (gpio_get_level(button_pressed) != 0)
 		return;
@@ -134,13 +220,20 @@ void button_event(enum gpio_signal signal)
 	hook_call_deferred(button_deferred, BUTTON_DEBOUNCE_US);
 }
 
+static void button_dbg20v_deferred(void)
+{
+	if (gpio_get_level(GPIO_DBG_20V_TO_DUT_L) == 0)
+		button_event(GPIO_DBG_20V_TO_DUT_L);
+	else
+		enable_dbg20v_poll();
+}
+DECLARE_DEFERRED(button_dbg20v_deferred);
+
 void vbus_event(enum gpio_signal signal)
 {
 	ccprintf("VBUS! =%d\n", gpio_get_level(signal));
 	task_wake(TASK_ID_PD);
 }
-
-#include "gpio_list.h"
 
 /* ADC channels */
 const struct adc_t adc_channels[] = {
@@ -159,16 +252,23 @@ const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 static void board_init(void)
 {
+	timestamp_t now = get_time();
+	hpd_prev_level = gpio_get_level(GPIO_DPSRC_HPD);
+	hpd_prev_ts = now.val;
+	gpio_enable_interrupt(GPIO_DPSRC_HPD);
+
 	/* Enable interrupts on VBUS transitions. */
 	gpio_enable_interrupt(GPIO_VBUS_WAKE);
 
 	/* Enable button interrupts. */
 	gpio_enable_interrupt(GPIO_DBG_5V_TO_DUT_L);
 	gpio_enable_interrupt(GPIO_DBG_12V_TO_DUT_L);
-	gpio_enable_interrupt(GPIO_DBG_20V_TO_DUT_L);
 	gpio_enable_interrupt(GPIO_DBG_CHG_TO_DEV_L);
 	gpio_enable_interrupt(GPIO_DBG_USB_TOGGLE_L);
 	gpio_enable_interrupt(GPIO_DBG_MUX_FLIP_L);
+
+	/* TODO(crosbug.com/33761): poll DBG_20V_TO_DUT_L */
+	enable_dbg20v_poll();
 
 	ina2xx_init(0, 0x399f, INA2XX_CALIB_1MA(10 /* mOhm */));
 }
