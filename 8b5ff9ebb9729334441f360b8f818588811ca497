@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7a8d1b44_37969aae",
+        "filename": "board/zinger/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-14T19:24:44Z",
+      "side": 1,
+      "message": "it\u0027s externed and used in zinger usb_pd_policy",
+      "parentUuid": "3a972356_ecd7ebc9",
+      "revId": "8b5ff9ebb9729334441f360b8f818588811ca497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "baa313b2_77301f8c",
         "filename": "board/zinger/usb_pd_policy.c",
         "patchSetId": 8
