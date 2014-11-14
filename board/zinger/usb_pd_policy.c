@@ -169,6 +169,8 @@ static const struct {
 /* current and previous selected PDO entry */
 static int volt_idx;
 static int last_volt_idx;
+/* target voltage at the end of discharge */
+static int discharge_volt_idx;
 
 /* output current measurement */
 int vbus_amp;
@@ -200,12 +202,18 @@ int pd_request_voltage(uint32_t rdo)
 		     ((pdo >> 10) & 0x3ff) * 50, (pdo & 0x3ff) * 10,
 		     ((rdo >> 10) & 0x3ff) * 10, (rdo & 0x3ff) * 10);
 
-	if (idx - 1 < volt_idx) { /* down voltage transition */
+	last_volt_idx = volt_idx;
+	volt_idx = idx - 1;
+	if (volt_idx < last_volt_idx) { /* down voltage transition */
 		/* Stop OCP monitoring */
 		adc_disable_watchdog();
 
-		discharge_voltage(voltages[idx - 1].ovp);
-	} else if (idx - 1 > volt_idx) { /* up voltage transition */
+		discharge_volt_idx = volt_idx;
+		/* from 20V : do an intermediate step at 12V */
+		if (volt_idx == 0 && last_volt_idx == 2)
+			volt_idx = 1;
+		discharge_voltage(voltages[volt_idx].ovp);
+	} else if (volt_idx > last_volt_idx) { /* up voltage transition */
 		if (discharge_is_enabled()) {
 			/* Make sure discharging is disabled */
 			discharge_disable();
@@ -214,8 +222,6 @@ int pd_request_voltage(uint32_t rdo)
 					    MAX_CURRENT_FAST, 0);
 		}
 	}
-	last_volt_idx = volt_idx;
-	volt_idx = idx - 1;
 	set_output_voltage(voltages[volt_idx].select);
 
 	return EC_SUCCESS;
@@ -239,16 +245,21 @@ void pd_power_supply_reset(int port)
 	int need_discharge = (volt_idx > 0) || discharge_is_enabled();
 
 	output_disable();
-	volt_idx = 0;
-	set_output_voltage(VO_5V);
+	last_volt_idx = volt_idx;
+	/* from 20V : do an intermediate step at 12V */
+	volt_idx = volt_idx == 2 ? 1 : 0;
+	set_output_voltage(voltages[volt_idx].select);
 	/* TODO transition delay */
 
 	/* Stop OCP monitoring to save power */
 	adc_disable_watchdog();
 
 	/* discharge voltage to 5V ? */
-	if (need_discharge)
-		discharge_voltage(voltages[0].ovp);
+	if (need_discharge) {
+		/* final target : 5V  */
+		discharge_volt_idx = 0;
+		discharge_voltage(voltages[volt_idx].ovp);
+	}
 }
 
 int pd_board_checks(void)
@@ -356,10 +367,18 @@ void pd_adc_interrupt(void)
 	/* Clear flags */
 	STM32_ADC_ISR = 0x8e;
 
-	if (discharge_is_enabled()) { /* discharge completed */
-		discharge_disable();
-		/* enable over-current monitoring */
-		adc_enable_watchdog(ADC_CH_A_SENSE, MAX_CURRENT_FAST, 0);
+	if (discharge_is_enabled()) {
+		if (discharge_volt_idx != volt_idx) {
+			/* first step of the discharge completed: now 12V->5V */
+			volt_idx = 0;
+			set_output_voltage(VO_5V);
+			discharge_voltage(voltages[0].ovp);
+		} else { /* discharge complete */
+			discharge_disable();
+			/* enable over-current monitoring */
+			adc_enable_watchdog(ADC_CH_A_SENSE,
+					    MAX_CURRENT_FAST, 0);
+		}
 	} else {/* Over-current detection */
 		/* cut the power output */
 		pd_power_supply_reset(0);
