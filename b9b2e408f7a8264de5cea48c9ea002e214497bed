@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a256ff1_ca7ca30e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1893,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-14T02:26:04Z",
+      "side": 1,
+      "message": "I\u0027m not sure if we should handle the power request first or last. The difference is right now we always negotiate to 5V first, then if charge_manager says this is the active port then we go up to 20V. So, on entry to SNK_READY here, should we immediately request 20V, or should we do the DR_swap and SVDMs first and then request 20V?",
+      "range": {
+        "startLine": 1893,
+        "startChar": 3,
+        "endLine": 1893,
+        "endChar": 36
+      },
+      "revId": "b9b2e408f7a8264de5cea48c9ea002e214497bed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
