@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "7a8d1b44_0e926be2",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-14T17:01:56Z",
+      "side": 1,
+      "message": "why not resetting  PD_FLAGS_SRC_READY_ENTER ?",
+      "revId": "9c0c401e0b50480571da48cb2a6ea2bb9534db05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a8d1b44_6eba0f66",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 11
@@ -13,6 +30,75 @@
       "writtenOn": "2014-11-14T16:53:30Z",
       "side": 1,
       "message": "unrelated collision change ?",
+      "revId": "9c0c401e0b50480571da48cb2a6ea2bb9534db05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a8d1b44_4ed1d38a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1509,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-14T17:01:56Z",
+      "side": 1,
+      "message": "Ok I understood that change",
+      "parentUuid": "7a8d1b44_6eba0f66",
+      "revId": "9c0c401e0b50480571da48cb2a6ea2bb9534db05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a8d1b44_eea51f42",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-14T17:01:56Z",
+      "side": 1,
+      "message": "@param port rather than @port",
+      "revId": "9c0c401e0b50480571da48cb2a6ea2bb9534db05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa313b2_37d77704",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-14T17:01:56Z",
+      "side": 1,
+      "message": "you are supposed to comment the parameter :\n * @param port USB-C port number",
+      "revId": "9c0c401e0b50480571da48cb2a6ea2bb9534db05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a8d1b44_cea8631d",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 1068,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-14T17:01:56Z",
+      "side": 1,
+      "message": "ditto",
       "revId": "9c0c401e0b50480571da48cb2a6ea2bb9534db05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
