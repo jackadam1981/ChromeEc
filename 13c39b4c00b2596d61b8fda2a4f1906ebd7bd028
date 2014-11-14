@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dad0c711_ea86fb39",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-14T14:52:12Z",
+      "side": 1,
+      "message": "I mean OVP threshold not UVP",
+      "revId": "13c39b4c00b2596d61b8fda2a4f1906ebd7bd028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac8bb75_7fd62385",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-14T14:52:12Z",
+      "side": 1,
+      "message": "probably Firefly not Twinkie as it is easier to connect to the load.",
+      "revId": "13c39b4c00b2596d61b8fda2a4f1906ebd7bd028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a17778b_ebaec5f6",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-14T14:52:12Z",
+      "side": 1,
+      "message": "we need to do a set_output_voltage at the value pointed by discharge_volt_idx in case the first step of a 2-step transition failed.",
+      "revId": "13c39b4c00b2596d61b8fda2a4f1906ebd7bd028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
