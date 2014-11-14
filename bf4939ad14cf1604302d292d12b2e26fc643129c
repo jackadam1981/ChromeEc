@@ -33,6 +33,24 @@
       "revId": "bf4939ad14cf1604302d292d12b2e26fc643129c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a1a7bb5_2068f616",
+        "filename": "chip/mec1322/spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2014-11-14T06:07:52Z",
+      "side": 1,
+      "message": "Ideally I think spi_enable should be done is spi_flash.c file functions?\nThis one is a common folder file and hence didnt want to alter it.\nThe other place which is specific to this ec would be in chip/mec1322/flash.c. But if we add it only in this file then console commands in spi_flash.c wouldn\u0027t work. any thoughts?",
+      "parentUuid": "7adfdb23_ed01b12a",
+      "revId": "bf4939ad14cf1604302d292d12b2e26fc643129c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
