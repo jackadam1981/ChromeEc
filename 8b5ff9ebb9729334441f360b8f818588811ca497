@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a972356_ecd7ebc9",
+        "filename": "board/zinger/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-14T17:20:12Z",
+      "side": 1,
+      "message": "static ?\ncomment ?\n\nor better local variable in main and pass it as parameter to check_rw_valid()",
+      "revId": "8b5ff9ebb9729334441f360b8f818588811ca497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa313b2_77301f8c",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-14T17:20:12Z",
+      "side": 1,
+      "message": "when you have just flashed a new RW in RO mode, you can no longer verify its hash without rebooting ?",
+      "revId": "8b5ff9ebb9729334441f360b8f818588811ca497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
