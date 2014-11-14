@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7adfdb23_48ee104f",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-14T00:59:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da2b67c1_0c789764",
+      "range": {
+        "startLine": 404,
+        "startChar": 41,
+        "endLine": 404,
+        "endChar": 55
+      },
+      "revId": "13c9747afa2dd6ca4b6736b91d066179e98caf63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a1a7bb5_3ae4a9bb",
         "filename": "board/zinger/usb_pd_policy.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2014-11-13T21:50:01Z",
       "side": 1,
       "message": "it won\u0027t have this ... which is a violation that I\u0027m ok with but we should probably make this 0",
+      "range": {
+        "startLine": 412,
+        "startChar": 5,
+        "endLine": 412,
+        "endChar": 21
+      },
+      "revId": "13c9747afa2dd6ca4b6736b91d066179e98caf63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa313b2_793f3b4d",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-14T00:59:56Z",
+      "side": 1,
+      "message": "but 0 is USB 2.0 only, is that better than USB 2.0 billboard only?",
+      "parentUuid": "7a1a7bb5_3ae4a9bb",
       "range": {
         "startLine": 412,
         "startChar": 5,
@@ -82,6 +130,30 @@
       "writtenOn": "2014-11-13T21:50:01Z",
       "side": 1,
       "message": "part of me thinks zero should be reserved and fu should be \u00271\u0027",
+      "range": {
+        "startLine": 385,
+        "startChar": 23,
+        "endLine": 385,
+        "endChar": 24
+      },
+      "revId": "13c9747afa2dd6ca4b6736b91d066179e98caf63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7adfdb23_68f3cc31",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-14T00:59:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da2b67c1_2c5abbf3",
       "range": {
         "startLine": 385,
         "startChar": 23,
