@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "baa313b2_b72fe7fc",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-14T17:27:48Z",
+      "side": 1,
+      "message": "We do want to remove the override in both of conditions.\n\n- If the user plugs in a new dedicated charger, we assume the user did this to charge from the new dedicated charger, so we should re-evaluate which charger will give us max. power which means removing the override.\n- Same, if the user specifies not to charge and then plugs in a dedicated charger, we assume user did this in order to charge from new charger, so remove the override.\n\nIn reality, with the current UI plans, neither of these will actually happen. But, the UI may change.\n\nOverall, the policy can be stated simply:\n- User can override and select which port to charge from. The override is cancelled when the override port is unplugged, or a new dedicated charge is plugged in.",
+      "parentUuid": "3a972356_ecee0b96",
+      "revId": "391dba2d59280586f6349b69fbb71976643e7d5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "baa313b2_16ab5c1e",
         "filename": "test/charge_manager.c",
         "patchSetId": 1
