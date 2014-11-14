@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "5a17778b_28c743d6",
+        "filename": "board/hoho/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1120324
+      },
+      "writtenOn": "2014-11-14T01:10:31Z",
+      "side": 1,
+      "message": "Initially I felt I might be wrong, but perusal the paragraph around Table 502, p.81, I wonder if I can convince you or not, when you did similar thing in #225231 before.\n\nSpec: \"In general, the DFP_U will select a pin assignment for its USB Type-C Receptacle (one of A through F) and configure the port partner with the same pin assignment (same identifying letter)\"\n\nMy rationale is:\nwhen HOHO receive this message - CMD_DISCOVER_MODES in svdm_rsp.modes(), it is being the role of UFP_U to be able to receive this command.\n\nThe DFP_U sending this command is to find out the UFP_U\u0027s UFP_D and DFP_D capability and pin assignment A~F, so that DFP_U can \"select\" the proper DP settings for UFP_U, to \"match\" its own DP settings. Note that a UFP_U as HOHO can have either or both the capability of UFP_D and DFP_D.\n\nThe \"select\" of DP settings doesn\u0027t happen in this command, but will be on the immediate subsequent CMD_ENTER_MODE (once), and later dynamically by CMD_DP_CONFIG (many times). The example of being dynamic is, the UFP_U\u0027s DP port may connect to one 1920p monitor this time, but later connect 3 1920p monitors. The DFP_U will know this by the Graphics card\u0027s DP-AUX channel scanning and find the required video lanes will be required to change from 2 to 4 or vise-verse.\n\nAnother viewpoint is:\nTable 5-2: DisplayPort Capabilities (VDO in Responder Discover Modes VDM)\n        bits 15:8  DFP_D Pin Assignments Supported\n        bits 23:16 UFP_D Pin Assignments Supported\n\nTable 5-4: DisplayPort Configurations\n        bits 15:8   Configure UFP_U with DFP_D Pin Assignment\n        bits 23:16 Configure UFP_U with UFP_D Pin Assignment\n\nMy reading is: \n    table 5-2 DFP_U is asking UFP_U: what\u0027s your DFP_D \u0026 UFP_D capabilities and reply me in VDO bits 15:8 and 23:16 respectively.\n    table 5-4 DFP_U, from result gotten in 5-2, is going to configure UFP_U with its own \"selection\" of DFP_D (when DFP_U is UFP_D) or UFP_D (when DFP_U is DFP_D).\n\nTherefore, I still believe that HOHO, as UFP_U, is to populate \"its own side\u0027s\" UFP_D \u0026 DFP_D capability, instead of Vincent\u0027s stated rationale: \"the support on the other side\".",
+      "parentUuid": "9ab3aff9_5a26d1ab",
+      "revId": "a56d814cc730e2e92031b21a3ba0e9a269a3e15a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5adcd72f_c3abea96",
         "filename": "include/usb_pd.h",
         "patchSetId": 1
