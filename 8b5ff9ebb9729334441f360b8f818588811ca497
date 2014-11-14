@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "3a972356_b2de1891",
+        "filename": "board/zinger/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-14T19:38:59Z",
+      "side": 1,
+      "message": "will clean up in next patch",
+      "parentUuid": "7a8d1b44_37969aae",
+      "revId": "8b5ff9ebb9729334441f360b8f818588811ca497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "baa313b2_77301f8c",
         "filename": "board/zinger/usb_pd_policy.c",
         "patchSetId": 8
@@ -48,6 +66,24 @@
       "writtenOn": "2014-11-14T17:20:12Z",
       "side": 1,
       "message": "when you have just flashed a new RW in RO mode, you can no longer verify its hash without rebooting ?",
+      "revId": "8b5ff9ebb9729334441f360b8f818588811ca497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa82eb17_cd23fd44",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-14T19:38:59Z",
+      "side": 1,
+      "message": "ok, will fix in next patch",
+      "parentUuid": "baa313b2_77301f8c",
       "revId": "8b5ff9ebb9729334441f360b8f818588811ca497",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
