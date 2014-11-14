@@ -51,6 +51,24 @@
       "revId": "bf4939ad14cf1604302d292d12b2e26fc643129c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa313b2_cdabfe96",
+        "filename": "chip/mec1322/spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-11-14T18:35:22Z",
+      "side": 1,
+      "message": "I\u0027d say we leave this to higher level logic, in which we have the knowledge of whether there is more transactions after the current one. For example, the loader that loads code from RO or RW can do spi_enable() just once and avoid disabling SPI peripheral every 256-byte read.",
+      "parentUuid": "7a1a7bb5_2068f616",
+      "revId": "bf4939ad14cf1604302d292d12b2e26fc643129c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
