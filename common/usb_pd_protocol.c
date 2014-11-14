@@ -1886,12 +1886,16 @@ void pd_task(void)
 		 * timeout value to wake up on the next state timeout.
 		 */
 		now = get_time();
-		if (pd[port].timeout && now.val >= pd[port].timeout) {
-			set_state(port, pd[port].timeout_state);
-			/* On a state timeout, run next state soon */
-			timeout = timeout < 10*MSEC ? timeout : 10*MSEC;
-		} else if (pd[port].timeout - now.val < timeout) {
-			timeout = pd[port].timeout - now.val;
+		if (pd[port].timeout) {
+			if (now.val >= pd[port].timeout) {
+				set_state(port, pd[port].timeout_state);
+				/* On a state timeout, run next state soon */
+				timeout = timeout < 10*MSEC ? timeout : 10*MSEC;
+			} else if (pd[port].timeout - now.val < timeout) {
+				timeout = pd[port].timeout - now.val;
+			}
+		} else {
+			timeout = 0;
 		}
 
 		/* Check for disconnection */
