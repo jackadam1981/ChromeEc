@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "da2b67c1_4f68c165",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-14T15:58:40Z",
+      "side": 1,
+      "message": "can we either make macros for each of these voltage levels to use below or put a warning comment here that changing the order of these will break the 20V-\u003e5V special transition case.",
+      "revId": "13c39b4c00b2596d61b8fda2a4f1906ebd7bd028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a17778b_ebaec5f6",
         "filename": "board/zinger/usb_pd_policy.c",
         "patchSetId": 2
@@ -47,6 +64,52 @@
       "writtenOn": "2014-11-14T14:52:12Z",
       "side": 1,
       "message": "we need to do a set_output_voltage at the value pointed by discharge_volt_idx in case the first step of a 2-step transition failed.",
+      "revId": "13c39b4c00b2596d61b8fda2a4f1906ebd7bd028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a256ff1_edeb81b5",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-14T15:58:40Z",
+      "side": 1,
+      "message": "voltages[volt_idx].select",
+      "range": {
+        "startLine": 387,
+        "startChar": 22,
+        "endLine": 387,
+        "endChar": 27
+      },
+      "revId": "13c39b4c00b2596d61b8fda2a4f1906ebd7bd028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a256ff1_cde83dbc",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-14T15:58:40Z",
+      "side": 1,
+      "message": "volt_idx",
+      "range": {
+        "startLine": 388,
+        "startChar": 30,
+        "endLine": 388,
+        "endChar": 31
+      },
       "revId": "13c39b4c00b2596d61b8fda2a4f1906ebd7bd028",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
