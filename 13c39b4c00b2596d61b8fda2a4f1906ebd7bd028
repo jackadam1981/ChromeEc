@@ -93,6 +93,30 @@
     },
     {
       "key": {
+        "uuid": "7a1a7bb5_fbbe93a4",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-14T16:01:43Z",
+      "side": 1,
+      "message": "ok, i guess all this does is add time to access in the array, don\u0027t need to change",
+      "parentUuid": "9a256ff1_edeb81b5",
+      "range": {
+        "startLine": 387,
+        "startChar": 22,
+        "endLine": 387,
+        "endChar": 27
+      },
+      "revId": "13c39b4c00b2596d61b8fda2a4f1906ebd7bd028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a256ff1_cde83dbc",
         "filename": "board/zinger/usb_pd_policy.c",
         "patchSetId": 2
