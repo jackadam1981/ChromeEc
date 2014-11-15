@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ac8bb75_8adc9b75",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1000018
+      },
+      "writtenOn": "2014-11-15T08:01:39Z",
+      "side": 1,
+      "message": "This is the wrong URL.  It should be:\n\n crosbug.com/p/31390",
+      "range": {
+        "startLine": 531,
+        "startChar": 17,
+        "endLine": 531,
+        "endChar": 32
+      },
+      "revId": "0d6b9ad7bd4c1ea40c76508644ee3253e6ea86a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
