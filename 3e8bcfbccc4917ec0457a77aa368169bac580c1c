@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a8d1b44_0b74123a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1899,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-15T00:36:58Z",
+      "side": 1,
+      "message": "this needs to come early right now because if it is moved later, then it will happen in the middle of firmware update VDMs which causes firmware update to break. this re-enforces the need for better control over the interaction between VDM state machine and this state machine.",
+      "range": {
+        "startLine": 1899,
+        "startChar": 3,
+        "endLine": 1899,
+        "endChar": 39
+      },
+      "revId": "3e8bcfbccc4917ec0457a77aa368169bac580c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
