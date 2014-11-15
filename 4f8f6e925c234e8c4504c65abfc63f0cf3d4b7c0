@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baba33ec_784ee136",
+        "filename": "board/zinger/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-15T01:54:58Z",
+      "side": 1,
+      "message": "it would be nice to have a macro constant like :\nUSB_PD_HW_DEV_ID_BOARD which points to the right board value\nditto for the minor\nrather than duplicating this line of code.",
+      "revId": "4f8f6e925c234e8c4504c65abfc63f0cf3d4b7c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
