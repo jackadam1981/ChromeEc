@@ -60,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "baf15352_54400c61",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-11-16T05:06:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "151dd24d_6320e238",
+      "range": {
+        "startLine": 280,
+        "startChar": 4,
+        "endLine": 280,
+        "endChar": 14
+      },
+      "revId": "5fbb34c38d3f207e3f6e5f7b796d0eb8a5eea8eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "151dd24d_83595eda",
         "filename": "include/accelgyro.h",
         "patchSetId": 6
@@ -71,6 +95,30 @@
       "writtenOn": "2014-11-09T00:21:46Z",
       "side": 1,
       "message": "forgot to update this",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 60
+      },
+      "revId": "5fbb34c38d3f207e3f6e5f7b796d0eb8a5eea8eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baf15352_143a84eb",
+        "filename": "include/accelgyro.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-11-16T05:06:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "151dd24d_83595eda",
       "range": {
         "startLine": 30,
         "startChar": 0,
