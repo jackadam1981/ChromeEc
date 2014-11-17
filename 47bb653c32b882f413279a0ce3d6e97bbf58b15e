@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1af97fd6_26905853",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-17T22:53:21Z",
+      "side": 1,
+      "message": "Need BUG, BRANCH, and TEST tags here.\n\nSee http://www.chromium.org/chromium-os/developer-guide#TOC-Upload-your-changes-and-get-a-code-review.\n\nThis CL has no bug, so I think you should put in:\n\nBUG\u003dnone\nBRANCH\u003dnone\nTEST\u003dmake buildall (assuming you at least did this). you can also write any more details on how you tested.",
+      "revId": "47bb653c32b882f413279a0ce3d6e97bbf58b15e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
