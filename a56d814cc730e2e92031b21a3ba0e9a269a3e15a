@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "ba3dd34e_6313bc7b",
+        "filename": "board/hoho/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-17T22:59:49Z",
+      "side": 1,
+      "message": "Hey Bernard, I don\u0027t think you are going to get this specific change approved, but the rest of the CL is valuable. I suggest taking this change out, so that we can approve the CL. As Todd said, this part of the spec is likely to change soon, so we will be revisiting this topic.",
+      "parentUuid": "5a17778b_28c743d6",
+      "revId": "a56d814cc730e2e92031b21a3ba0e9a269a3e15a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5adcd72f_c3abea96",
         "filename": "include/usb_pd.h",
         "patchSetId": 1
