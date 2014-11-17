@@ -886,9 +886,13 @@ int cmd_pd_device_info(int argc, char *argv[])
 	return rv;
 }
 
+static const int update_size[] = {
+	[USB_PD_HW_DEV_ID_RESERVED] = (0 * 1024),
+	[USB_PD_HW_DEV_ID_ZINGER] = (16 * 1024),
+	[USB_PD_HW_DEV_ID_MINIMUFFIN] = (16 * 1024),
+	[USB_PD_HW_DEV_ID_DINGDONG] = (64 * 1024),
+	[USB_PD_HW_DEV_ID_HOHO] = (64 * 1024)};
 
-/* PD image size is 16k minus 32 bits for the RW hash */
-#define PD_RW_IMAGE_SIZE (16 * 1024)
 int cmd_flash_pd(int argc, char *argv[])
 {
 	struct ec_params_usb_pd_fw_update *p =
@@ -911,6 +915,11 @@ int cmd_flash_pd(int argc, char *argv[])
 		return -1;
 	}
 
+	if (p->dev_id >= ARRAY_SIZE(update_size)) {
+		fprintf(stderr, "Unknown device ID %d\n", p->dev_id);
+		return -1;
+	}
+
 	p->port = strtol(argv[2], &e, 0);
 	if (e && *e) {
 		fprintf(stderr, "Bad port\n");
@@ -923,8 +932,11 @@ int cmd_flash_pd(int argc, char *argv[])
 		return -1;
 
 	/* Verify size of file */
-	if (fsize != PD_RW_IMAGE_SIZE)
-		goto pd_flash_error;
+	if (fsize != update_size[p->dev_id]) {
+		fprintf(stderr, "payload size %d but expected %d\n",
+			fsize, update_size[p->dev_id]);
+		return -1;
+	}
 
 	/* Erase the current RW RSA signature */
 	fprintf(stderr, "Erasing expected RW hash\n");
