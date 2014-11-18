@@ -25,6 +25,47 @@
     },
     {
       "key": {
+        "uuid": "1af97fd6_4910056d",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-18T01:45:57Z",
+      "side": 1,
+      "message": "agreed, remove /* mA */",
+      "parentUuid": "7a30bb7e_766130f6",
+      "range": {
+        "startLine": 106,
+        "startChar": 38,
+        "endLine": 106,
+        "endChar": 46
+      },
+      "revId": "2977829053a140024d8e8a79ebfef3b43dfbd5e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da38c75e_c4ec1054",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-18T01:45:57Z",
+      "side": 1,
+      "message": "shouldn\u0027t you disable_sleep(SLEEP_MASK_USB_PD) here? I know we should be running board_checks() very soon after, but seems like there may be some corner case where it\u0027s not.",
+      "revId": "2977829053a140024d8e8a79ebfef3b43dfbd5e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a30bb7e_d6a124b5",
         "filename": "board/zinger/usb_pd_policy.c",
         "patchSetId": 1
@@ -36,6 +77,30 @@
       "writtenOn": "2014-11-18T01:41:11Z",
       "side": 1,
       "message": "SINK_IDLE_CURRENT_VBUS_MA?",
+      "range": {
+        "startLine": 330,
+        "startChar": 16,
+        "endLine": 330,
+        "endChar": 33
+      },
+      "revId": "2977829053a140024d8e8a79ebfef3b43dfbd5e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da38c75e_64e2e45e",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-18T01:45:57Z",
+      "side": 1,
+      "message": "there is a space in the macro above that is hard to see in gerrit",
+      "parentUuid": "7a30bb7e_d6a124b5",
       "range": {
         "startLine": 330,
         "startChar": 16,
