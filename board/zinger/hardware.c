@@ -64,7 +64,7 @@ static void pins_init(void)
 	 * PA6  (AF0 - SPI1_MISO)  : PD TX
 	 * PA7  (AF5 - TIM3_CH2)   : PD RX
 	 * PA9  (AF1 - UART1_TX)   : [DEBUG] UART TX
-	 * PA10 (AF1 - UART1_RX)   : [DEBUG] UART RX
+	 * PA10 (AF1 - UART1_RX)   : [DEBUG] GPIO out
 	 * PA13 (OUT - GPIO)       : voltage select[0]
 	 * PA14 (OUT - GPIO)       : voltage select[1]
 	 * PB1  (AF0 - TIM14_CH1)  : TX clock out
@@ -86,7 +86,7 @@ static void pins_init(void)
 	STM32_GPIO_OSPEEDR(GPIO_A) = HISPEED(5) | HISPEED(6) | HISPEED(7);
 	STM32_GPIO_MODER(GPIO_A) = OUT(0) | ANALOG(1) | ANALOG(2) | ANALOG(3)
 				 | OUT(4) | AF(5) /*| AF(6)*/ | AF(7) | AF(9)
-				 | AF(10) | OUT(13) | OUT(14);
+				 | OUT(10) | OUT(13) | OUT(14);
 	/* set PF0 / PF1 as output */
 	STM32_GPIO_ODR(GPIO_F) = 0;
 	STM32_GPIO_MODER(GPIO_F) = OUT(0) | OUT(1);

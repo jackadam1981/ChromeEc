@@ -14,6 +14,10 @@
 #include "timer.h"
 #include "util.h"
 
+/* GPIO level setting helpers through BSRR register */
+#define GPIO_SET(n)   (1 << (n))
+#define GPIO_RESET(n) (1 << ((n) + 16))
+
 volatile uint32_t last_event;
 uint32_t sleep_mask;
 
@@ -171,7 +175,9 @@ uint32_t task_wait_event(int timeout_us)
 			set_rtc_alarm(0, timeout_us - STOP_MODE_LATENCY,
 				      &rtc0, &rtc0ss);
 
+			STM32_GPIO_BSRR(GPIO_A) = GPIO_SET(10);
 			asm volatile("wfi");
+			STM32_GPIO_BSRR(GPIO_A) = GPIO_RESET(10);
 
 			CPU_SCB_SYSCTRL &= ~0x4;
 
