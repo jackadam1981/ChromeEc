@@ -13,6 +13,7 @@
 #include "util.h"
 #include "pwm.h"
 #include "pwm_chip.h"
+#include "ec2i_chip.h"
 
 /* Test GPIO interrupt function that toggles one LED. */
 void test_interrupt(enum gpio_signal signal)
@@ -39,6 +40,44 @@ const struct pwm_t pwm_channels[] = {
 };
 
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
+
+#ifdef CONFIG_EC2I
+/* PNPCFG settings */
+const struct ec2i_t pnpcfg_settings[] = {
+	/* Select logical device 06h(keyboard) */
+	{HOST_INDEX_LDN, LDN_KBC_KEYBOARD},
+	/* Set IRQ=01h for logical device */
+	{HOST_INDEX_IRQNUMX, 0x01},
+	/* Enable logical device */
+	{HOST_INDEX_LDA, 0x01},
+
+	/* Select logical device 05h(mouse) */
+	{HOST_INDEX_LDN, LDN_KBC_MOUSE},
+	/* Set IRQ=0Ch for logical device */
+	{HOST_INDEX_IRQNUMX, 0x0C},
+	/* Enable logical device */
+	{HOST_INDEX_LDA, 0x01},
+
+	/* Select logical device 11h(PM1 ACPI) */
+	{HOST_INDEX_LDN, LDN_PMC1},
+	/* Set IRQ=00h for logical device */
+	{HOST_INDEX_IRQNUMX, 0x00},
+	/* Enable logical device */
+	{HOST_INDEX_LDA, 0x01},
+};
+
+static void pnpcfg_init(void)
+{
+	int table;
+
+	for (table = 0x00; table < ARRAY_SIZE(pnpcfg_settings); table++) {
+		if (ec2i_write(pnpcfg_settings[table].index_port,
+			pnpcfg_settings[table].data_port) == EC2I_WIRTE_ERROR)
+				break;
+	}
+}
+DECLARE_HOOK(HOOK_INIT, pnpcfg_init, HOOK_PRIO_DEFAULT);
+#endif
 
 /* Initialize board. */
 static void board_init(void)
