@@ -69,6 +69,24 @@
       "revId": "bf4939ad14cf1604302d292d12b2e26fc643129c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0873ac_080a07bf",
+        "filename": "chip/mec1322/spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2014-11-18T06:31:56Z",
+      "side": 1,
+      "message": "Yes agreed for the loader we should enable and disable around the loads of image. in case of the RO/RW image the Flash is accessed only Via Host commands and Flash write is done in mutliple chunks. will have to enable and disable for each Host command access.",
+      "parentUuid": "baa313b2_cdabfe96",
+      "revId": "bf4939ad14cf1604302d292d12b2e26fc643129c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
