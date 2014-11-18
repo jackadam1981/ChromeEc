@@ -226,13 +226,14 @@ static uint32_t pd_src_caps[PD_PORT_COUNT][PDO_MAX_OBJECTS];
 static int pd_src_cap_cnt[PD_PORT_COUNT];
 #endif
 
-#define PD_FLAGS_PING_ENABLED     (1 << 0) /* SRC_READY pings enabled */
-#define PD_FLAGS_PARTNER_DR_POWER (1 << 1) /* port partner is dual-role power */
-#define PD_FLAGS_PARTNER_DR_DATA  (1 << 2) /* port partner is dual-role data */
-#define PD_FLAGS_DATA_SWAPPED     (1 << 3) /* data swap complete */
-#define PD_FLAGS_SNK_CAP_RECVD    (1 << 4) /* sink capabilities received */
-#define PD_FLAGS_GET_SNK_CAP_SENT (1 << 5) /* get sink cap sent */
-#define PD_FLAGS_NEW_CONTRACT     (1 << 6) /* new power contract established */
+#define PD_FLAGS_PING_ENABLED      (1 << 0) /* SRC_READY pings enabled */
+#define PD_FLAGS_PARTNER_DR_POWER  (1 << 1) /* port partner is dualrole power */
+#define PD_FLAGS_PARTNER_DR_DATA   (1 << 2) /* port partner is dualrole data */
+#define PD_FLAGS_DATA_SWAPPED      (1 << 3) /* data swap complete */
+#define PD_FLAGS_SNK_CAP_RECVD     (1 << 4) /* sink capabilities received */
+#define PD_FLAGS_GET_SNK_CAP_SENT  (1 << 5) /* get sink cap sent */
+#define PD_FLAGS_NEW_CONTRACT      (1 << 6) /* new power contract established */
+#define PD_FLAGS_EXPLICIT_CONTRACT (1 << 7) /* explicit pwr contract in place */
 /* Flags to clear on a disconnect */
 #define PD_FLAGS_RESET_ON_DISCONNECT_MASK (PD_FLAGS_PARTNER_DR_POWER | \
 					   PD_FLAGS_PARTNER_DR_DATA | \
@@ -859,6 +860,8 @@ static void handle_data_request(int port, uint16_t head,
 		if ((pd[port].power_role == PD_ROLE_SOURCE) && (cnt == 1))
 			if (!pd_request_voltage(payload[0])) {
 				send_control(port, PD_CTRL_ACCEPT);
+				/* explicit contract is now in place */
+				pd[port].flags |= PD_FLAGS_EXPLICIT_CONTRACT;
 				set_state(port, PD_STATE_SRC_ACCEPTED);
 				return;
 			}
@@ -997,9 +1000,17 @@ static void handle_ctrl_request(int port, uint16_t head,
 			pd_dr_swap(port);
 			set_state(port, PD_STATE_SNK_READY);
 		} else if (pd[port].task_state == PD_STATE_SRC_SWAP_INIT) {
+			/* explicit contract goes away for power swap */
+			pd[port].flags &= ~PD_FLAGS_EXPLICIT_CONTRACT;
 			set_state(port, PD_STATE_SRC_SWAP_SNK_DISABLE);
 		} else if (pd[port].task_state == PD_STATE_SNK_SWAP_INIT) {
+			/* explicit contract goes away for power swap */
+			pd[port].flags &= ~PD_FLAGS_EXPLICIT_CONTRACT;
 			set_state(port, PD_STATE_SNK_SWAP_SNK_DISABLE);
+		} else if (pd[port].task_state == PD_STATE_SNK_REQUESTED) {
+			/* explicit contract is now in place */
+			pd[port].flags |= PD_FLAGS_EXPLICIT_CONTRACT;
+			set_state(port, PD_STATE_SNK_TRANSITION);
 		}
 #endif
 		break;
@@ -1873,7 +1884,6 @@ void pd_task(void)
 			break;
 		case PD_STATE_SNK_REQUESTED:
 			/* Ensure the power supply actually becomes ready */
-			set_state(port, PD_STATE_SNK_TRANSITION);
 			hard_reset_count = 0;
 			timeout = 10 * MSEC;
 			break;
@@ -2466,11 +2476,12 @@ static int command_pd(int argc, char **argv)
 		};
 		BUILD_ASSERT(ARRAY_SIZE(state_names) == PD_STATE_COUNT);
 		ccprintf("Port C%d, %s - Role: %s-%s Polarity: CC%d "
-			 "Partner: %s%s, State: %s\n",
-			port, pd_comm_enabled ? "Enabled" : "Disabled",
+			 "Contract: %d, Partner: %s%s, State: %s\n",
+			port, pd_comm_enabled ? "Ena" : "Dis",
 			pd[port].power_role == PD_ROLE_SOURCE ? "SRC" : "SNK",
 			pd[port].data_role == PD_ROLE_DFP ? "DFP" : "UFP",
 			pd[port].polarity + 1,
+			pd[port].flags & PD_FLAGS_EXPLICIT_CONTRACT ? 1 : 0,
 			(pd[port].flags & PD_FLAGS_PARTNER_DR_POWER) ?
 				"PR_SWAP," : "",
 			(pd[port].flags & PD_FLAGS_PARTNER_DR_DATA) ?
