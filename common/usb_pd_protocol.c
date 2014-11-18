@@ -270,10 +270,6 @@ static struct pd_protocol {
 	uint32_t supply_voltage;
 	/* Signal charging update that affects the port */
 	int new_power_request;
-#ifdef CONFIG_CHARGE_MANAGER
-	/* Track last requested charge type (min / max) */
-	enum pd_request_types last_charge_request;
-#endif
 #endif
 
 	/* PD state for Vendor Defined Messages */
@@ -793,13 +789,6 @@ static void pd_send_request_msg(int port, enum pd_request_types request)
 				 */
 				request = PD_REQUEST_MAX;
 		}
-		/*
-		 * The request message may be later rejected, in which case
-		 * last_charge_request may not reflect reality.
-		 * TODO(shawnn): Handle last_charge_request correctly for this
-		 * case. crosbug.com/p/33692.
-		 */
-		pd[port].last_charge_request = request;
 #endif
 		pd[port].curr_limit = curr_limit;
 		pd[port].supply_voltage = supply_voltage;
@@ -976,8 +965,9 @@ static void handle_ctrl_request(int port, uint16_t head,
 			set_state(port, PD_STATE_SRC_READY);
 		else if (pd[port].task_state == PD_STATE_SNK_SWAP_INIT)
 			set_state(port, PD_STATE_SNK_READY);
-		else
-			set_state(port, PD_STATE_SNK_DISCOVERY);
+		else if (pd[port].task_state == PD_STATE_SNK_REQUESTED)
+			/* no explicit contract */
+			set_state(port, PD_STATE_SNK_READY);
 #endif
 		break;
 	case PD_CTRL_ACCEPT:
@@ -1915,13 +1905,11 @@ void pd_task(void)
 				pd[port].new_power_request = 0;
 #ifdef CONFIG_CHARGE_MANAGER
 				if (charge_manager_get_active_charge_port()
-				    != port && pd[port].last_charge_request
-				    == PD_REQUEST_MAX)
+				    != port)
 					pd_send_request_msg(port,
 							    PD_REQUEST_MIN);
 				else if (charge_manager_get_active_charge_port()
-					 == port && pd[port].last_charge_request
-					 == PD_REQUEST_MIN)
+					 == port)
 #endif
 					pd_send_request_msg(port,
 							    PD_REQUEST_MAX);

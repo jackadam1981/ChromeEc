@@ -164,7 +164,7 @@ static void charge_manager_refresh(void)
 
 		if (new_port != CHARGE_PORT_NONE)
 			pd_set_new_power_request(new_port);
-		if (old_port != CHARGE_PORT_NONE)
+		if (new_port != old_port && old_port != CHARGE_PORT_NONE)
 			pd_set_new_power_request(old_port);
 	}
 }
