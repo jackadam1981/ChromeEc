@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da38c75e_04f3d832",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-18T01:39:48Z",
+      "side": 1,
+      "message": "Yes, re-locking the PLL takes more time than we anticipated, but is this actually causing a problem? I didn\u0027t think so.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 54
+      },
+      "revId": "4a9461b3b135552e2261213a2ef2c5567ec8095a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
