@@ -19,6 +19,11 @@
 /* How do I identify nonexistant GPIOs? */
 #define DUMMY_GPIO_BANK -1
 
+#define CONFIG_USB
+#define CONFIG_USB_CONSOLE
+
+#define CONFIG_USB_PID 0x5014
+
 /*
  * Allow dangerous commands all the time, since we don't have a write protect
  * switch.
@@ -32,6 +37,26 @@
 /* user button interrupt handler */
 void button_event(enum gpio_signal signal);
 
+/* USB string indexes */
+enum usb_strings {
+	USB_STR_DESC = 0,
+	USB_STR_VENDOR,
+	USB_STR_PRODUCT,
+	USB_STR_VERSION,
+	USB_STR_CONSOLE_NAME,
+
+	USB_STR_COUNT
+};
+
 #endif /* !__ASSEMBLER__ */
+
+/* USB interface indexes (use define rather than enum to expand them) */
+#define USB_IFACE_CONSOLE 0
+#define USB_IFACE_COUNT   1
+
+/* USB endpoint indexes (use define rather than enum to expand them) */
+#define USB_EP_CONTROL   0
+#define USB_EP_CONSOLE   1
+#define USB_EP_COUNT     2
 
 #endif /* __BOARD_H */
