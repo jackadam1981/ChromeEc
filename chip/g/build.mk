@@ -9,3 +9,6 @@ CFLAGS_CPU+=-march=armv7-m -mcpu=cortex-m3
 
 # Required chip modules
 chip-y=clock.o gpio.o hwtimer.o jtag.o system.o uart.o
+
+chip-$(CONFIG_USB)+=usb.o usb_endpoints.o
+chip-$(CONFIG_USB_CONSOLE)+=usb_console.o
