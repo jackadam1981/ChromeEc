@@ -968,6 +968,9 @@ int cmd_flash_pd(int argc, char *argv[])
 				p, p->size + sizeof(*p), NULL, 0);
 		if (rv < 0)
 			goto pd_flash_error;
+
+		/* throttle so EC doesn't watchdog on other tasks */
+		usleep(10000);
 	}
 
 	/* Reboot into new RW */
