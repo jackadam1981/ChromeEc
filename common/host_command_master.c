@@ -12,6 +12,7 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#include "watchdog.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_HOSTCMD, outstr)
@@ -178,6 +179,7 @@ int pd_host_command(int command, int version,
 		/* Release mutex */
 		mutex_unlock(&pd_mutex);
 
+		watchdog_reload();
 		/* If host command error due to i2c bus error, try again. */
 		if (rv != -EC_RES_BUS_ERROR)
 			break;
