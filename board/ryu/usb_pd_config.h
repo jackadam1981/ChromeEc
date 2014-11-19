@@ -135,8 +135,6 @@ static inline void pd_set_host_mode(int port, int enable)
 		/* Pull low for device mode. */
 		gpio_set_level(GPIO_USBC_CC1_DEVICE_ODL, 0);
 		gpio_set_level(GPIO_USBC_CC2_DEVICE_ODL, 0);
-		/* Enable the charging path*/
-		gpio_set_level(GPIO_USBC_CHARGE_EN_L, 0);
 	}
 
 }
