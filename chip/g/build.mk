@@ -18,3 +18,6 @@ CPPFLAGS+= -DGC_REVISION="$(ver_str)"
 # Required chip modules
 chip-y=clock.o gpio.o hwtimer.o jtag.o system.o uart.o
 chip-$(CONFIG_WATCHDOG)+=watchdog.o
+
+chip-$(CONFIG_USB)+=usb.o usb_endpoints.o
+chip-$(CONFIG_USB_CONSOLE)+=usb_console.o
