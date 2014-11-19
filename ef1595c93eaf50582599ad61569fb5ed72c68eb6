@@ -22,6 +22,24 @@
       "revId": "ef1595c93eaf50582599ad61569fb5ed72c68eb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fad66b81_c49092b4",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1660,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-19T22:37:02Z",
+      "side": 1,
+      "message": "As discussed, yes it\u0027s now useless\nwill remove",
+      "parentUuid": "fad66b81_13931663",
+      "revId": "ef1595c93eaf50582599ad61569fb5ed72c68eb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
