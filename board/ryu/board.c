@@ -8,6 +8,8 @@
 #include "adc_chip.h"
 #include "battery.h"
 #include "case_closed_debug.h"
+#include "charge_manager.h"
+#include "charge_state.h"
 #include "charger.h"
 #include "common.h"
 #include "console.h"
@@ -28,6 +30,8 @@
 #include "usb-stm32f3.h"
 #include "util.h"
 #include "pi3usb9281.h"
+
+#define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 
 void vbus_evt(enum gpio_signal signal)
 {
@@ -95,6 +99,18 @@ const struct adc_t adc_channels[] = {
 	[ADC_IBAT] = {"IBAT", 37500, 4096, 0, STM32_AIN(13)},
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
+
+/* Charge supplier priority: lower number indicates higher priority. */
+const int supplier_priority[] = {
+	[CHARGE_SUPPLIER_PD] = 0,
+	[CHARGE_SUPPLIER_TYPEC] = 1,
+	[CHARGE_SUPPLIER_PROPRIETARY] = 1,
+	[CHARGE_SUPPLIER_BC12_DCP] = 1,
+	[CHARGE_SUPPLIER_BC12_CDP] = 2,
+	[CHARGE_SUPPLIER_BC12_SDP] = 3,
+	[CHARGE_SUPPLIER_OTHER] = 3
+};
+BUILD_ASSERT(ARRAY_SIZE(supplier_priority) == CHARGE_SUPPLIER_COUNT);
 
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
@@ -197,4 +213,35 @@ void usb_board_connect(void)
 void usb_board_disconnect(void)
 {
 	/* TODO(robotboy): Disable DP pullup for Proto 3 */
+}
+
+/**
+ * Set active charge port -- only one port can be active at a time.
+ *
+ * @param charge_port   Charge port to enable.
+ */
+void board_set_active_charge_port(int charge_port)
+{
+	if (charge_port >= 0 && charge_port < PD_PORT_COUNT &&
+	    pd_get_role(charge_port) != PD_ROLE_SINK) {
+		CPRINTS("Port %d is not a sink, skipping enable", charge_port);
+		charge_port = CHARGE_PORT_NONE;
+	}
+	if (charge_port != CHARGE_PORT_NONE) {
+		/* Enable the charging path*/
+		gpio_set_level(GPIO_USBC_CHARGE_EN_L, 0);
+	}
+}
+
+/**
+ * Set the charge limit based upon desired maximum.
+ *
+ * @param charge_ma     Desired charge limit (mA).
+ */
+void board_set_charge_limit(int charge_ma)
+{
+	int rv = charge_set_input_current_limit(MAX(charge_ma,
+					CONFIG_CHARGER_INPUT_CURRENT));
+	if (rv < 0)
+		CPRINTS("Failed to set input current limit for PD");
 }
