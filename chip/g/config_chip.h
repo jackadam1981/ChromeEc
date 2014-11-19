@@ -47,4 +47,7 @@
 /* Maximum number of deferrable functions */
 #define DEFERRABLE_MAX_COUNT 8
 
+/* USB : TODO FIXME */
+#define CONFIG_USB_RAM_ACCESS_TYPE uint16_t
+
 #endif /* __CROS_EC_CONFIG_CHIP_H */
