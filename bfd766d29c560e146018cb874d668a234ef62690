@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a19372f_1bb203da",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-11-19T16:44:27Z",
+      "side": 1,
+      "message": "We don\u0027t need to assign res anymore, since we\u0027re not using it. Sorry, missed this before. Also, maybe also dupe the comment below about ignoring failure?",
+      "revId": "bfd766d29c560e146018cb874d668a234ef62690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
