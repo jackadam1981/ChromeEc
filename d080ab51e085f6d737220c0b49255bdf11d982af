@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "fadf4b7d_31a27a0c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-19T01:12:36Z",
+      "side": 0,
+      "message": "Ok, looked at this with shawn, there is a problem that can potentially cause request loops. Shawn is looking into it more, but I think we understand why it can happen, just need to determine best way to fix it.",
+      "parentUuid": "fadf4b7d_ebfca181",
+      "revId": "d080ab51e085f6d737220c0b49255bdf11d982af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fadf4b7d_6b841131",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
