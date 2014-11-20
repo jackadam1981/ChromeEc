@@ -56,6 +56,9 @@ UC_CHIP_VARIANT:=$(call uppercase,$(CHIP_VARIANT))
 UC_CORE:=$(call uppercase,$(CORE))
 UC_PROJECT:=$(call uppercase,$(PROJECT))
 
+ifeq "$(CONFIG_PAYLOAD_ONLY)" "y"
+	CPPFLAGS+=-DCONFIG_PAYLOAD_ONLY
+endif
 # Transform the configuration into make variables.  This must be done after
 # the board/project/chip/core variables are defined, since some of the configs
 # are dependent on particular configurations.
