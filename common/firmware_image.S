@@ -13,8 +13,10 @@
 #define FW_IMAGE(sect) STRINGIFY(FW_FILE(OUTDIR,PROJECT,sect))
 
 /* Read Only firmware */
+#ifndef CONFIG_PAYLOAD_ONLY
 .section .image.RO, "ax"
 .incbin FW_IMAGE(RO)
+#endif
 
 /* Read Write firmware */
 .section .image.RW, "ax"
