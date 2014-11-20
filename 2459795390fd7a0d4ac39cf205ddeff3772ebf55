@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dfec397c_e199a651",
+        "filename": "board/plankton/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-11-20T22:15:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a72c391_943fe44e",
+      "range": {
+        "startLine": 30,
+        "startChar": 10,
+        "endLine": 30,
+        "endChar": 19
+      },
+      "revId": "2459795390fd7a0d4ac39cf205ddeff3772ebf55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a78bb6f_56bf14a1",
         "filename": "board/plankton/board.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2014-11-20T15:46:42Z",
       "side": 1,
       "message": "i don\u0027t understand need for this. button_event() is only called when the gpio is low, line 226. so, can\u0027t button_deferred() just check if high then glitch, else take action? maybe i\u0027m missing something.",
+      "range": {
+        "startLine": 179,
+        "startChar": 47,
+        "endLine": 179,
+        "endChar": 58
+      },
+      "revId": "2459795390fd7a0d4ac39cf205ddeff3772ebf55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ffe73d92_a28dde3e",
+        "filename": "board/plankton/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-11-20T22:15:37Z",
+      "side": 1,
+      "message": "This solves the case where the button is held low for multiple debounce periods not registering more than one push.",
+      "parentUuid": "7a78bb6f_56bf14a1",
       "range": {
         "startLine": 179,
         "startChar": 47,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ffe73d92_82041a0a",
+        "filename": "board/plankton/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-11-20T22:15:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a78bb6f_b6a5c898",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 2
+      },
+      "revId": "2459795390fd7a0d4ac39cf205ddeff3772ebf55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a75b775_b5db002e",
         "filename": "board/plankton/usb_pd_policy.c",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2014-11-20T15:46:42Z",
       "side": 1,
       "message": "1?",
+      "range": {
+        "startLine": 200,
+        "startChar": 5,
+        "endLine": 200,
+        "endChar": 6
+      },
+      "revId": "2459795390fd7a0d4ac39cf205ddeff3772ebf55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dfec397c_e14be621",
+        "filename": "board/plankton/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-11-20T22:15:37Z",
+      "side": 1,
+      "message": "Not when I look at the schematics.  I don\u0027t believe USB comes out of the STM32 at all.  Certainly can\u0027t find it in gpio.inc",
+      "parentUuid": "5a75b775_b5db002e",
       "range": {
         "startLine": 200,
         "startChar": 5,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "ffe73d92_02412a34",
+        "filename": "board/plankton/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-11-20T22:15:37Z",
+      "side": 1,
+      "message": "Gone ... not a product so no TID for sure.",
+      "parentUuid": "3a72c391_149f54f0",
+      "range": {
+        "startLine": 218,
+        "startChar": 57,
+        "endLine": 218,
+        "endChar": 61
+      },
+      "revId": "2459795390fd7a0d4ac39cf205ddeff3772ebf55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a72c391_349c50f9",
         "filename": "board/plankton/usb_pd_policy.c",
         "patchSetId": 3
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "9a31efd3_0a401b2f",
+        "filename": "board/plankton/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-11-20T22:15:37Z",
+      "side": 1,
+      "message": "Filed p/33968",
+      "parentUuid": "3a72c391_349c50f9",
+      "range": {
+        "startLine": 289,
+        "startChar": 9,
+        "endLine": 289,
+        "endChar": 15
+      },
+      "revId": "2459795390fd7a0d4ac39cf205ddeff3772ebf55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a78bb6f_d6aa4467",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
@@ -151,6 +295,30 @@
       "writtenOn": "2014-11-20T15:46:42Z",
       "side": 1,
       "message": "what does this mean for hoho and dingdong ? does it create a problem for them?",
+      "range": {
+        "startLine": 2249,
+        "startChar": 4,
+        "endLine": 2249,
+        "endChar": 5
+      },
+      "revId": "2459795390fd7a0d4ac39cf205ddeff3772ebf55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a26fb9d_acf807df",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2249,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-11-20T22:15:37Z",
+      "side": 1,
+      "message": "I simply saw it as I don\u0027t send HPD w/o being enabled so while reading the GPIO might be more accurate stuff is broke if its not asserted.",
+      "parentUuid": "7a78bb6f_d6aa4467",
       "range": {
         "startLine": 2249,
         "startChar": 4,
