@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da69a7a3_ee492380",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-20T00:32:52Z",
+      "side": 1,
+      "message": "typical format is to reference a bug number. you can use bug 31195",
+      "range": {
+        "startLine": 361,
+        "startChar": 10,
+        "endLine": 361,
+        "endChar": 16
+      },
+      "revId": "9bf55e7a760e1e913c6093a2d1c3332ba597552a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba5eb3fb_78c241bf",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-20T00:32:52Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 383,
+        "startChar": 10,
+        "endLine": 383,
+        "endChar": 16
+      },
+      "revId": "9bf55e7a760e1e913c6093a2d1c3332ba597552a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba5eb3fb_389c49f9",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-20T00:32:52Z",
+      "side": 1,
+      "message": "this is a lot longer than all of our other console commands, suggest chgoverride",
+      "range": {
+        "startLine": 390,
+        "startChar": 24,
+        "endLine": 390,
+        "endChar": 38
+      },
+      "revId": "9bf55e7a760e1e913c6093a2d1c3332ba597552a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
