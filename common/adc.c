@@ -30,7 +30,6 @@ static enum adc_channel find_adc_channel_by_name(const char *name)
 static int command_adc(int argc, char **argv)
 {
 	int i, v;
-	int data[ADC_CH_COUNT];
 
 	/* If a channel is specified, read only that one */
 	if (argc == 2) {
@@ -44,10 +43,14 @@ static int command_adc(int argc, char **argv)
 		return EC_SUCCESS;
 	} else {
 		/* Otherwise print them all */
-		if (adc_read_all_channels(data))
-			return EC_ERROR_UNKNOWN;
-		for (i = 0; i < ADC_CH_COUNT; ++i)
-			ccprintf("  %s = %d\n", adc_channels[i].name, data[i]);
+		for (i = 0; i < ADC_CH_COUNT; ++i) {
+			v = adc_read_channel(i);
+			ccprintf("  %s = ", adc_channels[i].name);
+			if (v == ADC_READ_ERROR)
+				ccputs("(err)\n");
+			else
+				ccprintf("%d\n", v);
+		}
 		return EC_SUCCESS;
 	}
 }
