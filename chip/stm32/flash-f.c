@@ -326,11 +326,13 @@ exit_er:
 	return res;
 }
 
+#if 0
 static int flash_physical_get_protect_at_boot(int block)
 {
 	uint8_t val = read_optb(STM32_OPTB_WRP_OFF(block/8));
 	return (!(val & (1 << (block % 8)))) ? 1 : 0;
 }
+#endif
 
 int flash_physical_protect_at_boot(enum flash_wp_range range)
 {
@@ -364,6 +366,7 @@ int flash_physical_protect_at_boot(enum flash_wp_range range)
 
 	return EC_SUCCESS;
 }
+#if 0
 
 /**
  * Check if write protect register state is inconsistent with RO_AT_BOOT and
@@ -460,3 +463,9 @@ int flash_pre_init(void)
 
 	return EC_SUCCESS;
 }
+#else
+int flash_pre_init(void)
+{
+	return EC_SUCCESS;
+}
+#endif
