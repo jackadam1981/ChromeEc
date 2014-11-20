@@ -548,6 +548,7 @@
 #undef CONFIG_FW_RW_SIZE
 #undef CONFIG_FW_WP_RO_OFF
 #undef CONFIG_FW_WP_RO_SIZE
+#define CONFIG_INCLUDE_RO
 
 /*****************************************************************************/
 /* Motion sensor based gesture recognition information */
