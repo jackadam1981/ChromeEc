@@ -33,6 +33,9 @@
 #elif defined(CHIP_VARIANT_STM32F07X)
 /* STM32F07xx */
 #include "config-stm32f07x.h"
+#elif defined(CHIP_VARIANT_STM32F07X_ASYMETRIC)
+/* STM32F07xx with different RO/RW images */
+#include "config-stm32f07x-asymetric.h"
 #elif defined(CHIP_VARIANT_STM32F03X)
 /* STM32F03x */
 #include "config-stm32f03x.h"

@@ -7,6 +7,6 @@
 # the IC is STmicro STM32F072VBH6
 CHIP:=stm32
 CHIP_FAMILY:=stm32f0
-CHIP_VARIANT:=stm32f07x-asymetric
+CHIP_VARIANT:=stm32f07x_asymetric
 
 board-y=board.o

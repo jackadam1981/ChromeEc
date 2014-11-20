@@ -3,9 +3,23 @@
  * found in the LICENSE file.
  */
 
+/*
+ * Asymetric RO/RW region.
+ * Different images, coming from different board.
+ * Size of the loader.
+ */
+#define CONFIG_FLASH_ASYMETRIC_LOADER_IMAGE_SIZE (40*1024)
+
 /* Memory mapping */
 #define CONFIG_FLASH_BASE       0x08000000
+
+#ifdef BOARD_RYU_SH_LOAD
 #define CONFIG_FLASH_PHYSICAL_SIZE (128 * 1024)
+#else
+#define CONFIG_FLASH_PHYSICAL_SIZE \
+	(((128 * 1024) - CONFIG_FLASH_ASYMETRIC_LOADER_IMAGE_SIZE) * 2)
+#endif
+
 #define CONFIG_FLASH_SIZE       CONFIG_FLASH_PHYSICAL_SIZE
 #define CONFIG_FLASH_BANK_SIZE  0x1000
 #define CONFIG_FLASH_ERASE_SIZE 0x0800  /* erase bank size */
@@ -18,12 +32,19 @@
 #define CONFIG_RAM_SIZE         0x00004000
 
 /* Size of the first firmware image in flash */
-#define CONFIG_FW_IMAGE_SIZE    (CONFIG_FLASH_SIZE / 2)
-
+#ifdef BOARD_RYU_SH_LOAD
+#define CONFIG_FW_IMAGE_SIZE    CONFIG_FLASH_ASYMETRIC_LOADER_IMAGE_SIZE
 #define CONFIG_FW_RO_OFF        0
-#define CONFIG_FW_RO_SIZE       (CONFIG_FW_IMAGE_SIZE - CONFIG_FW_PSTATE_SIZE)
 #define CONFIG_FW_RW_OFF        (CONFIG_FW_RO_OFF + CONFIG_FW_IMAGE_SIZE)
 #define CONFIG_FW_RW_SIZE       (CONFIG_FLASH_SIZE - CONFIG_FW_RW_OFF)
+#else
+#define CONFIG_FW_IMAGE_SIZE    (CONFIG_FLASH_SIZE / 2)
+#define CONFIG_FW_RW_OFF        CONFIG_FLASH_ASYMETRIC_LOADER_IMAGE_SIZE
+#define CONFIG_FW_RO_OFF        (CONFIG_FW_RW_OFF - CONFIG_FW_IMAGE_SIZE)
+#define CONFIG_FW_RW_SIZE       CONFIG_FW_IMAGE_SIZE
+#endif
+
+#define CONFIG_FW_RO_SIZE       (CONFIG_FW_IMAGE_SIZE - CONFIG_FW_PSTATE_SIZE)
 #define CONFIG_FW_WP_RO_OFF     CONFIG_FW_RO_OFF
 #define CONFIG_FW_WP_RO_SIZE    CONFIG_FW_IMAGE_SIZE
 
