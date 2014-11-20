@@ -15,6 +15,10 @@ void inductive_charging_interrupt(enum gpio_signal signal)
 	int charger_enabled = gpio_get_level(GPIO_BASE_CHG_VDD_EN);
 	int charge_done = gpio_get_level(GPIO_CHARGE_DONE);
 
+	/* Always try to charge if the lid is just closed */
+	if (signal == GPIO_LID_OPEN)
+		charge_done = 0;
+
 	if (!charger_enabled || charge_done)
 		gpio_set_level(GPIO_CHARGE_EN, 0);
 	else

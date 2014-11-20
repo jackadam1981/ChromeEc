@@ -91,6 +91,28 @@ static int test_lid_open_during_charging(void)
 	return EC_SUCCESS;
 }
 
+static int test_clear_charge_done(void)
+{
+	/* Lid is open initially. CHARGE_DONE is set. */
+	set_lid_open(1);
+	gpio_set_level(GPIO_CHARGE_DONE, 1);
+	TEST_ASSERT(gpio_get_level(GPIO_BASE_CHG_VDD_EN) == 0);
+	TEST_ASSERT(gpio_get_level(GPIO_CHARGE_EN) == 0);
+
+	/* Close the lid. Charging should start. */
+	set_lid_open(0);
+	TEST_ASSERT(gpio_get_level(GPIO_BASE_CHG_VDD_EN) == 1);
+	TEST_ASSERT(gpio_get_level(GPIO_CHARGE_EN) == 1);
+	gpio_set_level(GPIO_CHARGE_DONE, 0);
+
+	/* Charge is done. */
+	gpio_set_level(GPIO_CHARGE_DONE, 1);
+	TEST_ASSERT(gpio_get_level(GPIO_BASE_CHG_VDD_EN) == 1);
+	TEST_ASSERT(gpio_get_level(GPIO_CHARGE_EN) == 0);
+
+	return EC_SUCCESS;
+}
+
 void run_test(void)
 {
 	test_reset();
@@ -98,6 +120,7 @@ void run_test(void)
 	RUN_TEST(test_lid);
 	RUN_TEST(test_charge_done);
 	RUN_TEST(test_lid_open_during_charging);
+	RUN_TEST(test_clear_charge_done);
 
 	test_print_result();
 }
