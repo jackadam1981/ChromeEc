@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba2cf37b_319c72f9",
+        "filename": "board/plankton/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-11-20T22:21:43Z",
+      "side": 1,
+      "message": "per separate email thread w/ factory folks plankton behavior for entry into alternate mode needs to be governed by the value of USB mode GPIO.  This change respects GPIO at time of discovery / enter instead of forcing it.\n\nThis is obviously not to USB PD spec.",
+      "range": {
+        "startLine": 289,
+        "startChar": 1,
+        "endLine": 292,
+        "endChar": 2
+      },
+      "revId": "d197f0bc95d1ee264d1aecee6c71bf23f47caea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
