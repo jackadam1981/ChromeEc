@@ -862,13 +862,12 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload);
 int pd_custom_flash_vdm(int port, int cnt, uint32_t *payload);
 
 /**
- * Exit alternate mode
+ * Exit alternate mode.
  *
  * @param port     USB-C port number
- * @param payload  payload data.
- * @return if >0, number of VDOs to send back.
+ * @param payload  payload data.  If NULL assume disconnect.
  */
-int pd_exit_mode(int port, uint32_t *payload);
+void pd_exit_mode(int port, uint32_t *payload);
 
 /**
  * Store Device ID & RW hash of device
