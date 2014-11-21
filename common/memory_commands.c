@@ -37,10 +37,10 @@ DECLARE_CONSOLE_COMMAND(ww, command_write_word,
 			"Write a word to memory",
 			NULL);
 
-static int command_read_word(int argc, char **argv)
+static int command_mem_dump(int argc, char **argv)
 {
 	volatile uint32_t *address;
-	uint32_t value;
+	uint32_t value, num = 1, i;
 	char *e;
 
 	if (argc < 2)
@@ -50,27 +50,23 @@ static int command_read_word(int argc, char **argv)
 	if (*e)
 		return EC_ERROR_PARAM1;
 
-	/* Just reading? */
-	if (argc < 3) {
-		value = *address;
-		ccprintf("read 0x%p = 0x%08x\n", address, value);
-		return EC_SUCCESS;
+	if (argc >= 3)
+		num = strtoi(argv[2], &e, 0);
+
+	for (i = 0; i < num; i++) {
+		value = address[i];
+		if (0 == (i%4))
+			ccprintf("\n[%08X] : %08x", address+i, value);
+		else
+			ccprintf(" %08x", value);
+		cflush();
 	}
-
-	/* Writing! */
-	value = strtoi(argv[2], &e, 0);
-	if (*e)
-		return EC_ERROR_PARAM2;
-
-	ccprintf("write 0x%p = 0x%08x\n", address, value);
-	cflush();  /* Flush before writing in case this crashes */
-
-	*address = value;
-
+	ccprintf("\n");
+	cflush();
 	return EC_SUCCESS;
-
 }
-DECLARE_CONSOLE_COMMAND(rw, command_read_word,
-			"addr [value]",
-			"Read or write a word in memory",
+
+DECLARE_CONSOLE_COMMAND(md, command_mem_dump,
+			"addr [num]",
+			"dump num of words (4B) in memory",
 			NULL);
