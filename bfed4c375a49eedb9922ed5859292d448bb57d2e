@@ -16,6 +16,24 @@
       "revId": "bfed4c375a49eedb9922ed5859292d448bb57d2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df151930_39734f13",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-21T15:00:58Z",
+      "side": 1,
+      "message": "Yeah, you are right, Undefined sounds like a better fit than Peripheral now that Undefined will have product VDO. David or Todd, do you have any opinion which way we set this?",
+      "parentUuid": "bf0a2512_dbb6875e",
+      "revId": "bfed4c375a49eedb9922ed5859292d448bb57d2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
