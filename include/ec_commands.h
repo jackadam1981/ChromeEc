@@ -2818,6 +2818,29 @@ enum usb_pd_override_ports {
 struct ec_params_charge_port_override {
 	int16_t override_port; /* Override port# */
 } __packed;
+
+/* Get/Set USB-PD Alternate mode info */
+#define EC_CMD_USB_PD_GET_AMODE 0x115
+struct ec_params_usb_pd_get_mode_request {
+	uint8_t port;      /* port */
+	uint16_t svid_idx; /* SVID index to get */
+} __packed;
+
+struct ec_params_usb_pd_get_mode_response {
+	uint16_t svid;   /* SVID */
+	uint8_t active;  /* Active SVID */
+	uint8_t idx;     /* Index of active mode VDO. Ignored if !active */
+	uint32_t vdo[6]; /* Mode VDOs */
+} __packed;
+
+#define EC_CMD_USB_PD_SET_AMODE 0x116
+struct ec_params_usb_pd_set_mode_request {
+	uint8_t port;  /* port */
+	uint16_t svid; /* SVID to set */
+	int opos;      /* Object Position */
+	int svid_idx;  /* Index of svid to get */
+} __packed;
+
 #endif  /* !__ACPI__ */
 
 /*****************************************************************************/

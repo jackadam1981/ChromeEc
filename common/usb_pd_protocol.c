@@ -2874,4 +2874,37 @@ DECLARE_HOST_COMMAND(EC_CMD_USB_PD_DEV_INFO,
 		     hc_remote_pd_dev_info,
 		     EC_VER_MASK(0));
 
+#ifdef CONFIG_USB_PD_ALT_MODE_DFP
+static int hc_remote_pd_set_amode(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_usb_pd_set_mode_request *p = args->params;
+	uint32_t payload[1];
+
+	if (p->port >= PD_PORT_COUNT)
+		return EC_RES_INVALID_PARAM;
+
+	/* if in a mode exit it */
+	/* TODO(crosbug.com/p/33946): allow entry of multiple modes */
+	if (pd_alt_mode(p->port)) {
+		pd_exit_mode(p->port, payload);
+		/* Wait until VDM is done */
+		while (pd[p->port].vdm_state > 0)
+			task_wait_event(100*MSEC);
+	}
+
+	/* now try to enter new one. */
+	pd_send_vdm(p->port, p->svid,
+		    CMD_ENTER_MODE | VDO_OPOS(p->opos), NULL, 0);
+
+	/* Wait until VDM is done */
+	while (pd[p->port].vdm_state > 0)
+		task_wait_event(100*MSEC);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_USB_PD_SET_AMODE,
+		     hc_remote_pd_set_amode,
+		     EC_VER_MASK(0));
+#endif /* CONFIG_USB_PD_ALT_MODE_DFP */
+
 #endif /* CONFIG_COMMON_RUNTIME */
