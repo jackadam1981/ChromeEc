@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ff84938_2c9f7bc1",
+        "filename": "common/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-21T02:16:04Z",
+      "side": 0,
+      "message": "if you remove this, then this function is never called. so should we remove it? or maybe if this is only broken on what chip type, then that chip type should define adc_read_all_channels() to loop over each channel. that way we are still efficient for other chips.",
+      "range": {
+        "startLine": 47,
+        "startChar": 6,
+        "endLine": 47,
+        "endChar": 27
+      },
+      "revId": "1291eb4b1dafead1d6910ea0032ebbb3f31a612d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
