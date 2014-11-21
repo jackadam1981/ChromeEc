@@ -184,19 +184,28 @@ static void dfp_consume_attention(int port, uint32_t *payload)
 		pe[port].amode.fx->attention(port, payload);
 }
 
-int pd_exit_mode(int port, uint32_t *payload)
+void pd_exit_mode(int port, uint32_t *payload)
 {
 	struct svdm_amode_data *modep = &pe[port].amode;
 	if (!modep->fx)
-		return 0;
+		return;
 
 	modep->fx->exit(port);
 
-	if (payload)
-		payload[0] = VDO(modep->fx->svid, 1,
-				 CMD_EXIT_MODE | VDO_OPOS(pd_alt_mode(port)));
-	modep->index = -1;
-	return 1;
+	/*
+	 * TODO(crosbug.com/p/33946) : below needs revisited to allow multiple
+	 * mode entry.	Additionally it should honor OPOS == 7 as DFP's request
+	 * to exit all modes.
+	 */
+	if (payload) {
+		/* still connected to UFP */
+		pd_send_vdm(port, modep->fx->svid,
+			    CMD_EXIT_MODE | VDO_OPOS(pd_alt_mode(port)),
+			    payload, 1);
+		modep->index = -1;
+	} else {
+		pe_init(port);
+	}
 }
 
 static void dump_pe(int port)
@@ -450,12 +459,11 @@ void pd_usb_billboard_deferred(void)
 DECLARE_DEFERRED(pd_usb_billboard_deferred);
 
 #ifndef CONFIG_USB_PD_ALT_MODE_DFP
-int pd_exit_mode(int port, uint32_t *payload)
+void pd_exit_mode(int port, uint32_t *payload)
 {
 #ifdef CONFIG_USB_PD_ALT_MODE
 	svdm_rsp.exit_mode(port, payload);
 #endif
-	return 0;
 }
 #endif /* !CONFIG_USB_PD_ALT_MODE_DFP */
 
@@ -480,6 +488,37 @@ static int hc_remote_pd_discovery(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_USB_PD_DISCOVERY,
 		     hc_remote_pd_discovery,
 		     EC_VER_MASK(0));
+
+static int hc_remote_pd_get_amode(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_usb_pd_get_mode_request *p = args->params;
+	struct ec_params_usb_pd_get_mode_response *r = args->response;
+
+	if (p->port >= PD_PORT_COUNT)
+		return EC_RES_INVALID_PARAM;
+
+	/* no more to send */
+	if (p->svid_idx >= pe[p->port].svid_cnt) {
+		r->svid = 0;
+		args->response_size = sizeof(r->svid);
+		return EC_RES_SUCCESS;
+	}
+
+	r->svid = pe[p->port].svids[p->svid_idx].svid;
+	r->active = 0;
+	memcpy(r->vdo, pe[p->port].svids[p->svid_idx].mode_vdo, 24);
+
+	if (AMODE_VALID(p->port) && pe[p->port].amode.fx->svid == r->svid) {
+		r->active = 1;
+		r->idx = pd_alt_mode(p->port) - 1;
+	}
+	args->response_size = sizeof(*r);
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_USB_PD_GET_AMODE,
+		     hc_remote_pd_get_amode,
+		     EC_VER_MASK(0));
+
 #endif
 
 #define FW_RW_END (CONFIG_FW_RW_OFF + CONFIG_FW_RW_SIZE)
