@@ -9,6 +9,7 @@
 #include "registers.h"
 #include "rsa.h"
 #include "sha256.h"
+#include "system.h"
 #include "task.h"
 #include "usb_pd.h"
 #include "util.h"
@@ -118,6 +119,6 @@ int main(void)
 
 	debug_printf("background loop exited !\n");
 	/* we should never reach that point */
-	cpu_reset();
+	system_reset(0);
 	return 0;
 }
