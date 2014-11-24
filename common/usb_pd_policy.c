@@ -6,10 +6,12 @@
 #include "atomic.h"
 #include "common.h"
 #include "console.h"
+#include "flash.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
 #include "registers.h"
+#include "system.h"
 #include "task.h"
 #include "timer.h"
 #include "util.h"
@@ -475,3 +477,62 @@ DECLARE_HOST_COMMAND(EC_CMD_USB_PD_DISCOVERY,
 		     hc_remote_pd_discovery,
 		     EC_VER_MASK(0));
 #endif
+
+#define FW_RW_END (CONFIG_FW_RW_OFF + CONFIG_FW_RW_SIZE)
+
+int pd_custom_flash_vdm(int port, int cnt, uint32_t *payload)
+{
+	static int flash_offset;
+	int rsize = 1; /* default is just VDM header returned */
+
+	switch (PD_VDO_CMD(payload[0])) {
+	case VDO_CMD_VERSION:
+		memcpy(payload + 1, &version_data.version, 24);
+		rsize = 7;
+		break;
+	case VDO_CMD_REBOOT:
+		/* ensure the power supply is in a safe state */
+		pd_power_supply_reset(0);
+		system_reset(0);
+		break;
+	case VDO_CMD_READ_INFO:
+		/* copy info into response */
+		pd_get_info(payload + 1);
+		rsize = 7;
+		break;
+	case VDO_CMD_FLASH_ERASE:
+		/* do not kill the code under our feet */
+		if (system_get_image_copy() != SYSTEM_IMAGE_RO)
+			break;
+		flash_offset = CONFIG_FW_RW_OFF;
+		flash_physical_erase(CONFIG_FW_RW_OFF, CONFIG_FW_RW_SIZE);
+		pd_rw_contents_changed();
+		break;
+	case VDO_CMD_FLASH_WRITE:
+		/* do not kill the code under our feet */
+		if ((system_get_image_copy() != SYSTEM_IMAGE_RO) ||
+		    (flash_offset < CONFIG_FW_RW_OFF))
+			break;
+		flash_physical_write(flash_offset, 4*(cnt - 1),
+				     (const char *)(payload+1));
+		flash_offset += 4*(cnt - 1);
+		pd_rw_contents_changed();
+		break;
+	case VDO_CMD_ERASE_SIG:
+		/* this is not touching the code area */
+		{
+			uint32_t zero = 0;
+			int offset;
+			/* zeroes the area containing the RSA signature */
+			for (offset = FW_RW_END - 256; offset < FW_RW_END;
+			     offset += 4)
+				flash_physical_write(offset, 4,
+						     (const char *)&zero);
+		}
+		break;
+	default:
+		/* Unknown : do not answer */
+		return 0;
+	}
+	return rsize;
+}

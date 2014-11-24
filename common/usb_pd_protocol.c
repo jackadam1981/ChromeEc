@@ -44,6 +44,8 @@ static int debug_level;
 const int debug_level;
 #endif
 
+static int rw_flash_changed = 1;
+
 /* Encode 5 bits using Biphase Mark Coding */
 #define BMC(x)   ((x &  1 ? 0x001 : 0x3FF) \
 		^ (x &  2 ? 0x004 : 0x3FC) \
@@ -1325,23 +1327,34 @@ void pd_dev_store_rw_hash(int port, uint16_t dev_id, uint32_t *rw_hash)
 		pd_dev_dump_info(dev_id, (uint8_t *)rw_hash);
 }
 
+void pd_rw_contents_changed(void)
+{
+	rw_flash_changed = 1;
+}
+
 uint8_t *flash_hash_rw(void)
 {
 	static struct sha256_ctx ctx;
-	SHA256_init(&ctx);
-	SHA256_update(&ctx, (void *)CONFIG_FLASH_BASE + CONFIG_FW_RW_OFF,
-		    CONFIG_FW_RW_SIZE - RSANUMBYTES);
-	return SHA256_final(&ctx);
+
+	/* re-calculate RW hash when changed as its time consuming */
+	if (rw_flash_changed) {
+		rw_flash_changed = 0;
+		SHA256_init(&ctx);
+		SHA256_update(&ctx, (void *)CONFIG_FLASH_BASE +
+			      CONFIG_FW_RW_OFF,
+			      CONFIG_FW_RW_SIZE - RSANUMBYTES);
+		return SHA256_final(&ctx);
+	} else {
+		return ctx.buf;
+	}
 }
 
 void pd_get_info(uint32_t *info_data)
 {
-	void *hash;
+	void *rw_hash = flash_hash_rw();
 
-	/* calculate RW hash */
-	hash = flash_hash_rw();
 	/* copy first 20 bytes of RW hash */
-	memcpy(info_data, hash, 5 * sizeof(uint32_t));
+	memcpy(info_data, rw_hash, 5 * sizeof(uint32_t));
 	/* copy other info into data msg */
 #if defined(CONFIG_USB_PD_HW_DEV_ID_BOARD_MAJOR) && \
 	defined(CONFIG_USB_PD_HW_DEV_ID_BOARD_MINOR)
