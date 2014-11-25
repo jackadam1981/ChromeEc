@@ -16,6 +16,24 @@
       "revId": "0bc0d9dda8c4500430556f148fa41b1fdbee0d67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f3e41e9_a814df32",
+        "filename": "board/dingdong/dev_key.pem",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-25T21:38:16Z",
+      "side": 1,
+      "message": "as commented in util/pem_extract_pubkey.py ,\nyou can generate a key with :\nopenssl genrsa -F4 -out board/dingdong/dev_key.pem 2048",
+      "parentUuid": "5fc2091f_6fd6c009",
+      "revId": "0bc0d9dda8c4500430556f148fa41b1fdbee0d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
