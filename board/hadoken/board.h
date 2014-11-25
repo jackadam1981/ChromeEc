@@ -36,6 +36,28 @@
 #define NRF51_TWI_FREQ(port)      NRF51_TWI_100KBPS
 #define NRF51_TWI_PPI_CHAN(port)  0
 
+#define BATTERY_VOLTAGE_MAX         4425 /* mV */
+#define BATTERY_VOLTAGE_NORMAL      3800 /* mV */
+#define BATTERY_VOLTAGE_MIN         3000 /* mV */
+
+#define CONFIG_BATTERY_BQ27621
+#define BQ27621_CHEM_ID             0x0354 /* 4.35V maximum charge */
+#define BQ27621_TOGGLE_POWER_MIN    0
+
+	/* Since our battery is so small (< 150mAh),
+	 * we need a scale factor of 10
+	 * .456 Wh = 120 mAh @ 3.8V
+	 *
+	 * Design Energy = Design Capacity * 3.7
+	 * Taper Current is .05C (C=120mA) = 6mA (scaled = 60mA)
+	 */
+#define BQ27621_DESIGN_CAPACITY     1200 /* (0x4b0) mAh */
+#define BQ27621_DESIGN_ENERGY       4440 /* (0x11d0) mWh */
+#define BQ27621_TERMINATE_VOLTAGE   BATTERY_VOLTAGE_MIN /* mV */
+#define BQ27621_TAPER_CURRENT       60   /* (0x3c) mA */
+
+#define I2C_PORT_BATTERY NRF51_TWI_PORT
+
 
 #include "gpio_signal.h"
 
