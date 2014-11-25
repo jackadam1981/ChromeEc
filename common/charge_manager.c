@@ -7,6 +7,7 @@
 #include "console.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "timer.h"
 #include "usb_pd.h"
 #include "usb_pd_config.h"
 #include "util.h"
@@ -30,6 +31,9 @@ static int charge_current_uncapped = CHARGE_CURRENT_UNINITIALIZED;
 static int charge_voltage;
 static int charge_supplier = CHARGE_SUPPLIER_NONE;
 static int override_port = OVERRIDE_OFF;
+
+static int delayed_override_port = CHARGE_PORT_NONE;
+static timestamp_t delayed_override_deadline;
 
 /**
  * Initialize available charge. Run before board init, so board init can
@@ -221,9 +225,18 @@ void charge_manager_update(int supplier,
 		    !pd_get_partner_dualrole_capable(port))
 			override_port = OVERRIDE_OFF;
 
-
 		available_charge[supplier][port].current = charge->current;
 		available_charge[supplier][port].voltage = charge->voltage;
+
+		/*
+		 * If we have a charge on our delayed override port within
+		 * the deadline, make it our override port.
+		 */
+		if (port == delayed_override_port &&
+		    charge->current > 0 &&
+		    pd_get_role(delayed_override_port) == PD_ROLE_SINK &&
+		    get_time().val < delayed_override_deadline.val)
+			charge_manager_set_override(port);
 
 		/*
 		 * Don't call charge_manager_refresh unless all ports +
@@ -264,11 +277,26 @@ void charge_manager_set_ceil(int port, int ceil)
 void charge_manager_set_override(int port)
 {
 	ASSERT(port >= OVERRIDE_DONT_CHARGE && port < PD_PORT_COUNT);
+	/* Supersede any pending delayed overrides. */
+	delayed_override_port = CHARGE_PORT_NONE;
 
-	if (override_port != port) {
+	/* Set the override port if it's a sink. */
+	if (override_port != port &&
+	    (port < 0 || pd_get_role(port) == PD_ROLE_SINK)) {
 		override_port = port;
 		if (charge_manager_is_seeded())
 			hook_call_deferred(charge_manager_refresh, 0);
+	/*
+	 * If the attached device is capable of being a sink, request a
+	 * power swap and set the delayed override for swap completion.
+	 */
+	} else if (port >= 0 &&
+		   pd_get_role(port) != PD_ROLE_SINK &&
+		   pd_get_partner_dualrole_capable(port)) {
+		delayed_override_deadline.val = get_time().val +
+						POWER_SWAP_TIMEOUT;
+		delayed_override_port = port;
+		pd_request_power_swap(port);
 	}
 }
 
@@ -384,13 +412,6 @@ static int hc_charge_port_override(struct host_cmd_handler_args *args)
 	    override_port >= PD_PORT_COUNT)
 		return EC_RES_INVALID_PARAM;
 
-	if (override_port >= 0 && pd_get_role(override_port) != PD_ROLE_SINK)
-		/*
-		 * TODO(crosbug.com/p/31195): Switch dual-role ports
-		 * from source to sink.
-		 */
-		return EC_RES_ERROR;
-
 	charge_manager_set_override(override_port);
 	return EC_RES_SUCCESS;
 }
@@ -409,15 +430,7 @@ static int command_charge_port_override(int argc, char **argv)
 			return EC_ERROR_PARAM1;
 	}
 
-	if (port >= 0 && pd_get_role(override_port) != PD_ROLE_SINK)
-		/*
-		 * TODO(crosbug.com/p/31195): Switch dual-role ports
-		 * from source to sink.
-		 */
-		return EC_ERROR_PARAM1;
-
 	charge_manager_set_override(port);
-	ccprintf("Set override: %d\n", port);
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(chgoverride, command_charge_port_override,
