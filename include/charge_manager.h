@@ -15,6 +15,9 @@
 #define CHARGE_CURRENT_UNINITIALIZED -1
 #define CHARGE_VOLTAGE_UNINITIALIZED -1
 
+/* Allow up to 2 seconds for power swap for delayed override */
+#define POWER_SWAP_TIMEOUT (2000 * MSEC)
+
 #define POWER(charge_port) ((charge_port.current) * (charge_port.voltage))
 
 /* Charge tasks report available current and voltage */
