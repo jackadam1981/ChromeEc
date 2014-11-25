@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fcc1153_a0dcc098",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 935,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-25T21:37:04Z",
+      "side": 1,
+      "message": "Given that\u0027s just a check, I would just remove it\nrather than adding device specific stuff to maintain.",
+      "revId": "c5e36870e215ba27d14cb314088106be3ab3c832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
