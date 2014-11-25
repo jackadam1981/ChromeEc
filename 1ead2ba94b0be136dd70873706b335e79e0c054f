@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fcc1153_e0df2865",
+        "filename": "common/usb_pd_flash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-25T20:42:06Z",
+      "side": 1,
+      "message": "I\u0027m not convinced by this new level of indirection.\nfor most systems, it\u0027s just calling system_run_image_copy(SYSTEM_IMAGE_RW) which is as concise.\nOnly Zinger uses the long version, so let it be Zinger-specific.",
+      "revId": "1ead2ba94b0be136dd70873706b335e79e0c054f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fcc1153_a01b608f",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1346,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-25T20:42:06Z",
+      "side": 1,
+      "message": "Can we push the CONFIG_USB_PD_DEVID_MAJOR/MINOR in the board.h (as that was done on Zinger) ? to avoid that ugly giant if.",
+      "revId": "1ead2ba94b0be136dd70873706b335e79e0c054f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
