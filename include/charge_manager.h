@@ -15,8 +15,6 @@
 #define CHARGE_CURRENT_UNINITIALIZED -1
 #define CHARGE_VOLTAGE_UNINITIALIZED -1
 
-#define POWER(charge_port) ((charge_port.current) * (charge_port.voltage))
-
 /* Charge tasks report available current and voltage */
 struct charge_port_info {
 	int current;
@@ -32,7 +30,7 @@ void charge_manager_update(int supplier,
 void charge_manager_set_ceil(int port, int ceil);
 
 /* Select an 'override port', which is always the preferred charge port */
-void charge_manager_set_override(int port);
+int charge_manager_set_override(int port);
 
 /* Returns the current active charge port, as determined by charge manager */
 int charge_manager_get_active_charge_port(void);
