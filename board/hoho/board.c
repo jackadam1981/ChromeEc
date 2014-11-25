@@ -132,6 +132,29 @@ static void board_init_spi2(void)
 }
 #endif /* CONFIG_SPI_FLASH */
 
+/* TODO(tbroch) need docs for this stuff */
+#define MCDP_I2C_7B_SLV_ADDR 0x6e
+#define MCDP_I2C_MODEL_REG 0
+#define MCDP_MODEL_ID 0xdeadbeef
+
+static int is_mcdp_alive(void)
+{
+	int data[1];
+	int rv = 0;
+
+	/* assert reset to enable i2c */
+	gpio_set_level(GPIO_MCDP_RESET_L, 0);
+
+	/* i2c xfer to test operation */
+	rv = i2c_read16(1, MCDP_I2C_7B_SLV_ADDR<<1,
+			MCDP_I2C_MODEL_REG, data);
+
+	/* deassert reset for normal operation */
+	gpio_set_level(GPIO_MCDP_RESET_L, 1);
+
+	return !rv && (data[0] == MCDP_MODEL_ID);
+}
+
 /* Initialize board. */
 static void board_init(void)
 {
@@ -143,6 +166,10 @@ static void board_init(void)
 	hpd_prev_level = gpio_get_level(GPIO_DP_HPD);
 	hpd_prev_ts = now.val;
 	gpio_enable_interrupt(GPIO_DP_HPD);
+
+	gpio_set_level(GPIO_STM_READY, 1); /* factory test only */
+	if (is_mcdp_alive())
+		gpio_set_level(GPIO_MCDP_READY, 1); /* factory test only */
 }
 
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
