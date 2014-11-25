@@ -131,6 +131,11 @@ static void board_init_spi2(void)
 }
 #endif /* CONFIG_SPI_FLASH */
 
+static int is_mcdp_alive(void)
+{
+	return 1;
+}
+
 /* Initialize board. */
 static void board_init(void)
 {
@@ -142,6 +147,10 @@ static void board_init(void)
 	hpd_prev_level = gpio_get_level(GPIO_DP_HPD);
 	hpd_prev_ts = now.val;
 	gpio_enable_interrupt(GPIO_DP_HPD);
+
+	gpio_set_level(GPIO_STM_READY, 1); /* factory test only */
+	if (is_mcdp_alive())
+		gpio_set_level(GPIO_MCDP_READY, 1); /* factory test only */
 }
 
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
