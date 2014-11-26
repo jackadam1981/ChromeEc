@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1ff89189_0b951da2",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-11-26T22:39:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff581d71_697811eb",
+      "revId": "fff48ae4b5ffdd8b79886b9f73e866604bf04255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f692905_8983e9e6",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "5fee89c7_33e5f0b9",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-11-26T22:39:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f692905_8983e9e6",
+      "revId": "fff48ae4b5ffdd8b79886b9f73e866604bf04255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff581d71_e9aa61e0",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2014-11-26T18:01:28Z",
       "side": 1,
       "message": "same remark as the previous CL, we should add system_get_image_copy to zinger runtime",
+      "revId": "fff48ae4b5ffdd8b79886b9f73e866604bf04255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5fee89c7_13ea7487",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-11-26T22:39:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff581d71_e9aa61e0",
       "revId": "fff48ae4b5ffdd8b79886b9f73e866604bf04255",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
