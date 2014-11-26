@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ff581d71_033b34bd",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-11-26T02:55:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f3e41e9_c8404333",
+      "revId": "41f5eb16337c3fb9f12d0cec70a219bdbc9614d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5fc2091f_dba7754a",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-11-25T21:48:54Z",
       "side": 1,
       "message": "that\u0027s for exiting all modes ?\nwe are supposed to check oPos \u003d\u003d 7",
+      "revId": "41f5eb16337c3fb9f12d0cec70a219bdbc9614d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff581d71_a3efe8c2",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-11-26T02:55:18Z",
+      "side": 1,
+      "message": "Agreed having re-read table 6-19 but at the moment we only support entry into one mode.\n\nAdditionally as its called now pd_exit_mode without a payload really signifies disconnect || hard reset.\n\nWill TODO suffice?",
+      "parentUuid": "5fc2091f_dba7754a",
       "revId": "41f5eb16337c3fb9f12d0cec70a219bdbc9614d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "9f572141_5a7871ea",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2900,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-11-26T02:55:18Z",
+      "side": 1,
+      "message": "Truth be told I\u0027ve got a bug in here hence the TEST_ONLY final patch in the series that re-orders the priority of the alternate modes for samus_pd.\n\nTBD on this one.",
+      "parentUuid": "9f3e41e9_88c63b26",
+      "revId": "41f5eb16337c3fb9f12d0cec70a219bdbc9614d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fcc1153_14063545",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "ff581d71_a36248b2",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2826,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-11-26T02:55:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fcc1153_14063545",
+      "revId": "41f5eb16337c3fb9f12d0cec70a219bdbc9614d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f3e41e9_e86c27a7",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -81,6 +153,24 @@
       "writtenOn": "2014-11-25T21:48:54Z",
       "side": 1,
       "message": "ditto",
+      "revId": "41f5eb16337c3fb9f12d0cec70a219bdbc9614d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff581d71_e36c40a7",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2839,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-11-26T02:55:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f3e41e9_e86c27a7",
       "revId": "41f5eb16337c3fb9f12d0cec70a219bdbc9614d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
