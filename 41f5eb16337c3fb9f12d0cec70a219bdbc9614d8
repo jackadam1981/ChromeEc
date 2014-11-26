@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "5f692905_6913ed4c",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-26T17:52:57Z",
+      "side": 1,
+      "message": "Yes sure, that doesn\u0027t seem critical for anything useful",
+      "parentUuid": "ff581d71_a3efe8c2",
+      "revId": "41f5eb16337c3fb9f12d0cec70a219bdbc9614d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f3e41e9_88c63b26",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
