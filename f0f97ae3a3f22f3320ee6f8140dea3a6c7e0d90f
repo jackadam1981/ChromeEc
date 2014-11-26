@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ff89189_ebd9b100",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-26T21:23:18Z",
+      "side": 1,
+      "message": "you should not need to do that (else we would have 2 pages of ifeq around here)\ninstead of putting CONFIG_PAYLOAD_ONLY:\u003dy in the build.mk move it to board.h.\nSo you are getting it for \"free\" when including \"config.h\" in firmware_image.lds.S\nAnd for the makefiles, the line 79 to 83 below (ie _flag_cfg) are transforming the CONFIG_ variables into makefile variables if needed",
+      "revId": "f0f97ae3a3f22f3320ee6f8140dea3a6c7e0d90f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5fee89c7_d0c0e2b7",
+        "filename": "board/ryu_sh_load/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-26T21:23:18Z",
+      "side": 1,
+      "message": "if it\u0027s empty , remove it you will save a few bytes",
+      "revId": "f0f97ae3a3f22f3320ee6f8140dea3a6c7e0d90f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5fee89c7_90513aa4",
+        "filename": "chip/stm32/config-stm32f07x.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-26T21:23:18Z",
+      "side": 1,
+      "message": "I think this #ifndef is no longer useful",
+      "revId": "f0f97ae3a3f22f3320ee6f8140dea3a6c7e0d90f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
