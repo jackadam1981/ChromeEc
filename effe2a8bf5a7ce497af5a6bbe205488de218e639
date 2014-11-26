@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f572141_97894485",
+        "filename": "chip/stm32/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-26T00:55:12Z",
+      "side": 1,
+      "message": "FYI, the config include files are designed in such a way that you are supposed to be able to override every variable in your board.h\nSo just for a one-off, you can probably do that configuration in board/ryu_sh/board.h\n(requires to #undef the variables first though)",
+      "revId": "effe2a8bf5a7ce497af5a6bbe205488de218e639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
