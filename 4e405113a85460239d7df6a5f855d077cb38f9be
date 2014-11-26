@@ -34,6 +34,24 @@
       "revId": "4e405113a85460239d7df6a5f855d077cb38f9be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5fee89c7_30516627",
+        "filename": "chip/stm32/config_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-26T20:41:08Z",
+      "side": 1,
+      "message": "That\u0027s the intended include order, precisely to be able to override defines.\nI still don\u0027t understand why you cannot add to board.h\nsomething like :\n\n#undef CONFIG_FW_IMAGE_SIZE\n#define CONFIG_FW_IMAGE_SIZE (40*1024)",
+      "parentUuid": "9f0c8179_af55f948",
+      "revId": "4e405113a85460239d7df6a5f855d077cb38f9be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
