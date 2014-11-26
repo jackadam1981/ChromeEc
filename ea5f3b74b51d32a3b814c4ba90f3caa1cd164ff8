@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3ffb9587_4f81f1d4",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1351,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-11-26T22:35:52Z",
+      "side": 1,
+      "message": "Yes would be cleaner ... thanks for suggestion.",
+      "parentUuid": "5f692905_49ba71e7",
+      "revId": "ea5f3b74b51d32a3b814c4ba90f3caa1cd164ff8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df027941_b408ae50",
         "filename": "test/build.mk",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2014-11-26T17:51:13Z",
       "side": 1,
       "message": "I think you might be missing a  #define CONFIG_SHA256 somewhere rather than doing this trick,\nor Am i missing something ?",
+      "revId": "ea5f3b74b51d32a3b814c4ba90f3caa1cd164ff8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5fee89c7_d31e2c4f",
+        "filename": "test/build.mk",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-11-26T22:35:52Z",
+      "side": 1,
+      "message": "Yep ... test_config.h",
+      "parentUuid": "df027941_b408ae50",
       "revId": "ea5f3b74b51d32a3b814c4ba90f3caa1cd164ff8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
