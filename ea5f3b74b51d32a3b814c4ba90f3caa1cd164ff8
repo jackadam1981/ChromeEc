@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f692905_49ba71e7",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1351,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-26T17:51:13Z",
+      "side": 1,
+      "message": "I\u0027m trying to avoid having too many #ifdef for the zinger corner-case without runtime.\nYou can just add a faked system_get_image_copy in zinger runtime, e.g.\n\n--- a/board/zinger/runtime.c\n+++ b/board/zinger/runtime.c\n@@ -231,6 +231,14 @@ void panic_reboot(void)\n        cpu_reset();\n }\n \n+enum system_image_copy_t system_get_image_copy(void)\n+{\n+       if (is_ro_mode())\n+               return SYSTEM_IMAGE_RO;\n+       else\n+               return SYSTEM_IMAGE_RW;\n+}\n+\n /* --- stubs --- */\n void __hw_timer_enable_clock(int n, int enable)\n { /* Done in hardware init */ }",
+      "revId": "ea5f3b74b51d32a3b814c4ba90f3caa1cd164ff8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df027941_b408ae50",
+        "filename": "test/build.mk",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-26T17:51:13Z",
+      "side": 1,
+      "message": "I think you might be missing a  #define CONFIG_SHA256 somewhere rather than doing this trick,\nor Am i missing something ?",
+      "revId": "ea5f3b74b51d32a3b814c4ba90f3caa1cd164ff8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
