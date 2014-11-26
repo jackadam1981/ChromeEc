@@ -16,6 +16,24 @@
       "revId": "4e405113a85460239d7df6a5f855d077cb38f9be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f0c8179_af55f948",
+        "filename": "chip/stm32/config_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-11-26T20:34:17Z",
+      "side": 1,
+      "message": "version 1 was not for general release :-)\nUnfortunately, I can not make the change in board/ryu_sh/board because config_chip.h is included before board.h and I need to overwrite a config variable there.",
+      "parentUuid": "5f692905_af52255c",
+      "revId": "4e405113a85460239d7df6a5f855d077cb38f9be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
