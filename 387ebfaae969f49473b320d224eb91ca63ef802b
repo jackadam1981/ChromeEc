@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9fb9e1ac_6dea5189",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-27T17:39:01Z",
+      "side": 1,
+      "message": "I have just realized that \"ryu_sh_load\" was actually the \"loader\" rather than the \"payload\" (which is ryu_sh).\nWe can discuss naming to death, but the current choice was slightly confusing to me.",
+      "revId": "387ebfaae969f49473b320d224eb91ca63ef802b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf2065df_08cb67e0",
+        "filename": "Makefile.rules",
+        "patchSetId": 5
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-27T17:39:01Z",
+      "side": 1,
+      "message": "normally the whole point of having configuration variable equals to \"y\" and make variables defined as \"xxx-y\" is to use them directly like that :\nflat-y \u003d $(out)/$(PROJECT).RW.flat\nflat-$(CONFIG_INCLUDE_RO) +\u003d $(out)/$(PROJECT).RO.flat\n\nof course in your case, you need to invert the logic and defined by default in include/config.h:\n#define CONFIG_INCLUDE_RO\nand undefined it in the payload board.",
+      "revId": "387ebfaae969f49473b320d224eb91ca63ef802b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
