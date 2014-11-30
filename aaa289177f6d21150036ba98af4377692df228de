@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff265df7_ed5ee12f",
+        "filename": "board/it8380dev/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-30T19:06:31Z",
+      "side": 1,
+      "message": "you can move this function to ec2i.c and just let the initialization data in the board code.",
+      "revId": "aaa289177f6d21150036ba98af4377692df228de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff265df7_8d6125fa",
+        "filename": "board/it8380dev/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-30T19:06:31Z",
+      "side": 1,
+      "message": "typo: EC2I_WRITE_ERROR",
+      "revId": "aaa289177f6d21150036ba98af4377692df228de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff265df7_cd5b1d3e",
+        "filename": "chip/it83xx/ec2i.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-30T19:06:31Z",
+      "side": 1,
+      "message": "if there is no hardware timeout, we should have a timeout here.",
+      "revId": "aaa289177f6d21150036ba98af4377692df228de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
