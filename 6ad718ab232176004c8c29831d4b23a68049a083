@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9fb9e1ac_90b79af9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-30T18:14:14Z",
+      "side": 1,
+      "message": "this command doesn\u0027t put port into source role, it puts it into DFP role.\n\nyou want \"pd 1 swap power\"",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 15
+      },
+      "revId": "6ad718ab232176004c8c29831d4b23a68049a083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff265df7_4d772dc5",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-30T18:14:14Z",
+      "side": 1,
+      "message": "also need to clear delayed_override_port here?",
+      "range": {
+        "startLine": 226,
+        "startChar": 31,
+        "endLine": 226,
+        "endChar": 32
+      },
+      "revId": "6ad718ab232176004c8c29831d4b23a68049a083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fb9e1ac_50a362bd",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-30T18:14:14Z",
+      "side": 1,
+      "message": "we probably need to generate a host event in the case that we timeout on setting override (pd_send_host_event(PD_EVENT_POWER_CHANGE)). might want to ask sameer if this is necessary. or, we can leave it out for now and see how sameer\u0027s driver behaves on the failing case.",
+      "revId": "6ad718ab232176004c8c29831d4b23a68049a083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf2065df_1160aea6",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-30T18:14:14Z",
+      "side": 1,
+      "message": "what if it doesn\u0027t fall into either of these cases? can we return an error to the host/console command. (i.e. if charge override is called on a port that is not dualrole capable and is a permanent source).",
+      "range": {
+        "startLine": 300,
+        "startChar": 1,
+        "endLine": 300,
+        "endChar": 2
+      },
+      "revId": "6ad718ab232176004c8c29831d4b23a68049a083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff265df7_ad7b49ad",
+        "filename": "include/charge_manager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-30T18:14:14Z",
+      "side": 1,
+      "message": "suggest moving some constants from usb_pd_protocol.c to usb_pd.h and adding them up here:\n\nPD_T_SRC_RECOVER_MAX + PD_T_SRC_TURN_ON + PD_T_SAFE_0V\n\nSome of these constants may change in future version of spec and don\u0027t want to forget to change this. And then we should add in some buffer, maybe 500ms.",
+      "range": {
+        "startLine": 19,
+        "startChar": 8,
+        "endLine": 19,
+        "endChar": 26
+      },
+      "revId": "6ad718ab232176004c8c29831d4b23a68049a083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
