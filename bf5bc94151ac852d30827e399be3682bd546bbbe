@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9fb9e1ac_b08dfe3e",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-30T19:55:20Z",
+      "side": 1,
+      "message": "given pd_send_vdm() is executed here from the PD task, this will delay the actual transmission of the VDM until the next transition of the PD state machine.\n\nWhen I\u0027m looking at the callers, I\u0027m not sure that\u0027s actually correct, they seem to expect the VDM is actually sent when this function returns.",
+      "revId": "bf5bc94151ac852d30827e399be3682bd546bbbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
