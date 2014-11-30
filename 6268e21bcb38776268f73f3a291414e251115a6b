@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf2065df_d16c56a7",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-11-30T17:47:45Z",
+      "side": 1,
+      "message": "nit, maybe put this comment where the deferred function is called (lines 81, 88)",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 4
+      },
+      "revId": "6268e21bcb38776268f73f3a291414e251115a6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
