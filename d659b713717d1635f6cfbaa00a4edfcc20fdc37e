@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf2065df_11c1ce0f",
+        "filename": "board/it8380dev/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-30T19:00:50Z",
+      "side": 1,
+      "message": "you should have meaningful values for mult/div to get millivolts : e.g. if that\u0027s 10 bit full scale for 3.0V :\n3000, 1024",
+      "revId": "d659b713717d1635f6cfbaa00a4edfcc20fdc37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf2065df_71c64a29",
+        "filename": "chip/it83xx/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-30T19:00:50Z",
+      "side": 1,
+      "message": "adc_read_channel() is supposed to trigger an ADC conversion and wait for its completion rather than reading the pre-cached value.",
+      "revId": "d659b713717d1635f6cfbaa00a4edfcc20fdc37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fb9e1ac_d0967253",
+        "filename": "chip/it83xx/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-30T19:00:50Z",
+      "side": 1,
+      "message": "isn\u0027t permanently doing conversions on all channels power hungry ?",
+      "revId": "d659b713717d1635f6cfbaa00a4edfcc20fdc37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fb9e1ac_109dea6f",
+        "filename": "chip/it83xx/asm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-30T19:00:50Z",
+      "side": 1,
+      "message": "if you really need this, just use \u0027asm volatile (\"nop\");\u0027 directly in your code, this is not adding any value",
+      "revId": "d659b713717d1635f6cfbaa00a4edfcc20fdc37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fb9e1ac_30a26eb7",
+        "filename": "chip/it83xx/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-11-30T19:00:50Z",
+      "side": 1,
+      "message": "other registers seem to use space for alignment rather than tab",
+      "revId": "d659b713717d1635f6cfbaa00a4edfcc20fdc37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
