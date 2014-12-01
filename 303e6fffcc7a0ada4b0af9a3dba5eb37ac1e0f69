@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "ff99fd83_2151f826",
+        "filename": "common/host_command_pd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-12-01T20:54:19Z",
+      "side": 1,
+      "message": "I agree that only one task at a time should be running it. From the lightbar\u0027s perspective it needs to block. It doesn\u0027t matter to me how that happens, though. \n\nI\u0027ll think about it too.",
+      "parentUuid": "bfaea591_9830755c",
+      "revId": "303e6fffcc7a0ada4b0af9a3dba5eb37ac1e0f69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfaea591_38984900",
         "filename": "common/lightbar.c",
         "patchSetId": 1
@@ -42,6 +60,24 @@
         "endLine": 915,
         "endChar": 20
       },
+      "revId": "303e6fffcc7a0ada4b0af9a3dba5eb37ac1e0f69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff99fd83_21bad8e6",
+        "filename": "common/lightbar.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 915,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-12-01T20:54:19Z",
+      "side": 1,
+      "message": "Yep. That\u0027s actually a feature. We want the PD to react to any AC change first, so the lightbar indicates the correct direction.",
+      "parentUuid": "bfaea591_38984900",
       "revId": "303e6fffcc7a0ada4b0af9a3dba5eb37ac1e0f69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "ff99fd83_41bfdcd5",
+        "filename": "common/lightbar.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-12-01T20:54:19Z",
+      "side": 1,
+      "message": "D\u0027oh.",
+      "parentUuid": "7f8d0d44_0e726b87",
+      "revId": "303e6fffcc7a0ada4b0af9a3dba5eb37ac1e0f69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f8d0d44_ee935f2e",
         "filename": "include/host_command.h",
         "patchSetId": 1
@@ -88,6 +142,24 @@
         "endLine": 218,
         "endChar": 2
       },
+      "revId": "303e6fffcc7a0ada4b0af9a3dba5eb37ac1e0f69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff99fd83_c1c66c54",
+        "filename": "include/host_command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-12-01T20:54:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f8d0d44_ee935f2e",
       "revId": "303e6fffcc7a0ada4b0af9a3dba5eb37ac1e0f69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
