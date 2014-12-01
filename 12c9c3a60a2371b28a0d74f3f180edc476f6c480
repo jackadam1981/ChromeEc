@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf2065df_117eeed9",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-01T01:01:21Z",
+      "side": 1,
+      "message": "can you change printf in board/samus_pd/usb_pd_policy.c to have same format for devID? also, if other boards have the same printf.",
+      "range": {
+        "startLine": 864,
+        "startChar": 3,
+        "endLine": 865,
+        "endChar": 63
+      },
+      "revId": "12c9c3a60a2371b28a0d74f3f180edc476f6c480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
