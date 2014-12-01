@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ff99fd83_d8966521",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-12-01T20:29:22Z",
+      "side": 1,
+      "message": "rename loader.",
+      "parentUuid": "9fb9e1ac_6dea5189",
+      "revId": "387ebfaae969f49473b320d224eb91ca63ef802b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf2065df_08cb67e0",
         "filename": "Makefile.rules",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2014-11-27T17:39:01Z",
       "side": 1,
       "message": "normally the whole point of having configuration variable equals to \"y\" and make variables defined as \"xxx-y\" is to use them directly like that :\nflat-y \u003d $(out)/$(PROJECT).RW.flat\nflat-$(CONFIG_INCLUDE_RO) +\u003d $(out)/$(PROJECT).RO.flat\n\nof course in your case, you need to invert the logic and defined by default in include/config.h:\n#define CONFIG_INCLUDE_RO\nand undefined it in the payload board.",
+      "revId": "387ebfaae969f49473b320d224eb91ca63ef802b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df9ef96b_37f94029",
+        "filename": "Makefile.rules",
+        "patchSetId": 5
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-12-01T20:29:22Z",
+      "side": 1,
+      "message": "Inverted logic. Done.",
+      "parentUuid": "bf2065df_08cb67e0",
       "revId": "387ebfaae969f49473b320d224eb91ca63ef802b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
