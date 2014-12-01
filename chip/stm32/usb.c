@@ -103,8 +103,9 @@ static void ep0_rx(void)
 	/* interface specific requests */
 	if ((req & USB_RECIP_MASK) == USB_RECIP_INTERFACE) {
 		uint8_t iface = ep0_buf_rx[2] & 0xff;
-		if (iface < USB_IFACE_COUNT)
-			usb_iface_request[iface](ep0_buf_rx, ep0_buf_tx);
+		if (iface < USB_IFACE_COUNT &&
+		    usb_iface_request[iface](ep0_buf_rx, ep0_buf_tx))
+			goto unknown_req;
 		return;
 	}
 
@@ -194,6 +195,11 @@ static void ep0_rx(void)
 
 	return;
 unknown_req:
+	CPRINTF("EP0 STALL: %x %x %x %x\n",
+		ep0_buf_rx[0],
+		ep0_buf_rx[1],
+		ep0_buf_rx[2],
+		ep0_buf_rx[3]);
 	STM32_TOGGLE_EP(0, EP_TX_RX_MASK, EP_RX_VALID | EP_TX_STALL, 0);
 }
 
