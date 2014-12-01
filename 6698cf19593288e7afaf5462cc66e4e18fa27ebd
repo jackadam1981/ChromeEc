@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f8d0d44_4e7c7358",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-01T18:21:36Z",
+      "side": 1,
+      "message": "nit: comment format not right",
+      "range": {
+        "startLine": 189,
+        "startChar": 1,
+        "endLine": 191,
+        "endChar": 22
+      },
+      "revId": "6698cf19593288e7afaf5462cc66e4e18fa27ebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dfb999d9_9965dbbf",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-01T18:21:36Z",
+      "side": 1,
+      "message": "existing macro for this?",
+      "range": {
+        "startLine": 501,
+        "startChar": 57,
+        "endLine": 501,
+        "endChar": 59
+      },
+      "revId": "6698cf19593288e7afaf5462cc66e4e18fa27ebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
