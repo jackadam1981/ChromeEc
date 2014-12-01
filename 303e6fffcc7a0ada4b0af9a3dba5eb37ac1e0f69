@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfaea591_9830755c",
+        "filename": "common/host_command_pd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-01T18:09:32Z",
+      "side": 1,
+      "message": "this function is now being called by two different tasks (LB and PDCMD). is it protected properly? i\u0027m not sure and am about to board a plane, so don\u0027t have time to think about it. may need a mutex, or may be better for LB to kick off the PDCMD task and then sleep until PDCMD task gets the information back.",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 25,
+        "endChar": 23
+      },
+      "revId": "303e6fffcc7a0ada4b0af9a3dba5eb37ac1e0f69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfaea591_38984900",
+        "filename": "common/lightbar.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 915,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-01T18:09:32Z",
+      "side": 1,
+      "message": "This works, as long as you are aware this may take a while to return since we use i2c to exchange status.",
+      "range": {
+        "startLine": 915,
+        "startChar": 2,
+        "endLine": 915,
+        "endChar": 20
+      },
+      "revId": "303e6fffcc7a0ada4b0af9a3dba5eb37ac1e0f69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f8d0d44_0e726b87",
+        "filename": "common/lightbar.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-01T18:09:32Z",
+      "side": 1,
+      "message": "dir \u003d !!dir;",
+      "range": {
+        "startLine": 917,
+        "startChar": 1,
+        "endLine": 918,
+        "endChar": 10
+      },
+      "revId": "303e6fffcc7a0ada4b0af9a3dba5eb37ac1e0f69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f8d0d44_ee935f2e",
+        "filename": "include/host_command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-01T18:09:32Z",
+      "side": 1,
+      "message": "nit, add @param and put charge_port description there",
+      "range": {
+        "startLine": 218,
+        "startChar": 1,
+        "endLine": 218,
+        "endChar": 2
+      },
+      "revId": "303e6fffcc7a0ada4b0af9a3dba5eb37ac1e0f69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
