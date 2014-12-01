@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f8d0d44_aec6b752",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-01T17:16:08Z",
+      "side": 1,
+      "message": "I changed this on purpose. This calculates the hash every time it is called, and that takes a long time on zinger (i think somewhere around 70ms), which means the VDO takes a long time to respond, and can cause problems because if a PDO comes in during this time it will be dropped.\n\nAnother example of why we need to do a better job of deciding when to send VDO and PDOs.",
+      "range": {
+        "startLine": 516,
+        "startChar": 2,
+        "endLine": 516,
+        "endChar": 13
+      },
+      "revId": "bcfe4bf3175e0e09b2c508daab6d7fdc2b29b392",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
