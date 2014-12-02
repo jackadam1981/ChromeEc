@@ -22,6 +22,30 @@
       "revId": "bcfe4bf3175e0e09b2c508daab6d7fdc2b29b392",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5fd1293e_3e0ccdd8",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-12-02T22:30:19Z",
+      "side": 1,
+      "message": "Removing this change from zinger for now.  Have refactored further in later patch in series to include the check.",
+      "parentUuid": "7f8d0d44_aec6b752",
+      "range": {
+        "startLine": 516,
+        "startChar": 2,
+        "endLine": 516,
+        "endChar": 13
+      },
+      "revId": "bcfe4bf3175e0e09b2c508daab6d7fdc2b29b392",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
