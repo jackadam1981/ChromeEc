@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ffc01d6a_a3e328b2",
+        "filename": "board/plankton/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-12-02T18:44:56Z",
+      "side": 1,
+      "message": "Need the prototypes for IRQ callbacks just above include.",
+      "parentUuid": "df151930_19af6b77",
+      "range": {
+        "startLine": 27,
+        "startChar": 10,
+        "endLine": 27,
+        "endChar": 19
+      },
+      "revId": "d197f0bc95d1ee264d1aecee6c71bf23f47caea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df151930_59a5e396",
         "filename": "board/plankton/board.c",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2014-11-21T03:23:29Z",
       "side": 1,
       "message": "either I\u0027m missing something or this doesn\u0027t work.\n\non boot, prev_dbg20v is initialized to 0. then, for as long as the button is not pressed, this if() statement will not run, because it only runs when the gpio is low (line 226). eventually, when someone presses the button, the gpio goes low, we call this if() statement and this if check is true (gpio \u003d\u003d prev_dbg20v \u003d\u003d 0), so we return from the function. when the button is then released, the gpio is high, so, we stop calling this function (if() on line 225 fails).\n\nif prev_dbg20v is set high in the else clause of line 227, then i think it would work.",
+      "range": {
+        "startLine": 179,
+        "startChar": 6,
+        "endLine": 179,
+        "endChar": 58
+      },
+      "revId": "d197f0bc95d1ee264d1aecee6c71bf23f47caea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfba25ec_1e734d56",
+        "filename": "board/plankton/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-12-02T18:44:56Z",
+      "side": 1,
+      "message": "This works as intended but you\u0027re right there was an edge case where the first press relied on a race (failed debounce) since I hadn\u0027t properly set prev_dbg20v \u003d 1.",
+      "parentUuid": "df151930_59a5e396",
       "range": {
         "startLine": 179,
         "startChar": 6,
