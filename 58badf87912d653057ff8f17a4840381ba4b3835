@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fb555f8_4581008a",
+        "filename": "include/usb.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-02T02:07:20Z",
+      "side": 1,
+      "message": "we usually marked structures from the wire as __packed to avoid surprise at the next toolchain/EABI update",
+      "revId": "58badf87912d653057ff8f17a4840381ba4b3835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
