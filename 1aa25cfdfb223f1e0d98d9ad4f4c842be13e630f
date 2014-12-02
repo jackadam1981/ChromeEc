@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fb555f8_a5d4447c",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-02T02:03:58Z",
+      "side": 1,
+      "message": "I\u0027m not a big fan of that printf in interrupt context.\nIt\u0027s unlikely to be useful without breaking a lot of USB stuff.",
+      "revId": "1aa25cfdfb223f1e0d98d9ad4f4c842be13e630f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
