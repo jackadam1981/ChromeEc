@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dfb999d9_598d03c1",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-02T00:09:34Z",
+      "side": 1,
+      "message": "CONFIG_FW_INCLUDE_RO?  (and alphabetize?)\n\nAlso, probably worth a description.  For example:\n\n/* Board contains a RO firmware.  If not defined, this board is only the RW firmware, and the RO firmware will be taken from (where?) */",
+      "range": {
+        "startLine": 551,
+        "startChar": 8,
+        "endLine": 551,
+        "endChar": 25
+      },
+      "revId": "36fb634cc0dac406611ed0dd9da2a3dd2146b8d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
