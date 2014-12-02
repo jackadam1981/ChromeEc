@@ -16,6 +16,24 @@
       "revId": "81faee7186938f9ed787b54328d2ee1756dffa2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fce35a4_1ae7dd43",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-12-02T20:03:36Z",
+      "side": 1,
+      "message": "Yup, this is by no means the most critical thing that the device will be doing, and it is by definition split up into nice bite sized chunks that are not super time critical (1 second timeout in flashrom right now per 64 byte chunk) so it won\u0027t starve other hooks.",
+      "parentUuid": "3fce35a4_d77dbedd",
+      "revId": "81faee7186938f9ed787b54328d2ee1756dffa2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
