@@ -16,6 +16,24 @@
       "revId": "58badf87912d653057ff8f17a4840381ba4b3835",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfba25ec_d8ca8ddb",
+        "filename": "include/usb.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2014-12-02T16:19:19Z",
+      "side": 1,
+      "message": "I didn\u0027t mark this as __packed because it isn\u0027t actually an on wire version of the struct.  This is the parsed version, so the compiler is free to lay out this struct optimally.",
+      "parentUuid": "3fb555f8_4581008a",
+      "revId": "58badf87912d653057ff8f17a4840381ba4b3835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
