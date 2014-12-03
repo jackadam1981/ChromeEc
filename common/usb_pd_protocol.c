@@ -1498,7 +1498,9 @@ void pd_task(void)
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	uint64_t next_role_swap = PD_T_DRP_SNK;
 	int hard_reset_count = 0;
+#ifndef CONFIG_USB_PD_NO_VBUS_DETECT
 	int snk_hard_reset_vbus_off = 0;
+#endif
 #ifdef CONFIG_CHARGE_MANAGER
 	static int initialized[PD_PORT_COUNT];
 	int typec_curr = 0, typec_curr_change = 0;
@@ -1918,6 +1920,17 @@ void pd_task(void)
 			}
 			break;
 		case PD_STATE_SNK_HARD_RESET_RECOVER:
+#ifdef CONFIG_USB_PD_NO_VBUS_DETECT
+			/*
+			 * TODO(crosbug.com/p/34090) Can't measure vbus state so
+			 * this timeout just aligns sink with source moving to
+			 * its disconnected state.
+			 */
+			if (pd[port].last_state != pd[port].task_state)
+				set_state_timeout(port, get_time().val +
+						  PD_T_SRC_RECOVER,
+						  PD_STATE_SNK_DISCONNECTED);
+#else
 			/* Wait for VBUS to go low and then high*/
 			if (pd[port].last_state != pd[port].task_state) {
 				snk_hard_reset_vbus_off = 0;
@@ -1949,6 +1962,7 @@ void pd_task(void)
 			 * Don't need to set timeout because VBUS changing
 			 * will trigger an interrupt and wake us up.
 			 */
+#endif
 			break;
 		case PD_STATE_SNK_DISCOVERY:
 			/*
