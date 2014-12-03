@@ -20,7 +20,7 @@
 #define DUMMY_GPIO_BANK -1
 
 #define CONFIG_USB
-#define CONFIG_USB_CONSOLE
+#undef CONFIG_USB_CONSOLE
 
 #define CONFIG_USB_PID 0x5014
 
@@ -54,7 +54,8 @@ enum usb_strings {
 
 /* USB endpoint indexes (use define rather than enum to expand them) */
 #define USB_EP_CONTROL   0
-#define USB_EP_CONSOLE   1
-#define USB_EP_COUNT     2
+#undef USB_EP_CONSOLE   /*1*/
+#undef USB_EP_COUNT    /* 2*/
+#define USB_EP_COUNT     1
 
 #endif /* __BOARD_H */
