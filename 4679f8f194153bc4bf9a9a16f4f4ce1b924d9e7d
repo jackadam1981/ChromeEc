@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5fd68940_21da769c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-12-03T20:03:33Z",
+      "side": 1,
+      "message": "Please test by installing this FW on a system, running /usr/share/vboot/bin/make_dev_firmware.sh, and ensuring it still boots.",
+      "revId": "4679f8f194153bc4bf9a9a16f4f4ce1b924d9e7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
