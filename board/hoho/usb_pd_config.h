@@ -123,11 +123,6 @@ static inline int pd_adc_read(int port, int cc)
 	return adc_read_channel(ADC_CH_CC1_PD);
 }
 
-static inline int pd_snk_is_vbus_provided(int port)
-{
-	return 1;
-}
-
 /* 3.0A DFP : no-connect voltage is 2.45V */
 #define PD_SRC_VNC 2450 /* mV */
 

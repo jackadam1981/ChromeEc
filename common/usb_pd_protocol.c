@@ -1487,6 +1487,24 @@ void pd_set_new_power_request(int port)
 }
 #endif /* CONFIG_CHARGE_MANAGER */
 
+#ifdef CONFIG_USB_PD_NO_VBUS_DETECT
+/**
+ * For sink devices without VBUS measurements make some assumptions about when
+ * vbus gets asserted.
+ */
+static inline int pd_snk_is_vbus_provided(int port)
+{
+	/*
+	 * If SNK in hard reset recovery I'll assume vbus went away so I can get
+	 * the maximum recovery time and move to SNK_DISCONNECTED
+	 * otherwise just assume vbus is on
+	 */
+	return ((pd[port].last_state != pd[port].task_state) &&
+		(pd[port].task_state == PD_STATE_SNK_HARD_RESET_RECOVER)) ?
+		0 : 1;
+}
+#endif
+
 void pd_task(void)
 {
 	int head;
@@ -1933,6 +1951,7 @@ void pd_task(void)
 				snk_hard_reset_vbus_off = 1;
 				set_state_timeout(port,
 						  get_time().val +
+						  PD_T_SAFE_0V +
 						  PD_T_SRC_RECOVER_MAX +
 						  PD_T_SRC_TURN_ON,
 						  PD_STATE_SNK_DISCONNECTED);
