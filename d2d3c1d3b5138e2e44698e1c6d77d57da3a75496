@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff33bd7c_88f05ba3",
+        "filename": "common/flash_ext_spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-12-03T22:37:30Z",
+      "side": 1,
+      "message": "Could you please add more description here to help me to understand this new file?",
+      "revId": "d2d3c1d3b5138e2e44698e1c6d77d57da3a75496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff33bd7c_e82c878d",
+        "filename": "common/spi_flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-12-03T22:37:30Z",
+      "side": 1,
+      "message": "Is this required?  spi_flash_wait() must be called after erase/write operations.  (see comments below).\n\n/**\n * Waits for chip to finish current operation. Must be called after\n * erase/write operations to ensure successive commands are executed.\n *\n * @return EC_SUCCESS or error on timeout\n */\nint spi_flash_wait(void)",
+      "revId": "d2d3c1d3b5138e2e44698e1c6d77d57da3a75496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df38b95e_24a85c19",
+        "filename": "common/vboot_hash_ext_spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-12-03T22:37:30Z",
+      "side": 1,
+      "message": "Could you please add more description here to help me to understand this new file?",
+      "revId": "d2d3c1d3b5138e2e44698e1c6d77d57da3a75496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
