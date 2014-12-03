@@ -614,7 +614,7 @@ static int send_request(int port, uint32_t rdo)
 
 	bit_len = send_validate_message(port, header, 1, &rdo);
 	if (debug_level >= 1)
-		CPRINTF("REQ%d>\n", bit_len);
+		CPRINTF("REQ%x/%d>\n", header, bit_len);
 
 	return bit_len;
 }
@@ -834,6 +834,7 @@ static void handle_data_request(int port, uint16_t head,
 	case PD_DATA_SOURCE_CAP:
 		if ((pd[port].task_state == PD_STATE_SNK_DISCOVERY)
 			|| (pd[port].task_state == PD_STATE_SNK_TRANSITION)
+			|| (pd[port].task_state == PD_STATE_SNK_HARD_RESET_RECOVER)
 			|| (pd[port].task_state == PD_STATE_SNK_READY)) {
 			pd_store_src_cap(port, cnt, payload);
 			/* src cap 0 should be fixed PDO */
@@ -1238,7 +1239,7 @@ packet_err:
 	if (debug_level >= 2)
 		pd_dump_packet(port, msg);
 	else
-		CPRINTF("RX ERR (%d)\n", bit);
+		CPRINTF("RX ERR (%s %d)\n", msg, bit);
 	return bit;
 }
 
