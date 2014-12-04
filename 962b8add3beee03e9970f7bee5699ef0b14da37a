@@ -84,6 +84,29 @@
       "revId": "962b8add3beee03e9970f7bee5699ef0b14da37a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f2da928_243b7cbe",
+        "filename": "board/enguarde/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-04T20:44:48Z",
+      "side": 1,
+      "message": "Suggest defining a constant for this above, then using it here (and elsewhere in this file).\n\n#define BOARD_VERSION_WITH_N21_BATTERY 0x02",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 9
+      },
+      "revId": "962b8add3beee03e9970f7bee5699ef0b14da37a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
