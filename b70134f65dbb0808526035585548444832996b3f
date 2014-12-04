@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff1c9dfc_ba7011fd",
+        "filename": "chip/stm32/build.mk",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-04T01:02:46Z",
+      "side": 1,
+      "message": "you actually mean :\nchip-$(CONFIG_COMMON_RUNTIME)+\u003dsystem.o",
+      "revId": "b70134f65dbb0808526035585548444832996b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff1c9dfc_fdf9a3e1",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-04T01:02:46Z",
+      "side": 1,
+      "message": "you mean RSANUMBYTES rather than 256",
+      "revId": "b70134f65dbb0808526035585548444832996b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f4ed10c_6131725e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1330,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-04T01:02:46Z",
+      "side": 1,
+      "message": "move it to usb_pd_policy and save that global function",
+      "revId": "b70134f65dbb0808526035585548444832996b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f4ed10c_01f98e28",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1335,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-04T01:02:46Z",
+      "side": 1,
+      "message": "should probably move in usb_pd_policy.c with the other flash function",
+      "revId": "b70134f65dbb0808526035585548444832996b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff1c9dfc_5d120f79",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1352,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-04T01:02:46Z",
+      "side": 1,
+      "message": "ditto ?",
+      "revId": "b70134f65dbb0808526035585548444832996b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
