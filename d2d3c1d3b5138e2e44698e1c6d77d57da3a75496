@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bfe9452d_c0f41eed",
+        "filename": "common/flash_ext_spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2014-12-04T22:37:56Z",
+      "side": 1,
+      "message": "will do",
+      "parentUuid": "ff33bd7c_88f05ba3",
+      "revId": "d2d3c1d3b5138e2e44698e1c6d77d57da3a75496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff33bd7c_e82c878d",
         "filename": "common/spi_flash.c",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "dfe43953_21dd0e6d",
+        "filename": "common/spi_flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2014-12-04T22:37:56Z",
+      "side": 1,
+      "message": "When successive writes are happening.. if previous was not completed the spi_flash_write_enable was returning with an error and timeout.. SO I had added this wait before we attempt to do write enable",
+      "parentUuid": "ff33bd7c_e82c878d",
+      "revId": "d2d3c1d3b5138e2e44698e1c6d77d57da3a75496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df38b95e_24a85c19",
         "filename": "common/vboot_hash_ext_spi.c",
         "patchSetId": 3
@@ -47,6 +83,24 @@
       "writtenOn": "2014-12-03T22:37:30Z",
       "side": 1,
       "message": "Could you please add more description here to help me to understand this new file?",
+      "revId": "d2d3c1d3b5138e2e44698e1c6d77d57da3a75496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fee4133_1f7943b5",
+        "filename": "common/vboot_hash_ext_spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2014-12-04T22:37:56Z",
+      "side": 1,
+      "message": "will do",
+      "parentUuid": "df38b95e_24a85c19",
       "revId": "d2d3c1d3b5138e2e44698e1c6d77d57da3a75496",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
