@@ -29,6 +29,9 @@
 
 #include "gpio_signal.h"
 
+/* user button interrupt handler */
+void button_event(enum gpio_signal signal);
+
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __BOARD_H */

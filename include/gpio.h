@@ -78,7 +78,7 @@ struct gpio_alt_func {
 	uint32_t mask;
 
 	/* Alternate function number */
-	int8_t func;
+	int32_t func;
 
 	/* Module ID (as uint8_t, since enum would be 32-bit) */
 	uint8_t module_id;
