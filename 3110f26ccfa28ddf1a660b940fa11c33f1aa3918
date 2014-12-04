@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7fc8ad75_a56b485f",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1954,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-04T02:45:49Z",
+      "side": 1,
+      "message": "if CONFIG_USB_PD_NO_VBUS_DETECT is not defined, then PD_T_SAFE_0V should not be added in right here. the PD_T_SAFE_0V is the timeout period for VBUS going away and this if statement runs after VBUS has gone away.\n\nI would simplify this by removing the new function you added above (you can keep pd_snk_vbus_provided() in hoho and dingdong board files), and instead write this state as:\n\ncase PD_STATE_SNK_HARD_RESET_RECOVER:\n#ifdef CONFIG_USB_PD_NO_VBUS_DETECT\n  /* if no ability to detect vbus, just wait max possible delay before vbus would be provided again. */\n  if (pd[port].last_state !\u003d pd[port].task_state)\n    set_state_timeout(port, get_time().val + PD_T_SAFE_0V + PD_T_SRC_RECOVER_MAX + PD_T_SRC_TURN_ON, PD_STATE_SNK_DISCONNECTED);\n\n#else\n\n  ... current implementation of PD_STATE_SNK_HARD_RESET:\n\n#endif\n  break;",
+      "range": {
+        "startLine": 1954,
+        "startChar": 8,
+        "endLine": 1954,
+        "endChar": 20
+      },
+      "revId": "3110f26ccfa28ddf1a660b940fa11c33f1aa3918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
