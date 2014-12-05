@@ -6,7 +6,9 @@
 # Host tools build
 #
 
-host-util-bin=ectool lbplay burn_my_ec stm32mon ec_sb_firmware_update lbcc
+host-util-bin=ectool lbplay stm32mon ec_sb_firmware_update lbcc
+build-util-bin=ec_uartd iteflash
+load-util-bin=burn_my_ec
 
 comm-objs=$(util-lock-objs:%=lock/%) comm-host.o comm-dev.o
 ifeq ($(CHIP),mec1322)
@@ -15,11 +17,9 @@ else
 comm-objs+=comm-lpc.o
 endif
 comm-objs+=comm-i2c.o
+
 ectool-objs=ectool.o ectool_keyscan.o misc_util.o ec_flash.o $(comm-objs)
-
 ec_sb_firmware_update-objs=ec_sb_firmware_update.o $(comm-objs) misc_util.o
-
 lbplay-objs=lbplay.o $(comm-objs)
 burn_my_ec-objs=ec_flash.o $(comm-objs) misc_util.o
 
-build-util-bin=ec_uartd iteflash
