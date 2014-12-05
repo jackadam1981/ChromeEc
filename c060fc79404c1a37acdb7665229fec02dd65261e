@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "7ff34d1b_9e039de8",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-05T03:16:30Z",
+      "side": 1,
+      "message": "this should be changed for every board... and we should probably create some macros to extract max and op out of RDO, if they don\u0027t already exist.\n\ncan you break this change out to a separate CL?",
+      "range": {
+        "startLine": 136,
+        "startChar": 5,
+        "endLine": 136,
+        "endChar": 11
+      },
+      "revId": "c060fc79404c1a37acdb7665229fec02dd65261e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ffa51f3_dbe413f4",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 7
