@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "1ffa51f3_3b66d7c9",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1120324
+      },
+      "writtenOn": "2014-12-05T04:08:57Z",
+      "side": 1,
+      "message": "Certainly can break this change, and will _grep_ for other boards...",
+      "parentUuid": "7ff34d1b_9e039de8",
+      "revId": "c060fc79404c1a37acdb7665229fec02dd65261e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ffa51f3_dbe413f4",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 7
@@ -48,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "1ffa51f3_fb7bcf5e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 1120324
+      },
+      "writtenOn": "2014-12-05T04:08:57Z",
+      "side": 1,
+      "message": "Instead of 233270, I noticed 233024: \"pd: dingdong/hoho: Fix hard reset recovery timeout.\", is the one by Todd that is a fix for this state, as mentioned by you.\n\nTodd\u0027s fix should do: we will have different waiting interval so as to _catch_ the moment when SRC-CAP is re-sent, by SINK side\u0027s returning to SNK_DISCONNECTED state again.\n\nRegarding the testing platform, unfortunately BizLink is just at an early stage with mixture of our boards \u0026 STM32 Discovery EVA boards and jump-wires: that\u0027s why we are easier to fall trapped into this SNK_HARD_RESET_RECOVER state :-)\n\nAlso, BizLink\u0027s main Type-C products are on peripheral side -- more on SNK role: simpler as hoho/dingdong (boards just done PCBA and is finding ways to verify), but more complex as docking (boards next week, adopting partially \u0026 mixing from hoho \u0026 samus_pd)\n\nFor now, I can only hope if this code is accepted, since ours is not a real environment, and not sure how will it impact the real one.",
+      "parentUuid": "1ffa51f3_dbe413f4",
+      "revId": "c060fc79404c1a37acdb7665229fec02dd65261e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ffa51f3_bbd5c7fc",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 7
@@ -65,6 +101,24 @@
         "endLine": 1242,
         "endChar": 21
       },
+      "revId": "c060fc79404c1a37acdb7665229fec02dd65261e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ff34d1b_1ef02da1",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1242,
+      "author": {
+        "id": 1120324
+      },
+      "writtenOn": "2014-12-05T04:08:57Z",
+      "side": 1,
+      "message": "UART debugging usually impact the timing of normal operation, a well known fact to SW developers, but didn\u0027t expect in this case as 115K (UART) vs 300K/600K at comparable level. But agree, most timeouts in PD are also in some msec order and might have negative impact, and better to be filtered by debug_level.",
+      "parentUuid": "1ffa51f3_bbd5c7fc",
       "revId": "c060fc79404c1a37acdb7665229fec02dd65261e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
