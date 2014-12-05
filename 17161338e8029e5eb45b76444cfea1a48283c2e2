@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7fa18d0b_0e3e4bad",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 839,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-12-05T04:03:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ff34d1b_9ea71dc8",
+      "range": {
+        "startLine": 839,
+        "startChar": 53,
+        "endLine": 839,
+        "endChar": 54
+      },
+      "revId": "17161338e8029e5eb45b76444cfea1a48283c2e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ffa51f3_7b3b3fbd",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "7fa18d0b_6e3b8fbd",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1922,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-12-05T04:03:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ffa51f3_7b3b3fbd",
+      "range": {
+        "startLine": 1922,
+        "startChar": 38,
+        "endLine": 1922,
+        "endChar": 39
+      },
+      "revId": "17161338e8029e5eb45b76444cfea1a48283c2e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ff34d1b_fe9c6175",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2014-12-05T02:34:42Z",
       "side": 1,
       "message": "if you take suggestion noted above, i think you can add PD_T_SAFE_0V as it should be.",
+      "range": {
+        "startLine": 1931,
+        "startChar": 8,
+        "endLine": 1931,
+        "endChar": 24
+      },
+      "revId": "17161338e8029e5eb45b76444cfea1a48283c2e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f9e89d1_ed2785dd",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1931,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-12-05T04:03:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ff34d1b_fe9c6175",
       "range": {
         "startLine": 1931,
         "startChar": 8,
