@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ff34d1b_9ea71dc8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 839,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-05T02:34:42Z",
+      "side": 1,
+      "message": "could add this here:\n\n#ifdef CONFIG_USB_PD_NO_VBUS_DETECT\n|| (pd[port].task_state \u003d\u003d PD_STATE_SNK_HARD_RESET_RECOVER)\n#endif\n\nthen we will respond to source cap packet when in the sink recover state.",
+      "range": {
+        "startLine": 839,
+        "startChar": 53,
+        "endLine": 839,
+        "endChar": 54
+      },
+      "revId": "17161338e8029e5eb45b76444cfea1a48283c2e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ff34d1b_fe9c6175",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1931,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-05T02:34:42Z",
+      "side": 1,
+      "message": "if you take suggestion noted above, i think you can add PD_T_SAFE_0V as it should be.",
+      "range": {
+        "startLine": 1931,
+        "startChar": 8,
+        "endLine": 1931,
+        "endChar": 24
+      },
+      "revId": "17161338e8029e5eb45b76444cfea1a48283c2e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
