@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "041be66b_3624769b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-12-05T23:24:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fb9e1ac_90b79af9",
+      "revId": "6ad718ab232176004c8c29831d4b23a68049a083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff265df7_4d772dc5",
         "filename": "common/charge_manager.c",
         "patchSetId": 3
@@ -42,6 +60,24 @@
         "endLine": 226,
         "endChar": 32
       },
+      "revId": "6ad718ab232176004c8c29831d4b23a68049a083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "041be66b_b6aac60b",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-12-05T23:24:51Z",
+      "side": 1,
+      "message": "Thanks for catching that. Done.",
+      "parentUuid": "ff265df7_4d772dc5",
       "revId": "6ad718ab232176004c8c29831d4b23a68049a083",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -88,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "a43f7ab4_7619e8a3",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-12-05T23:24:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf2065df_1160aea6",
+      "revId": "6ad718ab232176004c8c29831d4b23a68049a083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff265df7_ad7b49ad",
         "filename": "include/charge_manager.h",
         "patchSetId": 3
@@ -105,6 +159,24 @@
         "endLine": 19,
         "endChar": 26
       },
+      "revId": "6ad718ab232176004c8c29831d4b23a68049a083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "041be66b_f6a15e7a",
+        "filename": "include/charge_manager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-12-05T23:24:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff265df7_ad7b49ad",
       "revId": "6ad718ab232176004c8c29831d4b23a68049a083",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
