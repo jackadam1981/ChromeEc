@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "1ffa51f3_7b3b3fbd",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1922,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-05T02:39:52Z",
+      "side": 1,
+      "message": "sort of related. if you take my change noted above you will have to add setting some flags here since the discovery state will be skipped.\n\nif (pd[port].last_state !\u003d pd[port].task_state) {\n  pd[port].flags |\u003d PD_FLAGS_DATA_SWAPPED;\n  pd[port].flags |\u003d PD_FLAGS_NEW_CONTRACT;\n}\n\nbut, in my opinion these are necessary in any case because even in the normal case the discovery state could be skipped if we receive source cap packets after setting state to discovery state but before discovery state runs (in the 10ms gap). so far we have just been getting lucky. so, i think this code should be added anyway.",
+      "range": {
+        "startLine": 1922,
+        "startChar": 38,
+        "endLine": 1922,
+        "endChar": 39
+      },
+      "revId": "17161338e8029e5eb45b76444cfea1a48283c2e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ff34d1b_fe9c6175",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 4
