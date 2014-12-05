@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "1ffa51f3_bb502724",
+        "filename": "board/enguarde/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1003228
+      },
+      "writtenOn": "2014-12-05T01:08:47Z",
+      "side": 1,
+      "message": "Green book is JEITA design. The battery will calculate(reduce) the charge current itself based on the temperature.",
+      "parentUuid": "5f2da928_498ed13a",
+      "revId": "962b8add3beee03e9970f7bee5699ef0b14da37a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f2da928_c9ae6179",
         "filename": "board/enguarde/battery.c",
         "patchSetId": 3
