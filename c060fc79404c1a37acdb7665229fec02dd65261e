@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ffa51f3_dbe413f4",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-05T03:10:59Z",
+      "side": 1,
+      "message": "i don\u0027t understand why this is being added or what you are testing it on. technically, we shouldn\u0027t be receiving source cap packets in this state because the source should be dropping VBUS and then re-applying it. and on our platforms, as soon as VBUS is re-applied, we transition out of this state in to the discovery state.\n\nhowever, some products can\u0027t detect VBUS (such as hoho and dingdong boards). on these boards todd is adding a CONFIG_ option to say we can\u0027t detect VBUS, and in this case, I agree this code should be added.\n\nsee https://chromium-review.googlesource.com/#/c/233270/1 for related changes.",
+      "range": {
+        "startLine": 837,
+        "startChar": 3,
+        "endLine": 837,
+        "endChar": 61
+      },
+      "revId": "c060fc79404c1a37acdb7665229fec02dd65261e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ffa51f3_bbd5c7fc",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1242,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-05T03:10:59Z",
+      "side": 1,
+      "message": "this change is dangerous. unfortunately the state of the code is such that adding length to printf\u0027s can cause timing issues with PD communication.\n\ni suggest adding this debug code to debug_level 1:\nif (debug_level \u003e\u003d 2)\n\tpd_dump_packet(port, msg);\nelse if (debug_level \u003e\u003d 1)\n\tCPRINTF(\"RX ERR (%s %d)\\n\", msg, bit);\nelse\n\tCPRINTF(\"RX ERR (%d)\\n\", bit);\n\nand then you can use debug level 1 to get the information you want, but it won\u0027t be printed by default.",
+      "range": {
+        "startLine": 1242,
+        "startChar": 20,
+        "endLine": 1242,
+        "endChar": 21
+      },
+      "revId": "c060fc79404c1a37acdb7665229fec02dd65261e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
