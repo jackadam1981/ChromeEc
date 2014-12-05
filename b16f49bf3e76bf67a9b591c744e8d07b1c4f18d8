@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ffa51f3_dbe373b1",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-05T05:24:56Z",
+      "side": 1,
+      "message": "nit: add comment like: \n/* if no ability to detect vbus, respond to source cap in hard reset recovery since we don\u0027t actually know when source will recover */",
+      "revId": "b16f49bf3e76bf67a9b591c744e8d07b1c4f18d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ffa51f3_3bf9b75e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1928,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-05T05:24:56Z",
+      "side": 1,
+      "message": "nit: add comment about setting these flags because discovery state isn\u0027t guaranteed to run.",
+      "revId": "b16f49bf3e76bf67a9b591c744e8d07b1c4f18d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
