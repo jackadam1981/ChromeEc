@@ -10,6 +10,16 @@
 #include "task.h"
 #include "util.h"
 
+/*
+ * For each interrupt (INT0-INT3, PORT), record which GPIO entry uses it.
+ */
+
+static const struct gpio_info *gpio_ints[5];
+#define GPIO_INTS_PORT 4
+
+/* Keep track of the number of interrupts in INT0-INT3 */
+static int used_ints;
+
 volatile uint32_t * const nrf51_alt_funcs[] = {
 	/* UART */
 	&NRF51_UART_PSELRTS,
@@ -71,6 +81,19 @@ void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags)
 			NRF51_GPIO0_OUTCLR = mask;
 	}
 
+	/* Interrupt levels */
+	if (flags & GPIO_INT_SHARED) {
+		/* There are no shared edge-triggered interrupts;
+		 * they're either high or low.
+		 */
+		ASSERT((flags & (GPIO_INT_F_RISING | GPIO_INT_F_FALLING)) == 0);
+		ASSERT((flags & GPIO_INT_LEVEL) != GPIO_INT_LEVEL);
+		if (flags & GPIO_INT_F_LOW)
+			val |= NRF51_PIN_CNF_SENSE_LOW;
+		else if (flags & GPIO_INT_F_HIGH)
+			val |= NRF51_PIN_CNF_SENSE_HIGH;
+	}
+
 	NRF51_PIN_CNF(bit) = val;
 }
 
@@ -108,6 +131,10 @@ void gpio_pre_init(void)
 		/* This is a warm reboot */
 		is_warm = 1;
 	}
+
+	/* Initialize Interrupt configuration */
+	used_ints = 0;
+	gpio_ints[GPIO_INTS_PORT] = NULL; /* No PORT handler yet. */
 
 	/* Set all GPIOs to defaults */
 	for (i = 0; i < GPIO_COUNT; i++, g++) {
@@ -152,13 +179,155 @@ void gpio_set_alternate_function(uint32_t port, uint32_t mask, int func)
 
 
 /*
- *  TODO: implement GPIO interrupt.
+ *  Enable the interrupt associated with the "signal"
+ *  The architecture has one general (PORT)
+ *  and 4 single-pin (IN0-IN3) interrupts.
+ *
+ *  FIXME: There is no check for enabling the same pin twice.
  */
 int gpio_enable_interrupt(enum gpio_signal signal)
 {
-	return EC_ERROR_INVAL;
+	int pin;
+	const struct gpio_info *g = gpio_list + signal;
+
+	/* Fail if not implemented or no interrupt handler */
+	if (!g->mask || !g->irq_handler)
+		return EC_ERROR_INVAL;
+
+	/* If it's not shared, use INT0-INT3, otherwise use PORT. */
+	if (!(g->flags & GPIO_INT_SHARED)) {
+		uint32_t event_config = 0;
+
+		ASSERT(used_ints >= 0 && used_ints < 4);
+
+		gpio_ints[used_ints] = g;
+		pin = 31 - __builtin_clz(g->mask);
+		event_config = (pin << NRF51_GPIOTE_PSEL_POS) |
+			NRF51_GPIOTE_MODE_EVENT;
+
+		ASSERT(g->flags & (GPIO_INT_F_RISING | GPIO_INT_F_FALLING));
+
+		/* RISING | FALLING = TOGGLE */
+		if (g->flags & GPIO_INT_F_RISING)
+			event_config |= NRF51_GPIOTE_POLARITY_LOTOHI;
+		if (g->flags & GPIO_INT_F_FALLING)
+			event_config |= NRF51_GPIOTE_POLARITY_HITOLO;
+
+		/* Configure the correct event */
+		switch (used_ints) {
+		case 0:
+			NRF51_GPIOTE_CONFIG0 = event_config;
+			break;
+		case 1:
+			NRF51_GPIOTE_CONFIG1 = event_config;
+			break;
+		case 2:
+			NRF51_GPIOTE_CONFIG2 = event_config;
+			break;
+		case 3:
+			NRF51_GPIOTE_CONFIG3 = event_config;
+			break;
+		default:
+			ASSERT(used_ints < 4);
+			break;
+		}
+
+		/* Enable the IN[] interrupt. */
+		NRF51_GPIOTE_INTENSET = 1 << used_ints;
+
+		/* Don't reuse the interrupt */
+		used_ints++;
+	} else {
+		/* The first handler for the shared interrupt wins. */
+		if (gpio_ints[GPIO_INTS_PORT] == NULL) {
+			gpio_ints[GPIO_INTS_PORT] = g;
+
+			/* Enable the PORT interrupt. */
+			NRF51_GPIOTE_INTENSET = 1 << NRF51_GPIOTE_PORT_BIT;
+		}
+	}
+
+	return EC_SUCCESS;
 }
+
+/*
+ *  Disable the interrupt associated with the "signal"
+ *  The architecture has one general (PORT)
+ *  and 4 single-pin (IN0-IN3) interrupts.
+ */
+int gpio_disable_interrupt(enum gpio_signal signal)
+{
+	const struct gpio_info *g = gpio_list + signal;
+	int i;
+
+	/* Fail if not implemented or no interrupt handler */
+	if (!g->mask || !g->irq_handler)
+		return EC_ERROR_INVAL;
+
+	/* If it's not shared, use INT0-INT3, otherwise use PORT. */
+	if (!(g->flags && GPIO_INT_SHARED)) {
+		for (i = 0; i < used_ints; i++) {
+			/* Remove matching handler. */
+			if (gpio_ints[i] == g) {
+				/* Disable the interrupt */
+				NRF51_GPIOTE_INTENCLR = 1 << (used_ints-1);
+				/* Move the last handler into this place */
+				gpio_ints[i] = gpio_ints[used_ints-1];
+				/* Zero the last handler */
+				gpio_ints[used_ints-1] = NULL;
+				/* Update used_ints */
+				used_ints--;
+			}
+		}
+	} else {
+		/* Zero the shared handler */
+		gpio_ints[GPIO_INTS_PORT] = NULL;
+		NRF51_GPIOTE_INTENCLR = 1 << NRF51_GPIOTE_PORT_BIT;
+	}
+
+	return EC_SUCCESS;
+}
+
+/*
+ * Clear interrupt and run handler.
+ */
 void gpio_interrupt(void)
 {
+	const struct gpio_info *g;
+
+	if (NRF51_GPIOTE_IN0) {
+		NRF51_GPIOTE_IN0 = 0;
+		g = gpio_ints[0];
+		if (g && g->irq_handler)
+			g->irq_handler(g - gpio_list);
+	}
+
+	if (NRF51_GPIOTE_IN1) {
+		NRF51_GPIOTE_IN1 = 0;
+		g = gpio_ints[1];
+		if (g && g->irq_handler)
+			g->irq_handler(g - gpio_list);
+	}
+
+	if (NRF51_GPIOTE_IN2) {
+		NRF51_GPIOTE_IN2 = 0;
+		g = gpio_ints[2];
+		if (g && g->irq_handler)
+			g->irq_handler(g - gpio_list);
+	}
+
+	if (NRF51_GPIOTE_IN3) {
+		NRF51_GPIOTE_IN3 = 0;
+		g = gpio_ints[3];
+		if (g && g->irq_handler)
+			g->irq_handler(g - gpio_list);
+	}
+
+	if (NRF51_GPIOTE_PORT) {
+		NRF51_GPIOTE_PORT = 0;
+		g = gpio_ints[GPIO_INTS_PORT];
+		if (g && g->irq_handler)
+			g->irq_handler(g - gpio_list);
+	}
 }
 DECLARE_IRQ(NRF51_PERID_GPIOTE, gpio_interrupt, 1);
