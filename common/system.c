@@ -90,6 +90,9 @@ static enum ec_reboot_cmd reboot_at_shutdown;
 /* On-going actions preventing going into deep-sleep mode */
 uint32_t sleep_mask;
 
+#ifdef CONFIG_SHRSPI_ARCH /* TODO: (ML) a temporary version for shared-spi arch */
+const struct version_struct temp_v;
+#endif
 /**
  * Return the base pointer for the image copy, or 0xffffffff if error.
  */
@@ -309,6 +312,10 @@ void system_disable_jump(void)
 
 test_mockable enum system_image_copy_t system_get_image_copy(void)
 {
+	/* TODO: (ML) return whcih region is used in Code RAM */
+#ifdef CONFIG_SHRSPI_ARCH
+	return system_get_shrspi_image_copy();
+#else
 	uintptr_t my_addr = (uintptr_t)system_get_image_copy -
 			    CONFIG_FLASH_BASE;
 
@@ -321,6 +328,7 @@ test_mockable enum system_image_copy_t system_get_image_copy(void)
 		return SYSTEM_IMAGE_RW;
 
 	return SYSTEM_IMAGE_UNKNOWN;
+#endif
 }
 
 int system_get_image_used(enum system_image_copy_t copy)
@@ -328,12 +336,14 @@ int system_get_image_used(enum system_image_copy_t copy)
 	const uint8_t *image;
 	int size = 0;
 
-	image = (const uint8_t *)(get_base(copy));
+	image = (const uint8_t *)get_base(copy);
 	size = get_size(copy);
 
 	if (size <= 0)
 		return 0;
-
+#ifdef CONFIG_SHRSPI_ARCH /* TODO: (ML) find image size by using flash read driver */
+	size = flash_physical_read_image_size((int)image, size);
+#else
 	/*
 	 * Scan backwards looking for 0xea byte, which is by definition the
 	 * last byte of the image.  See ec.lds.S for how this is inserted at
@@ -341,7 +351,7 @@ int system_get_image_used(enum system_image_copy_t copy)
 	 */
 	for (size--; size > 0 && image[size] != 0xea; size--)
 		;
-
+#endif
 	return size ? size + 1 : 0;  /* 0xea byte IS part of the image */
 }
 
@@ -390,8 +400,11 @@ const char *system_image_copy_t_to_string(enum system_image_copy_t copy)
  */
 static void jump_to_image(uintptr_t init_addr)
 {
+#ifdef CONFIG_SHRSPI_ARCH /* TODO: (ML) jump to little FW for shared-spi architecture */
+	void (*resetvec)(void) = (void(*)(void))system_get_lfw_addr_initilize(init_addr);
+#else
 	void (*resetvec)(void) = (void(*)(void))init_addr;
-
+#endif
 	/*
 	 * Jumping to any image asserts the signal to the Silego chip that that
 	 * EC is not in read-only firmware.  (This is not technically true if
@@ -467,11 +480,15 @@ int system_run_image_copy(enum system_image_copy_t copy)
 	if (base == 0xffffffff)
 		return EC_ERROR_INVAL;
 
+#ifdef CONFIG_SHRSPI_ARCH /* TODO: (ML) reset vector address is invalid for shared-spi arch */
+	init_addr = base;
+#else
 	/* Make sure the reset vector is inside the destination image */
 	init_addr = *(uintptr_t *)(base + 4);
 #ifndef EMU_BUILD
 	if (init_addr < base || init_addr >= base + get_size(copy))
 		return EC_ERROR_UNKNOWN;
+#endif
 #endif
 
 	CPRINTS("Jumping to image %s", system_image_copy_t_to_string(copy));
@@ -495,6 +512,16 @@ const char *system_get_version(enum system_image_copy_t copy)
 	if (addr == 0xffffffff)
 		return "";
 
+
+
+#ifdef CONFIG_SHRSPI_ARCH /* TODO: (ML) read version by using flash read driver */
+	addr += ((uintptr_t)&version_data - CONFIG_CDRAM_BASE);
+	v = &temp_v;
+	flash_physical_read((int)addr, sizeof(*v), (char*)v);
+	if (v->cookie1 == RO(version_data).cookie1 &&
+	    v->cookie2 == RO(version_data).cookie2)
+		return v->version;
+#else
 	/* The version string is always located after the reset vectors, so
 	 * it's the same as in the current image. */
 	addr += ((uintptr_t)&version_data - get_base(system_get_image_copy()));
@@ -505,7 +532,7 @@ const char *system_get_version(enum system_image_copy_t copy)
 	if (v->cookie1 == RO(version_data).cookie1 &&
 	    v->cookie2 == RO(version_data).cookie2)
 		return v->version;
-
+#endif
 	return "";
 }
 

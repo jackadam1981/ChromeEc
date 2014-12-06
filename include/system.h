@@ -369,4 +369,22 @@ void system_set_rtc_alarm(uint32_t seconds, uint32_t microseconds);
  */
 void system_reset_rtc_alarm(void);
 
+#ifdef CONFIG_SHRSPI_ARCH
+/**
+ * Determine which address should be jumped and return address of littel FW
+ *
+ * Note: This feature is used for shared-spi arch
+ *
+ * @param init_addr  jump address of spi flash for RO or RW region
+ */
+uint32_t system_get_lfw_addr_initilize(uint32_t init_addr);
+
+/**
+ * Return whcih region is used in Code RAM
+ *
+ * Note: This feature is used for shared-spi arch
+ *
+ */
+enum system_image_copy_t system_get_shrspi_image_copy(void);
+#endif
 #endif  /* __CROS_EC_SYSTEM_H */
