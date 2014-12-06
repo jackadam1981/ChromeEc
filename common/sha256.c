@@ -37,6 +37,7 @@
 
 #include "sha256.h"
 #include "util.h"
+#include "flash.h"
 
 #define SHFR(x, n)    (x >> n)
 #define ROTR(x, n)   ((x >> n) | (x << ((sizeof(x) << 3) - n)))
@@ -169,12 +170,17 @@ void SHA256_update(struct sha256_ctx *ctx, const uint8_t *data, uint32_t len)
 	unsigned int block_nb;
 	unsigned int new_len, rem_len, tmp_len;
 	const uint8_t *shifted_data;
+#ifdef CONFIG_SHRSPI_ARCH /* TODO: (ML) compute SHA value by using flash read driver */
+	uint8_t shifted_data_buf[SHA256_BLOCK_SIZE];
+#endif
 
 	tmp_len = SHA256_BLOCK_SIZE - ctx->len;
 	rem_len = len < tmp_len ? len : tmp_len;
-
+#ifdef CONFIG_SHRSPI_ARCH /* TODO: (ML) read SHA raw value by using flash read driver */
+	flash_physical_read((int)data, rem_len, (char*)&ctx->block[ctx->len]);
+#else
 	memcpy(&ctx->block[ctx->len], data, rem_len);
-
+#endif
 	if (ctx->len + len < SHA256_BLOCK_SIZE) {
 		ctx->len += len;
 		return;
@@ -186,11 +192,18 @@ void SHA256_update(struct sha256_ctx *ctx, const uint8_t *data, uint32_t len)
 	shifted_data = data + rem_len;
 
 	SHA256_transform(ctx, ctx->block, 1);
+#ifdef CONFIG_SHRSPI_ARCH /* TODO: (ML) read SHA value by using flash read driver */
+	flash_physical_read((int)shifted_data, rem_len, (char*)shifted_data_buf);
+	SHA256_transform(ctx, shifted_data_buf, block_nb);
+#else
 	SHA256_transform(ctx, shifted_data, block_nb);
-
+#endif
 	rem_len = new_len % SHA256_BLOCK_SIZE;
-
+#ifdef CONFIG_SHRSPI_ARCH /* TODO: (ML) read SHA value by using flash read driver */
+	memcpy(ctx->block, &shifted_data_buf[block_nb << 6], rem_len);
+#else
 	memcpy(ctx->block, &shifted_data[block_nb << 6], rem_len);
+#endif
 
 	ctx->len = rem_len;
 	ctx->tot_len += (block_nb + 1) << 6;
