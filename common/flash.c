@@ -60,7 +60,6 @@ static const char *flash_physical_dataptr(int offset)
 static void flash_read_pstate(struct persist_state *pstate)
 {
 	memcpy(pstate, flash_physical_dataptr(PSTATE_OFFSET), sizeof(*pstate));
-
 	/* Sanity-check data and initialize if necessary */
 	if (pstate->version != PERSIST_STATE_VERSION) {
 		memset(pstate, 0, sizeof(*pstate));
@@ -123,7 +122,6 @@ int flash_is_erased(uint32_t offset, int size)
 	for (size /= sizeof(uint32_t); size > 0; size--, ptr++)
 		if (*ptr != CONFIG_FLASH_ERASED_VALUE32)
 			return 0;
-
 	return 1;
 }
 
