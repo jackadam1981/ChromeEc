@@ -71,6 +71,7 @@ static inline uint8_t controller_read(int ctrl_num, uint8_t reg)
 #define MAX_GREEN 0x2c
 #define MAX_BLUE  0x40
 #endif
+
 #ifdef BOARD_HOST
 /* For testing only */
 #define MAX_RED   0xff

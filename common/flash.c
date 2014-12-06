@@ -59,8 +59,11 @@ static const char *flash_physical_dataptr(int offset)
  */
 static void flash_read_pstate(struct persist_state *pstate)
 {
+#ifdef CONFIG_SHRSPI_ARCH /* TODO: (ML) read PSTATE data by flash read driver */
+	flash_physical_read((int)flash_physical_dataptr(PSTATE_OFFSET), sizeof(*pstate), (char*)pstate);
+#else
 	memcpy(pstate, flash_physical_dataptr(PSTATE_OFFSET), sizeof(*pstate));
-
+#endif
 	/* Sanity-check data and initialize if necessary */
 	if (pstate->version != PERSIST_STATE_VERSION) {
 		memset(pstate, 0, sizeof(*pstate));
@@ -120,11 +123,14 @@ int flash_is_erased(uint32_t offset, int size)
 			  (const char **)&ptr) < 0)
 		return 0;
 
+#ifdef CONFIG_SHRSPI_ARCH /* TODO: (ML) check flash data is erased by flash read driver */
+	return flash_physical_is_erased((int)ptr, size);
+#else
 	for (size /= sizeof(uint32_t); size > 0; size--, ptr++)
 		if (*ptr != CONFIG_FLASH_ERASED_VALUE32)
 			return 0;
-
 	return 1;
+#endif
 }
 
 int flash_write(int offset, int size, const char *data)
@@ -536,8 +542,11 @@ static int flash_command_read(struct host_cmd_handler_args *args)
 
 	if (p->size > args->response_max)
 		return EC_RES_OVERFLOW;
-
+#ifdef CONFIG_SHRSPI_ARCH /* TODO: (ML) read data by flash read driver */
+	flash_physical_read((int)src, p->size, (char*)args->response);
+#else
 	memcpy(args->response, src, p->size);
+#endif
 	args->response_size = p->size;
 
 	return EC_RES_SUCCESS;
