@@ -328,7 +328,7 @@ int system_get_image_used(enum system_image_copy_t copy)
 	const uint8_t *image;
 	int size = 0;
 
-	image = (const uint8_t *)(get_base(copy));
+	image = (const uint8_t *)get_base(copy);
 	size = get_size(copy);
 
 	if (size <= 0)
@@ -385,8 +385,13 @@ const char *system_get_image_copy_string(void)
  */
 static void jump_to_image(uintptr_t init_addr)
 {
+#ifdef CONFIG_SHRSPI_ARCH /* TODO: (Ian) jump to littel FW for shared-spi architecture */
+	void (*resetvec)(void) = (void(*)(void))(0x6500000-0x1000);
+	/* Disable FIU pins to tri-state */
+	(*(volatile uint8_t  *)(0x400C3000)) &= (~(0x80));
+#else
 	void (*resetvec)(void) = (void(*)(void))init_addr;
-
+#endif
 	/*
 	 * Jumping to any image asserts the signal to the Silego chip that that
 	 * EC is not in read-only firmware.  (This is not technically true if

@@ -1,0 +1,248 @@
+/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* UART module for Chrome EC */
+
+#include "clock.h"
+#include "common.h"
+#include "console.h"
+#include "gpio.h"
+#include "lpc.h"
+#include "registers.h"
+#include "clock_chip.h"
+#include "system.h"
+#include "task.h"
+#include "uart.h"
+#include "util.h"
+
+static int init_done;
+
+int uart_init_done(void)
+{
+	return init_done;
+}
+
+void uart_tx_start(void)
+{
+	if(IS_BIT_SET(NUCMX_WKEN(1,1),0)){
+		/* disable MIWU*/
+		CLEAR_BIT(NUCMX_WKEN(1,1),0);
+		/* go back to original setting */
+		task_enable_irq(NUCMX_IRQ_WKINTB_1);
+		/* Go back CR_SIN*/
+		SET_BIT(NUCMX_DEVALT(0x0A), NUCMX_DEVALTA_UART_SL);
+		/* enable uart again from MIWU mode */
+		task_enable_irq(NUCMX_IRQ_UART);
+	}	
+
+	/* If interrupt is already enabled, nothing to do */
+	if (NUCMX_UICTRL & 0x20)
+		return;
+
+	/* Do not allow deep sleep while transmit in progress */
+	disable_sleep(SLEEP_MASK_UART);
+
+	/*
+	 * Re-enable the transmit interrupt, then forcibly trigger the
+	 * interrupt.  This works around a hardware problem with the
+	 * UART where the FIFO only triggers the interrupt when its
+	 * threshold is _crossed_, not just met.
+	 */
+	NUCMX_UICTRL |= 0x20;
+
+	task_trigger_irq(NUCMX_IRQ_UART);
+}
+
+void uart_tx_stop(void)	/* Disable TX interrupt */
+{
+	NUCMX_UICTRL &= ~0x20;
+
+	/* Re-allow deep sleep */
+	enable_sleep(SLEEP_MASK_UART);
+}
+
+void uart_tx_flush(void)
+{
+	/* Wait for transmit FIFO empty */
+	while (!(NUCMX_UICTRL & 0x01))
+		;
+}
+
+int uart_tx_ready(void)
+{
+	return (NUCMX_UICTRL & 0x01);	/*if TX FIFO is empty return 1*/
+}
+
+int uart_tx_in_progress(void)
+{
+	/* Transmit is in progress if the TX busy bit is set. */
+	return NUCMX_USTAT & 0x40;	/*BUSY bit , if busy return 1*/
+}
+
+int uart_rx_available(void)
+{
+	uint8_t ctrl = NUCMX_UICTRL;
+#ifdef CONFIG_LOW_POWER_IDLE
+	/*
+	 * Activity seen on UART RX pin while UART was disabled for deep sleep.
+	 * The console won't see that character because the UART is disabled,
+	 * so we need to inform the clock module of UART activity ourselves.
+	 */
+	if(ctrl & 0x02)
+		clock_refresh_console_in_use();
+#endif		
+	return (ctrl & 0x02); /* If RX FIFO is empty return '0'*/
+}
+
+void uart_write_char(char c)
+{
+	/* Wait for space in transmit FIFO. */
+	while (!uart_tx_ready())
+		;
+
+	NUCMX_UTBUF = c;
+}
+
+int uart_read_char(void)
+{
+	return NUCMX_URBUF;
+}
+
+static void uart_clear_rx_fifo(int channel)
+{
+	int scratch __attribute__ ((unused));
+	if(channel==0){ /* suppose '0' is EC UART*/
+		while ((NUCMX_UICTRL & 0x02))	/*if '1' that mean have a RX data on the FIFO register*/
+			scratch = NUCMX_URBUF;
+	}		
+}
+
+void uart_disable_interrupt(void)
+{
+	task_disable_irq(NUCMX_IRQ_UART);
+}
+
+void uart_enable_interrupt(void)
+{
+	task_enable_irq(NUCMX_IRQ_UART);
+}
+
+/**
+ * Interrupt handler for UART0
+ */
+void uart_ec_interrupt(void)
+{
+	/* Read input FIFO until empty, then fill output FIFO */
+	uart_process_input();
+	uart_process_output();
+}
+DECLARE_IRQ(NUCMX_IRQ_UART, uart_ec_interrupt, 1);
+
+
+static void uart_config(void)
+{
+	uint32_t div,optDiv,minDeviation,clk,calcBaudRate,deviation;
+	uint8_t prescalar,optPrescalar,i;
+	/* Enable the port */
+	/* Configure pins from GPIOs to CR_UART */
+	gpio_config_module(MODULE_UART, 1);
+
+	/* Calculated UART baudrate , clock source from APB2 */
+	optPrescalar =optDiv =0;
+	prescalar = 10;
+    minDeviation = 0xFFFFFFFF;
+    clk =clock_get_apb2_freq();
+    for (i = 1; i < 31; i++){
+        div = (clk * 10) / (16 * CONFIG_UART_BAUD_RATE * prescalar);
+        if(div!=0){
+        	calcBaudRate = (clk * 10) / (16 * div * prescalar);
+        	deviation = (calcBaudRate > CONFIG_UART_BAUD_RATE) ? (calcBaudRate - CONFIG_UART_BAUD_RATE) : (CONFIG_UART_BAUD_RATE - calcBaudRate);
+        	if (deviation < minDeviation){
+            	minDeviation = deviation;
+            	optPrescalar = i;
+            	optDiv = div;
+        	}
+        }	
+        prescalar += 5;
+    }
+    optDiv--;
+	NUCMX_UPSR =((optPrescalar<<3)&0xF8)|((optDiv>>8)&0x7);
+	NUCMX_UBAUD =(uint8_t)optDiv;
+	/*
+	 * 8-N-1, FIFO enabled.  Must be done after setting
+	 * the divisor for the new divisor to take effect.
+	 */
+	NUCMX_UFRS = 0x00;
+	NUCMX_UICTRL = 0x40; /* receive int enable only */
+}
+
+void uart_init(void)
+{
+	uint32_t mask = 0;
+
+	/*
+	 * Enable UART0 in run, sleep, and deep sleep modes. Enable the Host
+	 * UART in run and sleep modes.
+	 */
+	mask = 0x10; /* bit 4 */
+	clock_enable_peripheral(CGC_OFFSET_UART, mask, CGC_MODE_ALL);
+
+	/* Set pin-mask for UART */
+	SET_BIT(NUCMX_DEVALT(0x0A), NUCMX_DEVALTA_UART_SL);
+	gpio_config_module(MODULE_UART, 1);
+
+	/* Configure UARTs (identically) */
+	uart_config();
+
+	/*
+	 * Enable interrupts for UART0 only. Host UART will have to wait
+	 * until the LPC bus is initialized.
+	 */
+	uart_clear_rx_fifo(0);
+	task_enable_irq(NUCMX_IRQ_UART);
+
+	init_done = 1;
+}
+
+
+
+/*****************************************************************************/
+/* Console commands */
+
+#ifdef CONFIG_CMD_COMXTEST
+
+/**
+ * Write a character to COMx, waiting for space in the output buffer if
+ * necessary.
+ */
+static void uart_comx_putc_wait(int c)
+{
+		while (!uart_comx_putc_ok())
+			;
+		uart_comx_putc(c);
+}
+
+static int command_comxtest(int argc, char **argv)
+{
+	/* Put characters to COMX port */
+	const char *c = argc > 1 ? argv[1] : "testing comx output!";
+
+	ccprintf("Writing \"%s\\r\\n\" to COMx UART...\n", c);
+
+	while (*c)
+		uart_comx_putc_wait(*c++);
+
+	uart_comx_putc_wait('\r');
+	uart_comx_putc_wait('\n');
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(comxtest, command_comxtest,
+			"[string]",
+			"Write test data to COMx uart",
+			NULL);
+
+#endif /* CONFIG_CMD_COMXTEST */
+

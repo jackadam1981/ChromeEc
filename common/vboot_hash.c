@@ -177,6 +177,7 @@ static void vboot_hash_init(void)
 	} else
 #endif
 	{
+		/* TODO: there is no RW region in MRAM architecture */
 		/* Start computing the hash of RW firmware */
 		vboot_hash_start(CONFIG_FW_RW_OFF,
 				 system_get_image_used(SYSTEM_IMAGE_RW),

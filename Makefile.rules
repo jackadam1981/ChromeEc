@@ -58,6 +58,7 @@ cmd_mv_from_tmp = mv $(out)/$*.bin.tmp $(out)/$*.bin
 cmd_extractrw-y = dd if=$(out)/$(PROJECT).bin.tmp of=$(out)/$(PROJECT).RW.bin \
 	       bs=1 count=$(_rw_size) skip=$(_rw_off) $(silent_err)
 cmd_copyrw-y = cd $(out) && cp $(PROJECT).RW.flat $(PROJECT).RW.bin
+cmd_copyro-y = cd $(out) && cp $(PROJECT).RO.flat $(PROJECT).RO.bin
 
 # commands for RSA signature
 cmd_pubkey = ./util/pem_extract_pubkey.py $(PEM) > $@
@@ -150,6 +151,7 @@ $(out)/%.bin: $(out)/%.obj
 	$(if $(wildcard $(PEM)),$(call quiet,extractrw-y,EXTR_RW), \
 			$(call quiet,copyrw-y,COPY_RW))
 	$(call quiet,mv_from_tmp,MV     )
+	$(call quiet,copyro-y,COPY_RO)
 
 # Beware of ec.spi.spi.bin.
 $(out)/%.spi.bin: $(out)/%.bin
