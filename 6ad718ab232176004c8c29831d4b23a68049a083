@@ -101,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "e48332c3_82d67a0a",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-12-06T17:16:45Z",
+      "side": 1,
+      "message": "Based on Sameer\u0027s comments, we should send the host event on timeout. I can think of a few ways to handle it:\n\n1. Send the host event from the PD state machine on timeout. But, there are several different states that can timeout, so maybe it\u0027s messy.\n\n2. Kick off charge_manager_refresh as a deferred task, with deferred time \u003d POWER_SWAP_TIMEOUT, then add code to charge_manager_refresh to send the host event on timeout. But, it\u0027s not a completely working method, because a single task can\u0027t be deferred multiple times, so someone else might come along and run with deferred time \u003d 0.\n\n3. Kick off a new deferred task function (probably need one per port) when we set the deferred port, that just gets called after the timeout period and sends the host event if we timed out.\n\nI think (3) may be best, the only drawback is that it adds two more deferred tasks (and we\u0027ll need to bump the limit again). What do you think?",
+      "parentUuid": "9fb9e1ac_50a362bd",
+      "revId": "6ad718ab232176004c8c29831d4b23a68049a083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf2065df_1160aea6",
         "filename": "common/charge_manager.c",
         "patchSetId": 3
