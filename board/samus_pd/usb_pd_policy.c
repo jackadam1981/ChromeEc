@@ -10,6 +10,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "pi3usb9281.h"
 #include "registers.h"
 #include "task.h"
 #include "timer.h"
@@ -226,7 +227,9 @@ int pd_check_data_swap(int port, int data_role)
 
 void pd_execute_data_swap(int port, int data_role)
 {
-	/* TODO: when switching to UFP need to open D+/D- switches */
+	ccprintf("SHAWN data swap %x %x\n", port, data_role);
+	/* Open USB switches when taking UFP fole */
+	pi3usb9281_open_switches(port, (data_role == PD_ROLE_UFP));
 }
 
 void pd_new_contract(int port, int pr_role, int dr_role,
