@@ -225,4 +225,36 @@ uint32_t flash_get_protect(void);
  */
 int flash_set_protect(uint32_t mask, uint32_t flags);
 
+
+#ifdef CONFIG_SHRSPI_ARCH
+/**
+ * Read from physical flash.
+ *
+ *
+ * @param offset	Flash offset to read.
+ * @param size	    Number of bytes to read.
+ * @param data      Data to read from flash.
+ */
+int flash_physical_read(int offset, int size, char *data);
+/**
+ * Return the number of bytes used in the specified spi-image.
+ *
+ * This is the actual size of code+data in the image, as opposed to the
+ * amount of space reserved in flash for that image.
+ *
+ * @return actual image size in bytes, 0 if the image contains no content or
+ * error.
+ */
+int flash_physical_read_image_size(int offset, int size);
+/**
+ * Check if a region of spi-flash is erased
+ *
+ * It is assumed that an erased region has all bits set to 1.
+ *
+ * @param offset	Flash offset to check
+ * @param size		Number of bytes to check (word-aligned)
+ * @return 1 if erased, 0 if not erased
+ */
+int flash_physical_is_erased(uint32_t offset, int size);
+#endif
 #endif  /* __CROS_EC_FLASH_H */
