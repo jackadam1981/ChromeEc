@@ -119,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "e45ed22a_8acb0b5c",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-07T05:51:33Z",
+      "side": 1,
+      "message": "I think (3) is the best option, but do we really need one per port? We only ever have one delayed_override_port, and one timeout, delayed_override_deadline, so why would we need multiple deferred functions?",
+      "parentUuid": "e48332c3_82d67a0a",
+      "revId": "6ad718ab232176004c8c29831d4b23a68049a083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf2065df_1160aea6",
         "filename": "common/charge_manager.c",
         "patchSetId": 3
