@@ -219,11 +219,6 @@ enum vdm_states {
 	VDM_STATE_BUSY = 2,
 };
 
-enum pd_request_types {
-	PD_REQUEST_MIN,
-	PD_REQUEST_MAX,
-};
-
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 /* Port dual-role state */
 enum pd_dual_role_states drp_state = PD_DRP_TOGGLE_OFF;
@@ -800,14 +795,24 @@ static void pd_store_src_cap(int port, int cnt, uint32_t *src_caps)
 		pd_src_caps[port][i] = *src_caps++;
 }
 
-static void pd_send_request_msg(int port, enum pd_request_types request)
+static void pd_send_request_msg(int port)
 {
 	uint32_t rdo, curr_limit, supply_voltage;
 	int res;
 
-	/* we were waiting for them, let's process them */
-	res = pd_choose_voltage(pd_src_cap_cnt[port], pd_src_caps[port], &rdo,
-				&curr_limit, &supply_voltage);
+	/* Build and send request RDO */
+#ifdef CONFIG_CHARGE_MANAGER
+	/* If this port is not actively charging, select vSafe5V */
+	if (charge_manager_get_active_charge_port() != port)
+		res = pd_build_request(pd_src_cap_cnt[port], pd_src_caps[port],
+				       &rdo, &curr_limit, &supply_voltage,
+				       PD_REQUEST_VSAFE5V);
+	else
+#endif
+		res = pd_build_request(pd_src_cap_cnt[port], pd_src_caps[port],
+				       &rdo, &curr_limit, &supply_voltage,
+				       PD_REQUEST_MAX);
+
 	if (res != EC_SUCCESS)
 		/*
 		 * If fail to choose voltage, do nothing, let source re-send
@@ -815,15 +820,6 @@ static void pd_send_request_msg(int port, enum pd_request_types request)
 		 */
 		return;
 
-#ifdef CONFIG_CHARGE_MANAGER
-	/* Set max. limit, but apply 500mA ceiling */
-	charge_manager_set_ceil(port, PD_MIN_MA);
-	pd_set_input_current_limit(port, curr_limit, supply_voltage);
-	/* Negotiate for Vsafe5V, if requested */
-	if (request == PD_REQUEST_MIN)
-		pd_choose_voltage_min(pd_src_cap_cnt[port], pd_src_caps[port],
-				      &rdo, &curr_limit, &supply_voltage);
-#endif
 	pd[port].curr_limit = curr_limit;
 	pd[port].supply_voltage = supply_voltage;
 	res = send_request(port, rdo);
@@ -854,6 +850,10 @@ static void handle_data_request(int port, uint16_t head,
 {
 	int type = PD_HEADER_TYPE(head);
 	int cnt = PD_HEADER_CNT(head);
+#ifdef CONFIG_CHARGE_MANAGER
+	uint32_t ma, mv;
+	int pdo_index;
+#endif
 
 	switch (type) {
 #ifdef CONFIG_USB_PD_DUAL_ROLE
@@ -868,12 +868,22 @@ static void handle_data_request(int port, uint16_t head,
 			pd_store_src_cap(port, cnt, payload);
 			/* src cap 0 should be fixed PDO */
 			pd_update_pdo_flags(port, payload[0]);
+
 #ifdef CONFIG_CHARGE_MANAGER
-			if (charge_manager_get_active_charge_port() == port)
-				pd_send_request_msg(port, PD_REQUEST_MAX);
-			else
+			/* Get max power info that we could request */
+			pdo_index = pd_find_pdo_index(pd_src_cap_cnt[port],
+						      pd_src_caps[port], -1);
+			if (pdo_index < 0)
+				pdo_index = 0;
+			pd_extract_pdo_power(pd_src_caps[port][pdo_index],
+					     &ma, &mv);
+
+			/* Set max. limit, but apply 500mA ceiling */
+			charge_manager_set_ceil(port, PD_MIN_MA);
+			pd_set_input_current_limit(port, ma, mv);
 #endif
-				pd_send_request_msg(port, PD_REQUEST_MIN);
+
+			pd_send_request_msg(port);
 		}
 		break;
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
@@ -2065,16 +2075,7 @@ void pd_task(void)
 			/* Check for new power to request */
 			if (pd[port].new_power_request) {
 				pd[port].new_power_request = 0;
-#ifdef CONFIG_CHARGE_MANAGER
-				if (charge_manager_get_active_charge_port()
-				    != port)
-					pd_send_request_msg(port,
-							    PD_REQUEST_MIN);
-				else if (charge_manager_get_active_charge_port()
-					 == port)
-#endif
-					pd_send_request_msg(port,
-							    PD_REQUEST_MAX);
+				pd_send_request_msg(port);
 				break;
 			}
 

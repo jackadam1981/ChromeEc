@@ -32,6 +32,106 @@
 
 static int rw_flash_changed = 1;
 
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+/* Cap on the max voltage requested as a sink (in millivolts) */
+static unsigned max_request_mv = -1; /* no cap */
+
+int pd_find_pdo_index(int cnt, uint32_t *src_caps, int max_mv)
+{
+	int i, uw, max_uw = 0, mv, ma;
+	int ret = -1;
+
+	/* max_mv of -1 represents max limit */
+	if (max_mv == -1)
+		max_mv = PD_MAX_VOLTAGE_MV;
+
+	/* max voltage is always limited by this boards max request */
+	max_mv = MIN(max_mv, PD_MAX_VOLTAGE_MV);
+
+	/* Get max power that is under our max voltage input */
+	for (i = 0; i < cnt; i++) {
+		mv = ((src_caps[i] >> 10) & 0x3FF) * 50;
+		if ((src_caps[i] & PDO_TYPE_MASK) == PDO_TYPE_BATTERY) {
+			uw = 250000 * (src_caps[i] & 0x3FF);
+		} else {
+			ma = (src_caps[i] & 0x3FF) * 10;
+			uw = ma * mv;
+		}
+		if ((uw > max_uw) && (mv <= max_mv)) {
+			ret = i;
+			max_uw = uw;
+		}
+	}
+	return ret;
+}
+
+void pd_extract_pdo_power(uint32_t pdo, uint32_t *ma, uint32_t *mv)
+{
+	int max_ma, uw;
+	*mv = ((pdo >> 10) & 0x3FF) * 50;
+
+	if ((pdo & PDO_TYPE_MASK) == PDO_TYPE_BATTERY) {
+		uw = 250000 * (pdo & 0x3FF);
+		max_ma = 1000 * MIN(1000 * uw, PD_MAX_POWER_MW) / *mv;
+	} else {
+		max_ma = 10 * (pdo & 0x3FF);
+		max_ma = MIN(max_ma, PD_MAX_CURRENT_MA);
+	}
+
+	*ma = max_ma;
+}
+
+int pd_build_request(int cnt, uint32_t *src_caps, uint32_t *rdo,
+		     uint32_t *ma, uint32_t *mv, enum pd_request_type req_type)
+{
+	int pdo_index, flags = 0;
+	int uw;
+
+	if (req_type == PD_REQUEST_VSAFE5V)
+		/* src cap 0 should be vSafe5V */
+		pdo_index = 0;
+	else
+		/* find pdo index for max voltage we can request */
+		pdo_index = pd_find_pdo_index(cnt, src_caps, max_request_mv);
+
+	/* If could not find desired pdo_index, then return error */
+	if (pdo_index == -1)
+		return -EC_ERROR_UNKNOWN;
+
+	pd_extract_pdo_power(src_caps[pdo_index], ma, mv);
+	uw = *ma * *mv;
+	if (uw < (1000 * PD_OPERATING_POWER_MW))
+		flags |= RDO_CAP_MISMATCH;
+
+	if ((src_caps[pdo_index] & PDO_TYPE_MASK) == PDO_TYPE_BATTERY) {
+		int mw = uw / 1000;
+		*rdo = RDO_BATT(pdo_index + 1, mw, mw, flags);
+		CPRINTF("Request [%d] %dmV %dmW",
+			pdo_index, *mv, mw);
+	} else {
+		*rdo = RDO_FIXED(pdo_index + 1, *ma, *ma, flags);
+		CPRINTF("Request [%d] %dmV %dmA",
+			pdo_index, *mv, *ma);
+	}
+	/* Mismatch bit set if less power offered than the operating power */
+	if (flags & RDO_CAP_MISMATCH)
+		CPRINTF(" Mismatch");
+	CPRINTF("\n");
+
+	return EC_SUCCESS;
+}
+
+void pd_set_max_voltage(unsigned mv)
+{
+	max_request_mv = mv;
+}
+
+unsigned pd_get_max_voltage(void)
+{
+	return max_request_mv;
+}
+#endif /* CONFIG_USB_PD_DUAL_ROLE */
+
 #ifdef CONFIG_USB_PD_ALT_MODE
 
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
