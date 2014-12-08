@@ -31,9 +31,14 @@
 #define CONFIG_POWER_COMMON
 #define CONFIG_PWM
 #define CONFIG_SPI
-#define CONFIG_STM_HWTIMER32
+#define CONFIG_STM_HWTIMER
 #define CONFIG_VBOOT_HASH
-#undef CONFIG_WATCHDOG_HELP
+#define CONFIG_WATCHDOG_HELP
+
+/* Timer selection */
+#define TIM_WATCHDOG 1
+#define TIM_CLOCK_MSB 3
+#define TIM_CLOCK_LSB 15
 
 #ifndef __ASSEMBLER__
 
@@ -48,9 +53,7 @@
 #define I2C_PORT_BATTERY I2C_PORT_MASTER
 #define I2C_PORT_CHARGER I2C_PORT_MASTER
 
-/* Timer selection */
-#define TIM_CLOCK32  2
-#define TIM_WATCHDOG 4
+
 
 #include "gpio_signal.h"
 
