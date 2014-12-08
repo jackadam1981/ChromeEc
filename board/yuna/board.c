@@ -9,6 +9,7 @@
 #include "backlight.h"
 #include "chipset.h"
 #include "common.h"
+#include "console.h"
 #include "driver/temp_sensor/g781.h"
 #include "extpower.h"
 #include "fan.h"
@@ -31,6 +32,78 @@
 #include "util.h"
 
 #include "gpio_list.h"
+
+#ifdef CONFIG_FAN_RPM_CUSTOM
+#define NUM_FAN_LEVELS 9
+
+struct fan_step {
+	int on;
+	int off;
+	int rpm;
+};
+	/* The first and last steps are dummy step */
+const struct fan_step fan_table[NUM_FAN_LEVELS] = {
+	{.off = -1, .rpm = 0},
+	{.on = 10, .off = 0, .rpm = 3200},
+	{.on = 18, .off = 10, .rpm = 3700},
+	{.on = 25, .off = 17, .rpm = 4000},
+	{.on = 32, .off = 24, .rpm = 4400},
+	{.on = 39, .off = 31, .rpm = 4900},
+	{.on = 57, .off = 48, .rpm = 5500},
+	{.on = 100, .off = 91, .rpm = 6500},
+	{.on = 101},
+};
+
+int fan_percent_to_rpm(int fan, int pct)
+{
+	static int index;
+	static int previous_pct;
+	int i;
+	int temp_index;
+
+	temp_index = 0;
+
+	/*
+	 * Compare the pct and previous pct, we have the three paths :
+	 *  1. decreasing path. (check the off point)
+	 *  2. increasing path. (check the on point)
+	 *  3. invariant path. (return the current RPM)
+	 * The invariant path have an exception: index = 0.
+	 * If index = 0, the conditions are
+	 *  a. initial value.
+	 *  b. exactly index = 0.
+	 * Use increasing path to find the correct fan table in both
+	 * conditions since not intend to distinguish them.
+	 */
+
+	if ((pct == previous_pct) && (index != 0)) {
+		return fan_get_rpm_target(fans[fan].ch);
+	} else if (pct < previous_pct) {
+		for (i = 0; i <= index; i++) {
+			if (pct > fan_table[i].off)
+				temp_index = i;
+			else
+				break;
+		}
+	} else {
+		for (i = NUM_FAN_LEVELS - 1; i > index; i--) {
+			if (pct < fan_table[i].on)
+				temp_index = i - 1;
+			else
+				break;
+		}
+	}
+	index = temp_index;
+
+	previous_pct = pct;
+
+	if (fan_table[index].rpm != fan_get_rpm_target(fans[fan].ch))
+		cprintf(CC_THERMAL, "[%T Setting fan RPM to %d]\n",
+			fan_table[index].rpm);
+
+	return fan_table[index].rpm;
+}
+#endif /* CONFIG_FAN_RPM_CUSTOM */
 
 /* power signal list.  Must match order of enum power_signal. */
 const struct power_signal_info power_signal_list[] = {
@@ -68,8 +141,8 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 /* Physical fans. These are logically separate from pwm_channels. */
 const struct fan_t fans[] = {
 	{.flags = FAN_USE_RPM_MODE,
-	 .rpm_min = 1000,
-	 .rpm_max = 5050,
+	 .rpm_min = 3200,
+	 .rpm_max = 6500,
 	 .ch = 2,
 	 .pgood_gpio = GPIO_PP5000_PGOOD,
 	 .enable_gpio = GPIO_PP5000_FAN_EN,
@@ -100,7 +173,7 @@ BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
  */
 struct ec_thermal_config thermal_params[] = {
 	/* Only the AP affects the thermal limits and fan speed. */
-	{{C_TO_K(95), C_TO_K(97), C_TO_K(99)}, C_TO_K(55), C_TO_K(85)},
+	{{C_TO_K(95), C_TO_K(97), C_TO_K(99)}, C_TO_K(37), C_TO_K(95)},
 	{{0, 0, 0}, 0, 0},
 	{{0, 0, 0}, 0, 0},
 	{{0, 0, 0}, 0, 0},
