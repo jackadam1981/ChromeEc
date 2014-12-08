@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "846b56dc_6bd1c912",
+        "filename": "driver/pi3usb9281.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-08T20:15:08Z",
+      "side": 1,
+      "message": "should this be called set_switches(), or manual_set_switches()? the name open_switches confused me and I was looking for close_switches() before I figured out this function is used to open and close the switches.\n\nalso, please add comment header for this function.",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 28
+      },
+      "revId": "1c344ef2ac408bf42e959223cfe0ae2224954b37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
