@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6424a2a4_f9c4b34f",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1898,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-12-08T16:30:56Z",
+      "side": 1,
+      "message": "Should we have similar reset in SRC side of state machine?",
+      "range": {
+        "startLine": 1898,
+        "startChar": 3,
+        "endLine": 1898,
+        "endChar": 23
+      },
+      "revId": "56d3bb503fa3062c0f0384c490363b1869961f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
