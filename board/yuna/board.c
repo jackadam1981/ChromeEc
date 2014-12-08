@@ -9,6 +9,7 @@
 #include "backlight.h"
 #include "chipset.h"
 #include "common.h"
+#include "console.h"
 #include "driver/temp_sensor/g781.h"
 #include "extpower.h"
 #include "fan.h"
@@ -31,6 +32,77 @@
 #include "util.h"
 
 #include "gpio_list.h"
+
+#ifdef CONFIG_FAN_RPM_CUSTOM
+#define NUM_FAN_LEVELS 9
+
+struct fan_step {
+	int on;
+	int off;
+	int rpm;
+};
+
+const struct fan_step fan_table[NUM_FAN_LEVELS] = {
+	{.on = 0, .off = -1, .rpm = 0},
+	{.on = 8, .off = 2, .rpm = 3200},
+	{.on = 13, .off = 8, .rpm = 3700},
+	{.on = 17, .off = 12, .rpm = 4000},
+	{.on = 21, .off = 16, .rpm = 4400},
+	{.on = 25, .off = 20, .rpm = 4900},
+	{.on = 35, .off = 30, .rpm = 5500},
+	{.on = 60, .off = 55, .rpm = 6500},
+	{.on = 101, .off = 100, .rpm = 6500},
+};
+
+int fan_percent_to_rpm(int fan, int pct)
+{
+	static int index;
+	static int previous_pct;
+	int i;
+	int temp_index;
+
+	temp_index = 0;
+
+	/* Keep the current RPM if pct no change */
+	if (pct == previous_pct)
+		return fan_get_rpm_target(fans[fan].ch);
+
+	/* Check it first for init temperature */
+	if (!index) {
+		for (i = 0; i < NUM_FAN_LEVELS; i++) {
+			if (pct >= fan_table[i].on)
+				index = i;
+		}
+	/*
+	 * Compare the pct and previous pct, we have the two paths :
+	 * 1. down path (check the off point)
+	 * 2. up path (chek the on point)
+	 */
+	} else {
+		if (pct < previous_pct) {
+			for (i = 0; i <= index; i++) {
+				if (pct > fan_table[i].off)
+					temp_index = i;
+			}
+		} else {
+			for (i = NUM_FAN_LEVELS - 1; i > index; i--) {
+				if (pct < fan_table[i].on)
+					temp_index = i - 1;
+			}
+		}
+		index = temp_index;
+	}
+
+	previous_pct = pct;
+
+	if (fan_table[index].rpm != fan_get_rpm_target(fans[fan].ch))
+		cprintf(CC_THERMAL, "[%T Setting fan RPM to %d]\n",
+			fan_table[index].rpm);
+
+	return fan_table[index].rpm;
+}
+
+#endif /* CONFIG_FAN_RPM_CUSTOM */
 
 /* power signal list.  Must match order of enum power_signal. */
 const struct power_signal_info power_signal_list[] = {
@@ -100,7 +172,7 @@ BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
  */
 struct ec_thermal_config thermal_params[] = {
 	/* Only the AP affects the thermal limits and fan speed. */
-	{{C_TO_K(95), C_TO_K(97), C_TO_K(99)}, C_TO_K(55), C_TO_K(85)},
+	{{C_TO_K(95), C_TO_K(97), C_TO_K(99)}, C_TO_K(35), C_TO_K(135)},
 	{{0, 0, 0}, 0, 0},
 	{{0, 0, 0}, 0, 0},
 	{{0, 0, 0}, 0, 0},
