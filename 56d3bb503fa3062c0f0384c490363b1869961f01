@@ -22,6 +22,30 @@
       "revId": "56d3bb503fa3062c0f0384c490363b1869961f01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "845d1634_7097a6b1",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1898,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-08T16:46:43Z",
+      "side": 1,
+      "message": "there is a similar counter on source side, it\u0027s caps_count. For a sink we send a hard reset periodically if we are not getting source cap messages, and for a source it sends source cap periodically until it receives a response.",
+      "parentUuid": "6424a2a4_f9c4b34f",
+      "range": {
+        "startLine": 1898,
+        "startChar": 3,
+        "endLine": 1898,
+        "endChar": 23
+      },
+      "revId": "56d3bb503fa3062c0f0384c490363b1869961f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
