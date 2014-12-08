@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "648022c5_7993e33b",
+        "filename": "common/spi_flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2014-12-08T23:14:58Z",
+      "side": 1,
+      "message": "I will re-evaluate this one again without the wait. there were some changes at SPI driver needed as well. so not completely sure if this is still needed.",
+      "parentUuid": "dfe43953_21dd0e6d",
+      "revId": "d2d3c1d3b5138e2e44698e1c6d77d57da3a75496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df38b95e_24a85c19",
         "filename": "common/vboot_hash_ext_spi.c",
         "patchSetId": 3
