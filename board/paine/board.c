@@ -32,6 +32,68 @@
 
 #include "gpio_list.h"
 
+#ifdef CONFIG_FAN_RPM_CUSTOM
+struct fan_step {
+	int on;
+	int off;
+	int rpm;
+};
+
+const struct fan_step fan_table[9] = {
+	{0, 0, 0},
+	{8, 2, 3200},
+	{13, 8, 3700},
+	{17, 12, 4000},
+	{21, 16, 4400},
+	{25, 20, 4900},
+	{35, 30, 5500},
+	{60, 55, 6500},
+	{100, 100, 6500},
+};
+
+int fan_percent_to_rpm(int fan, int pct)
+{
+	static int index;
+	static int pervious_pct;
+	int i;
+	int is_down;
+	int temp_index;
+
+	temp_index = 0;
+	is_down = (pct < pervious_pct) ? 1 : 0;
+	pervious_pct = pct;
+
+	/* Check it first for init temperature */
+	if (!index) {
+		for (i = 0; i < 9; i++) {
+			if (pct >= fan_table[i].on)
+				index = i;
+		}
+	/*
+	 * Compare the pct and pervious pct, we have the two paths :
+	 * 1. down path (check the off point)
+	 * 2. up/keep path (chek the on point)
+	 */
+	} else {
+		if (is_down) {
+			for (i = index; i > 0; i--) {
+				if (pct <= fan_table[i].off)
+					temp_index = i - 1;
+			}
+		} else {
+			for (i = index; i < 9; i++) {
+				if (pct >= fan_table[i].on)
+					temp_index = i;
+			}
+		}
+		index = temp_index;
+	}
+
+	return fan_table[index].rpm;
+}
+
+#endif /* CONFIG_FAN_RPM_CUSTOM */
+
 /* power signal list.  Must match order of enum power_signal. */
 const struct power_signal_info power_signal_list[] = {
 	{GPIO_PP5000_PGOOD,  1, "PGOOD_PP5000"},
@@ -100,7 +162,7 @@ BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
  */
 struct ec_thermal_config thermal_params[] = {
 	/* Only the AP affects the thermal limits and fan speed. */
-	{{C_TO_K(95), C_TO_K(97), C_TO_K(99)}, C_TO_K(55), C_TO_K(85)},
+	{{C_TO_K(95), C_TO_K(97), C_TO_K(99)}, C_TO_K(35), C_TO_K(135)},
 	{{0, 0, 0}, 0, 0},
 	{{0, 0, 0}, 0, 0},
 	{{0, 0, 0}, 0, 0},
