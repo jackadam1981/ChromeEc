@@ -43,6 +43,24 @@
     },
     {
       "key": {
+        "uuid": "44ab1e57_ab602deb",
+        "filename": "common/host_command_pd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-09T22:19:16Z",
+      "side": 1,
+      "message": "Looked into it, I don\u0027t think we need to do anything special. pd_host_command() already grabs a mutex and is called by multiple tasks.",
+      "parentUuid": "ff99fd83_2151f826",
+      "revId": "303e6fffcc7a0ada4b0af9a3dba5eb37ac1e0f69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfaea591_38984900",
         "filename": "common/lightbar.c",
         "patchSetId": 1
