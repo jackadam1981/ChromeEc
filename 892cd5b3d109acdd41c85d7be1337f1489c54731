@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24a8ea5a_8481a68d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1254,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-09T20:55:00Z",
+      "side": 1,
+      "message": "I\u0027m not quite sure why this is needed, but basically I saw that we were timing out waiting for the last bit of the EOP. This only happened when the last bit was a high on the CC line because when the last bit is low, we insert an additional 0 into the communication. So, without the additional 0, we miss the last bit of the EOP.\n\nInterestingly, this patch worked on zinger with waiting for 5 bits in the EOP, so it probably depends on how fast the line rises after the last bit.",
+      "range": {
+        "startLine": 1254,
+        "startChar": 33,
+        "endLine": 1254,
+        "endChar": 35
+      },
+      "revId": "892cd5b3d109acdd41c85d7be1337f1489c54731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24a8ea5a_2402327c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1265,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-09T20:55:00Z",
+      "side": 1,
+      "message": "I changed this but kept it the same length of characters, so it should take pretty close to the same amount of time, and it\u0027s more helpful for debugging.",
+      "range": {
+        "startLine": 1265,
+        "startChar": 2,
+        "endLine": 1265,
+        "endChar": 29
+      },
+      "revId": "892cd5b3d109acdd41c85d7be1337f1489c54731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
