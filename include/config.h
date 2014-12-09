@@ -674,6 +674,12 @@
 #undef CONFIG_I2C_SCL_GATE_ADDR
 #undef CONFIG_I2C_SCL_GATE_GPIO
 
+/*
+ * if 1.5k ohm resistance is used for pull up, the timing need change
+ * accordingly
+ */
+#undef CONFIG_I2C_1500_OHM
+
 /*****************************************************************************/
 /* Current/Power monitor */
 

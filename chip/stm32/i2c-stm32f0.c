@@ -82,11 +82,19 @@ static void i2c_set_freq_port(const struct i2c_port_t *p)
 		STM32_I2C_TIMINGR(port) = 0x50330309;
 		break;
 	case 100:
+#ifdef CONFIG_I2C_1500_OHM
+		STM32_I2C_TIMINGR(port) = 0xB0421213;
+#else
 		STM32_I2C_TIMINGR(port) = 0xB0420F13;
+#endif
 		break;
 	default: /* unknown speed, defaults to 100kBps */
 		CPRINTS("I2C bad speed %d kBps", p->kbps);
+#ifdef CONFIG_I2C_1500_OHM
+		STM32_I2C_TIMINGR(port) = 0xB0421213;
+#else
 		STM32_I2C_TIMINGR(port) = 0xB0420F13;
+#endif
 	}
 	/* Enable port */
 	STM32_I2C_CR1(port) = STM32_I2C_CR1_PE;
