@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44ab1e57_e88e2b8e",
+        "filename": "board/jerry/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2014-12-09T22:07:14Z",
+      "side": 1,
+      "message": "This needs an entry in include/config.h\nas per point 2 in http://dev.chromium.org/chromium-os/ec-development#TOC-Coding-style",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 27
+      },
+      "revId": "15f80652a37facbd09612c36bf08e8a407ab6e0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44ab1e57_c8580f87",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2014-12-09T22:07:14Z",
+      "side": 1,
+      "message": "It would be really nice if we didn\u0027t have to do this. Perhaps it would be ok to make all other boards slightly slower and just use the 1.5k value everywhere? I\u0027m not sure.",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 26
+      },
+      "revId": "15f80652a37facbd09612c36bf08e8a407ab6e0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
