@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "a4521a4f_380949d3",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-09T23:51:58Z",
+      "side": 1,
+      "message": "yes, i know, i was just doing the functions needed by a sink first since that implementation is messier. i will do the source function in another CL at some point.",
+      "parentUuid": "e4ba529b_cacec33f",
+      "revId": "7eac94566c769c5161e64215fdc2179794c20e6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "648022c5_8ac69bd8",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -47,6 +65,24 @@
       "writtenOn": "2014-12-09T23:31:29Z",
       "side": 1,
       "message": "#ifdef intertwined with if/else might sometimes lead to stupid bugs when modified.\nI was wondering if rewriting the code like that would not be more robust and as optimized  :\n#ifdef CONFIG_CHARGE_MANAGER\nint not_charging \u003d charge_manager_get_active_charge_port() !\u003d port;\n#else\nconst int not_charging \u003d 0;\n#endif\n\nres \u003d pd_build_request(pd_src_cap_cnt[port], pd_src_caps[port],\n                                       \u0026rdo, \u0026curr_limit, \u0026supply_voltage,\n                                       not_charging ? PD_REQUEST_VSAFE5V : PD_REQUEST_MAX);",
+      "revId": "7eac94566c769c5161e64215fdc2179794c20e6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8457d640_b74f2833",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 806,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-09T23:51:58Z",
+      "side": 1,
+      "message": "sure, that looks good",
+      "parentUuid": "648022c5_8ac69bd8",
       "revId": "7eac94566c769c5161e64215fdc2179794c20e6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +123,24 @@
     },
     {
       "key": {
+        "uuid": "8457d640_57932ce9",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 886,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-09T23:51:58Z",
+      "side": 1,
+      "message": "I know, it\u0027s hard to tell where to separate the two layers. Are you saying to move all of this (lines 872-886) to the policy layer (in a function like pd_process_source_cap())?",
+      "parentUuid": "040206f8_e43ad0b7",
+      "revId": "7eac94566c769c5161e64215fdc2179794c20e6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "040206f8_6408001e",
         "filename": "include/usb_pd.h",
         "patchSetId": 2
@@ -98,6 +152,24 @@
       "writtenOn": "2014-12-09T23:31:29Z",
       "side": 1,
       "message": "who is using this function ?\nI missed the caller.",
+      "revId": "7eac94566c769c5161e64215fdc2179794c20e6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4521a4f_385f89c3",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-09T23:51:58Z",
+      "side": 1,
+      "message": "firefly is the only caller in board/firefly/usb_pd_policy.c",
+      "parentUuid": "040206f8_6408001e",
       "revId": "7eac94566c769c5161e64215fdc2179794c20e6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
