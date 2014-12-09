@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84e0b6b0_cf3fbdf8",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2014-12-09T04:36:48Z",
+      "side": 1,
+      "message": "use a printf instead of a for statement\n\n printf \u0027%s\u003dy\\n\u0027 $(_tsk_cfg) $(_flag_cfg) \u003e $@",
+      "revId": "3b8d7533b88f9e9661da26d93a12690db9236c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
