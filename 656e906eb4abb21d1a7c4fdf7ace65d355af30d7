@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c488eee4_2fa2e77e",
+        "filename": "board/paine/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-12-09T19:36:13Z",
+      "side": 1,
+      "message": "#define NUM_FAN_LEVELS 9",
+      "revId": "656e906eb4abb21d1a7c4fdf7ace65d355af30d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84b996ac_0a24db9a",
+        "filename": "board/paine/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-12-09T19:36:13Z",
+      "side": 1,
+      "message": "fan_table[NUM_FAN_LEVELS]",
+      "revId": "656e906eb4abb21d1a7c4fdf7ace65d355af30d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84b996ac_6735927a",
+        "filename": "board/paine/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-12-09T19:36:13Z",
+      "side": 1,
+      "message": "{.on \u003d 0, .off \u003d 0, .rpm \u003d 0}",
+      "revId": "656e906eb4abb21d1a7c4fdf7ace65d355af30d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24cf0a49_c0e54e34",
+        "filename": "board/paine/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-12-09T19:36:13Z",
+      "side": 1,
+      "message": "*previous_pct;",
+      "revId": "656e906eb4abb21d1a7c4fdf7ace65d355af30d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4bf0e8b_6f61e5a3",
+        "filename": "board/paine/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-12-09T19:36:13Z",
+      "side": 1,
+      "message": "move to the end of the function",
+      "revId": "656e906eb4abb21d1a7c4fdf7ace65d355af30d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84b996ac_ea3aa7b7",
+        "filename": "board/paine/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-12-09T19:36:13Z",
+      "side": 1,
+      "message": "i \u003c NUM_FAN_LEVELS",
+      "revId": "656e906eb4abb21d1a7c4fdf7ace65d355af30d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c488eee4_4f664bc3",
+        "filename": "board/paine/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-12-09T19:36:13Z",
+      "side": 1,
+      "message": "if (pct \u003c previous_pct)\n\nremove all references to is_down",
+      "revId": "656e906eb4abb21d1a7c4fdf7ace65d355af30d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c488eee4_cf7a5b5c",
+        "filename": "board/paine/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-12-09T19:36:13Z",
+      "side": 1,
+      "message": "i \u003d NUM_FAN_LEVELS - 1",
+      "revId": "656e906eb4abb21d1a7c4fdf7ace65d355af30d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4bf0e8b_d2699adb",
+        "filename": "board/paine/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-12-09T19:36:13Z",
+      "side": 1,
+      "message": "pct \u003c\u003d fan_table[i].on (otherwise what happens if pct increases to 100?)",
+      "revId": "656e906eb4abb21d1a7c4fdf7ace65d355af30d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84b996ac_8d3785ce",
+        "filename": "board/paine/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-12-09T19:36:13Z",
+      "side": 1,
+      "message": "This could also be rewritten as \n\nif (pct \u003e\u003d fan_table[i].on)\n  temp_index \u003d i;",
+      "revId": "656e906eb4abb21d1a7c4fdf7ace65d355af30d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84b996ac_2ae0bfd5",
+        "filename": "board/paine/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-12-09T19:36:13Z",
+      "side": 1,
+      "message": "previous_pct \u003d pct;",
+      "revId": "656e906eb4abb21d1a7c4fdf7ace65d355af30d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
