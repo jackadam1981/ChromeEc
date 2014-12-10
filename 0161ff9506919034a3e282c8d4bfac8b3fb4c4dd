@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4997284_b530ca07",
+        "filename": "board/paine/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-12-10T22:06:22Z",
+      "side": 1,
+      "message": "It doesn\u0027t make logical sense to set temp_fan_max at 135C and then set the fan to max speed at 95C itself. It will be best to set temp_fan_off at 37C and temp_fan_max at 95C. Update the above table pct values such that it closely matches the expected temp ranges.",
+      "revId": "0161ff9506919034a3e282c8d4bfac8b3fb4c4dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c49e2e6c_f16fc892",
+        "filename": "board/paine/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-12-10T22:06:22Z",
+      "side": 1,
+      "message": "\"correct fan step in both conditions\"",
+      "revId": "0161ff9506919034a3e282c8d4bfac8b3fb4c4dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c49e2e6c_311f90d2",
+        "filename": "board/paine/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-12-10T22:06:22Z",
+      "side": 1,
+      "message": "See above comment. Set temp_fan_off to 37C and temp_fan_max to 95C.\n\nOtherwise, when using tools like \"ectool thermalget\" etc. a developer can wrongly assume that max fan speed will be set only at 135C.",
+      "revId": "0161ff9506919034a3e282c8d4bfac8b3fb4c4dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
