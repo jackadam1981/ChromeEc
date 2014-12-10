@@ -19,6 +19,41 @@
     },
     {
       "key": {
+        "uuid": "24fb8a87_cc604fed",
+        "filename": "board/paine/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1003228
+      },
+      "writtenOn": "2014-12-10T03:02:03Z",
+      "side": 1,
+      "message": "I want change to \n\n{.off \u003d -1, .rpm \u003d 0},\n\n{.on \u003d 8, .off \u003d 2, .rpm \u003d 3200},\n\n{.on \u003d 13, .off \u003d 8, .rpm \u003d 3700},\n\n{.on \u003d 17, .off \u003d 12, .rpm \u003d 4000},\n\n{.on \u003d 21, .off \u003d 16, .rpm \u003d 4400},\n\n{.on \u003d 25, .off \u003d 20, .rpm \u003d 4900},\n\n{.on \u003d 35, .off \u003d 30, .rpm \u003d 5500},\n\n{.on \u003d 60, .off \u003d 55, .rpm \u003d 6500},\n\n{.on \u003d 101},\n\nThe last entry is for \n\"for (i \u003d NUM_FAN_LEVELS - 1; i \u003e index; i--) {\n      if (pct \u003c fan_table[i].on)\n      temp_index \u003d i - 1; \"\nBecause of i - 1;",
+      "parentUuid": "c45d4e61_0dcfe16a",
+      "revId": "5218ccdc7a9a39e518c8a96d07838617b8158147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04f84689_ab332913",
+        "filename": "board/paine/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1003228
+      },
+      "writtenOn": "2014-12-10T03:02:03Z",
+      "side": 1,
+      "message": "reduce to for (i \u003d 0; i \u003c NUM_FAN_LEVELS - 1; i++) {\n\nThe first and last steps are dummy.",
+      "revId": "5218ccdc7a9a39e518c8a96d07838617b8158147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8457d640_5ad0718c",
         "filename": "board/paine/board.c",
         "patchSetId": 8
@@ -30,6 +65,24 @@
       "writtenOn": "2014-12-10T02:04:38Z",
       "side": 1,
       "message": "based on the commit message the max fan speed is at 95C .. why is the last parameter set to 135C? (the percentages will return incorrectly in this case)",
+      "revId": "5218ccdc7a9a39e518c8a96d07838617b8158147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e426d2f7_ea6367f6",
+        "filename": "board/paine/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1003228
+      },
+      "writtenOn": "2014-12-10T03:02:03Z",
+      "side": 1,
+      "message": "Because of 35 and 135 are lower bound and upper bound for percentage.\nI check the \"static void thermal_control(void)\" in thermal.c\nVariable fmax does not impact other thermal control (thermal shutdown or ....) and for fan only.\nThe rang of the thermal table is larger than 50. So I choose the offset 100.\nI can also choose the lower base point.\nDo you have any suggest value?",
+      "parentUuid": "8457d640_5ad0718c",
       "revId": "5218ccdc7a9a39e518c8a96d07838617b8158147",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
