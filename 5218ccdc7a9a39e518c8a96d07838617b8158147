@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c45d4e61_0dcfe16a",
+        "filename": "board/paine/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-12-10T02:04:38Z",
+      "side": 1,
+      "message": "still not sure why you need this last entry?",
+      "revId": "5218ccdc7a9a39e518c8a96d07838617b8158147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8457d640_5ad0718c",
+        "filename": "board/paine/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-12-10T02:04:38Z",
+      "side": 1,
+      "message": "based on the commit message the max fan speed is at 95C .. why is the last parameter set to 135C? (the percentages will return incorrectly in this case)",
+      "revId": "5218ccdc7a9a39e518c8a96d07838617b8158147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
