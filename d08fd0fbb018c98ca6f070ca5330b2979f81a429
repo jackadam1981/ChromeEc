@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e4b412e0_3ae761bb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-12-10T20:37:05Z",
+      "side": 1,
+      "message": "See cl:233233. chromeos-ec needs to know when a ec.RO.bin is present.",
+      "parentUuid": "a4077a51_707930b6",
+      "revId": "d08fd0fbb018c98ca6f070ca5330b2979f81a429",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c402ae41_91adbca8",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2014-12-10T01:48:43Z",
       "side": 1,
       "message": "I think traditionally we are putting : \nBRANCH\u003dnone",
+      "revId": "d08fd0fbb018c98ca6f070ca5330b2979f81a429",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44c5de5b_35f770ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-12-10T20:37:05Z",
+      "side": 1,
+      "message": "Just this time. There does not seems to be any enforced convention, but we can fix that with a pre-upload hook:\n\ngwendal:ec(sh_au) gwendal$ git log | grep BRANCH | sort | uniq -c | sort -nr | head -10\n    877     BRANCH\u003dnone\n    466     BRANCH\u003dNone\n    141     BRANCH\u003dsamus\n    111     BRANCH\u003dToT\n     85     BRANCH\u003dlink\n     70     BRANCH\u003dspring\n     64     BRANCH\u003dsnow\n     56     BRANCH\u003drambi\n     27     BRANCH\u003dpit\n     24     BRANCH\u003dSpring",
+      "parentUuid": "c402ae41_91adbca8",
       "revId": "d08fd0fbb018c98ca6f070ca5330b2979f81a429",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
