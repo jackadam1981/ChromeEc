@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24b54af8_dfd5dfff",
+        "filename": "board/paine/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1003228
+      },
+      "writtenOn": "2014-12-11T15:12:00Z",
+      "side": 1,
+      "message": "I can\u0027t reduce the last step.\nBy testing result, only inverting the loop can get the correct result.",
+      "revId": "b2a6eb55b0297e80a5261da73c0f3aeb0a062cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4ba1aec_9b3e4fdd",
+        "filename": "board/paine/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1003228
+      },
+      "writtenOn": "2014-12-11T15:12:00Z",
+      "side": 1,
+      "message": "I need invert the scan rule.\nI know \"for (i \u003d index ; i \u003e\u003d 0; i--)\" is more logical.\nBut it fails always.",
+      "revId": "b2a6eb55b0297e80a5261da73c0f3aeb0a062cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24b54af8_dffcbf81",
+        "filename": "board/paine/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1003228
+      },
+      "writtenOn": "2014-12-11T15:12:00Z",
+      "side": 1,
+      "message": "I can\u0027t prevent the condition that i \u003d 0 and decreasing/invariant path when temperature is really high.\n\nIf the temperature goes down, just ignore it. (Although it is impossible when high with 0 RPM fan)\n\nSo that I make condition pct \u003d\u003d previous_pct reach its fan step quickly.",
+      "revId": "b2a6eb55b0297e80a5261da73c0f3aeb0a062cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4ba1aec_5b31d709",
+        "filename": "board/paine/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1003228
+      },
+      "writtenOn": "2014-12-11T15:12:00Z",
+      "side": 1,
+      "message": "Because of the scan order. I need the last dummy item to make the \"for loop\".\n\nBut I really have no idea to prevent the last dummy item.\n\nWhen I change the initial condition, up and down with some temperature range make the loop unstable.",
+      "revId": "b2a6eb55b0297e80a5261da73c0f3aeb0a062cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
