@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "84a6f6d1_88ecbbcb",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 806,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-11T03:25:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8457d640_b74f2833",
+      "revId": "7eac94566c769c5161e64215fdc2179794c20e6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4ba529b_0ac5bb1b",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -177,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "04cbe695_b6680662",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 886,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-11T03:25:50Z",
+      "side": 1,
+      "message": "Done?",
+      "parentUuid": "64f102a2_ee8c1f5f",
+      "revId": "7eac94566c769c5161e64215fdc2179794c20e6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "040206f8_6408001e",
         "filename": "include/usb_pd.h",
         "patchSetId": 2
@@ -224,6 +260,24 @@
       "side": 1,
       "message": "maybe we can piggy back on the pd_set_input_current_limit() callback something recording the voltage and remove this.",
       "parentUuid": "a4521a4f_385f89c3",
+      "revId": "7eac94566c769c5161e64215fdc2179794c20e6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04cbe695_56709246",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-11T03:25:50Z",
+      "side": 1,
+      "message": "yeah, but then we would be checking if our input voltage matches what the negotiated value is instead of checking if we negotiated and received the voltage we wanted. minor difference, maybe it doesn\u0027t matter.",
+      "parentUuid": "c402ae41_512874a7",
       "revId": "7eac94566c769c5161e64215fdc2179794c20e6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
