@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4a13abc_207f0a00",
+        "filename": "board/paine/board.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2014-12-11T00:17:15Z",
+      "side": 1,
+      "message": "is there a need for the static variable index?\n\nYou can run the loop from 0 to NUM_FAN_LEVELS. Whenever the \"if\" condition fails you can just break.\n\nfor (i \u003d 0; i \u003c NUM_FAN_LEVELS; i++) {\n  if (pct \u003e fan_table[i].off)\n    index \u003d i;\n  else \n    break;\n}\n\nI think this makes it more readable.\n\nAlso to take care of the first entry into the function where pct might be 0 you can do the following:\n\nif (pct \u003d\u003d 0)\n  return 0;\nelse if (pct \u003d\u003d previous_pct)\n  return fan_get_rpm_target(fans[fan].ch);\nelse if (pct \u003c previous_pct) {\n**** decreasing code ****\n}\nelse {\n**** increasing code *****\n}\n\nThis way you can also change the first step in the fan_table to be:\n\n{.on \u003d 0, .off \u003d 0, .rpm \u003d 0}\nThis make more sense since you don\u0027t really want negative values for pct.",
+      "revId": "ab9029fef07da96cfc64e6325a111aad56f40e31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
