@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "c4c54e7a_7c737555",
+        "filename": "board/paine/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1003228
+      },
+      "writtenOn": "2014-12-11T23:19:00Z",
+      "side": 1,
+      "message": "Can I add more larger bound to avoid this?\nlike 36  96 ? And the both bounds are kept?",
+      "parentUuid": "e40ed2b4_10146c63",
+      "revId": "b2a6eb55b0297e80a5261da73c0f3aeb0a062cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24b54af8_dffcbf81",
         "filename": "board/paine/board.c",
         "patchSetId": 13
@@ -98,6 +116,24 @@
       "writtenOn": "2014-12-11T22:48:50Z",
       "side": 1,
       "message": "Can you give data where the reverse loop fails? Ideally this should be \n\nfor (i\u003d0; i \u003c NUM_FAN_LEVELS - 1; i++) {\n  if (pct \u003e\u003d fan_table[i].on)\n    temp_index \u003d i;\n  else\n     break;\n}\n\nYou can eliminate the last entry in fan_table with this loop.",
+      "revId": "b2a6eb55b0297e80a5261da73c0f3aeb0a062cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4c54e7a_3c7dfd1e",
+        "filename": "board/paine/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1003228
+      },
+      "writtenOn": "2014-12-11T23:19:00Z",
+      "side": 1,
+      "message": "I attach it in tracker with patch set 12 which is more like the above change.\nI am not sure it is optimize error or not?\nAs I change the condition i \u003c NUM_FAN_LEVELS - 1 to i \u003e index. All things become OK.",
+      "parentUuid": "c4138eda_ccd51f00",
       "revId": "b2a6eb55b0297e80a5261da73c0f3aeb0a062cbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
