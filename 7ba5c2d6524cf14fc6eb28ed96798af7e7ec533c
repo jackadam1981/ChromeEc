@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64d9026f_b478e8b3",
+        "filename": "board/zinger/runtime.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-11T19:02:06Z",
+      "side": 1,
+      "message": "probably want to make this longer, but would like to test more with an aggressive limit.",
+      "range": {
+        "startLine": 194,
+        "startChar": 35,
+        "endLine": 194,
+        "endChar": 37
+      },
+      "revId": "7ba5c2d6524cf14fc6eb28ed96798af7e7ec533c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4eaaeee_dacf19bd",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-11T19:02:06Z",
+      "side": 1,
+      "message": "is there a better macro to use here for only zinger and minimuffin?",
+      "range": {
+        "startLine": 474,
+        "startChar": 8,
+        "endLine": 474,
+        "endChar": 29
+      },
+      "revId": "7ba5c2d6524cf14fc6eb28ed96798af7e7ec533c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
