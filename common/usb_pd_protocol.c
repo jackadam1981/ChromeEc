@@ -669,20 +669,24 @@ static void bist_mode_2_rx(int port)
 
 static void handle_vdm_request(int port, int cnt, uint32_t *payload)
 {
-	int rlen = 0;
+	int rlen = 0, i;
 	uint32_t *rdata;
 
-	if (pd[port].vdm_state == VDM_STATE_BUSY)
+	if (pd[port].vdm_state == VDM_STATE_BUSY) {
 		pd[port].vdm_state = VDM_STATE_DONE;
+		CPRINTF("VDM/%d [%02d] %08x", cnt, PD_VDO_CMD(payload[0]),
+			payload[0]);
+		if (PD_VDO_SVDM(payload[0]))
+			for (i = 1; i < cnt; i++)
+				CPRINTF(" %08x", payload[i]);
+		CPRINTF("\n");
+	}
 
 	rlen = pd_vdm(port, cnt, payload, &rdata);
 	if (rlen > 0) {
-		uint16_t header = PD_HEADER(PD_DATA_VENDOR_DEF,
-					    pd[port].power_role,
-					    pd[port].data_role,
-					    pd[port].msg_id,
-					    rlen);
-		send_validate_message(port, header, rlen, rdata);
+		pd[port].vdm_state = VDM_STATE_READY;
+		pd[port].vdo_count = rlen;
+		memcpy(pd[port].vdo_data, rdata, sizeof(uint32_t) * rlen);
 		return;
 	}
 	if (debug_level >= 1)
@@ -1287,7 +1291,6 @@ static void pd_vdm_send_state_machine(int port)
 			pd[port].vdm_state = VDM_STATE_ERR_BUSY;
 			break;
 		}
-
 		/* Prepare and send VDM */
 		header = PD_HEADER(PD_DATA_VENDOR_DEF, pd[port].power_role,
 				   pd[port].data_role, pd[port].msg_id,
