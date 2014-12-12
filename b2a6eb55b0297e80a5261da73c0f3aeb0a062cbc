@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "24b54af8_1f47c718",
+        "filename": "board/paine/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1003228
+      },
+      "writtenOn": "2014-12-12T00:57:37Z",
+      "side": 1,
+      "message": "I change to this. But I got fan always 0 RPM.\nWhen temperature change, I can see [28652.380242 Setting fan RPM to 3700] even up or low. But the fan info returns 0 RPM.\nI think it is optimize problem.",
+      "parentUuid": "c4138eda_8f5a79f5",
+      "revId": "b2a6eb55b0297e80a5261da73c0f3aeb0a062cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4ba1aec_9b3e4fdd",
         "filename": "board/paine/board.c",
         "patchSetId": 13
