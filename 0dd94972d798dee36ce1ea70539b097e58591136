@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "247f0a23_8c7867b4",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-12-12T18:34:05Z",
+      "side": 1,
+      "message": "How about this option:\n\n- embedded a 8-byte signature to \n    1. the last 8-byte of the last 128-byte block of RO image \n   or \n    2. the 1st 8 byte of the 1st 128-byte block of RW image.\n\n[...RO...1st 128 byte]\n...\n[...RO...last 128 byte]\n\n\nPro: You can search for 8-byte signature quickly. (skip every 128 bytes)\nCons: some memory overhead; some padding/alignment space\n\nsignature \u003d { 4 byte data; 4 byte complement data)\n\n/* \"ENDI\" \u003d\u003d\u003e 0x454e4449  */\n#define __END_IMAGE_SIGNATURE_D8__ 0x454e4449 \n\n// 0xbab8beb2 \n#define __END_IMAGE_SIGNATURE_C8__ ~(__END_IMAGE_SIGNATURE_D8__)",
+      "parentUuid": "44a87ea2_c36e2a1d",
+      "revId": "0dd94972d798dee36ce1ea70539b097e58591136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44d6be40_7683a62f",
         "filename": "common/system.c",
         "patchSetId": 1
