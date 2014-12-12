@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "a4085aac_3c4aa922",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-12-12T00:40:17Z",
+      "side": 1,
+      "message": "ec.lds.S only need at the end of compile phase.  After compiling all other objects, we can generate  a unique magic signature into ec.lds.S before link them together.",
+      "parentUuid": "04b20612_a1543a19",
+      "revId": "0dd94972d798dee36ce1ea70539b097e58591136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44d6be40_7683a62f",
         "filename": "common/system.c",
         "patchSetId": 1
