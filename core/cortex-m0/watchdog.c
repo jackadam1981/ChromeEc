@@ -37,4 +37,13 @@ void watchdog_trace(uint32_t excep_lr, uint32_t excep_sp)
 	 * messages might not appear but they are useless in that situation. */
 	timer_print_info();
 	task_print_list();
+
+	panic_printf("Stack contents:\n");
+	while(1) {
+		panic_printf("[%08x] = %08x",stack,*stack);
+		if (((*stack) & 0xff000000) == 0x08000000)
+			panic_printf(" function? %x", (*stack)&(~0x1));
+		panic_printf("\n");
+		stack++;
+	}
 }
