@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "44a87ea2_c36e2a1d",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2014-12-12T01:48:49Z",
+      "side": 1,
+      "message": "The requirement is to have a way to differentiate RO image to an RW image. yes I agree 0xEA alone is weak.but may be just 4byte unique number predefined should be enough right? need not have to vary for every compilation. just a thought.",
+      "parentUuid": "a4085aac_3c4aa922",
+      "revId": "0dd94972d798dee36ce1ea70539b097e58591136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44d6be40_7683a62f",
         "filename": "common/system.c",
         "patchSetId": 1
