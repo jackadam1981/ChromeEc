@@ -16,6 +16,24 @@
       "revId": "4d08c22409f7f6e0e5f1b37f846f1bdc72a882b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4c54e7a_5cd9d1ae",
+        "filename": "board/paine/board.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1003228
+      },
+      "writtenOn": "2014-12-12T01:50:51Z",
+      "side": 1,
+      "message": "Sorry, please ignore it.\nMy mistake to invert the both two.\ni.e. index \u003d temp_index;",
+      "parentUuid": "a4ba1aec_bb235394",
+      "revId": "4d08c22409f7f6e0e5f1b37f846f1bdc72a882b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
