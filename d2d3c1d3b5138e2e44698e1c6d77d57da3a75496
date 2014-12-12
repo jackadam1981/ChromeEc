@@ -122,6 +122,24 @@
       "revId": "d2d3c1d3b5138e2e44698e1c6d77d57da3a75496",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04a846f3_0b575d9c",
+        "filename": "common/vboot_hash_ext_spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2014-12-12T22:07:29Z",
+      "side": 1,
+      "message": "Vboot calculations were done for image that was residing in internal flash. In case of Mec the Flash is external and hence SPI transactions are needed to get the code and then perform Hash calculations. \n\nVic: This file changed can be made part of comon/vboot_hash.c. with a compile time option. Shall I go ahead and do so?",
+      "parentUuid": "9fee4133_1f7943b5",
+      "revId": "d2d3c1d3b5138e2e44698e1c6d77d57da3a75496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
