@@ -184,6 +184,15 @@ int pd_host_command(int command, int version,
 		task_wait_event(50*MSEC);
 	}
 
+	/*
+	 * If the i2c port for communicating with PD MCU has any mutex
+	 * waiters, then delay here to allow it to run, or else getting
+	 * a long series of host commands will block a lower priority
+	 * task for a long time.
+	 */
+	if (i2c_lock_waiters(I2C_PORT_PD_MCU))
+		task_wait_event(50*MSEC);
+
 	return rv;
 }
 

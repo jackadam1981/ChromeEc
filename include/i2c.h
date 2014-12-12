@@ -127,6 +127,13 @@ int i2c_raw_mode(int port, int enable);
 void i2c_lock(int port, int lock);
 
 /**
+ * Get number of lock waiters for i2c port mutex
+ * @param port          Port to query
+ * @return              Number of waiters for port mutex
+ */
+int i2c_lock_waiters(int port);
+
+/**
  * Set the timeout for an I2C transaction.
  *
  * @param port		Port to set timeout for

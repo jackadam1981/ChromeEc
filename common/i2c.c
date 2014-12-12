@@ -43,6 +43,11 @@ void i2c_lock(int port, int lock)
 	}
 }
 
+int i2c_lock_waiters(int port)
+{
+	return port_mutex[port].waiters;
+}
+
 int i2c_read16(int port, int slave_addr, int offset, int *data)
 {
 	int rv;
