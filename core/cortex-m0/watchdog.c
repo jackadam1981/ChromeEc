@@ -12,6 +12,8 @@
 #include "uart.h"
 #include "watchdog.h"
 
+void dump_stack_trace(uint32_t *current_location);
+
 void watchdog_trace(uint32_t excep_lr, uint32_t excep_sp)
 {
 	uint32_t psp;
@@ -26,6 +28,8 @@ void watchdog_trace(uint32_t excep_lr, uint32_t excep_sp)
 		stack = (uint32_t *)psp;
 	}
 
+	watchdog_reload();
+
 	panic_printf("### WATCHDOG PC=%08x / LR=%08x / pSP=%08x ",
 		     stack[6], stack[5], psp);
 	if ((excep_lr & 0xf) == 1)
@@ -37,4 +41,7 @@ void watchdog_trace(uint32_t excep_lr, uint32_t excep_sp)
 	 * messages might not appear but they are useless in that situation. */
 	timer_print_info();
 	task_print_list();
+
+	dump_stack_trace(stack);
+	while(1);
 }

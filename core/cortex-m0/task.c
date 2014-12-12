@@ -14,6 +14,7 @@
 #include "timer.h"
 #include "uart.h"
 #include "util.h"
+#include "watchdog.h"
 
 typedef union {
 	struct {
@@ -509,6 +510,48 @@ void task_print_list(void)
 	}
 }
 
+void dump_stack_trace(uint32_t *current_location) {
+	uint32_t *stack_entry;
+	int i;
+
+	ccprintf("Task stack contents:\n");
+	for (stack_entry = (uint32_t *)task_stacks; stack_entry < (uint32_t *)task_stacks + sizeof(task_stacks); stack_entry++) {
+		ccprintf("[%08x] = %08x",stack_entry,*stack_entry);
+
+		for (i = 0; i < TASK_ID_COUNT; i++) {
+			if (stack_entry == tasks[i].stack)
+				ccprintf(" VV Task %d VV", i);
+			if ((uint32_t)stack_entry == tasks[i].sp)
+				ccprintf(" *Task %d", i);
+		}
+
+		if (((*stack_entry) & 0xff000000) == 0x08000000)
+			ccprintf(" function? %x", (*stack_entry)&(~0x1));
+
+		if (stack_entry == current_location)
+			ccprintf(" current location");
+
+		ccprintf("\n");
+		cflush();
+		watchdog_reload();
+	}
+	ccprintf("End of task stacks");
+
+	if ((stack_entry < (uint32_t *)task_stacks) || (stack_entry >= (uint32_t *)task_stacks + sizeof(task_stacks))) {
+		stack_entry = current_location;
+		ccprintf("\nOutside tasks:\n");
+		while(*stack_entry != STACK_UNUSED_VALUE) {
+			ccprintf("[%08x] = %08x",stack_entry,*stack_entry);
+			if (((*stack_entry) & 0xff000000) == 0x08000000)
+				ccprintf(" function? %x", (*stack_entry)&(~0x1));
+			ccprintf("\n");
+			stack_entry++;
+			cflush();
+			watchdog_reload();
+		}
+	}
+}
+
 int command_task_info(int argc, char **argv)
 {
 #ifdef CONFIG_TASK_PROFILING
@@ -535,6 +578,10 @@ int command_task_info(int argc, char **argv)
 		 get_time().val - task_start_time);
 	ccprintf("Time in exceptions:     %11.6ld s\n", exc_total_time);
 #endif
+
+
+
+	while(1);
 
 	return EC_SUCCESS;
 }
