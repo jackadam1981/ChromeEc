@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "64a1020c_eeebff03",
+        "filename": "common/firmware_image.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2014-12-12T21:30:23Z",
+      "side": 1,
+      "message": "Sheng: WHat ever you are suggesting has to be made part of this section. It will be applicable to all ECs not just Mec. Just FYI.",
+      "revId": "0dd94972d798dee36ce1ea70539b097e58591136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4b77a4b_b06e78ed",
+        "filename": "common/firmware_image.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2014-12-12T21:30:23Z",
+      "side": 1,
+      "message": "Please Note: This end byte added to end of RW image was removed because SW sync would always show Hash mismatch as coreboot RW image did not have this. Not sure how other products worked. Please advice.",
+      "revId": "0dd94972d798dee36ce1ea70539b097e58591136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4eaaeee_058e6213",
         "filename": "common/system.c",
         "patchSetId": 1
