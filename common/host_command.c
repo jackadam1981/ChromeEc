@@ -387,11 +387,30 @@ static void host_command_init(void)
 
 void host_command_task(void)
 {
+	uint64_t t0, t1, t_recess;
+	int evt;
 	host_command_init();
 
 	while (1) {
 		/* Wait for the next command event */
-		int evt = task_wait_event(-1);
+		t0 = get_time().val;
+		evt = task_wait_event(-1);
+		t1 = get_time().val;
+
+		/*
+		 * If AP is sending HCs at a high frequency, add in a forced
+		 * recess to allow other lower priority tasks the opportunity
+		 * to run.
+		 */
+		if (t1 - t0 < 3*MSEC) {
+			if (t1 - t_recess > 500*MSEC) {
+				/* Short recess */
+				usleep(50*MSEC);
+				t_recess = get_time().val;
+			}
+		} else {
+			t_recess = t1;
+		}
 
 		/* Process it */
 		if ((evt & TASK_EVENT_CMD_PENDING) && pending_args) {
