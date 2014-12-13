@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2499caf9_1c73f555",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-13T02:13:07Z",
+      "side": 1,
+      "message": "for the record, when the AP is sending HC\u0027s in a tight loop, such as the kernel driver for zinger updates, this host command task is only able to sleep for about 150us. and of course, when it does sleep, there are likely other lower priority tasks pending, like the charger task, so it\u0027s not surprising that hooks task gets starved.",
+      "range": {
+        "startLine": 405,
+        "startChar": 16,
+        "endLine": 405,
+        "endChar": 22
+      },
+      "revId": "b0e260753af8d5f8e9e4e0ef27297324968f3a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2499caf9_1c5a15c6",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-13T02:13:07Z",
+      "side": 1,
+      "message": "i\u0027m seeing that the charger task takes somewhere around 20ms to run. so, this delay has to be at least that long in order to allow hooks task to run.",
+      "range": {
+        "startLine": 408,
+        "startChar": 11,
+        "endLine": 408,
+        "endChar": 18
+      },
+      "revId": "b0e260753af8d5f8e9e4e0ef27297324968f3a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
