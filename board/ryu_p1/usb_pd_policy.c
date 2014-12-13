@@ -230,11 +230,3 @@ static int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 
 	return 0;
 }
-
-int pd_vdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
-{
-	if (PD_VDO_SVDM(payload[0]))
-		return pd_svdm(port, cnt, payload, rpayload);
-	else
-		return pd_custom_vdm(port, cnt, payload, rpayload);
-}
