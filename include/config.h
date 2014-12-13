@@ -616,6 +616,17 @@
 #undef CONFIG_HOST_COMMAND_STATUS
 
 /*
+ * Host command rate limiting assures EC will have time to process lower
+ * priority tasks even if the AP is hammering the EC with host commands.
+ * If there is less than CONFIG_HOST_COMMAND_RATE_LIMITING_THRESH between
+ * host commands for 500 milliseconds, then a recess period of
+ * CONFIG_HOST_COMMAND_RATE_LIMITING_RECESS will be enforced.
+ */
+#define CONFIG_HOST_COMMAND_RATE_LIMITING
+#define CONFIG_HOST_COMMAND_RATE_LIMITING_THRESH (3  * MSEC)
+#define CONFIG_HOST_COMMAND_RATE_LIMITING_RECESS (20 * MSEC)
+
+/*
  * For ECs where the host command interface is I2C, slave
  * address which the EC will respond to.
  */

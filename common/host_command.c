@@ -387,11 +387,20 @@ static void host_command_init(void)
 
 void host_command_task(void)
 {
+#ifdef CONFIG_HOST_COMMAND_RATE_LIMITING
+	timestamp_t t0, t1, t_recess;
+	t_recess.val = 0;
+	t1.val = 0;
+#endif
+
 	host_command_init();
 
 	while (1) {
 		/* Wait for the next command event */
 		int evt = task_wait_event(-1);
+#ifdef CONFIG_HOST_COMMAND_RATE_LIMITING
+		t0 = get_time();
+#endif
 
 		/* Process it */
 		if ((evt & TASK_EVENT_CMD_PENDING) && pending_args) {
@@ -399,6 +408,21 @@ void host_command_task(void)
 					host_command_process(pending_args);
 			host_send_response(pending_args);
 		}
+
+#ifdef CONFIG_HOST_COMMAND_RATE_LIMITING
+		/* reset rate limiting if we have slept enough */
+		if (t0.val - t1.val > CONFIG_HOST_COMMAND_RATE_LIMITING_THRESH)
+			t_recess = t0;
+
+		t1 = get_time();
+		/*
+		 * rate limiting : check how long we have gone without a
+		 * significant interruption to avoid DOS from host
+		 */
+		if (t1.val - t_recess.val > 500*MSEC)
+			/* Short recess */
+			usleep(CONFIG_HOST_COMMAND_RATE_LIMITING_RECESS);
+#endif
 	}
 }
 
