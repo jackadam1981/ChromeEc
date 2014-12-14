@@ -12,9 +12,8 @@ build-util-bin=ec_uartd iteflash
 comm-objs=$(util-lock-objs:%=lock/%) comm-host.o comm-dev.o
 ifeq ($(CHIP),mec1322)
 comm-objs+=comm-mec1322.o
-else
-comm-objs+=comm-lpc.o
 endif
+comm-objs+=comm-lpc.o
 comm-objs+=comm-i2c.o
 
 ectool-objs=ectool.o ectool_keyscan.o misc_util.o ec_flash.o $(comm-objs)
