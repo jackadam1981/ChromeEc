@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44231e8e_a81d5391",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-15T21:00:00Z",
+      "side": 1,
+      "message": "can you just call pd_send_vdm()? or I guess, since that function also wakes the task, which we don\u0027t want to do here, you can create a new inline function to copy VDO data to buffer and call it as part of pd_send_vdm():\n\n/* Copy data into VDO output buffer and set VDO ready. The VDM state machine will automatically send in PD task */\nstatic inline void pd_queue_vdm(int port, uint32_t *data, int len)\n{\n  pd[port].vdm_state \u003d VDM_STATE_READY;\n  pd[port].vdo_count \u003d len;\n  memcpy(pd[port].vdo_data, data, sizeof(uint32_t) * len);\n}",
+      "range": {
+        "startLine": 687,
+        "startChar": 2,
+        "endLine": 689,
+        "endChar": 60
+      },
+      "revId": "c1350dda63812629216c85dc0232970d3b260ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44231e8e_05a1f231",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2023,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-15T21:00:00Z",
+      "side": 1,
+      "message": "Now that we aren\u0027t sending VDM responses immediately in handle_requet(), we should be able to change this condition so that PDOs have higher priority:\n\n/* Do not send any PDOs if waiting for VDM response */\nif (pd[port].vdm_state \u003d\u003d VDM_STATE_BUSY)\n\nA couple things though. we need to change this in SRC_READY also. and we probably need to add code to the VDM state machine not to send a new VDO unless state is SRC_READY or SNK_READY, because if we give priority to PDOs, then we could transition to a DR_SWAP, PR_SWAP, or REQUEST state here, and we wouldn\u0027t want to send a VDO immediately after sending a power request. Basically, if a VDO is pending we shouldn\u0027t send a PDO, and if a PDO is pending we shouldn\u0027t send a VDO, and PDOs should have higher priority.",
+      "range": {
+        "startLine": 2023,
+        "startChar": 3,
+        "endLine": 2023,
+        "endChar": 23
+      },
+      "revId": "c1350dda63812629216c85dc0232970d3b260ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
