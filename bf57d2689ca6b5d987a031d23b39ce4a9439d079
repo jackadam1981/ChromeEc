@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2420ea81_c4299e26",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-15T21:01:25Z",
+      "side": 1,
+      "message": "bikeshedding nit: for symmetry, would be nice to rename to pd_cvdm, or rename other one to pd_standard_vdm.",
+      "range": {
+        "startLine": 688,
+        "startChar": 9,
+        "endLine": 688,
+        "endChar": 22
+      },
+      "revId": "bf57d2689ca6b5d987a031d23b39ce4a9439d079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
