@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4370ec2_29316d0b",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-15T16:57:07Z",
+      "side": 1,
+      "message": "replace with PD constant for time window",
+      "range": {
+        "startLine": 308,
+        "startChar": 35,
+        "endLine": 308,
+        "endChar": 37
+      },
+      "revId": "4f8c13fe40111564be25dcba01e18abc8afbe1c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "846356c3_3ab27d68",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-15T16:57:07Z",
+      "side": 1,
+      "message": "rename to rx_edge_ts",
+      "range": {
+        "startLine": 450,
+        "startChar": 19,
+        "endLine": 450,
+        "endChar": 21
+      },
+      "revId": "4f8c13fe40111564be25dcba01e18abc8afbe1c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "846356c3_7abcf539",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-15T16:57:07Z",
+      "side": 1,
+      "message": "rename to rx_edge_ts_idx",
+      "range": {
+        "startLine": 451,
+        "startChar": 11,
+        "endLine": 451,
+        "endChar": 17
+      },
+      "revId": "4f8c13fe40111564be25dcba01e18abc8afbe1c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
