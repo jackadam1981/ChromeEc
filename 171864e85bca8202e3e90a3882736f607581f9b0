@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44c79ed5_e86e4b1c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1364,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-12-15T07:09:08Z",
+      "side": 1,
+      "message": "will remove these xtra brackets.",
+      "range": {
+        "startLine": 1364,
+        "startChar": 47,
+        "endLine": 1364,
+        "endChar": 48
+      },
+      "revId": "171864e85bca8202e3e90a3882736f607581f9b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

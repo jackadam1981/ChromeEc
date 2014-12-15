@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44c79ed5_c8738f04",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-12-15T07:09:08Z",
+      "side": 0,
+      "message": "this was completely wrong ... should have been \u0026\u003d ~.  Now migrated to handle_vdm_request so we can retry.",
+      "range": {
+        "startLine": 392,
+        "startChar": 3,
+        "endLine": 392,
+        "endChar": 37
+      },
+      "revId": "bf57d2689ca6b5d987a031d23b39ce4a9439d079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
