@@ -16,6 +16,24 @@
       "revId": "11376529a64797a0d0aa4a24a16e953ca3c4a047",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "01ccb852_b10c18ac",
+        "filename": "driver/mcdp28x0.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-12-16T22:56:19Z",
+      "side": 1,
+      "message": "You\u0027re correct ... memcpy is in queue.c.\n\nI\u0027ve added buffers to copy into/out of and have minimized their size since I only have the one command anyways.",
+      "parentUuid": "816b48dc_77ee9047",
+      "revId": "11376529a64797a0d0aa4a24a16e953ca3c4a047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
