@@ -77,7 +77,7 @@ void usart1_interrupt(void)
 	usart_interrupt(configs[0]);
 }
 
-DECLARE_IRQ(STM32_IRQ_USART1, usart1_interrupt, 2);
+DECLARE_IRQ(STM32_IRQ_USART1, usart1_interrupt, 0);
 #endif
 
 #if defined(CONFIG_STREAM_USART2)
@@ -95,7 +95,7 @@ void usart2_interrupt(void)
 	usart_interrupt(configs[1]);
 }
 
-DECLARE_IRQ(STM32_IRQ_USART2, usart2_interrupt, 2);
+DECLARE_IRQ(STM32_IRQ_USART2, usart2_interrupt, 0);
 #endif
 
 #if defined(CONFIG_STREAM_USART3)
@@ -113,5 +113,5 @@ void usart3_interrupt(void)
 	usart_interrupt(configs[2]);
 }
 
-DECLARE_IRQ(STM32_IRQ_USART3, usart3_interrupt, 2);
+DECLARE_IRQ(STM32_IRQ_USART3, usart3_interrupt, 0);
 #endif

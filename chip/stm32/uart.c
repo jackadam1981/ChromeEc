@@ -214,7 +214,7 @@ void uart_interrupt(void)
 		STM32_USART_CR1(UARTN_BASE) |= STM32_USART_CR1_TXEIE;
 #endif
 }
-DECLARE_IRQ(STM32_IRQ_USART(UARTN), uart_interrupt, 2);
+DECLARE_IRQ(STM32_IRQ_USART(UARTN), uart_interrupt, 0);
 
 /**
  * Handle clock frequency changes
