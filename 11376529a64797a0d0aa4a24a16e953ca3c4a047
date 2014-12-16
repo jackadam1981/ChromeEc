@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "816b48dc_77ee9047",
+        "filename": "driver/mcdp28x0.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-16T20:13:46Z",
+      "side": 1,
+      "message": "I think the buffering is still not quite right.\n\nIf I understand properly the stream code, out_stream_write will copy from outbuf (aka usart_mcdp_tx_buffer) to usart_mcdp.out.buffer (which is also usart_mcdp_tx_buffer).",
+      "revId": "11376529a64797a0d0aa4a24a16e953ca3c4a047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
