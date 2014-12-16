@@ -33,6 +33,29 @@
       "revId": "d92827a069e8250e765678283cfbfb2b415b68fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1e7a492_8b41d56c",
+        "filename": "common/host_command.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-16T16:42:07Z",
+      "side": 1,
+      "message": "Bikeshedding: Remove CONFIG_HOST_RATE_LIMITING as Vincent suggests, but make a config or constant for 500*MSEC.  Does this need to be defined in terms of the tick rate (or watchdog timeout)?",
+      "range": {
+        "startLine": 422,
+        "startChar": 30,
+        "endLine": 422,
+        "endChar": 38
+      },
+      "revId": "d92827a069e8250e765678283cfbfb2b415b68fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
