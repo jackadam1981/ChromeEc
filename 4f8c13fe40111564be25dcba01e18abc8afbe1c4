@@ -85,6 +85,24 @@
       "revId": "4f8c13fe40111564be25dcba01e18abc8afbe1c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "214c5c8a_e4f63a6d",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-16T17:55:33Z",
+      "side": 1,
+      "message": "I only need to disable sleep for Zinger (and Minimuffin), because for other boards it\u0027s already disabled. But, the function is inline and is a simple |\u003d, so it won\u0027t add much to interrupt latency, so I just added it for all boards.",
+      "parentUuid": "214c5c8a_a4c3a234",
+      "revId": "4f8c13fe40111564be25dcba01e18abc8afbe1c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
