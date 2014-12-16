@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81442858_0f6de56e",
+        "filename": "board/hoho/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-16T16:31:09Z",
+      "side": 1,
+      "message": "do we want to delay this by 200ms ?",
+      "revId": "bbb77b3365b64dd791f627d681b5f1f2fa03c3e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81442858_cf6ebd69",
+        "filename": "board/hoho/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-16T16:31:09Z",
+      "side": 1,
+      "message": "that\u0027s weak validation\nthe chipid is not known beforehands ?",
+      "revId": "bbb77b3365b64dd791f627d681b5f1f2fa03c3e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6129f484_ce85a39b",
+        "filename": "driver/mcdp28x0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-16T16:31:09Z",
+      "side": 1,
+      "message": "is the 64, 64 above, OUTBUF_MAX and INBUF_MAX ?",
+      "revId": "bbb77b3365b64dd791f627d681b5f1f2fa03c3e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6129f484_8e7f9bfd",
+        "filename": "driver/mcdp28x0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-16T16:31:09Z",
+      "side": 1,
+      "message": "that\u0027s a pretty large buffer on the stack for not much.\ncan we do 3 out_stream_write rather than having a large buffer and memcpy\u0027ing ?\n(particularly since the USART_CONFIG macro above already allocated 2 64-byte buffers)",
+      "revId": "bbb77b3365b64dd791f627d681b5f1f2fa03c3e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6129f484_0e016b77",
+        "filename": "driver/mcdp28x0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-16T16:31:09Z",
+      "side": 1,
+      "message": "cprintf bikeshedding of the day :\nthe usual style is to use a CPRINTF macro",
+      "revId": "bbb77b3365b64dd791f627d681b5f1f2fa03c3e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81442858_6fac712e",
+        "filename": "driver/mcdp28x0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-16T16:31:09Z",
+      "side": 1,
+      "message": "actually you already have a queue in the usart_stream layer.\nmaybe the API is not really convenient but you could read it only once (but you would have to poll on the QUEUE filling status, so that might not be really better)",
+      "revId": "bbb77b3365b64dd791f627d681b5f1f2fa03c3e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81442858_8f78b52d",
+        "filename": "driver/mcdp28x0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-16T16:31:09Z",
+      "side": 1,
+      "message": "inbuf needs to be be only 15 bytes, doesn\u0027t it ?",
+      "revId": "bbb77b3365b64dd791f627d681b5f1f2fa03c3e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6129f484_ee05ff83",
+        "filename": "driver/mcdp28x0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-16T16:31:09Z",
+      "side": 1,
+      "message": "that\u0027s an open-coded memcpy, but probably some people think it\u0027s cleaner vs ABI and endianess",
+      "revId": "bbb77b3365b64dd791f627d681b5f1f2fa03c3e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
