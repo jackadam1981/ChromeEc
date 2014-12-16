@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1154030_9c1b690d",
+        "filename": "board/samus/extpower.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-16T01:08:39Z",
+      "side": 1,
+      "message": "you can write this :\ntask_wake(TASK_ID_EXTPOWER);",
+      "revId": "7658f0ca62adfb6872b53577c023ddd7ae559323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1154030_dc6e8169",
+        "filename": "board/samus/extpower.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-16T01:08:39Z",
+      "side": 1,
+      "message": "As far as I can tell, you never update the \"extpower\" local variable. Is that your intent ?\nI don\u0027t think so.",
+      "revId": "7658f0ca62adfb6872b53577c023ddd7ae559323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
