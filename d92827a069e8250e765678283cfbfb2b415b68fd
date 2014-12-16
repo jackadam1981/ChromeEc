@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1154030_1f118b49",
+        "filename": "common/host_command.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-16T01:49:43Z",
+      "side": 1,
+      "message": "given it\u0027s defined by default,\nI think having this config variable just add clutter,\nI would vote in favor of removing it",
+      "revId": "d92827a069e8250e765678283cfbfb2b415b68fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2420ea81_38f3717d",
+        "filename": "common/host_command.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-16T01:49:43Z",
+      "side": 1,
+      "message": "s/DOS/DoS/",
+      "revId": "d92827a069e8250e765678283cfbfb2b415b68fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
