@@ -7,9 +7,11 @@
 #include "adc.h"
 #include "adc_chip.h"
 #include "common.h"
+#include "console.h"
 #include "ec_version.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "mcdp28x0.h"
 #include "registers.h"
 #include "task.h"
 #include "usb.h"
@@ -135,6 +137,17 @@ static int is_mcdp_alive(void)
 {
 	return 1;
 }
+
+static void factory_validation_deferred(void)
+{
+	struct mcdp_info info;
+
+	mcdp_init();
+	gpio_set_level(GPIO_STM_READY, 1);
+	if (!mcdp_get_info(&info))
+		gpio_set_level(GPIO_MCDP_READY, 1);
+}
+DECLARE_DEFERRED(factory_validation_deferred);
 
 /* Initialize board. */
 static void board_init(void)
