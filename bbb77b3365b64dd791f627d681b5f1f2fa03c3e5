@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e1108440_a0471e18",
+        "filename": "board/hoho/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-12-16T19:41:24Z",
+      "side": 1,
+      "message": "No.  meant to remove as its already asserted below and have now ;)",
+      "parentUuid": "81442858_0f6de56e",
+      "revId": "bbb77b3365b64dd791f627d681b5f1f2fa03c3e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81442858_cf6ebd69",
         "filename": "board/hoho/board.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2014-12-16T16:31:09Z",
       "side": 1,
       "message": "that\u0027s weak validation\nthe chipid is not known beforehands ?",
+      "revId": "bbb77b3365b64dd791f627d681b5f1f2fa03c3e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e18324c3_22d44e52",
+        "filename": "board/hoho/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-12-16T19:41:24Z",
+      "side": 1,
+      "message": "Need to confirm _what_ vendor feels is best as datasheet doesn\u0027t divulge much.  Have sent email to FAE to confirm chipid and have added speculatively",
+      "parentUuid": "81442858_cf6ebd69",
       "revId": "bbb77b3365b64dd791f627d681b5f1f2fa03c3e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "81926810_5fca8baf",
+        "filename": "driver/mcdp28x0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-12-16T19:41:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6129f484_ce85a39b",
+      "revId": "bbb77b3365b64dd791f627d681b5f1f2fa03c3e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6129f484_8e7f9bfd",
         "filename": "driver/mcdp28x0.c",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2014-12-16T16:31:09Z",
       "side": 1,
       "message": "that\u0027s a pretty large buffer on the stack for not much.\ncan we do 3 out_stream_write rather than having a large buffer and memcpy\u0027ing ?\n(particularly since the USART_CONFIG macro above already allocated 2 64-byte buffers)",
+      "revId": "bbb77b3365b64dd791f627d681b5f1f2fa03c3e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "816b48dc_57f34c01",
+        "filename": "driver/mcdp28x0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-12-16T19:41:24Z",
+      "side": 1,
+      "message": "Agreed.  Just using the buffers allocated by macro now.",
+      "parentUuid": "6129f484_8e7f9bfd",
       "revId": "bbb77b3365b64dd791f627d681b5f1f2fa03c3e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "816b48dc_77f8d0da",
+        "filename": "driver/mcdp28x0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-12-16T19:41:24Z",
+      "side": 1,
+      "message": "Done.  Used CC_USBPD ... is there something more applicable?  Should I add another channel?",
+      "parentUuid": "6129f484_0e016b77",
+      "revId": "bbb77b3365b64dd791f627d681b5f1f2fa03c3e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81442858_6fac712e",
         "filename": "driver/mcdp28x0.c",
         "patchSetId": 2
@@ -98,6 +188,24 @@
       "writtenOn": "2014-12-16T16:31:09Z",
       "side": 1,
       "message": "actually you already have a queue in the usart_stream layer.\nmaybe the API is not really convenient but you could read it only once (but you would have to poll on the QUEUE filling status, so that might not be really better)",
+      "revId": "bbb77b3365b64dd791f627d681b5f1f2fa03c3e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "417dd09e_95e7a43d",
+        "filename": "driver/mcdp28x0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-12-16T19:41:24Z",
+      "side": 1,
+      "message": "Not sure either.  In practice I get read\u003d\u003d0 on first attempt and read \u003d\u003d cnt on first retry so I simply need a delay between tx \u0026 rx.  As for queue stuff it seemed like additional complication for this simplified use case.\n\nOpen to further suggestions of course.",
+      "parentUuid": "81442858_6fac712e",
       "revId": "bbb77b3365b64dd791f627d681b5f1f2fa03c3e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "618014c5_d63444ff",
+        "filename": "driver/mcdp28x0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-12-16T19:41:24Z",
+      "side": 1,
+      "message": "Just using usart_mcdp_rx_buffer",
+      "parentUuid": "81442858_8f78b52d",
+      "revId": "bbb77b3365b64dd791f627d681b5f1f2fa03c3e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6129f484_ee05ff83",
         "filename": "driver/mcdp28x0.c",
         "patchSetId": 2
@@ -132,6 +258,24 @@
       "writtenOn": "2014-12-16T16:31:09Z",
       "side": 1,
       "message": "that\u0027s an open-coded memcpy, but probably some people think it\u0027s cleaner vs ABI and endianess",
+      "revId": "bbb77b3365b64dd791f627d681b5f1f2fa03c3e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "417dd09e_f5037834",
+        "filename": "driver/mcdp28x0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-12-16T19:41:24Z",
+      "side": 1,
+      "message": "tried memcpy but the halfwords are rotated. i.e. info-\u003efamily \u003d\u003d 0x0e00 instead of 0x000e.\n\nIf I make family, chipid 2byte arrays then I can do as you suggest via macro and have done so.",
+      "parentUuid": "6129f484_ee05ff83",
       "revId": "bbb77b3365b64dd791f627d681b5f1f2fa03c3e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
