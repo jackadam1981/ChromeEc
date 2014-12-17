@@ -86,37 +86,37 @@ static uint32_t peci_trans (
 {
 	uint32_t events;
 	/* Ensure no PECI transaction is in progress */
-	if (IS_BIT_SET(NUCMX_PECI_CTL_STS, NUCMX_PECI_CTL_STS_START_BUSY))
+	if (IS_BIT_SET(NPCX_PECI_CTL_STS, NPCX_PECI_CTL_STS_START_BUSY))
 	{
 		/* PECI transaction is in progress - can not initiate a new one */
 		return(0);
 	}
 	/* Set basic transaction parameters */
-	NUCMX_PECI_ADDR = PROC_SOCKET;
-	NUCMX_PECI_CMD = cmd_code;
+	NPCX_PECI_ADDR = PROC_SOCKET;
+	NPCX_PECI_CMD = cmd_code;
 	/* Aviod over space */
 	if(rd_length>PECI_MAX_FIFO_SIZE)
 		rd_length =PECI_MAX_FIFO_SIZE;
 	/* Read-Length */
-	NUCMX_PECI_RD_LENGTH = rd_length;
+	NPCX_PECI_RD_LENGTH = rd_length;
 	if(wr_length>PECI_MAX_FIFO_SIZE)
 		wr_length =PECI_MAX_FIFO_SIZE;
 	/* copy of data */
 	for(events=0;events<wr_length;events++)
-		NUCMX_PECI_DATA_OUT(events) =wr_data[events];
+		NPCX_PECI_DATA_OUT(events) =wr_data[events];
 	/* Write-Length */		
 	if(cmd_code != PECI_COMMAND_PING){
 		if((cmd_code == PECI_COMMAND_WR_PKG_CFG) || (cmd_code == PECI_COMMAND_WR_PCI_CFG_LOCAL)){
-			NUCMX_PECI_WR_LENGTH = wr_length+2;	/*CMD+AWFCS*/
-			SET_BIT(NUCMX_PECI_CTL_STS, NUCMX_PECI_CTL_STS_AWFCS_EN);/* Enable AWFCS */
+			NPCX_PECI_WR_LENGTH = wr_length+2;	/*CMD+AWFCS*/
+			SET_BIT(NPCX_PECI_CTL_STS, NPCX_PECI_CTL_STS_AWFCS_EN);/* Enable AWFCS */
 		}else{
-			NUCMX_PECI_WR_LENGTH = wr_length+1;	/*CMD*/
-			CLEAR_BIT(NUCMX_PECI_CTL_STS, NUCMX_PECI_CTL_STS_AWFCS_EN);/* Enable AWFCS */	
+			NPCX_PECI_WR_LENGTH = wr_length+1;	/*CMD*/
+			CLEAR_BIT(NPCX_PECI_CTL_STS, NPCX_PECI_CTL_STS_AWFCS_EN);/* Enable AWFCS */
 		}		
 	}
 		
 	/* Start the PECI transaction */
-	SET_BIT(NUCMX_PECI_CTL_STS, NUCMX_PECI_CTL_STS_START_BUSY);
+	SET_BIT(NPCX_PECI_CTL_STS, NPCX_PECI_CTL_STS_START_BUSY);
 
 	/* It should be using a interrupt , don't waste cpu computing power */ 
 	PECI_Pending_TaskID =task_get_current();
@@ -154,7 +154,7 @@ int peci_get_cpu_temp(void)
 		}else{
 			uint16_t *ptr;
 			ptr =(uint16_t*)&cpu_temp;
-			ptr[0] = (NUCMX_PECI_DATA_IN(1)<<8)|(NUCMX_PECI_DATA_IN(0)<<0);
+			ptr[0] = (NPCX_PECI_DATA_IN(1)<<8)|(NPCX_PECI_DATA_IN(0)<<0);
 		}
 	}
 	return ((int)cpu_temp);
@@ -210,7 +210,7 @@ static void peci_freq_changed(void)
 	int baud = 0xF;
 
 	/* Disable polling while reconfiguring */
-	NUCMX_PECI_CTL_STS = 0;
+	NPCX_PECI_CTL_STS = 0;
 
 	/*-----------------------------------------------------------------------------------------------------*/
     /* Set the maximum bit rate used by the PECI module during both Address Timing Negotiation and Data    */
@@ -230,14 +230,14 @@ static void peci_freq_changed(void)
 	}
 	/* Enhanced High-Speed */
 	if(baud>=7){
-		CLEAR_BIT(NUCMX_PECI_RATE,6);
-		CLEAR_BIT(NUCMX_PECI_CFG,3);
+		CLEAR_BIT(NPCX_PECI_RATE,6);
+		CLEAR_BIT(NPCX_PECI_CFG,3);
 	}else{
-		SET_BIT(NUCMX_PECI_RATE,6);
-		SET_BIT(NUCMX_PECI_CFG,3);
+		SET_BIT(NPCX_PECI_RATE,6);
+		SET_BIT(NPCX_PECI_CFG,3);
 	}
 	/* Setting Rate */
-	NUCMX_PECI_RATE = baud;
+	NPCX_PECI_RATE = baud;
 }
 DECLARE_HOOK(HOOK_FREQ_CHANGE, peci_freq_changed, HOOK_PRIO_DEFAULT);
 
@@ -246,7 +246,7 @@ static void peci_init(void)
 	int i;
 
 	/* make sure PECI_DATA function pin enable */
-	CLEAR_BIT(NUCMX_DEVALT(0x0A),6);
+	CLEAR_BIT(NPCX_DEVALT(0x0A),6);
 	/* Set initial clock frequency */	
 	peci_freq_changed();
 	/* Initialize temperature reading buffer to a sane value. */
@@ -255,8 +255,8 @@ static void peci_init(void)
 	/* init Pending task id */
 	PECI_Pending_TaskID =NULL_PENDING_TASK_ID;	
 	/* Enable PECI Done interrupt */
-	SET_BIT(NUCMX_PECI_CTL_STS, NUCMX_PECI_CTL_STS_DONE_EN);
-	task_enable_irq(NUCMX_IRQ_PECI);
+	SET_BIT(NPCX_PECI_CTL_STS, NPCX_PECI_CTL_STS_DONE_EN);
+	task_enable_irq(NPCX_IRQ_PECI);
 }
 DECLARE_HOOK(HOOK_INIT, peci_init, HOOK_PRIO_DEFAULT);
 
@@ -267,13 +267,13 @@ DECLARE_HOOK(HOOK_INIT, peci_init, HOOK_PRIO_DEFAULT);
 void peci_done_interrupt(void){
 	if(PECI_Pending_TaskID!=NULL_PENDING_TASK_ID)
 		task_set_event(PECI_Pending_TaskID, TASK_EVENT_PECI_DONE, 0);
-	PECI_STS =NUCMX_PECI_CTL_STS&0x18;
+	PECI_STS =NPCX_PECI_CTL_STS&0x18;
 	/* no matter what, clear status bit again */
-	SET_BIT(NUCMX_PECI_CTL_STS,NUCMX_PECI_CTL_STS_DONE);
-	SET_BIT(NUCMX_PECI_CTL_STS,NUCMX_PECI_CTL_STS_CRC_ERR);
-	SET_BIT(NUCMX_PECI_CTL_STS,NUCMX_PECI_CTL_STS_ABRT_ERR);	
+	SET_BIT(NPCX_PECI_CTL_STS,NPCX_PECI_CTL_STS_DONE);
+	SET_BIT(NPCX_PECI_CTL_STS,NPCX_PECI_CTL_STS_CRC_ERR);
+	SET_BIT(NPCX_PECI_CTL_STS,NPCX_PECI_CTL_STS_ABRT_ERR);
 }
-DECLARE_IRQ(NUCMX_IRQ_PECI, peci_done_interrupt, 2);	
+DECLARE_IRQ(NPCX_IRQ_PECI, peci_done_interrupt, 2);
 
 /*****************************************************************************/
 /* Console commands */

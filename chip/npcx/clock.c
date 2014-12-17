@@ -81,7 +81,7 @@ void clock_enable_peripheral(uint32_t offset, uint32_t mask, uint32_t mode)
 	uint8_t reg_mask = mask & 0xff;
 
 	/* Set PD bit to 0 */
-	NUCMX_PWDWN_CTL(offset) &= ~reg_mask;
+	NPCX_PWDWN_CTL(offset) &= ~reg_mask;
 	/* Wait for clock change to take affect. */
 	clock_wait_cycles(3);
 }
@@ -100,7 +100,7 @@ void clock_disable_peripheral(uint32_t offset, uint32_t mask, uint32_t mode)
 	uint8_t reg_mask = mask & 0xff;
 
 	/* Set PD bit to 1 */
-	NUCMX_PWDWN_CTL(offset) |= reg_mask;
+	NPCX_PWDWN_CTL(offset) |= reg_mask;
 
 }
 
@@ -113,18 +113,18 @@ void clock_disable_peripheral(uint32_t offset, uint32_t mask, uint32_t mode)
 void clock_init(void)
 {
     /* Configure Frequency multiplier values according to the requested FMCLK Clock Frequency */
-    NUCMX_HFCGN  = HFCGN;
-    NUCMX_HFCGML = HFCGML;
-    NUCMX_HFCGMH = HFCGMH;
+    NPCX_HFCGN  = HFCGN;
+    NPCX_HFCGML = HFCGML;
+    NPCX_HFCGMH = HFCGMH;
 
     /* Load M and N values into the frequency multiplier */
-    SET_BIT(NUCMX_HFCGCTRL, NUCMX_HFCGCTRL_LOAD);
+    SET_BIT(NPCX_HFCGCTRL, NPCX_HFCGCTRL_LOAD);
 
     /* Wait for stable */
-    while(IS_BIT_SET(NUCMX_HFCGCTRL,NUCMX_HFCGCTRL_CLK_CHNG));
+    while(IS_BIT_SET(NPCX_HFCGCTRL,NPCX_HFCGCTRL_CLK_CHNG));
 
     /* Keep Core CLK & FMCLK are the same */
-    NUCMX_HFCGP = 0x00;
+    NPCX_HFCGP = 0x00;
 
     freq = OSC_CLK;
 
@@ -145,7 +145,7 @@ int clock_get_freq(void)
  */
 int clock_get_apb1_freq(void)
 {
-	int apb1_div = (NUCMX_HFCBCD & 0x03) + 1;
+	int apb1_div = (NPCX_HFCBCD & 0x03) + 1;
 	return freq/apb1_div;
 }
 
@@ -154,7 +154,7 @@ int clock_get_apb1_freq(void)
  */
 int clock_get_apb2_freq(void)
 {
-	int apb2_div = ((NUCMX_HFCBCD>>2)& 0x03) + 1;
+	int apb2_div = ((NPCX_HFCBCD>>2)& 0x03) + 1;
 	return freq/apb2_div;
 }
 
@@ -182,36 +182,36 @@ void clock_refresh_console_in_use(void)
 
 void clock_uart2gpio(void){
 	/* Is pimux to UART? */
-	if(IS_BIT_SET(NUCMX_DEVALT(0x0A), NUCMX_DEVALTA_UART_SL)){	
+	if(IS_BIT_SET(NPCX_DEVALT(0x0A), NPCX_DEVALTA_UART_SL)){
 		/* Change pinmux to GPIO and disable UART IRQ */
-		task_disable_irq(NUCMX_IRQ_UART);
-		CLEAR_BIT(NUCMX_DEVALT(0x0A), NUCMX_DEVALTA_UART_SL);
+		task_disable_irq(NPCX_IRQ_UART);
+		CLEAR_BIT(NPCX_DEVALT(0x0A), NPCX_DEVALTA_UART_SL);
 
 		/*Enable MIWU for GPIO (UARTRX) */
-		SET_BIT(NUCMX_WKEN(1,1),0);
+		SET_BIT(NPCX_WKEN(1,1),0);
 		/* Clear Pending bit of GPIO (UARTRX) */
-		if(IS_BIT_SET(NUCMX_WKPND(1,1),0))
-			SET_BIT(NUCMX_WKPCL(1,1),0);
+		if(IS_BIT_SET(NPCX_WKPND(1,1),0))
+			SET_BIT(NPCX_WKPCL(1,1),0);
 		/* Disable MIWU IRQ */
-		task_disable_irq(NUCMX_IRQ_WKINTB_1);	
+		task_disable_irq(NPCX_IRQ_WKINTB_1);
 	}
 }
 
 void clock_gpio2uart(void){
 	/* Is Pending bit of GPIO (UARTRX) */
-	if(IS_BIT_SET(NUCMX_WKPND(1,1),0)){
+	if(IS_BIT_SET(NPCX_WKPND(1,1),0)){
 		/* Clear Pending bit of GPIO (UARTRX) */
-		SET_BIT(NUCMX_WKPCL(1,1),0);
+		SET_BIT(NPCX_WKPCL(1,1),0);
 		/* Refresh console in-use timer */
 		clock_refresh_console_in_use();
 		/* Disable MIWU & IRQ for GPIO (UARTRX) */
-		CLEAR_BIT(NUCMX_WKEN(1,1),0);
+		CLEAR_BIT(NPCX_WKEN(1,1),0);
 		/* Enable MIWU IRQ */
-		task_enable_irq(NUCMX_IRQ_WKINTB_1);
+		task_enable_irq(NPCX_IRQ_WKINTB_1);
 		/* Go back CR_SIN*/
-		SET_BIT(NUCMX_DEVALT(0x0A), NUCMX_DEVALTA_UART_SL);
+		SET_BIT(NPCX_DEVALT(0x0A), NPCX_DEVALTA_UART_SL);
 		/* Enable uart again */
-		task_enable_irq(NUCMX_IRQ_UART);
+		task_enable_irq(NPCX_IRQ_UART);
 	}	
 }
 
@@ -247,14 +247,14 @@ void __idle(void)
 				&& (t0.val > console_expire_time.val)) {
 #if DEBUG_CLK
 			/* Use GPIO to indicate SLEEP mode */
-			CLEAR_BIT(NUCMX_PDOUT(0),0);
+			CLEAR_BIT(NPCX_PDOUT(0),0);
 #endif
 			idle_dsleep_cnt++;
 			/* Set instant wake up mode */
-			SET_BIT(NUCMX_ENIDL_CTL, NUCMX_ENIDL_CTL_LP_WK_CTL);
+			SET_BIT(NPCX_ENIDL_CTL, NPCX_ENIDL_CTL_LP_WK_CTL);
 
 			/* Set deep idle - instant wake-up mode */
-			NUCMX_PMCSR = IDLE_PARAMS;
+			NPCX_PMCSR = IDLE_PARAMS;
 			/* UART-rx(console) become to GPIO (NONE-interrupt mode) */
 			clock_uart2gpio();
 			/* Enter deep idle */
@@ -272,7 +272,7 @@ void __idle(void)
 		} else {
 #if DEBUG_CLK
 			/* Use GPIO to indicate NORMAL mode */
-			SET_BIT(NUCMX_PDOUT(0),0);
+			SET_BIT(NPCX_PDOUT(0),0);
 #endif
 			idle_sleep_cnt++;
 			/* normal idle : wait for interrupt */
@@ -343,7 +343,7 @@ static int command_dsleep(int argc, char **argv)
 	ccprintf("Sleep mask: %08x\n", sleep_mask);
 	ccprintf("Console in use timeout:   %d sec\n",
 			console_in_use_timeout_sec);
-	ccprintf("PMCSR register:      0x%02x\n", NUCMX_PMCSR);
+	ccprintf("PMCSR register:      0x%02x\n", NPCX_PMCSR);
 
 	return EC_SUCCESS;
 }

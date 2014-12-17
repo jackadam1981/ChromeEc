@@ -8,6 +8,7 @@
 
 /* CPU core BFD configuration */
 #include "core/cortex-m/config_core.h"
+#define CONFIG_PSTATE_AT_END
 
 /* 32k hz internal oscillator frequency (FRCLK) */
 #define INT_32K_CLOCK 32768
@@ -32,16 +33,14 @@
 /* Number of PWM ports */
 #define PWM_COUNT 8
 
-/*
- * Time it takes to set the RTC match register. This value is conservatively
- * set based on measurements around 200us.
- */
-#define HIB_SET_RTC_MATCH_DELAY_USEC 300
-
 /****************************************************************************/
 /* Memory mapping */
-#define CONFIG_RAM_BASE             0x200C0000	/* memory address of ram */
-#define CONFIG_RAM_SIZE             0x00008000	/* 32K core ram */
+#define CONFIG_RAM_BASE             0x200C0000	/* memory map address of data ram */
+#define CONFIG_RAM_SIZE             0x00008000	/* 32KB data ram */
+#define CONFIG_CDRAM_BASE			0x10088000	/* memory map address of code ram */
+#define CONFIG_CDRAM_SIZE			0x00020000	/* 128KB code ram */
+#define CONFIG_SPIFLASH_BASE		0x64000000	/* memory map address of spi-flash */
+#define CONFIG_SPIFLASH_SIZE		0x01000000	/* 16MB Spi Flash ex.W25Q20CV */
 
 /* System stack size */
 #define CONFIG_STACK_SIZE           4096
@@ -55,28 +54,22 @@
 #define TASK_STACK_SIZE             512
 
 /* SPI Flash Spec of W25Q20CV */
-#define CONFIG_FLASH_BASE           0x10088000	/* memory address of flash (MRAM) */
+#define CONFIG_FLASH_BASE           0x00000000	/* memory address of flash (MRAM) */
 #define CONFIG_FLASH_BANK_SIZE      0x00001000  /* protect bank size 4K bytes */
 #define CONFIG_FLASH_ERASE_SIZE     0x00001000  /* sector erase size 4K bytes */
 #define CONFIG_FLASH_WRITE_SIZE     0x00000001  /* minimum write size */
 
-/* One page size of SPI flash */
-#define CONFIG_FLASH_WRITE_IDEAL_SIZE 256
+#define CONFIG_FLASH_WRITE_IDEAL_SIZE 	256			/* one page size for write */
+#define CONFIG_FLASH_PHYSICAL_SIZE  	0x00040000	/* 256KB Flash used for EC */
 
-/* This is the physical size of the flash on the chip. We'll reserve one bank
- * in order to emulate per-bank write-protection UNTIL REBOOT. The hardware
- * doesn't support a write-protect pin, and if we make the write-protection
- * permanent, it can't be undone easily enough to support RMA. */
-#define CONFIG_FLASH_PHYSICAL_SIZE  0x00040000	/* 256KB Flash */
 /****************************************************************************/
 /* Define our flash layout. */
-
 /* Size of one firmware image in flash */
 #ifndef CONFIG_FW_IMAGE_SIZE
 #define CONFIG_FW_IMAGE_SIZE		(CONFIG_FLASH_PHYSICAL_SIZE / 2)
 #endif
 
-/* RO firmware must start at beginning of flash */
+/* RO firmware must start at b	eginning of flash */
 #define CONFIG_FW_RO_OFF			0
 
 /*
@@ -108,6 +101,12 @@
 /* TODO(crosbug.com/p/23796): why 2 sets of configs with the same numbers? */
 #define CONFIG_FW_WP_RO_OFF			CONFIG_FW_RO_OFF
 #define CONFIG_FW_WP_RO_SIZE		CONFIG_FW_RO_SIZE
+
+/*
+ * The offset from top of flash wich used by booter
+ * the main funcationality to copy iamge from spi-flash to code ram
+ */
+#define CONFIG_LFW_OFFSET			0x1000
 
 /****************************************************************************/
 /* Lock the boot configuration to prevent brickage. */

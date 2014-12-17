@@ -3,10 +3,10 @@
  * found in the LICENSE file.
  */
 
-/* NUCMX-specific SIB module for Chrome EC */
+/* NPCX-specific SIB module for Chrome EC */
 
-#ifndef __CROS_EC_NUCMX_LPC_H
-#define __CROS_EC_NUCMX_LPC_H
+#ifndef __CROS_EC_NPCX_LPC_H
+#define __CROS_EC_NPCX_LPC_H
 
 void system_lpc_host_register_init(void);
-#endif /* __CROS_EC_NUCMX_LPC_H */
+#endif /* __CROS_EC_NPCX_LPC_H */

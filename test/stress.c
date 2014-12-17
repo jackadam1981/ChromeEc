@@ -39,7 +39,7 @@ struct i2c_test_param_t {
 	{8, 0, 0x16, 0x8, -1},
 	{8, 0, 0x16, 0x9, -1},
 	{8, 0, 0x16, 0xa, -1},
-#elif defined(BOARD_NUCMX_DEV)
+#elif defined(BOARD_NPCX_DEV)
 	{8, 0, 0x16, 0x8, -1},
 	{8, 0, 0x16, 0x9, -1},
 	{8, 0, 0x16, 0xa, -1},

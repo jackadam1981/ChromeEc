@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-/* NUCMX-specific clock module for Chrome EC */
+/* NPCX-specific clock module for Chrome EC */
 
 #ifndef CLOCK_CHIP_H_
 #define CLOCK_CHIP_H_

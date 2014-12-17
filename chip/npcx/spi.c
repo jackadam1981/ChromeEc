@@ -37,9 +37,9 @@
 static uint8_t clear_databuf(void)
 {
 	uint8_t dummy = 0;
-	while (IS_BIT_SET(NUCMX_SPI_STAT, NUCMX_SPI_STAT_RBF))
+	while (IS_BIT_SET(NPCX_SPI_STAT, NPCX_SPI_STAT_RBF))
 	{
-		dummy = NUCMX_SPI_DATA;
+		dummy = NPCX_SPI_DATA;
 	}
     return dummy;
 }
@@ -63,7 +63,7 @@ void spi_freq_changed (void)
         prescaler_divider = 0x7F;
 
 	/* Set core clock division factor in order to obtain the spi clock */
-    NUCMX_SPI_CTL1 = (NUCMX_SPI_CTL1&(~(((1<<7)-1)<<NUCMX_SPI_CTL1_SCDV)))|(prescaler_divider<<NUCMX_SPI_CTL1_SCDV);
+    NPCX_SPI_CTL1 = (NPCX_SPI_CTL1&(~(((1<<7)-1)<<NPCX_SPI_CTL1_SCDV)))|(prescaler_divider<<NPCX_SPI_CTL1_SCDV);
 }
 DECLARE_HOOK(HOOK_FREQ_CHANGE, spi_freq_changed, HOOK_PRIO_DEFAULT);
 
@@ -80,26 +80,26 @@ int spi_enable(int enable)
 	    /* Enabling spi module for gpio configuration */
 		gpio_config_module(MODULE_SPI, 1);
 		/* GPIO No SPI Select */
-		CLEAR_BIT(NUCMX_DEVALT(0),NUCMX_DEVALT0_GPIO_NO_SPIP);
+		CLEAR_BIT(NPCX_DEVALT(0),NPCX_DEVALT0_GPIO_NO_SPIP);
 
 		/* Make sure CS# is a GPIO output mode. */
 		gpio_set_flags(GPIO_SPI_CS_L, GPIO_OUTPUT);
 		/* Make sure CS# is deselected */
 		gpio_set_level(GPIO_SPI_CS_L, 1);
 		/* Enabling spi module */
-		SET_BIT(NUCMX_SPI_CTL1, NUCMX_SPI_CTL1_SPIEN);
+		SET_BIT(NPCX_SPI_CTL1, NPCX_SPI_CTL1_SPIEN);
 	}
 	else
 	{
 		/* Disabling spi module */
-		CLEAR_BIT(NUCMX_SPI_CTL1, NUCMX_SPI_CTL1_SPIEN);
+		CLEAR_BIT(NPCX_SPI_CTL1, NPCX_SPI_CTL1_SPIEN);
 		/* Make sure CS# is deselected */
 		gpio_set_level(GPIO_SPI_CS_L, 1);
 		gpio_set_flags(GPIO_SPI_CS_L, GPIO_ODR_HIGH);
 	    /* Disabling spi module for gpio configuration */
 		gpio_config_module(MODULE_SPI, 0);
 		/* GPIO No SPI Select */
-		SET_BIT(NUCMX_DEVALT(0),NUCMX_DEVALT0_GPIO_NO_SPIP);
+		SET_BIT(NPCX_DEVALT(0),NPCX_DEVALT0_GPIO_NO_SPIP);
 	}
 	return EC_SUCCESS;
 }
@@ -113,7 +113,7 @@ int spi_enable(int enable)
  * @param   rxdata  receive data
  * @param   rxlen   receive length
  * @return  success
- * @notes   set master transaction mode in nucmx chip
+ * @notes   set master transaction mode in npcx chip
  */
 int spi_transaction(const uint8_t *txdata, int txlen,
 		uint8_t *rxdata, int rxlen)
@@ -128,19 +128,19 @@ int spi_transaction(const uint8_t *txdata, int txlen,
 	clear_databuf();
 	/* Assert CS# to start transaction */
 	gpio_set_level(GPIO_SPI_CS_L,0);
-    cprints(CC_SPI, "NUCMX_SPI_DATA=%x", NUCMX_SPI_DATA);
-    cprints(CC_SPI, "NUCMX_SPI_CTL1=%x", NUCMX_SPI_CTL1);
-    cprints(CC_SPI, "NUCMX_SPI_STAT=%x", NUCMX_SPI_STAT);
+    cprints(CC_SPI, "NPCX_SPI_DATA=%x", NPCX_SPI_DATA);
+    cprints(CC_SPI, "NPCX_SPI_CTL1=%x", NPCX_SPI_CTL1);
+    cprints(CC_SPI, "NPCX_SPI_STAT=%x", NPCX_SPI_STAT);
 	/* Writing the data */
 	for (i = 0; i < txlen; ++i)
 	{
         /* Making sure we can write */
-        while(IS_BIT_SET(NUCMX_SPI_STAT, NUCMX_SPI_STAT_BSY));
+        while(IS_BIT_SET(NPCX_SPI_STAT, NPCX_SPI_STAT_BSY));
 		/* Write the data */
-		NUCMX_SPI_DATA =  txdata[i];
+		NPCX_SPI_DATA =  txdata[i];
         cprints(CC_SPI, "txdata[i]=%x", txdata[i]);
         /* Waiting till reading is finished */
-		while(!IS_BIT_SET(NUCMX_SPI_STAT, NUCMX_SPI_STAT_RBF));
+		while(!IS_BIT_SET(NPCX_SPI_STAT, NPCX_SPI_STAT_RBF));
 		/* Reading the (dummy) data */
 		clear_databuf();
 	}
@@ -149,13 +149,13 @@ int spi_transaction(const uint8_t *txdata, int txlen,
 	for (i = 0; i < rxlen; ++i)
 	{
         /* Making sure we can write */
-        while(IS_BIT_SET(NUCMX_SPI_STAT, NUCMX_SPI_STAT_BSY));
+        while(IS_BIT_SET(NPCX_SPI_STAT, NPCX_SPI_STAT_BSY));
 		/* Write the (dummy) data */
-		NUCMX_SPI_DATA =  0;
+		NPCX_SPI_DATA =  0;
 		/* Wait till reading is finished */
-		while(!IS_BIT_SET(NUCMX_SPI_STAT, NUCMX_SPI_STAT_RBF));
+		while(!IS_BIT_SET(NPCX_SPI_STAT, NPCX_SPI_STAT_RBF));
 		/* Reading the data */
-		rxdata[i] = (uint8_t)NUCMX_SPI_DATA;
+		rxdata[i] = (uint8_t)NPCX_SPI_DATA;
         cprints(CC_SPI, "rxdata[i]=%x", rxdata[i]);
 	}
 	/* Deassert CS# (high) to end transaction */
@@ -176,21 +176,21 @@ static void spi_init(void)
     spi_enable(0);
 
 	/* Disabling spi irq */
-	CLEAR_BIT(NUCMX_SPI_CTL1, NUCMX_SPI_CTL1_EIR);
-	CLEAR_BIT(NUCMX_SPI_CTL1, NUCMX_SPI_CTL1_EIW);
+	CLEAR_BIT(NPCX_SPI_CTL1, NPCX_SPI_CTL1_EIR);
+	CLEAR_BIT(NPCX_SPI_CTL1, NPCX_SPI_CTL1_EIW);
 
 	/* Setting clocking mode to normal mode */
-    CLEAR_BIT(NUCMX_SPI_CTL1, NUCMX_SPI_CTL1_SCM);
+    CLEAR_BIT(NPCX_SPI_CTL1, NPCX_SPI_CTL1_SCM);
 	/* Setting 8bit mode transfer */
-    CLEAR_BIT(NUCMX_SPI_CTL1, NUCMX_SPI_CTL1_MOD);
+    CLEAR_BIT(NPCX_SPI_CTL1, NPCX_SPI_CTL1_MOD);
 	/* Set core clock division factor in order to obtain the spi clock */
     spi_freq_changed();
 
     /* We emit zeros in idle (default behaivor) */
-	CLEAR_BIT(NUCMX_SPI_CTL1, NUCMX_SPI_CTL1_SCIDL);
+	CLEAR_BIT(NPCX_SPI_CTL1, NPCX_SPI_CTL1_SCIDL);
 
-    cprints(CC_SPI, "nSPI_COMP=%x", IS_BIT_SET(NUCMX_STRPST, NUCMX_STRPST_SPI_COMP));//0=comp
-    cprints(CC_SPI, "SPI_SP_SEL=%x", IS_BIT_SET(NUCMX_DEV_CTL4, NUCMX_DEV_CTL4_SPI_SP_SEL));//0=3.3V
+    cprints(CC_SPI, "nSPI_COMP=%x", IS_BIT_SET(NPCX_STRPST, NPCX_STRPST_SPI_COMP));//0=comp
+    cprints(CC_SPI, "SPI_SP_SEL=%x", IS_BIT_SET(NPCX_DEV_CTL4, NPCX_DEV_CTL4_SPI_SP_SEL));//0=3.3V
 	/* Cleaning junk data in the buffer */
 	clear_databuf();
 }

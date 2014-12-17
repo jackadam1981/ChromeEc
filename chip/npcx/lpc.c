@@ -80,34 +80,34 @@ static inline void keyboard_irq_assert(void)
 {
 	/* Use serirq method. */
 	/* Using manual IRQ for KBC and delay a while of  wait_irq_sent*/
-	SET_BIT(NUCMX_HIIRQC,0); /* set IRQ1B to high */
-	CLEAR_BIT(NUCMX_HICTRL,0); /* set IRQ1 control by IRQB1 */
+	SET_BIT(NPCX_HIIRQC,0); /* set IRQ1B to high */
+	CLEAR_BIT(NPCX_HICTRL,0); /* set IRQ1 control by IRQB1 */
 }
 #endif
 
 static void lpc_task_enable_irq(void){
-    task_enable_irq(NUCMX_IRQ_SHM);
-    task_enable_irq(NUCMX_IRQ_KBC_IBF);
+    task_enable_irq(NPCX_IRQ_SHM);
+    task_enable_irq(NPCX_IRQ_KBC_IBF);
     /*
-    task_enable_irq(NUCMX_IRQ_KBC_OBF);
+    task_enable_irq(NPCX_IRQ_KBC_OBF);
     */
-    task_enable_irq(NUCMX_IRQ_PM_CHAN_IBF);
+    task_enable_irq(NPCX_IRQ_PM_CHAN_IBF);
 	/*
-    task_enable_irq(NUCMX_IRQ_PM_CHAN_OBF);
+    task_enable_irq(NPCX_IRQ_PM_CHAN_OBF);
 	 */
-    task_enable_irq(NUCMX_IRQ_PORT80);
+    task_enable_irq(NPCX_IRQ_PORT80);
 }
 static void lpc_task_disable_irq(void){
-    task_disable_irq(NUCMX_IRQ_SHM);
-    task_disable_irq(NUCMX_IRQ_KBC_IBF);
+    task_disable_irq(NPCX_IRQ_SHM);
+    task_disable_irq(NPCX_IRQ_KBC_IBF);
     /*
-    task_disable_irq(NUCMX_IRQ_KBC_OBF);
+    task_disable_irq(NPCX_IRQ_KBC_OBF);
     */
-    task_disable_irq(NUCMX_IRQ_PM_CHAN_IBF);
+    task_disable_irq(NPCX_IRQ_PM_CHAN_IBF);
 	/*
-    task_disable_irq(NUCMX_IRQ_PM_CHAN_OBF);
+    task_disable_irq(NPCX_IRQ_PM_CHAN_OBF);
 	 */
-    task_disable_irq(NUCMX_IRQ_PORT80);
+    task_disable_irq(NPCX_IRQ_PORT80);
 }
 /**
  * Generate SMI pulse to the host chipset via GPIO.
@@ -129,7 +129,7 @@ static void lpc_generate_smi(void)
 	/* Set signal high, now that we've generated the edge */
 	gpio_set_level(GPIO_PCH_SMI_L, 1);
 #else
-	NUCMX_HIPMIE(PM_CHAN_1) |= NUCMX_HIPMIE_SMIE;
+	NPCX_HIPMIE(PM_CHAN_1) |= NPCX_HIPMIE_SMIE;
 #endif
 	if (host_events & event_mask[LPC_HOST_EVENT_SMI])
 		CPRINTS("smi 0x%08x",
@@ -151,7 +151,7 @@ static void lpc_generate_sci(void)
 	/* Set signal high, now that we've generated the edge */
 	gpio_set_level(CONFIG_SCI_GPIO, 1);
 #else
-	SET_BIT(NUCMX_HIPMIE(PM_CHAN_1),NUCMX_HIPMIE_SCIE);
+	SET_BIT(NPCX_HIPMIE(PM_CHAN_1),NPCX_HIPMIE_SCIE);
 #endif
 
 	if (host_events & event_mask[LPC_HOST_EVENT_SCI])
@@ -219,9 +219,9 @@ static void lpc_send_response(struct host_cmd_handler_args *args)
 		args->result = EC_RES_INVALID_RESPONSE;
 
 	/* Write result to the data byte.  This sets the TOH status bit. */
-	NUCMX_HIPMDO(PM_CHAN_2) = args->result;
+	NPCX_HIPMDO(PM_CHAN_2) = args->result;
 	/* Clear processing flag */
-	CLEAR_BIT(NUCMX_HIPMST(PM_CHAN_2) ,2);
+	CLEAR_BIT(NPCX_HIPMST(PM_CHAN_2) ,2);
 }
 
 static void lpc_send_response_packet(struct host_packet *pkt)
@@ -231,32 +231,32 @@ static void lpc_send_response_packet(struct host_packet *pkt)
 		return;
 
 	/* Write result to the data byte.  This sets the TOH status bit. */
-	NUCMX_HIPMDO(PM_CHAN_2) = pkt->driver_result;
+	NPCX_HIPMDO(PM_CHAN_2) = pkt->driver_result;
 	/* Clear processing flag */
-	CLEAR_BIT(NUCMX_HIPMST(PM_CHAN_2) ,2);
+	CLEAR_BIT(NPCX_HIPMST(PM_CHAN_2) ,2);
 }
 
 int lpc_keyboard_has_char(void)
 {
 	// if OBF  '1', that mean still have a data in the FIFO
-	return ((NUCMX_HIKMST&0x01)?1:0);	
+	return ((NPCX_HIKMST&0x01)?1:0);
 }
 
 /* Return true if the FRMH is set */
 int lpc_keyboard_input_pending(void)
 {
-	return ((NUCMX_HIKMST&0x02)?1:0);
+	return ((NPCX_HIKMST&0x02)?1:0);
 }
 
 /* Put a char to host buffer and send IRQ if specified. */
 void lpc_keyboard_put_char(uint8_t chr, int send_irq)
 {
 	if (send_irq)
-		SET_BIT(NUCMX_HICTRL,NUCMX_HICTRL_OBFKIE);
+		SET_BIT(NPCX_HICTRL,NPCX_HICTRL_OBFKIE);
 	else
-		CLEAR_BIT(NUCMX_HICTRL,NUCMX_HICTRL_OBFKIE);
-	NUCMX_HIKDO = chr;
-	task_enable_irq(NUCMX_IRQ_KBC_OBF);	
+		CLEAR_BIT(NPCX_HICTRL,NPCX_HICTRL_OBFKIE);
+	NPCX_HIKDO = chr;
+	task_enable_irq(NPCX_IRQ_KBC_OBF);
 }
 
 void lpc_keyboard_clear_buffer(void)
@@ -265,7 +265,7 @@ void lpc_keyboard_clear_buffer(void)
 	wait_irq_sent();
 
 	/*FW_OBF write 1*/
-	NUCMX_HICTRL |=0x80; 
+	NPCX_HICTRL |=0x80;
 	/* Ensure there is no TOH set in this period. */
 	wait_irq_sent();
 }
@@ -295,18 +295,18 @@ static void update_host_event_status(void)
 	lpc_task_disable_irq();
 	if (host_events & event_mask[LPC_HOST_EVENT_SMI]) {
 		/* Only generate SMI for first event */
-		if (!(NUCMX_HIPMIE(PM_CHAN_1) & NUCMX_HIPMIE_SMIE))
+		if (!(NPCX_HIPMIE(PM_CHAN_1) & NPCX_HIPMIE_SMIE))
 			need_smi = 1;
-		SET_BIT(NUCMX_HIPMIE(PM_CHAN_1),NUCMX_HIPMIE_SMIE);
+		SET_BIT(NPCX_HIPMIE(PM_CHAN_1),NPCX_HIPMIE_SMIE);
 	} else
-		CLEAR_BIT(NUCMX_HIPMIE(PM_CHAN_1),NUCMX_HIPMIE_SMIE);
+		CLEAR_BIT(NPCX_HIPMIE(PM_CHAN_1),NPCX_HIPMIE_SMIE);
 
 	if (host_events & event_mask[LPC_HOST_EVENT_SCI]) {
 		/* Generate SCI for every event */
 		need_sci = 1;
-		SET_BIT(NUCMX_HIPMIE(PM_CHAN_1),NUCMX_HIPMIE_SCIE);
+		SET_BIT(NPCX_HIPMIE(PM_CHAN_1),NPCX_HIPMIE_SCIE);
 	} else
-		CLEAR_BIT(NUCMX_HIPMIE(PM_CHAN_1),NUCMX_HIPMIE_SCIE);
+		CLEAR_BIT(NPCX_HIPMIE(PM_CHAN_1),NPCX_HIPMIE_SCIE);
 
 	/* Copy host events to mapped memory */
 	*(uint32_t *)host_get_memmap(EC_MEMMAP_HOST_EVENTS) = host_events;
@@ -389,11 +389,11 @@ static void handle_acpi_write(int is_cmd)
 	uint8_t value, result;
 
 	/* Read command/data; this clears the FRMH status bit. */
-	value = NUCMX_HIPMDI(PM_CHAN_1);
+	value = NPCX_HIPMDI(PM_CHAN_1);
 
 	/* Handle whatever this was. */
 	if (acpi_ap_to_ec(is_cmd, value, &result))
-		NUCMX_HIPMDO(PM_CHAN_1) = result;
+		NPCX_HIPMDO(PM_CHAN_1) = result;
 
 	/*
 	 * ACPI 5.0-12.6.1: Generate SCI for Input Buffer Empty / Output Buffer
@@ -413,7 +413,7 @@ static void handle_host_write(int is_cmd)
 	 * Read the command byte.  This clears the FRMH bit in
 	 * the status byte.
 	 */
-	host_cmd_args.command = NUCMX_HIPMDI(PM_CHAN_2);
+	host_cmd_args.command = NPCX_HIPMDI(PM_CHAN_2);
 
 	host_cmd_args.result = EC_RES_SUCCESS;
 	host_cmd_args.send_response = lpc_send_response;
@@ -435,7 +435,7 @@ static void handle_host_write(int is_cmd)
 
 		lpc_packet.driver_result = EC_RES_SUCCESS;
 		/* Set processing flag */
-		SET_BIT(NUCMX_HIPMST(PM_CHAN_2) ,2);
+		SET_BIT(NPCX_HIPMST(PM_CHAN_2) ,2);
 		host_packet_receive(&lpc_packet);
 		return;
 
@@ -489,47 +489,47 @@ static void handle_host_write(int is_cmd)
 
 void lpc_shm_interrupt(void){
 }
-DECLARE_IRQ(NUCMX_IRQ_SHM, lpc_shm_interrupt, 2);
+DECLARE_IRQ(NPCX_IRQ_SHM, lpc_shm_interrupt, 2);
 
 void lpc_kbc_ibf_interrupt(void){
 #ifdef CONFIG_KEYBOARD_PROTOCOL_8042
 	/* If "command" input 0, elase 1*/
-	keyboard_host_write(NUCMX_HIKMDI, (NUCMX_HIKMST&0x08)?1:0);
+	keyboard_host_write(NPCX_HIKMDI, (NPCX_HIKMST&0x08)?1:0);
 #endif
 }
-DECLARE_IRQ(NUCMX_IRQ_KBC_IBF, lpc_kbc_ibf_interrupt, 2);	
+DECLARE_IRQ(NPCX_IRQ_KBC_IBF, lpc_kbc_ibf_interrupt, 2);
 
 void lpc_kbc_obf_interrupt(void){
 	/* reserve for future handle */ 
-	if(!IS_BIT_SET(NUCMX_HICTRL,0)){
-		SET_BIT(NUCMX_HICTRL,0);	/* back to H/W control of IRQ1 */
-		CLEAR_BIT(NUCMX_HIIRQC,0);  /* back to default of IRQB1 */
+	if(!IS_BIT_SET(NPCX_HICTRL,0)){
+		SET_BIT(NPCX_HICTRL,0);	/* back to H/W control of IRQ1 */
+		CLEAR_BIT(NPCX_HIIRQC,0);  /* back to default of IRQB1 */
 	}	
-	task_disable_irq(NUCMX_IRQ_KBC_OBF);	
+	task_disable_irq(NPCX_IRQ_KBC_OBF);
 }
-DECLARE_IRQ(NUCMX_IRQ_KBC_OBF, lpc_kbc_obf_interrupt, 2);	
+DECLARE_IRQ(NPCX_IRQ_KBC_OBF, lpc_kbc_obf_interrupt, 2);
 
 void lpc_pmc_ibf_interrupt(void){
 	/* Channel-1 for ACPI usage*/
 	/* Channel-2 for Host Command usage , so the argument data had been put on the share memory firstly*/
-	if(NUCMX_HIPMST(PM_CHAN_1)&0x02)
-		handle_acpi_write((NUCMX_HIPMST(PM_CHAN_1)&0x08)?1:0);
-	else if(NUCMX_HIPMST(PM_CHAN_2)&0x02)
-		handle_host_write((NUCMX_HIPMST(PM_CHAN_2)&0x08)?1:0);
+	if(NPCX_HIPMST(PM_CHAN_1)&0x02)
+		handle_acpi_write((NPCX_HIPMST(PM_CHAN_1)&0x08)?1:0);
+	else if(NPCX_HIPMST(PM_CHAN_2)&0x02)
+		handle_host_write((NPCX_HIPMST(PM_CHAN_2)&0x08)?1:0);
 }
-DECLARE_IRQ(NUCMX_IRQ_PM_CHAN_IBF, lpc_pmc_ibf_interrupt, 2);	
+DECLARE_IRQ(NPCX_IRQ_PM_CHAN_IBF, lpc_pmc_ibf_interrupt, 2);
 
 void lpc_pmc_obf_interrupt(void){
 }
-DECLARE_IRQ(NUCMX_IRQ_PM_CHAN_OBF, lpc_pmc_obf_interrupt, 2);	
+DECLARE_IRQ(NPCX_IRQ_PM_CHAN_OBF, lpc_pmc_obf_interrupt, 2);
 
 void lpc_port80_interrupt(void){
-	port_80_write((NUCMX_GLUE_SDPD0<<0)|(NUCMX_GLUE_SDPD1<<8));
+	port_80_write((NPCX_GLUE_SDPD0<<0)|(NPCX_GLUE_SDPD1<<8));
 	/* No matter what , just clear error status bit */
-	SET_BIT(NUCMX_DP80STS,7);
-	SET_BIT(NUCMX_DP80STS,5);
+	SET_BIT(NPCX_DP80STS,7);
+	SET_BIT(NPCX_DP80STS,5);
 }
-DECLARE_IRQ(NUCMX_IRQ_PORT80, lpc_port80_interrupt, 2);	
+DECLARE_IRQ(NPCX_IRQ_PORT80, lpc_port80_interrupt, 2);
 
 /**
  * Preserve event masks across a sysjump.
@@ -563,24 +563,24 @@ static void lpc_init(void)
 	clock_enable_peripheral(CGC_OFFSET_LPC, CGC_LPC_MASK,
 			CGC_MODE_RUN | CGC_MODE_SLEEP);
 	/* Switching to LPC interface */
-	NUCMX_DEVCNT |= 0x04;
+	NPCX_DEVCNT |= 0x04;
 	/* Enable 4E/4F */
-	if(!IS_BIT_SET(NUCMX_MSWCTL1,3)){
-		NUCMX_HCBAL =0x4E;
-		NUCMX_HCBAH =0x0;
+	if(!IS_BIT_SET(NPCX_MSWCTL1,3)){
+		NPCX_HCBAL =0x4E;
+		NPCX_HCBAH =0x0;
 	}	
 	/* Clear Host Access Hold state */
-	NUCMX_SMC_CTL =0xC0;
+	NPCX_SMC_CTL =0xC0;
 
 	/* Initialize Hardware for UART Host */
 #if CONFIG_UART_HOST	
 	/* Init COMx LPC UART */
 	/* FMCLK have to using 50MHz */
-	NUCMX_DEVALT(0xB) =0xFF;
+	NPCX_DEVALT(0xB) =0xFF;
 	/* Make sure Host Access unlock */
-	CLEAR_BIT(NUCMX_LKSIOHA,2);
+	CLEAR_BIT(NPCX_LKSIOHA,2);
 	/* Clear Host Access Lock Violation */
-	SET_BIT(NUCMX_SIOLV,2);
+	SET_BIT(NPCX_SIOLV,2);
 #endif	
 
 	/* Init SHM */
@@ -588,36 +588,36 @@ static void lpc_init(void)
     /* Configure Host Access -                                                                             */
     /* Don't stall SHM transactions (default chip state)                                                   */
     /*-----------------------------------------------------------------------------------------------------*/
-	NUCMX_SHM_CTL =NUCMX_SHM_CTL&~0x40;
+	NPCX_SHM_CTL =NPCX_SHM_CTL&~0x40;
 	/* Semaphore and Indirect access disable */
-	NUCMX_SHCFG =0xE0;
+	NPCX_SHCFG =0xE0;
 	/* Disable Protect Win1&2*/
-	NUCMX_WIN_WR_PROT(0) =0;
-	NUCMX_WIN_WR_PROT(1) =0;
-	NUCMX_WIN_RD_PROT(0) =0;
-	NUCMX_WIN_RD_PROT(1) =0;
+	NPCX_WIN_WR_PROT(0) =0;
+	NPCX_WIN_WR_PROT(1) =0;
+	NPCX_WIN_RD_PROT(0) =0;
+	NPCX_WIN_RD_PROT(1) =0;
 	/* Open Win1 256 byte for Host CMD, Win2 256 for MEMMAP*/
-	NUCMX_WIN_SIZE =0x88;
-	NUCMX_WIN_BASE(0) =(uint32_t)shm_mem_host_cmd;
-	NUCMX_WIN_BASE(1) =(uint32_t)shm_memmap;
+	NPCX_WIN_SIZE =0x88;
+	NPCX_WIN_BASE(0) =(uint32_t)shm_mem_host_cmd;
+	NPCX_WIN_BASE(1) =(uint32_t)shm_memmap;
 
 	/*-----------------------------------------------------------------------------------------------------*/
     /* Turn on PMC2 for Host Command usage                                                                 */
     /*-----------------------------------------------------------------------------------------------------*/
-    SET_BIT(NUCMX_HIPMCTL(PM_CHAN_2),0);
-    SET_BIT(NUCMX_HIPMCTL(PM_CHAN_2),1);
+    SET_BIT(NPCX_HIPMCTL(PM_CHAN_2),0);
+    SET_BIT(NPCX_HIPMCTL(PM_CHAN_2),1);
     /* enable PMC2 IRQ */
-    SET_BIT(NUCMX_HIPMIE(PM_CHAN_2),0);
+    SET_BIT(NPCX_HIPMIE(PM_CHAN_2),0);
     /* IRQ control from HW */
-    SET_BIT(NUCMX_HIPMIE(PM_CHAN_2),3);
+    SET_BIT(NPCX_HIPMIE(PM_CHAN_2),3);
 	/*-----------------------------------------------------------------------------------------------------*/
     /* Set required control value (avoid setting HOSTWAIT bit at this stage)                               */
     /*-----------------------------------------------------------------------------------------------------*/
-    NUCMX_SMC_CTL =NUCMX_SMC_CTL&~0x7F;
+    NPCX_SMC_CTL =NPCX_SMC_CTL&~0x7F;
     /*-----------------------------------------------------------------------------------------------------*/
     /* Clear status                                                                                        */
     /*-----------------------------------------------------------------------------------------------------*/
-    NUCMX_SMC_STS = NUCMX_SMC_STS;
+    NPCX_SMC_STS = NPCX_SMC_STS;
     /*-----------------------------------------------------------------------------------------------------*/
     /* Create mailbox                                                                                      */
     /*-----------------------------------------------------------------------------------------------------*/
@@ -627,23 +627,23 @@ static void lpc_init(void)
     /* Clear OBF status, PM1 IBF/OBF INT enable, IRQ11 enable, IBF(K&M) INT enable, OBF(K&M) empty  INT    */
     /* enable , OBF Mouse Full INT enable, OBF KB Full INT enable										   */
     /*-----------------------------------------------------------------------------------------------------*/
-    NUCMX_HICTRL =0xFF;
+    NPCX_HICTRL =0xFF;
 	/*-----------------------------------------------------------------------------------------------------*/
     /* Normally Polarity IRQ1,12,11 type (level + high) setting                                                                                        */
     /*-----------------------------------------------------------------------------------------------------*/
-    NUCMX_HIIRQC = 0x00;	/* Make sure to default */	 
+    NPCX_HIIRQC = 0x00;	/* Make sure to default */
     
     /* Init PORT80 */
 	/*-----------------------------------------------------------------------------------------------------*/
     /* Enable Port80, Enable Port80 function & Interrupt & Read Auto                                                   */
     /*-----------------------------------------------------------------------------------------------------*/
-    NUCMX_DP80CTL =0x29;
-	SET_BIT(NUCMX_GLUE_SDP_CTS,3);
-    SET_BIT(NUCMX_GLUE_SDP_CTS,0);
+    NPCX_DP80CTL =0x29;
+	SET_BIT(NPCX_GLUE_SDP_CTS,3);
+    SET_BIT(NPCX_GLUE_SDP_CTS,0);
     /*-----------------------------------------------------------------------------------------------------*/
     /* Just turn on IRQE                                                                                      */
     /*-----------------------------------------------------------------------------------------------------*/
-    NUCMX_HIPMIE(PM_CHAN_1) =0x01;
+    NPCX_HIPMIE(PM_CHAN_1) =0x01;
     lpc_task_enable_irq();	    	    
 
 	/* Initialize host args and memory map to all zero */

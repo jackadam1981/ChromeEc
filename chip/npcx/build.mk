@@ -3,10 +3,10 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 #
-# NUCMX chip specific files build
+# NPCX chip specific files build
 #
 
-# NUCMX SoC has a Cortex-M4F ARM core
+# NPCX SoC has a Cortex-M4F ARM core
 CORE:=cortex-m
 # Allow the full Cortex-M4 instruction set
 CFLAGS_CPU+=-march=armv7e-m -mcpu=cortex-m4

@@ -72,7 +72,7 @@ static inline uint8_t controller_read(int ctrl_num, uint8_t reg)
 #define MAX_BLUE  0x40
 #endif
 
-#ifdef BOARD_NUCMX_DEV
+#ifdef BOARD_NPCX_DEV
 /* Link uses seven segments, not four, but keep the same limits anyway */
 #define MAX_RED   0x5c
 #define MAX_GREEN 0x30
@@ -128,7 +128,7 @@ static const uint8_t led_to_isc[] = { 0x18, 0x15, 0x18, 0x15 };
 #ifdef BOARD_LINK
 static const uint8_t led_to_isc[] = { 0x18, 0x15, 0x18, 0x15 };
 #endif
-#ifdef BOARD_NUCMX_DEV
+#ifdef BOARD_NPCX_DEV
 static const uint8_t led_to_isc[] = { 0x18, 0x15, 0x18, 0x15 };
 #endif
 #ifdef BOARD_SAMUS

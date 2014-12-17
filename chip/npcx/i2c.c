@@ -29,11 +29,11 @@
 /* Maximum time we allow for an I2C transfer */
 #define I2C_TIMEOUT_US 				(100*MSEC)
 /* Marco functions of I2C */
-#define I2C_START(port)				SET_BIT(NUCMX_SMBCTL1(port), NUCMX_SMBCTL1_START)
-#define I2C_STOP(port)				SET_BIT(NUCMX_SMBCTL1(port), NUCMX_SMBCTL1_STOP)
-#define I2C_NACK(port)				SET_BIT(NUCMX_SMBCTL1(port), NUCMX_SMBCTL1_ACK)
-#define I2C_WRITE_BYTE(port,data)	NUCMX_SMBSDA(port) = data
-#define I2C_READ_BYTE(port,data)	data = NUCMX_SMBSDA(port)
+#define I2C_START(port)				SET_BIT(NPCX_SMBCTL1(port), NPCX_SMBCTL1_START)
+#define I2C_STOP(port)				SET_BIT(NPCX_SMBCTL1(port), NPCX_SMBCTL1_STOP)
+#define I2C_NACK(port)				SET_BIT(NPCX_SMBCTL1(port), NPCX_SMBCTL1_ACK)
+#define I2C_WRITE_BYTE(port,data)	NPCX_SMBSDA(port) = data
+#define I2C_READ_BYTE(port,data)	data = NPCX_SMBSDA(port)
 
 /* Error values that functions can return                                    */
 typedef enum
@@ -67,7 +67,7 @@ typedef enum
 
 
 /* IRQ for each port */
-static const uint32_t i2c_irqs[I2C_PORT_COUNT] = {NUCMX_IRQ_SMB1, NUCMX_IRQ_SMB2, NUCMX_IRQ_SMB3, NUCMX_IRQ_SMB4};
+static const uint32_t i2c_irqs[I2C_PORT_COUNT] = {NPCX_IRQ_SMB1, NPCX_IRQ_SMB2, NPCX_IRQ_SMB3, NPCX_IRQ_SMB4};
 BUILD_ASSERT(ARRAY_SIZE(i2c_irqs) == I2C_PORT_COUNT);
 
 /* I2C port state data */
@@ -88,7 +88,7 @@ static struct i2c_status i2c_stsobjs[I2C_PORT_COUNT];
 
 int i2c_bus_busy(int port)
 {
-	return IS_BIT_SET(NUCMX_SMBCST(port), NUCMX_SMBCST_BB) ? 1: 0;
+	return IS_BIT_SET(NPCX_SMBCST(port), NPCX_SMBCST_BB) ? 1: 0;
 }
 
 void i2c_abort_data(int port)
@@ -99,36 +99,36 @@ void i2c_abort_data(int port)
 	I2C_STOP(port);
 
 	/* Clear NEGACK, STASTR and BER bits */
-	SET_BIT(NUCMX_SMBST(port), NUCMX_SMBST_BER);
-	SET_BIT(NUCMX_SMBST(port), NUCMX_SMBST_STASTR);
+	SET_BIT(NPCX_SMBST(port), NPCX_SMBST_BER);
+	SET_BIT(NPCX_SMBST(port), NPCX_SMBST_STASTR);
 	/* In Master mode, NEGACK should be cleared only after generating STOP */
-	SET_BIT(NUCMX_SMBST(port), NUCMX_SMBST_NEGACK);
+	SET_BIT(NPCX_SMBST(port), NPCX_SMBST_NEGACK);
 
 	/* Wait till STOP condition is generated */
 	while (--timeout) {
-		if (!IS_BIT_SET(NUCMX_SMBCTL1(port), NUCMX_SMBCTL1_STOP)) {
+		if (!IS_BIT_SET(NPCX_SMBCTL1(port), NPCX_SMBCTL1_STOP)) {
 			break;
 		}
 	}
 
 	/* Clear BB (BUS BUSY) bit */
-	SET_BIT(NUCMX_SMBCST(port), NUCMX_SMBCST_BB);
+	SET_BIT(NPCX_SMBCST(port), NPCX_SMBCST_BB);
 }
 
 void i2c_reset(int port)
 {
 	/* Disable the SMB module */
-	CLEAR_BIT(NUCMX_SMBCTL2(port), NUCMX_SMBCTL2_ENABLE);
+	CLEAR_BIT(NPCX_SMBCTL2(port), NPCX_SMBCTL2_ENABLE);
 
 	while(1){
 		//wait for SCL & SDA is high
-		if(IS_BIT_SET(NUCMX_SMBCTL3(port), NUCMX_SMBCTL3_SCL_LVL) &&
-				IS_BIT_SET(NUCMX_SMBCTL3(port), NUCMX_SMBCTL3_SDA_LVL))
+		if(IS_BIT_SET(NPCX_SMBCTL3(port), NPCX_SMBCTL3_SCL_LVL) &&
+				IS_BIT_SET(NPCX_SMBCTL3(port), NPCX_SMBCTL3_SDA_LVL))
 			break;
 	}
 
 	/* Enable the SMB module */
-	SET_BIT(NUCMX_SMBCTL2(port), NUCMX_SMBCTL2_ENABLE);
+	SET_BIT(NPCX_SMBCTL2(port), NPCX_SMBCTL2_ENABLE);
 }
 
 void i2c_recovery(int port)
@@ -174,12 +174,12 @@ void i2c_master_int_handler (int port)
 {
 	volatile struct i2c_status *pStsObj = i2c_stsobjs + port;
 	/* Condition 1 : A Bus Error has been identified */
-	if (IS_BIT_SET(NUCMX_SMBST(port), NUCMX_SMBST_BER))
+	if (IS_BIT_SET(NPCX_SMBST(port), NPCX_SMBST_BER))
 	{
 		// Bus arbitration problem should not result in recovery
 		i2c_recovery(port);
 		/* Clear BER Bit */
-		SET_BIT(NUCMX_SMBST(port), NUCMX_SMBST_BER);
+		SET_BIT(NPCX_SMBST(port), NPCX_SMBST_BER);
 		/* Set error code */
 		pStsObj->err_code = SMB_BUS_ERRROR;
 		/* Notify upper layer */
@@ -189,7 +189,7 @@ void i2c_master_int_handler (int port)
 	}
 
 	/* Condition 2: A negative acknowledge has occurred */
-	if (IS_BIT_SET(NUCMX_SMBST(port), NUCMX_SMBST_NEGACK))
+	if (IS_BIT_SET(NPCX_SMBST(port), NPCX_SMBST_NEGACK))
 	{
 		/* In slave write operation, NACK is OK, otherwise it is a problem */
 		i2c_recovery(port);
@@ -203,7 +203,7 @@ void i2c_master_int_handler (int port)
 	}
 
 	/* Condition 3: SDA status is set - transmit or receive */
-	if (IS_BIT_SET(NUCMX_SMBST(port), NUCMX_SMBST_SDAST))
+	if (IS_BIT_SET(NPCX_SMBST(port), NPCX_SMBST_SDAST))
 	{
 		/* 3.1 Issue Start is successful ie. write address byte */
 		if (pStsObj->oper_state == SMB_MASTER_START || pStsObj->oper_state == SMB_REPEAT_START)
@@ -340,10 +340,10 @@ void i2c1_interrupt(void) { handle_interrupt(1); }
 void i2c2_interrupt(void) { handle_interrupt(2); }
 void i2c3_interrupt(void) { handle_interrupt(3); }
 
-DECLARE_IRQ(NUCMX_IRQ_SMB1, i2c0_interrupt, 2);
-DECLARE_IRQ(NUCMX_IRQ_SMB2, i2c1_interrupt, 2);
-DECLARE_IRQ(NUCMX_IRQ_SMB3, i2c2_interrupt, 2);
-DECLARE_IRQ(NUCMX_IRQ_SMB4, i2c3_interrupt, 2);
+DECLARE_IRQ(NPCX_IRQ_SMB1, i2c0_interrupt, 2);
+DECLARE_IRQ(NPCX_IRQ_SMB2, i2c1_interrupt, 2);
+DECLARE_IRQ(NPCX_IRQ_SMB3, i2c2_interrupt, 2);
+DECLARE_IRQ(NPCX_IRQ_SMB4, i2c3_interrupt, 2);
 
 /*****************************************************************************/
 /* IC specific low-level driver */
@@ -388,8 +388,8 @@ int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 	}
 
 	/* Enable SMB interrupt and New Address Match interrupt source */
-	SET_BIT(NUCMX_SMBCTL1(port), NUCMX_SMBCTL1_NMINTE);
-	SET_BIT(NUCMX_SMBCTL1(port), NUCMX_SMBCTL1_INTEN);
+	SET_BIT(NPCX_SMBCTL1(port), NPCX_SMBCTL1_NMINTE);
+	SET_BIT(NPCX_SMBCTL1(port), NPCX_SMBCTL1_INTEN);
 
 	ccputs("\n");
 
@@ -403,8 +403,8 @@ int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 	pStsObj->task_waiting = TASK_ID_INVALID;
 
 	/* Disable SMB interrupt and New Address Match interrupt source */
-	CLEAR_BIT(NUCMX_SMBCTL1(port), NUCMX_SMBCTL1_NMINTE);
-	CLEAR_BIT(NUCMX_SMBCTL1(port), NUCMX_SMBCTL1_INTEN);
+	CLEAR_BIT(NPCX_SMBCTL1(port), NPCX_SMBCTL1_NMINTE);
+	CLEAR_BIT(NPCX_SMBCTL1(port), NPCX_SMBCTL1_INTEN);
 
 	ccprintf("-Err:0x%02x\n", pStsObj->err_code);
 
@@ -433,7 +433,7 @@ int i2c_raw_get_scl(int port)
 #if !(I2C_LEVEL_SUPPORT)
 		return gpio_get_level(g);
 #else
-		return IS_BIT_SET(NUCMX_SMBCTL3(port), NUCMX_SMBCTL3_SCL_LVL);
+		return IS_BIT_SET(NPCX_SMBCTL3(port), NPCX_SMBCTL3_SCL_LVL);
 #endif
 
 	/* If no SCL pin defined for this port, then return 1 to appear idle. */
@@ -448,7 +448,7 @@ int i2c_raw_get_sda(int port)
 #if !(I2C_LEVEL_SUPPORT)
 		return gpio_get_level(g);
 #else
-		return IS_BIT_SET(NUCMX_SMBCTL3(port), NUCMX_SMBCTL3_SDA_LVL);
+		return IS_BIT_SET(NPCX_SMBCTL3(port), NPCX_SMBCTL3_SDA_LVL);
 #endif
 
 	/* If no SDA pin defined for this port, then return 1 to appear idle. */
@@ -510,7 +510,7 @@ static void i2c_freq_changed(void)
 			 freq = clock_get_apb2_freq();
 		}
 		/* use Fast Mode */
-		SET_BIT(NUCMX_SMBCTL3(port)  , NUCMX_SMBCTL3_400K);
+		SET_BIT(NPCX_SMBCTL3(port)  , NPCX_SMBCTL3_400K);
 
 		/*------------------------------------------------------------------------------------------
 		 * Set SCLLT/SCLHT:
@@ -522,8 +522,8 @@ static void i2c_freq_changed(void)
 		scl_time = (freq/1000) / (bus_freq * 4);   /* bus_freq is KHz */
 
 		/* set SCL High/Low time */
-		NUCMX_SMBSCLLT(port) = scl_time;
-		NUCMX_SMBSCLHT(port) = scl_time;
+		NPCX_SMBSCLLT(port) = scl_time;
+		NPCX_SMBSCLHT(port) = scl_time;
 	}
 }
 DECLARE_HOOK(HOOK_FREQ_CHANGE, i2c_freq_changed, HOOK_PRIO_DEFAULT);
@@ -544,13 +544,13 @@ static void i2c_init(void)
 		volatile struct i2c_status *pStsObj = i2c_stsobjs + port;
 		/* Configure pull-up for SMB interface pins */
 #ifndef SMB_SUPPORT18V
-		SET_BIT(NUCMX_DEVPU0, port); 			/* Enable 3.3V pull-up */
+		SET_BIT(NPCX_DEVPU0, port); 			/* Enable 3.3V pull-up */
 #else
-		SET_BIT(NUCMX_LV_GPIO_CTL1, port+1);	/* Set GPIO Pin voltage judgment to 1.8V */
+		SET_BIT(NPCX_LV_GPIO_CTL1, port+1);	/* Set GPIO Pin voltage judgment to 1.8V */
 #endif
 
 		/* Enable module - before configuring CTL1 */
-		SET_BIT(NUCMX_SMBCTL2(port), NUCMX_SMBCTL2_ENABLE);
+		SET_BIT(NPCX_SMBCTL2(port), NPCX_SMBCTL2_ENABLE);
 
 		/* status init */
 		pStsObj->oper_state = SMB_IDLE;

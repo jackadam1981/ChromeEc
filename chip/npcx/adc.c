@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-/* NUCMX-specific ADC module for Chrome EC */
+/* NPCX-specific ADC module for Chrome EC */
 
 #include "adc.h"
 #include "adc_chip.h"
@@ -28,13 +28,13 @@
 #define ADC_Regular_MEAST         0x0001
 
 /* ADC conversion mode */
-enum nucmx_adc_conversion_mode{
+enum npcx_adc_conversion_mode{
     ADC_CHN_CONVERSION_MODE   = 0,
     ADC_SCAN_CONVERSION_MODE  = 1
 };
 
 /* ADC repetitive mode */
-enum nucmx_adc_repetitive_mode{
+enum npcx_adc_repetitive_mode{
     ADC_ONE_SHOT_CONVERSION_TYPE    = 0,
     ADC_REPETITIVE_CONVERSION_TYPE  = 1
 };
@@ -63,19 +63,19 @@ void adc_freq_changed (void)
         prescaler_divider = 0x3F;
 
 	/* Set Core Clock Division Factor in order to obtain the ADC clock */
-    NUCMX_ATCTL = (NUCMX_ATCTL &(~(((1<<6)-1)<<NUCMX_ATCTL_SCLKDIV)))|(prescaler_divider<<NUCMX_ATCTL_SCLKDIV);
+    NPCX_ATCTL = (NPCX_ATCTL &(~(((1<<6)-1)<<NPCX_ATCTL_SCLKDIV)))|(prescaler_divider<<NPCX_ATCTL_SCLKDIV);
 }
 DECLARE_HOOK(HOOK_FREQ_CHANGE, adc_freq_changed, HOOK_PRIO_DEFAULT);
 
 /**
  * Get current voltage data of the specified channel.
  *
- * @param input_ch		nucmx input channel to read
+ * @param input_ch		npcx input channel to read
  * @return ADC channel voltage data.(Range: 0~1023)
  */
-static int get_channel_data (enum nucmx_adc_input_channel input_ch)
+static int get_channel_data (enum npcx_adc_input_channel input_ch)
 {
-    return ((NUCMX_CHNDAT(input_ch)>>NUCMX_CHNDAT_CHDAT)&((1<<10)-1));
+    return ((NPCX_CHNDAT(input_ch)>>NPCX_CHNDAT_CHDAT)&((1<<10)-1));
 }
 
 /**
@@ -84,31 +84,31 @@ static int get_channel_data (enum nucmx_adc_input_channel input_ch)
  * @param   input_ch    operation channel
  * @param   timeout		preset timeout
  * @return  TRUE/FALSE  success/fail
- * @notes   set SW-triggered interrupt conversion and one-shot mode in nucmx chip
+ * @notes   set SW-triggered interrupt conversion and one-shot mode in npcx chip
  */
-static int start_single_and_wait(enum nucmx_adc_input_channel input_ch, int timeout)
+static int start_single_and_wait(enum npcx_adc_input_channel input_ch, int timeout)
 {
 	int event;
 
 	task_waiting = task_get_current();
 	
     /* Set ADC conversion code to SW conversion mode */
-    NUCMX_ADCCNF = (NUCMX_ADCCNF &(~(((1<<2)-1)<<NUCMX_ADCCNF_ADCMD)))|(ADC_CHN_CONVERSION_MODE<<NUCMX_ADCCNF_ADCMD);
+    NPCX_ADCCNF = (NPCX_ADCCNF &(~(((1<<2)-1)<<NPCX_ADCCNF_ADCMD)))|(ADC_CHN_CONVERSION_MODE<<NPCX_ADCCNF_ADCMD);
 
     /* Set conversion type to one-shot type */
-    NUCMX_ADCCNF = (NUCMX_ADCCNF &(~(((1<<1)-1)<<NUCMX_ADCCNF_ADCRPTC)))|(ADC_ONE_SHOT_CONVERSION_TYPE<<NUCMX_ADCCNF_ADCRPTC);
+    NPCX_ADCCNF = (NPCX_ADCCNF &(~(((1<<1)-1)<<NPCX_ADCCNF_ADCRPTC)))|(ADC_ONE_SHOT_CONVERSION_TYPE<<NPCX_ADCCNF_ADCRPTC);
 
     /* Update number of channel to be converted */
-    NUCMX_ASCADD = (NUCMX_ASCADD &(~(((1<<5)-1)<<NUCMX_ASCADD_SADDR)))|(input_ch<<NUCMX_ASCADD_SADDR);
+    NPCX_ASCADD = (NPCX_ASCADD &(~(((1<<5)-1)<<NPCX_ASCADD_SADDR)))|(input_ch<<NPCX_ASCADD_SADDR);
 
     /* Clear End-of-Conversion Event status */
-    SET_BIT(NUCMX_ADCSTS, NUCMX_ADCSTS_EOCEV);
+    SET_BIT(NPCX_ADCSTS, NPCX_ADCSTS_EOCEV);
     
     /* Enable ADC End-of-Conversion Interrupt if applicable */
-    SET_BIT(NUCMX_ADCCNF, NUCMX_ADCCNF_INTECEN);
+    SET_BIT(NPCX_ADCCNF, NPCX_ADCCNF_INTECEN);
 
     /* Start conversion */
-    SET_BIT(NUCMX_ADCCNF, NUCMX_ADCCNF_START);
+    SET_BIT(NPCX_ADCCNF, NPCX_ADCCNF_START);
 
 	/* Wait for interrupt */
 	event = task_wait_event(timeout);
@@ -139,8 +139,8 @@ int adc_read_channel(enum adc_channel ch)
 
 	if (start_single_and_wait(adc->input_ch, ADC_TIMEOUT_US))
 	{
-	    if ( (adc->input_ch == ((NUCMX_ASCADD>>NUCMX_ASCADD_SADDR)&((1<<5)-1))) && 
-	        (IS_BIT_SET(NUCMX_CHNDAT(adc->input_ch), NUCMX_CHNDAT_NEW)) )
+	    if ( (adc->input_ch == ((NPCX_ASCADD>>NPCX_ASCADD_SADDR)&((1<<5)-1))) &&
+	        (IS_BIT_SET(NPCX_CHNDAT(adc->input_ch), NPCX_CHNDAT_NEW)) )
 	    {
             value = get_channel_data(adc->input_ch) * adc->factor_mul /
 		    adc->factor_div + adc->shift;
@@ -184,27 +184,27 @@ int adc_read_all_channels(int *data)
  *
  * @param   none
  * @return  none
- * @notes   Only handle SW-triggered conversion in nucmx chip
+ * @notes   Only handle SW-triggered conversion in npcx chip
  */
 void adc_interrupt(void)
 {
-    if (IS_BIT_SET(NUCMX_ADCSTS, NUCMX_ADCSTS_EOCEV))
+    if (IS_BIT_SET(NPCX_ADCSTS, NPCX_ADCSTS_EOCEV))
     {
         /* Disable End-of-Conversion Interrupt */
-        CLEAR_BIT(NUCMX_ADCCNF, NUCMX_ADCCNF_INTECEN);
+        CLEAR_BIT(NPCX_ADCCNF, NPCX_ADCCNF_INTECEN);
 
         /* Stop conversion */
-        SET_BIT(NUCMX_ADCCNF, NUCMX_ADCCNF_STOP);
+        SET_BIT(NPCX_ADCCNF, NPCX_ADCCNF_STOP);
         
         /* Clear End-of-Conversion Event status */
-        SET_BIT(NUCMX_ADCSTS, NUCMX_ADCSTS_EOCEV);
+        SET_BIT(NPCX_ADCSTS, NPCX_ADCSTS_EOCEV);
         
 	    /* Wake up the task which was waiting on the interrupt, if any */
         if (task_waiting != TASK_ID_INVALID)
 	        task_wake(task_waiting);
     }
 }
-DECLARE_IRQ(NUCMX_IRQ_ADC, adc_interrupt, 2);
+DECLARE_IRQ(NPCX_IRQ_ADC, adc_interrupt, 2);
 
 /**
  * ADC Console commands
@@ -212,7 +212,7 @@ DECLARE_IRQ(NUCMX_IRQ_ADC, adc_interrupt, 2);
  * @param   concole argc
  * @param   concole argv
  * @return  error message
- * @notes   Not support temperature sensor in nucmx chip
+ * @notes   Not support temperature sensor in npcx chip
  */
 #ifdef CONFIG_CMD_ECTEMP
 static int command_ectemp(int argc, char **argv)
@@ -240,21 +240,21 @@ static void adc_init(void)
 	gpio_config_module(MODULE_ADC, 1);
 
     /* Enable ADC */
-    SET_BIT(NUCMX_ADCCNF, NUCMX_ADCCNF_ADCEN);
+    SET_BIT(NPCX_ADCCNF, NPCX_ADCCNF_ADCEN);
 
 	/* Set Core Clock Division Factor in order to obtain the ADC clock */
     adc_freq_changed();
 
     /* Set regular speed */
-    NUCMX_ATCTL = (NUCMX_ATCTL &(~(((1<<3)-1)<<NUCMX_ATCTL_DLY)))|((ADC_Regular_DLY - 1)<<3);
-    NUCMX_ADCCNF2 = ADC_Regular_ADCCNF2;
-    NUCMX_GENDLY = ADC_Regular_GENDLY;
-    NUCMX_MEAST = ADC_Regular_MEAST;
+    NPCX_ATCTL = (NPCX_ATCTL &(~(((1<<3)-1)<<NPCX_ATCTL_DLY)))|((ADC_Regular_DLY - 1)<<3);
+    NPCX_ADCCNF2 = ADC_Regular_ADCCNF2;
+    NPCX_GENDLY = ADC_Regular_GENDLY;
+    NPCX_MEAST = ADC_Regular_MEAST;
     
 	task_waiting = TASK_ID_INVALID;
 
 	/* Enable IRQs */
-	task_enable_irq(NUCMX_IRQ_ADC);
+	task_enable_irq(NPCX_IRQ_ADC);
 
 }
 DECLARE_HOOK(HOOK_INIT, adc_init, HOOK_PRIO_DEFAULT);

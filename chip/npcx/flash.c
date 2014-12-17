@@ -39,6 +39,8 @@ int addr_prot_lens;
 #define CMD_PROGRAM_UINT_SIZE	0x08
 #define CMD_PAGE_SIZE			0x00
 #define CMD_READ_ID_TYPE		0x47
+#define CMD_FAST_READ           0x0B
+
 /*
  * Status registers for the W25Q16CV SPI flash
  */
@@ -94,23 +96,23 @@ int addr_prot_lens;
 void flash_pinmux(int enable)
 {
 	if(enable){
-		CLEAR_BIT(NUCMX_DEVALT(0),NUCMX_DEVALT0_NO_F_SPI);
+		CLEAR_BIT(NPCX_DEVALT(0),NPCX_DEVALT0_NO_F_SPI);
 	}
 	else{
-		SET_BIT(NUCMX_DEVALT(0),NUCMX_DEVALT0_NO_F_SPI);
+		SET_BIT(NPCX_DEVALT(0),NPCX_DEVALT0_NO_F_SPI);
 	}
 
 	/* CS0/1 pinmux */
 	if(enable){
 #if (FIU_CHIP_SELECT == 1)
-		SET_BIT(NUCMX_DEVALT(0),NUCMX_DEVALT0_F_SPI_CS1_1);
+		SET_BIT(NPCX_DEVALT(0),NPCX_DEVALT0_F_SPI_CS1_1);
 #elif (FIU_CHIP_SELECT == 2)
-		SET_BIT(NUCMX_DEVALT(0),NUCMX_DEVALT0_F_SPI_CS1_2);
+		SET_BIT(NPCX_DEVALT(0),NPCX_DEVALT0_F_SPI_CS1_2);
 #endif
 	}
 	else{
-		CLEAR_BIT(NUCMX_DEVALT(0),NUCMX_DEVALT0_F_SPI_CS1_1);
-		CLEAR_BIT(NUCMX_DEVALT(0),NUCMX_DEVALT0_F_SPI_CS1_2);
+		CLEAR_BIT(NPCX_DEVALT(0),NPCX_DEVALT0_F_SPI_CS1_1);
+		CLEAR_BIT(NPCX_DEVALT(0),NPCX_DEVALT0_F_SPI_CS1_2);
 	}
 }
 
@@ -118,21 +120,21 @@ void flash_tristate(int enable)
 {
 	if(enable){
 		/* Enable FIU pins to tri-state */
-		SET_BIT(NUCMX_DEVCNT, NUCMX_DEVCNT_F_SPI_TRIS);
+		SET_BIT(NPCX_DEVCNT, NPCX_DEVCNT_F_SPI_TRIS);
 	}
 	else{
 		/* Disable FIU pins to tri-state */
-		CLEAR_BIT(NUCMX_DEVCNT, NUCMX_DEVCNT_F_SPI_TRIS);
+		CLEAR_BIT(NPCX_DEVCNT, NPCX_DEVCNT_F_SPI_TRIS);
 	}
 }
 
 void flash_execute_cmd(uint8_t code, uint8_t cts)
 {
 	/* set UMA_CODE */
-    NUCMX_UMA_CODE = code;
+    NPCX_UMA_CODE = code;
     /* execute UMA flash transaction */
-    NUCMX_UMA_CTS  = cts;
-    while (IS_BIT_SET(NUCMX_UMA_CTS, NUCMX_UMA_CTS_EXEC_DONE));
+    NPCX_UMA_CTS  = cts;
+    while (IS_BIT_SET(NPCX_UMA_CTS, NPCX_UMA_CTS_EXEC_DONE));
 }
 
 void flash_cs_level(int level)
@@ -140,12 +142,12 @@ void flash_cs_level(int level)
 	/* level is high */
 	if(level){
 		/* Set chip select to high */
-		SET_BIT(NUCMX_UMA_ECTS, NUCMX_UMA_ECTS_SW_CS1);
+		SET_BIT(NPCX_UMA_ECTS, NPCX_UMA_ECTS_SW_CS1);
 	}
 	/* level is low */
 	else{
 		/* Set chip select to low */
-		CLEAR_BIT(NUCMX_UMA_ECTS, NUCMX_UMA_ECTS_SW_CS1);
+		CLEAR_BIT(NPCX_UMA_ECTS, NPCX_UMA_ECTS_SW_CS1);
 	}
 }
 
@@ -160,9 +162,9 @@ void flash_wait_ready(void)
     do
     {
     	/* Read status register */
-    	NUCMX_UMA_CTS  = MASK_RD_1BYTE;
-    	while (IS_BIT_SET(NUCMX_UMA_CTS, NUCMX_UMA_CTS_EXEC_DONE));
-    } while (NUCMX_UMA_DB0 & mask); /* Wait for Busy clear */
+    	NPCX_UMA_CTS  = MASK_RD_1BYTE;
+    	while (IS_BIT_SET(NPCX_UMA_CTS, NPCX_UMA_CTS_EXEC_DONE));
+    } while (NPCX_UMA_DB0 & mask); /* Wait for Busy clear */
     /* Chip Select high. */
 	flash_cs_level(1);
 }
@@ -175,7 +177,7 @@ int flash_write_enable(void)
     /* Wait for flash is not busy */
     flash_wait_ready();
 
-    if(NUCMX_UMA_DB0 & mask)
+    if(NPCX_UMA_DB0 & mask)
     	return 1;
     else
     	return 0;
@@ -185,9 +187,9 @@ void flash_set_address(uint32_t dest_addr)
 {
     uint8_t * addr = (uint8_t *)&dest_addr;
     // Write address
-    NUCMX_UMA_AB2 = addr[2];
-    NUCMX_UMA_AB1 = addr[1];
-    NUCMX_UMA_AB0 = addr[0];
+    NPCX_UMA_AB2 = addr[2];
+    NPCX_UMA_AB1 = addr[1];
+    NPCX_UMA_AB0 = addr[0];
 }
 
 uint8_t flash_get_status1(void)
@@ -198,7 +200,7 @@ uint8_t flash_get_status1(void)
 	flash_execute_cmd(CMD_READ_STATUS_REG, MASK_CMD_RD_1BYTE);
 	/* Enable tri-state */
 	flash_tristate(1);
-	return NUCMX_UMA_DB0;
+	return NPCX_UMA_DB0;
 }
 
 uint8_t flash_get_status2(void)
@@ -209,7 +211,7 @@ uint8_t flash_get_status2(void)
 	flash_execute_cmd(CMD_READ_STATUS_REG2, MASK_CMD_RD_1BYTE);
 	/* Enable tri-state */
 	flash_tristate(1);
-	return NUCMX_UMA_DB0;
+	return NPCX_UMA_DB0;
 }
 
 /*****************************************************************************/
@@ -356,8 +358,8 @@ int flash_set_status_for_prot(int reg1, int reg2)
 	/* Enable write */
 	flash_write_enable();
 
-	NUCMX_UMA_DB0 = reg1;
-	NUCMX_UMA_DB1 = reg2;
+	NPCX_UMA_DB0 = reg1;
+	NPCX_UMA_DB1 = reg2;
 
 	/* Write status register 1/2 */
     flash_execute_cmd(CMD_WRITE_STATUS_REG, MASK_CMD_WR_2BYTE);
@@ -372,7 +374,7 @@ int flash_set_status_for_prot(int reg1, int reg2)
 int flash_check_prot_range(unsigned int offset, unsigned int bytes)
 {
 	/* Invalid value */
-	if (offset + bytes > CONFIG_FLASH_SIZE)
+	if (offset + bytes > CONFIG_FLASH_PHYSICAL_SIZE)
 		return EC_ERROR_INVAL;
 	/* Check if ranges overlap */
 	if (MAX(addr_prot_start, offset) < MIN(addr_prot_start + addr_prot_lens, offset + bytes))
@@ -392,7 +394,7 @@ int flash_check_prot_reg(unsigned int offset, unsigned int bytes)
 	sr2 = flash_get_status2();
 
 	/* Invalid value */
-	if (offset + bytes > CONFIG_FLASH_SIZE)
+	if (offset + bytes > CONFIG_FLASH_PHYSICAL_SIZE)
 		return EC_ERROR_INVAL;
 
 	/* Compute current protect range */
@@ -446,6 +448,109 @@ void flash_burst_write(unsigned int dest_addr, unsigned int bytes, const char *d
 }
 /*****************************************************************************/
 /* Physical layer APIs */
+int flash_physical_read(int offset, int size, char *data)
+{
+	int dest_addr = offset;
+    uint32_t idx;
+
+    /* Disable tri-state */
+	flash_tristate(0);
+    /* Chip Select down. */
+	flash_cs_level(0);
+
+	/* Set read address */
+	flash_set_address(dest_addr);
+	/* Start fast read */
+	flash_execute_cmd(CMD_FAST_READ, 0xE9); // 1110 1001 - EXEC, WR, CMD, ADDR
+
+	/* Burst read transaction */
+    for (idx = 0; idx < size; idx++)
+    {
+        NPCX_UMA_CTS  = MASK_RD_1BYTE;                 // 1101 0101 - EXEC, RD, NO CMD, NO ADDR, 4 bytes
+        while (IS_BIT_SET(NPCX_UMA_CTS, EXEC_DONE)); 	// wait for UMA to complete
+
+        // Get read transaction results
+        data[idx] = NPCX_UMA_DB0;
+    }
+
+    /* Chip Select up */
+	flash_cs_level(1);
+	/* Enable tri-state */
+	flash_tristate(1);
+	return EC_SUCCESS;
+}
+
+int flash_physical_read_image_size(int offset, int size)
+{
+	int dest_addr = offset;
+    uint8_t		temp;
+    uint32_t 	idx;
+    uint32_t 	image_size = 0;
+
+    /* Disable tri-state */
+	flash_tristate(0);
+    /* Chip Select down. */
+	flash_cs_level(0);
+
+	/* Set read address */
+	flash_set_address(dest_addr);
+	/* Start fast read */
+	flash_execute_cmd(CMD_FAST_READ, 0xE9); // 1110 1001 - EXEC, WR, CMD, ADDR
+
+	/* Burst read transaction */
+    for (idx = 0; idx < size; idx++)
+    {
+        NPCX_UMA_CTS  = MASK_RD_1BYTE;                 // 1101 0101 - EXEC, RD, NO CMD, NO ADDR, 4 bytes
+        while (IS_BIT_SET(NPCX_UMA_CTS, EXEC_DONE)); 	// wait for UMA to complete
+
+        // Find eof of image
+        temp = NPCX_UMA_DB0;
+        if(temp == 0xea){
+        	image_size = idx;
+        }
+    }
+
+    /* Chip Select up */
+	flash_cs_level(1);
+	/* Enable tri-state */
+	flash_tristate(1);
+	return image_size;
+}
+
+int flash_physical_is_erased(uint32_t offset, int size)
+{
+	int dest_addr = offset;
+    uint32_t idx;
+    uint8_t temp;
+
+    /* Chip Select down. */
+	flash_cs_level(0);
+
+	/* Set read address */
+	flash_set_address(dest_addr);
+	/* Start fast read */
+	flash_execute_cmd(CMD_FAST_READ, 0xE9); // 1110 1001 - EXEC, WR, CMD, ADDR
+
+	/* Burst read transaction */
+    for (idx = 0; idx < size; idx++)
+    {
+        NPCX_UMA_CTS  = MASK_RD_1BYTE;                 // 1101 0101 - EXEC, RD, NO CMD, NO ADDR, 4 bytes
+        while (IS_BIT_SET(NPCX_UMA_CTS, EXEC_DONE)); 	// wait for UMA to complete
+
+        // Get read transaction results
+        temp = NPCX_UMA_DB0;
+        if(temp != 0xFF)
+        	break;
+    }
+
+    /* Chip Select up */
+	flash_cs_level(1);
+
+	if(idx == size)
+		return 1;
+	else
+		return 0;
+}
 
 int flash_physical_write(int offset, int size, const char *data)
 {

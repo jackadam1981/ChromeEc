@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-/* NUCMX-specific hwtimer module for Chrome EC */
+/* NPCX-specific hwtimer module for Chrome EC */
 
 #ifndef HWTIMER_CHIP_H_
 #define HWTIMER_CHIP_H_

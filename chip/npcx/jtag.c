@@ -12,6 +12,6 @@
 void jtag_pre_init(void)
 {
 	/* Enable automatic freeze mode */
-	CLEAR_BIT(NUCMX_DBGFRZEN3, NUCMX_DBGFRZEN3_GLBL_FRZ_DIS);
+	CLEAR_BIT(NPCX_DBGFRZEN3, NPCX_DBGFRZEN3_GLBL_FRZ_DIS);
 }
 

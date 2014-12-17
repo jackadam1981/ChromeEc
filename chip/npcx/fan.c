@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-/* NUCMX fan control module. */
+/* NPCX fan control module. */
 
 #include "clock.h"
 #include "clock_chip.h"
@@ -25,26 +25,26 @@
 #endif
 
 /* Fan operation module */
-enum nucmx_fan_op_module {
-	NUCMX_FAN_OP_PWM,
-	NUCMX_FAN_OP_MFT,
+enum npcx_fan_op_module {
+	NPCX_FAN_OP_PWM,
+	NPCX_FAN_OP_MFT,
 	/* Number of FAN module operations */
-	NUCMX_FAN_OP_COUNT
+	NPCX_FAN_OP_COUNT
 };
 
 /* MFT model select */
-enum nucmx_mft_mdsel {
-	NUCMX_MFT_MDSEL_1,
-	NUCMX_MFT_MDSEL_2,
-	NUCMX_MFT_MDSEL_3,
-	NUCMX_MFT_MDSEL_4,
-	NUCMX_MFT_MDSEL_5,
+enum npcx_mft_mdsel {
+	NPCX_MFT_MDSEL_1,
+	NPCX_MFT_MDSEL_2,
+	NPCX_MFT_MDSEL_3,
+	NPCX_MFT_MDSEL_4,
+	NPCX_MFT_MDSEL_5,
 	/* Number of MFT modes */
-	NUCMX_MFT_MDSEL_COUNT
+	NPCX_MFT_MDSEL_COUNT
 };
 
 /* MFT clock source */
-enum nucmx_mft_clk_src{
+enum npcx_mft_clk_src{
     TCKC_NOCLK = 0,
     TCKC_PRESCALE_APB1_CLK,
     TCKC_EXTERNAL,
@@ -89,23 +89,22 @@ static tacho_status_t   tacho_status;
 static int rpm_target = 0;
 static int rpm_actual = -1;
 static int fan_init_ch = 0;
-static uint8_t fan_working = 0;
 /**
  * Select fan operation channel by module.
  *
  * @param   none
- * @param   op_module   nucmx operation module
- * @return  nucmx operation channel by module
- * @notes   Fan is controlled by PWM/MFT module in nucmx chip
+ * @param   op_module   npcx operation module
+ * @return  npcx operation channel by module
+ * @notes   Fan is controlled by PWM/MFT module in npcx chip
  */
-static int fan_op_ch (int ch, enum nucmx_fan_op_module op_module)
+static int fan_op_ch (int ch, enum npcx_fan_op_module op_module)
 {
     uint8_t op_ch;
     
     switch (ch)
     {
         case 0:
-            if (op_module == NUCMX_FAN_OP_PWM)
+            if (op_module == NPCX_FAN_OP_PWM)
                 op_ch = PWM_CH_FAN;
             else
                 op_ch = MFT_CH_0;
@@ -125,22 +124,22 @@ static int fan_op_ch (int ch, enum nucmx_fan_op_module op_module)
  */
 static void mft_startmeasure (int ch)
 {
-    int mft_ch = fan_op_ch(ch, NUCMX_FAN_OP_MFT);
+    int mft_ch = fan_op_ch(ch, NPCX_FAN_OP_MFT);
 
     /* Start measurement */
 #ifdef CONFIG_MFT_INPUT_LFCLK
     /* Set the LFCLK clock. */
-    if (NUCMX_MFT_MODULE_PORT_TB == mft_channels[mft_ch].port)
-        NUCMX_TCKC(mft_channels[mft_ch].module) = (NUCMX_TCKC(mft_channels[mft_ch].module)&(~(((1<<3)-1)<<NUCMX_TCKC_C2CSEL)))|(TCKC_LFCLK<<NUCMX_TCKC_C2CSEL);
+    if (NPCX_MFT_MODULE_PORT_TB == mft_channels[mft_ch].port)
+        NPCX_TCKC(mft_channels[mft_ch].module) = (NPCX_TCKC(mft_channels[mft_ch].module)&(~(((1<<3)-1)<<NPCX_TCKC_C2CSEL)))|(TCKC_LFCLK<<NPCX_TCKC_C2CSEL);
     else
-        NUCMX_TCKC(mft_channels[mft_ch].module) = (NUCMX_TCKC(mft_channels[mft_ch].module)&(~(((1<<3)-1)<<NUCMX_TCKC_C1CSEL)))|(TCKC_LFCLK<<NUCMX_TCKC_C1CSEL);
+        NPCX_TCKC(mft_channels[mft_ch].module) = (NPCX_TCKC(mft_channels[mft_ch].module)&(~(((1<<3)-1)<<NPCX_TCKC_C1CSEL)))|(TCKC_LFCLK<<NPCX_TCKC_C1CSEL);
     
 #else
     /* Set the core clock. */
-    if (NUCMX_MFT_MODULE_PORT_TB == mft_channels[mft_ch].port)
-        NUCMX_TCKC(mft_channels[mft_ch].module) = (NUCMX_TCKC(mft_channels[mft_ch].module)&(~(((1<<3)-1)<<NUCMX_TCKC_C2CSEL)))|(TCKC_PRESCALE_APB1_CLK<<NUCMX_TCKC_C2CSEL);
+    if (NPCX_MFT_MODULE_PORT_TB == mft_channels[mft_ch].port)
+        NPCX_TCKC(mft_channels[mft_ch].module) = (NPCX_TCKC(mft_channels[mft_ch].module)&(~(((1<<3)-1)<<NPCX_TCKC_C2CSEL)))|(TCKC_PRESCALE_APB1_CLK<<NPCX_TCKC_C2CSEL);
     else
-        NUCMX_TCKC(mft_channels[mft_ch].module) = (NUCMX_TCKC(mft_channels[mft_ch].module)&(~(((1<<3)-1)<<NUCMX_TCKC_C1CSEL)))|(TCKC_PRESCALE_APB1_CLK<<NUCMX_TCKC_C1CSEL);
+        NPCX_TCKC(mft_channels[mft_ch].module) = (NPCX_TCKC(mft_channels[mft_ch].module)&(~(((1<<3)-1)<<NPCX_TCKC_C1CSEL)))|(TCKC_PRESCALE_APB1_CLK<<NPCX_TCKC_C1CSEL);
 #endif
 
 }
@@ -153,16 +152,16 @@ static void mft_startmeasure (int ch)
  */
 static void mft_stopmeasure (int ch)
 {
-    int mft_ch = fan_op_ch(ch, NUCMX_FAN_OP_MFT);
+    int mft_ch = fan_op_ch(ch, NPCX_FAN_OP_MFT);
 
     /* Clear all pending flag */
-    NUCMX_TECLR(mft_channels[mft_ch].module) = NUCMX_TECTRL(mft_channels[mft_ch].module);
+    NPCX_TECLR(mft_channels[mft_ch].module) = NPCX_TECTRL(mft_channels[mft_ch].module);
     
     /* Stop the timer */
-    if (NUCMX_MFT_MODULE_PORT_TB == mft_channels[mft_ch].port)
-        NUCMX_TCKC(mft_channels[mft_ch].module) = (NUCMX_TCKC(mft_channels[mft_ch].module)&(~(((1<<3)-1)<<NUCMX_TCKC_C2CSEL)))|(TCKC_NOCLK<<NUCMX_TCKC_C2CSEL);
+    if (NPCX_MFT_MODULE_PORT_TB == mft_channels[mft_ch].port)
+        NPCX_TCKC(mft_channels[mft_ch].module) = (NPCX_TCKC(mft_channels[mft_ch].module)&(~(((1<<3)-1)<<NPCX_TCKC_C2CSEL)))|(TCKC_NOCLK<<NPCX_TCKC_C2CSEL);
     else
-        NUCMX_TCKC(mft_channels[mft_ch].module) = (NUCMX_TCKC(mft_channels[mft_ch].module)&(~(((1<<3)-1)<<NUCMX_TCKC_C1CSEL)))|(TCKC_NOCLK<<NUCMX_TCKC_C1CSEL);
+        NPCX_TCKC(mft_channels[mft_ch].module) = (NPCX_TCKC(mft_channels[mft_ch].module)&(~(((1<<3)-1)<<NPCX_TCKC_C1CSEL)))|(TCKC_NOCLK<<NPCX_TCKC_C1CSEL);
 }
 
 /**
@@ -173,13 +172,13 @@ static void mft_stopmeasure (int ch)
  */
 static void mft_finalmeasure (int ch)
 {
-    int mft_ch = fan_op_ch(ch, NUCMX_FAN_OP_MFT);
+    int mft_ch = fan_op_ch(ch, NPCX_FAN_OP_MFT);
 
     /* Start of the last tacho cycle is detected - calculate tacho cycle duration */
-    if (NUCMX_MFT_MODULE_PORT_TB == mft_channels[mft_ch].port)
-        tacho_status.edge_interval = (uint32_t)(mft_channels[mft_ch].default_count - NUCMX_TCRB(mft_channels[mft_ch].module));
+    if (NPCX_MFT_MODULE_PORT_TB == mft_channels[mft_ch].port)
+        tacho_status.edge_interval = (uint32_t)(mft_channels[mft_ch].default_count - NPCX_TCRB(mft_channels[mft_ch].module));
     else
-        tacho_status.edge_interval = (uint32_t)(mft_channels[mft_ch].default_count - NUCMX_TCRA(mft_channels[mft_ch].module));
+        tacho_status.edge_interval = (uint32_t)(mft_channels[mft_ch].default_count - NPCX_TCRA(mft_channels[mft_ch].module));
 }
 
 /**
@@ -193,7 +192,7 @@ static void mft_finalmeasure (int ch)
 void mft_freq_changed (void)
 {
     uint16_t prescaler_divider    = 0;
-    int mft_ch = fan_op_ch(fan_init_ch, NUCMX_FAN_OP_MFT);
+    int mft_ch = fan_op_ch(fan_init_ch, NPCX_FAN_OP_MFT);
 
     /* Set clock prescalre divider to MFT module*/
     prescaler_divider = (uint16_t)(clock_get_apb1_freq()/mft_channels[mft_ch].freq);
@@ -203,7 +202,7 @@ void mft_freq_changed (void)
         prescaler_divider = 0xFF;
     
     /* Set clock prescalre divider to MFT module*/
-    NUCMX_TPRSC(mft_channels[mft_ch].module) = (uint8_t)prescaler_divider;
+    NPCX_TPRSC(mft_channels[mft_ch].module) = (uint8_t)prescaler_divider;
 }
 DECLARE_HOOK(HOOK_FREQ_CHANGE, mft_freq_changed, HOOK_PRIO_DEFAULT);
 #endif
@@ -217,66 +216,65 @@ DECLARE_HOOK(HOOK_FREQ_CHANGE, mft_freq_changed, HOOK_PRIO_DEFAULT);
  */
 static void fan_config (int ch, int enable_mft_read_rpm)
 {
-    int pwm_ch = fan_op_ch(ch, NUCMX_FAN_OP_PWM);
-    int mft_ch = fan_op_ch(ch, NUCMX_FAN_OP_MFT);
+    int pwm_ch = fan_op_ch(ch, NPCX_FAN_OP_PWM);
+    int mft_ch = fan_op_ch(ch, NPCX_FAN_OP_MFT);
 
     fan_init_ch = ch;
-    fan_working = 0;
     pwm_config(pwm_ch);
     
 	/* Mux mft */
-	CLEAR_BIT(NUCMX_DEVALT(3), NUCMX_DEVALT3_TB1_TACH2_SL1);
+	CLEAR_BIT(NPCX_DEVALT(3), NPCX_DEVALT3_TB1_TACH2_SL1);
 	/* Configure pins from GPIOs to FAN */
 	gpio_config_module(MODULE_PWM_FAN, 1);
     
     if (enable_mft_read_rpm)
     {
         /* Set mode 5 to MFT module*/
-        NUCMX_TMCTRL(mft_channels[mft_ch].module) = (NUCMX_TMCTRL(mft_channels[mft_ch].module)&(~(((1<<3)-1)<<NUCMX_TMCTRL_MDSEL)))|(NUCMX_MFT_MDSEL_5<<NUCMX_TMCTRL_MDSEL);
+        NPCX_TMCTRL(mft_channels[mft_ch].module) = (NPCX_TMCTRL(mft_channels[mft_ch].module)&(~(((1<<3)-1)<<NPCX_TMCTRL_MDSEL)))|(NPCX_MFT_MDSEL_5<<NPCX_TMCTRL_MDSEL);
         
 #ifndef CONFIG_MFT_INPUT_LFCLK
         /* Set MFT operation frequence */
         mft_freq_changed();
         /* Set the active power mode. */
-        CLEAR_BIT(NUCMX_TCKC(mft_channels[mft_ch].module), NUCMX_TCKC_LOW_PWR);
+        CLEAR_BIT(NPCX_TCKC(mft_channels[mft_ch].module), NPCX_TCKC_LOW_PWR);
 #else
         /* Set the low power mode. */
-        SET_BIT(NUCMX_TCKC(mft_channels[mft_ch].module), NUCMX_TCKC_LOW_PWR);
+        SET_BIT(NPCX_TCKC(mft_channels[mft_ch].module), NPCX_TCKC_LOW_PWR);
 #endif
-        if (NUCMX_MFT_MODULE_PORT_TB == mft_channels[mft_ch].port)
+        if (NPCX_MFT_MODULE_PORT_TB == mft_channels[mft_ch].port)
         {
             /* Set the default count-down timer. */
-            NUCMX_TCNT2(mft_channels[mft_ch].module) = mft_channels[mft_ch].default_count;
-            NUCMX_TCRB(mft_channels[mft_ch].module) = mft_channels[mft_ch].default_count;
+            NPCX_TCNT2(mft_channels[mft_ch].module) = mft_channels[mft_ch].default_count;
+            NPCX_TCRB(mft_channels[mft_ch].module) = mft_channels[mft_ch].default_count;
             /* Set the edge polarity to rising. */
-            SET_BIT(NUCMX_TMCTRL(mft_channels[mft_ch].module), NUCMX_TMCTRL_TBEDG);
+            SET_BIT(NPCX_TMCTRL(mft_channels[mft_ch].module), NPCX_TMCTRL_TBEDG);
             /* Enable capture TCNT2 into TCRB and preset TCNT2. */
-            SET_BIT(NUCMX_TMCTRL(mft_channels[mft_ch].module), NUCMX_TMCTRL_TBEN);
+            SET_BIT(NPCX_TMCTRL(mft_channels[mft_ch].module), NPCX_TMCTRL_TBEN);
             /* Enable input debounce logic into TB. */
-            SET_BIT(NUCMX_TCFG(mft_channels[mft_ch].module), NUCMX_TCFG_TBDBEN);
+            SET_BIT(NPCX_TCFG(mft_channels[mft_ch].module), NPCX_TCFG_TBDBEN);
             /* Set the no clock to TCNT2. */
-            NUCMX_TCKC(mft_channels[mft_ch].module) = (NUCMX_TCKC(mft_channels[mft_ch].module)&(~(((1<<3)-1)<<NUCMX_TCKC_C2CSEL)))|(TCKC_NOCLK<<NUCMX_TCKC_C2CSEL);
+            NPCX_TCKC(mft_channels[mft_ch].module) = (NPCX_TCKC(mft_channels[mft_ch].module)&(~(((1<<3)-1)<<NPCX_TCKC_C2CSEL)))|(TCKC_NOCLK<<NPCX_TCKC_C2CSEL);
             /* Set timer wake-up enable */
-            SET_BIT(NUCMX_TWUEN(mft_channels[mft_ch].module), NUCMX_TWUEN_TBWEN);
-            SET_BIT(NUCMX_TWUEN(mft_channels[mft_ch].module), NUCMX_TWUEN_TDWEN);
+            SET_BIT(NPCX_TWUEN(mft_channels[mft_ch].module), NPCX_TWUEN_TBWEN);
+            SET_BIT(NPCX_TWUEN(mft_channels[mft_ch].module), NPCX_TWUEN_TDWEN);
 
         }
         else
         {
             /* Set the default count-down timer. */
-            NUCMX_TCNT1(mft_channels[mft_ch].module) = mft_channels[mft_ch].default_count;
-            NUCMX_TCRA(mft_channels[mft_ch].module) = mft_channels[mft_ch].default_count;
+            NPCX_TCNT1(mft_channels[mft_ch].module) = mft_channels[mft_ch].default_count;
+            NPCX_TCRA(mft_channels[mft_ch].module) = mft_channels[mft_ch].default_count;
             /* Set the edge polarity to rising. */
-            SET_BIT(NUCMX_TMCTRL(mft_channels[mft_ch].module), NUCMX_TMCTRL_TAEDG);
+            SET_BIT(NPCX_TMCTRL(mft_channels[mft_ch].module), NPCX_TMCTRL_TAEDG);
             /* Enable capture TCNT1 into TCRA and preset TCNT1. */
-            SET_BIT(NUCMX_TMCTRL(mft_channels[mft_ch].module), NUCMX_TMCTRL_TAEN);
+            SET_BIT(NPCX_TMCTRL(mft_channels[mft_ch].module), NPCX_TMCTRL_TAEN);
             /* Enable input debounce logic into TA. */
-            SET_BIT(NUCMX_TCFG(mft_channels[mft_ch].module), NUCMX_TCFG_TADBEN);
+            SET_BIT(NPCX_TCFG(mft_channels[mft_ch].module), NPCX_TCFG_TADBEN);
             /* Set the no clock to TCNT1. */
-            NUCMX_TCKC(mft_channels[mft_ch].module) = (NUCMX_TCKC(mft_channels[mft_ch].module)&(~(((1<<3)-1)<<NUCMX_TCKC_C1CSEL)))|(TCKC_NOCLK<<NUCMX_TCKC_C1CSEL);
+            NPCX_TCKC(mft_channels[mft_ch].module) = (NPCX_TCKC(mft_channels[mft_ch].module)&(~(((1<<3)-1)<<NPCX_TCKC_C1CSEL)))|(TCKC_NOCLK<<NPCX_TCKC_C1CSEL);
             /* Set timer wake-up enable */
-            SET_BIT(NUCMX_TWUEN(mft_channels[mft_ch].module), NUCMX_TWUEN_TAWEN);
-            SET_BIT(NUCMX_TWUEN(mft_channels[mft_ch].module), NUCMX_TWUEN_TCWEN);
+            SET_BIT(NPCX_TWUEN(mft_channels[mft_ch].module), NPCX_TWUEN_TAWEN);
+            SET_BIT(NPCX_TWUEN(mft_channels[mft_ch].module), NPCX_TWUEN_TCWEN);
 
         }
     }
@@ -294,7 +292,7 @@ static void fan_config (int ch, int enable_mft_read_rpm)
  */
 void fan_set_enabled(int ch, int enabled)
 {
-    int pwm_ch = fan_op_ch(ch, NUCMX_FAN_OP_PWM);
+    int pwm_ch = fan_op_ch(ch, NPCX_FAN_OP_PWM);
 
 	pwm_enable(pwm_ch, enabled);
 }
@@ -307,7 +305,7 @@ void fan_set_enabled(int ch, int enabled)
  */
 int fan_get_enabled(int ch)
 {
-    int pwm_ch = fan_op_ch(ch, NUCMX_FAN_OP_PWM);
+    int pwm_ch = fan_op_ch(ch, NPCX_FAN_OP_PWM);
 
 	return pwm_get_enabled(pwm_ch);
 }
@@ -321,12 +319,8 @@ int fan_get_enabled(int ch)
  */
 void fan_set_duty(int ch, int percent)
 {
-    int pwm_ch = fan_op_ch(ch, NUCMX_FAN_OP_PWM);
+    int pwm_ch = fan_op_ch(ch, NPCX_FAN_OP_PWM);
 
-    if (percent > 0)
-        fan_working = 1;
-    else
-    	fan_working = 0;
     cprints(CC_PWM, "set duty percent=%d", percent);
 
     /* Set the duty cycle */
@@ -341,7 +335,7 @@ void fan_set_duty(int ch, int percent)
  */
 int fan_get_duty(int ch)
 {
-    int pwm_ch = fan_op_ch(ch, NUCMX_FAN_OP_PWM);
+    int pwm_ch = fan_op_ch(ch, NPCX_FAN_OP_PWM);
 
 	/* Return percent */
 	return pwm_get_duty(pwm_ch);
@@ -352,7 +346,7 @@ int fan_get_duty(int ch)
  *
  * @param   ch  operation channel
  * @return  rpm operation mode or not
- * @notes   not support in nucmx chip
+ * @notes   not support in npcx chip
  */
 int fan_get_rpm_mode(int ch)
 {
@@ -366,7 +360,7 @@ int fan_get_rpm_mode(int ch)
  * @param   ch          operation channel
  * @param   rpm_mode    rpm operation mode flag
  * @return  none
- * @notes   not support in nucmx chip
+ * @notes   not support in npcx chip
  */
 void fan_set_rpm_mode(int ch, int rpm_mode)
 {
@@ -381,20 +375,20 @@ void fan_set_rpm_mode(int ch, int rpm_mode)
  */
 int fan_get_rpm_actual(int ch)
 {
-    int mft_ch = fan_op_ch(ch, NUCMX_FAN_OP_MFT);
-    uint8_t capture_pnd = NUCMX_TECTRL_TBPND, underflow_pnd = NUCMX_TECTRL_TDPND;
-    uint8_t capture_clr = NUCMX_TECLR_TBCLR, underflow_clr = NUCMX_TECLR_TDCLR;
+    int mft_ch = fan_op_ch(ch, NPCX_FAN_OP_MFT);
+    uint8_t capture_pnd = NPCX_TECTRL_TBPND, underflow_pnd = NPCX_TECTRL_TDPND;
+    uint8_t capture_clr = NPCX_TECLR_TBCLR, underflow_clr = NPCX_TECLR_TDCLR;
 
     /* Init pending/clear flag bit */
-    if (NUCMX_MFT_MODULE_PORT_TA == mft_channels[mft_ch].port)
+    if (NPCX_MFT_MODULE_PORT_TA == mft_channels[mft_ch].port)
     {
-        capture_pnd = NUCMX_TECTRL_TAPND;
-        underflow_pnd = NUCMX_TECTRL_TCPND;
-        capture_clr = NUCMX_TECLR_TACLR;
-        underflow_clr = NUCMX_TECLR_TCCLR;
+        capture_pnd = NPCX_TECTRL_TAPND;
+        underflow_pnd = NPCX_TECTRL_TCPND;
+        capture_clr = NPCX_TECLR_TACLR;
+        underflow_clr = NPCX_TECLR_TCCLR;
     }
     /* Start measure and return previous value when fan is working*/
-    if ( (fan_working) && (fan_get_enabled(ch)) && (fan_get_duty(ch)) )
+    if ( (fan_get_enabled(ch)) && (fan_get_duty(ch)) )
     {
     	if(tacho_status.cur_state == TACHO_IN_IDLE)
     	{
@@ -402,14 +396,14 @@ int fan_get_rpm_actual(int ch)
    	        if ( (0 == rpm_actual) || (-1 == rpm_actual) )
    	            rpm_actual = fans[ch].rpm_min;
             /* Clear all pending flags */
-            NUCMX_TECLR(mft_channels[mft_ch].module) = NUCMX_TECTRL(mft_channels[mft_ch].module);
+            NPCX_TECLR(mft_channels[mft_ch].module) = NPCX_TECTRL(mft_channels[mft_ch].module);
             /* Start from first edge state */
             tacho_status.cur_state = TACHO_WAIT_FOR_1_EDGE;
             /* Start measure */
     	mft_startmeasure(ch);
     }
         /* Check whether MFT underflow flag is occurred */
-        else if (IS_BIT_SET(NUCMX_TECTRL(mft_channels[mft_ch].module), underflow_pnd))
+        else if (IS_BIT_SET(NPCX_TECTRL(mft_channels[mft_ch].module), underflow_pnd))
     {
             /* Measurement is active - stop the measurement */
             mft_stopmeasure(fan_init_ch);
@@ -420,10 +414,10 @@ int fan_get_rpm_actual(int ch)
         	cprints(CC_PWM, "TACHO_UNDERFLOW");
 
             /* Clear pending flags */
-            SET_BIT(NUCMX_TECLR(mft_channels[mft_ch].module), underflow_clr);
+            SET_BIT(NPCX_TECLR(mft_channels[mft_ch].module), underflow_clr);
     }
         /* Check whether MFT signal detection flag is occurred */
-        else if (IS_BIT_SET(NUCMX_TECTRL(mft_channels[mft_ch].module), capture_pnd))
+        else if (IS_BIT_SET(NPCX_TECTRL(mft_channels[mft_ch].module), capture_pnd))
     {
             /* Start of tacho cycle is detected - Check tacho state */
             switch (tacho_status.cur_state)
@@ -451,7 +445,7 @@ int fan_get_rpm_actual(int ch)
                     break;
     }
             /* Clear pending flags */
-            SET_BIT(NUCMX_TECLR(mft_channels[mft_ch].module), capture_clr);
+            SET_BIT(NPCX_TECLR(mft_channels[mft_ch].module), capture_clr);
         }
     }
     else
@@ -489,7 +483,7 @@ int fan_get_rpm_target(int ch)
 void fan_set_rpm_target(int ch, int rpm)
 {
     uint32_t percent = 0;
-    int pwm_ch = fan_op_ch(ch, NUCMX_FAN_OP_PWM);
+    int pwm_ch = fan_op_ch(ch, NPCX_FAN_OP_PWM);
 
     rpm_target = rpm;
     /* Transfer rpm to tach then calculate percentage */
@@ -502,12 +496,6 @@ void fan_set_rpm_target(int ch, int rpm)
 
     /* RPM is inverse ratio to tach and percentage */
     percent = 100 - percent;
-    
-    if (percent > 0)
-        fan_working = 1;
-    else
-		fan_working = 0;
-    cprints(CC_PWM, "set target fan_working=%d", fan_working);
 		
     pwm_set_duty(pwm_ch, percent);
 }
@@ -524,10 +512,10 @@ enum fan_status fan_get_status(int ch)
 
     rpm_actual = fan_get_rpm_actual(ch);
 
-	if ( ((fan_working) && (0 == rpm_actual)) 
-	    || ((!fan_working) && (rpm_actual)) )
+	if ( ((fan_get_duty(ch)) && (0 == rpm_actual)) 
+	    || ((!fan_get_duty(ch)) && (rpm_actual)) )
 	    return FAN_STATUS_FRUSTRATED;
-    else if ( (rpm_actual == 0) && (!fan_working) )
+    else if ( (rpm_actual == 0) && (!fan_get_duty(ch)) )
 		return FAN_STATUS_STOPPED;
     else
 	    return FAN_STATUS_LOCKED;
@@ -544,9 +532,10 @@ int fan_is_stalled(int ch)
 	int rpm_actual;
 
     rpm_actual = fan_get_rpm_actual(ch);
+
 	/* Check for normal condition, others are stall condition */
-	if ( (!fan_get_enabled(ch)) || ((fan_working) && (rpm_actual))
-	    || ((!fan_working) && (!rpm_actual)) )
+	if ( (!fan_get_enabled(ch)) || ((fan_get_duty(ch)) && (rpm_actual))
+	    || ((!fan_get_duty(ch)) && (!rpm_actual)) )
 		return 0;
 
 	return 1;

@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-/* NUCMX-specific ADC module for Chrome EC */
+/* NPCX-specific ADC module for Chrome EC */
 
 #ifndef __CROS_EC_ADC_CHIP_H
 #define __CROS_EC_ADC_CHIP_H
@@ -14,17 +14,17 @@
 #define ADC_MAX_VOLT 3260
 
 /* ADC input channel select */
-enum nucmx_adc_input_channel {
-	NUCMX_ADC_INPUT_CH0 = 0,
-	NUCMX_ADC_INPUT_CH1,
-	NUCMX_ADC_INPUT_CH2,
-	NUCMX_ADC_INPUT_CH_COUNT
+enum npcx_adc_input_channel {
+	NPCX_ADC_INPUT_CH0 = 0,
+	NPCX_ADC_INPUT_CH1,
+	NPCX_ADC_INPUT_CH2,
+	NPCX_ADC_INPUT_CH_COUNT
 };
 
 /* Data structure to define ADC channels. */
 struct adc_t {
 	const char *name;
-	enum nucmx_adc_input_channel input_ch;
+	enum npcx_adc_input_channel input_ch;
 	int factor_mul;
 	int factor_div;
 	int shift;

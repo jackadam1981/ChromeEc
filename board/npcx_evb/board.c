@@ -35,9 +35,9 @@
 /*******************************************************************************************/
 /* ADC channels. Must be in the exactly same order as in enum adc_channel. */
 const struct adc_t adc_channels[] = {
-	[ADC_CH_0] = {"ADC0", NUCMX_ADC_INPUT_CH0, ADC_MAX_VOLT, ADC_READ_MAX+1, 0},
-	[ADC_CH_1] = {"ADC1", NUCMX_ADC_INPUT_CH1, ADC_MAX_VOLT, ADC_READ_MAX+1, 0},
-	[ADC_CH_2] = {"ADC2", NUCMX_ADC_INPUT_CH2, ADC_MAX_VOLT, ADC_READ_MAX+1, 0},
+	[ADC_CH_0] = {"ADC0", NPCX_ADC_INPUT_CH0, ADC_MAX_VOLT, ADC_READ_MAX+1, 0},
+	[ADC_CH_1] = {"ADC1", NPCX_ADC_INPUT_CH1, ADC_MAX_VOLT, ADC_READ_MAX+1, 0},
+	[ADC_CH_2] = {"ADC2", NPCX_ADC_INPUT_CH2, ADC_MAX_VOLT, ADC_READ_MAX+1, 0},
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
@@ -47,11 +47,11 @@ const struct pwm_t pwm_channels[] = {
 	[PWM_CH_FAN] =     {.channel = 0,
 	                    .flags = 0,
 #ifdef CONFIG_PWM_INPUT_LFCLK
-	                    .freq = 20000, //Need <= mft freq
+	                    .freq = 20000, /* Need <= mft freq */
 #else
 	                    .freq = 3000000,
 #endif
-	                    .cycle_pulses = 0x190,//0x1ff, 983040/(1500/4/2)=5256, 0xEA60=3000000*60/2/1500, 0x190=20000*60/2/1500
+	                    .cycle_pulses = 0x190, /* 0xEA60=3000000*60/2/1500, 0x190=20000*60/2/1500 */
 	                   },
 	[PWM_CH_KBLIGHT] = {.channel = 1,
 	                    .flags = 0,
@@ -65,8 +65,9 @@ BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 /* Physical fans. These are logically separate from pwm_channels. */
 const struct fan_t fans[] = {
 	[FAN_CH_0] = {.flags = FAN_USE_RPM_MODE,
-	              .rpm_min = 1500,//120,//1500,(983040/65536)*4*2=120
-	              .rpm_max = 8190,//12000,//8000,9300,(983040/65536)*4*2*100=12000
+	              .rpm_min = 1500,
+	              .rpm_start = 1500,
+	              .rpm_max = 8190,
                   .ch = 0,			/* Use PWM/MFT to control fan */
 	 .pgood_gpio = GPIO_PGOOD_FAN,
 	 .enable_gpio = -1,
@@ -77,8 +78,8 @@ BUILD_ASSERT(ARRAY_SIZE(fans) == FAN_CH_COUNT);
 /*******************************************************************************************/
 /* MFT channels. These are logically separate from mft_channels. */
 const struct mft_t mft_channels[] = {
-	[MFT_CH_0] = {.module = NUCMX_MFT_MODULE_1,
-	              .port = NUCMX_MFT_MODULE_PORT_TA,
+	[MFT_CH_0] = {.module = NPCX_MFT_MODULE_1,
+	              .port = NPCX_MFT_MODULE_PORT_TA,
 	              .default_count = 0xFFFF,
 #ifdef CONFIG_MFT_INPUT_LFCLK
 	              .freq = 32768,

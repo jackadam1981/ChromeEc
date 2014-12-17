@@ -8,7 +8,7 @@
 #ifndef __BOARD_H
 #define __BOARD_H
 
-#define CONFIG_SHRSPI_ARCH				/* Shared-SPI Architecture */
+#define CONFIG_SHRSPI_ARCH				/* Support Shared-SPI Architecture */
 /* Optional modules */
 #define CONFIG_ADC
 #define CONFIG_PECI

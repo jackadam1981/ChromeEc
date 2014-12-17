@@ -26,21 +26,21 @@ void keyboard_raw_init(void)
 
 #if !(SUPPORT_JTAG) /* mark this for JEN0 debugging */
     /* pull-up KBSIN 0-7 internally */
-	NUCMX_KBSINPU = 0xFF;
+	NPCX_KBSINPU = 0xFF;
 #endif
 
 	/* Disable automatic scan mode */
-    CLEAR_BIT(NUCMX_KBSCTL, NUCMX_KBSMODE);
+    CLEAR_BIT(NPCX_KBSCTL, NPCX_KBSMODE);
 
     /* Disable automatic interrupt enable */
-    CLEAR_BIT(NUCMX_KBSCTL, NUCMX_KBSIEN);
+    CLEAR_BIT(NPCX_KBSCTL, NPCX_KBSIEN);
 
     /* Disable increment enable */
-    CLEAR_BIT(NUCMX_KBSCTL, NUCMX_KBSINC);
+    CLEAR_BIT(NPCX_KBSCTL, NPCX_KBSINC);
 
     /* Set KBSOUT to zero to detect key-press */
-    NUCMX_KBSOUT0 = 0x00;
-    NUCMX_KBSOUT1 = 0x00;
+    NPCX_KBSOUT0 = 0x00;
+    NPCX_KBSOUT1 = 0x00;
 
 	/*
 	 * Enable interrupts for the inputs.  The top-level interrupt is still
@@ -48,13 +48,13 @@ void keyboard_raw_init(void)
 	 */
 #if !(SUPPORT_JTAG) /* mark this for JEN0 debugging */
 	/* Clear pending input sources used by scanner */
-	NUCMX_WKPCL(MIWU_TABLE_WKKEY,MIWU_GROUP_WKKEY) = 0xFF;
+	NPCX_WKPCL(MIWU_TABLE_WKKEY,MIWU_GROUP_WKKEY) = 0xFF;
 
 	/* Enable Wake-up Button */
-	NUCMX_WKEN(MIWU_TABLE_WKKEY, MIWU_GROUP_WKKEY) = 0xFF;
+	NPCX_WKEN(MIWU_TABLE_WKKEY, MIWU_GROUP_WKKEY) = 0xFF;
 
 	/* Select high to low transition (falling edge) */
-	NUCMX_WKEDG(MIWU_TABLE_WKKEY,MIWU_GROUP_WKKEY) =  0xFF;
+	NPCX_WKEDG(MIWU_TABLE_WKKEY,MIWU_GROUP_WKKEY) =  0xFF;
 #endif
 
 #if !(SUPPORT_JTAG) /* mark this for JEN0 debugging */
@@ -69,7 +69,7 @@ void keyboard_raw_task_start(void)
 {
 #if !(SUPPORT_JTAG) /* mark this for JEN0 debugging */
 	/* Enable MIWU to trigger KBS interrupt */
-	task_enable_irq(NUCMX_IRQ_KSI_WKINTC_1);
+	task_enable_irq(NPCX_IRQ_KSI_WKINTC_1);
 #endif
 }
 
@@ -92,8 +92,8 @@ test_mockable void keyboard_raw_drive_column(int col)
 		mask = ((~(1 << col)) & KB_COL_MASK);	/* Drive one line for detection */
 
 	/* Set KBSOUT */
-	NUCMX_KBSOUT0 = (mask & 0xFFFF);
-	NUCMX_KBSOUT1 = ((mask >> 16) & 0x03);
+	NPCX_KBSOUT0 = (mask & 0xFFFF);
+	NPCX_KBSOUT1 = ((mask >> 16) & 0x03);
 }
 
 /**
@@ -103,7 +103,7 @@ test_mockable void keyboard_raw_drive_column(int col)
 test_mockable int keyboard_raw_read_rows(void)
 {
 	/* Bits are active-low, so invert returned levels */
-	return ((~NUCMX_KBSIN) & KB_ROW_MASK);
+	return ((~NPCX_KBSIN) & KB_ROW_MASK);
 }
 
 /**
@@ -119,9 +119,9 @@ void keyboard_raw_enable_interrupt(int enable)
 		 * call keyboard_raw_read_rows() after this.  If it returns non-zero, disable
 		 * interrupts and go back to polling mode instead of waiting for an interrupt.
 		 */
-		task_enable_irq(NUCMX_IRQ_KSI_WKINTC_1);
+		task_enable_irq(NPCX_IRQ_KSI_WKINTC_1);
 	} else {
-		task_disable_irq(NUCMX_IRQ_KSI_WKINTC_1);
+		task_disable_irq(NPCX_IRQ_KSI_WKINTC_1);
 	}
 #endif
 }
@@ -132,9 +132,9 @@ void keyboard_raw_enable_interrupt(int enable)
 void keyboard_raw_interrupt(void)
 {
 	/* Clear pending input sources used by scanner */
-	NUCMX_WKPCL(MIWU_TABLE_WKKEY,MIWU_GROUP_WKKEY) = 0xFF;
+	NPCX_WKPCL(MIWU_TABLE_WKKEY,MIWU_GROUP_WKKEY) = 0xFF;
 
 	/* Wake the scan task */
 	task_wake(TASK_ID_KEYSCAN);
 }
-DECLARE_IRQ(NUCMX_IRQ_KSI_WKINTC_1, keyboard_raw_interrupt, 3);
+DECLARE_IRQ(NPCX_IRQ_KSI_WKINTC_1, keyboard_raw_interrupt, 3);

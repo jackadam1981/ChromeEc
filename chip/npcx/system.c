@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-/* System module for Chrome EC : NUCMX hardware specific implementation */
+/* System module for Chrome EC : NPCX hardware specific implementation */
 
 #include "clock.h"
 #include "common.h"
@@ -51,37 +51,37 @@ void system_sib_write_reg(uint8_t io_offset, uint8_t index_value, uint8_t io_dat
 	interrupt_disable();
 
 	/* Lock host CFG module */
-    SET_BIT(NUCMX_LKSIOHA, NUCMX_LKSIOHA_LKCFG);
+    SET_BIT(NPCX_LKSIOHA, NPCX_LKSIOHA_LKCFG);
     /* Enable Core-to-Host Modules Access */
-    SET_BIT(NUCMX_SIBCTRL, NUCMX_SIBCTRL_CSAE);
+    SET_BIT(NPCX_SIBCTRL, NPCX_SIBCTRL_CSAE);
     /* Enable Core access to CFG module */
-    SET_BIT(NUCMX_CRSMAE, NUCMX_CRSMAE_CFGAE);
+    SET_BIT(NPCX_CRSMAE, NPCX_CRSMAE_CFGAE);
     /* Verify Core read/write to host modules is not in progress */
-    while (IS_BIT_SET(NUCMX_SIBCTRL, NUCMX_SIBCTRL_CSRD)) ;
-    while (IS_BIT_SET(NUCMX_SIBCTRL, NUCMX_SIBCTRL_CSWR)) ;
+    while (IS_BIT_SET(NPCX_SIBCTRL, NPCX_SIBCTRL_CSRD)) ;
+    while (IS_BIT_SET(NPCX_SIBCTRL, NPCX_SIBCTRL_CSWR)) ;
 
 
     /* Specify the io_offset A0 = 0. the index register is accessed */
-    NUCMX_IHIOA = io_offset;
+    NPCX_IHIOA = io_offset;
     /* Write the data. This starts the write access to the host module */
-    NUCMX_IHD = index_value;
+    NPCX_IHD = index_value;
     /* Wait while Core write operation is in progress */
-    while (IS_BIT_SET(NUCMX_SIBCTRL, NUCMX_SIBCTRL_CSWR)) ;
+    while (IS_BIT_SET(NPCX_SIBCTRL, NPCX_SIBCTRL_CSWR)) ;
 
     /* Specify the io_offset A0 = 1. the data register is accessed */
-    NUCMX_IHIOA = io_offset+1;
+    NPCX_IHIOA = io_offset+1;
      /* Write the data. This starts the write access to the host module */
-    NUCMX_IHD = io_data;
+    NPCX_IHD = io_data;
 	/* Wait while Core write operation is in progress */
-    while (IS_BIT_SET(NUCMX_SIBCTRL, NUCMX_SIBCTRL_CSWR)) ;
+    while (IS_BIT_SET(NPCX_SIBCTRL, NPCX_SIBCTRL_CSWR)) ;
 
 
     /* Disable Core access to CFG module */
-    CLEAR_BIT(NUCMX_CRSMAE, NUCMX_CRSMAE_CFGAE);
+    CLEAR_BIT(NPCX_CRSMAE, NPCX_CRSMAE_CFGAE);
     /* Disable Core-to-Host Modules Access */
-    CLEAR_BIT(NUCMX_SIBCTRL, NUCMX_SIBCTRL_CSAE);
+    CLEAR_BIT(NPCX_SIBCTRL, NPCX_SIBCTRL_CSAE);
     /* unlock host CFG  module */
-    CLEAR_BIT(NUCMX_LKSIOHA, NUCMX_LKSIOHA_LKCFG);
+    CLEAR_BIT(NPCX_LKSIOHA, NPCX_LKSIOHA_LKCFG);
 
     /* Enable interrupts */
 	interrupt_enable();
@@ -95,39 +95,39 @@ uint8_t system_sib_read_reg(uint8_t io_offset, uint8_t index_value)
 	interrupt_disable();
 
 	/* Lock host CFG module */
-    SET_BIT(NUCMX_LKSIOHA, NUCMX_LKSIOHA_LKCFG);
+    SET_BIT(NPCX_LKSIOHA, NPCX_LKSIOHA_LKCFG);
     /* Enable Core-to-Host Modules Access */
-    SET_BIT(NUCMX_SIBCTRL, NUCMX_SIBCTRL_CSAE);
+    SET_BIT(NPCX_SIBCTRL, NPCX_SIBCTRL_CSAE);
     /* Enable Core access to CFG module */
-    SET_BIT(NUCMX_CRSMAE, NUCMX_CRSMAE_CFGAE);
+    SET_BIT(NPCX_CRSMAE, NPCX_CRSMAE_CFGAE);
     /* Verify Core read/write to host modules is not in progress */
-    while (IS_BIT_SET(NUCMX_SIBCTRL, NUCMX_SIBCTRL_CSRD)) ;
-    while (IS_BIT_SET(NUCMX_SIBCTRL, NUCMX_SIBCTRL_CSWR)) ;
+    while (IS_BIT_SET(NPCX_SIBCTRL, NPCX_SIBCTRL_CSRD)) ;
+    while (IS_BIT_SET(NPCX_SIBCTRL, NPCX_SIBCTRL_CSWR)) ;
 
 
     /* Specify the io_offset A0 = 0. the index register is accessed */
-    NUCMX_IHIOA = io_offset;
+    NPCX_IHIOA = io_offset;
     /* Write the data. This starts the write access to the host module */
-    NUCMX_IHD = index_value;
+    NPCX_IHD = index_value;
     /* Wait while Core write operation is in progress */
-    while (IS_BIT_SET(NUCMX_SIBCTRL, NUCMX_SIBCTRL_CSWR)) ;
+    while (IS_BIT_SET(NPCX_SIBCTRL, NPCX_SIBCTRL_CSWR)) ;
 
     /* Specify the io_offset A0 = 1. the data register is accessed */
-    NUCMX_IHIOA = io_offset+1;
+    NPCX_IHIOA = io_offset+1;
     /* Start a Core read from host module */
-    SET_BIT(NUCMX_SIBCTRL, NUCMX_SIBCTRL_CSRD);
+    SET_BIT(NPCX_SIBCTRL, NPCX_SIBCTRL_CSRD);
     /* Wait while Core read operation is in progress */
-    while (IS_BIT_SET(NUCMX_SIBCTRL, NUCMX_SIBCTRL_CSRD)) ;
+    while (IS_BIT_SET(NPCX_SIBCTRL, NPCX_SIBCTRL_CSRD)) ;
     /* Read the data */
-    data_value = NUCMX_IHD;
+    data_value = NPCX_IHD;
 
 
     /* Disable Core access to CFG module */
-    CLEAR_BIT(NUCMX_CRSMAE, NUCMX_CRSMAE_CFGAE);
+    CLEAR_BIT(NPCX_CRSMAE, NPCX_CRSMAE_CFGAE);
     /* Disable Core-to-Host Modules Access */
-    CLEAR_BIT(NUCMX_SIBCTRL, NUCMX_SIBCTRL_CSAE);
+    CLEAR_BIT(NPCX_SIBCTRL, NPCX_SIBCTRL_CSAE);
     /* unlock host CFG  module */
-    CLEAR_BIT(NUCMX_LKSIOHA, NUCMX_LKSIOHA_LKCFG);
+    CLEAR_BIT(NPCX_LKSIOHA, NPCX_LKSIOHA_LKCFG);
 
     /* Enable interrupts */
 	interrupt_enable();
@@ -138,31 +138,31 @@ uint8_t system_sib_read_reg(uint8_t io_offset, uint8_t index_value)
 void system_watchdog_reset(void)
 {
 	/* Unlock & stop watchdog registers */
-	NUCMX_WDSDM = 0x87;
-	NUCMX_WDSDM = 0x61;
-	NUCMX_WDSDM = 0x63;
+	NPCX_WDSDM = 0x87;
+	NPCX_WDSDM = 0x61;
+	NPCX_WDSDM = 0x63;
 
 	/* Reset TWCFG */
-	NUCMX_TWCFG = 0;
+	NPCX_TWCFG = 0;
 	/* Select T0IN clock as watchdog prescaler clock */
-	SET_BIT(NUCMX_TWCFG, NUCMX_TWCFG_WDCT0I);
+	SET_BIT(NPCX_TWCFG, NPCX_TWCFG_WDCT0I);
 
 	/* Clear watchdog reset status initially*/
-	SET_BIT(NUCMX_T0CSR, NUCMX_T0CSR_WDRST_STS);
+	SET_BIT(NPCX_T0CSR, NPCX_T0CSR_WDRST_STS);
 
 	/* Keep prescaler ratio timer0 clock to 1:1 */
-	NUCMX_TWCP = 0x00;
+	NPCX_TWCP = 0x00;
 
 	/* Set internal counter and prescaler */
-	NUCMX_TWDT0 = 0x00;
-	NUCMX_WDCNT = 0x01;
+	NPCX_TWDT0 = 0x00;
+	NPCX_WDCNT = 0x01;
 
 	/* Disable interrupt */
 	interrupt_disable();
 	/* Reload and restart Timer 0*/
-	SET_BIT(NUCMX_T0CSR, NUCMX_T0CSR_RST);
+	SET_BIT(NPCX_T0CSR, NPCX_T0CSR_RST);
 	/* Wait for timer is loaded and restart */
-	while(IS_BIT_SET(NUCMX_T0CSR, NUCMX_T0CSR_RST));
+	while(IS_BIT_SET(NPCX_T0CSR, NPCX_T0CSR_RST));
 	/* Enable interrupt */
 	interrupt_enable();
 }
@@ -176,21 +176,21 @@ static uint32_t bbram_data_read(enum bbram_data_index index)
 {
 	uint32_t value = 0;
 	/* Check index */
-	if (index < 0 || index >= NUCMX_BBRAM_SIZE)
+	if (index < 0 || index >= NPCX_BBRAM_SIZE)
 		return 0;
 
 	/* BBRAM is valid */
-	if(IS_BIT_SET(NUCMX_BKUP_STS, NUCMX_BKUP_STS_IBBR))
+	if(IS_BIT_SET(NPCX_BKUP_STS, NPCX_BKUP_STS_IBBR))
 		return 0;
 
 	/* Read BBRAM */
-	value += NUCMX_BBRAM(index+3);
+	value += NPCX_BBRAM(index+3);
 	value = value << 8;
-	value += NUCMX_BBRAM(index+2);
+	value += NPCX_BBRAM(index+2);
 	value = value << 8;
-	value += NUCMX_BBRAM(index+1);
+	value += NPCX_BBRAM(index+1);
 	value = value << 8;
-	value += NUCMX_BBRAM(index);
+	value += NPCX_BBRAM(index);
 
 	return value;
 }
@@ -203,18 +203,18 @@ static uint32_t bbram_data_read(enum bbram_data_index index)
 static int bbram_data_write(enum bbram_data_index index, uint32_t value)
 {
 	/* Check index */
-	if (index < 0 || index >= NUCMX_BBRAM_SIZE)
+	if (index < 0 || index >= NPCX_BBRAM_SIZE)
 		return EC_ERROR_INVAL;
 
 	/* BBRAM is valid */
-	if(IS_BIT_SET(NUCMX_BKUP_STS, NUCMX_BKUP_STS_IBBR))
+	if(IS_BIT_SET(NPCX_BKUP_STS, NPCX_BKUP_STS_IBBR))
 		return EC_ERROR_INVAL;
 
 	/* Write BBRAM */
-	NUCMX_BBRAM(index) 	 = value & 0xFF;
-	NUCMX_BBRAM(index+1) = (value >> 8)  & 0xFF;
-	NUCMX_BBRAM(index+2) = (value >> 16) & 0xFF;
-	NUCMX_BBRAM(index+3) = (value >> 24) & 0xFF;
+	NPCX_BBRAM(index) 	 = value & 0xFF;
+	NPCX_BBRAM(index+1) = (value >> 8)  & 0xFF;
+	NPCX_BBRAM(index+2) = (value >> 16) & 0xFF;
+	NPCX_BBRAM(index+3) = (value >> 24) & 0xFF;
 
 	/* Wait for write-complete */
 	return EC_SUCCESS;
@@ -224,7 +224,7 @@ static int bbram_data_write(enum bbram_data_index index, uint32_t value)
 uint32_t system_get_rtc_sec(void)
 {
 	/* Get MTC counter unit:seconds */
-	uint32_t sec = NUCMX_TTC;
+	uint32_t sec = NPCX_TTC;
 	return sec;
 }
 
@@ -233,7 +233,7 @@ void system_set_rtc(uint32_t seconds)
 	volatile uint16_t __i;
 
     /* Set MTC counter unit:seconds */
-    NUCMX_TTC = seconds;
+    NPCX_TTC = seconds;
 
     /* Wait till clock is readable                                                                         */
     for (__i=0; __i< MTC_TTC_LOAD_DELAY; ++__i) {}
@@ -246,20 +246,20 @@ static void check_reset_cause(void)
 	uint32_t flags = 0;
 
 	/* Check for VCC1 reset */
-	if (IS_BIT_SET(NUCMX_RSTCTL, NUCMX_RSTCTL_VCC1_RST_STS)){
+	if (IS_BIT_SET(NPCX_RSTCTL, NPCX_RSTCTL_VCC1_RST_STS)){
 		flags |= RESET_FLAG_POWER_ON;
 	}
 
 	/* Software debugger reset */
-	if (IS_BIT_SET(NUCMX_RSTCTL, NUCMX_RSTCTL_DBGRST_STS)){
+	if (IS_BIT_SET(NPCX_RSTCTL, NPCX_RSTCTL_DBGRST_STS)){
 		flags |= RESET_FLAG_SOFT;
 	}
 
 	/* Watchdog Reset */
-	if (IS_BIT_SET(NUCMX_T0CSR,NUCMX_T0CSR_WDRST_STS)) {
+	if (IS_BIT_SET(NPCX_T0CSR,NPCX_T0CSR_WDRST_STS)) {
 		flags |= RESET_FLAG_WATCHDOG;
 		/* Clear watchdog reset status initially*/
-		SET_BIT(NUCMX_T0CSR, NUCMX_T0CSR_WDRST_STS);
+		SET_BIT(NPCX_T0CSR, NPCX_T0CSR_WDRST_STS);
 	}
 
 	if ((hib_wake_flags & PSLDATA_WAKE_PIN))
@@ -281,16 +281,16 @@ static void check_reset_cause(void)
 void __enter_hibernate(uint32_t seconds, uint32_t microseconds)
 {
 	/* Set instant wake up mode */
-	SET_BIT(NUCMX_ENIDL_CTL, NUCMX_ENIDL_CTL_LP_WK_CTL);
+	SET_BIT(NPCX_ENIDL_CTL, NPCX_ENIDL_CTL_LP_WK_CTL);
 
 	interrupt_disable();
 
 	/* ITIM event module disable */
-	CLEAR_BIT(NUCMX_ITCTS(ITIM_EVENT_NO), NUCMX_ITIM16_ITEN);
+	CLEAR_BIT(NPCX_ITCTS(ITIM_EVENT_NO), NPCX_ITIM16_ITEN);
 	/* ITIM time module disable */
-	CLEAR_BIT(NUCMX_ITCTS(ITIM_TIME_NO), NUCMX_ITIM16_ITEN);
+	CLEAR_BIT(NPCX_ITCTS(ITIM_TIME_NO), NPCX_ITIM16_ITEN);
 	/* ITIM watchdog warn module disable */
-	CLEAR_BIT(NUCMX_ITCTS(ITIM_WDG_NO), NUCMX_ITIM16_ITEN);
+	CLEAR_BIT(NPCX_ITCTS(ITIM_WDG_NO), NPCX_ITIM16_ITEN);
 
 	/*
 	 * Set RTC interrupt in time to wake up before
@@ -301,31 +301,31 @@ void __enter_hibernate(uint32_t seconds, uint32_t microseconds)
 	}
 
 	/* Unlock & stop watchdog registers */
-	NUCMX_WDSDM = 0x87;
-	NUCMX_WDSDM = 0x61;
-	NUCMX_WDSDM = 0x63;
+	NPCX_WDSDM = 0x87;
+	NPCX_WDSDM = 0x61;
+	NPCX_WDSDM = 0x63;
 
 
 	while(1){
 		/* Set deep idle - instant wake-up mode*/
-		NUCMX_PMCSR = 0x7;
+		NPCX_PMCSR = 0x7;
 		/* Enter deep idle, wake-up by GPIOxxx or RTC */
 		asm("wfi");
 
 		/*TODO: Is POWER_BUTTON_L GPIO02 to wake-up? */
-		if(IS_BIT_SET(NUCMX_WKPND(MIWU_TABLE_1 , MIWU_GROUP_1),2)){
+		if(IS_BIT_SET(NPCX_WKPND(MIWU_TABLE_1 , MIWU_GROUP_1),2)){
 			panic_puts("### Reset from GPIO ###\n");
 			break;
 		}
 		/* RTC wake-up */
-		else if(IS_BIT_SET(NUCMX_WTC, NUCMX_WTC_PTO)){
+		else if(IS_BIT_SET(NPCX_WTC, NPCX_WTC_PTO)){
 			panic_puts("### Reset from RTC ###\n");
 			break;
 		}
 	}
 
 	/* Clear WUI pending bit of MTC */
-	NUCMX_WKPCL(MIWU_TABLE_0, MTC_WUI_GROUP) = MTC_WUI_MASK;
+	NPCX_WKPCL(MIWU_TABLE_0, MTC_WUI_GROUP) = MTC_WUI_MASK;
 
 	/* Reset MTC */
 	system_reset_rtc_alarm();
@@ -349,7 +349,7 @@ void system_set_rtc_alarm(uint32_t seconds, uint32_t microseconds)
 		return;
 
     /* Get current clock */
-    curSecs = NUCMX_TTC;
+    curSecs = NPCX_TTC;
 
     /* If alarm clock is not sequential or not in range */
     alarmSecs = curSecs + seconds;
@@ -359,16 +359,16 @@ void system_set_rtc_alarm(uint32_t seconds, uint32_t microseconds)
     system_reset_rtc_alarm();
 
     /* Set alarm, use first 25 bits of clock value */
-    NUCMX_WTC = alarmSecs;
+    NPCX_WTC = alarmSecs;
 
     /* Enable interrupt mode alarm */
-    SET_BIT(NUCMX_WTC, NUCMX_WTC_WIE);
+    SET_BIT(NPCX_WTC, NPCX_WTC_WIE);
 
     /* Enable MTC interrupt */
-	task_enable_irq(NUCMX_IRQ_MTC_WKINTAD_0);
+	task_enable_irq(NPCX_IRQ_MTC_WKINTAD_0);
 
 	/* Enable wake-up input sources */
-	NUCMX_WKEN(MIWU_TABLE_0, MTC_WUI_GROUP) |= MTC_WUI_MASK;
+	NPCX_WKEN(MIWU_TABLE_0, MTC_WUI_GROUP) |= MTC_WUI_MASK;
 }
 
 void system_reset_rtc_alarm(void)
@@ -377,11 +377,11 @@ void system_reset_rtc_alarm(void)
      * Clear interrupt & Disable alarm interrupt
      * Update alarm value to zero
      */
-    CLEAR_BIT(NUCMX_WTC, NUCMX_WTC_WIE);
-    SET_BIT(NUCMX_WTC, NUCMX_WTC_PTO);
+    CLEAR_BIT(NPCX_WTC, NPCX_WTC_WIE);
+    SET_BIT(NPCX_WTC, NPCX_WTC_PTO);
 
     /* Disable MTC interrupt */
-	task_disable_irq(NUCMX_IRQ_MTC_WKINTAD_0);
+	task_disable_irq(NPCX_IRQ_MTC_WKINTAD_0);
 }
 
 /**
@@ -389,7 +389,7 @@ void system_reset_rtc_alarm(void)
  */
 void system_enable_hib_interrupt(void)
 {
-	task_enable_irq(NUCMX_IRQ_MTC_WKINTAD_0);
+	task_enable_irq(NPCX_IRQ_MTC_WKINTAD_0);
 }
 
 void system_hibernate(uint32_t seconds, uint32_t microseconds)
@@ -412,12 +412,12 @@ void system_pre_init(void)
 
 #if 0
 	/* Power-down the modules we don't need */
-	NUCMX_PWDWN_CTL(0) = 0xFD; /* Skip SDP_PD */
-	NUCMX_PWDWN_CTL(1) = 0xFF;
-	NUCMX_PWDWN_CTL(2) = 0xFF;
-	NUCMX_PWDWN_CTL(3) = 0xF0;	/*Skip ITIM3/2/1_PD */
-	NUCMX_PWDWN_CTL(4) = 0xF8;
-	NUCMX_PWDWN_CTL(5) = 0x87;
+	NPCX_PWDWN_CTL(0) = 0xFD; /* Skip SDP_PD */
+	NPCX_PWDWN_CTL(1) = 0xFF;
+	NPCX_PWDWN_CTL(2) = 0xFF;
+	NPCX_PWDWN_CTL(3) = 0xF0;	/*Skip ITIM3/2/1_PD */
+	NPCX_PWDWN_CTL(4) = 0xF8;
+	NPCX_PWDWN_CTL(5) = 0x87;
 #endif
 
 	/* Check reset cause */
@@ -439,18 +439,18 @@ void system_reset(int flags)
 	if (flags & SYSTEM_RESET_LEAVE_AP_OFF)
 		save_flags |= RESET_FLAG_AP_OFF;
 
+	/* Save reset flag */
+	if (flags & SYSTEM_RESET_HARD)
+		save_flags |= RESET_FLAG_HARD;
+	else
+		save_flags |= RESET_FLAG_SOFT;
+	
 	/* Store flags to battery backed RAM. */
 	bbram_data_write(BBRM_DATA_INDEX_SAVED_RESET_FLAGS, save_flags);
 
-	if (flags & SYSTEM_RESET_HARD) {
-		/* Ask the watchdog to trigger a hard reboot */
+	/* Ask the watchdog to trigger a hard reboot *//* Support HW reset only actually*/
 		system_watchdog_reset();
-		/* wait for the watchdog */
-		while (1);
-	} else{
-		/* Use AIRCR of system control block to generate soft reset */
-		CPU_NVIC_APINT = 0x05fa0004;
-	}
+
 	/* Spin and wait for reboot; should never return */
 	while (1);
 }
@@ -651,4 +651,30 @@ void system_lpc_host_register_init(void){
 	system_sib_write_reg(SIO_OFFSET,0xF9,0x09);	//WIN2 as MEMMAP on the IO:0x900
 	system_sib_write_reg(SIO_OFFSET,0xF8,0x00);
 	system_sib_write_reg(SIO_OFFSET,0x30,0x01);	//enable SHM
+}
+
+uint32_t system_get_jump_address(uint32_t init_addr)
+{
+	/* Little FW located on top of flash - 4K */
+	uint32_t jump_addr = (CONFIG_SPIFLASH_BASE + CONFIG_SPIFLASH_SIZE
+			              - CONFIG_LFW_OFFSET +1);
+	/* Disable FIU pins to tri-state */
+	NPCX_DEVCNT &= (~(0x40));
+
+	/* Jump to RO region -- set flag */
+	if(init_addr == CONFIG_FLASH_BASE + CONFIG_FW_RO_OFF)
+		SET_BIT(NPCX_FWCTRL, NPCX_FWCTRL_RO_REGION);
+	else /* Jump to RW region -- clear flag */
+		CLEAR_BIT(NPCX_FWCTRL, NPCX_FWCTRL_RO_REGION);
+
+	return jump_addr;
+}
+
+enum system_image_copy_t system_get_shrspi_image_copy(void)
+{
+	// RO base
+	if(IS_BIT_SET(NPCX_FWCTRL, NPCX_FWCTRL_RO_REGION))
+		return SYSTEM_IMAGE_RO;
+	else// RW base
+		return SYSTEM_IMAGE_RW;
 }

@@ -7,6 +7,6 @@
 #
 
 # the IC is Nuvoton M-Serise EC
-CHIP:=nucmx
+CHIP:=npcx
 
 board-y=board.o

@@ -34,12 +34,12 @@ void watchdog_init_warning_timer(void)
 	 * PRE_8 = (Ttick_unit/T32K) - 1
 	 * Unit: 1 msec
 	 */
-	NUCMX_ITPRE(ITIM_WDG_NO)  = DIV_ROUND_NEAREST(1000*INT_32K_CLOCK, SECOND) - 1;
+	NPCX_ITPRE(ITIM_WDG_NO)  = DIV_ROUND_NEAREST(1000*INT_32K_CLOCK, SECOND) - 1;
 
 	/* ITIM count down : event expired*/
-	NUCMX_ITCNT16(ITIM_WDG_NO) = CONFIG_WATCHDOG_PERIOD_MS-1;
+	NPCX_ITCNT16(ITIM_WDG_NO) = CONFIG_WATCHDOG_PERIOD_MS-1;
 	/* Event module enable */
-	SET_BIT(NUCMX_ITCTS(ITIM_WDG_NO), NUCMX_ITIM16_ITEN);
+	SET_BIT(NPCX_ITCTS(ITIM_WDG_NO), NPCX_ITIM16_ITEN);
 	/* Enable interrupt of ITIM */
 	task_enable_irq(ITIM16_INT(ITIM_WDG_NO));
 }
@@ -49,10 +49,10 @@ void watchdog_check(uint32_t excep_lr, uint32_t excep_sp)
 {
 	int  wd_cnt;
 	/* Clear timeout status for event */
-	SET_BIT(NUCMX_ITCTS(ITIM_WDG_NO), NUCMX_ITIM16_TO_STS);
+	SET_BIT(NPCX_ITCTS(ITIM_WDG_NO), NPCX_ITIM16_TO_STS);
 
 	/* Read watchdog counter from TWMWD */
-	wd_cnt = NUCMX_TWMWD;
+	wd_cnt = NPCX_TWMWD;
 #if DEBUG_WDG
 	ccprintf("WD (%d)\r\n",wd_cnt);
 #endif
@@ -88,7 +88,7 @@ void watchdog_reload(void)
 
 #if 1 /* mark this for testing watchdog */
 	/* Touch watchdog & reset software counter */
-	NUCMX_WDSDM = 0x5C;
+	NPCX_WDSDM = 0x5C;
 #endif
 
 	/* Enable watchdog interrupt */
@@ -100,21 +100,21 @@ int watchdog_init(void)
 {
 #if SUPPORT_WDG
 	/* Keep prescaler ratio timer0 clock to 1:1024 */
-	NUCMX_TWCP = 0x0A;
+	NPCX_TWCP = 0x0A;
 	/* Keep prescaler ratio watchdog clock to 1:1 */
-	NUCMX_WDCP = 0;
+	NPCX_WDCP = 0;
 
 	/* Clear watchdog reset status initially*/
-	SET_BIT(NUCMX_T0CSR, NUCMX_T0CSR_WDRST_STS);
+	SET_BIT(NPCX_T0CSR, NPCX_T0CSR_WDRST_STS);
 
 	/* Reset TWCFG */
-	NUCMX_TWCFG = 0;
+	NPCX_TWCFG = 0;
 	/* Watchdog touch by writing 5Ch to WDSDM */
-	SET_BIT(NUCMX_TWCFG, NUCMX_TWCFG_WDSDME);
+	SET_BIT(NPCX_TWCFG, NPCX_TWCFG_WDSDME);
 	/* Select T0IN clock as watchdog prescaler clock */
-	SET_BIT(NUCMX_TWCFG, NUCMX_TWCFG_WDCT0I);
+	SET_BIT(NPCX_TWCFG, NPCX_TWCFG_WDCT0I);
 	/* Disable early touch functionality */
-	SET_BIT(NUCMX_T0CSR, NUCMX_T0CSR_TESDIS);
+	SET_BIT(NPCX_T0CSR, NPCX_T0CSR_TESDIS);
 
 	/*
 	 * Set WDCNT initial reload value and T0OUT timeout period
@@ -123,14 +123,14 @@ int watchdog_init(void)
 	 * 3. Set RST to upload TWDT0 & WDCNT
 	*/
 	/* Set WDCNT --> WDCNT=0 will generate watchdog reset */
-	NUCMX_WDCNT = WDCNT_VALUE + WDCNT_DELAY;
+	NPCX_WDCNT = WDCNT_VALUE + WDCNT_DELAY;
 
 	/* Disable interrupt */
 	interrupt_disable();
 	/* Reload TWDT0/WDCNT */
-	SET_BIT(NUCMX_T0CSR, NUCMX_T0CSR_RST);
+	SET_BIT(NPCX_T0CSR, NPCX_T0CSR_RST);
 	/* Wait for timer is loaded and restart */
-	while(IS_BIT_SET(NUCMX_T0CSR, NUCMX_T0CSR_RST));
+	while(IS_BIT_SET(NPCX_T0CSR, NPCX_T0CSR_RST));
 	/* Enable interrupt */
 	interrupt_enable();
 

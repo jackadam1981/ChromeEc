@@ -26,19 +26,19 @@ int uart_init_done(void)
 
 void uart_tx_start(void)
 {
-	if(IS_BIT_SET(NUCMX_WKEN(1,1),0)){
+	if(IS_BIT_SET(NPCX_WKEN(1,1),0)){
 		/* disable MIWU*/
-		CLEAR_BIT(NUCMX_WKEN(1,1),0);
+		CLEAR_BIT(NPCX_WKEN(1,1),0);
 		/* go back to original setting */
-		task_enable_irq(NUCMX_IRQ_WKINTB_1);
+		task_enable_irq(NPCX_IRQ_WKINTB_1);
 		/* Go back CR_SIN*/
-		SET_BIT(NUCMX_DEVALT(0x0A), NUCMX_DEVALTA_UART_SL);
+		SET_BIT(NPCX_DEVALT(0x0A), NPCX_DEVALTA_UART_SL);
 		/* enable uart again from MIWU mode */
-		task_enable_irq(NUCMX_IRQ_UART);
+		task_enable_irq(NPCX_IRQ_UART);
 	}	
 
 	/* If interrupt is already enabled, nothing to do */
-	if (NUCMX_UICTRL & 0x20)
+	if (NPCX_UICTRL & 0x20)
 		return;
 
 	/* Do not allow deep sleep while transmit in progress */
@@ -50,14 +50,14 @@ void uart_tx_start(void)
 	 * UART where the FIFO only triggers the interrupt when its
 	 * threshold is _crossed_, not just met.
 	 */
-	NUCMX_UICTRL |= 0x20;
+	NPCX_UICTRL |= 0x20;
 
-	task_trigger_irq(NUCMX_IRQ_UART);
+	task_trigger_irq(NPCX_IRQ_UART);
 }
 
 void uart_tx_stop(void)	/* Disable TX interrupt */
 {
-	NUCMX_UICTRL &= ~0x20;
+	NPCX_UICTRL &= ~0x20;
 
 	/* Re-allow deep sleep */
 	enable_sleep(SLEEP_MASK_UART);
@@ -66,24 +66,24 @@ void uart_tx_stop(void)	/* Disable TX interrupt */
 void uart_tx_flush(void)
 {
 	/* Wait for transmit FIFO empty */
-	while (!(NUCMX_UICTRL & 0x01))
+	while (!(NPCX_UICTRL & 0x01))
 		;
 }
 
 int uart_tx_ready(void)
 {
-	return (NUCMX_UICTRL & 0x01);	/*if TX FIFO is empty return 1*/
+	return (NPCX_UICTRL & 0x01);	/*if TX FIFO is empty return 1*/
 }
 
 int uart_tx_in_progress(void)
 {
 	/* Transmit is in progress if the TX busy bit is set. */
-	return NUCMX_USTAT & 0x40;	/*BUSY bit , if busy return 1*/
+	return NPCX_USTAT & 0x40;	/*BUSY bit , if busy return 1*/
 }
 
 int uart_rx_available(void)
 {
-	uint8_t ctrl = NUCMX_UICTRL;
+	uint8_t ctrl = NPCX_UICTRL;
 #ifdef CONFIG_LOW_POWER_IDLE
 	/*
 	 * Activity seen on UART RX pin while UART was disabled for deep sleep.
@@ -102,31 +102,31 @@ void uart_write_char(char c)
 	while (!uart_tx_ready())
 		;
 
-	NUCMX_UTBUF = c;
+	NPCX_UTBUF = c;
 }
 
 int uart_read_char(void)
 {
-	return NUCMX_URBUF;
+	return NPCX_URBUF;
 }
 
 static void uart_clear_rx_fifo(int channel)
 {
 	int scratch __attribute__ ((unused));
 	if(channel==0){ /* suppose '0' is EC UART*/
-		while ((NUCMX_UICTRL & 0x02))	/*if '1' that mean have a RX data on the FIFO register*/
-			scratch = NUCMX_URBUF;
+		while ((NPCX_UICTRL & 0x02))	/*if '1' that mean have a RX data on the FIFO register*/
+			scratch = NPCX_URBUF;
 	}		
 }
 
 void uart_disable_interrupt(void)
 {
-	task_disable_irq(NUCMX_IRQ_UART);
+	task_disable_irq(NPCX_IRQ_UART);
 }
 
 void uart_enable_interrupt(void)
 {
-	task_enable_irq(NUCMX_IRQ_UART);
+	task_enable_irq(NPCX_IRQ_UART);
 }
 
 /**
@@ -138,7 +138,7 @@ void uart_ec_interrupt(void)
 	uart_process_input();
 	uart_process_output();
 }
-DECLARE_IRQ(NUCMX_IRQ_UART, uart_ec_interrupt, 1);
+DECLARE_IRQ(NPCX_IRQ_UART, uart_ec_interrupt, 1);
 
 
 static void uart_config(void)
@@ -168,14 +168,14 @@ static void uart_config(void)
         prescalar += 5;
     }
     optDiv--;
-	NUCMX_UPSR =((optPrescalar<<3)&0xF8)|((optDiv>>8)&0x7);
-	NUCMX_UBAUD =(uint8_t)optDiv;
+	NPCX_UPSR =((optPrescalar<<3)&0xF8)|((optDiv>>8)&0x7);
+	NPCX_UBAUD =(uint8_t)optDiv;
 	/*
 	 * 8-N-1, FIFO enabled.  Must be done after setting
 	 * the divisor for the new divisor to take effect.
 	 */
-	NUCMX_UFRS = 0x00;
-	NUCMX_UICTRL = 0x40; /* receive int enable only */
+	NPCX_UFRS = 0x00;
+	NPCX_UICTRL = 0x40; /* receive int enable only */
 }
 
 void uart_init(void)
@@ -190,7 +190,7 @@ void uart_init(void)
 	clock_enable_peripheral(CGC_OFFSET_UART, mask, CGC_MODE_ALL);
 
 	/* Set pin-mask for UART */
-	SET_BIT(NUCMX_DEVALT(0x0A), NUCMX_DEVALTA_UART_SL);
+	SET_BIT(NPCX_DEVALT(0x0A), NPCX_DEVALTA_UART_SL);
 	gpio_config_module(MODULE_UART, 1);
 
 	/* Configure UARTs (identically) */
@@ -201,7 +201,7 @@ void uart_init(void)
 	 * until the LPC bus is initialized.
 	 */
 	uart_clear_rx_fifo(0);
-	task_enable_irq(NUCMX_IRQ_UART);
+	task_enable_irq(NPCX_IRQ_UART);
 
 	init_done = 1;
 }
