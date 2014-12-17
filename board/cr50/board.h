@@ -15,6 +15,8 @@
 #undef CONFIG_HIBERNATE
 #undef CONFIG_LID_SWITCH
 
+#define CONFIG_FIFO128
+
 /* USB configuration */
 #define CONFIG_USB
 #define CONFIG_USB_CONSOLE
