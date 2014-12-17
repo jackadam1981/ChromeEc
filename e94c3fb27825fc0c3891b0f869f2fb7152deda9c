@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81da6831_e8d6077f",
+        "filename": "chip/nrf51/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-17T21:17:11Z",
+      "side": 1,
+      "message": "Use BUILD_ASSERT(), which will make the build fail if they get out of sync.  That goes in global scope.",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 7
+      },
+      "revId": "e94c3fb27825fc0c3891b0f869f2fb7152deda9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1d5ac01_14a7c445",
+        "filename": "chip/nrf51/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-17T21:17:11Z",
+      "side": 1,
+      "message": "Coding style nit: if any clause in an if-else uses {}, all must.",
+      "revId": "e94c3fb27825fc0c3891b0f869f2fb7152deda9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
