@@ -212,13 +212,16 @@ static inline int x_uart_addr(int ch, int offset)
 
 /*
  * To store the alternate function pin muxing in a 32-bit integer :
- * put the function index selector in the low 16 bits,
- * and the selector register offset in the high 16 bits.
+ * put 1-byte additional argument  in the bits [31:24]
+ * put the function index selector in the bits [23:16]
+ * and the selector register offset in the bits [15:0]
  */
-#define PINMUX(func) (int)(CONCAT3(GC_PINMUX_, func, _SEL) | \
-		(CONCAT3(GC_PINMUX_, func, _SEL_OFFSET) << 16))
-#define PINMUX_SEL_REG(word) REG32(GC_PINMUX_BASE_ADDR + ((uint32_t)(word) >> 16))
-#define PINMUX_FUNC(word)  ((uint32_t)(word) & 0xffff)
+#define PINMUX(func) (int)((CONCAT3(GC_PINMUX_, func, _SEL) << 16) | \
+		CONCAT3(GC_PINMUX_, func, _SEL_OFFSET))
+#define PINMUX_SEL_REG(word) \
+	REG32(GC_PINMUX_BASE_ADDR + ((uint32_t)(word) & 0xffff))
+#define PINMUX_FUNC(word)  (((uint32_t)(word) >> 16) & 0xFF)
+#define PINMUX_ARGV(word)  (((uint32_t)(word) >> 24) & 0xFF)
 
 
 #define GR_GPIO_REG(n, off)         REG16(GC_GPIO0_BASE_ADDR + (n)*0x10000 + (off))
