@@ -1,0 +1,615 @@
+/* Copyright 2015 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include "common.h"
+#include "console.h"
+#include "gpio.h"
+#include "hooks.h"
+#include "registers.h"
+#include "spi.h"
+#include "task.h"
+#include "timer.h"
+#include "util.h"
+#include "pmu.h"
+#include "watchdog.h"
+
+static int sps_fifo_need_workaround;
+#define SPS_SW_FIFO_SIZE 128
+#define SPS_SW_FIFO_MASK (SPS_SW_FIFO_SIZE-1)
+struct {
+	uint32_t buffer[SPS_SW_FIFO_SIZE];
+	uint32_t read_pointer;
+	uint32_t write_pointer;
+	uint32_t command_pointer;
+} g_sps_data;
+
+static uint32_t g_sps_data32;
+
+#define SPS_TX_FIFO_BASE_ADDR (GBASE(SPS) + 0x1000)
+#define SPS_RX_FIFO_BASE_ADDR (GBASE(SPS) + 0x1400)
+#define SPS_FIFO_SIZE 0x400
+
+/*
+ * SPI Clock polarity and phase mode (0 - 3)
+ * @code
+ * clk mode | POL PHA
+ * ---------+--------
+ *   0      |  0   0
+ *   1      |  0   1
+ *   2      |  1   0
+ *   3      |  1   1
+ * ---------+--------
+ * @endcode
+ */
+enum spi_clock_mode {
+	SPI_CLOCK_MODE0 = 0,
+	SPI_CLOCK_MODE1 = 1,
+	SPI_CLOCK_MODE2 = 2,
+	SPI_CLOCK_MODE3 = 3
+};
+
+/* SPS Control Mode */
+enum sps_mode {
+	SPS_GENERIC_MODE = 0,
+	SPS_SWETLAND_MODE = 1,
+	SPS_ROM_MODE = 2,
+	SPS_UNDEF_MODE = 3,
+};
+
+#define SPS_FIFO_CMD_SIZE 64
+
+/* SPI/SPS Statistic Counters */
+static uint32_t sps_sts_tx_count, sps_sts_rx_count, tx_full_count;
+static uint32_t spi_sts_tx_count;
+
+static uint32_t g_tx_data[SPS_FIFO_CMD_SIZE>>2];
+static uint32_t g_rx_data[SPS_FIFO_CMD_SIZE>>2];
+/* SPI Flash Max transfer size */
+#define GC_SPI_FLASH_MAX_XFER_SIZE       (1<<7)
+
+/* SPI Flash Max transfer mask */
+#define GC_SPI_FLASH_MAX_XFER_MASK       (GC_SPI_FLASH_MAX_XFER_SIZE - 1)
+
+/* Console output macros */
+#define CPUTS(outstr) cputs(CC_SPI, outstr)
+#define CPRINTS(format, args...) cprints(CC_SPI, format, ## args)
+
+/*
+ * Set SPI transaction length
+ * This is useful for performing reads without having to
+ * pre-fill the TX buffers. Len should be <= GC_SPI_FLASH_MAX_XFER_SIZE.
+ */
+static void spi_length_set(uint32_t inst, uint32_t len)
+{
+	len -= 1;
+	len &= GC_SPI_FLASH_MAX_XFER_MASK;
+	GWRITE_FIELD_I(SPI, inst, XACT, SIZE, len);
+}
+
+
+/*
+ * Start SPI transfer
+ */
+static void spi_start(uint32_t inst)
+{
+	GWRITE_FIELD_I(SPI, inst, ISTATE_CLR, TXDONE, 1);
+	GWRITE_FIELD_I(SPI, inst, XACT, START, 1);
+}
+
+/*
+ * Wait for spi tx completion
+ */
+static int spi_wait_for_tx_done(uint32_t inst)
+{
+	int cnt = 1000;
+	while ((!GREAD_FIELD_I(SPI, inst, ISTATE, TXDONE)) && (--cnt > 0))
+		usleep(100);
+	return (cnt > 0) ? (EC_SUCCESS) : (-EC_ERROR_TIMEOUT);
+}
+
+/*
+ * Copy data to the SPI TX buffer
+ * @param data Pointer to 8-bit data
+ * @param len Length of data
+ */
+static int spi_write(uint32_t inst, const uint8_t *data, uint32_t len)
+{
+	int i;
+	volatile uint32_t *dest;
+	volatile uint32_t *src = (volatile uint32_t *)data;
+
+	dest = GREG32_ADDR_I(SPI, inst, TX_DATA);
+
+	CPRINTS("spi wr [%X] <-- [%X] len:%d", dest, data, len);
+	spi_length_set(inst, len);
+
+	len >>= 2;
+	for (i = 0; i < len; i++)
+		dest[i] = src[i];
+	spi_start(inst);
+	return spi_wait_for_tx_done(inst);
+}
+
+/*
+ * Read data from the SPI RX buffer
+ * @param data Pointer to 8-bit data
+ * @param len Length of data
+ */
+static void spi_read(uint32_t inst, uint8_t *data, uint32_t len)
+{
+	int i;
+	volatile uint32_t *src;
+	volatile uint32_t *dest = (volatile uint32_t *)data;
+	src = GREG32_ADDR_I(SPI, inst, RX_DATA);
+	CPRINTS("spi rd [%X] --> [%X] len:%d", src, data, len);
+	len >>= 2;
+	for (i = 0; i < len; i++)
+		dest[i] = src[i];
+}
+
+/** Configure SPI data transmission format
+ *
+ */
+void spi_configure(enum spi_clock_mode clk_mode)
+{
+	/* Configure SPI master */
+	GWRITE_FIELD(SPI, CTRL, CPHA, clk_mode & 1);
+	GWRITE_FIELD(SPI, CTRL, CPOL, (clk_mode >> 1) & 1);
+
+	/* [5:2] CSB to SCK setup time in SCK cycles + 1.5 */
+	GWRITE_FIELD(SPI, CTRL, CSBSU, 1);
+	/* [9:6] CSB from SCK hold time in SCK cycles + 1 */
+	GWRITE_FIELD(SPI, CTRL, CSBHLD, 1);
+
+	/* [21:10] SPI clk divider */
+	GWRITE_FIELD(SPI, CTRL, IDIV,    7);
+
+	GWRITE_FIELD(SPI, CTRL, TXBITOR, 1); /* LSB first */
+	GWRITE_FIELD(SPI, CTRL, RXBITOR, 1); /* LSB first */
+
+	GREG32(SPI, ICTRL) = 0; /*Tx Interrupt disable */
+}
+
+
+/*
+ * TBD: Tx Interrupt enable
+ *  GREG32(SPI, ICTRL) = 1;  enable tx_done interrupt
+ *  GREG32(SPI, ISTATE) == 1; check if tx_done
+ *  GREG32(SPI, ISTATE_CLR) = 1; write 1 to clear tx_done
+ */
+int spi_enable(int enable)
+{
+	static uint8_t enable_flag;
+	if (enable == enable_flag)
+		return EC_SUCCESS;
+
+	if (enable)
+		spi_configure(0);
+
+	enable_flag = enable;
+	return EC_SUCCESS;
+}
+
+int spi_transaction(const uint8_t *txdata, int txlen,
+		    uint8_t *rxdata, int rxlen)
+{
+	int rc = EC_SUCCESS;
+	uint32_t inst = 0;
+
+	if (txdata && (txlen > 0))
+		rc = spi_write(inst, txdata, txlen);
+	if (rc)
+		return rc;
+
+	if (rxdata && (rxlen > 0))
+		spi_read(inst, rxdata, rxlen);
+
+	return EC_SUCCESS;
+}
+
+static void spi_init(void)
+{
+	/* init clock */
+	pmu_clock_en(PERIPH_SPI);
+
+	/* Ensure the SPI port is disabled.  This keeps us from interfering
+	 * with the main chipset when we're not explicitly using the SPI
+	 * bus. */
+	spi_enable(1);
+
+	task_enable_irq(GC_IRQNUM_SPI0_SPITXINT);
+}
+DECLARE_HOOK(HOOK_INIT, spi_init, HOOK_PRIO_DEFAULT);
+
+
+/*
+ * SPI Slave Interface
+ *--------------------
+ */
+
+#define sps_txfifo_empty(inst) GREAD_FIELD_I(SPS, inst, ISTATE, TXFIFO_EMPTY)
+#define sps_txfifo_full(inst) GREAD_FIELD_I(SPS, inst, ISTATE, TXFIFO_FULL)
+#define sps_txfifo_level(inst) GREAD_FIELD_I(SPS, inst, ISTATE, TXFIFO_LVL)
+#define sps_rxfifo_level(inst) GREAD_FIELD_I(SPS, inst, ISTATE, RXFIFO_LVL)
+#define sps_rxfifo_overflow(inst) \
+	GREAD_FIELD_I(SPS, inst, ISTATE, RXFIFO_OVERFLOW)
+
+/*
+ * Push data to the SPS TX FIFO
+ * @param data uint32_t
+ * @return push count: sizeof(uint32_t) or 0
+ */
+static int sps_push32(uint32_t inst, const uint32_t d32)
+{
+	volatile uint32_t *sps_base =
+		(volatile uint32_t *)SPS_TX_FIFO_BASE_ADDR;
+	uint32_t offset;
+	uint32_t woff;
+	if (sps_txfifo_full(inst)) {
+		tx_full_count++;
+		return 0;
+	}
+
+	offset = GREG32_I(SPS, inst, TXFIFO_WPTR);
+	woff = (offset & 0x3FF) >> 2;
+	sps_base[woff] = d32;
+
+	GREG32_I(SPS, inst, TXFIFO_WPTR) = (offset+sizeof(uint32_t)) & 0x7FF;
+
+	return sizeof(uint32_t);
+}
+
+#if 0
+/*
+ * Push data to the SPS TX FIFO
+ * @param data uint8_t
+ * @return push count: sizeof(uint8_t) or 0
+ */
+static int sps_tx_push8(uint32_t inst, const uint8_t data)
+{
+	volatile uint32_t *sps_base =
+		(volatile uint32_t *)SPS_TX_FIFO_BASE_ADDR;
+	uint32_t offset;
+	uint32_t woff;
+	uint32_t boff;
+	if (sps_txfifo_full(inst)) {
+		tx_full_count++;
+		return 0;
+	}
+
+	offset = GREG32_I(SPS, inst, TXFIFO_WPTR);
+
+	/*
+	 * SPS TX FIFO does not support byte access;
+	 * only support 4-byte access.
+	 */
+	woff = (offset & 0x3FF) >> 2;
+	boff = (offset & 0x3);
+	sps_base[woff] &= ~(0xFF << (boff*8));
+	sps_base[woff] |=  (data << (boff*8));
+
+	GREG32_I(SPS, inst, TXFIFO_WPTR) = (offset+sizeof(uint8_t)) & 0x7FF;
+	return sizeof(uint8_t);
+}
+#endif
+
+/** Peek data32 from SPS RX FIFO
+ *
+ *  @returns
+ *    the data in the receive buffer
+ */
+static volatile uint32_t *sps_rx_top32(uint32_t inst)
+{
+	volatile int32_t *sps_base =
+		(volatile uint32_t *)SPS_RX_FIFO_BASE_ADDR;
+	uint32_t offset = GREG32_I(SPS, inst, RXFIFO_RPTR);
+	return &sps_base[(offset & 0x3FF) >> 2];
+}
+
+#if 0
+/** Peek data from SPS RX FIFO
+ *
+ *  @returns
+ *    the data in the receive buffer
+ */
+static volatile uint8_t *sps_rx_top8(uint32_t inst)
+{
+	volatile uint8_t *sps_base = (volatile uint8_t *)SPS_RX_FIFO_BASE_ADDR;
+	uint32_t offset = GREG32_I(SPS, inst, RXFIFO_RPTR);
+	return &sps_base[offset & 0x3FF];
+}
+#endif
+
+/*
+ * Pop data from the SPS RX FIFO
+ * @param data Pointer to 32-bit data
+ * @return pop count: sizeof(uint32_t) or 0
+ */
+static int sps_rx_pop32(uint32_t inst, uint32_t *data)
+{
+	*data = *sps_rx_top32(inst);
+	GREG32_I(SPS, inst, RXFIFO_RPTR) += sizeof(uint32_t);
+	GREG32_I(SPS, inst, RXFIFO_RPTR) &= 0x7FF;
+	return sizeof(uint32_t);
+}
+
+#if 0
+/*
+ * Pop data from the SPS RX FIFO
+ * @param data Pointer to 8-bit data
+ * @return pop count: 1 or 0
+ */
+static int sps_rx_pop8(uint32_t inst, uint8_t *data)
+{
+	int cnt = sps_rxfifo_level(inst)*SPS_FIFO_CMD_SIZE;
+	if (cnt == 0) {
+		*data = 0xFF;
+		return 0;
+	}
+	*data = *sps_rx_top8(inst);
+	GREG32_I(SPS, inst, RXFIFO_RPTR) += sizeof(uint8_t);
+	GREG32_I(SPS, inst, RXFIFO_RPTR) &= 0x7FF;
+	return sizeof(uint8_t);
+}
+#endif
+
+/** Configure the data transmission format
+ *
+ *  @param mode Clock polarity and phase mode (0 - 3)
+ *
+ */
+static void sps_configure(enum sps_mode mode, enum spi_clock_mode clk_mode)
+{
+	/* Disable All Interrupts */
+	GREG32(SPS, ICTRL) = 0;
+
+	GWRITE_FIELD(SPS, CTRL, MODE, mode);
+	GWRITE_FIELD(SPS, CTRL, IDLE_LVL, 0);
+	GWRITE_FIELD(SPS, CTRL, CPHA, clk_mode & 1);
+	GWRITE_FIELD(SPS, CTRL, CPOL, (clk_mode >> 1) & 1);
+	GWRITE_FIELD(SPS, CTRL, TXBITOR, 1); /* MSB first */
+	GWRITE_FIELD(SPS, CTRL, RXBITOR, 1); /* MSB first */
+	/* xfer 0xff when tx fifo is empty */
+	GREG32(SPS, DUMMY_WORD) = 0xff;
+
+	/* [5,4,3]           [2,1,0]
+	 * RX{DIS, EN, RST} TX{DIS, EN, RST}
+	 */
+	GREG32(SPS, FIFO_CTRL) = 0x9;
+	GWRITE_FIELD(SPS, FIFO_CTRL, TXFIFO_RST, 1);
+	GWRITE_FIELD(SPS, FIFO_CTRL, RXFIFO_RST, 1);
+	GWRITE_FIELD(SPS, FIFO_CTRL, TXFIFO_EN, 1);
+	GWRITE_FIELD(SPS, FIFO_CTRL, RXFIFO_EN, 1);
+
+	GWRITE_FIELD(SPS, ICTRL, TXFIFO_LVL, 0);
+	GWRITE_FIELD(SPS, ICTRL, RXFIFO_LVL, 1);
+
+	GREG32(SPS, RXFIFO_THRESHOLD) = SPS_FIFO_CMD_SIZE - 1;
+	GREG32(SPS, TXFIFO_THRESHOLD) = SPS_FIFO_CMD_SIZE - 1;
+}
+
+int sps_enable(int enable, enum sps_mode mode)
+{
+	static uint8_t sps_enable_flag;
+	if (enable == sps_enable_flag)
+		return EC_SUCCESS;
+
+	if (enable)
+		sps_configure(mode, 0);
+
+	sps_enable_flag = enable;
+	return EC_SUCCESS;
+}
+
+void sps_init_fifo(void)
+{
+	int i;
+	volatile uint32_t *sps_tx_base =
+		(volatile uint32_t *)SPS_TX_FIFO_BASE_ADDR;
+	volatile uint32_t *sps_rx_base =
+		(volatile uint32_t *)SPS_RX_FIFO_BASE_ADDR;
+	volatile uint8_t *rx = (volatile uint8_t *)SPS_RX_FIFO_BASE_ADDR;
+	volatile uint8_t *tx = (volatile uint8_t *)SPS_TX_FIFO_BASE_ADDR;
+	for (i = 0; i < SPS_FIFO_SIZE/sizeof(uint32_t); i++) {
+		sps_tx_base[i] = 0;
+		sps_rx_base[i] = 0;
+	}
+
+	sps_tx_base[0] = 0x12345678;
+	sps_rx_base[0] = 0x12345678;
+	CPRINTS("sps tx %08X", sps_tx_base[0]);
+	CPRINTS("sps tx %08X", sps_rx_base[0]);
+	tx[0] = 0xfa;
+	rx[0] = 0xea;
+	CPRINTS("sps tx %08X", sps_tx_base[0]);
+	CPRINTS("sps tx %08X", sps_rx_base[0]);
+	if ((tx[0] == tx[1]) || (rx[0] == rx[1])) {
+		CPRINTS("SPS FIFO need software workaround.");
+		sps_fifo_need_workaround = 1;
+	}
+	sps_tx_base[0] = 0;
+	sps_rx_base[0] = 0;
+
+	g_sps_data32 = 0;
+	g_sps_data.write_pointer = 0;
+	g_sps_data.read_pointer = 0;
+	g_sps_data.command_pointer = 0;
+	for (i = 0; i < SPS_SW_FIFO_SIZE; i++)
+		g_sps_data.buffer[i] = 0xee;
+}
+
+static void sps_init(void)
+{
+	pmu_clock_en(PERIPH_SPS);
+	sps_enable(1, SPS_GENERIC_MODE);
+	sps_init_fifo();
+
+	task_enable_irq(GC_IRQNUM_SPS0_RXFIFO_LVL_INTR);
+	task_enable_irq(GC_IRQNUM_SPS0_TXFIFO_LVL_INTR);
+}
+DECLARE_HOOK(HOOK_INIT, sps_init, HOOK_PRIO_DEFAULT);
+
+
+
+/*****************************************************************************/
+/* Interrupt handler stuff */
+static void sps_invoke_handler(uint32_t d32)
+{
+	g_sps_data.buffer[g_sps_data.write_pointer] = d32;
+	g_sps_data.write_pointer =
+		(g_sps_data.write_pointer + 1) & SPS_SW_FIFO_MASK;
+}
+
+static void sps_rx_interrupt(int port)
+{
+	uint32_t d32;
+	int num;
+	int cnt = sps_rxfifo_level(port)*SPS_FIFO_CMD_SIZE;
+	if (cnt == 0)
+		return;
+
+	/* if software fifo is full, skip and wait for the next interrupt */
+	if (g_sps_data.read_pointer ==
+		((g_sps_data.write_pointer + cnt) & SPS_SW_FIFO_MASK))
+		return;
+
+	while (cnt > 0) {
+		num = sps_rx_pop32(port, &d32);
+		sps_invoke_handler(d32);
+		sps_sts_rx_count += num;
+		cnt -= num;
+	}
+	GWRITE_FIELD(SPS, ICTRL, TXFIFO_LVL, 1);
+
+	return;
+}
+
+static void sps_tx_interrupt(int port)
+{
+	uint32_t read_pointer;
+	int cnt = sps_txfifo_level(port)*SPS_FIFO_CMD_SIZE;
+	int num;
+	if (cnt == 0)
+		return;
+	while (cnt > 0) {
+		read_pointer = g_sps_data.read_pointer;
+		num = sps_push32(port, g_sps_data.buffer[read_pointer]);
+		sps_sts_tx_count += num;
+		cnt -= num;
+		g_sps_data.read_pointer = (read_pointer+1) & SPS_SW_FIFO_MASK;
+	}
+	GWRITE_FIELD(SPS, ICTRL, TXFIFO_LVL, 0);
+}
+
+static void spi_tx_interrupt(int port)
+{
+	GWRITE_FIELD_I(SPI, port, ISTATE_CLR, TXDONE, 1);
+	spi_sts_tx_count++;
+}
+
+void _sps0_rx_interrupt(void)
+{
+	sps_rx_interrupt(0);
+}
+void _sps0_tx_interrupt(void)
+{
+	sps_tx_interrupt(0);
+}
+void _spi0_tx_interrupt(void)
+{
+	spi_tx_interrupt(0);
+}
+DECLARE_IRQ(GC_IRQNUM_SPS0_RXFIFO_LVL_INTR, _sps0_rx_interrupt, 1);
+DECLARE_IRQ(GC_IRQNUM_SPS0_TXFIFO_LVL_INTR, _sps0_tx_interrupt, 1);
+DECLARE_IRQ(GC_IRQNUM_SPI0_SPITXINT, _spi0_tx_interrupt, 1);
+
+static int spi_sps_loopback_test(int val, int num)
+{
+	int rc = 0, i, c;
+	uint8_t tx_len = SPS_FIFO_CMD_SIZE;
+	uint8_t rx_len = SPS_FIFO_CMD_SIZE;
+
+	CPRINTS("SPS FIFO BASE: 0x%08X, 0x%08X num:%d (0x%p 0x%p)",
+		SPS_TX_FIFO_BASE_ADDR, SPS_RX_FIFO_BASE_ADDR, num,
+		g_tx_data, g_rx_data);
+
+	CPRINTS("spi tx cnt:%d", spi_sts_tx_count);
+	CPRINTS("sps tx cnt:%d", sps_sts_tx_count);
+	CPRINTS("sps rx cnt:%d", sps_sts_rx_count);
+	CPRINTS("cmd:%d", g_sps_data.command_pointer);
+	CPRINTS(" wr:%d", g_sps_data.write_pointer);
+	CPRINTS(" rd:%d", g_sps_data.read_pointer);
+
+	for (i = 0; i < num; i++) {
+
+		for (c = 0; c < SPS_FIFO_CMD_SIZE/4; c++) {
+			g_tx_data[c] = (val == 0xad) ? (val + c) : val;
+			g_rx_data[c] = 0;
+		}
+
+		rc = spi_transaction((void *)g_tx_data, tx_len,
+					(void *)g_rx_data, rx_len);
+		if (rc) {
+			CPRINTS("spi error; rc:%d\n", rc);
+			cflush();
+			return rc;
+		}
+
+		CPRINTS("spi tx cnt:%d", spi_sts_tx_count);
+		CPRINTS("sps tx cnt:%d", sps_sts_tx_count);
+		CPRINTS("sps rx cnt:%d", sps_sts_rx_count);
+
+		CPRINTS("cmd:%d", g_sps_data.command_pointer);
+		CPRINTS(" wr:%d", g_sps_data.write_pointer);
+		CPRINTS(" wr:%d", g_sps_data.read_pointer);
+		for (i = 0; i < SPS_FIFO_CMD_SIZE/4; i++)
+			CPRINTS("%08X %08X", g_tx_data[i], g_rx_data[i]);
+	}
+	return rc;
+}
+
+
+static int command_spitest(int argc, char **argv)
+{
+	char *e;
+	uint32_t seed = 0xfa, num = 0;
+
+	if (argc < 1)
+		return EC_ERROR_PARAM_COUNT;
+
+	if (argc >= 2)
+		num = strtoi(argv[1], &e, 0);
+
+	if (argc >= 3)
+		seed = strtoi(argv[2], &e, 0);
+
+	spi_sps_loopback_test(seed, num);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(spitest, command_spitest,
+			"[num] [seed]",
+			"num: num of bytes; seed: a byte seed value.",
+			NULL);
+
+static int command_spi(int argc, char **argv)
+{
+	ccprintf("rx count %d, tx count %d, tx_full count %d\n",
+		 sps_sts_rx_count, sps_sts_tx_count, tx_full_count);
+
+	if (g_sps_data.command_pointer != g_sps_data.write_pointer) {
+		ccprintf("data received since last time:\n");
+		do {
+			ccprintf("%08X\n", g_sps_data.buffer
+				 [g_sps_data.command_pointer++]);
+			g_sps_data.command_pointer &= SPS_SW_FIFO_MASK;
+		} while (g_sps_data.command_pointer
+				!= g_sps_data.write_pointer);
+		ccprintf("\n");
+	}
+	return EC_SUCCESS;
+}
+
+DECLARE_CONSOLE_COMMAND(spi, command_spi, "", "", NULL);
