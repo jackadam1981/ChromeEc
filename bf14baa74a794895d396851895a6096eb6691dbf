@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1dbec04_505dacee",
+        "filename": "chip/stm32/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-17T00:05:10Z",
+      "side": 1,
+      "message": "Might add a comment here about disabling on-by-default overflow protection.",
+      "range": {
+        "startLine": 292,
+        "startChar": 1,
+        "endLine": 292,
+        "endChar": 16
+      },
+      "revId": "bf14baa74a794895d396851895a6096eb6691dbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
