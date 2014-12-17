@@ -219,6 +219,13 @@
 #undef CONFIG_CHARGER_TPS65090  /* Note: does not use CONFIG_CHARGER */
 
 /*
+ * If battery desired current is 0 and SoC is above some threshold,
+ * then consider battery full and return 100% when other modules use
+ * charge_get_percent().
+ */
+#undef CONFIG_CHARGER_CHECK_BATT_FULL
+
+/*
  * Board specific charging current limit, in mA.  If defined, the charge state
  * machine will not allow the battery to request more current than this.
  */

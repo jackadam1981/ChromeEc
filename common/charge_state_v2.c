@@ -27,6 +27,7 @@
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHARGER, outstr)
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
 
 #define LOW_BATTERY_SHUTDOWN_TIMEOUT_US (LOW_BATTERY_SHUTDOWN_TIMEOUT * SECOND)
 #define HIGH_TEMP_SHUTDOWN_TIMEOUT_US   (HIGH_TEMP_SHUTDOWN_TIMEOUT * SECOND)
@@ -50,6 +51,9 @@ static int battery_seems_to_be_dead;
 static int battery_seems_to_be_disconnected;
 static int problems_exist;
 static int debugging;
+#ifdef CONFIG_CHARGER_CHECK_BATT_FULL
+static int prev_full, is_full; /* battery not accepting current */
+#endif
 
 /* Track problems in communicating with the battery or charger */
 enum problem_type {
@@ -275,14 +279,20 @@ static void show_charging_progress(void)
 	}
 
 	if (rv)
-		CPRINTS("Battery %d%% / ??h:?? %s",
+		CPRINTF("[%T Battery %d%% / ??h:?? %s",
 			curr.batt.state_of_charge,
 			to_full ? "to full" : "to empty");
 	else
-		CPRINTS("Battery %d%% / %dh:%d %s",
+		CPRINTF("[%T Battery %d%% / %dh:%d %s",
 			curr.batt.state_of_charge,
 			minutes / 60, minutes % 60,
 			to_full ? "to full" : "to empty");
+
+#ifdef CONFIG_CHARGER_CHECK_BATT_FULL
+	CPRINTF("%s]\n", is_full ? ", not accepting current" : "");
+#else
+	CPRINTF("]\n");
+#endif
 
 	if (debugging) {
 		ccprintf("battery:\n");
@@ -293,6 +303,28 @@ static void show_charging_progress(void)
 		dump_charge_state();
 	}
 }
+
+#ifdef CONFIG_CHARGER_CHECK_BATT_FULL
+/* Calculate if battery is full based on whether it is accepting charge */
+static int calc_is_full(void)
+{
+	static int ret;
+
+	/* If bad state of charge reading, return last value */
+	if (curr.batt.flags & BATT_FLAG_BAD_STATE_OF_CHARGE ||
+	    curr.batt.state_of_charge > 100)
+		return ret;
+	/*
+	 * Battery is full when SoC is above 90% and battery desired current
+	 * is 0. This is necessary because some batteries stop charging when
+	 * the SoC still reports <100%, so we need to check desired current
+	 * to know if it is actually full.
+	 */
+	ret = (curr.batt.state_of_charge >= 90 &&
+	       curr.batt.desired_current == 0);
+	return ret;
+}
+#endif
 
 /*
  * Ask the charger for some voltage and current. If either value is 0,
@@ -732,11 +764,28 @@ wait_for_it:
 		notify_host_of_low_battery();
 
 		/* And the EC console */
-		if (!(curr.batt.flags & BATT_FLAG_BAD_STATE_OF_CHARGE) &&
-		    curr.batt.state_of_charge != prev_charge) {
+#ifdef CONFIG_CHARGER_CHECK_BATT_FULL
+		is_full = calc_is_full();
+		if ((!(curr.batt.flags & BATT_FLAG_BAD_STATE_OF_CHARGE) &&
+		    curr.batt.state_of_charge != prev_charge) ||
+		    (is_full != prev_full)) {
 			show_charging_progress();
 			prev_charge = curr.batt.state_of_charge;
+#ifdef HAS_TASK_PDCMD
+			host_command_pd_send_status();
+#endif
 		}
+		prev_full = is_full;
+#else /* !CONFIG_CHARGER_CHECK_BATT_FULL */
+		if ((!(curr.batt.flags & BATT_FLAG_BAD_STATE_OF_CHARGE) &&
+		    curr.batt.state_of_charge != prev_charge)) {
+			show_charging_progress();
+			prev_charge = curr.batt.state_of_charge;
+#ifdef HAS_TASK_PDCMD
+			host_command_pd_send_status();
+#endif
+		}
+#endif
 
 		/* Turn charger off if it's not needed */
 		if (curr.state == ST_IDLE || curr.state == ST_DISCHARGE) {
@@ -882,7 +931,11 @@ int charge_get_percent(void)
 	 * to the battery, that'll be zero, which is probably as good as
 	 * anything.
 	 */
+#ifdef CONFIG_CHARGER_CHECK_BATT_FULL
+	return is_full ? 100 : curr.batt.state_of_charge;
+#else
 	return curr.batt.state_of_charge;
+#endif
 }
 
 int charge_temp_sensor_get_val(int idx, int *temp_ptr)
