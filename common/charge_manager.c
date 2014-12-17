@@ -324,6 +324,8 @@ int charge_manager_set_override(int port)
 	ASSERT(port >= OVERRIDE_DONT_CHARGE && port < PD_PORT_COUNT);
 	/* Supersede any pending delayed overrides. */
 
+	CPRINTS("Charge Override: %d", port);
+
 	if (delayed_override_port != OVERRIDE_OFF) {
 		delayed_override_port = OVERRIDE_OFF;
 		hook_call_deferred(
@@ -356,6 +358,17 @@ int charge_manager_set_override(int port)
 		retval = EC_ERROR_INVAL;
 
 	return retval;
+}
+
+/**
+ * Get the override port. OVERRIDE_OFF if no override port.
+ * OVERRIDE_DONT_CHARGE if override is set for no port.
+ *
+ * @return override port
+ */
+int charge_manager_get_override(void)
+{
+	return override_port;
 }
 
 int charge_manager_get_active_charge_port(void)
@@ -485,10 +498,12 @@ static int command_charge_port_override(int argc, char **argv)
 		port = strtoi(argv[1], &e, 0);
 		if (*e || port < OVERRIDE_DONT_CHARGE || port >= PD_PORT_COUNT)
 			return EC_ERROR_PARAM1;
+		ccprintf("Set override: %d\n", port);
+		return charge_manager_set_override(port);
 	}
 
-	ccprintf("Set override: %d\n", port);
-	return charge_manager_set_override(port);
+	ccprintf("Override: %d\n", override_port);
+	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(chgoverride, command_charge_port_override,
 	"[port | -1 | -2]",
