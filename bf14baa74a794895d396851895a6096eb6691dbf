@@ -22,6 +22,23 @@
       "revId": "bf14baa74a794895d396851895a6096eb6691dbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "01ccb852_3fe8ef35",
+        "filename": "chip/stm32/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-17T00:49:27Z",
+      "side": 1,
+      "message": "doing 3 assignments on a volatile register generates pretty bad code, can we do only 2 (we need to disable UE first) ?",
+      "revId": "bf14baa74a794895d396851895a6096eb6691dbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
