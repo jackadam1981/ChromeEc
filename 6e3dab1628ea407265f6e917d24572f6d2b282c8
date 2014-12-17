@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81e0a8b0_2fbbe966",
+        "filename": "core/cortex-m0/watchdog.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-17T00:09:07Z",
+      "side": 1,
+      "message": "Seems like we should actually stop at the end of the stack, rather than looping forever.",
+      "range": {
+        "startLine": 42,
+        "startChar": 7,
+        "endLine": 42,
+        "endChar": 8
+      },
+      "revId": "6e3dab1628ea407265f6e917d24572f6d2b282c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
