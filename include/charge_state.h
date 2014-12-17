@@ -93,6 +93,11 @@ uint32_t charge_get_flags(void);
 int charge_get_percent(void);
 
 /**
+ * Return if battery is full.
+ */
+int charge_get_full(void);
+
+/**
  * Return non-zero if discharging and battery so low we should shut down.
  */
 int charge_want_shutdown(void);

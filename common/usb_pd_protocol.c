@@ -338,7 +338,7 @@ static inline void set_state(int port, enum pd_states next_state)
 #endif
 		pd[port].dev_id = 0;
 		pd[port].flags &= ~PD_FLAGS_RESET_ON_DISCONNECT_MASK;
-		pd_exit_mode(port, NULL);
+		pd_policy_disconnect(port);
 #ifdef CONFIG_USBC_SS_MUX
 		board_set_usb_mux(port, TYPEC_MUX_NONE,
 				  pd[port].polarity);

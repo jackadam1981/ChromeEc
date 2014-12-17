@@ -64,10 +64,10 @@
 
 /* USB configuration */
 #if defined(BOARD_ZINGER)
-#define CONFIG_USB_PID 0x5012
+#define CONFIG_USB_PID USB_PD_PID_ZINGER
 #define CONFIG_USB_BCD_DEV 0x0001 /* v 0.01 */
 #elif defined(BOARD_MINIMUFFIN)
-#define CONFIG_USB_PID 0x5013
+#define CONFIG_USB_PID USB_PD_PID_MINIMUFFIN
 #define CONFIG_USB_BCD_DEV 0x0001 /* v 0.01 */
 #endif
 
