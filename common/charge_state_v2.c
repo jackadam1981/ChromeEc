@@ -726,6 +726,9 @@ wait_for_it:
 		    curr.batt.state_of_charge != prev_charge) {
 			show_charging_progress();
 			prev_charge = curr.batt.state_of_charge;
+#ifdef HAS_TASK_PDCMD
+			host_command_pd_send_status();
+#endif
 		}
 
 		/* Turn charger off if it's not needed */
@@ -869,6 +872,18 @@ int charge_get_percent(void)
 	 * anything.
 	 */
 	return curr.batt.state_of_charge;
+}
+
+int charge_get_full(void)
+{
+	/*
+	 * Battery is full when SoC is above 80% and battery desired current
+	 * is 0. This is necessary because some batteries stop charging when
+	 * the SoC still reports <100%, so we need to check desired current
+	 * to know if it is actually full.
+	 */
+	return  curr.batt.state_of_charge >= 80 &&
+		curr.batt.desired_current == 0;
 }
 
 int charge_temp_sensor_get_val(int idx, int *temp_ptr)
