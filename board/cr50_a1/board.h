@@ -21,6 +21,8 @@
  */
 #define CONFIG_SYSTEM_UNLOCKED
 
+#define CONFIG_FIFO128
+
 /* Not using software sync, so verify RW signature instead */
 #define CONFIG_RWSIG
 #define CONFIG_RSA

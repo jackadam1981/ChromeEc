@@ -29,6 +29,31 @@ int spi_transaction_async(const uint8_t *txdata, int txlen,
 /* Wait for async response received */
 int spi_transaction_flush(void);
 
+/*
+ * SPI Clock polarity and phase mode (0 - 3)
+ * @code
+ * clk mode | POL PHA
+ * ---------+--------
+ *   0      |  0   0
+ *   1      |  0   1
+ *   2      |  1   0
+ *   3      |  1   1
+ * ---------+--------
+ * @endcode
+ */
+enum spi_clock_mode {
+	SPI_CLOCK_MODE0 = 0,
+	SPI_CLOCK_MODE1 = 1,
+	SPI_CLOCK_MODE2 = 2,
+	SPI_CLOCK_MODE3 = 3
+};
+
+/*
+ * SPS Command size:
+ * 64 means got 1 SPS FIFO LVL interrupt per 64 byte received.
+ */
+#define SPS_FIFO_CMD_SIZE 64
+
 #ifdef CONFIG_SPI
 /**
  * Called when the NSS level changes, signalling the start or end of a SPI
