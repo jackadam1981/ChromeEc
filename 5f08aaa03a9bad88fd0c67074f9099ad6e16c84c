@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61df3424_61b050d3",
+        "filename": "chip/nrf51/keyboard_raw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-17T23:48:22Z",
+      "side": 1,
+      "message": "NRF51?  Or is the plan to simply do a copy here, and make changes in the next CL?",
+      "range": {
+        "startLine": 5,
+        "startChar": 30,
+        "endLine": 5,
+        "endChar": 35
+      },
+      "revId": "5f08aaa03a9bad88fd0c67074f9099ad6e16c84c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
