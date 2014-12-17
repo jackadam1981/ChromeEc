@@ -31,7 +31,10 @@ void pd_exchange_status(int *charge_port)
 	};
 	int rv = 0;
 
-	/* Send battery state of charge */
+	/*
+	 * Send battery state of charge. Always send 100% if battery
+	 * is reporting full.
+	 */
 	if (charge_get_flags() & CHARGE_FLAG_BATT_RESPONSIVE)
 		ec_status.batt_soc = charge_get_percent();
 	else
