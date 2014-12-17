@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1fde473_db359fc7",
+        "filename": "chip/nrf51/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-17T23:45:06Z",
+      "side": 1,
+      "message": "Maybe\n\n#define NRF_GPIOTE_OUT(x) REG32(NRF51_GPIOTE_BASE + 0x000 + 4 * (x))\n\nAnd similarly for the other events/registers",
+      "range": {
+        "startLine": 273,
+        "startChar": 8,
+        "endLine": 273,
+        "endChar": 24
+      },
+      "revId": "40d61c4ea68a5a5e5be7631385a6157078d4ba9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
