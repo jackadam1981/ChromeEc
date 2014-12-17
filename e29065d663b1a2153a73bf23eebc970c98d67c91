@@ -22,6 +22,23 @@
       "revId": "e29065d663b1a2153a73bf23eebc970c98d67c91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "01a59882_4364063f",
+        "filename": "driver/mcdp28x0.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-17T01:05:02Z",
+      "side": 1,
+      "message": "I will be loud:\nwhy not doing the following rather than having the outbuf variable :\nuint8_t total \u003d cnt + 2;\nuint8_t chksum \u003d compute_checksum(cnt, msg);\nout_stream_write(\u0026usart_mcdp.out, \u0026total, 1);\nout_stream_write(\u0026usart_mcdp.out, msg, cnt);\nout_stream_write(\u0026usart_mcdp.out, \u0026checksum, cnt);\n\nI feel it\u0027s how the stream API is supposed but we can ask the Creator...\n\nNote: you need to slightly modify the compute_checksum code for this version.",
+      "revId": "e29065d663b1a2153a73bf23eebc970c98d67c91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
