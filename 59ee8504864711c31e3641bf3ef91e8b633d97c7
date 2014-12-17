@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41ab1057_45f96a8e",
+        "filename": "core/cortex-m0/cpu.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-17T00:06:34Z",
+      "side": 1,
+      "message": "Are the rest of these wrong too?  None of them use x.",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 19
+      },
+      "revId": "59ee8504864711c31e3641bf3ef91e8b633d97c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
