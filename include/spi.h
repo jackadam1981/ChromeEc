@@ -48,6 +48,13 @@ int spi_transaction_async(const uint8_t *txdata, int txlen,
 /* Wait for async response received */
 int spi_transaction_flush(void);
 
+/*
+ * SPS Command size:
+ * 128 means got 1 SPS FIFO LVL interrupt per 128 byte received.
+ */
+#define SPS_FIFO_CMD_SIZE 128
+#define SPI_PACKET_SIZE  SPS_FIFO_CMD_SIZE
+
 #ifdef CONFIG_SPI
 /**
  * Called when the NSS level changes, signalling the start or end of a SPI

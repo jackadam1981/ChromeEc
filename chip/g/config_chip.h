@@ -39,7 +39,7 @@
 #define CONFIG_STACK_SIZE 1024
 
 /* Idle task stack size */
-#define IDLE_TASK_STACK_SIZE 256
+#define IDLE_TASK_STACK_SIZE 512
 
 /* Default task stack size */
 #define TASK_STACK_SIZE 488
@@ -53,4 +53,5 @@
 #define GPIO_PIN(port, index) GPIO_##port, (1 << index)
 #define GPIO_PIN_MASK(port, mask) GPIO_##port, (mask)
 
+#define SPI_PORT_COUNT 1
 #endif /* __CROS_EC_CONFIG_CHIP_H */
