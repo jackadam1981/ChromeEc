@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81da6831_62a05801",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-17T19:23:33Z",
+      "side": 1,
+      "message": "while we are at it, we should make this printf shorter to save flash space",
+      "range": {
+        "startLine": 496,
+        "startChar": 11,
+        "endLine": 496,
+        "endChar": 42
+      },
+      "revId": "06cd913e63720a88253ece89ad624d5920411758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1d5ac01_06cb1e5c",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-17T19:23:33Z",
+      "side": 1,
+      "message": "should this be charge_ma instead of PWM duty cycle? That would be more clear for reading what limit we\u0027ve set.",
+      "range": {
+        "startLine": 526,
+        "startChar": 24,
+        "endLine": 526,
+        "endChar": 32
+      },
+      "revId": "06cd913e63720a88253ece89ad624d5920411758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81da6831_65edc217",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-17T19:23:33Z",
+      "side": 1,
+      "message": "nit, remove spaces (that\u0027s four bytes flash space saved!)\nCPRINTS(\"CL: p%d s%d i%d v%d\"...",
+      "range": {
+        "startLine": 207,
+        "startChar": 11,
+        "endLine": 207,
+        "endChar": 34
+      },
+      "revId": "06cd913e63720a88253ece89ad624d5920411758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
