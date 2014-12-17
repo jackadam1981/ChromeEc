@@ -64,6 +64,24 @@
       "revId": "59ee8504864711c31e3641bf3ef91e8b633d97c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "01a59882_2330ea88",
+        "filename": "core/cortex-m0/cpu.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2014-12-17T00:47:26Z",
+      "side": 1,
+      "message": "The CPU_NVIC_PRI(x), IPR0-IPR7 registers, are actually 4 irqs per 32 bits. So it needs 8 whole registers to describe the priorities of all 32 irqs.\n\nCitation: PM0215: STM32F0xxx Cortex-M0 programming manual",
+      "parentUuid": "21a8dc5a_2430f288",
+      "revId": "59ee8504864711c31e3641bf3ef91e8b633d97c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
