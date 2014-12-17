@@ -10,14 +10,95 @@
 #include "gc_regdefs.h"
 #include "util.h"
 
+/*
+ * Added Alias Module Family Base Address to 0-instance Module Base Address
+ * Simplify GBASE(mname) macro
+ */
+#define GC_MODULE_OFFSET         0x10000
+
+#define GC_AES_BASE_ADDR         GC_AES0_BASE_ADDR
+#define GC_CAMO_BASE_ADDR        GC_CAMO0_BASE_ADDR
+#define GC_FLASH_BASE_ADDR       GC_FLASH0_BASE_ADDR
+#define GC_GPIO_BASE_ADDR        GC_GPIO0_BASE_ADDR
+#define GC_I2C_BASE_ADDR         GC_I2C0_BASE_ADDR
+#define GC_I2CS_BASE_ADDR        GC_I2CS0_BASE_ADDR
+#define GC_RBOX_BASE_ADDR        GC_RBOX0_BASE_ADDR
+#define GC_RTC_BASE_ADDR         GC_RTC0_BASE_ADDR
+#define GC_SHA_BASE_ADDR         GC_SHA0_BASE_ADDR
+#define GC_SPI_BASE_ADDR         GC_SPI0_BASE_ADDR
+#define GC_SPS_BASE_ADDR         GC_SPS0_BASE_ADDR
+#define GC_SWDP_BASE_ADDR        GC_SWDP0_BASE_ADDR
+#define GC_TEMP_BASE_ADDR        GC_TEMP0_BASE_ADDR
+#define GC_TIMEHS_BASE_ADDR      GC_TIMEHS0_BASE_ADDR
+#define GC_TIMELS_BASE_ADDR      GC_TIMELS0_BASE_ADDR
+#define GC_TRNG_BASE_ADDR        GC_TRNG0_BASE_ADDR
+#define GC_UART_BASE_ADDR        GC_UART0_BASE_ADDR
+#define GC_USB_BASE_ADDR         GC_USB0_BASE_ADDR
+#define GC_WATCHDOG_BASE_ADDR    GC_WATCHDOG0_BASE_ADDR
+#define GC_XO_BASE_ADDR          GC_XO0_BASE_ADDR
+
+#define GBASE(mname)      \
+	GC_ ## mname ## _BASE_ADDR
+#define GOFFSET(mname, rname)  \
+	GC_ ## mname ## _ ## rname ## _OFFSET
+
+#define GREG32(mname, rname) \
+	REG32(GBASE(mname) + GOFFSET(mname, rname))
+#define GREG32_ADDR(mname, rname) \
+	REG32_ADDR(GBASE(mname) + GOFFSET(mname, rname))
+#define GWRITE(mname, rname, value) (GREG32(mname, rname) = (value))
+#define GREAD(mname, rname)	    GREG32(mname, rname)
+
+#define GFIELD_MASK(mname, rname, fname) \
+	GC_ ## mname ## _ ## rname ## _ ## fname ## _MASK
+
+#define GFIELD_LSB(mname, rname, fname)  \
+	GC_ ## mname ## _ ## rname ## _ ## fname ## _LSB
+
+#define GREAD_FIELD(mname, rname, fname) \
+	((GREG32(mname, rname) & GFIELD_MASK(mname, rname, fname)) \
+		>> GFIELD_LSB(mname, rname, fname))
+
+#define GWRITE_FIELD(mname, rname, fname, fval) \
+	(GREG32(mname, rname) = \
+	((GREG32(mname, rname) & (~GFIELD_MASK(mname, rname, fname))) | \
+	(((fval) << GFIELD_LSB(mname, rname, fname)) & \
+		GFIELD_MASK(mname, rname, fname))))
+
+
+#define GBASE_I(mname, i)     (GBASE(mname) + i*GC_MODULE_OFFSET)
+
+#define GREG32_I(mname, i, rname) \
+		REG32(GBASE_I(mname, i) + GOFFSET(mname, rname))
+
+#define GREG32_ADDR_I(mname, i, rname) \
+		REG32_ADDR(GBASE_I(mname, i) + GOFFSET(mname, rname))
+
+#define GWRITE_I(mname, i, rname, value) (GREG32_I(mname, i, rname) = (value))
+#define GREAD_I(mname, i, rname)	        GREG32_I(mname, i, rname)
+
+#define GREAD_FIELD_I(mname, i, rname, fname) \
+	((GREG32_I(mname, i, rname) & GFIELD_MASK(mname, rname, fname)) \
+		>> GFIELD_LSB(mname, rname, fname))
+
+#define GWRITE_FIELD_I(mname, i, rname, fname, fval) \
+	(GREG32_I(mname, i, rname) = \
+	((GREG32_I(mname, i, rname) & (~GFIELD_MASK(mname, rname, fname))) | \
+	(((fval) << GFIELD_LSB(mname, rname, fname)) & \
+		GFIELD_MASK(mname, rname, fname))))
+
+
 /* Replace masked bits with val << lsb */
-#define REG_WRITE_MLV(reg, mask, lsb, val) reg = ((reg & ~mask) | ((val << lsb) & mask))
+#define REG_WRITE_MLV(reg, mask, lsb, val) \
+		(reg = ((reg & ~mask) | ((val << lsb) & mask)))
 
 /* Revision generated from the register definitions */
 #define GC_REVISION_STR STRINGIFY(GC_REVISION)
 /* Revision registers */
-#define GR_SWDP_BUILD_DATE  REG32(GC_SWDP0_BASE_ADDR + GC_SWDP_BUILD_DATE_OFFSET)
-#define GR_SWDP_BUILD_TIME  REG32(GC_SWDP0_BASE_ADDR + GC_SWDP_BUILD_TIME_OFFSET)
+#define GR_SWDP_BUILD_DATE  \
+	REG32(GC_SWDP0_BASE_ADDR + GC_SWDP_BUILD_DATE_OFFSET)
+#define GR_SWDP_BUILD_TIME  \
+	REG32(GC_SWDP0_BASE_ADDR + GC_SWDP_BUILD_TIME_OFFSET)
 
 /* Power Management Unit */
 #define GR_PMU_REG(off)               REG32(GC_PMU_BASE_ADDR + (off))
@@ -108,25 +189,26 @@ static inline int x_uart_addr(int ch, int offset)
 #define GPIO_A_COUNT 15
 #define GPIO_B_COUNT  9
 
-/* GPIO bank index is the number of the first GPIO of the bank */
+/* GPIO bank (port) index is the number of the first GPIO of the bank */
 #define GPIO_M 0
 #define GPIO_A GPIO_M_COUNT
-#define GPIO_B (GPIO_M_COUNT + GPIO_A_COUNT)
+#define GPIO_B ((GPIO_M_COUNT) + (GPIO_A_COUNT))
 #define DUMMY_GPIO_BANK GPIO_M
 
 #define GR_PINMUX_DIO_SEL(bank, di) REG32(GC_PINMUX_BASE_ADDR + ((bank) + (di))*8)
 #define GR_PINMUX_DIO_CTL(bank, di) REG32(GC_PINMUX_BASE_ADDR + ((bank) + (di))*8 + 4)
 
+/* GC_PINMUX_GPIO0_GPIO0_SEL_OFFSET ... GC_PINMUX_GPIO1_GPIO15_SEL_OFFSET */
 #define GR_PINMUX_GPIO_SEL(wi, idx) REG32(GC_PINMUX_BASE_ADDR + GC_PINMUX_GPIO0_GPIO0_SEL_OFFSET + ((wi)*16 + (idx))*4)
 
 #define PINMUX_DIO_SEL(bank, di) (GC_PINMUX_DIOM0_SEL + (di) + (bank))
 #define PINMUX_GPIO_SEL(wi, idx)  (GC_PINMUX_GPIO0_GPIO0_SEL + (idx) + (wi)*16)
 
-#define PINMUX_DIO_CTL_DS(ds)  (((ds) & PINMUX_DIOA0_CTL_DS_GC_PINMUX_DIOA0_CTL_DS_MASK) << GC_PINMUX_DIOA0_CTL_DS_LSB)
-#define PINMUX_DIO_CTL_IE      (1 << GC_PINMUX_DIOA0_CTL_IE_LSB)
-#define PINMUX_DIO_CTL_PD      (1 << GC_PINMUX_DIOA0_CTL_PD_LSB)
-#define PINMUX_DIO_CTL_PU      (1 << GC_PINMUX_DIOA0_CTL_PU_LSB)
-#define PINMUX_DIO_CTL_INV     (1 << GC_PINMUX_DIOA0_CTL_INV_LSB)
+#define PINMUX_DIO_CTL_DS(ds)  ((ds) & GC_PINMUX_DIOA0_CTL_DS_MASK)
+#define PINMUX_DIO_CTL_IE      GC_PINMUX_DIOA0_CTL_IE_MASK
+#define PINMUX_DIO_CTL_PD      GC_PINMUX_DIOA0_CTL_PD_MASK
+#define PINMUX_DIO_CTL_PU      GC_PINMUX_DIOA0_CTL_PU_MASK
+#define PINMUX_DIO_CTL_INV     GC_PINMUX_DIOA0_CTL_INV_MASK
 
 /*
  * To store the alternate function pin muxing in a 32-bit integer :
