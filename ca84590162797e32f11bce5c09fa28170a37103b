@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1fde473_bbaffb9d",
+        "filename": "board/hadoken/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-17T23:26:48Z",
+      "side": 1,
+      "message": "Where else does that scale factor show up?\n\nShould we make that a separate constant?  BQ27621_SCALE_FACTOR",
+      "range": {
+        "startLine": 48,
+        "startChar": 14,
+        "endLine": 48,
+        "endChar": 32
+      },
+      "revId": "ca84590162797e32f11bce5c09fa28170a37103b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
