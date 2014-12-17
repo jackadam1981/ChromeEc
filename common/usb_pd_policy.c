@@ -35,7 +35,7 @@ static int rw_flash_changed = 1;
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 /* Cap on the max voltage requested as a sink (in millivolts) */
-static unsigned max_request_mv = -1; /* no cap */
+static unsigned max_request_mv = PD_MAX_VOLTAGE_MV;
 
 /**
  * Find PDO index that offers the most amount of power and stays within
@@ -186,6 +186,7 @@ static void dfp_consume_identity(int port, uint32_t *payload)
 	int ptype = PD_IDH_PTYPE(payload[VDO_I(IDH)]);
 	pe_init(port);
 	memcpy(&pe[port].identity, payload + 1, sizeof(pe[port].identity));
+	pe[port].identity_received = 1;
 	switch (ptype) {
 	case IDH_PTYPE_AMA:
 		/* TODO(tbroch) do I disable VBUS here if power contract
@@ -594,7 +595,26 @@ int pd_exit_mode(int port, uint32_t *payload)
 }
 #endif /* !CONFIG_USB_PD_ALT_MODE_DFP */
 
+/* Called from protocol layer when port disconnnects */
+void pd_policy_disconnect(int port)
+{
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
+	pe[port].identity_received = 0;
+#endif
+	pd_exit_mode(port, NULL);
+}
+
+#ifdef CONFIG_USB_PD_ALT_MODE_DFP
+void pd_get_identity(int port, uint16_t *vid, uint16_t *pid)
+{
+	if (!pe[port].identity_received)
+		return;
+
+	*vid = PD_IDH_VID(pe[port].identity[0]);
+	if (*vid)
+		*pid = PD_PRODUCT_PID(pe[port].identity[2]);
+}
+
 static int hc_remote_pd_discovery(struct host_cmd_handler_args *args)
 {
 	const uint8_t *port = args->params;
@@ -603,11 +623,17 @@ static int hc_remote_pd_discovery(struct host_cmd_handler_args *args)
 	if (*port >= PD_PORT_COUNT)
 		return EC_RES_INVALID_PARAM;
 
-	r->vid = PD_IDH_VID(pe[*port].identity[0]);
-	r->ptype = PD_IDH_PTYPE(pe[*port].identity[0]);
-	/* pid only included if vid is assigned */
-	if (r->vid)
-		r->pid = PD_PRODUCT_PID(pe[*port].identity[2]);
+	if (pe[*port].identity_received) {
+		r->vid = PD_IDH_VID(pe[*port].identity[0]);
+		r->ptype = PD_IDH_PTYPE(pe[*port].identity[0]);
+		/* pid only included if vid is assigned */
+		if (r->vid)
+			r->pid = PD_PRODUCT_PID(pe[*port].identity[2]);
+	} else {
+		r->vid = 0;
+		r->ptype = 0;
+		r->pid = 0;
+	}
 
 	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;

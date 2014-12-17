@@ -726,6 +726,9 @@ wait_for_it:
 		    curr.batt.state_of_charge != prev_charge) {
 			show_charging_progress();
 			prev_charge = curr.batt.state_of_charge;
+#ifdef HAS_TASK_PDCMD
+			host_command_pd_send_status();
+#endif
 		}
 
 		/* Turn charger off if it's not needed */

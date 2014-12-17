@@ -196,6 +196,8 @@ struct pd_policy {
 	int svid_cnt;
 	/* SVDM identity info (Id, Cert Stat, 0-4 Typec specific) */
 	uint32_t identity[PDO_MAX_OBJECTS - 1];
+	/* flag for identity received */
+	int identity_received;
 	/* supported svids & corresponding vdo mode data */
 	struct svdm_svid_data svids[SVID_DISCOVERY_MAX];
 	/*  active mode */
@@ -864,6 +866,22 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload);
  * @return if >0, number of VDOs to send back.
  */
 int pd_custom_flash_vdm(int port, int cnt, uint32_t *payload);
+
+/**
+ * Get discovery identity information
+ *
+ * @param port     USB-C port number
+ * @param vid      Pointer to location to store VID of attached device
+ * @param pid      Pointer to location to store PID of attached device
+ */
+void pd_get_identity(int port, uint16_t *vid, uint16_t *pid);
+
+/**
+ * Callback from protocol layer for disconnect event
+ *
+ * @param port     USB-C port number
+ */
+void pd_policy_disconnect(int port);
 
 /**
  * Exit alternate mode
