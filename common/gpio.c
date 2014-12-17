@@ -12,6 +12,10 @@
 #include "system.h"
 #include "util.h"
 
+/* Console output macros */
+#define CPUTS(outstr) cputs(CC_GPIO, outstr)
+#define CPRINTS(format, args...) cprints(CC_GPIO, format, ## args)
+
 static uint8_t last_val[(GPIO_COUNT + 7) / 8];
 
 /**
@@ -72,15 +76,18 @@ void gpio_config_module(enum module_id id, int enable)
 		if (id != af->module_id)
 			continue;  /* Pins for some other module */
 
+		CPRINTS("module:%d port:%d mask:%X flag:%x func:0x%x",
+			af->module_id, af->port, af->mask, af->flags, af->func);
+
 		if (enable) {
 			if (!(af->flags & GPIO_DEFAULT))
-				gpio_set_flags_by_mask(af->port,
+				gpio_set_flags_by_mask(1, /* fix me: af->port */
 					af->mask, af->flags);
 			gpio_set_alternate_function(af->port, af->mask,
 						    af->func);
 		} else {
 			if (!(af->flags & GPIO_DEFAULT))
-				gpio_set_flags_by_mask(af->port,
+				gpio_set_flags_by_mask(1,
 					af->mask, GPIO_INPUT);
 			gpio_set_alternate_function(af->port, af->mask, -1);
 		}
