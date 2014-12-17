@@ -46,6 +46,24 @@
       "revId": "59ee8504864711c31e3641bf3ef91e8b633d97c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "21a8dc5a_2430f288",
+        "filename": "core/cortex-m0/cpu.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-17T00:41:16Z",
+      "side": 1,
+      "message": "Cortex-M0 cannot have more than 32 interrupts.\nSo the former was better.",
+      "parentUuid": "01a59882_a3e37ad7",
+      "revId": "59ee8504864711c31e3641bf3ef91e8b633d97c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
