@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "810c2879_d599ec55",
+        "filename": "chip/nrf51/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-17T23:46:58Z",
+      "side": 1,
+      "message": "GPIO_INTS_PORT + 1?",
+      "range": {
+        "startLine": 17,
+        "startChar": 41,
+        "endLine": 17,
+        "endChar": 42
+      },
+      "revId": "755e18252d0606585e4f97c21fc21c04068f8b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "810c2879_f5c35033",
+        "filename": "chip/nrf51/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-17T23:46:58Z",
+      "side": 1,
+      "message": "If you make this a uint8_t, then you\u0027re guaranteed it\u0027s \u003e\u003d0.\n\nActually, it might be cleaner just to scan gpio_ints[] looking for a NULL entry in gpio_enable_interrupt[].  And then don\u0027t bother compacting gpio_ints[] in gpio_disable_interrupt[]",
+      "range": {
+        "startLine": 21,
+        "startChar": 7,
+        "endLine": 21,
+        "endChar": 10
+      },
+      "revId": "755e18252d0606585e4f97c21fc21c04068f8b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1fde473_fb922362",
+        "filename": "chip/nrf51/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-17T23:46:58Z",
+      "side": 1,
+      "message": "These are global variables, so initialize to 0 anyway.",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 61
+      },
+      "revId": "755e18252d0606585e4f97c21fc21c04068f8b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61df3424_0136acd2",
+        "filename": "chip/nrf51/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-17T23:46:58Z",
+      "side": 1,
+      "message": "Prefer TODO to FIXME (for simpler grepping of things to fix)",
+      "range": {
+        "startLine": 186,
+        "startChar": 4,
+        "endLine": 186,
+        "endChar": 9
+      },
+      "revId": "755e18252d0606585e4f97c21fc21c04068f8b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1fde473_7b0c7330",
+        "filename": "chip/nrf51/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-17T23:46:58Z",
+      "side": 1,
+      "message": "See above; if used_ints is an unsigned type, won\u0027t need the \u003e\u003d0 check.",
+      "range": {
+        "startLine": 201,
+        "startChar": 9,
+        "endLine": 201,
+        "endChar": 23
+      },
+      "revId": "755e18252d0606585e4f97c21fc21c04068f8b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1fde473_5b11af48",
+        "filename": "chip/nrf51/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-17T23:46:58Z",
+      "side": 1,
+      "message": "GPIO_INTS_PORT?",
+      "range": {
+        "startLine": 201,
+        "startChar": 39,
+        "endLine": 201,
+        "endChar": 40
+      },
+      "revId": "755e18252d0606585e4f97c21fc21c04068f8b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61df3424_a1ec18cb",
+        "filename": "chip/nrf51/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-17T23:46:58Z",
+      "side": 1,
+      "message": "Assuming you\u0027ve refactored registers.h as suggested in the previous change,\n\nNRF_GPIOTE_CONFIG(used_ints) \u003d event_config;\n\nand you can get rid of the switch statement",
+      "range": {
+        "startLine": 219,
+        "startChar": 3,
+        "endLine": 219,
+        "endChar": 23
+      },
+      "revId": "755e18252d0606585e4f97c21fc21c04068f8b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "810c2879_75892007",
+        "filename": "chip/nrf51/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-17T23:46:58Z",
+      "side": 1,
+      "message": "...which will always fail, right?",
+      "range": {
+        "startLine": 231,
+        "startChar": 3,
+        "endLine": 231,
+        "endChar": 24
+      },
+      "revId": "755e18252d0606585e4f97c21fc21c04068f8b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1fde473_7bdab32f",
+        "filename": "chip/nrf51/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-17T23:46:58Z",
+      "side": 1,
+      "message": "All this stuff can become a loop then too...",
+      "range": {
+        "startLine": 298,
+        "startChar": 1,
+        "endLine": 298,
+        "endChar": 22
+      },
+      "revId": "755e18252d0606585e4f97c21fc21c04068f8b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
