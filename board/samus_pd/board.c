@@ -29,11 +29,21 @@
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 
+/* Define max voltage request when battery is full and zinger is attached */
+#define PD_MAX_VOLTAGE_FULL_BATTERY_MV 12000
+
+/* Is VID/PID associated with a zinger family device */
+#define USB_PD_IS_ZINGER_FAMILY(vid, pid) \
+		(((vid) == USB_VID_GOOGLE) && \
+			(((pid) == USB_PD_PID_ZINGER) || \
+			 ((pid) == USB_PD_PID_MINIMUFFIN)))
+
 /* Chipset power state */
 static enum power_state ps;
 
 /* Battery state of charge */
 static int batt_soc;
+static int fake_state_of_charge = -1; /* use real soc by default */
 
 /* PD MCU status and host event status for host command */
 static struct ec_response_pd_status pd_status;
@@ -450,9 +460,52 @@ void board_flip_usb_mux(int port)
 	gpio_set_level(usb_mux->ss2_dp_mode, usb_polarity);
 }
 
+void board_check_vbus_request(void)
+{
+	static int vbus_max_prev = PD_MAX_VOLTAGE_MV;
+	int vbus_max = vbus_max_prev;
+	uint16_t vid = 0, pid;
+	int port = charge_manager_get_active_charge_port();
+
+	/*
+	 * If vbus max is above PD_MAX_VOLTAGE_FULL_BATTERY_MV and battery
+	 * is full, then check if this is in Zinger family in which case
+	 * we want to switch to battery full max voltage to save power.
+	 */
+	if (vbus_max_prev > PD_MAX_VOLTAGE_FULL_BATTERY_MV && batt_soc == 100) {
+		if (port != CHARGE_PORT_NONE) {
+			pd_get_identity(port, &vid, &pid);
+			if (USB_PD_IS_ZINGER_FAMILY(vid, pid))
+				vbus_max = PD_MAX_VOLTAGE_FULL_BATTERY_MV;
+		}
+	/*
+	 * If previously using PD_MAX_VOLTAGE_FULL_BATTERY_MV, check if
+	 * battery dropped below the full threshold or if we stopped
+	 * charging or switched to a charger that is Zinger family.
+	 */
+	} else if (vbus_max_prev == PD_MAX_VOLTAGE_FULL_BATTERY_MV) {
+		if (batt_soc < 100 || port == CHARGE_PORT_NONE) {
+			vbus_max = PD_MAX_VOLTAGE_MV;
+		} else {
+			pd_get_identity(port, &vid, &pid);
+			if (!USB_PD_IS_ZINGER_FAMILY(vid, pid))
+				vbus_max = PD_MAX_VOLTAGE_MV;
+		}
+	}
+
+	/* If vbus max changed, then set new limit and send new request */
+	if (vbus_max_prev != vbus_max) {
+		CPRINTS("Set %dmV max", vbus_max);
+		pd_set_max_voltage(vbus_max);
+		pd_set_new_power_request(port);
+		vbus_max_prev = vbus_max;
+	}
+}
+
 void board_update_battery_soc(int soc)
 {
 	batt_soc = soc;
+	board_check_vbus_request();
 }
 
 int board_get_battery_soc(void)
@@ -500,7 +553,7 @@ int board_set_active_charge_port(int charge_port)
 	pd_status.active_charge_port = charge_port;
 	gpio_set_level(GPIO_USB_C0_CHARGE_EN_L, !(charge_port == 0));
 	gpio_set_level(GPIO_USB_C1_CHARGE_EN_L, !(charge_port == 1));
-
+	board_check_vbus_request();
 	CPRINTS("New chg p%d", charge_port);
 	return EC_SUCCESS;
 }
@@ -572,6 +625,36 @@ DECLARE_CONSOLE_COMMAND(pdevent, command_pd_host_event,
 			"Send PD host event",
 			NULL);
 
+static int command_battfake(int argc, char **argv)
+{
+	char *e;
+	int v;
+
+	if (argc == 2) {
+		v = strtoi(argv[1], &e, 0);
+		if (*e || v < -1 || v > 100)
+			return EC_ERROR_PARAM1;
+
+		fake_state_of_charge = v;
+	}
+
+	if (fake_state_of_charge < 0) {
+		/* Send EC int to get real batt info from EC */
+		pd_send_ec_int();
+		ccprintf("Using real batt level\n");
+	} else {
+		board_update_battery_soc(fake_state_of_charge);
+		ccprintf("Using fake batt level %d%%\n",
+			 fake_state_of_charge);
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(battfake, command_battfake,
+			"percent (-1 = use real level)",
+			"Set fake battery level",
+			NULL);
+
 /****************************************************************************/
 /* Host commands */
 static int ec_status_host_cmd(struct host_cmd_handler_args *args)
@@ -579,7 +662,9 @@ static int ec_status_host_cmd(struct host_cmd_handler_args *args)
 	const struct ec_params_pd_status *p = args->params;
 	struct ec_response_pd_status *r = args->response;
 
-	board_update_battery_soc(p->batt_soc);
+	/* if not using fake soc, then update battery soc */
+	if (fake_state_of_charge < 0)
+		board_update_battery_soc(p->batt_soc);
 
 	*r = pd_status;
 
