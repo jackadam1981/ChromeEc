@@ -12,22 +12,35 @@
 #include "queue.h"
 #include "task.h"
 #include "util.h"
+#include "watchdog.h"
 
 #define CPRINTS(format, args...) cprints(CC_USB, format, ## args)
 
-#define INCOMING_QUEUE_SIZE 100
-#define OUTGOING_QUEUE_SIZE 100
+#define INCOMING_QUEUE_SIZE 128
+#define OUTGOING_QUEUE_SIZE 128
 
+static uint32_t icnt;
+static uint32_t ocnt;
+
+void blob_get_counts(uint32_t *ic, uint32_t *oc)
+{
+	*ic = icnt;
+	*oc = ocnt;
+}
 
 static void incoming_add(struct queue_policy const *queue_policy, size_t count)
 {
+	icnt += count;
 	task_wake(TASK_ID_BLOB);
 }
 
 static void incoming_remove(struct queue_policy const *queue_policy,
 			    size_t count)
 {
+	ocnt += count;
+#if 0
 	blob_is_ready_for_more_bytes();
+#endif
 }
 
 static struct queue_policy const incoming_policy = {
@@ -37,7 +50,9 @@ static struct queue_policy const incoming_policy = {
 
 static void outgoing_add(struct queue_policy const *queue_policy, size_t count)
 {
+#if 0
 	blob_is_ready_to_emit_bytes();
+#endif
 }
 
 static void outgoing_remove(struct queue_policy const *queue_policy,
@@ -56,12 +71,35 @@ static struct queue const incoming_q = QUEUE(INCOMING_QUEUE_SIZE, uint8_t,
 
 static struct queue const outgoing_q = QUEUE(OUTGOING_QUEUE_SIZE, uint8_t,
 					     outgoing_policy);
+size_t blob_in_space(void)
+{
+	return queue_space(&incoming_q);
+}
 
+size_t blob_in_count(void)
+{
+	return queue_count(&incoming_q);
+}
+
+size_t blob_out_space(void)
+{
+	return queue_space(&outgoing_q);
+}
+
+size_t blob_out_count(void)
+{
+	return queue_count(&outgoing_q);
+}
 
 /* Call this to send data to the blob-handler */
 size_t put_bytes_to_blob(uint8_t *buffer, size_t count)
 {
 	return QUEUE_ADD_UNITS(&incoming_q, buffer, count);
+}
+
+size_t put_bytes_to_out_blob(uint8_t *buffer, size_t count)
+{
+	return QUEUE_ADD_UNITS(&outgoing_q, buffer, count);
 }
 
 /* Call this to get data back fom the blob-handler */
@@ -79,35 +117,29 @@ size_t get_bytes_from_blob(uint8_t *buffer, size_t count)
 WEAK_FUNC(blob_is_ready_for_more_bytes);
 WEAK_FUNC(blob_is_ready_to_emit_bytes);
 
+
+void blob_process_queue(int ctx)
+{
+	static uint8_t buf[INCOMING_QUEUE_SIZE];
+	size_t count;
+
+	count = blob_in_count();
+	if (count == 0)
+		return;
+
+	QUEUE_REMOVE_UNITS(&incoming_q, buf, count);
+	count = QUEUE_ADD_UNITS(&outgoing_q, buf, count);
+}
 /* Do the magic */
 void blob_task(void)
 {
-	static uint8_t buf[INCOMING_QUEUE_SIZE];
-	size_t count, i;
-	task_id_t me = task_get_current();
-
 	while (1) {
-		CPRINTS("task %d waiting for events...", me);
 		task_wait_event(-1);
-		CPRINTS("task %d awakened!", me);
-
-		count = QUEUE_REMOVE_UNITS(&incoming_q, buf, sizeof(buf));
-
-		CPRINTS("task %d gets: count=%d buf=((%s))", me, count, buf);
-
 		/*
-		 * Just to have something to test to begin with, we'll
-		 * implement "tr a-zA-Z A-Za-z" and return the result.
+		 * Running with a high repeat count will take so long the
+		 * watchdog timer fires.  So reset the watchdog timer each
+		 * iteration.
 		 */
-		for (i = 0; i < count; i++) {
-			char tmp = buf[i];
-			if (tmp >= 'a' && tmp <= 'z')
-				buf[i] = tmp - ('a' - 'A');
-			else if (tmp >= 'A' && tmp <= 'Z')
-				buf[i] = tmp + ('a' - 'A');
-		}
-
-		count = QUEUE_ADD_UNITS(&outgoing_q, buf, count);
-		CPRINTS("task %d puts: count=%d buf=((%s))", me, buf);
+		blob_process_queue(0xb);
 	}
 }

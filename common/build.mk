@@ -42,6 +42,7 @@ common-$(CONFIG_PMU_TPS65090)+=pmu_tps65090.o
 common-$(CONFIG_EOPTION)+=eoption.o
 common-$(CONFIG_EXTPOWER_GPIO)+=extpower_gpio.o
 common-$(CONFIG_FANS)+=fan.o
+common-$(CONFIG_FIFO128)+=fifo128.o
 common-$(CONFIG_FLASH)+=flash.o
 common-$(CONFIG_FMAP)+=fmap.o
 common-$(CONFIG_GESTURE_DETECTION)+=gesture.o

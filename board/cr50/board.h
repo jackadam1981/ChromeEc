@@ -15,6 +15,8 @@
 #undef CONFIG_HIBERNATE
 #undef CONFIG_LID_SWITCH
 
+#define CONFIG_FIFO128
+
 #if !defined(CHIP_VARIANT_CR50_A1)
 
 /* USB configuration */

@@ -5,6 +5,7 @@
 
 /* Watchdog common code */
 
+#include "blob.h"
 #include "common.h"
 #include "panic.h"
 #include "task.h"
@@ -16,6 +17,7 @@ void __keep watchdog_trace(uint32_t excep_lr, uint32_t excep_sp)
 {
 	uint32_t psp;
 	uint32_t *stack;
+	task_id_t me = task_get_current();
 
 	asm("mrs %0, psp" : "=r"(psp));
 	if ((excep_lr & 0xf) == 1) {
@@ -26,8 +28,9 @@ void __keep watchdog_trace(uint32_t excep_lr, uint32_t excep_sp)
 		stack = (uint32_t *)psp;
 	}
 
-	panic_printf("### WATCHDOG PC=%08x / LR=%08x / pSP=%08x ",
-		     stack[6], stack[5], psp);
+	panic_printf("\n\n### Task:%d WATCHDOG PC=%08x / LR=%08x / pSP=%08x",
+			me, stack[6], stack[5], psp);
+
 	if ((excep_lr & 0xf) == 1)
 		panic_puts("(exc) ###\n");
 	else

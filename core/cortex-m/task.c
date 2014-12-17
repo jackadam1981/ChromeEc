@@ -15,6 +15,7 @@
 #include "timer.h"
 #include "uart.h"
 #include "util.h"
+#include "watchdog.h"
 
 typedef union {
 	struct {

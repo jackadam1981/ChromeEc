@@ -136,10 +136,12 @@ static void rx_fifo_handler(void)
 }
 DECLARE_DEFERRED(rx_fifo_handler);
 
+#if 0
 void blob_is_ready_for_more_bytes(void)
 {
 	hook_call_deferred(rx_fifo_handler, 0);
 }
+#endif
 
 /* Rx/OUT interrupt handler */
 static void con_ep_rx(void)
@@ -176,11 +178,12 @@ static void tx_fifo_handler(void)
 }
 DECLARE_DEFERRED(tx_fifo_handler);
 
+#if 0
 void blob_is_ready_to_emit_bytes(void)
 {
 	hook_call_deferred(tx_fifo_handler, 0);
 }
-
+#endif
 /* Tx/IN interrupt handler */
 static void con_ep_tx(void)
 {
