@@ -34,6 +34,10 @@ static enum power_state ps;
 
 /* Battery state of charge */
 static int batt_soc;
+static int fake_state_of_charge = -1; /* use real soc by default */
+
+/* Last charge port override when charging turned off due to full battery */
+static int chg_override_port;
 
 /* PD MCU status and host event status for host command */
 static struct ec_response_pd_status pd_status;
@@ -187,6 +191,7 @@ void pch_evt(enum gpio_signal signal)
 		if (gpio_get_level(GPIO_PCH_SLP_S3_L)) {
 			/* S3 -> S0: disable deep sleep */
 			disable_sleep(SLEEP_MASK_AP_RUN);
+			charge_manager_set_override(chg_override_port);
 			hook_notify(HOOK_CHIPSET_RESUME);
 			ps = POWER_S0;
 		} else if (!gpio_get_level(GPIO_PCH_SLP_S5_L)) {
@@ -199,6 +204,7 @@ void pch_evt(enum gpio_signal signal)
 		if (!gpio_get_level(GPIO_PCH_SLP_S3_L)) {
 			/* S0 -> S3: enable deep sleep */
 			enable_sleep(SLEEP_MASK_AP_RUN);
+			chg_override_port = charge_manager_get_override();
 			hook_notify(HOOK_CHIPSET_SUSPEND);
 			ps = POWER_S3;
 		}
@@ -269,6 +275,9 @@ static void board_init(void)
 	pi3usb9281_set_interrupt_mask(1, 0xff);
 	pi3usb9281_enable_interrupts(0);
 	pi3usb9281_enable_interrupts(1);
+
+	/* Set initial charge override port */
+	chg_override_port = charge_manager_get_override();
 
 	/* Determine initial chipset state */
 	if (slp_s5 && slp_s3) {
@@ -450,9 +459,34 @@ void board_flip_usb_mux(int port)
 	gpio_set_level(usb_mux->ss2_dp_mode, usb_polarity);
 }
 
+void board_check_charging(void)
+{
+	int port;
+	static int chg_is_cutoff;
+
+	/* Only check if charging needs to be turned off when not in S0 */
+	if (ps == POWER_S0)
+		return;
+
+	port = charge_manager_get_active_charge_port();
+
+	/*
+	 * If battery is full disable charging, if battery if not full, restore
+	 * charge port.
+	 */
+	if (!chg_is_cutoff && port != CHARGE_PORT_NONE && batt_soc == 100) {
+		charge_manager_set_override(OVERRIDE_DONT_CHARGE);
+		chg_is_cutoff = 1;
+	} else if (chg_is_cutoff && batt_soc < 100) {
+		charge_manager_set_override(chg_override_port);
+		chg_is_cutoff = 0;
+	}
+}
+
 void board_update_battery_soc(int soc)
 {
 	batt_soc = soc;
+	board_check_charging();
 }
 
 int board_get_battery_soc(void)
@@ -500,7 +534,7 @@ int board_set_active_charge_port(int charge_port)
 	pd_status.active_charge_port = charge_port;
 	gpio_set_level(GPIO_USB_C0_CHARGE_EN_L, !(charge_port == 0));
 	gpio_set_level(GPIO_USB_C1_CHARGE_EN_L, !(charge_port == 1));
-
+	board_check_charging();
 	CPRINTS("New chg p%d", charge_port);
 	return EC_SUCCESS;
 }
@@ -572,6 +606,36 @@ DECLARE_CONSOLE_COMMAND(pdevent, command_pd_host_event,
 			"Send PD host event",
 			NULL);
 
+static int command_battfake(int argc, char **argv)
+{
+	char *e;
+	int v;
+
+	if (argc == 2) {
+		v = strtoi(argv[1], &e, 0);
+		if (*e || v < -1 || v > 100)
+			return EC_ERROR_PARAM1;
+
+		fake_state_of_charge = v;
+	}
+
+	if (fake_state_of_charge < 0) {
+		ccprintf("Using real batt level\n");
+	} else {
+		ccprintf("Using fake batt level %d%%\n",
+			 fake_state_of_charge);
+	}
+
+	/* Send EC int to get batt info from EC */
+	pd_send_ec_int();
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(battfake, command_battfake,
+			"percent (-1 = use real level)",
+			"Set fake battery level",
+			NULL);
+
 /****************************************************************************/
 /* Host commands */
 static int ec_status_host_cmd(struct host_cmd_handler_args *args)
@@ -579,7 +643,9 @@ static int ec_status_host_cmd(struct host_cmd_handler_args *args)
 	const struct ec_params_pd_status *p = args->params;
 	struct ec_response_pd_status *r = args->response;
 
-	board_update_battery_soc(p->batt_soc);
+	/* if not using fake soc, then update battery soc */
+	board_update_battery_soc(fake_state_of_charge < 0 ?
+					p->batt_soc : fake_state_of_charge);
 
 	*r = pd_status;
 

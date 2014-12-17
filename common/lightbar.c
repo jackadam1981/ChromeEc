@@ -185,7 +185,7 @@ static void get_battery_level(void)
 		return;
 
 #ifdef HAS_TASK_CHARGER
-	st.battery_percent = pct = charge_get_percent();
+	st.battery_percent = pct = charge_get_full() ? 100:charge_get_percent();
 	st.battery_is_charging = (PWR_STATE_DISCHARGE != charge_get_state());
 #endif
 
