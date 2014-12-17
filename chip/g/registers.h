@@ -199,6 +199,7 @@ static inline int x_uart_addr(int ch, int offset)
 /* GPIO port naming scheme left over from the LM4. Must maintain tradition! */
 #define GPIO_0 0
 #define GPIO_1 1
+#define GPIO_2 2
 #define DUMMY_GPIO_BANK 0
 
 /*
