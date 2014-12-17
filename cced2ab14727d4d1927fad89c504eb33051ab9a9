@@ -22,6 +22,30 @@
       "revId": "cced2ab14727d4d1927fad89c504eb33051ab9a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "21e9bccf_e2e7023c",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2014-12-17T23:26:42Z",
+      "side": 1,
+      "message": "I tested this on a pretty typical setup(4.7k pullup). It\u0027s still 94kHz. I don\u0027t think it will get much slower than that.",
+      "parentUuid": "810c2879_75f3e0af",
+      "range": {
+        "startLine": 85,
+        "startChar": 28,
+        "endLine": 85,
+        "endChar": 38
+      },
+      "revId": "cced2ab14727d4d1927fad89c504eb33051ab9a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
