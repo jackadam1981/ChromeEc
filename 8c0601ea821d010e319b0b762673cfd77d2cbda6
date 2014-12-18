@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81f428d2_efc901bb",
+        "filename": "driver/battery/bq27621_g1.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T21:09:30Z",
+      "side": 1,
+      "message": "#ifdef rather than if(), since this is all decided at compile time?",
+      "range": {
+        "startLine": 412,
+        "startChar": 0,
+        "endLine": 416,
+        "endChar": 27
+      },
+      "revId": "8c0601ea821d010e319b0b762673cfd77d2cbda6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
