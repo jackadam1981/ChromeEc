@@ -1,0 +1,395 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c19e206c_f1d3488c",
+        "filename": "board/nucmx_evb/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T19:35:34Z",
+      "side": 1,
+      "message": "Nuvoton M4 EB",
+      "range": {
+        "startLine": 5,
+        "startChar": 10,
+        "endLine": 5,
+        "endChar": 14
+      },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1996484_f5125279",
+        "filename": "board/nucmx_evb/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T19:35:34Z",
+      "side": 1,
+      "message": "Series",
+      "range": {
+        "startLine": 9,
+        "startChar": 22,
+        "endLine": 9,
+        "endChar": 28
+      },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81a8a891_b2b61ecb",
+        "filename": "chip/nucmx/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T19:35:34Z",
+      "side": 1,
+      "message": "Copyright date should be 2014 for all files",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81a8a891_d2c3a233",
+        "filename": "chip/nucmx/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T19:35:34Z",
+      "side": 1,
+      "message": "Please check files for trailing whitespace and remove.  It shows up in red in this code review tool.",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 1
+      },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81a8a891_3294ee23",
+        "filename": "chip/nucmx/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T19:35:34Z",
+      "side": 1,
+      "message": "Please reformat lines to be at most 80 cols long.",
+      "range": {
+        "startLine": 96,
+        "startChar": 70,
+        "endLine": 96,
+        "endChar": 71
+      },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c19e206c_11960cb6",
+        "filename": "chip/nucmx/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T19:35:34Z",
+      "side": 1,
+      "message": "{ should be on same line as if()\n\n  if () {\n  }",
+      "range": {
+        "startLine": 140,
+        "startChar": 57,
+        "endLine": 141,
+        "endChar": 2
+      },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1996484_553b1eee",
+        "filename": "chip/nucmx/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T19:35:34Z",
+      "side": 1,
+      "message": "No extra space.\n\n  if ((...))\n\nnot\n\n  if ( (...) )",
+      "range": {
+        "startLine": 142,
+        "startChar": 9,
+        "endLine": 142,
+        "endChar": 10
+      },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c19e206c_319b10dd",
+        "filename": "chip/nucmx/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T19:35:34Z",
+      "side": 1,
+      "message": "If the if() clause uses {}, the else clause must too.\n\n  if () {\n\n  } else {\n\n  }",
+      "range": {
+        "startLine": 148,
+        "startChar": 5,
+        "endLine": 148,
+        "endChar": 9
+      },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c19e206c_71a5980f",
+        "filename": "chip/nucmx/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T19:35:34Z",
+      "side": 1,
+      "message": "Indentation seems odd here",
+      "range": {
+        "startLine": 150,
+        "startChar": 1,
+        "endLine": 152,
+        "endChar": 28
+      },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81a8a891_d29c8248",
+        "filename": "chip/nucmx/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T19:35:34Z",
+      "side": 1,
+      "message": "Coding style: tabs, not 4 spaces",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 6
+      },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1996484_b531aa0d",
+        "filename": "chip/nucmx/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T19:35:34Z",
+      "side": 1,
+      "message": "Do you have an internal temperature diode on your EC?  If not, can remove this dead code.",
+      "range": {
+        "startLine": 218,
+        "startChar": 11,
+        "endLine": 218,
+        "endChar": 25
+      },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1996484_d52e2ea8",
+        "filename": "chip/nucmx/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T19:35:34Z",
+      "side": 1,
+      "message": "Functions should have the { on the next line\n\n  void foo(void)\n  {\n\n  }",
+      "range": {
+        "startLine": 183,
+        "startChar": 25,
+        "endLine": 183,
+        "endChar": 27
+      },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81a8a891_92675abf",
+        "filename": "chip/nucmx/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T19:35:34Z",
+      "side": 1,
+      "message": "Comment is not correct for external flash, which does have a write protect pin.",
+      "range": {
+        "startLine": 66,
+        "startChar": 55,
+        "endLine": 69,
+        "endChar": 62
+      },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1996484_156ef6ee",
+        "filename": "chip/nucmx/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T19:35:34Z",
+      "side": 1,
+      "message": "Shouldn\u0027t need this now, since using SPI flash",
+      "range": {
+        "startLine": 83,
+        "startChar": 3,
+        "endLine": 84,
+        "endChar": 34
+      },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1996484_3573fad9",
+        "filename": "chip/nucmx/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T19:35:34Z",
+      "side": 1,
+      "message": "Reformat to \u003c80 cols, please.",
+      "range": {
+        "startLine": 84,
+        "startChar": 49,
+        "endLine": 84,
+        "endChar": 52
+      },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81a8a891_5257b2cf",
+        "filename": "chip/nucmx/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T19:35:34Z",
+      "side": 1,
+      "message": "calculated?",
+      "range": {
+        "startLine": 178,
+        "startChar": 51,
+        "endLine": 178,
+        "endChar": 60
+      },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1996484_757d82a0",
+        "filename": "chip/nucmx/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T19:35:34Z",
+      "side": 1,
+      "message": "prescaler",
+      "range": {
+        "startLine": 198,
+        "startChar": 17,
+        "endLine": 198,
+        "endChar": 26
+      },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
