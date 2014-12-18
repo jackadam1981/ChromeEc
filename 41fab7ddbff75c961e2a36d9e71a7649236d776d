@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1e5e41c_f2c9e8ba",
+        "filename": "chip/nrf51/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T21:04:07Z",
+      "side": 1,
+      "message": "Suggest making this a constant.\n\n#define GPIO_INTS_COUNT 4\n\nThat way if we ever get a chip which has more than 4 ints, and we copy/paste this code, we only need to change it in one place.",
+      "range": {
+        "startLine": 17,
+        "startChar": 41,
+        "endLine": 17,
+        "endChar": 42
+      },
+      "revId": "41fab7ddbff75c961e2a36d9e71a7649236d776d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1e5e41c_d2cee4c0",
+        "filename": "chip/nrf51/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T21:04:07Z",
+      "side": 1,
+      "message": "Just return EC_SUCCESS?\n\nThis is still plausible:\n\n  gpio_enable_interrupt(GPIO_FOO);\n  gpio_enable_interrupt(GPIO_FOO);",
+      "range": {
+        "startLine": 203,
+        "startChar": 4,
+        "endLine": 203,
+        "endChar": 46
+      },
+      "revId": "41fab7ddbff75c961e2a36d9e71a7649236d776d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
