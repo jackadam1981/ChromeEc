@@ -390,6 +390,213 @@
       "revId": "6d0f501ab99982663901c481da82a6002a03303f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1996484_150276ff",
+        "filename": "chip/nucmx/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T22:40:29Z",
+      "side": 1,
+      "message": "Don\u0027t need {} here since it\u0027s only a single statement in both if and else.",
+      "range": {
+        "startLine": 96,
+        "startChar": 11,
+        "endLine": 96,
+        "endChar": 12
+      },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81a8a891_b2029e78",
+        "filename": "chip/nucmx/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T22:40:29Z",
+      "side": 1,
+      "message": "How long will flash operations potentially take?\n\nThis code spin-waits, so potentially can trigger a watchdog event if it takes a long time for ready.\n\nMost operations should be fast.  It\u0027s the erase operations I\u0027m potentially concerned about.  Those may need to use a different flash_wait_ready() which does a msleep(1) inside the inner loop so that other tasks (including the watchdog) can run.",
+      "range": {
+        "startLine": 164,
+        "startChar": 5,
+        "endLine": 164,
+        "endChar": 64
+      },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1996484_d51f0e51",
+        "filename": "chip/nucmx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T22:40:29Z",
+      "side": 1,
+      "message": "Should add a comment for why this code is disabled.  TODO: of some sort?",
+      "range": {
+        "startLine": 502,
+        "startChar": 0,
+        "endLine": 506,
+        "endChar": 6
+      },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c19e206c_d13ac405",
+        "filename": "chip/nucmx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T22:40:29Z",
+      "side": 1,
+      "message": "Assuming we\u0027re using the keyboard scan hardware functionality of the chip, keyboard inputs aren\u0027t handled as GPIOs at all, right?",
+      "range": {
+        "startLine": 559,
+        "startChar": 32,
+        "endLine": 560,
+        "endChar": 60
+      },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81f428d2_cf2f5d78",
+        "filename": "chip/nucmx/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T22:40:29Z",
+      "side": 1,
+      "message": "Use: uint8_t *foo\n\nNot: uint8_t* foo",
+      "range": {
+        "startLine": 76,
+        "startChar": 7,
+        "endLine": 76,
+        "endChar": 15
+      },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1e5e41c_f2568824",
+        "filename": "chip/nucmx/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T22:40:29Z",
+      "side": 1,
+      "message": "Should sleep while waiting for timeout, so other tasks can run.  For example, msleep(1)",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 2
+      },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1ef6cfe_b02118c7",
+        "filename": "chip/nucmx/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T22:40:29Z",
+      "side": 1,
+      "message": "This could deadlock if an I2C peripheral is driving SDA.  Should have a timeout.\n\nAnd also should sleep in the loop so other tasks can run.",
+      "range": {
+        "startLine": 124,
+        "startChar": 2,
+        "endLine": 124,
+        "endChar": 30
+      },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81f428d2_afd9b93b",
+        "filename": "chip/nucmx/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T22:40:29Z",
+      "side": 1,
+      "message": "ccputs() is for console command output.  See CPRINTF() and CPUTS() macros in other modules for a better way.",
+      "range": {
+        "startLine": 158,
+        "startChar": 1,
+        "endLine": 158,
+        "endChar": 7
+      },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1e5e41c_f2bb28e7",
+        "filename": "chip/nucmx/keyboard_raw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T22:40:29Z",
+      "side": 1,
+      "message": "We use presence or absence of a token (that is, #ifdef / #ifndef) rather than defining a token to 0 or 1.\n\nHere, this should be \n\n#ifdef CONFIG_JTAG\n\nAnd then CONFIG_JTAG should be #undef\u0027d in include/config.h, which maintains the canonical list of all config options.  build.mk can then also only compile in jtag.c if CONFIG_JTAG is enabled.",
+      "range": {
+        "startLine": 49,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 19
+      },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
