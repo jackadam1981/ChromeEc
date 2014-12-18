@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1ae8c91_3b204309",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-18T18:45:10Z",
+      "side": 1,
+      "message": "that\u0027s not helpful, please remove that text",
+      "revId": "19509d03f2981cb2411319cdb838149fde503d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41c5d05b_7830fd89",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-18T18:45:10Z",
+      "side": 1,
+      "message": "the comments seem wrong",
+      "revId": "19509d03f2981cb2411319cdb838149fde503d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1ae8c91_5b15f7ad",
+        "filename": "chip/g/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-18T18:45:10Z",
+      "side": 1,
+      "message": "don\u0027t put the prototypes here.\n\nif they are public/helpful/API, they should explained in a .h else we don\u0027t care.",
+      "revId": "19509d03f2981cb2411319cdb838149fde503d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61c81476_59126700",
+        "filename": "chip/g/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-18T18:45:10Z",
+      "side": 1,
+      "message": "are you using this ?",
+      "revId": "19509d03f2981cb2411319cdb838149fde503d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61c81476_d9f03771",
+        "filename": "chip/g/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-18T18:45:10Z",
+      "side": 1,
+      "message": "what the constant actually defines probably worth a comment.\n\nSeem to be the max buffer or transfer size",
+      "revId": "19509d03f2981cb2411319cdb838149fde503d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1ae8c91_1bc0dfbd",
+        "filename": "chip/g/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-18T18:45:10Z",
+      "side": 1,
+      "message": "our documentation style is a bit different.\nwe are not using @brief/@details",
+      "revId": "19509d03f2981cb2411319cdb838149fde503d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1ae8c91_3bc5a3ce",
+        "filename": "chip/g/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-18T18:45:10Z",
+      "side": 1,
+      "message": "modulo G_SPI_FLASH_MAX_SIZE ?",
+      "revId": "19509d03f2981cb2411319cdb838149fde503d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61c81476_1931cf90",
+        "filename": "chip/g/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-18T18:45:10Z",
+      "side": 1,
+      "message": "isn\u0027t our memcpy as fast or faster than this open-coded version ?\nis there other constraint preventing from using it ?",
+      "revId": "19509d03f2981cb2411319cdb838149fde503d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1ae8c91_3b9be3dc",
+        "filename": "chip/g/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-18T18:45:10Z",
+      "side": 1,
+      "message": "please use the common code in common/spi_flash.c\nie spi_flash_read()\nand only implement here the proper drivers function :\ne.g. spi_transaction(...)",
+      "revId": "19509d03f2981cb2411319cdb838149fde503d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1ae8c91_dbbd8737",
+        "filename": "chip/g/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-18T18:45:10Z",
+      "side": 1,
+      "message": "you should not have all those console commands here\nbut re-use the ones in common/spi_flash when CONFIG_CMD_SPI_FLASH is defined.",
+      "revId": "19509d03f2981cb2411319cdb838149fde503d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
