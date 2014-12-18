@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1ae8c91_fb788b2e",
+        "filename": "driver/mcdp28x0.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-18T18:06:15Z",
+      "side": 1,
+      "message": "your new checksum scheme seems a bit overcomplicated, given the seed is always? cnt + 2\nwhy not doing just :\n\nstatic uint8_t checksum(const uint8_t *msg, int cnt)\n{\n  int i;\n  uint8_t chksum \u003d cnt + 2;\n  for (i \u003d 0; i \u003c cnt; i++)\n     chksum +\u003d msg[i];\n  return chksum;\n}\n\nand remove the finalize/partial ...",
+      "revId": "48a11e9d303011f456cb3070d90a5d109e168515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61c81476_b99ffb3a",
+        "filename": "driver/mcdp28x0.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-18T18:06:15Z",
+      "side": 1,
+      "message": "is that uint8_t or int ?",
+      "revId": "48a11e9d303011f456cb3070d90a5d109e168515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
