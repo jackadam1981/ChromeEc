@@ -98,7 +98,7 @@ const char help_str[] =
 	"      Erases EC flash\n"
 	"  flashinfo\n"
 	"      Prints information on the EC flash\n"
-	"  flashpd\n"
+	"  flashpd <dev_id> <port> <filename>\n"
 	"      Flash commands over PD\n"
 	"  flashprotect [now] [enable | disable]\n"
 	"      Prints or sets EC flash protection state\n"
@@ -891,6 +891,81 @@ int cmd_pd_device_info(int argc, char *argv[])
 	return rv;
 }
 
+/**
+ * determine if in GFU mode or not.
+ *
+ * @opos return value of GFU mode object position or zero if not found
+ * @port port number to query
+ * @return 1 if in GFU mode, 0 if not, -1 if error
+ */
+static int in_gfu_mode(int *opos, int port)
+{
+	int i;
+	struct ec_params_usb_pd_get_mode_request *p =
+		(struct ec_params_usb_pd_get_mode_request *)ec_outbuf;
+	struct ec_params_usb_pd_get_mode_response *r =
+		(struct ec_params_usb_pd_get_mode_response *)ec_inbuf;
+	p->port = port;
+	p->svid_idx = 0;
+	do {
+		ec_command(EC_CMD_USB_PD_GET_AMODE, 0, p, sizeof(*p),
+			   ec_inbuf, ec_max_insize);
+		if ((!r->svid) || r->svid == USB_VID_GOOGLE)
+			break;
+		p->svid_idx++;
+	} while (p->svid_idx < SVID_DISCOVERY_MAX);
+	fprintf(stdout, "svid:%04x act:%d idx:%d\n", r->svid, r->active,
+		r->idx);
+
+	if (r->svid != USB_VID_GOOGLE) {
+		fprintf(stderr, "Google VID not returned\n");
+		return -1;
+	}
+
+	*opos = 0; /* invalid ... must be 1 thru 6 */
+	for (i = 0; i < PDO_MODES; i++) {
+		if (r->vdo[i] == MODE_GOOGLE_FU) {
+			*opos = i + 1;
+			break;
+		}
+	}
+
+	return r->active && ((r->idx + 1) == *opos);
+}
+
+/**
+ * Enter GFU mode.
+ *
+ * @port port number to enter GFU on.
+ * @return 1 for success, 0 for failure
+ */
+static int enter_gfu_mode(int port)
+{
+	int opos, rv = 1;
+	struct ec_params_usb_pd_set_mode_request *p =
+		(struct ec_params_usb_pd_set_mode_request *)ec_outbuf;
+	int gfu_mode = in_gfu_mode(&opos, port);
+
+	if (gfu_mode < 0) {
+		fprintf(stderr, "Failed to query GFU mode support\n");
+		return 0;
+	} else if (!gfu_mode) {
+		if (!opos) {
+			fprintf(stderr, "Invalid object position %d\n", opos);
+			return 0;
+		}
+		p->port = port;
+		p->svid = USB_VID_GOOGLE;
+		p->opos = opos;
+
+		rv = !ec_command(EC_CMD_USB_PD_SET_AMODE, 0, p, sizeof(*p),
+				 NULL, 0);
+		if (rv)
+			usleep(500000); /* 500msec to allow set mode */
+	}
+	return rv;
+}
+
 int cmd_flash_pd(int argc, char *argv[])
 {
 	struct ec_params_usb_pd_fw_update *p =
@@ -916,6 +991,11 @@ int cmd_flash_pd(int argc, char *argv[])
 	p->port = strtol(argv[2], &e, 0);
 	if (e && *e) {
 		fprintf(stderr, "Bad port\n");
+		return -1;
+	}
+
+	if (!enter_gfu_mode(p->port)) {
+		fprintf(stderr, "Failed to enter GFU mode\n");
 		return -1;
 	}
 
@@ -945,6 +1025,12 @@ int cmd_flash_pd(int argc, char *argv[])
 		goto pd_flash_error;
 
 	usleep(3000000); /* 3sec to reboot and get CC line idle */
+
+	/* re-enter GFU after reboot */
+	if (!enter_gfu_mode(p->port)) {
+		fprintf(stderr, "Failed to enter GFU mode\n");
+		goto pd_flash_error;
+	}
 
 	/* Erase RW flash */
 	fprintf(stderr, "Erasing RW flash\n");
