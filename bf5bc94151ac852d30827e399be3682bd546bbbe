@@ -34,6 +34,24 @@
       "revId": "bf5bc94151ac852d30827e399be3682bd546bbbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1c5407a_5cdb1180",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-18T23:19:29Z",
+      "side": 1,
+      "message": "Ok got it\nI did not realize that\u0027s a new special case called from the host command task.",
+      "parentUuid": "61d9f46e_74ede0c4",
+      "revId": "bf5bc94151ac852d30827e399be3682bd546bbbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
