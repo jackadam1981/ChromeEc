@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1e5e41c_52db1480",
+        "filename": "chip/nrf51/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T21:12:41Z",
+      "side": 1,
+      "message": "I wonder if the number of pins is most tidily defined here.\n\n#define NRF_GPIOTE_PINS 4\n\n?",
+      "range": {
+        "startLine": 272,
+        "startChar": 0,
+        "endLine": 272,
+        "endChar": 11
+      },
+      "revId": "14129fac41e843ad5ac1b791edaba047af1ef1f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1e5e41c_72de1872",
+        "filename": "chip/nrf51/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T21:12:41Z",
+      "side": 1,
+      "message": "((n)*4)\n\n(Macro args should always be evaluated in parents.  Otherwise NRF_GPIOTE_OUT(1+1) doesn\u0027t do what you expect...)",
+      "range": {
+        "startLine": 273,
+        "startChar": 58,
+        "endLine": 273,
+        "endChar": 60
+      },
+      "revId": "14129fac41e843ad5ac1b791edaba047af1ef1f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
