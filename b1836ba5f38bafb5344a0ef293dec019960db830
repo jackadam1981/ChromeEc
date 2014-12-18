@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61c81476_b9645bbb",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-18T18:28:07Z",
+      "side": 1,
+      "message": "we are actually looking for the lowest voltage above 11.6V, rather than at most 12V (might be 14.5V or 19V).\nBut I agree that\u0027s good enough for Zinger.",
+      "revId": "b1836ba5f38bafb5344a0ef293dec019960db830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1ae8c91_bb9c5300",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-18T18:28:07Z",
+      "side": 1,
+      "message": "isn\u0027t the actual condition\nvbus_max_prev \u003e PD_MAX_VOLTAGE_FULL_BATTERY_MV\n\nPD_MAX_VOLTAGE_MV seems useless here.\n(agree it  does the same on current Zinger)",
+      "revId": "b1836ba5f38bafb5344a0ef293dec019960db830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1ae8c91_1bac5f2d",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-18T18:28:07Z",
+      "side": 1,
+      "message": "be careful, some batteries never reach 99%,\ndepending on the quality of the battery and its former life, max might be 95% (or even 91% on low quality product)\n\nat least we probably need a parameter for this",
+      "revId": "b1836ba5f38bafb5344a0ef293dec019960db830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1ae8c91_fba6cb47",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-18T18:28:07Z",
+      "side": 1,
+      "message": "should we have a centralized header for CONFIG_USB_PID values rather than putting them only in each board/${supply_board}/board.h\n\nsame as we did for USB_PD_HW_DEV_ID_xxx vs CONFIG_USB_PD_HW_DEV_ID_BOARD_MAJOR",
+      "revId": "b1836ba5f38bafb5344a0ef293dec019960db830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1ae8c91_5b8fb7bc",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-18T18:28:07Z",
+      "side": 1,
+      "message": "time to define :\nis_zinger_family_nice_charger() ?",
+      "revId": "b1836ba5f38bafb5344a0ef293dec019960db830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61c81476_d9d757d2",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-18T18:28:07Z",
+      "side": 1,
+      "message": "is that robust ?\nin case we fail to read the battery SoC, we are never going back to 20V.",
+      "revId": "b1836ba5f38bafb5344a0ef293dec019960db830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1ae8c91_fb7fabfb",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-18T18:28:07Z",
+      "side": 1,
+      "message": "you should reset vid/pid in that case else it\u0027s misleading for the caller, it is getting no error code and random values",
+      "revId": "b1836ba5f38bafb5344a0ef293dec019960db830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
