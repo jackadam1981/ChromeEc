@@ -35,6 +35,9 @@ CONSOLE_CHANNEL(CC_PD_HOST_CMD,  "pdhostcm")
 #endif
 CONSOLE_CHANNEL(CC_PORT80,       "port80")
 CONSOLE_CHANNEL(CC_PWM,          "pwm")
+#ifdef CONFIG_BLUETOOTH_LE
+CONSOLE_CHANNEL(CC_RADIO,        "radio")
+#endif
 CONSOLE_CHANNEL(CC_SPI,          "spi")
 #ifdef CONFIG_RBOX
 CONSOLE_CHANNEL(CC_RBOX,         "rbox")
