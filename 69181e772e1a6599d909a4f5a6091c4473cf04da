@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1c5407a_f9a437c0",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-18T20:59:04Z",
+      "side": 1,
+      "message": "timestamp_t ?",
+      "revId": "69181e772e1a6599d909a4f5a6091c4473cf04da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1c5407a_b99ebf70",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-18T20:59:04Z",
+      "side": 1,
+      "message": "you would have saved me 1 minute looking in the headers if you had added : \"| VDO_CMDT_INIT\"\nyes that\u0027s no-op",
+      "revId": "69181e772e1a6599d909a4f5a6091c4473cf04da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61d4942e_76071044",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-18T20:59:04Z",
+      "side": 1,
+      "message": "you are missing one space to have a beautiful alignment ;-)",
+      "revId": "69181e772e1a6599d909a4f5a6091c4473cf04da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
