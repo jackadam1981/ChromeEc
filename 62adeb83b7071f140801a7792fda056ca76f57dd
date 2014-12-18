@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81f428d2_4fb7edc8",
+        "filename": "chip/nrf51/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T22:41:19Z",
+      "side": 1,
+      "message": "Still should be ((n)*4)",
+      "range": {
+        "startLine": 273,
+        "startChar": 58,
+        "endLine": 273,
+        "endChar": 59
+      },
+      "revId": "62adeb83b7071f140801a7792fda056ca76f57dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
