@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1c0846a_1a6fdd94",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-18T20:53:23Z",
+      "side": 1,
+      "message": "why not \u003e\u003d ?\nsafer / cost the same",
+      "revId": "3430184d996d308ead82717dcb9857caa28d88d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1c5407a_79070744",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-18T20:53:23Z",
+      "side": 1,
+      "message": "given it is static, the compiler will choose the best option ... inline is not really useful",
+      "revId": "3430184d996d308ead82717dcb9857caa28d88d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
