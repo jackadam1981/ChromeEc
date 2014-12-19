@@ -10,7 +10,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <sys/io.h>
 #include <unistd.h>
 
 #include "battery.h"
@@ -138,8 +137,6 @@ const char help_str[] =
 	"      Prints saved panic info\n"
 	"  pause_in_s5 [on|off]\n"
 	"      Whether or not the AP should pause in S5 on shutdown\n"
-	"  port80flood\n"
-	"      Rapidly write bytes to port 80\n"
 	"  port80read\n"
 	"      Print history of port 80 write\n"
 	"  powerinfo\n"
@@ -172,8 +169,6 @@ const char help_str[] =
 	"      Set real-time clock\n"
 	"  rwhashpd <dev_id> <HASH[0] ... <HASH[4]>\n"
 	"      Set entry in PD MCU's device rw_hash table.\n"
-	"  sertest\n"
-	"      Serial output test for COM2\n"
 	"  switches\n"
 	"      Prints current EC switch positions\n"
 	"  temps <sensorid>\n"
@@ -994,27 +989,6 @@ pd_flash_error:
 	fprintf(stderr, "PD flash error\n");
 	return -1;
 }
-
-
-int cmd_serial_test(int argc, char *argv[])
-{
-	const char *c = "COM2 sample serial output from host!\r\n";
-
-	printf("Writing sample serial output to COM2\n");
-
-	while (*c) {
-		/* Wait for space in transmit FIFO */
-		while (!(inb(0x2fd) & 0x20))
-			;
-
-		/* Put the next character */
-		outb(*c++, 0x2f8);
-	}
-
-	printf("done.\n");
-	return 0;
-}
-
 
 int read_mapped_temperature(int id)
 {
@@ -4637,16 +4611,6 @@ int cmd_console(int argc, char *argv[])
 	return 0;
 }
 
-/* Flood port 80 with byte writes */
-int cmd_port_80_flood(int argc, char *argv[])
-{
-	int i;
-
-	for (i = 0; i < 256; i++)
-		outb(i, 0x80);
-	return 0;
-}
-
 struct param_info {
 	const char *name;	/* name of this parameter */
 	const char *help;	/* help message */
@@ -5267,8 +5231,6 @@ const struct command commands[] = {
 	{"rtcget", cmd_rtc_get},
 	{"rtcset", cmd_rtc_set},
 	{"rwhashpd", cmd_rw_hash_pd},
-	{"sertest", cmd_serial_test},
-	{"port80flood", cmd_port_80_flood},
 	{"switches", cmd_switches},
 	{"temps", cmd_temperature},
 	{"tempsinfo", cmd_temp_sensor_info},
