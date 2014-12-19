@@ -58,6 +58,24 @@
       "revId": "4a513484ad88cf7c583362f81e2b28cb142dfbe8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "811b4806_ba724d01",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1120324
+      },
+      "writtenOn": "2014-12-19T14:35:15Z",
+      "side": 1,
+      "message": "oh, I overlooked that place of init. Thus it\u0027s redundant.",
+      "parentUuid": "c138e05e_61aad6e0",
+      "revId": "4a513484ad88cf7c583362f81e2b28cb142dfbe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
