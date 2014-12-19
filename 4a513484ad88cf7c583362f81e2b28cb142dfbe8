@@ -22,6 +22,24 @@
       "revId": "4a513484ad88cf7c583362f81e2b28cb142dfbe8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "811b4806_fa99a50b",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1120324
+      },
+      "writtenOn": "2014-12-19T11:15:45Z",
+      "side": 1,
+      "message": "This doesn\u0027t intend to force a new discovery svids. \n\nInstead, since pe[port].svid_idx only increase monotonically in dfp_consume_modes(), never reset, it will eventually exceed SVID_DISCOVERY_MAX.\n\nReset it to 0 in dfp_consume_svids(), then whenever a new round of discovery ssvid happens, it will always start from index 0 for pe[port].svids[] array.\n\nThis can happen, when we unplug then plug a new video dongle, the DFP will have to start a new round of  discovery ssvid, which then will start 2. Then for another dongle, start from 4, etc.",
+      "parentUuid": "01f918d6_433ea6fc",
+      "revId": "4a513484ad88cf7c583362f81e2b28cb142dfbe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
