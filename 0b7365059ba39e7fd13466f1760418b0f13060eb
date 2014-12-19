@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1ef6cfe_d006dc11",
+        "filename": "chip/npcx/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-19T01:29:22Z",
+      "side": 1,
+      "message": "Really, there\u0027s no pstate at all for chips with external SPI.",
+      "revId": "0b7365059ba39e7fd13466f1760418b0f13060eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81f428d2_72ba96b2",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-19T01:29:22Z",
+      "side": 1,
+      "message": "This is not simply getting the jump address.  It\u0027s also preparing for the jump.  So either rename the function to something more descriptive, or move setting the flags and tri-stating FIU pins to a hook as described in the previous patch.",
+      "range": {
+        "startLine": 656,
+        "startChar": 0,
+        "endLine": 671,
+        "endChar": 1
+      },
+      "revId": "0b7365059ba39e7fd13466f1760418b0f13060eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
