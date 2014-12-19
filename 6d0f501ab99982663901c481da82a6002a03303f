@@ -597,6 +597,305 @@
       "revId": "6d0f501ab99982663901c481da82a6002a03303f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1ef6cfe_30bac8df",
+        "filename": "chip/nucmx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-19T00:27:41Z",
+      "side": 1,
+      "message": "No longer used?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 1
+      },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1ef6cfe_f0a440c0",
+        "filename": "chip/nucmx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-19T00:27:41Z",
+      "side": 1,
+      "message": "Seems like the comments in here were copied from other code.  Should get reformatted to look more like the comment style used in Chromium EC.",
+      "range": {
+        "startLine": 587,
+        "startChar": 0,
+        "endLine": 590,
+        "endChar": 109
+      },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1ef6cfe_90a3b4b4",
+        "filename": "chip/nucmx/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-19T00:27:41Z",
+      "side": 1,
+      "message": "There\u0027s a lot of places in the code where you do\n\n  if(x)\n    SET_BIT(y,z)\n  else\n    CLEAR_BIT(y,z)\n\nSeems like maybe something like this would be useful:\n\n#define UPDATE_BIT(reg, bit, cond) \\\n   { if (cond) SET_BIT(reg,bit); else CLEAR_BIT(reg,bit); }",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 58
+      },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1e5e41c_72c4d84e",
+        "filename": "chip/nucmx/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-19T00:27:41Z",
+      "side": 1,
+      "message": "volatile uint8_t dummy __attribute__((unused));\n\nAnd then you don\u0027t need to return dummy.",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 19
+      },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1e5e41c_52c1d43c",
+        "filename": "chip/nucmx/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-19T00:27:41Z",
+      "side": 1,
+      "message": "Tidier to define a CPRINTS() macro (as used elsewhere)",
+      "range": {
+        "startLine": 131,
+        "startChar": 4,
+        "endLine": 131,
+        "endChar": 18
+      },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1e5e41c_32ce506d",
+        "filename": "chip/nucmx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-19T00:27:41Z",
+      "side": 1,
+      "message": "cause?",
+      "range": {
+        "startLine": 242,
+        "startChar": 15,
+        "endLine": 242,
+        "endChar": 19
+      },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1e5e41c_12cb4c5d",
+        "filename": "chip/nucmx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-19T00:27:41Z",
+      "side": 1,
+      "message": "Coding style: with_underbars, not camelCase",
+      "range": {
+        "startLine": 346,
+        "startChar": 10,
+        "endLine": 346,
+        "endChar": 17
+      },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81f428d2_af46599f",
+        "filename": "chip/nucmx/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-19T00:27:41Z",
+      "side": 1,
+      "message": "Dead code, copy/pasted from LM4?",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 26
+      },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1ef6cfe_1090e458",
+        "filename": "common/lb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-19T00:27:41Z",
+      "side": 1,
+      "message": "Shouldn\u0027t need to compile lightbar code for your test board.",
+      "range": {
+        "startLine": 75,
+        "startChar": 7,
+        "endLine": 75,
+        "endChar": 22
+      },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81f428d2_d2cee2c0",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-19T00:27:41Z",
+      "side": 1,
+      "message": "little?",
+      "range": {
+        "startLine": 388,
+        "startChar": 49,
+        "endLine": 388,
+        "endChar": 55
+      },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1e5e41c_d2fdc47b",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-19T00:27:41Z",
+      "side": 1,
+      "message": "Seems like this is hard-coding the reset vector.  At the least, this value should be a config option defined in config_chip.h rather than hard-coded in system.c.",
+      "range": {
+        "startLine": 389,
+        "startChar": 1,
+        "endLine": 389,
+        "endChar": 60
+      },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1ef6cfe_f001e0fb",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-19T00:27:41Z",
+      "side": 1,
+      "message": "Should do this in a HOOK_SYSJUMP handler, rather than in common code.",
+      "range": {
+        "startLine": 390,
+        "startChar": 1,
+        "endLine": 391,
+        "endChar": 51
+      },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1e5e41c_b2f240aa",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-19T00:27:41Z",
+      "side": 1,
+      "message": "This will need to start computing the hash of the RW firmware by reading it from SPI.",
+      "range": {
+        "startLine": 180,
+        "startChar": 5,
+        "endLine": 180,
+        "endChar": 53
+      },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
