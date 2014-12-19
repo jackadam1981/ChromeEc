@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "41ff90b8_a811b3fc",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-19T18:30:59Z",
+      "side": 1,
+      "message": "well, we\u0027re not even necessarily looking for the lowest voltage above the boost bypass, because if it is 20V for instance that will draw more power than 5V. What we really want, is we want specifically 12V, and only when zinger is plugged in.",
+      "parentUuid": "61c81476_b9645bbb",
+      "revId": "b1836ba5f38bafb5344a0ef293dec019960db830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1ae8c91_bb9c5300",
         "filename": "board/samus_pd/board.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-12-18T18:28:07Z",
       "side": 1,
       "message": "isn\u0027t the actual condition\nvbus_max_prev \u003e PD_MAX_VOLTAGE_FULL_BATTERY_MV\n\nPD_MAX_VOLTAGE_MV seems useless here.\n(agree it  does the same on current Zinger)",
+      "revId": "b1836ba5f38bafb5344a0ef293dec019960db830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c138e05e_242ffca5",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-19T18:30:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1ae8c91_bb9c5300",
       "revId": "b1836ba5f38bafb5344a0ef293dec019960db830",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "8190a89a_0f16a56f",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-19T18:30:59Z",
+      "side": 1,
+      "message": "yes, I learned that while testing. changed so EC always sends 100% when battery is actually full.",
+      "parentUuid": "a1ae8c91_1bac5f2d",
+      "revId": "b1836ba5f38bafb5344a0ef293dec019960db830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1ae8c91_fba6cb47",
         "filename": "board/samus_pd/board.c",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2014-12-18T18:28:07Z",
       "side": 1,
       "message": "should we have a centralized header for CONFIG_USB_PID values rather than putting them only in each board/${supply_board}/board.h\n\nsame as we did for USB_PD_HW_DEV_ID_xxx vs CONFIG_USB_PD_HW_DEV_ID_BOARD_MAJOR",
+      "revId": "b1836ba5f38bafb5344a0ef293dec019960db830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41ff90b8_6825fb45",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-19T18:30:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1ae8c91_fba6cb47",
       "revId": "b1836ba5f38bafb5344a0ef293dec019960db830",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "8190a89a_6f7f3198",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-19T18:30:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1ae8c91_5b8fb7bc",
+      "revId": "b1836ba5f38bafb5344a0ef293dec019960db830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61c81476_d9d757d2",
         "filename": "board/samus_pd/board.c",
         "patchSetId": 1
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "41ff90b8_48f91f52",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-19T18:30:59Z",
+      "side": 1,
+      "message": "the EC is sending us SoC every time it changes by 1%, so if we miss one, we will eventually set it back to 20V.",
+      "parentUuid": "61c81476_d9d757d2",
+      "revId": "b1836ba5f38bafb5344a0ef293dec019960db830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1ae8c91_fb7fabfb",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 1
@@ -115,6 +223,24 @@
       "writtenOn": "2014-12-18T18:28:07Z",
       "side": 1,
       "message": "you should reset vid/pid in that case else it\u0027s misleading for the caller, it is getting no error code and random values",
+      "revId": "b1836ba5f38bafb5344a0ef293dec019960db830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8190a89a_2f89294b",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-19T18:30:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1ae8c91_fb7fabfb",
       "revId": "b1836ba5f38bafb5344a0ef293dec019960db830",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
