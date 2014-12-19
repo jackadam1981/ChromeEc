@@ -40,6 +40,24 @@
       "revId": "4a513484ad88cf7c583362f81e2b28cb142dfbe8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c138e05e_61aad6e0",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-12-19T13:44:42Z",
+      "side": 1,
+      "message": "Agreed with your analysis however  svid_idx should be zero\u0027d via pe_init() which it will encounter during dfp_consume_identity so this is redundant.",
+      "parentUuid": "811b4806_fa99a50b",
+      "revId": "4a513484ad88cf7c583362f81e2b28cb142dfbe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
