@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1ef6cfe_d0fdbc7b",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-19T01:18:06Z",
+      "side": 1,
+      "message": "Might put a comment here that this is explicitly cprintf() and not cprints() so it uses less stack space.\n\nOr save even more stack space by using CPUTS(\"[Overslept!]\\n\"), and then record the current time and margin (and maybe increment a counter) so it can be printed later by idlestats.",
+      "range": {
+        "startLine": 400,
+        "startChar": 4,
+        "endLine": 400,
+        "endChar": 11
+      },
+      "revId": "271fc996dcf0e4d4e8519fb09d81486cbeb1b1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
