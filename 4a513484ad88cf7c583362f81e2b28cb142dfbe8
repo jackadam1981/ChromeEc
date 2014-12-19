@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01f918d6_433ea6fc",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-12-19T02:58:30Z",
+      "side": 1,
+      "message": "This won\u0027t force DFP initiator to send another discover svids command.",
+      "range": {
+        "startLine": 237,
+        "startChar": 1,
+        "endLine": 237,
+        "endChar": 22
+      },
+      "revId": "4a513484ad88cf7c583362f81e2b28cb142dfbe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
