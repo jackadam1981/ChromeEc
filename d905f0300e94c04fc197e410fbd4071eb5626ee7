@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8190a89a_d2f282fd",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2633,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-19T21:10:41Z",
+      "side": 1,
+      "message": "current_image is 0 or 1, which may be confusing, maybe \"in rw: %d\\n\" would be more clear. or make it %s and add \"RO\" and \"RW\" strings.",
+      "range": {
+        "startLine": 2633,
+        "startChar": 13,
+        "endLine": 2633,
+        "endChar": 49
+      },
+      "revId": "d905f0300e94c04fc197e410fbd4071eb5626ee7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41ff90b8_0b5201ab",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2792,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-19T21:10:41Z",
+      "side": 1,
+      "message": "nit, next line uses spaces, this line be consistent and use spaces here",
+      "range": {
+        "startLine": 2792,
+        "startChar": 18,
+        "endLine": 2792,
+        "endChar": 20
+      },
+      "revId": "d905f0300e94c04fc197e410fbd4071eb5626ee7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
