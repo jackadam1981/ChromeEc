@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1ef6cfe_905bb4f9",
+        "filename": "driver/usb_switch_pi3usb9281.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-19T02:47:24Z",
+      "side": 1,
+      "message": "is CDP guaranteed to provide at least 1.5A?",
+      "range": {
+        "startLine": 137,
+        "startChar": 21,
+        "endLine": 137,
+        "endChar": 25
+      },
+      "revId": "28d07118041df264c72e9da785cc3fb1458905e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
