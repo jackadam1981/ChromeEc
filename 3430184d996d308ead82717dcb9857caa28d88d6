@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e1e5e41c_725178d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-19T01:45:47Z",
+      "side": 1,
+      "message": "haha, yes, it has been problematic. i spent a day changing timing of when to send PDOs when entering SRC/SNK_READY so that it wouldn\u0027t interfere with VDOs for entering alternate mode.",
+      "range": {
+        "startLine": 11,
+        "startChar": 39,
+        "endLine": 11,
+        "endChar": 70
+      },
+      "revId": "3430184d996d308ead82717dcb9857caa28d88d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1c0846a_1a6fdd94",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 2
@@ -30,6 +53,40 @@
       "writtenOn": "2014-12-18T20:53:23Z",
       "side": 1,
       "message": "given it is static, the compiler will choose the best option ... inline is not really useful",
+      "revId": "3430184d996d308ead82717dcb9857caa28d88d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1e5e41c_1248ec25",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1289,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-19T01:45:47Z",
+      "side": 1,
+      "message": "add comment that we use task_state being in READY state as a sign of whether or not a PDO is pending because when we send a PDO that is waiting for a response, we always transition out of the READY state. this is a subtle assumption that could change in the future, so a comment might help us remember.",
+      "revId": "3430184d996d308ead82717dcb9857caa28d88d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "814268da_fff75fea",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1738,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-19T01:45:47Z",
+      "side": 1,
+      "message": "modify comment to include checking for VDO response pending",
       "revId": "3430184d996d308ead82717dcb9857caa28d88d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
