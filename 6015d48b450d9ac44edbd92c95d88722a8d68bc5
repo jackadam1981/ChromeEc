@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01e03812_4ba00576",
+        "filename": "chip/mec1322/config_chip.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-12-19T03:14:38Z",
+      "side": 1,
+      "message": "Instead of adding a layer of indirection, how about just comment here that what flags are defined in board.h, and then defining them directly in board.h? (i.e. define CONFIG_FLASH_BANK_SIZE and  other flags in board.h)",
+      "revId": "6015d48b450d9ac44edbd92c95d88722a8d68bc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41d6b040_4dadb9a3",
+        "filename": "chip/mec1322/config_chip.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-12-19T03:14:38Z",
+      "side": 1,
+      "message": "Add new config flags to include/config.h and default #undef it. Better yet, emit an error if both CONFIG_FLASH and CONFIG_FLASH_EXTERNAL are defined.",
+      "revId": "6015d48b450d9ac44edbd92c95d88722a8d68bc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41d6b040_6db07501",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-12-19T03:14:38Z",
+      "side": 1,
+      "message": "Guard this with #ifdef to save space for chips with internal flash.",
+      "revId": "6015d48b450d9ac44edbd92c95d88722a8d68bc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41d6b040_8dca817a",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-12-19T03:14:38Z",
+      "side": 1,
+      "message": "With a proper vboot_hash_get_next_chunk_addr() API, you should be able to get rid of the #ifdef here. Perhaps something like:\n\n  uint8_t *vboot_hash_get_next_chunk(int offset, int size) {\n  #ifdef CONFIG_FLASH_EXTERNAL\n    /* Read into vbootbuf */\n    .....\n    return vbootbuf;\n  #else\n    return (const uint8_t *)(CONFIG_FLASH_BASE + offset);\n  #endif\n  }\n\nand then just do\n\n  SHA256_update(\u0026ctx, vboot_hash_get_next_chunk(data_offset + curr_pos, size), size)\n\nhere.",
+      "revId": "6015d48b450d9ac44edbd92c95d88722a8d68bc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41d6b040_cdc08960",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-12-19T03:14:38Z",
+      "side": 1,
+      "message": "If system_get_image_used() is not returning the right value, we should fix that instead of adding a new method.",
+      "range": {
+        "startLine": 265,
+        "startChar": 4,
+        "endLine": 265,
+        "endChar": 29
+      },
+      "revId": "6015d48b450d9ac44edbd92c95d88722a8d68bc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41d6b040_2d65cdfc",
+        "filename": "include/vboot_hash.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2014-12-19T03:14:38Z",
+      "side": 1,
+      "message": "Please add comments for new methods. (See above for example.)\n\nAlso, these methods are not implemented?",
+      "revId": "6015d48b450d9ac44edbd92c95d88722a8d68bc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
