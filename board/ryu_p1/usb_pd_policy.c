@@ -146,7 +146,8 @@ static int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 		}
 		/* copy hash */
 		if (cnt >= 6)
-			pd_dev_store_rw_hash(port, dev_id, payload + 1);
+			pd_dev_store_rw_hash(port, dev_id, payload + 1,
+					     EC_IMAGE_UNKNOWN);
 
 		break;
 	case VDO_CMD_CURRENT:

@@ -157,6 +157,7 @@ static int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 {
 	int cmd = PD_VDO_CMD(payload[0]);
 	uint16_t dev_id = 0;
+	int is_rw;
 	CPRINTF("VDM/%d [%d] %08x\n", cnt, cmd, payload[0]);
 
 	/* make sure we have some payload */
@@ -174,17 +175,20 @@ static int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 		/* copy hash */
 		if (cnt == 7) {
 			dev_id = VDO_INFO_HW_DEV_ID(payload[6]);
-			pd_dev_store_rw_hash(port, dev_id, payload + 1);
+			is_rw = VDO_INFO_IS_RW(payload[6]);
+			pd_dev_store_rw_hash(port, dev_id, payload + 1,
+					     is_rw ? EC_IMAGE_RW : EC_IMAGE_RO);
 
 			pd_send_host_event(PD_EVENT_UPDATE_DEVICE);
 			CPRINTF("DevId:%d.%d SW:%d RW:%d\n",
 				HW_DEV_ID_MAJ(dev_id),
 				HW_DEV_ID_MIN(dev_id),
 				VDO_INFO_SW_DBG_VER(payload[6]),
-				VDO_INFO_IS_RW(payload[6]));
+				is_rw);
 		} else if (cnt == 6) {
 			/* really old devices don't have last byte */
-			pd_dev_store_rw_hash(port, dev_id, payload + 1);
+			pd_dev_store_rw_hash(port, dev_id, payload + 1,
+					     EC_IMAGE_UNKNOWN);
 		}
 		break;
 	case VDO_CMD_CURRENT:
