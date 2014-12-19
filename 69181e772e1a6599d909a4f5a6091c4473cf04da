@@ -19,6 +19,75 @@
     },
     {
       "key": {
+        "uuid": "e1e5e41c_d2bee486",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-19T02:23:06Z",
+      "side": 1,
+      "message": "typo?",
+      "range": {
+        "startLine": 267,
+        "startChar": 17,
+        "endLine": 267,
+        "endChar": 19
+      },
+      "revId": "69181e772e1a6599d909a4f5a6091c4473cf04da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1ef6cfe_908df414",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-19T02:23:06Z",
+      "side": 1,
+      "message": "an array of 1?",
+      "range": {
+        "startLine": 268,
+        "startChar": 20,
+        "endLine": 268,
+        "endChar": 21
+      },
+      "revId": "69181e772e1a6599d909a4f5a6091c4473cf04da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1ef6cfe_50654cb4",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 694,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-19T02:23:06Z",
+      "side": 1,
+      "message": "Add comment, /* If response is busy, then retry */",
+      "range": {
+        "startLine": 694,
+        "startChar": 0,
+        "endLine": 694,
+        "endChar": 2
+      },
+      "revId": "69181e772e1a6599d909a4f5a6091c4473cf04da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1c5407a_b99ebf70",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -30,6 +99,52 @@
       "writtenOn": "2014-12-18T20:59:04Z",
       "side": 1,
       "message": "you would have saved me 1 minute looking in the headers if you had added : \"| VDO_CMDT_INIT\"\nyes that\u0027s no-op",
+      "revId": "69181e772e1a6599d909a4f5a6091c4473cf04da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1e5e41c_52cb142e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1330,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-19T02:23:06Z",
+      "side": 1,
+      "message": "do we have to list these cases if they all just fall through to default?",
+      "range": {
+        "startLine": 1328,
+        "startChar": 1,
+        "endLine": 1330,
+        "endChar": 20
+      },
+      "revId": "69181e772e1a6599d909a4f5a6091c4473cf04da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "814268da_bf10f746",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1377,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-19T02:23:06Z",
+      "side": 1,
+      "message": "is there a retry counter, or will this just keep sending the same VDM if the responder keeps saying busy?",
+      "range": {
+        "startLine": 1377,
+        "startChar": 32,
+        "endLine": 1377,
+        "endChar": 43
+      },
       "revId": "69181e772e1a6599d909a4f5a6091c4473cf04da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
