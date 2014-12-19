@@ -22,6 +22,24 @@
       "revId": "28d07118041df264c72e9da785cc3fb1458905e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e133247d_e517d06f",
+        "filename": "driver/usb_switch_pi3usb9281.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-12-19T02:49:46Z",
+      "side": 1,
+      "message": "Yes, CDP ports cannot drop below 4.75V for currents \u003c\u003d 1.5A.",
+      "parentUuid": "a1ef6cfe_905bb4f9",
+      "revId": "28d07118041df264c72e9da785cc3fb1458905e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
