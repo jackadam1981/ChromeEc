@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "014e780c_9be2eb58",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2634,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-19T15:59:11Z",
+      "side": 1,
+      "message": "might as well lump this in the hash command and maybe rename hash command to info to be more consistent.",
+      "range": {
+        "startLine": 2634,
+        "startChar": 2,
+        "endLine": 2634,
+        "endChar": 43
+      },
+      "revId": "5e56ce352b08907899d30cc1d1f3285aa3e715f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e11c04fd_3a9ac14a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2792,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-19T15:59:11Z",
+      "side": 1,
+      "message": "should add a uint8_t reserved before this line to make sure this is 4-byte aligned.",
+      "range": {
+        "startLine": 2792,
+        "startChar": 0,
+        "endLine": 2792,
+        "endChar": 1
+      },
+      "revId": "5e56ce352b08907899d30cc1d1f3285aa3e715f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
