@@ -234,6 +234,7 @@ static void dfp_consume_svids(int port, uint32_t *payload)
 	/* TODO(tbroch) need to re-issue discover svids if > 12 */
 	if (i && ((i % 12) == 0))
 		CPRINTF("TODO: need to re-issue discover svids > 12\n");
+	pe[port].svid_idx = 0;
 }
 
 static int dfp_discover_modes(int port, uint32_t *payload)
