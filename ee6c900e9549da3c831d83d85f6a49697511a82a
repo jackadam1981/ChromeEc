@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e11c04fd_bdca4b7a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-20T00:51:24Z",
+      "side": 1,
+      "message": "nit: add comma \"If UFP responded busy, retry after timeout */",
+      "range": {
+        "startLine": 720,
+        "startChar": 22,
+        "endLine": 720,
+        "endChar": 27
+      },
+      "revId": "ee6c900e9549da3c831d83d85f6a49697511a82a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
