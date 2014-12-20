@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "61d9f46e_aee2d757",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-12-20T00:42:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1c0846a_1a6fdd94",
+      "revId": "3430184d996d308ead82717dcb9857caa28d88d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1c5407a_79070744",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -53,6 +71,24 @@
       "writtenOn": "2014-12-18T20:53:23Z",
       "side": 1,
       "message": "given it is static, the compiler will choose the best option ... inline is not really useful",
+      "revId": "3430184d996d308ead82717dcb9857caa28d88d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61d9f46e_2ebee732",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-12-20T00:42:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1c5407a_79070744",
       "revId": "3430184d996d308ead82717dcb9857caa28d88d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -76,6 +112,24 @@
     },
     {
       "key": {
+        "uuid": "c138e05e_41e472df",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1289,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-12-20T00:42:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1e5e41c_1248ec25",
+      "revId": "3430184d996d308ead82717dcb9857caa28d88d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "814268da_fff75fea",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -87,6 +141,24 @@
       "writtenOn": "2014-12-19T01:45:47Z",
       "side": 1,
       "message": "modify comment to include checking for VDO response pending",
+      "revId": "3430184d996d308ead82717dcb9857caa28d88d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "017cb82c_6bdac1a5",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1738,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-12-20T00:42:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "814268da_fff75fea",
       "revId": "3430184d996d308ead82717dcb9857caa28d88d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
