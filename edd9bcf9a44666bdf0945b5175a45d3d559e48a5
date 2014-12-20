@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2151bca8_9f1177fd",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-20T03:57:28Z",
+      "side": 1,
+      "message": "nit: remove tab",
+      "range": {
+        "startLine": 330,
+        "startChar": 15,
+        "endLine": 330,
+        "endChar": 16
+      },
+      "revId": "edd9bcf9a44666bdf0945b5175a45d3d559e48a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e11c04fd_7d6593b4",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-20T03:57:28Z",
+      "side": 1,
+      "message": "I thought we needed to call exit_mode here so that PD devices exit GFU mode when they are disconnected (same on hard reset). Is that being done elsewhere now?",
+      "range": {
+        "startLine": 347,
+        "startChar": 2,
+        "endLine": 347,
+        "endChar": 16
+      },
+      "revId": "edd9bcf9a44666bdf0945b5175a45d3d559e48a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
