@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "01cbd895_d6e702b9",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-12-20T00:48:14Z",
+      "side": 1,
+      "message": "Sure ... just originally followed the similar PDO timeout.  Should probably convert those as well (another CL).",
+      "parentUuid": "c1c5407a_f9a437c0",
+      "revId": "69181e772e1a6599d909a4f5a6091c4473cf04da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1e5e41c_d2bee486",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2014-12-19T02:23:06Z",
       "side": 1,
       "message": "typo?",
+      "range": {
+        "startLine": 267,
+        "startChar": 17,
+        "endLine": 267,
+        "endChar": 19
+      },
+      "revId": "69181e772e1a6599d909a4f5a6091c4473cf04da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "810d08be_875b86f9",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-12-20T00:48:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1e5e41c_d2bee486",
       "range": {
         "startLine": 267,
         "startChar": 17,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "c138e05e_e1a58693",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-12-20T00:48:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1ef6cfe_908df414",
+      "range": {
+        "startLine": 268,
+        "startChar": 20,
+        "endLine": 268,
+        "endChar": 21
+      },
+      "revId": "69181e772e1a6599d909a4f5a6091c4473cf04da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1ef6cfe_50654cb4",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -76,6 +142,30 @@
       "writtenOn": "2014-12-19T02:23:06Z",
       "side": 1,
       "message": "Add comment, /* If response is busy, then retry */",
+      "range": {
+        "startLine": 694,
+        "startChar": 0,
+        "endLine": 694,
+        "endChar": 2
+      },
+      "revId": "69181e772e1a6599d909a4f5a6091c4473cf04da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41ff90b8_454eaa36",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 694,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-12-20T00:48:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1ef6cfe_50654cb4",
       "range": {
         "startLine": 694,
         "startChar": 0,
@@ -105,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "01cbd895_d60ca2e2",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-12-20T00:48:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1c5407a_b99ebf70",
+      "revId": "69181e772e1a6599d909a4f5a6091c4473cf04da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1e5e41c_52cb142e",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -116,6 +224,30 @@
       "writtenOn": "2014-12-19T02:23:06Z",
       "side": 1,
       "message": "do we have to list these cases if they all just fall through to default?",
+      "range": {
+        "startLine": 1328,
+        "startChar": 1,
+        "endLine": 1330,
+        "endChar": 20
+      },
+      "revId": "69181e772e1a6599d909a4f5a6091c4473cf04da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c138e05e_21c4ce3b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1330,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-12-20T00:48:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1e5e41c_52cb142e",
       "range": {
         "startLine": 1328,
         "startChar": 1,
@@ -151,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "810d08be_e7b922a1",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1377,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-12-20T00:48:14Z",
+      "side": 1,
+      "message": "There is no provision in spec (that I can find) for busy retry counter currently.\n\nPosing question to USB-PD working group.",
+      "parentUuid": "814268da_bf10f746",
+      "range": {
+        "startLine": 1377,
+        "startChar": 32,
+        "endLine": 1377,
+        "endChar": 43
+      },
+      "revId": "69181e772e1a6599d909a4f5a6091c4473cf04da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61d4942e_76071044",
         "filename": "include/usb_pd.h",
         "patchSetId": 2
@@ -162,6 +318,24 @@
       "writtenOn": "2014-12-18T20:59:04Z",
       "side": 1,
       "message": "you are missing one space to have a beautiful alignment ;-)",
+      "revId": "69181e772e1a6599d909a4f5a6091c4473cf04da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "01cbd895_962f4a27",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-12-20T00:48:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61d4942e_76071044",
       "revId": "69181e772e1a6599d909a4f5a6091c4473cf04da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
