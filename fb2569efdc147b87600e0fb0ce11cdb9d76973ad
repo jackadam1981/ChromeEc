@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "014e780c_44b1e450",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-20T04:08:49Z",
+      "side": 1,
+      "message": "you should put a little tag at front of commit message for what is changing. in the case you probably want to do \"nrf51:\" in front of all your CLs, unless they modify common code also.",
+      "revId": "fb2569efdc147b87600e0fb0ce11cdb9d76973ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e11c04fd_3d6f1b95",
+        "filename": "chip/nrf51/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-20T04:08:49Z",
+      "side": 1,
+      "message": "nit, remove starting tab, and for record, multiline comments have first line blank:\n\n/*\n * multi-line\n * comment\n */",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 4
+      },
+      "revId": "fb2569efdc147b87600e0fb0ce11cdb9d76973ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "014e780c_e47ef0d7",
+        "filename": "chip/nrf51/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-20T04:08:49Z",
+      "side": 1,
+      "message": "this function is static but not used anywhere?",
+      "range": {
+        "startLine": 40,
+        "startChar": 19,
+        "endLine": 40,
+        "endChar": 36
+      },
+      "revId": "fb2569efdc147b87600e0fb0ce11cdb9d76973ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e11c04fd_dd5cdff5",
+        "filename": "chip/nrf51/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-20T04:08:49Z",
+      "side": 1,
+      "message": "might want to use a TODO here and open a bug if you want. we do have i2c unwedge code in common/i2c.c that could be used.",
+      "revId": "fb2569efdc147b87600e0fb0ce11cdb9d76973ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e11c04fd_fd61a3a6",
+        "filename": "chip/nrf51/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-20T04:08:49Z",
+      "side": 1,
+      "message": "why inline this? static functions often don\u0027t have to be inlined because compiler can often decide on its own when it is best. unless you have a good reason, i would omit.",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 41
+      },
+      "revId": "fb2569efdc147b87600e0fb0ce11cdb9d76973ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "014e780c_c47df4d9",
+        "filename": "chip/nrf51/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-20T04:08:49Z",
+      "side": 1,
+      "message": "see multi-line comment comment above",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 4
+      },
+      "revId": "fb2569efdc147b87600e0fb0ce11cdb9d76973ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2151bca8_5ffc4f43",
+        "filename": "chip/nrf51/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-20T04:08:49Z",
+      "side": 1,
+      "message": "maybe if (!rv)",
+      "range": {
+        "startLine": 144,
+        "startChar": 4,
+        "endLine": 144,
+        "endChar": 13
+      },
+      "revId": "fb2569efdc147b87600e0fb0ce11cdb9d76973ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
