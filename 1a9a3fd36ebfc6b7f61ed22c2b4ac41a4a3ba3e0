@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e11c04fd_3dc15b2c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-12-20T03:19:00Z",
+      "side": 1,
+      "message": "Nit: fi typo",
+      "revId": "1a9a3fd36ebfc6b7f61ed22c2b4ac41a4a3ba3e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41723059_b6a32eb4",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-12-20T03:19:00Z",
+      "side": 1,
+      "message": "Use PD_MIN_MV here?",
+      "revId": "1a9a3fd36ebfc6b7f61ed22c2b4ac41a4a3ba3e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c16f0075_49726153",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2607,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-12-20T03:19:00Z",
+      "side": 1,
+      "message": "This initialization looks redundant now.",
+      "revId": "1a9a3fd36ebfc6b7f61ed22c2b4ac41a4a3ba3e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
