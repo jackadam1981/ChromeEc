@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "6175743d_d4e8343c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2633,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-12-20T00:25:30Z",
+      "side": 1,
+      "message": "See follow-up change.",
+      "parentUuid": "8190a89a_d2f282fd",
+      "revId": "d905f0300e94c04fc197e410fbd4071eb5626ee7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41ff90b8_0b5201ab",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -42,6 +60,24 @@
         "endLine": 2792,
         "endChar": 20
       },
+      "revId": "d905f0300e94c04fc197e410fbd4071eb5626ee7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6175743d_4ecef33f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2792,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-12-20T00:25:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41ff90b8_0b5201ab",
       "revId": "d905f0300e94c04fc197e410fbd4071eb5626ee7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
