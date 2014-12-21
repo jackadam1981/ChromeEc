@@ -49,6 +49,7 @@ enum inj_set {
 	INJ_SET_TX_SPEED   = 3, /* TX frequency is arg0 kHz */
 	INJ_SET_RX_THRESH  = 4, /* RX voltage threshold is arg0 mV */
 	INJ_SET_POLARITY   = 5, /* Polarity for other operations (INJ_POL_CC) */
+	INJ_SET_TRACE      = 6, /* Text packet trace on/raw/off */
 };
 
 enum inj_get {
@@ -71,6 +72,12 @@ enum inj_pol {
 	INJ_POL_CC1 = 0,
 	INJ_POL_CC2 = 1,
 	INJ_POL_AUTO = 0xffff,
+};
+
+enum trace_mode {
+	TRACE_MODE_OFF = 0,
+	TRACE_MODE_RAW = 1,
+	TRACE_MODE_ON  = 2,
 };
 
 /* Number of words in the FSM command/data buffer  */
