@@ -423,7 +423,7 @@ int prepare_message(int port, uint16_t header, uint8_t cnt,
 	return pd_write_last_edge(port, off);
 }
 
-static int analyze_rx(int port, uint32_t *payload);
+int analyze_rx(int port, uint32_t *payload);
 static void analyze_rx_bist(int port);
 
 int send_hard_reset(int port)
@@ -1193,7 +1193,7 @@ static void analyze_rx_bist(int port)
 			total_invalid_bits);
 }
 
-static int analyze_rx(int port, uint32_t *payload)
+int analyze_rx(int port, uint32_t *payload)
 {
 	int bit;
 	char *msg = "---";
