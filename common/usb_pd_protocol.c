@@ -463,8 +463,6 @@ int prepare_message(int port, uint16_t header, uint8_t cnt,
 	return pd_write_last_edge(port, off);
 }
 
-static int analyze_rx(int port, uint32_t *payload);
-
 int send_hard_reset(int port)
 {
 	int off;
@@ -547,7 +545,7 @@ static int send_validate_message(int port, uint16_t header,
 			pd_rx_start(port);
 		}
 		/* read the incoming packet if any */
-		head = analyze_rx(port, payload);
+		head = pd_analyze_rx(port, payload);
 		pd_rx_complete(port);
 		/* keep RX monitoring on to avoid collisions */
 		pd_rx_enable_monitoring(port);
@@ -1352,7 +1350,7 @@ static void analyze_rx_bist(int port)
 }
 #endif
 
-static int analyze_rx(int port, uint32_t *payload)
+int pd_analyze_rx(int port, uint32_t *payload)
 {
 	int bit;
 	char *msg = "---";
@@ -1827,7 +1825,7 @@ void pd_task(void)
 		/* incoming packet ? */
 		if (pd_rx_started(port) && pd_comm_enabled) {
 			incoming_packet = 1;
-			head = analyze_rx(port, payload);
+			head = pd_analyze_rx(port, payload);
 			pd_rx_complete(port);
 			if (head > 0)
 				handle_request(port,  head, payload);
