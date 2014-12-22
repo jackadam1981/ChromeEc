@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81d5087b_47ee6e90",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-22T23:35:15Z",
+      "side": 1,
+      "message": "not a good place to delay. this will delay the entire hooks task, so other hooks will be late.",
+      "range": {
+        "startLine": 118,
+        "startChar": 2,
+        "endLine": 118,
+        "endChar": 14
+      },
+      "revId": "10f66eeb8404abdbad17456ca4838b2942628892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61cad4df_2916a941",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-22T23:35:15Z",
+      "side": 1,
+      "message": "same comment.",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 134,
+        "endChar": 14
+      },
+      "revId": "10f66eeb8404abdbad17456ca4838b2942628892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
