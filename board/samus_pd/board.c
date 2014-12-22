@@ -106,12 +106,42 @@ static void board_usb_charger_update(int port)
 	int type;
 	charge.voltage = USB_BC12_CHARGE_VOLTAGE;
 
-	/* Read interrupt register to clear*/
+	/* Read interrupt register to clear */
 	pi3usb9281_get_interrupts(port);
 
 	/* Set device type */
 	device_type = pi3usb9281_get_device_type(port);
 	charger_status = pi3usb9281_get_charger_status(port);
+
+	/* Debounce pin plug order if we detect a charger */
+	if (device_type || PI3USB9281_CHG_STATUS_ANY(charger_status)) {
+		msleep(200);
+
+		/* Trigger chip reset to refresh detection registers */
+		pi3usb9281_reset(port);
+		/* Clear possible disconnect interrupt */
+		pi3usb9281_get_interrupts(port);
+		/* Mask attach interrupt */
+		pi3usb9281_set_interrupt_mask(port,
+					      0xff & ~PI3USB9281_INT_ATTACH);
+		/* Re-enable interrupts */
+		pi3usb9281_enable_interrupts(port);
+
+		/*
+		 * Wait 100ms before re-enabling attach interrupt, so that the
+		 * spurious attach interrupt from certain ports is ignored.
+		 */
+		msleep(100);
+		/* Clear possible attach interrupt */
+		pi3usb9281_get_interrupts(port);
+		/* Re-enable attach interrupt */
+		pi3usb9281_set_interrupt_mask(port, 0xff);
+
+		/* Re-read ID registers */
+		device_type = pi3usb9281_get_device_type(port);
+		charger_status = pi3usb9281_get_charger_status(port);
+	}
+
 	if (PI3USB9281_CHG_STATUS_ANY(charger_status))
 		type = CHARGE_SUPPLIER_PROPRIETARY;
 	else if (device_type & PI3USB9281_TYPE_CDP)
