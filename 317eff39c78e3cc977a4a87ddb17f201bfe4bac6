@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81eee832_42b01401",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1345,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2014-12-22T19:23:28Z",
+      "side": 1,
+      "message": "moved above connection logic as reboots during flashing could leave port disconnected",
+      "range": {
+        "startLine": 1344,
+        "startChar": 2,
+        "endLine": 1345,
+        "endChar": 9
+      },
+      "revId": "317eff39c78e3cc977a4a87ddb17f201bfe4bac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
