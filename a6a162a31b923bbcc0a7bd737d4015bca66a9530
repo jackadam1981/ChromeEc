@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1020cb9_f8c5916d",
+        "filename": "driver/battery/bq27621_g1.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-22T15:59:55Z",
+      "side": 1,
+      "message": "need parentheses around x",
+      "range": {
+        "startLine": 140,
+        "startChar": 33,
+        "endLine": 140,
+        "endChar": 34
+      },
+      "revId": "a6a162a31b923bbcc0a7bd737d4015bca66a9530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1020cb9_d8ca4d7b",
+        "filename": "driver/battery/bq27621_g1.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-22T15:59:55Z",
+      "side": 1,
+      "message": "suggest:\n\nreturn tries ? EC_SUCCESS : EC_ERROR_TIMEOUT;",
+      "range": {
+        "startLine": 207,
+        "startChar": 1,
+        "endLine": 210,
+        "endChar": 20
+      },
+      "revId": "a6a162a31b923bbcc0a7bd737d4015bca66a9530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c10d40eb_39354ff9",
+        "filename": "driver/battery/bq27621_g1.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-22T15:59:55Z",
+      "side": 1,
+      "message": "I think typically if either the if() or the else() is multi-line, we put {} around both.",
+      "range": {
+        "startLine": 302,
+        "startChar": 2,
+        "endLine": 304,
+        "endChar": 8
+      },
+      "revId": "a6a162a31b923bbcc0a7bd737d4015bca66a9530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "611c941f_965b8c4b",
+        "filename": "driver/battery/bq27621_g1.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-22T15:59:55Z",
+      "side": 1,
+      "message": "from other code review: multi-line comments have blank first line.",
+      "range": {
+        "startLine": 314,
+        "startChar": 3,
+        "endLine": 318,
+        "endChar": 58
+      },
+      "revId": "a6a162a31b923bbcc0a7bd737d4015bca66a9530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
