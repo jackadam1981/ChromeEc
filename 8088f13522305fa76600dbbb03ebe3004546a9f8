@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "21729c91_1dfcd742",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-12-23T22:20:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "418cf0b9_06400063",
+      "revId": "8088f13522305fa76600dbbb03ebe3004546a9f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "618f34ae_4103d47e",
         "filename": "common/charge_manager.c",
         "patchSetId": 2
@@ -42,6 +60,24 @@
         "endLine": 360,
         "endChar": 55
       },
+      "revId": "8088f13522305fa76600dbbb03ebe3004546a9f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "21729c91_1db05700",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-12-23T22:20:39Z",
+      "side": 1,
+      "message": "We\u0027re assigning a new override port, so if our old override port is dual-role sink, we\u0027ll need to power swap.",
+      "parentUuid": "618f34ae_4103d47e",
       "revId": "8088f13522305fa76600dbbb03ebe3004546a9f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
