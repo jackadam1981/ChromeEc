@@ -209,6 +209,30 @@
     },
     {
       "key": {
+        "uuid": "a1d04c89_ce727702",
+        "filename": "common/sha256.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-12-23T02:13:57Z",
+      "side": 1,
+      "message": "Goal: remove  CONFIG_SHRSPI_ARCH and support both flash \n(directly mapped flash and not directly mapped flash).\nLess ifdef in C code is better.\n\n\nSuggestions:\n\n1.  add int flash_is_memory_mapped(void); for all platforms.\n\n\n2. avoid local stack var becomes too big.\n   move \n     uint8_t shifted_data_buf[SHA256_BLOCK_SIZE]; \n     and uint8_t *shifted_data \n\ninto sha256_ctx:\n     \n\n/* SHA256 context */\nstruct sha256_ctx {\n        uint32_t h[8];\n        uint32_t tot_len;\n        uint32_t len;\n        uint8_t block[2 * SHA256_BLOCK_SIZE];\n        uint8_t buf[SHA256_DIGEST_SIZE];  /* Used to store the final digest. */\n        uint8_t *shifted_data;\n        uint8_t shifted_data_buf[SHA256_BLOCK_SIZE];\n\n};",
+      "parentUuid": "019678c9_c11c4695",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 6
+      },
+      "revId": "31a58c66b91291ba74290a30516414fb21f1843d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e16404ca_80b79af5",
         "filename": "common/sha256.c",
         "patchSetId": 3
@@ -225,6 +249,52 @@
         "startChar": 1,
         "endLine": 182,
         "endChar": 46
+      },
+      "revId": "31a58c66b91291ba74290a30516414fb21f1843d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1d04c89_8e519f5e",
+        "filename": "common/sha256.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-12-23T02:13:57Z",
+      "side": 1,
+      "message": "ctx-\u003eshifted_data \u003d data + rem_len;\n\n    if (!flash_is_memory_mapped()) {\n        flash_physical_read((int)ctx-\u003eshifted_data, \n            rem_len, (char*)ctx-\u003eshifted_data_buf);\n        ctx-\u003eshifted_data \u003d ctx-\u003eshifted_data_buf;\n    }\n    SHA256_transform(ctx, ctx-\u003eshifted_data, block_nb);",
+      "range": {
+        "startLine": 200,
+        "startChar": 1,
+        "endLine": 200,
+        "endChar": 6
+      },
+      "revId": "31a58c66b91291ba74290a30516414fb21f1843d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "019678c9_21a32a85",
+        "filename": "common/sha256.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2014-12-23T02:13:57Z",
+      "side": 1,
+      "message": "memcpy(ctx-\u003eblock, \u0026ctx-\u003eshifted_data[block_nb \u003c\u003c 6], rem_len);",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 0
       },
       "revId": "31a58c66b91291ba74290a30516414fb21f1843d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
