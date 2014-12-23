@@ -1331,7 +1331,7 @@ static inline int pdo_busy(int port)
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	rv &= (pd[port].task_state != PD_STATE_SNK_READY);
 #endif
-	return rv;
+	return rv && (pd[port].flags & PD_FLAGS_NEW_CONTRACT);
 }
 
 static void pd_vdm_send_state_machine(int port, int incoming_packet)
