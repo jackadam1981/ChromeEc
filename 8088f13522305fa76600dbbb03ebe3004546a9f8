@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "418cf0b9_06400063",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-23T21:59:46Z",
+      "side": 1,
+      "message": "considering this function is called in a loop in charge_manager_refresh(), seems like it would be more efficient to run this check once in charge_manager_refresh(), instead of every time this function is called.",
+      "range": {
+        "startLine": 159,
+        "startChar": 2,
+        "endLine": 164,
+        "endChar": 3
+      },
+      "revId": "8088f13522305fa76600dbbb03ebe3004546a9f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "618f34ae_4103d47e",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-23T21:59:46Z",
+      "side": 1,
+      "message": "wait, why are switching to a source here?",
+      "range": {
+        "startLine": 360,
+        "startChar": 4,
+        "endLine": 360,
+        "endChar": 55
+      },
+      "revId": "8088f13522305fa76600dbbb03ebe3004546a9f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
