@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1d04c89_8e619fa8",
+        "filename": "board/npcx_evb/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-23T01:16:59Z",
+      "side": 1,
+      "message": "Copyright date should be 2014 for all new files.",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "31a58c66b91291ba74290a30516414fb21f1843d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1d04c89_2e5193d9",
+        "filename": "chip/npcx/adc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-23T01:16:59Z",
+      "side": 1,
+      "message": "Still have some trailing whitespace (here and in other files).",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 1
+      },
+      "revId": "31a58c66b91291ba74290a30516414fb21f1843d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1d04c89_6e4b8b25",
+        "filename": "chip/npcx/adc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-23T01:16:59Z",
+      "side": 1,
+      "message": "Tabs, not spaces (here and elsewhere).",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 4
+      },
+      "revId": "31a58c66b91291ba74290a30516414fb21f1843d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e16404ca_a0173e70",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-23T01:16:59Z",
+      "side": 1,
+      "message": "Please double-check lins to make sure they\u0027re less than 80 columns.\n\nI wonder if your editor is using 4-space tabs, which is why some lines appear shorter there than here (or in my editor, which uses 8-space tabs).",
+      "range": {
+        "startLine": 504,
+        "startChar": 74,
+        "endLine": 504,
+        "endChar": 95
+      },
+      "revId": "31a58c66b91291ba74290a30516414fb21f1843d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1d04c89_aee2a3a9",
+        "filename": "chip/npcx/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-23T01:16:59Z",
+      "side": 1,
+      "message": "Space between /* and first character of comment.\n\nFor reference, single-line comments are\n\n  /* This is a comment */\n\nAnd multi-line comments have blank first/last lines\n\n  /*\n   * This is a multi-line comment.\n   *\n   * Like this.\n   */",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 4
+      },
+      "revId": "31a58c66b91291ba74290a30516414fb21f1843d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e16404ca_0040ea62",
+        "filename": "chip/npcx/keyboard_raw.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-23T01:16:59Z",
+      "side": 1,
+      "message": "(see patch set 1; use\n\n   #ifndef CONFIG_SOMETHING\n\ninstead of\n\n   #if !(SUPPORT_SOMETHING)\n\nNaming:\n\nIf you just want to #ifdef out a feature for your specific chip because it\u0027s a workaround, \n\n\n    #ifdef NPCX_JTAG_SUPPORT\n\nwould be acceptable.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 19
+      },
+      "revId": "31a58c66b91291ba74290a30516414fb21f1843d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1d04c89_ce16f7f1",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-23T01:16:59Z",
+      "side": 1,
+      "message": "See patch set 1 for notes on comment style",
+      "range": {
+        "startLine": 584,
+        "startChar": 0,
+        "endLine": 587,
+        "endChar": 23
+      },
+      "revId": "31a58c66b91291ba74290a30516414fb21f1843d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e16404ca_c0c0b260",
+        "filename": "common/lb_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-23T01:16:59Z",
+      "side": 1,
+      "message": "Since lightbar code isn\u0027t compiled for NPCX, don\u0027t think this is needed either.",
+      "range": {
+        "startLine": 124,
+        "startChar": 7,
+        "endLine": 124,
+        "endChar": 21
+      },
+      "revId": "31a58c66b91291ba74290a30516414fb21f1843d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "019678c9_c11c4695",
+        "filename": "common/sha256.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-23T01:16:59Z",
+      "side": 1,
+      "message": "Hmm.  One advantage of keeping this implementation is that it only requires a stack buffer if flash isn\u0027t directly mapped into memory.  ssl, what do you think?",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 6
+      },
+      "revId": "31a58c66b91291ba74290a30516414fb21f1843d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e16404ca_80b79af5",
+        "filename": "common/sha256.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-23T01:16:59Z",
+      "side": 1,
+      "message": "See ssl\u0027s comments from the other patch.  It may be tidier to create flash_physical_read() which does memcpy().",
+      "range": {
+        "startLine": 182,
+        "startChar": 1,
+        "endLine": 182,
+        "endChar": 46
+      },
+      "revId": "31a58c66b91291ba74290a30516414fb21f1843d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
