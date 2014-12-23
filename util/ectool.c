@@ -98,7 +98,7 @@ const char help_str[] =
 	"      Erases EC flash\n"
 	"  flashinfo\n"
 	"      Prints information on the EC flash\n"
-	"  flashpd <dev_id> <port> <filename>\n"
+	"  flashpd <dev_id> <port> <filename> [<subcmd>]\n"
 	"      Flash commands over PD\n"
 	"  flashprotect [now] [enable | disable]\n"
 	"      Prints or sets EC flash protection state\n"
@@ -970,6 +970,8 @@ int cmd_pd_device_info(int argc, char *argv[])
 
 int cmd_flash_pd(int argc, char *argv[])
 {
+	const char * const flash_cmds[] = {"reboot", "erase", "write",
+					   "signature"};
 	struct ec_params_usb_pd_fw_update *p =
 		(struct ec_params_usb_pd_fw_update *)ec_outbuf;
 	int i;
@@ -977,6 +979,7 @@ int cmd_flash_pd(int argc, char *argv[])
 	char *e;
 	char *buf;
 	uint32_t *data = &(p->size) + 1;
+	int stop_cmd = -1;
 
 	if (argc < 4) {
 		fprintf(stderr, "Usage: %s <dev_id> <port> <filename>\n",
@@ -1006,6 +1009,14 @@ int cmd_flash_pd(int argc, char *argv[])
 	if (!buf)
 		return -1;
 
+	if (argc == 5) {
+		stop_cmd = strtol(argv[4], &e, 0);
+		if ((e && *e) || (stop_cmd >= USB_PD_FW_COUNT)) {
+			fprintf(stderr, "Bad stop command\n");
+			return -1;
+		}
+	}
+
 	/* Erase the current RW RSA signature */
 	fprintf(stderr, "Erasing expected RW hash\n");
 	p->cmd = USB_PD_FW_ERASE_SIG;
@@ -1015,6 +1026,8 @@ int cmd_flash_pd(int argc, char *argv[])
 
 	if (rv < 0)
 		goto pd_flash_error;
+	if (p->cmd == stop_cmd)
+		goto pd_force_stop;
 
 	/* Reboot */
 	fprintf(stderr, "Rebooting\n");
@@ -1025,6 +1038,8 @@ int cmd_flash_pd(int argc, char *argv[])
 
 	if (rv < 0)
 		goto pd_flash_error;
+	if (p->cmd == stop_cmd)
+		goto pd_force_stop;
 
 	usleep(3000000); /* 3sec to reboot and get CC line idle */
 
@@ -1043,6 +1058,8 @@ int cmd_flash_pd(int argc, char *argv[])
 
 	if (rv < 0)
 		goto pd_flash_error;
+	if (p->cmd == stop_cmd)
+		goto pd_force_stop;
 
 	/* Write RW flash */
 	fprintf(stderr, "Writing RW flash\n");
@@ -1082,8 +1099,10 @@ int cmd_flash_pd(int argc, char *argv[])
 	return 0;
 
 pd_flash_error:
-	free(buf);
 	fprintf(stderr, "PD flash error\n");
+pd_force_stop:
+	fprintf(stderr, "PD flash stopped at cmd %s\n", flash_cmds[p->cmd]);
+	free(buf);
 	return -1;
 }
 
