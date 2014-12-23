@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "418cf0b9_43091a4c",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 886,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-23T16:49:36Z",
+      "side": 1,
+      "message": "investigating if there is a better way to detect when full",
+      "range": {
+        "startLine": 884,
+        "startChar": 1,
+        "endLine": 886,
+        "endChar": 33
+      },
+      "revId": "e70197b6dab2e1b60fdd5b7fd6945bef8bfb6fda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
