@@ -138,6 +138,10 @@ static void set_usbc_action(enum usbc_action act)
 	case USBC_ACT_USBDP_TOGGLE:
 		in_usb_mode = !gpio_get_level(GPIO_USBC_SS_USB_MODE);
 		gpio_set_level(GPIO_USBC_SS_USB_MODE, in_usb_mode);
+
+		/* Enable debug USB path if we are in USB mode */
+		gpio_set_level(GPIO_CASE_CLOSE_EN, in_usb_mode);
+
 		if (!gpio_get_level(GPIO_DPSRC_HPD))
 			break;
 		/*
