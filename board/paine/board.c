@@ -45,13 +45,13 @@ struct fan_step {
 /* Do not make the fan on/off point equal to 0 or 100 */
 const struct fan_step fan_table[NUM_FAN_LEVELS] = {
 	{.rpm = 0},
-	{.on = 11, .off = 1, .rpm = 3200},
-	{.on = 20, .off = 11, .rpm = 3700},
-	{.on = 26, .off = 18, .rpm = 4000},
-	{.on = 33, .off = 25, .rpm = 4400},
-	{.on = 40, .off = 31, .rpm = 4900},
-	{.on = 56, .off = 48, .rpm = 5500},
-	{.on = 98, .off = 90, .rpm = 6500},
+	{.on = 6, .off = 1, .rpm = 3500},
+	{.on = 19, .off = 13, .rpm = 3700},
+	{.on = 23, .off = 17, .rpm = 4000},
+	{.on = 26, .off = 20, .rpm = 4400},
+	{.on = 28, .off = 23, .rpm = 4900},
+	{.on = 63, .off = 57, .rpm = 5400},
+	{.on = 98, .off = 91, .rpm = 6500},
 };
 
 int fan_percent_to_rpm(int fan, int pct)
@@ -166,7 +166,7 @@ BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
  */
 struct ec_thermal_config thermal_params[] = {
 	/* Only the AP affects the thermal limits and fan speed. */
-	{{C_TO_K(95), C_TO_K(97), C_TO_K(99)}, C_TO_K(36), C_TO_K(96)},
+	{{C_TO_K(95), C_TO_K(97), C_TO_K(105)}, C_TO_K(23), C_TO_K(96)},
 	{{0, 0, 0}, 0, 0},
 	{{0, 0, 0}, 0, 0},
 	{{0, 0, 0}, 0, 0},
