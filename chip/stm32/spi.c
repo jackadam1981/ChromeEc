@@ -169,8 +169,8 @@ static int wait_for_bytes(stm32_dma_chan_t *rxdma, int needed,
 			deadline = get_time();
 			deadline.val += SPI_CMD_RX_TIMEOUT_US;
 		}
-		if (timestamp_expired(deadline, NULL))
-			return -1;
+		//if (timestamp_expired(deadline, NULL))
+		//	return -1;
 	}
 }
 
