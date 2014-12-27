@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "a153ecfb_b90cc3e1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2014-12-27T01:19:52Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be the other branch? You\u0027re not submitting this to master...",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 11
+      },
+      "revId": "0f114db14663de1ed47f7ec0cc868bfa13965d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "418cf0b9_312ff8f7",
         "filename": "board/minnie/gpio.inc",
         "patchSetId": 1
