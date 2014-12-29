@@ -184,6 +184,24 @@
     },
     {
       "key": {
+        "uuid": "c13700c2_af063d10",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-12-29T18:52:48Z",
+      "side": 1,
+      "message": "Thanks, I misunderstood how these wake events worked. got_charger_interrupt isn\u0027t even necessary at all -- if the ISR fires  any time while this task is not in wait state, the wake event will be saved, and we\u0027ll immediately wake from the next task_wait_event.",
+      "parentUuid": "8158a81b_756260f6",
+      "revId": "982e49402cc1ebf95bebc48876b09e122e508eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "418cf0b9_ecaf736e",
         "filename": "board/samus_pd/ec.tasklist",
         "patchSetId": 5
