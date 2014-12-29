@@ -166,6 +166,24 @@
     },
     {
       "key": {
+        "uuid": "8158a81b_756260f6",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-29T16:48:40Z",
+      "side": 1,
+      "message": "task_wait_event() will wake immediately if there is a pending event, so you don\u0027t need to worry.",
+      "parentUuid": "c13700c2_a9839d69",
+      "revId": "982e49402cc1ebf95bebc48876b09e122e508eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "418cf0b9_ecaf736e",
         "filename": "board/samus_pd/ec.tasklist",
         "patchSetId": 5
