@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "e13244d2_ea93c7e8",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-12-29T16:28:11Z",
+      "side": 1,
+      "message": "How about if I move it to the pericom driver in a future CL? The implementation here is now verify specific to the pericom part.",
+      "parentUuid": "418cf0b9_ccaab761",
+      "revId": "982e49402cc1ebf95bebc48876b09e122e508eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "418cf0b9_8ce42fe1",
         "filename": "board/samus_pd/board.c",
         "patchSetId": 5
@@ -42,6 +60,24 @@
         "endLine": 124,
         "endChar": 13
       },
+      "revId": "982e49402cc1ebf95bebc48876b09e122e508eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e13244d2_cafb631d",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-12-29T16:28:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "418cf0b9_8ce42fe1",
       "revId": "982e49402cc1ebf95bebc48876b09e122e508eda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "8158a81b_f52650db",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-12-29T16:28:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "418cf0b9_aca56b94",
+      "revId": "982e49402cc1ebf95bebc48876b09e122e508eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a12ccc7b_a872bbd2",
         "filename": "board/samus_pd/board.c",
         "patchSetId": 5
@@ -88,6 +142,24 @@
         "endLine": 193,
         "endChar": 31
       },
+      "revId": "982e49402cc1ebf95bebc48876b09e122e508eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c13700c2_a9839d69",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-12-29T16:28:11Z",
+      "side": 1,
+      "message": "If we got an interrupt since last enabling interrupts, we want to repeat the detection. I originally wrote the code \"if (!got_charger_interrupt[port]) task_wait_event(-1)\". But I decided on the above code, for this corner case:\n\n- got_charger_interrupt[port] \u003d\u003d 0 (no recent interrupt, so we decide to call task_wait_event)\n\n- Immediately afterward, the interrupt fires\n\n- ISR sets task event + sets got_charger_interrupt\n\n- ISR completes, we continue with task_wait_event call, discarding the pending event (I think) and waiting for a new event which will never come (because pericom won\u0027t fire a new interrupt until we clear the old one manually)\n\nWhat do you think?",
+      "parentUuid": "a12ccc7b_a872bbd2",
       "revId": "982e49402cc1ebf95bebc48876b09e122e508eda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -140,6 +212,42 @@
     },
     {
       "key": {
+        "uuid": "8158a81b_75e50033",
+        "filename": "board/samus_pd/ec.tasklist",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-12-29T16:28:11Z",
+      "side": 1,
+      "message": "Done. 344 bytes is sufficient. I took SMALLER_TASK_STACK_SIZE from lm4.",
+      "parentUuid": "418cf0b9_6ce7e3e5",
+      "revId": "982e49402cc1ebf95bebc48876b09e122e508eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c13700c2_49b4e142",
+        "filename": "board/samus_pd/ec.tasklist",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-12-29T16:28:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "418cf0b9_ecaf736e",
+      "revId": "982e49402cc1ebf95bebc48876b09e122e508eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "618f34ae_a78e6810",
         "filename": "board/samus_pd/ec.tasklist",
         "patchSetId": 5
@@ -163,6 +271,24 @@
     },
     {
       "key": {
+        "uuid": "e13244d2_ca8e03c0",
+        "filename": "board/samus_pd/ec.tasklist",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-12-29T16:28:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "618f34ae_a78e6810",
+      "revId": "982e49402cc1ebf95bebc48876b09e122e508eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a12ccc7b_886df7f3",
         "filename": "board/samus_pd/ec.tasklist",
         "patchSetId": 5
@@ -180,6 +306,24 @@
         "endLine": 22,
         "endChar": 18
       },
+      "revId": "982e49402cc1ebf95bebc48876b09e122e508eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c13700c2_69b1a551",
+        "filename": "board/samus_pd/ec.tasklist",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-12-29T16:28:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a12ccc7b_886df7f3",
       "revId": "982e49402cc1ebf95bebc48876b09e122e508eda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
