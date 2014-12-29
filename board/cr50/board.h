@@ -33,6 +33,10 @@
 #define CONFIG_RSA
 #define CONFIG_SHA256
 
+/* I2C ports configuration */
+#define I2C_PORT_MASTER 0
+#define I2C_PORT_SLAVE  1
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
