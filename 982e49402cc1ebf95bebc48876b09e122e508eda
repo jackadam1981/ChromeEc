@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "418cf0b9_ccaab761",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-29T15:55:04Z",
+      "side": 1,
+      "message": "doesn\u0027t need to be done now, but I think this task should move to common/ with a CONFIG_ option so other products can easily compile in this code.",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 21
+      },
+      "revId": "982e49402cc1ebf95bebc48876b09e122e508eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "418cf0b9_8ce42fe1",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-29T15:55:04Z",
+      "side": 1,
+      "message": "maybe make value into a macro and describe how value was chosen in comment next to macro",
+      "range": {
+        "startLine": 124,
+        "startChar": 10,
+        "endLine": 124,
+        "endChar": 13
+      },
+      "revId": "982e49402cc1ebf95bebc48876b09e122e508eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "418cf0b9_aca56b94",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-29T15:55:04Z",
+      "side": 1,
+      "message": "maybe make value into a macro and describe how value was chosen in comment next to macro",
+      "range": {
+        "startLine": 142,
+        "startChar": 10,
+        "endLine": 142,
+        "endChar": 13
+      },
+      "revId": "982e49402cc1ebf95bebc48876b09e122e508eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a12ccc7b_a872bbd2",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-29T15:55:04Z",
+      "side": 1,
+      "message": "do we have to run this every second? can\u0027t we just wait indefinitely until next interrupt (task_wait_event(-1))?",
+      "range": {
+        "startLine": 193,
+        "startChar": 3,
+        "endLine": 193,
+        "endChar": 31
+      },
+      "revId": "982e49402cc1ebf95bebc48876b09e122e508eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "418cf0b9_ecaf736e",
+        "filename": "board/samus_pd/ec.tasklist",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-29T15:55:04Z",
+      "side": 1,
+      "message": "USB_CHG_C0?",
+      "range": {
+        "startLine": 20,
+        "startChar": 13,
+        "endLine": 20,
+        "endChar": 19
+      },
+      "revId": "982e49402cc1ebf95bebc48876b09e122e508eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "418cf0b9_6ce7e3e5",
+        "filename": "board/samus_pd/ec.tasklist",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-29T15:55:04Z",
+      "side": 1,
+      "message": "you should measure stack usage with \"taskinfo\" and see if SMALLER_TASK_STACK_SIZE is big enough.",
+      "range": {
+        "startLine": 20,
+        "startChar": 45,
+        "endLine": 20,
+        "endChar": 60
+      },
+      "revId": "982e49402cc1ebf95bebc48876b09e122e508eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "618f34ae_a78e6810",
+        "filename": "board/samus_pd/ec.tasklist",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-29T15:55:04Z",
+      "side": 1,
+      "message": "USB_CHG_P1?",
+      "range": {
+        "startLine": 21,
+        "startChar": 13,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "982e49402cc1ebf95bebc48876b09e122e508eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a12ccc7b_886df7f3",
+        "filename": "board/samus_pd/ec.tasklist",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-29T15:55:04Z",
+      "side": 1,
+      "message": "hooks task should always be lowest priority because it tickles watchdog. as it is right now if USB_P0 or USB_P1 tasks have infinite loop we won\u0027t know.",
+      "range": {
+        "startLine": 22,
+        "startChar": 13,
+        "endLine": 22,
+        "endChar": 18
+      },
+      "revId": "982e49402cc1ebf95bebc48876b09e122e508eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
