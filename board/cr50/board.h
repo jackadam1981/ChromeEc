@@ -24,6 +24,10 @@
  */
 #define CONFIG_SYSTEM_UNLOCKED
 
+/* I2C ports configuration */
+#define I2C_PORT_MASTER 0
+#define I2C_PORT_SLAVE  1
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
