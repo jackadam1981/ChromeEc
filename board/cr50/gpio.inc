@@ -22,6 +22,15 @@ GPIO(LED_5,  A, 12,  GPIO_OUT_LOW,  NULL)
 GPIO(LED_6,  A, 13,  GPIO_OUT_LOW,  NULL)
 /*GPIO(LED_7,  A, 14,  GPIO_OUT_LOW,  NULL)*/
 
+/*
+ * I2C pins should be configured as inputs until I2C module is
+ * initialized. This will avoid driving the lines unintentionally.
+ */
+GPIO(MASTER_I2C_SCL,       B, 0, GPIO_INPUT,    NULL)
+GPIO(MASTER_I2C_SDA,       B, 1, GPIO_INPUT,    NULL)
+GPIO(SLAVE_I2C_SCL,        B, 2, GPIO_INPUT,    NULL)
+GPIO(SLAVE_I2C_SDA,        B, 3, GPIO_INPUT,    NULL)
+
 /* Unimplemented signals which we need to emulate for now */
 UNIMPLEMENTED(ENTERING_RW)
 
