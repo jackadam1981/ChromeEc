@@ -50,6 +50,8 @@
 #define GC_WATCHDOG_BASE_ADDR    GC_WATCHDOG0_BASE_ADDR
 #define GC_XO_BASE_ADDR          GC_XO0_BASE_ADDR
 
+#define GC_I2CS_ADDRESS 0x2E
+
 #define GBASE(mname)      \
 	GC_ ## mname ## _BASE_ADDR
 #define GOFFSET(mname, rname)  \
