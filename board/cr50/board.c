@@ -13,6 +13,7 @@
 #include "usb.h"
 #include "usb_hid.h"
 #include "util.h"
+#include "i2c.h"
 
 /*
  * There's no way to trigger on both rising and falling edges, so force a
@@ -82,3 +83,12 @@ const void * const usb_strings[] = {
 	[USB_STR_CONSOLE_NAME] = USB_STRING_DESC("Shell"),
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
+
+/* I2C ports */
+const struct i2c_port_t i2c_ports[] = {
+	{"master", I2C_PORT_MASTER, 100,
+		GPIO_MASTER_I2C_SCL, GPIO_MASTER_I2C_SDA},
+	{"slave",  I2C_PORT_SLAVE, 100,
+		GPIO_SLAVE_I2C_SCL, GPIO_SLAVE_I2C_SDA},
+};
+const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
