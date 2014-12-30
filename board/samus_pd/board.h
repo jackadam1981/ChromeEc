@@ -19,6 +19,9 @@
 #define CONFIG_ADC
 #define CONFIG_BOARD_PRE_INIT
 #define CONFIG_CHARGE_MANAGER
+#define CONFIG_CHARGE_MANAGER_LOGGING
+/* Log latest 20 charge state changes. Reduce this if we run out of RAM. */
+#define CONFIG_CHARGE_MANAGER_LOGGING_ENTRIES 20
 /* Minimum ilim = 500 mA */
 #define CONFIG_CHARGER_INPUT_CURRENT PWM_0_MA
 #define CONFIG_COMMON_GPIO_SHORTNAMES
