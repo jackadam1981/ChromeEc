@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aef11952_43d3b868",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-12-30T22:48:39Z",
+      "side": 1,
+      "message": "Ignoring voltage_now reduces log spam (ex. if the voltage changes from 5023 mV to 5021 mV then we don\u0027t really care), but there might be cases where we want to log it. Maybe make a new log entry if the new voltage_now is \u003e 100 mV different from previous?",
+      "revId": "e1ff79af3d5c255e8a949ae5361d51b740350ca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
