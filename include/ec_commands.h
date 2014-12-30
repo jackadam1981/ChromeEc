@@ -2821,6 +2821,39 @@ enum usb_pd_override_ports {
 struct ec_params_charge_port_override {
 	int16_t override_port; /* Override port# */
 } __packed;
+
+/* Read PD log of charge state changes */
+#define EC_CMD_PD_GET_CHARGE_STATE_LOG 0x115
+
+struct ec_params_charge_state_log {
+	uint8_t starting_entry; /* Initial entry to retrieve (0 = oldest) */
+	uint8_t num_entries;    /* Maximum number of entries to reply with */
+} __packed;
+
+/* Port state flags */
+enum ec_charge_log_entry_status {
+	/* Log entry is valid (ex. is initialized) */
+	CHARGE_STATUS_VALID_ENTRY =      (1 << 0),
+	/* Port is the override port */
+	CHARGE_STATUS_OVERRIDE =         (1 << 1),
+	/* Port is the pending override port */
+	CHARGE_STATUS_DELAYED_OVERRIDE = (1 << 2),
+};
+
+struct ec_charge_state_log_entry {
+	uint8_t port;                                    /* Port number */
+	uint8_t reserved;
+	uint16_t status;                                 /* Status flags */
+	uint32_t timestamp;                              /* Entry timestamp */
+	struct ec_response_usb_pd_power_info power_info; /* Port details */
+} __packed;
+
+struct ec_response_charge_state_log {
+	uint8_t num_entries;                            /* log_entries size */
+	uint8_t reserved;
+	uint16_t reserved2;
+	struct ec_charge_state_log_entry log_entries[]; /* entries */
+} __packed;
 #endif  /* !__ACPI__ */
 
 /*****************************************************************************/
