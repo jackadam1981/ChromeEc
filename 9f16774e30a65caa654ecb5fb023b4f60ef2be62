@@ -16,6 +16,24 @@
       "revId": "9f16774e30a65caa654ecb5fb023b4f60ef2be62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aef11952_e332cc0c",
+        "filename": "board/zinger/runtime.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-30T23:09:29Z",
+      "side": 1,
+      "message": "i haven\u0027t had any problems in my limited testing. everything i read suggests it should work.\n\ni can put in a couple nops in between if you think that\u0027s safer.",
+      "parentUuid": "eee79192_2bb409c2",
+      "revId": "9f16774e30a65caa654ecb5fb023b4f60ef2be62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
