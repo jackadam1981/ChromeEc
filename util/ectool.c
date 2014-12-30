@@ -62,6 +62,8 @@ const char help_str[] =
 	"      Force the battery to stop charging or discharge\n"
 	"  chargeoverride\n"
 	"      Overrides charge port selection logic\n"
+	"  chargelog\n"
+	"      Prints charge state log entries\n"
 	"  chargestate\n"
 	"      Handle commands related to charge state v2 (and later)\n"
 	"  chipinfo\n"
@@ -2921,6 +2923,65 @@ int cmd_usb_pd(int argc, char *argv[])
 	return (rv < 0 ? rv : 0);
 }
 
+static void print_pd_power_info(struct ec_response_usb_pd_power_info *r)
+{
+	printf("Power role: ");
+
+	switch (r->role) {
+	case USB_PD_PORT_POWER_DISCONNECTED:
+		printf("Disconnected\n");
+		break;
+	case USB_PD_PORT_POWER_SOURCE:
+		printf("Source\n");
+		break;
+	case USB_PD_PORT_POWER_SINK:
+		printf("Sink\n");
+		break;
+	case USB_PD_PORT_POWER_SINK_NOT_CHARGING:
+		printf("Sink (not charging)\n");
+		break;
+	default:
+		printf("Unknown\n");
+	}
+
+	if (r->role != USB_PD_PORT_POWER_DISCONNECTED) {
+		printf("  %s\n", r->dualrole ?
+		       "Dual-role device" : "Dedicated charger");
+	}
+
+	printf("  Charger type: ");
+	switch (r->type) {
+	case USB_CHG_TYPE_PD:
+		printf("PD\n");
+		break;
+	case USB_CHG_TYPE_C:
+		printf("Type-c\n");
+		break;
+	case USB_CHG_TYPE_PROPRIETARY:
+		printf("Proprietary\n");
+		break;
+	case USB_CHG_TYPE_BC12_DCP:
+		printf("BC1.2 DCP\n");
+		break;
+	case USB_CHG_TYPE_BC12_CDP:
+		printf("BC1.2 CDP\n");
+		break;
+	case USB_CHG_TYPE_BC12_SDP:
+		printf("BC1.2 SDP\n");
+		break;
+	case USB_CHG_TYPE_OTHER:
+		printf("Other\n");
+		break;
+	default:
+		printf("None\n");
+	}
+	printf("  Max charging voltage: %dmV\n", r->voltage_max);
+	printf("  Current charging voltage: %dmV\n", r->voltage_now);
+	printf("  Max input current: %dmA\n", r->current_max);
+	printf("  Max input power: %dmW\n", r->max_power);
+	printf("\n");
+}
+
 int cmd_usb_pd_power(int argc, char *argv[])
 {
 	struct ec_params_usb_pd_power_info p;
@@ -2942,66 +3003,8 @@ int cmd_usb_pd_power(int argc, char *argv[])
 		if (rv < 0)
 			return rv;
 
-		printf("Port %d:\n  Power role: ", i);
-		switch (r->role) {
-		case USB_PD_PORT_POWER_DISCONNECTED:
-			printf("Disconnected\n");
-			break;
-		case USB_PD_PORT_POWER_SOURCE:
-			printf("Source\n");
-			break;
-		case USB_PD_PORT_POWER_SINK:
-			printf("Sink\n");
-			break;
-		case USB_PD_PORT_POWER_SINK_NOT_CHARGING:
-			printf("Sink (not charging)\n");
-			break;
-		default:
-			printf("Unknown\n");
-		}
-
-		if (r->role != USB_PD_PORT_POWER_DISCONNECTED) {
-			printf("  %s\n", r->dualrole ?
-				"Dual-role device" : "Dedicated charger");
-		}
-
-		printf("  Charger type: ");
-		switch (r->type) {
-		case USB_CHG_TYPE_PD:
-			printf("PD\n");
-			break;
-		case USB_CHG_TYPE_C:
-			printf("Type-c\n");
-			break;
-		case USB_CHG_TYPE_PROPRIETARY:
-			printf("Proprietary\n");
-			break;
-		case USB_CHG_TYPE_BC12_DCP:
-			printf("BC1.2 DCP\n");
-			break;
-		case USB_CHG_TYPE_BC12_CDP:
-			printf("BC1.2 CDP\n");
-			break;
-		case USB_CHG_TYPE_BC12_SDP:
-			printf("BC1.2 SDP\n");
-			break;
-		case USB_CHG_TYPE_OTHER:
-			printf("Other\n");
-			break;
-		default:
-			printf("None\n");
-		}
-
-		printf("  Max charging voltage: %dmV\n",
-			r->voltage_max);
-		printf("  Current charging voltage: %dmV\n",
-			r->voltage_now);
-		printf("  Max input current: %dmA\n",
-			r->current_max);
-		printf("  Max input power: %dmW\n",
-			r->max_power);
-
-		printf("\n");
+		printf("Port %d:\n", i);
+		print_pd_power_info(r);
 	}
 
 	return 0;
@@ -5199,6 +5202,98 @@ int cmd_charge_port_override(int argc, char *argv[])
 	return 0;
 }
 
+int cmd_charge_state_log(int argc, char *argv[])
+{
+	struct ec_params_charge_state_log p;
+	struct ec_response_charge_state_log *r;
+	struct ec_response_get_protocol_info info;
+	struct ec_charge_state_log_entry *entry;
+	char *e;
+	int rv;
+	int i;
+	int num_entries;
+	int max_entries;
+	int response_size;
+
+	/* Default: request 20 entries starting from oldest. */
+	if (argc < 3) {
+		p.starting_entry = 0;
+		num_entries = 20;
+	} else {
+		p.starting_entry = strtol(argv[1], &e, 0);
+		if (e && *e) {
+			fprintf(stderr, "Bad parameter.\n");
+			fprintf(stderr, "Usage: %s <num_entries>\n", argv[0]);
+			return -1;
+		}
+		num_entries = strtol(argv[2], &e, 0);
+		if (e && *e) {
+			fprintf(stderr, "Bad parameter.\n");
+			fprintf(stderr, "Usage: %s <num_entries>\n", argv[0]);
+			return -1;
+		}
+	}
+
+	/*
+	 * Get the maximum response packet size so we can request the maximum
+	 * number of log entries at a time.
+	 */
+	rv = ec_command(EC_CMD_GET_PROTOCOL_INFO, 0, NULL, 0,
+			&info, sizeof(info));
+	if (rv < 0)
+		return rv;
+	max_entries = (info.max_response_packet_size -
+		      sizeof(struct ec_host_response) - sizeof(*r)) /
+		      sizeof(r->log_entries[0]);
+
+	response_size = sizeof(*r) + sizeof(r->log_entries[0]) * max_entries;
+	r = (struct ec_response_charge_state_log *)malloc(response_size);
+	if (!r) {
+		fprintf(stderr, "Unable to allocate buffer.\n");
+		return -1;
+	}
+
+	while (num_entries > 0) {
+		p.num_entries = (num_entries > max_entries) ?
+				max_entries : num_entries;
+		rv = ec_command(EC_CMD_PD_GET_CHARGE_STATE_LOG, 0,
+				&p, sizeof(p),
+				r, response_size);
+
+		if (rv < 0) {
+			free(r);
+			return rv;
+		}
+
+		/* Not enough entries to satisfy request? */
+		if (r->num_entries == 0)
+			break;
+
+		for (i = 0; i < r->num_entries; ++i) {
+			entry = &r->log_entries[i];
+
+			/* Only count + print valid entries. */
+			if (!(entry->status & CHARGE_STATUS_VALID_ENTRY))
+				continue;
+			num_entries--;
+
+			printf("Port: %d ", entry->port);
+			if (entry->status & CHARGE_STATUS_OVERRIDE)
+				printf("override ");
+			if (entry->status & CHARGE_STATUS_DELAYED_OVERRIDE)
+				printf("pending_override ");
+			printf("\n");
+			printf("Time: %d ms\n", entry->timestamp / 1000);
+			print_pd_power_info(&entry->power_info);
+		}
+
+		p.starting_entry += r->num_entries;
+	}
+
+	free(r);
+	return 0;
+}
+
 /* NULL-terminated list of commands */
 const struct command commands[] = {
 	{"extpwrcurrentlimit", cmd_ext_power_current_limit},
@@ -5210,6 +5305,7 @@ const struct command commands[] = {
 	{"boardversion", cmd_board_version},
 	{"chargecurrentlimit", cmd_charge_current_limit},
 	{"chargecontrol", cmd_charge_control},
+	{"chargelog", cmd_charge_state_log},
 	{"chargeoverride", cmd_charge_port_override},
 	{"chargestate", cmd_charge_state},
 	{"chipinfo", cmd_chipinfo},
