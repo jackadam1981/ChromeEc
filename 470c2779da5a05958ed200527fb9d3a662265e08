@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "618f34ae_4703e47e",
+        "filename": "chip/g/cm3.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-30T00:06:58Z",
+      "side": 1,
+      "message": "we are not using systick (and we will probably never), please remove this file.\nBy the way, core specific driver are in core/cortex-m/\nnot in chip/${CHIP}",
+      "revId": "470c2779da5a05958ed200527fb9d3a662265e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "618f34ae_6710e0c3",
+        "filename": "chip/g/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-30T00:06:58Z",
+      "side": 1,
+      "message": "you don\u0027t seem to use this",
+      "revId": "470c2779da5a05958ed200527fb9d3a662265e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a12ccc7b_c840cfd7",
+        "filename": "chip/g/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-30T00:06:58Z",
+      "side": 1,
+      "message": "uint32_t seems very large for the content",
+      "revId": "470c2779da5a05958ed200527fb9d3a662265e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a12ccc7b_085bc7c9",
+        "filename": "chip/g/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-30T00:06:58Z",
+      "side": 1,
+      "message": "if the speed is always defined at build-time, we can save the flash space of all clkdiv and phasesteps array.",
+      "revId": "470c2779da5a05958ed200527fb9d3a662265e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a12ccc7b_28588bca",
+        "filename": "chip/g/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-30T00:06:58Z",
+      "side": 1,
+      "message": "the comment is not crystal clear",
+      "revId": "470c2779da5a05958ed200527fb9d3a662265e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a12ccc7b_4855bf91",
+        "filename": "chip/g/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-30T00:06:58Z",
+      "side": 1,
+      "message": "those functions are useless, please implement the general purpose transfer in i2c_xfer.",
+      "revId": "470c2779da5a05958ed200527fb9d3a662265e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a12ccc7b_8846d7f1",
+        "filename": "chip/g/timels.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-30T00:06:58Z",
+      "side": 1,
+      "message": "the EC usual style is not using the REG32 macro directly but having register declared.",
+      "revId": "470c2779da5a05958ed200527fb9d3a662265e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
