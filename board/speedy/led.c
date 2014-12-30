@@ -21,20 +21,26 @@ const enum ec_led_id supported_led_ids[] = {
 const int supported_led_ids_count = ARRAY_SIZE(supported_led_ids);
 
 enum led_color {
-	LED_GREEN = 0,
+	LED_OFF = 0,
+	LED_GREEN,
 	LED_ORANGE,
 	LED_COLOR_COUNT  /* Number of colors, not a color itself */
 };
 
-static int bat_led_set(enum led_color color, int on)
+static int bat_led_set_color(enum led_color color)
 {
 	switch (color) {
 	case LED_GREEN:
-		gpio_set_level(GPIO_BAT_LED1, on ? 0 : 1);
+		gpio_set_level(GPIO_BAT_LED1, 0);
+		gpio_set_level(GPIO_BAT_LED0, 1);
 		break;
 	case LED_ORANGE:
-		gpio_set_level(GPIO_BAT_LED0, on ? 0 : 1);
+		gpio_set_level(GPIO_BAT_LED0, 0);
+		gpio_set_level(GPIO_BAT_LED1, 1);
 		break;
+	case LED_OFF:
+		gpio_set_level(GPIO_BAT_LED0, 1);
+		gpio_set_level(GPIO_BAT_LED1, 1);
 	default:
 		return EC_ERROR_UNKNOWN;
 	}
@@ -59,14 +65,11 @@ int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 	switch (led_id) {
 	case EC_LED_ID_BATTERY_LED:
 		if (brightness[EC_LED_COLOR_GREEN] != 0) {
-			bat_led_set(LED_GREEN, 1);
-			bat_led_set(LED_ORANGE, 0);
+			bat_led_set_color(LED_GREEN);
 		} else if (brightness[EC_LED_COLOR_YELLOW] != 0) {
-			bat_led_set(LED_GREEN, 1);
-			bat_led_set(LED_ORANGE, 1);
+			bat_led_set_color(LED_ORANGE);
 		} else {
-			bat_led_set(LED_GREEN, 0);
-			bat_led_set(LED_ORANGE, 0);
+			bat_led_set_color(LED_OFF);
 		}
 		break;
 	case EC_LED_ID_POWER_LED:
@@ -106,7 +109,7 @@ static void speedy_led_set_battery(void)
 	battery_second++;
 
 	/* BAT LED behavior:
-	 * Fully charged / idle: Off
+	 * Fully charged / idle: GREEN
 	 * Under charging: Orange
 	 * Battery low (10%): Orange in breeze mode (1 sec on, 3 sec off)
 	 * Battery critical low (less than 3%) or abnormal battery
@@ -115,24 +118,26 @@ static void speedy_led_set_battery(void)
 	 */
 	switch (charge_get_state()) {
 	case PWR_STATE_CHARGE:
-		bat_led_set(LED_ORANGE, 1);
+		bat_led_set_color(LED_ORANGE);
 		break;
 	case PWR_STATE_CHARGE_NEAR_FULL:
-		bat_led_set(LED_ORANGE, 1);
+		bat_led_set_color(LED_GREEN);
 		break;
 	case PWR_STATE_DISCHARGE:
 		if (charge_get_percent() < 3)
-			bat_led_set(LED_ORANGE, (battery_second & 1) ? 0 : 1);
+			bat_led_set_color((battery_second & 1)
+					? LED_OFF : LED_ORANGE);
 		else if (charge_get_percent() < 10)
-			bat_led_set(LED_ORANGE, (battery_second & 3) ? 0 : 1);
+			bat_led_set_color((battery_second & 3)
+					? LED_OFF : LED_ORANGE);
 		else
-			bat_led_set(LED_ORANGE, 0);
+			bat_led_set_color(LED_OFF);
 		break;
 	case PWR_STATE_ERROR:
-		bat_led_set(LED_ORANGE, (battery_second & 1) ? 0 : 1);
+		bat_led_set_color((battery_second & 1) ? LED_OFF : LED_ORANGE);
 		break;
 	case PWR_STATE_IDLE: /* External power connected in IDLE. */
-		bat_led_set(LED_ORANGE, 0);
+		bat_led_set_color(LED_GREEN);
 		break;
 	default:
 		/* Other states don't alter LED behavior */
