@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "618f34ae_9289ac4d",
+        "filename": "util/comm-lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2014-12-30T09:19:28Z",
+      "side": 1,
+      "message": "repo upload syntax check warning:\n\nWARNING: externs should be avoided in .c files\n\n----------\n\nThis is left here so that MEC1322 specific changes are isolated to here only.",
+      "revId": "179acfad0139c4d8c38ab6fba2bbbc48ac832038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "418cf0b9_12f2fafa",
+        "filename": "util/comm-mec1322.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2014-12-30T09:19:28Z",
+      "side": 1,
+      "message": "The intention of this file is to be used standalone by other components with a direct cut\u0026past of the file with only the file name modification.\n\nFor example: src/third_party/flashrom/cros_ec_mec1322.c will be the exact replicate of this file.\n\nThe reason is that any changes made to the protocol, it can be easily ported to other component after testing is done with ectool.",
+      "revId": "179acfad0139c4d8c38ab6fba2bbbc48ac832038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "618f34ae_b256a823",
+        "filename": "util/comm-mec1322.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2014-12-30T09:19:28Z",
+      "side": 1,
+      "message": "repo upload syntax check warning:\n\nWARNING: __packed is preferred over __attribute__((packed))\n\n----------\n\nThis warning can\u0027t be avoid.",
+      "revId": "179acfad0139c4d8c38ab6fba2bbbc48ac832038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "618f34ae_d25b344a",
+        "filename": "util/comm-mec1322.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2014-12-30T09:19:28Z",
+      "side": 1,
+      "message": "repo upload syntax check warning:\n\nWARNING: externs should be avoided in .c files\n\n----------\n\nThis was added because of coreboot build required function prototype, but H file is avoided since each component who will be using this file use a different file naming scheme.",
+      "revId": "179acfad0139c4d8c38ab6fba2bbbc48ac832038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a12ccc7b_eb7cada6",
+        "filename": "util/comm-mec1322.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2014-12-30T09:19:28Z",
+      "side": 1,
+      "message": "repo upload syntax check warning:\n\nWARNING: externs should be avoided in .c files\n\n----------\n\nSame reason as above to avoid using H file so that this file can be shared across different cros components.",
+      "revId": "179acfad0139c4d8c38ab6fba2bbbc48ac832038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
