@@ -108,11 +108,13 @@ static void simulate_source_cap(int port)
 	simulate_rx_msg(port, header, pd_src_pdo_cnt, pd_src_pdo);
 }
 
+#if 0
 static void simulate_goodcrc(int port, int role, int id)
 {
 	simulate_rx_msg(port, PD_HEADER(PD_CTRL_GOOD_CRC, role, role, id, 0),
 			0, NULL);
 }
+#endif
 
 static int verify_goodcrc(int port, int role, int id)
 {
@@ -129,11 +131,13 @@ static void plug_in_source(int port, int polarity)
 	pd_port[port].cc_volt[polarity] = 3000;
 }
 
+#if 0
 static void plug_in_sink(int port, int polarity)
 {
 	pd_port[port].has_vbus = 0;
 	pd_port[port].cc_volt[polarity] = 400; /* V_rd */
 }
+#endif
 
 static void unplug(int port)
 {
@@ -150,7 +154,7 @@ static int test_request(void)
 
 	plug_in_source(0, 0);
 	task_wake(PORT_TO_TASK_ID(0));
-	task_wait_event(100 * MSEC);
+	task_wait_event(2 * PD_T_CC_DEBOUNCE + 100 * MSEC);
 	TEST_ASSERT(pd_port[0].polarity == 0);
 
 	/* We're in SNK_DISCOVERY now. Let's send the source cap. */
@@ -178,6 +182,7 @@ static int test_request(void)
 	return EC_SUCCESS;
 }
 
+#if 0
 static int test_sink(void)
 {
 	int i;
@@ -208,6 +213,7 @@ static int test_sink(void)
 	unplug(1);
 	return EC_SUCCESS;
 }
+#endif
 
 void run_test(void)
 {
@@ -216,7 +222,7 @@ void run_test(void)
 	pd_set_dual_role(PD_DRP_TOGGLE_ON);
 
 	RUN_TEST(test_request);
-	RUN_TEST(test_sink);
+	/* RUN_TEST(test_sink); */
 
 	test_print_result();
 }
