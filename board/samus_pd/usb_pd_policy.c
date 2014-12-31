@@ -17,6 +17,7 @@
 #include "timer.h"
 #include "util.h"
 #include "usb_pd.h"
+#include "usb_pd_config.h"
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
@@ -39,6 +40,9 @@ const uint32_t pd_snk_pdo[] = {
 		PDO_VAR(5000, 20000, 3000),
 };
 const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
+
+/* track when HPD low was transistioned to debounce properly */
+static timestamp_t hpd_low_ts[PD_PORT_COUNT];
 
 int pd_check_requested_voltage(uint32_t rdo)
 {
@@ -204,9 +208,38 @@ int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 	return 0;
 }
 
+static void hpd0_hi_deferred(void)
+{
+	gpio_set_level(GPIO_USB_C0_DP_HPD, 1);
+}
+
+static void hpd1_hi_deferred(void)
+{
+	gpio_set_level(GPIO_USB_C1_DP_HPD, 1);
+}
+
+DECLARE_DEFERRED(hpd0_hi_deferred);
+DECLARE_DEFERRED(hpd1_hi_deferred);
+
+#define PORT_TO_HPD(port) ((port) ? GPIO_USB_C1_DP_HPD : GPIO_USB_C0_DP_HPD)
+
+static void hpd_set_low(int port)
+{
+	enum gpio_signal hpd = PORT_TO_HPD(port);
+
+	/* cancel pending HPD HI/IRQs and immediately goto low */
+	if (port)
+		hook_call_deferred(hpd1_hi_deferred, -1);
+	else
+		hook_call_deferred(hpd0_hi_deferred, -1);
+	gpio_set_level(hpd, 0);
+	hpd_low_ts[port] = get_time();
+}
+
 static void svdm_safe_dp_mode(int port)
 {
 	/* make DP interface safe until configure */
+	hpd_set_low(port);
 	board_set_usb_mux(port, TYPEC_MUX_NONE, pd_get_polarity(port));
 }
 
@@ -251,49 +284,43 @@ static int svdm_dp_config(int port, uint32_t *payload)
 	return 2;
 };
 
-static void hpd0_irq_deferred(void)
-{
-	gpio_set_level(GPIO_USB_C0_DP_HPD, 1);
-}
-
-static void hpd1_irq_deferred(void)
-{
-	gpio_set_level(GPIO_USB_C1_DP_HPD, 1);
-}
-
-DECLARE_DEFERRED(hpd0_irq_deferred);
-DECLARE_DEFERRED(hpd1_irq_deferred);
-
-#define PORT_TO_HPD(port) ((port) ? GPIO_USB_C1_DP_HPD : GPIO_USB_C0_DP_HPD)
-
 static int svdm_dp_attention(int port, uint32_t *payload)
 {
 	int cur_lvl;
 	int lvl = PD_VDO_HPD_LVL(payload[1]);
 	int irq = PD_VDO_HPD_IRQ(payload[1]);
 	enum gpio_signal hpd = PORT_TO_HPD(port);
+	int deferred_usecs = -1;
+
 	cur_lvl = gpio_get_level(hpd);
-	if (irq & cur_lvl) {
+
+	if (lvl) {
+		/* schedule high based DFP low debounce requirement */
+		uint64_t delta = (hpd_low_ts[port].val + HPD_DFP_DEBOUNCE_LOW) -
+			get_time().val;
+		deferred_usecs = (delta > 0) ? delta : 0;
+	} else if (irq & cur_lvl) {
+		/* go low and schedule hi to create pulse. */
 		gpio_set_level(hpd, 0);
-		/* 250 usecs is minimum, 2msec is max */
-		if (port)
-			hook_call_deferred(hpd1_irq_deferred, 300);
-		else
-			hook_call_deferred(hpd0_irq_deferred, 300);
+		deferred_usecs = HPD_IRQ_PULSE;
 	} else if (irq & !cur_lvl) {
 		CPRINTF("PE ERR: IRQ_HPD w/ HPD_LOW\n");
 		return 0; /* nak */
 	} else {
-		gpio_set_level(hpd, lvl);
+		hpd_set_low(port);
+		return 1; /* ack */
 	}
-	/* ack */
-	return 1;
+	if (port)
+		hook_call_deferred(hpd1_hi_deferred, deferred_usecs);
+	else
+		hook_call_deferred(hpd0_hi_deferred, deferred_usecs);
+
+	return 1; /* ack */
 }
 
 static void svdm_exit_dp_mode(int port)
 {
 	svdm_safe_dp_mode(port);
-	gpio_set_level(PORT_TO_HPD(port), 0);
 }
 
 static int svdm_enter_gfu_mode(int port, uint32_t mode_caps)

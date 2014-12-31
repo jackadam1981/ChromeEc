@@ -487,8 +487,11 @@ struct pd_policy {
 #define PD_VDO_HPD_IRQ(x) ((x >> 8) & 1)
 #define PD_VDO_HPD_LVL(x) ((x >> 7) & 1)
 
-#define HPD_DEBOUNCE_LVL (100*MSEC)
-#define HPD_DEBOUNCE_IRQ (2*MSEC)
+#define HPD_DEBOUNCE_LVL     (100*MSEC)
+#define HPD_DEBOUNCE_IRQ     (2*MSEC)
+#define HPD_IRQ_PULSE        (300)   /* 250 usecs is minimum, 2msec is max */
+#define HPD_DFP_DEBOUNCE_LOW (HPD_DEBOUNCE_IRQ + 1*MSEC) /* +1 msec of margin */
+
 /*
  * DisplayPort Configure VDO
  * -------------------------
