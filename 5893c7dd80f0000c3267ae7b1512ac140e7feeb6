@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0144b839_6e38cf0d",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1000094
+      },
+      "writtenOn": "2014-12-31T20:50:31Z",
+      "side": 1,
+      "message": "Am I supposed to give you a hard time because this does not work if the number of ports is more than two? (Applies below too, so maybe the code is just written for one or two ports, in which case this is ok)",
+      "revId": "5893c7dd80f0000c3267ae7b1512ac140e7feeb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0144b839_91c99cbc",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1000094
+      },
+      "writtenOn": "2014-12-31T20:50:31Z",
+      "side": 1,
+      "message": "How do you ensure a subsequent IRQ isn\u0027t too soon for 3.15.2.1.2\nAfter generating a low-to-high transition on HPD, the converter shall ensure that HPD\nis maintained high for a minimum of 2ms, deferring taking HPD low on a subsequent\nHPD_Low or a concurrent or subsequent IRQ_HPD",
+      "revId": "5893c7dd80f0000c3267ae7b1512ac140e7feeb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a185ac8b_e69f9ac4",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1000094
+      },
+      "writtenOn": "2014-12-31T20:50:31Z",
+      "side": 1,
+      "message": "Do you ever get here? By my reading of 3.15.2 of Alt Mode spec when an interrupt is signaled the logical state of HPD is still high, so the if (lvl) code would have been executed. (Using a local download so may not be latest version)",
+      "revId": "5893c7dd80f0000c3267ae7b1512ac140e7feeb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c180e07b_4acbe72d",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1000094
+      },
+      "writtenOn": "2014-12-31T20:50:31Z",
+      "side": 1,
+      "message": "There may be a valid case here if irq \u0026 lvl \u0026 !cur_lvl i.e. you get a message setting the HPD high and indicting an interrupt. 3.15.2.1.2 contemplates this happening: If a single message represents both a transition to HPD_High and an IRQ_HPD, the converter\nshall ensure that HPD is taken high for a minimum of 2ms before generating the IRQ_HPD",
+      "revId": "5893c7dd80f0000c3267ae7b1512ac140e7feeb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
