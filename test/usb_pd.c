@@ -150,7 +150,7 @@ static int test_request(void)
 
 	plug_in_source(0, 0);
 	task_wake(PORT_TO_TASK_ID(0));
-	task_wait_event(100 * MSEC);
+	task_wait_event(2 * PD_T_CC_DEBOUNCE + 100 * MSEC);
 	TEST_ASSERT(pd_port[0].polarity == 0);
 
 	/* We're in SNK_DISCOVERY now. Let's send the source cap. */
