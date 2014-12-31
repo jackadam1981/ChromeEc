@@ -108,6 +108,24 @@
     },
     {
       "key": {
+        "uuid": "aef11952_035b7080",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-31T02:09:20Z",
+      "side": 1,
+      "message": "Fixed. By the way, on samus I typically see ~200us to go S0-\u003eS5 and ~600us to go S5-\u003eS3 (at least as seen by the PD MCU).",
+      "parentUuid": "eee79192_f664c804",
+      "revId": "81600ec446557927131225527bebf98e8bb88a60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aef11952_438178d8",
         "filename": "board/samus_pd/board.c",
         "patchSetId": 8
