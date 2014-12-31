@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "eee79192_f664c804",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2014-12-31T01:21:59Z",
+      "side": 1,
+      "message": "I see a couple different options:\n\n- change back to old code, so hook_notify runs in interrupt context. hopefully CHIPSET hooks are short.\n- determine new power state in interrupt and create a different deferred function for each new power state, then call the appropriate deferred function. this way hook_notify() happens outside interrupt context, and we shouldn\u0027t miss any transitions unless two transitions happen before we can service first interrupt.\n- make some kind of queue of pending chipset transitions which gets added to in interrupt and processed in deferred function.\n- leave as is. if hooks task is blocked by a higher priority task we may miss a transitions.\n\nI think #1 or #2 make the most sense, but neither are great. Any other ideas?",
+      "parentUuid": "011d984d_12b4d253",
+      "revId": "81600ec446557927131225527bebf98e8bb88a60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aef11952_438178d8",
         "filename": "board/samus_pd/board.c",
         "patchSetId": 8
