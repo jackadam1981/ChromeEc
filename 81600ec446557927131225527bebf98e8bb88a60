@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aef11952_e39c0c48",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-31T00:25:10Z",
+      "side": 1,
+      "message": "at least CPRINT or remove it ?",
+      "revId": "81600ec446557927131225527bebf98e8bb88a60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "011d984d_b2e77eb9",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-31T00:25:10Z",
+      "side": 1,
+      "message": "now you might miss intermediate transition when they are fast (typically S5-\u003es3-\u003es0)\nThen we will skip the CHIPSET_STARTUP hooks.\nis that harmful ?",
+      "revId": "81600ec446557927131225527bebf98e8bb88a60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aef11952_438178d8",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-31T00:25:10Z",
+      "side": 1,
+      "message": "this pattern is already above but the \"charge_port \u003c PD_PORT_COUNT\". why are we doing the validity checking in this function ?",
+      "revId": "81600ec446557927131225527bebf98e8bb88a60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aef11952_238674f2",
+        "filename": "board/samus_pd/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-31T00:25:10Z",
+      "side": 1,
+      "message": "the comment is still wrong ?",
+      "revId": "81600ec446557927131225527bebf98e8bb88a60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eee79192_2ba40914",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-31T00:25:10Z",
+      "side": 1,
+      "message": "on previous system, the downside of the algorithm was that sometimes when you plug charger with a nearly full battery, the indicator will go green then yellow as the battery might not request current immediatly iirc.",
+      "revId": "81600ec446557927131225527bebf98e8bb88a60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aef11952_03a01076",
+        "filename": "common/lightbar.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-31T00:25:10Z",
+      "side": 1,
+      "message": "time to create a charge_get_ _percent() function \u003d charge_get_full() ? 100 : charge_get_percent(); and alias it to charge_get_percent on non-charger_v2 config.",
+      "revId": "81600ec446557927131225527bebf98e8bb88a60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aef11952_63635cb0",
+        "filename": "common/lightbar.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2014-12-31T00:25:10Z",
+      "side": 1,
+      "message": "is that related to the CL ?",
+      "revId": "81600ec446557927131225527bebf98e8bb88a60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
