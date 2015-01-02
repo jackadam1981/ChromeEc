@@ -125,6 +125,20 @@ uint32_t flash_physical_get_valid_flags(void);
  */
 uint32_t flash_physical_get_writable_flags(uint32_t cur_flags);
 
+/**
+ * Enable a permanent write-protection on the RO partition.
+ *
+ * Note: this function might reboot the chip after setting the protection.
+ */
+void flash_physical_permanent_protect(void);
+
+/**
+ * Check if the permanent write-protection of the RO partition is enabled.
+ *
+ * @return 0 if no protection is set.
+ */
+int flash_physical_is_permanently_protected(void);
+
 /*****************************************************************************/
 /* Low-level common code for use by flash modules. */
 
