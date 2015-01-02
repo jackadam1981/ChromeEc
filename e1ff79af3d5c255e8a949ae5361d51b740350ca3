@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "8ef61548_df8c3b9a",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-01-02T18:37:14Z",
+      "side": 1,
+      "message": "Before change:\n\n0x0000000020002dcc                __data_end \u003d .\n\nAfter:\n\n0x0000000020002fd4                __data_end \u003d .\n\n(Before log size reduction, as requested by vpalatin).\n\nI moved the log size parameter to a config option and added a comment.",
+      "parentUuid": "a12ccc7b_eb72ed01",
+      "revId": "e1ff79af3d5c255e8a949ae5361d51b740350ca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "418cf0b9_26a5f70f",
         "filename": "common/charge_manager.c",
         "patchSetId": 2
@@ -42,6 +60,24 @@
         "endLine": 132,
         "endChar": 48
       },
+      "revId": "e1ff79af3d5c255e8a949ae5361d51b740350ca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6efba134_fe414188",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-01-02T18:37:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "418cf0b9_26a5f70f",
       "revId": "e1ff79af3d5c255e8a949ae5361d51b740350ca3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -83,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "011d984d_58d7497b",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-01-02T18:37:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "418cf0b9_46aa03e0",
+      "revId": "e1ff79af3d5c255e8a949ae5361d51b740350ca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a12ccc7b_4b62192f",
         "filename": "common/charge_manager.c",
         "patchSetId": 2
@@ -100,6 +154,24 @@
         "endLine": 614,
         "endChar": 20
       },
+      "revId": "e1ff79af3d5c255e8a949ae5361d51b740350ca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ef61548_1f1743b5",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-01-02T18:37:14Z",
+      "side": 1,
+      "message": "Yes, returning more than a few entries doesn\u0027t work for the reason you mentioned (and, it\u0027s why I break up the request in ectool). I\u0027m not sure that we should check the reply size limitation here - the size limitation is already checked in the higher-level protocol code (RESPONSE_TOO_BIG return value).",
+      "parentUuid": "a12ccc7b_4b62192f",
       "revId": "e1ff79af3d5c255e8a949ae5361d51b740350ca3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
