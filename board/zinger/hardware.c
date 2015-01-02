@@ -150,7 +150,7 @@ static void timers_init(void)
 	STM32_TIM_PSC(2) = CPU_CLOCK / 1000000 - 1;
 	STM32_TIM_EGR(2) = 0x0001; /* Reload the pre-scaler */
 	STM32_TIM_CR1(2) = 1;
-	STM32_TIM_DIER(2) = 0;
+	STM32_TIM_DIER(2) = 1; /* Overflow interrupt */
 	task_enable_irq(STM32_IRQ_TIM2);
 }
 
