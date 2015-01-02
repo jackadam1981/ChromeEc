@@ -17,6 +17,9 @@
 
 /* Optional features */
 #define CONFIG_STM_HWTIMER32
+#define CONFIG_SHA256
+#define CONFIG_RSA
+#define CONFIG_RWSIG
 #define CONFIG_USB
 #define CONFIG_USB_MS
 #define CONFIG_USB_MS_BUFFER_SIZE SPI_FLASH_MAX_WRITE_SIZE
