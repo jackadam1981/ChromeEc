@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "418cf0b9_496bf4d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2015-01-02T19:57:02Z",
+      "side": 1,
+      "message": "First CL should be a copy with only string changes (i.e. \"auron\" \u003d\u003e \"cid\")\n\nThen add separate CL for changes to GPIO setting.\n\nThis makes it easier to track changes in the future.",
+      "revId": "64a6d308e5754c79fdcf19f608917596d2729505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
