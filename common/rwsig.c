@@ -8,6 +8,7 @@
  */
 
 #include "console.h"
+#include "flash.h"
 #include "rsa.h"
 #include "sha256.h"
 #include "shared_mem.h"
@@ -40,6 +41,10 @@ void check_rw_signature(void)
 	/* Only the Read-Only firmware needs to do the signature check */
 	if (system_get_image_copy() != SYSTEM_IMAGE_RO)
 		return;
+
+	/* the RO partition protection is not enabled : do it */
+	if (!flash_physical_is_permanently_protected())
+		flash_physical_permanent_protect();
 
 	/* Check if we have a RW firmware flashed */
 	if (*rw_rst == 0xffffffff)

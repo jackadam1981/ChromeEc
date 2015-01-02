@@ -365,6 +365,22 @@ int flash_physical_protect_at_boot(enum flash_wp_range range)
 	return EC_SUCCESS;
 }
 
+void flash_physical_permanent_protect(void)
+{
+	/* protect RO partition against write/erase */
+	flash_physical_protect_at_boot(FLASH_WP_RO);
+	/* Set RDP to level 1 to prevent disabling the protection */
+	write_optb(0, 0x11);
+	/* Reset by using OBL_LAUNCH to take changes into account */
+	system_reset(SYSTEM_RESET_HARD | SYSTEM_RESET_PRESERVE_FLAGS);
+}
+
+int flash_physical_is_permanently_protected(void)
+{
+	/* if RDP is still at level 0, the flash protection is not in place */
+	return STM32_FLASH_OBR & STM32_FLASH_OBR_RDP_MASK;
+}
+
 /**
  * Check if write protect register state is inconsistent with RO_AT_BOOT and
  * ALL_AT_BOOT state.
