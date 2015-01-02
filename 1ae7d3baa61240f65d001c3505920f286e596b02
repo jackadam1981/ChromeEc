@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2147fc3f_35a0d275",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 5206,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-01-02T18:40:46Z",
+      "side": 1,
+      "message": "We can send a host command to get the max. reply size instead. Would that be better?",
+      "revId": "1ae7d3baa61240f65d001c3505920f286e596b02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
