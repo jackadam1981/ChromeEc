@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6efba134_be0e19a6",
+        "filename": "board/zinger/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-02T16:44:50Z",
+      "side": 1,
+      "message": "zinger runtime is not scaling adc readings, should be 4096 here",
+      "revId": "40651df4a779b2204d2cd563d0e852aaa6bab845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
