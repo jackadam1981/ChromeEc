@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "a12ccc7b_eb72ed01",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-02T15:55:54Z",
+      "side": 1,
+      "message": "How much RAM is this taking up? Could decrease size to 10 if we are too close to RAM limits.",
+      "range": {
+        "startLine": 46,
+        "startChar": 24,
+        "endLine": 46,
+        "endChar": 26
+      },
+      "revId": "e1ff79af3d5c255e8a949ae5361d51b740350ca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "418cf0b9_26a5f70f",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-02T15:55:54Z",
+      "side": 1,
+      "message": "separate bug, but since I\u0027m looking at the code, might as well point it out. This assumption isn\u0027t true. A Cplug to Areceptable with a pull-down on CC shows up as some BC1.2 supplier even though we source power to it. So, I think we need to switch this else if with the next one.",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 48
+      },
+      "revId": "e1ff79af3d5c255e8a949ae5361d51b740350ca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aef11952_43d3b868",
         "filename": "common/charge_manager.c",
         "patchSetId": 2
@@ -13,6 +59,47 @@
       "writtenOn": "2014-12-30T22:48:39Z",
       "side": 1,
       "message": "Ignoring voltage_now reduces log spam (ex. if the voltage changes from 5023 mV to 5021 mV then we don\u0027t really care), but there might be cases where we want to log it. Maybe make a new log entry if the new voltage_now is \u003e 100 mV different from previous?",
+      "revId": "e1ff79af3d5c255e8a949ae5361d51b740350ca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "418cf0b9_46aa03e0",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-02T15:55:54Z",
+      "side": 1,
+      "message": "yes, I think we should log deviations in voltage_now, but 100mV is still too tight, maybe 500mV.",
+      "parentUuid": "aef11952_43d3b868",
+      "revId": "e1ff79af3d5c255e8a949ae5361d51b740350ca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a12ccc7b_4b62192f",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-02T15:55:54Z",
+      "side": 1,
+      "message": "did you test this for a log that is full (has 20 entries)? because i thought the max i2c host command return size was 128, and it seems like each log entry is \u003e 128/20 bytes.\n\neither way, since LOG_ENTRY_COUNT can be changed. We need to make sure we don\u0027t try to return more than the HC return size.",
+      "range": {
+        "startLine": 614,
+        "startChar": 1,
+        "endLine": 614,
+        "endChar": 20
+      },
       "revId": "e1ff79af3d5c255e8a949ae5361d51b740350ca3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
