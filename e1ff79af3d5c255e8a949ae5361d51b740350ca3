@@ -103,6 +103,23 @@
       "revId": "e1ff79af3d5c255e8a949ae5361d51b740350ca3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "011d984d_9830e18e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2848,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-02T16:20:32Z",
+      "side": 1,
+      "message": "that structure is not compact enough for logging purpose, we need to do better.\neg role, type, dualrole can be all stored in the same uint8_t.\nwe can cut precision on voltage/current/max_power",
+      "revId": "e1ff79af3d5c255e8a949ae5361d51b740350ca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
