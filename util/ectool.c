@@ -2978,7 +2978,7 @@ static void print_pd_power_info(struct ec_response_usb_pd_power_info *r)
 	printf("  Max charging voltage: %dmV\n", r->meas.voltage_max);
 	printf("  Current charging voltage: %dmV\n", r->meas.voltage_now);
 	printf("  Max input current: %dmA\n", r->meas.current_max);
-	printf("  Max input power: %dmW\n", r->max_power);
+	printf("  Max input power: %dmW\n", r->max_power / 1000);
 	printf("\n");
 }
 
