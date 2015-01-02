@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6efba134_9e38fd0c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-02T18:19:45Z",
+      "side": 1,
+      "message": "why not simply :\nheader \u003d PD_HEADER(PD_CTRL_REJECT, pd[port].power_role,  pd[port].data_role, pd[port].msg_id, 0);",
+      "revId": "6abbff0b7bb09ad395d5e87c62e49b56a94fd390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
