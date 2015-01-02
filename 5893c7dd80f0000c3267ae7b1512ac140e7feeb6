@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6126549e_eff111f7",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-01-02T18:00:59Z",
+      "side": 1,
+      "message": "Could add BUILD_ASSERT but yes figured since ports are physical and this is board specific hardcoding logic to two was ok.",
+      "parentUuid": "0144b839_6e38cf0d",
+      "revId": "5893c7dd80f0000c3267ae7b1512ac140e7feeb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0144b839_91c99cbc",
         "filename": "board/samus_pd/usb_pd_policy.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-12-31T20:50:31Z",
       "side": 1,
       "message": "How do you ensure a subsequent IRQ isn\u0027t too soon for 3.15.2.1.2\nAfter generating a low-to-high transition on HPD, the converter shall ensure that HPD\nis maintained high for a minimum of 2ms, deferring taking HPD low on a subsequent\nHPD_Low or a concurrent or subsequent IRQ_HPD",
+      "revId": "5893c7dd80f0000c3267ae7b1512ac140e7feeb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6126549e_8f17bd70",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-01-02T18:00:59Z",
+      "side": 1,
+      "message": "I don\u0027t at the moment.  Need to add although I believe that due to serialization mentioned below it largely can\u0027t arrive before match in crosbug.com/p/35051#c2.",
+      "parentUuid": "0144b839_91c99cbc",
       "revId": "5893c7dd80f0000c3267ae7b1512ac140e7feeb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "2147fc3f_b5fda27c",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-01-02T18:00:59Z",
+      "side": 1,
+      "message": "My initial implementation relies on the fact that irq \u0026 hi are always serialized and that the attention packet is only sent when an HPD change has occurred.  So while spec refers to two states I see them as single 2bit state field (0\u003d\u003dlow, 1\u003d\u003dhi, 2\u003d\u003dirq, 3\u003d\u003dundef).\n\nIf that is flawed then you\u0027re correct.  If not then irq\u003d\u003d1 lvl\u003d\u003d1 should never happen.  If we agree its one 2bit state field then I should refactor to enum and switch to clarify.",
+      "parentUuid": "a185ac8b_e69f9ac4",
+      "revId": "5893c7dd80f0000c3267ae7b1512ac140e7feeb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c180e07b_4acbe72d",
         "filename": "board/samus_pd/usb_pd_policy.c",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2014-12-31T20:50:31Z",
       "side": 1,
       "message": "There may be a valid case here if irq \u0026 lvl \u0026 !cur_lvl i.e. you get a message setting the HPD high and indicting an interrupt. 3.15.2.1.2 contemplates this happening: If a single message represents both a transition to HPD_High and an IRQ_HPD, the converter\nshall ensure that HPD is taken high for a minimum of 2ms before generating the IRQ_HPD",
+      "revId": "5893c7dd80f0000c3267ae7b1512ac140e7feeb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1db80ab_6bc1b02b",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-01-02T18:00:59Z",
+      "side": 1,
+      "message": "Above explanation (serialization, 1 2bit state).",
+      "parentUuid": "c180e07b_4acbe72d",
       "revId": "5893c7dd80f0000c3267ae7b1512ac140e7feeb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
