@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6126549e_6f0361ad",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1359,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-01-02T23:14:02Z",
+      "side": 1,
+      "message": "bug was allowing dp status/config to have 500ms timeout instead of SNDR_RSP",
+      "range": {
+        "startLine": 1359,
+        "startChar": 1,
+        "endLine": 1359,
+        "endChar": 27
+      },
+      "revId": "a42eca321870088f044668ea91be5f39cfe83001",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
