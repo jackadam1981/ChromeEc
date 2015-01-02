@@ -43,6 +43,24 @@
     },
     {
       "key": {
+        "uuid": "8ef61548_a2bf209c",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-02T19:47:33Z",
+      "side": 1,
+      "message": "ok, we have plenty of ram, 20 is fine for samus.",
+      "parentUuid": "8ef61548_df8c3b9a",
+      "revId": "e1ff79af3d5c255e8a949ae5361d51b740350ca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "418cf0b9_26a5f70f",
         "filename": "common/charge_manager.c",
         "patchSetId": 2
