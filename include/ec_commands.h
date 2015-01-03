@@ -2832,12 +2832,10 @@ struct ec_params_charge_state_log {
 
 /* Port state flags */
 enum ec_charge_log_entry_status {
-	/* Log entry is valid (ex. is initialized) */
-	CHARGE_STATUS_VALID_ENTRY =      (1 << 0),
 	/* Port is the override port */
-	CHARGE_STATUS_OVERRIDE =         (1 << 1),
+	CHARGE_STATUS_OVERRIDE =         (1 << 0),
 	/* Port is the pending override port */
-	CHARGE_STATUS_DELAYED_OVERRIDE = (1 << 2),
+	CHARGE_STATUS_DELAYED_OVERRIDE = (1 << 1),
 };
 
 struct ec_charge_state_log_entry {
