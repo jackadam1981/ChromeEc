@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e0225f8_7ebf6dd4",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 2847,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-03T02:02:39Z",
+      "side": 1,
+      "message": "based on previous usage usages of charging logs, having only a relative timestamp rolling over every hour won\u0027t be terribly useful.\nyou might need to send the current time along with the log entries (or transform them into values relative to now)\neven in the compressed log, the time probably worth at least 32 bits (but still shifted to get a longer rollback period,\n maybe the ideal setting would be shifted by 10, so you get a  50-day period with a 1ms precision.)",
+      "revId": "14233a686a78caae2c006b6da345bcc06628700d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
