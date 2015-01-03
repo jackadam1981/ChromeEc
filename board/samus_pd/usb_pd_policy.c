@@ -159,7 +159,6 @@ int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 	int cmd = PD_VDO_CMD(payload[0]);
 	uint16_t dev_id = 0;
 	int is_rw;
-	CPRINTF("VDM/%d [%d] %08x\n", cnt, cmd, payload[0]);
 
 	/* make sure we have some payload */
 	if (cnt == 0)
@@ -312,7 +311,7 @@ static int svdm_gfu_status(int port, uint32_t *payload)
 	 * This is called after enter mode is successful, send unstructured
 	 * VDM to read info.
 	 */
-	pd_send_vdm(port, USB_VID_GOOGLE, VDO_CMD_READ_INFO, NULL, 0);
+	//pd_send_vdm(port, USB_VID_GOOGLE, VDO_CMD_READ_INFO, NULL, 0);
 	return 0;
 }
 
