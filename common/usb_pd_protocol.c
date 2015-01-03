@@ -40,6 +40,7 @@
 static int debug_level;
 #else
 #define CPRINTF(format, args...)
+#define CPRINTS(format, args...)
 const int debug_level;
 #endif
 
@@ -298,6 +299,8 @@ static inline void set_state_timeout(int port,
 {
 	pd[port].timeout = timeout;
 	pd[port].timeout_state = timeout_state;
+	if (timeout_state == PD_STATE_SRC_DISCONNECTED)
+		CPRINTS("tab: TO st%d", timeout_state);
 }
 
 /* Return flag for pd state is connected */
@@ -325,8 +328,12 @@ static inline void set_state(int port, enum pd_states next_state)
 	set_state_timeout(port, 0, 0);
 	pd[port].task_state = next_state;
 
+	if (next_state == PD_STATE_SRC_DISCONNECTED)
+		CPRINTS("tab:set_state st%d", next_state);
+
 	if (last_state == next_state)
 		return;
+
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	/* Ignore dual-role toggling between sink and source */
 	if ((last_state == PD_STATE_SNK_DISCONNECTED &&
@@ -731,6 +738,8 @@ static void handle_vdm_request(int port, int cnt, uint32_t *payload)
 		} else {
 			pd[port].vdm_state = VDM_STATE_DONE;
 		}
+		CPRINTS("tab: handle_vdm_request: PDO st%d VDO st%d hdr:%08x",
+			pd[port].task_state, pd[port].vdm_state, pd[port].vdo_data[0]);
 	}
 
 	if (PD_VDO_SVDM(payload[0]))
@@ -1380,10 +1389,32 @@ static uint64_t vdm_get_ready_timeout(uint32_t vdm_hdr)
 	return timeout;
 }
 
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+static int pd_is_power_swapping(int port)
+{
+	/* return true if in the act of swapping power roles */
+	return  pd[port].task_state == PD_STATE_SNK_SWAP_SNK_DISABLE ||
+		pd[port].task_state == PD_STATE_SNK_SWAP_SRC_DISABLE ||
+		pd[port].task_state == PD_STATE_SNK_SWAP_STANDBY ||
+		pd[port].task_state == PD_STATE_SNK_SWAP_COMPLETE ||
+		pd[port].task_state == PD_STATE_SRC_SWAP_SNK_DISABLE ||
+		pd[port].task_state == PD_STATE_SRC_SWAP_SRC_DISABLE ||
+		pd[port].task_state == PD_STATE_SRC_SWAP_STANDBY;
+}
+#endif
+
 static void pd_vdm_send_state_machine(int port, int incoming_packet)
 {
 	int res;
 	uint16_t header;
+
+	if ((pd[port].vdm_state > 0) ||
+	    (PD_VDO_VID(pd[port].vdo_data[0]) == USB_VID_GOOGLE))
+		CPRINTS("tab: PDO st%d VDO st%d hdr:%08x incoming_packet:%d "
+			" pdo_busy:%d connected:%d power_swapping:%d",
+			pd[port].task_state, pd[port].vdm_state,
+			pd[port].vdo_data[0], incoming_packet, pdo_busy(port),
+			pd_is_connected(port), pd_is_power_swapping(port));
 
 	switch (pd[port].vdm_state) {
 	case VDM_STATE_READY:
@@ -1407,6 +1438,7 @@ static void pd_vdm_send_state_machine(int port, int incoming_packet)
 		res = send_validate_message(port, header,
 				    pd[port].vdo_count,
 				    pd[port].vdo_data);
+		CPRINTS("tab: Sent VDM");
 		if (res < 0) {
 			pd[port].vdm_state = VDM_STATE_ERR_SEND;
 		} else {
@@ -1496,18 +1528,6 @@ void pd_set_dual_role(enum pd_dual_role_states state)
 int pd_get_role(int port)
 {
 	return pd[port].power_role;
-}
-
-static int pd_is_power_swapping(int port)
-{
-	/* return true if in the act of swapping power roles */
-	return  pd[port].task_state == PD_STATE_SNK_SWAP_SNK_DISABLE ||
-		pd[port].task_state == PD_STATE_SNK_SWAP_SRC_DISABLE ||
-		pd[port].task_state == PD_STATE_SNK_SWAP_STANDBY ||
-		pd[port].task_state == PD_STATE_SNK_SWAP_COMPLETE ||
-		pd[port].task_state == PD_STATE_SRC_SWAP_SNK_DISABLE ||
-		pd[port].task_state == PD_STATE_SRC_SWAP_SRC_DISABLE ||
-		pd[port].task_state == PD_STATE_SRC_SWAP_STANDBY;
 }
 
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
@@ -1646,6 +1666,7 @@ void pd_task(void)
 		/* Verify board specific health status : current, voltages... */
 		res = pd_board_checks();
 		if (res != EC_SUCCESS) {
+			CPRINTS("tab: pd_board_checks failed %d", res);
 			/* cut the power */
 			execute_hard_reset(port);
 			/* notify the other side of the issue */
@@ -2371,7 +2392,9 @@ void pd_task(void)
 		default:
 			break;
 		}
-
+		if (pd[port].last_state != this_state)
+			CPRINTF("tab: last st%d -> st%d\n",
+				pd[port].last_state, this_state);
 		pd[port].last_state = this_state;
 
 		/*
@@ -2407,6 +2430,7 @@ void pd_task(void)
 			if (cc1_volt > PD_SRC_VNC) {
 #endif
 				pd_power_supply_reset(port);
+				CPRINTS("tab: cc1_volt > PD_SRC_VNC");
 				set_state(port, PD_STATE_SRC_DISCONNECTED);
 				/* Debouncing */
 				timeout = 50*MSEC;
