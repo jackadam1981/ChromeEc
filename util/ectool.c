@@ -902,9 +902,8 @@ static int enter_gfu_mode(int port)
 		ec_command(EC_CMD_USB_PD_SET_AMODE, 0, p, sizeof(*p),
 			   NULL, 0);
 		usleep(500000); /* sleep to allow time for set mode */
-		gfu_mode = in_gfu_mode(&opos, port);
 	}
-	return gfu_mode;
+	return 1;
 }
 
 int cmd_pd_device_info(int argc, char *argv[])
