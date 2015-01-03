@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "ae0af911_f8671107",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1000094
+      },
+      "writtenOn": "2015-01-03T23:28:21Z",
+      "side": 1,
+      "message": "I don\u0027t believe your enum. Maybe you could use 0\u003dlow, 1\u003dhigh, 2\u003dillegal, 3\u003dhi+irq. Note (e) to Table 5-3 clearly says \"IRQ_HPD may be generated only when the HPD state is HPD_High\".\n\nI don\u0027t think (see below) they are always serialized. A change to high can be combined with an interrupt, so you could get a single message that could cause you to take your HPD output from low to high then after a certain time pulse it low for \u003c2ms to signal the interrupt.",
+      "parentUuid": "2147fc3f_b5fda27c",
+      "revId": "5893c7dd80f0000c3267ae7b1512ac140e7feeb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c180e07b_4acbe72d",
         "filename": "board/samus_pd/usb_pd_policy.c",
         "patchSetId": 1
@@ -136,6 +154,24 @@
       "side": 1,
       "message": "Above explanation (serialization, 1 2bit state).",
       "parentUuid": "c180e07b_4acbe72d",
+      "revId": "5893c7dd80f0000c3267ae7b1512ac140e7feeb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a12ccc7b_9117de70",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1000094
+      },
+      "writtenOn": "2015-01-03T23:28:21Z",
+      "side": 1,
+      "message": "From the spec for the HPD-to-PD end queue rules seems to recommend combining them:If an IRQ_HPD is detected while a previous HPD_High is in the queue, both shall\nbe transmitted, either in one status update (recommended) or separate messages in the\norder detected.",
+      "parentUuid": "c1db80ab_6bc1b02b",
       "revId": "5893c7dd80f0000c3267ae7b1512ac140e7feeb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
