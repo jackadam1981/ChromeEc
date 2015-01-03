@@ -42,14 +42,31 @@ static int delayed_override_port = OVERRIDE_OFF;
 static timestamp_t delayed_override_deadline;
 
 #ifdef CONFIG_CHARGE_MANAGER_LOGGING
+struct charge_manager_log_entry {
+	uint16_t port:2;
+	uint16_t port_role:3;
+	uint16_t is_override:1;
+	uint16_t is_delayed_override:1;
+	uint16_t is_dualrole:1;
+	uint16_t charger_type:4;
+
+	uint16_t voltage_max;
+	uint16_t voltage_now;
+	uint16_t current_max;
+
+	uint16_t timestamp;
+} __packed;
+
 /* Number of log entries to store. */
 #define LOG_ENTRY_COUNT CONFIG_CHARGE_MANAGER_LOGGING_ENTRIES
 /* Include one extra log entry in table for scratch. */
 #define LOG_ENTRY_TABLE_SIZE (LOG_ENTRY_COUNT + 1)
 /* Next log entry index, on [0, LOG_ENTRY_TABLE_SIZE). */
 static int log_entry_idx;
+/* Number of valid log entries in the table. */
+static int num_log_entries;
 /* Log entry table. */
-static struct ec_charge_state_log_entry log_entries[LOG_ENTRY_TABLE_SIZE];
+static struct charge_manager_log_entry log_entries[LOG_ENTRY_TABLE_SIZE];
 #endif
 
 /**
@@ -99,13 +116,15 @@ static int charge_manager_is_seeded(void)
 
 #ifndef TEST_CHARGE_MANAGER
 /**
- * Fills passed power_info structure with current info about the passed port.
+ * Fills passed log entry structure with current info about the passed port.
  */
 static void charge_manager_fill_power_info(int port,
-	struct ec_response_usb_pd_power_info *r)
+	struct charge_manager_log_entry *r)
 {
 	int sup = CHARGE_SUPPLIER_NONE;
 	int i;
+
+	r->port = port;
 
 	/* Determine supplier information to show. */
 	if (port == charge_port)
@@ -127,56 +146,56 @@ static void charge_manager_fill_power_info(int port,
 
 	/* Fill in power role */
 	if (charge_port == port)
-		r->role = USB_PD_PORT_POWER_SINK;
+		r->port_role = USB_PD_PORT_POWER_SINK;
 	else if (pd_is_connected(port) && pd_get_role(port) == PD_ROLE_SOURCE)
-		r->role = USB_PD_PORT_POWER_SOURCE;
+		r->port_role = USB_PD_PORT_POWER_SOURCE;
 	else if (sup != CHARGE_SUPPLIER_NONE)
-		r->role = USB_PD_PORT_POWER_SINK_NOT_CHARGING;
+		r->port_role = USB_PD_PORT_POWER_SINK_NOT_CHARGING;
 	else
-		r->role = USB_PD_PORT_POWER_DISCONNECTED;
+		r->port_role = USB_PD_PORT_POWER_DISCONNECTED;
 
 	/* Is port partner dual-role capable */
-	r->dualrole = pd_get_partner_dualrole_capable(port);
+	r->is_dualrole = pd_get_partner_dualrole_capable(port);
+	r->is_override = (port == override_port);
+	r->is_delayed_override = (port == delayed_override_port);
 
 	if (sup == CHARGE_SUPPLIER_NONE) {
-		r->type = USB_CHG_TYPE_NONE;
+		r->charger_type = USB_CHG_TYPE_NONE;
 		r->voltage_max = 0;
 		r->voltage_now = 0;
 		r->current_max = 0;
-		r->max_power = 0;
 	} else {
 		switch (sup) {
 		case CHARGE_SUPPLIER_PD:
-			r->type = USB_CHG_TYPE_PD;
+			r->charger_type = USB_CHG_TYPE_PD;
 			break;
 		case CHARGE_SUPPLIER_TYPEC:
-			r->type = USB_CHG_TYPE_C;
+			r->charger_type = USB_CHG_TYPE_C;
 			break;
 		case CHARGE_SUPPLIER_PROPRIETARY:
-			r->type = USB_CHG_TYPE_PROPRIETARY;
+			r->charger_type = USB_CHG_TYPE_PROPRIETARY;
 			break;
 		case CHARGE_SUPPLIER_BC12_DCP:
-			r->type = USB_CHG_TYPE_BC12_DCP;
+			r->charger_type = USB_CHG_TYPE_BC12_DCP;
 			break;
 		case CHARGE_SUPPLIER_BC12_CDP:
-			r->type = USB_CHG_TYPE_BC12_CDP;
+			r->charger_type = USB_CHG_TYPE_BC12_CDP;
 			break;
 		case CHARGE_SUPPLIER_BC12_SDP:
-			r->type = USB_CHG_TYPE_BC12_SDP;
+			r->charger_type = USB_CHG_TYPE_BC12_SDP;
 			break;
 		default:
-			r->type = USB_CHG_TYPE_OTHER;
+			r->charger_type = USB_CHG_TYPE_OTHER;
 		}
 		r->voltage_max = available_charge[sup][port].voltage;
 		r->current_max = available_charge[sup][port].current;
-		r->max_power = POWER(available_charge[sup][port]);
 
 		/*
 		 * If we are sourcing power, or sinking but not charging, then
 		 * VBUS must be 5V. If we are charging, then read VBUS ADC.
 		 */
-		if (r->role == USB_PD_PORT_POWER_SOURCE ||
-		    r->role == USB_PD_PORT_POWER_SINK_NOT_CHARGING)
+		if (r->port_role == USB_PD_PORT_POWER_SOURCE ||
+		    r->port_role == USB_PD_PORT_POWER_SINK_NOT_CHARGING)
 			r->voltage_now = 5000;
 		else
 			r->voltage_now = adc_read_channel(ADC_BOOSTIN);
@@ -185,13 +204,39 @@ static void charge_manager_fill_power_info(int port,
 #endif /* TEST_CHARGE_MANAGER */
 
 #ifdef CONFIG_CHARGE_MANAGER_LOGGING
+/*
+ * Converts compressed internal log to external data structure used
+ * in replies to ec commands.
+ */
+static void charge_manager_log_to_external(
+	struct ec_charge_state_log_entry *external,
+	struct charge_manager_log_entry *internal)
+{
+	external->port = internal->port;
+
+	external->status = 0;
+	if (internal->is_override)
+		external->status |= CHARGE_STATUS_OVERRIDE;
+	if (internal->is_delayed_override)
+		external->status |= CHARGE_STATUS_DELAYED_OVERRIDE;
+
+	external->timestamp = internal->timestamp << 16;
+	external->power_info.role = internal->port_role;
+	external->power_info.type = internal->charger_type;
+	external->power_info.dualrole = internal->is_dualrole;
+	external->power_info.voltage_max = internal->voltage_max;
+	external->power_info.voltage_now = internal->voltage_now;
+	external->power_info.current_max = internal->current_max;
+	external->power_info.max_power = external->power_info.voltage_now *
+					 external->power_info.current_max;
+}
+
 /**
  * Saves a power state log entry with the current info about the passed port.
  */
 static void charge_manager_save_log(int port)
 {
-	uint16_t status = CHARGE_STATUS_VALID_ENTRY;
-	struct ec_charge_state_log_entry *log = &log_entries[log_entry_idx];
+	struct charge_manager_log_entry *log = &log_entries[log_entry_idx];
 	uint16_t voltage_now;
 
 	/*
@@ -200,31 +245,27 @@ static void charge_manager_save_log(int port)
 	 * entry, to reduce log spam.
 	 */
 	static int previous_log_idx[PD_PORT_COUNT];
-	struct ec_charge_state_log_entry *previous =
+	struct charge_manager_log_entry *previous =
 		&log_entries[previous_log_idx[port]];
 
-	log->port = port;
-	if (port == override_port)
-		status |= CHARGE_STATUS_OVERRIDE;
-	if (port == delayed_override_port)
-		status |= CHARGE_STATUS_DELAYED_OVERRIDE;
-	log->status = status;
-	charge_manager_fill_power_info(port, &log->power_info);
+	charge_manager_fill_power_info(port, log);
 
 	/*
 	 * Check for a log change, not considering timestamp. Also, ignore
-	 * voltage_now fluctuations of < 500mA.
+	 * voltage_now fluctuations of < 512mA.
 	 */
 	log->timestamp = previous->timestamp;
-	voltage_now = log->power_info.voltage_now;
-	log->power_info.voltage_now = previous->power_info.voltage_now;
+	voltage_now = log->voltage_now;
+	log->voltage_now = previous->voltage_now;
 	if (log == previous || memcmp(log, previous, sizeof(*log)) ||
-	    voltage_now >= previous->power_info.voltage_now + 500 ||
-	    previous->power_info.voltage_now >= voltage_now + 500) {
-		log->timestamp = get_time().val;
-		log->power_info.voltage_now = voltage_now;
+	    voltage_now >= previous->voltage_now + 512 ||
+	    previous->voltage_now >= voltage_now + 512) {
+		log->timestamp = get_time().val >> 16;
+		log->voltage_now = voltage_now;
 		previous_log_idx[port] = log_entry_idx;
 		log_entry_idx = (log_entry_idx + 1) % LOG_ENTRY_TABLE_SIZE;
+		if (num_log_entries < LOG_ENTRY_TABLE_SIZE)
+			num_log_entries++;
 	}
 }
 #endif /* CONFIG_CHARGE_MANAGER_LOGGING */
@@ -546,13 +587,19 @@ static int hc_pd_power_info(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_usb_pd_power_info *p = args->params;
 	struct ec_response_usb_pd_power_info *r = args->response;
+	struct charge_manager_log_entry log_internal;
+	struct ec_charge_state_log_entry log_external;
 	int port = p->port;
 
 	/* If host is asking for the charging port, set port appropriately */
 	if (port == PD_POWER_CHARGING_PORT)
 		port = charge_port;
 
-	charge_manager_fill_power_info(port, r);
+	/* Get info about port. */
+	charge_manager_fill_power_info(port, &log_internal);
+	/* Convert internal log structure to ec command reply. */
+	charge_manager_log_to_external(&log_external, &log_internal);
+	memcpy(r, &log_external.power_info, sizeof(log_external.power_info));
 
 	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;
@@ -602,15 +649,26 @@ static int hc_pd_get_charge_state_log(struct host_cmd_handler_args *args)
 	const struct ec_params_charge_state_log *p = args->params;
 	struct ec_response_charge_state_log *r = args->response;
 
-	/* Offset from i to corresponding ring buffer entry. */
-	int offset = log_entry_idx + p->starting_entry + 1;
 	int i;
+	int entry;
+	/*
+	 * Offset from i to corresponding ring buffer entry. Normally
+	 * We start from the first entry after the current, but we must
+	 * adjust in case our table isn't full.
+	 */
+	int offset = log_entry_idx + p->starting_entry + 1;
+	if (num_log_entries < LOG_ENTRY_COUNT)
+		offset += LOG_ENTRY_COUNT - num_log_entries;
 
 	for (i = 0;
 	     i < p->num_entries && i < LOG_ENTRY_COUNT - p->starting_entry;
-	     ++i)
-		r->log_entries[i] =
-			log_entries[(i + offset) % LOG_ENTRY_TABLE_SIZE];
+	     ++i) {
+		entry = (i + offset) % LOG_ENTRY_TABLE_SIZE;
+		if (entry >= num_log_entries)
+			break;
+		charge_manager_log_to_external(&r->log_entries[i],
+					       &log_entries[entry]);
+	}
 
 	r->num_entries = i;
 	args->response_size = sizeof(*r) + sizeof(r->log_entries[0]) * i;

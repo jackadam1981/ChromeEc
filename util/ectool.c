@@ -5265,17 +5265,8 @@ int cmd_charge_state_log(int argc, char *argv[])
 			return rv;
 		}
 
-		/* Not enough entries to satisfy request? */
-		if (r->num_entries == 0)
-			break;
-
 		for (i = 0; i < r->num_entries; ++i) {
 			entry = &r->log_entries[i];
-
-			/* Only count + print valid entries. */
-			if (!(entry->status & CHARGE_STATUS_VALID_ENTRY))
-				continue;
-			num_entries--;
 
 			printf("Port: %d ", entry->port);
 			if (entry->status & CHARGE_STATUS_OVERRIDE)
@@ -5287,7 +5278,15 @@ int cmd_charge_state_log(int argc, char *argv[])
 			print_pd_power_info(&entry->power_info);
 		}
 
-		p.starting_entry += r->num_entries;
+		/*
+		 * Received fewer entries than requested -- there are no
+		 * more entries left to retrieve.
+		 */
+		if (r->num_entries < p.num_entries)
+			break;
+
+		p.starting_entry += p.num_entries;
+		num_entries -= p.num_entries;
 	}
 
 	free(r);
