@@ -240,6 +240,21 @@ static void check_charging_cutoff(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, check_charging_cutoff, HOOK_PRIO_DEFAULT);
 
+static void check_pd_roles(void)
+{
+	int i;
+
+	/*
+	 * Check for potential power/data swaps so that we can try to be a
+	 * source, unless we are charging from that port.
+	 */
+	for (i = 0; i < PD_PORT_COUNT; i++) {
+		if (charge_manager_get_active_charge_port() != i)
+			pd_check_roles(i);
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, check_pd_roles, HOOK_PRIO_DEFAULT);
+
 static void chipset_s5_to_s3(void)
 {
 	ps = POWER_S3;
