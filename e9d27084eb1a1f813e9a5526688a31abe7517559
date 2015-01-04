@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce156d30_1cbe3955",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2960,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-04T18:13:28Z",
+      "side": 1,
+      "message": "is this too long? i believe the EC times out on the HC after 1 second. shouldn\u0027t this timeout therefore be \u003c1000ms?",
+      "range": {
+        "startLine": 2960,
+        "startChar": 33,
+        "endLine": 2960,
+        "endChar": 37
+      },
+      "revId": "e9d27084eb1a1f813e9a5526688a31abe7517559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
