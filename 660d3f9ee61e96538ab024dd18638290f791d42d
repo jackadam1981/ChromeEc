@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ef61548_c86123f3",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2754,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-04T18:17:25Z",
+      "side": 1,
+      "message": "the one useful command that was under \"pd x flash\" was the \"version\" subcommand which returns version string. This would still be handy to have by default. maybe we can add it in this else case so that you can get version string with \"pd x vdm version\".",
+      "range": {
+        "startLine": 2754,
+        "startChar": 35,
+        "endLine": 2754,
+        "endChar": 38
+      },
+      "revId": "660d3f9ee61e96538ab024dd18638290f791d42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
