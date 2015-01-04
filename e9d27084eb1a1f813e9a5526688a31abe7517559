@@ -22,6 +22,30 @@
       "revId": "e9d27084eb1a1f813e9a5526688a31abe7517559",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee107140_7a4419ec",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2960,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-01-04T21:07:53Z",
+      "side": 1,
+      "message": "Agreed 500ms should be plenty (matches default custom vdm timeout).",
+      "parentUuid": "ce156d30_1cbe3955",
+      "range": {
+        "startLine": 2960,
+        "startChar": 33,
+        "endLine": 2960,
+        "endChar": 37
+      },
+      "revId": "e9d27084eb1a1f813e9a5526688a31abe7517559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
