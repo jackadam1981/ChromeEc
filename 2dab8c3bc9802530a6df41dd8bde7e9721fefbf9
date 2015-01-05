@@ -125,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "2e0529fe_02ffee38",
+        "filename": "board/zinger/hardware.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-05T16:50:33Z",
+      "side": 1,
+      "message": "Ok, got it.",
+      "parentUuid": "ce156d30_9f48fb2a",
+      "revId": "2dab8c3bc9802530a6df41dd8bde7e9721fefbf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a12ccc7b_51ce466d",
         "filename": "board/zinger/hardware.c",
         "patchSetId": 4
@@ -160,6 +178,24 @@
       "side": 1,
       "message": "it\u0027s inverted logic :\n1 means \"not protected\", 0 means write-protected\n(because the default state is erased-flash ie 0xff)",
       "parentUuid": "a12ccc7b_51ce466d",
+      "revId": "2dab8c3bc9802530a6df41dd8bde7e9721fefbf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6126549e_9a4c5dc3",
+        "filename": "board/zinger/hardware.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-05T16:50:33Z",
+      "side": 1,
+      "message": "ok, looks correct.",
+      "parentUuid": "6e2481a4_96b90cea",
       "revId": "2dab8c3bc9802530a6df41dd8bde7e9721fefbf9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
