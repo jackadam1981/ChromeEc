@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e1b056c_3c7695fd",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1001,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-01-05T23:58:55Z",
+      "side": 1,
+      "message": "enter_gfu_mode is side-effecting pointer p and I wasn\u0027t resetting values before subsequent host command.",
+      "range": {
+        "startLine": 1001,
+        "startChar": 5,
+        "endLine": 1001,
+        "endChar": 28
+      },
+      "revId": "77c4fd4aae1e4f83bf9e0d8c4e362d49a87c8f7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
