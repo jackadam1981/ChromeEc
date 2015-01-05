@@ -343,6 +343,7 @@
 #undef CONFIG_CMD_SPI_FLASH
 #undef CONFIG_CMD_STACKOVERFLOW
 #undef CONFIG_CMD_TASKREADY
+#undef CONFIG_CMD_TYPEC
 #undef CONFIG_CMD_USB_PD_PE
 
 /*****************************************************************************/
