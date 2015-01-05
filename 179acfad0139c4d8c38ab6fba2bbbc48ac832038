@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ce156d30_0205b083",
+        "filename": "util/comm-lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-05T17:58:54Z",
+      "side": 1,
+      "message": "Function declarations don\u0027t need extern, just variables.  So you can get rid of this warning.",
+      "parentUuid": "618f34ae_9289ac4d",
+      "revId": "179acfad0139c4d8c38ab6fba2bbbc48ac832038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "418cf0b9_12f2fafa",
         "filename": "util/comm-mec1322.c",
         "patchSetId": 1
