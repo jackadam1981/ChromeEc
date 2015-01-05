@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae0af911_38da29f6",
+        "filename": "board/zinger/hardware.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-05T15:16:08Z",
+      "side": 1,
+      "message": "this bit is called OPTWRE in the datasheet i\u0027m looking at. any reason to not call it that?",
+      "range": {
+        "startLine": 303,
+        "startChar": 8,
+        "endLine": 303,
+        "endChar": 16
+      },
+      "revId": "2dab8c3bc9802530a6df41dd8bde7e9721fefbf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
