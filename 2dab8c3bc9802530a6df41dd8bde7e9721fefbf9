@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "ce156d30_5f6383af",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-05T16:11:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ef89d38_a0af14ee",
+      "revId": "2dab8c3bc9802530a6df41dd8bde7e9721fefbf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae0af911_38da29f6",
         "filename": "board/zinger/hardware.c",
         "patchSetId": 4
@@ -42,6 +60,24 @@
         "endLine": 303,
         "endChar": 16
       },
+      "revId": "2dab8c3bc9802530a6df41dd8bde7e9721fefbf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e2481a4_56c49472",
+        "filename": "board/zinger/hardware.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-05T16:11:11Z",
+      "side": 1,
+      "message": "it\u0027s called OPT_LOCK in other part of our code, but I can update to the (new?) RM terminology",
+      "parentUuid": "ae0af911_38da29f6",
       "revId": "2dab8c3bc9802530a6df41dd8bde7e9721fefbf9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "ce156d30_9f48fb2a",
+        "filename": "board/zinger/hardware.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-05T16:11:11Z",
+      "side": 1,
+      "message": "Yes, it\u0027s somewhat hidden, you need to look at the \"option bytes\" chapter in the RM rather than the \"flash\" chapter :\nin \"4.1.3 Write protection option bytes\" :\n\"\"\"\nThis set of registers is used to write-protect the Flash memory. Clearing a bit in WRPx field\n(and at the same time setting a corresponding bit in nWRPx field) will write-protect the given\nmemory sector.\nFor STM32F03x, STM32F04x, STM32F05x and STM32F07x devices, WRP bits from 0 to\n31 are protecting the Flash memory by sector of 4 kB\n\"\"\"",
+      "parentUuid": "a12ccc7b_f1de5a20",
+      "revId": "2dab8c3bc9802530a6df41dd8bde7e9721fefbf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a12ccc7b_51ce466d",
         "filename": "board/zinger/hardware.c",
         "patchSetId": 4
@@ -88,6 +142,24 @@
         "endLine": 479,
         "endChar": 26
       },
+      "revId": "2dab8c3bc9802530a6df41dd8bde7e9721fefbf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e2481a4_96b90cea",
+        "filename": "board/zinger/hardware.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-05T16:11:11Z",
+      "side": 1,
+      "message": "it\u0027s inverted logic :\n1 means \"not protected\", 0 means write-protected\n(because the default state is erased-flash ie 0xff)",
+      "parentUuid": "a12ccc7b_51ce466d",
       "revId": "2dab8c3bc9802530a6df41dd8bde7e9721fefbf9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
