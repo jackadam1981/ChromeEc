@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "6126549e_fa9391e8",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-05T15:51:29Z",
+      "side": 1,
+      "message": "or if you add to the response structure the current timestamp, then the kernel can calculate the relative times and add it to the log appropriately. this might be better because the kernel would have an easier time identifying repeated entries.",
+      "parentUuid": "ae0af911_f8c6f157",
+      "revId": "14233a686a78caae2c006b6da345bcc06628700d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e0225f8_7ebf6dd4",
         "filename": "include/ec_commands.h",
         "patchSetId": 6
