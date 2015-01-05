@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "4ef89d38_40673093",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-05T00:32:34Z",
+      "side": 1,
+      "message": "agree with vincent, if timestamp is 32 bits it should be shifted to less resolution for a bigger range.",
+      "range": {
+        "startLine": 224,
+        "startChar": 2,
+        "endLine": 224,
+        "endChar": 33
+      },
+      "revId": "14233a686a78caae2c006b6da345bcc06628700d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae0af911_f8c6f157",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-05T00:32:34Z",
+      "side": 1,
+      "message": "also I like the idea of modifying the timestamp here so that it is relative to now, so that logs are easier to line up.",
+      "revId": "14233a686a78caae2c006b6da345bcc06628700d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e0225f8_7ebf6dd4",
         "filename": "include/ec_commands.h",
         "patchSetId": 6
