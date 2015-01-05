@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "4ef89d38_a0af14ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-05T15:34:14Z",
+      "side": 1,
+      "message": "or if the RO half is not write protected",
+      "range": {
+        "startLine": 10,
+        "startChar": 20,
+        "endLine": 10,
+        "endChar": 21
+      },
+      "revId": "2dab8c3bc9802530a6df41dd8bde7e9721fefbf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae0af911_38da29f6",
         "filename": "board/zinger/hardware.c",
         "patchSetId": 4
@@ -18,6 +41,52 @@
         "startChar": 8,
         "endLine": 303,
         "endChar": 16
+      },
+      "revId": "2dab8c3bc9802530a6df41dd8bde7e9721fefbf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a12ccc7b_f1de5a20",
+        "filename": "board/zinger/hardware.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-05T15:34:14Z",
+      "side": 1,
+      "message": "I can\u0027t find in the datasheet what region of memory the bits in WRP0 protect. Is it in the stm32f0 ref man or the stm32f03 datasheet?",
+      "range": {
+        "startLine": 463,
+        "startChar": 1,
+        "endLine": 463,
+        "endChar": 21
+      },
+      "revId": "2dab8c3bc9802530a6df41dd8bde7e9721fefbf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a12ccc7b_51ce466d",
+        "filename": "board/zinger/hardware.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-05T15:34:14Z",
+      "side": 1,
+      "message": "same here. I can\u0027t find the information to validate this check. but here we are masking off the bottom 4 bits, and above on line 463 we set bits 4-7, which looks odd.",
+      "range": {
+        "startLine": 479,
+        "startChar": 4,
+        "endLine": 479,
+        "endChar": 26
       },
       "revId": "2dab8c3bc9802530a6df41dd8bde7e9721fefbf9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
