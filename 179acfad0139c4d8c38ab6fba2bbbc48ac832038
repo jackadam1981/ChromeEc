@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "4ef89d38_a3fa7eca",
+        "filename": "util/comm-lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-01-05T18:23:26Z",
+      "side": 1,
+      "message": "Tried your suggestion but it was giving the same warning with \"extern\" removed:\n\n            WARNING: externs should be avoided in .c files\n            #174: FILE: util/comm-lpc.c:15:\n            +int mec1322_read_memmap(uint16_t addr, uint8_t *b);\n\n            WARNING: externs should be avoided in .c files\n            #175: FILE: util/comm-lpc.c:16:\n            +int mec1322_write_memmap(uint8_t b, uint16_t addr);",
+      "parentUuid": "ce156d30_0205b083",
+      "revId": "179acfad0139c4d8c38ab6fba2bbbc48ac832038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "418cf0b9_12f2fafa",
         "filename": "util/comm-mec1322.c",
         "patchSetId": 1
