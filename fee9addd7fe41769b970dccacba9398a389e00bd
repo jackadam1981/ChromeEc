@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e4c498a_2a4e5b8c",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-06T20:31:35Z",
+      "side": 1,
+      "message": "this isn\u0027t being used anywhere outside of the file you took it out of. i think it can stay there, unless we have plans to use it elsewhere.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 41
+      },
+      "revId": "fee9addd7fe41769b970dccacba9398a389e00bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
