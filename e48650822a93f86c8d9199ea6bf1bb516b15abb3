@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e941dff_3da54fb9",
+        "filename": "board/cid/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2015-01-06T22:05:45Z",
+      "side": 1,
+      "message": "As per the spec on the issue tracker it is mentioned that even on low charge it should be amber. Please correct either the spec or the code.",
+      "revId": "e48650822a93f86c8d9199ea6bf1bb516b15abb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ea1a95e_1c25f5d1",
+        "filename": "board/cid/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2015-01-06T22:05:45Z",
+      "side": 1,
+      "message": "keep the battery_ticks counter (and the corresponding counter increment) in the cid_led_set_battery() function itself.",
+      "revId": "e48650822a93f86c8d9199ea6bf1bb516b15abb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
