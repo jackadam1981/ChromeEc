@@ -22,6 +22,29 @@
       "revId": "8b0e34eea2d8896c701ce6a6d0ec83b5f0da2cc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae583942_681b439c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2990,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-06T16:00:37Z",
+      "side": 1,
+      "message": "any idea how long it actually takes to erase flash? is 800ms long enough? you can be even more conservative and go to 900ms like the FW_REBOOT command.",
+      "range": {
+        "startLine": 2990,
+        "startChar": 33,
+        "endLine": 2990,
+        "endChar": 36
+      },
+      "revId": "8b0e34eea2d8896c701ce6a6d0ec83b5f0da2cc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
