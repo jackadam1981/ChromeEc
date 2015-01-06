@@ -31,7 +31,7 @@
 #include "util.h"
 
 #include "gpio_list.h"
-
+/* this is a test of repo upload */
 /* power signal list.  Must match order of enum power_signal. */
 const struct power_signal_info power_signal_list[] = {
 	{GPIO_PP5000_PGOOD,  1, "PGOOD_PP5000"},
