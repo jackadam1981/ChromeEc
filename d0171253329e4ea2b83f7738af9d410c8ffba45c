@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e445558_72afb626",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-06T01:35:58Z",
+      "side": 1,
+      "message": "check_pd_roles(void) and pd_check_roles(int) \ncan we find a better name ?",
+      "revId": "d0171253329e4ea2b83f7738af9d410c8ffba45c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e445558_924e9a05",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-06T01:35:58Z",
+      "side": 1,
+      "message": "why not putting this hook in common/usb_pd_protocol ?\nseems pretty generic (unless you have no resume...)",
+      "revId": "d0171253329e4ea2b83f7738af9d410c8ffba45c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae3f59b4_53539661",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-06T01:35:58Z",
+      "side": 1,
+      "message": "giving you are orring those 2 flags together, maybe you want to give them consecutive values.",
+      "revId": "d0171253329e4ea2b83f7738af9d410c8ffba45c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e445558_52b4b274",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1436,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-06T01:35:58Z",
+      "side": 1,
+      "message": "should we just pass drp_state as another argument to pd_get_dual_role ?",
+      "revId": "d0171253329e4ea2b83f7738af9d410c8ffba45c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
