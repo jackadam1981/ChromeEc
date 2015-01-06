@@ -12,6 +12,9 @@
 #include "comm-host.h"
 #include "ec_commands.h"
 
+#define EC_BUF_SIZE_CACHE "/tmp/ec_buffer_size"
+#define EC_BUF_SIZE_MIN   32
+
 int (*ec_command_proto)(int command, int version,
 			const void *outdata, int outsize,
 			void *indata, int insize);
@@ -75,10 +78,54 @@ int ec_command(int command, int version,
 				indata, insize);
 }
 
+static int read_cached_buffer_size(void)
+{
+	FILE *fp;
+	int in_size, out_size;
+	int ret = 0;
+	fp = fopen(EC_BUF_SIZE_CACHE, "r");
+	if (!fp) {
+		/* cached buffer size not found. Will read from ec. */
+		return 1;
+	}
+
+	if (fscanf(fp, "%d %d\n", &in_size, &out_size) < 0) {
+		fprintf(stderr, "Error read cached buffer size\n");
+		ret = 1;
+		goto read_cached_buffer_size_end;
+	}
+	if (in_size < EC_BUF_SIZE_MIN || ec_max_insize < in_size ||
+	    out_size < EC_BUF_SIZE_MIN || ec_max_outsize < out_size) {
+		fprintf(stderr, "Cached buffer size does not make sense\n");
+		ret = 1;
+		goto read_cached_buffer_size_end;
+	}
+	ec_max_outsize = out_size;
+	ec_max_insize = in_size;
+
+read_cached_buffer_size_end:
+	fclose(fp);
+	return ret;
+}
+
+static void write_cached_buffer_size(void)
+{
+	FILE *fp;
+	fp = fopen(EC_BUF_SIZE_CACHE, "w");
+	if (!fp) {
+		fprintf(stderr, "Error open file %s\n", EC_BUF_SIZE_CACHE);
+		return;
+	}
+	if (fprintf(fp, "%d %d\n", ec_max_insize, ec_max_outsize) < 0)
+		fprintf(stderr, "Error write cached buffer size\n");
+	fclose(fp);
+}
+
 int comm_init(int interfaces, const char *device_name)
 {
 	struct ec_response_get_protocol_info info;
 	int new_size;
+	int cache_size_flag;
 
 	/* Default memmap access */
 	ec_readmem = fake_readmem;
@@ -101,6 +148,9 @@ int comm_init(int interfaces, const char *device_name)
 	return 1;
 
  init_ok:
+	/* read disk for cache buffer_size first */
+	cache_size_flag = read_cached_buffer_size();
+
 	/* Allocate shared I/O buffers */
 	ec_outbuf = malloc(ec_max_outsize);
 	ec_inbuf = malloc(ec_max_insize);
@@ -109,9 +159,13 @@ int comm_init(int interfaces, const char *device_name)
 		return 1;
 	}
 
+	if (!cache_size_flag) {
+		return 0;
+	}
 	/*
-	 * read max request / response size from ec and reduce buffer size
-	 * if the size supported by ec is less than the default value.
+	 * If we do not have cached buffer size, we will ask ec by
+	 * read max request / response size from ec and then reduce the buffer
+	 * size if the size supported by ec is less than the default value.
 	 */
 	if (ec_command(EC_CMD_GET_PROTOCOL_INFO, 0, NULL, 0, &info,
 		sizeof(info)) == sizeof(info)) {
@@ -134,7 +188,7 @@ int comm_init(int interfaces, const char *device_name)
 			return 1;
 		}
 	}
-
+	write_cached_buffer_size();
 	return 0;
 
 }
