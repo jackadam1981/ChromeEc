@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4e4fbd7e_a84b7326",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-06T20:22:41Z",
+      "side": 1,
+      "message": "Done, removed this function completely.",
+      "parentUuid": "8e445558_72afb626",
+      "revId": "d0171253329e4ea2b83f7738af9d410c8ffba45c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e445558_924e9a05",
         "filename": "board/samus_pd/board.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2015-01-06T01:35:58Z",
       "side": 1,
       "message": "why not putting this hook in common/usb_pd_protocol ?\nseems pretty generic (unless you have no resume...)",
+      "revId": "d0171253329e4ea2b83f7738af9d410c8ffba45c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e52c124_cc32430d",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-06T20:22:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e445558_924e9a05",
       "revId": "d0171253329e4ea2b83f7738af9d410c8ffba45c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "4e4fbd7e_e8516bd6",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-06T20:22:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae3f59b4_53539661",
+      "revId": "d0171253329e4ea2b83f7738af9d410c8ffba45c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e445558_52b4b274",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2015-01-06T01:35:58Z",
       "side": 1,
       "message": "should we just pass drp_state as another argument to pd_get_dual_role ?",
+      "revId": "d0171253329e4ea2b83f7738af9d410c8ffba45c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e4fbd7e_685e9bed",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1436,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-06T20:22:41Z",
+      "side": 1,
+      "message": "I assume you mean another arg to pd_check_pr_role(). I don\u0027t think so because it\u0027s only defined for dual-role devices, so  non dual-role devices don\u0027t need it.",
+      "parentUuid": "8e445558_52b4b274",
       "revId": "d0171253329e4ea2b83f7738af9d410c8ffba45c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
