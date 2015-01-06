@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0e3065e8_6eea2f37",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-01-06T02:59:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2151bca8_9f1177fd",
+      "range": {
+        "startLine": 330,
+        "startChar": 15,
+        "endLine": 330,
+        "endChar": 16
+      },
+      "revId": "edd9bcf9a44666bdf0945b5175a45d3d559e48a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e11c04fd_7d6593b4",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2014-12-20T03:57:28Z",
       "side": 1,
       "message": "I thought we needed to call exit_mode here so that PD devices exit GFU mode when they are disconnected (same on hard reset). Is that being done elsewhere now?",
+      "range": {
+        "startLine": 347,
+        "startChar": 2,
+        "endLine": 347,
+        "endChar": 16
+      },
+      "revId": "edd9bcf9a44666bdf0945b5175a45d3d559e48a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee5eb12a_ea8f278c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-01-06T02:59:12Z",
+      "side": 1,
+      "message": "pd_dfp_pe_init invalidates all mode related data as VDM discovery will need to re-occur if/when re-connection occurs.",
+      "parentUuid": "e11c04fd_7d6593b4",
       "range": {
         "startLine": 347,
         "startChar": 2,
