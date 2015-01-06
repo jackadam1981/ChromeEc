@@ -22,6 +22,30 @@
       "revId": "fee9addd7fe41769b970dccacba9398a389e00bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e929510_5fa5ab92",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-01-06T21:56:02Z",
+      "side": 1,
+      "message": "Not sure what you mean.  Its used in usb_pd_protocol.c \u0026 host_command_master.c\n\nAs my current hc_remote_flashing timeout lengths are trying to not exceed this timeout I figured I should unify the value in case future changes disregard the comments I\u0027ve added.",
+      "parentUuid": "2e4c498a_2a4e5b8c",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 41
+      },
+      "revId": "fee9addd7fe41769b970dccacba9398a389e00bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
