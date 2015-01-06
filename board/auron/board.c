@@ -128,6 +128,6 @@ int board_discharge_on_ac(int enable)
 	if (enable)
 		gpio_set_level(GPIO_CHARGE_L, 1);
 	else
-		gpio_set_level(GPIO_CHARGE_L, 0);
+		gpio_set_level(GPIO_CHARGE_L, 1);
 	return EC_SUCCESS;
 }
