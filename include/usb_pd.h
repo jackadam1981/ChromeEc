@@ -1222,4 +1222,21 @@ void pd_prepare_sysjump(void);
  */
 void pd_set_new_power_request(int port);
 
+/* ----- Logging ----- */
+#ifdef CONFIG_USB_PD_LOGGING
+/**
+ * Record one event in the PD logging FIFO.
+ *
+ * @param type event type as defined by PD_EVENT_xx in ec_commands.h
+ * @param size_port payload size and port num (defined by PD_LOG_PORT_SIZE)
+ * @param data type-defined information
+ * @param payload pointer to the optional payload (0..16 bytes)
+ */
+void pd_log_event(uint8_t type, uint8_t size_port,
+		  uint16_t data, void *payload);
+#else  /* CONFIG_USB_PD_LOGGING */
+static inline void pd_log_event(uint8_t type, uint8_t size_port,
+				uint16_t data, void *payload) {}
+#endif /* CONFIG_USB_PD_LOGGING */
+
 #endif  /* __USB_PD_H */
