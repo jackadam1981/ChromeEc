@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e4c498a_e7dd1c9c",
+        "filename": "util/comm-host.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2015-01-06T20:45:38Z",
+      "side": 1,
+      "message": "ectool is run as root so this should probably use mktemp(3)  to avoid a basic symlink attack, but that makes it not really useful between ectool invocations.  Maybe if it was in /var/run which is at least limited to writing by root only.",
+      "range": {
+        "startLine": 15,
+        "startChar": 27,
+        "endLine": 15,
+        "endChar": 46
+      },
+      "revId": "cf4bbe758808ea368762bf15196ed8d5acc06b32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e4fbd7e_2871c3fb",
+        "filename": "util/comm-host.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2015-01-06T20:45:38Z",
+      "side": 1,
+      "message": "If this does use a known/static file name it may be a good idea to stat() the path first and do some extra checks before opening:\n\n- S_ISREG(stat.st_mode) \u003d\u003d 1 (only regular files)\n- stat.st_nlink \u003d\u003d 1 (only one link, itself)\n\nYou could get even more paranoid and stat() again after opening to ensure that st_ino and st_uid matches what was checked before.",
+      "range": {
+        "startLine": 114,
+        "startChar": 6,
+        "endLine": 114,
+        "endChar": 11
+      },
+      "revId": "cf4bbe758808ea368762bf15196ed8d5acc06b32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
