@@ -3055,7 +3055,7 @@ static int hc_remote_flash(struct host_cmd_handler_args *args)
 	const struct ec_params_usb_pd_fw_update *p = args->params;
 	int port = p->port;
 	const uint32_t *data = &(p->size) + 1;
-	int i, size;
+	int i, size, rv = EC_RES_SUCCESS;
 	timestamp_t timeout;
 
 	if (p->size + sizeof(*p) > args->params_size)
@@ -3082,15 +3082,12 @@ static int hc_remote_flash(struct host_cmd_handler_args *args)
 
 	case USB_PD_FW_FLASH_ERASE:
 		pd_send_vdm(port, USB_VID_GOOGLE, VDO_CMD_FLASH_ERASE, NULL, 0);
+
 		/*
-		 * TODO: Note, page erase for 2K is 20-40msec while host command
-		 * timeout is 1sec so this can't be longer.  In practice,
-		 * for 32 pages, its passed.  Better way to implement may be to
-		 * push burden to HOST to manage latency.
+		 * Return immediately.	Host needs to manage delays here which
+		 * can be as long as 1.2 seconds on 64KB RW flash.
 		 */
-		timeout.val = get_time().val +
-			PD_HOST_COMMAND_TIMEOUT_US - 100*MSEC;
-		break;
+		return EC_RES_SUCCESS;
 
 	case USB_PD_FW_ERASE_SIG:
 		pd_send_vdm(port, USB_VID_GOOGLE, VDO_CMD_ERASE_SIG, NULL, 0);
@@ -3127,12 +3124,13 @@ static int hc_remote_flash(struct host_cmd_handler_args *args)
 	while ((pd[port].vdm_state > 0) && (get_time().val < timeout.val))
 		task_wait_event(50*MSEC);
 
-	if (pd[port].vdm_state < 0)
-		return EC_RES_ERROR;
-	if (pd[port].vdm_state > 0)
-		return EC_RES_TIMEOUT;
+	if ((pd[port].vdm_state > 0) ||
+	    (pd[port].vdm_state == VDM_STATE_ERR_TMOUT))
+		rv = EC_RES_TIMEOUT;
+	else if (pd[port].vdm_state < 0)
+		rv = EC_RES_ERROR;
 
-	return EC_RES_SUCCESS;
+	return rv;
 }
 DECLARE_HOST_COMMAND(EC_CMD_USB_PD_FW_UPDATE,
 		     hc_remote_flash,
