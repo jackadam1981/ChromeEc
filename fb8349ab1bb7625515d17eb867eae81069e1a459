@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ea1a95e_c287a638",
+        "filename": "Makefile.rules",
+        "patchSetId": 4
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-07T00:16:03Z",
+      "side": 1,
+      "message": "Still extra trailing whitespace in many files.",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 1
+      },
+      "revId": "fb8349ab1bb7625515d17eb867eae81069e1a459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ea1a95e_6201f2fa",
+        "filename": "board/npcx_evb/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-07T00:16:03Z",
+      "side": 1,
+      "message": "Still need to fix copyright dates.",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "fb8349ab1bb7625515d17eb867eae81069e1a459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
