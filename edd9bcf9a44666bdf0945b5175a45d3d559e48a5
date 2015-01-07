@@ -117,6 +117,30 @@
       "revId": "edd9bcf9a44666bdf0945b5175a45d3d559e48a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ea1a95e_45008074",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-01-07T23:03:43Z",
+      "side": 1,
+      "message": "Agreed ... exit function must be executed to guarantee entry into USB safe mode.  Good catch.",
+      "parentUuid": "ae583942_e80e1359",
+      "range": {
+        "startLine": 347,
+        "startChar": 2,
+        "endLine": 347,
+        "endChar": 16
+      },
+      "revId": "edd9bcf9a44666bdf0945b5175a45d3d559e48a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
