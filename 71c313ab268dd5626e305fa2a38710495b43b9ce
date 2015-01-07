@@ -1,0 +1,251 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ced64ddb_51429471",
+        "filename": "board/samus_pd/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-07T02:48:46Z",
+      "side": 1,
+      "message": "nit: probably don\u0027t need this comment here. can add to include/config.h",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 73
+      },
+      "revId": "71c313ab268dd5626e305fa2a38710495b43b9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e7785c2_73ab0091",
+        "filename": "common/pd_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-07T02:48:46Z",
+      "side": 1,
+      "message": "probably should be it\u0027s own print statements, CC_PDLOG?",
+      "range": {
+        "startLine": 13,
+        "startChar": 41,
+        "endLine": 13,
+        "endChar": 49
+      },
+      "revId": "71c313ab268dd5626e305fa2a38710495b43b9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ced64ddb_d13524f7",
+        "filename": "common/pd_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-07T02:48:46Z",
+      "side": 1,
+      "message": "seems like we need a mutex here to protect us, otherwise we could lose a log event, or possibly worse have a corrupted log event. not to mention, are queue_() functions re-entrant? haven\u0027t done my research, but even if they are, would still need a mutex in this function.",
+      "revId": "71c313ab268dd5626e305fa2a38710495b43b9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e7785c2_13a08ca8",
+        "filename": "common/pd_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-07T02:48:46Z",
+      "side": 1,
+      "message": "we use sizeof(struct ec_response_pd_log) in a lot of places, can we make a macro for it?",
+      "range": {
+        "startLine": 25,
+        "startChar": 35,
+        "endLine": 25,
+        "endChar": 44
+      },
+      "revId": "71c313ab268dd5626e305fa2a38710495b43b9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ee0d5b0_2fb449c2",
+        "filename": "common/pd_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-07T02:48:46Z",
+      "side": 1,
+      "message": "now it comes up again, is the queue_add_units() in the previous function atomic? or at least is it protected such that if we are in the middle of adding a unit, then this call to remove a unit is not allowed until the add is completely finished?\n\nmight be ok, but need to check. even if it is ok, would appreciate a comment in code to the affect.",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 19
+      },
+      "revId": "71c313ab268dd5626e305fa2a38710495b43b9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ee0d5b0_cfb81db9",
+        "filename": "common/pd_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-07T02:48:46Z",
+      "side": 1,
+      "message": "also need another mutex around this remove unit and the one 3 lines up in case a log_event is called in between.",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 20
+      },
+      "revId": "71c313ab268dd5626e305fa2a38710495b43b9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ced64ddb_113c0ce4",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2844,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-07T02:48:46Z",
+      "side": 1,
+      "message": "don\u0027t need comment breaking down bits since you already have a MASK macro which has all the same info",
+      "range": {
+        "startLine": 2844,
+        "startChar": 23,
+        "endLine": 2844,
+        "endChar": 68
+      },
+      "revId": "71c313ab268dd5626e305fa2a38710495b43b9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ee0d5b0_8fe775e6",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2845,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-07T02:48:46Z",
+      "side": 1,
+      "message": "can you give an example of what would go in here vs. in the payload?",
+      "range": {
+        "startLine": 2845,
+        "startChar": 1,
+        "endLine": 2845,
+        "endChar": 39
+      },
+      "revId": "71c313ab268dd5626e305fa2a38710495b43b9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e7785c2_d3b21406",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2846,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-07T02:48:46Z",
+      "side": 1,
+      "message": "nit: easier to read if comments aligned",
+      "range": {
+        "startLine": 2842,
+        "startChar": 20,
+        "endLine": 2846,
+        "endChar": 28
+      },
+      "revId": "71c313ab268dd5626e305fa2a38710495b43b9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e7785c2_b3b998e9",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2880,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-07T02:48:46Z",
+      "side": 1,
+      "message": "how many bits did we reserve for the device and how many for the event code? 2 and 6? if the device is only two bits then we are already full? if so, then maybe we should make these a little more generic: PD MCU, all PD accessories, PD sources (power supplies), PD sinks (video dongles).",
+      "range": {
+        "startLine": 2880,
+        "startChar": 28,
+        "endLine": 2880,
+        "endChar": 32
+      },
+      "revId": "71c313ab268dd5626e305fa2a38710495b43b9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ced64ddb_31411069",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2899,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-07T02:48:46Z",
+      "side": 1,
+      "message": "is this really a good use of an enum? it has masks and shift values? Why not just macros? or pull out the shift and make it a macro, and then use that macro when making the mask?",
+      "range": {
+        "startLine": 2887,
+        "startChar": 0,
+        "endLine": 2899,
+        "endChar": 2
+      },
+      "revId": "71c313ab268dd5626e305fa2a38710495b43b9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
