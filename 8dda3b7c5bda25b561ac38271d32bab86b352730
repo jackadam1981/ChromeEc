@@ -81,6 +81,24 @@
       "revId": "8dda3b7c5bda25b561ac38271d32bab86b352730",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e4d29af_df159f60",
+        "filename": "board/twinkie/injector.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-01-07T18:43:42Z",
+      "side": 1,
+      "message": "Sure.  Might want to mention that the 1.1 is tied to CT bit settings 0x4 (for Vsh, Vb) in cfg as worst case conversion is 8ms (0x7)",
+      "parentUuid": "0ef86589_6beae104",
+      "revId": "8dda3b7c5bda25b561ac38271d32bab86b352730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
