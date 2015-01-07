@@ -1577,18 +1577,6 @@ static void lightbar_startup(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, lightbar_startup, HOOK_PRIO_DEFAULT);
 
-static void lightbar_resume(void)
-{
-	lightbar_sequence(LIGHTBAR_S3S0);
-}
-DECLARE_HOOK(HOOK_CHIPSET_RESUME, lightbar_resume, HOOK_PRIO_DEFAULT);
-
-static void lightbar_suspend(void)
-{
-	lightbar_sequence(LIGHTBAR_S0S3);
-}
-DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, lightbar_suspend, HOOK_PRIO_DEFAULT);
-
 static void lightbar_shutdown(void)
 {
 	lightbar_sequence(LIGHTBAR_S3S5);
