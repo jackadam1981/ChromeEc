@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e630529_9c3e89f9",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-07T20:51:33Z",
+      "side": 1,
+      "message": "priority has to change to 1. without this, there is still junk because the DMA interrupt occasionally gets interrupted by another interrupt (incoming i2c host command)",
+      "range": {
+        "startLine": 279,
+        "startChar": 68,
+        "endLine": 279,
+        "endChar": 69
+      },
+      "revId": "d6146da1782ea0a107e359054bad0c2f4efa9913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e630529_dc38010e",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-07T20:51:33Z",
+      "side": 1,
+      "message": "what board do we have that isn\u0027t one of these?",
+      "range": {
+        "startLine": 395,
+        "startChar": 0,
+        "endLine": 395,
+        "endChar": 64
+      },
+      "revId": "d6146da1782ea0a107e359054bad0c2f4efa9913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
