@@ -99,6 +99,24 @@
       "revId": "8dda3b7c5bda25b561ac38271d32bab86b352730",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e630529_d932d3da",
+        "filename": "board/twinkie/injector.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-07T19:03:06Z",
+      "side": 1,
+      "message": "sure and 1.1ms is wrong since we are doing 2 conversions. Thanks for pointing the details !\nUpdated",
+      "parentUuid": "2e4d29af_df159f60",
+      "revId": "8dda3b7c5bda25b561ac38271d32bab86b352730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
