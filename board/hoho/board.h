@@ -56,11 +56,8 @@
 #define CONFIG_USB_PID 0x5010
 #define CONFIG_USB_BCD_DEV 0x0001 /* v 0.01 */
 
-/*
- * Allow dangerous commands all the time, since we don't have a write protect
- * switch.
- */
-#define CONFIG_SYSTEM_UNLOCKED
+/* No Write-protect GPIO, force the write-protection */
+#define CONFIG_WP_ALWAYS
 
 #ifndef __ASSEMBLER__
 
