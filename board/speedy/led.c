@@ -12,6 +12,9 @@
 #include "chipset.h"
 #include "led_common.h"
 #include "util.h"
+#include "include/extpower.h"
+#include "lid_switch.h"
+#include "console.h"
 
 const enum ec_led_id supported_led_ids[] = {
 	EC_LED_ID_BATTERY_LED,
@@ -20,25 +23,22 @@ const enum ec_led_id supported_led_ids[] = {
 
 const int supported_led_ids_count = ARRAY_SIZE(supported_led_ids);
 
-enum led_color {
-	LED_GREEN = 0,
-	LED_ORANGE,
-	LED_COLOR_COUNT  /* Number of colors, not a color itself */
-};
-
-static int bat_led_set(enum led_color color, int on)
+static void bat_led_set_green(void)
 {
-	switch (color) {
-	case LED_GREEN:
-		gpio_set_level(GPIO_BAT_LED1, on ? 0 : 1);
-		break;
-	case LED_ORANGE:
-		gpio_set_level(GPIO_BAT_LED0, on ? 0 : 1);
-		break;
-	default:
-		return EC_ERROR_UNKNOWN;
-	}
-	return EC_SUCCESS;
+	gpio_set_level(GPIO_BAT_LED1, 0);
+	gpio_set_level(GPIO_BAT_LED0, 1);
+}
+
+static void bat_led_set_orange(void)
+{
+	gpio_set_level(GPIO_BAT_LED0, 0);
+	gpio_set_level(GPIO_BAT_LED1, 1);
+}
+
+static void bat_led_set_off(void)
+{
+	gpio_set_level(GPIO_BAT_LED0, 1);
+	gpio_set_level(GPIO_BAT_LED1, 1);
 }
 
 static int pwr_led_set(int on)
@@ -59,14 +59,11 @@ int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 	switch (led_id) {
 	case EC_LED_ID_BATTERY_LED:
 		if (brightness[EC_LED_COLOR_GREEN] != 0) {
-			bat_led_set(LED_GREEN, 1);
-			bat_led_set(LED_ORANGE, 0);
+			bat_led_set_green();
 		} else if (brightness[EC_LED_COLOR_YELLOW] != 0) {
-			bat_led_set(LED_GREEN, 1);
-			bat_led_set(LED_ORANGE, 1);
+			bat_led_set_orange();
 		} else {
-			bat_led_set(LED_GREEN, 0);
-			bat_led_set(LED_ORANGE, 0);
+			bat_led_set_off();
 		}
 		break;
 	case EC_LED_ID_POWER_LED:
@@ -83,70 +80,84 @@ static void speedy_led_set_power(void)
 {
 	static int power_second;
 
-	power_second++;
-
-	/* PWR LED behavior:
-	 * Power on: Green
-	 * Suspend: Green in breeze mode ( 1 sec on/ 3 sec off)
-	 * Power off: OFF
+	/* Power LED status
+	 *
+	 * S0:
+	 *   lid open: Green (solid)
+	 *   lid closed (docked mode): off
+	 *
+	 * S3:
+	 *   lid open: Green (Blinking) flashing every 2 seconds
+	 *   lid close:  off
+	 *
+	 * S5: off
 	 */
-	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
-		pwr_led_set(0);
-	else if (chipset_in_state(CHIPSET_STATE_ON))
-		pwr_led_set(1);
-	else if (chipset_in_state(CHIPSET_STATE_SUSPEND))
-		pwr_led_set((power_second & 3) ? 0 : 1);
-}
+	if (lid_is_open()) {
+		power_second++;
 
+		if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+			pwr_led_set(0);
+		else if (chipset_in_state(CHIPSET_STATE_ON))
+			pwr_led_set(1);
+		else if (chipset_in_state(CHIPSET_STATE_SUSPEND)) {
+			pwr_led_set(power_second & 4 ? 0 : 1);
+		}
+	}
+	else {
+		pwr_led_set(0);
+	}
+}
 
 static void speedy_led_set_battery(void)
 {
 	static int battery_second;
+	int battery_percent;
 
 	battery_second++;
 
-	/* BAT LED behavior:
-	 * Fully charged / idle: Off
-	 * Under charging: Orange
-	 * Battery low (10%): Orange in breeze mode (1 sec on, 3 sec off)
-	 * Battery critical low (less than 3%) or abnormal battery
-	 *     situation: Orange in blinking mode (1 sec on, 1 sec off)
-	 * Using battery or not connected to AC power: OFF
+	/* Charging LED status
+	 *
+	 * When battery is lower than 10% and external power disconnected: Orange (Blinking)
+	 *   flashing every 2 seconds
+	 * When battery is 10%~95% and external power connected: Orange (solid)
+	 * When battery is 95%~100% and external power connected: Green (solid)
+	 * When battery error: flash Orange quickly flashing every 0.5 seconds
 	 */
-	switch (charge_get_state()) {
-	case PWR_STATE_CHARGE:
-		bat_led_set(LED_ORANGE, 1);
-		break;
-	case PWR_STATE_CHARGE_NEAR_FULL:
-		bat_led_set(LED_ORANGE, 1);
-		break;
-	case PWR_STATE_DISCHARGE:
-		if (charge_get_percent() < 3)
-			bat_led_set(LED_ORANGE, (battery_second & 1) ? 0 : 1);
-		else if (charge_get_percent() < 10)
-			bat_led_set(LED_ORANGE, (battery_second & 3) ? 0 : 1);
+
+	if (charge_get_state() == PWR_STATE_ERROR) {
+		if (battery_second & 1)
+			bat_led_set_orange();
 		else
-			bat_led_set(LED_ORANGE, 0);
-		break;
-	case PWR_STATE_ERROR:
-		bat_led_set(LED_ORANGE, (battery_second & 1) ? 0 : 1);
-		break;
-	case PWR_STATE_IDLE: /* External power connected in IDLE. */
-		bat_led_set(LED_ORANGE, 0);
-		break;
-	default:
-		/* Other states don't alter LED behavior */
-		break;
+			bat_led_set_off();
+	}
+	else {
+		battery_percent = charge_get_percent();
+
+		if (battery_percent < 10) {
+			if (battery_second & 4)
+				bat_led_set_orange();
+			else
+				bat_led_set_off();
+		}
+		else if (extpower_is_present()) {
+			if (battery_percent > 95)
+				bat_led_set_green();
+			else
+				bat_led_set_orange();
+		}
+		else {
+			bat_led_set_off();
+		}
 	}
 }
 
-/**  * Called by hook task every 1 sec  */
-static void led_second(void)
+/**  * Called by hook task every 500 ms  */
+static void led_tick(void)
 {
 	if (led_auto_control_is_enabled(EC_LED_ID_POWER_LED))
 		speedy_led_set_power();
 	if (led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED))
 		speedy_led_set_battery();
 }
-DECLARE_HOOK(HOOK_SECOND, led_second, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_TICK, led_tick, HOOK_PRIO_DEFAULT);
 
