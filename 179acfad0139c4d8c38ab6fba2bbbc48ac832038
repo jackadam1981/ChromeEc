@@ -55,6 +55,23 @@
     },
     {
       "key": {
+        "uuid": "ced64ddb_f10b8846",
+        "filename": "util/comm-lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-01-07T02:21:43Z",
+      "side": 1,
+      "message": "This will call the MemMap access function which will clear the BUSY bit before exit, so there will not be conflict when the next line of code starts the Host Command execution.",
+      "revId": "179acfad0139c4d8c38ab6fba2bbbc48ac832038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "418cf0b9_12f2fafa",
         "filename": "util/comm-mec1322.c",
         "patchSetId": 1
@@ -140,6 +157,58 @@
         "endLine": 83,
         "endChar": 26
       },
+      "revId": "179acfad0139c4d8c38ab6fba2bbbc48ac832038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ee0d5b0_af3279d9",
+        "filename": "util/comm-mec1322.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-01-07T02:21:43Z",
+      "side": 1,
+      "message": "I will change this to do 1 micro-second sleep.\n\nFor usleep function, it is not accurate at all in single digit range, at least in ectool. And for LPC, with a 19MHz bus, each IO is about 0.7 micro-second, but other chipset could have faster LPC bus, so it should still do a minimal of 1 micro-second sleep.",
+      "parentUuid": "0e9ea522_c171e677",
+      "revId": "179acfad0139c4d8c38ab6fba2bbbc48ac832038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ced64ddb_d10e8459",
+        "filename": "util/comm-mec1322.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-01-07T02:21:43Z",
+      "side": 1,
+      "message": "This check is added to make sure the BUSY bit is cleared before exiting the MemMap access function to avoid collision with Host Command Execution.",
+      "revId": "179acfad0139c4d8c38ab6fba2bbbc48ac832038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e7785c2_f364f004",
+        "filename": "util/comm-mec1322.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-01-07T02:21:43Z",
+      "side": 1,
+      "message": "This check is added to make sure the BUSY bit is cleared before exiting the MemMap access function to avoid collision with Host Command Execution.",
       "revId": "179acfad0139c4d8c38ab6fba2bbbc48ac832038",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
