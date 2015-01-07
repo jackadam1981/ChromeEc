@@ -1311,6 +1311,12 @@
  */
 #undef CONFIG_WP_ACTIVE_HIGH
 
+/*
+ * The write protect signal is always asserted,
+ * independantly of the GPIO existence or current value.
+ */
+#undef CONFIG_WP_ALWAYS
+
 /*****************************************************************************/
 /*
  * Include board and core configs, since those hold the CONFIG_ constants for a
