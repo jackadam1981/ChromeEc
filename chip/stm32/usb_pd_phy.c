@@ -300,6 +300,30 @@ void pd_tx_set_circular_mode(int port)
 	pd_phy[port].dma_tx_option.flags |= STM32_DMA_CCR_CIRC;
 }
 
+#ifdef CONFIG_COMMON_RUNTIME
+int tx_dma_polarities[PD_PORT_COUNT];
+
+static void tx_dma_done(void *data)
+{
+	int port = (int)data;
+	int polarity = tx_dma_polarities[port];
+	stm32_spi_regs_t *spi = SPI_REGS(port);
+
+	while (spi->sr & STM32_SPI_SR_FTLVL)
+		; /* wait for TX FIFO empty */
+	while (spi->sr & STM32_SPI_SR_BSY)
+		; /* wait for BSY == 0 */
+
+	/* put TX pins and reference in Hi-Z */
+	pd_tx_disable(port, polarity);
+
+	/* Stop counting */
+	pd_phy[port].tim_tx->cr1 &= ~1;
+
+	task_set_event(PORT_TO_TASK_ID(port), TASK_EVENT_DMA_TC, 0);
+}
+#endif
+
 int pd_start_tx(int port, int polarity, int bit_len)
 {
 	stm32_dma_chan_t *tx = dma_get_channel(DMAC_SPI_TX(port));
@@ -330,7 +354,9 @@ int pd_start_tx(int port, int polarity, int bit_len)
 	/* Kick off the DMA to send the data */
 	dma_clear_isr(DMAC_SPI_TX(port));
 #ifdef CONFIG_COMMON_RUNTIME
-	dma_enable_tc_interrupt(DMAC_SPI_TX(port));
+	tx_dma_polarities[port] = polarity;
+	dma_enable_tc_interrupt_callback(DMAC_SPI_TX(port), &tx_dma_done,
+					 (void *)port);
 #endif
 	dma_go(tx);
 
@@ -353,13 +379,20 @@ int pd_start_tx(int port, int polarity, int bit_len)
 
 void pd_tx_done(int port, int polarity)
 {
-	stm32_spi_regs_t *spi = SPI_REGS(port);
-
-	/* wait for DMA */
 #ifdef CONFIG_COMMON_RUNTIME
-	task_wait_event(DMA_TRANSFER_TIMEOUT_US);
+	int rv;
+
+	/* wait for DMA, DMA interrupt will stop the SPI clock */
+	do {
+		rv = task_wait_event(DMA_TRANSFER_TIMEOUT_US);
+	} while (!(rv & (TASK_EVENT_TIMER | TASK_EVENT_DMA_TC)));
 	dma_disable_tc_interrupt(DMAC_SPI_TX(port));
-#endif
+
+	/* Reset SPI to clear remaining data in buffer */
+	pd_tx_spi_reset(port);
+
+#else /* !CONFIG_COMMON_RUNTIME */
+	stm32_spi_regs_t *spi = SPI_REGS(port);
 
 	/* wait for real end of transmission */
 #if defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32F3)
@@ -402,6 +435,7 @@ void pd_tx_done(int port, int polarity)
 	/* Reset SPI to clear remaining data in buffer */
 	pd_tx_spi_reset(port);
 #endif
+#endif /* !CONFIG_COMMON_RUNTIME */
 }
 
 /* --- RX operation using comparator linked to timer --- */
