@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e6c8115_1cf55de1",
+        "filename": "board/twinkie/injector.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-01-07T18:19:21Z",
+      "side": 1,
+      "message": "This will work but if change to 7 -\u003e 3 will do single triggered read.  From DS,\n\nIn triggered mode, writing any of the triggered convert modes into the Configuration register (that is, the MODE\nbits of the Configuration register are set to ‘001’, ‘010’, or ‘011’) triggers a single-shot conversion. This action\nproduces a single set of measurements. To trigger another single-shot conversion, the Configuration register\nmust be written to again, even if the mode does not change.",
+      "range": {
+        "startLine": 431,
+        "startChar": 46,
+        "endLine": 431,
+        "endChar": 47
+      },
+      "revId": "8dda3b7c5bda25b561ac38271d32bab86b352730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae52f94e_7b3c5be5",
+        "filename": "board/twinkie/injector.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-01-07T18:19:21Z",
+      "side": 1,
+      "message": "Should also check the CVRF bit (msk/en reg, 0x6h, bit 3) to ensure conversion in case someone changes conversion time later.",
+      "range": {
+        "startLine": 432,
+        "startChar": 0,
+        "endLine": 432,
+        "endChar": 57
+      },
+      "revId": "8dda3b7c5bda25b561ac38271d32bab86b352730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
