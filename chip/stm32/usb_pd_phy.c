@@ -304,12 +304,14 @@ int pd_start_tx(int port, int polarity, int bit_len)
 {
 	stm32_dma_chan_t *tx = dma_get_channel(DMAC_SPI_TX(port));
 
+#ifndef CONFIG_USB_PD_TX_PHY_ONLY
 	/* disable RX detection interrupt */
 	pd_rx_disable_monitoring(port);
 
 	/* Check that we are not receiving a frame to avoid collisions */
 	if (pd_rx_started(port))
 		return -5;
+#endif /* !CONFIG_USB_PD_TX_PHY_ONLY */
 
 	/* Initialize spi peripheral to prepare for transmission. */
 	pd_tx_spi_init(port);
