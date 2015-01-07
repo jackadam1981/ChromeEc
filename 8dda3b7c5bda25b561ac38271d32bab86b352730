@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "2efb6987_af805524",
+        "filename": "board/twinkie/injector.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-07T18:21:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e6c8115_1cf55de1",
+      "revId": "8dda3b7c5bda25b561ac38271d32bab86b352730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae52f94e_7b3c5be5",
         "filename": "board/twinkie/injector.c",
         "patchSetId": 1
@@ -42,6 +60,24 @@
         "endLine": 432,
         "endChar": 57
       },
+      "revId": "8dda3b7c5bda25b561ac38271d32bab86b352730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ef86589_6beae104",
+        "filename": "board/twinkie/injector.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-07T18:21:57Z",
+      "side": 1,
+      "message": "Not done ... it\u0027s slower to do the whole I2C access than waiting.\nThat\u0027s usable with the alert interrupt used as end of conversion, but too much overhead for this simple use case",
+      "parentUuid": "ae52f94e_7b3c5be5",
       "revId": "8dda3b7c5bda25b561ac38271d32bab86b352730",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
