@@ -156,7 +156,7 @@ static int i2c_write_raw_slave(int port, void *buf, int len)
 		dma_clear_isr(DMAC_SLAVE_TX);
 	} else {
 		/* Wait for the transmission complete Interrupt */
-		dma_enable_tc_interrupt(DMAC_SLAVE_TX);
+		dma_enable_tc_interrupt(DMAC_SLAVE_TX, NULL, NULL);
 		rv = task_wait_event(DMA_TRANSFER_TIMEOUT_US);
 		dma_disable_tc_interrupt(DMAC_SLAVE_TX);
 
@@ -615,7 +615,7 @@ static int i2c_master_transmit(int port, int slave_addr, const uint8_t *data,
 
 	/* Configure DMA channel for TX to host */
 	dma_prepare_tx(dma_tx_option + port, size, data);
-	dma_enable_tc_interrupt(DMAC_MASTER_TX);
+	dma_enable_tc_interrupt(DMAC_MASTER_TX, NULL, NULL);
 
 	/* Start the DMA */
 	dma_go(dma_get_channel(DMAC_MASTER_TX));
@@ -664,7 +664,7 @@ static int i2c_master_receive(int port, int slave_addr, uint8_t *data,
 		enable_ack(port);
 		dma_start_rx(dma_rx_option + port, size, data);
 
-		dma_enable_tc_interrupt(DMAC_MASTER_RX);
+		dma_enable_tc_interrupt(DMAC_MASTER_RX, NULL, NULL);
 
 		STM32_I2C_CR2(port) |= CR2_DMAEN;
 		STM32_I2C_CR2(port) |= CR2_LAST;

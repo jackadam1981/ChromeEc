@@ -118,8 +118,11 @@ void dma_clear_isr(enum dma_channel channel);
  * Enable "Transfer Complete" interrupt for a DMA channel
  *
  * @param channel	Which channel's interrupts to change
+ * @param callback	Pointer to callback function to call on interrupt
+ * @param callback_data Data to pass through to callback function
  */
-void dma_enable_tc_interrupt(enum dma_channel channel);
+void dma_enable_tc_interrupt(enum dma_channel channel, void (*callback)(void *),
+			     void *callback_data);
 
 /**
  * Disable "Transfer Complete" interrupt for a DMA channel
