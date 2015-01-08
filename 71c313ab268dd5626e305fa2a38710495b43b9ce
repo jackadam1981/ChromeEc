@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "ae7cb9f1_8b41f189",
+        "filename": "common/pd_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-08T21:29:09Z",
+      "side": 1,
+      "message": "ok, good for now then",
+      "parentUuid": "6e1ac1b5_29d3c91b",
+      "revId": "71c313ab268dd5626e305fa2a38710495b43b9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ced64ddb_d13524f7",
         "filename": "common/pd_log.c",
         "patchSetId": 2
@@ -113,6 +131,24 @@
       "side": 1,
       "message": "a mutex is heavy-weight and not zinger-friendly.\nI was hoping to do better.\nI\u0027m working on an improved implementation atomicity-wise,\nmight not fit in the current queue code, but that shouldn\u0027t be too bad to have an adhoc implementation here.\n\nThe big issue here is to implement the case where we need to discard previous entries because the log overflows.",
       "parentUuid": "ced64ddb_d13524f7",
+      "revId": "71c313ab268dd5626e305fa2a38710495b43b9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e733d24_25c82ee7",
+        "filename": "common/pd_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-08T21:29:09Z",
+      "side": 1,
+      "message": "i don\u0027t think it\u0027s that heavy weight, considering this isn\u0027t called the often. for zinger, we can just define an empty mutex_lock()/unlock() function.",
+      "parentUuid": "ee823118_ea22670c",
       "revId": "71c313ab268dd5626e305fa2a38710495b43b9ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -247,6 +283,24 @@
     },
     {
       "key": {
+        "uuid": "6e764114_895add79",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2844,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-08T21:29:09Z",
+      "side": 1,
+      "message": "it\u0027s fine.",
+      "parentUuid": "ce872d28_49d38168",
+      "revId": "71c313ab268dd5626e305fa2a38710495b43b9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ee0d5b0_8fe775e6",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -364,6 +418,24 @@
       "side": 1,
       "message": "Actually the bits don\u0027t need to be assigned specifically.\nI was just trying to do a fancier ID assignment for events to keep them grouped rather than linearly incrementing the ID every time we put a new one in the file.\nYou can still use any unassigned number anywhere in the 8-bit index space.\nDo you feel that might be inconvenient/wasting index space ?",
       "parentUuid": "0e7785c2_b3b998e9",
+      "revId": "71c313ab268dd5626e305fa2a38710495b43b9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae7cb9f1_cefdb7c6",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2880,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-08T21:29:09Z",
+      "side": 1,
+      "message": "no, it\u0027s not inconvenient and now wasting space, just concerned that we will have to break this pretty grouping sooner rather than later and then it will look ugly. maybe just separating them by 0x20 since we have very few event codes so far for each category?",
+      "parentUuid": "ce872d28_492541d1",
       "revId": "71c313ab268dd5626e305fa2a38710495b43b9ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
