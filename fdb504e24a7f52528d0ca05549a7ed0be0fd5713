@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ee6a5ff_5ea091a9",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-08T16:11:36Z",
+      "side": 1,
+      "message": "best_port_power seen to be read here before being defined ...\n\nOn GCC 4.8.2, the compilation is failing with :\ncommon/charge_manager.c: In function ‘charge_manager_refresh’:\ncommon/charge_manager.c:169:48: error: ‘best_port_power’ may be used uninitialized in this function [-Werror\u003dmaybe-uninitialized]\n        (candidate_port_power \u003e best_port_power ||\n                                                ^\ncommon/charge_manager.c:113:6: note: ‘best_port_power’ was declared here\n  int best_port_power, candidate_port_power;\n      ^\n\nI imagine that for whatever reason, the warning is not present on the current GCC 4.9.1, else this should have failed the pre-CQ",
+      "revId": "fdb504e24a7f52528d0ca05549a7ed0be0fd5713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
