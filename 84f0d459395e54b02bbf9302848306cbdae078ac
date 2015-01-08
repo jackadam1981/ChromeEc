@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ec80176_9904ff89",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-08T17:34:18Z",
+      "side": 1,
+      "message": "why not calling it from dp_post_config rather than re-enqueuing this every 300us ?",
+      "revId": "84f0d459395e54b02bbf9302848306cbdae078ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aeae7991_bb3e13f9",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-08T17:34:18Z",
+      "side": 1,
+      "message": "as config (and status actually) are DP-only commands, shouldn\u0027t we let that callback to its default NULL value and check it\u0027s not null in the common code handling config VDM ?",
+      "revId": "84f0d459395e54b02bbf9302848306cbdae078ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ebf85c3_b622a63d",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-08T17:34:18Z",
+      "side": 1,
+      "message": "do we need \"if (AMODE_VALID(port))\" here for more robustness against bad command sequences ?",
+      "revId": "84f0d459395e54b02bbf9302848306cbdae078ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
