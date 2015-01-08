@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "ceb9edd9_9cdce978",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3090,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-01-08T15:41:01Z",
+      "side": 1,
+      "message": "Patch is up w/ limited testing by me last evening on zinger.  Should be safe enough to insert the sleep while we debate whether using some type of busy response has utility.",
+      "parentUuid": "2ee9a9cf_3ff583e1",
+      "range": {
+        "startLine": 3090,
+        "startChar": 9,
+        "endLine": 3090,
+        "endChar": 23
+      },
+      "revId": "0eca51013bfad3ca2c2af090de6a4f0b858cf1f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce2badc1_ac8fcb8c",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
