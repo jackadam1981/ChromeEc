@@ -155,6 +155,24 @@
     },
     {
       "key": {
+        "uuid": "ce9c8d86_c7c2b216",
+        "filename": "common/pd_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-08T23:46:25Z",
+      "side": 1,
+      "message": "on zinger, you still need some locking between the event enqueue and the event read-back/transmission in the case where the FIFO is full and you are overriding the oldest event.\nThat\u0027s why I\u0027m gearing towards an implementation where the critical section for  the queue indexes computation  is just done by enabling/disabling  interrupt , should be short enough (and on current Cortex-M0 implementation that\u0027s not changing anything since there is no other atomicity primitives than cpsie d)",
+      "parentUuid": "4e733d24_25c82ee7",
+      "revId": "71c313ab268dd5626e305fa2a38710495b43b9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e7785c2_13a08ca8",
         "filename": "common/pd_log.c",
         "patchSetId": 2
@@ -436,6 +454,24 @@
       "side": 1,
       "message": "no, it\u0027s not inconvenient and now wasting space, just concerned that we will have to break this pretty grouping sooner rather than later and then it will look ugly. maybe just separating them by 0x20 since we have very few event codes so far for each category?",
       "parentUuid": "ce872d28_492541d1",
+      "revId": "71c313ab268dd5626e305fa2a38710495b43b9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e733d24_9935cbf8",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2880,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-08T23:46:25Z",
+      "side": 1,
+      "message": "yes, that would be better.\nI will update the base values with 0x20 reserved spaces.",
+      "parentUuid": "ae7cb9f1_cefdb7c6",
       "revId": "71c313ab268dd5626e305fa2a38710495b43b9ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
