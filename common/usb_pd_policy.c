@@ -502,6 +502,7 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 			break;
 		case CMD_DP_CONFIG:
 			/* no response after DFPs ack */
+			pe[port].amode.fx->post_config(port);
 			rsize = 0;
 			break;
 		case CMD_EXIT_MODE:
