@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "6e1ac1b5_6922e193",
+        "filename": "board/samus_pd/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-08T19:10:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ced64ddb_51429471",
+      "revId": "71c313ab268dd5626e305fa2a38710495b43b9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e7785c2_73ab0091",
         "filename": "common/pd_log.c",
         "patchSetId": 2
@@ -48,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "6e1ac1b5_29d3c91b",
+        "filename": "common/pd_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-08T19:10:41Z",
+      "side": 1,
+      "message": "I have realized a few days ago that we actually have 32 channels already defined (and no overflow check in the console channel code)",
+      "parentUuid": "0e7785c2_73ab0091",
+      "revId": "71c313ab268dd5626e305fa2a38710495b43b9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ced64ddb_d13524f7",
         "filename": "common/pd_log.c",
         "patchSetId": 2
@@ -59,6 +95,24 @@
       "writtenOn": "2015-01-07T02:48:46Z",
       "side": 1,
       "message": "seems like we need a mutex here to protect us, otherwise we could lose a log event, or possibly worse have a corrupted log event. not to mention, are queue_() functions re-entrant? haven\u0027t done my research, but even if they are, would still need a mutex in this function.",
+      "revId": "71c313ab268dd5626e305fa2a38710495b43b9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee823118_ea22670c",
+        "filename": "common/pd_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-08T19:10:41Z",
+      "side": 1,
+      "message": "a mutex is heavy-weight and not zinger-friendly.\nI was hoping to do better.\nI\u0027m working on an improved implementation atomicity-wise,\nmight not fit in the current queue code, but that shouldn\u0027t be too bad to have an adhoc implementation here.\n\nThe big issue here is to implement the case where we need to discard previous entries because the log overflows.",
+      "parentUuid": "ced64ddb_d13524f7",
       "revId": "71c313ab268dd5626e305fa2a38710495b43b9ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -82,6 +136,24 @@
         "endLine": 25,
         "endChar": 44
       },
+      "revId": "71c313ab268dd5626e305fa2a38710495b43b9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee823118_0a96dbda",
+        "filename": "common/pd_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-08T19:10:41Z",
+      "side": 1,
+      "message": "sure, that\u0027s longer to write than sizeof(r)\nbut I will update this",
+      "parentUuid": "0e7785c2_13a08ca8",
       "revId": "71c313ab268dd5626e305fa2a38710495b43b9ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -157,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "ce872d28_49d38168",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2844,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-08T19:10:41Z",
+      "side": 1,
+      "message": "I enjoy reading immediately the bits usage here rather than spending time mentally building from the MACROs below.\nI do agree it might get out-of-sync though.\nyell louder at me, if you really want me to remove it.",
+      "parentUuid": "ced64ddb_113c0ce4",
+      "revId": "71c313ab268dd5626e305fa2a38710495b43b9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ee0d5b0_8fe775e6",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -174,6 +264,24 @@
         "endLine": 2845,
         "endChar": 39
       },
+      "revId": "71c313ab268dd5626e305fa2a38710495b43b9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ec80176_9c25cd4a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2845,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-08T19:10:41Z",
+      "side": 1,
+      "message": "I have tried to update a little bit the wording of the inline comments.\n\nevery entry has this data payload (as those 16 bits are needed for alignment) and if they need more space for their data payload, they can use additional space in the payload field below.",
+      "parentUuid": "8ee0d5b0_8fe775e6",
       "revId": "71c313ab268dd5626e305fa2a38710495b43b9ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -203,6 +311,24 @@
     },
     {
       "key": {
+        "uuid": "8e2535f1_aa896fba",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2846,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-08T19:10:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e7785c2_d3b21406",
+      "revId": "71c313ab268dd5626e305fa2a38710495b43b9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e7785c2_b3b998e9",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -226,6 +352,24 @@
     },
     {
       "key": {
+        "uuid": "ce872d28_492541d1",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2880,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-08T19:10:41Z",
+      "side": 1,
+      "message": "Actually the bits don\u0027t need to be assigned specifically.\nI was just trying to do a fancier ID assignment for events to keep them grouped rather than linearly incrementing the ID every time we put a new one in the file.\nYou can still use any unassigned number anywhere in the 8-bit index space.\nDo you feel that might be inconvenient/wasting index space ?",
+      "parentUuid": "0e7785c2_b3b998e9",
+      "revId": "71c313ab268dd5626e305fa2a38710495b43b9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ced64ddb_31411069",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -243,6 +387,24 @@
         "endLine": 2899,
         "endChar": 2
       },
+      "revId": "71c313ab268dd5626e305fa2a38710495b43b9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e630529_cd57ad99",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2899,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-08T19:10:41Z",
+      "side": 1,
+      "message": "yes it\u0027s not.\nI will update it.",
+      "parentUuid": "ced64ddb_31411069",
       "revId": "71c313ab268dd5626e305fa2a38710495b43b9ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
