@@ -176,6 +176,7 @@ struct svdm_amode_fx {
 	int (*enter)(int port, uint32_t mode_caps);
 	int (*status)(int port, uint32_t *payload);
 	int (*config)(int port, uint32_t *payload);
+	void (*post_config)(int port);
 	int (*attention)(int port, uint32_t *payload);
 	void (*exit)(int port);
 };

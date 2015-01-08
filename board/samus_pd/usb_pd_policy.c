@@ -211,10 +211,13 @@ int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 	return 0;
 }
 
+static int dp_on;
+
 static void svdm_safe_dp_mode(int port)
 {
 	/* make DP interface safe until configure */
 	board_set_usb_mux(port, TYPEC_MUX_NONE, pd_get_polarity(port));
+	dp_on = 0;
 }
 
 static int svdm_enter_dp_mode(int port, uint32_t mode_caps)
@@ -227,8 +230,6 @@ static int svdm_enter_dp_mode(int port, uint32_t mode_caps)
 
 	return -1;
 }
-
-static int dp_on;
 
 static int svdm_dp_status(int port, uint32_t *payload)
 {
@@ -248,7 +249,6 @@ static int svdm_dp_status(int port, uint32_t *payload)
 static int svdm_dp_config(int port, uint32_t *payload)
 {
 	board_set_usb_mux(port, TYPEC_MUX_DP, pd_get_polarity(port));
-	dp_on = 1;
 	payload[0] = VDO(USB_SID_DISPLAYPORT, 1,
 			 CMD_DP_CONFIG | VDO_OPOS(pd_alt_mode(port)));
 	payload[1] = VDO_DP_CFG(MODE_DP_PIN_E, /* sink pins */
@@ -257,6 +257,15 @@ static int svdm_dp_config(int port, uint32_t *payload)
 				2);            /* UFP connected */
 	return 2;
 };
+
+static void svdm_dp_post_config(int port)
+{
+	dp_on = 1;
+	if (port)
+		gpio_set_level(GPIO_USB_C1_DP_HPD, 1);
+	else
+		gpio_set_level(GPIO_USB_C0_DP_HPD, 1);
+}
 
 static void hpd0_irq_deferred(void)
 {
@@ -290,7 +299,7 @@ static int svdm_dp_attention(int port, uint32_t *payload)
 	} else if (irq & !cur_lvl) {
 		CPRINTF("PE ERR: IRQ_HPD w/ HPD_LOW\n");
 		return 0; /* nak */
-	} else {
+	} else if (dp_on) {
 		gpio_set_level(hpd, lvl);
 	}
 	/* ack */
@@ -339,6 +348,7 @@ const struct svdm_amode_fx supported_modes[] = {
 		.enter = &svdm_enter_dp_mode,
 		.status = &svdm_dp_status,
 		.config = &svdm_dp_config,
+		.post_config = &svdm_dp_post_config,
 		.attention = &svdm_dp_attention,
 		.exit = &svdm_exit_dp_mode,
 	},
@@ -347,6 +357,7 @@ const struct svdm_amode_fx supported_modes[] = {
 		.enter = &svdm_enter_gfu_mode,
 		.status = &svdm_gfu_status,
 		.config = &svdm_gfu_config,
+		.post_config = NULL,
 		.attention = &svdm_gfu_attention,
 		.exit = &svdm_exit_gfu_mode,
 	}
