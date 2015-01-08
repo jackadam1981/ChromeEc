@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ae7cb9f1_88b65759",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-08T19:57:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce872d28_0c543719",
+      "revId": "9e4ddd808925d166b2ed263fc261faf0bdeca77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce872d28_8c3587f8",
         "filename": "chip/stm32/dma.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2015-01-08T19:45:27Z",
       "side": 1,
       "message": "the initialization is actually redundant now,\nthe array lives in .bss and is already cleared",
+      "revId": "9e4ddd808925d166b2ed263fc261faf0bdeca77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e764114_a696e653",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-08T19:57:26Z",
+      "side": 1,
+      "message": "unless NULL does not equal 0. but, sure, we\u0027d probably have other problems if that were the case.",
+      "parentUuid": "ce872d28_8c3587f8",
       "revId": "9e4ddd808925d166b2ed263fc261faf0bdeca77e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "ce872d28_ac67abbe",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-08T19:57:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce872d28_ac7deb9f",
+      "revId": "9e4ddd808925d166b2ed263fc261faf0bdeca77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae7cb9f1_c8512fa5",
         "filename": "include/dma.h",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2015-01-08T19:45:27Z",
       "side": 1,
       "message": "put a warning here about the callback being executed in the highest interrupt priority",
+      "revId": "9e4ddd808925d166b2ed263fc261faf0bdeca77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ee6a5ff_04c07c27",
+        "filename": "include/dma.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-08T19:57:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae7cb9f1_c8512fa5",
       "revId": "9e4ddd808925d166b2ed263fc261faf0bdeca77e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
