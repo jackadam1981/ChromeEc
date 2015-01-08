@@ -60,6 +60,74 @@
     },
     {
       "key": {
+        "uuid": "6ec80176_5c225593",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-08T18:22:27Z",
+      "side": 1,
+      "message": "that seems a bit convoluted,\nwhy are you not using \"port\" as the cb_callback value\nand setting getting polarity for tx_dma_polarities[port]\nbut that\u0027s not changing much, so as you want.",
+      "revId": "d6146da1782ea0a107e359054bad0c2f4efa9913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ec80176_1cd37d1b",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-08T18:22:27Z",
+      "side": 1,
+      "message": "in corner cases, you might have both bits.\nA better condition would be :\n(!(rv \u0026 (TASK_EVENT_TIMER | TASK_EVENT_DMA_TC)))",
+      "revId": "d6146da1782ea0a107e359054bad0c2f4efa9913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ec80176_5cddf523",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-08T18:22:27Z",
+      "side": 1,
+      "message": "bikeshed color of the day : you don\u0027t like do { } while () ? (or is it forbidden by some stylish decision ?)",
+      "revId": "d6146da1782ea0a107e359054bad0c2f4efa9913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ec80176_9c3b0dbb",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-08T18:22:27Z",
+      "side": 1,
+      "message": "this seems common to both paths with and w/o COMMON_RUNTIME",
+      "revId": "d6146da1782ea0a107e359054bad0c2f4efa9913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e630529_dc38010e",
         "filename": "chip/stm32/usb_pd_phy.c",
         "patchSetId": 1
@@ -77,6 +145,41 @@
         "endLine": 395,
         "endChar": 64
       },
+      "revId": "d6146da1782ea0a107e359054bad0c2f4efa9913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e94e54f_2b063914",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-08T18:22:27Z",
+      "side": 1,
+      "message": "This implementation was working on STM32L1xx\nThe STM32L152 Discovery board was actually the initial prototype.",
+      "parentUuid": "0e630529_dc38010e",
+      "revId": "d6146da1782ea0a107e359054bad0c2f4efa9913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ec80176_7c2711a2",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-08T18:22:27Z",
+      "side": 1,
+      "message": "from here, should we just call tx_dma_done() directly rather than duplicating the code ?",
       "revId": "d6146da1782ea0a107e359054bad0c2f4efa9913",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
