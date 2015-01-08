@@ -50,7 +50,7 @@ GPIO(PCH_HDA_SDO_L,  G, 1, GPIO_INPUT, NULL) /* HDA_SDO signal to PCH to disable
 GPIO(BKBOOST_DET,    B, 5, GPIO_INPUT, NULL) /* Backboost detect */
 
 /* Outputs; all unasserted by default except for reset signals */
-GPIO(CPU_PROCHOT,         B, 1, GPIO_OUT_LOW,  NULL) /* Force CPU to think it's overheated */
+GPIO(CPU_PROCHOT,         B, 1, GPIO_OUT_HIGH,  NULL) /* Force CPU to think it's overheated */
 GPIO(PP1200_EN,           H, 5, GPIO_OUT_LOW,  NULL) /* Enable 1.20V supply */
 GPIO(PP3300_DSW_EN,       F, 6, GPIO_OUT_LOW,  NULL) /* Enable 3.3V DSW rail */
 GPIO(PP3300_DSW_GATED_EN, J, 3, GPIO_OUT_LOW,  NULL) /* Enable 3.3V Gated DSW and core VDD */

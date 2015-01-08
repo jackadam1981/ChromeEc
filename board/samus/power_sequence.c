@@ -61,7 +61,6 @@
 #define IN_ALL_S0 (IN_PGOOD_ALL_NONCORE | IN_PGOOD_ALL_CORE | \
 		   IN_ALL_PM_SLP_DEASSERTED)
 
-static int throttle_cpu;      /* Throttle CPU? */
 static int pause_in_s5;	      /* Pause in S5 when shutting down? */
 static uint32_t pp5000_in_g3; /* Turn PP5000 on in G3? */
 
@@ -149,8 +148,6 @@ void chipset_reset(int cold_reset)
 
 void chipset_throttle_cpu(int throttle)
 {
-	if (chipset_in_state(CHIPSET_STATE_ON))
-		gpio_set_level(GPIO_CPU_PROCHOT, throttle);
 }
 
 enum power_state power_chipset_init(void)
@@ -380,7 +377,6 @@ enum power_state power_handle_state(enum power_state state)
 		 * Throttle CPU if necessary.  This should only be asserted
 		 * when +VCCP is powered (it is by now).
 		 */
-		gpio_set_level(GPIO_CPU_PROCHOT, throttle_cpu);
 
 		/* Set PCH_PWROK */
 		gpio_set_level(GPIO_PCH_PWROK, 1);
@@ -390,7 +386,6 @@ enum power_state power_handle_state(enum power_state state)
 			hook_notify(HOOK_CHIPSET_SUSPEND);
 			enable_sleep(SLEEP_MASK_AP_RUN);
 			gpio_set_level(GPIO_PCH_PWROK, 0);
-			gpio_set_level(GPIO_CPU_PROCHOT, 0);
 			gpio_set_level(GPIO_TOUCHSCREEN_RESET_L, 0);
 			gpio_set_level(GPIO_PP3300_DSW_GATED_EN, 1);
 			wireless_set_state(WIRELESS_OFF);
@@ -436,7 +431,6 @@ enum power_state power_handle_state(enum power_state state)
 		 * Deassert prochot since CPU is off and we're about to drop
 		 * +VCCP.
 		 */
-		gpio_set_level(GPIO_CPU_PROCHOT, 0);
 
 		/* Turn off DSW gated */
 		gpio_set_level(GPIO_PP3300_DSW_GATED_EN, 0);

@@ -394,13 +394,8 @@ static void board_init(void)
 	 * the write protect screw to allow for easier testing, and for
 	 * booting without a battery.
 	 */
-	if (system_get_image_copy() != SYSTEM_IMAGE_RW
-	    && system_is_locked()) {
-		ccprintf("[%T PD communication disabled]\n");
-		pd_enable = 0;
-	} else {
-		pd_enable = 1;
-	}
+	ccprintf("[%T PD communication disabled]\n");
+	pd_enable = 0;
 	pd_comm_enable(pd_enable);
 
 	/* Enable ILIM PWM: initial duty cycle 0% = 500mA limit. */
