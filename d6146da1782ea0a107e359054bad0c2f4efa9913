@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ce872d28_69a4c515",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-08T19:28:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e94e54f_eb87d137",
+      "revId": "d6146da1782ea0a107e359054bad0c2f4efa9913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e630529_9c3e89f9",
         "filename": "chip/stm32/dma.c",
         "patchSetId": 1
@@ -77,6 +95,24 @@
     },
     {
       "key": {
+        "uuid": "ee823118_adc32946",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-08T19:28:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ec80176_5c225593",
+      "revId": "d6146da1782ea0a107e359054bad0c2f4efa9913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ec80176_1cd37d1b",
         "filename": "chip/stm32/usb_pd_phy.c",
         "patchSetId": 1
@@ -94,6 +130,24 @@
     },
     {
       "key": {
+        "uuid": "ae7cb9f1_c8184f9b",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-08T19:28:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ec80176_1cd37d1b",
+      "revId": "d6146da1782ea0a107e359054bad0c2f4efa9913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ec80176_5cddf523",
         "filename": "chip/stm32/usb_pd_phy.c",
         "patchSetId": 1
@@ -105,6 +159,24 @@
       "writtenOn": "2015-01-08T18:22:27Z",
       "side": 1,
       "message": "bikeshed color of the day : you don\u0027t like do { } while () ? (or is it forbidden by some stylish decision ?)",
+      "revId": "d6146da1782ea0a107e359054bad0c2f4efa9913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae7cb9f1_e8151360",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-08T19:28:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ec80176_5cddf523",
       "revId": "d6146da1782ea0a107e359054bad0c2f4efa9913",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -169,6 +241,24 @@
     },
     {
       "key": {
+        "uuid": "ee823118_2a9b9f03",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-08T19:28:56Z",
+      "side": 1,
+      "message": "ok, it\u0027s probably broken by now, but i\u0027ll leave it in there.",
+      "parentUuid": "0e94e54f_2b063914",
+      "revId": "d6146da1782ea0a107e359054bad0c2f4efa9913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ec80176_7c2711a2",
         "filename": "chip/stm32/usb_pd_phy.c",
         "patchSetId": 1
@@ -180,6 +270,24 @@
       "writtenOn": "2015-01-08T18:22:27Z",
       "side": 1,
       "message": "from here, should we just call tx_dma_done() directly rather than duplicating the code ?",
+      "revId": "d6146da1782ea0a107e359054bad0c2f4efa9913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce872d28_89cc994a",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-08T19:28:56Z",
+      "side": 1,
+      "message": "it\u0027s not quite the same, tx_dma_done() doesn\u0027t push another 0 byte into FIFO and therefore the extra wait for SR_BSY to go low would add delay at the end of transmission before the line goes high.\n\nif i get rid of !SPI_MASTER and the STM32L support, this could be a lot cleaner, let me try it.",
+      "parentUuid": "6ec80176_7c2711a2",
       "revId": "d6146da1782ea0a107e359054bad0c2f4efa9913",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
