@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ceb9edd9_79a567b8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3081,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-01-08T08:25:54Z",
+      "side": 1,
+      "message": "Agreed, just wasn\u0027t sure if we wanted to leave well enough alone or not.",
+      "parentUuid": "4e17bd8b_8528e2f0",
+      "range": {
+        "startLine": 3080,
+        "startChar": 2,
+        "endLine": 3081,
+        "endChar": 24
+      },
+      "revId": "0eca51013bfad3ca2c2af090de6a4f0b858cf1f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e2535f1_f0fd16c6",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "2ee9a9cf_9c5145d8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3090,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-01-08T08:25:54Z",
+      "side": 1,
+      "message": "Adding same delay there and testing now.",
+      "parentUuid": "8e2535f1_f0fd16c6",
+      "range": {
+        "startLine": 3090,
+        "startChar": 9,
+        "endLine": 3090,
+        "endChar": 23
+      },
+      "revId": "0eca51013bfad3ca2c2af090de6a4f0b858cf1f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce2badc1_ac8fcb8c",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -59,6 +107,24 @@
       "writtenOn": "2015-01-08T00:20:17Z",
       "side": 1,
       "message": "should we now check vdm_state on this function entry to verify whether the host called too early ?",
+      "revId": "0eca51013bfad3ca2c2af090de6a4f0b858cf1f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ceb9edd9_198c6b1c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3124,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-01-08T08:25:54Z",
+      "side": 1,
+      "message": "We could.  In fact we could respond w/ EC_RES_BUSY and use that to qualify retries on the host side instead of having any sleeps.",
+      "parentUuid": "ce2badc1_ac8fcb8c",
       "revId": "0eca51013bfad3ca2c2af090de6a4f0b858cf1f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
