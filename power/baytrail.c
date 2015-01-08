@@ -133,7 +133,9 @@ enum power_state power_chipset_init(void)
 			gpio_set_level(GPIO_PP5000_EN, 0);
 			gpio_set_level(GPIO_PCH_RSMRST_L, 0);
 			gpio_set_level(GPIO_PCH_SYS_PWROK, 0);
+#ifdef CONFIG_WIRELESS
 			wireless_set_state(WIRELESS_OFF);
+#endif
 		}
 	}
 
@@ -236,8 +238,10 @@ enum power_state power_handle_state(enum power_state state)
 		usleep(3 * MSEC);  /* Small delay; see crosbug.com/p/25271 */
 		gpio_set_level(GPIO_PP3300_DX_EN, 1);
 
+#ifdef CONFIG_WIRELESS
 		/* Enable wireless */
 		wireless_set_state(WIRELESS_ON);
+#endif
 
 		/*
 		 * Make sure touchscreen is out if reset (even if the lid is
@@ -249,7 +253,9 @@ enum power_state power_handle_state(enum power_state state)
 		/* Wait for non-core power rails good */
 		if (power_wait_signals(IN_PGOOD_S0)) {
 			chipset_force_shutdown();
+#ifdef CONFIG_WIRELESS
 			wireless_set_state(WIRELESS_OFF);
+#endif
 			gpio_set_level(GPIO_PP3300_DX_EN, 0);
 			gpio_set_level(GPIO_PP5000_EN, 0);
 			gpio_set_level(GPIO_TOUCHSCREEN_RESET_L, 0);
@@ -327,8 +333,10 @@ enum power_state power_handle_state(enum power_state state)
 		/* Disable +CPU_CORE */
 		gpio_set_level(GPIO_VCORE_EN, 0);
 
+#ifdef CONFIG_WIRELESS
 		/* Suspend wireless */
 		wireless_set_state(WIRELESS_SUSPEND);
+#endif
 
 		/*
 		 * Enable idle task deep sleep. Allow the low power idle task
@@ -366,8 +374,10 @@ enum power_state power_handle_state(enum power_state state)
 		/* Turn off 5V rail (if it wasn't turned off in S3) */
 		gpio_set_level(GPIO_PP5000_EN, 0);
 
+#ifdef CONFIG_WIRELESS
 		/* Disable wireless */
 		wireless_set_state(WIRELESS_OFF);
+#endif
 
 		/* Disable touchpad power and hold touchscreen in reset */
 		gpio_set_level(GPIO_ENABLE_TOUCHPAD, 0);
