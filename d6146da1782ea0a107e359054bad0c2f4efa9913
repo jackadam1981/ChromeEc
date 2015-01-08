@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "0e94e54f_eb87d137",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-08T18:08:31Z",
+      "side": 1,
+      "message": "that\u0027s now somewhat large,\nmaybe we want to guard it with\n#ifdef CONFIG_DMA_DEFAULT_HANDLERS\n\nactually having both the task_id and cb/cb_data is somewhat redundant.\nWe should define the old behavior as a special case of your new callback system and fully remove the \"id\" field, e.g. :\n\n// create a new function name for the callback-style prototype\nvoid dma_enable_tc_interrupt_callback(enum dma_channel channel, void (*callback)(void *), void *callback_data);\n\n// define the old behavior as a special case\nstatic inline void dma_enable_tc_interrupt(enum dma_channel channel)\n{\n     dma_enable_tc_interrupt_callback(channel, _dma_wake_callback, (void *)task_get_current());\n}\n\nvoid _dma_wake_callback(void *cb_data)\n{\n   task_id_t id \u003d (task_id_t)cb_data;\n   task_set_event(id, TASK_EVENT_DMA_TC, 0);\n}",
+      "revId": "d6146da1782ea0a107e359054bad0c2f4efa9913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e630529_9c3e89f9",
         "filename": "chip/stm32/dma.c",
         "patchSetId": 1
@@ -19,6 +36,24 @@
         "endLine": 279,
         "endChar": 69
       },
+      "revId": "d6146da1782ea0a107e359054bad0c2f4efa9913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e94e54f_6bce8194",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-08T18:08:31Z",
+      "side": 1,
+      "message": "That\u0027s ok for this platform, but we cannot really change it blindly for everybody I think (due to for example, the trap when using get_time() in interrupt context while the timer rollbacks)\nwe should probably define some CONFIG_ variable we can override.",
+      "parentUuid": "0e630529_9c3e89f9",
       "revId": "d6146da1782ea0a107e359054bad0c2f4efa9913",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
