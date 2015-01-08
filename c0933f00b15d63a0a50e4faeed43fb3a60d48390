@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce348d09_aaa5f310",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-08T00:15:43Z",
+      "side": 0,
+      "message": "Where is the initial (at board init) pe_init() now done ?\nI\u0027m not seeing it.",
+      "revId": "c0933f00b15d63a0a50e4faeed43fb3a60d48390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
