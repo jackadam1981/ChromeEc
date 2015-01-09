@@ -43,6 +43,24 @@
     },
     {
       "key": {
+        "uuid": "2efc49c4_b83d8152",
+        "filename": "board/zinger/runtime.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-09T21:45:43Z",
+      "side": 1,
+      "message": "i meant put it in a zinger specific header file, like board/zinger/board.h. but, cleaner as is.",
+      "parentUuid": "ee33117d_25fe18c2",
+      "revId": "b1daf53039dbe526902ca74eb4e0bf01ac5e7f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2efc49c4_27d854a8",
         "filename": "common/pd_log.c",
         "patchSetId": 4
@@ -119,6 +137,47 @@
       "side": 1,
       "message": "I don\u0027t think your case is correct : log_head is the oldest entry of the queue, the one just added by thread 2 is the newest one at log_tail.\n\nMaybe the critical section is overcomplicated to understand,\nbut I felt that was safer to have only bounded and simple critical section with IT off.",
       "parentUuid": "2efc49c4_0ae43f37",
+      "revId": "b1daf53039dbe526902ca74eb4e0bf01ac5e7f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ef945d6_29fee9c1",
+        "filename": "common/pd_log.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-09T21:45:43Z",
+      "side": 1,
+      "message": "ah, yes, you\u0027re right, i thought log_head was local. the only danger here is that thread 1 frees up more space than it actually needs to if thread 2 happens to free up enough for itself and for the event in thread 1. but, that\u0027s not really a problem.",
+      "parentUuid": "0ef945d6_86a38c0d",
+      "revId": "b1daf53039dbe526902ca74eb4e0bf01ac5e7f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2efc49c4_7805c982",
+        "filename": "common/pd_log.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-09T21:45:43Z",
+      "side": 1,
+      "message": "not needed? looks like interrupts are enabled on line 110 in the case we go back to retry.",
+      "range": {
+        "startLine": 96,
+        "startChar": 2,
+        "endLine": 96,
+        "endChar": 18
+      },
       "revId": "b1daf53039dbe526902ca74eb4e0bf01ac5e7f25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
