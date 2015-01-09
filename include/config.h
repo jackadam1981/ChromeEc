@@ -478,6 +478,9 @@
 /* Check for stack overflows on every context switch */
 #define CONFIG_DEBUG_STACK_OVERFLOW
 
+/* Provide a console command to set the current time */
+#undef CONFIG_DEBUG_TIMER_FORCETIME
+
 /*****************************************************************************/
 
 /* Support DMA transfers inside the EC */
