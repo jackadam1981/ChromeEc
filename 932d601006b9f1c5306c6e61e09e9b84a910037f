@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ecb0596_d6cdc2c8",
+        "filename": "board/cid/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2015-01-09T18:02:42Z",
+      "side": 1,
+      "message": "this will set LED on for 1 sec every 2 sec.\n\n#define LED_FORCE_IDLE_FREQ  3\n\n(battery_ticks \u0026 LED_FORCE_IDLE_FREQ) ? LED_OFF: LED_WHITE;",
+      "range": {
+        "startLine": 126,
+        "startChar": 3,
+        "endLine": 126,
+        "endChar": 39
+      },
+      "revId": "932d601006b9f1c5306c6e61e09e9b84a910037f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
