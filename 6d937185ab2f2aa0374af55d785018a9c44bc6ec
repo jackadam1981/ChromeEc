@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0ef945d6_a9c89987",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1766,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-09T21:52:13Z",
+      "side": 1,
+      "message": "oh, yes, you are right.",
+      "parentUuid": "2efc49c4_2765f435",
+      "range": {
+        "startLine": 1766,
+        "startChar": 8,
+        "endLine": 1766,
+        "endChar": 25
+      },
+      "revId": "6d937185ab2f2aa0374af55d785018a9c44bc6ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee33117d_a2477e9d",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "2efc49c4_58b44d50",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1781,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-09T21:52:13Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "ee33117d_a2477e9d",
+      "range": {
+        "startLine": 1781,
+        "startChar": 36,
+        "endLine": 1781,
+        "endChar": 51
+      },
+      "revId": "6d937185ab2f2aa0374af55d785018a9c44bc6ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee33117d_a52468d6",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 6
@@ -59,6 +107,30 @@
       "writtenOn": "2015-01-09T21:27:07Z",
       "side": 1,
       "message": "Since we\u0027re applying VBUS already, this should transition to PD_STATE_SNK_DISCONNECTED on DRPs.",
+      "range": {
+        "startLine": 1803,
+        "startChar": 20,
+        "endLine": 1803,
+        "endChar": 45
+      },
+      "revId": "6d937185ab2f2aa0374af55d785018a9c44bc6ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2efc49c4_987525e9",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1803,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-09T21:52:13Z",
+      "side": 1,
+      "message": "yes, i know. i thought about it more, and i think it is cleaner this way. we can\u0027t switch to SNK_DISCONNECTED without also swapping to Rd and also setting power_role to SINK. so, instead, I have it go back to SRC_DISCONNECTED, and from there it will immediately transition to SNK_DISCONNECTED the correct way. so, it will still get there quickly, and since we only check the CC lines every 20ms anyway (line 1796), it\u0027s not too bad to add an extra 5ms in the case we detect a disconnect.",
+      "parentUuid": "ee33117d_a52468d6",
       "range": {
         "startLine": 1803,
         "startChar": 20,
