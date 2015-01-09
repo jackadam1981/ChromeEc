@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2efc49c4_2765f435",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1766,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2015-01-09T21:27:07Z",
+      "side": 1,
+      "message": "This is stale from the previous connection.  Use DFP_GET_POLARITY here?",
+      "range": {
+        "startLine": 1766,
+        "startChar": 8,
+        "endLine": 1766,
+        "endChar": 25
+      },
+      "revId": "6d937185ab2f2aa0374af55d785018a9c44bc6ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee33117d_a2477e9d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1781,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2015-01-09T21:27:07Z",
+      "side": 1,
+      "message": "May want to note that this may trigger after disconnect as a DFP while VBUS discharges, but that\u0027s OK because the state machine can handle it",
+      "range": {
+        "startLine": 1781,
+        "startChar": 36,
+        "endLine": 1781,
+        "endChar": 51
+      },
+      "revId": "6d937185ab2f2aa0374af55d785018a9c44bc6ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee33117d_a52468d6",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1803,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2015-01-09T21:27:07Z",
+      "side": 1,
+      "message": "Since we\u0027re applying VBUS already, this should transition to PD_STATE_SNK_DISCONNECTED on DRPs.",
+      "range": {
+        "startLine": 1803,
+        "startChar": 20,
+        "endLine": 1803,
+        "endChar": 45
+      },
+      "revId": "6d937185ab2f2aa0374af55d785018a9c44bc6ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
