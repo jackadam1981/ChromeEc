@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ef455d2_d290222f",
+        "filename": "board/ryu/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-01-09T17:55:05Z",
+      "side": 1,
+      "message": "This has changed quite a bit since we ported from samus, due to type C pin contact order:\n\nhttps://chromium-review.googlesource.com/237241",
+      "revId": "fe84150a18565adeb3a852e0b8f88a6858bb2e77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
