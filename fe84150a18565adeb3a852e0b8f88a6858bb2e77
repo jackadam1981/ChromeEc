@@ -16,6 +16,24 @@
       "revId": "fe84150a18565adeb3a852e0b8f88a6858bb2e77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ef945d6_c3f4d6e6",
+        "filename": "board/ryu/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2015-01-09T18:59:36Z",
+      "side": 0,
+      "message": "Yeah, I thought I saw Pericom not working. This explains why. The deferred function count is still 9 with this change, so we still need that.",
+      "parentUuid": "6e02c18e_66688ed9",
+      "revId": "fe84150a18565adeb3a852e0b8f88a6858bb2e77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
