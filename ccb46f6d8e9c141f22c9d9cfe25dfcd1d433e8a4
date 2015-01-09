@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aea119bc_e62c9a89",
+        "filename": "board/twinkie/build_rw_variant",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-01-09T00:21:34Z",
+      "side": 1,
+      "message": "I did not dare to overide PROJECT, ebuilds outside of ec assumes the RW images are named ec.RW.bin.\nBut it is elegent and we maybe should do that for pd and sh as well.",
+      "revId": "ccb46f6d8e9c141f22c9d9cfe25dfcd1d433e8a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
