@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ef945d6_0378ae2a",
+        "filename": "board/zinger/runtime.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-09T19:52:02Z",
+      "side": 1,
+      "message": "put in header file and make inline for speed?",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 28
+      },
+      "revId": "b1daf53039dbe526902ca74eb4e0bf01ac5e7f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2efc49c4_27d854a8",
+        "filename": "common/pd_log.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-09T19:52:02Z",
+      "side": 1,
+      "message": "not used",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 67
+      },
+      "revId": "b1daf53039dbe526902ca74eb4e0bf01ac5e7f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2efc49c4_0ae43f37",
+        "filename": "common/pd_log.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-09T19:52:02Z",
+      "side": 1,
+      "message": "i think this critical section needs to be bigger. for example, thread 1 comes in here and there isn\u0027t enough room in queue, so we go into this while loop, then when it is at line 61 it is interrupted by thread 2. there isn\u0027t enough room for thread 2 either, so it makes some space, adds its data to the queue and then returns. thread 1 picks back up and immediately frees \"log_head\" which is now the data the thread 2 has just added.",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 59
+      },
+      "revId": "b1daf53039dbe526902ca74eb4e0bf01ac5e7f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
