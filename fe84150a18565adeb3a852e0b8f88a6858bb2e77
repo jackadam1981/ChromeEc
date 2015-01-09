@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e02c18e_66688ed9",
+        "filename": "board/ryu/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-01-09T18:53:56Z",
+      "side": 0,
+      "message": "This was a deferred function, but I don\u0027t think we initialized it with DECLARE_DEFERRED anywhere. Anyway, now that it\u0027s gone, we should be able to decrement DEFERRABLE_MAX_COUNT.",
+      "revId": "fe84150a18565adeb3a852e0b8f88a6858bb2e77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
