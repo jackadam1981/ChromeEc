@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce9c8d86_47658234",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-09T00:09:02Z",
+      "side": 1,
+      "message": "theorically, don\u0027t you want to reset everything on disconnect, ie dp_flags \u003d 0\n\npractically it\u0027s the same I agree",
+      "revId": "2e5f7de6a225ab45300c7237f9857cc74bf6f7cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e733d24_d9990356",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-09T00:09:02Z",
+      "side": 1,
+      "message": "\u0026\u0026 1 is a no-op\nremove or fix ?\n\noh I see,  you want to convert to \"boolean\"\nusual pattern is :\n!!(dp_flags \u0026 DP_FLAGS_DP_ON)",
+      "revId": "2e5f7de6a225ab45300c7237f9857cc74bf6f7cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e733d24_195e3bec",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-09T00:09:02Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "2e5f7de6a225ab45300c7237f9857cc74bf6f7cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aea119bc_e6581a50",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-09T00:09:02Z",
+      "side": 1,
+      "message": "I think dp_flags need to be per port/",
+      "revId": "2e5f7de6a225ab45300c7237f9857cc74bf6f7cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e733d24_d9ed8398",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-09T00:09:02Z",
+      "side": 1,
+      "message": "it\u0027s NULL by default in .bss, just remove and forget it ?",
+      "revId": "2e5f7de6a225ab45300c7237f9857cc74bf6f7cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce9c8d86_478a227d",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-09T00:09:02Z",
+      "side": 1,
+      "message": "the brackets are passing the presubmit style check ?\nstrange",
+      "revId": "2e5f7de6a225ab45300c7237f9857cc74bf6f7cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce9c8d86_c77072fa",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-09T00:09:02Z",
+      "side": 1,
+      "message": "you need to ask a trademark lawyer, but I think it\u0027s DisplayPort with a uppercase *P*",
+      "revId": "2e5f7de6a225ab45300c7237f9857cc74bf6f7cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
