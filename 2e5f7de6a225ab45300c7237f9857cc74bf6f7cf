@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8e81b519_ea77c739",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-01-09T00:30:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce9c8d86_47658234",
+      "revId": "2e5f7de6a225ab45300c7237f9857cc74bf6f7cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e733d24_d9990356",
         "filename": "board/samus_pd/usb_pd_policy.c",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2015-01-09T00:09:02Z",
       "side": 1,
       "message": "\u0026\u0026 1 is a no-op\nremove or fix ?\n\noh I see,  you want to convert to \"boolean\"\nusual pattern is :\n!!(dp_flags \u0026 DP_FLAGS_DP_ON)",
+      "revId": "2e5f7de6a225ab45300c7237f9857cc74bf6f7cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ee6a5ff_2aea9f35",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-01-09T00:30:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e733d24_d9990356",
       "revId": "2e5f7de6a225ab45300c7237f9857cc74bf6f7cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "2ee9a9cf_7022d893",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-01-09T00:30:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e733d24_195e3bec",
+      "revId": "2e5f7de6a225ab45300c7237f9857cc74bf6f7cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aea119bc_e6581a50",
         "filename": "board/samus_pd/usb_pd_policy.c",
         "patchSetId": 4
@@ -64,6 +118,24 @@
       "writtenOn": "2015-01-09T00:09:02Z",
       "side": 1,
       "message": "I think dp_flags need to be per port/",
+      "revId": "2e5f7de6a225ab45300c7237f9857cc74bf6f7cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ee9a9cf_902764a1",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-01-09T00:30:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aea119bc_e6581a50",
       "revId": "2e5f7de6a225ab45300c7237f9857cc74bf6f7cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "8e81b519_ca5123a5",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-01-09T00:30:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e733d24_d9ed8398",
+      "revId": "2e5f7de6a225ab45300c7237f9857cc74bf6f7cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce9c8d86_478a227d",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 4
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "0ee6a5ff_2a953fa6",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-01-09T00:30:17Z",
+      "side": 1,
+      "message": "They were ... removed.",
+      "parentUuid": "ce9c8d86_478a227d",
+      "revId": "2e5f7de6a225ab45300c7237f9857cc74bf6f7cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce9c8d86_c77072fa",
         "filename": "include/usb_pd.h",
         "patchSetId": 4
@@ -115,6 +223,24 @@
       "writtenOn": "2015-01-09T00:09:02Z",
       "side": 1,
       "message": "you need to ask a trademark lawyer, but I think it\u0027s DisplayPort with a uppercase *P*",
+      "revId": "2e5f7de6a225ab45300c7237f9857cc74bf6f7cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e81b519_8aa2cb36",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-01-09T00:30:17Z",
+      "side": 1,
+      "message": "Lawyer unavailable ... changing regardless ;)",
+      "parentUuid": "ce9c8d86_c77072fa",
       "revId": "2e5f7de6a225ab45300c7237f9857cc74bf6f7cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
