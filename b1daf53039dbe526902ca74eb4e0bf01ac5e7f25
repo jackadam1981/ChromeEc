@@ -61,6 +61,24 @@
     },
     {
       "key": {
+        "uuid": "ee33117d_45eb1c83",
+        "filename": "board/zinger/runtime.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-09T21:50:26Z",
+      "side": 1,
+      "message": "the inline version would conflict with the regular prototype in task.h (which is also included in some places on Zinger)",
+      "parentUuid": "2efc49c4_b83d8152",
+      "revId": "b1daf53039dbe526902ca74eb4e0bf01ac5e7f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2efc49c4_27d854a8",
         "filename": "common/pd_log.c",
         "patchSetId": 4
@@ -178,6 +196,24 @@
         "endLine": 96,
         "endChar": 18
       },
+      "revId": "b1daf53039dbe526902ca74eb4e0bf01ac5e7f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee33117d_e5dfd0e5",
+        "filename": "common/pd_log.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-09T21:50:26Z",
+      "side": 1,
+      "message": "good catch, that\u0027s the remain of a previous version",
+      "parentUuid": "2efc49c4_7805c982",
       "revId": "b1daf53039dbe526902ca74eb4e0bf01ac5e7f25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
