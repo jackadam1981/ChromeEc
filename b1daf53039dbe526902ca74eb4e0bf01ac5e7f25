@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "ee33117d_25fe18c2",
+        "filename": "board/zinger/runtime.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-09T21:26:49Z",
+      "side": 1,
+      "message": "I would love to but the common runtime has this API for long time (and that requires mixing ARM-specific stuff in the task.h header)\nThat\u0027s probably a larger change but I hope to do it one day.",
+      "parentUuid": "0ef945d6_0378ae2a",
+      "revId": "b1daf53039dbe526902ca74eb4e0bf01ac5e7f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2efc49c4_27d854a8",
         "filename": "common/pd_log.c",
         "patchSetId": 4
@@ -48,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "2efc49c4_7815c930",
+        "filename": "common/pd_log.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-09T21:26:49Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "2efc49c4_27d854a8",
+      "revId": "b1daf53039dbe526902ca74eb4e0bf01ac5e7f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2efc49c4_0ae43f37",
         "filename": "common/pd_log.c",
         "patchSetId": 4
@@ -65,6 +101,24 @@
         "endLine": 62,
         "endChar": 59
       },
+      "revId": "b1daf53039dbe526902ca74eb4e0bf01ac5e7f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ef945d6_86a38c0d",
+        "filename": "common/pd_log.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-09T21:26:49Z",
+      "side": 1,
+      "message": "I don\u0027t think your case is correct : log_head is the oldest entry of the queue, the one just added by thread 2 is the newest one at log_tail.\n\nMaybe the critical section is overcomplicated to understand,\nbut I felt that was safer to have only bounded and simple critical section with IT off.",
+      "parentUuid": "2efc49c4_0ae43f37",
       "revId": "b1daf53039dbe526902ca74eb4e0bf01ac5e7f25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
