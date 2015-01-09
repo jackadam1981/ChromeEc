@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ee6a5ff_f0bc26db",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-09T02:43:49Z",
+      "side": 1,
+      "message": "I don\u0027t think we actually need to do an intermediate step in the case because the output is disabled (and won\u0027t be enabled until discharge is complete). but, i guess it doesn\u0027t hurt.",
+      "range": {
+        "startLine": 271,
+        "startChar": 1,
+        "endLine": 273,
+        "endChar": 47
+      },
+      "revId": "2a75912fe7ad8bce5f50269c44aa4a00e9dde7af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
