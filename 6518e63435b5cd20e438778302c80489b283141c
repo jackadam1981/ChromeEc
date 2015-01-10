@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e4295da_7f334f12",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-10T05:37:21Z",
+      "side": 1,
+      "message": "how the debug accessory works in vendor-dependent ... at least for now,\nbut given how we finally plan to implement the debug accessory, we will need to negociate power on the CC line with it.\nYou might let that as a later fixup when i will do the CL to finish the debug accessory support.",
+      "revId": "6518e63435b5cd20e438778302c80489b283141c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e441de9_bdeebf14",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1765,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-10T05:37:21Z",
+      "side": 1,
+      "message": "you are sure you want to set the polarity only inside the #ifdef, that seems a bit wrong. You are trying to use pd[port].polarity has a local variable for the 2 board_set_usb_mux instance ? and set the real polarity after the debouncing.\nThen maybe use directly the DFP_GET_POLARITY in both functions (and let the compiler optimize)\nby the way, the polarity has not much to do with the comment above, you should swap them.",
+      "revId": "6518e63435b5cd20e438778302c80489b283141c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e441de9_7d01172e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1833,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-10T05:37:21Z",
+      "side": 1,
+      "message": "typo:attached",
+      "revId": "6518e63435b5cd20e438778302c80489b283141c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e441de9_3dfb8fd2",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2264,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-10T05:37:21Z",
+      "side": 1,
+      "message": "unrelated to that CL : but that\u0027s a pretty bad name and this should be stored in pd[port] (why not in the flags)",
+      "revId": "6518e63435b5cd20e438778302c80489b283141c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e4721ed_9e3bbded",
+        "filename": "test/usb_pd.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-10T05:37:21Z",
+      "side": 1,
+      "message": "please open a bug for fixing the test case\nand add a TODO with the bug number.",
+      "revId": "6518e63435b5cd20e438778302c80489b283141c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
