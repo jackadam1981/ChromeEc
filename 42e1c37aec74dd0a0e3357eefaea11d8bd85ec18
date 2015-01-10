@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aee9192d_c0f9be90",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-10T21:43:19Z",
+      "side": 1,
+      "message": "any objections shortening debounce to 50ms? based on email thread, sounds like debounce will be decreasing substantially, and this would make zinger/hoho/dingdong connect faster.",
+      "range": {
+        "startLine": 126,
+        "startChar": 31,
+        "endLine": 126,
+        "endChar": 34
+      },
+      "revId": "42e1c37aec74dd0a0e3357eefaea11d8bd85ec18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
