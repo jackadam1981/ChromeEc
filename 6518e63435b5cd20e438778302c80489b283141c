@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "aee9192d_a0c3da6a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-10T18:23:14Z",
+      "side": 1,
+      "message": "yeah, to fix later, for now accessory is still seen as disconnected.",
+      "parentUuid": "8e4295da_7f334f12",
+      "revId": "6518e63435b5cd20e438778302c80489b283141c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e441de9_bdeebf14",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 7
@@ -30,6 +48,24 @@
       "writtenOn": "2015-01-10T05:37:21Z",
       "side": 1,
       "message": "you are sure you want to set the polarity only inside the #ifdef, that seems a bit wrong. You are trying to use pd[port].polarity has a local variable for the 2 board_set_usb_mux instance ? and set the real polarity after the debouncing.\nThen maybe use directly the DFP_GET_POLARITY in both functions (and let the compiler optimize)\nby the way, the polarity has not much to do with the comment above, you should swap them.",
+      "revId": "6518e63435b5cd20e438778302c80489b283141c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2efd29e9_3c81b128",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1765,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-10T18:23:14Z",
+      "side": 1,
+      "message": "ok, will put DFP_GET_POLARITY directly in the board_set_usb_mux call.",
+      "parentUuid": "4e441de9_bdeebf14",
       "revId": "6518e63435b5cd20e438778302c80489b283141c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -64,6 +100,24 @@
       "writtenOn": "2015-01-10T05:37:21Z",
       "side": 1,
       "message": "unrelated to that CL : but that\u0027s a pretty bad name and this should be stored in pd[port] (why not in the flags)",
+      "revId": "6518e63435b5cd20e438778302c80489b283141c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cee48d53_e1e166de",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2264,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-10T18:23:14Z",
+      "side": 1,
+      "message": "will but in flags",
+      "parentUuid": "4e441de9_3dfb8fd2",
       "revId": "6518e63435b5cd20e438778302c80489b283141c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
