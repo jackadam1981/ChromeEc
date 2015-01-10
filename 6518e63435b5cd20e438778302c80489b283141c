@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "cee48d53_61d436cb",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1765,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-10T22:37:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2efd29e9_3c81b128",
+      "revId": "6518e63435b5cd20e438778302c80489b283141c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e441de9_7d01172e",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 7
@@ -83,6 +101,47 @@
       "writtenOn": "2015-01-10T05:37:21Z",
       "side": 1,
       "message": "typo:attached",
+      "revId": "6518e63435b5cd20e438778302c80489b283141c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cee48d53_c1df02e6",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1833,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-10T22:37:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e441de9_7d01172e",
+      "revId": "6518e63435b5cd20e438778302c80489b283141c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cee48d53_a1e47eb7",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2189,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-10T22:37:48Z",
+      "side": 1,
+      "message": "another bug, this should be below the check for vbus, so that in a dead battery case we don\u0027t set input current limit to 0 if we have vbus.",
+      "range": {
+        "startLine": 2185,
+        "startChar": 3,
+        "endLine": 2189,
+        "endChar": 4
+      },
       "revId": "6518e63435b5cd20e438778302c80489b283141c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -118,6 +177,24 @@
       "side": 1,
       "message": "will but in flags",
       "parentUuid": "4e441de9_3dfb8fd2",
+      "revId": "6518e63435b5cd20e438778302c80489b283141c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2efd29e9_5c911d5a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2264,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-10T22:37:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cee48d53_e1e166de",
       "revId": "6518e63435b5cd20e438778302c80489b283141c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
