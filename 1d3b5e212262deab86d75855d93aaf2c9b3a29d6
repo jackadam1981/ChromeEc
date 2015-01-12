@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2eab69f1_f5cc6afc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2015-01-12T21:51:46Z",
+      "side": 1,
+      "message": "BUG\u003dchrome-os-partner:35055",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 8
+      },
+      "revId": "1d3b5e212262deab86d75855d93aaf2c9b3a29d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2eab69f1_3242888d",
+        "filename": "board/speedy/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2015-01-12T21:51:46Z",
+      "side": 1,
+      "message": "Why did you include this?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 29
+      },
+      "revId": "1d3b5e212262deab86d75855d93aaf2c9b3a29d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0efa25f3_ca76fb75",
+        "filename": "board/speedy/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2015-01-12T21:51:46Z",
+      "side": 1,
+      "message": "Why did you include this?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "1d3b5e212262deab86d75855d93aaf2c9b3a29d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
