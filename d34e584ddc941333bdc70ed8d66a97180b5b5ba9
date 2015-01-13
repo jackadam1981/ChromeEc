@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ec449d1_077e389a",
+        "filename": "common/pd_log.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-13T03:00:49Z",
+      "side": 1,
+      "message": "since size_t is uint8_t, seems like we should have an assertion that LOG_SIZE \u003c\u003d 256",
+      "range": {
+        "startLine": 64,
+        "startChar": 34,
+        "endLine": 64,
+        "endChar": 50
+      },
+      "revId": "d34e584ddc941333bdc70ed8d66a97180b5b5ba9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee7b115e_62ee1695",
+        "filename": "common/pd_log.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-13T03:00:49Z",
+      "side": 1,
+      "message": "doesn\u0027t incrementing this here mean that if dequeue() is called before we actually write to the log, it will read back garbage?",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 57
+      },
+      "revId": "d34e584ddc941333bdc70ed8d66a97180b5b5ba9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
