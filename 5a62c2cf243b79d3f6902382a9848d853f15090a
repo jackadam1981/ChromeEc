@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e99a9f9_0500f873",
+        "filename": "board/speedy/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2015-01-13T18:46:00Z",
+      "side": 1,
+      "message": "If this is a 24W charger at 12V wouldn\u0027t the current be 2A?",
+      "range": {
+        "startLine": 77,
+        "startChar": 26,
+        "endLine": 77,
+        "endChar": 57
+      },
+      "revId": "5a62c2cf243b79d3f6902382a9848d853f15090a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae53d9fb_33eb92b6",
+        "filename": "board/speedy/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2015-01-13T18:46:00Z",
+      "side": 1,
+      "message": "Perhaps we need to remove \"based on Link HW design\"",
+      "range": {
+        "startLine": 79,
+        "startChar": 49,
+        "endLine": 79,
+        "endChar": 72
+      },
+      "revId": "5a62c2cf243b79d3f6902382a9848d853f15090a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
