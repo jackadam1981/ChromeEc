@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e99a9f9_df85ffee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2015-01-13T02:33:02Z",
+      "side": 1,
+      "message": "I\u0027m going to expand this.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 22
+      },
+      "revId": "409dccbfebd766d62818442f45bd1e53605be1da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e99a9f9_9f8b7705",
+        "filename": "common/led_policy_std.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2015-01-13T02:33:02Z",
+      "side": 1,
+      "message": "TODO: Figure out how to expose the 2 leds to the host.\nEC commands doesn\u0027t support color amber\nShould it be 3 LEDs(/channels) or just 2?",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 1
+      },
+      "revId": "409dccbfebd766d62818442f45bd1e53605be1da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
