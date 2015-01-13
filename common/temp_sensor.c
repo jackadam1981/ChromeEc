@@ -11,6 +11,7 @@
 #include "host_command.h"
 #include "task.h"
 #include "temp_sensor.h"
+#include "thermal.h"
 #include "timer.h"
 #include "util.h"
 
@@ -101,6 +102,7 @@ static int command_temps(int argc, char **argv)
 	int t, i;
 	int rv, rv1 = EC_SUCCESS;
 
+
 	for (i = 0; i < TEMP_SENSOR_COUNT; ++i) {
 		ccprintf("  %-20s: ", temp_sensors[i].name);
 		rv = temp_sensor_read(i, &t);
@@ -109,7 +111,15 @@ static int command_temps(int argc, char **argv)
 
 		switch (rv) {
 		case EC_SUCCESS:
-			ccprintf("%d K = %d C\n", t, K_TO_C(t));
+			ccprintf("%d K = %d C", t, K_TO_C(t));
+			if (thermal_params[i].temp_fan_off &&
+			    thermal_params[i].temp_fan_max)
+				ccprintf("  %d%%",
+					 thermal_fan_percent(
+						 thermal_params[i].temp_fan_off,
+						 thermal_params[i].temp_fan_max,
+						 t));
+			ccprintf("\n");
 			break;
 		case EC_ERROR_NOT_POWERED:
 			ccprintf("Not powered\n");
