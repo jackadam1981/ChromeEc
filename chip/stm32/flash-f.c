@@ -412,6 +412,15 @@ int flash_pre_init(void)
 	if (flash_physical_restore_state())
 		return EC_SUCCESS;
 
+	/*
+	 * If the RO firmware has a different view of the protection than
+	 * the RW copy, we should not change the settings in RW else we will
+	 * trigger a reboot loop : RW protects and reset, then RO unprotects,
+	 * resets and jump to RW, RW protects and reset again ...
+	 */
+	if (system_get_image_copy() != SYSTEM_IMAGE_RO)
+		return EC_SUCCESS;
+
 	if (prot_flags & EC_FLASH_PROTECT_GPIO_ASSERTED) {
 		if ((prot_flags & EC_FLASH_PROTECT_RO_AT_BOOT) &&
 		    !(prot_flags & EC_FLASH_PROTECT_RO_NOW)) {
