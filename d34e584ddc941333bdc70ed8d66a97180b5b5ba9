@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "ee64f1c9_fa19e920",
+        "filename": "board/dingdong/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-13T23:09:13Z",
+      "side": 1,
+      "message": "the fact that we only return log entries if we are in gfu mode means that hoho/dingdong either after to support multiple modes, or we will only be able to get the log information on connect when we enter gfu mode. probably fine.",
+      "range": {
+        "startLine": 241,
+        "startChar": 49,
+        "endLine": 241,
+        "endChar": 58
+      },
+      "revId": "d34e584ddc941333bdc70ed8d66a97180b5b5ba9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e47e93f_8fd25915",
         "filename": "common/pd_log.c",
         "patchSetId": 6
