@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ecac1df_afd29914",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-13T17:14:03Z",
+      "side": 1,
+      "message": "(this section)",
+      "range": {
+        "startLine": 317,
+        "startChar": 3,
+        "endLine": 317,
+        "endChar": 28
+      },
+      "revId": "f6147e91ecbb4bb660760f3e03379638a599a72a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ecac1df_6f36e1d1",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-13T17:14:03Z",
+      "side": 1,
+      "message": "Convention is to gate debug commands with CONFIG_CMD_(commandname)",
+      "range": {
+        "startLine": 482,
+        "startChar": 7,
+        "endLine": 482,
+        "endChar": 35
+      },
+      "revId": "f6147e91ecbb4bb660760f3e03379638a599a72a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
