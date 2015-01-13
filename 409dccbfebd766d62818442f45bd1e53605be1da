@@ -45,6 +45,30 @@
       "revId": "409dccbfebd766d62818442f45bd1e53605be1da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ec449d1_6d19cd9c",
+        "filename": "common/led_policy_std.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-13T17:30:38Z",
+      "side": 1,
+      "message": "Take a look at Squawks:\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/master/board/squawks/led.c",
+      "parentUuid": "2e99a9f9_9f8b7705",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 1
+      },
+      "revId": "409dccbfebd766d62818442f45bd1e53605be1da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
