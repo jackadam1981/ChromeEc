@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ec449d1_98c3a56b",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-13T19:09:02Z",
+      "side": 1,
+      "message": "should not be needed since the deadline is not now.\nbut ok\nhopefully it\u0027s not increasing code size, I\u0027m still fighting to find the last 24 bytes for the logging code",
+      "revId": "7487be042d659b42317cf48167cf730a849cc4b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
