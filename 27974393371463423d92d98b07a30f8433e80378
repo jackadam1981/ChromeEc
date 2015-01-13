@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ec449d1_e7e31c5d",
+        "filename": "common/flash_external.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2015-01-13T04:50:51Z",
+      "side": 1,
+      "message": "If CONFIG_FLASH_EXTERNAL is not defined, this file won\u0027t be compiled, so no need for #ifdef here.",
+      "range": {
+        "startLine": 28,
+        "startChar": 7,
+        "endLine": 28,
+        "endChar": 28
+      },
+      "revId": "27974393371463423d92d98b07a30f8433e80378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee7b115e_c5f44ce7",
+        "filename": "common/system.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2015-01-13T04:50:51Z",
+      "side": 1,
+      "message": "Move this function to the else block of #ifdef CONFIG_FLASH_EXTERNAL.",
+      "range": {
+        "startLine": 404,
+        "startChar": 4,
+        "endLine": 404,
+        "endChar": 35
+      },
+      "revId": "27974393371463423d92d98b07a30f8433e80378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ecac1df_a9f9f990",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1378,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2015-01-13T04:50:51Z",
+      "side": 1,
+      "message": "#if defined(CONFIG_FLASH) \u0026\u0026 defined(CONFIG_FLASH_EXTERNAL)",
+      "range": {
+        "startLine": 1377,
+        "startChar": 0,
+        "endLine": 1378,
+        "endChar": 28
+      },
+      "revId": "27974393371463423d92d98b07a30f8433e80378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee7b115e_05ef1413",
+        "filename": "include/vboot_hash.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2015-01-13T04:50:51Z",
+      "side": 1,
+      "message": "Please document what the new functions are for. (See above for examples.)",
+      "revId": "27974393371463423d92d98b07a30f8433e80378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
