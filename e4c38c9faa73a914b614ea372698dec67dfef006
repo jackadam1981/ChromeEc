@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e75fd75_1b36a302",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2015-01-13T18:15:36Z",
+      "side": 1,
+      "message": "Perhaps you want to split this in 2 CLs:\n* Implement the driver\n* Add driver to minnie",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 64
+      },
+      "revId": "e4c38c9faa73a914b614ea372698dec67dfef006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e75fd75_bb468f81",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2015-01-13T18:15:36Z",
+      "side": 1,
+      "message": "Randall: do we want such a driver in master first?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 29
+      },
+      "revId": "e4c38c9faa73a914b614ea372698dec67dfef006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae53d9fb_106be48e",
+        "filename": "board/minnie/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2015-01-13T18:15:36Z",
+      "side": 1,
+      "message": "Why did add all of this?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 40
+      },
+      "revId": "e4c38c9faa73a914b614ea372698dec67dfef006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae53d9fb_7072707d",
+        "filename": "board/minnie/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2015-01-13T18:15:36Z",
+      "side": 1,
+      "message": "Alphabetical order please",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 29
+      },
+      "revId": "e4c38c9faa73a914b614ea372698dec67dfef006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e75fd75_5bfe5bc2",
+        "filename": "board/minnie/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2015-01-13T18:15:36Z",
+      "side": 1,
+      "message": "You have this twice",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 29
+      },
+      "revId": "e4c38c9faa73a914b614ea372698dec67dfef006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e75fd75_bb1f6f85",
+        "filename": "board/minnie/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2015-01-13T18:15:36Z",
+      "side": 1,
+      "message": "Space at the end of the line",
+      "range": {
+        "startLine": 68,
+        "startChar": 38,
+        "endLine": 68,
+        "endChar": 39
+      },
+      "revId": "e4c38c9faa73a914b614ea372698dec67dfef006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae53d9fb_70eb5083",
+        "filename": "driver/accel_kx022.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2015-01-13T18:15:36Z",
+      "side": 1,
+      "message": "Empty line with a tab in it.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 1
+      },
+      "revId": "e4c38c9faa73a914b614ea372698dec67dfef006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e99a9f9_e54dcc8f",
+        "filename": "driver/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2015-01-13T18:15:36Z",
+      "side": 1,
+      "message": "CONFIG_ACCEL_KX022 should be in an #undef in include/config.h as per:\nhttp://www.chromium.org/chromium-os/ec-development#TOC-Coding-style",
+      "range": {
+        "startLine": 11,
+        "startChar": 10,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "e4c38c9faa73a914b614ea372698dec67dfef006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae53d9fb_b0bdb88b",
+        "filename": "driver/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2015-01-13T18:15:36Z",
+      "side": 1,
+      "message": "This should go up a line to preserve alphabetical order.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 43
+      },
+      "revId": "e4c38c9faa73a914b614ea372698dec67dfef006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
