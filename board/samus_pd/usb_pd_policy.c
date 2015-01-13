@@ -360,6 +360,14 @@ static int svdm_gfu_attention(int port, uint32_t *payload)
 
 const struct svdm_amode_fx supported_modes[] = {
 	{
+		.svid = USB_VID_GOOGLE,
+		.enter = &svdm_enter_gfu_mode,
+		.status = &svdm_gfu_status,
+		.config = &svdm_gfu_config,
+		.attention = &svdm_gfu_attention,
+		.exit = &svdm_exit_gfu_mode,
+	},
+	{
 		.svid = USB_SID_DISPLAYPORT,
 		.enter = &svdm_enter_dp_mode,
 		.status = &svdm_dp_status,
@@ -368,13 +376,5 @@ const struct svdm_amode_fx supported_modes[] = {
 		.attention = &svdm_dp_attention,
 		.exit = &svdm_exit_dp_mode,
 	},
-	{
-		.svid = USB_VID_GOOGLE,
-		.enter = &svdm_enter_gfu_mode,
-		.status = &svdm_gfu_status,
-		.config = &svdm_gfu_config,
-		.attention = &svdm_gfu_attention,
-		.exit = &svdm_exit_gfu_mode,
-	}
 };
 const int supported_modes_cnt = ARRAY_SIZE(supported_modes);
