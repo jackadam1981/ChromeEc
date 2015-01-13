@@ -16,6 +16,24 @@
       "revId": "7487be042d659b42317cf48167cf730a849cc4b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae53d9fb_368700a5",
+        "filename": "board/zinger/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-13T19:19:51Z",
+      "side": 1,
+      "message": "it is needed, this is one of the major bug fixes. without this, when the discharge fault occurs, it doesn\u0027t cut it\u0027s output because this function returns EC_SUCCESS. it ends up cutting it\u0027s output 1 second later when the deadline expires. this is why it took so long to find what was going on.",
+      "parentUuid": "2ec449d1_98c3a56b",
+      "revId": "7487be042d659b42317cf48167cf730a849cc4b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
