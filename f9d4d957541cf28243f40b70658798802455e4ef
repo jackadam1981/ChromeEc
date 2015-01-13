@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e44e539_eb191121",
+        "filename": "chip/stm32/flash-f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-13T23:13:35Z",
+      "side": 1,
+      "message": "This seems ok.\n\nSTM32L and LM4 both do this in flash_pre_init():\n\n\tuint32_t reset_flags \u003d system_get_reset_flags();\n\n\t/*\n\t * If we have already jumped between images, an earlier image could\n\t * have applied write protection.  Nothing additional needs to be done.\n\t */\n\tif (reset_flags \u0026 RESET_FLAG_SYSJUMP)\n\t\treturn EC_SUCCESS;\n\nwhich is roughly equivalent.  flash-stm32f.c checks the sysjump flag in flash_physical_restore_state().  \n\nSo it\u0027s only flash-stm32f0 which was missing the check to see if it\u0027s not in the first image after a hard reset.",
+      "range": {
+        "startLine": 412,
+        "startChar": 0,
+        "endLine": 422,
+        "endChar": 20
+      },
+      "revId": "f9d4d957541cf28243f40b70658798802455e4ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
