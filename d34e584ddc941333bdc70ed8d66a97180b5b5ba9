@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "2e47e93f_8fd25915",
+        "filename": "common/pd_log.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-01-13T23:05:22Z",
+      "side": 1,
+      "message": "Use UNIT_SIZE here?",
+      "revId": "d34e584ddc941333bdc70ed8d66a97180b5b5ba9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ec449d1_077e389a",
         "filename": "common/pd_log.c",
         "patchSetId": 6
@@ -42,6 +59,57 @@
         "endLine": 65,
         "endChar": 57
       },
+      "revId": "d34e584ddc941333bdc70ed8d66a97180b5b5ba9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e3a5daa_d68f9abd",
+        "filename": "common/pd_log.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-01-13T23:05:22Z",
+      "side": 1,
+      "message": "payload_size is in bytes, but LOG_SIZE is in UNITs. Do you need to multiply the second parameter by UNIT_SIZE?",
+      "revId": "d34e584ddc941333bdc70ed8d66a97180b5b5ba9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e47e93f_6c2d3bad",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 2782,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-01-13T23:05:22Z",
+      "side": 1,
+      "message": "Maybe add a comment here that the struct end must be aligned to 16 bits, due to the usage in ec_response_usb_pd_power_info? Just worried that someone will come along and add a unit_8 to the end without paying attention.",
+      "revId": "d34e584ddc941333bdc70ed8d66a97180b5b5ba9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e3a5daa_538bbc47",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 2869,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-01-13T23:05:22Z",
+      "side": 1,
+      "message": "It would be extremely unlucky (and would take a long time to reach), but this seems like a valid timestamp that\u0027s possible to have during normal use. How about using the \u0027type\u0027 variable to uniquely identify \"no entries available\" instead?",
       "revId": "d34e584ddc941333bdc70ed8d66a97180b5b5ba9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
