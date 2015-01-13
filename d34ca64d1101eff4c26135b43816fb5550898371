@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2ece09a4_57652efd",
+        "filename": "chip/npcx/fan.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-01-13T03:35:41Z",
+      "side": 1,
+      "message": "Currently, we only use one channel for fan. And if we need the other channel, it\u0027s easier to add source in switch func.",
+      "parentUuid": "8ebff5dd_3ac3bd38",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 14
+      },
+      "revId": "d34ca64d1101eff4c26135b43816fb5550898371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ef455d2_b2aebe75",
         "filename": "chip/npcx/fan_chip.h",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2015-01-09T18:00:05Z",
       "side": 1,
       "message": "Just \u0027enum tacho_measure_state\u0027 as you did above with npcx_mft_module.  No typedef.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 35
+      },
+      "revId": "d34ca64d1101eff4c26135b43816fb5550898371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aeef59fe_560c245f",
+        "filename": "chip/npcx/fan_chip.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-01-13T03:35:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ef455d2_b2aebe75",
       "range": {
         "startLine": 41,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2ece09a4_f7be7ad6",
+        "filename": "chip/npcx/flash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-01-13T03:35:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ecb0596_330f68a5",
+      "range": {
+        "startLine": 21,
+        "startChar": 14,
+        "endLine": 21,
+        "endChar": 18
+      },
+      "revId": "d34ca64d1101eff4c26135b43816fb5550898371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ebff5dd_9a308988",
         "filename": "chip/npcx/flash.c",
         "patchSetId": 7
@@ -82,6 +154,30 @@
       "writtenOn": "2015-01-09T18:00:05Z",
       "side": 1,
       "message": "With the nested if()\u0027s here and comment, I\u0027d use { } for the outer if() statement.\n\nEither that, or maybe a line is missing?",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 13
+      },
+      "revId": "d34ca64d1101eff4c26135b43816fb5550898371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ece09a4_d7c37e6a",
+        "filename": "chip/npcx/flash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-01-13T03:35:41Z",
+      "side": 1,
+      "message": "My bad. we just need \"if(task_start_called)\"",
+      "parentUuid": "8ebff5dd_9a308988",
       "range": {
         "startLine": 90,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "2ece09a4_77b38a0b",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-01-13T03:35:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ebff5dd_1a4fd903",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 59
+      },
+      "revId": "d34ca64d1101eff4c26135b43816fb5550898371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ebff5dd_5a8791a3",
         "filename": "chip/npcx/i2c.c",
         "patchSetId": 7
@@ -128,6 +248,30 @@
       "writtenOn": "2015-01-09T18:00:05Z",
       "side": 1,
       "message": "enum smb_oper_state\n\n(rather than the typedef, and lowercase instead of uppercase since it\u0027s a type not a #defined macro)\n\nSame for SMB_ERROR.",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 17
+      },
+      "revId": "d34ca64d1101eff4c26135b43816fb5550898371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aeef59fe_16169c6b",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-01-13T03:35:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ebff5dd_5a8791a3",
       "range": {
         "startLine": 85,
         "startChar": 1,
@@ -157,6 +301,24 @@
     },
     {
       "key": {
+        "uuid": "aebaf9eb_5b979751",
+        "filename": "chip/npcx/keyboard_raw.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-01-13T03:35:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ebff5dd_bafa2d18",
+      "revId": "d34ca64d1101eff4c26135b43816fb5550898371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ecb0596_d39954e3",
         "filename": "chip/npcx/lfw/ec_lfw.c",
         "patchSetId": 7
@@ -168,6 +330,30 @@
       "writtenOn": "2015-01-09T18:00:05Z",
       "side": 1,
       "message": "of?",
+      "range": {
+        "startLine": 13,
+        "startChar": 8,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "d34ca64d1101eff4c26135b43816fb5550898371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ece09a4_37bd12d5",
+        "filename": "chip/npcx/lfw/ec_lfw.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-01-13T03:35:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ecb0596_d39954e3",
       "range": {
         "startLine": 13,
         "startChar": 8,
@@ -203,6 +389,30 @@
     },
     {
       "key": {
+        "uuid": "aeef59fe_f641d86c",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-01-13T03:35:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ecb0596_13b0ec49",
+      "range": {
+        "startLine": 472,
+        "startChar": 26,
+        "endLine": 472,
+        "endChar": 31
+      },
+      "revId": "d34ca64d1101eff4c26135b43816fb5550898371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ef455d2_f25d66ef",
         "filename": "chip/npcx/lpc.c",
         "patchSetId": 7
@@ -226,6 +436,30 @@
     },
     {
       "key": {
+        "uuid": "2ece09a4_17ba16dd",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-01-13T03:35:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ef455d2_f25d66ef",
+      "range": {
+        "startLine": 655,
+        "startChar": 0,
+        "endLine": 662,
+        "endChar": 53
+      },
+      "revId": "d34ca64d1101eff4c26135b43816fb5550898371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ecb0596_538d4492",
         "filename": "chip/npcx/peci.c",
         "patchSetId": 7
@@ -237,6 +471,30 @@
       "writtenOn": "2015-01-09T18:00:05Z",
       "side": 1,
       "message": "just enum peci_command_t",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 14
+      },
+      "revId": "d34ca64d1101eff4c26135b43816fb5550898371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ece09a4_b79fe26c",
+        "filename": "chip/npcx/peci.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-01-13T03:35:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ecb0596_538d4492",
       "range": {
         "startLine": 38,
         "startChar": 0,
