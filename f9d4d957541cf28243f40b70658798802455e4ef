@@ -22,6 +22,24 @@
       "revId": "f9d4d957541cf28243f40b70658798802455e4ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e47e93f_52d734d0",
+        "filename": "chip/stm32/flash-f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-13T23:20:21Z",
+      "side": 1,
+      "message": "Ok I will update it to the common pattern",
+      "parentUuid": "0e44e539_eb191121",
+      "revId": "f9d4d957541cf28243f40b70658798802455e4ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
