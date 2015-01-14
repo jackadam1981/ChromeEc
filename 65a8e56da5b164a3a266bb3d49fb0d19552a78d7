@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "2e47e93f_e0212a8f",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-14T00:51:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e3a5daa_bc52ed5b",
+      "revId": "65a8e56da5b164a3a266bb3d49fb0d19552a78d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e47e93f_0041d668",
         "filename": "common/charge_manager.c",
         "patchSetId": 14
@@ -42,6 +60,24 @@
         "endLine": 198,
         "endChar": 9
       },
+      "revId": "65a8e56da5b164a3a266bb3d49fb0d19552a78d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce372dc2_4c8a2f7d",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-14T00:51:54Z",
+      "side": 1,
+      "message": "Sure I read it a few times and missed the point.\nI will try to fix this.",
+      "parentUuid": "2e47e93f_0041d668",
       "revId": "65a8e56da5b164a3a266bb3d49fb0d19552a78d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
