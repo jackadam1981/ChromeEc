@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee64f1c9_1d6bf78e",
+        "filename": "driver/accel_kx022.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-14T18:18:41Z",
+      "side": 1,
+      "message": "Copyright string for new files is now \"Copyright 2015\"",
+      "range": {
+        "startLine": 1,
+        "startChar": 3,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "c330a6587a8ec870ec7a88ac129ec744ad302f4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee64f1c9_3d68bb8f",
+        "filename": "driver/accel_kx022.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-14T18:18:41Z",
+      "side": 1,
+      "message": "Why does the accel header file need to include task.h?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 17
+      },
+      "revId": "c330a6587a8ec870ec7a88ac129ec744ad302f4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
