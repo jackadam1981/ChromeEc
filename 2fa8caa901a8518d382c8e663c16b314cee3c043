@@ -76,6 +76,24 @@
       "revId": "2fa8caa901a8518d382c8e663c16b314cee3c043",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee64f1c9_7d2dd3ac",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-14T05:06:10Z",
+      "side": 1,
+      "message": "I\u0027m not sure what you mean,\nI\u0027m actually comparing all the data exported in the log excepted the current_max and the voltage_max.\nYou might be mixing the \"struct ec_response_usb_pd_power_info\" flags with \"struct ec_response_pd_log\" data field where the flags are stored here.\nFor Alec, the power role is exported in data[2:0], so the change will be detected (USB_PD_PORT_POWER_SINK_NOT_CHARGING -\u003e USB_PD_PORT_POWER_SINK).",
+      "parentUuid": "ce372dc2_6f81a58c",
+      "revId": "2fa8caa901a8518d382c8e663c16b314cee3c043",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
