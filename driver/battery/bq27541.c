@@ -218,7 +218,7 @@ enum battery_present battery_is_present(void)
 
 void battery_get_params(struct batt_params *batt)
 {
-	int v;
+	int v, temp;
 
 	/* Reset flags */
 	batt->flags = 0;
@@ -239,22 +239,56 @@ void battery_get_params(struct batt_params *batt)
 		batt->flags |= BATT_FLAG_BAD_CURRENT;
 	batt->current = (int16_t)v;
 
+	if (battery_remaining_capacity(&batt->remaining_capacity))
+		batt->flags |= BATT_FLAG_BAD_REMAINING_CAPACITY;
+
+	if (battery_full_charge_capacity(&batt->full_capacity))
+		batt->flags |= BATT_FLAG_BAD_FULL_CAPACITY;
+
+	if (batt->flags & BATT_FLAG_RESPONSIVE)
+		batt->is_present = BP_YES;
+	else
+		batt->is_present = BP_NOT_SURE;
+
 	/* Default to not desiring voltage and current */
 	batt->desired_voltage = batt->desired_current = 0;
 
 	v = 0;
 	if (battery_charging_allowed(&v)) {
 		batt->flags |= BATT_FLAG_BAD_ANY;
-	} else if (v) {
-		batt->flags |= BATT_FLAG_WANT_CHARGE;
+	} else if (v && !(batt->flags & BATT_FLAG_BAD_TEMPERATURE)) {
+		temp = DECI_KELVIN_TO_CELSIUS(batt->temperature);
 
-		/*
-		 * Desired voltage and current are not provided by the battery.
-		 * So ask for battery's max voltage and an arbitrarily large
-		 * current.
-		 */
-		batt->desired_voltage = battery_get_info()->voltage_max;
-		batt->desired_current = 4096;
+		if (temp < 0) {
+			batt->desired_voltage = 4350;
+			batt->desired_current = 0;
+			batt->flags |= BATT_FLAG_BAD_ANY;
+		}
+		else if (temp < 12) {
+			batt->desired_voltage = 4350;
+			batt->desired_current = 1500;
+			batt->flags |= BATT_FLAG_WANT_CHARGE;
+		}
+		else if (temp < 50) {
+			batt->desired_voltage = 4350;
+			batt->desired_current = 3500;
+			batt->flags |= BATT_FLAG_WANT_CHARGE;
+		}
+		else if (batt->temperature < 55) {
+			batt->desired_voltage = 4110;
+			batt->desired_current = 3500;
+			batt->flags |= BATT_FLAG_WANT_CHARGE;
+		}
+		else {
+			batt->desired_voltage = 4110;
+			batt->desired_current = 0;
+			batt->flags |= BATT_FLAG_BAD_ANY;
+		}
+	}
+	else {
+		batt->desired_voltage = 4110;
+		batt->desired_current = 0;
+		batt->flags |= BATT_FLAG_BAD_ANY;
 	}
 }
 
