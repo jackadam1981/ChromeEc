@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce372dc2_8f0a59c8",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-14T01:31:27Z",
+      "side": 1,
+      "message": "I think this is still not good enough. Shawn, can you help look at this. The problem is the flags and the voltage might not change, but other info in pinfo may have changes. For example, if you have two chargers plugged in, both at 5V, and you unplug the active charger. In this case the charging port and maybe the charging supplier will change, but the flags and voltage now might not change. But, we still want to log this. I think we need to keep the entire last pinfo and compare that.",
+      "range": {
+        "startLine": 206,
+        "startChar": 5,
+        "endLine": 206,
+        "endChar": 30
+      },
+      "revId": "2fa8caa901a8518d382c8e663c16b314cee3c043",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
