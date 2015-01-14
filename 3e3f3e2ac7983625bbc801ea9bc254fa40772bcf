@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee64f1c9_1da05777",
+        "filename": "common/led_policy_std.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-14T18:01:40Z",
+      "side": 1,
+      "message": "Swap around the clauses\n\n#ifdef CONFIG_FOO\n...\n#else\n...\n#endif\n\n(#ifdef-else is more readable then #ifndef-else)",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 6
+      },
+      "revId": "3e3f3e2ac7983625bbc801ea9bc254fa40772bcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
