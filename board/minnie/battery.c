@@ -16,10 +16,10 @@
 #define SB_SHUTDOWN_DATA	0x0010
 
 static const struct battery_info info = {
-	.voltage_max    = 8400,		/* mV */
-	.voltage_normal = 7400,
-	.voltage_min    = 6000,
-	.precharge_current  = 256,	/* mA */
+	.voltage_max    = 4350,		/* mV */
+	.voltage_normal = 4350,
+	.voltage_min    = 4110,
+	.precharge_current  = 384,	/* mA */
 	.start_charging_min_c = 0,
 	.start_charging_max_c = 45,
 	.charging_min_c       = 0,
@@ -35,17 +35,8 @@ const struct battery_info *battery_get_info(void)
 
 static int cutoff(void)
 {
-	int rv;
-
-	/* Ship mode command must be sent twice to take effect */
-	rv = sb_write(SB_MANUFACTURER_ACCESS, SB_SHUTDOWN_DATA);
-
-	if (rv != EC_SUCCESS)
-		return rv;
-
-	return sb_write(SB_MANUFACTURER_ACCESS, SB_SHUTDOWN_DATA);
+	return EC_ERROR_UNIMPLEMENTED;
 }
-
 
 int board_cut_off_battery(void)
 {
