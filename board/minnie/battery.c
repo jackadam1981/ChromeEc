@@ -35,17 +35,8 @@ const struct battery_info *battery_get_info(void)
 
 static int cutoff(void)
 {
-	int rv;
-
-	/* Ship mode command must be sent twice to take effect */
-	rv = sb_write(SB_MANUFACTURER_ACCESS, SB_SHUTDOWN_DATA);
-
-	if (rv != EC_SUCCESS)
-		return rv;
-
-	return sb_write(SB_MANUFACTURER_ACCESS, SB_SHUTDOWN_DATA);
+	return EC_ERROR_UNIMPLEMENTED;
 }
-
 
 int board_cut_off_battery(void)
 {
