@@ -248,6 +248,7 @@ static struct pd_protocol {
 	uint16_t flags;
 	/* 3-bit rolling message ID counter */
 	uint8_t msg_id;
+	uint8_t last_msg_id;
 	/* Port polarity : 0 => CC1 is CC line, 1 => CC2 is CC line */
 	uint8_t polarity;
 	/* PD state for port */
@@ -359,6 +360,16 @@ int pd_is_connected(int port)
 	return pd[port].task_state != PD_STATE_SRC_DISCONNECTED &&
 	       pd[port].task_state != PD_STATE_SRC_DISCONNECTED_DEBOUNCE &&
 	       pd[port].task_state != PD_STATE_SRC_ACCESSORY;
+}
+
+static inline void reset_msg_id(int port)
+{
+	/*
+	 * Reset messgae id to 0 and last message to non-zero to
+	 * avoid detecting a duplicate on the first received packet.
+	 */
+	pd[port].msg_id = 0;
+	pd[port].last_msg_id = 0xff;
 }
 
 static inline void set_state(int port, enum pd_states next_state)
@@ -759,10 +770,15 @@ static void queue_vdm(int port, uint32_t *header, const uint32_t *data,
 	pd[port].vdm_state = VDM_STATE_READY;
 }
 
-static void handle_vdm_request(int port, int cnt, uint32_t *payload)
+static void handle_vdm_request(int port, int cnt, uint32_t *payload,
+			       int duplicate)
 {
 	int rlen = 0, i;
 	uint32_t *rdata;
+
+	/* Ignore duplicates for VDMs */
+	if (duplicate)
+		return;
 
 	if (pd[port].vdm_state == VDM_STATE_BUSY) {
 		CPRINTF("VDM%d/%d [%02d] %08x", port, cnt,
@@ -806,7 +822,7 @@ static void execute_hard_reset(int port)
 	else
 		CPRINTF("C%d HARD RST RX\n", port);
 
-	pd[port].msg_id = 0;
+	reset_msg_id(port);
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
 	pd_dfp_exit_mode(port);
 	pd_dfp_pe_init(port);
@@ -847,7 +863,7 @@ static void execute_hard_reset(int port)
 
 static void execute_soft_reset(int port)
 {
-	pd[port].msg_id = 0;
+	reset_msg_id(port);
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	set_state(port, pd[port].power_role == PD_ROLE_SINK ?
 			PD_STATE_SNK_DISCOVERY : PD_STATE_SRC_DISCOVERY);
@@ -964,7 +980,7 @@ static void pd_update_pdo_flags(int port, uint32_t pdo)
 }
 
 static void handle_data_request(int port, uint16_t head,
-		uint32_t *payload)
+		uint32_t *payload, int duplicate)
 {
 	int type = PD_HEADER_TYPE(head);
 	int cnt = PD_HEADER_CNT(head);
@@ -1029,7 +1045,7 @@ static void handle_data_request(int port, uint16_t head,
 			set_state(port, PD_STATE_SRC_READY);
 		break;
 	case PD_DATA_VENDOR_DEF:
-		handle_vdm_request(port, cnt, payload);
+		handle_vdm_request(port, cnt, payload, duplicate);
 		break;
 	default:
 		CPRINTF("Unhandled data message type %d\n", type);
@@ -1071,7 +1087,7 @@ static void pd_dr_swap(int port)
 }
 
 static void handle_ctrl_request(int port, uint16_t head,
-		uint32_t *payload)
+		uint32_t *payload, int duplicate)
 {
 	int type = PD_HEADER_TYPE(head);
 	int res;
@@ -1104,7 +1120,7 @@ static void handle_ctrl_request(int port, uint16_t head,
 			set_state(port, PD_STATE_SNK_SWAP_STANDBY);
 		} else if (pd[port].task_state == PD_STATE_SRC_SWAP_STANDBY) {
 			/* reset message ID and swap roles */
-			pd[port].msg_id = 0;
+			reset_msg_id(port);
 			pd[port].power_role = PD_ROLE_SINK;
 			set_state(port, PD_STATE_SNK_DISCOVERY);
 		} else if (pd[port].task_state == PD_STATE_SNK_DISCOVERY) {
@@ -1218,6 +1234,7 @@ static void handle_request(int port, uint16_t head,
 {
 	int cnt = PD_HEADER_CNT(head);
 	int p;
+	int msg_id;
 
 	if (PD_HEADER_TYPE(head) != PD_CTRL_GOOD_CRC || cnt)
 		send_goodcrc(port, PD_HEADER_ID(head));
@@ -1241,10 +1258,21 @@ static void handle_request(int port, uint16_t head,
 	if (!pd_is_connected(port))
 		set_state(port, PD_STATE_HARD_RESET_SEND);
 
+	/*
+	 * If message ID hasn't changed, this is a duplicate
+	 * Note Soft Reset is an exception (msgID is always 0)
+	 */
+	msg_id = PD_HEADER_ID(head);
+	if (debug_level >= 1 && msg_id == pd[port].last_msg_id)
+		CPRINTF("Dup ID\n");
+
 	if (cnt)
-		handle_data_request(port, head, payload);
+		handle_data_request(port, head, payload,
+				    msg_id == pd[port].last_msg_id);
 	else
-		handle_ctrl_request(port, head, payload);
+		handle_ctrl_request(port, head, payload,
+				    msg_id == pd[port].last_msg_id);
+	pd[port].last_msg_id = msg_id;
 }
 
 static inline int decode_short(int port, int off, uint16_t *val16)
@@ -1716,6 +1744,7 @@ void pd_task(void)
 	pd_set_data_role(port, PD_ROLE_DEFAULT);
 	pd[port].vdm_state = VDM_STATE_DONE;
 	pd[port].flags = 0;
+	reset_msg_id(port);
 	set_state(port, PD_DEFAULT_STATE);
 
 	/* Ensure the power supply is in the default state */
@@ -1932,7 +1961,7 @@ void pd_task(void)
 				pd[port].flags |= PD_FLAGS_DATA_SWAPPED;
 				/* reset various counters */
 				caps_count = 0;
-				pd[port].msg_id = 0;
+				reset_msg_id(port);
 				set_state_timeout(
 					port,
 					/*
@@ -2291,7 +2320,7 @@ void pd_task(void)
 					UFP_GET_POLARITY(cc1_volt, cc2_volt);
 				pd_select_polarity(port, pd[port].polarity);
 				/* reset message ID  on connection */
-				pd[port].msg_id = 0;
+				reset_msg_id(port);
 				/* initial data role for sink is UFP */
 				pd_set_data_role(port, PD_ROLE_UFP);
 #ifdef CONFIG_CHARGE_MANAGER
@@ -2585,7 +2614,7 @@ void pd_task(void)
 			}
 
 			caps_count = 0;
-			pd[port].msg_id = 0;
+			reset_msg_id(port);
 			pd[port].power_role = PD_ROLE_SOURCE;
 			set_state(port, PD_STATE_SRC_DISCOVERY);
 			timeout = 10*MSEC;
