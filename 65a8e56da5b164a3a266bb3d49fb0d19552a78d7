@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e3a5daa_bc52ed5b",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-14T00:34:35Z",
+      "side": 1,
+      "message": "not your bug, but would be more clear if when r-\u003erole is a source, we also clear most of these params. I propose changing highlighted code to:\n\nif (sup \u003d\u003d CHARGE_SUPPLIER_NONE || r-\u003erole \u003d\u003d USB_PD_PORT_POWER_SOURCE) {\n\tr-\u003etype \u003d USB_CHG_TYPE_NONE;\n\tr-\u003emeas.voltage_max \u003d 0;\n\tr-\u003emeas.voltage_now \u003d r-\u003erole \u003d\u003d USB_PD_PORT_POWER_SOURCE ? 5000 : 0;\n\tr-\u003emeas.current_max \u003d 0;\n\tr-\u003emax_power \u003d 0;\n} else {\n\nand then change if on line 169 to take out the SOURCE check:\n\nif (r-\u003erole \u003d\u003d USB_PD_PORT_POWER_SINK_NOT_CHARGING)",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 9
+      },
+      "revId": "65a8e56da5b164a3a266bb3d49fb0d19552a78d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e47e93f_0041d668",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-14T00:34:35Z",
+      "side": 1,
+      "message": "i think shawn\u0027s original change checked basically all of pinfo to see if any of it changed in order to log.  it looks like as written if the active port changes or the supplier changes but the voltage doesn\u0027t change, then it will not create a new log entry.",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 9
+      },
+      "revId": "65a8e56da5b164a3a266bb3d49fb0d19552a78d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
