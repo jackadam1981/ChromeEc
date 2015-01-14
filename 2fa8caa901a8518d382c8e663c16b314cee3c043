@@ -22,6 +22,24 @@
       "revId": "2fa8caa901a8518d382c8e663c16b314cee3c043",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e3a5daa_82d5c870",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-01-14T01:38:48Z",
+      "side": 1,
+      "message": "Yes, you are right. Port charging status isn\u0027t compared, and it needs to be. Maybe a better approach is to only call charge_manager_save_log when the port actually changes, and we\u0027ll know that by marking a port \"dirty\" in various places. Maybe we can just log everything in this initial CL, and I\u0027ll put up another CL to add + check the dirty bit?",
+      "parentUuid": "ce372dc2_8f0a59c8",
+      "revId": "2fa8caa901a8518d382c8e663c16b314cee3c043",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
