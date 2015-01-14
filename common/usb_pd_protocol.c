@@ -188,6 +188,7 @@ static const uint8_t dec4b5b[] = {
 #define PD_RETRY_COUNT 3
 #define PD_HARD_RESET_COUNT 2
 #define PD_CAPS_COUNT 50
+#define PD_IDENTITY_COUNT 20 /* nDiscoverIdentityCount */
 
 /* Port role at startup */
 #ifdef CONFIG_USB_PD_DUAL_ROLE
@@ -228,6 +229,7 @@ static int pd_src_cap_cnt[PD_PORT_COUNT];
 #define PD_FLAGS_CHECK_PR_ROLE     (1 << 9) /* check power role in READY */
 #define PD_FLAGS_CHECK_DR_ROLE     (1 << 10)/* check data role in READY */
 #define PD_FLAGS_CURR_LIM_INIT     (1 << 11)/* input curr limit initialized */
+#define PD_FLAGS_DISCOVER_IDENT    (1 << 12)/* discover identity done */
 /* Flags to clear on a disconnect */
 #define PD_FLAGS_RESET_ON_DISCONNECT_MASK (PD_FLAGS_PARTNER_DR_POWER | \
 					   PD_FLAGS_PARTNER_DR_DATA | \
@@ -237,7 +239,8 @@ static int pd_src_cap_cnt[PD_PORT_COUNT];
 					   PD_FLAGS_EXPLICIT_CONTRACT | \
 					   PD_FLAGS_PREVIOUS_PD_CONN | \
 					   PD_FLAGS_CHECK_PR_ROLE | \
-					   PD_FLAGS_CHECK_DR_ROLE)
+					   PD_FLAGS_CHECK_DR_ROLE | \
+	                                   PD_FLAGS_DISCOVER_IDENT)
 
 static struct pd_protocol {
 	/* current port power role (SOURCE or SINK) */
@@ -787,6 +790,10 @@ static void handle_vdm_request(int port, int cnt, uint32_t *payload)
 		rlen = pd_custom_vdm(port, cnt, payload, &rdata);
 
 	if (rlen > 0) {
+		if (PD_VDO_CMD(payload[0]) == CMD_DISCOVER_SVID) {
+			pd[port].flags |= PD_FLAGS_DISCOVER_IDENT;
+		}
+
 		queue_vdm(port, rdata, &rdata[1], rlen - 1);
 		return;
 	}
@@ -1708,7 +1715,7 @@ void pd_task(void)
 	enum pd_states this_state;
 	enum pd_cc_states new_cc_state;
 	timestamp_t now;
-	int caps_count = 0, hard_reset_sent = 0;
+	int caps_count = 0, hard_reset_sent = 0, ident_count = 0;
 
 	/* Initialize TX pins and put them in Hi-Z */
 	pd_tx_init();
@@ -1939,6 +1946,7 @@ void pd_task(void)
 				pd[port].flags |= PD_FLAGS_DATA_SWAPPED;
 				/* reset various counters */
 				caps_count = 0;
+				ident_count = 0;
 				pd[port].msg_id = 0;
 				set_state_timeout(
 					port,
@@ -2076,16 +2084,21 @@ void pd_task(void)
 				break;
 			}
 
-			/* Send discovery SVDMs last */
 			if (pd[port].data_role == PD_ROLE_DFP &&
 			    (pd[port].flags & PD_FLAGS_DATA_SWAPPED)) {
-#ifndef CONFIG_USB_PD_SIMPLE_DFP
-				pd_send_vdm(port, USB_SID_PD,
-					    CMD_DISCOVER_IDENT, NULL, 0);
-#endif
 				pd[port].flags &= ~PD_FLAGS_DATA_SWAPPED;
+				pd[port].flags &= ~PD_FLAGS_DISCOVER_IDENT;
 				break;
 			}
+#ifndef CONFIG_USB_PD_SIMPLE_DFP
+			/* Send discovery SVDMs last */
+			if (!(pd[port].flags & PD_FLAGS_DISCOVER_IDENT) &&
+			    (ident_count < PD_IDENTITY_COUNT)) {
+				pd_send_vdm(port, USB_SID_PD,
+					    CMD_DISCOVER_IDENT, NULL, 0);
+				ident_count++;
+			}
+#endif
 
 			if (!(pd[port].flags & PD_FLAGS_PING_ENABLED))
 				break;
@@ -2591,7 +2604,7 @@ void pd_task(void)
 				break;
 			}
 
-			caps_count = 0;
+			caps_count = ident_count = 0;
 			pd[port].msg_id = 0;
 			pd[port].power_role = PD_ROLE_SOURCE;
 			set_state(port, PD_STATE_SRC_DISCOVERY);
