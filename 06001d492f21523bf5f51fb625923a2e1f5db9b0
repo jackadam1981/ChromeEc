@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee64f1c9_dd141fea",
+        "filename": "common/led_policy_std.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-14T19:17:02Z",
+      "side": 1,
+      "message": "#ifdef?",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 7
+      },
+      "revId": "06001d492f21523bf5f51fb625923a2e1f5db9b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
