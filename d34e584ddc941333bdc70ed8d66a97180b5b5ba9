@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "4e3a5daa_bc710dcf",
+        "filename": "common/pd_log.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-14T00:09:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e47e93f_8fd25915",
+      "revId": "d34e584ddc941333bdc70ed8d66a97180b5b5ba9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ec449d1_077e389a",
         "filename": "common/pd_log.c",
         "patchSetId": 6
@@ -59,6 +77,24 @@
         "endLine": 64,
         "endChar": 50
       },
+      "revId": "d34e584ddc941333bdc70ed8d66a97180b5b5ba9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce372dc2_2cda5b7b",
+        "filename": "common/pd_log.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-14T00:09:15Z",
+      "side": 1,
+      "message": "No, size_t is a fancy name for \"unsigned int\" ,\nit\u0027s 32 bits on this platform",
+      "parentUuid": "2ec449d1_077e389a",
       "revId": "d34e584ddc941333bdc70ed8d66a97180b5b5ba9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -88,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "2e47e93f_95534632",
+        "filename": "common/pd_log.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-14T00:09:15Z",
+      "side": 1,
+      "message": "no, we are writing at the tail.\nso you are discarded one (or a few) unit at the head, it cannot empty the FIFO so much that you need the entry at the tail\n(unless the FIFO is so short that it is only 4 entries)",
+      "parentUuid": "ee7b115e_62ee1695",
+      "revId": "d34e584ddc941333bdc70ed8d66a97180b5b5ba9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e3a5daa_d68f9abd",
         "filename": "common/pd_log.c",
         "patchSetId": 6
@@ -99,6 +153,24 @@
       "writtenOn": "2015-01-13T23:05:22Z",
       "side": 1,
       "message": "payload_size is in bytes, but LOG_SIZE is in UNITs. Do you need to multiply the second parameter by UNIT_SIZE?",
+      "revId": "d34e584ddc941333bdc70ed8d66a97180b5b5ba9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce372dc2_2c7edb9a",
+        "filename": "common/pd_log.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-14T00:09:15Z",
+      "side": 1,
+      "message": "Good catch, seems terribly buggy.\n\nin dequeue, \"first\" is in UNIT_SIZE, so we would need to divide payload_size here.\nmaybe it\u0027s more optimal to keep it in bytes.\nand just multiply total_size below for the \"if\" condition",
+      "parentUuid": "4e3a5daa_d68f9abd",
       "revId": "d34e584ddc941333bdc70ed8d66a97180b5b5ba9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -122,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "2e47e93f_f50f2a24",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 2782,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-14T00:09:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e47e93f_6c2d3bad",
+      "revId": "d34e584ddc941333bdc70ed8d66a97180b5b5ba9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e3a5daa_538bbc47",
         "filename": "include/ec_commands.h",
         "patchSetId": 6
@@ -133,6 +223,24 @@
       "writtenOn": "2015-01-13T23:05:22Z",
       "side": 1,
       "message": "It would be extremely unlucky (and would take a long time to reach), but this seems like a valid timestamp that\u0027s possible to have during normal use. How about using the \u0027type\u0027 variable to uniquely identify \"no entries available\" instead?",
+      "revId": "d34e584ddc941333bdc70ed8d66a97180b5b5ba9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e47e93f_d585ceee",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 2869,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-14T00:09:15Z",
+      "side": 1,
+      "message": "sure a lonely 48-day old entry that nobody has read will stay there.\nI will update update the code and use type \u003d\u003d 0xff if you prefer.",
+      "parentUuid": "4e3a5daa_538bbc47",
       "revId": "d34e584ddc941333bdc70ed8d66a97180b5b5ba9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
