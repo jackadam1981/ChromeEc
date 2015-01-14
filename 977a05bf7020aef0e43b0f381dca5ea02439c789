@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b051bfe_bce861b6",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-14T23:00:58Z",
+      "side": 1,
+      "message": "maybe it worth make it clear that msg_id is for message we are sending and last_msg_id is for the one we are receiving\n(or rename the variables)",
+      "revId": "977a05bf7020aef0e43b0f381dca5ea02439c789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b051bfe_7cd2d918",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-14T23:00:58Z",
+      "side": 1,
+      "message": "typo message",
+      "revId": "977a05bf7020aef0e43b0f381dca5ea02439c789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
