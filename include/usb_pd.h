@@ -626,7 +626,6 @@ enum pd_cc_states {
 	PD_CC_UFP_ATTACHED,
 
 	/* From UFP perspective */
-	PD_CC_ACC_PRESENT,
 	PD_CC_DFP_ATTACHED
 };
 
