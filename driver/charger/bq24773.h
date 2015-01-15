@@ -9,9 +9,22 @@
 #define __CROS_EC_CHARGER_BQ24773_H
 
 /* I2C address */
+#define BQ24770_ADDR (0x12)
 #define BQ24773_ADDR (0x6a << 1)
 
 /* Chip specific commands */
+#define BQ24770_CHARGE_OPTION0          0x12
+#define BQ24770_CHARGE_OPTION1          0x3B
+#define BQ24770_CHARGE_OPTION2          0x38
+#define BQ24770_PROTECT_OPTION0         0x3C
+#define BQ24770_PROTECT_OPTION1         0x3D
+#define BQ24770_CHARGE_CURRENT          0x14
+#define BQ24770_MAX_CHARGE_VOLTAGE      0x15
+#define BQ24770_MIN_SYSTEM_VOLTAGE      0x3E
+#define BQ24770_INPUT_CURRENT           0x3F
+#define BQ24770_MANUFACTURE_ID          0xFE
+#define BQ24770_DEVICE_ADDRESS          0xFF
+
 #define BQ24773_CHARGE_OPTION0          0x00
 #define BQ24773_CHARGE_OPTION1          0x02
 #define BQ24773_PROTECT_OPTION0         0x04

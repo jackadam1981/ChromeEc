@@ -29,9 +29,63 @@
 #define REG8_TO_CURRENT(REG, RS) ((REG) * DEFAULT_SENSE_RESISTOR / (RS) * R8)
 #define CURRENT_TO_REG8(CUR, RS) ((CUR) * (RS) / DEFAULT_SENSE_RESISTOR / R8)
 
+#ifdef CONFIG_CHARGER_BQ24770
+	#define CHARGER_NAME		"bq24770"
+	#define I2C_ADDR_CHARGER	BQ24770_ADDR
+
+	#define REG_CHARGE_OPTION0	BQ24770_CHARGE_OPTION0
+	#define REG_CHARGE_OPTION1	BQ24770_CHARGE_OPTION1
+	#define REG_CHARGE_OPTION2	BQ24770_CHARGE_OPTION2
+	#define REG_PROTECT_OPTION0	BQ24770_PROTECT_OPTION0
+	#define REG_PROTECT_OPTION1	BQ24770_PROTECT_OPTION1
+	#define REG_CHARGE_CURRENT	BQ24770_CHARGE_CURRENT
+	#define REG_MAX_CHARGE_VOLTAGE	BQ24770_MAX_CHARGE_VOLTAGE
+	#define REG_MIN_SYSTEM_VOLTAGE	BQ24770_MIN_SYSTEM_VOLTAGE
+	#define REG_INPUT_CURRENT	BQ24770_INPUT_CURRENT
+	#define REG_MANUFACTURE_ID	BQ24770_MANUFACTURE_ID
+	#define REG_DEVICE_ADDRESS	BQ24770_DEVICE_ADDRESS
+
+#elif defined(CONFIG_CHARGER_BQ24773)
+	#define CHARGER_NAME		"bq24773"
+	#define I2C_ADDR_CHARGER 	BQ24773_ADDR
+
+	#define REG_CHARGE_OPTION0	BQ24773_CHARGE_OPTION0
+	#define REG_CHARGE_OPTION1	BQ24773_CHARGE_OPTION1
+	#define REG_CHARGE_OPTION2	BQ24773_CHARGE_OPTION2
+	#define REG_PROTECT_OPTION0	BQ24773_PROTECT_OPTION0
+	#define REG_PROTECT_OPTION1	BQ24773_PROTECT_OPTION1
+	#define REG_CHARGE_CURRENT	BQ24773_CHARGE_CURRENT
+	#define REG_MAX_CHARGE_VOLTAGE	BQ24773_MAX_CHARGE_VOLTAGE
+	#define REG_MIN_SYSTEM_VOLTAGE	BQ24773_MIN_SYSTEM_VOLTAGE
+	#define REG_INPUT_CURRENT	BQ24773_INPUT_CURRENT
+	#define REG_DEVICE_ADDRESS	BQ24773_DEVICE_ADDRESS
+#endif
+
+#ifdef CONFIG_CHARGER_BQ24773
+static inline int raw_read8(int offset, int *value)
+{
+	return i2c_read8(I2C_PORT_CHARGER, I2C_ADDR_CHARGER, offset, value);
+}
+
+static inline int raw_write8(int offset, int value)
+{
+	return i2c_write8(I2C_PORT_CHARGER, I2C_ADDR_CHARGER, offset, value);
+}
+#endif
+
+static inline int raw_read16(int offset, int *value)
+{
+	return i2c_read16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER, offset, value);
+}
+
+static inline int raw_write16(int offset, int value)
+{
+	return i2c_write16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER, offset, value);
+}
+
 /* Charger parameters */
-static const struct charger_info bq24773_charger_info = {
-	.name         = "bq24773",
+static const struct charger_info bq2477x_charger_info = {
+	.name         = CHARGER_NAME,
 	.voltage_max  = CHARGE_V_MAX,
 	.voltage_min  = CHARGE_V_MIN,
 	.voltage_step = CHARGE_V_STEP,
@@ -43,13 +97,15 @@ static const struct charger_info bq24773_charger_info = {
 	.input_current_step = REG_TO_CURRENT(INPUT_I_STEP, R_AC),
 };
 
-/* bq24773 specific interfaces */
+/* chip specific interfaces */
 
 int charger_set_input_current(int input_current)
 {
-	return i2c_write8(I2C_PORT_CHARGER, BQ24773_ADDR,
-			  BQ24773_INPUT_CURRENT,
-			  CURRENT_TO_REG8(input_current, R_AC));
+#ifdef CONFIG_CHARGER_BQ24770
+	return raw_write16(REG_INPUT_CURRENT, CURRENT_TO_REG(input_current, R_AC));
+#elif defined(CONFIG_CHARGER_BQ24773)
+	return raw_write8(REG_INPUT_CURRENT, CURRENT_TO_REG8(input_current, R_AC));
+#endif
 }
 
 int charger_get_input_current(int *input_current)
@@ -57,45 +113,56 @@ int charger_get_input_current(int *input_current)
 	int rv;
 	int reg;
 
-	rv = i2c_read8(I2C_PORT_CHARGER, BQ24773_ADDR,
-			BQ24773_INPUT_CURRENT, &reg);
+#ifdef CONFIG_CHARGER_BQ24770
+	rv = raw_read16(REG_INPUT_CURRENT, &reg);
+#elif defined(CONFIG_CHARGER_BQ24773)
+	rv = raw_read8(REG_INPUT_CURRENT, &reg);
+#endif
 	if (rv)
 		return rv;
 
+#ifdef CONFIG_CHARGER_BQ24770
 	*input_current = REG8_TO_CURRENT(reg, R_AC);
-
+#elif defined(CONFIG_CHARGER_BQ24773)
+	*input_current = REG_TO_CURRENT(reg, R_AC);
+#endif
 	return EC_SUCCESS;
 }
 
 int charger_manufacturer_id(int *id)
 {
+#ifdef CONFIG_CHARGER_BQ24770
+	return raw_read16(REG_MANUFACTURE_ID, id);
+#elif defined(CONFIG_CHARGER_BQ24773)
 	*id = 0x40; /* TI */
 	return EC_SUCCESS;
+#endif
 }
 
 int charger_device_id(int *id)
 {
-	return i2c_read8(I2C_PORT_CHARGER, BQ24773_ADDR,
-			 BQ24773_DEVICE_ADDRESS, id);
+#ifdef CONFIG_CHARGER_BQ24770
+	return raw_read16(REG_DEVICE_ADDRESS, id);
+#elif defined(CONFIG_CHARGER_BQ24773)
+	return raw_read8(REG_DEVICE_ADDRESS, id);
+#endif
 }
 
 int charger_get_option(int *option)
 {
-	return i2c_read16(I2C_PORT_CHARGER, BQ24773_ADDR,
-			 BQ24773_CHARGE_OPTION0, option);
+	return raw_read16(REG_CHARGE_OPTION0, option);
 }
 
 int charger_set_option(int option)
 {
-	return i2c_write16(I2C_PORT_CHARGER, BQ24773_ADDR,
-			  BQ24773_CHARGE_OPTION0, option);
+	return raw_write16(REG_CHARGE_OPTION0, option);
 }
 
 /* Charger interfaces */
 
 const struct charger_info *charger_get_info(void)
 {
-	return &bq24773_charger_info;
+	return &bq2477x_charger_info;
 }
 
 int charger_get_status(int *status)
@@ -137,8 +204,8 @@ int charger_get_current(int *current)
 	int rv;
 	int reg;
 
-	rv = i2c_read16(I2C_PORT_CHARGER, BQ24773_ADDR,
-			BQ24773_CHARGE_CURRENT, &reg);
+	rv = raw_read16(REG_CHARGE_CURRENT, &reg);
+
 	if (rv)
 		return rv;
 
@@ -149,21 +216,18 @@ int charger_get_current(int *current)
 int charger_set_current(int current)
 {
 	current = charger_closest_current(current);
-
-	return i2c_write16(I2C_PORT_CHARGER, BQ24773_ADDR,
-		BQ24773_CHARGE_CURRENT, CURRENT_TO_REG(current, R_SNS));
+	return raw_write16(REG_CHARGE_CURRENT, CURRENT_TO_REG(current, R_SNS));
 }
 
 int charger_get_voltage(int *voltage)
 {
-	return i2c_read16(I2C_PORT_CHARGER, BQ24773_ADDR,
-			  BQ24773_MAX_CHARGE_VOLTAGE, voltage);
+	return raw_read16(REG_MAX_CHARGE_VOLTAGE, voltage);
 }
 
 int charger_set_voltage(int voltage)
 {
-	return i2c_write16(I2C_PORT_CHARGER, BQ24773_ADDR,
-			   BQ24773_MAX_CHARGE_VOLTAGE, voltage);
+	voltage = charger_closest_voltage(voltage);
+	return raw_write16(REG_MAX_CHARGE_VOLTAGE, voltage);
 }
 
 /* Charging power state initialization */
@@ -194,8 +258,7 @@ int charger_post_init(void)
 	/* Set ILIM pin disabled if it is currently enabled. */
 	if (option2 & OPTION2_EN_EXTILIM) {
 		option2 &= ~OPTION2_EN_EXTILIM;
-		rv = i2c_write16(I2C_PORT_CHARGER, BQ24773_ADDR,
-				 BQ24773_CHARGE_OPTION2, option2);
+		rv = raw_write16(REG_CHARGE_OPTION2, option2);
 	}
 	return rv;
 #else
