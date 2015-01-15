@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b80f3c4_b6d50872",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 33
+      },
+      "lineNbr": 2940,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-15T21:27:15Z",
+      "side": 1,
+      "message": "why do we have a  svid_index field ?\nbtw it doesn\u0027t seem to be used.",
+      "revId": "a824efd2d99f9faff0beda63135b04f9b3448d89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
