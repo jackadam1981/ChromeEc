@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "cb88ffe4_e78af6ab",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1737,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-15T20:36:08Z",
+      "side": 1,
+      "message": "yes, it works for dead battery case. charge manager requires that all suppliers register themselves with a current limit before turning off the CHARGE_EN lines. so, we are register the PD supplier as having 0 current limit.\n\nthe next lines, 1739-1746 register the TYPEC supplier. If there is a charger plugged in, then VBUS will be high, and in this case we use the TYPEC supplier to tell charge manager the default 500mA current limit.",
+      "parentUuid": "2b4c3b8a_f836d902",
+      "revId": "867ec53a2b7a5731ddf154b3e002c34c14289f1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b80f3c4_16c87c84",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 5
@@ -47,6 +65,24 @@
       "writtenOn": "2015-01-15T20:28:59Z",
       "side": 1,
       "message": "I don\u0027t fully understand the #ifdef\nwhere VBUS is cut now without the workaround ?",
+      "revId": "867ec53a2b7a5731ddf154b3e002c34c14289f1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb88ffe4_e703d67f",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1842,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-15T20:36:08Z",
+      "side": 1,
+      "message": "For the non backwards compatible version, VBUS isn\u0027t turned on until after the debounce. In that version it is cut on an actual disconnect event.",
+      "parentUuid": "6b80f3c4_16c87c84",
       "revId": "867ec53a2b7a5731ddf154b3e002c34c14289f1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
