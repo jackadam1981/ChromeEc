@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b80f3c4_76c3f06c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1800,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-15T20:28:59Z",
+      "side": 0,
+      "message": "so you are now setting the USB mux 10 ms later ?\nis that ok for USB3 ?",
+      "revId": "d8095f39d66ea363bff23201e19714a9f69c70cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

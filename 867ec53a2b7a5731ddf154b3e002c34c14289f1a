@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b4c3b8a_58484d8e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1736,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-15T20:28:59Z",
+      "side": 1,
+      "message": "typo: Initialize",
+      "revId": "867ec53a2b7a5731ddf154b3e002c34c14289f1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b4c3b8a_f836d902",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1737,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-15T20:28:59Z",
+      "side": 1,
+      "message": "is that working for dead battery case ?\nand also isn\u0027t the charge manager supposed to put the right limit when calling typec_... below ?",
+      "revId": "867ec53a2b7a5731ddf154b3e002c34c14289f1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b80f3c4_16c87c84",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1842,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-15T20:28:59Z",
+      "side": 1,
+      "message": "I don\u0027t fully understand the #ifdef\nwhere VBUS is cut now without the workaround ?",
+      "revId": "867ec53a2b7a5731ddf154b3e002c34c14289f1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b4c3b8a_ad738580",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1212,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-15T20:28:59Z",
+      "side": 1,
+      "message": "the other ones are CONFIG_USBC_ rather than CONFIG_TYPEC_",
+      "revId": "867ec53a2b7a5731ddf154b3e002c34c14289f1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
