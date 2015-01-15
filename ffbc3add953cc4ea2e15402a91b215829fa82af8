@@ -16,6 +16,24 @@
       "revId": "ffbc3add953cc4ea2e15402a91b215829fa82af8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e96a5c9_e4dcf02a",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-15T02:40:18Z",
+      "side": 1,
+      "message": "Done. Good catch, curr_lim_ma is unsigned, so don\u0027t want a negative current to cause a very large input current limit.",
+      "parentUuid": "0b0217f8_649c80f9",
+      "revId": "ffbc3add953cc4ea2e15402a91b215829fa82af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
