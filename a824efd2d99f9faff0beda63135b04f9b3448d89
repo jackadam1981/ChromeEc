@@ -16,6 +16,24 @@
       "revId": "a824efd2d99f9faff0beda63135b04f9b3448d89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b4c3b8a_53926e37",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 33
+      },
+      "lineNbr": 2940,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-01-15T21:34:05Z",
+      "side": 1,
+      "message": "Its used in hc_remote_pd_get_amode",
+      "parentUuid": "6b80f3c4_b6d50872",
+      "revId": "a824efd2d99f9faff0beda63135b04f9b3448d89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
