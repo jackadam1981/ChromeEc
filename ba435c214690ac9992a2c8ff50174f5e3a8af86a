@@ -22,6 +22,30 @@
       "revId": "ba435c214690ac9992a2c8ff50174f5e3a8af86a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb88ffe4_ea42bb8c",
+        "filename": "board/samus/extpower.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-15T21:56:18Z",
+      "side": 1,
+      "message": "no external latch. just setting flag, will remove \"latch\" wording.",
+      "parentUuid": "ab666b10_58a7fdc5",
+      "range": {
+        "startLine": 124,
+        "startChar": 33,
+        "endLine": 124,
+        "endChar": 41
+      },
+      "revId": "ba435c214690ac9992a2c8ff50174f5e3a8af86a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
