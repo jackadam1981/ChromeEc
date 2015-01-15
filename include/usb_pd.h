@@ -941,6 +941,15 @@ void pd_dev_store_rw_hash(int port, uint16_t dev_id, uint32_t *rw_hash,
 			  uint32_t ec_current_image);
 
 /**
+ * Check if a passed hash matches the known RW update hash for a given device
+ *
+ * @param dev_id   device identifier
+ * @param rw_hash  pointer to rw_hash
+ * @return         true if the passed hash matches the update RW, else false
+ */
+int pd_is_update_rw_hash(uint16_t dev_id, uint32_t *rw_hash);
+
+/**
  * Send Vendor Defined Message
  *
  * @param port     USB-C port number
