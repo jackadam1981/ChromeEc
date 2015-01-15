@@ -193,12 +193,20 @@ int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 					     is_rw ? SYSTEM_IMAGE_RW :
 						     SYSTEM_IMAGE_RO);
 
-			pd_send_host_event(PD_EVENT_UPDATE_DEVICE);
+			/*
+			 * Send update host event unless our RW hash is
+			 * already known to be the latest update RW.
+			 */
+			if (!is_rw ||
+			    !pd_is_update_rw_hash(dev_id, payload + 1))
+				pd_send_host_event(PD_EVENT_UPDATE_DEVICE);
+
 			CPRINTF("DevId:%d.%d SW:%d RW:%d\n",
 				HW_DEV_ID_MAJ(dev_id),
 				HW_DEV_ID_MIN(dev_id),
 				VDO_INFO_SW_DBG_VER(payload[6]),
 				is_rw);
+
 		} else if (cnt == 6) {
 			/* really old devices don't have last byte */
 			pd_dev_store_rw_hash(port, dev_id, payload + 1,

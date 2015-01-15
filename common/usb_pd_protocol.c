@@ -2894,6 +2894,24 @@ void pd_request_source_voltage(int port, int mv)
 	task_wake(PORT_TO_TASK_ID(port));
 }
 
+int pd_is_update_rw_hash(uint16_t dev_id, uint32_t *rw_hash)
+{
+	int i;
+
+	/* Search table for matching device / hash */
+	for (i = 0; i < RW_HASH_ENTRIES; i++)
+		if (dev_id == rw_hash_table[i].dev_id) {
+			if (memcmp(rw_hash,
+				   rw_hash_table[i].dev_rw_hash,
+				   PD_RW_HASH_SIZE) == 0)
+				return 1;
+			else
+				return 0;
+		}
+
+	return 0;
+}
+
 static int command_pd(int argc, char **argv)
 {
 	int port;
