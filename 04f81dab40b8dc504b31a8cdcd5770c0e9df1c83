@@ -46,6 +46,30 @@
       "revId": "04f81dab40b8dc504b31a8cdcd5770c0e9df1c83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b49377c_6345a2e8",
+        "filename": "board/samus/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2015-01-15T17:49:16Z",
+      "side": 1,
+      "message": "I could be convinced otherwise, but here was my reasoning:\n\nTwarn is a noop on samus so it doesn\u0027t really matter here.  Although I could try to hook it up to lower TDP on the CPU.\n\nThigh will assert PROCHOT so we should give it some room to actually try and cool down, I am afraid setting it too close to Thalt could mean it never gets a chance to act.",
+      "parentUuid": "cb88ffe4_e1042643",
+      "range": {
+        "startLine": 191,
+        "startChar": 2,
+        "endLine": 191,
+        "endChar": 24
+      },
+      "revId": "04f81dab40b8dc504b31a8cdcd5770c0e9df1c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
