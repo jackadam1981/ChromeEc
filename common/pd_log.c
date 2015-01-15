@@ -8,6 +8,10 @@
 #include "host_command.h"
 #include "task.h"
 #include "timer.h"
+#include "usb_pd.h"
+#ifdef HAS_TASK_HOSTCMD
+#include "usb_pd_config.h"
+#endif
 #include "util.h"
 
 /* Event log FIFO */
@@ -125,14 +129,41 @@ retry:
 }
 
 #ifdef HAS_TASK_HOSTCMD
+void pd_log_recv_vdm(int port, int cnt, uint32_t *payload)
+{
+	struct ec_response_pd_log *r = (void *)&payload[1];
+	/* update port number from MCU point of view */
+	size_t size = PD_LOG_SIZE(r->size_port);
+	uint8_t size_port = PD_LOG_PORT_SIZE(size, port);
+
+	/*DBG*/ccprintf("Log: %08x %08x type %d\n", payload[1], payload[2],r->type);
+	if ((cnt < 2 + DIV_ROUND_UP(size, sizeof(uint32_t))) ||
+	    !(payload[0] & VDO_SRC_RESPONDER))
+		/* Not a proper log entry, bail out */
+		return;
+
+	if (r->type != PD_EVENT_NO_ENTRY)
+	//TODO fixup timestamp
+		pd_log_event(r->type, size_port, r->data, r->payload);
+	//TODO else : don't poll again ...
+}
+
 /* we are a PD MCU/EC, send back the events to the host */
 static int hc_pd_get_log_entry(struct host_cmd_handler_args *args)
 {
 	struct ec_response_pd_log *r = args->response;
+	//int res = EC_RES_SUCCESS;
 
 	args->response_size = pd_log_dequeue(r);
+	/* if the MCU no longer has entries, try connected accessories */
+	if (1) /*r->type == PD_EVENT_NO_ENTRY)*/ {
+		int i;
+		for (i = 0; i < PD_PORT_COUNT; ++i) {
+			/*res =*/ pd_fetch_acc_log_entry(i);
+		}
+	}
 
-	return EC_RES_SUCCESS;
+	return EC_RES_SUCCESS; /*res;*/
 }
 DECLARE_HOST_COMMAND(EC_CMD_PD_GET_LOG_ENTRY,
 		     hc_pd_get_log_entry,
