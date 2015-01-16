@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0ba5b782_06dcdc26",
+        "filename": "board/glower/ec.tasklist",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2015-01-16T21:19:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bae3367_e6ebbeb1",
+      "range": {
+        "startLine": 1,
+        "startChar": 3,
+        "endLine": 1,
+        "endChar": 20
+      },
+      "revId": "a2f93882b7bc6afde89da78239771021198fa784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b7def9e_09b3796b",
         "filename": "power/baytrail.c",
         "patchSetId": 3
@@ -36,6 +60,24 @@
       "writtenOn": "2015-01-16T20:33:58Z",
       "side": 1,
       "message": "Maybe wireless.h should have\n\n#ifdef CONFIG_WIRELESS\nvoid wireless_set_state(enum state);\n#else\nstatic __inline void wireless_set_state(enum state) { }\n#endif\n\nWe do something similar in chipset.h.",
+      "revId": "a2f93882b7bc6afde89da78239771021198fa784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ba5b782_26e1d8dd",
+        "filename": "power/baytrail.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2015-01-16T21:19:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b7def9e_09b3796b",
       "revId": "a2f93882b7bc6afde89da78239771021198fa784",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
