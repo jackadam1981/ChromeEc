@@ -169,12 +169,11 @@ unsigned pd_get_max_voltage(void)
 
 static struct pd_policy pe[PD_PORT_COUNT];
 
-#define AMODE_VALID(port) (pe[port].amode.index != -1)
+#define AMODE_VALID(port) (!!pe[port].amode.opos)
 
 void pd_dfp_pe_init(int port)
 {
 	memset(&pe[port], 0, sizeof(struct pd_policy));
-	pe[port].amode.index = -1;
 }
 
 static void dfp_consume_identity(int port, uint32_t *payload)
@@ -261,7 +260,7 @@ int pd_alt_mode(int port)
 		/* zero is reserved */
 		return 0;
 
-	return pe[port].amode.index + 1;
+	return pe[port].amode.opos;
 }
 
 /* Enter default mode or attempt to enter mode via svid & index arguments */
@@ -280,7 +279,7 @@ static int dfp_enter_mode(int port, uint32_t *payload, int use_payload)
 				continue;
 			modep->fx = &supported_modes[i];
 			modep->mode_caps = pe[port].svids[j].mode_vdo[0];
-			modep->index = (opos && (opos < 7)) ? opos - 1 : 0;
+			modep->opos = (opos && (opos < 7)) ? opos : 1;
 			done = 1;
 			break;
 		}
@@ -331,7 +330,7 @@ uint32_t pd_dfp_exit_mode(int port)
 	 * to exit all modes.
 	 */
 	if (pd_is_connected(port)) {
-		modep->index = -1;
+		modep->opos = 0;
 		return VDO(modep->fx->svid, 1,
 			   (CMD_EXIT_MODE | VDO_OPOS(pd_alt_mode(port))));
 	} else {
@@ -634,7 +633,7 @@ static int hc_remote_pd_get_amode(struct host_cmd_handler_args *args)
 
 	if (AMODE_VALID(p->port) && pe[p->port].amode.fx->svid == r->svid) {
 		r->active = 1;
-		r->idx = pd_alt_mode(p->port) - 1;
+		r->opos = pd_alt_mode(p->port);
 	}
 	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;
