@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6bae3367_667b4e5e",
+        "filename": "common/als.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-01-16T21:23:54Z",
+      "side": 1,
+      "message": "Just to be a little more readable. The compiler should emit the same code.",
+      "parentUuid": "6bc55323_a3c12830",
+      "revId": "2764196609c957588f6c1b174778211c90eaeaaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bab2f57_ee7cf3a2",
         "filename": "driver/als_isl29035.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2015-01-16T21:14:39Z",
       "side": 1,
       "message": "Can you add something like, \"With this code, af is safe up to about 65 before we risk rolling over large measurements.\"",
+      "revId": "2764196609c957588f6c1b174778211c90eaeaaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b6b67dc_fd391fc1",
+        "filename": "driver/als_isl29035.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-01-16T21:23:54Z",
+      "side": 1,
+      "message": "Sure",
+      "parentUuid": "4bab2f57_ee7cf3a2",
       "revId": "2764196609c957588f6c1b174778211c90eaeaaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
