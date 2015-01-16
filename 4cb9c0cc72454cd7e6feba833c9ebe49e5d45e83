@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bc55323_fd3913c1",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-16T18:13:36Z",
+      "side": 1,
+      "message": "I assume the default state of the D+/D- switches is closed (connected). Which means, if we want them to be open, and we reset the chip and then open them, there is a small time window that they will be closed. I don\u0027t think this is a problem, but just a thought. Maybe it warrants a comment.",
+      "range": {
+        "startLine": 147,
+        "startChar": 3,
+        "endLine": 152,
+        "endChar": 40
+      },
+      "revId": "4cb9c0cc72454cd7e6feba833c9ebe49e5d45e83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
