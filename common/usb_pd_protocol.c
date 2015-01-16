@@ -792,6 +792,7 @@ static void handle_vdm_request(int port, int cnt, uint32_t *payload)
 	if (rlen > 0) {
 		if (PD_VDO_CMD(payload[0]) == CMD_DISCOVER_SVID) {
 			pd[port].flags |= PD_FLAGS_DISCOVER_IDENT;
+			CPRINTF("identity discoverd\n");
 		}
 
 		queue_vdm(port, rdata, &rdata[1], rlen - 1);
@@ -2097,6 +2098,7 @@ void pd_task(void)
 				pd_send_vdm(port, USB_SID_PD,
 					    CMD_DISCOVER_IDENT, NULL, 0);
 				ident_count++;
+				CPRINTF("ident_cnt:%d\n", ident_count);
 			}
 #endif
 

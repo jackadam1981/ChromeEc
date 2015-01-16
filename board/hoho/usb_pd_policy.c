@@ -112,6 +112,7 @@ const uint32_t vdo_ama = VDO_AMA(CONFIG_USB_PD_IDENTITY_HW_VERS,
 
 static int svdm_response_identity(int port, uint32_t *payload)
 {
+	return 0;
 	payload[VDO_I(IDH)] = vdo_idh;
 	/* TODO(tbroch): Do we plan to obtain TID (test ID) for hoho */
 	payload[VDO_I(CSTAT)] = VDO_CSTAT(0);
