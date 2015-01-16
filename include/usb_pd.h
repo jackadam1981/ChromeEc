@@ -924,9 +924,10 @@ int pd_custom_flash_vdm(int port, int cnt, uint32_t *payload);
  * Exit alternate mode on DFP
  *
  * @param port     USB-C port number
+ * @param payload  payload data.
  * @return VDO to send to UFP or zero if none
  */
-uint32_t pd_dfp_exit_mode(int port);
+uint32_t pd_dfp_exit_mode(int port, uint32_t *payload);
 
 /**
  * Initialize policy engine for DFP

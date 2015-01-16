@@ -391,7 +391,7 @@ static inline void set_state(int port, enum pd_states next_state)
 		pd[port].dev_id = 0;
 		pd[port].flags &= ~PD_FLAGS_RESET_ON_DISCONNECT_MASK;
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
-		pd_dfp_exit_mode(port);
+		pd_dfp_exit_mode(port, NULL);
 #endif
 #ifdef CONFIG_USBC_SS_MUX
 		board_set_usb_mux(port, TYPEC_MUX_NONE,
@@ -804,7 +804,7 @@ static void execute_hard_reset(int port)
 
 	pd[port].msg_id = 0;
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
-	pd_dfp_exit_mode(port);
+	pd_dfp_exit_mode(port, NULL);
 	pd_dfp_pe_init(port);
 #endif
 
@@ -3391,7 +3391,7 @@ static int hc_remote_pd_set_amode(struct host_cmd_handler_args *args)
 	/* if in a mode exit it */
 	/* TODO(crosbug.com/p/33946): allow entry of multiple modes */
 	if (pd_alt_mode(p->port)) {
-		uint32_t vdo = pd_dfp_exit_mode(p->port);
+		uint32_t vdo = pd_dfp_exit_mode(p->port, NULL);
 		if (vdo) {
 			queue_vdm(p->port, &vdo, NULL, 0);
 			task_wake(PORT_TO_TASK_ID(p->port));
