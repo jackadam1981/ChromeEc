@@ -17,6 +17,7 @@
 
 /* Optional features */
 #define CONFIG_ADC
+#undef CONFIG_DEBUG_ASSERT
 #define CONFIG_BOARD_PRE_INIT
 #define CONFIG_CHARGE_MANAGER
 #undef CONFIG_CMD_HASH
