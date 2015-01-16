@@ -15,6 +15,7 @@ enum als_id;
 struct als_t {
 	const char const *name;
 	int (*read)(int *lux);
+	int attenuation_factor;
 };
 
 extern struct als_t als[];
