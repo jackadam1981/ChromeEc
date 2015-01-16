@@ -165,11 +165,13 @@ unsigned pd_get_max_voltage(void)
 
 static struct pd_policy pe[PD_PORT_COUNT];
 
-#define AMODE_VALID(port) (!!pe[port].amode.opos)
+static uint32_t amode_en_flags[PD_PORT_COUNT];
+#define AMODE_VALID(port, idx) (amode_en_flags[port] & (1 << idx))
 
 void pd_dfp_pe_init(int port)
 {
 	memset(&pe[port], 0, sizeof(struct pd_policy));
+	amode_en_flags[port] = 0;
 }
 
 static void dfp_consume_identity(int port, uint32_t *payload)
@@ -250,49 +252,69 @@ static void dfp_consume_modes(int port, int cnt, uint32_t *payload)
 	pe[port].svid_idx++;
 }
 
-static struct svdm_amode_data *get_modep(int port)
+static struct svdm_amode_data *get_modep(int port, uint16_t svid)
 {
-	return &pe[port].amode;
+	int i;
+	for (i = 0; i < AMODES_MAX; i++) {
+		if (pe[port].amodes[i].fx->svid == svid)
+			return &pe[port].amodes[i];
+	}
+	return NULL;
 }
 
-int pd_alt_mode(int port)
+int pd_alt_mode(int port, uint16_t svid)
 {
-	if (!AMODE_VALID(port))
-		/* zero is reserved */
-		return 0;
+	int i;
+	struct svdm_amode_data *modep;
 
-	return get_modep(port)->opos;
+	for (i = 0; i < AMODES_MAX; i++) {
+		if (!AMODE_VALID(port, i))
+			continue;
+		modep = get_modep(port, svid);
+		if (modep)
+			return modep->opos;
+	}
+	return 0;
 }
 
 /* Enter default mode or attempt to enter mode via svid & index arguments */
 static int dfp_enter_mode(int port, uint32_t *payload, int use_payload)
 {
 	int i, j, done;
-	struct svdm_amode_data *modep = get_modep(port);
+	struct svdm_amode_data *modep;
 	uint16_t svid = (use_payload) ? PD_VDO_VID(payload[0]) : 0;
 	uint8_t opos = (use_payload) ? PD_VDO_OPOS(payload[0]) : 0;
 
 	for (i = 0, done = 0; !done && (i < supported_modes_cnt); i++) {
+		if (!&supported_modes[i])
+			continue;
+
 		for (j = 0; j < pe[port].svid_cnt; j++) {
 			struct svdm_svid_data *svidp = &pe[port].svids[j];
 			if ((svidp->svid != supported_modes[i].svid) ||
 			    (svid && (svidp->svid != svid)))
 				continue;
+			modep = get_modep(port, svid);
+
+			/* set supported mode data and enable */
 			modep->fx = &supported_modes[i];
 			modep->mode_caps = pe[port].svids[j].mode_vdo[0];
 			modep->opos = (opos && (opos < 7)) ? opos : 1;
+			amode_en_flags[port] |= 1 << j;
 			done = 1;
 			break;
 		}
 	}
-	if (!AMODE_VALID(port))
-		return 0;
 
-	if (modep->fx->enter(port, modep->mode_caps) == -1)
+	/* call DFP entry ... if it fails abort */
+	if (modep->fx->enter(port, modep->mode_caps) == -1) {
+		amode_en_flags[port] &= ~(1 << j);
 		return 0;
+	}
 
+	/* SVDM to UFP for entry */
 	payload[0] = VDO(modep->fx->svid, 1,
-			 CMD_ENTER_MODE | VDO_OPOS(pd_alt_mode(port)));
+			 CMD_ENTER_MODE | modep->opos);
 	return 1;
 }
 
@@ -343,7 +365,7 @@ uint32_t pd_dfp_exit_mode(int port, uint32_t *payload)
 	if (!validate_mode_request(modep, payload))
 		return 0;
 
-	modep->fx->exit(port);
+	modep->fx->exit(port, payload);
 
 	/*
 	 * TODO(crosbug.com/p/33946) : below needs revisited to allow multiple
@@ -353,7 +375,7 @@ uint32_t pd_dfp_exit_mode(int port, uint32_t *payload)
 	if (pd_is_connected(port)) {
 		int cur_opos = modep->opos;
 		modep->opos = 0;
-		return VDO(modep->fx->svid, 1, (CMD_EXIT_MODE | cur_opos));
+		return VDO(modep->fx->svid, 1, CMD_EXIT_MODE | modep->opos);
 	} else {
 		pd_dfp_pe_init(port);
 	}
@@ -398,7 +420,7 @@ static void dump_pe(int port)
 				 pe[port].svids[i].mode_vdo[j]);
 		ccprintf("\n");
 	}
-	if (!AMODE_VALID(port)) {
+	if (!AMODE_VALID(port, mode_idx)) {
 		ccprintf("No mode chosen yet.\n");
 		return;
 	}
@@ -518,7 +540,7 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 			if (AMODE_VALID(port)) {
 				rsize = pe[port].amode.fx->status(port,
 								  payload);
-				payload[0] |= VDO_OPOS(pd_alt_mode(port));
+				payload[0] |= VDO_OPOS(pe[port].amode.opos;
 			}
 			break;
 		case CMD_DP_STATUS:
@@ -604,8 +626,12 @@ void pd_usb_billboard_deferred(void)
 #if defined(CONFIG_USB_PD_ALT_MODE) && !defined(CONFIG_USB_PD_ALT_MODE_DFP) \
 	&& !defined(CONFIG_USB_PD_SIMPLE_DFP)
 
-	/* port always zero for these UFPs */
-	if (!pd_alt_mode(0))
+	/* 
+	 * TODO(tbroch)
+	 * 1. Will we have multiple type-C port UFPs
+	 * 2. Will there be other modes applicable to DFPs besides DP
+	 */
+	if (!pd_alt_mode(0, USB_SID_DISPLAYPORT))
 		usb_connect();
 
 #endif
@@ -655,7 +681,7 @@ static int hc_remote_pd_get_amode(struct host_cmd_handler_args *args)
 
 	if (AMODE_VALID(p->port) && pe[p->port].amode.fx->svid == r->svid) {
 		r->active = 1;
-		r->idx = pd_alt_mode(p->port) - 1;
+		r->idx = pe[p->port].amode.opos;
 	}
 	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;

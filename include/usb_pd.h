@@ -112,6 +112,7 @@ enum pd_errors {
 
 /* TODO(tbroch) is there a finite number for these in the spec */
 #define SVID_DISCOVERY_MAX 16
+#define AMODES_MAX 8
 
 /* Timers */
 #define PD_T_SEND_SOURCE_CAP  (100*MSEC) /* between 100ms and 200ms */
@@ -179,7 +180,7 @@ struct svdm_amode_fx {
 	int (*config)(int port, uint32_t *payload);
 	void (*post_config)(int port);
 	int (*attention)(int port, uint32_t *payload);
-	void (*exit)(int port);
+	void (*exit)(int port, uint32_t *payload);
 };
 
 /* defined in <board>/usb_pd_policy.c */
@@ -209,6 +210,14 @@ enum hpd_event {
 #define DP_FLAGS_DP_ON              (1 << 0) /* Display port mode is on */
 #define DP_FLAGS_HPD_HI_PENDING     (1 << 1) /* Pending HPD_HI */
 
+/* supported DFP alternate modes */
+enum pd_dfp_alternate_modes {
+	PD_AMODE_GOOGLE,
+	PD_AMODE_DISPLAYPORT,
+	/* not a real mode */
+	PD_AMODE_COUNT,
+};
+
 /* Policy structure for driving alternate mode */
 struct pd_policy {
 	/* index of svid currently being operated on */
@@ -219,8 +228,8 @@ struct pd_policy {
 	uint32_t identity[PDO_MAX_OBJECTS - 1];
 	/* supported svids & corresponding vdo mode data */
 	struct svdm_svid_data svids[SVID_DISCOVERY_MAX];
-	/*  active mode */
-	struct svdm_amode_data amode;
+	/*  active modes */
+	struct svdm_amode_data amodes[PD_AMODE_COUNT];
 };
 
 /*
@@ -1017,9 +1026,10 @@ void board_flip_usb_mux(int port);
  * Determine if in alternate mode or not.
  *
  * @param port port number.
+ * @param svid USB standard or vendor id 
  * @return object position of mode chosen in alternate mode otherwise zero.
  */
-int pd_alt_mode(int port);
+int pd_alt_mode(int port, uint16_t svid);
 
 /**
  * Send hpd over USB PD.
