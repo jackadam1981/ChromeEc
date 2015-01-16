@@ -39,6 +39,23 @@
       "revId": "e442a5a7deb13b4eebfa6a94e225f34f79015d2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bc55323_b481688f",
+        "filename": "common/als.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000066
+      },
+      "writtenOn": "2015-01-16T01:43:06Z",
+      "side": 1,
+      "message": "This does not work.\nBy the time we multiply the value by the attenuation_factor, we have already lost granularity.\nTo retain granularity, we need to do this in the sensor driver.",
+      "revId": "e442a5a7deb13b4eebfa6a94e225f34f79015d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
