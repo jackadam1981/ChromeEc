@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "0ba5b782_0387eef8",
+        "filename": "board/samus/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-01-16T20:32:02Z",
+      "side": 1,
+      "message": "No.",
+      "parentUuid": "2bcfdb48_729c70f9",
+      "revId": "e442a5a7deb13b4eebfa6a94e225f34f79015d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bc55323_b4a88815",
         "filename": "board/samus/board.h",
         "patchSetId": 1
@@ -42,6 +60,24 @@
     },
     {
       "key": {
+        "uuid": "4bab2f57_eb9dc541",
+        "filename": "board/samus/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-01-16T20:32:02Z",
+      "side": 1,
+      "message": "No, it\u0027s my stupiding.",
+      "parentUuid": "6bc55323_b4a88815",
+      "revId": "e442a5a7deb13b4eebfa6a94e225f34f79015d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bc55323_b481688f",
         "filename": "common/als.c",
         "patchSetId": 1
@@ -53,6 +89,24 @@
       "writtenOn": "2015-01-16T01:43:06Z",
       "side": 1,
       "message": "This does not work.\nBy the time we multiply the value by the attenuation_factor, we have already lost granularity.\nTo retain granularity, we need to do this in the sensor driver.",
+      "revId": "e442a5a7deb13b4eebfa6a94e225f34f79015d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bc55323_e842af8c",
+        "filename": "common/als.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-01-16T20:32:02Z",
+      "side": 1,
+      "message": "D\u0027oh!",
+      "parentUuid": "6bc55323_b481688f",
       "revId": "e442a5a7deb13b4eebfa6a94e225f34f79015d2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
