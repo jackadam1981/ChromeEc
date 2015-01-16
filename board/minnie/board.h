@@ -8,7 +8,11 @@
 #ifndef __BOARD_H
 #define __BOARD_H
 
+/* Reduce the Flash size */
+#undef CONFIG_CONSOLE_CMDHELP
+
 /* Optional features */
+#define CONFIG_ACCEL_KX022
 #define CONFIG_AP_HANG_DETECT
 #define CONFIG_BATTERY_CUT_OFF
 #define CONFIG_BATTERY_SMART
@@ -18,6 +22,8 @@
 #define CONFIG_CHARGER_DISCHARGE_ON_AC
 #define CONFIG_CHARGER_V2
 #define CONFIG_CHIPSET_ROCKCHIP
+#define CONFIG_CMD_ACCEL_INFO
+#define CONFIG_CMD_ACCELS
 #define CONFIG_EXTPOWER_GPIO
 #define CONFIG_FORCE_CONSOLE_RESUME
 #define CONFIG_HOST_COMMAND_STATUS
@@ -52,8 +58,11 @@
 
 /* Single I2C port, where the EC is the master. */
 #define I2C_PORT_MASTER 0
+#define I2C_PORT_ACCEL   I2C_PORT_MASTER
 #define I2C_PORT_BATTERY I2C_PORT_MASTER
 #define I2C_PORT_CHARGER I2C_PORT_MASTER
+
+#define CONFIG_SENSOR_BASE 0
 
 /* Timer selection */
 #define TIM_CLOCK32  2
