@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2bcfdb48_a6629af5",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-16T18:08:21Z",
+      "side": 1,
+      "message": "maybe pd_dev_store_rw_hash() above can return TRUE or FALSE based on whether the the hash is in our table? (with config option?) then we can get rid of this extra function.",
+      "range": {
+        "startLine": 201,
+        "startChar": 8,
+        "endLine": 201,
+        "endChar": 28
+      },
+      "revId": "ac86d15842464067d073fe01297fd05d5db4bbb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "abdbcb04_8a00bfe0",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2909,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-16T18:08:21Z",
+      "side": 1,
+      "message": "return !memcmp(rw_hash, rw_hash_table[i].dev_rw_hash, PD_RW_HASH_SIZE);",
+      "range": {
+        "startLine": 2904,
+        "startChar": 3,
+        "endLine": 2909,
+        "endChar": 13
+      },
+      "revId": "ac86d15842464067d073fe01297fd05d5db4bbb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
