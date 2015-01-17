@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb347f09_e4be149f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-17T00:51:35Z",
+      "side": 1,
+      "message": "IMO we need to verify more than that before activating it :\nI agree the write-protect mechanism is working,\nbut is the factory flow updating it properly ? (it\u0027s doing EC but probably not PD MCU)\nis this compatible with sending RO on current dev machine (should be but worth testing ...) ?",
+      "revId": "818f27112dc0ef6e70097dcc2de1bfad1971c754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
