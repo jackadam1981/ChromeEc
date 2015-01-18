@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab390b03_a09ebaf3",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-18T18:01:13Z",
+      "side": 1,
+      "message": "do you think two consecutive updates is good enough? i would do more, maybe 3 or 5:\n\nline 184: batt_present \u003d BATT_PRESENT_UPDATE_TRIES;\nline 193: if (batt_present)\ninsert line 194: batt_present--;\nremove line 197",
+      "range": {
+        "startLine": 190,
+        "startChar": 5,
+        "endLine": 190,
+        "endChar": 28
+      },
+      "revId": "126507519280771ab08bd8e7f1bf9d894f268b02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
