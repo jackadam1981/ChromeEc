@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab52eb4e_9897b552",
+        "filename": "driver/charger/bq24773.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2015-01-19T11:41:37Z",
+      "side": 0,
+      "message": "I remove the OPTION0_LEARN_ENABLE because it is disable at POR. We don\u0027t need to clear the bit.",
+      "range": {
+        "startLine": 190,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 33
+      },
+      "revId": "5f3b8a13e6f7bf01d90fe119d99cddeb405b59fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
