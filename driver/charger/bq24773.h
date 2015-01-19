@@ -40,11 +40,38 @@
 #define BQ24773_INPUT_CURRENT           0x0F
 #define BQ24773_CHARGE_OPTION2          0x10
 
-/* Option bits */
-#define OPTION0_CHARGE_INHIBIT          (1 << 0)
-#define OPTION0_LEARN_ENABLE            (1 << 5)
+/* ChargeOption0 bits */
+#define OPTION0_CHARGE_INHIBIT              (1 << 0)
+#define OPTION0_LEARN_ENABLE                (1 << 5)
+#define OPTION0_LSFET_OCP_THRESHOLD         (1 << 6)
+#define OPTION0_ACOC_SETTING                (1 << 7)
+#define OPTION0_LOW_POWER_MODE_ENABLE       (1 << 15)
 
-#define OPTION2_EN_EXTILIM              (1 << 7)
+/* ChargeOption1 bits */
+#define OPTION1_AUTO_WAKEUP_ENABLE          (1 << 0)
+
+/* ChargeOption2 bits */
+#define OPTION2_EN_EXTILIM                  (1 << 7)
+
+/* ProchotOption0 bits */
+#define PROCHOT0_ICRIT_COMPARATOR_THRESHOLD_MASK           (31 << 11)
+#define PROCHOT0_ICRIT_COMPARATOR_THRESHOLD_150_PERCENTAGE (9 << 11)
+#define PROCHOT0_VSUS_COMPARATOR_THRESHOLD_MASK            (3 << 6)
+#define PROCHOT0_VSUS_COMPARATOR_THRESHOLD_3350_MV         (2 << 6)
+#define PROCHOT0_PULSE_EXTENSION_ENABLE                    (1 << 5)
+#define PROCHOT0_PULSE_WIDTH_MASK                          (3 << 3)
+#define PROCHOT0_PULSE_WIDTH_1MS                           (1 << 3)
+#define PROCHOT0_HOST_CLEAR                                (1 << 2)
+#define PROCHOT0_INOM_COMPARATOR_DEGLITCH_50MS             (1 << 1)
+
+/* ProchotOption1 bits */
+#define PROCHOT1_IDCHG_COMPARATOR_THRESHOLD_MASK           (63 << 10)
+#define PROCHOT1_IDCHG_COMPARATOR_THRESHOLD_4096_MA        (8 << 10)
+#define PROCHOT1_IDCHG_COMPARATOR_DEGLITCH_MASK            (3 << 8)
+#define PROCHOT1_ENVELOP_SELECTOR_ICRIT                    (1 << 5)
+#define PROCHOT1_ENVELOP_SELECTOR_INOM                     (1 << 4)
+#define PROCHOT1_ENVELOP_SELECTOR_IDCHG                    (1 << 3)
+#define PROCHOT1_ENVELOP_SELECTOR_VSYS                     (1 << 2)
 
 /* ChargeCurrent Register - 0x14 (mA) */
 #define CHARGE_I_OFF                    0
