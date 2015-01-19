@@ -175,40 +175,209 @@ int charger_set_voltage(int voltage)
 	return raw_write16(REG_MAX_CHARGE_VOLTAGE, voltage);
 }
 
-/* Charging power state initialization */
-int charger_post_init(void)
+#if defined(CONFIG_CHARGER_LOW_POWER_MODE_DISABLE)            || \
+    defined(CONFIG_CHARGER_ACOC_LIMIT_300_PERCENTAGE_OF_IDPM) || \
+    defined(CONFIG_CHARGER_LSFET_OCP_THRESHOLD_290MV)
+#define SET_CHARGE_OPTION0
+static int charger_post_init_set_charge_option0(void)
 {
 	int rv, option;
-#ifdef CONFIG_CHARGER_ILIM_PIN_DISABLED
-	int option2;
-#endif
 
 	rv = charger_get_option(&option);
 	if (rv)
 		return rv;
 
-	option &= ~OPTION0_LEARN_ENABLE;
+/* ChargeOption[15]: Low power mode enable, POR = 1 */
+#ifdef CONFIG_CHARGER_LOW_POWER_MODE_DISABLE
+	option &= ~OPTION0_LOW_POWER_MODE_ENABLE;
+#endif
 
-	rv = charger_set_option(option);
+/* ChargeOption[7]: ACOC Setting, POR = 0 */
+#ifdef CONFIG_CHARGER_ACOC_LIMIT_300_PERCENTAGE_OF_IDPM
+	option |= OPTION0_ACOC_SETTING;
+#endif
+
+/* ChargeOption[6]: LSFET OCP Threshold, POR = 0 (170mV) */
+#ifdef CONFIG_CHARGER_LSFET_OCP_THRESHOLD_290MV
+	option |= OPTION0_LSFET_OCP_THRESHOLD;
+#endif
+
+	return charger_set_option(option);
+}
+#endif
+
+#if defined(CONFIG_CHARGER_AUTO_WAKEUP_DISABLE)
+#define SET_CHARGE_OPTION1
+static int charger_post_init_set_charge_option1(void)
+{
+	int rv, option1;
+
+	rv = raw_read16(REG_CHARGE_OPTION1, &option1);
+	if (rv)
+		return rv;
+
+/* ChargeOption0[0]: Auto Wakeup Enable, POR = 1 */
+#ifdef CONFIG_CHARGER_AUTO_WAKEUP_DISABLE
+	option1 &= ~OPTION1_AUTO_WAKEUP_ENABLE;
+#endif
+
+	return raw_write16(REG_CHARGE_OPTION1, option1);
+}
+#endif
+
+#if defined(CONFIG_CHARGER_ILIM_PIN_DISABLED)
+#define SET_CHARER_OPTION2
+static int charger_post_init_set_charge_option2(void)
+{
+	int rv, option2;
+
+	rv = raw_read16(REG_CHARGE_OPTION2, &option2);
 	if (rv)
 		return rv;
 
 #ifdef CONFIG_CHARGER_ILIM_PIN_DISABLED
-	/* Read the external ILIM pin enabled flag. */
-	rv = i2c_read16(I2C_PORT_CHARGER, BQ24773_ADDR,
-			   BQ24773_CHARGE_OPTION2, &option2);
+	option2 &= ~OPTION2_EN_EXTILIM;
+#endif
+
+	return raw_write16(REG_CHARGE_OPTION2, option2);
+}
+#endif
+
+#if defined(CONFIG_CHARGER_ICRIT_COMPARATOR_THRESHOLD_150_PERCENTAGE) || \
+    defined(CONFIG_CHARGER_VSYS_COMPARATOR_THRESHOLD_3350_MV)         || \
+    defined(CONFIG_CHARGER_PROCHOT_PULSE_EXTENSION_ENABLE)            || \
+    defined(CONFIG_CHARGER_PROCHOT_PULSE_WIDTH_1MS)                   || \
+    defined(CONFIG_CHARGER_PROCHOT_HOST_CLEAR)                        || \
+    defined(CONFIG_CHARGER_INOM_COMPARATOR_DEGLITCH_50MS)
+#define SET_PROCHOT_OPTION0
+static int charger_post_init_set_prochot_option0(void)
+{
+	int rv, option;
+
+	rv = raw_read16(REG_PROTECT_OPTION0, &option);
 	if (rv)
 		return rv;
 
-	/* Set ILIM pin disabled if it is currently enabled. */
-	if (option2 & OPTION2_EN_EXTILIM) {
-		option2 &= ~OPTION2_EN_EXTILIM;
-		rv = raw_write16(REG_CHARGE_OPTION2, option2);
-	}
-	return rv;
-#else
-	return EC_SUCCESS;
+/* ChargeOption2[15..11]: ICRIT Comparator Threshold */
+#ifdef CONFIG_CHARGER_ICRIT_COMPARATOR_THRESHOLD_150_PERCENTAGE
+	option &= ~PROCHOT0_ICRIT_COMPARATOR_THRESHOLD_MASK;
+	option |= PROCHOT0_ICRIT_COMPARATOR_THRESHOLD_150_PERCENTAGE;
 #endif
+
+/* ChargeOption2[7..6]: VSYS comparator threshold, POR = 01 (6V or 3.1V) */
+#ifdef CONFIG_CHARGER_VSYS_COMPARATOR_THRESHOLD_3350_MV
+	option &= ~PROCHOT0_VSUS_COMPARATOR_THRESHOLD_MASK;
+	option |= PROCHOT0_VSUS_COMPARATOR_THRESHOLD_3350_MV;
+#endif
+
+/* ChargeOptino2[5]: PROCHOT Pulse Extension Enable, POR = 0 */
+#ifdef CONFIG_CHARGER_PROCHOT_PULSE_EXTENSION_ENABLE
+	option |= PROCHOT0_PULSE_EXTENSION_ENABLE;
+#endif
+
+/* ChargeOption[4..3]: PROCHOT Pulse Width, POR = 10 (12ms) */
+#ifdef CONFIG_CHARGER_PROCHOT_PULSE_WIDTH_1MS
+	option &= ~PROCHOT0_PULSE_WIDTH_MASK;
+	option |= PROCHOT0_PULSE_WIDTH_1MS;
+#endif
+
+/* ChargeOption[2]: PROCHOT Host Clear, POR = 1 (Idle) */
+#ifdef CONFIG_CHARGER_PROCHOT_HOST_CLEAR
+	option &= ~PROCHOT0_HOST_CLEAR;
+#endif
+
+/* ChargeOption[1]: INOM Comparator Deglitch Time, POR = 0 (1ms) */
+#ifdef CONFIG_CHARGER_INOM_COMPARATOR_DEGLITCH_50MS
+	option |= PROCHOT0_INOM_COMPARATOR_DEGLITCH_50MS;
+#endif
+
+	return raw_write16(REG_PROTECT_OPTION0, option);
+}
+#endif
+
+#if defined(CONFIG_CHARGER_IDCHG_COMPARATOR_THRESHOLD_4096_MA) || \
+    defined(CONFIG_CHARGER_IDCHG_COMPARATOR_DEGLITCH_1P6_MS)   || \
+    defined(CONFIG_CHARGER_ENVELOP_SELECTOR_ICRIT)             || \
+    defined(CONFIG_CHARGER_ENVELOP_SELECTOR_INOM)              || \
+    defined(CONFIG_CHARGER_ENVELOP_SELECTOR_IDCHG)             || \
+    defined(CONFIG_CHARGER_ENVELOP_SELECTOR_VSYS)
+#define SET_PROCHOT_OPTION1
+static int charger_post_init_set_prochot_option1(void)
+{
+	int rv, option1;
+
+	rv = raw_read16(REG_PROTECT_OPTION1, &option1);
+	if (rv)
+		return rv;
+
+/* ProchotOption1[15..10]: IDCHG Comparator Threshold */
+#ifdef CONFIG_CHARGER_IDCHG_COMPARATOR_THRESHOLD_4096_MA
+	option1 &= ~PROCHOT1_IDCHG_COMPARATOR_THRESHOLD_MASK;
+	option1 |= PROCHOT1_IDCHG_COMPARATOR_THRESHOLD_4096_MA;
+#endif
+
+/* ProchotOption1[9..8]: IDCHG Comparator Deglitch Time */
+#ifdef CONFIG_CHARGER_IDCHG_COMPARATOR_DEGLITCH_1P6_MS
+	option1 &= ~PROCHOT1_IDCHG_COMPARATOR_DEGLITCH_MASK;
+#endif
+
+/* ProchotOption1[6..0]: PROCHOT envelop selector */
+#ifdef CONFIG_CHARGER_ENVELOP_SELECTOR_ICRIT
+	option1 |= PROCHOT1_ENVELOP_SELECTOR_ICRIT;
+#endif
+
+#ifdef CONFIG_CHARGER_ENVELOP_SELECTOR_INOM
+	option1 |= PROCHOT1_ENVELOP_SELECTOR_INOM;
+#endif
+
+#ifdef CONFIG_CHARGER_ENVELOP_SELECTOR_IDCHG
+	option1 |= PROCHOT1_ENVELOP_SELECTOR_IDCHG;
+#endif
+
+#ifdef CONFIG_CHARGER_ENVELOP_SELECTOR_VSYS
+	option1 |= PROCHOT1_ENVELOP_SELECTOR_VSYS;
+#endif
+
+	return raw_write16(REG_PROTECT_OPTION1, option1);
+}
+#endif
+
+/* Charging power state initialization */
+int charger_post_init(void)
+{
+	int rv = EC_SUCCESS;
+
+#ifdef SET_CHARGE_OPTION0
+	rv = charger_post_init_set_charge_option0();
+	if (rv)
+		return rv;
+#endif
+
+#ifdef SET_CHARGE_OPTION1
+	rv = charger_post_init_set_charge_option1();
+	if (rv)
+		return rv;
+#endif
+
+#ifdef SET_CHARER_OPTION2
+	rv = charger_post_init_set_charge_option2();
+	if (rv)
+		return rv;
+#endif
+
+#ifdef SET_PROCHOT_OPTION0
+	rv = charger_post_init_set_prochot_option0();
+	if (rv)
+		return rv;
+#endif
+
+#ifdef SET_PROCHOT_OPTION1
+	rv = charger_post_init_set_prochot_option1();
+	if (rv)
+		return rv;
+#endif
+
+	return rv;
 }
 
 int charger_discharge_on_ac(int enable)
