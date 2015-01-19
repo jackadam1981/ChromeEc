@@ -219,6 +219,21 @@
 #undef CONFIG_CHARGER_TPS65090  /* Note: does not use CONFIG_CHARGER */
 
 /*
+ * Board specific flag to set input over-current protection threshold
+ * by detecting ACP_ACN voltage.
+ */
+#undef CONFIG_CHARGER_ACOC_LIMIT_300_PERCENTAGE_OF_IDPM
+
+/*
+ * Board specific flag. By default, if the battery is below 3V (1s) or 6V (2s-4s),
+ * the IC will automatically enable 128 mA charging current to charge depleted battery
+ * for 30 mins. When the battery voltage exceeds 3V (1s) or 6V (2s-4s), the charge will
+ * stop after 1 min deglitch time.
+ * This flag is used to disable the functions.
+ */
+#undef CONFIG_CHARGER_AUTO_WAKEUP_DISABLE
+
+/*
  * Board specific charging current limit, in mA.  If defined, the charge state
  * machine will not allow the battery to request more current than this.
  */
@@ -229,6 +244,32 @@
  * even if AC is present.  Used for testing.
  */
 #undef CONFIG_CHARGER_DISCHARGE_ON_AC
+
+/*
+ * Board specific flag. When adapter is present, the /PROCHOT function is enabled
+ * by the belows. When adapter is removed, 
+ */
+#undef CONFIG_CHARGER_ENVELOP_SELECTOR_ICRIT
+#undef CONFIG_CHARGER_ENVELOP_SELECTOR_IDCHG
+#undef CONFIG_CHARGER_ENVELOP_SELECTOR_INOM
+#undef CONFIG_CHARGER_ENVELOP_SELECTOR_VSYS
+
+/*
+ * Board specific flag. Measure current between ACP and ACN. Triggle when the
+ * current is above this threshold. This flag is set to 150%.
+ */
+#undef CONFIG_CHARGER_ICRIT_COMPARATOR_THRESHOLD_150_PERCENTAGE
+
+/*
+ * Board specific flag. Set the IDCHG Comparator deglitch time to 1.6 ms.
+ */
+#undef CONFIG_CHARGER_IDCHG_COMPARATOR_DEGLITCH_1P6_MS
+
+/*
+ * Board specific flag. Measure current between SRN and SRP. Triggle when the
+ * discharge current is above the threshold.
+ */
+#undef CONFIG_CHARGER_IDCHG_COMPARATOR_THRESHOLD_4096_MA
 
 /*
  * Board specific flag used to disable external ILIM pin used to determine input
@@ -244,6 +285,40 @@
  * voltage, and the maximum power of the running system.
  */
 #undef CONFIG_CHARGER_INPUT_CURRENT
+
+/*
+ * Board specific flag. IC in performance mode with battery only. The enable of
+ * /PROCHOT, current monitor buffer, power monitor buffer and comparator follow
+ * register setting.
+ */
+#undef CONFIG_CHARGER_LOW_POWER_MODE_DISABLE
+
+/*
+ * Board specific flag. Cycle-by-cycle over-current protection threshold by
+ * detecting GND-PHASE.
+ */
+#undef CONFIG_CHARGER_LSFET_OCP_THRESHOLD_290MV
+
+/*
+ * Board specific flag. Set the maximum charge voltage.
+ */
+#undef CONFIG_CHARGER_MAXIMUM_CHARGE_VOLTAGE
+
+/*
+ * Board specific flag. Clear /PROCHOT pulse and drive /PROCHOT pin to HIGH.
+ */
+#undef CONFIG_CHARGER_PROCHOT_HOST_CLEAR
+
+/*
+ * Board specific flag. When pulse extension is enabled, keep PROCHOT pin voltage
+ * low until host write 0x3c[2]=1. Pulse stays LOW till host sets REG 0x3c[2] to 0.
+ */
+#undef CONFIG_CHARGER_PROCHOT_PULSE_EXTENSION_ENABLE
+
+/*
+ * Board specific flag. Minimum PROCHOT pulse width when REG 0x3c[5] = 0
+ */
+#undef CONFIG_CHARGER_PROCHOT_PULSE_WIDTH_1MS
 
 /*
  * Equivalent of CONFIG_BATTERY_OVERRIDE_PARAMS for use with
@@ -265,6 +340,12 @@
  * stop.
  */
 #undef CONFIG_CHARGER_TIMEOUT_HOURS
+
+/*
+ * Board specific flag. Measure on SRP with fixed 20 us deglitch time. Triggle
+ * when SRP voltage is below the threshold: 3.35V
+ */
+#undef CONFIG_CHARGER_VSYS_COMPARATOR_THRESHOLD_3350_MV
 
 /*
  * Board has an GPIO pin to enable or disable charging.
