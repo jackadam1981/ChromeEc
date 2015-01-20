@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b1ab3b5_66916ee0",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-20T23:19:57Z",
+      "side": 1,
+      "message": "this needs to be outside the CONFIG_CHARGE_MANAGER because we still need to clear this w/o charge manager.",
+      "range": {
+        "startLine": 396,
+        "startChar": 3,
+        "endLine": 396,
+        "endChar": 42
+      },
+      "revId": "1573d3cb38985eb3b717a1930d593fc8e44bd6d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
