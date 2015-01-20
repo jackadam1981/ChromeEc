@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b17af8b_050fd2d8",
+        "filename": "common/pd_log.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-20T23:55:50Z",
+      "side": 1,
+      "message": "that\u0027s actually broken when we have 2 ports connected\nthe second will always return busy",
+      "revId": "c6c1370e28335e6f640436be741c5bd5f2cec556",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
