@@ -16,6 +16,24 @@
       "revId": "690295c563f3ddda0e5026b44bd0322ac74647a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b2527f1_e79a8247",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1002162
+      },
+      "writtenOn": "2015-01-20T22:49:09Z",
+      "side": 1,
+      "message": "The current moblab setups do not have a BB connected to the servo V2. Are we planning on setting them up that way?",
+      "parentUuid": "ab202bdf_eb208d38",
+      "revId": "690295c563f3ddda0e5026b44bd0322ac74647a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
