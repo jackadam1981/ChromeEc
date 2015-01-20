@@ -52,6 +52,24 @@
       "revId": "690295c563f3ddda0e5026b44bd0322ac74647a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b2527f1_074a36f7",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1002375
+      },
+      "writtenOn": "2015-01-20T23:07:24Z",
+      "side": 1,
+      "message": "Seems I worried too much, assumption of bb+v3 is fine with me.\n\nMy last question is that, if \"/usr/bin/lib\" can be conclusive for bb?",
+      "parentUuid": "6b1ab3b5_c686623e",
+      "revId": "690295c563f3ddda0e5026b44bd0322ac74647a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
