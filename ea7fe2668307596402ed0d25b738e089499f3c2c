@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b17af8b_a57fde95",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-20T23:39:33Z",
+      "side": 1,
+      "message": "when we are a source, the rest of the information doesn\u0027t really make sense. i suggest we not print out the other info if we are a source.",
+      "range": {
+        "startLine": 19,
+        "startChar": 27,
+        "endLine": 19,
+        "endChar": 59
+      },
+      "revId": "ea7fe2668307596402ed0d25b738e089499f3c2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
