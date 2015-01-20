@@ -88,6 +88,24 @@
       "revId": "690295c563f3ddda0e5026b44bd0322ac74647a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b2527f1_aa0def5d",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2015-01-20T23:33:38Z",
+      "side": 1,
+      "message": "There are only two options for using flashrom:  On the host or on beaglebone.  If we\u0027re flashing from the host, then we\u0027ll use the default directory for openocd configs (ec/chip/lm4/openocd/).  If we\u0027re on BB (w/ servo v3), then all the configs are in /usr/bin/lib/.  I think that those are the only two options.  Am I mistaken?\n\nWe can add another check in lsb-release, but we would still need to check for the existence of the config files in /usr/bin/lib anyway...",
+      "parentUuid": "8b2527f1_074a36f7",
+      "revId": "690295c563f3ddda0e5026b44bd0322ac74647a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
