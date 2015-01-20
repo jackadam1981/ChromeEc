@@ -122,6 +122,30 @@
       "revId": "36e0e28a892b372b5dc3565aca453eacb5d2d3a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b1ab3b5_09e6cdc0",
+        "filename": "common/pd_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-20T23:45:50Z",
+      "side": 1,
+      "message": "nevermind, i see this only gets one log event at a time, so it should follow 500ms timeout, which is good.",
+      "parentUuid": "8b2527f1_0aacfba5",
+      "range": {
+        "startLine": 168,
+        "startChar": 11,
+        "endLine": 168,
+        "endChar": 30
+      },
+      "revId": "36e0e28a892b372b5dc3565aca453eacb5d2d3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
