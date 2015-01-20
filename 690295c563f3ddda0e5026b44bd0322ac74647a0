@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab202bdf_eb208d38",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1002375
+      },
+      "writtenOn": "2015-01-20T22:29:28Z",
+      "side": 1,
+      "message": "It\u0027s possible for beaglebone to be connected to servo v2. That\u0027s the setup for moblab used by mohsinally. I added him to review to confirm this.\n\nAlso, I\u0027m wondering if /usr/bin/lib is enough to conclude it\u0027s on beaglebone. cat /etc/lsb-release | grep \"CHROMEOS_RELEASE_BOARD\u003dbeaglebone_servo\" might be a more strict check?",
+      "revId": "690295c563f3ddda0e5026b44bd0322ac74647a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
