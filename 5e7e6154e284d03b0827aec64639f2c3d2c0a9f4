@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb5d5f61_3fbe4fd7",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-20T18:36:35Z",
+      "side": 1,
+      "message": "it seems we end up with somewhat duplicated information between svids above and amodes.\nI can admit we want to keep svids to allow kernel to handle svids to registered in the EC, but then the \"supported_modes\" array exported by the devices can already provides the -\u003efx pointer.\nare just missing the pointer to the svids[] entry, then just storing the index would be way smaller ?\neg \nuint8_t svids_idx[PD_AMODE_COUNT];\ninstead of \nstruct svdm_amode_data amodes[PD_AMODE_COUNT];\nis 12 to 16 times smaller.\n\nAm I missing something ?",
+      "revId": "5e7e6154e284d03b0827aec64639f2c3d2c0a9f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
