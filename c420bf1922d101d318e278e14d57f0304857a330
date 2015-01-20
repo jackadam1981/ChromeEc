@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2bfb5b87_72cc90fa",
+        "filename": "board/mighty/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2015-01-20T20:39:11Z",
+      "side": 1,
+      "message": "We don\u0027t have a power led actually.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 52
+      },
+      "revId": "c420bf1922d101d318e278e14d57f0304857a330",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
