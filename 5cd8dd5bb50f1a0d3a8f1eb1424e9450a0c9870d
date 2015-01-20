@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb5d5f61_dc91215d",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-01-20T16:58:54Z",
+      "side": 1,
+      "message": "Who fixes the address space that is writable? On initial reading this 0x100 seems arbitrary.",
+      "revId": "5cd8dd5bb50f1a0d3a8f1eb1424e9450a0c9870d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b6c7315_791463e9",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-01-20T16:58:54Z",
+      "side": 1,
+      "message": "We modify this for writes as well?",
+      "revId": "5cd8dd5bb50f1a0d3a8f1eb1424e9450a0c9870d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b6c7315_99fa1f44",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-01-20T16:58:54Z",
+      "side": 1,
+      "message": "What is the purpose of writing to hc_memmap.reserved?",
+      "revId": "5cd8dd5bb50f1a0d3a8f1eb1424e9450a0c9870d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb5d5f61_bc138d4e",
+        "filename": "util/comm-lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-01-20T16:58:54Z",
+      "side": 1,
+      "message": "Why have this structure here in this file? It\u0027s not used within this module at all.",
+      "revId": "5cd8dd5bb50f1a0d3a8f1eb1424e9450a0c9870d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b4a1799_24c3d86d",
+        "filename": "util/comm-lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-01-20T16:58:54Z",
+      "side": 1,
+      "message": "We appear to be ignoring all the return values. So why provide them?",
+      "revId": "5cd8dd5bb50f1a0d3a8f1eb1424e9450a0c9870d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b4a1799_a4aec8a1",
+        "filename": "util/comm-lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-01-20T16:58:54Z",
+      "side": 1,
+      "message": "Any reason to switch addr, b with the in and out variants?",
+      "revId": "5cd8dd5bb50f1a0d3a8f1eb1424e9450a0c9870d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
