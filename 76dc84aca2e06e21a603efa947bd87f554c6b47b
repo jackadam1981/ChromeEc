@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "cb5d5f61_9f015b32",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-20T18:23:28Z",
+      "side": 1,
+      "message": "looks like everywhere you use this is already in an if statement, so you don\u0027t need the !!",
+      "range": {
+        "startLine": 172,
+        "startChar": 8,
+        "endLine": 172,
+        "endChar": 19
+      },
+      "revId": "76dc84aca2e06e21a603efa947bd87f554c6b47b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b6c7315_1c71ddcd",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 3
@@ -13,6 +36,24 @@
       "writtenOn": "2015-01-20T18:04:41Z",
       "side": 1,
       "message": "this check is now no-op ?",
+      "revId": "76dc84aca2e06e21a603efa947bd87f554c6b47b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b6c7315_1ce6fdc0",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-20T18:23:28Z",
+      "side": 1,
+      "message": "it\u0027s not a no-op, it expands to !!!pe[port].amode.opos!",
+      "parentUuid": "6b6c7315_1c71ddcd",
       "revId": "76dc84aca2e06e21a603efa947bd87f554c6b47b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
