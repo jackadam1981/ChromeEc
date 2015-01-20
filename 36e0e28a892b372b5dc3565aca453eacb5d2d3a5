@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "8b2527f1_eacfe768",
+        "filename": "common/pd_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-20T23:45:37Z",
+      "side": 1,
+      "message": "yes this workaround is necessary because usb_pd_config.h has dependencies on hardware headers (adc/gpio/registers)\nand they are not explicit on hh/dd/zinger\nbut yes I can workaround this another way at your option (even though I only need it for PD_PORT_COUNT).",
+      "parentUuid": "ab202bdf_eeb1bb51",
+      "revId": "36e0e28a892b372b5dc3565aca453eacb5d2d3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab202bdf_ae598387",
         "filename": "common/pd_log.c",
         "patchSetId": 2
@@ -48,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "8b2527f1_4a0f1326",
+        "filename": "common/pd_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-20T23:45:37Z",
+      "side": 1,
+      "message": "Yes :( that\u0027s a big awful bug I was just going over.",
+      "parentUuid": "ab202bdf_ae598387",
+      "revId": "36e0e28a892b372b5dc3565aca453eacb5d2d3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b2527f1_0aacfba5",
         "filename": "common/pd_log.c",
         "patchSetId": 2
@@ -65,6 +101,24 @@
         "endLine": 168,
         "endChar": 30
       },
+      "revId": "36e0e28a892b372b5dc3565aca453eacb5d2d3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b1ab3b5_698021d7",
+        "filename": "common/pd_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-20T23:45:37Z",
+      "side": 1,
+      "message": "note: you never grab \"full\" log, only one entry at a time.",
+      "parentUuid": "8b2527f1_0aacfba5",
       "revId": "36e0e28a892b372b5dc3565aca453eacb5d2d3a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
