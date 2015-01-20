@@ -34,6 +34,24 @@
       "revId": "690295c563f3ddda0e5026b44bd0322ac74647a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b1ab3b5_c686623e",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2015-01-20T22:53:35Z",
+      "side": 1,
+      "message": "Our assumption from our end is that if we\u0027re running BB, then we\u0027ll always be attached to servo V3.  Is this not an accurate?  We were not aware that BB with servo V2 would need to be supported.",
+      "parentUuid": "8b2527f1_e79a8247",
+      "revId": "690295c563f3ddda0e5026b44bd0322ac74647a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
