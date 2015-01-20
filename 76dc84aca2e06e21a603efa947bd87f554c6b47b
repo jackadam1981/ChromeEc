@@ -57,6 +57,24 @@
       "revId": "76dc84aca2e06e21a603efa947bd87f554c6b47b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bf1d3a1_8e8d9b95",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-20T18:28:01Z",
+      "side": 1,
+      "message": "which expands to :\nif (opos \u003d\u003d 0)\n   return 0;\nelse \n  return opos;\n\nis that different from :\nreturn opos; ???",
+      "parentUuid": "6b6c7315_1ce6fdc0",
+      "revId": "76dc84aca2e06e21a603efa947bd87f554c6b47b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
