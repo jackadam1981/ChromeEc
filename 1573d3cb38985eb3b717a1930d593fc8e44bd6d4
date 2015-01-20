@@ -22,6 +22,24 @@
       "revId": "1573d3cb38985eb3b717a1930d593fc8e44bd6d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b1ab3b5_89559d94",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-01-20T23:53:50Z",
+      "side": 1,
+      "message": "Done, but I had to link pd_set_input_current_limit for twinkie. Should I add ifdefs inside the twinkie function so that the LEDs don\u0027t turn on in non-TASK_PD mode?",
+      "parentUuid": "6b1ab3b5_66916ee0",
+      "revId": "1573d3cb38985eb3b717a1930d593fc8e44bd6d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
