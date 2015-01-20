@@ -70,6 +70,24 @@
       "revId": "690295c563f3ddda0e5026b44bd0322ac74647a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b1ab3b5_86faaa43",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1002162
+      },
+      "writtenOn": "2015-01-20T23:12:11Z",
+      "side": 1,
+      "message": "We should verify the BB+servoV2 issue though. If we plan on supporting that for moblabs (which I think will stay servoV2 for the immediate future).\n\nAlso, I have seen BB+ servoV2 setups in the chromeos labs as well. Not sure how many are still around.",
+      "parentUuid": "8b2527f1_074a36f7",
+      "revId": "690295c563f3ddda0e5026b44bd0322ac74647a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
