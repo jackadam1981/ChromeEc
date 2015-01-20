@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab202bdf_eeb1bb51",
+        "filename": "common/pd_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-20T23:36:22Z",
+      "side": 1,
+      "message": "why is this necessary? can\u0027t we always just include usb_pd_config if we need it?",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 23
+      },
+      "revId": "36e0e28a892b372b5dc3565aca453eacb5d2d3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab202bdf_ae598387",
+        "filename": "common/pd_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-20T23:36:22Z",
+      "side": 1,
+      "message": "i think you want the new function arg timestamp here",
+      "range": {
+        "startLine": 75,
+        "startChar": 16,
+        "endLine": 75,
+        "endChar": 56
+      },
+      "revId": "36e0e28a892b372b5dc3565aca453eacb5d2d3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b2527f1_0aacfba5",
+        "filename": "common/pd_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-20T23:36:22Z",
+      "side": 1,
+      "message": "have you tested grabbing full logs from multiple devices? there might be an issue where if we have to grab full logs from each device, we could exceed our 1 second timeout for HC response.",
+      "range": {
+        "startLine": 168,
+        "startChar": 11,
+        "endLine": 168,
+        "endChar": 30
+      },
+      "revId": "36e0e28a892b372b5dc3565aca453eacb5d2d3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
