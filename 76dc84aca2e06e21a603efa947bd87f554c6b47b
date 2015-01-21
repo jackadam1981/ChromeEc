@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8bda8731_e53632d1",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-01-21T02:44:44Z",
+      "side": 1,
+      "message": "This should just go away altogether in favor of pd_alt_mode as their one in the same.  To that end the final CL will remove most of those as well.\n\nNext patch will s/AMODE_VALID/pd_alt_mode/",
+      "parentUuid": "cb5d5f61_9f015b32",
+      "range": {
+        "startLine": 172,
+        "startChar": 8,
+        "endLine": 172,
+        "endChar": 19
+      },
+      "revId": "76dc84aca2e06e21a603efa947bd87f554c6b47b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b6c7315_1c71ddcd",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 3
@@ -72,6 +96,24 @@
       "side": 1,
       "message": "which expands to :\nif (opos \u003d\u003d 0)\n   return 0;\nelse \n  return opos;\n\nis that different from :\nreturn opos; ???",
       "parentUuid": "6b6c7315_1ce6fdc0",
+      "revId": "76dc84aca2e06e21a603efa947bd87f554c6b47b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bdf1324_87856ce8",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-01-21T02:44:44Z",
+      "side": 1,
+      "message": "Agreed.  Will remove in this in next patch.",
+      "parentUuid": "6bf1d3a1_8e8d9b95",
       "revId": "76dc84aca2e06e21a603efa947bd87f554c6b47b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
