@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bdf1324_fe0401b8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-21T00:34:49Z",
+      "side": 1,
+      "message": "i would just move the highlighted section up above line 389 so that you don\u0027t need to write #ifdef CONFIG_USB_PD_DUAL_ROLE again.",
+      "range": {
+        "startLine": 394,
+        "startChar": 0,
+        "endLine": 401,
+        "endChar": 3
+      },
+      "revId": "a6c14187e83d2fb56d535fb31c162ae9519d6c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
