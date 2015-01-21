@@ -106,6 +106,29 @@
       "revId": "690295c563f3ddda0e5026b44bd0322ac74647a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2bc27b57_a8db237d",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-21T20:54:44Z",
+      "side": 1,
+      "message": "If we set this in flash_link and flash_lm4 before calling setup_openocd, then it should still work.\n\nAnd then we can also call setup_openocd in flash_ncpx (which will have a different default OCD_PATH.  I think we need to do that to make npcx work with beaglebone (which we\u0027ll need eventually).",
+      "range": {
+        "startLine": 330,
+        "startChar": 5,
+        "endLine": 330,
+        "endChar": 42
+      },
+      "revId": "690295c563f3ddda0e5026b44bd0322ac74647a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
