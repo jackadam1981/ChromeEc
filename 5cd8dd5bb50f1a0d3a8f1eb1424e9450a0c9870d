@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cb02bf41_57a6a4c7",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-01-21T07:40:15Z",
+      "side": 1,
+      "message": "I will update the code to:\n  /* Check if address offset is for Host Argument or Host Packet */\n  if (hc_memmap.offset \u003c EC_LPC_HOST_PACKET_SIZE)",
+      "parentUuid": "cb5d5f61_dc91215d",
+      "revId": "5cd8dd5bb50f1a0d3a8f1eb1424e9450a0c9870d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b6c7315_791463e9",
         "filename": "chip/mec1322/lpc.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2015-01-20T16:58:54Z",
       "side": 1,
       "message": "We modify this for writes as well?",
+      "revId": "5cd8dd5bb50f1a0d3a8f1eb1424e9450a0c9870d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab074b51_b9042342",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-01-21T07:40:15Z",
+      "side": 1,
+      "message": "In this patch on the write operation, this line is actually don\u0027t care since we do not update the hardware register for write.\n\nMy original thought on this was that the host may want to read back the value right after the write operation to validate the memap is in fact written, but this will mean one extra IO read, which will increase the execution time on the host side.",
+      "parentUuid": "6b6c7315_791463e9",
       "revId": "5cd8dd5bb50f1a0d3a8f1eb1424e9450a0c9870d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "cb02bf41_f1636831",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-01-21T07:40:15Z",
+      "side": 1,
+      "message": "Since this interface is originally used to initiate the host command, this reserved byte, which is \"inb(0x200)\" from host, is used to return the host command status, so I am marking it as reserved in this context to keep the existing value not modified.",
+      "parentUuid": "6b6c7315_99fa1f44",
+      "revId": "5cd8dd5bb50f1a0d3a8f1eb1424e9450a0c9870d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb5d5f61_bc138d4e",
         "filename": "util/comm-lpc.c",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2015-01-20T16:58:54Z",
       "side": 1,
       "message": "Why have this structure here in this file? It\u0027s not used within this module at all.",
+      "revId": "5cd8dd5bb50f1a0d3a8f1eb1424e9450a0c9870d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab074b51_a4d87a81",
+        "filename": "util/comm-lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-01-21T07:40:15Z",
+      "side": 1,
+      "message": "This structure is to provide a function pointer to inb, inl, outl, and usleep function since different cros component used different library / H file. \n\nHaving this structure defined here will allow the comm-mec1322.c to be portable as a copy-exact to coreboot/depthcharge/flashrom/mosys/etc.\n\nThe flashrom change, https://chromium-review.googlesource.com/#/c/236781,  is an example on how this is used.",
+      "parentUuid": "cb5d5f61_bc138d4e",
       "revId": "5cd8dd5bb50f1a0d3a8f1eb1424e9450a0c9870d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "4beecfc7_2dae2d29",
+        "filename": "util/comm-lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-01-21T07:40:15Z",
+      "side": 1,
+      "message": "While we are porting this change to flashrom, https://chromium-review.googlesource.com/#/c/236781, we felt that it was important to add an error return code when accessing EC, especially during a flash option.\n\nAs for ectool, I am trying to minimize change as much as possible in this patch, so I am modifying the code to use only this new macro without adding new code to make use of the return value. We can do this as a future enhancement.",
+      "parentUuid": "0b4a1799_24c3d86d",
+      "revId": "5cd8dd5bb50f1a0d3a8f1eb1424e9450a0c9870d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b4a1799_a4aec8a1",
         "filename": "util/comm-lpc.c",
         "patchSetId": 2
@@ -98,6 +188,24 @@
       "writtenOn": "2015-01-20T16:58:54Z",
       "side": 1,
       "message": "Any reason to switch addr, b with the in and out variants?",
+      "revId": "5cd8dd5bb50f1a0d3a8f1eb1424e9450a0c9870d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab074b51_245aca45",
+        "filename": "util/comm-lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-01-21T07:40:15Z",
+      "side": 1,
+      "message": "The reason I implemented this way was because of this: https://chromium-review.googlesource.com/#/c/236781/6/cros_ec_lpc.c, Line 357 and Line 363. I followed the same arguments definition as the read and write function.\n\nThis can be change if preferred.",
+      "parentUuid": "0b4a1799_a4aec8a1",
       "revId": "5cd8dd5bb50f1a0d3a8f1eb1424e9450a0c9870d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
