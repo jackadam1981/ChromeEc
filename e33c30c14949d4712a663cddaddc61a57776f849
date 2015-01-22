@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b732f24_4e8707f8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3266,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2015-01-22T18:30:34Z",
+      "side": 1,
+      "message": "I wonder if it\u0027s worth merging this with the check below where the other args are checked.",
+      "range": {
+        "startLine": 3266,
+        "startChar": 9,
+        "endLine": 3266,
+        "endChar": 29
+      },
+      "revId": "e33c30c14949d4712a663cddaddc61a57776f849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
