@@ -46,6 +46,30 @@
       "revId": "0fa37b3b44207e8050c7fe2dbedd1f035c86cab3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b732f24_d9fe63c0",
+        "filename": "board/ryu/usb_pd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2015-01-22T21:04:20Z",
+      "side": 1,
+      "message": "It seems to me that we should change common/usb_pd_policy.c so that both PD_MAX_POWER_MW and PD_MAX_CURRENT_MA are honored no matter what the source type is?",
+      "parentUuid": "ab082bac_e8421371",
+      "range": {
+        "startLine": 183,
+        "startChar": 30,
+        "endLine": 183,
+        "endChar": 34
+      },
+      "revId": "0fa37b3b44207e8050c7fe2dbedd1f035c86cab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
