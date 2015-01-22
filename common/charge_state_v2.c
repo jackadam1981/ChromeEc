@@ -877,8 +877,13 @@ int charge_prevent_power_on(void)
 #ifdef CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON
 	/* Require a minimum battery level to power on */
 	if (curr.batt.is_present == BP_NO ||
-	    curr.batt.state_of_charge < CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON)
+	   (curr.batt.is_present == BP_YES &&
+	    curr.batt.state_of_charge < CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON))
 		prevent_power_on = 1;
+	/*
+	 * do not prevent boot is the battery state is not read yet or not valid
+	 * ie curr.batt.is_present == BP_NOT_SURE
+	 */
 #endif
 	/* Factory override: Always allow power on if WP is disabled */
 	return prevent_power_on && system_is_locked();
