@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb139fda_690e255a",
+        "filename": "board/ryu/usb_pd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-22T20:51:09Z",
+      "side": 1,
+      "message": "your CL will be ineffective most of the time :\nonly battery-powered type-C power source are using MAX_POWER_MW, else we are using MAX_CURRENT_MA.\n\nI agree that\u0027s problematic for this case where we want to set it at 1200 for 20V and 3000 for 5V",
+      "range": {
+        "startLine": 183,
+        "startChar": 30,
+        "endLine": 183,
+        "endChar": 34
+      },
+      "revId": "0fa37b3b44207e8050c7fe2dbedd1f035c86cab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
