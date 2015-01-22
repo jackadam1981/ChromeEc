@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "4b732f24_0bfb4187",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-01-22T06:44:50Z",
+      "side": 1,
+      "message": "agreed. But this file was deleted in the last commit and longer exist. All the required functions are moved to flash_external. If pstate is not needed. all of the related we will alter.",
+      "parentUuid": "2b70bb17_a7550494",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 4
+      },
+      "revId": "1f05a6826c3c2fc88f223315c104b2b6efded26c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b70bb17_27b3d48f",
         "filename": "common/flash_external.c",
         "patchSetId": 7
@@ -59,6 +83,30 @@
       "writtenOn": "2015-01-22T00:52:08Z",
       "side": 1,
       "message": "Size is word-aligned, but here you\u0027re writing 16-byte-aligned size.  Can\u0027t that overrun the buffer?",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 42
+      },
+      "revId": "1f05a6826c3c2fc88f223315c104b2b6efded26c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b732f24_cbe849b8",
+        "filename": "common/flash_external.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-01-22T06:44:50Z",
+      "side": 1,
+      "message": "The starting page boundary had to be 256-byte page boundary. The highest common divisor to so less number of SPI transactions was used.Not sure if the same is applicable to winbond. Atmel needed this. will need to validate software sync with winbond.",
+      "parentUuid": "2b70bb17_27b3d48f",
       "range": {
         "startLine": 61,
         "startChar": 1,
@@ -209,6 +257,30 @@
     },
     {
       "key": {
+        "uuid": "4b732f24_cbcf6969",
+        "filename": "common/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-01-22T06:44:50Z",
+      "side": 1,
+      "message": "get_base() returns the base memory location where the code start execution.\nget_base_external() returns the location of the SPI flash start address where the RO/RW code resides.",
+      "parentUuid": "4b732f24_28056308",
+      "range": {
+        "startLine": 106,
+        "startChar": 3,
+        "endLine": 106,
+        "endChar": 45
+      },
+      "revId": "1f05a6826c3c2fc88f223315c104b2b6efded26c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b763314_e9bef19e",
         "filename": "common/system.c",
         "patchSetId": 7
@@ -225,6 +297,29 @@
         "startChar": 9,
         "endLine": 354,
         "endChar": 40
+      },
+      "revId": "1f05a6826c3c2fc88f223315c104b2b6efded26c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b763314_8ca10b37",
+        "filename": "common/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-01-22T06:44:50Z",
+      "side": 1,
+      "message": "if we move them to flash_internal and flash_spi then this function will have to still use the CONFIG_FLASH_EXTERNAL as this function is used for vboot hash calculation",
+      "range": {
+        "startLine": 427,
+        "startChar": 4,
+        "endLine": 427,
+        "endChar": 25
       },
       "revId": "1f05a6826c3c2fc88f223315c104b2b6efded26c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -278,6 +373,30 @@
     },
     {
       "key": {
+        "uuid": "4b732f24_abc22d42",
+        "filename": "common/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-01-22T06:44:50Z",
+      "side": 1,
+      "message": "will allocate another small buffer for version. they will intercept as console is interrupt driven.",
+      "parentUuid": "4b732f24_a8107342",
+      "range": {
+        "startLine": 595,
+        "startChar": 27,
+        "endLine": 595,
+        "endChar": 37
+      },
+      "revId": "1f05a6826c3c2fc88f223315c104b2b6efded26c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b70bb17_c7268023",
         "filename": "common/vboot_hash.c",
         "patchSetId": 7
@@ -289,6 +408,30 @@
       "writtenOn": "2015-01-22T00:52:08Z",
       "side": 1,
       "message": "Shouldn\u0027t this call flash_physical_read(), which would do the spi enable and read, rather than requiring vboot to know about spi_enable()?",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 15
+      },
+      "revId": "1f05a6826c3c2fc88f223315c104b2b6efded26c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b763314_2cf01721",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-01-22T06:44:50Z",
+      "side": 1,
+      "message": "will change",
+      "parentUuid": "2b70bb17_c7268023",
       "range": {
         "startLine": 69,
         "startChar": 0,
