@@ -22,6 +22,30 @@
       "revId": "0fa37b3b44207e8050c7fe2dbedd1f035c86cab3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab082bac_e8421371",
+        "filename": "board/ryu/usb_pd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-22T20:55:39Z",
+      "side": 1,
+      "message": "oh, yes, that\u0027s correct, we may want to change that behavior in common/usb_pd_policy.c so that we obey both limits.",
+      "parentUuid": "cb139fda_690e255a",
+      "range": {
+        "startLine": 183,
+        "startChar": 30,
+        "endLine": 183,
+        "endChar": 34
+      },
+      "revId": "0fa37b3b44207e8050c7fe2dbedd1f035c86cab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
