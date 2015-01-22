@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b70bb17_274af4f7",
+        "filename": "chip/mec1322/config_chip.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-22T00:52:08Z",
+      "side": 1,
+      "message": "With a real external flash, PSTATE is not needed.  The real SPI configuration register should be used.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 53
+      },
+      "revId": "1f05a6826c3c2fc88f223315c104b2b6efded26c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b70bb17_a7550494",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-22T00:52:08Z",
+      "side": 1,
+      "message": "Write protection should be applied by setting the status/config register of the SPI flash chip itself.  So none of this code is needed (it only exists to emulate that register on EC chips that use internal flash).",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 4
+      },
+      "revId": "1f05a6826c3c2fc88f223315c104b2b6efded26c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b70bb17_27b3d48f",
+        "filename": "common/flash_external.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-22T00:52:08Z",
+      "side": 1,
+      "message": "Size is word-aligned, but here you\u0027re writing 16-byte-aligned size.  Can\u0027t that overrun the buffer?",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 42
+      },
+      "revId": "1f05a6826c3c2fc88f223315c104b2b6efded26c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b70bb17_87a1e836",
+        "filename": "common/flash_external.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-22T00:52:08Z",
+      "side": 1,
+      "message": "TODO (crosbug.com/p/BUG_NUMBER)\n\nwhere BUG_NUMBER is the bug number from a partner tracker bug.  That way we keep track that this needs to be implemented.",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 8
+      },
+      "revId": "1f05a6826c3c2fc88f223315c104b2b6efded26c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b70bb17_0797b8d8",
+        "filename": "common/flash_external.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-22T00:52:08Z",
+      "side": 1,
+      "message": "No pstate for external flash",
+      "range": {
+        "startLine": 265,
+        "startChar": 1,
+        "endLine": 265,
+        "endChar": 28
+      },
+      "revId": "1f05a6826c3c2fc88f223315c104b2b6efded26c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b70bb17_6796acda",
+        "filename": "common/flash_external.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-22T00:52:08Z",
+      "side": 1,
+      "message": "typo: PROTECT",
+      "range": {
+        "startLine": 308,
+        "startChar": 13,
+        "endLine": 308,
+        "endChar": 19
+      },
+      "revId": "1f05a6826c3c2fc88f223315c104b2b6efded26c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b763314_29a9e96e",
+        "filename": "common/flash_external.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-22T00:52:08Z",
+      "side": 1,
+      "message": "Comment seems wrong.  We\u0027re not filling the data buffer, we\u0027re printing it.",
+      "range": {
+        "startLine": 562,
+        "startChar": 0,
+        "endLine": 567,
+        "endChar": 2
+      },
+      "revId": "1f05a6826c3c2fc88f223315c104b2b6efded26c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b763314_a9b4f9c2",
+        "filename": "common/flash_external.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-22T00:52:08Z",
+      "side": 1,
+      "message": "A lot of these commands are still identical to the internal versions.\n\nSo I think we need\n\nflash.c : common to internal and external\nflash_internal.c : internal-only implementation (with pstate)\nflash_spi.c : implementation for SPI flash",
+      "range": {
+        "startLine": 703,
+        "startChar": 0,
+        "endLine": 725,
+        "endChar": 23
+      },
+      "revId": "1f05a6826c3c2fc88f223315c104b2b6efded26c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b732f24_28056308",
+        "filename": "common/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-22T00:52:08Z",
+      "side": 1,
+      "message": "Comment needs updating?  How does this differ from get_base()?",
+      "range": {
+        "startLine": 106,
+        "startChar": 3,
+        "endLine": 106,
+        "endChar": 45
+      },
+      "revId": "1f05a6826c3c2fc88f223315c104b2b6efded26c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b763314_e9bef19e",
+        "filename": "common/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-22T00:52:08Z",
+      "side": 1,
+      "message": "Hmm.  Maybe this function should move to flash_internal.c / flash_spi.c so that system.c doesn\u0027t have this big #ifdef.\n\nSame with get_base vs get_base_external?",
+      "range": {
+        "startLine": 354,
+        "startChar": 9,
+        "endLine": 354,
+        "endChar": 40
+      },
+      "revId": "1f05a6826c3c2fc88f223315c104b2b6efded26c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b732f24_c81daf59",
+        "filename": "common/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-22T00:52:08Z",
+      "side": 1,
+      "message": "Seems like most of this function is common between internal and external flash.  So don\u0027t need two copies of the entire thing.",
+      "range": {
+        "startLine": 580,
+        "startChar": 12,
+        "endLine": 580,
+        "endChar": 30
+      },
+      "revId": "1f05a6826c3c2fc88f223315c104b2b6efded26c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b732f24_a8107342",
+        "filename": "common/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-22T00:52:08Z",
+      "side": 1,
+      "message": "system_get_version() and system_get_image_flash_externa() both use flash_data[], so one can overwrite the other.  Is that really safe?",
+      "range": {
+        "startLine": 595,
+        "startChar": 27,
+        "endLine": 595,
+        "endChar": 37
+      },
+      "revId": "1f05a6826c3c2fc88f223315c104b2b6efded26c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b70bb17_c7268023",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-22T00:52:08Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this call flash_physical_read(), which would do the spi enable and read, rather than requiring vboot to know about spi_enable()?",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 15
+      },
+      "revId": "1f05a6826c3c2fc88f223315c104b2b6efded26c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
