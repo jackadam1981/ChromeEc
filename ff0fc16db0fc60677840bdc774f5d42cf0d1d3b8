@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab3d8b4e_86d92e87",
+        "filename": "chip/stm32/hwtimer32.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2015-01-23T01:02:52Z",
+      "side": 1,
+      "message": "I tried copying task_resched_if_needed from cortex-m task.c to cortex-m0 task.c but I get:\n\nbuild/pinky/chip/stm32/hwtimer32.obuild/pinky/chip/stm32/hwtimer32.o: In function `: In function `irq_18_handlerirq_18_handler\u0027:\n\u0027:\n/mnt/host/source/src/platform/ec/chip/stm32/hwtimer32.c:202:(/mnt/host/source/src/platform/ec/chip/stm32/hwtimer32.c:.text.irq_18_handler+0xe202:):( relocation truncated to fit: R_ARM_THM_JUMP11.text.irq_18_handler+0x against symbol `task_resched_if_needede\u0027 defined in .text.task_resched_if_needed) section in build/pinky/core/cortex-m0/task.o:\n relocation truncated to fit: R_ARM_THM_JUMP11 against symbol `task_resched_if_needed\u0027 defined in .text.task_resched_if_needed section in build/pinky/core/cortex-m0/task.o",
+      "range": {
+        "startLine": 212,
+        "startChar": 7,
+        "endLine": 212,
+        "endChar": 35
+      },
+      "revId": "ff0fc16db0fc60677840bdc774f5d42cf0d1d3b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
