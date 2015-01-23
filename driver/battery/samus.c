@@ -10,6 +10,7 @@
 #include "console.h"
 #include "ec_commands.h"
 #include "extpower.h"
+#include "i2c.h"
 #include "util.h"
 
 static const struct battery_info info = {
@@ -88,8 +89,12 @@ int charger_profile_override(struct charge_state_data *curr)
 	 * CV at 8.7V
 	 *
 	 * When battery is >45C:
+	 * if (batt voltage < 8.3) {
 	 * CC at 6660mA @ 8.3V
 	 * CV at 8.3V (when battery is hot we don't go to fully charged)
+	 * } else {
+	 * CV at batt voltage
+	 * }
 	 *
 	 * Add 0.2 degrees of hysteresis.
 	 */
@@ -220,3 +225,26 @@ enum battery_disconnect_state battery_get_disconnect_state(void)
 	return BATTERY_NOT_DISCONNECTED;
 }
 #endif /* CONFIG_BATTERY_REVIVE_DISCONNECT */
+
+#define PARAM_CUT_OFF_LOW  0x10
+#define PARAM_CUT_OFF_HIGH 0x00
+
+int board_cut_off_battery(void)
+{
+	int rv;
+	uint8_t buf[3];
+
+	buf[0] = SB_MANUFACTURER_ACCESS & 0xff;
+	buf[1] = PARAM_CUT_OFF_LOW;
+	buf[2] = PARAM_CUT_OFF_HIGH;
+
+	i2c_lock(I2C_PORT_BATTERY, 1);
+	rv = i2c_xfer(I2C_PORT_BATTERY, BATTERY_ADDR, buf, 3, NULL, 0,
+		      I2C_XFER_SINGLE);
+	rv |= i2c_xfer(I2C_PORT_BATTERY, BATTERY_ADDR, buf, 3, NULL, 0,
+		      I2C_XFER_SINGLE);
+	i2c_lock(I2C_PORT_BATTERY, 0);
+
+	return rv;
+}
+
