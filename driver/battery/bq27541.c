@@ -256,6 +256,11 @@ void battery_get_params(struct batt_params *batt)
 		batt->desired_voltage = battery_get_info()->voltage_max;
 		batt->desired_current = 4096;
 	}
+
+	if (batt->flags & BATT_FLAG_RESPONSIVE)
+		batt->is_present = BP_YES;
+	else
+		batt->is_present = BP_NO;
 }
 
 /* Wait until battery is totally stable */
