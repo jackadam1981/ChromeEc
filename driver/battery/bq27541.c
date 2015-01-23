@@ -223,10 +223,13 @@ void battery_get_params(struct batt_params *batt)
 	/* Reset flags */
 	batt->flags = 0;
 
-	if (bq27541_read(REG_TEMPERATURE, &batt->temperature))
+	if (bq27541_read(REG_TEMPERATURE, &batt->temperature)) {
 		batt->flags |= BATT_FLAG_BAD_TEMPERATURE;
-	else
+		batt->is_present = BP_NO;
+	} else {
 		batt->flags |= BATT_FLAG_RESPONSIVE; /* Battery is responding */
+		batt->is_present = BP_YES;
+	}
 
 	if (bq27541_read8(REG_STATE_OF_CHARGE, &batt->state_of_charge))
 		batt->flags |= BATT_FLAG_BAD_STATE_OF_CHARGE;
