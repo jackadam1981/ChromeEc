@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ebdf837d_e52850ab",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-23T19:45:24Z",
+      "side": 1,
+      "message": "Seems to be useless on samus_pd\nsince this has been fixed in the common cortex-m0 code afaict by your own CL :\nhttps://chromium-review.googlesource.com/#/c/221599/2/core/cortex-m0/task.c",
+      "range": {
+        "startLine": 98,
+        "startChar": 5,
+        "endLine": 98,
+        "endChar": 22
+      },
+      "revId": "a84e31579204ad531f30455d8d2879b0d4685e6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
