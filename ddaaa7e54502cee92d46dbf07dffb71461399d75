@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4bf08f0f_1d983380",
+        "filename": "chip/stm32/hwtimer32.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2015-01-23T21:45:25Z",
+      "side": 1,
+      "message": "This doesn\u0027t work very well still.\n\nNote, I have a while(1); at the end of the \"taskinfo\" cmd for testing.\n\nI get \"HANDLER EXCEPTION\" after the watchdog_check finishes:\n\u003e taskinfo[16.103159 HC 0x9e]\n+++++++++++++++++++\nTask Ready Name         Events      Time (s)  StkUsed\n   0 R \u003c\u003c idle \u003e\u003e       00000000   15.646519  136/256\n   1 R HOOKS            00000000    0.003351  512/640\n   2 R CHARGER          80000000    0.159100  432/640\n   3   CHIPSET          00000000    0.007970  316/640\n   4   HOSTCMD          00000000    0.038211  328/488\n   5 R CONSOLE          00000000    0.030143  340/488\n   6   KEYSCAN          00000000    0.000212  292/488\nIRQ counts by type:\n   2      410\n   6        3\n   7      357\n  15    15260\n  27      903\nService calls:                 7624\nTotal exceptions:             24557\nTask switches:                15130\nTask switching started:    0.024021 s\nTime in tasks:            16.210889 s\nTime in exceptions:        0.312965 s\n### WATCHDOG PC\u003d08000998 / LR\u003d08009671 / pSP\u003d200011e8 (task 5) ###\nTime:     0x00000000010792a6 us\nDeadline: 0x0000000000f74165 -\u003e   -1.069377 s from now\nActive timers:\nTask Ready Name         Events      Time (s)  StkUsed\n   0 R \u003c\u003c idle \u003e\u003e       00000000   15.646519  136/256\n   1 R HOOKS            00000000    0.003351  512/640\n   2 R CHARGER          80000000    0.159100  432/640\n   3   CHIPSET          00000000    0.007970  316/640\n   4   HOSTCMD          00000000    0.038211  328/488\n   5 R CONSOLE          00000000    0.067972  340/488\n   6   KEYSCAN          00000000    0.000212  292/488\nStack contents:\n[200011e8] \u003d 00000000\n[200011ec] \u003d 00000040\n[200011f0] \u003d 40013800\n[200011f4] \u003d 08000999 function? 8000998\n[200011f8] \u003d 20001278\n[200011fc] \u003d 08009671 function? 8009670\n[20001200] \u003d 08000998 function? 8000998\n[20001204] \u003d 41000000\n[20001208] \u003d 00f7b99e\n[2000120c] \u003d 00000000\n[20001210] \u003d 00000008\n[20001214] \u003d 20001bc8\n[20001218] \u003d 20001b48\n[2000121c] \u003d 00000001\n[20001220] \u003d 0800b01c function? 800b01c\n[20001224] \u003d 08004ee1 function? 8004ee0\n\n\u003d\u003d\u003d HANDLER EXCEPTION: 03 \u003d\u003d\u003d\u003d\u003d\u003d xPSR: 60000022 \u003d\u003d\u003d\nr0 :00005dd5 r1 :fffffffd r2 :deadd00d r3 :08000999\nr4 :200005c8 r5 :20000548 r6 :00004225 r7 :0000007c\nr8 :00000000 r9 :00000000 r10:00000000 r11:00000000\nr12:20001278 sp :20000490 lr :fffffffd pc :00000000",
+      "range": {
+        "startLine": 211,
+        "startChar": 7,
+        "endLine": 211,
+        "endChar": 22
+      },
+      "revId": "ddaaa7e54502cee92d46dbf07dffb71461399d75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
