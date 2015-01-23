@@ -206,8 +206,12 @@ void IRQ_HANDLER(IRQ_WD)(void)
 		      * R0=LR so we can pass it to task_resched_if_needed. */
 		     "push {r0, lr}\n"
 		     "bl watchdog_check\n"
-		     "pop {r0, lr}\n"
-		     "b task_resched_if_needed\n");
+		     "pop {r0, r1}\n"
+		     "mov lr, r1\n"
+#ifndef CHIP_FAMILY_STM32F0
+		     "b task_resched_if_needed\n"
+#endif
+	);
 }
 const struct irq_priority IRQ_PRIORITY(IRQ_WD)
 	__attribute__((section(".rodata.irqprio")))
