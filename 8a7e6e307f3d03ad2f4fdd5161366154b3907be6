@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "abe90b2d_66d3aae5",
+        "filename": "driver/battery/bq27541.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-23T22:06:12Z",
+      "side": 1,
+      "message": "Why base this off of just temperature? This could cause false battery missing notification (and battery icon would disappear). How about doing something like the implementation in driver/battery/smart.c battery_get_params(), where we basically read all these parameters, and then if any one of them is correctly read, we assume it is present.",
+      "range": {
+        "startLine": 226,
+        "startChar": 1,
+        "endLine": 228,
+        "endChar": 27
+      },
+      "revId": "8a7e6e307f3d03ad2f4fdd5161366154b3907be6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8bee0733_227d109d",
         "filename": "driver/battery/bq27541.c",
         "patchSetId": 1
