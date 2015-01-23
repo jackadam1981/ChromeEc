@@ -220,3 +220,19 @@ enum battery_disconnect_state battery_get_disconnect_state(void)
 	return BATTERY_NOT_DISCONNECTED;
 }
 #endif /* CONFIG_BATTERY_REVIVE_DISCONNECT */
+
+#define PARAM_CUT_OFF 0x0010
+
+int board_cut_off_battery(void)
+{
+	int rv;
+
+	/* Must be sent twice to take affect */
+	rv = sb_write(SB_MANUFACTURER_ACCESS, PARAM_CUT_OFF);
+
+	if (rv != EC_SUCCESS)
+		return rv;
+
+	return sb_write(SB_MANUFACTURER_ACCESS, PARAM_CUT_OFF);
+}
+
