@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8bee0733_e218481d",
+        "filename": "driver/battery/bq27541.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-23T22:21:44Z",
+      "side": 1,
+      "message": "hm... in driver/battery/smart.c we use BP_NOT_SURE. i don\u0027t know what difference it really makes, but might be good to be consistent and pick one or the other.",
+      "range": {
+        "startLine": 252,
+        "startChar": 21,
+        "endLine": 252,
+        "endChar": 26
+      },
+      "revId": "9e03d3173d7c99daa2fc83407a8dea674d178886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
