@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b69a776_07d9b6ab",
+        "filename": "driver/battery/samus.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-23T17:37:10Z",
+      "side": 1,
+      "message": "in the past, I remember we had atomicity issues\n(ie cut-off fails if another battery command is inserted between these 2 commands)\nbtw, I have searched the code base and failed to find the locking we did at some point.",
+      "range": {
+        "startLine": 230,
+        "startChar": 17,
+        "endLine": 230,
+        "endChar": 22
+      },
+      "revId": "f1d967a4b9834f71474e67a99d3e565317aebe3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
