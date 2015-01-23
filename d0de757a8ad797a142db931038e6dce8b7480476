@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b724f59_2dbfed9c",
+        "filename": "common/led_policy_std.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-23T19:57:31Z",
+      "side": 1,
+      "message": "This should really be just red and green for the charging LED, and white for the power LED.\n\nWhen we have a multi-channel LED, we only have brightness ranges for the individual channels, not all of the possible permutations.  (Think of how messy it would be otherwise for a RGB LED...)\n\nSee for example https://chromium.googlesource.com/chromiumos/platform/ec/+/master/board/peppy/led.c where there is a blue and a yellow LED.  We don\u0027t define a separate LED entry for pink in that case.",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 42
+      },
+      "revId": "d0de757a8ad797a142db931038e6dce8b7480476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
