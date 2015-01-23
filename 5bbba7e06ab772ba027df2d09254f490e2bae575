@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8bee0733_e2d68857",
+        "filename": "core/cortex-m0/watchdog.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-23T21:56:00Z",
+      "side": 1,
+      "message": "the termination condition is wrong\nhopefully you never tested this on your highest priority task.",
+      "revId": "5bbba7e06ab772ba027df2d09254f490e2bae575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bf08f0f_bd75bf6c",
+        "filename": "core/cortex-m0/watchdog.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-23T21:56:00Z",
+      "side": 1,
+      "message": "that\u0027s very verbose, as panic_printf is slow, just putting a star or whatever in front on the previous print would let us continue execution.",
+      "range": {
+        "startLine": 47,
+        "startChar": 3,
+        "endLine": 47,
+        "endChar": 15
+      },
+      "revId": "5bbba7e06ab772ba027df2d09254f490e2bae575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
