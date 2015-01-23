@@ -177,11 +177,28 @@ void pd_dfp_pe_init(int port)
 	pe[port].amode.index = -1;
 }
 
+/*
+ * Number of data objects for each product type in identity header.
+ * Min=2 (Identity, Cert Stat)
+ * Max=6 (Min + up to 4 Product type VDOs (cable, product, AMA, ?)
+ */
+
+static const uint8_t identity_size[IDH_PTYPE_COUNT] = {
+	[IDH_PTYPE_UNDEF]  = 2, /* min */
+	[IDH_PTYPE_HUB]    = 3, /* min + product */
+	[IDH_PTYPE_PERIPH] = 3, /* min + product */
+	[IDH_PTYPE_PCABLE] = 3, /* min + cable */
+	[IDH_PTYPE_ACABLE] = 3, /* min + cable */
+	[IDH_PTYPE_AMA]    = 4, /* min + product + AMA */
+};
+
 static void dfp_consume_identity(int port, uint32_t *payload)
 {
 	int ptype = PD_IDH_PTYPE(payload[VDO_I(IDH)]);
 	pd_dfp_pe_init(port);
-	memcpy(&pe[port].identity, payload + 1, sizeof(pe[port].identity));
+	memcpy(&pe[port].identity, payload + 1, identity_size[ptype] *
+	       sizeof(uint32_t));
+
 	switch (ptype) {
 	case IDH_PTYPE_AMA:
 		/* TODO(tbroch) do I disable VBUS here if power contract
@@ -358,7 +375,7 @@ static void dump_pe(int port)
 	ccprintf("\t[ID Header] %08x :: %s, VID:%04x\n", pe[port].identity[0],
 		 idh_ptype_names[idh_ptype], PD_IDH_VID(pe[port].identity[0]));
 	ccprintf("\t[Cert Stat] %08x\n", pe[port].identity[1]);
-	for (i = 2; i < ARRAY_SIZE(pe[port].identity); i++) {
+	for (i = 2; i < identity_size[idh_ptype]; i++) {
 		ccprintf("\t");
 		if (pe[port].identity[i])
 			ccprintf("[%d] %08x ", i, pe[port].identity[i]);

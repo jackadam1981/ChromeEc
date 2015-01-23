@@ -295,12 +295,12 @@ struct pd_policy {
  *
  * Request is simply properly formatted SVDM header
  *
- * Response is 4 data objects:
- * [0] :: SVDM header
- * [1] :: Identitiy header
- * [2] :: Cert Stat VDO
- * [3] :: (Product | Cable) VDO
- * [4] :: AMA VDO
+ * Response is minimum of 3, max 7 data objects:
+ * [0]   :: SVDM header
+ * [1]   :: Identitiy header
+ * [2]   :: Cert Stat VDO
+ * [3]   :: (Product | Cable) VDO
+ * [4-6] :: Additional Product Type VDOs (AMA, ...)
  *
  */
 #define VDO_INDEX_HDR     0
@@ -321,12 +321,15 @@ struct pd_policy {
  * <25:16>  :: SBZ
  * <15:0>   :: USB-IF assigned VID for this cable vendor
  */
-#define IDH_PTYPE_UNDEF  0
-#define IDH_PTYPE_HUB    1
-#define IDH_PTYPE_PERIPH 2
-#define IDH_PTYPE_PCABLE 3
-#define IDH_PTYPE_ACABLE 4
-#define IDH_PTYPE_AMA    5
+enum usb_pd_identity_ptype {
+	IDH_PTYPE_UNDEF  = 0,
+	IDH_PTYPE_HUB    = 1,
+	IDH_PTYPE_PERIPH = 2,
+	IDH_PTYPE_PCABLE = 3,
+	IDH_PTYPE_ACABLE = 4,
+	IDH_PTYPE_AMA    = 5,
+	IDH_PTYPE_COUNT,
+};
 
 #define VDO_IDH(usbh, usbd, ptype, is_modal, vid)		\
 	((usbh) << 31 | (usbd) << 30 | ((ptype) & 0x7) << 27	\
