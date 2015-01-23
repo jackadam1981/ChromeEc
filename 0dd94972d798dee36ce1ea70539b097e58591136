@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "4b724f59_ed91e532",
+        "filename": "board/strago/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-23T20:02:11Z",
+      "side": 1,
+      "message": "Why is this header file needed?",
+      "range": {
+        "startLine": 14,
+        "startChar": 10,
+        "endLine": 14,
+        "endChar": 16
+      },
+      "revId": "0dd94972d798dee36ce1ea70539b097e58591136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b7fdb22_cf54211d",
+        "filename": "chip/mec1322/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-23T20:02:11Z",
+      "side": 1,
+      "message": "typo: CONFIG",
+      "range": {
+        "startLine": 205,
+        "startChar": 8,
+        "endLine": 205,
+        "endChar": 28
+      },
+      "revId": "0dd94972d798dee36ce1ea70539b097e58591136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b7fdb22_ef59dd51",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-23T20:02:11Z",
+      "side": 1,
+      "message": "Why are there changes to LPC interface?  Seems unrelated to RO/RW loader architecture.",
+      "range": {
+        "startLine": 185,
+        "startChar": 12,
+        "endLine": 185,
+        "endChar": 29
+      },
+      "revId": "0dd94972d798dee36ce1ea70539b097e58591136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64a1020c_eeebff03",
         "filename": "common/firmware_image.lds.S",
         "patchSetId": 1
