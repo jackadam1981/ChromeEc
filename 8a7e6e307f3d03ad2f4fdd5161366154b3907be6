@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "abe90b2d_86850e9d",
+        "filename": "driver/battery/bq27541.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2015-01-23T22:15:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abe90b2d_66d3aae5",
+      "range": {
+        "startLine": 226,
+        "startChar": 1,
+        "endLine": 228,
+        "endChar": 27
+      },
+      "revId": "8a7e6e307f3d03ad2f4fdd5161366154b3907be6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8bee0733_227d109d",
         "filename": "driver/battery/bq27541.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-01-23T22:00:22Z",
       "side": 1,
       "message": "should we set this at the end of function ?\nso there is no race condition if somebody else checks is_present to decide if state_of_charge is valid.",
+      "range": {
+        "startLine": 231,
+        "startChar": 8,
+        "endLine": 231,
+        "endChar": 18
+      },
+      "revId": "8a7e6e307f3d03ad2f4fdd5161366154b3907be6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bf08f0f_3d5a4f7b",
+        "filename": "driver/battery/bq27541.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2015-01-23T22:15:04Z",
+      "side": 1,
+      "message": "Moved to after all information are read.",
+      "parentUuid": "8bee0733_227d109d",
       "range": {
         "startLine": 231,
         "startChar": 8,
