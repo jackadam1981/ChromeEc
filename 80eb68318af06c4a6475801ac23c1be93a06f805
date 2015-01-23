@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b58bbe4_64c98a36",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-01-23T18:56:28Z",
+      "side": 1,
+      "message": "We\u0027re skipping this num_press count. I wonder if it will now be possible for unexpected keyboard combinations to trigger override?",
+      "revId": "80eb68318af06c4a6475801ac23c1be93a06f805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
