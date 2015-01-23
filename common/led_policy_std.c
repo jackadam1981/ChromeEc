@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 The Chromium OS Authors. All rights reserved.
+/* Copyright 2015 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -91,18 +91,25 @@ void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 	/* Ignoring led_id as both leds support the same colors */
 	brightness_range[EC_LED_COLOR_BLUE] = 1;
 	brightness_range[EC_LED_COLOR_YELLOW] = 1;
+	brightness_range[EC_LED_COLOR_RED] = 1;
+	brightness_range[EC_LED_COLOR_GREEN] = 1;
 }
 
 int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 {
 	switch (led_id) {
 	case EC_LED_ID_BATTERY_LED:
-		gpio_set_level(GPIO_BAT_LED_RED,
+		if (brightness[EC_LED_COLOR_YELLOW] != 0) {
+			gpio_set_level(GPIO_BAT_LED_GREEN, BAT_LED_ON);
+			gpio_set_level(GPIO_BAT_LED_RED, BAT_LED_ON);
+		} else {
+			gpio_set_level(GPIO_BAT_LED_RED,
 			       (brightness[EC_LED_COLOR_RED] != 0) ?
 					BAT_LED_ON : BAT_LED_OFF);
-		gpio_set_level(GPIO_BAT_LED_GREEN,
+			gpio_set_level(GPIO_BAT_LED_GREEN,
 			       (brightness[EC_LED_COLOR_GREEN] != 0) ?
 					BAT_LED_ON : BAT_LED_OFF);
+		}
 		break;
 	case EC_LED_ID_POWER_LED:
 		gpio_set_level(GPIO_POWER_LED,
