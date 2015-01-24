@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b8f13ae_de9d05cd",
+        "filename": "driver/battery/ryu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-24T02:37:04Z",
+      "side": 1,
+      "message": "is one write enough?",
+      "range": {
+        "startLine": 40,
+        "startChar": 8,
+        "endLine": 40,
+        "endChar": 55
+      },
+      "revId": "ef1b8a88596184846d57c05552f545de241e2123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab858b8b_a0d1fa14",
+        "filename": "driver/battery/ryu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-24T02:37:04Z",
+      "side": 1,
+      "message": "one warning, we have similar code here on samus in the high temp case and it is causing problems for us. the problem is if the battery voltage is already \u003e 4.15V, and then the battery temp goes above 45, then we regulate down to 4.15V. this downward change in voltage cause the BQ to stop switching, and due to our fragile charging circuit this causes us to be completely unable to charge until you unplug and replug AC. ryu charging circuit probably doesn\u0027t have the same problem though, so it should be ok.",
+      "range": {
+        "startLine": 98,
+        "startChar": 4,
+        "endLine": 98,
+        "endChar": 15
+      },
+      "revId": "ef1b8a88596184846d57c05552f545de241e2123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab858b8b_c0d6fe09",
+        "filename": "driver/battery/ryu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-24T02:37:04Z",
+      "side": 1,
+      "message": "I don\u0027t think this will work as well as you want. if the requested voltage is 4.15, the battery voltage may not get to exactly 4.15 for a long time (if ever).",
+      "range": {
+        "startLine": 125,
+        "startChar": 6,
+        "endLine": 125,
+        "endChar": 32
+      },
+      "revId": "ef1b8a88596184846d57c05552f545de241e2123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab858b8b_e0db022f",
+        "filename": "driver/battery/ryu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-24T02:37:04Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 133,
+        "startChar": 6,
+        "endLine": 133,
+        "endChar": 32
+      },
+      "revId": "ef1b8a88596184846d57c05552f545de241e2123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
