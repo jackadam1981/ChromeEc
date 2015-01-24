@@ -16,6 +16,24 @@
       "revId": "80eb68318af06c4a6475801ac23c1be93a06f805",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bcab3df_ef23f1cd",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-24T01:53:21Z",
+      "side": 1,
+      "message": "no, this doesn\u0027t mean that an unexpected combo could trigger it. it just means that if other buttons are pressed in addition to ctrl+search+0|1|2, then it will still trigger.\n\nthis check is harder to do for our charge override case because two of our keys are in the same column. if it really matters, we can loop over all cols and rows and make sure only 3 keys are pressed.",
+      "parentUuid": "2b58bbe4_64c98a36",
+      "revId": "80eb68318af06c4a6475801ac23c1be93a06f805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
