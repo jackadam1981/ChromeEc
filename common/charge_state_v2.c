@@ -755,13 +755,13 @@ void charger_task(void)
 		 * without getting full (CONFIG_CHARGER_TIMEOUT_HOURS).
 		 */
 
+wait_for_it:
 #ifdef CONFIG_CHARGER_PROFILE_OVERRIDE
 		sleep_usec = charger_profile_override(&curr);
 		if (sleep_usec < 0)
 			problem(PR_CUSTOM, sleep_usec);
 #endif
 
-wait_for_it:
 		/* Keep the AP informed */
 		if (need_static)
 			need_static = update_static_battery_info();
