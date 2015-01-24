@@ -34,6 +34,24 @@
       "revId": "80eb68318af06c4a6475801ac23c1be93a06f805",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb64e3c9_3d9fdbf2",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-24T02:08:03Z",
+      "side": 1,
+      "message": "I tested other chrome shortcuts, like alt+1|2, and they also still take affect when you are pressing a third button (as long as that button isn\u0027t a modifier). So, I think as is is the most appropriate.",
+      "parentUuid": "6bcab3df_ef23f1cd",
+      "revId": "80eb68318af06c4a6475801ac23c1be93a06f805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
