@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "8b8a879b_6231b808",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-25T22:49:15Z",
+      "side": 1,
+      "message": "Thanks for doing extensive testing.\n\nBy the way, this timing is probably device-dependant : the delay between VBUS and enumeration depends on the delay necessary for the device to put its pull-up on DP/DM  ?",
+      "parentUuid": "cbdb9fab_4ceccf98",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 14
+      },
+      "revId": "93d52a124483fefcd894892116518424c0e48bd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab858b8b_63fffcbc",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
