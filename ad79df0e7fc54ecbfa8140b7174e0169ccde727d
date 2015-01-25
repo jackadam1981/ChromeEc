@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b8a879b_2237b000",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-25T22:44:03Z",
+      "side": 1,
+      "message": "this goto is no longer useful ?",
+      "range": {
+        "startLine": 750,
+        "startChar": 8,
+        "endLine": 750,
+        "endChar": 19
+      },
+      "revId": "ad79df0e7fc54ecbfa8140b7174e0169ccde727d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
