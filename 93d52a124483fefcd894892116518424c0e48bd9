@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cbdb9fab_4ceccf98",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-01-25T17:47:15Z",
+      "side": 1,
+      "message": "3.0 key does enumerate as a superspeed device for each time I tested 20 \u003c # inserts \u003c 100.\n\nI did not test the actual bandwidth however.\n\nAdded a bit more verbiage in testing section to clarify enumeration.",
+      "parentUuid": "8b8a879b_1f04c387",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 14
+      },
+      "revId": "93d52a124483fefcd894892116518424c0e48bd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab858b8b_63fffcbc",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
