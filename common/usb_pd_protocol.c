@@ -1921,10 +1921,6 @@ void pd_task(void)
 				pd[port].polarity =
 					DFP_GET_POLARITY(cc1_volt, cc2_volt);
 				pd_select_polarity(port, pd[port].polarity);
-#ifdef CONFIG_USBC_SS_MUX
-				board_set_usb_mux(port, TYPEC_MUX_USB,
-						  pd[port].polarity);
-#endif
 #ifndef CONFIG_USBC_BACKWARDS_COMPATIBLE_DFP
 				/* Enable VBUS */
 				if (pd_set_power_supply_ready(port)) {
@@ -2023,6 +2019,10 @@ void pd_task(void)
 			break;
 		case PD_STATE_SRC_DISCOVERY:
 			if (pd[port].last_state != pd[port].task_state) {
+#ifdef CONFIG_USBC_SS_MUX
+				board_set_usb_mux(port, TYPEC_MUX_USB,
+						  pd[port].polarity);
+#endif
 				/*
 				 * If we have had PD connection with this port
 				 * partner, then start NoResponseTimer.
