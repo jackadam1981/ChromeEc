@@ -45,6 +45,30 @@
       "revId": "fe51137e4536c374f58d691e299f2f99bf96a360",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab858b8b_c304480e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2024,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-25T19:03:50Z",
+      "side": 1,
+      "message": "also does this actually fix the problem for good? i was under the impression that swinging the muxes for USB for hoho and dingdong can also cause this problem.",
+      "parentUuid": "8b8a879b_c21e0489",
+      "range": {
+        "startLine": 2023,
+        "startChar": 4,
+        "endLine": 2024,
+        "endChar": 27
+      },
+      "revId": "fe51137e4536c374f58d691e299f2f99bf96a360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
