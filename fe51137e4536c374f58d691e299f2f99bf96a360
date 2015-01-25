@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b8f13ae_e475ceb9",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1930,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-25T19:01:40Z",
+      "side": 1,
+      "message": "this also isn\u0027t needed then",
+      "range": {
+        "startLine": 1927,
+        "startChar": 0,
+        "endLine": 1930,
+        "endChar": 6
+      },
+      "revId": "fe51137e4536c374f58d691e299f2f99bf96a360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b8a879b_c21e0489",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2024,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-25T19:01:40Z",
+      "side": 1,
+      "message": "there are multiple ways to get to SRC_DISCOVERY, including after hard reset recovery, after a power swap, after a soft reset. Do you really want to do this in all of those cases? At a minimum we should test these transitions and check where we should be turning the muxes off also.",
+      "range": {
+        "startLine": 2023,
+        "startChar": 4,
+        "endLine": 2024,
+        "endChar": 27
+      },
+      "revId": "fe51137e4536c374f58d691e299f2f99bf96a360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
