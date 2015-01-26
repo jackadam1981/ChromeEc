@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ab2cab7b_0b2d81ff",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-01-26T23:12:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbdb9fab_92d6e208",
+      "range": {
+        "startLine": 284,
+        "startChar": 1,
+        "endLine": 286,
+        "endChar": 30
+      },
+      "revId": "60ae07759c12cff9efb37e8d226d519426ba441b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b9ecfd1_f62c7637",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d7e7c792_026daa9a",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-01-26T23:12:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b9ecfd1_f62c7637",
+      "range": {
+        "startLine": 293,
+        "startChar": 1,
+        "endLine": 295,
+        "endChar": 11
+      },
+      "revId": "60ae07759c12cff9efb37e8d226d519426ba441b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab2cab7b_68928362",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2015-01-26T19:57:17Z",
       "side": 1,
       "message": "is there a bug open for this?",
+      "range": {
+        "startLine": 688,
+        "startChar": 3,
+        "endLine": 688,
+        "endChar": 16
+      },
+      "revId": "60ae07759c12cff9efb37e8d226d519426ba441b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7e7c792_02548aba",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-01-26T23:12:50Z",
+      "side": 1,
+      "message": "No ... will open one.",
+      "parentUuid": "ab2cab7b_68928362",
       "range": {
         "startLine": 688,
         "startChar": 3,
