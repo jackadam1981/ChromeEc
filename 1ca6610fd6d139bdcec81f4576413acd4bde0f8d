@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7e7c792_45097ca3",
+        "filename": "common/pd_log.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-26T23:37:17Z",
+      "side": 1,
+      "message": "i don\u0027t think i would change the name of the variable because we use the name size_port in a bunch of other places, unless you want to change all those places too, i would be consistent with the name.",
+      "range": {
+        "startLine": 149,
+        "startChar": 9,
+        "endLine": 149,
+        "endChar": 18
+      },
+      "revId": "1ca6610fd6d139bdcec81f4576413acd4bde0f8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
