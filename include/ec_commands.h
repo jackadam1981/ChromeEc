@@ -2886,7 +2886,8 @@ struct ec_response_pd_log {
 #define PD_EVENT_ACC_BASE       0x20
 #define PD_EVENT_ACC_RW_FAIL   (PD_EVENT_ACC_BASE+0)
 #define PD_EVENT_ACC_RW_ERASE  (PD_EVENT_ACC_BASE+1)
-#define PD_EVENT_ACC_GFU_ENTER (PD_EVENT_ACC_BASE+2)
+#define PD_EVENT_ACC_DP_MODE   (PD_EVENT_ACC_BASE+2)
+#define PD_EVENT_ACC_CODEC     (PD_EVENT_ACC_BASE+3)
 /* PD power supply events */
 #define PD_EVENT_PS_BASE        0x40
 #define PD_EVENT_PS_FAULT      (PD_EVENT_PS_BASE+0)
