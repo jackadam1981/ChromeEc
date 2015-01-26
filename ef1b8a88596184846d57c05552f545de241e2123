@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ab2cab7b_6e052bb1",
+        "filename": "driver/battery/ryu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2015-01-26T22:27:54Z",
+      "side": 1,
+      "message": "Yes, the spec says only one write is needed.",
+      "parentUuid": "6b8f13ae_de9d05cd",
+      "range": {
+        "startLine": 40,
+        "startChar": 8,
+        "endLine": 40,
+        "endChar": 55
+      },
+      "revId": "ef1b8a88596184846d57c05552f545de241e2123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab858b8b_a0d1fa14",
         "filename": "driver/battery/ryu.c",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "ab2cab7b_ae372381",
+        "filename": "driver/battery/ryu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2015-01-26T22:27:54Z",
+      "side": 1,
+      "message": "I\u0027ll lower the charging voltage and see if bad things happen.",
+      "parentUuid": "ab858b8b_a0d1fa14",
+      "range": {
+        "startLine": 98,
+        "startChar": 4,
+        "endLine": 98,
+        "endChar": 15
+      },
+      "revId": "ef1b8a88596184846d57c05552f545de241e2123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab858b8b_c0d6fe09",
         "filename": "driver/battery/ryu.c",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2015-01-24T02:37:04Z",
       "side": 1,
       "message": "I don\u0027t think this will work as well as you want. if the requested voltage is 4.15, the battery voltage may not get to exactly 4.15 for a long time (if ever).",
+      "range": {
+        "startLine": 125,
+        "startChar": 6,
+        "endLine": 125,
+        "endChar": 32
+      },
+      "revId": "ef1b8a88596184846d57c05552f545de241e2123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7e7c792_62b0f6de",
+        "filename": "driver/battery/ryu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2015-01-26T22:27:54Z",
+      "side": 1,
+      "message": "Thanks for catching this! I think we should be charging at 4.35V but changing current limit based on current voltage.",
+      "parentUuid": "ab858b8b_c0d6fe09",
       "range": {
         "startLine": 125,
         "startChar": 6,
