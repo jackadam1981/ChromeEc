@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab2cab7b_f143bae0",
+        "filename": "board/dingdong/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-26T23:42:24Z",
+      "side": 1,
+      "message": "I don\u0027t think we need to log this. if GFU mode is not entered we can\u0027t get the log information anyway.",
+      "range": {
+        "startLine": 204,
+        "startChar": 15,
+        "endLine": 204,
+        "endChar": 36
+      },
+      "revId": "1fc1093ed02e7e69aa56c2e3f85098539ad7639e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab2cab7b_316d526f",
+        "filename": "board/hoho/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-26T23:42:24Z",
+      "side": 1,
+      "message": "is it better to log the event only if it fails? so that we don\u0027t cloud the event log.",
+      "range": {
+        "startLine": 146,
+        "startChar": 2,
+        "endLine": 148,
+        "endChar": 18
+      },
+      "revId": "1fc1093ed02e7e69aa56c2e3f85098539ad7639e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
