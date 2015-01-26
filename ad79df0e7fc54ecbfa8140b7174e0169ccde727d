@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ab53cbfb_f0ef400f",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-26T16:24:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b6f77ad_93a37c91",
+      "range": {
+        "startLine": 750,
+        "startChar": 8,
+        "endLine": 750,
+        "endChar": 19
+      },
+      "revId": "ad79df0e7fc54ecbfa8140b7174e0169ccde727d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab5e6bfb_9e5e1de9",
         "filename": "driver/battery/samus.c",
         "patchSetId": 3
@@ -60,6 +84,30 @@
       "writtenOn": "2015-01-26T15:56:34Z",
       "side": 1,
       "message": "hm... it\u0027s not checking BATT_FLAG_BAD_VOLTAGE here before using the voltage, which could cause problems. Looks like I need to add static variable to keep track of last good voltage reading.",
+      "range": {
+        "startLine": 166,
+        "startChar": 28,
+        "endLine": 166,
+        "endChar": 46
+      },
+      "revId": "ad79df0e7fc54ecbfa8140b7174e0169ccde727d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab5e6bfb_3ef27177",
+        "filename": "driver/battery/samus.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-26T16:24:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab5e6bfb_9e5e1de9",
       "range": {
         "startLine": 166,
         "startChar": 28,
