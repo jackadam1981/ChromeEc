@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b47db3f_f21740b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2015-01-27T19:23:11Z",
+      "side": 1,
+      "message": "In the very least we need some other tests, like:\n\n* Use \"i2cset -f -y 0 0x1b 0x21 0x0f\"\n* Power up system: it should power back up\n* Use \"i2cset -f -y 0 0x1b 0x21 0x0f\"\n* Press refresh-power: system should reboot\n* Use \"i2cset -f -y 0 0x1b 0x2a 0x00\"\n* Shut down and power back up.\n* Use \"i2cget -f -y 0 0x1b 0x2a\".  Confirm back to 0xff.\n* Use \"i2cset -f -y 0 0x1b 0x2a 0x00\"\n* Press refresh-power: system should reboot\n* Use \"i2cget -f -y 0 0x1b 0x2a\".  Confirm back to 0xff.\n\nIf all of those tests pass then I will be satisfied.  ...but we need to figure out what boards had what version of rk808 and why we weren\u0027t informed of this change earlier.",
+      "revId": "612585d3bb543c6d67cbc916c7fa6cffc9ef418e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
