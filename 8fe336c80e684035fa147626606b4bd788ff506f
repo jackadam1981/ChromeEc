@@ -22,6 +22,30 @@
       "revId": "8fe336c80e684035fa147626606b4bd788ff506f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b715f330_a22604da",
+        "filename": "board/speedy/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-27T20:21:53Z",
+      "side": 1,
+      "message": "1792 and 1856 are both nice round numbers in hex.  I suspect it has to do with how the charger chip is configured, that it can only handle discrete steps.",
+      "parentUuid": "d7e7c792_e8ee278e",
+      "range": {
+        "startLine": 86,
+        "startChar": 37,
+        "endLine": 86,
+        "endChar": 41
+      },
+      "revId": "8fe336c80e684035fa147626606b4bd788ff506f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
