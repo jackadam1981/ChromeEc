@@ -8,6 +8,7 @@
  * Drive high in S5-S0 when AC_PRESENT is high, otherwise drive low.
  */
 
+#include "bq24773.h"
 #include "charger.h"
 #include "chipset.h"
 #include "common.h"
@@ -16,6 +17,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "i2c.h"
 #include "system.h"
 #include "task.h"
 #include "util.h"
@@ -64,6 +66,54 @@ static void extpower_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, extpower_init, HOOK_PRIO_DEFAULT);
 
+static void check_charge_wedged(void)
+{
+	static enum {
+		CHG_WEDGE_IDLE,
+		CHG_WEDGE_RECOVER,
+	} state = CHG_WEDGE_IDLE;
+	int rv, prochot_status;
+	int16_t chg_override;
+
+	switch (state) {
+	case CHG_WEDGE_IDLE:
+		/* Check PROCHOT warning */
+		rv = i2c_read8(I2C_PORT_CHARGER, BQ24773_ADDR,
+				BQ24773_PROCHOT_STATUS, &prochot_status);
+		if (rv)
+			break;
+
+		/*
+		 * If PROCHOT is asserted, stop charging to force PD ports
+		 * to negotiate down to 5V to recover
+		 */
+		if(prochot_status) {
+			chg_override = -2;
+			pd_host_command(EC_CMD_PD_CHARGE_PORT_OVERRIDE, 0,
+					&chg_override, 2, NULL, 0);
+			state = CHG_WEDGE_RECOVER;
+		}
+		break;
+	case CHG_WEDGE_RECOVER:
+		/* Disable override to allow PD ports to negotiate back up */
+		chg_override = -1;
+		pd_host_command(EC_CMD_PD_CHARGE_PORT_OVERRIDE, 0,
+				&chg_override, 2, NULL, 0);
+
+		/* Read PROCHOT status to clear it */
+		rv = i2c_read8(I2C_PORT_CHARGER, BQ24773_ADDR,
+				BQ24773_PROCHOT_STATUS, &prochot_status);
+
+		state = CHG_WEDGE_IDLE;
+		break;
+	}
+
+	hook_call_deferred(check_charge_wedged, state == CHG_WEDGE_IDLE ?
+							 10 * SECOND :
+							 2  * SECOND);
+}
+DECLARE_DEFERRED(check_charge_wedged);
+
 static void extpower_board_hacks(int extpower)
 {
 	static int extpower_prev;
@@ -109,6 +159,8 @@ void extpower_task(void)
 {
 	int extpower = extpower_is_present();
 	extpower_board_hacks(extpower);
+
+	hook_call_deferred(check_charge_wedged, 10 * SECOND);
 
 	/* Enable backboost detection interrupt */
 	gpio_enable_interrupt(GPIO_BKBOOST_DET);

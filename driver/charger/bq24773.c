@@ -184,9 +184,12 @@ int charger_post_init(void)
 	if (rv)
 		return rv;
 
-	/* Turn off PROCHOT warning */
-	rv = i2c_write8(I2C_PORT_CHARGER, BQ24773_ADDR,
-			BQ24773_PROCHOT_OPTION1, 0);
+	/* Turn on PROCHOT warning */
+	rv = i2c_write16(I2C_PORT_CHARGER, BQ24773_ADDR,
+			 BQ24773_PROCHOT_OPTION1, 0x8120);
+	/* Set PROCHOT ICRIT warning when IADP is >125% of IDPM */
+	rv = i2c_write16(I2C_PORT_CHARGER, BQ24773_ADDR,
+			 BQ24773_PROCHOT_OPTION0, 0x2354);
 
 #ifdef CONFIG_CHARGER_ILIM_PIN_DISABLED
 	/* Read the external ILIM pin enabled flag. */
