@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b232f8e_8b7c11df",
+        "filename": "driver/charger/bq24773.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-27T19:10:53Z",
+      "side": 1,
+      "message": "All of these options also add so many #ifdefs to the charger implementation that it becomes hard to read.",
+      "range": {
+        "startLine": 178,
+        "startChar": 12,
+        "endLine": 178,
+        "endChar": 49
+      },
+      "revId": "d7230107d6c2f0395c55b009ec02c859c60a0289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b9ecfd1_42ef80c0",
+        "filename": "include/config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-27T19:10:53Z",
+      "side": 1,
+      "message": "This change introduces many, many config options to config.h.  While some are fairly generic (CONFIG_CHARGER_MAXIMUM_CHARGE_VOLTAGE) many appear very specific to BQ24773.  I\u0027d prefer not to fill config.h with so many chip-specific flags, or soon config.h will be so large as to be unwieldy.",
+      "range": {
+        "startLine": 222,
+        "startChar": 3,
+        "endLine": 222,
+        "endChar": 8
+      },
+      "revId": "d7230107d6c2f0395c55b009ec02c859c60a0289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57fbd733_3ee7a9ee",
+        "filename": "include/config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-27T19:10:53Z",
+      "side": 1,
+      "message": "...well, then what?  Comment appears truncated.",
+      "range": {
+        "startLine": 250,
+        "startChar": 42,
+        "endLine": 250,
+        "endChar": 43
+      },
+      "revId": "d7230107d6c2f0395c55b009ec02c859c60a0289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
