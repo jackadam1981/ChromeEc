@@ -22,6 +22,30 @@
       "revId": "4b7b75bbb74895bed366092e11480ba1e51d461d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "770ffb24_f7be00b1",
+        "filename": "driver/battery/ryu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2015-01-27T19:33:41Z",
+      "side": 1,
+      "message": "Added battery flags check.",
+      "parentUuid": "2b47db3f_52c2d434",
+      "range": {
+        "startLine": 58,
+        "startChar": 14,
+        "endLine": 58,
+        "endChar": 36
+      },
+      "revId": "4b7b75bbb74895bed366092e11480ba1e51d461d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
