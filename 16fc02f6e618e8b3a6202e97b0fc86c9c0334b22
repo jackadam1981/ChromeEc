@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b715f330_426de8eb",
+        "filename": "board/minnie/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-27T20:40:58Z",
+      "side": 1,
+      "message": "Seems like this file only changed whitespace?",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 1
+      },
+      "revId": "16fc02f6e618e8b3a6202e97b0fc86c9c0334b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "970aaf12_9b6daf6a",
+        "filename": "driver/battery/bq27541.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-27T20:40:58Z",
+      "side": 1,
+      "message": "This seems like the charging protocol specific to one board\u0027s battery, not a common change.\n\nPerhaps we need something like CONFIG_BATTERY_OVERRIDE_PARAMS reimplemented for charge state v2.",
+      "range": {
+        "startLine": 262,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 2
+      },
+      "revId": "16fc02f6e618e8b3a6202e97b0fc86c9c0334b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
