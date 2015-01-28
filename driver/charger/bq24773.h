@@ -121,4 +121,8 @@ static inline int raw_write16(int offset, int value)
 }
 
 void charger_battery_present_interrupt(enum gpio_signal signal);
+
+#ifdef CONFIG_CHARGER_BOARD_SPECIFIC_INIT
+int board_init_charger(void);
+#endif
 #endif /* __CROS_EC_BQ24773_H */

@@ -284,6 +284,9 @@
 #undef CONFIG_CHARGER_ISL9237
 #undef CONFIG_CHARGER_TPS65090  /* Note: does not use CONFIG_CHARGER */
 
+/* Board specific initialize for charger IC. */
+#undef CONFIG_CHARGER_BOARD_SPECIFIC_INIT
+
 /*
  * BQ2589x IR Compensation settings.
  * Should be the combination of BQ2589X_IR_TREG_xxxC, BQ2589X_IR_VCLAMP_yyyMV
