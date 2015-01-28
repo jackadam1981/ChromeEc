@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b73a53c3_d4c77214",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-28T00:10:28Z",
+      "side": 1,
+      "message": "i\u0027m not quite convinced we should inhibit the power button in S3. in S3, if the battery is too low, the user can still wake up the machine by pressing any other key but the power button. doesn\u0027t that seem odd?",
+      "range": {
+        "startLine": 124,
+        "startChar": 6,
+        "endLine": 124,
+        "endChar": 40
+      },
+      "revId": "b60f296797f73d6301b9b28ac2e68e9898f975d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
