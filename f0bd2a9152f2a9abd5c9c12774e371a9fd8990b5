@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17a15f5e_bc9c014b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2015-01-28T04:17:03Z",
+      "side": 1,
+      "message": "Why?",
+      "range": {
+        "startLine": 9,
+        "startChar": 8,
+        "endLine": 9,
+        "endChar": 62
+      },
+      "revId": "f0bd2a9152f2a9abd5c9c12774e371a9fd8990b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17a15f5e_9c9fc53f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2015-01-28T04:17:03Z",
+      "side": 1,
+      "message": "That bug is about the 95% battery threshold.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 27
+      },
+      "revId": "f0bd2a9152f2a9abd5c9c12774e371a9fd8990b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57975702_be1959f3",
+        "filename": "board/mighty/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2015-01-28T04:17:03Z",
+      "side": 1,
+      "message": "You don\u0027t need any undefs, they\u0027re not defined by default.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 35
+      },
+      "revId": "f0bd2a9152f2a9abd5c9c12774e371a9fd8990b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3794a3fe_bd82bf11",
+        "filename": "board/mighty/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2015-01-28T04:17:03Z",
+      "side": 1,
+      "message": "Why did you change this? Do the LED pins need to be floating when off?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 52
+      },
+      "revId": "f0bd2a9152f2a9abd5c9c12774e371a9fd8990b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3794a3fe_5d0ffb2b",
+        "filename": "board/mighty/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2015-01-28T04:17:03Z",
+      "side": 1,
+      "message": "The BUG you linked complains about this, yet your CL does nothing to fix it.",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 33
+      },
+      "revId": "f0bd2a9152f2a9abd5c9c12774e371a9fd8990b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57975702_fe36015f",
+        "filename": "board/mighty/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2015-01-28T04:17:03Z",
+      "side": 1,
+      "message": "This should probably be green, to show the AC is plugged in. Or else the user will think their AC adaptor is broken.",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 36
+      },
+      "revId": "f0bd2a9152f2a9abd5c9c12774e371a9fd8990b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
