@@ -8,6 +8,11 @@
 #ifndef __BOARD_H
 #define __BOARD_H
 
+/* Remove unnecessary function for reduce the flash size */
+#undef CONFIG_CONSOLE_CMDHELP
+#undef CONFIG_TASK_PROFILING
+#undef CONFIG_WATCHDOG_HELP
+
 /* Optional features */
 #define CONFIG_AP_HANG_DETECT
 #define CONFIG_BATTERY_CUT_OFF
