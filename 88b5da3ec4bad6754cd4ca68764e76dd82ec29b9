@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7cbeb3a_8b120d7d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2015-01-28T16:49:35Z",
+      "side": 1,
+      "message": "chrome-os-partner:36042",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "88b5da3ec4bad6754cd4ca68764e76dd82ec29b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17cf9f48_8c430730",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2015-01-28T16:49:35Z",
+      "side": 1,
+      "message": "I don\u0027t know firmware policies, but should this be on ToT too?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 29
+      },
+      "revId": "88b5da3ec4bad6754cd4ca68764e76dd82ec29b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7cbeb3a_ab0fc953",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2015-01-28T16:49:35Z",
+      "side": 1,
+      "message": "Where is Signed-off-by?  The lack of SoB implies that you didn\u0027t run upload hooks, which is not good.",
+      "revId": "88b5da3ec4bad6754cd4ca68764e76dd82ec29b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7cbeb3a_4b3c25f5",
+        "filename": "board/minnie/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2015-01-28T16:49:35Z",
+      "side": 1,
+      "message": "Whitespace damage implies that you didn\u0027t run upload hooks.  That\u0027s not good.",
+      "revId": "88b5da3ec4bad6754cd4ca68764e76dd82ec29b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
