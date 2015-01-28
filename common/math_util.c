@@ -26,18 +26,38 @@ static const float cos_lut[] = {
 	-0.86603, -0.90631, -0.93969, -0.96593, -0.98481,
 	-0.99619, -1.00000,
 };
+#else
+/* If the chip doesn't support FPU, use integer table */
+static const int cos_lut[] = {
+	100,  99,  98,  96,  93,
+	 90,  86,  81,  76,  70,
+	 64,  57,  50,  42,  34,
+	 25,  17,   8,   0,  -8,
+	-17, -25, -34, -42, -50,
+	-57, -64, -70, -76, -81,
+	-86, -90, -93, -96, -98,
+	-99, -100,
+};
+#endif
+
 BUILD_ASSERT(ARRAY_SIZE(cos_lut) == COSINE_LUT_SIZE);
 
-
-float arc_cos(float x)
+angle_t arc_cos(cos_t x)
 {
 	int i;
 
 	/* Cap x if out of range. */
+#ifdef CONFIG_FPU
 	if (x < -1.0)
 		x = -1.0;
 	else if (x > 1.0)
 		x = 1.0;
+#else
+	if (x < -100)
+		x = -100;
+	else if (x > 100)
+		x = 100;
+#endif
 
 	/*
 	 * Increment through lookup table to find index and then linearly
@@ -47,7 +67,11 @@ float arc_cos(float x)
 	for (i = 0; i < COSINE_LUT_SIZE-1; i++)
 		if (x >= cos_lut[i+1])
 			return COSINE_LUT_INCR_DEG *
+#ifdef CONFIG_FPU
 			(i + (cos_lut[i] - x) / (cos_lut[i] - cos_lut[i+1]));
+#else
+			(i * 100 + 100 * (cos_lut[i] - x) / (cos_lut[i] - cos_lut[i+1])) / 100;
+#endif
 
 	/*
 	 * Shouldn't be possible to get here because inputs are clipped to
@@ -59,15 +83,36 @@ float arc_cos(float x)
 	return 0;
 }
 
+#ifndef CONFIG_FPU
+static int int_sqrt(int value)
+{
+	int i = 0;
+
+	for (i = 1; ; i++)
+	{
+		if (i * i >= value)
+		{
+			break;
+		}
+	}
+
+	return i - 1;
+}
+#endif
+
 int vector_magnitude(const vector_3_t v)
 {
+#ifdef CONFIG_FPU
 	return sqrtf(SQ(v[0]) + SQ(v[1]) + SQ(v[2]));
+#else
+	return int_sqrt(SQ(v[0]) + SQ(v[1]) + SQ(v[2]));
+#endif
 }
 
-float cosine_of_angle_diff(const vector_3_t v1, const vector_3_t v2)
+cos_t cosine_of_angle_diff(const vector_3_t v1, const vector_3_t v2)
 {
 	int dotproduct;
-	float denominator;
+	cos_t denominator;
 
 	/*
 	 * Angle between two vectors is acos(A dot B / |A|*|B|). To return
@@ -79,12 +124,19 @@ float cosine_of_angle_diff(const vector_3_t v1, const vector_3_t v2)
 	denominator = vector_magnitude(v1) * vector_magnitude(v2);
 
 	/* Check for divide by 0 although extremely unlikely. */
+#ifdef CONFIG_FPU
 	if (ABS(denominator) < 0.01F)
-		return 0.0;
-
-	return (float)dotproduct / (denominator);
-}
+#else
+	if (denominator == 0)
 #endif
+		return 0;
+
+#ifdef CONFIG_FPU
+	return (cos_t)dotproduct / (denominator);
+#else
+	return 100 * dotproduct / denominator;
+#endif
+}
 
 /*
  * rotate a vector v

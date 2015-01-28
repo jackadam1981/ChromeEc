@@ -10,8 +10,12 @@
 
 #ifdef CONFIG_FPU
 typedef float matrix_3x3_t[3][3];
+typedef float cos_t;
+typedef float angle_t;
 #else
 typedef int matrix_3x3_t[3][3];
+typedef int cos_t;
+typedef int angle_t;
 #endif
 
 typedef int vector_3_t[3];
@@ -21,8 +25,6 @@ typedef int vector_3_t[3];
 #define SQ(x) ((x) * (x))
 #define ABS(x) ((x) >= 0 ? (x) : -(x))
 
-#ifdef CONFIG_FPU
-
 /**
  * Find acos(x) in degrees. Argument is clipped to [-1.0, 1.0].
  *
@@ -30,7 +32,7 @@ typedef int vector_3_t[3];
  *
  * @return acos(x) in degrees.
  */
-float arc_cos(float x);
+angle_t arc_cos(cos_t x);
 
 /**
  * Find the cosine of the angle between two vectors.
@@ -40,9 +42,7 @@ float arc_cos(float x);
  *
  * @return Cosine of the angle between v1 and v2.
  */
-float cosine_of_angle_diff(const vector_3_t v1, const vector_3_t v2);
-
-#endif
+cos_t cosine_of_angle_diff(const vector_3_t v1, const vector_3_t v2);
 
 /**
  * Rotate vector v by rotation matrix R.
