@@ -32,7 +32,7 @@ enum {
 };
 
 /* Current acceleration vectors and current lid angle. */
-static float lid_angle_deg;
+static angle_t lid_angle_deg;
 static int lid_angle_is_reliable;
 
 /*
@@ -41,8 +41,11 @@ static int lid_angle_is_reliable;
  * efficiency, value is given unit-less, so if you want the threshold to be
  * at 15 degrees, the value would be cos(15 deg) = 0.96593.
  */
+#ifdef CONFIG_FPU
 #define HINGE_ALIGNED_WITH_GRAVITY_THRESHOLD 0.96593F
-
+#else
+#define HINGE_ALIGNED_WITH_GRAVITY_THRESHOLD 96
+#endif
 
 /* Pointer to constant acceleration orientation data. */
 const struct accel_orientation * const p_acc_orient = &acc_orient;
@@ -61,11 +64,11 @@ struct motion_sensor_t *accel_lid = &motion_sensors[CONFIG_SENSOR_LID];
  * @return flag representing if resulting lid angle calculation is reliable.
  */
 static int calculate_lid_angle(const vector_3_t base, const vector_3_t lid,
-		float *lid_angle)
+		angle_t *lid_angle)
 {
 	vector_3_t v;
-	float ang_lid_to_base, ang_lid_90, ang_lid_270;
-	float lid_to_base, base_to_hinge;
+	angle_t ang_lid_to_base , ang_lid_90, ang_lid_270;
+	cos_t lid_to_base, base_to_hinge;
 	int reliable = 1;
 
 	/*
@@ -87,11 +90,13 @@ static int calculate_lid_angle(const vector_3_t base, const vector_3_t lid,
 
 	base_to_hinge = SQ(base_to_hinge);
 
+#ifdef CONFIG_FPU
 	/* Check divide by 0. */
 	if (ABS(1.0F - base_to_hinge) < 0.01F) {
 		*lid_angle = 0.0;
 		return 0;
 	}
+#endif
 
 	ang_lid_to_base = arc_cos(
 			(lid_to_base - base_to_hinge) / (1 - base_to_hinge));
@@ -137,7 +142,11 @@ int motion_lid_get_angle(void)
 		 * Round to nearest int by adding 0.5. Note, only works because
 		 * lid angle is known to be positive.
 		 */
+#ifdef CONFIG_FPU
 		return (int)(lid_angle_deg + 0.5F);
+#else
+		return lid_angle_deg;
+#endif
 	else
 		return (int)LID_ANGLE_UNRELIABLE;
 }
