@@ -220,6 +220,9 @@ int charger_set_voltage(int voltage)
 /* Charging power state initialization */
 int charger_post_init(void)
 {
+#ifdef CONFIG_CHARGER_BOARD_SPECIFIC_INIT
+	return board_init_charger();
+#else
 	int rv, option;
 #ifdef CONFIG_CHARGER_ILIM_PIN_DISABLED
 	int option2;
@@ -279,6 +282,7 @@ int charger_post_init(void)
 	return rv;
 #else
 	return EC_SUCCESS;
+#endif
 #endif
 }
 

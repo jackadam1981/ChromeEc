@@ -297,6 +297,9 @@
  */
 #undef CONFIG_CHARGER_BQ2589X_BOOST
 
+/* Board specific initialize for charger IC. */
+#undef CONFIG_CHARGER_BOARD_SPECIFIC_INIT
+
 /*
  * Board specific charging current limit, in mA.  If defined, the charge state
  * machine will not allow the battery to request more current than this.
