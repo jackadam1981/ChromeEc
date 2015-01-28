@@ -22,6 +22,30 @@
       "revId": "b60f296797f73d6301b9b28ac2e68e9898f975d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b73a53c3_d7bbf4be",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-28T00:31:09Z",
+      "side": 1,
+      "message": "so, change from\n\n!chipset_in_state(CHIPSET_STATE_ON)\n\nto\n\nchipset_in_state(CHIPSET_STATE_ANY_OFF)",
+      "parentUuid": "b73a53c3_d4c77214",
+      "range": {
+        "startLine": 124,
+        "startChar": 6,
+        "endLine": 124,
+        "endChar": 40
+      },
+      "revId": "b60f296797f73d6301b9b28ac2e68e9898f975d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
