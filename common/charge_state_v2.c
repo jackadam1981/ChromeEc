@@ -606,6 +606,10 @@ void charger_task(void)
 					else
 						prev_ac = curr.ac;
 				}
+				rv = board_charger_post_init();
+				if (rv != EC_SUCCESS) {
+					problem(PR_POST_INIT, rv);
+				}
 			} else {
 				/* Some things are only meaningful on AC */
 				state_machine_force_idle = 0;
@@ -986,6 +990,11 @@ int charge_set_input_current_limit(int ma)
 #endif
 	curr.desired_input_current = ma;
 	return charger_set_input_current(ma);
+}
+
+int board_charger_post_init(void)
+{
+	return EC_SUCCESS;
 }
 
 /*****************************************************************************/
