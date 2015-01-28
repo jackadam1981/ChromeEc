@@ -46,6 +46,30 @@
       "revId": "8fe336c80e684035fa147626606b4bd788ff506f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7768bc4_13c16c03",
+        "filename": "board/speedy/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2015-01-28T17:31:39Z",
+      "side": 1,
+      "message": "Because the BQ24715 input current step is 64mA\n1856mA is the closest value to 1900mA.",
+      "parentUuid": "b715f330_a22604da",
+      "range": {
+        "startLine": 86,
+        "startChar": 37,
+        "endLine": 86,
+        "endChar": 41
+      },
+      "revId": "8fe336c80e684035fa147626606b4bd788ff506f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
