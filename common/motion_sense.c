@@ -285,6 +285,9 @@ void motion_sense_task(void)
 		gesture_calc();
 #endif
 #ifdef CONFIG_LID_ANGLE
+		// Maybe should just check if all sensors involved in lid
+		// angle calc were update?  Check if ACCEL in BASE and an
+		// ACCEL in LID are both updated.
 		if (rd_cnt == motion_sensor_count)
 			motion_lid_calc();
 #endif
@@ -299,7 +302,7 @@ void motion_sense_task(void)
 					sensor->xyz[Z]);
 			}
 #ifdef CONFIG_LID_ANGLE
-			CPRINTF("a=%-6.1d", 10 * motion_lid_get_angle());
+			CPRINTF("a=%-4d", motion_lid_get_angle());
 #endif
 			CPRINTF("]\n");
 		}
@@ -779,4 +782,68 @@ DECLARE_CONSOLE_COMMAND(accelint, command_accelerometer_interrupt,
 
 #endif /* CONFIG_CMD_ACCELS */
 
+// TEMP CODE!
 
+int vector_magnitude(const vector_3_t v);
+
+static int command_fp(int argc, char **argv)
+{
+	char *e;
+	fp_t a = FLOAT_TO_FP(60.0);
+	fp_t b = FLOAT_TO_FP(0.6667);
+	vector_3_t v, w;
+	fp_t x;
+	int i;
+
+	if (argc > 1) {
+		a = strtoi(argv[1], &e, 0);
+		if (*e)
+			return EC_ERROR_PARAM1;
+	}
+
+	if (argc > 2) {
+		b = strtoi(argv[2], &e, 0);
+		if (*e)
+			return EC_ERROR_PARAM2;
+	}
+
+	ccprintf("a        0x%x = %d\n", (int)a, FP_TO_INT(a));
+	ccprintf("b        0x%x = %d\n", (int)b, FP_TO_INT(b));
+
+	x = fp_mul(a, b);
+	ccprintf("a*b      0x%x = %d\n", (int)x, FP_TO_INT(x));
+
+	if (b) {
+		x = fp_div(a, b);
+		ccprintf("a/b      0x%x = %d\n", (int)x, FP_TO_INT(x));
+	}
+
+	x = fp_abs(a);
+	ccprintf("abs(a)   0x%x = %d\n", (int)x, FP_TO_INT(x));
+
+	x = fp_sq(a);
+	ccprintf("sq(a)    0x%x = %d\n", (int)x, FP_TO_INT(x));
+
+	x = arc_cos(b);
+	ccprintf("acos(b)  0x%x = %d\n", (int)x, FP_TO_INT(x));
+
+	w[0] = 1000;
+	w[1] = 0;
+	w[2] = 0;
+	v[0] = a;
+	v[1] = b;
+	v[2] = 0;
+
+	i = vector_magnitude(v);
+	ccprintf("mag(v)   %d\n", i);
+
+	x = cosine_of_angle_diff(w, v);
+	ccprintf("cad(v,w) 0x%x\n", i);
+	x = arc_cos(x);
+	ccprintf("acos(^)  0x%x = %d\n", (int)x, FP_TO_INT(x));
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(fp, command_fp,
+	"[a] [b]",
+	"Fixed point test", NULL);

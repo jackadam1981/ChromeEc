@@ -258,15 +258,15 @@ struct kxcj9_data g_kxcj9_data;
 /* Four Motion sensors */
 /* Matrix to rotate accelrator into standard reference frame */
 const matrix_3x3_t base_standard_ref = {
-	{-1,  0,  0},
-	{ 0, -1,  0},
-	{ 0,  0, -1}
+	{FLOAT_TO_FP(-1),  0,  0},
+	{ 0, FLOAT_TO_FP(-1),  0},
+	{ 0,  0, FLOAT_TO_FP(-1)}
 };
 
 const matrix_3x3_t lid_standard_ref = {
-	{ 0,  1,  0},
-	{-1,  0,  0},
-	{ 0,  0, -1}
+	{ 0,  FLOAT_TO_FP(1),  0},
+	{FLOAT_TO_FP(-1),  0,  0},
+	{ 0,  0, FLOAT_TO_FP(-1)}
 };
 
 struct motion_sensor_t motion_sensors[] = {
@@ -281,12 +281,15 @@ struct motion_sensor_t motion_sensors[] = {
 		&lsm6ds0_drv, &g_base_mutex, NULL,
 		LSM6DS0_ADDR1, &base_standard_ref, 119000, 2},
 
-	{SENSOR_ACTIVE_S0, "Lid",  MOTIONSENSE_CHIP_KXCJ9,
+	// KLUDGE - set these active in S5 so I can play with them when the
+	// AP is off
+
+	{SENSOR_ACTIVE_S0_S3_S5, "Lid",  MOTIONSENSE_CHIP_KXCJ9,
 		MOTIONSENSE_TYPE_ACCEL, MOTIONSENSE_LOC_LID,
 		&kxcj9_drv, &g_lid_mutex, &g_kxcj9_data,
 		KXCJ9_ADDR0, &lid_standard_ref, 100000, 2},
 
-	{SENSOR_ACTIVE_S0, "Base Gyro", MOTIONSENSE_CHIP_LSM6DS0,
+	{SENSOR_ACTIVE_S0_S3_S5, "Base Gyro", MOTIONSENSE_CHIP_LSM6DS0,
 		MOTIONSENSE_TYPE_GYRO, MOTIONSENSE_LOC_BASE,
 		&lsm6ds0_drv, &g_base_mutex, NULL,
 		LSM6DS0_ADDR1, NULL, 119000, 2000},
@@ -298,14 +301,14 @@ const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 const struct accel_orientation acc_orient = {
 	/* Hinge aligns with y axis. */
 	.rot_hinge_90 = {
-		{ 1,  0,  0},
-		{ 0,  1,  0},
-		{ 0,  0,  1}
+		{ FLOAT_TO_FP(1),  0,  0},
+		{ 0,  FLOAT_TO_FP(1),  0},
+		{ 0,  0,  FLOAT_TO_FP(1)}
 	},
 	.rot_hinge_180 = {
-		{ 1,  0,  0},
-		{ 0,  1,  0},
-		{ 0,  0,  1}
+		{ FLOAT_TO_FP(1),  0,  0},
+		{ 0,  FLOAT_TO_FP(1),  0},
+		{ 0,  0,  FLOAT_TO_FP(1)}
 	},
 	.hinge_axis = {0, 1, 0},
 };
