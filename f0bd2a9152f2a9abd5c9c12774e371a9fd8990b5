@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "177a3faa_54c7cc9a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1120034
+      },
+      "writtenOn": "2015-01-28T07:30:35Z",
+      "side": 1,
+      "message": "Please see the attach table \"led.xls\" in the issue 35228.",
+      "parentUuid": "17a15f5e_bc9c014b",
+      "range": {
+        "startLine": 9,
+        "startChar": 8,
+        "endLine": 9,
+        "endChar": 62
+      },
+      "revId": "f0bd2a9152f2a9abd5c9c12774e371a9fd8990b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17a15f5e_9c9fc53f",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-01-28T04:17:03Z",
       "side": 1,
       "message": "That bug is about the 95% battery threshold.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 27
+      },
+      "revId": "f0bd2a9152f2a9abd5c9c12774e371a9fd8990b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "377d83a0_15bb94f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1120034
+      },
+      "writtenOn": "2015-01-28T07:30:35Z",
+      "side": 1,
+      "message": "Not only the bug:\"the 95% battery threshold\", also the new requirement. Please see the attach table \"led.xls\" in the issue 35228.",
+      "parentUuid": "17a15f5e_9c9fc53f",
       "range": {
         "startLine": 12,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "377d83a0_f5885837",
+        "filename": "board/mighty/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1120034
+      },
+      "writtenOn": "2015-01-28T07:30:35Z",
+      "side": 1,
+      "message": "OK, I will remove these if codes are verified.",
+      "parentUuid": "57975702_be1959f3",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 35
+      },
+      "revId": "f0bd2a9152f2a9abd5c9c12774e371a9fd8990b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3794a3fe_bd82bf11",
         "filename": "board/mighty/gpio.inc",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2015-01-28T04:17:03Z",
       "side": 1,
       "message": "Why did you change this? Do the LED pins need to be floating when off?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 52
+      },
+      "revId": "f0bd2a9152f2a9abd5c9c12774e371a9fd8990b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "776b7bdd_f72ce0bf",
+        "filename": "board/mighty/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1120034
+      },
+      "writtenOn": "2015-01-28T07:30:35Z",
+      "side": 1,
+      "message": "Sorry, I might make a mistake here, but GPIO_OUT_HIGH is right.",
+      "parentUuid": "3794a3fe_bd82bf11",
       "range": {
         "startLine": 31,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "177a3faa_f4fe18c0",
+        "filename": "board/mighty/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1120034
+      },
+      "writtenOn": "2015-01-28T07:30:35Z",
+      "side": 1,
+      "message": "Modified behavior is match for the new requirement.",
+      "parentUuid": "3794a3fe_5d0ffb2b",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 33
+      },
+      "revId": "f0bd2a9152f2a9abd5c9c12774e371a9fd8990b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57975702_fe36015f",
         "filename": "board/mighty/led.c",
         "patchSetId": 1
@@ -128,6 +248,30 @@
       "writtenOn": "2015-01-28T04:17:03Z",
       "side": 1,
       "message": "This should probably be green, to show the AC is plugged in. Or else the user will think their AC adaptor is broken.",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 36
+      },
+      "revId": "f0bd2a9152f2a9abd5c9c12774e371a9fd8990b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "177a3faa_342490de",
+        "filename": "board/mighty/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1120034
+      },
+      "writtenOn": "2015-01-28T07:30:35Z",
+      "side": 1,
+      "message": "Because the new requirement no need for PWR_STATE_IDLE, so I removed it.",
+      "parentUuid": "57975702_fe36015f",
       "range": {
         "startLine": 118,
         "startChar": 0,
