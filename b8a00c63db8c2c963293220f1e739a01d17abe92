@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "57f117a1_6e4aef9a",
+        "filename": "core/cortex-m/div.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-29T21:42:26Z",
+      "side": 1,
+      "message": "Ah, with that, I don\u0027t need div.S at all.",
+      "parentUuid": "97070f52_5014ecec",
+      "range": {
+        "startLine": 29,
+        "startChar": 28,
+        "endLine": 29,
+        "endChar": 29
+      },
+      "revId": "b8a00c63db8c2c963293220f1e739a01d17abe92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97070f52_b0f8b84d",
         "filename": "core/cortex-m/div.S",
         "patchSetId": 1
@@ -94,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "f7a4cb88_8cb8eb43",
+        "filename": "core/cortex-m/uldivmod.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-29T21:42:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37690307_3bb77fba",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 9
+      },
+      "revId": "b8a00c63db8c2c963293220f1e739a01d17abe92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "770c5b78_efd421c4",
         "filename": "core/cortex-m/uldivmod.S",
         "patchSetId": 1
@@ -105,6 +153,30 @@
       "writtenOn": "2015-01-29T16:17:01Z",
       "side": 1,
       "message": "doing this ARMv6-m (which is indeed more or less a subset of ARMv7-m) is extremely inefficient for math operations.",
+      "range": {
+        "startLine": 76,
+        "startChar": 8,
+        "endLine": 76,
+        "endChar": 9
+      },
+      "revId": "b8a00c63db8c2c963293220f1e739a01d17abe92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7a4cb88_4cf43314",
+        "filename": "core/cortex-m/uldivmod.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-29T21:42:26Z",
+      "side": 1,
+      "message": "Open to suggestions for optimizing.  Right now this is just a copy of Jorg\u0027s code.",
+      "parentUuid": "770c5b78_efd421c4",
       "range": {
         "startLine": 76,
         "startChar": 8,
@@ -140,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "57f117a1_111a6e9c",
+        "filename": "core/cortex-m0/ldivmod.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-29T21:42:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37690307_1bbc439b",
+      "range": {
+        "startLine": 35,
+        "startChar": 9,
+        "endLine": 35,
+        "endChar": 15
+      },
+      "revId": "b8a00c63db8c2c963293220f1e739a01d17abe92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97070f52_f00240ab",
         "filename": "core/cortex-m0/uldivmod.S",
         "patchSetId": 1
@@ -151,6 +247,30 @@
       "writtenOn": "2015-01-29T16:17:01Z",
       "side": 1,
       "message": "please remove those aliases",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 9
+      },
+      "revId": "b8a00c63db8c2c963293220f1e739a01d17abe92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7025340_f466b63b",
+        "filename": "core/cortex-m0/uldivmod.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-29T21:42:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97070f52_f00240ab",
       "range": {
         "startLine": 34,
         "startChar": 0,
