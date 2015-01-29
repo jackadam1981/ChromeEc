@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97070f52_5014ecec",
+        "filename": "core/cortex-m/div.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-29T16:17:01Z",
+      "side": 1,
+      "message": "ARMv7-m has an instruction for that : SDIV.\nSo we shouldn\u0027t be using the software code here,\nor at least just wrap a SDIV behind the helper function (but GCC should do it properly for us)",
+      "range": {
+        "startLine": 29,
+        "startChar": 28,
+        "endLine": 29,
+        "endChar": 29
+      },
+      "revId": "b8a00c63db8c2c963293220f1e739a01d17abe92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97070f52_b0f8b84d",
+        "filename": "core/cortex-m/div.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-29T16:17:01Z",
+      "side": 1,
+      "message": "ditto \nand should be using\nr1 \u003d x - y * (x SDIV y) to get the modulo\nbut GCC is able to do that",
+      "range": {
+        "startLine": 65,
+        "startChar": 15,
+        "endLine": 65,
+        "endChar": 17
+      },
+      "revId": "b8a00c63db8c2c963293220f1e739a01d17abe92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37690307_db4acb13",
+        "filename": "core/cortex-m/div.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-29T16:17:01Z",
+      "side": 1,
+      "message": "ditto with UDIV instruction",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 13
+      },
+      "revId": "b8a00c63db8c2c963293220f1e739a01d17abe92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37690307_3bb77fba",
+        "filename": "core/cortex-m/uldivmod.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-29T16:17:01Z",
+      "side": 1,
+      "message": "are you sure you need this alias :\nwe are using neither old ABI nor libgcc",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 9
+      },
+      "revId": "b8a00c63db8c2c963293220f1e739a01d17abe92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "770c5b78_efd421c4",
+        "filename": "core/cortex-m/uldivmod.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-29T16:17:01Z",
+      "side": 1,
+      "message": "doing this ARMv6-m (which is indeed more or less a subset of ARMv7-m) is extremely inefficient for math operations.",
+      "range": {
+        "startLine": 76,
+        "startChar": 8,
+        "endLine": 76,
+        "endChar": 9
+      },
+      "revId": "b8a00c63db8c2c963293220f1e739a01d17abe92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37690307_1bbc439b",
+        "filename": "core/cortex-m0/ldivmod.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-29T16:17:01Z",
+      "side": 1,
+      "message": "for size-optimization reason, you need to put each function in its own section, so the linker can discard unused ones :\ne.g.:\n.section .text.__aeabi_ldivmod\n\nAs I did recently for other Cortex-M0 assembly functions recently :\nhttps://chromium-review.googlesource.com/#/c/240582/",
+      "range": {
+        "startLine": 35,
+        "startChar": 9,
+        "endLine": 35,
+        "endChar": 15
+      },
+      "revId": "b8a00c63db8c2c963293220f1e739a01d17abe92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97070f52_f00240ab",
+        "filename": "core/cortex-m0/uldivmod.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-29T16:17:01Z",
+      "side": 1,
+      "message": "please remove those aliases",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 9
+      },
+      "revId": "b8a00c63db8c2c963293220f1e739a01d17abe92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
