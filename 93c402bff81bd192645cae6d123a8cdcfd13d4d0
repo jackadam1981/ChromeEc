@@ -93,6 +93,30 @@
       "revId": "93c402bff81bd192645cae6d123a8cdcfd13d4d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77da9b34_df29fbad",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 757,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-29T21:10:58Z",
+      "side": 1,
+      "message": "if the battery is disconnected, it should fall into the if statement on line 671.",
+      "parentUuid": "f7f76b97_9173fcce",
+      "range": {
+        "startLine": 749,
+        "startChar": 2,
+        "endLine": 757,
+        "endChar": 24
+      },
+      "revId": "93c402bff81bd192645cae6d123a8cdcfd13d4d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
