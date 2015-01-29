@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7f76b97_6ec14f03",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-29T19:40:25Z",
+      "side": 1,
+      "message": "I don\u0027t know if this is the right thing to do. On Samus, the battery is always [0, 100], but maybe other batteries to go above 100?",
+      "range": {
+        "startLine": 614,
+        "startChar": 2,
+        "endLine": 619,
+        "endChar": 3
+      },
+      "revId": "93c402bff81bd192645cae6d123a8cdcfd13d4d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9720efdf_882c77bf",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 757,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-01-29T19:40:25Z",
+      "side": 1,
+      "message": "I\u0027m not sure what this check is really here for. If this if check weren\u0027t here at all, the problem would be fixed, but presumably this is here to fix some special case.",
+      "range": {
+        "startLine": 749,
+        "startChar": 2,
+        "endLine": 757,
+        "endChar": 24
+      },
+      "revId": "93c402bff81bd192645cae6d123a8cdcfd13d4d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
