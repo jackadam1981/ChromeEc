@@ -22,6 +22,30 @@
       "revId": "fbc81a1852eac49e12d6cc931028fcf06227f63b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97baafec_7b301b14",
+        "filename": "core/cortex-m/uldivmod.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-30T18:53:42Z",
+      "side": 1,
+      "message": "I\u0027ve filed a bug noting this is sub-optimal (see TODO in line 60) and should be reviewed for optimization at some later point.\n\nWe need to get something checked in by mid-next week so Minnie hardware can get debugged.\n\nUnless this is *so* awful that infrequent inefficient 64-bit divides will break the system, or there\u0027s a handy C implementation we can switch to with an hour or two\u0027s work, I\u0027d like to get this checked in and then optimize later when it\u0027s not on the critical path.",
+      "parentUuid": "97ef0fff_f05fa0db",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 16
+      },
+      "revId": "fbc81a1852eac49e12d6cc931028fcf06227f63b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
