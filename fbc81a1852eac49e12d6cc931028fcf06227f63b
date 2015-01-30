@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97ef0fff_f05fa0db",
+        "filename": "core/cortex-m/uldivmod.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-01-30T15:25:39Z",
+      "side": 1,
+      "message": "The assembly is really un-optimized for this CPU, I\u0027m not convinced that\u0027s faster or smaller than the C version compiled with our M3/M4 toolchain.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 16
+      },
+      "revId": "fbc81a1852eac49e12d6cc931028fcf06227f63b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
