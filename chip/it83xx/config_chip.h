@@ -101,7 +101,7 @@
 
 /* Optional features present on this chip */
 #undef CONFIG_I2C
-#undef CONFIG_FLASH
+#undef CONFIG_FLASH_MAPPED
 #undef CONFIG_WATCHDOG
 #define CONFIG_PWM
 #define CONFIG_ADC

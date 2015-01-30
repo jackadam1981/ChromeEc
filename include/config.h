@@ -543,8 +543,8 @@
 /*****************************************************************************/
 /* Flash configuration */
 
-/* Support programming on-chip flash */
-#define CONFIG_FLASH
+/* Support programming memory-mapped (typically on-chip) flash */
+#define CONFIG_FLASH_MAPPED
 
 #undef CONFIG_FLASH_BANK_SIZE
 #undef CONFIG_FLASH_BASE
