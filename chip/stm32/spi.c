@@ -45,7 +45,7 @@ static const struct dma_option dma_rx_option = {
  * practically want to run the SPI interface, since running it slower
  * significantly impacts firmware update times.
  */
-#define SPI_CMD_RX_TIMEOUT_US 8192
+#define SPI_CMD_RX_TIMEOUT_US 20480
 
 /*
  * Offset of output parameters needs to account for pad and framing bytes and
