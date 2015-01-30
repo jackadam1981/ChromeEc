@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "17cebfa3_d457fc99",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-01-30T16:51:07Z",
+      "side": 1,
+      "message": "This CL actually has nothing directly to do with strago. Change the title to \"Change CONFIG_FLASH to CONFIG_FLASH_INTERNAL\", or \"config: Change CONFIG_FLASH...\". Sorry, I missed this before, I just changed it myself now.",
+      "revId": "b4ee39a14bffb44137c61c619007201644b39887",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7ca0b90_736de099",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
