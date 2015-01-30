@@ -141,6 +141,30 @@
       "revId": "93c402bff81bd192645cae6d123a8cdcfd13d4d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d797c75c_c2aaa21d",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 757,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-01-30T01:13:09Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/#/c/244346/1/common/charge_state_v2.c is still necessary -- the battery is responsive, so we don\u0027t fall into the if statement on line 671. The battery disconnect state is distinct from the cut-off state.\n\nNote that prior to my change above, we still checked for state_of_charge \u003e\u003d BATTERY_LEVEL_FULL (I just added the second condition so that we would attempt to charge in the case of battery disconnect). I believe the reason the original code exists is simply so we don\u0027t try to charge a full battery.",
+      "parentUuid": "77a8db90_efd7e1f3",
+      "range": {
+        "startLine": 749,
+        "startChar": 2,
+        "endLine": 757,
+        "endChar": 24
+      },
+      "revId": "93c402bff81bd192645cae6d123a8cdcfd13d4d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
