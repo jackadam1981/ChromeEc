@@ -158,7 +158,7 @@ SECTIONS
         . = ALIGN(4);
         *(.rodata*)
 
-#if defined(SECTION_IS_RO) && defined(CONFIG_FLASH)
+#if defined(SECTION_IS_RO) && defined(CONFIG_FLASH_INTERNAL)
         . = ALIGN(64);
         KEEP(*(.google))
 #endif
@@ -279,7 +279,7 @@ SECTIONS
         *(.usb_ram.data)
     } > USB_RAM
 #endif
-#if !(defined(SECTION_IS_RO) && defined(CONFIG_FLASH))
+#if !(defined(SECTION_IS_RO) && defined(CONFIG_FLASH_INTERNAL))
     /DISCARD/ : {
               *(.google)
               }
