@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7ca0b90_736de099",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-01-30T15:59:49Z",
+      "side": 1,
+      "message": "Use \"BUG\u003dchrome-os-partner:36167\" for this and related changes.",
+      "revId": "b4ee39a14bffb44137c61c619007201644b39887",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37d10340_b58b6005",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-01-30T15:59:49Z",
+      "side": 1,
+      "message": "Change this to \"TEST\u003dmake buildall -j\". Compile test is all that is required for this change.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 4
+      },
+      "revId": "b4ee39a14bffb44137c61c619007201644b39887",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
