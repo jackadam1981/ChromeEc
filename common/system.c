@@ -130,7 +130,7 @@ int system_is_locked(void)
 	/* System is explicitly unlocked */
 	return 0;
 
-#elif defined(CONFIG_FLASH)
+#elif defined(CONFIG_FLASH_INTERNAL)
 	/*
 	 * Unlocked if write protect pin deasserted or read-only firmware
 	 * is not protected.

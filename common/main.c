@@ -70,7 +70,7 @@ test_mockable int main(void)
 	system_pre_init();
 	system_common_pre_init();
 
-#ifdef CONFIG_FLASH
+#ifdef CONFIG_FLASH_INTERNAL
 	/*
 	 * Initialize flash and apply write protect if necessary.  Requires
 	 * the reset flags calculated by system initialization.
