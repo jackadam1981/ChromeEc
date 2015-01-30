@@ -544,7 +544,7 @@
 /* Flash configuration */
 
 /* Support programming on-chip flash */
-#define CONFIG_FLASH
+#define CONFIG_FLASH_INTERNAL
 
 #undef CONFIG_FLASH_BANK_SIZE
 #undef CONFIG_FLASH_BASE

@@ -128,7 +128,7 @@ SECTIONS
         . = ALIGN(4);
         *(.rodata*)
 
-#if defined(SECTION_IS_RO) && defined(CONFIG_FLASH)
+#if defined(SECTION_IS_RO) && defined(CONFIG_FLASH_INTERNAL)
         . = ALIGN(64);
         KEEP(*(.google))
 #endif
@@ -203,7 +203,7 @@ SECTIONS
         BYTE(0xea);
         /* NOTHING MAY GO IN FLASH AFTER THIS! */
     } >FLASH
-#if !(defined(SECTION_IS_RO) && defined(CONFIG_FLASH))
+#if !(defined(SECTION_IS_RO) && defined(CONFIG_FLASH_INTERNAL))
     /DISCARD/ : {
               *(.google)
               }

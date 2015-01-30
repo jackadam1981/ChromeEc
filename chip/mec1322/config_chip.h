@@ -92,6 +92,6 @@
 #define CONFIG_SPI
 #define CONFIG_DMA
 
-#undef CONFIG_FLASH
+#undef CONFIG_FLASH_INTERNAL
 
 #endif  /* __CROS_EC_CONFIG_CHIP_H */
