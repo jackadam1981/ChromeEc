@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17515fa8_9f35f707",
+        "filename": "common/math_util.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-01T16:51:54Z",
+      "side": 1,
+      "message": "based on the comment, shouldn\u0027t this be:\nreturn (dotproduct / denominator) \u003c\u003c FP_BITS;",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 46
+      },
+      "revId": "637d3854dfcb4b8c26edf1465e5fb5df40915710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f74dab10_5bf9c34f",
+        "filename": "include/math_util.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-01T16:51:54Z",
+      "side": 1,
+      "message": "fp_mul(a, a)?",
+      "range": {
+        "startLine": 51,
+        "startChar": 8,
+        "endLine": 51,
+        "endChar": 43
+      },
+      "revId": "637d3854dfcb4b8c26edf1465e5fb5df40915710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f74dab10_1b033bb2",
+        "filename": "include/math_util.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-01T16:51:54Z",
+      "side": 1,
+      "message": "do we really need this function? the ABS macro defined on line 80 is exactly the same as this and it should stay the same even if FP_BITS changes.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 33
+      },
+      "revId": "637d3854dfcb4b8c26edf1465e5fb5df40915710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f74dab10_1b901bad",
+        "filename": "include/math_util.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-01T16:51:54Z",
+      "side": 1,
+      "message": "looks like you already changed vector_magnitude() so that it does promote to 64-bit to account for the multiplication.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 3
+      },
+      "revId": "637d3854dfcb4b8c26edf1465e5fb5df40915710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
