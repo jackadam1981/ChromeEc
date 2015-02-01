@@ -139,6 +139,13 @@ enum hook_type {
 	HOOK_CHARGE_STATE_CHANGE,
 
 	/*
+	 * Battery SOC changed
+	 *
+	 * Hook routines are called from the charger task.
+	 */
+	HOOK_BATTERY_SOC_CHANGE,
+
+	/*
 	 * Periodic tick, every HOOK_TICK_INTERVAL.
 	 *
 	 * Hook routines will be called from the TICK task.
