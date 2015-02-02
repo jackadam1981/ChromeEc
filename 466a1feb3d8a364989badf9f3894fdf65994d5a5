@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7707fbcb_f70e40dc",
+        "filename": "common/flash_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-02-02T18:35:33Z",
+      "side": 1,
+      "message": "This file name is slightly confusing because we also have spi_flash.c. Suggest to rename to flash_physical_spi.c (see more comments below).",
+      "revId": "466a1feb3d8a364989badf9f3894fdf65994d5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "571cb71e_b604c8be",
+        "filename": "common/flash_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-02-02T18:35:33Z",
+      "side": 1,
+      "message": "I don\u0027t think this function needs to exist. See comments below.",
+      "revId": "466a1feb3d8a364989badf9f3894fdf65994d5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7ad07fe_3209f053",
+        "filename": "common/flash_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-02-02T18:35:33Z",
+      "side": 1,
+      "message": "Why invalidate the hash on a read?",
+      "revId": "466a1feb3d8a364989badf9f3894fdf65994d5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7707fbcb_f70800a3",
+        "filename": "common/flash_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-02-02T18:35:33Z",
+      "side": 1,
+      "message": "I don\u0027t think we need a SPI-specific version of this function. See comment below.",
+      "revId": "466a1feb3d8a364989badf9f3894fdf65994d5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7ad07fe_72aff8a9",
+        "filename": "common/flash_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-02-02T18:35:33Z",
+      "side": 1,
+      "message": "We don\u0027t need a SPI-specific version of this function. We can use the same function currently in flash.c, and call flash_read_pstate vs another function based upon ifdef (or maybe just implement flash_read_pstate based upon the SPI protection register).",
+      "revId": "466a1feb3d8a364989badf9f3894fdf65994d5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7ad07fe_722d3890",
+        "filename": "common/flash_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-02-02T18:35:33Z",
+      "side": 1,
+      "message": "Again, I don\u0027t think we need this function.",
+      "revId": "466a1feb3d8a364989badf9f3894fdf65994d5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7707fbcb_1737745c",
+        "filename": "common/flash_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-02-02T18:35:33Z",
+      "side": 1,
+      "message": "Why is this here? Isn\u0027t it just re-implementing command_spi_flashread in spi_flash.c?",
+      "revId": "466a1feb3d8a364989badf9f3894fdf65994d5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37190331_d5021ce7",
+        "filename": "common/flash_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-02-02T18:35:33Z",
+      "side": 1,
+      "message": "Shouldn\u0027t need to re-implement this just for SPI.",
+      "revId": "466a1feb3d8a364989badf9f3894fdf65994d5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
