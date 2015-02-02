@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "77d53b78_c7eb7eb7",
+        "filename": "driver/charger/bq24773.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-02T22:07:29Z",
+      "side": 1,
+      "message": "not really, first of all it\u0027s only defined on PD whereas this code is in EC. but more importantly, this isn\u0027t tied to the code allowing the max request.\n\ni thought about making a CONFIG_ option here, but this hack is so bad, no other board will ever do anything like this, so it seems a waste. i could also add an API for setting prochot option registers, but again, I don\u0027t think any other board will ever have a need for it.",
+      "parentUuid": "77bc5b32_6f3ef108",
+      "revId": "02e1f8e563771273374445972490aa72f3d8a529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "379e63d1_ad3bbdfc",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
