@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d7d6e781_ca90a333",
+        "filename": "common/math_util.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-02-02T21:21:02Z",
+      "side": 1,
+      "message": "It\u0027s messy either way, but I think the code is right and the comment is wrong.  If dotproduct \u003c denominator, which will always be true, then doing the integer division first will result in it rounding down to 0 every time.  I\u0027ll update the comment.",
+      "parentUuid": "17515fa8_9f35f707",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 46
+      },
+      "revId": "637d3854dfcb4b8c26edf1465e5fb5df40915710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f74dab10_5bf9c34f",
         "filename": "include/math_util.h",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2015-02-01T16:51:54Z",
       "side": 1,
       "message": "fp_mul(a, a)?",
+      "range": {
+        "startLine": 51,
+        "startChar": 8,
+        "endLine": 51,
+        "endChar": 43
+      },
+      "revId": "637d3854dfcb4b8c26edf1465e5fb5df40915710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7d6e781_2acb3f25",
+        "filename": "include/math_util.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-02-02T21:21:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f74dab10_5bf9c34f",
       "range": {
         "startLine": 51,
         "startChar": 8,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b7db33ac_09064941",
+        "filename": "include/math_util.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-02-02T21:21:02Z",
+      "side": 1,
+      "message": "It\u0027s the same if and only if the passed parameter doesn\u0027t include function calls.  For example,\n\nx \u003d fp_abs(get_next_value());\n\ncalls get_next_value() once, but \n\nx \u003d ABS(get_next_value());\n\ncalls it twice.  I would have removed ABS() entirely, but it\u0027s used in a few places other than lid math so I didn\u0027t want to co-mingle that with this change.",
+      "parentUuid": "f74dab10_1b033bb2",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 33
+      },
+      "revId": "637d3854dfcb4b8c26edf1465e5fb5df40915710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f74dab10_1b901bad",
         "filename": "include/math_util.h",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2015-02-01T16:51:54Z",
       "side": 1,
       "message": "looks like you already changed vector_magnitude() so that it does promote to 64-bit to account for the multiplication.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 3
+      },
+      "revId": "637d3854dfcb4b8c26edf1465e5fb5df40915710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7db33ac_692a65a3",
+        "filename": "include/math_util.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-02-02T21:21:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f74dab10_1b901bad",
       "range": {
         "startLine": 73,
         "startChar": 0,
