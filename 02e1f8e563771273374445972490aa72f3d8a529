@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77bc5b32_6f3ef108",
+        "filename": "driver/charger/bq24773.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-02-02T19:36:07Z",
+      "side": 1,
+      "message": "Does it make sense to check CONIFG_USB_PD_CHECK_MAX_REQUEST_ALLOWED here instead?",
+      "revId": "02e1f8e563771273374445972490aa72f3d8a529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "379e63d1_ad3bbdfc",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2684,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-02-02T19:36:07Z",
+      "side": 1,
+      "message": "Following the style of this file, might want to explicitly assign PD_CHARGE_NO_CHANGE \u003d 0.",
+      "revId": "02e1f8e563771273374445972490aa72f3d8a529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "379e63d1_aded7d18",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2693,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-02-02T19:36:07Z",
+      "side": 1,
+      "message": "Use a fixed-bit-length datatype for charge_state.",
+      "revId": "02e1f8e563771273374445972490aa72f3d8a529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
