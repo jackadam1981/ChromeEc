@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "77d53b78_cd2a7d24",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2684,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-02T23:21:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "379e63d1_ad3bbdfc",
+      "revId": "02e1f8e563771273374445972490aa72f3d8a529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "379e63d1_aded7d18",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -65,6 +83,24 @@
       "writtenOn": "2015-02-02T19:36:07Z",
       "side": 1,
       "message": "Use a fixed-bit-length datatype for charge_state.",
+      "revId": "02e1f8e563771273374445972490aa72f3d8a529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77d53b78_2d207941",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2693,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-02T23:21:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "379e63d1_aded7d18",
       "revId": "02e1f8e563771273374445972490aa72f3d8a529",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
