@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc10cc40_5a50351b",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2015-02-03T20:53:39Z",
+      "side": 1,
+      "message": "actually, i shouldn\u0027t need any of this. \"wait_isr(port, STM32_I2C_ISR_STOP);\" should already handle it.",
+      "range": {
+        "startLine": 371,
+        "startChar": 2,
+        "endLine": 381,
+        "endChar": 3
+      },
+      "revId": "0cdadb81c8686adb61dfb8c84e8494bf7cbe906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
