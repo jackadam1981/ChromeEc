@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5cfbfc33_be861928",
+        "filename": "board/samus/extpower.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-03T20:32:13Z",
+      "side": 1,
+      "message": "it\u0027s even in the comment already that we need to turn on learn mode (charger_disable()). somehow it accidentally got removed.",
+      "range": {
+        "startLine": 218,
+        "startChar": 2,
+        "endLine": 222,
+        "endChar": 20
+      },
+      "revId": "76b23952b099493ddebe7f53744f921486ee055e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
