@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "975e2ffc_58773d6a",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-03T15:53:15Z",
+      "side": 1,
+      "message": "you\u0027re missing task_enable_irq(STM32_IRQ_I2C1) in the init somewhere.",
+      "parentUuid": "b780937a_a4358cd9",
+      "range": {
+        "startLine": 298,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 32
+      },
+      "revId": "1828d79aa9ca410edbf8146ca3e90a80222238b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b780937a_84832817",
         "filename": "chip/stm32/i2c-stm32f0.c",
         "patchSetId": 1
