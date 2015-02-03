@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "17515fa8_8b2db9bb",
+        "filename": "common/flash_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-02-03T08:50:07Z",
+      "side": 1,
+      "message": "yes. a different name is better.",
+      "parentUuid": "7707fbcb_f70e40dc",
+      "revId": "466a1feb3d8a364989badf9f3894fdf65994d5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "571cb71e_b604c8be",
         "filename": "common/flash_spi.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "f74dab10_6aa5c7c8",
+        "filename": "common/flash_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-02-03T08:50:07Z",
+      "side": 1,
+      "message": "can be removed",
+      "parentUuid": "571cb71e_b604c8be",
+      "revId": "466a1feb3d8a364989badf9f3894fdf65994d5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7ad07fe_3209f053",
         "filename": "common/flash_spi.c",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2015-02-02T18:35:33Z",
       "side": 1,
       "message": "Why invalidate the hash on a read?",
+      "revId": "466a1feb3d8a364989badf9f3894fdf65994d5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17515fa8_2b2a65a2",
+        "filename": "common/flash_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-02-03T08:50:07Z",
+      "side": 1,
+      "message": "This has to be removed",
+      "parentUuid": "d7ad07fe_3209f053",
       "revId": "466a1feb3d8a364989badf9f3894fdf65994d5a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +141,24 @@
     },
     {
       "key": {
+        "uuid": "17515fa8_cb7181ca",
+        "filename": "common/flash_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-02-03T08:50:07Z",
+      "side": 1,
+      "message": "pstate was persistent memory trying to replicate actualt flash. Since we are using actual flash set and get protection logic for an SPi flash will be different and pstate will not be needed. This was Randall\u0027s Comment and I feel that is correct.",
+      "parentUuid": "d7ad07fe_72aff8a9",
+      "revId": "466a1feb3d8a364989badf9f3894fdf65994d5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7ad07fe_722d3890",
         "filename": "common/flash_spi.c",
         "patchSetId": 1
@@ -98,6 +170,24 @@
       "writtenOn": "2015-02-02T18:35:33Z",
       "side": 1,
       "message": "Again, I don\u0027t think we need this function.",
+      "revId": "466a1feb3d8a364989badf9f3894fdf65994d5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "378ca3b9_a614ac70",
+        "filename": "common/flash_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-02-03T08:50:07Z",
+      "side": 1,
+      "message": "same comment as above",
+      "parentUuid": "d7ad07fe_722d3890",
       "revId": "466a1feb3d8a364989badf9f3894fdf65994d5a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -121,6 +211,24 @@
     },
     {
       "key": {
+        "uuid": "378ca3b9_062480dd",
+        "filename": "common/flash_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-02-03T08:50:07Z",
+      "side": 1,
+      "message": "can be removed",
+      "parentUuid": "7707fbcb_1737745c",
+      "revId": "466a1feb3d8a364989badf9f3894fdf65994d5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37190331_d5021ce7",
         "filename": "common/flash_spi.c",
         "patchSetId": 1
@@ -132,6 +240,24 @@
       "writtenOn": "2015-02-02T18:35:33Z",
       "side": 1,
       "message": "Shouldn\u0027t need to re-implement this just for SPI.",
+      "revId": "466a1feb3d8a364989badf9f3894fdf65994d5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "378ca3b9_26097c53",
+        "filename": "common/flash_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-02-03T08:50:07Z",
+      "side": 1,
+      "message": "info / offset will be different",
+      "parentUuid": "37190331_d5021ce7",
       "revId": "466a1feb3d8a364989badf9f3894fdf65994d5a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
