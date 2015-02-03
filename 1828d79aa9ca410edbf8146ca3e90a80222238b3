@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b737b3c2_ecd5a341",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2015-02-03T18:56:28Z",
+      "side": 1,
+      "message": "Indeed I do.",
+      "parentUuid": "975e2ffc_58773d6a",
+      "range": {
+        "startLine": 298,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 32
+      },
+      "revId": "1828d79aa9ca410edbf8146ca3e90a80222238b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b780937a_84832817",
         "filename": "chip/stm32/i2c-stm32f0.c",
         "patchSetId": 1
