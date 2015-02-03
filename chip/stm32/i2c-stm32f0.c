@@ -289,6 +289,31 @@ void i2c2_event_interrupt(void) { i2c_event_handler(I2C_PORT_EC); }
 DECLARE_IRQ(IRQ_SLAVE, i2c2_event_interrupt, 2);
 #endif
 
+volatile int in_bytes_int;
+volatile int out_bytes_int;
+volatile const uint8_t *out_int;
+volatile uint8_t *in_int;
+
+
+void i2c_event_interrupt(void) {
+	int port = 0;
+	int isr = STM32_I2C_ISR(port);
+
+	if (isr & STM32_I2C_ISR_TXIS) {
+		ASSERT(out_bytes_int);
+		STM32_I2C_TXDR(port) = *(out_int++);
+		out_bytes_int--;
+	} else if (isr & STM32_I2C_ISR_RXNE) {
+		ASSERT(in_bytes_int);
+		*(in_int++) = STM32_I2C_RXDR(port);
+		in_bytes_int--;
+	} else {
+		CPRINTS("wrong ISR %04x", isr);
+// 		ASSERT(0); /* This should never happen */
+	}
+}
+DECLARE_IRQ(STM32_IRQ_I2C1, i2c_event_interrupt, 2); /* TODO: make this work for other ports */
+
 /*****************************************************************************/
 /* Interface */
 
@@ -311,21 +336,30 @@ int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
 	STM32_I2C_ICR(port) = 0x3F38;
 	STM32_I2C_CR2(port) = 0;
 
+	ASSERT(port==0); /* TODO: make this work for other ports */
+
 	if (out_bytes || !in_bytes) {
 		/* Configure the write transfer */
 		STM32_I2C_CR2(port) =  ((out_bytes & 0xFF) << 16)
 			| slave_addr
 			| (in_bytes == 0 ? STM32_I2C_CR2_AUTOEND : 0);
+
+		out_bytes_int = out_bytes;
+		out_int = out;
+
 		/* let's go ... */
+		STM32_I2C_CR1(port) |= STM32_I2C_CR1_TXIE;
 		STM32_I2C_CR2(port) |= STM32_I2C_CR2_START;
 
-		for (i = 0; i < out_bytes; i++) {
-			rv = wait_isr(port, STM32_I2C_ISR_TXIS);
-			if (rv)
-				goto xfer_exit;
-			/* Write next data byte */
-			STM32_I2C_TXDR(port) = out[i];
+// 		ASSERT(STM32_I2C_ISR(port) & STM32_I2C_ISR_TXIS);
+
+		/* wait for the isr to send the data over */
+		while(out_bytes_int) { /* TODO: add timeout */
+// 			CPRINTS("ISR? %04x", STM32_I2C_ISR(port));
+			msleep(10);
 		}
+
+		STM32_I2C_CR1(port) &= STM32_I2C_CR1_TXIE;
 	}
 	if (in_bytes) {
 		if (out_bytes) { /* wait for completion of the write */
@@ -333,25 +367,22 @@ int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
 			if (rv)
 				goto xfer_exit;
 		}
+
+		in_bytes_int = in_bytes;
+		in_int = in;
+
+		STM32_I2C_CR1(port) |= STM32_I2C_CR1_RXIE;
+
 		/* Configure the read transfer and (re)start */
 		STM32_I2C_CR2(port) = ((in_bytes & 0xFF) << 16)
 				    | STM32_I2C_CR2_RD_WRN | slave_addr
 				    | STM32_I2C_CR2_AUTOEND
 				    | STM32_I2C_CR2_START;
 
-		for (i = 0; i < in_bytes; i++) {
-			/* Wait for receive buffer not empty */
-			rv = wait_isr(port, STM32_I2C_ISR_RXNE);
-			if (rv)
-				goto xfer_exit;
+		/* wait for the isr to send the data over */
+		while(in_bytes_int); /* TODO: add timeout */
 
-			in[i] = STM32_I2C_RXDR(port);
-
-			/*
-			 * TODO: Make this safer: it's still possible we get
-			 * interrupted by another task in here and miss bytes
-			 */
-		}
+		STM32_I2C_CR1(port) &= STM32_I2C_CR1_RXIE;
 	}
 	rv = wait_isr(port, STM32_I2C_ISR_STOP);
 	if (rv)
@@ -360,6 +391,9 @@ int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
 xfer_exit:
 	/* clear status */
 	STM32_I2C_ICR(port) = 0x3F38;
+
+	STM32_I2C_CR1(port) &= STM32_I2C_CR1_TXIE | STM32_I2C_CR1_RXIE;
+
 	/* On error, queue a stop condition */
 	if (rv) {
 		/* queue a STOP condition */
@@ -382,7 +416,7 @@ xfer_exit:
 		STM32_I2C_CR2(port) = 0;
 		STM32_I2C_CR1(port) &= ~STM32_I2C_CR1_PE;
 		udelay(10);
-		STM32_I2C_CR1(port) |= STM32_I2C_CR1_PE;
+			STM32_I2C_CR1(port) |= STM32_I2C_CR1_PE;
 	}
 
 #ifdef CONFIG_I2C_SCL_GATE_ADDR
