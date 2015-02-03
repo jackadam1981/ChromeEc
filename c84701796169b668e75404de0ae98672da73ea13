@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "378ca3b9_fd0d67b0",
+        "filename": "core/host/host_exe.lds",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-03T02:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97854f8c_a6b03211",
+      "revId": "c84701796169b668e75404de0ae98672da73ea13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "575e77d0_c625e226",
         "filename": "include/hooks.h",
         "patchSetId": 1
