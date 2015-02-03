@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97854f8c_603e1209",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2015-02-03T01:02:54Z",
+      "side": 0,
+      "message": "\u003e I think we also have the same problem for sending.\n\nActually no! We don\u0027t have this problem for sending! It seems that the SCL waits for us to insert the next character, so it wouldn\u0027t matter if we get interrupted during transmitting. (tested by inserting an msleep(1) in here)",
+      "range": {
+        "startLine": 322,
+        "startChar": 0,
+        "endLine": 328,
+        "endChar": 3
+      },
+      "revId": "128f93285c2c9893b618f72b273abb3e0cba9090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
