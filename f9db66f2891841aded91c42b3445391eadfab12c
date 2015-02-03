@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17515fa8_90c88427",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 733,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2015-02-03T04:49:49Z",
+      "side": 1,
+      "message": "Isn\u0027t this implicitly handled by the switch statement below?",
+      "range": {
+        "startLine": 733,
+        "startChar": 6,
+        "endLine": 733,
+        "endChar": 44
+      },
+      "revId": "f9db66f2891841aded91c42b3445391eadfab12c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
