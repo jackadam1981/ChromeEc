@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c5d2031_509ee278",
+        "filename": "common/host_command_pd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-02-04T04:20:53Z",
+      "side": 1,
+      "message": "The lightbar task calls pd_get_active_charge_port() to decide which direction to pulse the lights when charging. \n\nYou should change the port BEFORE poking the lightbar. Otherwise, it may occasionally be inaccurate.",
+      "revId": "54539ee2795efb7186587397575c237be523d3cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
