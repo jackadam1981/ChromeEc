@@ -616,6 +616,7 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, spi_chipset_shutdown, HOOK_PRIO_DEFAULT);
 static void spi_init(void)
 {
 	stm32_spi_regs_t *spi = STM32_SPI1_REGS;
+	volatile uint32_t dummy __attribute__((unused));
 
 	/* Reset the SPI Peripheral to clear any existing weird states. */
 	/* Fix for bug chrome-os-partner:31390 */
@@ -629,6 +630,9 @@ static void spi_init(void)
 
 	/* Enable clocks to SPI1 module */
 	STM32_RCC_APB2ENR |= STM32_RCC_PB2_SPI1;
+
+	/* Delay 1 APB clock cycles after the clock is enabled */
+	dummy = spi->cr1;
 
 	/*
 	 * Enable rx/tx DMA and get ready to receive our first transaction and

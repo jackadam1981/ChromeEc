@@ -24,9 +24,13 @@ void gpio_pre_init(void)
 	const struct gpio_info *g = gpio_list;
 	int is_warm = gpio_is_reboot_warm();
 	int i;
+	volatile uint32_t dummy __attribute__((unused));
 
 	/* Required to configure external IRQ lines (SYSCFG_EXTICRn) */
 	STM32_RCC_APB2ENR |= 1 << 0;
+
+	/* Delay 1 APB clock cycles after the clock is enabled */
+	dummy = STM32_EXTI_IMR;
 
 	if (!is_warm)
 		gpio_enable_clocks();

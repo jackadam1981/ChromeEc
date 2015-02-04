@@ -146,8 +146,12 @@ DECLARE_HOOK(HOOK_FREQ_CHANGE, update_prescaler, HOOK_PRIO_DEFAULT);
 
 int __hw_clock_source_init(uint32_t start_t)
 {
+	volatile uint32_t dummy __attribute__((unused));
+
 	/* Enable TIM peripheral block clocks */
 	__hw_timer_enable_clock(TIM_CLOCK32, 1);
+	/* Delay 1 APB clock cycles after the clock is enabled */
+	dummy = STM32_TIM_SR(TIM_CLOCK32);
 
 	/*
 	 * Timer configuration : Upcounter, counter disabled, update event only
@@ -216,8 +220,12 @@ const struct irq_priority IRQ_PRIORITY(IRQ_WD)
 
 void hwtimer_setup_watchdog(void)
 {
+	volatile uint32_t dummy __attribute__((unused));
+
 	/* Enable clock */
 	__hw_timer_enable_clock(TIM_WATCHDOG, 1);
+	/* Delay 1 APB clock cycles after the clock is enabled */
+	dummy = STM32_TIM_SR(TIM_WATCHDOG);
 
 	/*
 	 * Timer configuration : Up counter, counter disabled, update

@@ -334,6 +334,7 @@ void board_i2c_post_init(int port)
 static void i2c_init_port(unsigned int port)
 {
 	const int i2c_clock_bit[] = {21, 22};
+	volatile uint32_t dummy __attribute__((unused));
 
 	if (!(STM32_RCC_APB1ENR & (1 << i2c_clock_bit[port]))) {
 		/* Only unwedge the bus if the clock is off */
@@ -343,6 +344,9 @@ static void i2c_init_port(unsigned int port)
 
 		/* enable I2C2 clock */
 		STM32_RCC_APB1ENR |= 1 << i2c_clock_bit[port];
+
+		/* Delay 1 APB clock cycles after the clock is enabled */
+		dummy = STM32_I2C_CR1(port);
 	}
 
 	/* force reset of the i2c peripheral */

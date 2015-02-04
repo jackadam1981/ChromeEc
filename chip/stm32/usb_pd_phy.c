@@ -493,6 +493,7 @@ void pd_hw_init(int port)
 {
 	struct pd_physical *phy = &pd_phy[port];
 	uint32_t val;
+	volatile uint32_t dummy __attribute__((unused));
 
 	/* set 40 MHz pin speed on communication pins */
 	pd_set_pins_speed(port);
@@ -582,6 +583,8 @@ void pd_hw_init(int port)
 #ifdef CONFIG_PD_USE_DAC_AS_REF
 	/* Enable DAC interface clock. */
 	STM32_RCC_APB1ENR |= (1 << 29);
+	/* Delay 1 APB clock cycles after the clock is enabled */
+	dummy = STM32_DAC_DHR12RD;
 	/* set voltage Vout=0.850V (Vref = 3.0V) */
 	STM32_DAC_DHR12RD = 850 * 4096 / 3000;
 	/* Start DAC channel 1 */
@@ -593,6 +596,8 @@ void pd_hw_init(int port)
 #if defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32F3)
 	/* turn on COMP/SYSCFG */
 	STM32_RCC_APB2ENR |= 1 << 0;
+	/* Delay 1 APB clock cycles after the clock is enabled */
+	dummy = STM32_COMP_CSR;
 	/* currently in hi-speed mode : TODO revisit later, INM = PA0(INM6) */
 	STM32_COMP_CSR = STM32_COMP_CMP1MODE_LSPEED |
 			 STM32_COMP_CMP1INSEL_INM6 |

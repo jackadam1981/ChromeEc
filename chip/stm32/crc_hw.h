@@ -11,8 +11,12 @@
 
 static inline void crc32_init(void)
 {
+	volatile uint32_t dummy __attribute__((unused));
+
 	/* switch on CRC controller */
 	STM32_RCC_AHBENR |= 1 << 6; /* switch on CRC controller */
+	/* Delay 1 AHB clock cycles after the clock is enabled */
+	dummy = STM32_CRC_CR;
 	/* reset CRC state */
 	STM32_CRC_CR = STM32_CRC_CR_RESET | STM32_CRC_CR_REV_OUT
 		     | STM32_CRC_CR_REV_IN_WORD;

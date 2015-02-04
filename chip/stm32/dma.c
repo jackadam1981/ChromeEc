@@ -209,8 +209,13 @@ void dma_test(void)
 
 void dma_init(void)
 {
+	volatile uint32_t dummy __attribute__((unused));
+	stm32_dma_regs_t *dma = STM32_DMA1_REGS;
+
 	/* Enable DMA1; current chips don't have DMA2 */
 	STM32_RCC_AHBENR |= STM32_RCC_HB_DMA1;
+	/* Delay 1 AHB clock cycles after the clock is enabled */
+	dummy = dma->isr;
 }
 
 int dma_wait(enum dma_channel channel)

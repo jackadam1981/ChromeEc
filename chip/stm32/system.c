@@ -161,10 +161,14 @@ static void check_reset_cause(void)
 
 void system_pre_init(void)
 {
+	volatile uint32_t dummy __attribute__((unused));
+
 	/* enable clock on Power module */
 	STM32_RCC_APB1ENR |= 1 << 28;
 	/* enable backup registers */
 	STM32_RCC_APB1ENR |= 1 << 27;
+	/* Delay 1 APB clock cycles after the clock is enabled */
+	dummy = STM32_PWR_CR;
 	/* Enable access to RCC CSR register and RTC backup registers */
 	STM32_PWR_CR |= 1 << 8;
 

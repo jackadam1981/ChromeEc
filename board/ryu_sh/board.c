@@ -58,12 +58,15 @@ const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
 void board_config_pre_init(void)
 {
+	volatile uint32_t dummy __attribute__((unused));
 	/*
 	 *  enable SYSCFG clock:
 	 *  otherwise the SYSCFG peripheral is not clocked during the pre-init
 	 *  and the register write as no effect.
 	 */
 	STM32_RCC_APB2ENR |= 1 << 0;
+	/* Delay 1 APB clock cycle after enabling clock */
+	dummy = STM32_SYSCFG_CFGR1;
 	/*
 	 * Remap USART DMA to match the USART driver
 	 * the DMA mapping is :

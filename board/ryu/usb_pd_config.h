@@ -45,7 +45,10 @@
 
 static inline void spi_enable_clock(int port)
 {
+	volatile uint32_t dummy __attribute__((unused));
 	STM32_RCC_APB2ENR |= STM32_RCC_PB2_SPI1;
+	/* Delay 1 APB clock cycle after enabling clock */
+	dummy = STM32_RCC_APB2ENR;
 }
 
 #define DMAC_SPI_TX(p) STM32_DMAC_CH3

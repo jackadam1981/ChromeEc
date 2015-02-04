@@ -105,6 +105,8 @@ int gpio_is_reboot_warm(void)
 
 void gpio_enable_clocks(void)
 {
+	volatile uint32_t dummy __attribute__((unused));
+
 	/*
 	 * Enable all GPIOs clocks
 	 *
@@ -116,6 +118,9 @@ void gpio_enable_clocks(void)
 #else
 	STM32_RCC_APB2ENR |= 0x1fd;
 #endif
+
+	/* Delay 1 APB clock cycles after the clock is enabled */
+	dummy = STM32_GPIO_BSRR(0);
 }
 
 void gpio_set_alternate_function(uint32_t port, uint32_t mask, int func)

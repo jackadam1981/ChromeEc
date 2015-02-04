@@ -19,6 +19,8 @@ int gpio_is_reboot_warm(void)
 
 void gpio_enable_clocks(void)
 {
+	volatile uint32_t dummy __attribute__((unused));
+
 	/*
 	 * Enable all GPIOs clocks
 	 *
@@ -26,6 +28,9 @@ void gpio_enable_clocks(void)
 	 * and support disabling some of them in low-power idle.
 	 */
 	STM32_RCC_AHBENR |= 0x3f;
+
+	/* Delay 1 AHB clock cycles after the clock is enabled */
+	dummy = STM32_GPIO_BSRR(0);
 }
 
 static void gpio_init(void)

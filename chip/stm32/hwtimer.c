@@ -310,6 +310,8 @@ DECLARE_HOOK(HOOK_FREQ_CHANGE, update_prescaler, HOOK_PRIO_DEFAULT);
 
 int __hw_clock_source_init(uint32_t start_t)
 {
+	volatile uint32_t dummy __attribute__((unused));
+
 	/*
 	 * we use 2 chained 16-bit counters to emulate a 32-bit one :
 	 * TIM_CLOCK_MSB is the MSB (Slave)
@@ -319,6 +321,9 @@ int __hw_clock_source_init(uint32_t start_t)
 	/* Enable TIM_CLOCK_MSB and TIM_CLOCK_LSB clocks */
 	__hw_timer_enable_clock(TIM_CLOCK_MSB, 1);
 	__hw_timer_enable_clock(TIM_CLOCK_LSB, 1);
+
+	/* Delay 1 APB clock cycles after the clock is enabled */
+	dummy = STM32_TIM_SR(TIM_CLOCK_LSB);
 
 	/*
 	 * Timer configuration : Upcounter, counter disabled, update event only
@@ -401,9 +406,13 @@ const struct irq_priority IRQ_PRIORITY(IRQ_WD)
 void hwtimer_setup_watchdog(void)
 {
 	struct timer_ctlr *timer = (struct timer_ctlr *)TIM_WD_BASE;
+	volatile uint32_t dummy __attribute__((unused));
 
 	/* Enable clock */
 	__hw_timer_enable_clock(TIM_WATCHDOG, 1);
+
+	/* Delay 1 APB clock cycles after the clock is enabled */
+	dummy = STM32_TIM_SR(TIM_WATCHDOG);
 
 	/*
 	 * Timer configuration : Down counter, counter disabled, update
