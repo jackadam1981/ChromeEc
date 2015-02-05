@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3cee48c7_edfc25c8",
+        "filename": "common/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-02-05T03:48:04Z",
+      "side": 1,
+      "message": "I think this will repeatedly read the same chunk since we\u0027re not bumping offset?",
+      "revId": "85061cf1175e5757e2c8acbc32dcced5af3a953c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
