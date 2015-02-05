@@ -136,6 +136,12 @@ void usb_charger_task(void)
 	struct charge_port_info charge;
 	int type, redetect_timeout;
 	uint32_t wake_event = 0;
+	/*
+	 * TODO(crosbug.com/p/36360): The pericom interrupt line may get
+	 * stuck low on power-on, so force a soft reset on the first pass,
+	 * regardless of whether a charger is detected.
+	 */
+	static int initialized[PD_PORT_COUNT];
 	charge.voltage = USB_BC12_CHARGE_VOLTAGE;
 
 	while (1) {
@@ -150,7 +156,9 @@ void usb_charger_task(void)
 		charger_status = pi3usb9281_get_charger_status(port);
 
 		/* Debounce pin plug order if we detect a charger */
-		if (device_type || PI3USB9281_CHG_STATUS_ANY(charger_status)) {
+		if (device_type || PI3USB9281_CHG_STATUS_ANY(charger_status) ||
+		    !initialized[port]) {
+			initialized[port] = 1;
 			msleep(USB_CHG_DEBOUNCE_DELAY_MS);
 
 			/*
