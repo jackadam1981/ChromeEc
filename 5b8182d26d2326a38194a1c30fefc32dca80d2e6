@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3cdc882f_9d5ea32b",
+        "filename": "driver/pi3usb9281.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-05T18:28:34Z",
+      "side": 1,
+      "message": "why are you also clearing bit 6?",
+      "range": {
+        "startLine": 28,
+        "startChar": 38,
+        "endLine": 28,
+        "endChar": 39
+      },
+      "revId": "5b8182d26d2326a38194a1c30fefc32dca80d2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ce984cf_1cc615a0",
+        "filename": "driver/usb_switch_pi3usb9281.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-05T18:28:34Z",
+      "side": 1,
+      "message": "this will never be true because you are masking off the top three bits. either this check is useless, or we shouldn\u0027t be masking off before this check.\n\nsame in disable_interrupts() and set_switch_manual()",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 26
+      },
+      "revId": "5b8182d26d2326a38194a1c30fefc32dca80d2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
