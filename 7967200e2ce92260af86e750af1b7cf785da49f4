@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc023840_31c690a0",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-05T02:44:12Z",
+      "side": 1,
+      "message": "nit: i don\u0027t think this comment is needed here, it should probably go on line 158 without the todo, since it is already done.",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 143,
+        "endChar": 4
+      },
+      "revId": "7967200e2ce92260af86e750af1b7cf785da49f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dcfd2c74_f27fe890",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-05T02:44:12Z",
+      "side": 1,
+      "message": "a better name would help explain, maybe: interrupts_initialized?",
+      "range": {
+        "startLine": 144,
+        "startChar": 12,
+        "endLine": 144,
+        "endChar": 23
+      },
+      "revId": "7967200e2ce92260af86e750af1b7cf785da49f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
