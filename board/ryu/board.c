@@ -9,6 +9,7 @@
 #include "battery.h"
 #include "case_closed_debug.h"
 #include "charge_manager.h"
+#include "charge_ramp.h"
 #include "charge_state.h"
 #include "charger.h"
 #include "common.h"
@@ -377,4 +378,48 @@ void board_set_charge_limit(int charge_ma)
 					CONFIG_CHARGER_INPUT_CURRENT));
 	if (rv < 0)
 		CPRINTS("Failed to set input current limit for PD");
+}
+
+/**
+ * Return whether ramping is allowed for given supplier
+ */
+int board_is_ramp_allowed(int supplier)
+{
+	return supplier != CHARGE_SUPPLIER_PD &&
+	       supplier != CHARGE_SUPPLIER_TYPEC &&
+	       supplier != CHARGE_SUPPLIER_PROPRIETARY &&
+	       supplier != CHARGE_SUPPLIER_BC12_CDP;
+}
+
+/**
+ * Return the maximum allowed input current
+ */
+int board_get_ramp_current_limit(int supplier)
+{
+	switch (supplier) {
+	case CHARGE_SUPPLIER_BC12_DCP:
+		return 2000;
+	case CHARGE_SUPPLIER_BC12_SDP:
+	case CHARGE_SUPPLIER_OTHER:
+		return 1000;
+	default:
+		return 500;
+	}
+}
+
+/**
+ * Return if board is consuming full amount of input current
+ */
+int board_is_consuming_full_charge(void)
+{
+	int batt_soc = charge_get_percent();
+	return batt_soc >= 1 && batt_soc <= 95;
+}
+
+/**
+ * Return if VBUS is sagging low enough that we should stop ramping
+ */
+int board_is_vbus_too_low(enum chg_ramp_vbus_state ramp_state)
+{
+	return adc_read_channel(ADC_VBUS) < 4700;
 }

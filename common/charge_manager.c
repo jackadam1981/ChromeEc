@@ -5,6 +5,7 @@
 
 #include "adc.h"
 #include "charge_manager.h"
+#include "charge_ramp.h"
 #include "console.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -25,6 +26,9 @@
 /* Keep track of available charge for each charge port. */
 static struct charge_port_info available_charge[CHARGE_SUPPLIER_COUNT]
 					       [PD_PORT_COUNT];
+
+/* Keep track of when the supplier on each port is registered. */
+static timestamp_t registration_time[PD_PORT_COUNT];
 
 /*
  * Charge ceiling for ports. This can be set to temporarily limit the charge
@@ -388,9 +392,13 @@ static void charge_manager_refresh(void)
 			available_charge[new_supplier][new_port].voltage;
 	}
 
-	/* Change the charge limit + charge port if modified. */
-	if (new_port != charge_port || new_charge_current != charge_current) {
-		board_set_charge_limit(new_charge_current);
+	/* Change the charge limit + charge port/supplier if modified. */
+	if (new_port != charge_port || new_charge_current != charge_current ||
+	    new_supplier != charge_supplier) {
+		chg_ramp_charge_supplier_change(
+				new_port, new_supplier,
+				registration_time[new_port]);
+		chg_ramp_set_min_current(new_charge_current);
 		CPRINTS("CL: p%d s%d i%d v%d", new_port, new_supplier,
 			new_charge_current, new_charge_voltage);
 	}
@@ -492,6 +500,7 @@ static void charge_manager_make_change(enum charge_manager_change_type change,
 	if (change == CHANGE_CHARGE) {
 		available_charge[supplier][port].current = charge->current;
 		available_charge[supplier][port].voltage = charge->voltage;
+		registration_time[port] = get_time();
 
 		/*
 		 * If we have a charge on our delayed override port within
