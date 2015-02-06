@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "ac_ramp.h"
 #include "adc.h"
 #include "charge_manager.h"
 #include "console.h"
@@ -354,6 +355,10 @@ static void charge_manager_refresh(void)
 			available_charge[i][new_port].current = 0;
 	}
 
+	/* If charge port changed, notify ac_ramp module */
+	if (new_port != charge_port)
+		ac_ramp_charge_port_change(new_port);
+
 	/*
 	 * Clear override if it wasn't selected as the 'best' port -- it means
 	 * that no charge is available on the port, or the port was rejected.
@@ -384,7 +389,7 @@ static void charge_manager_refresh(void)
 
 	/* Change the charge limit + charge port if modified. */
 	if (new_port != charge_port || new_charge_current != charge_current) {
-		board_set_charge_limit(new_charge_current);
+		ac_ramp_set_baseline_current(new_charge_current);
 		CPRINTS("CL: p%d s%d i%d v%d", new_port, new_supplier,
 			new_charge_current, new_charge_voltage);
 	}
@@ -569,6 +574,11 @@ int charge_manager_get_override(void)
 int charge_manager_get_active_charge_port(void)
 {
 	return charge_port;
+}
+
+int charge_manager_get_active_supplier(void)
+{
+	return charge_supplier;
 }
 
 #ifndef TEST_CHARGE_MANAGER

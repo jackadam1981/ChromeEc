@@ -649,6 +649,22 @@ int pd_is_max_request_allowed(void)
 }
 
 /**
+ * Return if board is consuming full amount of input current
+ */
+int board_is_full_charging(void)
+{
+	return batt_soc > 1 && batt_soc < 95 && charge_state != PD_CHARGE_NONE;
+}
+
+/**
+ * Return if VBUS is sagging low enough that we should stop ramping
+ */
+int board_is_vbus_too_low(void)
+{
+	return adc_read_channel(ADC_VBUS) < 4500;
+}
+
+/**
  * Set the charge limit based upon desired maximum.
  *
  * @param charge_ma     Desired charge limit (mA).
