@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc97ec5c_62abd6ee",
+        "filename": "common/firmware_image.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-02-06T02:28:26Z",
+      "side": 1,
+      "message": "Maker(0xEA) is weak. \nRemember to re-visit this when we merge to ToT.",
+      "range": {
+        "startLine": 19,
+        "startChar": 13,
+        "endLine": 19,
+        "endChar": 17
+      },
+      "revId": "1229d61543fa886571c96928002d74d1403962c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
