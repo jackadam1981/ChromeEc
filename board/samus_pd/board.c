@@ -663,12 +663,45 @@ int pd_is_max_request_allowed(void)
 }
 
 /**
+ * Return whether ramping is allowed for given supplier
+ */
+int board_is_ramp_allowed(int supplier)
+{
+	return supplier != CHARGE_SUPPLIER_PD;
+}
+
+/**
+ * Return if board is consuming full amount of input current
+ */
+int board_is_consuming_full_charge(void)
+{
+	return batt_soc >= 1 && batt_soc <= 95 &&
+		charge_state != PD_CHARGE_NONE;
+}
+
+/**
+ * Return if VBUS is sagging low enough that we should stop ramping
+ */
+int board_is_vbus_too_low(void)
+{
+	return adc_read_channel(ADC_VBUS) < 4600;
+}
+
+/**
  * Set the charge limit based upon desired maximum.
  *
  * @param charge_ma     Desired charge limit (mA).
  */
 void board_set_charge_limit(int charge_ma)
 {
+	static int last_charge_ma;
+
+	/* if current hasn't changed, don't do anything */
+	if (charge_ma == last_charge_ma)
+		return;
+
+	last_charge_ma = charge_ma;
+
 #ifdef CONFIG_PWM
 	int pwm_duty = MA_TO_PWM(charge_ma);
 	if (pwm_duty < 0)
