@@ -8,6 +8,8 @@
 #ifndef __IRQ_HANDLER_H
 #define __IRQ_HANDLER_H
 
+#include "cpu.h"
+
 #ifdef CONFIG_TASK_PROFILING
 #define bl_task_start_irq_handler "bl task_start_irq_handler\n"
 #else
@@ -19,7 +21,7 @@
 #define IRQ_PRIORITY(irqname) CONCAT2(prio_, irqname)
 
 /* re-scheduling flag */
-extern int need_resched_or_profiling;
+extern int need_profiling;
 
 /*
  * Macro to connect the interrupt handler "routine" to the irq number "irq" and
@@ -37,29 +39,22 @@ extern int need_resched_or_profiling;
 			     bl_task_start_irq_handler		\
 			     "bl "#routine"\n"			\
 			     "pop {r2, r3}\n"			\
-	/* read need_resched_or_profiling result after IRQ */   \
+	/* read need_profiling result after IRQ */		\
 			     "ldr r0, [r3]\n"			\
-			     "mov r1, #8\n"			\
 			     "cmp r0, #0\n"			\
 	/* if we need to go through the re-scheduling, go on */ \
-			     "bne 2f\n"				\
+			     "bne 1f\n"				\
 	/* else return from exception */			\
-			  "1: bx r2\n"				\
-	/* check if that's a nested exception */		\
-			  "2: tst r1, r2\n"			\
-	/* if yes return immediatly */				\
-			     "beq 1b\n"				\
-			     "push {r0, r2}\n"			\
-			     "mov r0, #0\n"			\
-			     "mov r1, #0\n"			\
-	/* ensure we have priority 0 during re-scheduling */	\
-			     "cpsid i\n isb\n"			\
-	/* re-schedule the highest priority task */		\
-			     "bl svc_handler\n"			\
-	/* enable interrupts and return from exception */	\
-			     "cpsie i\n"			\
+			     "bx r2\n"				\
+			  "1: push {r0, r2}\n"			\
+			  : : "r"(&need_profiling));		\
+	/* deferred call the scheduler by triggering PendSV */	\
+		asm volatile("mov r2, #1\n"			\
+			     "lsl r2, r2, #28\n"		\
+			     "str r2, [%0]\n"			\
+	/* return */						\
 			     "pop {r0,pc}\n"			\
-			: : "r"(&need_resched_or_profiling));	\
+			: : "r"(&CPU_SCB_ICSR));		\
 	}							\
 	const struct irq_priority IRQ_PRIORITY(irq)		\
 	__attribute__((section(".rodata.irqprio")))		\
