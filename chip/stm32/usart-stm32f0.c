@@ -36,14 +36,8 @@ static void usart_variant_disable(struct usart_config const *config)
 {
 	int index = config->hw->index;
 
-	/*
-	 * Only disable the shared interupt for USART3/4 if both USARTs are
-	 * now disabled.
-	 */
 	if ((index == 0) ||
-	    (index == 1) ||
-	    (index == 2 && configs[3] == NULL) ||
-	    (index == 3 && configs[2] == NULL))
+	    (index == 1))
 		task_disable_irq(config->hw->irq);
 
 	configs[index] = NULL;
@@ -103,44 +97,4 @@ void usart2_interrupt(void)
 }
 
 DECLARE_IRQ(STM32_IRQ_USART2, usart2_interrupt, 2);
-#endif
-
-#if defined(CONFIG_STREAM_USART3)
-struct usart_hw_config const usart3_hw = {
-	.index          = 2,
-	.base           = STM32_USART3_BASE,
-	.irq            = STM32_IRQ_USART3_4,
-	.clock_register = &STM32_RCC_APB1ENR,
-	.clock_enable   = STM32_RCC_PB1_USART3,
-	.ops            = &usart_variant_hw_ops,
-};
-#endif
-
-#if defined(CONFIG_STREAM_USART4)
-struct usart_hw_config const usart4_hw = {
-	.index          = 3,
-	.base           = STM32_USART4_BASE,
-	.irq            = STM32_IRQ_USART3_4,
-	.clock_register = &STM32_RCC_APB1ENR,
-	.clock_enable   = STM32_RCC_PB1_USART4,
-	.ops            = &usart_variant_hw_ops,
-};
-#endif
-
-#if defined(CONFIG_STREAM_USART3) || defined(CONFIG_STREAM_USART4)
-void usart3_4_interrupt(void)
-{
-	/*
-	 * This interrupt handler could be called with one of these configs
-	 * not initialized, so we need to check here and only call the generic
-	 * USART interrupt handler for initialized configs.
-	 */
-	if (configs[2])
-		usart_interrupt(configs[2]);
-
-	if (configs[3])
-		usart_interrupt(configs[3]);
-}
-
-DECLARE_IRQ(STM32_IRQ_USART3_4, usart3_4_interrupt, 2);
 #endif

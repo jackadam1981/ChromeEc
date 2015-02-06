@@ -15,7 +15,5 @@
  */
 extern struct usart_hw_config const usart1_hw;
 extern struct usart_hw_config const usart2_hw;
-extern struct usart_hw_config const usart3_hw;
-extern struct usart_hw_config const usart4_hw;
 
 #endif /* CHIP_STM32_USART_STM32F0_H */
