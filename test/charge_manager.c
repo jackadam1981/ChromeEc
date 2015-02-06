@@ -133,7 +133,7 @@ static void initialize_charge_table(int current, int voltage, int ceil)
 		set_charger_role(i, DEDICATED_CHARGER);
 		pd_set_role(i, PD_ROLE_SINK);
 		for (j = 0; j < CHARGE_SUPPLIER_COUNT; ++j)
-			charge_manager_update(j, i, &charge);
+			charge_manager_update_charge(j, i, &charge);
 	}
 	wait_for_charge_manager_refresh();
 }
@@ -157,7 +157,7 @@ static int test_initialization(void)
 			if (i == CHARGE_SUPPLIER_COUNT - 1 &&
 			    j == PD_PORT_COUNT - 1)
 				break;
-			charge_manager_update(i, j, &charge);
+			charge_manager_update_charge(i, j, &charge);
 		}
 
 	/* Verify no active charge port, since all pairs haven't updated */
@@ -165,9 +165,9 @@ static int test_initialization(void)
 	TEST_ASSERT(active_charge_port == CHARGE_PORT_NONE);
 
 	/* Update last pair and verify a charge port has been selected */
-	charge_manager_update(CHARGE_SUPPLIER_COUNT-1,
-			      PD_PORT_COUNT-1,
-			      &charge);
+	charge_manager_update_charge(CHARGE_SUPPLIER_COUNT-1,
+				     PD_PORT_COUNT-1,
+				     &charge);
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(active_charge_port != CHARGE_PORT_NONE);
 
@@ -188,9 +188,9 @@ static int test_priority(void)
 	 */
 	charge.current = 2000;
 	charge.voltage = 5000;
-	charge_manager_update(CHARGE_SUPPLIER_TEST6, 0, &charge);
+	charge_manager_update_charge(CHARGE_SUPPLIER_TEST6, 0, &charge);
 	charge.current = 1000;
-	charge_manager_update(CHARGE_SUPPLIER_TEST2, 1, &charge);
+	charge_manager_update_charge(CHARGE_SUPPLIER_TEST2, 1, &charge);
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(active_charge_port == 1);
 	TEST_ASSERT(active_charge_limit == 1000);
@@ -200,7 +200,7 @@ static int test_priority(void)
 	 * lower charge.
 	 */
 	charge.current = 1500;
-	charge_manager_update(CHARGE_SUPPLIER_TEST7, 1, &charge);
+	charge_manager_update_charge(CHARGE_SUPPLIER_TEST7, 1, &charge);
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(active_charge_port == 1);
 	TEST_ASSERT(active_charge_limit == 1000);
@@ -210,20 +210,20 @@ static int test_priority(void)
 	 * which happens to be a different port.
 	 */
 	charge.current = 0;
-	charge_manager_update(CHARGE_SUPPLIER_TEST2, 1, &charge);
+	charge_manager_update_charge(CHARGE_SUPPLIER_TEST2, 1, &charge);
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(active_charge_port == 0);
 	TEST_ASSERT(active_charge_limit == 2000);
 
 	/* Add a charge at equal priority and verify highest charge selected */
 	charge.current = 2500;
-	charge_manager_update(CHARGE_SUPPLIER_TEST5, 0, &charge);
+	charge_manager_update_charge(CHARGE_SUPPLIER_TEST5, 0, &charge);
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(active_charge_port == 0);
 	TEST_ASSERT(active_charge_limit == 2500);
 
 	charge.current = 3000;
-	charge_manager_update(CHARGE_SUPPLIER_TEST6, 1, &charge);
+	charge_manager_update_charge(CHARGE_SUPPLIER_TEST6, 1, &charge);
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(active_charge_port == 1);
 	TEST_ASSERT(active_charge_limit == 3000);
@@ -234,7 +234,7 @@ static int test_priority(void)
 	 * selected as the tiebreaker.
 	 */
 	charge.current = 3000;
-	charge_manager_update(CHARGE_SUPPLIER_TEST6, 0, &charge);
+	charge_manager_update_charge(CHARGE_SUPPLIER_TEST6, 0, &charge);
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(active_charge_port == 1);
 	TEST_ASSERT(active_charge_limit == 3000);
@@ -268,9 +268,9 @@ static int test_charge_ceil(void)
 	/* Verify that ceiling is ignored in determining active charge port */
 	charge.current = 2000;
 	charge.voltage = 5000;
-	charge_manager_update(0, 0, &charge);
+	charge_manager_update_charge(0, 0, &charge);
 	charge.current = 2500;
-	charge_manager_update(0, 1, &charge);
+	charge_manager_update_charge(0, 1, &charge);
 	charge_manager_set_ceil(1, 750);
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(active_charge_port == 1);
@@ -294,7 +294,7 @@ static int test_new_power_request(void)
 	/* Charge from port 1 and verify NPR on port 1 only */
 	charge.current = 1000;
 	charge.voltage = 5000;
-	charge_manager_update(CHARGE_SUPPLIER_TEST2, 1, &charge);
+	charge_manager_update_charge(CHARGE_SUPPLIER_TEST2, 1, &charge);
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(new_power_request[0] == 0);
 	TEST_ASSERT(new_power_request[1] == 1);
@@ -309,14 +309,14 @@ static int test_new_power_request(void)
 
 	/* Change port 1 voltage and verify NPR on port 1 */
 	charge.voltage = 4000;
-	charge_manager_update(CHARGE_SUPPLIER_TEST2, 1, &charge);
+	charge_manager_update_charge(CHARGE_SUPPLIER_TEST2, 1, &charge);
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(new_power_request[0] == 0);
 	TEST_ASSERT(new_power_request[1] == 1);
 	clear_new_power_requests();
 
 	/* Add low-priority source and verify no NPRs */
-	charge_manager_update(CHARGE_SUPPLIER_TEST6, 0, &charge);
+	charge_manager_update_charge(CHARGE_SUPPLIER_TEST6, 0, &charge);
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(new_power_request[0] == 0);
 	TEST_ASSERT(new_power_request[1] == 0);
@@ -326,7 +326,7 @@ static int test_new_power_request(void)
 	 * Add higher-priority source and verify NPR on both ports,
 	 * since we're switching charge ports.
 	 */
-	charge_manager_update(CHARGE_SUPPLIER_TEST1, 0, &charge);
+	charge_manager_update_charge(CHARGE_SUPPLIER_TEST1, 0, &charge);
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(new_power_request[0] == 1);
 	TEST_ASSERT(new_power_request[1] == 1);
@@ -348,8 +348,8 @@ static int test_override(void)
 	 */
 	charge.current = 500;
 	charge.voltage = 5000;
-	charge_manager_update(CHARGE_SUPPLIER_TEST2, 0, &charge);
-	charge_manager_update(CHARGE_SUPPLIER_TEST1, 1, &charge);
+	charge_manager_update_charge(CHARGE_SUPPLIER_TEST2, 0, &charge);
+	charge_manager_update_charge(CHARGE_SUPPLIER_TEST1, 1, &charge);
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(active_charge_port == 1);
 	TEST_ASSERT(active_charge_limit == 500);
@@ -369,14 +369,14 @@ static int test_override(void)
 	 * is again selected.
 	 */
 	charge.current = 0;
-	charge_manager_update(CHARGE_SUPPLIER_TEST2, 0, &charge);
+	charge_manager_update_charge(CHARGE_SUPPLIER_TEST2, 0, &charge);
 	charge_manager_set_override(0);
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(active_charge_port == 1);
 
 	/* Set non-zero charge on port 0 and verify override was auto-removed */
 	charge.current = 250;
-	charge_manager_update(CHARGE_SUPPLIER_TEST5, 0, &charge);
+	charge_manager_update_charge(CHARGE_SUPPLIER_TEST5, 0, &charge);
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(active_charge_port == 1);
 
@@ -385,13 +385,13 @@ static int test_override(void)
 	 * priority on the override port.
 	 */
 	charge.current = 300;
-	charge_manager_update(CHARGE_SUPPLIER_TEST2, 0, &charge);
+	charge_manager_update_charge(CHARGE_SUPPLIER_TEST2, 0, &charge);
 	charge_manager_set_override(0);
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(active_charge_port == 0);
 	TEST_ASSERT(active_charge_limit == 300);
 	charge.current = 100;
-	charge_manager_update(CHARGE_SUPPLIER_TEST1, 0, &charge);
+	charge_manager_update_charge(CHARGE_SUPPLIER_TEST1, 0, &charge);
 	charge_manager_set_override(0);
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(active_charge_port == 0);
@@ -408,7 +408,7 @@ static int test_override(void)
 	charge_manager_set_override(0);
 	wait_for_charge_manager_refresh();
 	charge.current = 200;
-	charge_manager_update(CHARGE_SUPPLIER_TEST1, 0, &charge);
+	charge_manager_update_charge(CHARGE_SUPPLIER_TEST1, 0, &charge);
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(active_charge_port == 0);
 	TEST_ASSERT(active_charge_limit == 200);
@@ -423,7 +423,7 @@ static int test_override(void)
 
 	/* Update a charge supplier, verify that we still aren't charging */
 	charge.current = 200;
-	charge_manager_update(CHARGE_SUPPLIER_TEST1, 0, &charge);
+	charge_manager_update_charge(CHARGE_SUPPLIER_TEST1, 0, &charge);
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(active_charge_port == CHARGE_PORT_NONE);
 	TEST_ASSERT(active_charge_limit == 0);
@@ -453,7 +453,7 @@ static int test_dual_role(void)
 	set_charger_role(0, DUAL_ROLE_CHARGER);
 	charge.current = 500;
 	charge.voltage = 5000;
-	charge_manager_update(CHARGE_SUPPLIER_TEST2, 0, &charge);
+	charge_manager_update_charge(CHARGE_SUPPLIER_TEST2, 0, &charge);
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(active_charge_port == CHARGE_PORT_NONE);
 	TEST_ASSERT(active_charge_limit == 0);
@@ -475,7 +475,7 @@ static int test_dual_role(void)
 	/* Mark P0 as the override port, verify that we again charge. */
 	charge_manager_set_override(0);
 	charge.current = 550;
-	charge_manager_update(CHARGE_SUPPLIER_TEST2, 0, &charge);
+	charge_manager_update_charge(CHARGE_SUPPLIER_TEST2, 0, &charge);
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(active_charge_port == 0);
 	TEST_ASSERT(active_charge_limit == 550);
@@ -488,7 +488,7 @@ static int test_dual_role(void)
 	set_charger_role(1, DUAL_ROLE_CHARGER);
 	charge_manager_set_override(1);
 	charge.current = 500;
-	charge_manager_update(CHARGE_SUPPLIER_TEST6, 1, &charge);
+	charge_manager_update_charge(CHARGE_SUPPLIER_TEST6, 1, &charge);
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(active_charge_port == 1);
 	TEST_ASSERT(active_charge_limit == 500);
@@ -498,7 +498,7 @@ static int test_dual_role(void)
 	/* Set override back to P0 and verify switch */
 	charge_manager_set_override(0);
 	charge.current = 600;
-	charge_manager_update(CHARGE_SUPPLIER_TEST2, 0, &charge);
+	charge_manager_update_charge(CHARGE_SUPPLIER_TEST2, 0, &charge);
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(active_charge_port == 0);
 	TEST_ASSERT(active_charge_limit == 600);
@@ -507,11 +507,11 @@ static int test_dual_role(void)
 
 	/* Insert a dedicated charger and verify override is removed */
 	charge.current = 0;
-	charge_manager_update(CHARGE_SUPPLIER_TEST6, 1, &charge);
+	charge_manager_update_charge(CHARGE_SUPPLIER_TEST6, 1, &charge);
 	wait_for_charge_manager_refresh();
 	set_charger_role(1, DEDICATED_CHARGER);
 	charge.current = 400;
-	charge_manager_update(CHARGE_SUPPLIER_TEST6, 1, &charge);
+	charge_manager_update_charge(CHARGE_SUPPLIER_TEST6, 1, &charge);
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(active_charge_port == 1);
 	TEST_ASSERT(active_charge_limit == 400);
@@ -523,9 +523,9 @@ static int test_dual_role(void)
 	 */
 	set_charger_role(0, DEDICATED_CHARGER);
 	charge.current = 0;
-	charge_manager_update(CHARGE_SUPPLIER_TEST2, 0, &charge);
+	charge_manager_update_charge(CHARGE_SUPPLIER_TEST2, 0, &charge);
 	charge.current = 500;
-	charge_manager_update(CHARGE_SUPPLIER_TEST2, 0, &charge);
+	charge_manager_update_charge(CHARGE_SUPPLIER_TEST2, 0, &charge);
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(active_charge_port == 0);
 	TEST_ASSERT(active_charge_limit == 500);
@@ -536,11 +536,11 @@ static int test_dual_role(void)
 	 */
 	set_charger_role(0, DUAL_ROLE_CHARGER);
 	charge.current = 0;
-	charge_manager_update(CHARGE_SUPPLIER_TEST2, 0, &charge);
+	charge_manager_update_charge(CHARGE_SUPPLIER_TEST2, 0, &charge);
 	charge.current = 500;
-	charge_manager_update(CHARGE_SUPPLIER_TEST2, 0, &charge);
+	charge_manager_update_charge(CHARGE_SUPPLIER_TEST2, 0, &charge);
 	charge.current = 200;
-	charge_manager_update(CHARGE_SUPPLIER_TEST6, 1, &charge);
+	charge_manager_update_charge(CHARGE_SUPPLIER_TEST6, 1, &charge);
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(active_charge_port == 1);
 	TEST_ASSERT(active_charge_limit == 200);
@@ -560,7 +560,7 @@ static int test_rejected_port(void)
 	/* Set a charge on P0. */
 	charge.current = 500;
 	charge.voltage = 5000;
-	charge_manager_update(CHARGE_SUPPLIER_TEST2, 0, &charge);
+	charge_manager_update_charge(CHARGE_SUPPLIER_TEST2, 0, &charge);
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(active_charge_port == 0);
 	TEST_ASSERT(active_charge_limit == 500);
@@ -568,14 +568,14 @@ static int test_rejected_port(void)
 	/* Set P0 as rejected, and verify that it doesn't become active. */
 	set_charge_port_to_reject(1);
 	charge.current = 1000;
-	charge_manager_update(CHARGE_SUPPLIER_TEST1, 1, &charge);
+	charge_manager_update_charge(CHARGE_SUPPLIER_TEST1, 1, &charge);
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(active_charge_port == 0);
 	TEST_ASSERT(active_charge_limit == 500);
 
 	/* Don't reject P0, and verify it can become active. */
 	set_charge_port_to_reject(CHARGE_PORT_NONE);
-	charge_manager_update(CHARGE_SUPPLIER_TEST1, 1, &charge);
+	charge_manager_update_charge(CHARGE_SUPPLIER_TEST1, 1, &charge);
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(active_charge_port == 1);
 	TEST_ASSERT(active_charge_limit == 1000);
