@@ -39,25 +39,14 @@ extern int need_resched_or_profiling;
 			     "pop {r2, r3}\n"			\
 	/* read need_resched_or_profiling result after IRQ */   \
 			     "ldr r0, [r3]\n"			\
-			     "mov r1, #8\n"			\
 			     "cmp r0, #0\n"			\
 	/* if we need to go through the re-scheduling, go on */ \
-			     "bne 2f\n"				\
+			     "bne 1f\n"				\
 	/* else return from exception */			\
-			  "1: bx r2\n"				\
-	/* check if that's a nested exception */		\
-			  "2: tst r1, r2\n"			\
-	/* if yes return immediatly */				\
-			     "beq 1b\n"				\
-			     "push {r0, r2}\n"			\
-			     "mov r0, #0\n"			\
-			     "mov r1, #0\n"			\
-	/* ensure we have priority 0 during re-scheduling */	\
-			     "cpsid i\n isb\n"			\
-	/* re-schedule the highest priority task */		\
-			     "bl svc_handler\n"			\
-	/* enable interrupts and return from exception */	\
-			     "cpsie i\n"			\
+			     "bx r2\n"				\
+			  "1: push {r0, r2}\n"			\
+	/* deferred call the scheduler */			\
+			     "bl scheduler_postinterrupt_trigger\n"	\
 			     "pop {r0,pc}\n"			\
 			: : "r"(&need_resched_or_profiling));	\
 	}							\

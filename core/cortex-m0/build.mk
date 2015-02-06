@@ -15,5 +15,5 @@ CFLAGS_CPU+=-mno-unaligned-access
 
 core-y=cpu.o init.o thumb_case.o div.o lmul.o
 core-$(CONFIG_COMMON_PANIC_OUTPUT)+=panic.o
-core-$(CONFIG_COMMON_RUNTIME)+=switch.o task.o
+core-$(CONFIG_COMMON_RUNTIME)+=switch.o task.o scheduler_postinterrupt.o
 core-$(CONFIG_WATCHDOG)+=watchdog.o
