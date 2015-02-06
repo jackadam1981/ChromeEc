@@ -1714,8 +1714,6 @@ static inline int get_typec_current_limit(int cc_voltage)
 		charge = 3000;
 	else if (cc_voltage > TYPE_C_SRC_1500_THRESHOLD)
 		charge = 1500;
-	else if (cc_voltage > PD_SNK_VA)
-		charge = 500;
 	else
 		charge = 0;
 
