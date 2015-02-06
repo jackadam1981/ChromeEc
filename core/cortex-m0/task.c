@@ -10,6 +10,7 @@
 #include "console.h"
 #include "cpu.h"
 #include "link_defs.h"
+#include "scheduler_postinterrupt.h"
 #include "task.h"
 #include "timer.h"
 #include "uart.h"
@@ -647,6 +648,8 @@ int task_start(void)
 	task_start_time = exc_end_time = get_time().val;
 #endif
 	start_called = 1;
+
+	scheduler_postinterrupt_enable();
 
 	return __task_start(&need_resched_or_profiling);
 }
