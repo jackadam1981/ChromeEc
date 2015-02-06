@@ -35,6 +35,7 @@ int charge_manager_get_override(void);
 
 /* Returns the current active charge port, as determined by charge manager */
 int charge_manager_get_active_charge_port(void);
+int charge_manager_get_active_supplier(void);
 
 /* Board-level callback functions */
 
