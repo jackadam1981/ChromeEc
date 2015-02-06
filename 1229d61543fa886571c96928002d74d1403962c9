@@ -22,6 +22,30 @@
       "revId": "1229d61543fa886571c96928002d74d1403962c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c64949b_e841d35e",
+        "filename": "common/firmware_image.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-02-06T16:59:26Z",
+      "side": 1,
+      "message": "Yes. I will re-visit this as part of sw sync patch.",
+      "parentUuid": "dc97ec5c_62abd6ee",
+      "range": {
+        "startLine": 19,
+        "startChar": 13,
+        "endLine": 19,
+        "endChar": 17
+      },
+      "revId": "1229d61543fa886571c96928002d74d1403962c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
