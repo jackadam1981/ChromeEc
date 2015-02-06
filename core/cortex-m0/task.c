@@ -284,6 +284,31 @@ void __schedule(int desched, int resched)
 	asm("svc 0" : : "r"(p0), "r"(p1));
 }
 
+void pendsv_handler(void) __attribute__((naked));
+void pendsv_handler(void)
+{
+	asm volatile(
+		"mov r0, lr\n"
+		/* Must push registers in pairs to keep 64-bit aligned
+		* stack for ARM EABI. */
+		"push {r0, lr}\n"
+		/* Clear the irq */
+		"mov r3, %0\n"
+		"mov r2, #1\n"
+		"lsl r2, r2, #27\n"
+		"str r2, [r3]\n"
+		/* ensure we have priority 0 during re-scheduling */
+		"mov r0, #0\n"
+		"mov r1, #0\n"
+		"cpsid i\n isb\n"
+		/* re-schedule the highest priority task */
+		"bl svc_handler\n"
+		/* enable interrupts and return from exception */
+		"cpsie i\n"
+		"pop {r0,pc}\n"
+	: : "r"(&CPU_SCB_ICSR));
+}
+
 #ifdef CONFIG_TASK_PROFILING
 void task_start_irq_handler(void *excep_return)
 {
