@@ -663,12 +663,69 @@ int pd_is_max_request_allowed(void)
 }
 
 /**
+ * Return whether ramping is allowed for given supplier
+ */
+int board_is_ramp_allowed(int supplier)
+{
+	return supplier != CHARGE_SUPPLIER_PD &&
+	       supplier != CHARGE_SUPPLIER_TYPEC &&
+	       supplier != CHARGE_SUPPLIER_PROPRIETARY &&
+	       supplier != CHARGE_SUPPLIER_BC12_CDP;
+}
+
+/**
+ * Return the maximum allowed input current
+ */
+int board_get_ramp_current_limit(int supplier)
+{
+	switch (supplier) {
+	case CHARGE_SUPPLIER_BC12_DCP:
+		return 2000;
+	case CHARGE_SUPPLIER_BC12_SDP:
+	case CHARGE_SUPPLIER_OTHER:
+		return 1000;
+	default:
+		return 500;
+	}
+}
+
+/**
+ * Return if board is consuming full amount of input current
+ */
+int board_is_consuming_full_charge(void)
+{
+	return batt_soc >= 1 && batt_soc < 95;
+}
+
+/**
+ * Return if VBUS is sagging low enough that we should stop ramping
+ */
+int board_is_vbus_too_low(void)
+{
+	/*
+	 * Check if VBUS is too low, or if we are not allowing charging.
+	 * If we are not allowing charging, it's because the EC saw
+	 * ACOK go low, so we know vbus is drooping too far.
+	 */
+	return (adc_read_channel(ADC_VBUS) < 4600) ||
+	       (charge_state == PD_CHARGE_NONE);
+}
+
+/**
  * Set the charge limit based upon desired maximum.
  *
  * @param charge_ma     Desired charge limit (mA).
  */
 void board_set_charge_limit(int charge_ma)
 {
+	static int last_charge_ma = -1;
+
+	/* if current hasn't changed, don't do anything */
+	if (charge_ma == last_charge_ma)
+		return;
+
+	last_charge_ma = charge_ma;
+
 #ifdef CONFIG_PWM
 	int pwm_duty = MA_TO_PWM(charge_ma);
 	if (pwm_duty < 0)
@@ -755,6 +812,11 @@ static int ec_status_host_cmd(struct host_cmd_handler_args *args)
 				gpio_set_level(GPIO_USB_C1_CHARGE_EN_L, 1);
 				pd_set_new_power_request(
 					pd_status.active_charge_port);
+				/*
+				 * Wake charge ramp task so that it will check
+				 * board_is_vbus_too_low() and stop ramping up.
+				 */
+				task_wake(TASK_ID_CHG_RAMP);
 				CPRINTS("Chg: None");
 				break;
 			case PD_CHARGE_5V:
