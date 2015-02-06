@@ -284,6 +284,18 @@ void __schedule(int desched, int resched)
 	asm("svc 0" : : "r"(p0), "r"(p1));
 }
 
+void pendsv_handler(void)
+{
+	/* Clear pending flag */
+	CPU_SCB_ICSR = (1 << 27);
+
+	/* ensure we have priority 0 during re-scheduling */
+	__asm__ __volatile__("cpsid i");
+	/* re-schedule the highest priority task */
+	svc_handler(0, 0);
+	__asm__ __volatile__("cpsie i");
+}
+
 #ifdef CONFIG_TASK_PROFILING
 void task_start_irq_handler(void *excep_return)
 {
