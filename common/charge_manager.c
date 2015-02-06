@@ -5,6 +5,7 @@
 
 #include "adc.h"
 #include "charge_manager.h"
+#include "charge_ramp.h"
 #include "console.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -388,9 +389,11 @@ static void charge_manager_refresh(void)
 			available_charge[new_supplier][new_port].voltage;
 	}
 
-	/* Change the charge limit + charge port if modified. */
-	if (new_port != charge_port || new_charge_current != charge_current) {
-		board_set_charge_limit(new_charge_current);
+	/* Change the charge limit + charge port/supplier if modified. */
+	if (new_port != charge_port || new_charge_current != charge_current ||
+	    new_supplier != charge_supplier) {
+		chg_ramp_charge_supplier_change(new_port, new_supplier);
+		chg_ramp_set_min_current(new_charge_current);
 		CPRINTS("CL: p%d s%d i%d v%d", new_port, new_supplier,
 			new_charge_current, new_charge_voltage);
 	}
