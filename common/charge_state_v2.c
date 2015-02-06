@@ -726,11 +726,7 @@ wait_for_it:
 		notify_host_of_low_battery();
 
 		/* And the EC console */
-		if (!(curr.batt.flags & BATT_FLAG_BAD_STATE_OF_CHARGE) &&
-		    curr.batt.state_of_charge != prev_charge) {
-			show_charging_progress();
-			prev_charge = curr.batt.state_of_charge;
-		}
+		show_charging_progress();
 
 		/* Turn charger off if it's not needed */
 		if (curr.state == ST_IDLE || curr.state == ST_DISCHARGE) {
