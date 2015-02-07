@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c2c947c_e87033c8",
+        "filename": "common/ac_ramp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1001164
+      },
+      "writtenOn": "2015-02-07T00:57:48Z",
+      "side": 1,
+      "message": "Does this need initializing (for first pass of ac_ramp_task while loop) or do we rely on zero init and AC_RAMP_DISCONNECTED position in enum?",
+      "range": {
+        "startLine": 45,
+        "startChar": 12,
+        "endLine": 45,
+        "endChar": 25
+      },
+      "revId": "e5f0267e18dcdd3aa10dfa3df6f80a102240a92d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c31a0d0_47a12e84",
+        "filename": "common/ac_ramp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1001164
+      },
+      "writtenOn": "2015-02-07T00:57:48Z",
+      "side": 1,
+      "message": "Do we want to have a max current? For sure we should limit to 3A because that is what the cable is rated at. Could argue about a lower limit (the Samsung 2.1A charger detects as DCP, so we would probably want that; the yoshi charger is the only 3A we know about)",
+      "range": {
+        "startLine": 165,
+        "startChar": 3,
+        "endLine": 165,
+        "endChar": 13
+      },
+      "revId": "e5f0267e18dcdd3aa10dfa3df6f80a102240a92d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
