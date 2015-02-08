@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1013bf4_9e27d9b1",
+        "filename": "common/charge_ramp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-08T22:42:49Z",
+      "side": 1,
+      "message": "TODO: if the supplier suddenly changes to a PD supplier, we have to use the negotiated current.",
+      "range": {
+        "startLine": 199,
+        "startChar": 7,
+        "endLine": 199,
+        "endChar": 22
+      },
+      "revId": "ce928df059eb4e29f14f4b7dbfadef685b9db5f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1013bf4_be2a9579",
+        "filename": "common/charge_ramp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-08T22:42:49Z",
+      "side": 1,
+      "message": "do we need to monitor VBUS and start ramping down the input current limit if it starts going low here?",
+      "range": {
+        "startLine": 200,
+        "startChar": 3,
+        "endLine": 200,
+        "endChar": 19
+      },
+      "revId": "ce928df059eb4e29f14f4b7dbfadef685b9db5f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
