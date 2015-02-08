@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "114c0f8a_8428a6aa",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-08T00:27:07Z",
+      "side": 1,
+      "message": "do we really need to get the dualrole capabilities variable from the PD module? the PD module already calls charge_manager every time it changes, seems like a waste.",
+      "range": {
+        "startLine": 135,
+        "startChar": 16,
+        "endLine": 135,
+        "endChar": 53
+      },
+      "revId": "d2673de0f5b58e8847604da13b3a7f2bdf53d832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "51520724_063ddaeb",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 984,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-08T00:27:07Z",
+      "side": 1,
+      "message": "can\u0027t this just pass in CAP_DUALROLE directly? then we don\u0027t need the dualrole_capability variable in this module at all.",
+      "range": {
+        "startLine": 984,
+        "startChar": 3,
+        "endLine": 984,
+        "endChar": 33
+      },
+      "revId": "d2673de0f5b58e8847604da13b3a7f2bdf53d832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
