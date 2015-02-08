@@ -45,6 +45,30 @@
       "revId": "ce928df059eb4e29f14f4b7dbfadef685b9db5f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1013bf4_5e95d11f",
+        "filename": "common/charge_ramp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1001164
+      },
+      "writtenOn": "2015-02-08T23:44:37Z",
+      "side": 1,
+      "message": "Seems like a good idea to me, perhaps things change with temperature or something. Certainly better to drop current here than risk undervoltage. Maybe just drop back one step and stay in STABLE? \n\nOTOH if it is because something else got plugged in to a multiple outlet adapter it might be fairer to go back to DETECT?",
+      "parentUuid": "f1013bf4_be2a9579",
+      "range": {
+        "startLine": 200,
+        "startChar": 3,
+        "endLine": 200,
+        "endChar": 19
+      },
+      "revId": "ce928df059eb4e29f14f4b7dbfadef685b9db5f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
