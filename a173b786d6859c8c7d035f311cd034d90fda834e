@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "917c7ff2_68b20395",
+        "filename": "core/cortex-m0/cpu.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-02-09T22:50:40Z",
+      "side": 1,
+      "message": "SCB?\n\nOr maybe that\u0027s short for \"serbice\" ;)",
+      "range": {
+        "startLine": 24,
+        "startChar": 8,
+        "endLine": 24,
+        "endChar": 20
+      },
+      "revId": "a173b786d6859c8c7d035f311cd034d90fda834e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "917c7ff2_48753fe3",
+        "filename": "core/cortex-m0/scheduler_postinterrupt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-02-09T22:50:40Z",
+      "side": 1,
+      "message": "Well, really set the priority.\n\nMove setting this to cpu_init(), where we set SVC handler prio.",
+      "range": {
+        "startLine": 16,
+        "startChar": 29,
+        "endLine": 16,
+        "endChar": 35
+      },
+      "revId": "a173b786d6859c8c7d035f311cd034d90fda834e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "917c7ff2_c8312f65",
+        "filename": "core/cortex-m0/scheduler_postinterrupt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-02-09T22:50:40Z",
+      "side": 1,
+      "message": "Yes, and just need to set the bit (\u003d, not |\u003d)",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 14
+      },
+      "revId": "a173b786d6859c8c7d035f311cd034d90fda834e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "917c7ff2_680cc3b6",
+        "filename": "core/cortex-m0/scheduler_postinterrupt.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-02-09T22:50:40Z",
+      "side": 1,
+      "message": "Header comments describing what they do?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 4
+      },
+      "revId": "a173b786d6859c8c7d035f311cd034d90fda834e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
