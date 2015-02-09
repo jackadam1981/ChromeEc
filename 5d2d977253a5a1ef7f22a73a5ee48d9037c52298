@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b19ee36a_f1e0a84a",
+        "filename": "board/mighty/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2015-02-09T20:36:28Z",
+      "side": 1,
+      "message": "This is good now! but you should include /* fall through */ as per the kernel coding style.",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 61
+      },
+      "revId": "5d2d977253a5a1ef7f22a73a5ee48d9037c52298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b19ee36a_d1e3a454",
+        "filename": "board/mighty/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2015-02-09T20:36:28Z",
+      "side": 1,
+      "message": "This is good now! but you should include /* fall through */ as per the kernel coding style.",
+      "range": {
+        "startLine": 175,
+        "startChar": 22,
+        "endLine": 175,
+        "endChar": 61
+      },
+      "revId": "5d2d977253a5a1ef7f22a73a5ee48d9037c52298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
