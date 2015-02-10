@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1ca1b90_f67f9ecd",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-10T02:28:55Z",
+      "side": 1,
+      "message": "why not move this check, and the set of dualrole_capability[] to charge_manager_update_dualrole(), then this function doesn\u0027t need the extra arg for cap, it can just get it from the array.",
+      "range": {
+        "startLine": 460,
+        "startChar": 2,
+        "endLine": 463,
+        "endChar": 34
+      },
+      "revId": "2615c61d94e34e0c363a2288664015cffb1a0568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
