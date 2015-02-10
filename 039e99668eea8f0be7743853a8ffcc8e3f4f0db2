@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b16fc375_29d04dca",
+        "filename": "test/charge_ramp.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-10T15:58:27Z",
+      "side": 1,
+      "message": "given that we keep having range checks like this and like slightly under/over. maybe a function/macro to check if a variable is in a specific range would be better:\n\nstatic int is_in_range(x, min, max)\n{\n  return x \u003e\u003d min \u0026\u0026 x \u003c\u003d max;\n}",
+      "range": {
+        "startLine": 199,
+        "startChar": 14,
+        "endLine": 199,
+        "endChar": 62
+      },
+      "revId": "039e99668eea8f0be7743853a8ffcc8e3f4f0db2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
