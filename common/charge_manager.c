@@ -22,6 +22,9 @@
 #define POWER_SWAP_TIMEOUT (PD_T_SRC_RECOVER_MAX + PD_T_SRC_TURN_ON + \
 			    PD_T_SAFE_0V + 500 * MSEC)
 
+/* Periodically log info about active port */
+#define LOG_ACTIVE_PORT_TIMEOUT (60 * SECOND)
+
 /* Keep track of available charge for each charge port. */
 static struct charge_port_info available_charge[CHARGE_SUPPLIER_COUNT]
 					       [PD_PORT_COUNT];
@@ -34,6 +37,13 @@ static int charge_ceil[PD_PORT_COUNT];
 
 /* Dual-role capability of attached partner port */
 static enum dualrole_capabilities dualrole_capability[PD_PORT_COUNT];
+
+#ifdef CONFIG_USB_PD_LOGGING
+/* Mark port as dirty when making changes, for later logging */
+static int save_log[PD_PORT_COUNT];
+
+static void charge_manager_log_active_port(void);
+#endif
 
 /* Store current state of port enable / charge current. */
 static int charge_port = CHARGE_PORT_NONE;
@@ -69,6 +79,10 @@ static void charge_manager_init(void)
 		charge_ceil[i] = CHARGE_CEIL_NONE;
 		dualrole_capability[i] = CAP_UNKNOWN;
 	}
+#ifdef CONFIG_USB_PD_LOGGING
+	hook_call_deferred(charge_manager_log_active_port,
+			   LOG_ACTIVE_PORT_TIMEOUT);
+#endif
 }
 DECLARE_HOOK(HOOK_INIT, charge_manager_init, HOOK_PRIO_DEFAULT-1);
 
@@ -193,10 +207,8 @@ static void charge_manager_save_log(int port)
 {
 	uint16_t flags = 0;
 	struct ec_response_usb_pd_power_info pinfo;
-	uint16_t voltage_now;
-	static uint16_t last_voltage[PD_PORT_COUNT];
-	static uint16_t last_flags[PD_PORT_COUNT];
 
+	save_log[port] = 0;
 	charge_manager_fill_power_info(port, &pinfo);
 
 	/* Flags are stored in the data field */
@@ -207,22 +219,23 @@ static void charge_manager_save_log(int port)
 	flags |= pinfo.role | (pinfo.type << CHARGE_FLAGS_TYPE_SHIFT) |
 		 (pinfo.dualrole ? CHARGE_FLAGS_DUAL_ROLE : 0);
 
-	/*
-	 * Check for a log change, not considering timestamp. Also, ignore
-	 * voltage_now fluctuations of < 500mV.
-	 */
-	voltage_now = pinfo.meas.voltage_now;
-	if (last_flags[port] == flags &&
-	    voltage_now < last_voltage[port] + 500 &&
-	    last_voltage[port] < voltage_now + 500)
-		return;
-	last_voltage[port] = voltage_now;
-	last_flags[port] = flags;
-
 	pd_log_event(PD_EVENT_MCU_CHARGE,
 		     PD_LOG_PORT_SIZE(port, sizeof(pinfo.meas)),
 		     flags, &pinfo.meas);
 }
+
+static void charge_manager_log_active_port(void)
+{
+	int port = charge_port;
+
+	hook_call_deferred(charge_manager_log_active_port,
+			   LOG_ACTIVE_PORT_TIMEOUT);
+	if (port < 0 || port >= PD_PORT_COUNT)
+		return;
+
+	charge_manager_save_log(port);
+}
+DECLARE_DEFERRED(charge_manager_log_active_port);
 #endif /* CONFIG_USB_PD_LOGGING */
 
 /**
@@ -421,9 +434,25 @@ static void charge_manager_refresh(void)
 	charge_port = new_port;
 
 #ifdef CONFIG_USB_PD_LOGGING
-	/* Log possible charge state changes. */
+	/*
+	 * Write a log under the following conditions:
+	 *  1. A port becomes active or
+	 *  2. A port becomes inactive or
+	 *  3. The active charge port power limit changes or
+	 *  4. Any supplier change on an inactive port
+	 */
+	if (updated_new_port != CHARGE_PORT_NONE)
+		save_log[updated_new_port] = 1;
+	/* Don't log non-meaningful changes on charge port */
+	else if (charge_port != CHARGE_PORT_NONE)
+		save_log[charge_port] = 0;
+
+	if (updated_old_port != CHARGE_PORT_NONE)
+		save_log[updated_old_port] = 1;
+
 	for (i = 0; i < PD_PORT_COUNT; ++i)
-		charge_manager_save_log(i);
+		if (save_log[i])
+			charge_manager_save_log(i);
 #endif
 
 	/* New power requests must be set only after updating the globals. */
@@ -455,6 +484,9 @@ static void charge_manager_make_change(enum charge_manager_change_type change,
 		if (charge->current > 0 &&
 		    available_charge[supplier][port].current == 0)
 			clear_override = 1;
+#ifdef CONFIG_USB_PD_LOGGING
+		save_log[port] = 1;
+#endif
 		break;
 	case CHANGE_DUALROLE:
 		/* Ignore when capability is unchanged */
