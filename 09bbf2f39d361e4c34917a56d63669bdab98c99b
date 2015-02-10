@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31d67340_6dad1504",
+        "filename": "common/charge_ramp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2015-02-10T04:17:05Z",
+      "side": 1,
+      "message": "TODO: we may need separate sets of oc_info for different ports. If port 0 has a high priority supplier and port 1 has a low priority one, overcurrent on port 0 may result in alternating active port. This breaks our oc detection algorithm?",
+      "revId": "09bbf2f39d361e4c34917a56d63669bdab98c99b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
