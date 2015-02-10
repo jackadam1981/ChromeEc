@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51d4c72d_d684a478",
+        "filename": "common/charge_ramp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-10T01:55:18Z",
+      "side": 1,
+      "message": "TODO: we should add a param to this command to enable or disable ramping for debugging.",
+      "revId": "cc943b854a449c19b6d4596c0aa8eee2810f48ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "51d4c72d_b9e59b2f",
+        "filename": "test/charge_ramp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-10T01:55:18Z",
+      "side": 1,
+      "message": "the seems dependent on CHARGE_DETECT_DELAY. should we just make CHARGE_DETECT_DELAY a CONFIG option, or put it in header file, or at a minimum just define a local CONFIG so if we do make a change, we can change it one place in this file instead of all tests.",
+      "range": {
+        "startLine": 124,
+        "startChar": 8,
+        "endLine": 124,
+        "endChar": 14
+      },
+      "revId": "cc943b854a449c19b6d4596c0aa8eee2810f48ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1e5171d_12c46c2f",
+        "filename": "test/charge_ramp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-10T01:55:18Z",
+      "side": 1,
+      "message": "should we check that it has ramped up to something close to 1500? for example not ramping at all would pass this test.",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 145,
+        "endChar": 38
+      },
+      "revId": "cc943b854a449c19b6d4596c0aa8eee2810f48ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1e5171d_d294a426",
+        "filename": "test/charge_ramp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-10T01:55:18Z",
+      "side": 1,
+      "message": "same... not ramping at all would pass this test",
+      "range": {
+        "startLine": 167,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 38
+      },
+      "revId": "cc943b854a449c19b6d4596c0aa8eee2810f48ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1ca1b90_36e3d630",
+        "filename": "test/charge_ramp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-10T01:55:18Z",
+      "side": 1,
+      "message": "should we test that each time you plug it in, it resets the ramp to 500mA? we don\u0027t want to have a bug where we resume ramping where we left off.",
+      "range": {
+        "startLine": 192,
+        "startChar": 2,
+        "endLine": 192,
+        "endChar": 58
+      },
+      "revId": "cc943b854a449c19b6d4596c0aa8eee2810f48ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1ca1b90_f6479e62",
+        "filename": "test/charge_ramp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-10T01:55:18Z",
+      "side": 1,
+      "message": "other tests we could use:\n\n- plug into multiple ports. the second port should take over ramping starting at its minimum current.\n- vbus starts drooping after being stable, which would be vbus_low_current_ma might suddenly decrease (this will currently fail, but we need to fix that).\n- test overcurrent where the OC threshold changes slightly between plugs (still not sure what current limit we should actually set in this case).",
+      "revId": "cc943b854a449c19b6d4596c0aa8eee2810f48ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
