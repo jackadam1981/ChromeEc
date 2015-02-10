@@ -125,6 +125,24 @@
       "revId": "cc943b854a449c19b6d4596c0aa8eee2810f48ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "51d4c72d_f93313f1",
+        "filename": "test/charge_ramp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-10T01:57:07Z",
+      "side": 1,
+      "message": "also\n\n- test supplier changes after we reach stable from one that can ramp to one that can\u0027t, or vice versa. (won\u0027t work yet)",
+      "parentUuid": "f1ca1b90_f6479e62",
+      "revId": "cc943b854a449c19b6d4596c0aa8eee2810f48ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
