@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71f46bd1_afbc19e9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-02-10T02:30:57Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 7,
+        "startChar": 15,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "9354700cfb03c6ecc3cdb069f8116a8d0f3e0eac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1ca1b90_b6a24615",
+        "filename": "core/cortex-m0/irq_handler.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-02-10T02:30:57Z",
+      "side": 1,
+      "message": "why not setting PendSV directly into task_set_event when in interrupt context, rather than deferring it to the end of the handler ?\nThat seems overcomplicated.",
+      "range": {
+        "startLine": 54,
+        "startChar": 9,
+        "endLine": 54,
+        "endChar": 21
+      },
+      "revId": "9354700cfb03c6ecc3cdb069f8116a8d0f3e0eac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "51d4c72d_fcc42199",
+        "filename": "core/cortex-m0/irq_handler.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-02-10T02:30:57Z",
+      "side": 1,
+      "message": "then all this assembly helper seems pretty useless, we can probably simplify it out.",
+      "range": {
+        "startLine": 56,
+        "startChar": 9,
+        "endLine": 56,
+        "endChar": 20
+      },
+      "revId": "9354700cfb03c6ecc3cdb069f8116a8d0f3e0eac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1ca1b90_5691b2af",
+        "filename": "core/cortex-m0/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-02-10T02:30:57Z",
+      "side": 1,
+      "message": "it seems there is no reason to write this vector in assembly.\nPlease write it in C.",
+      "range": {
+        "startLine": 287,
+        "startChar": 41,
+        "endLine": 287,
+        "endChar": 46
+      },
+      "revId": "9354700cfb03c6ecc3cdb069f8116a8d0f3e0eac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
