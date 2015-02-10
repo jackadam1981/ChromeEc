@@ -261,16 +261,34 @@ static int check_for_power_off_event(void)
 	return POWER_OFF_CANCEL;
 }
 
-static void llama_lid_event(void)
+/**
+ * Set the LCD backlight enable pin and override the signal from SoC.
+ *
+ * @param asserted	OFF (=0) or ON (=1)
+ */
+static void mtk_backlight_override(int asserted)
 {
+	/* Signal is active-low */
+	gpio_set_level(GPIO_EC_BL_OVERRIDE, !asserted);
+	return;
+}
+
+static void mtk_lid_event(void)
+{
+	/* Override the SoC Panel backlight enable signal, to make sure the
+	 * backlight status is correct, even the SoC is dead.
+	 */
+	mtk_backlight_override(lid_is_open());
+
 	/* Power task only cares about lid-open events */
 	if (!lid_is_open())
 		return;
 
 	lid_opened = 1;
 	task_wake(TASK_ID_CHIPSET);
+	return;
 }
-DECLARE_HOOK(HOOK_LID_CHANGE, llama_lid_event, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_LID_CHANGE, mtk_lid_event, HOOK_PRIO_DEFAULT);
 
 enum power_state power_chipset_init(void)
 {
