@@ -91,6 +91,53 @@
       "revId": "9354700cfb03c6ecc3cdb069f8116a8d0f3e0eac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71f46bd1_2f6f0965",
+        "filename": "core/cortex-m0/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-10T02:47:53Z",
+      "side": 1,
+      "message": "agree, I think the C would be much more straightforward:\n\n/* Clear the irq */\nCPU_SCB_ICSR \u003d (1\u003c\u003c27);\n\n/* re-schedule the highest priority task */\nasm volatile(cpsid i; isb);\n__svc_handler(0, 0);\nasm volatile(spsie i);",
+      "parentUuid": "f1ca1b90_5691b2af",
+      "range": {
+        "startLine": 287,
+        "startChar": 41,
+        "endLine": 287,
+        "endChar": 46
+      },
+      "revId": "9354700cfb03c6ecc3cdb069f8116a8d0f3e0eac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31d67340_6dd9957a",
+        "filename": "core/cortex-m0/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-10T02:47:53Z",
+      "side": 1,
+      "message": "As vincent said, I think you can get rid of this variable, and instead of setting it here, just trigger the pendsv interrupt:\nCPU_SCB_ICSR \u003d (1\u003c\u003c28)",
+      "range": {
+        "startLine": 387,
+        "startChar": 3,
+        "endLine": 387,
+        "endChar": 33
+      },
+      "revId": "9354700cfb03c6ecc3cdb069f8116a8d0f3e0eac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
