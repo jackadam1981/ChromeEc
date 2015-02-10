@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "31d67340_0d85711c",
+        "filename": "core/cortex-m0/irq_handler.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-10T02:54:07Z",
+      "side": 1,
+      "message": "if you remove need_resched_or_profiling and just set the pendSV interrupt directly in task_set_event(), then you still need to enable the interrupt directly here if CONFIG_TASK_PROFILING is on. but you can just put the next three assembly lines behind the CONFIG flag.",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 55
+      },
+      "revId": "9354700cfb03c6ecc3cdb069f8116a8d0f3e0eac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1ca1b90_b6a24615",
         "filename": "core/cortex-m0/irq_handler.h",
         "patchSetId": 4
