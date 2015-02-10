@@ -69,6 +69,30 @@
       "revId": "ce928df059eb4e29f14f4b7dbfadef685b9db5f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "91647f9b_6862c37d",
+        "filename": "common/charge_ramp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-10T15:59:43Z",
+      "side": 1,
+      "message": "Done, we decided to reset and ramp all over again if VBUS is drooping.",
+      "parentUuid": "f1013bf4_5e95d11f",
+      "range": {
+        "startLine": 200,
+        "startChar": 3,
+        "endLine": 200,
+        "endChar": 19
+      },
+      "revId": "ce928df059eb4e29f14f4b7dbfadef685b9db5f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
