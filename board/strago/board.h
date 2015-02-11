@@ -31,6 +31,16 @@
 #define CONFIG_SPI_FLASH_SIZE 524288
 #define CONFIG_SPI_FLASH_W25Q64
 
+#define CONFIG_CHARGER
+#define CONFIG_BATTERY_SMART
+#define CONFIG_CHARGER_V2
+#define CONFIG_CHARGER_BQ24770
+#define CONFIG_CHARGER_ILIM_PIN_DISABLED
+#define CONFIG_CHARGER_SENSE_RESISTOR 10
+#define CONFIG_CHARGER_SENSE_RESISTOR_AC 10
+#define CONFIG_CHARGER_INPUT_CURRENT 2240
+#define CONFIG_CHARGER_DISCHARGE_ON_AC
+
 #define CONFIG_I2C
 
 /* I2C ports */
@@ -65,6 +75,9 @@ enum power_signal {
 	/* Number of X86 signals */
 	POWER_SIGNAL_COUNT
 };
+
+/* Discharge battery when on AC power for factory test. */
+int board_discharge_on_ac(int enable);
 
 #endif /* !__ASSEMBLER__ */
 
