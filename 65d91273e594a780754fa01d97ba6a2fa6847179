@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b62b39c2_097fe946",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-02-11T23:17:36Z",
+      "side": 1,
+      "message": "I\u0027m not sure why that code was removed.  We have it there for the following scenario:\n\n1. EC boots into EC-RO\n2. EC boots AP.\n3. AP tells EC (as part of software sync) to sysjump to EC-RW\u003e\n4. AP continues booting.\n\nIf the GPIOs initialize to an AP-is-off state (for example, deasserting ALLPWRGOOD), then when EC-RW runs gpio_pre_init() in step 3, it will turn off the AP.",
+      "revId": "65d91273e594a780754fa01d97ba6a2fa6847179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b62b39c2_e9d1b5d1",
+        "filename": "chip/npcx/keyboard_raw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-02-11T23:17:36Z",
+      "side": 1,
+      "message": "But how does it work then?  If KBS only supports open-drain and the signal is pulled down by Silego, won\u0027t column 2 read incorrectly?",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 27
+      },
+      "revId": "65d91273e594a780754fa01d97ba6a2fa6847179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "760c6178_0f7fe546",
+        "filename": "chip/npcx/lfw/ec_lfw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-02-11T23:17:36Z",
+      "side": 1,
+      "message": "This address should be defined in a header file (or at least at the top of this file), rather than hard-coded here.",
+      "range": {
+        "startLine": 133,
+        "startChar": 51,
+        "endLine": 133,
+        "endChar": 61
+      },
+      "revId": "65d91273e594a780754fa01d97ba6a2fa6847179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96a1d5bc_607192c5",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-02-11T23:17:36Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem to be used anymore.",
+      "range": {
+        "startLine": 46,
+        "startChar": 9,
+        "endLine": 46,
+        "endChar": 23
+      },
+      "revId": "65d91273e594a780754fa01d97ba6a2fa6847179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b69c1985_e14da683",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-02-11T23:17:36Z",
+      "side": 1,
+      "message": "static char buf[32];",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 4
+      },
+      "revId": "65d91273e594a780754fa01d97ba6a2fa6847179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
