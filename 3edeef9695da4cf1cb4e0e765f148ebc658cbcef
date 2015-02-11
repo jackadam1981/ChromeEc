@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "b67179c9_39380f6a",
+        "filename": "core/cortex-m0/irq_handler.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-02-11T16:57:13Z",
+      "side": 1,
+      "message": "Yes I know, I even did some precise comments about this earlier",
+      "parentUuid": "3694a9fe_bd7abf9d",
+      "range": {
+        "startLine": 43,
+        "startChar": 9,
+        "endLine": 43,
+        "endChar": 21
+      },
+      "revId": "3edeef9695da4cf1cb4e0e765f148ebc658cbcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1605e5fd_5cb95da7",
         "filename": "core/cortex-m0/irq_handler.h",
         "patchSetId": 7
@@ -179,6 +203,30 @@
       "side": 1,
       "message": "yes, we can remove the #ifndef CONFIG_TASK_PROFILING in task_set_event(), but it still doesn\u0027t fix the problem. If CONFIG_TASK_PROFILING is defined, then we need to trigger PendSV on every irq, even if task_set_event() isn\u0027t called.\n\nbut i think this whole thing (lines 43-54) can be put in an #ifdef CONFIG_TASK_PROFILING. if it\u0027s not defined, no reason to run this stuff.",
       "parentUuid": "1147af3f_8cb427b3",
+      "range": {
+        "startLine": 54,
+        "startChar": 9,
+        "endLine": 54,
+        "endChar": 21
+      },
+      "revId": "3edeef9695da4cf1cb4e0e765f148ebc658cbcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6cbf13a_0b393dff",
+        "filename": "core/cortex-m0/irq_handler.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-02-11T16:57:13Z",
+      "side": 1,
+      "message": "Even when CONFIG_TASK_PROFILING is defined, performance-wise I don\u0027t think it\u0027s acceptable to generate 2 interrupts for every single IRQ just to avoid modifying the current accounting code.",
+      "parentUuid": "f69db126_fba12f88",
       "range": {
         "startLine": 54,
         "startChar": 9,
