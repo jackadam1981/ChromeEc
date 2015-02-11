@@ -51,6 +51,14 @@ enum led_color {
 	LED_COLOR_COUNT  /* Number of colors, not a color itself */
 };
 
+#ifdef CONFIG_LED_POWER_COLOR_GREEN
+#define EC_LED_COLOR_POWER EC_LED_COLOR_GREEN
+#define POWER_LED_COLOR LED_GREEN
+#else
+#define EC_LED_COLOR_POWER EC_LED_COLOR_WHITE
+#define POWER_LED_COLOR LED_WHITE
+#endif
+
 #ifdef CONFIG_LED_POLICY_STD_BATTERY
 static int bat_led_set_color(enum led_color color)
 {
@@ -85,7 +93,7 @@ static int pwr_led_set_color(enum led_color color)
 	case LED_OFF:
 		gpio_set_level(GPIO_POWER_LED, POWER_LED_OFF);
 		break;
-	case LED_WHITE:
+	case POWER_LED_COLOR:
 		gpio_set_level(GPIO_POWER_LED,
 			       lid_is_open() ? POWER_LED_ON : POWER_LED_OFF);
 		break;
@@ -107,7 +115,7 @@ void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 #endif
 #ifdef CONFIG_LED_POLICY_STD_POWER
 	case EC_LED_ID_POWER_LED:
-		brightness_range[EC_LED_COLOR_WHITE] = 1;
+		brightness_range[EC_LED_COLOR_POWER] = 1;
 		break;
 #endif
 	default:
@@ -132,7 +140,7 @@ int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 #ifdef CONFIG_LED_POLICY_STD_POWER
 	case EC_LED_ID_POWER_LED:
 		gpio_set_level(GPIO_POWER_LED,
-			       (brightness[EC_LED_COLOR_WHITE] != 0) ?
+			       (brightness[EC_LED_COLOR_POWER] != 0) ?
 					POWER_LED_ON : POWER_LED_OFF);
 		break;
 #endif
@@ -152,9 +160,9 @@ static void std_led_set_power(void)
 	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
 		pwr_led_set_color(LED_OFF);
 	else if (chipset_in_state(CHIPSET_STATE_ON))
-		pwr_led_set_color(LED_WHITE);
+		pwr_led_set_color(POWER_LED_COLOR);
 	else if (chipset_in_state(CHIPSET_STATE_SUSPEND))
-		pwr_led_set_color((power_second & 3) ? LED_OFF : LED_WHITE);
+		pwr_led_set_color((power_second & 3) ? LED_OFF : POWER_LED_COLOR);
 }
 #endif
 
