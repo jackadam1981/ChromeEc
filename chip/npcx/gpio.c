@@ -15,6 +15,7 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#include "system_chip.h"
 
 /* Marco functions for GPIO WUI/ALT table */
 #define NPCX_GPIO(grp, pin) \
@@ -30,6 +31,10 @@
 	ALT_MASK(NPCX_DEVALT##grp##_##pin)
 #define NPCX_ALT(grp, pin) \
 	ALT_GROUP_##grp, ALT_PIN(grp, pin)
+
+/* Flags for PWM IO type */
+#define PWM_IO_FUNC        (1 << 1)  /* PWM optional func bit */
+#define PWM_IO_OD          (1 << 2)  /* PWM IO open-drain bit */
 
 struct gpio_wui_map {
 	uint8_t gpio_port;
@@ -299,6 +304,23 @@ int gpio_find_irq_from_io(uint8_t port, uint8_t mask)
 	return -1;
 }
 
+void gpio_pwm_io_type_sel(uint8_t alt_mask, uint8_t func)
+{
+	uint8_t chan = 0;
+	do {
+		alt_mask = (alt_mask >> 1);
+		if (alt_mask == 0)
+			break;
+		chan++;
+	} while (1);
+
+	/* Set PWM open drain output is open drain type*/
+	if (func & PWM_IO_OD)
+		SET_BIT(NPCX_PWMCTLEX(chan), NPCX_PWMCTLEX_OD_OUT);
+	else /* Set PWM open drain output is push-pull type*/
+		CLEAR_BIT(NPCX_PWMCTLEX(chan), NPCX_PWMCTLEX_OD_OUT);
+}
+
 int gpio_alt_sel(uint8_t port, uint8_t mask, uint8_t func)
 {
 	int i;
@@ -309,8 +331,13 @@ int gpio_alt_sel(uint8_t port, uint8_t mask, uint8_t func)
 			/* Enable alternative function if func >=0 */
 			if (func <= 0) /* GPIO functionality */
 				NPCX_DEVALT(map->alt_group) &= ~(map->alt_mask);
-			else
+			else {
 				NPCX_DEVALT(map->alt_group) |= (map->alt_mask);
+				/* PWM optional functionality */
+				if (func & PWM_IO_FUNC)
+					gpio_pwm_io_type_sel(map->alt_mask,
+							func);
+			}
 			return 1;
 		}
 	}
@@ -490,29 +517,12 @@ int gpio_disable_interrupt(enum gpio_signal signal)
 	return EC_SUCCESS;
 }
 
-int gpio_is_reboot_warm(void)
-{
-	/* Check for debugger or watch-dog Warm reset */
-	if (IS_BIT_SET(NPCX_RSTCTL, NPCX_RSTCTL_DBGRST_STS)
-	/* TODO: 5M5G has cleared WDRST_STS bit in booter */
-#if !defined(CHIP_NPCX5M5G)
-		/* watch-dog warm reset */
-		|| (IS_BIT_SET(NPCX_T0CSR, NPCX_T0CSR_WDRST_STS)
-		&& (IS_BIT_SET(NPCX_TWCFG, NPCX_TWCFG_WDRST_MODE))))
-#else
-		)
-#endif
-		return 1;
-	else
-		return 0;
-}
-
 void gpio_pre_init(void)
 {
 	const struct gpio_info *g = gpio_list;
+	const struct gpio_wui_map *map;
 	int flags;
 	int i, j;
-	int is_warm = gpio_is_reboot_warm();
 
 	uint32_t	ksi_mask = (~((1<<KEYBOARD_ROWS)-1)) & KB_ROW_MASK;
 	uint32_t	ks0_mask = (~((1<<KEYBOARD_COLS)-1)) & KB_COL_MASK;
@@ -533,7 +543,6 @@ void gpio_pre_init(void)
 		for (j = 0; j < 8; j++)
 			NPCX_WKPCL(i, j) = 0xFF;
 
-
 	/* No support enable clock for the GPIO port in run and sleep. */
 	/* Set flag for each GPIO pin in gpio_list */
 	for (i = 0; i < GPIO_COUNT; i++, g++) {
@@ -542,16 +551,16 @@ void gpio_pre_init(void)
 		if (flags & GPIO_DEFAULT)
 			continue;
 
-		/*
-		 * If this is a warm reboot, don't set the output levels or
-		 * we'll shut off the AP.
-		 */
-		if (is_warm)
-			flags &= ~(GPIO_LOW | GPIO_HIGH);
-
 		/* Set up GPIO based on flags */
 		gpio_set_flags_by_mask(g->port, g->mask, flags);
 	}
+
+	/* Put power button information in bbram */
+	g = gpio_list + GPIO_POWER_BUTTON_L;
+	map = gpio_find_wui_from_io(g->port, g->mask);
+	NPCX_BBRAM(BBRM_DATA_INDEX_PBUTTON) = map->wui_table;
+	NPCX_BBRAM(BBRM_DATA_INDEX_PBUTTON + 1) = map->wui_group;
+	NPCX_BBRAM(BBRM_DATA_INDEX_PBUTTON + 2) = map->wui_mask;
 }
 
 /* List of GPIO IRQs to enable. Don't automatically enable interrupts for

@@ -562,6 +562,9 @@ static void i2c_init(void)
 	/* Enable clock for I2C peripheral */
 	clock_enable_peripheral(CGC_OFFSET_I2C, CGC_I2C_MASK,
 			CGC_MODE_RUN | CGC_MODE_SLEEP);
+
+	/* Set I2C freq */
+	i2c_freq_changed();
 	/*
 	 * initialize smb status and register
 	 */

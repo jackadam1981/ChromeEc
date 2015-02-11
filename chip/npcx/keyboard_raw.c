@@ -40,6 +40,14 @@ void keyboard_raw_init(void)
 	NPCX_KBSOUT0 = 0x00;
 	NPCX_KBSOUT1 = 0x00;
 
+#ifdef CONFIG_KEYBOARD_COL2_INVERTED
+	/*
+	 * When column 2 is inverted, the Silego has a pulldown instead of a
+	 * pullup.  And Nuvoton EC KBS outputs only support open-drain.
+	 * So it should do nothing
+	 */
+#endif
+
 	/*
 	 * Enable interrupts for the inputs.  The top-level interrupt is still
 	 * masked off, so this won't trigger interrupts yet.
@@ -87,6 +95,11 @@ test_mockable void keyboard_raw_drive_column(int col)
 	/* Drive one line for detection */
 	else
 		mask = ((~(1 << col)) & KB_COL_MASK);
+
+#ifdef CONFIG_KEYBOARD_COL2_INVERTED
+	/* Invert column 2 output */
+	mask ^= (1 << 2);
+#endif
 
 	/* Set KBSOUT */
 	NPCX_KBSOUT0 = (mask & 0xFFFF);

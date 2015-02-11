@@ -59,11 +59,12 @@ enum npcx_mft_clk_src {
  * RPM = (n - 1) * m * f * 60 / poles / TACH
  *   n = Fan number of edges = (RPM_EDGES + 1)
  *   m = Fan multiplier defined by RANGE
- *   f = PWM and MFT freq
+ *   f = PWM and MFT operation freq
  *   poles = 2
  */
 #define RPM_TO_TACH(pwm_channel, rpm) \
-	MIN(((uint32_t)(pwm_channels[pwm_channel].freq)*30*RPM_EDGES*RPM_SCALE \
+	MIN(((uint32_t)(pwm_channels[pwm_channel].freq) \
+	*(pwm_channels[pwm_channel].cycle_pulses)*30*RPM_EDGES*RPM_SCALE \
 	/MAX((rpm), 1)), (pwm_channels[pwm_channel].cycle_pulses))
 
 #define TACH_TO_RPM(mft_channel, tach) \
@@ -231,8 +232,6 @@ static void fan_config(int ch, int enable_mft_read_rpm)
 	fan_init_ch = ch;
 	pwm_config(pwm_ch);
 
-	/* Mux mft */
-	CLEAR_BIT(NPCX_DEVALT(3), NPCX_DEVALT3_TB1_TACH2_SL1);
 	/* Configure pins from GPIOs to FAN */
 	gpio_config_module(MODULE_PWM_FAN, 1);
 
@@ -438,10 +437,12 @@ int fan_get_rpm_actual(int ch)
 			/* Need to avoid underflow state happen */
 			rpm_actual = fans[ch].rpm_max;
 			/*
-			 * Flag TDPND means mft underflow happen then complete
-			 * measurement immediately
+			 * Flag TDPND means mft underflow happen,
+			 * but let MFT still can re-measure actual rpm
+			 * when user change pwm/fan duty during
+			 * TACHO_UNDERFLOW state.
 			 */
-			tacho_status.cur_state = TACHO_UNDERFLOW;
+			tacho_status.cur_state = TACHO_IN_IDLE;
 			CPRINTS("TACHO_UNDERFLOW");
 
 			/* Clear pending flags */
