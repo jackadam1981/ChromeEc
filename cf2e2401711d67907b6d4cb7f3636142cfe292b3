@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "161ec559_348470ee",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-02-11T01:56:15Z",
+      "side": 1,
+      "message": "So we\u0027ll try ramping a real non-PD type-C charger?",
+      "revId": "cf2e2401711d67907b6d4cb7f3636142cfe292b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "161ec559_74dd48e1",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-02-11T01:56:15Z",
+      "side": 1,
+      "message": "Make 4600mA a config option or a constant?",
+      "revId": "cf2e2401711d67907b6d4cb7f3636142cfe292b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b63a59c3_71b21819",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-02-11T01:56:15Z",
+      "side": 1,
+      "message": "Will we skip some required initialization if we initially call board_set_charge_limit(0)? May want to initialize last_charge_ma to -1.",
+      "revId": "cf2e2401711d67907b6d4cb7f3636142cfe292b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "963f15b5_101bc46c",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-02-11T01:56:15Z",
+      "side": 1,
+      "message": "I think this can be combined with the code you changed just below, no need to do it before clearing the override + calculating the charge current.",
+      "revId": "cf2e2401711d67907b6d4cb7f3636142cfe292b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
