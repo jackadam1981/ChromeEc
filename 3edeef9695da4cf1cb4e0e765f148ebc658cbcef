@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d6834dc3_a26dbe6b",
+        "filename": "core/cortex-m0/irq_handler.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2015-02-11T04:32:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1147af3f_cc846ff0",
+      "range": {
+        "startLine": 23,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 16
+      },
+      "revId": "3edeef9695da4cf1cb4e0e765f148ebc658cbcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16a1655e_7cf2f9f7",
         "filename": "core/cortex-m0/irq_handler.h",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2015-02-11T04:22:55Z",
       "side": 1,
       "message": "we are checking at runtime what we know at compile-time (CONFIG_TASK_PROFILING)\nthat\u0027s bad, please fix it",
+      "range": {
+        "startLine": 43,
+        "startChar": 9,
+        "endLine": 43,
+        "endChar": 21
+      },
+      "revId": "3edeef9695da4cf1cb4e0e765f148ebc658cbcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3694a9fe_bd7abf9d",
+        "filename": "core/cortex-m0/irq_handler.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2015-02-11T04:32:22Z",
+      "side": 1,
+      "message": "need_profiling !\u003d CONFIG_TASK_PROFILING\nIt\u0027s about the same thing, but need_profiling is 0 in the first few irq calls, we cannot just call the profiling code all the time.",
+      "parentUuid": "16a1655e_7cf2f9f7",
       "range": {
         "startLine": 43,
         "startChar": 9,
