@@ -4,6 +4,7 @@
  */
 /* Strago board-specific configuration */
 
+#include "charger.h"
 #include "extpower.h"
 #include "gpio.h"
 #include "i2c.h"
@@ -35,3 +36,9 @@ const struct i2c_port_t i2c_ports[]  = {
 	{"thermal",	3, 100}
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+
+int board_discharge_on_ac(int enable)
+{
+	return charger_discharge_on_ac(enable);
+}
+
