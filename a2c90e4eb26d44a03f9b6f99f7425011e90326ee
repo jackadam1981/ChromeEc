@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56abdd9d_41e2142d",
+        "filename": "common/led_policy_std.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-02-11T23:52:42Z",
+      "side": 1,
+      "message": "#define EC_LED_COLOR_POWER EC_LED_COLOR_##CONFIG_LED_POWER_COLOR\n#define POWER_LED_COLOR LED_##CONFIG_LED_POWER_COLOR",
+      "revId": "a2c90e4eb26d44a03f9b6f99f7425011e90326ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6c0ad6a_9aebed01",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 791,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-02-11T23:52:42Z",
+      "side": 1,
+      "message": "Should be able to  \n\n#define CONFIG_LED_POWER_COLOR GREEN",
+      "range": {
+        "startLine": 791,
+        "startChar": 7,
+        "endLine": 791,
+        "endChar": 35
+      },
+      "revId": "a2c90e4eb26d44a03f9b6f99f7425011e90326ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
