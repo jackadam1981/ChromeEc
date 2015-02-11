@@ -160,6 +160,7 @@ static inline void update_sense_data(uint8_t *lpc_status,
 	 */
 #ifdef CONFIG_LID_ANGLE
 	lpc_data[0] = motion_lid_get_angle();
+	CPRINTF("Lid angle = %d\n", lpc_data[0]);
 #else
 	lpc_data[0] = LID_ANGLE_UNRELIABLE;
 #endif
