@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "16a1655e_7cf2f9f7",
+        "filename": "core/cortex-m0/irq_handler.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-02-11T04:22:55Z",
+      "side": 1,
+      "message": "we are checking at runtime what we know at compile-time (CONFIG_TASK_PROFILING)\nthat\u0027s bad, please fix it",
+      "range": {
+        "startLine": 43,
+        "startChar": 9,
+        "endLine": 43,
+        "endChar": 21
+      },
+      "revId": "3edeef9695da4cf1cb4e0e765f148ebc658cbcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1605e5fd_5cb95da7",
         "filename": "core/cortex-m0/irq_handler.h",
         "patchSetId": 7
@@ -65,6 +88,53 @@
         "startChar": 9,
         "endLine": 54,
         "endChar": 21
+      },
+      "revId": "3edeef9695da4cf1cb4e0e765f148ebc658cbcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1147af3f_8cb427b3",
+        "filename": "core/cortex-m0/irq_handler.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-02-11T04:22:55Z",
+      "side": 1,
+      "message": "then remove the #ifndef CONFIG_TASK_PROFILING in task_set_event, this complicated junk is useless",
+      "parentUuid": "d6834dc3_820bdace",
+      "range": {
+        "startLine": 54,
+        "startChar": 9,
+        "endLine": 54,
+        "endChar": 21
+      },
+      "revId": "3edeef9695da4cf1cb4e0e765f148ebc658cbcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16a1655e_7c1bd99d",
+        "filename": "core/cortex-m0/task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-02-11T04:22:55Z",
+      "side": 1,
+      "message": "it\u0027s more or less an alias of start_called below.\nquestionably useful",
+      "range": {
+        "startLine": 129,
+        "startChar": 4,
+        "endLine": 129,
+        "endChar": 18
       },
       "revId": "3edeef9695da4cf1cb4e0e765f148ebc658cbcef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
