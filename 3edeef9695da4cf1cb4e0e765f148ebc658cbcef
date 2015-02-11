@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "f69db126_fba12f88",
+        "filename": "core/cortex-m0/irq_handler.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-11T15:32:40Z",
+      "side": 1,
+      "message": "yes, we can remove the #ifndef CONFIG_TASK_PROFILING in task_set_event(), but it still doesn\u0027t fix the problem. If CONFIG_TASK_PROFILING is defined, then we need to trigger PendSV on every irq, even if task_set_event() isn\u0027t called.\n\nbut i think this whole thing (lines 43-54) can be put in an #ifdef CONFIG_TASK_PROFILING. if it\u0027s not defined, no reason to run this stuff.",
+      "parentUuid": "1147af3f_8cb427b3",
+      "range": {
+        "startLine": 54,
+        "startChar": 9,
+        "endLine": 54,
+        "endChar": 21
+      },
+      "revId": "3edeef9695da4cf1cb4e0e765f148ebc658cbcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16a1655e_7c1bd99d",
         "filename": "core/cortex-m0/task.c",
         "patchSetId": 7
