@@ -11,9 +11,12 @@
 #include "driver/accel_kx022.h"
 #include "extpower.h"
 #include "gpio.h"
+#include "host_command.h"
 #include "i2c.h"
 #include "keyboard_raw.h"
 #include "lid_switch.h"
+#include "math_util.h"
+#include "motion_lid.h"
 #include "motion_sense.h"
 #include "power.h"
 #include "power_button.h"
@@ -119,3 +122,19 @@ struct motion_sensor_t motion_sensors[] = {
 		KX022_ADDR0, &lid_standard_ref, 100000, 2},
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+
+/* Define the accelerometer orientation matrices. */
+const struct accel_orientation acc_orient = {
+	/* Hinge aligns with y axis. */
+	.rot_hinge_90 = {
+		{ 1,  0,  0},
+		{ 0,  1,  0},
+		{ 0,  0,  1}
+	},
+	.rot_hinge_180 = {
+		{ 1,  0,  0},
+		{ 0,  1,  0},
+		{ 0,  0,  1}
+	},
+	.hinge_axis = {0, 1, 0},
+};
