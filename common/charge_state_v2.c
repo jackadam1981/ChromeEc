@@ -555,6 +555,18 @@ void charger_task(void)
 	shutdown_warning_time.val = 0UL;
 	battery_seems_to_be_dead = 0;
 
+	/*
+	 * If the system is unlocked, the desired input current limit will
+	 * be set to its maximum. This allows booting the system with a
+	 * powerful charger when the battery is not present. However,
+	 * by doing this, we also risk browning out low power chargers.
+	 * Probe for the battery here and reduce the input current limit
+	 * to avoid this case.
+	 */
+	battery_get_params(&curr.batt);
+	if (curr.batt.is_present == BP_YES)
+		curr.desired_input_current = CONFIG_CHARGER_INPUT_CURRENT;
+
 	while (1) {
 
 #ifdef CONFIG_SB_FIRMWARE_UPDATE
