@@ -45,6 +45,30 @@
       "revId": "3edeef9695da4cf1cb4e0e765f148ebc658cbcef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6834dc3_820bdace",
+        "filename": "core/cortex-m0/irq_handler.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2015-02-11T04:08:58Z",
+      "side": 1,
+      "message": "If we\u0027re profiling we still have to call it here, or else nothing else will.",
+      "parentUuid": "1605e5fd_5cb95da7",
+      "range": {
+        "startLine": 54,
+        "startChar": 9,
+        "endLine": 54,
+        "endChar": 21
+      },
+      "revId": "3edeef9695da4cf1cb4e0e765f148ebc658cbcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
