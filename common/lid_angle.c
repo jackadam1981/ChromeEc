@@ -9,9 +9,12 @@
 #include "common.h"
 #include "console.h"
 #include "hooks.h"
+#include "host_command.h"
 #include "keyboard_scan.h"
 #include "lid_angle.h"
 #include "lid_switch.h"
+#include "math_util.h"
+#include "motion_lid.h"
 #include "motion_sense.h"
 
 /* Console output macros */
