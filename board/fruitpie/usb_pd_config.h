@@ -127,6 +127,9 @@ static inline void pd_set_host_mode(int port, int enable)
 		gpio_set_level(GPIO_USB_C_5V_EN, 0);
 		/* Enable the charging path*/
 		gpio_set_level(GPIO_CHARGE_EN_L, 0);
+		/* VCONN can't be on if we're a sink */
+		gpio_set_level(GPIO_VCONN1_EN, 0);
+		gpio_set_level(GPIO_VCONN2_EN, 0);
 	}
 
 	gpio_set_level(GPIO_CC_HOST, enable);

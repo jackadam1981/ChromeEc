@@ -204,6 +204,9 @@ static inline void pd_set_host_mode(int port, int enable)
 			/* Pull low for device mode. */
 			gpio_set_level(GPIO_USB_C0_CC1_ODL, 0);
 			gpio_set_level(GPIO_USB_C0_CC2_ODL, 0);
+			/* VCONN can't be on if we're a sink */
+			gpio_set_level(GPIO_USB_C0_CC1_VCONN1_EN_L, 1);
+			gpio_set_level(GPIO_USB_C0_CC2_VCONN1_EN_L, 1);
 			/* Let charge_manager decide to enable the port */
 		}
 	} else {
@@ -219,6 +222,9 @@ static inline void pd_set_host_mode(int port, int enable)
 			/* Pull low for device mode. */
 			gpio_set_level(GPIO_USB_C1_CC1_ODL, 0);
 			gpio_set_level(GPIO_USB_C1_CC2_ODL, 0);
+			/* VCONN can't be on if we're a sink */
+			gpio_set_level(GPIO_USB_C1_CC1_VCONN1_EN_L, 1);
+			gpio_set_level(GPIO_USB_C1_CC2_VCONN1_EN_L, 1);
 			/* Let charge_manager decide to enable the port */
 		}
 	}

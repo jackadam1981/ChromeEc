@@ -140,6 +140,9 @@ static inline void pd_set_host_mode(int port, int enable)
 		gpio_set_level(GPIO_USBC_CC1_DEVICE_ODL, 0);
 		gpio_set_level(GPIO_USBC_CC2_DEVICE_ODL, 0);
 		gpio_set_level(GPIO_USBC_CHARGE_EN_L, 0);
+		/* VCONN can't be on if we're a sink */
+		gpio_set_level(GPIO_USBC_VCONN1_EN_L, 1);
+		gpio_set_level(GPIO_USBC_VCONN2_EN_L, 1);
 	}
 
 }

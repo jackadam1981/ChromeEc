@@ -299,6 +299,9 @@ void board_pd_set_host_mode(int enable)
 		gpio_set_flags_by_mask(GPIO_B, (1 << 7), GPIO_OUT_LOW);
 		/* Set charge enable */
 		gpio_set_level(GPIO_USBC_CHARGE_EN, 1);
+		/* VCONN can't be on if we're a sink */
+		gpio_set_level(GPIO_USB_CC1_VCONN_EN_L, 1);
+		gpio_set_level(GPIO_USB_CC2_VCONN_EN_L, 1);
 	}
 }
 
