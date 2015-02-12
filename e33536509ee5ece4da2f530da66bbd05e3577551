@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f693f167_0efc2b11",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2893,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-12T18:35:07Z",
+      "side": 1,
+      "message": "this is awfully specific, maybe we just want an error code for \"board specific event\" occurred and the data (which we don\u0027t have now, but i imagine we will want) will be defined on a per board basis to reflect any custom messages for that board. or is that too complicated?",
+      "range": {
+        "startLine": 2893,
+        "startChar": 8,
+        "endLine": 2893,
+        "endChar": 34
+      },
+      "revId": "e33536509ee5ece4da2f530da66bbd05e3577551",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "568d9d43_4e8473ef",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-12T18:35:07Z",
+      "side": 1,
+      "message": "nit: i would prefer to keep the same \"pdlog\" to read out the log. i think it will be much more common then people inserting log entries into the log.",
+      "range": {
+        "startLine": 142,
+        "startChar": 4,
+        "endLine": 142,
+        "endChar": 15
+      },
+      "revId": "e33536509ee5ece4da2f530da66bbd05e3577551",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f693f167_ce9f83f3",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5535,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-12T18:35:07Z",
+      "side": 1,
+      "message": "should we just allow user to enter any event code they want? then we don\u0027t have to decode the strings which may not match up with what firmware has. the PD already range checks the event code, so it shouldn\u0027t be dangerous.",
+      "range": {
+        "startLine": 5523,
+        "startChar": 1,
+        "endLine": 5535,
+        "endChar": 2
+      },
+      "revId": "e33536509ee5ece4da2f530da66bbd05e3577551",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
