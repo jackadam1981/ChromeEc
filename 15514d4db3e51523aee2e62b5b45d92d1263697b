@@ -70,6 +70,30 @@
       "revId": "15514d4db3e51523aee2e62b5b45d92d1263697b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9664759b_0889c739",
+        "filename": "common/charge_ramp.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2015-02-12T07:18:06Z",
+      "side": 1,
+      "message": "Then why 2A? If we lower this to 2A, the same questions stand for 1.5A. Unless the spec requires the cables and the connectors to support 2A?",
+      "parentUuid": "d61c2dfd_fa10c94b",
+      "range": {
+        "startLine": 19,
+        "startChar": 8,
+        "endLine": 19,
+        "endChar": 31
+      },
+      "revId": "15514d4db3e51523aee2e62b5b45d92d1263697b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
