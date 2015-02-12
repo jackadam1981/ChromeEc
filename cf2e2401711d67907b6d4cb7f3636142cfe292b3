@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "b66fb975_89cdb9bb",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-12T05:18:38Z",
+      "side": 1,
+      "message": "The problem is everything has a type-C pull-up, either 3A, 1.5A, or 500mA as I understand it. So, our A to C plug cable has a 500mA pull-up. Based on what you say, we should never ramp at all with BC1.2 devices because they are all going to have the 500mA pull-up.\n\nI guess there are two ways we could handle this:\n- Perhaps, the type-C supplier should be the LOWEST priority supplier, so that it only is used if none of the BC1.2 devices are detected. The problem is I\u0027m not convinced that the Pericom won\u0027t tell us there is a BC1.2 device when you plug in Donette, so we might have a problem with this.\n- We could say if supplier is type-C then only ramp if the type-C pull-up is for 500mA. Kinda ugly though.",
+      "parentUuid": "f64db110_3b4e372a",
+      "revId": "cf2e2401711d67907b6d4cb7f3636142cfe292b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "161ec559_74dd48e1",
         "filename": "board/samus_pd/board.c",
         "patchSetId": 13
