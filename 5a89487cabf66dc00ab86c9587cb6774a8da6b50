@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d66a6d65_8ae60b3a",
+        "filename": "board/samus/extpower.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-12T05:50:13Z",
+      "side": 1,
+      "message": "Good catch. done.",
+      "parentUuid": "3644a9e8_5dbc5bb5",
+      "revId": "5a89487cabf66dc00ab86c9587cb6774a8da6b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3644a9e8_3dd94f27",
         "filename": "board/samus/extpower.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2015-02-12T02:28:36Z",
       "side": 1,
       "message": "How about making charge_stalled_count count down instead (charge_stalled_countdown?)? Define some constant \u003d 5 for here, some constant \u003d 60 for below, decrement instead of increment, and check for \u003c\u003d 0?",
+      "revId": "5a89487cabf66dc00ab86c9587cb6774a8da6b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9664759b_e864730d",
+        "filename": "board/samus/extpower.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-12T05:50:13Z",
+      "side": 1,
+      "message": "yes, that is cleaner. done.",
+      "parentUuid": "3644a9e8_3dd94f27",
       "revId": "5a89487cabf66dc00ab86c9587cb6774a8da6b50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
