@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6b2595a_51ad94af",
+        "filename": "board/samus_pd/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-12T16:24:04Z",
+      "side": 1,
+      "message": "I think we also want to reset the CC_TX_EN pins here with a pd_tx_disable() in case we happen to be transmitting when doing a sysjump.\n\nFor the muxes, we should probably reset them separately in pd_task() with:\n#ifdef CONFIG_USBC_SS_MUX\n\tboard_set_usb_mux(port, TYPEC_MUX_NONE, pd[port].polarity);\n#endif\n\nThe only other pins to consider are the HPD pins. I\u0027m not sure where to reset the pins.",
+      "range": {
+        "startLine": 235,
+        "startChar": 19,
+        "endLine": 235,
+        "endChar": 33
+      },
+      "revId": "e6c64dfca5084b906c6b09977962713bbe738adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "760701cc_f773e0ff",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1755,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-12T16:24:04Z",
+      "side": 1,
+      "message": "suggest moving this call to inside pd_config_init(), and pass in PD_ROLE_DEFAULT into that function.",
+      "range": {
+        "startLine": 1755,
+        "startChar": 1,
+        "endLine": 1755,
+        "endChar": 59
+      },
+      "revId": "e6c64dfca5084b906c6b09977962713bbe738adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6b2595a_f142c852",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1761,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-12T16:24:04Z",
+      "side": 1,
+      "message": "seems like this should happen for all boards, for some boards we can leave empty for now, but seems like we may eventually want to initialize PD gpios for all boards.",
+      "range": {
+        "startLine": 1761,
+        "startChar": 0,
+        "endLine": 1761,
+        "endChar": 75
+      },
+      "revId": "e6c64dfca5084b906c6b09977962713bbe738adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
