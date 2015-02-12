@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3644a9e8_9d15033b",
+        "filename": "common/charge_ramp.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000094
+      },
+      "writtenOn": "2015-02-12T02:26:25Z",
+      "side": 1,
+      "message": "Frank and I discussed this. We probably want to limit to 2000. We should look at how many chargers we find above 2A (that don\u0027t identify using proprietary).",
+      "range": {
+        "startLine": 19,
+        "startChar": 8,
+        "endLine": 19,
+        "endChar": 31
+      },
+      "revId": "15514d4db3e51523aee2e62b5b45d92d1263697b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
