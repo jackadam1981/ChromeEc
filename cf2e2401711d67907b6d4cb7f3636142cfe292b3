@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "9664759b_88ab7722",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1000094
+      },
+      "writtenOn": "2015-02-12T16:42:24Z",
+      "side": 1,
+      "message": "I believe your second option to be the correct one.\n\nIf you see the USB pullup then all you know is regular USB rules are in effect (so 500mA if USB2 only, 900mA if USB3, the mess we address here if BC1.2). It isn\u0027t really a 500mA pullup, it just says to treat this like traditional USB. So completely correct to run our code here on seeing BC1.2. We will see this pullup on all converter cables that come from existing power adapters.\n\nThe spec is fairly clear that the 1.5A and 3A resistors take priority over USB rules -- if you see them you ignore the USB rules. (Which makes sense in a world where BC1.2 only goes up to the 1.5A of the standard). There is a section added that proprietary methods that give a current \u003e1.5A \u003c3A should use the 1.5A resistor, but someone detecting the proprietaty current level can use that (does not apply to standard USB detection only proprietary methods that tell you a current)\n\nFor a 3A/1.5A pullup we must obey the rule that permits an adapter to vary these (eg based on other devices plugged in to the adapter), so I don\u0027t think we can ever go above the resistor set limit and be in spec (and since by presenting the resistor the source guarantees the current is available we wouldn\u0027t want to set the limit lower). I also suspect that to allow working with non-typeC devices (i.e. with C plug-uB plug cables) adapters will present the DCP signature, which we should ignore because we understand the Type-C resistor.",
+      "parentUuid": "b66fb975_89cdb9bb",
+      "revId": "cf2e2401711d67907b6d4cb7f3636142cfe292b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "161ec559_74dd48e1",
         "filename": "board/samus_pd/board.c",
         "patchSetId": 13
