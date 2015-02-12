@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d608addb_9a10cd4b",
+        "filename": "common/pd_log.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-12T16:37:00Z",
+      "side": 1,
+      "message": "why not fill these in with the fields from p, that way a caller can add data for the log. for example, for charge_wedged, we probably want to log whether we detected via PROCHOT or via stall counter.",
+      "range": {
+        "startLine": 219,
+        "startChar": 21,
+        "endLine": 219,
+        "endChar": 31
+      },
+      "revId": "15ec2cbfdf8691d83245e24016be60af4a7e75c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
