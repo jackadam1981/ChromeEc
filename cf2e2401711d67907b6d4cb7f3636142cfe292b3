@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "16b5e5f7_7fa5ab93",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-12T03:02:44Z",
+      "side": 1,
+      "message": "yes, pull-up just represents min amount of current we can draw.",
+      "parentUuid": "161ec559_348470ee",
+      "revId": "cf2e2401711d67907b6d4cb7f3636142cfe292b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "161ec559_74dd48e1",
         "filename": "board/samus_pd/board.c",
         "patchSetId": 13
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "f6cbf13a_4b98a5e1",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-12T03:02:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b63a59c3_71b21819",
+      "revId": "cf2e2401711d67907b6d4cb7f3636142cfe292b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "963f15b5_101bc46c",
         "filename": "common/charge_manager.c",
         "patchSetId": 13
@@ -64,6 +100,24 @@
       "writtenOn": "2015-02-11T01:56:15Z",
       "side": 1,
       "message": "I think this can be combined with the code you changed just below, no need to do it before clearing the override + calculating the charge current.",
+      "revId": "cf2e2401711d67907b6d4cb7f3636142cfe292b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16b5e5f7_5fa2ef8d",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-12T03:02:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "963f15b5_101bc46c",
       "revId": "cf2e2401711d67907b6d4cb7f3636142cfe292b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
