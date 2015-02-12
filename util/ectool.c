@@ -139,8 +139,10 @@ const char help_str[] =
 	"      Prints saved panic info\n"
 	"  pause_in_s5 [on|off]\n"
 	"      Whether or not the AP should pause in S5 on shutdown\n"
-	"  pdlog\n"
+	"  pdprintlogs\n"
 	"      Prints the PD event log entries\n"
+	"  pdwritelog <type>\n"
+	"      Writes PD event log(s) of the given <type>\n"
 	"  pdgetmode <port>\n"
 	"      Get All USB-PD alternate SVIDs and modes on <port>\n"
 	"  pdsetmode <port> <svid> <opos>\n"
@@ -5418,7 +5420,7 @@ int cmd_charge_port_override(int argc, char *argv[])
 	return 0;
 }
 
-int cmd_pd_log(int argc, char *argv[])
+int cmd_pd_print_logs(int argc, char *argv[])
 {
 	union {
 		struct ec_response_pd_log r;
@@ -5503,6 +5505,34 @@ int cmd_pd_log(int argc, char *argv[])
 	return 0;
 }
 
+int cmd_pd_write_log(int argc, char *argv[])
+{
+	struct ec_params_pd_write_log_entry p;
+	char *e;
+
+	if (argc < 2) {
+		fprintf(stderr, "Usage: %s <log_type>\n",
+			argv[0]);
+		return -1;
+	}
+
+	if (!strcasecmp(argv[1], "charge"))
+		p.type = PD_EVENT_MCU_CHARGE;
+	else if (!strcasecmp(argv[1], "connect"))
+		p.type = PD_EVENT_MCU_CONNECT;
+	else if (!strcasecmp(argv[1], "wedged"))
+		p.type = PD_EVENT_MCU_CHARGE_WEDGED;
+	else {
+		p.type = strtol(argv[1], &e, 0);
+		if (e && *e) {
+			fprintf(stderr, "Bad parameter.\n");
+			return -1;
+		}
+	}
+
+	return ec_command(EC_CMD_PD_WRITE_LOG_ENTRY, 0, &p, sizeof(p), NULL, 0);
+}
+
 /* NULL-terminated list of commands */
 const struct command commands[] = {
 	{"extpwrcurrentlimit", cmd_ext_power_current_limit},
@@ -5558,7 +5588,8 @@ const struct command commands[] = {
 	{"pdgetmode", cmd_pd_get_amode},
 	{"pdsetmode", cmd_pd_set_amode},
 	{"port80read", cmd_port80_read},
-	{"pdlog", cmd_pd_log},
+	{"pdprintlogs", cmd_pd_print_logs},
+	{"pdwritelog", cmd_pd_write_log},
 	{"powerinfo", cmd_power_info},
 	{"protoinfo", cmd_proto_info},
 	{"pstoreinfo", cmd_pstore_info},
