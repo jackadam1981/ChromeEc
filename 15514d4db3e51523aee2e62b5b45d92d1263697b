@@ -46,6 +46,30 @@
       "revId": "15514d4db3e51523aee2e62b5b45d92d1263697b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d61c2dfd_fa10c94b",
+        "filename": "common/charge_ramp.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000094
+      },
+      "writtenOn": "2015-02-12T03:32:08Z",
+      "side": 1,
+      "message": "But are those chargers rated above 2A? Are the contacts on their USB connectors rated for above 2A (probably not, unless they are designed for USB-PD)? Could we do bad things to them by pulling too much current (overheat for example)?",
+      "parentUuid": "36a829a2_dd0bab06",
+      "range": {
+        "startLine": 19,
+        "startChar": 8,
+        "endLine": 19,
+        "endChar": 31
+      },
+      "revId": "15514d4db3e51523aee2e62b5b45d92d1263697b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
