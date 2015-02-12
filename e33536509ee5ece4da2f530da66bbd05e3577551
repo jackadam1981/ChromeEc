@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "965395fc_9015146d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2893,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-02-12T19:23:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f693f167_0efc2b11",
+      "range": {
+        "startLine": 2893,
+        "startChar": 8,
+        "endLine": 2893,
+        "endChar": 34
+      },
+      "revId": "e33536509ee5ece4da2f530da66bbd05e3577551",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "568d9d43_4e8473ef",
         "filename": "util/ectool.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "965395fc_70f8b0cf",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-02-12T19:23:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "568d9d43_4e8473ef",
+      "range": {
+        "startLine": 142,
+        "startChar": 4,
+        "endLine": 142,
+        "endChar": 15
+      },
+      "revId": "e33536509ee5ece4da2f530da66bbd05e3577551",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f693f167_ce9f83f3",
         "filename": "util/ectool.c",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2015-02-12T18:35:07Z",
       "side": 1,
       "message": "should we just allow user to enter any event code they want? then we don\u0027t have to decode the strings which may not match up with what firmware has. the PD already range checks the event code, so it shouldn\u0027t be dangerous.",
+      "range": {
+        "startLine": 5523,
+        "startChar": 1,
+        "endLine": 5535,
+        "endChar": 2
+      },
+      "revId": "e33536509ee5ece4da2f530da66bbd05e3577551",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36758977_355a9036",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5535,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-02-12T19:23:30Z",
+      "side": 1,
+      "message": "Yup, it falls back to parsing a numeric index on string mismatch.",
+      "parentUuid": "f693f167_ce9f83f3",
       "range": {
         "startLine": 5523,
         "startChar": 1,
