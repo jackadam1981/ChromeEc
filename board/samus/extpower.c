@@ -209,17 +209,59 @@ static void extpower_board_hacks(int extpower, int extpower_prev)
 	extpower_prev = extpower;
 }
 
+static int get_boostin_voltage(void)
+{
+	/* Static structs to save stack space */
+	static struct ec_response_usb_pd_power_info pd_power_ret;
+	static struct ec_params_usb_pd_power_info pd_power_args;
+	int ret;
+
+	/* Boost-in voltage is maximum of voltage now on each port */
+	pd_power_args.port = 0;
+	pd_host_command(EC_CMD_USB_PD_POWER_INFO, 0,
+			&pd_power_args,
+			sizeof(struct ec_params_usb_pd_power_info),
+			&pd_power_ret,
+			sizeof(struct ec_response_usb_pd_power_info));
+	ret = pd_power_ret.meas.voltage_now;
+
+	pd_power_args.port = 1;
+	pd_host_command(EC_CMD_USB_PD_POWER_INFO, 0,
+			&pd_power_args,
+			sizeof(struct ec_params_usb_pd_power_info),
+			&pd_power_ret,
+			sizeof(struct ec_response_usb_pd_power_info));
+
+	/* Get max of two measuremente */
+	if (pd_power_ret.meas.voltage_now > ret)
+		ret = pd_power_ret.meas.voltage_now;
+
+	return ret;
+}
+
 static void check_charge_wedged(void)
 {
 	int rv, prochot_status;
-	static int counts_since_wedged;
+	static int counts_since_wedged, charge_stalled_count;
+	uint8_t *batt_flags = host_get_memmap(EC_MEMMAP_BATT_FLAG);
 
 	if (charge_circuit_state == CHARGE_CIRCUIT_OK) {
 		/* Check PROCHOT warning */
 		rv = i2c_read8(I2C_PORT_CHARGER, BQ24773_ADDR,
 				BQ24773_PROCHOT_STATUS, &prochot_status);
 		if (rv)
-			return;
+			prochot_status = 0;
+
+		/*
+		 * If AC is present, and battery is discharging, and
+		 * boostin voltage is above 5V, then we might be wedged.
+		 */
+		if ((*batt_flags & EC_BATT_FLAG_AC_PRESENT) &&
+		    (*batt_flags & EC_BATT_FLAG_DISCHARGING) &&
+		    get_boostin_voltage() > 6000)
+			charge_stalled_count++;
+		else
+			charge_stalled_count = 0;
 
 		/*
 		 * If PROCHOT is asserted, then charge circuit is wedged, turn
@@ -231,13 +273,28 @@ static void check_charge_wedged(void)
 		 * If we were recently wedged, then give ourselves a free pass
 		 * here. This gives an opportunity for reading the PROCHOT
 		 * status to clear it if the error has gone away.
+		 *
+		 * Or if charging has been stalled for long enough, then also
+		 * try unwedging.
 		 */
-		if (prochot_status && counts_since_wedged >= 2) {
+		if ((prochot_status && counts_since_wedged >= 2) ||
+		    charge_stalled_count >= 5) {
 			counts_since_wedged = 0;
 			host_command_pd_send_status(PD_CHARGE_NONE);
 			charger_disable(1);
 			charge_circuit_state = CHARGE_CIRCUIT_WEDGED;
-			CPRINTS("Charge circuit wedged!");
+			CPRINTS("Charge wedged! PROCHOT %02x, Stalled: %d",
+				prochot_status, charge_stalled_count);
+
+			/*
+			 * If this doesn't clear the problem, then start
+			 * the stall counter much earlier so that we don't
+			 * retry unwedging for a while. Note, if we do start
+			 * charging properly, then stall counter will be set
+			 * to 0, so that we will trigger faster the first
+			 * time it stalls out.
+			 */
+			charge_stalled_count = -55;
 		} else {
 			counts_since_wedged++;
 		}
