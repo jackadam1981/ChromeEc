@@ -94,6 +94,30 @@
       "revId": "15514d4db3e51523aee2e62b5b45d92d1263697b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9664759b_680de3ad",
+        "filename": "common/charge_ramp.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000094
+      },
+      "writtenOn": "2015-02-12T17:05:51Z",
+      "side": 1,
+      "message": "Correct, the connector is speced at 2A (per USB spec for an A connector the test is at 1.8A for a B at 2A, but in practice everyone uses 2A -- we looked at this a lot in the Yoshi days). That is why the Yoshi power adapter had to be a captive cable, because we had to ensure a 3A rated plug was used.\n\nThe other argument for 2A vs 1.5A is based on what is observed: from what power adapters do everyone is comfortable using up to 2A. But the higher current ones (like iPAD) have a proprietary connector on one end of the cable, so can ensure the connectors are rated. We are ok there because we detect the proprietary signature so no need to ramp.",
+      "parentUuid": "9664759b_0889c739",
+      "range": {
+        "startLine": 19,
+        "startChar": 8,
+        "endLine": 19,
+        "endChar": 31
+      },
+      "revId": "15514d4db3e51523aee2e62b5b45d92d1263697b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
