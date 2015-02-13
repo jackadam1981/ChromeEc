@@ -640,6 +640,8 @@ enum {
 #define NPCX_SMBADDR7_SAEN               7
 #define NPCX_SMBADDR8_SAEN               7
 
+#define NPCX_SMB_CLOCK_DOMAIN(n)         ((n) < 2 ? CLOCK_TYPE_CPU : \
+					 CLOCK_TYPE_FAST_PERIPH)
 /******************************************************************************/
 /* Power Management Controller (PMC) Registers */
 #define NPCX_PMCSR                     REG8(NPCX_PMC_BASE_ADDR + 0x000)

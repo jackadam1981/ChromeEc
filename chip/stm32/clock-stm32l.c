@@ -45,7 +45,7 @@ enum clock_osc {
 static int freq;
 static int current_osc;
 
-int clock_get_freq(void)
+int clock_get_freq(enum clock_type type)
 {
 	return freq;
 }

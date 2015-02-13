@@ -25,6 +25,8 @@
 /* use 48Mhz USB-synchronized High-speed oscillator */
 #define HSI48_CLOCK 48000000
 
+#define HSI_CLOCK 8000000
+
 /* use PLL at 38.4MHz as system clock. */
 #define PLL_CLOCK 38400000
 
@@ -413,9 +415,18 @@ void __idle(void)
 }
 #endif /* CONFIG_LOW_POWER_IDLE */
 
-int clock_get_freq(void)
+int clock_get_freq(enum clock_type type)
 {
-	return CPU_CLOCK;
+	switch (type) {
+	case CLOCK_TYPE_CPU:
+	case CLOCK_TYPE_HOST_PERIPH:
+	case CLOCK_TYPE_FAST_PERIPH:  /* APB2 */
+		return CPU_CLOCK;
+	case CLOCK_TYPE_SLOW_PERIPH:  /* APB1 */
+		return HSI_CLOCK;
+	default:
+		return 0;
+	}
 }
 
 void clock_wait_bus_cycles(enum bus_type bus, uint32_t cycles)

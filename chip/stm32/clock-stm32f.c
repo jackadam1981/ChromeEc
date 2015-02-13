@@ -260,7 +260,7 @@ void __idle(void)
 }
 #endif /* CONFIG_LOW_POWER_IDLE */
 
-int clock_get_freq(void)
+int clock_get_freq(enum clock_type type)
 {
 	return CPU_CLOCK;
 }

@@ -8,6 +8,7 @@
 /* STM32 USART driver for Chrome EC */
 
 #include "common.h"
+#include "clock.h"
 #include "in_stream.h"
 #include "out_stream.h"
 #include "queue.h"
@@ -50,6 +51,7 @@ struct usart_hw_config {
 	int      index;
 	intptr_t base;
 	int      irq;
+	enum clock_type periph;
 
 	uint32_t volatile *clock_register;
 	uint32_t           clock_enable;
