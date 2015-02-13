@@ -120,3 +120,24 @@ void usart3_interrupt(void)
 
 DECLARE_IRQ(STM32_IRQ_USART3, usart3_interrupt, 2);
 #endif
+
+#if defined(CONFIG_STREAM_USART6)
+struct usart_hw_config const usart6_hw = {
+	/* on F411, only 2 UART, 1,2 and 6. */
+	.index          = 2,
+	.base           = STM32_USART6_BASE,
+	.irq            = STM32_IRQ_USART6,
+	.peripheral_clock = STM32_USART_CLOCK(6),
+	.clock_register = &STM32_RCC_APB2ENR,
+	.clock_enable   = STM32_RCC_PB2_USART6,
+	.ops            = &usart_variant_hw_ops,
+};
+
+void usart6_interrupt(void)
+{
+	usart_interrupt(configs[2]);
+}
+
+DECLARE_IRQ(STM32_IRQ_USART6, usart6_interrupt, 2);
+#endif
+

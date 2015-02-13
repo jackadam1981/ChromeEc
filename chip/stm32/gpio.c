@@ -97,7 +97,7 @@ int gpio_enable_interrupt(enum gpio_signal signal)
 	STM32_AFIO_EXTICR(group) = (STM32_AFIO_EXTICR(group) &
 			~(0xF << shift)) | (bank << shift);
 #elif defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32L) || \
-	defined(CHIP_FAMILY_STM32F3)
+	defined(CHIP_FAMILY_STM32F3) || defined(CHIP_FAMILY_STM32F4)
 	STM32_SYSCFG_EXTICR(group) = (STM32_SYSCFG_EXTICR(group) &
 			~(0xF << shift)) | (bank << shift);
 #else
