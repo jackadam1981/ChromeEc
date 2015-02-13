@@ -71,13 +71,15 @@ void pwm_freq_changed(void)
 				/(pwm_channels[pwm_init_ch].cycle_pulses));
 #else
 		prescaler_divider = (uint32_t)(
-			clock_get_apb2_freq() / pwm_channels[pwm_init_ch].freq
-			/ (pwm_channels[pwm_init_ch].cycle_pulses));
+				clock_get_freq(CLOCK_TYPE_FAST_PERIPH) /
+				pwm_channels[pwm_init_ch].freq /
+				(pwm_channels[pwm_init_ch].cycle_pulses));
 #endif
 	} else {
 		prescaler_divider = (uint32_t)(
-			clock_get_apb2_freq() / pwm_channels[pwm_init_ch].freq
-			/ (pwm_channels[pwm_init_ch].cycle_pulses));
+				clock_get_freq(CLOCK_TYPE_FAST_PERIPH) /
+				pwm_channels[pwm_init_ch].freq /
+				(pwm_channels[pwm_init_ch].cycle_pulses));
 	}
 	/* Set clock prescalre divider to ADC module*/
 	if (prescaler_divider >= 1)
@@ -87,7 +89,7 @@ void pwm_freq_changed(void)
 
 	/* Configure computed prescaler and resolution */
 	NPCX_PRSC(pwm_channels[pwm_init_ch].channel) =
-			(uint16_t)prescaler_divider;
+		(uint16_t)prescaler_divider;
 }
 DECLARE_HOOK(HOOK_FREQ_CHANGE, pwm_freq_changed, HOOK_PRIO_DEFAULT);
 

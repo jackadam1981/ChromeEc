@@ -154,7 +154,7 @@ static void uart_config(void)
 	opt_prescalar = opt_dev = 0;
 	prescalar = 10;
 	min_deviation = 0xFFFFFFFF;
-	clk = clock_get_apb2_freq();
+	clk = clock_get_freq(CLOCK_TYPE_FAST_PERIPH);
 	for (i = 1; i < 31; i++) {
 		div = (clk * 10) / (16 * CONFIG_UART_BAUD_RATE * prescalar);
 		if (div != 0) {

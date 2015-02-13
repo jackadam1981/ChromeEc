@@ -209,7 +209,7 @@ DECLARE_HOOK(HOOK_TICK, peci_temp_sensor_poll, HOOK_PRIO_TEMP_SENSOR);
 static void peci_freq_changed(void)
 {
 	/* PECI is under APB2 */
-	int freq = clock_get_freq();
+	int freq = clock_get_freq(CLOCK_TYPE_CPU);
 	int baud = 0xF;
 
 	/* Disable polling while reconfiguring */
