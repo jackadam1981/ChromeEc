@@ -345,8 +345,8 @@ static int read(const struct motion_sensor_t *s, vector_3_t v)
 	i2c_lock(I2C_PORT_ACCEL, 0);
 
 	if (ret != EC_SUCCESS) {
-		CPRINTF("[%T %s type:0x%X RD XYZ Error]",
-			s->name, s->type);
+		CPRINTF("[%T %s type:0x%X RD XYZ Error %d]",
+			s->name, s->type, ret);
 		return ret;
 	}
 
