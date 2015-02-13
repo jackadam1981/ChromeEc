@@ -46,7 +46,8 @@
 /* alternating bit sequence used for packet preamble : 00 10 11 01 00 ..  */
 #define PD_PREAMBLE 0xB4B4B4B4 /* starts with 0, ends with 1 */
 
-#define TX_CLOCK_DIV ((clock_get_freq() / (2*PD_DATARATE)))
+#define TX_CLOCK_DIV \
+	((clock_get_freq(CLOCK_TYPE_FAST_PERIPH) / (2*PD_DATARATE)))
 
 /* threshold for 1 300-khz period */
 #define PERIOD 4
@@ -575,7 +576,8 @@ void pd_hw_init(int port, int role)
 	/* configure DMA request on CCRx update */
 	phy->tim_rx->dier |= 1 << (8 + TIM_RX_CCR_IDX(port)); /* CCxDE */;
 	/* set prescaler to /26 (F=1.2Mhz, T=0.8us) */
-	phy->tim_rx->psc = (clock_get_freq() / 2400000) - 1;
+	phy->tim_rx->psc =
+		(clock_get_freq(CLOCK_TYPE_FAST_PERIPH) / 2400000) - 1;
 	/* Reload the pre-scaler and reset the counter (clear CCRx) */
 	phy->tim_rx->egr = 0x0001 | (1 << TIM_RX_CCR_IDX(port));
 	/* clear update event from reloading */
@@ -632,5 +634,6 @@ void pd_hw_init(int port, int role)
 
 void pd_set_clock(int port, int freq)
 {
-	pd_phy[port].tim_tx->arr = clock_get_freq() / (2*freq);
+	pd_phy[port].tim_tx->arr =
+		clock_get_freq(CLOCK_TYPE_FAST_PERIPH) / (2*freq);
 }

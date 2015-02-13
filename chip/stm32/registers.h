@@ -210,7 +210,7 @@
 #define STM32_USART_SR_RXNE		(1 << 5)
 #define STM32_USART_SR_TC		(1 << 6)
 #define STM32_USART_SR_TXE		(1 << 7)
-#else /* !CHIP_FAMILY_STM32F0 */
+#else /* !CHIP_FAMILY_STM32F0 or F3 */
 #define STM32_USART_SR(base)       STM32_USART_REG(base, 0x00)
 #define STM32_USART_SR_RXNE		(1 << 5)
 #define STM32_USART_SR_TC		(1 << 6)
@@ -240,6 +240,7 @@
 
 /* --- TIMERS --- */
 #define STM32_TIM1_BASE            0x40012c00 /* STM32F100 and STM32F10x */
+#define STM32_TIM1_PERIPH_CLASS    CLOCK_TYPE_FAST_PERIPH
 #define STM32_TIM2_BASE            0x40000000
 #define STM32_TIM3_BASE            0x40000400
 #define STM32_TIM4_BASE            0x40000800
@@ -266,6 +267,7 @@
 #define STM32_TIM19_BASE           0x40015c00 /* STM32F373 only */
 
 #define STM32_TIM_BASE(n)          CONCAT3(STM32_TIM, n, _BASE)
+#define STM32_TIM_PERIPH_CLASS(n)  CONCAT3(STM32_TIM, n, _PERIPH_CLASS)
 
 #define STM32_TIM_REG(n, offset) \
 		REG16(STM32_TIM_BASE(n) + (offset))
@@ -441,6 +443,7 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 
 #define STM32_I2C1_PORT             0
 #define STM32_I2C2_PORT             1
+#define STM32_I2C_PERIPH_CLASS(n) CLOCK_TYPE_FAST_PERIPH
 
 #define stm32_i2c_reg(port, offset) \
 	((uint16_t *)((STM32_I2C1_BASE + ((port) * 0x400)) + (offset)))
@@ -492,7 +495,7 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define STM32_I2C_PECR(n)           REG32(stm32_i2c_reg(n, 0x20))
 #define STM32_I2C_RXDR(n)           REG32(stm32_i2c_reg(n, 0x24))
 #define STM32_I2C_TXDR(n)           REG32(stm32_i2c_reg(n, 0x28))
-#else /* !CHIP_FAMILY_STM32F0 */
+#else /* !CHIP_FAMILY_STM32F0/F3 */
 #define STM32_I2C_CR1(n)            REG16(stm32_i2c_reg(n, 0x00))
 #define STM32_I2C_CR1_PE	(1 << 0)
 #define STM32_I2C_CR1_START	(1 << 8)

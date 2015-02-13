@@ -18,7 +18,10 @@
 
 /* Console USART index */
 #define UARTN      CONFIG_UART_CONSOLE
-#define UARTN_BASE STM32_USART_BASE(CONFIG_UART_CONSOLE)
+#define UARTN_BASE STM32_USART_BASE(UARTN)
+
+/* The console UART is used with a slow clock. */
+#define UARTN_PERIPH_CLASS CLOCK_TYPE_SLOW_PERIPH
 
 #ifdef CONFIG_UART_TX_DMA
 #define UART_TX_INT_ENABLE STM32_USART_CR1_TCIE
@@ -224,17 +227,7 @@ static void uart_freq_change(void)
 	int freq;
 	int div;
 
-#if (defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32F3)) && \
-	(UARTN <= 2)
-	/*
-	 * UART is clocked from HSI (8MHz) to allow it to work when waking
-	 * up from sleep
-	 */
-	freq = 8000000;
-#else
-	/* UART clocked from the main clock */
-	freq = clock_get_freq();
-#endif
+	freq = clock_get_freq(UARTN_PERIPH_CLASS);
 	div = DIV_ROUND_NEAREST(freq, CONFIG_UART_BAUD_RATE);
 
 #if defined(CHIP_FAMILY_STM32L) || defined(CHIP_FAMILY_STM32F0) || \

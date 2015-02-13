@@ -63,7 +63,7 @@ static void update_prescaler(void)
 	 * Set the prescaler to increment every microsecond.  This takes
 	 * effect immediately, because the TAILD bit in TAMR is clear.
 	 */
-	LM4_TIMER_TAPR(6) = clock_get_freq() / SECOND;
+	LM4_TIMER_TAPR(6) = clock_get_freq(CLOCK_TYPE_CPU) / SECOND;
 }
 DECLARE_HOOK(HOOK_FREQ_CHANGE, update_prescaler, HOOK_PRIO_DEFAULT);
 

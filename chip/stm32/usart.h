@@ -7,6 +7,7 @@
 
 /* STM32 USART driver for Chrome EC */
 
+#include "clock.h"
 #include "common.h"
 #include "in_stream.h"
 #include "out_stream.h"
