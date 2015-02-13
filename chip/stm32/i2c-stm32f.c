@@ -32,9 +32,6 @@
 /* I2C bit period in microseconds */
 #define I2C_PERIOD_US (SECOND / I2C_FREQ)
 
-/* Clock divider for I2C controller */
-#define I2C_CCR (CPU_CLOCK / (2 * I2C_FREQ))
-
 /*
  * Transmit timeout in microseconds
  *
@@ -59,18 +56,31 @@
  */
 #define I2C_BITBANG_DELAY_US	5
 
-#define I2C1      STM32_I2C1_PORT
-#define I2C2      STM32_I2C2_PORT
-
 /* Select the DMA channels matching the board configuration */
 #define DMAC_SLAVE_TX \
-	((I2C_PORT_SLAVE) ? STM32_DMAC_I2C2_TX : STM32_DMAC_I2C1_TX)
+	((I2C_PORT_SLAVE == STM32_I2C2_PORT) ? \
+	 STM32_DMAC_I2C2_TX : STM32_DMAC_I2C1_TX)
 #define DMAC_SLAVE_RX \
-	((I2C_PORT_SLAVE) ? STM32_DMAC_I2C2_RX : STM32_DMAC_I2C1_RX)
+	((I2C_PORT_SLAVE == STM32_I2C2_PORT) ? \
+	 STM32_DMAC_I2C2_RX : STM32_DMAC_I2C1_RX)
 #define DMAC_MASTER_TX \
-	((I2C_PORT_MASTER) ? STM32_DMAC_I2C2_TX : STM32_DMAC_I2C1_TX)
+	((I2C_PORT_MASTER == STM32_I2C2_PORT) ? \
+	 STM32_DMAC_I2C2_TX : STM32_DMAC_I2C1_TX)
 #define DMAC_MASTER_RX \
-	((I2C_PORT_MASTER) ? STM32_DMAC_I2C2_RX : STM32_DMAC_I2C1_RX)
+	((I2C_PORT_MASTER == STM32_I2C2_PORT) ? \
+	 STM32_DMAC_I2C2_RX : STM32_DMAC_I2C1_RX)
+
+#ifdef CONFIG_HOSTCMD_I2C_SLAVE_ADDR
+#if (I2C_PORT_SLAVE == STM32_I2C2_PORT)
+#define IRQ_SLAVE_EV STM32_IRQ_I2C2_EV
+#define IRQ_SLAVE_ER STM32_IRQ_I2C2_ER
+#elif (I2C_PORT_SLAVE == STM32_I2C1_PORT)
+#define IRQ_SLAVE_EV STM32_IRQ_I2C1_EV
+#define IRQ_SLAVE_ER STM32_IRQ_I2C1_ER
+#else
+#error "Not implemented"
+#endif
+#endif
 
 enum {
 	/*
@@ -86,54 +96,55 @@ enum {
 };
 
 static const struct dma_option dma_tx_option[I2C_PORT_COUNT] = {
-	{STM32_DMAC_I2C1_TX, (void *)&STM32_I2C_DR(I2C1),
-	 STM32_DMA_CCR_MSIZE_8_BIT | STM32_DMA_CCR_PSIZE_16_BIT},
-	{STM32_DMAC_I2C2_TX, (void *)&STM32_I2C_DR(I2C2),
-	 STM32_DMA_CCR_MSIZE_8_BIT | STM32_DMA_CCR_PSIZE_16_BIT},
+	{STM32_DMAC_I2C1_TX, (void *)&STM32_I2C_DR(STM32_I2C1_PORT),
+	 STM32_DMA_CCR_MSIZE_8_BIT | STM32_DMA_CCR_PSIZE_8_BIT},
+	{STM32_DMAC_I2C2_TX, (void *)&STM32_I2C_DR(STM32_I2C2_PORT),
+	 STM32_DMA_CCR_MSIZE_8_BIT | STM32_DMA_CCR_PSIZE_8_BIT},
 };
 
 static const struct dma_option dma_rx_option[I2C_PORT_COUNT] = {
-	{STM32_DMAC_I2C1_RX, (void *)&STM32_I2C_DR(I2C1),
-	 STM32_DMA_CCR_MSIZE_8_BIT | STM32_DMA_CCR_PSIZE_16_BIT},
-	{STM32_DMAC_I2C2_RX, (void *)&STM32_I2C_DR(I2C2),
-	 STM32_DMA_CCR_MSIZE_8_BIT | STM32_DMA_CCR_PSIZE_16_BIT},
+	{STM32_DMAC_I2C1_RX, (void *)&STM32_I2C_DR(STM32_I2C1_PORT),
+	 STM32_DMA_CCR_MSIZE_8_BIT | STM32_DMA_CCR_PSIZE_8_BIT},
+	{STM32_DMAC_I2C2_RX, (void *)&STM32_I2C_DR(STM32_I2C2_PORT),
+	 STM32_DMA_CCR_MSIZE_8_BIT | STM32_DMA_CCR_PSIZE_8_BIT},
 };
 
+static inline void disable_i2c_interrupt(int port)
+{
+	STM32_I2C_CR2(port) &= ~(STM32_I2C_CR2_ITERREN | STM32_I2C_CR2_ITEVTEN);
+}
+
+static inline void enable_i2c_interrupt(int port)
+{
+	STM32_I2C_CR2(port) |= STM32_I2C_CR2_ITERREN | STM32_I2C_CR2_ITEVTEN;
+}
+
+static inline void enable_ack(int port)
+{
+	STM32_I2C_CR1(port) |= STM32_I2C_CR1_ACK;
+}
+
+static inline void disable_ack(int port)
+{
+	STM32_I2C_CR1(port) &= ~STM32_I2C_CR1_ACK;
+}
+
+static void i2c_init_port(unsigned int port);
+
+#ifdef CONFIG_HOSTCMD_I2C_SLAVE_ADDR
 static uint16_t i2c_sr1[I2C_PORT_COUNT];
+/* Flag indicating if a command is currently in the buffer */
+static uint8_t rx_pending;
 
 /* Buffer for host commands (including version, error code and checksum) */
 static uint8_t host_buffer[EC_PROTO2_MAX_REQUEST_SIZE];
 static struct host_cmd_handler_args host_cmd_args;
 static uint8_t i2c_old_response;  /* Send an old-style response */
 
-/* Flag indicating if a command is currently in the buffer */
-static uint8_t rx_pending;
-
-static inline void disable_i2c_interrupt(int port)
-{
-	STM32_I2C_CR2(port) &= ~(3 << 8);
-}
-
-static inline void enable_i2c_interrupt(int port)
-{
-	STM32_I2C_CR2(port) |= 3 << 8;
-}
-
-static inline void enable_ack(int port)
-{
-	STM32_I2C_CR1(port) |= (1 << 10);
-}
-
-static inline void disable_ack(int port)
-{
-	STM32_I2C_CR1(port) &= ~(1 << 10);
-}
-
-static void i2c_init_port(unsigned int port);
 
 static int i2c_write_raw_slave(int port, void *buf, int len)
 {
-	stm32_dma_chan_t *chan;
+	dma_chan_t *chan;
 	int rv;
 
 	/* we don't want to race with TxE interrupt event */
@@ -148,7 +159,7 @@ static int i2c_write_raw_slave(int port, void *buf, int len)
 	dma_go(chan);
 
 	/* Configuring i2c to use DMA */
-	STM32_I2C_CR2(port) |= (1 << 11);
+	STM32_I2C_CR2(port) |= STM32_I2C_CR2_DMAEN;
 
 	if (in_interrupt_context()) {
 		/* Poll for the transmission complete flag */
@@ -157,17 +168,18 @@ static int i2c_write_raw_slave(int port, void *buf, int len)
 	} else {
 		/* Wait for the transmission complete Interrupt */
 		dma_enable_tc_interrupt(DMAC_SLAVE_TX);
-		rv = task_wait_event(DMA_TRANSFER_TIMEOUT_US);
+		rv = task_wait_event_mask(
+				TASK_EVENT_DMA_TC, DMA_TRANSFER_TIMEOUT_US);
 		dma_disable_tc_interrupt(DMAC_SLAVE_TX);
 
-		if (!(rv & TASK_EVENT_WAKE)) {
+		if (!(rv & TASK_EVENT_DMA_TC)) {
 			CPRINTS("Slave timeout, resetting i2c");
 			i2c_init_port(port);
 		}
 	}
 
 	dma_disable(DMAC_SLAVE_TX);
-	STM32_I2C_CR2(port) &= ~(1 << 11);
+	STM32_I2C_CR2(port) &= ~STM32_I2C_CR2_DMAEN;
 
 	enable_i2c_interrupt(port);
 
@@ -194,7 +206,7 @@ static void i2c_send_response(struct host_cmd_handler_args *args)
 	*out++ = sum & 0xff;
 
 	/* send the answer to the AP */
-	i2c_write_raw_slave(I2C2, host_buffer, out - host_buffer);
+	i2c_write_raw_slave(I2C_PORT_SLAVE, host_buffer, out - host_buffer);
 }
 
 /* Process the command in the i2c host buffer */
@@ -253,34 +265,34 @@ static void i2c_event_handler(int port)
 	STM32_I2C_SR1(port) = 0;
 
 	/* Confirm that you are not in master mode */
-	if (STM32_I2C_SR2(port) & (1 << 0)) {
+	if (STM32_I2C_SR2(port) & STM32_I2C_SR2_MSL) {
 		CPRINTS("slave ISR triggered in master mode, ignoring");
 		return;
 	}
 
 	/* transfer matched our slave address */
-	if (i2c_sr1[port] & (1 << 1)) {
+	if (i2c_sr1[port] & STM32_I2C_SR1_ADDR) {
 		/* If it's a receiver slave */
-		if (!(STM32_I2C_SR2(port) & (1 << 2))) {
+		if (!(STM32_I2C_SR2(port) & STM32_I2C_SR2_TRA)) {
 			dma_start_rx(dma_rx_option + port, sizeof(host_buffer),
 				     host_buffer);
 
-			STM32_I2C_CR2(port) |= (1 << 11);
+			STM32_I2C_CR2(port) |= STM32_I2C_CR2_DMAEN;
 			rx_pending = 1;
 		}
 
 		/* cleared by reading SR1 followed by reading SR2 */
 		STM32_I2C_SR1(port);
 		STM32_I2C_SR2(port);
-	} else if (i2c_sr1[port] & (1 << 4)) {
+	} else if (i2c_sr1[port] & STM32_I2C_SR1_STOPF) {
 		/* If it's a receiver slave */
-		if (!(STM32_I2C_SR2(port) & (1 << 2))) {
+		if (!(STM32_I2C_SR2(port) & STM32_I2C_SR2_TRA)) {
 			/* Disable, and clear the DMA transfer complete flag */
 			dma_disable(DMAC_SLAVE_RX);
 			dma_clear_isr(DMAC_SLAVE_RX);
 
 			/* Turn off i2c's DMA flag */
-			STM32_I2C_CR2(port) &= ~(1 << 11);
+			STM32_I2C_CR2(port) &= ~STM32_I2C_CR2_DMAEN;
 		}
 		/* clear STOPF bit by reading SR1 and then writing CR1 */
 		STM32_I2C_SR1(port);
@@ -288,8 +300,8 @@ static void i2c_event_handler(int port)
 	}
 
 	/* TxE event */
-	if (i2c_sr1[port] & (1 << 7)) {
-		if (port == I2C2) { /* AP is waiting for EC response */
+	if (i2c_sr1[port] & STM32_I2C_SR1_TXE) {
+		if (port == I2C_PORT_SLAVE) { /* AP waits for EC response */
 			if (rx_pending) {
 				i2c_process_command();
 				/* reset host buffer after end of transfer */
@@ -301,14 +313,14 @@ static void i2c_event_handler(int port)
 		}
 	}
 }
-void i2c2_event_interrupt(void) { i2c_event_handler(I2C2); }
-DECLARE_IRQ(STM32_IRQ_I2C2_EV, i2c2_event_interrupt, 3);
+void i2c_slave_event_interrupt(void) { i2c_event_handler(I2C_PORT_SLAVE); }
+DECLARE_IRQ(IRQ_SLAVE_EV, i2c_slave_event_interrupt, 3);
 
 static void i2c_error_handler(int port)
 {
 	i2c_sr1[port] = STM32_I2C_SR1(port);
 
-	if (i2c_sr1[port] & 1 << 10) {
+	if (i2c_sr1[port] & STM32_I2C_SR1_AF) {
 		/* ACK failed (NACK); expected when AP reads final byte.
 		 * Software must clear AF bit. */
 	} else {
@@ -320,8 +332,9 @@ static void i2c_error_handler(int port)
 
 	STM32_I2C_SR1(port) &= ~0xdf00;
 }
-void i2c2_error_interrupt(void) { i2c_error_handler(I2C2); }
-DECLARE_IRQ(STM32_IRQ_I2C2_ER, i2c2_error_interrupt, 2);
+void i2c_slave_error_interrupt(void) { i2c_error_handler(I2C_PORT_SLAVE); }
+DECLARE_IRQ(IRQ_SLAVE_ER, i2c_slave_error_interrupt, 2);
+#endif
 
 /* board-specific setup for post-I2C module init */
 void __board_i2c_post_init(int port)
@@ -333,76 +346,73 @@ void board_i2c_post_init(int port)
 
 static void i2c_init_port(unsigned int port)
 {
-	const int i2c_clock_bit[] = {21, 22};
+	const int i2c_clock_bit[] = { STM32_RCC_PB1_I2C1, STM32_RCC_PB1_I2C2 };
+	int freq = clock_get_freq(STM32_I2C_PERIPH_CLASS(port));
 
-	if (!(STM32_RCC_APB1ENR & (1 << i2c_clock_bit[port]))) {
+	if (!(STM32_RCC_APB1ENR & i2c_clock_bit[port])) {
 		/* Only unwedge the bus if the clock is off */
 		if (i2c_claim(port) == EC_SUCCESS) {
 			i2c_release(port);
 		}
 
 		/* enable I2C2 clock */
-		STM32_RCC_APB1ENR |= 1 << i2c_clock_bit[port];
-
+		STM32_RCC_APB1ENR |= i2c_clock_bit[port];
 		/* Delay 1 APB clock cycle after the clock is enabled */
 		clock_wait_bus_cycles(BUS_APB, 1);
 	}
 
 	/* force reset of the i2c peripheral */
-	STM32_I2C_CR1(port) = 0x8000;
-	STM32_I2C_CR1(port) = 0x0000;
+	STM32_I2C_CR1(port) |= STM32_I2C_CR1_SWRST;
+	STM32_I2C_CR1(port) &= ~STM32_I2C_CR1_SWRST;
 
 	/* set clock configuration : standard mode (100kHz) */
-	STM32_I2C_CCR(port) = I2C_CCR;
+	STM32_I2C_CR2(port) = freq / SECOND;
+	STM32_I2C_CCR(port) = freq / (2 * I2C_FREQ);
+	STM32_I2C_TRISE(port) = freq / SECOND + 1;
 
+#ifdef CONFIG_HOSTCMD_I2C_SLAVE_ADDR
 	/* set slave address */
-	if (port == I2C2)
-		STM32_I2C_OAR1(port) = I2C_ADDRESS;
+	if (port == I2C_PORT_SLAVE)
+		STM32_I2C_OAR1(port) = CONFIG_HOSTCMD_I2C_SLAVE_ADDR;
+#endif
 
 	/* configuration : I2C mode / Periphal enabled, ACK enabled */
-	STM32_I2C_CR1(port) = (1 << 10) | (1 << 0);
-	/* error and event interrupts enabled / input clock is 16Mhz */
-	STM32_I2C_CR2(port) = (1 << 9) | (1 << 8) | 0x10;
+	STM32_I2C_CR1(port) |= STM32_I2C_CR1_ACK | STM32_I2C_CR1_PE;
 
 	/* clear status */
 	STM32_I2C_SR1(port) = 0;
 
 	board_i2c_post_init(port);
+	enable_i2c_interrupt(port);
 }
 
 static void i2c_init(void)
 {
+	const struct i2c_port_t *p = i2c_ports;
+	int i;
+
 	/*
 	 * TODO(crosbug.com/p/23763): Add config options to determine which
 	 * channels to init.
 	 */
-	i2c_init_port(I2C1);
-	i2c_init_port(I2C2);
+	for (i = 0; i < i2c_ports_used; i++, p++) {
+		i2c_init_port(p->port);
+#ifdef CONFIG_HOSTCMD_I2C_SLAVE_ADDR
+		if (p->port == I2C_PORT_SLAVE) {
+			/* Enable event and error interrupts */
+			task_enable_irq(IRQ_SLAVE_EV);
+			task_enable_irq(IRQ_SLAVE_ER);
+		}
+#endif
+	}
 
-	/* Enable event and error interrupts */
-	task_enable_irq(STM32_IRQ_I2C2_EV);
-	task_enable_irq(STM32_IRQ_I2C2_ER);
+	/* Configure GPIOs */
+	gpio_config_module(MODULE_I2C, 1);
 }
 DECLARE_HOOK(HOOK_INIT, i2c_init, HOOK_PRIO_INIT_I2C);
 
 /*****************************************************************************/
 /* STM32 Host I2C */
-
-#define SR1_SB		(1 << 0)	/* Start bit sent */
-#define SR1_ADDR	(1 << 1)	/* Address sent */
-#define SR1_BTF		(1 << 2)	/* Byte transfered */
-#define SR1_ADD10	(1 << 3)	/* 10bit address sent */
-#define SR1_STOPF	(1 << 4)	/* Stop detected */
-#define SR1_RxNE	(1 << 6)	/* Data reg not empty */
-#define SR1_TxE		(1 << 7)	/* Data reg empty */
-#define SR1_BERR	(1 << 8)	/* Buss error */
-#define SR1_ARLO	(1 << 9)	/* Arbitration lost */
-#define SR1_AF		(1 << 10)	/* Ack failure */
-#define SR1_OVR		(1 << 11)	/* Overrun/underrun */
-#define SR1_PECERR	(1 << 12)	/* PEC err in reception */
-#define SR1_TIMEOUT	(1 << 14)	/* Timeout : 25ms */
-#define CR2_DMAEN	(1 << 11)	/* DMA enable */
-#define CR2_LAST	(1 << 12)	/* Next EOT is last EOT */
 
 static inline void dump_i2c_reg(int port)
 {
@@ -431,6 +441,7 @@ enum wait_t {
 	WAIT_RX_NE_FINAL,
 	WAIT_RX_NE_STOP,
 	WAIT_RX_NE_STOP_SIZE2,
+	WAIT_DMA_DONE,
 };
 
 /**
@@ -482,16 +493,17 @@ static int master_start(int port, int slave_addr)
 	int rv;
 
 	/* Change to master send mode, reset stop bit, send start bit */
-	STM32_I2C_CR1(port) = (STM32_I2C_CR1(port) & ~(1 << 9)) | (1 << 8);
+	STM32_I2C_CR1(port) = (STM32_I2C_CR1(port) & ~STM32_I2C_CR1_STOP) |
+		STM32_I2C_CR1_START;
 	/* Wait for start bit sent event */
-	rv = wait_status(port, SR1_SB, WAIT_MASTER_START);
+	rv = wait_status(port, STM32_I2C_SR1_SB, WAIT_MASTER_START);
 	if (rv)
 		return rv;
 
 	/* Send address */
 	STM32_I2C_DR(port) = slave_addr;
 	/* Wait for addr ready */
-	rv = wait_status(port, SR1_ADDR, WAIT_ADDR_READY);
+	rv = wait_status(port, STM32_I2C_SR1_ADDR, WAIT_ADDR_READY);
 	if (rv)
 		return rv;
 
@@ -502,7 +514,7 @@ static int master_start(int port, int slave_addr)
 
 static void master_stop(int port)
 {
-	STM32_I2C_CR1(port) |= (1 << 9);
+	STM32_I2C_CR1(port) |= STM32_I2C_CR1_STOP;
 }
 
 static int wait_until_stop_sent(int port)
@@ -515,7 +527,7 @@ static int wait_until_stop_sent(int port)
 	deadline.val += TIMEOUT_STOP_SENT_US;
 	slow_cutoff.val += SLOW_STOP_SENT_US;
 
-	while (STM32_I2C_CR1(port) & (1 << 9)) {
+	while (STM32_I2C_CR1(port) & STM32_I2C_CR1_STOP) {
 		if (timestamp_expired(deadline, NULL)) {
 			ccprintf("Stop event deadline passed:\ttask=%d"
 							"\tCR1=%016b\n",
@@ -566,7 +578,8 @@ static void handle_i2c_error(int port, int rv)
 	/* Clear busy state */
 	t1 = get_time();
 
-	if (rv == EC_ERROR_TIMEOUT && (STM32_I2C_CR1(port) & (1 << 8))) {
+	if ((rv == EC_ERROR_TIMEOUT) &&
+	    (STM32_I2C_CR1(port) & STM32_I2C_CR1_START)) {
 		/*
 		 * If it failed while just trying to send the start bit then
 		 * something is wrong with the internal state of the i2c,
@@ -606,16 +619,15 @@ cr_cleanup:
 	 * Reset control register to the default state :
 	 * I2C mode / Periphal enabled, ACK enabled
 	 */
-	STM32_I2C_CR1(port) = (1 << 10) | (1 << 0);
+	STM32_I2C_CR1(port) = STM32_I2C_CR1_ACK | STM32_I2C_CR1_PE;
 }
 
 static int i2c_master_transmit(int port, int slave_addr, const uint8_t *data,
 			       int size, int stop)
 {
-	int rv, rv_start;
+	int rv = 0, rv_start;
 
 	disable_ack(port);
-
 	/* Configure DMA channel for TX to host */
 	dma_prepare_tx(dma_tx_option + port, size, data);
 	dma_enable_tc_interrupt(DMAC_MASTER_TX);
@@ -624,25 +636,25 @@ static int i2c_master_transmit(int port, int slave_addr, const uint8_t *data,
 	dma_go(dma_get_channel(DMAC_MASTER_TX));
 
 	/* Configuring i2c2 to use DMA */
-	STM32_I2C_CR2(port) |= CR2_DMAEN;
+	STM32_I2C_CR2(port) |= STM32_I2C_CR2_DMAEN;
 
 	/* Initialise i2c communication by sending START and ADDR */
 	rv_start = master_start(port, slave_addr);
 
 	/* If it started, wait for the transmission complete Interrupt */
 	if (!rv_start)
-		rv = task_wait_event(DMA_TRANSFER_TIMEOUT_US);
+		rv = task_wait_event_mask(
+				TASK_EVENT_DMA_TC, DMA_TRANSFER_TIMEOUT_US);
 
 	dma_disable(DMAC_MASTER_TX);
 	dma_disable_tc_interrupt(DMAC_MASTER_TX);
-	STM32_I2C_CR2(port) &= ~CR2_DMAEN;
-
+	STM32_I2C_CR2(port) &= ~STM32_I2C_CR2_DMAEN;
 	if (rv_start)
 		return rv_start;
-	if (!(rv & TASK_EVENT_WAKE))
-		return EC_ERROR_TIMEOUT;
+	if (!(rv & TASK_EVENT_DMA_TC))
+		return EC_ERROR_TIMEOUT | (WAIT_DMA_DONE << 8);
 
-	rv = wait_status(port, SR1_BTF, WAIT_XMIT_BTF);
+	rv = wait_status(port, STM32_I2C_SR1_BTF, WAIT_XMIT_BTF);
 	if (rv)
 		return rv;
 
@@ -669,22 +681,23 @@ static int i2c_master_receive(int port, int slave_addr, uint8_t *data,
 
 		dma_enable_tc_interrupt(DMAC_MASTER_RX);
 
-		STM32_I2C_CR2(port) |= CR2_DMAEN;
-		STM32_I2C_CR2(port) |= CR2_LAST;
+		STM32_I2C_CR2(port) |= STM32_I2C_CR2_DMAEN;
+		STM32_I2C_CR2(port) |= STM32_I2C_CR2_LAST;
 
 		rv_start = master_start(port, slave_addr | 1);
 		if (!rv_start)
-			rv = task_wait_event(DMA_TRANSFER_TIMEOUT_US);
+			rv = task_wait_event_mask(TASK_EVENT_DMA_TC,
+					DMA_TRANSFER_TIMEOUT_US);
 
 		dma_disable(DMAC_MASTER_RX);
 		dma_disable_tc_interrupt(DMAC_MASTER_RX);
-		STM32_I2C_CR2(port) &= ~CR2_DMAEN;
+		STM32_I2C_CR2(port) &= ~STM32_I2C_CR2_DMAEN;
 		disable_ack(port);
 
 		if (rv_start)
 			return rv_start;
-		if (!(rv & TASK_EVENT_WAKE))
-			return EC_ERROR_TIMEOUT;
+		if (!(rv & TASK_EVENT_DMA_TC))
+			return EC_ERROR_TIMEOUT | (WAIT_DMA_DONE << 8);
 
 		master_stop(port);
 	} else {
@@ -694,7 +707,8 @@ static int i2c_master_receive(int port, int slave_addr, uint8_t *data,
 		if (rv)
 			return rv;
 		master_stop(port);
-		rv = wait_status(port, SR1_RxNE, WAIT_RX_NE_STOP_SIZE2);
+		rv = wait_status(port, STM32_I2C_SR1_RXNE,
+				 WAIT_RX_NE_STOP_SIZE2);
 		if (rv)
 			return rv;
 		data[0] = STM32_I2C_DR(port);
@@ -707,8 +721,6 @@ int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
 	     uint8_t *in, int in_bytes, int flags)
 {
 	int rv;
-
-	/* TODO(crosbug.com/p/23569): support start/stop flags */
 
 	ASSERT(out || !out_bytes);
 	ASSERT(in || !in_bytes);
@@ -726,8 +738,9 @@ int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
 
 	disable_i2c_interrupt(port);
 
-	rv = i2c_master_transmit(port, slave_addr, out, out_bytes,
-				 in_bytes ? 0 : 1);
+	if (out_bytes)
+		rv = i2c_master_transmit(port, slave_addr, out, out_bytes,
+				in_bytes ? 0 : 1);
 	if (!rv && in_bytes)
 		rv = i2c_master_receive(port, slave_addr, in, in_bytes);
 	handle_i2c_error(port, rv);
