@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "abbf508b_4fa50149",
+        "filename": "common/led_policy_std.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-02-13T21:41:58Z",
+      "side": 1,
+      "message": "No _GREEN\n\nAnd really, just specify a default.\n\n#ifndef CONFIG_LED_POWER_COLOR\n#define CONFIG_LED_POWER_COLOR WHITE\n#endif\n\nand then the CONCAT2() calls.",
+      "range": {
+        "startLine": 54,
+        "startChar": 29,
+        "endLine": 54,
+        "endChar": 35
+      },
+      "revId": "4757bb15df90df367b9ab648eb66874ad1957c00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "abbf508b_cf981117",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 791,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-02-13T21:41:58Z",
+      "side": 1,
+      "message": "Please add a descriptive comment.\n\n/* Color of the power LED (for example, GREEN or WHITE) */",
+      "range": {
+        "startLine": 791,
+        "startChar": 0,
+        "endLine": 791,
+        "endChar": 29
+      },
+      "revId": "4757bb15df90df367b9ab648eb66874ad1957c00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
