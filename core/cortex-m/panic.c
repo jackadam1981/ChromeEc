@@ -60,7 +60,7 @@ static void print_reg(int regnum, const uint32_t *regs, int index)
 	if (regs)
 		panic_printf("%08x", regs[index]);
 	else
-		panic_puts("        ");
+		panic_puts("	g");
 	panic_puts((regnum & 3) == 3 ? "\n" : " ");
 }
 
@@ -371,6 +371,28 @@ void exception_panic(void)
 			"r1", "r2", "r3", "r4", "r5", "r6", "r7", "r8", "r9",
 			"r10", "r11", "cc", "memory"
 		);
+}
+
+void software_panic(uint32_t panic_reason, uint32_t panic_info)
+{
+	__asm__("mov " EXP(SOFTWARE_PANIC_INFO_REG) ", %0\n"
+		"mov " EXP(SOFTWARE_PANIC_REASON_REG) ", %1\n"
+		"bl exception_panic\n"
+		: : "r"(panic_info), "r"(panic_reason));
+}
+
+void panic_log_watchdog(void)
+{
+	uint32_t *lregs = pdata_ptr->cm.regs;
+
+	/* Watchdog reset, log panic cause */
+	memset(pdata_ptr, 0, sizeof(*pdata_ptr));
+	pdata_ptr->magic = PANIC_DATA_MAGIC;
+	pdata_ptr->struct_size = sizeof(*pdata_ptr);
+	pdata_ptr->struct_version = 2;
+	pdata_ptr->arch = PANIC_ARCH_CORTEX_M;
+
+	lregs[3] = PANIC_SW_WATCHDOG;
 }
 
 void bus_fault_handler(void)
