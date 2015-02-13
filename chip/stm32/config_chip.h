@@ -24,6 +24,8 @@
 #include "config-stm32l100.h"
 #elif defined(CHIP_VARIANT_STM32F373)
 #include "config-stm32f373.h"
+#elif defined(CHIP_VARIANT_STM32F411)
+#include "config-stm32f411.h"
 #elif defined(CHIP_VARIANT_STM32F100)
 /* STM32F100xx is currently the only outlier in the STM32F series */
 #include "config-stm32f100.h"
