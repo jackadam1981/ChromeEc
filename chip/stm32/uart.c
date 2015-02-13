@@ -30,10 +30,10 @@
 #define CONFIG_UART_TX_DMA_CH STM32_DMAC_USART1_TX
 #endif
 
-/* DMA channel options; assumes UART1 */
 static const struct dma_option dma_tx_option = {
 	CONFIG_UART_TX_DMA_CH, (void *)&STM32_USART_TDR(UARTN_BASE),
-	STM32_DMA_CCR_MSIZE_8_BIT | STM32_DMA_CCR_PSIZE_8_BIT
+	STM32_DMA_CCR_MSIZE_8_BIT | STM32_DMA_CCR_PSIZE_8_BIT |
+	STM32_DMA_CCR_CHANNEL(CONFIG_UART_TX_REQ_CH)
 };
 
 #else
@@ -45,10 +45,11 @@ static const struct dma_option dma_tx_option = {
 #ifndef CONFIG_UART_RX_DMA_CH
 #define CONFIG_UART_RX_DMA_CH STM32_DMAC_USART1_RX
 #endif
-/* DMA channel options; assumes UART1 */
+
 static const struct dma_option dma_rx_option = {
 	CONFIG_UART_RX_DMA_CH, (void *)&STM32_USART_RDR(UARTN_BASE),
 	STM32_DMA_CCR_MSIZE_8_BIT | STM32_DMA_CCR_PSIZE_8_BIT |
+	STM32_DMA_CCR_CHANNEL(CONFIG_UART_RX_REQ_CH) |
 	STM32_DMA_CCR_CIRC
 };
 
@@ -231,7 +232,7 @@ static void uart_freq_change(void)
 	div = DIV_ROUND_NEAREST(freq, CONFIG_UART_BAUD_RATE);
 
 #if defined(CHIP_FAMILY_STM32L) || defined(CHIP_FAMILY_STM32F0) || \
-	defined(CHIP_FAMILY_STM32F3)
+	defined(CHIP_FAMILY_STM32F3) || defined(CHIP_FAMILY_STM32F4)
 	if (div / 16 > 0) {
 		/*
 		 * CPU clock is high enough to support x16 oversampling.

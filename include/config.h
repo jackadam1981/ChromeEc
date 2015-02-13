@@ -599,6 +599,8 @@
 #undef CONFIG_FLASH_SIZE
 #undef CONFIG_FLASH_WRITE_IDEAL_SIZE
 #undef CONFIG_FLASH_WRITE_SIZE
+/* Wait State DIVisor unit is Hz */
+#undef CONFIG_FLASH_WS_DIV
 
 /*****************************************************************************/
 
@@ -1329,6 +1331,13 @@
 
 /* Support computing hash of code for verified boot */
 #undef CONFIG_VBOOT_HASH
+
+/*****************************************************************************/
+
+/* Define which voltages the EC is running */
+#undef CONFIG_VOLTAGE_CORE_1800
+#undef CONFIG_VOLTAGE_CORE_3300
+
 
 /*****************************************************************************/
 /* Watchdog config */
