@@ -119,7 +119,8 @@ void usart_shutdown(struct usart_config const *config)
 
 void usart_set_baud_f0_l(struct usart_config const *config)
 {
-	int      div  = DIV_ROUND_NEAREST(clock_get_freq(), config->baud);
+	int div = DIV_ROUND_NEAREST(clock_get_freq(config->hw->periph),
+				    config->baud);
 	intptr_t base = config->hw->base;
 
 	if (div / 16 > 0) {
@@ -141,7 +142,8 @@ void usart_set_baud_f0_l(struct usart_config const *config)
 
 void usart_set_baud_f(struct usart_config const *config)
 {
-	int div = DIV_ROUND_NEAREST(clock_get_freq(), config->baud);
+	int div = DIV_ROUND_NEAREST(clock_get_freq(config->hw->periph),
+				    config->baud);
 
 	/* STM32F only supports x16 oversampling */
 	STM32_USART_BRR(config->hw->base) = div;

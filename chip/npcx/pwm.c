@@ -67,12 +67,14 @@ void pwm_freq_changed(void)
 		prescaler_divider = (uint32_t)(32768 /
 				pwm_channels[pwm_init_ch].freq);
 #else
-		prescaler_divider = (uint32_t)(clock_get_apb2_freq()
-				/ pwm_channels[pwm_init_ch].freq);
+		prescaler_divider =
+			(uint32_t)(clock_get_freq(CLOCK_TYPE_FAST_PERIPH)
+					/ pwm_channels[pwm_init_ch].freq);
 #endif
 	} else {
-		prescaler_divider = (uint32_t)(clock_get_apb2_freq()
-				/ pwm_channels[pwm_init_ch].freq);
+		prescaler_divider =
+			(uint32_t)(clock_get_freq(CLOCK_TYPE_FAST_PERIPH)
+					/ pwm_channels[pwm_init_ch].freq);
 	}
 	/* Set clock prescalre divider to ADC module*/
 	if (prescaler_divider >= 1)
