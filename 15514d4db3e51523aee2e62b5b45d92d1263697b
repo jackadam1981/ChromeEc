@@ -118,6 +118,30 @@
       "revId": "15514d4db3e51523aee2e62b5b45d92d1263697b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b8094c4_76ef700b",
+        "filename": "common/charge_ramp.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-13T15:51:33Z",
+      "side": 1,
+      "message": "Done. Limited to 2A for DCP, 1A for SDP as discussed in person.",
+      "parentUuid": "9664759b_680de3ad",
+      "range": {
+        "startLine": 19,
+        "startChar": 8,
+        "endLine": 19,
+        "endChar": 31
+      },
+      "revId": "15514d4db3e51523aee2e62b5b45d92d1263697b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
