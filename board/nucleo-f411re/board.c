@@ -1,0 +1,99 @@
+/* Copyright 2015 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+/* nucleo-f411re development board configuration */
+
+#include "adc.h"
+#include "adc_chip.h"
+#include "common.h"
+#include "console.h"
+#include "driver/accelgyro_lsm6ds0.h"
+#include "ec_version.h"
+#include "gpio.h"
+#include "hooks.h"
+#include "i2c.h"
+#include "motion_sense.h"
+
+#include "gpio.h"
+#include "registers.h"
+#include "task.h"
+#include "util.h"
+
+void user_button_evt(enum gpio_signal signal)
+{
+	ccprintf("Button %d, %d!\n", signal, gpio_get_level(signal));
+}
+
+#include "gpio_list.h"
+
+/* Initialize board. */
+static void board_init(void)
+{
+	gpio_enable_interrupt(GPIO_USER_BUTTON_L);
+
+	/* No power control yet */
+	/* Go to S3 state */
+	hook_notify(HOOK_CHIPSET_STARTUP);
+
+	/* Go to S0 state */
+	hook_notify(HOOK_CHIPSET_RESUME);
+}
+DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+/* ADC channels */
+const struct adc_t adc_channels[] = {
+	/* Arduino connectors analog pins */
+	[ADC1_0] = {"ADC1_0",  3000, 4096, 0, STM32_AIN(0)},
+	[ADC1_1] = {"ADC1_1",  3000, 4096, 0, STM32_AIN(1)},
+	[ADC1_4] = {"ADC1_4",  3000, 4096, 0, STM32_AIN(4)},
+	[ADC1_8] = {"ADC1_8",  3000, 4096, 0, STM32_AIN(8)},
+};
+BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
+
+/* I2C ports */
+const struct i2c_port_t i2c_ports[] = {
+	{"master", I2C_PORT_MASTER, 100,
+	 GPIO_MASTER_I2C_SCL, GPIO_MASTER_I2C_SDA},
+};
+
+const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+
+/* Sensor mutex */
+static struct mutex g_mutex;
+
+struct motion_sensor_t motion_sensors[] = {
+
+	/*
+	 * Note: lsm6ds0: supports accelerometer and gyro sensor
+	 * Requriement: accelerometer sensor must init before gyro sensor
+	 * DO NOT change the order of the following table.
+	 */
+	{SENSOR_ACTIVE_S0_S3, "Accel", MOTIONSENSE_CHIP_LSM6DS0,
+		MOTIONSENSE_TYPE_ACCEL, MOTIONSENSE_LOC_LID,
+		&lsm6ds0_drv, &g_mutex, NULL,
+		LSM6DS0_ADDR1, NULL, 119000, 2},
+
+	{SENSOR_ACTIVE_S0_S3, "Gyro", MOTIONSENSE_CHIP_LSM6DS0,
+		MOTIONSENSE_TYPE_GYRO, MOTIONSENSE_LOC_LID,
+		&lsm6ds0_drv, &g_mutex, NULL,
+		LSM6DS0_ADDR1, NULL, 119000, 2000},
+
+};
+const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+
+
+#ifdef CONFIG_DMA_HELP
+#include "dma.h"
+int command_dma_help(int argc, char **argv)
+{
+	dma_dump(STM32_DMA2_STREAM0);
+	dma_test(STM32_DMA2_STREAM0);
+	dma_dump(STM32_DMA2_STREAM0);
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(dmahelp, command_dma_help,
+			NULL,
+			"Run DMA test",
+			NULL);
+#endif
