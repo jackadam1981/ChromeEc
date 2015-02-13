@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "4b8094c4_b6dd086c",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-13T15:50:34Z",
+      "side": 1,
+      "message": "Ok, Done. For 500mA pull-up we ramp, for other values we don\u0027t.",
+      "parentUuid": "9664759b_88ab7722",
+      "revId": "cf2e2401711d67907b6d4cb7f3636142cfe292b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "161ec559_74dd48e1",
         "filename": "board/samus_pd/board.c",
         "patchSetId": 13
@@ -102,6 +120,24 @@
       "writtenOn": "2015-02-11T01:56:15Z",
       "side": 1,
       "message": "Make 4600mA a config option or a constant?",
+      "revId": "cf2e2401711d67907b6d4cb7f3636142cfe292b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7658e11a_32462e45",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-13T15:50:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "161ec559_74dd48e1",
       "revId": "cf2e2401711d67907b6d4cb7f3636142cfe292b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
