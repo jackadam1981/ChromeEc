@@ -48,7 +48,7 @@ static uint16_t bkpdata_read(enum bkpdata_index index)
 		return 0;
 
 #if defined(CHIP_FAMILY_STM32L) || defined(CHIP_FAMILY_STM32F0) || \
-	defined(CHIP_FAMILY_STM32F3)
+	defined(CHIP_FAMILY_STM32F3) || defined(CHIP_FAMILY_STM32F4)
 	if (index & 1)
 		return STM32_BKP_DATA(index >> 1) >> 16;
 	else
@@ -69,7 +69,7 @@ static int bkpdata_write(enum bkpdata_index index, uint16_t value)
 		return EC_ERROR_INVAL;
 
 #if defined(CHIP_FAMILY_STM32L) || defined(CHIP_FAMILY_STM32F0) || \
-	defined(CHIP_FAMILY_STM32F3)
+	defined(CHIP_FAMILY_STM32F3) || defined(CHIP_FAMILY_STM32F4)
 	if (index & 1) {
 		uint32_t val = STM32_BKP_DATA(index >> 1);
 		val = (val & 0x0000FFFF) | (value << 16);
@@ -126,7 +126,7 @@ static void check_reset_cause(void)
 	/* Clear saved reset flags */
 	bkpdata_write(BKPDATA_INDEX_SAVED_RESET_FLAGS, 0 | console_en);
 
-	if (raw_cause & 0x60000000) {
+	if (raw_cause & (STM32_RCC_IWDGRSTF | STM32_RCC_WWDGRSTF)) {
 		/*
 		 * IWDG or WWDG, if the watchdog was not used as an hard reset
 		 * mechanism
@@ -135,16 +135,16 @@ static void check_reset_cause(void)
 			flags |= RESET_FLAG_WATCHDOG;
 	}
 
-	if (raw_cause & 0x10000000)
+	if (raw_cause & STM32_RCC_SFTRSTF)
 		flags |= RESET_FLAG_SOFT;
 
-	if (raw_cause & 0x08000000)
+	if (raw_cause & STM32_RCC_PORRSTF)
 		flags |= RESET_FLAG_POWER_ON;
 
-	if (raw_cause & 0x04000000)
+	if (raw_cause & STM32_RCC_PINRSTF)
 		flags |= RESET_FLAG_RESET_PIN;
 
-	if (pwr_status & 0x00000002)
+	if (pwr_status & STM32_RCC_LSIRDY)
 		/* Hibernated and subsequently awakened */
 		flags |= RESET_FLAG_HIBERNATE;
 
@@ -196,7 +196,7 @@ void system_pre_init(void)
 		STM32_RCC_CSR = (STM32_RCC_CSR & ~0x00C30000) | 0x00420000;
 	}
 #elif defined(CHIP_FAMILY_STM32F) || defined(CHIP_FAMILY_STM32F0) || \
-	defined(CHIP_FAMILY_STM32F3)
+	defined(CHIP_FAMILY_STM32F3) || defined(CHIP_FAMILY_STM32F4)
 	if ((STM32_RCC_BDCR & 0x00018300) != 0x00008200) {
 		/* the RTC settings are bad, we need to reset it */
 		STM32_RCC_BDCR |= 0x00010000;
