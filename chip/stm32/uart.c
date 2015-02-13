@@ -20,6 +20,9 @@
 #define UARTN      CONFIG_UART_CONSOLE
 #define UARTN_BASE STM32_USART_BASE(CONFIG_UART_CONSOLE)
 
+/* The console UART is used with a usualy on a fast clock. */
+#define UARTN_PERIPH_CLASS STM32_USART_CLOCK(CONFIG_UART_CONSOLE)
+
 #ifdef CONFIG_UART_TX_DMA
 #define UART_TX_INT_ENABLE STM32_USART_CR1_TCIE
 
@@ -224,17 +227,7 @@ static void uart_freq_change(void)
 	int freq;
 	int div;
 
-#if (defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32F3)) && \
-	(UARTN <= 2)
-	/*
-	 * UART is clocked from HSI (8MHz) to allow it to work when waking
-	 * up from sleep
-	 */
-	freq = 8000000;
-#else
-	/* UART clocked from the main clock */
-	freq = clock_get_freq();
-#endif
+	freq = clock_get_freq(UARTN_PERIPH_CLASS);
 	div = DIV_ROUND_NEAREST(freq, CONFIG_UART_BAUD_RATE);
 
 #if defined(CHIP_FAMILY_STM32L) || defined(CHIP_FAMILY_STM32F0) || \
@@ -266,11 +259,10 @@ void uart_init(void)
 {
 	/* Enable USART clock */
 #if defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32F3)
-#if (UARTN == 1)
-	STM32_RCC_CFGR3 |= 0x0003;   /* USART1 clock source from HSI(8MHz) */
-#elif (UARTN == 2)
-	STM32_RCC_CFGR3 |= 0x030000; /* USART2 clock source from HSI(8MHz) */
-#endif /* UARTN */
+	STM32_RCC_CFGR3 = (STM32_RCC_CFGR3 & ~STM32_RCC_USART_MASK(UARTN)) |
+		((STM32_USART_CLOCK(UARTN) == CLOCK_TYPE_WAKE_PERIPH ?
+                  STM32_RCC_USART_HSI : STM32_RCC_USART_PCLK) <<
+		 stm32_rcc_cfgr3_usart_offset(UARTN));
 #endif /* CHIP_FAMILY_STM32F0 || CHIP_FAMILY_STM32F3 */
 
 #if (UARTN == 1)

@@ -28,7 +28,7 @@ static void usart_variant_enable(struct usart_config const *config)
 	 */
 	configs[config->hw->index] = config;
 
-	usart_set_baud_f(config, clock_get_freq());
+	usart_set_baud_f(config, clock_get_freq(config->hw->peripheral_clock));
 
 	task_enable_irq(config->hw->irq);
 }
@@ -40,7 +40,7 @@ static void usart_variant_disable(struct usart_config const *config)
 	configs[config->hw->index] = NULL;
 }
 
-static usart_hw_ops const struct usart_variant_hw_ops = {
+static struct usart_hw_ops const usart_variant_hw_ops = {
 	.enable  = usart_variant_enable,
 	.disable = usart_variant_disable,
 };
@@ -49,9 +49,13 @@ static void freq_change(void)
 {
 	size_t	i;
 
-	for (i = 0; i < ARRAY_SIZE(configs); ++i)
-		if (configs[i])
-			usart_set_baud_f(configs[i], clock_get_freq());
+	for (i = 0; i < ARRAY_SIZE(configs); ++i) {
+		if (!configs[i])
+			continue;
+		usart_set_baud_f(
+			configs[i],
+			clock_get_freq(configs[i]->hw->peripheral_clock));
+	}
 }
 
 DECLARE_HOOK(HOOK_FREQ_CHANGE, freq_change, HOOK_PRIO_DEFAULT);
@@ -65,6 +69,7 @@ struct usart_hw_config const usart1_hw = {
 	.index          = 0,
 	.base           = STM32_USART1_BASE,
 	.irq            = STM32_IRQ_USART1,
+	.peripheral_clock = STM32_USART_CLOCK(1),
 	.clock_register = &STM32_RCC_APB2ENR,
 	.clock_enable   = STM32_RCC_PB2_USART1,
 	.ops            = &usart_variant_hw_ops,
@@ -83,6 +88,7 @@ struct usart_hw_config const usart2_hw = {
 	.index          = 1,
 	.base           = STM32_USART2_BASE,
 	.irq            = STM32_IRQ_USART2,
+	.peripheral_clock = STM32_USART_CLOCK(2),
 	.clock_register = &STM32_RCC_APB1ENR,
 	.clock_enable   = STM32_RCC_PB1_USART2,
 	.ops            = &usart_variant_hw_ops,
@@ -101,6 +107,7 @@ struct usart_hw_config const usart3_hw = {
 	.index          = 2,
 	.base           = STM32_USART3_BASE,
 	.irq            = STM32_IRQ_USART3_4,
+	.peripheral_clock = STM32_USART_CLOCK(3),
 	.clock_register = &STM32_RCC_APB1ENR,
 	.clock_enable   = STM32_RCC_PB1_USART3,
 	.ops            = &usart_variant_hw_ops,

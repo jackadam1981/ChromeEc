@@ -188,8 +188,8 @@ int flash_physical_write(int offset, int size, const char *data)
 		word_mode = 1;
 
 	/* Update flash timeout based on current clock speed */
-	flash_timeout_loop = FLASH_TIMEOUT_MS * (clock_get_freq() / MSEC) /
-		CYCLE_PER_FLASH_LOOP;
+	flash_timeout_loop = FLASH_TIMEOUT_MS *
+		(clock_get_freq(CLOCK_TYPE_CPU) / MSEC) / CYCLE_PER_FLASH_LOOP;
 
 	while (size > 0) {
 		/*

@@ -135,11 +135,13 @@ static void update_prescaler(void)
 	 * This will take effect at the next update event (when the current
 	 * prescaler counter ticks down, or if forced via EGR).
 	 */
-	STM32_TIM_PSC(TIM_CLOCK32) = (clock_get_freq() / SECOND) - 1;
+	STM32_TIM_PSC(TIM_CLOCK32) =
+		(clock_get_freq(CLOCK_TYPE_FAST_PERIPH) / SECOND) - 1;
 
 #ifdef CONFIG_WATCHDOG_HELP
 	/* Watchdog timer runs at 1KHz */
-	STM32_TIM_PSC(TIM_WATCHDOG) = (clock_get_freq() / SECOND * MSEC) - 1;
+	STM32_TIM_PSC(TIM_WATCHDOG) =
+		(clock_get_freq(CLOCK_TYPE_FAST_PERIPH) / SECOND * MSEC) - 1;
 #endif  /* CONFIG_WATCHDOG_HELP */
 }
 DECLARE_HOOK(HOOK_FREQ_CHANGE, update_prescaler, HOOK_PRIO_DEFAULT);

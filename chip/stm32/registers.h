@@ -140,11 +140,11 @@
 #define STM32_IRQ_TIM8_CC         46 /* STM32F10x only */
 #define STM32_IRQ_ADC3            47 /* STM32F10x only */
 #define STM32_IRQ_FSMC            48 /* STM32F100 and STM32F10x */
-#define STM32_IRQ_SDIO            49 /* STM32F10x only */
+#define STM32_IRQ_SDIO            49 /* STM32F10x and STM32F411 */
 #define STM32_IRQ_TIM5            50 /* STM32F100, STM32F10x, and STM32F373 */
 #define STM32_IRQ_SPI3            51 /* STM32F100, STM32F10x, and STM32F373 */
-#define STM32_IRQ_UART4           52 /* STM32F100 and STM32F10x */
-#define STM32_IRQ_UART5           53 /* STM32F100 and STM32F10x */
+#define STM32_IRQ_USART4          52 /* STM32F100 and STM32F10x */
+#define STM32_IRQ_USART5          53 /* STM32F100 and STM32F10x */
 #define STM32_IRQ_TIM6_DAC        54 /* STM32F100 and STM32F373 */
 #define STM32_IRQ_TIM6            54 /* STM32F10x only */
 #define STM32_IRQ_TIM7            55 /* STM32F100, STM32F10x, and STM32F373 */
@@ -175,7 +175,13 @@
 #define STM32_USART3_BASE          0x40004800
 #define STM32_USART4_BASE          0x40004c00
 
-#define STM32_USART_BASE(n)           CONCAT3(STM32_USART, n, _BASE)
+/* STM32F3 and STM32F0 we use HSI clock for the UART */
+#if (defined CHIP_FAMILY_STM32F3) || (defined CHIP_FAMILY_STM32F0)
+#define STM32_USART_CLOCK(n)       CLOCK_TYPE_WAKE_PERIPH
+#else
+#define STM32_USART_CLOCK(n)       CLOCK_TYPE_FAST_PERIPH
+
+#define STM32_USART_BASE(n)        CONCAT3(STM32_USART, n, _BASE)
 #define STM32_USART_REG(base, offset) REG32((base) + (offset))
 
 #if defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32F3)
@@ -210,7 +216,7 @@
 #define STM32_USART_SR_RXNE		(1 << 5)
 #define STM32_USART_SR_TC		(1 << 6)
 #define STM32_USART_SR_TXE		(1 << 7)
-#else /* !CHIP_FAMILY_STM32F0 */
+#else /* !CHIP_FAMILY_STM32F0 or F3 */
 #define STM32_USART_SR(base)       STM32_USART_REG(base, 0x00)
 #define STM32_USART_SR_RXNE		(1 << 5)
 #define STM32_USART_SR_TC		(1 << 6)
@@ -240,6 +246,7 @@
 
 /* --- TIMERS --- */
 #define STM32_TIM1_BASE            0x40012c00 /* STM32F100 and STM32F10x */
+#define STM32_TIM1_PERIPH_CLASS    CLOCK_TYPE_FAST_PERIPH
 #define STM32_TIM2_BASE            0x40000000
 #define STM32_TIM3_BASE            0x40000400
 #define STM32_TIM4_BASE            0x40000800
@@ -266,6 +273,7 @@
 #define STM32_TIM19_BASE           0x40015c00 /* STM32F373 only */
 
 #define STM32_TIM_BASE(n)          CONCAT3(STM32_TIM, n, _BASE)
+#define STM32_TIM_PERIPH_CLASS(n)  CONCAT3(STM32_TIM, n, _PERIPH_CLASS)
 
 #define STM32_TIM_REG(n, offset) \
 		REG16(STM32_TIM_BASE(n) + (offset))
@@ -442,6 +450,12 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define STM32_I2C1_PORT             0
 #define STM32_I2C2_PORT             1
 
+#if defined(CHIP_FAMILY_STM32L)
+#define STM32_I2C_PERIPH_CLASS(n) CLOCK_TYPE_FAST_PERIPH
+#else
+#define STM32_I2C_PERIPH_CLASS(n) CLOCK_TYPE_WAKE_PERIPH
+#endif
+
 #define stm32_i2c_reg(port, offset) \
 	((uint16_t *)((STM32_I2C1_BASE + ((port) * 0x400)) + (offset)))
 
@@ -492,7 +506,7 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define STM32_I2C_PECR(n)           REG32(stm32_i2c_reg(n, 0x20))
 #define STM32_I2C_RXDR(n)           REG32(stm32_i2c_reg(n, 0x24))
 #define STM32_I2C_TXDR(n)           REG32(stm32_i2c_reg(n, 0x28))
-#else /* !CHIP_FAMILY_STM32F0 */
+#else /* !CHIP_FAMILY_STM32F0/F3 */
 #define STM32_I2C_CR1(n)            REG16(stm32_i2c_reg(n, 0x00))
 #define STM32_I2C_CR1_PE	(1 << 0)
 #define STM32_I2C_CR1_START	(1 << 8)
@@ -608,6 +622,19 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define STM32_RCC_CFGR2             REG32(STM32_RCC_BASE + 0x2c)
 /* STM32F0XX and STM32F373 */
 #define STM32_RCC_CFGR3             REG32(STM32_RCC_BASE + 0x30)
+#define STM32_RCC_I2C_LSE		0
+#define STM32_RCC_I2C_HSI		1
+#define stm32_rcc_cfgr3_i2c_offset(n)   (4 + (n))
+#define STM32_RCC_I2C_MASK(n)	(1 << stm32_rcc_cfgr3_i2c_offset(n))
+
+#define STM32_RCC_USART_PCLK		0
+#define STM32_RCC_USART_SYSCLK		1
+#define STM32_RCC_USART_LSE		2
+#define STM32_RCC_USART_HSI		3
+#define stm32_rcc_cfgr3_usart_offset(n)   ((n) == 1 ? 0 : (n) * 2 + 12)
+#define STM32_RCC_USART_MASK(n)	(3 << stm32_rcc_cfgr3_usart_offset(n))
+
+
 #define STM32_RCC_CR2               REG32(STM32_RCC_BASE + 0x34) /* STM32F0XX */
 
 #define STM32_RCC_HB_DMA1		(1 << 0)
