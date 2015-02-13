@@ -10,6 +10,7 @@
 #include "console.h"
 #include "cpu.h"
 #include "link_defs.h"
+#include "software_panic.h"
 #include "task.h"
 #include "timer.h"
 #include "uart.h"
@@ -223,9 +224,14 @@ void svc_handler(int desched, task_id_t resched)
 
 #ifdef CONFIG_DEBUG_STACK_OVERFLOW
 	if (*current->stack != STACK_UNUSED_VALUE) {
+		int task_idx = current - tasks;
 		panic_printf("\n\nStack overflow in %s task!\n",
 			     task_names[current - tasks]);
-		panic_reboot();
+		__asm__("mov " EXP(SOFTWARE_PANIC_INFO_REG) ", %0\n"
+			"ldr " EXP(SOFTWARE_PANIC_REASON_REG) ", ="
+			       EXP(STACK_OVERFLOW_PANIC) "\n"
+			"bl exception_panic\n"
+			: : "r"(task_idx));
 	}
 #endif
 
