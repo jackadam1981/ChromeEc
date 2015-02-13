@@ -121,9 +121,6 @@ defined(CONFIG_LOW_POWER_IDLE) && \
 #endif
 	}
 
-	/* Configure GPIOs */
-	gpio_config_module(MODULE_I2C, 1);
-
 	/* Set up initial bus frequencies */
 	i2c_set_freq_port(p);
 }
@@ -427,6 +424,9 @@ static void i2c_init(void)
 
 	for (i = 0; i < i2c_ports_used; i++, p++)
 		i2c_init_port(p);
+
+	/* Configure GPIOs */
+	gpio_config_module(MODULE_I2C, 1);
 
 #ifdef CONFIG_HOSTCMD_I2C_SLAVE_ADDR
 	STM32_I2C_CR1(I2C_PORT_EC) |= STM32_I2C_CR1_RXIE | STM32_I2C_CR1_ERRIE
