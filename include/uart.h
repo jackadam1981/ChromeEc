@@ -227,6 +227,15 @@ void uart_deepsleep_interrupt(enum gpio_signal signal);
 #define uart_deepsleep_interrupt NULL
 #endif
 
+#ifdef CONFIG_UART_INPUT_FILTER
+/**
+ * Helper for processing UART input.
+ *
+ * This is the prototype for an application-specific input filter.
+ */
+int uart_input_filter(int c);
+#endif
+
 /*
  * COMx functions
  */
