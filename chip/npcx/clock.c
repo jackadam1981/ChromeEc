@@ -142,27 +142,23 @@ void clock_init(void)
 /**
  * Return the current clock frequency in Hz.
  */
-int clock_get_freq(void)
+int clock_get_freq(enum clock_type type)
 {
-	return freq;
-}
+	int apb_div;
 
-/**
- * Return the current APB1 clock frequency in Hz.
- */
-int clock_get_apb1_freq(void)
-{
-	int apb1_div = (NPCX_HFCBCD & 0x03) + 1;
-	return freq/apb1_div;
-}
-
-/**
- * Return the current APB2 clock frequency in Hz.
- */
-int clock_get_apb2_freq(void)
-{
-	int apb2_div = ((NPCX_HFCBCD>>2) & 0x03) + 1;
-	return freq/apb2_div;
+	switch (type) {
+	case CLOCK_TYPE_CPU:
+	case CLOCK_TYPE_HOST_PERIPH:
+		return freq;
+	case CLOCK_TYPE_FAST_PERIPH:  /* APB2 */
+		apb_div = ((NPCX_HFCBCD>>2) & 0x03) + 1;
+		return freq/apb_div;
+	case CLOCK_TYPE_SLOW_PERIPH:  /* APB1 */
+		apb_div = (NPCX_HFCBCD & 0x03) + 1;
+		return freq/apb_div;
+	default:
+		return 0;
+	}
 }
 
 /**
