@@ -106,8 +106,10 @@ void dma_dump(enum dma_channel channel);
 
 /**
  * Testing: Test that DMA works correctly for memory to memory transfers
+ *
+ * @param channel	Channel to use during test.
  */
-void dma_test(void);
+void dma_test(enum dma_channel channel);
 #endif  /* CONFIG_DMA_HELP */
 
 /**
