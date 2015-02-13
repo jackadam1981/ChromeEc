@@ -373,6 +373,14 @@ void exception_panic(void)
 		);
 }
 
+void software_panic(uint32_t panic_reason, uint32_t panic_info)
+{
+	__asm__("mov " EXP(SOFTWARE_PANIC_INFO_REG) ", %0\n"
+		"mov " EXP(SOFTWARE_PANIC_REASON_REG) ", %1\n"
+		"bl exception_panic\n"
+		: : "r"(panic_info), "r"(panic_reason));
+}
+
 void bus_fault_handler(void)
 {
 	if (!bus_fault_ignored)
