@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb2f888a_ab2fe9fc",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-13T02:43:17Z",
+      "side": 1,
+      "message": "this is the first place desired current is used, but up above, on line 611, we call battery_get_params() which populates desired_current by reading it from the battery. so, if the battery is present, desired_current should be set appropriately by the time we get here.",
+      "range": {
+        "startLine": 641,
+        "startChar": 2,
+        "endLine": 641,
+        "endChar": 53
+      },
+      "revId": "1ae44e730d2272ca491348f065645ebfad3129e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
