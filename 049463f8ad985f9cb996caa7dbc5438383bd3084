@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b3e38ec_5fd22b5e",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-02-13T23:21:06Z",
+      "side": 1,
+      "message": "What happens when the RCC bit USART1 was not set before (STM32_RCC_PB2_USART1), isnt\u0027t the read stuck?",
+      "revId": "049463f8ad985f9cb996caa7dbc5438383bd3084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
