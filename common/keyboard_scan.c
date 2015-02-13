@@ -569,7 +569,7 @@ static enum boot_key check_boot_key(const uint8_t *state)
 static void keyboard_freq_change(void)
 {
 	post_scan_clock_us = (CONFIG_KEYBOARD_POST_SCAN_CLOCKS * 1000) /
-		(clock_get_freq() / 1000);
+		(clock_get_freq(CLOCK_TYPE_CPU) / 1000);
 }
 DECLARE_HOOK(HOOK_FREQ_CHANGE, keyboard_freq_change, HOOK_PRIO_DEFAULT);
 

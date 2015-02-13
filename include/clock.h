@@ -18,7 +18,15 @@ void clock_init(void);
 /**
  * Return the current clock frequency in Hz.
  */
-int clock_get_freq(void);
+enum clock_type {
+	CLOCK_TYPE_CPU,
+	CLOCK_TYPE_HOST_PERIPH, /* peripheral on the same bus as the CPU */
+	CLOCK_TYPE_FAST_PERIPH, /* peripheral on a fast peripheral bus */
+	CLOCK_TYPE_SLOW_PERIPH, /* peripheral on a slow peripheral bus */
+	CLOCK_TYPE_WAKE_PERIPH  /* peripheral tight to wake up clock */
+};
+
+int clock_get_freq(enum clock_type type);
 
 /**
  * Enable or disable clock for a module.

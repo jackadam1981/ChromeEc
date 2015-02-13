@@ -84,7 +84,7 @@ static void adc_interval_read(int ain_id, int interval_ms)
 	STM32_TIM_ARR(TIM_ADC) = interval_ms & 0xffff;
 
 	/* Set prescaler to tick per millisecond */
-	STM32_TIM_PSC(TIM_ADC) = (clock_get_freq() / MSEC) - 1;
+	STM32_TIM_PSC(TIM_ADC) = (clock_get_freq(CLOCK_TYPE_CPU) / MSEC) - 1;
 
 	/* Start counting */
 	STM32_TIM_CR1(TIM_ADC) |= 1;
