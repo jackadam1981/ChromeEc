@@ -42,7 +42,7 @@ static uint16_t bkpdata_read(enum bkpdata_index index)
 		return 0;
 
 #if defined(CHIP_FAMILY_STM32L) || defined(CHIP_FAMILY_STM32F0) || \
-	defined(CHIP_FAMILY_STM32F3)
+	defined(CHIP_FAMILY_STM32F3) || defined(CHIP_FAMILY_STM32F4)
 	if (index & 1)
 		return STM32_BKP_DATA(index >> 1) >> 16;
 	else
@@ -63,7 +63,7 @@ static int bkpdata_write(enum bkpdata_index index, uint16_t value)
 		return EC_ERROR_INVAL;
 
 #if defined(CHIP_FAMILY_STM32L) || defined(CHIP_FAMILY_STM32F0) || \
-	defined(CHIP_FAMILY_STM32F3)
+	defined(CHIP_FAMILY_STM32F3) || defined(CHIP_FAMILY_STM32F4)
 	if (index & 1) {
 		uint32_t val = STM32_BKP_DATA(index >> 1);
 		val = (val & 0x0000FFFF) | (value << 16);
@@ -185,7 +185,7 @@ void system_pre_init(void)
 		STM32_RCC_CSR = (STM32_RCC_CSR & ~0x00C30000) | 0x00420000;
 	}
 #elif defined(CHIP_FAMILY_STM32F) || defined(CHIP_FAMILY_STM32F0) || \
-	defined(CHIP_FAMILY_STM32F3)
+	defined(CHIP_FAMILY_STM32F3) || defined(CHIP_FAMILY_STM32F4)
 	if ((STM32_RCC_BDCR & 0x00018300) != 0x00008200) {
 		/* the RTC settings are bad, we need to reset it */
 		STM32_RCC_BDCR |= 0x00010000;
