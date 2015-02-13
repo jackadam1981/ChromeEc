@@ -33,10 +33,23 @@
  * APB2 = 84Mhz (Prescaler /1, Max = 84Mhz)
  * APB1 = 42Mhz (Prescaler /2, Max = 42Mhz)
  */
-#define RCC_CFGR 0x00001000
+#define AHB_PRESCALAR 1
+#define APB2_PRESCALAR 1
+#define APB1_PRESCALAR 2
+
+#define AHB_PRESCALAR_FIELD(x) \
+	((x) == 1 ? 0 : 0x8 | (30 - __builtin_clz(x)))
+
+#define APB_PRESCALAR_FIELD(x) \
+	((x) == 1 ? 0 : 0x4 | (30 - __builtin_clz(x)))
+
+#define RCC_CFGR ((APB_PRESCALAR_FIELD(APB2_PRESCALAR) << 13) | \
+		  (APB_PRESCALAR_FIELD(APB1_PRESCALAR) << 10) | \
+		  (AHB_PRESCALAR_FIELD(AHB_PRESCALAR)))
 
 void config_hispeed_clock(void)
 {
+	volatile uint32_t dummy __attribute__((unused));
 	/* Ensure that HSI is ON */
 	if (!(STM32_RCC_CR & STM32_RCC_CR_HSIRDY)) {
 		/* Enable HSI */
@@ -66,14 +79,30 @@ int clock_get_freq(enum clock_type type)
 {
 	switch (type) {
 	case CLOCK_TYPE_CPU:
-	case CLOCK_TYPE_FAST_PERIPH:  /* APB2 */
 		return CPU_CLOCK;
+	case CLOCK_TYPE_HOST_PERIPH:  /* AHB1/2 */
+		return CPU_CLOCK / AHB_PRESCALAR;
+	case CLOCK_TYPE_FAST_PERIPH:  /* APB2 */
+		return CPU_CLOCK / (AHB_PRESCALAR * APB2_PRESCALAR);
 	case CLOCK_TYPE_SLOW_PERIPH:  /* APB1 */
-		return CPU_CLOCK / 2;
+		return CPU_CLOCK / (AHB_PRESCALAR * APB1_PRESCALAR);
 	default:
 		return 0;
 	}
 
+}
+
+void clock_wait_bus_cycles(enum bus_type bus, uint32_t cycles)
+{
+	volatile uint32_t dummy __attribute__((unused));
+
+	if (bus == BUS_AHB) {
+		while (cycles--)
+			dummy = STM32_DMA1_REGS->isr[0];
+	} else { /* APB */
+		/* There is 2 kind of APB bues, APB1 the slowest */
+		clock_wait_bus_cycles(BUS_AHB, cycles * APB1_PRESCALAR);
+	}
 }
 
 void clock_init(void)
