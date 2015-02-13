@@ -26,7 +26,7 @@ endif
 # Select between 16-bit and 32-bit timer for clock source
 TIMER_TYPE=$(if $(CONFIG_STM_HWTIMER32),32,)
 
-chip-y=dma.o
+chip-$(CONFIG_DMA)=dma-$(CHIP_FAMILY).o
 chip-$(CONFIG_COMMON_RUNTIME)+=system.o
 chip-y+=jtag-$(CHIP_FAMILY).o clock-$(CHIP_FAMILY).o
 chip-$(CONFIG_SPI)+=spi.o
