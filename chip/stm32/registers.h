@@ -585,18 +585,19 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define STM32_RCC_APB2RSTR          REG32(STM32_RCC_BASE + 0x14)
 #define STM32_RCC_APB1RSTR          REG32(STM32_RCC_BASE + 0x18)
 #define STM32_RCC_AHBENR            REG32(STM32_RCC_BASE + 0x1C)
+#define STM32_RCC_HB_DMA1		(1 << 24)
 #define STM32_RCC_APB2ENR           REG32(STM32_RCC_BASE + 0x20)
+#define STM32_RCC_PB2_SYSCFGEN		(1 << 0)
+#define STM32_RCC_PB2_TIM9		(1 << 2)
+#define STM32_RCC_PB2_TIM10		(1 << 3)
+#define STM32_RCC_PB2_TIM11		(1 << 4)
 #define STM32_RCC_APB1ENR           REG32(STM32_RCC_BASE + 0x24)
+#define STM32_RCC_PB1_USB		(1 << 23)
 #define STM32_RCC_AHBLPENR          REG32(STM32_RCC_BASE + 0x28)
 #define STM32_RCC_APB2LPENR         REG32(STM32_RCC_BASE + 0x2C)
 #define STM32_RCC_APB1LPENR         REG32(STM32_RCC_BASE + 0x30)
 #define STM32_RCC_CSR               REG32(STM32_RCC_BASE + 0x34)
 
-#define STM32_RCC_HB_DMA1		(1 << 24)
-#define STM32_RCC_PB2_TIM9		(1 << 2)
-#define STM32_RCC_PB2_TIM10		(1 << 3)
-#define STM32_RCC_PB2_TIM11		(1 << 4)
-#define STM32_RCC_PB1_USB		(1 << 23)
 
 #define STM32_SYSCFG_BASE           0x40010000
 
@@ -638,6 +639,7 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define STM32_RCC_CR2               REG32(STM32_RCC_BASE + 0x34) /* STM32F0XX */
 
 #define STM32_RCC_HB_DMA1		(1 << 0)
+#define STM32_RCC_PB2_SYSCFGEN		(1 << 0)
 #define STM32_RCC_PB2_TIM1		(1 << 11) /* Except STM32F373 */
 #define STM32_RCC_PB2_TIM15		(1 << 16) /* STM32F0XX and STM32F373 */
 #define STM32_RCC_PB2_TIM16		(1 << 17) /* STM32F0XX and STM32F373 */
