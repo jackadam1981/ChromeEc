@@ -55,7 +55,8 @@ void adc_freq_changed(void)
 	uint8_t prescaler_divider    = 0;
 
 	/* Set clock prescaler divider to ADC module*/
-	prescaler_divider = (uint8_t)(clock_get_apb1_freq() / ADC_CLK);
+	prescaler_divider =
+		(uint8_t)(clock_get_freq(CLOCK_TYPE_SLOW_PERIPH) / ADC_CLK);
 	if (prescaler_divider >= 1)
 		prescaler_divider = prescaler_divider - 1;
 	if (prescaler_divider > 0x3F)

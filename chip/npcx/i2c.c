@@ -529,10 +529,7 @@ static void i2c_freq_changed(void)
 		int scl_time;
 
 		/* SMB0/1 use core clock & SMB2/3 use apb2 clock */
-		if (port < 2)
-			freq = clock_get_freq();
-		else
-			freq = clock_get_apb2_freq();
+		freq = clock_get_freq(NPCX_SMB_CLOCK_DOMAIN(port));
 
 		/* use Fast Mode */
 		SET_BIT(NPCX_SMBCTL3(port)  , NPCX_SMBCTL3_400K);

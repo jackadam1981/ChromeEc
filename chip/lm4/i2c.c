@@ -345,7 +345,7 @@ void i2c_set_timeout(int port, uint32_t timeout)
 
 static void i2c_freq_changed(void)
 {
-	int freq = clock_get_freq();
+	int freq = clock_get_freq(CLOCK_TYPE_CPU);
 	int i;
 
 	for (i = 0; i < i2c_ports_used; i++) {

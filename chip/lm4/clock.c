@@ -144,7 +144,7 @@ void clock_wait_cycles(uint32_t cycles)
 	    "   bne 1b\n" :: "r"(cycles));
 }
 
-int clock_get_freq(void)
+int clock_get_freq(enum clock_type type)
 {
 	return freq;
 }

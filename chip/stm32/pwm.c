@@ -83,7 +83,7 @@ static void pwm_configure(enum pwm_channel ch)
 	 *
 	 *     frequency = cpu_freq / (cpu_freq/10000 + 1) / (99 + 1) = 100 Hz.
 	 */
-	tim->psc = clock_get_freq() / 10000 - 1;
+	tim->psc = clock_get_freq(CLOCK_TYPE_FAST_PERIPH) / 10000 - 1;
 	tim->arr = 99;
 
 	if (pwm->channel <= 2) /* Channel ID starts from 1 */

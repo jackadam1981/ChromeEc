@@ -7,7 +7,7 @@
 
 #include "clock.h"
 
-int clock_get_freq(void)
+int clock_get_freq(enum clock_type type)
 {
 	return 16000000;
 }

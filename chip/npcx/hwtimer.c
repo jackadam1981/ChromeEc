@@ -211,7 +211,8 @@ static void update_prescaler(void)
 	 * Ttick_unit = (PRE_8+1) * Tapb2_clk
 	 * PRE_8 = (Ttick_unit/Tapb2_clk) -1
 	 */
-	NPCX_ITPRE(ITIM_TIME_NO)  = (clock_get_apb2_freq() / SECOND) - 1;
+	NPCX_ITPRE(ITIM_TIME_NO)  =
+		(clock_get_freq(CLOCK_TYPE_FAST_PERIPH) / SECOND) - 1;
 	/* Set event tick unit = 1/32768 sec */
 	NPCX_ITPRE(ITIM_EVENT_NO) = 0;
 
