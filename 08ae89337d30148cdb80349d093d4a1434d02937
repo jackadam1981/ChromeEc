@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7658e11a_3261ce78",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1767,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-02-13T19:34:07Z",
+      "side": 1,
+      "message": "I\u0027m not fully convinced that most of this shouldn\u0027t be called from pd_hw_init() below.\nWe have progressively added some (mostly redundant) hardware init here but it\u0027s before the peripheral blocks are actually properly configured by the pd_hw_init resulting in some strange states",
+      "range": {
+        "startLine": 1767,
+        "startChar": 1,
+        "endLine": 1767,
+        "endChar": 15
+      },
+      "revId": "08ae89337d30148cdb80349d093d4a1434d02937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
