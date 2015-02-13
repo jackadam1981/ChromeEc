@@ -9,6 +9,7 @@
 #include "host_command.h"
 #include "panic.h"
 #include "printf.h"
+#include "software_panic.h"
 #include "system.h"
 #include "task.h"
 #include "timer.h"
@@ -164,6 +165,14 @@ void exception_panic(void)
 			"r1", "r2", "r3", "r4", "r5", "r6", "r7", "r8", "r9",
 			"r10", "r11", "cc", "memory"
 		);
+}
+
+void software_panic(uint32_t panic_reason, uint32_t panic_info)
+{
+	__asm__("mov " EXP(SOFTWARE_PANIC_INFO_REG) ", %0\n"
+		"mov " EXP(SOFTWARE_PANIC_REASON_REG) ", %1\n"
+		"bl exception_panic\n"
+		: : "r"(panic_info), "r"(panic_reason));
 }
 
 void bus_fault_handler(void)

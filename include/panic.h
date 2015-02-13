@@ -120,6 +120,14 @@ void panic(const char *msg);
  */
 void panic_reboot(void);
 
+#ifdef CONFIG_SOFTWARE_PANIC
+/**
+ * Store a panic log and halt the system for a software-related reason, such as
+ * stack overflow or assertion failure.
+ */
+void software_panic(uint32_t panic_reason, uint32_t panic_info);
+#endif
+
 /**
  * Enable/disable bus fault handler
  *

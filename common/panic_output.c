@@ -9,6 +9,7 @@
 #include "host_command.h"
 #include "panic.h"
 #include "printf.h"
+#include "software_panic.h"
 #include "system.h"
 #include "task.h"
 #include "timer.h"
@@ -82,8 +83,11 @@ void panic_reboot(void)
 void panic_assert_fail(const char *fname, int linenum)
 {
 	panic_printf("\nASSERTION FAILURE at %s:%d\n", fname, linenum);
-
+#ifdef CONFIG_SOFTWARE_PANIC
+	software_panic(ASSERT_PANIC, linenum);
+#else
 	panic_reboot();
+#endif
 }
 #else
 void panic_assert_fail(const char *msg, const char *func, const char *fname,
@@ -91,8 +95,11 @@ void panic_assert_fail(const char *msg, const char *func, const char *fname,
 {
 	panic_printf("\nASSERTION FAILURE '%s' in %s() at %s:%d\n",
 		     msg, func, fname, linenum);
-
+#ifdef CONFIG_SOFTWARE_PANIC
+	software_panic(ASSERT_PANIC, linenum);
+#else
 	panic_reboot();
+#endif
 }
 #endif
 #endif
@@ -108,6 +115,27 @@ struct panic_data *panic_get_data(void)
 	return pdata_ptr->magic == PANIC_DATA_MAGIC ? pdata_ptr : NULL;
 }
 
+#ifdef CONFIG_CMD_STACKOVERFLOW
+static void stack_overflow_recurse(int n)
+{
+	ccprintf("+%d", n);
+
+	/*
+	 * Force task context switch, since that's where we do stack overflow
+	 * checking.
+	 */
+	msleep(10);
+
+	stack_overflow_recurse(n+1);
+
+	/*
+	 * Do work after the recursion, or else the compiler uses tail-chaining
+	 * and we don't actually consume additional stack.
+	 */
+	ccprintf("-%d", n);
+}
+#endif /* CONFIG_CMD_STACKOVERFLOW */
+
 /*****************************************************************************/
 /* Console commands */
 
@@ -116,14 +144,23 @@ static int command_crash(int argc, char **argv)
 	if (argc < 2)
 		return EC_ERROR_PARAM1;
 
-	if (!strcasecmp(argv[1], "divzero")) {
+	if (!strcasecmp(argv[1], "assert")) {
+		ASSERT(0);
+	} else if (!strcasecmp(argv[1], "divzero")) {
 		int a = 1, b = 0;
 
 		cflush();
 		ccprintf("%08x", a / b);
+#ifdef CONFIG_CMD_STACKOVERFLOW
+	} else if (!strcasecmp(argv[1], "stack")) {
+		stack_overflow_recurse(1);
+#endif
 	} else if (!strcasecmp(argv[1], "unaligned")) {
 		cflush();
 		ccprintf("%08x", *(int *)0xcdef);
+	} else if (!strcasecmp(argv[1], "watchdog")) {
+		while (1)
+			;
 	} else {
 		return EC_ERROR_PARAM1;
 	}
@@ -132,7 +169,7 @@ static int command_crash(int argc, char **argv)
 	return EC_ERROR_UNKNOWN;
 }
 DECLARE_CONSOLE_COMMAND(crash, command_crash,
-			"[divzero | unaligned]",
+			"[assert | divzero | stack | unaligned | watchdog ]",
 			"Crash the system (for testing)",
 			NULL);
 
