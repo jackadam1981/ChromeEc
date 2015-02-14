@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b433481_e1da8099",
+        "filename": "driver/temp_sensor/nct7717.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-02-14T00:31:38Z",
+      "side": 1,
+      "message": "Here, too.",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "7158351e613647aee9aff6dab2f4789ce34617af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb4948a5_1eef090c",
+        "filename": "driver/temp_sensor/nct7717.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-02-14T00:31:38Z",
+      "side": 1,
+      "message": "Update to 2015, or just remove the date entirely.",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "7158351e613647aee9aff6dab2f4789ce34617af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b4dbcae_1c8b958b",
+        "filename": "driver/temp_sensor/nct7717.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-02-14T00:31:38Z",
+      "side": 1,
+      "message": "For case consistency, these should be 0xbf, 0xfd, etc.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 31
+      },
+      "revId": "7158351e613647aee9aff6dab2f4789ce34617af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b4dbcae_7c80d963",
+        "filename": "driver/temp_sensor/nct7717.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-02-14T00:31:38Z",
+      "side": 1,
+      "message": "Are both of these really the same bit?",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 53
+      },
+      "revId": "7158351e613647aee9aff6dab2f4789ce34617af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
