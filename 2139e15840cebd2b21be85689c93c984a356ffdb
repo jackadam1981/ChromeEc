@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "8b07ec51_707130c5",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-14T18:55:48Z",
+      "side": 1,
+      "message": "not sure we actually need this. we should still be using the old stack, so the exception_panic should log the stack pointer, and when we see SOFTWARE_PANIC_REASON_REG, we\u0027ll know to look at the stack pointer to see which task overflowed.",
+      "range": {
+        "startLine": 230,
+        "startChar": 10,
+        "endLine": 230,
+        "endChar": 54
+      },
+      "revId": "2139e15840cebd2b21be85689c93c984a356ffdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b07ec51_7032d01b",
         "filename": "include/software_panic.h",
         "patchSetId": 2
