@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -117,23 +117,14 @@ enum sb_maker_id {
 
 /* if error:b11,b10,b9 b2,b1,b0; go to step1 */
 #define SB_FW_UPDATE_ERROR_MASK           0x0E07
-#define SB_FW_UPDATE_ERROR_RETRY_CNT      1  /* Retry Error cnt*/
+#define SB_FW_UPDATE_ERROR_RETRY_CNT      3  /* Retry Error cnt*/
 
 /* if FEC.b13=1, go to step6 */
 #define SB_FW_UPDATE_FEC_ERROR_MASK       0x2000 /* b13 */
-#define SB_FW_UPDATE_FEC_ERROR_RETRY_CNT  1  /* b13.FEC retry cnt*/
+#define SB_FW_UPDATE_FEC_ERROR_RETRY_CNT  3 /* b13.FEC retry cnt*/
 
-/* if busy; retry 10 times */
+/* if battery interface is busy; retry 6 times */
 #define SB_FW_UPDATE_BUSY_ERROR_MASK      0x4000 /* b14 */
-#define SB_FW_UPDATE_BUSY_ERROR_RETRY_CNT 1  /* b14.busy retry cnt*/
-
-/**
- * Update Smart Battery Firmware
- *
- * @param fw_image_name  firmware image name
- *
- * @return 0 if success, negative if error.
- */
-int ec_sb_firmware_update(const char *fw_image_name);
+#define SB_FW_UPDATE_BUSY_ERROR_RETRY_CNT 6  /* b14.busy retry cnt*/
 
 #endif
