@@ -18,6 +18,7 @@
 /* Software panic reasons */
 #define DIV_ZERO_PANIC			(SOFTWARE_PANIC_BASE + 0)
 #define STACK_OVERFLOW_PANIC		(SOFTWARE_PANIC_BASE + 1)
+#define PD_CRASH_PANIC                  (SOFTWARE_PANIC_BASE + 2)
 
 /* For macro expansion inside __asm__ macro */
 #define STR(x) #x
