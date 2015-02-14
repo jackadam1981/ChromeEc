@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2015 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -51,9 +51,10 @@ enum fw_update_state {
 	S10_TERMINAL     = 10
 };
 
+#define MAX_FW_IMAGE_NAME_SIZE 256
 struct fw_update_ctrl {
 	int size;    /* size of battery firmware image */
-	char *ptr;   /* current pointer to the firmware image */
+	char *ptr;   /* current read pointer of the firmware image */
 	int  offset; /* current block write offset */
 	struct sb_fw_header *fw_img_hdr; /*pointer to firmware image header*/
 	struct sb_fw_update_status status;
@@ -64,6 +65,7 @@ struct fw_update_ctrl {
 	int step_size;
 	int rv;
 	char msg[256];
+	char image_name[MAX_FW_IMAGE_NAME_SIZE];
 };
 
 /*
@@ -170,7 +172,7 @@ static int check_battery_firmware_ids(
 /* check_if_need_update_fw
  * @return 1 (true) if need; 0 (false) if not.
  */
-static int check_if_need_update_fw(
+static int check_if_valid_fw(
 		struct sb_fw_header *hdr,
 		struct sb_fw_update_info *info)
 {
@@ -178,9 +180,54 @@ static int check_if_need_update_fw(
 
 	&& check_battery_firmware_ids(hdr, info)
 
-	&& check_battery_firmware_image_version(hdr, info)
-
 	&& check_battery_firmware_image_checksum(hdr);
+}
+
+/* check_if_need_update_fw
+ * @return 1 (true) if need; 0 (false) if not.
+ */
+static int check_if_need_update_fw(
+		struct sb_fw_header *hdr,
+		struct sb_fw_update_info *info)
+{
+	return check_battery_firmware_image_version(hdr, info);
+}
+
+static char *read_fw_image(struct fw_update_ctrl *fw_update)
+{
+	int size;
+	char *buf;
+	fw_update->size = 0;
+	fw_update->ptr = NULL;
+	fw_update->fw_img_hdr = (struct sb_fw_header *)NULL;
+
+	/* Read the input file */
+	DPRINTF("\n\n==> Read File:%s\n", fw_update->image_name);
+	buf = read_file(fw_update->image_name, &size);
+	if (!buf) {
+		fprintf(stderr,
+			"Firmware Update: Load Firmware Image[%s] Error\n",
+			fw_update->image_name);
+		return NULL;
+	}
+
+	fw_update->size = size;
+	fw_update->ptr = buf;
+	fw_update->fw_img_hdr = (struct sb_fw_header *)buf;
+	if (debug)
+		print_battery_firmware_image_hdr(fw_update->fw_img_hdr);
+
+	if (fw_update->fw_img_hdr->fw_binary_offset >= fw_update->size ||
+		fw_update->size < 256) {
+		fprintf(stderr,
+			"Load Firmware Image[%s] Error offset:%d size:%d\n",
+			fw_update->image_name,
+			fw_update->fw_img_hdr->fw_binary_offset,
+			fw_update->size);
+		free(buf);
+		return NULL;
+	}
+	return buf;
 }
 
 static int get_status(struct sb_fw_update_status *status)
@@ -333,6 +380,17 @@ static enum fw_update_state s1_read_battery_info(
 		return S10_TERMINAL;
 	}
 
+	if (!strcmp(fw_update->image_name, "auto"))
+		sprintf(fw_update->image_name,
+			"/lib/firmware/battery/maker.%04X.hwid.%04X.fw",
+			fw_update->info.maker_id,
+			fw_update->info.hardware_id);
+
+	if (NULL == read_fw_image(fw_update)) {
+		fw_update->rv = -1;
+		return S10_TERMINAL;
+	}
+
 	if (debug)
 		print_info(&fw_update->info);
 
@@ -342,12 +400,21 @@ static enum fw_update_state s1_read_battery_info(
 		return S10_TERMINAL;
 	}
 
-	rv = check_if_need_update_fw(fw_update->fw_img_hdr, &fw_update->info);
+	rv = check_if_valid_fw(fw_update->fw_img_hdr, &fw_update->info);
 	if (rv == 0) {
-		printf("ERROR:Battery firmware is not valid!\n");
+		printf("\n\nBattery firmware is not valid!\n");
 		print_info(&fw_update->info);
 		print_battery_firmware_image_hdr(fw_update->fw_img_hdr);
 		fw_update->rv = EC_RES_INVALID_PARAM;
+		return S10_TERMINAL;
+	}
+
+	rv = check_if_need_update_fw(fw_update->fw_img_hdr, &fw_update->info);
+	if (rv == 0) {
+		printf("\n\nBattery firmware is ok\n");
+		print_info(&fw_update->info);
+		print_battery_firmware_image_hdr(fw_update->fw_img_hdr);
+		fw_update->rv = 0;
 		return S10_TERMINAL;
 	}
 	return S2_WRITE_PREPARE;
@@ -552,57 +619,31 @@ fw_state_func state_table[] = {
 	s9_read_status
 };
 
-int ec_sb_firmware_update(const char *fw_image_name)
+
+/**
+ * Update Smart Battery Firmware
+ *
+ * @param fw_update struct fw_update_ctrl
+ *
+ * @return 0 if success, negative if error.
+ */
+static int ec_sb_firmware_update(struct fw_update_ctrl *fw_update)
 {
 	enum fw_update_state state;
-	int size;
-	char *buf;
 
-	fw_update.err_retry_cnt = SB_FW_UPDATE_ERROR_RETRY_CNT;
-	fw_update.fec_err_retry_cnt = SB_FW_UPDATE_FEC_ERROR_RETRY_CNT;
-	fw_update.busy_retry_cnt = SB_FW_UPDATE_BUSY_ERROR_RETRY_CNT;
-	fw_update.step_size = SB_FW_UPDATE_CMD_WRITE_BLOCK_SIZE;
-
-	/* Read the input file */
-	DPRINTF("\n\n==> Read File:%s\n", fw_image_name);
-	buf = read_file(fw_image_name, &size);
-	if (!buf) {
-		fprintf(stderr,
-			"Firmware Update: Load Firmware Image[%s] Error\n",
-			fw_image_name);
-		return -1;
-	}
-	fw_update.size = size;
-	fw_update.ptr = buf;
-	fw_update.fw_img_hdr = (struct sb_fw_header *)buf;
-	if (debug)
-		print_battery_firmware_image_hdr(fw_update.fw_img_hdr);
-
-	if (fw_update.fw_img_hdr->fw_binary_offset >= fw_update.size ||
-		fw_update.size < 256) {
-		fprintf(stderr,
-			"Load Firmware Image[%s] Error offset:%d size:%d\n",
-			fw_image_name,
-			fw_update.fw_img_hdr->fw_binary_offset,
-			fw_update.size);
-		return -1;
-	}
+	fw_update->err_retry_cnt = SB_FW_UPDATE_ERROR_RETRY_CNT;
+	fw_update->fec_err_retry_cnt = SB_FW_UPDATE_FEC_ERROR_RETRY_CNT;
+	fw_update->busy_retry_cnt = SB_FW_UPDATE_BUSY_ERROR_RETRY_CNT;
+	fw_update->step_size = SB_FW_UPDATE_CMD_WRITE_BLOCK_SIZE;
 
 	state = S0_READ_STATUS;
 	while (state != S10_TERMINAL)
-		state = state_table[state](&fw_update);
+		state = state_table[state](fw_update);
 
-	free(buf);
-	if (fw_update.rv)
-		printf("\n\n==> Firmware:%s Update Failed:%d [%s]\n",
-			fw_image_name,
-			fw_update.rv,
-			fw_update.msg);
-	else
-		printf("\n\n==> Firmware:%s Update Complete.\n",
-			fw_image_name);
+	if (fw_update->fw_img_hdr)
+		free(fw_update->fw_img_hdr);
 
-	return fw_update.rv;
+	return fw_update->rv;
 }
 
 #define GEC_LOCK_TIMEOUT_SECS   30  /* 30 secs */
@@ -613,8 +654,8 @@ int main(int argc, char *argv[])
 	const char *test = "normal";
 	if (argc < 2) {
 		fprintf(stderr,
-			"Usage: %s <fw_filename> <test> "
-			"[initial_tx_delay] [tx_delay] [debug]\n", argv[0]);
+			"Usage: %s [auto|file_name] [normal|test] "
+			"[setup_delay] [write_delay] [debug]\n", argv[0]);
 		return -1;
 	}
 
@@ -641,7 +682,20 @@ int main(int argc, char *argv[])
 	}
 
 	DPRINTF("fw_filename:%s\n", argv[1]);
-	rv = ec_sb_firmware_update(argv[1]);
+	if (strlen(argv[1]) < MAX_FW_IMAGE_NAME_SIZE)
+		strcpy(fw_update.image_name, argv[1]);
+	else
+		strcpy(fw_update.image_name, "auto");
+
+	rv = ec_sb_firmware_update(&fw_update);
+	if (rv)
+		printf("\n\n==> Firmware:%s Update Failed:%d [%s]\n",
+			fw_update.image_name,
+			fw_update.rv,
+			fw_update.msg);
+	else
+		printf("\n\n==> Firmware:%s Update Complete.\n",
+			fw_update.image_name);
 
 	/* set to protect mode if not running a fw update test */
 	if (strcmp(test, "test"))
