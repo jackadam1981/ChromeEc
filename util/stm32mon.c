@@ -72,6 +72,7 @@ struct stm32_def {
 	{0x444, "STM32F03x",     0x08000000, 0x08000, 1024, 13},
 	{0x448, "STM32F07xB",    0x08000000, 0x20000, 2048, 13},
 	{0x432, "STM32F37xx",    0x08000000, 0x40000, 2048, 13},
+	{0x431, "STM32F411",     0x08000000, 0x10000, 16384, 13},
 	{ 0 }
 };
 
@@ -903,7 +904,8 @@ int main(int argc, char **argv)
 		command_write_unprotect(ser);
 
 	if (flags & FLAG_ERASE || output_filename) {
-		if (!strncmp("STM32L15", chip->name, 8)) {
+		if (!strncmp("STM32L15", chip->name, 8) ||
+		    !strncmp("STM32F41", chip->name, 8)) {
 			/* Mass erase is not supported on STM32L15xx */
 			/* command_ext_erase(ser, ERASE_ALL, 0); */
 			int i, page_count = chip->flash_size / chip->page_size;
