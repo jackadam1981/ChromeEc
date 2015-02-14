@@ -127,13 +127,4 @@ enum sb_maker_id {
 #define SB_FW_UPDATE_BUSY_ERROR_MASK      0x4000 /* b14 */
 #define SB_FW_UPDATE_BUSY_ERROR_RETRY_CNT 1  /* b14.busy retry cnt*/
 
-/**
- * Update Smart Battery Firmware
- *
- * @param fw_image_name  firmware image name
- *
- * @return 0 if success, negative if error.
- */
-int ec_sb_firmware_update(const char *fw_image_name);
-
 #endif
