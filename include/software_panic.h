@@ -19,6 +19,8 @@
 #define DIV_ZERO_PANIC			(SOFTWARE_PANIC_BASE + 0)
 #define STACK_OVERFLOW_PANIC		(SOFTWARE_PANIC_BASE + 1)
 #define PD_CRASH_PANIC                  (SOFTWARE_PANIC_BASE + 2)
+#define ASSERT_PANIC			(SOFTWARE_PANIC_BASE + 3)
+#define WATCHDOG_PANIC                  (SOFTWARE_PANIC_BASE + 4)
 
 /* For macro expansion inside __asm__ macro */
 #define STR(x) #x

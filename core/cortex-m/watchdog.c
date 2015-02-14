@@ -12,10 +12,13 @@
 #include "uart.h"
 #include "watchdog.h"
 
+static struct panic_data * const pdata_ptr = PANIC_DATA_PTR;
+
 void watchdog_trace(uint32_t excep_lr, uint32_t excep_sp)
 {
 	uint32_t psp;
 	uint32_t *stack;
+	uint32_t *lregs = pdata_ptr->cm.regs;
 
 	asm("mrs %0, psp" : "=r"(psp));
 	if ((excep_lr & 0xf) == 1) {
@@ -28,6 +31,9 @@ void watchdog_trace(uint32_t excep_lr, uint32_t excep_sp)
 
 	panic_printf("### WATCHDOG PC=%08x / LR=%08x / pSP=%08x ",
 		     stack[6], stack[5], psp);
+	lregs[4] = stack[6];
+	lregs[5] = stack[5];
+	lregs[6] = psp;
 	if ((excep_lr & 0xf) == 1)
 		panic_puts("(exc) ###\n");
 	else

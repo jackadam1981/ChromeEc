@@ -6,9 +6,11 @@
 #include "common.h"
 #include "console.h"
 #include "cpu.h"
+#include "hooks.h"
 #include "host_command.h"
 #include "panic.h"
 #include "printf.h"
+#include "software_panic.h"
 #include "system.h"
 #include "task.h"
 #include "timer.h"
@@ -82,6 +84,11 @@ void panic_reboot(void)
 void panic_assert_fail(const char *fname, int linenum)
 {
 	panic_printf("\nASSERTION FAILURE at %s:%d\n", fname, linenum);
+	__asm__("mov " EXP(SOFTWARE_PANIC_INFO_REG) ", %0\n"
+		"ldr " EXP(SOFTWARE_PANIC_REASON_REG) ", ="
+		       EXP(ASSERT_PANIC) "\n"
+		"bl exception_panic\n"
+		: : "r"(linenum));
 
 	panic_reboot();
 }
@@ -91,6 +98,11 @@ void panic_assert_fail(const char *msg, const char *func, const char *fname,
 {
 	panic_printf("\nASSERTION FAILURE '%s' in %s() at %s:%d\n",
 		     msg, func, fname, linenum);
+	__asm__("mov " EXP(SOFTWARE_PANIC_INFO_REG) ", %0\n"
+		"ldr " EXP(SOFTWARE_PANIC_REASON_REG) ", ="
+		       EXP(ASSERT_PANIC) "\n"
+		"bl exception_panic\n"
+		: : "r"(linenum));
 
 	panic_reboot();
 }
@@ -108,6 +120,25 @@ struct panic_data *panic_get_data(void)
 	return pdata_ptr->magic == PANIC_DATA_MAGIC ? pdata_ptr : NULL;
 }
 
+static void panic_init(void)
+{
+	uint32_t *lregs = pdata_ptr->cm.regs;
+
+	if (!(system_get_reset_flags() & RESET_FLAG_WATCHDOG))
+		return;
+
+	/* Watchdog reset, log panic info */
+	pdata_ptr->magic = PANIC_DATA_MAGIC;
+	pdata_ptr->struct_size = sizeof(*pdata_ptr);
+	pdata_ptr->struct_version = 2;
+	pdata_ptr->arch = PANIC_ARCH_CORTEX_M;
+	pdata_ptr->flags = 0;
+	pdata_ptr->reserved = 0;
+
+	lregs[3] = WATCHDOG_PANIC;
+}
+DECLARE_HOOK(HOOK_INIT, panic_init, HOOK_PRIO_DEFAULT);
+
 /*****************************************************************************/
 /* Console commands */
 
@@ -124,6 +155,10 @@ static int command_crash(int argc, char **argv)
 	} else if (!strcasecmp(argv[1], "unaligned")) {
 		cflush();
 		ccprintf("%08x", *(int *)0xcdef);
+	} else if (!strcasecmp(argv[1], "assert")) {
+		ASSERT(0);
+	} else if (!strcasecmp(argv[1], "watchdog")) {
+		while (1) ;
 	} else {
 		return EC_ERROR_PARAM1;
 	}
@@ -132,7 +167,7 @@ static int command_crash(int argc, char **argv)
 	return EC_ERROR_UNKNOWN;
 }
 DECLARE_CONSOLE_COMMAND(crash, command_crash,
-			"[divzero | unaligned]",
+			"[divzero | unaligned | assert | watchdog]",
 			"Crash the system (for testing)",
 			NULL);
 
