@@ -39,6 +39,24 @@
       "revId": "2139e15840cebd2b21be85689c93c984a356ffdb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bf174a1_6ee4af2c",
+        "filename": "include/software_panic.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-02-15T00:54:40Z",
+      "side": 1,
+      "message": "The assembler can\u0027t parse much of the stuff in panic.h, so it\u0027s either create this new file, or ifdef out most of that file for the assembler. I thought that creating this new header would be cleaner. What do you think?",
+      "parentUuid": "8b07ec51_7032d01b",
+      "revId": "2139e15840cebd2b21be85689c93c984a356ffdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
