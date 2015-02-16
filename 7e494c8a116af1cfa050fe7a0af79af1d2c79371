@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bb398fa_173ef459",
+        "filename": "common/panic_output.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-16T23:30:01Z",
+      "side": 1,
+      "message": "This stuff can be core specific, for instance if we change the struct version used on one core but not on all. I think we need a function in core/cortex-m/panic.c and core/cortex-m0/panic.c to do this.",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 30
+      },
+      "revId": "7e494c8a116af1cfa050fe7a0af79af1d2c79371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
