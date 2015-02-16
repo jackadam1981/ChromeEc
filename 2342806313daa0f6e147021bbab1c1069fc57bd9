@@ -45,6 +45,29 @@
       "revId": "2342806313daa0f6e147021bbab1c1069fc57bd9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ebf78897_cb22f5c2",
+        "filename": "include/software_panic.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-16T02:06:34Z",
+      "side": 1,
+      "message": "I think we will need to implement this, even if we don\u0027t have any data attached to it (which would be much more difficult). Easiest way is probably to check the reset cause on boot, and if it was a watchdog, then set a software panic w/o actually forcing a reset.",
+      "range": {
+        "startLine": 21,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 22
+      },
+      "revId": "2342806313daa0f6e147021bbab1c1069fc57bd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
