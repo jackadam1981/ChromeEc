@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb99e484_92611cec",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-16T18:16:47Z",
+      "side": 1,
+      "message": "worst case margin is already stored here, so \"idlestats\" command can be used to see how much it overslept by.",
+      "range": {
+        "startLine": 405,
+        "startChar": 4,
+        "endLine": 405,
+        "endChar": 29
+      },
+      "revId": "8ebd81a31a923345e3443a419548a9737c1d3761",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
