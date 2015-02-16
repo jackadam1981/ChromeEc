@@ -33,6 +33,9 @@
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 
+/* Default input current limit when VBUS is present */
+#define DEFAULT_CURR_LIMIT            500  /* mA */
+
 static void vbus_log(void)
 {
 	CPRINTS("VBUS %d", gpio_get_level(GPIO_CHGR_ACOK));
@@ -41,6 +44,13 @@ DECLARE_DEFERRED(vbus_log);
 
 void vbus_evt(enum gpio_signal signal)
 {
+	struct charge_port_info charge;
+	charge.voltage = USB_BC12_CHARGE_VOLTAGE;
+
+	/* Update VBUS supplier */
+	charge.current = gpio_get_level(signal) ? DEFAULT_CURR_LIMIT : 0;
+	charge_manager_update_charge(CHARGE_SUPPLIER_VBUS, 0, &charge);
+
 	hook_call_deferred(vbus_log, 0);
 	if (task_start_called())
 		task_wake(TASK_ID_PD);
@@ -163,18 +173,28 @@ BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
 /* Initialize board. */
 static void board_init(void)
 {
-	struct charge_port_info charge;
+	struct charge_port_info charge_none, charge_vbus;
 
 	/* Initialize all pericom charge suppliers to 0 */
-	charge.voltage = USB_BC12_CHARGE_VOLTAGE;
-	charge.current = 0;
+	charge_none.voltage = USB_BC12_CHARGE_VOLTAGE;
+	charge_none.current = 0;
 	charge_manager_update_charge(CHARGE_SUPPLIER_PROPRIETARY,
 				     0,
-				     &charge);
-	charge_manager_update_charge(CHARGE_SUPPLIER_BC12_CDP, 0, &charge);
-	charge_manager_update_charge(CHARGE_SUPPLIER_BC12_DCP, 0, &charge);
-	charge_manager_update_charge(CHARGE_SUPPLIER_BC12_SDP, 0, &charge);
-	charge_manager_update_charge(CHARGE_SUPPLIER_OTHER, 0, &charge);
+				     &charge_none);
+	charge_manager_update_charge(CHARGE_SUPPLIER_BC12_CDP, 0, &charge_none);
+	charge_manager_update_charge(CHARGE_SUPPLIER_BC12_DCP, 0, &charge_none);
+	charge_manager_update_charge(CHARGE_SUPPLIER_BC12_SDP, 0, &charge_none);
+	charge_manager_update_charge(CHARGE_SUPPLIER_OTHER, 0, &charge_none);
+
+	/* Initialize VBUS supplier based on whether or not VBUS is present */
+	charge_vbus.voltage = USB_BC12_CHARGE_VOLTAGE;
+	charge_vbus.current = DEFAULT_CURR_LIMIT;
+	if (gpio_get_level(GPIO_CHGR_ACOK))
+		charge_manager_update_charge(CHARGE_SUPPLIER_VBUS, 0,
+					     &charge_vbus);
+	else
+		charge_manager_update_charge(CHARGE_SUPPLIER_VBUS, 0,
+					     &charge_none);
 
 	/* Enable pericom BC1.2 interrupts. */
 	gpio_enable_interrupt(GPIO_USBC_BC12_INT_L);
@@ -230,7 +250,8 @@ const int supplier_priority[] = {
 	[CHARGE_SUPPLIER_BC12_DCP] = 1,
 	[CHARGE_SUPPLIER_BC12_CDP] = 2,
 	[CHARGE_SUPPLIER_BC12_SDP] = 3,
-	[CHARGE_SUPPLIER_OTHER] = 3
+	[CHARGE_SUPPLIER_OTHER] = 3,
+	[CHARGE_SUPPLIER_VBUS] = 4
 };
 BUILD_ASSERT(ARRAY_SIZE(supplier_priority) == CHARGE_SUPPLIER_COUNT);
 

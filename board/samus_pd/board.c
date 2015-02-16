@@ -32,6 +32,9 @@
 /* Amount to offset the input current limit when sending to EC */
 #define INPUT_CURRENT_LIMIT_OFFSET_MA 192
 
+/* Default input current limit when VBUS is present */
+#define DEFAULT_CURR_LIMIT            500  /* mA */
+
 /* Chipset power state */
 static enum power_state ps;
 
@@ -66,7 +69,8 @@ const int supplier_priority[] = {
 	[CHARGE_SUPPLIER_BC12_DCP] = 1,
 	[CHARGE_SUPPLIER_BC12_CDP] = 2,
 	[CHARGE_SUPPLIER_BC12_SDP] = 3,
-	[CHARGE_SUPPLIER_OTHER] = 3
+	[CHARGE_SUPPLIER_OTHER] = 3,
+	[CHARGE_SUPPLIER_VBUS] = 4
 };
 BUILD_ASSERT(ARRAY_SIZE(supplier_priority) == CHARGE_SUPPLIER_COUNT);
 
@@ -86,6 +90,13 @@ DECLARE_DEFERRED(pericom_port1_reenable_interrupts);
 
 void vbus0_evt(enum gpio_signal signal)
 {
+	struct charge_port_info charge;
+	charge.voltage = USB_BC12_CHARGE_VOLTAGE;
+
+	/* Update VBUS supplier */
+	charge.current = gpio_get_level(signal) ? DEFAULT_CURR_LIMIT : 0;
+	charge_manager_update_charge(CHARGE_SUPPLIER_VBUS, 0, &charge);
+
 	/*
 	 * Re-enable interrupts on pericom charger detector since the
 	 * chip may periodically reset itself, and come back up with
@@ -99,6 +110,13 @@ void vbus0_evt(enum gpio_signal signal)
 
 void vbus1_evt(enum gpio_signal signal)
 {
+	struct charge_port_info charge;
+	charge.voltage = USB_BC12_CHARGE_VOLTAGE;
+
+	/* Update VBUS supplier */
+	charge.current = gpio_get_level(signal) ? DEFAULT_CURR_LIMIT : 0;
+	charge_manager_update_charge(CHARGE_SUPPLIER_VBUS, 1, &charge);
+
 	/*
 	 * Re-enable interrupts on pericom charger detector since the
 	 * chip may periodically reset itself, and come back up with
@@ -359,7 +377,7 @@ static void board_init(void)
 	int pd_enable, i;
 	int slp_s5 = gpio_get_level(GPIO_PCH_SLP_S5_L);
 	int slp_s3 = gpio_get_level(GPIO_PCH_SLP_S3_L);
-	struct charge_port_info charge;
+	struct charge_port_info charge_none, charge_vbus;
 
 	/*
 	 * Enable CC lines after all GPIO have been initialized. Note, it is
@@ -373,25 +391,42 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_USB_C1_VBUS_WAKE);
 
 	/* Initialize all pericom charge suppliers to 0 */
-	charge.voltage = USB_BC12_CHARGE_VOLTAGE;
-	charge.current = 0;
+	charge_none.voltage = USB_BC12_CHARGE_VOLTAGE;
+	charge_none.current = 0;
 	for (i = 0; i < PD_PORT_COUNT; i++) {
 		charge_manager_update_charge(CHARGE_SUPPLIER_PROPRIETARY,
 					     i,
-					     &charge);
+					     &charge_none);
 		charge_manager_update_charge(CHARGE_SUPPLIER_BC12_CDP,
 					     i,
-					     &charge);
+					     &charge_none);
 		charge_manager_update_charge(CHARGE_SUPPLIER_BC12_DCP,
 					     i,
-					     &charge);
+					     &charge_none);
 		charge_manager_update_charge(CHARGE_SUPPLIER_BC12_SDP,
 					     i,
-					     &charge);
+					     &charge_none);
 		charge_manager_update_charge(CHARGE_SUPPLIER_OTHER,
 					     i,
-					     &charge);
+					     &charge_none);
 	}
+
+	/* Initialize VBUS supplier based on whether or not VBUS is present */
+	charge_vbus.voltage = USB_BC12_CHARGE_VOLTAGE;
+	charge_vbus.current = DEFAULT_CURR_LIMIT;
+	if (gpio_get_level(GPIO_USB_C0_VBUS_WAKE))
+		charge_manager_update_charge(CHARGE_SUPPLIER_VBUS, 0,
+					     &charge_vbus);
+	else
+		charge_manager_update_charge(CHARGE_SUPPLIER_VBUS, 0,
+					     &charge_none);
+
+	if (gpio_get_level(GPIO_USB_C1_VBUS_WAKE))
+		charge_manager_update_charge(CHARGE_SUPPLIER_VBUS, 1,
+					     &charge_vbus);
+	else
+		charge_manager_update_charge(CHARGE_SUPPLIER_VBUS, 1,
+					     &charge_none);
 
 	/* Enable pericom BC1.2 interrupts. */
 	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_L);
