@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6bb398fa_3d9117eb",
+        "filename": "common/charge_ramp.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-17T17:55:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bb5bcf7_bc70e1c2",
+      "range": {
+        "startLine": 29,
+        "startChar": 28,
+        "endLine": 29,
+        "endChar": 34
+      },
+      "revId": "2965e8cdf105039f3fb8dfb8b48dc26a80591c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bb398fa_9d1ea360",
         "filename": "common/charge_ramp.c",
         "patchSetId": 31
@@ -36,6 +60,30 @@
       "writtenOn": "2015-02-17T17:28:44Z",
       "side": 1,
       "message": "nit: empty line after this one?",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "2965e8cdf105039f3fb8dfb8b48dc26a80591c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0bb5bcf7_1c78f554",
+        "filename": "common/charge_ramp.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-17T17:55:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bb398fa_9d1ea360",
       "range": {
         "startLine": 59,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "6bb398fa_fd9f9ff8",
+        "filename": "common/charge_ramp.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-17T17:55:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ba8c0a1_1d4fd329",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 17
+      },
+      "revId": "2965e8cdf105039f3fb8dfb8b48dc26a80591c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0bb5bcf7_3c85f137",
         "filename": "common/charge_ramp.c",
         "patchSetId": 31
@@ -82,6 +154,30 @@
       "writtenOn": "2015-02-17T17:28:44Z",
       "side": 1,
       "message": "Should this use STABILIZE_DELAY or add a new constant?",
+      "range": {
+        "startLine": 161,
+        "startChar": 21,
+        "endLine": 161,
+        "endChar": 31
+      },
+      "revId": "2965e8cdf105039f3fb8dfb8b48dc26a80591c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bb398fa_bd9527dd",
+        "filename": "common/charge_ramp.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-17T17:55:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bb5bcf7_3c85f137",
       "range": {
         "startLine": 161,
         "startChar": 21,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "0bb5bcf7_5c6e7d93",
+        "filename": "common/charge_ramp.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-17T17:55:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ba8c0a1_bdd33fda",
+      "range": {
+        "startLine": 210,
+        "startChar": 21,
+        "endLine": 210,
+        "endChar": 32
+      },
+      "revId": "2965e8cdf105039f3fb8dfb8b48dc26a80591c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0bb5bcf7_bc47c163",
         "filename": "common/charge_ramp.c",
         "patchSetId": 31
@@ -128,6 +248,24 @@
       "writtenOn": "2015-02-17T17:28:44Z",
       "side": 1,
       "message": "Remove this empty line to be consistent with the rest of the switch statement code?",
+      "revId": "2965e8cdf105039f3fb8dfb8b48dc26a80591c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0bb5bcf7_bc86a1f6",
+        "filename": "common/charge_ramp.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-17T17:55:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bb5bcf7_bc47c163",
       "revId": "2965e8cdf105039f3fb8dfb8b48dc26a80591c45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "2ba8c0a1_004e4883",
+        "filename": "common/charge_ramp.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-17T17:55:20Z",
+      "side": 1,
+      "message": "Actually, we always set the new state on the line above, so this is the delay for transitioning out of STABILIZE, which is just a standard delay, there is nothing special about the choice of 1 second.\n\nBut, it brought up a good point, in the above if statement, where we transition to STABLE, we don\u0027t set the task_wait_time, which means it will use the last value. would be better to define an explicit value, so I moved setting this to the top of the state.",
+      "parentUuid": "6bb398fa_1dd9b334",
+      "range": {
+        "startLine": 246,
+        "startChar": 20,
+        "endLine": 246,
+        "endChar": 26
+      },
+      "revId": "2965e8cdf105039f3fb8dfb8b48dc26a80591c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bb398fa_7de8efb7",
         "filename": "include/charge_ramp.h",
         "patchSetId": 31
@@ -168,6 +330,30 @@
       "writtenOn": "2015-02-17T17:28:44Z",
       "side": 1,
       "message": "Maybe add an empty line after this one to separate the #ifdef",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 37
+      },
+      "revId": "2965e8cdf105039f3fb8dfb8b48dc26a80591c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bb398fa_7d8b8fb8",
+        "filename": "include/charge_ramp.h",
+        "patchSetId": 31
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-17T17:55:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bb398fa_7de8efb7",
       "range": {
         "startLine": 58,
         "startChar": 0,
