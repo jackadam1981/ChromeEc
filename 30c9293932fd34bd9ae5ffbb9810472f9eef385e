@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0bc21c57_f41258f8",
+        "filename": "common/panic_output.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-17T16:10:14Z",
+      "side": 1,
+      "message": "nit: now that this is a function call, would be cleaner with opposite logic:\n\nif (system_get_reset_flags() \u0026 RESET_FLAG_WATCHDOG)\n  panic_log_watchdog();",
+      "range": {
+        "startLine": 121,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 22
+      },
+      "revId": "30c9293932fd34bd9ae5ffbb9810472f9eef385e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bc89475_96e3ec51",
+        "filename": "common/panic_output.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-17T16:10:14Z",
+      "side": 1,
+      "message": "maybe also add a unsigned long divide by 0, uldivzero, since it goes through a different path.",
+      "range": {
+        "startLine": 184,
+        "startChar": 14,
+        "endLine": 184,
+        "endChar": 21
+      },
+      "revId": "30c9293932fd34bd9ae5ffbb9810472f9eef385e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
