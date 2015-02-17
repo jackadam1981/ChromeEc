@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bb398fa_97476492",
+        "filename": "common/charge_ramp.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2015-02-17T03:55:37Z",
+      "side": 1,
+      "message": "How about adding comment here to explain the supplier type may change during STABILIZE and we want to ignore that event, and thus we use usleep() instead of task_wait_event().",
+      "range": {
+        "startLine": 278,
+        "startChar": 3,
+        "endLine": 278,
+        "endChar": 26
+      },
+      "revId": "b5adaaf88bc876d04d347b5fef2985441cb47a78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
