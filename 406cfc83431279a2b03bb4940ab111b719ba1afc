@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0bb5bcf7_9ce765e7",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-02-17T17:42:16Z",
+      "side": 1,
+      "message": "We may want to make sure the port is acting as a sink (as we do in board_set_active_charge_port) before we set a non-zero limit.",
+      "revId": "406cfc83431279a2b03bb4940ab111b719ba1afc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
