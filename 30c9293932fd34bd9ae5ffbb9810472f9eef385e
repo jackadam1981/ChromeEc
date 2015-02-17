@@ -91,6 +91,30 @@
       "revId": "30c9293932fd34bd9ae5ffbb9810472f9eef385e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bbf18df_d7f49c10",
+        "filename": "include/software_panic.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-02-17T19:23:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bc21c57_347210fc",
+      "range": {
+        "startLine": 25,
+        "startChar": 8,
+        "endLine": 25,
+        "endChar": 11
+      },
+      "revId": "30c9293932fd34bd9ae5ffbb9810472f9eef385e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
