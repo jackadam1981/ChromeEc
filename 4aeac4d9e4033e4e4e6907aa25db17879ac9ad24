@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8bba8cec_f85671a3",
+        "filename": "common/host_command_pd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-02-17T19:07:59Z",
+      "side": 1,
+      "message": "We can just call software_panic(PANIC_SW_PD_CRASH, 0) here instead of the inline asm.",
+      "revId": "4aeac4d9e4033e4e4e6907aa25db17879ac9ad24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bd4142e_1687bc28",
+        "filename": "include/software_panic.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-02-17T19:07:59Z",
+      "side": 1,
+      "message": "Suggest \"PANIC_SW_PD_CRASH\" to maintain PANIC_SW prefix.",
+      "revId": "4aeac4d9e4033e4e4e6907aa25db17879ac9ad24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
