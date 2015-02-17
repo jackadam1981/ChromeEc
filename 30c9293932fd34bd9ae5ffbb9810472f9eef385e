@@ -45,6 +45,29 @@
       "revId": "30c9293932fd34bd9ae5ffbb9810472f9eef385e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0bb5bcf7_5fa66fd2",
+        "filename": "include/software_panic.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-17T18:44:45Z",
+      "side": 1,
+      "message": "the pre-upload checks complain about this:\n\nErrors:\n            * Do not use (c) in copyright headers in new files:\n                * include/software_panic.h\n\nI think just remove the (c)",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 67
+      },
+      "revId": "30c9293932fd34bd9ae5ffbb9810472f9eef385e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
