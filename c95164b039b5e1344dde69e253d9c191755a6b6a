@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "abc5907a_39262fd9",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-02-17T18:14:03Z",
+      "side": 1,
+      "message": "Does this need to be size 256?",
+      "revId": "c95164b039b5e1344dde69e253d9c191755a6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0bb5bcf7_5c555db9",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-02-17T18:14:03Z",
+      "side": 1,
+      "message": "This check is made redundant by the below checks.",
+      "revId": "c95164b039b5e1344dde69e253d9c191755a6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "abc5907a_7905c738",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-02-17T18:14:03Z",
+      "side": 1,
+      "message": "Maybe better to combine these two into one \u0027if\u0027 statement.",
+      "revId": "c95164b039b5e1344dde69e253d9c191755a6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bb398fa_fd2cff09",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-02-17T18:14:03Z",
+      "side": 1,
+      "message": "Can this check be moved / combined with the increment? \"if (++i \u003d\u003d NUM_DELAYS)...\" at the end of the block.",
+      "revId": "c95164b039b5e1344dde69e253d9c191755a6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0bb5bcf7_dc2ccd3f",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-02-17T18:14:03Z",
+      "side": 1,
+      "message": "This check isn\u0027t very useful, SETUP_DELAY could be non-zero but we may end up using WRITE_DELAY. Suggest to just remove it, no harm in \u0027usleep(0)\u0027.",
+      "revId": "c95164b039b5e1344dde69e253d9c191755a6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bb398fa_9d478392",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-02-17T18:14:03Z",
+      "side": 1,
+      "message": "This looks wrong. \u0027\u0026\u0026\u0027?",
+      "revId": "c95164b039b5e1344dde69e253d9c191755a6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
