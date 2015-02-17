@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0bb5bcf7_fc66690d",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-17T17:12:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb99e484_92511ca2",
+      "range": {
+        "startLine": 719,
+        "startChar": 6,
+        "endLine": 719,
+        "endChar": 27
+      },
+      "revId": "dd8524311711de42e410f82fa5a7bc427df53c70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bb398fa_7ad2b55e",
         "filename": "board/samus_pd/board.c",
         "patchSetId": 3
@@ -36,6 +60,24 @@
       "writtenOn": "2015-02-17T04:27:28Z",
       "side": 1,
       "message": "How about changing this to:\n\n  vbus_sum \u003c VBUS_LOW_THRESHOLD_MA * VBUS_STABLE_SAMPLE_COUNT\n\nso that you avoid an unnecessary division? (Although the compiler might be able to optimize /4 to \u003e\u003e2, but still not as good as no division at all.)",
+      "revId": "dd8524311711de42e410f82fa5a7bc427df53c70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bb398fa_9d8f8343",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-17T17:12:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bb398fa_7ad2b55e",
       "revId": "dd8524311711de42e410f82fa5a7bc427df53c70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
