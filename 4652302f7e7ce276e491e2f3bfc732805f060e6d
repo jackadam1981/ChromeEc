@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b8fb4ad_5ed735fa",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-02-18T20:00:51Z",
+      "side": 1,
+      "message": "Use a uart_filter_input() function to filter UART input.  See uart.h for prototype.",
+      "range": {
+        "startLine": 1130,
+        "startChar": 9,
+        "endLine": 1130,
+        "endChar": 17
+      },
+      "revId": "4652302f7e7ce276e491e2f3bfc732805f060e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b8c40b9_7df5d7d3",
+        "filename": "include/uart.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-02-18T20:00:51Z",
+      "side": 1,
+      "message": "Should indicate how it works.  i.e. passed each character of input, return 0 to allow character through to console input processing or non-zero to eat character.",
+      "range": {
+        "startLine": 235,
+        "startChar": 1,
+        "endLine": 235,
+        "endChar": 3
+      },
+      "revId": "4652302f7e7ce276e491e2f3bfc732805f060e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
