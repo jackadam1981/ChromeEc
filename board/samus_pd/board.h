@@ -55,7 +55,7 @@
 #define CONFIG_USBC_SS_MUX
 #define CONFIG_USBC_VCONN
 #define CONFIG_VBOOT_HASH
-#undef  CONFIG_WATCHDOG_HELP
+#define CONFIG_WATCHDOG_HELP
 
 /* I2C ports configuration */
 #define I2C_PORT_MASTER 1
@@ -74,8 +74,9 @@
 #ifndef __ASSEMBLER__
 
 /* Timer selection */
-#define TIM_CLOCK32 2
-#define TIM_ADC     3
+#define TIM_CLOCK32  2
+#define TIM_ADC      3
+#define TIM_WATCHDOG 7
 
 #include "gpio_signal.h"
 
