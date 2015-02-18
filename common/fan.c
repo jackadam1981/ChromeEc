@@ -19,9 +19,9 @@
  * things manually. */
 static int thermal_control_enabled[CONFIG_FANS];
 
-#ifdef CONFIG_FAN_UPDATE_PERIOD
-/* Should we ignore the fans for a while? */
-static int fan_update_counter[CONFIG_FANS];
+#ifdef CONFIG_FAN_UPDATE_STEP
+/* Limit how fast we change the fan speed */
+static int fan_last_target[CONFIG_FANS];
 #endif
 
 #ifndef CONFIG_FAN_RPM_CUSTOM
@@ -54,15 +54,22 @@ test_mockable void fan_set_percent_needed(int fan, int pct)
 	if (!thermal_control_enabled[fan])
 		return;
 
-#ifdef CONFIG_FAN_UPDATE_PERIOD
-	/* Only set each fan every so often, to avoid rapid changes. */
-	fan_update_counter[fan] %= CONFIG_FAN_UPDATE_PERIOD;
-	if (fan_update_counter[fan]++)
-		return;
-#endif
-
 	new_rpm = fan_percent_to_rpm(fan, pct);
 	actual_rpm = fan_get_rpm_actual(fans[fan].ch);
+
+#ifdef CONFIG_FAN_UPDATE_STEP
+	/* We only change the target by a fixed amount each time. */
+	if (new_rpm > fan_last_target[fan] + CONFIG_FAN_UPDATE_STEP)
+		new_rpm = fan_last_target[fan] + CONFIG_FAN_UPDATE_STEP;
+	else if (new_rpm < fan_last_target[fan] - CONFIG_FAN_UPDATE_STEP)
+		new_rpm = fan_last_target[fan] - CONFIG_FAN_UPDATE_STEP;
+	/* Remember this target for next time */
+	fan_last_target[fan] = new_rpm;
+
+	/* But don't try to turn below the minimum run speed. */
+	if (new_rpm < fans[fan].rpm_min)
+		new_rpm = 0;
+#endif
 
 	/* If we want to turn and the fans are currently significantly below
 	 * the minimum turning speed, we should turn at least as fast as the
