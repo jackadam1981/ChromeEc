@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab3750c2_c9cc51c3",
+        "filename": "chip/stm32/clock-stm32f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-02-18T22:35:48Z",
+      "side": 1,
+      "message": "Are all of the clocks really the same as the CPU_CLOCK?",
+      "revId": "65b2744622f1f5e2fd928d9bb965cf92ef43520e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab3750c2_a9ee3d0c",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-02-18T22:35:48Z",
+      "side": 1,
+      "message": "This isn\u0027t really intrinsic to the family, this is a decision that the uart.c code is making about how to set the clock sources.  As such, it seems like it might be better defined there?",
+      "revId": "65b2744622f1f5e2fd928d9bb965cf92ef43520e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb430832_2b7879a7",
+        "filename": "chip/stm32/usart.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-02-18T22:35:48Z",
+      "side": 1,
+      "message": "Move up to maintain alphabetical ordering",
+      "revId": "65b2744622f1f5e2fd928d9bb965cf92ef43520e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b477c3f_6c0c5b64",
+        "filename": "chip/stm32/usart.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-02-18T22:35:48Z",
+      "side": 1,
+      "message": "Perhaps a better name would be peripheral_clock?  Also, would prefer it either lined up with above definitions, or had a blank line between it and the above definitions.",
+      "range": {
+        "startLine": 54,
+        "startChar": 17,
+        "endLine": 54,
+        "endChar": 23
+      },
+      "revId": "65b2744622f1f5e2fd928d9bb965cf92ef43520e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab3750c2_29296daa",
+        "filename": "include/clock.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-02-18T22:35:48Z",
+      "side": 1,
+      "message": "At least for the STM32 USART peripheral, it is not that it is on a slow bus, it\u0027s on the APB bus, running at 48 or 24MHz depending on the family.  The peripheral clock and the baud rate divisor clock are being fed from different sources.",
+      "range": {
+        "startLine": 25,
+        "startChar": 49,
+        "endLine": 25,
+        "endChar": 59
+      },
+      "revId": "65b2744622f1f5e2fd928d9bb965cf92ef43520e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
