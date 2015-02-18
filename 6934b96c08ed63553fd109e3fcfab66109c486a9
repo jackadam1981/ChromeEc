@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b644c9b_2b2da503",
+        "filename": "core/cortex-m0/uldivmod.S",
+        "patchSetId": 10
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2015-02-18T03:53:14Z",
+      "side": 1,
+      "message": "PANIC_SW_DIV_ZERO",
+      "range": {
+        "startLine": 176,
+        "startChar": 33,
+        "endLine": 176,
+        "endChar": 47
+      },
+      "revId": "6934b96c08ed63553fd109e3fcfab66109c486a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
