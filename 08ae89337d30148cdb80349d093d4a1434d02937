@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "cbd64482_6ae8977d",
+        "filename": "board/fruitpie/usb_pd_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-18T17:38:46Z",
+      "side": 1,
+      "message": "I know you copied this code from me, but looking at it, it doesn\u0027t look right, you should just be able to pass in power_role",
+      "range": {
+        "startLine": 152,
+        "startChar": 24,
+        "endLine": 152,
+        "endChar": 52
+      },
+      "revId": "08ae89337d30148cdb80349d093d4a1434d02937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7658e11a_3261ce78",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
@@ -13,6 +36,30 @@
       "writtenOn": "2015-02-13T19:34:07Z",
       "side": 1,
       "message": "I\u0027m not fully convinced that most of this shouldn\u0027t be called from pd_hw_init() below.\nWe have progressively added some (mostly redundant) hardware init here but it\u0027s before the peripheral blocks are actually properly configured by the pd_hw_init resulting in some strange states",
+      "range": {
+        "startLine": 1767,
+        "startChar": 1,
+        "endLine": 1767,
+        "endChar": 15
+      },
+      "revId": "08ae89337d30148cdb80349d093d4a1434d02937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bd55878_27f53a50",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1767,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-18T17:38:46Z",
+      "side": 1,
+      "message": "sure, it\u0027s probably better to do all of our pin configuration in one function call from this layer, so yeah, we can move pd_config_init() to be called from pd_hw_init().",
+      "parentUuid": "7658e11a_3261ce78",
       "range": {
         "startLine": 1767,
         "startChar": 1,
