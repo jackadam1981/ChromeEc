@@ -11,6 +11,7 @@
 #include "host_command.h"
 #include "i2c.h"
 #include "lid_switch.h"
+#include "timer.h"
 
 #define I2C_ADDR_BACKLIGHT ((0x2C << 1) | I2C_FLAG_BIG_ENDIAN)
 
@@ -50,38 +51,79 @@
 #define  LP8555_REG_STEP_SMOOTH_MEDIUM      (2 << 6)
 #define  LP8555_REG_STEP_SMOOTH_HEAVY       (3 << 6)
 
+#define  I2C_RETRIES 3
+#define  I2C_RETRY_DELAY (5*MSEC)
+
+/* Read from lp8555 with automatic i2c retries */
+static int lp8555_read_with_retry(int reg, int *data)
+{
+	int i, rv;
+
+	for (i = 0; i < I2C_RETRIES; i++) {
+		rv = i2c_read8(I2C_PORT_BACKLIGHT, I2C_ADDR_BACKLIGHT,
+			       reg, data);
+		if (rv == EC_SUCCESS)
+			break;
+		usleep(I2C_RETRY_DELAY);
+	}
+
+	return rv;
+}
+
+/* Write to lp8555 with automatic i2c retries */
+static int lp8555_write_with_retry(int reg, int data)
+{
+	int i, rv;
+
+	for (i = 0; i < I2C_RETRIES; i++) {
+		rv = i2c_write8(I2C_PORT_BACKLIGHT, I2C_ADDR_BACKLIGHT,
+			       reg, data);
+		if (rv == EC_SUCCESS)
+			break;
+		usleep(I2C_RETRY_DELAY);
+	}
+
+	return rv;
+}
+
 /**
  * Setup backlight controller and turn it on.
  */
 static void lp8555_enable_pwm_mode(void)
 {
 	int reg;
+	int rv;
 
 	/* Enable PWM mode. */
-	i2c_read8(I2C_PORT_BACKLIGHT, I2C_ADDR_BACKLIGHT,
-		  LP8555_REG_CONFIG, &reg);
+	rv = lp8555_read_with_retry(LP8555_REG_CONFIG, &reg);
+	if (rv != EC_SUCCESS)
+		return;
 	reg &= ~LP8555_REG_CONFIG_MODE_MASK;
 	reg |= LP8555_REG_CONFIG_MODE_PWM;
-	i2c_write8(I2C_PORT_BACKLIGHT, I2C_ADDR_BACKLIGHT,
-		   LP8555_REG_CONFIG, reg);
+	rv = lp8555_write_with_retry(LP8555_REG_CONFIG, reg);
+	if (rv != EC_SUCCESS)
+		return;
 
 	/* Set max LED current to 23mA. */
-	i2c_write8(I2C_PORT_BACKLIGHT, I2C_ADDR_BACKLIGHT,
-		   LP8555_REG_CURRENT, LP8555_REG_CURRENT_MAXCURR_23MA);
+	rv = lp8555_write_with_retry(LP8555_REG_CURRENT,
+				     LP8555_REG_CURRENT_MAXCURR_23MA);
+	if (rv != EC_SUCCESS)
+		return;
 
 	/* Set the rate of brightness change. */
-	i2c_write8(I2C_PORT_BACKLIGHT, I2C_ADDR_BACKLIGHT,
-		   LP8555_REG_STEP,
-		   LP8555_REG_STEP_STEP_200MS |
-		   LP8555_REG_STEP_PWM_IN_HYST_8LSB |
-		   LP8555_REG_STEP_SMOOTH_HEAVY);
+	rv = lp8555_write_with_retry(LP8555_REG_STEP,
+				     LP8555_REG_STEP_STEP_200MS |
+				     LP8555_REG_STEP_PWM_IN_HYST_8LSB |
+				     LP8555_REG_STEP_SMOOTH_HEAVY);
+	if (rv != EC_SUCCESS)
+		return;
 
 	/* Power on. */
-	i2c_read8(I2C_PORT_BACKLIGHT, I2C_ADDR_BACKLIGHT,
-		  LP8555_REG_COMMAND, &reg);
+	rv = lp8555_read_with_retry(LP8555_REG_COMMAND, &reg);
+	if (rv != EC_SUCCESS)
+		return;
 	reg |= LP8555_REG_COMMAND_ON;
-	i2c_write8(I2C_PORT_BACKLIGHT, I2C_ADDR_BACKLIGHT,
-		   LP8555_REG_COMMAND, reg);
+	rv = lp8555_write_with_retry(LP8555_REG_COMMAND, reg);
 }
 DECLARE_DEFERRED(lp8555_enable_pwm_mode);
 
