@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48241aa4_99237fc8",
+        "filename": "common/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-19T01:43:20Z",
+      "side": 1,
+      "message": "should this be fans[fan].rpm_min?",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 14
+      },
+      "revId": "a552787ad3cc451dc1d1424a70a437a10c7f6046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
