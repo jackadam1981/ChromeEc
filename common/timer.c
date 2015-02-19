@@ -146,6 +146,7 @@ void timer_cancel(task_id_t tskid)
 void usleep(unsigned us)
 {
 	uint32_t evt = 0;
+	uint64_t t_now, t_final;
 
 	/* If task scheduling has not started, just delay */
 	if (!task_start_called()) {
@@ -154,8 +155,12 @@ void usleep(unsigned us)
 	}
 
 	ASSERT(us);
+	t_final = get_time().val + us;
 	do {
-		evt |= task_wait_event(us);
+		t_now = get_time().val;
+		if (t_now >= t_final)
+			break;
+		evt |= task_wait_event(t_final - t_now);
 	} while (!(evt & TASK_EVENT_TIMER));
 
 	/* Re-queue other events which happened in the meanwhile */
