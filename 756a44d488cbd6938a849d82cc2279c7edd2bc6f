@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08a8625a_a4dce26d",
+        "filename": "chip/stm32/i2c-stm32f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-02-19T22:50:15Z",
+      "side": 1,
+      "message": "A bit confused by why we\u0027re adding bits onto an enumerated return value.  If we need a distinct error code, why not define EC_ERROR_DMA_TIMEOUT?",
+      "range": {
+        "startLine": 689,
+        "startChar": 10,
+        "endLine": 689,
+        "endChar": 49
+      },
+      "revId": "756a44d488cbd6938a849d82cc2279c7edd2bc6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
