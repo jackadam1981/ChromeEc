@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "0805c2fd_1c863581",
+        "filename": "board/samus/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2015-02-19T01:54:18Z",
+      "side": 1,
+      "message": "I am concerned 100 is too low for the ramp time, if the system goes from idle to turbo and stays there it will take some time to get the fan up to max.  But it could be fine, I am not sure :)",
+      "range": {
+        "startLine": 56,
+        "startChar": 31,
+        "endLine": 56,
+        "endChar": 34
+      },
+      "revId": "a552787ad3cc451dc1d1424a70a437a10c7f6046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "48241aa4_99237fc8",
         "filename": "common/fan.c",
         "patchSetId": 1
