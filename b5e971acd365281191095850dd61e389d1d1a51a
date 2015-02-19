@@ -34,6 +34,24 @@
       "revId": "b5e971acd365281191095850dd61e389d1d1a51a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "284fe67f_e5a756ce",
+        "filename": "board/samus/panel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2015-02-19T19:41:41Z",
+      "side": 1,
+      "message": "Maybe the start of this function should check chipset power state first?",
+      "parentUuid": "287d26a0_b5a18081",
+      "revId": "b5e971acd365281191095850dd61e389d1d1a51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
