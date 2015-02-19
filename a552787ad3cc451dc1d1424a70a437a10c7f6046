@@ -22,6 +22,30 @@
       "revId": "a552787ad3cc451dc1d1424a70a437a10c7f6046",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a83af6c2_51c7149f",
+        "filename": "common/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-02-19T01:47:35Z",
+      "side": 1,
+      "message": "No, we don\u0027t want to tell the LM4\u0027s fan controller to try to turn the fan at below the start speed. Each second, we bump up the fan_last_target[fan] by 100 until it\u0027s above that threshold. Then we tell the fan controller to go. \n\nThis means that if the fan is off, it takes about 10 seconds to turn on at the slowest speed, and then continues ramping up from there at that same pace until it\u0027s happy.\n\nWhen the fan turns off again, it slows down at the same rate until it hits the minimum, then stops.",
+      "parentUuid": "48241aa4_99237fc8",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 14
+      },
+      "revId": "a552787ad3cc451dc1d1424a70a437a10c7f6046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
