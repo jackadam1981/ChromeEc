@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e89dce26_fb004f2b",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-02-19T18:19:53Z",
+      "side": 1,
+      "message": "As I  mentioned before, I really suggest to move this check to the end of the loop body (combine with the i increment). Consider if you reach the last delay, you will then read another line for no good reason. And, if that line happens to not start with [A-Z], you\u0027ll keep reading lines!",
+      "revId": "37aa3f0cacabc259903f005c18b598512feeaf01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
