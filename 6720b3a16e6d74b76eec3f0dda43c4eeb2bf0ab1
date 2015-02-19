@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0866a236_74ebc82c",
+        "filename": "board/samus/panel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-19T23:56:10Z",
+      "side": 1,
+      "message": "yeah, i thought about that. i didn\u0027t want to rock the boat too much and change the fundamental behavior of i2c_read8()/i2c_write8() though, it seems like it really should be up to the caller to know if this read/write is critical or not, which we do do in lots of places.",
+      "parentUuid": "e8494ea5_db80132a",
+      "range": {
+        "startLine": 59,
+        "startChar": 23,
+        "endLine": 59,
+        "endChar": 33
+      },
+      "revId": "6720b3a16e6d74b76eec3f0dda43c4eeb2bf0ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8580a72_bd2c2bbb",
         "filename": "board/samus/panel.c",
         "patchSetId": 4
