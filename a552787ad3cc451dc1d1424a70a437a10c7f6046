@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e8486e7a_c31a166b",
+        "filename": "board/samus/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-02-19T17:29:43Z",
+      "side": 1,
+      "message": "Yeah, I\u0027m not sure either. I think it\u0027s unlikely to jump immediately from off to needing 100% cooling, but even in that case it will start doing *something* after 10 seconds.\n\nI tried using the webgl aquarium with 4000 fish, and it never got above 30% before it started coming down again.",
+      "parentUuid": "0805c2fd_1c863581",
+      "range": {
+        "startLine": 56,
+        "startChar": 31,
+        "endLine": 56,
+        "endChar": 34
+      },
+      "revId": "a552787ad3cc451dc1d1424a70a437a10c7f6046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "48241aa4_99237fc8",
         "filename": "common/fan.c",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "I mean, I think this line should be new_rpm \u003d fans[fan].rpm_min;\nSo, if the new_rpm is trying to set below the min, we instead set it to the minimum.\n\nOtherwise, you might never allow it to get to the minimum exactly. And if you have a large STEP size, then it could be pretty far away from the minimum.",
       "parentUuid": "a83af6c2_51c7149f",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 14
+      },
+      "revId": "a552787ad3cc451dc1d1424a70a437a10c7f6046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "685d5e31_67d81230",
+        "filename": "common/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-02-19T17:29:43Z",
+      "side": 1,
+      "message": "I thought about that, but then it isn\u0027t much different from just turning the fans on or off every second. The main complaint seems to come from the fact that PECI is very bursty and we react too quickly. Starting at zero forces it to wait.",
+      "parentUuid": "a83af6c2_91233cc8",
       "range": {
         "startLine": 71,
         "startChar": 2,
