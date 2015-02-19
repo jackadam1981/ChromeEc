@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e8494ea5_db80132a",
+        "filename": "board/samus/panel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2015-02-19T23:45:26Z",
+      "side": 1,
+      "message": "Given all the i2c issues we see this may be a good generic function someday...",
+      "range": {
+        "startLine": 59,
+        "startChar": 23,
+        "endLine": 59,
+        "endChar": 33
+      },
+      "revId": "6720b3a16e6d74b76eec3f0dda43c4eeb2bf0ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8580a72_bd2c2bbb",
         "filename": "board/samus/panel.c",
         "patchSetId": 4
