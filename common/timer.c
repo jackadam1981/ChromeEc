@@ -146,6 +146,7 @@ void timer_cancel(task_id_t tskid)
 void usleep(unsigned us)
 {
 	uint32_t evt = 0;
+	uint32_t t0 = __hw_clock_source_read();
 
 	/* If task scheduling has not started, just delay */
 	if (!task_start_called()) {
@@ -156,12 +157,14 @@ void usleep(unsigned us)
 	ASSERT(us);
 	do {
 		evt |= task_wait_event(us);
-	} while (!(evt & TASK_EVENT_TIMER));
+	} while (!(evt & TASK_EVENT_TIMER) &&
+		((__hw_clock_source_read() - t0) < us));
 
 	/* Re-queue other events which happened in the meanwhile */
 	if (evt)
 		atomic_or(task_get_event_bitmap(task_get_current()),
 			  evt & ~TASK_EVENT_TIMER);
+
 }
 
 timestamp_t get_time(void)
