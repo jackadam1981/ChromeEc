@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8580a72_bd2c2bbb",
+        "filename": "board/samus/panel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-19T23:39:09Z",
+      "side": 1,
+      "message": "please scrutinize these two lines, don\u0027t want to introduce a new problem.\n\nI don\u0027t think it\u0027s possible for this to cause problems:\n- even if AP turns on instantly, and pch generates a backlight interrupt immediately, chipset_in_state(CHIPSET_STATE_ON) will return true before the hooks task can run, because the chipset() task doesn\u0027t sleep between setting the last power rail to turn on the AP (SYS_PWROK) and when it sets the state variable to S0.\n- if the lid sensor is broken, or never fires, we will never turn on the backlight chip anyway (see line 178 in this file).\n\nOn the plus side, now we don\u0027t get any i2c errors trying to talk to a disabled chip.",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 9
+      },
+      "revId": "6720b3a16e6d74b76eec3f0dda43c4eeb2bf0ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
