@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a87116c9_7c6bd5d5",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-02-19T22:57:18Z",
+      "side": 1,
+      "message": "2015",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "67127c49483ebd73b851d40105a4b0499b85f7e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a87116c9_3c755db2",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-02-19T22:57:18Z",
+      "side": 1,
+      "message": "typo: bus (may exist in the original, too)",
+      "range": {
+        "startLine": 103,
+        "startChar": 28,
+        "endLine": 103,
+        "endChar": 32
+      },
+      "revId": "67127c49483ebd73b851d40105a4b0499b85f7e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a87116c9_1c7099c1",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-02-19T22:57:18Z",
+      "side": 1,
+      "message": "Typo: prefetch",
+      "range": {
+        "startLine": 110,
+        "startChar": 25,
+        "endLine": 110,
+        "endChar": 33
+      },
+      "revId": "67127c49483ebd73b851d40105a4b0499b85f7e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "08a8625a_64f02aec",
+        "filename": "chip/stm32/config-stm32f411.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-02-19T22:57:18Z",
+      "side": 1,
+      "message": "sizei?",
+      "range": {
+        "startLine": 13,
+        "startChar": 60,
+        "endLine": 13,
+        "endChar": 65
+      },
+      "revId": "67127c49483ebd73b851d40105a4b0499b85f7e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a87116c9_bc808d28",
+        "filename": "chip/stm32/config-stm32f411.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-02-19T22:57:18Z",
+      "side": 1,
+      "message": "Does OTP really mean one-time programming on this chip?",
+      "range": {
+        "startLine": 37,
+        "startChar": 17,
+        "endLine": 37,
+        "endChar": 20
+      },
+      "revId": "67127c49483ebd73b851d40105a4b0499b85f7e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "284fe67f_45b3cae8",
+        "filename": "chip/stm32/dma-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-02-19T22:57:18Z",
+      "side": 1,
+      "message": "2015\n\n(Or I\u0027ve seem some reference to removing the date entirely.  Wish I could remember where...)",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "67127c49483ebd73b851d40105a4b0499b85f7e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
