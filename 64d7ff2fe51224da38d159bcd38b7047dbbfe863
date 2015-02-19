@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "287d26a0_f555b8bc",
+        "filename": "board/samus/panel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000030
+      },
+      "writtenOn": "2015-02-19T19:14:39Z",
+      "side": 1,
+      "message": "did you explicitly add the space or did some sort of auto-formatting add them?  the intent was to have the register field definitions be offset by one space from the register address definition.",
+      "revId": "64d7ff2fe51224da38d159bcd38b7047dbbfe863",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
