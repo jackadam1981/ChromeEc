@@ -45,6 +45,30 @@
       "revId": "6392ced30862bb898726c9234ee4cd3663152a8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "488dfa43_4ecc73c0",
+        "filename": "common/timer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-20T02:58:44Z",
+      "side": 1,
+      "message": "Yeah, I like the second suggestion. it\u0027s short and efficient. not perfect, but at least we won\u0027t ever get stuck in usleep().",
+      "parentUuid": "a8b916da_b95fff2a",
+      "range": {
+        "startLine": 149,
+        "startChar": 1,
+        "endLine": 149,
+        "endChar": 23
+      },
+      "revId": "6392ced30862bb898726c9234ee4cd3663152a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
