@@ -22,6 +22,29 @@
       "revId": "6392ced30862bb898726c9234ee4cd3663152a8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8b916da_b95fff2a",
+        "filename": "common/timer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-02-20T02:36:06Z",
+      "side": 1,
+      "message": "doing 64-bit computations is pretty inefficient on Cortex-M0,\nand probably useless here (since us is 32-bit).\n\nYou can do at least something like :\nuint32_t t0, elapsed;\n\nt0 \u003d __hw_clock_source_read();\ndo {\n        elapsed \u003d  __hw_clock_source_read() - t0;\n        if (elapsed \u003e\u003d us)\n               break;\n\tevt |\u003d task_wait_event(us - elapsed);\n} while (!(evt \u0026 TASK_EVENT_TIMER))\n\nI let you verify again that all integer rollover in my example are correct. \n\nIMO the following was good enough (even if less precise) but as you want...\nuint32_t t0 \u003d __hw_clock_source_read();\n\ndo {\n\tevt |\u003d task_wait_event(us);\n} while (!(evt \u0026 TASK_EVENT_TIMER) \u0026\u0026 ((__hw_clock_source_read() - t0) \u003c us));",
+      "range": {
+        "startLine": 149,
+        "startChar": 1,
+        "endLine": 149,
+        "endChar": 23
+      },
+      "revId": "6392ced30862bb898726c9234ee4cd3663152a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
