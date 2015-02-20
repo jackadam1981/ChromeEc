@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8930e68_6b3201ec",
+        "filename": "common/timer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-20T15:46:52Z",
+      "side": 1,
+      "message": "I think we should add a comment to this function that it sleeps the task for at least us and is bounded to within 2*us.",
+      "range": {
+        "startLine": 146,
+        "startChar": 5,
+        "endLine": 146,
+        "endChar": 11
+      },
+      "revId": "86591fa4a1ea32c4ca49bf4869c167c7747b39a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68a63ed5_7f2dafb4",
+        "filename": "common/timer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-20T15:46:52Z",
+      "side": 1,
+      "message": "if us \u003d 2^32-1, then it would still probably sleep forever if you had a periodic interrupt coming in and waking the task.\n\ni wonder if it\u0027s worth limiting us argument to be \u003c\u003d 2^31. if somebody wants to sleep longer than that, they can call it in a loop. we can probably just add an assert for this case and double check calls to usleep and msleep are small.",
+      "range": {
+        "startLine": 161,
+        "startChar": 3,
+        "endLine": 161,
+        "endChar": 39
+      },
+      "revId": "86591fa4a1ea32c4ca49bf4869c167c7747b39a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
