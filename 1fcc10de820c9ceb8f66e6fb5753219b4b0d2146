@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e8930e68_abc86959",
+        "filename": "board/nucleo-f411re/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-02-20T15:50:37Z",
+      "side": 1,
+      "message": "there will never for this board, please remove those hooks",
+      "range": {
+        "startLine": 37,
+        "startChar": 13,
+        "endLine": 37,
+        "endChar": 33
+      },
+      "revId": "1fcc10de820c9ceb8f66e6fb5753219b4b0d2146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "284fe67f_054ef27f",
         "filename": "board/nucleo-f411re/board.h",
         "patchSetId": 3
@@ -18,6 +41,53 @@
         "startChar": 13,
         "endLine": 1,
         "endChar": 21
+      },
+      "revId": "1fcc10de820c9ceb8f66e6fb5753219b4b0d2146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68a63ed5_1f2463ce",
+        "filename": "board/nucleo-f411re/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-02-20T15:50:37Z",
+      "side": 1,
+      "message": "Parts of those files were written in 2014, but yes I think we are supposed to put 2015 before submitting",
+      "parentUuid": "284fe67f_054ef27f",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "1fcc10de820c9ceb8f66e6fb5753219b4b0d2146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88ae1292_581dfddc",
+        "filename": "board/nucleo-f411re/ec.tasklist",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-02-20T15:50:37Z",
+      "side": 1,
+      "message": "what HOSTCMD is supposed to do on a standalone dev board ?",
+      "range": {
+        "startLine": 21,
+        "startChar": 13,
+        "endLine": 21,
+        "endChar": 20
       },
       "revId": "1fcc10de820c9ceb8f66e6fb5753219b4b0d2146",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
