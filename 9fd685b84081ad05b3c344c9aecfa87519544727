@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0866a236_b49a80d2",
+        "filename": "board/samus/power_sequence.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-20T00:00:22Z",
+      "side": 1,
+      "message": "do you need to disable the interrupt in this if() case too? if so, maybe it\u0027s better to move enabling the interrupt down to after this if() statement.",
+      "range": {
+        "startLine": 358,
+        "startChar": 2,
+        "endLine": 358,
+        "endChar": 40
+      },
+      "revId": "9fd685b84081ad05b3c344c9aecfa87519544727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
