@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68a8fe90_8f2c95bb",
+        "filename": "board/samus/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-20T02:01:46Z",
+      "side": 1,
+      "message": "i thought we were going to increase CHIPSET task and not HOSTCMD task",
+      "range": {
+        "startLine": 29,
+        "startChar": 47,
+        "endLine": 29,
+        "endChar": 69
+      },
+      "revId": "4663510dcf3eceb7e49fda1eec897f17f46932d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
