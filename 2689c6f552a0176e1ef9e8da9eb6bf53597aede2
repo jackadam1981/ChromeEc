@@ -22,6 +22,30 @@
       "revId": "2689c6f552a0176e1ef9e8da9eb6bf53597aede2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88a372b2_f077c01c",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-02-20T02:52:48Z",
+      "side": 1,
+      "message": "usleep 1 second if and only if the firmware status busy bit is set.\n\ns0_read_status() will be called again after 1 second if the firmware status busy bit is set.",
+      "parentUuid": "88a372b2_3044e8e1",
+      "range": {
+        "startLine": 392,
+        "startChar": 15,
+        "endLine": 393,
+        "endChar": 8
+      },
+      "revId": "2689c6f552a0176e1ef9e8da9eb6bf53597aede2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
