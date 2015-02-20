@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8930e68_eb3d11b6",
+        "filename": "chip/stm32/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-02-20T15:45:29Z",
+      "side": 1,
+      "message": "given everything is identical excepted STM32F4xx\nI would save us all those symlinks and do something similar to timers :\n\nDMA_TYPE\u003d$(if $(CHIP_FAMILY_,-f4streams,)\n\nchip-$(CONFIG_DMA)+\u003ddma$(DMA_TYPE).o",
+      "range": {
+        "startLine": 29,
+        "startChar": 25,
+        "endLine": 29,
+        "endChar": 36
+      },
+      "revId": "406ba60d9f0f678e7f4dfb6fa3a24074328a2182",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
