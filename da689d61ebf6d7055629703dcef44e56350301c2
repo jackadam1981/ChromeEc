@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0866a236_17e09698",
+        "filename": "util/ec_sb_firmware_update.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-02-20T00:34:06Z",
+      "side": 1,
+      "message": "Does this fail so often that it\u0027s necessary to retry 6 times? If so, maybe leave a comment about why / how it\u0027s failing. Same for the above failures.",
+      "revId": "da689d61ebf6d7055629703dcef44e56350301c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
