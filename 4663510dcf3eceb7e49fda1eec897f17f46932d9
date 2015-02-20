@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "88a372b2_b0a458cb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-20T02:02:33Z",
+      "side": 1,
+      "message": "suggest \"samus: samus_pd:\"\n\nsometimes people search commint notes for \"samus:\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 14
+      },
+      "revId": "4663510dcf3eceb7e49fda1eec897f17f46932d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68a8fe90_8f2c95bb",
         "filename": "board/samus/ec.tasklist",
         "patchSetId": 1
