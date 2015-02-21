@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8930e68_ce2783ac",
+        "filename": "include/dma.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-02-21T00:37:40Z",
+      "side": 1,
+      "message": "missing the @param channel comment",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 3
+      },
+      "revId": "66e65f8b5cf95dde72ddc8cebcf9ceea7dba2793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
