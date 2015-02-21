@@ -25,6 +25,75 @@
     },
     {
       "key": {
+        "uuid": "e8930e68_cbd5b5f4",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-02-21T00:20:51Z",
+      "side": 1,
+      "message": "I don\u0027t see any atomic primitives used ?",
+      "range": {
+        "startLine": 8,
+        "startChar": 10,
+        "endLine": 8,
+        "endChar": 16
+      },
+      "revId": "67127c49483ebd73b851d40105a4b0499b85f7e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e8930e68_8bf48d8e",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-02-21T00:20:51Z",
+      "side": 1,
+      "message": "dummy is so unused, that you can remove it ?",
+      "range": {
+        "startLine": 52,
+        "startChar": 19,
+        "endLine": 52,
+        "endChar": 24
+      },
+      "revId": "67127c49483ebd73b851d40105a4b0499b85f7e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88ae1292_387129f8",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-02-21T00:20:51Z",
+      "side": 1,
+      "message": "have you tried to benchmark this ?\nisn\u0027t that waiting 2x 3x the number of requested cycles ?",
+      "range": {
+        "startLine": 100,
+        "startChar": 9,
+        "endLine": 100,
+        "endChar": 15
+      },
+      "revId": "67127c49483ebd73b851d40105a4b0499b85f7e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a87116c9_3c755db2",
         "filename": "chip/stm32/clock-stm32f4.c",
         "patchSetId": 3
@@ -48,6 +117,29 @@
     },
     {
       "key": {
+        "uuid": "88ae1292_787ba1d5",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-02-21T00:20:51Z",
+      "side": 1,
+      "message": "given we call this for a few cycles most of the times, this function seems large and complex for its purpose\n(the overhead of the recursive call and the checks is larger than the number of cycles ...)\n\nI think we should just do the worst case for all busses all the time with a simple loop or something like that",
+      "range": {
+        "startLine": 104,
+        "startChar": 2,
+        "endLine": 104,
+        "endChar": 23
+      },
+      "revId": "67127c49483ebd73b851d40105a4b0499b85f7e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a87116c9_1c7099c1",
         "filename": "chip/stm32/clock-stm32f4.c",
         "patchSetId": 3
@@ -64,6 +156,29 @@
         "startChar": 25,
         "endLine": 110,
         "endChar": 33
+      },
+      "revId": "67127c49483ebd73b851d40105a4b0499b85f7e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e8930e68_0bdb3df5",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-02-21T00:20:51Z",
+      "side": 1,
+      "message": "at 3.3V with HCLK \u003d 84Mhz, it seems we can crank up to 2 WS ?\n\nBy the way, it worth commenting here that pushing the voltage below (ie 1.8V board) or HCLK above 90 Mhz will invalidate this and crash the software ...\n\nWe need to remember about those I/D caches for the flash when doing flash/sysjump",
+      "range": {
+        "startLine": 111,
+        "startChar": 19,
+        "endLine": 111,
+        "endChar": 24
       },
       "revId": "67127c49483ebd73b851d40105a4b0499b85f7e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
