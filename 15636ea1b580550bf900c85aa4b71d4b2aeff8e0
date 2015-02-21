@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8864529b_0b7a214f",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-21T01:58:19Z",
+      "side": 1,
+      "message": "this guarantees delay is less than 1 day, but current time can be 23:59:59 and about to rollover.",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 47
+      },
+      "revId": "15636ea1b580550bf900c85aa4b71d4b2aeff8e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
