@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68bc7e32_afc1f98c",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-02-22T02:10:42Z",
+      "side": 1,
+      "message": "why are we not putting the pd_set_host_mode() call here ?\ninstead of in pd_config_init board specific function.",
+      "range": {
+        "startLine": 497,
+        "startChar": 4,
+        "endLine": 497,
+        "endChar": 14
+      },
+      "revId": "ce1c61784bd301dd56f48cf70c1ec5426f7d5680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
