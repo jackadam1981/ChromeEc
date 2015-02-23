@@ -22,6 +22,30 @@
       "revId": "626a9a33521c63657d2c50c1f09c7857845e1abf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e548997a_039dce7b",
+        "filename": "core/cortex-m0/ldivmod.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-02-23T23:47:10Z",
+      "side": 1,
+      "message": "Yes, because r0 is already in use.  (r1:r0 holds numerator, r3:r2 holds denominator)",
+      "parentUuid": "e50179f4_7b02dff1",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 13
+      },
+      "revId": "626a9a33521c63657d2c50c1f09c7857845e1abf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
