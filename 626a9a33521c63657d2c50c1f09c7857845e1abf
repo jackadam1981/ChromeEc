@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e50179f4_7b02dff1",
+        "filename": "core/cortex-m0/ldivmod.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-02-23T22:03:25Z",
+      "side": 1,
+      "message": "is that better than :\nldr r0, \u003d__aeabi_uldivmod\nbx r0\n\nProbably not",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 13
+      },
+      "revId": "626a9a33521c63657d2c50c1f09c7857845e1abf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
