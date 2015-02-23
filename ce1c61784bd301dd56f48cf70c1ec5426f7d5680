@@ -22,6 +22,30 @@
       "revId": "ce1c61784bd301dd56f48cf70c1ec5426f7d5680",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a80d96eb_391d4f0c",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-23T00:13:45Z",
+      "side": 1,
+      "message": "because pd_config_init() does more than just pd_set_host_mode() for certain boards like samus. this call is initializing all USB PD pins (mux selects, HPD, VCONN, CHARGE_EN, 5V_EN).",
+      "parentUuid": "68bc7e32_afc1f98c",
+      "range": {
+        "startLine": 497,
+        "startChar": 4,
+        "endLine": 497,
+        "endChar": 14
+      },
+      "revId": "ce1c61784bd301dd56f48cf70c1ec5426f7d5680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
