@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "452405a4_3646b86b",
+        "filename": "chip/stm32/usart-stm32f3.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2015-02-23T22:33:54Z",
+      "side": 1,
+      "message": "The new style requires no (c).",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "9d2660878a794d694d51964290116244dafc7f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
