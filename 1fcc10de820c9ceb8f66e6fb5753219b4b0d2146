@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a55dc161_19bc4be5",
+        "filename": "board/nucleo-f411re/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-02-24T06:37:52Z",
+      "side": 1,
+      "message": "I need them for the motion sensor task. Can I keep them, please :-)?",
+      "parentUuid": "e8930e68_abc86959",
+      "range": {
+        "startLine": 37,
+        "startChar": 13,
+        "endLine": 37,
+        "endChar": 33
+      },
+      "revId": "1fcc10de820c9ceb8f66e6fb5753219b4b0d2146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "284fe67f_054ef27f",
         "filename": "board/nucleo-f411re/board.h",
         "patchSetId": 3
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "c558f571_9a568dc4",
+        "filename": "board/nucleo-f411re/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-02-24T06:37:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68a63ed5_1f2463ce",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "1fcc10de820c9ceb8f66e6fb5753219b4b0d2146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88ae1292_581dfddc",
         "filename": "board/nucleo-f411re/ec.tasklist",
         "patchSetId": 3
@@ -83,6 +131,30 @@
       "writtenOn": "2015-02-20T15:50:37Z",
       "side": 1,
       "message": "what HOSTCMD is supposed to do on a standalone dev board ?",
+      "range": {
+        "startLine": 21,
+        "startChar": 13,
+        "endLine": 21,
+        "endChar": 20
+      },
+      "revId": "1fcc10de820c9ceb8f66e6fb5753219b4b0d2146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a55dc161_f9b4f7f9",
+        "filename": "board/nucleo-f411re/ec.tasklist",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-02-24T06:37:52Z",
+      "side": 1,
+      "message": "motionsense currently needs it, because it actually depends on host_get_memmap().\nThat\u0027s not too convincing, I need to define a dummy host_get_memmap when TASK_HOSTCMD is not defined.",
+      "parentUuid": "88ae1292_581dfddc",
       "range": {
         "startLine": 21,
         "startChar": 13,
