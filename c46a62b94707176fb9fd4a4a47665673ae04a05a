@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a55dc161_79fc6775",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 908,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-02-24T07:05:27Z",
+      "side": 1,
+      "message": "No, and it is wrong: we have to use mass erase for STM32F411, given the page_size logic will not work for erasing on this chip.",
+      "parentUuid": "081ea259_74f1c81f",
+      "range": {
+        "startLine": 908,
+        "startChar": 16,
+        "endLine": 908,
+        "endChar": 24
+      },
+      "revId": "c46a62b94707176fb9fd4a4a47665673ae04a05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "081ea259_54f6cc19",
         "filename": "util/stm32mon.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-02-19T17:07:28Z",
       "side": 1,
       "message": "maybe worth commenting that I put a fake page size to ensure that the erase size is always as big as the larger erase size (128kB?)",
+      "range": {
+        "startLine": 911,
+        "startChar": 48,
+        "endLine": 911,
+        "endChar": 57
+      },
+      "revId": "c46a62b94707176fb9fd4a4a47665673ae04a05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85399d03_0044c68c",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-02-24T07:05:27Z",
+      "side": 1,
+      "message": "which I change to 16K...\nLet me redo this CL.",
+      "parentUuid": "081ea259_54f6cc19",
       "range": {
         "startLine": 911,
         "startChar": 48,
