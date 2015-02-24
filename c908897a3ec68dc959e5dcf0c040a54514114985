@@ -600,6 +600,29 @@
     },
     {
       "key": {
+        "uuid": "65b909aa_c7b0fe57",
+        "filename": "board/honeybuns/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000448
+      },
+      "writtenOn": "2015-02-24T09:10:47Z",
+      "side": 1,
+      "message": "Missing splitter_uart_tx, splitter_uart_rx on PA2, PA3",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 25
+      },
+      "revId": "c908897a3ec68dc959e5dcf0c040a54514114985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "057a0daa_b4f2e0e9",
         "filename": "board/honeybuns/gpio.inc",
         "patchSetId": 1
@@ -616,6 +639,75 @@
         "startChar": 0,
         "endLine": 34,
         "endChar": 51
+      },
+      "revId": "c908897a3ec68dc959e5dcf0c040a54514114985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2540f174_bd06df46",
+        "filename": "board/honeybuns/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000448
+      },
+      "writtenOn": "2015-02-24T09:10:47Z",
+      "side": 1,
+      "message": "Missing SPI_WP_L on PB2,  make default out_high",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 0
+      },
+      "revId": "c908897a3ec68dc959e5dcf0c040a54514114985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c52f15b4_4209b22b",
+        "filename": "board/honeybuns/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000448
+      },
+      "writtenOn": "2015-02-24T09:10:47Z",
+      "side": 1,
+      "message": "TP6",
+      "range": {
+        "startLine": 54,
+        "startChar": 5,
+        "endLine": 54,
+        "endChar": 8
+      },
+      "revId": "c908897a3ec68dc959e5dcf0c040a54514114985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65b909aa_27555a3b",
+        "filename": "board/honeybuns/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000448
+      },
+      "writtenOn": "2015-02-24T09:10:47Z",
+      "side": 1,
+      "message": "TP7                 A,   14\nor could be TP2",
+      "range": {
+        "startLine": 55,
+        "startChar": 5,
+        "endLine": 55,
+        "endChar": 29
       },
       "revId": "c908897a3ec68dc959e5dcf0c040a54514114985",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
