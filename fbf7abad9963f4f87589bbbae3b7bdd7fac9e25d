@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "8266f310_b8dad96d",
+        "filename": "board/honeybuns/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-02-25T23:10:13Z",
+      "side": 1,
+      "message": "yes sure given USART1 is by default mapped on CH3 which used by SPI1.",
+      "parentUuid": "c210eb40_5aa4b5c7",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 41
+      },
+      "revId": "fbf7abad9963f4f87589bbbae3b7bdd7fac9e25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22f8e737_3dfd6f70",
         "filename": "board/honeybuns/board.h",
         "patchSetId": 2
@@ -117,6 +141,30 @@
     },
     {
       "key": {
+        "uuid": "c26c6bf3_da71c573",
+        "filename": "board/honeybuns/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-02-25T23:10:13Z",
+      "side": 1,
+      "message": "I thought we can simplify the whole stuff by just being a power source, but Mark H insisted that we need to be dual role to support \"host-only\" type-C device willing to use this as a simple USB hub rather than a dock.\nIS that corner-case broken in HW ?",
+      "parentUuid": "a215b730_599a8356",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 31
+      },
+      "revId": "fbf7abad9963f4f87589bbbae3b7bdd7fac9e25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22f8e737_bd3e1faf",
         "filename": "board/honeybuns/board.h",
         "patchSetId": 2
@@ -151,6 +199,30 @@
       "writtenOn": "2015-02-25T19:43:23Z",
       "side": 1,
       "message": "Any reason you chose this? If it\u0027s just a copy/paste, I would remove for now, you probably want as much data on console as possible to start.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 50
+      },
+      "revId": "fbf7abad9963f4f87589bbbae3b7bdd7fac9e25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c26c6bf3_7d08b30e",
+        "filename": "board/honeybuns/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-02-25T23:10:13Z",
+      "side": 1,
+      "message": "actually the USB driver won\u0027t really work with the traces,\nit might be better to keep it like this",
+      "parentUuid": "22f8e737_fd714773",
       "range": {
         "startLine": 40,
         "startChar": 0,
