@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "653109d1_672472a9",
+        "filename": "board/banjo/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2015-02-25T18:17:57Z",
+      "side": 1,
+      "message": "The battery led behavior for error and less than 3% charge is the same?",
+      "range": {
+        "startLine": 190,
+        "startChar": 3,
+        "endLine": 191,
+        "endChar": 47
+      },
+      "revId": "dc1d6dd00b5facce7e3014696f6264a9a102bc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
