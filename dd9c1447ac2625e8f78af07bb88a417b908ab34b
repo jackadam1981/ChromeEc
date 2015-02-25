@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a263f7f0_69858578",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-02-25T21:41:04Z",
+      "side": 1,
+      "message": "This code introduces warnings for some board:\nsh: ((uintptr_t)__host_flash): missing `)\u0027 (error token is \"__host_flash)\")\n\nIn particular, in chip/host/config_chip.h, where we have:\n#define CONFIG_FLASH_BASE       ((uintptr_t)__host_flash)\n\nThis line expect a numerical value.",
+      "revId": "dd9c1447ac2625e8f78af07bb88a417b908ab34b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
