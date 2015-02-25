@@ -1,0 +1,366 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22f8e737_9dc6c33d",
+        "filename": "board/honeybuns/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-25T19:43:23Z",
+      "side": 1,
+      "message": "better to change this to board_config_pre_init() so that it gets called before HOOK_INIT. need to remove the DECLARE_HOOK and define CONFIG_BOARD_PRE_INIT in board.h.",
+      "range": {
+        "startLine": 35,
+        "startChar": 12,
+        "endLine": 35,
+        "endChar": 28
+      },
+      "revId": "fbf7abad9963f4f87589bbbae3b7bdd7fac9e25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c210eb40_5aa4b5c7",
+        "filename": "board/honeybuns/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-25T19:43:23Z",
+      "side": 1,
+      "message": "I think you also want the USART1 DMA remapped to chan4/5 like on samus_pd:\nSTM32_SYSCFG_CFGR1 |\u003d (1 \u003c\u003c 9) | (1 \u003c\u003c 10) | (1 \u003c\u003c 24);\n\nAlso would be nice to add a DMA map comment like in samus_pd",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 41
+      },
+      "revId": "fbf7abad9963f4f87589bbbae3b7bdd7fac9e25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22f8e737_3dfd6f70",
+        "filename": "board/honeybuns/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-25T19:43:23Z",
+      "side": 1,
+      "message": "You are probably also going to want CONFIG_RSA, CONFIG_RWSIG, and CONFIG_SHA256 eventually, so that we can do secure updates like on hoho/dingdong/zinger.\n\nAlso probably want CONFIG_USB_PD_LOGGING for PDLOGs.\n\nBut for now, ok.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 23
+      },
+      "revId": "fbf7abad9963f4f87589bbbae3b7bdd7fac9e25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c210eb40_1ae87dff",
+        "filename": "board/honeybuns/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-25T19:43:23Z",
+      "side": 1,
+      "message": "I don\u0027t think this board is doing to be an alternate function DFP.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 34
+      },
+      "revId": "fbf7abad9963f4f87589bbbae3b7bdd7fac9e25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a215b730_599a8356",
+        "filename": "board/honeybuns/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-25T19:43:23Z",
+      "side": 1,
+      "message": "is this board actually dual-role? it looks from schematics that it is only a source.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 31
+      },
+      "revId": "fbf7abad9963f4f87589bbbae3b7bdd7fac9e25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22f8e737_bd3e1faf",
+        "filename": "board/honeybuns/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-25T19:43:23Z",
+      "side": 1,
+      "message": "we typically try to alphabetize these (i know some boards follow the guideline better than others)",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 28
+      },
+      "revId": "fbf7abad9963f4f87589bbbae3b7bdd7fac9e25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22f8e737_fd714773",
+        "filename": "board/honeybuns/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-25T19:43:23Z",
+      "side": 1,
+      "message": "Any reason you chose this? If it\u0027s just a copy/paste, I would remove for now, you probably want as much data on console as possible to start.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 50
+      },
+      "revId": "fbf7abad9963f4f87589bbbae3b7bdd7fac9e25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22f8e737_fd5a67e9",
+        "filename": "board/honeybuns/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-25T19:43:23Z",
+      "side": 1,
+      "message": "do we need billboard? USB_STR_BB_URL?",
+      "revId": "fbf7abad9963f4f87589bbbae3b7bdd7fac9e25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62f65f4b_df18bb72",
+        "filename": "board/honeybuns/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-25T19:43:23Z",
+      "side": 1,
+      "message": "Don\u0027t need this line because it is used as AF.\n\nSometimes, we put lines like this in a #if 0, so that you can read the code and see what is on that pin, and you can also define it if you want to take out of alternate function mode. see board/samus_pd/gpio.inc signals USB_C1_TX_CLKOUT",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 50
+      },
+      "revId": "fbf7abad9963f4f87589bbbae3b7bdd7fac9e25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "42fb1b34_3e356901",
+        "filename": "board/honeybuns/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-25T19:43:23Z",
+      "side": 1,
+      "message": "nit: remove space",
+      "range": {
+        "startLine": 17,
+        "startChar": 27,
+        "endLine": 17,
+        "endChar": 28
+      },
+      "revId": "fbf7abad9963f4f87589bbbae3b7bdd7fac9e25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62f65f4b_bfd737f9",
+        "filename": "board/honeybuns/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-25T19:43:23Z",
+      "side": 1,
+      "message": "nit: remove space",
+      "range": {
+        "startLine": 26,
+        "startChar": 24,
+        "endLine": 26,
+        "endChar": 25
+      },
+      "revId": "fbf7abad9963f4f87589bbbae3b7bdd7fac9e25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a215b730_39fd8f70",
+        "filename": "board/honeybuns/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-25T19:43:23Z",
+      "side": 1,
+      "message": "i think the only thing you need to do here is clear PPVAR_VBUS_EN when enable is 0.",
+      "range": {
+        "startLine": 122,
+        "startChar": 19,
+        "endLine": 122,
+        "endChar": 35
+      },
+      "revId": "fbf7abad9963f4f87589bbbae3b7bdd7fac9e25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a215b730_392b4f78",
+        "filename": "board/honeybuns/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-25T19:43:23Z",
+      "side": 1,
+      "message": "this board doesn\u0027t set vconn, so you can remove",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 6
+      },
+      "revId": "fbf7abad9963f4f87589bbbae3b7bdd7fac9e25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a215b730_b93e3faf",
+        "filename": "board/honeybuns/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-25T19:43:23Z",
+      "side": 1,
+      "message": "this board doesn\u0027t have VBUS wake signal, you can just return 0",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 6
+      },
+      "revId": "fbf7abad9963f4f87589bbbae3b7bdd7fac9e25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "820a7312_98b01505",
+        "filename": "board/honeybuns/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-25T19:43:23Z",
+      "side": 1,
+      "message": "looks like only 5 or 20, can remove 12",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 42
+      },
+      "revId": "fbf7abad9963f4f87589bbbae3b7bdd7fac9e25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "820a7312_9889353f",
+        "filename": "board/honeybuns/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-25T19:43:23Z",
+      "side": 1,
+      "message": "this board doesn\u0027t appear to be sink capable, so a lot of these sink only functions can be removed.",
+      "range": {
+        "startLine": 33,
+        "startChar": 15,
+        "endLine": 33,
+        "endChar": 25
+      },
+      "revId": "fbf7abad9963f4f87589bbbae3b7bdd7fac9e25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
