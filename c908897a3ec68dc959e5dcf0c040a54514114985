@@ -301,6 +301,30 @@
     },
     {
       "key": {
+        "uuid": "c581d54d_12280ca6",
+        "filename": "board/honeybuns/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-02-25T01:09:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4597a502_9e7b3d09",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "c908897a3ec68dc959e5dcf0c040a54514114985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a57141c9_9916fbc3",
         "filename": "board/honeybuns/board.h",
         "patchSetId": 1
@@ -312,6 +336,30 @@
       "writtenOn": "2015-02-24T01:12:28Z",
       "side": 1,
       "message": "we can now remove all those defines we are unlikely to use them.\nBy the way, the commented out define might confuse some quick grepping",
+      "range": {
+        "startLine": 33,
+        "startChar": 8,
+        "endLine": 33,
+        "endChar": 28
+      },
+      "revId": "c908897a3ec68dc959e5dcf0c040a54514114985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e526d94e_b33838f9",
+        "filename": "board/honeybuns/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-02-25T01:09:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a57141c9_9916fbc3",
       "range": {
         "startLine": 33,
         "startChar": 8,
@@ -347,6 +395,30 @@
     },
     {
       "key": {
+        "uuid": "858b5d6f_f0c54097",
+        "filename": "board/honeybuns/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-02-25T01:09:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e59df926_bb408779",
+      "range": {
+        "startLine": 46,
+        "startChar": 8,
+        "endLine": 46,
+        "endChar": 25
+      },
+      "revId": "c908897a3ec68dc959e5dcf0c040a54514114985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4597a502_5e84d57b",
         "filename": "board/honeybuns/board.h",
         "patchSetId": 1
@@ -358,6 +430,30 @@
       "writtenOn": "2015-02-24T01:12:28Z",
       "side": 1,
       "message": "we don\u0027t have that",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 40
+      },
+      "revId": "c908897a3ec68dc959e5dcf0c040a54514114985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "858b5d6f_50fc4cc2",
+        "filename": "board/honeybuns/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-02-25T01:09:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4597a502_5e84d57b",
       "range": {
         "startLine": 47,
         "startChar": 0,
@@ -393,6 +489,30 @@
     },
     {
       "key": {
+        "uuid": "858b5d6f_b0e6d833",
+        "filename": "board/honeybuns/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-02-25T01:09:44Z",
+      "side": 1,
+      "message": "Removed this",
+      "parentUuid": "4597a502_1e7e4dce",
+      "range": {
+        "startLine": 49,
+        "startChar": 7,
+        "endLine": 49,
+        "endChar": 25
+      },
+      "revId": "c908897a3ec68dc959e5dcf0c040a54514114985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e59df926_7ec66da5",
         "filename": "board/honeybuns/board.h",
         "patchSetId": 1
@@ -404,6 +524,30 @@
       "writtenOn": "2015-02-24T01:12:28Z",
       "side": 1,
       "message": "remove all these, we have no battery/charger",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 76
+      },
+      "revId": "c908897a3ec68dc959e5dcf0c040a54514114985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e526d94e_9345fc5f",
+        "filename": "board/honeybuns/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-02-25T01:09:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e59df926_7ec66da5",
       "range": {
         "startLine": 52,
         "startChar": 0,
@@ -439,6 +583,30 @@
     },
     {
       "key": {
+        "uuid": "e526d94e_735dc030",
+        "filename": "board/honeybuns/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-02-25T01:09:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4597a502_3e55493b",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 29
+      },
+      "revId": "c908897a3ec68dc959e5dcf0c040a54514114985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8566fd10_78c681a5",
         "filename": "board/honeybuns/board.h",
         "patchSetId": 1
@@ -450,6 +618,30 @@
       "writtenOn": "2015-02-24T01:12:28Z",
       "side": 1,
       "message": "not TSU6721, remove this",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 33
+      },
+      "revId": "c908897a3ec68dc959e5dcf0c040a54514114985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c581d54d_b217c042",
+        "filename": "board/honeybuns/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-02-25T01:09:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8566fd10_78c681a5",
       "range": {
         "startLine": 76,
         "startChar": 0,
@@ -485,6 +677,30 @@
     },
     {
       "key": {
+        "uuid": "858b5d6f_d0391c00",
+        "filename": "board/honeybuns/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-02-25T01:09:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a57141c9_b98e5f95",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 32
+      },
+      "revId": "c908897a3ec68dc959e5dcf0c040a54514114985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8566fd10_7818c1a5",
         "filename": "board/honeybuns/board.h",
         "patchSetId": 1
@@ -496,6 +712,30 @@
       "writtenOn": "2015-02-24T01:12:28Z",
       "side": 1,
       "message": "we will need to rename or remove this\nfor sure, it won\u0027t be Mass-storage",
+      "range": {
+        "startLine": 112,
+        "startChar": 8,
+        "endLine": 112,
+        "endChar": 20
+      },
+      "revId": "c908897a3ec68dc959e5dcf0c040a54514114985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "858b5d6f_d064bc09",
+        "filename": "board/honeybuns/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-02-25T01:09:44Z",
+      "side": 1,
+      "message": "I\u0027m still not sure what this #define is used for. I will address it in the next patch set.",
+      "parentUuid": "8566fd10_7818c1a5",
       "range": {
         "startLine": 112,
         "startChar": 8,
@@ -531,6 +771,30 @@
     },
     {
       "key": {
+        "uuid": "c581d54d_7241582e",
+        "filename": "board/honeybuns/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-02-25T01:09:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8566fd10_583a9df4",
+      "range": {
+        "startLine": 2,
+        "startChar": 16,
+        "endLine": 2,
+        "endChar": 20
+      },
+      "revId": "c908897a3ec68dc959e5dcf0c040a54514114985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4597a502_8118bca6",
         "filename": "board/honeybuns/ec.tasklist",
         "patchSetId": 1
@@ -542,6 +806,30 @@
       "writtenOn": "2015-02-24T01:12:28Z",
       "side": 1,
       "message": "2015",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "c908897a3ec68dc959e5dcf0c040a54514114985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e526d94e_b39cb880",
+        "filename": "board/honeybuns/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-02-25T01:09:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4597a502_8118bca6",
       "range": {
         "startLine": 1,
         "startChar": 17,
@@ -577,6 +865,30 @@
     },
     {
       "key": {
+        "uuid": "c581d54d_d20124ed",
+        "filename": "board/honeybuns/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-02-25T01:09:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05a12d5e_dc5f8d2a",
+      "range": {
+        "startLine": 3,
+        "startChar": 17,
+        "endLine": 3,
+        "endChar": 21
+      },
+      "revId": "c908897a3ec68dc959e5dcf0c040a54514114985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e576d9c4_533a84f4",
         "filename": "board/honeybuns/gpio.inc",
         "patchSetId": 1
@@ -588,6 +900,30 @@
       "writtenOn": "2015-02-24T01:12:28Z",
       "side": 1,
       "message": "typo: HPD_UP\nshould probably be an interrupt (and declared at the beginning)",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 11
+      },
+      "revId": "c908897a3ec68dc959e5dcf0c040a54514114985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e526d94e_332428a8",
+        "filename": "board/honeybuns/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-02-25T01:09:44Z",
+      "side": 1,
+      "message": "I have the interrupt version of this commented out for now as I need to add the interrupt handler function.",
+      "parentUuid": "e576d9c4_533a84f4",
       "range": {
         "startLine": 27,
         "startChar": 5,
@@ -623,6 +959,30 @@
     },
     {
       "key": {
+        "uuid": "858b5d6f_50444c3f",
+        "filename": "board/honeybuns/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-02-25T01:09:44Z",
+      "side": 1,
+      "message": "I removed these GPIO configs and moved the UARTS to the ALTERNATE() entries",
+      "parentUuid": "65b909aa_c7b0fe57",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 25
+      },
+      "revId": "c908897a3ec68dc959e5dcf0c040a54514114985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "057a0daa_b4f2e0e9",
         "filename": "board/honeybuns/gpio.inc",
         "patchSetId": 1
@@ -634,6 +994,30 @@
       "writtenOn": "2015-02-24T01:12:28Z",
       "side": 1,
       "message": "should be in alternate mode and defined in ALTERNATE below",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 51
+      },
+      "revId": "c908897a3ec68dc959e5dcf0c040a54514114985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c581d54d_f2b1c8dd",
+        "filename": "board/honeybuns/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-02-25T01:09:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "057a0daa_b4f2e0e9",
       "range": {
         "startLine": 31,
         "startChar": 0,
@@ -692,6 +1076,30 @@
     },
     {
       "key": {
+        "uuid": "e526d94e_7341402e",
+        "filename": "board/honeybuns/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-02-25T01:09:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c52f15b4_4209b22b",
+      "range": {
+        "startLine": 54,
+        "startChar": 5,
+        "endLine": 54,
+        "endChar": 8
+      },
+      "revId": "c908897a3ec68dc959e5dcf0c040a54514114985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65b909aa_27555a3b",
         "filename": "board/honeybuns/gpio.inc",
         "patchSetId": 1
@@ -703,6 +1111,30 @@
       "writtenOn": "2015-02-24T09:10:47Z",
       "side": 1,
       "message": "TP7                 A,   14\nor could be TP2",
+      "range": {
+        "startLine": 55,
+        "startChar": 5,
+        "endLine": 55,
+        "endChar": 29
+      },
+      "revId": "c908897a3ec68dc959e5dcf0c040a54514114985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "858b5d6f_b0e9f8bf",
+        "filename": "board/honeybuns/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-02-25T01:09:44Z",
+      "side": 1,
+      "message": "I changed this to TP7 and the one above it to TP6",
+      "parentUuid": "65b909aa_27555a3b",
       "range": {
         "startLine": 55,
         "startChar": 5,
@@ -738,6 +1170,30 @@
     },
     {
       "key": {
+        "uuid": "858b5d6f_90a63425",
+        "filename": "board/honeybuns/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-02-25T01:09:44Z",
+      "side": 1,
+      "message": "I see that MISO is on PB4, but does PB5 not need to be specified as well?",
+      "parentUuid": "257d51a0_357490b2",
+      "range": {
+        "startLine": 61,
+        "startChar": 62,
+        "endLine": 61,
+        "endChar": 70
+      },
+      "revId": "c908897a3ec68dc959e5dcf0c040a54514114985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e576d9c4_93825c31",
         "filename": "board/honeybuns/gpio.inc",
         "patchSetId": 1
@@ -749,6 +1205,30 @@
       "writtenOn": "2015-02-24T01:12:28Z",
       "side": 1,
       "message": "you need also I2C master config",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 5
+      },
+      "revId": "c908897a3ec68dc959e5dcf0c040a54514114985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "858b5d6f_b07d78c9",
+        "filename": "board/honeybuns/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-02-25T01:09:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e576d9c4_93825c31",
       "range": {
         "startLine": 65,
         "startChar": 0,
@@ -784,6 +1264,30 @@
     },
     {
       "key": {
+        "uuid": "858b5d6f_5063ec2c",
+        "filename": "board/honeybuns/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-02-25T01:09:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e576d9c4_534cc48c",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 78
+      },
+      "revId": "c908897a3ec68dc959e5dcf0c040a54514114985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8566fd10_b87f398c",
         "filename": "board/honeybuns/usb_pd_config.h",
         "patchSetId": 1
@@ -795,6 +1299,30 @@
       "writtenOn": "2015-02-24T01:12:28Z",
       "side": 1,
       "message": "2015",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "c908897a3ec68dc959e5dcf0c040a54514114985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "858b5d6f_b054983f",
+        "filename": "board/honeybuns/usb_pd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-02-25T01:09:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8566fd10_b87f398c",
       "range": {
         "startLine": 1,
         "startChar": 17,
@@ -830,6 +1358,30 @@
     },
     {
       "key": {
+        "uuid": "6590299a_2feda9bd",
+        "filename": "board/honeybuns/usb_pd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-02-25T01:09:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8566fd10_f8a7f1cd",
+      "range": {
+        "startLine": 41,
+        "startChar": 15,
+        "endLine": 41,
+        "endChar": 30
+      },
+      "revId": "c908897a3ec68dc959e5dcf0c040a54514114985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4597a502_81519c22",
         "filename": "board/honeybuns/usb_pd_config.h",
         "patchSetId": 1
@@ -841,6 +1393,30 @@
       "writtenOn": "2015-02-24T01:12:28Z",
       "side": 1,
       "message": "SPI1_REGS",
+      "range": {
+        "startLine": 42,
+        "startChar": 20,
+        "endLine": 42,
+        "endChar": 35
+      },
+      "revId": "c908897a3ec68dc959e5dcf0c040a54514114985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "858b5d6f_b3cfc2b5",
+        "filename": "board/honeybuns/usb_pd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-02-25T01:09:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4597a502_81519c22",
       "range": {
         "startLine": 42,
         "startChar": 20,
@@ -876,6 +1452,30 @@
     },
     {
       "key": {
+        "uuid": "e526d94e_d31ff4d5",
+        "filename": "board/honeybuns/usb_pd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-02-25T01:09:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8566fd10_98b4b5f9",
+      "range": {
+        "startLine": 46,
+        "startChar": 36,
+        "endLine": 46,
+        "endChar": 40
+      },
+      "revId": "c908897a3ec68dc959e5dcf0c040a54514114985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "458085c4_b6dbc873",
         "filename": "board/honeybuns/usb_pd_config.h",
         "patchSetId": 1
@@ -899,6 +1499,30 @@
     },
     {
       "key": {
+        "uuid": "e526d94e_73bce041",
+        "filename": "board/honeybuns/usb_pd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-02-25T01:09:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "458085c4_b6dbc873",
+      "range": {
+        "startLine": 69,
+        "startChar": 24,
+        "endLine": 70,
+        "endChar": 42
+      },
+      "revId": "c908897a3ec68dc959e5dcf0c040a54514114985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "458085c4_76ed3013",
         "filename": "board/honeybuns/usb_pd_config.h",
         "patchSetId": 1
@@ -910,6 +1534,30 @@
       "writtenOn": "2015-02-24T01:12:28Z",
       "side": 1,
       "message": "SPI1",
+      "range": {
+        "startLine": 78,
+        "startChar": 10,
+        "endLine": 78,
+        "endChar": 14
+      },
+      "revId": "c908897a3ec68dc959e5dcf0c040a54514114985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e526d94e_16f6bae0",
+        "filename": "board/honeybuns/usb_pd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-02-25T01:09:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "458085c4_76ed3013",
       "range": {
         "startLine": 78,
         "startChar": 10,
