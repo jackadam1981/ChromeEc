@@ -37,7 +37,7 @@
 #define CONFIG_CMD_I2CWEDGE
 
 #define CONFIG_UART_HOST                0
-#define CONFIG_FANS                     1
+#define CONFIG_FANS                     0
 #define CONFIG_SPI_FLASH_SIZE           0x00800000 /* 8MB spi flash */
 
 /* Optional feature - used by nuvoton */
