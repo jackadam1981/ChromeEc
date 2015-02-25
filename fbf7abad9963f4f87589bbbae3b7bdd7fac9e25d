@@ -213,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "a2bf778b_4902e1ba",
+        "filename": "board/honeybuns/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-25T23:43:33Z",
+      "side": 1,
+      "message": "Talked over with Jim and Mark. This version of the board is definitely source only. There\u0027s a possibility that a version 2 of the board might change that, but would require more thought. Probably best for now to keep it simple and remove dual-role capability.",
+      "parentUuid": "42c5db22_ae0cb765",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 31
+      },
+      "revId": "fbf7abad9963f4f87589bbbae3b7bdd7fac9e25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22f8e737_bd3e1faf",
         "filename": "board/honeybuns/board.h",
         "patchSetId": 2
