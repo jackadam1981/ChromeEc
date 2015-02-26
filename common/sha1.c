@@ -8,20 +8,20 @@
 
 #include "sha1.h"
 
-static uint32_t ror27(uint32_t val)
+static ROMLIB uint32_t ror27(uint32_t val)
 {
 	return (val >> 27) | (val << 5);
 }
-static uint32_t ror2(uint32_t val)
+static ROMLIB uint32_t ror2(uint32_t val)
 {
 	return (val >> 2) | (val << 30);
 }
-static uint32_t ror31(uint32_t val)
+static ROMLIB uint32_t ror31(uint32_t val)
 {
 	return (val >> 31) | (val << 1);
 }
 
-static void sha1_transform(struct sha1_ctx *ctx)
+static void ROMLIB sha1_transform(struct sha1_ctx *ctx)
 {
 	uint32_t W[80];
 	register uint32_t A, B, C, D, E;
@@ -118,7 +118,7 @@ static void sha1_transform(struct sha1_ctx *ctx)
 	ctx->state[4] += E;
 }
 
-void sha1_update(struct sha1_ctx *ctx, const uint8_t *data, uint32_t len)
+void ROMLIB sha1_update(struct sha1_ctx *ctx, const uint8_t *data, uint32_t len)
 {
 	int i = ctx->count % sizeof(ctx->buf);
 	const uint8_t *p = (const uint8_t *)data;
@@ -143,7 +143,7 @@ void sha1_update(struct sha1_ctx *ctx, const uint8_t *data, uint32_t len)
 }
 
 
-uint8_t *sha1_final(struct sha1_ctx *ctx)
+uint8_t ROMLIB *sha1_final(struct sha1_ctx *ctx)
 {
 	uint32_t cnt = ctx->count * 8;
 	int i;
@@ -163,7 +163,7 @@ uint8_t *sha1_final(struct sha1_ctx *ctx)
 	return ctx->buf.b;
 }
 
-void sha1_init(struct sha1_ctx *ctx)
+void ROMLIB sha1_init(struct sha1_ctx *ctx)
 {
 	ctx->state[0] = 0x67452301;
 	ctx->state[1] = 0xEFCDAB89;
