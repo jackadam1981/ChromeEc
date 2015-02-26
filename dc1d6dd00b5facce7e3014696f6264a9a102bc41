@@ -70,6 +70,30 @@
       "revId": "dc1d6dd00b5facce7e3014696f6264a9a102bc41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "82d51302_80e8f601",
+        "filename": "board/banjo/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1003228
+      },
+      "writtenOn": "2015-02-26T08:59:21Z",
+      "side": 1,
+      "message": "If AC in and the led still blink, battery error.\nI have ask for OEM and our test member, they confirm Yuna\u0027s behavior is correct.",
+      "parentUuid": "82b433b1_8828d7a6",
+      "range": {
+        "startLine": 190,
+        "startChar": 3,
+        "endLine": 191,
+        "endChar": 47
+      },
+      "revId": "dc1d6dd00b5facce7e3014696f6264a9a102bc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
