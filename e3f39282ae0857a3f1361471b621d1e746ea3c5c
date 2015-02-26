@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22ff07ba_c5073aff",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2784,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-02-26T22:43:25Z",
+      "side": 1,
+      "message": "Should I rearrange this to move OTHER last (or maybe OTHER \u003d 255)? Based upon the kernel driver interpreting the host command, it shouldn\u0027t break anything.",
+      "revId": "e3f39282ae0857a3f1361471b621d1e746ea3c5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
