@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "224467e8_fdb447af",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2015-02-26T21:25:14Z",
+      "side": 1,
+      "message": "Add a dependency on https://chromium-review.googlesource.com/#/c/251946/\n\nCQ-DEPEND\u003dCL:251946",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 43
+      },
+      "revId": "6c1acf2cf468d5798f8d9a28c0d263f63a89af36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e526d94e_5673d27a",
         "filename": "board/banjo/board.h",
         "patchSetId": 2
