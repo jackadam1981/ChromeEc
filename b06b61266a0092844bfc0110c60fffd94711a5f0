@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a29cd784_a139defc",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-26T17:58:20Z",
+      "side": 1,
+      "message": "i think by style guidelines if the else clause has {}, then the if also needs {}.",
+      "range": {
+        "startLine": 173,
+        "startChar": 2,
+        "endLine": 176,
+        "endChar": 6
+      },
+      "revId": "b06b61266a0092844bfc0110c60fffd94711a5f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
