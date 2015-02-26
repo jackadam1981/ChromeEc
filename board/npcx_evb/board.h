@@ -8,6 +8,15 @@
 #ifndef __BOARD_H
 #define __BOARD_H
 
+/* Temporary hack for ROMlib */
+#define ROMLIB __attribute__((section(".romlib.funcs")))
+#define ROMDATA __attribute__((section(".romlib.data")))
+#define CONFIG_CRC8
+#define CONFIG_RSA
+#define CONFIG_SHA1
+#define CONFIG_SHA256
+#define CONFIG_SW_CRC
+
 /* Support Code RAM architecture (Run code in RAM) */
 #define CONFIG_CODERAM_ARCH
 

@@ -24,7 +24,7 @@ MEMORY
 #endif
 #ifdef RSA_PUBLIC_KEY_SIZE
     PSTATE(r)  : ORIGIN = FW_OFF(SECTION) + FW_SIZE(SECTION), \
-                 LENGTH = CONFIG_FW_PSTATE_SIZE
+                 LENGTH = 0x2000
 #endif
 #ifdef CONFIG_USB
     USB_RAM (rw) : \
@@ -35,6 +35,18 @@ MEMORY
 SECTIONS
 {
     .text : {
+
+        . = ALIGN(4);
+	/* ROM-able functions and data */
+        KEEP(*(.romlib.table))
+        KEEP(*(.romlib.funcs))
+        KEEP(*(.romlib.data))
+	
+	/* Pad to 0x2080 */
+        . = ALIGN(2048);
+        BYTE(0);
+        . = ALIGN(128);
+	
         OUTDIR/core/CORE/init.o (.text.vecttable)
         . = ALIGN(4);
         __version_struct_offset = .;
@@ -168,7 +180,7 @@ SECTIONS
 #endif
         . = ALIGN(4);
 #ifdef CONFIG_CODERAM_ARCH
-	} > CDRAM AT > FLASH
+    } > CDRAM AT > FLASH
 #else
 #ifdef COMPILE_FOR_RAM
     } > IRAM
@@ -283,6 +295,7 @@ SECTIONS
         *(.usb_ram.data)
     } > USB_RAM
 #endif
+
 #if !(defined(SECTION_IS_RO) && defined(CONFIG_FLASH))
     /DISCARD/ : {
               *(.google)

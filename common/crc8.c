@@ -5,7 +5,7 @@
 #include "common.h"
 #include "crc8.h"
 
-uint8_t crc8(const uint8_t *data, int len)
+uint8_t ROMLIB crc8(const uint8_t *data, int len)
 {
 	unsigned crc = 0;
 	int i, j;

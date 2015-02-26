@@ -15,7 +15,7 @@
 /**
  * a[] -= mod
  */
-static void sub_mod(const struct rsa_public_key *key, uint32_t *a)
+static void ROMLIB sub_mod(const struct rsa_public_key *key, uint32_t *a)
 {
 	int64_t A = 0;
 	uint32_t i;
@@ -29,7 +29,7 @@ static void sub_mod(const struct rsa_public_key *key, uint32_t *a)
 /**
  * Return a[] >= mod
  */
-static int ge_mod(const struct rsa_public_key *key, const uint32_t *a)
+static int ROMLIB ge_mod(const struct rsa_public_key *key, const uint32_t *a)
 {
 	uint32_t i;
 	for (i = RSANUMWORDS; i;) {
@@ -45,7 +45,7 @@ static int ge_mod(const struct rsa_public_key *key, const uint32_t *a)
 /**
  * Montgomery c[] += a * b[] / R % mod
  */
-static void mont_mul_add(const struct rsa_public_key *key,
+static void ROMLIB mont_mul_add(const struct rsa_public_key *key,
 			 uint32_t *c,
 			 const uint32_t a,
 			 const uint32_t *b)
@@ -72,7 +72,7 @@ static void mont_mul_add(const struct rsa_public_key *key,
 /**
  * Montgomery c[] = a[] * b[] / R % mod
  */
-static void mont_mul(const struct rsa_public_key *key,
+void ROMLIB mont_mul(const struct rsa_public_key *key,
 		     uint32_t *c,
 		     const uint32_t *a,
 		     const uint32_t *b)
@@ -93,7 +93,7 @@ static void mont_mul(const struct rsa_public_key *key,
  * @param workbuf32	Work buffer; caller must verify this is
  *			3 x RSANUMWORDS elements long.
  */
-static void mod_pow_F4(const struct rsa_public_key *key, uint8_t *inout,
+static void ROMLIB mod_pow_F4(const struct rsa_public_key *key, uint8_t *inout,
 		    uint32_t *workbuf32)
 {
 	uint32_t *a = workbuf32;
@@ -147,7 +147,7 @@ static void mod_pow_F4(const struct rsa_public_key *key, uint8_t *inout,
  *
  * PS: octet string consisting of {Length(RSA Key) - Length(T) - 3} 0xFF
  */
-static const uint8_t sha256_tail[] = {
+ROMDATA const uint8_t sha256_tail[] = {
 	0x00, 0x30, 0x31, 0x30, 0x0d, 0x06, 0x09, 0x60,
 	0x86, 0x48, 0x01, 0x65, 0x03, 0x04, 0x02, 0x01,
 	0x05, 0x00, 0x04, 0x20
@@ -161,7 +161,7 @@ static const uint8_t sha256_tail[] = {
  * @param sig  Signature to verify
  * @return 0 if the padding is correct.
  */
-static int check_padding(const uint8_t *sig)
+static int ROMLIB check_padding(const uint8_t *sig)
 {
 	uint8_t *ptr = (uint8_t *)sig;
 	int result = 0;
@@ -192,7 +192,7 @@ static int check_padding(const uint8_t *sig)
  *                      3 x RSANUMWORDS elements long.
  * @return 0 on failure, 1 on success.
  */
-int rsa_verify(const struct rsa_public_key *key, const uint8_t *signature,
+int ROMLIB rsa_verify(const struct rsa_public_key *key, const uint8_t *signature,
 	       const uint8_t *sha, uint32_t *workbuf32)
 {
 	uint8_t buf[RSANUMBYTES];

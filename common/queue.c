@@ -7,7 +7,7 @@
 #include "queue.h"
 #include "util.h"
 
-void queue_init(struct queue const *q)
+void ROMLIB queue_init(struct queue const *q)
 {
 	ASSERT(POWER_OF_TWO(q->buffer_units));
 
@@ -15,22 +15,22 @@ void queue_init(struct queue const *q)
 	q->state->tail = 0;
 }
 
-int queue_is_empty(struct queue const *q)
+int ROMLIB queue_is_empty(struct queue const *q)
 {
 	return q->state->head == q->state->tail;
 }
 
-size_t queue_count(struct queue const *q)
+size_t ROMLIB queue_count(struct queue const *q)
 {
 	return q->state->tail - q->state->head;
 }
 
-size_t queue_space(struct queue const *q)
+size_t ROMLIB queue_space(struct queue const *q)
 {
 	return q->buffer_units - queue_count(q);
 }
 
-size_t queue_add_unit(struct queue const *q, void const *src)
+size_t ROMLIB queue_add_unit(struct queue const *q, void const *src)
 {
 	size_t tail = q->state->tail & (q->buffer_units - 1);
 
@@ -47,12 +47,12 @@ size_t queue_add_unit(struct queue const *q, void const *src)
 	return 1;
 }
 
-size_t queue_add_units(struct queue const *q, void const *src, size_t count)
+size_t ROMLIB queue_add_units(struct queue const *q, void const *src, size_t count)
 {
 	return queue_add_memcpy(q, src, count, memcpy);
 }
 
-size_t queue_add_memcpy(struct queue const *q,
+size_t ROMLIB queue_add_memcpy(struct queue const *q,
 			void const *src,
 			size_t count,
 			void *(*memcpy)(void *dest,
@@ -77,7 +77,7 @@ size_t queue_add_memcpy(struct queue const *q,
 	return transfer;
 }
 
-static void queue_read_safe(struct queue const *q,
+static void ROMLIB queue_read_safe(struct queue const *q,
 			    void *dest,
 			    size_t head,
 			    size_t transfer,
@@ -97,7 +97,7 @@ static void queue_read_safe(struct queue const *q,
 		       (transfer - first) * q->unit_bytes);
 }
 
-size_t queue_remove_unit(struct queue const *q, void *dest)
+size_t ROMLIB queue_remove_unit(struct queue const *q, void *dest)
 {
 	size_t head = q->state->head & (q->buffer_units - 1);
 
@@ -114,12 +114,12 @@ size_t queue_remove_unit(struct queue const *q, void *dest)
 	return 1;
 }
 
-size_t queue_remove_units(struct queue const *q, void *dest, size_t count)
+size_t ROMLIB queue_remove_units(struct queue const *q, void *dest, size_t count)
 {
 	return queue_remove_memcpy(q, dest, count, memcpy);
 }
 
-size_t queue_remove_memcpy(struct queue const *q,
+size_t ROMLIB queue_remove_memcpy(struct queue const *q,
 			   void *dest,
 			   size_t count,
 			   void *(*memcpy)(void *dest,
@@ -136,7 +136,7 @@ size_t queue_remove_memcpy(struct queue const *q,
 	return transfer;
 }
 
-size_t queue_peek_units(struct queue const *q,
+size_t ROMLIB queue_peek_units(struct queue const *q,
 			void *dest,
 			size_t i,
 			size_t count)

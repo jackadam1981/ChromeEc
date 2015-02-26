@@ -7,7 +7,7 @@
 
 #include "util.h"
 
-int strlen(const char *s)
+int ROMLIB strlen(const char *s)
 {
 	int len = 0;
 
@@ -18,35 +18,35 @@ int strlen(const char *s)
 }
 
 
-int isspace(int c)
+int ROMLIB isspace(int c)
 {
 	return c == ' ' || c == '\t' || c == '\r' || c == '\n';
 }
 
 
-int isdigit(int c)
+int ROMLIB isdigit(int c)
 {
 	return c >= '0' && c <= '9';
 }
 
 
-int isalpha(int c)
+int ROMLIB isalpha(int c)
 {
 	return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');
 }
 
-int isprint(int c)
+int ROMLIB isprint(int c)
 {
 	return c >= ' ' && c <= '~';
 }
 
-int tolower(int c)
+int ROMLIB tolower(int c)
 {
 	return c >= 'A' && c <= 'Z' ? c + 'a' - 'A' : c;
 }
 
 
-int strcasecmp(const char *s1, const char *s2)
+int ROMLIB strcasecmp(const char *s1, const char *s2)
 {
 	int diff;
 	do {
@@ -58,7 +58,7 @@ int strcasecmp(const char *s1, const char *s2)
 }
 
 
-int strncasecmp(const char *s1, const char *s2, size_t size)
+int ROMLIB strncasecmp(const char *s1, const char *s2, size_t size)
 {
 	int diff;
 
@@ -74,7 +74,7 @@ int strncasecmp(const char *s1, const char *s2, size_t size)
 }
 
 
-int atoi(const char *nptr)
+int ROMLIB atoi(const char *nptr)
 {
 	int result = 0;
 	int neg = 0;
@@ -98,7 +98,7 @@ int atoi(const char *nptr)
 
 
 /* Like strtol(), but for integers */
-int strtoi(const char *nptr, char **endptr, int base)
+int ROMLIB strtoi(const char *nptr, char **endptr, int base)
 {
 	int result = 0;
 	int neg = 0;
@@ -140,7 +140,7 @@ int strtoi(const char *nptr, char **endptr, int base)
 	return neg ? -result : result;
 }
 
-int parse_bool(const char *s, int *dest)
+int ROMLIB parse_bool(const char *s, int *dest)
 {
 	if (!strcasecmp(s, "off") || !strncasecmp(s, "dis", 3) ||
 	    tolower(*s) == 'f' || tolower(*s) == 'n') {
@@ -155,7 +155,7 @@ int parse_bool(const char *s, int *dest)
 	}
 }
 
-int memcmp(const void *s1, const void *s2, size_t len)
+int ROMLIB memcmp(const void *s1, const void *s2, size_t len)
 {
 	const char *sa = s1;
 	const char *sb = s2;
@@ -171,7 +171,7 @@ int memcmp(const void *s1, const void *s2, size_t len)
 }
 
 
-void *memcpy(void *dest, const void *src, size_t len)
+void ROMLIB *memcpy(void *dest, const void *src, size_t len)
 {
 	char *d = (char *)dest;
 	const char *s = (const char *)src;
@@ -215,7 +215,7 @@ void *memcpy(void *dest, const void *src, size_t len)
 }
 
 
-void *memset(void *dest, int c, size_t len)
+void ROMLIB *memset(void *dest, int c, size_t len)
 {
 	char *d = (char *)dest;
 	uint32_t cccc;
@@ -253,7 +253,7 @@ void *memset(void *dest, int c, size_t len)
 }
 
 
-void *memmove(void *dest, const void *src, size_t len)
+void ROMLIB *memmove(void *dest, const void *src, size_t len)
 {
 	if ((uintptr_t)dest <= (uintptr_t)src ||
 	    (uintptr_t)dest >= (uintptr_t)src + len) {
@@ -305,7 +305,7 @@ void *memmove(void *dest, const void *src, size_t len)
 }
 
 
-char *strzcpy(char *dest, const char *src, int len)
+char ROMLIB *strzcpy(char *dest, const char *src, int len)
 {
 	char *d = dest;
 	if (len <= 0)
@@ -319,7 +319,7 @@ char *strzcpy(char *dest, const char *src, int len)
 }
 
 
-int uint64divmod(uint64_t *n, int d)
+int ROMLIB uint64divmod(uint64_t *n, int d)
 {
 	uint64_t q = 0, mask;
 	int r = 0;
@@ -363,7 +363,7 @@ int uint64divmod(uint64_t *n, int d)
 	return r;
 }
 
-int get_next_bit(uint32_t *mask)
+int ROMLIB get_next_bit(uint32_t *mask)
 {
 	int bit = 31 - __builtin_clz(*mask);
 	*mask &= ~(1 << bit);
@@ -380,7 +380,7 @@ enum cond_internal_bits {
 	COND_FALL_MASK = (1 << 2),		/* set if 1->0 */
 };
 
-void cond_init(cond_t *c, int val)
+void ROMLIB cond_init(cond_t *c, int val)
 {
 	if (val)
 		*c = COND_CURR_MASK;
@@ -388,7 +388,7 @@ void cond_init(cond_t *c, int val)
 		*c = 0;
 }
 
-int cond_is(cond_t *c, int val)
+int ROMLIB cond_is(cond_t *c, int val)
 {
 	if (val)
 		return *c & COND_CURR_MASK;
@@ -397,7 +397,7 @@ int cond_is(cond_t *c, int val)
 }
 
 
-void cond_set(cond_t *c, int val)
+void ROMLIB cond_set(cond_t *c, int val)
 {
 	if (val && cond_is(c, 0))
 		*c |= COND_RISE_MASK;
@@ -410,7 +410,7 @@ void cond_set(cond_t *c, int val)
 }
 
 
-int cond_went(cond_t *c, int val)
+int ROMLIB cond_went(cond_t *c, int val)
 {
 	int ret;
 
@@ -435,7 +435,7 @@ int cond_went(cond_t *c, int val)
  * *offset<0.  If argc<shift+1, leaves size unchanged, returning error if
  * *size<0.
  */
-int parse_offset_size(int argc, char **argv, int shift,
+int ROMLIB parse_offset_size(int argc, char **argv, int shift,
 			     int *offset, int *size)
 {
 	char *e;

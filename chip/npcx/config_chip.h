@@ -34,9 +34,11 @@
 
 /*****************************************************************************/
 /* Memory mapping */
+#define CONFIG_ROMLIB_BASE	0x00000080 /* ROM library */
+#define CONFIG_ROMLIB_SIZE	0x00002000 /* 8KB ROM library */
 #define CONFIG_RAM_BASE         0x200C0000 /* memory map address of data ram */
 #define CONFIG_RAM_SIZE         0x00008000 /* 32KB data ram */
-#define CONFIG_CDRAM_BASE       0x10088000 /* memory map address of code ram */
+#define CONFIG_CDRAM_BASE       0x00000080 /* memory map address of code ram */
 #define CONFIG_CDRAM_SIZE       0x00020000 /* 128KB code ram */
 #define CONFIG_FLASH_BASE	0x64000000 /* memory address of spi-flash */
 #define CONFIG_LPRAM_BASE       0x40001600 /* memory address of low power ram */

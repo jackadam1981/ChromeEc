@@ -82,11 +82,11 @@
 		wv[h] = t1 + t2;					\
 	}
 
-static const uint32_t sha256_h0[8] = {
+ROMDATA const uint32_t sha256_h0[8] = {
 	0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a,
 	0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19};
 
-static const uint32_t sha256_k[64] = {
+ROMDATA const uint32_t sha256_k[64] = {
 	0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5,
 	0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
 	0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3,
@@ -106,13 +106,13 @@ static const uint32_t sha256_k[64] = {
 
 #define SHA256_DIGESTINFO_LEN 19
 
-static const uint8_t SHA256_digestinfo[] = {
+ROMDATA const uint8_t SHA256_digestinfo[] = {
 	0x30, 0x31, 0x30, 0x0d, 0x06, 0x09, 0x60, 0x86,
 	0x48, 0x01, 0x65, 0x03, 0x04, 0x02, 0x01, 0x05,
 	0x00, 0x04, 0x20
 };
 
-void SHA256_init(struct sha256_ctx *ctx)
+void ROMLIB SHA256_init(struct sha256_ctx *ctx)
 {
 	int i;
 
@@ -123,7 +123,7 @@ void SHA256_init(struct sha256_ctx *ctx)
 	ctx->tot_len = 0;
 }
 
-static void SHA256_transform(struct sha256_ctx *ctx, const uint8_t *message,
+static void ROMLIB SHA256_transform(struct sha256_ctx *ctx, const uint8_t *message,
 			     unsigned int block_nb)
 {
 	/* Note: this function requires a considerable amount of stack */
@@ -164,7 +164,7 @@ static void SHA256_transform(struct sha256_ctx *ctx, const uint8_t *message,
 	}
 }
 
-void SHA256_update(struct sha256_ctx *ctx, const uint8_t *data, uint32_t len)
+void ROMLIB SHA256_update(struct sha256_ctx *ctx, const uint8_t *data, uint32_t len)
 {
 	unsigned int block_nb;
 	unsigned int new_len, rem_len, tmp_len;
@@ -196,7 +196,7 @@ void SHA256_update(struct sha256_ctx *ctx, const uint8_t *data, uint32_t len)
 	ctx->tot_len += (block_nb + 1) << 6;
 }
 
-uint8_t *SHA256_final(struct sha256_ctx *ctx)
+uint8_t ROMLIB *SHA256_final(struct sha256_ctx *ctx)
 {
 	unsigned int block_nb;
 	unsigned int pm_len;

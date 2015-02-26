@@ -50,7 +50,7 @@ struct gpio_wui_item {
 	uint8_t irq;
 };
 
-const struct gpio_wui_item gpio_wui_table[] = {
+ROMDATA const struct gpio_wui_item gpio_wui_table[] = {
 	/* MIWU0 Group A */
 	{ {	{ NPCX_GPIO(8, 0), NPCX_WUI(0, 1, 0) },
 		{ NPCX_GPIO(8, 1), NPCX_WUI(0, 1, 1) },
@@ -216,7 +216,7 @@ struct gpio_alt_map {
 	uint8_t alt_mask;
 };
 
-const struct gpio_alt_map gpio_alt_table[] = {
+ROMDATA const struct gpio_alt_map gpio_alt_table[] __aligned(4) = {
 	/* I2C Module */
 #if I2C0_BUS0
 	{ NPCX_GPIO(B, 4),  NPCX_ALT(2, I2C0_0_SL)}, /* SMB0SDA */
