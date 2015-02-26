@@ -112,24 +112,26 @@ static int get_key_value(const char *filename,
 static void print_battery_firmware_image_hdr(
 	struct sb_fw_header *hdr)
 {
-	printf("%c%c%c%c hdr_ver:%04X major_minor:%04X\n",
+	printf("\nNew Battery Firmware:\n");
+	printf("%c%c%c%c hdr_ver:%04x major_minor:%04x\n",
 		hdr->signature[0],
 		hdr->signature[1],
 		hdr->signature[2],
 		hdr->signature[3],
 		hdr->hdr_version, hdr->pkg_version_major_minor);
 
-	printf("vendor_id:%04X battery_type:%04X fw_ver:%04X tbl_ver:%04X\n",
+	printf("maker:0x%04x hwid:0x%04x fw_ver:%04x tbl_ver:%04x\n",
 		hdr->vendor_id, hdr->battery_type, hdr->fw_version,
 		hdr->data_table_version);
 
-	printf("bin off:%08X size:%08X chk_sum:%02X\n",
+	printf("binary offset:0x%08x size:0x%08x chk_sum:0x%02x\n",
 		hdr->fw_binary_offset, hdr->fw_binary_size, hdr->checksum);
 }
 
 static void print_info(struct sb_fw_update_info *info)
 {
-	printf("maker_id:0x%X hw_id:0x%X fw_ver:0x%X d_ver:0x%X\n",
+	printf("\nCurrent Battery Firmware:\n");
+	printf("\tmaker:0x%04x hwid:0x%04x fw_ver:0x%04x tbl_ver:0x%04x\n",
 		info->maker_id,
 		info->hardware_id,
 		info->fw_version,
@@ -253,8 +255,7 @@ static char *read_fw_image(struct fw_update_ctrl *fw_update)
 	fw_update->size = size;
 	fw_update->ptr = buf;
 	fw_update->fw_img_hdr = (struct sb_fw_header *)buf;
-	if (debug)
-		print_battery_firmware_image_hdr(fw_update->fw_img_hdr);
+	print_battery_firmware_image_hdr(fw_update->fw_img_hdr);
 
 	if (fw_update->fw_img_hdr->fw_binary_offset >= fw_update->size ||
 		fw_update->size < 256) {
@@ -414,9 +415,10 @@ static enum fw_update_state s1_read_battery_info(
 		log_msg(fw_update, S1_READ_INFO, "Interface Error");
 		return S10_TERMINAL;
 	}
+	print_info(&fw_update->info);
 
 	sprintf(fw_update->image_name,
-			"/lib/firmware/battery/maker.%04X.hwid.%04X.cfg",
+			"/lib/firmware/battery/maker.%04x.hwid.%04x.cfg",
 			fw_update->info.maker_id,
 			fw_update->info.hardware_id);
 	if (-1 == get_key_value(fw_update->image_name,
@@ -427,7 +429,7 @@ static enum fw_update_state s1_read_battery_info(
 	}
 
 	sprintf(fw_update->image_name,
-			"/lib/firmware/battery/maker.%04X.hwid.%04X.bin",
+			"/lib/firmware/battery/maker.%04x.hwid.%04x.bin",
 			fw_update->info.maker_id,
 			fw_update->info.hardware_id);
 
@@ -436,9 +438,6 @@ static enum fw_update_state s1_read_battery_info(
 		log_msg(fw_update, S1_READ_INFO, "Open Image File");
 		return S10_TERMINAL;
 	}
-
-	if (debug)
-		print_info(&fw_update->info);
 
 	rv = get_status(&fw_update->status);
 	if (rv) {
@@ -449,8 +448,6 @@ static enum fw_update_state s1_read_battery_info(
 
 	rv = check_if_valid_fw(fw_update->fw_img_hdr, &fw_update->info);
 	if (rv == 0) {
-		print_info(&fw_update->info);
-		print_battery_firmware_image_hdr(fw_update->fw_img_hdr);
 		fw_update->rv = EC_RES_INVALID_PARAM;
 		log_msg(fw_update, S1_READ_INFO, "Invalid Firmware");
 		return S10_TERMINAL;
@@ -458,8 +455,6 @@ static enum fw_update_state s1_read_battery_info(
 
 	rv = check_if_need_update_fw(fw_update->fw_img_hdr, &fw_update->info);
 	if (rv == 0) {
-		print_info(&fw_update->info);
-		print_battery_firmware_image_hdr(fw_update->fw_img_hdr);
 		fw_update->rv = 0;
 		log_msg(fw_update, S1_READ_INFO, "Latest Firmware");
 		return S10_TERMINAL;
@@ -727,9 +722,9 @@ int main(int argc, char *argv[])
 	}
 
 	rv = ec_sb_firmware_update(&fw_update);
-	if (rv)
-		printf("\n\nFirmware:%s Fail [%s]\n",
+	printf("\n\nFirmware:%s %s [%s]\n",
 			fw_update.image_name,
+			((rv) ? "FAIL" : ""),
 			fw_update.msg);
 
 	/* Update battery firmware update interface to be protected */
