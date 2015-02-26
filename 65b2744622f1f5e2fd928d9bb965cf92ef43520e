@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8216f3da_9b2aef71",
+        "filename": "chip/stm32/clock-stm32f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-02-26T22:49:25Z",
+      "side": 1,
+      "message": "I don\u0027t know, but noone is calling it with something other than _CPU_ type.",
+      "parentUuid": "ab3750c2_c9cc51c3",
+      "revId": "65b2744622f1f5e2fd928d9bb965cf92ef43520e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab3750c2_a9ee3d0c",
         "filename": "chip/stm32/registers.h",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "0505adfd_dc568dc5",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-02-26T22:49:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab3750c2_a9ee3d0c",
+      "revId": "65b2744622f1f5e2fd928d9bb965cf92ef43520e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb430832_2b7879a7",
         "filename": "chip/stm32/usart.h",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2015-02-18T22:35:48Z",
       "side": 1,
       "message": "Move up to maintain alphabetical ordering",
+      "revId": "65b2744622f1f5e2fd928d9bb965cf92ef43520e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45fb2534_1ec62d72",
+        "filename": "chip/stm32/usart.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-02-26T22:49:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb430832_2b7879a7",
       "revId": "65b2744622f1f5e2fd928d9bb965cf92ef43520e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -76,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "25f8f137_dd756bae",
+        "filename": "chip/stm32/usart.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-02-26T22:49:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b477c3f_6c0c5b64",
+      "range": {
+        "startLine": 54,
+        "startChar": 17,
+        "endLine": 54,
+        "endChar": 23
+      },
+      "revId": "65b2744622f1f5e2fd928d9bb965cf92ef43520e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab3750c2_29296daa",
         "filename": "include/clock.h",
         "patchSetId": 2
@@ -87,6 +165,30 @@
       "writtenOn": "2015-02-18T22:35:48Z",
       "side": 1,
       "message": "At least for the STM32 USART peripheral, it is not that it is on a slow bus, it\u0027s on the APB bus, running at 48 or 24MHz depending on the family.  The peripheral clock and the baud rate divisor clock are being fed from different sources.",
+      "range": {
+        "startLine": 25,
+        "startChar": 49,
+        "endLine": 25,
+        "endChar": 59
+      },
+      "revId": "65b2744622f1f5e2fd928d9bb965cf92ef43520e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "025123a8_9f1ad7e3",
+        "filename": "include/clock.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-02-26T22:49:25Z",
+      "side": 1,
+      "message": "I see. If fixed the code elsewhere. This is the clock of the devices themselves (if needed), not the peripheral clocks.",
+      "parentUuid": "ab3750c2_29296daa",
       "range": {
         "startLine": 25,
         "startChar": 49,
