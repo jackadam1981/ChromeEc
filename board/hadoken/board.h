@@ -35,7 +35,6 @@
 #define NRF51_TWI_SCL_PIN(port)   NRF51_TWI0_SCL_PIN
 #define NRF51_TWI_SDA_PIN(port)   NRF51_TWI0_SDA_PIN
 #define NRF51_TWI_FREQ(port)      NRF51_TWI_100KBPS
-#define NRF51_TWI_PPI_CHAN(port)  0
 
 #define BATTERY_VOLTAGE_MAX         4425 /* mV */
 #define BATTERY_VOLTAGE_NORMAL      3800 /* mV */
