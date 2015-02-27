@@ -1,4 +1,4 @@
-# Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+# Copyright 2015 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 #
@@ -89,6 +89,18 @@ proc flash_squawks { } {
 
 proc flash_squawks_ro { } {
 	flash_lm4 ../../../build/squawks/ec.RO.flat 0
+}
+
+proc flash_sumo { } {
+	flash_lm4 ../../../build/sumo/ec.bin 0
+}
+
+proc flash_sumo_ro { } {
+	flash_lm4 ../../../build/sumo/ec.RO.flat 0
+}
+
+proc flash_sumo_rw { } {
+	flash_lm4 ../../../build/sumo/ec.RW.bin 131072
 }
 
 proc flash_quawks { } {
