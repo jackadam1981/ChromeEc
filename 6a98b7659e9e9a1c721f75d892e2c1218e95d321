@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2586243_081607ce",
+        "filename": "driver/pi3usb9281.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-28T21:25:17Z",
+      "side": 1,
+      "message": "I don\u0027t think this part of the comment belongs in code. Probably just in commit message.",
+      "range": {
+        "startLine": 30,
+        "startChar": 36,
+        "endLine": 31,
+        "endChar": 49
+      },
+      "revId": "6a98b7659e9e9a1c721f75d892e2c1218e95d321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
