@@ -30,8 +30,6 @@
 #define CONFIG_SPI_MASTER_PORT 2
 #define CONFIG_SPI_CS_GPIO GPIO_PD_MCDP_SPI_CS_L
 #define CONFIG_USB
-#define CONFIG_USB_BOS
-#define CONFIG_USB_INHIBIT_CONNECT
 #define CONFIG_USB_POWER_DELIVERY
 #define CONFIG_USB_PD_ALT_MODE
 #define CONFIG_USB_PD_HW_DEV_ID_BOARD_MAJOR USB_PD_HW_DEV_ID_HOHO
@@ -90,13 +88,26 @@ enum usb_strings {
 #endif /* !__ASSEMBLER__ */
 
 /* USB Device class */
-#define USB_DEV_CLASS USB_CLASS_BILLBOARD
+#define USB_DEV_CLASS USB_CLASS_PER_INTERFACE
+
+#define CONFIG_USB_SPI
 
 /* USB interface indexes (use define rather than enum to expand them) */
+#ifndef CONFIG_USB_SPI
 #define USB_IFACE_COUNT     0
+#else
+#define USB_IFACE_SPI       0
+#define USB_IFACE_COUNT     1
+#endif
 
 /* USB endpoint indexes (use define rather than enum to expand them) */
+#ifndef CONFIG_USB_SPI
 #define USB_EP_CONTROL   0
 #define USB_EP_COUNT     1
+#else
+#define USB_EP_CONTROL   0
+#define USB_EP_SPI       1
+#define USB_EP_COUNT     2
+#endif
 
 #endif /* __BOARD_H */
