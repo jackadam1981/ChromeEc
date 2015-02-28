@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "522e8e91_abec8995",
+        "filename": "board/hoho/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-02-28T16:39:07Z",
+      "side": 1,
+      "message": "this is on hoho side, ectool wouldn\u0027t work.",
+      "parentUuid": "723392f5_6c447b06",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 50
+      },
+      "revId": "8578bbcc8effbdd75d868a96e80f2f656d56fe7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "522e8e91_4bfc058c",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 2
