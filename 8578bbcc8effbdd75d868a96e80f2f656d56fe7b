@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "723392f5_cc348f91",
+        "filename": "board/hoho/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-02-28T03:37:44Z",
+      "side": 1,
+      "message": "in looking at discovery-stm32f072 I know there must be clever way to poke the USB  interface to set bRequest properly ( USB_SPI_REQ_ENABLE | USB_SPI_REQ_DISABLE ).  For my purposes below seems to be working.",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 21
+      },
+      "revId": "8578bbcc8effbdd75d868a96e80f2f656d56fe7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "723392f5_6c447b06",
+        "filename": "board/hoho/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-02-28T03:37:44Z",
+      "side": 1,
+      "message": "could manage this via ectool gpioset from the script but when figured it was one less thing to worry about.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 50
+      },
+      "revId": "8578bbcc8effbdd75d868a96e80f2f656d56fe7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "522e8e91_4bfc058c",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-02-28T03:37:44Z",
+      "side": 1,
+      "message": "may be superfluous not that I removed the CONFIG_INHIBIT_USB .. will try removing",
+      "range": {
+        "startLine": 690,
+        "startChar": 42,
+        "endLine": 690,
+        "endChar": 47
+      },
+      "revId": "8578bbcc8effbdd75d868a96e80f2f656d56fe7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
