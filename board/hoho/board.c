@@ -13,10 +13,12 @@
 #include "hooks.h"
 #include "mcdp28x0.h"
 #include "registers.h"
+#include "spi.h"
 #include "task.h"
 #include "usb.h"
 #include "usb_bb.h"
 #include "usb_pd.h"
+#include "usb_spi.h"
 #include "timer.h"
 #include "util.h"
 
@@ -100,9 +102,9 @@ void board_config_pre_init(void)
 	STM32_SYSCFG_CFGR1 |= (1 << 9) | (1 << 10);/* Remap USART1 RX/TX DMA */
 }
 
-#ifdef CONFIG_SPI_FLASH
+#ifdef CONFIG_USB_SPI
 
-static void board_init_spi2(void)
+void usb_spi_board_enable(struct usb_spi_config const *config)
 {
 	/* Remap SPI2 to DMA channels 6 and 7 */
 	STM32_SYSCFG_CFGR1 |= (1 << 24);
@@ -125,13 +127,29 @@ static void board_init_spi2(void)
 	STM32_GPIO_OSPEEDR(GPIO_B) |= 0xff000000;
 
 	/* Reset SPI2 */
-	STM32_RCC_APB1RSTR |= (1 << 14);
-	STM32_RCC_APB1RSTR &= ~(1 << 14);
+	STM32_RCC_APB1RSTR |= STM32_RCC_PB1_SPI2;
+	STM32_RCC_APB1RSTR &= ~STM32_RCC_PB1_SPI2;
 
 	/* Enable clocks to SPI2 module */
 	STM32_RCC_APB1ENR |= STM32_RCC_PB1_SPI2;
+
+	spi_enable(1);
 }
-#endif /* CONFIG_SPI_FLASH */
+
+void usb_spi_board_disable(struct usb_spi_config const *config)
+{
+	spi_enable(0);
+
+	/* Disable clocks to SPI2 module */
+	STM32_RCC_APB1ENR &= ~STM32_RCC_PB1_SPI2;
+
+	/* Release SPI GPIOs */
+	gpio_config_module(MODULE_SPI_MASTER, 0);
+}
+
+USB_SPI_CONFIG(usb_spi, USB_IFACE_SPI, USB_EP_SPI);
+
+#endif /* CONFIG_USB_SPI */
 
 static void factory_validation_deferred(void)
 {
@@ -156,8 +174,10 @@ DECLARE_DEFERRED(factory_validation_deferred);
 static void board_init(void)
 {
 	timestamp_t now;
-#ifdef CONFIG_SPI_FLASH
-	board_init_spi2();
+#ifdef CONFIG_USB_SPI
+	usb_spi_board_enable(&usb_spi);
+	usb_spi.state->disabled = 0;
+	usb_spi.state->enabled = 1;
 #endif
 	now = get_time();
 	hpd_prev_level = gpio_get_level(GPIO_DP_HPD);
