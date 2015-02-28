@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "922486ae_8d07a143",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-02-28T01:48:05Z",
+      "side": 1,
+      "message": "Suggest to make these constants hex, so someone doesn\u0027t come along later and add \"F_SOMETHING_NEW \u003d 3\" and break your flags.",
+      "revId": "9f49b64a82cb4ec44030d7234d51437469b1cafd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
