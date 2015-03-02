@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "027f6322_8c1b87a0",
+        "filename": "board/honeybuns/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-02T22:03:03Z",
+      "side": 1,
+      "message": "I moved enabling the syscfg clock and remapping of DMA channels to the board_config_pre_init function. I didn\u0027t remove the board_init() function. Though currently, it\u0027s only being used to kick of the led blinking function I added.",
+      "parentUuid": "22f8e737_9dc6c33d",
+      "range": {
+        "startLine": 35,
+        "startChar": 12,
+        "endLine": 35,
+        "endChar": 28
+      },
+      "revId": "fbf7abad9963f4f87589bbbae3b7bdd7fac9e25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c210eb40_5aa4b5c7",
         "filename": "board/honeybuns/board.c",
         "patchSetId": 2
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "4275db3c_8eb5bbca",
+        "filename": "board/honeybuns/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-02T22:03:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8266f310_b8dad96d",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 41
+      },
+      "revId": "fbf7abad9963f4f87589bbbae3b7bdd7fac9e25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22f8e737_3dfd6f70",
         "filename": "board/honeybuns/board.h",
         "patchSetId": 2
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "52612e1e_19228b5d",
+        "filename": "board/honeybuns/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-02T22:03:03Z",
+      "side": 1,
+      "message": "Didn\u0027t add these yet, but I will do it on a subsequent patch set.",
+      "parentUuid": "22f8e737_3dfd6f70",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 23
+      },
+      "revId": "fbf7abad9963f4f87589bbbae3b7bdd7fac9e25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c210eb40_1ae87dff",
         "filename": "board/honeybuns/board.h",
         "patchSetId": 2
@@ -106,6 +178,30 @@
       "writtenOn": "2015-02-25T19:43:23Z",
       "side": 1,
       "message": "I don\u0027t think this board is doing to be an alternate function DFP.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 34
+      },
+      "revId": "fbf7abad9963f4f87589bbbae3b7bdd7fac9e25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "72663238_57804e3e",
+        "filename": "board/honeybuns/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-02T22:03:03Z",
+      "side": 1,
+      "message": "I\u0027m not able to remove this define without come changes to the common/usb_pd_protocol.c file. Will remove this once I\u0027ve made those changes.",
+      "parentUuid": "c210eb40_1ae87dff",
       "range": {
         "startLine": 22,
         "startChar": 0,
@@ -237,6 +333,30 @@
     },
     {
       "key": {
+        "uuid": "52612e1e_f91a2f1e",
+        "filename": "board/honeybuns/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-02T22:03:03Z",
+      "side": 1,
+      "message": "We are just a source. Removing the DUAL_ROLE define is causing a number of compile errors. I will handle this in a subsequent patch set.",
+      "parentUuid": "a2bf778b_4902e1ba",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 31
+      },
+      "revId": "fbf7abad9963f4f87589bbbae3b7bdd7fac9e25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22f8e737_bd3e1faf",
         "filename": "board/honeybuns/board.h",
         "patchSetId": 2
@@ -248,6 +368,30 @@
       "writtenOn": "2015-02-25T19:43:23Z",
       "side": 1,
       "message": "we typically try to alphabetize these (i know some boards follow the guideline better than others)",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 28
+      },
+      "revId": "fbf7abad9963f4f87589bbbae3b7bdd7fac9e25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52612e1e_d91773f4",
+        "filename": "board/honeybuns/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-02T22:03:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22f8e737_bd3e1faf",
       "range": {
         "startLine": 17,
         "startChar": 0,
@@ -307,6 +451,30 @@
     },
     {
       "key": {
+        "uuid": "72663238_d7429e92",
+        "filename": "board/honeybuns/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-02T22:03:03Z",
+      "side": 1,
+      "message": "Yes, this is in here because it was in the board.h in the fruitpie that I started with. From Vincent\u0027s comment, sounds like I should keep it.",
+      "parentUuid": "c26c6bf3_7d08b30e",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 50
+      },
+      "revId": "fbf7abad9963f4f87589bbbae3b7bdd7fac9e25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22f8e737_fd5a67e9",
         "filename": "board/honeybuns/board.h",
         "patchSetId": 2
@@ -324,6 +492,24 @@
     },
     {
       "key": {
+        "uuid": "d20a7e5c_6f74b18a",
+        "filename": "board/honeybuns/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-02T22:03:03Z",
+      "side": 1,
+      "message": "I added what we have in HoHo for BB_URL",
+      "parentUuid": "22f8e737_fd5a67e9",
+      "revId": "fbf7abad9963f4f87589bbbae3b7bdd7fac9e25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62f65f4b_df18bb72",
         "filename": "board/honeybuns/gpio.inc",
         "patchSetId": 2
@@ -335,6 +521,30 @@
       "writtenOn": "2015-02-25T19:43:23Z",
       "side": 1,
       "message": "Don\u0027t need this line because it is used as AF.\n\nSometimes, we put lines like this in a #if 0, so that you can read the code and see what is on that pin, and you can also define it if you want to take out of alternate function mode. see board/samus_pd/gpio.inc signals USB_C1_TX_CLKOUT",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 50
+      },
+      "revId": "fbf7abad9963f4f87589bbbae3b7bdd7fac9e25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e27b2f35_4bd4a546",
+        "filename": "board/honeybuns/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-02T22:03:03Z",
+      "side": 1,
+      "message": "I removed the PD_CLK_OUT gpio definition.",
+      "parentUuid": "62f65f4b_df18bb72",
       "range": {
         "startLine": 15,
         "startChar": 0,
@@ -370,6 +580,30 @@
     },
     {
       "key": {
+        "uuid": "e27b2f35_4bfd85bc",
+        "filename": "board/honeybuns/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-02T22:03:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42fb1b34_3e356901",
+      "range": {
+        "startLine": 17,
+        "startChar": 27,
+        "endLine": 17,
+        "endChar": 28
+      },
+      "revId": "fbf7abad9963f4f87589bbbae3b7bdd7fac9e25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62f65f4b_bfd737f9",
         "filename": "board/honeybuns/gpio.inc",
         "patchSetId": 2
@@ -381,6 +615,30 @@
       "writtenOn": "2015-02-25T19:43:23Z",
       "side": 1,
       "message": "nit: remove space",
+      "range": {
+        "startLine": 26,
+        "startChar": 24,
+        "endLine": 26,
+        "endChar": 25
+      },
+      "revId": "fbf7abad9963f4f87589bbbae3b7bdd7fac9e25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e27b2f35_6bfac1c7",
+        "filename": "board/honeybuns/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-02T22:03:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62f65f4b_bfd737f9",
       "range": {
         "startLine": 26,
         "startChar": 24,
@@ -416,6 +674,30 @@
     },
     {
       "key": {
+        "uuid": "8264339b_e80c733c",
+        "filename": "board/honeybuns/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-02T22:03:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a215b730_39fd8f70",
+      "range": {
+        "startLine": 122,
+        "startChar": 19,
+        "endLine": 122,
+        "endChar": 35
+      },
+      "revId": "fbf7abad9963f4f87589bbbae3b7bdd7fac9e25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a215b730_392b4f78",
         "filename": "board/honeybuns/usb_pd_config.h",
         "patchSetId": 2
@@ -427,6 +709,30 @@
       "writtenOn": "2015-02-25T19:43:23Z",
       "side": 1,
       "message": "this board doesn\u0027t set vconn, so you can remove",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 6
+      },
+      "revId": "fbf7abad9963f4f87589bbbae3b7bdd7fac9e25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5ad55fe_75bb623a",
+        "filename": "board/honeybuns/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-02T22:03:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a215b730_392b4f78",
       "range": {
         "startLine": 149,
         "startChar": 0,
@@ -462,6 +768,30 @@
     },
     {
       "key": {
+        "uuid": "c26aab65_6aa6379e",
+        "filename": "board/honeybuns/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-02T22:03:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a215b730_b93e3faf",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 6
+      },
+      "revId": "fbf7abad9963f4f87589bbbae3b7bdd7fac9e25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "820a7312_98b01505",
         "filename": "board/honeybuns/usb_pd_policy.c",
         "patchSetId": 2
@@ -485,6 +815,30 @@
     },
     {
       "key": {
+        "uuid": "e2f96fff_9b41ebd6",
+        "filename": "board/honeybuns/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-02T22:03:03Z",
+      "side": 1,
+      "message": "The board does have HW support for 12V. But there was a schematic issue and the enabled 12V got mixed up with the enable 1.2V. Jim is adding the 12V enable to TP7 for now and it will be addressed in the next board spin.",
+      "parentUuid": "820a7312_98b01505",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 42
+      },
+      "revId": "fbf7abad9963f4f87589bbbae3b7bdd7fac9e25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "820a7312_9889353f",
         "filename": "board/honeybuns/usb_pd_policy.c",
         "patchSetId": 2
@@ -496,6 +850,30 @@
       "writtenOn": "2015-02-25T19:43:23Z",
       "side": 1,
       "message": "this board doesn\u0027t appear to be sink capable, so a lot of these sink only functions can be removed.",
+      "range": {
+        "startLine": 33,
+        "startChar": 15,
+        "endLine": 33,
+        "endChar": 25
+      },
+      "revId": "fbf7abad9963f4f87589bbbae3b7bdd7fac9e25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "72663238_dad645e9",
+        "filename": "board/honeybuns/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-02T22:03:03Z",
+      "side": 1,
+      "message": "Will remove the pd_snk_pdo array once I can remove the DUAL_ROLE #define",
+      "parentUuid": "820a7312_9889353f",
       "range": {
         "startLine": 33,
         "startChar": 15,
