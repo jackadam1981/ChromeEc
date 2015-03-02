@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32591a74_5a1cf59d",
+        "filename": "board/hoho/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-02T19:00:22Z",
+      "side": 1,
+      "message": "usb_spi_enable(\u0026usb_spi, 1);",
+      "range": {
+        "startLine": 179,
+        "startChar": 1,
+        "endLine": 179,
+        "endChar": 27
+      },
+      "revId": "b38e38ace2dc1252e9c46130fb934fb8f9870871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32591a74_da75a5ca",
+        "filename": "board/hoho/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-02T19:00:22Z",
+      "side": 1,
+      "message": "I\u0027m not seeing the setup request (aka USB_SPI_REQ_ENABLE) in the flashrom, it seems it should be there",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 23
+      },
+      "revId": "b38e38ace2dc1252e9c46130fb934fb8f9870871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b2434a80_3e5be962",
+        "filename": "board/hoho/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-02T19:00:22Z",
+      "side": 1,
+      "message": "given how flashrom USB code currently works, you can keep the billboard class here, this won\u0027t change anything.",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 45
+      },
+      "revId": "b38e38ace2dc1252e9c46130fb934fb8f9870871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b2434a80_de75a5ca",
+        "filename": "board/hoho/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-02T19:00:22Z",
+      "side": 1,
+      "message": "as detailed in the flashrom CL, putting EP_SPI \u003d 3 (and _COUNT \u003d4) should work",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 26
+      },
+      "revId": "b38e38ace2dc1252e9c46130fb934fb8f9870871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32591a74_fa4fc98b",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-02T19:00:22Z",
+      "side": 1,
+      "message": "I don\u0027t fully understand why this is needed",
+      "range": {
+        "startLine": 690,
+        "startChar": 42,
+        "endLine": 690,
+        "endChar": 46
+      },
+      "revId": "b38e38ace2dc1252e9c46130fb934fb8f9870871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
