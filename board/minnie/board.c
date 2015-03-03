@@ -127,14 +127,14 @@ const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 const struct accel_orientation acc_orient = {
 	/* Hinge aligns with y axis. */
 	.rot_hinge_90 = {
-		{ FLOAT_TO_FP(1), 0, 0},
-		{ 0, FLOAT_TO_FP(1), 0},
-		{ 0, 0, FLOAT_TO_FP(1)}
+		{  0, 0, FLOAT_TO_FP(1)},
+		{  0, FLOAT_TO_FP(1), 0},
+		{ FLOAT_TO_FP(-1), 0, 0}
 	},
 	.rot_hinge_180 = {
-		{ FLOAT_TO_FP(1), 0, 0},
-		{ 0, FLOAT_TO_FP(1), 0},
-		{ 0, 0, FLOAT_TO_FP(1)}
+		{ FLOAT_TO_FP(-1), 0, 0},
+		{  0, FLOAT_TO_FP(1), 0},
+		{  0, 0, FLOAT_TO_FP(-1)}
 	},
 	.hinge_axis = {0, 1, 0},
 };
