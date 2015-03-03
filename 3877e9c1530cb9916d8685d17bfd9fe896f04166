@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "72147288_67f68c14",
+        "filename": "board/sumo/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1114850
+      },
+      "writtenOn": "2015-03-03T15:02:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72e9d2ce_bfb513c5",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "3877e9c1530cb9916d8685d17bfd9fe896f04166",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52e4cef6_de2bc17b",
         "filename": "board/sumo/board.h",
         "patchSetId": 1
@@ -59,6 +83,30 @@
       "writtenOn": "2015-03-03T09:05:55Z",
       "side": 1,
       "message": "Copyright 2015",
+      "range": {
+        "startLine": 1,
+        "startChar": 3,
+        "endLine": 1,
+        "endChar": 12
+      },
+      "revId": "3877e9c1530cb9916d8685d17bfd9fe896f04166",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32c11a6d_5a9af571",
+        "filename": "board/sumo/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1114850
+      },
+      "writtenOn": "2015-03-03T15:02:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52e4cef6_de2bc17b",
       "range": {
         "startLine": 1,
         "startChar": 3,
