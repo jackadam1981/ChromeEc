@@ -22,6 +22,30 @@
       "revId": "a58ada64befec04e1593737f56234ce3f7d3793e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52f76ee1_c36f367d",
+        "filename": "board/ryu/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-03-03T19:36:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52f76ee1_4308e625",
+      "range": {
+        "startLine": 224,
+        "startChar": 4,
+        "endLine": 224,
+        "endChar": 6
+      },
+      "revId": "a58ada64befec04e1593737f56234ce3f7d3793e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
