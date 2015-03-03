@@ -117,6 +117,29 @@
     },
     {
       "key": {
+        "uuid": "329afa78_d20ac44c",
+        "filename": "board/honeybuns/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-03-03T02:24:36Z",
+      "side": 1,
+      "message": "you\u0027re going to have to do something with this. if you leave it defined it will default you into SINK role, due to:\n\ncommon/usb_pd_protocol.c\n#ifdef CONFIG_USB_PD_DUAL_ROLE\n#define PD_ROLE_DEFAULT PD_ROLE_SINK\n#else\n#define PD_ROLE_DEFAULT PD_ROLE_SOURCE\n#endif\n\nYou either need to undef this config option, or you need to clean up some of our other assumptions.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 31
+      },
+      "revId": "a64e5d50e2a54c17f0423c599649dbf7feb97b2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2235eea_270dba6b",
         "filename": "board/honeybuns/board.h",
         "patchSetId": 3
@@ -156,6 +179,29 @@
         "startChar": 0,
         "endLine": 90,
         "endChar": 23
+      },
+      "revId": "a64e5d50e2a54c17f0423c599649dbf7feb97b2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "92c3a659_757ac83f",
+        "filename": "board/honeybuns/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-03-03T02:24:36Z",
+      "side": 1,
+      "message": "nit: now remove this space to make it line up nice and pretty :-)",
+      "range": {
+        "startLine": 25,
+        "startChar": 27,
+        "endLine": 25,
+        "endChar": 28
       },
       "revId": "a64e5d50e2a54c17f0423c599649dbf7feb97b2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -255,6 +301,75 @@
     },
     {
       "key": {
+        "uuid": "f2a302b1_d00abc4c",
+        "filename": "board/honeybuns/usb_pd_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-03-03T02:24:36Z",
+      "side": 1,
+      "message": "i think you want:\nif (!enable)\n  gpio_set_level(GPIO_PPVAR_VBUS_EN, 0);",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 39
+      },
+      "revId": "a64e5d50e2a54c17f0423c599649dbf7feb97b2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "329afa78_3247907b",
+        "filename": "board/honeybuns/usb_pd_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-03-03T02:24:36Z",
+      "side": 1,
+      "message": "this is good except in usb_pd_protocol the DEFAULT_ROLE is still set to SINK",
+      "range": {
+        "startLine": 152,
+        "startChar": 25,
+        "endLine": 152,
+        "endChar": 50
+      },
+      "revId": "a64e5d50e2a54c17f0423c599649dbf7feb97b2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "92c3a659_f585f89b",
+        "filename": "board/honeybuns/usb_pd_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-03-03T02:24:36Z",
+      "side": 1,
+      "message": "will need to measure these, might want to put a todo",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 44
+      },
+      "revId": "a64e5d50e2a54c17f0423c599649dbf7feb97b2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "32ccba7c_82ce3aab",
         "filename": "board/honeybuns/usb_pd_policy.c",
         "patchSetId": 3
@@ -294,6 +409,29 @@
         "startChar": 0,
         "endLine": 36,
         "endChar": 29
+      },
+      "revId": "a64e5d50e2a54c17f0423c599649dbf7feb97b2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2a302b1_10344413",
+        "filename": "board/honeybuns/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-03-03T02:24:36Z",
+      "side": 1,
+      "message": "we typically do:\n\n/* TODO (crosbug.com/p/xxxxx): Need this function .... */\n\nbut in this case just do what vincent said and delete the body of the function.\n\nfyi, you wouldn\u0027t need this function if you just disable CONFIG_USB_PD_DUAL_ROLE",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 11
       },
       "revId": "a64e5d50e2a54c17f0423c599649dbf7feb97b2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
