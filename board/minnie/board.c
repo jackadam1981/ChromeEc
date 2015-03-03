@@ -11,9 +11,11 @@
 #include "driver/accel_kx022.h"
 #include "extpower.h"
 #include "gpio.h"
+#include "hooks.h"
 #include "host_command.h"
 #include "i2c.h"
 #include "keyboard_raw.h"
+#include "keyboard_scan.h"
 #include "lid_switch.h"
 #include "math_util.h"
 #include "motion_lid.h"
@@ -138,3 +140,22 @@ const struct accel_orientation acc_orient = {
 	},
 	.hinge_axis = {0, 1, 0},
 };
+
+
+static void tick_lid_angle_set_keyboard(void)
+{
+	int lid_angle = motion_lid_get_angle();
+
+	if (lid_angle != LID_ANGLE_UNRELIABLE) {
+		if (lid_angle > 180) {
+			keyboard_scan_enable(0, KB_SCAN_DISABLE_LID_ANGLE);
+		}
+		else {
+			keyboard_scan_enable(1, KB_SCAN_DISABLE_LID_ANGLE);
+		}
+	}
+	else {
+		keyboard_scan_enable(1, KB_SCAN_DISABLE_LID_ANGLE);
+	}
+}
+DECLARE_HOOK(HOOK_TICK, tick_lid_angle_set_keyboard, HOOK_PRIO_DEFAULT);
