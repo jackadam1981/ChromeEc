@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "527a0e34_2e128756",
+        "filename": "board/honeybuns/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-04T22:05:56Z",
+      "side": 1,
+      "message": "Converted this to HOOK_TICK",
+      "parentUuid": "d2235eea_67b33203",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 44
+      },
+      "revId": "a64e5d50e2a54c17f0423c599649dbf7feb97b2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "92156685_a5f99ed2",
         "filename": "board/honeybuns/board.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2015-03-02T23:01:15Z",
       "side": 1,
       "message": "this seems wrong, we are using SPI1 for TX (which is channel 3)",
+      "range": {
+        "startLine": 64,
+        "startChar": 5,
+        "endLine": 64,
+        "endChar": 31
+      },
+      "revId": "a64e5d50e2a54c17f0423c599649dbf7feb97b2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "527a0e34_ce1d0366",
+        "filename": "board/honeybuns/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-04T22:05:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92156685_a5f99ed2",
       "range": {
         "startLine": 64,
         "startChar": 5,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "527a0e34_ee223fa5",
+        "filename": "board/honeybuns/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-04T22:05:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2235eea_0798764a",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 33
+      },
+      "revId": "a64e5d50e2a54c17f0423c599649dbf7feb97b2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "92156685_451d4a61",
         "filename": "board/honeybuns/board.c",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2015-03-02T23:01:15Z",
       "side": 1,
       "message": "I\u0027m seeing a voltage divider (100k/8.87k) on those 2 lines, so the factors are unlikely to be correct here",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 65
+      },
+      "revId": "a64e5d50e2a54c17f0423c599649dbf7feb97b2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "727f1222_cf798186",
+        "filename": "board/honeybuns/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-04T22:05:56Z",
+      "side": 1,
+      "message": "Modified full scale voltage to 108.8/8.8 * 3.3V \u003d 40.8V",
+      "parentUuid": "92156685_451d4a61",
       "range": {
         "startLine": 77,
         "startChar": 1,
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "f25ea2fc_189dc568",
+        "filename": "board/honeybuns/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-04T22:05:56Z",
+      "side": 1,
+      "message": "I am going to remove this #define. However, before I can do that I need to make some changes in common/usb_pd_protocol.c as their are some compile assumptions that don\u0027t hold if I remove it. I have changes in this file already related to BIST mode, so I need to complete the git bookkeeping so I can have changes in the same file for 2 different CLs.",
+      "parentUuid": "329afa78_d20ac44c",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 31
+      },
+      "revId": "a64e5d50e2a54c17f0423c599649dbf7feb97b2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2235eea_270dba6b",
         "filename": "board/honeybuns/board.h",
         "patchSetId": 3
@@ -163,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "12cfb673_61e696e2",
+        "filename": "board/honeybuns/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-04T22:05:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2235eea_270dba6b",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 26
+      },
+      "revId": "a64e5d50e2a54c17f0423c599649dbf7feb97b2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2235eea_471c2e9e",
         "filename": "board/honeybuns/board.h",
         "patchSetId": 3
@@ -174,6 +318,30 @@
       "writtenOn": "2015-03-02T23:01:15Z",
       "side": 1,
       "message": "ditto :\n#define USB_EP_COUNT 1",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 23
+      },
+      "revId": "a64e5d50e2a54c17f0423c599649dbf7feb97b2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12cfb673_a1dfbe00",
+        "filename": "board/honeybuns/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-04T22:05:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2235eea_471c2e9e",
       "range": {
         "startLine": 88,
         "startChar": 0,
@@ -278,6 +446,30 @@
     },
     {
       "key": {
+        "uuid": "928ac69d_1d84d308",
+        "filename": "board/honeybuns/usb_pd_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-04T22:05:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72147288_84fd86b6",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 29
+      },
+      "revId": "a64e5d50e2a54c17f0423c599649dbf7feb97b2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b21a6ab2_e621decc",
         "filename": "board/honeybuns/usb_pd_config.h",
         "patchSetId": 3
@@ -289,6 +481,30 @@
       "writtenOn": "2015-03-02T23:01:15Z",
       "side": 1,
       "message": "there is no polarity selection in this design (Captive cable)",
+      "range": {
+        "startLine": 111,
+        "startChar": 5,
+        "endLine": 112,
+        "endChar": 36
+      },
+      "revId": "a64e5d50e2a54c17f0423c599649dbf7feb97b2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "321d9af7_647bb3a7",
+        "filename": "board/honeybuns/usb_pd_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-04T22:05:56Z",
+      "side": 1,
+      "message": "Copied what hoho/dingdong do for this function.",
+      "parentUuid": "b21a6ab2_e621decc",
       "range": {
         "startLine": 111,
         "startChar": 5,
@@ -324,6 +540,30 @@
     },
     {
       "key": {
+        "uuid": "321d9af7_c4007f02",
+        "filename": "board/honeybuns/usb_pd_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-04T22:05:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2a302b1_d00abc4c",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 39
+      },
+      "revId": "a64e5d50e2a54c17f0423c599649dbf7feb97b2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "329afa78_3247907b",
         "filename": "board/honeybuns/usb_pd_config.h",
         "patchSetId": 3
@@ -335,6 +575,30 @@
       "writtenOn": "2015-03-03T02:24:36Z",
       "side": 1,
       "message": "this is good except in usb_pd_protocol the DEFAULT_ROLE is still set to SINK",
+      "range": {
+        "startLine": 152,
+        "startChar": 25,
+        "endLine": 152,
+        "endChar": 50
+      },
+      "revId": "a64e5d50e2a54c17f0423c599649dbf7feb97b2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "321d9af7_771b67f6",
+        "filename": "board/honeybuns/usb_pd_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-04T22:05:56Z",
+      "side": 1,
+      "message": "This will get corrected when I\u0027m able to #undef CONFIG_USB_PD_DUAL_ROLE",
+      "parentUuid": "329afa78_3247907b",
       "range": {
         "startLine": 152,
         "startChar": 25,
@@ -416,6 +680,30 @@
     },
     {
       "key": {
+        "uuid": "1268969d_9960fbbf",
+        "filename": "board/honeybuns/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-04T22:05:56Z",
+      "side": 1,
+      "message": "I assume I can remove the table, once I have removed the DUAL_ROLE #define. For now, removed the rows you highlighted.",
+      "parentUuid": "d2235eea_87ec663f",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 29
+      },
+      "revId": "a64e5d50e2a54c17f0423c599649dbf7feb97b2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2a302b1_10344413",
         "filename": "board/honeybuns/usb_pd_policy.c",
         "patchSetId": 3
@@ -439,6 +727,30 @@
     },
     {
       "key": {
+        "uuid": "f25ea2fc_1856a52c",
+        "filename": "board/honeybuns/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-04T22:05:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2a302b1_10344413",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 11
+      },
+      "revId": "a64e5d50e2a54c17f0423c599649dbf7feb97b2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "32ccba7c_82e55a25",
         "filename": "board/honeybuns/usb_pd_policy.c",
         "patchSetId": 3
@@ -450,6 +762,30 @@
       "writtenOn": "2015-03-02T23:01:15Z",
       "side": 1,
       "message": "just remove this",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 6
+      },
+      "revId": "a64e5d50e2a54c17f0423c599649dbf7feb97b2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "321d9af7_d7883372",
+        "filename": "board/honeybuns/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-04T22:05:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32ccba7c_82e55a25",
       "range": {
         "startLine": 47,
         "startChar": 0,
