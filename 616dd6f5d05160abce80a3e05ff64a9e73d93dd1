@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72163202_b4fb20fd",
+        "filename": "chip/lm4/openocd/lm4x_cmds.tcl",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2015-03-04T14:32:24Z",
+      "side": 1,
+      "message": "Do not change the Copyright for existing files",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "616dd6f5d05160abce80a3e05ff64a9e73d93dd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32ae7afa_5212b456",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2015-03-04T14:32:24Z",
+      "side": 1,
+      "message": "Leave original copyright",
+      "range": {
+        "startLine": 3,
+        "startChar": 12,
+        "endLine": 3,
+        "endChar": 16
+      },
+      "revId": "616dd6f5d05160abce80a3e05ff64a9e73d93dd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
