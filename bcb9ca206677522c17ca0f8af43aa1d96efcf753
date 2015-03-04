@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52e4cef6_21580a8c",
+        "filename": "power/mediatek.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-03-04T09:54:23Z",
+      "side": 1,
+      "message": "Make it more meaningful, something like FORCE_BACKLIGHT_OFF (\u003d0) or LET_SOC_CONTROL (\u003d1).",
+      "range": {
+        "startLine": 267,
+        "startChar": 19,
+        "endLine": 267,
+        "endChar": 27
+      },
+      "revId": "bcb9ca206677522c17ca0f8af43aa1d96efcf753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b2a18a0e_4ef173e4",
+        "filename": "power/mediatek.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-03-04T09:54:23Z",
+      "side": 1,
+      "message": "force the backlight off on lid close.",
+      "range": {
+        "startLine": 278,
+        "startChar": 52,
+        "endLine": 279,
+        "endChar": 53
+      },
+      "revId": "bcb9ca206677522c17ca0f8af43aa1d96efcf753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
