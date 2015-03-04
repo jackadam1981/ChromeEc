@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "f25ea2fc_5b50172e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-04T22:12:29Z",
+      "side": 1,
+      "message": "remove this if you want to submit it",
+      "range": {
+        "startLine": 7,
+        "startChar": 32,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "a64e5d50e2a54c17f0423c599649dbf7feb97b2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f25ea2fc_dbb267fe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-04T22:12:29Z",
+      "side": 1,
+      "message": "at least you ran it on the real proto board and got a working console ?",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 9
+      },
+      "revId": "a64e5d50e2a54c17f0423c599649dbf7feb97b2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2235eea_67b33203",
         "filename": "board/honeybuns/board.c",
         "patchSetId": 3
