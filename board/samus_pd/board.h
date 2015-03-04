@@ -39,6 +39,12 @@
 #undef  CONFIG_LID_SWITCH
 #define CONFIG_LOW_POWER_IDLE
 #undef  CONFIG_PWM
+/*
+ * SW panic on samus_pd will normally trigger hard reset on samus, which will
+ * wipe RAM + RTC-backed registers on samus_pd. So, software panic logging
+ * is rarely useful.
+ */
+#undef  CONFIG_SOFTWARE_PANIC
 #define CONFIG_STM_HWTIMER32
 #undef  CONFIG_TASK_PROFILING
 #define CONFIG_USB_POWER_DELIVERY
