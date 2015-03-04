@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f25ea2fc_9b470f2a",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1146,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-04T22:24:54Z",
+      "side": 1,
+      "message": "that\u0027s a very long string for platforms with a small EC (not Samus ...)\nwe will need to disable that command by default or make it more compact",
+      "range": {
+        "startLine": 1146,
+        "startChar": 12,
+        "endLine": 1146,
+        "endChar": 40
+      },
+      "revId": "c881086a088ce5c2c43d3d1a2ab82d50d2787d5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
