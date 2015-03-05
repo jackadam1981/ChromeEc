@@ -45,6 +45,30 @@
       "revId": "84e18698f7f5957c441c10fe63628f57220b8379",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7220f282_41d03547",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-03-05T18:46:25Z",
+      "side": 1,
+      "message": "looked into this more. HOOK_TICK_INTERVAL is 500ms on stm32, which is the ramp interval for increasing current limit. so, if we were to move this to a HOOK_TICK, we\u0027d have to slow down the current ramp.\n\nthe other option would be to make the charge_ramp module the owner of reading VBUS, and then it would read it when it needs to and other tasks would ask it for the last value read. problem here is this task runs very irregularly, with lots of long intervals without running. so, it would make for very stale data.\n\nsince, this isn\u0027t creating any direct problems right now, I\u0027ll leave it as is.",
+      "parentUuid": "d75b503d_a7096a59",
+      "range": {
+        "startLine": 814,
+        "startChar": 5,
+        "endLine": 814,
+        "endChar": 31
+      },
+      "revId": "84e18698f7f5957c441c10fe63628f57220b8379",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
