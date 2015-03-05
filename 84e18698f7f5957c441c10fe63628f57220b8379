@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "176248ee_2bc433b9",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-03-05T16:56:41Z",
+      "side": 1,
+      "message": "Added these aligns because the structs are packed, and due to enums in this file which take only a byte, it was possible for the compiler to put these not on a 4-byte boundary. We were just getting lucky and it was placing them aligned, but with the changes in this CL, it was mis-aligning them and causing a crash when we access them.",
+      "range": {
+        "startLine": 58,
+        "startChar": 46,
+        "endLine": 58,
+        "endChar": 57
+      },
+      "revId": "84e18698f7f5957c441c10fe63628f57220b8379",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d75b503d_a7096a59",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-03-05T16:56:41Z",
+      "side": 1,
+      "message": "still thinking about this. we now read this ADC from three places: charge manager when we log power info, charge ramp to know if vbus is sagging and here. this means we have at least 3 tasks i count that can call this. looking at adc_read_channel() this appears safe, it just uses a mutex which means we might delay at any one of these places.\n\nwould it be better to use a hook to regularly read this ADC and then have all three places just use last read value? i think we would need this to be a hook_tick because the ramping needs a very recent value for this ADC, hook_second could cause problems detecting vbus sag.\n\nany opinions? is it better to leave like this or move to a hook_tick? or any other ideas?",
+      "range": {
+        "startLine": 814,
+        "startChar": 5,
+        "endLine": 814,
+        "endChar": 31
+      },
+      "revId": "84e18698f7f5957c441c10fe63628f57220b8379",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
