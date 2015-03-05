@@ -8,7 +8,7 @@
 #include "adc_chip.h"
 #include "common.h"
 #include "console.h"
-#include "driver/accelgyro_lsm6ds0.h"
+#include "driver/accelgyro_bmi160.h"
 #include "ec_version.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -69,19 +69,18 @@ struct motion_sensor_t motion_sensors[] = {
 	 * Requriement: accelerometer sensor must init before gyro sensor
 	 * DO NOT change the order of the following table.
 	 */
-	{SENSOR_ACTIVE_S0_S3, "Accel", MOTIONSENSE_CHIP_LSM6DS0,
+	{SENSOR_ACTIVE_S0_S3, "Accel", MOTIONSENSE_CHIP_BMI160,
 		MOTIONSENSE_TYPE_ACCEL, MOTIONSENSE_LOC_LID,
-		&lsm6ds0_drv, &g_mutex, NULL,
-		LSM6DS0_ADDR1, NULL, 119000, 2},
+		&bmi160_drv, &g_mutex, NULL,
+		BMI160_ADDR0, NULL, 100000, 2},
 
-	{SENSOR_ACTIVE_S0_S3, "Gyro", MOTIONSENSE_CHIP_LSM6DS0,
+	{SENSOR_ACTIVE_S0_S3, "Gyro", MOTIONSENSE_CHIP_BMI160,
 		MOTIONSENSE_TYPE_GYRO, MOTIONSENSE_LOC_LID,
-		&lsm6ds0_drv, &g_mutex, NULL,
-		LSM6DS0_ADDR1, NULL, 119000, 2000},
+		&bmi160_drv, &g_mutex, NULL,
+		BMI160_ADDR0, NULL, 100000, 2000},
 
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
-
 
 #ifdef CONFIG_DMA_HELP
 #include "dma.h"
