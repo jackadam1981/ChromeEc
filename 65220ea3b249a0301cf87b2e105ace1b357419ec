@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "7220f282_332f128c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-03-05T02:15:41Z",
+      "side": 1,
+      "message": "this is more than just samus_pd, change tag to \"pd:\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "65220ea3b249a0301cf87b2e105ace1b357419ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37110c43_1a799d48",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-03-05T02:15:41Z",
+      "side": 1,
+      "message": "this is critical to test on zinger before committed.",
+      "range": {
+        "startLine": 16,
+        "startChar": 32,
+        "endLine": 16,
+        "endChar": 65
+      },
+      "revId": "65220ea3b249a0301cf87b2e105ace1b357419ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "770544fd_1fc747e2",
         "filename": "chip/stm32/usb_pd_phy.c",
         "patchSetId": 1
