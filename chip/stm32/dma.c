@@ -108,6 +108,13 @@ void dma_go(stm32_dma_chan_t *chan)
 	chan->ccr |= STM32_DMA_CCR_EN;
 }
 
+
+void dma_disable_circular_mode(stm32_dma_chan_t *chan)
+{
+	/* Clear circular mode enable bit */
+	chan->ccr &= ~STM32_DMA_CCR_EN;
+}
+
 void dma_prepare_tx(const struct dma_option *option, unsigned count,
 		    const void *memory)
 {

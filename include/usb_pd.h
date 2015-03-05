@@ -623,7 +623,8 @@ enum pd_states {
 	PD_STATE_HARD_RESET_SEND,
 	PD_STATE_HARD_RESET_EXECUTE,
 #ifdef CONFIG_COMMON_RUNTIME
-	PD_STATE_BIST,
+	PD_STATE_BIST_RX,
+	PD_STATE_BIST_TX,
 #endif
 
 	/* Number of states. Not an actual state. */
@@ -1206,7 +1207,7 @@ int pd_start_tx(int port, int polarity, int bit_len);
  * @param port USB-C port number
  */
 void pd_tx_set_circular_mode(int port);
-
+void pd_tx_clear_circular_mode(int port);
 /**
  * Call when we are done sending a packet.
  *

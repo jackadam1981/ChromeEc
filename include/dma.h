@@ -88,6 +88,8 @@ int dma_bytes_done(dma_chan_t *chan, int orig_count);
  */
 void dma_go(dma_chan_t *chan);
 
+void dma_disable_circular_mode(dma_chan_t *chan);
+
 #ifdef CONFIG_DMA_HELP
 /**
  * Testing: Print out the data transferred by a channel
