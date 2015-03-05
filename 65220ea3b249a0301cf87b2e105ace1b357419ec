@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "770544fd_1fc747e2",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-03-05T02:14:38Z",
+      "side": 1,
+      "message": "please remove added line",
+      "revId": "65220ea3b249a0301cf87b2e105ace1b357419ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "770544fd_7fa1ab21",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-03-05T02:14:38Z",
+      "side": 1,
+      "message": "first line of multiline comments should be free:\n\n/*\n * multiline\n * comment\n */",
+      "range": {
+        "startLine": 394,
+        "startChar": 1,
+        "endLine": 394,
+        "endChar": 3
+      },
+      "revId": "65220ea3b249a0301cf87b2e105ace1b357419ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7220f282_938fe62a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 757,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-03-05T02:14:38Z",
+      "side": 1,
+      "message": "don\u0027t use ccprintf. use CPRINTF.\n\nalso, this string is way too long. space is a premium!",
+      "range": {
+        "startLine": 757,
+        "startChar": 2,
+        "endLine": 757,
+        "endChar": 50
+      },
+      "revId": "65220ea3b249a0301cf87b2e105ace1b357419ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37110c43_3af1016b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-03-05T02:14:38Z",
+      "side": 1,
+      "message": "we\u0027re pretty short on flash space. might want to shorten this and the print on line 778.",
+      "range": {
+        "startLine": 798,
+        "startChar": 2,
+        "endLine": 798,
+        "endChar": 32
+      },
+      "revId": "65220ea3b249a0301cf87b2e105ace1b357419ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7220f282_1356962c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-03-05T02:14:38Z",
+      "side": 1,
+      "message": "remove constant from comment as it is likely to not be updated when value changes.",
+      "range": {
+        "startLine": 1076,
+        "startChar": 22,
+        "endLine": 1076,
+        "endChar": 24
+      },
+      "revId": "65220ea3b249a0301cf87b2e105ace1b357419ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37110c43_7af77962",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1077,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-03-05T02:14:38Z",
+      "side": 1,
+      "message": "make a new time constant for this: PD_T_BIST_TRANSMIT",
+      "range": {
+        "startLine": 1077,
+        "startChar": 23,
+        "endLine": 1077,
+        "endChar": 25
+      },
+      "revId": "65220ea3b249a0301cf87b2e105ace1b357419ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37110c43_baebd17b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3565,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-03-05T02:14:38Z",
+      "side": 1,
+      "message": "instead of this, i think we should just add it to the \"pd\" command above around line 3116. i would just make sub-options \"bist_tx\" and \"bist_rx\"",
+      "range": {
+        "startLine": 3537,
+        "startChar": 0,
+        "endLine": 3565,
+        "endChar": 9
+      },
+      "revId": "65220ea3b249a0301cf87b2e105ace1b357419ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37110c43_1a2bdd38",
+        "filename": "include/dma.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-03-05T02:14:38Z",
+      "side": 1,
+      "message": "would be nice to add comment header like the other functions here.",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 49
+      },
+      "revId": "65220ea3b249a0301cf87b2e105ace1b357419ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
