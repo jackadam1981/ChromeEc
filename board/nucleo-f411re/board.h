@@ -38,14 +38,14 @@
 #define CONFIG_UART_TX_REQ_CH STM32_REQ_USART2_TX
 #define CONFIG_UART_RX_REQ_CH STM32_REQ_USART2_RX
 
-#define CONFIG_ACCELGYRO_LSM6DS0
+#define CONFIG_ACCELGYRO_BMI160
 #define CONFIG_CMD_ACCELS
 #define CONFIG_CMD_ACCEL_INFO
 
 /* I2C ports configuration */
 #define CONFIG_I2C_DEBUG
 #define I2C_PORT_MASTER 0
-#define I2C_PORT_SLAVE 1  /* Unused */
+#define I2C_PORT_SLAVE 1        /* needed for DMAC macros (ugh) */
 #define I2C_PORT_ACCEL I2C_PORT_MASTER
 
 #ifndef __ASSEMBLER__
