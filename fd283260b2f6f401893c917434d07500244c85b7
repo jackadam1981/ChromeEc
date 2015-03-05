@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1787a8d2_e138a685",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-03-05T18:54:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7241ca5_36c8f89e",
+      "range": {
+        "startLine": 217,
+        "startChar": 5,
+        "endLine": 217,
+        "endChar": 47
+      },
+      "revId": "fd283260b2f6f401893c917434d07500244c85b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7241ca5_56c37486",
         "filename": "core/cortex-m0/panic.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-03-05T02:39:53Z",
       "side": 1,
       "message": "can all three of these functions here be inside this #ifdef CONFIG_SOFTWARE_PANIC? do we use any of these when this isn\u0027t defined?",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 28
+      },
+      "revId": "fd283260b2f6f401893c917434d07500244c85b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1787a8d2_41795247",
+        "filename": "core/cortex-m0/panic.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-03-05T18:54:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7241ca5_56c37486",
       "range": {
         "startLine": 171,
         "startChar": 0,
