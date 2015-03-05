@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f70a1413_38646920",
+        "filename": "board/samus_pd/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-03-05T02:41:29Z",
+      "side": 1,
+      "message": "i\u0027d prefer to keep it on. we still have a significant number of dogfooders that are not write-protected and are getting their logs. if space is a problem, CL:256071 should help.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 29
+      },
+      "revId": "61a5033183558de4056f179d0dbad22039f0819e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
