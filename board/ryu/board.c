@@ -511,3 +511,40 @@ int board_is_vbus_too_low(enum chg_ramp_vbus_state ramp_state)
 {
 	return adc_read_channel(ADC_VBUS) < VBUS_LOW_THRESHOLD_MV;
 }
+
+static int cmd_btn_press(int argc, char **argv)
+{
+	enum gpio_signal gpio;
+	int v;
+
+	if (argc < 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	if (!strcasecmp(argv[1], "volup"))
+		gpio = GPIO_BTN_VOLU_L;
+	else if (!strcasecmp(argv[1], "voldown"))
+		gpio = GPIO_BTN_VOLD_L;
+	else
+		return EC_ERROR_PARAM1;
+
+	if (argc < 3) {
+		/* Just reading */
+		ccprintf("Button %s pressed = %d\n", argv[1],
+						     !gpio_get_level(gpio));
+		return EC_SUCCESS;
+	}
+
+	if (!parse_bool(argv[2], &v))
+		return EC_ERROR_PARAM2;
+
+	if (v)
+		gpio_set_flags(gpio, GPIO_OUT_LOW);
+	else
+		gpio_set_flags(gpio, GPIO_INPUT | GPIO_PULL_UP);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(btnpress, cmd_btn_press,
+			"<volup|voldown> <0|1>",
+			"Simulate button press",
+			NULL);
