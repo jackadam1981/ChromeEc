@@ -273,6 +273,7 @@ int spi_flash_set_status(int reg1, int reg2)
 	if (rv)
 		return rv;
 
+	ccprintf("ss %d\n", rv);
 	return rv;
 }
 
@@ -567,6 +568,7 @@ int spi_flash_set_protect(unsigned int offset, unsigned int bytes)
 	if (rv)
 		return rv;
 
+	ccprintf("prot %x %x\n", sr1, sr2);
 	return spi_flash_set_status(sr1, sr2);
 }
 
@@ -753,7 +755,6 @@ DECLARE_CONSOLE_COMMAND(spi_flashread, command_spi_flashread,
 static int command_spi_flashread_sr(int argc, char **argv)
 {
 	spi_enable(1);
-
 	ccprintf("Status Register 1: 0x%02x\n", spi_flash_get_status1());
 	ccprintf("Status Register 2: 0x%02x\n", spi_flash_get_status2());
 
