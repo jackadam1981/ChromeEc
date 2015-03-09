@@ -117,6 +117,23 @@
     },
     {
       "key": {
+        "uuid": "1787a8d2_21e76edf",
+        "filename": "board/honeybuns/usb_pd_config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-09T22:39:39Z",
+      "side": 1,
+      "message": "you are now missing a void pd_config_init(int port, uint8_t power_role) function, the API has evolved a bit.",
+      "revId": "912f42eff0e63a8ff4b96feec8685d13c32445b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b23d0aa1_8e9fbbdc",
         "filename": "board/honeybuns/usb_pd_policy.c",
         "patchSetId": 4
