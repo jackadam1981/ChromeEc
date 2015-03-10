@@ -3,7 +3,7 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
- * SPI flash driver for Chrome EC, particularly Winbond W25Q64FV.
+ * SPI flash driver for Chrome EC.
  */
 
 #include "common.h"
@@ -26,7 +26,8 @@
 #define SPI_FLASH_TIMEOUT_USEC	(800*MSEC)
 
 /*
- * Registers for the W25Q64FV SPI flash
+ * Common registers for SPI flash. All registers may not be valid for
+ * all parts.
  */
 #define SPI_FLASH_SR2_SUS		(1 << 7)
 #define SPI_FLASH_SR2_CMP		(1 << 6)
@@ -58,6 +59,7 @@ static uint8_t buf[SPI_FLASH_MAX_MESSAGE_SIZE];
  *
  * @return EC_SUCCESS, or non-zero if any error.
  */
+#ifdef CONFIG_SPI_FLASH_W25Q64
 static int reg_to_protect(uint8_t sr1, uint8_t sr2, unsigned int *start,
 	unsigned int *len)
 {
@@ -109,6 +111,40 @@ static int reg_to_protect(uint8_t sr1, uint8_t sr2, unsigned int *start,
 
 	return EC_SUCCESS;
 }
+#elif defined(CONFIG_SPI_FLASH_W25X40) /* CONFIG_SPI_FLASH_W25Q64 */
+static int reg_to_protect(uint8_t sr1, uint8_t sr2, unsigned int *start,
+	unsigned int *len)
+{
+	int blocks;
+	int size;
+	uint8_t tb;
+	uint8_t bp;
+
+	tb = (sr1 & SPI_FLASH_SR1_TB) ? 1 : 0;
+	bp = (sr1 & (SPI_FLASH_SR1_BP2 | SPI_FLASH_SR1_BP1 | SPI_FLASH_SR1_BP0))
+		>> 2;
+
+	/* Bad pointers or invalid data */
+	if (!start || !len || sr1 == -1 || sr2 == -1)
+		return EC_ERROR_INVAL;
+
+	/* 64kb block protection granularity */
+	size = 32 * 1024;
+
+	/* Determine number of blocks */
+	/* Equivalent to pow(2, bp) with pow(2, 0) = 0 */
+	/* BP2 set indicates entire 512kb flash protected */
+	if (!bp)
+		blocks = 0;
+	else
+		blocks = MIN((1 << 4), (1 << bp));
+	*len = size * blocks;
+	*start = tb ? 0 :
+			(CONFIG_SPI_FLASH_SIZE - *len) % CONFIG_SPI_FLASH_SIZE;
+
+	return EC_SUCCESS;
+}
+#endif /* CONFIG_SPI_FLASH_W25X40 */
 
 /**
  * Computes block write protection registers from range
@@ -120,6 +156,7 @@ static int reg_to_protect(uint8_t sr1, uint8_t sr2, unsigned int *start,
  *
  * @return EC_SUCCESS, or non-zero if any error.
  */
+#ifdef CONFIG_SPI_FLASH_W25Q64
 static int protect_to_reg(unsigned int start, unsigned int len,
 	uint8_t *sr1, uint8_t *sr2)
 {
@@ -146,7 +183,7 @@ static int protect_to_reg(unsigned int start, unsigned int len,
 	}
 
 	/* Set bottom/top bit based on start address */
-	/* Do not set if len == 0 or len == CONFIG_SPI_FLASH_SIZE */
+	/* Set if len == 0 or len == CONFIG_SPI_FLASH_SIZE */
 	if (!start && (len % CONFIG_SPI_FLASH_SIZE))
 		tb = 1;
 
@@ -180,6 +217,49 @@ static int protect_to_reg(unsigned int start, unsigned int len,
 
 	return EC_SUCCESS;
 }
+#elif defined(CONFIG_SPI_FLASH_W25X40) /* CONFIG_SPI_FLASH_W25Q64 */
+static int protect_to_reg(unsigned int start, unsigned int len,
+	uint8_t *sr1, uint8_t *sr2)
+{
+	char tb = 0;
+	char bp = 0;
+	int blocks;
+	int size;
+
+	/* Bad pointers */
+	if (!sr1 || !sr2 || *sr1 == -1 || *sr2 == -1)
+		return EC_ERROR_INVAL;
+
+	/* Invalid data */
+	if ((start && !len) || start + len > CONFIG_SPI_FLASH_SIZE)
+		return EC_ERROR_INVAL;
+
+	/* Set bottom/top bit based on start address */
+	/* Set if len == 0 or len == CONFIG_SPI_FLASH_SIZE */
+	if (!start && (len % CONFIG_SPI_FLASH_SIZE))
+		tb = 1;
+
+	/* 64kb block protection granularity */
+	size = 32 * 1024;
+
+	/* Determine number of blocks */
+	if (len % size != 0)
+		return EC_ERROR_INVAL;
+	blocks = len / size;
+
+	/* Determine bp = log2(blocks) with log2(0) = 0 */
+	bp = blocks ? (31 - __builtin_clz(blocks)) : 0;
+
+	/* Clear bits */
+	*sr1 &= ~(SPI_FLASH_SR1_TB | SPI_FLASH_SR1_BP2 | SPI_FLASH_SR1_BP1 |
+		SPI_FLASH_SR1_BP0);
+
+	/* Set bits */
+	*sr1 |= (tb ? SPI_FLASH_SR1_TB : 0) | (bp << 2);
+
+	return EC_SUCCESS;
+}
+#endif /* CONFIG_SPI_FLASH_W25X40 */
 
 /**
  * Waits for chip to finish current operation. Must be called after
@@ -236,6 +316,11 @@ uint8_t spi_flash_get_status2(void)
 	uint8_t cmd = SPI_FLASH_READ_SR2;
 	uint8_t resp;
 
+#ifdef CONFIG_SPI_FLASH_W25X40
+	/* Second status register not present */
+	return 0;
+#endif
+
 	if (spi_transaction(&cmd, 1, &resp, 1) != EC_SUCCESS)
 		return -1;
 
@@ -265,6 +350,11 @@ int spi_flash_set_status(int reg1, int reg2)
 	rv = spi_flash_write_enable();
 	if (rv)
 		return rv;
+
+#ifdef CONFIG_SPI_FLASH_W25X40
+	/* Second status regsiter not present */
+	reg2 = -1;
+#endif
 
 	if (reg2 == -1)
 		rv = spi_transaction(cmd, 2, NULL, 0);
