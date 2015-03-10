@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dc69b5e5_57782c7e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-10T00:40:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7220f282_332f128c",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "65220ea3b249a0301cf87b2e105ace1b357419ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37110c43_1a799d48",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-03-05T02:15:41Z",
       "side": 1,
       "message": "this is critical to test on zinger before committed.",
+      "range": {
+        "startLine": 16,
+        "startChar": 32,
+        "endLine": 16,
+        "endChar": 65
+      },
+      "revId": "65220ea3b249a0301cf87b2e105ace1b357419ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc69b5e5_b7abc855",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-10T00:40:30Z",
+      "side": 1,
+      "message": "Tested Zinger to Samus. Will try other devices.",
+      "parentUuid": "37110c43_1a799d48",
       "range": {
         "startLine": 16,
         "startChar": 32,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "dc69b5e5_f75380ef",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-10T00:40:30Z",
+      "side": 1,
+      "message": "This was supposed to be clearing STM32_DMA_CIRC_MODE. So what was there was a typo. I changed how the transmit finishes, so this function is gone in the next patch set.",
+      "parentUuid": "f70a1413_f82831b3",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 1
+      },
+      "revId": "65220ea3b249a0301cf87b2e105ace1b357419ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "770544fd_1fc747e2",
         "filename": "chip/stm32/usb_pd_phy.c",
         "patchSetId": 1
@@ -88,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "3cd2d1e7_d2d0c447",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-10T00:40:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "770544fd_1fc747e2",
+      "revId": "65220ea3b249a0301cf87b2e105ace1b357419ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "770544fd_7fa1ab21",
         "filename": "chip/stm32/usb_pd_phy.c",
         "patchSetId": 1
@@ -99,6 +189,30 @@
       "writtenOn": "2015-03-05T02:14:38Z",
       "side": 1,
       "message": "first line of multiline comments should be free:\n\n/*\n * multiline\n * comment\n */",
+      "range": {
+        "startLine": 394,
+        "startChar": 1,
+        "endLine": 394,
+        "endChar": 3
+      },
+      "revId": "65220ea3b249a0301cf87b2e105ace1b357419ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3cd2d1e7_b2d7403b",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-10T00:40:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "770544fd_7fa1ab21",
       "range": {
         "startLine": 394,
         "startChar": 1,
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "7c7a89ab_f45378ef",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 757,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-10T00:40:30Z",
+      "side": 1,
+      "message": "Changed to CPRINTF and shortened strings.",
+      "parentUuid": "7220f282_938fe62a",
+      "range": {
+        "startLine": 757,
+        "startChar": 2,
+        "endLine": 757,
+        "endChar": 50
+      },
+      "revId": "65220ea3b249a0301cf87b2e105ace1b357419ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37110c43_3af1016b",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -145,6 +283,30 @@
       "writtenOn": "2015-03-05T02:14:38Z",
       "side": 1,
       "message": "we\u0027re pretty short on flash space. might want to shorten this and the print on line 778.",
+      "range": {
+        "startLine": 798,
+        "startChar": 2,
+        "endLine": 798,
+        "endChar": 32
+      },
+      "revId": "65220ea3b249a0301cf87b2e105ace1b357419ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c7a89ab_1444f424",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-10T00:40:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37110c43_3af1016b",
       "range": {
         "startLine": 798,
         "startChar": 2,
@@ -180,6 +342,30 @@
     },
     {
       "key": {
+        "uuid": "5c75c5b7_3304a814",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-10T00:40:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7220f282_1356962c",
+      "range": {
+        "startLine": 1076,
+        "startChar": 22,
+        "endLine": 1076,
+        "endChar": 24
+      },
+      "revId": "65220ea3b249a0301cf87b2e105ace1b357419ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37110c43_7af77962",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -191,6 +377,30 @@
       "writtenOn": "2015-03-05T02:14:38Z",
       "side": 1,
       "message": "make a new time constant for this: PD_T_BIST_TRANSMIT",
+      "range": {
+        "startLine": 1077,
+        "startChar": 23,
+        "endLine": 1077,
+        "endChar": 25
+      },
+      "revId": "65220ea3b249a0301cf87b2e105ace1b357419ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c7a89ab_f4ddb8de",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1077,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-10T00:40:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37110c43_7af77962",
       "range": {
         "startLine": 1077,
         "startChar": 23,
