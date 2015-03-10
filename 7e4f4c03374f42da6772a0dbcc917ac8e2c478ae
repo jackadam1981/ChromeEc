@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c126dd8_89671925",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-03-10T19:14:21Z",
+      "side": 1,
+      "message": "This only takes a 16-bit value.  So you\u0027re dropping the upper 16 bits of reason and info.  If you want to preserve those, you\u0027ll need to use pairs of values.",
+      "range": {
+        "startLine": 256,
+        "startChar": 2,
+        "endLine": 256,
+        "endChar": 15
+      },
+      "revId": "7e4f4c03374f42da6772a0dbcc917ac8e2c478ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
