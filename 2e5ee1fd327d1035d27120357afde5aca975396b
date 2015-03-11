@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "41307e12_62403662",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-03-11T20:01:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2170eac2_399faf31",
+      "range": {
+        "startLine": 144,
+        "startChar": 11,
+        "endLine": 144,
+        "endChar": 38
+      },
+      "revId": "2e5ee1fd327d1035d27120357afde5aca975396b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2170eac2_99dcbb09",
         "filename": "chip/mec1322/flash.c",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "41307e12_c254a225",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-03-11T20:01:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2170eac2_99dcbb09",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 146,
+        "endChar": 36
+      },
+      "revId": "2e5ee1fd327d1035d27120357afde5aca975396b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "416ddeeb_9ac34d33",
         "filename": "chip/mec1322/flash.c",
         "patchSetId": 5
@@ -59,6 +107,30 @@
       "writtenOn": "2015-03-11T17:25:43Z",
       "side": 1,
       "message": "Can we really do all-now on external SPI flash?  I didn\u0027t think we could disable the SPI interface on MEC1322.",
+      "range": {
+        "startLine": 178,
+        "startChar": 4,
+        "endLine": 179,
+        "endChar": 28
+      },
+      "revId": "2e5ee1fd327d1035d27120357afde5aca975396b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6161021f_b3861814",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-03-11T20:01:57Z",
+      "side": 1,
+      "message": "Sorry, I misunderstood an important concept and got this protection code mostly wrong. I think that we can try to protect \"ALL\" the SPI, and verify protection for \"ALL\" the SPI, for some definition of \"ALL\" (EC RO + RW regions), even if it won\u0027t be useful in practice.",
+      "parentUuid": "416ddeeb_9ac34d33",
       "range": {
         "startLine": 178,
         "startChar": 4,
