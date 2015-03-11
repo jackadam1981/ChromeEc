@@ -22,6 +22,30 @@
       "revId": "690953ef92e1d1a1534a749ce3bfbc09e3403568",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "21862a2e_a99a3d6b",
+        "filename": "board/honeybuns/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-11T22:54:12Z",
+      "side": 1,
+      "message": "yes it should, I just have an issue on the electrical rework on my board.\nThat\u0027s why I -2 the CL",
+      "parentUuid": "c1762e12_a6cc26b4",
+      "range": {
+        "startLine": 20,
+        "startChar": 31,
+        "endLine": 20,
+        "endChar": 41
+      },
+      "revId": "690953ef92e1d1a1534a749ce3bfbc09e3403568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
