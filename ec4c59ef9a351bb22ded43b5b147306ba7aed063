@@ -22,6 +22,30 @@
       "revId": "ec4c59ef9a351bb22ded43b5b147306ba7aed063",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1c54e25_0e8dcb31",
+        "filename": "chip/npcx/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-03-11T18:04:34Z",
+      "side": 1,
+      "message": "I would vote for turning on -Wswitch-enum, I\u0027ve found it very useful in the past to catch this sort of thing.  It even lets you keep the default and put an assert there (or if you like, return zero, but I\u0027d rather assert) to catch abuses of the enum.",
+      "parentUuid": "21d54acf_b17d0099",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 11
+      },
+      "revId": "ec4c59ef9a351bb22ded43b5b147306ba7aed063",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
