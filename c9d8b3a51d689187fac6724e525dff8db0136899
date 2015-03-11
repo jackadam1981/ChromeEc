@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8166f634_b4e280cb",
+        "filename": "board/nucleo-f411re/ec.tasklist",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-03-11T20:07:32Z",
+      "side": 1,
+      "message": "There are very few places in motion_sense.c which care about the host memmap.  Perhaps just #ifdef HAS_TASK_HOSTCMD around them and remove this.",
+      "range": {
+        "startLine": 21,
+        "startChar": 22,
+        "endLine": 21,
+        "endChar": 39
+      },
+      "revId": "c9d8b3a51d689187fac6724e525dff8db0136899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
