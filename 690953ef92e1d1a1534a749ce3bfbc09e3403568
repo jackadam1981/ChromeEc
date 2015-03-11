@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1762e12_a6cc26b4",
+        "filename": "board/honeybuns/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-11T22:46:54Z",
+      "side": 1,
+      "message": "Should this be GPIO_OUTPUT_LOW?",
+      "range": {
+        "startLine": 20,
+        "startChar": 31,
+        "endLine": 20,
+        "endChar": 41
+      },
+      "revId": "690953ef92e1d1a1534a749ce3bfbc09e3403568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
