@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "01a4c6b8_1041a468",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-11T22:08:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b23d0aa1_6e01afb6",
+      "range": {
+        "startLine": 7,
+        "startChar": 32,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "912f42eff0e63a8ff4b96feec8685d13c32445b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f25ea2fc_fb500bb3",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2015-03-04T22:41:33Z",
       "side": 1,
       "message": "at least you ran it on the real proto board and got a working console ?",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 9
+      },
+      "revId": "912f42eff0e63a8ff4b96feec8685d13c32445b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61bd82c9_734ae032",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-11T22:08:03Z",
+      "side": 1,
+      "message": "Updated this section.",
+      "parentUuid": "f25ea2fc_fb500bb3",
       "range": {
         "startLine": 14,
         "startChar": 1,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "61bd82c9_53b404e9",
+        "filename": "board/honeybuns/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-11T22:08:03Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "f25ea2fc_7b5ddbc4",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 55
+      },
+      "revId": "912f42eff0e63a8ff4b96feec8685d13c32445b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f22ce27c_082827b2",
         "filename": "board/honeybuns/board.c",
         "patchSetId": 4
@@ -82,6 +154,30 @@
       "writtenOn": "2015-03-04T22:41:33Z",
       "side": 1,
       "message": "you can probably add || (mux \u003d\u003d TYPEC_MUX_USB) here\nthe current state machine will go through that state, and that\u0027s actually doing the right combination",
+      "range": {
+        "startLine": 107,
+        "startChar": 3,
+        "endLine": 107,
+        "endChar": 27
+      },
+      "revId": "912f42eff0e63a8ff4b96feec8685d13c32445b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "419a3e79_52b414e9",
+        "filename": "board/honeybuns/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-11T22:08:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f22ce27c_082827b2",
       "range": {
         "startLine": 107,
         "startChar": 3,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "419a3e79_72b918de",
+        "filename": "board/honeybuns/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-11T22:08:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f25ea2fc_3b18c3f7",
+      "range": {
+        "startLine": 122,
+        "startChar": 5,
+        "endLine": 122,
+        "endChar": 11
+      },
+      "revId": "912f42eff0e63a8ff4b96feec8685d13c32445b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1787a8d2_21e76edf",
         "filename": "board/honeybuns/usb_pd_config.h",
         "patchSetId": 4
@@ -128,6 +248,24 @@
       "writtenOn": "2015-03-09T22:39:39Z",
       "side": 1,
       "message": "you are now missing a void pd_config_init(int port, uint8_t power_role) function, the API has evolved a bit.",
+      "revId": "912f42eff0e63a8ff4b96feec8685d13c32445b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "219d4a70_518df430",
+        "filename": "board/honeybuns/usb_pd_config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-11T22:08:03Z",
+      "side": 1,
+      "message": "I couldn\u0027t find this function in other usb_pd_config.h files. Will add it in the next CL",
+      "parentUuid": "1787a8d2_21e76edf",
       "revId": "912f42eff0e63a8ff4b96feec8685d13c32445b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "61bd82c9_13c60c4a",
+        "filename": "board/honeybuns/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-11T22:08:03Z",
+      "side": 1,
+      "message": "Added a TODO note at the start of the VDM section as it needs to be reviewed and modified. Will do this in a subsequent CL.",
+      "parentUuid": "b23d0aa1_8e9fbbdc",
+      "range": {
+        "startLine": 199,
+        "startChar": 7,
+        "endLine": 199,
+        "endChar": 43
+      },
+      "revId": "912f42eff0e63a8ff4b96feec8685d13c32445b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b23d0aa1_ee9e7fdd",
         "filename": "board/honeybuns/usb_pd_policy.c",
         "patchSetId": 4
@@ -168,6 +330,30 @@
       "writtenOn": "2015-03-04T22:41:33Z",
       "side": 1,
       "message": "ditto\nstill wrong, depends on MUX_DOCK vs MUX_DP",
+      "range": {
+        "startLine": 214,
+        "startChar": 25,
+        "endLine": 215,
+        "endChar": 31
+      },
+      "revId": "912f42eff0e63a8ff4b96feec8685d13c32445b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61bd82c9_53d084f8",
+        "filename": "board/honeybuns/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-11T22:08:03Z",
+      "side": 1,
+      "message": "Will handle in a subsequent CL",
+      "parentUuid": "b23d0aa1_ee9e7fdd",
       "range": {
         "startLine": 214,
         "startChar": 25,
