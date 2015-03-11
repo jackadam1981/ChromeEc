@@ -5,7 +5,11 @@
  * Battery pack vendor provided charging profile
  */
 #include "battery.h"
+#include "extpower.h"
 #include "gpio.h"
+#include "hooks.h"
+
+static int force_pre_charge;
 
 static const struct battery_info info = {
 	.voltage_max    = 4350,		/* mV */
@@ -53,6 +57,10 @@ void battery_override_params(struct batt_params *batt)
 			batt->desired_current = 0;
 			batt->flags |= BATT_FLAG_BAD_ANY;
 		}
+
+		if (force_pre_charge) {
+			batt->desired_current = 256;
+		}
 	}
 }
 
@@ -66,3 +74,34 @@ int board_cut_off_battery(void)
 {
 	return cutoff();
 }
+
+static void minnie_second_task(void)
+{
+	static int pre_ac, ac, second;
+	struct batt_params batt;
+
+	ac = extpower_is_present();
+
+	if (ac != pre_ac) {
+		battery_get_params(&batt);
+
+		if (ac && (batt.state_of_charge == 100)) {
+			batt.state_of_charge = 99;
+			force_pre_charge = 1;
+			second = 5;
+		}
+		else {
+			force_pre_charge = 0;
+		}
+
+		pre_ac = ac;
+	}
+
+	if (second) {
+		--second;
+	}
+	else {
+		force_pre_charge = 0;
+	}
+}
+DECLARE_HOOK(HOOK_SECOND, minnie_second_task, HOOK_PRIO_DEFAULT);
