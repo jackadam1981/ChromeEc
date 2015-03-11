@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21d54acf_b17d0099",
+        "filename": "chip/npcx/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-03-11T17:50:18Z",
+      "side": 1,
+      "message": "Perhaps remove the default case (so it generates compiler errors if we add a new clock type) or default to the same result as CLOCK_TYPE_CPU rather than 0.\n\nIf we do want to return 0 for \"I don\u0027t know what that clock is\", this should assert, and we should change clock.h to indicate that 0 can be returned if you ask for a clock type unsupported on the chip.\n\n(applies to other chips too)",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 11
+      },
+      "revId": "ec4c59ef9a351bb22ded43b5b147306ba7aed063",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
