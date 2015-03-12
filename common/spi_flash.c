@@ -48,6 +48,65 @@
 /* Internal buffer used by SPI flash driver */
 static uint8_t buf[SPI_FLASH_MAX_MESSAGE_SIZE];
 
+/* Part-specific flags */
+enum spi_flags {
+	SPI_FLAG_HAS_SR1 = 0x1,
+	SPI_FLAG_HAS_SR2 = 0x2,
+};
+
+/* Bit state for protect range table */
+enum bit_state {
+	OFF = 0,
+	ON = 1,
+	X = -1, /* Don't care */
+};
+
+/* Compare macro for (x =? b) for 'X' comparison */
+#define COMPARE_BIT(a, b) ((a) != X && (a) != (b))
+/* Assignment macro where 'X' = 0 */
+#define GET_BIT(a) ((a) == X ? 0 : (a))
+
+struct protect_range {
+	enum bit_state cmp;
+	enum bit_state sec;
+	enum bit_state tb;
+	enum bit_state bp[3];    /* Ordered {BP2, BP1, BP0} */
+	uint32_t protect_start;
+	uint32_t protect_len;
+};
+
+/*
+ * Define flags and protect table for each SPI ROM part. It's not necessary
+ * to define all ranges in the datasheet since we'll usually protect only
+ * none or half of the ROM. The table is searched sequentially, so ordering
+ * according to likely configurations improves performance slightly.
+ */
+#ifdef CONFIG_SPI_FLASH_W25X40
+static const uint32_t spi_flash_flags = SPI_FLAG_HAS_SR1;
+static const struct protect_range spi_flash_protect_ranges[] = {
+	{ X, X, X, { 0, 0, 0 }, 0, 0 },       /* No protection */
+	{ X, X, 1, { 0, 1, 1 }, 0, 0x40000 }, /* Lower 1/2 */
+	{ X, X, 1, { 0, 0, 1 }, 0, 0x10000 }, /* Lower 1/8 */
+	{ X, X, 1, { 0, 1, 0 }, 0, 0x20000 }, /* Lower 1/4 */
+	{ X, X, X, { 1, X, X }, 0, 0x80000 }, /* All protected */
+};
+
+#elif defined(CONFIG_SPI_FLASH_W25Q64)
+static const uint32_t spi_flash_flags = SPI_FLAG_HAS_SR1 |
+					SPI_FLAG_HAS_SR2;
+static const struct protect_range spi_flash_protect_ranges[] = {
+	{ 0, X, X, { 0, 0, 0 }, 0, 0 },        /* No protection */
+	{ 0, 0, 1, { 1, 1, 0 }, 0, 0x400000 }, /* Lower 1/2 */
+	{ 0, 1, 1, { 1, 0, X }, 0, 0x008000 }, /* Lower 1/256 */
+	{ 0, 0, 1, { 0, 0, 1 }, 0, 0x020000 }, /* Lower 1/64 */
+	{ 0, 0, 1, { 0, 1, 0 }, 0, 0x040000 }, /* Lower 1/32 */
+	{ 0, 0, 1, { 0, 1, 1 }, 0, 0x080000 }, /* Lower 1/16 */
+	{ 0, 0, 1, { 1, 0, 0 }, 0, 0x100000 }, /* Lower 1/8 */
+	{ 0, 0, 1, { 1, 0, 1 }, 0, 0x200000 }, /* Lower 1/4 */
+	{ 0, X, X, { 1, 1, 1 }, 0, 0x800000 }, /* All protected */
+};
+#endif
+
 /**
  * Computes block write protection range from registers
  * Returns start == len == 0 for no protection
@@ -59,12 +118,11 @@ static uint8_t buf[SPI_FLASH_MAX_MESSAGE_SIZE];
  *
  * @return EC_SUCCESS, or non-zero if any error.
  */
-#ifdef CONFIG_SPI_FLASH_W25Q64
 static int reg_to_protect(uint8_t sr1, uint8_t sr2, unsigned int *start,
 	unsigned int *len)
 {
-	int blocks;
-	int size;
+	const struct protect_range *range;
+	int i;
 	uint8_t cmp;
 	uint8_t sec;
 	uint8_t tb;
@@ -81,70 +139,29 @@ static int reg_to_protect(uint8_t sr1, uint8_t sr2, unsigned int *start,
 	if (!start || !len || sr1 == -1 || sr2 == -1)
 		return EC_ERROR_INVAL;
 
-	/* Not defined by datasheet */
-	if (sec && bp == 6)
-		return EC_ERROR_INVAL;
+	for (i = 0; i < ARRAY_SIZE(spi_flash_protect_ranges); ++i) {
+		range = &spi_flash_protect_ranges[i];
+		if (COMPARE_BIT(range->cmp, cmp))
+			continue;
+		if (COMPARE_BIT(range->sec, sec))
+			continue;
+		if (COMPARE_BIT(range->tb, tb))
+			continue;
+		if (COMPARE_BIT(range->bp[0], bp & 0x4))
+			continue;
+		if (COMPARE_BIT(range->bp[1], bp & 0x2))
+			continue;
+		if (COMPARE_BIT(range->bp[2], bp & 0x1))
+			continue;
 
-	/* Determine granularity (4kb sector or 64kb block) */
-	/* Computation using 2 * 1024 is correct */
-	size = sec ? (2 * 1024) : (64 * 1024);
-
-	/* Determine number of blocks */
-	/* Equivalent to pow(2, bp) with pow(2, 0) = 0 */
-	blocks = bp ? (1 << bp) : 0;
-	/* Datasheet specifies don't care for BP == 4, BP == 5 */
-	if (sec && bp == 5)
-		blocks = (1 << 4);
-
-	/* Determine number of bytes */
-	*len = size * blocks;
-
-	/* Determine bottom/top of memory to protect */
-	*start = tb ? 0 :
-			(CONFIG_SPI_FLASH_SIZE - *len) % CONFIG_SPI_FLASH_SIZE;
-
-	/* Reverse computations if complement set */
-	if (cmp) {
-		*start = (*start + *len) % CONFIG_SPI_FLASH_SIZE;
-		*len = CONFIG_SPI_FLASH_SIZE - *len;
+		*start = range->protect_start;
+		*len = range->protect_len;
+		return EC_SUCCESS;
 	}
 
-	return EC_SUCCESS;
+	/* Invalid range, or valid range missing from our table */
+	return EC_ERROR_INVAL;
 }
-#elif defined(CONFIG_SPI_FLASH_W25X40) /* CONFIG_SPI_FLASH_W25Q64 */
-static int reg_to_protect(uint8_t sr1, uint8_t sr2, unsigned int *start,
-	unsigned int *len)
-{
-	int blocks;
-	int size;
-	uint8_t tb;
-	uint8_t bp;
-
-	tb = (sr1 & SPI_FLASH_SR1_TB) ? 1 : 0;
-	bp = (sr1 & (SPI_FLASH_SR1_BP2 | SPI_FLASH_SR1_BP1 | SPI_FLASH_SR1_BP0))
-		>> 2;
-
-	/* Bad pointers or invalid data */
-	if (!start || !len || sr1 == -1 || sr2 == -1)
-		return EC_ERROR_INVAL;
-
-	/* 64kb block protection granularity */
-	size = 32 * 1024;
-
-	/* Determine number of blocks */
-	/* Equivalent to pow(2, bp) with pow(2, 0) = 0 */
-	/* BP2 set indicates entire 512kb flash protected */
-	if (!bp)
-		blocks = 0;
-	else
-		blocks = MIN((1 << 4), (1 << bp));
-	*len = size * blocks;
-	*start = tb ? 0 :
-			(CONFIG_SPI_FLASH_SIZE - *len) % CONFIG_SPI_FLASH_SIZE;
-
-	return EC_SUCCESS;
-}
-#endif /* CONFIG_SPI_FLASH_W25X40 */
 
 /**
  * Computes block write protection registers from range
@@ -156,16 +173,15 @@ static int reg_to_protect(uint8_t sr1, uint8_t sr2, unsigned int *start,
  *
  * @return EC_SUCCESS, or non-zero if any error.
  */
-#ifdef CONFIG_SPI_FLASH_W25Q64
 static int protect_to_reg(unsigned int start, unsigned int len,
 	uint8_t *sr1, uint8_t *sr2)
 {
+	const struct protect_range *range;
+	int i;
 	char cmp = 0;
 	char sec = 0;
 	char tb = 0;
 	char bp = 0;
-	int blocks;
-	int size;
 
 	/* Bad pointers */
 	if (!sr1 || !sr2 || *sr1 == -1 || *sr2 == -1)
@@ -175,90 +191,28 @@ static int protect_to_reg(unsigned int start, unsigned int len,
 	if ((start && !len) || start + len > CONFIG_SPI_FLASH_SIZE)
 		return EC_ERROR_INVAL;
 
-	/* Set complement bit based on whether length is power of 2 */
-	if ((len & (len - 1)) != 0) {
-		cmp = 1;
-		start = (start + len) % CONFIG_SPI_FLASH_SIZE;
-		len = CONFIG_SPI_FLASH_SIZE - len;
+	for (i = 0; i < ARRAY_SIZE(spi_flash_protect_ranges); ++i) {
+		range = &spi_flash_protect_ranges[i];
+		if (range->protect_start == start &&
+		    range->protect_len == len) {
+			cmp = GET_BIT(range->cmp);
+			sec = GET_BIT(range->sec);
+			tb = GET_BIT(range->tb);
+			bp = GET_BIT(range->bp[0]) << 2 |
+			     GET_BIT(range->bp[1]) << 1 |
+			     GET_BIT(range->bp[2]);
+
+			*sr1 = (sec ? SPI_FLASH_SR1_SEC : 0) |
+			       (tb ? SPI_FLASH_SR1_TB : 0) |
+			       (bp << 2);
+			*sr2 = (cmp ? SPI_FLASH_SR2_CMP : 0);
+			return EC_SUCCESS;
+		}
 	}
 
-	/* Set bottom/top bit based on start address */
-	/* Do not set if len == 0 or len == CONFIG_SPI_FLASH_SIZE */
-	if (!start && (len % CONFIG_SPI_FLASH_SIZE))
-		tb = 1;
-
-	/* Set sector bit and determine block length based on protect length */
-	if (len == 0 || len >= 128 * 1024) {
-		sec = 0;
-		size = 64 * 1024;
-	} else if (len >= 4 * 1024 && len <= 32 * 1024) {
-		sec = 1;
-		size = 2 * 1024;
-	} else
-		return EC_ERROR_INVAL;
-
-	/* Determine number of blocks */
-	if (len % size != 0)
-		return EC_ERROR_INVAL;
-	blocks = len / size;
-
-	/* Determine bp = log2(blocks) with log2(0) = 0 */
-	bp = blocks ? (31 - __builtin_clz(blocks)) : 0;
-
-	/* Clear bits */
-	*sr1 &= ~(SPI_FLASH_SR1_SEC | SPI_FLASH_SR1_TB |
-		SPI_FLASH_SR1_BP2 | SPI_FLASH_SR1_BP1 | SPI_FLASH_SR1_BP0);
-	*sr2 &= ~SPI_FLASH_SR2_CMP;
-
-	/* Set bits */
-	*sr1 |= (sec ? SPI_FLASH_SR1_SEC : 0) | (tb ? SPI_FLASH_SR1_TB : 0)
-			| (bp << 2);
-	*sr2 |= (cmp ? SPI_FLASH_SR2_CMP : 0);
-
-	return EC_SUCCESS;
+	/* Invalid range, or valid range missing from our table */
+	return EC_ERROR_INVAL;
 }
-#elif defined(CONFIG_SPI_FLASH_W25X40) /* CONFIG_SPI_FLASH_W25Q64 */
-static int protect_to_reg(unsigned int start, unsigned int len,
-	uint8_t *sr1, uint8_t *sr2)
-{
-	char tb = 0;
-	char bp = 0;
-	int blocks;
-	int size;
-
-	/* Bad pointers */
-	if (!sr1 || !sr2 || *sr1 == -1 || *sr2 == -1)
-		return EC_ERROR_INVAL;
-
-	/* Invalid data */
-	if ((start && !len) || start + len > CONFIG_SPI_FLASH_SIZE)
-		return EC_ERROR_INVAL;
-
-	/* Set bottom/top bit based on start address */
-	if (!start && (len % CONFIG_SPI_FLASH_SIZE))
-		tb = 1;
-
-	/* 64kb block protection granularity */
-	size = 32 * 1024;
-
-	/* Determine number of blocks */
-	if (len % size != 0)
-		return EC_ERROR_INVAL;
-	blocks = len / size;
-
-	/* Determine bp = log2(blocks) with log2(0) = 0 */
-	bp = blocks ? (31 - __builtin_clz(blocks)) : 0;
-
-	/* Clear bits */
-	*sr1 &= ~(SPI_FLASH_SR1_TB | SPI_FLASH_SR1_BP2 | SPI_FLASH_SR1_BP1 |
-		SPI_FLASH_SR1_BP0);
-
-	/* Set bits */
-	*sr1 |= (tb ? SPI_FLASH_SR1_TB : 0) | (bp << 2);
-
-	return EC_SUCCESS;
-}
-#endif /* CONFIG_SPI_FLASH_W25X40 */
 
 /**
  * Waits for chip to finish current operation. Must be called after
@@ -315,10 +269,9 @@ uint8_t spi_flash_get_status2(void)
 	uint8_t cmd = SPI_FLASH_READ_SR2;
 	uint8_t resp;
 
-#ifdef CONFIG_SPI_FLASH_W25X40
-	/* Second status register not present */
-	return 0;
-#endif
+	/* Second status register not present? */
+	if (!(spi_flash_flags & SPI_FLAG_HAS_SR2))
+		return 0;
 
 	if (spi_transaction(&cmd, 1, &resp, 1) != EC_SUCCESS)
 		return -1;
@@ -349,12 +302,7 @@ int spi_flash_set_status(int reg1, int reg2)
 	if (rv)
 		return rv;
 
-#ifdef CONFIG_SPI_FLASH_W25X40
-	/* Second status register not present */
-	reg2 = -1;
-#endif
-
-	if (reg2 == -1)
+	if (reg2 == -1 || !(spi_flash_flags & SPI_FLAG_HAS_SR2))
 		rv = spi_transaction(cmd, 2, NULL, 0);
 	else
 		rv = spi_transaction(cmd, 3, NULL, 0);
