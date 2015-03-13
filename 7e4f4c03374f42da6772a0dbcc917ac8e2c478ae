@@ -22,6 +22,30 @@
       "revId": "7e4f4c03374f42da6772a0dbcc917ac8e2c478ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86052c00_23ab0955",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-03-13T20:40:14Z",
+      "side": 1,
+      "message": "Thanks for pointing that out. In practice, we aren\u0027t storing useful data in those upper bits. I changed the data type where able, and added a comment here to make things clear.",
+      "parentUuid": "1c126dd8_89671925",
+      "range": {
+        "startLine": 256,
+        "startChar": 2,
+        "endLine": 256,
+        "endChar": 15
+      },
+      "revId": "7e4f4c03374f42da6772a0dbcc917ac8e2c478ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
