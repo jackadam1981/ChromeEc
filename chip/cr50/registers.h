@@ -7,7 +7,14 @@
 #define __CROS_EC_REGISTERS_H
 
 #include "common.h"
+#if defined(CHIP_VARIANT_CR50_FPGA)
 #include "gc_regdefs.h"
+#elif defined(CHIP_VARIANT_CR50_A1)
+#include "cr50_a1_regdefs.h"
+#else
+#error "Unsupported CR50 chip variant"
+#endif
+
 #include "util.h"
 
 /* Replace masked bits with val << lsb */
