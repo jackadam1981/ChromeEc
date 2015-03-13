@@ -5,7 +5,7 @@
 #
 # Board specific files build
 
-CHIP:=g
+CHIP:=cr50
 
 board-y=board.o
 
