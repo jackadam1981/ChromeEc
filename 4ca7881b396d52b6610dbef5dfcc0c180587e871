@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2639e0d0_9189fcbd",
+        "filename": "common/spi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-03-13T22:27:01Z",
+      "side": 1,
+      "message": "Is this what you had in mind? Checking chip/npcx/flash.c, we can call spi_flash_reg_to_protect / spi_flash_protect_to_reg as needed, and call spi_flash_get_chip_flags to check for the existence of SR2.",
+      "parentUuid": "c178ee71_d68dd983",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 22
+      },
+      "revId": "4ca7881b396d52b6610dbef5dfcc0c180587e871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c178ee71_b6fe9de8",
         "filename": "common/spi_flash.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-03-13T18:02:41Z",
       "side": 1,
       "message": "I\u0027m trying to figure out how much we should care that this is a 16-byte entry.  So the W25Q64 table below is 144 bytes.\n\nIf we were clever, we could fit it all into half that (8-bit mask, 8-bit value, and 2 24-bit offset+size fields).  But we could also simply #ifdef out the ranges we don\u0027t use.  That\u0027s smaller, but makes the code more complex than what you\u0027re able to do here.\n\nLet\u0027s stay with this readable version for now, and burn that bridge when we come to it.\n\n(Note: please check that sizeof(struct protect_range) is actually 16.  If those enums are getting expanded to 32-bit integers each, that\u0027s sufficiently inefficient that we probably care now.)",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 2
+      },
+      "revId": "4ca7881b396d52b6610dbef5dfcc0c180587e871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2639e0d0_313a507c",
+        "filename": "common/spi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-03-13T22:27:01Z",
+      "side": 1,
+      "message": "Nice analysis, SGTM. I confirmed that sizeof(protect_range) is 16 and our W25X40 table is 80 bytes.",
+      "parentUuid": "c178ee71_b6fe9de8",
       "range": {
         "startLine": 69,
         "startChar": 0,
