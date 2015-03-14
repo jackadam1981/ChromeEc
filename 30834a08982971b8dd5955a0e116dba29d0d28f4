@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66191872_4d23dd5c",
+        "filename": "common/spi_flash_reg.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-03-14T01:08:44Z",
+      "side": 1,
+      "message": "If you move the definition of SPI flash flags into the header file, then the compiler probably better optimizes the code in spi_flash.c which currently calls spi_flash_get_chip_flags().\n\nThat is, don\u0027t leave to runtime what we know at compile-time.\n\n#ifdef CONFIG_SPI_FLASH_W25X40\n#define SPI_FLASH_FLAGS SPI_FLAG_HAS_SR1;\n#endif\n\nOr maybe even tidier,\n\n#ifdef CONFIG_SPI_FLASH_W25X40\n#undef CONFIG_SPI_FLASH_HAS_SR2\n#elif defined(CONFIG_SPI_FLASH_W25Q64)\n#define CONFIG_SPI_FLASH_HAS_SR2\n#endif\n\nOther than that, yes, this is exactly what I was thinking.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 57
+      },
+      "revId": "30834a08982971b8dd5955a0e116dba29d0d28f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
