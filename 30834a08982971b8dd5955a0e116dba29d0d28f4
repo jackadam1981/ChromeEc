@@ -22,6 +22,30 @@
       "revId": "30834a08982971b8dd5955a0e116dba29d0d28f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2639e0d0_c5069a4c",
+        "filename": "common/spi_flash_reg.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-03-14T01:45:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66191872_4d23dd5c",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 57
+      },
+      "revId": "30834a08982971b8dd5955a0e116dba29d0d28f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
