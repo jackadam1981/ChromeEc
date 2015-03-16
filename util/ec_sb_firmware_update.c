@@ -18,8 +18,8 @@
 
 enum {
 	BEGIN_DELAY  = 0,
-	SETUP_DELAY  = 1,
-	WRITE_DELAY  = 2,
+	SETUP_DELAY  = 1, /* Erase Delays: 11 blocks */
+	WRITE_DELAY  = 2, /* DF Delays:  512 blocks */
 	END_DELAY    = 3,
 	NUM_DELAYS   = 4
 };
@@ -83,8 +83,8 @@ static int get_key_value(const char *filename,
 	FILE *fp = fopen(filename, "r");
 
 	values[BEGIN_DELAY] =  500000;
-	values[SETUP_DELAY] = 9000000;
-	values[WRITE_DELAY] =  500000;
+	values[SETUP_DELAY] = 8000000;
+	values[WRITE_DELAY] =   30000;
 	values[END_DELAY]   = 1000000;
 
 	if (fp == NULL)
@@ -546,8 +546,10 @@ static enum fw_update_state s6_write_block(struct fw_update_ctrl *fw_update)
 
 	if (offset <= fw_update->step_size * 10)
 		usleep(delay_values[SETUP_DELAY]);
-	else
+	else if (offset <= fw_update->step_size * 522)
 		usleep(delay_values[WRITE_DELAY]);
+	else
+		usleep(2000);
 	return S7_READ_STATUS;
 }
 
