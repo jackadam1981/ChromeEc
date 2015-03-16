@@ -16,26 +16,34 @@
 #include "ec_commands.h"
 #include <unistd.h>
 
+/* Subcommands: [check|update] */
+enum {
+	OP_UNKNOWN = 0,
+	OP_CHECK   = 1,
+	OP_UPDATE  = 2,
+};
+
+#define SETUP_DELAY_STEPS 11
+#define WRITE_DELAY_STEPS (SETUP_DELAY_STEPS+512)
+
+/* Delay Configure Indexes */
 enum {
 	BEGIN_DELAY  = 0,
 	SETUP_DELAY  = 1,
-	WRITE_DELAY  = 2,
-	END_DELAY    = 3,
-	NUM_DELAYS   = 4
-};
-
-enum {
-	F_AC_PRESENT    = 1,/* AC Present */
-	F_VERSION_CHECK = 2 /* do firmware version check */
+	WRITE1_DELAY = 2,
+	WRITE2_DELAY = 3,
+	END_DELAY    = 4,
+	NUM_DELAYS   = 5
 };
 
 const char *delay_names[NUM_DELAYS] = {
-	"BEGIN",
-	"SETUP",
-	"WRITE",
-	"END"
+	[BEGIN_DELAY] = "BEGIN",
+	[SETUP_DELAY] = "SETUP",
+	[WRITE1_DELAY] = "WRITE1",
+	[WRITE2_DELAY] = "WRITE2",
+	[END_DELAY] = "END"
 };
-uint32_t delay_values[NUM_DELAYS];
+static uint32_t delay_values[NUM_DELAYS];
 
 enum fw_update_state {
 	S0_READ_STATUS   = 0,
@@ -52,6 +60,14 @@ enum fw_update_state {
 };
 
 #define MAX_FW_IMAGE_NAME_SIZE 80
+
+/* Firmware Update Control Flags */
+enum {
+	F_AC_PRESENT    = 0x1,/* AC Present */
+	F_VERSION_CHECK = 0x2, /* do firmware version check */
+	F_UPDATE        = 0x4 /* do firmware update */
+};
+
 struct fw_update_ctrl {
 	uint32_t flags; /* fw update control flags */
 	int size;    /* size of battery firmware image */
@@ -82,11 +98,6 @@ static int get_key_value(const char *filename,
 	int i = BEGIN_DELAY;
 	FILE *fp = fopen(filename, "r");
 
-	values[BEGIN_DELAY] =  500000;
-	values[SETUP_DELAY] = 9000000;
-	values[WRITE_DELAY] =  500000;
-	values[END_DELAY]   = 1000000;
-
 	if (fp == NULL)
 		return -1;
 
@@ -95,7 +106,8 @@ static int get_key_value(const char *filename,
 			continue;
 
 		sprintf(cmd, "%s=%%d", keys[i]);
-		sscanf(line, cmd, &values[i]);
+		if (0 == values[i])
+			sscanf(line, cmd, &values[i]);
 
 		if (++i == NUM_DELAYS)
 			break;
@@ -328,19 +340,21 @@ static int send_subcmd(int subcmd)
 	return EC_RES_SUCCESS;
 }
 
-static int write_block(const uint8_t *ptr, int bsize)
+static int write_block(struct fw_update_ctrl *fw_update,
+			int offset, int bsize)
 {
 	int rv;
 	struct ec_params_sb_fw_update *param =
 		(struct ec_params_sb_fw_update *)ec_outbuf;
 
-	memcpy(param->write.data, ptr, bsize);
+	memcpy(param->write.data, fw_update->ptr+offset, bsize);
 
 	param->hdr.subcmd = EC_SB_FW_UPDATE_WRITE;
 	rv = ec_command(EC_CMD_SB_FW_UPDATE, 0,
 		param, sizeof(struct ec_params_sb_fw_update), NULL, 0);
 	if (rv < 0) {
-		printf("Firmware Update Write Error offset@%p\n", ptr);
+		printf("Firmware Update Write Error ptr:%p offset@%x\n",
+			fw_update->ptr, offset);
 		return -EC_RES_ERROR;
 	}
 	return EC_RES_SUCCESS;
@@ -450,6 +464,11 @@ static enum fw_update_state s1_read_battery_info(
 		return S10_TERMINAL;
 	}
 
+	if (!(fw_update->flags & F_UPDATE)) {
+		fw_update->rv = 0;
+		return S10_TERMINAL;
+	}
+
 	if (!(fw_update->flags & F_AC_PRESENT)) {
 		fw_update->rv = 0;
 		log_msg(fw_update, S1_READ_INFO,
@@ -522,8 +541,10 @@ static enum fw_update_state s6_write_block(struct fw_update_ctrl *fw_update)
 	int bsize;
 	int offset = fw_update->offset;
 
-	if (offset >= fw_update->size)
+	if (offset >= fw_update->size) {
+		printf("\nEnd:%X\n", offset);
 		return S8_WRITE_END;
+	}
 
 	bsize = fw_update->step_size;
 
@@ -537,17 +558,19 @@ static enum fw_update_state s6_write_block(struct fw_update_ctrl *fw_update)
 	}
 	fw_update->fec_err_retry_cnt--;
 
-	rv = write_block(fw_update->ptr+offset, bsize);
+	rv = write_block(fw_update, offset, bsize);
 	if (rv) {
 		fw_update->rv = -1;
 		log_msg(fw_update, S6_WRITE_BLOCK, "Interface Error");
 		return S10_TERMINAL;
 	}
 
-	if (offset <= fw_update->step_size * 10)
+	if (offset < (fw_update->step_size * SETUP_DELAY_STEPS))
 		usleep(delay_values[SETUP_DELAY]);
+	else if (offset < (fw_update->step_size * WRITE_DELAY_STEPS))
+		usleep(delay_values[WRITE1_DELAY]);
 	else
-		usleep(delay_values[WRITE_DELAY]);
+		usleep(delay_values[WRITE2_DELAY]);
 	return S7_READ_STATUS;
 }
 
@@ -682,26 +705,37 @@ static int ec_sb_firmware_update(struct fw_update_ctrl *fw_update)
 }
 
 #define GEC_LOCK_TIMEOUT_SECS   30  /* 30 secs */
+void usage(char *argv[])
+{
+	printf("Usage: %s [check|update]\n"
+		"	check: check if AC Adaptor is connected.\n"
+		"	update: trigger battery firmware update.\n",
+		argv[0]);
+}
 
 int main(int argc, char *argv[])
 {
 	int rv = 0, interfaces = COMM_LPC;
+	int op = OP_UNKNOWN;
+	uint8_t val = 0;
+	/* local test flags */
 	int protect = 1;
 	int version_check = 1;
-	uint8_t val = 0;
-	if (argc > 3) {
-		printf("Usage: %s [protect] [version_check]\n"
-			"	protect: 0 or 1, default 1\n"
-			"	version_check: 0 or 1, default 1\n",
-			argv[0]);
+
+	if (argc != 2) {
+		usage(argv);
 		return -1;
 	}
 
-	if (argc >= 2)
-		protect = atoi(argv[1]);
-
-	if (argc >= 3)
-		version_check = atoi(argv[2]);
+	if (!strcmp(argv[1], "check"))
+		op = OP_CHECK;
+	else if (!strcmp(argv[1], "update"))
+		op = OP_UPDATE;
+	else {
+		op = OP_UNKNOWN;
+		usage(argv);
+		return -1;
+	}
 
 	if (acquire_gec_lock(GEC_LOCK_TIMEOUT_SECS) < 0) {
 		printf("Could not acquire GEC lock.\n");
@@ -720,15 +754,25 @@ int main(int argc, char *argv[])
 		goto out;
 	}
 
+	if (val & EC_BATT_FLAG_AC_PRESENT) {
+		fw_update.flags |= F_AC_PRESENT;
+		printf("AC_PRESENT\n");
+	}
+
+	if (op == OP_UPDATE)
+		fw_update.flags |= F_UPDATE;
+
 	if (version_check)
 		fw_update.flags |= F_VERSION_CHECK;
 
-	if (val & EC_BATT_FLAG_AC_PRESENT)
-		fw_update.flags |= F_AC_PRESENT;
-
 	rv = ec_sb_firmware_update(&fw_update);
-	printf("Battery Firmware Update:0x%02x %s%s\n",
+	printf("Battery Firmware Update:0x%02x (%d %d %d %d %d) %s\n%s\n",
 			fw_update.flags,
+			delay_values[BEGIN_DELAY],
+			delay_values[SETUP_DELAY],
+			delay_values[WRITE1_DELAY],
+			delay_values[WRITE2_DELAY],
+			delay_values[END_DELAY],
 			((rv) ? "FAIL " : " "),
 			fw_update.msg);
 
