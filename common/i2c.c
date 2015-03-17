@@ -500,8 +500,7 @@ static int i2c_command_passthru(struct host_cmd_handler_args *args)
 	const struct ec_params_i2c_passthru_msg *msg;
 	struct ec_response_i2c_passthru *resp = args->response;
 	const uint8_t *out;
-	int in_len;
-	int ret;
+	int i, in_len, ret;
 
 #ifdef CONFIG_I2C_PASSTHRU_RESTRICTED
 	if (system_is_locked())
@@ -527,9 +526,9 @@ static int i2c_command_passthru(struct host_cmd_handler_args *args)
 
 	i2c_lock(params->port, 1);
 
-	for (resp->num_msgs = 0, msg = params->msg;
-	     resp->num_msgs < params->num_msgs;
-	     resp->num_msgs++, msg++) {
+	for (i = 0, msg = params->msg;
+	     i < params->num_msgs;
+	     i++, msg++) {
 		/* EC uses 8-bit slave address */
 		unsigned int addr = (msg->addr_flags & EC_I2C_ADDR_MASK) << 1;
 		int xferflags = I2C_XFER_START;
@@ -542,7 +541,7 @@ static int i2c_command_passthru(struct host_cmd_handler_args *args)
 			write_len = msg->len;
 
 		/* Set stop bit for last message */
-		if (resp->num_msgs == params->num_msgs - 1)
+		if (i == params->num_msgs - 1)
 			xferflags |= I2C_XFER_STOP;
 
 		/* Transfer next message */
@@ -564,6 +563,7 @@ static int i2c_command_passthru(struct host_cmd_handler_args *args)
 		in_len += read_len;
 		out += write_len;
 	}
+	resp->num_msgs = i;
 	args->response_size = sizeof(*resp) + in_len;
 
 	/* Unlock port */
