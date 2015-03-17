@@ -46,6 +46,11 @@
 #define I2C_PORT_CHARGER I2C_PORT_MASTER
 #define I2C_PORT_SLAVE 1
 
+/* slave address for host commands */
+#ifdef HAS_TASK_HOSTCMD
+#define CONFIG_HOSTCMD_I2C_SLAVE_ADDR 0x3c
+#endif
+
 #define GPIO_AP_CLAIM	GPIO_SPI1_NSS	/* AP claims bus */
 #define GPIO_EC_CLAIM	GPIO_SPI1_MISO	/* EC claims bus */
 

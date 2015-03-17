@@ -23,9 +23,6 @@
 #define CPRINTF(format, args...) cprintf(CC_I2C, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_I2C, format, ## args)
 
-/* 8-bit I2C slave address */
-#define I2C_ADDRESS 0x3c
-
 /* I2C bus frequency */
 #define I2C_FREQ 100000 /* Hz */
 
@@ -137,9 +134,9 @@ static uint16_t i2c_sr1[I2C_PORT_COUNT];
 static uint8_t rx_pending;
 
 /* Buffer for host commands (including version, error code and checksum) */
-static uint8_t host_buffer[EC_PROTO2_MAX_REQUEST_SIZE];
-static struct host_cmd_handler_args host_cmd_args;
-static uint8_t i2c_old_response;  /* Send an old-style response */
+static uint8_t host_buffer[I2C_MAX_HOST_PACKET_SIZE + 2];
+static uint8_t params_copy[I2C_MAX_HOST_PACKET_SIZE] __aligned(4);
+static struct host_packet i2c_packet;
 
 
 static int i2c_write_raw_slave(int port, void *buf, int len)
@@ -186,76 +183,57 @@ static int i2c_write_raw_slave(int port, void *buf, int len)
 	return len;
 }
 
-static void i2c_send_response(struct host_cmd_handler_args *args)
+/* Process the command in the i2c host buffer */
+static void i2c_send_response_packet(struct host_packet *pkt)
 {
-	const uint8_t *data = args->response;
-	int size = args->response_size;
+	int size = pkt->response_size;
 	uint8_t *out = host_buffer;
-	int sum = 0, i;
 
-	*out++ = args->result;
-	if (!i2c_old_response) {
-		*out++ = size;
-		sum = args->result + size;
-	}
-	for (i = 0; i < size; i++, data++, out++) {
-		if (data != out)
-			*out = *data;
-		sum += *data;
-	}
-	*out++ = sum & 0xff;
+	/* Ignore host command in-progress */
+	if (pkt->driver_result == EC_RES_IN_PROGRESS)
+		return;
+
+	/* Write result and size to first two bytes. */
+	*out++ = pkt->driver_result;
+	*out++ = size;
 
 	/* send the answer to the AP */
-	i2c_write_raw_slave(I2C_PORT_SLAVE, host_buffer, out - host_buffer);
+	i2c_write_raw_slave(I2C_PORT_SLAVE, host_buffer, size + 2);
 }
 
-/* Process the command in the i2c host buffer */
 static void i2c_process_command(void)
 {
-	struct host_cmd_handler_args *args = &host_cmd_args;
 	char *buff = host_buffer;
 
-	args->command = *buff;
-	args->result = EC_RES_SUCCESS;
-	if (args->command >= EC_CMD_VERSION0) {
-		int csum, i;
+	/*
+	 * TODO(crosbug.com/p/29241): Combine this functionality with the
+	 * i2c_process_command function in chip/stm32/i2c-stm32f.c to make one
+	 * host command i2c process function which handles all protocol
+	 * versions.
+	 */
+	i2c_packet.send_response = i2c_send_response_packet;
 
-		/* Read version and data size */
-		args->version = args->command - EC_CMD_VERSION0;
-		args->command = buff[1];
-		args->params_size = buff[2];
+	i2c_packet.request = (const void *)(&buff[1]);
+	i2c_packet.request_temp = params_copy;
+	i2c_packet.request_max = sizeof(params_copy);
+	/* Don't know the request size so pass in the entire buffer */
+	i2c_packet.request_size = I2C_MAX_HOST_PACKET_SIZE;
 
-		/* Verify checksum */
-		for (csum = i = 0; i < args->params_size + 3; i++)
-			csum += buff[i];
-		if ((uint8_t)csum != buff[i])
-			args->result = EC_RES_INVALID_CHECKSUM;
+	/*
+	 * Stuff response at buff[2] to leave the first two bytes of
+	 * buffer available for the result and size to send over i2c.
+	 */
+	i2c_packet.response = (void *)(&buff[2]);
+	i2c_packet.response_max = I2C_MAX_HOST_PACKET_SIZE;
+	i2c_packet.response_size = 0;
 
-		buff += 3;
-		i2c_old_response = 0;
+	if (*buff >= EC_COMMAND_PROTOCOL_3) {
+		i2c_packet.driver_result = EC_RES_SUCCESS;
 	} else {
-		/*
-		 * Old style (version 1) command.
-		 *
-		 * TODO(crosbug.com/p/23765): Nothing sends these anymore,
-		 * since this was superseded by version 2 before snow launched.
-		 * This code should be safe to remove.
-		 */
-		args->version = 0;
-		args->params_size = EC_PROTO2_MAX_PARAM_SIZE;	/* unknown */
-		buff++;
-		i2c_old_response = 1;
+		/* Only host command protocol 3 is supported. */
+		i2c_packet.driver_result = EC_RES_INVALID_HEADER;
 	}
-
-	/* we have an available command : execute it */
-	args->send_response = i2c_send_response;
-	args->params = buff;
-	/* skip room for error code, arglen */
-	args->response = host_buffer + 2;
-	args->response_max = EC_PROTO2_MAX_PARAM_SIZE;
-	args->response_size = 0;
-
-	host_command_received(args);
+	host_packet_receive(&i2c_packet);
 }
 
 static void i2c_event_handler(int port)
