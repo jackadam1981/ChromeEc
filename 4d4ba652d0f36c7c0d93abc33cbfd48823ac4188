@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "469a5479_18c526ba",
+        "filename": "util/comm-lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-03-17T17:58:12Z",
+      "side": 1,
+      "message": "Is this table necessary? These are generic i/o functions, and you are accessing then only from comm-mec1322.c.",
+      "revId": "4d4ba652d0f36c7c0d93abc33cbfd48823ac4188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
