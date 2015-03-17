@@ -68,6 +68,11 @@
 /* Number of I2C ports */
 #define I2C_PORT_COUNT 2
 
+/* Packet size to communicate with the host
+ * To be useful, we should size it so that flashrom could send
+ * 128 bytes of data at a time with v3. */
+#define I2C_MAX_HOST_PACKET_SIZE 144
+
 /*
  * Use a timer to print a watchdog warning event before the actual watchdog
  * timer fires.  This is needed on STM32, where the independent watchdog has no
