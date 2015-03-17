@@ -5,6 +5,8 @@
 
 /* STM32 common I2C code for Chrome EC */
 
+#include "common.h"
+#include "host_command.h"
 #include "i2c.h"
 #include "util.h"
 
@@ -37,3 +39,26 @@ int i2c_read_string(int port, int slave_addr,
 	i2c_lock(port, 0);
 	return rv;
 }
+
+#ifdef CONFIG_HOSTCMD_I2C_SLAVE_ADDR
+/**
+ * Get protocol information
+ */
+static int i2c_get_protocol_info(struct host_cmd_handler_args *args)
+{
+	struct ec_response_get_protocol_info *r = args->response;
+
+	memset(r, 0, sizeof(*r));
+	r->protocol_versions = (1 << 3);
+	r->max_request_packet_size = I2C_MAX_HOST_PACKET_SIZE;
+	r->max_response_packet_size = I2C_MAX_HOST_PACKET_SIZE;
+	r->flags = 0;
+
+	args->response_size = sizeof(*r);
+
+	return EC_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO,
+		     i2c_get_protocol_info,
+		     EC_VER_MASK(0));
+#endif
