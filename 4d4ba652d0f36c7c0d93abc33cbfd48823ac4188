@@ -16,6 +16,24 @@
       "revId": "4d4ba652d0f36c7c0d93abc33cbfd48823ac4188",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "469a5479_6e1bc89e",
+        "filename": "util/comm-lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-03-17T18:16:16Z",
+      "side": 1,
+      "message": "The intention of comm-mec1322.c was to use this file directly in other module like coreboot or depthcharge. For example, udelay is depthcarge\u0027s equivalent of usleep, but instead of modifying this C file in depthcharge, its lpc.c will point mec1322_host_func.usleep to udelay.",
+      "parentUuid": "469a5479_18c526ba",
+      "revId": "4d4ba652d0f36c7c0d93abc33cbfd48823ac4188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
