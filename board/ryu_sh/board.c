@@ -4,7 +4,6 @@
  */
 /* ryu sensor hub configuration */
 
-#include "clock.h"
 #include "common.h"
 #include "console.h"
 #include "driver/accelgyro_lsm6ds0.h"
@@ -27,10 +26,11 @@ BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
-	{"master", I2C_PORT_MASTER, 100,
-		GPIO_MASTER_I2C_SCL, GPIO_MASTER_I2C_SDA},
 	{"slave",  I2C_PORT_SLAVE, 100,
 		GPIO_SLAVE_I2C_SCL, GPIO_SLAVE_I2C_SDA},
+	/* For testing purposes, enable master i2c*/
+	{"master",  I2C_PORT_MASTER, 100,
+		GPIO_MASTER_I2C_SCL, GPIO_MASTER_I2C_SDA},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
@@ -84,21 +84,17 @@ const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
  */
 BUILD_ASSERT(ARRAY_SIZE(motion_sensors) == ARRAY_SIZE(g_lsm6ds0_data));
 
-void board_config_pre_init(void)
+#ifdef CONFIG_DMA_HELP
+#include "dma.h"
+int command_dma_help(int argc, char **argv)
 {
-	/*
-	 *  enable SYSCFG clock:
-	 *  otherwise the SYSCFG peripheral is not clocked during the pre-init
-	 *  and the register write as no effect.
-	 */
-	STM32_RCC_APB2ENR |= 1 << 0;
-	/* Delay 1 APB clock cycle after the clock is enabled */
-	clock_wait_bus_cycles(BUS_APB, 1);
-	/*
-	 * Remap USART DMA to match the USART driver
-	 * the DMA mapping is :
-	 *  Chan 4 : USART1_TX
-	 *  Chan 5 : USART1_RX
-	 */
-	STM32_SYSCFG_CFGR1 |= (1 << 9) | (1 << 10);/* Remap USART1 RX/TX DMA */
+	dma_dump(STM32_DMA2_STREAM0);
+	dma_test(STM32_DMA2_STREAM0);
+	dma_dump(STM32_DMA2_STREAM0);
+	return EC_SUCCESS;
 }
+DECLARE_CONSOLE_COMMAND(dmahelp, command_dma_help,
+			NULL,
+			"Run DMA test",
+			NULL);
+#endif
