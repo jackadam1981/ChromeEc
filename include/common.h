@@ -90,17 +90,19 @@ enum ec_error_list {
 	EC_ERROR_NOT_CALIBRATED = 9,
 	/* Failed because CRC error */
 	EC_ERROR_CRC = 10,
+	/* No response from target */
+	EC_ERROR_NOT_PRESENT = 11,
 	/* Invalid console command param (PARAMn means parameter n is bad) */
-	EC_ERROR_PARAM1 = 11,
-	EC_ERROR_PARAM2 = 12,
-	EC_ERROR_PARAM3 = 13,
-	EC_ERROR_PARAM4 = 14,
-	EC_ERROR_PARAM5 = 15,
-	EC_ERROR_PARAM6 = 16,
-	EC_ERROR_PARAM7 = 17,
-	EC_ERROR_PARAM8 = 18,
-	EC_ERROR_PARAM9 = 19,
-	EC_ERROR_PARAM_COUNT = 20,  /* Wrong number of params */
+	EC_ERROR_PARAM1 = 12,
+	EC_ERROR_PARAM2 = 13,
+	EC_ERROR_PARAM3 = 14,
+	EC_ERROR_PARAM4 = 15,
+	EC_ERROR_PARAM5 = 16,
+	EC_ERROR_PARAM6 = 17,
+	EC_ERROR_PARAM7 = 18,
+	EC_ERROR_PARAM8 = 19,
+	EC_ERROR_PARAM9 = 20,
+	EC_ERROR_PARAM_COUNT = 21,  /* Wrong number of params */
 
 	/* Module-internal error codes may use this range.   */
 	EC_ERROR_INTERNAL_FIRST = 0x10000,
