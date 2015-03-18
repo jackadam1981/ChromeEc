@@ -337,6 +337,19 @@ static int send_subcmd(int subcmd)
 	return EC_RES_SUCCESS;
 }
 
+static int force_lid_open(int enable)
+{
+	int rv;
+	struct ec_params_force_lid_open p;
+	p.enabled = enable;
+	rv = ec_command(EC_CMD_FORCE_LID_OPEN, 0, &p, sizeof(p), NULL, 0);
+	if (rv < 0) {
+		printf("Force lid open error.\n");
+		return -EC_RES_ERROR;
+	}
+	return EC_RES_SUCCESS;
+}
+
 static int write_block(const uint8_t *ptr, int bsize)
 {
 	int rv;
@@ -476,6 +489,12 @@ static enum fw_update_state s1_read_battery_info(
 static enum fw_update_state s2_write_prepare(struct fw_update_ctrl *fw_update)
 {
 	int rv;
+	rv = force_lid_open(1);
+	if (rv) {
+		fw_update->rv = -1;
+		log_msg(fw_update, S2_WRITE_PREPARE, "Force Lid Open Error");
+		return S10_TERMINAL;
+	}
 	rv = send_subcmd(EC_SB_FW_UPDATE_PREPARE);
 	if (rv) {
 		fw_update->rv = -1;
@@ -779,6 +798,7 @@ int main(int argc, char *argv[])
 	if (protect)
 		rv |= send_subcmd(EC_SB_FW_UPDATE_PROTECT);
 
+	rv |= force_lid_open(0);
 out:
 	release_gec_lock();
 	return rv;
