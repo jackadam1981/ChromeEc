@@ -1,4 +1,5 @@
-# Copyright (c) 2011 The Chromium OS Authors. All rights reserved.
+# Copyright (c) 2015 The Chromium OS Authors. All rights reserved.
+# Copyright (C) 2015 Intel Corporation.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 #
