@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06bbfcf2_7b693b22",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-03-18T18:31:22Z",
+      "side": 1,
+      "message": "I don\u0027t think these need to be explicitly indexed.",
+      "revId": "8391e806d9af32093489bbc325509524e95bf774",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e6bd08e7_eb1d7920",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-03-18T18:31:22Z",
+      "side": 1,
+      "message": "I don\u0027t think these need to be explicitly indexed.",
+      "revId": "8391e806d9af32093489bbc325509524e95bf774",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e6bd08e7_cb451525",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-03-18T18:31:22Z",
+      "side": 1,
+      "message": "[BEGIN_DELAY] \u003d \"BEGIN\",\n[SETUP_DELAY] \u003d \"SETUP\", ...",
+      "revId": "8391e806d9af32093489bbc325509524e95bf774",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6d48430_5f70a7d6",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-03-18T18:31:22Z",
+      "side": 1,
+      "message": "static?",
+      "revId": "8391e806d9af32093489bbc325509524e95bf774",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "06bbfcf2_1eed8d03",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-03-18T18:31:22Z",
+      "side": 1,
+      "message": "Why save the new value only if the existing value is zero? This could result in you having some strange combination of delay values from different sources.",
+      "revId": "8391e806d9af32093489bbc325509524e95bf774",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "06bbfcf2_debf15f3",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-03-18T18:31:22Z",
+      "side": 1,
+      "message": "This initialization isn\u0027t needed, delay_values is a global.",
+      "revId": "8391e806d9af32093489bbc325509524e95bf774",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
