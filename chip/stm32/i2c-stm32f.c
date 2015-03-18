@@ -528,21 +528,24 @@ static int wait_until_stop_sent(int port)
 	return EC_SUCCESS;
 }
 
-static void handle_i2c_error(int port, int rv)
+static int handle_i2c_error(int port, int rv)
 {
 	timestamp_t t1, t2;
 	uint32_t r;
 
 	/* We have not used the bus, just exit */
 	if (rv == EC_ERROR_BUSY)
-		return;
+		return rv;
 
 	/* EC_ERROR_TIMEOUT may have a code specifying where the timeout was */
 	if ((rv & 0xff) == EC_ERROR_TIMEOUT) {
 #ifdef CONFIG_I2C_DEBUG
 		CPRINTS("Wait_status() timeout type: %d", (rv >> 8));
 #endif
-		rv = EC_ERROR_TIMEOUT;
+		if ((rv >> 8) == WAIT_ADDR_READY)
+			rv = EC_ERROR_NOT_PRESENT;
+		else
+			rv = EC_ERROR_TIMEOUT;
 	}
 	if (rv)
 		dump_i2c_reg(port);
@@ -597,6 +600,7 @@ cr_cleanup:
 	 * I2C mode / Periphal enabled, ACK enabled
 	 */
 	STM32_I2C_CR1(port) = STM32_I2C_CR1_ACK | STM32_I2C_CR1_PE;
+	return rv;
 }
 
 static int i2c_master_transmit(int port, int slave_addr, const uint8_t *data,
@@ -720,7 +724,7 @@ int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
 				in_bytes ? 0 : 1);
 	if (!rv && in_bytes)
 		rv = i2c_master_receive(port, slave_addr, in, in_bytes);
-	handle_i2c_error(port, rv);
+	rv = handle_i2c_error(port, rv);
 
 	enable_i2c_interrupt(port);
 
