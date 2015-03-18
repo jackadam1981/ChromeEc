@@ -82,7 +82,7 @@ proj-%:
 	@echo "======= building $*"; \
 	$(MAKE) --no-print-directory BOARD=$* V=$(V)
 
-dis-y = $(out)/$(PROJECT).RW.dis
+dis-$(CONFIG_FW_INCLUDE_RW) = $(out)/$(PROJECT).RW.dis
 dis-$(CONFIG_FW_INCLUDE_RO) += $(out)/$(PROJECT).RO.dis
 dis: $(dis-y)
 
@@ -154,15 +154,15 @@ $(out)/%.lds: core/$(CORE)/ec.lds.S
 $(out)/%.bin: $(out)/%.obj
 	$(call quiet,obj_to_bin,OBJCOPY)
 	$(if $(wildcard $(PEM)),$(call quiet,rsasign,SIGN   ),)
-	$(if $(wildcard $(PEM)),$(call quiet,extractrw-y,EXTR_RW), \
-			$(call quiet,copyrw-y,COPY_RW))
+#	$(if $(wildcard $(PEM)),$(call quiet,extractrw-y,EXTR_RW), \
+#			$(call quiet,copyrw-y,COPY_RW))
 	$(call quiet,mv_from_tmp,MV     )
 
 # Beware of ec.spi.spi.bin.
 $(out)/%.spi.bin: $(out)/%.bin
 	$(call quiet,pack_package,PACK   )
 
-flat-y = $(out)/$(PROJECT).RW.flat
+flat-$(CONFIG_FW_INCLUDE_RW) = $(out)/$(PROJECT).RW.flat
 flat-$(CONFIG_FW_INCLUDE_RO) += $(out)/$(PROJECT).RO.flat
 
 deps += $(out)/firmware_image.lds.d $(flat-y:%.flat=%.lds.d)

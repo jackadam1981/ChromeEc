@@ -17,10 +17,12 @@ SECTIONS
     .image.RO : AT(CONFIG_FLASH_BASE + CONFIG_FW_RO_OFF) {
         *(.image.RO)
     } > FLASH =0xff
+#ifdef CONFIG_FW_INCLUDE_RW
     . = ALIGN(CONFIG_FLASH_BANK_SIZE);
     .image.RW : AT(CONFIG_FLASH_BASE + CONFIG_FW_RW_OFF) {
         *(.image.RW)
     } > FLASH =0xff
+#endif
     .padding : AT(CONFIG_FLASH_BASE + CONFIG_FLASH_SIZE - 1) {
         BYTE(0xff);
     } > FLASH =0xff

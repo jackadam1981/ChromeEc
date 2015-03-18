@@ -630,6 +630,7 @@
  * only contain the RW firmware. The RO firmware comes from another board.
  */
 #define CONFIG_FW_INCLUDE_RO
+#define CONFIG_FW_INCLUDE_RW
 
 /*****************************************************************************/
 /* Motion sensor based gesture recognition information */
