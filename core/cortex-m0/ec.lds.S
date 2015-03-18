@@ -17,7 +17,11 @@ OUTPUT_ARCH(BFD_ARCH)
 ENTRY(reset)
 MEMORY
 {
+#ifdef CONFIG_FW_INCLUDE_RO
+    FLASH (rx) : ORIGIN = FW_OFF(SECTION), LENGTH = CONFIG_FLASH_PHYSICAL_SIZE
+#else
     FLASH (rx) : ORIGIN = FW_OFF(SECTION), LENGTH = FW_SIZE(SECTION)
+#endif
     IRAM (rw)  : ORIGIN = CONFIG_RAM_BASE, LENGTH = CONFIG_RAM_SIZE
 #ifdef RSA_PUBLIC_KEY_SIZE
     PSTATE(r)  : ORIGIN = FW_OFF(SECTION) + FW_SIZE(SECTION), \
@@ -230,18 +234,6 @@ SECTIONS
     } > FLASH
 #endif
 #endif
-
-    /* The linker won't notice if the .data section is too big to fit,
-     * apparently because we're sending it into IRAM, not FLASH. The following
-     * symbol isn't used by the code, but running "objdump -t *.elf | grep hey"
-     * will let us check how much flash space we're actually using. The
-     * explicit ASSERT afterwards will cause the linker to abort if we use too
-     * much. */
-    __hey_flash_used = LOADADDR(.data) + SIZEOF(.data) - FW_OFF(SECTION);
-    ASSERT(FW_SIZE(SECTION) >=
-                 (LOADADDR(.data) + SIZEOF(.data) - FW_OFF(SECTION)),
-                 "No room left in the flash")
-
 #ifdef CONFIG_USB
     .usb_ram (NOLOAD) : {
         __usb_ram_start = .;

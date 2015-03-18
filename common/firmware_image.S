@@ -18,7 +18,8 @@
 .section .image.RO, "ax"
 .incbin FW_IMAGE(RO)
 #endif
-
+#ifdef CONFIG_FW_INCLUDE_RW
 /* Read Write firmware */
 .section .image.RW, "ax"
 .incbin FW_IMAGE(RW)
+#endif
