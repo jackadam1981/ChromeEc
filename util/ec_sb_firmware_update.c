@@ -8,13 +8,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
-#include "lock/gec_lock.h"
 #include "comm-host.h"
-#include "misc_util.h"
 #include "ec_sb_firmware_update.h"
 #include "ec_commands.h"
-#include <unistd.h>
+#include "lock/gec_lock.h"
+#include "misc_util.h"
+#include "powerd_lock.h"
 
 /* Subcommands: [check|update] */
 enum {
@@ -63,9 +64,11 @@ enum fw_update_state {
 
 /* Firmware Update Control Flags */
 enum {
-	F_AC_PRESENT    = 0x1,/* AC Present */
+	F_AC_PRESENT    = 0x1, /* AC Present */
 	F_VERSION_CHECK = 0x2, /* do firmware version check */
-	F_UPDATE        = 0x4 /* do firmware update */
+	F_UPDATE        = 0x4, /* do firmware update */
+	F_NEED_UPDATE   = 0x8,  /* need firmware update */
+	F_POWERD_DISABLED = 0x10  /* powerd is disabled */
 };
 
 struct fw_update_ctrl {
@@ -450,7 +453,7 @@ static enum fw_update_state s1_read_battery_info(
 
 	rv = check_if_valid_fw(fw_update->fw_img_hdr, &fw_update->info);
 	if (rv == 0) {
-		fw_update->rv = EC_RES_INVALID_PARAM;
+		fw_update->rv = -EC_RES_INVALID_PARAM;
 		log_msg(fw_update, S1_READ_INFO, "Invalid Firmware");
 		return S10_TERMINAL;
 	}
@@ -471,6 +474,7 @@ static enum fw_update_state s1_read_battery_info(
 		fw_update->rv = 0;
 		log_msg(fw_update, S1_READ_INFO,
 			"Require AC Adapter Counnected.");
+		fw_update->flags |= F_NEED_UPDATE;
 		return S10_TERMINAL;
 	}
 	return S2_WRITE_PREPARE;
@@ -479,6 +483,14 @@ static enum fw_update_state s1_read_battery_info(
 static enum fw_update_state s2_write_prepare(struct fw_update_ctrl *fw_update)
 {
 	int rv;
+	rv = disable_power_management();
+	if (rv) {
+		fw_update->rv = -1;
+		log_msg(fw_update, S2_WRITE_PREPARE,
+			"disable power management error");
+		return S10_TERMINAL;
+	}
+	fw_update->flags |= F_POWERD_DISABLED;
 	rv = send_subcmd(EC_SB_FW_UPDATE_PREPARE);
 	if (rv) {
 		fw_update->rv = -1;
@@ -654,6 +666,7 @@ static enum fw_update_state s9_read_status(struct fw_update_ctrl *fw_update)
 		return S9_READ_STATUS;
 	}
 	log_msg(fw_update, S9_READ_STATUS, "Complete");
+	fw_update->flags &= ~F_NEED_UPDATE;
 	return S10_TERMINAL;
 }
 
@@ -773,10 +786,15 @@ int main(int argc, char *argv[])
 			fw_update.msg);
 
 	/* Update battery firmware update interface to be protected */
-	if (protect)
+	if (protect && (op == OP_UPDATE))
 		rv |= send_subcmd(EC_SB_FW_UPDATE_PROTECT);
 
+	if (fw_update.flags & F_POWERD_DISABLED)
+		rv |= restore_power_management();
 out:
 	release_gec_lock();
-	return rv;
+	if (rv)
+		return -1;
+	else
+		return fw_update.flags & F_NEED_UPDATE;
 }
