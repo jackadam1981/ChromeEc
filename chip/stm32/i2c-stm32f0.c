@@ -45,25 +45,35 @@
  */
 static int wait_isr(int port, int mask)
 {
-	uint64_t timeout = get_time().val + I2C_TX_TIMEOUT_MASTER;
+	uint64_t timeout_warn = get_time().val + I2C_TX_TIMEOUT_MASTER;
+	uint64_t timeout = get_time().val + I2C_TX_TIMEOUT_MASTER * 10;
 
-	while (get_time().val < timeout) {
+	while (1) {
 		int isr = STM32_I2C_ISR(port);
 
 		/* Check for errors */
 		if (isr & (STM32_I2C_ISR_ARLO | STM32_I2C_ISR_BERR |
-			STM32_I2C_ISR_NACK))
+			STM32_I2C_ISR_NACK)) {
+			CPRINTS("wait_isr err %x", isr);
 			return EC_ERROR_UNKNOWN;
+		}
 
 		/* Check for desired mask */
-		if ((isr & mask) == mask)
+		if ((isr & mask) == mask) {
+			if (get_time().val > timeout_warn) {
+				CPRINTS("wait_isr took %d us", (int)(get_time().val - timeout_warn + I2C_TX_TIMEOUT_MASTER));
+			}
 			return EC_SUCCESS;
+		}
+
+		if (get_time().val > timeout) {
+			CPUTS("wait_isr tout\n");
+			return EC_ERROR_TIMEOUT;
+		}
 
 		/* I2C is slow, so let other things run while we wait */
 		usleep(100);
 	}
-
-	return EC_ERROR_TIMEOUT;
 }
 
 static void i2c_set_freq_port(const struct i2c_port_t *p)
@@ -310,6 +320,15 @@ int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
 	ASSERT(out || !out_bytes);
 	ASSERT(in || !in_bytes);
 
+	for (i = 0; i < 100000; i++) {
+		if (!(STM32_I2C_ISR(port) & STM32_I2C_ISR_BUSY))
+			break;
+		udelay(10);
+	}
+	if (i >= 2) {
+		CPRINTS("Busy at start: %d", i);
+	}
+
 	/* Clear status */
 	STM32_I2C_ICR(port) = 0x3F38;
 	STM32_I2C_CR2(port) = 0;
@@ -324,8 +343,9 @@ int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
 
 		for (i = 0; i < out_bytes; i++) {
 			rv = wait_isr(port, STM32_I2C_ISR_TXIS);
-			if (rv)
+			if (rv) {
 				goto xfer_exit;
+			}
 			/* Write next data byte */
 			STM32_I2C_TXDR(port) = out[i];
 		}
@@ -360,14 +380,18 @@ xfer_exit:
 	STM32_I2C_ICR(port) = 0x3F38;
 	/* On error, queue a stop condition */
 	if (rv) {
+		CPUTS("Error, stop");
 		/* queue a STOP condition */
 		STM32_I2C_CR2(port) |= STM32_I2C_CR2_STOP;
 		/* wait for it to take effect */
 		/* Wait up to 100 us for bus idle */
-		for (i = 0; i < 10; i++) {
+		for (i = 0; i < 100000; i++) {
 			if (!(STM32_I2C_ISR(port) & STM32_I2C_ISR_BUSY))
 				break;
 			udelay(10);
+		}
+		if (i >= 1000) {
+			CPRINTS("Long time: %d", i);
 		}
 
 		/*
@@ -375,11 +399,11 @@ xfer_exit:
 		 * This allows slaves on the bus to detect bus-idle before
 		 * the next start condition.
 		 */
-		udelay(10);
+		udelay(100);
 		/* re-initialize the controller */
 		STM32_I2C_CR2(port) = 0;
 		STM32_I2C_CR1(port) &= ~STM32_I2C_CR1_PE;
-		udelay(10);
+		udelay(100);
 		STM32_I2C_CR1(port) |= STM32_I2C_CR1_PE;
 	}
 
