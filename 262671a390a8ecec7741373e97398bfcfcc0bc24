@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "460fb4b1_4d036dc6",
+        "filename": "chip/stm32/i2c-stm32f.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-18T23:45:55Z",
+      "side": 1,
+      "message": "bikeshedding day:\nwhat about\n#if defined(CONFIG_HOSTCMD_I2C_SLAVE_ADDR) \u0026\u0026 (I2C_PORT_SLAVE)",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 20
+      },
+      "revId": "262671a390a8ecec7741373e97398bfcfcc0bc24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "460fb4b1_ad22e956",
+        "filename": "chip/stm32/i2c-stm32f.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-18T23:45:55Z",
+      "side": 1,
+      "message": "are you sure that the PSIZE_16_BIT was not there on purpose ?\nI somewhat remember some discussion about this in the F100 documentation.",
+      "range": {
+        "startLine": 94,
+        "startChar": 30,
+        "endLine": 94,
+        "endChar": 55
+      },
+      "revId": "262671a390a8ecec7741373e97398bfcfcc0bc24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2612c0d8_a97e5ddd",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-18T23:45:55Z",
+      "side": 1,
+      "message": "given the whole bunch of bit definitions above have no tabs, maybe you should remove the tabs here rather than adding one.\nbut do whatever you want and I will shut-up on the next version, doesn\u0027t worth a bikeshedding contest.",
+      "range": {
+        "startLine": 501,
+        "startChar": 24,
+        "endLine": 501,
+        "endChar": 26
+      },
+      "revId": "262671a390a8ecec7741373e97398bfcfcc0bc24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
