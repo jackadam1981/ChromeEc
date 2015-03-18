@@ -17,7 +17,11 @@ OUTPUT_ARCH(BFD_ARCH)
 ENTRY(reset)
 MEMORY
 {
+#ifndef CONFIG_FW_INCLUDE_RW
+    FLASH (rx) : ORIGIN = FW_OFF(SECTION), LENGTH = CONFIG_FLASH_PHYSICAL_SIZE
+#else
     FLASH (rx) : ORIGIN = FW_OFF(SECTION), LENGTH = FW_SIZE(SECTION)
+#endif
     IRAM (rw)  : ORIGIN = CONFIG_RAM_BASE, LENGTH = CONFIG_RAM_SIZE
 #ifdef RSA_PUBLIC_KEY_SIZE
     PSTATE(r)  : ORIGIN = FW_OFF(SECTION) + FW_SIZE(SECTION), \
@@ -238,9 +242,14 @@ SECTIONS
      * explicit ASSERT afterwards will cause the linker to abort if we use too
      * much. */
     __hey_flash_used = LOADADDR(.data) + SIZEOF(.data) - FW_OFF(SECTION);
+#ifdef CONFIG_FW_INCLUDE_RW
     ASSERT(FW_SIZE(SECTION) >=
                  (LOADADDR(.data) + SIZEOF(.data) - FW_OFF(SECTION)),
                  "No room left in the flash")
+#else
+    ASSERT(CONFIG_FLASH_PHYSICAL_SIZE >= SIZEOF(.data),
+                 "No room left in the MCU flash")
+#endif
 
 #ifdef CONFIG_USB
     .usb_ram (NOLOAD) : {
