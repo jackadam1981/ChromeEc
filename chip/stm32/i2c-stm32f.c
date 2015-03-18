@@ -126,6 +126,21 @@ static inline void disable_ack(int port)
 	STM32_I2C_CR1(port) &= ~STM32_I2C_CR1_ACK;
 }
 
+static inline void dump_i2c_reg(int port)
+{
+#ifdef CONFIG_I2C_DEBUG
+	CPRINTF("CR1(%d)  : %016b\n", port, STM32_I2C_CR1(port));
+	CPRINTF("CR2(%d)  : %016b\n", port, STM32_I2C_CR2(port));
+	CPRINTF("SR2(%d)  : %016b\n", port, STM32_I2C_SR2(port));
+	CPRINTF("SR1(%d)  : %016b\n", port, STM32_I2C_SR1(port));
+	CPRINTF("OAR1(%d) : %016b\n", port, STM32_I2C_OAR1(port));
+	CPRINTF("OAR2(%d) : %016b\n", port, STM32_I2C_OAR2(port));
+	CPRINTF("DR(%d)   : %016b\n", port, STM32_I2C_DR(port));
+	CPRINTF("CCR(%d)  : %016b\n", port, STM32_I2C_CCR(port));
+	CPRINTF("TRISE(%d): %016b\n", port, STM32_I2C_TRISE(port));
+#endif /* CONFIG_I2C_DEBUG */
+}
+
 static void i2c_init_port(unsigned int port);
 
 #ifdef CONFIG_HOSTCMD_I2C_SLAVE_ADDR
@@ -391,22 +406,6 @@ DECLARE_HOOK(HOOK_INIT, i2c_init, HOOK_PRIO_INIT_I2C);
 
 /*****************************************************************************/
 /* STM32 Host I2C */
-
-static inline void dump_i2c_reg(int port)
-{
-#ifdef CONFIG_I2C_DEBUG
-	CPRINTF("CR1  : %016b\n", STM32_I2C_CR1(port));
-	CPRINTF("CR2  : %016b\n", STM32_I2C_CR2(port));
-	CPRINTF("SR2  : %016b\n", STM32_I2C_SR2(port));
-	CPRINTF("SR1  : %016b\n", STM32_I2C_SR1(port));
-	CPRINTF("OAR1 : %016b\n", STM32_I2C_OAR1(port));
-	CPRINTF("OAR2 : %016b\n", STM32_I2C_OAR2(port));
-	CPRINTF("DR   : %016b\n", STM32_I2C_DR(port));
-	CPRINTF("CCR  : %016b\n", STM32_I2C_CCR(port));
-	CPRINTF("TRISE: %016b\n", STM32_I2C_TRISE(port));
-#endif /* CONFIG_I2C_DEBUG */
-}
-
 enum wait_t {
 	WAIT_NONE,
 	WAIT_MASTER_START,
