@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6d48430_b6da489e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-18T17:31:17Z",
+      "side": 1,
+      "message": "why not deciding that your unique partition is called \"RW\" rather than \"RO\" ?\nthen you need to define CONFIG_FW_INCLUDE_RW and can re-use the already existing CONFIG_FW_INCLUDE_RO, you would avoid a lot of not-so-useful changes",
+      "range": {
+        "startLine": 12,
+        "startChar": 16,
+        "endLine": 12,
+        "endChar": 31
+      },
+      "revId": "2fac9d1cf99cf6b130713da0105fc4e96893470b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
