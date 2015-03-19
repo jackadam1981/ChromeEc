@@ -65,19 +65,6 @@ static struct ec_response_host_event_status host_event_status __aligned(4);
 /* Desired input current limit */
 static int desired_charge_rate_ma = -1;
 
-/*
- * Store the state of our USB data switches so that they can be restored
- * after pericom reset.
- */
-static int usb_switch_state[PD_PORT_COUNT];
-static struct mutex usb_switch_lock[PD_PORT_COUNT];
-
-/* PWM channels. Must be in the exact same order as in enum pwm_channel. */
-const struct pwm_t pwm_channels[] = {
-	{STM32_TIM(15), STM32_TIM_CH(2), 0, GPIO_ILIM_ADJ_PWM, GPIO_ALT_F1},
-};
-BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
-
 /* Charge supplier priority: lower number indicates higher priority. */
 const int supplier_priority[] = {
 	[CHARGE_SUPPLIER_PD] = 0,
@@ -90,20 +77,6 @@ const int supplier_priority[] = {
 	[CHARGE_SUPPLIER_VBUS] = 4
 };
 BUILD_ASSERT(ARRAY_SIZE(supplier_priority) == CHARGE_SUPPLIER_COUNT);
-
-static void pericom_port0_reenable_interrupts(void)
-{
-	CPRINTS("VBUS p0 %d", gpio_get_level(GPIO_USB_C0_VBUS_WAKE));
-	pi3usb9281_enable_interrupts(0);
-}
-DECLARE_DEFERRED(pericom_port0_reenable_interrupts);
-
-static void pericom_port1_reenable_interrupts(void)
-{
-	CPRINTS("VBUS p1 %d", gpio_get_level(GPIO_USB_C1_VBUS_WAKE));
-	pi3usb9281_enable_interrupts(1);
-}
-DECLARE_DEFERRED(pericom_port1_reenable_interrupts);
 
 void vbus0_evt(enum gpio_signal signal)
 {
@@ -119,16 +92,6 @@ void vbus0_evt(enum gpio_signal signal)
 		charge.current = vbus_level ? DEFAULT_CURR_LIMIT : 0;
 		charge_manager_update_charge(CHARGE_SUPPLIER_VBUS, 0, &charge);
 	}
-
-	/*
-	 * Re-enable interrupts on pericom charger detector since the
-	 * chip may periodically reset itself, and come back up with
-	 * registers in default state. TODO(crosbug.com/p/33823): Fix
-	 * these unwanted resets.
-	 */
-	hook_call_deferred(pericom_port0_reenable_interrupts, 0);
-	if (task_start_called())
-		task_wake(TASK_ID_PD_C0);
 }
 
 void vbus1_evt(enum gpio_signal signal)
@@ -145,142 +108,6 @@ void vbus1_evt(enum gpio_signal signal)
 		charge.current = vbus_level ? DEFAULT_CURR_LIMIT : 0;
 		charge_manager_update_charge(CHARGE_SUPPLIER_VBUS, 1, &charge);
 	}
-
-	/*
-	 * Re-enable interrupts on pericom charger detector since the
-	 * chip may periodically reset itself, and come back up with
-	 * registers in default state. TODO(crosbug.com/p/33823): Fix
-	 * these unwanted resets.
-	 */
-	hook_call_deferred(pericom_port1_reenable_interrupts, 0);
-	if (task_start_called())
-		task_wake(TASK_ID_PD_C1);
-}
-
-void set_usb_switches(int port, int open)
-{
-	mutex_lock(&usb_switch_lock[port]);
-	usb_switch_state[port] = open;
-	pi3usb9281_set_switches(port, open);
-	mutex_unlock(&usb_switch_lock[port]);
-}
-
-/* Wait after a charger is detected to debounce pin contact order */
-#define USB_CHG_DEBOUNCE_DELAY_MS 1000
-/*
- * Wait after reset, before re-enabling attach interrupt, so that the
- * spurious attach interrupt from certain ports is ignored.
- */
-#define USB_CHG_RESET_DELAY_MS 100
-
-void usb_charger_task(void)
-{
-	int port = (task_get_current() == TASK_ID_USB_CHG_P0 ? 0 : 1);
-	int vbus_source = (port == 0 ? GPIO_USB_C0_5V_EN : GPIO_USB_C1_5V_EN);
-	int device_type, charger_status;
-	struct charge_port_info charge;
-	int type;
-	charge.voltage = USB_BC12_CHARGE_VOLTAGE;
-
-	while (1) {
-		/* Read interrupt register to clear on chip */
-		pi3usb9281_get_interrupts(port);
-
-		if (gpio_get_level(vbus_source)) {
-			/* If we're sourcing VBUS then we're not charging */
-			device_type = charger_status = 0;
-		} else {
-			/* Set device type */
-			device_type = pi3usb9281_get_device_type(port);
-			charger_status = pi3usb9281_get_charger_status(port);
-		}
-
-		/* Debounce pin plug order if we detect a charger */
-		if (device_type || PI3USB9281_CHG_STATUS_ANY(charger_status)) {
-			msleep(USB_CHG_DEBOUNCE_DELAY_MS);
-
-			/*
-			 * Trigger chip reset to refresh detection registers.
-			 * WARNING: This reset is acceptable for oak_pd,
-			 * but may not be acceptable for devices that have
-			 * an OTG / device mode, as we may be interrupting
-			 * the connection.
-			 */
-			pi3usb9281_reset(port);
-			/*
-			 * Restore data switch settings - switches return to
-			 * closed on reset until restored.
-			 */
-			mutex_lock(&usb_switch_lock[port]);
-			if (usb_switch_state[port])
-				pi3usb9281_set_switches(port, 1);
-			mutex_unlock(&usb_switch_lock[port]);
-			/* Clear possible disconnect interrupt */
-			pi3usb9281_get_interrupts(port);
-			/* Mask attach interrupt */
-			pi3usb9281_set_interrupt_mask(port,
-						      0xff &
-						      ~PI3USB9281_INT_ATTACH);
-			/* Re-enable interrupts */
-			pi3usb9281_enable_interrupts(port);
-			msleep(USB_CHG_RESET_DELAY_MS);
-
-			/* Clear possible attach interrupt */
-			pi3usb9281_get_interrupts(port);
-			/* Re-enable attach interrupt */
-			pi3usb9281_set_interrupt_mask(port, 0xff);
-
-			/* Re-read ID registers */
-			device_type = pi3usb9281_get_device_type(port);
-			charger_status = pi3usb9281_get_charger_status(port);
-		}
-
-		/* Attachment: decode + update available charge */
-		if (device_type || PI3USB9281_CHG_STATUS_ANY(charger_status)) {
-			if (PI3USB9281_CHG_STATUS_ANY(charger_status))
-				type = CHARGE_SUPPLIER_PROPRIETARY;
-			else if (device_type & PI3USB9281_TYPE_CDP)
-				type = CHARGE_SUPPLIER_BC12_CDP;
-			else if (device_type & PI3USB9281_TYPE_DCP)
-				type = CHARGE_SUPPLIER_BC12_DCP;
-			else if (device_type & PI3USB9281_TYPE_SDP)
-				type = CHARGE_SUPPLIER_BC12_SDP;
-			else
-				type = CHARGE_SUPPLIER_OTHER;
-
-			charge.current = pi3usb9281_get_ilim(device_type,
-							     charger_status);
-			charge_manager_update_charge(type, port, &charge);
-		} else { /* Detachment: update available charge to 0 */
-			charge.current = 0;
-			charge_manager_update_charge(
-						CHARGE_SUPPLIER_PROPRIETARY,
-						port,
-						&charge);
-			charge_manager_update_charge(
-						CHARGE_SUPPLIER_BC12_CDP,
-						port,
-						&charge);
-			charge_manager_update_charge(
-						CHARGE_SUPPLIER_BC12_DCP,
-						port,
-						&charge);
-			charge_manager_update_charge(
-						CHARGE_SUPPLIER_BC12_SDP,
-						port,
-						&charge);
-			charge_manager_update_charge(
-						CHARGE_SUPPLIER_OTHER,
-						port,
-						&charge);
-		}
-
-		/* notify host of power info change */
-		pd_send_host_event(PD_EVENT_POWER_CHANGE);
-
-		/* Wait for interrupt */
-		task_wait_event(-1);
-	}
 }
 
 /* Charge manager callback function, called on delayed override timeout */
@@ -289,21 +116,6 @@ void board_charge_manager_override_timeout(void)
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
 }
 DECLARE_DEFERRED(board_charge_manager_override_timeout);
-
-static void wake_usb_charger_task(int port)
-{
-	task_wake(port ? TASK_ID_USB_CHG_P1 : TASK_ID_USB_CHG_P0);
-}
-
-void usb0_evt(enum gpio_signal signal)
-{
-	wake_usb_charger_task(0);
-}
-
-void usb1_evt(enum gpio_signal signal)
-{
-	wake_usb_charger_task(1);
-}
 
 static void chipset_s5_to_s3(void)
 {
@@ -446,14 +258,6 @@ static void board_init(void)
 		charge_manager_update_charge(CHARGE_SUPPLIER_VBUS, 1,
 					     &charge_none);
 
-	/* Enable pericom BC1.2 interrupts. */
-	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_L);
-	gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_L);
-	pi3usb9281_set_interrupt_mask(0, 0xff);
-	pi3usb9281_set_interrupt_mask(1, 0xff);
-	pi3usb9281_enable_interrupts(0);
-	pi3usb9281_enable_interrupts(1);
-
 	/* Determine initial chipset state */
 	if (slp_s5 && slp_s3) {
 		disable_sleep(SLEEP_MASK_AP_RUN);
@@ -497,12 +301,6 @@ static void board_init(void)
 		pd_enable = 1;
 	}
 	pd_comm_enable(pd_enable);
-
-#ifdef CONFIG_PWM
-	/* Enable ILIM PWM: initial duty cycle 0% = 500mA limit. */
-	pwm_enable(PWM_CH_ILIM, 1);
-	pwm_set_duty(PWM_CH_ILIM, 0);
-#endif
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -521,8 +319,6 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
-	{"master", I2C_PORT_MASTER, 100,
-		GPIO_MASTER_I2C_SCL, GPIO_MASTER_I2C_SDA},
 	{"slave",  I2C_PORT_SLAVE, 100,
 		GPIO_SLAVE_I2C_SCL, GPIO_SLAVE_I2C_SDA},
 };
@@ -761,57 +557,6 @@ int board_is_consuming_full_charge(void)
 	return batt_soc >= 1 && batt_soc < HIGH_BATT_THRESHOLD;
 }
 
-/*
- * Number of VBUS samples to average when computing if VBUS is too low
- * for the ramp stable state.
- */
-#define VBUS_STABLE_SAMPLE_COUNT 4
-
-/* VBUS too low threshold */
-#define VBUS_LOW_THRESHOLD_MV    4600
-
-/**
- * Return if VBUS is sagging too low
- */
-int board_is_vbus_too_low(enum chg_ramp_vbus_state ramp_state)
-{
-	static int vbus[VBUS_STABLE_SAMPLE_COUNT];
-	static int vbus_idx, vbus_samples_full;
-	int vbus_sum, i;
-
-	/*
-	 * If we are not allowing charging, it's because the EC saw
-	 * ACOK go low, so we know VBUS is drooping too far.
-	 */
-	if (charge_state == PD_CHARGE_NONE)
-		return 1;
-
-	/* If we are ramping, only look at one reading */
-	if (ramp_state == CHG_RAMP_VBUS_RAMPING) {
-		/* Reset the VBUS array vars used for the stable state */
-		vbus_idx = vbus_samples_full = 0;
-		return adc_read_channel(ADC_VBUS) < VBUS_LOW_THRESHOLD_MV;
-	}
-
-	/* Fill VBUS array with ADC readings */
-	vbus[vbus_idx] = adc_read_channel(ADC_VBUS);
-	vbus_idx = (vbus_idx == VBUS_STABLE_SAMPLE_COUNT-1) ? 0 : vbus_idx + 1;
-	if (vbus_idx == 0)
-		vbus_samples_full = 1;
-
-	/* If VBUS array is not full yet, then return ok */
-	if (!vbus_samples_full)
-		return 0;
-
-	/* All VBUS samples are populated, take average */
-	vbus_sum = 0;
-	for (i = 0; i < VBUS_STABLE_SAMPLE_COUNT; i++)
-		vbus_sum += vbus[i];
-
-	/* Return if average is lower than threshold */
-	return vbus_sum < (VBUS_STABLE_SAMPLE_COUNT * VBUS_LOW_THRESHOLD_MV);
-}
-
 static int board_update_charge_limit(int charge_ma)
 {
 	static int actual_charge_rate_ma = -1;
@@ -827,16 +572,6 @@ static int board_update_charge_limit(int charge_ma)
 		return 0;
 
 	actual_charge_rate_ma = charge_ma;
-
-#ifdef CONFIG_PWM
-	int pwm_duty = MA_TO_PWM(charge_ma);
-	if (pwm_duty < 0)
-		pwm_duty = 0;
-	else if (pwm_duty > 100)
-		pwm_duty = 100;
-
-	pwm_set_duty(PWM_CH_ILIM, pwm_duty);
-#endif
 
 	pd_status.curr_lim_ma = MAX(0, charge_ma -
 					INPUT_CURRENT_LIMIT_OFFSET_MA);
@@ -936,7 +671,7 @@ static int ec_status_host_cmd(struct host_cmd_handler_args *args)
 				 * Wake charge ramp task so that it will check
 				 * board_is_vbus_too_low() and stop ramping up.
 				 */
-				task_wake(TASK_ID_CHG_RAMP);
+				/* task_wake(TASK_ID_CHG_RAMP); */
 				CPRINTS("Chg: None");
 				break;
 			case PD_CHARGE_5V:
