@@ -154,7 +154,6 @@ int pd_check_data_swap(int port, int data_role)
 void pd_execute_data_swap(int port, int data_role)
 {
 	/* Open USB switches when taking UFP role */
-	set_usb_switches(port, (data_role == PD_ROLE_UFP));
 }
 
 void pd_check_pr_role(int port, int pr_role, int partner_pr_swap)
@@ -232,14 +231,17 @@ int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 	case VDO_CMD_FLIP:
 		board_flip_usb_mux(port);
 		break;
+#ifdef CONFIG_USB_PD_LOGGING
 	case VDO_CMD_GET_LOG:
 		pd_log_recv_vdm(port, cnt, payload);
 		break;
+#endif /* CONFIG_USB_PD_LOGGING */
 	}
 
 	return 0;
 }
 
+#ifdef CONFIG_USB_PD_ALT_MODE_DFP
 static int dp_flags[PD_PORT_COUNT];
 
 static void svdm_safe_dp_mode(int port)
@@ -404,3 +406,4 @@ const struct svdm_amode_fx supported_modes[] = {
 	}
 };
 const int supported_modes_cnt = ARRAY_SIZE(supported_modes);
+#endif /* CONFIG_USB_PD_ALT_MODE_DFP */

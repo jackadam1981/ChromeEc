@@ -8,8 +8,6 @@
 /* Interrupts */
 GPIO(USB_C0_VBUS_WAKE,       E, 6,  GPIO_INT_BOTH,    vbus0_evt)
 GPIO(USB_C1_VBUS_WAKE,       F, 2,  GPIO_INT_BOTH,    vbus1_evt)
-GPIO(USB_C0_BC12_INT_L,      B, 0,  GPIO_INT_FALLING, usb0_evt)
-GPIO(USB_C1_BC12_INT_L,      C, 11, GPIO_INT_FALLING, usb1_evt)
 GPIO(PCH_SLP_S0_L,           C, 14, GPIO_INT_BOTH,    pch_evt)
 GPIO(PCH_SLP_S3_L,           C, 15, GPIO_INT_BOTH,    pch_evt)
 GPIO(PCH_SLP_S5_L,           D, 7,  GPIO_INT_BOTH,    pch_evt)
