@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "460fb4b1_145699b4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-03-19T16:07:43Z",
+      "side": 1,
+      "message": "I\u0027ll make the unsupported (and possibly lacking consensus) statement that we should prune Spring, Snow, Link, and a bunch of other old boards out of ToT entirely.  We have sufficient diversity of new boards, and AFAIK nobody\u0027s doing any sort of development on any of the older ones.",
+      "parentUuid": "2612c0d8_fd7d2f6d",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 34
+      },
+      "revId": "edd7e676581712256583e6db29baffa840de8aa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2612c0d8_ac7e6bdd",
         "filename": "board/snow/board.h",
         "patchSetId": 1
