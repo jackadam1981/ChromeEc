@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66259842_f32eb00d",
+        "filename": "board/ryu/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-19T22:13:12Z",
+      "side": 1,
+      "message": "the logic driving DISABLE_DEBUG is still missing ?\nif that\u0027s the case, we should probably open a bug for it",
+      "range": {
+        "startLine": 98,
+        "startChar": 5,
+        "endLine": 98,
+        "endChar": 21
+      },
+      "revId": "c4aa41b46e04becaa33128b31a5b6f675cc39579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
