@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66259842_d602828e",
+        "filename": "board/it8380dev/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-19T23:12:15Z",
+      "side": 1,
+      "message": "interesting piece of code.\nMaybe some comment to tell us what is missing here might be useful",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 3
+      },
+      "revId": "93b415ed51ef0ebd8f30bf6bc1a41978fd80d7ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "46825452_f89be94a",
+        "filename": "board/it8380dev/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-19T23:12:15Z",
+      "side": 1,
+      "message": "then, it\u0027s no longer stubbed ?",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 25
+      },
+      "revId": "93b415ed51ef0ebd8f30bf6bc1a41978fd80d7ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "068cdc85_56b1a472",
+        "filename": "chip/it83xx/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-19T23:12:15Z",
+      "side": 1,
+      "message": "how is this optional ?\nmaybe the config name is misleading, an interrupt controller is unlikely to be optional.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 27
+      },
+      "revId": "93b415ed51ef0ebd8f30bf6bc1a41978fd80d7ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66259842_367f3690",
+        "filename": "chip/it83xx/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-19T23:12:15Z",
+      "side": 1,
+      "message": "you are unlikely to need such a large system stack.",
+      "range": {
+        "startLine": 32,
+        "startChar": 36,
+        "endLine": 32,
+        "endChar": 40
+      },
+      "revId": "93b415ed51ef0ebd8f30bf6bc1a41978fd80d7ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "46825452_58df95dd",
+        "filename": "chip/it83xx/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-19T23:12:15Z",
+      "side": 1,
+      "message": "config_chip.h is included before board.h,\nso this might not work",
+      "range": {
+        "startLine": 101,
+        "startChar": 30,
+        "endLine": 101,
+        "endChar": 52
+      },
+      "revId": "93b415ed51ef0ebd8f30bf6bc1a41978fd80d7ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "46825452_d8186533",
+        "filename": "chip/it83xx/keyboard_raw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-19T23:12:15Z",
+      "side": 1,
+      "message": "2015",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "93b415ed51ef0ebd8f30bf6bc1a41978fd80d7ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "068cdc85_b611f0da",
+        "filename": "chip/it83xx/kmsc_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-19T23:12:15Z",
+      "side": 1,
+      "message": "2015",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "93b415ed51ef0ebd8f30bf6bc1a41978fd80d7ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "068cdc85_d9baa705",
+        "filename": "chip/it83xx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-19T23:12:15Z",
+      "side": 1,
+      "message": "should be EC_MEMMAP_SIZE ?\nas in the memset below",
+      "range": {
+        "startLine": 27,
+        "startChar": 30,
+        "endLine": 27,
+        "endChar": 33
+      },
+      "revId": "93b415ed51ef0ebd8f30bf6bc1a41978fd80d7ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "068cdc85_16731c14",
+        "filename": "chip/it83xx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-19T23:12:15Z",
+      "side": 1,
+      "message": "that part is not terribly useful.\nmaybe use !!( ) if you really want to normalize the value",
+      "range": {
+        "startLine": 37,
+        "startChar": 33,
+        "endLine": 37,
+        "endChar": 40
+      },
+      "revId": "93b415ed51ef0ebd8f30bf6bc1a41978fd80d7ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "46825452_b8a2411e",
+        "filename": "chip/it83xx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-19T23:12:15Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 43,
+        "startChar": 33,
+        "endLine": 43,
+        "endChar": 40
+      },
+      "revId": "93b415ed51ef0ebd8f30bf6bc1a41978fd80d7ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66259842_36c2d6a0",
+        "filename": "chip/it83xx/lpc_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-19T23:12:15Z",
+      "side": 1,
+      "message": "rather than doing one .h per controller just for the interrupt handler prototype, maybe we should just declare them all in some kind of intc.h header",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 33
+      },
+      "revId": "93b415ed51ef0ebd8f30bf6bc1a41978fd80d7ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
