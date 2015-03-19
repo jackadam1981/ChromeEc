@@ -46,14 +46,29 @@
 static int wait_isr(int port, int mask)
 {
 	uint64_t timeout = get_time().val + I2C_TX_TIMEOUT_MASTER;
+	int timeout_count = 0, isr;
 
-	while (get_time().val < timeout) {
-		int isr = STM32_I2C_ISR(port);
+//	while (get_time().val < timeout) {
+	while (1) {
+		if (get_time().val > timeout) {
+			timeout_count++;
+		}
+
+		isr = STM32_I2C_ISR(port);
 
 		/* Check for errors */
 		if (isr & (STM32_I2C_ISR_ARLO | STM32_I2C_ISR_BERR |
 			STM32_I2C_ISR_NACK))
+		{
+			if (isr & STM32_I2C_ISR_ARLO)
+				ccprintf("i2c error: STM32_I2C_ISR_ARLO\n");
+			if (isr & STM32_I2C_ISR_BERR)
+				ccprintf("i2c error: STM32_I2C_ISR_BERR\n");
+			if (isr & STM32_I2C_ISR_NACK)
+				ccprintf("i2c error: STM32_I2C_ISR_NACK\n");
+
 			return EC_ERROR_UNKNOWN;
+		}
 
 		/* Check for desired mask */
 		if ((isr & mask) == mask)
@@ -61,6 +76,10 @@ static int wait_isr(int port, int mask)
 
 		/* I2C is slow, so let other things run while we wait */
 		usleep(100);
+	}
+
+	if (timeout_count) {
+		ccprintf("i2c timeout: %d\n", timeout_count);
 	}
 
 	return EC_ERROR_TIMEOUT;
