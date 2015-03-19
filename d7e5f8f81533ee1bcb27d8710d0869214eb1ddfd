@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66de785c_aeb09742",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-19T00:03:37Z",
+      "side": 1,
+      "message": "\"is\" or \"errors\" ?",
+      "range": {
+        "startLine": 10,
+        "startChar": 41,
+        "endLine": 10,
+        "endChar": 44
+      },
+      "revId": "d7e5f8f81533ee1bcb27d8710d0869214eb1ddfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66de785c_0ec20ba0",
+        "filename": "chip/stm32/i2c-stm32f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-19T00:03:37Z",
+      "side": 1,
+      "message": "very large trace in interrupt context might be more harmful than the I2C error itself",
+      "range": {
+        "startLine": 313,
+        "startChar": 2,
+        "endLine": 313,
+        "endChar": 14
+      },
+      "revId": "d7e5f8f81533ee1bcb27d8710d0869214eb1ddfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
