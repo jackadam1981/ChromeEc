@@ -22,6 +22,30 @@
       "revId": "2fac9d1cf99cf6b130713da0105fc4e96893470b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a671501d_2e1f2b62",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-03-19T12:59:57Z",
+      "side": 1,
+      "message": "It\u0027s a good idea, but the RW code can not be executed at the boot time, because the RW firmware is not located at 0x08000000. So, I couldn\u0027t reuse the CONFIG_FW_INCLUDE_RO config.",
+      "parentUuid": "c6d48430_b6da489e",
+      "range": {
+        "startLine": 12,
+        "startChar": 16,
+        "endLine": 12,
+        "endChar": 31
+      },
+      "revId": "2fac9d1cf99cf6b130713da0105fc4e96893470b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
