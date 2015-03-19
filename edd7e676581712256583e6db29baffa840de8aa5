@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2612c0d8_fd7d2f6d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-03-19T00:58:30Z",
+      "side": 1,
+      "message": "at least, I ensure snow and spring still compile on ToT.\nI could add a #ifdef to keep the old code, but talking to Randall, that was not necessary.",
+      "parentUuid": "2612c0d8_efe7b5d8",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 34
+      },
+      "revId": "edd7e676581712256583e6db29baffa840de8aa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2612c0d8_ac7e6bdd",
         "filename": "board/snow/board.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-03-19T00:01:41Z",
       "side": 1,
       "message": "why do you need a conditional check here ?\nthe board configuration is valid for the given ec.tasklist.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 23
+      },
+      "revId": "edd7e676581712256583e6db29baffa840de8aa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2612c0d8_9df07362",
+        "filename": "board/snow/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-03-19T00:58:30Z",
+      "side": 1,
+      "message": "I cut and paste blindly (see https://cs.corp.google.com/p#search/\u0026type\u003dcs\u0026q\u003dCONFIG_HOSTCMD_I2C_SLAVE_ADDR%20package:%5Echromeos_public$).\n\nIf HAS_TASK_HOSTCMD is not defined, no slave support for i2c:\nI think it was done that way elsewhere to automatically include/exclude i2c slave with one line of code, when TASK_HOSTCMD is set in ec.tasklist.",
+      "parentUuid": "2612c0d8_ac7e6bdd",
       "range": {
         "startLine": 50,
         "startChar": 0,
