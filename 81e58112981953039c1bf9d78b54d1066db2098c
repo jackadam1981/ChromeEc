@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "461df4f5_fac5293d",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-03-19T19:49:42Z",
+      "side": 1,
+      "message": "ccprintf() is for console commands.\n\nUse cprints() - usually inside a CPRINTS() macro - for module-specific debug output.",
+      "range": {
+        "startLine": 64,
+        "startChar": 4,
+        "endLine": 64,
+        "endChar": 12
+      },
+      "revId": "81e58112981953039c1bf9d78b54d1066db2098c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
