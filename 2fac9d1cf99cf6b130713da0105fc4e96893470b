@@ -46,6 +46,30 @@
       "revId": "2fac9d1cf99cf6b130713da0105fc4e96893470b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a64230dc_dd938b5b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-19T17:18:20Z",
+      "side": 1,
+      "message": "just move properly the RW at the beginning of the flash, then.\nI will upload this as an example.",
+      "parentUuid": "a671501d_2e1f2b62",
+      "range": {
+        "startLine": 12,
+        "startChar": 16,
+        "endLine": 12,
+        "endChar": 31
+      },
+      "revId": "2fac9d1cf99cf6b130713da0105fc4e96893470b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
