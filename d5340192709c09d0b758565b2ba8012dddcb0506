@@ -46,6 +46,30 @@
       "revId": "d5340192709c09d0b758565b2ba8012dddcb0506",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66259842_221e1090",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2015-03-20T05:16:34Z",
+      "side": 1,
+      "message": "In practice we\u0027re OK with 30ms I think, or maybe 40ms to be certain?  I saw a 70ms once but I was also doing console commands when it happened...",
+      "parentUuid": "46825452_e73fc06b",
+      "range": {
+        "startLine": 24,
+        "startChar": 30,
+        "endLine": 24,
+        "endChar": 41
+      },
+      "revId": "d5340192709c09d0b758565b2ba8012dddcb0506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
