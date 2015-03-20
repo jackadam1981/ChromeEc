@@ -37,6 +37,13 @@
 #endif
 #endif
 
+static void pulse_a14(void)
+{
+	gpio_set_level(GPIO_TEST, 1);
+	usleep(50);
+	gpio_set_level(GPIO_TEST, 0);
+}
+
 /**
  * Wait for ISR register to contain the specified mask.
  *
@@ -48,6 +55,10 @@ static int wait_isr(int port, int mask)
 	uint64_t timeout_warn = get_time().val + I2C_TX_TIMEOUT_MASTER;
 	uint64_t timeout = get_time().val + I2C_TX_TIMEOUT_MASTER * 10;
 
+	int ret;
+
+	gpio_set_level(GPIO_TEST2, 1);
+
 	while (1) {
 		int isr = STM32_I2C_ISR(port);
 
@@ -55,25 +66,32 @@ static int wait_isr(int port, int mask)
 		if (isr & (STM32_I2C_ISR_ARLO | STM32_I2C_ISR_BERR |
 			STM32_I2C_ISR_NACK)) {
 			CPRINTS("wait_isr err %x", isr);
-			return EC_ERROR_UNKNOWN;
+			ret = EC_ERROR_UNKNOWN;
+			break;
 		}
 
 		/* Check for desired mask */
 		if ((isr & mask) == mask) {
 			if (get_time().val > timeout_warn) {
+				pulse_a14();
 				CPRINTS("wait_isr took %d us", (int)(get_time().val - timeout_warn + I2C_TX_TIMEOUT_MASTER));
 			}
-			return EC_SUCCESS;
+			ret = EC_SUCCESS;
+			break;
 		}
 
 		if (get_time().val > timeout) {
 			CPUTS("wait_isr tout\n");
-			return EC_ERROR_TIMEOUT;
+			ret = EC_ERROR_TIMEOUT;
+			break;
 		}
 
 		/* I2C is slow, so let other things run while we wait */
 		usleep(100);
 	}
+
+	gpio_set_level(GPIO_TEST2, 0);
+	return ret;
 }
 
 static void i2c_set_freq_port(const struct i2c_port_t *p)
