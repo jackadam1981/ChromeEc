@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "068cdc85_46824b02",
+        "filename": "chip/g/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-03-20T16:38:58Z",
+      "side": 1,
+      "message": "I suggest renaming the existing gc_regdefs.h to cr50_regdefs.h",
+      "range": {
+        "startLine": 11,
+        "startChar": 10,
+        "endLine": 11,
+        "endChar": 20
+      },
+      "revId": "ae9e36b2647bea3e2cdd0cb7e953e871919509ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
