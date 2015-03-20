@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "068cdc85_a11441c7",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2015-03-20T17:32:49Z",
+      "side": 1,
+      "message": "nit: move this up to the system header list",
+      "revId": "bdf3fad93734cb0e2c4b607b7d13e0bc18ac553b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "068cdc85_212ff10b",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2015-03-20T17:32:49Z",
+      "side": 1,
+      "message": "nit: sort each group of includes",
+      "revId": "bdf3fad93734cb0e2c4b607b7d13e0bc18ac553b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
