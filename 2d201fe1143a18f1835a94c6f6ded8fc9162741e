@@ -16,6 +16,24 @@
       "revId": "2d201fe1143a18f1835a94c6f6ded8fc9162741e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86160cff_285693e7",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 794,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-03-21T21:34:27Z",
+      "side": 1,
+      "message": "flags are local flags to this program. \nIt will die after the program finished.\nNo need to clear it.",
+      "parentUuid": "a69cf0d8_828de8ca",
+      "revId": "2d201fe1143a18f1835a94c6f6ded8fc9162741e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
