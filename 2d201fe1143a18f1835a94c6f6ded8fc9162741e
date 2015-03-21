@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a69cf0d8_828de8ca",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 794,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2015-03-21T20:16:29Z",
+      "side": 1,
+      "message": "do you need to clear the F_POWERD_DISABLED flag?",
+      "revId": "2d201fe1143a18f1835a94c6f6ded8fc9162741e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
