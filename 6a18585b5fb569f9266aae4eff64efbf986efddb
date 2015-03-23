@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86160cff_eecb03ef",
+        "filename": "board/oak/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-23T15:28:06Z",
+      "side": 1,
+      "message": "that looks suspicious,\nTIM2 is the 32-bit timer used for system time.",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 54,
+        "endChar": 14
+      },
+      "revId": "6a18585b5fb569f9266aae4eff64efbf986efddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a69cf0d8_2fe9782a",
+        "filename": "board/oak/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-23T15:28:06Z",
+      "side": 1,
+      "message": "that\u0027s not matching with CHIP_VARIANT:\u003dstm32f09x below",
+      "range": {
+        "startLine": 8,
+        "startChar": 11,
+        "endLine": 8,
+        "endChar": 30
+      },
+      "revId": "6a18585b5fb569f9266aae4eff64efbf986efddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6a1e40d_f528e701",
+        "filename": "board/oak/extpower.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-23T15:28:06Z",
+      "side": 1,
+      "message": "so far we have no space to put this in the PD MCU",
+      "range": {
+        "startLine": 255,
+        "startChar": 24,
+        "endLine": 255,
+        "endChar": 49
+      },
+      "revId": "6a18585b5fb569f9266aae4eff64efbf986efddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6a1e40d_35142fc6",
+        "filename": "board/samus/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-23T15:28:06Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 182,
+        "startChar": 3,
+        "endLine": 182,
+        "endChar": 7
+      },
+      "revId": "6a18585b5fb569f9266aae4eff64efbf986efddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a69cf0d8_cf8d5488",
+        "filename": "chip/stm32/config-stm32f09x.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-23T15:28:06Z",
+      "side": 1,
+      "message": "there is no USB on this SKU,\nis all of this useful ?",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 36
+      },
+      "revId": "6a18585b5fb569f9266aae4eff64efbf986efddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
