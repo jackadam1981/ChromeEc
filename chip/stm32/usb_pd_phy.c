@@ -180,9 +180,7 @@ int pd_find_preamble(int port)
 		if (all == 0x36db6db6)
 			return bit - 1; /* should be SYNC-1 */
 		if (all == 0xF33F3F3F)
-			return PD_ERR_HARD_RESET; /* got HARD-RESET */
-		if (all == 0x3c7fe0ff)
-			return PD_ERR_CABLE_RESET; /* got CABLE-RESET */
+			return -2; /* got HARD-RESET */
 	}
 	return -1;
 }
@@ -573,11 +571,11 @@ void pd_hw_init_rx(int port)
 	clock_wait_bus_cycles(BUS_APB, 1);
 	/* currently in hi-speed mode : TODO revisit later, INM = PA0(INM6) */
 	STM32_COMP_CSR = STM32_COMP_CMP1MODE_LSPEED |
-			 STM32_COMP_CMP1INSEL_INM6 |
+			 STM32_COMP_CMP1INSEL_INM6 |  /* PA0 */
 			 CMP1OUTSEL |
 			 STM32_COMP_CMP1HYST_HI |
 			 STM32_COMP_CMP2MODE_LSPEED |
-			 STM32_COMP_CMP2INSEL_INM6 |
+			 STM32_COMP_CMP2INSEL_INM6 |  /* PA2 */
 			 CMP2OUTSEL |
 			 STM32_COMP_CMP2HYST_HI;
 #elif defined(CHIP_FAMILY_STM32L)
