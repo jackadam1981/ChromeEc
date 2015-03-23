@@ -250,9 +250,12 @@ static void config_hispeed_clock(void)
 	if (!(STM32_RCC_CR2 & (1 << 17))) {
 		/* Enable HSI */
 		STM32_RCC_CR2 |= 1 << 16;
+#ifndef CHIP_VARIANT_STM32F05X  /* Avoid STM32F05X trap in this loop */
+/* TODO: should check the spec of STM32F05X clock setting */
 		/* Wait for HSI to be ready */
 		while (!(STM32_RCC_CR2 & (1 << 17)))
 			;
+#endif
 	}
 
 #if (CPU_CLOCK == HSI48_CLOCK)
@@ -265,9 +268,12 @@ static void config_hispeed_clock(void)
 	/* switch SYSCLK to HSI48 */
 	STM32_RCC_CFGR = 0x00000003;
 
+#ifndef CHIP_VARIANT_STM32F05X  /* Avoid STM32F05X trap in this loop */
+/* TODO: should check the spec of  STM32F05X clock setting */
 	/* wait until the HSI48 is the clock source */
 	while ((STM32_RCC_CFGR & 0xc) != 0xc)
 		;
+#endif
 
 #elif (CPU_CLOCK == PLL_CLOCK)
 	/*
