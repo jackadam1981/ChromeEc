@@ -229,15 +229,15 @@ static int pd_src_cap_cnt[PD_PORT_COUNT];
 
 static struct pd_protocol {
 	/* current port power role (SOURCE or SINK) */
-	uint8_t power_role;
+	uint8_t power_role; /* TODO: EC needs to know */
 	/* current port data role (DFP or UFP) */
-	uint8_t data_role;
+	uint8_t data_role;/* TODO: EC needs to know */
 	/* port flags, see PD_FLAGS_* */
 	uint16_t flags;
 	/* 3-bit rolling message ID counter */
 	uint8_t msg_id;
 	/* Port polarity : 0 => CC1 is CC line, 1 => CC2 is CC line */
-	uint8_t polarity;
+	uint8_t polarity;/* TODO: EC needs to know */
 	/* PD state for port */
 	enum pd_states task_state;
 	/* PD state when we run state handler the last time */

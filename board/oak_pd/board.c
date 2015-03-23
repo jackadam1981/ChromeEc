@@ -61,6 +61,7 @@ static enum pd_charge_state charge_state = PD_CHARGE_5V;
  */
 static struct ec_response_pd_status pd_status __aligned(4);
 static struct ec_response_host_event_status host_event_status __aligned(4);
+static struct ec_response_pd_port pd_port_status[PD_PORT_COUNT] __aligned(4);
 
 /* Desired input current limit */
 static int desired_charge_rate_ma = -1;
@@ -80,6 +81,8 @@ BUILD_ASSERT(ARRAY_SIZE(supplier_priority) == CHARGE_SUPPLIER_COUNT);
 
 void vbus0_evt(enum gpio_signal signal)
 {
+/* TODO: Save the wake up port number and EC will get this information later */
+#if 0
 	struct charge_port_info charge;
 	int vbus_level = gpio_get_level(signal);
 
@@ -92,10 +95,13 @@ void vbus0_evt(enum gpio_signal signal)
 		charge.current = vbus_level ? DEFAULT_CURR_LIMIT : 0;
 		charge_manager_update_charge(CHARGE_SUPPLIER_VBUS, 0, &charge);
 	}
+#endif
 }
 
 void vbus1_evt(enum gpio_signal signal)
 {
+/* TODO: Save the wake up port number and EC will get this information later */
+#if 0
 	struct charge_port_info charge;
 	int vbus_level = gpio_get_level(signal);
 
@@ -108,6 +114,7 @@ void vbus1_evt(enum gpio_signal signal)
 		charge.current = vbus_level ? DEFAULT_CURR_LIMIT : 0;
 		charge_manager_update_charge(CHARGE_SUPPLIER_VBUS, 1, &charge);
 	}
+#endif
 }
 
 /* Charge manager callback function, called on delayed override timeout */
@@ -145,6 +152,21 @@ static void chipset_s0_to_s3(void)
 	hook_notify(HOOK_CHIPSET_SUSPEND);
 }
 
+void pd_send_ec_int(void)
+{
+	gpio_set_level(GPIO_EC_INT, 1);
+
+	/*
+	 * Delay long enough to guarantee EC see's the change. Slowest
+	 * EC clock speed is 250kHz in deep sleep -> 4us, and add 1us
+	 * for buffer.
+	 */
+	usleep(5);
+
+	gpio_set_level(GPIO_EC_INT, 0);
+}
+
+/* TODO: ARM based implementation */
 static void pch_evt_deferred(void)
 {
 	/* Determine new chipset state, trigger corresponding transition */
@@ -204,22 +226,25 @@ void board_config_pre_init(void)
 /* Initialize board. */
 static void board_init(void)
 {
-	int pd_enable, i;
+	int pd_enable;
 	int slp_s5 = gpio_get_level(GPIO_PCH_SLP_S5_L);
 	int slp_s3 = gpio_get_level(GPIO_PCH_SLP_S3_L);
+#ifdef CONFIG_CHARGE_MANAGER
+	int i;
 	struct charge_port_info charge_none, charge_vbus;
-
+#endif
 	/*
 	 * Enable CC lines after all GPIO have been initialized. Note, it is
 	 * important that this is enabled after the CC_ODL lines are set low
 	 * to specify device mode.
 	 */
-	gpio_set_level(GPIO_USB_C_CC_EN, 1);
+	/* gpio_set_level(GPIO_USB_C_CC_EN, 1); */
 
 	/* Enable interrupts on VBUS transitions. */
-	gpio_enable_interrupt(GPIO_USB_C0_VBUS_WAKE);
-	gpio_enable_interrupt(GPIO_USB_C1_VBUS_WAKE);
+	gpio_enable_interrupt(GPIO_USB_C0_VBUS_WAKE_L);
+	gpio_enable_interrupt(GPIO_USB_C1_VBUS_WAKE_L);
 
+#ifdef CONFIG_CHARGE_MANAGER
 	/* Initialize all pericom charge suppliers to 0 */
 	charge_none.voltage = USB_BC12_CHARGE_VOLTAGE;
 	charge_none.current = 0;
@@ -240,24 +265,26 @@ static void board_init(void)
 					     i,
 					     &charge_none);
 	}
-
 	/* Initialize VBUS supplier based on whether or not VBUS is present */
 	charge_vbus.voltage = USB_BC12_CHARGE_VOLTAGE;
 	charge_vbus.current = DEFAULT_CURR_LIMIT;
-	if (gpio_get_level(GPIO_USB_C0_VBUS_WAKE))
+
+	if (!gpio_get_level(GPIO_USB_C0_VBUS_WAKE_L))
 		charge_manager_update_charge(CHARGE_SUPPLIER_VBUS, 0,
 					     &charge_vbus);
 	else
 		charge_manager_update_charge(CHARGE_SUPPLIER_VBUS, 0,
 					     &charge_none);
 
-	if (gpio_get_level(GPIO_USB_C1_VBUS_WAKE))
+	if (!gpio_get_level(GPIO_USB_C1_VBUS_WAKE_L))
 		charge_manager_update_charge(CHARGE_SUPPLIER_VBUS, 1,
 					     &charge_vbus);
 	else
 		charge_manager_update_charge(CHARGE_SUPPLIER_VBUS, 1,
 					     &charge_none);
+#endif
 
+#if 1	/* TODO: Check the ARM based implementation */
 	/* Determine initial chipset state */
 	if (slp_s5 && slp_s3) {
 		disable_sleep(SLEEP_MASK_AP_RUN);
@@ -276,10 +303,17 @@ static void board_init(void)
 	/* Enable interrupts on PCH state change */
 	gpio_enable_interrupt(GPIO_PCH_SLP_S3_L);
 	gpio_enable_interrupt(GPIO_PCH_SLP_S5_L);
+#endif
 
 	/* Initialize active charge port to none */
 	pd_status.active_charge_port = CHARGE_PORT_NONE;
 
+/* Oak rev1 Only has RW image, due to the 64KB flash size (STM32F051) */
+#ifdef BOARD_OAK_PD
+	pd_status.status |= PD_STATUS_JUMPED_TO_IMAGE;
+	pd_status.status |= PD_STATUS_IN_RW;
+	pd_enable = 1;
+#else
 	/* Set PD MCU system status bits */
 	if (system_jumped_to_this_image())
 		pd_status.status |= PD_STATUS_JUMPED_TO_IMAGE;
@@ -300,6 +334,7 @@ static void board_init(void)
 	} else {
 		pd_enable = 1;
 	}
+#endif
 	pd_comm_enable(pd_enable);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
@@ -324,6 +359,9 @@ const struct i2c_port_t i2c_ports[] = {
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
+/* TODO: The USB SS/DP mux control is moved to EC, and need to replace the mux
+ * control function by RPC.
+ */
 struct usb_port_mux {
 	enum gpio_signal ss1_en_l;
 	enum gpio_signal ss2_en_l;
@@ -335,26 +373,39 @@ struct usb_port_mux {
 
 const struct usb_port_mux usb_muxes[] = {
 	{
-		.ss1_en_l    = GPIO_USB_C0_SS1_EN_L,
-		.ss2_en_l    = GPIO_USB_C0_SS2_EN_L,
-		.dp_mode_l   = GPIO_USB_C0_DP_MODE_L,
-		.dp_polarity = GPIO_USB_C0_DP_POLARITY,
-		.ss1_dp_mode = GPIO_USB_C0_SS1_DP_MODE,
-		.ss2_dp_mode = GPIO_USB_C0_SS2_DP_MODE,
+		.ss1_en_l    = 0,
+		.ss2_en_l    = 0,
+		.dp_mode_l   = 0,
+		.dp_polarity = 0,
+		.ss1_dp_mode = 0,
+		.ss2_dp_mode = 0,
 	},
+#if 0
 	{
-		.ss1_en_l    = GPIO_USB_C1_SS1_EN_L,
-		.ss2_en_l    = GPIO_USB_C1_SS2_EN_L,
-		.dp_mode_l   = GPIO_USB_C1_DP_MODE_L,
-		.dp_polarity = GPIO_USB_C1_DP_POLARITY,
-		.ss1_dp_mode = GPIO_USB_C1_SS1_DP_MODE,
-		.ss2_dp_mode = GPIO_USB_C1_SS2_DP_MODE,
+		.ss1_en_l    = 0,
+		.ss2_en_l    = 0,
+		.dp_mode_l   = 0,
+		.dp_polarity = 0,
+		.ss1_dp_mode = 0,
+		.ss2_dp_mode = 0,
 	},
+#endif
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == PD_PORT_COUNT);
 
 void board_set_usb_mux(int port, enum typec_mux mux, int polarity)
 {
+/* TODO:DONE implement EC RPC call */
+	if(port >= PD_PORT_COUNT)
+		return;
+
+	pd_port_status[port].mux = mux;
+	pd_port_status[port].polarity = polarity;
+
+	/* Call EC to setup the MUX */
+	pd_send_ec_int();
+
+#ifdef CONFIG_USBC_SS_MUX
 	const struct usb_port_mux *usb_mux = usb_muxes + port;
 
 	/* reset everything */
@@ -383,10 +434,13 @@ void board_set_usb_mux(int port, enum typec_mux mux, int polarity)
 	/* switch on superspeed lanes */
 	gpio_set_level(usb_mux->ss1_en_l, 0);
 	gpio_set_level(usb_mux->ss2_en_l, 0);
+#endif
 }
 
 int board_get_usb_mux(int port, const char **dp_str, const char **usb_str)
 {
+/* TODO:DONE implement EC RPC call */
+#ifdef CONFIG_USBC_SS_MUX
 	const struct usb_port_mux *usb_mux = usb_muxes + port;
 	int has_ss, has_usb, has_dp;
 	const char *dp, *usb;
@@ -404,10 +458,25 @@ int board_get_usb_mux(int port, const char **dp_str, const char **usb_str)
 	*usb_str = has_usb ? usb : NULL;
 
 	return has_ss;
+#else
+	if(port >= PD_PORT_COUNT);
+		return -1;
+	return pd_port_status[port].mux;
+#endif
 }
 
 void board_flip_usb_mux(int port)
 {
+/* TODO: implement EC RPC call */
+	if(port >= PD_PORT_COUNT)
+		return;
+
+	pd_port_status[port].polarity = !pd_port_status[port].polarity;
+
+	/* Call EC to setup the MUX */
+	pd_send_ec_int();
+
+#ifdef CONFIG_USBC_SS_MUX
 	const struct usb_port_mux *usb_mux = usb_muxes + port;
 	int usb_polarity;
 
@@ -430,8 +499,8 @@ void board_flip_usb_mux(int port)
 
 	gpio_set_level(usb_mux->ss1_dp_mode, !usb_polarity);
 	gpio_set_level(usb_mux->ss2_dp_mode, usb_polarity);
+#endif
 }
-
 
 int board_get_battery_soc(void)
 {
@@ -445,20 +514,6 @@ enum battery_present battery_is_present(void)
 	return BP_NOT_SURE;
 }
 
-static void pd_send_ec_int(void)
-{
-	gpio_set_level(GPIO_EC_INT, 1);
-
-	/*
-	 * Delay long enough to guarantee EC see's the change. Slowest
-	 * EC clock speed is 250kHz in deep sleep -> 4us, and add 1us
-	 * for buffer.
-	 */
-	usleep(5);
-
-	gpio_set_level(GPIO_EC_INT, 0);
-}
-
 /**
  * Set active charge port -- only one port can be active at a time.
  *
@@ -467,8 +522,11 @@ static void pd_send_ec_int(void)
  * Returns EC_SUCCESS if charge port is accepted and made active,
  * EC_ERROR_* otherwise.
  */
+/* TODO: Perform by EC */
 int board_set_active_charge_port(int charge_port)
 {
+/* TODO: Call EC to do that */
+#if 0
 	/* charge port is a realy physical port */
 	int is_real_port = (charge_port >= 0 && charge_port < PD_PORT_COUNT);
 	/* check if we are source vbus on that port */
@@ -479,6 +537,7 @@ int board_set_active_charge_port(int charge_port)
 		CPRINTS("Skip enable p%d", charge_port);
 		return EC_ERROR_INVAL;
 	}
+#endif
 
 	CPRINTS("New chg p%d", charge_port);
 
@@ -486,6 +545,9 @@ int board_set_active_charge_port(int charge_port)
 	 * If charging and the active charge port is changed, then disable
 	 * charging to guarantee charge circuit starts up cleanly.
 	 */
+
+/* TODO: Call EC to do that */
+#if 0
 	if (pd_status.active_charge_port != CHARGE_PORT_NONE &&
 	    (charge_port == CHARGE_PORT_NONE ||
 	     charge_port != pd_status.active_charge_port)) {
@@ -496,13 +558,17 @@ int board_set_active_charge_port(int charge_port)
 		CPRINTS("Chg: None\n");
 		return EC_SUCCESS;
 	}
+#endif
 
 	/* Save active charge port and enable charging if allowed */
 	pd_status.active_charge_port = charge_port;
+/* TODO: Call EC to do that */
+#if 0
 	if (charge_state != PD_CHARGE_NONE) {
 		gpio_set_level(GPIO_USB_C0_CHARGE_EN_L, !(charge_port == 0));
 		gpio_set_level(GPIO_USB_C1_CHARGE_EN_L, !(charge_port == 1));
 	}
+#endif
 
 	return EC_SUCCESS;
 }
@@ -663,10 +729,15 @@ static int ec_status_host_cmd(struct host_cmd_handler_args *args)
 				 * so that PD negotiates down to vSafe5V.
 				 */
 				charge_state = p->charge_state;
+/* TODO: Call EC to do that */
+#if 0
 				gpio_set_level(GPIO_USB_C0_CHARGE_EN_L, 1);
 				gpio_set_level(GPIO_USB_C1_CHARGE_EN_L, 1);
+#endif
+#ifdef CONFIG_CHARGE_MANAGER
 				pd_set_new_power_request(
 					pd_status.active_charge_port);
+#endif
 				/*
 				 * Wake charge ramp task so that it will check
 				 * board_is_vbus_too_low() and stop ramping up.
@@ -677,10 +748,13 @@ static int ec_status_host_cmd(struct host_cmd_handler_args *args)
 			case PD_CHARGE_5V:
 				/* Allow current on the active charge port */
 				charge_state = p->charge_state;
+/* TODO: Call EC to do that */
+#if 0
 				gpio_set_level(GPIO_USB_C0_CHARGE_EN_L,
 					!(pd_status.active_charge_port == 0));
 				gpio_set_level(GPIO_USB_C1_CHARGE_EN_L,
 					!(pd_status.active_charge_port == 1));
+#endif
 				CPRINTS("Chg: 5V");
 				break;
 			case PD_CHARGE_MAX:
@@ -690,10 +764,12 @@ static int ec_status_host_cmd(struct host_cmd_handler_args *args)
 				 * already allowed.
 				 */
 				if (charge_state == PD_CHARGE_5V) {
+#ifdef CONFIG_CHARGE_MANAGER
 					charge_state = p->charge_state;
 					pd_set_new_power_request(
 						pd_status.active_charge_port);
 					CPRINTS("Chg: Max");
+#endif
 				}
 				break;
 			default:
@@ -706,9 +782,11 @@ static int ec_status_host_cmd(struct host_cmd_handler_args *args)
 		 * set charging allowed, so we should just assume charging at
 		 * the max is allowed.
 		 */
+#ifdef CONFIG_CHARGE_MANAGER
 		charge_state = PD_CHARGE_MAX;
 		pd_set_new_power_request(pd_status.active_charge_port);
 		CPRINTS("Chg: Max");
+#endif
 	}
 
 	*r = pd_status;
@@ -721,6 +799,22 @@ static int ec_status_host_cmd(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_PD_EXCHANGE_STATUS, ec_status_host_cmd,
+			EC_VER_MASK(0) | EC_VER_MASK(1));
+
+/* Host commands */
+static int ec_get_pd_port_host_cmd(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_pd_port *p = args->params;
+	struct ec_response_pd_port *r = args->response;
+
+	if (args->version == 1) {
+		CPRINTS("%s\n", __FUNCTION__);
+		*r = pd_port_status[p->port];
+	}
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_PD_GET_PORT_STATUS, ec_get_pd_port_host_cmd,
 			EC_VER_MASK(0) | EC_VER_MASK(1));
 
 static int host_event_status_host_cmd(struct host_cmd_handler_args *args)
