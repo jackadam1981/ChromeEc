@@ -145,6 +145,7 @@ static void chipset_s0_to_s3(void)
 	hook_notify(HOOK_CHIPSET_SUSPEND);
 }
 
+/* TODO: ARM based implementation */
 static void pch_evt_deferred(void)
 {
 	/* Determine new chipset state, trigger corresponding transition */

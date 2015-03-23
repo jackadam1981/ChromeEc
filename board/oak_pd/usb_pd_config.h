@@ -82,8 +82,10 @@ static inline void pd_set_pins_speed(int port)
 	if (port == 0) {
 		/* 40 MHz pin speed on SPI PB13/14 */
 		STM32_GPIO_OSPEEDR(GPIO_B) |= 0x3C000000;
+#ifndef BOARD_OAK_PD /* TODO: Check the HW design. STM32F05X hasn't PE1 */
 		/* 40 MHz pin speed on TIM17_CH1 (PE1) */
 		STM32_GPIO_OSPEEDR(GPIO_E) |= 0x0000000C;
+#endif
 	} else {
 		/* 40 MHz pin speed on SPI PB3/4 */
 		STM32_GPIO_OSPEEDR(GPIO_B) |= 0x000003C0;
