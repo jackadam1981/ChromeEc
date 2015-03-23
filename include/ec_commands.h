@@ -2838,6 +2838,21 @@ struct ec_response_pd_status {
 	int32_t active_charge_port; /* active charging port */
 } __packed;
 
+/* EC to PD MCU get PD port status command */
+#define EC_CMD_PD_GET_PORT_STATUS 0x105
+
+/* Query being sent to PD */
+struct ec_params_pd_port {
+	uint32_t port;	/* PD port */
+} __packed;
+
+/* Port status of PD being sent back */
+struct ec_response_pd_port {
+	uint8_t polarity;		/* Port polarity */
+	uint8_t mux;			/* Muxing for the USB type C */
+} __packed;
+
+
 /* AP to PD MCU host event status command, cleared on read */
 #define EC_CMD_PD_HOST_EVENT_STATUS 0x104
 

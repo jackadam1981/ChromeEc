@@ -87,9 +87,11 @@ void pd_transition_voltage(int idx)
 
 int pd_set_power_supply_ready(int port)
 {
+/* TODO: Call EC to do that */
+#if 0
 	/* provide VBUS */
 	gpio_set_level(port ? GPIO_USB_C1_5V_EN : GPIO_USB_C0_5V_EN, 1);
-
+#endif
 	/* notify host of power info change */
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
 
@@ -98,9 +100,11 @@ int pd_set_power_supply_ready(int port)
 
 void pd_power_supply_reset(int port)
 {
+/* TODO: Call EC to do that */
+#if 0
 	/* Kill VBUS */
 	gpio_set_level(port ? GPIO_USB_C1_5V_EN : GPIO_USB_C0_5V_EN, 0);
-
+#endif
 	/* notify host of power info change */
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
 }
@@ -154,6 +158,9 @@ int pd_check_data_swap(int port, int data_role)
 void pd_execute_data_swap(int port, int data_role)
 {
 	/* Open USB switches when taking UFP role */
+	/* TODO: Sync port status to EC, and let EC to execute data swap,
+	 * And set local port status */
+	/* set_usb_switches(port, (data_role == PD_ROLE_UFP)); */
 }
 
 void pd_check_pr_role(int port, int pr_role, int partner_pr_swap)
@@ -297,6 +304,8 @@ static void svdm_dp_post_config(int port)
 	if (!(dp_flags[port] & DP_FLAGS_HPD_HI_PENDING))
 		return;
 
+	/* TODO: Sync port status to EC, and let EC to set PD_HPD,
+	 * And set local port status */
 	if (port)
 		gpio_set_level(GPIO_USB_C1_DP_HPD, 1);
 	else
@@ -305,11 +314,15 @@ static void svdm_dp_post_config(int port)
 
 static void hpd0_irq_deferred(void)
 {
+	/* TODO: Sync port status to EC, and let EC to set PD_HPD,
+	 * And set local port status */
 	gpio_set_level(GPIO_USB_C0_DP_HPD, 1);
 }
 
 static void hpd1_irq_deferred(void)
 {
+	/* TODO: Sync port status to EC, and let EC to set PD_HPD,
+	 * And set local port status */
 	gpio_set_level(GPIO_USB_C1_DP_HPD, 1);
 }
 
