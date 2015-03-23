@@ -35,6 +35,8 @@
 
 #define PDO_FIXED_FLAGS (PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP)
 
+extern struct ec_response_pd_port pd_port_status[PD_PORT_COUNT];
+
 const uint32_t pd_src_pdo[] = {
 		PDO_FIXED(5000,   900, PDO_FIXED_FLAGS),
 };
@@ -87,8 +89,14 @@ void pd_transition_voltage(int idx)
 
 int pd_set_power_supply_ready(int port)
 {
+#if 0
 	/* provide VBUS */
 	gpio_set_level(port ? GPIO_USB_C1_5V_EN : GPIO_USB_C0_5V_EN, 1);
+#endif
+
+	/* OAK_PD: TODO: EC setup the 5V_EN pin */
+	pd_port_status[port].data_role = PD_ROLE_DFP;
+	pd_port_status[port].power_role = PD_ROLE_SOURCE;
 
 	/* notify host of power info change */
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
@@ -98,8 +106,14 @@ int pd_set_power_supply_ready(int port)
 
 void pd_power_supply_reset(int port)
 {
+/* EC TODO: EC should init the 5V_EN pin */
+#if 0
 	/* Kill VBUS */
 	gpio_set_level(port ? GPIO_USB_C1_5V_EN : GPIO_USB_C0_5V_EN, 0);
+#endif
+	/* OAK_PD: TODO: EC setup the 5V_EN pin */
+	pd_port_status[port].data_role = PD_ROLE_DFP;
+	pd_port_status[port].power_role = PD_ROLE_SINK;
 
 	/* notify host of power info change */
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
@@ -108,11 +122,12 @@ void pd_power_supply_reset(int port)
 void pd_set_input_current_limit(int port, uint32_t max_ma,
 				uint32_t supply_voltage)
 {
+#ifdef CONFIG_CHARGE_MANAGER
 	struct charge_port_info charge;
 	charge.current = max_ma;
 	charge.voltage = supply_voltage;
 	charge_manager_update_charge(CHARGE_SUPPLIER_PD, port, &charge);
-
+#endif
 	/* notify host of power info change */
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
 }
@@ -154,6 +169,9 @@ int pd_check_data_swap(int port, int data_role)
 void pd_execute_data_swap(int port, int data_role)
 {
 	/* Open USB switches when taking UFP role */
+	/* TODO: Sync port status to EC, and let EC to execute data swap,
+	 * And set local port status */
+	/* set_usb_switches(port, (data_role == PD_ROLE_UFP)); */
 }
 
 void pd_check_pr_role(int port, int pr_role, int partner_pr_swap)
@@ -247,8 +265,8 @@ static int dp_flags[PD_PORT_COUNT];
 static void svdm_safe_dp_mode(int port)
 {
 	/* make DP interface safe until configure */
-	board_set_usb_mux(port, TYPEC_MUX_NONE, pd_get_polarity(port));
 	dp_flags[port] = 0;
+	board_set_usb_mux(port, TYPEC_MUX_NONE, pd_get_polarity(port));
 }
 
 static int svdm_enter_dp_mode(int port, uint32_t mode_caps)
@@ -297,55 +315,14 @@ static void svdm_dp_post_config(int port)
 	if (!(dp_flags[port] & DP_FLAGS_HPD_HI_PENDING))
 		return;
 
-	if (port)
-		gpio_set_level(GPIO_USB_C1_DP_HPD, 1);
-	else
-		gpio_set_level(GPIO_USB_C0_DP_HPD, 1);
+	/* TODO: Sync port status to EC, and let EC to set PD_HPD. */
+	pd_send_ec_int();
 }
-
-static void hpd0_irq_deferred(void)
-{
-	gpio_set_level(GPIO_USB_C0_DP_HPD, 1);
-}
-
-static void hpd1_irq_deferred(void)
-{
-	gpio_set_level(GPIO_USB_C1_DP_HPD, 1);
-}
-
-DECLARE_DEFERRED(hpd0_irq_deferred);
-DECLARE_DEFERRED(hpd1_irq_deferred);
-
-#define PORT_TO_HPD(port) ((port) ? GPIO_USB_C1_DP_HPD : GPIO_USB_C0_DP_HPD)
 
 static int svdm_dp_attention(int port, uint32_t *payload)
 {
-	int cur_lvl;
-	int lvl = PD_VDO_HPD_LVL(payload[1]);
-	int irq = PD_VDO_HPD_IRQ(payload[1]);
-	enum gpio_signal hpd = PORT_TO_HPD(port);
-	cur_lvl = gpio_get_level(hpd);
-
-	/* Its initial DP status message prior to config */
-	if (!(dp_flags[port] & DP_FLAGS_DP_ON)) {
-		if (lvl)
-			dp_flags[port] |= DP_FLAGS_HPD_HI_PENDING;
-		return 1;
-	}
-
-	if (irq & cur_lvl) {
-		gpio_set_level(hpd, 0);
-		/* 250 usecs is minimum, 2msec is max */
-		if (port)
-			hook_call_deferred(hpd1_irq_deferred, 300);
-		else
-			hook_call_deferred(hpd0_irq_deferred, 300);
-	} else if (irq & !cur_lvl) {
-		CPRINTF("ERR:HPD:IRQ&LOW\n");
-		return 0; /* nak */
-	} else {
-		gpio_set_level(hpd, lvl);
-	}
+	/* TODO: set the DP status and interrupt the EC */
+	pd_send_ec_int();
 	/* ack */
 	return 1;
 }
@@ -353,7 +330,9 @@ static int svdm_dp_attention(int port, uint32_t *payload)
 static void svdm_exit_dp_mode(int port)
 {
 	svdm_safe_dp_mode(port);
-	gpio_set_level(PORT_TO_HPD(port), 0);
+	/* TODO: Sent DP mode to EC */
+	/* gpio_set_level(PORT_TO_HPD(port), 0); */
+	pd_send_ec_int();
 }
 
 static int svdm_enter_gfu_mode(int port, uint32_t mode_caps)
