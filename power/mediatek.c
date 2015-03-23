@@ -90,6 +90,9 @@
  * time of approx. 0.5msec until V2_5 regulator starts up. */
 #define PMIC_RTC_STARTUP (225 * MSEC)
 
+/* Wait for 5V power source stable */
+#define PMIC_WAIT_FOR_5V_POWER_GOOD (1 * MSEC)
+
 /* TODO(crosbug.com/p/25047): move to HOOK_POWER_BUTTON_CHANGE */
 /* 1 if the power button was pressed last time we checked */
 static char power_button_was_pressed;
@@ -181,8 +184,24 @@ static void set_ap_reset(int asserted)
  */
 static void set_pmic_pwron(int asserted)
 {
+	timestamp_t poll_deadline;
 	/* Signal is active-high */
 	CPRINTS("set_pmic_pwron(%d)", asserted);
+	/* Oak rev1 power-on sequence:
+	 *   raise GPIO_SYSTEM_POWER_H
+	 *   wait for 5V power good, timeout 1 second
+	 */
+	if (system_get_board_version() > 1) {
+		gpio_set_level(GPIO_SYSTEM_POWER_H, asserted);
+		poll_deadline = get_time();
+		poll_deadline.val += SECOND;
+		while (asserted && gpio_get_level(GPIO_5V_POWER_GOOD) &&
+		       get_time().val < poll_deadline.val)
+			usleep(PMIC_WAIT_FOR_5V_POWER_GOOD);
+		if (gpio_get_level(GPIO_5V_POWER_GOOD))
+			CPRINTS("5V power not ready");
+	}
+
 	gpio_set_level(GPIO_PMIC_PWRON_H, asserted);
 }
 
@@ -263,10 +282,6 @@ static int check_for_power_off_event(void)
 	}
 
 	power_button_was_pressed = pressed;
-
-	/* POWER_GOOD released by AP : shutdown immediately */
-	if (!power_has_signals(IN_POWER_GOOD))
-		return POWER_OFF_BY_POWER_GOOD_LOST;
 
 	return POWER_OFF_CANCEL;
 }
