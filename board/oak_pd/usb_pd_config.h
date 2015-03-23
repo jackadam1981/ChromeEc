@@ -80,15 +80,21 @@ static inline void spi_enable_clock(int port)
 static inline void pd_set_pins_speed(int port)
 {
 	if (port == 0) {
-		/* 40 MHz pin speed on SPI PB13/14 */
-		STM32_GPIO_OSPEEDR(GPIO_B) |= 0x3C000000;
-		/* 40 MHz pin speed on TIM17_CH1 (PE1) */
-		STM32_GPIO_OSPEEDR(GPIO_E) |= 0x0000000C;
-	} else {
-		/* 40 MHz pin speed on SPI PB3/4 */
+		/* 40 MHz pin speed on SPI PB3&4,
+		 * (USB_C0_TX_CLKIN & USB_C0_CC1_TX_DATA)
+		 */
 		STM32_GPIO_OSPEEDR(GPIO_B) |= 0x000003C0;
-		/* 40 MHz pin speed on TIM14_CH1 (PB1) */
-		STM32_GPIO_OSPEEDR(GPIO_B) |= 0x0000000C;
+		/* 40 MHz pin speed on TIM16_CH1 (PB8),
+		 * (USB_C0_TX_CLKOUT)
+		 */
+		STM32_GPIO_OSPEEDR(GPIO_B) |= 0x00030000;
+	} else {
+		/* 40 MHz pin speed on SPI PB13/14,
+		 * (USB_C1_TX_CLKIN & USB_C1_CC1_TX_DATA)
+		 */
+		STM32_GPIO_OSPEEDR(GPIO_B) |= 0x3C000000;
+		/* 40 MHz pin speed on TIM15_CH2 (PB15) */
+		STM32_GPIO_OSPEEDR(GPIO_B) |= 0xC0000000;
 	}
 }
 
@@ -111,22 +117,28 @@ static inline void pd_tx_enable(int port, int polarity)
 {
 	if (port == 0) {
 		/* put SPI function on TX pin */
-		if (polarity) /* PD3 is SPI2 MISO */
-			gpio_set_alternate_function(GPIO_D, 0x0008, 1);
-		else /* PB14 is SPI2 MISO */
-			gpio_set_alternate_function(GPIO_B, 0x4000, 0);
-
-		/* set the low level reference */
-		gpio_set_level(GPIO_USB_C0_CC_TX_EN, 1);
-	} else {
-		/* put SPI function on TX pin */
-		if (polarity) /* PE14 is SPI1 MISO */
-			gpio_set_alternate_function(GPIO_E, 0x4000, 1);
-		else /* PB4 is SPI1 MISO */
+		if (polarity) /* USB_C0_CC2_TX_DATA: PA6 is SPI2 MISO */
+			gpio_set_alternate_function(GPIO_A, 0x0040, 0);
+		else /* USB_C0_CC1_TX_DATA: PB4 is SPI2 MISO */
 			gpio_set_alternate_function(GPIO_B, 0x0010, 0);
 
 		/* set the low level reference */
-		gpio_set_level(GPIO_USB_C1_CC_TX_EN, 1);
+		/* TODO: set TX pin LOW */
+		/* gpio_set_level(GPIO_USB_C0_CC_TX_EN, 1); */
+	} else {
+		/* put SPI function on TX pin */
+		/* USB_C1_CCX_TX_DATA: PB14 is SPI1 MISO */
+		gpio_set_alternate_function(GPIO_B, 0x4000, 0);
+
+		/* There is a pin muxer to select CC1 or CC2 TX_DATA,
+		 * Pin mux is controlled by USB_C1_CC2_TX_SEL pin,
+		 * USB_C1_CC1_TX_DATA will be selected, if polarity is 0,
+		 * USB_C1_CC2_TX_DATA will be selected, if polarity is 1 .
+		 */
+		gpio_set_level(GPIO_USB_C1_CC2_TX_SEL, polarity);
+		/* TODO: set TX pin LOW */
+		/* set the low level reference */
+		/* gpio_set_level(GPIO_USB_C1_CC_TX_EN, 1); */
 	}
 }
 
@@ -135,30 +147,33 @@ static inline void pd_tx_disable(int port, int polarity)
 {
 	if (port == 0) {
 		/* output low on SPI TX to disable the FET */
-		if (polarity) /* PD3 is SPI2 MISO */
-			STM32_GPIO_MODER(GPIO_D) = (STM32_GPIO_MODER(GPIO_D)
-						   & ~(3 << (2*3)))
-						   |  (1 << (2*3));
-		else /* PB14 is SPI2 MISO */
-			STM32_GPIO_MODER(GPIO_B) = (STM32_GPIO_MODER(GPIO_B)
-						   & ~(3 << (2*14)))
-						   |  (1 << (2*14));
-
-		/* put the low level reference in Hi-Z */
-		gpio_set_level(GPIO_USB_C0_CC_TX_EN, 0);
-	} else {
-		/* output low on SPI TX to disable the FET */
-		if (polarity) /* PE14 is SPI1 MISO */
-			STM32_GPIO_MODER(GPIO_E) = (STM32_GPIO_MODER(GPIO_E)
-						   & ~(3 << (2*14)))
-						   |  (1 << (2*14));
-		else /* PB4 is SPI1 MISO */
+		if (polarity) /* PA6 is SPI2 MISO */
+			STM32_GPIO_MODER(GPIO_A) = (STM32_GPIO_MODER(GPIO_A)
+						   & ~(3 << (2*6)))
+						   |  (1 << (2*6));
+		else /* PB4 is SPI2 MISO */
 			STM32_GPIO_MODER(GPIO_B) = (STM32_GPIO_MODER(GPIO_B)
 						   & ~(3 << (2*4)))
 						   |  (1 << (2*4));
 
 		/* put the low level reference in Hi-Z */
-		gpio_set_level(GPIO_USB_C1_CC_TX_EN, 0);
+		/* TODO:Check the substitution of USB_C0_CC_TX_EN in Oak rev1 */
+		/* gpio_set_level(GPIO_USB_C0_CC_TX_EN, 0); */
+		/* TODO: Let TX pin Hi-Z */
+
+	} else {
+		/* Select the pin according to the polarity */
+		gpio_set_level(GPIO_USB_C1_CC2_TX_SEL, polarity);
+		/* output low on SPI TX to disable the FET */
+		/* PB14 is SPI1 MISO */
+		STM32_GPIO_MODER(GPIO_B) = (STM32_GPIO_MODER(GPIO_B)
+					   & ~(3 << (2*14)))
+					   |  (1 << (2*14));
+
+		/* put the low level reference in Hi-Z */
+		/* TODO:Check the substitution of USB_C1_CC_TX_EN in Oak rev1 */
+		/* gpio_set_level(GPIO_USB_C1_CC_TX_EN, 0); */
+		/* TODO: Let TX pin Hi-Z */
 	}
 }
 
@@ -194,14 +209,19 @@ static inline void pd_set_host_mode(int port, int enable)
 	if (port == 0) {
 		if (enable) {
 			/* We never charging in power source mode */
-			gpio_set_level(GPIO_USB_C0_CHARGE_EN_L, 1);
+			/* gpio_set_level(GPIO_USB_C0_CHARGE_EN_L, 1); */
+
+			/* Pull up for host mode */
+			gpio_set_level(GPIO_USB_C0_HOST_HIGH, 1);
 			/* High-Z is used for host mode. */
 			gpio_set_level(GPIO_USB_C0_CC1_ODL, 1);
 			gpio_set_level(GPIO_USB_C0_CC2_ODL, 1);
 		} else {
 			/* Kill VBUS power supply */
-			gpio_set_level(GPIO_USB_C0_5V_EN, 0);
+			/* gpio_set_level(GPIO_USB_C0_5V_EN, 0); */
+
 			/* Pull low for device mode. */
+			gpio_set_level(GPIO_USB_C0_HOST_HIGH, 0);
 			gpio_set_level(GPIO_USB_C0_CC1_ODL, 0);
 			gpio_set_level(GPIO_USB_C0_CC2_ODL, 0);
 			/* Let charge_manager decide to enable the port */
@@ -209,14 +229,17 @@ static inline void pd_set_host_mode(int port, int enable)
 	} else {
 		if (enable) {
 			/* We never charging in power source mode */
-			gpio_set_level(GPIO_USB_C1_CHARGE_EN_L, 1);
+			/* gpio_set_level(GPIO_USB_C1_CHARGE_EN_L, 1); */
+			/* Pull up for host mode */
+			gpio_set_level(GPIO_USB_C1_HOST_HIGH, 1);
 			/* High-Z is used for host mode. */
 			gpio_set_level(GPIO_USB_C1_CC1_ODL, 1);
 			gpio_set_level(GPIO_USB_C1_CC2_ODL, 1);
 		} else {
 			/* Kill VBUS power supply */
-			gpio_set_level(GPIO_USB_C1_5V_EN, 0);
+			/* gpio_set_level(GPIO_USB_C1_5V_EN, 0); */
 			/* Pull low for device mode. */
+			gpio_set_level(GPIO_USB_C1_HOST_HIGH, 0);
 			gpio_set_level(GPIO_USB_C1_CC1_ODL, 0);
 			gpio_set_level(GPIO_USB_C1_CC2_ODL, 0);
 			/* Let charge_manager decide to enable the port */
@@ -252,11 +275,13 @@ static inline void pd_config_init(int port, uint8_t power_role)
 	if (port == 0) {
 			gpio_set_level(GPIO_USB_C0_CC1_VCONN1_EN_L, 1);
 			gpio_set_level(GPIO_USB_C0_CC2_VCONN1_EN_L, 1);
-			gpio_set_level(GPIO_USB_C0_DP_HPD, 0);
+			/* TODO: need to notify EC to setup the USB_C0_DP_HPD */
+			/* gpio_set_level(GPIO_USB_C0_DP_HPD, 0); */
 	} else {
 			gpio_set_level(GPIO_USB_C1_CC1_VCONN1_EN_L, 1);
 			gpio_set_level(GPIO_USB_C1_CC2_VCONN1_EN_L, 1);
-			gpio_set_level(GPIO_USB_C1_DP_HPD, 0);
+			/* TODO: need to notify EC to setup the USB_C1_DP_HPD */
+			/* gpio_set_level(GPIO_USB_C1_DP_HPD, 0); */
 	}
 }
 
@@ -281,8 +306,8 @@ static inline void pd_set_vconn(int port, int polarity, int enable)
 
 static inline int pd_snk_is_vbus_provided(int port)
 {
-	return gpio_get_level(port ? GPIO_USB_C1_VBUS_WAKE :
-				     GPIO_USB_C0_VBUS_WAKE);
+	return !gpio_get_level(port ? GPIO_USB_C1_VBUS_WAKE_L :
+				     GPIO_USB_C0_VBUS_WAKE_L);
 }
 
 /* Standard-current DFP : no-connect voltage is 1.55V */
