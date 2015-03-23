@@ -71,6 +71,8 @@ BOARDS_STM32=(
 	mighty
 	minimuffin
 	nyan
+	oak
+	oak_pd
 	pinky
 	pit
 	plankton
@@ -167,6 +169,7 @@ servo_usbpd_hard_reset() {
 
 servo_sh_hard_reset() {
 	dut_control sh_reset:on
+	sleep 0.5
 	dut_control sh_reset:off
 }
 
@@ -184,7 +187,7 @@ servo_ec_boot0() {
 }
 
 servo_usbpd_boot0() {
-	dut_control usbpd_boot_mode:on
+	dut_control usbpd_uart_vref:pp3300 usbpd_boot_mode:on
 }
 
 servo_sh_boot0() {
@@ -271,6 +274,7 @@ function ec_uart() {
 
 # Servo variables management
 case "${BOARD}" in
+	oak_pd ) MCU="usbpd" ;;
 	ryu_sh ) MCU="sh" ;;
 	samus_pd ) MCU="usbpd" ;;
 	dingdong|hoho|twinkie ) DUT_CONTROL_CMD="true" ; MCU="ec" ;;
