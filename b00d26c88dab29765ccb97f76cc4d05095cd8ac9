@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "666d98b3_333d4890",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-03-23T23:12:05Z",
+      "side": 1,
+      "message": "You should be able to test this manually, right?  Plug in AC, wait for battery to charge, then quickly unplug and replug battery.  See 256mA for 5 sec.\n\n(Please test that before committing this change)",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "revId": "b00d26c88dab29765ccb97f76cc4d05095cd8ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
