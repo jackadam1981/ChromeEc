@@ -229,15 +229,15 @@ static int pd_src_cap_cnt[PD_PORT_COUNT];
 
 static struct pd_protocol {
 	/* current port power role (SOURCE or SINK) */
-	uint8_t power_role;
+	uint8_t power_role; /* TODO: EC needs to know */
 	/* current port data role (DFP or UFP) */
-	uint8_t data_role;
+	uint8_t data_role;/* TODO: EC needs to know */
 	/* port flags, see PD_FLAGS_* */
 	uint16_t flags;
 	/* 3-bit rolling message ID counter */
 	uint8_t msg_id;
 	/* Port polarity : 0 => CC1 is CC line, 1 => CC2 is CC line */
-	uint8_t polarity;
+	uint8_t polarity;/* TODO: EC needs to know */
 	/* PD state for port */
 	enum pd_states task_state;
 	/* PD state when we run state handler the last time */
@@ -1821,7 +1821,6 @@ void pd_set_new_power_request(int port)
  */
 #error "Backwards compatible DFP does not support USB"
 #endif
-
 void pd_task(void)
 {
 	int head;
@@ -1847,7 +1846,6 @@ void pd_task(void)
 
 	/* Ensure the power supply is in the default state */
 	pd_power_supply_reset(port);
-
 	/* Initialize physical layer */
 	pd_hw_init(port, PD_ROLE_DEFAULT);
 
@@ -1869,7 +1867,6 @@ void pd_task(void)
 	typec_set_input_current_limit(port, 0, 0);
 	charge_manager_update_dualrole(port, CAP_UNKNOWN);
 #endif
-
 	while (1) {
 		/* process VDM messages last */
 		pd_vdm_send_state_machine(port);
@@ -2904,7 +2901,6 @@ void pd_rx_event(int port)
 static void dual_role_on(void)
 {
 	int i;
-
 	pd_set_dual_role(PD_DRP_TOGGLE_ON);
 	CPRINTS("chipset -> S0");
 
@@ -2933,18 +2929,25 @@ static void dual_role_force_sink(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, dual_role_force_sink, HOOK_PRIO_DEFAULT);
 
-#ifdef HAS_TASK_CHIPSET
+/* #ifdef HAS_TASK_CHIPSET */
 static void dual_role_init(void)
 {
+	/* OAK_PD: TODO:
+	 * Power management is not implement for ARM based system yet
+	 * assume always in S0 (Power ON state).
+	 */
+#if 0
 	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
 		dual_role_force_sink();
 	else if (chipset_in_state(CHIPSET_STATE_SUSPEND))
 		dual_role_off();
 	else /* CHIPSET_STATE_ON */
+#endif
 		dual_role_on();
 }
+
 DECLARE_HOOK(HOOK_INIT, dual_role_init, HOOK_PRIO_DEFAULT);
-#endif /* HAS_TASK_CHIPSET */
+/* #endif *//* HAS_TASK_CHIPSET */
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 
 #ifdef CONFIG_COMMON_RUNTIME
