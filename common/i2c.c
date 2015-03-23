@@ -515,6 +515,8 @@ static int i2c_command_passthru(struct host_cmd_handler_args *args)
 	out = args->params + sizeof(*params) + params->num_msgs * sizeof(*msg);
 	in_len = 0;
 
+	msleep(100);
+
 	i2c_lock(params->port, 1);
 
 	for (resp->num_msgs = 0, msg = params->msg;
