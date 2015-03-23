@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-/* llama board configuration */
+/* oak board configuration */
 
 #ifndef __BOARD_H
 #define __BOARD_H
@@ -14,14 +14,12 @@
 #define CONFIG_BATTERY_SMART
 #define CONFIG_BOARD_PRE_INIT
 #define CONFIG_CHARGER
-#define CONFIG_CHARGER_BQ24715
+#define CONFIG_CHARGER_BQ24773
 #define CONFIG_CHARGER_DISCHARGE_ON_AC
 #define CONFIG_CHARGER_V2
-#define CONFIG_EXTPOWER_GPIO
 #define CONFIG_FORCE_CONSOLE_RESUME
 #define CONFIG_HOST_COMMAND_STATUS
 #define CONFIG_I2C
-#define CONFIG_I2C_DEBUG_PASSTHRU
 #define CONFIG_KEYBOARD_COL2_INVERTED
 #define CONFIG_KEYBOARD_PROTOCOL_MKBP
 #define CONFIG_LED_COMMON
@@ -63,10 +61,11 @@
 /* Keyboard output port list */
 #define KB_OUT_PORT_LIST GPIO_A, GPIO_B, GPIO_C
 
-/* Single I2C port, where the EC is the master. */
-#define I2C_PORT_MASTER 0
-#define I2C_PORT_BATTERY I2C_PORT_MASTER
-#define I2C_PORT_CHARGER I2C_PORT_MASTER
+/* 2 I2C master ports, connect to battery, charger, pd and USB switches */
+#define I2C_PORT_BATTERY 0
+#define I2C_PORT_CHARGER 0
+#define I2C_PORT_PD_MCU 1
+#define I2C_PORT_USB_SWITCH 1
 
 /* Timer selection */
 #define TIM_CLOCK32 2
@@ -96,7 +95,11 @@ enum pwm_channel {
 
 /* Discharge battery when on AC power for factory test. */
 int board_discharge_on_ac(int enable);
+int board_is_discharging_on_ac(void);
 
-#endif				/* !__ASSEMBLER__ */
+/* Reset PD MCU */
+void board_reset_pd_mcu(void);
 
-#endif				/* __BOARD_H */
+#endif  /* !__ASSEMBLER__ */
+
+#endif  /* __BOARD_H */
