@@ -159,6 +159,7 @@ toad_ec_hard_reset() {
 
 servo_ec_hard_reset() {
 	dut_control cold_reset:on
+	sleep:0.5
 	dut_control cold_reset:off
 }
 
