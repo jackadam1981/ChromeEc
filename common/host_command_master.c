@@ -119,6 +119,11 @@ static int pd_host_command_internal(int command, int version,
 		return -ret;
 	}
 
+	CPRINTF("[PD]:");
+	for (i = 0; i < resp_len + 2; i++)
+		CPRINTF(" %02x", resp_buf[i]);
+	CPRINTF("\n");
+
 	/* Read back response header and start checksum */
 	sum = 0;
 	for (i = 0, d = (uint8_t *)&rs; i < sizeof(rs); i++, d++) {

@@ -79,16 +79,24 @@
 #define DELAY_SHUTDOWN_ON_POWER_HOLD	(11000 * MSEC)	/* 11 seconds */
 
 /*
- * The hold time for pulling down the PMIC_WARM_RESET_L pin so that
+ * The hold time for pulling down the PMIC_WARM_RESET_H pin so that
  * the AP can entery the recovery mode (flash SPI flash from USB).
  */
-#define PMIC_WARM_RESET_L_HOLD_TIME (4 * MSEC)
+#define PMIC_WARM_RESET_H_HOLD_TIME (4 * MSEC)
+
+/*
+ * The hold time for pulling down the SYSTEM_POWER_H pin.
+ */
+#define PMIC_COLD_RESET_L_HOLD_TIME (50 * MSEC)
 
 /*
  * The first time the PMIC sees power (AC or battery) it needs 200ms (+/-12%
  * oscillator tolerance) for the RTC startup. In addition there is a startup
  * time of approx. 0.5msec until V2_5 regulator starts up. */
 #define PMIC_RTC_STARTUP (225 * MSEC)
+
+/* Wait for 5V power source stable */
+#define PMIC_WAIT_FOR_5V_POWER_GOOD (1 * MSEC)
 
 /* TODO(crosbug.com/p/25047): move to HOOK_POWER_BUTTON_CHANGE */
 /* 1 if the power button was pressed last time we checked */
@@ -154,21 +162,14 @@ enum blacklight_override_t {
 static void chipset_turn_off_power_rails(void);
 
 /**
- * Set the AP RESET signal.
+ * Set the system power signal.
  *
- * This function is for backward-compatible.
- *
- * AP_RESET_H (PB3) is stuffed before rev <= 2.0 and connected to PMIC RESET.
- * After rev >= 2.2, this is removed. This should not effected the new board.
- *
- * @param asserted  Assert (=1) or deassert (=0) the signal.  This is the
- *                  logical level of the pin, not the physical level.
+ * @param asserted	off (=0) or on (=1)
  */
-static void set_ap_reset(int asserted)
+static void set_system_power(int asserted)
 {
-	/* Signal is active-high */
-	CPRINTS("set_ap_reset(%d)", asserted);
-	gpio_set_level(GPIO_AP_RESET_H, asserted);
+	CPRINTS("set_system_power(%d)", asserted);
+	gpio_set_level(GPIO_SYSTEM_POWER_H, asserted);
 }
 
 /**
@@ -181,8 +182,25 @@ static void set_ap_reset(int asserted)
  */
 static void set_pmic_pwron(int asserted)
 {
+	timestamp_t poll_deadline;
 	/* Signal is active-high */
 	CPRINTS("set_pmic_pwron(%d)", asserted);
+	/* Oak rev1 power-on sequence:
+	 *   raise GPIO_SYSTEM_POWER_H
+	 *   wait for 5V power good, timeout 1 second
+	 */
+	/* if (system_get_board_version() > 1) { */
+	if (asserted) {
+		set_system_power(asserted);
+		poll_deadline = get_time();
+		poll_deadline.val += SECOND;
+		while (asserted && !gpio_get_level(GPIO_5V_POWER_GOOD) &&
+		       get_time().val < poll_deadline.val)
+			usleep(PMIC_WAIT_FOR_5V_POWER_GOOD);
+		if (gpio_get_level(GPIO_5V_POWER_GOOD))
+			CPRINTS("5V power not ready");
+	}
+
 	gpio_set_level(GPIO_PMIC_PWRON_H, asserted);
 }
 
@@ -263,10 +281,6 @@ static int check_for_power_off_event(void)
 	}
 
 	power_button_was_pressed = pressed;
-
-	/* POWER_GOOD released by AP : shutdown immediately */
-	if (!power_has_signals(IN_POWER_GOOD))
-		return POWER_OFF_BY_POWER_GOOD_LOST;
 
 	return POWER_OFF_CANCEL;
 }
@@ -360,16 +374,9 @@ static void chipset_turn_off_power_rails(void)
 {
 	/* Release the power on pin, if it was asserted */
 	set_pmic_pwron(0);
-	/* Close the pmic power source immediately */
-	/* set_pmic_source(0); */
 
-	usleep(PMIC_THERM_HOLD_TIME);
-
-	/* Keep AP and PMIC in reset the whole time */
-	set_pmic_warm_reset(1);
-
-	/* Hold the reset pin so that the AP stays in off mode (rev <= 2.0) */
-	set_ap_reset(1);
+	/* system power off */
+	set_system_power(0);
 }
 
 void chipset_force_shutdown(void)
@@ -448,8 +455,8 @@ static void power_on(void)
 	gpio_set_flags(power_signal_list[MTK_SUSPEND_ASSERTED].gpio,
 		       GPIO_INPUT | GPIO_PULL_UP | GPIO_INT_BOTH);
 
-	/* Make sure we de-assert and AP_RESET_L pin. */
-	set_ap_reset(0);
+	/* Make sure we de-assert and GPIO_PMIC_WARM_RESET_H pin. */
+	set_pmic_warm_reset(0);
 
 	/*
 	 * Before we push PMIC power button, wait for the PMI RTC ready, which
@@ -547,19 +554,32 @@ void chipset_reset(int is_cold)
 {
 	if (is_cold) {
 		CPRINTS("EC triggered cold reboot");
-		power_off();
-		/* After POWER_GOOD is dropped off,
-		 * the system will be on again
-		 */
-		power_request = POWER_REQ_ON;
+		set_system_power(0);
+		usleep(PMIC_COLD_RESET_L_HOLD_TIME);
+		/* Press the PMIC power button */
+		set_pmic_pwron(1);
+		usleep(PMIC_PWRON_PRESS_TIME);
+		set_pmic_pwron(0);
 	} else {
 		CPRINTS("EC triggered warm reboot");
-		CPRINTS("assert GPIO_PMIC_WARM_RESET_H for %d ms",
-			PMIC_WARM_RESET_L_HOLD_TIME / MSEC);
 		set_pmic_warm_reset(1);
-		usleep(PMIC_WARM_RESET_L_HOLD_TIME);
+		usleep(PMIC_WARM_RESET_H_HOLD_TIME);
+		/* deassert the reset signals */
 		set_pmic_warm_reset(0);
 	}
+}
+
+void ap_reset_deferred(void)
+{
+	/* Warm reset AP */
+	chipset_reset(0);
+}
+DECLARE_DEFERRED(ap_reset_deferred);
+
+void ap_reset_interrupt(enum gpio_signal signal)
+{
+	if (gpio_get_level(GPIO_AP_RESET_L) == 0)
+		hook_call_deferred(ap_reset_deferred, 0);
 }
 
 enum power_state power_handle_state(enum power_state state)
@@ -634,7 +654,8 @@ enum power_state power_handle_state(enum power_state state)
 			CPRINTS("power off %d", value);
 			power_off();
 			return POWER_S0S3;
-		} else if (power_get_signals() & IN_SUSPEND) {
+		}
+		else if (power_get_signals() & IN_SUSPEND) {
 			return POWER_S0S3;
 		}
 		return state;
