@@ -313,6 +313,8 @@ static void svdm_dp_post_config(int port)
 	if (!(dp_flags[port] & DP_FLAGS_HPD_HI_PENDING))
 		return;
 
+	/* TODO: Sync port status to EC, and let EC to set PD_HPD,
+	 * And set local port status */
 	if (port)
 		gpio_set_level(GPIO_USB_C1_DP_HPD, 1);
 	else
