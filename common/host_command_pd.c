@@ -125,7 +125,11 @@ void pd_command_task(void)
 		int evt = task_wait_event(-1);
 
 		/* Process event to send status to PD */
-		if (evt & TASK_EVENT_EXCHANGE_PD_STATUS)
+		if (evt & TASK_EVENT_EXCHANGE_PD_STATUS) {
 			pd_exchange_status();
+#ifdef CONFIG_BOARD_SYNC_USBC_PORT
+			board_sync_usbc_port();
+#endif
+		}
 	}
 }
