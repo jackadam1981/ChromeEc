@@ -46,6 +46,8 @@ static int dsleep_recovery_margin_us = 1000000;
  */
 #ifdef CHIP_VARIANT_STM32F373
 #define STOP_MODE_LATENCY 500  /* us */
+#elif defined(CHIP_VARIANT_STM32F05X)
+#define STOP_MODE_LATENCY 300  /* us */
 #elif (CPU_CLOCK == PLL_CLOCK)
 #define STOP_MODE_LATENCY 300   /* us */
 #else
@@ -245,6 +247,45 @@ static void config_hispeed_clock(void)
 	/* Wait until the PLL is the clock source */
 	while ((STM32_RCC_CFGR & 0xc) != 0x8)
 		;
+#elif defined(CHIP_VARIANT_STM32F05X)
+	/* If PLL is the clock source, PLL has already been set up. */
+	if ((STM32_RCC_CFGR & 0xc) == 0x8)
+		return;
+
+	/* Ensure that HSI is ON */
+	if (!(STM32_RCC_CR & (1<<1))) {
+		/* Enable HSI */
+		STM32_RCC_CR |= (1<<0);
+		/* Wait for HSI to be ready */
+		while (!(STM32_RCC_CR & (1<<1)))
+			;
+	}
+
+	/*
+	 * HSI = 8MHz, HSI/2 with PLL *12 = ~48 MHz
+	 * therefore PCLK = FCLK = SYSCLK = 48MHz
+	 */
+	/* Switch the PLL source to HSI/2 */
+	STM32_RCC_CFGR &= ~(0x00018000);
+
+	/*
+	 * Specify HSI/2 clock as input clock to PLL and set PLL (*12).
+	 */
+	STM32_RCC_CFGR = 0x00280000;
+
+	/* Enable the PLL. */
+	STM32_RCC_CR |= 0x01000000;
+
+	/* Wait until PLL is ready. */
+	while (!(STM32_RCC_CR & 0x02000000))
+		;
+
+	/* Switch SYSCLK to PLL. */
+	STM32_RCC_CFGR |= 0x2;
+
+	/* wait until the PLL is the clock source */
+	while ((STM32_RCC_CFGR & 0xc) != 0x8)
+		;
 #else
 	/* Ensure that HSI48 is ON */
 	if (!(STM32_RCC_CR2 & (1 << 17))) {
@@ -411,7 +452,6 @@ void __idle(void)
 			if (margin_us < 0)
 				/* Use CPUTS to save stack space */
 				CPUTS("Idle overslept!\n");
-
 			/* Record the closest to missing a deadline. */
 			if (margin_us < dsleep_recovery_margin_us)
 				dsleep_recovery_margin_us = margin_us;
@@ -486,9 +526,7 @@ void clock_init(void)
 	 * and enable prefetch buffer.
 	 */
 	STM32_FLASH_ACR = STM32_FLASH_ACR_LATENCY | STM32_FLASH_ACR_PRFTEN;
-
 	config_hispeed_clock();
-
 	rtc_init();
 }
 
