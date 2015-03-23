@@ -187,7 +187,7 @@ servo_ec_boot0() {
 }
 
 servo_usbpd_boot0() {
-	dut_control usbpd_boot_mode:on
+	dut_control usbpd_uart_vref:pp3300 usbpd_boot_mode:on
 }
 
 servo_sh_boot0() {
