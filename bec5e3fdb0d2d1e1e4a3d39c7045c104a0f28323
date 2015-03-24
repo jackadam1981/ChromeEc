@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "666d98b3_b9cf772d",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-24T00:10:52Z",
+      "side": 1,
+      "message": "already 2015",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "bec5e3fdb0d2d1e1e4a3d39c7045c104a0f28323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "666d98b3_99cabb1e",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-24T00:10:52Z",
+      "side": 1,
+      "message": "in the EC code base, the TODO are supposed to have a bug number inside.",
+      "range": {
+        "startLine": 68,
+        "startChar": 3,
+        "endLine": 68,
+        "endChar": 16
+      },
+      "revId": "bec5e3fdb0d2d1e1e4a3d39c7045c104a0f28323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "666d98b3_39dc47e7",
+        "filename": "driver/accelgyro_bmi160.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-24T00:10:52Z",
+      "side": 1,
+      "message": "do we need half a page of legalese to define a few numbers ?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 3
+      },
+      "revId": "bec5e3fdb0d2d1e1e4a3d39c7045c104a0f28323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
