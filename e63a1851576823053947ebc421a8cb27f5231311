@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3f6a249_f131709c",
+        "filename": "board/ryu/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-24T19:36:40Z",
+      "side": 1,
+      "message": "FYI, those GPIOs are declared as OUT_HIGH above (aka USBC_SS1_USB_MODE_L/USBC_SS2_USB_MODE_L/USBC_SS_EN_L)\nthe last init should win but that\u0027s a bit obscure.",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 54
+      },
+      "revId": "e63a1851576823053947ebc421a8cb27f5231311",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
