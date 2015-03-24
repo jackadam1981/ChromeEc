@@ -54,6 +54,7 @@
 #define MEC1322_EC_ADC_VREF_PD REG32(MEC1322_EC_BASE + 0x38)
 
 
+
 /* Interrupt aggregator */
 #define MEC1322_INT_BASE       0x4000c000
 #define MEC1322_INTx_BASE(x)   (MEC1322_INT_BASE + ((x) - 8) * 0x14)
@@ -158,6 +159,7 @@ static inline uintptr_t gpio_port_base(int port_id)
 
 #define MEC1322_LPC_RT_BASE      0x400f3100
 #define MEC1322_LPC_BUS_MONITOR  REG32(MEC1322_LPC_RT_BASE + 0x4)
+#define MEC1322_LPC_CLK_CTRL     REG32(MEC1322_LPC_RT_BASE + 0x10)
 #define MEC1322_LPC_MEM_HOST_CFG REG32(MEC1322_LPC_RT_BASE + 0xfc)
 
 
