@@ -20,4 +20,18 @@
  */
 int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *result);
 
+/**
+ * Grab the memmap write mutex. This function should be called before
+ * multi-byte variable reads from ACPI, and before updating multi-byte
+ * memmap variables anywhere else.
+ */
+void acpi_lock_memmap_write(void);
+
+/**
+ * Release the memmap write mutex. This function should be called once
+ * a multi-byte variable read from ACPI is done, and when updating multi-byte
+ * memmap variables is done.
+ */
+void acpi_unlock_memmap_write(void);
+
 #endif	/* __CROS_EC_ACPI_H */
