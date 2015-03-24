@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "666d98b3_d96ef3ac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-24T00:08:28Z",
+      "side": 1,
+      "message": "None ?",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 10
+      },
+      "revId": "5ed2673532a6736ed65ad260b8bf067c32fe2039",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86728c8f_5a63b5c0",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 825,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-24T00:08:28Z",
+      "side": 1,
+      "message": "I don\u0027t think the missing \"e\" is intentional",
+      "range": {
+        "startLine": 825,
+        "startChar": 20,
+        "endLine": 825,
+        "endChar": 26
+      },
+      "revId": "5ed2673532a6736ed65ad260b8bf067c32fe2039",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
