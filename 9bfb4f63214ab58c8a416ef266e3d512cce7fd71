@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "23eb9264_a7616e81",
+        "filename": "common/acpi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-03-24T19:52:22Z",
+      "side": 1,
+      "message": "There\u0027s no harm in doing so, and it may make some .ASL snippets more portable across platforms (for example, if we want .ASL which can support either mec1322 or npcx).",
+      "parentUuid": "a3f6a249_e0219cca",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 54
+      },
+      "revId": "9bfb4f63214ab58c8a416ef266e3d512cce7fd71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23eb9264_c1b9025b",
         "filename": "common/acpi.c",
         "patchSetId": 2
@@ -99,6 +123,99 @@
         "startChar": 0,
         "endLine": 116,
         "endChar": 54
+      },
+      "revId": "9bfb4f63214ab58c8a416ef266e3d512cce7fd71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23eb9264_67aa46fb",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-03-24T19:52:22Z",
+      "side": 1,
+      "message": "Agree.  And then we should call them\n\nhost_lock_memmap()\nhost_unlock_memmap()\n\nto be consistent with host_get_memmap()",
+      "parentUuid": "c3fb9632_be15f9f4",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 54
+      },
+      "revId": "9bfb4f63214ab58c8a416ef266e3d512cce7fd71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3f6a249_f1673095",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 915,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-03-24T19:52:22Z",
+      "side": 1,
+      "message": "It\u0027s undef\u0027d by default.  So it\u0027s really \"Define for platforms which directly map this to I/O space on the AP.\"",
+      "range": {
+        "startLine": 913,
+        "startChar": 45,
+        "endLine": 915,
+        "endChar": 48
+      },
+      "revId": "9bfb4f63214ab58c8a416ef266e3d512cce7fd71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23eb9264_87f9ca01",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-03-24T19:52:22Z",
+      "side": 1,
+      "message": "Wow, there\u0027s a lot of negatives in that sentence.  And it\u0027s also technically not true.  *ACPI* can\u0027t access that region, but there is a EC_CMD_READ_MEMMAP which works just fine from kernel and userland (on platforms with i2c or spi host buses, and even on mec1322).\n\nSuggest instead:\n\n/* ACPI is unable to access memory mapped data at or above\n * this offset due to limitations of the ACPI protocol.  Do\n * not place data in the range 0xe0 - 0xfe which might be\n * needed by ACPI. */\n#define EC_MEMMAP_NO_ACPI 0xe0",
+      "range": {
+        "startLine": 97,
+        "startChar": 3,
+        "endLine": 99,
+        "endChar": 47
+      },
+      "revId": "9bfb4f63214ab58c8a416ef266e3d512cce7fd71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3f6a249_b1e3e847",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-03-24T19:52:22Z",
+      "side": 1,
+      "message": "This should go down with the other EC_ACPI_MEM_* constants (line ~2600).\n\nAnd indicate it was added in EC_ACPI_MEM_VERSION \u003e\u003d 2.\n\nAnd maybe explicitly note that this is an offset?\n\n/* ACPI addresses 0x20 - 0xff map to EC_MEMMAP offsetd 0x00 - 0xdf.  This data is read-only from the AP.  Added in EC_ACPI_MEM_VERSION 2. */",
+      "range": {
+        "startLine": 106,
+        "startChar": 8,
+        "endLine": 106,
+        "endChar": 32
       },
       "revId": "9bfb4f63214ab58c8a416ef266e3d512cce7fd71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
