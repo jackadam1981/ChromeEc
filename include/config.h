@@ -889,6 +889,13 @@
 /* Support LPC interface */
 #undef CONFIG_LPC
 
+/*
+ * Access memmap data at EC_LPC_ADDR_MEMMAP. Undefine for platforms which
+ * cannot access this region over LPC, and will instead access via ACPI /
+ * EC_LPC_ADDR_ACPI_DATA / EC_LPC_ADDR_ACPI_CMD.
+ */
+#undef CONFIG_LPC_MEMMAP
+
 /* Support MKBP event */
 #undef CONFIG_MKBP_EVENT
 

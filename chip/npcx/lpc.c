@@ -348,6 +348,18 @@ uint32_t lpc_get_host_event_mask(enum lpc_host_event_type type)
 	return event_mask[type];
 }
 
+#ifndef CONFIG_LPC_MEMMAP
+void lpc_set_acpi_status_mask(uint8_t mask)
+{
+	/* TODO (crbug.com/p/38224): Implement */
+}
+
+void lpc_clear_acpi_status_mask(uint8_t mask)
+{
+	/* TODO (crbug.com/p/38224): Implement */
+}
+#endif
+
 int lpc_get_pltrst_asserted(void)
 {
 	/* TODO: (Simon) need to define GPIO_PLTRST */

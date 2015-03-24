@@ -88,6 +88,8 @@
 #endif
 #define CONFIG_I2C
 #define CONFIG_LPC
+/* No LPC access to 900h-9ffh */
+#undef  CONFIG_LPC_MEMMAP
 #define CONFIG_FPU
 #define CONFIG_SPI
 #define CONFIG_DMA

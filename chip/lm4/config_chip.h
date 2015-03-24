@@ -126,6 +126,7 @@
 #define CONFIG_FPU
 #define CONFIG_I2C
 #define CONFIG_LPC
+/* #define CONFIG_LPC_MEMMAP */
 #define CONFIG_PECI
 #define CONFIG_SWITCH
 #define CONFIG_MPU
