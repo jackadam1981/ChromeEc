@@ -81,6 +81,20 @@ uint8_t *host_get_memmap(int offset)
 #endif
 }
 
+#ifdef CONFIG_LPC_ACPI_MEMMAP
+static struct mutex memmap_write_mutex;
+
+void host_lock_memmap()
+{
+	mutex_lock(&memmap_write_mutex);
+}
+
+void host_unlock_memmap()
+{
+	mutex_unlock(&memmap_write_mutex);
+}
+#endif
+
 int host_get_vboot_mode(void)
 {
 	return g_vboot_mode;

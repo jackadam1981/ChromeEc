@@ -909,6 +909,13 @@
 /* Support LPC interface */
 #undef CONFIG_LPC
 
+/*
+ * Access memmap data through ACPI ports EC_LPC_ADDR_ACPI_DATA /
+ * EC_LPC_ADDR_ACPI_CMD. Define for platforms which do not map this data to I/O
+ * space on the AP.
+ */
+#undef CONFIG_LPC_ACPI_MEMMAP
+
 /* Support MKBP event */
 #undef CONFIG_MKBP_EVENT
 

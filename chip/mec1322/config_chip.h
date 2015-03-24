@@ -110,6 +110,8 @@
 #define CONFIG_FPU
 #define CONFIG_I2C
 #define CONFIG_LPC
+/* No LPC access to 900h-9ffh */
+#define CONFIG_LPC_ACPI_MEMMAP
 #define CONFIG_SPI
 
 #endif  /* __CROS_EC_CONFIG_CHIP_H */
