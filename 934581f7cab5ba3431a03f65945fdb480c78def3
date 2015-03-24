@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8647ec3d_2c041314",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-03-24T16:00:20Z",
+      "side": 1,
+      "message": "this should be per port. you can add to the pd structure (see line 297).",
+      "range": {
+        "startLine": 341,
+        "startChar": 15,
+        "endLine": 341,
+        "endChar": 32
+      },
+      "revId": "934581f7cab5ba3431a03f65945fdb480c78def3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "463334d7_2a0a3fd3",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-03-24T16:00:20Z",
+      "side": 1,
+      "message": "nit: need empty line to start multiline comment",
+      "range": {
+        "startLine": 745,
+        "startChar": 5,
+        "endLine": 745,
+        "endChar": 6
+      },
+      "revId": "934581f7cab5ba3431a03f65945fdb480c78def3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6642f831_4b822502",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-03-24T16:00:20Z",
+      "side": 1,
+      "message": "please refrain from adding long printf\u0027s, it takes up too much flash space. i think we can probably just delete this one.",
+      "range": {
+        "startLine": 750,
+        "startChar": 13,
+        "endLine": 750,
+        "endChar": 38
+      },
+      "revId": "934581f7cab5ba3431a03f65945fdb480c78def3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "463334d7_4a1773fa",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-03-24T16:00:20Z",
+      "side": 1,
+      "message": "\"BIST RX TO\" to make shorter.",
+      "range": {
+        "startLine": 758,
+        "startChar": 2,
+        "endLine": 758,
+        "endChar": 31
+      },
+      "revId": "934581f7cab5ba3431a03f65945fdb480c78def3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8647ec3d_4c115f55",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-03-24T16:00:20Z",
+      "side": 1,
+      "message": "nit: refrain from using specific numbers in comments, they tend to break.",
+      "range": {
+        "startLine": 797,
+        "startChar": 30,
+        "endLine": 797,
+        "endChar": 37
+      },
+      "revId": "934581f7cab5ba3431a03f65945fdb480c78def3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6642f831_cbfc5589",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1380,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-03-24T16:00:20Z",
+      "side": 1,
+      "message": "it\u0027s a shame to use so much flash space for something that almost never happens. how about:\nCPRINTF(\"Invalid %d/%d\\n\", total_invalid_bits, bits_analyzed);\n\n?",
+      "range": {
+        "startLine": 1379,
+        "startChar": 1,
+        "endLine": 1380,
+        "endChar": 51
+      },
+      "revId": "934581f7cab5ba3431a03f65945fdb480c78def3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "463334d7_ea3e676d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3126,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-03-24T16:00:20Z",
+      "side": 1,
+      "message": "probably don\u0027t need this print, since tx prints that it started and stopped anyway.",
+      "range": {
+        "startLine": 3125,
+        "startChar": 2,
+        "endLine": 3126,
+        "endChar": 29
+      },
+      "revId": "934581f7cab5ba3431a03f65945fdb480c78def3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
