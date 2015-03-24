@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "a3f6a249_e0219cca",
+        "filename": "common/acpi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2015-03-24T17:32:58Z",
+      "side": 1,
+      "message": "Would it make sense to expose the data via 62/66 even if we also expose it via the memory map just to be consistent?",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 54
+      },
+      "revId": "9bfb4f63214ab58c8a416ef266e3d512cce7fd71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23eb9264_c1b9025b",
+        "filename": "common/acpi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2015-03-24T17:32:58Z",
+      "side": 1,
+      "message": "It could be useful to support burst mode even without memmap, but it probably doesn\u0027t matter since we normally only have 8 bit values.",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 25
+      },
+      "revId": "9bfb4f63214ab58c8a416ef266e3d512cce7fd71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6731093_9e2f01bb",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 2
@@ -13,6 +59,47 @@
       "writtenOn": "2015-03-24T01:52:20Z",
       "side": 1,
       "message": "I skipped the corresponding change to charge_state_v1. Is the policy to keep both up-to-date with the latest changes / features, or is this ok?",
+      "revId": "9bfb4f63214ab58c8a416ef266e3d512cce7fd71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3fb9632_fe814197",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2015-03-24T17:32:58Z",
+      "side": 1,
+      "message": "I think it is probably ok since all new boards should use v2 anyway.",
+      "parentUuid": "a6731093_9e2f01bb",
+      "revId": "9bfb4f63214ab58c8a416ef266e3d512cce7fd71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3fb9632_be15f9f4",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2015-03-24T17:32:58Z",
+      "side": 1,
+      "message": "This might be cleaner if the #ifdefs were in the header and empty functions were provided in the case when this is not enabled.",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 54
+      },
       "revId": "9bfb4f63214ab58c8a416ef266e3d512cce7fd71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
