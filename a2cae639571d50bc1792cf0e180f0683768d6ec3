@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "a3f6a249_52edc286",
+        "filename": "common/acpi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2015-03-24T21:31:40Z",
+      "side": 1,
+      "message": "The ACPI spec has this section about transitioning to burst disable state if no commands from the AP in a timeout window (with different timeouts for first/subsequent/total transaction time)\n\nThe linux kernel driver is pretty straightforward in how it enables/disables burst mode, but I\u0027ve got no idea if other OS could fail to do that somehow.\n\nThe whole timeout table sounds messy to implement properly, but maybe we could set a callback hook here after 1ms and disable if it has not seen any additional commands?  That would of course require keeping track of any commands that come in and may be a mess in itself...",
+      "range": {
+        "startLine": 168,
+        "startChar": 2,
+        "endLine": 168,
+        "endChar": 24
+      },
+      "revId": "a2cae639571d50bc1792cf0e180f0683768d6ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3fb9632_4d41a567",
         "filename": "common/acpi.c",
         "patchSetId": 5
@@ -41,6 +64,29 @@
         "startChar": 2,
         "endLine": 169,
         "endChar": 21
+      },
+      "revId": "a2cae639571d50bc1792cf0e180f0683768d6ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3fb9632_0d727de1",
+        "filename": "common/acpi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2015-03-24T21:31:40Z",
+      "side": 1,
+      "message": "Should this be 0 since it does not set resultptr to return a status byte?",
+      "range": {
+        "startLine": 178,
+        "startChar": 11,
+        "endLine": 178,
+        "endChar": 12
       },
       "revId": "a2cae639571d50bc1792cf0e180f0683768d6ec3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
