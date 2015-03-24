@@ -30,13 +30,24 @@
 /* TODO: Add flash protect support for the SPI part strago actually has */
 #define CONFIG_SPI_FLASH_W25Q64
 
+#define CONFIG_I2C
+
+/* I2C ports */
+#define I2C_PORT0		0
+#define I2C_PORT1		1
+#define I2C_PORT2		2
+#define I2C_PORT3		3
+
+#define I2C_PORT_BATTERY	I2C_PORT0
+#define I2C_PORT_CHARGER	I2C_PORT0
+#define I2C_PORT_THERMAL	I2C_PORT3
+
 /* Modules we want to exclude */
 #undef CONFIG_EEPROM
 #undef CONFIG_EOPTION
 #undef CONFIG_PSTORE
 #undef CONFIG_PECI
 #undef CONFIG_SWITCH
-#undef CONFIG_I2C
 #undef CONFIG_PWM
 #undef CONFIG_FANS
 #undef CONFIG_ADC

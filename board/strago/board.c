@@ -6,6 +6,7 @@
 
 #include "extpower.h"
 #include "gpio.h"
+#include "i2c.h"
 #include "lid_switch.h"
 #include "power.h"
 #include "power_button.h"
@@ -26,3 +27,11 @@ const struct power_signal_info power_signal_list[] = {
 	{GPIO_PCH_SLP_S4_L,      1, "SLP_S4#_DEASSERTED"},
 };
 BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
+
+const struct i2c_port_t i2c_ports[]  = {
+	{"I2C0", I2C_PORT0, 100},
+	{"I2C1", I2C_PORT1, 100},
+	{"I2C2", I2C_PORT2, 100},
+	{"I2C3", I2C_PORT3, 100}
+};
+const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
