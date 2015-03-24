@@ -165,6 +165,7 @@ uint32_t system_get_scratchpad(void)
 	return MEC1322_VBAT_RAM(HIBDATA_INDEX_SCRATCHPAD);
 }
 
+
 static void system_set_gpio_power(int enabled, uint32_t *backup_gpio_ctl)
 {
 	int i, j, k;
