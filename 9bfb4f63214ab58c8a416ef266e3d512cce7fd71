@@ -49,6 +49,54 @@
     },
     {
       "key": {
+        "uuid": "a3f6a249_c01580f4",
+        "filename": "common/acpi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-03-24T21:11:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3f6a249_e0219cca",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 54
+      },
+      "revId": "9bfb4f63214ab58c8a416ef266e3d512cce7fd71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3fb9632_d2b9d45a",
+        "filename": "common/acpi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-03-24T21:11:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23eb9264_a7616e81",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 54
+      },
+      "revId": "9bfb4f63214ab58c8a416ef266e3d512cce7fd71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23eb9264_c1b9025b",
         "filename": "common/acpi.c",
         "patchSetId": 2
@@ -60,6 +108,30 @@
       "writtenOn": "2015-03-24T17:32:58Z",
       "side": 1,
       "message": "It could be useful to support burst mode even without memmap, but it probably doesn\u0027t matter since we normally only have 8 bit values.",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 25
+      },
+      "revId": "9bfb4f63214ab58c8a416ef266e3d512cce7fd71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3fb9632_7e5d317f",
+        "filename": "common/acpi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-03-24T21:11:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23eb9264_c1b9025b",
       "range": {
         "startLine": 171,
         "startChar": 0,
@@ -154,6 +226,54 @@
     },
     {
       "key": {
+        "uuid": "a3f6a249_57b01442",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-03-24T21:11:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23eb9264_67aa46fb",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 54
+      },
+      "revId": "9bfb4f63214ab58c8a416ef266e3d512cce7fd71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23eb9264_c171020c",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-03-24T21:11:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3fb9632_be15f9f4",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 54
+      },
+      "revId": "9bfb4f63214ab58c8a416ef266e3d512cce7fd71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3f6a249_f1673095",
         "filename": "include/config.h",
         "patchSetId": 2
@@ -165,6 +285,30 @@
       "writtenOn": "2015-03-24T19:52:22Z",
       "side": 1,
       "message": "It\u0027s undef\u0027d by default.  So it\u0027s really \"Define for platforms which directly map this to I/O space on the AP.\"",
+      "range": {
+        "startLine": 913,
+        "startChar": 45,
+        "endLine": 915,
+        "endChar": 48
+      },
+      "revId": "9bfb4f63214ab58c8a416ef266e3d512cce7fd71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3f6a249_97745c02",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 915,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-03-24T21:11:53Z",
+      "side": 1,
+      "message": "Changed the define to the inverse to make the default / common case undef.",
+      "parentUuid": "a3f6a249_f1673095",
       "range": {
         "startLine": 913,
         "startChar": 45,
@@ -200,6 +344,30 @@
     },
     {
       "key": {
+        "uuid": "a3f6a249_f764c04b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-03-24T21:11:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23eb9264_87f9ca01",
+      "range": {
+        "startLine": 97,
+        "startChar": 3,
+        "endLine": 99,
+        "endChar": 47
+      },
+      "revId": "9bfb4f63214ab58c8a416ef266e3d512cce7fd71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3f6a249_b1e3e847",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -211,6 +379,30 @@
       "writtenOn": "2015-03-24T19:52:22Z",
       "side": 1,
       "message": "This should go down with the other EC_ACPI_MEM_* constants (line ~2600).\n\nAnd indicate it was added in EC_ACPI_MEM_VERSION \u003e\u003d 2.\n\nAnd maybe explicitly note that this is an offset?\n\n/* ACPI addresses 0x20 - 0xff map to EC_MEMMAP offsetd 0x00 - 0xdf.  This data is read-only from the AP.  Added in EC_ACPI_MEM_VERSION 2. */",
+      "range": {
+        "startLine": 106,
+        "startChar": 8,
+        "endLine": 106,
+        "endChar": 32
+      },
+      "revId": "9bfb4f63214ab58c8a416ef266e3d512cce7fd71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3fb9632_f21290db",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-03-24T21:11:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3f6a249_b1e3e847",
       "range": {
         "startLine": 106,
         "startChar": 8,
