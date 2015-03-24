@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3fb9632_ed6e31f9",
+        "filename": "common/acpi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-03-24T21:29:10Z",
+      "side": 1,
+      "message": "Doesn\u0027t this need guarding with\n\n#ifdef CONFIG_LPC_APCI_MEMMAP\n\nOtherwise, it\u0027ll still work without that defined, just without locking.",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 35
+      },
+      "revId": "a2cae639571d50bc1792cf0e180f0683768d6ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3fb9632_4d41a567",
+        "filename": "common/acpi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-03-24T21:29:10Z",
+      "side": 1,
+      "message": "Hmm.  Are we guaranteed that burst enable/disable are always paired?  If we get the enable but not the disable, the memmap will silently stay locked.",
+      "range": {
+        "startLine": 169,
+        "startChar": 2,
+        "endLine": 169,
+        "endChar": 21
+      },
+      "revId": "a2cae639571d50bc1792cf0e180f0683768d6ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
