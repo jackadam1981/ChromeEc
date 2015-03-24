@@ -92,8 +92,19 @@
 /* Unused 0x91 */
 #define EC_MEMMAP_ACC_DATA         0x92 /* Accelerometer data 0x92 - 0x9f */
 #define EC_MEMMAP_GYRO_DATA        0xa0 /* Gyroscope data 0xa0 - 0xa5 */
-/* Unused 0xa6 - 0xfe (remember, 0xff is NOT part of the memmap region) */
+/* Unused 0xa6 - 0xdf */
 
+/* The 0xe0 - 0xfe (remember, 0xff is NOT part of the memmap region) region
+ * should not be used since it will be inaccessable to platforms which
+ * can't access EC_LPC_ADDR_MEMMAP over LPC. */
+
+/*
+ * Address 0x20 thru 0xff maps to the memmap buffer (normally accessed
+ * though EC_LPC_ADDR_MEMMAP I/O access) to support platforms which cannot
+ * access the 900h region over LPC.
+ */
+#define EC_ACPI_MEM_MAPPED_BEGIN   0x20
+#define EC_ACPI_MEM_MAPPED_END     0xff
 
 /* Define the format of the accelerometer mapped memory status byte. */
 #define EC_MEMMAP_ACC_STATUS_SAMPLE_ID_MASK  0x0f
@@ -191,7 +202,7 @@
 #define EC_LPC_STATUS_PROCESSING  0x04
 /* Last write to EC was a command, not data */
 #define EC_LPC_STATUS_LAST_CMD    0x08
-/* EC is in burst mode.  Unsupported by Chrome EC, so this bit is never set */
+/* EC is in burst mode */
 #define EC_LPC_STATUS_BURST_MODE  0x10
 /* SCI event is pending (requesting SCI query) */
 #define EC_LPC_STATUS_SCI_PENDING 0x20
@@ -2555,6 +2566,23 @@ struct ec_params_reboot_ec {
 #define EC_CMD_ACPI_WRITE 0x81
 
 /*
+ * ACPI Burst Enable Embedded Controller
+ *
+ * This enables burst mode on the EC to allow the host to issue several
+ * commands back-to-back. While in this mode, writes to mapped multi-byte
+ * data are locked out to ensure data consistency.
+ */
+#define EC_CMD_ACPI_BURST_ENABLE 0x82
+
+/*
+ * ACPI Burst Disable Embedded Controller
+ *
+ * This disables burst mode on the EC and stops preventing EC writes to mapped
+ * multi-byte data.
+ */
+#define EC_CMD_ACPI_BURST_DISABLE 0x83
+
+/*
  * ACPI Query Embedded Controller
  *
  * This clears the lowest-order bit in the currently pending host events, and
@@ -2630,7 +2658,7 @@ struct ec_params_reboot_ec {
 #define EC_ACPI_MEM_CHARGING_LIMIT_DISABLED  0xff
 
 /* Current version of ACPI memory address space */
-#define EC_ACPI_MEM_VERSION_CURRENT 1
+#define EC_ACPI_MEM_VERSION_CURRENT 2
 
 
 /*****************************************************************************/

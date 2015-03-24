@@ -10,6 +10,7 @@
 #include "lpc.h"
 #include "ec_commands.h"
 #include "pwm.h"
+#include "task.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_LPC, outstr)
@@ -87,7 +88,16 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 			break;
 #endif
 		default:
-			CPRINTS("ACPI read 0x%02x (ignored)", acpi_addr);
+#if defined(CONFIG_LPC) && !defined(CONFIG_LPC_MEMMAP)
+			if (acpi_addr >= EC_ACPI_MEM_MAPPED_BEGIN &&
+			    acpi_addr <= EC_ACPI_MEM_MAPPED_END)
+				result = *((uint8_t *)(lpc_get_memmap_range() +
+					   acpi_addr -
+					   EC_ACPI_MEM_MAPPED_BEGIN));
+			else
+#endif
+				CPRINTS("ACPI read 0x%02x (ignored)",
+					acpi_addr);
 			break;
 		}
 
@@ -158,8 +168,36 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 		CPRINTS("ACPI query = %d", evt_index);
 		*resultptr = evt_index;
 		retval = 1;
-#endif
+#ifndef CONFIG_LPC_MEMMAP
+	} else if (acpi_cmd == EC_CMD_ACPI_BURST_ENABLE && !acpi_data_count) {
+		/* Enter burst mode */
+		acpi_lock_memmap_write();
+		lpc_set_acpi_status_mask(EC_LPC_STATUS_BURST_MODE);
+		/* ACPI 5.0-12.3.3: Burst ACK */
+		*resultptr = 0x90;
+		retval = 1;
+	} else if (acpi_cmd == EC_CMD_ACPI_BURST_DISABLE && !acpi_data_count) {
+		/* Leave burst mode */
+		acpi_unlock_memmap_write();
+		lpc_clear_acpi_status_mask(EC_LPC_STATUS_BURST_MODE);
+		retval = 1;
+#endif /* CONFIG_LPC_MEMMAP */
+#endif /* CONFIG_LPC */
 	}
 
 	return retval;
 }
+
+#if defined(CONFIG_LPC) && !defined(CONFIG_LPC_MEMMAP)
+static struct mutex memmap_write_mutex;
+
+void acpi_lock_memmap_write()
+{
+	mutex_lock(&memmap_write_mutex);
+}
+
+void acpi_unlock_memmap_write()
+{
+	mutex_unlock(&memmap_write_mutex);
+}
+#endif

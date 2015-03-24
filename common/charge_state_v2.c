@@ -5,6 +5,7 @@
  * Battery charging task and state machine.
  */
 
+#include "acpi.h"
 #include "battery.h"
 #include "battery_smart.h"
 #include "charge_state.h"
@@ -112,6 +113,14 @@ static int update_static_battery_info(void)
 	 */
 	int rv;
 
+#if defined(CONFIG_LPC) && !defined(CONFIG_LPC_MEMMAP)
+	/*
+	 * We're updating multi-byte memmap vars, don't allow ACPI to do
+	 * reads while we're updating.
+	 */
+	acpi_lock_memmap_write();
+#endif
+
 	/* Smart battery serial number is 16 bits */
 	batt_str = (char *)host_get_memmap(EC_MEMMAP_BATT_SERIAL);
 	memset(batt_str, 0, EC_MEMMAP_TEXT_MAX);
@@ -154,6 +163,11 @@ static int update_static_battery_info(void)
 	*(int *)host_get_memmap(EC_MEMMAP_BATT_CAP) = 0;
 	*(int *)host_get_memmap(EC_MEMMAP_BATT_LFCC) = 0;
 	*host_get_memmap(EC_MEMMAP_BATT_FLAG) = 0;
+
+#if defined(CONFIG_LPC) && !defined(CONFIG_LPC_MEMMAP)
+	/* No more multi-byte memmap writes. */
+	acpi_unlock_memmap_write();
+#endif
 
 	if (rv)
 		problem(PR_STATIC_UPDATE, 0);
@@ -199,6 +213,14 @@ static void update_dynamic_battery_info(void)
 		batt_present = 0;
 	}
 
+#if defined(CONFIG_LPC) && !defined(CONFIG_LPC_MEMMAP)
+	/*
+	 * We're updating multi-byte memmap vars, don't allow ACPI to do
+	 * reads while we're updating.
+	 */
+	acpi_lock_memmap_write();
+#endif
+
 	if (!(curr.batt.flags & BATT_FLAG_BAD_VOLTAGE))
 		*memmap_volt = curr.batt.voltage;
 
@@ -224,6 +246,11 @@ static void update_dynamic_battery_info(void)
 		/* Poke the AP if the full_capacity changes. */
 		send_batt_info_event++;
 	}
+
+#if defined(CONFIG_LPC) && !defined(CONFIG_LPC_MEMMAP)
+	/* No more multi-byte memmap writes. */
+	acpi_unlock_memmap_write();
+#endif
 
 	if (curr.batt.is_present == BP_YES &&
 	    !(curr.batt.flags & BATT_FLAG_BAD_STATE_OF_CHARGE) &&
