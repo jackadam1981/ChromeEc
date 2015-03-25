@@ -8,9 +8,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/utsname.h>
 
 #include "comm-host.h"
 #include "ec_commands.h"
+
 
 int (*ec_command_proto)(int command, int version,
 			const void *outdata, int outsize,
@@ -60,6 +62,37 @@ static int fake_readmem(int offset, int bytes, void *dest)
 	return EC_MEMMAP_TEXT_MAX - 1;
 }
 
+static int kernel_version_ge(int major, int minor, int sublevel)
+{
+	struct utsname uts;
+	int atoms, kmajor, kminor, ksublevel;
+
+	if (uname(&uts) < 0)
+		return -1;
+	atoms = sscanf(uts.release, "%d.%d.%d", &kmajor, &kminor, &ksublevel);
+	if (atoms < 1)
+		return -1;
+
+	if (kmajor > major)
+		return 1;
+	if (kmajor < major)
+		return 0;
+
+	/* kmajor == major */
+	if (atoms < 2)
+		return 0 == minor && 0 == sublevel;
+	if (kminor > minor)
+		return 1;
+	if (kminor < minor)
+		return 0;
+
+	/* kminor == minor */
+	if (atoms < 3)
+		return 0 == sublevel;
+
+	return ksublevel >= sublevel;
+}
+
 void set_command_offset(int offset)
 {
 	command_offset = offset;
@@ -78,9 +111,16 @@ int ec_command(int command, int version,
 int comm_init(int interfaces, const char *device_name)
 {
 	struct ec_response_get_protocol_info info;
+	int allow_large_buffer;
 
 	/* Default memmap access */
 	ec_readmem = fake_readmem;
+
+	allow_large_buffer = kernel_version_ge(3, 14, 0);
+	if (allow_large_buffer < 0) {
+		fprintf(stderr, "Unable to check linux version\n");
+		return 1;
+	}
 
 	/* Prefer new /dev method */
 	if ((interfaces & COMM_DEV) && comm_init_dev &&
@@ -111,10 +151,12 @@ int comm_init(int interfaces, const char *device_name)
 	/* read max request / response size from ec for protocol v3+ */
 	if (ec_command(EC_CMD_GET_PROTOCOL_INFO, 0, NULL, 0, &info,
 		sizeof(info)) == sizeof(info)) {
-		ec_max_outsize = info.max_request_packet_size -
-			 sizeof(struct ec_host_request);
-		ec_max_insize = info.max_response_packet_size -
-			sizeof(struct ec_host_response);
+		if ((allow_large_buffer) ||
+		    (info.max_request_packet_size < ec_max_outsize))
+			ec_max_outsize = info.max_request_packet_size;
+		if ((allow_large_buffer) ||
+		    (info.max_request_packet_size < ec_max_insize))
+			ec_max_insize = info.max_response_packet_size;
 
 		ec_outbuf = realloc(ec_outbuf, ec_max_outsize);
 		ec_inbuf = realloc(ec_inbuf, ec_max_insize);
