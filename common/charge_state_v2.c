@@ -156,7 +156,7 @@ static int update_static_battery_info(void)
 	*host_get_memmap(EC_MEMMAP_BATT_FLAG) = 0;
 
 	if (rv)
-		problem(PR_STATIC_UPDATE, 0);
+		problem(PR_STATIC_UPDATE, rv);
 	else
 		/* No errors seen. Battery data is now present */
 		*host_get_memmap(EC_MEMMAP_BATTERY_VERSION) = 1;
