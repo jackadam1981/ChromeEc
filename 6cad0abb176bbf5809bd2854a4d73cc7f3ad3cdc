@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3f6a249_9ff90e02",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-03-25T00:05:28Z",
+      "side": 1,
+      "message": "I moved this section up to get it into the ASL-parsed portion of the file. I want to use the new constants I added in ASL.",
+      "revId": "6cad0abb176bbf5809bd2854a4d73cc7f3ad3cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
