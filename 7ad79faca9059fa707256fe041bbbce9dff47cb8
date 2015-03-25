@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3fb9632_8f69daa6",
+        "filename": "board/minnie/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-03-25T16:23:01Z",
+      "side": 1,
+      "message": "It would be better to use\n\n#define FPC_PRINT(format, args...) cprints(CC_CHARGER, format, ## args)\n\nccprintf() is reserved for console command output.\n\nNote that using cprints() will automatically start the line with a timestamp - handy for confirming the timing of force precharge - and end with a newline.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 60
+      },
+      "revId": "7ad79faca9059fa707256fe041bbbce9dff47cb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
