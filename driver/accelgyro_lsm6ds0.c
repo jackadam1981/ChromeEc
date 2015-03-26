@@ -4,14 +4,18 @@
  */
 
 /**
- * LSM6DS0 accelerometer and gyro module for Chrome EC
+ * LSM6DS0 accelerometer, gyro and L3GD20H gyro module for Chrome EC
  * 3D digital accelerometer & 3D digital gyroscope
  */
 
 #include "accelgyro.h"
 #include "common.h"
 #include "console.h"
+#ifdef CONFIG_GYRO_L3GD20H
+#include "driver/gyro_l3gd20h.h"
+#elif defined(CONFIG_ACCELGYRO_LSM6DS0)
 #include "driver/accelgyro_lsm6ds0.h"
+#endif
 #include "hooks.h"
 #include "i2c.h"
 #include "task.h"
@@ -19,6 +23,24 @@
 
 #define CPUTS(outstr) cputs(CC_ACCEL, outstr)
 #define CPRINTF(format, args...) cprintf(CC_ACCEL, format, ## args)
+
+#ifdef CONFIG_GYRO_L3GD20H
+#define ACCEL_GYRO_DRV			l3gd20h_drv
+#define I2C_PORT_ACCEL_GYRO		I2C_PORT_GYRO
+#define ACCEL_GYRO_WHO_AM_I_REG		L3GD20_WHO_AM_I_REG
+#define ACCEL_GYRO_WHO_AM_I		L3GD20_WHO_AM_I
+#define ACCEL_GYRO_RESOLUTION		L3GD20_RESOLUTION
+#define ACCEL_GYRO_RANGE_MASK		L3GD20_RANGE_MASK
+#define ACCEL_GYRO_STATUS_REG		L3GD20_STATUS_REG
+#elif defined(CONFIG_ACCELGYRO_LSM6DS0)
+#define ACCEL_GYRO_DRV			lsm6ds0_drv
+#define I2C_PORT_ACCEL_GYRO		I2C_PORT_ACCEL
+#define ACCEL_GYRO_WHO_AM_I_REG		LSM6DS0_WHO_AM_I_REG
+#define ACCEL_GYRO_WHO_AM_I		LSM6DS0_WHO_AM_I
+#define ACCEL_GYRO_RESOLUTION		LSM6DS0_RESOLUTION
+#define ACCEL_GYRO_RANGE_MASK		LSM6DS0_RANGE_MASK
+#define ACCEL_GYRO_STATUS_REG		LSM6DS0_STATUS_REG
+#endif
 
 /*
  * Struct for pairing an engineering value with the register value for a
@@ -29,6 +51,18 @@ struct accel_param_pair {
 	int reg_val; /* Corresponding register value. */
 };
 
+#ifdef CONFIG_GYRO_L3GD20H
+/*
+ * List of angular rate range values in +/-dps's
+ * and their associated register values.
+ */
+const struct accel_param_pair dps_ranges[] = {
+	{245, L3GD20_DPS_SEL_245},
+	{500, L3GD20_DPS_SEL_500},
+	{2000, L3GD20_DPS_SEL_2000_0},
+	{2000, L3GD20_DPS_SEL_2000_1}
+};
+#elif defined(CONFIG_ACCELGYRO_LSM6DS0)
 /* List of range values in +/-G's and their associated register values. */
 static const struct accel_param_pair g_ranges[] = {
 	{2, LSM6DS0_GSEL_2G},
@@ -46,10 +80,16 @@ const struct accel_param_pair dps_ranges[] = {
 	{1000, LSM6DS0_DPS_SEL_1000},
 	{2000, LSM6DS0_DPS_SEL_2000}
 };
+#endif
 
 static inline const struct accel_param_pair *get_range_table(
 		enum motionsensor_type type, int *psize)
 {
+#ifdef CONFIG_GYRO_L3GD20H
+	if (psize)
+		*psize = ARRAY_SIZE(dps_ranges);
+	return dps_ranges;
+#elif defined(CONFIG_ACCELGYRO_LSM6DS0)
 	if (MOTIONSENSE_TYPE_ACCEL == type) {
 		if (psize)
 			*psize = ARRAY_SIZE(g_ranges);
@@ -59,8 +99,23 @@ static inline const struct accel_param_pair *get_range_table(
 			*psize = ARRAY_SIZE(dps_ranges);
 		return dps_ranges;
 	}
+#endif
 }
 
+#ifdef CONFIG_GYRO_L3GD20H
+/* List of ODR values in mHz and their associated register values. */
+const struct accel_param_pair gyro_odr[] = {
+	{0,      L3GD20_ODR_PD | L3GD20_LOW_ODR_MASK},
+	{12500,  L3GD20_ODR_12_5HZ | L3GD20_ODR_PD_MASK | L3GD20_LOW_ODR_MASK},
+	{25000,  L3GD20_ODR_25HZ | L3GD20_ODR_PD_MASK | L3GD20_LOW_ODR_MASK},
+	{50000,  L3GD20_ODR_50HZ_0 | L3GD20_ODR_PD_MASK | L3GD20_LOW_ODR_MASK},
+	{50000,  L3GD20_ODR_50HZ_1 | L3GD20_ODR_PD_MASK | L3GD20_LOW_ODR_MASK},
+	{100000, L3GD20_ODR_100HZ | L3GD20_ODR_PD_MASK},
+	{200000, L3GD20_ODR_200HZ | L3GD20_ODR_PD_MASK},
+	{400000, L3GD20_ODR_400HZ | L3GD20_ODR_PD_MASK},
+	{800000, L3GD20_ODR_800HZ | L3GD20_ODR_PD_MASK},
+};
+#elif defined(CONFIG_ACCELGYRO_LSM6DS0)
 /* List of ODR (gyro off) values in mHz and their associated register values.*/
 const struct accel_param_pair gyro_on_odr[] = {
 	{0,        LSM6DS0_ODR_PD},
@@ -82,10 +137,16 @@ const struct accel_param_pair gyro_off_odr[] = {
 	{476000,   LSM6DS0_ODR_476HZ},
 	{952000,   LSM6DS0_ODR_952HZ}
 };
+#endif
 
 static inline const struct accel_param_pair *get_odr_table(
 		enum motionsensor_type type, int *psize)
 {
+#ifdef CONFIG_GYRO_L3GD20H
+	if (psize)
+		*psize = ARRAY_SIZE(gyro_odr);
+	return gyro_odr;
+#elif defined(CONFIG_ACCELGYRO_LSM6DS0)
 	if (MOTIONSENSE_TYPE_ACCEL == type) {
 		if (psize)
 			*psize = ARRAY_SIZE(gyro_off_odr);
@@ -95,18 +156,27 @@ static inline const struct accel_param_pair *get_odr_table(
 			*psize = ARRAY_SIZE(gyro_on_odr);
 		return gyro_on_odr;
 	}
+#endif
 }
 
 static inline int get_ctrl_reg(enum motionsensor_type type)
 {
+#ifdef CONFIG_GYRO_L3GD20H
+	return L3GD20_CTRL_REG1;
+#elif defined(CONFIG_ACCELGYRO_LSM6DS0)
 	return (MOTIONSENSE_TYPE_ACCEL == type) ?
 		LSM6DS0_CTRL_REG6_XL : LSM6DS0_CTRL_REG1_G;
+#endif
 }
 
 static inline int get_xyz_reg(enum motionsensor_type type)
 {
+#ifdef CONFIG_GYRO_L3GD20H
+	return L3GD20_OUT_X_L | (1 << 7);
+#elif defined(CONFIG_ACCELGYRO_LSM6DS0)
 	return (MOTIONSENSE_TYPE_ACCEL == type) ?
 		LSM6DS0_OUT_X_L_XL : LSM6DS0_OUT_X_L_G;
+#endif
 }
 
 /**
@@ -151,7 +221,7 @@ static int get_engineering_val(const int reg_val,
  */
 static inline int raw_read8(const int addr, const int reg, int *data_ptr)
 {
-	return i2c_read8(I2C_PORT_ACCEL, addr, reg, data_ptr);
+	return i2c_read8(I2C_PORT_ACCEL_GYRO, addr, reg, data_ptr);
 }
 
 /**
@@ -159,7 +229,7 @@ static inline int raw_read8(const int addr, const int reg, int *data_ptr)
  */
 static inline int raw_write8(const int addr, const int reg, int data)
 {
-	return i2c_write8(I2C_PORT_ACCEL, addr, reg, data);
+	return i2c_write8(I2C_PORT_ACCEL_GYRO, addr, reg, data);
 }
 
 static int set_range(const struct motion_sensor_t *s,
@@ -171,7 +241,11 @@ static int set_range(const struct motion_sensor_t *s,
 	const struct accel_param_pair *ranges;
 	struct lsm6ds0_data *data = (struct lsm6ds0_data *)s->drv_data;
 
+#ifdef CONFIG_GYRO_L3GD20H
+	ctrl_reg = L3GD20_CTRL_REG4;
+#elif defined(CONFIG_ACCELGYRO_LSM6DS0)
 	ctrl_reg = get_ctrl_reg(s->type);
+#endif
 	ranges = get_range_table(s->type, &range_tbl_size);
 
 	reg_val = get_reg_val(range, rnd, ranges, range_tbl_size);
@@ -186,7 +260,7 @@ static int set_range(const struct motion_sensor_t *s,
 	if (ret != EC_SUCCESS)
 		goto accel_cleanup;
 
-	ctrl_val = (ctrl_val & ~LSM6DS0_RANGE_MASK) | reg_val;
+	ctrl_val = (ctrl_val & ~ACCEL_GYRO_RANGE_MASK) | reg_val;
 	ret = raw_write8(s->i2c_addr, ctrl_reg, ctrl_val);
 
 	/* Now that we have set the range, update the driver's value. */
@@ -219,7 +293,7 @@ static int set_resolution(const struct motion_sensor_t *s,
 static int get_resolution(const struct motion_sensor_t *s,
 				int *res)
 {
-	*res = LSM6DS0_RESOLUTION;
+	*res = ACCEL_GYRO_RESOLUTION;
 	return EC_SUCCESS;
 }
 
@@ -246,7 +320,12 @@ static int set_data_rate(const struct motion_sensor_t *s,
 	if (ret != EC_SUCCESS)
 		goto accel_cleanup;
 
+#ifdef CONFIG_GYRO_L3GD20H
+	val = (val & ~(L3GD20_ODR_MASK | L3GD20_ODR_PD_MASK)) |
+		(reg_val & ~L3GD20_LOW_ODR_MASK);
+#elif defined(CONFIG_ACCELGYRO_LSM6DS0)
 	val = (val & ~LSM6DS0_ODR_MASK) | reg_val;
+#endif
 	ret = raw_write8(s->i2c_addr, ctrl_reg, val);
 
 	/* Now that we have set the odr, update the driver's value. */
@@ -254,6 +333,51 @@ static int set_data_rate(const struct motion_sensor_t *s,
 		data->sensor_odr = get_engineering_val(reg_val, data_rates,
 						       odr_tbl_size);
 
+#ifdef CONFIG_GYRO_L3GD20H
+	ret = raw_read8(s->i2c_addr, L3GD20_LOW_ODR, &val);
+	if (ret != EC_SUCCESS)
+		goto accel_cleanup;
+
+	/* We need to clear low_ODR bit for higher data rates */
+	if (reg_val & L3GD20_LOW_ODR_MASK)
+		val |= 1;
+	else
+		val &= ~1;
+
+	ret = raw_write8(s->i2c_addr, L3GD20_LOW_ODR, val);
+	if (ret != EC_SUCCESS)
+		goto accel_cleanup;
+
+	/* CTRL_REG5 24h
+	 * [7] low-power mode = 0;
+	 * [6] fifo disabled = 0;
+	 * [5] Stop on fth = 0;
+	 * [4] High pass filter enable = 1;
+	 * [3:2] int1_sel = 0;
+	 * [1:0] out_sel = 1;
+	 */
+	ret = raw_read8(s->i2c_addr, L3GD20_CTRL_REG5, &val);
+	if (ret != EC_SUCCESS)
+		goto accel_cleanup;
+
+	val |= (1 << 4); /* high-pass filter enabled */
+	val |= (1 << 0); /* data in data reg are high-pass filtered */
+	ret = raw_write8(s->i2c_addr, L3GD20_CTRL_REG5, val);
+	if (ret != EC_SUCCESS)
+		goto accel_cleanup;
+
+	ret = raw_read8(s->i2c_addr, L3GD20_CTRL_REG2, &val);
+	if (ret != EC_SUCCESS)
+		goto accel_cleanup;
+
+	/*
+	 * Table 25. High pass filter mode configuration
+	 * Table 26. High pass filter cut off frequency configuration
+	 */
+	val &= 0xf0;
+	val |= 0x04;
+	ret = raw_write8(s->i2c_addr, L3GD20_CTRL_REG2, val);
+#elif defined(CONFIG_ACCELGYRO_LSM6DS0)
 	/* CTRL_REG3_G 12h
 	 * [7] low-power mode = 0;
 	 * [6] high pass filter disabled;
@@ -271,10 +395,11 @@ static int set_data_rate(const struct motion_sensor_t *s,
 			(val & ~(1<<7)); /* set low-power mode */
 		ret = raw_write8(s->i2c_addr, LSM6DS0_CTRL_REG3_G, val);
 	}
+#endif
 
 accel_cleanup:
 	mutex_unlock(s->mutex);
-	return EC_SUCCESS;
+	return ret;
 }
 
 static int get_data_rate(const struct motion_sensor_t *s,
@@ -299,17 +424,21 @@ static int is_data_ready(const struct motion_sensor_t *s, int *ready)
 {
 	int ret, tmp;
 
-	ret = raw_read8(s->i2c_addr, LSM6DS0_STATUS_REG, &tmp);
+	ret = raw_read8(s->i2c_addr, ACCEL_GYRO_STATUS_REG, &tmp);
 
 	if (ret != EC_SUCCESS) {
 		CPRINTF("[%T %s type:0x%X RS Error]", s->name, s->type);
 		return ret;
 	}
 
+#ifdef CONFIG_GYRO_L3GD20H
+	*ready = (tmp & L3GD20_STS_ZYXDA_MASK) ? 1 : 0;
+#elif defined(CONFIG_ACCELGYRO_LSM6DS0)
 	if (MOTIONSENSE_TYPE_ACCEL == s->type)
 		*ready = (LSM6DS0_STS_XLDA_UP == (tmp & LSM6DS0_STS_XLDA_MASK));
 	else
 		*ready = (LSM6DS0_STS_GDA_UP == (tmp & LSM6DS0_STS_GDA_MASK));
+#endif
 
 	return EC_SUCCESS;
 }
@@ -339,10 +468,10 @@ static int read(const struct motion_sensor_t *s, vector_3_t v)
 	xyz_reg = get_xyz_reg(s->type);
 
 	/* Read 6 bytes starting at xyz_reg */
-	i2c_lock(I2C_PORT_ACCEL, 1);
-	ret = i2c_xfer(I2C_PORT_ACCEL, s->i2c_addr,
+	i2c_lock(I2C_PORT_ACCEL_GYRO, 1);
+	ret = i2c_xfer(I2C_PORT_ACCEL_GYRO, s->i2c_addr,
 			&xyz_reg, 1, data, 6, I2C_XFER_SINGLE);
-	i2c_lock(I2C_PORT_ACCEL, 0);
+	i2c_lock(I2C_PORT_ACCEL_GYRO, 0);
 
 	if (ret != EC_SUCCESS) {
 		CPRINTF("[%T %s type:0x%X RD XYZ Error]",
@@ -380,13 +509,42 @@ static int init(const struct motion_sensor_t *s)
 {
 	int ret = 0, tmp;
 
-	ret = raw_read8(s->i2c_addr, LSM6DS0_WHO_AM_I_REG, &tmp);
+	ret = raw_read8(s->i2c_addr, ACCEL_GYRO_WHO_AM_I_REG, &tmp);
 	if (ret)
 		return EC_ERROR_UNKNOWN;
 
-	if (tmp != LSM6DS0_WHO_AM_I)
+	if (tmp != ACCEL_GYRO_WHO_AM_I)
 		return EC_ERROR_ACCESS_DENIED;
 
+#ifdef CONFIG_GYRO_L3GD20H
+	/* All axes are enabled */
+	ret = raw_write8(s->i2c_addr, L3GD20_CTRL_REG1, 0x0f);
+	if (ret)
+		return EC_ERROR_UNKNOWN;
+
+	mutex_lock(s->mutex);
+	ret = raw_read8(s->i2c_addr, L3GD20_CTRL_REG4, &tmp);
+	if (ret) {
+		mutex_unlock(s->mutex);
+		return EC_ERROR_UNKNOWN;
+	}
+
+	tmp |= L3GD20_BDU_ENABLE;
+	ret = raw_write8(s->i2c_addr, L3GD20_CTRL_REG4, tmp);
+	mutex_unlock(s->mutex);
+	if (ret)
+		return EC_ERROR_UNKNOWN;
+
+	/* Config GYRO Range */
+	ret = set_range(s, s->range, 1);
+	if (ret)
+		return EC_ERROR_UNKNOWN;
+
+	/* Config GYRO ODR */
+	ret = set_data_rate(s, s->odr, 1);
+	if (ret)
+		return EC_ERROR_UNKNOWN;
+#elif defined(CONFIG_ACCELGYRO_LSM6DS0)
 	/*
 	 * This sensor can be powered through an EC reboot, so the state of
 	 * the sensor is unknown here. Initiate software reset to restore
@@ -440,13 +598,14 @@ static int init(const struct motion_sensor_t *s)
 		if (ret)
 			return EC_ERROR_UNKNOWN;
 	}
+#endif
 
 	CPRINTF("[%T %s: MS Done Init type:0x%X range:%d odr:%d]\n",
 			s->name, s->type, s->range, s->odr);
 	return ret;
 }
 
-const struct accelgyro_drv lsm6ds0_drv = {
+const struct accelgyro_drv ACCEL_GYRO_DRV = {
 	.init = init,
 	.read = read,
 	.set_range = set_range,
