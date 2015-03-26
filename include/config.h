@@ -42,6 +42,9 @@
 /* Specify type of accelerometers attached. */
 #undef CONFIG_ACCEL_KXCJ9
 
+/* Specify type of Gyrometers attached. */
+#undef CONFIG_GYRO_L3GD20H
+
 /* Compile chip support for analog-to-digital convertor */
 #undef CONFIG_ADC
 
