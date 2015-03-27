@@ -5,6 +5,9 @@
  * found in the LICENSE file.
  */
 
+/* Note: order must match main board */
+
+GPIO(PVT_CS0,             PORT(14), 6, GPIO_ODR_HIGH, NULL)
 GPIO(LED1,       PORT(15), 4, GPIO_ODR_LOW,  NULL)
 GPIO(LED2,       PORT(15), 5, GPIO_ODR_HIGH, NULL)
 GPIO(LED3,       PORT(15), 6, GPIO_ODR_LOW,  NULL)
