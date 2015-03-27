@@ -5,6 +5,7 @@
  * found in the LICENSE file.
  */
 
+GPIO(PVT_CS0,           PORT(14), 6, GPIO_ODR_HIGH,                             NULL)                   /* SPI PVT Chip select */
 GPIO(NC_012,            PORT(1),  2, GPIO_INPUT | GPIO_PULL_UP,                 NULL)                   /* NC */
 GPIO(USB_ILIM_SEL,      PORT(1),  3, GPIO_OUT_HIGH,                             NULL)                   /* USB current control */
 
@@ -61,7 +62,6 @@ GPIO(THERMAL_PROBE_EN_L,PORT(14), 0, GPIO_OUT_HIGH,                             
 GPIO(PWR_LED0_L,        PORT(14), 1, GPIO_ODR_HIGH,                             NULL)                   /* Power LED - blue */
 GPIO(PCH_RSMRST_L,      PORT(14), 3, GPIO_OUT_LOW,                              NULL)                   /* RSMRST_N to PCH */
 GPIO(PWR_LED1_L,        PORT(14), 5, GPIO_ODR_HIGH,                             NULL)                   /* Power LED - orange */
-GPIO(PVT_CS0,           PORT(14), 6, GPIO_ODR_HIGH,                             NULL)                   /* SPI PVT Chip select */
 GPIO(ALS_INT,           PORT(14), 7, GPIO_INT_FALLING,                          NULL)                   /* ALS sensor interrupt to EC */
 
 GPIO(WLAN_OFF_L,        PORT(15), 0, GPIO_ODR_HIGH,                             NULL)                   /* Wireless LAN */
