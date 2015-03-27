@@ -6,4 +6,4 @@
  */
 
 #define LFW_FIRMWARE
-#include "board/cyan/gpio.inc"
+#include "board/glower/gpio.inc"

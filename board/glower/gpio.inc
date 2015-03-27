@@ -5,6 +5,11 @@
  * found in the LICENSE file.
  */
 
+/* Used in LFW and full image */
+GPIO(PVT_CS0,          PORT(14), 6, GPIO_ODR_HIGH,                NULL)                   /* SPI PVT Chip select */
+
+/* Only in full image */
+#ifndef LFW_FIRMWARE
 /* Inputs with interrupt handlers are first for efficiency */
 GPIO(POWER_BUTTON_L,   PORT(20), 3, GPIO_INT_BOTH,                power_button_interrupt)
 GPIO(LID_OPEN,         PORT(16), 0, GPIO_INT_BOTH,                lid_interrupt)
@@ -69,13 +74,19 @@ GPIO(KBD_KSO2,            PORT(10), 1, GPIO_OUT_LOW,  NULL)
 GPIO(SYS_RST_L,           PORT(12), 1, GPIO_INPUT,    NULL)
 GPIO(EC_HIB,              PORT(3),  4, GPIO_INPUT,    NULL)
 GPIO(ICMNT,               PORT(6),  1, GPIO_INPUT,    NULL)
-GPIO(PVT_CS0,             PORT(14), 6, GPIO_ODR_HIGH, NULL)
 
 /* Configure VCC_PWRGD as GPIO so that it's internally gated high */
 GPIO(TP78,                PORT(6),  3, GPIO_OUT_HIGH, NULL)
+#endif
 
-
+/* Used in LFW and full image */
 ALTERNATE(PORT(16), 0x24, 1, MODULE_UART,          0) /* UART0 */
+ALTERNATE(PORT(15), 0x08, 1, MODULE_SPI,           0)
+ALTERNATE(PORT(16), 0x10, 1, MODULE_SPI,           0)
+ALTERNATE(PORT(5),  0x10, 1, MODULE_SPI,           0)
+
+/* Only in full image */
+#ifndef LFW_FIRMWARE
 ALTERNATE(PORT(2),  0x0f, 2, MODULE_I2C,           0) /* I2C1 and I2C2 */
 ALTERNATE(PORT(0),  0xfe, 3, MODULE_KEYBOARD_SCAN, GPIO_KB_OUTPUT)
 ALTERNATE(PORT(1),  0x03, 3, MODULE_KEYBOARD_SCAN, GPIO_KB_OUTPUT)
@@ -85,6 +96,4 @@ ALTERNATE(PORT(10), 0xd8, 3, MODULE_KEYBOARD_SCAN, GPIO_KB_OUTPUT)
 ALTERNATE(PORT(12), 0x60, 2, MODULE_KEYBOARD_SCAN, GPIO_KB_INPUT)
 ALTERNATE(PORT(14), 0x14, 3, MODULE_KEYBOARD_SCAN, GPIO_KB_INPUT)
 ALTERNATE(PORT(2),  0x40, 2, MODULE_LPC,           0) /* LPC SCI */
-ALTERNATE(PORT(15), 0x08, 1, MODULE_SPI,           0)
-ALTERNATE(PORT(16), 0x10, 1, MODULE_SPI,           0)
-ALTERNATE(PORT(5),  0x10, 1, MODULE_SPI,           0)
+#endif
