@@ -183,6 +183,15 @@ $(out)/$(PROJECT).exe: $(objs)
 $(out)/%.o:%.c
 	$(call quiet,c_to_o,CC     )
 
+# compile -lfw.o differently, after regular objs
+$(out)/%-lfw.o: CFLAGS+=-DLFW_FIRMWARE
+$(out)/%-lfw.o: %.c $(objs)
+	$(call quiet,c_to_o,CC     )
+
+$(out)/%-lfw.elf: objs = $(objs_lfw)
+$(out)/%-lfw.elf: %.ld $(objs_lfw)
+	$(call quiet,elf,LD     )
+
 $(out)/vboot/%.o:$(VBOOT_SOURCE)/%.c
 	$(call quiet,c_to_o,CC     )
 

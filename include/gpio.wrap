@@ -55,7 +55,11 @@
 #define UNIMPLEMENTED(name)
 #endif
 
+#ifdef LFW_FIRMWARE
+#include "lfw/gpio.inc"
+#else
 #include "gpio.inc"
+#endif
 
 /*
  * Once the gpio.inc file has been included these macros are no longer needed.
