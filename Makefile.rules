@@ -257,6 +257,14 @@ $(npcx-lfw-bin):
 		-T $(npcx-lfw).ld -Map $(out)/$(npcx-lfw).map
 	-@ $(OBJCOPY) -O binary $(out)/$(npcx-lfw).elf $@
 
+$(mec1322-lfw-elf): $(mec1322-lfw-objs)
+	$(if $(V),,@echo '  EXTBIN ' $(subst $(out)/,,$@) ; )
+	@ mkdir -p $(@D)
+	@ $(CC) -Iboard/$(BOARD)/lfw $(CFLAGS) -c $(mec1322-lfw).c \
+	-o $(@:.elf=.o) -MMD -MF $(@:.elf=.d)  && \
+	$(LD) -T $(mec1322-lfw).ld $(LDFLAGS) -o $@  $^ \
+	$(out)/$(mec1322-lfw).o -Map $(out)/ec_lfw.map
+
 .PHONY: xrefs
 xrefs: $(call targ_if_prog,etags,$(out)/TAGS) \
 	$(call targ_if_prog,ctags,$(out)/tags)
