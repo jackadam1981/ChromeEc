@@ -29,10 +29,21 @@ SCRIPTDIR:=./chip/${CHIP}/util
 # Allow SPI size to be overridden by board specific size, default to 256KB.
 CHIP_SPI_SIZE_KB?=256
 
+mec1322-lfw = chip/mec1322/lfw/ec_lfw
+mec1322-lfw-elf = $(out)/$(mec1322-lfw).elf
+mec1322-lfw-flat = $(out)/$(mec1322-lfw).flat
+mec1322-lfw-objs = $(out)/core/$(CORE)/cpu.o \
+		$(addprefix $(out)/common/, util.o gpio.o version.o) \
+		$(addprefix $(out)/chip/$(CHIP)/, spi.o dma.o gpio.o clock.o \
+		hwtimer.o)
+
 # Command to convert $^ to $@.tmp
-cmd_obj_to_bin = $(OBJCOPY) --gap-fill=0xff -O binary $^ $@.tmp1 ; \
+cmd_obj_to_bin = $(OBJCOPY) --gap-fill=0xff -O binary $< $@.tmp1 ; \
 		${SCRIPTDIR}/pack_ec.py -o $@.tmp -i $@.tmp1 \
-		--loader_file ${SCRIPTDIR}/ecloader.bin \
+		--loader_file $(mec1322-lfw-flat) \
 		--payload_key ${SCRIPTDIR}/rsakey_sign_payload.pem \
 		--header_key ${SCRIPTDIR}/rsakey_sign_header.pem \
 		--spi_size=${CHIP_SPI_SIZE_KB} ; rm -f $@.tmp1
+
+# add dependency on loader
+$(out)/$(PROJECT).bin: $(mec1322-lfw-flat)
