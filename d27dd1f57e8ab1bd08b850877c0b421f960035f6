@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63a3ca80_839c3eb7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-03-27T01:38:20Z",
+      "side": 1,
+      "message": "No need for this CQ-DEPEND, you have the patches landed in sequence on gerrit so you can\u0027t merge this without first merging the dependency.",
+      "revId": "d27dd1f57e8ab1bd08b850877c0b421f960035f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
