@@ -17,6 +17,7 @@
  */
 #ifndef GPIO
 #define GPIO(name, port, pin, flags, signal)
+#define GPIOMEC(name, gpionum, flags, signal)
 #endif
 
 /*
@@ -61,5 +62,6 @@
  * Once the gpio.inc file has been included these macros are no longer needed.
  */
 #undef GPIO
+#undef GPIOMEC
 #undef ALTERNATE
 #undef UNIMPLEMENTED
