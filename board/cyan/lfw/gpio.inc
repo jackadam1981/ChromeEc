@@ -5,5 +5,7 @@
  * found in the LICENSE file.
  */
 
+/* Note: order must match main board */
+
 #define LFW_FIRMWARE
-#include "board/strago/gpio.inc"
+#include "board/cyan/gpio.inc"
