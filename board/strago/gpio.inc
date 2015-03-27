@@ -5,6 +5,11 @@
  * found in the LICENSE file.
  */
 
+/* Used in LFW and full image */
+GPIO(PVT_CS0,           PORT(14), 6, GPIO_ODR_HIGH,                             NULL)                   /* SPI PVT Chip select */
+
+/* Only in full image */
+#ifndef LFW_FIRMWARE
 GPIO(NC_012,            PORT(1),  2, GPIO_INPUT | GPIO_PULL_UP,                 NULL)                   /* NC */
 GPIO(USB_ILIM_SEL,      PORT(1),  3, GPIO_OUT_HIGH,                             NULL)                   /* USB current control */
 
@@ -57,7 +62,6 @@ GPIO(WWAN_PWREN,        PORT(13), 5, GPIO_OUT_HIGH,                             
 GPIO(THERMAL_PROBE_EN_L,PORT(14), 0, GPIO_OUT_HIGH,                             NULL)
 GPIO(PCH_RSMRST_L,      PORT(14), 3, GPIO_OUT_LOW,                              NULL)                   /* RSMRST_N to PCH */
 GPIO(NC_145,            PORT(14), 5, GPIO_INPUT | GPIO_PULL_UP,                 NULL)                   /* NC */
-GPIO(PVT_CS0,           PORT(14), 6, GPIO_ODR_HIGH,                             NULL)                   /* SPI PVT Chip select */
 GPIO(ALS_INT,           PORT(14), 7, GPIO_INT_FALLING,                          NULL)                   /* ALS sensor interrupt to EC */
 
 GPIO(WLAN_OFF_L,        PORT(15), 0, GPIO_ODR_HIGH,                             NULL)                   /* Wireless LAN */
@@ -81,24 +85,30 @@ GPIO(PCH_SLP_S3_L,      PORT(20), 6, GPIO_INT_BOTH_DSLEEP | GPIO_PULL_UP,       
 
 GPIO(SUSPWRDNACK_SOC_EC,PORT(21), 0, GPIO_OUT_LOW,                              NULL)                   /* SUSPWRDNACK signal from EC to MOIC device*/
 GPIO(PCH_SLP_SX_L,      PORT(21), 1, GPIO_INT_BOTH_DSLEEP,                      NULL)                   /* Sleep SOIX signal from SOC to EC */
-
+GPIO(KBD_KSO2,          PORT(0),1,      GPIO_KB_OUTPUT_COL2,    NULL)                   /* Negative edge triggered irq. */
 UNIMPLEMENTED(WP_L)
+#endif
 
 /* Alternate functions GPIO definition */
+
+/* Used in LFW and full image */
 ALTERNATE(PORT(16),     0x24,   1,      MODULE_UART,            0)                      /* UART0 */
-ALTERNATE(PORT(1),      0x60,   2,      MODULE_I2C,             GPIO_PULL_UP)           /* I2C0: Temperature Sensor */
-ALTERNATE(PORT(0),      0xfc,   3,      MODULE_KEYBOARD_SCAN,   GPIO_KB_OUTPUT)
-ALTERNATE(PORT(1),      0x03,   3,      MODULE_KEYBOARD_SCAN,   GPIO_KB_OUTPUT)
-ALTERNATE(PORT(10),     0xd8,   3,      MODULE_KEYBOARD_SCAN,   GPIO_KB_OUTPUT)
- GPIO(KBD_KSO2,         PORT(0),1,      GPIO_KB_OUTPUT_COL2,    NULL)                   /* Negative edge triggered irq. */
-ALTERNATE(PORT(3),  0x04,     3, MODULE_KEYBOARD_SCAN, GPIO_KB_INPUT)
-ALTERNATE(PORT(4),  0x0d,     3, MODULE_KEYBOARD_SCAN, GPIO_KB_INPUT)
-ALTERNATE(PORT(12), 0x60,     2, MODULE_KEYBOARD_SCAN, GPIO_KB_INPUT)
-ALTERNATE(PORT(14), 0x14,     3, MODULE_KEYBOARD_SCAN, GPIO_KB_INPUT)
-ALTERNATE(PORT(1),  0x10,     1, MODULE_LPC,           0)                       /* 14: CLKRUN# */
-ALTERNATE(PORT(11), 0x9e,     1, MODULE_LPC,           0)                       /* 111~114:LAD[0:3],  117:PCI_CLK */
-ALTERNATE(PORT(11), 0x40,     1, MODULE_LPC,           GPIO_INT_BOTH)           /* 116: LRESET# */
-ALTERNATE(PORT(12), 0x01,     1, MODULE_LPC,           0)                       /* 120: LFRAME# */
 ALTERNATE(PORT(5),  0x10,     1, MODULE_SPI,           0)
 ALTERNATE(PORT(16), 0x10,     1, MODULE_SPI,           0)
 ALTERNATE(PORT(15), 0x08,     1, MODULE_SPI,           0)                      /* 153: CLK */
+
+/* Only in full image */
+#ifndef LFW_FIRMWARE
+ALTERNATE(PORT(1),      0x60,     2, MODULE_I2C,             GPIO_PULL_UP)           /* I2C0: Temperature Sensor */
+ALTERNATE(PORT(0),      0xfc,     3, MODULE_KEYBOARD_SCAN,   GPIO_KB_OUTPUT)
+ALTERNATE(PORT(1),      0x03,     3, MODULE_KEYBOARD_SCAN,   GPIO_KB_OUTPUT)
+ALTERNATE(PORT(10),     0xd8,     3, MODULE_KEYBOARD_SCAN,   GPIO_KB_OUTPUT)
+ALTERNATE(PORT(3),      0x04,     3, MODULE_KEYBOARD_SCAN,   GPIO_KB_INPUT)
+ALTERNATE(PORT(4),      0x0d,     3, MODULE_KEYBOARD_SCAN,   GPIO_KB_INPUT)
+ALTERNATE(PORT(12),     0x60,     2, MODULE_KEYBOARD_SCAN,   GPIO_KB_INPUT)
+ALTERNATE(PORT(14),     0x14,     3, MODULE_KEYBOARD_SCAN,   GPIO_KB_INPUT)
+ALTERNATE(PORT(1),      0x10,     1, MODULE_LPC,             0)                       /* 14: CLKRUN# */
+ALTERNATE(PORT(11),     0x9e,     1, MODULE_LPC,             0)                       /* 111~114:LAD[0:3],  117:PCI_CLK */
+ALTERNATE(PORT(11),     0x40,     1, MODULE_LPC,             GPIO_INT_BOTH)           /* 116: LRESET# */
+ALTERNATE(PORT(12),     0x01,     1, MODULE_LPC,             0)                       /* 120: LFRAME# */
+#endif
