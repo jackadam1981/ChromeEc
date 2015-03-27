@@ -22,6 +22,30 @@
       "revId": "3ccdb85d9cb4888348fd2f689675295849ee216b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63758ab8_f524cbdc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-27T16:31:03Z",
+      "side": 1,
+      "message": "Sure sysjumping affects active SuperSpeed connections, but that shouldn\u0027t be a visible issue excepted for dogfood machines taking a RO firmware update.\nOn top of that, I\u0027m not sure that on P4 resetting the connection (the old behavior) is really better than the new toggling (it should be a bit safer on an electrical PoV, but overall this is not too dangerous)",
+      "parentUuid": "a3a94260_083b877f",
+      "range": {
+        "startLine": 19,
+        "startChar": 35,
+        "endLine": 19,
+        "endChar": 55
+      },
+      "revId": "3ccdb85d9cb4888348fd2f689675295849ee216b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
