@@ -5,6 +5,11 @@
  * found in the LICENSE file.
  */
 
+/* Used in LFW and full image */
+GPIO(PVT_CS0,             PORT(14), 6, GPIO_ODR_HIGH, NULL)
+
+/* Only in full image */
+#ifndef LFW_FIRMWARE
 GPIO(LED1,       PORT(15), 4, GPIO_ODR_LOW,  NULL)
 GPIO(LED2,       PORT(15), 5, GPIO_ODR_HIGH, NULL)
 GPIO(LED3,       PORT(15), 6, GPIO_ODR_LOW,  NULL)
@@ -24,8 +29,16 @@ GPIO(SHD_CS0,    PORT(15), 0, GPIO_ODR_HIGH, NULL)
 UNIMPLEMENTED(RECOVERY_L)  /* Recovery signal from DOWN button */
 UNIMPLEMENTED(WP_L)          /* Write protect input */
 UNIMPLEMENTED(ENTERING_RW) /* EC entering RW code */
+#endif
 
+/* Used in LFW and full image */
 ALTERNATE(PORT(16), 0x24,     1, MODULE_UART,    0) /* UART0 */
+ALTERNATE(PORT(2),  0x20, 2, MODULE_LPC,           0)
+ALTERNATE(PORT(12), 0x14, 1, MODULE_SPI,           0)
+ALTERNATE(PORT(6),  0x10, 1, MODULE_SPI,           0)
+
+/* Only in full image */
+#ifndef LFW_FIRMWARE
 ALTERNATE(PORT(3),  (1 << 4), 3, MODULE_PWM_FAN, 0)
 ALTERNATE(PORT(14), (1 << 0), 3, MODULE_PWM_FAN, 0)
 /*
@@ -40,6 +53,4 @@ ALTERNATE(PORT(4),  0x0d, 3, MODULE_KEYBOARD_SCAN, GPIO_KB_INPUT)
 ALTERNATE(PORT(10), 0xd8, 3, MODULE_KEYBOARD_SCAN, GPIO_KB_OUTPUT)
 ALTERNATE(PORT(12), 0x60, 2, MODULE_KEYBOARD_SCAN, GPIO_KB_INPUT)
 ALTERNATE(PORT(14), 0x14, 3, MODULE_KEYBOARD_SCAN, GPIO_KB_INPUT)
-ALTERNATE(PORT(2),  0x20, 2, MODULE_LPC,           0)
-ALTERNATE(PORT(12), 0x14, 1, MODULE_SPI,           0)
-ALTERNATE(PORT(6),  0x10, 1, MODULE_SPI,           0)
+#endif
