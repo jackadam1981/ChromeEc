@@ -138,7 +138,7 @@ all-y+=$(call objs_from_dir,common,common)
 all-y+=$(call objs_from_dir,driver,driver)
 all-y+=$(call objs_from_dir,power,power)
 all-y+=$(call objs_from_dir,test,$(PROJECT))
-dirs=core/$(CORE) chip/$(CHIP) board/$(BOARD) private common power test util
+dirs=core/$(CORE) chip/$(CHIP) chip/$(CHIP)/lfw board/$(BOARD) private common power test util
 dirs+=$(shell find driver -type d)
 
 $(config): $(out)/$(PROJECT).bin

@@ -183,6 +183,13 @@ $(out)/$(PROJECT).exe: $(objs)
 $(out)/%.o:%.c
 	$(call quiet,c_to_o,CC     )
 
+# compile -lfw.os after normal objs
+$(out)/%-lfw.o: %.c | lfw-stage
+	$(call quiet,c_to_o,CC     )
+
+$(out)/%-lfw.elf: %.ld $(objs_lfw)
+	$(call quiet,elf,LD     )
+
 $(out)/vboot/%.o:$(VBOOT_SOURCE)/%.c
 	$(call quiet,c_to_o,CC     )
 
@@ -256,6 +263,12 @@ $(npcx-lfw-bin):
 	-@ $(LD) $(out)/$(npcx-lfw).o $(LDFLAGS) -o $(out)/$(npcx-lfw).elf \
 		-T $(npcx-lfw).ld -Map $(out)/$(npcx-lfw).map
 	-@ $(OBJCOPY) -O binary $(out)/$(npcx-lfw).elf $@
+
+# when done with regular objs, build with -lfw suffix
+lfw-stage: $(objs)
+	@echo Building LFW
+	$(eval objs=$(objs_lfw))
+	$(eval CFLAGS+=-DLFW_FIRMWARE)
 
 .PHONY: xrefs
 xrefs: $(call targ_if_prog,etags,$(out)/TAGS) \
