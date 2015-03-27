@@ -6,6 +6,7 @@
  */
 
 /* Inputs with interrupt handlers are first for efficiency */
+GPIO(PVT_CS0,             PORT(14), 6, GPIO_ODR_HIGH, NULL)
 GPIO(POWER_BUTTON_L,   PORT(20), 3, GPIO_INT_BOTH,                power_button_interrupt)
 GPIO(LID_OPEN,         PORT(16), 0, GPIO_INT_BOTH,                lid_interrupt)
 GPIO(AC_PRESENT,       PORT(16), 3, GPIO_INT_BOTH,                extpower_interrupt)
@@ -69,7 +70,6 @@ GPIO(KBD_KSO2,            PORT(10), 1, GPIO_OUT_LOW,  NULL)
 GPIO(SYS_RST_L,           PORT(12), 1, GPIO_INPUT,    NULL)
 GPIO(EC_HIB,              PORT(3),  4, GPIO_INPUT,    NULL)
 GPIO(ICMNT,               PORT(6),  1, GPIO_INPUT,    NULL)
-GPIO(PVT_CS0,             PORT(14), 6, GPIO_ODR_HIGH, NULL)
 
 /* Configure VCC_PWRGD as GPIO so that it's internally gated high */
 GPIO(TP78,                PORT(6),  3, GPIO_OUT_HIGH, NULL)
