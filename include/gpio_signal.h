@@ -4,6 +4,7 @@
  */
 
 #define GPIO(name, port, pin, flags, signal) GPIO_##name,
+#define GPIOMEC(name, gpionum, flags, signal) GPIO_##name,
 #define UNIMPLEMENTED(name) GPIO_##name,
 
 enum gpio_signal {

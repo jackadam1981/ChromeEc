@@ -6,9 +6,13 @@
 #ifdef CONFIG_COMMON_GPIO_SHORTNAMES
 #define GPIO(name, port, pin, flags, signal) \
 	{#port#pin, GPIO_##port, (1 << pin), flags, signal},
+#define GPIOMEC(name, gpionum, flags, signal) \
+	{#gpionum, (gpionum/10), (1<<(gpionum%10)), flags, signal},
 #else
 #define GPIO(name, port, pin, flags, signal) \
 	{#name, GPIO_##port, (1 << pin), flags, signal},
+#define GPIOMEC(name, gpionum, flags, signal) \
+	{#name, (gpionum/10), (1<<(gpionum%10)), flags, signal},
 #endif
 
 #define UNIMPLEMENTED(name) \

@@ -20,6 +20,14 @@
 #endif
 
 /*
+ * The GPIOMEC macro is silimar to GPIO macro, only use for mec1322.
+ * It uses clearer gpio# as the argument.
+ */
+#ifndef GPIOMEC
+#define GPIOMEC(name, gpionum, flags, signal)
+#endif
+
+/*
  * The ALTERNATE macro is used associate a GPIO with an alternate function.
  *
  * Alternate functions allow hardware peripherals access to GPIO pins.
@@ -61,5 +69,6 @@
  * Once the gpio.inc file has been included these macros are no longer needed.
  */
 #undef GPIO
+#undef GPIOMEC
 #undef ALTERNATE
 #undef UNIMPLEMENTED
