@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3b7bab3_4a5df37e",
+        "filename": "board/glower/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-03-28T00:15:54Z",
+      "side": 1,
+      "message": "Move above the previous comment and comment this separately that it must be first to match LFW?  Otherwise the previous comment doesn\u0027t make any sense.\n\nAlso see comments from mec1322_evb change.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 59
+      },
+      "revId": "0b23a6cf8c97ee8b4045b534b6bc7d131b7e5932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
