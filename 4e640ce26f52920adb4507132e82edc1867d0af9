@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3ae3665_89b3fdca",
+        "filename": "board/mec1322_evb/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-03-28T00:10:51Z",
+      "side": 1,
+      "message": "Confused.  Isn\u0027t THIS the main board?",
+      "range": {
+        "startLine": 8,
+        "startChar": 3,
+        "endLine": 8,
+        "endChar": 36
+      },
+      "revId": "4e640ce26f52920adb4507132e82edc1867d0af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3a94260_f457e62a",
+        "filename": "board/mec1322_evb/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-03-28T00:10:51Z",
+      "side": 1,
+      "message": "Perhaps #ifndef LFW_FIRMWARE around these parts?",
+      "revId": "4e640ce26f52920adb4507132e82edc1867d0af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3ae3665_698481e2",
+        "filename": "board/mec1322_evb/lfw/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-03-28T00:10:51Z",
+      "side": 1,
+      "message": "Can we just\n\n#define LFW_FIRMWARE\n#include \"board/mec1322_evb/gpio.inc\"",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 39
+      },
+      "revId": "4e640ce26f52920adb4507132e82edc1867d0af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
