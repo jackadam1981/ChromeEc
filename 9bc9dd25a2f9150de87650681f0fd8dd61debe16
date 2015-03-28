@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a324e2ad_10d98af8",
+        "filename": "board/ninja/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1114169
+      },
+      "writtenOn": "2015-03-28T02:42:04Z",
+      "side": 1,
+      "message": "1. I\u0027ll implement power led in led.c.\n2. Removing led.c will lead to a build error.",
+      "parentUuid": "2362b2ee_40516267",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 67
+      },
+      "revId": "9bc9dd25a2f9150de87650681f0fd8dd61debe16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2362b2ee_eb05d741",
         "filename": "board/sumo/led.c",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2015-03-25T23:31:22Z",
       "side": 1,
       "message": "why not remove this file?",
+      "revId": "9bc9dd25a2f9150de87650681f0fd8dd61debe16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83335ef4_92ed7c05",
+        "filename": "board/sumo/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1114169
+      },
+      "writtenOn": "2015-03-28T02:42:04Z",
+      "side": 1,
+      "message": "1. I\u0027ll implement power led in led.c.\n2. Removing led.c will lead to a build error.",
+      "parentUuid": "2362b2ee_eb05d741",
       "revId": "9bc9dd25a2f9150de87650681f0fd8dd61debe16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
