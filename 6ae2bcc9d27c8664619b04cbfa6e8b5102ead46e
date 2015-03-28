@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3a94260_b4a64eb7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-03-28T00:15:35Z",
+      "side": 1,
+      "message": "That seems like a cumbersome limitation.\n\nLFW is supposed to be small.  But the GPIO table for a full image can be 3KB all by itself.\n\nI assume that\u0027s because LFW is simply using the .o\u0027s compiled for the full image.  But that\u0027s probably sub-optimal.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 58
+      },
+      "revId": "6ae2bcc9d27c8664619b04cbfa6e8b5102ead46e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
