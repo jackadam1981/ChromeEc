@@ -266,6 +266,29 @@ const struct i2c_port_t i2c_ports[] = {
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
+/* 8-bit address */
+#define SN75DP130_I2C_ADDR 0x5c
+
+static void sn75dp130_redriver_init(void)
+{
+	int i;
+
+	/* Disable squelch detect */
+	i2c_write8(1, SN75DP130_I2C_ADDR, 0x3, 0x1a);
+	/* Disable link training on re-driver source side */
+	i2c_write8(1, SN75DP130_I2C_ADDR, 0x4, 0x0);
+
+	/*
+	 * Force Link voltage level & pre-emphasis by writing each of the lane's
+	 * DPCD config registers 103-106h accordingly.
+	 */
+	i2c_write8(1, SN75DP130_I2C_ADDR, 0x1d, 0x1);
+	for (i = 0x3; i < 0x7; i++) {
+		i2c_write8(1, SN75DP130_I2C_ADDR, 0x1e, i);
+		i2c_write8(1, SN75DP130_I2C_ADDR, 0x1f, 0x3);
+	}
+}
+
 static void board_init(void)
 {
 	timestamp_t now = get_time();
@@ -287,6 +310,7 @@ static void board_init(void)
 	enable_dbg20v_poll();
 
 	ina2xx_init(0, 0x399f, INA2XX_CALIB_1MA(10 /* mOhm */));
+	sn75dp130_redriver_init();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
