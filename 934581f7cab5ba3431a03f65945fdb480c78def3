@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "c352b622_8c7fab8d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-30T23:38:26Z",
+      "side": 1,
+      "message": "Moved this into the pd structure.",
+      "parentUuid": "8647ec3d_2c041314",
+      "range": {
+        "startLine": 341,
+        "startChar": 15,
+        "endLine": 341,
+        "endChar": 32
+      },
+      "revId": "934581f7cab5ba3431a03f65945fdb480c78def3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "463334d7_2a0a3fd3",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -82,6 +106,30 @@
       "writtenOn": "2015-03-24T16:00:20Z",
       "side": 1,
       "message": "nit: need empty line to start multiline comment",
+      "range": {
+        "startLine": 745,
+        "startChar": 5,
+        "endLine": 745,
+        "endChar": 6
+      },
+      "revId": "934581f7cab5ba3431a03f65945fdb480c78def3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c352b622_4cf773a5",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-30T23:38:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "463334d7_2a0a3fd3",
       "range": {
         "startLine": 745,
         "startChar": 5,
@@ -117,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "c352b622_6c1b4f75",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-30T23:38:26Z",
+      "side": 1,
+      "message": "I don\u0027t think I meant to keep this in, it was just for debugging when testing against Zinger. I will remove it completely.",
+      "parentUuid": "6642f831_4b822502",
+      "range": {
+        "startLine": 750,
+        "startChar": 13,
+        "endLine": 750,
+        "endChar": 38
+      },
+      "revId": "934581f7cab5ba3431a03f65945fdb480c78def3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "463334d7_4a1773fa",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -128,6 +200,30 @@
       "writtenOn": "2015-03-24T16:00:20Z",
       "side": 1,
       "message": "\"BIST RX TO\" to make shorter.",
+      "range": {
+        "startLine": 758,
+        "startChar": 2,
+        "endLine": 758,
+        "endChar": 31
+      },
+      "revId": "934581f7cab5ba3431a03f65945fdb480c78def3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c352b622_8c256ba6",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-30T23:38:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "463334d7_4a1773fa",
       "range": {
         "startLine": 758,
         "startChar": 2,
@@ -163,6 +259,30 @@
     },
     {
       "key": {
+        "uuid": "2362b2ee_f29cb970",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-30T23:38:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8647ec3d_4c115f55",
+      "range": {
+        "startLine": 797,
+        "startChar": 30,
+        "endLine": 797,
+        "endChar": 37
+      },
+      "revId": "934581f7cab5ba3431a03f65945fdb480c78def3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dcf295e5_6f2ab1af",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -174,6 +294,30 @@
       "writtenOn": "2015-03-30T15:50:54Z",
       "side": 1,
       "message": "we should already the PD state machine transition on the console, so longer term, this trace probably don\u0027t worth the flash space it\u0027s taking",
+      "range": {
+        "startLine": 799,
+        "startChar": 2,
+        "endLine": 799,
+        "endChar": 27
+      },
+      "revId": "934581f7cab5ba3431a03f65945fdb480c78def3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "630f4a79_265e5855",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-30T23:38:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcf295e5_6f2ab1af",
       "range": {
         "startLine": 799,
         "startChar": 2,
@@ -209,6 +353,30 @@
     },
     {
       "key": {
+        "uuid": "c352b622_acd6e7ed",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1380,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-30T23:38:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6642f831_cbfc5589",
+      "range": {
+        "startLine": 1379,
+        "startChar": 1,
+        "endLine": 1380,
+        "endChar": 51
+      },
+      "revId": "934581f7cab5ba3431a03f65945fdb480c78def3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "463334d7_ea3e676d",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -220,6 +388,30 @@
       "writtenOn": "2015-03-24T16:00:20Z",
       "side": 1,
       "message": "probably don\u0027t need this print, since tx prints that it started and stopped anyway.",
+      "range": {
+        "startLine": 3125,
+        "startChar": 2,
+        "endLine": 3126,
+        "endChar": 29
+      },
+      "revId": "934581f7cab5ba3431a03f65945fdb480c78def3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3fb9632_2c5531dc",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3126,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-03-30T23:38:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "463334d7_ea3e676d",
       "range": {
         "startLine": 3125,
         "startChar": 2,
