@@ -40,6 +40,11 @@ test_mockable int sb_read(int cmd, int *param)
 	if (battery_is_cut_off())
 		return EC_RES_ACCESS_DENIED;
 #endif
+
+#ifdef CONFIG_BATTERY_I2C_ACCESS_DELAY_TIME
+	usleep(CONFIG_BATTERY_I2C_ACCESS_DELAY_TIME);
+#endif
+
 #ifdef CONFIG_SMBUS
 	{
 		int rv;
@@ -62,6 +67,11 @@ test_mockable int sb_write(int cmd, int param)
 	if (battery_is_cut_off())
 		return EC_RES_ACCESS_DENIED;
 #endif
+
+#ifdef CONFIG_BATTERY_I2C_ACCESS_DELAY_TIME
+	usleep(CONFIG_BATTERY_I2C_ACCESS_DELAY_TIME);
+#endif
+
 #ifdef CONFIG_SMBUS
 	return smbus_write_word(I2C_PORT_BATTERY, BATTERY_ADDR, cmd, param);
 #else
