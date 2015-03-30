@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a3a94260_ce357257",
+        "filename": "chip/mec1322/lfw/ec_lfw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-03-30T17:11:39Z",
+      "side": 1,
+      "message": "We will clean up some of the naming convention.",
+      "parentUuid": "43308612_bcd9c120",
+      "range": {
+        "startLine": 28,
+        "startChar": 24,
+        "endLine": 28,
+        "endChar": 38
+      },
+      "revId": "e82dcb12a69b9e2b88ab2615dedde05db002de74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43308612_3cee51b6",
         "filename": "chip/mec1322/lfw/ec_lfw.c",
         "patchSetId": 4
