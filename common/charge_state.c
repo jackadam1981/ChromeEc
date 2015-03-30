@@ -15,6 +15,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "lid_switch.h"
 #include "printf.h"
 #include "sb_fw_update.h"
 #include "system.h"
@@ -67,6 +68,7 @@ static void update_battery_info(void)
 	char *batt_str;
 	int batt_serial;
 	char temp[32];
+	int last_full_charge = 0;
 
 	/* Design Capacity of Full */
 	battery_design_capacity((int *)host_get_memmap(EC_MEMMAP_BATT_DCAP));
@@ -75,8 +77,8 @@ static void update_battery_info(void)
 	battery_design_voltage((int *)host_get_memmap(EC_MEMMAP_BATT_DVLT));
 
 	/* Last Full Charge Capacity */
-	battery_full_charge_capacity(
-		(int *)host_get_memmap(EC_MEMMAP_BATT_LFCC));
+	battery_full_charge_capacity(&last_full_charge);
+	*((int *)host_get_memmap(EC_MEMMAP_BATT_LFCC)) = last_full_charge;
 
 	/* Cycle Count */
 	battery_cycle_count((int *)host_get_memmap(EC_MEMMAP_BATT_CCNT));
@@ -87,7 +89,11 @@ static void update_battery_info(void)
 	memset(batt_str, 0, EC_MEMMAP_TEXT_MAX);
 	memcpy(batt_str, temp, EC_MEMMAP_TEXT_MAX-1);
 
-	/* Battery Model string */
+	if ((0 == memcmp(temp, "SMP", 3)) && (0 == last_full_charge))
+		ec_force_lid_change(1);
+	else
+		ec_force_lid_change(0);
+
 	batt_str = (char *)host_get_memmap(EC_MEMMAP_BATT_MODEL);
 	battery_device_name(temp, sizeof(temp));
 	memset(batt_str, 0, EC_MEMMAP_TEXT_MAX);

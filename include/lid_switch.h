@@ -24,4 +24,9 @@ int lid_is_open(void);
  */
 void lid_interrupt(enum gpio_signal signal);
 
+/**
+ * ec force lid chagne its state.
+ * @param open  lid state: 1 means open; 0 means closed
+ */
+void ec_force_lid_change(int open);
 #endif  /* __CROS_EC_LID_SWITCH_H */
