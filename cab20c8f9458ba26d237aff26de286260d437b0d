@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3a94260_1af3c920",
+        "filename": "board/banjo/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1110614
+      },
+      "writtenOn": "2015-03-30T05:37:14Z",
+      "side": 1,
+      "message": "rename to CONFIG_BATTERY_I2C_ACCESS_DELAY_TIME",
+      "range": {
+        "startLine": 14,
+        "startChar": 8,
+        "endLine": 14,
+        "endChar": 33
+      },
+      "revId": "cab20c8f9458ba26d237aff26de286260d437b0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
