@@ -107,6 +107,14 @@ void lid_interrupt(enum gpio_signal signal)
 	hook_call_deferred(lid_change_deferred, LID_DEBOUNCE_US);
 }
 
+void ec_force_lid_change(int open)
+{
+	forced_lid_open = open;
+	/* Reset lid debounce time */
+	if (open)
+		hook_call_deferred(lid_change_deferred, 0);
+}
+
 static int command_lidopen(int argc, char **argv)
 {
 	lid_switch_open();
