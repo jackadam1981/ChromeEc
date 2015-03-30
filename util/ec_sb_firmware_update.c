@@ -68,7 +68,8 @@ enum {
 	F_VERSION_CHECK = 0x2, /* do firmware version check */
 	F_UPDATE        = 0x4, /* do firmware update */
 	F_NEED_UPDATE   = 0x8,  /* need firmware update */
-	F_POWERD_DISABLED = 0x10  /* powerd is disabled */
+	F_POWERD_DISABLED = 0x10,  /* powerd is disabled */
+	F_LFCC_ZERO =       0x20  /* last full charge is zero */
 };
 
 struct fw_update_ctrl {
@@ -770,6 +771,13 @@ int main(int argc, char *argv[])
 		fw_update.flags |= F_AC_PRESENT;
 		printf("AC_PRESENT\n");
 	}
+	rv = ec_readmem(EC_MEMMAP_BATT_LFCC, sizeof(val), &val);
+	if (rv <= 0) {
+		printf("EC Memmap read error:%d\n", rv);
+		goto out;
+	}
+	if (val == 0)
+		fw_update.flags |= F_LFCC_ZERO;
 
 	if (op == OP_UPDATE)
 		fw_update.flags |= F_UPDATE;
@@ -799,5 +807,5 @@ out:
 	if (rv)
 		return -1;
 	else
-		return fw_update.flags & F_NEED_UPDATE;
+		return fw_update.flags & (F_LFCC_ZERO | F_NEED_UPDATE);
 }
