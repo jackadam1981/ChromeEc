@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "3cc1f16c_1a5ebdf8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-30T15:50:54Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 7,
+        "startChar": 3,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "934581f7cab5ba3431a03f65945fdb480c78def3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86052c00_c350e532",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-30T15:50:54Z",
+      "side": 1,
+      "message": "nit of the day: why are there parenthesis here ?",
+      "range": {
+        "startLine": 389,
+        "startChar": 37,
+        "endLine": 389,
+        "endChar": 58
+      },
+      "revId": "934581f7cab5ba3431a03f65945fdb480c78def3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8647ec3d_2c041314",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -110,6 +156,29 @@
         "startChar": 30,
         "endLine": 797,
         "endChar": 37
+      },
+      "revId": "934581f7cab5ba3431a03f65945fdb480c78def3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dcf295e5_6f2ab1af",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-30T15:50:54Z",
+      "side": 1,
+      "message": "we should already the PD state machine transition on the console, so longer term, this trace probably don\u0027t worth the flash space it\u0027s taking",
+      "range": {
+        "startLine": 799,
+        "startChar": 2,
+        "endLine": 799,
+        "endChar": 27
       },
       "revId": "934581f7cab5ba3431a03f65945fdb480c78def3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
