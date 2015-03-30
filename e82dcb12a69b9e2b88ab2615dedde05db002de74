@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43308612_bcd9c120",
+        "filename": "chip/mec1322/lfw/ec_lfw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-30T16:45:49Z",
+      "side": 1,
+      "message": "is that our coding convention ?\nhow does it pass the pre-submit check ?",
+      "range": {
+        "startLine": 28,
+        "startChar": 24,
+        "endLine": 28,
+        "endChar": 38
+      },
+      "revId": "e82dcb12a69b9e2b88ab2615dedde05db002de74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "43308612_3cee51b6",
+        "filename": "chip/mec1322/lfw/ec_lfw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-30T16:45:49Z",
+      "side": 1,
+      "message": "why it\u0027s not used ?\nsince sp doesn\u0027t seem to be set anywhere in this code,\nif there is some kind of override in the ROM code, it worth mentioning.",
+      "range": {
+        "startLine": 34,
+        "startChar": 34,
+        "endLine": 34,
+        "endChar": 43
+      },
+      "revId": "e82dcb12a69b9e2b88ab2615dedde05db002de74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03dccefb_c51c78ef",
+        "filename": "chip/mec1322/lfw/ec_lfw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-30T16:45:49Z",
+      "side": 1,
+      "message": "the real vector table is longer than that.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 2
+      },
+      "revId": "e82dcb12a69b9e2b88ab2615dedde05db002de74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "43308612_fcb069bf",
+        "filename": "chip/mec1322/lfw/ec_lfw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-30T16:45:49Z",
+      "side": 1,
+      "message": "if the C compiler is good enough to generate everything else (hint: it will break at some toolchain upgrade), why is this simple statement in assembly ?",
+      "range": {
+        "startLine": 215,
+        "startChar": 1,
+        "endLine": 219,
+        "endChar": 3
+      },
+      "revId": "e82dcb12a69b9e2b88ab2615dedde05db002de74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
