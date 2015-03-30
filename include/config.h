@@ -132,6 +132,11 @@
 #undef CONFIG_BATTERY_SMART
 
 /*
+ * Delay time for smart battery command access.
+ */
+#undef CONFIG_BATTERY_SMART_DELAY_TIME
+
+/*
  * Critical battery shutdown timeout (seconds)
  *
  * If the battery is at extremely low charge (and discharging) or extremely
