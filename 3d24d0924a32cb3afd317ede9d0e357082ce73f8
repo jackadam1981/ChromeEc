@@ -33,6 +33,24 @@
       "revId": "3d24d0924a32cb3afd317ede9d0e357082ce73f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3d89a3c_48ab73d5",
+        "filename": "include/gpio_list.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1116180
+      },
+      "writtenOn": "2015-03-31T21:33:10Z",
+      "side": 1,
+      "message": "I cannot just move them into mec1322/config_chip.h because will get some re-define warning. Do you mean add a new header file into mec1322 folder? I tried and it is ok. The problem is on how to name the header file.",
+      "parentUuid": "630f4a79_5ba51e2a",
+      "revId": "3d24d0924a32cb3afd317ede9d0e357082ce73f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
