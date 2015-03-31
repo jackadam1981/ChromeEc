@@ -86,6 +86,11 @@
 #undef  DEFERRABLE_MAX_COUNT
 #define DEFERRABLE_MAX_COUNT 9
 
+/* Reduce flash usage by making GPIO string names smaller */
+
+#define SAMUS_PD_GPIO_NAME(port, index) #port#index
+#define GPIO_NAME(name, pin) SAMUS_PD_GPIO_NAME(pin)
+
 #ifndef __ASSEMBLER__
 
 /* Timer selection */
