@@ -10,6 +10,7 @@
 CORE:=cortex-m
 # Allow the full Cortex-M4 instruction set
 CFLAGS_CPU+=-march=armv7e-m -mcpu=cortex-m4
+CFLAGS+=-D CHIP_MEC1322
 
 # Required chip modules
 chip-y=clock.o gpio.o hwtimer.o system.o uart.o jtag.o
