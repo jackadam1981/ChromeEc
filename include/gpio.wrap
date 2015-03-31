@@ -16,7 +16,11 @@
  * parameters are passed on to the gpio_info directly.
  */
 #ifndef GPIO
+#ifdef CONFIG_GPIO_PORT
 #define GPIO(name, port, pin, flags, signal)
+#else
+#define GPIO(name, pin, flags, signal)
+#endif
 #endif
 
 /*
