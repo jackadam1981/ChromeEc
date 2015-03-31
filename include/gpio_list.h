@@ -3,12 +3,18 @@
  * found in the LICENSE file.
  */
 
+#ifdef CONFIG_GPIO_PORT
 #ifdef CONFIG_COMMON_GPIO_SHORTNAMES
 #define GPIO(name, port, pin, flags, signal) \
 	{#port#pin, GPIO_##port, (1 << pin), flags, signal},
 #else
 #define GPIO(name, port, pin, flags, signal) \
 	{#name, GPIO_##port, (1 << pin), flags, signal},
+#endif
+#else
+#define DEFINE_GPIO_INFO_STRUCT
+#include "gpio_macro.h"
+#undef DEFINE_GPIO_INFO_STRUCT
 #endif
 
 #define UNIMPLEMENTED(name) \
@@ -33,3 +39,4 @@ const struct gpio_alt_func gpio_alt_funcs[] = {
 };
 
 const int gpio_alt_funcs_count = ARRAY_SIZE(gpio_alt_funcs);
+

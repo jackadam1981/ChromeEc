@@ -112,4 +112,7 @@
 #define CONFIG_LPC
 #define CONFIG_SPI
 
+/* mec1322 only uses pin number */
+#undef CONFIG_GPIO_PORT
+
 #endif  /* __CROS_EC_CONFIG_CHIP_H */
