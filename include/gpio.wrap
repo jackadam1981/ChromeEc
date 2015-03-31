@@ -17,7 +17,7 @@
  * on to the gpio_info directly.
  */
 #ifndef GPIO
-#define GPIO(name, port, pin, flags)
+#define GPIO(name, ...)
 #endif
 
 /*
@@ -27,7 +27,7 @@
  * array.
  */
 #ifndef GPIO_INT
-#define GPIO_INT(name, port, pin, flags, signal)
+#define GPIO_INT(name, ...)
 #endif
 
 /*

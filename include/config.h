@@ -684,6 +684,9 @@
 
 #endif
 
+/* Indicates whether the chip supports different GPIO ports. */
+#define CONFIG_GPIO_PORT
+
 #undef CONFIG_LID_ANGLE
 #ifndef CONFIG_LID_ANGLE
 #undef CONFIG_SENSOR_BASE
