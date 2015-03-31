@@ -5,6 +5,14 @@
  * found in the LICENSE file.
  */
 
+#ifndef GPIO_PIN
+#error "Your architecture must define GPIO_PIN and it did not."
+#endif
+
+#ifndef GPIO_NAME
+#define GPIO_NAME(name, ...) #name
+#endif
+
 /*
  * The GPIO macro is used to define a new GPIO pin name and function.
  *
@@ -17,7 +25,7 @@
  * on to the gpio_info directly.
  */
 #ifndef GPIO
-#define GPIO(name, port, pin, flags)
+#define GPIO(name, pin, flags)
 #endif
 
 /*
@@ -27,7 +35,7 @@
  * array.
  */
 #ifndef GPIO_INT
-#define GPIO_INT(name, port, pin, flags, signal)
+#define GPIO_INT(name, pin, flags, singal)
 #endif
 
 /*

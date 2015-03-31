@@ -109,4 +109,6 @@
 /* Compile for running from RAM instead of flash */
 /* #define COMPILE_FOR_RAM */
 
+#define GPIO_PIN(port, index) GPIO_##port, (1 << index)
+
 #endif  /* __CROS_EC_CONFIG_CHIP_H */

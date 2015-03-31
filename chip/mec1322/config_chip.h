@@ -164,5 +164,8 @@ which contains Loader and RO Images */
 #define CONFIG_SPI
 #define CONFIG_SWITCH
 
+#define CONFIG_GPIO_PORT
+#define GPIO_PIN(index) (index / 10), (1 << (index % 10))
+
 #endif  /* __CROS_EC_CONFIG_CHIP_H */
 
