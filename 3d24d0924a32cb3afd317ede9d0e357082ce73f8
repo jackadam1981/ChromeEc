@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a315c284_f3e35346",
+        "filename": "include/config.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-03-31T20:47:35Z",
+      "side": 1,
+      "message": "Change this to \"Indicates whether the chip supports different GPIO ports\".",
+      "revId": "3d24d0924a32cb3afd317ede9d0e357082ce73f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "630f4a79_5ba51e2a",
+        "filename": "include/gpio_list.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-03-31T20:47:35Z",
+      "side": 1,
+      "message": "Can we delete the second parameter entirely, and then change the macros in the mec1322 chip folder?",
+      "revId": "3d24d0924a32cb3afd317ede9d0e357082ce73f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
