@@ -5,19 +5,36 @@
  * found in the LICENSE file.
  */
 
+#ifndef GPIO_PIN
+#error "Your architecture must define GPIO_PIN and it did not."
+#endif
+
+#ifndef GPIO_PIN_MASKS
+#error "Your architecture must define GPIO_PIN_MASKS and it did not."
+#endif
+
+/*
+ * The GPIO_NAME macro is used to define a new name for GPIO macro.
+ *
+ * The name is used by default or you can define it in board.h to 
+ * use second parameter.
+ */
+#ifndef GPIO_NAME
+#define GPIO_NAME(name, ...) #name
+#endif
+
 /*
  * The GPIO macro is used to define a new GPIO pin name and function.
  *
  * The name is used to populate the gpio_signal enum by first
  * prepending GPIO_ to the name.  It is also used to construct the
- * string name that is presented in the shell interface.  Similarly,
- * the port parameter has GPIO_ prepended to it before it is used to
- * initialize the port base address of a gpio_info struct.  The pin
- * number is used to create a bitmask.  The flags parameter is passed
- * on to the gpio_info directly.
+ * string name that is presented in the shell interface.  The pin 
+ * parameter should use PIN macro and will be expand to GPIO_PIN 
+ * defined on each board.  The flags parameter is passed on to the 
+ * gpio_info directly.
  */
 #ifndef GPIO
-#define GPIO(name, port, pin, flags)
+#define GPIO(name, pin, flags)
 #endif
 
 /*
@@ -27,7 +44,7 @@
  * array.
  */
 #ifndef GPIO_INT
-#define GPIO_INT(name, port, pin, flags, signal)
+#define GPIO_INT(name, pin, flags, singal)
 #endif
 
 /*
@@ -44,7 +61,7 @@
  * bitmask of pins to be assigned.
  */
 #ifndef ALTERNATE
-#define ALTERNATE(port, mask, function, module, flags)
+#define ALTERNATE(pinmask, function, module, flags)
 #endif
 
 /*
@@ -71,6 +88,7 @@
 /*
  * Once the gpio.inc file has been included these macros are no longer needed.
  */
+#undef GPIO_NAME
 #undef GPIO
 #undef GPIO_INT
 #undef ALTERNATE
