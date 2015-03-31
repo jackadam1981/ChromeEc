@@ -30,7 +30,6 @@
 #undef  CONFIG_CMD_IDLE_STATS
 #undef  CONFIG_CMD_SHMEM
 #undef  CONFIG_CMD_TIMERINFO
-#define CONFIG_COMMON_GPIO_SHORTNAMES
 #undef  CONFIG_CONSOLE_CMDHELP
 #undef  CONFIG_CONSOLE_HISTORY
 #undef  CONFIG_DEBUG_ASSERT
@@ -85,6 +84,11 @@
 /* Maximum number of deferrable functions */
 #undef  DEFERRABLE_MAX_COUNT
 #define DEFERRABLE_MAX_COUNT 9
+
+/* Reduce flash usage by making GPIO string names smaller */
+#define SAMUS_PD_GPIO_NAME(port, index) #port#index
+#undef  GPIO_NAME
+#define GPIO_NAME(name, pin) SAMUS_PD_GPIO_NAME(pin)
 
 #ifndef __ASSEMBLER__
 
