@@ -51,6 +51,24 @@
       "revId": "3d24d0924a32cb3afd317ede9d0e357082ce73f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3c8f677_79cf235c",
+        "filename": "include/gpio_list.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-03-31T22:26:36Z",
+      "side": 1,
+      "message": "#undef is your friend",
+      "parentUuid": "e3d89a3c_48ab73d5",
+      "revId": "3d24d0924a32cb3afd317ede9d0e357082ce73f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
