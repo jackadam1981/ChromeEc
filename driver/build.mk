@@ -10,6 +10,9 @@
 driver-$(CONFIG_ACCEL_KXCJ9)+=accel_kxcj9.o
 driver-$(CONFIG_ACCELGYRO_LSM6DS0)+=accelgyro_lsm6ds0.o
 
+# SAR
+driver-$(CONFIG_SAR_SX9310)+=sar_sx9310.o
+
 # ALS drivers
 driver-$(CONFIG_ALS_ISL29035)+=als_isl29035.o
 
