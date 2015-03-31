@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63f66a9f_8e3d9b91",
+        "filename": "board/oak/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-03-31T13:56:14Z",
+      "side": 1,
+      "message": "According to the Oak rev1 schematic:\nPA0 is EC_WAKE.\nPC6 is AC_OK (AC_PRESENT)",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 27
+      },
+      "revId": "92de0924492e86301c17c166e3b58d1d49b61464",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
