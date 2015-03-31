@@ -410,12 +410,6 @@
 #define CONFIG_COMMON_GPIO
 
 /*
- * Provides smaller GPIO names to reduce flash size.  Instead of the 'name'
- * field in GPIO macro it will concat 'port' and 'pin' to reduce flash size.
- */
-#undef CONFIG_COMMON_GPIO_SHORTNAMES
-
-/*
  * Provide common runtime layer code (tasks, hooks ...)
  * You want this unless you are doing a really tiny firmware.
  */
@@ -1466,6 +1460,15 @@
 
 /*****************************************************************************/
 /*
+ * The GPIO_NAME macro is used to define a new name for GPIO macro.
+ *
+ * The name is used by default or you can define it in board.h to
+ * use second parameter.
+ */
+#define GPIO_NAME(name, ...) #name
+
+/*****************************************************************************/
+/*
  * Include board and core configs, since those hold the CONFIG_ constants for a
  * given configuration.  This guarantees they get included everywhere, and
  * fixes a fairly common bug where we gate out code with #ifndef
@@ -1528,7 +1531,6 @@
 /*
  * Sanity checks to make sure some of the configs above make sense.
  */
-
 #if (CONFIG_AUX_TIMER_PERIOD_MS) < ((HOOK_TICK_INTERVAL_MS) * 2)
 #error "CONFIG_AUX_TIMER_PERIOD_MS must be at least 2x HOOK_TICK_INTERVAL_MS"
 #endif
