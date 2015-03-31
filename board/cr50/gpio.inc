@@ -7,25 +7,25 @@
 /* Inputs with interrupt handlers are first for efficiency */
 
 /* User Push buttons */
-GPIO_INT(SW_N,   0, 0, GPIO_INT_RISING, button_event)
-GPIO_INT(SW_S,   0, 1, GPIO_INT_RISING, button_event)
-GPIO_INT(SW_W,   0, 2, GPIO_INT_RISING, button_event)
-GPIO_INT(SW_E,   0, 3, GPIO_INT_RISING, button_event)
+GPIO_INT(SW_N,   PIN(0, 0), GPIO_INT_RISING, button_event)
+GPIO_INT(SW_S,   PIN(0, 1), GPIO_INT_RISING, button_event)
+GPIO_INT(SW_W,   PIN(0, 2), GPIO_INT_RISING, button_event)
+GPIO_INT(SW_E,   PIN(0, 3), GPIO_INT_RISING, button_event)
 
 /* We can't trigger on both rising and falling edge, so attach each button
  * to two input GPIOs. */
-GPIO_INT(SW_N_,   1, 0, GPIO_INT_FALLING, button_event)
-GPIO_INT(SW_S_,   1, 1, GPIO_INT_FALLING, button_event)
-GPIO_INT(SW_W_,   1, 2, GPIO_INT_FALLING, button_event)
-GPIO_INT(SW_E_,   1, 3, GPIO_INT_FALLING, button_event)
+GPIO_INT(SW_N_,   PIN(1, 0), GPIO_INT_FALLING, button_event)
+GPIO_INT(SW_S_,   PIN(1, 1), GPIO_INT_FALLING, button_event)
+GPIO_INT(SW_W_,   PIN(1, 2), GPIO_INT_FALLING, button_event)
+GPIO_INT(SW_E_,   PIN(1, 3), GPIO_INT_FALLING, button_event)
 
 /* User GPIO LEDs */
-GPIO(LED_2,  0, 4, GPIO_OUT_LOW)
-GPIO(LED_3,  0, 5, GPIO_OUT_LOW)
-GPIO(LED_4,  0, 6, GPIO_OUT_LOW)
-GPIO(LED_5,  0, 7, GPIO_OUT_LOW)
-GPIO(LED_6,  0, 8, GPIO_OUT_LOW)
-GPIO(LED_7,  0, 9, GPIO_OUT_LOW)
+GPIO(LED_2,  PIN(0, 4), GPIO_OUT_LOW)
+GPIO(LED_3,  PIN(0, 5), GPIO_OUT_LOW)
+GPIO(LED_4,  PIN(0, 6), GPIO_OUT_LOW)
+GPIO(LED_5,  PIN(0, 7), GPIO_OUT_LOW)
+GPIO(LED_6,  PIN(0, 8), GPIO_OUT_LOW)
+GPIO(LED_7,  PIN(0, 9), GPIO_OUT_LOW)
 
 /* Unimplemented signals which we need to emulate for now */
 UNIMPLEMENTED(ENTERING_RW)

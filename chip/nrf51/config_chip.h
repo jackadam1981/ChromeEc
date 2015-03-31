@@ -68,6 +68,7 @@
 #undef CONFIG_UART_TX_BUF_SIZE
 #define CONFIG_UART_TX_BUF_SIZE 1024
 
+#define GPIO_PIN(port, index) GPIO_##port, (1 << index)
 
 #endif /* __CROS_EC_CONFIG_CHIP_H */
 
