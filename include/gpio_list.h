@@ -4,11 +4,21 @@
  */
 
 #ifdef CONFIG_COMMON_GPIO_SHORTNAMES
+#ifdef CONFIG_GPIO_PORT
 #define GPIO(name, port, pin, flags, signal) \
 	{#port#pin, GPIO_##port, (1 << pin), flags, signal},
 #else
+#define GPIO(name, na , gpionum, flags, signal) \
+	{#gpionum, (gpionum/10), (1<<(gpionum%10)), flags, signal},
+#endif
+#else
+#ifdef CONFIG_GPIO_PORT
 #define GPIO(name, port, pin, flags, signal) \
 	{#name, GPIO_##port, (1 << pin), flags, signal},
+#else
+#define GPIO(name, na , gpionum, flags, signal) \
+	{#name, (gpionum/10), (1<<(gpionum%10)), flags, signal},
+#endif
 #endif
 
 #define UNIMPLEMENTED(name) \

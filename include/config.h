@@ -658,6 +658,11 @@
 
 #endif
 
+/*
+ * Indicate if the chips need the PORT data to setup GPIO
+ */
+#define CONFIG_GPIO_PORT
+
 #undef CONFIG_LID_ANGLE
 #ifndef CONFIG_LID_ANGLE
 #undef CONFIG_SENSOR_BASE
