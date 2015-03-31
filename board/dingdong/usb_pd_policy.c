@@ -136,12 +136,12 @@ static int svdm_response_svids(int port, uint32_t *payload)
 #define OPOS_GFU 1
 
 const uint32_t vdo_dp_modes[1] =  {
-	VDO_MODE_DP(0,             /* UFP pin cfg supported : none */
+	VDO_MODE_DP(MODE_DP_PIN_E, /* UFP pin cfg supported */
 		    MODE_DP_PIN_E, /* DFP pin cfg supported */
 		    1,		   /* no usb2.0 signalling in AMode */
 		    CABLE_PLUG,    /* its a plug */
 		    MODE_DP_V13,   /* DPv1.3 Support, no Gen2 */
-		    MODE_DP_SNK)   /* Its a sink only */
+		    MODE_DP_BOTH)  /* Its a sink or source */
 };
 
 const uint32_t vdo_goog_modes[1] =  {
