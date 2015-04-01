@@ -127,6 +127,8 @@ const char help_str[] =
 	"      Perform I2C transfer on EC's I2C bus\n"
 	"  infopddev <port>\n"
 	"      Get info about USB type-C accessory attached to port\n"
+	"  inventory\n"
+	"      Return the list of supported features\n"
 	"  keyscan <beat_us> <filename>\n"
 	"      Test low-level key scanning\n"
 	"  led <name> <query | auto | off | <color> | <color>=<value>...>\n"
@@ -390,6 +392,55 @@ int cmd_s5(int argc, char *argv[])
 		printf("%s\n", r.value ? "on" : "off");
 
 	return rv < 0;
+}
+
+static const char * const ec_feature_names[] = {
+	[EC_FEATURE_LIMITED] = "Limited image, load RW for more",
+	[EC_FEATURE_FLASH] = "Flash",
+	[EC_FEATURE_PWM_FAN] = "Direct Fan power management",
+	[EC_FEATURE_PWM_KEYB] = "Keyboard backlight",
+	[EC_FEATURE_LIGHTBAR] = "Lightbar",
+	[EC_FEATURE_LED] = "LED",
+	[EC_FEATURE_MOTION_SENSE] = "Motion Sensors",
+	[EC_FEATURE_MKBP] = "Matrix Keyboard",
+	[EC_FEATURE_PSTORE] = "Host Permanent Storage",
+	[EC_FEATURE_PORT80] = "BIOS Port 80h access",
+	[EC_FEATURE_THERMAL] = "Thermal management",
+	[EC_FEATURE_SWITCH_CTRL] = "Power switches",
+	[EC_FEATURE_HOST_EVENTS] = "Host event",
+	[EC_FEATURE_GPIO] = "GPIO",
+	[EC_FEATURE_I2C] = "I2C master",
+	[EC_FEATURE_CHARGER] = "Charger",
+	[EC_FEATURE_BATTERY] = "Simple Battery",
+	[EC_FEATURE_SMART_BATTERY] = "Smart Battery",
+	[EC_FEATURE_HANG_DECTECT] = "Host hang detection",
+	[EC_FEATURE_PMU] = "Power Management",
+	[EC_FEATURE_PD_MCU] = "Cros Power Delivery command",
+	[EC_FEATURE_USB_PD] = "USB Cros Power Delievery",
+	[EC_FEATURE_USB_MUX] = "USB Multiplexer",
+};
+
+int cmd_inventory(int argc, char *argv[])
+{
+	struct ec_response_get_features r;
+	int rv, i;
+
+	rv = ec_command(EC_CMD_GET_FEATURES, 0, NULL, 0, &r, sizeof(r));
+	if (rv < 0)
+		return rv;
+
+	printf("EC supported features:\n");
+	for (i = 0; i < 32; i++) {
+		if (r.flags[0] & (1 << i)) {
+			if (i >= ARRAY_SIZE(ec_feature_names) ||
+			    strlen(ec_feature_names[i]) == 0)
+				printf("%-4d: Unknown feature\n", i);
+			else
+				printf("%-4d: %s support\n",
+				       i, ec_feature_names[i]);
+		}
+	}
+	return 0;
 }
 
 
@@ -5586,6 +5637,7 @@ const struct command commands[] = {
 	{"i2cwrite", cmd_i2c_write},
 	{"i2cxfer", cmd_i2c_xfer},
 	{"infopddev", cmd_pd_device_info},
+	{"inventory", cmd_inventory},
 	{"led", cmd_led},
 	{"lightbar", cmd_lightbar},
 	{"keyconfig", cmd_keyconfig},

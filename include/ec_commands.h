@@ -859,6 +859,42 @@ struct ec_response_get_set_value {
 /* More than one command can use these structs to get/set paramters. */
 #define EC_CMD_GSV_PAUSE_IN_S5	0x0c
 
+/*****************************************************************************/
+/* List the features supported by the firmware */
+#define EC_CMD_GET_FEATURES  0x0d
+
+/* Supported features */
+enum ec_feature_code {
+	EC_FEATURE_LIMITED = 0,		/* loader image running */
+	EC_FEATURE_FLASH = 1,		/* flash command included */
+	EC_FEATURE_PWM_FAN = 2,		/* Direct Fan control */
+	EC_FEATURE_PWM_KEYB = 3,
+	EC_FEATURE_LIGHTBAR = 4,
+	EC_FEATURE_LED = 5,		/* LED light control  */
+	EC_FEATURE_MOTION_SENSE = 6,	/* accel/gyro/compass */
+	EC_FEATURE_MKBP = 7,		/* Matrix Keyboard */
+	EC_FEATURE_PSTORE = 8,		/* Persistent Storage  */
+	EC_FEATURE_PORT80 = 9,		/* Port 80h POST codes */
+/* Thermal management: include TMP specific commands */
+	EC_FEATURE_THERMAL = 10,
+	EC_FEATURE_SWITCH_CTRL = 11,	/* Switches command  */
+	EC_FEATURE_HOST_EVENTS = 12,
+	EC_FEATURE_GPIO = 13,		/* GPIO support */
+	EC_FEATURE_I2C = 14,		/* Passthru i2c  */
+	EC_FEATURE_CHARGER = 15,	/* Charger control  */
+	EC_FEATURE_BATTERY = 16,	/* Simple battery */
+	EC_FEATURE_SMART_BATTERY = 17,	/* Advanced battery  */
+	EC_FEATURE_HANG_DECTECT = 18,
+	EC_FEATURE_PMU = 19,		/* Outside Power Mgmt */
+	EC_FEATURE_PD_MCU = 20,		/* Cros Power Delivery  */
+	EC_FEATURE_USB_PD = 21,		/* Control Cros USB PDU */
+	EC_FEATURE_USB_MUX = 22
+};
+
+#define EC_FEATURE_MASK(event_code) (1UL << (event_code))
+struct ec_response_get_features {
+	uint32_t flags[2];
+} __packed;
 
 /*****************************************************************************/
 /* Flash commands */
@@ -2170,7 +2206,7 @@ enum gpio_get_subcmd {
 
 /*
  * TODO(crosbug.com/p/23570): These commands are deprecated, and will be
- * removed soon.  Use EC_CMD_I2C_XFER instead.
+ * removed soon.  Use EC_CMD_I2C_PASSTHRU instead.
  */
 
 /* Read I2C bus */
