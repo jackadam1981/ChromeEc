@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e37fbae4_6615cb3e",
+        "filename": "power/rockchip.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2015-04-01T22:37:16Z",
+      "side": 1,
+      "message": "There\u0027s 2 choices here:\n\nLeave it as is (before this CL) and have the old hardware loop at boot in an error. So essentially bricked. But more obvious that there\u0027s things wrong with it.\n\nChange it like this CL suggests: power+f3 will still work like it does right now on old hardware. But long press power button will get the EC in a state where it thinks the AP should be off, but it\u0027s actually still on. The only way out is to do power+f3.",
+      "range": {
+        "startLine": 373,
+        "startChar": 0,
+        "endLine": 377,
+        "endChar": 3
+      },
+      "revId": "86d8da61851e754056124b14a361016d161c30b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
