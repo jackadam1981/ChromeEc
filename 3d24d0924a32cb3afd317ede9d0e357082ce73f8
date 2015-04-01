@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6392ea67_2baab9f9",
+        "filename": "include/config.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1116180
+      },
+      "writtenOn": "2015-04-01T21:20:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a315c284_f3e35346",
+      "revId": "3d24d0924a32cb3afd317ede9d0e357082ce73f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "630f4a79_5ba51e2a",
         "filename": "include/gpio_list.h",
         "patchSetId": 10
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "hmm, I tried undef, but the problem is on the header file order.\n\nSome files including order is\n\nconfig_chip.h\ngpio_signal.h\n    DEFINE GPIO\ngpio.wrap\n    UNDEF GPIO\ngpio_list.h\n    DEFINE GPIO\ngpio.wrap\n    UNDEF GPIO\n\nIf I move define in gpio_list.h to config_chip, the gpio_signal.h will get redefined warning. and gpio_list.h cannot get the correct GPIO macro.",
       "parentUuid": "c3c8f677_79cf235c",
+      "revId": "3d24d0924a32cb3afd317ede9d0e357082ce73f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6392ea67_4b9f05df",
+        "filename": "include/gpio_list.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1116180
+      },
+      "writtenOn": "2015-04-01T21:20:57Z",
+      "side": 1,
+      "message": "Done, This is the only method I can find. because the relationship of header is a little complicated and the order cannot be swapped. \nex. board.h must be after config_chip.h.",
+      "parentUuid": "630f4a79_5ba51e2a",
       "revId": "3d24d0924a32cb3afd317ede9d0e357082ce73f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
