@@ -103,7 +103,7 @@ static enum power_request_t power_request;
 
 
 /* Forward declaration */
-static void chipset_turn_off_power_rails(void);
+static void power_off(void);
 
 
 /**
@@ -223,13 +223,7 @@ enum power_state power_chipset_init(void)
 	 */
 	if (!(reset_flags & RESET_FLAG_SYSJUMP)) {
 		CPRINTS("not sysjump; forcing AP shutdown");
-		chipset_turn_off_power_rails();
-
-		/*
-		 * The warm reset triggers AP into the RK recovery mode (
-		 * flash SPI from USB).
-		 */
-		chipset_reset(0);
+		power_off();
 
 		init_power_state = POWER_G3;
 	} else {
@@ -376,7 +370,11 @@ static void power_off(void)
 	while (power_get_signals() & IN_POWER_GOOD) {
 		msleep(1);
 		power_off_timeout--;
-		ASSERT(power_off_timeout);
+		if (power_off_timeout == 0) {
+			CPRINTS("Error: POWER_GOOD did not go low."
+			        "Continuing anyway");
+			break;
+		}
 	}
 
 	lid_opened = 0;
