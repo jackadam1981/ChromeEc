@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a371421d_d9382350",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1002584
+      },
+      "writtenOn": "2015-04-01T18:45:44Z",
+      "side": 1,
+      "message": "Why do we need this? I\u0027ll have to check with legal if this is required. Ideally you should updating the date on the Chromium OS Authors copyright only.",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 39
+      },
+      "revId": "cfceedc21d085b4ff2586d5361062241ea84495f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
