@@ -22,6 +22,52 @@
       "revId": "92de0924492e86301c17c166e3b58d1d49b61464",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03a4ceb8_73f83af9",
+        "filename": "board/oak/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-04-01T13:16:00Z",
+      "side": 1,
+      "message": "Oak rev1 add ENTERING_RW and\nit is PF0",
+      "range": {
+        "startLine": 70,
+        "startChar": 17,
+        "endLine": 70,
+        "endChar": 28
+      },
+      "revId": "92de0924492e86301c17c166e3b58d1d49b61464",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c38d5646_91067ed6",
+        "filename": "board/oak/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-04-01T13:16:00Z",
+      "side": 1,
+      "message": "Oak rev1 add WP_L and\nit is PB4",
+      "range": {
+        "startLine": 71,
+        "startChar": 14,
+        "endLine": 71,
+        "endChar": 18
+      },
+      "revId": "92de0924492e86301c17c166e3b58d1d49b61464",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
