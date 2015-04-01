@@ -69,6 +69,24 @@
       "revId": "3d24d0924a32cb3afd317ede9d0e357082ce73f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2386322e_89057915",
+        "filename": "include/gpio_list.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1116180
+      },
+      "writtenOn": "2015-04-01T16:57:12Z",
+      "side": 1,
+      "message": "hmm, I tried undef, but the problem is on the header file order.\n\nSome files including order is\n\nconfig_chip.h\ngpio_signal.h\n    DEFINE GPIO\ngpio.wrap\n    UNDEF GPIO\ngpio_list.h\n    DEFINE GPIO\ngpio.wrap\n    UNDEF GPIO\n\nIf I move define in gpio_list.h to config_chip, the gpio_signal.h will get redefined warning. and gpio_list.h cannot get the correct GPIO macro.",
+      "parentUuid": "c3c8f677_79cf235c",
+      "revId": "3d24d0924a32cb3afd317ede9d0e357082ce73f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
