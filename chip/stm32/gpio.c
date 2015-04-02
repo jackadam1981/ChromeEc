@@ -16,7 +16,6 @@
 
 /* Console output macros */
 #define CPRINTS(format, args...) cprints(CC_GPIO, format, ## args)
-
 /* For each EXTI bit, record which GPIO entry is using it */
 static const struct gpio_info *exti_events[16];
 
@@ -75,10 +74,11 @@ void gpio_set_level(enum gpio_signal signal, int value)
 int gpio_enable_interrupt(enum gpio_signal signal)
 {
 	const struct gpio_info *g = gpio_list + signal;
+	void (*ih)(enum gpio_signal signal) = gpio_irq_handlers[signal];
 	uint32_t bit, group, shift, bank;
 
 	/* Fail if not implemented or no interrupt handler */
-	if (!g->mask || !g->irq_handler)
+	if (!g->mask || !ih || signal > GPIO_LAST_WITH_IH)
 		return EC_ERROR_INVAL;
 
 	bit = 31 - __builtin_clz(g->mask);
@@ -118,14 +118,16 @@ void gpio_interrupt(void)
 	const struct gpio_info *g;
 	/* process only GPIO EXTINTs (EXTINT0..15) not other EXTINTs */
 	uint32_t pending = STM32_EXTI_PR & 0xFFFF;
+	int signal;
 
 	STM32_EXTI_PR = pending;
 
 	while (pending) {
 		bit = get_next_bit(&pending);
 		g = exti_events[bit];
-		if (g && g->irq_handler)
-			g->irq_handler(g - gpio_list);
+		signal = g - gpio_list;
+		if (g && signal <= GPIO_LAST_WITH_IH)
+			gpio_irq_handlers[signal](signal);
 	}
 }
 #ifdef CHIP_FAMILY_STM32F0

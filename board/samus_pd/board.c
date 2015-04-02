@@ -387,6 +387,7 @@ void board_config_pre_init(void)
 	STM32_SYSCFG_CFGR1 |= (1 << 9) | (1 << 10) | (1 << 24) | (1 << 30);
 }
 
+#include "gpio_irq_handlers.h"
 #include "gpio_list.h"
 
 /* Initialize board. */
@@ -1004,3 +1005,4 @@ static int host_event_status_host_cmd(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_PD_HOST_EVENT_STATUS, host_event_status_host_cmd,
 			EC_VER_MASK(0));
+

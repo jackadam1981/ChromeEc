@@ -78,6 +78,7 @@ void board_config_pre_init(void)
 	STM32_SYSCFG_CFGR1 |= (1 << 9) | (1 << 10);/* Remap USART1 RX/TX DMA */
 }
 
+#include "gpio_irq_handlers.h"
 #include "gpio_list.h"
 
 /* ADC channels */

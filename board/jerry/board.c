@@ -27,6 +27,7 @@
 #define GPIO_KB_INPUT  (GPIO_INPUT | GPIO_PULL_UP | GPIO_INT_BOTH)
 #define GPIO_KB_OUTPUT GPIO_ODR_HIGH
 
+#include "gpio_irq_handlers.h"
 #include "gpio_list.h"
 
 

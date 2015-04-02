@@ -38,4 +38,5 @@ const struct i2c_port_t i2c_ports[] = {
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
+#include "gpio_irq_handlers.h"
 #include "gpio_list.h"

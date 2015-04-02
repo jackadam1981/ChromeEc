@@ -26,7 +26,7 @@ void vbus_event(enum gpio_signal signal)
 	ccprintf("VBUS!\n");
 }
 
-
+#include "gpio_irq_handlers.h"
 #include "gpio_list.h"
 
 

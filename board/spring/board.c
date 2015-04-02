@@ -31,6 +31,7 @@
 #define INT_BOTH_FLOATING	(GPIO_INPUT | GPIO_INT_BOTH)
 #define INT_BOTH_PULL_UP	(GPIO_INPUT | GPIO_PULL_UP | GPIO_INT_BOTH)
 
+#include "gpio_irq_handlers.h"
 #include "gpio_list.h"
 
 /* ADC channels */

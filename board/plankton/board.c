@@ -146,6 +146,7 @@ void vbus_event(enum gpio_signal signal)
 	task_wake(TASK_ID_PD);
 }
 
+#include "gpio_irq_handlers.h"
 #include "gpio_list.h"
 
 /* ADC channels */

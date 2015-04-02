@@ -4,15 +4,15 @@
  */
 
 #ifdef CONFIG_COMMON_GPIO_SHORTNAMES
-#define GPIO(name, port, pin, flags, signal) \
-	{#port#pin, GPIO_##port, (1 << pin), flags, signal},
+#define GPIO(name, port, pin, flags)			\
+	{#port#pin, GPIO_##port, (1 << pin), flags},
 #else
-#define GPIO(name, port, pin, flags, signal) \
-	{#name, GPIO_##port, (1 << pin), flags, signal},
+#define GPIO(name, port, pin, flags)			\
+	{#name, GPIO_##port, (1 << pin), flags},
 #endif
 
 #define UNIMPLEMENTED(name) \
-	{#name, DUMMY_GPIO_BANK, 0, GPIO_DEFAULT, NULL},
+	{#name, DUMMY_GPIO_BANK, 0, GPIO_DEFAULT},
 
 /* GPIO signal list. */
 const struct gpio_info gpio_list[] = {

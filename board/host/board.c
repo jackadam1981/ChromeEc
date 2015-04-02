@@ -24,6 +24,7 @@
  */
 #define GPIO_0  0
 
+#include "gpio_irq_handlers.h"
 #include "gpio_list.h"
 
 test_mockable_static int dummy_temp_get_val(int idx, int *temp_ptr)

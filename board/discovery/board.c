@@ -15,6 +15,7 @@ void button_event(enum gpio_signal signal)
 {
 }
 
+#include "gpio_irq_handlers.h"
 #include "gpio_list.h"
 
 /* Initialize board. */

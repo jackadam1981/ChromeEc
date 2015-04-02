@@ -9,6 +9,7 @@
 
 
 /* To define the gpio_list[] instance. */
+#include "gpio_irq_handlers.h"
 #include "gpio_list.h"
 
 /* I2C ports */

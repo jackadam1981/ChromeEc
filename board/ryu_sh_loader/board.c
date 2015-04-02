@@ -16,6 +16,7 @@
 #include "task.h"
 #include "util.h"
 
+#include "gpio_irq_handlers.h"
 #include "gpio_list.h"
 
 /* I2C ports */

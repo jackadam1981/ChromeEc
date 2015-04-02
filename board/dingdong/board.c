@@ -22,6 +22,8 @@ static volatile uint64_t hpd_prev_ts;
 static volatile int hpd_prev_level;
 
 void hpd_event(enum gpio_signal signal);
+
+#include "gpio_irq_handlers.h"
 #include "gpio_list.h"
 
 /**

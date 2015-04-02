@@ -28,6 +28,7 @@ void vbus_event(enum gpio_signal signal)
 	ccprintf("INA!\n");
 }
 
+#include "gpio_irq_handlers.h"
 #include "gpio_list.h"
 
 /* Initialize board. */

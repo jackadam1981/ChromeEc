@@ -15,6 +15,7 @@
 #define GPIO_KB_INPUT GPIO_INPUT
 #define GPIO_KB_OUTPUT (GPIO_ODR_HIGH | GPIO_PULL_UP)
 
+#include "gpio_irq_handlers.h"
 #include "gpio_list.h"
 
 /* ADC channels */

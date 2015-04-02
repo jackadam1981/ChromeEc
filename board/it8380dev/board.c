@@ -32,6 +32,7 @@ void test_interrupt(enum gpio_signal signal)
 	gpio_set_level(GPIO_BUSY_LED, busy_state);
 }
 
+#include "gpio_irq_handlers.h"
 #include "gpio_list.h"
 
 /* PWM channels. Must be in the exactly same order as in enum pwm_channel. */

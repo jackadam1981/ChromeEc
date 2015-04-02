@@ -34,6 +34,8 @@
 
 #include "gpio_list.h"
 
+#include "gpio_irq_handlers.h"
+
 /* power signal list.  Must match order of enum power_signal. */
 const struct power_signal_info power_signal_list[] = {
 	{GPIO_PP1050_PGOOD,      1, "PGOOD_PP1050"},

@@ -36,6 +36,7 @@ void tsu_event(enum gpio_signal signal)
 	ccprintf("TSU!\n");
 }
 
+#include "gpio_irq_handlers.h"
 #include "gpio_list.h"
 
 /* Initialize board. */

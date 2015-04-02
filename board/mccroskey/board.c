@@ -22,6 +22,7 @@
 
 #define HARD_RESET_TIMEOUT_MS 5
 
+#include "gpio_irq_handlers.h"
 #include "gpio_list.h"
 
 void board_config_pre_init(void)

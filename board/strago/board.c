@@ -16,6 +16,7 @@
 #define GPIO_KB_OUTPUT (GPIO_ODR_HIGH)
 #define GPIO_KB_OUTPUT_COL2 (GPIO_OUT_LOW)
 
+#include "gpio_irq_handlers.h"
 #include "gpio_list.h"
 
 /* power signal list.  Must match order of enum power_signal. */

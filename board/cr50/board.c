@@ -22,6 +22,7 @@
 #undef GPIO_INT_BOTH
 #define GPIO_INT_BOTH NOT_SUPPORTED_ON_CR50
 
+#include "gpio_irq_handlers.h"
 #include "gpio_list.h"
 
 static void send_hid_event(void)

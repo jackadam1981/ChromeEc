@@ -50,6 +50,7 @@ static void pd_mcu_interrupt(enum gpio_signal signal)
 	host_command_pd_send_status(PD_CHARGE_NO_CHANGE);
 }
 
+#include "gpio_irq_handlers.h"
 #include "gpio_list.h"
 
 /* power signal list.  Must match order of enum power_signal. */

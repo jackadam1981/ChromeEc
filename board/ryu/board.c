@@ -177,6 +177,7 @@ void usb_evt(enum gpio_signal signal)
 	task_wake(TASK_ID_USB_CHG);
 }
 
+#include "gpio_irq_handlers.h"
 #include "gpio_list.h"
 
 const void *const usb_strings[] = {
