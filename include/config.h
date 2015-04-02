@@ -125,6 +125,11 @@
 #undef CONFIG_BATTERY_SMART
 
 /*
+ * If defined, The battery is considered full only when it return a full state.
+ */
+#undef CONFIG_BATTERY_STATE
+
+/*
  * Support battery cut-off as host command and console command.
  *
  * Once defined, you have to implement a board_cut_off_battery() function

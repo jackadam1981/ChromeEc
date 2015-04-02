@@ -332,8 +332,7 @@ void battery_get_params(struct batt_params *batt)
 			batt_new.state_of_charge == 0)))
 #else
 	    batt_new.desired_voltage &&
-	    batt_new.desired_current &&
-	    batt_new.state_of_charge < BATTERY_LEVEL_FULL)
+	    batt_new.desired_current)
 #endif
 		batt_new.flags |= BATT_FLAG_WANT_CHARGE;
 	else
