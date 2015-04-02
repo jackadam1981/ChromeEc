@@ -31,6 +31,12 @@ void keyboard_raw_task_start(void)
 
 test_mockable void keyboard_raw_drive_column(int out)
 {
+#ifdef CONFIG_KEYBOARD_KSO_BASE
+	int kso_base = CONFIG_KEYBOARD_KSO_BASE;
+#else
+	int kso_base = 0; /* KSO default starts from KSO00 */
+#endif
+
 	if (out == KEYBOARD_COLUMN_ALL) {
 		MEC1322_KS_KSO_SEL = 1 << 5; /* KSEN=0, KSALL=1 */
 #ifdef CONFIG_KEYBOARD_COL2_INVERTED
@@ -47,11 +53,11 @@ test_mockable void keyboard_raw_drive_column(int out)
 			MEC1322_KS_KSO_SEL = 1 << 6; /* KSEN=1 */
 			gpio_set_level(GPIO_KBD_KSO2, 1);
 		} else {
-			MEC1322_KS_KSO_SEL = out;
+			MEC1322_KS_KSO_SEL = out + kso_base;
 			gpio_set_level(GPIO_KBD_KSO2, 0);
 		}
 #else
-		MEC1322_KS_KSO_SEL = out;
+		MEC1322_KS_KSO_SEL = out + kso_base;
 #endif
 	}
 }
