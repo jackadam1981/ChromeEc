@@ -308,7 +308,6 @@ static int set_interrupt(const struct motion_sensor_t *s,
 		unsigned int threshold)
 {
 	int ctrl1, tmp, ret;
-	struct kxcj9_data *data = (struct kxcj9_data *)s->drv_data;
 
 	/* Disable the sensor to allow for changing of critical parameters. */
 	mutex_lock(s->mutex);
@@ -347,6 +346,17 @@ static int set_interrupt(const struct motion_sensor_t *s,
 			goto error_enable_sensor;
 	}
 
+	/* Enable wake up (motion detect) functionality. */
+	ret = raw_read8(s->i2c_addr, KXCJ9_CTRL1, &tmp);
+	if (ret != EC_SUCCESS)
+		goto error_enable_sensor;
+
+	tmp &= ~KXCJ9_CTRL1_PC1;
+	tmp |= KXCJ9_CTRL1_WUFE;
+	ret = raw_write8(s->i2c_addr, KXCJ9_CTRL1, tmp);
+	if (ret != EC_SUCCESS)
+		goto error_enable_sensor;
+
 	/*
 	 * Clear any pending interrupt on sensor by reading INT_REL register.
 	 * Note: this register latches motion detected above threshold. Once
@@ -359,6 +369,43 @@ error_enable_sensor:
 	if (enable_sensor(s, ctrl1) != EC_SUCCESS)
 		ret = EC_ERROR_UNKNOWN;
 	mutex_unlock(s->mutex);
+	return ret;
+}
+
+static int interrupt_handler(const struct motion_sensor_t *s)
+{
+	int ret;
+	int tmp;
+
+	mutex_lock(s->mutex);
+
+	/*
+	 * Read status register to determine whether interrupt occured or not
+	 */
+	ret = raw_read8(s->i2c_addr, KXCJ9_STATUS, &tmp);
+
+	if ((ret == EC_SUCCESS) && ((tmp & KXCJ9_STATUS_INT) != 0)) {
+		/*
+		 * Read interrupt source1 register to determine Motion has
+		 * activated the interrupt.
+		 */
+		ret = raw_read8(s->i2c_addr, KXCJ9_INT_SRC1, &tmp);
+		if ((ret != EC_SUCCESS) ||
+			((tmp & KXCJ9_INT_SRC1_WUFS) == 0)) {
+			ret = EC_ERROR_INVAL;
+		}
+
+		/*
+		 * Clear any pending interrupt on sensor by reading
+		 * INT_REL register.
+		 */
+		raw_read8(s->i2c_addr, KXCJ9_INT_REL, &tmp);
+	} else {
+		ret = EC_ERROR_INVAL;
+	}
+
+	mutex_unlock(s->mutex);
+
 	return ret;
 }
 #endif
@@ -419,18 +466,14 @@ static int read(const struct motion_sensor_t *s, vector_3_t v)
 static int config_interrupt(const struct motion_sensor_t *s)
 {
 	int ctrl1;
+	int ret;
+
 	mutex_lock(s->mutex);
 
 	/* Disable the sensor to allow for changing of critical parameters. */
 	ret = disable_sensor(s, &ctrl1);
 	if (ret != EC_SUCCESS)
 		goto cleanup_exit;
-
-	/* Enable wake up (motion detect) functionality. */
-	ret = raw_read8(s->i2c_addr, KXCJ9_CTRL1, &tmp);
-	tmp &= ~KXCJ9_CTRL1_PC1;
-	tmp |= KXCJ9_CTRL1_WUFE;
-	ret = raw_write8(s->i2c_addr, KXCJ9_CTRL1, tmp);
 
 	/* Set interrupt polarity to rising edge and keep interrupt disabled. */
 	ret = raw_write8(s->i2c_addr,
@@ -538,5 +581,6 @@ const struct accelgyro_drv kxcj9_drv = {
 	.get_data_rate = get_data_rate,
 #ifdef CONFIG_ACCEL_INTERRUPTS
 	.set_interrupt = set_interrupt,
+	.interrupt_handler = interrupt_handler,
 #endif
 };

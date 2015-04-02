@@ -56,6 +56,10 @@ static int accel_interval_ms;
 static int accel_disp;
 #endif
 
+#ifdef CONFIG_ACCEL_INTERRUPTS
+static int accel_int;
+#endif
+
 /*
  * Mutex to protect sensor values between host command task and
  * motion sense task:
@@ -196,6 +200,18 @@ static inline void motion_sense_init(struct motion_sensor_t *sensor)
 		sensor->state = SENSOR_INITIALIZED;
 }
 
+#ifdef CONFIG_ACCEL_INTERRUPTS
+static inline void motion_sense_interrupt_handle(struct motion_sensor_t *sensor)
+{
+	if (sensor->drv->interrupt_handler != NULL) {
+		if ((sensor->drv->interrupt_handler(sensor)) == EC_SUCCESS) {
+			CPRINTF("Wake-up interrupt occurred on %s\n",
+				sensor->name);
+		}
+	}
+}
+#endif
+
 static int motion_sense_read(struct motion_sensor_t *sensor)
 {
 	if (sensor->state != SENSOR_INITIALIZED)
@@ -262,6 +278,10 @@ void motion_sense_task(void)
 				if (sensor->state == SENSOR_NOT_INITIALIZED)
 					motion_sense_init(sensor);
 
+#ifdef CONFIG_ACCEL_INTERRUPTS
+				motion_sense_interrupt_handle(sensor);
+#endif
+
 				if (EC_SUCCESS != motion_sense_read(sensor))
 					continue;
 
@@ -325,7 +345,14 @@ void motion_sense_task(void)
 		if (wait_us < MIN_MOTION_SENSE_WAIT_TIME)
 			wait_us = MIN_MOTION_SENSE_WAIT_TIME;
 
+#ifdef CONFIG_ACCEL_INTERRUPTS
+		if (accel_int == 1)
+			task_wait_event(-1);
+		else
+			task_wait_event(wait_us);
+#else
 		task_wait_event(wait_us);
+#endif
 	}
 }
 
@@ -753,23 +780,14 @@ DECLARE_CONSOLE_COMMAND(accelinfo, command_display_accel_info,
 #endif /* CONFIG_CMD_ACCEL_INFO */
 
 #ifdef CONFIG_ACCEL_INTERRUPTS
-/* TODO(crosbug.com/p/426659): this code is broken, does not compile. */
 void accel_int_lid(enum gpio_signal signal)
 {
-	/*
-	 * Print statement is here for testing with console accelint command.
-	 * Remove print statement when interrupt is used for real.
-	 */
-	CPRINTS("Accelerometer wake-up interrupt occurred on lid");
+	task_wake(TASK_ID_MOTIONSENSE);
 }
 
 void accel_int_base(enum gpio_signal signal)
 {
-	/*
-	 * Print statement is here for testing with console accelint command.
-	 * Remove print statement when interrupt is used for real.
-	 */
-	CPRINTS("Accelerometer wake-up interrupt occurred on base");
+	task_wake(TASK_ID_MOTIONSENSE);
 }
 
 static int command_accelerometer_interrupt(int argc, char **argv)
@@ -777,6 +795,7 @@ static int command_accelerometer_interrupt(int argc, char **argv)
 	char *e;
 	int id, thresh;
 	struct motion_sensor_t *sensor;
+	int status = EC_ERROR_INVAL;
 
 	if (argc != 3)
 		return EC_ERROR_PARAM_COUNT;
@@ -793,9 +812,13 @@ static int command_accelerometer_interrupt(int argc, char **argv)
 	if (*e)
 		return EC_ERROR_PARAM2;
 
-	sensor->drv->set_interrupt(sensor, thresh);
+	if (sensor->state == SENSOR_INITIALIZED) {
+		status = sensor->drv->set_interrupt(sensor, thresh);
+		if (status == EC_SUCCESS)
+			accel_int = 1;
+	}
 
-	return EC_SUCCESS;
+	return status;
 }
 DECLARE_CONSOLE_COMMAND(accelint, command_accelerometer_interrupt,
 	"id threshold",

@@ -87,6 +87,13 @@ struct accelgyro_drv {
 	 */
 	int (*set_interrupt)(const struct motion_sensor_t *s,
 			     unsigned int threshold);
+
+	/**
+	 * Clear any pending interrupt on sensor by reading INT_REL register.
+	 * @s Pointer to sensor data.
+	 * @return EC_SUCCESS if interrupt occured else non-zero.
+	 */
+	int (*interrupt_handler)(const struct motion_sensor_t *s);
 #endif
 };
 
