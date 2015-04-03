@@ -2782,6 +2782,7 @@ enum usb_chg_type {
 	USB_CHG_TYPE_BC12_SDP,
 	USB_CHG_TYPE_OTHER,
 	USB_CHG_TYPE_VBUS,
+	USB_CHG_TYPE_UNKNOWN,
 };
 enum usb_power_roles {
 	USB_PD_PORT_POWER_DISCONNECTED,
@@ -2794,6 +2795,7 @@ struct usb_chg_measures {
 	uint16_t voltage_max;
 	uint16_t voltage_now;
 	uint16_t current_max;
+	uint16_t current_lim;
 	/*
 	 * this structure is used below in struct ec_response_usb_pd_power_info,
 	 * and currently expects an odd number of uint16_t for alignment.
@@ -2806,7 +2808,6 @@ struct ec_response_usb_pd_power_info {
 	uint8_t dualrole;
 	uint8_t reserved1;
 	struct usb_chg_measures meas;
-	uint16_t reserved2;
 	uint32_t max_power;
 } __packed;
 
