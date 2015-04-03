@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "e3bdfae6_669a9771",
+        "filename": "chip/lm4/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-04-03T23:31:53Z",
+      "side": 1,
+      "message": "I debated on the representations for awhile. Guess I went with the wrong one. :)",
+      "parentUuid": "63f74ae2_c578517c",
+      "range": {
+        "startLine": 154,
+        "startChar": 5,
+        "endLine": 154,
+        "endChar": 30
+      },
+      "revId": "3a9338acf9e2e1364a82618fad9a197f96a82c9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23c4727c_0f69b568",
         "filename": "chip/npcx/gpio.c",
         "patchSetId": 2
@@ -174,6 +198,30 @@
       "writtenOn": "2015-04-03T22:50:17Z",
       "side": 1,
       "message": "Might comment:\n\nInterrupt handlers must not be NULL.  If you need to disable a handler at compile time, specify an empty inline function, rather than a NULL pointer.",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 2
+      },
+      "revId": "3a9338acf9e2e1364a82618fad9a197f96a82c9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3bdfae6_8647eb7e",
+        "filename": "include/gpio.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-04-03T23:31:53Z",
+      "side": 1,
+      "message": "I\u0027ll definitely add that.\n\nI was wondering if there was a way to assert this at build time. It probably involves some crazy macro...I\u0027ll give it some more thought.",
+      "parentUuid": "23c4727c_cf905dcc",
       "range": {
         "startLine": 70,
         "startChar": 0,
