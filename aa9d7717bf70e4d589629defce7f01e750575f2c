@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "23c4727c_e98d6100",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2798,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-03T21:31:43Z",
+      "side": 1,
+      "message": "I did think of incrementing the version of the command but it seems overkill here. I didn\u0027t change the size of the host command return struct (ec_response_usb_pd_power_info), I just started using a field that was reserved before. So, if you have new firmware with an old image, there will be no difference. And if you have new image with old firmware, you will get garbage for current_lim. But, current_lim is only used for logging. So, the only risk is having a garbage value in the logs.",
+      "parentUuid": "e3bdfae6_2d7365e7",
+      "revId": "aa9d7717bf70e4d589629defce7f01e750575f2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3bdfae6_fc3e418a",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
