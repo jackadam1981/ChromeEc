@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3bdfae6_50f3c91f",
+        "filename": "chip/g/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-03T22:50:17Z",
+      "side": 1,
+      "message": "There\u0027s still a mix of checking (for example, here) and not checking (mec1322).\n\nLet\u0027s not check, and just switch any header files which currently specify a NULL handler #ifndef SOME_CONFIG to specify an empty inline handler.",
+      "range": {
+        "startLine": 178,
+        "startChar": 6,
+        "endLine": 178,
+        "endChar": 30
+      },
+      "revId": "3a9338acf9e2e1364a82618fad9a197f96a82c9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63f74ae2_456221bf",
+        "filename": "chip/host/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-03T22:50:17Z",
+      "side": 1,
+      "message": "...remove",
+      "range": {
+        "startLine": 50,
+        "startChar": 5,
+        "endLine": 50,
+        "endChar": 11
+      },
+      "revId": "3a9338acf9e2e1364a82618fad9a197f96a82c9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63f74ae2_255f25fb",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-03T22:50:17Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 348,
+        "startChar": 41,
+        "endLine": 349,
+        "endChar": 26
+      },
+      "revId": "3a9338acf9e2e1364a82618fad9a197f96a82c9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63f74ae2_c578517c",
+        "filename": "chip/lm4/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-03T22:50:17Z",
+      "side": 1,
+      "message": "signal \u003e\u003d GPIO_IH_COUNT?\n\n(elsewhere, too)\n\n(Yes, it generates the same code, but I\u0027m used to seeing it the other way.)",
+      "range": {
+        "startLine": 154,
+        "startChar": 5,
+        "endLine": 154,
+        "endChar": 30
+      },
+      "revId": "3a9338acf9e2e1364a82618fad9a197f96a82c9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23c4727c_0f69b568",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-03T22:50:17Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 354,
+        "startChar": 40,
+        "endLine": 355,
+        "endChar": 26
+      },
+      "revId": "3a9338acf9e2e1364a82618fad9a197f96a82c9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3bdfae6_30b5f531",
+        "filename": "chip/nrf51/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-03T22:50:17Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 258,
+        "startChar": 17,
+        "endLine": 258,
+        "endChar": 24
+      },
+      "revId": "3a9338acf9e2e1364a82618fad9a197f96a82c9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23c4727c_6f9f11df",
+        "filename": "chip/nrf51/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-03T22:50:17Z",
+      "side": 1,
+      "message": "here too\n\n(etc.)",
+      "range": {
+        "startLine": 297,
+        "startChar": 34,
+        "endLine": 298,
+        "endChar": 32
+      },
+      "revId": "3a9338acf9e2e1364a82618fad9a197f96a82c9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23c4727c_cf905dcc",
+        "filename": "include/gpio.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-03T22:50:17Z",
+      "side": 1,
+      "message": "Might comment:\n\nInterrupt handlers must not be NULL.  If you need to disable a handler at compile time, specify an empty inline function, rather than a NULL pointer.",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 2
+      },
+      "revId": "3a9338acf9e2e1364a82618fad9a197f96a82c9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
