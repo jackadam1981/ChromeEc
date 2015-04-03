@@ -13,11 +13,9 @@ MEMORY
 }
 SECTIONS
 {
-    . = ALIGN(CONFIG_FLASH_BANK_SIZE);
     .image.RO : AT(CONFIG_FLASH_BASE + CONFIG_FW_RO_OFF) {
         *(.image.RO)
     } > FLASH =0xff
-    . = ALIGN(CONFIG_FLASH_BANK_SIZE);
 #if (CONFIG_FW_RO_OFF == CONFIG_FW_RW_OFF)
 /* This is applicable to ECs in which RO and RW execution is
 mapped to the same location but we still have to generate an ec.bin with RO

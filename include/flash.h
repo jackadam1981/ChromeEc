@@ -11,6 +11,26 @@
 #include "common.h"
 #include "ec_commands.h"  /* For EC_FLASH_PROTECT_* flags */
 
+#ifdef CONFIG_FLASH_MULTIPLE_REGION
+extern struct ec_flash_bank const flash_bank_array[CONFIG_FLASH_REGION_TYPE];
+int flash_bank_offset(int offset);
+int flash_bank_count(int offset, int size);
+int flash_bank_size(int sector);
+
+/* Number of physical flash banks */
+#define PHYSICAL_BANKS  CONFIG_FLASH_MULTIPLE_REGION
+
+/* Read-only firmware offset and size in units of flash banks */
+#define RO_BANK_OFFSET	flash_bank_offset(CONFIG_FW_RO_OFF)
+#define RO_BANK_COUNT \
+	(flash_bank_count(CONFIG_FW_RO_OFF, CONFIG_FW_RO_SIZE))
+
+/* Read-write firmware offset and size in units of flash banks */
+#define RW_BANK_OFFSET	flash_bank_offset(CONFIG_FW_RW_OFF)
+#define RW_BANK_COUNT \
+	(flash_bank_count(CONFIG_FW_RW_OFF, CONFIG_FW_RW_SIZE))
+
+#else
 /* Number of physical flash banks */
 #define PHYSICAL_BANKS (CONFIG_FLASH_PHYSICAL_SIZE / CONFIG_FLASH_BANK_SIZE)
 
@@ -21,6 +41,7 @@
 /* Read-write firmware offset and size in units of flash banks */
 #define RW_BANK_OFFSET		(CONFIG_FW_RW_OFF / CONFIG_FLASH_BANK_SIZE)
 #define RW_BANK_COUNT		(CONFIG_FW_RW_SIZE / CONFIG_FLASH_BANK_SIZE)
+#endif
 
 /* Persistent protection state flash offset / size / bank */
 #if defined(CONFIG_FLASH_PSTATE) && defined(CONFIG_FLASH_PSTATE_BANK)
@@ -28,6 +49,7 @@
 #define PSTATE_SIZE		CONFIG_FW_PSTATE_SIZE
 #define PSTATE_BANK		(PSTATE_OFFSET / CONFIG_FLASH_BANK_SIZE)
 #define PSTATE_BANK_COUNT	(PSTATE_SIZE / CONFIG_FLASH_BANK_SIZE)
+#define PSTATE_IS_PROTECTED     (flash_physical_get_protect(PSTATE_BANK))
 #else
 #define PSTATE_BANK_COUNT	0
 #endif
