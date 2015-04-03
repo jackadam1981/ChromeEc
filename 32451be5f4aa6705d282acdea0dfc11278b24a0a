@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e3bdfae6_623bac7f",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-04-03T21:39:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3d47630_9c82cd4b",
+      "range": {
+        "startLine": 710,
+        "startChar": 7,
+        "endLine": 710,
+        "endChar": 23
+      },
+      "revId": "32451be5f4aa6705d282acdea0dfc11278b24a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03092eaf_6e898b25",
         "filename": "common/host_command.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-04-03T16:51:40Z",
       "side": 1,
       "message": "It\u0027s not clear to me what switch control means.",
+      "range": {
+        "startLine": 726,
+        "startChar": 20,
+        "endLine": 726,
+        "endChar": 42
+      },
+      "revId": "32451be5f4aa6705d282acdea0dfc11278b24a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3bdfae6_482a07f9",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-04-03T21:39:18Z",
+      "side": 1,
+      "message": "power switches, abitilty to run something on and off.",
+      "parentUuid": "03092eaf_6e898b25",
       "range": {
         "startLine": 726,
         "startChar": 20,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "23c4727c_3e27116a",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 752,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-04-03T21:39:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03092eaf_0e80cff6",
+      "range": {
+        "startLine": 752,
+        "startChar": 7,
+        "endLine": 752,
+        "endChar": 21
+      },
+      "revId": "32451be5f4aa6705d282acdea0dfc11278b24a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03092eaf_ce99977c",
         "filename": "include/config.h",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2015-04-03T16:51:40Z",
       "side": 1,
       "message": "not?\n\nSeems like if it *is* defined, the RW image has more features.",
+      "range": {
+        "startLine": 635,
+        "startChar": 6,
+        "endLine": 635,
+        "endChar": 9
+      },
+      "revId": "32451be5f4aa6705d282acdea0dfc11278b24a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63f74ae2_b724702d",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-04-03T21:39:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03092eaf_ce99977c",
       "range": {
         "startLine": 635,
         "startChar": 6,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "23c4727c_b8ee99fd",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-04-03T21:39:18Z",
+      "side": 1,
+      "message": "Mostly guess: it is what the kernel would need to know if we were to export everything nicely through sysfs.",
+      "parentUuid": "c3d47630_dc7845f5",
+      "range": {
+        "startLine": 866,
+        "startChar": 0,
+        "endLine": 866,
+        "endChar": 24
+      },
+      "revId": "32451be5f4aa6705d282acdea0dfc11278b24a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03092eaf_8e939f5a",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -128,6 +248,30 @@
       "writtenOn": "2015-04-03T16:51:40Z",
       "side": 1,
       "message": "MKBP \u003d the matrix keyboard protocol interface, or any keyboard including 8042?",
+      "range": {
+        "startLine": 875,
+        "startChar": 1,
+        "endLine": 875,
+        "endChar": 16
+      },
+      "revId": "32451be5f4aa6705d282acdea0dfc11278b24a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23c4727c_780da16b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-04-03T21:39:18Z",
+      "side": 1,
+      "message": "All keyboard. Renamed EC_FEATURE_KYB",
+      "parentUuid": "03092eaf_8e939f5a",
       "range": {
         "startLine": 875,
         "startChar": 1,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "63f74ae2_d21ffa5d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 887,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-04-03T21:39:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3d47630_fc730118",
+      "range": {
+        "startLine": 887,
+        "startChar": 17,
+        "endLine": 887,
+        "endChar": 24
+      },
+      "revId": "32451be5f4aa6705d282acdea0dfc11278b24a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3d47630_bc7d89e3",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -174,6 +342,30 @@
       "writtenOn": "2015-04-03T16:51:40Z",
       "side": 1,
       "message": "Oh, I see.  This really means \"There is another MCU hiding past this one.\"  But it might or might not have PD functionality.\n\nEC_FEATURE_SUB_MCU?",
+      "range": {
+        "startLine": 889,
+        "startChar": 29,
+        "endLine": 889,
+        "endChar": 33
+      },
+      "revId": "32451be5f4aa6705d282acdea0dfc11278b24a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63f74ae2_b2c91e5a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 889,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-04-03T21:39:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3d47630_bc7d89e3",
       "range": {
         "startLine": 889,
         "startChar": 29,
