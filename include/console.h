@@ -37,6 +37,7 @@ enum console_channel {
 	CC_GESTURE,
 	CC_GPIO,
 	CC_HOSTCMD,
+	CC_FLASH,
 	CC_I2C,
 	CC_KEYBOARD,
 	CC_KEYSCAN,
