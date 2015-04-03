@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3d47630_9c82cd4b",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-03T16:51:40Z",
+      "side": 1,
+      "message": "Note that this is true for 8042 as well.  If you want to limit to MKBP, use CONFIG_KEYBOARD_PROTOCOL_MKBP.",
+      "range": {
+        "startLine": 710,
+        "startChar": 7,
+        "endLine": 710,
+        "endChar": 23
+      },
+      "revId": "32451be5f4aa6705d282acdea0dfc11278b24a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03092eaf_6e898b25",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-03T16:51:40Z",
+      "side": 1,
+      "message": "It\u0027s not clear to me what switch control means.",
+      "range": {
+        "startLine": 726,
+        "startChar": 20,
+        "endLine": 726,
+        "endChar": 42
+      },
+      "revId": "32451be5f4aa6705d282acdea0dfc11278b24a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03092eaf_0e80cff6",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 752,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-03T16:51:40Z",
+      "side": 1,
+      "message": "This is, unfortunately, a horribly named task, since what it really means is that there is another MCU connected in series with the EC.  That other MCU could be Cr50, a sensor hub, etc.",
+      "range": {
+        "startLine": 752,
+        "startChar": 7,
+        "endLine": 752,
+        "endChar": 21
+      },
+      "revId": "32451be5f4aa6705d282acdea0dfc11278b24a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03092eaf_ce99977c",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-03T16:51:40Z",
+      "side": 1,
+      "message": "not?\n\nSeems like if it *is* defined, the RW image has more features.",
+      "range": {
+        "startLine": 635,
+        "startChar": 6,
+        "endLine": 635,
+        "endChar": 9
+      },
+      "revId": "32451be5f4aa6705d282acdea0dfc11278b24a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3d47630_dc7845f5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-03T16:51:40Z",
+      "side": 1,
+      "message": "I think each of these need a longer explanation.\n\nAlso indicate this is for flags[0], since flags[1] will have its own overlapping enum?\n\nHow did you come up with the list of features?  Is this everything the kernel currently needs to know about, or just a guess at what features might be needed?",
+      "range": {
+        "startLine": 866,
+        "startChar": 0,
+        "endLine": 866,
+        "endChar": 24
+      },
+      "revId": "32451be5f4aa6705d282acdea0dfc11278b24a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03092eaf_8e939f5a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-03T16:51:40Z",
+      "side": 1,
+      "message": "MKBP \u003d the matrix keyboard protocol interface, or any keyboard including 8042?",
+      "range": {
+        "startLine": 875,
+        "startChar": 1,
+        "endLine": 875,
+        "endChar": 16
+      },
+      "revId": "32451be5f4aa6705d282acdea0dfc11278b24a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3d47630_fc730118",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 887,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-03T16:51:40Z",
+      "side": 1,
+      "message": "Typo",
+      "range": {
+        "startLine": 887,
+        "startChar": 17,
+        "endLine": 887,
+        "endChar": 24
+      },
+      "revId": "32451be5f4aa6705d282acdea0dfc11278b24a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3d47630_bc7d89e3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 889,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-03T16:51:40Z",
+      "side": 1,
+      "message": "Oh, I see.  This really means \"There is another MCU hiding past this one.\"  But it might or might not have PD functionality.\n\nEC_FEATURE_SUB_MCU?",
+      "range": {
+        "startLine": 889,
+        "startChar": 29,
+        "endLine": 889,
+        "endChar": 33
+      },
+      "revId": "32451be5f4aa6705d282acdea0dfc11278b24a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
