@@ -255,6 +255,30 @@
       "revId": "3a9338acf9e2e1364a82618fad9a197f96a82c9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23c4727c_5e9ac070",
+        "filename": "include/gpio.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-04-03T23:44:42Z",
+      "side": 1,
+      "message": "Oh, but Randall just suggested you remove all those checks.\n\nBut... there\u0027s no difference between a non-called handler and an empty handler, so I\u0027m not sure why.",
+      "parentUuid": "23c4727c_2a52276e",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 2
+      },
+      "revId": "3a9338acf9e2e1364a82618fad9a197f96a82c9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
