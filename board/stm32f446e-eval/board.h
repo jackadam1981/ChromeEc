@@ -13,6 +13,12 @@
 
 #define CONFIG_BOARD_POST_GPIO_INIT
 
+/* Use PSTATE embedded in the RO image, not in its own erase block */
+#define CONFIG_FLASH_PSTATE
+#undef CONFIG_FLASH_PSTATE_BANK
+
+#define CONFIG_FLASH_WRITE_SIZE STM32_FLASH_WRITE_SIZE_3300
+
 /* Enable console recasting of GPIO type. */
 #define CONFIG_CMD_GPIO_EXTENDED
 
