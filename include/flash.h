@@ -11,11 +11,22 @@
 #include "common.h"
 #include "ec_commands.h"  /* For EC_FLASH_PROTECT_* flags */
 
+#ifdef CONFIG_FLASH_MULTIPLE_REGION
+extern struct ec_flash_bank const flash_bank_array[CONFIG_FLASH_REGION_TYPE];
+int flash_bank_offset(int offset);
+int flash_bank_count(int offset, int size);
+int flash_bank_size(int sector);
+
 /* Number of physical flash banks */
-/*
- * TODO(crosbug.com/p/62372): This assumes flash protection blocks are all of
- * identical sizes, which is incorrect, for example, on STM32F091VC.
- */
+#define PHYSICAL_BANKS  CONFIG_FLASH_MULTIPLE_REGION
+
+/* WP region offset and size in units of flash banks */
+#define WP_BANK_OFFSET	flash_bank_offset(CONFIG_WP_STORAGE_OFF)
+#define WP_BANK_COUNT \
+	(flash_bank_count(CONFIG_WP_STORAGE_OFF, CONFIG_WP_STORAGE_SIZE))
+
+#else
+/* Number of physical flash banks */
 #ifndef PHYSICAL_BANKS
 #define PHYSICAL_BANKS (CONFIG_FLASH_SIZE / CONFIG_FLASH_BANK_SIZE)
 #endif
@@ -25,9 +36,15 @@
 #ifndef WP_BANK_COUNT
 #define WP_BANK_COUNT	(CONFIG_WP_STORAGE_SIZE / CONFIG_FLASH_BANK_SIZE)
 #endif
+#endif
 
 /* Persistent protection state flash offset / size / bank */
 #if defined(CONFIG_FLASH_PSTATE) && defined(CONFIG_FLASH_PSTATE_BANK)
+
+#ifdef CONFIG_FLASH_MULTIPLE_REGION
+#  undef "Not supported yet"
+#endif
+
 #ifndef PSTATE_BANK
 #define PSTATE_BANK	    (CONFIG_FW_PSTATE_OFF / CONFIG_FLASH_BANK_SIZE)
 #endif
