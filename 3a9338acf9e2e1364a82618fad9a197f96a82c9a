@@ -231,6 +231,30 @@
       "revId": "3a9338acf9e2e1364a82618fad9a197f96a82c9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23c4727c_2a52276e",
+        "filename": "include/gpio.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-04-03T23:37:01Z",
+      "side": 1,
+      "message": "They can be NULL. You just have to ensure that the handler lookup code checks for that explicitly:\n\nif (gpio_irq_handlers[i] \u0026\u0026 port \u003d\u003d g-\u003eport \u0026\u0026 mask \u003d\u003d g-\u003emask)",
+      "parentUuid": "e3bdfae6_8647eb7e",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 2
+      },
+      "revId": "3a9338acf9e2e1364a82618fad9a197f96a82c9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
