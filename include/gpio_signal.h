@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-#define GPIO(name, port, pin, flags, signal) GPIO_##name,
+#define GPIO(name, port, pin, flags) GPIO_##name,
 #define UNIMPLEMENTED(name) GPIO_##name,
 
 enum gpio_signal {
