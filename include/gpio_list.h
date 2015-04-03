@@ -4,15 +4,15 @@
  */
 
 #ifdef CONFIG_COMMON_GPIO_SHORTNAMES
-#define GPIO(name, port, pin, flags, signal) \
-	{#port#pin, GPIO_##port, (1 << pin), flags, signal},
+#define GPIO(name, port, pin, flags)			\
+	{#port#pin, GPIO_##port, (1 << pin), flags},
 #else
-#define GPIO(name, port, pin, flags, signal) \
-	{#name, GPIO_##port, (1 << pin), flags, signal},
+#define GPIO(name, port, pin, flags)			\
+	{#name, GPIO_##port, (1 << pin), flags},
 #endif
 
 #define UNIMPLEMENTED(name) \
-	{#name, DUMMY_GPIO_BANK, 0, GPIO_DEFAULT, NULL},
+	{#name, DUMMY_GPIO_BANK, 0, GPIO_DEFAULT},
 
 /* GPIO signal list. */
 const struct gpio_info gpio_list[] = {
@@ -33,3 +33,10 @@ const struct gpio_alt_func gpio_alt_funcs[] = {
 };
 
 const int gpio_alt_funcs_count = ARRAY_SIZE(gpio_alt_funcs);
+
+/* GPIO Interrupt Handlers */
+#define GPIO_INT(name, port, pin, flags, signal) signal,
+void (* const gpio_irq_handlers[])(enum gpio_signal signal) = {
+	#include "gpio.wrap"
+};
+const int gpio_ih_count = ARRAY_SIZE(gpio_irq_handlers);

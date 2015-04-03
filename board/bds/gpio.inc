@@ -1,13 +1,18 @@
 /* -*- mode:c -*-
  *
- * Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+ * Copyright (c) 2014-2015 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
 
+/*
+ * NOTE: ALL GPIOs with interrupt handlers must be declared at the top
+ * of this file!
+ */
+
 /* Recovery signal from DOWN button */
-GPIO(RECOVERY_L, D, 1, GPIO_PULL_UP, NULL)
-GPIO(DEBUG_LED,  A, 7, GPIO_OUT_LOW, NULL)
+GPIO(RECOVERY_L, D, 1, GPIO_PULL_UP)
+GPIO(DEBUG_LED,  A, 7, GPIO_OUT_LOW)
 
 /*
  * Signals which aren't implemented on BDS but we'll emulate anyway, to
