@@ -592,6 +592,8 @@
 #undef CONFIG_FLASH_BASE
 #undef CONFIG_FLASH_ERASED_VALUE32
 #undef CONFIG_FLASH_ERASE_SIZE
+/* Version mask for FLASH_ERASE */
+#define CONFIG_FLASH_ERASE_SUPPORT 1
 
 /*
  * Flash is directly mapped into the EC's address space.  If this is not
@@ -621,6 +623,12 @@
  * screw, of course).
  */
 #define CONFIG_FLASH_PSTATE_BANK
+/*
+ * For flash that is segemented in different regions.
+ */
+#undef CONFIG_FLASH_MULTIPLE_REGION
+/* Number of regions of different size/type */
+#undef CONFIG_FLASH_REGION_TYPE
 
 #undef CONFIG_FLASH_SIZE
 #undef CONFIG_FLASH_WRITE_IDEAL_SIZE
@@ -960,6 +968,12 @@
 
 /* Support one-wire interface */
 #undef CONFIG_ONEWIRE
+
+/* One Time Protection structure support */
+/* Number of OTP bank present */
+#undef CONFIG_OTP
+/* Size of a given bank */
+#undef CONTIG_OTP_BANK_SIZE
 
 /* Support PECI interface to x86 processor */
 #undef CONFIG_PECI
