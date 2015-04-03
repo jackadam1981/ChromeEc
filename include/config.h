@@ -983,6 +983,8 @@
 #undef CONFIG_FLASH_ERASED_VALUE32
 #undef CONFIG_FLASH_ERASE_SIZE
 #undef CONFIG_FLASH_ROW_SIZE
+/* Version mask for FLASH_ERASE: version 1 allow deferred erased. */
+#define CONFIG_FLASH_ERASE_SUPPORT EC_VER_MASK(0)
 
 /* Base address of program memory */
 #undef CONFIG_PROGRAM_MEMORY_BASE
@@ -1032,6 +1034,12 @@
  * screw, of course).
  */
 #define CONFIG_FLASH_PSTATE_BANK
+/*
+ * For flash that is segemented in different regions.
+ */
+#undef CONFIG_FLASH_MULTIPLE_REGION
+/* Number of regions of different size/type */
+#undef CONFIG_FLASH_REGION_TYPE
 
 /* Total size of writable flash */
 #undef CONFIG_FLASH_SIZE
