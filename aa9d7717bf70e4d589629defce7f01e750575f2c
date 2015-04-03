@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23c4727c_58dd3d5c",
+        "filename": "common/charge_ramp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-03T19:23:43Z",
+      "side": 1,
+      "message": "detect / detected state names are very similar and may be easy to mix up.",
+      "revId": "aa9d7717bf70e4d589629defce7f01e750575f2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3bdfae6_820da06e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2798,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-03T19:23:43Z",
+      "side": 1,
+      "message": "This struct is used in ectool and the kernel, but it seems fine. If we update SW but not FW, we\u0027ll just decode reserved2 instead of current_lim.",
+      "revId": "aa9d7717bf70e4d589629defce7f01e750575f2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3bdfae6_fc3e418a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2801,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-03T19:23:43Z",
+      "side": 1,
+      "message": "We can delete this line about expecting an odd number of uint16s now.",
+      "revId": "aa9d7717bf70e4d589629defce7f01e750575f2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
