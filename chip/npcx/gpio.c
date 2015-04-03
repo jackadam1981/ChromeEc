@@ -350,9 +350,9 @@ void gpio_execute_isr(uint8_t port, uint8_t mask)
 	int i;
 	const struct gpio_info *g = gpio_list;
 	/* Find GPIOs and execute interrupt service routine */
-	for (i = 0; i < GPIO_COUNT; i++, g++) {
-		if (port == g->port && mask == g->mask && g->irq_handler) {
-			g->irq_handler(i);
+	for (i = 0; i < GPIO_IH_COUNT; i++, g++) {
+		if (port == g->port && mask == g->mask) {
+			gpio_irq_handlers[i](i);
 			return;
 		}
 	}
@@ -548,6 +548,14 @@ void gpio_pre_init(void)
 
 	uint32_t	ksi_mask = (~((1<<KEYBOARD_ROWS)-1)) & KB_ROW_MASK;
 	uint32_t	ks0_mask = (~((1<<KEYBOARD_COLS)-1)) & KB_COL_MASK;
+
+	/*
+	 * Interrupt handlers must not be NULL. If you need to disable a handler
+	 * at compile time, specify an empty inline function, rather than a NULL
+	 * pointer.
+	 */
+	for (i = 0; i < GPIO_IH_COUNT; i++)
+		ASSERT(gpio_irq_handlers[i] != NULL);
 
 	/* Set necessary pin mux first */
 	/* Pin_Mux for KSO0-17 & KSI0-7 */
