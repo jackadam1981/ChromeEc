@@ -2,6 +2,207 @@
   "comments": [
     {
       "key": {
+        "uuid": "23c4727c_58577d5f",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-03T20:11:24Z",
+      "side": 1,
+      "message": "\u003c\u003d ?",
+      "range": {
+        "startLine": 347,
+        "startChar": 15,
+        "endLine": 347,
+        "endChar": 16
+      },
+      "revId": "37325fd9b7e49424a47a9da9445aca4eee57ed93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23c4727c_3b6de3fe",
+        "filename": "chip/lm4/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-03T20:11:24Z",
+      "side": 1,
+      "message": "I think you still need the check for whether the handler is non-null.  See for example keyboard_raw.h, where if the keyboard task isn\u0027t defined (as it isn\u0027t for some tests), we define the handler as NULL.\n\nOr on second thought, it would be better to change those headers so that if the task isn\u0027t defined, the handler turns into an empty inline function, like in spi.h.  That saves a couple instructions out of the GPIO interrupt handler, which will reduce latency.",
+      "range": {
+        "startLine": 154,
+        "startChar": 31,
+        "endLine": 154,
+        "endChar": 32
+      },
+      "revId": "37325fd9b7e49424a47a9da9445aca4eee57ed93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23c4727c_b848d9b7",
+        "filename": "chip/lm4/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-03T20:11:24Z",
+      "side": 1,
+      "message": "\u003c\u003d ?",
+      "range": {
+        "startLine": 307,
+        "startChar": 15,
+        "endLine": 307,
+        "endChar": 16
+      },
+      "revId": "37325fd9b7e49424a47a9da9445aca4eee57ed93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3bdfae6_cd6f4922",
+        "filename": "chip/mec1322/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-03T20:11:24Z",
+      "side": 1,
+      "message": "\u003c\u003d ?",
+      "range": {
+        "startLine": 221,
+        "startChar": 15,
+        "endLine": 221,
+        "endChar": 16
+      },
+      "revId": "37325fd9b7e49424a47a9da9445aca4eee57ed93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3d4e237_53f43cd3",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-03T20:11:24Z",
+      "side": 1,
+      "message": "\u003c\u003d ?",
+      "range": {
+        "startLine": 353,
+        "startChar": 15,
+        "endLine": 353,
+        "endChar": 16
+      },
+      "revId": "37325fd9b7e49424a47a9da9445aca4eee57ed93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23c4727c_9bacef9e",
+        "filename": "chip/nrf51/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-03T20:11:24Z",
+      "side": 1,
+      "message": "Need to check if signal \u003c GPIO_IH_COUNT",
+      "range": {
+        "startLine": 197,
+        "startChar": 18,
+        "endLine": 197,
+        "endChar": 20
+      },
+      "revId": "37325fd9b7e49424a47a9da9445aca4eee57ed93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3bdfae6_e8be7ba1",
+        "filename": "chip/nrf51/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-03T20:11:24Z",
+      "side": 1,
+      "message": "Here too",
+      "range": {
+        "startLine": 258,
+        "startChar": 18,
+        "endLine": 258,
+        "endChar": 20
+      },
+      "revId": "37325fd9b7e49424a47a9da9445aca4eee57ed93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23c4727c_fb9d2b6b",
+        "filename": "chip/nrf51/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-03T20:11:24Z",
+      "side": 1,
+      "message": "Seems like somewhere in here we should be checking against GPIO_IH_COUNT?",
+      "range": {
+        "startLine": 296,
+        "startChar": 3,
+        "endLine": 296,
+        "endChar": 9
+      },
+      "revId": "37325fd9b7e49424a47a9da9445aca4eee57ed93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3bdfae6_cdc1899d",
+        "filename": "include/gpio_irq_handlers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-03T20:11:24Z",
+      "side": 1,
+      "message": "Can\u0027t this code simply go in gpio_list.h?\n\nThen all the board files don\u0027t need to include a new file.",
+      "revId": "37325fd9b7e49424a47a9da9445aca4eee57ed93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23c4727c_1bf8dfc6",
         "filename": "include/gpio_irq_handlers.h",
         "patchSetId": 1
@@ -18,6 +219,29 @@
         "startChar": 30,
         "endLine": 13,
         "endChar": 79
+      },
+      "revId": "37325fd9b7e49424a47a9da9445aca4eee57ed93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23c4727c_7b0d9b6b",
+        "filename": "include/gpio_irq_handlers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-03T20:11:24Z",
+      "side": 1,
+      "message": "It may be cleaner to define \n\ngpio_ih_count\n\nThat would avoid the \u003c\u003d vs \u003c confusion elsewhere, and matches GPIO_COUNT.",
+      "range": {
+        "startLine": 13,
+        "startChar": 10,
+        "endLine": 13,
+        "endChar": 27
       },
       "revId": "37325fd9b7e49424a47a9da9445aca4eee57ed93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
