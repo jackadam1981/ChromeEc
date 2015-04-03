@@ -26,6 +26,9 @@ CONSOLE_CHANNEL(CC_CLOCK,        "clock")
 CONSOLE_CHANNEL(CC_DMA,          "dma")
 #endif
 CONSOLE_CHANNEL(CC_EVENTS,       "events")
+#ifdef CONFIG_FLASH
+CONSOLE_CHANNEL(CC_FLASH,        "flash")
+#endif
 #ifdef HAS_TASK_FPC1140
 CONSOLE_CHANNEL(CC_FP,           "fingerprint")
 #endif
