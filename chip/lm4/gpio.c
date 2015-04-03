@@ -150,9 +150,8 @@ void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags)
 int gpio_enable_interrupt(enum gpio_signal signal)
 {
 	const struct gpio_info *g = gpio_list + signal;
-
 	/* Fail if no interrupt handler */
-	if (!g->irq_handler)
+	if (signal >= GPIO_IH_COUNT)
 		return EC_ERROR_UNKNOWN;
 
 	LM4_GPIO_IM(g->port) |= g->mask;
@@ -164,7 +163,7 @@ int gpio_disable_interrupt(enum gpio_signal signal)
 	const struct gpio_info *g = gpio_list + signal;
 
 	/* Fail if no interrupt handler */
-	if (!g->irq_handler)
+	if (signal >= GPIO_IH_COUNT)
 		return EC_ERROR_UNKNOWN;
 
 	LM4_GPIO_IM(g->port) &= ~g->mask;
@@ -189,6 +188,14 @@ void gpio_pre_init(void)
 	const struct gpio_info *g = gpio_list;
 	int is_warm = 0;
 	int i;
+
+	/*
+	 * Interrupt handlers must not be NULL. If you need to disable a handler
+	 * at compile time, specify an empty inline function, rather than a NULL
+	 * pointer.
+	 */
+	for (i = 0; i < GPIO_IH_COUNT; i++)
+		ASSERT(gpio_irq_handlers[i] != NULL);
 
 	if (LM4_SYSTEM_RCGCGPIO == 0x7fff) {
 		/* This is a warm reboot */
@@ -305,9 +312,9 @@ static void gpio_interrupt(int port, uint32_t mis)
 	int i = 0;
 	const struct gpio_info *g = gpio_list;
 
-	for (i = 0; i < GPIO_COUNT && mis; i++, g++) {
-		if (port == g->port && (mis & g->mask) && g->irq_handler) {
-			g->irq_handler(i);
+	for (i = 0; i < GPIO_IH_COUNT && mis; i++, g++) {
+		if (port == g->port && (mis & g->mask)) {
+			gpio_irq_handlers[i](i);
 			mis &= ~g->mask;
 		}
 	}

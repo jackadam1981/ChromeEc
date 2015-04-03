@@ -177,6 +177,14 @@ void gpio_pre_init(void)
 	int i;
 	const struct gpio_info *g = gpio_list;
 
+	/*
+	 * Interrupt handlers must not be NULL. If you need to disable a handler
+	 * at compile time, specify an empty inline function, rather than a NULL
+	 * pointer.
+	 */
+	for (i = 0; i < GPIO_IH_COUNT; i++)
+		ASSERT(gpio_irq_handlers[i] != NULL);
+
 	for (i = 0; i < GPIO_COUNT; i++, g++)
 		gpio_set_flags_by_mask(g->port, g->mask, g->flags);
 }
@@ -218,12 +226,10 @@ static void gpio_interrupt(int girq, int port_offset)
 
 	MEC1322_INT_SOURCE(girq) |= sts;
 
-	for (i = 0; i < GPIO_COUNT && sts; ++i, ++g) {
-		if (!g->irq_handler)
-			continue;
+	for (i = 0; i < GPIO_IH_COUNT && sts; ++i, ++g) {
 		bit = (g->port - port_offset) * 8 + __builtin_ffs(g->mask) - 1;
 		if (sts & (1 << bit))
-			g->irq_handler(i);
+			gpio_irq_handlers[i](i);
 		sts &= ~(1 << bit);
 	}
 }

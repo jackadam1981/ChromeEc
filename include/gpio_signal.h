@@ -3,8 +3,9 @@
  * found in the LICENSE file.
  */
 
-#define GPIO(name, port, pin, flags, signal) GPIO_##name,
+#define GPIO(name, port, pin, flags) GPIO_##name,
 #define UNIMPLEMENTED(name) GPIO_##name,
+#define GPIO_INT(name, port, pin, flags, signal) GPIO_##name,
 
 enum gpio_signal {
 	#include "gpio.wrap"
