@@ -144,6 +144,10 @@ static void set_ap_reset(int asserted)
  */
 static void set_pmic_pwron(int asserted)
 {
+#ifdef BOARD_RYU /* Workaround for MAX77620 PMIC not shutting down PP3300 */
+	if (asserted)
+		gpio_set_flags(GPIO_EN_PP3300_RSVD, GPIO_INPUT | GPIO_PULL_UP);
+#endif /* BOARD_RYU */
 	/* Signal is active-low */
 	gpio_set_level(GPIO_PMIC_PWRON_L, asserted ? 0 : 1);
 }
@@ -158,6 +162,10 @@ static void set_pmic_therm(int asserted)
 {
 	/* Signal is active-low */
 	gpio_set_level(GPIO_PMIC_THERM_L, asserted ? 0 : 1);
+#ifdef BOARD_RYU /* Workaround for MAX77620 PMIC not shutting down PP3300 */
+	if (asserted)
+		gpio_set_flags(GPIO_EN_PP3300_RSVD, GPIO_INPUT);
+#endif /* BOARD_RYU */
 }
 
 /**
