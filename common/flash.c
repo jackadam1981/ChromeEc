@@ -12,8 +12,10 @@
 #include "host_command.h"
 #include "shared_mem.h"
 #include "system.h"
+#include "task.h"
 #include "util.h"
 #include "vboot_hash.h"
+#include "watchdog.h"
 
 /*
  * Contents of erased flash, as a 32-bit value.  Most platforms erase flash
@@ -22,6 +24,11 @@
 #ifndef CONFIG_FLASH_ERASED_VALUE32
 #define CONFIG_FLASH_ERASED_VALUE32 (-1U)
 #endif
+
+/* Console output macros */
+#define CPUTS(outstr) cputs(CC_FLASH, outstr)
+#define CPRINTF(format, args...) cprintf(CC_FLASH, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_FLASH, format, ## args)
 
 #ifdef CONFIG_FLASH_PSTATE
 
@@ -102,11 +109,51 @@ const uint32_t pstate_data __attribute__((section(".rodata.pstate"))) =
 #endif /* !CONFIG_FLASH_PSTATE_BANK */
 #endif /* CONFIG_FLASH_PSTATE */
 
+#ifdef CONFIG_FLASH_MULTIPLE_REGION
+int flash_bank_size(int sector)
+{
+	int i;
+
+	for (i = 0; i < ARRAY_SIZE(flash_bank_array); i++) {
+		if (sector < flash_bank_array[i].sector_nb)
+			return flash_bank_array[i].sector_size;
+		sector -= flash_bank_array[i].sector_nb;
+	}
+	return -1;
+}
+
+int flash_bank_offset(int offset)
+{
+	int bank_offset = 0, i;
+
+	for (i = 0; i < ARRAY_SIZE(flash_bank_array); i++) {
+		int all_sector_size = flash_bank_array[i].sector_size *
+			flash_bank_array[i].sector_nb;
+		if (offset >= all_sector_size) {
+			offset -= all_sector_size;
+			bank_offset += flash_bank_array[i].sector_nb;
+			continue;
+		}
+		if (offset % flash_bank_array[i].sector_size != 0)
+			return -1;
+		return bank_offset + offset / flash_bank_array[i].sector_size;
+	}
+	if (offset != 0)
+		return -1;
+	return bank_offset;
+}
+
+int flash_bank_count(int offset, int size)
+{
+	return flash_bank_offset(offset + size) - flash_bank_offset(offset);
+}
+#endif
+
 int flash_range_ok(int offset, int size_req, int align)
 {
 	if (offset < 0 || size_req < 0 ||
-			offset + size_req > CONFIG_FLASH_SIZE ||
-			(offset | size_req) & (align - 1))
+	    offset + size_req > CONFIG_FLASH_SIZE ||
+	    (offset | size_req) & (align - 1))
 		return 0;  /* Invalid range */
 
 	return 1;
@@ -368,13 +415,14 @@ int flash_is_erased(uint32_t offset, int size)
 	const uint32_t *ptr;
 
 #ifdef CONFIG_MAPPED_STORAGE
+	int i;
 	/* Use pointer directly to flash */
 	if (flash_dataptr(offset, size, sizeof(uint32_t),
 			  (const char **)&ptr) < 0)
 		return 0;
 
 	flash_lock_mapped_storage(1);
-	for (size /= sizeof(uint32_t); size > 0; size--, ptr++)
+	for (i = 0; i < size / sizeof(uint32_t); i++, ptr++)
 		if (*ptr != CONFIG_FLASH_ERASED_VALUE32) {
 			flash_lock_mapped_storage(0);
 			return 0;
@@ -445,8 +493,10 @@ int flash_write(int offset, int size, const char *data)
 
 int flash_erase(int offset, int size)
 {
+#ifndef CONFIG_FLASH_MULTIPLE_REGION
 	if (!flash_range_ok(offset, size, CONFIG_FLASH_ERASE_SIZE))
 		return EC_ERROR_INVAL;  /* Invalid range */
+#endif
 
 #ifdef CONFIG_VBOOT_HASH
 	/*
@@ -490,7 +540,6 @@ int flash_protect_at_boot(uint32_t new_flags)
 	if (flash_read_pstate() != new_pstate_flags) {
 		/* Need to update pstate */
 		int rv;
-
 #ifdef CONFIG_FLASH_PSTATE_BANK
 		/* Fail if write protect block is already locked */
 		if (flash_physical_get_protect(PSTATE_BANK))
@@ -727,53 +776,89 @@ int flash_set_protect(uint32_t mask, uint32_t flags)
 	return retval;
 }
 
+static enum ec_status erase_rc = EC_RES_SUCCESS;
+#ifdef HAS_TASK_FLASHERASE
+#define PENDING_ERASE 1
+static struct ec_params_flash_erase_v1 erase_info;
+
+void flash_erase_task(void)
+{
+	do {
+		if (TASK_EVENT_CUSTOM(task_wait_event_mask(
+				PENDING_ERASE, -1)) == PENDING_ERASE) {
+			erase_rc = EC_RES_BUSY;
+			/* Allow the caller to wake up and return */
+			usleep(1000);
+			if (flash_erase(
+				erase_info.params.offset,
+				erase_info.params.size)) {
+				erase_rc = EC_RES_ERROR;
+			} else {
+				erase_rc = EC_RES_SUCCESS;
+			}
+		}
+	} while (1);
+}
+
+#endif
 /*****************************************************************************/
 /* Console commands */
 
 static int command_flash_info(int argc, char **argv)
 {
-	int i;
+	int i, flags;
 
 	ccprintf("Usable:  %4d KB\n", CONFIG_FLASH_SIZE / 1024);
 	ccprintf("Write:   %4d B (ideal %d B)\n", CONFIG_FLASH_WRITE_SIZE,
 		 CONFIG_FLASH_WRITE_IDEAL_SIZE);
+#ifdef CONFIG_FLASH_MULTIPLE_REGION
+	for (i = 0; i < ARRAY_SIZE(flash_bank_array); i++) {
+		ccprintf("%d region%s:\n",
+			 flash_bank_array[i].sector_nb,
+			 (flash_bank_array[i].sector_nb == 1 ? "" : "s"));
+		ccprintf("Erase:   %4d B (to %d-bits)\n",
+			 flash_bank_array[i].sector_erase_size,
+			 CONFIG_FLASH_ERASED_VALUE32 ? 1 : 0);
+		ccprintf("Size/Protect: %4d B\n",
+			 flash_bank_array[i].sector_size);
+	}
+#else
 	ccprintf("Erase:   %4d B (to %d-bits)\n", CONFIG_FLASH_ERASE_SIZE,
 		 CONFIG_FLASH_ERASED_VALUE32 ? 1 : 0);
 	ccprintf("Protect: %4d B\n", CONFIG_FLASH_BANK_SIZE);
-
-	i = flash_get_protect();
+#endif
+	flags = flash_get_protect();
 	ccprintf("Flags:  ");
-	if (i & EC_FLASH_PROTECT_GPIO_ASSERTED)
+	if (flags & EC_FLASH_PROTECT_GPIO_ASSERTED)
 		ccputs(" wp_gpio_asserted");
-	if (i & EC_FLASH_PROTECT_RO_AT_BOOT)
+	if (flags & EC_FLASH_PROTECT_RO_AT_BOOT)
 		ccputs(" ro_at_boot");
-	if (i & EC_FLASH_PROTECT_ALL_AT_BOOT)
+	if (flags & EC_FLASH_PROTECT_ALL_AT_BOOT)
 		ccputs(" all_at_boot");
-	if (i & EC_FLASH_PROTECT_RO_NOW)
+	if (flags & EC_FLASH_PROTECT_RO_NOW)
 		ccputs(" ro_now");
-	if (i & EC_FLASH_PROTECT_ALL_NOW)
+	if (flags & EC_FLASH_PROTECT_ALL_NOW)
 		ccputs(" all_now");
 #ifdef CONFIG_FLASH_PROTECT_RW
-	if (i & EC_FLASH_PROTECT_RW_AT_BOOT)
+	if (flags & EC_FLASH_PROTECT_RW_AT_BOOT)
 		ccputs(" rw_at_boot");
-	if (i & EC_FLASH_PROTECT_RW_NOW)
+	if (flags & EC_FLASH_PROTECT_RW_NOW)
 		ccputs(" rw_now");
 #endif
-	if (i & EC_FLASH_PROTECT_ERROR_STUCK)
+	if (flags & EC_FLASH_PROTECT_ERROR_STUCK)
 		ccputs(" STUCK");
-	if (i & EC_FLASH_PROTECT_ERROR_INCONSISTENT)
+	if (flags & EC_FLASH_PROTECT_ERROR_INCONSISTENT)
 		ccputs(" INCONSISTENT");
 #ifdef CONFIG_ROLLBACK
-	if (i & EC_FLASH_PROTECT_ROLLBACK_AT_BOOT)
+	if (flags & EC_FLASH_PROTECT_ROLLBACK_AT_BOOT)
 		ccputs(" rollback_at_boot");
-	if (i & EC_FLASH_PROTECT_ROLLBACK_NOW)
+	if (flags & EC_FLASH_PROTECT_ROLLBACK_NOW)
 		ccputs(" rollback_now");
 #endif
 	ccputs("\n");
 
 	ccputs("Protected now:");
-	for (i = 0; i < CONFIG_FLASH_SIZE / CONFIG_FLASH_BANK_SIZE;
-	     i++) {
+	for (i = 0; i < PHYSICAL_BANKS; i++) {
 		if (!(i & 31))
 			ccputs("\n    ");
 		else if (!(i & 7))
@@ -791,7 +876,7 @@ DECLARE_SAFE_CONSOLE_COMMAND(flashinfo, command_flash_info,
 static int command_flash_erase(int argc, char **argv)
 {
 	int offset = -1;
-	int size = CONFIG_FLASH_ERASE_SIZE;
+	int size = -1;
 	int rv;
 
 	if (flash_get_protect() & EC_FLASH_PROTECT_ALL_NOW)
@@ -805,13 +890,13 @@ static int command_flash_erase(int argc, char **argv)
 	return flash_erase(offset, size);
 }
 DECLARE_CONSOLE_COMMAND(flasherase, command_flash_erase,
-			"offset [size]",
+			"offset size",
 			"Erase flash");
 
 static int command_flash_write(int argc, char **argv)
 {
 	int offset = -1;
-	int size = CONFIG_FLASH_ERASE_SIZE;
+	int size = -1;
 	int rv;
 	char *data;
 	int i;
@@ -846,7 +931,7 @@ static int command_flash_write(int argc, char **argv)
 	return rv;
 }
 DECLARE_CONSOLE_COMMAND(flashwrite, command_flash_write,
-			"offset [size]",
+			"offset size",
 			"Write pattern to flash");
 
 static int command_flash_read(int argc, char **argv)
@@ -967,11 +1052,39 @@ static int flash_command_get_info(struct host_cmd_handler_args *args)
 {
 	struct ec_response_flash_info_1 *r = args->response;
 
+	args->response_size = sizeof(struct ec_response_flash_info_1);
 	r->flash_size = CONFIG_FLASH_SIZE - EC_FLASH_REGION_START;
-	r->write_block_size = CONFIG_FLASH_WRITE_SIZE;
-	r->erase_block_size = CONFIG_FLASH_ERASE_SIZE;
-	r->protect_block_size = CONFIG_FLASH_BANK_SIZE;
-
+	r->flags = 0;
+#ifdef CONFIG_FLASH_MULTIPLE_REGION
+	r->flags |= EC_FLASH_INFO_NUM_BANKS_DEFINED;
+	r->num_banks = ARRAY_SIZE(flash_bank_array);
+	if (args->version >= 2) {
+		/*
+		 * If user asks for v3, it must have allocated the right amount
+		 * of data.
+		 */
+		memcpy(r->banks, flash_bank_array, sizeof(flash_bank_array));
+		args->response_size += sizeof(flash_bank_array);
+	}
+#else
+	if (args->version < 2) {
+		r->flags = 0;
+		r->write_block_size = CONFIG_FLASH_WRITE_SIZE;
+		r->erase_block_size = CONFIG_FLASH_ERASE_SIZE;
+		r->protect_block_size = CONFIG_FLASH_BANK_SIZE;
+	} else {
+		r->flags |= EC_FLASH_INFO_NUM_BANKS_DEFINED;
+		r->num_banks = 1;
+#if CONFIG_FLASH_BANK_SIZE < CONFIG_FLASH_ERASE_SIZE
+#error "Flash: Bank size expected bigger or equal to erase size."
+#endif
+		r->banks[0].sector_nb =
+			CONFIG_FLASH_SIZE / CONFIG_FLASH_BANK_SIZE;
+		r->banks[0].sector_size = CONFIG_FLASH_BANK_SIZE;
+		r->banks[0].sector_erase_size = CONFIG_FLASH_ERASE_SIZE;
+		args->response_size += sizeof(struct ec_flash_bank);
+	}
+#endif  /* CONFIG_FLASH_MULTIPLE_REGION */
 	if (args->version == 0) {
 		/* Only version 0 fields returned */
 		args->response_size = sizeof(struct ec_response_flash_info);
@@ -996,19 +1109,20 @@ static int flash_command_get_info(struct host_cmd_handler_args *args)
 				 sizeof(struct ec_params_flash_write)) &
 				~(CONFIG_FLASH_WRITE_SIZE - 1);
 
-		r->flags = 0;
-
 #if (CONFIG_FLASH_ERASED_VALUE32 == 0)
 		r->flags |= EC_FLASH_INFO_ERASE_TO_0;
 #endif
-
-		args->response_size = sizeof(*r);
 	}
 	return EC_RES_SUCCESS;
 }
+#ifdef CONFIG_FLASH_MULTIPLE_REGION
+#define FLASH_INFO_VER (EC_VER_MASK(1) | EC_VER_MASK(2))
+#else
+#define FLASH_INFO_VER (EC_VER_MASK(0) | EC_VER_MASK(1) | EC_VER_MASK(2))
+#endif
 DECLARE_HOST_COMMAND(EC_CMD_FLASH_INFO,
-		     flash_command_get_info,
-		     EC_VER_MASK(0) | EC_VER_MASK(1));
+		     flash_command_get_info, FLASH_INFO_VER);
+
 
 static int flash_command_read(struct host_cmd_handler_args *args)
 {
@@ -1058,17 +1172,29 @@ DECLARE_HOST_COMMAND(EC_CMD_FLASH_WRITE,
 		     flash_command_write,
 		     EC_VER_MASK(0) | EC_VER_MASK(EC_VER_FLASH_WRITE));
 
+#ifndef CONFIG_FLASH_MULTIPLE_REGION
 /*
  * Make sure our image sizes are a multiple of flash block erase size so that
  * the host can erase the entire image.
  */
 BUILD_ASSERT(CONFIG_RO_SIZE % CONFIG_FLASH_ERASE_SIZE == 0);
 BUILD_ASSERT(CONFIG_RW_SIZE % CONFIG_FLASH_ERASE_SIZE == 0);
+#endif
 
 static int flash_command_erase(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_flash_erase *p = args->params;
-	uint32_t offset = p->offset + EC_FLASH_REGION_START;
+	int rc, cmd = FLASH_ERASE_SECTOR;
+	uint32_t offset;
+#if CONFIG_FLASH_ERASE_SUPPORT != 1
+	const struct ec_params_flash_erase_v1 *p_1 = args->params;
+
+	if (args->version > 0) {
+		cmd = p_1->cmd;
+		p = &p_1->params;
+	}
+#endif
+	offset = p->offset + EC_FLASH_REGION_START;
 
 	if (flash_get_protect() & EC_FLASH_PROTECT_ALL_NOW)
 		return EC_RES_ACCESS_DENIED;
@@ -1076,19 +1202,50 @@ static int flash_command_erase(struct host_cmd_handler_args *args)
 	if (system_unsafe_to_overwrite(offset, p->size))
 		return EC_RES_ACCESS_DENIED;
 
-	/* Indicate that we might be a while */
+	switch (cmd) {
+	case FLASH_ERASE_SECTOR:
 #if defined(HAS_TASK_HOSTCMD) && defined(CONFIG_HOST_COMMAND_STATUS)
-	args->result = EC_RES_IN_PROGRESS;
-	host_send_response(args);
+		args->result = EC_RES_IN_PROGRESS;
+		host_send_response(args);
 #endif
-	if (flash_erase(offset, p->size))
-		return EC_RES_ERROR;
+		if (flash_erase(offset, p->size))
+			return EC_RES_ERROR;
 
-	return EC_RES_SUCCESS;
+		break;
+	case FLASH_ERASE_SECTOR_ASYNC:
+#ifdef HAS_TASK_FLASHERASE
+		rc = erase_rc;
+		if (rc == EC_RES_SUCCESS) {
+			memcpy(&erase_info, p_1, sizeof(*p_1));
+			task_set_event(TASK_ID_FLASHERASE,
+				TASK_EVENT_CUSTOM(PENDING_ERASE),
+				0);
+		} else {
+			/*
+			 * Not our job to return the result of
+			 * the previous command.
+			 */
+			rc = EC_RES_BUSY;
+		}
+#else
+		erase_rc = flash_erase(offset, p->size);
+#endif
+		break;
+	case FLASH_GET_RESULT:
+		rc = erase_rc;
+		if (rc != EC_RES_BUSY)
+			/* Ready for another command */
+			erase_rc = EC_RES_SUCCESS;
+		break;
+	default:
+		rc = EC_RES_INVALID_PARAM;
+	}
+	return rc;
 }
-DECLARE_HOST_COMMAND(EC_CMD_FLASH_ERASE,
-		     flash_command_erase,
-		     EC_VER_MASK(0));
+
+
+DECLARE_HOST_COMMAND(EC_CMD_FLASH_ERASE, flash_command_erase,
+		     CONFIG_FLASH_ERASE_SUPPORT);
 
 static int flash_command_protect(struct host_cmd_handler_args *args)
 {
