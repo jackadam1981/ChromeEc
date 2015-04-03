@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "e3bdfae6_2d7365e7",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2798,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-03T19:29:41Z",
+      "side": 1,
+      "message": "Haven\u0027t we already shipped systems which use this command?  Should this be implemented as a new version of the host command, rather than modifying the current version of the command?",
+      "parentUuid": "e3bdfae6_820da06e",
+      "revId": "aa9d7717bf70e4d589629defce7f01e750575f2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3bdfae6_fc3e418a",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
