@@ -222,7 +222,7 @@ static void gpio_interrupt(int girq, int port_offset)
 		if (!g->irq_handler)
 			continue;
 		bit = (g->port - port_offset) * 8 + __builtin_ffs(g->mask) - 1;
-		if (sts & (1 << bit))
+		if (sts & (1 << bit) && g->irq_handler)
 			g->irq_handler(i);
 		sts &= ~(1 << bit);
 	}
