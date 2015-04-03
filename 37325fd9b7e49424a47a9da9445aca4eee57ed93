@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23c4727c_1bf8dfc6",
+        "filename": "include/gpio_irq_handlers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-04-03T20:09:16Z",
+      "side": 1,
+      "message": "ARRAY_SIZE(gpio_irq_handlers) - 1;\n\n\n(#defined in compile_time_macros.h)",
+      "range": {
+        "startLine": 13,
+        "startChar": 30,
+        "endLine": 13,
+        "endChar": 79
+      },
+      "revId": "37325fd9b7e49424a47a9da9445aca4eee57ed93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
