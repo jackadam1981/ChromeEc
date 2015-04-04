@@ -187,6 +187,29 @@
     },
     {
       "key": {
+        "uuid": "e3bdfae6_a15f79f8",
+        "filename": "chip/stm32/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-04T00:01:23Z",
+      "side": 1,
+      "message": "now storing a pointer to the \"struct gpio_info\" in exti_events is a bit wasteful. we might de-duplicate exti_events and gpio_irq_handlers but that\u0027s probably difficult to do and keep the commonalities with other chips at the same time.\nProbably storing just a gpio index as uint8_t in exti_events would be a good and simple improvement to save storage space here.",
+      "range": {
+        "startLine": 128,
+        "startChar": 2,
+        "endLine": 128,
+        "endChar": 23
+      },
+      "revId": "3a9338acf9e2e1364a82618fad9a197f96a82c9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23c4727c_cf905dcc",
         "filename": "include/gpio.h",
         "patchSetId": 2
@@ -275,6 +298,29 @@
         "startChar": 0,
         "endLine": 70,
         "endChar": 2
+      },
+      "revId": "3a9338acf9e2e1364a82618fad9a197f96a82c9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23c4727c_7e6ea47f",
+        "filename": "include/gpio.wrap",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-04T00:01:23Z",
+      "side": 1,
+      "message": "I would love having a simple name I can remember easily\neg GPIO_INT",
+      "range": {
+        "startLine": 24,
+        "startChar": 7,
+        "endLine": 24,
+        "endChar": 18
       },
       "revId": "3a9338acf9e2e1364a82618fad9a197f96a82c9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
