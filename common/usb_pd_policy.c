@@ -436,6 +436,11 @@ uint16_t pd_get_identity_vid(int port)
 	return PD_IDH_VID(pe[port].identity[0]);
 }
 
+uint16_t pd_get_identity_pid(int port)
+{
+	return PD_PRODUCT_PID(pe[port].identity[2]);
+}
+
 #ifdef CONFIG_CMD_USB_PD_PE
 static void dump_pe(int port)
 {

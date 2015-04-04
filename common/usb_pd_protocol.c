@@ -969,12 +969,14 @@ static void pd_update_pdo_flags(int port, uint32_t pdo)
 	 * treat this as a dualrole charger. Otherwise, treat this as a
 	 * dedicated charger.
 	 */
-	if ((pd[port].flags & PD_FLAGS_PARTNER_DR_POWER) &&
-	    !(pd[port].flags & PD_FLAGS_PARTNER_EXTPOWER)) {
-		charge_manager_update_dualrole(port, CAP_DUALROLE);
-	} else {
+	if (!(pd[port].flags & PD_FLAGS_PARTNER_DR_POWER) ||
+	    (pd[port].flags & PD_FLAGS_PARTNER_EXTPOWER) ||
+	    (pd[port].power_role == PD_ROLE_SINK &&
+	      pd_charge_from_device(pd_get_identity_vid(port),
+				    pd_get_identity_pid(port))))
 		charge_manager_update_dualrole(port, CAP_DEDICATED);
-	}
+	else
+		charge_manager_update_dualrole(port, CAP_DUALROLE);
 #endif
 }
 

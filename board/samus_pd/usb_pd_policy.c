@@ -183,6 +183,13 @@ void pd_check_dr_role(int port, int dr_role, int flags)
 	if ((flags & PD_FLAGS_PARTNER_DR_DATA) && dr_role == PD_ROLE_UFP)
 		pd_request_data_swap(port);
 }
+
+int pd_charge_from_device(uint16_t vid, uint16_t pid)
+{
+	/* TODO: rewrite into table if we get more of these */
+	return (vid == 0x05ac && pid == 0x1012);
+}
+
 /* ----------------- Vendor Defined Messages ------------------ */
 const struct svdm_response svdm_rsp = {
 	.identity = NULL,
