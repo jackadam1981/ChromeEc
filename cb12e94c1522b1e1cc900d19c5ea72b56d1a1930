@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3bdfae6_e8743102",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1092,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-04T01:48:47Z",
+      "side": 1,
+      "message": "nit: only need this comment once, you can just put it above the #ifdef",
+      "range": {
+        "startLine": 1092,
+        "startChar": 3,
+        "endLine": 1092,
+        "endChar": 52
+      },
+      "revId": "cb12e94c1522b1e1cc900d19c5ea72b56d1a1930",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
