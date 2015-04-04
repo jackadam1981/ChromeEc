@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23c4727c_77180730",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-04-04T05:10:53Z",
+      "side": 1,
+      "message": "TBD:\n- Need test on different failure batteries.\n- Removed this delays if need.",
+      "range": {
+        "startLine": 500,
+        "startChar": 15,
+        "endLine": 500,
+        "endChar": 17
+      },
+      "revId": "9ed12a1c5024e5ed071f7fe711e9165b98f84c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23c4727c_571d031d",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-04-04T05:10:53Z",
+      "side": 1,
+      "message": "TBD:\n- Need test on different failure batteries.\n- Removed this delays if need.",
+      "range": {
+        "startLine": 526,
+        "startChar": 15,
+        "endLine": 526,
+        "endChar": 17
+      },
+      "revId": "9ed12a1c5024e5ed071f7fe711e9165b98f84c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
