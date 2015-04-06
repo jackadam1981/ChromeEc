@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a34222dc_fcf8c0fd",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-06T21:18:36Z",
+      "side": 1,
+      "message": "it seems that I want this function on other power DRP (Ryu I\u0027m looking at you).\nShould we move it to common/usb_pd_policy ?",
+      "range": {
+        "startLine": 187,
+        "startChar": 4,
+        "endLine": 187,
+        "endChar": 25
+      },
+      "revId": "ab1b87bf7219d58cef175bcd18aa0d0f9f0e7a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a34222dc_9cb73c38",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-06T21:18:36Z",
+      "side": 1,
+      "message": "do we want to define a USB_VENDOR_ID_APPLE ?",
+      "range": {
+        "startLine": 195,
+        "startChar": 16,
+        "endLine": 195,
+        "endChar": 22
+      },
+      "revId": "ab1b87bf7219d58cef175bcd18aa0d0f9f0e7a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
