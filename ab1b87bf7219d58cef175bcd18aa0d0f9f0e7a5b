@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "83519eaa_f2f78508",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-06T21:21:09Z",
+      "side": 1,
+      "message": "yes, ok, i will move it. it still won\u0027t run on ryu yet because ryu isn\u0027t an alternate mode DFP (last i checked)",
+      "parentUuid": "a34222dc_fcf8c0fd",
+      "range": {
+        "startLine": 187,
+        "startChar": 4,
+        "endLine": 187,
+        "endChar": 25
+      },
+      "revId": "ab1b87bf7219d58cef175bcd18aa0d0f9f0e7a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a34222dc_9cb73c38",
         "filename": "board/samus_pd/usb_pd_policy.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-04-06T21:18:36Z",
       "side": 1,
       "message": "do we want to define a USB_VENDOR_ID_APPLE ?",
+      "range": {
+        "startLine": 195,
+        "startChar": 16,
+        "endLine": 195,
+        "endChar": 22
+      },
+      "revId": "ab1b87bf7219d58cef175bcd18aa0d0f9f0e7a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c34716eb_d49fd934",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-06T21:21:09Z",
+      "side": 1,
+      "message": "sure, chances are pretty good we will use this again.",
+      "parentUuid": "a34222dc_9cb73c38",
       "range": {
         "startLine": 195,
         "startChar": 16,
