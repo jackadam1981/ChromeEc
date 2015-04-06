@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c34716eb_8f829a9a",
+        "filename": "common/charge_ramp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-06T21:57:35Z",
+      "side": 1,
+      "message": "Changed first state to CHG_RAMP_CHARGE_DETECT_DELAY",
+      "parentUuid": "23c4727c_58dd3d5c",
+      "revId": "aa9d7717bf70e4d589629defce7f01e750575f2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3bdfae6_820da06e",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -83,6 +101,24 @@
       "writtenOn": "2015-04-03T19:23:43Z",
       "side": 1,
       "message": "We can delete this line about expecting an odd number of uint16s now.",
+      "revId": "aa9d7717bf70e4d589629defce7f01e750575f2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a34222dc_fa2f60b5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2801,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-06T21:57:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3bdfae6_fc3e418a",
       "revId": "aa9d7717bf70e4d589629defce7f01e750575f2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
