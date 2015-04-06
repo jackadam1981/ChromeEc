@@ -305,6 +305,30 @@
     },
     {
       "key": {
+        "uuid": "c34716eb_6aa7fcb4",
+        "filename": "include/gpio.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-04-06T23:14:15Z",
+      "side": 1,
+      "message": "I suppose it\u0027s because you can save a handful of assembly instructions by not comparing against NULL?\n\nAlthough, I\u0027m leaning towards just doing the check for NULL since I can\u0027t figure out a way to assert at compile time that the handlers won\u0027t be NULL.",
+      "parentUuid": "23c4727c_5e9ac070",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 2
+      },
+      "revId": "3a9338acf9e2e1364a82618fad9a197f96a82c9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23c4727c_7e6ea47f",
         "filename": "include/gpio.wrap",
         "patchSetId": 2
