@@ -349,6 +349,23 @@
       "revId": "3a9338acf9e2e1364a82618fad9a197f96a82c9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c34716eb_effb1b8d",
+        "filename": "include/jtag.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-04-06T23:17:58Z",
+      "side": 1,
+      "message": "Based on what we decide regarding NULL vs the static inline, I\u0027ll either keep or back out this change (and the other header files).",
+      "revId": "3a9338acf9e2e1364a82618fad9a197f96a82c9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
