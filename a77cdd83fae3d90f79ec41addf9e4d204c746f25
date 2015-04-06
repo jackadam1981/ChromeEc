@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2320f22c_9f409b66",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 951,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-06T23:04:00Z",
+      "side": 1,
+      "message": "I added this to save space on Zinger. This CL failed to build due to flash space on Zinger. Compiling this out saves 40 bytes on Zinger! Not needed for source-only devices because we only use these flags to determine when to do power swap or start charging.",
+      "range": {
+        "startLine": 951,
+        "startChar": 7,
+        "endLine": 951,
+        "endChar": 30
+      },
+      "revId": "a77cdd83fae3d90f79ec41addf9e4d204c746f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
