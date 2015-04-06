@@ -37,8 +37,6 @@ static void send_hid_event(void)
 		*key_ptr++ = 0x06; /* C keycode */
 	if (gpio_get_level(GPIO_SW_E))
 		*key_ptr++ = 0x07; /* D keycode */
-	/* send the keyboard state over USB HID */
-	set_keyboard_report(rpt);
 	/* check release in the future */
 	hook_call_deferred(send_hid_event, 40);
 }
@@ -80,5 +78,6 @@ const void * const usb_strings[] = {
 	[USB_STR_PRODUCT] = USB_STRING_DESC("Cr50"),
 	[USB_STR_VERSION] = USB_STRING_DESC(CROS_EC_VERSION32),
 	[USB_STR_CONSOLE_NAME] = USB_STRING_DESC("Shell"),
+	[USB_STR_ECHO_NAME] = USB_STRING_DESC("Echo"),
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
