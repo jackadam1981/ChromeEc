@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83519eaa_ff9afb46",
+        "filename": "include/console.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-06T15:32:32Z",
+      "side": 1,
+      "message": "beware you are opening another can of worms here :\nthat\u0027s the 33rd channel, then the bitmask is no longer working and silently discarding the output of the last one (CC_HOOK)\nI have noted to put a compile-time assert here, but I forgot to put it.",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 9
+      },
+      "revId": "10b08947537c9e09a33657aecca404b90b4e90bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
