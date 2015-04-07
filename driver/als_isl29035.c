@@ -7,6 +7,7 @@
 
 #include "driver/als_isl29035.h"
 #include "common.h"
+#include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
 #include "timer.h"
@@ -22,6 +23,7 @@
 #define ILS29035_REG_INT_HT_LSB 6
 #define ILS29035_REG_INT_HT_MSB 7
 #define ILS29035_REG_ID         15
+#define ILS29035_REG_COMMAND_I_INT_STATUS (1 << 2)
 
 static void isl29035_init(void)
 {
@@ -32,6 +34,11 @@ static void isl29035_init(void)
 	 */
 	(void)i2c_write8(I2C_PORT_ALS, ILS29035_I2C_ADDR,
 			 ILS29035_REG_COMMAND_I, 0xa0);
+
+#ifdef CONFIG_ALS_INTERRUPTS
+	/* Enable GPIO pin */
+	(void)gpio_enable_interrupt(GPIO_ALS_INT);
+#endif
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, isl29035_init, HOOK_PRIO_DEFAULT);
 
@@ -75,3 +82,61 @@ int isl29035_read_lux(int *lux, int af)
 
 	return EC_SUCCESS;
 }
+
+#ifdef CONFIG_ALS_INTERRUPTS
+int isl29035_set_interrupt(unsigned int lower_threshold,
+		unsigned int upper_threshold, int af)
+{
+	int rv;
+
+	/* Convert the LUX to data */
+	lower_threshold = lower_threshold * (0xffff / 1000) / af;
+	upper_threshold = upper_threshold * (0xffff / 1000) / af;
+
+	/* Write the lower threshold value LSB */
+	rv = i2c_write8(I2C_PORT_ALS, ILS29035_I2C_ADDR,
+			 ILS29035_REG_INT_LT_LSB, (lower_threshold & 0xFF));
+	if (rv)
+		return rv;
+
+	/* Write the lower threshold value MSB */
+	rv = i2c_write8(I2C_PORT_ALS, ILS29035_I2C_ADDR,
+			 ILS29035_REG_INT_LT_MSB,
+			 ((lower_threshold >> 8) & 0xFF));
+	if (rv)
+		return rv;
+
+	/* Write the upper threshold value LSB */
+	rv = i2c_write8(I2C_PORT_ALS, ILS29035_I2C_ADDR,
+			 ILS29035_REG_INT_HT_LSB, (upper_threshold & 0xFF));
+	if (rv)
+		return rv;
+
+	/* Write the upper threshold value MSB */
+	rv = i2c_write8(I2C_PORT_ALS, ILS29035_I2C_ADDR,
+			 ILS29035_REG_INT_HT_MSB,
+			 ((upper_threshold >> 8) & 0xFF));
+
+	return rv;
+}
+
+/*
+ * Clear the interrupt on sensor.
+ */
+int isl29035_interrupt_handler(void)
+{
+	int rv;
+	int data;
+
+	/* Read the status register to clear the pending interrupt */
+	rv = i2c_read8(I2C_PORT_ALS, ILS29035_I2C_ADDR,
+			 ILS29035_REG_COMMAND_I, &data);
+	if (rv)
+		return rv;
+
+	if (data & ILS29035_REG_COMMAND_I_INT_STATUS)
+		return EC_SUCCESS;
+	else
+		return EC_ERROR_INVAL;
+}
+#endif

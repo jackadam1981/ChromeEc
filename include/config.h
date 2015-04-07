@@ -60,6 +60,9 @@
 #undef CONFIG_ALS
 #undef CONFIG_ALS_ISL29035
 
+/* Enable ALS interrupt */
+#undef CONFIG_ALS_INTERRUPTS
+
 /* Support AP hang detection host command and state machine */
 #undef CONFIG_AP_HANG_DETECT
 
