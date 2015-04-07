@@ -30,4 +30,15 @@ extern struct als_t als[];
  */
 int als_read(enum als_id id, int *lux);
 
+#ifdef CONFIG_ALS_INTERRUPTS
+/**
+ * ISR of ALS
+ *
+ * @param signal	GPIO signal number
+ *
+ * @return none
+ */
+void als_interrupt(enum gpio_signal signal);
+#endif
+
 #endif  /* __CROS_EC_ALS_H */
