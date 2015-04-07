@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a32b0216_099a1970",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-07T18:09:36Z",
+      "side": 1,
+      "message": "IMO doing the following should generate smaller code with the same behavior for a small delay like 500ms :\nuint32_t start_time;\n\nstart_time \u003d __hw_clock_source_read();\nwhile (__hw_clock_source_read() - start_time) \u003c (500*MSEC)) {\n\nas the 64-bit computations are large on Cortex-M0",
+      "range": {
+        "startLine": 703,
+        "startChar": 9,
+        "endLine": 703,
+        "endChar": 40
+      },
+      "revId": "8e9885f35f6e9ac28f7b61d72d84c6c7bd11d569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
