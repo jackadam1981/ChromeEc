@@ -22,6 +22,30 @@
       "revId": "3df9a79b92139992e0a612985d3b3e1a4215e897",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8358bee6_245f12fb",
+        "filename": "board/cyan/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-04-07T23:37:11Z",
+      "side": 1,
+      "message": "yes.. we will correct this. But wrt the issues we are seeing this will not matter as this will come into place for software sync feature which is not enabled yet.\nwe will alter the patch anyway to the right size.",
+      "parentUuid": "23e3924b_f05bee87",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 37
+      },
+      "revId": "3df9a79b92139992e0a612985d3b3e1a4215e897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
