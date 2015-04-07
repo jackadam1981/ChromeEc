@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c375563f_0e06ab4d",
+        "filename": "include/chipset.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-07T15:23:25Z",
+      "side": 1,
+      "message": "nit: you can put { } on the same line to match the functions on the lines above. same with all the other files where you changed to an empty function.",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 1
+      },
+      "revId": "e22a9197ee5d7eb053de1e81f79d8c49a43440b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
