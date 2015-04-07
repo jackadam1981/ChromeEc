@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "63258a42_10f31573",
+        "filename": "chip/lm4/gpio.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-07T22:42:48Z",
+      "side": 1,
+      "message": "Note that we\u0027ll never see this ASSERT(), because gpio_pre_init() runs before uart_init().",
+      "range": {
+        "startLine": 198,
+        "startChar": 2,
+        "endLine": 198,
+        "endChar": 38
+      },
+      "revId": "698817a52850701c5b022617667f490e13b87993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a32b0216_f4953119",
         "filename": "chip/stm32/gpio.c",
         "patchSetId": 5
