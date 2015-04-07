@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a32b0216_f4953119",
+        "filename": "chip/stm32/gpio.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-04-07T22:00:43Z",
+      "side": 1,
+      "message": "This check is now redundant and could be removed or turned into a run time assert.",
+      "range": {
+        "startLine": 138,
+        "startChar": 15,
+        "endLine": 138,
+        "endChar": 28
+      },
+      "revId": "698817a52850701c5b022617667f490e13b87993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
