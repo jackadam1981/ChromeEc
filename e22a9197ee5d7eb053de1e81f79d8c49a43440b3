@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "a32b0216_f883edd8",
+        "filename": "board/auron/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-04-07T15:42:17Z",
+      "side": 1,
+      "message": "These messages in all the gpio.inc files should be replaced by a compile time assert in one of the files that processes the gpio.inc files.",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "e22a9197ee5d7eb053de1e81f79d8c49a43440b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c375563f_0e06ab4d",
         "filename": "include/chipset.h",
         "patchSetId": 3
@@ -18,6 +41,29 @@
         "startChar": 0,
         "endLine": 101,
         "endChar": 1
+      },
+      "revId": "e22a9197ee5d7eb053de1e81f79d8c49a43440b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "832a7e12_f7d45a75",
+        "filename": "include/gpio.wrap",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-04-07T15:42:17Z",
+      "side": 1,
+      "message": "In general I prefer to use the .wrap file as documentation for the macro, but to not actually define it here because these macros are defined differently depending on how the gpio.inc file is used.",
+      "range": {
+        "startLine": 30,
+        "startChar": 17,
+        "endLine": 30,
+        "endChar": 21
       },
       "revId": "e22a9197ee5d7eb053de1e81f79d8c49a43440b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
