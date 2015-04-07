@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a34222dc_94386c9e",
+        "filename": "board/twinkie/simpletrace.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-04-07T07:16:47Z",
+      "side": 1,
+      "message": "nit, RDO_POS(word)",
+      "range": {
+        "startLine": 88,
+        "startChar": 23,
+        "endLine": 88,
+        "endChar": 26
+      },
+      "revId": "f4ce1c0d58f4a42517df27f2f6d96d6d3752d4d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c34716eb_01bbb6d6",
+        "filename": "board/twinkie/simpletrace.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-04-07T07:16:47Z",
+      "side": 1,
+      "message": "nit, same as PD_DATA_SRC_CAP could move above",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 24
+      },
+      "revId": "f4ce1c0d58f4a42517df27f2f6d96d6d3752d4d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2320f22c_658091f8",
+        "filename": "board/twinkie/simpletrace.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-04-07T07:16:47Z",
+      "side": 1,
+      "message": "nit, enum pd_errors err?  Looks like it might be although pd_analyze_rx might also need some cleanup to ensure consistency.",
+      "range": {
+        "startLine": 153,
+        "startChar": 24,
+        "endLine": 153,
+        "endChar": 31
+      },
+      "revId": "f4ce1c0d58f4a42517df27f2f6d96d6d3752d4d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c34716eb_613b9a9b",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 1275,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-04-07T07:16:47Z",
+      "side": 1,
+      "message": "nit missing \u0027*\u0027 between description and params",
+      "revId": "f4ce1c0d58f4a42517df27f2f6d96d6d3752d4d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
