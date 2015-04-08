@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23e3924b_eacf76dc",
+        "filename": "board/glower/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-08T00:51:21Z",
+      "side": 1,
+      "message": "\u003e 80 cols, but it matches the style in this file. I should clean this up in a separate CL.",
+      "revId": "7e7e43e3fa1a6ad599d49293c24436c92da052cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
