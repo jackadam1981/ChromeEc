@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63110a09_16dada13",
+        "filename": "board/gandof/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1002584
+      },
+      "writtenOn": "2015-04-08T14:58:31Z",
+      "side": 1,
+      "message": "Gandof",
+      "range": {
+        "startLine": 5,
+        "startChar": 37,
+        "endLine": 5,
+        "endChar": 41
+      },
+      "revId": "8f71fcb9668323c6502dd44f0ebb6e657d9aedca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63110a09_76d7ceeb",
+        "filename": "board/gandof/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002584
+      },
+      "writtenOn": "2015-04-08T14:58:31Z",
+      "side": 1,
+      "message": "gandof_led_set_gpio\n\nsimilar for all other functions as well",
+      "range": {
+        "startLine": 41,
+        "startChar": 11,
+        "endLine": 41,
+        "endChar": 28
+      },
+      "revId": "8f71fcb9668323c6502dd44f0ebb6e657d9aedca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8316fefe_77622abf",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1002584
+      },
+      "writtenOn": "2015-04-08T14:58:31Z",
+      "side": 1,
+      "message": "Do not update for existing files.",
+      "range": {
+        "startLine": 3,
+        "startChar": 12,
+        "endLine": 3,
+        "endChar": 16
+      },
+      "revId": "8f71fcb9668323c6502dd44f0ebb6e657d9aedca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
