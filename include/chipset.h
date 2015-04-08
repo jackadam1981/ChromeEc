@@ -85,6 +85,11 @@ void power_interrupt(enum gpio_signal signal);
  * Allow other modules to compile if the chipset module is disabled.  This is
  * commonly done during early stages of board bringup.
  */
+#ifndef __CROS_EC_GPIO_SIGNAL_H
+enum gpio_signal {
+	NULL
+};
+#endif /* __CROS_EC_GPIO_SIGNAL_H */
 
 static inline int chipset_in_state(int state_mask)
 {
@@ -95,8 +100,7 @@ static inline void chipset_exit_hard_off(void) { }
 static inline void chipset_throttle_cpu(int throttle) { }
 static inline void chipset_force_shutdown(void) { }
 static inline void chipset_reset(int cold_reset) { }
-
-#define power_interrupt NULL
+static inline void power_interrupt(enum gpio_signal signal) { }
 
 #endif /* !HAS_TASK_CHIPSET */
 

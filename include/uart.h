@@ -224,8 +224,13 @@ void uart_exit_dsleep(void);
  */
 void uart_deepsleep_interrupt(enum gpio_signal signal);
 #else
-#define uart_deepsleep_interrupt NULL
-#endif
+#ifndef __CROS_EC_GPIO_SIGNAL_H
+enum gpio_signal {
+	NULL
+};
+#endif /* __CROS_EC_GPIO_SIGNAL_H */
+static inline void uart_deepsleep_interrupt(enum gpio_signal signal) { }
+#endif /* !CONFIG_LOW_POWER_IDLE */
 
 #ifdef CONFIG_UART_INPUT_FILTER
 /**

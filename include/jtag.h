@@ -23,8 +23,12 @@ void jtag_pre_init(void);
  */
 void jtag_interrupt(enum gpio_signal signal);
 #else
-#define jtag_interrupt NULL
-#endif
-
+#ifndef __CROS_EC_GPIO_SIGNAL_H
+enum gpio_signal {
+	NULL
+};
+#endif /* __CROS_EC_GPIO_SIGNAL_H */
+static inline void jtag_interrupt(enum gpio_signal signal) { }
+#endif /* !CONFIG_LOW_POWER_IDLE */
 
 #endif  /* __CROS_EC_JTAG_H */
