@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "a32b0216_23b129f8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-08T01:32:21Z",
+      "side": 1,
+      "message": "And a better title might be \"panic: Fix unaligned panic\". Give an overview of what your change does / fixes, saying that you \"added keyword volatile\" is too detailed and gives a reader no idea about the problem you fixed.",
+      "revId": "802252c2cf39536ce78516d23c3324b62086bc5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23e3924b_cd060ca2",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
