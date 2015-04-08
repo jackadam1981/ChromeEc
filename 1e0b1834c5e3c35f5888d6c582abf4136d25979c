@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3ec1a3e_a8aa9fcf",
+        "filename": "chip/mec1322/keyboard_raw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-08T16:44:10Z",
+      "side": 1,
+      "message": "After making the suggested config change, this config will always be defined, and the code here can be reduced to one line.",
+      "revId": "1e0b1834c5e3c35f5888d6c582abf4136d25979c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3ec1a3e_28a04fe5",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-08T16:44:10Z",
+      "side": 1,
+      "message": "change to \"...  allow some chips to use alternate functions on KSO pins.\" (also check spelling on \u0027function\u0027). Sorry for nit-pick.",
+      "revId": "1e0b1834c5e3c35f5888d6c582abf4136d25979c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63f82afb_4fbafd21",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-08T16:44:10Z",
+      "side": 1,
+      "message": "Suggest to change this slightly:\n\n- Define to 0 here by default\n- When a change is needed, undef + redefine in board",
+      "revId": "1e0b1834c5e3c35f5888d6c582abf4136d25979c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
