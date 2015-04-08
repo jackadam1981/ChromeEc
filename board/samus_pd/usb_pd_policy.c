@@ -151,6 +151,11 @@ int pd_check_data_swap(int port, int data_role)
 	return (data_role == PD_ROLE_UFP) ? 1 : 0;
 }
 
+int pd_check_vconn_swap(int port)
+{
+	return gpio_get_level(GPIO_PCH_SLP_S5_L);
+}
+
 void pd_execute_data_swap(int port, int data_role)
 {
 	/* Open USB switches when taking UFP role */
