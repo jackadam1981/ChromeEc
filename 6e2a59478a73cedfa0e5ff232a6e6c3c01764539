@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63f82afb_0a3bc37f",
+        "filename": "board/cyan/ec.tasklist",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-08T17:15:40Z",
+      "side": 1,
+      "message": "The task priorities here differ slightly from normal (for example, keyscan task is usually highest priority). Suggest to check other boards (see samus / rambi) for priority ordering.",
+      "revId": "6e2a59478a73cedfa0e5ff232a6e6c3c01764539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3ec1a3e_b3b050f5",
+        "filename": "board/cyan/ec.tasklist",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-08T17:15:40Z",
+      "side": 1,
+      "message": "Delete extra line.",
+      "revId": "6e2a59478a73cedfa0e5ff232a6e6c3c01764539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
