@@ -229,6 +229,10 @@ static struct pd_protocol {
 	uint8_t power_role;
 	/* current port data role (DFP or UFP) */
 	uint8_t data_role;
+#ifdef CONFIG_USBC_VCONN
+	/* current vconn role (ON or OFF) */
+	uint8_t vconn_role;
+#endif
 	/* port flags, see PD_FLAGS_* */
 	uint16_t flags;
 	/* 3-bit rolling message ID counter */
@@ -306,6 +310,9 @@ static const char * const pd_state_names[] = {
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	"SRC_SWAP_INIT", "SRC_SWAP_SNK_DISABLE", "SRC_SWAP_SRC_DISABLE",
 	"SRC_SWAP_STANDBY",
+#ifdef CONFIG_USBC_VCONN_SWAP
+	"VCONN_SWAP_SEND", "VCONN_SWAP_INIT", "VCONN_SWAP_READY",
+#endif /* CONFIG_USBC_VCONN_SWAP */
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 	"SOFT_RESET", "HARD_RESET_SEND", "HARD_RESET_EXECUTE", "BIST",
 };
@@ -393,6 +400,7 @@ static inline void set_state(int port, enum pd_states next_state)
 #endif
 #ifdef CONFIG_USBC_VCONN
 		pd_set_vconn(port, pd[port].polarity, 0);
+		pd[port].vconn_role = PD_ROLE_VCONN_OFF;
 #endif
 	}
 
@@ -1144,6 +1152,15 @@ static void handle_ctrl_request(int port, uint16_t head,
 			pd[port].msg_id = 0;
 			pd[port].power_role = PD_ROLE_SINK;
 			set_state(port, PD_STATE_SNK_DISCOVERY);
+#ifdef CONFIG_USBC_VCONN_SWAP
+		} else if (pd[port].task_state == PD_STATE_VCONN_SWAP_INIT) {
+			/*
+			 * If VCONN is on, then this PS_RDY tells us it's
+			 * ok to turn VCONN off
+			 */
+			if (pd[port].vconn_role == PD_ROLE_VCONN_ON)
+				set_state(port, PD_STATE_VCONN_SWAP_READY);
+#endif
 		} else if (pd[port].task_state == PD_STATE_SNK_DISCOVERY) {
 			/* Don't know what power source is ready. Reset. */
 			set_state(port, PD_STATE_HARD_RESET_SEND);
@@ -1182,9 +1199,13 @@ static void handle_ctrl_request(int port, uint16_t head,
 			/* switch data role */
 			pd_dr_swap(port);
 			set_state(port, READY_RETURN_STATE(port));
-		}
 #ifdef CONFIG_USB_PD_DUAL_ROLE
-		else if (pd[port].task_state == PD_STATE_SRC_SWAP_INIT) {
+#ifdef CONFIG_USBC_VCONN_SWAP
+		} else if (pd[port].task_state == PD_STATE_VCONN_SWAP_SEND) {
+			/* switch vconn */
+			set_state(port, PD_STATE_VCONN_SWAP_INIT);
+#endif
+		} else if (pd[port].task_state == PD_STATE_SRC_SWAP_INIT) {
 			/* explicit contract goes away for power swap */
 			pd[port].flags &= ~PD_FLAGS_EXPLICIT_CONTRACT;
 			set_state(port, PD_STATE_SRC_SWAP_SNK_DISABLE);
@@ -1196,8 +1217,8 @@ static void handle_ctrl_request(int port, uint16_t head,
 			/* explicit contract is now in place */
 			pd[port].flags |= PD_FLAGS_EXPLICIT_CONTRACT;
 			set_state(port, PD_STATE_SNK_TRANSITION);
-		}
 #endif
+		}
 		break;
 	case PD_CTRL_SOFT_RESET:
 		execute_soft_reset(port);
@@ -1239,7 +1260,20 @@ static void handle_ctrl_request(int port, uint16_t head,
 		}
 		break;
 	case PD_CTRL_VCONN_SWAP:
+#ifdef CONFIG_USBC_VCONN_SWAP
+		if (pd[port].task_state == PD_STATE_SRC_READY ||
+		    pd[port].task_state == PD_STATE_SNK_READY) {
+			if (pd_check_vconn_swap(port)) {
+				if (send_control(port, PD_CTRL_ACCEPT) > 0)
+					set_state(port,
+						  PD_STATE_VCONN_SWAP_INIT);
+			} else {
+				send_control(port, PD_CTRL_REJECT);
+			}
+		}
+#else
 		send_control(port, PD_CTRL_REJECT);
+#endif
 		break;
 	default:
 		CPRINTF("Unhandled ctrl message type %d\n", type);
@@ -1937,6 +1971,7 @@ void pd_task(void)
 
 #ifdef CONFIG_USBC_VCONN
 				pd_set_vconn(port, pd[port].polarity, 1);
+				pd[port].vconn_role = PD_ROLE_VCONN_ON;
 #endif
 
 				pd[port].flags |= PD_FLAGS_CHECK_PR_ROLE |
@@ -2604,6 +2639,76 @@ void pd_task(void)
 			set_state(port, PD_STATE_SRC_DISCOVERY);
 			timeout = 10*MSEC;
 			break;
+#ifdef CONFIG_USBC_VCONN_SWAP
+		case PD_STATE_VCONN_SWAP_SEND:
+			if (pd[port].last_state != pd[port].task_state) {
+				res = send_control(port, PD_CTRL_VCONN_SWAP);
+				if (res < 0) {
+					timeout = 10*MSEC;
+					/*
+					 * If failed to get goodCRC, send
+					 * soft reset, otherwise ignore
+					 * failure.
+					 */
+					set_state(port, res == -1 ?
+						   PD_STATE_SOFT_RESET :
+						   READY_RETURN_STATE(port));
+					break;
+				}
+				/* Wait for accept or reject */
+				set_state_timeout(port,
+						  get_time().val +
+						  PD_T_SENDER_RESPONSE,
+						  READY_RETURN_STATE(port));
+			}
+			break;
+		case PD_STATE_VCONN_SWAP_INIT:
+			if (pd[port].last_state != pd[port].task_state) {
+				if (pd[port].vconn_role == PD_ROLE_VCONN_OFF) {
+					/* Turn VCONN on and wait for it */
+					pd_set_vconn(port, pd[port].polarity,
+						     1);
+					set_state_timeout(port,
+					  get_time().val + PD_VCONN_SWAP_DELAY,
+					  PD_STATE_VCONN_SWAP_READY);
+				} else {
+					set_state_timeout(port,
+					  get_time().val + PD_T_VCONN_SOURCE_ON,
+					  READY_RETURN_STATE(port));
+				}
+			}
+			break;
+		case PD_STATE_VCONN_SWAP_READY:
+			if (pd[port].last_state != pd[port].task_state) {
+				if (pd[port].vconn_role == PD_ROLE_VCONN_OFF) {
+					/* VCONN is now on, send PS_RDY */
+					pd[port].vconn_role = PD_ROLE_VCONN_ON;
+					res = send_control(port,
+							   PD_CTRL_PS_RDY);
+					if (res == -1) {
+						timeout = 10*MSEC;
+						/*
+						 * If failed to get goodCRC,
+						 * send soft reset
+						 */
+						set_state(port,
+							  PD_STATE_SOFT_RESET);
+						break;
+					}
+					set_state(port,
+						  READY_RETURN_STATE(port));
+				} else {
+					/* Turn VCONN off and wait for it */
+					pd_set_vconn(port, pd[port].polarity,
+						     0);
+					pd[port].vconn_role = PD_ROLE_VCONN_OFF;
+					set_state_timeout(port,
+					  get_time().val + PD_VCONN_SWAP_DELAY,
+					  READY_RETURN_STATE(port));
+				}
+			}
+			break;
+#endif /* CONFIG_USBC_VCONN_SWAP */
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 		case PD_STATE_SOFT_RESET:
 			if (pd[port].last_state != pd[port].task_state) {
@@ -3085,12 +3190,18 @@ static int command_pd(int argc, char **argv)
 		if (argc < 4)
 			return EC_ERROR_PARAM_COUNT;
 
-		if (!strncasecmp(argv[3], "power", 5))
+		if (!strncasecmp(argv[3], "power", 5)) {
 			pd_request_power_swap(port);
-		else if (!strncasecmp(argv[3], "data", 4))
+		} else if (!strncasecmp(argv[3], "data", 4)) {
 			pd_request_data_swap(port);
-		else
+#ifdef CONFIG_USBC_VCONN_SWAP
+		} else if (!strncasecmp(argv[3], "vconn", 5)) {
+			set_state(port, PD_STATE_VCONN_SWAP_SEND);
+			task_wake(PORT_TO_TASK_ID(port));
+#endif
+		} else {
 			return EC_ERROR_PARAM3;
+		}
 	} else if (!strncasecmp(argv[2], "ping", 4)) {
 		int enable;
 
@@ -3133,11 +3244,16 @@ static int command_pd(int argc, char **argv)
 	} else
 #endif
 	if (!strncasecmp(argv[2], "state", 5)) {
-		ccprintf("Port C%d, %s - Role: %s-%s Polarity: CC%d "
+		ccprintf("Port C%d, %s - Role: %s-%s%s Polarity: CC%d "
 			 "Flags: 0x%04x, State: %s\n",
 			port, pd_comm_enabled ? "Ena" : "Dis",
 			pd[port].power_role == PD_ROLE_SOURCE ? "SRC" : "SNK",
 			pd[port].data_role == PD_ROLE_DFP ? "DFP" : "UFP",
+#ifdef CONFIG_USBC_VCONN
+			pd[port].vconn_role == PD_ROLE_VCONN_ON ? "-VC" : "",
+#else
+			"",
+#endif
 			pd[port].polarity + 1,
 			pd[port].flags,
 			pd_state_names[pd[port].task_state]);

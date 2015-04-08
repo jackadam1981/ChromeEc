@@ -47,6 +47,9 @@ const uint32_t pd_snk_pdo[] = {
 };
 const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
 
+/* flag for VCONN swap is allowed */
+static int vconn_swap_allowed;
+
 int pd_is_valid_input_voltage(int mv)
 {
 	/* Allow any voltage not in the boost bypass deadband */
@@ -150,6 +153,26 @@ int pd_check_data_swap(int port, int data_role)
 	/* Allow data swap if we are a UFP, otherwise don't allow */
 	return (data_role == PD_ROLE_UFP) ? 1 : 0;
 }
+
+int pd_check_vconn_swap(int port)
+{
+	return vconn_swap_allowed;
+}
+
+static void vconn_allowed(void)
+{
+	/* in S0 and S3, allow vconn swap since pp5000 rail is on */
+	vconn_swap_allowed = 1;
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, vconn_allowed, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, vconn_allowed, HOOK_PRIO_DEFAULT);
+
+static void vconn_disallowed(void)
+{
+	/* in S5, do not allow vconn swap since pp5000 rail is off */
+	vconn_swap_allowed = 0;
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, vconn_disallowed, HOOK_PRIO_DEFAULT);
 
 void pd_execute_data_swap(int port, int data_role)
 {
