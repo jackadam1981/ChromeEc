@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "63f82afb_0a890378",
+        "filename": "chip/mec1322/keyboard_raw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-08T17:20:00Z",
+      "side": 1,
+      "message": "Yup sounds good.",
+      "parentUuid": "0303eebf_3b2543d7",
+      "revId": "1e0b1834c5e3c35f5888d6c582abf4136d25979c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3ec1a3e_28a04fe5",
         "filename": "include/config.h",
         "patchSetId": 1
