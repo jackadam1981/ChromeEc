@@ -16,9 +16,8 @@
 
 /* Console output macros */
 #define CPRINTS(format, args...) cprints(CC_GPIO, format, ## args)
-
 /* For each EXTI bit, record which GPIO entry is using it */
-static const struct gpio_info *exti_events[16];
+static uint8_t exti_events[16];
 
 void gpio_pre_init(void)
 {
@@ -54,6 +53,20 @@ void gpio_pre_init(void)
 	}
 }
 
+void gpio_irq_handlers_null_check(void)
+{
+	int i = 0;
+
+	/*
+	 * Interrupt handlers must not be NULL. If you need to disable a handler
+	 * at compile time, specify an empty inline function, rather than a NULL
+	 * pointer.
+	 */
+	for (i = 0; i < GPIO_IH_COUNT; i++)
+		ASSERT(gpio_irq_handlers[i] != NULL);
+
+}
+
 test_mockable int gpio_get_level(enum gpio_signal signal)
 {
 	return !!(STM32_GPIO_IDR(gpio_list[signal].port) &
@@ -75,19 +88,23 @@ void gpio_set_level(enum gpio_signal signal, int value)
 int gpio_enable_interrupt(enum gpio_signal signal)
 {
 	const struct gpio_info *g = gpio_list + signal;
+	const struct gpio_info *g_old = gpio_list;
+
 	uint32_t bit, group, shift, bank;
 
 	/* Fail if not implemented or no interrupt handler */
-	if (!g->mask || !g->irq_handler)
+	if (!g->mask || signal >= GPIO_IH_COUNT)
 		return EC_ERROR_INVAL;
 
 	bit = 31 - __builtin_clz(g->mask);
 
-	if ((exti_events[bit]) && (exti_events[bit] != g)) {
+	g_old += exti_events[bit];
+
+	if ((exti_events[bit]) && (exti_events[bit] != signal)) {
 		CPRINTS("Overriding %s with %s on EXTI%d",
-			exti_events[bit]->name, g->name, bit);
+			g_old->name, g->name, bit);
 	}
-	exti_events[bit] = g;
+	exti_events[bit] = signal;
 
 	group = bit / 4;
 	shift = (bit % 4) * 4;
@@ -115,17 +132,17 @@ int gpio_enable_interrupt(enum gpio_signal signal)
 void gpio_interrupt(void)
 {
 	int bit;
-	const struct gpio_info *g;
 	/* process only GPIO EXTINTs (EXTINT0..15) not other EXTINTs */
 	uint32_t pending = STM32_EXTI_PR & 0xFFFF;
+	uint8_t signal;
 
 	STM32_EXTI_PR = pending;
 
 	while (pending) {
 		bit = get_next_bit(&pending);
-		g = exti_events[bit];
-		if (g && g->irq_handler)
-			g->irq_handler(g - gpio_list);
+		signal = exti_events[bit];
+		if (signal < GPIO_IH_COUNT)
+			gpio_irq_handlers[signal](signal);
 	}
 }
 #ifdef CHIP_FAMILY_STM32F0

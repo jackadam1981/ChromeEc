@@ -101,6 +101,11 @@ test_mockable int main(void)
 	/* Initialize UART.  Console output functions may now be used. */
 	uart_init();
 
+	/* Ensure that no GPIO interrupt handlers are NULL.  We will assert if
+	 * that is the case.
+	 */
+	gpio_irq_handlers_null_check();
+
 	if (system_jumped_to_this_image()) {
 		CPRINTS("UART initialized after sysjump");
 	} else {

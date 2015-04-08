@@ -156,6 +156,20 @@ void gpio_pre_init(void)
 	}
 }
 
+void gpio_irq_handlers_null_check(void)
+{
+	int i = 0;
+
+	/*
+	 * Interrupt handlers must not be NULL. If you need to disable a handler
+	 * at compile time, specify an empty inline function, rather than a NULL
+	 * pointer.
+	 */
+	for (i = 0; i < GPIO_IH_COUNT; i++)
+		ASSERT(gpio_irq_handlers[i] != NULL);
+
+}
+
 /*
  * NRF51 doesn't have an alternate function table.
  * Use the pin select registers in place of the function number.
@@ -193,7 +207,7 @@ int gpio_enable_interrupt(enum gpio_signal signal)
 	const struct gpio_info *g = gpio_list + signal;
 
 	/* Fail if not implemented or no interrupt handler */
-	if (!g->mask || !g->irq_handler)
+	if (!g->mask || signal >= GPIO_IH_COUNT)
 		return EC_ERROR_INVAL;
 
 	/* If it's not shared, use INT0-INT3, otherwise use PORT. */
@@ -253,7 +267,7 @@ int gpio_disable_interrupt(enum gpio_signal signal)
 	int i;
 
 	/* Fail if not implemented or no interrupt handler */
-	if (!g->mask || !g->irq_handler)
+	if (!g->mask || signal >= GPIO_IH_COUNT)
 		return EC_ERROR_INVAL;
 
 	/* If it's not shared, use INT0-INT3, otherwise use PORT. */
@@ -285,21 +299,24 @@ void gpio_interrupt(void)
 {
 	const struct gpio_info *g;
 	int i;
+	int signal;
 
 	for (i = 0; i < NRF51_GPIOTE_IN_COUNT; i++) {
 		if (NRF51_GPIOTE_IN(i)) {
 			NRF51_GPIOTE_IN(i) = 0;
 			g = gpio_ints[i];
-			if (g && g->irq_handler)
-				g->irq_handler(g - gpio_list);
+			signal = g - gpio_list;
+			if (g && signal < GPIO_IH_COUNT)
+				gpio_irq_handlers[signal](signal);
 		}
 	}
 
 	if (NRF51_GPIOTE_PORT) {
 		NRF51_GPIOTE_PORT = 0;
 		g = gpio_int_port;
-		if (g && g->irq_handler)
-			g->irq_handler(g - gpio_list);
+		signal = g - gpio_list;
+		if (g && signal < GPIO_IH_COUNT)
+			gpio_irq_handlers[signal](signal);
 	}
 }
 DECLARE_IRQ(NRF51_PERID_GPIOTE, gpio_interrupt, 1);

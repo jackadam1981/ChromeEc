@@ -330,7 +330,19 @@ void gpio_pre_init(void)
 	}
 }
 
+void gpio_irq_handlers_null_check(void)
+{
+	int i = 0;
 
+	/*
+	 * Interrupt handlers must not be NULL. If you need to disable a handler
+	 * at compile time, specify an empty inline function, rather than a NULL
+	 * pointer.
+	 */
+	for (i = 0; i < GPIO_IH_COUNT; i++)
+		ASSERT(gpio_irq_handlers[i] != NULL);
+
+}
 
 /**
  * Handle a GPIO interrupt by calling the pins corresponding handler if
@@ -344,9 +356,9 @@ static void gpio_interrupt(int port, uint8_t mask)
 	int i = 0;
 	const struct gpio_info *g = gpio_list;
 
-	for (i = 0; i < GPIO_COUNT; i++, g++) {
-		if (port == g->port && (mask & g->mask) && g->irq_handler) {
-			g->irq_handler(i);
+	for (i = 0; i < GPIO_IH_COUNT; i++, g++) {
+		if (port == g->port && (mask & g->mask))
+			gpio_irq_handlers[i](i);
 			return;
 		}
 	}

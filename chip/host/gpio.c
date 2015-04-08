@@ -20,6 +20,20 @@ test_mockable void gpio_pre_init(void)
 	/* Nothing */
 }
 
+void gpio_irq_handlers_null_check(void)
+{
+	int i = 0;
+
+	/*
+	 * Interrupt handlers must not be NULL. If you need to disable a handler
+	 * at compile time, specify an empty inline function, rather than a NULL
+	 * pointer.
+	 */
+	for (i = 0; i < GPIO_IH_COUNT; i++)
+		ASSERT(gpio_irq_handlers[i] != NULL);
+
+}
+
 test_mockable int gpio_get_level(enum gpio_signal signal)
 {
 	return gpio_values[signal];
@@ -43,14 +57,15 @@ test_mockable void gpio_set_level(enum gpio_signal signal, int value)
 	const struct gpio_info *g = gpio_list + signal;
 	const uint32_t flags = g->flags;
 	const int old_value = gpio_values[signal];
+	void (*ih)(enum gpio_signal signal) = gpio_irq_handlers[signal];
 
 	gpio_values[signal] = value;
 
-	if (g->irq_handler == NULL || !gpio_interrupt_enabled[signal])
+	if (signal >= GPIO_IH_COUNT || !gpio_interrupt_enabled[signal])
 		return;
 
 	if (gpio_interrupt_check(flags, old_value, value))
-		g->irq_handler(signal);
+		ih(signal);
 }
 
 test_mockable int gpio_enable_interrupt(enum gpio_signal signal)
