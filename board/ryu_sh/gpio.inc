@@ -7,6 +7,7 @@
 
 /* Interrupts */
 GPIO_INT(AP_IN_SUSPEND,        B, 15, GPIO_INT_BOTH,     power_signal_interrupt)
+GPIO_INT(BMI160_INT1_L,        B, 12, GPIO_INT_FALLING,  bmi160_interrupt)
 
 /* Outputs */
 GPIO(SH_EC_SIGNAL,         A,  7, GPIO_OUT_LOW)

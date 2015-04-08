@@ -7,11 +7,13 @@
 
 /* Interrupts */
 GPIO_INT(USER_BUTTON_L,       C, 13, GPIO_INT_BOTH, user_button_evt)
+GPIO_INT(BMI160_INT1_L,       C, 11, GPIO_INT_FALLING, bmi160_interrupt)
 
 /* User LED */
 GPIO(USER_LED,            A,  5, GPIO_OUT_LOW)
 
 GPIO(BMI160_INT2_L,       C, 10, GPIO_OUT_LOW)
+
 /*
  * I2C pins should be configured as inputs until I2C module is
  * initialized. This will avoid driving the lines unintentionally.
