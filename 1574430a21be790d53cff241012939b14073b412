@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "03868e96_89626183",
+        "filename": "Makefile.rules",
+        "patchSetId": 6
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1121520
+      },
+      "writtenOn": "2015-04-08T22:10:36Z",
+      "side": 1,
+      "message": "it is enforced by setting $(objs) as a prerequisite, so that is not a problem. \n\n-lfw.o-s will never be generated until .o-s from $(objs) are built, so parallel build is not broken.\nmake -j seem to work fine.\n\nDependency on ec_date.h and other generated files is preserved the same way, as all the lfw stuff depends on $(obj)",
+      "parentUuid": "03868e96_86bb2eb1",
+      "range": {
+        "startLine": 186,
+        "startChar": 30,
+        "endLine": 186,
+        "endChar": 48
+      },
+      "revId": "1574430a21be790d53cff241012939b14073b412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83c43ed3_cae707d7",
         "filename": "Makefile.rules",
         "patchSetId": 6
@@ -59,6 +83,30 @@
       "writtenOn": "2015-04-08T21:20:09Z",
       "side": 1,
       "message": "please move this to chip/mec1322/build.mk",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 26
+      },
+      "revId": "1574430a21be790d53cff241012939b14073b412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03868e96_092ad1f7",
+        "filename": "Makefile.rules",
+        "patchSetId": 6
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1121520
+      },
+      "writtenOn": "2015-04-08T22:10:36Z",
+      "side": 1,
+      "message": "this build.mk gets included twice, so recipes defined cause a warning. is that ok?\n\nBTW I was thinking of making LFW generation rules generic enough, so that npcx lfw can be converted to use them as well. is it a good idea, or should I leave it chip specific?",
+      "parentUuid": "83c43ed3_cae707d7",
       "range": {
         "startLine": 186,
         "startChar": 0,
