@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3ec1a3e_b30690a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-08T17:31:29Z",
+      "side": 1,
+      "message": "This CL doesn\u0027t touch board/strago, and therefore shouldn\u0027t have \"Strago\" in its title.",
+      "revId": "ef3f51c620112f4f359a19b05397a8c9075bc73c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3ec1a3e_539904f7",
+        "filename": "driver/sar_sx9310.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-08T17:31:29Z",
+      "side": 1,
+      "message": "Where is the sar_drv structure defined? Is some CL missing here?",
+      "revId": "ef3f51c620112f4f359a19b05397a8c9075bc73c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
