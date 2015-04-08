@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63f82afb_afe74129",
+        "filename": "util/ec_sign_rsa.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-08T15:38:16Z",
+      "side": 0,
+      "message": "those eighty lines of script are convenient and self-contained when doing firmware development.\nI don\u0027t really see the benefit of removing them.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "1f7961e69334ac0b34ba4c55d88ca4088060d72f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
