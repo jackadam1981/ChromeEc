@@ -70,6 +70,30 @@
       "revId": "1f7961e69334ac0b34ba4c55d88ca4088060d72f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83c43ed3_b307a24e",
+        "filename": "util/ec_sign_rsa.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-04-08T22:51:49Z",
+      "side": 0,
+      "message": "\"sudo emerge vboot_reference\" shouldn\u0027t require 16GB.\n\nYou can also install it outside the chroot with \n\ncd src/platform/vboot_reference\nsudo make install",
+      "parentUuid": "83c43ed3_786229bf",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "1f7961e69334ac0b34ba4c55d88ca4088060d72f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
