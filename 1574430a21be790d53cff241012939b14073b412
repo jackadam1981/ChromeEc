@@ -116,6 +116,30 @@
       "revId": "1574430a21be790d53cff241012939b14073b412",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "237f124e_6a03460f",
+        "filename": "Makefile.rules",
+        "patchSetId": 6
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-08T23:15:03Z",
+      "side": 1,
+      "message": "\u003e this build.mk gets included twice,\n\nI know\n\n\u003e so recipes defined cause a warning. is that ok?\n\nHave you actually tried for those rules or are you speculating based on other observations ?\n\n\u003e BTW I was thinking of making LFW generation rules generic enough, \n\u003e so that npcx lfw can be converted to use them as well. \n\u003e is it a good idea, or should I leave it chip specific?\n\nmight be a good idea if the implementation is nice",
+      "parentUuid": "03868e96_092ad1f7",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 26
+      },
+      "revId": "1574430a21be790d53cff241012939b14073b412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
