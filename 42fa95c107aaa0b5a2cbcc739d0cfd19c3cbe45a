@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3eea234_570c54ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-08T17:38:08Z",
+      "side": 1,
+      "message": "This testing isn\u0027t sufficient. If you have boards with the gyro working, you should confirm some basic functionality. If not, you should at least verify compilation of the code you just wrote (ex. add the config to some board for testing).",
+      "revId": "42fa95c107aaa0b5a2cbcc739d0cfd19c3cbe45a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3eea234_3790a81b",
+        "filename": "driver/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-08T17:38:08Z",
+      "side": 1,
+      "message": "You\u0027re adding a new config here, so undef it by default in config.h.",
+      "revId": "42fa95c107aaa0b5a2cbcc739d0cfd19c3cbe45a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
