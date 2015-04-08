@@ -350,9 +350,9 @@ void gpio_execute_isr(uint8_t port, uint8_t mask)
 	int i;
 	const struct gpio_info *g = gpio_list;
 	/* Find GPIOs and execute interrupt service routine */
-	for (i = 0; i < GPIO_COUNT; i++, g++) {
-		if (port == g->port && mask == g->mask && g->irq_handler) {
-			g->irq_handler(i);
+	for (i = 0; i < GPIO_IH_COUNT; i++, g++) {
+		if (port == g->port && mask == g->mask) {
+			gpio_irq_handlers[i](i);
 			return;
 		}
 	}
@@ -589,6 +589,20 @@ void gpio_pre_init(void)
 	NPCX_BBRAM(BBRM_DATA_INDEX_PBUTTON) = map->wui_table;
 	NPCX_BBRAM(BBRM_DATA_INDEX_PBUTTON + 1) = map->wui_group;
 	NPCX_BBRAM(BBRM_DATA_INDEX_PBUTTON + 2) = map->wui_mask;
+}
+
+void gpio_irq_handlers_null_check(void)
+{
+	int i = 0;
+
+	/*
+	 * Interrupt handlers must not be NULL. If you need to disable a handler
+	 * at compile time, specify an empty inline function, rather than a NULL
+	 * pointer.
+	 */
+	for (i = 0; i < GPIO_IH_COUNT; i++)
+		ASSERT(gpio_irq_handlers[i] != NULL);
+
 }
 
 /* List of GPIO IRQs to enable. Don't automatically enable interrupts for

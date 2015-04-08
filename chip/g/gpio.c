@@ -167,6 +167,19 @@ static void gpio_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, gpio_init, HOOK_PRIO_DEFAULT);
 
+void gpio_irq_handlers_null_check(void)
+{
+	int i = 0;
+
+	/*
+	 * Interrupt handlers must not be NULL. If you need to disable a handler
+	 * at compile time, specify an empty inline function, rather than a NULL
+	 * pointer.
+	 */
+	for (i = 0; i < GPIO_IH_COUNT; i++)
+		ASSERT(gpio_irq_handlers[i] != NULL);
+
+}
 /*****************************************************************************/
 /* Interrupt handler stuff */
 
@@ -174,9 +187,9 @@ static void gpio_invoke_handler(uint32_t port, uint32_t mask)
 {
 	const struct gpio_info *g = gpio_list;
 	int i;
-	for (i = 0; i < GPIO_COUNT; i++, g++)
-		if (g->irq_handler && port == g->port && (mask & g->mask))
-			g->irq_handler(i);
+	for (i = 0; i < GPIO_IH_COUNT; i++, g++)
+		if (port == g->port && (mask & g->mask))
+			gpio_irq_handlers[i](i);
 }
 
 static void gpio_interrupt(int port)
