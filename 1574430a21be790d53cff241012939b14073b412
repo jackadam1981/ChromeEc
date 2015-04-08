@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83c43ed3_c729c004",
+        "filename": "Makefile",
+        "patchSetId": 6
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-08T21:20:09Z",
+      "side": 1,
+      "message": "please put \"dirs-y+\u003dchip/$(CHIP)/lfw\" in chip/mec1322/build.mk rather than putting chip-specific stuff here.",
+      "range": {
+        "startLine": 141,
+        "startChar": 44,
+        "endLine": 141,
+        "endChar": 47
+      },
+      "revId": "1574430a21be790d53cff241012939b14073b412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03868e96_86bb2eb1",
+        "filename": "Makefile.rules",
+        "patchSetId": 6
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-08T21:20:09Z",
+      "side": 1,
+      "message": "I\u0027m not sure how the \"after\" is enforced in a parallel build.\nBy the way, it seems that dependency for ec_date.h and other generated files is broken when parallel building lfw",
+      "range": {
+        "startLine": 186,
+        "startChar": 30,
+        "endLine": 186,
+        "endChar": 48
+      },
+      "revId": "1574430a21be790d53cff241012939b14073b412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83c43ed3_cae707d7",
+        "filename": "Makefile.rules",
+        "patchSetId": 6
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-08T21:20:09Z",
+      "side": 1,
+      "message": "please move this to chip/mec1322/build.mk",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 26
+      },
+      "revId": "1574430a21be790d53cff241012939b14073b412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
