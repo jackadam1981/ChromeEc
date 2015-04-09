@@ -62,6 +62,30 @@
       "revId": "68fa7b79cf31674c8e82dad433665caa6294b87c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "237f124e_f873a717",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-09T17:28:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3d33a94_0acbdb9e",
+      "range": {
+        "startLine": 486,
+        "startChar": 24,
+        "endLine": 486,
+        "endChar": 32
+      },
+      "revId": "68fa7b79cf31674c8e82dad433665caa6294b87c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
