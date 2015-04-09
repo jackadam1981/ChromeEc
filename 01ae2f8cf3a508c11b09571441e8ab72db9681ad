@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23dab2a9_a973bd18",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1371,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-09T01:29:40Z",
+      "side": 1,
+      "message": "is zinger adding space for all these messages that never get printed? if so, removing these on zinger could make up for whatever else this added.",
+      "range": {
+        "startLine": 1371,
+        "startChar": 8,
+        "endLine": 1371,
+        "endChar": 19
+      },
+      "revId": "01ae2f8cf3a508c11b09571441e8ab72db9681ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
