@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "636d8ab3_6220c81d",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-09T22:51:52Z",
+      "side": 1,
+      "message": "Should we keep the old check #ifndef CONFIG_BATTERY_FULL_STATUS?\n\n\n#else\n\t    batt_new.desired_voltage \u0026\u0026\n#ifndef CONFIG_BATTERY_FULL_STATUS\n\t    batt_new.state_of_charge \u003c BATTERY_LEVEL_FULL\n#endif\n\t    batt_new.desired_current)\n#endif  /* CONFIG_BATTERY_REQUESTS_NIL_WHEN_DEAD */",
+      "revId": "903138f8d5cf4a5b6b247b8db3008cc4a52a1480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
