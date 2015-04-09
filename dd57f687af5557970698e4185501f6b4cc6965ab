@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "83c43ed3_1a9fa2df",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-09T17:27:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3cab6dd_6f6261bf",
+      "range": {
+        "startLine": 223,
+        "startChar": 25,
+        "endLine": 223,
+        "endChar": 26
+      },
+      "revId": "dd57f687af5557970698e4185501f6b4cc6965ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3cab6dd_af01f98c",
         "filename": "chip/mec1322/lpc.c",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2015-04-09T03:03:39Z",
       "side": 1,
       "message": "Since Port80 is no longer supported, at least not via EMI, there is no need to enable interrupt for EMI, unless you want to have IO 0x800 as the POST Code port.",
+      "revId": "dd57f687af5557970698e4185501f6b4cc6965ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83c43ed3_baaacecf",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-09T17:27:01Z",
+      "side": 1,
+      "message": "I plan to change the debug port with a coreboot config, so I\u0027d like to leave this code in.",
+      "parentUuid": "c3cab6dd_af01f98c",
       "revId": "dd57f687af5557970698e4185501f6b4cc6965ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -89,6 +131,24 @@
       "side": 1,
       "message": "Thanks for the confirmation.",
       "parentUuid": "e3d33a94_a7a48a2f",
+      "revId": "dd57f687af5557970698e4185501f6b4cc6965ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83c43ed3_daf86afe",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-09T17:27:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3cab6dd_cf10b5d8",
       "revId": "dd57f687af5557970698e4185501f6b4cc6965ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
