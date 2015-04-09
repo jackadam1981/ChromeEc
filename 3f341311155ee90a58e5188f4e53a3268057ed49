@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83c43ed3_9f10a454",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-09T14:49:15Z",
+      "side": 1,
+      "message": "the former comment was interesting you can put it back\n/* in S5, do not allow vconn swap since pp5000 rail is off */",
+      "range": {
+        "startLine": 156,
+        "startChar": 1,
+        "endLine": 156,
+        "endChar": 42
+      },
+      "revId": "3f341311155ee90a58e5188f4e53a3268057ed49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
