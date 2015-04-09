@@ -2,6 +2,144 @@
   "comments": [
     {
       "key": {
+        "uuid": "03868e96_55b70638",
+        "filename": "board/auron/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-09T01:49:15Z",
+      "side": 1,
+      "message": "We don\u0027t have any other files with a date range for the copyright. Anyone know what is standard here? Should we update all of them to 2015 or leave them all at the year the files were first added?",
+      "range": {
+        "startLine": 3,
+        "startChar": 17,
+        "endLine": 3,
+        "endChar": 26
+      },
+      "revId": "6b390fa6bb42363fd64f2163ba63ec2ceb2f1e1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "237f124e_a0a72fb3",
+        "filename": "board/dingdong/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-09T01:49:15Z",
+      "side": 1,
+      "message": "since we are touching every gpio file, we might as well make them look uniform and pretty. i suggest a whitespace line between the last GPIO_INT() and the first GPIO() because the columns generally don\u0027t line up. most boards already have this.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 43
+      },
+      "revId": "6b390fa6bb42363fd64f2163ba63ec2ceb2f1e1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "237f124e_80294b82",
+        "filename": "board/falco/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-09T01:49:15Z",
+      "side": 1,
+      "message": "nit: not sure why tabs were put on some lines instead of whitespace. I suggest either leaving it as it was, or making this file all uniform by replacing the few lines that have tabs with spaces.",
+      "range": {
+        "startLine": 16,
+        "startChar": 46,
+        "endLine": 16,
+        "endChar": 48
+      },
+      "revId": "6b390fa6bb42363fd64f2163ba63ec2ceb2f1e1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "237f124e_e09a1747",
+        "filename": "board/glower/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-09T01:49:15Z",
+      "side": 1,
+      "message": "oh no, we lost are pretty alignment on the comments.",
+      "range": {
+        "startLine": 37,
+        "startChar": 53,
+        "endLine": 37,
+        "endChar": 93
+      },
+      "revId": "6b390fa6bb42363fd64f2163ba63ec2ceb2f1e1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "237f124e_20407ff3",
+        "filename": "board/strago/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-09T01:49:15Z",
+      "side": 1,
+      "message": "these comments look terrible, can we re-align them?",
+      "range": {
+        "startLine": 16,
+        "startChar": 75,
+        "endLine": 16,
+        "endChar": 110
+      },
+      "revId": "6b390fa6bb42363fd64f2163ba63ec2ceb2f1e1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03868e96_87108554",
+        "filename": "chip/stm32/gpio.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-09T01:49:15Z",
+      "side": 1,
+      "message": "shouldn\u0027t need to initialize to 0, since it\u0027s static it should be automatically cleared on init.",
+      "range": {
+        "startLine": 20,
+        "startChar": 30,
+        "endLine": 20,
+        "endChar": 38
+      },
+      "revId": "6b390fa6bb42363fd64f2163ba63ec2ceb2f1e1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03868e96_d5c076d0",
         "filename": "common/main.c",
         "patchSetId": 6
@@ -13,6 +151,23 @@
       "writtenOn": "2015-04-09T00:05:40Z",
       "side": 1,
       "message": "I moved the runtime asserts into a separate function and have it being called after UART init since we wouldn\u0027t see them otherwise.",
+      "revId": "6b390fa6bb42363fd64f2163ba63ec2ceb2f1e1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3cab6dd_4f8045f8",
+        "filename": "include/gpio_list.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-09T01:49:15Z",
+      "side": 1,
+      "message": "haven\u0027t tried it, but can you add a build time NULL check on the functions here like this?\n\n#define GPIO_INT(name, port, pin, flags, signal)\t\\\n\tBUILD_ASSERT(signal !\u003d NULL);\n#include \"gpio.wrap\"",
       "revId": "6b390fa6bb42363fd64f2163ba63ec2ceb2f1e1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
