@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "234d525a_baf675a6",
+        "filename": "board/hoho/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-09T21:08:01Z",
+      "side": 1,
+      "message": "missing empty line dividing GPIO_INT() from GPIO()",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 52
+      },
+      "revId": "b21c6ae05688da4d4c53ddc6f2e8f9abdec2f4e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
