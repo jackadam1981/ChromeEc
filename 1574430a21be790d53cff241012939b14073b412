@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2368f29d_d9d993ab",
+        "filename": "Makefile",
+        "patchSetId": 6
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1121520
+      },
+      "writtenOn": "2015-04-09T20:18:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83c43ed3_c729c004",
+      "range": {
+        "startLine": 141,
+        "startChar": 44,
+        "endLine": 141,
+        "endChar": 47
+      },
+      "revId": "1574430a21be790d53cff241012939b14073b412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03868e96_86bb2eb1",
         "filename": "Makefile.rules",
         "patchSetId": 6
@@ -178,6 +202,30 @@
       "writtenOn": "2015-04-09T03:42:28Z",
       "side": 1,
       "message": "It seems like we ought to be able to fix this via the include path, rather than requiring this workaround in a source file.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 6
+      },
+      "revId": "1574430a21be790d53cff241012939b14073b412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2368f29d_39136fe2",
+        "filename": "include/gpio.wrap",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1121520
+      },
+      "writtenOn": "2015-04-09T20:18:30Z",
+      "side": 1,
+      "message": "it is possible, but may not be pretty in makefiles. But it also makes this patchset self-contained with no dependency on board/\n\nAll we need to do is to have -Iboard/xxx/lfw first, so that it gets picked instead of main board\u0027s. \nSadly it is pretty hard to prepend to a variable, due to recursive expansion, so foo \u003d bar $(foo) does not work. \n\nI think a proper way to deal with that is to add a new variable like CFLAGS_PREP so that board/chips may set it. Then, in Makefile.toolchain it can be added to CFLAGS expansion.\n\nAlternatives I see are to CC+\u003dfoo in target specific rule, or use $(eval) creatively. I picked CC option and it seem to work fine. Please let me know what is best.",
+      "parentUuid": "e3d33a94_07c116ae",
       "range": {
         "startLine": 58,
         "startChar": 0,
