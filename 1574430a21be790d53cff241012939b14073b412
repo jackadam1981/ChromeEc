@@ -140,6 +140,30 @@
       "revId": "1574430a21be790d53cff241012939b14073b412",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03868e96_4a3f6438",
+        "filename": "Makefile.rules",
+        "patchSetId": 6
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1121520
+      },
+      "writtenOn": "2015-04-09T01:55:05Z",
+      "side": 1,
+      "message": "\u003e Have you actually tried for those rules or are you speculating based on other observations ?\n\nYou are right: if exactly these rules are put into chip/build.mk there is no warning. However, if non-pattern rule gets redefined make complains. Since we only deal with pattern rules in this case I confess I did not try it.\n\nNow then, if I move the rules into chip\u0027s build.mk I am getting the problem with dependencies you\u0027ve indicated where parallel building breaks around ec_date.h\n\nI took a look into it. Apparently there is a bug in GNU make. The problem is that if non-pattern rule is redefined, make does not pick new rule and quietly ignores it. That is why parallel build gets broken if the recipe is moved to chip. I\u0027ve submitted a bug against gnu make: https://savannah.gnu.org/bugs/?44783\n\nSo we can workaround this bug by adding explicit dependency on either ec_date.h or version.o, something like this:\n\n$(out)/%-lfw.o: %.c | $(out)/common/version.o\n\nThis builds properly but of course somewhat less maintainable. Since we are working around make bugs it does look ok to me. How does it sound?",
+      "parentUuid": "237f124e_6a03460f",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 26
+      },
+      "revId": "1574430a21be790d53cff241012939b14073b412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
