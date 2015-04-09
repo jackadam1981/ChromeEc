@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03868e96_d5c076d0",
+        "filename": "common/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-04-09T00:05:40Z",
+      "side": 1,
+      "message": "I moved the runtime asserts into a separate function and have it being called after UART init since we wouldn\u0027t see them otherwise.",
+      "revId": "6b390fa6bb42363fd64f2163ba63ec2ceb2f1e1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
