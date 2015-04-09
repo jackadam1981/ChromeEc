@@ -331,6 +331,24 @@
     },
     {
       "key": {
+        "uuid": "e356daec_32654e46",
+        "filename": "common/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-04-09T20:53:30Z",
+      "side": 1,
+      "message": "I\u0027d been trying to come up with a compile time assert to no avail, so I\u0027d be interested in seeing that solution.\n\nI\u0027m okay with removing this as I prefer it being checked at compile time.",
+      "parentUuid": "e356daec_92cfdadd",
+      "revId": "6b390fa6bb42363fd64f2163ba63ec2ceb2f1e1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3cab6dd_4f8045f8",
         "filename": "include/gpio_list.h",
         "patchSetId": 6
