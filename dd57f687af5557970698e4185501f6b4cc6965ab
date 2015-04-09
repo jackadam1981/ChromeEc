@@ -39,6 +39,24 @@
       "revId": "dd57f687af5557970698e4185501f6b4cc6965ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3d33a94_a7a48a2f",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-09T02:53:26Z",
+      "side": 1,
+      "message": "First 256 bytes are RW, for host commands\nSecond 256 bytes are RO, for memory-mapped data",
+      "parentUuid": "23dab2a9_ec2ae3a7",
+      "revId": "dd57f687af5557970698e4185501f6b4cc6965ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
