@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "c3cab6dd_af01f98c",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-09T03:03:39Z",
+      "side": 1,
+      "message": "Since Port80 is no longer supported, at least not via EMI, there is no need to enable interrupt for EMI, unless you want to have IO 0x800 as the POST Code port.",
+      "revId": "dd57f687af5557970698e4185501f6b4cc6965ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23dab2a9_ec2ae3a7",
         "filename": "chip/mec1322/lpc.c",
         "patchSetId": 1
@@ -54,6 +71,41 @@
       "side": 1,
       "message": "First 256 bytes are RW, for host commands\nSecond 256 bytes are RO, for memory-mapped data",
       "parentUuid": "23dab2a9_ec2ae3a7",
+      "revId": "dd57f687af5557970698e4185501f6b4cc6965ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3cab6dd_cf10b5d8",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-09T03:03:39Z",
+      "side": 1,
+      "message": "Thanks for the confirmation.",
+      "parentUuid": "e3d33a94_a7a48a2f",
+      "revId": "dd57f687af5557970698e4185501f6b4cc6965ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23dab2a9_6c7c33b2",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-09T03:03:39Z",
+      "side": 1,
+      "message": "This is no longer needed as well since Port80 is not supported unless IO 0x800 is used for POST Code.",
       "revId": "dd57f687af5557970698e4185501f6b4cc6965ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
