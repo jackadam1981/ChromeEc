@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23dab2a9_2cdebbe0",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-09T05:38:25Z",
+      "side": 1,
+      "message": "Not directly related to this change, but V2 protocol is not supported, see the rest of comment below.",
+      "revId": "68fa7b79cf31674c8e82dad433665caa6294b87c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3d33a94_6ad89772",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-09T05:38:25Z",
+      "side": 1,
+      "message": "response function pointer is not initialized if it is a V2 protocol, so it will cause EC to crash since a call will be make to a function of an unknown memory location.\n\nRefer to this for adding V2 protocol support:\nhttps://chromium-review.googlesource.com/#/c/258360\n\nOr the code needs to be fixed if V2 protocol is not supported.",
+      "range": {
+        "startLine": 345,
+        "startChar": 13,
+        "endLine": 345,
+        "endChar": 21
+      },
+      "revId": "68fa7b79cf31674c8e82dad433665caa6294b87c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3d33a94_0acbdb9e",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-09T05:38:25Z",
+      "side": 1,
+      "message": "The code for MEC1322 does not have the support for V2.\n\nIf host initiated a V2 protocol host command, EC will crash and reset.",
+      "range": {
+        "startLine": 486,
+        "startChar": 24,
+        "endLine": 486,
+        "endChar": 32
+      },
+      "revId": "68fa7b79cf31674c8e82dad433665caa6294b87c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
