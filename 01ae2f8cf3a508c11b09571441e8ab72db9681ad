@@ -22,6 +22,30 @@
       "revId": "01ae2f8cf3a508c11b09571441e8ab72db9681ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "237f124e_e4abfe84",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1371,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-09T18:48:40Z",
+      "side": 1,
+      "message": "no they are compiled out.\nI have just re-verified but I did scrub every string in the binary before FSI.",
+      "parentUuid": "23dab2a9_a973bd18",
+      "range": {
+        "startLine": 1371,
+        "startChar": 8,
+        "endLine": 1371,
+        "endChar": 19
+      },
+      "revId": "01ae2f8cf3a508c11b09571441e8ab72db9681ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
