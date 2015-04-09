@@ -313,6 +313,24 @@
     },
     {
       "key": {
+        "uuid": "e356daec_92cfdadd",
+        "filename": "common/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-04-09T20:50:52Z",
+      "side": 1,
+      "message": "I agree. I\u0027m almost done with a compile-time-check proof-of-concept that uses the linker to do the test. \n\nLet\u0027s keep that as a separate CL.",
+      "parentUuid": "234d525a_7703483d",
+      "revId": "6b390fa6bb42363fd64f2163ba63ec2ceb2f1e1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3cab6dd_4f8045f8",
         "filename": "include/gpio_list.h",
         "patchSetId": 6
