@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "237f124e_e0721764",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-09T00:15:56Z",
+      "side": 1,
+      "message": "we have other combinations of this, e.g.\nset_state(port, pd[port].power_role \u003d\u003d PD_ROLE_SINK ? PD_STATE_SNK_DISCOVERY : PD_STATE_SRC_DISCOVERY);\nor\nset_state(port, pd[port].power_role \u003d\u003d PD_ROLE_SINK ?\n\t\t\tPD_STATE_SNK_DISCONNECTED : PD_STATE_SRC_DISCONNECT);\n\nmaybe we should create a generic macro like \n#ifdef CONFIG_USB_PD_DUAL_ROLE\n#define DUAL_ROLE_IF_ELSE(port, sink_clause, src_clause) \\\n    (pd[port].power_role \u003d\u003d PD_ROLE_SINK ? (sink_clause) : (src_clause)))\n#else\n#define DUAL_ROLE_IF_ELSE(sink_clause, src_clause) (src_clause)\n#endif\n\nand use it directly or define\n#define READY_RETURN_STATE(port) DUAL_ROLE_IF_ELSE(PD_STATE_SNK_READY, PD_STATE_SRC_READY)",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 46
+      },
+      "revId": "fc954fe416b3bf879f632dad362b96de70512e31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
