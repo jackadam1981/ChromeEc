@@ -295,6 +295,24 @@
     },
     {
       "key": {
+        "uuid": "234d525a_7703483d",
+        "filename": "common/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-09T20:41:16Z",
+      "side": 1,
+      "message": "This runtime check doesn\u0027t seem that valuable. We would either get an assert reboot or we would get a reboot when we get the first interrupt pointing to NULL. Either way it should reboot quickly and the developer will realize his mistake.\n\nIt\u0027d be great to have a build time check, but I think we can do without any check for a first pass.\n\nThoughts?",
+      "parentUuid": "c3cab6dd_af2a99f8",
+      "revId": "6b390fa6bb42363fd64f2163ba63ec2ceb2f1e1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3cab6dd_4f8045f8",
         "filename": "include/gpio_list.h",
         "patchSetId": 6
