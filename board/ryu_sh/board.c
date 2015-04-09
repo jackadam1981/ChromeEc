@@ -6,7 +6,8 @@
 
 #include "common.h"
 #include "console.h"
-#include "driver/accelgyro_lsm6ds0.h"
+#include "driver/accelgyro_bmi160.h"
+#include "ec_version.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
@@ -37,52 +38,42 @@ const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 /* Sensor mutex */
 static struct mutex g_mutex;
 
-/* lsm6ds0 local sensor data (per-sensor) */
-struct lsm6ds0_data g_lsm6ds0_data[2];
-
 struct motion_sensor_t motion_sensors[] = {
 
 	/*
-	 * Note: lsm6ds0: supports accelerometer and gyro sensor
-	 * Requirement: accelerometer sensor must init before gyro sensor
+	 * Note: bmi160: supports accelerometer and gyro sensor
+	 * Requriement: accelerometer sensor must init before gyro sensor
 	 * DO NOT change the order of the following table.
 	 */
 	{.name = "Accel",
 	 .active_mask = SENSOR_ACTIVE_S0_S3,
-	 .chip = MOTIONSENSE_CHIP_LSM6DS0,
+	 .chip = MOTIONSENSE_CHIP_BMI160,
 	 .type = MOTIONSENSE_TYPE_ACCEL,
 	 .location = MOTIONSENSE_LOC_LID,
-	 .drv = &lsm6ds0_drv,
+	 .drv = &bmi160_drv,
 	 .mutex = &g_mutex,
-	 .drv_data = &g_lsm6ds0_data[0],
-	 .i2c_addr = LSM6DS0_ADDR1,
+	 .drv_data = NULL,
+	 .i2c_addr = BMI160_ADDR0,
 	 .rot_standard_ref = NULL,
-	 .default_odr = 119000,
+	 .default_odr = 100000,
 	 .default_range = 2
 	},
 
 	{.name = "Gyro",
 	 .active_mask = SENSOR_ACTIVE_S0_S3,
-	 .chip = MOTIONSENSE_CHIP_LSM6DS0,
+	 .chip = MOTIONSENSE_CHIP_BMI160,
 	 .type = MOTIONSENSE_TYPE_GYRO,
 	 .location = MOTIONSENSE_LOC_LID,
-	 .drv = &lsm6ds0_drv,
+	 .drv = &bmi160_drv,
 	 .mutex = &g_mutex,
-	 .drv_data = &g_lsm6ds0_data[1],
-	 .i2c_addr = LSM6DS0_ADDR1,
+	 .drv_data = NULL,
+	 .i2c_addr = BMI160_ADDR0,
 	 .rot_standard_ref = NULL,
-	 .default_odr = 119000,
+	 .default_odr = 100000,
 	 .default_range = 2000
 	},
-
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
-
-/*
- * Note: If a new sensor driver is added, make sure to update the following
- * assert.
- */
-BUILD_ASSERT(ARRAY_SIZE(motion_sensors) == ARRAY_SIZE(g_lsm6ds0_data));
 
 #ifdef CONFIG_DMA_HELP
 #include "dma.h"
