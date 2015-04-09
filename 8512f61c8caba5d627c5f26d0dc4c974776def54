@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3cab6dd_6fcee1dd",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-09T03:17:32Z",
+      "side": 1,
+      "message": "STATE is very confusing.\n\nFrom the code, if this is defined, we use battery *status* to determine full.  If it isn\u0027t we use battery *state* of charge.\n\nI think it needs a more descriptive name and comment.\n\n/*\n * If defined, determine battery-full using the status bit\n * from the battery instead of state-of-charge above threshold.\n */\n#define CONFIG_BATTERY_FULL_STATUS",
+      "range": {
+        "startLine": 130,
+        "startChar": 7,
+        "endLine": 130,
+        "endChar": 27
+      },
+      "revId": "8512f61c8caba5d627c5f26d0dc4c974776def54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
