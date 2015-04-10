@@ -31,7 +31,13 @@
  * Put pstate after RO to give RW more space and make RO write protect region
  * contiguous.
  */
+#ifdef BOARD_SAMUS_PD
+/* Undefine PSTATE on samus_pd */
+#define CONFIG_FW_PSTATE_SIZE   0
+#undef  CONFIG_FLASH_PSTATE
+#else
 #define CONFIG_FW_PSTATE_SIZE   CONFIG_FLASH_BANK_SIZE
+#endif
 #define CONFIG_FW_PSTATE_OFF    (CONFIG_FW_RO_OFF + CONFIG_FW_RO_SIZE)
 
 /* Number of IRQ vectors on the NVIC */

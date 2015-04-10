@@ -347,7 +347,11 @@ int flash_physical_protect_at_boot(enum flash_wp_range range)
 	     block++) {
 		int byte_off = STM32_OPTB_WRP_OFF(block/8) / 2 - 4;
 
+#ifdef CONFIG_FLASH_PSTATE
 		if (block >= RO_BANK_OFFSET + RO_BANK_COUNT + PSTATE_BANK_COUNT)
+#else
+		if (block >= RO_BANK_OFFSET + RO_BANK_COUNT)
+#endif
 			cur_range = FLASH_WP_ALL;
 		else
 			cur_range = FLASH_WP_RO;
@@ -386,7 +390,11 @@ static int registers_need_reset(void)
 	int ro_at_boot = (flags & EC_FLASH_PROTECT_RO_AT_BOOT) ? 1 : 0;
 	int ro_wp_region_start = RO_BANK_OFFSET;
 	int ro_wp_region_end =
+#ifdef CONFIG_FLASH_PSTATE
 		RO_BANK_OFFSET + RO_BANK_COUNT + PSTATE_BANK_COUNT;
+#else
+		RO_BANK_OFFSET + RO_BANK_COUNT;
+#endif
 
 	for (i = ro_wp_region_start; i < ro_wp_region_end; i++)
 		if (flash_physical_get_protect_at_boot(i) != ro_at_boot)
