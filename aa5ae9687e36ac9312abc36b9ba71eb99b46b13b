@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "e356daec_c7bb5957",
+        "filename": "include/chipset.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-04-10T17:26:42Z",
+      "side": 1,
+      "message": "I\u0027m wondering if it would be a good idea to put this in every header file that would take a gpio_signal, but we inline out based on task support.\n\nIt wouldn\u0027t hurt, right?",
+      "revId": "aa5ae9687e36ac9312abc36b9ba71eb99b46b13b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "636d8ab3_26e89ba6",
         "filename": "include/jtag.h",
         "patchSetId": 11
@@ -13,6 +30,30 @@
       "writtenOn": "2015-04-10T17:07:32Z",
       "side": 1,
       "message": "I think we should just include gpio.h in these headers.  We do in keyboard_raw.h and switch.h.",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 7
+      },
+      "revId": "aa5ae9687e36ac9312abc36b9ba71eb99b46b13b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "636d8ab3_e6a94306",
+        "filename": "include/jtag.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-04-10T17:26:42Z",
+      "side": 1,
+      "message": "It looks like gpio.h doesn\u0027t actually include the enum definition however. (Still get failures when I remove this, but add gpio.h. And if I include gpio_signal.h, it asks where the gpio.inc file is. Which I guess zinger and others don\u0027t have one.)",
+      "parentUuid": "636d8ab3_26e89ba6",
       "range": {
         "startLine": 26,
         "startChar": 1,
