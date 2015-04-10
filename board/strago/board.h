@@ -39,9 +39,12 @@
 #define I2C_PORT_ACCEL		1
 #define I2C_PORT_GYRO		1
 #define I2C_PORT_ALS		1
+#define I2C_PORT_SAR		1
 #define I2C_PORT_PD_MCU		2
 #define I2C_PORT_THERMAL	3
 
+/* SAR sensor */
+#define CONFIG_SAR_SX9310
 /* Modules we want to exclude */
 #undef CONFIG_EEPROM
 #undef CONFIG_EOPTION

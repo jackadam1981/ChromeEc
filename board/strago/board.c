@@ -4,13 +4,17 @@
  */
 /* Strago board-specific configuration */
 
+#include "driver/sar_sx9310.h"
 #include "extpower.h"
 #include "gpio.h"
 #include "i2c.h"
+#include "include/sar.h"
+#include "include/sar_sense.h"
 #include "lid_switch.h"
 #include "power.h"
 #include "power_button.h"
 #include "registers.h"
+#include "task.h"
 #include "util.h"
 
 #define GPIO_KB_INPUT (GPIO_INPUT | GPIO_PULL_UP)
@@ -35,3 +39,10 @@ const struct i2c_port_t i2c_ports[]  = {
 	{"thermal",	3, 100}
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+static struct mutex g_sar_mutex;
+struct sar_sensor_t sar_sensors[] = {
+	{SENSOR_ACTIVE_S0, "LTE Sar", SENSOR_CHIP_SX9310,
+		&sx9310_drv, &g_sar_mutex, NULL,
+		SX9310_ADDR, 1024, 160},
+};
+const unsigned int sar_sensor_count = ARRAY_SIZE(sar_sensors);
