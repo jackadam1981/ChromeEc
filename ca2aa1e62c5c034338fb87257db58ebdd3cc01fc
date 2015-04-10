@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c326369c_c02fc207",
+        "filename": "power/braswell.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-10T22:56:07Z",
+      "side": 1,
+      "message": "This looks wrong. I think you should transition to POWER_S3S5.",
+      "revId": "ca2aa1e62c5c034338fb87257db58ebdd3cc01fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c326369c_e0f2fe1a",
+        "filename": "power/braswell.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-10T22:56:07Z",
+      "side": 1,
+      "message": "I don\u0027t understand why you separated IN_PGOOD_ALWAYS_ON from IN_ALL_S0. Can you explain why this is necessary?",
+      "revId": "ca2aa1e62c5c034338fb87257db58ebdd3cc01fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
