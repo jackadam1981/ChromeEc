@@ -16,6 +16,24 @@
       "revId": "179107c11115d512444807b6271890b44908c9b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e356daec_4272f7e2",
+        "filename": "board/ryu/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-10T17:26:52Z",
+      "side": 1,
+      "message": "I didn\u0027t find a good phrasing here.\nActually we are still pulling up the EN_PP3300 net using the GPIO it is just not on all the time (it\u0027s now turned on after PP1800 in the board.c code).\nWe are using the IO pad as push-pull because it has actually a 100k in series, so doing the complex pull-up switch wouldn\u0027t be really better.",
+      "parentUuid": "636d8ab3_a6d4abe6",
+      "revId": "179107c11115d512444807b6271890b44908c9b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
