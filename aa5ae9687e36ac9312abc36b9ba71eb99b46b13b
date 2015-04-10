@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "636d8ab3_26e89ba6",
+        "filename": "include/jtag.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-10T17:07:32Z",
+      "side": 1,
+      "message": "I think we should just include gpio.h in these headers.  We do in keyboard_raw.h and switch.h.",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 7
+      },
+      "revId": "aa5ae9687e36ac9312abc36b9ba71eb99b46b13b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
