@@ -46,6 +46,30 @@
       "revId": "601b90a7eb3b6825d463ba82cde66426d3452f38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "636d8ab3_06cabf4c",
+        "filename": "include/chipset.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-04-10T17:06:28Z",
+      "side": 1,
+      "message": "This:\n\n  enum foo varname;\n\nhas type \u0027int\u0027, but the values of enum foo are implementation-specific and can be char, int, or unsigned int.",
+      "parentUuid": "234d525a_45f83cf9",
+      "range": {
+        "startLine": 98,
+        "startChar": 35,
+        "endLine": 98,
+        "endChar": 50
+      },
+      "revId": "601b90a7eb3b6825d463ba82cde66426d3452f38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
