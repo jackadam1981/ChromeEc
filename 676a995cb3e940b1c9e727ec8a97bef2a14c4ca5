@@ -22,6 +22,30 @@
       "revId": "676a995cb3e940b1c9e727ec8a97bef2a14c4ca5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0299e86_31da4a66",
+        "filename": "common/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-04-13T15:46:21Z",
+      "side": 1,
+      "message": "Yes, that does look like what I actually wanted.  Thanks, I\u0027ll put up another CL to switch to using this.",
+      "parentUuid": "9033a6f4_4fe53122",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 43
+      },
+      "revId": "676a995cb3e940b1c9e727ec8a97bef2a14c4ca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
