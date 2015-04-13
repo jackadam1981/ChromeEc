@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9033a6f4_2c9f9337",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-04-13T14:23:57Z",
+      "side": 1,
+      "message": "I\u0027ll make this more explicit.",
+      "parentUuid": "83c43ed3_de16a581",
+      "range": {
+        "startLine": 10,
+        "startChar": 43,
+        "endLine": 10,
+        "endChar": 53
+      },
+      "revId": "7fe988af2ca6d1c1580764271f98a7c0255e7fd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "237f124e_6aea661f",
         "filename": "include/usb.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-04-08T23:28:51Z",
       "side": 1,
       "message": "this title used to be the helpers, not sure why it is below now",
+      "range": {
+        "startLine": 248,
+        "startChar": 3,
+        "endLine": 248,
+        "endChar": 57
+      },
+      "revId": "7fe988af2ca6d1c1580764271f98a7c0255e7fd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0299e86_0e760b84",
+        "filename": "include/usb.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-04-13T14:23:57Z",
+      "side": 1,
+      "message": "Good point, I\u0027ll move this up, thanks.",
+      "parentUuid": "237f124e_6aea661f",
       "range": {
         "startLine": 248,
         "startChar": 3,
