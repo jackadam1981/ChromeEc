@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9033a6f4_60c8fa57",
+        "filename": "chip/stm32/config-stm32f07x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-13T18:20:39Z",
+      "side": 1,
+      "message": "Ah, just #define PSTATE_BANK_COUNT 0 here",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 27
+      },
+      "revId": "345825d0597c313b710f3e761454555526bbedff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9033a6f4_a00b8225",
+        "filename": "chip/stm32/flash-f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-13T18:20:39Z",
+      "side": 1,
+      "message": "Up at the top of the file, couldn\u0027t we just\n\n  #ifndef CONFIG_FLASH_PSTATE\n  #define PSTATE_BANK_COUNT 0\n  #endif",
+      "range": {
+        "startLine": 350,
+        "startChar": 0,
+        "endLine": 350,
+        "endChar": 26
+      },
+      "revId": "345825d0597c313b710f3e761454555526bbedff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
