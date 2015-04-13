@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0242aae_fbf012de",
+        "filename": "board/strago/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-13T22:12:20Z",
+      "side": 1,
+      "message": "Extra space here.",
+      "revId": "478c2e4aedb61fb233a3b2b7325535faccbd7de1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0299e86_cbc22aa2",
+        "filename": "board/strago/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-13T22:12:20Z",
+      "side": 1,
+      "message": "It\u0027s not directly related to your change, but can you please re-arrange the task priority here to match cyan (which matches most other boards)?",
+      "revId": "478c2e4aedb61fb233a3b2b7325535faccbd7de1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
