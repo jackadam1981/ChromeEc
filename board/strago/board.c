@@ -12,6 +12,7 @@
 #include "driver/temp_sensor/tmp432.h"
 #include "extpower.h"
 #include "gpio.h"
+#include "hooks.h"
 #include "host_command.h"
 #include "i2c.h"
 #include "lid_switch.h"
@@ -148,3 +149,22 @@ const struct accel_orientation acc_orient = {
 	},
 	.hinge_axis = {1, 0, 0},
 };
+
+/* In S3, power rail for sensors (+V3p3S) goes down. Disable access to motion
+ * sensors by marking them "Not Initialized". This also forces their
+ * initalization when transition to S0 occurs.
+ */
+static void motion_sensors_pre_init(void)
+{
+	struct motion_sensor_t *sensor;
+	int i;
+
+	for (i = 0; i < motion_sensor_count; ++i) {
+		sensor = &motion_sensors[i];
+		sensor->state = SENSOR_NOT_INITIALIZED;
+
+		sensor->odr = sensor->default_odr;
+		sensor->range = sensor->default_range;
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, motion_sensors_pre_init, HOOK_PRIO_FIRST);
