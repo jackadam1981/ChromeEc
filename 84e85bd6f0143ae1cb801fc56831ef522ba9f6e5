@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0299e86_11f178e0",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-04-14T18:26:27Z",
+      "side": 1,
+      "message": "Move modep null check here.",
+      "range": {
+        "startLine": 590,
+        "startChar": 2,
+        "endLine": 590,
+        "endChar": 7
+      },
+      "revId": "84e85bd6f0143ae1cb801fc56831ef522ba9f6e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
