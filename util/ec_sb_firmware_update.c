@@ -24,27 +24,24 @@ enum {
 	OP_UPDATE  = 2,
 };
 
-#define SETUP_DELAY_STEPS 11
-#define WRITE_DELAY_STEPS (SETUP_DELAY_STEPS+512)
+#define DELAY_STEPS_A 1
+#define DELAY_STEPS_B 2
+#define DELAY_STEPS_C 3
+#define DELAY_STEPS_D 10
+#define DELAY_STEPS_E 770
+#define DELAY_STEPS_F 2680
 
-/* Delay Configure Indexes */
-enum {
-	BEGIN_DELAY  = 0,
-	SETUP_DELAY  = 1,
-	WRITE1_DELAY = 2,
-	WRITE2_DELAY = 3,
-	END_DELAY    = 4,
-	NUM_DELAYS   = 5
-};
+#define DELAY_VALUE_BEGIN  500000
+#define DELAY_VALUE_END   1000000
+#define DELAY_VALUE_BUSY  1000000
 
-const char *delay_names[NUM_DELAYS] = {
-	[BEGIN_DELAY] = "BEGIN",
-	[SETUP_DELAY] = "SETUP",
-	[WRITE1_DELAY] = "WRITE1",
-	[WRITE2_DELAY] = "WRITE2",
-	[END_DELAY] = "END"
-};
-static uint32_t delay_values[NUM_DELAYS];
+#define DELAY_VALUE_A 100000
+#define DELAY_VALUE_B 9000000
+#define DELAY_VALUE_C 100000
+#define DELAY_VALUE_D 25000
+#define DELAY_VALUE_E 25000
+#define DELAY_VALUE_F 2000
+#define DELAY_VALUE_G 30000
 
 enum fw_update_state {
 	S0_READ_STATUS   = 0,
@@ -93,34 +90,6 @@ struct fw_update_ctrl {
  * Global Firmware Update Control Data Structure
  */
 static struct fw_update_ctrl fw_update;
-
-static int get_key_value(const char *filename,
-		const char *keys[], uint32_t values[], int len)
-{
-	char line[256];
-	char cmd[80];
-	int i = BEGIN_DELAY;
-	FILE *fp = fopen(filename, "r");
-
-	if (fp == NULL)
-		return -1;
-
-	while (fgets(line, sizeof(line), fp) != NULL) {
-		if ((line[0] < 'A') || (line[0] > 'Z'))
-			continue;
-
-		sprintf(cmd, "%s=%%d", keys[i]);
-		if (0 == values[i])
-			sscanf(line, cmd, &values[i]);
-
-		if (++i == NUM_DELAYS)
-			break;
-	}
-
-	fclose(fp);
-	return 0;
-}
-
 
 static void print_battery_firmware_image_hdr(
 	struct sb_fw_header *hdr)
@@ -285,7 +254,6 @@ static char *read_fw_image(struct fw_update_ctrl *fw_update)
 static int get_status(struct sb_fw_update_status *status)
 {
 	int rv = EC_RES_SUCCESS;
-	int i = 0;
 	struct ec_params_sb_fw_update *param =
 		(struct ec_params_sb_fw_update *)ec_outbuf;
 
@@ -293,11 +261,9 @@ static int get_status(struct sb_fw_update_status *status)
 		(struct ec_response_sb_fw_update *)ec_inbuf;
 
 	param->hdr.subcmd = EC_SB_FW_UPDATE_STATUS;
-	do {
-		rv = ec_command(EC_CMD_SB_FW_UPDATE, 0,
-			param, sizeof(struct ec_sb_fw_update_header),
-			resp, SB_FW_UPDATE_CMD_STATUS_SIZE);
-	} while ((rv < 0) && (i++ < 3));
+	rv = ec_command(EC_CMD_SB_FW_UPDATE, 0,
+		param, sizeof(struct ec_sb_fw_update_header),
+		resp, SB_FW_UPDATE_CMD_STATUS_SIZE);
 
 	if (rv < 0)
 		return -EC_RES_ERROR;
@@ -389,7 +355,7 @@ static enum fw_update_state s0_read_status(struct fw_update_ctrl *fw_update)
 	fw_update->rv = get_status(&fw_update->status);
 	if (fw_update->rv) {
 		fw_update->rv = -1;
-		log_msg(fw_update, S0_READ_STATUS, "Protected");
+		log_msg(fw_update, S1_READ_INFO, "Interface Error");
 		return S10_TERMINAL;
 	}
 
@@ -399,7 +365,7 @@ static enum fw_update_state s0_read_status(struct fw_update_ctrl *fw_update)
 		return S10_TERMINAL;
 	}
 	if (fw_update->status.busy) {
-		usleep(1000000);
+		usleep(DELAY_VALUE_BUSY);
 		return S0_READ_STATUS;
 	} else
 		return S1_READ_INFO;
@@ -424,17 +390,6 @@ static enum fw_update_state s1_read_battery_info(
 		return S10_TERMINAL;
 	}
 	print_info(&fw_update->info);
-
-	sprintf(fw_update->image_name,
-			"/lib/firmware/battery/maker.%04x.hwid.%04x.cfg",
-			fw_update->info.maker_id,
-			fw_update->info.hardware_id);
-	if (-1 == get_key_value(fw_update->image_name,
-			delay_names, delay_values, NUM_DELAYS)) {
-		fw_update->rv = 0;
-		log_msg(fw_update, S1_READ_INFO, "Open Config File");
-		return S10_TERMINAL;
-	}
 
 	sprintf(fw_update->image_name,
 			"/lib/firmware/battery/maker.%04x.hwid.%04x.bin",
@@ -522,7 +477,7 @@ static enum fw_update_state s4_write_update(struct fw_update_ctrl *fw_update)
 		log_msg(fw_update, S4_WRITE_UPDATE, "Interface Error");
 		return S10_TERMINAL;
 	}
-	usleep(delay_values[BEGIN_DELAY]);
+	usleep(DELAY_VALUE_BEGIN);
 	return S5_READ_STATUS;
 }
 
@@ -573,12 +528,21 @@ static enum fw_update_state s6_write_block(struct fw_update_ctrl *fw_update)
 		return S10_TERMINAL;
 	}
 
-	if (offset < (fw_update->step_size * SETUP_DELAY_STEPS))
-		usleep(delay_values[SETUP_DELAY]);
-	else if (offset < (fw_update->step_size * WRITE_DELAY_STEPS))
-		usleep(delay_values[WRITE1_DELAY]);
+	if (offset <= fw_update->step_size * DELAY_STEPS_A)
+		usleep(DELAY_VALUE_A);
+	else if (offset <= fw_update->step_size * DELAY_STEPS_B)
+		usleep(DELAY_VALUE_B);
+	else if (offset <= fw_update->step_size * DELAY_STEPS_C)
+		usleep(DELAY_VALUE_C);
+	else if (offset <= fw_update->step_size * DELAY_STEPS_D)
+		usleep(DELAY_VALUE_E);
+	else if (offset <= fw_update->step_size * DELAY_STEPS_E)
+		usleep(DELAY_VALUE_E);
+	else if (offset <= fw_update->step_size * DELAY_STEPS_F)
+		usleep(DELAY_VALUE_F);
 	else
-		usleep(delay_values[WRITE2_DELAY]);
+		usleep(DELAY_VALUE_G);
+
 	return S7_READ_STATUS;
 }
 
@@ -646,8 +610,7 @@ static enum fw_update_state s8_write_end(struct fw_update_ctrl *fw_update)
 	if (fw_update->rv)
 		return S10_TERMINAL;
 
-	/* Note: Sleep is required! */
-	usleep(delay_values[END_DELAY]);
+	usleep(DELAY_VALUE_END);
 	return S9_READ_STATUS;
 }
 
@@ -782,13 +745,8 @@ int main(int argc, char *argv[])
 		fw_update.flags |= F_VERSION_CHECK;
 
 	rv = ec_sb_firmware_update(&fw_update);
-	printf("Battery Firmware Update:0x%02x (%d %d %d %d %d) %s\n%s\n",
+	printf("Battery Firmware Update:0x%02x %s\n%s\n",
 			fw_update.flags,
-			delay_values[BEGIN_DELAY],
-			delay_values[SETUP_DELAY],
-			delay_values[WRITE1_DELAY],
-			delay_values[WRITE2_DELAY],
-			delay_values[END_DELAY],
 			((rv) ? "FAIL " : " "),
 			fw_update.msg);
 
