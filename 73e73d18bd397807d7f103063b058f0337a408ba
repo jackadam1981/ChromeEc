@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d080bec6_eb895129",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-15T20:46:11Z",
+      "side": 1,
+      "message": "we don\u0027t really need this in the repository",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 25
+      },
+      "revId": "73e73d18bd397807d7f103063b058f0337a408ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d080bec6_6bf1c1ac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-15T20:46:11Z",
+      "side": 1,
+      "message": "the BRANCH\u003d tag is supposed to contain which branches this patch needs to be reported to",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 17
+      },
+      "revId": "73e73d18bd397807d7f103063b058f0337a408ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "907ac6a8_db38e49d",
+        "filename": "chip/mec1322/lfw/ec_lfw.ld",
+        "patchSetId": 7
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-15T20:46:11Z",
+      "side": 1,
+      "message": "I\u0027m not seeing any .data initialization in the code,\nit\u0027s somewhat a trap to declare it then ignore it at runtime",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 12
+      },
+      "revId": "73e73d18bd397807d7f103063b058f0337a408ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
