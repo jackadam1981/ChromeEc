@@ -46,6 +46,30 @@
       "revId": "84e85bd6f0143ae1cb801fc56831ef522ba9f6e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10597645_a3c9512e",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1110614
+      },
+      "writtenOn": "2015-04-15T15:25:01Z",
+      "side": 1,
+      "message": "Thanks. I see. The check is not required for all cases.\n\nDuplicate checks on more than one switch case.\nAnother suggestion is to split switch into two groups (or two sub functions).\nOne group need check modep; other group does not need check modep.",
+      "parentUuid": "907ac6a8_b732e269",
+      "range": {
+        "startLine": 590,
+        "startChar": 2,
+        "endLine": 590,
+        "endChar": 7
+      },
+      "revId": "84e85bd6f0143ae1cb801fc56831ef522ba9f6e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
