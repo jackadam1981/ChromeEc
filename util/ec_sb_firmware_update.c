@@ -17,6 +17,9 @@
 #include "misc_util.h"
 #include "powerd_lock.h"
 
+#define SIMPLO_MAKER_ID 0x5
+#define SIMPLO_HWID 0x74
+
 /* Subcommands: [check|update] */
 enum {
 	OP_UNKNOWN = 0,
@@ -385,11 +388,20 @@ static enum fw_update_state s1_read_battery_info(
 
 	rv = get_info(&fw_update->info);
 	if (rv) {
-		fw_update->rv = -1;
-		log_msg(fw_update, S1_READ_INFO, "Interface Error");
-		return S10_TERMINAL;
+		fw_update->rv = 0;
+		/* Assume Simplo Battery */
+		fw_update->info.maker_id = SIMPLO_MAKER_ID;
+		fw_update->info.hardware_id = SIMPLO_HWID;
+		fw_update->info.fw_version = 0;
+		fw_update->info.data_version = 0;
 	}
 	print_info(&fw_update->info);
+
+	if ((fw_update->info.maker_id != SIMPLO_MAKER_ID) ||
+		(fw_update->info.hardware_id != SIMPLO_HWID)) {
+		log_msg(fw_update, S1_READ_INFO, "No Updates.");
+		return S10_TERMINAL;
+	}
 
 	sprintf(fw_update->image_name,
 			"/lib/firmware/battery/maker.%04x.hwid.%04x.bin",
