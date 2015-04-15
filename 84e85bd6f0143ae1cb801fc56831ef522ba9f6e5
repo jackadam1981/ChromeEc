@@ -22,6 +22,30 @@
       "revId": "84e85bd6f0143ae1cb801fc56831ef522ba9f6e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "907ac6a8_b732e269",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-04-15T15:07:50Z",
+      "side": 1,
+      "message": "Can\u0027t ... its not necessarily defined for some of the cases.",
+      "parentUuid": "d0299e86_11f178e0",
+      "range": {
+        "startLine": 590,
+        "startChar": 2,
+        "endLine": 590,
+        "endChar": 7
+      },
+      "revId": "84e85bd6f0143ae1cb801fc56831ef522ba9f6e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
