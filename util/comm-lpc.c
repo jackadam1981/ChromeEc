@@ -82,7 +82,6 @@ static int ec_command_lpc(int command, int version,
 	/* Check result */
 	i = inb(EC_LPC_ADDR_HOST_DATA);
 	if (i) {
-		fprintf(stderr, "EC returned error result code %d\n", i);
 		return -EECRESULT - i;
 	}
 
@@ -177,7 +176,6 @@ static int ec_command_lpc_3(int command, int version,
 	/* Check result */
 	i = inb(EC_LPC_ADDR_HOST_DATA);
 	if (i) {
-		fprintf(stderr, "EC returned error result code %d\n", i);
 		return -EECRESULT - i;
 	}
 
