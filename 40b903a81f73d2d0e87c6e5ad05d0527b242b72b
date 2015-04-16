@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "30d59acf_f08ff9fb",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-16T17:02:13Z",
+      "side": 1,
+      "message": "You are right -- we cannot peek at the line level without holding the controller mutex, which the calling code doesn\u0027t do. I\u0027ll fix it.",
+      "parentUuid": "904c868c_78d3098b",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 0
+      },
+      "revId": "40b903a81f73d2d0e87c6e5ad05d0527b242b72b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10597645_fac247a1",
         "filename": "chip/mec1322/i2c.c",
         "patchSetId": 2
