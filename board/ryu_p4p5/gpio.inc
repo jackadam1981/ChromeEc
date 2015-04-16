@@ -58,8 +58,8 @@ GPIO(P5_PMIC_THERM_L,      B, 8,  GPIO_ODR_HIGH)
 GPIO(P4_PMIC_THERM_L,      D, 12, GPIO_ODR_HIGH)
 
 GPIO(VBUS_SENSE,           A, 0,  GPIO_ANALOG)
-GPIO(CHGR_IADP,            B, 0,  GPIO_ANALOG)
-GPIO(CHGR_IBAT,            C, 3,  GPIO_ANALOG)
+GPIO(CHGR_PSEL,            B, 0,  GPIO_OUT_HIGH)
+GPIO(CHGR_OTG,             C, 3,  GPIO_OUT_LOW)
 
 /* Inductive charging */
 GPIO(CHARGE_EN,            D, 13, GPIO_OUT_LOW)
