@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "506daeeb_aed04f78",
+        "filename": "board/ryu_sh/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-04-16T06:26:20Z",
+      "side": 1,
+      "message": "Can it be defined in lsm6ds0 file, assuming the number of sensors become a constant?",
+      "range": {
+        "startLine": 41,
+        "startChar": 20,
+        "endLine": 41,
+        "endChar": 34
+      },
+      "revId": "50fd9bb8e312c3afc5dfd2f08262199e8a58e1b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "506daeeb_cecd83e3",
+        "filename": "board/ryu_sh/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-04-16T06:26:20Z",
+      "side": 1,
+      "message": "is 2 \u003d\u003d motion_sensor_count?",
+      "range": {
+        "startLine": 41,
+        "startChar": 35,
+        "endLine": 41,
+        "endChar": 36
+      },
+      "revId": "50fd9bb8e312c3afc5dfd2f08262199e8a58e1b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "904c868c_38e471d5",
+        "filename": "board/ryu_sh/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-04-16T06:26:20Z",
+      "side": 1,
+      "message": "line 60-61 look like a struct lsm6ds0_data.\nCan it be more generic?",
+      "revId": "50fd9bb8e312c3afc5dfd2f08262199e8a58e1b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "904c868c_98bda5a6",
+        "filename": "board/ryu_sh/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-04-16T06:26:20Z",
+      "side": 1,
+      "message": "looking at it, motion_sensor_count should be a #define.",
+      "revId": "50fd9bb8e312c3afc5dfd2f08262199e8a58e1b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
