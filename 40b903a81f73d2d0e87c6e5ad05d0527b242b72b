@@ -34,6 +34,24 @@
       "revId": "40b903a81f73d2d0e87c6e5ad05d0527b242b72b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "904c868c_181095d1",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-16T16:38:16Z",
+      "side": 1,
+      "message": "OK.\nMay be convert this to a compile time assert in the future as an improvement since this will be dead code if everything is config correctly in board.c.",
+      "parentUuid": "d080bec6_a2205353",
+      "revId": "40b903a81f73d2d0e87c6e5ad05d0527b242b72b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
