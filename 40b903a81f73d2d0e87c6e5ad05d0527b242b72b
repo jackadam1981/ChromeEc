@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "506daeeb_09a6158c",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-04-16T17:12:58Z",
+      "side": 1,
+      "message": "You will have to hold all the controller mutex before we start scan as we wont know which one is already held. so not sure how this could be feasible.",
+      "parentUuid": "30d59acf_f08ff9fb",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 0
+      },
+      "revId": "40b903a81f73d2d0e87c6e5ad05d0527b242b72b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10597645_fac247a1",
         "filename": "chip/mec1322/i2c.c",
         "patchSetId": 2
