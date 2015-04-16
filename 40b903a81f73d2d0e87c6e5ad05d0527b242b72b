@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10597645_fac247a1",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-16T03:55:45Z",
+      "side": 1,
+      "message": "Controller 0 kbps should be the slowest between Port 0 and Port 1 if they are not config for the same kbps in board.c.",
+      "revId": "40b903a81f73d2d0e87c6e5ad05d0527b242b72b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
