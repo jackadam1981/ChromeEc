@@ -36,6 +36,14 @@ SECTIONS
         . = ALIGN(4);
         __version_struct_offset = .;
         KEEP(*(.rodata.ver))
+
+        . = ALIGN(4);
+        __pstate_data_offset = .;
+#if defined(SECTION_IS_RO) && defined(CONFIG_FLASH_PSTATE) \
+	&& !defined(CONFIG_FLASH_PSTATE_BANK)
+        KEEP(*(.rodata.pstate))
+#endif
+
 #ifdef SHIFT_CODE_FOR_TEST
         . = ALIGN(256);
 #else
