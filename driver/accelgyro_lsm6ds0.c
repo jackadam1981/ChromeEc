@@ -133,20 +133,6 @@ static int get_reg_val(const int eng_val, const int round_up,
 }
 
 /**
- * @return engineering value that matches the given reg val
- */
-static int get_engineering_val(const int reg_val,
-		const struct accel_param_pair *pairs, const int size)
-{
-	int i;
-	for (i = 0; i < size; i++) {
-		if (reg_val == pairs[i].reg_val)
-			break;
-	}
-	return pairs[i].val;
-}
-
-/**
  * Read register from accelerometer.
  */
 static inline int raw_read8(const int addr, const int reg, int *data_ptr)
@@ -169,6 +155,7 @@ static int set_range(const struct motion_sensor_t *s,
 	int ret, ctrl_val, range_tbl_size;
 	uint8_t ctrl_reg, reg_val;
 	const struct accel_param_pair *ranges;
+	struct lsm6ds0_data *data = (struct lsm6ds0_data *)s->drv_data;
 
 	ctrl_reg = get_ctrl_reg(s->type);
 	ranges = get_range_table(s->type, &range_tbl_size);
@@ -188,6 +175,10 @@ static int set_range(const struct motion_sensor_t *s,
 	ctrl_val = (ctrl_val & ~LSM6DS0_RANGE_MASK) | reg_val;
 	ret = raw_write8(s->i2c_addr, ctrl_reg, ctrl_val);
 
+	/* Now that we have set the range, update the driver's value. */
+	if (ret == EC_SUCCESS)
+		data->sensor_range = range;
+
 accel_cleanup:
 	mutex_unlock(s->mutex);
 	return EC_SUCCESS;
@@ -196,15 +187,10 @@ accel_cleanup:
 static int get_range(const struct motion_sensor_t *s,
 				int *range)
 {
-	int ret, ctrl_val, range_tbl_size;
-	uint8_t ctrl_reg;
-	const struct accel_param_pair *ranges;
-	ranges = get_range_table(s->type, &range_tbl_size);
-	ctrl_reg = get_ctrl_reg(s->type);
-	ret = raw_read8(s->i2c_addr, ctrl_reg, &ctrl_val);
-	*range = get_engineering_val(ctrl_val & LSM6DS0_RANGE_MASK,
-		ranges, range_tbl_size);
-	return ret;
+	struct lsm6ds0_data *data = (struct lsm6ds0_data *)s->drv_data;
+
+	*range = data->sensor_range;
+	return EC_SUCCESS;
 }
 
 static int set_resolution(const struct motion_sensor_t *s,
@@ -229,6 +215,7 @@ static int set_data_rate(const struct motion_sensor_t *s,
 	int ret, val, odr_tbl_size;
 	uint8_t ctrl_reg, reg_val;
 	const struct accel_param_pair *data_rates;
+	struct lsm6ds0_data *data = s->drv_data;
 
 	ctrl_reg = get_ctrl_reg(s->type);
 	data_rates = get_odr_table(s->type, &odr_tbl_size);
@@ -246,6 +233,10 @@ static int set_data_rate(const struct motion_sensor_t *s,
 
 	val = (val & ~LSM6DS0_ODR_MASK) | reg_val;
 	ret = raw_write8(s->i2c_addr, ctrl_reg, val);
+
+	/* Now that we have set the odr, update the driver's value. */
+	if (ret == EC_SUCCESS)
+		data->sensor_odr = rate;
 
 	/* CTRL_REG3_G 12h
 	 * [7] low-power mode = 0;
@@ -273,18 +264,9 @@ accel_cleanup:
 static int get_data_rate(const struct motion_sensor_t *s,
 				int *rate)
 {
-	int ret, ctrl_val, odr_tbl_size;
-	uint8_t ctrl_reg;
-	const struct accel_param_pair *data_rates;
-	ctrl_reg = get_ctrl_reg(s->type);
+	struct lsm6ds0_data *data = s->drv_data;
 
-	ret = raw_read8(s->i2c_addr, ctrl_reg, &ctrl_val);
-	if (ret != EC_SUCCESS)
-		return EC_ERROR_UNKNOWN;
-
-	data_rates = get_odr_table(s->type, &odr_tbl_size);
-	*rate = get_engineering_val(ctrl_val & LSM6DS0_ODR_MASK,
-			data_rates, odr_tbl_size);
+	*rate = data->sensor_odr;
 	return EC_SUCCESS;
 }
 
