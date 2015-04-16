@@ -70,7 +70,7 @@ void vbus_evt(enum gpio_signal signal)
 	 * If VBUS is low, or VBUS is high and we are not outputting VBUS
 	 * ourselves, then update the VBUS supplier.
 	 */
-	if (!vbus_level || !gpio_get_level(GPIO_USBC_5V_EN)) {
+	if (!vbus_level || !gpio_get_level(GPIO_CHGR_OTG)) {
 		charge.voltage = USB_BC12_CHARGE_VOLTAGE;
 		charge.current = vbus_level ? DEFAULT_CURR_LIMIT : 0;
 		charge_manager_update_charge(CHARGE_SUPPLIER_VBUS, 0, &charge);
@@ -357,9 +357,6 @@ const struct adc_t adc_channels[] = {
 	/* USB PD CC lines sensing. Converted to mV (3000mV/4096). */
 	[ADC_CC1_PD] = {"CC1_PD", 3000, 4096, 0, STM32_AIN(1)},
 	[ADC_CC2_PD] = {"CC2_PD", 3000, 4096, 0, STM32_AIN(3)},
-	/* Charger current sensing. Converted to mA. */
-	[ADC_IADP] = {"IADP",  7500, 4096, 0, STM32_AIN(8)},
-	[ADC_IBAT] = {"IBAT", 37500, 4096, 0, STM32_AIN(13)},
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
@@ -555,7 +552,7 @@ int board_set_active_charge_port(int charge_port)
 {
 	int ret = EC_SUCCESS;
 	/* check if we are source vbus on that port */
-	int source = gpio_get_level(GPIO_USBC_5V_EN);
+	int source = gpio_get_level(GPIO_CHGR_OTG);
 
 	if (charge_port >= 0 && charge_port < PD_PORT_COUNT && source) {
 		CPRINTS("Port %d is not a sink, skipping enable", charge_port);
@@ -592,52 +589,6 @@ void pd_send_host_event(int mask)
 }
 
 /**
- * Return whether ramping is allowed for given supplier
- */
-int board_is_ramp_allowed(int supplier)
-{
-	return supplier == CHARGE_SUPPLIER_BC12_DCP ||
-	       supplier == CHARGE_SUPPLIER_BC12_SDP ||
-	       supplier == CHARGE_SUPPLIER_BC12_CDP ||
-	       supplier == CHARGE_SUPPLIER_PROPRIETARY;
-}
-
-/**
- * Return the maximum allowed input current
- */
-int board_get_ramp_current_limit(int supplier, int sup_curr)
-{
-	switch (supplier) {
-	case CHARGE_SUPPLIER_BC12_DCP:
-		return 2000;
-	case CHARGE_SUPPLIER_BC12_SDP:
-		return 1000;
-	case CHARGE_SUPPLIER_BC12_CDP:
-	case CHARGE_SUPPLIER_PROPRIETARY:
-		return sup_curr;
-	default:
-		return 500;
-	}
-}
-
-/**
- * Return if board is consuming full amount of input current
- */
-int board_is_consuming_full_charge(void)
-{
-	return adc_read_channel(ADC_IADP) >= charge_current_limit -
-					     IADP_ERROR_MARGIN_MA;
-}
-
-/**
- * Return if VBUS is sagging low enough that we should stop ramping
- */
-int board_is_vbus_too_low(enum chg_ramp_vbus_state ramp_state)
-{
-	return adc_read_channel(ADC_VBUS) < VBUS_LOW_THRESHOLD_MV;
-}
-
-/*
  * Enable and disable SPI for case closed debugging.  This forces the AP into
  * reset while SPI is enabled, thus preventing contention on the SPI interface.
  */
