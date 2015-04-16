@@ -16,6 +16,24 @@
       "revId": "40b903a81f73d2d0e87c6e5ad05d0527b242b72b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d080bec6_a2205353",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-16T16:11:27Z",
+      "side": 1,
+      "message": "I\u0027d like to assert instead. I think it\u0027s better to point out the mismatch and let the programmer correct it (and change the schematic for a later build, maybe) rather than silently slowing down one of the busses.",
+      "parentUuid": "10597645_fac247a1",
+      "revId": "40b903a81f73d2d0e87c6e5ad05d0527b242b72b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
