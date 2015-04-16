@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "506daeeb_09da95ea",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-16T18:43:16Z",
+      "side": 1,
+      "message": "Divya, did our team debug and found that bitbang mode need to be enabled before this is valid?",
+      "revId": "70460c8cd985e54de244dacb66bc6ed73c698285",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
