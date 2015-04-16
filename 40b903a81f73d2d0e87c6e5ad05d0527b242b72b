@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "904c868c_78d3098b",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-04-16T16:56:45Z",
+      "side": 1,
+      "message": "I might be missing something here. But what I meant is in scan console command which can happen when in middle of xfer..\n\nstatic void scan_bus(int port, const char *desc)\n{\n\tint a;\n\tuint8_t tmp;\n\n\tccprintf(\"Scanning %d %s\", port, desc);\n\n\t/* Don\u0027t scan a busy port, since reads will just fail / time out */\n\ta \u003d i2c_get_line_levels(port);\n\nyou see to get the i2c_get_line_levels... we alter the port.",
+      "parentUuid": "d080bec6_02a027e6",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 0
+      },
+      "revId": "40b903a81f73d2d0e87c6e5ad05d0527b242b72b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10597645_fac247a1",
         "filename": "chip/mec1322/i2c.c",
         "patchSetId": 2
