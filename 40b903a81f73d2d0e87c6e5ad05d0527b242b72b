@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "904c868c_981b65f4",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-04-16T16:39:47Z",
+      "side": 1,
+      "message": "I feel there is likely hood that we will intercept one controller to another. Say we are in the middle of a transaction. if from a console command we execute say scan then in scan we will select the port / alter the port and then check if bus is free.\n\nThis is like a race around. to check if bus is idle we need to change the controller.",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 0
+      },
+      "revId": "40b903a81f73d2d0e87c6e5ad05d0527b242b72b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10597645_fac247a1",
         "filename": "chip/mec1322/i2c.c",
         "patchSetId": 2
