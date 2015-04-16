@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "30d59acf_3add6095",
+        "filename": "board/ryu_sh/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-04-16T16:29:39Z",
+      "side": 1,
+      "message": "2 is not necessarily the motion_sensor_count. It\u0027s the count of *lsm6ds0* sensors. For example, samus has the accel and gyro from the lsm6ds0, but also has the accelerometer from the kxcj9 (producing a motion_sensor_count of 3).\n\n\nIf I come up with a way to obtain the lsm6ds0 sensor count, I could move this.",
+      "parentUuid": "506daeeb_cecd83e3",
+      "range": {
+        "startLine": 41,
+        "startChar": 35,
+        "endLine": 41,
+        "endChar": 36
+      },
+      "revId": "50fd9bb8e312c3afc5dfd2f08262199e8a58e1b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "904c868c_38e471d5",
         "filename": "board/ryu_sh/board.c",
         "patchSetId": 1
@@ -65,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "907ac6a8_ec18812a",
+        "filename": "board/ryu_sh/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-04-16T16:29:39Z",
+      "side": 1,
+      "message": "Beyond these two fields, motion_sensor_t also has fields for the run-time values of odr and range (which appear to only be used during init). I think that perhaps those fields should be removed in order to deduplicate. Let the driver keep track of the current state, and have the motion sensor get/set on demand.\n\nIt *could* be more generic, if we were to also include resolution. The kxcj9 has a configurable resolution so it\u0027s included in its driver data structure. However, the lsm6ds0 has a fixed resolution so that is why I did not include it in the lsm6ds0_data structure. It would be wasting a field of every instance of it.\n\n\nPlus this way, if we were to add a different sensor, the driver private data structure would only have to be as big as the run-time configurable parameters.",
+      "parentUuid": "904c868c_38e471d5",
+      "revId": "50fd9bb8e312c3afc5dfd2f08262199e8a58e1b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "904c868c_98bda5a6",
         "filename": "board/ryu_sh/board.c",
         "patchSetId": 1
@@ -76,6 +118,24 @@
       "writtenOn": "2015-04-16T06:26:20Z",
       "side": 1,
       "message": "looking at it, motion_sensor_count should be a #define.",
+      "revId": "50fd9bb8e312c3afc5dfd2f08262199e8a58e1b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d080bec6_62a55b28",
+        "filename": "board/ryu_sh/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-04-16T16:29:39Z",
+      "side": 1,
+      "message": "Agreed.",
+      "parentUuid": "904c868c_98bda5a6",
       "revId": "50fd9bb8e312c3afc5dfd2f08262199e8a58e1b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
