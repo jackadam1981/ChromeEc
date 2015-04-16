@@ -19,6 +19,11 @@
 #define CPUTS(outstr) cputs(CC_CHARGER, outstr)
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
 
+/* 5V Boost settings */
+#ifndef CONFIG_CHARGER_BQ2589X_BOOST
+#define CONFIG_CHARGER_BQ2589X_BOOST BQ2589X_BOOST_DEFAULT
+#endif
+
 /* Charger information */
 static const struct charger_info bq2589x_charger_info = {
 	.name         = "bq2589x",
@@ -204,6 +209,17 @@ int charger_discharge_on_ac(int enable)
 	return EC_SUCCESS;
 }
 
+int bq2598x_boost_enable(int enable)
+{
+	int rv, val;
+
+	rv = bq2589x_read(BQ2589X_REG_CFG2, &val);
+	if (rv)
+		return rv;
+	val = enable ? val | (1<<5) : val & ~(1 << 5);
+	return bq2589x_write(BQ2589X_REG_CFG2, val);
+}
+
 /* Charging power state initialization */
 int charger_post_init(void)
 {
@@ -251,6 +267,9 @@ static void bq2589x_init(void)
 		return;
 
 	if (bq2589x_watchdog_reset())
+		return;
+
+	if (bq2589x_write(BQ2589X_REG_BOOST_MODE, CONFIG_CHARGER_BQ2589X_BOOST))
 		return;
 
 	CPRINTF("BQ2589%c initialized\n",

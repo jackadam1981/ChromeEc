@@ -31,6 +31,21 @@
 #define BQ2589X_REG_ADC_INPUT_CURR  0x13 /* Read-only */
 #define BQ2589X_REG_ID              0x14
 
+/* 5V VBUS Boost settings */
+#define BQ2589X_BOOSTV_MV(mv)       (((((mv) - 4550)/64) & 0xF) << 4)
+#define BQ2589X_BOOSTV_DEFAULT      BQ2589X_BOOSTV_MV(4998)
+#define BQ2589X_BOOST_LIM_500MA     0x00
+#define BQ2589X_BOOST_LIM_750MA     0x01
+#define BQ2589X_BOOST_LIM_1200MA    0x02
+#define BQ2589X_BOOST_LIM_1400MA    0x03
+#define BQ2589X_BOOST_LIM_1650MA    0x04
+#define BQ2589X_BOOST_LIM_1875MA    0x05
+#define BQ2589X_BOOST_LIM_2150MA    0x06
+#define BQ2589X_BOOST_LIM_2450MA    0x07
+#define BQ2589X_BOOST_LIM_DEFAULT   BQ2589X_BOOST_LIM_1400MA
+#define BQ2589X_BOOST_DEFAULT       (BQ2589X_BOOST_LIM_DEFAULT |\
+				     BQ2589X_BOOSTV_DEFAULT)
+
 #define BQ2589X_DEVICE_ID_MASK      0x38
 #define BQ25890_DEVICE_ID           0x18
 #define BQ25892_DEVICE_ID           0x00
@@ -49,5 +64,13 @@
 #else
 #error BQ2589X unknown variant
 #endif
+
+/**
+ * Enable/disable the 5V VBUS boost.
+ *
+ * @param enable 0 to disable the boost, 1 to enable
+ * @return 0 on success, error code if writing the settings failed.
+ */
+int bq2598x_boost_enable(int enable);
 
 #endif /* __CROS_EC_CHARGER_BQ2589X_H */
