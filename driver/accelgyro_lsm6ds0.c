@@ -162,6 +162,7 @@ static inline int raw_write8(const int addr, const int reg, int data)
 	return i2c_write8(I2C_PORT_ACCEL, addr, reg, data);
 }
 
+#define STALE 0xbadf00d
 static int set_range(const struct motion_sensor_t *s,
 				int range,
 				int rnd)
@@ -169,6 +170,7 @@ static int set_range(const struct motion_sensor_t *s,
 	int ret, ctrl_val, range_tbl_size;
 	uint8_t ctrl_reg, reg_val;
 	const struct accel_param_pair *ranges;
+	struct lsm6ds0_data *data = (struct lsm6ds0_data *)s->drv_data;
 
 	ctrl_reg = get_ctrl_reg(s->type);
 	ranges = get_range_table(s->type, &range_tbl_size);
@@ -188,6 +190,11 @@ static int set_range(const struct motion_sensor_t *s,
 	ctrl_val = (ctrl_val & ~LSM6DS0_RANGE_MASK) | reg_val;
 	ret = raw_write8(s->i2c_addr, ctrl_reg, ctrl_val);
 
+	/* Invalidate local copy of range.  The subsequent call to get_range
+	 * will update our copy.
+	 */
+	data->sensor_range = STALE;
+
 accel_cleanup:
 	mutex_unlock(s->mutex);
 	return EC_SUCCESS;
@@ -199,11 +206,21 @@ static int get_range(const struct motion_sensor_t *s,
 	int ret, ctrl_val, range_tbl_size;
 	uint8_t ctrl_reg;
 	const struct accel_param_pair *ranges;
-	ranges = get_range_table(s->type, &range_tbl_size);
-	ctrl_reg = get_ctrl_reg(s->type);
-	ret = raw_read8(s->i2c_addr, ctrl_reg, &ctrl_val);
-	*range = get_engineering_val(ctrl_val & LSM6DS0_RANGE_MASK,
-		ranges, range_tbl_size);
+	struct lsm6ds0_data *data = (struct lsm6ds0_data *)s->drv_data;
+
+	/* Only fetch the data from the sensor if we have marked it as stale */
+	if (STALE == data->sensor_range) {
+		ranges = get_range_table(s->type, &range_tbl_size);
+		ctrl_reg = get_ctrl_reg(s->type);
+		ret = raw_read8(s->i2c_addr, ctrl_reg, &ctrl_val);
+		*range = get_engineering_val(ctrl_val & LSM6DS0_RANGE_MASK,
+					     ranges, range_tbl_size);
+
+		data->sensor_range = *range;
+	} else {
+		*range = data->sensor_range;
+		ret = EC_SUCCESS;
+	}
 	return ret;
 }
 
@@ -229,6 +246,7 @@ static int set_data_rate(const struct motion_sensor_t *s,
 	int ret, val, odr_tbl_size;
 	uint8_t ctrl_reg, reg_val;
 	const struct accel_param_pair *data_rates;
+	struct lsm6ds0_data *data = s->drv_data;
 
 	ctrl_reg = get_ctrl_reg(s->type);
 	data_rates = get_odr_table(s->type, &odr_tbl_size);
@@ -246,6 +264,11 @@ static int set_data_rate(const struct motion_sensor_t *s,
 
 	val = (val & ~LSM6DS0_ODR_MASK) | reg_val;
 	ret = raw_write8(s->i2c_addr, ctrl_reg, val);
+
+	/* Invalidate local copy of odr.  The subsequent call to get_data_rate
+	 * will update our copy.
+	 */
+	data->sensor_odr = STALE;
 
 	/* CTRL_REG3_G 12h
 	 * [7] low-power mode = 0;
@@ -276,17 +299,27 @@ static int get_data_rate(const struct motion_sensor_t *s,
 	int ret, ctrl_val, odr_tbl_size;
 	uint8_t ctrl_reg;
 	const struct accel_param_pair *data_rates;
-	ctrl_reg = get_ctrl_reg(s->type);
+	struct lsm6ds0_data *data = s->drv_data;
 
-	ret = raw_read8(s->i2c_addr, ctrl_reg, &ctrl_val);
-	if (ret != EC_SUCCESS)
-		return EC_ERROR_UNKNOWN;
+	/* Only fetch the data from the sensor if we have marked it as stale */
+	if (STALE == data->sensor_odr) {
+		ctrl_reg = get_ctrl_reg(s->type);
 
-	data_rates = get_odr_table(s->type, &odr_tbl_size);
-	*rate = get_engineering_val(ctrl_val & LSM6DS0_ODR_MASK,
-			data_rates, odr_tbl_size);
-	return EC_SUCCESS;
+		ret = raw_read8(s->i2c_addr, ctrl_reg, &ctrl_val);
+		if (ret != EC_SUCCESS)
+			return EC_ERROR_UNKNOWN;
+
+		data_rates = get_odr_table(s->type, &odr_tbl_size);
+		*rate = get_engineering_val(ctrl_val & LSM6DS0_ODR_MASK,
+					    data_rates, odr_tbl_size);
+		data->sensor_odr = *rate;
+		return EC_SUCCESS;
+	} else {
+		*rate = data->sensor_odr;
+		return EC_SUCCESS;
+	}
 }
+#undef STALE
 
 #ifdef CONFIG_ACCEL_INTERRUPTS
 static int set_interrupt(const struct motion_sensor_t *s,
