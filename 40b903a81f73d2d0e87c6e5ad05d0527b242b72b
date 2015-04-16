@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "30d59acf_10b63d3a",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-16T17:19:28Z",
+      "side": 1,
+      "message": "Why do we need to hold all the controller mutexes before starting the scan? We can just call mutex_lock (through i2c_lock) when we\u0027re checking a particular port and release it when we\u0027re done checking that port. If the mutex is already held, the task will block until the mutex is available.",
+      "parentUuid": "506daeeb_09a6158c",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 0
+      },
+      "revId": "40b903a81f73d2d0e87c6e5ad05d0527b242b72b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10597645_fac247a1",
         "filename": "chip/mec1322/i2c.c",
         "patchSetId": 2
