@@ -128,7 +128,7 @@
  * If defined, determine battery-full using the status bit
  * from the battery instead of state-of-charge above threshold.
  */
-#define CONFIG_BATTERY_FULL_STATUS
+#undef CONFIG_BATTERY_FULL_STATUS
 
 /*
  * Support battery cut-off as host command and console command.
