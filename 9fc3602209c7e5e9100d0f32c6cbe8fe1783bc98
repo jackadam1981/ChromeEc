@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "506daeeb_7496884c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-17T04:34:08Z",
+      "side": 1,
+      "message": "vocabulary bikeshedding of the day :\nthe atomic unit for erasing is usually called \"page\" or \"erase block\" on those microcontrollers.\nA flash \"bank\" is a different concept (more or less area of flash you can access in parallel, usually 1 or 2 on those small uC)\n\nWell, I\u0027m seeing that the flash.h header already has the word bank everywhere, so I can just shut up about this.",
+      "range": {
+        "startLine": 11,
+        "startChar": 8,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "9fc3602209c7e5e9100d0f32c6cbe8fe1783bc98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "506daeeb_54002404",
+        "filename": "common/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-17T04:34:08Z",
+      "side": 1,
+      "message": "I\u0027m missing the point of __pstate_data_offset.\nit is equal to \u0026pstate_data, isn\u0027t it ?",
+      "range": {
+        "startLine": 88,
+        "startChar": 21,
+        "endLine": 88,
+        "endChar": 41
+      },
+      "revId": "9fc3602209c7e5e9100d0f32c6cbe8fe1783bc98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "506daeeb_7418c876",
+        "filename": "common/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-17T04:34:08Z",
+      "side": 1,
+      "message": "given that CONFIG_FLASH_MAPPED is defined, that\u0027s just a sophisticated memcpy ?\ndo we need it  ?",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 11
+      },
+      "revId": "9fc3602209c7e5e9100d0f32c6cbe8fe1783bc98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "506daeeb_f42b787b",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-17T04:34:08Z",
+      "side": 1,
+      "message": "if that\u0027s an empty section, that\u0027s not a big deal.\nmaybe the condition is overcomplicated.",
+      "range": {
+        "startLine": 45,
+        "startChar": 30,
+        "endLine": 46,
+        "endChar": 38
+      },
+      "revId": "9fc3602209c7e5e9100d0f32c6cbe8fe1783bc98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
