@@ -17,17 +17,6 @@
 #include "lb_common.h"
 #include "lightbar.h"
 
-static const char usage[] =
-	"\n"
-	"Usage:  %s [OPTIONS] [INFILE [OUTFILE]]\n"
-	"\n"
-	"This compiles or decompiles the lightbar programmable bytecode.\n"
-	"\n"
-	"Options:\n"
-	"  -d         Decode binary to ascii\n"
-	"  -v         Decode output should be verbose\n"
-	"\n";
-
 /* globals */
 static int hit_errors;
 static int opt_verbose;
@@ -81,15 +70,15 @@ static const int num_operands[] = {
 
 #define OP(NAME, BYTES, MNEMONIC) MNEMONIC,
 #include "lightbar_opcode_list.h"
-static const char const *opcode_sym[] = {
+static const char * const opcode_sym[] = {
 	LIGHTBAR_OPCODE_TABLE
 };
 #undef OP
 
-static const char const *control_sym[] = {
+static const char * const control_sym[] = {
 	"beg", "end", "phase", "<invalid>"
 };
-static const char const *color_sym[] = {
+static const char * const color_sym[] = {
 	"r", "g", "b", "<invalid>"
 };
 
