@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "907ac6a8_ece2af50",
+        "filename": "board/ryu_sh/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-04-17T16:55:07Z",
+      "side": 1,
+      "message": "I think it would be a little better. I\u0027m also experimenting with refactoring some of the motion sensor stuff to see if we can avoid things like this.",
+      "parentUuid": "d080bec6_5fb6ee3a",
+      "range": {
+        "startLine": 41,
+        "startChar": 35,
+        "endLine": 41,
+        "endChar": 36
+      },
+      "revId": "50fd9bb8e312c3afc5dfd2f08262199e8a58e1b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "904c868c_38e471d5",
         "filename": "board/ryu_sh/board.c",
         "patchSetId": 1
@@ -189,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "d0c51e25_b74e4a95",
+        "filename": "driver/accelgyro_lsm6ds0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-04-17T16:55:07Z",
+      "side": 1,
+      "message": "Whoops, I\u0027ll fix that.",
+      "parentUuid": "10597645_baea8fa3",
+      "range": {
+        "startLine": 193,
+        "startChar": 1,
+        "endLine": 195,
+        "endChar": 4
+      },
+      "revId": "50fd9bb8e312c3afc5dfd2f08262199e8a58e1b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0c51e25_d45af40a",
         "filename": "driver/accelgyro_lsm6ds0.c",
         "patchSetId": 1
@@ -200,6 +248,30 @@
       "writtenOn": "2015-04-17T16:25:59Z",
       "side": 1,
       "message": "is there a reason you chose to mark it stale? if the write was successful (ret \u003d\u003d EC_SUCCESS), then we know that the sensor range is the new value we wrote. on the next read, we can simply return the value we wrote.",
+      "range": {
+        "startLine": 196,
+        "startChar": 22,
+        "endLine": 196,
+        "endChar": 27
+      },
+      "revId": "50fd9bb8e312c3afc5dfd2f08262199e8a58e1b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "907ac6a8_ec7cef35",
+        "filename": "driver/accelgyro_lsm6ds0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-04-17T16:55:07Z",
+      "side": 1,
+      "message": "Unfounded paranoia really. The only reason I chose to mark it as stale was so that we at least perform 1 read from the sensor.\n\nI don\u0027t know if it\u0027s possible that a write transaction might complete successfully, but maybe due to a buggy sensor, it doesn\u0027t actually get set for some reason.",
+      "parentUuid": "d0c51e25_d45af40a",
       "range": {
         "startLine": 196,
         "startChar": 22,
