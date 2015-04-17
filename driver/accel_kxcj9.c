@@ -114,7 +114,7 @@ static int raw_write8(const int addr, const int reg, int data)
  *
  * @return EC_SUCCESS if successful, EC_ERROR_* otherwise
  */
-static int disable_sensor(const struct motion_sensor_t *s, int *ctrl1)
+static int disable_sensor(const struct accelgyro_sensor *s, int *ctrl1)
 {
 	int i, ret;
 
@@ -147,7 +147,7 @@ static int disable_sensor(const struct motion_sensor_t *s, int *ctrl1)
  *
  * @return EC_SUCCESS if successful, EC_ERROR_* otherwise
  */
-static int enable_sensor(const struct motion_sensor_t *s, int ctrl1)
+static int enable_sensor(const struct accelgyro_sensor *s, int ctrl1)
 {
 	int i, ret;
 
@@ -170,21 +170,23 @@ static int enable_sensor(const struct motion_sensor_t *s, int ctrl1)
 	return ret;
 }
 
-static int set_range(const struct motion_sensor_t *s,
+static int set_range(const struct accelgyro_sensor *s,
 				int range,
 				int rnd)
 {
 	int ret, ctrl1, ctrl1_new, index;
-	struct kxcj9_data *data = (struct kxcj9_data *)s->drv_data;
+	struct KXCJ9_data *data = (struct KXCJ9_data *)s->drv_data;
+	struct motion_sensor_chip *chip;
 
 	/* Find index for interface pair matching the specified range. */
 	index = find_param_index(range, rnd, ranges, ARRAY_SIZE(ranges));
 
 	/* Disable the sensor to allow for changing of critical parameters. */
-	mutex_lock(s->mutex);
+	chip = &motion_sensor_chips[s->chip_id];
+	mutex_lock(chip->mutex);
 	ret = disable_sensor(s, &ctrl1);
 	if (ret != EC_SUCCESS) {
-		mutex_unlock(s->mutex);
+		mutex_unlock(chip->mutex);
 		return ret;
 	}
 
@@ -202,35 +204,37 @@ static int set_range(const struct motion_sensor_t *s,
 	if (enable_sensor(s, ctrl1) != EC_SUCCESS)
 		ret = EC_ERROR_UNKNOWN;
 
-	mutex_unlock(s->mutex);
+	mutex_unlock(chip->mutex);
 
 	return ret;
 }
 
-static int get_range(const struct motion_sensor_t *s,
+static int get_range(const struct accelgyro_sensor *s,
 				int * const range)
 {
-	struct kxcj9_data *data = (struct kxcj9_data *)s->drv_data;
+	struct KXCJ9_data *data = (struct KXCJ9_data *)s->drv_data;
 	*range = ranges[data->sensor_range].val;
 	return EC_SUCCESS;
 }
 
-static int set_resolution(const struct motion_sensor_t *s,
+static int set_resolution(const struct accelgyro_sensor *s,
 				int res,
 				int rnd)
 {
 	int ret, ctrl1, ctrl1_new, index;
-	struct kxcj9_data *data = (struct kxcj9_data *)s->drv_data;
+	struct KXCJ9_data *data = (struct KXCJ9_data *)s->drv_data;
+	struct motion_sensor_chip *chip;
 
 	/* Find index for interface pair matching the specified resolution. */
 	index = find_param_index(res, rnd, resolutions,
 			ARRAY_SIZE(resolutions));
 
 	/* Disable the sensor to allow for changing of critical parameters. */
-	mutex_lock(s->mutex);
+	chip = &motion_sensor_chips[s->chip_id];
+	mutex_lock(chip->mutex);
 	ret = disable_sensor(s, &ctrl1);
 	if (ret != EC_SUCCESS) {
-		mutex_unlock(s->mutex);
+		mutex_unlock(chip->mutex);
 		return ret;
 	}
 
@@ -248,33 +252,35 @@ static int set_resolution(const struct motion_sensor_t *s,
 	if (enable_sensor(s, ctrl1) != EC_SUCCESS)
 		ret = EC_ERROR_UNKNOWN;
 
-	mutex_unlock(s->mutex);
+	mutex_unlock(chip->mutex);
 	return ret;
 }
 
-static int get_resolution(const struct motion_sensor_t *s,
+static int get_resolution(const struct accelgyro_sensor *s,
 			int *res)
 {
-	struct kxcj9_data *data = (struct kxcj9_data *)s->drv_data;
+	struct KXCJ9_data *data = (struct KXCJ9_data *)s->drv_data;
 	*res = resolutions[data->sensor_resolution].val;
 	return EC_SUCCESS;
 }
 
-static int set_data_rate(const struct motion_sensor_t *s,
+static int set_data_rate(const struct accelgyro_sensor *s,
 			int rate,
 			int rnd)
 {
 	int ret, ctrl1, index;
-	struct kxcj9_data *data = (struct kxcj9_data *)s->drv_data;
+	struct KXCJ9_data *data = (struct KXCJ9_data *)s->drv_data;
+	struct motion_sensor_chip *chip;
 
 	/* Find index for interface pair matching the specified rate. */
 	index = find_param_index(rate, rnd, datarates, ARRAY_SIZE(datarates));
 
 	/* Disable the sensor to allow for changing of critical parameters. */
-	mutex_lock(s->mutex);
+	chip = &motion_sensor_chips[s->chip_id];
+	mutex_lock(chip->mutex);
 	ret = disable_sensor(s, &ctrl1);
 	if (ret != EC_SUCCESS) {
-		mutex_unlock(s->mutex);
+		mutex_unlock(chip->mutex);
 		return ret;
 	}
 
@@ -290,31 +296,33 @@ static int set_data_rate(const struct motion_sensor_t *s,
 	if (enable_sensor(s, ctrl1) != EC_SUCCESS)
 		ret = EC_ERROR_UNKNOWN;
 
-	mutex_unlock(s->mutex);
+	mutex_unlock(chip->mutex);
 	return ret;
 }
 
-static int get_data_rate(const struct motion_sensor_t *s,
+static int get_data_rate(const struct accelgyro_sensor *s,
 				int *rate)
 {
-	struct kxcj9_data *data = (struct kxcj9_data *)s->drv_data;
+	struct KXCJ9_data *data = (struct KXCJ9_data *)s->drv_data;
 	*rate = datarates[data->sensor_datarate].val;
 	return EC_SUCCESS;
 }
 
 
 #ifdef CONFIG_ACCEL_INTERRUPTS
-static int set_interrupt(const struct motion_sensor_t *s,
+static int set_interrupt(const struct accelgyro_sensor *s,
 		unsigned int threshold)
 {
 	int ctrl1, tmp, ret;
-	struct kxcj9_data *data = (struct kxcj9_data *)s->drv_data;
+	struct KXCJ9_data *data = (struct KXCJ9_data *)s->drv_data;
+	struct motion_sensor_chip *chip;
 
 	/* Disable the sensor to allow for changing of critical parameters. */
-	mutex_lock(s->mutex);
+	chip = &motion_sensor_chips[s->chip_id];
+	mutex_lock(chip->mutex;)
 	ret = disable_sensor(s, &ctrl1);
 	if (ret != EC_SUCCESS) {
-		mutex_unlock(s->mutex);
+		mutex_unlock(chip->mutex);
 		return ret;
 	}
 
@@ -358,25 +366,27 @@ error_enable_sensor:
 	/* Re-enable the sensor. */
 	if (enable_sensor(s, ctrl1) != EC_SUCCESS)
 		ret = EC_ERROR_UNKNOWN;
-	mutex_unlock(s->mutex);
+	mutex_unlock(chip->mutex);
 	return ret;
 }
 #endif
 
-static int read(const struct motion_sensor_t *s, vector_3_t v)
+static int read(const struct accelgyro_sensor *s, vector_3_t v)
 {
 	uint8_t acc[6];
 	uint8_t reg = KXCJ9_XOUT_L;
 	int ret, multiplier;
-	struct kxcj9_data *data = (struct kxcj9_data *)s->drv_data;
+	struct KXCJ9_data *data = (struct KXCJ9_data *)s->drv_data;
+	struct motion_sensor_chip *chip;
 
 	/* Read 6 bytes starting at KXCJ9_XOUT_L. */
-	mutex_lock(s->mutex);
+	chip = &motion_sensor_chips[s->chip_id];
+	mutex_lock(chip->mutex);
 	i2c_lock(I2C_PORT_ACCEL, 1);
 	ret = i2c_xfer(I2C_PORT_ACCEL, s->i2c_addr, &reg, 1, acc, 6,
 			I2C_XFER_SINGLE);
 	i2c_lock(I2C_PORT_ACCEL, 0);
-	mutex_unlock(s->mutex);
+	mutex_unlock(chip->mutex);
 
 	if (ret != EC_SUCCESS)
 		return ret;
@@ -416,10 +426,13 @@ static int read(const struct motion_sensor_t *s, vector_3_t v)
 }
 
 #ifdef CONFIG_ACCEL_INTERRUPTS
-static int config_interrupt(const struct motion_sensor_t *s)
+static int config_interrupt(const struct accelgyro_sensor *s)
 {
 	int ctrl1;
-	mutex_lock(s->mutex);
+	struct motion_sensor_chip chip;
+
+	chip = &motion_sensor_chips[s->chip_id];
+	mutex_lock(chip->mutex);
 
 	/* Disable the sensor to allow for changing of critical parameters. */
 	ret = disable_sensor(s, &ctrl1);
@@ -462,24 +475,25 @@ static int config_interrupt(const struct motion_sensor_t *s)
 	/* Enable the sensor. */
 	ret = enable_sensor(s, ctrl1);
 cleanup_exit:
-	mutex_unlock(s->mutex);
+	mutex_unlock(chip->mutex);
 	return ret;
 }
 #endif
 
-static int init(const struct motion_sensor_t *s)
+static int init(const struct accelgyro_sensor *s)
 {
 	int ret = EC_SUCCESS;
 	int cnt = 0, tmp, range, rate;
+	struct motion_sensor_chip *chip = &motion_sensor_chips[s->chip_id];
 
 	/*
 	 * This sensor can be powered through an EC reboot, so the state of
 	 * the sensor is unknown here. Initiate software reset to restore
 	 * sensor to default.
 	 */
-	mutex_lock(s->mutex);
+	mutex_lock(chip->mutex);
 	ret = raw_write8(s->i2c_addr, KXCJ9_CTRL2, KXCJ9_CTRL2_SRST);
-	mutex_unlock(s->mutex);
+	mutex_unlock(chip->mutex);
 	if (ret != EC_SUCCESS)
 		return ret;
 
@@ -504,7 +518,7 @@ static int init(const struct motion_sensor_t *s)
 		}
 	} while (1);
 
-	ret = set_range(s, s->range, 1);
+	ret = set_range(s, s->default_range, 1);
 	if (ret != EC_SUCCESS)
 		return ret;
 
@@ -512,7 +526,7 @@ static int init(const struct motion_sensor_t *s)
 	if (ret != EC_SUCCESS)
 		return ret;
 
-	ret = set_data_rate(s, s->odr, 1);
+	ret = set_data_rate(s, s->default_odr, 1);
 	if (ret != EC_SUCCESS)
 		return ret;
 
@@ -527,7 +541,7 @@ static int init(const struct motion_sensor_t *s)
 	return ret;
 }
 
-const struct accelgyro_drv kxcj9_drv = {
+const struct accelgyro_drv KXCJ9_drv = {
 	.init = init,
 	.read = read,
 	.set_range = set_range,

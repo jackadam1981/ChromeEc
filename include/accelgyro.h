@@ -20,7 +20,7 @@ struct accelgyro_drv {
 	 * allocated on success.
 	 * @return EC_SUCCESS if successful, non-zero if error.
 	 */
-	int (*init)(const struct motion_sensor_t *s);
+	int (*init)(const struct accelgyro_sensor *s);
 
 	/**
 	 * Read all three accelerations of an accelerometer. Note that all
@@ -30,7 +30,7 @@ struct accelgyro_drv {
 	 * @v Vector to store acceleration (in units of counts).
 	 * @return EC_SUCCESS if successful, non-zero if error.
 	 */
-	int (*read)(const struct motion_sensor_t *s, vector_3_t v);
+	int (*read)(const struct accelgyro_sensor *s, vector_3_t v);
 
 	/**
 	 * Setter and getter methods for the sensor range. The sensor range
@@ -42,10 +42,10 @@ struct accelgyro_drv {
 	 * value. Otherwise, it rounds down.
 	 * @return EC_SUCCESS if successful, non-zero if error.
 	 */
-	int (*set_range)(const struct motion_sensor_t *s,
+	int (*set_range)(const struct accelgyro_sensor *s,
 			int range,
 			int rnd);
-	int (*get_range)(const struct motion_sensor_t *s,
+	int (*get_range)(const struct accelgyro_sensor *s,
 			int *range);
 
 	/**
@@ -56,10 +56,10 @@ struct accelgyro_drv {
 	 * value. Otherwise, it rounds down.
 	 * @return EC_SUCCESS if successful, non-zero if error.
 	 */
-	int (*set_resolution)(const struct motion_sensor_t *s,
+	int (*set_resolution)(const struct accelgyro_sensor *s,
 				int res,
 				int rnd);
-	int (*get_resolution)(const struct motion_sensor_t *s,
+	int (*get_resolution)(const struct accelgyro_sensor *s,
 				int *res);
 
 	/**
@@ -71,10 +71,10 @@ struct accelgyro_drv {
 	 * value. Otherwise, it rounds down.
 	 * @return EC_SUCCESS if successful, non-zero if error.
 	 */
-	int (*set_data_rate)(const struct motion_sensor_t *s,
+	int (*set_data_rate)(const struct accelgyro_sensor *s,
 				int rate,
 				int rnd);
-	int (*get_data_rate)(const struct motion_sensor_t *s,
+	int (*get_data_rate)(const struct accelgyro_sensor *s,
 				int *rate);
 
 #ifdef CONFIG_ACCEL_INTERRUPTS
@@ -85,7 +85,7 @@ struct accelgyro_drv {
 	 * @s Pointer to sensor data.
 	 * @threshold Threshold for interrupt in units of counts.
 	 */
-	int (*set_interrupt)(const struct motion_sensor_t *s,
+	int (*set_interrupt)(const struct accelgyro_sensor *s,
 			     unsigned int threshold);
 #endif
 };

@@ -1,0 +1,89 @@
+/* -*- mode:c -*-
+ *
+ * Copyright 2015 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/*
+ * Declare a null function so that we can take the reference of it.  This is
+ * used for the sensors that do not use a reference frame.
+*/
+#pragma weak null
+void null(void);
+
+#include "sensors.inc"
+
+/*
+ * Convenince macros for defining motion sensor chips and the sensors present on
+ * them.  Using these macros allows all of the data structures to be generated
+ * correctly and automatically.  This allows all changes to be limited to
+ * updating the sensors.inc file.
+ */
+/* ---- Motion Sensor Chips ----- */
+#define EXPAND_AS_CHIP_ENUM(ch, loc) ch##_##loc,
+
+/* Create mutexes per chip */
+#define EXPAND_AS_CHIP_MUTEX(ch, loc) static struct mutex ch##_##loc##_mutex;
+
+/* Create the chips and embed the sensors for that chip. */
+#define EXPAND_AS_CHIP_STRUCT(ch, loc)					\
+	{								\
+		.chip = MOTIONSENSE_CHIP_##ch,				\
+		.location = MOTIONSENSE_LOC_##loc,			\
+		.mutex = &ch##_##loc##_mutex,				\
+		.sensors = &ch##_##loc##_sensors,			\
+		.sensor_count = ARRAY_SIZE(ch##_##loc##_sensors),	\
+	},								\
+
+/* Create list of motion sensor chips */
+#define EXPAND_AS_CHIP(ch, loc)				\
+	struct motion_sensor_chip motion_sensor_chips[] = {	\
+		EXPAND_AS_CHIP_STRUCT(ch, loc)			\
+	};
+
+
+/* ---- Accel/Gyro Sensors ---- */
+#define EXPAND_AS_SENSOR_ENUM(ch, loc, type, addr, active, std_ref, odr,\
+			      range)					\
+	ch##_##loc##_##type,
+
+/* Create sensors' private data */
+#define EXPAND_AS_SENSOR_DATA(ch, loc, type, addr, active, std_ref, odr, \
+			      range)					 \
+	struct ch##_data g_##ch##_##loc##_##type##_data;
+
+/* Create the sensor */
+#define EXPAND_AS_SENSOR_STRUCT(ch, loc, typ, adr, active, std_ref, odr,    \
+				range)					    \
+	{		.active_mask = SENSOR_ACTIVE_##active,		    \
+			.name = #ch"_"#loc"_"#typ,			    \
+			.type = MOTIONSENSE_TYPE_##typ,		    \
+			.drv = &ch ## _drv,				    \
+			.drv_data = &g_##ch##_##loc##_##typ##_data,	    \
+			.chip_id = ch##_##loc,				    \
+			.i2c_addr = ch##_##adr,			    \
+			.rot_standard_ref = (const matrix_3x3_t *)&std_ref, \
+			.default_odr = odr,				    \
+			.default_range = range,			    \
+			},
+
+/* Create list of sensors for each chip */
+#define EXPAND_AS_SENSOR(ch,loc)					\
+	struct accelgyro_sensor ch##_##loc##_sensors[] = {		\
+		ch##_##loc##_SENSOR_LIST(EXPAND_AS_SENSOR_STRUCT)	\
+	};
+
+#define CREATE_SENSOR_DATA(ch, loc)			\
+	ch##_##loc##_SENSOR_LIST(EXPAND_AS_SENSOR_DATA)
+
+#define CREATE_SENSOR_ENUMS(ch, loc)					\
+	enum ch##_##loc##_sensors {					\
+		ch##_##loc##_SENSOR_LIST(EXPAND_AS_SENSOR_ENUM)	\
+			NUM_##ch##_##loc##_SENSORS			\
+	};
+
+/* Create 1 byte fields in order to get a count of the total sensors */
+#define EXPAND_AS_STRUCT(ch, loc, typ, addr, active, std_ref, odr,	\
+			 range)					\
+	char ch##typ##addr;

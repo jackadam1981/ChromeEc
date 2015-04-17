@@ -162,14 +162,15 @@ static inline int raw_write8(const int addr, const int reg, int data)
 	return i2c_write8(I2C_PORT_ACCEL, addr, reg, data);
 }
 
-static int set_range(const struct motion_sensor_t *s,
+static int set_range(const struct accelgyro_sensor *s,
 				int range,
 				int rnd)
 {
 	int ret, ctrl_val, range_tbl_size;
 	uint8_t ctrl_reg, reg_val;
 	const struct accel_param_pair *ranges;
-	struct lsm6ds0_data *data = (struct lsm6ds0_data *)s->drv_data;
+	struct LSM6DS0_data *data = (struct LSM6DS0_data *)s->drv_data;
+	struct motion_sensor_chip *chip = &motion_sensor_chips[s->chip_id];
 
 	ctrl_reg = get_ctrl_reg(s->type);
 	ranges = get_range_table(s->type, &range_tbl_size);
@@ -180,7 +181,7 @@ static int set_range(const struct motion_sensor_t *s,
 	 * Lock accel resource to prevent another task from attempting
 	 * to write accel parameters until we are done.
 	 */
-	mutex_lock(s->mutex);
+	mutex_lock(chip->mutex);
 
 	ret = raw_read8(s->i2c_addr, ctrl_reg, &ctrl_val);
 	if (ret != EC_SUCCESS)
@@ -195,20 +196,20 @@ static int set_range(const struct motion_sensor_t *s,
 							 range_tbl_size);
 
 accel_cleanup:
-	mutex_unlock(s->mutex);
+	mutex_unlock(chip->mutex);
 	return EC_SUCCESS;
 }
 
-static int get_range(const struct motion_sensor_t *s,
+static int get_range(const struct accelgyro_sensor *s,
 				int *range)
 {
-	struct lsm6ds0_data *data = (struct lsm6ds0_data *)s->drv_data;
+	struct LSM6DS0_data *data = (struct LSM6DS0_data *)s->drv_data;
 
 	*range = data->sensor_range;
 	return EC_SUCCESS;
 }
 
-static int set_resolution(const struct motion_sensor_t *s,
+static int set_resolution(const struct accelgyro_sensor *s,
 				int res,
 				int rnd)
 {
@@ -216,21 +217,22 @@ static int set_resolution(const struct motion_sensor_t *s,
 	return EC_SUCCESS;
 }
 
-static int get_resolution(const struct motion_sensor_t *s,
+static int get_resolution(const struct accelgyro_sensor *s,
 				int *res)
 {
 	*res = LSM6DS0_RESOLUTION;
 	return EC_SUCCESS;
 }
 
-static int set_data_rate(const struct motion_sensor_t *s,
+static int set_data_rate(const struct accelgyro_sensor *s,
 				int rate,
 				int rnd)
 {
 	int ret, val, odr_tbl_size;
 	uint8_t ctrl_reg, reg_val;
 	const struct accel_param_pair *data_rates;
-	struct lsm6ds0_data *data = s->drv_data;
+	struct LSM6DS0_data *data = s->drv_data;
+	struct motion_sensor_chip *chip = &motion_sensor_chips[s->chip_id];
 
 	ctrl_reg = get_ctrl_reg(s->type);
 	data_rates = get_odr_table(s->type, &odr_tbl_size);
@@ -240,7 +242,7 @@ static int set_data_rate(const struct motion_sensor_t *s,
 	 * Lock accel resource to prevent another task from attempting
 	 * to write accel parameters until we are done.
 	 */
-	mutex_lock(s->mutex);
+	mutex_lock(chip->mutex);
 
 	ret = raw_read8(s->i2c_addr, ctrl_reg, &val);
 	if (ret != EC_SUCCESS)
@@ -273,21 +275,21 @@ static int set_data_rate(const struct motion_sensor_t *s,
 	}
 
 accel_cleanup:
-	mutex_unlock(s->mutex);
+	mutex_unlock(chip->mutex);
 	return EC_SUCCESS;
 }
 
-static int get_data_rate(const struct motion_sensor_t *s,
+static int get_data_rate(const struct accelgyro_sensor *s,
 				int *rate)
 {
-	struct lsm6ds0_data *data = s->drv_data;
+	struct LSM6DS0_data *data = s->drv_data;
 
 	*rate = data->sensor_odr;
 	return EC_SUCCESS;
 }
 
 #ifdef CONFIG_ACCEL_INTERRUPTS
-static int set_interrupt(const struct motion_sensor_t *s,
+static int set_interrupt(const struct accelgyro_sensor *s,
 			       unsigned int threshold)
 {
 	/* Currently unsupported. */
@@ -295,7 +297,7 @@ static int set_interrupt(const struct motion_sensor_t *s,
 }
 #endif
 
-static int is_data_ready(const struct motion_sensor_t *s, int *ready)
+static int is_data_ready(const struct accelgyro_sensor *s, int *ready)
 {
 	int ret, tmp;
 
@@ -314,7 +316,7 @@ static int is_data_ready(const struct motion_sensor_t *s, int *ready)
 	return EC_SUCCESS;
 }
 
-static int read(const struct motion_sensor_t *s, vector_3_t v)
+static int read(const struct accelgyro_sensor *s, vector_3_t v)
 {
 	uint8_t data[6];
 	uint8_t xyz_reg;
@@ -376,9 +378,10 @@ static int read(const struct motion_sensor_t *s, vector_3_t v)
 	return EC_SUCCESS;
 }
 
-static int init(const struct motion_sensor_t *s)
+static int init(const struct accelgyro_sensor *s)
 {
 	int ret = 0, tmp;
+	struct motion_sensor_chip *chip = &motion_sensor_chips[s->chip_id];
 
 	ret = raw_read8(s->i2c_addr, LSM6DS0_WHO_AM_I_REG, &tmp);
 	if (ret)
@@ -401,15 +404,15 @@ static int init(const struct motion_sensor_t *s)
 	 */
 	if (MOTIONSENSE_TYPE_ACCEL == s->type) {
 
-		mutex_lock(s->mutex);
+		mutex_lock(chip->mutex);
 		ret = raw_read8(s->i2c_addr, LSM6DS0_CTRL_REG8, &tmp);
 		if (ret) {
-			mutex_unlock(s->mutex);
+			mutex_unlock(chip->mutex);
 			return EC_ERROR_UNKNOWN;
 		}
 		tmp |= (1 | LSM6DS0_BDU_ENABLE);
 		ret = raw_write8(s->i2c_addr, LSM6DS0_CTRL_REG8, tmp);
-		mutex_unlock(s->mutex);
+		mutex_unlock(chip->mutex);
 
 		if (ret)
 			return EC_ERROR_UNKNOWN;
@@ -420,33 +423,33 @@ static int init(const struct motion_sensor_t *s)
 		if (ret)
 			return EC_ERROR_UNKNOWN;
 
-		ret = set_range(s, s->range, 1);
+		ret = set_range(s, s->default_range, 1);
 		if (ret)
 			return EC_ERROR_UNKNOWN;
 
-		ret = set_data_rate(s, s->odr, 1);
+		ret = set_data_rate(s, s->default_odr, 1);
 		if (ret)
 			return EC_ERROR_UNKNOWN;
 	}
 
 	if (MOTIONSENSE_TYPE_GYRO == s->type) {
 		/* Config GYRO Range */
-		ret = set_range(s, s->range, 1);
+		ret = set_range(s, s->default_range, 1);
 		if (ret)
 			return EC_ERROR_UNKNOWN;
 
 		/* Config ACCEL & GYRO ODR */
-		ret = set_data_rate(s, s->odr, 1);
+		ret = set_data_rate(s, s->default_odr, 1);
 		if (ret)
 			return EC_ERROR_UNKNOWN;
 	}
 
 	CPRINTF("[%T %s: MS Done Init type:0x%X range:%d odr:%d]\n",
-			s->name, s->type, s->range, s->odr);
+			s->name, s->type, s->default_range, s->default_odr);
 	return ret;
 }
 
-const struct accelgyro_drv lsm6ds0_drv = {
+const struct accelgyro_drv LSM6DS0_drv = {
 	.init = init,
 	.read = read,
 	.set_range = set_range,

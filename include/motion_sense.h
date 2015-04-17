@@ -54,8 +54,36 @@ struct motion_sensor_t {
 	vector_3_t xyz;
 };
 
+struct motion_sensor_chip {
+	enum motionsensor_chip chip;
+	enum motionsensor_location location;
+	struct mutex *mutex;
+	void *sensors; /* Pointer to a list of sensors on the chip */
+	int sensor_count;
+};
+
+struct accelgyro_sensor {
+	uint32_t active_mask;
+	char *name;
+	enum motionsensor_type type;
+	const struct accelgyro_drv *drv;
+	void *drv_data;
+	uint8_t chip_id;
+	uint8_t i2c_addr;
+	const matrix_3x3_t *rot_standard_ref;
+
+	int default_odr;
+	int default_range;
+
+	enum sensor_state state;
+	enum chipset_state_mask active;
+	vector_3_t raw_xyz;
+	vector_3_t xyz;
+};
+
+
 /* Defined at board level. */
-extern struct motion_sensor_t motion_sensors[];
+extern struct motion_sensor_chip motion_sensor_chips[];
 extern const unsigned int motion_sensor_count;
 
 /*
