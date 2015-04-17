@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10597645_6f2c53c7",
+        "filename": "chip/mec1322/util/pack_ec.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2015-04-17T14:10:47Z",
+      "side": 1,
+      "message": "Should add a TODO to get rid of this temp file and just hold it in memory. It will simplify the logic.",
+      "revId": "b51ec9542f534acdd21789671971bdecc99b751d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10597645_8f378711",
+        "filename": "chip/mec1322/util/pack_ec.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2015-04-17T14:10:47Z",
+      "side": 1,
+      "message": "obvious space to remove",
+      "revId": "b51ec9542f534acdd21789671971bdecc99b751d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
