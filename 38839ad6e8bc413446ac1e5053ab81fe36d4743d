@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0c51e25_57bfe643",
+        "filename": "common/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-17T17:13:17Z",
+      "side": 1,
+      "message": "seems that flash_physical_dataptr() should have been (const void *) rather than (const char *) but that\u0027s unrelated to this CL",
+      "range": {
+        "startLine": 141,
+        "startChar": 2,
+        "endLine": 141,
+        "endChar": 32
+      },
+      "revId": "38839ad6e8bc413446ac1e5053ab81fe36d4743d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
