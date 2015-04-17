@@ -33,6 +33,7 @@ CHIP_SPI_SIZE_KB?=256
 # Commands to convert $^ to $@.tmp
 cmd_obj_to_bin = $(OBJCOPY) --gap-fill=0xff -O binary $< $@.tmp1 ; \
 		 ${SCRIPTDIR}/pack_ec.py -o $@.tmp -i $@.tmp1 \
+		--loader_file $(mec1322-lfw-flat) \
 		 --payload_key ${SCRIPTDIR}/rsakey_sign_payload.pem \
 		 --header_key ${SCRIPTDIR}/rsakey_sign_header.pem \
 		 --spi_size ${CHIP_SPI_SIZE_KB} ; rm -f $@.tmp1

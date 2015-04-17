@@ -18,7 +18,11 @@ SECTIONS
         *(.image.RO)
     } > FLASH =0xff
     . = ALIGN(CONFIG_FLASH_BANK_SIZE);
+#if (CONFIG_FW_RO_OFF == CONFIG_FW_RW_OFF)
+    .image.RW : AT(CONFIG_FLASH_BASE + CONFIG_FW_RO_OFF + CONFIG_FW_RO_SIZE) {
+#else
     .image.RW : AT(CONFIG_FLASH_BASE + CONFIG_FW_RW_OFF) {
+#endif
         *(.image.RW)
     } > FLASH =0xff
     .padding : AT(CONFIG_FLASH_BASE + CONFIG_FLASH_SIZE - 1) {
