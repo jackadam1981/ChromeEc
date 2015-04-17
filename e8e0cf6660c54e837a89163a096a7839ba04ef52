@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10597645_d4051242",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-17T04:50:34Z",
+      "side": 1,
+      "message": "there seem to be only the master code in this CL",
+      "range": {
+        "startLine": 91,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 40
+      },
+      "revId": "e8e0cf6660c54e837a89163a096a7839ba04ef52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "506daeeb_14b4ecbf",
+        "filename": "board/cr50_a1/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-17T04:50:34Z",
+      "side": 1,
+      "message": "don\u0027t know if that\u0027s right or wrong\nbut having push-pull output setting on an I2C bus looks scary",
+      "range": {
+        "startLine": 41,
+        "startChar": 28,
+        "endLine": 41,
+        "endChar": 40
+      },
+      "revId": "e8e0cf6660c54e837a89163a096a7839ba04ef52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10597645_b40bbe5c",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-17T04:50:34Z",
+      "side": 1,
+      "message": "wrong CL ?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 16
+      },
+      "revId": "e8e0cf6660c54e837a89163a096a7839ba04ef52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "506daeeb_54d26404",
+        "filename": "chip/g/registers.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-17T04:50:34Z",
+      "side": 1,
+      "message": "that\u0027s not an intrinsic property of this chip, so this shouldn\u0027t be in this file.\nusually our constant is CONFIG_HOSTCMD_I2C_SLAVE_ADDR (As in include/config.h)",
+      "range": {
+        "startLine": 53,
+        "startChar": 8,
+        "endLine": 53,
+        "endChar": 28
+      },
+      "revId": "e8e0cf6660c54e837a89163a096a7839ba04ef52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
