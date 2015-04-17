@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0c51e25_bd32ab69",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-17T18:20:15Z",
+      "side": 0,
+      "message": "Some microcontrollers might have real code/data at address 0 (eg the beginning of the RO partition might be 0).\nFor correctness, we need this on GCC unless some recent versions made -fdelete-null-pointer-checks a no-op.\nis clang doing similar optimization ?",
+      "range": {
+        "startLine": 24,
+        "startChar": 14,
+        "endLine": 24,
+        "endChar": 43
+      },
+      "revId": "bbdf126ef58bcc29130a4b5287da11b208ddf5bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0c51e25_ddc697c8",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-17T18:20:15Z",
+      "side": 0,
+      "message": "stack space is critical for us,\nso unless I have the proof this is actually no-op on current toolchain, I want to keep it.",
+      "range": {
+        "startLine": 25,
+        "startChar": 51,
+        "endLine": 25,
+        "endChar": 67
+      },
+      "revId": "bbdf126ef58bcc29130a4b5287da11b208ddf5bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "907ac6a8_d2dd0896",
+        "filename": "util/lbcc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-17T18:20:15Z",
+      "side": 0,
+      "message": "I\u0027m not really familiar with this tool, but the right fix seems to be to display this usage string when the right option is passed rather than removing it.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 6
+      },
+      "revId": "bbdf126ef58bcc29130a4b5287da11b208ddf5bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
