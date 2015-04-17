@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "907ac6a8_816bc41c",
+        "filename": "common/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-17T15:45:32Z",
+      "side": 1,
+      "message": "I think the point of this is because RW doesn\u0027t have the .rodata.pstate section, so therefore doesn\u0027t have pstate_data. This variable however is defined in both RO and RW. So, it provides a way for RW to get the address of where pstate_data is in RO (line 208).\n\nBut, I\u0027m not sure all this is really worth saving 4 bytes in RW.",
+      "parentUuid": "506daeeb_54002404",
+      "range": {
+        "startLine": 88,
+        "startChar": 21,
+        "endLine": 88,
+        "endChar": 41
+      },
+      "revId": "9fc3602209c7e5e9100d0f32c6cbe8fe1783bc98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "506daeeb_7418c876",
         "filename": "common/flash.c",
         "patchSetId": 2
