@@ -68,6 +68,30 @@
       "revId": "bbdf126ef58bcc29130a4b5287da11b208ddf5bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "707552b8_bcd08078",
+        "filename": "util/lbcc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-04-17T18:56:19Z",
+      "side": 0,
+      "message": "looks like it should have a usage() helper and all the inline fprintf statements should be converted to that",
+      "parentUuid": "907ac6a8_d2dd0896",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 6
+      },
+      "revId": "bbdf126ef58bcc29130a4b5287da11b208ddf5bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
