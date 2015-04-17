@@ -34,6 +34,24 @@
       "revId": "70460c8cd985e54de244dacb66bc6ed73c698285",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "904c868c_134d164e",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-17T02:16:00Z",
+      "side": 1,
+      "message": "More debug is needed as I cannot get the correct line level.",
+      "parentUuid": "904c868c_78778903",
+      "revId": "70460c8cd985e54de244dacb66bc6ed73c698285",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
