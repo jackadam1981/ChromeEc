@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d080bec6_eeef0eb3",
+        "filename": "board/ryu/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-17T00:10:40Z",
+      "side": 1,
+      "message": "at some point it seems we really need to standardize the naming of these GPIOs that are used for type C. i know the schematics keep changing the signal names, but it seems we should come up with a software functionality name for these so that we can move towards more code in common/. i prefer \"5V_EN\" here, i think it more closely resembles the functionality.",
+      "range": {
+        "startLine": 67,
+        "startChar": 36,
+        "endLine": 67,
+        "endChar": 49
+      },
+      "revId": "ea6d6475fc2a20e7f2d7d76e835c98560077fa9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
