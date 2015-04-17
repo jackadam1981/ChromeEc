@@ -72,8 +72,7 @@ enum tap_states {
 };
 
 /* Tap sensor to use */
-static struct motion_sensor_t *sensor =
-&motion_sensors[CONFIG_SENSOR_BATTERY_TAP];
+static struct motion_sensor_chip *s_chip = motion_sensor_chips;
 
 /* Tap state information */
 static int history_z[MAX_WINDOW];  /* Changes in Z */
@@ -116,6 +115,11 @@ static int gesture_tap_for_battery(void)
 
 	int history_idx_inner, state_p;
 	int ret = 0;
+
+	struct accelgyro_sensor *sensor =		 \
+		(struct accelgyro_sensor *)
+		s_chip[CONFIG_SENSOR_CHIP_BATTERY_TAP]	\
+		.sensors + CONFIG_SENSOR_BATTERY_TAP;
 
 	/* Get data */
 	x = sensor->xyz[0];
@@ -286,6 +290,11 @@ DECLARE_HOOK(HOOK_CHIPSET_RESUME, gesture_chipset_resume,
 
 static void gesture_chipset_suspend(void)
 {
+	struct accelgyro_sensor *sensor =		 \
+		(struct accelgyro_sensor *)
+		s_chip[CONFIG_SENSOR_CHIP_BATTERY_TAP]	\
+		.sensors + CONFIG_SENSOR_BATTERY_TAP;
+
 	/* Set ODR to desired value */
 	sensor->drv->set_data_rate(sensor, TAP_ODR, 1);
 
@@ -321,6 +330,11 @@ void gesture_calc(void)
 static int command_tap_info(int argc, char **argv)
 {
 	int odr, val;
+	struct accelgyro_sensor *sensor =		 \
+		(struct accelgyro_sensor *)
+		s_chip[CONFIG_SENSOR_CHIP_BATTERY_TAP]	\
+		.sensors + CONFIG_SENSOR_BATTERY_TAP;
+
 
 	ccprintf("tap:   %s\n", (tap_detection && !lid_is_open()) ?
 					"on" : "off");

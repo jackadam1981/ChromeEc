@@ -117,13 +117,13 @@ enum lsm6ds0_bdu {
 #define LSM6DS0_RESOLUTION      16
 
 /* Run-time configurable parameters */
-struct lsm6ds0_data {
+struct LSM6DS0_data {
 	/* Current range */
 	int sensor_range;
 	/* Current output data rate */
 	int sensor_odr;
 };
 
-extern const struct accelgyro_drv lsm6ds0_drv;
+extern const struct accelgyro_drv LSM6DS0_drv;
 
 #endif /* __CROS_EC_ACCEL_LSM6DS0_H */
