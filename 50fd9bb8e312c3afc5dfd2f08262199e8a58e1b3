@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d080bec6_5fb6ee3a",
+        "filename": "board/ryu_sh/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-17T16:25:59Z",
+      "side": 1,
+      "message": "you could add a check that the ARRAY_SIZE of g_lsm6ds0_data[] plus the ARRAY_SIZE of g_kxcj9_data[] must equal the ARRAY_SIZE of motion_sensors[].\n\nbut, i\u0027m not sure that\u0027s any better. then if we add a new sensor driver, we\u0027d have to change the check.",
+      "parentUuid": "30d59acf_3add6095",
+      "range": {
+        "startLine": 41,
+        "startChar": 35,
+        "endLine": 41,
+        "endChar": 36
+      },
+      "revId": "50fd9bb8e312c3afc5dfd2f08262199e8a58e1b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "904c868c_38e471d5",
         "filename": "board/ryu_sh/board.c",
         "patchSetId": 1
@@ -136,6 +160,52 @@
       "side": 1,
       "message": "Agreed.",
       "parentUuid": "904c868c_98bda5a6",
+      "revId": "50fd9bb8e312c3afc5dfd2f08262199e8a58e1b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10597645_baea8fa3",
+        "filename": "driver/accelgyro_lsm6ds0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-17T16:25:59Z",
+      "side": 1,
+      "message": "nit: our style is for multi-line comments have a blank first line:\n\n/*\n * this is a multi-\n * line comment\n */",
+      "range": {
+        "startLine": 193,
+        "startChar": 1,
+        "endLine": 195,
+        "endChar": 4
+      },
+      "revId": "50fd9bb8e312c3afc5dfd2f08262199e8a58e1b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0c51e25_d45af40a",
+        "filename": "driver/accelgyro_lsm6ds0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-17T16:25:59Z",
+      "side": 1,
+      "message": "is there a reason you chose to mark it stale? if the write was successful (ret \u003d\u003d EC_SUCCESS), then we know that the sensor range is the new value we wrote. on the next read, we can simply return the value we wrote.",
+      "range": {
+        "startLine": 196,
+        "startChar": 22,
+        "endLine": 196,
+        "endChar": 27
+      },
       "revId": "50fd9bb8e312c3afc5dfd2f08262199e8a58e1b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
