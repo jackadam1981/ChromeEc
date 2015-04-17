@@ -22,6 +22,30 @@
       "revId": "ea6d6475fc2a20e7f2d7d76e835c98560077fa9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10dc16fc_ab5342f0",
+        "filename": "board/ryu/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-17T00:22:33Z",
+      "side": 1,
+      "message": "CHGR_OTG is actually not a 5V enable.\nThe actual enable is done inside one of the charger i2c register.\nthe i2c access was slow here, so I keep the GPIO access (and CHGR_OTG has the nice property to be the right value with current software)",
+      "parentUuid": "d080bec6_eeef0eb3",
+      "range": {
+        "startLine": 67,
+        "startChar": 36,
+        "endLine": 67,
+        "endChar": 49
+      },
+      "revId": "ea6d6475fc2a20e7f2d7d76e835c98560077fa9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
