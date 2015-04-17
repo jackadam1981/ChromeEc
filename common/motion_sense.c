@@ -68,16 +68,33 @@ static int accel_disp;
  */
 static struct mutex g_sensor_mutex;
 
+static struct accelgyro_sensor* get_sensor_in_list(int s_idx)
+{
+	struct accelgyro_sensor *sensor;
+	struct motion_sensor_chip *c = motion_sensor_chips;
+	int chip_idx = 0;
+
+	while (1) {
+		if (s_idx < c->sensor_count) {
+			sensor = (accelgyro_sensor *)c->sensors + s_idx;
+			break;
+		} else {
+			s_idx -= c->sensor_count;
+			c++;
+		}
+	}
+
+	return sensor;
+}
+
 static void motion_sense_shutdown(void)
 {
 	int i;
-	struct motion_sensor_t *sensor;
+	struct accelgyro_sensor *sensor;
 
 	for (i = 0; i < motion_sensor_count; i++) {
-		sensor = &motion_sensors[i];
+		sensor = get_sensor_in_list(i);
 		sensor->active = SENSOR_ACTIVE_S5;
-		sensor->odr    = sensor->default_odr;
-		sensor->range  = sensor->default_range;
 		if ((sensor->state == SENSOR_INITIALIZED) &&
 		   !(sensor->active_mask & sensor->active)) {
 			sensor->drv->set_data_rate(sensor, 0, 0);
@@ -91,12 +108,12 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, motion_sense_shutdown,
 static void motion_sense_suspend(void)
 {
 	int i;
-	struct motion_sensor_t *sensor;
+	struct accelgyro_sensor *sensor;
 
 	accel_interval_ms = SUSPEND_SAMPLING_INTERVAL;
 
 	for (i = 0; i < motion_sensor_count; i++) {
-		sensor = &motion_sensors[i];
+		sensor = get_sensor_in_list(i);
 
 		/* if it is in s5, don't enter suspend */
 		if (sensor->active == SENSOR_ACTIVE_S5)
@@ -118,16 +135,18 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, motion_sense_suspend,
 static void motion_sense_resume(void)
 {
 	int i;
-	struct motion_sensor_t *sensor;
+	int odr;
+	struct accelgyro_sensor *sensor;
 
 	accel_interval_ms = accel_interval_ap_on_ms;
 
 	for (i = 0; i < motion_sensor_count; i++) {
-		sensor = &motion_sensors[i];
+		sensor = get_sensor_in_list(i);
 		sensor->active = SENSOR_ACTIVE_S0;
 		if (sensor->state == SENSOR_INITIALIZED) {
 			/* Put back the odr previously set. */
-			sensor->drv->set_data_rate(sensor, sensor->odr, 1);
+			sensor->drv->get_data_rate(sensor, &odr);
+			sensor->drv->set_data_rate(sensor, odr, 1);
 		}
 	}
 }
@@ -145,7 +164,7 @@ static inline void update_sense_data(uint8_t *lpc_status,
 		uint16_t *lpc_data, int *psample_id)
 {
 	int i;
-	struct motion_sensor_t *sensor;
+	struct accelgyro_sensor *sensor;
 	/*
 	 * Set the busy bit before writing the sensor data. Increment
 	 * the counter and clear the busy bit after writing the sensor
@@ -169,7 +188,7 @@ static inline void update_sense_data(uint8_t *lpc_status,
 	lpc_data[0] = LID_ANGLE_UNRELIABLE;
 #endif
 	for (i = 0; i < motion_sensor_count; i++) {
-		sensor = &motion_sensors[i];
+		sensor = get_sensor_in_list(i);
 		lpc_data[1+3*i] = sensor->xyz[X];
 		lpc_data[2+3*i] = sensor->xyz[Y];
 		lpc_data[3+3*i] = sensor->xyz[Z];
@@ -184,7 +203,7 @@ static inline void update_sense_data(uint8_t *lpc_status,
 	*lpc_status = EC_MEMMAP_ACC_STATUS_PRESENCE_BIT | *psample_id;
 }
 
-static inline void motion_sense_init(struct motion_sensor_t *sensor)
+static inline void motion_sense_init(struct accelgyro_sensor *sensor)
 {
 	int ret, cnt = 3;
 
@@ -199,7 +218,7 @@ static inline void motion_sense_init(struct motion_sensor_t *sensor)
 		sensor->state = SENSOR_INITIALIZED;
 }
 
-static int motion_sense_read(struct motion_sensor_t *sensor)
+static int motion_sense_read(struct accelgyro_sensor *sensor)
 {
 	if (sensor->state != SENSOR_INITIALIZED)
 		return EC_ERROR_UNKNOWN;
@@ -224,13 +243,13 @@ void motion_sense_task(void)
 	uint16_t *lpc_data;
 	int sample_id = 0;
 	int rd_cnt;
-	struct motion_sensor_t *sensor;
+	struct accelgyro_sensor *sensor;
 
 	lpc_status = host_get_memmap(EC_MEMMAP_ACC_STATUS);
 	lpc_data = (uint16_t *)host_get_memmap(EC_MEMMAP_ACC_DATA);
 
 	for (i = 0; i < motion_sensor_count; ++i) {
-		sensor = &motion_sensors[i];
+		sensor = get_sensor_in_list(i);
 		sensor->state = SENSOR_NOT_INITIALIZED;
 
 		sensor->odr = sensor->default_odr;
@@ -336,14 +355,25 @@ void motion_sense_task(void)
 /* Host commands */
 
 /* Function to map host sensor IDs to motion sensor. */
-static struct motion_sensor_t
+static struct accelgyro_sensor
 	*host_sensor_id_to_motion_sensor(int host_id)
 {
-	struct motion_sensor_t *sensor;
+	struct motion_sensor_chip *chip = motion_sensor_chips;
+	struct accelgyro_sensor *sensor;
 
 	if (host_id >= motion_sensor_count)
 		return NULL;
-	sensor = &motion_sensors[host_id];
+
+	while (1) {
+		if (host_id < chip->sensor_count) {
+			sensor = (struct accelgyro_sensor *)chip->sensors;
+			sensor += host_id;
+			break;
+		} else {
+			host_id -= chip->sensor_count;
+			chip++;
+		}
+	};
 
 	/* if sensor is powered and initialized, return match */
 	if ((sensor->active & sensor->active_mask)
@@ -354,11 +384,19 @@ static struct motion_sensor_t
 	return NULL;
 }
 
+/* Function to obtain parent motion sensor chip given a sensor. */
+static struct motion_sensor_chip
+	*get_motion_sensor_chip(struct accelgyro_sensor *s)
+{
+	return &motion_sensor_chips[s->chip_id];
+}
+
 static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_motion_sense *in = args->params;
 	struct ec_response_motion_sense *out = args->response;
-	struct motion_sensor_t *sensor;
+	struct accelgyro_sensor *sensor;
+	struct motion_sensor_chip *chip;
 	int i, data, ret = EC_RES_INVALID_PARAM, reported;
 
 	switch (in->cmd) {
@@ -372,7 +410,7 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		reported = MIN(motion_sensor_count, in->dump.max_sensor_count);
 		mutex_lock(&g_sensor_mutex);
 		for (i = 0; i < reported; i++) {
-			sensor = &motion_sensors[i];
+			sensor = host_sensor_id_to_motion_sensor(i);
 			out->dump.sensor[i].flags =
 				MOTIONSENSE_SENSOR_FLAG_PRESENT;
 			/* casting from int to s16 */
@@ -392,9 +430,10 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		if (sensor == NULL)
 			return EC_RES_INVALID_PARAM;
 
+		chip = get_motion_sensor_chip(sensor);
 		out->info.type = sensor->type;
-		out->info.location = sensor->location;
-		out->info.chip = sensor->chip;
+		out->info.location = chip->location;
+		out->info.chip = chip->chip;
 
 		args->response_size = sizeof(out->info);
 		break;
@@ -441,11 +480,7 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		}
 
 		sensor->drv->get_data_rate(sensor, &data);
-
-		/* Save configuration parameter: ODR */
-		sensor->odr = data;
 		out->sensor_odr.ret = data;
-
 		args->response_size = sizeof(out->sensor_odr);
 		break;
 
@@ -469,10 +504,6 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		}
 
 		sensor->drv->get_range(sensor, &data);
-
-		/* Save configuration parameter: range */
-		sensor->range = data;
-
 		out->sensor_range.ret = data;
 		args->response_size = sizeof(out->sensor_range);
 		break;

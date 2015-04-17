@@ -252,18 +252,6 @@ int board_is_discharging_on_ac(void)
 	return discharging_on_ac;
 }
 
-/* Base Sensor mutex */
-static struct mutex g_base_mutex;
-
-/* Lid Sensor mutex */
-static struct mutex g_lid_mutex;
-
-/* kxcj9 local/private data */
-struct kxcj9_data g_kxcj9_data;
-
-/* lsm6ds0 local sensor data (per-sensor) */
-struct lsm6ds0_data g_lsm6ds0_data[2];
-
 /* Four Motion sensors */
 /* Matrix to rotate accelrator into standard reference frame */
 const matrix_3x3_t base_standard_ref = {
@@ -278,56 +266,22 @@ const matrix_3x3_t lid_standard_ref = {
 	{ 0,  0, FLOAT_TO_FP(-1)}
 };
 
-struct motion_sensor_t motion_sensors[] = {
-	/*
-	 * Note: lsm6ds0: supports accelerometer and gyro sensor
-	 * Requirement: accelerometer sensor must init before gyro sensor
-	 * DO NOT change the order of the following table.
-	 */
-	{.name = "Base",
-	 .active_mask = SENSOR_ACTIVE_S0_S3_S5,
-	 .chip = MOTIONSENSE_CHIP_LSM6DS0,
-	 .type = MOTIONSENSE_TYPE_ACCEL,
-	 .location = MOTIONSENSE_LOC_BASE,
-	 .drv = &lsm6ds0_drv,
-	 .mutex = &g_base_mutex,
-	 .drv_data = &g_lsm6ds0_data[0],
-	 .i2c_addr = LSM6DS0_ADDR1,
-	 .rot_standard_ref = &base_standard_ref,
-	 .default_odr = 119000,
-	 .default_range = 2
-	},
+#include "sensors.h"
+/* Instantiate sensor chip mutexes */
+MOTION_SENSOR_CHIPS(EXPAND_AS_CHIP_MUTEX)
 
-	{.name = "Lid",
-	 .active_mask = SENSOR_ACTIVE_S0,
-	 .chip = MOTIONSENSE_CHIP_KXCJ9,
-	 .type = MOTIONSENSE_TYPE_ACCEL,
-	 .location = MOTIONSENSE_LOC_LID,
-	 .drv = &kxcj9_drv,
-	 .mutex = &g_lid_mutex,
-	 .drv_data = &g_kxcj9_data,
-	 .i2c_addr = KXCJ9_ADDR0,
-	 .rot_standard_ref = &lid_standard_ref,
-	 .default_odr = 100000,
-	 .default_range = 2
-	},
+/* Instantiate per-sensor configurable parameters */
+MOTION_SENSOR_CHIPS(CREATE_SENSOR_DATA)
 
-	{.name = "Base Gyro",
-	 .active_mask = SENSOR_ACTIVE_S0,
-	 .chip = MOTIONSENSE_CHIP_LSM6DS0,
-	 .type = MOTIONSENSE_TYPE_GYRO,
-	 .location = MOTIONSENSE_LOC_BASE,
-	 .drv = &lsm6ds0_drv,
-	 .mutex = &g_base_mutex,
-	 .drv_data = &g_lsm6ds0_data[1],
-	 .i2c_addr = LSM6DS0_ADDR1,
-	 .rot_standard_ref = NULL,
-	 .default_odr = 119000,
-	 .default_range = 2000
-	},
+/* Instantiate all of the motion sensors */
+MOTION_SENSOR_CHIPS(EXPAND_AS_SENSOR)
 
+/* Instantiate the sensor chip list */
+struct motion_sensor_chip motion_sensor_chips[] = {
+	MOTION_SENSOR_CHIPS(EXPAND_AS_CHIP_STRUCT)
 };
-const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+
+const unsigned int motion_sensor_count = MOTION_SENSOR_COUNT;
 
 /* Define the accelerometer orientation matrices. */
 const struct accel_orientation acc_orient = {

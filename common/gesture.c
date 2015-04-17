@@ -72,8 +72,10 @@ enum tap_states {
 };
 
 /* Tap sensor to use */
-static struct motion_sensor_t *sensor =
-&motion_sensors[CONFIG_SENSOR_BATTERY_TAP];
+static struct accelgyro_sensor *sensor =
+	(struct accelgyro_sensor *)
+	&motion_sensor_chips[CONFIG_SENSOR_CHIP_BATTERY_TAP].sensors + \
+	CONFIG_SENSOR_BATTERY_TAP;
 
 /* Tap state information */
 static int history_z[MAX_WINDOW];  /* Changes in Z */

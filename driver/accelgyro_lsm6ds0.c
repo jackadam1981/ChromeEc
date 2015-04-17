@@ -481,7 +481,7 @@ static int init(const struct motion_sensor_t *s)
 	return ret;
 }
 
-const struct accelgyro_drv lsm6ds0_drv = {
+const struct accelgyro_drv LSM6DS0_drv = {
 	.init = init,
 	.read = read,
 	.set_range = set_range,
