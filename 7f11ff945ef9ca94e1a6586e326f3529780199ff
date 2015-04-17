@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0b782b3_b04e5e95",
+        "filename": "include/config.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-17T23:52:01Z",
+      "side": 1,
+      "message": "If defined, the chip references its GPIOs by port and mask.  If not defined, the chip references its GPIOs by pins number.  In this case, CONFIG_GPIO_PINS_PER_REG (or whatever we decide to call that option - see gpio.list) must be defined.",
+      "range": {
+        "startLine": 664,
+        "startChar": 0,
+        "endLine": 664,
+        "endChar": 63
+      },
+      "revId": "7f11ff945ef9ca94e1a6586e326f3529780199ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0b782b3_4dd3cd8a",
+        "filename": "include/gpio_list.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-17T23:52:01Z",
+      "side": 1,
+      "message": "I\u0027m confused by \n\n   gpionum/10\n\nand\n\n   (1\u003c\u003c(gpionum%10))\n\nAren\u0027t those MEC1322-specific?  Some other EC may group the GPIOs differently.  And isn\u0027t each pinbase really a port?  (That is, each group of 10 interrupts shares a set of registers/interrupt/etc?)\n\nI think this is a worthwhile change overall, but I think we need to figure out how to make it more general.\n\nPerhaps if the chip config does something like\n\n  #define CONFIG_GPIO_PER_REG 10\n\nor\n\n  #define CONFIG_GPIO_GROUP_SIZE 10\n\n(open to suggestions on the name)\n\nand then this code can use that value to calculate the port and mask values instead of hard-coding 10.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 64
+      },
+      "revId": "7f11ff945ef9ca94e1a6586e326f3529780199ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70a39280_8c89cbf8",
+        "filename": "include/gpio_list.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-17T23:52:01Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be (pinbase/CONFIG_GPIO_PER_REG)?\n\nOtherwise, the GPIO list uses pin number, and the alternate list uses pin number / 10.",
+      "range": {
+        "startLine": 43,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 10
+      },
+      "revId": "7f11ff945ef9ca94e1a6586e326f3529780199ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
