@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f03ce2f3_ff64dfcb",
+        "filename": "driver/accelgyro_lsm6ds0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-18T01:19:00Z",
+      "side": 1,
+      "message": "this isn\u0027t quite right. we actually round the rate arg to the nearest valid value in get_reg_val(). So, we can\u0027t save this non-rounded rate here, we have to use the rounded rate. that\u0027s what get_engineering_val() is for. so, i think this line should be:\ndata-\u003esensor_odr \u003d get_engineering_val(reg_val);",
+      "range": {
+        "startLine": 239,
+        "startChar": 2,
+        "endLine": 239,
+        "endChar": 25
+      },
+      "revId": "1d467142ca1faae7e90a7feb0365b6a06caf9722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
