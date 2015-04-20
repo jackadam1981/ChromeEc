@@ -36,18 +36,7 @@ const struct battery_info *battery_get_info(void)
 	return &info;
 }
 
-static int battery_command_cut_off(struct host_cmd_handler_args *args)
+int board_cut_off_battery(void)
 {
 	return sb_write(SB_SHIP_MODE_ADDR, SB_SHIP_MODE_DATA);
 }
-DECLARE_HOST_COMMAND(EC_CMD_BATTERY_CUT_OFF, battery_command_cut_off,
-		     EC_VER_MASK(0));
-
-static int command_battcutoff(int argc, char **argv)
-{
-	return sb_write(SB_SHIP_MODE_ADDR, SB_SHIP_MODE_DATA);
-}
-DECLARE_CONSOLE_COMMAND(battcutoff, command_battcutoff,
-			NULL,
-			"Enable battery cutoff (ship mode)",
-			NULL);
