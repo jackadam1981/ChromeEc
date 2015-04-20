@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f055c239_31c4c0e2",
+        "filename": "util/lbcc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-04-20T17:17:36Z",
+      "side": 1,
+      "message": "We should use this instead of commenting it out.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 2
+      },
+      "revId": "e3b950963fc67ff3907fa8fbd643d28326c201a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f055c239_b1645094",
+        "filename": "util/lbcc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-04-20T17:17:36Z",
+      "side": 1,
+      "message": "fprintf(stderr, usage, progname);",
+      "range": {
+        "startLine": 634,
+        "startChar": 2,
+        "endLine": 634,
+        "endChar": 9
+      },
+      "revId": "e3b950963fc67ff3907fa8fbd643d28326c201a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
