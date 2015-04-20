@@ -465,7 +465,7 @@ void spi_event(enum gpio_signal signal)
 		 * AP started a transaction but we weren't ready for it.
 		 * Tell AP we weren't ready, and ignore the received data.
 		 */
-		CPRINTS("SPI not ready");
+		CPRINTS("SPI not ready, state=%d", state);
 		tx_status(EC_SPI_NOT_READY);
 		state = SPI_STATE_RX_BAD;
 		return;
