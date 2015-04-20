@@ -116,6 +116,53 @@
       "revId": "7f11ff945ef9ca94e1a6586e326f3529780199ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d01a7eb3_ec089f5c",
+        "filename": "include/gpio_list.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-20T20:55:30Z",
+      "side": 1,
+      "message": "But the caller of this macro (in gpio.inc) only knows about pin numbers now.\n\nIf they\u0027re going to know about pinbase for the ALTERNATE macro, I\u0027m not sure how hiding it from them for the GPIO macro helps at all.",
+      "parentUuid": "50592e72_7ae459d6",
+      "range": {
+        "startLine": 43,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 10
+      },
+      "revId": "7f11ff945ef9ca94e1a6586e326f3529780199ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d01a7eb3_8c280b81",
+        "filename": "include/gpio_signal.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-20T20:55:30Z",
+      "side": 1,
+      "message": "Hmm.  Does it work to \n\n#define GPIO(name, ...) GPIO_##name,\n\nThen this doesn\u0027t care about the config at all.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 57
+      },
+      "revId": "7f11ff945ef9ca94e1a6586e326f3529780199ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
