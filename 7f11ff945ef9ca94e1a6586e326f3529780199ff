@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "904d66b1_5ccebd03",
+        "filename": "include/gpio_list.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1116180
+      },
+      "writtenOn": "2015-04-20T01:03:57Z",
+      "side": 1,
+      "message": "Yes, it is MEC1322-specific. For now, we cannot make sure the 3rd kind of EC will use what format.\n\nI ever put the custom GPIO macro into chips/mec1322/gpio_macro.h. (patch set 12).\nLet chip define its format.\nDo you think if it is better?\n\nAnd isn\u0027t each pinbase really a port?  (That is, each group of 10 interrupts shares a set of registers/interrupt/etc?)\nNo.",
+      "parentUuid": "f0b782b3_4dd3cd8a",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 64
+      },
+      "revId": "7f11ff945ef9ca94e1a6586e326f3529780199ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70a39280_8c89cbf8",
         "filename": "include/gpio_list.h",
         "patchSetId": 19
@@ -59,6 +83,30 @@
       "writtenOn": "2015-04-17T23:52:01Z",
       "side": 1,
       "message": "Shouldn\u0027t this be (pinbase/CONFIG_GPIO_PER_REG)?\n\nOtherwise, the GPIO list uses pin number, and the alternate list uses pin number / 10.",
+      "range": {
+        "startLine": 43,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 10
+      },
+      "revId": "7f11ff945ef9ca94e1a6586e326f3529780199ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50592e72_7ae459d6",
+        "filename": "include/gpio_list.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1116180
+      },
+      "writtenOn": "2015-04-20T01:03:57Z",
+      "side": 1,
+      "message": "No, because pinbase is already the value divided by 10.",
+      "parentUuid": "70a39280_8c89cbf8",
       "range": {
         "startLine": 43,
         "startChar": 3,
