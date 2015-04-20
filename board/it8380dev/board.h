@@ -14,6 +14,8 @@
 #define CONFIG_KEYBOARD_BOARD_CONFIG
 #undef CONFIG_KEYBOARD_KSI_WUC_INT
 #undef CONFIG_SPI_USE_CS1
+#define CONFIG_FANS 1
+#undef CHIP_FAMILY_IT839X
 
 /* Debug */
 #undef CONFIG_KEYBOARD_DEBUG
@@ -25,7 +27,7 @@
 #include "gpio_signal.h"
 
 enum pwm_channel {
-	PWM_CH_0,
+	PWM_CH_FAN,
 	PWM_CH_1,
 	PWM_CH_2,
 	PWM_CH_3,
