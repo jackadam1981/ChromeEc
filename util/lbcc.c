@@ -17,6 +17,7 @@
 #include "lb_common.h"
 #include "lightbar.h"
 
+/*
 static const char usage[] =
 	"\n"
 	"Usage:  %s [OPTIONS] [INFILE [OUTFILE]]\n"
@@ -27,7 +28,7 @@ static const char usage[] =
 	"  -d         Decode binary to ascii\n"
 	"  -v         Decode output should be verbose\n"
 	"\n";
-
+*/
 /* globals */
 static int hit_errors;
 static int opt_verbose;
