@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "700f1279_77d3d8d8",
+        "filename": "board/plankton/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-21T15:14:21Z",
+      "side": 1,
+      "message": "we already have was_usb_mode, which is equal to !in_usb_mode. seems like we only need one of these variables.",
+      "range": {
+        "startLine": 147,
+        "startChar": 2,
+        "endLine": 147,
+        "endChar": 13
+      },
+      "revId": "c4364988f8a69b4b6695a46048b94d0a6dd2801f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
