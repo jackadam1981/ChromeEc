@@ -9,6 +9,8 @@
 #include "console.h"
 #include "host_command.h"
 #include "port80.h"
+#include "task.h"
+#include "timer.h"
 #include "util.h"
 
 #define CPRINTF(format, args...) cprintf(CC_PORT80, format, ## args)
@@ -20,9 +22,16 @@ static int writes;    /* Number of port 80 writes so far */
 static int last_boot; /* Last code from previous boot */
 static int scroll;
 static int print_in_int = 1;
+#ifdef HAS_TASK_PORT80
+static int task_en;   /* Port 80 task control */
+static int task_timeout = -1;
+#endif
 
 void port_80_write(int data)
 {
+	if (data == PORT_80_IGNORE)
+		return;
+
 	/*
 	 * Note that this currently prints from inside the LPC interrupt
 	 * itself.  If you're dropping events, turn print_in_int off.
@@ -42,6 +51,27 @@ void port_80_write(int data)
 	history[writes % ARRAY_SIZE(history)] = data;
 	writes++;
 }
+
+#ifdef HAS_TASK_PORT80
+/*
+ * Port80 POST code support limitation:
+ * - POST code 0xFF is ignored.
+ * - POST code frequency is greater than 1 msec.
+ */
+void port80_task(void)
+{
+#ifdef CONFIG_PORT80_TASK_EN
+	task_en = 1;
+	task_timeout = MSEC;
+#endif
+
+	while (1) {
+		port_80_write(get_port_80(task_en));
+
+		task_wait_event(task_timeout);
+	}
+}
+#endif
 
 /*****************************************************************************/
 /* Console commands */
@@ -69,6 +99,25 @@ static int command_port80(int argc, char **argv)
 		} else if (!strcasecmp(argv[1], "flush")) {
 			writes = 0;
 			return EC_SUCCESS;
+#ifdef HAS_TASK_PORT80
+		} else if (!strcasecmp(argv[1], "task")) {
+			task_en = !task_en;
+			ccprintf("task %sabled\n", task_en ? "en" : "dis");
+			if (task_en) {
+				task_timeout = MSEC;
+				task_wake(TASK_ID_PORT80);
+			} else
+				task_timeout = -1;
+			return EC_SUCCESS;
+		} else if (!strcasecmp(argv[1], "last")) {
+			i = get_port_80(task_en);
+			ccprintf("last port80 write: ");
+			if (i != PORT_80_IGNORE)
+				ccprintf(" %02x\n", i);
+			else
+				ccprintf("n/a\n");
+			return EC_SUCCESS;
+#endif
 		} else {
 			return EC_ERROR_PARAM1;
 		}

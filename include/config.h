@@ -1005,6 +1005,11 @@
 
 /*****************************************************************************/
 
+/* Enable task-based Port80 trapping via polling by default*/
+#undef CONFIG_PORT80_TASK_EN
+
+/*****************************************************************************/
+
 /* Compile common code to support power button debouncing */
 #undef CONFIG_POWER_BUTTON
 
