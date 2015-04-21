@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90148689_a71404c7",
+        "filename": "chip/mec1322/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-21T23:41:15Z",
+      "side": 1,
+      "message": "Typo: LOADER",
+      "range": {
+        "startLine": 105,
+        "startChar": 37,
+        "endLine": 105,
+        "endChar": 60
+      },
+      "revId": "dbad529f312d9c672aff5725384aad09710bfaff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90148689_4710b0d2",
+        "filename": "chip/mec1322/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-21T23:41:15Z",
+      "side": 1,
+      "message": "LOADER_SIZE + RO_SIZE?",
+      "range": {
+        "startLine": 125,
+        "startChar": 40,
+        "endLine": 125,
+        "endChar": 57
+      },
+      "revId": "dbad529f312d9c672aff5725384aad09710bfaff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90148689_e71efce4",
+        "filename": "chip/mec1322/util/pack_ec.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-21T23:41:15Z",
+      "side": 1,
+      "message": "Still space here",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 2
+      },
+      "revId": "dbad529f312d9c672aff5725384aad09710bfaff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
