@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f02302ea_a43ebbdb",
+        "filename": "include/gpio_list.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-04-21T15:49:02Z",
+      "side": 1,
+      "message": "This is getting a bit complicated for my taste.  If I was doing this I think I would keep the parameters to GPIO well defined and change the second and third parameters to a single one called pin.  Then have that parameters meaning be architecture dependent.  MEC would:\n\n#define GPIO_PIN(number) (number / 10), (1 \u003c\u003c (gpionum%10))\n\nand STM32 would:\n\n#define GPIO_PIN(port, pin) port, pin\n\nI would also do something similar with the SHORTNAMES define, I would change that to a function macro that takes name, port, and pin, and constructs a GPIO name from that, then each board can define that at will.  The result would be no convoluted #if logic in this file, which would be better.",
+      "revId": "b9236cc2a0572e520c45b70e5b85ab07173e4d8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
