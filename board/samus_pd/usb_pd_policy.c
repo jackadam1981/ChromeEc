@@ -157,8 +157,14 @@ int pd_check_vconn_swap(int port)
 	return gpio_get_level(GPIO_PCH_SLP_S5_L);
 }
 
-void pd_execute_data_swap(int port, int data_role)
+void pd_execute_data_swap(int port, int data_role, int polarity)
 {
+	/*
+	 * If DFP, then need to connect the SS lines. Else, if
+	 * UFP, then disconnect SS lines.
+	 */
+	board_set_usb_mux(port, data_role == PD_ROLE_DFP ?
+			  TYPEC_MUX_USB : TYPEC_MUX_NONE, polarity);
 	/* Open USB switches when taking UFP role */
 	set_usb_switches(port, (data_role == PD_ROLE_UFP));
 }
