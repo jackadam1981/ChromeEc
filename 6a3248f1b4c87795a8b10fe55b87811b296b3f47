@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f02302ea_228116fd",
+        "filename": "chip/it83xx/peci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-22T20:38:28Z",
+      "side": 1,
+      "message": "not sure why we are silently clipping the size here.\nEither this should never happen, then we can put an ASSERT() instead, or we should warn the caller.",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 39
+      },
+      "revId": "6a3248f1b4c87795a8b10fe55b87811b296b3f47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d01a7eb3_8e762d82",
+        "filename": "chip/it83xx/peci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-22T20:38:28Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 38
+      },
+      "revId": "6a3248f1b4c87795a8b10fe55b87811b296b3f47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f02302ea_c2711a8d",
+        "filename": "chip/it83xx/peci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-22T20:38:28Z",
+      "side": 1,
+      "message": "instead of polling very fast,\ndo we have a PECI interrupt ? so we can use task_wait_event",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 2
+      },
+      "revId": "6a3248f1b4c87795a8b10fe55b87811b296b3f47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
