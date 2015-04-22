@@ -1147,6 +1147,19 @@ static void pd_set_data_role(int port, int role)
 {
 	pd[port].data_role = role;
 	pd_execute_data_swap(port, role);
+
+#ifdef CONFIG_USBC_SS_MUX
+#ifdef CONFIG_USBC_SS_MUX_DFP_ONLY
+	/*
+	 * Need to connect SS mux for if new data role is DFP.
+	 * If new data role is UFP, then disconnect the SS mux.
+	 */
+	board_set_usb_mux(port, role == PD_ROLE_DFP ?
+			  TYPEC_MUX_USB : TYPEC_MUX_NONE, pd[port].polarity);
+#else
+	board_set_usb_mux(port, TYPEC_MUX_USB, pd[port].polarity);
+#endif
+#endif
 }
 
 static void pd_dr_swap(int port)
@@ -1998,10 +2011,9 @@ void pd_task(void)
 				pd[port].polarity =
 					DFP_GET_POLARITY(cc1_volt, cc2_volt);
 				pd_select_polarity(port, pd[port].polarity);
-#ifdef CONFIG_USBC_SS_MUX
-				board_set_usb_mux(port, TYPEC_MUX_USB,
-						  pd[port].polarity);
-#endif
+
+				/* initial data role for source is DFP */
+				pd_set_data_role(port, PD_ROLE_DFP);
 #ifndef CONFIG_USBC_BACKWARDS_COMPATIBLE_DFP
 				/* Enable VBUS */
 				if (pd_set_power_supply_ready(port)) {
@@ -2012,8 +2024,6 @@ void pd_task(void)
 					break;
 				}
 #endif
-				/* initial data role for source is DFP */
-				pd_set_data_role(port, PD_ROLE_DFP);
 
 #ifdef CONFIG_USBC_VCONN
 				pd_set_vconn(port, pd[port].polarity, 1);
@@ -2421,6 +2431,7 @@ void pd_task(void)
 			typec_set_input_current_limit(
 				port, typec_curr, TYPE_C_VOLTAGE);
 #endif
+
 			pd[port].flags |= PD_FLAGS_CHECK_PR_ROLE |
 					  PD_FLAGS_CHECK_DR_ROLE;
 			set_state(port, PD_STATE_SNK_DISCOVERY);
