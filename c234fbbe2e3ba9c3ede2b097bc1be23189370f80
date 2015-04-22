@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5083ee1c_ea48a7bb",
+        "filename": "board/cid/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2015-04-22T15:45:11Z",
+      "side": 1,
+      "message": "I think we want this to be (EC_WIRELESS_SWITCH_WLAN | EC_WIRELESS_SWITCH_WLAN_POWER).",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 61
+      },
+      "revId": "c234fbbe2e3ba9c3ede2b097bc1be23189370f80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5083ee1c_0db9950e",
+        "filename": "board/lulu/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2015-04-22T15:45:11Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "c234fbbe2e3ba9c3ede2b097bc1be23189370f80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
