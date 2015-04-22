@@ -428,6 +428,7 @@ static void spi_send_response_packet(struct host_packet *pkt)
  *
  * @param signal	GPIO signal for the NSS pin
  */
+extern int spistate;
 void spi_event(enum gpio_signal signal)
 {
 	stm32_dma_chan_t *rxdma;
@@ -465,7 +466,8 @@ void spi_event(enum gpio_signal signal)
 		 * AP started a transaction but we weren't ready for it.
 		 * Tell AP we weren't ready, and ignore the received data.
 		 */
-		CPRINTS("SPI not ready");
+		CPRINTS("SPI not ready, state = %d", state);
+		spistate = state;
 		tx_status(EC_SPI_NOT_READY);
 		state = SPI_STATE_RX_BAD;
 		return;
