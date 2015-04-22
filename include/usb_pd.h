@@ -964,8 +964,9 @@ int pd_charge_from_device(uint16_t vid, uint16_t pid);
  *
  * @param port USB-C port number
  * @param data_role new data role
+ * @param polarity CC orientation
  */
-void pd_execute_data_swap(int port, int data_role);
+void pd_execute_data_swap(int port, int data_role, int polarity);
 
 /**
  * Get PD device info used for VDO_CMD_SEND_INFO / VDO_CMD_READ_INFO

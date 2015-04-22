@@ -127,7 +127,7 @@ void pd_check_dr_role(int port, int dr_role, int flags)
 {
 }
 
-void pd_execute_data_swap(int port, int data_role)
+void pd_execute_data_swap(int port, int data_role, int polarity)
 {
 	/* TODO: what do we need to do to change host controller data role? */
 }

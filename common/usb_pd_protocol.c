@@ -1146,7 +1146,7 @@ void pd_request_data_swap(int port)
 static void pd_set_data_role(int port, int role)
 {
 	pd[port].data_role = role;
-	pd_execute_data_swap(port, role);
+	pd_execute_data_swap(port, role, pd[port].polarity);
 }
 
 static void pd_dr_swap(int port)

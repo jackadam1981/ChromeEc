@@ -294,7 +294,7 @@ int pd_check_data_swap(int port, int data_role)
 	return (data_role == PD_ROLE_DFP) ? 1 : 0;
 }
 
-void pd_execute_data_swap(int port, int data_role)
+void pd_execute_data_swap(int port, int data_role, int polarity)
 {
 	/* Do nothing */
 }
