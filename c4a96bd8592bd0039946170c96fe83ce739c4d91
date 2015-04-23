@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d076fe11_95410e1a",
+        "filename": "chip/mec1322/util/pack_ec.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2015-04-23T06:47:30Z",
+      "side": 1,
+      "message": "@Divya\nIn Python you can have a string as the first item of a def, and it automatically gets added as documentation. Strings in python come in a number of forms, including ones in triple quotes which allows multiline strings. Python has support for showing the documentation associated with a definition.\n\nIn this case it would have been more appropriate to have left the existing triple quoted string as documentation, and inserted this TODO as a comment.\n\nComments in python start with a \"#\", and extend to the end of line.",
+      "revId": "c4a96bd8592bd0039946170c96fe83ce739c4d91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
