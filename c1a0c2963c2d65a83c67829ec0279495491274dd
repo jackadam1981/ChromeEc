@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5083ee1c_f36182b9",
+        "filename": "common/port80.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-23T23:32:34Z",
+      "side": 1,
+      "message": "And now you don\u0027t need to pass task_en to port_80_read(), because the post code is now stored in the history buffer.",
+      "range": {
+        "startLine": 116,
+        "startChar": 3,
+        "endLine": 117,
+        "endChar": 49
+      },
+      "revId": "c1a0c2963c2d65a83c67829ec0279495491274dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
