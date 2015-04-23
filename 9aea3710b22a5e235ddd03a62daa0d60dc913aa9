@@ -34,6 +34,24 @@
       "revId": "9aea3710b22a5e235ddd03a62daa0d60dc913aa9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30867a2e_6fe20553",
+        "filename": "board/cyan/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-23T23:42:31Z",
+      "side": 0,
+      "message": "It cannot take be commented out since it is in the middle of the #define, so instead of removing it, I will move it to the bottom and add a TODO comment.",
+      "parentUuid": "10a416b9_98c84059",
+      "revId": "9aea3710b22a5e235ddd03a62daa0d60dc913aa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

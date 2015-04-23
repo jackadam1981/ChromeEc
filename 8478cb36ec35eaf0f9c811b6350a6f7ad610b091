@@ -16,6 +16,24 @@
       "revId": "8478cb36ec35eaf0f9c811b6350a6f7ad610b091",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d076fe11_10b0c9b9",
+        "filename": "board/cyan/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-23T23:42:31Z",
+      "side": 1,
+      "message": "For optimal power saving, input with internal pull up is the recommended setting from the vendor on no-connect pins.",
+      "parentUuid": "d0d43e30_b6759d78",
+      "revId": "8478cb36ec35eaf0f9c811b6350a6f7ad610b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
