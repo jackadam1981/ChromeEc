@@ -142,6 +142,29 @@
     },
     {
       "key": {
+        "uuid": "d076fe11_fb5eb3c3",
+        "filename": "common/port80.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-23T19:13:41Z",
+      "side": 1,
+      "message": "Seems like you could just call this \"poll\".\n\ni \u003d port_80_read();\nif (i !\u003d PORT_80_IGNORE)\n    port_80_write(i);\n\nAnd then drop down and let the existing code print the port 80 history.",
+      "range": {
+        "startLine": 111,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 28
+      },
+      "revId": "4883a21c231151edb47c32587d577303d19b2a02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30867a2e_6f7be574",
         "filename": "include/config.h",
         "patchSetId": 1
