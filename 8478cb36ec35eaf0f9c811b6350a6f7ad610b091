@@ -34,6 +34,24 @@
       "revId": "8478cb36ec35eaf0f9c811b6350a6f7ad610b091",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10a416b9_589178c9",
+        "filename": "board/cyan/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-23T23:48:08Z",
+      "side": 1,
+      "message": "Is that not the default setting? The datasheet is unclear as to the defaults. Also, some GPIOs are missing from this file -- are some of those NC?\n\nIf PU / Input isn\u0027t the power-on default, maybe we should go ahead and initialize all of our GPIOs this way?",
+      "parentUuid": "d076fe11_10b0c9b9",
+      "revId": "8478cb36ec35eaf0f9c811b6350a6f7ad610b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
