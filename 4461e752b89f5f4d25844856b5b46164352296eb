@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0d43e30_b6148878",
+        "filename": "board/orco/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002584
+      },
+      "writtenOn": "2015-04-23T17:03:20Z",
+      "side": 1,
+      "message": "replace first tab with space.\n#define\u003cspace\u003eSB_FET_OFF\u003ctab\u003e0x34",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 7
+      },
+      "revId": "4461e752b89f5f4d25844856b5b46164352296eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
