@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "30867a2e_0f67c9d5",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-23T18:56:50Z",
+      "side": 1,
+      "message": "OK, I will remove the comment.",
+      "parentUuid": "d076fe11_bb0b5bd7",
+      "range": {
+        "startLine": 305,
+        "startChar": 2,
+        "endLine": 306,
+        "endChar": 3
+      },
+      "revId": "4883a21c231151edb47c32587d577303d19b2a02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30867a2e_ef86f5e4",
         "filename": "chip/mec1322/lpc.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-04-23T18:49:12Z",
       "side": 1,
       "message": "Why wouldn\u0027t we just always clear it?",
+      "range": {
+        "startLine": 318,
+        "startChar": 4,
+        "endLine": 318,
+        "endChar": 45
+      },
+      "revId": "4883a21c231151edb47c32587d577303d19b2a02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d076fe11_1b6d4f85",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-23T18:56:50Z",
+      "side": 1,
+      "message": "This is not cleared when Port80 tasked is stopped so that \"port80 last\" will still return the last post code.",
+      "parentUuid": "30867a2e_ef86f5e4",
       "range": {
         "startLine": 318,
         "startChar": 4,
