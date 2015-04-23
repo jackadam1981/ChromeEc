@@ -22,6 +22,30 @@
       "revId": "d61d03fbc68fcac65079671ecb1731364c6dcf4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30867a2e_4f22a123",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-23T23:33:30Z",
+      "side": 1,
+      "message": "For the bit madness :\nHere the bitmap value is half BMC-decoded from the edge timings :\n a zero is 0, but a one is actually 2x \u00271\u0027 bits (one per half period)\n\nSo, For Cable Reset \u003d\u003d RST-1 : SYNC-1 : RST-1 : SYNC-3\n\nRST-1 \u003d 00111      \u003d\u003e 00111111\nSYNC-1 \u003d 11000   \u003d\u003e 1111000\nSYNC-3 \u003d 00110   \u003d\u003e 0011110\nPreamble (ending with 1) \u003d ...01010101   \u003d\u003e  ...011011011011\n\nTransmitted on the wire LSB first :\nSYNC-3  ::   RST-1  ::  SYNC-1 ::   RST-1  :: Preamble \n0011110 :: 00111111 :: 1111000 :: 00111111 :: 11011011011011\nWith quartet grouping :\n0011:1100:0111:1111:1110:0000:1111:1111:0110:1101\n 3    C    7    F    E    0    F    F     6    D\nSo the last 32-bit are :\n  0x3c7ffe0ff  (including the 30 bits from the 4 reset K-codes and 2 bits from the preamble last 1)",
+      "parentUuid": "9070061a_8e957c3d",
+      "range": {
+        "startLine": 184,
+        "startChar": 13,
+        "endLine": 184,
+        "endChar": 23
+      },
+      "revId": "d61d03fbc68fcac65079671ecb1731364c6dcf4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
