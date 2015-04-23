@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d076fe11_100c493d",
+        "filename": "board/cyan/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-23T23:22:52Z",
+      "side": 0,
+      "message": "Temporary removed motionsense task because of I2C issue during S3, debug is in progress under strago board and will port the fix and re-enable motionsense task when the proper fix is available.",
+      "revId": "9aea3710b22a5e235ddd03a62daa0d60dc913aa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
