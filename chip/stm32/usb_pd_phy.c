@@ -300,7 +300,7 @@ static void tx_dma_done(void *data)
 	pd_phy[port].tim_tx->cr1 &= ~1;
 
 #if defined(CONFIG_COMMON_RUNTIME) && defined(CONFIG_DMA_DEFAULT_HANDLERS)
-	task_set_event(PORT_TO_TASK_ID(port), TASK_EVENT_DMA_TC, 0);
+	task_set_event(PORT_PHY_TO_TASK_ID(port), TASK_EVENT_DMA_TC, 0);
 #endif
 }
 
