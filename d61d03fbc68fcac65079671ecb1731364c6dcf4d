@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5083ee1c_73d832f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-23T23:55:33Z",
+      "side": 1,
+      "message": "We used to be on the edge CPU-wise in the pd_find_preamble() loop [adding more processing would delay us enough that we are slower than the data arriving on the wire rather than faster]\nIf you have 10 more minutes to dedicate to this patch, it would be interesting to check whether our GoodCrc turn-around time has been degraded.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 5
+      },
+      "revId": "d61d03fbc68fcac65079671ecb1731364c6dcf4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9070061a_8e957c3d",
         "filename": "chip/stm32/usb_pd_phy.c",
         "patchSetId": 1
