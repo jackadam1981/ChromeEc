@@ -7,7 +7,10 @@
 
 #include "battery.h"
 #include "battery_smart.h"
+#include "charger.h"
+#include "charge_state.h"
 #include "console.h"
+#include "driver/charger/bq24715.h"
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -16,12 +19,12 @@
 #include "util.h"
 
 /* FET ON/OFF cammand write to fet off register */
-#define	SB_FET_OFF	0x34
-#define	SB_FETOFF_DATA1	0x0000
-#define	SB_FETOFF_DATA2	0x1000
-#define	SB_FETON_DATA1	0x2000
-#define	SB_FETON_DATA2	0x4000
-#define	BATTERY_FETOFF	0x0100
+#define SB_FET_OFF	0x34
+#define SB_FETOFF_DATA1	0x0000
+#define SB_FETOFF_DATA2	0x1000
+#define SB_FETON_DATA1	0x2000
+#define SB_FETON_DATA2	0x4000
+#define BATTERY_FETOFF	0x0100
 
 /*
  * Green book support parameter
@@ -93,3 +96,24 @@ int board_cut_off_battery(void)
 {
 	return cutoff();
 }
+
+/*
+ * Initialize charger additional option value
+ */
+static void charger_init(void)
+{
+	if ((charge_get_state() == PWR_STATE_INIT) ||
+	(charge_get_state() == PWR_STATE_REINIT)) {
+		int option;
+
+		charger_get_option(&option);
+
+		/* Disable LDO mode */
+		option &= ~OPT_LDO_MODE_MASK;
+		/* Enable SYSOVP */
+		option |= OPT_SYSOVP_MASK;
+
+		charger_set_option(option);
+	}
+}
+DECLARE_HOOK(HOOK_CHARGE_STATE_CHANGE, charger_init, HOOK_PRIO_DEFAULT);
