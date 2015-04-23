@@ -34,3 +34,20 @@ void intc_cpu_int_group_5(void)
 	}
 }
 DECLARE_IRQ(CPU_INT_GROUP_5, intc_cpu_int_group_5, 2);
+
+void intc_cpu_int_group_12(void)
+{
+	/* Determine interrupt number. */
+	int intc_group_12 = IT83XX_INTC_IVCT12 - 16;
+
+	switch (intc_group_12) {
+#ifdef CONFIG_PECI
+	case IT83XX_IRQ_PECI:
+		peci_interrupt();
+		break;
+#endif
+	default:
+		break;
+	}
+}
+DECLARE_IRQ(CPU_INT_GROUP_12, intc_cpu_int_group_12, 2);

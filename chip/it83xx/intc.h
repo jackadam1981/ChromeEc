@@ -10,5 +10,6 @@
 
 void lpc_kbc_ibf_interrupt(void);
 void lpc_kbc_obe_interrupt(void);
+void peci_interrupt(void);
 
 #endif /* __CROS_EC_IT83XX_INTC_H */
