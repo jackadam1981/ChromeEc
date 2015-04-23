@@ -46,6 +46,29 @@
       "revId": "0573e739209eb7227e41a48eb6af06774a60ab65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10a416b9_451d1e8f",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2005,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-23T00:15:29Z",
+      "side": 1,
+      "message": "i think you can avoid setting muxes twice by deleting this and moving up pd_set_data_role() from line 2017 to here. that way we set the muxes before enabling the power supply.",
+      "range": {
+        "startLine": 2002,
+        "startChar": 0,
+        "endLine": 2005,
+        "endChar": 6
+      },
+      "revId": "0573e739209eb7227e41a48eb6af06774a60ab65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
