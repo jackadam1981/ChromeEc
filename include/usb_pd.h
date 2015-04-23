@@ -13,17 +13,20 @@
 /* PD Host command timeout */
 #define PD_HOST_COMMAND_TIMEOUT_US SECOND
 
-enum pd_errors {
-	PD_ERR_INVAL = -1,           /* Invalid packet */
-	PD_ERR_HARD_RESET = -2,      /* Got a Hard-Reset packet */
-	PD_ERR_CRC = -3,             /* CRC mismatch */
-	PD_ERR_ID = -4,              /* Invalid ID number */
-	PD_ERR_UNSUPPORTED_SOP = -5, /* Unsupported SOP */
-	PD_ERR_CABLE_RESET = -6      /* Got a Cable-Reset packet */
+enum pd_rx_errors {
+	PD_RX_ERR_INVAL = -1,           /* Invalid packet */
+	PD_RX_ERR_HARD_RESET = -2,      /* Got a Hard-Reset packet */
+	PD_RX_ERR_CRC = -3,             /* CRC mismatch */
+	PD_RX_ERR_ID = -4,              /* Invalid ID number */
+	PD_RX_ERR_UNSUPPORTED_SOP = -5, /* Unsupported SOP */
+	PD_RX_ERR_CABLE_RESET = -6      /* Got a Cable-Reset packet */
 };
 
-/* incoming packet event (for the USB PD task) */
+/* incoming/outgoing packet event (for the USB PD task) */
 #define PD_EVENT_RX (1<<2)
+#define PD_EVENT_TX (1<<3)
+/* CC line change event */
+#define PD_EVENT_CC (1<<4)
 
 /* --- PD data message helpers --- */
 #define PDO_MAX_OBJECTS   7
@@ -756,6 +759,13 @@ enum pd_data_msg_type {
 /* Vconn role */
 #define PD_ROLE_VCONN_OFF 0
 #define PD_ROLE_VCONN_ON  1
+
+/* Port role at startup */
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+#define PD_ROLE_DEFAULT PD_ROLE_SINK
+#else
+#define PD_ROLE_DEFAULT PD_ROLE_SOURCE
+#endif
 
 /* build message header */
 #define PD_HEADER(type, prole, drole, id, cnt) \

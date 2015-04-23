@@ -14,6 +14,8 @@
 
 /* Port and task configuration */
 #define PD_PORT_COUNT 2
+
+/* Map between port number and task ID */
 #define PORT_TO_TASK_ID(port) ((port) ? TASK_ID_PD_C1 : TASK_ID_PD_C0)
 #define TASK_ID_TO_PORT(id)   ((id) == TASK_ID_PD_C0 ? 0 : 1)
 
