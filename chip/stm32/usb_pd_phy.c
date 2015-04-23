@@ -180,9 +180,9 @@ int pd_find_preamble(int port)
 		if (all == 0x36db6db6)
 			return bit - 1; /* should be SYNC-1 */
 		if (all == 0xF33F3F3F)
-			return PD_ERR_HARD_RESET; /* got HARD-RESET */
+			return PD_RX_ERR_HARD_RESET; /* got HARD-RESET */
 		if (all == 0x3c7fe0ff)
-			return PD_ERR_CABLE_RESET; /* got CABLE-RESET */
+			return PD_RX_ERR_CABLE_RESET; /* got CABLE-RESET */
 	}
 	return -1;
 }
@@ -302,7 +302,7 @@ static void tx_dma_done(void *data)
 	pd_phy[port].tim_tx->cr1 &= ~1;
 
 #if defined(CONFIG_COMMON_RUNTIME) && defined(CONFIG_DMA_DEFAULT_HANDLERS)
-	task_set_event(PORT_TO_TASK_ID(port), TASK_EVENT_DMA_TC, 0);
+	task_set_event(PORT_PHY_TO_TASK_ID(port), TASK_EVENT_DMA_TC, 0);
 #endif
 }
 
