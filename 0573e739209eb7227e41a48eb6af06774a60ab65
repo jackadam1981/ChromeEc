@@ -22,6 +22,30 @@
       "revId": "0573e739209eb7227e41a48eb6af06774a60ab65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10a416b9_e251a866",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-04-23T00:09:02Z",
+      "side": 1,
+      "message": "I modified as you suggested. We will likely end up setting the mux to the same value twice (at least if going into a disconnected state) but, I agree it\u0027s safest to to disconnect here as well.",
+      "parentUuid": "309d9a70_4eb9c20d",
+      "range": {
+        "startLine": 163,
+        "startChar": 1,
+        "endLine": 164,
+        "endChar": 51
+      },
+      "revId": "0573e739209eb7227e41a48eb6af06774a60ab65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
