@@ -22,6 +22,30 @@
       "revId": "c1a0c2963c2d65a83c67829ec0279495491274dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d076fe11_101609fc",
+        "filename": "common/port80.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-23T23:51:34Z",
+      "side": 1,
+      "message": "task_en is still needed so that port_80_read can clear the register with 0xff if it is running in task (auto poll) mode.",
+      "parentUuid": "5083ee1c_f36182b9",
+      "range": {
+        "startLine": 116,
+        "startChar": 3,
+        "endLine": 117,
+        "endChar": 49
+      },
+      "revId": "c1a0c2963c2d65a83c67829ec0279495491274dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
