@@ -69,6 +69,30 @@
       "revId": "0573e739209eb7227e41a48eb6af06774a60ab65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5083ee1c_edcd21e3",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2005,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-23T01:49:46Z",
+      "side": 1,
+      "message": "ok, after thinking about it, it\u0027s not that simple. doing as suggested would break ryu.\n\nmaybe, this whole approach isn\u0027t the best way to go since we are now setting mux control in two files, which leads to things like redundantly setting it.\n\nanother option would be to not use pd_execute_data_swap() as the location to set these muxes. instead, we could create a CONFIG option, like CONFIG_USB_PD_NO_SS_ON_UFP which will be defined on samus (and other future x86 platforms). then, we would only modify this file based on that CONFIG option. So, we would need to add setting TYPEC_MUX_USB to SNK_DISCONNECTED_DEBOUNCE if the CONFIG option is not set, and if the CONFIG option is set we would toggle the USB muxes after a data swap.\n\nany other opinions on best way to do this?",
+      "parentUuid": "10a416b9_451d1e8f",
+      "range": {
+        "startLine": 2002,
+        "startChar": 0,
+        "endLine": 2005,
+        "endChar": 6
+      },
+      "revId": "0573e739209eb7227e41a48eb6af06774a60ab65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
