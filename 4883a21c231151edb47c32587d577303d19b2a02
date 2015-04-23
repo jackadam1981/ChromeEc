@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d076fe11_bb0b5bd7",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-23T18:49:12Z",
+      "side": 1,
+      "message": "This limitation doesn\u0027t apply here; only in the task itself.",
+      "range": {
+        "startLine": 305,
+        "startChar": 2,
+        "endLine": 306,
+        "endChar": 3
+      },
+      "revId": "4883a21c231151edb47c32587d577303d19b2a02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30867a2e_ef86f5e4",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-23T18:49:12Z",
+      "side": 1,
+      "message": "Why wouldn\u0027t we just always clear it?",
+      "range": {
+        "startLine": 318,
+        "startChar": 4,
+        "endLine": 318,
+        "endChar": 45
+      },
+      "revId": "4883a21c231151edb47c32587d577303d19b2a02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30867a2e_4f76218e",
+        "filename": "common/port80.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-23T18:49:12Z",
+      "side": 1,
+      "message": "Above,\n\n#define PORT80_POLL_PERIOD MSEC\n\nThen use that both here and in the command below.",
+      "range": {
+        "startLine": 65,
+        "startChar": 16,
+        "endLine": 65,
+        "endChar": 20
+      },
+      "revId": "4883a21c231151edb47c32587d577303d19b2a02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5083ee1c_b04e20c7",
+        "filename": "common/port80.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-23T18:49:12Z",
+      "side": 1,
+      "message": "Put the ignoring here.\n\n  int data \u003d get_port_80(task_en());\n  if (data !\u003d PORT_80_IGNORE)\n     port_80_write(data);",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 38
+      },
+      "revId": "4883a21c231151edb47c32587d577303d19b2a02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30867a2e_6f7be574",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1008,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-23T18:49:12Z",
+      "side": 1,
+      "message": "Enable polling at boot by the port 80 task.  Ignored if port 80 is handled by interrupt.",
+      "range": {
+        "startLine": 1008,
+        "startChar": 3,
+        "endLine": 1008,
+        "endChar": 59
+      },
+      "revId": "4883a21c231151edb47c32587d577303d19b2a02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d076fe11_1b42af00",
+        "filename": "include/port80.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-23T18:49:12Z",
+      "side": 1,
+      "message": "minor nit: hex is preferably lowercase, 0xffff",
+      "range": {
+        "startLine": 16,
+        "startChar": 18,
+        "endLine": 16,
+        "endChar": 24
+      },
+      "revId": "4883a21c231151edb47c32587d577303d19b2a02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d076fe11_5b3c2775",
+        "filename": "include/port80.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-23T18:49:12Z",
+      "side": 1,
+      "message": "or PORT_80_IGNORE if no data is available",
+      "range": {
+        "startLine": 31,
+        "startChar": 11,
+        "endLine": 31,
+        "endChar": 50
+      },
+      "revId": "4883a21c231151edb47c32587d577303d19b2a02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30867a2e_cf8931f8",
+        "filename": "include/port80.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-23T18:49:12Z",
+      "side": 1,
+      "message": "port_80_read()",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 15
+      },
+      "revId": "4883a21c231151edb47c32587d577303d19b2a02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
