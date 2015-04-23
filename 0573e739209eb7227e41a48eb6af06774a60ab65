@@ -93,6 +93,30 @@
       "revId": "0573e739209eb7227e41a48eb6af06774a60ab65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d076fe11_40ab5200",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2005,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-04-23T17:22:20Z",
+      "side": 1,
+      "message": "agree in principle with both location of muxing and that CONFIG option would give us functionality w/ less code.  Should we put all the #if(n)defs inside functions however like pd_set_dfp/ufp or is that overkill for what will likely amount to a mux setting?  Might be justifiable if we work through what ryu would need to do in the case of UFP (USB device).",
+      "parentUuid": "5083ee1c_edcd21e3",
+      "range": {
+        "startLine": 2002,
+        "startChar": 0,
+        "endLine": 2005,
+        "endChar": 6
+      },
+      "revId": "0573e739209eb7227e41a48eb6af06774a60ab65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
