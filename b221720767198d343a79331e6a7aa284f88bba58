@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "50276ef4_de058542",
+        "filename": "board/plankton/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-04-24T23:24:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0150a85_85d902f8",
+      "range": {
+        "startLine": 176,
+        "startChar": 19,
+        "endLine": 176,
+        "endChar": 20
+      },
+      "revId": "b221720767198d343a79331e6a7aa284f88bba58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0150a85_e5e6f6b1",
         "filename": "board/plankton/board.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-04-21T00:58:16Z",
       "side": 1,
       "message": "nit, description of function goes on next line.",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 19
+      },
+      "revId": "b221720767198d343a79331e6a7aa284f88bba58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90fba685_00d1767b",
+        "filename": "board/plankton/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-04-24T23:24:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0150a85_e5e6f6b1",
       "range": {
         "startLine": 179,
         "startChar": 0,
