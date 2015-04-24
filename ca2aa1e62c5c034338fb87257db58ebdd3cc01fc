@@ -105,6 +105,24 @@
       "revId": "ca2aa1e62c5c034338fb87257db58ebdd3cc01fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5083ee1c_be643194",
+        "filename": "power/braswell.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-04-24T20:12:08Z",
+      "side": 1,
+      "message": "GPIO_PCH_SLP_S3_L is low here.\nThe logic here seems correct for warm reset. In S0 we turn off GPIO_PCH_SYS_PWROK since IN_ALL_S0 was lost. we recheck for SLP_S3 in S3 state as it will be set during warm reset.",
+      "parentUuid": "d0299e86_10ebb625",
+      "revId": "ca2aa1e62c5c034338fb87257db58ebdd3cc01fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
