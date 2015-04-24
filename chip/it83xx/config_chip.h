@@ -22,6 +22,9 @@
 /* Default PLL frequency. */
 #define PLL_CLOCK 48000000
 
+/* Number of I2C ports */
+#define I2C_PORT_COUNT 3
+
 /****************************************************************************/
 /* Memory mapping */
 
@@ -91,7 +94,7 @@
 #define CONFIG_HW_SPECIFIC_UDELAY
 
 /* Optional features present on this chip */
-#undef CONFIG_I2C
+#define CONFIG_I2C
 #undef CONFIG_FLASH
 #undef CONFIG_WATCHDOG
 #define CONFIG_PWM
