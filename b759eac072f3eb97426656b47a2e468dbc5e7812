@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0d43e30_e4ffcda5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-24T22:00:50Z",
+      "side": 1,
+      "message": "You can link to chrome-os-partner:39400",
+      "revId": "b759eac072f3eb97426656b47a2e468dbc5e7812",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0d43e30_44e56121",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-24T22:00:50Z",
+      "side": 1,
+      "message": "Does i2c wedge work now? If so then TEST should be \"ran i2cwedge....... and verified bus was wedged, then ran i2cunwedge... and verified bus was unwedged.",
+      "revId": "b759eac072f3eb97426656b47a2e468dbc5e7812",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
