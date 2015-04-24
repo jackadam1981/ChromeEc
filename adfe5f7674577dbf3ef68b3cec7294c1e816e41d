@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "107df6ec_f7d40ae5",
+        "filename": "chip/it83xx/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1109909
+      },
+      "writtenOn": "2015-04-24T05:21:21Z",
+      "side": 1,
+      "message": "I will get the \"relocation truncated to fit\" error without the parameter.",
+      "parentUuid": "309d9a70_3a420001",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 26
+      },
+      "revId": "adfe5f7674577dbf3ef68b3cec7294c1e816e41d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "309d9a70_da32d49c",
         "filename": "core/nds32/build.mk",
         "patchSetId": 1
