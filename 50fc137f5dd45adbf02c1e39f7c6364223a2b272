@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9070061a_4106f5a4",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-04-24T05:39:33Z",
+      "side": 1,
+      "message": "Suggestion:\n\nYou may add a write_ptr and a read_ptr for the host_buffer and modify host_buffer[] as a software FIFO (or circularbuffer).",
+      "range": {
+        "startLine": 138,
+        "startChar": 15,
+        "endLine": 138,
+        "endChar": 26
+      },
+      "revId": "50fc137f5dd45adbf02c1e39f7c6364223a2b272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
