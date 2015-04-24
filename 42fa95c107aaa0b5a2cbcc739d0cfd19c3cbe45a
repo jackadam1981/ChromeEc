@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "30867a2e_32d876a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-04-24T19:43:30Z",
+      "side": 1,
+      "message": "Okay, we will change it to add the Gyro config to test L3GD20H in strago",
+      "parentUuid": "a3eea234_570c54ed",
+      "revId": "42fa95c107aaa0b5a2cbcc739d0cfd19c3cbe45a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3eea234_3790a81b",
         "filename": "driver/build.mk",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "5083ee1c_9e804d95",
+        "filename": "driver/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-04-24T19:43:30Z",
+      "side": 1,
+      "message": "Okay, we will add CONFIG_GYRO_L3GD20H in config.h",
+      "parentUuid": "a3eea234_3790a81b",
+      "revId": "42fa95c107aaa0b5a2cbcc739d0cfd19c3cbe45a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90b566fa_42d8d618",
         "filename": "driver/gyro_l3gd20h.h",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2015-04-22T18:50:26Z",
       "side": 1,
       "message": "Update this comment.",
+      "revId": "42fa95c107aaa0b5a2cbcc739d0cfd19c3cbe45a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d076fe11_81af09e3",
+        "filename": "driver/gyro_l3gd20h.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-04-24T19:43:30Z",
+      "side": 1,
+      "message": "Okay will change it to L3GD20H",
+      "parentUuid": "90b566fa_42d8d618",
       "revId": "42fa95c107aaa0b5a2cbcc739d0cfd19c3cbe45a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
