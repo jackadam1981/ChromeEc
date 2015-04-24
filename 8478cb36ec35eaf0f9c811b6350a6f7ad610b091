@@ -2,6 +2,193 @@
   "comments": [
     {
       "key": {
+        "uuid": "d076fe11_306dc585",
+        "filename": "board/cyan/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-24T00:32:38Z",
+      "side": 1,
+      "message": "GP000 - Default to JTAG func\nGP001-007 - Define as alternate below for keyboard\n\nGP010-011 - Define as alternate below for keyboard",
+      "revId": "8478cb36ec35eaf0f9c811b6350a6f7ad610b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30867a2e_2fff2de4",
+        "filename": "board/cyan/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-24T00:32:38Z",
+      "side": 1,
+      "message": "GP014 - Define as alternate below for LPC",
+      "revId": "8478cb36ec35eaf0f9c811b6350a6f7ad610b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d076fe11_704e5d1d",
+        "filename": "board/cyan/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-24T00:32:38Z",
+      "side": 1,
+      "message": "GP027 - Define as interrupt above",
+      "revId": "8478cb36ec35eaf0f9c811b6350a6f7ad610b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5083ee1c_33f5da51",
+        "filename": "board/cyan/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-24T00:32:38Z",
+      "side": 1,
+      "message": "GP030 - Define as interrupt above",
+      "revId": "8478cb36ec35eaf0f9c811b6350a6f7ad610b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d076fe11_f0616d82",
+        "filename": "board/cyan/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-24T00:32:38Z",
+      "side": 1,
+      "message": "GP032 - Define as alternate below for keyboard\nGP033 - Define as interrupt above",
+      "revId": "8478cb36ec35eaf0f9c811b6350a6f7ad610b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5083ee1c_73ef5283",
+        "filename": "board/cyan/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-24T00:32:38Z",
+      "side": 1,
+      "message": "GP035 - Define as interrupt above",
+      "revId": "8478cb36ec35eaf0f9c811b6350a6f7ad610b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5083ee1c_9303e6c7",
+        "filename": "board/cyan/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-24T00:32:38Z",
+      "side": 1,
+      "message": "GP037 - Does not exist",
+      "revId": "8478cb36ec35eaf0f9c811b6350a6f7ad610b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30867a2e_cfe77155",
+        "filename": "board/cyan/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-24T00:32:38Z",
+      "side": 1,
+      "message": "GP040 - Define as alternate below for keyboard",
+      "revId": "8478cb36ec35eaf0f9c811b6350a6f7ad610b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30867a2e_0fa50904",
+        "filename": "board/cyan/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-24T00:32:38Z",
+      "side": 1,
+      "message": "GP042-043 - Define as alternate below for keyboard",
+      "revId": "8478cb36ec35eaf0f9c811b6350a6f7ad610b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5083ee1c_f3fa623b",
+        "filename": "board/cyan/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-24T00:32:38Z",
+      "side": 1,
+      "message": "GP054 - Define as alternate below for SPI",
+      "revId": "8478cb36ec35eaf0f9c811b6350a6f7ad610b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5083ee1c_131b762c",
+        "filename": "board/cyan/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-24T00:32:38Z",
+      "side": 1,
+      "message": "GP063 - Define as interrupt above",
+      "revId": "8478cb36ec35eaf0f9c811b6350a6f7ad610b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0d43e30_b6759d78",
         "filename": "board/cyan/gpio.inc",
         "patchSetId": 1
@@ -49,6 +236,313 @@
       "side": 1,
       "message": "Is that not the default setting? The datasheet is unclear as to the defaults. Also, some GPIOs are missing from this file -- are some of those NC?\n\nIf PU / Input isn\u0027t the power-on default, maybe we should go ahead and initialize all of our GPIOs this way?",
       "parentUuid": "d076fe11_10b0c9b9",
+      "revId": "8478cb36ec35eaf0f9c811b6350a6f7ad610b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d076fe11_70dd7d94",
+        "filename": "board/cyan/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-24T00:32:38Z",
+      "side": 1,
+      "message": "Just double check and gone through the file to make sure all pins are accounted for. Couple that are missing are default to its native function (JTAG and Reset pin). We can scrub this again to remove unnecessary NC if its default to GPIO once the hardware design is stable.",
+      "parentUuid": "10a416b9_589178c9",
+      "revId": "8478cb36ec35eaf0f9c811b6350a6f7ad610b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5083ee1c_33207a52",
+        "filename": "board/cyan/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-24T00:32:38Z",
+      "side": 1,
+      "message": "GP100-102 - Default to JTAG func\nGP103-104 - Define as alternate below for keyboard",
+      "revId": "8478cb36ec35eaf0f9c811b6350a6f7ad610b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5083ee1c_5325ee60",
+        "filename": "board/cyan/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-24T00:32:38Z",
+      "side": 1,
+      "message": "GP106-107 - Define as alternate below for keyboard",
+      "revId": "8478cb36ec35eaf0f9c811b6350a6f7ad610b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30867a2e_8fb81928",
+        "filename": "board/cyan/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-24T00:32:38Z",
+      "side": 1,
+      "message": "GP111-114 - Define as alternate below for LPC",
+      "revId": "8478cb36ec35eaf0f9c811b6350a6f7ad610b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d076fe11_50ab2100",
+        "filename": "board/cyan/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-24T00:32:38Z",
+      "side": 1,
+      "message": "GP116-117 - Define as alternate below for LPC",
+      "revId": "8478cb36ec35eaf0f9c811b6350a6f7ad610b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30867a2e_cfc211a2",
+        "filename": "board/cyan/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-24T00:32:38Z",
+      "side": 1,
+      "message": "GP120 - Define as alternate below for LPC\nGP121 - Default as per datasheet with external pull-down",
+      "revId": "8478cb36ec35eaf0f9c811b6350a6f7ad610b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30867a2e_efbfd50a",
+        "filename": "board/cyan/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-24T00:32:38Z",
+      "side": 1,
+      "message": "GP125 - Define as alternate below for keyboard",
+      "revId": "8478cb36ec35eaf0f9c811b6350a6f7ad610b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5083ee1c_930e86e8",
+        "filename": "board/cyan/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-24T00:32:38Z",
+      "side": 1,
+      "message": "GP126 - Define as alternate below for keyboard",
+      "revId": "8478cb36ec35eaf0f9c811b6350a6f7ad610b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d076fe11_7022dd23",
+        "filename": "board/cyan/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-24T00:32:38Z",
+      "side": 1,
+      "message": "GP130 - Define as interrupt above\nGP131 - Default as chip reset pin",
+      "revId": "8478cb36ec35eaf0f9c811b6350a6f7ad610b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5083ee1c_b30b8ad7",
+        "filename": "board/cyan/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-24T00:32:38Z",
+      "side": 1,
+      "message": "GP137 - Does not exist",
+      "revId": "8478cb36ec35eaf0f9c811b6350a6f7ad610b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5083ee1c_d318fe2a",
+        "filename": "board/cyan/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-24T00:32:38Z",
+      "side": 1,
+      "message": "GP142 - Define as alternate below for keyboard",
+      "revId": "8478cb36ec35eaf0f9c811b6350a6f7ad610b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d076fe11_1091a9ca",
+        "filename": "board/cyan/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-24T00:32:38Z",
+      "side": 1,
+      "message": "GP144 - Define as alternate below for keyboard",
+      "revId": "8478cb36ec35eaf0f9c811b6350a6f7ad610b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d076fe11_5006c1a4",
+        "filename": "board/cyan/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-24T00:32:38Z",
+      "side": 1,
+      "message": "GP153 - Define as alternate below for SPI",
+      "revId": "8478cb36ec35eaf0f9c811b6350a6f7ad610b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5083ee1c_f31502f0",
+        "filename": "board/cyan/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-24T00:32:38Z",
+      "side": 1,
+      "message": "GP162 - Define as alternate below for UART",
+      "revId": "8478cb36ec35eaf0f9c811b6350a6f7ad610b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d076fe11_d011d1d5",
+        "filename": "board/cyan/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-24T00:32:38Z",
+      "side": 1,
+      "message": "GP164 - Define as alternate below for SPI\nGP165 - Define as alternate below for UART\nGP166-167 - Does not exist",
+      "revId": "8478cb36ec35eaf0f9c811b6350a6f7ad610b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d076fe11_f01ecde4",
+        "filename": "board/cyan/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-24T00:32:38Z",
+      "side": 1,
+      "message": "GP200 - Define as interrupt above",
+      "revId": "8478cb36ec35eaf0f9c811b6350a6f7ad610b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d076fe11_30286504",
+        "filename": "board/cyan/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-24T00:32:38Z",
+      "side": 1,
+      "message": "GP205 - Does not exist\nGP206 - Define as interrupt above\nGP207 - Does not exist",
+      "revId": "8478cb36ec35eaf0f9c811b6350a6f7ad610b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d076fe11_502de112",
+        "filename": "board/cyan/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-04-24T00:32:38Z",
+      "side": 1,
+      "message": "GP212-217 - Does not exist",
       "revId": "8478cb36ec35eaf0f9c811b6350a6f7ad610b091",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
