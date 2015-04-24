@@ -22,6 +22,30 @@
       "revId": "c4364988f8a69b4b6695a46048b94d0a6dd2801f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0d99e70_8ee83bab",
+        "filename": "board/plankton/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-04-24T23:25:42Z",
+      "side": 1,
+      "message": "Done ... \n\nSame functionality was captured in this merge:\n\n* eb86f21 - Plankton: Support DFU mode (Mon Feb 9 02:13:50 2015 +0000) \u003cVic Yang\u003e\n\nfixed rebase",
+      "parentUuid": "700f1279_77d3d8d8",
+      "range": {
+        "startLine": 147,
+        "startChar": 2,
+        "endLine": 147,
+        "endChar": 13
+      },
+      "revId": "c4364988f8a69b4b6695a46048b94d0a6dd2801f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
