@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "309d9a70_32d85318",
+        "filename": "board/samus/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-04-24T22:22:38Z",
+      "side": 1,
+      "message": "This variable *could* go way entirely.",
+      "range": {
+        "startLine": 284,
+        "startChar": 19,
+        "endLine": 284,
+        "endChar": 38
+      },
+      "revId": "deeace6c7d00a5852eb560f64b8f1739df0ee83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10a416b9_c1c3ac3a",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-04-24T22:22:38Z",
+      "side": 1,
+      "message": "Is there a corresponding table of host_id\u0027s that I would need to update? My grouping of sensors by chip changes the order. From my inspection, my understanding was that it was simply the index of the motion_sensors list.\n\nAlso, if that\u0027s correct, this makes get_sensor_in_list() redundant, which I could then remove.",
+      "revId": "deeace6c7d00a5852eb560f64b8f1739df0ee83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0d43e30_e4158dc2",
+        "filename": "driver/accelgyro_lsm6ds0.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-04-24T22:22:38Z",
+      "side": 1,
+      "message": "I decided against making a generic accelgyro_data structure since different sensors can have varying number of configuration. For instance, the LSM6DS0 has a fixed resolution, so no need to keep that around.",
+      "range": {
+        "startLine": 120,
+        "startChar": 7,
+        "endLine": 120,
+        "endChar": 19
+      },
+      "revId": "deeace6c7d00a5852eb560f64b8f1739df0ee83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
