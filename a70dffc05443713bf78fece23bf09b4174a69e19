@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "d0d99e70_d5dc8b9a",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-27T17:53:43Z",
+      "side": 1,
+      "message": "yeah, there was a recent email thread about this where they discussed adding PlugOrientation to the POWER_CONTROL register. i think it makes sense since the TCPC doesn\u0027t actually do the full debouncing of the CC lines.",
+      "parentUuid": "d0d99e70_35818ffd",
+      "range": {
+        "startLine": 97,
+        "startChar": 5,
+        "endLine": 97,
+        "endChar": 22
+      },
+      "revId": "a70dffc05443713bf78fece23bf09b4174a69e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0f222e5_89714ddc",
         "filename": "include/usb_pd_tcpm.h",
         "patchSetId": 7
