@@ -969,6 +969,9 @@
 /* Support LPC interface */
 #undef CONFIG_LPC
 
+/* Use Link-Time Optimizations to try to reduce the firmware code size */
+#undef CONFIG_LTO
+
 /* Support MKBP event */
 #undef CONFIG_MKBP_EVENT
 
