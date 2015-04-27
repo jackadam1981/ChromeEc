@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0d99e70_f5a9c7e0",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-27T17:58:05Z",
+      "side": 0,
+      "message": "pd_comm_enabled is now half-implemented here and half in TCPC, are both sides synchronized ?\nAm I missing something ?",
+      "range": {
+        "startLine": 295,
+        "startChar": 15,
+        "endLine": 295,
+        "endChar": 30
+      },
+      "revId": "df299ce8200f4e54d4134d5c821824848b7b3ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
