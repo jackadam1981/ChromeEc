@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0d42a38_d924c667",
+        "filename": "board/twinkie/simpletrace.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-27T17:33:39Z",
+      "side": 1,
+      "message": "maybe it would worth doing another simple CL for the few changes related to \"enum pd_rx_errors\" and submit it immediatly",
+      "range": {
+        "startLine": 152,
+        "startChar": 12,
+        "endLine": 152,
+        "endChar": 26
+      },
+      "revId": "a70dffc05443713bf78fece23bf09b4174a69e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0d42a38_79db9217",
+        "filename": "common/build.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-27T17:33:39Z",
+      "side": 1,
+      "message": "shouldn\u0027t that file be called something like usb_pd_tcpm_stub.c ?\nto let space for the i2c version",
+      "range": {
+        "startLine": 84,
+        "startChar": 71,
+        "endLine": 84,
+        "endChar": 84
+      },
+      "revId": "a70dffc05443713bf78fece23bf09b4174a69e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0d42a38_f9aae2fb",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-27T17:33:39Z",
+      "side": 1,
+      "message": "#ifdef HAS_TASK_PDPHY0 ?",
+      "range": {
+        "startLine": 872,
+        "startChar": 1,
+        "endLine": 872,
+        "endChar": 5
+      },
+      "revId": "a70dffc05443713bf78fece23bf09b4174a69e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0d99e70_35818ffd",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-27T17:33:39Z",
+      "side": 1,
+      "message": "is the TCPM really supposed to \"set\" the polarity or is that an attribute of the TCPC and the TCPM can just read it ?",
+      "range": {
+        "startLine": 97,
+        "startChar": 5,
+        "endLine": 97,
+        "endChar": 22
+      },
+      "revId": "a70dffc05443713bf78fece23bf09b4174a69e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0f222e5_89714ddc",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-27T17:33:39Z",
+      "side": 1,
+      "message": "In the ARM ABI, above 4 parameters, flash-wise the function calls are expensive.\nCan we do something more compact here (eg cnt and header contains redundant info) ?",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 40
+      },
+      "revId": "a70dffc05443713bf78fece23bf09b4174a69e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
