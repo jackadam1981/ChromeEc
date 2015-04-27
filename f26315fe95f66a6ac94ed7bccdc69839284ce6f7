@@ -46,6 +46,30 @@
       "revId": "f26315fe95f66a6ac94ed7bccdc69839284ce6f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f00b02a7_8d7ba53c",
+        "filename": "include/gpio_list.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-27T21:28:55Z",
+      "side": 1,
+      "message": "Though maybe GPIO_PIN_MASK.\n\nI can see subtle GPIO_PINS / GPIO_PIN typos causing odd behavior in the alternate list.",
+      "parentUuid": "d0d99e70_c38f342e",
+      "range": {
+        "startLine": 23,
+        "startChar": 18,
+        "endLine": 23,
+        "endChar": 22
+      },
+      "revId": "f26315fe95f66a6ac94ed7bccdc69839284ce6f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
