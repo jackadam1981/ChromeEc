@@ -7,6 +7,7 @@
 #include <fcntl.h>
 #include <stdint.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <sys/ioctl.h>
 #include <sys/stat.h>
@@ -16,6 +17,7 @@
 #include "cros_ec_dev.h"
 #include "comm-host.h"
 #include "ec_commands.h"
+#include "misc_util.h"
 
 static int fd = -1;
 
@@ -50,39 +52,56 @@ static const char *strresult(int i)
 }
 
 
+#define SMALL_COMMAND_PAYLOAD 64
+
 static int ec_command_dev(int command, int version,
 			  const void *outdata, int outsize,
 			  void *indata, int insize)
 {
-	struct cros_ec_command s_cmd;
+	struct cros_ec_command *s_cmd = NULL;
+	uint8_t s_small_cmd[sizeof(struct cros_ec_command) +
+		SMALL_COMMAND_PAYLOAD];
 	int r;
 
-	s_cmd.command = command;
-	s_cmd.version = version;
-	s_cmd.result = 0xff;
-	s_cmd.outsize = outsize;
-	s_cmd.outdata = (uint8_t *)outdata;
-	s_cmd.insize = insize;
-	s_cmd.indata = indata;
+	if (MAX(outsize, insize) > SMALL_COMMAND_PAYLOAD) {
+		s_cmd = malloc(sizeof(struct cros_ec_command) +
+			       MAX(outsize, insize));
+		if (s_cmd == NULL)
+			return -ENOMEM;
+	} else {
+		s_cmd = (struct cros_ec_command *)s_small_cmd;
+	}
 
-	r = ioctl(fd, CROS_EC_DEV_IOCXCMD, &s_cmd);
+	s_cmd->command = command;
+	s_cmd->version = version;
+	s_cmd->result = 0xff;
+	s_cmd->outsize = outsize;
+	s_cmd->insize = insize;
+	memcpy(s_cmd->data, outdata, outsize);
+
+	r = ioctl(fd, CROS_EC_DEV_IOCXCMD, s_cmd);
 	if (r < 0) {
 		fprintf(stderr, "ioctl %d, errno %d (%s), EC result %d (%s)\n",
-			r, errno, strerror(errno), s_cmd.result,
-			strresult(s_cmd.result));
-		if (errno == EAGAIN && s_cmd.result == EC_RES_IN_PROGRESS) {
-			s_cmd.command = EC_CMD_RESEND_RESPONSE;
+			r, errno, strerror(errno), s_cmd->result,
+			strresult(s_cmd->result));
+		if (errno == EAGAIN && s_cmd->result == EC_RES_IN_PROGRESS) {
+			s_cmd->command = EC_CMD_RESEND_RESPONSE;
 			r = ioctl(fd, CROS_EC_DEV_IOCXCMD, &s_cmd);
 			fprintf(stderr,
 				"ioctl %d, errno %d (%s), EC result %d (%s)\n",
-				r, errno, strerror(errno), s_cmd.result,
-				strresult(s_cmd.result));
+				r, errno, strerror(errno), s_cmd->result,
+				strresult(s_cmd->result));
 		}
-	} else if (s_cmd.result != EC_RES_SUCCESS) {
-		fprintf(stderr, "EC result %d (%s)\n", s_cmd.result,
-			strresult(s_cmd.result));
-		return -EECRESULT - s_cmd.result;
+	} else {
+		memcpy(indata, s_cmd->data, MIN(r, insize));
+		if (s_cmd->result != EC_RES_SUCCESS) {
+			fprintf(stderr, "EC result %d (%s)\n", s_cmd->result,
+				strresult(s_cmd->result));
+			r =  -EECRESULT - s_cmd->result;
+		}
 	}
+	if (s_cmd != (struct cros_ec_command *)s_small_cmd)
+		free(s_cmd);
 
 	return r;
 }
@@ -97,12 +116,13 @@ static int ec_readmem_dev(int offset, int bytes, void *dest)
 	if (!fake_it) {
 		s_mem.offset = offset;
 		s_mem.bytes = bytes;
-		s_mem.buffer = dest;
 		r = ioctl(fd, CROS_EC_DEV_IOCRDMEM, &s_mem);
-		if (r < 0 && errno == ENOTTY)
+		if (r < 0 && errno == ENOTTY) {
 			fake_it = 1;
-		else
+		} else {
+			memcpy(dest, s_mem.buffer, bytes);
 			return r;
+		}
 	}
 
 	r_mem.offset = offset;
