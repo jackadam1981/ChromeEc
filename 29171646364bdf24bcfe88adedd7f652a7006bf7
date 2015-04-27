@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0d42a38_b6758978",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-27T16:22:44Z",
+      "side": 1,
+      "message": "Would probably be better to break this part into a different CL.",
+      "range": {
+        "startLine": 13,
+        "startChar": 9,
+        "endLine": 13,
+        "endChar": 61
+      },
+      "revId": "29171646364bdf24bcfe88adedd7f652a7006bf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0d42a38_368759e3",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-27T16:22:44Z",
+      "side": 1,
+      "message": "Suggest making a macro for this, to help readability:\n#define STM32_I2C_ICR_ALL 0x3F38",
+      "range": {
+        "startLine": 338,
+        "startChar": 24,
+        "endLine": 338,
+        "endChar": 30
+      },
+      "revId": "29171646364bdf24bcfe88adedd7f652a7006bf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90fc86c6_2719742d",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-27T16:22:44Z",
+      "side": 1,
+      "message": "suggest parentheses around this part for clarity",
+      "range": {
+        "startLine": 346,
+        "startChar": 6,
+        "endLine": 346,
+        "endChar": 32
+      },
+      "revId": "29171646364bdf24bcfe88adedd7f652a7006bf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0d99e70_4875a3f2",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-27T16:22:44Z",
+      "side": 1,
+      "message": "use above macro here",
+      "range": {
+        "startLine": 387,
+        "startChar": 24,
+        "endLine": 387,
+        "endChar": 30
+      },
+      "revId": "29171646364bdf24bcfe88adedd7f652a7006bf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
