@@ -127,7 +127,7 @@ static void motion_sense_resume(void)
 		sensor->active = SENSOR_ACTIVE_S0;
 		if (sensor->state == SENSOR_INITIALIZED) {
 			/* Put back the odr previously set. */
-			sensor->drv->set_data_rate(sensor, sensor->odr, 1);
+/*			sensor->drv->set_data_rate(sensor, sensor->odr, 1); */
 		}
 	}
 }
