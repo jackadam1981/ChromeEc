@@ -22,6 +22,30 @@
       "revId": "f26315fe95f66a6ac94ed7bccdc69839284ce6f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0d99e70_c38f342e",
+        "filename": "include/gpio_list.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-04-27T16:35:46Z",
+      "side": 1,
+      "message": "I think I would just define GPIO_PINS, in much the same way I defined GPIO_PIN in the chip config header.  GPIO_PINS would take the port designator and mask, like GPIO_PIN takes the port designator and index.",
+      "parentUuid": "7092b267_31622814",
+      "range": {
+        "startLine": 23,
+        "startChar": 18,
+        "endLine": 23,
+        "endChar": 22
+      },
+      "revId": "f26315fe95f66a6ac94ed7bccdc69839284ce6f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
