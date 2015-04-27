@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0d42a38_00f52b50",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 12
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-04-27T20:26:38Z",
+      "side": 1,
+      "message": "Always use MODULE_GPIO here, never anything else.\n\nMODULE_GPIO is what configures the pinmux.",
+      "range": {
+        "startLine": 81,
+        "startChar": 33,
+        "endLine": 81,
+        "endChar": 50
+      },
+      "revId": "bdeb379c9cab3bbbd42de6cfc19218ebcd6c7aff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0d99e70_6e4f44c5",
+        "filename": "chip/g/spi.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-04-27T20:26:38Z",
+      "side": 1,
+      "message": "NO. The Cr50 doesn\u0027t have alternate functions on its GPIOs, so we do not do this. The Pinmux is automatically configured according to the AF declarations in gpio.inc",
+      "range": {
+        "startLine": 101,
+        "startChar": 2,
+        "endLine": 101,
+        "endChar": 20
+      },
+      "revId": "bdeb379c9cab3bbbd42de6cfc19218ebcd6c7aff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
