@@ -101,7 +101,7 @@ static const uint8_t out_preamble[4] = {
 static uint8_t out_msg[SPI_MAX_RESPONSE_SIZE + sizeof(out_preamble) +
 	EC_SPI_PAST_END_LENGTH] __aligned(4);
 static uint8_t in_msg[SPI_MAX_REQUEST_SIZE] __aligned(4);
-static uint8_t enabled;
+static uint8_t enabled = 1;
 static struct host_cmd_handler_args args;
 static struct host_packet spi_packet;
 
