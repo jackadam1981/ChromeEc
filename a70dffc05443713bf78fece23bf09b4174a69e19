@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b0d42a38_5db9d00d",
+        "filename": "board/twinkie/simpletrace.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-28T16:28:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0d42a38_d924c667",
+      "range": {
+        "startLine": 152,
+        "startChar": 12,
+        "endLine": 152,
+        "endChar": 26
+      },
+      "revId": "a70dffc05443713bf78fece23bf09b4174a69e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0d42a38_79db9217",
         "filename": "common/build.mk",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2015-04-27T17:33:39Z",
       "side": 1,
       "message": "shouldn\u0027t that file be called something like usb_pd_tcpm_stub.c ?\nto let space for the i2c version",
+      "range": {
+        "startLine": 84,
+        "startChar": 71,
+        "endLine": 84,
+        "endChar": 84
+      },
+      "revId": "a70dffc05443713bf78fece23bf09b4174a69e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0d42a38_fdc75c93",
+        "filename": "common/build.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-28T16:28:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0d42a38_79db9217",
       "range": {
         "startLine": 84,
         "startChar": 71,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f0f222e5_01b9acdc",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2324,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-28T16:28:46Z",
+      "side": 1,
+      "message": "currently it doesn\u0027t really matter since the PD task doesn\u0027t check for this event, but it may in the future, so I changed it.",
+      "parentUuid": "b0d42a38_cc3d22e2",
+      "range": {
+        "startLine": 2324,
+        "startChar": 3,
+        "endLine": 2324,
+        "endChar": 32
+      },
+      "revId": "a70dffc05443713bf78fece23bf09b4174a69e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0d42a38_f9aae2fb",
         "filename": "common/usb_pd_tcpc.c",
         "patchSetId": 7
@@ -82,6 +154,30 @@
       "writtenOn": "2015-04-27T17:33:39Z",
       "side": 1,
       "message": "#ifdef HAS_TASK_PDPHY0 ?",
+      "range": {
+        "startLine": 872,
+        "startChar": 1,
+        "endLine": 872,
+        "endChar": 5
+      },
+      "revId": "a70dffc05443713bf78fece23bf09b4174a69e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0d42a38_9a4cdecf",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-28T16:28:46Z",
+      "side": 1,
+      "message": "I\u0027d rather deal with this in a future CL because there are a number of places that need to check for task or some CONFIG_ option to differentiate the split MCU case.",
+      "parentUuid": "b0d42a38_f9aae2fb",
       "range": {
         "startLine": 872,
         "startChar": 1,
@@ -152,6 +248,30 @@
       "writtenOn": "2015-04-27T17:33:39Z",
       "side": 1,
       "message": "In the ARM ABI, above 4 parameters, flash-wise the function calls are expensive.\nCan we do something more compact here (eg cnt and header contains redundant info) ?",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 40
+      },
+      "revId": "a70dffc05443713bf78fece23bf09b4174a69e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0d42a38_fdde3c57",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-28T16:28:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0f222e5_89714ddc",
       "range": {
         "startLine": 145,
         "startChar": 0,
