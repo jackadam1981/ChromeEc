@@ -22,6 +22,98 @@
       "revId": "7fdecc3f03138df69edf641e9ec7189b906af2ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0f222e5_554f6a92",
+        "filename": "chip/g/spi.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-04-28T20:56:28Z",
+      "side": 1,
+      "message": "just a nit:\n\nthis could have been expressed as (1 \u003c\u003c 7).",
+      "range": {
+        "startLine": 51,
+        "startChar": 41,
+        "endLine": 51,
+        "endChar": 44
+      },
+      "revId": "7fdecc3f03138df69edf641e9ec7189b906af2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0d42a38_34a4da83",
+        "filename": "chip/g/spi.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-04-28T20:56:28Z",
+      "side": 1,
+      "message": "this could be (GC_SPI_FLASH_MAX_XFER_SIZE - 1)",
+      "range": {
+        "startLine": 54,
+        "startChar": 41,
+        "endLine": 54,
+        "endChar": 44
+      },
+      "revId": "7fdecc3f03138df69edf641e9ec7189b906af2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0f222e5_f5b89eda",
+        "filename": "chip/g/spi.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-04-28T20:56:28Z",
+      "side": 1,
+      "message": "s/G_SPI_FLASH_MAX_SIZE/GC_SPI_FLASH_MAX_XFER_SIZE/",
+      "range": {
+        "startLine": 63,
+        "startChar": 45,
+        "endLine": 63,
+        "endChar": 65
+      },
+      "revId": "7fdecc3f03138df69edf641e9ec7189b906af2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0f222e5_d5f8faf9",
+        "filename": "chip/g/spi.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-04-28T20:56:28Z",
+      "side": 1,
+      "message": "BTW, the SPI prefix is used to refer to the master SPI interface. But it seems to me at this point that we need a driver for the slave side, is this not the case?",
+      "range": {
+        "startLine": 69,
+        "startChar": 16,
+        "endLine": 69,
+        "endChar": 19
+      },
+      "revId": "7fdecc3f03138df69edf641e9ec7189b906af2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
