@@ -3104,7 +3104,9 @@ void pd_request_source_voltage(int port, int mv)
 static int command_pd(int argc, char **argv)
 {
 	int port;
+#if defined(CONFIG_CMD_PD) && defined(CONFIG_USB_PD_DUAL_ROLE)
 	int duration;
+#endif
 	char *e;
 
 	if (argc < 2)
