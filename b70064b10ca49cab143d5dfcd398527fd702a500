@@ -69,6 +69,24 @@
       "revId": "b70064b10ca49cab143d5dfcd398527fd702a500",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0d42a38_fd307c18",
+        "filename": "driver/charger/bq24773.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-28T16:29:47Z",
+      "side": 1,
+      "message": "That looks fine. It\u0027s ok to touch this code -- you\u0027re refactoring code, not changing any functionality. Also, Samus has its own FW branch, so you won\u0027t be breaking anything on Samus, even if you cause a terrible bug..",
+      "parentUuid": "f00b02a7_10e58a4c",
+      "revId": "b70064b10ca49cab143d5dfcd398527fd702a500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
