@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0f222e5_3d4972be",
+        "filename": "driver/charger/bq24773.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-28T16:09:32Z",
+      "side": 1,
+      "message": "Which bits are you masking off? Should probably leave a comment.",
+      "revId": "b70064b10ca49cab143d5dfcd398527fd702a500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0d99e70_abb753c5",
+        "filename": "driver/charger/bq24773.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-28T16:09:32Z",
+      "side": 1,
+      "message": "Let\u0027s use REG_PROCHOT_OPTION* here (and anywhere else we previously used the chip-specific constant).",
+      "revId": "b70064b10ca49cab143d5dfcd398527fd702a500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
