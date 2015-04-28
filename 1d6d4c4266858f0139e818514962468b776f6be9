@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0d99e70_23da6766",
+        "filename": "board/cyan/gpio.inc",
+        "patchSetId": 22
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-04-28T18:22:35Z",
+      "side": 1,
+      "message": "GPIO_PIN_MASK should take two parameters here.  PIN_MASK(16, 0x24).  And it should also be used in the other board gpio.h files.  The idea is that it takes the same role as GPIO_PIN above.  That means that GPIO_PIN_MASK and GPIO_PIN must be defined for all chips.",
+      "range": {
+        "startLine": 101,
+        "startChar": 19,
+        "endLine": 101,
+        "endChar": 21
+      },
+      "revId": "1d6d4c4266858f0139e818514962468b776f6be9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0f222e5_073e5cdd",
+        "filename": "board/fruitpie/gpio.inc",
+        "patchSetId": 22
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-04-28T18:22:35Z",
+      "side": 1,
+      "message": "GPIO_PIN_MASK should be defined for all chips and used here as well.  In this case it would be PIN_MASK(B, 0x2000).",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 63
+      },
+      "revId": "1d6d4c4266858f0139e818514962468b776f6be9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0f222e5_47afc495",
+        "filename": "include/gpio.wrap",
+        "patchSetId": 22
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-04-28T18:22:35Z",
+      "side": 1,
+      "message": "There should be an additional check that GPIO_PIN_MASK is also defined.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 63
+      },
+      "revId": "1d6d4c4266858f0139e818514962468b776f6be9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0d99e70_d185b055",
+        "filename": "include/gpio.wrap",
+        "patchSetId": 22
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-04-28T18:22:35Z",
+      "side": 1,
+      "message": "I realize I didn\u0027t include them in my example, but comments about what these macros are for similar to the comments below would be good.",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 6
+      },
+      "revId": "1d6d4c4266858f0139e818514962468b776f6be9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0d99e70_7175dcf2",
+        "filename": "include/gpio.wrap",
+        "patchSetId": 22
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-04-28T18:22:35Z",
+      "side": 1,
+      "message": "This command and the one below are no longer correct and should be changed to discuss the usage of GPIO_PIN instead of the two port/pin parameters.",
+      "range": {
+        "startLine": 21,
+        "startChar": 58,
+        "endLine": 23,
+        "endChar": 57
+      },
+      "revId": "1d6d4c4266858f0139e818514962468b776f6be9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
