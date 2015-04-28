@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0d99e70_035d2b7b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-04-28T18:57:15Z",
+      "side": 1,
+      "message": "this needs a much better description. What is \u0027cosmo\u0027? Where is the source code you started with (it would be beneficial to be able to compare to the end result).\n\nWhat is SPS?\n\nThe test should involve actual sending and receiving of data.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "7fdecc3f03138df69edf641e9ec7189b906af2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
