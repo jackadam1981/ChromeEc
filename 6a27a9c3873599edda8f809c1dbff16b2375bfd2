@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0f222e5_47f104ad",
+        "filename": "power/braswell.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-28T18:25:53Z",
+      "side": 1,
+      "message": "Is this necessary? Looking at the state machine, we may transition from S3 to S0 after a call to chipset_force_shutdown. In that case, we\u0027d be in S3 state with USB de-powered, which isn\u0027t what we want.\n\nCan\u0027t we get by with just enabling / disabling on S5S3 / S3S5?",
+      "revId": "6a27a9c3873599edda8f809c1dbff16b2375bfd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
