@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0d99e70_df4021f7",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-28T00:26:51Z",
+      "side": 1,
+      "message": "the DMA mapping is not the same as samus_pd which uses f072. You need to look up the DMA mapping for f051. unfortunately the 051 only has 5 DMA channels, 4 of which we need for PD communication, and the last (chan 1) is not useful for anything. so, we have to disable UART DMA. I think for this board, the desired mapping should be:\n\n/*\n * the DMA mapping is :\n *  Chan 2 : TIM1_CH1  (C0 RX)\n *  Chan 3 : SPI1_TX   (C0 TX)\n *  Chan 4 : TIM3_CH1  (C1 RX)\n *  Chan 5 : SPI2_TX   (C1 TX)\n */\n\nthen you do not need to remap any of the DMAs, so leave STM32_SYSCFG_CFGR1 alone",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 68
+      },
+      "revId": "94b9d1be1132c332747d66b5edcf45b586609fcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0f222e5_076c21b6",
+        "filename": "board/oak_pd/board.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-28T00:26:51Z",
+      "side": 1,
+      "message": "should #undef CONFIG_UART_TX_DMA here since we don\u0027t have enough DMA channels for UART",
+      "revId": "94b9d1be1132c332747d66b5edcf45b586609fcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70f712e2_772cb894",
+        "filename": "board/oak_pd/gpio.inc",
+        "patchSetId": 15
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-28T00:26:51Z",
+      "side": 1,
+      "message": "this is actually the only reference, USB_C_REF",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 15
+      },
+      "revId": "94b9d1be1132c332747d66b5edcf45b586609fcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0d42a38_3544e27a",
+        "filename": "board/oak_pd/usb_pd_config.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-28T00:26:51Z",
+      "side": 1,
+      "message": "should be DMA_CH3 for C0 and DMA_CH5 for C1",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 62
+      },
+      "revId": "94b9d1be1132c332747d66b5edcf45b586609fcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0f222e5_87a6d189",
+        "filename": "board/oak_pd/usb_pd_config.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-28T00:26:51Z",
+      "side": 1,
+      "message": "should be DMA_CH2 for C0 and DMA_CH4 for C1",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 62
+      },
+      "revId": "94b9d1be1132c332747d66b5edcf45b586609fcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0f222e5_a790b51a",
+        "filename": "board/oak_pd/usb_pd_config.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-28T00:26:51Z",
+      "side": 1,
+      "message": "the contents of the if() and else() should be switched. SPI1 is for port 0",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 2
+      },
+      "revId": "94b9d1be1132c332747d66b5edcf45b586609fcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0d99e70_fffabd88",
+        "filename": "util/flash_ec",
+        "patchSetId": 15
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-28T00:26:51Z",
+      "side": 1,
+      "message": "no colon",
+      "range": {
+        "startLine": 161,
+        "startChar": 6,
+        "endLine": 161,
+        "endChar": 7
+      },
+      "revId": "94b9d1be1132c332747d66b5edcf45b586609fcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
