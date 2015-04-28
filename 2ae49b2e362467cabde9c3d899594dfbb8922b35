@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0d99e70_12433022",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-28T23:36:06Z",
+      "side": 1,
+      "message": "this file is really a mess of unnecessary samus specific stuff. this isn\u0027t necessary, the only thing we need to do on vbus interrupt is wake PD task: task_wake(TASK_ID_PD_C0);\n\nas it is now, sending EC interrupt causes crash when EC sends follow up HC\u0027s",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 1
+      },
+      "revId": "2ae49b2e362467cabde9c3d899594dfbb8922b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f00b02a7_70b3a67b",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-28T23:36:06Z",
+      "side": 1,
+      "message": "this line doesn\u0027t do anything since the next line directly sets RCC_CFGR",
+      "range": {
+        "startLine": 268,
+        "startChar": 1,
+        "endLine": 269,
+        "endChar": 33
+      },
+      "revId": "2ae49b2e362467cabde9c3d899594dfbb8922b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
