@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "107df6ec_aeafa30f",
+        "filename": "board/cid/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1119560
+      },
+      "writtenOn": "2015-04-28T03:50:01Z",
+      "side": 1,
+      "message": "Eric,\n\nI know it was from other BDW and support Wifi radio-on during S3, I intentionally coded it as that because the WLAN_OFF# is *not* connected in DVT1 schematic, I posted comments on issue tracker. In case ppl need wlan wake up for lucid sleep and WLAN_OFF# is really connected to EC PJ4, then your suggestion is right track, no doubt.\n\nBTW, in current Cid DVT1 schematic, it actually tied PCH GPIO46 to W_DISABLE#1 and #2, it means, de-assert GPIO46 during S3 will keep both wifi radio on as well as not asserting BT reset signal. In summary, other BDW platforms you saw was using 3 pins to control 7260 power/bt-reset/wifi-radio, however current Cid DVT1 using two pins only.",
+      "parentUuid": "5083ee1c_ea48a7bb",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 61
+      },
+      "revId": "c234fbbe2e3ba9c3ede2b097bc1be23189370f80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5083ee1c_0db9950e",
         "filename": "board/lulu/board.h",
         "patchSetId": 2
