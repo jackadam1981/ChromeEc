@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0d42a38_51777850",
+        "filename": "board/honeybuns/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-28T19:37:45Z",
+      "side": 1,
+      "message": "please use USB_SID_DISPLAYPORT",
+      "range": {
+        "startLine": 259,
+        "startChar": 12,
+        "endLine": 259,
+        "endChar": 18
+      },
+      "revId": "e7adab0825af405832803019d419d39368a45f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0d99e70_e66b4d1c",
+        "filename": "board/honeybuns/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-28T19:37:45Z",
+      "side": 1,
+      "message": "is that related ?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 21
+      },
+      "revId": "e7adab0825af405832803019d419d39368a45f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0f222e5_ca68596b",
+        "filename": "board/honeybuns/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-28T19:37:45Z",
+      "side": 1,
+      "message": "this seems incorrect",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 33
+      },
+      "revId": "e7adab0825af405832803019d419d39368a45f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0d99e70_e6522d6a",
+        "filename": "board/honeybuns/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-28T19:37:45Z",
+      "side": 1,
+      "message": "the comment is incorrect",
+      "range": {
+        "startLine": 158,
+        "startChar": 1,
+        "endLine": 158,
+        "endChar": 64
+      },
+      "revId": "e7adab0825af405832803019d419d39368a45f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0f222e5_8abdb146",
+        "filename": "board/honeybuns/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-28T19:37:45Z",
+      "side": 1,
+      "message": "is that still accurate ?",
+      "range": {
+        "startLine": 178,
+        "startChar": 5,
+        "endLine": 179,
+        "endChar": 37
+      },
+      "revId": "e7adab0825af405832803019d419d39368a45f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0d99e70_f9de5257",
+        "filename": "board/honeybuns/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-28T19:37:45Z",
+      "side": 1,
+      "message": "is the PD log enabled ?",
+      "range": {
+        "startLine": 296,
+        "startChar": 7,
+        "endLine": 296,
+        "endChar": 22
+      },
+      "revId": "e7adab0825af405832803019d419d39368a45f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0d99e70_06b41931",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3107,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-28T19:37:45Z",
+      "side": 1,
+      "message": "that\u0027s a lot of clutter for not much.\nCan you just move the variable declaration inside the \"else if (!strcasecmp(argv[2], \"bist_tx\"))\" clause ?",
+      "range": {
+        "startLine": 3107,
+        "startChar": 0,
+        "endLine": 3107,
+        "endChar": 62
+      },
+      "revId": "e7adab0825af405832803019d419d39368a45f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
