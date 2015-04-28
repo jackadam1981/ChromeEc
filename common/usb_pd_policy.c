@@ -406,6 +406,35 @@ static void dfp_consume_attention(int port, uint32_t *payload)
 		modep->fx->attention(port, payload);
 }
 
+int pd_dfp_dp_get_pin_mode(int port, uint32_t status)
+{
+	struct svdm_amode_data *modep = get_modep(port, USB_SID_DISPLAYPORT);
+	uint32_t mode_caps;
+	uint8_t pin_caps;
+	uint8_t pin_mode = MODE_DP_PIN_F;
+	if (!modep)
+		return 0;
+
+	mode_caps = modep->data->mode_vdo[modep->opos - 1];
+
+	/* TODO(tbroch) revisit with DFP that can be a source */
+	pin_caps = PD_VDO_MODE_DP_SRCP(mode_caps);
+
+	/* if don't want multi-function then ignore those pin configs */
+	if (!PD_VDO_DPSTS_MF_PREF(status))
+		pin_caps &= ~MODE_DP_PIN_MF_MASK;
+
+	/* TODO(tbroch) revisit if we have DFP that drives BR2 signals */
+	pin_caps &= ~MODE_DP_PIN_BR2_MASK;
+
+	while (pin_mode) {
+		if (pin_mode & pin_caps)
+			break;
+		pin_mode >>= 1;
+	}
+	return pin_mode;
+}
+
 int pd_dfp_exit_mode(int port, uint16_t svid, int opos)
 {
 	struct svdm_amode_data *modep;
