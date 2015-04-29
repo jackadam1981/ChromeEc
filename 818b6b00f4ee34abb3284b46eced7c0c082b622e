@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d0d99e70_cf585614",
+        "filename": "board/samus_pd/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-04-29T22:08:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1065f695_57de7608",
+      "range": {
+        "startLine": 263,
+        "startChar": 7,
+        "endLine": 263,
+        "endChar": 10
+      },
+      "revId": "818b6b00f4ee34abb3284b46eced7c0c082b622e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0d99e70_4c17d743",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-04-29T16:25:22Z",
       "side": 1,
       "message": "should probably make bugs for these todo\u0027s. or refer to the bug for this CL and in the bug report mention what still needs to be done.",
+      "range": {
+        "startLine": 420,
+        "startChar": 1,
+        "endLine": 420,
+        "endChar": 57
+      },
+      "revId": "818b6b00f4ee34abb3284b46eced7c0c082b622e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1065f695_82026e0a",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-04-29T22:08:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0d99e70_4c17d743",
       "range": {
         "startLine": 420,
         "startChar": 1,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "1065f695_e2beca46",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-04-29T22:08:27Z",
+      "side": 1,
+      "message": "Done ... thanks for tip!",
+      "parentUuid": "f0f222e5_742dc73c",
+      "range": {
+        "startLine": 430,
+        "startChar": 1,
+        "endLine": 430,
+        "endChar": 19
+      },
+      "revId": "818b6b00f4ee34abb3284b46eced7c0c082b622e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1065f695_cec2d738",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2015-04-29T16:25:22Z",
       "side": 1,
       "message": "this prefers pin modes with higher bit set. is there a reason for this? should mode F be preferred over mode D for example? should probably add comment as to why we are searching this way instead of starting on the lower bits.",
+      "range": {
+        "startLine": 430,
+        "startChar": 1,
+        "endLine": 434,
+        "endChar": 2
+      },
+      "revId": "818b6b00f4ee34abb3284b46eced7c0c082b622e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0d99e70_2f711a8c",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-04-29T22:08:27Z",
+      "side": 1,
+      "message": "Done ... see above.",
+      "parentUuid": "1065f695_cec2d738",
       "range": {
         "startLine": 430,
         "startChar": 1,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "d0d99e70_af3cea90",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-04-29T22:08:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0f222e5_9ee84a28",
+      "range": {
+        "startLine": 490,
+        "startChar": 33,
+        "endLine": 490,
+        "endChar": 34
+      },
+      "revId": "818b6b00f4ee34abb3284b46eced7c0c082b622e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1065f695_8eb85fda",
         "filename": "include/usb_pd.h",
         "patchSetId": 1
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "1065f695_3d8163fd",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-04-29T22:08:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1065f695_8eb85fda",
+      "range": {
+        "startLine": 533,
+        "startChar": 34,
+        "endLine": 533,
+        "endChar": 35
+      },
+      "revId": "818b6b00f4ee34abb3284b46eced7c0c082b622e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0f222e5_34205f52",
         "filename": "include/usb_pd.h",
         "patchSetId": 1
@@ -151,6 +295,30 @@
       "writtenOn": "2015-04-29T18:12:02Z",
       "side": 1,
       "message": "VDO ?",
+      "range": {
+        "startLine": 1036,
+        "startChar": 38,
+        "endLine": 1036,
+        "endChar": 41
+      },
+      "revId": "818b6b00f4ee34abb3284b46eced7c0c082b622e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "300cbaed_59ebe3f2",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1036,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-04-29T22:08:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0f222e5_34205f52",
       "range": {
         "startLine": 1036,
         "startChar": 38,
