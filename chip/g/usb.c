@@ -37,7 +37,7 @@
 #endif
 
 /* Console output macro */
-#define CPRINTF(format, args...) cprintf(CC_USB, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_USB, format, ## args)
 
 #ifdef CONFIG_USB_BOS
 /* v2.01 (vs 2.00) BOS Descriptor provided */
@@ -244,7 +244,7 @@ static void ep0_tx(void)
 	if (set_addr) {
 		GR_USB_DCFG = (GR_USB_DCFG & ~DCFG_DEVADDR(0x7f))
 			    | DCFG_DEVADDR(set_addr);
-		CPRINTF("SETAD %02x\n", set_addr);
+		CPRINTS("SETAD %02x", set_addr);
 		set_addr = 0;
 	}
 	if (desc_ptr) {
@@ -333,7 +333,7 @@ static void usb_softreset(void)
 	while ((GR_USB_GRSTCTL & GRSTCTL_CSFTRST) && timeout-- > 0)
 		;
 	if (GR_USB_GRSTCTL & GRSTCTL_CSFTRST) {
-		CPRINTF("USB: reset failed\n");
+		CPRINTS("USB reset failed");
 		return;
 	}
 
@@ -341,7 +341,7 @@ static void usb_softreset(void)
 	while (!(GR_USB_GRSTCTL & GRSTCTL_AHBIDLE) && timeout-- > 0)
 		;
 	if (!timeout) {
-		CPRINTF("USB: reset timeout\n");
+		CPRINTS("USB reset timeout");
 		return;
 	}
 }
@@ -440,7 +440,7 @@ void usb_init(void)
 	usb_connect();
 #endif
 
-	CPRINTF("USB init done\n");
+	CPRINTS("USB init done");
 }
 #ifndef CONFIG_USB_INHIBIT_INIT
 DECLARE_HOOK(HOOK_INIT, usb_init, HOOK_PRIO_DEFAULT);

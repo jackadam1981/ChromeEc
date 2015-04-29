@@ -1,34 +1,23 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2015 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
 
 #include "common.h"
 #include "config.h"
-#include "console.h"
 #include "link_defs.h"
 #include "printf.h"
+#include "queue.h"
 #include "registers.h"
-#include "task.h"
 #include "timer.h"
-#include "util.h"
 #include "usb.h"
 
-/* Console output macro */
-#define CPRINTF(format, args...) cprintf(CC_USB, format, ## args)
-
-#define USB_CONSOLE_TIMEOUT_US (30 * MSEC)
-#define USB_CONSOLE_RX_BUF_SIZE 16
-#define RX_BUF_NEXT(i) (((i) + 1) & (USB_CONSOLE_RX_BUF_SIZE - 1))
-
-static volatile char rx_buf[USB_CONSOLE_RX_BUF_SIZE];
-static volatile int rx_buf_head;
-static volatile int rx_buf_tail;
-
-static int last_tx_ok = 1;
+/* Queues between the EC console and USB HW FIFOs */
+#define USB_QUEUE_SIZE 256
+QUEUE_CONFIG(usb_rx_from_ap, USB_QUEUE_SIZE, uint8_t);
+QUEUE_CONFIG(usb_tx_to_ap, USB_QUEUE_SIZE, uint8_t);
 
 static int is_reset;
-static int is_enabled = 1;
 
 /* USB-Serial descriptors */
 const struct usb_interface_descriptor USB_IFACE_DESC(USB_IFACE_CONSOLE) =
@@ -62,39 +51,123 @@ const struct usb_endpoint_descriptor USB_EP_DESC(USB_IFACE_CONSOLE, 1) =
 	.bInterval          = 0
 };
 
+/* USB HW buffers */
 static usb_uint ep_buf_tx[USB_MAX_PACKET_SIZE / sizeof(usb_uint)];
 static usb_uint ep_buf_rx[USB_MAX_PACKET_SIZE / sizeof(usb_uint)];
 static struct g_usb_desc ep_out_desc;
 static struct g_usb_desc ep_in_desc;
 
-static void con_ep_tx(void)
+/* Let the USB HW IN-to-host FIFO transmit some bytes */
+static void usb_enable_tx(int len)
 {
-	/* clear IT */
-	GR_USB_DIEPINT(USB_EP_CONSOLE) = 0xffffffff;
+	ep_in_desc.flags = DIEPDMA_LAST | DIEPDMA_BS_HOST_RDY | DIEPDMA_IOC |
+			   DIEPDMA_TXBYTES(len);
+	GR_USB_DIEPCTL(USB_EP_CONSOLE) |= DXEPCTL_CNAK | DXEPCTL_EPENA;
 }
 
-static void con_ep_rx(void)
+/* Let the USB HW OUT-from-host FIFO receive some bytes */
+static void usb_enable_rx(int len)
 {
-	int i;
-	int rx_size = USB_MAX_PACKET_SIZE
-		    - (ep_out_desc.flags & DOEPDMA_RXBYTES_MASK);
+	ep_out_desc.flags = DOEPDMA_RXBYTES(len) |
+			    DOEPDMA_LAST | DOEPDMA_BS_HOST_RDY | DOEPDMA_IOC;
+	GR_USB_DOEPCTL(USB_EP_CONSOLE) |= DXEPCTL_CNAK | DXEPCTL_EPENA;
+}
 
-	for (i = 0; i < rx_size; i++) {
-		int rx_buf_next = RX_BUF_NEXT(rx_buf_head);
-		if (rx_buf_next != rx_buf_tail) {
-			rx_buf[rx_buf_head] = ep_buf_rx[i];
-			rx_buf_head = rx_buf_next;
+/* True if the Rx/OUT FIFO has bytes for us. */
+static inline int rx_fifo_is_ready(void)
+{
+	return (ep_out_desc.flags & DOEPDMA_BS_MASK) == DOEPDMA_BS_DMA_DONE;
+}
+
+/* Got some bytes from the host */
+static void rx_fifo_handler(void)
+{
+	static int rx_handled;
+	int rx_in_fifo, rx_left;
+
+	/* If the HW FIFO isn't ready, then we're waiting for more bytes */
+	if (!rx_fifo_is_ready())
+		return;
+
+	/* How many of the HW FIFO bytes have we not yet handled? */
+	rx_in_fifo = USB_MAX_PACKET_SIZE
+		- (ep_out_desc.flags & DOEPDMA_RXBYTES_MASK);
+	rx_left = rx_in_fifo - rx_handled;
+
+	if (rx_left) {
+		/* If we have some, try to shove them into the queue */
+		size_t added = QUEUE_ADD_UNITS(&usb_rx_from_ap,
+					       ep_buf_rx + rx_handled,
+					       rx_left);
+		if (added) {
+			/* Yay */
+			rx_handled += added;
+			rx_left -= added;
+
+			/* Wake up the other end of the queue. */
+			console_has_input();
 		}
 	}
 
-	ep_out_desc.flags = DOEPDMA_RXBYTES(USB_MAX_PACKET_SIZE) |
-			    DOEPDMA_LAST | DOEPDMA_BS_HOST_RDY | DOEPDMA_IOC;
-	GR_USB_DOEPCTL(USB_EP_CONSOLE) |= DXEPCTL_CNAK | DXEPCTL_EPENA;
-	/* clear IT */
-	GR_USB_DOEPINT(USB_EP_CONSOLE) = 0xffffffff;
+	/* If we've handled all the bytes from the HW, we can get some more */
+	if (!rx_left) {
+		rx_handled = 0;
+		usb_enable_rx(USB_MAX_PACKET_SIZE);
+	}
+}
+DECLARE_DEFERRED(rx_fifo_handler);
 
-	/* wake-up the console task */
-	console_has_input();
+/* Rx/OUT interrupt handler */
+static void con_ep_rx(void)
+{
+	/* Wake up the Rx FIFO handler */
+	hook_call_deferred(rx_fifo_handler, 0);
+
+	/* clear the RX/OUT interrupts */
+	GR_USB_DOEPINT(USB_EP_CONSOLE) = 0xffffffff;
+}
+
+/* True if the Tx/IN FIFO can take some bytes from us. */
+static inline int tx_fifo_is_ready(void)
+{
+	uint32_t status = ep_in_desc.flags & DIEPDMA_BS_MASK;
+	return status == DIEPDMA_BS_DMA_DONE || status == DIEPDMA_BS_HOST_BSY;
+}
+
+/* Try to send some bytes to the host */
+static void tx_fifo_handler(void)
+{
+	size_t count;
+
+	if (!is_reset)
+		return;
+
+	/* If the HW FIFO isn't ready, then we can't do anything right now. */
+	if (!tx_fifo_is_ready())
+		return;
+
+	/* If there's nothing in the queue, ditto */
+	count = queue_count(&usb_tx_to_ap);
+	if (!count)
+		return;
+
+	/* Ship some out */
+	count = QUEUE_REMOVE_UNITS(&usb_tx_to_ap,
+				   ep_buf_tx,
+				   MIN(count, USB_MAX_PACKET_SIZE));
+	if (count)
+		usb_enable_tx(count);
+}
+DECLARE_DEFERRED(tx_fifo_handler);
+
+/* Tx/IN interrupt handler */
+static void con_ep_tx(void)
+{
+	/* Wake up the Tx FIFO handler */
+	hook_call_deferred(tx_fifo_handler, 0);
+
+	/* clear the Tx/IN interrupts */
+	GR_USB_DIEPINT(USB_EP_CONSOLE) = 0xffffffff;
 }
 
 static void ep_reset(void)
@@ -121,71 +194,20 @@ USB_DECLARE_EP(USB_EP_CONSOLE, con_ep_tx, con_ep_rx, ep_reset);
 
 static int __tx_char(void *context, int c)
 {
-	usb_uint *buf = (usb_uint *)ep_buf_tx;
 	int *tx_idx = context;
+	uint8_t c8 = c;
 
 	/* Do newline to CRLF translation */
 	if (c == '\n' && __tx_char(context, '\r'))
 		return 1;
 
-	if (*tx_idx > 63)
+	if (!queue_add_unit(&usb_tx_to_ap, &c8))
 		return 1;
 
-	buf[*tx_idx] = c;
 	(*tx_idx)++;
-
 	return 0;
 }
 
-static void usb_enable_tx(int len)
-{
-	if (!is_enabled)
-		return;
-
-	ep_in_desc.flags = DIEPDMA_LAST | DIEPDMA_BS_HOST_RDY | DIEPDMA_IOC |
-			   DIEPDMA_TXBYTES(len);
-	GR_USB_DIEPCTL(USB_EP_CONSOLE) |= DXEPCTL_CNAK | DXEPCTL_EPENA;
-}
-
-static inline int usb_console_tx_valid(void)
-{
-	return (ep_in_desc.flags & DIEPDMA_BS_MASK) == DIEPDMA_BS_DMA_DONE;
-}
-
-static int usb_wait_console(void)
-{
-	timestamp_t deadline = get_time();
-	int wait_time_us = 1;
-
-	deadline.val += USB_CONSOLE_TIMEOUT_US;
-
-	/*
-	 * If the USB console is not used, Tx buffer would never free up.
-	 * In this case, let's drop characters immediately instead of sitting
-	 * for some time just to time out. On the other hand, if the last
-	 * Tx is good, it's likely the host is there to receive data, and
-	 * we should wait so that we don't clobber the buffer.
-	 */
-	if (last_tx_ok) {
-		while (usb_console_tx_valid() || !is_reset) {
-			if (timestamp_expired(deadline, NULL) ||
-			    in_interrupt_context()) {
-				last_tx_ok = 0;
-				return EC_ERROR_TIMEOUT;
-			}
-			if (wait_time_us < MSEC)
-				udelay(wait_time_us);
-			else
-				usleep(wait_time_us);
-			wait_time_us *= 2;
-		}
-
-		return EC_SUCCESS;
-	} else {
-		last_tx_ok = !usb_console_tx_valid();
-		return EC_SUCCESS;
-	}
-}
 
 /*
  * Public USB console implementation below.
@@ -194,14 +216,11 @@ int usb_getc(void)
 {
 	int c;
 
-	if (rx_buf_tail == rx_buf_head)
+	if (!queue_remove_unit(&usb_rx_from_ap, &c))
 		return -1;
 
-	if (!is_enabled)
-		return -1;
-
-	c = rx_buf[rx_buf_tail];
-	rx_buf_tail = RX_BUF_NEXT(rx_buf_tail);
+	/* Fill the other end of the queue if possible */
+	hook_call_deferred(rx_fifo_handler, 0);
 	return c;
 }
 
@@ -210,24 +229,18 @@ int usb_putc(int c)
 	int ret;
 	int tx_idx = 0;
 
-	ret = usb_wait_console();
-	if (ret)
-		return ret;
-
 	ret = __tx_char(&tx_idx, c);
-	usb_enable_tx(tx_idx);
+
+	/* If we added any chars, try to send them */
+	if (tx_idx)
+		tx_fifo_handler();
 
 	return ret;
 }
 
 int usb_puts(const char *outstr)
 {
-	int ret;
 	int tx_idx = 0;
-
-	ret = usb_wait_console();
-	if (ret)
-		return ret;
 
 	/* Put all characters in the output buffer */
 	while (*outstr) {
@@ -235,7 +248,9 @@ int usb_puts(const char *outstr)
 			break;
 	}
 
-	usb_enable_tx(tx_idx);
+	/* If we added any chars, try to send them */
+	if (tx_idx)
+		tx_fifo_handler();
 
 	/* Successful if we consumed all output */
 	return *outstr ? EC_ERROR_OVERFLOW : EC_SUCCESS;
@@ -246,17 +261,11 @@ int usb_vprintf(const char *format, va_list args)
 	int ret;
 	int tx_idx = 0;
 
-	ret = usb_wait_console();
-	if (ret)
-		return ret;
-
 	ret = vfnprintf(__tx_char, &tx_idx, format, args);
 
-	usb_enable_tx(tx_idx);
-	return ret;
-}
+	/* If we added any chars, try to send them */
+	if (tx_idx)
+		tx_fifo_handler();
 
-void usb_console_enable(int enabled)
-{
-	is_enabled = enabled;
+	return ret;
 }
