@@ -1,0 +1,464 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f00b02a7_369406bb",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-29T15:10:18Z",
+      "side": 1,
+      "message": "delete. not needed on PD. instead this will eventually be on EC",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 69
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0027e8c_17e0db12",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-29T15:10:18Z",
+      "side": 1,
+      "message": "these functions are not needed, in this case PD MCU doesn\u0027t need to know AP state",
+      "range": {
+        "startLine": 118,
+        "startChar": 12,
+        "endLine": 118,
+        "endChar": 28
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0fd0ac2_59db3317",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-29T15:10:18Z",
+      "side": 1,
+      "message": "not needed",
+      "range": {
+        "startLine": 124,
+        "startChar": 12,
+        "endLine": 124,
+        "endChar": 28
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0fd0ac2_39d87718",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-29T15:10:18Z",
+      "side": 1,
+      "message": "not needed",
+      "range": {
+        "startLine": 132,
+        "startChar": 12,
+        "endLine": 132,
+        "endChar": 28
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f00b02a7_96a4d22d",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-29T15:10:18Z",
+      "side": 1,
+      "message": "not needed",
+      "range": {
+        "startLine": 138,
+        "startChar": 12,
+        "endLine": 138,
+        "endChar": 28
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0027e8c_f7e41f28",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-29T15:10:18Z",
+      "side": 1,
+      "message": "not needed",
+      "range": {
+        "startLine": 147,
+        "startChar": 12,
+        "endLine": 147,
+        "endChar": 28
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f00b02a7_769a7eed",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-29T15:10:18Z",
+      "side": 1,
+      "message": "not needed",
+      "range": {
+        "startLine": 175,
+        "startChar": 5,
+        "endLine": 175,
+        "endChar": 12
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0fd0ac2_19d5bbde",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-29T15:10:18Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 199,
+        "startChar": 1,
+        "endLine": 202,
+        "endChar": 6
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f00b02a7_56977ac1",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-29T15:10:18Z",
+      "side": 1,
+      "message": "not needed, this code will be needed on EC",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 28
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f00b02a7_169102cb",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-29T15:10:18Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 264,
+        "startChar": 1,
+        "endLine": 285,
+        "endChar": 49
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f00b02a7_f600ae89",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-29T15:10:18Z",
+      "side": 1,
+      "message": "not needed, just delete",
+      "range": {
+        "startLine": 288,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 5
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0027e8c_97f4cbd2",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-29T15:10:18Z",
+      "side": 1,
+      "message": "don\u0027t keep around moved stuff, delete",
+      "range": {
+        "startLine": 327,
+        "startChar": 1,
+        "endLine": 328,
+        "endChar": 61
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f00b02a7_5612dada",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-29T15:10:18Z",
+      "side": 1,
+      "message": "setting muxes isn\u0027t done on PD anymore, delete",
+      "range": {
+        "startLine": 373,
+        "startChar": 5,
+        "endLine": 373,
+        "endChar": 22
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f00b02a7_f6278e32",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-29T15:10:18Z",
+      "side": 1,
+      "message": "will be done on EC, delete",
+      "range": {
+        "startLine": 471,
+        "startChar": 4,
+        "endLine": 471,
+        "endChar": 32
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f00b02a7_d62c8a19",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-29T15:10:18Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 521,
+        "startChar": 4,
+        "endLine": 521,
+        "endChar": 29
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0fd0ac2_f9941f1b",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-29T15:10:18Z",
+      "side": 1,
+      "message": "will be on EC, delete",
+      "range": {
+        "startLine": 529,
+        "startChar": 4,
+        "endLine": 529,
+        "endChar": 25
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f00b02a7_96261234",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-29T15:10:18Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 545,
+        "startChar": 4,
+        "endLine": 545,
+        "endChar": 32
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f00b02a7_56b09a6c",
+        "filename": "board/oak_pd/usb_pd_config.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-29T15:10:18Z",
+      "side": 1,
+      "message": "shouldn\u0027t be needed",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 26
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0027e8c_37d4f739",
+        "filename": "board/oak_pd/usb_pd_config.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-29T15:10:18Z",
+      "side": 1,
+      "message": "please add to comment for 1.5A pull up, to avoid someone else blindly copying and pasting it to some other board",
+      "range": {
+        "startLine": 343,
+        "startChar": 0,
+        "endLine": 343,
+        "endChar": 32
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0fd0ac2_b9e347ce",
+        "filename": "board/oak_pd/usb_pd_config.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-29T15:10:18Z",
+      "side": 1,
+      "message": "typo \"DFP\"",
+      "range": {
+        "startLine": 346,
+        "startChar": 3,
+        "endLine": 346,
+        "endChar": 6
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
