@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "70de325c_5aca099e",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-04-29T14:40:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0d99e70_12433022",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 1
+      },
+      "revId": "2ae49b2e362467cabde9c3d899594dfbb8922b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0d99e70_f54f6ec2",
         "filename": "board/oak_pd/usb_pd_config.h",
         "patchSetId": 17
@@ -36,6 +60,24 @@
       "writtenOn": "2015-04-29T00:24:40Z",
       "side": 1,
       "message": "need to add #define PD_SRC_RD_THRESHOLD 400 (since we have 1.5A pull-up, see table 4-19 in type-C spec)",
+      "revId": "2ae49b2e362467cabde9c3d899594dfbb8922b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70de325c_3ad73d42",
+        "filename": "board/oak_pd/usb_pd_config.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-04-29T14:40:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0d99e70_f54f6ec2",
       "revId": "2ae49b2e362467cabde9c3d899594dfbb8922b35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "3012fad8_3dd1877c",
+        "filename": "board/oak_pd/usb_pd_config.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-04-29T14:40:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0d42a38_93871be1",
+      "range": {
+        "startLine": 344,
+        "startChar": 19,
+        "endLine": 344,
+        "endChar": 23
+      },
+      "revId": "2ae49b2e362467cabde9c3d899594dfbb8922b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f00b02a7_70b3a67b",
         "filename": "chip/stm32/clock-stm32f0.c",
         "patchSetId": 17
@@ -76,6 +142,30 @@
       "writtenOn": "2015-04-28T23:36:06Z",
       "side": 1,
       "message": "this line doesn\u0027t do anything since the next line directly sets RCC_CFGR",
+      "range": {
+        "startLine": 268,
+        "startChar": 1,
+        "endLine": 269,
+        "endChar": 33
+      },
+      "revId": "2ae49b2e362467cabde9c3d899594dfbb8922b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "100976af_429a16bb",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-04-29T14:40:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f00b02a7_70b3a67b",
       "range": {
         "startLine": 268,
         "startChar": 1,
