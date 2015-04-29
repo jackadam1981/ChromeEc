@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0f222e5_99098461",
+        "filename": "board/gandof/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1002584
+      },
+      "writtenOn": "2015-04-29T16:41:08Z",
+      "side": 1,
+      "message": "nit: signal",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 53
+      },
+      "revId": "c696cb813176dda219210c6c883c395c15a94484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1065f695_6edacbec",
+        "filename": "board/gandof/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1002584
+      },
+      "writtenOn": "2015-04-29T16:41:08Z",
+      "side": 1,
+      "message": "nit: align with other entries",
+      "range": {
+        "startLine": 80,
+        "startChar": 26,
+        "endLine": 80,
+        "endChar": 52
+      },
+      "revId": "c696cb813176dda219210c6c883c395c15a94484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
