@@ -87,12 +87,12 @@ static const uint8_t report_desc[] = {
 	0x00        /* Padding */
 };
 
-static usb_uint hid_ep_buf[HID_REPORT_SIZE / 2] /*__usb_ram*/;
+static usb_uint hid_ep_buf[HID_REPORT_SIZE / sizeof(usb_uint)];
 static struct g_usb_desc hid_ep_desc;
 
 void set_keyboard_report(uint64_t rpt)
 {
-	memcpy_to_usbram(hid_ep_buf, (const uint8_t *)&rpt, sizeof(rpt));
+	memcpy_to_usbram(hid_ep_buf, &rpt, sizeof(rpt));
 	hid_ep_desc.flags = DIEPDMA_LAST | DIEPDMA_BS_HOST_RDY | DIEPDMA_IOC |
 			    DIEPDMA_TXBYTES(HID_REPORT_SIZE);
 	/* enable TX */
@@ -124,15 +124,15 @@ extern struct g_usb_desc ep0_out_desc;
 
 static int hid_iface_request(usb_uint *ep0_buf_rx, usb_uint *ep0_buf_tx)
 {
+	struct usb_setup_packet *req = (struct usb_setup_packet *)ep0_buf_rx;
 	int len;
 
-	if ((ep0_buf_rx[0] == (USB_DIR_IN | USB_RECIP_INTERFACE |
-			      (USB_REQ_GET_DESCRIPTOR << 8))) &&
-			      (ep0_buf_rx[1] == (USB_HID_DT_REPORT << 8))) {
+	if (req->bmRequestType == (USB_DIR_IN | USB_RECIP_INTERFACE) &&
+	    req->bRequest == USB_REQ_GET_DESCRIPTOR &&
+	    req->wValue == (USB_HID_DT_REPORT << 8)) {
 		/* Setup : HID specific : Get Report descriptor */
-		memcpy_to_usbram(ep0_buf_tx, report_desc,
-				 sizeof(report_desc));
-		len = MIN(ep0_buf_rx[3], sizeof(report_desc));
+		memcpy_to_usbram(ep0_buf_tx, report_desc, sizeof(report_desc));
+		len = MIN(req->wLength, sizeof(report_desc));
 		ep0_in_desc.flags = DIEPDMA_LAST | DIEPDMA_BS_HOST_RDY |
 				    DIEPDMA_IOC | DIEPDMA_TXBYTES(len);
 		GR_USB_DIEPCTL(0) |= DXEPCTL_CNAK | DXEPCTL_EPENA;
