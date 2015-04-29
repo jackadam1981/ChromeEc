@@ -279,7 +279,7 @@ void *memcpy_to_usbram(void *dest, const void *src, size_t n);
 void *memcpy_from_usbram(void *dest, const void *src, size_t n);
 
 /* Compute the address inside dedicate SRAM for the USB controller */
-#define usb_sram_addr(x) ((x - __usb_ram_start) * sizeof(uint16_t))
+#define usb_sram_addr(x) ((x - __usb_ram_start) * sizeof(usb_uint))
 
 /* These descriptors defined in board code */
 extern const void * const usb_strings[];
