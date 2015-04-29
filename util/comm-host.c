@@ -107,7 +107,10 @@ int comm_init(int interfaces, const char *device_name)
 		fprintf(stderr, "Unable to allocate buffers\n");
 		return 1;
 	}
-
+#ifndef CROS_EC_PROTO_VERSION
+#error "Not set porperly"
+#endif
+#if CROS_EC_PROTO_VERSION >= 3
 	/* read max request / response size from ec for protocol v3+ */
 	if (ec_command(EC_CMD_GET_PROTOCOL_INFO, 0, NULL, 0, &info,
 		sizeof(info)) == sizeof(info)) {
@@ -124,6 +127,7 @@ int comm_init(int interfaces, const char *device_name)
 			return 1;
 		}
 	}
+#endif
 
 	return 0;
 
