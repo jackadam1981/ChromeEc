@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "70f8f2fa_ea85b755",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1149,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-04-29T23:18:21Z",
+      "side": 1,
+      "message": "I did try swapping the order to see if that changed the enumeration issue when forcing a data role swap from UFP-DFP and it didn\u0027t change the outcome. Is the consensus that I the order of these operations be flipped?",
+      "parentUuid": "70f8f2fa_cad27b86",
+      "range": {
+        "startLine": 1149,
+        "startChar": 1,
+        "endLine": 1149,
+        "endChar": 34
+      },
+      "revId": "344601b4b6d904674d79de0c460076646e29ea88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90fd66eb_05af38e4",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
@@ -36,6 +60,24 @@
       "writtenOn": "2015-04-29T23:11:30Z",
       "side": 1,
       "message": "nit: remove the inserted line",
+      "revId": "344601b4b6d904674d79de0c460076646e29ea88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "300cbaed_5381fc96",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2434,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-04-29T23:18:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90fd66eb_05af38e4",
       "revId": "344601b4b6d904674d79de0c460076646e29ea88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
