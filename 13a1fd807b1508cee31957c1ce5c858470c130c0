@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "90fd66eb_cd6bae9f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-30T22:20:48Z",
+      "side": 1,
+      "message": "This isn\u0027t the reason for the change (sensors will already be marked \"Not Initialized\") and it\u0027s misleading.",
+      "revId": "13a1fd807b1508cee31957c1ce5c858470c130c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "300cbaed_e67b19b8",
         "filename": "board/strago/board.c",
         "patchSetId": 1
