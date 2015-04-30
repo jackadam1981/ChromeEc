@@ -48,6 +48,23 @@
     },
     {
       "key": {
+        "uuid": "b0fd0ac2_2e1f0be3",
+        "filename": "board/honeybuns/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-04-30T02:40:02Z",
+      "side": 1,
+      "message": "Need \n\n  #define CONFIG_USB_PD_HW_DEV_ID_BOARD_MAJOR USB_PD_HW_DEV_ID_HONEYBUNS\n  #define CONFIG_USB_PD_HW_DEV_ID_BOARD_MINOR 0\n\nand in include/usb_pd.h:\n  #define USB_PD_HW_DEV_ID_HONEYBUNS 5\n\nfor get_info host command to work via honeybuns/usb_pd_policy.c:pd_custom_vdm -\u003e pd_custom_flash_vdm -\u003e pd_get_info",
+      "revId": "e7adab0825af405832803019d419d39368a45f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0f222e5_ca68596b",
         "filename": "board/honeybuns/usb_pd_policy.c",
         "patchSetId": 1
@@ -87,6 +104,29 @@
         "startChar": 1,
         "endLine": 158,
         "endChar": 64
+      },
+      "revId": "e7adab0825af405832803019d419d39368a45f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f00b02a7_5b97a3c1",
+        "filename": "board/honeybuns/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-04-30T02:40:02Z",
+      "side": 1,
+      "message": "Should be able to support pin modes C/D/E/F functionally.  Need to discuss how that should really work however for a dock w/ both HDMI \u0026 DP + USB3.0.",
+      "range": {
+        "startLine": 177,
+        "startChar": 6,
+        "endLine": 177,
+        "endChar": 19
       },
       "revId": "e7adab0825af405832803019d419d39368a45f9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
