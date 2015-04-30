@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "300cbaed_335435a9",
+        "filename": "board/oak_pd/gpio.inc",
+        "patchSetId": 19
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-30T22:02:49Z",
+      "side": 1,
+      "message": "all the TX_DATA pins should be initalized to GPIO_INPUT, otherwise we measure the wrong CC voltage coming out of dead battery case when a charger is plugged in.",
+      "range": {
+        "startLine": 24,
+        "startChar": 36,
+        "endLine": 24,
+        "endChar": 48
+      },
+      "revId": "8ee64b8f9b1843455cecc9c0b4ad1dcc9222e48c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
