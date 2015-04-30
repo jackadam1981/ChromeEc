@@ -534,8 +534,11 @@ struct pd_policy {
 #define PD_VDO_DPSTS_HPD_LVL(x) (((x) >> 7) & 1)
 #define PD_VDO_DPSTS_MF_PREF(x) (((x) >> 4) & 1)
 
-#define HPD_DEBOUNCE_LVL (100*MSEC)
-#define HPD_DEBOUNCE_IRQ (2*MSEC)
+#define HPD_DEBOUNCE_LVL  (100*MSEC)
+#define HPD_DEBOUNCE_IRQ  (2*MSEC)
+/* 500 usec per DP v1.3 Section 5.1.4 */
+#define HPD_SRC_PULSE_IRQ (500)
+
 /*
  * DisplayPort Configure VDO
  * -------------------------
