@@ -24,6 +24,7 @@
 
 static uint8_t mem_mapped[0x200] __attribute__((section(".bss.big_align")));
 
+static char uart;
 static uint32_t host_events;     /* Currently pending SCI/SMI events */
 static uint32_t event_mask[3];   /* Event masks for each type */
 static struct host_packet lpc_packet;
@@ -35,6 +36,8 @@ static int init_done;
 
 static struct ec_lpc_host_args * const lpc_host_args =
 	(struct ec_lpc_host_args *)mem_mapped;
+
+static int lpc_command_uart(int argc, char **argv);
 
 static void keyboard_irq_assert(void)
 {
@@ -254,6 +257,9 @@ static void setup_lpc(void)
 
 	/* Update host events now that we can copy them to memmap */
 	update_host_event_status();
+
+	if (uart == 1)
+		lpc_command_uart(0, NULL);
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, setup_lpc, HOOK_PRIO_FIRST);
 
@@ -531,3 +537,11 @@ static int lpc_get_protocol_info(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO,
 		lpc_get_protocol_info,
 		EC_VER_MASK(0));
+
+static int lpc_command_uart(int argc, char **argv)
+{
+	uart = 1;
+	MEC1322_LPC_UART_BAR = 0x03F88707;
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(lpcuart, lpc_command_uart, NULL, NULL, NULL);
