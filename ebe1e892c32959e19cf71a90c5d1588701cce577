@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "300cbaed_06f56d50",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-30T22:29:04Z",
+      "side": 1,
+      "message": "can you make comment more clear: When setting MUX_NONE, open the D+/D- switch, when setting MUX_USB connect the switch.",
+      "range": {
+        "startLine": 576,
+        "startChar": 2,
+        "endLine": 576,
+        "endChar": 45
+      },
+      "revId": "ebe1e892c32959e19cf71a90c5d1588701cce577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
