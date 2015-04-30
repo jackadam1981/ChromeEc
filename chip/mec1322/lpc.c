@@ -280,6 +280,9 @@ static void setup_lpc(void)
 		EC_HOST_CMD_FLAG_LPC_ARGS_SUPPORTED |
 		EC_HOST_CMD_FLAG_VERSION_3;
 
+	MEC1322_LPC_UART_BAR = 0x03F88707;
+	MEC1322_LPC_SIRQ(4) = 0x07;
+
 	/* Sufficiently initialized */
 	init_done = 1;
 

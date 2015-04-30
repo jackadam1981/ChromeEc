@@ -84,7 +84,11 @@ enum console_channel {
  *
  * @return non-zero if output was truncated.
  */
+#if !defined(CONFIG_MEC_LEGACY_SERIAL)
 int cputs(enum console_channel channel, const char *outstr);
+#else
+#define cputs(args...)
+#endif
 
 /**
  * Print formatted output to the console channel.
@@ -94,7 +98,11 @@ int cputs(enum console_channel channel, const char *outstr);
  *
  * @return non-zero if output was truncated.
  */
+#if !defined(CONFIG_MEC_LEGACY_SERIAL)
 int cprintf(enum console_channel channel, const char *format, ...);
+#else
+#define cprintf(args...)
+#endif
 
 /**
  * Print formatted output with timestamp. This is like:
@@ -105,12 +113,21 @@ int cprintf(enum console_channel channel, const char *format, ...);
  *
  * @return non-zero if output was truncated.
  */
+#if !defined(CONFIG_MEC_LEGACY_SERIAL)
 int cprints(enum console_channel channel, const char *format, ...);
+#else
+#define cprints(args...)
+#endif
 
 /**
  * Flush the console output for all channels.
  */
+#if !defined(CONFIG_MEC_LEGACY_SERIAL)
 void cflush(void);
+#else
+#define cflush(args...)
+#endif
+
 
 /* Convenience macros for printing to the command channel.
  *
@@ -125,7 +142,12 @@ void cflush(void);
 /**
  * Called by UART when a line of input is pending.
  */
+#if !defined(CONFIG_MEC_LEGACY_SERIAL)
 void console_has_input(void);
+#else
+#define console_has_input(args...)
+#endif
+
 
 /**
  * Register a console command handler.

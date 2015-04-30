@@ -1184,6 +1184,8 @@
 
 /* Need for a math library */
 #undef CONFIG_MATH_UTIL
+/* Provide legacy 0x3f8 serial port insstead of EC console. */
+#undef CONFIG_MEC_LEGACY_SERIAL
 
 /* Presence of a Bosh Sensortec BMM150 magnetometer behind a BMI160. */
 #undef CONFIG_MAG_BMI160_BMM150
