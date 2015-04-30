@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0f35e19_212348d5",
+        "filename": "board/oak/gpio.inc",
+        "patchSetId": 18
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-04-30T07:53:24Z",
+      "side": 1,
+      "message": "The SPI1_NSS(PA4) interrupt will be overridden by WP_L(PB4) on EXTI4.\nBecause PB4 \u0026 PA4 are shared the same interrupt line.\nSo, SPI1 communication doesn\u0027t work...",
+      "revId": "ea2e76f9ff549a04b20814074ad0b0de2d217dd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
