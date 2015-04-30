@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "300cbaed_d0d4cf3c",
+        "filename": "driver/accelgyro_lsm6ds0.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-30T21:22:36Z",
+      "side": 1,
+      "message": "Why not include both?",
+      "revId": "069f0149d0db6c3214ce8e89d2964d73462dbefc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90fd66eb_b2095d61",
+        "filename": "driver/accelgyro_lsm6ds0.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-30T21:22:36Z",
+      "side": 1,
+      "message": "Since the value of *_WHO_AM_I_REG (and some other constants) is the identical, we shouldn\u0027t need this -- just use a common define.",
+      "revId": "069f0149d0db6c3214ce8e89d2964d73462dbefc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70f8f2fa_d3bd0a46",
+        "filename": "driver/gyro_l3gd20h.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-30T21:22:36Z",
+      "side": 1,
+      "message": "Many of these constants are identical for both gyros. How about creating a new header file (maybe accelgyro_st) for them?",
+      "revId": "069f0149d0db6c3214ce8e89d2964d73462dbefc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "300cbaed_5cebbb24",
+        "filename": "driver/gyro_l3gd20h.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-30T21:22:36Z",
+      "side": 1,
+      "message": "l3gd20_data?",
+      "revId": "069f0149d0db6c3214ce8e89d2964d73462dbefc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
