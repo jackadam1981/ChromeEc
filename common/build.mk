@@ -6,7 +6,7 @@
 # Common files build
 #
 
-common-y=util.o
+common-y=util.o uart_buffering.o
 common-y+=version.o printf.o queue.o queue_policies.o
 
 common-$(CONFIG_ADC)+=adc.o
