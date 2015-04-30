@@ -111,6 +111,7 @@ DECLARE_IRQ(MEC1322_IRQ_UART, uart_ec_interrupt, 1);
 
 void uart_init(void)
 {
+#if 0
 	/* Set UART to reset on VCC1_RESET instaed of nSIO_RESET */
 	MEC1322_UART_CFG &= ~(1 << 1);
 
@@ -153,6 +154,6 @@ void uart_init(void)
 	MEC1322_INT_ENABLE(15) |= (1 << 0);
 	MEC1322_INT_BLK_EN |= (1 << 15);
 	task_enable_irq(MEC1322_IRQ_UART);
-
+#endif
 	init_done = 1;
 }

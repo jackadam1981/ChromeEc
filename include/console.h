@@ -76,7 +76,8 @@ enum console_channel {
  *
  * @return non-zero if output was truncated.
  */
-int cputs(enum console_channel channel, const char *outstr);
+/*int cputs(enum console_channel channel, const char *outstr);*/
+#define cputs(args...)
 
 /**
  * Print formatted output to the console channel.
@@ -86,7 +87,8 @@ int cputs(enum console_channel channel, const char *outstr);
  *
  * @return non-zero if output was truncated.
  */
-int cprintf(enum console_channel channel, const char *format, ...);
+/*int cprintf(enum console_channel channel, const char *format, ...);*/
+#define cprintf(args...)
 
 /**
  * Print formatted output with timestamp. This is like:
@@ -97,12 +99,15 @@ int cprintf(enum console_channel channel, const char *format, ...);
  *
  * @return non-zero if output was truncated.
  */
-int cprints(enum console_channel channel, const char *format, ...);
+/*int cprints(enum console_channel channel, const char *format, ...);*/
+#define cprints(args...)
 
 /**
  * Flush the console output for all channels.
  */
-void cflush(void);
+/*void cflush(void);*/
+#define cflush(args...)
+
 
 /* Convenience macros for printing to the command channel.
  *
@@ -117,7 +122,9 @@ void cflush(void);
 /**
  * Called by UART when a line of input is pending.
  */
-void console_has_input(void);
+/*void console_has_input(void);*/
+#define console_has_input(args...)
+
 
 /**
  * Register a console command handler.

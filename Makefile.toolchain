@@ -19,10 +19,10 @@ PKG_CONFIG?=pkg-config
 BUILDCC?=gcc
 HOSTCC?=$(HOST_CROSS_COMPILE)gcc
 
-CFLAGS_WARN=-Wall -Werror -Wundef -Wstrict-prototypes -Wno-trigraphs      \
-            -fno-strict-aliasing -fno-common                              \
-            -Werror-implicit-function-declaration -Wno-format-security    \
-            -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow
+#CFLAGS_WARN=-Wall -Werror -Wundef -Wstrict-prototypes -Wno-trigraphs      \
+#            -fno-strict-aliasing -fno-common                              \
+#            -Werror-implicit-function-declaration -Wno-format-security    \
+#            -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow
 CFLAGS_DEBUG= -g
 CFLAGS_INCLUDE=$(foreach i,$(includes),-I$(i) ) -I.
 CFLAGS_TEST=$(if $(TEST_BUILD),-DTEST_BUILD \
