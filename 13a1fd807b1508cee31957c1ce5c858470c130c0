@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "300cbaed_e67b19b8",
+        "filename": "board/strago/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-30T22:16:16Z",
+      "side": 1,
+      "message": "Explain in this comment that +V3p3S goes down asynchronous to the EC, and that we need to run this hook routine before motion_sense_suspend comes along and tries to communicate with the sensor. Also format multi-line comments like this:\n\n/*\n * text..........\n * ................\n */",
+      "revId": "13a1fd807b1508cee31957c1ce5c858470c130c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70f8f2fa_ad88dfba",
         "filename": "board/strago/board.c",
         "patchSetId": 1
@@ -49,6 +66,23 @@
       "side": 1,
       "message": "So basically, you are marking them uninitialized here in order to skip the generic cleanup in motion_sense_suspend, right? That\u0027s why you needed to choose a priority higher than MOTION_SENSE_HOOK_PRIO.\n\nAnother question -- why is +V3p3S gated by PCH signal SLP_S3# and not instead by a signal that the EC can assert?",
       "parentUuid": "b017cafa_c4e9c8b2",
+      "revId": "13a1fd807b1508cee31957c1ce5c858470c130c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70f8f2fa_0118bc75",
+        "filename": "board/strago/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-04-30T22:16:16Z",
+      "side": 1,
+      "message": "Change the priority to MOTION_SENSE_HOOK_PRIO - 1.",
       "revId": "13a1fd807b1508cee31957c1ce5c858470c130c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
