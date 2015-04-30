@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70f8f2fa_50429a1d",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-04-30T00:13:03Z",
+      "side": 1,
+      "message": "what is the meaning of this variable? It is incremented in line 104, but then is set to zero in line 114 in case all all received data was processed?\n\nCould you just use rx_left for this and then keep adding rx_in_fifo to it?",
+      "revId": "79ea3ba8805b26794b6761577b1ddb79ef0c475b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
