@@ -16,6 +16,24 @@
       "revId": "79ea3ba8805b26794b6761577b1ddb79ef0c475b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "300cbaed_6526f1e5",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-04-30T00:29:29Z",
+      "side": 1,
+      "message": "This function tries to shove new bytes from the USB host into the queue for consumption elsewhere. It is invoked either by a HW interrupt (telling us we have new bytes from the USB host), or by whoever is reading bytes out of the other end of the queue (telling us that there\u0027s now more room in the queue if we still have bytes to shove in there).\n\nThe HW FIFO buffer (ep_buf_rx) is always loaded from [0]. rx_in_fifo is how many bytes of that buffer are actually from the host. rx_handled is how many bytes from the HW FIFO we\u0027ve copied into the incoming queue. The queue may not accept all of them at once, so we have to keep track of where we were so that the next time this function is called we can try to shove the rest into the queue.\n\nWe need to know both where we are in the buffer and how many bytes we haven\u0027t yet enqueued. One can be calculated from the other as long as we know rx_in_fifo, but at least one must be static.\n\nWhen we\u0027ve handled all the bytes in the queue (rx_in_fifo \u003d\u003d rx_handled and rx_left \u003d\u003d 0 are the same thing), we can reenable the USB HW to go fetch more.",
+      "parentUuid": "70f8f2fa_50429a1d",
+      "revId": "79ea3ba8805b26794b6761577b1ddb79ef0c475b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
