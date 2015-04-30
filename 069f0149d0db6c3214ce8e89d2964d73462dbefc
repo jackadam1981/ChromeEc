@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "90fd66eb_322c2dc6",
+        "filename": "driver/accelgyro_lsm6ds0.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-04-30T21:25:45Z",
+      "side": 1,
+      "message": "Is it possible to change this so that we don\u0027t overload the accelgyro_lsm6ds0.c file? I agree that if the functionality is very similar that we should share the code, but I would still rather there be separate files for each type of sensor instead of #ifdef\u0027s.\n\nThere\u0027s the hypothetical (but rare) scenario where a device may have both chips.\n\nPerhaps a refactoring is needed in order to create a generic STMicro motion sensor layer calling into the different variant specific code if necessary.\n\nHowever, this is all just my opinion. :)",
+      "revId": "069f0149d0db6c3214ce8e89d2964d73462dbefc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "300cbaed_d0d4cf3c",
         "filename": "driver/accelgyro_lsm6ds0.c",
         "patchSetId": 3
