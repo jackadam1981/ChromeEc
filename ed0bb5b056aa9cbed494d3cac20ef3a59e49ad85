@@ -22,6 +22,29 @@
       "revId": "ed0bb5b056aa9cbed494d3cac20ef3a59e49ad85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "100336c0_380429cf",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1869,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-04-30T01:36:15Z",
+      "side": 1,
+      "message": "wait, this shouldn\u0027t be here. this will set the mux to USB on boot for samus. this line should just be deleted, it doesn\u0027t serve a purpose. the data role will be set on connection.",
+      "range": {
+        "startLine": 1869,
+        "startChar": 1,
+        "endLine": 1869,
+        "endChar": 41
+      },
+      "revId": "ed0bb5b056aa9cbed494d3cac20ef3a59e49ad85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
