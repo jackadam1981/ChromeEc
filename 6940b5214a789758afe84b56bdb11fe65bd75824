@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d0f35e19_c4171245",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-04-30T14:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f00b02a7_369406bb",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 69
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0027e8c_17e0db12",
         "filename": "board/oak_pd/board.c",
         "patchSetId": 18
@@ -36,6 +60,30 @@
       "writtenOn": "2015-04-29T15:10:18Z",
       "side": 1,
       "message": "these functions are not needed, in this case PD MCU doesn\u0027t need to know AP state",
+      "range": {
+        "startLine": 118,
+        "startChar": 12,
+        "endLine": 118,
+        "endChar": 28
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0eeea34_7181a0fc",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-04-30T14:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0027e8c_17e0db12",
       "range": {
         "startLine": 118,
         "startChar": 12,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f0ece23d_02a0cc18",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-04-30T14:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0fd0ac2_59db3317",
+      "range": {
+        "startLine": 124,
+        "startChar": 12,
+        "endLine": 124,
+        "endChar": 28
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0fd0ac2_39d87718",
         "filename": "board/oak_pd/board.c",
         "patchSetId": 18
@@ -82,6 +154,30 @@
       "writtenOn": "2015-04-29T15:10:18Z",
       "side": 1,
       "message": "not needed",
+      "range": {
+        "startLine": 132,
+        "startChar": 12,
+        "endLine": 132,
+        "endChar": 28
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0eeea34_d1f074ac",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-04-30T14:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0fd0ac2_39d87718",
       "range": {
         "startLine": 132,
         "startChar": 12,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "b0eeea34_b1f5e89a",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-04-30T14:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f00b02a7_96a4d22d",
+      "range": {
+        "startLine": 138,
+        "startChar": 12,
+        "endLine": 138,
+        "endChar": 28
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0027e8c_f7e41f28",
         "filename": "board/oak_pd/board.c",
         "patchSetId": 18
@@ -128,6 +248,30 @@
       "writtenOn": "2015-04-29T15:10:18Z",
       "side": 1,
       "message": "not needed",
+      "range": {
+        "startLine": 147,
+        "startChar": 12,
+        "endLine": 147,
+        "endChar": 28
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0f35e19_a41c866a",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-04-30T14:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0027e8c_f7e41f28",
       "range": {
         "startLine": 147,
         "startChar": 12,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "f0ece23d_e2a4c82e",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-04-30T14:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f00b02a7_769a7eed",
+      "range": {
+        "startLine": 175,
+        "startChar": 5,
+        "endLine": 175,
+        "endChar": 12
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0fd0ac2_19d5bbde",
         "filename": "board/oak_pd/board.c",
         "patchSetId": 18
@@ -174,6 +342,30 @@
       "writtenOn": "2015-04-29T15:10:18Z",
       "side": 1,
       "message": "delete",
+      "range": {
+        "startLine": 199,
+        "startChar": 1,
+        "endLine": 202,
+        "endChar": 6
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0ece23d_429ad4ec",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-04-30T14:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0fd0ac2_19d5bbde",
       "range": {
         "startLine": 199,
         "startChar": 1,
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "d0f35e19_8426aab0",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-04-30T14:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f00b02a7_56977ac1",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 28
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f00b02a7_169102cb",
         "filename": "board/oak_pd/board.c",
         "patchSetId": 18
@@ -220,6 +436,30 @@
       "writtenOn": "2015-04-29T15:10:18Z",
       "side": 1,
       "message": "delete",
+      "range": {
+        "startLine": 264,
+        "startChar": 1,
+        "endLine": 285,
+        "endChar": 49
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0eeea34_910f0c33",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-04-30T14:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f00b02a7_169102cb",
       "range": {
         "startLine": 264,
         "startChar": 1,
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "f0ece23d_621c38ec",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-04-30T14:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f00b02a7_f600ae89",
+      "range": {
+        "startLine": 288,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 5
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0027e8c_97f4cbd2",
         "filename": "board/oak_pd/board.c",
         "patchSetId": 18
@@ -266,6 +530,30 @@
       "writtenOn": "2015-04-29T15:10:18Z",
       "side": 1,
       "message": "don\u0027t keep around moved stuff, delete",
+      "range": {
+        "startLine": 327,
+        "startChar": 1,
+        "endLine": 328,
+        "endChar": 61
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0ece23d_2297d0c2",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-04-30T14:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0027e8c_97f4cbd2",
       "range": {
         "startLine": 327,
         "startChar": 1,
@@ -301,6 +589,30 @@
     },
     {
       "key": {
+        "uuid": "d0f35e19_64239ea2",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-04-30T14:51:33Z",
+      "side": 1,
+      "message": "Need to pass the port status to EC (such as: CC polarity and mux type).",
+      "parentUuid": "f00b02a7_5612dada",
+      "range": {
+        "startLine": 373,
+        "startChar": 5,
+        "endLine": 373,
+        "endChar": 22
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f00b02a7_f6278e32",
         "filename": "board/oak_pd/board.c",
         "patchSetId": 18
@@ -312,6 +624,30 @@
       "writtenOn": "2015-04-29T15:10:18Z",
       "side": 1,
       "message": "will be done on EC, delete",
+      "range": {
+        "startLine": 471,
+        "startChar": 4,
+        "endLine": 471,
+        "endChar": 32
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0eeea34_710c003e",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-04-30T14:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f00b02a7_f6278e32",
       "range": {
         "startLine": 471,
         "startChar": 4,
@@ -347,6 +683,30 @@
     },
     {
       "key": {
+        "uuid": "d0f35e19_a4c76646",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-04-30T14:51:33Z",
+      "side": 1,
+      "message": "call by pd_send_request_msg()\nShould I remove the CONFIG_USB_PD_CHECK_MAX_REQUEST_ALLOWED in board.h?",
+      "parentUuid": "f00b02a7_d62c8a19",
+      "range": {
+        "startLine": 521,
+        "startChar": 4,
+        "endLine": 521,
+        "endChar": 29
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0fd0ac2_f9941f1b",
         "filename": "board/oak_pd/board.c",
         "patchSetId": 18
@@ -358,6 +718,30 @@
       "writtenOn": "2015-04-29T15:10:18Z",
       "side": 1,
       "message": "will be on EC, delete",
+      "range": {
+        "startLine": 529,
+        "startChar": 4,
+        "endLine": 529,
+        "endChar": 25
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0eeea34_b11cc86a",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-04-30T14:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0fd0ac2_f9941f1b",
       "range": {
         "startLine": 529,
         "startChar": 4,
@@ -416,6 +800,30 @@
     },
     {
       "key": {
+        "uuid": "f0ece23d_423c9442",
+        "filename": "board/oak_pd/usb_pd_config.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-04-30T14:51:33Z",
+      "side": 1,
+      "message": "It still needs to notify port status to EC by calling this function.",
+      "parentUuid": "f00b02a7_56b09a6c",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 26
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0027e8c_37d4f739",
         "filename": "board/oak_pd/usb_pd_config.h",
         "patchSetId": 18
@@ -439,6 +847,30 @@
     },
     {
       "key": {
+        "uuid": "f0ece23d_22399052",
+        "filename": "board/oak_pd/usb_pd_config.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-04-30T14:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0027e8c_37d4f739",
+      "range": {
+        "startLine": 343,
+        "startChar": 0,
+        "endLine": 343,
+        "endChar": 32
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0fd0ac2_b9e347ce",
         "filename": "board/oak_pd/usb_pd_config.h",
         "patchSetId": 18
@@ -450,6 +882,30 @@
       "writtenOn": "2015-04-29T15:10:18Z",
       "side": 1,
       "message": "typo \"DFP\"",
+      "range": {
+        "startLine": 346,
+        "startChar": 3,
+        "endLine": 346,
+        "endChar": 6
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0ece23d_82369c5e",
+        "filename": "board/oak_pd/usb_pd_config.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-04-30T14:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0fd0ac2_b9e347ce",
       "range": {
         "startLine": 346,
         "startChar": 3,
