@@ -64,4 +64,7 @@ enum usb_strings {
 #define USB_EP_HID       2
 #define USB_EP_COUNT     3
 
+#undef CONFIG_UART_TX_BUF_SIZE
+#define CONFIG_UART_TX_BUF_SIZE 4096
+
 #endif /* __BOARD_H */
