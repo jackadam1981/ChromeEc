@@ -16,6 +16,24 @@
       "revId": "ea2e76f9ff549a04b20814074ad0b0de2d217dd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90fd66eb_4323f5d3",
+        "filename": "board/oak/gpio.inc",
+        "patchSetId": 18
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-04-30T16:02:49Z",
+      "side": 1,
+      "message": "At the same time, the interrupt on WP_L seems plain useless as the \"switch_interrupt\" code is updating the content of the memory mapped cache which is used only on x86.\nYou can probably just remove the _INT for that GPIO.",
+      "parentUuid": "d0f35e19_212348d5",
+      "revId": "ea2e76f9ff549a04b20814074ad0b0de2d217dd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
