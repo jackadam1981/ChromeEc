@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d078be71_5c52d539",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1287,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-01T18:41:37Z",
+      "side": 0,
+      "message": "sadly, these aren\u0027t used because the name isn\u0027t correct. they should be:\n\nCONFIG_USB_PD_IDENTITY_HW_VERS\nCONFIG_USB_PD_IDENTITY_SW_VERS\n\nthe comment on these is correct though.",
+      "range": {
+        "startLine": 1286,
+        "startChar": 0,
+        "endLine": 1287,
+        "endChar": 35
+      },
+      "revId": "6dce2424d99de40763a039eb099efcd5b0a52cb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
