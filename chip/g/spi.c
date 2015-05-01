@@ -54,8 +54,8 @@ enum sps_mode {
 
 
 /* SPI/SPS Statistic Counters */
-static uint32_t sps_sts_tx_count;
-static uint32_t sps_sts_rx_count;
+static uint32_t sps_sts_tx_count, sps_sts_rx_count, tx_full_count;
+static uint32_t max_rx_batch;
 
 /* SPI Flash Max transfer size */
 #define GC_SPI_FLASH_MAX_XFER_SIZE       (1<<7)
@@ -228,24 +228,15 @@ static int sps_push(uint32_t inst, const uint8_t data)
 {
 	volatile uint8_t *sps_base = (volatile uint8_t *)SPS_TX_FIFO_BASE_ADDR;
 	uint32_t offset;
-	if (sps_txfifo_full(inst))
+	if (sps_txfifo_full(inst)) {
+		tx_full_count++;
 		return 0;
+	}
 
 	offset = GREG32_I(SPS, inst, TXFIFO_WPTR);
 	sps_base[offset] = data;
 	GREG32_I(SPS, inst, TXFIFO_WPTR) = offset+1;
 	return 1;
-}
-
-/** Polls the SPI to see if data has been received
- *
- *  @returns
- *    0 if no data,
- *    n number of bytes received
- */
-int sps_receive(uint32_t inst)
-{
-	return sps_rxfifo_level(inst);
 }
 
 /** Peek data from SPI RX FIFO
@@ -267,43 +258,13 @@ static uint8_t sps_top(uint32_t inst)
  */
 static int sps_pop(uint32_t inst, uint8_t *data)
 {
-	int cnt = sps_receive(inst);
+	int cnt = sps_rxfifo_level(inst);
 	if (cnt == 0)
 		return 0;
 
 	*data = sps_top(inst);
 	GREG32_I(SPS, inst, RXFIFO_RPTR) += 1;
 	return 1;
-}
-
-/*
- * Copy data to the SPS TX FIFO
- * @param data Pointer to 8-bit data
- * @param len Length of data
- */
-static int sps_write(uint32_t inst, const uint8_t *data, uint32_t len)
-{
-	int i = 0, cnt, to = 0;
-	while ((i < len) && (to++ < 10000)) {
-		cnt = sps_push(inst, data[i]);
-		i += cnt;
-	}
-	return i;
-}
-
-/*
- * Read data from the SPI RX FIFO
- * @param data Pointer to 8-bit data
- * @param len Length of data
- */
-static int sps_read(uint32_t inst, uint8_t *data, uint32_t len)
-{
-	int i = 0, cnt, to = 0;
-	while ((i < len) && (to++ < 10000)) {
-		cnt = sps_pop(inst, &data[i]);
-		i += cnt;
-	}
-	return i;
 }
 
 /** Configure the data transmission format
@@ -369,37 +330,56 @@ DECLARE_HOOK(HOOK_INIT, sps_init, HOOK_PRIO_DEFAULT);
 /* Interrupt handler stuff */
 static void sps_invoke_handler(uint8_t d)
 {
-	unsigned next_rx = (g_sps_data.rx_pointer + 1) %
-		sizeof(g_sps_data.buffer);
+	unsigned rxp = g_sps_data.rx_pointer;
+	unsigned need_to_start_tx = 0;
 
-	if (next_rx == g_sps_data.tx_pointer)
+	if (rxp++ == g_sps_data.tx_pointer)
+		need_to_start_tx = 1;
+
+	rxp %= sizeof(g_sps_data.buffer);
+
+	if (rxp == g_sps_data.tx_pointer)
 		return; /* overflow */
 
 	g_sps_data.buffer[g_sps_data.rx_pointer] = d;
-	g_sps_data.rx_pointer = next_rx;
+	g_sps_data.rx_pointer = rxp;
+
+	if (need_to_start_tx)
+		GWRITE_FIELD(SPS, ICTRL, TXFIFO_LVL, 1);
 }
 
 static void sps_rx_interrupt(int port)
 {
-	uint8_t d = 0;
+	uint8_t d;
+	unsigned batch_size = 0;
 
-	sps_read(port, &d, 1);
-	sps_invoke_handler(d);
-	sps_sts_rx_count++;
+	while (sps_pop(port, &d)) {
+		sps_invoke_handler(d);
+		sps_sts_rx_count++;
+		batch_size++;
+	}
+	if (batch_size > max_rx_batch)
+		max_rx_batch = batch_size;
 }
 
 static void sps_tx_interrupt(int port)
 {
-	uint8_t d = 0xff;
-
-	if (g_sps_data.rx_pointer != g_sps_data.tx_pointer) {
-		d = g_sps_data.buffer[g_sps_data.tx_pointer];
-		g_sps_data.tx_pointer = (g_sps_data.tx_pointer + 1) %
-			sizeof(g_sps_data.buffer);
+	if (g_sps_data.rx_pointer == g_sps_data.tx_pointer) {
+		GWRITE_FIELD(SPS, ICTRL, TXFIFO_LVL, 0);
+		return;
 	}
 
-	sps_write(port, &d, 1);
-	sps_sts_tx_count++;
+	do {
+		unsigned next_tx = g_sps_data.tx_pointer;
+
+		sps_push(port, g_sps_data.buffer[next_tx++]);
+
+		g_sps_data.tx_pointer =
+			next_tx % sizeof(g_sps_data.buffer);
+
+		sps_sts_tx_count++;
+
+	} while (g_sps_data.rx_pointer != g_sps_data.tx_pointer);
 }
 
 void _sps0_rx_interrupt(void)
@@ -417,8 +397,8 @@ DECLARE_IRQ(GC_IRQNUM_SPS0_TXFIFO_LVL_INTR, _sps0_tx_interrupt, 1);
 
 static int command_spi(int argc, char **argv)
 {
-	ccprintf("rx count %d, tx count %d\n",
-		 sps_sts_rx_count, sps_sts_tx_count);
+	ccprintf("rx count %d, tx count %d, tx_full count %d, max rx batch %d\n",
+		 sps_sts_rx_count, sps_sts_tx_count, tx_full_count, max_rx_batch);
 
 	if (g_sps_data.command_pointer != g_sps_data.rx_pointer) {
 		ccprintf("data received since last time:\n");
