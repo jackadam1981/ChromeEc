@@ -23,6 +23,7 @@
 			     #asm_op" %0, %0, %2\n"		\
 			     "   str  %0, [%1]\n"		\
 			     "   cpsie i\n"			\
+			     "   isb\n"				\
 			     : "=&b" (reg0)			\
 			     : "b" (a), "r" (v) : "cc");	\
 } while (0)
@@ -56,6 +57,7 @@ static inline uint32_t atomic_read_clear(uint32_t *addr)
 			     "   ldr     %0, [%1]\n"
 			     "   str     %2, [%1]\n"
 			     "   cpsie   i\n"
+			     "   isb\n"
 			     : "=&r" (ret)
 			     : "b" (addr), "r" (0) : "cc");
 
