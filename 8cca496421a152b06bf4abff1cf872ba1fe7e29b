@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f06142bc_03cd5166",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-05-02T00:29:12Z",
+      "side": 1,
+      "message": "s/of/or/",
+      "range": {
+        "startLine": 10,
+        "startChar": 21,
+        "endLine": 10,
+        "endChar": 23
+      },
+      "revId": "8cca496421a152b06bf4abff1cf872ba1fe7e29b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f06142bc_a323c5a0",
+        "filename": "common/memory_commands.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-05-02T00:29:12Z",
+      "side": 1,
+      "message": "If I say \"rw . 800\", then argv[1][2] is off the end of the string. \n\nMaybe just use strcmp? Or drop the test for the \u0027\\0\u0027 entirely?",
+      "range": {
+        "startLine": 66,
+        "startChar": 38,
+        "endLine": 66,
+        "endChar": 39
+      },
+      "revId": "8cca496421a152b06bf4abff1cf872ba1fe7e29b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
