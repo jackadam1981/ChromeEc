@@ -184,6 +184,9 @@ static const uint8_t dec4b5b[] = {
 #define TYPE_C_SRC_1500_THRESHOLD	660  /* mV */
 #define TYPE_C_SRC_3000_THRESHOLD	1230 /* mV */
 
+/* Convert TCPC Alert register to index into pd.alert[] */
+#define ALERT_REG_TO_INDEX(reg) (reg - TCPC_REG_ALERT1)
+
 /* PD transmit errors */
 enum pd_tx_errors {
 	PD_TX_ERR_GOODCRC = -1, /* Failed to receive goodCRC */
@@ -213,6 +216,7 @@ static struct pd_port_controller {
 	/* Next transmit */
 	enum tcpm_transmit_type tx_type;
 	uint16_t tx_head;
+	uint32_t tx_payload[7];
 	const uint32_t *tx_data;
 } pd[PD_PORT_COUNT];
 
@@ -686,7 +690,7 @@ static int cc_voltage_to_status(int port, int cc_volt)
 
 static void alert(int port, int reg, int mask)
 {
-	pd[port].alert[reg] |= mask;
+	pd[port].alert[ALERT_REG_TO_INDEX(reg)] |= mask;
 	tcpc_alert();
 }
 
@@ -714,10 +718,10 @@ int tcpc_run(int port, int evt)
 			handle_request(port,
 				       pd[port].rx_head,
 				       pd[port].rx_payload);
-			alert(port, TCPC_ALERT0, TCPC_ALERT0_RX_STATUS);
+			alert(port, TCPC_REG_ALERT1, TCPC_REG_ALERT1_RX_STATUS);
 		} else if (pd[port].rx_head == PD_RX_ERR_HARD_RESET) {
-			alert(port, TCPC_ALERT0,
-			      TCPC_ALERT0_RX_HARD_RST);
+			alert(port, TCPC_REG_ALERT1,
+			      TCPC_REG_ALERT1_RX_HARD_RST);
 		}
 	}
 
@@ -742,14 +746,14 @@ int tcpc_run(int port, int evt)
 
 		/* send appropriate alert for tx completion */
 		if (res >= 0)
-			alert(port, TCPC_ALERT0,
-			      TCPC_ALERT0_TX_SUCCESS);
+			alert(port, TCPC_REG_ALERT1,
+			      TCPC_REG_ALERT1_TX_SUCCESS);
 		else if (res == PD_TX_ERR_GOODCRC)
-			alert(port, TCPC_ALERT0,
-			      TCPC_ALERT0_TX_FAILED);
+			alert(port, TCPC_REG_ALERT1,
+			      TCPC_REG_ALERT1_TX_FAILED);
 		else
-			alert(port, TCPC_ALERT0,
-			      TCPC_ALERT0_TX_DISCARDED);
+			alert(port, TCPC_REG_ALERT1,
+			      TCPC_REG_ALERT1_TX_DISCARDED);
 	}
 
 	/* CC pull changed, wait 1ms for CC voltage to stabilize */
@@ -765,7 +769,7 @@ int tcpc_run(int port, int evt)
 		cc = cc_voltage_to_status(port, cc);
 		if (pd[port].cc_status[i] != cc) {
 			pd[port].cc_status[i] = cc;
-			alert(port, TCPC_ALERT0, TCPC_ALERT0_CC_STATUS);
+			alert(port, TCPC_REG_ALERT1, TCPC_REG_ALERT1_CC_STATUS);
 		}
 	}
 
@@ -802,20 +806,22 @@ void pd_rx_event(int port)
 	task_set_event(PORT_TO_TASK_ID(port), PD_EVENT_RX, 0);
 }
 
-int tcpc_alert_status(int port, int alert_reg)
+int tcpc_alert_status(int port, int alert_reg, uint8_t *alert)
 {
-	int ret = pd[port].alert[alert_reg];
+	int ret = pd[port].alert[ALERT_REG_TO_INDEX(alert_reg)];
 
+	/* TODO: Need to use alert mask to know which bits to let through */
 	/* TODO: Alert register is read-clear for now, but shouldn't be */
-	pd[port].alert[alert_reg] = 0;
-	return ret;
+	pd[port].alert[ALERT_REG_TO_INDEX(alert_reg)] = 0;
+	*alert = ret;
+	return EC_SUCCESS;
 }
 
-void tcpc_set_cc(int port, int pull)
+int tcpc_set_cc(int port, int pull)
 {
 	/* If CC pull resistor not changing, then nothing to do */
 	if (pd[port].cc_pull == pull)
-		return;
+		return EC_SUCCESS;
 
 	/* Change CC pull resistor */
 	pd[port].cc_pull = pull;
@@ -839,28 +845,35 @@ void tcpc_set_cc(int port, int pull)
 #else
 	task_set_event(PORT_TO_TASK_ID(port), PD_EVENT_CC, 0);
 #endif
+	return EC_SUCCESS;
 }
 
-int tcpc_get_cc(int port, int polarity)
+int tcpc_get_cc(int port, int *cc1, int *cc2)
 {
-	return pd[port].cc_status[polarity];
+	*cc2 = pd[port].cc_status[1];
+	*cc1 = pd[port].cc_status[0];
+
+	return EC_SUCCESS;
 }
 
-void tcpc_set_polarity(int port, int polarity)
+int tcpc_set_polarity(int port, int polarity)
 {
 	pd[port].polarity = polarity;
 	pd_select_polarity(port, pd[port].polarity);
+
+	return EC_SUCCESS;
 }
 
-void tcpc_set_vconn(int port, int enable)
+int tcpc_set_vconn(int port, int enable)
 {
 #ifdef CONFIG_USBC_VCONN
 	pd_set_vconn(port, pd[port].polarity, enable);
 #endif
+	return EC_SUCCESS;
 }
 
-void tcpc_transmit(int port, enum tcpm_transmit_type type, uint16_t header,
-		   const uint32_t *data)
+int tcpc_transmit(int port, enum tcpm_transmit_type type, uint16_t header,
+		  const uint32_t *data)
 {
 	/* Store data to transmit and wake task to send it */
 	pd[port].tx_type = type;
@@ -872,19 +885,176 @@ void tcpc_transmit(int port, enum tcpm_transmit_type type, uint16_t header,
 #else
 	task_set_event(PORT_TO_TASK_ID(port), PD_EVENT_TX, 0);
 #endif
+	return EC_SUCCESS;
 }
 
-void tcpc_set_msg_header(int port, int power_role, int data_role)
+int tcpc_set_msg_header(int port, int power_role, int data_role)
 {
 	pd[port].power_role = power_role;
 	pd[port].data_role = data_role;
+
+	return EC_SUCCESS;
 }
 
-int tcpc_get_message(int port, uint32_t *payload)
+int tcpc_get_message(int port, uint32_t *payload, int *head)
 {
 	memcpy(payload, pd[port].rx_payload, sizeof(pd[port].rx_payload));
-	return pd[port].rx_head;
+	*head = pd[port].rx_head;
+	return EC_SUCCESS;
 }
+
+#ifndef CONFIG_USB_POWER_DELIVERY
+void tcpc_i2c_process(int read, int port, int len, uint8_t *payload,
+		      void (*send_response)(int))
+{
+	int i, reg, resp_len = 0;
+	int cc1, cc2;
+
+	if (debug_level >= 1) {
+		ccprintf("tcpci p%d: ", port);
+		for (i = 0; i < len; i++)
+			ccprintf("0x%02x ", payload[i]);
+		ccprintf("\n");
+	}
+
+	/* length must always be at least 1 */
+	if (len == 0) {
+		/*
+		 * if this is a read, we must call send_response() for
+		 * i2c transaction to finishe properly
+		 */
+		if (read)
+			(*send_response)(0);
+	}
+
+	/* if this is a write, length must be at least 2 */
+	if (!read && len < 2)
+		return;
+
+	/* register is always first byte */
+	reg = payload[0];
+
+	switch (reg) {
+	case TCPC_REG_CC_STATUS:
+		/* this is read-only */
+		if (!read)
+			return;
+
+		tcpc_get_cc(port, &cc1, &cc2);
+		payload[0] = TCPC_REG_CC_STATUS_SET(cc1, cc2);
+		resp_len = 1;
+		break;
+	case TCPC_REG_ROLE_CTRL:
+		if (read) {
+			payload[0] = TCPC_REG_ROLE_CTRL_SET(0, 0,
+							    pd[port].cc_pull,
+							    pd[port].cc_pull);
+			resp_len = 1;
+		} else {
+			tcpc_set_cc(port, TCPC_REG_ROLE_CTRL_CC1(payload[1]));
+		}
+		break;
+	case TCPC_REG_POWER_CTRL:
+		if (read) {
+			/* TODO: need to read VCONN */
+			payload[0] = TCPC_REG_POWER_CTRL_SET(pd[port].polarity,
+							     0);
+			resp_len = 1;
+		} else {
+			tcpc_set_polarity(
+				port, TCPC_REG_POWER_CTRL_POLARITY(payload[1]));
+			tcpc_set_vconn(
+				port, TCPC_REG_POWER_CTRL_VCONN(payload[1]));
+		}
+		break;
+	case TCPC_REG_MSG_HDR_INFO:
+		if (read) {
+			payload[0] = TCPC_REG_MSG_HDR_INFO_SET(
+						pd[port].data_role,
+						pd[port].power_role);
+			resp_len = 1;
+		} else {
+			tcpc_set_msg_header(
+				port,
+				TCPC_REG_MSG_HDR_INFO_PROLE(payload[1]),
+				TCPC_REG_MSG_HDR_INFO_DROLE(payload[1]));
+		}
+		break;
+	case TCPC_REG_ALERT1:
+	case TCPC_REG_ALERT2:
+		if (read) {
+			tcpc_alert_status(port, reg, payload);
+			resp_len = 1;
+		} else {
+			/* TODO: clear alert status reg when writtent to */
+		}
+		break;
+	case TCPC_REG_RX_BYTE_CNT:
+		/* this is read-only */
+		if (!read)
+			return;
+
+		payload[0] = 4*PD_HEADER_CNT(pd[port].rx_head);
+		resp_len = 1;
+		break;
+	case TCPC_REG_RX_HDR_LOW:
+		/* this is read-only */
+		if (!read)
+			return;
+
+		payload[0] = pd[port].rx_head & 0xff;
+		payload[1] = (pd[port].rx_head >> 8) & 0xff;
+		resp_len = 2;
+		break;
+	case TCPC_REG_RX_DATA:
+		/* this is read-only */
+		if (!read)
+			return;
+
+		memcpy(payload, pd[port].rx_payload,
+		       sizeof(pd[port].rx_payload));
+		resp_len = sizeof(pd[port].rx_payload);
+		break;
+	case TCPC_REG_TX_BYTE_CNT:
+		if (read) {
+			payload[0] = PD_HEADER_CNT(pd[port].tx_head);
+			resp_len = 1;
+		} else {
+			/* Do nothing, let the TX_HDR_LOW reg store size */
+		}
+		break;
+	case TCPC_REG_TX_HDR_LOW:
+		if (read) {
+			payload[0] = pd[port].tx_head & 0xff;
+			payload[1] = (pd[port].tx_head >> 8) & 0xff;
+			resp_len = 2;
+		} else {
+			pd[port].tx_head = (payload[2] << 8) | payload[1];
+		}
+		break;
+	case TCPC_REG_TX_DATA:
+		if (read) {
+			memcpy(payload, pd[port].tx_payload,
+			       sizeof(pd[port].tx_payload));
+			resp_len = sizeof(pd[port].tx_payload);
+		} else {
+			memcpy(pd[port].tx_payload, &payload[1], len - 1);
+		}
+		break;
+	case TCPC_REG_TRANSMIT:
+		/* write-only */
+		if (read)
+			break;
+
+		tcpc_transmit(port, TCPC_REG_TRANSMIT_TYPE(payload[1]),
+			      pd[port].tx_head, pd[port].tx_payload);
+		break;
+	}
+
+	if (read)
+		(*send_response)(resp_len);
+}
+#endif
 
 #ifdef CONFIG_COMMON_RUNTIME
 static int command_tcpc(int argc, char **argv)
