@@ -1,0 +1,215 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "102df676_ab48f590",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 22
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-05-04T20:06:10Z",
+      "side": 1,
+      "message": "for the fourth time: this description is inadequate",
+      "revId": "dcce90d5fa5df403e4d45f3107299117a48a6d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "102df676_abee35b6",
+        "filename": "chip/g/spi.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-05-04T20:06:10Z",
+      "side": 1,
+      "message": "where does this max come from? Is it arbitrary?",
+      "revId": "dcce90d5fa5df403e4d45f3107299117a48a6d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "102df676_8b94111b",
+        "filename": "chip/g/spi.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-05-04T20:06:10Z",
+      "side": 1,
+      "message": "rx_fifo_base_addr should be expressed through \nSPS_TX_FIFO_BASE_ADDR + SPS_FIFO_SIZE",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 21
+      },
+      "revId": "dcce90d5fa5df403e4d45f3107299117a48a6d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7042b231_609458bc",
+        "filename": "chip/g/spi.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-05-04T20:06:10Z",
+      "side": 1,
+      "message": "this should be called spi_start_tx()",
+      "range": {
+        "startLine": 110,
+        "startChar": 12,
+        "endLine": 110,
+        "endChar": 21
+      },
+      "revId": "dcce90d5fa5df403e4d45f3107299117a48a6d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "102df676_aba9d5e1",
+        "filename": "chip/g/spi.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-05-04T20:06:10Z",
+      "side": 1,
+      "message": "why would we want to poll for anything, there are interrupts, right?",
+      "range": {
+        "startLine": 119,
+        "startChar": 11,
+        "endLine": 119,
+        "endChar": 31
+      },
+      "revId": "dcce90d5fa5df403e4d45f3107299117a48a6d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7042b231_40683c20",
+        "filename": "chip/g/spi.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-05-04T20:06:10Z",
+      "side": 1,
+      "message": "you can\u0027t typecast byte address to a 32 bit address, this will break if the byte address is not 4 bytes aligned.",
+      "revId": "dcce90d5fa5df403e4d45f3107299117a48a6d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "105fb6fa_8ed8a41a",
+        "filename": "chip/g/spi.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-05-04T20:06:10Z",
+      "side": 1,
+      "message": "this should be len/sizeof(*dest)\n\nwhat if len is not a whole number of 4 bytes?",
+      "revId": "dcce90d5fa5df403e4d45f3107299117a48a6d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "102df676_0e266fe4",
+        "filename": "chip/g/spi.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-05-04T20:06:10Z",
+      "side": 1,
+      "message": "please add an empty line after local variable definitions block",
+      "revId": "dcce90d5fa5df403e4d45f3107299117a48a6d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "105fb6fa_8e8a64ea",
+        "filename": "chip/g/spi.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-05-04T20:06:10Z",
+      "side": 1,
+      "message": "I am not sure what happens here: the comment seems to contradict the code.",
+      "revId": "dcce90d5fa5df403e4d45f3107299117a48a6d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7042b231_1443d572",
+        "filename": "chip/g/spi.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-05-04T20:06:10Z",
+      "side": 1,
+      "message": "these macros do not make the code more readable, they are just adding another level of indirection. It is better to use register accesses directly,",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 35
+      },
+      "revId": "dcce90d5fa5df403e4d45f3107299117a48a6d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "102df676_ee42fb6c",
+        "filename": "chip/g/spi.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-05-04T20:06:10Z",
+      "side": 1,
+      "message": "there is no need in separate 32bit push and pop functions, the access size should be incorporated inside the function, the caller does not care.\n\nalso, there is no guarantee that the size of data one needs to send is a whole number of 4 byte chunks",
+      "revId": "dcce90d5fa5df403e4d45f3107299117a48a6d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
