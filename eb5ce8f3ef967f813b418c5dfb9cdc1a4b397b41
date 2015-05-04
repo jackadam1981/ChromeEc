@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d026fe9b_cc0aa3a7",
+        "filename": "board/oak_pd/usb_pd_config.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-04T22:35:22Z",
+      "side": 1,
+      "message": "actually, should be 1.6 (see table 4-22 of type-c spec)",
+      "range": {
+        "startLine": 347,
+        "startChar": 19,
+        "endLine": 347,
+        "endChar": 23
+      },
+      "revId": "eb5ce8f3ef967f813b418c5dfb9cdc1a4b397b41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
