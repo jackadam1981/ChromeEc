@@ -278,7 +278,7 @@ static void inc_id(int port)
 
 static void pd_transmit_complete(int port, int status)
 {
-	if (status & TCPC_ALERT0_TX_SUCCESS)
+	if (status & TCPC_REG_ALERT1_TX_SUCCESS)
 		inc_id(port);
 
 	pd[port].tx_status = status;
@@ -301,7 +301,7 @@ static int pd_transmit(int port, enum tcpm_transmit_type type,
 		return -1;
 
 	/* TODO: give different error condition for failed vs discarded */
-	return pd[port].tx_status & TCPC_ALERT0_TX_SUCCESS ? 1 : -1;
+	return pd[port].tx_status & TCPC_REG_ALERT1_TX_SUCCESS ? 1 : -1;
 }
 
 static void pd_update_roles(int port)
@@ -1345,7 +1345,7 @@ void pd_task(void)
 		/* process any potential incoming message */
 		incoming_packet = evt & PD_EVENT_RX;
 		if (incoming_packet) {
-			head = tcpm_get_message(port, payload);
+			tcpm_get_message(port, payload, &head);
 			if (head > 0)
 				handle_request(port, head, payload);
 		}
@@ -1358,8 +1358,7 @@ void pd_task(void)
 			break;
 		case PD_STATE_SRC_DISCONNECTED:
 			timeout = 10*MSEC;
-			cc1 = tcpm_get_cc(port, 0);
-			cc2 = tcpm_get_cc(port, 1);
+			tcpm_get_cc(port, &cc1, &cc2);
 
 			/* Vnc monitoring */
 			if ((cc1 == TYPEC_CC_SRC_RD ||
@@ -1391,8 +1390,7 @@ void pd_task(void)
 			break;
 		case PD_STATE_SRC_DISCONNECTED_DEBOUNCE:
 			timeout = 20*MSEC;
-			cc1 = tcpm_get_cc(port, 0);
-			cc2 = tcpm_get_cc(port, 1);
+			tcpm_get_cc(port, &cc1, &cc2);
 
 			if (cc1 == TYPEC_CC_SRC_RD && cc2 == TYPEC_CC_SRC_RD) {
 				/* Debug accessory */
@@ -1483,8 +1481,7 @@ void pd_task(void)
 			/* Combined audio / debug accessory state */
 			timeout = 100*MSEC;
 
-			cc1 = tcpm_get_cc(port, 0);
-			cc2 = tcpm_get_cc(port, 1);
+			tcpm_get_cc(port, &cc1, &cc2);
 
 			/* If accessory becomes detached */
 			if ((pd[port].cc_state == PD_CC_AUDIO_ACC &&
@@ -1798,10 +1795,11 @@ void pd_task(void)
 			break;
 		case PD_STATE_SNK_DISCONNECTED:
 			timeout = 10*MSEC;
+			tcpm_get_cc(port, &cc1, &cc2);
 
 			/* Source connection monitoring */
-			if (tcpm_get_cc(port, 0) != TYPEC_CC_SNK_OPEN ||
-			    tcpm_get_cc(port, 1) != TYPEC_CC_SNK_OPEN) {
+			if (cc1 != TYPEC_CC_SNK_OPEN ||
+			    cc2 != TYPEC_CC_SNK_OPEN) {
 				pd[port].cc_state = PD_CC_NONE;
 				hard_reset_count = 0;
 				new_cc_state = PD_CC_DFP_ATTACHED;
@@ -1830,8 +1828,7 @@ void pd_task(void)
 			}
 			break;
 		case PD_STATE_SNK_DISCONNECTED_DEBOUNCE:
-			cc1 = tcpm_get_cc(port, 0);
-			cc2 = tcpm_get_cc(port, 1);
+			tcpm_get_cc(port, &cc1, &cc2);
 			if (cc1 == TYPEC_CC_SNK_OPEN &&
 			    cc2 == TYPEC_CC_SNK_OPEN) {
 				/* No connection any more */
@@ -1962,7 +1959,9 @@ void pd_task(void)
 			timeout = PD_T_SINK_ADJ - PD_T_DEBOUNCE;
 
 			/* Check if CC pull-up has changed */
-			cc1 = tcpm_get_cc(port, pd[port].polarity);
+			tcpm_get_cc(port, &cc1, &cc2);
+			if (pd[port].polarity)
+				cc1 = cc2;
 			if (typec_curr != get_typec_current_limit(cc1)) {
 				/* debounce signal by requiring two reads */
 				if (typec_curr_change) {
@@ -2316,7 +2315,9 @@ void pd_task(void)
 #endif
 		if (pd[port].power_role == PD_ROLE_SOURCE) {
 			/* Source: detect disconnect by monitoring CC */
-			cc1 = tcpm_get_cc(port, pd[port].polarity);
+			tcpm_get_cc(port, &cc1, &cc2);
+			if (pd[port].polarity)
+				cc1 = cc2;
 			if (cc1 == TYPEC_CC_SRC_OPEN) {
 				pd_power_supply_reset(port);
 				set_state(port, PD_STATE_SRC_DISCONNECTED);
@@ -2348,18 +2349,18 @@ void tcpc_alert(void)
 
 	/* loop over ports and check alert status */
 	for (i = 0; i < PD_PORT_COUNT; i++) {
-		status = tcpm_alert_status(i, TCPC_ALERT0);
-		if (status & TCPC_ALERT0_CC_STATUS) {
+		tcpm_alert_status(i, TCPC_REG_ALERT1, (uint8_t *)&status);
+		if (status & TCPC_REG_ALERT1_CC_STATUS) {
 			/* CC status changed, wake task */
 			task_set_event(PORT_TO_TASK_ID(i), PD_EVENT_CC, 0);
-		} else if (status & TCPC_ALERT0_RX_STATUS) {
+		} else if (status & TCPC_REG_ALERT1_RX_STATUS) {
 			/* message received */
 			task_set_event(PORT_TO_TASK_ID(i), PD_EVENT_RX, 0);
-		} else if (status & TCPC_ALERT0_RX_HARD_RST) {
+		} else if (status & TCPC_REG_ALERT1_RX_HARD_RST) {
 			/* hard reset received */
 			execute_hard_reset(i);
 			task_wake(PORT_TO_TASK_ID(i));
-		} else if (status & TCPC_ALERT0_TX_COMPLETE) {
+		} else if (status & TCPC_REG_ALERT1_TX_COMPLETE) {
 			/* transmit complete */
 			pd_transmit_complete(i, status);
 		}
