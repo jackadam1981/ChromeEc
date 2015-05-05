@@ -18,6 +18,9 @@ MEMORY
 {
     FLASH (rx) : ORIGIN = FW_OFF(SECTION), LENGTH = FW_SIZE(SECTION)
     IRAM (rw)  : ORIGIN = CONFIG_RAM_BASE, LENGTH = CONFIG_RAM_SIZE
+#ifdef CONFIG_LPC
+    H2RAM (rw) : ORIGIN = CONFIG_H2RAM_BASE, LENGTH = CONFIG_H2RAM_SIZE
+#endif
 }
 SECTIONS
 {
@@ -207,6 +210,16 @@ SECTIONS
         BYTE(0xea);
         /* NOTHING MAY GO IN FLASH AFTER THIS! */
     } >FLASH
+
+#ifdef CONFIG_LPC
+    .h2ram (NOLOAD) : {
+        . += CONFIG_H2RAM_HOST_LPC_IO_BASE;
+        *(.h2ram.pool.hostcmd)
+        . = ALIGN(256);
+        *(.h2ram.pool.acpiec)
+    } > H2RAM
+#endif
+
 #if !(defined(SECTION_IS_RO) && defined(CONFIG_FLASH))
     /DISCARD/ : {
               *(.google)

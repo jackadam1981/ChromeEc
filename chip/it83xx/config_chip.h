@@ -85,6 +85,17 @@
 #define CONFIG_FW_WP_RO_SIZE		CONFIG_FW_RO_SIZE
 
 /****************************************************************************/
+/* H2RAM memory mapping */
+
+/*
+ * Only it839x series and IT838x DX support mapping LPC I/O cycle 800h ~ 9FFh
+ * to 0x8D800h ~ 0x8D9FFh of DLM13.
+ */
+#define CONFIG_H2RAM_BASE               0x0008D000
+#define CONFIG_H2RAM_SIZE               0x00001000
+#define CONFIG_H2RAM_HOST_LPC_IO_BASE   0x800
+
+/****************************************************************************/
 /* Customize the build */
 
 /* Use hardware specific udelay() for this chip */
