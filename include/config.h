@@ -444,6 +444,11 @@
 /* Max length of a single line of input */
 #define CONFIG_CONSOLE_INPUT_LINE_SIZE 80
 
+/* Console output goes to console on UART interface */
+#define CONFIG_CONSOLE_OUTPUT_UART
+/* Console output goes to console on USB interface */
+#define CONFIG_CONSOLE_OUTPUT_USB
+
 /*
  * Disable EC console input if the system is locked.  This is needed for
  * security on platforms where the EC console is accessible from outside the

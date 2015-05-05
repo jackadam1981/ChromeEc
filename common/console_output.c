@@ -73,34 +73,42 @@ BUILD_ASSERT(CC_CHANNEL_COUNT <= 8*sizeof(uint32_t));
 
 int cputs(enum console_channel channel, const char *outstr)
 {
-	int rv1, rv2;
+	int rv1 = EC_SUCCESS, rv2 = EC_SUCCESS;
 
 	/* Filter out inactive channels */
 	if (!(CC_MASK(channel) & channel_mask))
 		return EC_SUCCESS;
 
+#ifdef CONFIG_CONSOLE_OUTPUT_USB
 	rv1 = usb_puts(outstr);
+#endif
+#ifdef CONFIG_CONSOLE_OUTPUT_UART
 	rv2 = uart_puts(outstr);
+#endif
 
 	return rv1 == EC_SUCCESS ? rv2 : rv1;
 }
 
 int cprintf(enum console_channel channel, const char *format, ...)
 {
-	int rv1, rv2;
+	int rv1 = EC_SUCCESS, rv2 = EC_SUCCESS;
 	va_list args;
 
 	/* Filter out inactive channels */
 	if (!(CC_MASK(channel) & channel_mask))
 		return EC_SUCCESS;
 
+#ifdef CONFIG_CONSOLE_OUTPUT_USB
 	usb_va_start(args, format);
 	rv1 = usb_vprintf(format, args);
 	usb_va_end(args);
+#endif
 
+#ifdef CONFIG_CONSOLE_OUTPUT_UART
 	va_start(args, format);
 	rv2 = uart_vprintf(format, args);
 	va_end(args);
+#endif
 
 	return rv1 == EC_SUCCESS ? rv2 : rv1;
 }
