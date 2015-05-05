@@ -16,6 +16,24 @@
       "revId": "1938758f1f6544f6d550048c0d83a9b3d58a0ad6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0218a87_4e52273a",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-05T16:56:53Z",
+      "side": 1,
+      "message": "After reconsidering, I think this might be fine. We can pretend the non-EC region of the SPI doesn\u0027t exist, and have fmap offsets relative to the start of the image (not relative to the start of the SPI).\n\nIt means that we\u0027ll forever distribute an EC image that may not match the size of the SPI. I think it will cause confusion (and possibly mistakes) at the factory for pre-imaging. Maybe we should modify our build scripts to create ec_factory.bin (image front-padded with 0xff to match SPI size) for boards where CONFIG_FLASH_BASE_SPI !\u003d 0?",
+      "parentUuid": "b0218a87_4b369961",
+      "revId": "1938758f1f6544f6d550048c0d83a9b3d58a0ad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
