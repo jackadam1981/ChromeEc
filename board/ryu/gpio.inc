@@ -120,7 +120,7 @@ GPIO(EC_INT_L,             F, 2,  GPIO_ODR_HIGH)
 GPIO(ENTERING_RW,          E, 9,  GPIO_OUT_LOW)
 GPIO(WP_L,                 F, 6,  GPIO_INPUT)
 GPIO(FW_DEBUG_MODE_L,      D, 1,  GPIO_ODR_HIGH)
-GPIO(EC_BOOT_SPI_EN,       F, 4,  GPIO_ODR_HIGH)
+GPIO(EC_BOOT_SPI_EN,       F, 4,  GPIO_ODR_LOW)
 
 #if 0
 /* Alternate functions */
