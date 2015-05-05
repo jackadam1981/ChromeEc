@@ -56,6 +56,7 @@
 
 /* Accelerometer */
 #define CONFIG_ACCEL_KXCJ9
+#define CONFIG_GYRO_L3GD20H
 #define CONFIG_CMD_ACCELS
 #define CONFIG_CMD_ACCEL_INFO
 #define CONFIG_LID_ANGLE
