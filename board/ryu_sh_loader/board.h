@@ -39,7 +39,6 @@
 
 /* I2C ports configuration */
 #define I2C_PORT_SLAVE  0
-#define I2C_PORT_EC I2C_PORT_SLAVE
 
 /* slave address for host commands */
 #ifdef HAS_TASK_HOSTCMD
