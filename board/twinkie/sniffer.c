@@ -105,7 +105,7 @@ static void ep_tx(void)
 								 : EP_BUF_SIZE;
 	STM32_TOGGLE_EP(USB_EP_SNIFFER, EP_TX_MASK, EP_TX_VALID, 0);
 	/* wake up the processing */
-	task_set_event(TASK_ID_SNIFFER, 1 << b, 0);
+	task_set_event(TASK_ID_SNIFFER, SNIFFER_EVENT_USB_COMPLETE, 0);
 }
 
 static void ep_reset(void)
@@ -307,6 +307,38 @@ void sniffer_task(void)
 			trace_packets();
 			recording_enable(curr);
 		}
+	}
+}
+
+int sniffer_tx_char(void *context, int c)
+{
+	unsigned *tx_idx = context;
+	unsigned u = (*tx_idx / EP_BUF_SIZE) & 1;
+	unsigned idx = *tx_idx % EP_BUF_SIZE;
+
+	if (!(idx & 1))
+		ep_buf[u][idx/2] = c;
+	else
+		ep_buf[u][idx/2] |= c << 8;
+	(*tx_idx)++;
+	if (!(*tx_idx % EP_BUF_SIZE))
+		atomic_clear((uint32_t *)&free_usb, 1 << u);
+
+	return 0;
+}
+
+void sniffer_flush_char(void *context)
+{
+	unsigned *tx_idx = context;
+	unsigned u = *tx_idx / EP_BUF_SIZE;
+	unsigned idx = *tx_idx % EP_BUF_SIZE;
+
+	if (idx) {
+		/* zeroes out the rest of the buffer and mark it ready */
+		*tx_idx += EP_BUF_SIZE - idx;
+		for (idx = (idx+1)/2; idx < EP_BUF_SIZE/2; idx++)
+			ep_buf[u][idx] = 0;
+		atomic_clear((uint32_t *)&free_usb, 1 << u);
 	}
 }
 

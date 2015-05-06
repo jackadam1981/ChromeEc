@@ -251,7 +251,7 @@ static void fsm_set(uint32_t w)
 		inj_polarity = guess_polarity(val);
 		break;
 	case INJ_SET_TRACE:
-		set_trace_mode(val);
+		set_trace_mode(val, 0);
 		break;
 	default:
 		/* Do nothing */
@@ -517,17 +517,22 @@ static int cmd_sink(int argc, char **argv)
 
 static int cmd_trace(int argc, char **argv)
 {
+	int use_console = 1;
+
 	if (argc < 1)
 		return EC_ERROR_PARAM_COUNT;
 
+	if (argc > 1 && !strcasecmp(argv[1], "sniffer"))
+		use_console = 0;
+
 	if (!strcasecmp(argv[0], "on") ||
 	    !strcasecmp(argv[0], "1"))
-		set_trace_mode(TRACE_MODE_ON);
+		set_trace_mode(TRACE_MODE_ON, use_console);
 	else if (!strcasecmp(argv[0], "raw"))
-		set_trace_mode(TRACE_MODE_RAW);
+		set_trace_mode(TRACE_MODE_RAW, use_console);
 	else if (!strcasecmp(argv[0], "off") ||
 		 !strcasecmp(argv[0], "0"))
-		set_trace_mode(TRACE_MODE_OFF);
+		set_trace_mode(TRACE_MODE_OFF, use_console);
 	else
 		return EC_ERROR_PARAM2;
 
