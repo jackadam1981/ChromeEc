@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d1e2d58_513db36e",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-05-06T17:46:39Z",
+      "side": 1,
+      "message": "Anton: this is what I was talking about this morning. I try to add things to the queue, and if I\u0027m successful, it\u0027s my responsibility to poke whoever\u0027s on the other end of the queue to let them know to that there\u0027s more data to read. I think that notification callback should be done by the queue_add_unit() function automatically, and the function pointer to use should be specified in QUEUE_CONFIG.",
+      "revId": "85329b7bd15d09c444c5ecb29ab2126736510bfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd24a5a6_7d99a84f",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-05-06T17:46:39Z",
+      "side": 1,
+      "message": "Same story here, in the opposite direction.",
+      "range": {
+        "startLine": 259,
+        "startChar": 1,
+        "endLine": 259,
+        "endChar": 19
+      },
+      "revId": "85329b7bd15d09c444c5ecb29ab2126736510bfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
