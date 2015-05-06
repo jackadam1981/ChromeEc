@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "4d8435cc_284f4f18",
+        "filename": "board/samus_pd/board.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-05-06T20:55:24Z",
+      "side": 1,
+      "message": "This should be removed",
+      "range": {
+        "startLine": 33,
+        "startChar": 8,
+        "endLine": 33,
+        "endChar": 37
+      },
+      "revId": "5103b73e6a545a95c12bf3050e8dac4232e16f82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd24a5a6_7371d75c",
         "filename": "chip/mec1322/registers.h",
         "patchSetId": 24
