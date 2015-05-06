@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d36f5df_b562aa85",
+        "filename": "power/common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-05-06T22:54:56Z",
+      "side": 1,
+      "message": "Should this code be gated by a CONFIG option (like we do with the hibernate code above)?\n\nOn systems where the PMIC controls power sequencing, I\u0027m not sure we can pause in S5, so those systems shouldn\u0027t define the command.\n\nAlso not sure how meaningful this is on ARM systems.",
+      "range": {
+        "startLine": 521,
+        "startChar": 11,
+        "endLine": 521,
+        "endChar": 35
+      },
+      "revId": "93166b087e093fd3e6f55253a616d55f76543015",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
