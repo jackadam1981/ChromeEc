@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd24a5a6_7371d75c",
+        "filename": "chip/mec1322/registers.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-05-06T20:03:18Z",
+      "side": 1,
+      "message": "This can be removed",
+      "range": {
+        "startLine": 92,
+        "startChar": 8,
+        "endLine": 92,
+        "endChar": 21
+      },
+      "revId": "5103b73e6a545a95c12bf3050e8dac4232e16f82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d1e2d58_e5ee3902",
+        "filename": "chip/npcx/config_chip.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-05-06T20:03:18Z",
+      "side": 1,
+      "message": "I think GPIO_PIN_MASK makes more sense than GPIO_PIN_MASKS.",
+      "range": {
+        "startLine": 113,
+        "startChar": 8,
+        "endLine": 113,
+        "endChar": 22
+      },
+      "revId": "5103b73e6a545a95c12bf3050e8dac4232e16f82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d1e2d58_65b8e9d7",
+        "filename": "include/gpio.wrap",
+        "patchSetId": 24
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-05-06T20:03:18Z",
+      "side": 1,
+      "message": "Hmm, we shouldn\u0027t undefined GPIO_NAME here, if gpio.wrap is included a second time in a file (it is, for instance in gpio_list.h) then the second time GPIO_NAME will be assigned the default above, and not the value set in board.h.  This makes me thing that GPIO_NAME should in fact not be defaulted at all above, and instead be set by each board.h (or the default should be moved to config.h).  If we do it in each board.h then we need to add a check at the top of this file, similar to the GPIO_PIN and GPIO_PIN_MASK checks.  All in all, I think it should probably be defaulted in config.h.",
+      "range": {
+        "startLine": 91,
+        "startChar": 7,
+        "endLine": 91,
+        "endChar": 16
+      },
+      "revId": "5103b73e6a545a95c12bf3050e8dac4232e16f82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
