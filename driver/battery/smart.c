@@ -10,6 +10,7 @@
 #include "host_command.h"
 #include "i2c.h"
 #include "smbus.h"
+#include "sb_fw_update.h"
 #include "timer.h"
 #include "util.h"
 
@@ -239,6 +240,11 @@ void battery_get_params(struct batt_params *batt)
 {
 	struct batt_params batt_new = {0};
 	int v;
+
+#ifdef CONFIG_SB_FIRMWARE_UPDATE
+	if (sb_fw_update_in_progress())
+		return;
+#endif
 
 	if (sb_read(SB_TEMPERATURE, &batt_new.temperature)) {
 		batt_new.flags |= BATT_FLAG_BAD_ANY;
