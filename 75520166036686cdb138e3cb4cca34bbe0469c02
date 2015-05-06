@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d39c1d0_b4174ef9",
+        "filename": "power/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-05-06T22:51:56Z",
+      "side": 1,
+      "message": "Should #undef this in include/config.h (we\u0027re trying to have config.h have the exhaustive list of all config options).",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 30
+      },
+      "revId": "75520166036686cdb138e3cb4cca34bbe0469c02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d407d41_c4521e39",
+        "filename": "power/skylake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-05-06T22:51:56Z",
+      "side": 1,
+      "message": "Still true?",
+      "range": {
+        "startLine": 164,
+        "startChar": 12,
+        "endLine": 164,
+        "endChar": 20
+      },
+      "revId": "75520166036686cdb138e3cb4cca34bbe0469c02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
