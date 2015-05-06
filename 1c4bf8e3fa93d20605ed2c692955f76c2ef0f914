@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cd24a5a6_62db3b69",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-05-06T23:57:00Z",
+      "side": 1,
+      "message": "well, I don\u0027t think I want to call a function for this, it is a one liner and it requires a different mask compared to SPI interface.",
+      "parentUuid": "4d8435cc_6cbd64c6",
+      "range": {
+        "startLine": 118,
+        "startChar": 46,
+        "endLine": 118,
+        "endChar": 47
+      },
+      "revId": "1c4bf8e3fa93d20605ed2c692955f76c2ef0f914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d8435cc_c94ca2d0",
         "filename": "chip/g/sps.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-05-06T23:35:59Z",
       "side": 1,
       "message": "Delete the above two lines.",
+      "range": {
+        "startLine": 212,
+        "startChar": 43,
+        "endLine": 212,
+        "endChar": 45
+      },
+      "revId": "1c4bf8e3fa93d20605ed2c692955f76c2ef0f914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd24a5a6_a20a7356",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-05-06T23:57:00Z",
+      "side": 1,
+      "message": "why? What is wrong with resetting the FIFOs to a known state?",
+      "parentUuid": "4d8435cc_c94ca2d0",
       "range": {
         "startLine": 212,
         "startChar": 43,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "cd24a5a6_22fe63ab",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-05-06T23:57:00Z",
+      "side": 1,
+      "message": "the CS_DEASSERT interrupt will make sure that whatever is in the FIFO is processed.",
+      "parentUuid": "4d8435cc_8c330827",
+      "range": {
+        "startLine": 217,
+        "startChar": 34,
+        "endLine": 217,
+        "endChar": 35
+      },
+      "revId": "1c4bf8e3fa93d20605ed2c692955f76c2ef0f914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd24a5a6_a7f16568",
         "filename": "chip/g/sps.c",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2015-05-06T23:35:59Z",
       "side": 1,
       "message": "Please reference: fifo128_get_size()\nhttps://chromium-review.googlesource.com/#/c/236395/26/common/fifo128.c",
+      "range": {
+        "startLine": 284,
+        "startChar": 25,
+        "endLine": 284,
+        "endChar": 33
+      },
+      "revId": "1c4bf8e3fa93d20605ed2c692955f76c2ef0f914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d1e2d58_9a9c7b6a",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-05-06T23:57:00Z",
+      "side": 1,
+      "message": "it does not apply here and there is no point in calling a function to replace a one line operation.",
+      "parentUuid": "cd24a5a6_a7f16568",
       "range": {
         "startLine": 284,
         "startChar": 25,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "8d1e2d58_fa848f10",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-05-06T23:57:00Z",
+      "side": 1,
+      "message": "will fix.",
+      "parentUuid": "8d1e2d58_4f806794",
+      "range": {
+        "startLine": 302,
+        "startChar": 68,
+        "endLine": 302,
+        "endChar": 76
+      },
+      "revId": "1c4bf8e3fa93d20605ed2c692955f76c2ef0f914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d1e2d58_0f8a6fb2",
         "filename": "chip/g/sps.c",
         "patchSetId": 1
@@ -128,6 +248,30 @@
       "writtenOn": "2015-05-06T23:34:52Z",
       "side": 1,
       "message": "typo",
+      "range": {
+        "startLine": 306,
+        "startChar": 17,
+        "endLine": 306,
+        "endChar": 24
+      },
+      "revId": "1c4bf8e3fa93d20605ed2c692955f76c2ef0f914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd24a5a6_622d7bc1",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-05-06T23:57:00Z",
+      "side": 1,
+      "message": "will fix.",
+      "parentUuid": "8d1e2d58_0f8a6fb2",
       "range": {
         "startLine": 306,
         "startChar": 17,
