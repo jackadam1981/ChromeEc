@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d407d41_b3abe281",
+        "filename": "power/skylake.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-06T01:38:47Z",
+      "side": 1,
+      "message": "Don\u0027t want to do this, this will enable 5V VBUS on type-C ports, regardless of what is connected. would be a problem if zinger were connected. even if nothing was connected, it\u0027d be a waste of power.",
+      "range": {
+        "startLine": 168,
+        "startChar": 2,
+        "endLine": 168,
+        "endChar": 39
+      },
+      "revId": "5ac196806053fac92087ffee58af1ca4d9c409ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d36f5df_d23f8484",
+        "filename": "power/skylake.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-06T01:38:47Z",
+      "side": 1,
+      "message": "not sure we want this here. some skylake boards might not have type C? would probably be better to do this as a chipset HOOK in the PD stack as we have done on samus",
+      "range": {
+        "startLine": 233,
+        "startChar": 17,
+        "endLine": 233,
+        "endChar": 34
+      },
+      "revId": "5ac196806053fac92087ffee58af1ca4d9c409ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
