@@ -2,6 +2,98 @@
   "comments": [
     {
       "key": {
+        "uuid": "4d8435cc_6cbd64c6",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-05-06T23:35:59Z",
+      "side": 1,
+      "message": "fifo_room: please reference:\nhttps://chromium-review.googlesource.com/#/c/236395/26/common/fifo128.c\n\nint fifo128_get_size(struct fifo128 *que)",
+      "range": {
+        "startLine": 118,
+        "startChar": 46,
+        "endLine": 118,
+        "endChar": 47
+      },
+      "revId": "1c4bf8e3fa93d20605ed2c692955f76c2ef0f914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d8435cc_c94ca2d0",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-05-06T23:35:59Z",
+      "side": 1,
+      "message": "Delete the above two lines.",
+      "range": {
+        "startLine": 212,
+        "startChar": 43,
+        "endLine": 212,
+        "endChar": 45
+      },
+      "revId": "1c4bf8e3fa93d20605ed2c692955f76c2ef0f914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d8435cc_8c330827",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-05-06T23:35:59Z",
+      "side": 1,
+      "message": "Note: You will get a rx interrupt per 9-byte received.\nIs this your design?  What if the rx pkt is less than 9 bytes?",
+      "range": {
+        "startLine": 217,
+        "startChar": 34,
+        "endLine": 217,
+        "endChar": 35
+      },
+      "revId": "1c4bf8e3fa93d20605ed2c692955f76c2ef0f914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd24a5a6_a7f16568",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-05-06T23:35:59Z",
+      "side": 1,
+      "message": "Please reference: fifo128_get_size()\nhttps://chromium-review.googlesource.com/#/c/236395/26/common/fifo128.c",
+      "range": {
+        "startLine": 284,
+        "startChar": 25,
+        "endLine": 284,
+        "endChar": 33
+      },
+      "revId": "1c4bf8e3fa93d20605ed2c692955f76c2ef0f914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d1e2d58_4f806794",
         "filename": "chip/g/sps.c",
         "patchSetId": 1
