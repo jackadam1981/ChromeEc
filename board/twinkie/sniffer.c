@@ -105,7 +105,7 @@ static void ep_tx(void)
 								 : EP_BUF_SIZE;
 	STM32_TOGGLE_EP(USB_EP_SNIFFER, EP_TX_MASK, EP_TX_VALID, 0);
 	/* wake up the processing */
-	task_set_event(TASK_ID_SNIFFER, 1 << b, 0);
+	task_set_event(TASK_ID_SNIFFER, SNIFFER_EVENT_USB_COMPLETE, 0);
 }
 
 static void ep_reset(void)
@@ -304,8 +304,68 @@ void sniffer_task(void)
 
 		if (trace_mode != TRACE_MODE_OFF) {
 			uint8_t curr = recording_enable(0);
+			filled_dma = 0;
 			trace_packets();
 			recording_enable(curr);
+		}
+	}
+}
+
+static void sniffer_reload_usb_buffer(void)
+{
+	static uint32_t u;
+	/* copy a new buffer to send over USB if needed */
+	if (free_usb && filled_dma) {
+		static int d;
+		uint8_t *buff = &samples[0][0];
+		while (!(filled_dma & (1 << d)))
+			d = (d + 1) & 31;
+		memcpy_to_usbram(((void *)usb_sram_addr(ep_buf[u])),
+				 &buff[d << 6], EP_BUF_SIZE);
+		atomic_clear((uint32_t *)&free_usb, 1 << u);
+		u = !u;
+		filled_dma &= ~(1 << d);
+	}
+}
+
+int sniffer_tx_char(void *context, int c)
+{
+	unsigned *tx_idx = context;
+	unsigned idx = *tx_idx;
+	uint8_t *buff = &samples[0][0];
+	/* enqueue the new character */
+	buff[idx] = c;
+	(*tx_idx)++;
+	/* check if we have enough to fill a DMA buffer */
+	if (!(*tx_idx & (EP_BUF_SIZE-1)))
+		filled_dma |= 1 << (idx >> 6);
+	/* copy a new buffer to send over USB if needed */
+	sniffer_reload_usb_buffer();
+	/* wrap around intermediate buffer */
+	if (*tx_idx == RX_COUNT * 2)
+		*tx_idx = 0;
+	return 0;
+}
+
+void sniffer_flush_char(void *context)
+{
+	unsigned *tx_idx = context;
+	unsigned idx = *tx_idx & (EP_BUF_SIZE-1);
+	uint8_t *buff = &samples[0][0];
+
+	if (idx) {
+		/* zeroes out the rest of the buffer and mark it ready */
+		memset(&buff[idx], 0, EP_BUF_SIZE - idx);
+		filled_dma |= 1 << (*tx_idx >> 6);
+	}
+	while (filled_dma) {
+		uint32_t evt;
+		/* copy a new buffer to send over USB if needed */
+		sniffer_reload_usb_buffer();
+		if (!free_usb) {
+			evt = task_wait_event(500 * MSEC);
+			if (evt == TASK_EVENT_TIMER)
+				break; /* timeout: nobody is reading USB */
 		}
 	}
 }

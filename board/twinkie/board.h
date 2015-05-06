@@ -42,6 +42,10 @@
 /* I2C ports configuration */
 #define I2C_PORT_MASTER 0
 
+/* Sniffer task events */
+#define SNIFFER_EVENT_USB_COMPLETE TASK_EVENT_CUSTOM(1)
+#define SNIFFER_EVENT_PD_PACKET    TASK_EVENT_CUSTOM(2)
+
 /* USB configuration */
 #define CONFIG_USB_PID 0x500A
 /* By default, enable all console messages excepted USB */
@@ -57,6 +61,10 @@
 
 void sniffer_init(void);
 
+int sniffer_tx_char(void *context, int c);
+
+void sniffer_flush_char(void *context);
+
 int wait_packet(int pol, uint32_t min_edges, uint32_t timeout_us);
 
 int expect_packet(int pol, uint8_t cmd, uint32_t timeout_us);
@@ -65,7 +73,7 @@ uint8_t recording_enable(uint8_t mask);
 
 void trace_packets(void);
 
-void set_trace_mode(int mode);
+void set_trace_mode(int mode, int use_console);
 
 /* Timer selection */
 #define TIM_CLOCK_MSB  3
