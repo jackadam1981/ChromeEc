@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d19f971_30535171",
+        "filename": "board/gandof/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1002584
+      },
+      "writtenOn": "2015-05-06T18:21:36Z",
+      "side": 1,
+      "message": "based on voltage_max of 12600mV shouldn\u0027t this be at least 4200mV?",
+      "range": {
+        "startLine": 21,
+        "startChar": 29,
+        "endLine": 21,
+        "endChar": 33
+      },
+      "revId": "1ec12a323fdb906843690c669a37abb728ccb87b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd24a5a6_bd706004",
+        "filename": "board/gandof/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1002584
+      },
+      "writtenOn": "2015-05-06T18:21:36Z",
+      "side": 1,
+      "message": "why do you need to check for max voltage? Does it cause issues with battery cutoff?",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 2
+      },
+      "revId": "1ec12a323fdb906843690c669a37abb728ccb87b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d19f971_6b143c79",
+        "filename": "board/gandof/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1002584
+      },
+      "writtenOn": "2015-05-06T18:21:36Z",
+      "side": 1,
+      "message": "if (tmp \u0026 SB_FET_OFF_STATUS)",
+      "range": {
+        "startLine": 111,
+        "startChar": 5,
+        "endLine": 111,
+        "endChar": 54
+      },
+      "revId": "1ec12a323fdb906843690c669a37abb728ccb87b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
