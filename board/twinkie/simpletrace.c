@@ -12,15 +12,20 @@
 #include "hwtimer.h"
 #include "injector.h"
 #include "registers.h"
+#include "printf.h"
 #include "system.h"
 #include "task.h"
 #include "timer.h"
+#include "usb_console.h"
 #include "usb_pd.h"
 #include "usb_pd_config.h"
 #include "util.h"
 
 /* PD packet text tracing state : TRACE_MODE_OFF/RAW/ON */
 int trace_mode;
+
+/* Put text tracing on the regular console or dedicated sniffer endpoint */
+static int trace_console;
 
 /* The FSM is waiting for the following command (0 == None) */
 uint8_t expected_cmd;
@@ -72,19 +77,45 @@ static const char * const svdm_cmdt_name[] = {
 	[CMDT_RSP_BUSY] = "BSY",
 };
 
+/* current USB buffer index */
+static unsigned current_idx;
+
+static int trputc(int c)
+{
+	if (trace_console)
+		return usb_putc(c);
+	else
+		return sniffer_tx_char(&current_idx, c);
+}
+
+static int trprintf(const char *format, ...)
+{
+	int ret;
+	va_list args;
+
+	va_start(args, format);
+	if (trace_console)
+		ret = usb_vprintf(format, args);
+	else
+		ret = vfnprintf(sniffer_tx_char, &current_idx, format, args);
+	va_end(args);
+
+	return ret;
+}
+
 static void print_pdo(uint32_t word)
 {
 	if ((word & PDO_TYPE_MASK) == PDO_TYPE_BATTERY)
-		ccprintf(" %dmV/%dmW", ((word>>10)&0x3ff)*50,
+		trprintf(" %dmV/%dmW", ((word>>10)&0x3ff)*50,
 			 (word&0x3ff)*250);
 	else
-		ccprintf(" %dmV/%dmA", ((word>>10)&0x3ff)*50,
+		trprintf(" %dmV/%dmA", ((word>>10)&0x3ff)*50,
 			 (word&0x3ff)*10);
 }
 
 static void print_rdo(uint32_t word)
 {
-	ccprintf("{%d} %08x", RDO_POS(word), word);
+	trprintf("{%d} %08x", RDO_POS(word), word);
 }
 
 static void print_vdo(int idx, uint32_t word)
@@ -95,9 +126,9 @@ static void print_vdo(int idx, uint32_t word)
 		uint16_t vid = PD_VDO_VID(word);
 		if (!cmd)
 			cmd = "????";
-		ccprintf(" V%04x:%s,%s:%08x", vid, cmd, cmdt, word);
+		trprintf(" V%04x:%s,%s:%08x", vid, cmd, cmdt, word);
 	} else {
-		ccprintf(" %08x", word);
+		trprintf(" %08x", word);
 	}
 }
 
@@ -111,17 +142,17 @@ static void print_packet(int head, uint32_t *payload)
 	const char *prole;
 
 	if (trace_mode == TRACE_MODE_RAW) {
-		ccprintf("%T[%04x]", head);
+		trprintf("%T[%04x]", head);
 		for (i = 0; i < cnt; i++)
-			ccprintf(" %08x", payload[i]);
-		ccputs("\n");
+			trprintf(" %08x", payload[i]);
+		trputc('\n');
 		return;
 	}
 	name = cnt ? data_msg_name[typ] : ctrl_msg_name[typ];
 	prole = head & (PD_ROLE_SOURCE << 8) ? "SRC" : "SNK";
-	ccprintf("%T %s/%d [%04x]%s", prole, id, head, name);
+	trprintf("%T %s/%d [%04x]%s", prole, id, head, name);
 	if (!cnt) { /* Control message : we are done */
-		ccputs("\n");
+		trputc('\n');
 		return;
 	}
 	/* Print payload for data message */
@@ -135,28 +166,30 @@ static void print_packet(int head, uint32_t *payload)
 			print_rdo(payload[i]);
 			break;
 		case PD_DATA_BIST:
-			ccprintf("mode %d cnt %04x", payload[i] >> 28,
+			trprintf("mode %d cnt %04x", payload[i] >> 28,
 				 payload[i] & 0xffff);
 			break;
 		case PD_DATA_VENDOR_DEF:
 			print_vdo(i, payload[i]);
 			break;
 		default:
-			ccprintf(" %08x", payload[i]);
+			trprintf(" %08x", payload[i]);
 	}
-	ccputs("\n");
+	trputc('\n');
+	sniffer_flush_char(&current_idx);
 }
 
 static void print_error(enum pd_rx_errors err)
 {
 	if (err == PD_RX_ERR_INVAL)
-		ccprintf("%T TMOUT\n");
+		trprintf("%T TMOUT\n");
 	else if (err == PD_RX_ERR_HARD_RESET)
-		ccprintf("%T HARD-RST\n");
+		trprintf("%T HARD-RST\n");
 	else if (err == PD_RX_ERR_UNSUPPORTED_SOP)
-		ccprintf("%T SOP*\n");
+		trprintf("%T SOP*\n");
 	else
-		ccprintf("ERR %d\n", err);
+		trprintf("ERR %d\n", err);
+	sniffer_flush_char(&current_idx);
 }
 
 /* keep track of RX edge timing in order to trigger receive */
@@ -264,8 +297,11 @@ int expect_packet(int pol, uint8_t cmd, uint32_t timeout_us)
 	return !(evt == TASK_EVENT_TIMER);
 }
 
-void set_trace_mode(int mode)
+void set_trace_mode(int mode, int use_console)
 {
+	/* set trace destination */
+	trace_console = use_console;
+
 	/* No change */
 	if (mode == trace_mode)
 		return;

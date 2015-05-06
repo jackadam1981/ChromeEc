@@ -310,6 +310,42 @@ void sniffer_task(void)
 	}
 }
 
+int sniffer_tx_char(void *context, int c)
+{
+#if 0
+	unsigned *tx_idx = context;
+	unsigned u = *tx_idx / EP_BUF_SIZE;
+	unsigned idx = *tx_idx % EP_BUF_SIZE;
+
+	if (!(idx & 1))
+		ep_buf[u][idx/2] = c;
+	else
+		ep_buf[u][idx/2] |= c << 8;
+	(*tx_idx)++;
+	if (0)
+		atomic_clear((uint32_t *)&free_usb, 1 << u);
+#endif
+
+	return 0;
+}
+
+void sniffer_flush_char(void *context)
+{
+#if 0
+	unsigned *tx_idx = context;
+	unsigned u = *tx_idx / EP_BUF_SIZE;
+	unsigned idx = *tx_idx % EP_BUF_SIZE;
+
+	if (idx && free_usb == 3) {
+		/* zeroes out the rest of the buffer and mark it ready */
+		for (idx = (idx+1)/2; idx < EP_BUF_SIZE/2; idx++)
+			ep_buf[u][idx] = 0;
+		atomic_clear((uint32_t *)&free_usb, 1 << u);
+		/* TODO: *tx_idx += ; */
+	}
+#endif
+}
+
 int wait_packet(int pol, uint32_t min_edges, uint32_t timeout_us)
 {
 	stm32_dma_chan_t *chan = dma_get_channel(pol ? DMAC_TIM_RX2

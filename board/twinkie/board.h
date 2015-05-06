@@ -57,6 +57,10 @@
 
 void sniffer_init(void);
 
+int sniffer_tx_char(void *context, int c);
+
+void sniffer_flush_char(void *context);
+
 int wait_packet(int pol, uint32_t min_edges, uint32_t timeout_us);
 
 int expect_packet(int pol, uint8_t cmd, uint32_t timeout_us);
@@ -65,7 +69,7 @@ uint8_t recording_enable(uint8_t mask);
 
 void trace_packets(void);
 
-void set_trace_mode(int mode);
+void set_trace_mode(int mode, int use_console);
 
 /* Timer selection */
 #define TIM_CLOCK_MSB  3
