@@ -6,9 +6,11 @@
 /* Glados board-specific configuration */
 
 #include "button.h"
+#include "charge_state_v2.h"
 #include "charger.h"
 #include "extpower.h"
 #include "gpio.h"
+#include "hooks.h"
 #include "i2c.h"
 #include "lid_switch.h"
 #include "motion_sense.h"
@@ -62,6 +64,23 @@ const struct i2c_port_t i2c_ports[]  = {
 	{"pmic",     MEC1322_I2C3,   400,  GPIO_I2C3_SCL,   GPIO_I2C3_SDA  },
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+
+static void flash_leds(void)
+{
+	static int led_on;
+
+	gpio_set_level(GPIO_LED1, led_on);
+	gpio_set_level(GPIO_LED2, led_on);
+	led_on = !led_on;
+}
+DECLARE_HOOK(HOOK_SECOND, flash_leds, HOOK_PRIO_DEFAULT);
+
+static void board_init(void)
+{
+	/* Charge at 2A for bring-up */
+	charge_set_input_current_limit(2000);
+}
+DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
 /**
  * Discharge battery when on AC power for factory test.
