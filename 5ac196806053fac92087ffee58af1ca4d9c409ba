@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6d19f971_9519f77b",
+        "filename": "power/skylake.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-06T17:27:52Z",
+      "side": 1,
+      "message": "Removed these GPIOs from this file entirely.",
+      "parentUuid": "0d407d41_b3abe281",
+      "range": {
+        "startLine": 168,
+        "startChar": 2,
+        "endLine": 168,
+        "endChar": 39
+      },
+      "revId": "5ac196806053fac92087ffee58af1ca4d9c409ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d36f5df_d23f8484",
         "filename": "power/skylake.c",
         "patchSetId": 2
