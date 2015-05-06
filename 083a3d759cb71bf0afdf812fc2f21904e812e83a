@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8d1e2d58_deab1281",
+        "filename": "board/glados/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-06T17:28:40Z",
+      "side": 1,
+      "message": "I grabbed these params directly from the datasheet. See here:\n\nhttps://drive.google.com/a/google.com/file/d/0B0n8dRWE1kmsdEYydXlNVTBaNjNMb3RqRlhvWmZLWjdjNGh3/view?usp\u003dsharing",
+      "parentUuid": "2d39c1d0_f190481c",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "083a3d759cb71bf0afdf812fc2f21904e812e83a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d407d41_b3840210",
         "filename": "board/glados/board.c",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2015-05-06T01:50:47Z",
       "side": 1,
       "message": "glados doesn\u0027t have a kxcj9. it does have lsm6ds0 accel/gyro",
+      "range": {
+        "startLine": 11,
+        "startChar": 17,
+        "endLine": 11,
+        "endChar": 28
+      },
+      "revId": "083a3d759cb71bf0afdf812fc2f21904e812e83a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d1e2d58_be0a961f",
+        "filename": "board/glados/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-06T17:28:40Z",
+      "side": 1,
+      "message": "Cleaned up these includes, done",
+      "parentUuid": "0d407d41_b3840210",
       "range": {
         "startLine": 11,
         "startChar": 17,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "6d19f971_722e7111",
+        "filename": "board/glados/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-06T17:28:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d36f5df_9239fca0",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 15
+      },
+      "revId": "083a3d759cb71bf0afdf812fc2f21904e812e83a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d407d41_7397ba48",
         "filename": "board/glados/board.h",
         "patchSetId": 5
@@ -82,6 +154,30 @@
       "writtenOn": "2015-05-06T01:50:47Z",
       "side": 1,
       "message": "these should be alphabatized",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 23
+      },
+      "revId": "083a3d759cb71bf0afdf812fc2f21904e812e83a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d1e2d58_bebe160e",
+        "filename": "board/glados/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-06T17:28:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d407d41_7397ba48",
       "range": {
         "startLine": 18,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "6d19f971_f2396151",
+        "filename": "board/glados/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-06T17:28:40Z",
+      "side": 1,
+      "message": "Yes, they are all default undef. Done.",
+      "parentUuid": "2d39c1d0_b18ac0e8",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 22
+      },
+      "revId": "083a3d759cb71bf0afdf812fc2f21904e812e83a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d407d41_9381feff",
         "filename": "board/glados/ec.tasklist",
         "patchSetId": 5
@@ -128,6 +248,30 @@
       "writtenOn": "2015-05-06T01:50:47Z",
       "side": 1,
       "message": "calling the wrong task function here. since we don\u0027t have accel params defined yet, maybe we want to leave this task out for now.",
+      "range": {
+        "startLine": 22,
+        "startChar": 26,
+        "endLine": 22,
+        "endChar": 44
+      },
+      "revId": "083a3d759cb71bf0afdf812fc2f21904e812e83a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d1e2d58_de0d523b",
+        "filename": "board/glados/ec.tasklist",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-06T17:28:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d407d41_9381feff",
       "range": {
         "startLine": 22,
         "startChar": 26,
