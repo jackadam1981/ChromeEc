@@ -33,7 +33,7 @@ silent = $(if $(V),,1>/dev/null)
 silent_err = $(if $(V),,2>/dev/null)
 
 # commands to build all targets
-cmd_lds = $(CPP) -P -C -MMD -MF $@.d -MT $@ $(CPPFLAGS) \
+cmd_lds = $(CPP) -P -MMD -MF $@.d -MT $@ $(CPPFLAGS) \
           -D$(call section_is,$*) \
           -DSECTION=$(call section,$*) $< -o $@
 # Allow obj_to_bin to be overridden by board or chip specific commands
