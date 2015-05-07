@@ -307,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "8d1e2d58_469f2962",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-05-07T19:14:55Z",
+      "side": 1,
+      "message": "ah, this is a good point, thank you!",
+      "parentUuid": "8d1e2d58_1bdced0b",
+      "range": {
+        "startLine": 204,
+        "startChar": 29,
+        "endLine": 204,
+        "endChar": 30
+      },
+      "revId": "1d7e257e120474e82bc19fa46e916a14a51e5853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d39c1d0_176bbcee",
         "filename": "chip/g/sps.c",
         "patchSetId": 2
@@ -342,6 +366,30 @@
       "side": 1,
       "message": "What do you mean \"again\"? Where was it reset before?",
       "parentUuid": "2d39c1d0_176bbcee",
+      "range": {
+        "startLine": 212,
+        "startChar": 43,
+        "endLine": 212,
+        "endChar": 45
+      },
+      "revId": "1d7e257e120474e82bc19fa46e916a14a51e5853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d1e2d58_e6975546",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-05-07T19:14:55Z",
+      "side": 1,
+      "message": "will do.",
+      "parentUuid": "0d407d41_3f233329",
       "range": {
         "startLine": 212,
         "startChar": 43,
