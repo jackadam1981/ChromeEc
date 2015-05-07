@@ -1,0 +1,372 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d407d41_df0ae7d2",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-05-07T03:27:26Z",
+      "side": 1,
+      "message": "Please add a SPS header file,\nMove SPS data types and APIs to sps.h or spi_slave.h.",
+      "range": {
+        "startLine": 81,
+        "startChar": 14,
+        "endLine": 81,
+        "endChar": 15
+      },
+      "revId": "1d7e257e120474e82bc19fa46e916a14a51e5853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d407d41_bf1723f9",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-05-07T03:27:26Z",
+      "side": 1,
+      "message": "Move all defines to the beginning of the c file.",
+      "range": {
+        "startLine": 94,
+        "startChar": 15,
+        "endLine": 94,
+        "endChar": 16
+      },
+      "revId": "1d7e257e120474e82bc19fa46e916a14a51e5853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d39c1d0_5761440e",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-05-07T03:27:26Z",
+      "side": 1,
+      "message": "Update comments here.  Your function name is sps_transmit().",
+      "range": {
+        "startLine": 97,
+        "startChar": 27,
+        "endLine": 97,
+        "endChar": 31
+      },
+      "revId": "1d7e257e120474e82bc19fa46e916a14a51e5853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d39c1d0_b72070c7",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-05-07T03:27:26Z",
+      "side": 1,
+      "message": "My original design goal is to implement SPS API based on the following SPI Slave APIs.\n\nhttps://developer.mbed.org/users/mbed_official/code/mbed/docs/tip/classmbed_1_1SPISlave.html\n\nFor example:\n/* Compute number of bytes received in the SPS  FIFO\n *\n *  @returns\n *    0 if no data,\n *    n number of bytes received\n */\nint sps_receive(uint32_t inst);\n\n/*\n *  Peek top byte in the SPS RX FIFO\n *  Don’t remove it from SPS RX FIFO\n *  @returns\n *    the data in the receive buffer\n */\nstatic uint8_t sps_top(uint32_t inst);\n\n/*\n * Read (Pop) 1-byte from the SPS RX FIFO\n * @param data Pointer to 8-bit data\n * @return pop count: 1 or 0\n */\nstatic int sps_read(uint32_t inst, uint8_t *data);\n\n/*\n * Reply (Push) a byte to the SPS TX FIFO\n * Fill the transmission buffer (SPS TX FIFO) with the value (1-byte) to be written out \n * as slave on the next received message from the master.\n * @param data Pointer to 8-bit data\n * @return push count: 1 or 0\n */\nstatic int sps_reply(uint32_t inst, const uint8_t data);",
+      "range": {
+        "startLine": 103,
+        "startChar": 63,
+        "endLine": 103,
+        "endChar": 64
+      },
+      "revId": "1d7e257e120474e82bc19fa46e916a14a51e5853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d39c1d0_37148078",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-05-07T03:27:26Z",
+      "side": 1,
+      "message": "Incorrect computing fifo_room if using mirroring bit implementation of fifo (circular buffer).\n\nYou may reference: http://en.wikipedia.org/wiki/Circular_buffer",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 10
+      },
+      "revId": "1d7e257e120474e82bc19fa46e916a14a51e5853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d39c1d0_971d6c91",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-05-07T03:27:26Z",
+      "side": 1,
+      "message": "Split the following into two sub-functions.\n- read 1 byte  (RevA need read/modify/write; RevB will be simplified.)\n\n- read 4 byte",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 0
+      },
+      "revId": "1d7e257e120474e82bc19fa46e916a14a51e5853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d39c1d0_176bbcee",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-05-07T03:27:26Z",
+      "side": 1,
+      "message": "Don\u0027t need reset tx and rx fifo again here.\nRemove above two lines.",
+      "range": {
+        "startLine": 212,
+        "startChar": 43,
+        "endLine": 212,
+        "endChar": 45
+      },
+      "revId": "1d7e257e120474e82bc19fa46e916a14a51e5853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d36f5df_187c0d6a",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-05-07T03:27:26Z",
+      "side": 1,
+      "message": "You don\u0027t need configure RXFIFO_THREASHOLD if you do not enable rx_fifo_level interrupt.",
+      "range": {
+        "startLine": 217,
+        "startChar": 34,
+        "endLine": 217,
+        "endChar": 35
+      },
+      "revId": "1d7e257e120474e82bc19fa46e916a14a51e5853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d36f5df_786679db",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-05-07T03:27:26Z",
+      "side": 1,
+      "message": "RXFIFO_LVL_INTR is not need if using CS_DEASSERT_INTR.",
+      "range": {
+        "startLine": 218,
+        "startChar": 39,
+        "endLine": 218,
+        "endChar": 41
+      },
+      "revId": "1d7e257e120474e82bc19fa46e916a14a51e5853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d36f5df_b88aa1e8",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-05-07T03:27:26Z",
+      "side": 1,
+      "message": "RXFIFO_LVL_INTR is not need if using CS_DEASSERT_INTR.",
+      "range": {
+        "startLine": 235,
+        "startChar": 47,
+        "endLine": 235,
+        "endChar": 49
+      },
+      "revId": "1d7e257e120474e82bc19fa46e916a14a51e5853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d407d41_ff36cb92",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-05-07T03:27:26Z",
+      "side": 1,
+      "message": "RXFIFO_LVL_INTR is not need if using CS_DEASSERT_INTR.",
+      "range": {
+        "startLine": 246,
+        "startChar": 48,
+        "endLine": 246,
+        "endChar": 50
+      },
+      "revId": "1d7e257e120474e82bc19fa46e916a14a51e5853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d407d41_1f42affe",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-05-07T03:27:26Z",
+      "side": 1,
+      "message": "Incorrect compute rx size. (ref circular buffer: above)",
+      "range": {
+        "startLine": 284,
+        "startChar": 33,
+        "endLine": 284,
+        "endChar": 34
+      },
+      "revId": "1d7e257e120474e82bc19fa46e916a14a51e5853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d36f5df_d8db2514",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-05-07T03:27:26Z",
+      "side": 1,
+      "message": "If SPS RX is based on CS_DESSERT_INTR, then you do not need enable SPS0_RXFIFO_LVL_INTR.",
+      "range": {
+        "startLine": 345,
+        "startChar": 22,
+        "endLine": 345,
+        "endChar": 24
+      },
+      "revId": "1d7e257e120474e82bc19fa46e916a14a51e5853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d39c1d0_b77990c1",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-05-07T03:27:26Z",
+      "side": 1,
+      "message": "Please move all test functions into a different file.\n\nor add\n#define CONFIG_SPS_TEST",
+      "range": {
+        "startLine": 358,
+        "startChar": 1,
+        "endLine": 358,
+        "endChar": 2
+      },
+      "revId": "1d7e257e120474e82bc19fa46e916a14a51e5853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d407d41_bf304395",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-05-07T03:27:26Z",
+      "side": 1,
+      "message": "Typo: three states:\nPlease define enum type for 0,1,2.",
+      "range": {
+        "startLine": 367,
+        "startChar": 66,
+        "endLine": 367,
+        "endChar": 74
+      },
+      "revId": "1d7e257e120474e82bc19fa46e916a14a51e5853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d407d41_1f298f3c",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-05-07T03:27:26Z",
+      "side": 1,
+      "message": "Why do we need usleep 10? Any reasons?",
+      "range": {
+        "startLine": 479,
+        "startChar": 12,
+        "endLine": 479,
+        "endChar": 14
+      },
+      "revId": "1d7e257e120474e82bc19fa46e916a14a51e5853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
