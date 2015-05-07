@@ -22,6 +22,30 @@
       "revId": "3cba9b2ccea748184c811855963c0a7fed5392c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd24a5a6_4a5a950b",
+        "filename": "board/ryu/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-07T17:03:02Z",
+      "side": 1,
+      "message": "ok, this is fine. after looking at the code, i\u0027m confident we will end up as DFP with zinger, or apple charge-through, because those devices will ask us for a data swap. and after they ask us for a data swap, we do not call this function anymore to prevent endless swapping back and forth. so, we default to UFP if the other side has no policy, but if the other side wants us to be DFP, we will be.",
+      "parentUuid": "4d8435cc_9018f673",
+      "range": {
+        "startLine": 167,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 29
+      },
+      "revId": "3cba9b2ccea748184c811855963c0a7fed5392c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
