@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d8435cc_9018f673",
+        "filename": "board/ryu/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-07T16:45:55Z",
+      "side": 1,
+      "message": "are we sure we want to be UFP?\n\nwith something like zinger we want to be DFP so we can do remote updates. with apple charge-through we also want to be DFP so we can do DP. i guess in both of these cases, the accessory will ask for a data swap, so this will work anyway. but, it still seems odd for us to be trying to be a UFP.",
+      "range": {
+        "startLine": 167,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 29
+      },
+      "revId": "3cba9b2ccea748184c811855963c0a7fed5392c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
