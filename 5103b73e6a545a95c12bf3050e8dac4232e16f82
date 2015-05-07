@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6d2e5992_d12304d3",
+        "filename": "board/samus_pd/board.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1116180
+      },
+      "writtenOn": "2015-05-07T02:50:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d8435cc_284f4f18",
+      "range": {
+        "startLine": 33,
+        "startChar": 8,
+        "endLine": 33,
+        "endChar": 37
+      },
+      "revId": "5103b73e6a545a95c12bf3050e8dac4232e16f82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd24a5a6_7371d75c",
         "filename": "chip/mec1322/registers.h",
         "patchSetId": 24
@@ -36,6 +60,30 @@
       "writtenOn": "2015-05-06T20:03:18Z",
       "side": 1,
       "message": "This can be removed",
+      "range": {
+        "startLine": 92,
+        "startChar": 8,
+        "endLine": 92,
+        "endChar": 21
+      },
+      "revId": "5103b73e6a545a95c12bf3050e8dac4232e16f82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed42494b_55f01c91",
+        "filename": "chip/mec1322/registers.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1116180
+      },
+      "writtenOn": "2015-05-07T02:50:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd24a5a6_7371d75c",
       "range": {
         "startLine": 92,
         "startChar": 8,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ed42494b_75eb20a9",
+        "filename": "chip/npcx/config_chip.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1116180
+      },
+      "writtenOn": "2015-05-07T02:50:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d1e2d58_e5ee3902",
+      "range": {
+        "startLine": 113,
+        "startChar": 8,
+        "endLine": 113,
+        "endChar": 22
+      },
+      "revId": "5103b73e6a545a95c12bf3050e8dac4232e16f82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d1e2d58_65b8e9d7",
         "filename": "include/gpio.wrap",
         "patchSetId": 24
@@ -82,6 +154,30 @@
       "writtenOn": "2015-05-06T20:03:18Z",
       "side": 1,
       "message": "Hmm, we shouldn\u0027t undefined GPIO_NAME here, if gpio.wrap is included a second time in a file (it is, for instance in gpio_list.h) then the second time GPIO_NAME will be assigned the default above, and not the value set in board.h.  This makes me thing that GPIO_NAME should in fact not be defaulted at all above, and instead be set by each board.h (or the default should be moved to config.h).  If we do it in each board.h then we need to add a check at the top of this file, similar to the GPIO_PIN and GPIO_PIN_MASK checks.  All in all, I think it should probably be defaulted in config.h.",
+      "range": {
+        "startLine": 91,
+        "startChar": 7,
+        "endLine": 91,
+        "endChar": 16
+      },
+      "revId": "5103b73e6a545a95c12bf3050e8dac4232e16f82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed42494b_95bc44a8",
+        "filename": "include/gpio.wrap",
+        "patchSetId": 24
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1116180
+      },
+      "writtenOn": "2015-05-07T02:50:57Z",
+      "side": 1,
+      "message": "I move GPIO_NAME in config.h and after #include \"board.h\". Then we don\u0027t #undef GPIO_NAME in board.h.\n\nThe other question is:\nYou always need to compare the final binaries to know if the samus_pd uses shortname?\n\nIn my environment, if I comment SAMUS_PD_GPIO_NAME, I will get a build error.\n//#define SAMUS_PD_GPIO_NAME(port, index) #port#index\n//#define GPIO_NAME(name, pin) SAMUS_PD_GPIO_NAME(pin)\n\n/usr/x86_64-pc-linux-gnu/arm-none-eabi/binutils-bin/2.24/ld.bfd.real:build/samus_pd/ec.RW.lds:888: ignoring invalid character `#\u0027 in expression\n/usr/x86_64-pc-linux-gnu/arm-none-eabi/binutils-bin/2.24/ld.bfd.real:build/samus_pd/ec.RW.lds:888: syntax error\nMakefile.rules:183: recipe for target \u0027build/samus_pd/ec.RW.elf\u0027 failed\nmake: *** [build/samus_pd/ec.RW.elf] Error 1",
+      "parentUuid": "8d1e2d58_65b8e9d7",
       "range": {
         "startLine": 91,
         "startChar": 7,
