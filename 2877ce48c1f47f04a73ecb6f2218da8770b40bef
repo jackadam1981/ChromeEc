@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd24a5a6_4aa295aa",
+        "filename": "board/ryu/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-07T16:38:44Z",
+      "side": 1,
+      "message": "can\u0027t you just use the regular host event mechanism since this is coming from EC? host_set_single_event()",
+      "range": {
+        "startLine": 510,
+        "startChar": 5,
+        "endLine": 510,
+        "endChar": 23
+      },
+      "revId": "2877ce48c1f47f04a73ecb6f2218da8770b40bef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
