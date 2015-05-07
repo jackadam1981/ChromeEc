@@ -22,6 +22,30 @@
       "revId": "2877ce48c1f47f04a73ecb6f2218da8770b40bef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d1e2d58_2d7410f8",
+        "filename": "board/ryu/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-07T16:47:44Z",
+      "side": 1,
+      "message": "i see. we could send a regular host event, but we are running out of host event codes. and EC_HOST_EVENT_PD_MCU is one host event with a bunch of possible sub events which we will need.",
+      "parentUuid": "cd24a5a6_4aa295aa",
+      "range": {
+        "startLine": 510,
+        "startChar": 5,
+        "endLine": 510,
+        "endChar": 23
+      },
+      "revId": "2877ce48c1f47f04a73ecb6f2218da8770b40bef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
