@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d407d41_57149b78",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-05-07T20:19:56Z",
+      "side": 1,
+      "message": "Do you mean \"return number bytes are available in RX FIFO to read\"?\n \nYou are mixing two different fifo design together.\n- keep one slot empty (your soft implementation)\n- mirroring (one extra bit; hardware implementation)\n\nPlease double check with hardware engineer:\n How do they increase the write pointer?\n\n\nLet\u0027s simplify the example as the following:\nSPS_FIFO_SIZE is 4. (2-bit index: 0 1 2 3)\nSPS_FIFO_MASK is 3.\nSPS_FIFO_PTR_MASK is 7.\n\n                | hardware read pointer (3-bit index)\n0 1 2 3 | 4 5 6 7\n------------------\n    |- hardware write pointer (3-bit index)\n\nhardware writer pointer \u003d 2\nhardware read pointer \u003d 7  (your read_ptr is 3)\n\nSPS_FIFO_SIZE - read_ptr \u003d 4 - 3 \u003d 1\n\nIs \"1\" an expect value?\n\nor return (8 + write_pointer - read_pointer) \u003d (8 + 2 - 7) \u003d 3.",
+      "range": {
+        "startLine": 257,
+        "startChar": 33,
+        "endLine": 257,
+        "endChar": 34
+      },
+      "revId": "d328a4a8190ae691e6e55f8f16f662d1183325a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
