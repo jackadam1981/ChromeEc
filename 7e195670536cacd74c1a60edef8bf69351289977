@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8d1e2d58_9029f73e",
+        "filename": "board/glados/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-07T17:16:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d36f5df_d82325d3",
+      "revId": "7e195670536cacd74c1a60edef8bf69351289977",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d39c1d0_14b3ba4d",
         "filename": "board/glados/gpio.inc",
         "patchSetId": 8
@@ -30,6 +48,24 @@
       "writtenOn": "2015-05-07T01:33:51Z",
       "side": 1,
       "message": "should this be VOLUME_UP_L for us to remember it\u0027s active low? ditto on volume down.",
+      "revId": "7e195670536cacd74c1a60edef8bf69351289977",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d8435cc_d836aa61",
+        "filename": "board/glados/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-07T17:16:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d39c1d0_14b3ba4d",
       "revId": "7e195670536cacd74c1a60edef8bf69351289977",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "cd24a5a6_640fc8b6",
+        "filename": "board/glados/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-07T17:16:38Z",
+      "side": 1,
+      "message": "You are right, I misread the PD datasheet. Done.",
+      "parentUuid": "2d39c1d0_f4b71636",
+      "revId": "7e195670536cacd74c1a60edef8bf69351289977",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d407d41_bf2043c7",
         "filename": "board/glados/gpio.inc",
         "patchSetId": 8
@@ -64,6 +118,30 @@
       "writtenOn": "2015-05-07T01:33:51Z",
       "side": 1,
       "message": "i think all these i2c pins should be configured as inputs here. they will get reconfigured as i2c shortly, but for the short time, we don\u0027t want to drive the line.",
+      "range": {
+        "startLine": 46,
+        "startChar": 29,
+        "endLine": 46,
+        "endChar": 42
+      },
+      "revId": "7e195670536cacd74c1a60edef8bf69351289977",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d1e2d58_500b5fd7",
+        "filename": "board/glados/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-07T17:16:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d407d41_bf2043c7",
       "range": {
         "startLine": 46,
         "startChar": 29,
@@ -99,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "4d8435cc_183df23d",
+        "filename": "board/glados/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-07T17:16:38Z",
+      "side": 1,
+      "message": "PP1800 on my schematic! This powers the accelerometer, gyro, camera, etc. Shouldn\u0027t we leave it to the power sequencing driver to turn this on (ex. so the devices aren\u0027t powered in g3)?",
+      "parentUuid": "2d39c1d0_94be8a0e",
+      "range": {
+        "startLine": 117,
+        "startChar": 5,
+        "endLine": 117,
+        "endChar": 24
+      },
+      "revId": "7e195670536cacd74c1a60edef8bf69351289977",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d407d41_3ffa1389",
         "filename": "board/glados/gpio.inc",
         "patchSetId": 8
@@ -110,6 +212,30 @@
       "writtenOn": "2015-05-07T01:33:51Z",
       "side": 1,
       "message": "don\u0027t have mec datasheet open, but visual inspection suggests this might be wrong since the other keyboard gpio\u0027s use alternate function mode 3. is this right?",
+      "range": {
+        "startLine": 156,
+        "startChar": 26,
+        "endLine": 156,
+        "endChar": 27
+      },
+      "revId": "7e195670536cacd74c1a60edef8bf69351289977",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd24a5a6_64cd8804",
+        "filename": "board/glados/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-07T17:16:38Z",
+      "side": 1,
+      "message": "Yes, it looks screwy, but this is the correct config for these two pins, according to the datasheet.",
+      "parentUuid": "0d407d41_3ffa1389",
       "range": {
         "startLine": 156,
         "startChar": 26,
