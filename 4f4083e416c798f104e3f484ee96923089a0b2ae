@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d8435cc_1a539c3e",
+        "filename": "board/gandof/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1002584
+      },
+      "writtenOn": "2015-05-07T17:08:41Z",
+      "side": 1,
+      "message": "replace the code from gandof_led_set_gpio_bat in this function. It is pointless having two different functions calling two other functions.\n\nDo the same for gandof_led_set_color_power",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 73
+      },
+      "revId": "4f4083e416c798f104e3f484ee96923089a0b2ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
