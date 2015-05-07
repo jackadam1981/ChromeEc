@@ -284,6 +284,29 @@
     },
     {
       "key": {
+        "uuid": "8d1e2d58_1bdced0b",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-05-07T05:56:01Z",
+      "side": 1,
+      "message": "RXFIFO_RST, TXFIFO_RST is done here. 0x9; b1001",
+      "range": {
+        "startLine": 204,
+        "startChar": 29,
+        "endLine": 204,
+        "endChar": 30
+      },
+      "revId": "1d7e257e120474e82bc19fa46e916a14a51e5853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d39c1d0_176bbcee",
         "filename": "chip/g/sps.c",
         "patchSetId": 2
@@ -559,6 +582,29 @@
         "startChar": 33,
         "endLine": 284,
         "endChar": 34
+      },
+      "revId": "1d7e257e120474e82bc19fa46e916a14a51e5853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d8435cc_93fb23f6",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-05-07T05:56:01Z",
+      "side": 1,
+      "message": "sps_rx_interrupt: the same function is called by two different interrupts.  Just enable cs_deasserted interrupt, it will work too.",
+      "range": {
+        "startLine": 310,
+        "startChar": 12,
+        "endLine": 310,
+        "endChar": 28
       },
       "revId": "1d7e257e120474e82bc19fa46e916a14a51e5853",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
