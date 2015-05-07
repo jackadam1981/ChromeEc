@@ -22,6 +22,30 @@
       "revId": "d328a4a8190ae691e6e55f8f16f662d1183325a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d1e2d58_17e95929",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-05-07T20:40:51Z",
+      "side": 1,
+      "message": "yes, 1 is expected value in this case.\n\nI answered this before on the previous patch, here is the same answer again:\n\nthis function returns the number of bytes present in the FIFO *in contiguous memory*. When read pointer is above write pointer the data in FIFO wraps around - it goes from read pointer to the top and then from the bottom to the write pointer.\n\nSo, in this case there are two contiguous areas with data in FIFO. One - from read pointer to the top. This area size is returned in line 257. In your example the caller will get the pointer to location 3 and number of bytes to read one.\n\nIf the rx fifo level interrupt is not deasserted (i.e. in your example the threshold for this interrupt is less than 2), another interrupt happens. This time the read pointer is at 0, so the function returns pointer to zero and size of data 2.\n\nAlso, note that this code works with extensive testing handling thousands variable random size frames with no errors.",
+      "parentUuid": "0d407d41_57149b78",
+      "range": {
+        "startLine": 257,
+        "startChar": 33,
+        "endLine": 257,
+        "endChar": 34
+      },
+      "revId": "d328a4a8190ae691e6e55f8f16f662d1183325a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
