@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4d36f5df_58f61560",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-05-07T05:07:14Z",
+      "side": 1,
+      "message": "ok, will add a file for shared definitions/public declarations.",
+      "parentUuid": "0d407d41_df0ae7d2",
+      "range": {
+        "startLine": 81,
+        "startChar": 14,
+        "endLine": 81,
+        "endChar": 15
+      },
+      "revId": "1d7e257e120474e82bc19fa46e916a14a51e5853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d407d41_bf1723f9",
         "filename": "chip/g/sps.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-05-07T03:27:26Z",
       "side": 1,
       "message": "Move all defines to the beginning of the c file.",
+      "range": {
+        "startLine": 94,
+        "startChar": 15,
+        "endLine": 94,
+        "endChar": 16
+      },
+      "revId": "1d7e257e120474e82bc19fa46e916a14a51e5853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d36f5df_38eb5178",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-05-07T05:07:14Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "0d407d41_bf1723f9",
       "range": {
         "startLine": 94,
         "startChar": 15,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2d39c1d0_f78a781b",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-05-07T05:07:14Z",
+      "side": 1,
+      "message": "This function is pushing data into TX FIFO, this comment applies.",
+      "parentUuid": "2d39c1d0_5761440e",
+      "range": {
+        "startLine": 97,
+        "startChar": 27,
+        "endLine": 97,
+        "endChar": 31
+      },
+      "revId": "1d7e257e120474e82bc19fa46e916a14a51e5853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d39c1d0_b72070c7",
         "filename": "chip/g/sps.c",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2015-05-07T03:27:26Z",
       "side": 1,
       "message": "My original design goal is to implement SPS API based on the following SPI Slave APIs.\n\nhttps://developer.mbed.org/users/mbed_official/code/mbed/docs/tip/classmbed_1_1SPISlave.html\n\nFor example:\n/* Compute number of bytes received in the SPS  FIFO\n *\n *  @returns\n *    0 if no data,\n *    n number of bytes received\n */\nint sps_receive(uint32_t inst);\n\n/*\n *  Peek top byte in the SPS RX FIFO\n *  Don’t remove it from SPS RX FIFO\n *  @returns\n *    the data in the receive buffer\n */\nstatic uint8_t sps_top(uint32_t inst);\n\n/*\n * Read (Pop) 1-byte from the SPS RX FIFO\n * @param data Pointer to 8-bit data\n * @return pop count: 1 or 0\n */\nstatic int sps_read(uint32_t inst, uint8_t *data);\n\n/*\n * Reply (Push) a byte to the SPS TX FIFO\n * Fill the transmission buffer (SPS TX FIFO) with the value (1-byte) to be written out \n * as slave on the next received message from the master.\n * @param data Pointer to 8-bit data\n * @return push count: 1 or 0\n */\nstatic int sps_reply(uint32_t inst, const uint8_t data);",
+      "range": {
+        "startLine": 103,
+        "startChar": 63,
+        "endLine": 103,
+        "endChar": 64
+      },
+      "revId": "1d7e257e120474e82bc19fa46e916a14a51e5853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d407d41_5f2ef710",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-05-07T05:07:14Z",
+      "side": 1,
+      "message": "I think the suggested API is simpler AND better.",
+      "parentUuid": "2d39c1d0_b72070c7",
       "range": {
         "startLine": 103,
         "startChar": 63,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "2d39c1d0_d7877413",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-05-07T05:07:14Z",
+      "side": 1,
+      "message": "This is a conscious decision, the software is using the \u0027one slot open\u0027 paradigm. One byte out of 1024 is not a big loss, but this makes using indices to access actual fifo simpler.",
+      "parentUuid": "2d39c1d0_37148078",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 10
+      },
+      "revId": "1d7e257e120474e82bc19fa46e916a14a51e5853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d39c1d0_971d6c91",
         "filename": "chip/g/sps.c",
         "patchSetId": 2
@@ -128,6 +248,30 @@
       "writtenOn": "2015-05-07T03:27:26Z",
       "side": 1,
       "message": "Split the following into two sub-functions.\n- read 1 byte  (RevA need read/modify/write; RevB will be simplified.)\n\n- read 4 byte",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 0
+      },
+      "revId": "1d7e257e120474e82bc19fa46e916a14a51e5853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d36f5df_18f08d5e",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-05-07T05:07:14Z",
+      "side": 1,
+      "message": "This is not necessary, this code will work even if FIFO writes become write addressable. \n\nWhen new hardware is available this code could change. I will add a bug reference here and cross reference this file in the bug description.",
+      "parentUuid": "2d39c1d0_971d6c91",
       "range": {
         "startLine": 130,
         "startChar": 0,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "0d407d41_3f233329",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-05-07T05:07:14Z",
+      "side": 1,
+      "message": "What do you mean \"again\"? Where was it reset before?",
+      "parentUuid": "2d39c1d0_176bbcee",
+      "range": {
+        "startLine": 212,
+        "startChar": 43,
+        "endLine": 212,
+        "endChar": 45
+      },
+      "revId": "1d7e257e120474e82bc19fa46e916a14a51e5853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d36f5df_187c0d6a",
         "filename": "chip/g/sps.c",
         "patchSetId": 2
@@ -174,6 +342,30 @@
       "writtenOn": "2015-05-07T03:27:26Z",
       "side": 1,
       "message": "You don\u0027t need configure RXFIFO_THREASHOLD if you do not enable rx_fifo_level interrupt.",
+      "range": {
+        "startLine": 217,
+        "startChar": 34,
+        "endLine": 217,
+        "endChar": 35
+      },
+      "revId": "1d7e257e120474e82bc19fa46e916a14a51e5853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d36f5df_b8fe212f",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-05-07T05:07:14Z",
+      "side": 1,
+      "message": "but I do need rx_fifo_level interrupt.",
+      "parentUuid": "4d36f5df_187c0d6a",
       "range": {
         "startLine": 217,
         "startChar": 34,
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "0d407d41_df39c751",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-05-07T05:07:14Z",
+      "side": 1,
+      "message": "what are you talking about?!\n\nhow will this work without rx level interrupt if the packet exceeds FIFO size?\n\ndo you realize what would be the processing latency on long packets even when the packet fits the rx fifo?",
+      "parentUuid": "4d36f5df_786679db",
+      "range": {
+        "startLine": 218,
+        "startChar": 39,
+        "endLine": 218,
+        "endChar": 41
+      },
+      "revId": "1d7e257e120474e82bc19fa46e916a14a51e5853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d36f5df_b88aa1e8",
         "filename": "chip/g/sps.c",
         "patchSetId": 2
@@ -220,6 +436,30 @@
       "writtenOn": "2015-05-07T03:27:26Z",
       "side": 1,
       "message": "RXFIFO_LVL_INTR is not need if using CS_DEASSERT_INTR.",
+      "range": {
+        "startLine": 235,
+        "startChar": 47,
+        "endLine": 235,
+        "endChar": 49
+      },
+      "revId": "1d7e257e120474e82bc19fa46e916a14a51e5853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d39c1d0_9781ecff",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-05-07T05:07:14Z",
+      "side": 1,
+      "message": "see above.",
+      "parentUuid": "4d36f5df_b88aa1e8",
       "range": {
         "startLine": 235,
         "startChar": 47,
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "0d407d41_9f333f70",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-05-07T05:07:14Z",
+      "side": 1,
+      "message": "see above.",
+      "parentUuid": "0d407d41_ff36cb92",
+      "range": {
+        "startLine": 246,
+        "startChar": 48,
+        "endLine": 246,
+        "endChar": 50
+      },
+      "revId": "1d7e257e120474e82bc19fa46e916a14a51e5853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d407d41_1f42affe",
         "filename": "chip/g/sps.c",
         "patchSetId": 2
@@ -266,6 +530,30 @@
       "writtenOn": "2015-05-07T03:27:26Z",
       "side": 1,
       "message": "Incorrect compute rx size. (ref circular buffer: above)",
+      "range": {
+        "startLine": 284,
+        "startChar": 33,
+        "endLine": 284,
+        "endChar": 34
+      },
+      "revId": "1d7e257e120474e82bc19fa46e916a14a51e5853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d36f5df_38247166",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-05-07T05:07:14Z",
+      "side": 1,
+      "message": "This is not a calculation of how many bytes are there in the buffer. This is a correct calculation of how many bytes are there in the buffer *above the pointer*.",
+      "parentUuid": "0d407d41_1f42affe",
       "range": {
         "startLine": 284,
         "startChar": 33,
@@ -301,6 +589,30 @@
     },
     {
       "key": {
+        "uuid": "2d39c1d0_77f0c8aa",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-05-07T05:07:14Z",
+      "side": 1,
+      "message": "see above.",
+      "parentUuid": "4d36f5df_d8db2514",
+      "range": {
+        "startLine": 345,
+        "startChar": 22,
+        "endLine": 345,
+        "endChar": 24
+      },
+      "revId": "1d7e257e120474e82bc19fa46e916a14a51e5853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d39c1d0_b77990c1",
         "filename": "chip/g/sps.c",
         "patchSetId": 2
@@ -312,6 +624,30 @@
       "writtenOn": "2015-05-07T03:27:26Z",
       "side": 1,
       "message": "Please move all test functions into a different file.\n\nor add\n#define CONFIG_SPS_TEST",
+      "range": {
+        "startLine": 358,
+        "startChar": 1,
+        "endLine": 358,
+        "endChar": 2
+      },
+      "revId": "1d7e257e120474e82bc19fa46e916a14a51e5853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d36f5df_1829ad3c",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-05-07T05:07:14Z",
+      "side": 1,
+      "message": "good idea, will add a config option",
+      "parentUuid": "2d39c1d0_b77990c1",
       "range": {
         "startLine": 358,
         "startChar": 1,
@@ -347,6 +683,30 @@
     },
     {
       "key": {
+        "uuid": "2d39c1d0_37fa4089",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-05-07T05:07:14Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "0d407d41_bf304395",
+      "range": {
+        "startLine": 367,
+        "startChar": 66,
+        "endLine": 367,
+        "endChar": 74
+      },
+      "revId": "1d7e257e120474e82bc19fa46e916a14a51e5853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d407d41_1f298f3c",
         "filename": "chip/g/sps.c",
         "patchSetId": 2
@@ -358,6 +718,30 @@
       "writtenOn": "2015-05-07T03:27:26Z",
       "side": 1,
       "message": "Why do we need usleep 10? Any reasons?",
+      "range": {
+        "startLine": 479,
+        "startChar": 12,
+        "endLine": 479,
+        "endChar": 14
+      },
+      "revId": "1d7e257e120474e82bc19fa46e916a14a51e5853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d39c1d0_17ff3c79",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-05-07T05:07:14Z",
+      "side": 1,
+      "message": "to let other tasks a chance to run",
+      "parentUuid": "0d407d41_1f298f3c",
       "range": {
         "startLine": 479,
         "startChar": 12,
