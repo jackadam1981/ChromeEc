@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d1e2d58_d794011d",
+        "filename": "chip/stm32/config-stm32f411.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-05-07T20:26:31Z",
+      "side": 1,
+      "message": "region types?",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 17
+      },
+      "revId": "410d5c71296d884b7bb2097b8bc778627ab3c561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d1e2d58_f7601db7",
+        "filename": "chip/stm32/flash-f.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-05-07T20:26:31Z",
+      "side": 1,
+      "message": "4, 8, and i*2 seem like magic numbers.  Where do they come from?  Should they be constants?\n\nand should it be for (i \u003d 8; i \u003c 16; i +\u003d 2)?\n\nAdmittedly, this magic was here before your change; you just moved this up...",
+      "range": {
+        "startLine": 513,
+        "startChar": 1,
+        "endLine": 514,
+        "endChar": 18
+      },
+      "revId": "410d5c71296d884b7bb2097b8bc778627ab3c561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd24a5a6_fe2003c8",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1157,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-05-07T20:26:31Z",
+      "side": 1,
+      "message": "OTP, not OPT?",
+      "range": {
+        "startLine": 1157,
+        "startChar": 14,
+        "endLine": 1157,
+        "endChar": 17
+      },
+      "revId": "410d5c71296d884b7bb2097b8bc778627ab3c561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d1e2d58_97d209d4",
+        "filename": "include/otp.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-05-07T20:26:31Z",
+      "side": 1,
+      "message": "One-time programmable flash?",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 8
+      },
+      "revId": "410d5c71296d884b7bb2097b8bc778627ab3c561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d1e2d58_77d76dc5",
+        "filename": "include/otp.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-05-07T20:26:31Z",
+      "side": 1,
+      "message": "Source?",
+      "range": {
+        "startLine": 28,
+        "startChar": 24,
+        "endLine": 28,
+        "endChar": 36
+      },
+      "revId": "410d5c71296d884b7bb2097b8bc778627ab3c561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
