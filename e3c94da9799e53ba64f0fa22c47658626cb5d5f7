@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8d1e2d58_4e0b8daa",
+        "filename": "chip/stm32/i2c-stm32f.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-05-08T18:21:24Z",
+      "side": 1,
+      "message": "I guess it is fine. In the old code, we also do a cast to an unaligned location (line 254).",
+      "parentUuid": "8d1e2d58_170ef936",
+      "range": {
+        "startLine": 216,
+        "startChar": 1,
+        "endLine": 216,
+        "endChar": 47
+      },
+      "revId": "e3c94da9799e53ba64f0fa22c47658626cb5d5f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d1e2d58_f70a5d20",
         "filename": "chip/stm32/i2c-stm32f.c",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2015-05-07T20:16:04Z",
       "side": 1,
       "message": "(this, too)",
+      "range": {
+        "startLine": 226,
+        "startChar": 1,
+        "endLine": 226,
+        "endChar": 42
+      },
+      "revId": "e3c94da9799e53ba64f0fa22c47658626cb5d5f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d1e2d58_eeb37948",
+        "filename": "chip/stm32/i2c-stm32f.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-05-08T18:21:24Z",
+      "side": 1,
+      "message": "same as older code, line 254",
+      "parentUuid": "8d1e2d58_f70a5d20",
       "range": {
         "startLine": 226,
         "startChar": 1,
