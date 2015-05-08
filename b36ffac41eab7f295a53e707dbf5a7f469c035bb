@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d8435cc_e786a27b",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1112979
+      },
+      "writtenOn": "2015-05-08T04:03:10Z",
+      "side": 1,
+      "message": "Again, don\u0027t think you want to go to G3. Also, not sure RSMRST# is the way to do this.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 33
+      },
+      "revId": "b36ffac41eab7f295a53e707dbf5a7f469c035bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d8435cc_4c5cbca8",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1112979
+      },
+      "writtenOn": "2015-05-08T04:03:10Z",
+      "side": 1,
+      "message": "With our new power states, I don\u0027t think we want to force the code into G3. The lowest we want to go is Deep Sx. I have asked Intel about the best way to force the code into this state from the EC. Reading the PDG, I\u0027m not sure if asserting RSMRST# is the best way to do this.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 27
+      },
+      "revId": "b36ffac41eab7f295a53e707dbf5a7f469c035bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d8435cc_034a13dc",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1112979
+      },
+      "writtenOn": "2015-05-08T04:03:10Z",
+      "side": 1,
+      "message": "Don\u0027t totally understand this. Do we need to be in G3? I think we only want to go to deep S5.",
+      "range": {
+        "startLine": 107,
+        "startChar": 3,
+        "endLine": 107,
+        "endChar": 21
+      },
+      "revId": "b36ffac41eab7f295a53e707dbf5a7f469c035bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d8435cc_cbaae8e8",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1112979
+      },
+      "writtenOn": "2015-05-08T04:03:10Z",
+      "side": 1,
+      "message": "if EC is up, in deep Sx",
+      "range": {
+        "startLine": 117,
+        "startChar": 6,
+        "endLine": 117,
+        "endChar": 14
+      },
+      "revId": "b36ffac41eab7f295a53e707dbf5a7f469c035bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d1e2d58_379c27b3",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1112979
+      },
+      "writtenOn": "2015-05-08T04:03:10Z",
+      "side": 1,
+      "message": "when do we leave this state? Do we need to call POWER_G3S5",
+      "range": {
+        "startLine": 118,
+        "startChar": 2,
+        "endLine": 118,
+        "endChar": 8
+      },
+      "revId": "b36ffac41eab7f295a53e707dbf5a7f469c035bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd24a5a6_425351c0",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1112979
+      },
+      "writtenOn": "2015-05-08T04:03:10Z",
+      "side": 1,
+      "message": "Actually I think the PMIC will do this. But we do need to make sure we pass the RSMRST# through.",
+      "range": {
+        "startLine": 126,
+        "startChar": 2,
+        "endLine": 126,
+        "endChar": 45
+      },
+      "revId": "b36ffac41eab7f295a53e707dbf5a7f469c035bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d1e2d58_975d3b7d",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1112979
+      },
+      "writtenOn": "2015-05-08T04:03:10Z",
+      "side": 1,
+      "message": "PMIC should handle this.",
+      "range": {
+        "startLine": 150,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 3
+      },
+      "revId": "b36ffac41eab7f295a53e707dbf5a7f469c035bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd24a5a6_e2637d89",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1112979
+      },
+      "writtenOn": "2015-05-08T04:03:10Z",
+      "side": 1,
+      "message": "We shouldn\u0027t just assert this. We need to see if we get it from the PMIC and then pass it through on to the PCH.",
+      "range": {
+        "startLine": 156,
+        "startChar": 2,
+        "endLine": 156,
+        "endChar": 39
+      },
+      "revId": "b36ffac41eab7f295a53e707dbf5a7f469c035bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d1e2d58_574fa3c3",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1112979
+      },
+      "writtenOn": "2015-05-08T04:03:10Z",
+      "side": 1,
+      "message": "We should definitely turn on PP1800_Dx_Audio at this point.\n\nWe may want to turn on PP1800_DX_SENSOR at this point.",
+      "range": {
+        "startLine": 158,
+        "startChar": 2,
+        "endLine": 158,
+        "endChar": 18
+      },
+      "revId": "b36ffac41eab7f295a53e707dbf5a7f469c035bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d8435cc_24a4af55",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1112979
+      },
+      "writtenOn": "2015-05-08T04:03:10Z",
+      "side": 1,
+      "message": "DSW_PWROK is not currently connected, so we might not want to depend on this. We also probably don\u0027t want to go into G3.",
+      "range": {
+        "startLine": 161,
+        "startChar": 2,
+        "endLine": 165,
+        "endChar": 3
+      },
+      "revId": "b36ffac41eab7f295a53e707dbf5a7f469c035bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d1e2d58_f78eaf83",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1112979
+      },
+      "writtenOn": "2015-05-08T04:03:10Z",
+      "side": 1,
+      "message": "I don\u0027t think we want to do this by default. We could be charging or something and I think this could cause a short. Alec, am I missing something here?",
+      "range": {
+        "startLine": 168,
+        "startChar": 2,
+        "endLine": 169,
+        "endChar": 39
+      },
+      "revId": "b36ffac41eab7f295a53e707dbf5a7f469c035bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd24a5a6_e295bdb9",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1112979
+      },
+      "writtenOn": "2015-05-08T04:03:10Z",
+      "side": 1,
+      "message": "This should happen in the S5-\u003eS3 transition for now. The PP1800_DX_AUDIO is definitely required for sequencing.",
+      "range": {
+        "startLine": 183,
+        "startChar": 2,
+        "endLine": 184,
+        "endChar": 45
+      },
+      "revId": "b36ffac41eab7f295a53e707dbf5a7f469c035bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d1e2d58_374e67c7",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1112979
+      },
+      "writtenOn": "2015-05-08T04:03:10Z",
+      "side": 1,
+      "message": "wrong time to turn these off.",
+      "range": {
+        "startLine": 220,
+        "startChar": 2,
+        "endLine": 221,
+        "endChar": 44
+      },
+      "revId": "b36ffac41eab7f295a53e707dbf5a7f469c035bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
