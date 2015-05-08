@@ -282,6 +282,30 @@
     },
     {
       "key": {
+        "uuid": "4d8435cc_e5df50b1",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-08T16:42:54Z",
+      "side": 1,
+      "message": "We can check the input signal before asserting the output. I don\u0027t think we simply want to pass through the signal though. The EC needs some control output, to tell the AP \"no, don\u0027t boot now, even though you\u0027re ready\". If we pass through RSMRST then the EC is just a bystander / spectator to the boot process.",
+      "parentUuid": "cd24a5a6_e2637d89",
+      "range": {
+        "startLine": 156,
+        "startChar": 2,
+        "endLine": 156,
+        "endChar": 39
+      },
+      "revId": "b36ffac41eab7f295a53e707dbf5a7f469c035bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d1e2d58_574fa3c3",
         "filename": "power/skylake.c",
         "patchSetId": 1
@@ -363,6 +387,30 @@
       "writtenOn": "2015-05-08T04:03:10Z",
       "side": 1,
       "message": "I don\u0027t think we want to do this by default. We could be charging or something and I think this could cause a short. Alec, am I missing something here?",
+      "range": {
+        "startLine": 168,
+        "startChar": 2,
+        "endLine": 169,
+        "endChar": 39
+      },
+      "revId": "b36ffac41eab7f295a53e707dbf5a7f469c035bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d8435cc_65ba606c",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-08T16:42:54Z",
+      "side": 1,
+      "message": "These are gone. You\u0027re reviewing an old patch set.",
+      "parentUuid": "8d1e2d58_f78eaf83",
       "range": {
         "startLine": 168,
         "startChar": 2,
