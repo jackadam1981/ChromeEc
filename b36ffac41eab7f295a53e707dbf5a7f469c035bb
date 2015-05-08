@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8d1e2d58_8d740e7d",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-08T16:36:56Z",
+      "side": 1,
+      "message": "Ok, we can change it if there\u0027s a better way.",
+      "parentUuid": "4d8435cc_e786a27b",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 33
+      },
+      "revId": "b36ffac41eab7f295a53e707dbf5a7f469c035bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d8435cc_4c5cbca8",
         "filename": "power/skylake.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "4d8435cc_a5daa8f6",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-08T16:36:56Z",
+      "side": 1,
+      "message": "It\u0027s convenient to still call it \"G3\" for now (we have some higher level code / constants that deals with G3 state) even if we\u0027re not really putting the AP into G3. We can consider a refactor later once we figure out what we actually need (deep sx in addition to G3? or instead of G3?)",
+      "parentUuid": "4d8435cc_4c5cbca8",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 27
+      },
+      "revId": "b36ffac41eab7f295a53e707dbf5a7f469c035bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d8435cc_034a13dc",
         "filename": "power/skylake.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2015-05-08T04:03:10Z",
       "side": 1,
       "message": "Don\u0027t totally understand this. Do we need to be in G3? I think we only want to go to deep S5.",
+      "range": {
+        "startLine": 107,
+        "startChar": 3,
+        "endLine": 107,
+        "endChar": 21
+      },
+      "revId": "b36ffac41eab7f295a53e707dbf5a7f469c035bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d8435cc_65c6e027",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-08T16:36:56Z",
+      "side": 1,
+      "message": "This init function is called on boot / sysjump. It\u0027s putting the AP into an initial default state.",
+      "parentUuid": "4d8435cc_034a13dc",
       "range": {
         "startLine": 107,
         "startChar": 3,
@@ -105,6 +177,30 @@
       "writtenOn": "2015-05-08T04:03:10Z",
       "side": 1,
       "message": "when do we leave this state? Do we need to call POWER_G3S5",
+      "range": {
+        "startLine": 118,
+        "startChar": 2,
+        "endLine": 118,
+        "endChar": 8
+      },
+      "revId": "b36ffac41eab7f295a53e707dbf5a7f469c035bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd24a5a6_18a38cae",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-08T16:36:56Z",
+      "side": 1,
+      "message": "See power/common.c (want_g3_exit). We leave this state when something kicks us out (ex. power button press).",
+      "parentUuid": "8d1e2d58_379c27b3",
       "range": {
         "startLine": 118,
         "startChar": 2,
@@ -197,6 +293,30 @@
       "writtenOn": "2015-05-08T04:03:10Z",
       "side": 1,
       "message": "We should definitely turn on PP1800_Dx_Audio at this point.\n\nWe may want to turn on PP1800_DX_SENSOR at this point.",
+      "range": {
+        "startLine": 158,
+        "startChar": 2,
+        "endLine": 158,
+        "endChar": 18
+      },
+      "revId": "b36ffac41eab7f295a53e707dbf5a7f469c035bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd24a5a6_b88018fa",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-08T16:36:56Z",
+      "side": 1,
+      "message": "I don\u0027t think they should be powered upon entry to S5 unless we need them in S5. Based on your comment below, maybe we should move them to S5S3 though.",
+      "parentUuid": "8d1e2d58_574fa3c3",
       "range": {
         "startLine": 158,
         "startChar": 2,
