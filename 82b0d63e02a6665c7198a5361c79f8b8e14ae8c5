@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ad3e91ea_1d1ef361",
+        "filename": "power/skylake.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-11T23:08:34Z",
+      "side": 1,
+      "message": "Nevermind, I guess the resistor isn\u0027t stuffed, so the pin is NC.",
+      "parentUuid": "ad3e91ea_3d45af79",
+      "range": {
+        "startLine": 32,
+        "startChar": 44,
+        "endLine": 32,
+        "endChar": 59
+      },
+      "revId": "82b0d63e02a6665c7198a5361c79f8b8e14ae8c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d39c1d0_60c35cdd",
         "filename": "power/skylake.c",
         "patchSetId": 8
