@@ -76,6 +76,7 @@
 
 /* RO firmware must start at beginning of flash */
 #define CONFIG_RO_MEM_OFF		0
+#define CONFIG_RO_STORAGE_OFF		0
 
 /*
  * The EC uses the one bank of flash to emulate a SPI-like write protect
@@ -91,11 +92,11 @@
 
 /* RW firmware is one firmware image offset from the start */
 #define CONFIG_RW_MEM_OFF		CONFIG_FW_IMAGE_SIZE
+#define CONFIG_RW_STORAGE_OFF		CONFIG_FW_IMAGE_SIZE
 #define CONFIG_RW_SIZE			CONFIG_FW_IMAGE_SIZE
 
-/* TODO(crosbug.com/p/23796): why 2 sets of configs with the same numbers? */
-#define CONFIG_WP_OFF			CONFIG_RO_MEM_OFF
-#define CONFIG_WP_SIZE			CONFIG_RO_SIZE
+#define CONFIG_WP_OFF			CONFIG_RO_STORAGE_OFF
+#define CONFIG_WP_SIZE			CONFIG_FW_IMAGE_SIZE
 
 /****************************************************************************/
 /* Lock the boot configuration to prevent brickage. */
