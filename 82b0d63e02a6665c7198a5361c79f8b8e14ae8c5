@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ad3e91ea_3d45af79",
+        "filename": "power/skylake.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-11T23:04:57Z",
+      "side": 1,
+      "message": "This is GPIO055 / ROP_DSW_PWROK_EC. It looks populated to me, driven by the DPWROK PMIC pin. Are we looking at different schematics?",
+      "parentUuid": "2d39c1d0_a05f04bf",
+      "range": {
+        "startLine": 32,
+        "startChar": 44,
+        "endLine": 32,
+        "endChar": 59
+      },
+      "revId": "82b0d63e02a6665c7198a5361c79f8b8e14ae8c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d39c1d0_60c35cdd",
         "filename": "power/skylake.c",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2015-05-11T20:13:12Z",
       "side": 1,
       "message": "No sure if SUS will be available while going from G3-\u003eS5. It is available only after GPIO_PCH_RSMRST_L is asserted.",
+      "range": {
+        "startLine": 147,
+        "startChar": 21,
+        "endLine": 147,
+        "endChar": 39
+      },
+      "revId": "82b0d63e02a6665c7198a5361c79f8b8e14ae8c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd43c57f_1ef0ad90",
+        "filename": "power/skylake.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-11T23:04:57Z",
+      "side": 1,
+      "message": "We can change it later if needed. There is ongoing discussion via email about the proper EC power sequencing control.",
+      "parentUuid": "2d39c1d0_60c35cdd",
       "range": {
         "startLine": 147,
         "startChar": 21,
