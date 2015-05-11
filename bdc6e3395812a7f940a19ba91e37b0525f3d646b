@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d6d15ec_68246167",
+        "filename": "board/samus_pd/board.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-05-11T16:16:55Z",
+      "side": 1,
+      "message": "You\u0027ll need to first #undef and then #define GPIO_NAME, similar to how DEFERRABLE_MAX_COUNT is handled above.",
+      "range": {
+        "startLine": 90,
+        "startChar": 29,
+        "endLine": 90,
+        "endChar": 47
+      },
+      "revId": "bdc6e3395812a7f940a19ba91e37b0525f3d646b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d679d0f_a2f5bf9b",
+        "filename": "include/config.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 1536,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-05-11T16:16:55Z",
+      "side": 1,
+      "message": "This should be unconditionally defined here, and when needed for a board first undefined and then re-defined in that board\u0027s board.h",
+      "range": {
+        "startLine": 1536,
+        "startChar": 8,
+        "endLine": 1536,
+        "endChar": 17
+      },
+      "revId": "bdc6e3395812a7f940a19ba91e37b0525f3d646b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
