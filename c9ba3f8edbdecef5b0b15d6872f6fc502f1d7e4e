@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d338121_21cd8e37",
+        "filename": "include/flash.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-11T22:54:15Z",
+      "side": 1,
+      "message": "I squashed the storage for PSTATE into the CONFIG_WP_* region (see related chip config changes). I\u0027m not 100% sure this is ok -- would we ever want to protect the RO image region without protecting PSTATE?",
+      "revId": "c9ba3f8edbdecef5b0b15d6872f6fc502f1d7e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
