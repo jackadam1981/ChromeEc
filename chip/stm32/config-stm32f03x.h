@@ -6,7 +6,6 @@
 /* Memory mapping */
 #define CONFIG_FLASH_BASE       0x08000000
 #define CONFIG_FLASH_PHYSICAL_SIZE 0x00008000
-#define CONFIG_FLASH_SIZE       CONFIG_FLASH_PHYSICAL_SIZE
 #define CONFIG_FLASH_BANK_SIZE  0x1000
 #define CONFIG_FLASH_ERASE_SIZE 0x0400  /* erase bank size */
 #define CONFIG_FLASH_WRITE_SIZE 0x0002  /* minimum write size */
@@ -19,25 +18,6 @@
 
 /* Size of one firmware image in flash */
 #define CONFIG_FW_IMAGE_SIZE    (16 * 1024)
-
-#define CONFIG_RO_MEM_OFF       0
-#define CONFIG_RO_SIZE          (CONFIG_FW_IMAGE_SIZE - CONFIG_FW_PSTATE_SIZE)
-#define CONFIG_RW_MEM_OFF       CONFIG_FW_IMAGE_SIZE
-#define CONFIG_RW_SIZE          CONFIG_FW_IMAGE_SIZE
-#define CONFIG_WP_OFF           CONFIG_RO_MEM_OFF
-#define CONFIG_WP_SIZE          CONFIG_FW_IMAGE_SIZE
-
-/*
- * Put pstate after RO to give RW more space and make RO write protect region
- * contiguous.
- */
-#if defined(BOARD_ZINGER) || defined(BOARD_MINIMUFFIN)
-/* Not using pstate but keep some space for the public key */
-#define CONFIG_FW_PSTATE_SIZE   544
-#else
-#define CONFIG_FW_PSTATE_SIZE   CONFIG_FLASH_BANK_SIZE
-#endif
-#define CONFIG_FW_PSTATE_OFF    (CONFIG_RO_MEM_OFF + CONFIG_RO_SIZE)
 
 /* Number of IRQ vectors on the NVIC */
 #define CONFIG_IRQ_COUNT 32
