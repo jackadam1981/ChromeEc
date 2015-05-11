@@ -187,6 +187,30 @@
       "revId": "5103b73e6a545a95c12bf3050e8dac4232e16f82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d679d0f_c226b3b3",
+        "filename": "include/gpio.wrap",
+        "patchSetId": 24
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-05-11T16:16:55Z",
+      "side": 1,
+      "message": "While not strictly a requirement (always needing to compare the final binary), I thought it would be a useful check to make sure that these changes didn\u0027t break anything (which it turned out they had, the samus_pd GPIO names).  You are getting the compiler failure because SAMUS_PD_GPIO_NAME is used once before it gets undefined by the #undef at the end of the gpio.wrap file.",
+      "parentUuid": "ed42494b_95bc44a8",
+      "range": {
+        "startLine": 91,
+        "startChar": 7,
+        "endLine": 91,
+        "endChar": 16
+      },
+      "revId": "5103b73e6a545a95c12bf3050e8dac4232e16f82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
