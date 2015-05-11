@@ -12,6 +12,7 @@
 
 #include "common.h"
 #include "queue.h"
+#include "queue_policies.h"
 #include "task.h"
 #include "test_util.h"
 #include "uart.h"
@@ -26,7 +27,7 @@ static pthread_t input_thread;
 #define INPUT_BUFFER_SIZE 16
 static int char_available;
 
-QUEUE_CONFIG(cached_char, INPUT_BUFFER_SIZE, char);
+QUEUE_CONFIG(cached_char, INPUT_BUFFER_SIZE, char, queue_policy_null);
 
 #define CONSOLE_CAPTURE_SIZE 2048
 static char capture_buf[CONSOLE_CAPTURE_SIZE];

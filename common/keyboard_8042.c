@@ -18,6 +18,7 @@
 #include "lpc.h"
 #include "power_button.h"
 #include "queue.h"
+#include "queue_policies.h"
 #include "shared_mem.h"
 #include "system.h"
 #include "task.h"
@@ -68,7 +69,7 @@ enum scancode_set_list {
  */
 static struct mutex to_host_mutex;
 
-QUEUE_CONFIG(to_host, 16, uint8_t);
+QUEUE_CONFIG(to_host, 16, uint8_t, queue_policy_null);
 
 /* Queue command/data from the host */
 enum {
@@ -91,7 +92,7 @@ struct host_byte {
  *
  * Hence, 5 (actually 4 plus one spare) is large enough, but use 8 for safety.
  */
-QUEUE_CONFIG(from_host, 8, struct host_byte);
+QUEUE_CONFIG(from_host, 8, struct host_byte, queue_policy_null);
 
 static int i8042_irq_enabled;
 

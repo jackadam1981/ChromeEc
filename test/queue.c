@@ -8,12 +8,13 @@
 #include "common.h"
 #include "console.h"
 #include "queue.h"
+#include "queue_policies.h"
 #include "test_util.h"
 #include "timer.h"
 #include "util.h"
 
-QUEUE_CONFIG(test_queue8, 8, char)
-QUEUE_CONFIG(test_queue2, 2, int16_t)
+QUEUE_CONFIG(test_queue8, 8, char,    queue_policy_null)
+QUEUE_CONFIG(test_queue2, 2, int16_t, queue_policy_null)
 
 static int test_queue8_empty(void)
 {
