@@ -400,8 +400,8 @@ uint32_t flash_get_protect(void)
 	/* Scan flash protection */
 	for (i = 0; i < PHYSICAL_BANKS; i++) {
 		/* Is this bank part of RO */
-		int is_ro = (i >= RO_BANK_OFFSET &&
-			     i < RO_BANK_OFFSET + RO_BANK_COUNT) ? 1 : 0;
+		int is_ro = (i >= WP_BANK_OFFSET &&
+			     i < WP_BANK_OFFSET + WP_BANK_COUNT) ? 1 : 0;
 		int bank_flag;
 
 #if defined(CONFIG_FLASH_PSTATE) && defined(CONFIG_FLASH_PSTATE_BANK)
@@ -879,11 +879,11 @@ static int flash_command_region_info(struct host_cmd_handler_args *args)
 
 	switch (p->region) {
 	case EC_FLASH_REGION_RO:
-		r->offset = CONFIG_RO_MEM_OFF;
+		r->offset = CONFIG_RO_STORAGE_OFF;
 		r->size = CONFIG_RO_SIZE;
 		break;
 	case EC_FLASH_REGION_RW:
-		r->offset = CONFIG_RW_MEM_OFF;
+		r->offset = CONFIG_RW_STORAGE_OFF;
 		r->size = CONFIG_RW_SIZE;
 		break;
 	case EC_FLASH_REGION_WP_RO:

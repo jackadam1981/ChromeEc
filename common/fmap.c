@@ -69,14 +69,14 @@ const struct _ec_fmap {
 			 * volatile data (ex, calibration results).
 			 */
 			.area_name = "EC_RO",
-			.area_offset = CONFIG_RO_MEM_OFF,
+			.area_offset = CONFIG_WP_OFF,
 			.area_size = CONFIG_RO_SIZE,
 			.area_flags = FMAP_AREA_STATIC | FMAP_AREA_RO,
 		},
 		{
 			/* (Optional) RO firmware code. */
 			.area_name = "FR_MAIN",
-			.area_offset = CONFIG_RO_MEM_OFF,
+			.area_offset = CONFIG_RO_STORAGE_OFF,
 			.area_size = CONFIG_RO_SIZE,
 			.area_flags = FMAP_AREA_STATIC | FMAP_AREA_RO,
 		},
@@ -86,7 +86,7 @@ const struct _ec_fmap {
 			 * ASCII, and padded with \0.
 			 */
 			.area_name = "RO_FRID",
-			.area_offset = CONFIG_RO_MEM_OFF +
+			.area_offset = CONFIG_RO_STORAGE_OFF +
 				RELATIVE((uint32_t)__version_struct_offset) +
 				offsetof(struct version_struct,  version),
 			.area_size = sizeof(version_data.version),
@@ -96,7 +96,7 @@ const struct _ec_fmap {
 		/* Other RO stuff: FMAP, WP, KEYS, etc. */
 		{
 			.area_name = "FMAP",
-			.area_offset = CONFIG_RO_MEM_OFF +
+			.area_offset = CONFIG_RO_STORAGE_OFF +
 				RELATIVE((uint32_t)&ec_fmap),
 			.area_size = sizeof(ec_fmap),
 			.area_flags = FMAP_AREA_STATIC | FMAP_AREA_RO,
@@ -117,7 +117,7 @@ const struct _ec_fmap {
 		{
 			 /* The range of RW firmware to be auto-updated. */
 			.area_name = "EC_RW",
-			.area_offset = CONFIG_RW_MEM_OFF,
+			.area_offset = CONFIG_RW_STORAGE_OFF,
 			.area_size = CONFIG_RW_SIZE,
 			.area_flags = FMAP_AREA_STATIC | FMAP_AREA_RO,
 		},
@@ -127,7 +127,7 @@ const struct _ec_fmap {
 			 * ASCII, and padded with \0.
 			 */
 			.area_name = "RW_FWID",
-			.area_offset = CONFIG_RW_MEM_OFF +
+			.area_offset = CONFIG_RW_STORAGE_OFF +
 				RELATIVE((uint32_t)__version_struct_offset) +
 				offsetof(struct version_struct,  version),
 			.area_size = sizeof(version_data.version),
