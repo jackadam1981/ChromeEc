@@ -43,6 +43,14 @@
 #error "Unsupported chip variant"
 #endif
 
+#include "config_std_internal_flash.h"
+
+#if defined(BOARD_ZINGER) || defined(BOARD_MINIMUFFIN)
+/* Not using pstate but keep some space for the public key */
+#undef  CONFIG_FW_PSTATE_SIZE
+#define CONFIG_FW_PSTATE_SIZE   544
+#endif
+
 /* System stack size */
 #define CONFIG_STACK_SIZE 1024
 
