@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ad3e91ea_df52b66a",
+        "filename": "board/ryu_sh/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-05-12T16:45:08Z",
+      "side": 1,
+      "message": "Yes, it is not great. We can use ARRAY_SIZE below, because size of motion_sensors would not be known yet.\nAseda is working on building this array via macro, saving space (https://chromium-review.googlesource.com/#/c/266937/)",
+      "parentUuid": "2d338121_505cda59",
+      "range": {
+        "startLine": 41,
+        "startChar": 34,
+        "endLine": 41,
+        "endChar": 35
+      },
+      "revId": "a217b040738a0ac61c8e1ae5dc5e1175854f3247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd43c57f_385499d9",
         "filename": "include/motion_sense.h",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-05-12T15:16:22Z",
       "side": 1,
       "message": "that\u0027s not a new issue but mixing here RO and RW data is sucking useless SRAM (RO part should be in flash only)",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 22
+      },
+      "revId": "a217b040738a0ac61c8e1ae5dc5e1175854f3247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad3e91ea_1ad38c55",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-05-12T16:45:08Z",
+      "side": 1,
+      "message": "I hope https://chromium-review.googlesource.com/#/c/266937/ will address that issue.",
+      "parentUuid": "cd43c57f_385499d9",
       "range": {
         "startLine": 34,
         "startChar": 0,
