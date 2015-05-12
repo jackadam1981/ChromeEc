@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d338121_5097ba47",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-05-12T15:21:39Z",
+      "side": 1,
+      "message": "if there is a simple computation, why storing a table ?",
+      "range": {
+        "startLine": 68,
+        "startChar": 3,
+        "endLine": 68,
+        "endChar": 67
+      },
+      "revId": "dd1c3b3556bb562ae66d519f4124e0aebe4acfcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d338121_30b31600",
+        "filename": "driver/accelgyro_bmi160.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-05-12T15:21:39Z",
+      "side": 1,
+      "message": "same opinion as before",
+      "range": {
+        "startLine": 7,
+        "startChar": 2,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "dd1c3b3556bb562ae66d519f4124e0aebe4acfcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd43c57f_f839919f",
+        "filename": "driver/accelgyro_bmi160.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-05-12T15:21:39Z",
+      "side": 1,
+      "message": "what is that header used for ?",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 17
+      },
+      "revId": "dd1c3b3556bb562ae66d519f4124e0aebe4acfcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
