@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d338121_56297206",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-05-12T18:08:22Z",
+      "side": 1,
+      "message": "please add comments about these THREE msleep(30) ... \nwhat will happen if remove them? Thanks!",
+      "range": {
+        "startLine": 364,
+        "startChar": 10,
+        "endLine": 364,
+        "endChar": 12
+      },
+      "revId": "1076bfaeff01f5a4d9424a437c634083cad727d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
