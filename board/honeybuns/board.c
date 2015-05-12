@@ -130,3 +130,4 @@ int board_get_usb_mux(int port, const char **dp_str, const char **usb_str)
 	}
 	return 1;
 }
+

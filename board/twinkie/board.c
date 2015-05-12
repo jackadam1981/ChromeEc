@@ -80,3 +80,4 @@ const void * const usb_strings[] = {
 	[USB_STR_CONSOLE_NAME] = USB_STRING_DESC("Shell"),
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
+
