@@ -189,10 +189,14 @@ static int check_battery_firmware_image_version(
 	struct sb_fw_header *hdr,
 	struct sb_fw_update_info *p)
 {
-	return (((hdr->fw_version == 0xFFFF)
-			|| (hdr->fw_version > p->fw_version)) &&
-		((hdr->data_table_version == 0xFFFF)
-			|| (hdr->data_table_version > p->data_version)));
+	/* if it is a speical test image with version is 0xFFFF */
+	if ((hdr->fw_version == 0xFFFF)
+		&& (hdr->data_table_version == 0xFFFF))
+		return 1;
+
+	/* if newer fw version or newer data table version */
+	return (hdr->fw_version > p->fw_version)
+		|| (hdr->data_table_version > p->data_version);
 }
 
 
