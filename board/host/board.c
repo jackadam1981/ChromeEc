@@ -70,3 +70,9 @@ const struct accel_orientation acc_orient = {
 	.hinge_axis = {0, 1, 0},
 };
 
+test_mockable int pd_snk_is_vbus_provided(int port)
+{
+	/* Not implemented */
+	return 1;
+}
+

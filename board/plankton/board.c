@@ -18,7 +18,6 @@
 #include "task.h"
 #include "timer.h"
 #include "usb_pd.h"
-#include "usb_pd_config.h"
 #include "util.h"
 
 void button_event(enum gpio_signal signal);
@@ -353,6 +352,11 @@ static int sn75dp130_redriver_init(void)
 		sn75dp130_dpcd_init();
 
 	return rv;
+}
+
+int pd_snk_is_vbus_provided(int port)
+{
+	return gpio_get_level(GPIO_VBUS_WAKE);
 }
 
 static void board_init(void)

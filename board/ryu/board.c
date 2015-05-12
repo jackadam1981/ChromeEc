@@ -30,7 +30,6 @@
 #include "task.h"
 #include "usb.h"
 #include "usb_pd.h"
-#include "usb_pd_config.h"
 #include "usb_spi.h"
 #include "usb-stm32f3.h"
 #include "usb-stream.h"
@@ -559,6 +558,11 @@ void board_set_charge_limit(int charge_ma)
 void pd_send_host_event(int mask)
 {
 	/* TODO(crosbug.com/p/33194): implement host events */
+}
+
+int pd_snk_is_vbus_provided(int port)
+{
+	return gpio_get_level(GPIO_CHGR_ACOK);
 }
 
 /**

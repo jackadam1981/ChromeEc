@@ -10,9 +10,6 @@
 #include "task.h"
 #include "timer.h"
 #include "usb_pd.h"
-#ifdef HAS_TASK_HOSTCMD
-#include "usb_pd_config.h"
-#endif
 #include "util.h"
 
 /* Event log FIFO */
