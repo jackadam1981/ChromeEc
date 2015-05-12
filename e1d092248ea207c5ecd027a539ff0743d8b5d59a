@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d338121_a3c23985",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-12T21:15:30Z",
+      "side": 1,
+      "message": "Is it likely to have a never-terminating update process now? What is going to kick us out of this state?",
+      "revId": "e1d092248ea207c5ecd027a539ff0743d8b5d59a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
