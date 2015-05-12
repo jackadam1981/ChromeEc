@@ -3,7 +3,6 @@
  * found in the LICENSE file.
  */
 
-#include "adc.h"
 #include "battery.h"
 #include "board.h"
 #include "case_closed_debug.h"
@@ -21,7 +20,6 @@
 #include "timer.h"
 #include "util.h"
 #include "usb_pd.h"
-#include "usb_pd_config.h"
 #include "usb_pd_tcpm.h"
 #include "version.h"
 
@@ -2796,9 +2794,8 @@ static int command_typec(int argc, char **argv)
 
 	if (argc < 3) {
 		const char *dp_str, *usb_str;
-		ccprintf("Port C%d: CC1 %d mV  CC2 %d mV (polarity:CC%d)\n",
-			port, pd_adc_read(port, 0), pd_adc_read(port, 1),
-			pd_get_polarity(port) + 1);
+		ccprintf("Port C%d: polarity:CC%d\n",
+			port, pd_get_polarity(port) + 1);
 		if (board_get_usb_mux(port, &dp_str, &usb_str))
 			ccprintf("Superspeed %s%s%s\n",
 				 dp_str ? dp_str : "",
