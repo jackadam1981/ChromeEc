@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd43c57f_b49eed36",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-12T21:09:15Z",
+      "side": 1,
+      "message": "It would cleaner to build a table out of these steps / values, then you could find the target value with a single loop.",
+      "revId": "9d34405ed10e19f57847777ad4bfd58c49c4adf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d338121_a087cf66",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-12T21:09:15Z",
+      "side": 1,
+      "message": "Why did you change this?",
+      "revId": "9d34405ed10e19f57847777ad4bfd58c49c4adf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
