@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cd43c57f_933f8ed8",
+        "filename": "board/ryu/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-05-12T17:55:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd43c57f_b8db8914",
+      "range": {
+        "startLine": 377,
+        "startChar": 4,
+        "endLine": 377,
+        "endChar": 15
+      },
+      "revId": "5ff6e4eebcc61a4cbdec84a05f92de4285b74ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad3e91ea_3ccda837",
         "filename": "board/ryu/ec.tasklist",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-05-12T15:07:35Z",
       "side": 1,
       "message": "the task priority looks a bit high to me,\nI would put it lower than CHIPSET.",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 24
+      },
+      "revId": "5ff6e4eebcc61a4cbdec84a05f92de4285b74ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d338121_508dfa86",
+        "filename": "board/ryu/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-05-12T17:55:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad3e91ea_3ccda837",
       "range": {
         "startLine": 26,
         "startChar": 1,
