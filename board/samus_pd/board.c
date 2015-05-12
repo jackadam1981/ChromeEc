@@ -25,7 +25,6 @@
 #include "task.h"
 #include "usb.h"
 #include "usb_pd.h"
-#include "usb_pd_config.h"
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
@@ -883,6 +882,12 @@ void pd_send_host_event(int mask)
 	atomic_or(&(host_event_status.status), mask);
 	atomic_or(&(pd_status.status), PD_STATUS_HOST_EVENT);
 	pd_send_ec_int();
+}
+
+int pd_snk_is_vbus_provided(int port)
+{
+	return gpio_get_level(port ? GPIO_USB_C1_VBUS_WAKE :
+				     GPIO_USB_C0_VBUS_WAKE);
 }
 
 /****************************************************************************/

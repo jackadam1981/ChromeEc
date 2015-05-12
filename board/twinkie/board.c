@@ -80,3 +80,10 @@ const void * const usb_strings[] = {
 	[USB_STR_CONSOLE_NAME] = USB_STRING_DESC("Shell"),
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
+
+int pd_snk_is_vbus_provided(int port)
+{
+	/* assume the alert was programmed to detect bus voltage above 4.5V */
+	return (gpio_get_level(GPIO_VBUS_ALERT_L) == 0);
+}
+

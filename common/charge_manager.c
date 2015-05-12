@@ -13,7 +13,6 @@
 #include "system.h"
 #include "timer.h"
 #include "usb_pd.h"
-#include "usb_pd_config.h"
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
