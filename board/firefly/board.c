@@ -95,6 +95,12 @@ const struct i2c_port_t i2c_ports[] = {
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
+int pd_snk_is_vbus_provided(int port)
+{
+	/* VBUS_WAKE is broken (not detecting 5V), use the ADC instead */
+	return adc_read_channel(ADC_CH_VBUS_SENSE) > 4000;
+}
+
 static void board_init(void)
 {
 	gpio_enable_interrupt(GPIO_SW_PP20000);

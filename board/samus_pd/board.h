@@ -129,6 +129,40 @@ enum charge_supplier {
 /* supplier_priority table defined in board.c */
 extern const int supplier_priority[];
 
+/* USB PD board configuration */
+/* Port and task configuration */
+#define PD_PORT_COUNT 2
+#define PORT_TO_TASK_ID(port) ((port) ? TASK_ID_PD_C1 : TASK_ID_PD_C0)
+#define TASK_ID_TO_PORT(id)   ((id) == TASK_ID_PD_C0 ? 0 : 1)
+
+/* Standard-current DFP : no-connect voltage is 1.55V */
+#define PD_SRC_VNC 1550 /* mV */
+
+/* UFP-side : threshold for DFP connection detection */
+#define PD_SNK_VA   200 /* mV */
+
+/* start as a sink in case we have no other power supply/battery */
+#define PD_DEFAULT_STATE PD_STATE_SNK_DISCONNECTED
+
+/*
+ * delay to turn on the power supply max is ~16ms.
+ * delay to turn off the power supply max is about ~180ms.
+ */
+#define PD_POWER_SUPPLY_TURN_ON_DELAY  30000  /* us */
+#define PD_POWER_SUPPLY_TURN_OFF_DELAY 250000 /* us */
+
+/* delay to turn on/off vconn */
+#define PD_VCONN_SWAP_DELAY 5000 /* us */
+
+/* Define typical operating power and max power */
+#define PD_OPERATING_POWER_MW 15000
+#define PD_MAX_POWER_MW       60000
+#define PD_MAX_CURRENT_MA     3000
+#define PD_MAX_VOLTAGE_MV     20000
+
+/* Return if VBUS is detected on type-C port */
+int pd_snk_is_vbus_provided(int port);
+
 /* Charge current limit min / max, based on PWM duty cycle */
 #define PWM_0_MA	500
 #define PWM_100_MA	4000
