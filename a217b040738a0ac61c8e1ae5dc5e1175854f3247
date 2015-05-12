@@ -93,6 +93,52 @@
       "revId": "a217b040738a0ac61c8e1ae5dc5e1175854f3247",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd43c57f_655f9577",
+        "filename": "test/motion_lid.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-05-12T18:01:43Z",
+      "side": 1,
+      "message": "rename \"lid\"",
+      "range": {
+        "startLine": 120,
+        "startChar": 15,
+        "endLine": 120,
+        "endChar": 17
+      },
+      "revId": "a217b040738a0ac61c8e1ae5dc5e1175854f3247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad3e91ea_b0771989",
+        "filename": "test/motion_lid.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-05-12T18:01:43Z",
+      "side": 1,
+      "message": "Here, you may keep the same default value.  \n100000",
+      "range": {
+        "startLine": 131,
+        "startChar": 16,
+        "endLine": 131,
+        "endChar": 17
+      },
+      "revId": "a217b040738a0ac61c8e1ae5dc5e1175854f3247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
