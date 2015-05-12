@@ -164,6 +164,11 @@ int board_set_debug(int enable)
 	return rv;
 }
 
+int pd_snk_is_vbus_provided(int port)
+{
+	return gpio_get_level(GPIO_VBUS_WAKE);
+}
+
 static int command_debug(int argc, char **argv)
 {
         char *e;

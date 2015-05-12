@@ -2,7 +2,7 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
-#include "adc.h"
+
 #include "atomic.h"
 #include "charge_manager.h"
 #include "common.h"
@@ -20,7 +20,6 @@
 #include "util.h"
 #include "usb_api.h"
 #include "usb_pd.h"
-#include "usb_pd_config.h"
 #include "version.h"
 
 #ifdef CONFIG_COMMON_RUNTIME

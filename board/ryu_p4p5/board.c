@@ -28,7 +28,6 @@
 #include "task.h"
 #include "usb.h"
 #include "usb_pd.h"
-#include "usb_pd_config.h"
 #include "usb_spi.h"
 #include "usb-stm32f3.h"
 #include "usb-stream.h"
@@ -682,6 +681,11 @@ void usb_spi_board_disable(struct usb_spi_config const *config)
 
 	/* Release AP from reset */
 	gpio_set_level(GPIO_PMIC_WARM_RESET_L, 1);
+}
+
+int pd_snk_is_vbus_provided(int port)
+{
+	return gpio_get_level(GPIO_CHGR_ACOK);
 }
 
 int board_get_version(void)

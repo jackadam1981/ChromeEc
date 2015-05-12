@@ -77,6 +77,33 @@ enum usb_strings {
 	USB_STR_COUNT
 };
 
+/* Port and task configuration */
+#define PD_PORT_COUNT 1
+#define PORT_TO_TASK_ID(port) TASK_ID_PD
+#define TASK_ID_TO_PORT(id)   0
+
+/* 3.0A DFP : no-connect voltage is 2.45V */
+#define PD_SRC_VNC 2450 /* mV */
+
+/* UFP-side : threshold for DFP connection detection */
+#define PD_SNK_VA   250 /* mV */
+
+/* we are acting only as a sink */
+#define PD_DEFAULT_STATE PD_STATE_SNK_DISCONNECTED
+
+/* we are never a source : don't care about power supply */
+#define PD_POWER_SUPPLY_TURN_ON_DELAY  0 /* us */
+#define PD_POWER_SUPPLY_TURN_OFF_DELAY 0 /* us */
+
+/* Define typical operating power and max power */
+#define PD_OPERATING_POWER_MW 1000
+#define PD_MAX_POWER_MW       1500
+#define PD_MAX_CURRENT_MA     300
+#define PD_MAX_VOLTAGE_MV     5000
+
+/* Return if VBUS is detected on type-C port */
+int pd_snk_is_vbus_provided(int port);
+
 #endif /* !__ASSEMBLER__ */
 
 /* USB Device class */

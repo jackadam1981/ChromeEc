@@ -91,6 +91,11 @@ void hpd_event(enum gpio_signal signal)
 	hpd_prev_level = level;
 }
 
+int pd_snk_is_vbus_provided(int port)
+{
+	return 1;
+}
+
 /* Initialize board. */
 void board_config_pre_init(void)
 {

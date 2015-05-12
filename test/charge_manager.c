@@ -11,7 +11,6 @@
 #include "test_util.h"
 #include "timer.h"
 #include "usb_pd.h"
-#include "usb_pd_config.h"
 #include "util.h"
 
 #define CHARGE_MANAGER_SLEEP_MS 50
