@@ -96,6 +96,29 @@
     },
     {
       "key": {
+        "uuid": "ad3e91ea_6b6c8088",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-05-12T18:38:42Z",
+      "side": 1,
+      "message": "What\u0027s the rationale of having the run-time config params stored here? With my change, I had left the driver to monitor that information.",
+      "range": {
+        "startLine": 51,
+        "startChar": 22,
+        "endLine": 51,
+        "endChar": 36
+      },
+      "revId": "a217b040738a0ac61c8e1ae5dc5e1175854f3247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd43c57f_655f9577",
         "filename": "test/motion_lid.c",
         "patchSetId": 2
