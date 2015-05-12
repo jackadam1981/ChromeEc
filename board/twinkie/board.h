@@ -96,6 +96,38 @@ enum usb_strings {
 	USB_STR_COUNT
 };
 
+/* USB PD board configuration */
+/* Port and task configuration */
+#define PD_PORT_COUNT 1
+#ifdef HAS_TASK_PD /* PD message injector mode */
+#define PORT_TO_TASK_ID(port) TASK_ID_PD
+#else
+#define PORT_TO_TASK_ID(port) -1
+#endif
+#define TASK_ID_TO_PORT(id)   0
+
+/* Standard-current DFP : no-connect voltage is 1.55V */
+#define PD_SRC_VNC 1550 /* mV */
+
+/* UFP-side : threshold for DFP connection detection */
+#define PD_SNK_VA   200 /* mV */
+
+/* start as a sink in case we have no other power supply/battery */
+#define PD_DEFAULT_STATE PD_STATE_SNK_DISCONNECTED
+
+/* delay necessary for the voltage transition on the power supply */
+#define PD_POWER_SUPPLY_TURN_ON_DELAY  50000 /* us */
+#define PD_POWER_SUPPLY_TURN_OFF_DELAY 50000 /* us */
+
+/* Define typical operating power and max power */
+#define PD_OPERATING_POWER_MW 15000
+#define PD_MAX_POWER_MW       60000
+#define PD_MAX_CURRENT_MA     3000
+#define PD_MAX_VOLTAGE_MV     20000
+
+/* Return if VBUS is detected on type-C port */
+int pd_snk_is_vbus_provided(int port);
+
 #endif /* !__ASSEMBLER__ */
 
 /* USB interface indexes (use define rather than enum to expand them) */
