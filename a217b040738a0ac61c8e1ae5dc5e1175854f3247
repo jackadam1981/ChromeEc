@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ad3e91ea_2ea9e588",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-05-12T19:37:15Z",
+      "side": 1,
+      "message": "driver still monitor odr/range thru drv_data if they want.\nHere I just rename variables mostly used in motion_sense.c from odr to runtime_config.odr.\n\nI agree we may revisit this code and find out the data in drv_data-\u003e.. and here is somewhat duplicated.",
+      "parentUuid": "ad3e91ea_6b6c8088",
+      "range": {
+        "startLine": 51,
+        "startChar": 22,
+        "endLine": 51,
+        "endChar": 36
+      },
+      "revId": "a217b040738a0ac61c8e1ae5dc5e1175854f3247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd43c57f_655f9577",
         "filename": "test/motion_lid.c",
         "patchSetId": 2
