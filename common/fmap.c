@@ -20,7 +20,7 @@
  * For address containing CONFIG_FLASH_BASE (symbols in *.lds.S and variable),
  * this computes the offset to the start of flash.
  */
-#define RELATIVE(addr) ((addr) - CONFIG_FLASH_BASE)
+#define RELATIVE(addr) ((addr) - CONFIG_FLASH_BASE - CONFIG_RO_MEM_OFF)
 
 struct fmap_header {
 	char        fmap_signature[FMAP_SIGNATURE_SIZE];

@@ -120,7 +120,7 @@
 #define CONFIG_RW_SIZE			CONFIG_RO_SIZE
 
 /* Write protect Loader and RO Image */
-#define CONFIG_WP_OFF			CONFIG_FW_LOADER_OFF
+#define CONFIG_WP_OFF			0x20000
 /* Write protect 128k section of 256k physical flash
 which contains Loader and RO Images */
 #define CONFIG_WP_SIZE			(CONFIG_FLASH_PHYSICAL_SIZE >> 1)
@@ -131,7 +131,7 @@ which contains Loader and RO Images */
      located at the end of the flash */
 #define CONFIG_FLASH_BASE_SPI	(CONFIG_SPI_FLASH_SIZE - (0x40000))
 
-#define CONFIG_RO_STORAGE_OFF		0x20000
+#define CONFIG_RO_STORAGE_OFF		0x20000 + CONFIG_FW_LOADER_SIZE + 0x240
 #define CONFIG_RW_STORAGE_OFF		0
 #define CONFIG_RO_IMAGE_FLASHADDR	(CONFIG_FLASH_BASE_SPI +	\
 						CONFIG_RO_STORAGE_OFF)
