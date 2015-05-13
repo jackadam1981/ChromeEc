@@ -33,7 +33,7 @@
  * DPWROK is NC / stuffing option on initial boards.
  * TODO(shawnn): Figure out proper control signals.
  */
-#define IN_PGOOD_ALL_CORE 0
+#define IN_PGOOD_ALL_CORE POWER_SIGNAL_MASK(X86_RSMRST_L_PWRGD)
 
 #define IN_ALL_S0 (IN_PGOOD_ALL_CORE | IN_ALL_PM_SLP_DEASSERTED)
 
@@ -68,7 +68,8 @@ void chipset_reset(int cold_reset)
 		if (gpio_get_level(GPIO_SYS_RESET_L) == 0)
 			return;
 		gpio_set_level(GPIO_SYS_RESET_L, 0);
-		udelay(100);
+		/* Debounce time for SYSRST is 16 ms */
+		udelay(20 * MSEC);
 		gpio_set_level(GPIO_SYS_RESET_L, 1);
 	} else {
 		/*
