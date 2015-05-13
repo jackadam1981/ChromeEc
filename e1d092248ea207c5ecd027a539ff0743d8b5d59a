@@ -16,6 +16,24 @@
       "revId": "e1d092248ea207c5ecd027a539ff0743d8b5d59a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed2329ea_8700e604",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-05-13T00:06:49Z",
+      "side": 1,
+      "message": "fw_update-\u003ebusy_retry_cnt \u003d\u003d 0 will terminate.",
+      "parentUuid": "2d338121_a3c23985",
+      "revId": "e1d092248ea207c5ecd027a539ff0743d8b5d59a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
