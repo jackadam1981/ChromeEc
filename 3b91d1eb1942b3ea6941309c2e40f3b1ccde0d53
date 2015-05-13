@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d215de2_e817f3f7",
+        "filename": "board/gandof/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1114844
+      },
+      "writtenOn": "2015-05-13T03:41:41Z",
+      "side": 1,
+      "message": "error: expected \u0027)\u0027 before \u0027{\u0027 token\n   if ((tmp \u0026 SB_FET_OFF_STATUS) {\n                                ^",
+      "revId": "3b91d1eb1942b3ea6941309c2e40f3b1ccde0d53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
