@@ -7,7 +7,7 @@
 #include "battery.h"
 #include "chipset.h"
 #include "common.h"
-#include "driver/accel_kx022.h"
+#include "driver/accel_kxcj9.h"
 #include "extpower.h"
 #include "gpio.h"
 #include "i2c.h"
@@ -85,9 +85,9 @@ static struct mutex g_base_mutex;
 static struct mutex g_lid_mutex;
 
 /* kxcj9 local/private data */
-struct kx022_data g_kx022_data0;
+struct kxcj9_data g_kxcj9_data0;
 
-struct kx022_data g_kx022_data1;
+struct kxcj9_data g_kxcj9_data1;
 
 /* Four Motion sensors */
 /* Matrix to rotate accelrator into standard reference frame */
@@ -110,15 +110,15 @@ struct motion_sensor_t motion_sensors[] = {
 	 * Requriement: accelerometer sensor must init before gyro sensor
 	 * DO NOT change the order of the following table.
 	 */
-	{SENSOR_ACTIVE_S0_S3, "Base", MOTIONSENSE_CHIP_KX022,
+	{SENSOR_ACTIVE_S0_S3, "Base", MOTIONSENSE_CHIP_KXCJ9,
 		MOTIONSENSE_TYPE_ACCEL, MOTIONSENSE_LOC_BASE,
-		&kx022_drv, &g_base_mutex, &g_kx022_data0,
-		KX022_ADDR1, &base_standard_ref, 119000, 2},
+		&kxcj9_drv, &g_base_mutex, &g_kxcj9_data0,
+		KXCJ9_ADDR1, &base_standard_ref, 119000, 2},
 
-	{SENSOR_ACTIVE_S0_S3, "Lid",  MOTIONSENSE_CHIP_KX022,
+	{SENSOR_ACTIVE_S0_S3, "Lid",  MOTIONSENSE_CHIP_KXCJ9,
 		MOTIONSENSE_TYPE_ACCEL, MOTIONSENSE_LOC_LID,
-		&kx022_drv, &g_lid_mutex, &g_kx022_data1,
-		KX022_ADDR0, &lid_standard_ref, 100000, 2},
+		&kxcj9_drv, &g_lid_mutex, &g_kxcj9_data1,
+		KXCJ9_ADDR0, &lid_standard_ref, 100000, 2},
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
