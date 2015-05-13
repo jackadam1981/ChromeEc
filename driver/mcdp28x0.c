@@ -35,17 +35,15 @@ static inline void print_buffer(uint8_t *buf, int cnt)
 static inline void print_buffer(uint8_t *buf, int cnt) {}
 #endif
 
-struct queue const rx_queue = QUEUE_NULL(MCDP_INBUF_MAX,  uint8_t);
-struct queue const tx_queue = QUEUE_NULL(MCDP_OUTBUF_MAX, uint8_t);
-
 struct usart_config const usart_mcdp;
 
-IN_STREAM_FROM_PRODUCER(usart_in, usart_mcdp.producer, rx_queue, NULL)
-OUT_STREAM_FROM_CONSUMER(usart_out, usart_mcdp.consumer, tx_queue, NULL)
+IO_STREAM_CONFIG(usart_mcdp, MCDP_INBUF_MAX, MCDP_OUTBUF_MAX, NULL, NULL);
 
-USART_CONFIG(usart_mcdp, CONFIG_MCDP28X0, 115200, rx_queue, tx_queue,
-	     usart_in.consumer, usart_out.producer);
-
+USART_CONFIG(usart_mcdp,
+	     CONFIG_MCDP28X0,
+	     115200,
+	     usart_mcdp_rx_queue,
+	     usart_mcdp_tx_queue);
 
 /**
  * Compute checksum.
@@ -83,16 +81,16 @@ static int tx_serial(const uint8_t *msg, int cnt)
 	uint8_t out = cnt + 2;
 	uint8_t chksum = compute_checksum(msg, cnt);
 
-	if (out_stream_write(&usart_out.out, &out, 1) != 1)
+	if (out_stream_write(&usart_mcdp_out.out, &out, 1) != 1)
 		return EC_ERROR_UNKNOWN;
 
-	if (out_stream_write(&usart_out.out, msg, cnt) != cnt)
+	if (out_stream_write(&usart_mcdp_out.out, msg, cnt) != cnt)
 		return EC_ERROR_UNKNOWN;
 
-	if (out_stream_write(&usart_out.out, &chksum, 1) != 1)
+	if (out_stream_write(&usart_mcdp_out.out, &chksum, 1) != 1)
 		return EC_ERROR_UNKNOWN;
 
-	print_buffer(tx_queue_buffer, cnt + 2);
+	print_buffer(usart_mcdp_tx_queue.buffer, cnt + 2);
 
 	return EC_SUCCESS;
 }
@@ -109,10 +107,10 @@ static int rx_serial(uint8_t *msg, int cnt)
 	size_t read;
 	int retry = 2;
 
-	read = in_stream_read(&usart_in.in, msg, cnt);
+	read = in_stream_read(&usart_mcdp_in.in, msg, cnt);
 	while ((read < cnt) && retry) {
 		usleep(100*MSEC);
-		read += in_stream_read(&usart_in.in, msg + read,
+		read += in_stream_read(&usart_mcdp_in.in, msg + read,
 				       cnt - read);
 		retry--;
 	}
