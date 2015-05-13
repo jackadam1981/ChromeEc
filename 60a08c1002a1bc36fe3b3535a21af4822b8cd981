@@ -16,6 +16,24 @@
       "revId": "60a08c1002a1bc36fe3b3535a21af4822b8cd981",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad15b184_25c2ce39",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-05-13T00:12:50Z",
+      "side": 1,
+      "message": "Tested on a bad simplo battery. The Get Info is not stable.  I saw 20% failure rate on the get info command.\nShall I add retry on this failure? Ex: 5 Time?",
+      "parentUuid": "2d338121_209bbfbd",
+      "revId": "60a08c1002a1bc36fe3b3535a21af4822b8cd981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
