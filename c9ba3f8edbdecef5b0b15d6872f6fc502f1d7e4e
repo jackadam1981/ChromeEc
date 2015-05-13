@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "8d146d89_24ae5299",
+        "filename": "chip/stm32/config-stm32f07x.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-05-13T00:18:28Z",
+      "side": 1,
+      "message": "STM32F03x doesn\u0027t have \"CONFIG_RO_MEM_OFFS +\"; it assumes that since the offset is 0, all that needs to be specified is the size.\n\nWe should be consistent between chips.  I\u0027m ok with either way, but if we are going to specify the offset, we shouldn\u0027t mix-and-match MEM and STORAGE.  Someday someone will copy-paste with unfortunate consequences.\n\nSo, I\u0027m ok with any of these, if we apply them evenly:\n\n/* Storage offset is based on previous storage offset */\n#define CONFIG_RW_STORAGE_OFF (CONFIG_RO_STORAGE_OFF + CONFIG_FW_IMAGE_SIZE)\n\n/* We\u0027ll just assume the RO offset is 0 */\n#define CONFIG_RW_STORAGE_OFF CONFIG_FW_IMAGE_SIZE\n\nor even\n\n/* Storage is memory-mapped */\n#define CONFIG_RO_STORAGE_OFF CONFIG_RO_MEM_OFF\n#define CONFIG_RW_STORAGE_OFF CONFIG_RW_MEM_OFF",
+      "range": {
+        "startLine": 27,
+        "startChar": 33,
+        "endLine": 27,
+        "endChar": 53
+      },
+      "revId": "c9ba3f8edbdecef5b0b15d6872f6fc502f1d7e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d0f3979_034a2e87",
+        "filename": "chip/stm32/config-stm32ts60.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-05-13T00:18:28Z",
+      "side": 1,
+      "message": "Hmm.  This is duplicated between all memory-mapped chips.  I wonder if we should refactor it out to some common header file - config-flash-std-internal.h or something like that.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 68
+      },
+      "revId": "c9ba3f8edbdecef5b0b15d6872f6fc502f1d7e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d338121_21cd8e37",
         "filename": "include/flash.h",
         "patchSetId": 3
@@ -13,6 +59,24 @@
       "writtenOn": "2015-05-11T22:54:15Z",
       "side": 1,
       "message": "I squashed the storage for PSTATE into the CONFIG_WP_* region (see related chip config changes). I\u0027m not 100% sure this is ok -- would we ever want to protect the RO image region without protecting PSTATE?",
+      "revId": "c9ba3f8edbdecef5b0b15d6872f6fc502f1d7e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d146d89_a48a421a",
+        "filename": "include/flash.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-05-13T00:18:28Z",
+      "side": 1,
+      "message": "That\u0027s fine.\n\nFor all future boards, PSTATE is actually dead.  The write protect flag is inside the RO firmware itself.",
+      "parentUuid": "2d338121_21cd8e37",
       "revId": "c9ba3f8edbdecef5b0b15d6872f6fc502f1d7e4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
