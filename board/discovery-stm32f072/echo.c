@@ -37,8 +37,14 @@ static void out_ready(struct out_stream const *stream)
 			    IN_READY,					\
 			    OUT_READY)					\
 									\
-	QUEUE_CONFIG(CONCAT2(NAME, _rx_queue), RX_SIZE, uint8_t);	\
-	QUEUE_CONFIG(CONCAT2(NAME, _tx_queue), TX_SIZE, uint8_t);	\
+	QUEUE_CONFIG(CONCAT2(NAME, _rx_queue),				\
+		     RX_SIZE,						\
+		     uint8_t,						\
+		     queue_policy_null);				\
+	QUEUE_CONFIG(CONCAT2(NAME, _tx_queue),				\
+		     TX_SIZE,						\
+		     uint8_t,						\
+		     queue_policy_null);				\
 									\
 	struct usart_config const NAME;					\
 									\
@@ -63,8 +69,8 @@ USART_STREAM_CONFIG(usart1, usart1_hw, 115200, 64, 64, in_ready, NULL);
 USART_STREAM_CONFIG(usart3, usart3_hw, 115200, 64, 64, in_ready, NULL);
 USART_STREAM_CONFIG(usart4, usart4_hw, 115200, 64, 64, in_ready, NULL);
 
-QUEUE_CONFIG(usb_rx_queue, 256, uint8_t);
-QUEUE_CONFIG(usb_tx_queue, 256, uint8_t);
+QUEUE_CONFIG(usb_rx_queue, 256, uint8_t, queue_policy_null);
+QUEUE_CONFIG(usb_tx_queue, 256, uint8_t, queue_policy_null);
 
 struct usb_stream_config const usb_stream1;
 

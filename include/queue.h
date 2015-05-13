@@ -15,6 +15,27 @@
 /* Generic queue container. */
 
 /*
+ * Queue policies describe how a queue behaves (who it notifies, in what
+ * contexts) when units are added or removed from the queue.
+ */
+struct queue_policy;
+
+struct queue_policy_ops {
+	void (*add)(struct queue_policy const *queue_policy, size_t count);
+	void (*remove)(struct queue_policy const *queue_policy, size_t count);
+};
+
+struct queue_policy {
+	struct queue_policy_ops const *ops;
+};
+
+/*
+ * The NULL policy does no notification when units are added or removed from
+ * the queue.
+ */
+extern struct queue_policy const queue_policy_null;
+
+/*
  * RAM state for a queue.
  */
 struct queue_state {
@@ -41,6 +62,8 @@ struct queue_state {
 struct queue {
 	struct queue_state volatile *state;
 
+	struct queue_policy const *policy;
+
 	size_t  buffer_units; /* size of buffer (in units) */
 	size_t  unit_bytes;   /* size of unit   (in byte) */
 	uint8_t *buffer;
@@ -50,13 +73,14 @@ struct queue {
  * Convenience macro for construction of a Queue along with its backing buffer
  * and state structure.
  */
-#define QUEUE_CONFIG(NAME, SIZE, TYPE)					\
+#define QUEUE_CONFIG(NAME, SIZE, TYPE, POLICY)				\
 	static TYPE CONCAT2(NAME, _buffer)[SIZE];			\
 									\
 	static struct queue_state CONCAT2(NAME, _state);		\
 	struct queue const NAME =					\
 	{								\
 		.state        = &CONCAT2(NAME, _state),			\
+		.policy       = &POLICY,				\
 		.buffer_units = SIZE,					\
 		.unit_bytes   = sizeof(TYPE),				\
 		.buffer       = (uint8_t *) CONCAT2(NAME, _buffer),	\

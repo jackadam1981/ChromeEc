@@ -7,9 +7,23 @@
 #include "queue.h"
 #include "util.h"
 
+static void queue_action_null(struct queue_policy const *policy, size_t count)
+{
+}
+
+static struct queue_policy_ops const queue_policy_null_ops = {
+	.add    = queue_action_null,
+	.remove = queue_action_null,
+};
+
+struct queue_policy const queue_policy_null = {
+	.ops = &queue_policy_null_ops,
+};
+
 void queue_init(struct queue const *q)
 {
 	ASSERT(POWER_OF_TWO(q->buffer_units));
+	ASSERT(q->policy);
 
 	q->state->head = 0;
 	q->state->tail = 0;
@@ -44,6 +58,8 @@ size_t queue_add_unit(struct queue const *q, void const *src)
 
 	q->state->tail += 1;
 
+	q->policy->ops->add(q->policy, 1);
+
 	return 1;
 }
 
@@ -73,6 +89,8 @@ size_t queue_add_memcpy(struct queue const *q,
 		       (transfer - first) * q->unit_bytes);
 
 	q->state->tail += transfer;
+
+	q->policy->ops->add(q->policy, transfer);
 
 	return transfer;
 }
@@ -111,6 +129,8 @@ size_t queue_remove_unit(struct queue const *q, void *dest)
 
 	q->state->head += 1;
 
+	q->policy->ops->remove(q->policy, 1);
+
 	return 1;
 }
 
@@ -132,6 +152,8 @@ size_t queue_remove_memcpy(struct queue const *q,
 	queue_read_safe(q, dest, head, transfer, memcpy);
 
 	q->state->head += transfer;
+
+	q->policy->ops->remove(q->policy, transfer);
 
 	return transfer;
 }
