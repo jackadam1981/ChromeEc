@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd1ae5b3_95dbee14",
+        "filename": "board/gnawty/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002584
+      },
+      "writtenOn": "2015-05-13T17:40:10Z",
+      "side": 1,
+      "message": "Will this continue to work for older battery as well?",
+      "range": {
+        "startLine": 39,
+        "startChar": 8,
+        "endLine": 39,
+        "endChar": 55
+      },
+      "revId": "f5232f2502b1725701ad403f82d79d5971292530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
