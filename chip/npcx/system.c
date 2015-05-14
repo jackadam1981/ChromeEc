@@ -19,11 +19,6 @@
 #include "hwtimer_chip.h"
 #include "system_chip.h"
 
-#ifdef CONFIG_CODERAM_ARCH
-/* base address for jumping */
-uint32_t base_addr;
-#endif
-
 /* Flags for BBRM_DATA_INDEX_WAKE */
 #define HIBERNATE_WAKE_MTC        (1 << 0)  /* MTC alarm */
 #define HIBERNATE_WAKE_PIN        (1 << 1)  /* Wake pin */
@@ -829,13 +824,17 @@ void system_lpc_host_register_init(void){
 	system_sib_write_reg(SIO_OFFSET, 0x30, 0x01);
 }
 #ifdef CONFIG_CODERAM_ARCH
-uint32_t system_get_lfw_address(uint32_t flash_addr)
+uint32_t system_get_lfw_address(enum system_image_copy_t copy)
 {
 	/* Little FW located on top of flash - 4K */
 	uint32_t jump_addr = (CONFIG_FLASH_BASE + CONFIG_SPI_FLASH_SIZE
 			- CONFIG_LFW_OFFSET + 1);
-	/* restore base address for jumping*/
-	base_addr = flash_addr;
+	/* Jump to RO region -- set flag */
+	if (copy == SYSTEM_IMAGE_RO)
+		SET_BIT(NPCX_FWCTRL, NPCX_FWCTRL_RO_REGION);
+	else /* Jump to RW region -- clear flag */
+		CLEAR_BIT(NPCX_FWCTRL, NPCX_FWCTRL_RO_REGION);
+
 	return jump_addr;
 }
 
@@ -848,16 +847,5 @@ enum system_image_copy_t system_get_shrspi_image_copy(void)
 		return SYSTEM_IMAGE_RW;
 }
 
-/**
- * Set flag for jumping across a sysjump.
- */
-static void system_sysjump(void)
-{
-	/* Jump to RO region -- set flag */
-	if (base_addr == CONFIG_FLASH_BASE + CONFIG_RO_MEM_OFF)
-		SET_BIT(NPCX_FWCTRL, NPCX_FWCTRL_RO_REGION);
-	else /* Jump to RW region -- clear flag */
-		CLEAR_BIT(NPCX_FWCTRL, NPCX_FWCTRL_RO_REGION);
-}
-DECLARE_HOOK(HOOK_SYSJUMP, system_sysjump, HOOK_PRIO_DEFAULT);
+
 #endif
