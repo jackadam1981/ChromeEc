@@ -16,6 +16,24 @@
       "revId": "4f40d620ac4c50864400ea96547bc216f34f0776",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0da4fdb8_5376d656",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-05-14T02:34:35Z",
+      "side": 1,
+      "message": "I will remove the test image header check.\nDone.",
+      "parentUuid": "cd8d8546_8e581b5b",
+      "revId": "4f40d620ac4c50864400ea96547bc216f34f0776",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
