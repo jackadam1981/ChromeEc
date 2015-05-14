@@ -479,7 +479,9 @@ int system_run_image_copy(enum system_image_copy_t copy)
 
 #ifdef CONFIG_CODERAM_ARCH
 	/* Jump to little FW for code ram architecture */
-	init_addr = system_get_lfw_address(base);
+	init_addr = system_get_lfw_address();
+
+	system_set_image_copy(copy);
 #else
 	/* Make sure the reset vector is inside the destination image */
 	init_addr = *(uintptr_t *)(base + 4);
@@ -505,9 +507,10 @@ const char *system_get_version(enum system_image_copy_t copy)
 
 	uintptr_t addr;
 	const struct version_struct *v;
+	enum system_image_copy_t current_image_copy = system_get_image_copy();
 
 	/* Handle version of current image */
-	if (copy == system_get_image_copy() || copy == SYSTEM_IMAGE_UNKNOWN)
+	if (copy == current_image_copy || copy == SYSTEM_IMAGE_UNKNOWN)
 		return &RO(version_data).version[0];
 
 	addr = get_base(copy);
@@ -521,13 +524,15 @@ const char *system_get_version(enum system_image_copy_t copy)
 #ifdef CONFIG_CODERAM_ARCH
 	/*
 	 * Code has been copied from flash to code RAM, so offset of the
-	 * current image's version struct is from the start of code RAM, not
-	 * the start of the flash image.
+	 * current image's version struct is from the start of the image in
+	 * code RAM, not the start of the flash image.
 	 */
 	addr += ((uintptr_t)&version_data - CONFIG_CDRAM_BASE);
+	addr -= (current_image_copy == SYSTEM_IMAGE_RW) ? CONFIG_RW_MEM_OFF :
+							  CONFIG_RO_MEM_OFF;
 #else
 	/* Offset is from the start of the flash image */
-	addr += ((uintptr_t)&version_data - get_base(system_get_image_copy()));
+	addr += ((uintptr_t)&version_data - get_base(current_image_copy));
 #endif
 
 #ifdef CONFIG_FLASH_MAPPED
