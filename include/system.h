@@ -369,7 +369,7 @@ void system_set_rtc_alarm(uint32_t seconds, uint32_t microseconds);
  */
 void system_reset_rtc_alarm(void);
 
-#ifdef CONFIG_CODERAM_ARCH
+#if defined(CONFIG_CODERAM_ARCH) || (CONFIG_RO_MEM_OFF == CONFIG_RW_MEM_OFF)
 /**
  * Determine which address should be jumped and return address of littel FW
  *
@@ -386,5 +386,6 @@ uint32_t system_get_lfw_address(uint32_t flash_addr);
  *
  */
 enum system_image_copy_t system_get_shrspi_image_copy(void);
+
 #endif
 #endif  /* __CROS_EC_SYSTEM_H */
