@@ -14,9 +14,13 @@
 #include "registers.h"
 #include "shared_mem.h"
 #include "system.h"
+#include "hooks.h"
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+
+/* base address for jumping */
+uint32_t base_addr;
 
 /* Indices for hibernate data registers (RAM backed by VBAT) */
 enum hibdata_index {
@@ -38,7 +42,7 @@ static int check_vcc1_por(void)
 	return 0;
 }
 
-static void check_reset_cause(void)
+void check_reset_cause(void)
 {
 	uint32_t status = MEC1322_VBAT_STS;
 	uint32_t flags = 0;
@@ -370,14 +374,36 @@ void htimer_interrupt(void)
 }
 DECLARE_IRQ(MEC1322_IRQ_HTIMER, htimer_interrupt, 1);
 
-/* TODO(crosbug.com/p/37510): Implement bootloader */
 enum system_image_copy_t system_get_shrspi_image_copy(void)
 {
-	return SYSTEM_IMAGE_RW;
+	uint32_t *image_type = (uint32_t *)SHARED_RAM_LFW_RORW;
+
+	/* RW region FW */
+	if (SYSTEM_IMAGE_RW == *image_type)
+		return SYSTEM_IMAGE_RW;
+	else/* RO region FW */
+		return SYSTEM_IMAGE_RO;
 }
 
-/* TODO(crosbug.com/p/37510): Implement bootloader */
 uint32_t system_get_lfw_address(uint32_t flash_addr)
 {
-	return CONFIG_RO_MEM_OFF;
+	uint32_t *lfw_vector = (uint32_t *) CONFIG_FLASH_BASE;
+	/* restore base address for jumping*/
+	base_addr = flash_addr;
+	return *(lfw_vector + 1);
 }
+
+/**
+ * Set flag for jumping across a sysjump.
+ */
+static void system_sysjump(void)
+{
+	uint32_t *image_type = (uint32_t *)SHARED_RAM_LFW_RORW;
+
+	/* Jump to RO region -- set flag */
+	if (base_addr == CONFIG_RO_IMAGE_FLASHADDR)
+		*image_type = SYSTEM_IMAGE_RO;
+	else /* Jump to RW region -- set flag */
+		*image_type = SYSTEM_IMAGE_RW;
+}
+DECLARE_HOOK(HOOK_SYSJUMP, system_sysjump, HOOK_PRIO_DEFAULT);

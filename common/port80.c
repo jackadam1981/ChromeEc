@@ -12,6 +12,7 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#include "watchdog.h"
 
 #define CPRINTF(format, args...) cprintf(CC_PORT80, format, ## args)
 
@@ -46,6 +47,7 @@ void port_80_write(int data)
 			last_boot = prev;
 	}
 
+	watchdog_reload();
 	history[writes % ARRAY_SIZE(history)] = data;
 	writes++;
 }
@@ -65,7 +67,7 @@ void port80_task(void)
 
 	while (1) {
 		int data = port_80_read();
-
+		watchdog_reload();
 		if (data != PORT_80_IGNORE)
 			port_80_write(data);
 

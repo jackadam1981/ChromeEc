@@ -43,7 +43,7 @@ int spi_flash_wait(void)
 	/* Wait until chip is not busy */
 	while (spi_flash_get_status1() & SPI_FLASH_SR1_BUSY) {
 		usleep(SPI_FLASH_SLEEP_USEC);
-
+		watchdog_reload();
 		if (get_time().val > timeout.val)
 			return EC_ERROR_TIMEOUT;
 	}
