@@ -310,7 +310,7 @@ void system_disable_jump(void)
 
 test_mockable enum system_image_copy_t system_get_image_copy(void)
 {
-#ifdef CONFIG_CODERAM_ARCH
+#if defined(CONFIG_CODERAM_ARCH) || (CONFIG_RO_MEM_OFF == CONFIG_RW_MEM_OFF)
 	/* Return which region is used in Code RAM */
 	return system_get_shrspi_image_copy();
 #else
@@ -480,6 +480,13 @@ int system_run_image_copy(enum system_image_copy_t copy)
 #ifdef CONFIG_CODERAM_ARCH
 	/* Jump to little FW for code ram architecture */
 	init_addr = system_get_lfw_address(base);
+#elif (CONFIG_RO_MEM_OFF == CONFIG_RW_MEM_OFF)
+	if (SYSTEM_IMAGE_RW == copy)
+		base = CONFIG_RW_IMAGE_FLASHADDR;
+	else
+		base = CONFIG_RO_IMAGE_FLASHADDR;
+
+	init_addr = system_get_lfw_address(base);
 #else
 	/* Make sure the reset vector is inside the destination image */
 	init_addr = *(uintptr_t *)(base + 4);
@@ -518,7 +525,7 @@ const char *system_get_version(enum system_image_copy_t copy)
 	 * The version string is always located after the reset vectors, so
 	 * it's the same offset as in the current image.  Find that offset.
 	 */
-#ifdef CONFIG_CODERAM_ARCH
+#if defined(CONFIG_CODERAM_ARCH) || (CONFIG_RO_MEM_OFF == CONFIG_RW_MEM_OFF)
 	/*
 	 * Code has been copied from flash to code RAM, so offset of the
 	 * current image's version struct is from the start of code RAM, not
