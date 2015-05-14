@@ -93,11 +93,6 @@
 256KB Max size used. Located at the top most segment */
 #define CONFIG_FLASH_PHYSICAL_SIZE	0x00040000
 
-/* Program memory base address */
-#define CONFIG_FLASH_BASE		0x00100000
-
-#define CONFIG_CDRAM_BASE		0x00100000
-#define CONFIG_CDRAM_SIZE		0x00020000
 
 /* Size of one firmware image in flash */
 #ifndef CONFIG_FW_IMAGE_SIZE
@@ -107,6 +102,13 @@
 /* Loader resides at the beginning of program memory */
 #define CONFIG_LOADER_MEM_OFF		0
 #define CONFIG_LOADER_SIZE		0x1000
+
+
+/* Program memory base address */
+#define CONFIG_FLASH_BASE		0x00100000
+
+#define CONFIG_CDRAM_BASE		(0x00100000 + CONFIG_LOADER_SIZE)
+#define CONFIG_CDRAM_SIZE		CONFIG_FW_IMAGE_SIZE
 
 /*
  * RO / RW images follow the loader in program memory. Either RO or RW
@@ -152,12 +154,8 @@ which contains Loader and RO Images */
 #define CONFIG_RW_IMAGE_FLASHADDR	(CONFIG_FLASH_BASE_SPI + \
 					CONFIG_RW_STORAGE_OFF)
 
-/* Memory Lcation shared between lfw and RO /RW image */
-#define SHARED_RAM_LFW_RORW		(CONFIG_MEC_SRAM_BASE_START + \
-					(CONFIG_LOADER_SIZE - 4))
-
 /* Non-memmapped, external SPI */
-/* #define CONFIG_CODERAM_ARCH */
+#define CONFIG_CODERAM_ARCH
 #undef  CONFIG_FLASH_MAPPED
 #undef  CONFIG_FLASH_PSTATE
 #define CONFIG_SPI_FLASH

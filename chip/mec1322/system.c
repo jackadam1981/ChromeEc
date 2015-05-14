@@ -14,6 +14,7 @@
 #include "registers.h"
 #include "shared_mem.h"
 #include "system.h"
+#include "hooks.h"
 #include "task.h"
 #include "timer.h"
 #include "util.h"
@@ -60,6 +61,28 @@ static void check_reset_cause(void)
 	system_set_reset_flags(flags);
 }
 
+/* TODO(crbug.com/40789): Rename this function system_is_reboot_warm */
+int gpio_is_reboot_warm(void)
+{
+	uint32_t reset_flags;
+	/*
+	* Check reset cause here,
+	* gpio_pre_init is executed faster than system_pre_init
+	*/
+	check_reset_cause();
+	reset_flags = system_get_reset_flags();
+
+	if ((reset_flags & RESET_FLAG_RESET_PIN) ||
+		(reset_flags & RESET_FLAG_POWER_ON) ||
+		(reset_flags & RESET_FLAG_WATCHDOG) ||
+		(reset_flags & RESET_FLAG_HARD) ||
+		(reset_flags & RESET_FLAG_SOFT))
+		return 0;
+	else
+		return 1;
+}
+
+
 void system_pre_init(void)
 {
 	/* Enable direct NVIC */
@@ -70,6 +93,10 @@ void system_pre_init(void)
 
 	/* Deassert nSIO_RESET */
 	MEC1322_PCR_PWR_RST_CTL &= ~(1 << 0);
+
+	if (MEC1322_VBAT_RAM(HIBDATA_INDEX_SAVED_RESET_FLAGS) &
+		RESET_FLAG_POWER_ON)
+		MEC1322_VBAT_RAM(MEC1322_IMAGETYPE_IDX) = 0;
 
 	check_reset_cause();
 }
@@ -370,14 +397,21 @@ void htimer_interrupt(void)
 }
 DECLARE_IRQ(MEC1322_IRQ_HTIMER, htimer_interrupt, 1);
 
-/* TODO(crosbug.com/p/37510): Implement bootloader */
+
 enum system_image_copy_t system_get_shrspi_image_copy(void)
 {
-	return SYSTEM_IMAGE_RW;
+	return MEC1322_VBAT_RAM(MEC1322_IMAGETYPE_IDX);
 }
 
-/* TODO(crosbug.com/p/37510): Implement bootloader */
-uint32_t system_get_lfw_address(uint32_t flash_addr)
+uint32_t system_get_lfw_address(enum system_image_copy_t copy)
 {
-	return CONFIG_RO_MEM_OFF;
+	uint32_t * const lfw_vector = (uint32_t * const) CONFIG_FLASH_BASE;
+
+	if (copy == SYSTEM_IMAGE_RW)
+		MEC1322_VBAT_RAM(MEC1322_IMAGETYPE_IDX)
+					= SYSTEM_IMAGE_RW;
+	else
+		MEC1322_VBAT_RAM(MEC1322_IMAGETYPE_IDX) = SYSTEM_IMAGE_RO;
+
+	return *(lfw_vector + 1);
 }
