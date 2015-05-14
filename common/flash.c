@@ -824,8 +824,11 @@ DECLARE_HOST_COMMAND(EC_CMD_FLASH_ERASE,
 
 static int flash_command_protect(struct host_cmd_handler_args *args)
 {
-	const struct ec_params_flash_protect *p = args->params;
 	struct ec_response_flash_protect *r = args->response;
+
+#if 0
+	const struct ec_params_flash_protect *p = args->params;
+
 
 	/*
 	 * Handle requesting new flags.  Note that we ignore the return code
@@ -851,6 +854,9 @@ static int flash_command_protect(struct host_cmd_handler_args *args)
 		EC_FLASH_PROTECT_ERROR_INCONSISTENT |
 		flash_physical_get_valid_flags();
 	r->writable_flags = flash_physical_get_writable_flags(r->flags);
+
+#endif
+	r->flags =0;
 
 	args->response_size = sizeof(*r);
 
