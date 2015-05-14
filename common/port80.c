@@ -65,7 +65,6 @@ void port80_task(void)
 
 	while (1) {
 		int data = port_80_read();
-
 		if (data != PORT_80_IGNORE)
 			port_80_write(data);
 

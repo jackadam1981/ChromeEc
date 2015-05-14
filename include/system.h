@@ -377,7 +377,7 @@ void system_reset_rtc_alarm(void);
  *
  * @param flash_addr  jump address of spi flash for RO or RW region
  */
-uint32_t system_get_lfw_address(uint32_t flash_addr);
+uint32_t system_get_lfw_address(enum system_image_copy_t copy);
 
 /**
  * Return whcih region is used in Code RAM
@@ -386,5 +386,6 @@ uint32_t system_get_lfw_address(uint32_t flash_addr);
  *
  */
 enum system_image_copy_t system_get_shrspi_image_copy(void);
+
 #endif
 #endif  /* __CROS_EC_SYSTEM_H */
