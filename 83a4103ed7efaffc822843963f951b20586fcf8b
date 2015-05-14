@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd8d8546_2e9c8768",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-14T00:42:15Z",
+      "side": 1,
+      "message": "Use ARRAY_SIZE.",
+      "revId": "83a4103ed7efaffc822843963f951b20586fcf8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd8d8546_0ef0aba9",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-14T00:42:15Z",
+      "side": 1,
+      "message": "Why retry 10 times? Leave a comment.",
+      "revId": "83a4103ed7efaffc822843963f951b20586fcf8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
