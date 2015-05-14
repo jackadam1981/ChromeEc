@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0da4fdb8_70e1104d",
+        "filename": "chip/host/config_chip.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-14T01:12:21Z",
+      "side": 1,
+      "message": "Yes! It\u0027s uniform across our internal flash boards.",
+      "parentUuid": "ed2329ea_614e7a4b",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 43
+      },
+      "revId": "ee46f75c6757ed03d7c3f6595b15422e452922e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed2329ea_a10a32d1",
         "filename": "chip/stm32/config_chip.h",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2015-05-13T20:01:59Z",
       "side": 1,
       "message": "I don\u0027t suppose this can go in board.h?",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 6
+      },
+      "revId": "ee46f75c6757ed03d7c3f6595b15422e452922e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0da4fdb8_d0e8fc27",
+        "filename": "chip/stm32/config_chip.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-14T01:12:21Z",
+      "side": 1,
+      "message": "Yup, board.h is included after config_chip.h in config.h, so it can go there. It\u0027s even already in zinger board.h.",
+      "parentUuid": "ed2329ea_a10a32d1",
       "range": {
         "startLine": 48,
         "startChar": 0,
