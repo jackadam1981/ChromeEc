@@ -85,18 +85,18 @@ static int spi_flash_readloc(uint8_t *buf_usr,
 	return spi_transaction(cmd, 4, buf_usr, bytes);
 }
 
-int spi_rwimage_load(void)
+int spi_image_load(uint32_t offset)
 {
 	uint8_t *buf = (uint8_t *) (CONFIG_RW_MEM_OFF + CONFIG_FLASH_BASE);
 	uint32_t i;
 
-	memset((void *)buf, 0xFF, (CONFIG_RW_SIZE - 4));
+	memset((void *)buf, 0xFF, (CONFIG_FW_IMAGE_SIZE - 4));
 
 	spi_enable(1);
 
-	for (i = 0; i < CONFIG_RW_SIZE; i += SPI_CHUNK_SIZE)
+	for (i = 0; i < CONFIG_FW_IMAGE_SIZE; i += SPI_CHUNK_SIZE)
 		spi_flash_readloc(&buf[i],
-					CONFIG_RW_IMAGE_FLASHADDR + i,
+					offset + i,
 					SPI_CHUNK_SIZE);
 
 	spi_enable(0);
@@ -227,8 +227,12 @@ void lfw_main()
 	switch (*image_type) {
 	case SYSTEM_IMAGE_RW:
 		init_addr = CONFIG_RW_MEM_OFF + CONFIG_FLASH_BASE;
-		spi_rwimage_load();
+		spi_image_load(CONFIG_RW_IMAGE_FLASHADDR);
+		break;
 	case SYSTEM_IMAGE_RO:
+		spi_image_load(CONFIG_RO_IMAGE_FLASHADDR +
+			CONFIG_BOOT_HEADER_STORAGE_SIZE +
+			CONFIG_LOADER_SIZE);
 	default:
 		init_addr = CONFIG_RO_MEM_OFF + CONFIG_FLASH_BASE;
 	}
