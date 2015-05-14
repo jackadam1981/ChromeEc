@@ -22,6 +22,30 @@
       "revId": "c040274ecced2008797609f152bab12fdee7e0b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd8d8546_54db2468",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-05-14T02:32:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd8d8546_aef157e3",
+      "range": {
+        "startLine": 312,
+        "startChar": 8,
+        "endLine": 312,
+        "endChar": 9
+      },
+      "revId": "c040274ecced2008797609f152bab12fdee7e0b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
