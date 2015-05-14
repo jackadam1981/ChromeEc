@@ -25,7 +25,7 @@
  */
 int flash_physical_read(int offset, int size, char *data)
 {
-	int ret;
+	int ret, i, read_size;
 
 	offset += CONFIG_FLASH_BASE_SPI;
 
@@ -34,8 +34,19 @@ int flash_physical_read(int offset, int size, char *data)
 		return EC_ERROR_INVAL;
 
 	spi_enable(1);
-	ret = spi_flash_read((uint8_t *)data, offset, size);
+	for (i = 0; i < size; i += read_size) {
+		watchdog_reload();
+		read_size = MIN((size - i), SPI_FLASH_MAX_READ_SIZE);
+		ret = spi_flash_read((uint8_t *)(data + i),
+					offset + i,
+					read_size);
+		if (ret != EC_SUCCESS)
+			break;
+		/* BUG: Multi-page writes fail if no delay */
+		msleep(1);
+	}
 	spi_enable(0);
+
 	return ret;
 }
 
@@ -60,7 +71,8 @@ int flash_physical_write(int offset, int size, const char *data)
 
 	spi_enable(1);
 	for (i = 0; i < size; i += write_size) {
-		write_size = MIN(size, SPI_FLASH_MAX_WRITE_SIZE);
+		watchdog_reload();
+		write_size = MIN((size - i), SPI_FLASH_MAX_WRITE_SIZE);
 		ret = spi_flash_write(offset + i,
 				      write_size,
 				      (uint8_t *)data + i);
@@ -87,6 +99,7 @@ int flash_physical_erase(int offset, int size)
 
 	offset += CONFIG_FLASH_BASE_SPI;
 	spi_enable(1);
+	watchdog_reload();
 	ret = spi_flash_erase(offset, size);
 	spi_enable(0);
 	return ret;
@@ -176,13 +189,14 @@ uint32_t flash_physical_get_valid_flags(void)
 uint32_t flash_physical_get_writable_flags(uint32_t cur_flags)
 {
 	uint32_t ret = 0;
+#if 0
 	enum spi_flash_wp wp_status = spi_flash_check_wp();
 
 	if (wp_status == SPI_WP_NONE || (wp_status == SPI_WP_HARDWARE &&
 	   !(cur_flags & EC_FLASH_PROTECT_GPIO_ASSERTED)))
 		ret = EC_FLASH_PROTECT_RO_AT_BOOT | EC_FLASH_PROTECT_RO_NOW |
 		      EC_FLASH_PROTECT_ALL_NOW;
-
+#endif
 	return ret;
 }
 
