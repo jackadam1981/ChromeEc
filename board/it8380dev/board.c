@@ -21,6 +21,7 @@
 #include "keyboard_scan.h"
 #include "timer.h"
 #include "lpc.h"
+#include "switch.h"
 
 /* Test GPIO interrupt function that toggles one LED. */
 void test_interrupt(enum gpio_signal signal)

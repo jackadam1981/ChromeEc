@@ -4,10 +4,10 @@
  */
 #include "config.h"
 
-#define FW_OFF_(section) CONFIG_FW_##section##_OFF
+#define FW_OFF_(section) CONFIG_##section##_MEM_OFF
 #define FW_OFF(section) (CONFIG_FLASH_BASE + FW_OFF_(section))
 
-#define FW_SIZE_(section) CONFIG_FW_##section##_SIZE
+#define FW_SIZE_(section) CONFIG_##section##_SIZE
 #define FW_SIZE(section) FW_SIZE_(section)
 
 
@@ -34,6 +34,11 @@ SECTIONS
         KEEP(OUTDIR/core/CORE/init.o (.text.vectirq))
         KEEP(OUTDIR/core/CORE/init.o (.text))
         *(.text*)
+
+        . = ALIGN(CONFIG_ILM_BLOCK_SIZE);
+        __flash_dma_start = .;
+        KEEP(*(.flash_direct_map))
+        . = ALIGN(CONFIG_ILM_BLOCK_SIZE);
 #ifdef COMPILE_FOR_RAM
     } > IRAM
 #else

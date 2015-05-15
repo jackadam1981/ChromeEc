@@ -7,6 +7,7 @@
 
 GPIO_INT(POWER_BUTTON_L, E, 4, GPIO_INT_BOTH | GPIO_PULL_UP,   power_button_interrupt)
 GPIO_INT(LID_OPEN,       E, 2, GPIO_INT_BOTH | GPIO_PULL_DOWN, lid_interrupt)
+GPIO_INT(WP_L,           E, 1, GPIO_INT_BOTH,                  switch_interrupt)         /* Write protect input */
 
 GPIO(H_LED0,         A, 0, GPIO_ODR_HIGH)
 GPIO(H_LED1,         A, 1, GPIO_ODR_HIGH)
