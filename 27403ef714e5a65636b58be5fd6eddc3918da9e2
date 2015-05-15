@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0da4fdb8_76649648",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-05-15T23:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd8d8546_082402db",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 30
+      },
+      "revId": "27403ef714e5a65636b58be5fd6eddc3918da9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd8d8546_281e1ee5",
         "filename": "driver/accelgyro_bmi160.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-05-15T21:31:56Z",
       "side": 1,
       "message": "if we comment about the function,\nthat would be nice to put all the expected fields (@param @return)",
+      "range": {
+        "startLine": 154,
+        "startChar": 3,
+        "endLine": 154,
+        "endChar": 36
+      },
+      "revId": "27403ef714e5a65636b58be5fd6eddc3918da9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eda6c9c2_5e8882f0",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-05-15T23:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd8d8546_281e1ee5",
       "range": {
         "startLine": 154,
         "startChar": 3,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "eda6c9c2_3e8bbeef",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-05-15T23:34:50Z",
+      "side": 1,
+      "message": "This is not the data path, it does not matter much.",
+      "parentUuid": "cd8d8546_28953eb9",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 60
+      },
+      "revId": "27403ef714e5a65636b58be5fd6eddc3918da9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0da4fdb8_f655e622",
         "filename": "driver/accelgyro_bmi160.c",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2015-05-15T21:31:56Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 169,
+        "endChar": 57
+      },
+      "revId": "27403ef714e5a65636b58be5fd6eddc3918da9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd8d8546_d5b372fc",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-05-15T23:34:50Z",
+      "side": 1,
+      "message": "same as above.",
+      "parentUuid": "0da4fdb8_f655e622",
       "range": {
         "startLine": 168,
         "startChar": 1,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "eda6c9c2_fea77687",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-05-15T23:34:50Z",
+      "side": 1,
+      "message": "All get_range could be replaced by s-\u003edrv_data.range.\nI have to make change to another accel to remove this code.",
+      "parentUuid": "cd8d8546_68d2e688",
+      "range": {
+        "startLine": 318,
+        "startChar": 1,
+        "endLine": 318,
+        "endChar": 22
+      },
+      "revId": "27403ef714e5a65636b58be5fd6eddc3918da9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0da4fdb8_160eea36",
         "filename": "driver/accelgyro_bmi160.c",
         "patchSetId": 1
@@ -128,6 +248,30 @@
       "writtenOn": "2015-05-15T21:31:56Z",
       "side": 1,
       "message": "BMI160_FLAG_SEC_I2C_EMABLED ?",
+      "range": {
+        "startLine": 439,
+        "startChar": 21,
+        "endLine": 439,
+        "endChar": 24
+      },
+      "revId": "27403ef714e5a65636b58be5fd6eddc3918da9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd8d8546_d292a8a5",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-05-15T23:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0da4fdb8_160eea36",
       "range": {
         "startLine": 439,
         "startChar": 21,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "0da4fdb8_112194ca",
+        "filename": "driver/accelgyro_bmi160.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-05-15T23:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd8d8546_c8b3da4a",
+      "range": {
+        "startLine": 288,
+        "startChar": 0,
+        "endLine": 288,
+        "endChar": 31
+      },
+      "revId": "27403ef714e5a65636b58be5fd6eddc3918da9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0da4fdb8_eb52636a",
         "filename": "driver/mag_bmm150.h",
         "patchSetId": 1
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "eda6c9c2_7e6c6688",
+        "filename": "driver/mag_bmm150.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-05-15T23:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0da4fdb8_eb52636a",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 32
+      },
+      "revId": "27403ef714e5a65636b58be5fd6eddc3918da9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eda6c9c2_23fbabba",
         "filename": "include/config.h",
         "patchSetId": 1
@@ -197,6 +389,30 @@
       "writtenOn": "2015-05-15T21:31:56Z",
       "side": 1,
       "message": "should we put it where the alpha order dictates us to put it ?\n\nshort of that, a comment about this stuff being magnometer ?",
+      "range": {
+        "startLine": 47,
+        "startChar": 7,
+        "endLine": 47,
+        "endChar": 31
+      },
+      "revId": "27403ef714e5a65636b58be5fd6eddc3918da9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0da4fdb8_b1bd28c9",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-05-15T23:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eda6c9c2_23fbabba",
       "range": {
         "startLine": 47,
         "startChar": 7,
