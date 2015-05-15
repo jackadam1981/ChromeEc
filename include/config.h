@@ -42,6 +42,9 @@
 /* Specify type of accelerometers attached. */
 #undef CONFIG_ACCEL_KXCJ9
 #undef CONFIG_ACCELGYRO_LSM6DS0
+#undef CONFIG_ACCELGYRO_BMI160
+
+#undef CONFIG_MAG_BMI160_BMM150
 
 /* Compile chip support for analog-to-digital convertor */
 #undef CONFIG_ADC
