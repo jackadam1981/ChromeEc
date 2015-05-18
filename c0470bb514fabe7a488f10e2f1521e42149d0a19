@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eda409cd_930e2ce7",
+        "filename": "common/fifo_mirror.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-05-18T17:31:15Z",
+      "side": 1,
+      "message": "Why mask here and in the set_read_idx?  You can just let the index increase and it will overflow at the natural word (uint16_t in this case) boundary.  Since the size of the FIFO is restricted to powers of two there is no issue when it wraps.  It also greatly simplifies things below.",
+      "revId": "c0470bb514fabe7a488f10e2f1521e42149d0a19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdabc59c_52b2e4c6",
+        "filename": "common/fifo_mirror.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-05-18T17:31:15Z",
+      "side": 1,
+      "message": "If you never wrap the index this can just be (*que-\u003ep_write_index - *que-\u003ep_read_index) \u003d\u003d get_size(que).",
+      "range": {
+        "startLine": 87,
+        "startChar": 9,
+        "endLine": 87,
+        "endChar": 21
+      },
+      "revId": "c0470bb514fabe7a488f10e2f1521e42149d0a19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdabc59c_d276f48c",
+        "filename": "common/fifo_mirror.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-05-18T17:31:15Z",
+      "side": 1,
+      "message": "This doesn\u0027t need to use the get_* accessors if you don\u0027t wrap the indixies in memory.",
+      "range": {
+        "startLine": 92,
+        "startChar": 8,
+        "endLine": 92,
+        "endChar": 20
+      },
+      "revId": "c0470bb514fabe7a488f10e2f1521e42149d0a19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0da23dbf_89dcc1e6",
+        "filename": "common/fifo_mirror.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-05-18T17:31:15Z",
+      "side": 1,
+      "message": "fifo_mirror_get_free_space might be a better name, since get_size above is for the total storage size, not the free bytes.",
+      "range": {
+        "startLine": 95,
+        "startChar": 4,
+        "endLine": 95,
+        "endChar": 24
+      },
+      "revId": "c0470bb514fabe7a488f10e2f1521e42149d0a19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eda409cd_f347b80e",
+        "filename": "common/fifo_mirror.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-05-18T17:31:15Z",
+      "side": 1,
+      "message": "This can just be *que-\u003ep_write_index - *que-\u003ep_read_index.",
+      "revId": "c0470bb514fabe7a488f10e2f1521e42149d0a19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
