@@ -141,6 +141,9 @@ enum power_state power_handle_state(enum power_state state)
 		break;
 
 	case POWER_G3S5:
+		/* Turn on SoC power */
+		gpio_set_level(GPIO_SUSPWRDNACK_SOC_EC, 0);
+
 		if (power_wait_signals(IN_PGOOD_S5)) {
 			chipset_force_shutdown();
 			return POWER_G3;
@@ -298,6 +301,10 @@ enum power_state power_handle_state(enum power_state state)
 	case POWER_S5G3:
 		/* Assert RSMRST# */
 		gpio_set_level(GPIO_PCH_RSMRST_L, 0);
+
+		/* Turn off SoC power */
+		gpio_set_level(GPIO_SUSPWRDNACK_SOC_EC, 1);
+
 		return POWER_G3;
 	}
 

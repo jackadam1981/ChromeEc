@@ -92,7 +92,7 @@ GPIO(EC_BL_DISABLE_L,   PORT(20), 2, GPIO_OUT_HIGH)                 /* EDP backl
 GPIO(SMC_SHUTDOWN,      PORT(20), 3, GPIO_OUT_LOW)                  /* Shutdown signal from EC to power sequencing PLD */
 GPIO(CROSS_BAR_MODE_NC, PORT(20), 4, GPIO_INPUT | GPIO_PULL_UP)     /* NC */
 
-GPIO(SUSPWRDNACK_SOC_EC,PORT(21), 0, GPIO_OUT_LOW)                  /* SUSPWRDNACK signal from MOIC device to EC */
+GPIO(SUSPWRDNACK_SOC_EC,PORT(21), 0, GPIO_OUT_HIGH)                 /* SUSPWRDNACK signal from MOIC device to EC */
 GPIO(GPIO_3_EC,         PORT(21), 1, GPIO_OUT_LOW)                  /* Sleep SOIX signal from SOC to EC */
 
 UNIMPLEMENTED(WP_L)

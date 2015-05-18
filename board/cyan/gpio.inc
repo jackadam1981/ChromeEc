@@ -94,7 +94,7 @@ GPIO(EC_BL_DISABLE_L,   PORT(20), 2, GPIO_OUT_HIGH)                   /* EDP bac
 GPIO(SMC_SHUTDOWN,      PORT(20), 3, GPIO_OUT_LOW)                    /* Shutdown signal from EC to power sequencing PLD */
 GPIO(NC_204,            PORT(20), 4, GPIO_INPUT | GPIO_PULL_UP)       /* NC */
 
-GPIO(SUSPWRDNACK_SOC_EC,PORT(21), 0, GPIO_OUT_LOW)                    /* SUSPWRDNACK signal from EC to MOIC device */
+GPIO(SUSPWRDNACK_SOC_EC,PORT(21), 0, GPIO_OUT_HIGH)                   /* SUSPWRDNACK signal from EC to MOIC device */
 GPIO(PCH_SLP_SX_L,      PORT(21), 1, GPIO_INT_BOTH_DSLEEP)            /* Sleep SOIX signal from SOC to EC */
 
 /* Alternate functions GPIO definition */
