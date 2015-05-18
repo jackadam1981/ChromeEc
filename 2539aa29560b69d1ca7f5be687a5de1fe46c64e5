@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0da23dbf_293a5594",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-18T17:22:01Z",
+      "side": 1,
+      "message": "increasing ADC sample time doesn\u0027t help at all, it only hurts us because we block while reading ADC. When you do an ADC read of C_REF, it really doesn\u0027t matter how accurate it is because we don\u0027t ever do an ADC conversion of that channel. That channel goes to the comparator module only.",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 20
+      },
+      "revId": "2539aa29560b69d1ca7f5be687a5de1fe46c64e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
