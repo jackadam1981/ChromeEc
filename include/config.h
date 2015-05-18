@@ -825,6 +825,11 @@
  */
 #undef CONFIG_I2C_MULTI_PORT_CONTROLLER
 
+/*
+ * I2C retry upon NACK
+ */
+#define CONFIG_I2C_NACK_RETRY_COUNT 1
+
 /*****************************************************************************/
 /* Current/Power monitor */
 

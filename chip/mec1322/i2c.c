@@ -221,68 +221,97 @@ int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 	int controller;
 	int started = (flags & I2C_XFER_START) ? 0 : 1;
 	uint8_t reg_sts;
+	int ret_byte_done;
+	int retry = 0;
 
 	if (out_size == 0 && in_size == 0)
 		return EC_SUCCESS;
 
-	select_port(port);
-	controller = i2c_port_to_controller(port);
-	wait_idle(controller);
-
-	reg_sts = MEC1322_I2C_STATUS(controller);
-	if (!started &&
-	    (((reg_sts & (STS_BER | STS_LAB)) || !(reg_sts & STS_NBB)) ||
-			    (get_line_level(controller)
-			    != I2C_LINE_IDLE))) {
-		CPRINTS("I2C%d bad status 0x%02x, SCL=%d, SDA=%d", port,
-			reg_sts,
-			get_line_level(controller) & I2C_LINE_SCL_HIGH,
-			get_line_level(controller) & I2C_LINE_SDA_HIGH);
-
-		/* Attempt to unwedge the controller. */
-		i2c_unwedge(controller);
-
-		/* Bus error, bus busy, or arbitration lost. Try reset. */
-		reset_controller(controller);
+	do {
 		select_port(port);
+		controller = i2c_port_to_controller(port);
+		wait_idle(controller);
 
-		/*
-		 * We don't know what edges the slave saw, so sleep long enough
-		 * that the slave will see the new start condition below.
-		 */
-		usleep(1000);
-	}
+		reg_sts = MEC1322_I2C_STATUS(controller);
+		if (!started &&
+		    (((reg_sts & (STS_BER | STS_LAB)) ||
+			!(reg_sts & STS_NBB)) ||
+			(get_line_level(controller) != I2C_LINE_IDLE))) {
+			CPRINTS("I2C%d bad status 0x%02x, SCL=%d, SDA=%d", port,
+				reg_sts,
+				get_line_level(controller) & I2C_LINE_SCL_HIGH,
+				get_line_level(controller) & I2C_LINE_SDA_HIGH);
 
-	if (out) {
-		MEC1322_I2C_DATA(controller) = (uint8_t)slave_addr;
+			/* Attempt to unwedge the controller. */
+			i2c_unwedge(controller);
 
-		/*
-		 * Clock out the slave address. Send START bit if start flag is
-		 * set.
-		 */
-		MEC1322_I2C_CTRL(controller) = CTRL_PIN | CTRL_ESO | CTRL_ENI |
-					       CTRL_ACK |
-					       (started ? 0 : CTRL_STA);
-		if (!started)
-			started = 1;
+			/* Bus error, bus busy, or arbitration lost.
+			 * Try reset.
+			 */
+			reset_controller(controller);
+			select_port(port);
 
-		for (i = 0; i < out_size; ++i) {
-			if (wait_byte_done(controller))
+			/*
+			 * We don't know what edges the slave saw, so sleep
+			 * long enough that the slave will see the new start
+			 * condition below.
+			 */
+			usleep(1000);
+		}
+
+		if (out) {
+			MEC1322_I2C_DATA(controller) = (uint8_t)slave_addr;
+
+			/*
+			 * Clock out the slave address. Send START bit
+			 * if start flag is set.
+			 */
+			MEC1322_I2C_CTRL(controller) =
+					CTRL_PIN | CTRL_ESO |
+					CTRL_ENI | CTRL_ACK |
+					(started ? 0 : CTRL_STA);
+			if (!started)
+				started = 1;
+
+			for (i = 0; i < out_size; ++i) {
+				ret_byte_done = wait_byte_done(controller);
+				if (ret_byte_done == STS_LRB)
+					goto retry_on_nack;
+				else if (ret_byte_done)
+					goto err_i2c_xfer;
+				MEC1322_I2C_DATA(controller) = out[i];
+			}
+
+			ret_byte_done = wait_byte_done(controller);
+			if (ret_byte_done == STS_LRB)
+				goto retry_on_nack;
+			else if (ret_byte_done)
 				goto err_i2c_xfer;
-			MEC1322_I2C_DATA(controller) = out[i];
-		}
-		if (wait_byte_done(controller))
-			goto err_i2c_xfer;
 
-		/*
-		 * Send STOP bit if the stop flag is on, and caller
-		 * doesn't expect to receive data.
-		 */
-		if ((flags & I2C_XFER_STOP) && in_size == 0) {
-			MEC1322_I2C_CTRL(controller) = CTRL_PIN | CTRL_ESO |
-						       CTRL_STO | CTRL_ACK;
+			/*
+			 * Send STOP bit if the stop flag is on, and caller
+			 * doesn't expect to receive data.
+			 */
+			if ((flags & I2C_XFER_STOP) && in_size == 0) {
+				MEC1322_I2C_CTRL(controller) =
+					CTRL_PIN | CTRL_ESO |
+					CTRL_STO | CTRL_ACK;
+			}
 		}
-	}
+
+		break;
+
+retry_on_nack:
+		retry++;
+		/* Send STOP and retry I2C transaction */
+		MEC1322_I2C_CTRL(controller) = CTRL_PIN | CTRL_ESO |
+					CTRL_STO | CTRL_ACK;
+		started = (flags & I2C_XFER_START) ? 0 : 1;
+		/* Add some delay before retry */
+		usleep(100);
+		if (retry > CONFIG_I2C_NACK_RETRY_COUNT)
+			return EC_ERROR_UNKNOWN;
+	} while (1);
 
 	if (in_size) {
 		if (out_size) {
