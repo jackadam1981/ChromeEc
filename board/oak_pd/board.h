@@ -55,6 +55,10 @@
 #undef  CONFIG_UART_RX_DMA
 #define CONFIG_UART_TX_BUF_SIZE 128
 #undef  CONFIG_USB_SWITCH_PI3USB9281
+#define CONFIG_USB_PD_DUAL_ROLE
+#define CONFIG_USB_PD_INTERNAL_COMP
+#define CONFIG_USB_PD_TCPC
+#define CONFIG_USBC_VCONN
 #define CONFIG_VBOOT_HASH
 #undef  CONFIG_WATCHDOG
 #undef  CONFIG_WATCHDOG_HELP
@@ -96,6 +100,20 @@ enum pwm_channel {
 	/* Number of PWM channels */
 	PWM_CH_COUNT
 };
+
+/* Port and task configuration */
+#define PD_PORT_COUNT 1
+#define PORT_TO_TASK_ID(port) TASK_ID_PD_C0
+#define TASK_ID_TO_PORT(id)   ((id) == TASK_ID_PD_C0 ? 0 : 1)
+
+/* DFP - 1.5A @ 5V : UFP connect threshold */
+#define PD_SRC_RD_THRESHOLD 400 /* mV */
+
+/* DFP - 1.5A @ 5V : no-connect voltage is 1.6V */
+#define PD_SRC_VNC 1600 /* mV */
+
+/* UFP-side : threshold for DFP connection detection */
+#define PD_SNK_VA   200 /* mV */
 
 #endif /* !__ASSEMBLER__ */
 
