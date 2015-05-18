@@ -26,7 +26,7 @@
 
 enum led_color {
 	LED_OFF = 0,
-	LED_GREEN,
+	LED_BLUE,
 	LED_AMBER,
 	LED_PINK,
 	LED_WHITE,
@@ -46,7 +46,7 @@ static int gandof_led_set_color_battery(enum led_color color)
 		gpio_set_level(GPIO_BAT_LED0_L,  1);
 		gpio_set_level(GPIO_BAT_LED1_L, 1);
 		break;
-	case LED_GREEN:
+	case LED_BLUE:
 		gpio_set_level(GPIO_BAT_LED0_L,  0);
 		gpio_set_level(GPIO_BAT_LED1_L, 1);
 		break;
@@ -101,12 +101,12 @@ int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 {
 	switch (led_id) {
 	case EC_LED_ID_BATTERY_LED:
-		if (brightness[EC_LED_COLOR_GREEN] != 0 &&
-		    brightness[EC_LED_COLOR_YELLOW] != 0)
+		if (brightness[EC_LED_COLOR_BLUE] != 0 &&
+		    brightness[EC_LED_COLOR_ORANGE] != 0)
 			gandof_led_set_color(led_id, LED_PINK);
-		else if (brightness[EC_LED_COLOR_GREEN] != 0)
-			gandof_led_set_color(led_id, LED_GREEN);
-		else if (brightness[EC_LED_COLOR_YELLOW] != 0)
+		else if (brightness[EC_LED_COLOR_BLUE] != 0)
+			gandof_led_set_color(led_id, LED_BLUE);
+		else if (brightness[EC_LED_COLOR_ORANGE] != 0)
 			gandof_led_set_color(led_id, LED_AMBER);
 		else
 			gandof_led_set_color(led_id, LED_OFF);
@@ -128,8 +128,8 @@ void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 	/* Ignoring led_id as both leds support the same colors */
 	switch (led_id) {
 	case EC_LED_ID_BATTERY_LED:
-		brightness_range[EC_LED_COLOR_GREEN] = 1;
-		brightness_range[EC_LED_COLOR_YELLOW] = 1;
+		brightness_range[EC_LED_COLOR_BLUE] = 1;
+		brightness_range[EC_LED_COLOR_ORANGE] = 1;
 		break;
 	case EC_LED_ID_POWER_LED:
 		brightness_range[EC_LED_COLOR_WHITE] = 1;
@@ -188,10 +188,10 @@ static void gandof_led_set_battery(void)
 	case PWR_STATE_CHARGE:
 		/* Make the percentage approximate to UI shown */
 		gandof_led_set_color_battery(permillage <
-			FULL_BATTERY_PERMILLAGE ? LED_AMBER : LED_GREEN);
+			FULL_BATTERY_PERMILLAGE ? LED_AMBER : LED_BLUE);
 		break;
 	case PWR_STATE_CHARGE_NEAR_FULL:
-		gandof_led_set_color_battery(LED_GREEN);
+		gandof_led_set_color_battery(LED_BLUE);
 		break;
 	case PWR_STATE_DISCHARGE:
 		/* Less than 3%, blink one second every two seconds */
@@ -218,9 +218,9 @@ static void gandof_led_set_battery(void)
 		if (chflags & CHARGE_FLAG_FORCE_IDLE)
 			gandof_led_set_color_battery(
 				(battery_ticks % LED_TOTAL_4SECS_TICKS <
-				 LED_ON_2SECS_TICKS) ? LED_GREEN : LED_AMBER);
+				 LED_ON_2SECS_TICKS) ? LED_BLUE : LED_AMBER);
 		else
-			gandof_led_set_color_battery(LED_GREEN);
+			gandof_led_set_color_battery(LED_BLUE);
 		break;
 	default:
 		/* Other states don't alter LED behavior */
