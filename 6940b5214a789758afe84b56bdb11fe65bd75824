@@ -915,6 +915,75 @@
       "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f00b02a7_36364661",
+        "filename": "board/oak_pd/usb_pd_policy.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-18T17:22:01Z",
+      "side": 1,
+      "message": "any idea what these should be? if not we can leave as is",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 31
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f00b02a7_5639ba50",
+        "filename": "board/oak_pd/usb_pd_policy.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-18T17:22:01Z",
+      "side": 1,
+      "message": "hopefully we don\u0027t still have deadband",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 40
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0fd0ac2_99a3eb7d",
+        "filename": "board/oak_pd/usb_pd_policy.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-18T17:22:01Z",
+      "side": 1,
+      "message": "we can actually source 1500mA",
+      "range": {
+        "startLine": 41,
+        "startChar": 20,
+        "endLine": 41,
+        "endChar": 23
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
