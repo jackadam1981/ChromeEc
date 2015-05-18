@@ -44,8 +44,9 @@ GPIO(SLAVE_I2C_SDA,          B, 7,  GPIO_INPUT)
 
 /* Case closed debugging. */
 GPIO(EC_INT,                 A, 14, GPIO_OUT_HIGH)
-GPIO(ENTERING_RW,            B, 5,  GPIO_OUT_LOW)
+GPIO(TP_194,                 B, 5,  GPIO_OUT_LOW)
 UNIMPLEMENTED(WP_L)
+UNIMPLEMENTED(ENTERING_RW)
 
 #if 0
 /* Alternate functions */
