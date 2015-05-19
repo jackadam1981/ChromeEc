@@ -70,6 +70,24 @@
     },
     {
       "key": {
+        "uuid": "ad4211dc_c074007e",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1117319
+      },
+      "writtenOn": "2015-05-19T18:33:18Z",
+      "side": 1,
+      "message": "I looked into it and found some issues. The linker script (core/cortex-m/ec.lds.S) refers to lowpower_ram if this define is enabled. npcx implements function lowpower_ram and not sure if mec needs to. \n\nThe other thing is that the npcx specification refer to a code ram interface and I did not know what that means beyond executing code on RAM.\n\nSimple enabling this define resulted in a watchdog exception and I did not debug it as I did not know how to resolve the above concerns.",
+      "parentUuid": "2d37016d_aaeaf370",
+      "revId": "80523185bfc0311160f2e011aa90c6c394e070f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d37016d_4afc8736",
         "filename": "include/system.h",
         "patchSetId": 1
