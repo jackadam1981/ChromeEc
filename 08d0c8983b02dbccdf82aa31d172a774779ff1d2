@@ -164,6 +164,30 @@
     },
     {
       "key": {
+        "uuid": "ed4089d5_df429b01",
+        "filename": "board/oak/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-19T15:17:34Z",
+      "side": 1,
+      "message": "Ok, so we will probably need to do something similar to Samus and open the pericom D+/D- switch when we are in the role of data UFP. I will add TODO.",
+      "parentUuid": "4d343566_852a8476",
+      "range": {
+        "startLine": 142,
+        "startChar": 5,
+        "endLine": 142,
+        "endChar": 25
+      },
+      "revId": "08d0c8983b02dbccdf82aa31d172a774779ff1d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2dc4617c_1c823903",
         "filename": "board/oak/usb_pd_policy.c",
         "patchSetId": 1
@@ -244,6 +268,30 @@
       "writtenOn": "2015-05-19T09:55:05Z",
       "side": 1,
       "message": "Can we mux port and event and let pd_task handle all ports?",
+      "range": {
+        "startLine": 23,
+        "startChar": 13,
+        "endLine": 23,
+        "endChar": 18
+      },
+      "revId": "08d0c8983b02dbccdf82aa31d172a774779ff1d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd4745eb_5e5a150c",
+        "filename": "board/oak_pd/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-19T15:17:34Z",
+      "side": 1,
+      "message": "In theory you could, but that would be a pretty significant rewrite. I think the biggest difficulty is there are multiple places in the PD task where we do a task_wait (the top of the state machine is the obvious one, but there are other subtle ones like in send_validate_message() or in sending the bist pattern). What happens when one port is sending bist and the other needs to wake up and run its state machine?",
+      "parentUuid": "0d3ebd49_4660067e",
       "range": {
         "startLine": 23,
         "startChar": 13,
