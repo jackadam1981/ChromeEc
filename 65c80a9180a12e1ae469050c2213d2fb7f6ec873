@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d8cfd85_33051242",
+        "filename": "common/queue.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-05-19T16:41:47Z",
+      "side": 1,
+      "message": "Should probably assert q-\u003epolicy-\u003eadd and -\u003eremove here too.",
+      "range": {
+        "startLine": 26,
+        "startChar": 11,
+        "endLine": 26,
+        "endChar": 17
+      },
+      "revId": "65c80a9180a12e1ae469050c2213d2fb7f6ec873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adfdb1c1_2b85bd0a",
+        "filename": "include/queue.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-05-19T16:41:47Z",
+      "side": 1,
+      "message": "Expand on the philosophy of how \u0026 why this works (like in stream_adaptor.h). Thanks!",
+      "revId": "65c80a9180a12e1ae469050c2213d2fb7f6ec873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
