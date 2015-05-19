@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "adfdb1c1_4b9fd961",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-19T16:50:55Z",
+      "side": 1,
+      "message": "Title should be \"Add sysjump support\".",
+      "revId": "80523185bfc0311160f2e011aa90c6c394e070f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d8cfd85_336192ba",
+        "filename": "chip/mec1322/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-19T16:50:55Z",
+      "side": 1,
+      "message": "This function really has nothing to do with GPIOs, and should probably be moved to system.c. Then, you can make check_reset_cause static again.",
+      "revId": "80523185bfc0311160f2e011aa90c6c394e070f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d8cfd85_b37b4273",
+        "filename": "chip/mec1322/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-19T16:50:55Z",
+      "side": 1,
+      "message": "Is warm reboot defined to be sysjump only? If so, we may want to rename this function accordingly?",
+      "revId": "80523185bfc0311160f2e011aa90c6c394e070f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d37016d_aaeaf370",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-19T16:50:55Z",
+      "side": 1,
+      "message": "Don\u0027t we want to enable CONFIG_CODERAM_ARCH for mec1322?",
+      "revId": "80523185bfc0311160f2e011aa90c6c394e070f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d37016d_4afc8736",
+        "filename": "include/system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-19T16:50:55Z",
+      "side": 1,
+      "message": "Don\u0027t we want to enable CONFIG_CODERAM_ARCH for mec1322?",
+      "revId": "80523185bfc0311160f2e011aa90c6c394e070f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
