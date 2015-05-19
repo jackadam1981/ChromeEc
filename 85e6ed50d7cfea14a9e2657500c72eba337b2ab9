@@ -142,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "2d37016d_2aaca398",
+        "filename": "board/oak_pd/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-19T16:33:17Z",
+      "side": 1,
+      "message": "The current size is ~39kB and we have already removed a lot of features. It would not be simple to get down to 32kB. Even defining the LTO optimization Vincent did only saves has ~1kB.",
+      "parentUuid": "0d3ebd49_06c75e49",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 38
+      },
+      "revId": "85e6ed50d7cfea14a9e2657500c72eba337b2ab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2dc4617c_7c8b7521",
         "filename": "board/oak_pd/board.h",
         "patchSetId": 1
