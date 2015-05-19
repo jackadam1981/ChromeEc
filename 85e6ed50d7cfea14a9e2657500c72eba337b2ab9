@@ -494,6 +494,30 @@
       "revId": "85e6ed50d7cfea14a9e2657500c72eba337b2ab9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d8cfd85_ffc66b4b",
+        "filename": "chip/stm32/config-stm32f05x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-19T19:14:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0dbb1df3_015f7077",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 36
+      },
+      "revId": "85e6ed50d7cfea14a9e2657500c72eba337b2ab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
