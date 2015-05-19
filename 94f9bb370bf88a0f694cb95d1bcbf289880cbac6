@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2d37016d_3b9b97be",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 2266,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-19T19:09:40Z",
+      "side": 1,
+      "message": "Done. This delay really doesn\u0027t matter much as long as it\u0027s long enough for the other side to finish sending bist pattern.",
+      "parentUuid": "eda409cd_749eeeae",
+      "range": {
+        "startLine": 2266,
+        "startChar": 26,
+        "endLine": 2266,
+        "endChar": 35
+      },
+      "revId": "94f9bb370bf88a0f694cb95d1bcbf289880cbac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cdabc59c_683dec8a",
         "filename": "common/usb_pd_tcpc.c",
         "patchSetId": 13
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "2d37016d_36d64e46",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-19T19:09:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdabc59c_683dec8a",
+      "range": {
+        "startLine": 142,
+        "startChar": 12,
+        "endLine": 142,
+        "endChar": 15
+      },
+      "revId": "94f9bb370bf88a0f694cb95d1bcbf289880cbac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cdabc59c_a8b654c9",
         "filename": "common/usb_pd_tcpc.c",
         "patchSetId": 13
@@ -59,6 +107,30 @@
       "writtenOn": "2015-05-18T20:51:32Z",
       "side": 1,
       "message": "nit, t",
+      "range": {
+        "startLine": 724,
+        "startChar": 18,
+        "endLine": 724,
+        "endChar": 19
+      },
+      "revId": "94f9bb370bf88a0f694cb95d1bcbf289880cbac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adfdb1c1_5957b3e2",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-19T19:09:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdabc59c_a8b654c9",
       "range": {
         "startLine": 724,
         "startChar": 18,
