@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0dbb1df3_a15d647c",
+        "filename": "board/oak/board.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-19T01:44:56Z",
+      "side": 1,
+      "message": "should be able to go up to 1MHz",
+      "range": {
+        "startLine": 60,
+        "startChar": 31,
+        "endLine": 60,
+        "endChar": 34
+      },
+      "revId": "c3de1f61872f904eeb56aeb06d004aebb61d62e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0dbb1df3_8153806f",
+        "filename": "util/flash_ec",
+        "patchSetId": 26
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-19T01:44:56Z",
+      "side": 1,
+      "message": "why is this here? as is, this will affect lots of boards.",
+      "range": {
+        "startLine": 190,
+        "startChar": 13,
+        "endLine": 190,
+        "endChar": 35
+      },
+      "revId": "c3de1f61872f904eeb56aeb06d004aebb61d62e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
