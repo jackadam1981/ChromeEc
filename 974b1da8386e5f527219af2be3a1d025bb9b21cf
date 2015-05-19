@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d37016d_2a1ede61",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 913,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-05-19T19:49:41Z",
+      "side": 1,
+      "message": "that\u0027s supposed to be a CPRINTF (for USBPD channel)",
+      "range": {
+        "startLine": 913,
+        "startChar": 2,
+        "endLine": 913,
+        "endChar": 11
+      },
+      "revId": "974b1da8386e5f527219af2be3a1d025bb9b21cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d37016d_0a7d1a69",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-05-19T19:49:41Z",
+      "side": 1,
+      "message": "doing 2 switchs : one for read , one for write (with all read-only stuff at the end), into 2 functions might help readability (and avoid indenting to death)",
+      "range": {
+        "startLine": 936,
+        "startChar": 1,
+        "endLine": 936,
+        "endChar": 15
+      },
+      "revId": "974b1da8386e5f527219af2be3a1d025bb9b21cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d8cfd85_1f9b2fbe",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-05-19T19:49:41Z",
+      "side": 1,
+      "message": "doing all that unaligned accesses junk to finally always pass an aligned buffer to function is a bit sad",
+      "range": {
+        "startLine": 1013,
+        "startChar": 2,
+        "endLine": 1014,
+        "endChar": 46
+      },
+      "revId": "974b1da8386e5f527219af2be3a1d025bb9b21cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d8cfd85_ff63cb3e",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1045,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-05-19T19:49:41Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 1045,
+        "startChar": 3,
+        "endLine": 1045,
+        "endChar": 9
+      },
+      "revId": "974b1da8386e5f527219af2be3a1d025bb9b21cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adfdb1c1_f44e664b",
+        "filename": "common/usb_pd_tcpm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-05-19T19:49:41Z",
+      "side": 1,
+      "message": "that\u0027s probably not terribly efficient (filling 0 for fun).\nsetting out[0] might be better",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 61
+      },
+      "revId": "974b1da8386e5f527219af2be3a1d025bb9b21cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d8cfd85_aa13c390",
+        "filename": "common/usb_pd_tcpm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-05-19T19:49:41Z",
+      "side": 1,
+      "message": "that\u0027s terrible, actually I think you should be able to do 2 i2c_xfer without I2C_XFER_SINGLE but the proper start/stop flags instead and avoid the copy",
+      "range": {
+        "startLine": 129,
+        "startChar": 2,
+        "endLine": 132,
+        "endChar": 35
+      },
+      "revId": "974b1da8386e5f527219af2be3a1d025bb9b21cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
