@@ -118,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "0d3ebd49_06c75e49",
+        "filename": "board/oak_pd/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-05-19T09:47:02Z",
+      "side": 1,
+      "message": "Current RO and RW sizes are close to 32KB. Maybe we can just use the default FW layout and disable some optional features.",
+      "parentUuid": "4dc1956b_3dff3b2e",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 38
+      },
+      "revId": "85e6ed50d7cfea14a9e2657500c72eba337b2ab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2dc4617c_7c8b7521",
         "filename": "board/oak_pd/board.h",
         "patchSetId": 1
@@ -129,6 +153,30 @@
       "writtenOn": "2015-05-19T01:38:20Z",
       "side": 1,
       "message": "is this the right value, or just copied from some other board?",
+      "range": {
+        "startLine": 44,
+        "startChar": 37,
+        "endLine": 44,
+        "endChar": 58
+      },
+      "revId": "85e6ed50d7cfea14a9e2657500c72eba337b2ab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d3ebd49_a64eb218",
+        "filename": "board/oak_pd/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-05-19T09:47:02Z",
+      "side": 1,
+      "message": "This should be STM32_PWR_CSR_EWUP2 (PC13), which connects to EC_VBUS_WAKE, not STM32_PWR_CSR_EWUP1 (PA0).",
+      "parentUuid": "2dc4617c_7c8b7521",
       "range": {
         "startLine": 44,
         "startChar": 37,
