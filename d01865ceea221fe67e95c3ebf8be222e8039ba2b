@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "adfdb1c1_b42c6ec6",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-05-19T19:23:03Z",
+      "side": 1,
+      "message": "where is that timeout value coming from ?",
+      "range": {
+        "startLine": 297,
+        "startChar": 24,
+        "endLine": 297,
+        "endChar": 34
+      },
+      "revId": "d01865ceea221fe67e95c3ebf8be222e8039ba2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d37016d_aa6d0e00",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-05-19T19:23:03Z",
+      "side": 1,
+      "message": "why this ?",
+      "range": {
+        "startLine": 495,
+        "startChar": 0,
+        "endLine": 495,
+        "endChar": 5
+      },
+      "revId": "d01865ceea221fe67e95c3ebf8be222e8039ba2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
