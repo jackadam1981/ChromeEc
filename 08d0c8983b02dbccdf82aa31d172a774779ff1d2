@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2dc4617c_3c85fd0a",
+        "filename": "board/oak/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-19T01:52:49Z",
+      "side": 1,
+      "message": "I put this as a hook temporarily, but really this shouldn\u0027t be a hook. this needs to wake the PD task with a special wake event type and the PD task needs to recognize that type and take the appropriate action.",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 35
+      },
+      "revId": "08d0c8983b02dbccdf82aa31d172a774779ff1d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4dc1956b_1d1597ef",
+        "filename": "board/oak/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-19T01:52:49Z",
+      "side": 1,
+      "message": "hm... how do we tell if port 0 has vbus vs. port 1?",
+      "range": {
+        "startLine": 73,
+        "startChar": 24,
+        "endLine": 73,
+        "endChar": 40
+      },
+      "revId": "08d0c8983b02dbccdf82aa31d172a774779ff1d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4dc1956b_bd234b5f",
+        "filename": "board/oak/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-19T01:52:49Z",
+      "side": 1,
+      "message": "these are probably copied over from some other board. will put todo to figure out the correct values.",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 35
+      },
+      "revId": "08d0c8983b02dbccdf82aa31d172a774779ff1d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4dc1956b_9d28873a",
+        "filename": "board/oak/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-19T01:52:49Z",
+      "side": 1,
+      "message": "will add TODO to figure out what these should be.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 29
+      },
+      "revId": "08d0c8983b02dbccdf82aa31d172a774779ff1d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0dbb1df3_ecbc73fe",
+        "filename": "board/oak/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-19T01:52:49Z",
+      "side": 1,
+      "message": "I need to enable this, but more thought needs to be taken about enabling/disabling CHARGE_EN or else we will end up charging from our own 5V supply.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 6
+      },
+      "revId": "08d0c8983b02dbccdf82aa31d172a774779ff1d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4dc1956b_7d0ed3e9",
+        "filename": "board/oak/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-19T01:52:49Z",
+      "side": 1,
+      "message": "does mediatek chipset support being a USB device on the type-C ports?",
+      "range": {
+        "startLine": 142,
+        "startChar": 5,
+        "endLine": 142,
+        "endChar": 25
+      },
+      "revId": "08d0c8983b02dbccdf82aa31d172a774779ff1d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2dc4617c_1c823903",
+        "filename": "board/oak/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-19T01:52:49Z",
+      "side": 1,
+      "message": "function needs to be implemented.",
+      "range": {
+        "startLine": 206,
+        "startChar": 5,
+        "endLine": 206,
+        "endChar": 23
+      },
+      "revId": "08d0c8983b02dbccdf82aa31d172a774779ff1d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4dc1956b_5d0b0fd8",
+        "filename": "board/oak/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-19T01:52:49Z",
+      "side": 1,
+      "message": "function needs to be implemented",
+      "range": {
+        "startLine": 225,
+        "startChar": 4,
+        "endLine": 225,
+        "endChar": 21
+      },
+      "revId": "08d0c8983b02dbccdf82aa31d172a774779ff1d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2dc4617c_fcef85ca",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-19T01:52:49Z",
+      "side": 1,
+      "message": "need to check if deep sleep is working.",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 34
+      },
+      "revId": "08d0c8983b02dbccdf82aa31d172a774779ff1d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2dc4617c_dcf4c19f",
+        "filename": "board/oak_pd/usb_pd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-19T01:52:49Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 204,
+        "startChar": 2,
+        "endLine": 204,
+        "endChar": 10
+      },
+      "revId": "08d0c8983b02dbccdf82aa31d172a774779ff1d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0dbb1df3_ccc1af84",
+        "filename": "board/oak_pd/usb_pd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-19T01:52:49Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 220,
+        "startChar": 1,
+        "endLine": 220,
+        "endChar": 9
+      },
+      "revId": "08d0c8983b02dbccdf82aa31d172a774779ff1d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
