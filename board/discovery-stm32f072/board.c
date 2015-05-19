@@ -39,8 +39,14 @@ static enum gpio_signal const usb_gpio_list[] = {
 	GPIO_LED_R,
 };
 
+static void tick_func(void)
+{
+	button_event(0);
+}
+
 USB_GPIO_CONFIG(usb_gpio,
 		usb_gpio_list,
+		tick_func,
 		USB_IFACE_GPIO,
 		USB_EP_GPIO)
 

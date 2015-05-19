@@ -9,6 +9,12 @@
 #include "registers.h"
 #include "usb_gpio.h"
 
+void usb_gpio_tick(struct usb_gpio_config const *config)
+{
+	if (config->cb_func && config->cb_state_ptr && *(config->cb_state_ptr))
+		config->cb_func();
+}
+
 void usb_gpio_tx(struct usb_gpio_config const *config)
 {
 	size_t   i;
@@ -38,6 +44,10 @@ void usb_gpio_rx(struct usb_gpio_config const *config)
 	uint32_t clear_mask  = ((uint32_t)(config->rx_ram[2]) |
 			        (uint32_t)(config->rx_ram[3]) << 16);
 	uint32_t ignore_mask = set_mask & clear_mask;
+
+	/* To reenable the callback, send set=0 clr=0 */
+	if (config->cb_state_ptr)
+		*(config->cb_state_ptr) = !(set_mask | clear_mask);
 
 	if ((btable_ep[config->endpoint].rx_count & 0x3ff) ==
 	    USB_GPIO_RX_PACKET_SIZE) {

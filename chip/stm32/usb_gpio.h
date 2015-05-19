@@ -29,6 +29,12 @@ struct usb_gpio_config {
 	 */
 	enum gpio_signal const *gpios;
 	size_t num_gpios;
+
+	/*
+	 * tick callback function and enable flag
+	 */
+	void (*cb_func)(void);
+	int *cb_state_ptr;
 };
 
 #define USB_GPIO_RX_PACKET_SIZE 8
@@ -49,17 +55,21 @@ struct usb_gpio_config {
  */
 #define USB_GPIO_CONFIG(NAME,						\
 			GPIO_LIST,					\
+			TICK_CALLBACK,					\
 			INTERFACE,					\
 			ENDPOINT)					\
 	BUILD_ASSERT(ARRAY_SIZE(GPIO_LIST) <= 32);			\
 	static usb_uint CONCAT2(NAME, _ep_rx_buffer)[USB_GPIO_RX_PACKET_SIZE / 2] __usb_ram;	\
 	static usb_uint CONCAT2(NAME, _ep_tx_buffer)[USB_GPIO_TX_PACKET_SIZE / 2] __usb_ram;	\
+	static int CONCAT2(NAME, _cb_enabled) = 1;			\
 	struct usb_gpio_config const NAME = {				\
-		.endpoint  = ENDPOINT,					\
-		.rx_ram    = CONCAT2(NAME, _ep_rx_buffer),		\
-		.tx_ram    = CONCAT2(NAME, _ep_tx_buffer),		\
-		.gpios     = GPIO_LIST,					\
-		.num_gpios = ARRAY_SIZE(GPIO_LIST),			\
+		.endpoint     = ENDPOINT,				\
+		.rx_ram       = CONCAT2(NAME, _ep_rx_buffer),		\
+		.tx_ram       = CONCAT2(NAME, _ep_tx_buffer),		\
+		.gpios        = GPIO_LIST,				\
+		.num_gpios    = ARRAY_SIZE(GPIO_LIST),			\
+		.cb_func      = TICK_CALLBACK,				\
+		.cb_state_ptr = &CONCAT2(NAME, _cb_enabled),		\
 	};								\
 	const struct usb_interface_descriptor				\
 	USB_IFACE_DESC(INTERFACE) = {					\
@@ -106,7 +116,14 @@ struct usb_gpio_config {
 	USB_DECLARE_EP(ENDPOINT,					\
 		       CONCAT2(NAME, _ep_tx),				\
 		       CONCAT2(NAME, _ep_rx),				\
-		       CONCAT2(NAME, _ep_reset));
+		       CONCAT2(NAME, _ep_reset));			\
+	static void CONCAT2(NAME, _ep_tick)(void)			\
+	{								\
+		usb_gpio_tick(&NAME);					\
+	}								\
+	DECLARE_HOOK(HOOK_TICK, CONCAT2(NAME, _ep_tick), \
+		     HOOK_PRIO_DEFAULT);
+
 
 /*
  * These functions are used by the trampoline functions defined above to
@@ -115,5 +132,6 @@ struct usb_gpio_config {
 void usb_gpio_tx(struct usb_gpio_config const *config);
 void usb_gpio_rx(struct usb_gpio_config const *config);
 void usb_gpio_reset(struct usb_gpio_config const *config);
+void usb_gpio_tick(struct usb_gpio_config const *config);
 
 #endif /* CHIP_STM32_USB_GPIO_H */
