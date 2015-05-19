@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2dc4617c_9c95293e",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-19T01:38:20Z",
+      "side": 1,
+      "message": "true, but 5us still seems a reasonable delay here. i can add a todo to test further.",
+      "parentUuid": "eda409cd_6dbcdc47",
+      "range": {
+        "startLine": 28,
+        "startChar": 3,
+        "endLine": 28,
+        "endChar": 43
+      },
+      "revId": "85e6ed50d7cfea14a9e2657500c72eba337b2ab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cdabc59c_ef8b3b70",
         "filename": "board/oak_pd/board.c",
         "patchSetId": 1
@@ -41,6 +65,75 @@
         "startChar": 1,
         "endLine": 80,
         "endChar": 62
+      },
+      "revId": "85e6ed50d7cfea14a9e2657500c72eba337b2ab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4dc1956b_1dfc7735",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-19T01:38:20Z",
+      "side": 1,
+      "message": "should work at 1MHz",
+      "range": {
+        "startLine": 89,
+        "startChar": 28,
+        "endLine": 89,
+        "endChar": 31
+      },
+      "revId": "85e6ed50d7cfea14a9e2657500c72eba337b2ab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4dc1956b_3dff3b2e",
+        "filename": "board/oak_pd/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-19T01:38:20Z",
+      "side": 1,
+      "message": "is this really the best way to only build one image? ryu_sh doesn\u0027t do all this. i will investigate.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 38
+      },
+      "revId": "85e6ed50d7cfea14a9e2657500c72eba337b2ab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2dc4617c_7c8b7521",
+        "filename": "board/oak_pd/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-19T01:38:20Z",
+      "side": 1,
+      "message": "is this the right value, or just copied from some other board?",
+      "range": {
+        "startLine": 44,
+        "startChar": 37,
+        "endLine": 44,
+        "endChar": 58
       },
       "revId": "85e6ed50d7cfea14a9e2657500c72eba337b2ab9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -117,6 +210,30 @@
     },
     {
       "key": {
+        "uuid": "4dc1956b_fd19c332",
+        "filename": "board/oak_pd/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-19T01:38:20Z",
+      "side": 1,
+      "message": "i broke out adding the PD task to the next CL since it adds a lot of complexity. wanted to start simple.",
+      "parentUuid": "0da23dbf_20a7ff36",
+      "range": {
+        "startLine": 19,
+        "startChar": 8,
+        "endLine": 19,
+        "endChar": 24
+      },
+      "revId": "85e6ed50d7cfea14a9e2657500c72eba337b2ab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0da23dbf_80980bf2",
         "filename": "chip/stm32/config-stm32f05x.h",
         "patchSetId": 1
@@ -128,6 +245,30 @@
       "writtenOn": "2015-05-19T01:30:25Z",
       "side": 1,
       "message": "there is no USB ?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 36
+      },
+      "revId": "85e6ed50d7cfea14a9e2657500c72eba337b2ab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0dbb1df3_015f7077",
+        "filename": "chip/stm32/config-stm32f05x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-19T01:38:20Z",
+      "side": 1,
+      "message": "no USB, will delete",
+      "parentUuid": "0da23dbf_80980bf2",
       "range": {
         "startLine": 26,
         "startChar": 0,
