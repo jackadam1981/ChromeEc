@@ -39,6 +39,13 @@ static enum gpio_signal const usb_gpio_list[] = {
 	GPIO_LED_R,
 };
 
+void usb_gpio_tick(struct usb_gpio_config const *config)
+{
+	if (config->state->set_mask || config->state->clear_mask)
+		return;
+	button_event(0);
+}
+
 USB_GPIO_CONFIG(usb_gpio,
 		usb_gpio_list,
 		USB_IFACE_GPIO,
