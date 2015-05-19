@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "0d8cfd85_8424b6dc",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-05-19T19:23:03Z",
+      "side": 1,
+      "message": "where is that timeout value coming from ?",
+      "range": {
+        "startLine": 297,
+        "startChar": 24,
+        "endLine": 297,
+        "endChar": 34
+      },
+      "revId": "94f9bb370bf88a0f694cb95d1bcbf289880cbac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eda409cd_749eeeae",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 13
