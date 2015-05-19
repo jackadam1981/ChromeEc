@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "adfdb1c1_bf220722",
+        "filename": "board/fruitpie/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-05-19T21:29:16Z",
+      "side": 1,
+      "message": "that\u0027s not a great name in a generic file",
+      "range": {
+        "startLine": 112,
+        "startChar": 8,
+        "endLine": 112,
+        "endChar": 24
+      },
+      "revId": "6a0185e5663f148a7f8b08785b40050b892de6f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d37016d_145f7d77",
+        "filename": "board/fruitpie/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-05-19T21:29:16Z",
+      "side": 1,
+      "message": "maybe in the common header we should be put something like :\n#if PD_PORT_COUNT \u003d\u003d 1\n#define PORT_TO_TASK_ID(port) TASK_ID_PD\n#define TASK_ID_TO_PORT(id)   0\n#elif PD_PORT_COUNT \u003d\u003d 2\n#define PORT_TO_TASK_ID(port) ((port) ? TASK_ID_PD_C1 : TASK_ID_PD_C0)\n#define TASK_ID_TO_PORT(id)   ((id) \u003d\u003d TASK_ID_PD_C0 ? 0 : 1)\n#endif",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 31
+      },
+      "revId": "6a0185e5663f148a7f8b08785b40050b892de6f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d8cfd85_178233d9",
+        "filename": "board/fruitpie/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-05-19T21:29:16Z",
+      "side": 1,
+      "message": "isn\u0027t that related to the PHY ?\n\nby the way, shouldn\u0027t we put that one in a common header ?",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 38
+      },
+      "revId": "6a0185e5663f148a7f8b08785b40050b892de6f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d8cfd85_77913f1e",
+        "filename": "board/hoho/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-05-19T21:29:16Z",
+      "side": 1,
+      "message": "we should probably define 2/3 constants for those thresholds in millivolts",
+      "range": {
+        "startLine": 98,
+        "startChar": 19,
+        "endLine": 98,
+        "endChar": 23
+      },
+      "revId": "6a0185e5663f148a7f8b08785b40050b892de6f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
