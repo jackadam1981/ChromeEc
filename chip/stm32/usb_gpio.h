@@ -106,7 +106,14 @@ struct usb_gpio_config {
 	USB_DECLARE_EP(ENDPOINT,					\
 		       CONCAT2(NAME, _ep_tx),				\
 		       CONCAT2(NAME, _ep_rx),				\
-		       CONCAT2(NAME, _ep_reset));
+		       CONCAT2(NAME, _ep_reset));			\
+	static void CONCAT2(NAME, _ep_tick)(void)			\
+	{								\
+		usb_gpio_tick(&NAME);					\
+	}								\
+	DECLARE_HOOK(HOOK_TICK, CONCAT2(NAME, _ep_tick), \
+		     HOOK_PRIO_DEFAULT);
+
 
 /*
  * These functions are used by the trampoline functions defined above to
@@ -115,5 +122,6 @@ struct usb_gpio_config {
 void usb_gpio_tx(struct usb_gpio_config const *config);
 void usb_gpio_rx(struct usb_gpio_config const *config);
 void usb_gpio_reset(struct usb_gpio_config const *config);
+void usb_gpio_tick(struct usb_gpio_config const *config);
 
 #endif /* CHIP_STM32_USB_GPIO_H */
