@@ -13,18 +13,15 @@
 
 /* Optional modules */
 #define CONFIG_ADC
-#define CONFIG_PECI
 #define CONFIG_PWM
-#define CONFIG_SPI
-#define CONFIG_LPC /* Used in Intel-based platform for host interface */
+#define CONFIG_SHI /* Used in ARM-based platform for host interface */
 
 /* Optional features */
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands for testing */
-#define CONFIG_SPI_FLASH
 #define CONFIG_SPI_FLASH_SIZE          0x00800000 /* 8MB spi flash */
 #define CONFIG_SPI_FLASH_W25Q64
 #define CONFIG_KEYBOARD_BOARD_CONFIG
-#define CONFIG_KEYBOARD_PROTOCOL_8042
+#define CONFIG_KEYBOARD_PROTOCOL_MKBP /* Instead of 8042 protocol of keyboard */
 #define CONFIG_POWER_BUTTON
 #define CONFIG_VBOOT_HASH
 #define CONFIG_PWM_KBLIGHT
@@ -43,8 +40,8 @@
 #define CONFIG_FANS                     1
 
 /* Optional feature - used by nuvoton */
-#define CONFIG_PWM_INPUT_LFCLK          /* PWM use LFCLK for input clock */
-#define CONFIG_MFT_INPUT_LFCLK          /* MFT use LFCLK for input clock */
+#define CONFIG_PWM_INPUT_LFCLK  /* PWM use LFCLK for input clock */
+#define CONFIG_MFT_INPUT_LFCLK  /* MFT use LFCLK for input clock */
 #define CONFIG_I2C0_BUS2      0 /* 0:GPIOB4/B5 1:GPIOB2/B3 as I2C0 */
 #define CONFIG_UART_MODULE2   0 /* 0:GPIO10/11 1:GPIO64/65 as UART */
 #define CONFIG_JTAG_MODULE2   0 /* 0:GPIO21/17/16/20 1:GPIOD5/E2/D4/E5 as JTAG*/

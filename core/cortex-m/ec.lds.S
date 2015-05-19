@@ -34,6 +34,13 @@ MEMORY
 }
 SECTIONS
 {
+#if defined(SECTION_IS_RO) && defined(CONFIG_CODERAM_ARCH)
+    .header : {
+        /* header used by npcx booter in RO region */
+        KEEP(*(.header))
+        . = ALIGN(64);
+    } > FLASH
+#endif
     .text : {
         OUTDIR/core/CORE/init.o (.text.vecttable)
         . = ALIGN(4);
@@ -55,7 +62,7 @@ SECTIONS
         /* Entering deep idle FW for better power consumption */
         KEEP(*(.lowpower_ram))
         __flash_lpfw_end = .;
-        } > CDRAM AT > FLASH
+    } > CDRAM AT > FLASH
 #else
 #ifdef COMPILE_FOR_RAM
     } > IRAM
@@ -171,7 +178,7 @@ SECTIONS
 #endif
         . = ALIGN(4);
 #ifdef CONFIG_CODERAM_ARCH
-	} > CDRAM AT > FLASH
+    } > CDRAM AT > FLASH
 #else
 #ifdef COMPILE_FOR_RAM
     } > IRAM
@@ -208,7 +215,6 @@ SECTIONS
     .data : {
 #else
 #ifdef CONFIG_CODERAM_ARCH
-	__data_start = . ;
 	.data : AT(LOADADDR(.rodata) + SIZEOF(.rodata)) {
 #else
     .data : AT(ADDR(.rodata) + SIZEOF(.rodata)) {

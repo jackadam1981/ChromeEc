@@ -371,13 +371,23 @@ void system_reset_rtc_alarm(void);
 
 #ifdef CONFIG_CODERAM_ARCH
 /**
- * Determine which address should be jumped and return address of littel FW
+ * Jump to ROM function in booter
+ *
+ * Note: This feature is used for downloading FW from flash to code ram
+ *
+ * @param addr_entry      address of entry point after jumping
+ *
+ */
+void system_jump_to_booter(uint32_t addr_entry);
+
+/**
+ * Save base address to determine which region will jump
  *
  * Note: This feature is used for code ram arch
  *
  * @param flash_addr  jump address of spi flash for RO or RW region
  */
-uint32_t system_get_lfw_address(uint32_t flash_addr);
+void system_save_base_address(uint32_t flash_addr);
 
 /**
  * Return whcih region is used in Code RAM
