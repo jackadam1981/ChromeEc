@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad4211dc_8c570fe2",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-05-20T17:32:11Z",
+      "side": 1,
+      "message": "Instead of assigning the value here and then again at line 309 below for retry, why don\u0027t just move this inside the do/while loop after line 230?",
+      "revId": "e105d916aba2c15dd3767be21e5b771c31c4c684",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
