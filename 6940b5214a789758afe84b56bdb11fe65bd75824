@@ -941,6 +941,30 @@
     },
     {
       "key": {
+        "uuid": "0d3ebd49_4088eef0",
+        "filename": "board/oak_pd/usb_pd_policy.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1106760
+      },
+      "writtenOn": "2015-05-20T03:30:11Z",
+      "side": 1,
+      "message": "Oak is planed to use 45W adapter with 2.25A",
+      "parentUuid": "f00b02a7_36364661",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 31
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f00b02a7_5639ba50",
         "filename": "board/oak_pd/usb_pd_policy.c",
         "patchSetId": 18
