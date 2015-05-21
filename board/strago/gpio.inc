@@ -16,10 +16,10 @@ GPIO_INT(PCH_SLP_S3_L,      PORT(20), 6, GPIO_INT_BOTH_DSLEEP | GPIO_PULL_UP,   
 GPIO(KBD_KSO2,          PORT(0),  1, GPIO_KB_OUTPUT_COL2)           /* Negative edge triggered irq. */
 
 GPIO(USB_ILIM_SEL,      PORT(1),  3, GPIO_OUT_HIGH)                 /* USB current control */
-
 GPIO(I2C_PORT0_SCL,     PORT(1),  5, GPIO_ODR_HIGH)
 GPIO(I2C_PORT0_SDA,     PORT(1),  6, GPIO_ODR_HIGH)
-GPIO(BOARD_ID2,         PORT(1),  7, GPIO_INPUT | GPIO_PULL_UP)     /* NC */
+GPIO(BOARD_VERSION3,    PORT(1),  7, GPIO_INPUT)                    /* BOARD_ID2 */
+
 GPIO(I2C_PORT1_SCL,     PORT(2),  2, GPIO_ODR_HIGH)
 GPIO(I2C_PORT1_SDA,     PORT(2),  3, GPIO_ODR_HIGH)
 GPIO(I2C_PORT2_SCL,     PORT(2),  0, GPIO_ODR_HIGH)
@@ -66,7 +66,7 @@ GPIO(PERICOM_INT,    	PORT(12), 4, GPIO_INT_BOTH)                 /* */
 GPIO(GYRO_INT2,         PORT(12), 7, GPIO_INT_FALLING)              /* Gyro sensor interrupt 2 to EC */
 
 GPIO(EC_PLUG_DETECT,    PORT(13), 2, GPIO_INT_BOTH)
-GPIO(BOARD_ID1,         PORT(15), 4, GPIO_INPUT | GPIO_PULL_UP)     /* Board Id 1 */
+GPIO(BOARD_VERSION2,    PORT(13), 4, GPIO_INPUT)                    /* BOARD_ID1 */
 GPIO(NC_135,            PORT(13), 5, GPIO_INPUT | GPIO_PULL_UP)     /* NC */
 
 GPIO(THERMAL_PROBE_EN_L,PORT(14), 0, GPIO_OUT_HIGH)
@@ -78,7 +78,7 @@ GPIO(ALS_INT,           PORT(14), 7, GPIO_INT_FALLING)              /* ALS senso
 GPIO(WLAN_OFF_L,        PORT(15), 0, GPIO_ODR_HIGH)                 /* Wireless LAN */
 GPIO(CPU_PROCHOT,       PORT(15), 1, GPIO_OUT_LOW)
 GPIO(KBD_IRQ_L,         PORT(15), 2, GPIO_ODR_HIGH)                 /* Negative edge triggered irq. */
-GPIO(BOARD_ID0,         PORT(15), 4, GPIO_INPUT | GPIO_PULL_UP)     /* NC */
+GPIO(BOARD_VERSION1,    PORT(15), 4, GPIO_INPUT)                    /* BOARD_ID0 */
 GPIO(CORE_PWROK,        PORT(15), 5, GPIO_ODR_HIGH)                 /* CORE_PWR_OK_R */
 GPIO(LID_OPEN2,         PORT(15), 6, GPIO_INT_BOTH_DSLEEP)          /* LID_OPEN_OUT2_R */
 GPIO(PCH_SUSPWRDNACK,   PORT(15), 7, GPIO_INT_FALLING)              /* PMC SUSPWRDNACK signal from SOC to EC */
