@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "adfdb1c1_75a93d88",
+        "filename": "include/queue.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-05-21T18:19:37Z",
+      "side": 1,
+      "message": "s/any/and/",
+      "range": {
+        "startLine": 24,
+        "startChar": 9,
+        "endLine": 24,
+        "endChar": 12
+      },
+      "revId": "796f442043438c1d1a2b04f9bde086d227d9ac55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d7ad934_2cacbd15",
+        "filename": "include/queue.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-05-21T18:19:37Z",
+      "side": 1,
+      "message": "Huh. I didn\u0027t know C allowed compound literals like this. Oh - it\u0027s from C99. I learned something today. I\u0027m gonna use this a lot now.",
+      "range": {
+        "startLine": 89,
+        "startChar": 18,
+        "endLine": 89,
+        "endChar": 43
+      },
+      "revId": "796f442043438c1d1a2b04f9bde086d227d9ac55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
