@@ -989,6 +989,30 @@
     },
     {
       "key": {
+        "uuid": "4d343566_36d09078",
+        "filename": "board/oak_pd/usb_pd_policy.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-05-21T04:25:27Z",
+      "side": 1,
+      "message": "It can ask for more. So setting it to 20V 3A is correct.",
+      "parentUuid": "ed4089d5_c553aebf",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 31
+      },
+      "revId": "6940b5214a789758afe84b56bdb11fe65bd75824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f00b02a7_5639ba50",
         "filename": "board/oak_pd/usb_pd_policy.c",
         "patchSetId": 18
