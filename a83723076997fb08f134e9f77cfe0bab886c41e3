@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d031dc0_9bc28fd7",
+        "filename": "driver/mcdp28x0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-05-21T21:39:40Z",
+      "side": 0,
+      "message": "This doesn\u0027t actually print the bytes pushed in from 3 writes above so I\u0027m removing to avoid confusion for now.",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 40
+      },
+      "revId": "a83723076997fb08f134e9f77cfe0bab886c41e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
