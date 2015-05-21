@@ -18,7 +18,7 @@ GPIO(NC_012,            PORT(1),  2, GPIO_INPUT | GPIO_PULL_UP)       /* NC */
 GPIO(USB_ILIM_SEL,      PORT(1),  3, GPIO_OUT_HIGH)                   /* USB current control */
 GPIO(I2C0_0_SCL,        PORT(1),  5, GPIO_ODR_HIGH)
 GPIO(I2C0_0_SDA,        PORT(1),  6, GPIO_ODR_HIGH)
-GPIO(BOARD_ID2,         PORT(1),  7, GPIO_INPUT)                      /* Board ID */
+GPIO(BOARD_VERSION3,    PORT(1),  7, GPIO_INPUT)                      /* Board ID */
 
 GPIO(I2C2_SCL,          PORT(2),  0, GPIO_ODR_HIGH)
 GPIO(I2C2_SDA,          PORT(2),  1, GPIO_ODR_HIGH)
@@ -66,7 +66,7 @@ GPIO(GYRO_INT2,         PORT(12), 7, GPIO_INT_FALLING)                /* Gyro se
 
 GPIO(NC_132,            PORT(13), 2, GPIO_INPUT | GPIO_PULL_UP)       /* NC */
 GPIO(BAT_LED0_L,        PORT(13), 3, GPIO_ODR_HIGH)                   /* Battery charging LED - blue */
-GPIO(BOARD_ID1,         PORT(13), 4, GPIO_INPUT)                      /* Board ID */
+GPIO(BOARD_VERSION2,    PORT(13), 4, GPIO_INPUT)                      /* Board ID */
 GPIO(WWAN_PWREN,        PORT(13), 5, GPIO_OUT_HIGH)                   /* Enable power for WWAN - PROBE_DETECT_L */
 GPIO(BAT_LED1_L,        PORT(13), 6, GPIO_ODR_HIGH)                   /* Battery charging LED - orange */
 
@@ -80,7 +80,7 @@ GPIO(EC_KBD_ALERT,      PORT(14), 7, GPIO_OUT_HIGH)
 GPIO(WLAN_OFF_L,        PORT(15), 0, GPIO_ODR_HIGH)                   /* Wireless LAN */
 GPIO(CPU_PROCHOT,       PORT(15), 1, GPIO_OUT_LOW)
 GPIO(KBD_IRQ_L,         PORT(15), 2, GPIO_ODR_HIGH)                   /* Negative edge triggered irq. */
-GPIO(BOARD_ID0,         PORT(15), 4, GPIO_INPUT)                      /* Board ID */
+GPIO(BOARD_VERSION1,    PORT(15), 4, GPIO_INPUT)                      /* Board ID */
 GPIO(CORE_PWROK,        PORT(15), 5, GPIO_ODR_HIGH)                   /* CORE_PWR_OK_R */
 GPIO(LID_OPEN2,         PORT(15), 6, GPIO_INT_BOTH_DSLEEP)            /* LID_OPEN_OUT2_R */
 GPIO(PCH_SUSPWRDNACK,   PORT(15), 7, GPIO_INT_FALLING)                /* PMC SUSPWRDNACK signal from SOC to EC */
