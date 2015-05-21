@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d0995dc_40cc82b7",
+        "filename": "driver/mcdp28x0.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-21T22:06:22Z",
+      "side": 1,
+      "message": "local arrays are a good way to overflow your stack. not sure how big this one is, but might want to make it static, this function doesn\u0027t need to be re-entrant, so no harm.",
+      "range": {
+        "startLine": 169,
+        "startChar": 15,
+        "endLine": 169,
+        "endChar": 29
+      },
+      "revId": "1a3f2e7d67c57cc0bd94c4fc1e23d3a487c896cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
