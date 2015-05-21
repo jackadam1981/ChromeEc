@@ -195,9 +195,11 @@ static inline int pd_adc_read(int port, int cc)
 
 static inline void pd_set_vconn(int port, int polarity, int enable)
 {
+#if 0 /* keep VCONN disabled */
 	/* Set VCONN on the opposite CC line from the polarity */
 	gpio_set_level(polarity ? GPIO_USBC_VCONN1_EN_L :
 				  GPIO_USBC_VCONN2_EN_L, !enable);
+#endif
 }
 
 static inline int pd_snk_is_vbus_provided(int port)
