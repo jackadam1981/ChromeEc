@@ -16,6 +16,23 @@
       "revId": "e105d916aba2c15dd3767be21e5b771c31c4c684",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d7ad934_712e1e3b",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-21T17:25:32Z",
+      "side": 1,
+      "message": "Can the retry logic live in higher-level code so that we can support other chips later? For example, return NACK status here and the caller function just makes another call if required?\n\nWe\u0027ll have to to add a wrapper function to i2c_xfer (I can help with this). Do you think it\u0027s a good idea?",
+      "revId": "e105d916aba2c15dd3767be21e5b771c31c4c684",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
