@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4d0995dc_1a34bd88",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 913,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-21T21:11:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d37016d_2a1ede61",
+      "range": {
+        "startLine": 913,
+        "startChar": 2,
+        "endLine": 913,
+        "endChar": 11
+      },
+      "revId": "974b1da8386e5f527219af2be3a1d025bb9b21cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d37016d_0a7d1a69",
         "filename": "common/usb_pd_tcpc.c",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2015-05-19T19:49:41Z",
       "side": 1,
       "message": "doing 2 switchs : one for read , one for write (with all read-only stuff at the end), into 2 functions might help readability (and avoid indenting to death)",
+      "range": {
+        "startLine": 936,
+        "startChar": 1,
+        "endLine": 936,
+        "endChar": 15
+      },
+      "revId": "974b1da8386e5f527219af2be3a1d025bb9b21cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd1ca521_b665e8ce",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-21T21:11:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d37016d_0a7d1a69",
       "range": {
         "startLine": 936,
         "startChar": 1,
@@ -117,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "0d031dc0_788a21b4",
+        "filename": "common/usb_pd_tcpm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-21T21:11:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adfdb1c1_f44e664b",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 61
+      },
+      "revId": "974b1da8386e5f527219af2be3a1d025bb9b21cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d8cfd85_aa13c390",
         "filename": "common/usb_pd_tcpm.c",
         "patchSetId": 7
@@ -128,6 +200,30 @@
       "writtenOn": "2015-05-19T19:49:41Z",
       "side": 1,
       "message": "that\u0027s terrible, actually I think you should be able to do 2 i2c_xfer without I2C_XFER_SINGLE but the proper start/stop flags instead and avoid the copy",
+      "range": {
+        "startLine": 129,
+        "startChar": 2,
+        "endLine": 132,
+        "endChar": 35
+      },
+      "revId": "974b1da8386e5f527219af2be3a1d025bb9b21cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd1ca521_d6d6a4c7",
+        "filename": "common/usb_pd_tcpm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-21T21:11:01Z",
+      "side": 1,
+      "message": "yeah, i the problem is that the I2C_XFER_START/STOP flags didn\u0027t work quite right. so, i had to spend a while debugging it: https://chromium-review.googlesource.com/#/c/272690/\n\nnow it works, and this looks a lot better!",
+      "parentUuid": "0d8cfd85_aa13c390",
       "range": {
         "startLine": 129,
         "startChar": 2,
