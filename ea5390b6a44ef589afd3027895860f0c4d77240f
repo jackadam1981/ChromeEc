@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cdcae5dd_29dfc903",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-22T19:41:16Z",
+      "side": 1,
+      "message": "I used the \"Threshold\" value in the spec. But, not sure if I should use this or the \"Maximum\" value, or something halfway in between? Will ask Schneider.",
+      "range": {
+        "startLine": 823,
+        "startChar": 0,
+        "endLine": 826,
+        "endChar": 37
+      },
+      "revId": "ea5390b6a44ef589afd3027895860f0c4d77240f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
