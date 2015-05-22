@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "8d162dff_b47cc06e",
+        "filename": "board/fruitpie/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-22T00:19:28Z",
+      "side": 1,
+      "message": "Well, it\u0027s related to the phy, but since the TCPM is doing the type-C connect state machine, it\u0027s the TCPM that needs to monitor VBUS, not the TCPC.\n\nI will add to a common header. I wonder if we can change the name of the GPIO to match across all boards and have just one version of this function.",
+      "parentUuid": "0d8cfd85_178233d9",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 38
+      },
+      "revId": "6a0185e5663f148a7f8b08785b40050b892de6f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d8cfd85_77913f1e",
         "filename": "board/hoho/board.h",
         "patchSetId": 6

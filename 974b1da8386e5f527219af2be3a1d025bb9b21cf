@@ -22,6 +22,30 @@
       "revId": "974b1da8386e5f527219af2be3a1d025bb9b21cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4daef5fa_75ac029a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2801,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-22T00:19:28Z",
+      "side": 0,
+      "message": "yes, i agree it is useful, but unfortunately the TCPM doesn\u0027t have these values. we probably need a host command in usb_pd_tcpc.c to print out these voltages.",
+      "parentUuid": "0d8cfd85_b7d1e7d2",
+      "range": {
+        "startLine": 2801,
+        "startChar": 22,
+        "endLine": 2801,
+        "endChar": 42
+      },
+      "revId": "974b1da8386e5f527219af2be3a1d025bb9b21cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
