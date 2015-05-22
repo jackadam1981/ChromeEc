@@ -98,7 +98,12 @@ static uintptr_t get_base(enum system_image_copy_t copy)
 {
 	switch (copy) {
 	case SYSTEM_IMAGE_RO:
+#ifdef CONFIG_CODERAM_ARCH
+		return CONFIG_FLASH_BASE + CONFIG_RO_MEM_OFF +
+				CONFIG_FW_HEADER_SIZE;
+#else
 		return CONFIG_FLASH_BASE + CONFIG_RO_MEM_OFF;
+#endif
 	case SYSTEM_IMAGE_RW:
 		return CONFIG_FLASH_BASE + CONFIG_RW_MEM_OFF;
 	default:
@@ -395,7 +400,9 @@ const char *system_image_copy_t_to_string(enum system_image_copy_t copy)
  */
 static void jump_to_image(uintptr_t init_addr)
 {
+#ifndef CONFIG_CODERAM_ARCH
 	void (*resetvec)(void) = (void(*)(void))init_addr;
+#endif
 
 	/*
 	 * Jumping to any image asserts the signal to the Silego chip that that
@@ -442,8 +449,12 @@ static void jump_to_image(uintptr_t init_addr)
 	/* Call other hooks; these may add tags */
 	hook_notify(HOOK_SYSJUMP);
 
+#ifdef CONFIG_CODERAM_ARCH
+	system_jump_to_booter(init_addr);
+#else
 	/* Jump to the reset vector */
 	resetvec();
+#endif
 }
 
 int system_run_image_copy(enum system_image_copy_t copy)
@@ -478,16 +489,17 @@ int system_run_image_copy(enum system_image_copy_t copy)
 		return EC_ERROR_INVAL;
 
 #ifdef CONFIG_CODERAM_ARCH
-	/* Jump to little FW for code ram architecture */
-	init_addr = system_get_lfw_address(base);
-#else
+	/*  Save base address to determine which region will jump */
+	system_save_base_address(base);
+#endif
 	/* Make sure the reset vector is inside the destination image */
 	init_addr = *(uintptr_t *)(base + 4);
-#ifndef EMU_BUILD
+
+#if !defined(EMU_BUILD) && !defined(CONFIG_CODERAM_ARCH)
 	if (init_addr < base || init_addr >= base + get_size(copy))
 		return EC_ERROR_UNKNOWN;
 #endif
-#endif
+
 
 	CPRINTS("Jumping to image %s", system_image_copy_t_to_string(copy));
 
