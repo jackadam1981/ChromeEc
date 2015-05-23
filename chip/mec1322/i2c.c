@@ -212,8 +212,8 @@ static inline void push_in_buf(uint8_t **in, uint8_t val, int skip)
 	}
 }
 
-int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
-	     uint8_t *in, int in_size, int flags)
+int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
+		  uint8_t *in, int in_size, int flags)
 {
 	int i;
 	int controller;
@@ -266,11 +266,11 @@ int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 
 		for (i = 0; i < out_size; ++i) {
 			if (wait_byte_done(controller))
-				goto err_i2c_xfer;
+				goto err_chip_i2c_xfer;
 			MEC1322_I2C_DATA(controller) = out[i];
 		}
 		if (wait_byte_done(controller))
-			goto err_i2c_xfer;
+			goto err_chip_i2c_xfer;
 
 		/*
 		 * Send STOP bit if the stop flag is on, and caller
@@ -301,12 +301,12 @@ int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 
 		for (i = 0; i < bytes_to_read; ++i) {
 			if (wait_byte_done(controller))
-				goto err_i2c_xfer;
+				goto err_chip_i2c_xfer;
 			push_in_buf(&in, MEC1322_I2C_DATA(controller), skip);
 			skip = 0;
 		}
 		if (wait_byte_done(controller))
-			goto err_i2c_xfer;
+			goto err_chip_i2c_xfer;
 
 		if (flags & I2C_XFER_STOP) {
 			/*
@@ -316,7 +316,7 @@ int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 			MEC1322_I2C_CTRL(controller) = CTRL_ESO | CTRL_ENI;
 			push_in_buf(&in, MEC1322_I2C_DATA(controller), skip);
 			if (wait_byte_done(controller))
-				goto err_i2c_xfer;
+				goto err_chip_i2c_xfer;
 
 			/* Send STOP if stop flag is set */
 			MEC1322_I2C_CTRL(controller) =
@@ -339,7 +339,7 @@ int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 		return EC_ERROR_UNKNOWN;
 
 	return EC_SUCCESS;
-err_i2c_xfer:
+err_chip_i2c_xfer:
 	/* Send STOP and return error */
 	MEC1322_I2C_CTRL(controller) = CTRL_PIN | CTRL_ESO |
 				       CTRL_STO | CTRL_ACK;
