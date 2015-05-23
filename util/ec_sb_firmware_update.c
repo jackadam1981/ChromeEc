@@ -33,20 +33,22 @@ struct delay_value {
 	uint32_t value;
 };
 
-/* A default retry counter on errors */
+/* Default retry counter on errors */
 #define SB_FW_UPDATE_DEFAULT_RETRY_CNT 3
+/* Default delay value */
+#define SB_FW_UPDATE_DEFAULT_DELAY  1000
 
 #define DELAY_VALUE_BEGIN  500000
 #define DELAY_VALUE_END   1000000
 #define DELAY_VALUE_BUSY  1000000
+#define DELAY_VALUE_WRITE_END  50000
 
 static struct delay_value sb_delays[] = {
 	{1,             100000},
 	{2,            9000000},
-	{3,             100000},
-	{10,             25000},
-	{770,            25000},
-	{2680,           25000},
+	{4,             100000},
+	{771,            30000},
+	{2200,           10000},
 	{0xFFFFFF,       50000},
 };
 
@@ -283,7 +285,7 @@ static int get_status(struct sb_fw_update_status *status)
 
 	param->hdr.subcmd = EC_SB_FW_UPDATE_STATUS;
 	do {
-		usleep(1000);
+		usleep(SB_FW_UPDATE_DEFAULT_DELAY);
 		rv = ec_command(EC_CMD_SB_FW_UPDATE, 0,
 			param, sizeof(struct ec_sb_fw_update_header),
 			resp, SB_FW_UPDATE_CMD_STATUS_SIZE);
@@ -311,7 +313,7 @@ static int get_info(struct sb_fw_update_info *info)
 
 	param->hdr.subcmd = EC_SB_FW_UPDATE_INFO;
 	do {
-		usleep(1000);
+		usleep(SB_FW_UPDATE_DEFAULT_DELAY);
 		rv = ec_command(EC_CMD_SB_FW_UPDATE, 0,
 			param, sizeof(struct ec_sb_fw_update_header),
 			resp, SB_FW_UPDATE_CMD_INFO_SIZE);
@@ -574,6 +576,10 @@ static enum fw_update_state s6_write_block(struct fw_update_ctrl *fw_update)
 		return S10_TERMINAL;
 	}
 
+	/* Added more detail after the last block write */
+	if ((offset + 3*fw_update->step_size) >= fw_update->size)
+		usleep(DELAY_VALUE_WRITE_END);
+
 	usleep(get_delay_value(offset, fw_update->step_size));
 
 	return S7_READ_STATUS;
@@ -588,7 +594,7 @@ static enum fw_update_state s7_read_status(struct fw_update_ctrl *fw_update)
 
 	bsize = fw_update->step_size;
 	do {
-		usleep(1000);
+		usleep(SB_FW_UPDATE_DEFAULT_DELAY);
 		rv = get_status(&fw_update->status);
 		if (rv) {
 			dump_data(fw_update->ptr+offset, offset, bsize);
@@ -648,6 +654,7 @@ static enum fw_update_state s8_write_end(struct fw_update_ctrl *fw_update)
 		return S10_TERMINAL;
 
 	usleep(DELAY_VALUE_END);
+	fw_update->busy_retry_cnt = SB_FW_UPDATE_BUSY_ERROR_RETRY_CNT;
 	return S9_READ_STATUS;
 }
 
@@ -655,7 +662,14 @@ static enum fw_update_state s9_read_status(struct fw_update_ctrl *fw_update)
 {
 	int rv;
 
-	/* Poll for completion */
+	if (fw_update->busy_retry_cnt == 0) {
+		fw_update->rv = -1;
+		log_msg(fw_update, S9_READ_STATUS, "Busy");
+		return S10_TERMINAL;
+	}
+
+	fw_update->busy_retry_cnt--;
+
 	rv = get_status(&fw_update->status);
 	if (rv) {
 		fw_update->rv = -1;
@@ -664,6 +678,7 @@ static enum fw_update_state s9_read_status(struct fw_update_ctrl *fw_update)
 	}
 	if ((fw_update->status.fw_update_mode == 1)
 		|| (fw_update->status.busy == 1)) {
+		usleep(SB_FW_UPDATE_DEFAULT_DELAY);
 		return S9_READ_STATUS;
 	}
 	log_msg(fw_update, S9_READ_STATUS, "Complete");
