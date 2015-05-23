@@ -33,8 +33,8 @@ extern const unsigned int i2c_ports_used;
 /**
  * Transmit one block of raw data, then receive one block of raw data.
  *
- * This is a low-level platform-dependent function used by the other functions
- * below.  It must be called between i2c_lock(port, 1) and i2c_lock(port, 0).
+ * This is a wrapper function for chip_i2c_xfer, a low-level platform-dependent
+ * function. It must be called between i2c_lock(port, 1) and i2c_lock(port, 0).
  *
  * @param port		Port to access
  * @param slave_addr	Slave device address
