@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "adc5b1ce_1afb29bb",
+        "filename": "common/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-23T00:30:31Z",
+      "side": 1,
+      "message": "Not sure whether this prototype belongs here or in the header. Header would be more standard, but I don\u0027t want people calling chip_i2c_xfer directly, so here seems \"safer\".",
+      "revId": "78470f7db497b7dae0915dbad6dd2220446f9d39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
