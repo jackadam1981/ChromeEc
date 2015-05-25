@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d031dc0_76fb33ba",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-25T16:09:02Z",
+      "side": 1,
+      "message": "this is computed multiple times. suggest another local var:\nsend_stop \u003d flags \u0026 I2C_XFER_STOP\ndefined at top of function.",
+      "range": {
+        "startLine": 300,
+        "startChar": 19,
+        "endLine": 300,
+        "endChar": 40
+      },
+      "revId": "5654e62256e18564e23f9f0a5ea6fa3c98958644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adc5b1ce_6461dfb9",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-25T16:09:02Z",
+      "side": 1,
+      "message": "so, it\u0027s impossible to read only one byte then?",
+      "range": {
+        "startLine": 326,
+        "startChar": 3,
+        "endLine": 331,
+        "endChar": 6
+      },
+      "revId": "5654e62256e18564e23f9f0a5ea6fa3c98958644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
