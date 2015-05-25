@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "0d031dc0_99e60559",
+        "filename": "board/honeybuns/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-25T17:40:43Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "ea5390b6a44ef589afd3027895860f0c4d77240f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d031dc0_39aed9e6",
+        "filename": "board/ryu/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-25T17:40:43Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "ea5390b6a44ef589afd3027895860f0c4d77240f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d0995dc_d5704b5c",
+        "filename": "board/twinkie/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-25T17:40:43Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "ea5390b6a44ef589afd3027895860f0c4d77240f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cdcae5dd_29dfc903",
         "filename": "include/usb_pd.h",
         "patchSetId": 9
