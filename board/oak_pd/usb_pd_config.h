@@ -140,10 +140,6 @@ static inline void pd_tx_enable(int port, int polarity)
 			gpio_set_level(GPIO_USB_C0_CC1_PD, 0);
 		}
 	} else {
-		/* put SPI function on TX pin */
-		/* USB_C1_CCX_TX_DATA: PB14 is SPI1 MISO */
-		gpio_set_alternate_function(GPIO_B, 0x4000, 0);
-		/* TODO: MCU ADC pin output low */
 		/*
 		 * There is a pin muxer to select CC1 or CC2 TX_DATA,
 		 * Pin mux is controlled by USB_C1_CC2_TX_SEL pin,
@@ -151,6 +147,26 @@ static inline void pd_tx_enable(int port, int polarity)
 		 * USB_C1_CC2_TX_DATA will be selected, if polarity is 1 .
 		 */
 		gpio_set_level(GPIO_USB_C1_CC2_TX_SEL, polarity);
+
+		/* put SPI function on TX pin */
+		/* USB_C1_CCX_TX_DATA: PB14 is SPI1 MISO */
+		gpio_set_alternate_function(GPIO_B, 0x4000, 0);
+
+		/* ADC pin output low */
+		if (polarity) {
+			/* PA5 */
+			STM32_GPIO_MODER(GPIO_A) = (STM32_GPIO_MODER(GPIO_A)
+					& ~(3 << (2*5))) /* PA0 disable ADC */
+					|  (1 << (2*5)); /* Set as GPO */
+			gpio_set_level(GPIO_USB_C1_CC2_PD, 0);
+		} else {
+			/* PA0 */
+			STM32_GPIO_MODER(GPIO_A) = (STM32_GPIO_MODER(GPIO_A)
+					& ~(3 << (2*0))) /* PA0 disable ADC */
+					|  (1 << (2*0)); /* Set as GPO */
+			gpio_set_level(GPIO_USB_C1_CC1_PD, 0);
+		}
+
 	}
 }
 
@@ -174,21 +190,25 @@ static inline void pd_tx_disable(int port, int polarity)
 					& ~(1 << (2*2)); /* Set as GPO */
 		}
 	} else {
+		/* PB14 is SPI2 MISO */
+		gpio_set_alternate_function(GPIO_B, 0x4000, -1);
 		/* Select the pin according to the polarity */
 		gpio_set_level(GPIO_USB_C1_CC2_TX_SEL, polarity);
-		/* output low on SPI TX to disable the FET */
-		/* PB14 is SPI2 MISO */
-		STM32_GPIO_MODER(GPIO_B) = (STM32_GPIO_MODER(GPIO_B)
-				& ~(3 << (2*14))) /* Pin14 disable ADC */
-				|  (1 << (2*14)); /* Set as GPO */
+
+		/* Set ADC mode */
+		if (polarity)
+			STM32_GPIO_MODER(GPIO_A) = (STM32_GPIO_MODER(GPIO_A)
+					|  (3 << (2*5))) /* PA5 as ADC */
+					& ~(1 << (2*5)); /* disable GPO */
+		else
+			STM32_GPIO_MODER(GPIO_A) = (STM32_GPIO_MODER(GPIO_A)
+					|  (3 << (2*0))) /* PA0 as ADC */
+					& ~(1 << (2*0)); /* disable GPO */
 		/* 00: Input mode (reset state)
 		 * 01: General purpose output mode
 		 * 10: Alternate function mode
 		 * 11: Analog mode
 		 */
-
-		/* put the low level reference in Hi-Z */
-		/* TODO: Set MCU ADC pin to ADC function (Hi-Z) */
 	}
 }
 
@@ -226,8 +246,8 @@ static inline void pd_set_host_mode(int port, int enable)
 			gpio_set_flags(GPIO_USB_C0_HOST_HIGH, GPIO_OUTPUT);
 			gpio_set_level(GPIO_USB_C0_HOST_HIGH, 1);
 			/* High-Z is used for host mode. */
-			gpio_set_level(GPIO_USB_C0_CC1_ODL, 1);
-			gpio_set_level(GPIO_USB_C0_CC2_ODL, 1);
+			gpio_set_flags(GPIO_USB_C0_CC1_ODL, GPIO_INPUT);
+			gpio_set_flags(GPIO_USB_C0_CC2_ODL, GPIO_INPUT);
 			/* Set TX Hi-Z */
 			gpio_set_flags(GPIO_USB_C0_CC1_TX_DATA, GPIO_INPUT);
 			gpio_set_flags(GPIO_USB_C0_CC2_TX_DATA, GPIO_INPUT);
@@ -235,6 +255,8 @@ static inline void pd_set_host_mode(int port, int enable)
 			/* Set HOST_HIGH to High-Z for device mode. */
 			gpio_set_flags(GPIO_USB_C0_HOST_HIGH, GPIO_INPUT);
 			/* Pull low for device mode. */
+			gpio_set_flags(GPIO_USB_C0_CC1_ODL, GPIO_OUTPUT);
+			gpio_set_flags(GPIO_USB_C0_CC2_ODL, GPIO_OUTPUT);
 			gpio_set_level(GPIO_USB_C0_CC1_ODL, 0);
 			gpio_set_level(GPIO_USB_C0_CC2_ODL, 0);
 		}
@@ -244,13 +266,16 @@ static inline void pd_set_host_mode(int port, int enable)
 			gpio_set_flags(GPIO_USB_C1_HOST_HIGH, GPIO_OUTPUT);
 			gpio_set_level(GPIO_USB_C1_HOST_HIGH, 1);
 			/* High-Z is used for host mode. */
-			gpio_set_level(GPIO_USB_C1_CC1_ODL, 1);
-			gpio_set_level(GPIO_USB_C1_CC2_ODL, 1);
+			gpio_set_flags(GPIO_USB_C1_CC1_ODL, GPIO_INPUT);
+			gpio_set_flags(GPIO_USB_C1_CC2_ODL, GPIO_INPUT);
+			/* Set TX Hi-Z */
 			gpio_set_flags(GPIO_USB_C1_CCX_TX_DATA, GPIO_INPUT);
 		} else {
 			/* Set HOST_HIGH to High-Z for device mode. */
 			gpio_set_flags(GPIO_USB_C1_HOST_HIGH, GPIO_INPUT);
 			/* Pull low for device mode. */
+			gpio_set_flags(GPIO_USB_C1_CC1_ODL, GPIO_OUTPUT);
+			gpio_set_flags(GPIO_USB_C1_CC2_ODL, GPIO_OUTPUT);
 			gpio_set_level(GPIO_USB_C1_CC1_ODL, 0);
 			gpio_set_level(GPIO_USB_C1_CC2_ODL, 0);
 		}
@@ -310,6 +335,7 @@ static inline void pd_set_vconn(int port, int polarity, int enable)
 					  GPIO_USB_C1_CC2_VCONN1_EN, enable);
 		/* Set TX_DATA pin to Hi-Z */
 		gpio_set_flags(GPIO_USB_C1_CCX_TX_DATA, GPIO_INPUT);
+		gpio_set_level(GPIO_USB_C1_CC2_TX_SEL, polarity);
 	}
 }
 
