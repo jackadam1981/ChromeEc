@@ -138,6 +138,8 @@ enum pd_rx_errors {
 #define PD_T_SRC_RECOVER_MAX (1000*MSEC) /* 1000ms */
 #define PD_T_SRC_TURN_ON      (275*MSEC) /* 275ms */
 #define PD_T_SAFE_0V          (650*MSEC) /* 650ms */
+#define PD_T_TRY_SRC          (125*MSEC) /* Max time for Try.SRC state */
+#define PD_T_TRY_WAIT         (600*MSEC) /* Max time for TryWait.SNK state */
 #define PD_T_NO_RESPONSE     (5500*MSEC) /* between 4.5s and 5.5s */
 #define PD_T_BIST_TRANSMIT     (50*MSEC) /* 50ms (used for task_wait arg) */
 #define PD_T_BIST_RECEIVE      (60*MSEC) /* 60ms (max time to process bist) */
@@ -606,6 +608,9 @@ enum pd_states {
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	PD_STATE_SNK_DISCONNECTED,
 	PD_STATE_SNK_DISCONNECTED_DEBOUNCE,
+	PD_STATE_SNK_TRY_SRC,
+	PD_STATE_SNK_TRY_WAIT,
+	PD_STATE_SNK_TRY_WAIT_DEBOUNCE,
 	PD_STATE_SNK_HARD_RESET_RECOVER,
 	PD_STATE_SNK_DISCOVERY,
 	PD_STATE_SNK_REQUESTED,

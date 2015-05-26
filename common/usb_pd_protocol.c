@@ -113,6 +113,8 @@ static struct pd_protocol {
 	uint64_t src_recover;
 	/* Time for CC debounce end */
 	uint64_t cc_debounce;
+	/* Time for Try.SRC states */
+	uint64_t try_src_marker;
 	/* The cc state */
 	enum pd_cc_states cc_state;
 	/* status of last transmit */
@@ -151,6 +153,7 @@ static const char * const pd_state_names[] = {
 	"DISABLED", "SUSPENDED",
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	"SNK_DISCONNECTED", "SNK_DISCONNECTED_DEBOUNCE",
+	"SNK_TRY_SRC", "SNK_TRY_WAIT", "SNK_TRY_WAIT_DEBOUNCE",
 	"SNK_HARD_RESET_RECOVER",
 	"SNK_DISCOVERY", "SNK_REQUESTED", "SNK_TRANSITION", "SNK_READY",
 	"SNK_SWAP_INIT", "SNK_SWAP_SNK_DISABLE",
@@ -197,9 +200,18 @@ int pd_is_connected(int port)
 
 	return DUAL_ROLE_IF_ELSE(port,
 		/* sink */
+#ifdef CONFIG_USB_PD_DUAL_ROLE_TRY_SRC
+		pd[port].task_state != PD_STATE_SNK_TRY_WAIT &&
+		pd[port].task_state != PD_STATE_SNK_TRY_WAIT_DEBOUNCE &&
+#endif
 		pd[port].task_state != PD_STATE_SNK_DISCONNECTED &&
 		pd[port].task_state != PD_STATE_SNK_DISCONNECTED_DEBOUNCE,
+
+
 		/* source */
+#ifdef CONFIG_USB_PD_DUAL_ROLE_TRY_SRC
+		pd[port].task_state != PD_STATE_SNK_TRY_SRC &&
+#endif
 		pd[port].task_state != PD_STATE_SRC_DISCONNECTED &&
 		pd[port].task_state != PD_STATE_SRC_DISCONNECTED_DEBOUNCE &&
 		pd[port].task_state != PD_STATE_SRC_ACCESSORY);
@@ -1265,7 +1277,6 @@ void pd_set_new_power_request(int port)
  */
 #error "Backwards compatible DFP does not support USB"
 #endif
-
 void pd_task(void)
 {
 	int head;
@@ -1844,6 +1855,17 @@ void pd_task(void)
 			    !pd_snk_is_vbus_provided(port))
 				break;
 
+#ifdef CONFIG_USB_PD_DUAL_ROLE_TRY_SRC
+			/* Don't attach as UFP, transition to Try.SRC state */
+			pd[port].try_src_marker = get_time().val
+				+ PD_T_TRY_SRC;
+			/* Swap roles to source */
+			pd[port].power_role = PD_ROLE_SOURCE;
+			tcpm_set_cc(port, TYPEC_CC_RP);
+			timeout = 2*MSEC;
+			set_state(port, PD_STATE_SNK_TRY_SRC);
+			break;
+#endif
 			/* We are attached */
 			pd[port].polarity = (cc2 != TYPEC_CC_VOLT_OPEN);
 			tcpm_set_polarity(port, pd[port].polarity);
@@ -1865,6 +1887,110 @@ void pd_task(void)
 				pd_usb_billboard_deferred,
 				PD_T_AME);
 			break;
+#ifdef CONFIG_USB_PD_DUAL_ROLE_TRY_SRC
+		case PD_STATE_SNK_TRY_SRC:
+			timeout = 10*MSEC;
+			tcpm_get_cc(port, &cc1, &cc2);
+
+			if (TYPEC_CC_IS_RD(cc1) || TYPEC_CC_IS_RD(cc2)) {
+				/* UFP attached */
+				new_cc_state = PD_CC_UFP_ATTACHED;
+				pd[port].polarity = (TYPEC_CC_IS_RD(cc2));
+				tcpm_set_polarity(port, pd[port].polarity);
+				/* initial data role for source is DFP */
+				pd_set_data_role(port, PD_ROLE_DFP);
+#ifndef CONFIG_USBC_BACKWARDS_COMPATIBLE_DFP
+				/* Enable VBUS */
+				if (pd_set_power_supply_ready(port)) {
+#ifdef CONFIG_USBC_SS_MUX
+					board_set_usb_mux(port, TYPEC_MUX_NONE,
+							  USB_SWITCH_DISCONNECT,
+							  pd[port].polarity);
+#endif
+					break;
+				}
+#endif
+
+#ifdef CONFIG_USBC_VCONN
+				tcpm_set_vconn(port, 1);
+				pd[port].flags |= PD_FLAGS_VCONN_ON;
+#endif
+
+				pd[port].flags |= PD_FLAGS_CHECK_PR_ROLE |
+						  PD_FLAGS_CHECK_DR_ROLE;
+				hard_reset_count = 0;
+				timeout = 5*MSEC;
+				set_state(port, PD_STATE_SRC_STARTUP);
+			} else if (get_time().val > pd[port].try_src_marker) {
+				set_state(port, PD_STATE_SNK_TRY_WAIT);
+				timeout = 2*MSEC;
+				pd[port].try_src_marker = get_time().val
+					+ PD_T_TRY_WAIT;
+				/* Swap roles to sink */
+				pd[port].power_role = PD_ROLE_SINK;
+				tcpm_set_cc(port, TYPEC_CC_RD);
+			}
+			break;
+		case PD_STATE_SNK_TRY_WAIT:
+			timeout = 10*MSEC;
+			tcpm_get_cc(port, &cc1, &cc2);
+			/* Source connection monitoring */
+			if (cc1 != TYPEC_CC_VOLT_OPEN ||
+			    cc2 != TYPEC_CC_VOLT_OPEN) {
+				pd[port].cc_state = PD_CC_NONE;
+				hard_reset_count = 0;
+				new_cc_state = PD_CC_DFP_ATTACHED;
+				pd[port].cc_debounce = get_time().val +
+							PD_T_CC_DEBOUNCE;
+				set_state(port,
+					PD_STATE_SNK_TRY_WAIT_DEBOUNCE);
+			} else if (get_time().val > pd[port].try_src_marker) {
+				set_state(port, PD_STATE_SNK_DISCONNECTED);
+				timeout = 5*MSEC;
+			}
+			break;
+		case PD_STATE_SNK_TRY_WAIT_DEBOUNCE:
+			tcpm_get_cc(port, &cc1, &cc2);
+			if (cc1 == TYPEC_CC_VOLT_OPEN &&
+			    cc2 == TYPEC_CC_VOLT_OPEN) {
+				/* No connection any more */
+				set_state(port, PD_STATE_SNK_TRY_WAIT);
+				timeout = 5*MSEC;
+				break;
+			}
+
+			timeout = 20*MSEC;
+			 if (get_time().val > pd[port].try_src_marker) {
+				set_state(port, PD_STATE_SNK_DISCONNECTED);
+				timeout = 5*MSEC;
+			}
+
+			/* Wait for CC debounce and VBUS present */
+			if (get_time().val < pd[port].cc_debounce ||
+			    !pd_snk_is_vbus_provided(port))
+				break;
+			/* We are attached */
+			pd[port].polarity = (cc2 != TYPEC_CC_VOLT_OPEN);
+			tcpm_set_polarity(port, pd[port].polarity);
+			/* reset message ID  on connection */
+			pd[port].msg_id = 0;
+			/* initial data role for sink is UFP */
+			pd_set_data_role(port, PD_ROLE_UFP);
+#ifdef CONFIG_CHARGE_MANAGER
+			typec_curr = get_typec_current_limit(
+				pd[port].polarity ? cc2 : cc1);
+			typec_set_input_current_limit(
+				port, typec_curr, TYPE_C_VOLTAGE);
+#endif
+			pd[port].flags |= PD_FLAGS_CHECK_PR_ROLE |
+					  PD_FLAGS_CHECK_DR_ROLE;
+			set_state(port, PD_STATE_SNK_DISCOVERY);
+			timeout = 10*MSEC;
+			hook_call_deferred(
+				pd_usb_billboard_deferred,
+				PD_T_AME);
+			break;
+#endif
 		case PD_STATE_SNK_HARD_RESET_RECOVER:
 			if (pd[port].last_state != pd[port].task_state)
 				pd[port].flags |= PD_FLAGS_DATA_SWAPPED;
@@ -2322,9 +2448,21 @@ void pd_task(void)
 				cc1 = cc2;
 			if (cc1 == TYPEC_CC_VOLT_OPEN) {
 				pd_power_supply_reset(port);
-				set_state(port, PD_STATE_SRC_DISCONNECTED);
 				/* Debouncing */
 				timeout = 10*MSEC;
+#ifdef CONFIG_USB_PD_DUAL_ROLE_TRY_SRC
+				set_state(port, PD_STATE_SNK_TRY_WAIT);
+				/* Swap roles to sink */
+				pd[port].power_role = PD_ROLE_SINK;
+				tcpm_set_cc(port, TYPEC_CC_RD);
+				pd[port].try_src_marker = get_time().val
+					+ PD_T_TRY_WAIT;
+#ifdef CONFIG_USBC_VCONN
+				tcpm_set_vconn(port, 0);
+#endif
+#else
+				set_state(port, PD_STATE_SRC_DISCONNECTED);
+#endif
 			}
 		}
 #ifdef CONFIG_USB_PD_DUAL_ROLE
