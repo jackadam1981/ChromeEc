@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d5f9dfa_dfffacdf",
+        "filename": "board/cyan/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1002584
+      },
+      "writtenOn": "2015-05-26T20:21:04Z",
+      "side": 1,
+      "message": "power state error is the same behavior as less than 3% charge - Ideally it have some different behavior (either blinking rate or color)",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 46
+      },
+      "revId": "a769e0feb564d738ac79a8655f08dca900ffedd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
