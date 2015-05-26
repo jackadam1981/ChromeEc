@@ -73,6 +73,30 @@
       "revId": "ea5390b6a44ef589afd3027895860f0c4d77240f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d5f9dfa_74423300",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-26T22:42:34Z",
+      "side": 1,
+      "message": "Yes, according to Schneider, the threshold is the recommended value to use, although what we had before (the maximum) is ok.",
+      "parentUuid": "cdcae5dd_29dfc903",
+      "range": {
+        "startLine": 823,
+        "startChar": 0,
+        "endLine": 826,
+        "endChar": 37
+      },
+      "revId": "ea5390b6a44ef589afd3027895860f0c4d77240f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
