@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8d99cdfb_c51e1019",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-26T18:53:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adfdb1c1_1a50092f",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 6
+      },
+      "revId": "3ddfbad0c7c42ffb04f32a8ffb9c2fbcd76872ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d8cfd85_d7534bbf",
         "filename": "chip/stm32/i2c-stm32f0.c",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "4d0995dc_02aefc97",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-26T18:53:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d8cfd85_d7534bbf",
+      "range": {
+        "startLine": 269,
+        "startChar": 2,
+        "endLine": 269,
+        "endChar": 51
+      },
+      "revId": "3ddfbad0c7c42ffb04f32a8ffb9c2fbcd76872ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d37016d_8fb614ca",
         "filename": "chip/stm32/registers.h",
         "patchSetId": 7
@@ -59,6 +107,30 @@
       "writtenOn": "2015-05-19T21:33:54Z",
       "side": 1,
       "message": "why doing the mask before the shift, that\u0027s seems complicated to me, but probably the end result is the same",
+      "range": {
+        "startLine": 485,
+        "startChar": 46,
+        "endLine": 485,
+        "endChar": 58
+      },
+      "revId": "3ddfbad0c7c42ffb04f32a8ffb9c2fbcd76872ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d9499c1_413af646",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-26T18:53:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d37016d_8fb614ca",
       "range": {
         "startLine": 485,
         "startChar": 46,
