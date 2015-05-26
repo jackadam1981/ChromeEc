@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6d11f908_7c0e8d37",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-26T05:13:22Z",
+      "side": 1,
+      "message": "Will do.",
+      "parentUuid": "0d031dc0_76fb33ba",
+      "range": {
+        "startLine": 300,
+        "startChar": 19,
+        "endLine": 300,
+        "endChar": 40
+      },
+      "revId": "5654e62256e18564e23f9f0a5ea6fa3c98958644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "adc5b1ce_6461dfb9",
         "filename": "chip/mec1322/i2c.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-05-25T16:09:02Z",
       "side": 1,
       "message": "so, it\u0027s impossible to read only one byte then?",
+      "range": {
+        "startLine": 326,
+        "startChar": 3,
+        "endLine": 331,
+        "endChar": 6
+      },
+      "revId": "5654e62256e18564e23f9f0a5ea6fa3c98958644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4daef5fa_8c9b5bbc",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-26T05:13:22Z",
+      "side": 1,
+      "message": "There is a dummy byte returned at the start of the transaction, which is why single-byte reads aren\u0027t totally broken by this know-end-two-bytes-in-advance requirement.",
+      "parentUuid": "adc5b1ce_6461dfb9",
       "range": {
         "startLine": 326,
         "startChar": 3,
