@@ -22,6 +22,30 @@
       "revId": "a769e0feb564d738ac79a8655f08dca900ffedd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed05e9c3_b170505b",
+        "filename": "board/cyan/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1003228
+      },
+      "writtenOn": "2015-05-26T23:02:56Z",
+      "side": 1,
+      "message": "We can identify them by AC.\nI remember that I explain it before.\nhttps://chromium-review.googlesource.com/#/c/253330/",
+      "parentUuid": "0d5f9dfa_dfffacdf",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 46
+      },
+      "revId": "a769e0feb564d738ac79a8655f08dca900ffedd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
