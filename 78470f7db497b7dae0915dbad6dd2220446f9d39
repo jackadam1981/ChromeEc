@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "6d9499c1_af964149",
+        "filename": "common/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-26T19:59:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d0995dc_bcd93b1e",
+      "revId": "78470f7db497b7dae0915dbad6dd2220446f9d39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d031dc0_b7eca63b",
         "filename": "include/i2c.h",
         "patchSetId": 2
@@ -48,6 +66,24 @@
       "writtenOn": "2015-05-26T17:40:35Z",
       "side": 1,
       "message": "Minor style nit: chip_i2c_xfer(), since we\u0027re referring to a function.",
+      "revId": "78470f7db497b7dae0915dbad6dd2220446f9d39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d9499c1_cf9b8d70",
+        "filename": "include/i2c.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-26T19:59:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d031dc0_b7eca63b",
       "revId": "78470f7db497b7dae0915dbad6dd2220446f9d39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
