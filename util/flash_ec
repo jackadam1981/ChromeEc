@@ -96,6 +96,10 @@ BOARDS_STM32_DFU=(
 	twinkie
 )
 
+BOARDS_STM32_SHARED_BOOT0=(
+	oak
+)
+
 BOARDS_NPCX=(
 	npcx_evb
 )
@@ -201,7 +205,11 @@ ec_enable_boot0() {
 	if $(in_array "${BOARDS_STM32_PROG_EN[@]}" "${BOARD}"); then
 		dut_control prog_en:yes
 	fi
-	eval ${SERVO_TYPE}_${MCU}_boot0
+	if $(in_array "${BOARDS_STM32_SHARED_BOOT0[@]}" "${BOARD}"); then
+		eval ${SERVO_TYPE}_usbpd_boot0
+	else
+		eval ${SERVO_TYPE}_${MCU}_boot0
+	fi
 }
 
 # Put back the servo and the system in a clean state at exit
@@ -290,6 +298,11 @@ if [[ "${MCU}" == "usbpd" ]] ; then
 		servo_VARS+=" prog_en"
 	fi
 fi
+
+if $(in_array "${BOARDS_STM32_SHARED_BOOT0[@]}" "${BOARD}"); then
+	servo_VARS+=" usbpd_boot_mode"
+fi
+
 toad_VARS="${MCU}_uart_parity \
 ${MCU}_uart_baudrate boot_mode"
 
