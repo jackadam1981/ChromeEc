@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4daef5fa_6f60a67e",
+        "filename": "board/cyan/ec.tasklist",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-27T04:59:31Z",
+      "side": 1,
+      "message": "Let\u0027s follow the normal comment style here. Also, add detail about the TODO, why is this commented?",
+      "revId": "18718640cd55ef0a4adf9cbb0c6a2b0ff93dd583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d162dff_c35ee079",
+        "filename": "board/strago/ec.tasklist",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-27T04:59:31Z",
+      "side": 1,
+      "message": "How is this change related to the larger CL?",
+      "revId": "18718640cd55ef0a4adf9cbb0c6a2b0ff93dd583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d162dff_0359f88f",
+        "filename": "chip/mec1322/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-27T04:59:31Z",
+      "side": 1,
+      "message": "This is awkward.",
+      "revId": "18718640cd55ef0a4adf9cbb0c6a2b0ff93dd583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d11f908_2766c29c",
+        "filename": "common/port80.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-27T04:59:31Z",
+      "side": 1,
+      "message": "Why do we need these calls to watchdog_reload scattered about? What\u0027s burning CPU cycles during flash?",
+      "revId": "18718640cd55ef0a4adf9cbb0c6a2b0ff93dd583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d162dff_a363e43f",
+        "filename": "include/system.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-27T04:59:31Z",
+      "side": 1,
+      "message": "Again, we should define CONFIG_CODERAM_ARCH for mec1322. If it\u0027s crashing for some reason then let\u0027s investigate that, not add this hack.",
+      "revId": "18718640cd55ef0a4adf9cbb0c6a2b0ff93dd583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
