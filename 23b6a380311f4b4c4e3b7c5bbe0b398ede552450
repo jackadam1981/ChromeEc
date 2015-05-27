@@ -22,6 +22,30 @@
       "revId": "23b6a380311f4b4c4e3b7c5bbe0b398ede552450",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed56c9ec_72cd16e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-05-27T20:51:00Z",
+      "side": 1,
+      "message": "As it says: you get a console that you can type into, similar to minicom or any other serial-port terminal program. Hitting ^C or ^D will exit. \n\nBut minicom, etc require the OS to recognize the USB device, create a pty, etc. Setting that up requires building and installing a custom kernel driver and tweaking udev rules (in extra/usb_serial), and then you get to fight with modemmanager over who should talk to it. That\u0027s a pain for all sorts of reasons, which is why I wrote this.",
+      "parentUuid": "0d54fde2_30c388ba",
+      "range": {
+        "startLine": 23,
+        "startChar": 4,
+        "endLine": 23,
+        "endChar": 15
+      },
+      "revId": "23b6a380311f4b4c4e3b7c5bbe0b398ede552450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
