@@ -70,6 +70,29 @@
     },
     {
       "key": {
+        "uuid": "6d11f908_22fb50bb",
+        "filename": "common/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-05-27T17:23:23Z",
+      "side": 1,
+      "message": "When CODERAM_ARCH is enabled the base for MEC for RO and RW will be same. \n\nInstead of sending base in here how about we send copy and locally lculate the base?\n\nIn npcx also sending base and calculating inage type and then re evaluating the base again seems like a round about method",
+      "range": {
+        "startLine": 482,
+        "startChar": 40,
+        "endLine": 482,
+        "endChar": 42
+      },
+      "revId": "18718640cd55ef0a4adf9cbb0c6a2b0ff93dd583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d162dff_a363e43f",
         "filename": "include/system.h",
         "patchSetId": 7
