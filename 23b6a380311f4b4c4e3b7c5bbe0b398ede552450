@@ -46,6 +46,30 @@
       "revId": "23b6a380311f4b4c4e3b7c5bbe0b398ede552450",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed56c9ec_15fe74aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-05-27T20:55:55Z",
+      "side": 1,
+      "message": "Just to be clear, the udev rules are not actually required, though they do ensure that ModemManager doesn\u0027t mess with the device.  And the kernel module isn\u0027t required either, you can just insmod the usbserial kernel module with vid:pid pair correctly set.  Also the changes required to add all google USB serial devices to the usbserial module are already upstream, and back ported to a number of kernels (all the way to 3.12... I believe).  So \"soon\" you won\u0027t even need to insmod with anything special.",
+      "parentUuid": "ed56c9ec_72cd16e0",
+      "range": {
+        "startLine": 23,
+        "startChar": 4,
+        "endLine": 23,
+        "endChar": 15
+      },
+      "revId": "23b6a380311f4b4c4e3b7c5bbe0b398ede552450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
