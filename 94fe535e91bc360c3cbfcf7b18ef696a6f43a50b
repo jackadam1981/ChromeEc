@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd3d85a0_fd6ab3e8",
+        "filename": "chip/stm32/usb_gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-05-27T20:22:33Z",
+      "side": 1,
+      "message": "This is assuming that particular layout of the discovery gpio table in common code.  That won\u0027t work for any other board and the flashing code will arbitrarily reboot or do some other terrible thing to the hardware.",
+      "range": {
+        "startLine": 33,
+        "startChar": 43,
+        "endLine": 33,
+        "endChar": 44
+      },
+      "revId": "94fe535e91bc360c3cbfcf7b18ef696a6f43a50b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
