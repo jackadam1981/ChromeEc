@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d54fde2_d658748e",
+        "filename": "chip/stm32/usb_gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-05-27T22:16:53Z",
+      "side": 1,
+      "message": "This is an awful lot of work to just check the state of the set and clear masks.  Why not add a usb_gpio_state struct and initializer like usb_stream currently has and move the set and clear masks there.  Then there is no special cased callbacks.  The tick hook can be created in the board files and it can just check the masks right from the GPIO state.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 1
+      },
+      "revId": "cb407fa20465fd5a5bb9ee2d17b51d83084b3d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
