@@ -94,6 +94,30 @@
       "revId": "23b6a380311f4b4c4e3b7c5bbe0b398ede552450",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd3d85a0_8805eb43",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-05-27T21:02:56Z",
+      "side": 1,
+      "message": "Yes. But then to make it stop again you have to rmmod the serial drivers.\n\nSince I\u0027m testing and tweaking the USB device-side implementation of both chip/stm32/ and chip/g/, I generally want the kernel to ignore it completely. The more subsystems that are triggered when I screw something up just makes more work to reset everything.",
+      "parentUuid": "cd3d85a0_bd7aebe7",
+      "range": {
+        "startLine": 23,
+        "startChar": 4,
+        "endLine": 23,
+        "endChar": 15
+      },
+      "revId": "23b6a380311f4b4c4e3b7c5bbe0b398ede552450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
