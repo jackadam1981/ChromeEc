@@ -33,11 +33,14 @@ void usb_gpio_rx(struct usb_gpio_config const *config)
 {
 	size_t   i;
 	uint32_t mask        = 1;
-	uint32_t set_mask    = ((uint32_t)(config->rx_ram[0]) |
-			        (uint32_t)(config->rx_ram[1]) << 16);
-	uint32_t clear_mask  = ((uint32_t)(config->rx_ram[2]) |
-			        (uint32_t)(config->rx_ram[3]) << 16);
-	uint32_t ignore_mask = set_mask & clear_mask;
+	uint32_t ignore_mask = 0;
+
+	config->state->set_mask   = ((uint32_t)(config->rx_ram[0]) |
+				     (uint32_t)(config->rx_ram[1]) << 16);
+	confif->state->clear_mask = ((uint32_t)(config->rx_ram[2]) |
+				     (uint32_t)(config->rx_ram[3]) << 16);
+
+	ignore_mask = set_mask & clear_mask;
 
 	if ((btable_ep[config->endpoint].rx_count & 0x3ff) ==
 	    USB_GPIO_RX_PACKET_SIZE) {
