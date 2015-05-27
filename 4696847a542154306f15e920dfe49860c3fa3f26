@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d9499c1_6d27d7e1",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2358,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-05-27T16:25:29Z",
+      "side": 1,
+      "message": "probably worth a comment why we have this magic #ifndef",
+      "range": {
+        "startLine": 2358,
+        "startChar": 0,
+        "endLine": 2358,
+        "endChar": 26
+      },
+      "revId": "4696847a542154306f15e920dfe49860c3fa3f26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
