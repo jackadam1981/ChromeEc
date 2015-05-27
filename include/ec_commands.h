@@ -2416,6 +2416,15 @@ struct ec_params_charge_control {
  */
 #define EC_CMD_CONSOLE_READ 0x98
 
+/*
+ * Read next chunk of data from saved snapshot. This will start from the point
+ * at which the last snapshot left off, so you shouldn't get repeat data
+ * between two snapshots.
+ *
+ * Response is otherwise the same as EC_CMD_CONSOLE_READ.
+ */
+#define EC_CMD_CONSOLE_READ_RECENT 0xc0
+
 /*****************************************************************************/
 
 /*

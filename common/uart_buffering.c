@@ -47,6 +47,7 @@ static volatile int rx_buf_head;
 static volatile int rx_buf_tail;
 static int tx_snapshot_head;
 static int tx_snapshot_tail;
+static int tx_last_snapshot_head;
 static int uart_suspended;
 
 /**
@@ -343,6 +344,7 @@ DECLARE_HOOK(HOOK_INIT, uart_rx_dma_init, HOOK_PRIO_DEFAULT);
 static int host_command_console_snapshot(struct host_cmd_handler_args *args)
 {
 	/* Assume the whole circular buffer is full */
+	tx_last_snapshot_head = tx_snapshot_head;
 	tx_snapshot_head = tx_buf_head;
 	tx_snapshot_tail = TX_BUF_NEXT(tx_snapshot_head);
 
@@ -368,28 +370,32 @@ DECLARE_HOST_COMMAND(EC_CMD_CONSOLE_SNAPSHOT,
 		     host_command_console_snapshot,
 		     EC_VER_MASK(0));
 
-static int host_command_console_read(struct host_cmd_handler_args *args)
+/*
+ * Common code for host_command_console_read and
+ * host_command_console_read_recent.
+ */
+static int console_read_helper(struct host_cmd_handler_args *args, int *tail)
 {
 	char *dest = (char *)args->response;
 
 	/* If no snapshot data, return empty response */
-	if (tx_snapshot_head == tx_snapshot_tail)
+	if (tx_snapshot_head == *tail)
 		return EC_RES_SUCCESS;
 
 	/* Copy data to response */
-	while (tx_snapshot_tail != tx_snapshot_head &&
+	while (*tail != tx_snapshot_head &&
 	       args->response_size < args->response_max - 1) {
 
 		/*
 		 * Copy only non-zero bytes, so that we don't copy unused
 		 * bytes if the buffer hasn't completely rolled at boot.
 		 */
-		if (tx_buf[tx_snapshot_tail]) {
-			*(dest++) = tx_buf[tx_snapshot_tail];
+		if (tx_buf[*tail]) {
+			*(dest++) = tx_buf[*tail];
 			args->response_size++;
 		}
 
-		tx_snapshot_tail = TX_BUF_NEXT(tx_snapshot_tail);
+		*tail = TX_BUF_NEXT(*tail);
 	}
 
 	/* Null-terminate */
@@ -398,6 +404,26 @@ static int host_command_console_read(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
+
+static int host_command_console_read(struct host_cmd_handler_args *args)
+{
+	return console_read_helper(args, &tx_snapshot_tail);
+}
 DECLARE_HOST_COMMAND(EC_CMD_CONSOLE_READ,
 		     host_command_console_read,
+		     EC_VER_MASK(0));
+
+/*
+ * This is like the READ command, except it only reads from where
+ * we left off after the last snapshot. This might be nonsense if there is
+ * a lot of log spew, but hopefully we are taking the log frequently enough
+ * that this is not a huge problem. If you want as much of the most recent
+ * console logs as possible, use the READ command.
+ */
+static int host_command_console_read_recent(struct host_cmd_handler_args *args)
+{
+	return console_read_helper(args, &tx_last_snapshot_head);
+}
+DECLARE_HOST_COMMAND(EC_CMD_CONSOLE_READ_RECENT,
+		     host_command_console_read_recent,
 		     EC_VER_MASK(0));
