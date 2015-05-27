@@ -171,6 +171,8 @@ inline int in_interrupt_context(void)
 
 task_id_t task_get_current(void)
 {
+	/* If we haven't done a context switch then our task ID isn't valid */
+	ASSERT(current_task != (task_ *)scratchpad);
 	return current_task - tasks;
 }
 
