@@ -146,6 +146,11 @@ int i2c_raw_mode(int port, int enable);
 void i2c_lock(int port, int lock);
 
 /**
+ * Prepare I2C module for sysjump.
+ */
+void i2c_prepare_sysjump(void);
+
+/**
  * Set the timeout for an I2C transaction.
  *
  * @param port		Port to set timeout for
