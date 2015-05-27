@@ -47,6 +47,7 @@ static volatile int rx_buf_head;
 static volatile int rx_buf_tail;
 static int tx_snapshot_head;
 static int tx_snapshot_tail;
+static int tx_last_snapshot_head;
 static int uart_suspended;
 
 /**
@@ -343,6 +344,7 @@ DECLARE_HOOK(HOOK_INIT, uart_rx_dma_init, HOOK_PRIO_DEFAULT);
 static int host_command_console_snapshot(struct host_cmd_handler_args *args)
 {
 	/* Assume the whole circular buffer is full */
+	tx_last_snapshot_head = tx_snapshot_head;
 	tx_snapshot_head = tx_buf_head;
 	tx_snapshot_tail = TX_BUF_NEXT(tx_snapshot_head);
 
@@ -368,28 +370,32 @@ DECLARE_HOST_COMMAND(EC_CMD_CONSOLE_SNAPSHOT,
 		     host_command_console_snapshot,
 		     EC_VER_MASK(0));
 
-static int host_command_console_read(struct host_cmd_handler_args *args)
+/*
+ * Common code for host_command_console_read and
+ * host_command_console_read_recent.
+ */
+static int console_read_helper(struct host_cmd_handler_args *args, int *tail)
 {
 	char *dest = (char *)args->response;
 
 	/* If no snapshot data, return empty response */
-	if (tx_snapshot_head == tx_snapshot_tail)
+	if (tx_snapshot_head == *tail)
 		return EC_RES_SUCCESS;
 
 	/* Copy data to response */
-	while (tx_snapshot_tail != tx_snapshot_head &&
+	while (*tail != tx_snapshot_head &&
 	       args->response_size < args->response_max - 1) {
 
 		/*
 		 * Copy only non-zero bytes, so that we don't copy unused
 		 * bytes if the buffer hasn't completely rolled at boot.
 		 */
-		if (tx_buf[tx_snapshot_tail]) {
-			*(dest++) = tx_buf[tx_snapshot_tail];
+		if (tx_buf[*tail]) {
+			*(dest++) = tx_buf[*tail];
 			args->response_size++;
 		}
 
-		tx_snapshot_tail = TX_BUF_NEXT(tx_snapshot_tail);
+		*tail = TX_BUF_NEXT(*tail);
 	}
 
 	/* Null-terminate */
@@ -398,6 +404,28 @@ static int host_command_console_read(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
+
+static int host_command_console_read(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_console_read_v1 *p;
+
+	if (args->version == 0) {
+		/*
+		 * Prior versions of this command don't support reading
+		 * only from the most recent bit of the snapshot.
+		 */
+		return console_read_helper(args, &tx_snapshot_tail);
+	} else if (args->version == 1) {
+		/* Check the params to figure out where to start reading. */
+		p = args->params;
+		if (p->whence == CONSOLE_READ_NEXT)
+			return console_read_helper(args, &tx_snapshot_tail);
+		else if (p->whence == CONSOLE_READ_RECENT)
+			return console_read_helper(args,
+						   &tx_last_snapshot_head);
+	}
+	return EC_RES_INVALID_PARAM;
+}
 DECLARE_HOST_COMMAND(EC_CMD_CONSOLE_READ,
 		     host_command_console_read,
-		     EC_VER_MASK(0));
+		     EC_VER_MASK(0) | EC_VER_MASK(1));
