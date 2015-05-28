@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "01c118c3_2399aa88",
+        "filename": "board/npcx_evb/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1d04c89_8e619fa8",
+      "revId": "31a58c66b91291ba74290a30516414fb21f1843d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1d04c89_2e5193d9",
         "filename": "chip/npcx/adc.c",
         "patchSetId": 3
@@ -42,6 +60,24 @@
         "endLine": 95,
         "endChar": 1
       },
+      "revId": "31a58c66b91291ba74290a30516414fb21f1843d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "01c118c3_a3011afd",
+        "filename": "chip/npcx/adc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1d04c89_2e5193d9",
       "revId": "31a58c66b91291ba74290a30516414fb21f1843d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "01c118c3_83069e10",
+        "filename": "chip/npcx/adc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1d04c89_6e4b8b25",
+      "revId": "31a58c66b91291ba74290a30516414fb21f1843d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e16404ca_a0173e70",
         "filename": "chip/npcx/gpio.c",
         "patchSetId": 3
@@ -88,6 +142,24 @@
         "endLine": 504,
         "endChar": 95
       },
+      "revId": "31a58c66b91291ba74290a30516414fb21f1843d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2199bcf9_9c738589",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Indeed, we use 4-spaces tab. I will modify all files with 8-spaces tab.",
+      "parentUuid": "e16404ca_a0173e70",
       "revId": "31a58c66b91291ba74290a30516414fb21f1843d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -117,6 +189,24 @@
     },
     {
       "key": {
+        "uuid": "2199bcf9_7c9a394b",
+        "filename": "chip/npcx/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1d04c89_aee2a3a9",
+      "revId": "31a58c66b91291ba74290a30516414fb21f1843d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e16404ca_0040ea62",
         "filename": "chip/npcx/keyboard_raw.c",
         "patchSetId": 3
@@ -134,6 +224,24 @@
         "endLine": 49,
         "endChar": 19
       },
+      "revId": "31a58c66b91291ba74290a30516414fb21f1843d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2199bcf9_bc784164",
+        "filename": "chip/npcx/keyboard_raw.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e16404ca_0040ea62",
       "revId": "31a58c66b91291ba74290a30516414fb21f1843d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -163,6 +271,24 @@
     },
     {
       "key": {
+        "uuid": "01c118c3_630602bf",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1d04c89_ce16f7f1",
+      "revId": "31a58c66b91291ba74290a30516414fb21f1843d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e16404ca_c0c0b260",
         "filename": "common/lb_common.c",
         "patchSetId": 3
@@ -180,6 +306,24 @@
         "endLine": 124,
         "endChar": 21
       },
+      "revId": "31a58c66b91291ba74290a30516414fb21f1843d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2199bcf9_1c82152c",
+        "filename": "common/lb_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e16404ca_c0c0b260",
       "revId": "31a58c66b91291ba74290a30516414fb21f1843d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -227,6 +371,24 @@
         "endLine": 175,
         "endChar": 6
       },
+      "revId": "31a58c66b91291ba74290a30516414fb21f1843d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e17b245e_4b092d4c",
+        "filename": "common/sha256.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Actually, we did support memory mapping for spi flash.\r\nThe mapped address of spi flash is 0x64000000.\r\nWe also can use memcpy for sha256 operation.\r\nFor example,\r\nflash_tristate(0);\r\nmemcpy(\u0026ctx-\u003eblock[ctx-\u003elen], data, rem_len);\r\nflash_tristate(1);\r\n\r\nThe item we like to discuss is when we can disable tri-state of flash if EC share the same flash with BIOS. It\u0027s dangerous to disable tri-state when BIOS didn\u0027t release the control of spi pins.\r\n\r\nAnd if you think it\u0027s a big effort to ask BIOS team support that, we also have the other version which support stand-alone spi flash.(EC didn\u0027t share  spi flash with BIOS) This version minimize the changes of common layer sources. (Only slight change for sysjump. And sha256.c and flash.c are the same with older version.) But we still think shared-spi arch is a better choice for cost.",
+      "parentUuid": "a1d04c89_ce727702",
       "revId": "31a58c66b91291ba74290a30516414fb21f1843d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
