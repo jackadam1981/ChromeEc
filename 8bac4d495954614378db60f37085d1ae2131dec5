@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0d54fde2_9fbd1f4c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2015-05-28T00:11:53Z",
+      "side": 1,
+      "message": "True, but we could at least use it in feedback directly.",
+      "parentUuid": "0d54fde2_9f6b5f70",
+      "revId": "8bac4d495954614378db60f37085d1ae2131dec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed56c9ec_7808905a",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2015-05-28T00:09:02Z",
       "side": 1,
       "message": "The AP side needs CQ-DEPEND.",
+      "revId": "8bac4d495954614378db60f37085d1ae2131dec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed56c9ec_982454ab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2015-05-28T00:11:53Z",
+      "side": 1,
+      "message": "I haven\u0027t put up the AP side yet. When I do, it will have that.",
+      "parentUuid": "ed56c9ec_7808905a",
       "revId": "8bac4d495954614378db60f37085d1ae2131dec5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
