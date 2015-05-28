@@ -22,6 +22,30 @@
       "revId": "ea68513713e2fbb55676b2da5d13e6694e088a6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e8a959b_6519c29c",
+        "filename": "common/system.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "They\u0027re done now. All TODOs in system.c just remind us the changes for our chips. If you think the changes are OK, I will remove all TODOs in system.c.",
+      "parentUuid": "6e3d619e_6ec0cf29",
+      "range": {
+        "startLine": 313,
+        "startChar": 4,
+        "endLine": 313,
+        "endChar": 8
+      },
+      "revId": "ea68513713e2fbb55676b2da5d13e6694e088a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
