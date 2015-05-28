@@ -44,10 +44,10 @@ die() {
 	exit 1
 }
 
-# Note: Link is a special case and is not included here.
 BOARDS_LM4=(
 	auron
 	falco
+	link
 	peppy
 	rambi
 	samus
@@ -394,33 +394,20 @@ function flash_stm32_dfu() {
 	sudo $DFU_UTIL -a 0 -s ${ADDR}:${SIZE} -D "${IMG}"
 }
 
-function flash_link() {
-	OCD_PATH="${EC_DIR}/chip/lm4/openocd"
-	setup_openocd
-
-	OCD_CMDS="init; flash_lm4 ${IMG} ${FLAGS_offset};"
-	if [ "${FLAGS_unprotect}" = ${FLAGS_TRUE} ] ; then
-		info "Clearing write protect flag."
-		OCD_CMDS="${OCD_CMDS} unprotect_link;"
-	fi
-	OCD_CMDS="${OCD_CMDS} shutdown;"
-
-	dut_control jtag_buf_on_flex_en:on
-	dut_control jtag_buf_en:on
-
-	sudo openocd -s "${OCD_PATH}" -f "${OCD_CFG}" -c "${OCD_CMDS}" || \
-	die "Failed to program ${IMG}"
-}
-
 function flash_lm4() {
 	OCD_PATH="${EC_DIR}/chip/lm4/openocd"
 	setup_openocd
 
 	OCD_CMDS="init; flash_lm4 ${IMG} ${FLAGS_offset};"
 	if [ "${FLAGS_unprotect}" = ${FLAGS_TRUE} ] ; then
-		# Unprotect exists, but isn't needed because erasing pstate is
-		# implicit in writing the entire image
-		die "--unprotect not supported for this board."
+		if [ "${BOARD}" == "link" ]; then
+			info "Clearing write protect flag."
+			OCD_CMDS="${OCD_CMDS} unprotect_link;"
+		else
+			# Unprotect exists, but isn't needed because erasing pstate is
+			# implicit in writing the entire image
+			die "--unprotect not supported for this board."
+		fi
 	fi
 	OCD_CMDS="${OCD_CMDS} shutdown;"
 
@@ -518,8 +505,6 @@ elif $(in_array "${BOARDS_STM32[@]}" "${BOARD}"); then
 	flash_stm32
 elif $(in_array "${BOARDS_STM32_DFU[@]}" "${BOARD}"); then
 	flash_stm32_dfu
-elif [ "${BOARD}" == "link" ]; then
-	flash_link
 elif $(in_array "${BOARDS_NPCX[@]}" "${BOARD}"); then
 	flash_npcx
 elif $(in_array "${BOARDS_MEC1322[@]}" "${BOARD}"); then
