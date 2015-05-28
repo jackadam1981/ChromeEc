@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d1bb95b_0f801b46",
+        "filename": "chip/mec1322/config_chip.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-28T20:56:22Z",
+      "side": 1,
+      "message": "This doesn\u0027t look right. Program memory begins at a fixed location, and includes the loader.",
+      "revId": "dfb5bdcc9be886e2a3a665e627361fcd54b0cfac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed56c9ec_50a8f857",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-28T20:56:22Z",
+      "side": 1,
+      "message": "This isn\u0027t an iterator anymore, so we need something more descriptive than \u0027i\u0027. And, it may be better to use a while look, since read_size isn\u0027t constant.",
+      "revId": "dfb5bdcc9be886e2a3a665e627361fcd54b0cfac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed56c9ec_70a5fc7e",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-28T20:56:22Z",
+      "side": 1,
+      "message": "These watchdog reloads everywhere are still necessary?",
+      "revId": "dfb5bdcc9be886e2a3a665e627361fcd54b0cfac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d54fde2_e1e5a924",
+        "filename": "chip/mec1322/registers.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-28T20:56:22Z",
+      "side": 1,
+      "message": "Follow regular comment style.",
+      "revId": "dfb5bdcc9be886e2a3a665e627361fcd54b0cfac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d1bb95b_ef2d7f13",
+        "filename": "chip/mec1322/system.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-28T20:56:22Z",
+      "side": 1,
+      "message": "Name this system_is_reboot_warm, since it has nothing to do with GPIOs.",
+      "revId": "dfb5bdcc9be886e2a3a665e627361fcd54b0cfac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed56c9ec_d05b0861",
+        "filename": "chip/mec1322/system.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-28T20:56:22Z",
+      "side": 1,
+      "message": "Extra space here.",
+      "revId": "dfb5bdcc9be886e2a3a665e627361fcd54b0cfac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d1bb95b_4fb85326",
+        "filename": "chip/mec1322/system.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-28T20:56:22Z",
+      "side": 1,
+      "message": "This doesn\u0027t look right. From the name of this function, it should only return the address of lfw in program memory.",
+      "revId": "dfb5bdcc9be886e2a3a665e627361fcd54b0cfac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
