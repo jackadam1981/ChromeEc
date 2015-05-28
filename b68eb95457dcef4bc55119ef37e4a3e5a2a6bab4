@@ -34,6 +34,24 @@
       "revId": "b68eb95457dcef4bc55119ef37e4a3e5a2a6bab4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d1bb95b_4c37935d",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-28T05:06:58Z",
+      "side": 1,
+      "message": "There is another chip that will soon use CONFIG_CODERAM_ARCH (changes pending). We need this config to broadly support chips which use split SPI / program memory architecture. Your change here makes assumptions that only apply to npcx. Can you change CONFIG_RO_* to encompass your header instead? Also see my email reply for more details.",
+      "parentUuid": "0d3ebd49_a97f65d7",
+      "revId": "b68eb95457dcef4bc55119ef37e4a3e5a2a6bab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
