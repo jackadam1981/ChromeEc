@@ -16,6 +16,24 @@
       "revId": "768c9ab73c641d5af3cf51b9462600b3c83b23c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c121c032_dc4621f3",
+        "filename": "common/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:16:38Z",
+      "side": 1,
+      "message": "In shared-spi arch, EC not always controls the pins of spi-flash. After booting, BIOS usually controls spi-flash. We need to disable tri-state of spi pins and get correct data from spi interface. It also can use memcpy if we disable tristate before using it.",
+      "parentUuid": "01f918d6_37e8800b",
+      "revId": "768c9ab73c641d5af3cf51b9462600b3c83b23c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
