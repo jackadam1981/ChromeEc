@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "ed56c9ec_828bffed",
+        "filename": "chip/npcx/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-05-28T15:29:47Z",
+      "side": 1,
+      "message": "With the changes I\u0027ve since checked in, pstate isn\u0027t present at all.  CONFIG_FLASH_PSTATE is undefined in config_chip.h.",
+      "parentUuid": "a1168cda_788601a8",
+      "revId": "0b7365059ba39e7fd13466f1760418b0f13060eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81f428d2_72ba96b2",
         "filename": "chip/npcx/system.c",
         "patchSetId": 1
