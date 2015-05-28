@@ -52,6 +52,24 @@
       "revId": "b68eb95457dcef4bc55119ef37e4a3e5a2a6bab4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d3355d7_ade56925",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T05:51:24Z",
+      "side": 1,
+      "message": "Changing line 101 from \"#ifdef CONFIG_CODERAM_ARCH\" to \"#ifdef CONFIG_FW_HEADER_SIZE\" is better or not? I agree CONFIG_CODERAM_ARCH is not good choice for further architecture. But treating header as a part of RO is more simple. For example, I didn\u0027t change firmware_image.lds.S to put the header into ec.bin. Once RO contains header, we need to consider the length of header to get correct offset.",
+      "parentUuid": "6d1bb95b_4c37935d",
+      "revId": "b68eb95457dcef4bc55119ef37e4a3e5a2a6bab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
