@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ee995184_15ea7635",
+        "filename": "common/flash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ee9a9cf_f018a89a",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 2
+      },
+      "revId": "7e48a5bc5949dd2b9011e3e5c0b5581af53d75b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e81b519_2a7c7f55",
         "filename": "common/lb_common.c",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2015-01-08T23:53:59Z",
       "side": 1,
       "message": "Looks just like a whitespace change from HEAD.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 0
+      },
+      "revId": "7e48a5bc5949dd2b9011e3e5c0b5581af53d75b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aea3d9b1_76c82836",
+        "filename": "common/lb_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e81b519_2a7c7f55",
       "range": {
         "startLine": 74,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ee995184_b5b36a68",
+        "filename": "common/sha256.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Yes, we use memory mapping and disable tri-state all the time.\nBy the way, we use checkpatch.pl to check sources in our folder and found a lot of coding style error. We will fix these error and push again.",
+      "parentUuid": "2ee9a9cf_702578d1",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 8
+      },
+      "revId": "7e48a5bc5949dd2b9011e3e5c0b5581af53d75b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ee9a9cf_1016f46b",
         "filename": "common/vboot_hash.c",
         "patchSetId": 5
@@ -82,6 +154,30 @@
       "writtenOn": "2015-01-08T23:53:59Z",
       "side": 1,
       "message": "This also looks like it just removed a comment.",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 1
+      },
+      "revId": "7e48a5bc5949dd2b9011e3e5c0b5581af53d75b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ec28957_57222e93",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ee9a9cf_1016f46b",
       "range": {
         "startLine": 180,
         "startChar": 0,
