@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed56c9ec_c7d35453",
+        "filename": "board/npcx_evb/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-05-28T21:26:02Z",
+      "side": 1,
+      "message": "CONFIG_* settings are really designed for cross-platform use and must be documented in include/config.h.\n\nIt looks here like these are npcx-specific options.  So should probably be NPCX_I2C0_BUS2, etc., not CONFIG_I2C0_BUS2.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 69
+      },
+      "revId": "138733a324803332c34d79f3f4ca15fd6e846106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d54fde2_50af210f",
+        "filename": "board/npcx_evb_arm/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-05-28T21:26:02Z",
+      "side": 1,
+      "message": "New files should use \"Copyright 2015\" (new year, no (c))",
+      "range": {
+        "startLine": 1,
+        "startChar": 3,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "138733a324803332c34d79f3f4ca15fd6e846106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d1bb95b_6aec1d3b",
+        "filename": "chip/npcx/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1284,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-05-28T21:26:02Z",
+      "side": 1,
+      "message": "Please comment what each one does.",
+      "range": {
+        "startLine": 1284,
+        "startChar": 0,
+        "endLine": 1284,
+        "endChar": 22
+      },
+      "revId": "138733a324803332c34d79f3f4ca15fd6e846106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d54fde2_6198d9f1",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-05-28T21:26:02Z",
+      "side": 1,
+      "message": "Usually the caller is passed the out_msg pointer in which to store its response, and calls shi_reply_response() passing that same pointer back as msg_ptr.\n\nHowever, the caller may also pass a different pointer back (for example, if it\u0027s passing back static data).  In that case, we need to copy the msg_ptr into our own output buffer.\n\nThis is more of an issue on the STM32 chips, which can do DMA directly from msg_ptr instead of needing a copy.",
+      "range": {
+        "startLine": 185,
+        "startChar": 1,
+        "endLine": 188,
+        "endChar": 4
+      },
+      "revId": "138733a324803332c34d79f3f4ca15fd6e846106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
