@@ -54,10 +54,6 @@ BOARDS_LM4=(
 	squawks
 )
 
-BOARDS_LM4_USB=(
-	samus
-)
-
 BOARDS_STM32=(
 	big
 	blaze
@@ -120,8 +116,6 @@ DEFINE_boolean ro "${FLAGS_FALSE}" \
 	"Write only the read-only partition"
 DEFINE_boolean unprotect "${FLAGS_FALSE}" \
 	"Clear the protect flag."
-DEFINE_boolean usb "${FLAGS_FALSE}" \
-	"Use case-closed debugging over USB type-C."
 
 # Parse command line
 FLAGS_HELP="usage: $0 [flags]"
@@ -326,19 +320,15 @@ function claim_pty() {
 # helper function for setting up servo v2/3 with openocd paths
 function setup_openocd() {
 	if [[ -z "${EC_DIR}" ]]; then
-	    # check if we're on beaglebone
-	    if [[ -e "/usr/bin/lib" ]]; then
-		OCD_CFG="servo_v3.cfg"
-		OCD_PATH="/usr/bin/lib"
-	    else
-		die "Cannot locate openocd configs"
-	    fi
+		# check if we're on beaglebone
+		if [[ -e "/usr/bin/lib" ]]; then
+			OCD_CFG="servo_v3.cfg"
+			OCD_PATH="/usr/bin/lib"
+		else
+			die "Cannot locate openocd configs"
+		fi
 	else
-	    if [ "${FLAGS_usb}" = ${FLAGS_TRUE} ] ; then
-		OCD_CFG="${BOARD}.cfg"
-	    else
 		OCD_CFG="servo_v2.cfg"
-	    fi
 	fi
 }
 
@@ -521,11 +511,6 @@ EC_UART="$(ec_uart)"
 info "${MCU} UART pty : ${EC_UART}"
 
 save="$(servo_save)"
-
-if ([ "${FLAGS_usb}" = ${FLAGS_TRUE} ] && \
-      ! $(in_array "${BOARDS_LM4_USB[@]}" "${BOARD}")); then
-	die "--usb not supported for this board."
-fi
 
 if $(in_array "${BOARDS_LM4[@]}" "${BOARD}"); then
 	flash_lm4
