@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d1bb95b_b204de9c",
+        "filename": "include/usb.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-05-28T15:32:43Z",
+      "side": 1,
+      "message": "Odd, somehow this crept in with a non-standard include guard. With our usual pattern, it would be:\n\n__CROS_EC_USB_H\n\n(not that you should fix it in this change, just noticing...)",
+      "range": {
+        "startLine": 8,
+        "startChar": 8,
+        "endLine": 8,
+        "endChar": 13
+      },
+      "revId": "1b6136f8b59c7a7af24db6013bfaac1334d04c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
