@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "a1168cda_182fc5a5",
+        "filename": "board/nucmx_evb/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c19e206c_f1d3488c",
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1996484_f5125279",
         "filename": "board/nucmx_evb/build.mk",
         "patchSetId": 1
@@ -42,6 +60,24 @@
         "endLine": 9,
         "endChar": 28
       },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "811b4806_f706a011",
+        "filename": "board/nucmx_evb/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1996484_f5125279",
       "revId": "6d0f501ab99982663901c481da82a6002a03303f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "811b4806_daa5c193",
+        "filename": "chip/nucmx/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81a8a891_b2b61ecb",
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81a8a891_d2c3a233",
         "filename": "chip/nucmx/adc.c",
         "patchSetId": 1
@@ -88,6 +142,24 @@
         "endLine": 94,
         "endChar": 1
       },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c121c032_f9621782",
+        "filename": "chip/nucmx/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81a8a891_d2c3a233",
       "revId": "6d0f501ab99982663901c481da82a6002a03303f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -117,6 +189,24 @@
     },
     {
       "key": {
+        "uuid": "811b4806_3ae4fdde",
+        "filename": "chip/nucmx/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81a8a891_3294ee23",
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c19e206c_11960cb6",
         "filename": "chip/nucmx/adc.c",
         "patchSetId": 1
@@ -134,6 +224,24 @@
         "endLine": 141,
         "endChar": 2
       },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1168cda_d8f14d42",
+        "filename": "chip/nucmx/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c19e206c_11960cb6",
       "revId": "6d0f501ab99982663901c481da82a6002a03303f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -163,6 +271,24 @@
     },
     {
       "key": {
+        "uuid": "a1168cda_38808987",
+        "filename": "chip/nucmx/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1996484_553b1eee",
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c19e206c_319b10dd",
         "filename": "chip/nucmx/adc.c",
         "patchSetId": 1
@@ -180,6 +306,24 @@
         "endLine": 148,
         "endChar": 9
       },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "811b4806_faaa0561",
+        "filename": "chip/nucmx/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c19e206c_319b10dd",
       "revId": "6d0f501ab99982663901c481da82a6002a03303f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -209,6 +353,24 @@
     },
     {
       "key": {
+        "uuid": "811b4806_1ae7b9e6",
+        "filename": "chip/nucmx/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c19e206c_71a5980f",
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81a8a891_d29c8248",
         "filename": "chip/nucmx/adc.c",
         "patchSetId": 1
@@ -226,6 +388,24 @@
         "endLine": 191,
         "endChar": 6
       },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1168cda_18834597",
+        "filename": "chip/nucmx/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81a8a891_d29c8248",
       "revId": "6d0f501ab99982663901c481da82a6002a03303f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -255,6 +435,24 @@
     },
     {
       "key": {
+        "uuid": "811b4806_7aea75af",
+        "filename": "chip/nucmx/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1996484_b531aa0d",
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1996484_d52e2ea8",
         "filename": "chip/nucmx/clock.c",
         "patchSetId": 1
@@ -272,6 +470,24 @@
         "endLine": 183,
         "endChar": 27
       },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c121c032_d96dd3f2",
+        "filename": "chip/nucmx/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1996484_d52e2ea8",
       "revId": "6d0f501ab99982663901c481da82a6002a03303f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -301,6 +517,24 @@
     },
     {
       "key": {
+        "uuid": "811b4806_b74b48a7",
+        "filename": "chip/nucmx/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81a8a891_92675abf",
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1996484_156ef6ee",
         "filename": "chip/nucmx/config_chip.h",
         "patchSetId": 1
@@ -318,6 +552,24 @@
         "endLine": 84,
         "endChar": 34
       },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1168cda_b8c81934",
+        "filename": "chip/nucmx/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "It means we don\u0027t need no PSTATE regin anymore?",
+      "parentUuid": "e1996484_156ef6ee",
       "revId": "6d0f501ab99982663901c481da82a6002a03303f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -347,6 +599,24 @@
     },
     {
       "key": {
+        "uuid": "811b4806_9aaf4970",
+        "filename": "chip/nucmx/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1996484_3573fad9",
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81a8a891_5257b2cf",
         "filename": "chip/nucmx/fan.c",
         "patchSetId": 1
@@ -364,6 +634,24 @@
         "endLine": 178,
         "endChar": 60
       },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c121c032_99675b91",
+        "filename": "chip/nucmx/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81a8a891_5257b2cf",
       "revId": "6d0f501ab99982663901c481da82a6002a03303f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -393,6 +681,24 @@
     },
     {
       "key": {
+        "uuid": "c121c032_b96c9f73",
+        "filename": "chip/nucmx/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1996484_757d82a0",
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1996484_150276ff",
         "filename": "chip/nucmx/flash.c",
         "patchSetId": 1
@@ -410,6 +716,24 @@
         "endLine": 96,
         "endChar": 12
       },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "811b4806_baf1edf7",
+        "filename": "chip/nucmx/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1996484_150276ff",
       "revId": "6d0f501ab99982663901c481da82a6002a03303f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -439,6 +763,24 @@
     },
     {
       "key": {
+        "uuid": "a1168cda_f80c51e2",
+        "filename": "chip/nucmx/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81a8a891_b2029e78",
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1996484_d51f0e51",
         "filename": "chip/nucmx/gpio.c",
         "patchSetId": 1
@@ -456,6 +798,24 @@
         "endLine": 506,
         "endChar": 6
       },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "811b4806_d7f83c8e",
+        "filename": "chip/nucmx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1996484_d51f0e51",
       "revId": "6d0f501ab99982663901c481da82a6002a03303f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -485,6 +845,24 @@
     },
     {
       "key": {
+        "uuid": "c121c032_99c51b6f",
+        "filename": "chip/nucmx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Yes, you\u0027re right.",
+      "parentUuid": "c19e206c_d13ac405",
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81f428d2_cf2f5d78",
         "filename": "chip/nucmx/i2c.c",
         "patchSetId": 1
@@ -502,6 +880,24 @@
         "endLine": 76,
         "endChar": 15
       },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1168cda_9850b528",
+        "filename": "chip/nucmx/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81f428d2_cf2f5d78",
       "revId": "6d0f501ab99982663901c481da82a6002a03303f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -531,6 +927,24 @@
     },
     {
       "key": {
+        "uuid": "c121c032_59b0e300",
+        "filename": "chip/nucmx/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1e5e41c_f2568824",
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1ef6cfe_b02118c7",
         "filename": "chip/nucmx/i2c.c",
         "patchSetId": 1
@@ -548,6 +962,24 @@
         "endLine": 124,
         "endChar": 30
       },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1168cda_586bfdd2",
+        "filename": "chip/nucmx/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1ef6cfe_b02118c7",
       "revId": "6d0f501ab99982663901c481da82a6002a03303f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -577,6 +1009,24 @@
     },
     {
       "key": {
+        "uuid": "a1168cda_18934569",
+        "filename": "chip/nucmx/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81f428d2_afd9b93b",
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1e5e41c_f2bb28e7",
         "filename": "chip/nucmx/keyboard_raw.c",
         "patchSetId": 1
@@ -594,6 +1044,24 @@
         "endLine": 49,
         "endChar": 19
       },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1168cda_18c4a53b",
+        "filename": "chip/nucmx/keyboard_raw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "We found there is a strange symptom between KBScan and JTAG. And use this definition to prevent it. After new version of M4 EC, it will be remove, I add TODO for those lines",
+      "parentUuid": "e1e5e41c_f2bb28e7",
       "revId": "6d0f501ab99982663901c481da82a6002a03303f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -623,6 +1091,24 @@
     },
     {
       "key": {
+        "uuid": "a1168cda_98b51575",
+        "filename": "chip/nucmx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1ef6cfe_30bac8df",
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1ef6cfe_f0a440c0",
         "filename": "chip/nucmx/lpc.c",
         "patchSetId": 1
@@ -640,6 +1126,24 @@
         "endLine": 590,
         "endChar": 109
       },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "811b4806_7a3cb5b2",
+        "filename": "chip/nucmx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1ef6cfe_f0a440c0",
       "revId": "6d0f501ab99982663901c481da82a6002a03303f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -669,6 +1173,24 @@
     },
     {
       "key": {
+        "uuid": "a1168cda_b88259db",
+        "filename": "chip/nucmx/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1ef6cfe_90a3b4b4",
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1e5e41c_72c4d84e",
         "filename": "chip/nucmx/spi.c",
         "patchSetId": 1
@@ -686,6 +1208,24 @@
         "endLine": 39,
         "endChar": 19
       },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1168cda_981435b4",
+        "filename": "chip/nucmx/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1e5e41c_72c4d84e",
       "revId": "6d0f501ab99982663901c481da82a6002a03303f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -715,6 +1255,24 @@
     },
     {
       "key": {
+        "uuid": "a1168cda_b819f9ea",
+        "filename": "chip/nucmx/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1e5e41c_52c1d43c",
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1e5e41c_32ce506d",
         "filename": "chip/nucmx/system.c",
         "patchSetId": 1
@@ -732,6 +1290,24 @@
         "endLine": 242,
         "endChar": 19
       },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "811b4806_57166c42",
+        "filename": "chip/nucmx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1e5e41c_32ce506d",
       "revId": "6d0f501ab99982663901c481da82a6002a03303f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -761,6 +1337,24 @@
     },
     {
       "key": {
+        "uuid": "811b4806_77137051",
+        "filename": "chip/nucmx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1e5e41c_12cb4c5d",
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81f428d2_af46599f",
         "filename": "chip/nucmx/uart.c",
         "patchSetId": 1
@@ -778,6 +1372,24 @@
         "endLine": 214,
         "endChar": 26
       },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "811b4806_1a39f9c1",
+        "filename": "chip/nucmx/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81f428d2_af46599f",
       "revId": "6d0f501ab99982663901c481da82a6002a03303f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -807,6 +1419,24 @@
     },
     {
       "key": {
+        "uuid": "a1168cda_f8453176",
+        "filename": "common/lb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1ef6cfe_1090e458",
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81f428d2_d2cee2c0",
         "filename": "common/system.c",
         "patchSetId": 1
@@ -824,6 +1454,24 @@
         "endLine": 388,
         "endChar": 55
       },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "811b4806_d7635c36",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81f428d2_d2cee2c0",
       "revId": "6d0f501ab99982663901c481da82a6002a03303f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -853,6 +1501,24 @@
     },
     {
       "key": {
+        "uuid": "c121c032_f9e777b8",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "It has beeen changed in newest version.",
+      "parentUuid": "e1e5e41c_d2fdc47b",
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1ef6cfe_f001e0fb",
         "filename": "common/system.c",
         "patchSetId": 1
@@ -876,6 +1542,24 @@
     },
     {
       "key": {
+        "uuid": "811b4806_7755b04a",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "In newest version, it has been placed in low-level system driver",
+      "parentUuid": "a1ef6cfe_f001e0fb",
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1e5e41c_b2f240aa",
         "filename": "common/vboot_hash.c",
         "patchSetId": 1
@@ -893,6 +1577,24 @@
         "endLine": 180,
         "endChar": 53
       },
+      "revId": "6d0f501ab99982663901c481da82a6002a03303f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c121c032_b9e1ffa5",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "It has been updated in the newest version.",
+      "parentUuid": "e1e5e41c_b2f240aa",
       "revId": "6d0f501ab99982663901c481da82a6002a03303f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
