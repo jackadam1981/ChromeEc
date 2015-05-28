@@ -72,6 +72,29 @@
     },
     {
       "key": {
+        "uuid": "6d1bb95b_d5ea1aa4",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2406,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-05-28T18:15:06Z",
+      "side": 1,
+      "message": "While you\u0027re updating, can you remove this comment?  It\u0027s no longer true; we allow console commands even if flash wp is locked.",
+      "range": {
+        "startLine": 2406,
+        "startChar": 21,
+        "endLine": 2406,
+        "endChar": 73
+      },
+      "revId": "8bac4d495954614378db60f37085d1ae2131dec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed56c9ec_f813a08f",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -83,6 +106,24 @@
       "writtenOn": "2015-05-28T00:09:02Z",
       "side": 1,
       "message": "I would make this command an option of EC_CMD_CONSOLE_READ",
+      "revId": "8bac4d495954614378db60f37085d1ae2131dec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d54fde2_30dffd03",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2426,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-05-28T18:15:06Z",
+      "side": 1,
+      "message": "Agreed.  Make a new version of EC_CMD_CONSOLE_READ which passes a uint8_t param which is either (read-next-from-snapshot) or (read-recent).  See for example the implementation of EC_CMD_PWM_SET_FAN_TARGET_RPM, which supports two different versions.",
+      "parentUuid": "ed56c9ec_f813a08f",
       "revId": "8bac4d495954614378db60f37085d1ae2131dec5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
