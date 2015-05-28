@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "ce63adf0_8932f9d9",
+        "filename": "Makefile.rules",
+        "patchSetId": 4
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Sorry for that. We are adapting to new editor to find out trailing whitespace.\nWe have checked all files in both npcx_evb and npcx folder.\nBy the way, I have push a new version which uses dedicated flash from my PM\u0027s request. This version removes all changes in common layer sources excepting sysjump.",
+      "parentUuid": "2ea1a95e_c287a638",
+      "revId": "fb8349ab1bb7625515d17eb867eae81069e1a459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ea1a95e_6201f2fa",
         "filename": "board/npcx_evb/board.c",
         "patchSetId": 4
@@ -42,6 +60,24 @@
         "endLine": 1,
         "endChar": 21
       },
+      "revId": "fb8349ab1bb7625515d17eb867eae81069e1a459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2199bcf9_5c965259",
+        "filename": "board/npcx_evb/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ea1a95e_6201f2fa",
       "revId": "fb8349ab1bb7625515d17eb867eae81069e1a459",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
