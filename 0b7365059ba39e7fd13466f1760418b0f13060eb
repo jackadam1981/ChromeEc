@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a1168cda_788601a8",
+        "filename": "chip/npcx/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:22:30Z",
+      "side": 1,
+      "message": "in flash_read_pstate function, PSTATE_OFFSET is necessary and I didn\u0027t found any definition to remove this function in flash.c of common layer. Can I remove all blocks of PSTATE?? Or just remove CONFIG_PSTATE_AT_END",
+      "parentUuid": "a1ef6cfe_d006dc11",
+      "revId": "0b7365059ba39e7fd13466f1760418b0f13060eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81f428d2_72ba96b2",
         "filename": "chip/npcx/system.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
         "endLine": 671,
         "endChar": 1
       },
+      "revId": "0b7365059ba39e7fd13466f1760418b0f13060eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1168cda_38bba943",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-28T03:22:30Z",
+      "side": 1,
+      "message": "I will move tri-state function tohook function and rename this function.",
+      "parentUuid": "81f428d2_72ba96b2",
       "revId": "0b7365059ba39e7fd13466f1760418b0f13060eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
