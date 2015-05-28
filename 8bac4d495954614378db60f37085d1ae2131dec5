@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d54fde2_9f6b5f70",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-05-28T00:09:02Z",
+      "side": 1,
+      "message": "We still need a tool to dump the sysfs entry in /var/log/ file, to preserve the data accross reboot.",
+      "revId": "8bac4d495954614378db60f37085d1ae2131dec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed56c9ec_7808905a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-05-28T00:09:02Z",
+      "side": 1,
+      "message": "The AP side needs CQ-DEPEND.",
+      "revId": "8bac4d495954614378db60f37085d1ae2131dec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed56c9ec_f813a08f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2426,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-05-28T00:09:02Z",
+      "side": 1,
+      "message": "I would make this command an option of EC_CMD_CONSOLE_READ",
+      "revId": "8bac4d495954614378db60f37085d1ae2131dec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
