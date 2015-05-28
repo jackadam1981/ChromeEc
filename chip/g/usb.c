@@ -367,9 +367,6 @@ void usb_init(void)
 	/* Enable clocks */
 	clock_enable_module(MODULE_USB, 1);
 
-	/* set up pinmux */
-	gpio_config_module(MODULE_USB, 1);
-
 	/* Use the last 128 entries of the FIFO for EP INFO */
 	GR_USB_GDFIFOCFG = ((FIFO_SIZE - 0x80) << 16) | FIFO_SIZE;
 

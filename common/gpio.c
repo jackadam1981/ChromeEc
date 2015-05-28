@@ -61,6 +61,7 @@ static int last_val_changed(int i, int v)
 /*****************************************************************************/
 /* GPIO API */
 
+#ifdef CONFIG_COMMON_GPIO_ALTERNATE_FUNCTIONS
 void gpio_config_module(enum module_id id, int enable)
 {
 	const struct gpio_alt_func *af = gpio_alt_funcs;
@@ -86,6 +87,7 @@ void gpio_config_module(enum module_id id, int enable)
 		}
 	}
 }
+#endif	/* CONFIG_COMMON_GPIO_ALTERNATE_FUNCTIONS */
 
 void gpio_set_flags(enum gpio_signal signal, int flags)
 {
@@ -94,6 +96,7 @@ void gpio_set_flags(enum gpio_signal signal, int flags)
 	gpio_set_flags_by_mask(g->port, g->mask, flags);
 }
 
+/* TODO(wfrichar): This is only used in one place. Is it really needed? */
 const char *gpio_get_name(enum gpio_signal signal)
 {
 	return gpio_list[signal].name;

@@ -15,6 +15,9 @@
 #undef CONFIG_HIBERNATE
 #undef CONFIG_LID_SWITCH
 
+/* We use a pinmux for internal I/O, not alternate GPIO functions. */
+#undef CONFIG_COMMON_GPIO_ALTERNATE_FUNCTIONS
+
 #if !defined(CHIP_VARIANT_CR50_A1)
 
 /* USB configuration */

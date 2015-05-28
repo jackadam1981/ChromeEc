@@ -79,12 +79,6 @@ void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags)
 	/* No way to trigger on both rising and falling edges, darn it. */
 }
 
-void gpio_set_alternate_function(uint32_t port, uint32_t mask, int func)
-{
-	/* This HW feature is not present in the Cr50 ARM core */
-}
-
-
 static void connect_pinmux(uint32_t signal, uint32_t dio, uint16_t flags)
 {
 	if (FIELD_IS_FUNC(signal)) {

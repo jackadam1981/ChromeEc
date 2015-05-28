@@ -412,6 +412,13 @@
 #define CONFIG_COMMON_GPIO
 
 /*
+ * Most SOCs have alternate configurations for certain GPIOs to access internal
+ * devices such as UARTs, I2C pins, etc. If your SoC does not, you can disable
+ * this to save a tiny bit of code (and maybe also prevent a few mistakes).
+ */
+#define CONFIG_COMMON_GPIO_ALTERNATE_FUNCTIONS
+
+/*
  * Provides smaller GPIO names to reduce flash size.  Instead of the 'name'
  * field in GPIO macro it will concat 'port' and 'pin' to reduce flash size.
  */
