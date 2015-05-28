@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed56c9ec_a340fb14",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-05-28T23:58:51Z",
+      "side": 1,
+      "message": "I understand that if we use the CONSOLE_READ_NEXT option, we should not issue SNAPSHOT anymore.\nIf we don\u0027t issue EC_CMD_CONSOLE_READ fast enough, not only we will lose data overwritten in the buffer, but if we wrap around we will lose all the buffer.\nShouldn\u0027t we update tx_snapshot_head when we write past it?",
+      "revId": "b490f39a2aea0e207be996cc0867e67f7dba6fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d54fde2_85af860e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2430,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-05-28T23:58:51Z",
+      "side": 1,
+      "message": "ec_params_console_read_v1 to be consistent with other commands.",
+      "revId": "b490f39a2aea0e207be996cc0867e67f7dba6fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
