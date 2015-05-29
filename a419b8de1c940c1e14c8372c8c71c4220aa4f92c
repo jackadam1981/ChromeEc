@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d54fde2_1dc76249",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-05-29T22:47:37Z",
+      "side": 1,
+      "message": "Technically, we don\u0027t need this anymore.  ToT Link acts just like samus and the other LM4 boards.\n\nWe needed it originally because Link put PSTATE at the end of flash, so uploading a new (smaller-than-flash) image wouldn\u0027t clear it.\n\nAnd, of course, I\u0027m about to make link go away in ToT anyway...",
+      "range": {
+        "startLine": 405,
+        "startChar": 25,
+        "endLine": 405,
+        "endChar": 40
+      },
+      "revId": "a419b8de1c940c1e14c8372c8c71c4220aa4f92c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
