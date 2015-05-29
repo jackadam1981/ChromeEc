@@ -98,7 +98,12 @@ static uintptr_t get_base(enum system_image_copy_t copy)
 {
 	switch (copy) {
 	case SYSTEM_IMAGE_RO:
+#ifdef CONFIG_RO_HEADER_SIZE
+		return CONFIG_FLASH_BASE + CONFIG_RO_MEM_OFF +
+				CONFIG_RO_HEADER_SIZE;
+#else
 		return CONFIG_FLASH_BASE + CONFIG_RO_MEM_OFF;
+#endif
 	case SYSTEM_IMAGE_RW:
 		return CONFIG_FLASH_BASE + CONFIG_RW_MEM_OFF;
 	default:
