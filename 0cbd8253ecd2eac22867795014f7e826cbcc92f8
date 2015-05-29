@@ -22,6 +22,30 @@
       "revId": "0cbd8253ecd2eac22867795014f7e826cbcc92f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9f6d849_8605504c",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-29T00:38:31Z",
+      "side": 1,
+      "message": "Yes, it\u0027s straight from the datasheet. I guess the state machine in the controller detects the case where CTRL is written after a STOP has been generated and handles it appropriately.",
+      "parentUuid": "b9f6d849_036db22a",
+      "range": {
+        "startLine": 289,
+        "startChar": 3,
+        "endLine": 298,
+        "endChar": 18
+      },
+      "revId": "0cbd8253ecd2eac22867795014f7e826cbcc92f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
