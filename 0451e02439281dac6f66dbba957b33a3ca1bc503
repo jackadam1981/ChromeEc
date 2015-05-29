@@ -16,6 +16,24 @@
       "revId": "0451e02439281dac6f66dbba957b33a3ca1bc503",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d54fde2_1ca12b1f",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-05-29T16:39:31Z",
+      "side": 1,
+      "message": "Nope. The input blob is struct { uint8_t type; uint8_t req; ...}. But because the stm32 can only read it as an array of uint16_t\u0027s (the dedicated USB RAM is on the APB) and it\u0027s little-endian, that becomes encoded as 0x[\u003creq\u003e\u003ctype\u003e].\n\nThe Cr50\u0027s buffers and descriptors are all in program RAM, So this just avoids the byte-swapping and reads the struct as it really is.",
+      "parentUuid": "b9f6d849_2c62db0b",
+      "revId": "0451e02439281dac6f66dbba957b33a3ca1bc503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

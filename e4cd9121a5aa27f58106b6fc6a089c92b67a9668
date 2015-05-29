@@ -22,6 +22,30 @@
       "revId": "e4cd9121a5aa27f58106b6fc6a089c92b67a9668",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9f6d849_1cd18c73",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-05-29T16:39:31Z",
+      "side": 0,
+      "message": "Away. The STM32\u0027s buffer is an array of uint16_t\u0027s, so when we want a single byte, we have to divide the index by 2 and shift the bytes around. The Cr50 is just an array of uint8_t\u0027s, so we don\u0027t need all this byte-fiddling.",
+      "parentUuid": "ed56c9ec_79b6c0cc",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 3
+      },
+      "revId": "e4cd9121a5aa27f58106b6fc6a089c92b67a9668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
