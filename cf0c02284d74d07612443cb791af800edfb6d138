@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ed56c9ec_85e5b2d4",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-05-29T19:52:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d54fde2_dcbde34a",
+      "revId": "cf0c02284d74d07612443cb791af800edfb6d138",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9f6d849_bc7df82b",
         "filename": "util/ec_sb_firmware_update.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "b91fb853_3ed1edc5",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-05-29T19:52:36Z",
+      "side": 1,
+      "message": "Add more delays: (typo!)\nWithout these additional delays, the firmware update process will fail.",
+      "parentUuid": "b9f6d849_bc7df82b",
+      "revId": "cf0c02284d74d07612443cb791af800edfb6d138",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9f6d849_9c635c92",
         "filename": "util/ec_sb_firmware_update.c",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2015-05-29T16:32:15Z",
       "side": 1,
       "message": "Why not move this code below, when you detect busy status?",
+      "revId": "cf0c02284d74d07612443cb791af800edfb6d138",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b91fb853_be661dcb",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-05-29T19:52:36Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "b9f6d849_9c635c92",
       "revId": "cf0c02284d74d07612443cb791af800edfb6d138",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
