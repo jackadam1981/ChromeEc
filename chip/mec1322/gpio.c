@@ -128,9 +128,6 @@ void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags)
 		else if (!(flags & GPIO_INT_F_LOW)) /* No interrupt flag set */
 			val |= 0x4 << 4;
 
-		/* Use as GPIO */
-		val &= ~((1 << 12) | (1 << 13));
-
 		MEC1322_GPIO_CTL(port, i) = val;
 
 		if (flags & GPIO_HIGH)
@@ -196,7 +193,11 @@ void gpio_pre_init(void)
 		if (is_warm)
 			flags &= ~(GPIO_LOW | GPIO_HIGH);
 
+		/* Set up GPIO based on flags */
 		gpio_set_flags_by_mask(g->port, g->mask, flags);
+
+		/* Use as GPIO, not alternate function */
+		gpio_set_alternate_function(g->port, g->mask, -1);
 	}
 }
 
