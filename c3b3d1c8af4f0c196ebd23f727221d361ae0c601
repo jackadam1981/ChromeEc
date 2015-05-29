@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d54fde2_5d4e4a4a",
+        "filename": "util/openocd/lm4x_cmds.tcl",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-05-29T22:59:42Z",
+      "side": 1,
+      "message": "Not anymore it doesn\u0027t, in ToT anyway.  This can go...",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 32
+      },
+      "revId": "c3b3d1c8af4f0c196ebd23f727221d361ae0c601",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b91fb853_92bc6d0d",
+        "filename": "util/openocd/lm4x_cmds.tcl",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-05-29T22:59:42Z",
+      "side": 1,
+      "message": "All current boards do it this way.\n\nAll new boards won\u0027t define CONFIG_FLASH_PSTATE_BANK at all, and will have PSTATE inside the RO image itself.\n\n(might comment that \u0027boards with CONFIG_FLASH_PSTATE_BANK have it following RO\u0027)",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 1
+      },
+      "revId": "c3b3d1c8af4f0c196ebd23f727221d361ae0c601",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
