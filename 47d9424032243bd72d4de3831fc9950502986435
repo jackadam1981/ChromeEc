@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d54fde2_7da22eab",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-05-29T22:42:52Z",
+      "side": 1,
+      "message": "Had to read that a few times.\n\n\"only support reading from a snapshot, not the output since the last read request\"?",
+      "range": {
+        "startLine": 414,
+        "startChar": 36,
+        "endLine": 415,
+        "endChar": 51
+      },
+      "revId": "47d9424032243bd72d4de3831fc9950502986435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d54fde2_fd961e4a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2431,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-05-29T22:42:52Z",
+      "side": 1,
+      "message": "\u0027subcmd\u0027 is more in keeping with other commands.",
+      "range": {
+        "startLine": 2431,
+        "startChar": 9,
+        "endLine": 2431,
+        "endChar": 15
+      },
+      "revId": "47d9424032243bd72d4de3831fc9950502986435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
