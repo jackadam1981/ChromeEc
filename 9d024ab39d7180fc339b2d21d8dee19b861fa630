@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed56c9ec_4a9e7239",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-29T22:10:35Z",
+      "side": 1,
+      "message": "Spelling here.",
+      "range": {
+        "startLine": 9,
+        "startChar": 9,
+        "endLine": 9,
+        "endChar": 18
+      },
+      "revId": "9d024ab39d7180fc339b2d21d8dee19b861fa630",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed56c9ec_cad9821d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-29T22:10:35Z",
+      "side": 1,
+      "message": "Probably don\u0027t need these revert lines, since we\u0027re doing much more than just a revert?",
+      "revId": "9d024ab39d7180fc339b2d21d8dee19b861fa630",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d54fde2_c218992a",
+        "filename": "util/comm-host.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-29T22:10:35Z",
+      "side": 1,
+      "message": "Maybe add a small comment here describing what this function does? The \"_ge\" \u003d\u003d \"greater than or equal to\" wasn\u0027t entirely obvious to me just from looking at the name.",
+      "revId": "9d024ab39d7180fc339b2d21d8dee19b861fa630",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b91fb853_748d4139",
+        "filename": "util/comm-host.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-29T22:10:35Z",
+      "side": 1,
+      "message": "Do you think this function belongs in misc_util.c instead, since it\u0027s not directly related to host communication?",
+      "revId": "9d024ab39d7180fc339b2d21d8dee19b861fa630",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
