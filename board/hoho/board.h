@@ -19,6 +19,7 @@
 #define CONFIG_ADC
 #define CONFIG_BOARD_PRE_INIT
 #define CONFIG_CMD_SPI_FLASH
+#define CONFIG_CMD_MCDP
 #define CONFIG_HW_CRC
 #define CONFIG_RSA
 #define CONFIG_RWSIG

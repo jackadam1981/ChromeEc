@@ -19,7 +19,7 @@
 
 static uint8_t mcdp_inbuf[MCDP_INBUF_MAX];
 
-#undef MCDP_DEBUG
+#define MCDP_DEBUG
 
 #ifdef MCDP_DEBUG
 static inline void print_buffer(uint8_t *buf, int cnt)
