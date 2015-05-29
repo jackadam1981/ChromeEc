@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "b9f6d849_cc2c9727",
+        "filename": "chip/mec1322/config_chip.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-29T01:59:15Z",
+      "side": 1,
+      "message": "We need to look into this. The coderam base clearly isn\u0027t 0x00100000 + 0x1000.",
+      "parentUuid": "ed56c9ec_707dfc2b",
+      "revId": "dfb5bdcc9be886e2a3a665e627361fcd54b0cfac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed56c9ec_50a8f857",
         "filename": "chip/mec1322/flash.c",
         "patchSetId": 9
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "May not be but since we know these are some time consuming it is safe to add it.",
       "parentUuid": "ed56c9ec_70a5fc7e",
+      "revId": "dfb5bdcc9be886e2a3a665e627361fcd54b0cfac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed56c9ec_3987d868",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-29T01:59:15Z",
+      "side": 1,
+      "message": "We shouldn\u0027t add them unless we have a well-understood reason.",
+      "parentUuid": "0d54fde2_21f0915f",
       "revId": "dfb5bdcc9be886e2a3a665e627361fcd54b0cfac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -177,6 +213,24 @@
     },
     {
       "key": {
+        "uuid": "0d54fde2_ebff43f8",
+        "filename": "chip/mec1322/system.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-29T01:59:15Z",
+      "side": 1,
+      "message": "Please open new crbug to rename gpio_is_reboot_warm to system_is_reboot_warm, then add a \"TODO(crbug.com/XXXXXX): Rename this function system_is_reboot_warm\".",
+      "parentUuid": "0d54fde2_c1426501",
+      "revId": "dfb5bdcc9be886e2a3a665e627361fcd54b0cfac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed56c9ec_d05b0861",
         "filename": "chip/mec1322/system.c",
         "patchSetId": 9
@@ -241,6 +295,24 @@
       "side": 1,
       "message": "we also send the copy to of image type as a parameter. You will need to have 2 functions doing these 2 items them.",
       "parentUuid": "6d1bb95b_4fb85326",
+      "revId": "dfb5bdcc9be886e2a3a665e627361fcd54b0cfac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d54fde2_2b0a2ba7",
+        "filename": "chip/mec1322/system.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-05-29T01:59:15Z",
+      "side": 1,
+      "message": "It may be necessary to add a second function. When you call a get routine, you don\u0027t expect misc. state changes.",
+      "parentUuid": "6d1bb95b_6ac33db9",
       "revId": "dfb5bdcc9be886e2a3a665e627361fcd54b0cfac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
