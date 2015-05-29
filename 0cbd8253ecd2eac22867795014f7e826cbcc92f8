@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9f6d849_036db22a",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-29T00:34:47Z",
+      "side": 1,
+      "message": "so, in the repeated start case, we set the start bit and start clocking out slave address before setting the data? that seems odd. What if we task switch in between and the data isn\u0027t ready?",
+      "range": {
+        "startLine": 289,
+        "startChar": 3,
+        "endLine": 298,
+        "endChar": 18
+      },
+      "revId": "0cbd8253ecd2eac22867795014f7e826cbcc92f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
