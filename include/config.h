@@ -1108,6 +1108,9 @@
 /* Support computing SHA-256 hash (without the VBOOT code) */
 #undef CONFIG_SHA256
 
+/* Support shared objects library between RO and RW */
+#undef CONFIG_SHAREDLIB
+
 /* Emulate the CLZ (Count Leading Zeros) in software for CPU lacking support */
 #undef CONFIG_SOFTWARE_CLZ
 
