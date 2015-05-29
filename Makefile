@@ -124,25 +124,56 @@ include util/lock/build.mk
 
 includes+=$(includes-y)
 
-objs_from_dir=$(sort $(foreach obj, $($(2)-y), \
-	        $(out)/$(1)/$(firstword $($(2)-mock-$(PROJECT)-$(obj)) $(obj))))
+ro-objs_from_dir=$(sort $(foreach obj, $($(2)-y), \
+	        $(out)/RO/$(1)/$(firstword $($(2)-mock-$(PROJECT)-$(obj)) $(obj))))
 
 # Get all sources to build
-all-y=$(call objs_from_dir,core/$(CORE),core)
-all-y+=$(call objs_from_dir,chip/$(CHIP),chip)
-all-y+=$(call objs_from_dir,board/$(BOARD),board)
-all-y+=$(call objs_from_dir,private,private)
-all-y+=$(call objs_from_dir,common,common)
-all-y+=$(call objs_from_dir,driver,driver)
-all-y+=$(call objs_from_dir,power,power)
-all-y+=$(call objs_from_dir,test,$(PROJECT))
-dirs=core/$(CORE) chip/$(CHIP) board/$(BOARD) private common power test util
+all-ro-y=$(call ro-objs_from_dir,core/$(CORE),core)
+all-ro-y+=$(call ro-objs_from_dir,chip/$(CHIP),chip)
+all-ro-y+=$(call ro-objs_from_dir,board/$(BOARD),board)
+all-ro-y+=$(call ro-objs_from_dir,private,private)
+all-ro-y+=$(call ro-objs_from_dir,common,common)
+all-ro-y+=$(call ro-objs_from_dir,driver,driver)
+all-ro-y+=$(call ro-objs_from_dir,power,power)
+all-ro-y+=$(call ro-objs_from_dir,test,$(PROJECT))
+dirs=core/$(CORE) chip/$(CHIP) board/$(BOARD) private common power test
 dirs+=$(shell find driver -type d)
+common_dirs=util
 
+ro-objs := $(all-ro-y)
+rw-objs := $(all-ro-y:$(out)/RO/%=$(out)/RW/%)
+ro-deps := $(ro-objs:%.o=%.o.d)
+rw-deps := $(rw-objs:%.o=%.o.d)
+
+
+.PHONY: ro rw libsharedobjs
 $(config): $(out)/$(PROJECT).bin
 	@printf '%s=y\n' $(_tsk_cfg) $(_flag_cfg) > $@
 
-all: $(config) utils ${PROJECT_EXTRA}
+def_all_deps:=utils ro rw $(config) $(PROJECT_EXTRA)
+all_deps?=$(def_all_deps)
+all: $(all_deps)
+
+ro: override BLD:=RO
+ro: override LATE_CFLAGS_DEFINE:=-DRO_IMAGE
+ro: $(out)/RO/$(PROJECT).RO.flat
+
+rw: override BLD:=RW
+rw: $(out)/RW/$(PROJECT).RW.flat
+
+# Shared objects library
+SHOBJLIB := libsharedobjs
+def_libsharedobjs_deps :=$(ro-objs)
+libsharedobjs_deps ?= $(def_libsharedobjs_deps)
+skip_lib?=no
+
+# Clear dependencies if we're skipping building the shared library.
+ifneq ($(skip_lib),no)
+shlib :=
+endif
+
+libsharedobjs := $(out)/$(SHOBJLIB)/$(SHOBJLIB).elf
+libsharedobjs: $(libsharedobjs)
 
 include Makefile.rules
 

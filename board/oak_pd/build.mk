@@ -11,3 +11,9 @@ CHIP_FAMILY:=stm32f0
 CHIP_VARIANT:=stm32f05x
 
 board-y=board.o
+
+# This target currently builds RW only.
+# Therefore, create an empty shared library...
+skip_lib:=yes
+# And remove RO from dependencies.
+all_deps=$(patsubst ro,,$(def_all_deps))
