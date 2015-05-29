@@ -31,6 +31,9 @@ MEMORY
         ORIGIN = CONFIG_USB_RAM_BASE, \
         LENGTH = CONFIG_USB_RAM_SIZE * CONFIG_USB_RAM_ACCESS_SIZE / 2
 #endif
+#ifdef SECTION_IS_RW
+    SHARED_LIB (rx) : ORIGIN = FIXUP_ADDR, LENGTH = FIXUP_LENGTH
+#endif
 }
 SECTIONS
 {
@@ -65,6 +68,18 @@ SECTIONS
 #endif
     . = ALIGN(4);
 
+    .roshared : {
+        KEEP(*(.roshared*))
+#ifdef SECTION_IS_RO
+#ifdef CONFIG_CODERAM_ARCH
+    } > CDRAM AT > FLASH
+#else
+    } > FLASH
+#endif
+#else
+    } > SHARED_LIB
+#endif
+    . = ALIGN(4);
     .rodata : {
 	/* Symbols defined here are declared in link_defs.h */
         __irqprio = .;
