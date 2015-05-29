@@ -101,8 +101,14 @@ static int kb_fifo_remove(uint8_t *buffp)
  */
 static void set_host_interrupt(int active)
 {
+#ifdef CONFIG_MKBP_EVENT
+	if (active)
+		mkbp_send_event(EC_MKBP_EVENT_KEY_MATRIX);
+	/* no need to reset the interrupt, mkbp event framework is doing it */
+#else
 	/* interrupt host by using active low EC_INT signal */
 	gpio_set_level(GPIO_EC_INT, !active);
+#endif
 }
 
 /*****************************************************************************/
@@ -149,9 +155,6 @@ kb_fifo_push_done:
 
 	if (ret == EC_SUCCESS) {
 		set_host_interrupt(1);
-#ifdef CONFIG_MKBP_EVENT
-		mkbp_send_event(EC_MKBP_EVENT_KEY_MATRIX);
-#endif
 	}
 
 	return ret;
