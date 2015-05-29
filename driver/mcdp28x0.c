@@ -12,13 +12,14 @@
 #include "mcdp28x0.h"
 #include "timer.h"
 #include "usart-stm32f0.h"
+#include "usb_pd.h"
 #include "util.h"
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 
 static uint8_t mcdp_inbuf[MCDP_INBUF_MAX];
 
-#undef MCDP_DEBUG
+#define MCDP_DEBUG
 
 #ifdef MCDP_DEBUG
 static inline void print_buffer(uint8_t *buf, int cnt)
@@ -166,6 +167,10 @@ int mcdp_get_info(struct mcdp_info  *info)
 	rx_serial(mcdp_inbuf, MCDP_RSP_LEN(MCDP_LEN_GETINFO));
 
 	memcpy(info, &mcdp_inbuf[2], MCDP_LEN_GETINFO);
+
+	pd_log_event(PD_EVENT_VIDEO_CODEC,
+		     PD_LOG_PORT_SIZE(0, sizeof(info)),
+		     0, &info);
 
 	return EC_SUCCESS;
 }
