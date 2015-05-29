@@ -124,8 +124,10 @@ include util/lock/build.mk
 
 includes+=$(includes-y)
 
+BLD?=RO
+
 objs_from_dir=$(sort $(foreach obj, $($(2)-y), \
-	        $(out)/$(1)/$(firstword $($(2)-mock-$(PROJECT)-$(obj)) $(obj))))
+	        $(out)/$(BLD)/$(1)/$(firstword $($(2)-mock-$(PROJECT)-$(obj)) $(obj))))
 
 # Get all sources to build
 all-y=$(call objs_from_dir,core/$(CORE),core)
@@ -136,13 +138,45 @@ all-y+=$(call objs_from_dir,common,common)
 all-y+=$(call objs_from_dir,driver,driver)
 all-y+=$(call objs_from_dir,power,power)
 all-y+=$(call objs_from_dir,test,$(PROJECT))
-dirs=core/$(CORE) chip/$(CHIP) board/$(BOARD) private common power test util
+dirs=core/$(CORE) chip/$(CHIP) board/$(BOARD) private common power test
 dirs+=$(shell find driver -type d)
+common_dirs=util
 
-$(config): $(out)/$(PROJECT).bin
+$(config): $(out)/$(BLD)/$(PROJECT).$(BLD).flat
 	@printf '%s=y\n' $(_tsk_cfg) $(_flag_cfg) > $@
 
-all: $(config) utils ${PROJECT_EXTRA}
+def_all_deps=utils ro rw libsharedobjs
+all_deps?=$(def_all_deps)
+all: $(all_deps)
+
+ro:
+	@make --no-print-directory LATE_CFLAGS_DEFINE=-DRO_IMAGE BLD=RO $(config) $(PROJECT_EXTRA)
+
+rw: libsharedobjs
+# Make sure that the location of the library gets updated
+	@rm -f $(out)/RW/ec.RW.lds
+	@${MAKE} --no-print-directory BLD=RW shlib=$(out)/$(SHOBJLIB)/$(SHOBJLIB).elf ${PROJECT_EXTRA} $(out)/$(PROJECT).bin
+
+SHOBJLIB=libsharedobjs
+SHOBJLIBFILES=$(objs) -Wl,-T,common/ec.$(SHOBJLIB).ld
+def_libsharedobjs_deps=ro
+libsharedobjs_deps?=$(def_libsharedobjs_deps)
+skip_lib?=no
+
+# Clear dependencies if we're skipping building the shared library.
+ifneq ($(skip_lib),no)
+libsharedobjs_deps=
+override shlib=
+endif
+
+libsharedobjs: $(libsharedobjs_deps)
+ifeq ($(libsharedobjs_deps),$(def_libsharedobjs_deps))
+	@mkdir -p $(out)/$(SHOBJLIB)
+	@$(CC) $(SHOBJLIBFILES) $(LDFLAGS) -o $(out)/$(SHOBJLIB)/$(SHOBJLIB).elf \
+	-Wl,-Map,$(out)/$(SHOBJLIB)/$(SHOBJLIB).map
+endif
+
+hex: $(out)/$(PROJECT).hex
 
 include Makefile.rules
 

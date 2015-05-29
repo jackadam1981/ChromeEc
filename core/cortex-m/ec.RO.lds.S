@@ -64,7 +64,10 @@ SECTIONS
 #endif
 #endif
     . = ALIGN(4);
-
+    .roshared : {
+	KEEP(*(.roshared*))	;
+    } > FLASH
+    . = ALIGN(4)		;
     .rodata : {
 	/* Symbols defined here are declared in link_defs.h */
         __irqprio = .;

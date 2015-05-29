@@ -19,10 +19,12 @@ skip_boards = OWNERS host it8380dev
 boards := $(filter-out $(skip_boards),$(subst board/,,$(wildcard board/*)))
 
 # Create output directories if necessary
-_dir_create := $(foreach d,$(dirs),$(shell [ -d $(out)/$(d) ] || \
+_common_dir_create := $(foreach d,$(common_dirs),$(shell [ -d $(out)/$(d) ] || \
 	    mkdir -p $(out)/$(d)))
-_dir_y_create := $(foreach d,$(dirs-y),$(shell [ -d $(out)/$(d) ] || \
-	    mkdir -p $(out)/$(d)))
+_dir_create := $(foreach d,$(dirs),$(shell [ -d $(out)/$(BLD)/$(d) ] || \
+	    mkdir -p $(out)/RO/$(d); mkdir -p $(out)/RW/$(d)))
+_dir_y_create := $(foreach d,$(dirs-y),$(shell [ -d $(out)/$(BLD)/$(d) ] || \
+	    mkdir -p $(out)/RO/$(d); mkdir -p $(out)/RW/$(d)))
 
 section = $(subst .,,$(suffix $(1)))
 section_is = $(subst .,,SECTION_IS_$(suffix $(1)))
@@ -40,15 +42,19 @@ cmd_lds = $(CPP) -P -C -MMD -MF $@.d -MT $@ $(CPPFLAGS) \
 cmd_obj_to_bin ?= $(OBJCOPY) --gap-fill=0xff -O binary $^ $(out)/$*.bin.tmp
 cmd_flat_to_obj = $(CC) -T $(out)/firmware_image.lds -nostdlib $(CPPFLAGS) \
                   -Wl,--build-id=none -o $@ $<
-cmd_elf_to_flat = $(OBJCOPY) -O binary $< $@
+ifeq ($(BLD),RW)
+cmd_elf_to_flat = $(OBJCOPY) --set-section-flags .roshared=share -O binary $(patsubst %.flat,%.elf,$@) $@
+else
+cmd_elf_to_flat = $(OBJCOPY) -O binary $(patsubst %.flat,%.elf,$@) $@
+endif
 cmd_elf_to_dis = $(OBJDUMP) -D $< > $@
 cmd_elf_to_hex = $(OBJCOPY) -O ihex $< $@
 cmd_bin_to_hex = $(OBJCOPY) -I binary -O ihex \
-	--change-addresses $(_flash_base) $^ $@
-cmd_elf = $(CC) $(objs) $(LDFLAGS) -o $@ -Wl,-T,$< -Wl,-Map,$(out)/$*.map
+	--change-addresses $(_flash_base) $(out)/$*.bin $(out)/$*.hex
 cmd_smap = $(NM) $< | sort > $@
+cmd_elf = $(CC) $(objs) $(shlib) $(LDFLAGS) -o $@ -Wl,-T,$< -Wl,-Map,$(patsubst %.elf,%.map,$@)
 cmd_exe = $(CC) $(objs) $(HOST_TEST_LDFLAGS) -o $@
-cmd_c_to_o = $(CC) $(CFLAGS) -MMD -MF $@.d -c $< -o $@
+cmd_c_to_o = $(CC) $(CFLAGS) -MMD -MF $@.d -c $< -o $(@D)/$(@F)
 cmd_c_to_build = $(BUILDCC) $(BUILD_CFLAGS) \
 	         $(sort $(foreach c,$($(*F)-objs),util/$(c:%.o=%.c)) $*.c) \
 	         $(BUILD_LDFLAGS) \
@@ -61,7 +67,7 @@ cmd_version = ./util/getversion.sh > $@
 cmd_mv_from_tmp = mv $(out)/$*.bin.tmp $(out)/$*.bin
 cmd_extractrw-y = dd if=$(out)/$(PROJECT).bin.tmp of=$(out)/$(PROJECT).RW.bin \
 	       bs=1 count=$(_rw_size) skip=$(_rw_off) $(silent_err)
-cmd_copyrw-y = cd $(out) && cp $(PROJECT).RW.flat $(PROJECT).RW.bin
+cmd_copyrw-y = cd $(out) && cp $(BLD)/$(PROJECT).RW.flat $(BLD)/$(PROJECT).RW.bin
 
 # commands for RSA signature
 cmd_pubkey = ./util/pem_extract_pubkey.py $(PEM) > $@
@@ -72,7 +78,7 @@ cmd_deps_to_list = cat $(deps) | tr -d ':\\' | tr ' ' '\012' \
 	| egrep '\.[chS]$$' | sort | uniq > $@
 cmd_etags = etags -o $@ $(shell cat $<)
 cmd_ctags = ctags -o $@ $(shell cat $<)
-targ_if_prog = $(if $(shell which $(1) 2>/dev/null),$(2),)
+targ_if_prog = $(if $(shell which $(1) 2>/dev/null),@$(MAKE) --no-print-directory $(2),)
 
 .PHONY: all tests utils utils-host utils-build hosttests
 
@@ -84,12 +90,9 @@ proj-%:
 	@echo "======= building $*"; \
 	$(MAKE) --no-print-directory BOARD=$* V=$(V)
 
-dis-y = $(out)/$(PROJECT).RW.dis
-dis-$(CONFIG_FW_INCLUDE_RO) += $(out)/$(PROJECT).RO.dis
+dis-y = $(out)/RW/$(PROJECT).RW.dis
+dis-$(CONFIG_FW_INCLUDE_RO) += $(out)/RO/$(PROJECT).RO.dis
 dis: $(dis-y)
-
-hex-y = $(out)/$(PROJECT).RO.hex $(out)/$(PROJECT).RW.hex $(out)/$(PROJECT).hex
-hex: $(hex-y)
 
 utils-host: $(host-utils)
 
@@ -150,8 +153,15 @@ coverage: $(cov-test-targets)
 
 $(out)/firmware_image.lds: common/firmware_image.lds.S
 	$(call quiet,lds,LDS    )
-$(out)/%.lds: core/$(CORE)/ec.lds.S
+
+$(out)/RO/%.lds: core/$(CORE)/ec.RO.lds.S
 	$(call quiet,lds,LDS    )
+$(out)/RW/%.lds: core/$(CORE)/ec.RW.lds.S
+	$(call quiet,lds,LDS    )
+
+# Need to ensure that we always generate the RW linker script so that addresses
+# are up to date.
+.PHONY: $(out)/RW/%.lds
 
 $(out)/%.bin: $(out)/%.obj
 	$(call quiet,obj_to_bin,OBJCOPY)
@@ -160,42 +170,49 @@ $(out)/%.bin: $(out)/%.obj
 			$(call quiet,copyrw-y,COPY_RW))
 	$(call quiet,mv_from_tmp,MV     )
 
-flat-y = $(out)/$(PROJECT).RW.flat
-flat-$(CONFIG_FW_INCLUDE_RO) += $(out)/$(PROJECT).RO.flat
+flat-y = $(out)/RW/$(PROJECT).RW.flat
+flat-$(CONFIG_FW_INCLUDE_RO) += $(out)/RO/$(PROJECT).RO.flat
 
 deps += $(out)/firmware_image.lds.d $(flat-y:%.flat=%.lds.d)
 
-$(out)/%.obj: common/firmware_image.S $(out)/firmware_image.lds $(flat-y)
+$(out)/$(PROJECT).obj: common/firmware_image.S $(out)/firmware_image.lds $(flat-y)
 	$(call quiet,flat_to_obj,CAT    )
 
 $(out)/%.dis: $(out)/%.elf
 	$(call quiet,elf_to_dis,OBJDUMP)
 
-$(out)/%.flat: $(out)/%.elf $(out)/%.smap
+$(out)/$(BLD)/%.flat: $(out)/$(BLD)/%.elf $(out)/$(BLD)/%.smap
 	$(call quiet,elf_to_flat,OBJCOPY)
 
-$(out)/%.hex: $(out)/%.elf $(out)/%.smap
+$(out)/$(BLD)/%.hex: $(out)/$(BLD)/%.elf $(out)/$(BLD)/%.smap
 	$(call quiet,elf_to_hex,OBJCOPY)
 
-$(out)/$(PROJECT).hex: $(out)/$(PROJECT).bin
+# Make hex from bin
+$(out)/%.hex: rw
 	$(call quiet,bin_to_hex,OBJCOPY)
 
+ifeq ($(BLD),RW)
 $(out)/%.elf: $(out)/%.lds $(objs)
+	@python ./util/shared_lib_fixup.py $(out) $(SHOBJLIB) $* $(skip_lib)
 	$(call quiet,elf,LD     )
+else
+$(out)/$(BLD)/%.elf: $(out)/$(BLD)/%.lds $(objs)
+	$(call quiet,elf,LD     )
+endif
 
-$(out)/%.smap: $(out)/%.elf
+$(out)/$(BLD)/%.smap: $(out)/$(BLD)/%.elf
 	$(call quiet,smap,NM     )
 
 $(out)/$(PROJECT).exe: $(objs)
 	$(call quiet,exe,EXE    )
 
-$(out)/%.o:%.c
+$(out)/$(BLD)/%.o:%.c
 	$(call quiet,c_to_o,CC     )
 
 $(out)/vboot/%.o:$(VBOOT_SOURCE)/%.c
 	$(call quiet,c_to_o,CC     )
 
-$(out)/%.o:%.S
+$(out)/$(BLD)/%.o:%.S
 	$(call quiet,c_to_o,AS     )
 
 # Conditionally force the rebuilding of ec_version.h only if it would be
@@ -210,7 +227,7 @@ endif
 # All of the objects have an order only dependency on the ec_version header.
 # This ensures that if ec_version.h needs to be build (because it was marked
 # PHONY above) then it will be rebuilt before any objects.  This is important
-# because some source files will include ev_version.h and fail to compile if
+# because some source files will include ec_version.h and fail to compile if
 # it doesn't already exist.  This dependency shouldn't be a normal dependency
 # because that would cause every object to be rebuilt when ec_version.h
 # changes, instead of just the ones that actually depend on it.  The objects
@@ -221,14 +238,14 @@ $(objs): | $(out)/ec_version.h
 $(out)/ec_version.h:
 	$(call quiet,version,VERSION)
 
-$(out)/common/version.o: $(out)/ec_date.h
-$(out)/ec_date.h: $(filter-out $(out)/common/version.o,$(objs))
+$(out)/$(BLD)/common/version.o: $(out)/ec_date.h
+$(out)/ec_date.h: | $(filter-out %/common/version.o,$(objs))
 	$(call quiet,date,DATE   )
 
 $(out)/gen_pub_key.h: $(PEM)
 	$(call quiet,pubkey,PUBKEY )
 
-$(out)/common/rwsig.o: $(out)/gen_pub_key.h
+$(out)/$(BLD)/common/rwsig.o: $(out)/gen_pub_key.h
 
 $(build-utils): $(out)/%:$(build-srcs)
 	$(call quiet,c_to_build,BUILDCC)
@@ -267,7 +284,8 @@ $(npcx-lfw-bin):
 	-@ $(OBJCOPY) -O binary $(out)/$(npcx-lfw).elf $@
 
 .PHONY: xrefs
-xrefs: $(call targ_if_prog,etags,$(out)/TAGS) \
+xrefs: all
+	$(call targ_if_prog,etags,$(out)/TAGS)
 	$(call targ_if_prog,ctags,$(out)/tags)
 
 .PHONY: flash
