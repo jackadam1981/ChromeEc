@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ed56c9ec_1ec3dadd",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2015-05-29T00:35:48Z",
+      "side": 1,
+      "message": "If we update tx_snapshot_head in __tx_char, then we\u0027ll run into infinite loops because EC_CMD_CONSOLE_READ will end up putting more characters into the buffer due to host commands and the \"+\" it sends over the console when transmitting data. I ran into this problem trying to implement the recent logs without having to piggy-back off SNAPSHOT commands.\n\nIt\u0027s a sad world, but since these commands are meant for debugging, I think there\u0027s a little bit of a lower bar for whether or not everything works perfectly. (At least, it seemed that much from the comments that were already here.)",
+      "parentUuid": "ed56c9ec_a340fb14",
+      "revId": "b490f39a2aea0e207be996cc0867e67f7dba6fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d54fde2_85af860e",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
