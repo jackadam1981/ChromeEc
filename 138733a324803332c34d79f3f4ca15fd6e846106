@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cd26659c_8cc18b37",
+        "filename": "board/npcx_evb/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-29T02:29:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed56c9ec_c7d35453",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 69
+      },
+      "revId": "138733a324803332c34d79f3f4ca15fd6e846106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d54fde2_50af210f",
         "filename": "board/npcx_evb_arm/board.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-05-28T21:26:02Z",
       "side": 1,
       "message": "New files should use \"Copyright 2015\" (new year, no (c))",
+      "range": {
+        "startLine": 1,
+        "startChar": 3,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "138733a324803332c34d79f3f4ca15fd6e846106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd26659c_cccb8351",
+        "filename": "board/npcx_evb_arm/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-05-29T02:29:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d54fde2_50af210f",
       "range": {
         "startLine": 1,
         "startChar": 3,
