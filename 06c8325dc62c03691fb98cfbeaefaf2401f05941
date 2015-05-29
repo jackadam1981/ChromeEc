@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b91fb853_bbd4ef32",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-05-29T18:38:34Z",
+      "side": 1,
+      "message": "actually jwerner is proposing to keep this for better backward compatibility as explained in crosbug.com/p/40771",
+      "range": {
+        "startLine": 12,
+        "startChar": 55,
+        "endLine": 14,
+        "endChar": 12
+      },
+      "revId": "06c8325dc62c03691fb98cfbeaefaf2401f05941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b91fb853_fbf147e0",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-05-29T18:38:34Z",
+      "side": 1,
+      "message": "if we want to keep this one effective, I will update the code ...",
+      "range": {
+        "startLine": 200,
+        "startChar": 2,
+        "endLine": 200,
+        "endChar": 24
+      },
+      "revId": "06c8325dc62c03691fb98cfbeaefaf2401f05941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
