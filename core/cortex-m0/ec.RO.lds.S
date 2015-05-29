@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -19,9 +19,6 @@ MEMORY
 {
     FLASH (rx) : ORIGIN = FW_OFF(SECTION), LENGTH = FW_SIZE(SECTION)
     IRAM (rw)  : ORIGIN = CONFIG_RAM_BASE, LENGTH = CONFIG_RAM_SIZE
-#ifdef CONFIG_CODERAM_ARCH
-    CDRAM (rx) : ORIGIN = CONFIG_CDRAM_BASE, LENGTH = CONFIG_CDRAM_SIZE
-#endif
 #ifdef RSA_PUBLIC_KEY_SIZE
     PSTATE(r)  : ORIGIN = FW_OFF(SECTION) + FW_SIZE(SECTION), \
                  LENGTH = CONFIG_FW_PSTATE_SIZE
@@ -50,21 +47,16 @@ SECTIONS
 #endif
         OUTDIR/core/CORE/init.o (.text)
         *(.text*)
-#ifdef CONFIG_CODERAM_ARCH
-        __flash_lpfw_start = .;
-        /* Entering deep idle FW for better power consumption */
-        KEEP(*(.lowpower_ram))
-        __flash_lpfw_end = .;
-        } > CDRAM AT > FLASH
-#else
 #ifdef COMPILE_FOR_RAM
     } > IRAM
 #else
     } > FLASH
 #endif
-#endif
     . = ALIGN(4);
-
+    .roshared : {
+	KEEP(*(.roshared*))	;
+    } > FLASH
+    . = ALIGN(4)		;
     .rodata : {
 	/* Symbols defined here are declared in link_defs.h */
         __irqprio = .;
@@ -158,6 +150,7 @@ SECTIONS
         __usb_desc = .;
         KEEP(*(.rodata.usb_desc_conf))
         KEEP(*(SORT(.rodata.usb_desc*)))
+        . = ALIGN(2); /* USB transfers enjoy 16-bit aligned size */
         __usb_desc_end = .;
         . = ALIGN(4);
         KEEP(*(.rodata.usb_ep))
@@ -170,14 +163,10 @@ SECTIONS
         KEEP(*(.google))
 #endif
         . = ALIGN(4);
-#ifdef CONFIG_CODERAM_ARCH
-	} > CDRAM AT > FLASH
-#else
 #ifdef COMPILE_FOR_RAM
     } > IRAM
 #else
     } > FLASH
-#endif
 #endif
     __ro_end = . ;
 
@@ -188,14 +177,13 @@ SECTIONS
 
     .bss : {
 	/*
-	 * Align to 512 bytes. This is convenient when some memory block
-	 * need big alignment. When COMPILE_FOR_RAM is not set, this is the
-	 * beginning of the RAM, so there is usually no penalty on aligning
-	 * this.
+	 * Vector table must be at the beginning of bss section. The vector
+	 * table section contains a RAM copy of the vector table used on
+	 * STM chips for relocating the vector table.
 	 */
-        . = ALIGN(512);
-        __bss_start = .;
-	*(.bss.big_align)
+	. = ALIGN(8);
+	__bss_start = .;
+	*(.bss.vector_table)
 	/* Stacks must be 64-bit aligned */
         . = ALIGN(8);
         *(.bss.system_stack)
@@ -207,31 +195,15 @@ SECTIONS
 #ifdef COMPILE_FOR_RAM
     .data : {
 #else
-#ifdef CONFIG_CODERAM_ARCH
-	__data_start = . ;
-	.data : AT(LOADADDR(.rodata) + SIZEOF(.rodata)) {
-#else
     .data : AT(ADDR(.rodata) + SIZEOF(.rodata)) {
-#endif
 #endif
         . = ALIGN(4);
         __data_start = .;
         *(.data.tasks)
         *(.data)
-#ifdef CONFIG_MPU
-        /* It has to be aligned by 32 bytes to be a valid MPU region. */
-        . = ALIGN(32);
-        __iram_text_start = .;
-#else
         . = ALIGN(4);
-#endif
         *(.iram.text)
-#ifdef CONFIG_MPU
-        . = ALIGN(32);
-        __iram_text_end = .;
-#else
         . = ALIGN(4);
-#endif
         __data_end = .;
 
 	/* Shared memory buffer must be at the end of preallocated RAM, so it

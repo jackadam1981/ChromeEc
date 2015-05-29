@@ -11,6 +11,9 @@ CORE:=cortex-m
 # Allow the full Cortex-M4 instruction set
 CFLAGS_CPU+=-march=armv7e-m -mcpu=cortex-m4
 
+# Is NOT compatible with current shared objects library model.
+skip_lib:=yes
+
 # Required chip modules
 chip-y=clock.o gpio.o hwtimer.o system.o uart.o jtag.o
 chip-$(CONFIG_ADC)+=adc.o
@@ -39,27 +42,28 @@ cmd_obj_to_bin = $(OBJCOPY) --gap-fill=0xff -O binary $< $@.tmp1 ; \
 		--spi_size ${CHIP_SPI_SIZE_KB} ; rm -f $@.tmp1
 
 mec1322-lfw = chip/mec1322/lfw/ec_lfw
-mec1322-lfw-flat = $(out)/$(mec1322-lfw)-lfw.flat
+mec1322-lfw-flat = $(out)/RW/$(mec1322-lfw)-lfw.flat
 
 # build these specifically for lfw with -lfw suffix
-objs_lfw = $(patsubst %, $(out)/%-lfw.o, \
+objs_lfw = $(patsubst %, $(out)/RW/%-lfw.o, \
 		$(addprefix common/, util gpio) \
 		$(addprefix chip/$(CHIP)/, spi dma gpio clock hwtimer) \
 		core/$(CORE)/cpu $(mec1322-lfw))
 
 # reuse version.o (and its dependencies) from main board
-objs_lfw += $(out)/common/version.o
+objs_lfw += $(out)/RW/common/version.o
 
 dirs-y+=chip/$(CHIP)/lfw
 
 # objs with -lfw suffix are to include lfw's gpio
-$(out)/%-lfw.o: private CC+=-Iboard/$(BOARD)/lfw
-$(out)/%-lfw.o: %.c
+$(out)/RW/%-lfw.o: private CC+=-Iboard/$(BOARD)/lfw
+$(out)/RW/%-lfw.o: %.c
 	$(call quiet,c_to_o,CC     )
 
 # let lfw's elf link only with selected objects
-$(out)/%-lfw.elf: private objs = $(objs_lfw)
-$(out)/%-lfw.elf: %.ld $(objs_lfw)
+$(out)/RW/%-lfw.elf: private objs = $(objs_lfw)
+$(out)/RW/%-lfw.elf: override shlib :=
+$(out)/RW/%-lfw.elf: %.ld $(objs_lfw)
 	$(call quiet,elf,LD     )
 
 # final image needs lfw loader
