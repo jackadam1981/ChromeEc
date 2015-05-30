@@ -262,6 +262,11 @@ void motion_sense_task(void)
 				if (sensor->state == SENSOR_NOT_INITIALIZED)
 					motion_sense_init(sensor);
 
+#ifdef CONFIG_ACCEL_FIFO
+				if (sensor->drv->load_fifo)
+					sensor->drv->load_fifo(sensor);
+#endif
+
 				if (EC_SUCCESS != motion_sense_read(sensor))
 					continue;
 

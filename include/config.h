@@ -38,11 +38,20 @@
 
 /* Enable accelerometer interrupts. */
 #undef CONFIG_ACCEL_INTERRUPTS
+/* Add support for FIFO */
+#undef CONFIG_ACCEL_FIFO
 
 /* Specify type of accelerometers attached. */
 #undef CONFIG_ACCEL_KXCJ9
 #undef CONFIG_ACCELGYRO_LSM6DS0
 #undef CONFIG_ACCELGYRO_BMI160
+/*
+ * If FIFO support is enabled, defined the size of each FIFOs
+ * Size must be a power of 2.
+ */
+#undef CONFIG_ACCELGYRO_BMI160_ACCEL_FIFO_EVENT
+#undef CONFIG_ACCELGYRO_BMI160_GYRO_FIFO_EVENT
+#undef CONFIG_ACCELGYRO_BMI160_MAG_FIFO_EVENT
 
 /* Compile chip support for analog-to-digital convertor */
 #undef CONFIG_ADC
