@@ -59,21 +59,29 @@ UC_CHIP_VARIANT:=$(call uppercase,$(CHIP_VARIANT))
 UC_CORE:=$(call uppercase,$(CORE))
 UC_PROJECT:=$(call uppercase,$(PROJECT))
 
+$(eval BOARD_$(UC_BOARD)=y)
+$(eval CHIP_$(UC_CHIP)=y)
+$(eval CHIP_VARIANT_$(UC_CHIP_VARIANT)=y)
+$(eval CHIP_FAMILY_$(UC_CHIP_FAMILY)=y)
+
 # Transform the configuration into make variables.  This must be done after
 # the board/project/chip/core variables are defined, since some of the configs
 # are dependent on particular configurations.
 includes=include core/$(CORE)/include $(dirs) $(out) test
+
 ifeq "$(TEST_BUILD)" "y"
 	_tsk_lst_file:=ec.tasklist
 	_tsk_lst:=$(shell echo "CONFIG_TASK_LIST CONFIG_TEST_TASK_LIST" | \
-		    $(CPP) -P -Iboard/$(BOARD) -Itest \
+		    $(CPP) -P $(CFLAGS_DEFINE) -Itest -Iinclude \
+				$(CFLAGS_INCLUDE) -Ichip/$(CHIP) -Iboard/$(BOARD) \
 		    -D"TASK_NOTEST(n, r, d, s)=" -D"TASK_ALWAYS(n, r, d, s)=n" \
 		    -D"TASK_TEST(n, r, d, s)=n" -imacros $(_tsk_lst_file) \
 		    -imacros $(PROJECT).tasklist)
 else
 	_tsk_lst_file:=$(PROJECT).tasklist
-	_tsk_lst:=$(shell echo "CONFIG_TASK_LIST" | $(CPP) -P \
-		    -Iboard/$(BOARD) -D"TASK_NOTEST(n, r, d, s)=n" \
+	_tsk_lst:=$(shell echo "CONFIG_TASK_LIST" | $(CPP) -P $(CFLAGS_DEFINE) \
+				$(CFLAGS_INCLUDE) -Ichip/$(CHIP) -Iboard/$(BOARD) \
+				-D"TASK_NOTEST(n, r, d, s)=n" \
 		    -D"TASK_ALWAYS(n, r, d, s)=n" -imacros $(_tsk_lst_file))
 endif
 _tsk_cfg:=$(foreach t,$(_tsk_lst) ,HAS_TASK_$(t))
@@ -102,11 +110,6 @@ _rw_size:=$(shell echo "$$(($(_rw_size_str)))")
 _flash_base_str:=$(shell echo "CONFIG_FLASH_BASE" | $(CPP) $(CPPFLAGS) -P \
 		-Ichip/$(CHIP) -Iboard/$(BOARD) -imacros include/config.h)
 _flash_base=$(shell echo "$$(($(_flash_base_str)))")
-
-$(eval BOARD_$(UC_BOARD)=y)
-$(eval CHIP_$(UC_CHIP)=y)
-$(eval CHIP_VARIANT_$(UC_CHIP_VARIANT)=y)
-$(eval CHIP_FAMILY_$(UC_CHIP_FAMILY)=y)
 
 # Get build configuration from sub-directories
 # Note that this re-includes the board and chip makefiles
