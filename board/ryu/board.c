@@ -323,6 +323,9 @@ static void board_init(void)
 
 	/* Enable interrupts on VBUS transitions. */
 	gpio_enable_interrupt(GPIO_CHGR_ACOK);
+
+	/* Enable interrupts from BMI160 sensor. */
+	gpio_enable_interrupt(GPIO_ACC_IRQ1);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -367,9 +370,6 @@ const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 /* Sensor mutex */
 static struct mutex g_mutex;
-
-/*  local sensor data (per-sensor) */
-struct bmi160_drv_data_t g_bmi160_data;
 
 struct motion_sensor_t motion_sensors[] = {
 
