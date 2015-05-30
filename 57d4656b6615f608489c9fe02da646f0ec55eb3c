@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4d3355d7_b9b20bf9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1114394
+      },
+      "writtenOn": "2015-05-30T04:22:15Z",
+      "side": 1,
+      "message": "issue 40228, someone said they had modify the battery firmware, maybe we needn\u0027t this CL",
+      "parentUuid": "ad73f192_78af9d5d",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 74
+      },
+      "revId": "57d4656b6615f608489c9fe02da646f0ec55eb3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d5f9dfa_34f0a991",
         "filename": "driver/battery/smart.c",
         "patchSetId": 1
