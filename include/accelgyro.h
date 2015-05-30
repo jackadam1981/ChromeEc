@@ -87,6 +87,17 @@ struct accelgyro_drv {
 	 */
 	int (*set_interrupt)(const struct motion_sensor_t *s,
 			     unsigned int threshold);
+
+	/* IRQ handler for interrupts trigger by the sensor */
+	int (*irq_handler)(const struct motion_sensor_t *s);
+#endif
+#ifdef CONFIG_ACCEL_FIFO
+	/**
+	 * Retrieve hardware FIFO from sensor, and put data in Sensor Hub fifo.
+	 * We put raw data in hub fifo and process data from theres.
+	 * @s Pointer to sensor data.
+	 */
+	int (*load_fifo)(const struct motion_sensor_t *s);
 #endif
 };
 

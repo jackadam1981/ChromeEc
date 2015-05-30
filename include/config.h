@@ -38,6 +38,13 @@
 
 /* Enable accelerometer interrupts. */
 #undef CONFIG_ACCEL_INTERRUPTS
+/* Add support for sensor FIFO:
+ * define the size of the global fifo, must be a power of 2. */
+#undef CONFIG_ACCEL_FIFO
+/* The amount of free entries that trigger an interrupt to the AP. */
+#undef CONFIG_ACCEL_FIFO_THRES
+/* When timestamp is collected, define the resolution in us */
+#undef CONFIG_ACCEL_TIMESTAMP_UNIT
 
 /* Specify type of accelerometers attached. */
 #undef CONFIG_ACCEL_KXCJ9
