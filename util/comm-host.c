@@ -21,6 +21,7 @@ int (*ec_readmem)(int offset, int bytes, void *dest);
 int ec_max_outsize, ec_max_insize;
 void *ec_outbuf;
 void *ec_inbuf;
+int ec_proto_version = 255;
 static int command_offset;
 
 int comm_init_dev(const char *device_name) __attribute__((weak));
@@ -78,6 +79,7 @@ int ec_command(int command, int version,
 int comm_init(int interfaces, const char *device_name)
 {
 	struct ec_response_get_protocol_info info;
+	struct ec_response_proto_version pver;
 
 	/* Default memmap access */
 	ec_readmem = fake_readmem;
@@ -106,6 +108,17 @@ int comm_init(int interfaces, const char *device_name)
 	if (!ec_outbuf || !ec_inbuf) {
 		fprintf(stderr, "Unable to allocate buffers\n");
 		return 1;
+	}
+
+	if (ec_command(EC_CMD_PROTO_VERSION, 0, NULL, 0, &pver,
+	    sizeof(pver)) == sizeof(pver)) {
+		ec_proto_version = pver.version;
+
+		/* EC_CMD_GET_PROTOCOL_INFO is unimplemented on <= v2, so
+		 * don't bother because it will only log an error
+		 */
+		if (ec_proto_version < 3)
+			return 0;
 	}
 
 	/* read max request / response size from ec for protocol v3+ */

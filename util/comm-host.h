@@ -25,6 +25,9 @@ extern int ec_max_outsize, ec_max_insize;
 extern void *ec_outbuf;
 extern void *ec_inbuf;
 
+/* EC protocol version, or 255 if unknown. */
+extern int ec_proto_version;
+
 /* Interfaces to allow for comm_init() */
 enum comm_interface {
 	COMM_DEV = (1 << 0),
