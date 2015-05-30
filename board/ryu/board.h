@@ -131,8 +131,19 @@
 /* Sensor support */
 #define CONFIG_ACCELGYRO_BMI160
 #define CONFIG_MAG_BMI160_BMM150
+#define CONFIG_ACCEL_INTERRUPTS
 #define CONFIG_CMD_ACCELS
 #define CONFIG_CMD_ACCEL_INFO
+
+#define CONFIG_ACCEL_FIFO
+/* Size of FIFO queue is determined by Android Hifi sensor requirements:
+ * Wake up sensors: Accel @50Hz + Barometer @5Hz + uncal mag @ 10Hz
+ * 60s minimum, 3min recommened.
+ * FIFO size is in power of 2.
+ */
+#define CONFIG_ACCELGYRO_BMI160_ACCEL_FIFO_EVENT   2048
+#define CONFIG_ACCELGYRO_BMI160_GYRO_FIFO_EVENT    4
+#define CONFIG_ACCELGYRO_BMI160_MAG_FIFO_EVENT     512
 
 /* Maximum number of deferrable functions */
 #undef  DEFERRABLE_MAX_COUNT
