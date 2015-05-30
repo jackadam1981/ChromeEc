@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0d54fde2_584e584a",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-05-30T00:07:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed56c9ec_2a54ced8",
+      "revId": "fcbaae2eb24d45bb8d62b2d1e71bb83816c129cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d54fde2_e292fdcf",
         "filename": "util/ec_sb_firmware_update.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2015-05-29T22:14:31Z",
       "side": 1,
       "message": "Can you move this check below also?",
+      "revId": "fcbaae2eb24d45bb8d62b2d1e71bb83816c129cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed56c9ec_834205fd",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-05-30T00:07:15Z",
+      "side": 1,
+      "message": "No major difference. \nI will keep it as it since the logic is tested already.",
+      "parentUuid": "0d54fde2_e292fdcf",
       "revId": "fcbaae2eb24d45bb8d62b2d1e71bb83816c129cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
