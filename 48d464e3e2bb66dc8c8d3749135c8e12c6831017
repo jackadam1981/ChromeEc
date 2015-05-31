@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "190b6419_21baf42e",
+        "filename": "chip/mec1322/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-05-31T05:43:26Z",
+      "side": 1,
+      "message": "Since you are using the same value, you may alias them:\n#define CHARGER_TASK_STACK_SIZE LARGER_TASK_STACK_SIZE",
+      "range": {
+        "startLine": 76,
+        "startChar": 31,
+        "endLine": 76,
+        "endChar": 33
+      },
+      "revId": "48d464e3e2bb66dc8c8d3749135c8e12c6831017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
