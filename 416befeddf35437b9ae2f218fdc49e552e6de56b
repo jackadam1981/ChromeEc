@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59115c41_54d80462",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-31T23:03:28Z",
+      "side": 1,
+      "message": "nit: remove empty lines",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 0
+      },
+      "revId": "416befeddf35437b9ae2f218fdc49e552e6de56b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59115c41_f4eef8fd",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1891,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-05-31T23:03:28Z",
+      "side": 1,
+      "message": "this looks functionally correct, but these three new states are all basically repeated code of already existing states. i think we can probably do better by keeping a flag like pd[port].trying_source.\n\nfor example, SRC_DISCONNECTED would be:\n\n#ifdef CONFIG_USB_PD_DUAL_ROLE_TRY_SOURCE\nelse if (get_time().val \u003e pd[port].try_src_marker) {\n  pd[port].try_src_marker \u003d get_time().val + PD_T_TRY_WAIT;\n/* Swap roles if time expired */\nelse if (drp_state !\u003d PD_DRP_FORCE_SOURCE \u0026\u0026\n         get_time().val \u003e\u003d next_role_swap) {\n  next_role_swap \u003d get_time().val + PD_T_DRP_\n#endif\n  pd[port].power_role \u003d PD_ROLE_SINK;\n  set_state(port, PD_STATE_SNK_DISCONNECTED);\n  tcpm_set_cc(port, TYPEC_CC_RD);\n  ...\n\nand SNK_DISCONNECTED would be:\n\n#ifdef CONFIG_USB_PD_DUAL_ROLE_TRY_SOURCE\nif (pd[port].trying_source) {\n  /* Check if trying source has expired */\n  if (get_time().val \u003e pd[port].try_src_marker)\n    pd[port].trying_source \u003d 0;\n} else {\n#endif\nif (drp_state \u003d\u003d PD_DRP_TOGGLE_ON \u0026\u0026\n... /* continue existing dual-role toggling check */\n\nit appears we can get away with only adding a few lines to each of SRC_DISCONNECTED, SNK_DISCONNECTED, and SNK_DISCONNECTED_DEBOUNCE with this flag.",
+      "range": {
+        "startLine": 1891,
+        "startChar": 7,
+        "endLine": 1891,
+        "endChar": 27
+      },
+      "revId": "416befeddf35437b9ae2f218fdc49e552e6de56b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
