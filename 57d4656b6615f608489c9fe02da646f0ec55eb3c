@@ -63,6 +63,29 @@
       "revId": "57d4656b6615f608489c9fe02da646f0ec55eb3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3914a832_62558cca",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-01T16:04:13Z",
+      "side": 1,
+      "message": "Please change to CONFIG_BATTERY_I2C_ACCESS_DELAY_US.  And change comment to\n\nIf defined, amount of time in us to delay before every smart battery command.",
+      "range": {
+        "startLine": 95,
+        "startChar": 33,
+        "endLine": 95,
+        "endChar": 43
+      },
+      "revId": "57d4656b6615f608489c9fe02da646f0ec55eb3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
