@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed56c9ec_e3cd8c05",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-01T15:13:38Z",
+      "side": 1,
+      "message": "that\u0027s not really convincing me that this change is correct.\nAs touching the configuration defines often has tricky side effects, to prove it\u0027s correct you probably need to build all boards before and after and verify that you get the same binary.",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 6
+      },
+      "revId": "96b9d59c4203a0eed5e158f3e46a30e871827ddd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
