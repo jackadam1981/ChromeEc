@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed56c9ec_a6c392db",
+        "filename": "board/ryu/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-01T16:59:41Z",
+      "side": 1,
+      "message": "please don\u0027t put configuration #ifdef in board code.\nyou have decided in board config you are using this, great, I \u0027m all in favor of discarding this #ifdef.",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 30
+      },
+      "revId": "9fabeca16e8d2ab30ecc329313af22450750fcb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed56c9ec_a6055299",
+        "filename": "board/ryu/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-01T16:59:41Z",
+      "side": 1,
+      "message": "it seems that you have now 2 tasks loading the sensor FIFO : MOTIONSENSE and BMI160SENSE.\nI\u0027m a bit lost in the new architecture, I need to try to understand further the previous CL.",
+      "range": {
+        "startLine": 30,
+        "startChar": 13,
+        "endLine": 30,
+        "endChar": 43
+      },
+      "revId": "9fabeca16e8d2ab30ecc329313af22450750fcb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d54fde2_af37f98d",
+        "filename": "board/ryu/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-01T16:59:41Z",
+      "side": 1,
+      "message": "is the IRQ active low rather than falling edge ?",
+      "range": {
+        "startLine": 16,
+        "startChar": 48,
+        "endLine": 16,
+        "endChar": 59
+      },
+      "revId": "9fabeca16e8d2ab30ecc329313af22450750fcb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
