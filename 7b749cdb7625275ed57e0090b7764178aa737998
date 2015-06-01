@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "3914a832_a24044b3",
+        "filename": "chip/mec1322/config_chip.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-06-01T20:13:04Z",
+      "side": 1,
+      "message": "If we should not change this. then how about we add\nCDRAM (rx) : ORIGIN \u003d CONFIG_CDRAM_BASE + CONFIG_RO_MEM_OFF , LENGTH \u003d CONFIG_CDRAM_SIZE\n\nin the ec.ld.s file ?",
+      "range": {
+        "startLine": 110,
+        "startChar": 41,
+        "endLine": 110,
+        "endChar": 59
+      },
+      "revId": "7b749cdb7625275ed57e0090b7764178aa737998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "190b6419_cc436fbf",
         "filename": "chip/npcx/system.c",
         "patchSetId": 10
