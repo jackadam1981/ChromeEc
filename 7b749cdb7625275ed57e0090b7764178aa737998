@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0d54fde2_3bf0a7aa",
+        "filename": "chip/mec1322/config_chip.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-01T20:35:18Z",
+      "side": 1,
+      "message": "That\u0027s almost correct, see https://chromium-review.googlesource.com/274434.",
+      "parentUuid": "3914a832_a24044b3",
+      "range": {
+        "startLine": 110,
+        "startChar": 41,
+        "endLine": 110,
+        "endChar": 59
+      },
+      "revId": "7b749cdb7625275ed57e0090b7764178aa737998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "190b6419_cc436fbf",
         "filename": "chip/npcx/system.c",
         "patchSetId": 10
