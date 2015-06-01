@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "190b6419_3ee7b15e",
+        "filename": "chip/mec1322/config_chip.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-06-01T16:50:56Z",
+      "side": 1,
+      "message": "Coderam enabled code is building RO + RW images. Loader/lfw has its own ld.s file. RO and RW images base address is 0x100000 + 0x1000 ( lfw size) hence this is correct. when you open the ec.bin in hex editor it is clear the RO / RW images are not configured with right addresses.",
+      "parentUuid": "b9f6d849_cc2c9727",
+      "revId": "dfb5bdcc9be886e2a3a665e627361fcd54b0cfac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed56c9ec_50a8f857",
         "filename": "chip/mec1322/flash.c",
         "patchSetId": 9
