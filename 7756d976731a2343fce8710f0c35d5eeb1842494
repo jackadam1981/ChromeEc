@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59d23ce8_ac759fab",
+        "filename": "board/oak_pd/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-02T15:01:32Z",
+      "side": 1,
+      "message": "those pins are already set as open-drain, so the change just make the code more complex and slower.",
+      "range": {
+        "startLine": 244,
+        "startChar": 18,
+        "endLine": 244,
+        "endChar": 37
+      },
+      "revId": "7756d976731a2343fce8710f0c35d5eeb1842494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39d588cf_c616c079",
+        "filename": "board/oak_pd/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-02T15:01:32Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 245,
+        "startChar": 3,
+        "endLine": 245,
+        "endChar": 43
+      },
+      "revId": "7756d976731a2343fce8710f0c35d5eeb1842494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b97b38ac_49b091fc",
+        "filename": "board/oak_pd/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-02T15:01:32Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 253,
+        "startChar": 2,
+        "endLine": 254,
+        "endChar": 52
+      },
+      "revId": "7756d976731a2343fce8710f0c35d5eeb1842494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59d23ce8_cc7263c1",
+        "filename": "board/oak_pd/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-02T15:01:32Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 264,
+        "startChar": 1,
+        "endLine": 265,
+        "endChar": 51
+      },
+      "revId": "7756d976731a2343fce8710f0c35d5eeb1842494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b97b38ac_e994fd4d",
+        "filename": "board/oak_pd/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-02T15:01:32Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 272,
+        "startChar": 1,
+        "endLine": 273,
+        "endChar": 52
+      },
+      "revId": "7756d976731a2343fce8710f0c35d5eeb1842494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
