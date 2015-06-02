@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99a8345d_6a31d329",
+        "filename": "board/oak/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-02T15:14:41Z",
+      "side": 1,
+      "message": "i think charge_state_v2.c does this at init.",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 57
+      },
+      "revId": "d01f4920a1db771d7f21578187917430ddca5950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99a8345d_aaffcba1",
+        "filename": "board/oak/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-02T15:14:41Z",
+      "side": 1,
+      "message": "nit: add another space so that CONFIG_ lines up for readability",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 29
+      },
+      "revId": "d01f4920a1db771d7f21578187917430ddca5950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9ae2c65_4c53d340",
+        "filename": "board/oak_pd/usb_pd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-02T15:14:41Z",
+      "side": 1,
+      "message": "see comments in https://chromium-review.googlesource.com/#/c/274729/",
+      "range": {
+        "startLine": 249,
+        "startChar": 39,
+        "endLine": 249,
+        "endChar": 49
+      },
+      "revId": "d01f4920a1db771d7f21578187917430ddca5950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
