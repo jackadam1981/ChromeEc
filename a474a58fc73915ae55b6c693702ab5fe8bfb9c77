@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9b770b3_e7cd02d7",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-06-02T15:16:56Z",
+      "side": 1,
+      "message": "I don\u0027t think these new ORIGIN is any different from FLASH (rx) feels like we have just added 2nd level of referencing to do the same thing as before then with new naming. \n\nJust an opinion at the first look. If you have any new architecture for which this makes sense which I am not aware of then we need this.",
+      "revId": "a474a58fc73915ae55b6c693702ab5fe8bfb9c77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
