@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b9a97860_0bd86161",
+        "filename": "board/oak_pd/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-02T15:08:50Z",
+      "side": 1,
+      "message": "do you need this? doesn\u0027t seem like it since this function is disabling TX, it should already be set appropriately before this function call and we don\u0027t particularly care the value after it.",
+      "range": {
+        "startLine": 192,
+        "startChar": 2,
+        "endLine": 193,
+        "endChar": 51
+      },
+      "revId": "7756d976731a2343fce8710f0c35d5eeb1842494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59d23ce8_ac759fab",
         "filename": "board/oak_pd/usb_pd_config.h",
         "patchSetId": 2
