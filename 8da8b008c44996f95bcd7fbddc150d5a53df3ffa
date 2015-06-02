@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "d9ae2c65_7a04411d",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-02T22:53:13Z",
+      "side": 1,
+      "message": "Please use a more descriptive token.  That way it\u0027s clear this and the code #ifdef\u0027d out in flash_physical_protect_now() and other places are part of the same problem.\n\nAlso, the bug MUST be a release-blocking bug; we cannot release PVT or MP releases until this is fixed.  (Shawn, can you tag it appropriately?)",
+      "range": {
+        "startLine": 110,
+        "startChar": 4,
+        "endLine": 110,
+        "endChar": 5
+      },
+      "revId": "8da8b008c44996f95bcd7fbddc150d5a53df3ffa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39d588cf_3f06a9d2",
         "filename": "chip/mec1322/flash.c",
         "patchSetId": 12
@@ -127,6 +150,75 @@
     },
     {
       "key": {
+        "uuid": "b9a97860_f4f5a6c3",
+        "filename": "include/system.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-02T22:53:13Z",
+      "side": 1,
+      "message": "little",
+      "range": {
+        "startLine": 374,
+        "startChar": 21,
+        "endLine": 374,
+        "endChar": 27
+      },
+      "revId": "8da8b008c44996f95bcd7fbddc150d5a53df3ffa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99a8345d_b3abc20b",
+        "filename": "include/system.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-02T22:53:13Z",
+      "side": 1,
+      "message": "Set the destination image for a sysjump.\n\nThis is called for devices with CONFIG_CODE_\\RAM_ARCH by system code just before the jump to the little firmware.  It should store the destination image so that it will be available to the little firmware after the jump.",
+      "range": {
+        "startLine": 383,
+        "startChar": 3,
+        "endLine": 385,
+        "endChar": 47
+      },
+      "revId": "8da8b008c44996f95bcd7fbddc150d5a53df3ffa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9ae2c65_fa7831a5",
+        "filename": "include/system.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-02T22:53:13Z",
+      "side": 1,
+      "message": "Update comment; this isn\u0027t the right param",
+      "range": {
+        "startLine": 387,
+        "startChar": 3,
+        "endLine": 387,
+        "endChar": 67
+      },
+      "revId": "8da8b008c44996f95bcd7fbddc150d5a53df3ffa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b97b38ac_de40d4b4",
         "filename": "include/system.h",
         "patchSetId": 12
@@ -138,6 +230,29 @@
       "writtenOn": "2015-06-02T22:45:38Z",
       "side": 1,
       "message": "Extra space here.",
+      "revId": "8da8b008c44996f95bcd7fbddc150d5a53df3ffa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9a97860_f41cc69d",
+        "filename": "include/system.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-02T22:53:13Z",
+      "side": 1,
+      "message": "Typo: which (I know it\u0027s not part of your change, but might as well fix it now.)",
+      "range": {
+        "startLine": 393,
+        "startChar": 10,
+        "endLine": 393,
+        "endChar": 15
+      },
       "revId": "8da8b008c44996f95bcd7fbddc150d5a53df3ffa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
