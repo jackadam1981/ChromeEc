@@ -1,0 +1,146 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39d588cf_3f06a9d2",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-02T22:45:38Z",
+      "side": 1,
+      "message": "Fix comment style here and below.",
+      "revId": "8da8b008c44996f95bcd7fbddc150d5a53df3ffa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39d588cf_ffab410a",
+        "filename": "chip/mec1322/lfw/ec_lfw.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-02T22:45:38Z",
+      "side": 1,
+      "message": "Put a comment below this line to make it clear that you intentionally left out the break:\n\n/* Fall through */",
+      "revId": "8da8b008c44996f95bcd7fbddc150d5a53df3ffa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b97b38ac_b4cad93b",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-02T22:45:38Z",
+      "side": 1,
+      "message": "Extra space.",
+      "revId": "8da8b008c44996f95bcd7fbddc150d5a53df3ffa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59d23ce8_038cb1b9",
+        "filename": "chip/mec1322/system.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-02T22:45:38Z",
+      "side": 1,
+      "message": "Extra space.",
+      "revId": "8da8b008c44996f95bcd7fbddc150d5a53df3ffa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b97b38ac_54aa655d",
+        "filename": "chip/mec1322/system.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-02T22:45:38Z",
+      "side": 1,
+      "message": "Extra space.",
+      "revId": "8da8b008c44996f95bcd7fbddc150d5a53df3ffa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b97b38ac_7469a1a1",
+        "filename": "chip/mec1322/system.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-02T22:45:38Z",
+      "side": 1,
+      "message": "Replace this function with one liner:\nMEC1322_VBAT_RAM(MEC1322_IMAGETYPE_IDX) \u003d (copy \u003d\u003d SYSTEM_IMAGE_RW) ? SYSTEM_IMAGE_RW : SYSTEM_IMAGE_RO.",
+      "revId": "8da8b008c44996f95bcd7fbddc150d5a53df3ffa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59d23ce8_ed195e82",
+        "filename": "include/system.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-02T22:45:38Z",
+      "side": 1,
+      "message": "Spelling here.",
+      "range": {
+        "startLine": 374,
+        "startChar": 21,
+        "endLine": 374,
+        "endChar": 27
+      },
+      "revId": "8da8b008c44996f95bcd7fbddc150d5a53df3ffa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b97b38ac_de40d4b4",
+        "filename": "include/system.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-02T22:45:38Z",
+      "side": 1,
+      "message": "Extra space here.",
+      "revId": "8da8b008c44996f95bcd7fbddc150d5a53df3ffa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
