@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39d588cf_86f9987d",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-02T15:41:44Z",
+      "side": 1,
+      "message": "can we just create an alias in the servo board XML file rather than this special code path ?",
+      "range": {
+        "startLine": 209,
+        "startChar": 7,
+        "endLine": 209,
+        "endChar": 32
+      },
+      "revId": "865db53e837233a96553ffc79af9378509272516",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
