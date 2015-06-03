@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7948e0a0_011dee6e",
+        "filename": "driver/charger/isl9237.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-06-03T17:34:02Z",
+      "side": 1,
+      "message": "Or to indicate the charger cannot be communicated with?",
+      "parentUuid": "b9a97860_314a6b2a",
+      "range": {
+        "startLine": 164,
+        "startChar": 36,
+        "endLine": 164,
+        "endChar": 40
+      },
+      "revId": "a87f7fde23737483d757db7fb9d9e9902a7ed0b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9a97860_5124c76e",
         "filename": "driver/charger/isl9237.c",
         "patchSetId": 3
