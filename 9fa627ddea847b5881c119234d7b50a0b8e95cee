@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59d23ce8_29d19373",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-03T01:10:37Z",
+      "side": 1,
+      "message": "I don\u0027t think this is any better. What if the RO header is at the end of the image for some chip? It makes more sense to put \"#ifdef NPCX\" here (not suggesting to do this, though).\n\nWhy can\u0027t you tweak CONFIG_RO_MEM_OFF (and maybe some other things wihch depend on it) to point to the RO image in memory?",
+      "revId": "9fa627ddea847b5881c119234d7b50a0b8e95cee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
