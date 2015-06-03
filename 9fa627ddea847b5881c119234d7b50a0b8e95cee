@@ -52,6 +52,24 @@
       "revId": "9fa627ddea847b5881c119234d7b50a0b8e95cee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19dc44fc_3688206f",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-06-03T09:53:01Z",
+      "side": 1,
+      "message": "By the way, we found RO_FRID and RW_FRID are incorrect when using dump_fmap tool. Under CONFIG_CDRAM_ARCH definition, line 23 of fmap.c should minus CONFIG_CDRAM_BASE not CONFIG_FLASH_BASE.",
+      "parentUuid": "d9c54c25_5d3aa7fa",
+      "revId": "9fa627ddea847b5881c119234d7b50a0b8e95cee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
