@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d96c6c17_70dc700e",
+        "filename": "board/glados_pd/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-03T21:50:18Z",
+      "side": 1,
+      "message": "haha the PD task is going from LARGER_TASK_STACK_SIZE to the regular one. Your life is becoming dangerous ...\n\nmight be safer to reduce the system stack :\n#undef CONFIG_STACK_SIZE\n#define CONFIG_STACK_SIZE 768",
+      "range": {
+        "startLine": 24,
+        "startChar": 35,
+        "endLine": 24,
+        "endChar": 50
+      },
+      "revId": "226a64f1ee37da0aa78fb4bec54f031a50a3012e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
