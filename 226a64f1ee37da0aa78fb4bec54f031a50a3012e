@@ -22,6 +22,30 @@
       "revId": "226a64f1ee37da0aa78fb4bec54f031a50a3012e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f955b039_ab506157",
+        "filename": "board/glados_pd/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-03T21:57:06Z",
+      "side": 1,
+      "message": "actually since the TCPM/TCPC split, the TCPC side stack usage is pretty small. The max I\u0027ve seen plugging in hoho/zinger is ~400 bytes.\n\nbut, we might want to reduce system stack as well since we are quite limited in RAM.",
+      "parentUuid": "d96c6c17_70dc700e",
+      "range": {
+        "startLine": 24,
+        "startChar": 35,
+        "endLine": 24,
+        "endChar": 50
+      },
+      "revId": "226a64f1ee37da0aa78fb4bec54f031a50a3012e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
