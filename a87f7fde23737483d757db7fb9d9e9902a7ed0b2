@@ -45,6 +45,30 @@
       "revId": "a87f7fde23737483d757db7fb9d9e9902a7ed0b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "395ca863_027690b6",
+        "filename": "driver/charger/isl9237.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-06-03T17:25:23Z",
+      "side": 1,
+      "message": "Well, how do we handle these conditional settings. e.g. in charger_set_current() we only set the global variable but not the register in the charger. In that case a sysjump will definitely lose the value in that case since the backing store wasn\u0027t updated.\n\nMoreover, why doesn\u0027t the charging state machine handle the saving of state? It seems weird to push the generic (voltage, status, current) off into the charger code proper.",
+      "parentUuid": "b9a97860_5124c76e",
+      "range": {
+        "startLine": 193,
+        "startChar": 12,
+        "endLine": 193,
+        "endChar": 27
+      },
+      "revId": "a87f7fde23737483d757db7fb9d9e9902a7ed0b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
