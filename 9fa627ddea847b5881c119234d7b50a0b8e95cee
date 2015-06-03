@@ -34,6 +34,24 @@
       "revId": "9fa627ddea847b5881c119234d7b50a0b8e95cee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9c54c25_5d3aa7fa",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-06-03T08:35:19Z",
+      "side": 1,
+      "message": "I agree with you. If someone accesses flash data bypass get_base() function, it will cause problem. I will change CONFIG_RO_MEM_OFF points to the RO image and treat FW header as a part of ec.RO.flat. Is it OK to you?",
+      "parentUuid": "59d23ce8_e9762bfe",
+      "revId": "9fa627ddea847b5881c119234d7b50a0b8e95cee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
