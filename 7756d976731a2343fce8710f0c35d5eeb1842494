@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "19dc44fc_195d0f4b",
+        "filename": "board/oak_pd/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-06-03T12:32:24Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "b9a97860_0bd86161",
+      "range": {
+        "startLine": 192,
+        "startChar": 2,
+        "endLine": 193,
+        "endChar": 51
+      },
+      "revId": "7756d976731a2343fce8710f0c35d5eeb1842494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59d23ce8_ac759fab",
         "filename": "board/oak_pd/usb_pd_config.h",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-06-02T15:01:32Z",
       "side": 1,
       "message": "those pins are already set as open-drain, so the change just make the code more complex and slower.",
+      "range": {
+        "startLine": 244,
+        "startChar": 18,
+        "endLine": 244,
+        "endChar": 37
+      },
+      "revId": "7756d976731a2343fce8710f0c35d5eeb1842494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9de90f5_38d6cdbe",
+        "filename": "board/oak_pd/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-06-03T12:32:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59d23ce8_ac759fab",
       "range": {
         "startLine": 244,
         "startChar": 18,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f9de90f5_d8da21e1",
+        "filename": "board/oak_pd/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-06-03T12:32:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39d588cf_c616c079",
+      "range": {
+        "startLine": 245,
+        "startChar": 3,
+        "endLine": 245,
+        "endChar": 43
+      },
+      "revId": "7756d976731a2343fce8710f0c35d5eeb1842494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b97b38ac_49b091fc",
         "filename": "board/oak_pd/usb_pd_config.h",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "19dc44fc_d966a71e",
+        "filename": "board/oak_pd/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-06-03T12:32:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b97b38ac_49b091fc",
+      "range": {
+        "startLine": 253,
+        "startChar": 2,
+        "endLine": 254,
+        "endChar": 52
+      },
+      "revId": "7756d976731a2343fce8710f0c35d5eeb1842494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59d23ce8_cc7263c1",
         "filename": "board/oak_pd/usb_pd_config.h",
         "patchSetId": 2
@@ -105,6 +201,30 @@
       "writtenOn": "2015-06-02T15:01:32Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 264,
+        "startChar": 1,
+        "endLine": 265,
+        "endChar": 51
+      },
+      "revId": "7756d976731a2343fce8710f0c35d5eeb1842494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9de90f5_f8d7e5b5",
+        "filename": "board/oak_pd/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-06-03T12:32:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59d23ce8_cc7263c1",
       "range": {
         "startLine": 264,
         "startChar": 1,
@@ -151,6 +271,30 @@
       "writtenOn": "2015-06-03T02:00:19Z",
       "side": 1,
       "message": "regardless of TX_SEL, both CC lines will be high impedance, so why is this needed?",
+      "range": {
+        "startLine": 333,
+        "startChar": 2,
+        "endLine": 333,
+        "endChar": 51
+      },
+      "revId": "7756d976731a2343fce8710f0c35d5eeb1842494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19dc44fc_f9636b0b",
+        "filename": "board/oak_pd/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-06-03T12:32:24Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "b9a97860_df7be39f",
       "range": {
         "startLine": 333,
         "startChar": 2,
