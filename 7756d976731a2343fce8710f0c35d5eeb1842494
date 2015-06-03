@@ -137,6 +137,29 @@
       "revId": "7756d976731a2343fce8710f0c35d5eeb1842494",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9a97860_df7be39f",
+        "filename": "board/oak_pd/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-03T02:00:19Z",
+      "side": 1,
+      "message": "regardless of TX_SEL, both CC lines will be high impedance, so why is this needed?",
+      "range": {
+        "startLine": 333,
+        "startChar": 2,
+        "endLine": 333,
+        "endChar": 51
+      },
+      "revId": "7756d976731a2343fce8710f0c35d5eeb1842494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
