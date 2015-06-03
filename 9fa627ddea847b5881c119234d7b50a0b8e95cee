@@ -70,6 +70,24 @@
       "revId": "9fa627ddea847b5881c119234d7b50a0b8e95cee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59595c72_babef11f",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-03T16:02:56Z",
+      "side": 1,
+      "message": "Regarding \"CONFIG_RO_MEM_OFF points to the RO image and treat FW header as a part of ec.RO.flat\", that sounds good. Regarding the fmap.c bug, thanks for finding that. Can you put up a new patch?",
+      "parentUuid": "19dc44fc_3688206f",
+      "revId": "9fa627ddea847b5881c119234d7b50a0b8e95cee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
