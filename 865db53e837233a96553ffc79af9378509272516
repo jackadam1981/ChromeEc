@@ -22,6 +22,30 @@
       "revId": "865db53e837233a96553ffc79af9378509272516",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9c54c25_7df3e36b",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-06-03T12:29:29Z",
+      "side": 1,
+      "message": "ok, Since oak is the only board that shares boot0. I will add an ec_boot_mode similar to usbpd_boot_mode. And customize oak in its overlay.",
+      "parentUuid": "39d588cf_86f9987d",
+      "range": {
+        "startLine": 209,
+        "startChar": 7,
+        "endLine": 209,
+        "endChar": 32
+      },
+      "revId": "865db53e837233a96553ffc79af9378509272516",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
