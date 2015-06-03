@@ -16,6 +16,24 @@
       "revId": "9fa627ddea847b5881c119234d7b50a0b8e95cee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59d23ce8_e9762bfe",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-03T01:15:14Z",
+      "side": 1,
+      "message": "I think we need CONFIG_RO_MEM_OFF to actually contain the offset of the image in memory for other reasons, too. Have you checked your FMAP (run dump_fmap on your final ec.bin)? I bet it is incorrect, unless you change CONFIG_RO_MEM_OFF...",
+      "parentUuid": "59d23ce8_29d19373",
+      "revId": "9fa627ddea847b5881c119234d7b50a0b8e95cee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
