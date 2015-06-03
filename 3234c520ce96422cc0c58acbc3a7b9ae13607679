@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "59595c72_7a1f391c",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-06-03T16:15:18Z",
+      "side": 1,
+      "message": "I think I\u0027m going to try to rework this without using recursive make. The way as it stands felt a bit fragile to me and was nagging me in the back of my mind.",
+      "parentUuid": "1967e40f_f83611ef",
+      "range": {
+        "startLine": 153,
+        "startChar": 1,
+        "endLine": 153,
+        "endChar": 6
+      },
+      "revId": "3234c520ce96422cc0c58acbc3a7b9ae13607679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1967e40f_983355fe",
         "filename": "util/shared_lib_fixup.py",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-06-02T00:40:08Z",
       "side": 1,
       "message": "Why is this lowercase and the others are uppercase?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 8
+      },
+      "revId": "3234c520ce96422cc0c58acbc3a7b9ae13607679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "395ca863_59ec0340",
+        "filename": "util/shared_lib_fixup.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-06-03T16:15:18Z",
+      "side": 1,
+      "message": "No good reason; I\u0027ll fix it.",
+      "parentUuid": "1967e40f_983355fe",
       "range": {
         "startLine": 19,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "59595c72_7dc1f372",
+        "filename": "util/shared_lib_fixup.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-06-03T16:15:18Z",
+      "side": 1,
+      "message": "Thanks, this is a lot better.",
+      "parentUuid": "d980ecc6_16a5dc8b",
+      "range": {
+        "startLine": 21,
+        "startChar": 11,
+        "endLine": 21,
+        "endChar": 29
+      },
+      "revId": "3234c520ce96422cc0c58acbc3a7b9ae13607679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99a11461_3c2551b3",
         "filename": "util/shared_lib_fixup.py",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2015-06-02T00:40:08Z",
       "side": 1,
       "message": "Extra 0?",
+      "range": {
+        "startLine": 49,
+        "startChar": 25,
+        "endLine": 49,
+        "endChar": 26
+      },
+      "revId": "3234c520ce96422cc0c58acbc3a7b9ae13607679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59595c72_da26456b",
+        "filename": "util/shared_lib_fixup.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-06-03T16:15:18Z",
+      "side": 1,
+      "message": "Yep. I\u0027ll remove that.",
+      "parentUuid": "99a11461_3c2551b3",
       "range": {
         "startLine": 49,
         "startChar": 25,
