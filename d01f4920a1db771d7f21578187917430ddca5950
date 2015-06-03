@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "19dc44fc_99701fd3",
+        "filename": "board/oak/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-06-03T12:33:32Z",
+      "side": 1,
+      "message": "Will remove.",
+      "parentUuid": "99a8345d_6a31d329",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 57
+      },
+      "revId": "d01f4920a1db771d7f21578187917430ddca5950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99a8345d_aaffcba1",
         "filename": "board/oak/board.h",
         "patchSetId": 1
@@ -59,6 +83,30 @@
       "writtenOn": "2015-06-02T15:14:41Z",
       "side": 1,
       "message": "see comments in https://chromium-review.googlesource.com/#/c/274729/",
+      "range": {
+        "startLine": 249,
+        "startChar": 39,
+        "endLine": 249,
+        "endChar": 49
+      },
+      "revId": "d01f4920a1db771d7f21578187917430ddca5950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9c54c25_fdfef32f",
+        "filename": "board/oak_pd/usb_pd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-06-03T12:33:32Z",
+      "side": 1,
+      "message": "I see. Will be fixed in next patchset.",
+      "parentUuid": "d9ae2c65_4c53d340",
       "range": {
         "startLine": 249,
         "startChar": 39,
