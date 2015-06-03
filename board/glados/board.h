@@ -14,10 +14,10 @@
 
 #define CONFIG_CHARGER
 #define CONFIG_CHARGER_V2
-#define CONFIG_CHARGER_BQ24773
+#define CONFIG_CHARGER_ISL9237
 #define CONFIG_CHARGER_ILIM_PIN_DISABLED
 #define CONFIG_CHARGER_SENSE_RESISTOR 10
-#define CONFIG_CHARGER_SENSE_RESISTOR_AC 10
+#define CONFIG_CHARGER_SENSE_RESISTOR_AC 20
 #define CONFIG_CHARGER_INPUT_CURRENT 2240
 #define CONFIG_CHARGER_DISCHARGE_ON_AC
 
@@ -97,6 +97,10 @@ enum power_signal {
 #define PD_MAX_POWER_MW       60000
 #define PD_MAX_CURRENT_MA     3000
 #define PD_MAX_VOLTAGE_MV     20000
+
+/* Battery information. */
+#define BATTERY_V_MIN 6000
+#define BATTERY_V_MAX 8400
 
 /* Discharge battery when on AC power for factory test. */
 int board_discharge_on_ac(int enable);
