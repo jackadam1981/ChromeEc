@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99a8345d_4e498402",
+        "filename": "board/oak_pd/usb_pd_config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-03T14:58:11Z",
+      "side": 1,
+      "message": "actually, the CC line should be changed to an input before taking TX_DATA out of SPI mode, otherwise there is a glitch on the CC line on disable. see:\n\nhttps://chromium-review.googlesource.com/#/c/274884/",
+      "range": {
+        "startLine": 177,
+        "startChar": 3,
+        "endLine": 177,
+        "endChar": 51
+      },
+      "revId": "0371df135cbfd81e31ba937337b0404e61540246",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
