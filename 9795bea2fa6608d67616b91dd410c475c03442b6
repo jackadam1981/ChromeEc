@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f923f0e9_41eed684",
+        "filename": "chip/g/usb_blob.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-06-04T16:32:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f955b039_a01fdb1a",
+      "revId": "9795bea2fa6608d67616b91dd410c475c03442b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f955b039_604ae3fc",
         "filename": "common/blob.c",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2015-06-04T01:00:16Z",
       "side": 1,
       "message": "/* The magic is apparently toggling the case of ASCII characters */",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 3
+      },
+      "revId": "9795bea2fa6608d67616b91dd410c475c03442b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d96c6c17_e7a43d40",
+        "filename": "common/blob.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-06-04T16:32:22Z",
+      "side": 1,
+      "message": "Yep. I\u0027ll add a comment.",
+      "parentUuid": "f955b039_604ae3fc",
       "range": {
         "startLine": 98,
         "startChar": 0,
