@@ -92,9 +92,9 @@ int tcpm_set_msg_header(int port, int power_role, int data_role)
 			  TCPC_REG_MSG_HDR_INFO_SET(data_role, power_role));
 }
 
-int tcpm_alert_status(int port, int alert_reg, uint8_t *alert)
+int tcpm_alert_status(int port, int alert_reg, uint16_t *alert)
 {
-	return i2c_read8(I2C_PORT_TCPC, I2C_ADDR_TCPC(port),
+	return i2c_read16(I2C_PORT_TCPC, I2C_ADDR_TCPC(port),
 			 alert_reg, (int *)alert);
 }
 
@@ -104,6 +104,32 @@ int tcpm_set_rx_enable(int port, int enable)
 	return i2c_write8(I2C_PORT_TCPC, I2C_ADDR_TCPC(port),
 			  TCPC_REG_RX_DETECT,
 			  enable ? TCPC_REG_RX_DETECT_SOP_HRST_MASK : 0);
+}
+
+int tcpm_alert_status_clear(int port, int alert_reg, uint16_t alert)
+{
+	int rv;
+	/* write to the Alert register to clear bits that are handled */
+	rv = i2c_write16(I2C_PORT_TCPC, I2C_ADDR_TCPC(port),
+			 alert_reg, alert);
+
+	if (rv)
+		return rv;
+
+	return rv;
+}
+
+int tcpm_alert_mask_set(int port, int reg, uint16_t mask)
+{
+	int rv;
+	/* write to the Alert Mask register */
+	rv = i2c_write16(I2C_PORT_TCPC, I2C_ADDR_TCPC(port),
+			 reg, mask);
+
+	if (rv)
+		return rv;
+
+	return rv;
 }
 
 int tcpm_get_message(int port, uint32_t *payload, int *head)

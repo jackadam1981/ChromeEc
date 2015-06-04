@@ -20,17 +20,14 @@
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 
+static uint32_t ec_int_status;
+
 void pd_send_ec_int(void)
 {
-	gpio_set_level(GPIO_EC_INT, 0);
+	/* If any of 3 sources are active, then drive the line low */
+	int level = (ec_int_status & PD_STATUS_EC_INT_ACTIVE) ? 0 : 1;
+	gpio_set_level(GPIO_EC_INT, level);
 
-	/*
-	 * Delay long enough to guarantee EC see's the change.
-	 * TODO: make sure this delay is sufficient.
-	 */
-	usleep(5);
-
-	gpio_set_level(GPIO_EC_INT, 1);
 }
 
 void vbus0_evt(enum gpio_signal signal)
@@ -65,6 +62,9 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_USB_C0_VBUS_WAKE_L);
 	gpio_enable_interrupt(GPIO_USB_C1_VBUS_WAKE_L);
 
+	/* Clear state variable used to track ec_int source */
+	ec_int_status = 0;
+
 	/* OAK_PD: TODO: Power management of ARM based system */
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
@@ -85,8 +85,45 @@ const struct i2c_port_t i2c_ports[] = {
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
-void tcpc_alert(void)
+void tcpc_alert(int port)
 {
+	uint32_t ec_int_source;
+	/*
+	 * This function is called when the TCPC sets one of
+	 * bits in the Alert register and that bit's corresponding
+	 * location in the Alert_Mask register is set. Once here,
+	 * the #Alert line needs to be driven low to signal the
+	 * TCPM that an Alert bit is set. Since Glados uses the
+	 * same GPIO line for both PD ports and EC_HOST signaling,
+	 * a global static variable is used to indicate which
+	 * of the 3 sources is requesting the ec_int gpio line
+	 * to be driven low (active)
+	 */
+	if (port)
+		ec_int_source = PD_STATUS_TCPC_ALERT_1;
+	else
+		ec_int_source = PD_STATUS_TCPC_ALERT_0;
+
+	atomic_or(&ec_int_status, ec_int_source);
+	pd_send_ec_int();
+}
+
+void tcpc_alert_clear(int port)
+{
+	uint32_t ec_int_source;
+	/*
+	 * The TCPM has acknowledged all Alert bits and so the
+	 * Alert# line needs to be set high (inactive). Clear
+	 * the corresponding port's bit in the static variable.
+	 * pd_send_ec_int will set the gpio line to the
+	 * proper state based on all 3 possible sources.
+	 */
+	if (port)
+		ec_int_source = PD_STATUS_TCPC_ALERT_1;
+	else
+		ec_int_source = PD_STATUS_TCPC_ALERT_0;
+
+	atomic_clear(&ec_int_status, ec_int_source);
 	pd_send_ec_int();
 }
 

@@ -129,6 +129,9 @@ int board_discharge_on_ac(int enable);
 /* Reset PD MCU */
 void board_reset_pd_mcu(void);
 
+/* Check level of pd_mcu_interrupt line */
+int pd_mcu_check_int_active(void);
+
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __BOARD_H */

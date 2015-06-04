@@ -304,7 +304,7 @@ static void inc_id(int port)
 
 static void pd_transmit_complete(int port, int status)
 {
-	if (status & TCPC_REG_ALERT1_TX_SUCCESS)
+	if (status & TCPC_REG_ALERT_TX_SUCCESS)
 		inc_id(port);
 
 	pd[port].tx_status = status;
@@ -329,7 +329,7 @@ static int pd_transmit(int port, enum tcpm_transmit_type type,
 		return -1;
 
 	/* TODO: give different error condition for failed vs discarded */
-	return pd[port].tx_status & TCPC_REG_ALERT1_TX_SUCCESS ? 1 : -1;
+	return pd[port].tx_status & TCPC_REG_ALERT_TX_SUCCESS ? 1 : -1;
 }
 
 static void pd_update_roles(int port)
@@ -688,6 +688,7 @@ static void handle_data_request(int port, uint16_t head,
 			    PD_STATE_SNK_HARD_RESET_RECOVER)
 #endif
 			|| (pd[port].task_state == PD_STATE_SNK_READY)) {
+
 			/* Port partner is now known to be PD capable */
 			pd[port].flags |= PD_FLAGS_PREVIOUS_PD_CONN;
 
@@ -1299,6 +1300,25 @@ void pd_set_new_power_request(int port)
 #error "Backwards compatible DFP does not support USB"
 #endif
 
+int tcpm_init_alert_mask(int port)
+{
+	uint16_t mask;
+	int rv;
+
+	/*
+	 * Create mask of alert events that will cause the TCPC to
+	 * signal the TCPM via the Alert# gpio line.
+	 */
+	mask = TCPC_REG_ALERT_TX_SUCCESS | TCPC_REG_ALERT_TX_FAILED |
+		TCPC_REG_ALERT_TX_DISCARDED | TCPC_REG_ALERT_RX_STATUS |
+		TCPC_REG_ALERT_RX_HARD_RST | TCPC_REG_ALERT_CC_STATUS;
+	/* Set the alert mask in TCPC */
+	rv = tcpm_alert_mask_set(port, TCPC_REG_ALERT_MASK, mask);
+
+	return rv;
+}
+
+
 void pd_task(void)
 {
 	int head;
@@ -1329,6 +1349,9 @@ void pd_task(void)
 	/* Initialize TCPM driver and wait for TCPC to be ready */
 	tcpm_init(port);
 	CPRINTF("[%T TCPC p%d ready]\n", port);
+
+	/* Initialize TCPC alert mask register via the TCPM */
+	tcpm_init_alert_mask(port);
 
 	/* Disable TCPC RX until connection is established */
 	tcpm_set_rx_enable(port, 0);
@@ -2389,40 +2412,47 @@ void pd_task(void)
 	}
 }
 
-void tcpc_alert(void)
+void tcpc_alert(int port)
 {
-	int status, i;
+	/*
+	 * Handle any Alert bits present in the TCPC. If the TCPM
+	 * and TCPC are running on the same MCU, then the read/write
+	 * of the TCPC Alert register is local. Otherwise an I2C
+	 * transaction is initiated over the TCPCI.
+	 */
+	int status;
 
-	/* loop over ports and check alert status */
-	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
-		tcpm_alert_status(i, TCPC_REG_ALERT1, (uint8_t *)&status);
-		if (status & TCPC_REG_ALERT1_CC_STATUS) {
-			/* CC status changed, wake task */
-			task_set_event(PD_PORT_TO_TASK_ID(i), PD_EVENT_CC, 0);
-		}
-		if (status & TCPC_REG_ALERT1_RX_STATUS) {
-			/* message received */
-			/*
-			 * If TCPC is compiled in, then we will have already
-			 * received PD_EVENT_RX from phy layer in
-			 * pd_rx_event(), so we don't need to set another
-			 * event. If TCPC is not running on this MCU, then
-			 * this needs to wake the PD task.
-			 */
-#ifndef CONFIG_USB_PD_TCPC
-			task_set_event(PD_PORT_TO_TASK_ID(i), PD_EVENT_RX, 0);
-#endif
-		}
-		if (status & TCPC_REG_ALERT1_RX_HARD_RST) {
-			/* hard reset received */
-			execute_hard_reset(i);
-			task_wake(PD_PORT_TO_TASK_ID(i));
-		}
-		if (status & TCPC_REG_ALERT1_TX_COMPLETE) {
-			/* transmit complete */
-			pd_transmit_complete(i, status);
-		}
+	/* Read the Alert register from the TCPC */
+	tcpm_alert_status(port, TCPC_REG_ALERT, (uint16_t *)&status);
+
+	if (status & TCPC_REG_ALERT_CC_STATUS) {
+		/* CC status changed, wake task */
+		task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_CC, 0);
 	}
+	if (status & TCPC_REG_ALERT_RX_STATUS) {
+		/* message received */
+		/*
+		 * If TCPC is compiled in, then we will have already
+		 * received PD_EVENT_RX from phy layer in
+		 * pd_rx_event(), so we don't need to set another
+		 * event. If TCPC is not running on this MCU, then
+		 * this needs to wake the PD task.
+		 */
+#ifndef CONFIG_USB_PD_TCPC
+		task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_RX, 0);
+#endif
+	}
+	if (status & TCPC_REG_ALERT_RX_HARD_RST) {
+		/* hard reset received */
+		execute_hard_reset(port);
+		task_wake(PD_PORT_TO_TASK_ID(port));
+	}
+	if (status & TCPC_REG_ALERT_TX_COMPLETE) {
+		/* transmit complete */
+		pd_transmit_complete(port, status);
+	}
+	/* Clear Alert status bits which were just processed */
+	tcpm_alert_status_clear(port, TCPC_REG_ALERT, status);
 }
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE

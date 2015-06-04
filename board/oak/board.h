@@ -163,6 +163,9 @@ int board_discharge_on_ac(int enable);
 /* Reset PD MCU */
 void board_reset_pd_mcu(void);
 
+/* Check level of pd_mcu_interrupt line */
+int pd_mcu_check_int_active(void);
+
 /* Control type-C DP route and hotplug detect signal */
 void board_typec_dp_on(int port);
 void board_typec_dp_off(int port, int *dp_flags);

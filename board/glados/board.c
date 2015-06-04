@@ -64,6 +64,12 @@ static void update_vbus_supplier(int port, int vbus_level)
 	}
 }
 
+int pd_mcu_check_int_active(void)
+{
+	/* pd_mcu interrupt is active if level is 0 */
+	return !gpio_get_level(GPIO_PD_MCU_INT);
+}
+
 void vbus0_evt(enum gpio_signal signal)
 {
 	/* VBUS present GPIO is inverted */

@@ -83,6 +83,12 @@ void pd_mcu_interrupt(enum gpio_signal signal)
 #endif
 }
 
+int pd_mcu_check_int_active(void)
+{
+	/* pd_mcu interrupt is active if level is 0 */
+	return !gpio_get_level(GPIO_PD_MCU_INT);
+}
+
 #include "gpio_list.h"
 
 /* power signal list.  Must match order of enum power_signal. */
