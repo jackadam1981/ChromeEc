@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "d96c6c17_6205bb49",
+        "filename": "common/ec.libsharedobjs.ld",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-04T16:53:26Z",
+      "side": 1,
+      "message": "Sure, but excepted .ARM.attributes for the linker compatibility, nothing seems to mandate a KEEP() here",
+      "parentUuid": "d96c6c17_c7a2e1f8",
+      "range": {
+        "startLine": 9,
+        "startChar": 20,
+        "endLine": 9,
+        "endChar": 36
+      },
+      "revId": "73b30ee6d67770bb970473c85dd40d073b644b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d96c6c17_6782eddb",
         "filename": "core/cortex-m/ec.RW.lds.S",
         "patchSetId": 3
