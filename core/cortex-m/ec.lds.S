@@ -5,8 +5,9 @@
 #include "config.h"
 #include "rsa.h"
 
-#define FW_OFF_(section) CONFIG_##section##_MEM_OFF
-#define FW_OFF(section) (CONFIG_FLASH_BASE + FW_OFF_(section))
+#define FW_MEM_OFF_(section) CONFIG_##section##_MEM_OFF
+#define FW_MEM_OFF(section) (FW_MEM_OFF_(section))
+#define FW_OFF(section) (CONFIG_FLASH_BASE + FW_MEM_OFF(section))
 
 #define FW_SIZE_(section) CONFIG_##section##_SIZE
 #define FW_SIZE(section) FW_SIZE_(section)
@@ -17,10 +18,13 @@ OUTPUT_ARCH(BFD_ARCH)
 ENTRY(reset)
 MEMORY
 {
+#if defined(SECTION_IS_RO) && defined(NPCX_RO_HEADER)
+    FLASH_HDR (rx) : ORIGIN = FW_OFF(RO_HDR), LENGTH = FW_SIZE(RO_HDR)
+#endif
     FLASH (rx) : ORIGIN = FW_OFF(SECTION), LENGTH = FW_SIZE(SECTION)
     IRAM (rw)  : ORIGIN = CONFIG_RAM_BASE, LENGTH = CONFIG_RAM_SIZE
 #ifdef CONFIG_CODERAM_ARCH
-    CDRAM (rx) : ORIGIN = CONFIG_CDRAM_BASE, LENGTH = CONFIG_CDRAM_SIZE
+    CDRAM (rx) : ORIGIN = CONFIG_CDRAM_BASE, LENGTH = FW_SIZE(SECTION)
 #endif
 #ifdef RSA_PUBLIC_KEY_SIZE
     PSTATE(r)  : ORIGIN = FW_OFF(SECTION) + FW_SIZE(SECTION), \
@@ -34,6 +38,17 @@ MEMORY
 }
 SECTIONS
 {
+#if defined(SECTION_IS_RO) && defined(NPCX_RO_HEADER)
+    .header : {
+        /*
+         * Header structure used by npcx booter in RO region.
+         * Please notice the location of header must be in front of FW
+         * which is copied from flash to code ram.
+         * But itself won't be copied to code ram by booter.
+         */
+        KEEP(*(.header))
+    } > FLASH_HDR
+#endif
     .text : {
         OUTDIR/core/CORE/init.o (.text.vecttable)
         . = ALIGN(4);
@@ -55,7 +70,7 @@ SECTIONS
         /* Entering deep idle FW for better power consumption */
         KEEP(*(.lowpower_ram))
         __flash_lpfw_end = .;
-        } > CDRAM AT > FLASH
+    } > CDRAM AT > FLASH
 #else
 #ifdef COMPILE_FOR_RAM
     } > IRAM
@@ -171,7 +186,7 @@ SECTIONS
 #endif
         . = ALIGN(4);
 #ifdef CONFIG_CODERAM_ARCH
-	} > CDRAM AT > FLASH
+    } > CDRAM AT > FLASH
 #else
 #ifdef COMPILE_FOR_RAM
     } > IRAM
@@ -208,7 +223,6 @@ SECTIONS
     .data : {
 #else
 #ifdef CONFIG_CODERAM_ARCH
-	__data_start = . ;
 	.data : AT(LOADADDR(.rodata) + SIZEOF(.rodata)) {
 #else
     .data : AT(ADDR(.rodata) + SIZEOF(.rodata)) {

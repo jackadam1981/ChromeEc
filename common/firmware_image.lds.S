@@ -14,7 +14,11 @@ MEMORY
 SECTIONS
 {
     . = ALIGN(CONFIG_FLASH_BANK_SIZE);
+#if defined(NPCX_RO_HEADER)
+    .image.RO : AT(CONFIG_FLASH_BASE + CONFIG_RO_HDR_MEM_OFF) {
+#else
     .image.RO : AT(CONFIG_FLASH_BASE + CONFIG_RO_MEM_OFF) {
+#endif
         *(.image.RO)
     } > FLASH =0xff
     . = ALIGN(CONFIG_FLASH_BANK_SIZE);

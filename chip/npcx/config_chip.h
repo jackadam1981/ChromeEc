@@ -35,9 +35,9 @@
 /*****************************************************************************/
 /* Memory mapping */
 #define CONFIG_RAM_BASE         0x200C0000 /* memory map address of data ram */
-#define CONFIG_RAM_SIZE         0x00008000 /* 32KB data ram */
-#define CONFIG_CDRAM_BASE       0x10088000 /* memory map address of code ram */
-#define CONFIG_CDRAM_SIZE       0x00020000 /* 128KB code ram */
+#define CONFIG_RAM_SIZE         (0x00008000 - 0x800) /* 30KB data ram */
+#define CONFIG_CDRAM_BASE       0x100A8000 /* memory map address of code ram */
+#define CONFIG_CDRAM_SIZE       0x00018000 /* 96KB code ram */
 #define CONFIG_FLASH_BASE	0x64000000 /* memory address of spi-flash */
 #define CONFIG_LPRAM_BASE       0x40001600 /* memory address of low power ram */
 #define CONFIG_LPRAM_SIZE	0x00000620 /* 1568B low power ram */
@@ -62,10 +62,14 @@
 #define CONFIG_FLASH_WRITE_SIZE	0x00000001  /* minimum write size */
 
 #define CONFIG_FLASH_WRITE_IDEAL_SIZE 256	 /* one page size for write */
-#define CONFIG_FLASH_PHYSICAL_SIZE    0x00040000 /* 256KB Flash used for EC */
+/* 128 KB alignment for SPI status registers protection */
+#define CONFIG_FLASH_PHYSICAL_SIZE    0x40000    /* 256KB Flash used for EC */
 
 /* No PSTATE; uses a real SPI flash */
 #undef CONFIG_FLASH_PSTATE
+
+/* Header support which is used by booter to copy FW from flash to code ram */
+#define NPCX_RO_HEADER
 
 /****************************************************************************/
 /* Define our flash layout. */
@@ -75,17 +79,27 @@
 #endif
 
 /* RO firmware offset of flash */
-#define CONFIG_RO_MEM_OFF       0
-#define CONFIG_RO_SIZE          CONFIG_FW_IMAGE_SIZE
+#ifdef NPCX_RO_HEADER
+#define CONFIG_RO_HDR_MEM_OFF   0x0
+#define CONFIG_RO_HDR_SIZE      0x40
+#define CONFIG_RO_MEM_OFF       (CONFIG_RO_HDR_MEM_OFF + CONFIG_RO_HDR_SIZE)
+#else
+#define CONFIG_RO_MEM_OFF       0x0
+#endif
+#define CONFIG_RO_SIZE          CONFIG_CDRAM_SIZE    /* 96KB for RO FW */
 #define CONFIG_FLASH_SIZE       CONFIG_FLASH_PHYSICAL_SIZE
 
 /* RW firmware is one firmware image offset from the start */
-#define CONFIG_RW_MEM_OFF       CONFIG_FW_IMAGE_SIZE
-#define CONFIG_RW_SIZE          CONFIG_FW_IMAGE_SIZE
+#define CONFIG_RW_MEM_OFF       CONFIG_FW_IMAGE_SIZE /* 128 KB alignemnt */
+#define CONFIG_RW_SIZE          CONFIG_CDRAM_SIZE    /* 96KB for RW FW */
 
 /* TODO(crosbug.com/p/23796): why 2 sets of configs with the same numbers? */
+#ifdef NPCX_RO_HEADER
+#define CONFIG_WP_OFF           CONFIG_RO_HDR_MEM_OFF
+#else
 #define CONFIG_WP_OFF           CONFIG_RO_MEM_OFF
-#define CONFIG_WP_SIZE          CONFIG_RO_SIZE
+#endif
+#define CONFIG_WP_SIZE          CONFIG_FW_IMAGE_SIZE
 
 /*
  * The offset from top of flash wich used by booter
@@ -100,11 +114,9 @@
 #define CONFIG_ADC
 #define CONFIG_FPU
 #define CONFIG_I2C
-#define CONFIG_LPC
 #define CONFIG_PECI
 #define CONFIG_SWITCH
 #define CONFIG_MPU
-#define CONFIG_SPI
 
 /* Compile for running from RAM instead of flash */
 /* #define COMPILE_FOR_RAM */
