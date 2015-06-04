@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99fbd485_b2d0b870",
+        "filename": "driver/charger/isl9237.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-04T03:30:50Z",
+      "side": 1,
+      "message": "Regarding crbug.com/p/41000: I think this is why. the charge state machine sets charging voltage and current to 0 when it doesn\u0027t have a battery to charge, which works on the BQ. But if you set the voltage to 0 on the intersil, it cuts VSYS.\n\nWhich, I think is why Rong had something like\n\nif (voltage \u003c voltage_min)\n  voltage \u003d voltage_min;\nisl9237_set_voltage(voltage);",
+      "range": {
+        "startLine": 232,
+        "startChar": 1,
+        "endLine": 232,
+        "endChar": 44
+      },
+      "revId": "627374f8ec6f607c2d4f148c340d35c5938628ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
