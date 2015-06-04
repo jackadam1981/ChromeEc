@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f923f0e9_61aafa5d",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-06-04T16:26:58Z",
+      "side": 1,
+      "message": "That\u0027s fair. I\u0027ll fix that.",
+      "parentUuid": "d96c6c17_c759410d",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 9
+      },
+      "revId": "73b30ee6d67770bb970473c85dd40d073b644b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f955b039_39e3021b",
         "filename": "Makefile",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2015-06-04T16:11:21Z",
       "side": 1,
       "message": "why is this here while all other rule definitions are in Makefile.rules ?",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 73
+      },
+      "revId": "73b30ee6d67770bb970473c85dd40d073b644b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f923f0e9_01b97eb6",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-06-04T16:26:58Z",
+      "side": 1,
+      "message": "I\u0027ll move it.",
+      "parentUuid": "f955b039_39e3021b",
       "range": {
         "startLine": 177,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f923f0e9_8173ae91",
+        "filename": "common/ec.libsharedobjs.ld",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-06-04T16:26:58Z",
+      "side": 1,
+      "message": "Nothing really. They end up being removed in the final image.\n\nHowever, I learned that the linker will complain about conflicting CPU architectures when trying to link objects with .ARM.* sections and some without. Seems like a linker bug to me, but appears to be pre-existing for awhile now.",
+      "parentUuid": "f923f0e9_c1c00620",
+      "range": {
+        "startLine": 9,
+        "startChar": 20,
+        "endLine": 9,
+        "endChar": 36
+      },
+      "revId": "73b30ee6d67770bb970473c85dd40d073b644b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d96c6c17_6782eddb",
         "filename": "core/cortex-m/ec.RW.lds.S",
         "patchSetId": 3
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "f955b039_d966461e",
+        "filename": "core/cortex-m/ec.RW.lds.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-06-04T16:26:58Z",
+      "side": 1,
+      "message": "You\u0027re right, that\u0027s better. I\u0027ll fix this.",
+      "parentUuid": "d96c6c17_6782eddb",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 64
+      },
+      "revId": "73b30ee6d67770bb970473c85dd40d073b644b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f923f0e9_c112c65f",
         "filename": "util/shared_lib_fixup.py",
         "patchSetId": 3
@@ -105,6 +201,30 @@
       "writtenOn": "2015-06-04T16:11:21Z",
       "side": 1,
       "message": "even if that\u0027s not currently enforced by the presubmit check, it\u0027s better if the python scripts pass the cros lint.\nie :\ncros lint util/shared_lib_fixup.py",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 6
+      },
+      "revId": "73b30ee6d67770bb970473c85dd40d073b644b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d96c6c17_c72ca150",
+        "filename": "util/shared_lib_fixup.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-06-04T16:26:58Z",
+      "side": 1,
+      "message": "Ah, I wasn\u0027t aware. I\u0027ll run this through.",
+      "parentUuid": "f923f0e9_c112c65f",
       "range": {
         "startLine": 13,
         "startChar": 0,
