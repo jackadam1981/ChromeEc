@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "f923f0e9_01e5fe9f",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-04T16:27:25Z",
+      "side": 1,
+      "message": "Note that get_base returns the SPI flash address (offset by CONFIG_FLASH_BASE) of the copy parameter, not the currently running image. Here, we try to find the location of the version struct. And below, we call flash_read on that location. So, if we\u0027re just returning the version of the image that\u0027s running, something is broken.",
+      "parentUuid": "79f6209f_2b53b941",
+      "revId": "4036f58e15964aabedcb03edfc4aabbd3a9f0e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79f6209f_0b587d5a",
         "filename": "common/system.c",
         "patchSetId": 3
