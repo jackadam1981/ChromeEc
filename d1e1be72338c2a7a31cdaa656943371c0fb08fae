@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99fbd485_153ff6e9",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-06-04T05:13:04Z",
+      "side": 1,
+      "message": "Forgot to remove these.",
+      "revId": "d1e1be72338c2a7a31cdaa656943371c0fb08fae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9f1cca3_94400c06",
+        "filename": "board/oak_pd/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-06-04T05:13:04Z",
+      "side": 1,
+      "message": "Should make this an immediate expansion to be consistent.",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 9
+      },
+      "revId": "d1e1be72338c2a7a31cdaa656943371c0fb08fae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
