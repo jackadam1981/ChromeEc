@@ -46,6 +46,30 @@
       "revId": "627374f8ec6f607c2d4f148c340d35c5938628ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f955b039_b65a81c6",
+        "filename": "driver/charger/isl9237.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-06-04T14:45:08Z",
+      "side": 1,
+      "message": "I never knew we requested 0 coming in from the charge state machine. That seems kinda weird to push that logic off into the drivers, but it\u0027s assuming this is charge voltage only. However, they are the same rail in our topologies.\n\nCONFIG_BATTERY_CHARGE_VOLTAGE_IS_SYS ? or something like that.\n\nThen the state machine wouldn\u0027t request voltage below the minimum in that case because it\u0027d know not to bring the system down.",
+      "parentUuid": "99fbd485_d2d74464",
+      "range": {
+        "startLine": 232,
+        "startChar": 1,
+        "endLine": 232,
+        "endChar": 44
+      },
+      "revId": "627374f8ec6f607c2d4f148c340d35c5938628ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
