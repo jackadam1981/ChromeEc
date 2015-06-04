@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "d96c6c17_c7a2e1f8",
+        "filename": "common/ec.libsharedobjs.ld",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-06-04T16:45:19Z",
+      "side": 1,
+      "message": "Those are part of the ARM-specific ABI.\n\nSee section 4.3.4 of http://infocenter.arm.com/help/topic/com.arm.doc.ihi0044e/IHI0044E_aaelf.pdf",
+      "parentUuid": "f923f0e9_8173ae91",
+      "range": {
+        "startLine": 9,
+        "startChar": 20,
+        "endLine": 9,
+        "endChar": 36
+      },
+      "revId": "73b30ee6d67770bb970473c85dd40d073b644b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d96c6c17_6782eddb",
         "filename": "core/cortex-m/ec.RW.lds.S",
         "patchSetId": 3
