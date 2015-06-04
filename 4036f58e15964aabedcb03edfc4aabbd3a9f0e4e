@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f90a105c_afda19df",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-06-04T02:08:15Z",
+      "side": 1,
+      "message": "I think the original one is OK if booter didn\u0027t copy header to CDRAM.",
+      "revId": "4036f58e15964aabedcb03edfc4aabbd3a9f0e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3901083e_91913c5d",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-06-04T02:08:15Z",
+      "side": 1,
+      "message": "Regarding ORIGIN \u003d CONFIG_CDRAM_BASE + FW_MEM_OFF(SECTION), npcx booter won\u0027t copy the header from flash into the beginning of CDRAM. For example, if header located on flash address 0x0 and vecttable located on 0x40 (it also means CONFIG_RO_MEM_OFF is 0x40 regarding discussion before), booter will copy FW from 0x40 into CDRAM and we don\u0027t need to add FW_MEM_OFF(SECTION).",
+      "revId": "4036f58e15964aabedcb03edfc4aabbd3a9f0e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
