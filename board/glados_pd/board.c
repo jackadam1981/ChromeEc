@@ -21,17 +21,13 @@
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 
+static uint32_t ec_int_status;
+
 void pd_send_ec_int(void)
 {
-	gpio_set_level(GPIO_EC_INT, 0);
+	/* If any of 3 sources are active, then drive the line low */
+	gpio_set_level(GPIO_EC_INT, !ec_int_status);
 
-	/*
-	 * Delay long enough to guarantee EC see's the change.
-	 * TODO: make sure this delay is sufficient.
-	 */
-	usleep(5);
-
-	gpio_set_level(GPIO_EC_INT, 1);
 }
 
 void vbus0_evt(enum gpio_signal signal)
@@ -84,8 +80,35 @@ const struct i2c_port_t i2c_ports[] = {
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
-void tcpc_alert(void)
+void tcpc_alert(int port)
 {
+	/*
+	 * This function is called when the TCPC sets one of
+	 * bits in the Alert register and that bit's corresponding
+	 * location in the Alert_Mask register is set. Once here,
+	 * the #Alert line needs to be driven low to signal the
+	 * TCPM that an Alert bit is set. Since Glados uses the
+	 * same GPIO line for both PD ports and EC_HOST signaling,
+	 * a global static variable is used to indicate which
+	 * of the 3 sources is requesting the ec_int gpio line
+	 * to be driven low (active)
+	 */
+	atomic_or(&ec_int_status, port ?
+		  PD_STATUS_TCPC_ALERT_1 : PD_STATUS_TCPC_ALERT_0);
+	pd_send_ec_int();
+}
+
+void tcpc_alert_clear(int port)
+{
+	/*
+	 * The TCPM has acknowledged all Alert bits and so the
+	 * Alert# line needs to be set high (inactive). Clear
+	 * the corresponding port's bit in the static variable.
+	 * pd_send_ec_int will set the gpio line to the
+	 * proper state based on all 3 possible sources.
+	 */
+	atomic_clear(&ec_int_status, port ?
+		  PD_STATUS_TCPC_ALERT_1 : PD_STATUS_TCPC_ALERT_0);
 	pd_send_ec_int();
 }
 
@@ -93,6 +116,8 @@ void tcpc_alert(void)
 /* Console commands */
 static int command_ec_int(int argc, char **argv)
 {
+	/* Indicate that ec_int gpio is active due to host command */
+	atomic_or(&ec_int_status, PD_STATUS_HOST_EVENT);
 	pd_send_ec_int();
 
 	return EC_SUCCESS;
@@ -107,11 +132,18 @@ static int ec_status_host_cmd(struct host_cmd_handler_args *args)
 	struct ec_response_pd_status *r = args->response;
 
 	/*
-	 * TODO: use state here to notify EC of host events, tcpc port
-	 * 0 alert and tcpc port 1 alert.
+	 * ec_int_status is used to store state for HOST_EVENT,
+	 * TCPC 0 Alert, and TCPC 1 Alert bits.
 	 */
-	r->status = 0;
+	r->status = ec_int_status;
 	args->response_size = sizeof(*r);
+
+	/*
+	 * If the source of the EC int line was HOST_EVENT, it has
+	 * been acknowledged so can always clear HOST_EVENT bit
+	 * from the ec_int_status variable
+	 */
+	atomic_clear(&ec_int_status, PD_STATUS_HOST_EVENT);
 
 	return EC_RES_SUCCESS;
 }
