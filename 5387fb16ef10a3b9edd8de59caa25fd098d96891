@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79f6209f_6b82e109",
+        "filename": "common/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-06-04T23:19:09Z",
+      "side": 1,
+      "message": "This is not a valid address for MEC to do an SPI transaction to get actual version. The address calculated here is still the storage off. we will need to add the actual SPI base adrress to this storage offset to do the flash_read",
+      "range": {
+        "startLine": 557,
+        "startChar": 0,
+        "endLine": 557,
+        "endChar": 2
+      },
+      "revId": "5387fb16ef10a3b9edd8de59caa25fd098d96891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
