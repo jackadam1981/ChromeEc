@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "790f0079_38882d2a",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-04T19:23:32Z",
+      "side": 1,
+      "message": "the proper way to do this is to use a SYSJUMP hook.",
+      "range": {
+        "startLine": 423,
+        "startChar": 0,
+        "endLine": 426,
+        "endChar": 6
+      },
+      "revId": "9283c01ae042e5f0ef8d5ffcda0d8c019d27a455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
