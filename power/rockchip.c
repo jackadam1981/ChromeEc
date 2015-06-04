@@ -388,10 +388,10 @@ static void power_off(void)
 	gpio_set_flags(GPIO_EC_INT, GPIO_INPUT);
 
 	/* Wait till we actually turn off to not mess up the state machine. */
-	while (gpio_get_level(power_good->gpio) == power_good->level) {
+	while (gpio_get_level(power_good->gpio) == power_good->level && power_off_timeout) {
 		msleep(1);
 		power_off_timeout--;
-		ASSERT(power_off_timeout);
+	//	ASSERT(power_off_timeout);
 	}
 
 	lid_opened = 0;
