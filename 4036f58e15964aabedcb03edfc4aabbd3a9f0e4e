@@ -78,6 +78,30 @@
     },
     {
       "key": {
+        "uuid": "f955b039_792bbab8",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-04T16:22:19Z",
+      "side": 1,
+      "message": "That doesn\u0027t seem right. system_get_version should be reading the version from the location on SPI flash that corresponds to the SYSTEM_IMAGE_RO / SYSTEM_IMAGE_RW parameter. It looks like that\u0027s what the code is doing.",
+      "parentUuid": "79f6209f_0b587d5a",
+      "range": {
+        "startLine": 790,
+        "startChar": 0,
+        "endLine": 790,
+        "endChar": 1
+      },
+      "revId": "4036f58e15964aabedcb03edfc4aabbd3a9f0e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3901083e_91913c5d",
         "filename": "core/cortex-m/ec.lds.S",
         "patchSetId": 3
