@@ -22,6 +22,30 @@
       "revId": "627374f8ec6f607c2d4f148c340d35c5938628ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99fbd485_d2d74464",
+        "filename": "driver/charger/isl9237.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-04T03:34:20Z",
+      "side": 1,
+      "message": "We might want to fix by making a CONFIG_ option to never set voltage below voltage min and use that in charge state machine when stopping charge.",
+      "parentUuid": "99fbd485_b2d0b870",
+      "range": {
+        "startLine": 232,
+        "startChar": 1,
+        "endLine": 232,
+        "endChar": 44
+      },
+      "revId": "627374f8ec6f607c2d4f148c340d35c5938628ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
