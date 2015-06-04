@@ -37,6 +37,47 @@
     },
     {
       "key": {
+        "uuid": "79f6209f_2b53b941",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-06-04T16:11:06Z",
+      "side": 1,
+      "message": "when we want to version of RO and RW, in case of MEC we will be just showing the image that is Running. as the CONFIG_R*_MEM_OFF are same.",
+      "parentUuid": "d96c6c17_672cadd3",
+      "revId": "4036f58e15964aabedcb03edfc4aabbd3a9f0e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79f6209f_0b587d5a",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-06-04T16:11:06Z",
+      "side": 1,
+      "message": "In case of MEC version console command will not give the actual version of RO and RW. it will just give the version of the image executing in CODERAM",
+      "range": {
+        "startLine": 790,
+        "startChar": 0,
+        "endLine": 790,
+        "endChar": 1
+      },
+      "revId": "4036f58e15964aabedcb03edfc4aabbd3a9f0e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3901083e_91913c5d",
         "filename": "core/cortex-m/ec.lds.S",
         "patchSetId": 3
