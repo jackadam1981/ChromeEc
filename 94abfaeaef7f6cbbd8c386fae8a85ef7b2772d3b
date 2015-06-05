@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9da5833_1dfff37a",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-06-05T02:15:46Z",
+      "side": 1,
+      "message": "The reason npcx booter didn\u0027t copy header into the beginning of ram is the alignment requirement of VTOR (0xE000ED08). It is used to relocated the vector table and the alignment requirement depends on the interrupt number. For example, in our case, the next power of 2 for (254+16) is 512 words. It means CONFIG_RO_MEM_OFF should be 2K alignment. And if header must locate in the front of RO.image of flash, it will waste 2K space of RAM. Regarding Code Ram arch, we suggest only copy FW from CONFIG_RO_MEM_OFF to the beginning of ram with the length CONFIG_RO_SIZE.",
+      "revId": "94abfaeaef7f6cbbd8c386fae8a85ef7b2772d3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
