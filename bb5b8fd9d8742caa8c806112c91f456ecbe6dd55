@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "796b8031_e3fff2a0",
+        "filename": "board/glados/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-05T23:45:07Z",
+      "side": 1,
+      "message": "Do we need board_get_active_charge_port? Can\u0027t we just call charge_manager_get_active_charge_port?",
+      "revId": "bb5b8fd9d8742caa8c806112c91f456ecbe6dd55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
