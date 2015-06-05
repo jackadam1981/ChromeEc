@@ -16,6 +16,24 @@
       "revId": "94abfaeaef7f6cbbd8c386fae8a85ef7b2772d3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99e914d2_513b1e5c",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-05T18:30:52Z",
+      "side": 1,
+      "message": "Can you explain your latest suggestion? The RW image should reside at CONFIG_RW_MEM_OFF, based on the definition of the config. I believe your CONFIG_RW_MEM_OFF is not set correctly for npcx (it points outside CDRAM). I believe it should be equivalent to CONFIG_RO_MEM_OFF.",
+      "parentUuid": "b9da5833_1dfff37a",
+      "revId": "94abfaeaef7f6cbbd8c386fae8a85ef7b2772d3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
