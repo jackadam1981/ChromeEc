@@ -1,0 +1,146 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9762c12_26e3d61a",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2015-06-06T01:20:47Z",
+      "side": 1,
+      "message": "See comment in the other file about the need for this loop at all rather than a single call.",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 2
+      },
+      "revId": "061717f6e562d3debce11abb3cee4d83b6ce383f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b971781d_e5d1b641",
+        "filename": "common/spi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2015-06-06T01:20:47Z",
+      "side": 1,
+      "message": "A unix \"write\" call has the semantics of returning the number of bytes written, or a negative error code. I happen to quite like it. So bear in mind I am biased...\n\nI would scrap the bytes_written variable, and make \"offset\" and \"data\" be the current offsets.",
+      "revId": "061717f6e562d3debce11abb3cee4d83b6ce383f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b971781d_05ded251",
+        "filename": "common/spi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2015-06-06T01:20:47Z",
+      "side": 1,
+      "message": "not needed if you follow my advice",
+      "revId": "061717f6e562d3debce11abb3cee4d83b6ce383f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b971781d_a5c7be84",
+        "filename": "common/spi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2015-06-06T01:20:47Z",
+      "side": 1,
+      "message": "Any reason why we do this enable inside the loop rather than outside it?\nShould there be a spi_flash_write_disable() call as well?\nIf there should I would tend to put the calls outside the loop and make the error return if spi_flash_wait fails into a break. Otherwise ignore me!",
+      "revId": "061717f6e562d3debce11abb3cee4d83b6ce383f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9970341a_0405f649",
+        "filename": "common/spi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2015-06-06T01:20:47Z",
+      "side": 1,
+      "message": "memmove(buf + 4, data, write_size);",
+      "revId": "061717f6e562d3debce11abb3cee4d83b6ce383f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9970341a_240af25a",
+        "filename": "common/spi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2015-06-06T01:20:47Z",
+      "side": 1,
+      "message": "buf[1] \u003d (offset \u003e\u003e 16); /* \u0026 0xff not needed unless klocwork objects */\nbuf[2] \u003d (offset \u003e\u003e 8);\nbuf[3] \u003d offset;",
+      "revId": "061717f6e562d3debce11abb3cee4d83b6ce383f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9762c12_06deda51",
+        "filename": "common/spi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2015-06-06T01:20:47Z",
+      "side": 1,
+      "message": "replace bytes_written +\u003d write_size with\ndata +\u003d write_size;\noffset +\u003d write_size;",
+      "revId": "061717f6e562d3debce11abb3cee4d83b6ce383f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b971781d_c5d4ba34",
+        "filename": "common/spi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2015-06-06T01:20:47Z",
+      "side": 1,
+      "message": "The code as written doesn\u0027t allow you to write more than SPI_FLASH_MAX_WRITE_SIZE in a single call to spi_flash_write. Therefore there will be at most 2 calls to spi_transaction.\nIs there any reason for this restriction (e.g. petting the watchdog?)\n\nFrom the code in the other file which just calls this in a loop it doesn\u0027t appear to have any restriction.\n\nIf there is no need for the restriction, then \"write_size \u003d bytes - bytes_written;\" is the wrong calculation.\nYou need to make the loop be \"while (bytes \u003e0)\", add a \"bytes -\u003d write_size;\" at the end of the loop and move the calculation of write_size into the loop.\n\nThis would almost halve the number of spi transactions if the page alignment was not perfect. With the code as written you write up to the page boundary, then write the first part of the next page, then return, then write up to the next page boundary, then write the first part of the third page, then return... With the suggested code you would just call this function to do the entire write, it would write up to the page boundary, write whole pages and then do a final partial write.\n\nOf course the use case may be that only small writes are ever expected.",
+      "revId": "061717f6e562d3debce11abb3cee4d83b6ce383f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
