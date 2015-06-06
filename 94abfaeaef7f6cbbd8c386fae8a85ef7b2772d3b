@@ -34,6 +34,24 @@
       "revId": "94abfaeaef7f6cbbd8c386fae8a85ef7b2772d3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19a284bf_20d26a46",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-06-06T01:45:38Z",
+      "side": 1,
+      "message": "I notice there are new definitions (*STORAGE_OFF) in chip_config.h of mec1322 drivers. In previous version, CONFIG_RW_MEM_OFF means the address of RW image in flash and we use spi mapping address to access spi data directly. Now, new version uses *STORAGE_OFF to present the offset addresses of RO/RW image in flash and it seems CONFIG_RO_MEM_OFF and CONFIG_RW_MEM_OFF both refer to the beginning of CDRAM. So my suggestion is keeping CONFIG_RO_MEM_OFF and CONFIG_RW_MEM_OFF 2k alignment and add it in comment to prevent isr table is malfunctional.",
+      "parentUuid": "99e914d2_513b1e5c",
+      "revId": "94abfaeaef7f6cbbd8c386fae8a85ef7b2772d3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
