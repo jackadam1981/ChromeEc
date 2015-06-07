@@ -428,6 +428,8 @@ enum host_event_code {
 	/* EC encountered a panic, triggering a reset */
 	EC_HOST_EVENT_PANIC = 24,
 
+	/* Sensor FIFO needs servicing */
+	EC_HOST_EVENT_MOTION_SENSOR_FIFO = 25,
 	/*
 	 * The high bit of the event mask is not used as a host event code.  If
 	 * it reads back as set, then the entire event mask should be
@@ -1656,6 +1658,21 @@ enum motionsense_command {
 	 */
 	MOTIONSENSE_CMD_DATA = 6,
 
+	/*
+	 * Return sensor fifo info.
+	 */
+	MOTIONSENSE_CMD_FIFO_INFO = 7,
+
+	/*
+	 * Inset a flush element in and sensor fifo info.
+	 */
+	MOTIONSENSE_CMD_FIFO_FLUSH = 8,
+
+	/*
+	 * Return a portion of the fifo.
+	 */
+	MOTIONSENSE_CMD_FIFO_READ = 9,
+
 	/* Number of motionsense sub-commands. */
 	MOTIONSENSE_NUM_CMDS
 };
@@ -1682,11 +1699,27 @@ enum motionsensor_chip {
 	MOTIONSENSE_CHIP_BMI160 = 2,
 };
 
+struct ec_response_motion_sensor_data {
+	/* Flags for each sensor. */
+	uint8_t flags;
+	/* sensor number the data comes from */
+	uint8_t sensor_num;
+	/* Each sensor is up to 3-axis. */
+	int16_t data[3];
+} __packed;
+
 /* Module flag masks used for the dump sub-command. */
 #define MOTIONSENSE_MODULE_FLAG_ACTIVE (1<<0)
 
 /* Sensor flag masks used for the dump sub-command. */
 #define MOTIONSENSE_SENSOR_FLAG_PRESENT (1<<0)
+
+/*
+ * Flush entry for synchronisation.
+ * data contains time stamp
+ */
+#define MOTIONSENSE_SENSOR_FLAG_FLUSH (1<<0)
+#define MOTIONSENSE_SENSOR_FLAG_TIMESTAMP (1<<1)
 
 /*
  * Send this value for the data element to only perform a read. If you
@@ -1713,14 +1746,17 @@ struct ec_params_motion_sense {
 		 * MOTIONSENSE_CMD_KB_WAKE_ANGLE.
 		 */
 		struct {
-			/* Data to set or EC_MOTION_SENSE_NO_VALUE to read. */
+			/* Data to set or EC_MOTION_SENSE_NO_VALUE to read.
+			 * ec_rate: polling rate in ms.
+			 * kb_wake_angle: angle to wakup AP.
+			 */
 			int16_t data;
 		} ec_rate, kb_wake_angle;
 
 		/* Used for MOTIONSENSE_CMD_INFO, MOTIONSENSE_CMD_DATA. */
 		struct {
 			uint8_t sensor_num;
-		} info, data;
+		} info, data, fifo_flush;
 
 		/*
 		 * Used for MOTIONSENSE_CMD_SENSOR_ODR and
@@ -1737,16 +1773,16 @@ struct ec_params_motion_sense {
 			/* Data to set or EC_MOTION_SENSE_NO_VALUE to read. */
 			int32_t data;
 		} sensor_odr, sensor_range;
+		struct {
+		} fifo_info;
+		struct {
+			/*
+			 * Number of expected vector to return.
+			 * EC may return less or 0 if none available.
+			 */
+			uint32_t max_data_vector;
+		} fifo_read;
 	};
-} __packed;
-
-struct ec_response_motion_sensor_data {
-	/* Flags for each sensor. */
-	uint8_t flags;
-	uint8_t padding;
-
-	/* Each sensor is up to 3-axis. */
-	int16_t data[3];
 } __packed;
 
 struct ec_response_motion_sense {
@@ -1790,6 +1826,22 @@ struct ec_response_motion_sense {
 			/* Current value of the parameter queried. */
 			int32_t ret;
 		} ec_rate, sensor_odr, sensor_range, kb_wake_angle;
+
+		struct  {
+			/* Size of the fifo */
+			uint32_t size;
+			/* Amount of free space in the fifo */
+			uint32_t space;
+			/* Lost events since the last fifo_info */
+			uint32_t lost;
+			/* TImestamp recorded in us */
+			uint64_t timestamp;
+		} fifo_info, fifo_flush;
+
+		struct  {
+			uint32_t number_data;
+			struct ec_response_motion_sensor_data data[0];
+		} fifo_read;
 	};
 } __packed;
 
