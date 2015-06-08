@@ -25,9 +25,11 @@
 #define CONFIG_CMD_CHGRAMP
 #define CONFIG_FORCE_CONSOLE_RESUME
 #define CONFIG_STM_HWTIMER32
+#define CONFIG_USB_CHARGER
 #define CONFIG_USB_POWER_DELIVERY
 #define CONFIG_USB_PD_DUAL_ROLE
 #define CONFIG_USB_PD_FLASH_ERASE_CHECK
+#define CONFIG_USB_PD_HOST_EVENT_ON_POWER_CHANGE
 #define CONFIG_USB_PD_INTERNAL_COMP
 #define CONFIG_USB_PD_PORT_COUNT 1
 #define CONFIG_USB_PD_TCPC
@@ -164,22 +166,6 @@ enum adc_channel {
 	ADC_CH_COUNT
 };
 
-/* Charge suppliers */
-enum charge_supplier {
-	CHARGE_SUPPLIER_PD,
-	CHARGE_SUPPLIER_TYPEC,
-	CHARGE_SUPPLIER_BC12_DCP,
-	CHARGE_SUPPLIER_BC12_CDP,
-	CHARGE_SUPPLIER_BC12_SDP,
-	CHARGE_SUPPLIER_PROPRIETARY,
-	CHARGE_SUPPLIER_OTHER,
-	CHARGE_SUPPLIER_VBUS,
-	CHARGE_SUPPLIER_COUNT
-};
-
-/* supplier_priority table defined in board.c */
-extern const int supplier_priority[];
-
 /* USB string indexes */
 enum usb_strings {
 	USB_STR_DESC = 0,
@@ -192,6 +178,9 @@ enum usb_strings {
 
 	USB_STR_COUNT
 };
+
+/* VBUS enable GPIO */
+#define GPIO_USB_C0_5V_EN GPIO_USBC_5V_EN
 
 /* 1.5A Rp */
 #define PD_SRC_VNC            PD_SRC_1_5_VNC_MV
