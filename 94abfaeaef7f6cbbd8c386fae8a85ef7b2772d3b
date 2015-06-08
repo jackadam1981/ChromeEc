@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d9d9cc70_8b3022a5",
+        "filename": "common/system.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-08T23:10:37Z",
+      "side": 1,
+      "message": "The offset of version_data is indeed calculated based on CONFIG_CDRAM_BASE (see code above). Once we calculate the offset, we need to access the structure in mapped flash (not in coderam, because the image / version struct won\u0027t exist in coderam since it\u0027s not the currently loaded image). That\u0027s why we increment by the flash base address, then do a read below (\"Directly access the data from program memory or mapped flash\").\n\nDid I miss something?",
+      "parentUuid": "19a284bf_c033be21",
+      "revId": "94abfaeaef7f6cbbd8c386fae8a85ef7b2772d3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9da5833_1dfff37a",
         "filename": "core/cortex-m/ec.lds.S",
         "patchSetId": 5
