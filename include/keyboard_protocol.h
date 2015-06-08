@@ -11,6 +11,19 @@
 #include "common.h"
 #include "button.h"
 
+/* the previous keyboard state before reboot_ec. */
+struct kb_state {
+	uint8_t codeset;
+	uint8_t ctlram;
+	uint8_t keystroke_enabled;
+};
+
+struct button_8042_t {
+	uint16_t scancode_set1;
+	uint16_t scancode_set2;
+	int repeat;
+};
+
 /* Routines common to all protocols */
 
 /**
