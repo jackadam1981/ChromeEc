@@ -93,6 +93,30 @@
       "revId": "569b80aef8a0e84dc62333699d29ff009389567f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "796b8031_6fe83c75",
+        "filename": "include/libsharedobjs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-06-08T20:23:19Z",
+      "side": 1,
+      "message": "I think I might be able to accomplish this with some checks involving CONFIG_R(O/W)_(MEM_OFF/SIZE).\n\nBasically, ensure that the regions do not overlap. Maybe... Stay tuned for the next patch.",
+      "parentUuid": "b9d41838_add65dec",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 22
+      },
+      "revId": "569b80aef8a0e84dc62333699d29ff009389567f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
