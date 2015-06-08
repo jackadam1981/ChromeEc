@@ -44,6 +44,7 @@
 #undef  CONFIG_PWM
 #define CONFIG_STM_HWTIMER32
 #undef  CONFIG_TASK_PROFILING
+#define CONFIG_USB_CHARGER
 #define CONFIG_USB_POWER_DELIVERY
 #define CONFIG_USB_PD_ALT_MODE
 #define CONFIG_USB_PD_ALT_MODE_DFP
@@ -114,22 +115,6 @@ enum pwm_channel {
 	PWM_CH_COUNT
 };
 
-/* Charge suppliers */
-enum charge_supplier {
-	CHARGE_SUPPLIER_PD,
-	CHARGE_SUPPLIER_TYPEC,
-	CHARGE_SUPPLIER_BC12_DCP,
-	CHARGE_SUPPLIER_BC12_CDP,
-	CHARGE_SUPPLIER_BC12_SDP,
-	CHARGE_SUPPLIER_PROPRIETARY,
-	CHARGE_SUPPLIER_OTHER,
-	CHARGE_SUPPLIER_VBUS,
-	CHARGE_SUPPLIER_COUNT
-};
-
-/* supplier_priority table defined in board.c */
-extern const int supplier_priority[];
-
 /* Standard-current Rp */
 #define PD_SRC_VNC           PD_SRC_DEF_VNC_MV
 #define PD_SRC_RD_THRESHOLD  PD_SRC_DEF_RD_THRESH_MV
@@ -162,9 +147,6 @@ extern const int supplier_priority[];
 
 /* Get the last received battery level. */
 int board_get_battery_soc(void);
-
-/* Send host event to AP */
-void pd_send_host_event(int mask);
 
 #endif /* !__ASSEMBLER__ */
 

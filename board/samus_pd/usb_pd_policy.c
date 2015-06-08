@@ -90,7 +90,7 @@ int pd_set_power_supply_ready(int port)
 	gpio_set_level(port ? GPIO_USB_C1_5V_EN : GPIO_USB_C0_5V_EN, 1);
 
 	/* notify host of power info change */
-	pd_send_host_event(PD_EVENT_POWER_CHANGE);
+	board_send_pd_host_event(PD_EVENT_POWER_CHANGE);
 
 	return EC_SUCCESS; /* we are ready */
 }
@@ -101,7 +101,7 @@ void pd_power_supply_reset(int port)
 	gpio_set_level(port ? GPIO_USB_C1_5V_EN : GPIO_USB_C0_5V_EN, 0);
 
 	/* notify host of power info change */
-	pd_send_host_event(PD_EVENT_POWER_CHANGE);
+	board_send_pd_host_event(PD_EVENT_POWER_CHANGE);
 }
 
 void pd_set_input_current_limit(int port, uint32_t max_ma,
@@ -113,7 +113,7 @@ void pd_set_input_current_limit(int port, uint32_t max_ma,
 	charge_manager_update_charge(CHARGE_SUPPLIER_PD, port, &charge);
 
 	/* notify host of power info change */
-	pd_send_host_event(PD_EVENT_POWER_CHANGE);
+	board_send_pd_host_event(PD_EVENT_POWER_CHANGE);
 }
 
 void typec_set_input_current_limit(int port, uint32_t max_ma,
@@ -125,7 +125,7 @@ void typec_set_input_current_limit(int port, uint32_t max_ma,
 	charge_manager_update_charge(CHARGE_SUPPLIER_TYPEC, port, &charge);
 
 	/* notify host of power info change */
-	pd_send_host_event(PD_EVENT_POWER_CHANGE);
+	board_send_pd_host_event(PD_EVENT_POWER_CHANGE);
 }
 
 int pd_snk_is_vbus_provided(int port)
@@ -235,7 +235,8 @@ int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 			 * already known to be the latest update RW.
 			 */
 			if (!is_rw || !is_latest)
-				pd_send_host_event(PD_EVENT_UPDATE_DEVICE);
+				board_send_pd_host_event(
+					PD_EVENT_UPDATE_DEVICE);
 
 			CPRINTF("DevId:%d.%d SW:%d RW:%d\n",
 				HW_DEV_ID_MAJ(dev_id),

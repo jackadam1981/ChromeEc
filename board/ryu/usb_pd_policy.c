@@ -145,7 +145,7 @@ int pd_check_vconn_swap(int port)
 void pd_execute_data_swap(int port, int data_role)
 {
 	/* inform the host controller to change role */
-	pd_send_host_event(PD_EVENT_DATA_SWAP);
+	board_send_pd_host_event(PD_EVENT_DATA_SWAP);
 }
 
 void pd_check_pr_role(int port, int pr_role, int flags)
@@ -215,7 +215,8 @@ int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 			 * already known to be the latest update RW.
 			 */
 			if (!is_rw || !is_latest)
-				pd_send_host_event(PD_EVENT_UPDATE_DEVICE);
+				board_send_pd_host_event(
+					PD_EVENT_UPDATE_DEVICE);
 
 			CPRINTF("DevId:%d.%d SW:%d RW:%d\n",
 				HW_DEV_ID_MAJ(dev_id),

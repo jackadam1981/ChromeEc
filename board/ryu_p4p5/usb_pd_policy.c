@@ -140,7 +140,7 @@ int pd_check_vconn_swap(int port)
 void pd_execute_data_swap(int port, int data_role)
 {
 	/* inform the host controller to change role */
-	pd_send_host_event(PD_EVENT_DATA_SWAP);
+	board_send_pd_host_event(PD_EVENT_DATA_SWAP);
 }
 
 void pd_check_pr_role(int port, int pr_role, int flags)

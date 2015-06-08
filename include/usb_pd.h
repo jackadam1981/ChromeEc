@@ -1190,7 +1190,16 @@ enum typec_mux {
 enum usb_switch {
 	USB_SWITCH_CONNECT,
 	USB_SWITCH_DISCONNECT,
+	USB_SWITCH_RESTORE,
 };
+
+/**
+ * Configure USB data switches on type-C port.
+ *
+ * @param port port number.
+ * @param setting new switch setting to configure.
+ */
+void board_set_usb_switches(int port, enum usb_switch setting);
 
 /**
  * Configure superspeed muxes on type-C port.
@@ -1224,6 +1233,22 @@ int board_get_usb_mux(int port, const char **dp_str, const char **usb_str);
  * @param port port number.
  */
 void board_flip_usb_mux(int port);
+
+/**
+ * Request that a host event be sent to notify the AP of a PD power event.
+ * Depends on CONFIG_USB_PD_HOST_EVENT_ON_POWER_CHANGE being set to perform
+ * any action, and calls out to board-level board_send_pd_host_event.
+ *
+ * @param mask host event mask.
+ */
+void pd_send_host_event(int mask);
+
+/**
+ * Request that a host event be sent to notify the AP of a PD power event.
+ *
+ * @param mask host event mask.
+ */
+void board_send_pd_host_event(int mask);
 
 /**
  * Determine if in alternate mode or not.

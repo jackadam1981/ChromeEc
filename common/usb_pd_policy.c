@@ -914,3 +914,10 @@ int pd_custom_flash_vdm(int port, int cnt, uint32_t *payload)
 	}
 	return rsize;
 }
+
+void pd_send_host_event(int mask)
+{
+#ifdef CONFIG_USB_PD_HOST_EVENT_ON_POWER_CHANGE
+	board_send_pd_host_event(mask);
+#endif
+}
