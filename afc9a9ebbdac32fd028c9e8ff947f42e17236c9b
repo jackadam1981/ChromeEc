@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9d9cc70_8e5efb6c",
+        "filename": "driver/charger/isl9237.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-08T17:19:29Z",
+      "side": 1,
+      "message": "we already have battery min and max values defined in battery.c of the board/ directory. why don\u0027t we use those?",
+      "range": {
+        "startLine": 204,
+        "startChar": 12,
+        "endLine": 204,
+        "endChar": 44
+      },
+      "revId": "afc9a9ebbdac32fd028c9e8ff947f42e17236c9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
