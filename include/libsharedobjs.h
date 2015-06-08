@@ -35,6 +35,8 @@
 #endif /* defined(CONFIG_SHAREDLIB) */
 
 /* List of shared object module includes */
-
+#ifdef CONFIG_KEYBOARD_PROTOCOL_8042
+#include "keyboard_8042_sharedlib.h"
+#endif /* defined(CONFIG_KEYBOARD_PROTOCOL_8042) */
 
 #endif /* __CROS_EC_LIBSHAREDOBJS_H */
