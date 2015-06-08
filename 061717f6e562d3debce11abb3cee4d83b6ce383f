@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "b971781d_eb298514",
+        "filename": "common/spi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1117319
+      },
+      "writtenOn": "2015-06-08T21:57:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b971781d_e5d1b641",
+      "revId": "061717f6e562d3debce11abb3cee4d83b6ce383f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b971781d_05ded251",
         "filename": "common/spi_flash.c",
         "patchSetId": 1
@@ -53,6 +71,24 @@
       "writtenOn": "2015-06-06T01:20:47Z",
       "side": 1,
       "message": "not needed if you follow my advice",
+      "revId": "061717f6e562d3debce11abb3cee4d83b6ce383f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b971781d_0b36e174",
+        "filename": "common/spi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1117319
+      },
+      "writtenOn": "2015-06-08T21:57:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b971781d_05ded251",
       "revId": "061717f6e562d3debce11abb3cee4d83b6ce383f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -93,6 +129,24 @@
     },
     {
       "key": {
+        "uuid": "d9762c12_493625a4",
+        "filename": "common/spi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1117319
+      },
+      "writtenOn": "2015-06-08T21:57:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9970341a_0405f649",
+      "revId": "061717f6e562d3debce11abb3cee4d83b6ce383f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9970341a_240af25a",
         "filename": "common/spi_flash.c",
         "patchSetId": 1
@@ -104,6 +158,24 @@
       "writtenOn": "2015-06-06T01:20:47Z",
       "side": 1,
       "message": "buf[1] \u003d (offset \u003e\u003e 16); /* \u0026 0xff not needed unless klocwork objects */\nbuf[2] \u003d (offset \u003e\u003e 8);\nbuf[3] \u003d offset;",
+      "revId": "061717f6e562d3debce11abb3cee4d83b6ce383f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9762c12_693be18a",
+        "filename": "common/spi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1117319
+      },
+      "writtenOn": "2015-06-08T21:57:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9970341a_240af25a",
       "revId": "061717f6e562d3debce11abb3cee4d83b6ce383f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -127,6 +199,24 @@
     },
     {
       "key": {
+        "uuid": "b971781d_2b3b9d5d",
+        "filename": "common/spi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1117319
+      },
+      "writtenOn": "2015-06-08T21:57:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9762c12_06deda51",
+      "revId": "061717f6e562d3debce11abb3cee4d83b6ce383f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b971781d_c5d4ba34",
         "filename": "common/spi_flash.c",
         "patchSetId": 1
@@ -138,6 +228,24 @@
       "writtenOn": "2015-06-06T01:20:47Z",
       "side": 1,
       "message": "The code as written doesn\u0027t allow you to write more than SPI_FLASH_MAX_WRITE_SIZE in a single call to spi_flash_write. Therefore there will be at most 2 calls to spi_transaction.\nIs there any reason for this restriction (e.g. petting the watchdog?)\n\nFrom the code in the other file which just calls this in a loop it doesn\u0027t appear to have any restriction.\n\nIf there is no need for the restriction, then \"write_size \u003d bytes - bytes_written;\" is the wrong calculation.\nYou need to make the loop be \"while (bytes \u003e0)\", add a \"bytes -\u003d write_size;\" at the end of the loop and move the calculation of write_size into the loop.\n\nThis would almost halve the number of spi transactions if the page alignment was not perfect. With the code as written you write up to the page boundary, then write the first part of the next page, then return, then write up to the next page boundary, then write the first part of the third page, then return... With the suggested code you would just call this function to do the entire write, it would write up to the page boundary, write whole pages and then do a final partial write.\n\nOf course the use case may be that only small writes are ever expected.",
+      "revId": "061717f6e562d3debce11abb3cee4d83b6ce383f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9762c12_89765d4f",
+        "filename": "common/spi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1117319
+      },
+      "writtenOn": "2015-06-08T21:57:01Z",
+      "side": 1,
+      "message": "Brought the write_size calculation entirely inside the loop. It reduces redundancy and keeps the option open for this function to write more than SPI_FLASH_MAX_WRITE_SIZE as you pointed out.  \n\nI think that allowing a write greater than SPI_FLASH_MAX_WRITE_SIZE depends entirely on whether we want to pet the watchdog in this function for all spi flash writes. Shawn. Any comment?\n\nIf we do that, than we don\u0027t need loops in the console command function command_spi_flashwrite() where there is a watchdog reload or the loop in flash_physical_write where there is no watchdog reload and I have only encountered small writes (240 bytes by depthcharge during software sync and 128 bytes by flashrom).",
+      "parentUuid": "b971781d_c5d4ba34",
       "revId": "061717f6e562d3debce11abb3cee4d83b6ce383f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
