@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "796b8031_38b04d4e",
+        "filename": "driver/charger/isl9237.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-08T18:41:50Z",
+      "side": 1,
+      "message": "looking at the datasheet, this looks like it should be 2048.",
+      "range": {
+        "startLine": 58,
+        "startChar": 36,
+        "endLine": 58,
+        "endChar": 40
+      },
+      "revId": "77aab7077bccd9fd54efd54bfb60ec1899543287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
