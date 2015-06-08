@@ -22,6 +22,30 @@
       "revId": "0a1a449e8a7771bc989c731d709aee0edae3cd5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "796b8031_f8c5d59b",
+        "filename": "driver/charger/isl9237.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-08T18:42:25Z",
+      "side": 1,
+      "message": "oops, this is already done in next patch.",
+      "parentUuid": "d9d9cc70_74d16073",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 6
+      },
+      "revId": "0a1a449e8a7771bc989c731d709aee0edae3cd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
