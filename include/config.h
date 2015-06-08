@@ -1389,6 +1389,9 @@
 /* Compile chip support for the USB device controller */
 #undef CONFIG_USB
 
+/* Common USB / BC1.2 charger task */
+#undef CONFIG_USB_CHARGER
+
 /* USB device buffers and descriptors */
 #undef CONFIG_USB_RAM_ACCESS_SIZE
 #undef CONFIG_USB_RAM_ACCESS_TYPE

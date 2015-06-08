@@ -1190,7 +1190,16 @@ enum typec_mux {
 enum usb_switch {
 	USB_SWITCH_CONNECT,
 	USB_SWITCH_DISCONNECT,
+	USB_SWITCH_RESTORE,
 };
+
+/**
+ * Configure USB data switches on type-C port.
+ *
+ * @param port port number.
+ * @param setting new switch setting to configure.
+ */
+void board_set_usb_switches(int port, enum usb_switch setting);
 
 /**
  * Configure superspeed muxes on type-C port.
