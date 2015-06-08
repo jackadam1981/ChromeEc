@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "796b8031_2fb7242a",
+        "filename": "include/libsharedobjs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-08T19:52:43Z",
+      "side": 1,
+      "message": "Add comment: /* By default, SHAREDLIB() macro maps to its contents. */\n\nBut hmm, why not put this down in \n\n#else /* !CONFIG_SHAREDLIB */",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 34
+      },
+      "revId": "569b80aef8a0e84dc62333699d29ff009389567f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "796b8031_0c7436f4",
+        "filename": "include/libsharedobjs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-08T19:52:43Z",
+      "side": 1,
+      "message": "Not sure we want to list exceptions here.  Seems like this will be hard to maintain.",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 22
+      },
+      "revId": "569b80aef8a0e84dc62333699d29ff009389567f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
