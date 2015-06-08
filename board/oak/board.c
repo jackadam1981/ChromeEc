@@ -53,7 +53,9 @@ void vbus_wake_interrupt(enum gpio_signal signal)
 	CPRINTF("VBUS %d\n", !gpio_get_level(signal));
 	gpio_set_level(GPIO_USB_PD_VBUS_WAKE,
 		       !gpio_get_level(GPIO_VBUS_WAKE_L));
-	task_wake(TASK_ID_PD);
+	/* TODO: fix hardware in rev3, or enable POWER_STATUS_MASK */
+	task_wake(TASK_ID_PD_C0);
+	task_wake(TASK_ID_PD_C1);
 }
 
 void pd_mcu_interrupt(enum gpio_signal signal)
