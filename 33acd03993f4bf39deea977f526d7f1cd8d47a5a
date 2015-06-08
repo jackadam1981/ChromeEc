@@ -22,6 +22,30 @@
       "revId": "33acd03993f4bf39deea977f526d7f1cd8d47a5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "796b8031_0cc8b642",
+        "filename": "board/glados/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-06-08T19:13:00Z",
+      "side": 1,
+      "message": "OK. I\u0027ll update this, but we need to figure out how to coordinate the cutover still.",
+      "parentUuid": "d9ab8c9c_c67ce49a",
+      "range": {
+        "startLine": 21,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 41
+      },
+      "revId": "33acd03993f4bf39deea977f526d7f1cd8d47a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
