@@ -22,6 +22,30 @@
       "revId": "afc9a9ebbdac32fd028c9e8ff947f42e17236c9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9ab8c9c_eab44c43",
+        "filename": "driver/charger/isl9237.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-06-08T17:51:18Z",
+      "side": 1,
+      "message": "just use battery_get_info() in here? And use full range min/max in the charger info?",
+      "parentUuid": "d9d9cc70_8e5efb6c",
+      "range": {
+        "startLine": 204,
+        "startChar": 12,
+        "endLine": 204,
+        "endChar": 44
+      },
+      "revId": "afc9a9ebbdac32fd028c9e8ff947f42e17236c9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
