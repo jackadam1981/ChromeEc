@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9ab8c9c_c67ce49a",
+        "filename": "board/glados/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-08T19:11:08Z",
+      "side": 1,
+      "message": "actually, since you\u0027re here, might as well make this 512. the default input current for type-C ports shouldn\u0027t be higher than 512, or else you could over-current a legacy 500mA charger.",
+      "range": {
+        "startLine": 21,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 41
+      },
+      "revId": "33acd03993f4bf39deea977f526d7f1cd8d47a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
