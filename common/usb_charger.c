@@ -29,11 +29,9 @@
 void usb_charger_task(void)
 {
 	int port = (task_get_current() == TASK_ID_USB_CHG_P0 ? 0 : 1);
-#if (CONFIG_USB_PD_PORT_COUNT == 1)
-	int vbus_source = GPIO_USB_C0_5V_EN;
-#else
-	int vbus_source = (port == 0 ? GPIO_USB_C0_5V_EN : GPIO_USB_C1_5V_EN);
-#endif
+	struct pi3usb9281_config *pericom_chip =
+		board_port_to_pi3usb9281_config(port);
+
 	int device_type, charger_status;
 	struct charge_port_info charge;
 	int type;
@@ -41,15 +39,16 @@ void usb_charger_task(void)
 
 	while (1) {
 		/* Read interrupt register to clear on chip */
-		pi3usb9281_get_interrupts(port);
+		pi3usb9281_get_interrupts(pericom_chip);
 
-		if (gpio_get_level(vbus_source)) {
+		if (board_is_sourcing_vbus(port)) {
 			/* If we're sourcing VBUS then we're not charging */
 			device_type = charger_status = 0;
 		} else {
 			/* Set device type */
-			device_type = pi3usb9281_get_device_type(port);
-			charger_status = pi3usb9281_get_charger_status(port);
+			device_type = pi3usb9281_get_device_type(pericom_chip);
+			charger_status =
+				pi3usb9281_get_charger_status(pericom_chip);
 		}
 
 		/* Debounce pin plug order if we detect a charger */
@@ -63,30 +62,31 @@ void usb_charger_task(void)
 			 * an OTG / device mode, as we may be interrupting
 			 * the connection.
 			 */
-			pi3usb9281_reset(port);
+			pi3usb9281_reset(pericom_chip);
 			/*
 			 * Restore data switch settings - switches return to
 			 * closed on reset until restored.
 			 */
 			board_set_usb_switches(port, USB_SWITCH_RESTORE);
 			/* Clear possible disconnect interrupt */
-			pi3usb9281_get_interrupts(port);
+			pi3usb9281_get_interrupts(pericom_chip);
 			/* Mask attach interrupt */
-			pi3usb9281_set_interrupt_mask(port,
+			pi3usb9281_set_interrupt_mask(pericom_chip,
 						      0xff &
 						      ~PI3USB9281_INT_ATTACH);
 			/* Re-enable interrupts */
-			pi3usb9281_enable_interrupts(port);
+			pi3usb9281_enable_interrupts(pericom_chip);
 			msleep(USB_CHG_RESET_DELAY_MS);
 
 			/* Clear possible attach interrupt */
-			pi3usb9281_get_interrupts(port);
+			pi3usb9281_get_interrupts(pericom_chip);
 			/* Re-enable attach interrupt */
-			pi3usb9281_set_interrupt_mask(port, 0xff);
+			pi3usb9281_set_interrupt_mask(pericom_chip, 0xff);
 
 			/* Re-read ID registers */
-			device_type = pi3usb9281_get_device_type(port);
-			charger_status = pi3usb9281_get_charger_status(port);
+			device_type = pi3usb9281_get_device_type(pericom_chip);
+			charger_status =
+				pi3usb9281_get_charger_status(pericom_chip);
 		}
 
 		/* Attachment: decode + update available charge */

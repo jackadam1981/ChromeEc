@@ -160,6 +160,21 @@ USB_STREAM_CONFIG(sh_usb,
 		  sh_usb_to_usart,
 		  sh_usart_to_usb)
 
+struct pi3usb9281_config pericom_chip = {
+	.i2c_port = I2C_PORT_PERICOM,
+	.mux_lock = NULL,
+};
+
+inline struct pi3usb9281_config *board_port_to_pi3usb9281_config(int port)
+{
+	return &pericom_chip;
+}
+
+inline int board_is_sourcing_vbus(int port)
+{
+	return gpio_get_level(GPIO_USB_C0_5V_EN);
+}
+
 /* Initialize board. */
 static void board_init(void)
 {
@@ -188,8 +203,9 @@ static void board_init(void)
 
 	/* Enable pericom BC1.2 interrupts. */
 	gpio_enable_interrupt(GPIO_USBC_BC12_INT_L);
-	pi3usb9281_set_interrupt_mask(0, 0xff);
-	pi3usb9281_enable_interrupts(0);
+	pi3usb9281_init(&pericom_chip);
+	pi3usb9281_set_interrupt_mask(&pericom_chip, 0xff);
+	pi3usb9281_enable_interrupts(&pericom_chip);
 
 	/*
 	 * Determine recovery mode is requested by the power, volup, and
@@ -319,7 +335,7 @@ void board_set_usb_switches(int port, enum usb_switch setting)
 
 	if (setting != USB_SWITCH_RESTORE)
 		usb_switch_state = setting;
-	pi3usb9281_set_switches(port, usb_switch_state);
+	pi3usb9281_set_switches(&pericom_chip, usb_switch_state);
 }
 
 void board_set_usb_mux(int port, enum typec_mux mux,
