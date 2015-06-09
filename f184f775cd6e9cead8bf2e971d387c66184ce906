@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9d41838_fd619c07",
+        "filename": "common/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-09T19:57:23Z",
+      "side": 1,
+      "message": "Can be specified on the same line as the previous file\n\nOr worst-case, as a continuation:\n\ncommon-$(CONFIG_FOO)+\u003dfoo.o \\\n         bar.o",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 66
+      },
+      "revId": "f184f775cd6e9cead8bf2e971d387c66184ce906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "796b8031_092a5b31",
+        "filename": "common/keyboard_8042_sharedlib.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-09T19:57:23Z",
+      "side": 1,
+      "message": "Objects which can be shared between RO and RW for 8042 keyboard protocol.",
+      "revId": "f184f775cd6e9cead8bf2e971d387c66184ce906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9d9cc70_aba5133b",
+        "filename": "include/keyboard_8042_sharedlib.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-09T19:57:23Z",
+      "side": 1,
+      "message": "Should comment what these are (this is now the interface to them).",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 70
+      },
+      "revId": "f184f775cd6e9cead8bf2e971d387c66184ce906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9d41838_5dff9079",
+        "filename": "include/keyboard_protocol.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-09T19:57:23Z",
+      "side": 1,
+      "message": "Doesn\u0027t seem to be shared.  Can keep it in the source file.  (It\u0027s a private piece of data, not part of the interface.)",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 2
+      },
+      "revId": "f184f775cd6e9cead8bf2e971d387c66184ce906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "796b8031_09817b97",
+        "filename": "include/keyboard_protocol.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-09T19:57:23Z",
+      "side": 1,
+      "message": "This struct definition can go in the keyboard sharedlib header, right?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 2
+      },
+      "revId": "f184f775cd6e9cead8bf2e971d387c66184ce906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9d9cc70_ebe67b5f",
+        "filename": "include/libsharedobjs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-09T19:57:23Z",
+      "side": 1,
+      "message": "Are these here simply so they get included after SHAREDLIB is defined?\n\nIf so, it might be simpler just to have those files include libsharedobjs.h.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 43
+      },
+      "revId": "f184f775cd6e9cead8bf2e971d387c66184ce906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
