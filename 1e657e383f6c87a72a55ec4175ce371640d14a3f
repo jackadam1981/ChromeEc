@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "796b8031_7841dbeb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-06-09T16:57:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9d9cc70_fc81ab04",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 10
+      },
+      "revId": "1e657e383f6c87a72a55ec4175ce371640d14a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9d41838_8a101158",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-06-09T15:23:25Z",
       "side": 1,
       "message": "typo",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 10
+      },
+      "revId": "1e657e383f6c87a72a55ec4175ce371640d14a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9d9cc70_3fb16584",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-06-09T16:57:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9d41838_8a101158",
       "range": {
         "startLine": 14,
         "startChar": 6,
@@ -94,6 +142,54 @@
     },
     {
       "key": {
+        "uuid": "d9d9cc70_5f31d1f3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1667,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-06-09T16:57:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9d9cc70_bcc1e323",
+      "range": {
+        "startLine": 1667,
+        "startChar": 4,
+        "endLine": 1667,
+        "endChar": 9
+      },
+      "revId": "1e657e383f6c87a72a55ec4175ce371640d14a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "796b8031_589b3f51",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1667,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-06-09T16:57:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9d9cc70_9cbe27af",
+      "range": {
+        "startLine": 1667,
+        "startChar": 29,
+        "endLine": 1667,
+        "endChar": 49
+      },
+      "revId": "1e657e383f6c87a72a55ec4175ce371640d14a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9d9cc70_9cace776",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2015-06-09T15:23:25Z",
       "side": 1,
       "message": "putting it at the beginning to get it on its \"natural\" alignment might be slightly better.\nby the way, what are we going to do with an absolute timestamp without origin ? maybe 32 bits are enough here ?",
+      "range": {
+        "startLine": 1837,
+        "startChar": 3,
+        "endLine": 1838,
+        "endChar": 22
+      },
+      "revId": "1e657e383f6c87a72a55ec4175ce371640d14a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9d9cc70_7fcb6d42",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1838,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-06-09T16:57:07Z",
+      "side": 1,
+      "message": "timestamp is used as delta, I can use 32 bits.\n64 bit natural alignement is hard to come by with header added by protocol.",
+      "parentUuid": "d9d9cc70_9cace776",
       "range": {
         "startLine": 1837,
         "startChar": 3,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "d9d9cc70_3f0f25bd",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3529,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-06-09T16:57:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "796b8031_55b14a82",
+      "range": {
+        "startLine": 3529,
+        "startChar": 8,
+        "endLine": 3529,
+        "endChar": 11
+      },
+      "revId": "1e657e383f6c87a72a55ec4175ce371640d14a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9d41838_aae86da3",
         "filename": "util/ectool.c",
         "patchSetId": 1
@@ -151,6 +295,30 @@
       "writtenOn": "2015-06-09T15:23:25Z",
       "side": 1,
       "message": "what are we reading back ?",
+      "range": {
+        "startLine": 3575,
+        "startChar": 4,
+        "endLine": 3575,
+        "endChar": 44
+      },
+      "revId": "1e657e383f6c87a72a55ec4175ce371640d14a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "796b8031_58633f92",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3575,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-06-09T16:57:07Z",
+      "side": 1,
+      "message": "Same info as FIFO_INFO.",
+      "parentUuid": "b9d41838_aae86da3",
       "range": {
         "startLine": 3575,
         "startChar": 4,
