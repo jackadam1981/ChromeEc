@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9d9cc70_3c3cd383",
+        "filename": "util/flash_ec",
+        "patchSetId": 6
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-06-09T15:40:28Z",
+      "side": 1,
+      "message": "with another small change for toad \u0026 fruitpie from boot_mode -\u003e ec_boot_mode we could simplify this to be dut_control ${MCU}_boot_mode:on.\n\nNot this CL though ... just pointing out simplification for later.",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 32
+      },
+      "revId": "9b5c58ea345db00fe890a7a57630552bd8c08c9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
