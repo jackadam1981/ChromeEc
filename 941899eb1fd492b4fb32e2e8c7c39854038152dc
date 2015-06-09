@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b9d41838_d5347e6a",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-06-09T17:30:37Z",
+      "side": 1,
+      "message": "removed.",
+      "parentUuid": "b9d41838_8a749147",
+      "range": {
+        "startLine": 356,
+        "startChar": 0,
+        "endLine": 356,
+        "endChar": 54
+      },
+      "revId": "941899eb1fd492b4fb32e2e8c7c39854038152dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "796b8031_58a17fb0",
         "filename": "driver/accelgyro_bmi160.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-06-09T16:31:58Z",
       "side": 1,
       "message": "either the irq_handler() is not a real IRQ handler or you don\u0027t want to do this in interrupt context.\nit seems to be the former, but the naming is a bit misleading, at least it\u0027s missing some comment in the header",
+      "range": {
+        "startLine": 590,
+        "startChar": 2,
+        "endLine": 594,
+        "endChar": 30
+      },
+      "revId": "941899eb1fd492b4fb32e2e8c7c39854038152dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9d9cc70_fffd1de7",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-06-09T17:30:37Z",
+      "side": 1,
+      "message": "it is the \"bottom half\", bmi160_interrupt is the \"top half\".",
+      "parentUuid": "796b8031_58a17fb0",
       "range": {
         "startLine": 590,
         "startChar": 2,
@@ -94,6 +142,54 @@
     },
     {
       "key": {
+        "uuid": "b9d41838_b554524c",
+        "filename": "include/accelgyro.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-06-09T17:30:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "796b8031_7597269c",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 55
+      },
+      "revId": "941899eb1fd492b4fb32e2e8c7c39854038152dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "796b8031_b897d3c8",
+        "filename": "include/accelgyro.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-06-09T17:30:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9d9cc70_dc714f5a",
+      "range": {
+        "startLine": 91,
+        "startChar": 31,
+        "endLine": 91,
+        "endChar": 38
+      },
+      "revId": "941899eb1fd492b4fb32e2e8c7c39854038152dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9d41838_ca3a9986",
         "filename": "include/config.h",
         "patchSetId": 2
@@ -105,6 +201,30 @@
       "writtenOn": "2015-06-09T16:31:58Z",
       "side": 1,
       "message": "I\u0027m not sure how useful is this and actually where is it used ?",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 34
+      },
+      "revId": "941899eb1fd492b4fb32e2e8c7c39854038152dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9d41838_50d2dc46",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-06-09T17:30:37Z",
+      "side": 1,
+      "message": "Removed. I though to use the sensor clock, but our own is better.",
+      "parentUuid": "b9d41838_ca3a9986",
       "range": {
         "startLine": 46,
         "startChar": 0,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "b9d41838_904ba47a",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-06-09T17:30:37Z",
+      "side": 1,
+      "message": "motion_sense_fifo definition.",
+      "parentUuid": "b9d41838_ca23b966",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 18
+      },
+      "revId": "941899eb1fd492b4fb32e2e8c7c39854038152dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "796b8031_d5be1a21",
         "filename": "include/motion_sense.h",
         "patchSetId": 2
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "d9d9cc70_42b7b428",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-06-09T17:30:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "796b8031_d5be1a21",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 24
+      },
+      "revId": "941899eb1fd492b4fb32e2e8c7c39854038152dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9d41838_2a159dfb",
         "filename": "include/motion_sense.h",
         "patchSetId": 2
@@ -174,6 +342,30 @@
       "writtenOn": "2015-06-09T16:31:58Z",
       "side": 1,
       "message": "ditto\nactually is there any upside of zeroing those events rather than always putting the mask.",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 6
+      },
+      "revId": "941899eb1fd492b4fb32e2e8c7c39854038152dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "796b8031_d8f72f03",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-06-09T17:30:37Z",
+      "side": 1,
+      "message": "By setting them to 0, we are sure the tests that that event \u0026 TASK_EVENT_MOTION... always fail.\n\nIt is useful for TASK_EVENT_MOTION_ODR_CHANGE. For the other no code will ever trigger these event.\n\nGiven TASK_EVENT_MOTION_ODR_CHANGE is already within ifdef, I can indeed define them unconditionally.",
+      "parentUuid": "b9d41838_2a159dfb",
       "range": {
         "startLine": 105,
         "startChar": 0,
