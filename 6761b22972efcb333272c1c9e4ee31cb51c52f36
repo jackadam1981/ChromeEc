@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "796b8031_5eab27e3",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 923,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-09T18:59:30Z",
+      "side": 1,
+      "message": "Well I still don\u0027t really like it because there is still this mostly useless #ifdef config option and now 2 levels of function calls (which won\u0027t be optimized unless you turn on LTO).\nI would be inclined to do something like :\n\nvoid stub_send_pd_host_event(int mask)\n{\n}\n\nvoid board_send_pd_host_event(int mask)\n                __attribute__((weak, alias(\"stub_send_pd_host_event\")));\n\nbut other people might disagree.",
+      "range": {
+        "startLine": 918,
+        "startChar": 0,
+        "endLine": 923,
+        "endChar": 1
+      },
+      "revId": "6761b22972efcb333272c1c9e4ee31cb51c52f36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
