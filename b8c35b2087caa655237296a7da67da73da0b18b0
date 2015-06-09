@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b9d41838_35c7420c",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1002166
+      },
+      "writtenOn": "2015-06-09T18:00:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9d41838_356982a3",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 27
+      },
+      "revId": "b8c35b2087caa655237296a7da67da73da0b18b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9d9cc70_1fcc692c",
         "filename": "common/usb_charger.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2015-06-09T16:47:07Z",
       "side": 1,
       "message": "I would vote in favor of having a stub pd_send_host_event() rather than yet another ifdef for this.",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 47
+      },
+      "revId": "b8c35b2087caa655237296a7da67da73da0b18b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "796b8031_bb034d7a",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1002166
+      },
+      "writtenOn": "2015-06-09T18:00:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9d9cc70_1fcc692c",
       "range": {
         "startLine": 132,
         "startChar": 0,
