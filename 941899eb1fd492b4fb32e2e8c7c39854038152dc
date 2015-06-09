@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9d41838_8a749147",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-09T16:31:58Z",
+      "side": 1,
+      "message": "you already have\n#define TASK_EVENT_MOTION_FLUSH_PENDING TASK_EVENT_CUSTOM(1)\nin motionsense.h\n\nand actually is this used ?",
+      "range": {
+        "startLine": 356,
+        "startChar": 0,
+        "endLine": 356,
+        "endChar": 54
+      },
+      "revId": "941899eb1fd492b4fb32e2e8c7c39854038152dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "796b8031_58a17fb0",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-09T16:31:58Z",
+      "side": 1,
+      "message": "either the irq_handler() is not a real IRQ handler or you don\u0027t want to do this in interrupt context.\nit seems to be the former, but the naming is a bit misleading, at least it\u0027s missing some comment in the header",
+      "range": {
+        "startLine": 590,
+        "startChar": 2,
+        "endLine": 594,
+        "endChar": 30
+      },
+      "revId": "941899eb1fd492b4fb32e2e8c7c39854038152dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "796b8031_7597269c",
+        "filename": "include/accelgyro.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-09T16:31:58Z",
+      "side": 1,
+      "message": "you are supposed to have the \"s\" parameter description\n@s Pointer to sensor data.",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 55
+      },
+      "revId": "941899eb1fd492b4fb32e2e8c7c39854038152dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9d9cc70_dc714f5a",
+        "filename": "include/accelgyro.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-09T16:31:58Z",
+      "side": 1,
+      "message": "triggered ?",
+      "range": {
+        "startLine": 91,
+        "startChar": 31,
+        "endLine": 91,
+        "endChar": 38
+      },
+      "revId": "941899eb1fd492b4fb32e2e8c7c39854038152dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9d41838_ca3a9986",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-09T16:31:58Z",
+      "side": 1,
+      "message": "I\u0027m not sure how useful is this and actually where is it used ?",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 34
+      },
+      "revId": "941899eb1fd492b4fb32e2e8c7c39854038152dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9d41838_ca23b966",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-09T16:31:58Z",
+      "side": 1,
+      "message": "is that used ?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 18
+      },
+      "revId": "941899eb1fd492b4fb32e2e8c7c39854038152dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "796b8031_d5be1a21",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-09T16:31:58Z",
+      "side": 1,
+      "message": "too many #ifdef kill the #ifdef\ngiven the already large size of the structure, I would vote in favor of unconditionally adding this.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 24
+      },
+      "revId": "941899eb1fd492b4fb32e2e8c7c39854038152dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9d41838_2a159dfb",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-09T16:31:58Z",
+      "side": 1,
+      "message": "ditto\nactually is there any upside of zeroing those events rather than always putting the mask.",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 6
+      },
+      "revId": "941899eb1fd492b4fb32e2e8c7c39854038152dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
