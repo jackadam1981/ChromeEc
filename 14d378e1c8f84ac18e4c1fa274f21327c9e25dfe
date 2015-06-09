@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3937486d_c4489002",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-09T23:24:20Z",
+      "side": 1,
+      "message": "Note that there is a CRC + tag we place at address 0xFFFFFF0x on SPI, as required by the mec1322 ROM. I think this can fail if we are unlucky and write 0xea there.\n\nCan you measure the execution time of this code in the non-fail case? I\u0027m considering to add a size paramater to a structure somewhere for easy access.",
+      "revId": "14d378e1c8f84ac18e4c1fa274f21327c9e25dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
