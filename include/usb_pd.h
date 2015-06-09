@@ -1235,6 +1235,13 @@ int board_get_usb_mux(int port, const char **dp_str, const char **usb_str);
 void board_flip_usb_mux(int port);
 
 /**
+ * Returns true if a given charge port is sourcing VBUS.
+ *
+ * @param port port number;
+ */
+int board_is_sourcing_vbus(int port);
+
+/**
  * Request that a host event be sent to notify the AP of a PD power event.
  *
  * @param mask host event mask.

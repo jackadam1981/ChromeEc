@@ -77,17 +77,45 @@ const struct pwm_t pwm_channels[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
+#define PERICOM_CHIP_COUNT 2
+struct mutex pericom_mux_locks[PERICOM_CHIP_COUNT];
+struct pi3usb9281_config pericom_chips[PERICOM_CHIP_COUNT] = {
+	{
+		.i2c_port = I2C_PORT_PERICOM,
+		.mux_gpio = GPIO_USB_C_BC12_SEL,
+		.mux_gpio_level = 0,
+		.mux_lock = &pericom_mux_locks[0],
+	},
+	{
+		.i2c_port = I2C_PORT_PERICOM,
+		.mux_gpio = GPIO_USB_C_BC12_SEL,
+		.mux_gpio_level = 1,
+		.mux_lock = &pericom_mux_locks[1],
+	},
+};
+
+inline struct pi3usb9281_config *board_port_to_pi3usb9281_config(int port)
+{
+	return &pericom_chips[port];
+}
+
+inline int board_is_sourcing_vbus(int port)
+{
+	return gpio_get_level((port == 0) ? GPIO_USB_C0_5V_EN :
+					    GPIO_USB_C1_5V_EN);
+}
+
 static void pericom_port0_reenable_interrupts(void)
 {
 	CPRINTS("VBUS p0 %d", gpio_get_level(GPIO_USB_C0_VBUS_WAKE));
-	pi3usb9281_enable_interrupts(0);
+	pi3usb9281_enable_interrupts(&pericom_chips[0]);
 }
 DECLARE_DEFERRED(pericom_port0_reenable_interrupts);
 
 static void pericom_port1_reenable_interrupts(void)
 {
 	CPRINTS("VBUS p1 %d", gpio_get_level(GPIO_USB_C1_VBUS_WAKE));
-	pi3usb9281_enable_interrupts(1);
+	pi3usb9281_enable_interrupts(&pericom_chips[1]);
 }
 DECLARE_DEFERRED(pericom_port1_reenable_interrupts);
 
@@ -309,10 +337,12 @@ static void board_init(void)
 	/* Enable pericom BC1.2 interrupts. */
 	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_L);
 	gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_L);
-	pi3usb9281_set_interrupt_mask(0, 0xff);
-	pi3usb9281_set_interrupt_mask(1, 0xff);
-	pi3usb9281_enable_interrupts(0);
-	pi3usb9281_enable_interrupts(1);
+	pi3usb9281_init(&pericom_chips[0]);
+	pi3usb9281_init(&pericom_chips[1]);
+	pi3usb9281_set_interrupt_mask(&pericom_chips[0], 0xff);
+	pi3usb9281_set_interrupt_mask(&pericom_chips[1], 0xff);
+	pi3usb9281_enable_interrupts(&pericom_chips[0]);
+	pi3usb9281_enable_interrupts(&pericom_chips[1]);
 
 	/* Determine initial chipset state */
 	if (slp_s5 && slp_s3) {
@@ -427,7 +457,7 @@ void board_set_usb_switches(int port, enum usb_switch setting)
 	mutex_lock(&usb_switch_lock[port]);
 	if (setting != USB_SWITCH_RESTORE)
 		usb_switch_state[port] = setting;
-	pi3usb9281_set_switches(port, usb_switch_state[port]);
+	pi3usb9281_set_switches(&pericom_chips[port], usb_switch_state[port]);
 	mutex_unlock(&usb_switch_lock[port]);
 }
 
@@ -555,10 +585,7 @@ int board_set_active_charge_port(int charge_port)
 	int is_real_port = (charge_port >= 0 &&
 			    charge_port < CONFIG_USB_PD_PORT_COUNT);
 	/* check if we are source vbus on that port */
-	int source = gpio_get_level(charge_port == 0 ? GPIO_USB_C0_5V_EN :
-						       GPIO_USB_C1_5V_EN);
-
-	if (is_real_port && source) {
+	if (is_real_port && board_is_sourcing_vbus(charge_port)) {
 		CPRINTS("Skip enable p%d", charge_port);
 		return EC_ERROR_INVAL;
 	}

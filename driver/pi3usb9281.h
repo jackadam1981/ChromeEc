@@ -56,46 +56,61 @@
 /* Check if charge status has any connection */
 #define PI3USB9281_CHG_STATUS_ANY(x) (((x) & 0x1f) > 1)
 
+/* Define configuration of one pi3usb9281 part */
+struct pi3usb9281_config {
+	/* i2c port that chip resides on */
+	int i2c_port;
+	/* GPIO for chip selection in muxed configuration */
+	enum gpio_signal mux_gpio;
+	/* Logic level of mux_gpio to select chip */
+	int mux_gpio_level;
+	/* Mutex to lock access to mux gpio */
+	struct mutex *mux_lock;
+};
+
+/* Map port number to port configuration struct. */
+struct pi3usb9281_config *board_port_to_pi3usb9281_config(int port);
+
+/* Initialize chip. */
+void pi3usb9281_init(struct pi3usb9281_config *chip);
+
 /* Read PI3USB9281 register. */
-uint8_t pi3usb9281_read(uint8_t chip_idx, uint8_t reg);
+uint8_t pi3usb9281_read(struct pi3usb9281_config *chip, uint8_t reg);
 
 /* Write PI3USB9281 register. */
-int pi3usb9281_write(uint8_t chip_idx, uint8_t reg, uint8_t val);
+int pi3usb9281_write(struct pi3usb9281_config *chip, uint8_t reg, uint8_t val);
 
 /* Enable interrupts. */
-int pi3usb9281_enable_interrupts(uint8_t chip_idx);
+int pi3usb9281_enable_interrupts(struct pi3usb9281_config *chip);
 
 /* Disable all interrupts. */
-int pi3usb9281_disable_interrupts(uint8_t chip_idx);
+int pi3usb9281_disable_interrupts(struct pi3usb9281_config *chip);
 
 /* Set interrupt mask. */
-int pi3usb9281_set_interrupt_mask(uint8_t chip_idx, uint8_t mask);
+int pi3usb9281_set_interrupt_mask(struct pi3usb9281_config *chip, uint8_t mask);
 
 /* Get and clear current interrupt status. */
-int pi3usb9281_get_interrupts(uint8_t chip_idx);
-
-/* Get but keep interrupt status. */
-int pi3usb9281_peek_interrupts(uint8_t chip_idx);
+int pi3usb9281_get_interrupts(struct pi3usb9281_config *chip);
 
 /* Get attached device type. */
-int pi3usb9281_get_device_type(uint8_t chip_idx);
+int pi3usb9281_get_device_type(struct pi3usb9281_config *chip);
 
 /* Get attached charger status. */
-int pi3usb9281_get_charger_status(uint8_t chip_idx);
+int pi3usb9281_get_charger_status(struct pi3usb9281_config *chip);
 
 /* Get charger current limit based on device type and charger status. */
 int pi3usb9281_get_ilim(int device_type, int charger_status);
 
 /* Set switch configuration to manual. */
-int pi3usb9281_set_switch_manual(uint8_t chip_idx, int val);
+int pi3usb9281_set_switch_manual(struct pi3usb9281_config *chip, int val);
 
 /* Set bits to enable pins in manual switch register. */
-int pi3usb9281_set_pins(uint8_t chip_idx, uint8_t mask);
+int pi3usb9281_set_pins(struct pi3usb9281_config *chip, uint8_t mask);
 
 /* Set D+/D-/Vbus switches to open or closed/auto-control. */
-int pi3usb9281_set_switches(uint8_t chip_idx, int open);
+int pi3usb9281_set_switches(struct pi3usb9281_config *chip, int open);
 
 /* Reset PI3USB9281. */
-int pi3usb9281_reset(uint8_t chip_idx);
+int pi3usb9281_reset(struct pi3usb9281_config *chip);
 
 #endif /* PI3USB9281_H */
