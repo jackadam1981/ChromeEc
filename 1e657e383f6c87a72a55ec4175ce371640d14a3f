@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9d9cc70_fc81ab04",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-09T15:23:25Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 10
+      },
+      "revId": "1e657e383f6c87a72a55ec4175ce371640d14a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9d41838_8a101158",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-09T15:23:25Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 10
+      },
+      "revId": "1e657e383f6c87a72a55ec4175ce371640d14a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9d9cc70_bcc1e323",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1667,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-09T15:23:25Z",
+      "side": 1,
+      "message": "typo ?",
+      "range": {
+        "startLine": 1667,
+        "startChar": 4,
+        "endLine": 1667,
+        "endChar": 9
+      },
+      "revId": "1e657e383f6c87a72a55ec4175ce371640d14a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9d9cc70_9cbe27af",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1667,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-09T15:23:25Z",
+      "side": 1,
+      "message": "parsing error",
+      "range": {
+        "startLine": 1667,
+        "startChar": 29,
+        "endLine": 1667,
+        "endChar": 49
+      },
+      "revId": "1e657e383f6c87a72a55ec4175ce371640d14a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9d9cc70_9cace776",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1838,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-09T15:23:25Z",
+      "side": 1,
+      "message": "putting it at the beginning to get it on its \"natural\" alignment might be slightly better.\nby the way, what are we going to do with an absolute timestamp without origin ? maybe 32 bits are enough here ?",
+      "range": {
+        "startLine": 1837,
+        "startChar": 3,
+        "endLine": 1838,
+        "endChar": 22
+      },
+      "revId": "1e657e383f6c87a72a55ec4175ce371640d14a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "796b8031_55b14a82",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3529,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-09T15:23:25Z",
+      "side": 1,
+      "message": "sizeof(fifo_read_buffer.data) ?",
+      "range": {
+        "startLine": 3529,
+        "startChar": 8,
+        "endLine": 3529,
+        "endChar": 11
+      },
+      "revId": "1e657e383f6c87a72a55ec4175ce371640d14a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9d41838_aae86da3",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3575,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-09T15:23:25Z",
+      "side": 1,
+      "message": "what are we reading back ?",
+      "range": {
+        "startLine": 3575,
+        "startChar": 4,
+        "endLine": 3575,
+        "endChar": 44
+      },
+      "revId": "1e657e383f6c87a72a55ec4175ce371640d14a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
