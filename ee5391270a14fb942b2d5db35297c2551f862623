@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39c4a87c_2526f9c2",
+        "filename": "include/libsharedobjs.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-10T01:53:05Z",
+      "side": 1,
+      "message": "And where the RO image is executable from flash.\n\nAll our ECs put the images on the same chip.  But they need to be both accessible at the *same time*.  Which isn\u0027t true for chips which load one image at a time into SRAM.  Which is why the check below works.  (Oops, except it doesn\u0027t on NPCX as currently checked in.)\n\nPerhaps we need a CONFIG_FLASH_IS_EXECUTABLE or something like that.  Define it for LM4 and STM32, undefine for NPCX and MEC1322.",
+      "range": {
+        "startLine": 14,
+        "startChar": 66,
+        "endLine": 14,
+        "endChar": 67
+      },
+      "revId": "ee5391270a14fb942b2d5db35297c2551f862623",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
