@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "997f5421_2cb613c6",
+        "filename": "include/libsharedobjs.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-10T23:21:32Z",
+      "side": 1,
+      "message": "Since we use CONFIG_ options here, might want to #include \"common.h\" to ensure the config options are set first.",
+      "revId": "83d2d8b9b629386f043c4cafd0b5baf73cc26f44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
