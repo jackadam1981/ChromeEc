@@ -29,9 +29,7 @@ int flash_physical_read(int offset, int size, char *data)
 
 	offset += CONFIG_FLASH_BASE_SPI;
 
-	spi_enable(1);
 	ret = spi_flash_read((uint8_t *)data, offset, size);
-	spi_enable(0);
 	return ret;
 }
 
@@ -54,7 +52,6 @@ int flash_physical_write(int offset, int size, const char *data)
 	if ((offset | size | (uint32_t)(uintptr_t)data) & 3)
 		return EC_ERROR_INVAL;
 
-	spi_enable(1);
 	for (i = 0; i < size; i += write_size) {
 		write_size = MIN(size, SPI_FLASH_MAX_WRITE_SIZE);
 		ret = spi_flash_write(offset + i,
@@ -65,7 +62,6 @@ int flash_physical_write(int offset, int size, const char *data)
 		/* BUG: Multi-page writes fail if no delay */
 		msleep(1);
 	}
-	spi_enable(0);
 	return ret;
 }
 
@@ -82,9 +78,7 @@ int flash_physical_erase(int offset, int size)
 	int ret;
 
 	offset += CONFIG_FLASH_BASE_SPI;
-	spi_enable(1);
 	ret = spi_flash_erase(offset, size);
-	spi_enable(0);
 	return ret;
 }
 
@@ -96,12 +90,10 @@ int flash_physical_erase(int offset, int size)
  */
 int flash_physical_get_protect(int bank)
 {
-	uint32_t addr = bank * CONFIG_FLASH_BANK_SIZE;
+	uint32_t addr = CONFIG_FLASH_BASE_SPI + bank * CONFIG_FLASH_BANK_SIZE;
 	int ret;
 
-	spi_enable(1);
 	ret = spi_flash_check_protect(addr, CONFIG_FLASH_BANK_SIZE);
-	spi_enable(0);
 	return ret;
 }
 
@@ -116,16 +108,14 @@ int flash_physical_protect_now(int all)
 	int offset, size, ret;
 
 	if (all) {
-		offset = 0;
+		offset = CONFIG_FLASH_BASE_SPI;
 		size = CONFIG_FLASH_PHYSICAL_SIZE;
 	} else {
-		offset = CONFIG_WP_OFF;
+		offset = CONFIG_WP_OFF + CONFIG_FLASH_BASE_SPI;
 		size = CONFIG_WP_SIZE;
 	}
 
-	spi_enable(1);
 	ret = spi_flash_set_protect(offset, size);
-	spi_enable(0);
 	return ret;
 }
 
@@ -140,14 +130,14 @@ uint32_t flash_physical_get_protect_flags(void)
 {
 	uint32_t flags = 0;
 
-	spi_enable(1);
-	if (spi_flash_check_protect(CONFIG_RO_STORAGE_OFF, CONFIG_RO_SIZE)) {
+	if (spi_flash_check_protect(CONFIG_FLASH_BASE_SPI +
+				    CONFIG_RO_STORAGE_OFF, CONFIG_RO_SIZE)) {
 		flags |= EC_FLASH_PROTECT_RO_AT_BOOT | EC_FLASH_PROTECT_RO_NOW;
-		if (spi_flash_check_protect(CONFIG_RW_STORAGE_OFF,
+		if (spi_flash_check_protect(CONFIG_FLASH_BASE_SPI +
+					    CONFIG_RW_STORAGE_OFF,
 					    CONFIG_RW_SIZE))
 			flags |= EC_FLASH_PROTECT_ALL_NOW;
 	}
-	spi_enable(0);
 	return flags;
 }
 
@@ -174,9 +164,7 @@ uint32_t flash_physical_get_writable_flags(uint32_t cur_flags)
 	uint32_t ret = 0;
 	enum spi_flash_wp wp_status = SPI_WP_NONE;
 
-	spi_enable(1);
 	wp_status = spi_flash_check_wp();
-	spi_enable(0);
 
 	if (wp_status == SPI_WP_NONE || (wp_status == SPI_WP_HARDWARE &&
 	   !(cur_flags & EC_FLASH_PROTECT_GPIO_ASSERTED)))
@@ -206,18 +194,18 @@ int flash_physical_protect_at_boot(enum flash_wp_range range)
 		offset = size = 0;
 		break;
 	case FLASH_WP_RO:
-		offset = CONFIG_WP_OFF;
+		offset = CONFIG_FLASH_BASE_SPI + CONFIG_WP_OFF;
 		size = CONFIG_WP_SIZE;
 		break;
 	case FLASH_WP_ALL:
-		offset = 0;
+		offset = CONFIG_FLASH_BASE_SPI + 0;
 		size = CONFIG_FLASH_PHYSICAL_SIZE;
 		break;
 	}
 
-	spi_enable(1);
 	ret = spi_flash_set_protect(offset, size);
-	spi_enable(0);
+	if (ret == EC_SUCCESS)
+		ret = spi_flash_set_wp(range);
 	return ret;
 }
 
