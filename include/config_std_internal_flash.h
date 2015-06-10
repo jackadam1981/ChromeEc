@@ -12,6 +12,7 @@
  * - PSTATE immediately follows the RO image.
  * - RW image starts at the second half of flash.
  * - WP region consists of the first half of flash (RO + PSTATE).
+ * - Flash is executable.
  */
 
 /*
@@ -34,5 +35,7 @@
 
 #define CONFIG_WP_OFF		CONFIG_RO_STORAGE_OFF
 #define CONFIG_WP_SIZE		CONFIG_FW_IMAGE_SIZE
+
+#define CONFIG_FLASH_IS_EXECUTABLE
 
 #endif /* __CROS_EC_CONFIG_STD_INTERNAL_FLASH_H */
