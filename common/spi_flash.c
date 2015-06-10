@@ -15,6 +15,8 @@
 #include "timer.h"
 #include "util.h"
 #include "watchdog.h"
+#include "ec_commands.h"
+#include "flash.h"
 
 /*
  * Time to sleep when chip is busy
@@ -109,11 +111,12 @@ int spi_flash_set_status(int reg1, int reg2)
 	uint8_t cmd[3] = {SPI_FLASH_WRITE_SR, reg1, reg2};
 	int rv = EC_SUCCESS;
 
-	/* Register has protection */
-	if (spi_flash_check_wp() != SPI_WP_NONE)
+	/* it not possible to change status register(s) if HW pin is on */
+	if ((flash_get_protect() & EC_FLASH_PROTECT_GPIO_ASSERTED) != 0)
 		return EC_ERROR_ACCESS_DENIED;
 
 	/* Enable writing to SPI flash */
+	spi_enable(1);
 	rv = spi_flash_write_enable();
 	if (rv)
 		return rv;
