@@ -22,6 +22,30 @@
       "revId": "e1a9fca990c063047964e701456a0b6c92d81dda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99fcb4c6_4d649114",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2257,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-06-10T04:55:08Z",
+      "side": 1,
+      "message": "Yes, we talked about it. I am adding a new event for EC_CMD_GET_NEXT_EVENT",
+      "parentUuid": "f94050d5_9f1f3363",
+      "range": {
+        "startLine": 2256,
+        "startChar": 0,
+        "endLine": 2257,
+        "endChar": 21
+      },
+      "revId": "e1a9fca990c063047964e701456a0b6c92d81dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
