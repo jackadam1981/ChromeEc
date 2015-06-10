@@ -94,6 +94,30 @@
       "revId": "ee5391270a14fb942b2d5db35297c2551f862623",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b92b3816_2934b5e4",
+        "filename": "include/libsharedobjs.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-06-10T23:29:09Z",
+      "side": 1,
+      "message": "Then in that case, when RO and RW grow up to be big boy binaries, I\u0027m assuming that the load addresses will become the same? (a la mec1322)",
+      "parentUuid": "396e687b_69be45b2",
+      "range": {
+        "startLine": 14,
+        "startChar": 66,
+        "endLine": 14,
+        "endChar": 67
+      },
+      "revId": "ee5391270a14fb942b2d5db35297c2551f862623",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
