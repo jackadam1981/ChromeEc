@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b92b3816_09cc592c",
+        "filename": "driver/battery/sb_fw_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-10T23:36:51Z",
+      "side": 1,
+      "message": "We call this at the beginning of the charger loop. It it possible that we\u0027ll enter write state after the check, and end up with interleaved accesses to the battery from the charger task + the updater?",
+      "range": {
+        "startLine": 36,
+        "startChar": 16,
+        "endLine": 36,
+        "endChar": 17
+      },
+      "revId": "381422f44671fe4f6069495178f315d753e6f2c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
