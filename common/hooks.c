@@ -33,6 +33,7 @@ struct hook_ptrs {
  */
 static const struct hook_ptrs hook_list[] = {
 	{__hooks_init, __hooks_init_end},
+	{__hooks_post_init, __hooks_post_init_end},
 	{__hooks_pre_freq_change, __hooks_pre_freq_change_end},
 	{__hooks_freq_change, __hooks_freq_change_end},
 	{__hooks_sysjump, __hooks_sysjump_end},
@@ -179,6 +180,8 @@ void hook_task(void)
 	static uint64_t last_tick = -HOOK_TICK_INTERVAL;
 
 	hook_task_started = 1;
+	/* Activate post-init / scheduler started hook rouines. */
+	hook_notify(HOOK_POST_INIT);
 
 	while (1) {
 		uint64_t t = get_time().val;

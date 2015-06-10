@@ -79,6 +79,10 @@ SECTIONS
         KEEP(*(.rodata.HOOK_INIT))
         __hooks_init_end = .;
 
+        __hooks_post_init = .;
+        KEEP(*(.rodata.HOOK_POST_INIT))
+        __hooks_post_init_end = .;
+
         __hooks_pre_freq_change = .;
         KEEP(*(.rodata.HOOK_PRE_FREQ_CHANGE))
         __hooks_pre_freq_change_end = .;
