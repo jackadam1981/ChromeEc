@@ -22,6 +22,30 @@
       "revId": "ee5391270a14fb942b2d5db35297c2551f862623",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99fcb4c6_f84f7939",
+        "filename": "include/libsharedobjs.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-06-10T16:33:49Z",
+      "side": 1,
+      "message": "D\u0027oh. Yeah, that\u0027s what I meant. Good catch on NPCX. I\u0027m in favor for a \n\n    CONFIG_FLASH_IS_EXECUTABLE\n\nPerhaps I can add it to config_std_internal_flash.h?",
+      "parentUuid": "39c4a87c_2526f9c2",
+      "range": {
+        "startLine": 14,
+        "startChar": 66,
+        "endLine": 14,
+        "endChar": 67
+      },
+      "revId": "ee5391270a14fb942b2d5db35297c2551f862623",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
