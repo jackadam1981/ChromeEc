@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9754c3f_34d89895",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-10T23:59:17Z",
+      "side": 1,
+      "message": "CONFIG_FLASH_BASE_SPI?",
+      "revId": "c3253bb11dbb646a2d90b29d6ae9b69b4f6db4f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9754c3f_14f23c13",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-10T23:59:17Z",
+      "side": 1,
+      "message": "No need for the \"+ 0\".",
+      "range": {
+        "startLine": 215,
+        "startChar": 35,
+        "endLine": 215,
+        "endChar": 36
+      },
+      "revId": "c3253bb11dbb646a2d90b29d6ae9b69b4f6db4f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39858859_1a44a1c6",
+        "filename": "common/spi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-10T23:59:17Z",
+      "side": 1,
+      "message": "I think this is not correct, even for Cyan\u0027s part. It depends on SRP1 / SRP0, as well as the WP pin state.",
+      "revId": "c3253bb11dbb646a2d90b29d6ae9b69b4f6db4f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "992af412_bd132395",
+        "filename": "common/spi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-10T23:59:17Z",
+      "side": 1,
+      "message": "Is spi_enable(0) missing throughout this file?",
+      "revId": "c3253bb11dbb646a2d90b29d6ae9b69b4f6db4f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
