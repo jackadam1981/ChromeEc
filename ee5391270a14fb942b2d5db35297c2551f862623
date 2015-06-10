@@ -46,6 +46,30 @@
       "revId": "ee5391270a14fb942b2d5db35297c2551f862623",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79254042_13e56c9f",
+        "filename": "include/libsharedobjs.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-06-10T21:05:57Z",
+      "side": 1,
+      "message": "Actually, does NPCX copy both RO and RW to code RAM? It seems that the code RAM is big enough and the offsets seem to indicate that RW follows RO in program memory.\n\n\nIf that is true, then I think the library *would* be compatible with NPCX. Then I could change the condition back to:\n\n    #if (CONFIG_RO_MEM_OFF + CONFIG_FW_IMAGE_SIZE) \u003e CONFIG_RW_MEM_OFF",
+      "parentUuid": "99fcb4c6_f84f7939",
+      "range": {
+        "startLine": 14,
+        "startChar": 66,
+        "endLine": 14,
+        "endChar": 67
+      },
+      "revId": "ee5391270a14fb942b2d5db35297c2551f862623",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
