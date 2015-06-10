@@ -50,6 +50,17 @@ enum hook_type {
 	HOOK_INIT = 0,
 
 	/*
+	 * Post-init system initialization.
+	 *
+	 * The post-init hook is called after task scheduling is enabled.
+	 * It can be used for initialization hook routines that depend on
+	 * preemption or other tasks. Unlike HOOK_INIT routines, a
+	 * wait / delay in a HOOK_POST_INIT routine will not block the entire
+	 * system (though a wait / delay will still block the HOOKS tasks).
+	 */
+	HOOK_POST_INIT,
+
+	/*
 	 * System clock changed frequency.
 	 *
 	 * The "pre" frequency hook is called before we change the frequency.
