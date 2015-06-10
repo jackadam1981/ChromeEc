@@ -70,6 +70,30 @@
       "revId": "ee5391270a14fb942b2d5db35297c2551f862623",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "396e687b_69be45b2",
+        "filename": "include/libsharedobjs.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-10T23:21:32Z",
+      "side": 1,
+      "message": "It does right now.  But that\u0027s only because the firmware image is just the tiny image used for the EVB.  It\u0027s only got 96KB usable code space, which isn\u0027t big enough for 2 full-EC-functionality images.",
+      "parentUuid": "79254042_13e56c9f",
+      "range": {
+        "startLine": 14,
+        "startChar": 66,
+        "endLine": 14,
+        "endChar": 67
+      },
+      "revId": "ee5391270a14fb942b2d5db35297c2551f862623",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
