@@ -115,10 +115,12 @@ int spi_transaction(const uint8_t *txdata, int txlen,
 {
 	int ret;
 
+	spi_enable(1);
 	ret = spi_transaction_async(txdata, txlen, rxdata, rxlen);
-	if (ret)
-		return ret;
-	return spi_transaction_flush();
+	if (!ret)
+		ret = spi_transaction_flush();
+	spi_enable(0);
+	return ret;
 }
 
 int spi_enable(int enable)

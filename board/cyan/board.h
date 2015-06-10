@@ -47,7 +47,7 @@
 #define CONFIG_SPI_FLASH
 #define CONFIG_SPI_FLASH_SIZE 524288
 /* TODO: Add flash protect support for the SPI part cyan actually has */
-#define CONFIG_SPI_FLASH_W25Q64
+#define CONFIG_SPI_FLASH_W25X40
 
 /* Temperature sensor */
 #define CONFIG_TEMP_SENSOR
