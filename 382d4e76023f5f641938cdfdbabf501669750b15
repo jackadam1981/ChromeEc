@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b92b3816_29fcb535",
+        "filename": "board/zinger/runtime.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-10T23:40:10Z",
+      "side": 1,
+      "message": "that\u0027s removing the timeout event ?",
+      "range": {
+        "startLine": 232,
+        "startChar": 8,
+        "endLine": 232,
+        "endChar": 24
+      },
+      "revId": "382d4e76023f5f641938cdfdbabf501669750b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39858859_3a3165f5",
+        "filename": "core/cortex-m0/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-10T23:40:10Z",
+      "side": 1,
+      "message": "isn\u0027t that a fancy (and slow) way of writing \"\u0026current-\u003eevents\" ?",
+      "range": {
+        "startLine": 426,
+        "startChar": 12,
+        "endLine": 426,
+        "endChar": 53
+      },
+      "revId": "382d4e76023f5f641938cdfdbabf501669750b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
