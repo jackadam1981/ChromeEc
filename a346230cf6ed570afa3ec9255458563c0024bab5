@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "396e687b_89a4d990",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2271,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-10T23:37:49Z",
+      "side": 1,
+      "message": "Might comment that this is so the struct below is 32-bit aligned.",
+      "range": {
+        "startLine": 2271,
+        "startChar": 2,
+        "endLine": 2271,
+        "endChar": 18
+      },
+      "revId": "a346230cf6ed570afa3ec9255458563c0024bab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
