@@ -22,6 +22,30 @@
       "revId": "381422f44671fe4f6069495178f315d753e6f2c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "997f5421_6ca2db33",
+        "filename": "driver/battery/sb_fw_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-06-11T01:14:53Z",
+      "side": 1,
+      "message": "Yes, you are right. It is possible at the beginning of battery firmware update process.\n\nIf they did not introduce too much noise at i2c bus, the firmware update process can still finish successfully. \nNote: More checks are called inside of sbc_write().",
+      "parentUuid": "b92b3816_09cc592c",
+      "range": {
+        "startLine": 36,
+        "startChar": 16,
+        "endLine": 36,
+        "endChar": 17
+      },
+      "revId": "381422f44671fe4f6069495178f315d753e6f2c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
