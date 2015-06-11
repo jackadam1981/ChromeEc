@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59e07c3c_3cd891e7",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-11T23:31:48Z",
+      "side": 1,
+      "message": "add \"because PD communication is not allowed\"",
+      "range": {
+        "startLine": 79,
+        "startChar": 67,
+        "endLine": 80,
+        "endChar": 67
+      },
+      "revId": "4107f0427003abc0514f268e79e0a7221c377ed3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79254042_7554bb4b",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-11T23:31:48Z",
+      "side": 1,
+      "message": "dedicated",
+      "range": {
+        "startLine": 81,
+        "startChar": 21,
+        "endLine": 81,
+        "endChar": 30
+      },
+      "revId": "4107f0427003abc0514f268e79e0a7221c377ed3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9ecd03d_5423aa36",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-11T23:31:48Z",
+      "side": 1,
+      "message": "assume dedicated",
+      "range": {
+        "startLine": 82,
+        "startChar": 47,
+        "endLine": 82,
+        "endChar": 63
+      },
+      "revId": "4107f0427003abc0514f268e79e0a7221c377ed3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9ecd03d_14192207",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-11T23:31:48Z",
+      "side": 1,
+      "message": "i think this should be\nbattery_is_present !\u003d BP_YES\nso that if we are not sure if we have a battery (BP_NOT_SURE), we treat it as if we don\u0027t have a battery just in case.",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 88,
+        "endChar": 23
+      },
+      "revId": "4107f0427003abc0514f268e79e0a7221c377ed3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b92b3816_66716ed5",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-11T23:31:48Z",
+      "side": 1,
+      "message": "this is a little bit different than discussed. it means if we don\u0027t have a battery present, we will charge from another dual-role device. but, i think that\u0027s ok.",
+      "range": {
+        "startLine": 649,
+        "startChar": 5,
+        "endLine": 649,
+        "endChar": 45
+      },
+      "revId": "4107f0427003abc0514f268e79e0a7221c377ed3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
