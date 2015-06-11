@@ -228,13 +228,16 @@ int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 }
 
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
+#define PD_PORT_NONE -1
+static int dp_attention_port = PD_PORT_NONE;
 static int dp_flags[CONFIG_USB_PD_PORT_COUNT];
 
 static void svdm_safe_dp_mode(int port)
 {
 	/* make DP interface safe until configure */
 	dp_flags[port] = 0;
-	/* board_set_usb_mux(port, TYPEC_MUX_NONE, pd_get_polarity(port)); */
+	board_set_usb_mux(port, TYPEC_MUX_NONE,
+			USB_SWITCH_CONNECT, pd_get_polarity(port));
 }
 
 static int svdm_enter_dp_mode(int port, uint32_t mode_caps)
@@ -267,7 +270,8 @@ static int svdm_dp_status(int port, uint32_t *payload)
 static int svdm_dp_config(int port, uint32_t *payload)
 {
 	int opos = pd_alt_mode(port, USB_SID_DISPLAYPORT);
-	/* board_set_usb_mux(port, TYPEC_MUX_DP, pd_get_polarity(port)); */
+	board_set_usb_mux(port, TYPEC_MUX_DP,
+			USB_SWITCH_CONNECT, pd_get_polarity(port));
 	payload[0] = VDO(USB_SID_DISPLAYPORT, 1,
 			 CMD_DP_CONFIG | VDO_OPOS(opos));
 	payload[1] = VDO_DP_CFG(MODE_DP_PIN_E, /* sink pins */
@@ -282,18 +286,69 @@ static void svdm_dp_post_config(int port)
 	dp_flags[port] |= DP_FLAGS_DP_ON;
 	if (!(dp_flags[port] & DP_FLAGS_HPD_HI_PENDING))
 		return;
+
+	if (dp_attention_port == port)
+		gpio_set_level(GPIO_USB_DP_HPD, 1);
 }
+
+static void hpd_irq_deferred(void)
+{
+	gpio_set_level(GPIO_USB_DP_HPD, 1);
+}
+DECLARE_DEFERRED(hpd_irq_deferred);
 
 static int svdm_dp_attention(int port, uint32_t *payload)
 {
+	int cur_lvl;
+	int lvl = PD_VDO_DPSTS_HPD_LVL(payload[1]);
+	int irq = PD_VDO_DPSTS_HPD_IRQ(payload[1]);
+
+	gpio_set_level(GPIO_DP_SWITCH_CTL, port);
+	cur_lvl = gpio_get_level(GPIO_USB_DP_HPD);
+
+	/* Its initial DP status message prior to config */
+	if (!(dp_flags[port] & DP_FLAGS_DP_ON)) {
+		if (lvl)
+			dp_flags[port] |= DP_FLAGS_HPD_HI_PENDING;
+		return 1;
+	}
+
+	/* Enable only the first attached DP port */
+	if (dp_attention_port != port && dp_attention_port != PD_PORT_NONE)
+		return 1;
+	dp_attention_port = port;
+
+	if (irq & cur_lvl) {
+		gpio_set_level(GPIO_USB_DP_HPD, 0);
+		hook_call_deferred(hpd_irq_deferred,
+				   HPD_DSTREAM_DEBOUNCE_IRQ);
+	} else if (irq & !cur_lvl) {
+		CPRINTF("ERR:HPD:IRQ&LOW\n");
+		return 0; /* nak */
+	} else {
+		gpio_set_level(GPIO_USB_DP_HPD, lvl);
+	}
 	/* ack */
 	return 1;
 }
 
 static void svdm_exit_dp_mode(int port)
 {
+	int other_port = port ? 0 : 1;
+
 	svdm_safe_dp_mode(port);
-	/* gpio_set_level(PORT_TO_HPD(port), 0); */
+	if (dp_attention_port == port || dp_attention_port == PD_PORT_NONE) {
+		gpio_set_level(GPIO_USB_DP_HPD, 0);
+		dp_attention_port = PD_PORT_NONE;
+	}
+
+	/* Enable the other port by sending hotplug detect signal */
+	if ((dp_flags[other_port] & DP_FLAGS_DP_ON) &&
+			!(dp_flags[other_port] & DP_FLAGS_HPD_HI_PENDING)) {
+		dp_attention_port = other_port;
+		hook_call_deferred(hpd_irq_deferred,
+				   HPD_DSTREAM_DEBOUNCE_IRQ);
+	}
 }
 
 static int svdm_enter_gfu_mode(int port, uint32_t mode_caps)
