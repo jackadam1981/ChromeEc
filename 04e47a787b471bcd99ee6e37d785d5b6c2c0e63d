@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b92b3816_d4bfd54c",
+        "filename": "board/ryu/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-11T18:36:24Z",
+      "side": 1,
+      "message": "Done, and modified the public-facing pericom driver functions to take a port number.",
+      "parentUuid": "19652496_0b1a21a0",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 1
+      },
+      "revId": "04e47a787b471bcd99ee6e37d785d5b6c2c0e63d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "997f5421_0cdb1795",
         "filename": "board/ryu/board.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-06-11T02:16:50Z",
       "side": 1,
       "message": "I would be in favor of simply naming these GPIOs the same across all boards so that we can put this function in common code instead of repeating it in every board. Something like:\n\nusb_is_sourcing_vbus(int port)\n{\n  if (port \u003d\u003d 0)\n    return gpio_get_level(GPIO_USB_C0_5V_EN);\n#if PORT_COUNT \u003d\u003d 2\n  if (port \u003d\u003d 1)\n    return gpio_get_level(GPIO_USB_C1_5V_EN);\n#endif\n\n  /* not valid port */\n  return 0;\n}",
+      "range": {
+        "startLine": 175,
+        "startChar": 23,
+        "endLine": 175,
+        "endChar": 40
+      },
+      "revId": "04e47a787b471bcd99ee6e37d785d5b6c2c0e63d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b92b3816_37af2b1b",
+        "filename": "board/ryu/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-11T18:36:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "997f5421_0cdb1795",
       "range": {
         "startLine": 175,
         "startChar": 23,
