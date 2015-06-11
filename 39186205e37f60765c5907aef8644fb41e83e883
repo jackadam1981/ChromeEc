@@ -22,6 +22,30 @@
       "revId": "39186205e37f60765c5907aef8644fb41e83e883",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "992af412_83acc876",
+        "filename": "include/libsharedobjs.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-06-11T16:34:25Z",
+      "side": 1,
+      "message": "I was thinking/checking to see that the RO and RW images do not overlap. If they did \"overlap\", I\u0027m assuming that 1 image is loaded at a time.\n\nThe RO memory offset could be different than the RW memory offset in the case that both images are loaded simultaneously and don\u0027t overlap.",
+      "parentUuid": "59e07c3c_e53a1086",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 66
+      },
+      "revId": "39186205e37f60765c5907aef8644fb41e83e883",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
