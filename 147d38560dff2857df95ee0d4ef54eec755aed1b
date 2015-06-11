@@ -1,0 +1,349 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59e07c3c_88ecfb05",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-11T18:05:51Z",
+      "side": 1,
+      "message": "that\u0027s seems wrong/useless",
+      "range": {
+        "startLine": 17,
+        "startChar": 9,
+        "endLine": 17,
+        "endChar": 18
+      },
+      "revId": "147d38560dff2857df95ee0d4ef54eec755aed1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79254042_2da041ef",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-11T18:05:51Z",
+      "side": 1,
+      "message": "isn\u0027t one goal of the queue to avoid this mutex locking ?",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 44
+      },
+      "revId": "147d38560dff2857df95ee0d4ef54eec755aed1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b92b3816_1409cd9d",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-11T18:05:51Z",
+      "side": 1,
+      "message": "for efficiency, maybe a union type for motion_sensor_data.data would be nice\nthen something like :\nvector.data_time \u003d __hw_clock_source_read();",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 69
+      },
+      "revId": "147d38560dff2857df95ee0d4ef54eec755aed1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9ecd03d_851a269e",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-11T18:05:51Z",
+      "side": 1,
+      "message": "do we want to merge that with motion_sense_insert_flush ?",
+      "range": {
+        "startLine": 110,
+        "startChar": 12,
+        "endLine": 110,
+        "endChar": 42
+      },
+      "revId": "147d38560dff2857df95ee0d4ef54eec755aed1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9ecd03d_e5617208",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-11T18:05:51Z",
+      "side": 1,
+      "message": "I\u0027m a fan of\nfifo_info-\u003etimestamp \u003d __hw_clock_source_read();\nbut you might see it as a layering violation",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 45
+      },
+      "revId": "147d38560dff2857df95ee0d4ef54eec755aed1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b92b3816_94515d5d",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-11T18:05:51Z",
+      "side": 1,
+      "message": "is there a reason to carry milliseconds everywhere if we need microseconds at the end ?",
+      "range": {
+        "startLine": 370,
+        "startChar": 10,
+        "endLine": 370,
+        "endChar": 36
+      },
+      "revId": "147d38560dff2857df95ee0d4ef54eec755aed1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79254042_4d101d05",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-11T18:05:51Z",
+      "side": 1,
+      "message": "is this BMI160_LATCH_FOREVER ?",
+      "range": {
+        "startLine": 388,
+        "startChar": 29,
+        "endLine": 388,
+        "endChar": 34
+      },
+      "revId": "147d38560dff2857df95ee0d4ef54eec755aed1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79254042_8d2dd54b",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-11T18:05:51Z",
+      "side": 1,
+      "message": "as you never want want INT1_INPUT, \nis it a fancy (and slow) way of just doing :\nraw_write8(s-\u003ei2c_addr, BMI160_INT_LATCH, BMI160_INT2_INPUT_EN | 0xF); ?",
+      "range": {
+        "startLine": 387,
+        "startChar": 0,
+        "endLine": 389,
+        "endChar": 54
+      },
+      "revId": "147d38560dff2857df95ee0d4ef54eec755aed1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79254042_0de2254e",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-11T18:05:51Z",
+      "side": 1,
+      "message": "static ?\n\na global \"buffer\" variable would not be a great name",
+      "range": {
+        "startLine": 447,
+        "startChar": 0,
+        "endLine": 447,
+        "endChar": 35
+      },
+      "revId": "147d38560dff2857df95ee0d4ef54eec755aed1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b92b3816_d496f5cc",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-11T18:05:51Z",
+      "side": 1,
+      "message": "typo or sensor novlang",
+      "range": {
+        "startLine": 464,
+        "startChar": 40,
+        "endLine": 464,
+        "endChar": 53
+      },
+      "revId": "147d38560dff2857df95ee0d4ef54eec755aed1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59e07c3c_c881e3d7",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-11T18:05:51Z",
+      "side": 1,
+      "message": "this is i2c_read16(I2C_PORT_ACCEL, s-\u003ei2c_addr, BMI160_FIFO_LENGTH_0, \u0026fifo_length);\nor Am I missing some subtle variation ?",
+      "range": {
+        "startLine": 514,
+        "startChar": 1,
+        "endLine": 519,
+        "endChar": 29
+      },
+      "revId": "147d38560dff2857df95ee0d4ef54eec755aed1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b92b3816_34816998",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-11T18:05:51Z",
+      "side": 1,
+      "message": "is that accurate or you just want to read \"fifo_length\" elements ?",
+      "range": {
+        "startLine": 530,
+        "startChar": 4,
+        "endLine": 530,
+        "endChar": 18
+      },
+      "revId": "147d38560dff2857df95ee0d4ef54eec755aed1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79254042_cdb98d3b",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-11T18:05:51Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand the termination condition here for the double loop.\nwhat is the fifo is not full with 64 elements ?",
+      "range": {
+        "startLine": 581,
+        "startChar": 1,
+        "endLine": 582,
+        "endChar": 17
+      },
+      "revId": "147d38560dff2857df95ee0d4ef54eec755aed1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "992af412_a38b0475",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-11T18:05:51Z",
+      "side": 1,
+      "message": "maybe it\u0027s time for a raw_read32 ?",
+      "range": {
+        "startLine": 601,
+        "startChar": 2,
+        "endLine": 605,
+        "endChar": 30
+      },
+      "revId": "147d38560dff2857df95ee0d4ef54eec755aed1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9ecd03d_a29c80f0",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-11T18:05:51Z",
+      "side": 1,
+      "message": "what is iter used for ?",
+      "range": {
+        "startLine": 618,
+        "startChar": 3,
+        "endLine": 618,
+        "endChar": 9
+      },
+      "revId": "147d38560dff2857df95ee0d4ef54eec755aed1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
