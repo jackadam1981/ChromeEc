@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d95e2ccf_8fe7fda3",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1121520
+      },
+      "writtenOn": "2015-06-11T17:40:40Z",
+      "side": 1,
+      "message": "you are right",
+      "parentUuid": "d9754c3f_34d89895",
+      "revId": "c3253bb11dbb646a2d90b29d6ae9b69b4f6db4f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9754c3f_14f23c13",
         "filename": "chip/mec1322/flash.c",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2015-06-10T23:59:17Z",
       "side": 1,
       "message": "No need for the \"+ 0\".",
+      "range": {
+        "startLine": 215,
+        "startChar": 35,
+        "endLine": 215,
+        "endChar": 36
+      },
+      "revId": "c3253bb11dbb646a2d90b29d6ae9b69b4f6db4f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "995834e7_e78c9c3f",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1121520
+      },
+      "writtenOn": "2015-06-11T17:40:40Z",
+      "side": 1,
+      "message": "aye",
+      "parentUuid": "d9754c3f_14f23c13",
       "range": {
         "startLine": 215,
         "startChar": 35,
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "995834e7_c7872019",
+        "filename": "common/spi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1121520
+      },
+      "writtenOn": "2015-06-11T17:40:40Z",
+      "side": 1,
+      "message": "Lets see why this works for Cyan\u0027s W25X40.\n\n1. W25X40 does not have SRP1. It only has SRP0. \n2. W25X40 does not reset SRP0 when HW pin is de-asserted.\n3. The mechanism of SRP/HW is as follows:\n\nW25X10_W25X20_W25X40_W25X80.pdf page 12:\nThe Status Register Protect (SRP) bit is a non-volatile read/write bit in status register (S7) that can be\nused in conjunction with the Write Protect (/WP) pin to disable writes to status register. When the SRP\nbit is set to a 0 state (factory default) the /WP pin has no control over status register. When the SRP\npin is set to a 1, the Write Status Register instruction is locked out while the /WP pin is low. When the\n/WP pin is high the Write Status Register instruction is allowed.\n\nIn other words: when WP is de-asserted, you can change SRP all you like.\n\n4. Please note current code will never be able to change SRP0 because spi_check_flash_wp() actually checks SRP0 state. So this is a catch22! :)\n\n5. The other flash parts namely W25Q64FW does, in fact, reset after power-cycle if SRP0 is 0 and if SRP1  is 1. This is refered to as \"power supply lock-down\" in datasheet. Perhaps the current code works under this assumption?",
+      "parentUuid": "39858859_1a44a1c6",
+      "revId": "c3253bb11dbb646a2d90b29d6ae9b69b4f6db4f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "992af412_bd132395",
         "filename": "common/spi_flash.c",
         "patchSetId": 1
@@ -70,6 +130,24 @@
       "writtenOn": "2015-06-10T23:59:17Z",
       "side": 1,
       "message": "Is spi_enable(0) missing throughout this file?",
+      "revId": "c3253bb11dbb646a2d90b29d6ae9b69b4f6db4f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f967709d_8a2feb14",
+        "filename": "common/spi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1121520
+      },
+      "writtenOn": "2015-06-11T17:40:40Z",
+      "side": 1,
+      "message": "the problem is that flash_get_protect() earlier sets spi_enable(0) when its done. So this is a clumsy. \n\nI originally wanted to do spi_enable() only in around spi transaction but then I heard this was a bad idea in burst reads cases.\n\nI am not sure what is the best way to deal with this. We can litter this file with spi_enables, but my guess it is not needed on other chips.",
+      "parentUuid": "992af412_bd132395",
       "revId": "c3253bb11dbb646a2d90b29d6ae9b69b4f6db4f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
