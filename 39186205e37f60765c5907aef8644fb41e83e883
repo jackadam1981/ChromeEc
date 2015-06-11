@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59e07c3c_e53a1086",
+        "filename": "include/libsharedobjs.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-11T16:11:39Z",
+      "side": 1,
+      "message": "I\u0027m not sure this is doing what what we want.\n\nWould #if (CONFIG_RO_MEM_OFF !\u003d CONFIG_RW_MEM_OFF) work?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 66
+      },
+      "revId": "39186205e37f60765c5907aef8644fb41e83e883",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
