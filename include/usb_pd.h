@@ -725,8 +725,21 @@ enum pd_dual_role_states {
 	PD_DRP_TOGGLE_OFF,
 	PD_DRP_FORCE_SINK,
 	PD_DRP_FORCE_SOURCE,
-	PD_DRP_DEBUG_ACC_TOGGLE
+	PD_DRP_DEBUG_ACC_TOGGLE_OFF,
+	PD_DRP_DEBUG_ACC_FORCE_SINK,
 };
+#ifdef CONFIG_CASE_CLOSED_DEBUG
+/*
+ * When going into S3 or S5, allow toggling to source only if VBUS is present
+ * in order to detect debug accessory.
+ */
+#define PD_DRP_S3_STATE PD_DRP_DEBUG_ACC_TOGGLE_OFF
+#define PD_DRP_S5_STATE PD_DRP_DEBUG_ACC_FORCE_SINK
+#else
+#define PD_DRP_S3_STATE PD_DRP_TOGGLE_OFF
+#define PD_DRP_S5_STATE PD_DRP_FORCE_SINK
+#endif
+
 /**
  * Get dual role state
  *

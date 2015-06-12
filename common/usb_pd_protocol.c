@@ -1147,8 +1147,10 @@ void pd_set_dual_role(enum pd_dual_role_states state)
 		 */
 		if (pd[i].power_role == PD_ROLE_SOURCE &&
 		    (drp_state == PD_DRP_FORCE_SINK ||
+		    (drp_state == PD_DRP_DEBUG_ACC_FORCE_SINK &&
+		     pd[i].task_state != PD_STATE_SRC_ACCESSORY) ||
 		     ((drp_state == PD_DRP_TOGGLE_OFF
-		       || drp_state == PD_DRP_DEBUG_ACC_TOGGLE)
+		       || drp_state == PD_DRP_DEBUG_ACC_TOGGLE_OFF)
 		      && pd[i].task_state == PD_STATE_SRC_DISCONNECTED))) {
 			pd[i].power_role = PD_ROLE_SINK;
 			set_state(i, PD_STATE_SNK_DISCONNECTED);
@@ -1834,7 +1836,8 @@ void pd_task(void)
 			 */
 			if ((drp_state == PD_DRP_TOGGLE_ON &&
 			     get_time().val >= next_role_swap) ||
-			    (drp_state == PD_DRP_DEBUG_ACC_TOGGLE &&
+			    ((drp_state == PD_DRP_DEBUG_ACC_TOGGLE_OFF ||
+			      drp_state == PD_DRP_DEBUG_ACC_FORCE_SINK) &&
 			     pd_snk_is_vbus_provided(port))) {
 				/* Swap roles to source */
 				pd[port].power_role = PD_ROLE_SOURCE;
@@ -2423,15 +2426,8 @@ DECLARE_HOOK(HOOK_CHIPSET_RESUME, dual_role_on, HOOK_PRIO_DEFAULT);
 
 static void dual_role_off(void)
 {
-#ifdef CONFIG_CASE_CLOSED_DEBUG
-	/*
-	 * Allow toggling to source only if VBUS is present in order
-	 * to detect debug accessory.
-	 */
-	pd_set_dual_role(PD_DRP_DEBUG_ACC_TOGGLE);
-#else
-	pd_set_dual_role(PD_DRP_TOGGLE_OFF);
-#endif
+	pd_set_dual_role(PD_DRP_S3_STATE);
+
 	CPRINTS("chipset -> S3");
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, dual_role_off, HOOK_PRIO_DEFAULT);
@@ -2439,15 +2435,8 @@ DECLARE_HOOK(HOOK_CHIPSET_STARTUP, dual_role_off, HOOK_PRIO_DEFAULT);
 
 static void dual_role_force_sink(void)
 {
-	pd_set_dual_role(PD_DRP_FORCE_SINK);
+	pd_set_dual_role(PD_DRP_S5_STATE);
 
-#ifdef CONFIG_CASE_CLOSED_DEBUG
-	/*
-	 * Allow toggling to source only if VBUS is present in order
-	 * to detect debug accessory.
-	 */
-	pd_set_dual_role(PD_DRP_DEBUG_ACC_TOGGLE);
-#endif
 	CPRINTS("chipset -> S5");
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, dual_role_force_sink, HOOK_PRIO_DEFAULT);
@@ -2646,8 +2635,11 @@ static int command_pd(int argc, char **argv)
 			case PD_DRP_FORCE_SOURCE:
 				ccprintf("force source\n");
 				break;
-			case PD_DRP_DEBUG_ACC_TOGGLE:
-				ccprintf("debug acc toggle\n");
+			case PD_DRP_DEBUG_ACC_TOGGLE_OFF:
+				ccprintf("[dbg] off\n");
+				break;
+			case PD_DRP_DEBUG_ACC_FORCE_SINK:
+				ccprintf("[dbg] force sink\n");
 				break;
 			}
 		} else {
@@ -2659,8 +2651,10 @@ static int command_pd(int argc, char **argv)
 				pd_set_dual_role(PD_DRP_FORCE_SINK);
 			else if (!strcasecmp(argv[2], "source"))
 				pd_set_dual_role(PD_DRP_FORCE_SOURCE);
-			else if (!strcasecmp(argv[2], "debug"))
-				pd_set_dual_role(PD_DRP_DEBUG_ACC_TOGGLE);
+			else if (!strcasecmp(argv[2], "dbgoff"))
+				pd_set_dual_role(PD_DRP_DEBUG_ACC_TOGGLE_OFF);
+			else if (!strcasecmp(argv[2], "dbgsink"))
+				pd_set_dual_role(PD_DRP_DEBUG_ACC_FORCE_SINK);
 			else
 				return EC_ERROR_PARAM3;
 		}
