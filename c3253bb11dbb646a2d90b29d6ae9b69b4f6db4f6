@@ -119,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "59095cdc_ae646f41",
+        "filename": "common/spi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-12T20:59:14Z",
+      "side": 1,
+      "message": "If SRP is zero and the WP pin is asserted, the status register can be changed. But we\u0027d still return ACCESS_DENIED here, which seems incorrect. So we should be checking the WP pin state and SRP state here, just checking the WP pin isn\u0027t enough.",
+      "parentUuid": "995834e7_c7872019",
+      "revId": "c3253bb11dbb646a2d90b29d6ae9b69b4f6db4f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "992af412_bd132395",
         "filename": "common/spi_flash.c",
         "patchSetId": 1
@@ -148,6 +166,24 @@
       "side": 1,
       "message": "the problem is that flash_get_protect() earlier sets spi_enable(0) when its done. So this is a clumsy. \n\nI originally wanted to do spi_enable() only in around spi transaction but then I heard this was a bad idea in burst reads cases.\n\nI am not sure what is the best way to deal with this. We can litter this file with spi_enables, but my guess it is not needed on other chips.",
       "parentUuid": "992af412_bd132395",
+      "revId": "c3253bb11dbb646a2d90b29d6ae9b69b4f6db4f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "390ca8ed_adaf55ed",
+        "filename": "common/spi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-12T20:59:14Z",
+      "side": 1,
+      "message": "Can we move the spi_enable calls up to the chip level function? Maybe there will be a performance impact if we enable / disable for every command, but we can measure it.",
+      "parentUuid": "f967709d_8a2feb14",
       "revId": "c3253bb11dbb646a2d90b29d6ae9b69b4f6db4f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
