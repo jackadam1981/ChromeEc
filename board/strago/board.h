@@ -40,6 +40,8 @@
 #define CONFIG_TEMP_SENSOR
 #define CONFIG_TEMP_SENSOR_TMP432
 
+#define CONFIG_BOARD_PMIC_ENABLE
+
 #define CONFIG_ALS
 #define CONFIG_ALS_ISL29035
 #define CONFIG_BATTERY_CUT_OFF
@@ -65,6 +67,9 @@
 #define CONFIG_LID_ANGLE
 #define CONFIG_LID_ANGLE_SENSOR_BASE	0
 #define CONFIG_LID_ANGLE_SENSOR_LID	1
+
+/* Number of buttons */
+#define CONFIG_BUTTON_COUNT		2
 
 /* Modules we want to exclude */
 #undef CONFIG_EEPROM
