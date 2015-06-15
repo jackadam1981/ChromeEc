@@ -161,6 +161,16 @@ int tcpm_alert_status(int port, int alert_reg, uint8_t *alert);
 
 
 /**
+ * Check if TCPC is initialized and ready
+ *
+ * @param port Type-C port number
+ * @param ready Pointer to location to store ready flag
+ *
+ * @return EC_SUCCESS or error
+ */
+int tcpm_is_tcpc_ready(int port, int *ready);
+
+/**
  * Read the CC line status.
  *
  * @param port Type-C port number

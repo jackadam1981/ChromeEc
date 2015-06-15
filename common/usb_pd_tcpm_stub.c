@@ -9,6 +9,7 @@
 #include "usb_pd_tcpm.h"
 
 extern int tcpc_alert_status(int port, int alert_reg, uint8_t *alert);
+extern int tcpc_is_tcpc_ready(int port, int *ready);
 extern int tcpc_get_cc(int port, int *cc1, int *cc2);
 extern int tcpc_set_cc(int port, int pull);
 extern int tcpc_set_polarity(int port, int polarity);
@@ -19,6 +20,11 @@ extern int tcpc_set_rx_enable(int port, int enable);
 extern int tcpc_get_message(int port, uint32_t *payload, int *head);
 extern int tcpc_transmit(int port, enum tcpm_transmit_type type,
 			 uint16_t header, const uint32_t *data);
+
+int tcpm_is_tcpc_ready(int port, int *ready)
+{
+	return tcpc_is_tcpc_ready(port, ready);
+}
 
 int tcpm_get_cc(int port, int *cc1, int *cc2)
 {
