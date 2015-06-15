@@ -1322,6 +1322,9 @@ void pd_task(void)
 	timestamp_t now;
 	int caps_count = 0, hard_reset_sent = 0;
 	int evt;
+#ifndef CONFIG_USB_PD_TCPC
+	int tcpc_ready = 0;
+#endif
 
 	/* Ensure the power supply is in the default state */
 	pd_power_supply_reset(port);
@@ -1329,6 +1332,16 @@ void pd_task(void)
 #ifdef CONFIG_USB_PD_TCPC
 	/* Initialize port controller */
 	tcpc_init(port);
+#else
+	/* Wait for TCPC to initialize */
+	while (1) {
+		tcpm_is_tcpc_ready(port, &tcpc_ready);
+		if (tcpc_ready)
+			break;
+		msleep(10);
+	}
+
+	CPRINTF("[%T TCPC p%d ready]\n", port);
 #endif
 
 	/* Disable TCPC RX until connection is established */

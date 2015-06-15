@@ -19,6 +19,16 @@
 
 static int tcpc_polarity, tcpc_vconn;
 
+int tcpm_is_tcpc_ready(int port, int *ready)
+{
+	int rv;
+	rv = i2c_read16(I2C_PORT_TCPC, I2C_ADDR_TCPC(port),
+			 TCPC_REG_VENDOR_ID, ready);
+	/* If VID is non-zero, then TCPC is ready */
+	*ready = !!*ready;
+	return rv;
+}
+
 int tcpm_get_cc(int port, int *cc1, int *cc2)
 {
 	int status;
