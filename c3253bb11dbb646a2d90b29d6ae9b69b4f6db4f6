@@ -137,6 +137,24 @@
     },
     {
       "key": {
+        "uuid": "19b8c43c_3609e0e3",
+        "filename": "common/spi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1121520
+      },
+      "writtenOn": "2015-06-15T21:30:41Z",
+      "side": 1,
+      "message": "you are right, I did not think of this case. fixed",
+      "parentUuid": "59095cdc_ae646f41",
+      "revId": "c3253bb11dbb646a2d90b29d6ae9b69b4f6db4f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "992af412_bd132395",
         "filename": "common/spi_flash.c",
         "patchSetId": 1
@@ -184,6 +202,24 @@
       "side": 1,
       "message": "Can we move the spi_enable calls up to the chip level function? Maybe there will be a performance impact if we enable / disable for every command, but we can measure it.",
       "parentUuid": "f967709d_8a2feb14",
+      "revId": "c3253bb11dbb646a2d90b29d6ae9b69b4f6db4f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39b10858_544102b6",
+        "filename": "common/spi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1121520
+      },
+      "writtenOn": "2015-06-15T21:30:41Z",
+      "side": 1,
+      "message": "here is timing information for spi_enable/disable cycle:\n10000 cycles in 1812159 usec; roughly 181 usec/cycle\n\nThis sounds reasonable overhead to me",
+      "parentUuid": "390ca8ed_adaf55ed",
       "revId": "c3253bb11dbb646a2d90b29d6ae9b69b4f6db4f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
