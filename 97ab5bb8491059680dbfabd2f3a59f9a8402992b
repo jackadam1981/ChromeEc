@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "594a3c43_0c974bca",
+        "filename": "board/pdeval-stm32f072/openocd-flash.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-16T17:31:00Z",
+      "side": 1,
+      "message": "just copied that stuff from disco-stm32f072 I\u0027m probably going to add the openocd stuff to flash_ec.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 52
+      },
+      "revId": "97ab5bb8491059680dbfabd2f3a59f9a8402992b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "796d40b3_ed43e9e2",
         "filename": "board/pdeval-stm32f072/usb_pd_policy.c",
         "patchSetId": 1
