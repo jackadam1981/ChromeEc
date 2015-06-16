@@ -22,6 +22,30 @@
       "revId": "0770edadc3cd81d4c4666d3771cf39ecd5720725",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "594a3c43_f933a820",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-06-16T20:25:25Z",
+      "side": 1,
+      "message": "Ok, I put them back. I felt lazy writing 6 functions.",
+      "parentUuid": "b98a589d_0388f26e",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 59
+      },
+      "revId": "0770edadc3cd81d4c4666d3771cf39ecd5720725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
