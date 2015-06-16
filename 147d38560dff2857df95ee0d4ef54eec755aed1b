@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "190364c0_61b6ecc6",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-06-16T20:25:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59e07c3c_88ecfb05",
+      "range": {
+        "startLine": 17,
+        "startChar": 9,
+        "endLine": 17,
+        "endChar": 18
+      },
+      "revId": "147d38560dff2857df95ee0d4ef54eec755aed1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79254042_2da041ef",
         "filename": "common/motion_sense.c",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2015-06-11T18:05:51Z",
       "side": 1,
       "message": "isn\u0027t one goal of the queue to avoid this mutex locking ?",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 44
+      },
+      "revId": "147d38560dff2857df95ee0d4ef54eec755aed1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59e07c3c_988d6206",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-06-16T20:25:25Z",
+      "side": 1,
+      "message": "I use mutex_lock only when code from different task could write the same variable.\nOn the read side, we read from here or the host task: we need a mutex for the tail pointer...",
+      "parentUuid": "79254042_2da041ef",
       "range": {
         "startLine": 89,
         "startChar": 1,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "997f5421_a65c5a4f",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-06-16T20:25:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b92b3816_1409cd9d",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 69
+      },
+      "revId": "147d38560dff2857df95ee0d4ef54eec755aed1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9ecd03d_851a269e",
         "filename": "common/motion_sense.c",
         "patchSetId": 5
@@ -82,6 +154,30 @@
       "writtenOn": "2015-06-11T18:05:51Z",
       "side": 1,
       "message": "do we want to merge that with motion_sense_insert_flush ?",
+      "range": {
+        "startLine": 110,
+        "startChar": 12,
+        "endLine": 110,
+        "endChar": 42
+      },
+      "revId": "147d38560dff2857df95ee0d4ef54eec755aed1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "190364c0_416da829",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-06-16T20:25:25Z",
+      "side": 1,
+      "message": "flags as to be set to 0. I can inline, the compiler will take care of inserting gotos.",
+      "parentUuid": "f9ecd03d_851a269e",
       "range": {
         "startLine": 110,
         "startChar": 12,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "992af412_863b6ca6",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-06-16T20:25:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9ecd03d_e5617208",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 45
+      },
+      "revId": "147d38560dff2857df95ee0d4ef54eec755aed1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b92b3816_94515d5d",
         "filename": "common/motion_sense.c",
         "patchSetId": 5
@@ -128,6 +248,30 @@
       "writtenOn": "2015-06-11T18:05:51Z",
       "side": 1,
       "message": "is there a reason to carry milliseconds everywhere if we need microseconds at the end ?",
+      "range": {
+        "startLine": 370,
+        "startChar": 10,
+        "endLine": 370,
+        "endChar": 36
+      },
+      "revId": "147d38560dff2857df95ee0d4ef54eec755aed1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59e07c3c_53ef3bfa",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-06-16T20:25:25Z",
+      "side": 1,
+      "message": "We use MS when talking to the host. I make the conversion in the host command routine.\nDone.",
+      "parentUuid": "b92b3816_94515d5d",
       "range": {
         "startLine": 370,
         "startChar": 10,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "992af412_06243c6d",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-06-16T20:25:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79254042_4d101d05",
+      "range": {
+        "startLine": 388,
+        "startChar": 29,
+        "endLine": 388,
+        "endChar": 34
+      },
+      "revId": "147d38560dff2857df95ee0d4ef54eec755aed1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79254042_8d2dd54b",
         "filename": "driver/accelgyro_bmi160.c",
         "patchSetId": 5
@@ -174,6 +342,30 @@
       "writtenOn": "2015-06-11T18:05:51Z",
       "side": 1,
       "message": "as you never want want INT1_INPUT, \nis it a fancy (and slow) way of just doing :\nraw_write8(s-\u003ei2c_addr, BMI160_INT_LATCH, BMI160_INT2_INPUT_EN | 0xF); ?",
+      "range": {
+        "startLine": 387,
+        "startChar": 0,
+        "endLine": 389,
+        "endChar": 54
+      },
+      "revId": "147d38560dff2857df95ee0d4ef54eec755aed1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "390ca8ed_6ee25399",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-06-16T20:25:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79254042_8d2dd54b",
       "range": {
         "startLine": 387,
         "startChar": 0,
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "59095cdc_0fabd592",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-06-16T20:25:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79254042_0de2254e",
+      "range": {
+        "startLine": 447,
+        "startChar": 0,
+        "endLine": 447,
+        "endChar": 35
+      },
+      "revId": "147d38560dff2857df95ee0d4ef54eec755aed1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b92b3816_d496f5cc",
         "filename": "driver/accelgyro_bmi160.c",
         "patchSetId": 5
@@ -220,6 +436,30 @@
       "writtenOn": "2015-06-11T18:05:51Z",
       "side": 1,
       "message": "typo or sensor novlang",
+      "range": {
+        "startLine": 464,
+        "startChar": 40,
+        "endLine": 464,
+        "endChar": 53
+      },
+      "revId": "147d38560dff2857df95ee0d4ef54eec755aed1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "190364c0_8c76d7b4",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-06-16T20:25:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b92b3816_d496f5cc",
       "range": {
         "startLine": 464,
         "startChar": 40,
@@ -278,6 +518,30 @@
     },
     {
       "key": {
+        "uuid": "992af412_467eb4dd",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-06-16T20:25:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b92b3816_34816998",
+      "range": {
+        "startLine": 530,
+        "startChar": 4,
+        "endLine": 530,
+        "endChar": 18
+      },
+      "revId": "147d38560dff2857df95ee0d4ef54eec755aed1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79254042_cdb98d3b",
         "filename": "driver/accelgyro_bmi160.c",
         "patchSetId": 5
@@ -289,6 +553,30 @@
       "writtenOn": "2015-06-11T18:05:51Z",
       "side": 1,
       "message": "I\u0027m not sure I understand the termination condition here for the double loop.\nwhat is the fifo is not full with 64 elements ?",
+      "range": {
+        "startLine": 581,
+        "startChar": 1,
+        "endLine": 582,
+        "endChar": 17
+      },
+      "revId": "147d38560dff2857df95ee0d4ef54eec755aed1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "992af412_8674ccf5",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-06-16T20:25:25Z",
+      "side": 1,
+      "message": "I am using the header fifo, so the number of sample is variable.\nWe stop when we get the empty header.",
+      "parentUuid": "79254042_cdb98d3b",
       "range": {
         "startLine": 581,
         "startChar": 1,
@@ -324,6 +612,30 @@
     },
     {
       "key": {
+        "uuid": "59095cdc_cfc6fd0d",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-06-16T20:25:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "992af412_a38b0475",
+      "range": {
+        "startLine": 601,
+        "startChar": 2,
+        "endLine": 605,
+        "endChar": 30
+      },
+      "revId": "147d38560dff2857df95ee0d4ef54eec755aed1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9ecd03d_a29c80f0",
         "filename": "driver/accelgyro_bmi160.c",
         "patchSetId": 5
@@ -335,6 +647,30 @@
       "writtenOn": "2015-06-11T18:05:51Z",
       "side": 1,
       "message": "what is iter used for ?",
+      "range": {
+        "startLine": 618,
+        "startChar": 3,
+        "endLine": 618,
+        "endChar": 9
+      },
+      "revId": "147d38560dff2857df95ee0d4ef54eec755aed1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99c4b4d3_84d186f9",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-06-16T20:25:25Z",
+      "side": 1,
+      "message": "for a printf that is no more. Removed.",
+      "parentUuid": "f9ecd03d_a29c80f0",
       "range": {
         "startLine": 618,
         "startChar": 3,
