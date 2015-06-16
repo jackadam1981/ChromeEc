@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b99c18d9_e2bf8c4c",
+        "filename": "chip/it83xx/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-16T14:49:57Z",
+      "side": 1,
+      "message": "ok, but it would still be better to make these build file changes in a separate CL and check that in first.",
+      "parentUuid": "39b10858_773408e6",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 26
+      },
+      "revId": "0fe6570a6998b2bd8befe76b14baeb77e37df4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9ba1036_75a080f0",
         "filename": "chip/it83xx/spi.c",
         "patchSetId": 1
