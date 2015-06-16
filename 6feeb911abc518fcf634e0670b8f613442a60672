@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39b10858_346d5e2b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1326,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-16T00:59:39Z",
+      "side": 1,
+      "message": "move it down in the while loop",
+      "range": {
+        "startLine": 1326,
+        "startChar": 1,
+        "endLine": 1326,
+        "endChar": 20
+      },
+      "revId": "6feeb911abc518fcf634e0670b8f613442a60672",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b99c18d9_e1db0e15",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1344,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-16T00:59:39Z",
+      "side": 1,
+      "message": "shouldn\u0027t this part of the tcpm code ?\nthe simple tcpc_init in the stub version and the loop over i2c in the other one ?",
+      "range": {
+        "startLine": 1332,
+        "startChar": 0,
+        "endLine": 1344,
+        "endChar": 40
+      },
+      "revId": "6feeb911abc518fcf634e0670b8f613442a60672",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b99c18d9_a1f8e678",
+        "filename": "common/usb_pd_tcpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-16T00:59:39Z",
+      "side": 1,
+      "message": "maybe you should check rv to verify that the transfer is a success else I guess ready content is undefined",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 18
+      },
+      "revId": "6feeb911abc518fcf634e0670b8f613442a60672",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
