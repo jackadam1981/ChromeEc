@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b99c18d9_01e8da73",
+        "filename": "chip/it83xx/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-16T01:41:15Z",
+      "side": 1,
+      "message": "this seems unrelated, separate CL",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 26
+      },
+      "revId": "0fe6570a6998b2bd8befe76b14baeb77e37df4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9ba1036_75a080f0",
         "filename": "chip/it83xx/spi.c",
         "patchSetId": 1
@@ -41,6 +64,29 @@
         "startChar": 0,
         "endLine": 203,
         "endChar": 8
+      },
+      "revId": "0fe6570a6998b2bd8befe76b14baeb77e37df4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b99c18d9_81fcca37",
+        "filename": "core/nds32/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-16T01:41:15Z",
+      "side": 1,
+      "message": "separate CL",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 26
       },
       "revId": "0fe6570a6998b2bd8befe76b14baeb77e37df4e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
