@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99abd4ef_3b5d43f9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002584
+      },
+      "writtenOn": "2015-06-17T04:59:13Z",
+      "side": 1,
+      "message": "modify battery parameters",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 21
+      },
+      "revId": "e984bfaa12aa150dcdbb4426604045b3a8dd2508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9ba1036_1ea2f131",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002584
+      },
+      "writtenOn": "2015-06-17T04:59:13Z",
+      "side": 1,
+      "message": "Will new parameters work for older devices? Will this require a new RO firmware?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 49
+      },
+      "revId": "e984bfaa12aa150dcdbb4426604045b3a8dd2508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99abd4ef_1b5a0701",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002584
+      },
+      "writtenOn": "2015-06-17T04:59:13Z",
+      "side": 1,
+      "message": "Please file an issue. Attach the new battery datasheet to the issue tracker.",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "e984bfaa12aa150dcdbb4426604045b3a8dd2508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
