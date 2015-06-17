@@ -59,6 +59,8 @@
 
 #define CONFIG_I2C
 
+#define CONFIG_LOW_POWER_IDLE
+
 /* Accelerometer */
 #define CONFIG_ACCEL_KXCJ9
 #define CONFIG_CMD_ACCELS
