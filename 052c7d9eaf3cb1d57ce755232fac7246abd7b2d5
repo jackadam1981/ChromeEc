@@ -16,6 +16,24 @@
       "revId": "052c7d9eaf3cb1d57ce755232fac7246abd7b2d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b99c18d9_aa7716f9",
+        "filename": "chip/stm32/usb_gpio.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-06-17T18:51:05Z",
+      "side": 1,
+      "message": "The USB_GPIO_CONFIG macro is only used in one place (discovery-stm32f072/board.c), and I put a ; there.\n\n[I prefer putting the ; in the .c file, because it makes the indentation work better in Emacs]",
+      "parentUuid": "594a3c43_8d3412e7",
+      "revId": "052c7d9eaf3cb1d57ce755232fac7246abd7b2d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
