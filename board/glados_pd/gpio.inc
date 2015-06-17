@@ -43,7 +43,7 @@ GPIO(SLAVE_I2C_SCL,          PIN(B, 6),  GPIO_INPUT)
 GPIO(SLAVE_I2C_SDA,          PIN(B, 7),  GPIO_INPUT)
 
 /* Case closed debugging. */
-GPIO(EC_INT,                 PIN(A, 14), GPIO_OUT_HIGH)
+GPIO(EC_INT,                 PIN(B, 10), GPIO_OUT_HIGH)
 UNIMPLEMENTED(WP_L)
 UNIMPLEMENTED(ENTERING_RW)
 
