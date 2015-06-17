@@ -98,6 +98,8 @@ BOARDS_MEC1322=(
 # Flags
 DEFINE_string board "${DEFAULT_BOARD}" \
 	"The board to run debugger on."
+DEFINE_boolean dfu "${FLAGS_FALSE}" \
+	"Force DFU programming (STM32) regardless of default programmer."
 DEFINE_string image "" \
 	"Full pathname of the EC firmware image to flash."
 DEFINE_string offset "0" \
@@ -164,7 +166,9 @@ servo_sh_hard_reset() {
 }
 
 ec_reset() {
-	eval ${SERVO_TYPE}_${MCU}_hard_reset
+	if [ -n "${SERVO_TYPE}" ]; then
+		eval ${SERVO_TYPE}_${MCU}_hard_reset
+	fi
 }
 
 # force the EC to boot in serial monitor mode
@@ -384,8 +388,11 @@ function flash_stm32_dfu() {
 	fi
 
 	SIZE=$(wc -c ${IMG} | cut -d' ' -f1)
-	# Remove read protection
-	sudo $DFU_UTIL -a 0 -s ${ADDR}:${SIZE}:force:unprotect -D "${IMG}"
+	if ([ "$DFU_REMOVE_READ_PROTECTION" = ${FLAGS_TRUE} ]) ; then
+		# Remove read protection
+		sudo $DFU_UTIL -a 0 -s ${ADDR}:${SIZE}:force:unprotect \
+		    -D "${IMG}"
+	fi
 	# Wait for mass-erase and reboot after unprotection
 	sleep 1
 	# Actual image flashing
@@ -481,6 +488,19 @@ function flash_mec1322() {
 	save=
 }
 
+IMG="$(ec_image)"
+info "Using ${MCU} image : ${IMG}"
+
+if ([ "${FLAGS_dfu}" = ${FLAGS_TRUE} ]) ; then
+	info "Forcing STM32 DFU programming due to --dfu arg"
+	# No servo
+	SERVO_TYPE=
+	# Do not save/restore servo settings
+	save=
+	flash_stm32_dfu
+	exit
+fi
+
 if dut_control boot_mode 2>/dev/null ; then
 	if [[ "${MCU}" != "ec" ]] ; then
 		die "Toad cable can't support non-ec UARTs"
@@ -488,9 +508,6 @@ if dut_control boot_mode 2>/dev/null ; then
 	SERVO_TYPE=toad
 	info "Using a dedicated debug cable"
 fi
-
-IMG="$(ec_image)"
-info "Using ${MCU} image : ${IMG}"
 
 EC_UART="$(ec_uart)"
 info "${MCU} UART pty : ${EC_UART}"
@@ -507,6 +524,7 @@ if $(in_array "${BOARDS_LM4[@]}" "${BOARD}"); then
 elif $(in_array "${BOARDS_STM32[@]}" "${BOARD}"); then
 	flash_stm32
 elif $(in_array "${BOARDS_STM32_DFU[@]}" "${BOARD}"); then
+	DFU_REMOVE_READ_PROTECTION=${FLAGS_TRUE}
 	flash_stm32_dfu
 elif $(in_array "${BOARDS_NPCX[@]}" "${BOARD}"); then
 	flash_npcx
