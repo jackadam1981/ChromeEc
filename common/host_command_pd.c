@@ -21,7 +21,7 @@
 
 #define TASK_EVENT_EXCHANGE_PD_STATUS  TASK_EVENT_CUSTOM(1)
 
-#ifdef CONFIG_USB_PD_MCU_CHG_CTRL
+#ifdef CONFIG_HOSTCMD_PD_CHG_CTRL
 /* By default allow 5V charging only for the dead battery case */
 static enum pd_charge_state charge_state = PD_CHARGE_5V;
 
@@ -36,7 +36,7 @@ int pd_get_active_charge_port(void)
 
 void host_command_pd_send_status(enum pd_charge_state new_chg_state)
 {
-#ifdef CONFIG_USB_PD_MCU_CHG_CTRL
+#ifdef CONFIG_HOSTCMD_PD_CHG_CTRL
 	/* Update PD MCU charge state if necessary */
 	if (new_chg_state != PD_CHARGE_NO_CHANGE)
 		charge_state = new_chg_state;
@@ -47,6 +47,7 @@ void host_command_pd_send_status(enum pd_charge_state new_chg_state)
 
 static void pd_exchange_status(void)
 {
+#ifdef CONFIG_HOSTCMD_PD
 	struct ec_params_pd_status ec_status;
 	struct ec_response_pd_status pd_status;
 	int rv = 0;
@@ -55,7 +56,7 @@ static void pd_exchange_status(void)
 #endif
 
 	/* Send PD charge state and battery state of charge */
-#ifdef CONFIG_USB_PD_MCU_CHG_CTRL
+#ifdef CONFIG_HOSTCMD_PD_CHG_CTRL
 	ec_status.charge_state = charge_state;
 #endif
 	if (charge_get_flags() & CHARGE_FLAG_BATT_RESPONSIVE)
@@ -93,7 +94,7 @@ static void pd_exchange_status(void)
 	}
 #endif
 
-#ifdef CONFIG_USB_PD_MCU_CHG_CTRL
+#ifdef CONFIG_HOSTCMD_PD_CHG_CTRL
 #ifdef HAS_TASK_LIGHTBAR
 	/*
 	 * If charge port has changed, and it was initialized, then show
@@ -117,13 +118,18 @@ static void pd_exchange_status(void)
 					CONFIG_CHARGER_INPUT_CURRENT));
 	if (rv < 0)
 		CPRINTS("Failed to set input current limit from PD MCU");
-#endif /* CONFIG_USB_PD_MCU_CHG_CTRL */
+#endif /* CONFIG_HOSTCMD_PD_CHG_CTRL */
 
 	/* If PD is signalling host event, then pass it up to AP */
 	if (pd_status.status & PD_STATUS_HOST_EVENT)
 		host_set_single_event(EC_HOST_EVENT_PD_MCU);
+#endif /* CONFIG_HOSTCMD_PD */
 
-#ifdef CONFIG_USB_PD_TCPM_TCPCI
+	/*
+	 * If we are TCPM, connected to an off chip TCPC, then call check
+	 * TCPC alert status.
+	 */
+#if defined(CONFIG_USB_POWER_DELIVERY) && !defined(CONFIG_USB_PD_TCPM_STUB)
 	tcpc_alert();
 #endif
 }
