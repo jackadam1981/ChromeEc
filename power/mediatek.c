@@ -581,6 +581,7 @@ enum power_state power_handle_state(enum power_state state)
 		boot_from_g3 = check_for_power_on_event();
 		if (boot_from_g3)
 			return POWER_G3S5;
+		enable_sleep(SLEEP_MASK_AP_RUN);
 		break;
 
 	case POWER_G3S5:
