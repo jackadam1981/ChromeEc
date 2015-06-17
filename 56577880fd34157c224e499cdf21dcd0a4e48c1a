@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19b8c43c_e5bf9c4c",
+        "filename": "board/oak/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-17T15:04:05Z",
+      "side": 1,
+      "message": "nit: multi-line comments generally start with one star, /*, and function headers have two, /**. so, this should be /*.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 3
+      },
+      "revId": "56577880fd34157c224e499cdf21dcd0a4e48c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
