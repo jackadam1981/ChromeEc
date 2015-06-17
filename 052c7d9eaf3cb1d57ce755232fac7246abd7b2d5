@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "594a3c43_8d3412e7",
+        "filename": "chip/stm32/usb_gpio.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-06-17T15:49:43Z",
+      "side": 1,
+      "message": "I\u0027d either put the ; make here, or add one at the end of the macro invocation in the discovery board.c file.",
+      "revId": "052c7d9eaf3cb1d57ce755232fac7246abd7b2d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
