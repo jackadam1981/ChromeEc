@@ -44,24 +44,10 @@
 static void pd_mcu_interrupt(enum gpio_signal signal)
 {
 	/* Exchange status with PD MCU to determine interrupt cause */
-	host_command_pd_send_status(0);
 }
 
 static void update_vbus_supplier(int port, int vbus_level)
 {
-	struct charge_port_info charge;
-
-	/*
-	 * If VBUS is low, or VBUS is high and we are not outputting VBUS
-	 * ourselves, then update the VBUS supplier.
-	 */
-	if (!vbus_level || !usb_charger_port_is_sourcing_vbus(port)) {
-		charge.voltage = USB_BC12_CHARGE_VOLTAGE;
-		charge.current = vbus_level ? DEFAULT_CURR_LIMIT : 0;
-		charge_manager_update_charge(CHARGE_SUPPLIER_VBUS,
-					     port,
-					     &charge);
-	}
 }
 
 void vbus0_evt(enum gpio_signal signal)
@@ -71,7 +57,6 @@ void vbus0_evt(enum gpio_signal signal)
 
 	CPRINTF("VBUS C0, %d\n", vbus_level);
 	update_vbus_supplier(0, vbus_level);
-	task_wake(TASK_ID_PD_C0);
 }
 
 void vbus1_evt(enum gpio_signal signal)
@@ -81,17 +66,14 @@ void vbus1_evt(enum gpio_signal signal)
 
 	CPRINTF("VBUS C1, %d\n", vbus_level);
 	update_vbus_supplier(0, vbus_level);
-	task_wake(TASK_ID_PD_C1);
 }
 
 void usb0_evt(enum gpio_signal signal)
 {
-	task_wake(TASK_ID_USB_CHG_P0);
 }
 
 void usb1_evt(enum gpio_signal signal)
 {
-	task_wake(TASK_ID_USB_CHG_P1);
 }
 
 #include "gpio_list.h"
@@ -122,7 +104,6 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 const struct i2c_port_t i2c_ports[]  = {
 	{"batt",     MEC1322_I2C0_0, 100,  GPIO_I2C0_0_SCL, GPIO_I2C0_0_SDA},
 	{"muxes",    MEC1322_I2C0_1, 100,  GPIO_I2C0_1_SCL, GPIO_I2C0_1_SDA},
-	{"pd_mcu",   MEC1322_I2C1,  1000,  GPIO_I2C1_SCL,   GPIO_I2C1_SDA},
 	{"sensors",  MEC1322_I2C2,   400,  GPIO_I2C2_SCL,   GPIO_I2C2_SDA  },
 	{"pmic",     MEC1322_I2C3,   400,  GPIO_I2C3_SCL,   GPIO_I2C3_SDA  },
 };
@@ -188,91 +169,11 @@ DECLARE_HOOK(HOOK_CHIPSET_PRE_INIT, pmic_init, HOOK_PRIO_DEFAULT);
 /* Initialize board. */
 static void board_init(void)
 {
-	int i;
-	struct charge_port_info charge_none;
-
-	/* Enable PD MCU interrupt */
-	gpio_enable_interrupt(GPIO_PD_MCU_INT);
 	/* Enable VBUS interrupt */
 	gpio_enable_interrupt(GPIO_USB_C0_VBUS_WAKE_L);
 	gpio_enable_interrupt(GPIO_USB_C1_VBUS_WAKE_L);
-
-	/* Initialize all pericom charge suppliers to 0 */
-	charge_none.voltage = USB_BC12_CHARGE_VOLTAGE;
-	charge_none.current = 0;
-	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
-		charge_manager_update_charge(CHARGE_SUPPLIER_PROPRIETARY,
-					     i,
-					     &charge_none);
-		charge_manager_update_charge(CHARGE_SUPPLIER_BC12_CDP,
-					     i,
-					     &charge_none);
-		charge_manager_update_charge(CHARGE_SUPPLIER_BC12_DCP,
-					     i,
-					     &charge_none);
-		charge_manager_update_charge(CHARGE_SUPPLIER_BC12_SDP,
-					     i,
-					     &charge_none);
-		charge_manager_update_charge(CHARGE_SUPPLIER_OTHER,
-					     i,
-					     &charge_none);
-	}
-
-	/* Initialize VBUS supplier based on whether or not VBUS is present */
-	update_vbus_supplier(0, !gpio_get_level(GPIO_USB_C0_VBUS_WAKE_L));
-	update_vbus_supplier(1, !gpio_get_level(GPIO_USB_C1_VBUS_WAKE_L));
-
-	/* Enable pericom BC1.2 interrupts */
-	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_L);
-	gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_L);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
-
-/**
- * Set active charge port -- only one port can be active at a time.
- *
- * @param charge_port   Charge port to enable.
- *
- * Returns EC_SUCCESS if charge port is accepted and made active,
- * EC_ERROR_* otherwise.
- */
-int board_set_active_charge_port(int charge_port)
-{
-	/* charge port is a realy physical port */
-	int is_real_port = (charge_port >= 0 &&
-			    charge_port < CONFIG_USB_PD_PORT_COUNT);
-	/* check if we are source vbus on that port */
-	int source = gpio_get_level(charge_port == 0 ? GPIO_USB_C0_5V_EN :
-						       GPIO_USB_C1_5V_EN);
-
-	if (is_real_port && source) {
-		CPRINTS("Skip enable p%d", charge_port);
-		return EC_ERROR_INVAL;
-	}
-
-	CPRINTS("New chg p%d", charge_port);
-
-	if (charge_port == CHARGE_PORT_NONE) {
-		/*
-		 * TODO: currently we only get VBUS knowledge when charge
-		 * is enabled. so, when not charging, we need to enable
-		 * both ports. but, this is dangerous if you have two
-		 * chargers plugged in and you set charge override to -1
-		 * then it will enable both sides!
-		 */
-		gpio_set_level(GPIO_USB_C0_CHARGE_EN_L, 0);
-		gpio_set_level(GPIO_USB_C1_CHARGE_EN_L, 0);
-	} else {
-		/* Make sure non-charging port is disabled */
-		gpio_set_level(charge_port ? GPIO_USB_C0_CHARGE_EN_L :
-					     GPIO_USB_C1_CHARGE_EN_L, 1);
-		/* Enable charging port */
-		gpio_set_level(charge_port ? GPIO_USB_C1_CHARGE_EN_L :
-					     GPIO_USB_C0_CHARGE_EN_L, 0);
-	}
-
-	return EC_SUCCESS;
-}
 
 /**
  * Set the charge limit based upon desired maximum.
