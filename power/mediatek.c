@@ -343,11 +343,9 @@ enum power_state power_chipset_init(void)
 		if (power_get_signals() & IN_POWER_GOOD) {
 			CPRINTS("SOC ON\n");
 			init_power_state = POWER_S0;
-			disable_sleep(SLEEP_MASK_AP_RUN);
 		} else {
 			CPRINTS("SOC OFF\n");
 			init_power_state = POWER_G3;
-			enable_sleep(SLEEP_MASK_AP_RUN);
 		}
 	}
 
@@ -489,7 +487,6 @@ static void power_on(void)
 	gpio_set_flags(GPIO_SUSPEND_L, INT_BOTH_PULL_UP);
 	gpio_set_flags(GPIO_EC_INT, GPIO_OUTPUT | GPIO_OUT_HIGH);
 
-	disable_sleep(SLEEP_MASK_AP_RUN);
 #ifdef HAS_TASK_POWERLED
 	powerled_set_state(POWERLED_STATE_ON);
 #endif
@@ -545,7 +542,6 @@ static void power_off(void)
 		       GPIO_INPUT);
 
 	lid_opened = 0;
-	enable_sleep(SLEEP_MASK_AP_RUN);
 #ifdef HAS_TASK_POWERLED
 	powerled_set_state(POWERLED_STATE_OFF);
 #endif
@@ -634,6 +630,13 @@ enum power_state power_handle_state(enum power_state state)
 		powerled_set_state(POWERLED_STATE_ON);
 #endif
 		hook_notify(HOOK_CHIPSET_RESUME);
+
+		/*
+		 * Disable idle task deep sleep. This means that the low
+		 * power idle task will not go into deep sleep while in S0.
+		 */
+		disable_sleep(SLEEP_MASK_AP_RUN);
+
 		return POWER_S0;
 
 	case POWER_S0:
@@ -656,6 +659,13 @@ enum power_state power_handle_state(enum power_state state)
 #endif
 		/* Call hooks here since we don't know it prior to AP suspend */
 		hook_notify(HOOK_CHIPSET_SUSPEND);
+
+		/*
+		 * Enable idle task deep sleep. Allow the low power idle task
+		 * to go into deep sleep in S3 or lower.
+		 */
+		enable_sleep(SLEEP_MASK_AP_RUN);
+
 		return POWER_S3;
 
 	case POWER_S3S5:
