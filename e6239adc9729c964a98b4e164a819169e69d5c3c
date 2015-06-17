@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b99c18d9_6f00a033",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-06-17T07:31:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b99c18d9_b9093a68",
+      "range": {
+        "startLine": 9,
+        "startChar": 25,
+        "endLine": 9,
+        "endChar": 27
+      },
+      "revId": "e6239adc9729c964a98b4e164a819169e69d5c3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19b8c43c_aa09e367",
         "filename": "board/oak/board.c",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2015-06-17T01:20:08Z",
       "side": 1,
       "message": "shouldn\u0027t we check if the other port is doing DP before doing this?",
+      "range": {
+        "startLine": 341,
+        "startChar": 2,
+        "endLine": 341,
+        "endChar": 43
+      },
+      "revId": "e6239adc9729c964a98b4e164a819169e69d5c3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b99c18d9_8c4ebab7",
+        "filename": "board/oak/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-06-17T07:31:38Z",
+      "side": 1,
+      "message": "Done. I should remove this switch control here. It will be switched to correct position on dp_attention() or dp_post_config().",
+      "parentUuid": "19b8c43c_aa09e367",
       "range": {
         "startLine": 341,
         "startChar": 2,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "19b8c43c_4a6dd729",
+        "filename": "board/oak/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-06-17T07:31:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19b8c43c_aabba313",
+      "range": {
+        "startLine": 391,
+        "startChar": 38,
+        "endLine": 391,
+        "endChar": 46
+      },
+      "revId": "e6239adc9729c964a98b4e164a819169e69d5c3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b99c18d9_5967761a",
         "filename": "board/oak/board.c",
         "patchSetId": 8
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "19b8c43c_8a77bff9",
+        "filename": "board/oak/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-06-17T07:31:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b99c18d9_5967761a",
+      "range": {
+        "startLine": 418,
+        "startChar": 18,
+        "endLine": 418,
+        "endChar": 30
+      },
+      "revId": "e6239adc9729c964a98b4e164a819169e69d5c3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9ba1036_7e1dfd6d",
         "filename": "board/oak/board.c",
         "patchSetId": 8
@@ -105,6 +201,30 @@
       "writtenOn": "2015-06-17T01:20:08Z",
       "side": 1,
       "message": "not used",
+      "range": {
+        "startLine": 438,
+        "startChar": 39,
+        "endLine": 438,
+        "endChar": 47
+      },
+      "revId": "e6239adc9729c964a98b4e164a819169e69d5c3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b99c18d9_af09e867",
+        "filename": "board/oak/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-06-17T07:31:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9ba1036_7e1dfd6d",
       "range": {
         "startLine": 438,
         "startChar": 39,
