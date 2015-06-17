@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f92f706e_ea02e776",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-17T21:28:39Z",
+      "side": 1,
+      "message": "it is somewhat the same as the \"usb\" flag below.\n\nthere was an on-going CL about removing this one :\nhttps://chromium-review.googlesource.com/273904\nbut we can keep it",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 66
+      },
+      "revId": "bce546458ee17f09c4cfffc3482ee16ead589c22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f92f706e_ea34a76a",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-17T21:28:39Z",
+      "side": 1,
+      "message": "what about creating an empty _ec_hard_reset() function ?",
+      "range": {
+        "startLine": 169,
+        "startChar": 1,
+        "endLine": 170,
+        "endChar": 38
+      },
+      "revId": "bce546458ee17f09c4cfffc3482ee16ead589c22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
