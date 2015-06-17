@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9262c9c_894fbd3a",
+        "filename": "board/heli/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1002584
+      },
+      "writtenOn": "2015-06-17T20:32:47Z",
+      "side": 1,
+      "message": "Heli",
+      "range": {
+        "startLine": 6,
+        "startChar": 21,
+        "endLine": 6,
+        "endChar": 25
+      },
+      "revId": "1027628581a8166deafcb2519b6bdb5aeadaa26c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99203484_248992aa",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1002584
+      },
+      "writtenOn": "2015-06-17T20:32:47Z",
+      "side": 1,
+      "message": "Add \"heli\" in alphabetical order in the list.",
+      "range": {
+        "startLine": 27,
+        "startChar": 8,
+        "endLine": 27,
+        "endChar": 12
+      },
+      "revId": "1027628581a8166deafcb2519b6bdb5aeadaa26c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
