@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9ba1036_69d8a996",
+        "filename": "power/mediatek.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-17T15:07:49Z",
+      "side": 1,
+      "message": "i think this should be in POWER_S0S3, and likewise you need a corresponding disable_sleep(SLEEP_MASK_AP_RUN) in POWER_S3S0.\n\nand, you also need to make sure to set it disabled when we sysjump and are in S0, see power_chipset_init() for other chipsets.",
+      "range": {
+        "startLine": 584,
+        "startChar": 2,
+        "endLine": 584,
+        "endChar": 34
+      },
+      "revId": "ea5d2007c73a70a35c3e67d9c600813c5ea02200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
