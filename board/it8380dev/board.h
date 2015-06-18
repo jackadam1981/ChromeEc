@@ -17,6 +17,7 @@
 #define CONFIG_PECI_TJMAX 100
 /* For IT839X series and IT838X DX only. */
 #define CONFIG_PECI_WITH_INTERRUPT
+#define CONFIG_SMCLK2_LOCAT_ON_GPC7
 
 /* Debug */
 #undef CONFIG_KEYBOARD_DEBUG
