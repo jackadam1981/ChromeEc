@@ -34,6 +34,24 @@
       "revId": "dd1987051b473e74dab3490921d0cc77c76fcac3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e9c462a_c172460a",
+        "filename": "common/acpi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-18T18:22:21Z",
+      "side": 0,
+      "message": "That sounds fine, but we need to make sure that acpi_burst_enable is called before we get another ACPI READ command, so we probably should disable handling of the acpi_0_interrupt on ACPI_BURST_ENABLE, and then reenable it from acpi_burst_enable().\n\nAlso, it may be best to have acpi_burst_enable(),  acpi_burst_timeout() and  acpi_burst_disable() all be a single deferred function (maybe with a static state variable) because there is overhead involved for each separate deferred function we add.",
+      "parentUuid": "deae1265_c6bd6225",
+      "revId": "dd1987051b473e74dab3490921d0cc77c76fcac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
