@@ -5,6 +5,7 @@
 
 /* Skylake IMVP8 / ROP PMIC chipset power control module for Chrome EC */
 
+#include "charge_state.h"
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
@@ -38,6 +39,9 @@
 
 #define IN_ALL_S0 (IN_PGOOD_ALL_CORE | IN_ALL_PM_SLP_DEASSERTED)
 
+#define CHARGER_INITIALIZED_DELAY_MS 100
+#define CHARGER_INITIALIZED_TRIES 10
+
 static int throttle_cpu;      /* Throttle CPU? */
 static int forcing_shutdown;  /* Forced shutdown in progress? */
 
@@ -61,6 +65,8 @@ void chipset_force_shutdown(void)
 void chipset_force_g3(void)
 {
 	CPRINTS("Forcing G3");
+	gpio_set_level(GPIO_PMIC_SLP_SUS_L, 0);
+	gpio_set_level(GPIO_PCH_BATLOW_L, 0);
 }
 
 void chipset_reset(int cold_reset)
@@ -118,6 +124,8 @@ enum power_state power_chipset_init(void)
 
 enum power_state power_handle_state(enum power_state state)
 {
+	int tries = 0;
+
 	gpio_set_level(GPIO_PCH_RSMRST_L, gpio_get_level(GPIO_RSMRST_L_PGOOD));
 
 	switch (state) {
@@ -165,6 +173,27 @@ enum power_state power_handle_state(enum power_state state)
 			chipset_force_shutdown();
 			return POWER_G3;
 		}
+
+		/*
+		 * Allow up to 1s for charger to be initialized, in case
+		 * we're trying to boot the AP with no battery.
+		 */
+		while (charge_prevent_power_on() &&
+		       tries++ < CHARGER_INITIALIZED_TRIES) {
+			msleep(CHARGER_INITIALIZED_DELAY_MS);
+		}
+
+		/* Return to G3 if battery level is too low */
+		if (charge_want_shutdown() ||
+		    tries == CHARGER_INITIALIZED_TRIES) {
+			CPRINTS("power-up inhibited");
+			chipset_force_shutdown();
+			return POWER_G3;
+		}
+
+		/* Allow AP to power on */
+		gpio_set_level(GPIO_PMIC_SLP_SUS_L, 1);
+		gpio_set_level(GPIO_PCH_BATLOW_L, 1);
 
 		return POWER_S5;
 
@@ -236,6 +265,8 @@ enum power_state power_handle_state(enum power_state state)
 		return POWER_S5G3;
 
 	case POWER_S5G3:
+		gpio_set_level(GPIO_PMIC_SLP_SUS_L, 0);
+		gpio_set_level(GPIO_PCH_BATLOW_L, 0);
 		return POWER_G3;
 
 	default:

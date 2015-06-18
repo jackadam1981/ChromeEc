@@ -15,7 +15,7 @@ GPIO_INT(RSMRST_L_PGOOD,    PIN(63),  GPIO_INT_BOTH, power_signal_interrupt)
 GPIO_INT(PCH_SLP_S4_L,      PIN(200), GPIO_INT_BOTH_DSLEEP | GPIO_PULL_UP, power_signal_interrupt)
 GPIO_INT(PCH_SLP_S3_L,      PIN(206), GPIO_INT_BOTH_DSLEEP | GPIO_PULL_UP, power_signal_interrupt)
 GPIO_INT(PCH_SLP_S0_L,      PIN(211), GPIO_INT_BOTH | GPIO_PULL_UP, power_signal_interrupt)
-GPIO_INT(PCH_SLP_SUS_L,     PIN(12),  GPIO_INT_BOTH | GPIO_PULL_UP, power_signal_interrupt)
+GPIO_INT(PCH_SLP_SUS_L,     PIN(105), GPIO_INT_BOTH | GPIO_PULL_UP, power_signal_interrupt)
 GPIO_INT(VOLUME_UP_L,       PIN(31),  GPIO_INT_FALLING | GPIO_PULL_UP, button_interrupt)
 GPIO_INT(VOLUME_DOWN_L,     PIN(47),  GPIO_INT_FALLING | GPIO_PULL_UP, button_interrupt)
 GPIO_INT(PMIC_INT_L,        PIN(50),  GPIO_INT_FALLING, power_signal_interrupt)
@@ -28,6 +28,7 @@ GPIO_INT(USB_C1_BC12_INT_L, PIN(145), GPIO_INT_FALLING, usb1_evt)
 GPIO_INT(PMIC_DPWROK,       PIN(55),  GPIO_INT_BOTH, power_signal_interrupt)
 
 GPIO(PD_RST_L,              PIN(130), GPIO_ODR_HIGH)
+GPIO(PMIC_SLP_SUS_L,        PIN(12),  GPIO_OUT_LOW)
 GPIO(USB2_OTG_ID,           PIN(13),  GPIO_ODR_LOW)
 /* I2C pins - these will be reconfigured for alternate function below */
 GPIO(I2C0_0_SCL,            PIN(15),  GPIO_INPUT)
@@ -57,7 +58,6 @@ GPIO(USB_PD_WAKE,           PIN(60),  GPIO_OUT_LOW)
 /* When asserted, ME does not lock security descriptor */
 GPIO(PCH_SEC_DISABLE_L,     PIN(65),  GPIO_OUT_HIGH)
 GPIO(PCH_WAKE_L,            PIN(66),  GPIO_ODR_HIGH)
-GPIO(EC_FAN1_TTACH,         PIN(105), GPIO_INPUT)
 /* Fan PWM output - NC / testing only */
 GPIO(EC_FAN1_PWM,           PIN(136), GPIO_OUT_LOW)
 GPIO(PCH_ACOK,              PIN(110), GPIO_OUT_LOW)
@@ -70,8 +70,8 @@ GPIO(WLAN_OFF_L,            PIN(132), GPIO_OUT_LOW)
 /* RCIN# line to PCH for 8042 emulation */
 GPIO(PCH_RCIN_L,            PIN(135), GPIO_ODR_HIGH)
 GPIO(USB2_OTG_VBUSSENSE,    PIN(140), GPIO_OUT_LOW)
-/* Sensor input for KB PROX - UNUSED */
-GPIO(KB_PROX_INT_L,         PIN(141), GPIO_INPUT)
+/* Inhibit the AP from booting until we can supply enough current */
+GPIO(PCH_BATLOW_L,          PIN(141), GPIO_OUT_LOW)
 GPIO(PCH_RSMRST_L,          PIN(143), GPIO_OUT_LOW)
 /* prochot input from devices */
 GPIO(PLATFORM_EC_PROCHOT,   PIN(151), GPIO_INPUT)

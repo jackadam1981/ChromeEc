@@ -291,4 +291,3 @@ void board_charge_manager_override_timeout(void)
 	/* TODO: what to do here? */
 }
 DECLARE_DEFERRED(board_charge_manager_override_timeout);
-
