@@ -262,6 +262,10 @@ void board_reset_pd_mcu(void)
 	gpio_set_level(GPIO_USB_MCU_RST, 0);
 }
 
+void board_prevent_ap_power_on(int prevent_power_on)
+{
+}
+
 /* Base Sensor mutex */
 static struct mutex g_base_mutex;
 

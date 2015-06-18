@@ -68,5 +68,13 @@ enum ec_status charger_profile_override_set_param(uint32_t param,
  */
 int charge_set_input_current_limit(int ma);
 
+/**
+ * Board-level callback function to take board-specific actions (such as
+ * GPIO assertion) to prevent or allow AP power on.
+ *
+ * @param prevent_power_on 1 if power on should be prevented, otherwise 0.
+ */
+void board_prevent_ap_power_on(int prevent_power_on);
+
 #endif /* __CROS_EC_CHARGE_STATE_V2_H */
 
