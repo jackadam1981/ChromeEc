@@ -52,6 +52,24 @@
       "revId": "dd1987051b473e74dab3490921d0cc77c76fcac3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "feb756b3_cdf25de5",
+        "filename": "common/acpi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1118349
+      },
+      "writtenOn": "2015-06-18T19:11:57Z",
+      "side": 0,
+      "message": "Shawn, working on this, will post the patch for further comments.",
+      "parentUuid": "7e9c462a_c172460a",
+      "revId": "dd1987051b473e74dab3490921d0cc77c76fcac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
