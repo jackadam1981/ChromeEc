@@ -16,6 +16,24 @@
       "revId": "dd1987051b473e74dab3490921d0cc77c76fcac3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "deae1265_c6bd6225",
+        "filename": "common/acpi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1118349
+      },
+      "writtenOn": "2015-06-18T18:03:49Z",
+      "side": 0,
+      "message": "I see the issue with multi-byte memmap variables. With current design EC-\u003eAP variables reading, options are limited.\nI prefer avoiding any mutex operations in interrupt context. And, I am for deferring all the processing to deferred task. How about this:\nOn ACPI_BURST_ENABLE:\n1. Defer acpi_burst_enable() with ZERO timeout.\n2. Defer acpi_burst_timeout() with 1s.\nOn ACPI_BURST_DISABLE:\n1. Defer acpi_burst_disable() with ZERO timeout.\n\nAnd, acpi_burst_timeout() just calls acpi_burst_disable().\nYou can have mutex lock in acpi_burst_enable(), mutex unlock in acpi_burst_disable().",
+      "parentUuid": "5e6dc2eb_3d0d5b3f",
+      "revId": "dd1987051b473e74dab3490921d0cc77c76fcac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
