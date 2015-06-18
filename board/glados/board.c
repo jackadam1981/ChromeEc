@@ -225,6 +225,13 @@ static void board_init(void)
 	/* Enable pericom BC1.2 interrupts */
 	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_L);
 	gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_L);
+
+	/*
+	 * If we have a battery, assume that it provides enough current
+	 * to boot the AP.
+	 */
+	if (battery_is_present() == BP_YES)
+		gpio_set_level(GPIO_PCH_BATLOW_L, 1);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -283,6 +290,13 @@ void board_set_charge_limit(int charge_ma)
 {
 	charge_set_input_current_limit(MAX(charge_ma,
 					   CONFIG_CHARGER_INPUT_CURRENT));
+
+	/*
+	 * Allow the AP to boot if our charger provides enough current
+	 * without relying on a battery.
+	 */
+	if (charge_ma >= 1000 && battery_is_present() != BP_YES)
+		gpio_set_level(GPIO_PCH_BATLOW_L, 1);
 }
 
 /* Charge manager callback function, called on delayed override timeout */
