@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e6dc2eb_3d0d5b3f",
+        "filename": "common/acpi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-18T16:57:06Z",
+      "side": 0,
+      "message": "If we remove this then we have another bug -- multi-byte memmap variables may be updated in between ACPI byte reads. How about this instead?\n\n- If the mutex is unlocked, we lock it from interrupt context.\n- Otherwise, we disable the acpi_0_interrupt, and kick off a new deferred task.\n- The deferred task locks the mutex and re-enables acpi_0_interrupt.\n- We can still unlock the mutex from interrupt context.\n\nWhat do you think?",
+      "revId": "dd1987051b473e74dab3490921d0cc77c76fcac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
