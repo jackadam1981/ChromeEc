@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-/* Configuration for Heil mainboard */
+/* Configuration for Heli mainboard */
 
 #ifndef __BOARD_H
 #define __BOARD_H
