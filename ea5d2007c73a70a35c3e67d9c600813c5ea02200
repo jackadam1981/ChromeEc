@@ -22,6 +22,30 @@
       "revId": "ea5d2007c73a70a35c3e67d9c600813c5ea02200",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7eca863a_ce658314",
+        "filename": "power/mediatek.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-06-18T14:16:33Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "f9ba1036_69d8a996",
+      "range": {
+        "startLine": 584,
+        "startChar": 2,
+        "endLine": 584,
+        "endChar": 34
+      },
+      "revId": "ea5d2007c73a70a35c3e67d9c600813c5ea02200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
