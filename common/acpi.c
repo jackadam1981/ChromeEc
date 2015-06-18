@@ -13,6 +13,7 @@
 #include "ec_commands.h"
 #include "pwm.h"
 #include "timer.h"
+#include "task.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_LPC, outstr)
@@ -33,13 +34,14 @@ static int dptf_temp_threshold;			/* last threshold written */
  * Deferred function to ensure that ACPI burst mode doesn't remain enabled
  * indefinitely.
  */
-static void acpi_unlock_memmap_deferred(void)
+static void acpi_burst_enable_timeout(void)
 {
+	interrupt_disable();
 	lpc_clear_acpi_status_mask(EC_LPC_STATUS_BURST_MODE);
-	host_unlock_memmap();
+	interrupt_enable();
 	CPUTS("ACPI force unlock mutex, missed burst disable?");
 }
-DECLARE_DEFERRED(acpi_unlock_memmap_deferred);
+DECLARE_DEFERRED(acpi_burst_enable_timeout);
 
 /*
  * This handles AP writes to the EC via the ACPI I/O port. There are only a few
@@ -181,23 +183,21 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 		retval = 1;
 	} else if (acpi_cmd == EC_CMD_ACPI_BURST_ENABLE && !acpi_data_count) {
 		/* Enter burst mode */
-		host_lock_memmap();
 		lpc_set_acpi_status_mask(EC_LPC_STATUS_BURST_MODE);
 
 		/*
 		 * Unlock from deferred function in case burst mode is enabled
 		 * for an extremely long time  (ex. kernel bug / crash).
 		 */
-		hook_call_deferred(acpi_unlock_memmap_deferred, 1*SECOND);
+		hook_call_deferred(acpi_burst_enable_timeout, 1*SECOND);
 
 		/* ACPI 5.0-12.3.3: Burst ACK */
 		*resultptr = 0x90;
 		retval = 1;
 	} else if (acpi_cmd == EC_CMD_ACPI_BURST_DISABLE && !acpi_data_count) {
-		/* Leave burst mode */
-		hook_call_deferred(acpi_unlock_memmap_deferred, -1);
+		/* First disable deferred timer */
+		hook_call_deferred(acpi_burst_enable_timeout, -1);
 		lpc_clear_acpi_status_mask(EC_LPC_STATUS_BURST_MODE);
-		host_unlock_memmap();
 	}
 
 	return retval;

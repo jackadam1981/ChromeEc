@@ -474,6 +474,7 @@ void mutex_lock(struct mutex *mtx)
 	uint32_t value;
 	uint32_t id = 1 << task_get_current();
 
+	ASSERT(!in_interrupt_context());
 	ASSERT(id != TASK_ID_INVALID);
 	atomic_or(&mtx->waiters, id);
 
