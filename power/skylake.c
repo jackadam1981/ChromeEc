@@ -5,6 +5,7 @@
 
 /* Skylake IMVP8 / ROP PMIC chipset power control module for Chrome EC */
 
+#include "charge_state.h"
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
@@ -61,6 +62,7 @@ void chipset_force_shutdown(void)
 void chipset_force_g3(void)
 {
 	CPRINTS("Forcing G3");
+	gpio_set_level(GPIO_PCH_BATLOW_L, 0);
 }
 
 void chipset_reset(int cold_reset)
@@ -166,6 +168,17 @@ enum power_state power_handle_state(enum power_state state)
 			return POWER_G3;
 		}
 
+		/* Return to G3 if battery level is too low */
+		if (charge_want_shutdown() ||
+		    charge_prevent_power_on()) {
+			CPRINTS("power-up inhibited");
+			chipset_force_shutdown();
+			return POWER_G3;
+		} else {
+			/* Allow AP to power on */
+			gpio_set_level(GPIO_PCH_BATLOW_L, 1);
+		}
+
 		return POWER_S5;
 
 	case POWER_S5S3:
@@ -236,6 +249,7 @@ enum power_state power_handle_state(enum power_state state)
 		return POWER_S5G3;
 
 	case POWER_S5G3:
+		gpio_set_level(GPIO_PCH_BATLOW_L, 0);
 		return POWER_G3;
 
 	default:
