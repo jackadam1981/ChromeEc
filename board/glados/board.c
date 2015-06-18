@@ -292,3 +292,7 @@ void board_charge_manager_override_timeout(void)
 }
 DECLARE_DEFERRED(board_charge_manager_override_timeout);
 
+void board_prevent_ap_power_on(int prevent_power_on)
+{
+	gpio_set_level(GPIO_PCH_BATLOW_L, !prevent_power_on);
+}

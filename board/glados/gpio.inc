@@ -70,8 +70,8 @@ GPIO(WLAN_OFF_L,            PIN(132), GPIO_OUT_LOW)
 /* RCIN# line to PCH for 8042 emulation */
 GPIO(PCH_RCIN_L,            PIN(135), GPIO_ODR_HIGH)
 GPIO(USB2_OTG_VBUSSENSE,    PIN(140), GPIO_OUT_LOW)
-/* Sensor input for KB PROX - UNUSED */
-GPIO(KB_PROX_INT_L,         PIN(141), GPIO_INPUT)
+/* Inhibit the AP from booting until we can supply enough current */
+GPIO(PCH_BATLOW_L,          PIN(141), GPIO_OUT_LOW)
 GPIO(PCH_RSMRST_L,          PIN(143), GPIO_OUT_LOW)
 /* prochot input from devices */
 GPIO(PLATFORM_EC_PROCHOT,   PIN(151), GPIO_INPUT)
