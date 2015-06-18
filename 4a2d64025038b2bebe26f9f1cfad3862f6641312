@@ -22,6 +22,47 @@
       "revId": "4a2d64025038b2bebe26f9f1cfad3862f6641312",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e7adaa8_7740ca59",
+        "filename": "common/acpi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-18T17:04:16Z",
+      "side": 1,
+      "message": "I don\u0027t think so. We have interrupts firing / getting enabled / disabled all the time, and I2C seems ok with it.",
+      "parentUuid": "3ebe4e91_6f2c85a1",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 21
+      },
+      "revId": "4a2d64025038b2bebe26f9f1cfad3862f6641312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e9c462a_7ecbcd15",
+        "filename": "common/acpi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-18T17:04:16Z",
+      "side": 1,
+      "message": "I think this routine is misnamed now. It\u0027s not a burst enable timeout, we just seem to be stuck in burst mode so we are (or were) force-releasing the mutex and changing the status bits. Maybe acpi_burst_mode_timeout is a better name.",
+      "revId": "4a2d64025038b2bebe26f9f1cfad3862f6641312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
