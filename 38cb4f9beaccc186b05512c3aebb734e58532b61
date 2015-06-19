@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "deae1265_692c81a1",
+        "filename": "board/glados/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-19T00:04:43Z",
+      "side": 1,
+      "message": "i don\u0027t think this is a proper assumption. we need to know the state of charge of the battery before we can say we have enough current. we already have the charge_prevent_power_on() function in charge_state_v2.c that has this logic.",
+      "range": {
+        "startLine": 233,
+        "startChar": 1,
+        "endLine": 234,
+        "endChar": 39
+      },
+      "revId": "38cb4f9beaccc186b05512c3aebb734e58532b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
