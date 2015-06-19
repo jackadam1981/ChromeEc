@@ -42,13 +42,27 @@ static int check_vcc1_por(void)
 static void check_reset_cause(void)
 {
 	uint32_t status = MEC1322_VBAT_STS;
+	uint32_t rst_sts = MEC1322_PCR_CHIP_PWR_RST;
 	uint32_t flags = 0;
 
 	/* Clear the reset causes now that we've read them */
 	MEC1322_VBAT_STS |= status;
+	MEC1322_PCR_CHIP_PWR_RST |= rst_sts;
 
-	if (status & (1 << 7) || check_vcc1_por())
+	/*
+	* BIT[6:5] determine VCC1 reset and VBAT reset status.
+	* when Poweron watchdog is reset and both VCC1 and VBAT
+	* are set
+	*/
+	if ((rst_sts & (3 << 5)) && check_vcc1_por())
 		flags |= RESET_FLAG_POWER_ON;
+
+	/*
+	* Check for only BIT 6 to determine VCC1_RST# and no
+	* change on VBAT status indicates this is VCC1_RST#
+	*/
+	if (rst_sts & (2 << 5))
+		flags |= RESET_FLAG_RESET_PIN;
 
 	flags |= MEC1322_VBAT_RAM(HIBDATA_INDEX_SAVED_RESET_FLAGS);
 	MEC1322_VBAT_RAM(HIBDATA_INDEX_SAVED_RESET_FLAGS) = 0;
