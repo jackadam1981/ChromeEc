@@ -46,6 +46,30 @@
       "revId": "48e3c69a08d0c420a80f6d72315f18bc174f50b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e700ec3_b8ec1005",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-19T16:06:25Z",
+      "side": 1,
+      "message": "I\u0027ll try something similar. We\u0027ll need to assert BATLOW in S5G3 and deassert in G3S5 (after verifying we\u0027re allowed to power on). Otherwise, I think we may end up in a case where the AP powers up despite our wishes and we\u0027re forced to bring it down (through a long power press).",
+      "parentUuid": "1e67ca0f_ee9de0b5",
+      "range": {
+        "startLine": 936,
+        "startChar": 1,
+        "endLine": 936,
+        "endChar": 45
+      },
+      "revId": "48e3c69a08d0c420a80f6d72315f18bc174f50b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
