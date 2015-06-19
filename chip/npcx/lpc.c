@@ -646,6 +646,19 @@ static void lpc_init(void)
 	/* initial IO port address via SIB-write modules */
 	system_lpc_host_register_init();
 }
+
+/* Enable LPC ACPI-EC interrupts */
+void lpc_enable_acpi_interrupts(void)
+{
+	task_enable_irq(NPCX_IRQ_PM_CHAN_IBF);
+}
+
+/* Disable LPC ACPI-EC interrupts */
+void lpc_disable_acpi_interrupts(void)
+{
+	task_disable_irq(NPCX_IRQ_PM_CHAN_IBF);
+}
+
 /*
  * Set prio to higher than default; this way LPC memory mapped data is ready
  * before other inits try to initialize their memmap data.
