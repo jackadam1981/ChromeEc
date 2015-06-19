@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e7adaa8_29ff55e0",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-06-19T01:04:34Z",
+      "side": 1,
+      "message": "There is an error when low power mode is enabled:\ni2c_set_frequency assumes f_i2cclk is 48MHz.\nWhen it is 8Mhz, STM32_I2C_TIMINGR() are completely different. See [RM0313]24.4.9 for examples.",
+      "revId": "23ad46d3b8b9bce7f122abb4356e2c09b5dfc0c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
