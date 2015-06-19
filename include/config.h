@@ -392,6 +392,9 @@
 /* Support firmware long press power-off timer */
 #undef CONFIG_PMIC_FW_LONG_PRESS_TIMER
 
+/* Support PMIC control for the board */
+#undef CONFIG_BOARD_PMIC_ENABLE
+
 /*****************************************************************************/
 /*
  * Optional console commands
