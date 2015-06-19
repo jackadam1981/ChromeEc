@@ -22,6 +22,30 @@
       "revId": "48e3c69a08d0c420a80f6d72315f18bc174f50b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e67ca0f_ee9de0b5",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-19T15:30:29Z",
+      "side": 1,
+      "message": "it seems like we could do this in power/skylake.c\n\nin G3S5, add code similar to samus:\n/* Return to G3 if battery level is too low */\nif (charge_want_shutdown() ||\n    charge_prevent_power_on()) {\n\tCPRINTS(\"power-up inhibited\");\n\tchipset_force_g3();\n\treturn POWER_G3;\n} else {\n\tgpio_set_level(PCH BATLOW_L, 0);\n}\n\nthen, we don\u0027t need the board specific function above because all skylake boards should presumably have this gpio.",
+      "parentUuid": "1eb50aac_ee04fbcb",
+      "range": {
+        "startLine": 936,
+        "startChar": 1,
+        "endLine": 936,
+        "endChar": 45
+      },
+      "revId": "48e3c69a08d0c420a80f6d72315f18bc174f50b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
