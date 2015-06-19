@@ -88,6 +88,12 @@ void host_lock_memmap()
 	mutex_lock(&memmap_write_mutex);
 }
 
+/* Returns host memmap lock status */
+uint32_t is_host_memmap_locked(void)
+{
+	return memmap_write_mutex.lock;
+}
+
 void host_unlock_memmap()
 {
 	mutex_unlock(&memmap_write_mutex);

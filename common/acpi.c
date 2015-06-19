@@ -41,6 +41,16 @@ static void acpi_unlock_memmap_deferred(void)
 }
 DECLARE_DEFERRED(acpi_unlock_memmap_deferred);
 
+/* Deferred function to lock memmap and to enable LPC interrupts.
+ * This is due to LPC interrupt was unable to acquire memmap mutex.
+ */
+static void deferred_host_lock_memmap(void)
+{
+	host_lock_memmap();
+	enable_lpc_interrupts();
+}
+DECLARE_DEFERRED(deferred_host_lock_memmap);
+
 /*
  * This handles AP writes to the EC via the ACPI I/O port. There are only a few
  * ACPI commands (EC_CMD_ACPI_*), but they are all handled here.
@@ -180,8 +190,15 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 		*resultptr = evt_index;
 		retval = 1;
 	} else if (acpi_cmd == EC_CMD_ACPI_BURST_ENABLE && !acpi_data_count) {
+		if (is_host_memmap_locked()) {
+			/* If already locked, disable ACPI interrupts and defer
+			 *  locking.  */
+			disable_lpc_interrupts();
+			hook_call_deferred(deferred_host_lock_memmap, 0);
+		} else {
+			host_lock_memmap();
+		}
 		/* Enter burst mode */
-		host_lock_memmap();
 		lpc_set_acpi_status_mask(EC_LPC_STATUS_BURST_MODE);
 
 		/*
