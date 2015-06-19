@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "deae1265_69d1e1f6",
+        "filename": "board/glados_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-19T01:23:10Z",
+      "side": 1,
+      "message": "don\u0027t need to apply the mask. this should work:\n\ngpio_set_level(GPIO_EC_INT, ec_int_status);",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 36
+      },
+      "revId": "159a4981a1d7553dd107c4488de2f113b85260fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1eb50aac_ab835587",
+        "filename": "board/glados_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-19T01:23:10Z",
+      "side": 1,
+      "message": "not needed, static vars are cleared to 0 on boot.",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 19
+      },
+      "revId": "159a4981a1d7553dd107c4488de2f113b85260fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "deae1265_c9e815a4",
+        "filename": "board/glados_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-19T01:23:10Z",
+      "side": 1,
+      "message": "atomic_or(\u0026ec_int_status, port ? PD_STATUS_TCPC_ALERT_1 : PD_STATUS_TCPC_ALERT_0);",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 42
+      },
+      "revId": "159a4981a1d7553dd107c4488de2f113b85260fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7eca863a_ee415f0a",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-19T01:23:10Z",
+      "side": 1,
+      "message": "looks like you are missing ec_int_status here as you had on glados_pd",
+      "range": {
+        "startLine": 151,
+        "startChar": 13,
+        "endLine": 151,
+        "endChar": 14
+      },
+      "revId": "159a4981a1d7553dd107c4488de2f113b85260fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1eb50aac_ebf5cdfc",
+        "filename": "common/host_command_pd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-19T01:23:10Z",
+      "side": 1,
+      "message": "5ms isn\u0027t very long for other tasks to run. maybe 50ms?",
+      "range": {
+        "startLine": 157,
+        "startChar": 10,
+        "endLine": 157,
+        "endChar": 16
+      },
+      "revId": "159a4981a1d7553dd107c4488de2f113b85260fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "deae1265_c996d51d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-19T01:23:10Z",
+      "side": 1,
+      "message": "unrelated change",
+      "revId": "159a4981a1d7553dd107c4488de2f113b85260fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
