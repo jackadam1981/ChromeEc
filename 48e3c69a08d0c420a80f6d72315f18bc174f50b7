@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1eb50aac_ee04fbcb",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-19T15:06:56Z",
+      "side": 1,
+      "message": "i\u0027m not sure this should go here. it seems like it should go in the caller in a place where we are attempting to power sequence. my concern is that other places in the code might want to call this function to see if we\u0027re inhibiting power up and it might have the unintended consequence of initiating turning on the AP.",
+      "range": {
+        "startLine": 936,
+        "startChar": 1,
+        "endLine": 936,
+        "endChar": 45
+      },
+      "revId": "48e3c69a08d0c420a80f6d72315f18bc174f50b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
