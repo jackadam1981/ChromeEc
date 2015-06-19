@@ -88,6 +88,10 @@ static uint32_t pd_src_caps[CONFIG_USB_PD_PORT_COUNT][PDO_MAX_OBJECTS];
 static int pd_src_cap_cnt[CONFIG_USB_PD_PORT_COUNT];
 #endif
 
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+static uint8_t pd_try_src_enable;
+#endif
+
 static struct pd_protocol {
 	/* current port power role (SOURCE or SINK) */
 	uint8_t power_role;
@@ -126,6 +130,8 @@ static struct pd_protocol {
 	int new_power_request;
 	/* Store previously requested voltage request */
 	int prev_request_mv;
+	/* Time for Try.SRC states */
+	uint64_t try_src_marker;
 #endif
 
 	/* PD state for Vendor Defined Messages */
@@ -259,6 +265,9 @@ static inline void set_state(int port, enum pd_states next_state)
 		typec_set_input_current_limit(port, 0, 0);
 		charge_manager_set_ceil(port, CHARGE_CEIL_NONE);
 #endif
+#ifdef CONFIG_USBC_VCONN
+		tcpm_set_vconn(port, 0);
+#endif
 #else /* CONFIG_USB_PD_DUAL_ROLE */
 	if (next_state == PD_STATE_SRC_DISCONNECTED) {
 #endif
@@ -273,9 +282,6 @@ static inline void set_state(int port, enum pd_states next_state)
 #ifdef CONFIG_USBC_SS_MUX
 		board_set_usb_mux(port, TYPEC_MUX_NONE, USB_SWITCH_DISCONNECT,
 				  pd[port].polarity);
-#endif
-#ifdef CONFIG_USBC_VCONN
-		tcpm_set_vconn(port, 0);
 #endif
 		/* Disable TCPC RX */
 		tcpm_set_rx_enable(port, 0);
@@ -1165,6 +1171,10 @@ void pd_set_dual_role(enum pd_dual_role_states state)
 	int i;
 	drp_state = state;
 
+#ifdef CONFIG_USB_PD_TRY_SRC
+	pd_try_src_enable = (state == PD_DRP_TOGGLE_ON) ? 1 : 0;
+#endif
+
 	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
 		/*
 		 * Change to sink if port is currently a source AND (new DRP
@@ -1194,6 +1204,13 @@ void pd_set_dual_role(enum pd_dual_role_states state)
 			tcpm_set_cc(i, TYPEC_CC_RP);
 			task_wake(PD_PORT_TO_TASK_ID(i));
 		}
+
+		/*
+		 * Clear this flag to cover case where a TrySrc
+		 * mode went from enabled to disabled and trying_source
+		 * was active at that time.
+		 */
+		pd[i].flags &= ~PD_FLAGS_TRY_SRC;
 	}
 }
 
@@ -1432,14 +1449,32 @@ void pd_task(void)
 					PD_STATE_SRC_DISCONNECTED_DEBOUNCE);
 			}
 #ifdef CONFIG_USB_PD_DUAL_ROLE
-			/* Swap roles if time expired */
-			else if (drp_state != PD_DRP_FORCE_SOURCE &&
-				 get_time().val >= next_role_swap) {
+			/*
+			 * Try.SRC state is embedded here. If the entry to
+			 * SRC_DISCONNECTED came from detecting a SRC in the
+			 * SNK_DISCONNECTED_DEBOUNCE state then the flag
+			 * TRY_SRC will be set. The Try.Src state requires
+			 * similar functions as the SRC_DISCONNECTED state,
+			 * with the exception of having a different timer
+			 * tDRPTry to check. In addition, if a SNK is detected
+			 * then there is no requirement to advance to the
+			 * SRC_DISCONNECTED_DEBOUNCE state.
+			 *
+			 * If Try.SRC state is not active, then this block
+			 * handles the normal DRP toggle from SRC->SNK
+			 */
+			else if ((pd[port].flags & PD_FLAGS_TRY_SRC &&
+				 get_time().val >= pd[port].try_src_marker) ||
+				 (!(pd[port].flags & PD_FLAGS_TRY_SRC) &&
+				  drp_state != PD_DRP_FORCE_SOURCE &&
+				 get_time().val >= next_role_swap)) {
+				/* tDRPTry timer has expired */
 				pd[port].power_role = PD_ROLE_SINK;
 				set_state(port, PD_STATE_SNK_DISCONNECTED);
 				tcpm_set_cc(port, TYPEC_CC_RD);
 				next_role_swap = get_time().val + PD_T_DRP_SNK;
-
+				pd[port].try_src_marker = get_time().val
+					+ PD_T_TRY_WAIT;
 				/* Swap states quickly */
 				timeout = 2*MSEC;
 			}
@@ -1470,15 +1505,18 @@ void pd_task(void)
 				timeout = 5*MSEC;
 				break;
 			}
-
-			/* Debounce the cc state */
-			if (new_cc_state != pd[port].cc_state) {
-				pd[port].cc_debounce = get_time().val +
-						       PD_T_CC_DEBOUNCE;
-				pd[port].cc_state = new_cc_state;
-				break;
-			} else if (get_time().val < pd[port].cc_debounce) {
-				break;
+			/* If in Try.SRC state, then don't need to debounce */
+			if (!(pd[port].flags & PD_FLAGS_TRY_SRC)) {
+				/* Debounce the cc state */
+				if (new_cc_state != pd[port].cc_state) {
+					pd[port].cc_debounce = get_time().val +
+						PD_T_CC_DEBOUNCE;
+					pd[port].cc_state = new_cc_state;
+					break;
+				} else if (get_time().val <
+					   pd[port].cc_debounce) {
+					break;
+				}
 			}
 
 			/* Debounce complete */
@@ -1486,6 +1524,11 @@ void pd_task(void)
 			if (new_cc_state == PD_CC_UFP_ATTACHED) {
 				pd[port].polarity = (TYPEC_CC_IS_RD(cc2));
 				tcpm_set_polarity(port, pd[port].polarity);
+				/*
+				 * Since UFP is attached, the Try.SRC
+				 * flag can always be cleared here.
+				 */
+				pd[port].flags &= ~PD_FLAGS_TRY_SRC;
 
 				/* initial data role for source is DFP */
 				pd_set_data_role(port, PD_ROLE_DFP);
@@ -1858,7 +1901,6 @@ void pd_task(void)
 		case PD_STATE_SNK_DISCONNECTED:
 			timeout = 10*MSEC;
 			tcpm_get_cc(port, &cc1, &cc2);
-
 			/* Source connection monitoring */
 			if (cc1 != TYPEC_CC_VOLT_OPEN ||
 			    cc2 != TYPEC_CC_VOLT_OPEN) {
@@ -1869,6 +1911,19 @@ void pd_task(void)
 							PD_T_CC_DEBOUNCE;
 				set_state(port,
 					PD_STATE_SNK_DISCONNECTED_DEBOUNCE);
+				break;
+			}
+
+			if (pd[port].flags & PD_FLAGS_TRY_SRC) {
+				if (get_time().val > pd[port].try_src_marker)
+					/*
+					 * TryWait timer has expired and SRC
+					 * has not been detected, return to
+					 * return to regular SNK_DISCONNECTED
+					 * state.
+					 */
+					pd[port].flags &= ~PD_FLAGS_TRY_SRC;
+				/* If Try.SRC active, don't do reg DRP check */
 				break;
 			}
 
@@ -1885,7 +1940,6 @@ void pd_task(void)
 				set_state(port, PD_STATE_SRC_DISCONNECTED);
 				tcpm_set_cc(port, TYPEC_CC_RP);
 				next_role_swap = get_time().val + PD_T_DRP_SRC;
-
 				/* Swap states quickly */
 				timeout = 2*MSEC;
 			}
@@ -1907,6 +1961,27 @@ void pd_task(void)
 			    !pd_snk_is_vbus_provided(port))
 				break;
 
+			if (pd_try_src_enable &&
+			    !(pd[port].flags & PD_FLAGS_TRY_SRC)) {
+				/*
+				 * If TRY_SRC is configured, then instead of
+				 * attaching as a SINK, force a transition to
+				 * SRC_DISCONNECTED state.
+				 * Set a flag to indicate this transition and
+				 * set time marker used for Try.SRC state.
+				 */
+				pd[port].try_src_marker = get_time().val
+					+ PD_T_TRY_SRC;
+				/* Swap roles to source */
+				pd[port].power_role = PD_ROLE_SOURCE;
+				tcpm_set_cc(port, TYPEC_CC_RP);
+				timeout = 2*MSEC;
+				set_state(port, PD_STATE_SRC_DISCONNECTED);
+				/* Set flag after the state change */
+				pd[port].flags |= PD_FLAGS_TRY_SRC;
+				break;
+			}
+
 			/* We are attached */
 			pd[port].polarity = (cc2 != TYPEC_CC_VOLT_OPEN);
 			tcpm_set_polarity(port, pd[port].polarity);
@@ -1923,7 +1998,8 @@ void pd_task(void)
 			/* If PD comm is enabled, enable TCPC RX */
 			if (pd_comm_enabled)
 				tcpm_set_rx_enable(port, 1);
-
+			/* Always clear this flag when attaching */
+			pd[port].flags &= ~PD_FLAGS_TRY_SRC;
 			/*
 			 * fake set data role swapped flag so we send
 			 * discover identity when we enter SRC_READY
@@ -2391,6 +2467,26 @@ void pd_task(void)
 				set_state(port, PD_STATE_SRC_DISCONNECTED);
 				/* Debouncing */
 				timeout = 10*MSEC;
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+				/*
+				 * If Try.SRC is configured, then ATTACHED_SRC
+				 * needs to transition to TryWait.SNK. Change
+				 * power roles to SNK and start state timer.
+				 */
+				if (pd_try_src_enable) {
+					/* Swap roles to sink */
+					pd[port].power_role = PD_ROLE_SINK;
+					tcpm_set_cc(port, TYPEC_CC_RD);
+					/* Set timer for TryWait.SNK state */
+					pd[port].try_src_marker = get_time().val
+						+ PD_T_TRY_WAIT;
+					/* Advance to TryWait.SNK state */
+					set_state(port,
+						  PD_STATE_SNK_DISCONNECTED);
+					/* Mark state as TryWait.SNK */
+					pd[port].flags |= PD_FLAGS_TRY_SRC;
+				}
+#endif
 			}
 		}
 #ifdef CONFIG_USB_PD_DUAL_ROLE
@@ -2475,7 +2571,6 @@ DECLARE_HOOK(HOOK_CHIPSET_STARTUP, dual_role_off, HOOK_PRIO_DEFAULT);
 static void dual_role_force_sink(void)
 {
 	pd_set_dual_role(PD_DRP_FORCE_SINK);
-
 	CPRINTS("chipset -> S5");
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, dual_role_force_sink, HOOK_PRIO_DEFAULT);
@@ -2728,7 +2823,21 @@ static int command_pd(int argc, char **argv)
 		return EC_SUCCESS;
 	}
 #endif /* CONFIG_CMD_PD_DEV_DUMP_INFO */
+#ifdef CONFIG_USB_PD_TRY_SRC
+	else if (!strncasecmp(argv[1], "trysrc", 6)) {
+		int enable;
 
+		if (argc < 3)
+			return EC_ERROR_PARAM_COUNT;
+
+		enable = strtoi(argv[2], &e, 10);
+		if (*e)
+			return EC_ERROR_PARAM3;
+		pd_try_src_enable = enable ? 1 : 0;
+		ccprintf("Try.SRC %s\n", enable ? "on" : "off");
+		return EC_SUCCESS;
+	}
+#endif
 #endif
 	/* command: pd <port> <subcmd> [args] */
 	port = strtoi(argv[1], &e, 10);
@@ -2850,7 +2959,8 @@ static int command_pd(int argc, char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(pd, command_pd,
-			"dualrole|dump|enable [0|1]|rwhashtable|\n\t<port> "
+			"dualrole|dump|enable [0|1]|rwhashtable"
+			"trysrc [0|1]\n\t<port> "
 			"[tx|bist_rx|bist_tx|charger|clock|dev"
 			"|soft|hash|hard|ping|state|swap [power|data]|"
 			"vdm [ping | curr | vers]]",
