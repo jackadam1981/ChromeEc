@@ -71,6 +71,29 @@
     },
     {
       "key": {
+        "uuid": "9e7adaa8_1e916a5b",
+        "filename": "board/glados_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-19T16:42:24Z",
+      "side": 1,
+      "message": "nit: missing comma after this: \"for HOST_EVENT, TCPC 0 Alert\"",
+      "range": {
+        "startLine": 149,
+        "startChar": 45,
+        "endLine": 149,
+        "endChar": 55
+      },
+      "revId": "159a4981a1d7553dd107c4488de2f113b85260fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7eca863a_ee415f0a",
         "filename": "board/oak_pd/board.c",
         "patchSetId": 1
@@ -87,6 +110,29 @@
         "startChar": 13,
         "endLine": 151,
         "endChar": 14
+      },
+      "revId": "159a4981a1d7553dd107c4488de2f113b85260fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e7adaa8_7e897e2c",
+        "filename": "common/host_command_pd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-19T16:42:24Z",
+      "side": 1,
+      "message": "I\u0027d rather avoid adding a board specific file. Let\u0027s just read the GPIO directly and say that all boards that implement this need to name the GPIO the same thing.",
+      "range": {
+        "startLine": 146,
+        "startChar": 8,
+        "endLine": 146,
+        "endChar": 31
       },
       "revId": "159a4981a1d7553dd107c4488de2f113b85260fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -128,6 +174,52 @@
       "writtenOn": "2015-06-19T01:23:10Z",
       "side": 1,
       "message": "unrelated change",
+      "revId": "159a4981a1d7553dd107c4488de2f113b85260fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e6dc2eb_e1e09591",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2422,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-19T16:42:24Z",
+      "side": 1,
+      "message": "i don\u0027t think this comment is needed, this file doesn\u0027t care how alert is read.",
+      "range": {
+        "startLine": 2417,
+        "startChar": 1,
+        "endLine": 2422,
+        "endChar": 4
+      },
+      "revId": "159a4981a1d7553dd107c4488de2f113b85260fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e6dc2eb_21d76dba",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2455,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-19T16:42:24Z",
+      "side": 1,
+      "message": "Some TCPCs clear the alert register on read. Would be better for us to assume that behavior here, and place this in the tcpm driver when tcpm_alert_status() is called.",
+      "range": {
+        "startLine": 2455,
+        "startChar": 1,
+        "endLine": 2455,
+        "endChar": 55
+      },
       "revId": "159a4981a1d7553dd107c4488de2f113b85260fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
