@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e7adaa8_0a0364cc",
+        "filename": "power/skylake.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-19T22:46:41Z",
+      "side": 1,
+      "message": "don\u0027t really need the else since the if has a return inside it",
+      "range": {
+        "startLine": 177,
+        "startChar": 2,
+        "endLine": 177,
+        "endChar": 10
+      },
+      "revId": "6e34ba1676fe23f95d724124c0002d030c304f97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
