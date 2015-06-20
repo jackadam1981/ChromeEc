@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "deae1265_2c23f769",
+        "filename": "chip/mec1322/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-06-20T15:41:13Z",
+      "side": 1,
+      "message": "will do.",
+      "parentUuid": "3e700ec3_e77660b7",
+      "revId": "ccf2c57ede518c8e3c9476aacf25bc029ffd6d16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e7adaa8_a0f4cf54",
         "filename": "chip/mec1322/system.c",
         "patchSetId": 1
@@ -64,6 +82,24 @@
       "writtenOn": "2015-06-20T02:19:00Z",
       "side": 1,
       "message": "Let\u0027s define these bits since we\u0027re using them in several places? Ex. #define MEC1322_PWR_RST_STS_VCC1 (1 \u003c\u003c 6)..",
+      "revId": "ccf2c57ede518c8e3c9476aacf25bc029ffd6d16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ebe4e91_98e3419d",
+        "filename": "chip/mec1322/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-06-20T15:41:13Z",
+      "side": 1,
+      "message": "The code will not look readable. Hence added a comment.",
+      "parentUuid": "9e7adaa8_a0f4cf54",
       "revId": "ccf2c57ede518c8e3c9476aacf25bc029ffd6d16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
