@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e700ec3_c776bdb7",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-20T00:09:13Z",
+      "side": 1,
+      "message": "this can be deleted now. probably want the same comment as in glados",
+      "range": {
+        "startLine": 134,
+        "startChar": 4,
+        "endLine": 134,
+        "endChar": 8
+      },
+      "revId": "fb9983ee7fd9291bafa6fdbf33cb7377a52b95e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e67ca0f_ff458164",
+        "filename": "common/usb_pd_tcpm_stub.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-20T00:09:13Z",
+      "side": 1,
+      "message": "don\u0027t need this function",
+      "range": {
+        "startLine": 74,
+        "startChar": 5,
+        "endLine": 74,
+        "endChar": 21
+      },
+      "revId": "fb9983ee7fd9291bafa6fdbf33cb7377a52b95e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
