@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e2acebf_6f31457a",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-22T22:06:57Z",
+      "side": 1,
+      "message": "missing\n/* Indicate that ec_int gpio is active due to host command */\natomic_or(\u0026ec_int_status, PD_STATUS_HOST_EVENT);",
+      "revId": "19c126c508d0ab0d3e6b1780858c33f02123c91c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
