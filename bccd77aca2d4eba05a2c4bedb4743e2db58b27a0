@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1eb50aac_7c4201f4",
+        "filename": "chip/it83xx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1118349
+      },
+      "writtenOn": "2015-06-22T17:27:03Z",
+      "side": 1,
+      "message": "Deleted",
+      "parentUuid": "5e2782f4_8aa0eb2a",
+      "revId": "bccd77aca2d4eba05a2c4bedb4743e2db58b27a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e67ca0f_854513eb",
         "filename": "chip/lm4/lpc.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2015-06-22T16:46:59Z",
       "side": 1,
       "message": "extra space.",
+      "revId": "bccd77aca2d4eba05a2c4bedb4743e2db58b27a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1eb50aac_1c3745a1",
+        "filename": "chip/lm4/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1118349
+      },
+      "writtenOn": "2015-06-22T17:27:03Z",
+      "side": 1,
+      "message": "Deleted",
+      "parentUuid": "1e67ca0f_854513eb",
       "revId": "bccd77aca2d4eba05a2c4bedb4743e2db58b27a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "feb756b3_db4a13d6",
+        "filename": "common/acpi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118349
+      },
+      "writtenOn": "2015-06-22T17:27:03Z",
+      "side": 1,
+      "message": "Changed comment style.",
+      "parentUuid": "1e67ca0f_c54b0bfd",
+      "revId": "bccd77aca2d4eba05a2c4bedb4743e2db58b27a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e7adaa8_a9527b3b",
         "filename": "common/acpi.c",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2015-06-22T16:46:59Z",
       "side": 1,
       "message": "I originally submitted this code behind a CONFIG, because the kernel only enables BURST when doing multi-byte value reads over the ACPI port. We don\u0027t do such reads when our memmap data can be accessed directly over LPC, so on LM4, for example, this is dead code. We might want to re-add the CONFIG, now that we have overhead of one deferred function. Let\u0027s add a TODO here?",
+      "revId": "bccd77aca2d4eba05a2c4bedb4743e2db58b27a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7eca863a_d10764ce",
+        "filename": "common/acpi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1118349
+      },
+      "writtenOn": "2015-06-22T17:27:03Z",
+      "side": 1,
+      "message": "Added TODO.",
+      "parentUuid": "9e7adaa8_a9527b3b",
       "revId": "bccd77aca2d4eba05a2c4bedb4743e2db58b27a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "7eca863a_7119d035",
+        "filename": "common/acpi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1118349
+      },
+      "writtenOn": "2015-06-22T17:27:03Z",
+      "side": 1,
+      "message": "Changed style and added more info.",
+      "parentUuid": "1e67ca0f_65731f61",
+      "revId": "bccd77aca2d4eba05a2c4bedb4743e2db58b27a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e67ca0f_45085bdd",
         "filename": "common/host_command.c",
         "patchSetId": 1
@@ -98,6 +188,24 @@
       "writtenOn": "2015-06-22T16:46:59Z",
       "side": 1,
       "message": "Return type of this function should be int since we\u0027re not returning a fixed bit length value.\n\nAlso suggest to rename function to host_memmap_is_locked() to be consistent with existing functions.",
+      "revId": "bccd77aca2d4eba05a2c4bedb4743e2db58b27a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "feb756b3_fb47d7cc",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1118349
+      },
+      "writtenOn": "2015-06-22T17:27:03Z",
+      "side": 1,
+      "message": "I can rename the fn name.\nThe reason I opted for uint32_t return is that underlying lock variable is of that type. Why to convert to int?",
+      "parentUuid": "1e67ca0f_45085bdd",
       "revId": "bccd77aca2d4eba05a2c4bedb4743e2db58b27a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "3ebe4e91_e35bae02",
+        "filename": "include/lpc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1118349
+      },
+      "writtenOn": "2015-06-22T17:27:03Z",
+      "side": 1,
+      "message": "Renamed",
+      "parentUuid": "5e2782f4_2a3d7f80",
+      "revId": "bccd77aca2d4eba05a2c4bedb4743e2db58b27a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e67ca0f_65055fc5",
         "filename": "include/lpc.h",
         "patchSetId": 1
@@ -132,6 +258,24 @@
       "writtenOn": "2015-06-22T16:46:59Z",
       "side": 1,
       "message": "lpc_enable_interrupts",
+      "revId": "bccd77aca2d4eba05a2c4bedb4743e2db58b27a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "feb756b3_9b449bca",
+        "filename": "include/lpc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1118349
+      },
+      "writtenOn": "2015-06-22T17:27:03Z",
+      "side": 1,
+      "message": "Renamed",
+      "parentUuid": "1e67ca0f_65055fc5",
       "revId": "bccd77aca2d4eba05a2c4bedb4743e2db58b27a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
