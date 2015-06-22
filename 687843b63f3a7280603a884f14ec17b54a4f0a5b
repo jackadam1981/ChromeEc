@@ -16,6 +16,24 @@
       "revId": "687843b63f3a7280603a884f14ec17b54a4f0a5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "deae1265_2f88c925",
+        "filename": "chip/mec1322/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-06-22T21:19:10Z",
+      "side": 1,
+      "message": "They were to make sure code is readable. As you want shawn.. will just change it.",
+      "parentUuid": "9e7adaa8_2f03cbcc",
+      "revId": "687843b63f3a7280603a884f14ec17b54a4f0a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
