@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "9e7adaa8_2c08b9dc",
+        "filename": "chip/lm4/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-22T19:01:57Z",
+      "side": 1,
+      "message": "Try LM4_LPC_LPCIM \u0026\u003d ~(LM4_LPC_INT_MASK(LPC_CH_ACPI, 6)); See the code above that unmasks the interrupt.",
+      "parentUuid": "7eca863a_1145ece8",
+      "range": {
+        "startLine": 683,
+        "startChar": 1,
+        "endLine": 683,
+        "endChar": 16
+      },
+      "revId": "bccd77aca2d4eba05a2c4bedb4743e2db58b27a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e67ca0f_854513eb",
         "filename": "chip/lm4/lpc.c",
         "patchSetId": 1
@@ -154,6 +178,30 @@
       "side": 1,
       "message": "It is not obvious to me how to disable/interrupt just ACPI interrupts on npcx. Can you give code-snippet? Or, let me submit the patch and you can modify it at your end.",
       "parentUuid": "5e2782f4_cd55dd97",
+      "range": {
+        "startLine": 653,
+        "startChar": 1,
+        "endLine": 653,
+        "endChar": 20
+      },
+      "revId": "bccd77aca2d4eba05a2c4bedb4743e2db58b27a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e7adaa8_6c3791a0",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-22T19:01:57Z",
+      "side": 1,
+      "message": "Try  task_{enable,disable}_irq(NPCX_IRQ_PM_CHAN_IBF);",
+      "parentUuid": "deae1265_ef62b109",
       "range": {
         "startLine": 653,
         "startChar": 1,
