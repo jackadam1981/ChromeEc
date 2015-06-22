@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "deae1265_af7359c5",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1118349
+      },
+      "writtenOn": "2015-06-22T21:46:10Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "5e2782f4_99ccc7da",
+      "range": {
+        "startLine": 653,
+        "startChar": 1,
+        "endLine": 653,
+        "endChar": 39
+      },
+      "revId": "7ec6bf1a521fd6796de5c023a3b5f1396ce94f71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e7adaa8_ba039715",
         "filename": "chip/npcx/lpc.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-06-22T21:40:21Z",
       "side": 1,
       "message": "CLEAR_BIT(NPCX_HIPMCTL(PM_CHAN_1), 0);",
+      "range": {
+        "startLine": 659,
+        "startChar": 1,
+        "endLine": 659,
+        "endChar": 40
+      },
+      "revId": "7ec6bf1a521fd6796de5c023a3b5f1396ce94f71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7eca863a_11316c7a",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1118349
+      },
+      "writtenOn": "2015-06-22T21:46:10Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "9e7adaa8_ba039715",
       "range": {
         "startLine": 659,
         "startChar": 1,
