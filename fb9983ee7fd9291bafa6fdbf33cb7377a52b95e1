@@ -45,6 +45,30 @@
       "revId": "fb9983ee7fd9291bafa6fdbf33cb7377a52b95e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ef6069f_14a53abe",
+        "filename": "common/usb_pd_tcpm_stub.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-06-22T20:30:55Z",
+      "side": 1,
+      "message": "This same function exists in the board.c files for boards that include the TCPCI. Do you recommend that I add #define config option around the calling function instead?\n\nint tcpc_alert_status_clear(int port, uint16_t mask)\n{\n\t/* clear only the bits specified by the TCPM */\n\tpd[port].alert \u0026\u003d ~mask;\n\t/* Set Alert# inactive (GPIO \u003d high) if all alert bits clear */\n\tif (!pd[port].alert)\n\t\ttcpc_alert_clear(port);\n\treturn EC_SUCCESS;\n}",
+      "parentUuid": "1e67ca0f_ff458164",
+      "range": {
+        "startLine": 74,
+        "startChar": 5,
+        "endLine": 74,
+        "endChar": 21
+      },
+      "revId": "fb9983ee7fd9291bafa6fdbf33cb7377a52b95e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
