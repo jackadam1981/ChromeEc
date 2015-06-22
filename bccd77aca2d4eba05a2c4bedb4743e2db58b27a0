@@ -60,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "7eca863a_1145ece8",
+        "filename": "chip/lm4/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1118349
+      },
+      "writtenOn": "2015-06-22T18:35:29Z",
+      "side": 1,
+      "message": "I am not clear how to disable just ACPI interrupts. Can you help on this?",
+      "parentUuid": "1e67ca0f_20467571",
+      "range": {
+        "startLine": 683,
+        "startChar": 1,
+        "endLine": 683,
+        "endChar": 16
+      },
+      "revId": "bccd77aca2d4eba05a2c4bedb4743e2db58b27a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e67ca0f_854513eb",
         "filename": "chip/lm4/lpc.c",
         "patchSetId": 1
@@ -106,6 +130,30 @@
       "writtenOn": "2015-06-22T17:40:40Z",
       "side": 1,
       "message": "Same problem here.  This disables all interrupts, not just the ACPI ones.",
+      "range": {
+        "startLine": 653,
+        "startChar": 1,
+        "endLine": 653,
+        "endChar": 20
+      },
+      "revId": "bccd77aca2d4eba05a2c4bedb4743e2db58b27a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "deae1265_ef62b109",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1118349
+      },
+      "writtenOn": "2015-06-22T18:35:29Z",
+      "side": 1,
+      "message": "It is not obvious to me how to disable/interrupt just ACPI interrupts on npcx. Can you give code-snippet? Or, let me submit the patch and you can modify it at your end.",
+      "parentUuid": "5e2782f4_cd55dd97",
       "range": {
         "startLine": 653,
         "startChar": 1,
@@ -359,6 +407,24 @@
       "side": 1,
       "message": "Is this intended to disable *ALL* LPC interrupts?  Or just the ACPI ones?  I think it\u0027s the latter, based on how you\u0027re using it.  In which case,\n\nlpc_disable_acpi_interrupt()\n\nwould be better.",
       "parentUuid": "3ebe4e91_e35bae02",
+      "revId": "bccd77aca2d4eba05a2c4bedb4743e2db58b27a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "feb756b3_1bff4be0",
+        "filename": "include/lpc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1118349
+      },
+      "writtenOn": "2015-06-22T18:35:29Z",
+      "side": 1,
+      "message": "Just ACPI ones. So, I can refine the fn name further.",
+      "parentUuid": "7ef6069f_ee1a5f9d",
       "revId": "bccd77aca2d4eba05a2c4bedb4743e2db58b27a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
