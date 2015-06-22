@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e7adaa8_2f03cbcc",
+        "filename": "chip/mec1322/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-22T20:40:44Z",
+      "side": 1,
+      "message": "I\u0027m not sure these functions are useful. It\u0027s probably better to check the register once and decode as needed, rather than checking the register five times (worst case in the new check_reset_cause code).",
+      "revId": "687843b63f3a7280603a884f14ec17b54a4f0a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
