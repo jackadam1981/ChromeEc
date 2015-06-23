@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe23d6e9_36ccc65d",
+        "filename": "chip/it83xx/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-23T23:22:15Z",
+      "side": 1,
+      "message": "Arguments to macros should be guarded by parens.  So:\n\n  ((hz) * (ms) / 1000)",
+      "range": {
+        "startLine": 25,
+        "startChar": 28,
+        "endLine": 25,
+        "endChar": 44
+      },
+      "revId": "d2a7d7d37e59e2d33301a7771cdd76da7abf5c3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe23d6e9_76a47e91",
+        "filename": "chip/it83xx/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-23T23:22:15Z",
+      "side": 1,
+      "message": "Suggest comment:\n\n/*\n * If we\u0027re still here, this is actually a hardware interrupt for the \n * clock source.  Clear its interrupt status and update time_us. \n */",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 29
+      },
+      "revId": "d2a7d7d37e59e2d33301a7771cdd76da7abf5c3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
