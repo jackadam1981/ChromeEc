@@ -10,6 +10,7 @@
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "charger.h"
+#include "charge_state.h"
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
@@ -28,6 +29,7 @@
 #include "spi.h"
 #include "switch.h"
 #include "task.h"
+#include "temp_sensor.h"
 #include "timer.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
@@ -462,3 +464,21 @@ static void check_ap_reset_second(void)
 }
 DECLARE_HOOK(HOOK_SECOND, check_ap_reset_second, HOOK_PRIO_DEFAULT);
 #endif
+
+/*
+ *Temperature sensors data; must be in the same order as enum temp_sensor_id.
+ */
+const struct temp_sensor_t temp_sensors[] = {
+	{"Battery", TEMP_SENSOR_TYPE_BATTERY, charge_temp_sensor_get_val, 0, 4},
+};
+BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
+
+/*
+ * Thermal limits for each temp sensor.  All temps are in degrees K.  Must be in
+ * same order as enum temp_sensor_id.  To always ignore any temp, use 0.
+ */
+struct ec_thermal_config thermal_params[] = {
+	/* {Twarn, Thigh, Thalt}, fan_off, fan_max */
+	{{0, 0, 0}, 0, 0},	/* Battery */
+};
+BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
