@@ -31,6 +31,7 @@
 #define CONFIG_PMIC_FW_LONG_PRESS_TIMER
 #define CONFIG_POWER_BUTTON
 #define CONFIG_POWER_COMMON
+#define CONFIG_TEMP_SENSOR
 #define CONFIG_USB_POWER_DELIVERY
 #define CONFIG_USB_PD_ALT_MODE
 #define CONFIG_USB_PD_ALT_MODE_DFP
@@ -109,6 +110,13 @@ enum pwm_channel {
 
 enum adc_channel {
 	ADC_CH_COUNT
+};
+
+enum temp_sensor_id {
+	/* Battery temperature sensor */
+	TEMP_SENSOR_BATTERY,
+
+	TEMP_SENSOR_COUNT
 };
 
 /* start as a sink in case we have no other power supply/battery */
