@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de1a92b3_fa017139",
+        "filename": "board/pdeval-stm32f072/PD_evaluation.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-23T17:53:01Z",
+      "side": 1,
+      "message": "it\u0027s actually at least half-written",
+      "range": {
+        "startLine": 76,
+        "startChar": 3,
+        "endLine": 76,
+        "endChar": 34
+      },
+      "revId": "1e4f63e6a2dcb64a55d2533f52ec70856674ba65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe23d6e9_ea1a479d",
+        "filename": "board/pdeval-stm32f072/PD_evaluation.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-23T17:53:01Z",
+      "side": 1,
+      "message": "actually if you get the proper GCC armv7-m cross toolchain, it\u0027s pretty trivial to build it without the chroot.\nWe used to have some kind of builders generating mostly standalone cross-toolchains identical to the chroot pre-built binaries. I will try to find them.",
+      "range": {
+        "startLine": 78,
+        "startChar": 3,
+        "endLine": 78,
+        "endChar": 35
+      },
+      "revId": "1e4f63e6a2dcb64a55d2533f52ec70856674ba65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
