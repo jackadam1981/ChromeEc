@@ -22,6 +22,30 @@
       "revId": "315f565e536031c3b56e4ef2d1fe2b548ba69e72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e149a89_8468e619",
+        "filename": "board/pdeval-stm32f072/ec.tasklist",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-23T17:57:39Z",
+      "side": 1,
+      "message": "we use it to process the TCPC alert, but we don\u0027t send any host commands (CONFIG_HOSTCMD_PD is not defined).",
+      "parentUuid": "5efea270_8d50f2da",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 58
+      },
+      "revId": "315f565e536031c3b56e4ef2d1fe2b548ba69e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
