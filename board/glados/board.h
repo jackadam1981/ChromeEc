@@ -49,6 +49,7 @@
 #define CONFIG_SPI_FLASH_SIZE 524288
 #define CONFIG_SPI_FLASH_W25Q64
 
+#define CONFIG_TEMP_SENSOR
 /*
  * Allow dangerous commands.
  * TODO(shawnn): Remove this config before production.
@@ -107,6 +108,13 @@ enum charge_supplier {
 	CHARGE_SUPPLIER_OTHER,
 	CHARGE_SUPPLIER_VBUS,
 	CHARGE_SUPPLIER_COUNT
+};
+
+enum temp_sensor_id {
+	/* Battery temperature sensor */
+	TEMP_SENSOR_BATTERY,
+
+	TEMP_SENSOR_COUNT
 };
 
 /* supplier_priority table defined in board.c */
