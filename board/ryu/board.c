@@ -30,6 +30,7 @@
 #include "registers.h"
 #include "spi.h"
 #include "task.h"
+#include "temp_sensor.h"
 #include "usb.h"
 #include "usb_pd.h"
 #include "usb_spi.h"
@@ -427,6 +428,22 @@ struct motion_sensor_t motion_sensors[] = {
 	},
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+
+/* Temperature sensors data; must be in same order as enum temp_sensor_id. */
+const struct temp_sensor_t temp_sensors[] = {
+	{"Battery", TEMP_SENSOR_TYPE_BATTERY, charge_temp_sensor_get_val, 0, 4},
+};
+BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
+
+/*
+ * Thermal limits for each temp sensor.  All temps are in degrees K.  Must be in
+ * same order as enum temp_sensor_id.  To always ignore any temp, use 0.
+ */
+struct ec_thermal_config thermal_params[] = {
+	/* {Twarn, Thigh, Thalt}, fan_off, fan_max */
+	{{0, 0, 0}, 0, 0},
+};
+BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
 
 static void board_set_usb_switches(int port, int open)
 {
