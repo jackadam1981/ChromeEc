@@ -141,6 +141,7 @@
 #define CONFIG_MAG_BMI160_BMM150
 #define CONFIG_CMD_ACCELS
 #define CONFIG_CMD_ACCEL_INFO
+#define CONFIG_TEMP_SENSOR
 
 /* Maximum number of deferrable functions */
 #undef  DEFERRABLE_MAX_COUNT
@@ -188,6 +189,13 @@ enum usb_strings {
 
 /* VBUS enable GPIO */
 #define GPIO_USB_C0_5V_EN GPIO_CHGR_OTG
+
+enum temp_sensor_id {
+	/* Battery temperature sensor */
+	TEMP_SENSOR_BATTERY,
+
+	TEMP_SENSOR_COUNT
+};
 
 /* 1.5A Rp */
 #define PD_SRC_VNC            PD_SRC_1_5_VNC_MV
