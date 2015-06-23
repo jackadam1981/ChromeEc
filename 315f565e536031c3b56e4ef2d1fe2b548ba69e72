@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5efea270_8d50f2da",
+        "filename": "board/pdeval-stm32f072/ec.tasklist",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-23T17:53:01Z",
+      "side": 1,
+      "message": "why do we have a PD host command task ?",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 58
+      },
+      "revId": "315f565e536031c3b56e4ef2d1fe2b548ba69e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
