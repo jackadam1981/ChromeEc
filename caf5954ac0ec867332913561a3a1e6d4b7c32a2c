@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "becf9e9d_f53c3885",
+        "filename": "chip/it83xx/config_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-24T16:43:06Z",
+      "side": 1,
+      "message": "Also needs description in config.h.",
+      "range": {
+        "startLine": 47,
+        "startChar": 8,
+        "endLine": 47,
+        "endChar": 29
+      },
+      "revId": "caf5954ac0ec867332913561a3a1e6d4b7c32a2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ece5aa2_b4fec0e0",
+        "filename": "chip/it83xx/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-24T16:43:06Z",
+      "side": 1,
+      "message": "typo: progress",
+      "range": {
+        "startLine": 58,
+        "startChar": 35,
+        "endLine": 58,
+        "endChar": 44
+      },
+      "revId": "caf5954ac0ec867332913561a3a1e6d4b7c32a2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
