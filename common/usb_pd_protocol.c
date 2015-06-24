@@ -1333,6 +1333,11 @@ void pd_task(void)
 	/* Disable TCPC RX until connection is established */
 	tcpm_set_rx_enable(port, 0);
 
+#ifdef CONFIG_USBC_SS_MUX
+	/* Initialize USB mux to its default state */
+	board_init_usb_mux(port);
+#endif
+
 	/* Initialize PD protocol state variables for each port. */
 	pd[port].power_role = PD_ROLE_DEFAULT;
 	pd[port].vdm_state = VDM_STATE_DONE;

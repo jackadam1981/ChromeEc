@@ -446,6 +446,10 @@ void board_set_usb_switches(int port, enum usb_switch setting)
 	mutex_unlock(&usb_switch_lock[port]);
 }
 
+void board_init_usb_mux(int port)
+{
+}
+
 void board_set_usb_mux(int port, enum typec_mux mux,
 		       enum usb_switch usb, int polarity)
 {

@@ -85,8 +85,9 @@ const void * const usb_strings[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
 
-
-
+void board_init_usb_mux(int port)
+{
+}
 
 void board_set_usb_mux(int port, enum typec_mux mux,
 		       enum usb_switch usb, int polarity)

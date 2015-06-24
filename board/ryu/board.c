@@ -346,6 +346,10 @@ void board_set_usb_switches(int port, enum usb_switch setting)
 	pi3usb9281_set_switches(port, usb_switch_state);
 }
 
+void board_init_usb_mux(int port)
+{
+}
+
 void board_set_usb_mux(int port, enum typec_mux mux,
 		       enum usb_switch usb, int polarity)
 {
