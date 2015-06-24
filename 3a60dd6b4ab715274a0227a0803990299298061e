@@ -22,6 +22,30 @@
       "revId": "3a60dd6b4ab715274a0227a0803990299298061e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ee9eefa_d42b7288",
+        "filename": "chip/it83xx/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1109909
+      },
+      "writtenOn": "2015-06-24T07:22:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e149a89_93c66689",
+      "range": {
+        "startLine": 82,
+        "startChar": 8,
+        "endLine": 82,
+        "endChar": 30
+      },
+      "revId": "3a60dd6b4ab715274a0227a0803990299298061e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
