@@ -8,6 +8,7 @@
 #include "config.h"
 #include "console.h"
 #include "crc.h"
+#include "driver/tcpm/tcpci.h"
 #include "ec_commands.h"
 #include "gpio.h"
 #include "host_command.h"
@@ -742,16 +743,16 @@ int tcpc_run(int port, int evt)
 	/* outgoing packet ? */
 	if ((evt & PD_EVENT_TX) && pd[port].rx_enabled) {
 		switch (pd[port].tx_type) {
-		case TRANSMIT_SOP:
+		case TCPC_TX_SOP:
 			res = send_validate_message(port,
 					pd[port].tx_head,
 					pd[port].tx_data);
 			break;
-		case TRANSMIT_BIST_MODE_2:
+		case TCPC_TX_BIST_MODE_2:
 			bist_mode_2_tx(port);
 			res = 0;
 			break;
-		case TRANSMIT_HARD_RESET:
+		case TCPC_TX_HARD_RESET:
 			res = send_hard_reset(port);
 			break;
 		default:
@@ -842,7 +843,7 @@ int tcpc_alert_status_clear(int port, uint16_t mask)
 	return EC_SUCCESS;
 }
 
-int tcpc_alert_mask_update(int port, uint16_t mask)
+int tcpc_alert_mask_set(int port, uint16_t mask)
 {
 	/* Update the alert mask as specificied by the TCPM */
 	pd[port].alert_mask = mask;
@@ -971,7 +972,7 @@ static void tcpc_i2c_write(int port, int reg, int len, uint8_t *payload)
 	case TCPC_REG_ALERT_MASK:
 		alert = payload[1];
 		alert |= (payload[2] << 8);
-		tcpc_alert_mask_update(port, alert);
+		tcpc_alert_mask_set(port, alert);
 		break;
 	case TCPC_REG_RX_DETECT:
 		tcpc_set_rx_enable(port, payload[1] &
