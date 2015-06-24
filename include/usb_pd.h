@@ -792,10 +792,12 @@ enum pd_data_msg_type {
 #define PD_ROLE_VCONN_ON  1
 
 /* Port role at startup */
+#ifndef PD_ROLE_DEFAULT
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 #define PD_ROLE_DEFAULT PD_ROLE_SINK
 #else
 #define PD_ROLE_DEFAULT PD_ROLE_SOURCE
+#endif
 #endif
 
 /* build message header */

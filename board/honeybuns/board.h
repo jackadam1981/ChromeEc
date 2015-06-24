@@ -85,6 +85,7 @@ enum usb_strings {
 #define PD_SRC_RD_THRESHOLD   PD_SRC_3_0_RD_THRESH_MV
 
 /* we are acting only as a source */
+#define PD_ROLE_DEFAULT PD_ROLE_SOURCE
 #define PD_DEFAULT_STATE PD_STATE_SRC_DISCONNECTED
 
 /* delay necessary for the voltage transition on the power supply */
