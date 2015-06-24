@@ -44,8 +44,13 @@
 #define CONFIG_FLASH_ERASE_SIZE     0x00000400  /* erase bank size */
 #define CONFIG_FLASH_WRITE_SIZE     0x00000004  /* minimum write size */
 
-/* Ideal flash write size fills the 32-entry flash write buffer */
-#define CONFIG_FLASH_WRITE_IDEAL_SIZE (32 * 4)
+#define CONFIG_ILM_BLOCK_SIZE       0x00001000
+
+/*
+ * The AAI program instruction allows continue write flash
+ * until write disable instruction.
+ */
+#define CONFIG_FLASH_WRITE_IDEAL_SIZE CONFIG_FLASH_ERASE_SIZE
 
 /* This is the physical size of the flash on the chip. We'll reserve one bank
  * in order to emulate per-bank write-protection UNTIL REBOOT. The hardware
@@ -74,10 +79,10 @@
 
 /* Use hardware specific udelay() for this chip */
 #define CONFIG_HW_SPECIFIC_UDELAY
+#define CONFIG_FW_RESET_VECTOR
 
 /* Optional features present on this chip */
 #undef CONFIG_I2C
-#undef CONFIG_FLASH
 #undef CONFIG_WATCHDOG
 #define CONFIG_PWM
 #define CONFIG_ADC
