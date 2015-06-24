@@ -22,6 +22,75 @@
       "revId": "58314faa1d2199950b88eb29aa618afd6237a74c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ded45230_562e5446",
+        "filename": "chip/it83xx/config_chip.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-24T16:22:15Z",
+      "side": 1,
+      "message": "Minor nit: alphabetize config options.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 19
+      },
+      "revId": "58314faa1d2199950b88eb29aa618afd6237a74c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "becf9e9d_55052cc4",
+        "filename": "chip/it83xx/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-24T16:22:15Z",
+      "side": 1,
+      "message": "Just 0",
+      "range": {
+        "startLine": 220,
+        "startChar": 13,
+        "endLine": 220,
+        "endChar": 17
+      },
+      "revId": "58314faa1d2199950b88eb29aa618afd6237a74c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ec1426b_5a5c35c2",
+        "filename": "chip/it83xx/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-24T16:22:15Z",
+      "side": 1,
+      "message": "This 16 seems coupled to the udelay() below.\n\nIt might be better to define a constant for this:\n\n#define LOOP_DELAY_US 16\n\nfor (num \u003d 0; num \u003c pd-\u003etimeout_us; num +\u003d LOOP_DELAY_US)\n\n...\n\n/* Delay - 1 since some time was used in the code above */\nudelay(LOOP_DELAY_US - 1)",
+      "range": {
+        "startLine": 220,
+        "startChar": 48,
+        "endLine": 220,
+        "endChar": 50
+      },
+      "revId": "58314faa1d2199950b88eb29aa618afd6237a74c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
