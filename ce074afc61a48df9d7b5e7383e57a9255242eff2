@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "befddec1_6e450316",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-06-24T21:01:31Z",
+      "side": 1,
+      "message": "Current time on my z620 w/SSD:\n\nreal\t0m0.583s\nuser\t0m0.566s\nsys\t0m0.016s\n \n\nIf that\u0027s too slow, I can easily change it to just the files in the CL.",
+      "parentUuid": "9e7f3a21_ece32b19",
+      "range": {
+        "startLine": 11,
+        "startChar": 26,
+        "endLine": 11,
+        "endChar": 69
+      },
+      "revId": "ce074afc61a48df9d7b5e7383e57a9255242eff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e7a8634_0bd45d31",
         "filename": "util/config_option_check.py",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-06-24T20:56:50Z",
       "side": 1,
       "message": "Also add .inc (needed to catch #ifdef\u0027s in gpio.inc)",
+      "range": {
+        "startLine": 60,
+        "startChar": 21,
+        "endLine": 60,
+        "endChar": 37
+      },
+      "revId": "ce074afc61a48df9d7b5e7383e57a9255242eff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e098aaf_ee369b74",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-06-24T21:01:31Z",
+      "side": 1,
+      "message": "Will do.",
+      "parentUuid": "7e7a8634_0bd45d31",
       "range": {
         "startLine": 60,
         "startChar": 21,
