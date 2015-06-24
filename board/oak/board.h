@@ -90,15 +90,9 @@
 #define CONFIG_CMD_HOSTCMD
 
 /* Drivers */
-#define CONFIG_USB_SWITCH_PI3USB30532
-/*
- * 8-bit USB type-C switch I2C addresses:
- *   port 0: 0x54 << 1
- *   port 1: 0x55 << 1
- */
-#define CONFIG_USB_SWITCH_I2C_ADDRS {0x54 << 1, 0x55 << 1}
+#define CONFIG_USB_MUX_PI3USB30532
+#define CONFIG_USB_MUX_COUNT 2
 /* BC 1.2 charger */
-#define CONFIG_USB_SWITCH_PI3USB30532
 #define CONFIG_USB_SWITCH_PI3USB9281
 #define CONFIG_USB_SWITCH_PI3USB9281_CHIP_COUNT 2
 
