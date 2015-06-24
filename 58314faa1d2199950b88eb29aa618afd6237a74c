@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ece5aa2_94be2450",
+        "filename": "board/it8380dev/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-24T14:56:46Z",
+      "side": 1,
+      "message": "new config options should be in include/config.h. since this is specific to this chip, should probably be renamed to something like: CONFIG_ITE8380_SMCLK2_ON_GPC7.",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 35
+      },
+      "revId": "58314faa1d2199950b88eb29aa618afd6237a74c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
