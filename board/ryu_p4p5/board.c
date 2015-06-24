@@ -324,6 +324,10 @@ void p4_board_set_usb_mux(int port, enum typec_mux mux,
 	gpio_set_level(GPIO_USBC_SS_EN_L, 0);
 }
 
+void board_init_usb_mux(int port)
+{
+}
+
 void board_set_usb_mux(int port, enum typec_mux mux,
 		       enum usb_switch usb, int polarity)
 {

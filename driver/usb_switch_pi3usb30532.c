@@ -23,9 +23,9 @@
 #define IS_READ_ERROR(code) ((code) > EC_ERROR_INTERNAL_FIRST)
 
 /* 8-bit I2C address */
-static const int pi3usb30532_addrs[] = CONFIG_USB_SWITCH_I2C_ADDRS;
+static const int pi3usb30532_addrs[] = CONFIG_USB_SWITCH_PI3USB30532_I2C_ADDRS;
 
-int pi3usb30532_read(uint8_t chip_idx, uint8_t reg)
+static int pi3usb30532_read(int chip_idx, uint8_t reg)
 {
 	int res, val;
 	int addr = pi3usb30532_addrs[chip_idx];
@@ -37,7 +37,7 @@ int pi3usb30532_read(uint8_t chip_idx, uint8_t reg)
 	return val;
 }
 
-int pi3usb30532_write(uint8_t chip_idx, uint8_t reg, uint8_t val)
+static int pi3usb30532_write(int chip_idx, uint8_t reg, uint8_t val)
 {
 	int res;
 	int addr = pi3usb30532_addrs[chip_idx];
@@ -49,37 +49,31 @@ int pi3usb30532_write(uint8_t chip_idx, uint8_t reg, uint8_t val)
 	return res;
 }
 
+static int pi3usb30532_reset(int chip_idx)
+{
+	return pi3usb30532_set_switch(chip_idx, PI3USB30532_MODE_POWERDOWN);
+}
+
+void pi3usb30532_init(int chip_idx)
+{
+	int res, val;
+	ASSERT(chip_idx < ARRAY_SIZE(pi3usb30532_addrs));
+
+	res = pi3usb30532_reset(chip_idx);
+	if (res)
+		CPRINTS("PI3USB30532 [%d] init failed", chip_idx);
+
+	val = pi3usb30532_read(chip_idx, PI3USB30532_REG_VENDOR);
+	if (IS_READ_ERROR(val))
+		CPRINTS("PI3USB30532 [%d] read failed", chip_idx);
+	else if (val != PI3USB30532_VENDOR_ID)
+		CPRINTS("PI3USB30532 [%d] invalid ID 0x%02x", chip_idx, val);
+}
+
 /* Writes control register to set switch mode */
-int pi3usb30532_set_switch(uint8_t chip_idx, uint8_t mode)
+int pi3usb30532_set_switch(int chip_idx, uint8_t mode)
 {
 	return pi3usb30532_write(chip_idx, PI3USB30532_REG_CONTROL,
 				 (mode & PI3USB30532_CTRL_MASK) |
 				 PI3USB30532_CTRL_RSVD);
 }
-
-int pi3usb30532_reset(uint8_t chip_idx)
-{
-	return pi3usb30532_set_switch(chip_idx, PI3USB30532_MODE_POWERDOWN);
-}
-
-static void pi3usb30532_init(void)
-{
-	int i, res, val;
-
-	for (i = 0; i < ARRAY_SIZE(pi3usb30532_addrs); i++) {
-		res = pi3usb30532_reset(i);
-		if (res)
-			CPRINTS("PI3USB30532 [%d] init failed", i);
-
-		val = pi3usb30532_read(i, PI3USB30532_REG_VENDOR);
-		if (IS_READ_ERROR(val)) {
-			CPRINTS("PI3USB30532 [%d] read failed", i);
-			continue;
-		}
-
-		if (val != PI3USB30532_VENDOR_ID)
-			CPRINTS("PI3USB30532 [%d] invalid ID 0x%02x", i, val);
-
-	}
-}
-DECLARE_HOOK(HOOK_INIT, pi3usb30532_init, HOOK_PRIO_LAST);

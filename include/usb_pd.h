@@ -1201,6 +1201,13 @@ enum usb_switch {
 void board_set_usb_switches(int port, enum usb_switch setting);
 
 /**
+ * Initialize USB mux to its default state.
+ *
+ * @param port port number.
+ */
+void board_init_usb_mux(int port);
+
+/**
  * Configure superspeed muxes on type-C port.
  *
  * @param port port number.

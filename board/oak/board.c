@@ -319,6 +319,16 @@ void board_set_usb_switches(int port, enum usb_switch setting)
 }
 
 /**
+ * Initialize USB mux to its default state.
+ *
+ * @param port port number.
+ */
+void board_init_usb_mux(int port)
+{
+	pi3usb30532_init(port);
+}
+
+/**
  * Set USB3.0/DP mux.
  *
  * @param port       the type-C port to change
