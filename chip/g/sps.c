@@ -8,10 +8,15 @@
 #include "hooks.h"
 #include "pmu.h"
 #include "registers.h"
-#include "sps.h"
+#include "spi.h"
 #include "task.h"
 #include "timer.h"
 #include "watchdog.h"
+
+/* Console output macros */
+#define CPUTS(outstr) cputs(CC_SPI, outstr)
+#define CPRINTS(format, args...) cprints(CC_SPI, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_SPI, format, ## args)
 
 /*
  * This file is a driver for the CR50 SPS (SPI slave) controller. The
@@ -41,6 +46,14 @@
  * - unregister receive callback.
  */
 
+/* SPS Control Mode */
+enum sps_mode {
+	SPS_GENERIC_MODE = 0,
+	SPS_SWETLAND_MODE = 1,
+	SPS_ROM_MODE = 2,
+	SPS_UNDEF_MODE = 3,
+};
+
 #define SPS_FIFO_SIZE		(1 << 10)
 #define SPS_FIFO_MASK		(SPS_FIFO_SIZE - 1)
 /*
@@ -55,10 +68,6 @@
 
 /* SPS Statistic Counters */
 static uint32_t sps_tx_count, sps_rx_count, tx_empty_count, max_rx_batch;
-
-/* Console output macros */
-#define CPUTS(outstr) cputs(CC_SPI, outstr)
-#define CPRINTS(format, args...) cprints(CC_SPI, format, ## args)
 
 /*
  * Push data to the SPS TX FIFO
@@ -98,7 +107,7 @@ int sps_transmit(uint32_t inst, uint8_t *data, size_t data_size)
 		if ((wptr & 3) || (data_size < 4) || ((uintptr_t)data & 3)) {
 			/*
 			 * Either we have less then 4 bytes to send, or one of
-			 * the pointers in not 4 byte aligned. Need to go byte
+			 * the pointers is not 4 byte aligned. Need to go byte
 			 * by byte.
 			 */
 			uint32_t fifo_contents;
@@ -152,13 +161,11 @@ int sps_transmit(uint32_t inst, uint8_t *data, size_t data_size)
 	return bytes_sent;
 }
 
-/** Configure the data transmission format
- *
- *  @param mode Clock polarity and phase mode (0 - 3)
- *
- */
-static void sps_configure(enum sps_mode mode, enum spi_clock_mode clk_mode)
+static void sps_reset(void)
 {
+	enum sps_mode mode = SPS_GENERIC_MODE;
+	enum spi_clock_mode clk_mode = SPI_CLOCK_MODE0;
+
 	/* Disable All Interrupts */
 	GREG32(SPS, ICTRL) = 0;
 
@@ -179,18 +186,38 @@ static void sps_configure(enum sps_mode mode, enum spi_clock_mode clk_mode)
 	/* wait for reset to self clear. */
 	while (GREG32(SPS, FIFO_CTRL) & 9)
 		;
+}
 
-	/* Do not enable TX FIFO until we have something to send. */
+static void sps_rx_enable(void)
+{
+	/* We don't enable TX FIFO until we have something to send. */
 	GWRITE_FIELD(SPS, FIFO_CTRL, RXFIFO_EN, 1);
 
+	/*
+	 * Wait until we have a few bytes in the FIFO before waking up. Note
+	 * that if the host wants to read bytes from us, it may have to clock
+	 * in at least RXFIFO_THRESHOLD+1 bytes before we notice that it's
+	 * asking.
+	 */
 	GREG32(SPS, RXFIFO_THRESHOLD) = 8;
-
 	GWRITE_FIELD(SPS, ICTRL, RXFIFO_LVL, 1);
 
-	/* Use CS_DEASSERT to retrieve all remaining bytes from RX FIFO. */
+	/* Also wake up when the host has finished talking to us, so we can
+	 * drain any remaining bytes in the RX FIFO. Too late for TX, of
+	 * course. */
 	GWRITE_FIELD(SPS, ISTATE_CLR, CS_DEASSERT, 1);
 	GWRITE_FIELD(SPS, ICTRL, CS_DEASSERT, 1);
 }
+
+
+/*
+ * RX interrupt callback function prototype. This function returns a portion
+ * of the received SPI data and current status of the CS line. When CS is
+ * deasserted, this function is called with data_size of zero and a non-zero
+ * cs_status. This allows the recipient to delineate the SPS frames.
+ */
+typedef void (*rx_handler_f)(uint32_t inst, uint8_t *data,
+			     size_t data_size, int cs_status);
 
 /*
  * Register and unregister rx_handler. Side effects of registering the handler
@@ -198,15 +225,18 @@ static void sps_configure(enum sps_mode mode, enum spi_clock_mode clk_mode)
  */
 static rx_handler_f sps_rx_handler;
 
-int sps_register_rx_handler(enum sps_mode mode, rx_handler_f rx_handler)
+int sps_register_rx_handler(rx_handler_f rx_handler)
 {
 	if (sps_rx_handler)
 		return -1;
 
 	sps_rx_handler = rx_handler;
-	sps_configure(mode, SPI_CLOCK_MODE0);
+	sps_reset();
+	sps_rx_enable();
 	task_enable_irq(GC_IRQNUM_SPS0_RXFIFO_LVL_INTR);
 	task_enable_irq(GC_IRQNUM_SPS0_CS_DEASSERT_INTR);
+
+	CPRINTS("Reset SPS module");
 
 	return 0;
 }
@@ -218,18 +248,10 @@ int sps_unregister_rx_handler(void)
 
 	task_disable_irq(GC_IRQNUM_SPS0_RXFIFO_LVL_INTR);
 	task_disable_irq(GC_IRQNUM_SPS0_CS_DEASSERT_INTR);
-
+	sps_reset();
 	sps_rx_handler = NULL;
 	return 0;
 }
-
-static void sps_init(void)
-{
-	pmu_clock_en(PERIPH_SPS);
-}
-DECLARE_HOOK(HOOK_INIT, sps_init, HOOK_PRIO_DEFAULT);
-
-
 
 /*****************************************************************************/
 /* Interrupt handler stuff */
@@ -305,182 +327,69 @@ static void sps_rx_interrupt(uint32_t port, int cs_deasserted)
 		sps_rx_handler(port, NULL, 0, 1);
 }
 
-static void sps_cs_deassert_interrupt(uint32_t port)
-{
-	/* Make sure the receive FIFO is drained. */
-	sps_rx_interrupt(port, 1);
-	GWRITE_FIELD(SPS, ISTATE_CLR, CS_DEASSERT, 1);
-	GWRITE_FIELD(SPS, FIFO_CTRL, TXFIFO_EN, 0);
-}
-
 void _sps0_interrupt(void)
 {
 	sps_rx_interrupt(0, 0);
+	/* The RXFIFO_LVL interrupt clears itself when the level drops */
 }
+DECLARE_IRQ(GC_IRQNUM_SPS0_RXFIFO_LVL_INTR, _sps0_interrupt, 1);
 
 void _sps0_cs_deassert_interrupt(void)
 {
-	sps_cs_deassert_interrupt(0);
+	/* Make sure the receive FIFO is drained. */
+	sps_rx_interrupt(0, 1);
+	/* Clear the interrupt bit */
+	GWRITE_FIELD(SPS, ISTATE_CLR, CS_DEASSERT, 1);
+	/* Disable transmission, in case the host lost interest early */
+	GWRITE_FIELD(SPS, FIFO_CTRL, TXFIFO_EN, 0);
 }
 DECLARE_IRQ(GC_IRQNUM_SPS0_CS_DEASSERT_INTR, _sps0_cs_deassert_interrupt, 1);
-DECLARE_IRQ(GC_IRQNUM_SPS0_RXFIFO_LVL_INTR, _sps0_interrupt, 1);
 
-#ifdef CONFIG_SPS_TEST
-
-/* Function to test SPS driver. It expects the host to send SPI frames of size
- * <size> (not exceeding 1100) of the following format:
- *
- * <size/256> <size%256> [<size> bytes of payload]
- *
- * Once the frame is received, it is sent back. The host can receive it and
- * compare with the original.
- */
-
- /*
-  * Receive callback implemets a simple state machine, it could be in one of
-  * three states:  not started, receiving frame, frame finished.
-  */
-
-enum sps_test_rx_state {
-	spstrx_not_started,
-	spstrx_receiving,
-	spstrx_finished
-};
-
-static enum sps_test_rx_state rx_state;
-static uint8_t test_frame[1100]; /* Storage for the received frame. */
-/*
- * To verify different alignment cases, the frame is saved in the buffer
- * starting with a certain offset (in range 0..3).
- */
-static size_t frame_base;
-/*
- * This is the index of the next location where received data will be added
- * to. Points to the end of the received frame once it has been pulled in.
- */
-static size_t frame_index;
-
+/* RX FIFO handler (runs in interrupt context) */
 static void sps_receive_callback(uint32_t inst, uint8_t *data,
 				 size_t data_size, int cs_status)
 {
-	static size_t frame_size; /* Total size of the frame being received. */
-	size_t to_go; /* Number of bytes still to receive. */
+	static uint8_t buf[1024];		/* probably not necessary */
+	uint8_t *bufptr = buf;
 
-	if (rx_state == spstrx_not_started) {
-		if (data_size < 2)
-			return; /* Something went wrong.*/
-
-		frame_size = data[0] * 256 + data[1] + 2;
-		frame_base = (frame_base + 1) % 3;
-		frame_index = frame_base;
-
-		if ((frame_index + frame_size) <= sizeof(test_frame))
-			/* Enter 'receiving frame' state. */
-			rx_state = spstrx_receiving;
-		else
-			/*
-			 * If we won't be able to receve this much, enter the
-			 * 'frame finished' state.
-			 */
-			rx_state = spstrx_finished;
-	}
-
-	if (rx_state == spstrx_finished) {
-		/*
-		 * If CS was deasserted (transitioned to 1) - prepare to start
-		 * receiving the next frame.
-		 */
-		if (cs_status)
-			rx_state = spstrx_not_started;
+	if (!data_size)
 		return;
+
+	/* When bytes show up, just echo them right back out again */
+	memcpy(bufptr, data, data_size);
+	while (data_size) {
+		size_t cnt = sps_transmit(inst, bufptr, data_size);
+		data_size -= cnt;
+		bufptr += cnt;
 	}
-
-	if (frame_size > data_size)
-		to_go = data_size;
-	else
-		to_go = frame_size;
-
-	memcpy(test_frame + frame_index, data, to_go);
-	frame_index += to_go;
-	frame_size -= to_go;
-
-	if (!frame_size)
-		rx_state = spstrx_finished; /* Frame finished.*/
 }
+
+static void sps_init(void)
+{
+	pmu_clock_en(PERIPH_SPS);
+	sps_register_rx_handler(sps_receive_callback);
+}
+DECLARE_HOOK(HOOK_INIT, sps_init, HOOK_PRIO_DEFAULT);
+
 
 static int command_sps(int argc, char **argv)
 {
-	int count = 0;
-	int target = 10; /* Expect 10 frames by default.*/
-	char *e;
+	int i;
 
-	rx_state = spstrx_not_started;
-	sps_register_rx_handler(SPS_GENERIC_MODE, sps_receive_callback);
-
-	if (argc > 1) {
-		target = strtoi(argv[1], &e, 10);
-		if (*e)
-			return EC_ERROR_PARAM1;
+	if (argc < 2) {
+		sps_unregister_rx_handler();
+		sps_register_rx_handler(sps_receive_callback);
+		return EC_SUCCESS;
 	}
 
-	while (count++ < target) {
-		size_t transmitted;
-		size_t to_go;
-		size_t index;
-
-		/* Wait for a frame to be received.*/
-		while (rx_state != spstrx_finished) {
-			watchdog_reload();
-			usleep(10);
-		}
-
-		/* Transmit the frame back to the host.*/
-		index = frame_base;
-		to_go = frame_index - frame_base;
-		do {
-			if ((index == frame_base) && (to_go > 8)) {
-				/*
-				 * This is the first transmit attempt for this
-				 * frame. Send a little just to prime the
-				 * transmit FIFO.
-				 */
-				transmitted = sps_transmit
-					(0, test_frame + index, 8);
-			} else {
-				transmitted = sps_transmit
-					(0, test_frame + index, to_go);
-			}
-			index += transmitted;
-			to_go -= transmitted;
-		} while (to_go);
-
-		/*
-		 * Wait for receive state machine to transition out of 'frame
-		 * finised' state.
-		 */
-		while (rx_state == spstrx_finished) {
-			watchdog_reload();
-			usleep(10);
-		}
-	}
-
-	sps_unregister_rx_handler();
-
-	ccprintf("Processed %d frames\n", count - 1);
-	ccprintf("rx count %d, tx count %d, tx_empty %d, max rx batch %d\n",
-		 sps_rx_count, sps_tx_count,
-		 tx_empty_count, max_rx_batch);
-
-	sps_rx_count =
-		sps_tx_count =
-		tx_empty_count =
-		max_rx_batch = 0;
+	for (i = 1; i < argc; i++)
+		sps_transmit(0, argv[i], strlen(argv[i]));
 
 	return EC_SUCCESS;
 }
 
-DECLARE_CONSOLE_COMMAND(spstest, command_sps,
-			"<num of frames>",
-			"Loop back frames (10 by default) back to the host",
+DECLARE_CONSOLE_COMMAND(sps, command_sps,
+			"[STRING]",
+			"With no args, reset the FIFOs. "
+			"Otherwise, transmit the string.",
 			NULL);
-#endif /* CONFIG_SPS_TEST */
