@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e7f3a21_ece32b19",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-24T20:56:50Z",
+      "side": 1,
+      "message": "Ideally, running only on the files in the CL.  If it\u0027s fast enough, of course, we could run on the entire directory.",
+      "range": {
+        "startLine": 11,
+        "startChar": 26,
+        "endLine": 11,
+        "endChar": 69
+      },
+      "revId": "ce074afc61a48df9d7b5e7383e57a9255242eff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e7a8634_0bd45d31",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-24T20:56:50Z",
+      "side": 1,
+      "message": "Also add .inc (needed to catch #ifdef\u0027s in gpio.inc)",
+      "range": {
+        "startLine": 60,
+        "startChar": 21,
+        "endLine": 60,
+        "endChar": 37
+      },
+      "revId": "ce074afc61a48df9d7b5e7383e57a9255242eff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
