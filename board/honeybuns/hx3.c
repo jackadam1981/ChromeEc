@@ -69,19 +69,12 @@ const uint8_t hx3_settings[5 + HX3_SETTINGS_SIZE] = {
 	 /* Free space for more strings */
 };
 
-static void configure_hx3(void)
+void configure_hx3(void)
 {
 	int ret;
 	int remaining, len;
 	uint8_t *data = (uint8_t *)hx3_settings;
 	uint16_t addr = 0x0000;
-
-	/* Reset the bridge to put it back in bootloader mode */
-	gpio_set_level(GPIO_HUB_RESET_L, 0);
-	/* Keep the reset low at least 10ms (same as the RC) */
-	msleep(50);
-	gpio_set_level(GPIO_HUB_RESET_L, 1);
-	msleep(50);
 
 	remaining = sizeof(hx3_settings);
 	while (remaining) {
@@ -101,11 +94,17 @@ static void configure_hx3(void)
 		data += len;
 	}
 }
-DECLARE_HOOK(HOOK_INIT, configure_hx3, HOOK_PRIO_DEFAULT);
-
 
 static int command_hx3(int argc, char **argv)
 {
+	/* Reset the bridge to put it back in bootloader mode */
+	gpio_set_level(GPIO_HUB_RESET_L, 0);
+	/* Keep the reset low at least 10ms (same as the RC) */
+	msleep(50);
+	/* Release reset and wait for the hub to come up */
+	gpio_set_level(GPIO_HUB_RESET_L, 1);
+	msleep(50);
+
 	configure_hx3();
 
 	return EC_SUCCESS;

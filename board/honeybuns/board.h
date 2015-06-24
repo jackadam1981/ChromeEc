@@ -100,6 +100,9 @@ enum usb_strings {
 #define PD_MAX_CURRENT_MA     3000
 #define PD_MAX_VOLTAGE_MV     20000
 
+/* USB Hub configuration routine */
+void configure_hx3(void);
+
 #endif /* !__ASSEMBLER__ */
 
 /* USB interface indexes (use define rather than enum to expand them) */
