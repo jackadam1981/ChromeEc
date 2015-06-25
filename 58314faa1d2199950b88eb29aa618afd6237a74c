@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5ee0623c_624276be",
+        "filename": "board/it8380dev/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1109909
+      },
+      "writtenOn": "2015-06-25T07:28:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ece5aa2_94be2450",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 35
+      },
+      "revId": "58314faa1d2199950b88eb29aa618afd6237a74c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ded45230_562e5446",
         "filename": "chip/it83xx/config_chip.h",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2015-06-24T16:22:15Z",
       "side": 1,
       "message": "Minor nit: alphabetize config options.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 19
+      },
+      "revId": "58314faa1d2199950b88eb29aa618afd6237a74c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e5366ca_6342e210",
+        "filename": "chip/it83xx/config_chip.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1109909
+      },
+      "writtenOn": "2015-06-25T07:28:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ded45230_562e5446",
       "range": {
         "startLine": 82,
         "startChar": 0,
@@ -82,6 +130,30 @@
       "writtenOn": "2015-06-24T16:22:15Z",
       "side": 1,
       "message": "This 16 seems coupled to the udelay() below.\n\nIt might be better to define a constant for this:\n\n#define LOOP_DELAY_US 16\n\nfor (num \u003d 0; num \u003c pd-\u003etimeout_us; num +\u003d LOOP_DELAY_US)\n\n...\n\n/* Delay - 1 since some time was used in the code above */\nudelay(LOOP_DELAY_US - 1)",
+      "range": {
+        "startLine": 220,
+        "startChar": 48,
+        "endLine": 220,
+        "endChar": 50
+      },
+      "revId": "58314faa1d2199950b88eb29aa618afd6237a74c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e0942dc_5a8e3500",
+        "filename": "chip/it83xx/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1109909
+      },
+      "writtenOn": "2015-06-25T07:28:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ec1426b_5a5c35c2",
       "range": {
         "startLine": 220,
         "startChar": 48,
