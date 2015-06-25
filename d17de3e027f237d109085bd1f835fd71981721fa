@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e99fafb_ffeabb22",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-25T23:22:40Z",
+      "side": 1,
+      "message": "In __init__:\n\nself.max_option_length \u003d 40\n\nThen in obtain_current_config_options:\n\nself.max_option_length \u003d max(len(x) for x in config_options)\n\nThen here:\n\nres +\u003d \u0027 \u0027 * (self.max_option_length + 5 - len(self.name))\n\n(string * integer is your friend)",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 50
+      },
+      "revId": "d17de3e027f237d109085bd1f835fd71981721fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e65c2c2_fd9723c8",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-25T23:22:40Z",
+      "side": 1,
+      "message": "Style nit: Interesting mix of \" and \u0027 quote characters for strings.  Should prefer one and use it everywhere.  (I prefer \u0027 because I don\u0027t have to hit the shift key; not sure if there\u0027s a standard...)",
+      "range": {
+        "startLine": 46,
+        "startChar": 9,
+        "endLine": 46,
+        "endChar": 16
+      },
+      "revId": "d17de3e027f237d109085bd1f835fd71981721fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
