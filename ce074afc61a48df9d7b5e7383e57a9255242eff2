@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "7e252642_f33f90e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-25T00:52:57Z",
+      "side": 1,
+      "message": "It\u0027s probably fast enough.\n\nThough changing it to just the files in the CL would still be helpful.  I can see other style checking being added to this script in the future, and that might slow things down.",
+      "parentUuid": "befddec1_6e450316",
+      "range": {
+        "startLine": 11,
+        "startChar": 26,
+        "endLine": 11,
+        "endChar": 69
+      },
+      "revId": "ce074afc61a48df9d7b5e7383e57a9255242eff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e7a8634_0bd45d31",
         "filename": "util/config_option_check.py",
         "patchSetId": 2
