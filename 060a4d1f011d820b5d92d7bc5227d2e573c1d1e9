@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe0596c3_5a8e3100",
+        "filename": "board/honeybuns/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-25T18:04:59Z",
+      "side": 1,
+      "message": "is this supposed to be for when the 20V problem is fixed? if so, it should be:\ngpio_set_level(GPIO_PP12000_EN, 0);\ngpio_set_level(GPIO_PP20000_EN, 1);\ngpio_set_level(GPIO_PPVAR_VBUS_EN, 1);",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 37
+      },
+      "revId": "060a4d1f011d820b5d92d7bc5227d2e573c1d1e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe0596c3_5a63d1bc",
+        "filename": "board/honeybuns/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-25T18:04:59Z",
+      "side": 1,
+      "message": "actually don\u0027t need the #else here, you can just remove the break and let it fall through to the 12V case. not that it really matters.",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 5
+      },
+      "revId": "060a4d1f011d820b5d92d7bc5227d2e573c1d1e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
