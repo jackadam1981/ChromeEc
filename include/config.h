@@ -728,6 +728,12 @@
 /* If defined, another image (RW) exists with more features */
 #undef CONFIG_FW_LIMITED_IMAGE
 
+/*
+ * If defined, we can use system_get_fw_reset_vector function to decide
+ * reset vector of RO/RW firmware for sysjump.
+ */
+#undef CONFIG_FW_RESET_VECTOR
+
 /*****************************************************************************/
 /* Motion sensor based gesture recognition information */
 /* These all require HAS_TASK_MOTIONSENSE to work */
@@ -908,6 +914,13 @@
  * conflicts.
  */
 #undef CONFIG_I2C_MULTI_PORT_CONTROLLER
+
+/*
+ * This is the block size of the ILM on the it839x chip.
+ * The ILM for static code cache, CPU fetch instruction from
+ * ILM(ILM -> CPU)instead of flash(flash -> IMMU -> CPU) if enabled.
+ */
+#undef CONFIG_ILM_BLOCK_SIZE
 
 /*****************************************************************************/
 /* Current/Power monitor */
