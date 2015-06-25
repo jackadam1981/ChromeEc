@@ -174,6 +174,71 @@ static int gpio_to_irq(uint8_t port, uint8_t mask)
 	return -1;
 }
 
+struct gpio_1p8v_t {
+	uint8_t gpio_port;
+	uint8_t gpio_mask;
+	volatile uint8_t *ctrl_reg;
+	uint8_t ctrl_mask;
+};
+
+const struct gpio_1p8v_t gpio_1p8v_ctrl[] = {
+	{GPIO_A, (1 << 4), &IT83XX_GPIO_GRC24, (1 << 0)},
+	{GPIO_A, (1 << 5), &IT83XX_GPIO_GRC24, (1 << 1)},
+	{GPIO_B, (1 << 3), &IT83XX_GPIO_GRC22, (1 << 1)},
+	{GPIO_B, (1 << 4), &IT83XX_GPIO_GRC22, (1 << 0)},
+	{GPIO_B, (1 << 5), &IT83XX_GPIO_GRC19, (1 << 7)},
+	{GPIO_B, (1 << 6), &IT83XX_GPIO_GRC19, (1 << 6)},
+	{GPIO_C, (1 << 1), &IT83XX_GPIO_GRC19, (1 << 5)},
+	{GPIO_C, (1 << 2), &IT83XX_GPIO_GRC19, (1 << 4)},
+	{GPIO_C, (1 << 7), &IT83XX_GPIO_GRC19, (1 << 3)},
+	{GPIO_D, (1 << 0), &IT83XX_GPIO_GRC19, (1 << 2)},
+	{GPIO_D, (1 << 1), &IT83XX_GPIO_GRC19, (1 << 1)},
+	{GPIO_D, (1 << 2), &IT83XX_GPIO_GRC19, (1 << 0)},
+	{GPIO_D, (1 << 3), &IT83XX_GPIO_GRC20, (1 << 7)},
+	{GPIO_D, (1 << 4), &IT83XX_GPIO_GRC20, (1 << 6)},
+	{GPIO_E, (1 << 0), &IT83XX_GPIO_GRC20, (1 << 5)},
+	{GPIO_E, (1 << 6), &IT83XX_GPIO_GRC20, (1 << 4)},
+	{GPIO_E, (1 << 7), &IT83XX_GPIO_GRC20, (1 << 3)},
+	{GPIO_F, (1 << 2), &IT83XX_GPIO_GRC20, (1 << 2)},
+	{GPIO_F, (1 << 3), &IT83XX_GPIO_GRC20, (1 << 1)},
+	{GPIO_F, (1 << 4), &IT83XX_GPIO_GRC20, (1 << 0)},
+	{GPIO_F, (1 << 5), &IT83XX_GPIO_GRC21, (1 << 7)},
+	{GPIO_F, (1 << 6), &IT83XX_GPIO_GRC21, (1 << 6)},
+	{GPIO_F, (1 << 7), &IT83XX_GPIO_GRC21, (1 << 5)},
+	{GPIO_H, (1 << 0), &IT83XX_GPIO_GRC21, (1 << 2)},
+	{GPIO_H, (1 << 1), &IT83XX_GPIO_GRC21, (1 << 1)},
+	{GPIO_H, (1 << 2), &IT83XX_GPIO_GRC21, (1 << 0)},
+	{GPIO_I, (1 << 1), &IT83XX_GPIO_GRC23, (1 << 4)},
+	{GPIO_I, (1 << 2), &IT83XX_GPIO_GRC23, (1 << 5)},
+	{GPIO_I, (1 << 3), &IT83XX_GPIO_GRC23, (1 << 6)},
+	{GPIO_I, (1 << 4), &IT83XX_GPIO_GRC23, (1 << 7)},
+	{GPIO_J, (1 << 0), &IT83XX_GPIO_GRC23, (1 << 0)},
+	{GPIO_J, (1 << 1), &IT83XX_GPIO_GRC23, (1 << 1)},
+	{GPIO_J, (1 << 2), &IT83XX_GPIO_GRC23, (1 << 2)},
+	{GPIO_J, (1 << 3), &IT83XX_GPIO_GRC23, (1 << 3)},
+};
+
+static void gpio_to_1p8v(uint8_t port, uint8_t mask)
+{
+	int i;
+
+	for (i = 0; i < ARRAY_SIZE(gpio_1p8v_ctrl); i++) {
+		if (gpio_1p8v_ctrl[i].gpio_port == port &&
+				gpio_1p8v_ctrl[i].gpio_mask == mask) {
+			*gpio_1p8v_ctrl[i].ctrl_reg |=
+				gpio_1p8v_ctrl[i].ctrl_mask;
+			break;
+		}
+	}
+}
+
+static void gpio_all_3p3v(void)
+{
+	int i;
+
+	for (i = 0; i < ARRAY_SIZE(gpio_1p8v_ctrl); i++)
+		*gpio_1p8v_ctrl[i].ctrl_reg &= ~gpio_1p8v_ctrl[i].ctrl_mask;
+}
 
 void gpio_set_alternate_function(uint32_t port, uint32_t mask, int func)
 {
@@ -226,6 +291,10 @@ void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags)
 		IT83XX_GPIO_GPOT(port) |= mask;
 	else
 		IT83XX_GPIO_GPOT(port) &= ~mask;
+
+	/* To enable 1.8v support. */
+	if (flags & GPIO_SEL_1P8V)
+		gpio_to_1p8v(port, mask);
 
 	/* If output, set level before changing type to an output. */
 	if (flags & GPIO_OUTPUT) {
@@ -318,6 +387,12 @@ void gpio_pre_init(void)
 	const struct gpio_info *g = gpio_list;
 	int flags;
 	int i;
+
+	/*
+	 * There are some pins default 1.8v support enabled of IT839X series.
+	 * So here, we cancel all 1.8v setting and enabling it later if needed.
+	 */
+	gpio_all_3p3v();
 
 	for (i = 0; i < GPIO_COUNT; i++, g++) {
 		flags = g->flags;
