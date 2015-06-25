@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be731e93_38a44505",
+        "filename": "PRESUBMIT.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-25T23:25:21Z",
+      "side": 1,
+      "message": "I wonder whether this should be part of presumbit_check.sh, rather than a separate hook.\n\nOr maybe presubmit_check.sh should be called buildall_check.sh.\n\nWhat do other projects do?",
+      "revId": "6a73c53548ca9ae3bd5a73d6aa53d46a5dcc2415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
