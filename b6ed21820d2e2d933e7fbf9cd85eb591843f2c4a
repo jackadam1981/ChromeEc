@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "feecb63d_f9a8f764",
+        "filename": "board/honeybuns/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-25T19:59:51Z",
+      "side": 1,
+      "message": "actually we probably need the USB hub even for mux \u003d\u003d TYPEC_MUX_DP (to use it as a USB2.0 hub) I will move that up",
+      "range": {
+        "startLine": 107,
+        "startChar": 2,
+        "endLine": 111,
+        "endChar": 3
+      },
+      "revId": "b6ed21820d2e2d933e7fbf9cd85eb591843f2c4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
