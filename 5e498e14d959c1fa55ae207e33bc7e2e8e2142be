@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "feecb63d_e54fb235",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1002162
+      },
+      "writtenOn": "2015-06-25T01:41:19Z",
+      "side": 1,
+      "message": "I would break the 3 sections (find files, match in config.h and look for errors in source) here into their own functions.",
+      "revId": "5e498e14d959c1fa55ae207e33bc7e2e8e2142be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
