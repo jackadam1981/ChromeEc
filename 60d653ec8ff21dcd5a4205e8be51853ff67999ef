@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be731e93_847410af",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-26T17:46:34Z",
+      "side": 1,
+      "message": "I don\u0027t see why we\u0027re adding this to flash_physical_read but not flash_physical_write (and maybe even erase).\n\nHow about moving it to the end of spi_transaction_flush instead?",
+      "revId": "60d653ec8ff21dcd5a4205e8be51853ff67999ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

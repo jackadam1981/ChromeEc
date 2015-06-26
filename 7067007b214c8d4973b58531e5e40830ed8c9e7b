@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de8ff2ab_8577a1b2",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-26T17:46:34Z",
+      "side": 0,
+      "message": "Where (if anywhere) is spi_enable() called now? Does it make more sense to modify spi_enable() to be a NOP since we may need to revisit this for power savings?",
+      "revId": "7067007b214c8d4973b58531e5e40830ed8c9e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe6116bc_a64af8f8",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-26T17:46:34Z",
+      "side": 0,
+      "message": "I think we can change SPI_FLASH_MAX_READ_SIZE if needed. But, there is value still to breaking up the reads into chunks. For example, if I do a 1MB SPI read (or a smaller read with a really slow SPI ROM) it might take several seconds, which will trip the WDT even with your change, right?",
+      "revId": "7067007b214c8d4973b58531e5e40830ed8c9e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
