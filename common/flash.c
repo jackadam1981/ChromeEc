@@ -313,7 +313,12 @@ int flash_write(int offset, int size, const char *data)
 		return EC_ERROR_INVAL;  /* Invalid range */
 
 #ifdef CONFIG_VBOOT_HASH
-	vboot_hash_invalidate(offset, size);
+	/*
+	* abort hash calculations when flashrom flash updates
+	* are in progress
+	*/
+	if (vboot_hash_in_progress())
+		vboot_hash_abort();
 #endif
 
 	return flash_physical_write(offset, size, data);
@@ -325,7 +330,12 @@ int flash_erase(int offset, int size)
 		return EC_ERROR_INVAL;  /* Invalid range */
 
 #ifdef CONFIG_VBOOT_HASH
-	vboot_hash_invalidate(offset, size);
+	/*
+	* abort hash calculations when flashrom flash updates
+	* are in progress
+	*/
+	if (vboot_hash_in_progress())
+		vboot_hash_abort();
 #endif
 
 	return flash_physical_erase(offset, size);
