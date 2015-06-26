@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "deca92dd_29122962",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-06-26T18:05:03Z",
+      "side": 1,
+      "message": "Erase is also going to invalidate.",
+      "parentUuid": "be731e93_4973f160",
+      "revId": "3c7f06fed1c42d5057996233bc4de8ad8449fce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e99fafb_f0d588e3",
         "filename": "common/vboot_hash.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "fed3d693_0abd9bb2",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-06-26T18:05:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e99fafb_f0d588e3",
+      "revId": "3c7f06fed1c42d5057996233bc4de8ad8449fce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe6116bc_6649c07f",
         "filename": "include/vboot_hash.h",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2015-06-26T17:04:43Z",
       "side": 1,
       "message": "\"@return 1 if vboot hashing is in progress, 0 otherwise.",
+      "revId": "3c7f06fed1c42d5057996233bc4de8ad8449fce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fed3d693_6aca573e",
+        "filename": "include/vboot_hash.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-06-26T18:05:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe6116bc_6649c07f",
       "revId": "3c7f06fed1c42d5057996233bc4de8ad8449fce0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
