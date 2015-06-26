@@ -33,6 +33,17 @@ GPIO(PCH_RCIN_L,     PIN(B, 6), GPIO_OUT_HIGH)
 GPIO(LPC_CLKRUN_L,   PIN(H, 0), GPIO_OUT_LOW)
 GPIO(PCH_WAKE_L,     PIN(B, 7), GPIO_ODR_HIGH) /* Wake signal from EC to PCH */
 
+GPIO(I2C_A_SCL,      PIN(B, 3), GPIO_INPUT)
+GPIO(I2C_A_SDA,      PIN(B, 4), GPIO_INPUT)
+GPIO(I2C_B_SCL,      PIN(C, 1), GPIO_INPUT)
+GPIO(I2C_B_SDA,      PIN(C, 2), GPIO_INPUT)
+#ifdef CONFIG_IT83XX_SMCLK2_ON_GPC7
+GPIO(I2C_C_SCL,      PIN(C, 7), GPIO_INPUT)
+#else
+GPIO(I2C_C_SCL,      PIN(F, 6), GPIO_INPUT)
+#endif
+GPIO(I2C_C_SDA,      PIN(F, 7), GPIO_INPUT)
+
 /* Unimplemented signals which we need to emulate for now */
 UNIMPLEMENTED(ENTERING_RW)
 
@@ -46,3 +57,11 @@ ALTERNATE(PIN_MASK(G, 0x04), 3, MODULE_SPI, 0)             /* SSCE0# of SPI */
 #endif
 ALTERNATE(PIN_MASK(A, 0x80), 1, MODULE_PWM_FAN, 0)         /* PWM7 for FAN1 */
 ALTERNATE(PIN_MASK(D, 0x40), 3, MODULE_PWM_FAN, 0)         /* TACH0A for FAN1 */
+ALTERNATE(PIN_MASK(B, 0x18), 1, MODULE_I2C, 0)             /* I2C A SCL/SDA */
+#ifdef CONFIG_IT83XX_SMCLK2_ON_GPC7
+ALTERNATE(PIN_MASK(C, 0x86), 1, MODULE_I2C, 0)             /* I2C B SCL/SDA, C SCL */
+ALTERNATE(PIN_MASK(F, 0x80), 1, MODULE_I2C, 0)             /* I2C C SDA */
+#else
+ALTERNATE(PIN_MASK(C, 0x06), 1, MODULE_I2C, 0)             /* I2C B SCL/SDA */
+ALTERNATE(PIN_MASK(F, 0xC0), 1, MODULE_I2C, 0)             /* I2C C SCL/SDA */
+#endif
