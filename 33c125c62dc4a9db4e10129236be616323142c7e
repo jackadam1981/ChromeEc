@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "934c958c_e4fabab2",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-26T19:55:33Z",
+      "side": 1,
+      "message": "Should only do that if(!gpio_is_reboot_warm()).  Otherwise, the pins could be reconfigured back to 3.3V when jumping between images, before it gets moved back to 1.8V via gpio_set_flags_by_mask().\n\nI\u0027m not sure if a pin going to 3.3V briefly would cause harm.\n\nAlso note that masking off GPIO_HIGH and GPIO_LOW on a warm reboot seems to be missing; see for comparison gpio_pre_init() in chip/npcx/gpio.c.",
+      "range": {
+        "startLine": 391,
+        "startChar": 1,
+        "endLine": 395,
+        "endChar": 17
+      },
+      "revId": "33c125c62dc4a9db4e10129236be616323142c7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
