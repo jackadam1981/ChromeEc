@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fe6116bc_ab61e18c",
+        "filename": "board/honeybuns/hx3.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-26T15:56:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fed3d693_ca60a306",
+      "range": {
+        "startLine": 84,
+        "startChar": 21,
+        "endLine": 84,
+        "endChar": 53
+      },
+      "revId": "a8cfe20a8445e43e6b7f26ea178138d9c9e24d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ed18a8c_eb264df0",
         "filename": "board/honeybuns/hx3.c",
         "patchSetId": 3
@@ -36,6 +60,24 @@
       "writtenOn": "2015-06-26T15:46:53Z",
       "side": 1,
       "message": "seems like we want to break from while loop here",
+      "revId": "a8cfe20a8445e43e6b7f26ea178138d9c9e24d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e99fafb_4569201c",
+        "filename": "board/honeybuns/hx3.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-26T15:56:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ed18a8c_eb264df0",
       "revId": "a8cfe20a8445e43e6b7f26ea178138d9c9e24d41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
