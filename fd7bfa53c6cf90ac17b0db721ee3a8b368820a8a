@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de8ff2ab_f207501f",
+        "filename": "board/honeybuns/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-26T00:51:59Z",
+      "side": 1,
+      "message": "this is directly in the path of the PD task, so this will mean we may miss some PD communication. 5ms is long enough to miss multiple retries. can we reduce the time? or do we need a deferred function?",
+      "range": {
+        "startLine": 106,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 8
+      },
+      "revId": "fd7bfa53c6cf90ac17b0db721ee3a8b368820a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e99fafb_a2a9faeb",
+        "filename": "board/honeybuns/hx3.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-26T00:51:59Z",
+      "side": 1,
+      "message": "not your code, but this should be I2C_PORT_MASTER",
+      "range": {
+        "startLine": 83,
+        "startChar": 11,
+        "endLine": 83,
+        "endChar": 12
+      },
+      "revId": "fd7bfa53c6cf90ac17b0db721ee3a8b368820a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
