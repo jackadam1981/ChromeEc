@@ -1629,7 +1629,13 @@ enum motionsense_command {
 
 	/*
 	 * EC Rate command is a setter/getter command for the EC sampling rate
-	 * of all motion sensors in milliseconds.
+	 * in milliseconds.
+	 * It is per sensor, the EC run sample task  at the minimum of all
+	 * sensors EC_RATE.
+	 * For sensors without hardware FIFO, EC_RATE should be equals to 1/ODR
+	 * to collect all the sensor samples.
+	 * For sensor with hardware FIFO, EC_RATE is used as the maximal delay
+	 * to process of all motion sensors in milliseconds.
 	 */
 	MOTIONSENSE_CMD_EC_RATE = 2,
 
@@ -1796,7 +1802,7 @@ struct ec_params_motion_sense {
 			 * kb_wake_angle: angle to wakup AP.
 			 */
 			int16_t data;
-		} ec_rate, kb_wake_angle;
+		} kb_wake_angle;
 
 		/* Used for MOTIONSENSE_CMD_INFO, MOTIONSENSE_CMD_DATA
 		 * and MOTIONSENSE_CMD_PERFORM_CALIB. */
