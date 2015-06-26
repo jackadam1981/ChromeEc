@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e65c2c2_aeee4f80",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-26T16:41:31Z",
+      "side": 1,
+      "message": "Of course, looking at this again in a more awake state,\n\nreturn \u0027\u003e %-*s  %s:%s\u0027 % (self.max_option_length, self.name, self.filename, self.line_number)",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 59
+      },
+      "revId": "e97e89b3543b3700a089fb6f15bc51664042aafd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe6116bc_46f03cdc",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-26T16:41:31Z",
+      "side": 1,
+      "message": "I\u0027d move this down to main, rather than returning it here (the obtain function is only called once).\n\nActually, don\u0027t need the MissingConfigOption class, since all it\u0027s doing is holding a tuple.  So missing_config_options becomes a list of tuples, which can be used as the param to the format string down in main().",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 67
+      },
+      "revId": "e97e89b3543b3700a089fb6f15bc51664042aafd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
