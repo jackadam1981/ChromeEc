@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be731e93_4973f160",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-26T17:04:43Z",
+      "side": 1,
+      "message": "I think we should be doing this from higher-level code (flash.c), and we shouldn\u0027t be doing it on flash read (only write, since writing is likely to invalidate our hash).",
+      "revId": "3c7f06fed1c42d5057996233bc4de8ad8449fce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e99fafb_f0d588e3",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-26T17:04:43Z",
+      "side": 1,
+      "message": "Suggest to name vboot_hash_in_progress.",
+      "revId": "3c7f06fed1c42d5057996233bc4de8ad8449fce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe6116bc_6649c07f",
+        "filename": "include/vboot_hash.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-26T17:04:43Z",
+      "side": 1,
+      "message": "\"@return 1 if vboot hashing is in progress, 0 otherwise.",
+      "revId": "3c7f06fed1c42d5057996233bc4de8ad8449fce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
