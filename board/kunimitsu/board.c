@@ -198,7 +198,8 @@ struct motion_sensor_t motion_sensors[] = {
 	 .rot_standard_ref = &base_standard_ref,
 	 .default_config = {
 		 .odr = 100000,
-		 .range = 2
+		 .range = 2,
+		 .ec_rate = SUSPEND_SAMPLING_INTERVAL,
 	 }
 	},
 	{.name = "Lid Accel",
@@ -213,7 +214,8 @@ struct motion_sensor_t motion_sensors[] = {
 	 .rot_standard_ref = &lid_standard_ref,
 	 .default_config = {
 		 .odr = 100000,
-		 .range = 2
+		 .range = 2,
+		 .ec_rate = SUSPEND_SAMPLING_INTERVAL,
 	 }
 	},
 };
