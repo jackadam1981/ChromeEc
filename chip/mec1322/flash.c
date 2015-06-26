@@ -12,6 +12,7 @@
 #include "spi_flash.h"
 #include "system.h"
 #include "util.h"
+#include "vboot_hash.h"
 
 #define PAGE_SIZE 256
 
@@ -25,6 +26,13 @@
 int flash_physical_read(int offset, int size, char *data)
 {
 	int ret;
+
+	/*
+	* abort hash calculations when flashrom flash updates
+	* are in progress
+	*/
+	if(vboot_hash_inprogress())
+		vboot_hash_abort();
 
 	offset += CONFIG_FLASH_BASE_SPI;
 
@@ -47,6 +55,13 @@ int flash_physical_read(int offset, int size, char *data)
 int flash_physical_write(int offset, int size, const char *data)
 {
 	int ret, i, write_size;
+
+	/*
+	* abort hash calculations when flashrom flash updates
+	* are in progress
+	*/
+	if(vboot_hash_inprogress())
+		vboot_hash_abort();
 
 	offset += CONFIG_FLASH_BASE_SPI;
 
@@ -76,6 +91,12 @@ int flash_physical_write(int offset, int size, const char *data)
 int flash_physical_erase(int offset, int size)
 {
 	int ret;
+	/*
+	* abort hash calculations when flashrom flash updates
+	* are in progress
+	*/
+	if(vboot_hash_inprogress())
+		vboot_hash_abort();
 
 	offset += CONFIG_FLASH_BASE_SPI;
 	ret = spi_flash_erase(offset, size);

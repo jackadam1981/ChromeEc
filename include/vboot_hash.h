@@ -20,4 +20,16 @@
  */
 int vboot_hash_invalidate(int offset, int size);
 
+/**
+ * Get vboot progress status.
+ *
+ * @return	Progress state 1 = in progress,0 = not in progress
+ */
+int vboot_hash_inprogress(void);
+
+/**
+ * Abort hash currently in progress, and invalidate any completed hash.
+ */
+void vboot_hash_abort(void);
+
 #endif  /* __CROS_EC_VBOOT_HASH_H */
