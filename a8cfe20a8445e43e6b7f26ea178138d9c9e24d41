@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fed3d693_ca60a306",
+        "filename": "board/honeybuns/hx3.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-26T15:46:53Z",
+      "side": 1,
+      "message": "if we break out of this loop due to hub in reset, then we shouldn\u0027t return true. if the hub gets disabled while in this loop, and we return true, then hx3_configured will get set true and the next time the hub is enabled, it will not try to configure it.",
+      "range": {
+        "startLine": 84,
+        "startChar": 21,
+        "endLine": 84,
+        "endChar": 53
+      },
+      "revId": "a8cfe20a8445e43e6b7f26ea178138d9c9e24d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ed18a8c_eb264df0",
+        "filename": "board/honeybuns/hx3.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-26T15:46:53Z",
+      "side": 1,
+      "message": "seems like we want to break from while loop here",
+      "revId": "a8cfe20a8445e43e6b7f26ea178138d9c9e24d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
