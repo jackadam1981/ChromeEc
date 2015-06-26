@@ -118,6 +118,8 @@ void system_pre_init(void)
 		MEC1322_VBAT_RAM(MEC1322_IMAGETYPE_IDX) = 0;
 
 	check_reset_cause();
+
+	spi_enable(1);
 }
 
 void _system_reset(int flags, int wake_from_hibernate)
