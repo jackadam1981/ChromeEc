@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be731e93_29c0751e",
+        "filename": "driver/tcpm/stub.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-26T16:30:40Z",
+      "side": 1,
+      "message": "you can change it to :\n#include \"tcpci.h\"",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 30
+      },
+      "revId": "5efff81dd5fbc1b1f4e00bb6f3b7aa3da7a67aac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe6116bc_2b55d148",
+        "filename": "driver/tcpm/stub.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-26T16:30:40Z",
+      "side": 1,
+      "message": "change status variable to uint16_t ?",
+      "range": {
+        "startLine": 113,
+        "startChar": 25,
+        "endLine": 113,
+        "endChar": 44
+      },
+      "revId": "5efff81dd5fbc1b1f4e00bb6f3b7aa3da7a67aac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe6116bc_cb97f59a",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-26T16:30:40Z",
+      "side": 1,
+      "message": "that\u0027s equivalent to \n#include \"tcpci.h\"\nwe usually use the latter",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 30
+      },
+      "revId": "5efff81dd5fbc1b1f4e00bb6f3b7aa3da7a67aac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe6116bc_6ba189f4",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-26T16:30:40Z",
+      "side": 1,
+      "message": "why status variable is not declared as uint16_t ?",
+      "range": {
+        "startLine": 218,
+        "startChar": 25,
+        "endLine": 218,
+        "endChar": 44
+      },
+      "revId": "5efff81dd5fbc1b1f4e00bb6f3b7aa3da7a67aac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "be731e93_c92b8188",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-26T16:30:40Z",
+      "side": 1,
+      "message": "it was and it is still missing \" * @param port Type-C port number\"",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 3
+      },
+      "revId": "5efff81dd5fbc1b1f4e00bb6f3b7aa3da7a67aac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
