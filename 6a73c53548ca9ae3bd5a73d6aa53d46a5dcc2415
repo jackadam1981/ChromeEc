@@ -16,6 +16,24 @@
       "revId": "6a73c53548ca9ae3bd5a73d6aa53d46a5dcc2415",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe6116bc_0061cc07",
+        "filename": "PRESUBMIT.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-06-26T00:53:08Z",
+      "side": 1,
+      "message": "ap-daemons and chameleon have 2 hooks, factory uses a Makefile which defines a presubmit target, which ends up calling all their various presubmit check.\n\nDoesn\u0027t seem to be a standard.",
+      "parentUuid": "be731e93_38a44505",
+      "revId": "6a73c53548ca9ae3bd5a73d6aa53d46a5dcc2415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
