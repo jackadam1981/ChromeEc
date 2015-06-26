@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dea1b20d_aeaf371d",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1121520
+      },
+      "writtenOn": "2015-06-26T18:07:21Z",
+      "side": 0,
+      "message": "now spi_enable(1) is called in lfw\u0027s entry point, lfw_entry()\n\nI was thinking of nopping out spi_enable(), but then I though it looks cleaner with them out of the way. Not sure if aesthetic is a valid technical reason but I let you be a judge of that ;-)",
+      "parentUuid": "de8ff2ab_8577a1b2",
+      "revId": "7067007b214c8d4973b58531e5e40830ed8c9e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe6116bc_a64af8f8",
         "filename": "chip/mec1322/flash.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2015-06-26T17:46:34Z",
       "side": 0,
       "message": "I think we can change SPI_FLASH_MAX_READ_SIZE if needed. But, there is value still to breaking up the reads into chunks. For example, if I do a 1MB SPI read (or a smaller read with a really slow SPI ROM) it might take several seconds, which will trip the WDT even with your change, right?",
+      "revId": "7067007b214c8d4973b58531e5e40830ed8c9e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dea1b20d_4e5693a3",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1121520
+      },
+      "writtenOn": "2015-06-26T18:07:21Z",
+      "side": 0,
+      "message": "No. Large transactions are actually much faster. We run into problems when we keep on issuing salvo of transactions with small payload size (128bytes in this case). So we have huge latency but fast transfer. Thats why transferring 256kb takes 1 second.\n\nIf you read in a bigger buffer you are quite unlikely to ever see this problem. In my tests I have seen transfer rates with 128kb for about 100ms, which is about 1mbyte/sec. This is pretty close to theoretical limit of 20mhz one-wire transfer SPI can offer which is approx 2.3 mbyte/sec",
+      "parentUuid": "fe6116bc_a64af8f8",
       "revId": "7067007b214c8d4973b58531e5e40830ed8c9e7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
