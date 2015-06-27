@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93a1f560_c57b3033",
+        "filename": "driver/usb_mux_ps8740.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-27T01:17:00Z",
+      "side": 1,
+      "message": "not used",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 71
+      },
+      "revId": "a5b7dcc3fc8d28db1544434473bc76bb3bdbc9c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5384ddcb_cb7b3d33",
+        "filename": "driver/usb_mux_ps8740.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-27T01:17:00Z",
+      "side": 1,
+      "message": "EC_ERROR_UNKNOWN is fine for now.\n\nwould be better to actually return the error code coming from i2c_read()",
+      "range": {
+        "startLine": 24,
+        "startChar": 9,
+        "endLine": 24,
+        "endChar": 11
+      },
+      "revId": "a5b7dcc3fc8d28db1544434473bc76bb3bdbc9c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93a1f560_454720f2",
+        "filename": "driver/usb_mux_ps8740.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-27T01:17:00Z",
+      "side": 1,
+      "message": "EC_SUCCESS",
+      "range": {
+        "startLine": 27,
+        "startChar": 8,
+        "endLine": 27,
+        "endChar": 9
+      },
+      "revId": "a5b7dcc3fc8d28db1544434473bc76bb3bdbc9c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
