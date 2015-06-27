@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "934c958c_d38ade9f",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-27T00:23:47Z",
+      "side": 1,
+      "message": "We still shouldn\u0027t invalidate on read. Will hashing now invalidate itself (hashing is a sequence of reads, will call down into this driver)? It seems like a bug.",
+      "parentUuid": "deca92dd_29122962",
+      "revId": "3c7f06fed1c42d5057996233bc4de8ad8449fce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e99fafb_f0d588e3",
         "filename": "common/vboot_hash.c",
         "patchSetId": 1
