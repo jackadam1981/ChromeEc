@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93a1f560_e5450c19",
+        "filename": "board/honeybuns/usb_mux.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-27T01:07:49Z",
+      "side": 1,
+      "message": "not needed",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 20
+      },
+      "revId": "924ba1f1755051a2ef0ebabb87cfc7c10cb58ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "138ee5ef_a9b04578",
+        "filename": "board/honeybuns/usb_mux.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-27T01:07:49Z",
+      "side": 1,
+      "message": "not needed",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 71
+      },
+      "revId": "924ba1f1755051a2ef0ebabb87cfc7c10cb58ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "934c958c_fe100157",
+        "filename": "driver/usb_mux.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-27T01:07:49Z",
+      "side": 1,
+      "message": "\u0026\u0026 port \u003e\u003d 0",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 41
+      },
+      "revId": "924ba1f1755051a2ef0ebabb87cfc7c10cb58ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5384ddcb_2b38a98b",
+        "filename": "driver/usb_mux.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-27T01:07:49Z",
+      "side": 1,
+      "message": "this is going to need some more thought. this is called from PD task and blocks the PD task from continuing. Since, it could call i2c functions, this could block for a long time and cause PD errors.\n\nvincent ran into this recently on honeybuns, which also requires i2c in the mux setting function (CL:281927), and he decided to add a new task. that\u0027s quite a bit of overhead, so would like to think about it more.",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 25,
+        "endChar": 16
+      },
+      "revId": "924ba1f1755051a2ef0ebabb87cfc7c10cb58ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93a1f560_e50aecd8",
+        "filename": "driver/usb_mux.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-27T01:07:49Z",
+      "side": 1,
+      "message": "actually some boards strip this function out (samus_pd) due to flash space limitation. should protect with CONFIG_CMD_TYPEC. although, samus_pd now has more space, so, we may want to re-enable this, as it is pretty useful.",
+      "range": {
+        "startLine": 83,
+        "startChar": 11,
+        "endLine": 83,
+        "endChar": 24
+      },
+      "revId": "924ba1f1755051a2ef0ebabb87cfc7c10cb58ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "934c958c_fe4b617b",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-27T01:07:49Z",
+      "side": 1,
+      "message": "return should probably come from ec_error_list enum, so, we should use EC_SUCCESS instead of zero",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 60
+      },
+      "revId": "924ba1f1755051a2ef0ebabb87cfc7c10cb58ca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
