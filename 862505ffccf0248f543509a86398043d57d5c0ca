@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f390710b_0e729359",
+        "filename": "common/flash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-27T15:41:22Z",
+      "side": 1,
+      "message": "\"Abort hash calculations when flashrom flash updates are in progress, otherwise invalidate the pre-computed hash, since it\u0027s likely to change after write.\"",
+      "revId": "862505ffccf0248f543509a86398043d57d5c0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "138ee5ef_34a3288c",
+        "filename": "common/flash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-27T15:41:22Z",
+      "side": 1,
+      "message": "else\n  vboot_hash_invalidate(offset, size);",
+      "revId": "862505ffccf0248f543509a86398043d57d5c0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f390710b_ee740f48",
+        "filename": "common/flash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-27T15:41:22Z",
+      "side": 1,
+      "message": "else\n  vboot_hash_invalidate(offset, size);",
+      "revId": "862505ffccf0248f543509a86398043d57d5c0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "138ee5ef_54a82c65",
+        "filename": "include/vboot_hash.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-27T15:41:22Z",
+      "side": 1,
+      "message": "Extra @return here",
+      "revId": "862505ffccf0248f543509a86398043d57d5c0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
