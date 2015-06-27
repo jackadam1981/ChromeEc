@@ -213,6 +213,16 @@ void system_init(void)
 	if (status & (1 << 7) || (wdt_cnt == 0))
 		MEC1322_VBAT_RAM(MEC1322_IMAGETYPE_IDX)
 					= SYSTEM_IMAGE_UNKNOWN;
+
+	/*
+	 * check reset_flag at HIBDATA_INDEX_SAVED_RESET_FLAGS to
+	 * verify reset reason is 'reboot hard' which requires RO
+	 * to start
+	 */
+	else if (MEC1322_VBAT_RAM(1/*HIBDATA_INDEX_SAVED_RESET_FLAGS*/)
+					== RESET_FLAG_HARD)
+		MEC1322_VBAT_RAM(MEC1322_IMAGETYPE_IDX)
+					= SYSTEM_IMAGE_RO;
 }
 
 
