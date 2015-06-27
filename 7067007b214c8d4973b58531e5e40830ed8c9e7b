@@ -87,6 +87,24 @@
       "revId": "7067007b214c8d4973b58531e5e40830ed8c9e7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f33cf1f3_1fa8a396",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1121520
+      },
+      "writtenOn": "2015-06-27T05:12:21Z",
+      "side": 0,
+      "message": "ok. lets leave it as is. I agree we need to revisit the logic on next iteration",
+      "parentUuid": "5384ddcb_8bd455e6",
+      "revId": "7067007b214c8d4973b58531e5e40830ed8c9e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
