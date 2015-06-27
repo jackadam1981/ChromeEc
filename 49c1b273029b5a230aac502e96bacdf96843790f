@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "138ee5ef_c942695d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-27T00:19:07Z",
+      "side": 1,
+      "message": "should this go the \"flags\" field ?",
+      "range": {
+        "startLine": 121,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 23
+      },
+      "revId": "49c1b273029b5a230aac502e96bacdf96843790f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "934c958c_134756f3",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1537,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-27T00:19:07Z",
+      "side": 1,
+      "message": "that\u0027s starting to be way too many #ifdef.\nI think we should probably always define trying_source (regardless of DUAL_ROLE_TRY_SRC config) and just enable it when needed \n(an improvement might be to declare it as \"const\" on platforms where it is not changing so the compiler will optimize it)",
+      "range": {
+        "startLine": 1534,
+        "startChar": 0,
+        "endLine": 1537,
+        "endChar": 6
+      },
+      "revId": "49c1b273029b5a230aac502e96bacdf96843790f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "934c958c_93110609",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2042,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-27T00:19:07Z",
+      "side": 1,
+      "message": "the conditional here doesn\u0027t seem terribly useful",
+      "range": {
+        "startLine": 2042,
+        "startChar": 3,
+        "endLine": 2042,
+        "endChar": 30
+      },
+      "revId": "49c1b273029b5a230aac502e96bacdf96843790f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
