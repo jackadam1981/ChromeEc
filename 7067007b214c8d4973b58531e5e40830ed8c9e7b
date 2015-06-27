@@ -69,6 +69,24 @@
       "revId": "7067007b214c8d4973b58531e5e40830ed8c9e7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5384ddcb_8bd455e6",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-27T00:35:02Z",
+      "side": 0,
+      "message": "Ok, that\u0027s good data. Still, I think we may want to tweak this later. Let\u0027s leave the code as-is and set SPI_FLASH_MAX_READ_SIZE to something large (256K)?",
+      "parentUuid": "dea1b20d_4e5693a3",
+      "revId": "7067007b214c8d4973b58531e5e40830ed8c9e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
