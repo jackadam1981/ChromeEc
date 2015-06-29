@@ -20,6 +20,8 @@
 #include "usb_pd.h"
 #include "util.h"
 
+#include "usb.h"
+
 void button_event(enum gpio_signal signal);
 void hpd_event(enum gpio_signal signal);
 void vbus_event(enum gpio_signal signal);
