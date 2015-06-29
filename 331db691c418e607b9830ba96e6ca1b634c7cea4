@@ -34,6 +34,24 @@
       "revId": "331db691c418e607b9830ba96e6ca1b634c7cea4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "332a09c0_9d0793cf",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2478,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-29T23:26:03Z",
+      "side": 0,
+      "message": "that\u0027s not addition whitespace : you removed the empty line",
+      "parentUuid": "132185e2_080c0777",
+      "revId": "331db691c418e607b9830ba96e6ca1b634c7cea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
