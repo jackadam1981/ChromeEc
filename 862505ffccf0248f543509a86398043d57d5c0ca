@@ -59,6 +59,24 @@
     },
     {
       "key": {
+        "uuid": "133a65f6_809456c5",
+        "filename": "common/flash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-06-29T06:10:57Z",
+      "side": 1,
+      "message": "Not sure at this point what the best way is to implement this. vboot_hash_in_progress() is checking for in_progress variable which is again checked in vboot_hash_abort() before aborting the hash.\n\nwill go ahead and add the else.",
+      "parentUuid": "138ee5ef_34a3288c",
+      "revId": "862505ffccf0248f543509a86398043d57d5c0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f390710b_ee740f48",
         "filename": "common/flash.c",
         "patchSetId": 4
