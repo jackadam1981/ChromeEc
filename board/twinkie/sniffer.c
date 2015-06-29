@@ -18,11 +18,18 @@
 #include "timer.h"
 #include "usb.h"
 #include "util.h"
-
+#include "ina2xx.h"
+struct sniffer_sample_header {
+	uint16_t seq;
+	uint16_t tstamp;
+	uint16_t vbus_value; /* can be voltage or current */
+	int16_t sample_tstamp;
+};
 /* Size of one USB packet buffer */
 #define EP_BUF_SIZE 64
+#define EP_PACKET_HEADER_SIZE (sizeof(struct sniffer_sample_header))
 /* Size of the payload (packet minus the header) */
-#define EP_PAYLOAD_SIZE (EP_BUF_SIZE - 4)
+#define EP_PAYLOAD_SIZE (EP_BUF_SIZE - EP_PACKET_HEADER_SIZE)
 
 /* Buffer enough to avoid overflowing due to USB latencies on both sides */
 #define RX_COUNT (16 * EP_PAYLOAD_SIZE)
@@ -42,10 +49,33 @@ static uint16_t sample_tstamp[4];
 /* sequence number of the beginning of DMA buffers */
 static uint16_t sample_seq[4];
 
+
 /* Bulk endpoint double buffer */
 static usb_uint ep_buf[2][EP_BUF_SIZE / 2] __usb_ram;
 /* USB Buffers not used, ready to be filled */
 static volatile uint32_t free_usb = 3;
+
+
+static uint16_t vbus_voltage;
+static int16_t vbus_current;
+static uint16_t vbus_voltage_tstamp;
+static uint16_t vbus_current_tstamp;
+
+static void vbus_voltage_read_deferred(void) {
+	vbus_voltage = ina2xx_read(0, INA2XX_REG_BUS_VOLT)*125 / 100;
+	vbus_voltage_tstamp = (__hw_clock_source_read() / 1000); /* convert to ms */
+	/* try to read every 5 ms */
+	hook_call_deferred(vbus_voltage_read_deferred, 5000);
+}
+DECLARE_DEFERRED(vbus_voltage_read_deferred);
+
+static void vbus_current_read_deferred(void) {
+	vbus_current = ina2xx_read(0, INA2XX_REG_CURRENT);
+	vbus_current_tstamp = (__hw_clock_source_read() / 1000);
+	hook_call_deferred(vbus_current_read_deferred, 5000);
+}
+DECLARE_DEFERRED(vbus_current_read_deferred);
+/* A function must be explicitly declared as being deferrable. */
 
 static inline void led_set_activity(int ch)
 {
@@ -158,7 +188,7 @@ void tim_rx1_handler(uint32_t stat)
 	uint32_t mask = idx ? 0xFF00 : 0x00FF;
 	uint32_t next = idx ? 0x0001 : 0x0100;
 
-	sample_tstamp[idx] = __hw_clock_source_read();
+	sample_tstamp[idx] = __hw_clock_source_read() / 1000; /* convert to ms */
 	sample_seq[idx] = ((seq++ << 3) & 0x0ff8) | (0<<12) /* CC1 */;
 	if (filled_dma & next) {
 		oflow++;
@@ -179,7 +209,7 @@ void tim_rx2_handler(uint32_t stat)
 	uint32_t next = idx ? 0x00010000 : 0x01000000;
 
 	idx += 2;
-	sample_tstamp[idx] = __hw_clock_source_read();
+	sample_tstamp[idx] = __hw_clock_source_read() / 1000; /* convert to ms */
 	sample_seq[idx] = ((seq++ << 3) & 0x0ff8) | (1<<12) /* CC2 */;
 	if (filled_dma & next) {
 		oflow++;
@@ -239,6 +269,9 @@ static void rx_timer_init(int tim_id, timer_ctlr_t *tim, int ch_idx, int up_idx)
 
 void sniffer_init(void)
 {
+	hook_call_deferred(vbus_voltage_read_deferred, 2000);
+	hook_call_deferred(vbus_current_read_deferred, 2000);
+
 	/* remap TIM1 CH1/2/3 to DMA channel 6 */
 	STM32_SYSCFG_CFGR1 |= 1 << 28;
 
@@ -294,7 +327,17 @@ void sniffer_task(void)
 			}
 			ep_buf[u][0] = sample_seq[d >> 3] | (d & 7);
 			ep_buf[u][1] = sample_tstamp[d >> 3];
-			memcpy_to_usbram(((void *)usb_sram_addr(ep_buf[u] + 2)),
+			if ((ep_buf[u][0] >> 12) == 0) { /* cc1 header carries vbus voltage */
+				ep_buf[u][2] = vbus_voltage;
+				/* timestamp offset */
+				ep_buf[u][3] = vbus_voltage_tstamp - ep_buf[u][1];
+			}
+			else { /* cc2 header carries vbus current */
+				ep_buf[u][2] = vbus_current;
+				ep_buf[u][3] = vbus_current_tstamp - ep_buf[u][1];
+			}
+
+			memcpy_to_usbram(((void *)usb_sram_addr(ep_buf[u] + (EP_PACKET_HEADER_SIZE>>1))),
 					 samples[d >> 4]+off, EP_PAYLOAD_SIZE);
 			atomic_clear((uint32_t *)&free_usb, 1 << u);
 			u = !u;
