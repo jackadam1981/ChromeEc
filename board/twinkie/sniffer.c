@@ -18,11 +18,18 @@
 #include "timer.h"
 #include "usb.h"
 #include "util.h"
-
+#include "ina2xx.h"
+struct sniffer_sample_header {
+	uint16_t seq;
+	uint16_t tstamp;
+	uint16_t vbus_voltage;
+	int16_t vbus_current;
+};
 /* Size of one USB packet buffer */
 #define EP_BUF_SIZE 64
+#define EP_PACKET_HEADER_SIZE (sizeof(struct sniffer_sample_header))
 /* Size of the payload (packet minus the header) */
-#define EP_PAYLOAD_SIZE (EP_BUF_SIZE - 4)
+#define EP_PAYLOAD_SIZE (EP_BUF_SIZE - EP_PACKET_HEADER_SIZE)
 
 /* Buffer enough to avoid overflowing due to USB latencies on both sides */
 #define RX_COUNT (16 * EP_PAYLOAD_SIZE)
@@ -41,6 +48,7 @@ static volatile uint32_t filled_dma;
 static uint16_t sample_tstamp[4];
 /* sequence number of the beginning of DMA buffers */
 static uint16_t sample_seq[4];
+
 
 /* Bulk endpoint double buffer */
 static usb_uint ep_buf[2][EP_BUF_SIZE / 2] __usb_ram;
@@ -97,7 +105,7 @@ static void ep_tx(void)
 	if (btable_ep[USB_EP_SNIFFER].tx_count) {
 		/* we have transmitted the previous buffer, toggle it */
 		free_usb |= 1 << b;
-		b = b ? 0 : 1;
+		b = b ? 0 : 1;	
 		btable_ep[USB_EP_SNIFFER].tx_addr = usb_sram_addr(ep_buf[b]);
 	}
 	/* re-enable data transmission if we have available data */
@@ -156,8 +164,7 @@ void tim_rx1_handler(uint32_t stat)
 	stm32_dma_regs_t *dma = STM32_DMA1_REGS;
 	int idx = !(stat & STM32_DMA_ISR_HTIF(DMAC_TIM_RX1));
 	uint32_t mask = idx ? 0xFF00 : 0x00FF;
-	uint32_t next = idx ? 0x0001 : 0x0100;
-
+	uint32_t next = idx ? 0x0001 : 0x0100;	
 	sample_tstamp[idx] = __hw_clock_source_read();
 	sample_seq[idx] = ((seq++ << 3) & 0x0ff8) | (0<<12) /* CC1 */;
 	if (filled_dma & next) {
@@ -273,17 +280,27 @@ DECLARE_HOOK(HOOK_INIT, sniffer_init, HOOK_PRIO_DEFAULT);
 /* state of the simple text tracer */
 extern int trace_mode;
 
+static uint16_t vbus_voltage;
+static int16_t vbus_current;
+
+
+static void vbus_read_deferred(void) {
+	vbus_voltage = ina2xx_read(0, INA2XX_REG_BUS_VOLT)*125 / 100;
+	vbus_current = ina2xx_read(0, INA2XX_REG_CURRENT);
+}
+/* A function must be explicitly declared as being deferrable. */ 
+DECLARE_DEFERRED(vbus_read_deferred);
+
 /* Task to post-process the samples and copy them the USB endpoint buffer */
 void sniffer_task(void)
 {
 	int u = 0; /* current USB buffer index */
 	int d = 0; /* current DMA buffer index */
 	int off = 0; /* DMA buffer offset */
-
 	while (1) {
 		/* Wait for a new buffer of samples or a new USB free buffer */
 		task_wait_event(-1);
-
+		hook_call_deferred (vbus_read_deferred, 0);
 		/* send the available samples over USB if we have a buffer*/
 		while (filled_dma && free_usb) {
 			while (!(filled_dma & (1 << d))) {
@@ -294,7 +311,10 @@ void sniffer_task(void)
 			}
 			ep_buf[u][0] = sample_seq[d >> 3] | (d & 7);
 			ep_buf[u][1] = sample_tstamp[d >> 3];
-			memcpy_to_usbram(((void *)usb_sram_addr(ep_buf[u] + 2)),
+			ep_buf[u][2] = vbus_voltage;
+			ep_buf[u][3] = vbus_current;
+			
+			memcpy_to_usbram(((void *)usb_sram_addr(ep_buf[u] + (EP_PACKET_HEADER_SIZE>>1))),
 					 samples[d >> 4]+off, EP_PAYLOAD_SIZE);
 			atomic_clear((uint32_t *)&free_usb, 1 << u);
 			u = !u;
