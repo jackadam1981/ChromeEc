@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "93a1f560_51335e7f",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-06-29T19:36:26Z",
+      "side": 1,
+      "message": "Instead of adding a variable to the pd var struct, I will add a bit to the flags variable as suggested. The main reason I had to #ifdef so many places was so that I wasn\u0027t adding anymore memory resources (or code) to  boards that didn\u0027t need this option. \n\nI will only use the new config option (shortened as suggested) for the code that enables/disables the feature.\n\nLooking at the mask you suggest, it\u0027s only being used when source_disconnected is the next state. Do you know why it\u0027s only being cleared there?",
+      "parentUuid": "934c958c_edef3dfc",
+      "range": {
+        "startLine": 122,
+        "startChar": 9,
+        "endLine": 122,
+        "endChar": 22
+      },
+      "revId": "49c1b273029b5a230aac502e96bacdf96843790f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f390710b_b38d1009",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
