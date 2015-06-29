@@ -46,7 +46,12 @@
 #define I2C_PORT_MASTER 0
 
 /* USB configuration */
+#ifdef HAS_TASK_SNIFFER
+#define CONFIG_USB_PID 0x500B
+#else
 #define CONFIG_USB_PID 0x500A
+#endif
+
 /* By default, enable all console messages excepted USB */
 #define CC_DEFAULT     (CC_ALL & ~CC_MASK(CC_USB))
 
