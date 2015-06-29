@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "73f6419f_d4e61225",
+        "filename": "board/samus_pd/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-06-29T22:58:15Z",
+      "side": 1,
+      "message": "Added this to include/config.h and used the suggested name.",
+      "parentUuid": "9eabbaef_ef82dd08",
+      "range": {
+        "startLine": 56,
+        "startChar": 8,
+        "endLine": 56,
+        "endChar": 39
+      },
+      "revId": "49c1b273029b5a230aac502e96bacdf96843790f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "138ee5ef_c942695d",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -142,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "53277df4_50eb4472",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1187,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-06-29T22:58:15Z",
+      "side": 1,
+      "message": "The new config flag CONFIG_USB_PD_TRY_SRC is only used for the console command and for the code that sets/clears the global variable pd_try_src_enable. I made the existence or the 2 new variables dependent on CONFIG_USB_PD_DUAL_ROLE so that the config option I\u0027m adding doesn\u0027t have to be used in most places I had it.",
+      "parentUuid": "f390710b_b38d1009",
+      "range": {
+        "startLine": 1187,
+        "startChar": 7,
+        "endLine": 1187,
+        "endChar": 38
+      },
+      "revId": "49c1b273029b5a230aac502e96bacdf96843790f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ed18a8c_8ba4f1c2",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -153,6 +201,30 @@
       "writtenOn": "2015-06-27T00:39:19Z",
       "side": 1,
       "message": "this should be else if right?",
+      "range": {
+        "startLine": 1479,
+        "startChar": 3,
+        "endLine": 1479,
+        "endChar": 5
+      },
+      "revId": "49c1b273029b5a230aac502e96bacdf96843790f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "132185e2_8e90ff1d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1479,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-06-29T22:58:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ed18a8c_8ba4f1c2",
       "range": {
         "startLine": 1479,
         "startChar": 3,
@@ -188,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "93fbb585_a090621d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1506,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-06-29T22:58:15Z",
+      "side": 1,
+      "message": "I combined the two blocks.",
+      "parentUuid": "93a1f560_25d9b41c",
+      "range": {
+        "startLine": 1479,
+        "startChar": 3,
+        "endLine": 1506,
+        "endChar": 4
+      },
+      "revId": "49c1b273029b5a230aac502e96bacdf96843790f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "934c958c_134756f3",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -199,6 +295,30 @@
       "writtenOn": "2015-06-27T00:19:07Z",
       "side": 1,
       "message": "that\u0027s starting to be way too many #ifdef.\nI think we should probably always define trying_source (regardless of DUAL_ROLE_TRY_SRC config) and just enable it when needed \n(an improvement might be to declare it as \"const\" on platforms where it is not changing so the compiler will optimize it)",
+      "range": {
+        "startLine": 1534,
+        "startChar": 0,
+        "endLine": 1537,
+        "endChar": 6
+      },
+      "revId": "49c1b273029b5a230aac502e96bacdf96843790f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93fbb585_4f7f315d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1537,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-06-29T22:58:15Z",
+      "side": 1,
+      "message": "The \u0027trying_source\u0027 variable has been replaced with a bit in the flags field. I have removed the #ifdef CONFIG_USB_PD_DUAL_ROLE_TRY_SRC in places that already have a \"DUAL_ROLE\" config option check.",
+      "parentUuid": "934c958c_134756f3",
       "range": {
         "startLine": 1534,
         "startChar": 0,
@@ -228,6 +348,24 @@
     },
     {
       "key": {
+        "uuid": "93fbb585_008e9603",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1959,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-06-29T22:58:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "138ee5ef_c617b64a",
+      "revId": "49c1b273029b5a230aac502e96bacdf96843790f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "934c958c_93110609",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -239,6 +377,30 @@
       "writtenOn": "2015-06-27T00:19:07Z",
       "side": 1,
       "message": "the conditional here doesn\u0027t seem terribly useful",
+      "range": {
+        "startLine": 2042,
+        "startChar": 3,
+        "endLine": 2042,
+        "endChar": 30
+      },
+      "revId": "49c1b273029b5a230aac502e96bacdf96843790f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93fbb585_607afa65",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2042,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-06-29T22:58:15Z",
+      "side": 1,
+      "message": "I think this if statement was a holdover from a debug CPRINTF() that I had. Have cleaned it up so the \u0027if()\u0027 is gone now.",
+      "parentUuid": "934c958c_93110609",
       "range": {
         "startLine": 2042,
         "startChar": 3,
@@ -274,6 +436,30 @@
     },
     {
       "key": {
+        "uuid": "53277df4_5026a47a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2044,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-06-29T22:58:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5384ddcb_a81a7f73",
+      "range": {
+        "startLine": 2042,
+        "startChar": 3,
+        "endLine": 2044,
+        "endChar": 31
+      },
+      "revId": "49c1b273029b5a230aac502e96bacdf96843790f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93a1f560_a51b84a0",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -285,6 +471,30 @@
       "writtenOn": "2015-06-27T00:39:19Z",
       "side": 1,
       "message": "this should be done when we go to SNK_DISCONNECTED. i see it\u0027s not there right now, it\u0027s only when we go to SRC_DISCONNECTED, but you can just move that up to run in either case (~line 268)",
+      "range": {
+        "startLine": 2531,
+        "startChar": 0,
+        "endLine": 2533,
+        "endChar": 6
+      },
+      "revId": "49c1b273029b5a230aac502e96bacdf96843790f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "332a09c0_1280b249",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2533,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-06-29T22:58:15Z",
+      "side": 1,
+      "message": "I moved this up to the set_state() function as you suggested.",
+      "parentUuid": "93a1f560_a51b84a0",
       "range": {
         "startLine": 2531,
         "startChar": 0,
@@ -343,6 +553,54 @@
     },
     {
       "key": {
+        "uuid": "53277df4_eacc075d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2883,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-06-29T22:58:15Z",
+      "side": 1,
+      "message": "Modified as suggested",
+      "parentUuid": "dea1b20d_eee81f76",
+      "range": {
+        "startLine": 2883,
+        "startChar": 38,
+        "endLine": 2883,
+        "endChar": 45
+      },
+      "revId": "49c1b273029b5a230aac502e96bacdf96843790f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53277df4_cac9434b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2883,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-06-29T22:58:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "deca92dd_09f00ddb",
+      "range": {
+        "startLine": 2883,
+        "startChar": 19,
+        "endLine": 2883,
+        "endChar": 20
+      },
+      "revId": "49c1b273029b5a230aac502e96bacdf96843790f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dea1b20d_8ef35b6c",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -354,6 +612,30 @@
       "writtenOn": "2015-06-27T00:39:19Z",
       "side": 1,
       "message": "this should go before \"\u003cport\u003e\" since it doesn\u0027t take a port arg",
+      "range": {
+        "startLine": 3009,
+        "startChar": 4,
+        "endLine": 3009,
+        "endChar": 16
+      },
+      "revId": "49c1b273029b5a230aac502e96bacdf96843790f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73f6419f_f41b4e9f",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3009,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-06-29T22:58:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dea1b20d_8ef35b6c",
       "range": {
         "startLine": 3009,
         "startChar": 4,
