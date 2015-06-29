@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5384ddcb_1ceded03",
+        "filename": "driver/usb_mux.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-29T17:10:46Z",
+      "side": 1,
+      "message": "this is a really long print, and on boards like samus where the PD task is timing sensitive, this may cause problems. maybe we can put this print behind a debug flag?",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 38
+      },
+      "revId": "7bc1e3327ab1ad3ade4e101479b4c9b98ef7cb09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f390710b_b4e2d698",
         "filename": "driver/usb_mux_pi3usb30532.c",
         "patchSetId": 9
