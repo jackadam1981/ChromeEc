@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53305d12_628f9683",
+        "filename": "chip/stm32/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-29T20:32:05Z",
+      "side": 1,
+      "message": "Minor nit: probably makes more sense to flip this around to \n\n#ifdef CHIP_FAMILY_STM32L\n\nsince that\u0027s the exception now.  Either that, or #elif defined(STM32L), #else #error like we do in other files.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 6
+      },
+      "revId": "78287d713b1d3fe7bb73d15f22bff3a849e19f71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
