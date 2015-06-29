@@ -95,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "132185e2_48c27fca",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-29T21:06:01Z",
+      "side": 1,
+      "message": "are you referring to PD_FLAGS_RESET_ON_DISCONNECT_MASK? That mask is used when you go to either SNK_ or SRC_ DISCONNECTED. it\u0027s not obvious though, you have to work your way through a bunch of preprocessor checks in order to see that.",
+      "parentUuid": "93a1f560_51335e7f",
+      "range": {
+        "startLine": 122,
+        "startChar": 9,
+        "endLine": 122,
+        "endChar": 22
+      },
+      "revId": "49c1b273029b5a230aac502e96bacdf96843790f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f390710b_b38d1009",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
