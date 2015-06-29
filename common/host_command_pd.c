@@ -156,7 +156,7 @@ static void pd_exchange_status(void)
 		 * to see if either PD port is signallng an
 		 * Alert# to the TCPM.
 		 */
-#ifdef CONFIG_HOSTCMD_PD
+#if 0
 		if (pd_status.status & PD_STATUS_TCPC_ALERT_0)
 			tcpc_alert(0);
 		if (pd_status.status & PD_STATUS_TCPC_ALERT_1)
