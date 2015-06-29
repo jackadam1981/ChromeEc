@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "133a65f6_409a4ef4",
+        "filename": "common/flash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-06-29T06:07:40Z",
+      "side": 1,
+      "message": "I think we will need to abort in flashread also but we will not need to invalidate. The reason being if vboot hash reads and flashrom flash reads happen simultaneously then we will repeatedly run into priority inversion case if vboot hash grabs the mutex first. This will also result in longer flashread.",
+      "range": {
+        "startLine": 306,
+        "startChar": 1,
+        "endLine": 306,
+        "endChar": 7
+      },
+      "revId": "862505ffccf0248f543509a86398043d57d5c0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f390710b_0e729359",
         "filename": "common/flash.c",
         "patchSetId": 4
