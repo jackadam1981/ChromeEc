@@ -22,6 +22,121 @@
       "revId": "2024ba66cb48fd3819c15b3e7db32a7903f68c3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73f6419f_45b38e8a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1465,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-30T17:36:19Z",
+      "side": 1,
+      "message": "IMO this comment is too long. I would say something like:\n/* Transition to sink if we are trying source and try source timer has expired, or we are not trying source and the dual-role toggle timer has expired */",
+      "range": {
+        "startLine": 1452,
+        "startChar": 3,
+        "endLine": 1465,
+        "endChar": 6
+      },
+      "revId": "2024ba66cb48fd3819c15b3e7db32a7903f68c3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93fbb585_a91e8a90",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1531,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-30T17:36:19Z",
+      "side": 1,
+      "message": "don\u0027t think this is necessary. the flag is automatically cleared on next disconnect.",
+      "range": {
+        "startLine": 1527,
+        "startChar": 0,
+        "endLine": 1531,
+        "endChar": 40
+      },
+      "revId": "2024ba66cb48fd3819c15b3e7db32a7903f68c3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "132185e2_ef3ed243",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1928,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-30T17:36:19Z",
+      "side": 1,
+      "message": "This part was confusing enough I had to pull up the spec to check what was going on. I think a comment like this would help clarify.\n/* If trying source, then we have already failed attempting to be a source. Try connecting as sink again and don\u0027t dual-role toggle until try source marker timeout. */",
+      "range": {
+        "startLine": 1917,
+        "startChar": 3,
+        "endLine": 1928,
+        "endChar": 4
+      },
+      "revId": "2024ba66cb48fd3819c15b3e7db32a7903f68c3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "132185e2_8f847617",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1972,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-30T17:36:19Z",
+      "side": 1,
+      "message": "IMO this comment is too long. can be simply /* Attempt to connect as source */",
+      "range": {
+        "startLine": 1966,
+        "startChar": 4,
+        "endLine": 1972,
+        "endChar": 7
+      },
+      "revId": "2024ba66cb48fd3819c15b3e7db32a7903f68c3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "332a09c0_9d34b3e6",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2002,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-30T17:36:19Z",
+      "side": 1,
+      "message": "again, don\u0027t think this is needed. on the next disconnection we will clear the flag anyway.",
+      "range": {
+        "startLine": 2001,
+        "startChar": 3,
+        "endLine": 2002,
+        "endChar": 39
+      },
+      "revId": "2024ba66cb48fd3819c15b3e7db32a7903f68c3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
