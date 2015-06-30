@@ -16,6 +16,24 @@
       "revId": "b10f323a9480e8b2bcfcb16276364aa5e55c32b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b3a6f9d3_466fc8f3",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-30T22:54:26Z",
+      "side": 1,
+      "message": "I have tried to put some words, let me know if you have a better wording (or edit directly the CL from gerrit)",
+      "parentUuid": "d3d44d30_9fc3df7d",
+      "revId": "b10f323a9480e8b2bcfcb16276364aa5e55c32b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
