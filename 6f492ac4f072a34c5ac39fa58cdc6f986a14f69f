@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "339be98e_c779927a",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-30T22:12:49Z",
+      "side": 1,
+      "message": "I think this would work if inserted here.\n\n#ifdef CONFIG_CHARGE_RAMP_HW\nif (board_is_ramp_allowed(supplier))\n\tnew_charge_current_uncapped \u003d board_get_ramp_current_limit(supplier, available_charge[new_supplier][new_port].current);\n#endif",
+      "revId": "6f492ac4f072a34c5ac39fa58cdc6f986a14f69f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13d6e50c_00430662",
         "filename": "common/charge_manager.c",
         "patchSetId": 3
@@ -37,6 +54,30 @@
       "side": 1,
       "message": "Let\u0027s take the DCP mode as the example,\nthe Pericom PI3USB9281 driver will set the current to 500mA (minimum guaranteed value).\nWith software charge ramping, the ramping task will start from this value, then set a new input limit with board_set_charge_limit() \nWith the HW mechanism, the current limit set in HW needs to be the max rather than the min.\nSo I\u0027m doing it here.",
       "parentUuid": "13d6e50c_00430662",
+      "range": {
+        "startLine": 547,
+        "startChar": 0,
+        "endLine": 551,
+        "endChar": 34
+      },
+      "revId": "6f492ac4f072a34c5ac39fa58cdc6f986a14f69f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5383fd1c_9e45ad1a",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-06-30T22:12:49Z",
+      "side": 1,
+      "message": "Ok, I see. I think this might not be the right place for this. Putting it here means that for the HW charge ramp, the available_charger table is using the ramp maximums, which means when we run charge_manager_get_best_charge_port() we will be comparing the ramp maximums instead of the minimums. This is not necessarily bad, but it is subtly different from the normal case. For example proprietary and DCP suppliers are the same priority, so with the HW charge ramp, we would choose DCP over proprietary because the DCP max ramp current is above the proprietary max ramp current. But, with the SW charge ramp, we would choose the opposite.\n\nOne way to make this equivalent is to move this code up in to charge_manager_refresh() where I put a comment.\n\nIf you do want to keep this here, then can you at least put a comment about why this is needed.",
+      "parentUuid": "73f6419f_e5843a93",
       "range": {
         "startLine": 547,
         "startChar": 0,
