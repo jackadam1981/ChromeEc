@@ -87,6 +87,30 @@
       "revId": "6f492ac4f072a34c5ac39fa58cdc6f986a14f69f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3d44d30_1c28fd10",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-30T22:38:08Z",
+      "side": 1,
+      "message": "Ok I will try to move it",
+      "parentUuid": "5383fd1c_9e45ad1a",
+      "range": {
+        "startLine": 547,
+        "startChar": 0,
+        "endLine": 551,
+        "endChar": 34
+      },
+      "revId": "6f492ac4f072a34c5ac39fa58cdc6f986a14f69f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
