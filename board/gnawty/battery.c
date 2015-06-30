@@ -10,7 +10,9 @@
 #include "console.h"
 #include "gpio.h"
 #include "host_command.h"
+#include "system.h"
 #include "util.h"
+
 
 /* Shutdown mode parameter to write to manufacturer access register */
 #define	SB_SHIP_MODE_ADDR	0x3a
@@ -43,9 +45,30 @@ static const struct battery_info info_AC15 = {
 	.discharging_max_c    = 75,
 };
 
+static const struct battery_info info_AC14B3K = {
+	/* New battery, use BOARD_ID pin 2 tp separate it. */
+	.voltage_max	= 17600,	/* mV */
+	.voltage_normal = 15400,
+	.voltage_min	= 12000,
+	.precharge_current  = 340,	/* mA */
+	.start_charging_min_c = 0,
+	.start_charging_max_c = 50,
+	.charging_min_c       = 0,
+	.charging_max_c       = 60,
+	.discharging_min_c    = -20,
+	.discharging_max_c    = 60,
+};
+
 const struct battery_info *battery_get_info(void)
 {
-	if (gpio_get_level(GPIO_BOARD_VERSION3))
+	int board_version = 0;
+
+	board_version = system_get_board_version();
+
+	if (board_version == CONFIG_BATTERY_4CELL)
+		return &info_AC14B3K;
+
+	if (board_version == CONFIG_BATTERY_3CELL)
 		return &info_AC15;
 	else
 		return &info_AC14;
