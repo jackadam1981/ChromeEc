@@ -663,7 +663,8 @@ enum power_state power_handle_state(enum power_state state)
 			usleep(SUSPEND_DEBOUNCE_TIME);
 			if (power_get_signals() & IN_SUSPEND)
 				return POWER_S0S3;
-		}
+		} else if (!(power_get_signals() & IN_POWER_GOOD))
+			return POWER_S0S3;
 		return state;
 
 	case POWER_S0S3:
