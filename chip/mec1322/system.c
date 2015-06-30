@@ -62,6 +62,7 @@ static void check_reset_cause(void)
 			&& check_vcc1_por())
 		flags |= RESET_FLAG_POWER_ON;
 
+#ifdef RECOVERY_MODE
 	/*
 	* Check for only BIT 6 to determine VCC1_RST# and no
 	* change on VBAT status indicates this is VCC1_RST#
@@ -69,7 +70,7 @@ static void check_reset_cause(void)
 	if ((rst_sts & MEC1322_PWR_RST_STS_VCC1) &&
 		!(rst_sts & MEC1322_PWR_RST_STS_VBAT))
 		flags |= RESET_FLAG_RESET_PIN;
-
+#endif
 
 	flags |= MEC1322_VBAT_RAM(HIBDATA_INDEX_SAVED_RESET_FLAGS);
 	MEC1322_VBAT_RAM(HIBDATA_INDEX_SAVED_RESET_FLAGS) = 0;
