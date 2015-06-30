@@ -22,6 +22,30 @@
       "revId": "6f492ac4f072a34c5ac39fa58cdc6f986a14f69f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73f6419f_e5843a93",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-06-30T16:57:09Z",
+      "side": 1,
+      "message": "Let\u0027s take the DCP mode as the example,\nthe Pericom PI3USB9281 driver will set the current to 500mA (minimum guaranteed value).\nWith software charge ramping, the ramping task will start from this value, then set a new input limit with board_set_charge_limit() \nWith the HW mechanism, the current limit set in HW needs to be the max rather than the min.\nSo I\u0027m doing it here.",
+      "parentUuid": "13d6e50c_00430662",
+      "range": {
+        "startLine": 547,
+        "startChar": 0,
+        "endLine": 551,
+        "endChar": 34
+      },
+      "revId": "6f492ac4f072a34c5ac39fa58cdc6f986a14f69f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
