@@ -45,6 +45,30 @@
       "revId": "7bc1e3327ab1ad3ade4e101479b4c9b98ef7cb09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "934c958c_2eee683b",
+        "filename": "driver/usb_mux_pi3usb30532.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-06-30T05:04:03Z",
+      "side": 1,
+      "message": "It was correct before but confusing, and it makes sense to check the parameter before doing an i2c transaction.",
+      "parentUuid": "f390710b_b4e2d698",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 25
+      },
+      "revId": "7bc1e3327ab1ad3ade4e101479b4c9b98ef7cb09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
