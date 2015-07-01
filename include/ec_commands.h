@@ -1824,7 +1824,7 @@ struct ec_params_motion_sense {
 
 			/* Data to set or EC_MOTION_SENSE_NO_VALUE to read. */
 			int32_t data;
-		} sensor_odr, sensor_range;
+		} ec_rate, sensor_odr, sensor_range;
 
 		/* Used for MOTIONSENSE_CMD_SENSOR_OFFSET */
 		struct __attribute__((__packed__)) {
@@ -1909,14 +1909,13 @@ struct ec_response_motion_sense {
 		struct {
 			/* Current value of the parameter queried. */
 			int32_t ret;
-		} ec_rate, sensor_odr, sensor_range, kb_wake_angle,
-		  perform_calib;
+		} ec_rate, sensor_odr, sensor_range, kb_wake_angle;
 
 		/* Used for MOTIONSENSE_CMD_SENSOR_OFFSET */
 		struct {
 			int16_t temp;
 			int16_t offset[3];
-		} sensor_offset;
+		} sensor_offset, perform_calib;
 
 		struct ec_response_motion_sense_fifo_info fifo_info, fifo_flush;
 
