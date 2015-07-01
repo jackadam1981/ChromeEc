@@ -318,35 +318,29 @@ static int get_data_rate(const struct motion_sensor_t *s,
 	return EC_SUCCESS;
 }
 
+static int set_offset(const struct motion_sensor_t *s,
+			const int16_t *offset,
+			int16_t    temp)
+{
+	return EC_SUCCESS;
+}
+
+static int get_offset(const struct motion_sensor_t *s,
+			int16_t    *offset,
+			int16_t    *temp)
+{
+	offset[X] = 0;
+	offset[Y] = 0;
+	offset[Z] = 0;
+	*temp = EC_MOTION_SENSE_INVALID_CALIB_TEMP;
+	return EC_SUCCESS;
+}
+
 void normalize(const struct motion_sensor_t *s, vector_3_t v, uint8_t *data)
 {
-	int range;
-
 	v[0] = ((int16_t)((data[1] << 8) | data[0]));
 	v[1] = ((int16_t)((data[3] << 8) | data[2]));
 	v[2] = ((int16_t)((data[5] << 8) | data[4]));
-
-	get_range(s, &range);
-
-	v[0] *= range;
-	v[1] *= range;
-	v[2] *= range;
-
-	switch (s->type) {
-	case MOTIONSENSE_TYPE_ACCEL:
-		/* normalize the accel scale: 1G = 1024 */
-		v[0] >>= 5;
-		v[1] >>= 5;
-		v[2] >>= 5;
-		break;
-	case MOTIONSENSE_TYPE_GYRO:
-		v[0] >>= 8;
-		v[1] >>= 8;
-		v[2] >>= 8;
-		break;
-	default:
-		break;
-	}
 }
 
 #ifdef CONFIG_ACCEL_INTERRUPTS
@@ -544,6 +538,8 @@ const struct accelgyro_drv bmi160_drv = {
 	.get_resolution = get_resolution,
 	.set_data_rate = set_data_rate,
 	.get_data_rate = get_data_rate,
+	.set_offset = set_offset,
+	.get_offset = get_offset,
 #ifdef CONFIG_ACCEL_INTERRUPTS
 	.set_interrupt = set_interrupt,
 #endif
