@@ -179,6 +179,16 @@ static void set_system_power(int asserted)
 }
 
 /**
+ * Check the power signal.
+ * @return non-zero if SUSPEND asserted or lost power.
+ */
+static int is_suspend_or_poweroff(void)
+{
+	return power_get_signals() & IN_SUSPEND ||
+		!(power_get_signals() & IN_POWER_GOOD);
+}
+
+/**
  * Set the PMIC PWRON signal.
  *
  * Note that asserting requires holding for PMIC_PWRON_DEBOUNCE_TIME.
@@ -654,14 +664,14 @@ enum power_state power_handle_state(enum power_state state)
 			CPRINTS("power off %d", value);
 			power_off();
 			return POWER_S0S3;
-		} else if (power_get_signals() & IN_SUSPEND) {
+		} else if (is_suspend_or_poweroff()) {
 			/*
 			 * add susuend signal debounce:
 			 * check suspend signal after 50ms, to avoid
 			 * transient state during SoC boot up.
 			 */
 			usleep(SUSPEND_DEBOUNCE_TIME);
-			if (power_get_signals() & IN_SUSPEND)
+			if (is_suspend_or_poweroff())
 				return POWER_S0S3;
 		}
 		return state;
