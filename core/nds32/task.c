@@ -139,15 +139,22 @@ int need_resched;
 /*
  * Bitmap of all tasks ready to be run.
  *
- * Currently all tasks are enabled at startup.
+ * Start off with only the hooks task marked as ready such that all the modules
+ * can do their init within a task switching context.  The hooks task will then
+ * make a call to enable all tasks.
  */
-static uint32_t tasks_ready = (1<<TASK_ID_COUNT) - 1;
+static uint32_t tasks_ready = (1 << TASK_ID_HOOKS);
 
 static int start_called;  /* Has task swapping started */
 
 static inline task_ *__task_id_to_ptr(task_id_t id)
 {
 	return tasks + id;
+}
+
+void task_enable_all_tasks(void)
+{
+	tasks_ready = (1 << TASK_ID_COUNT) - 1;
 }
 
 void interrupt_disable(void)

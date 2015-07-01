@@ -184,6 +184,12 @@ void task_clear_fp_used(void);
 #endif
 
 /**
+ * Enable all tasks as ready.  Until this is called, the only task permitted to
+ * run is the hooks task.
+ */
+void task_enable_all_tasks(void);
+
+/**
  * Enable an interrupt.
  */
 void task_enable_irq(int irq);
