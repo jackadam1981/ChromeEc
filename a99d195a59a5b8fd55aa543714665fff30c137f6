@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "339be98e_55508c53",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1465,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-07-01T17:26:58Z",
+      "side": 1,
+      "message": "Yes, it\u0027s only valid in one of the entry cases, so I have removed it.",
+      "parentUuid": "5383fd1c_befc3137",
+      "range": {
+        "startLine": 1465,
+        "startChar": 4,
+        "endLine": 1465,
+        "endChar": 35
+      },
+      "revId": "a99d195a59a5b8fd55aa543714665fff30c137f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "339be98e_8775ca43",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "b3a6f9d3_b1892878",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1921,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-07-01T17:26:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "339be98e_8775ca43",
+      "range": {
+        "startLine": 1916,
+        "startChar": 5,
+        "endLine": 1921,
+        "endChar": 8
+      },
+      "revId": "a99d195a59a5b8fd55aa543714665fff30c137f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "339be98e_e74c9619",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2015-06-30T22:18:44Z",
       "side": 1,
       "message": "also don\u0027t need this comment anymore.",
+      "range": {
+        "startLine": 1923,
+        "startChar": 4,
+        "endLine": 1923,
+        "endChar": 51
+      },
+      "revId": "a99d195a59a5b8fd55aa543714665fff30c137f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5383fd1c_94f5897d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1923,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-07-01T17:26:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "339be98e_e74c9619",
       "range": {
         "startLine": 1923,
         "startChar": 4,
