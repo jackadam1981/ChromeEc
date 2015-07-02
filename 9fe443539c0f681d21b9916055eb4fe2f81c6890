@@ -1,0 +1,326 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d31c4d21_363278ab",
+        "filename": "board/lucid/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-02T00:11:28Z",
+      "side": 1,
+      "message": "seems low as an absolute temperature number and also relative to charging_max_c.\nI guess it\u0027s better to keep a threshold but something like 55 C might be better",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 24,
+        "endChar": 27
+      },
+      "revId": "9fe443539c0f681d21b9916055eb4fe2f81c6890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d31c4d21_162f7c45",
+        "filename": "board/lucid/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-02T00:11:28Z",
+      "side": 1,
+      "message": "the actual number is -20 C",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 23
+      },
+      "revId": "9fe443539c0f681d21b9916055eb4fe2f81c6890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f305d1c3_fa83c50c",
+        "filename": "board/lucid/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-02T00:11:28Z",
+      "side": 1,
+      "message": "TODO use STM32F072 integrated BC1.2 detection ?",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 54
+      },
+      "revId": "9fe443539c0f681d21b9916055eb4fe2f81c6890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33b12958_d17ea45f",
+        "filename": "board/lucid/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-02T00:11:28Z",
+      "side": 1,
+      "message": "are we using the STM32 or an external pericom ?",
+      "range": {
+        "startLine": 97,
+        "startChar": 19,
+        "endLine": 97,
+        "endChar": 27
+      },
+      "revId": "9fe443539c0f681d21b9916055eb4fe2f81c6890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d31c4d21_9611ccdf",
+        "filename": "board/lucid/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-02T00:11:28Z",
+      "side": 1,
+      "message": "aren\u0027t you a sink only ?",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 31
+      },
+      "revId": "9fe443539c0f681d21b9916055eb4fe2f81c6890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f3ba3136_ef74a179",
+        "filename": "board/lucid/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-02T00:11:28Z",
+      "side": 1,
+      "message": "IMO those kind of #ifdef in board code are not terribly useful",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 23
+      },
+      "revId": "9fe443539c0f681d21b9916055eb4fe2f81c6890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f3ba3136_efe5c19e",
+        "filename": "board/lucid/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-02T00:11:28Z",
+      "side": 1,
+      "message": "_DSLEEP is not a thing on this platform ?",
+      "range": {
+        "startLine": 9,
+        "startChar": 54,
+        "endLine": 9,
+        "endChar": 61
+      },
+      "revId": "9fe443539c0f681d21b9916055eb4fe2f81c6890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d31c4d21_7656b0a1",
+        "filename": "board/lucid/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-02T00:11:28Z",
+      "side": 1,
+      "message": "maybe GPIO_ANALOG for USB pins on STM32F0",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 52
+      },
+      "revId": "9fe443539c0f681d21b9916055eb4fe2f81c6890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7311e108_731520f3",
+        "filename": "board/lucid/usb_pd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-02T00:11:28Z",
+      "side": 1,
+      "message": "just registers.h",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "9fe443539c0f681d21b9916055eb4fe2f81c6890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7311e108_93427cf2",
+        "filename": "board/lucid/usb_pd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-02T00:11:28Z",
+      "side": 1,
+      "message": "why ?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "9fe443539c0f681d21b9916055eb4fe2f81c6890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d31c4d21_168bfca5",
+        "filename": "board/lucid/usb_pd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-02T00:11:28Z",
+      "side": 1,
+      "message": "CMP2OUTSEL_TIM1_IC1 ?",
+      "range": {
+        "startLine": 52,
+        "startChar": 19,
+        "endLine": 52,
+        "endChar": 49
+      },
+      "revId": "9fe443539c0f681d21b9916055eb4fe2f81c6890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7311e108_b3605889",
+        "filename": "board/lucid/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-02T00:11:28Z",
+      "side": 1,
+      "message": "unused ?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 19
+      },
+      "revId": "9fe443539c0f681d21b9916055eb4fe2f81c6890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33b12958_b1eb2075",
+        "filename": "board/lucid/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-02T00:11:28Z",
+      "side": 1,
+      "message": "that\u0027s not terribly useful",
+      "range": {
+        "startLine": 163,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 8
+      },
+      "revId": "9fe443539c0f681d21b9916055eb4fe2f81c6890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f3ba3136_2f750942",
+        "filename": "board/lucid/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-02T00:11:28Z",
+      "side": 1,
+      "message": "that one either",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 8
+      },
+      "revId": "9fe443539c0f681d21b9916055eb4fe2f81c6890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
