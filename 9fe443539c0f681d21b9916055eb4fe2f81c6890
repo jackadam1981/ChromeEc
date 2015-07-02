@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "130345c0_f85ab150",
+        "filename": "board/lucid/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-02T00:26:27Z",
+      "side": 1,
+      "message": "yeah, i\u0027ll look closer at these. i didn\u0027t see them being useful anywhere in particular, but i just did a quick look.",
+      "parentUuid": "d31c4d21_363278ab",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 24,
+        "endChar": 27
+      },
+      "revId": "9fe443539c0f681d21b9916055eb4fe2f81c6890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d31c4d21_162f7c45",
         "filename": "board/lucid/battery.c",
         "patchSetId": 1
@@ -94,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "130345c0_58191da7",
+        "filename": "board/lucid/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-02T00:26:27Z",
+      "side": 1,
+      "message": "stm32, which isn\u0027t implemented. that\u0027s a copy/paste mistake. I\u0027ll add a TODO.",
+      "parentUuid": "33b12958_d17ea45f",
+      "range": {
+        "startLine": 97,
+        "startChar": 19,
+        "endLine": 97,
+        "endChar": 27
+      },
+      "revId": "9fe443539c0f681d21b9916055eb4fe2f81c6890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d31c4d21_9611ccdf",
         "filename": "board/lucid/board.h",
         "patchSetId": 1
@@ -117,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "130345c0_b8503933",
+        "filename": "board/lucid/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-02T00:26:27Z",
+      "side": 1,
+      "message": "yes, but right now a sink needs this defined since we have no sink only or source only macros. see hoho and dingdong.",
+      "parentUuid": "d31c4d21_9611ccdf",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 31
+      },
+      "revId": "9fe443539c0f681d21b9916055eb4fe2f81c6890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3ba3136_ef74a179",
         "filename": "board/lucid/board.h",
         "patchSetId": 1
@@ -128,6 +200,30 @@
       "writtenOn": "2015-07-02T00:11:28Z",
       "side": 1,
       "message": "IMO those kind of #ifdef in board code are not terribly useful",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 23
+      },
+      "revId": "9fe443539c0f681d21b9916055eb4fe2f81c6890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53ae9dfa_721c1899",
+        "filename": "board/lucid/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-02T00:26:27Z",
+      "side": 1,
+      "message": "agreed, will fix. that was a direct copy/paste from ryu/board.h",
+      "parentUuid": "f3ba3136_ef74a179",
       "range": {
         "startLine": 68,
         "startChar": 0,
@@ -186,6 +282,53 @@
     },
     {
       "key": {
+        "uuid": "b3eef934_7d05f744",
+        "filename": "board/lucid/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-02T00:26:27Z",
+      "side": 1,
+      "message": "i haven\u0027t added any USB code, so shouldn\u0027t matter for now.",
+      "parentUuid": "d31c4d21_7656b0a1",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 52
+      },
+      "revId": "9fe443539c0f681d21b9916055eb4fe2f81c6890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f3ba3136_0f7be59f",
+        "filename": "board/lucid/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-02T00:26:27Z",
+      "side": 1,
+      "message": "shoudl be AP_INT_L",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 9
+      },
+      "revId": "9fe443539c0f681d21b9916055eb4fe2f81c6890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7311e108_731520f3",
         "filename": "board/lucid/usb_pd_config.h",
         "patchSetId": 1
@@ -232,6 +375,30 @@
     },
     {
       "key": {
+        "uuid": "53ae9dfa_521914a7",
+        "filename": "board/lucid/usb_pd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-02T00:26:27Z",
+      "side": 1,
+      "message": "copy/paste, will remove",
+      "parentUuid": "7311e108_93427cf2",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "9fe443539c0f681d21b9916055eb4fe2f81c6890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d31c4d21_168bfca5",
         "filename": "board/lucid/usb_pd_config.h",
         "patchSetId": 1
@@ -243,6 +410,30 @@
       "writtenOn": "2015-07-02T00:11:28Z",
       "side": 1,
       "message": "CMP2OUTSEL_TIM1_IC1 ?",
+      "range": {
+        "startLine": 52,
+        "startChar": 19,
+        "endLine": 52,
+        "endChar": 49
+      },
+      "revId": "9fe443539c0f681d21b9916055eb4fe2f81c6890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73f801fb_5b18037c",
+        "filename": "board/lucid/usb_pd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-02T00:26:27Z",
+      "side": 1,
+      "message": "yes, thanks",
+      "parentUuid": "d31c4d21_168bfca5",
       "range": {
         "startLine": 52,
         "startChar": 19,
@@ -278,6 +469,30 @@
     },
     {
       "key": {
+        "uuid": "53093ddc_da0b652d",
+        "filename": "board/lucid/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-02T00:26:27Z",
+      "side": 1,
+      "message": "yes, will remove",
+      "parentUuid": "7311e108_b3605889",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 19
+      },
+      "revId": "9fe443539c0f681d21b9916055eb4fe2f81c6890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33b12958_b1eb2075",
         "filename": "board/lucid/usb_pd_policy.c",
         "patchSetId": 1
@@ -301,6 +516,30 @@
     },
     {
       "key": {
+        "uuid": "53093ddc_3a11c15a",
+        "filename": "board/lucid/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-02T00:26:27Z",
+      "side": 1,
+      "message": "useful as a debug tool, when you have zinger plugged in, you can type on console \"pd \u003cport\u003e vdm current\" and this will print out what zinger is measuring for it\u0027s output current.",
+      "parentUuid": "33b12958_b1eb2075",
+      "range": {
+        "startLine": 163,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 8
+      },
+      "revId": "9fe443539c0f681d21b9916055eb4fe2f81c6890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3ba3136_2f750942",
         "filename": "board/lucid/usb_pd_policy.c",
         "patchSetId": 1
@@ -312,6 +551,30 @@
       "writtenOn": "2015-07-02T00:11:28Z",
       "side": 1,
       "message": "that one either",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 8
+      },
+      "revId": "9fe443539c0f681d21b9916055eb4fe2f81c6890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53ae9dfa_b2504033",
+        "filename": "board/lucid/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-02T00:26:27Z",
+      "side": 1,
+      "message": "will remove",
+      "parentUuid": "f3ba3136_2f750942",
       "range": {
         "startLine": 166,
         "startChar": 0,
