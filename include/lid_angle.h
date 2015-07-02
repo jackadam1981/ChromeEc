@@ -10,12 +10,12 @@
 
 /**
  * Update the lid angle module with the most recent lid angle calculation. Then
- * use the lid angle history to enable/disable keyboard scanning when chipset
- * is suspended.
+ * use the lid angle history to enable/disable peripheral devices, keyboard
+ * scanning and track pad interrupt, etc.
  *
  * @lid_ang Lid angle.
  */
-void lidangle_keyscan_update(int lid_ang);
+void lidangle_update(int lid_ang);
 
 /**
  * Getter and setter methods for the keyboard wake angle. In S3, when the
@@ -24,5 +24,10 @@ void lidangle_keyscan_update(int lid_ang);
  */
 int lid_angle_get_kb_wake_angle(void);
 void lid_angle_set_kb_wake_angle(int ang);
+
+/*
+ * Board level callback for lid angle changes.
+ */
+void lid_angle_peripheral_enable(int enable);
 
 #endif  /* __CROS_EC_LID_ANGLE_H */
