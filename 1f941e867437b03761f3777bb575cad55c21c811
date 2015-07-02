@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53ae9dfa_b2c4c008",
+        "filename": "chip/mec1322/spi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2015-07-02T17:40:20Z",
+      "side": 1,
+      "message": "Can\u0027t return here (we are holding the spi_mutex).",
+      "revId": "1f941e867437b03761f3777bb575cad55c21c811",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
