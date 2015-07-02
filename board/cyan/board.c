@@ -109,7 +109,7 @@ const matrix_3x3_t lid_standard_ref = {
 
 struct motion_sensor_t motion_sensors[] = {
 	{.name = "Base",
-	 .active_mask = SENSOR_ACTIVE_S0,
+	 .active_mask = SENSOR_ACTIVE_S0_S3,
 	 .chip = MOTIONSENSE_CHIP_KXCJ9,
 	 .type = MOTIONSENSE_TYPE_ACCEL,
 	 .location = MOTIONSENSE_LOC_BASE,
@@ -125,7 +125,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 }
 	},
 	{.name = "Lid",
-	 .active_mask = SENSOR_ACTIVE_S0,
+	 .active_mask = SENSOR_ACTIVE_S0_S3,
 	 .chip = MOTIONSENSE_CHIP_KXCJ9,
 	 .type = MOTIONSENSE_TYPE_ACCEL,
 	 .location = MOTIONSENSE_LOC_LID,
@@ -180,3 +180,13 @@ static void motion_sensors_pre_init(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, motion_sensors_pre_init,
 	MOTION_SENSE_HOOK_PRIO - 1);
+
+#ifdef CONFIG_LID_ANGLE_KEY_SCAN
+void track_pad_enable(int enable)
+{
+	if (enable)
+		gpio_set_level(GPIO_TP_INT_DISABLE, 0);
+	else
+		gpio_set_level(GPIO_TP_INT_DISABLE, 1);
+}
+#endif

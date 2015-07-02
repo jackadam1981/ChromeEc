@@ -154,7 +154,7 @@ void motion_lid_calc(void)
 			&lid_angle_deg);
 
 #ifdef CONFIG_LID_ANGLE_KEY_SCAN
-	lidangle_keyscan_update(motion_lid_get_angle());
+	lidangle_update(motion_lid_get_angle());
 #endif
 
 }

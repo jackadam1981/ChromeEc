@@ -13,6 +13,7 @@
 #include "lid_angle.h"
 #include "lid_switch.h"
 #include "motion_sense.h"
+#include "motion_lid.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_LIDANGLE, outstr)
@@ -114,11 +115,10 @@ void lid_angle_set_kb_wake_angle(int ang)
 	kb_wake_large_angle = ang;
 }
 
-void lidangle_keyscan_update(int lid_ang)
+void lidangle_update(int lid_ang)
 {
 	static int lidangle_buffer[KEY_SCAN_LID_ANGLE_BUFFER_SIZE];
 	static int index;
-
 	int i;
 	int keys_accept = 1, keys_ignore = 1;
 
@@ -130,40 +130,31 @@ void lidangle_keyscan_update(int lid_ang)
 	 * Any time the chipset is off, manage whether or not keyboard scanning
 	 * is enabled based on lid angle history.
 	 */
-	if (!chipset_in_state(CHIPSET_STATE_ON)) {
-		for (i = 0; i < KEY_SCAN_LID_ANGLE_BUFFER_SIZE; i++) {
-			/*
-			 * If any lid angle samples are unreliable, then
-			 * don't change keyboard scanning state.
-			 */
-			if (lidangle_buffer[i] == LID_ANGLE_UNRELIABLE)
-				return;
+	for (i = 0; i < KEY_SCAN_LID_ANGLE_BUFFER_SIZE; i++) {
+		/*
+		 * If any lid angle samples are unreliable, then
+		 * don't change keyboard scanning state.
+		 */
+		if (lidangle_buffer[i] == LID_ANGLE_UNRELIABLE)
+			return;
 
-			/*
-			 * Force all elements of the lid angle buffer to be
-			 * in range of one of the conditions in order to change
-			 * to the corresponding key scanning state.
-			 */
-			if (!lid_in_range_to_accept_keys(lidangle_buffer[i]))
-				keys_accept = 0;
-			if (!lid_in_range_to_ignore_keys(lidangle_buffer[i]))
-				keys_ignore = 0;
-		}
+		/*
+		 * Force all elements of the lid angle buffer to be
+		 * in range of one of the conditions in order to change
+		 * to the corresponding key scanning state.
+		 */
+		if (!lid_in_range_to_accept_keys(lidangle_buffer[i]))
+			keys_accept = 0;
+		if (!lid_in_range_to_ignore_keys(lidangle_buffer[i]))
+			keys_ignore = 0;
+	}
 
-		/* Enable or disable keyboard scanning as necessary. */
-		if (keys_accept)
-			keyboard_scan_enable(1, KB_SCAN_DISABLE_LID_ANGLE);
-		else if (keys_ignore && !keys_accept)
-			keyboard_scan_enable(0, KB_SCAN_DISABLE_LID_ANGLE);
+	/* Enable or disable keyboard scanning as necessary. */
+	if (keys_accept) {
+		keyboard_scan_enable(1, KB_SCAN_DISABLE_LID_ANGLE);
+		track_pad_enable(1);
+	} else if (keys_ignore && !keys_accept) {
+		keyboard_scan_enable(0, KB_SCAN_DISABLE_LID_ANGLE);
+		track_pad_enable(0);
 	}
 }
-
-static void enable_keyboard(void)
-{
-	/*
-	 * Make sure lid angle is not disabling keyboard scanning when AP is
-	 * running.
-	 */
-	keyboard_scan_enable(1, KB_SCAN_DISABLE_LID_ANGLE);
-}
-DECLARE_HOOK(HOOK_CHIPSET_RESUME, enable_keyboard, HOOK_PRIO_DEFAULT);
