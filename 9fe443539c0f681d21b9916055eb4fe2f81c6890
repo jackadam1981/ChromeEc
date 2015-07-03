@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "53093ddc_fd310319",
+        "filename": "board/lucid/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-03T00:14:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "130345c0_f85ab150",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 24,
+        "endChar": 27
+      },
+      "revId": "9fe443539c0f681d21b9916055eb4fe2f81c6890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d31c4d21_162f7c45",
         "filename": "board/lucid/battery.c",
         "patchSetId": 1
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "130345c0_9811f5df",
+        "filename": "board/lucid/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-03T00:14:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d31c4d21_162f7c45",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 23
+      },
+      "revId": "9fe443539c0f681d21b9916055eb4fe2f81c6890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f305d1c3_fa83c50c",
         "filename": "board/lucid/board.c",
         "patchSetId": 1
@@ -83,6 +131,30 @@
       "writtenOn": "2015-07-02T00:11:28Z",
       "side": 1,
       "message": "TODO use STM32F072 integrated BC1.2 detection ?",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 54
+      },
+      "revId": "9fe443539c0f681d21b9916055eb4fe2f81c6890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53ae9dfa_5285948b",
+        "filename": "board/lucid/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-03T00:14:24Z",
+      "side": 1,
+      "message": "added TODO down in board_init()",
+      "parentUuid": "f305d1c3_fa83c50c",
       "range": {
         "startLine": 49,
         "startChar": 1,
@@ -130,6 +202,30 @@
       "side": 1,
       "message": "stm32, which isn\u0027t implemented. that\u0027s a copy/paste mistake. I\u0027ll add a TODO.",
       "parentUuid": "33b12958_d17ea45f",
+      "range": {
+        "startLine": 97,
+        "startChar": 19,
+        "endLine": 97,
+        "endChar": 27
+      },
+      "revId": "9fe443539c0f681d21b9916055eb4fe2f81c6890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53093ddc_dd36bf0e",
+        "filename": "board/lucid/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-03T00:14:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "130345c0_58191da7",
       "range": {
         "startLine": 97,
         "startChar": 19,
@@ -236,6 +332,30 @@
     },
     {
       "key": {
+        "uuid": "b3eef934_bdebff74",
+        "filename": "board/lucid/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-03T00:14:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53ae9dfa_721c1899",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 23
+      },
+      "revId": "9fe443539c0f681d21b9916055eb4fe2f81c6890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3ba3136_efe5c19e",
         "filename": "board/lucid/gpio.inc",
         "patchSetId": 1
@@ -247,6 +367,30 @@
       "writtenOn": "2015-07-02T00:11:28Z",
       "side": 1,
       "message": "_DSLEEP is not a thing on this platform ?",
+      "range": {
+        "startLine": 9,
+        "startChar": 54,
+        "endLine": 9,
+        "endChar": 61
+      },
+      "revId": "9fe443539c0f681d21b9916055eb4fe2f81c6890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53ae9dfa_b20cc0c9",
+        "filename": "board/lucid/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-03T00:14:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3ba3136_efe5c19e",
       "range": {
         "startLine": 9,
         "startChar": 54,
@@ -329,6 +473,30 @@
     },
     {
       "key": {
+        "uuid": "53093ddc_3d4c1b94",
+        "filename": "board/lucid/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-03T00:14:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3ba3136_0f7be59f",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 9
+      },
+      "revId": "9fe443539c0f681d21b9916055eb4fe2f81c6890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7311e108_731520f3",
         "filename": "board/lucid/usb_pd_config.h",
         "patchSetId": 1
@@ -340,6 +508,30 @@
       "writtenOn": "2015-07-02T00:11:28Z",
       "side": 1,
       "message": "just registers.h",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "9fe443539c0f681d21b9916055eb4fe2f81c6890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53ae9dfa_9211bcdf",
+        "filename": "board/lucid/usb_pd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-03T00:14:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7311e108_731520f3",
       "range": {
         "startLine": 7,
         "startChar": 10,
@@ -399,6 +591,30 @@
     },
     {
       "key": {
+        "uuid": "b3eef934_9df0c35e",
+        "filename": "board/lucid/usb_pd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-03T00:14:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53ae9dfa_521914a7",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "9fe443539c0f681d21b9916055eb4fe2f81c6890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d31c4d21_168bfca5",
         "filename": "board/lucid/usb_pd_config.h",
         "patchSetId": 1
@@ -446,6 +662,30 @@
     },
     {
       "key": {
+        "uuid": "130345c0_f81631d3",
+        "filename": "board/lucid/usb_pd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-03T00:14:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73f801fb_5b18037c",
+      "range": {
+        "startLine": 52,
+        "startChar": 19,
+        "endLine": 52,
+        "endChar": 49
+      },
+      "revId": "9fe443539c0f681d21b9916055eb4fe2f81c6890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7311e108_b3605889",
         "filename": "board/lucid/usb_pd_policy.c",
         "patchSetId": 1
@@ -481,6 +721,30 @@
       "side": 1,
       "message": "yes, will remove",
       "parentUuid": "7311e108_b3605889",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 19
+      },
+      "revId": "9fe443539c0f681d21b9916055eb4fe2f81c6890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "130345c0_d81b6dfb",
+        "filename": "board/lucid/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-03T00:14:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53093ddc_da0b652d",
       "range": {
         "startLine": 6,
         "startChar": 0,
@@ -575,6 +839,30 @@
       "side": 1,
       "message": "will remove",
       "parentUuid": "f3ba3136_2f750942",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 8
+      },
+      "revId": "9fe443539c0f681d21b9916055eb4fe2f81c6890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53ae9dfa_f21648d3",
+        "filename": "board/lucid/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-03T00:14:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53ae9dfa_b2504033",
       "range": {
         "startLine": 166,
         "startChar": 0,
