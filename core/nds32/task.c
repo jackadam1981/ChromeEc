@@ -378,10 +378,12 @@ void mutex_lock(struct mutex *mtx)
 		if (!mtx->lock) { /* we got it ! */
 			mtx->lock = 2;
 			mtx->waiters &= ~id;
-			/* end of critical section : re-enable interrupts */
-			asm volatile ("setgie.e");
+			/* just return, if we are in interrupt context. */
+			if (!in_interrupt_context())
+				asm volatile ("setgie.e");
 			return;
 		} else { /* Contention on the mutex */
+			ASSERT(!in_interrupt_context());
 			/* end of critical section : re-enable interrupts */
 			asm volatile ("setgie.e");
 			/* Sleep waiting for our turn */
