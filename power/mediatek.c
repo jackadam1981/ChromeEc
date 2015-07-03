@@ -179,6 +179,16 @@ static void set_system_power(int asserted)
 }
 
 /**
+ * Check the power signal.
+ * @return non-zero if SUSPEND asserted or lost power.
+ */
+static int is_suspend_or_poweroff(void)
+{
+	return (power_get_signals() & IN_SUSPEND ||
+		!(power_get_signals() & IN_POWER_GOOD));
+}
+
+/**
  * Set the PMIC PWRON signal.
  *
  * Note that asserting requires holding for PMIC_PWRON_DEBOUNCE_TIME.
@@ -211,15 +221,27 @@ static void set_pmic_pwron(int asserted)
 }
 
 /**
- * Set the PMIC WARM RESET signal.
+ * Set the WARM RESET signal.
  *
- * @param asserted	Resetting (=0) or idle (=1)
+ * PMIC_WARM_RESET_H (PB3) is stuffed before rev < 3 and connected to PMIC RESET
+ * After rev >= 3, this is removed. This should not effected the new board.
+ *
+ * AP_RESET_L (PC3, CPU_WARM_RESET_L) is stuffed after rev >= 3
+ * and connected to PMIC SYSRSTB
+ *
+ * @param asserted	off (=0) or on (=1)
  */
-static void set_pmic_warm_reset(int asserted)
+static void set_warm_reset(int asserted)
 {
-	/* Signal is active-high */
-	/* @param asserted: Resetting (=0) or idle (=1) */
-	gpio_set_level(GPIO_PMIC_WARM_RESET_H, asserted);
+	if (system_get_board_version() < 3) {
+		/* Signal is active-high */
+		CPRINTS("pmic warm reset(%d)", asserted);
+		gpio_set_level(GPIO_PMIC_WARM_RESET_H, asserted);
+	} else {
+		/* Signal is active-low */
+		CPRINTS("ap warm reset(%d)", asserted);
+		gpio_set_level(GPIO_AP_RESET_L, !asserted);
+	}
 }
 
 /**
@@ -490,12 +512,14 @@ static void power_on(void)
 {
 	uint64_t t;
 
+	CPRINTS("Board version: %d", system_get_board_version());
+
 	/* Set pull-up and enable interrupt */
 	gpio_set_flags(power_signal_list[MTK_SUSPEND_ASSERTED].gpio,
 		       GPIO_INPUT | GPIO_PULL_UP | GPIO_INT_BOTH);
 
 	/* Make sure we de-assert and GPIO_PMIC_WARM_RESET_H pin. */
-	set_pmic_warm_reset(0);
+	set_warm_reset(0);
 
 	/*
 	 * Before we push PMIC power button, wait for the PMI RTC ready, which
@@ -576,10 +600,10 @@ void chipset_reset(int is_cold)
 		set_pmic_pwron(0);
 	} else {
 		CPRINTS("EC triggered warm reboot");
-		set_pmic_warm_reset(1);
+		set_warm_reset(1);
 		usleep(PMIC_WARM_RESET_H_HOLD_TIME);
 		/* deassert the reset signals */
-		set_pmic_warm_reset(0);
+		set_warm_reset(0);
 	}
 }
 
@@ -654,14 +678,14 @@ enum power_state power_handle_state(enum power_state state)
 			CPRINTS("power off %d", value);
 			power_off();
 			return POWER_S0S3;
-		} else if (power_get_signals() & IN_SUSPEND) {
+		} else if (is_suspend_or_poweroff()) {
 			/*
 			 * add susuend signal debounce:
 			 * check suspend signal after 50ms, to avoid
 			 * transient state during SoC boot up.
 			 */
 			usleep(SUSPEND_DEBOUNCE_TIME);
-			if (power_get_signals() & IN_SUSPEND)
+			if (is_suspend_or_poweroff())
 				return POWER_S0S3;
 		}
 		return state;
