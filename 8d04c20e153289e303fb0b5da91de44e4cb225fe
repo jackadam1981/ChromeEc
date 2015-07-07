@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "731ba15b_866a4c98",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-07-07T15:46:10Z",
+      "side": 1,
+      "message": "I\u0027m fine with putting this in to unblock the labs as a short-term fix, if we add above BOARDS_STM32:\n\n# TODO(crbug.com/505003): Remove jerry, which is only present\n# as a short-term fix until servod overlays for non-ToT boards\n# are working in the test lab.\n\nThat is, we\u0027re clearly indicating this is a workaround, not the recommended long-term fix or a pattern to be copied for other boards.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 6
+      },
+      "revId": "8d04c20e153289e303fb0b5da91de44e4cb225fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
