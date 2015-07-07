@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93201584_673f0c41",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-07T15:07:44Z",
+      "side": 1,
+      "message": "this doesn\u0027t need to be in this struct as it is only used in the state machine, it can simply be a local var to pd_task()",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 19
+      },
+      "revId": "99ee84274fb19d9f02269547201a331376093ccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3260d9c_86eb2a75",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1575,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-07T15:07:44Z",
+      "side": 1,
+      "message": "also need to clear this in PD_STATE_SNK_SWAP_COMPLETE when finished swapping from sink to source. although in that case, we actually don\u0027t care about getting sink cap, at least not yet. so, actually, in that state I think it\u0027s more appropriate to set the snk_cap_count to 3 and add comment about not wanting sink cap once we switch because we already have the PDO flags from the source cap packet.",
+      "range": {
+        "startLine": 1575,
+        "startChar": 4,
+        "endLine": 1575,
+        "endChar": 31
+      },
+      "revId": "99ee84274fb19d9f02269547201a331376093ccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b3219987_a89e33e4",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1695,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-07T15:07:44Z",
+      "side": 1,
+      "message": "nit: by our style guide if the if statement is multiline, then the else statement also needs {}",
+      "range": {
+        "startLine": 1695,
+        "startChar": 4,
+        "endLine": 1695,
+        "endChar": 8
+      },
+      "revId": "99ee84274fb19d9f02269547201a331376093ccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3260d9c_66e0ee91",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1696,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-07T15:07:44Z",
+      "side": 1,
+      "message": "avoiding long prints is critical to timing here. suggest gating by debug_level:\nif (debug_level \u003e\u003d 1)\nalso, some of our platforms are extremely low on flash, i suggest something shorter like:\nCPRINTF(\"ERR SNK_CAP\\n\");",
+      "range": {
+        "startLine": 1696,
+        "startChar": 5,
+        "endLine": 1696,
+        "endChar": 47
+      },
+      "revId": "99ee84274fb19d9f02269547201a331376093ccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
