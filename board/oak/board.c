@@ -242,6 +242,9 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_VBUS_WAKE_L);
 #endif
 
+	/* Reset PD MCU */
+	board_reset_pd_mcu();
+
 	charge_none.voltage = USB_BC12_CHARGE_VOLTAGE;
 	charge_none.current = 0;
 	charge_vbus.voltage = USB_BC12_CHARGE_VOLTAGE;
