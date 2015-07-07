@@ -53,9 +53,18 @@
 
 void vbus_wake_interrupt(enum gpio_signal signal)
 {
+	int pd_vbus_wake;
+
 	CPRINTF("VBUS %d\n", !gpio_get_level(signal));
-	gpio_set_level(GPIO_USB_PD_VBUS_WAKE,
-		       !gpio_get_level(GPIO_VBUS_WAKE_L));
+
+#ifdef CONFIG_BOARD_OAK_REV_3
+	pd_vbus_wake = !gpio_get_level(GPIO_C0_VBUS_WAKE_L) |
+		       !gpio_get_level(GPIO_C1_VBUS_WAKE_L);
+#else
+	pd_vbus_wake = !gpio_get_level(signal);
+#endif
+
+	gpio_set_level(GPIO_USB_PD_VBUS_WAKE, pd_vbus_wake);
 	/*
 	 * TODO(crosbug.com/p/41226):
 	 *   rev1/rev2 boards don't have vbus input on ec. vbus_wake is a
@@ -64,8 +73,13 @@ void vbus_wake_interrupt(enum gpio_signal signal)
 	 *   hardware fix will be in rev3.
 	 *   enable TCPC POWER_STATUS ALERT1 can solve this issue too.
 	 */
+#ifdef CONFIG_BOARD_OAK_REV_3
+	task_wake(signal == GPIO_C0_VBUS_WAKE_L ? TASK_ID_PD_C0 :
+			TASK_ID_PD_C1);
+#else
 	task_wake(TASK_ID_PD_C0);
 	task_wake(TASK_ID_PD_C1);
+#endif
 }
 
 void pd_mcu_interrupt(enum gpio_signal signal)
@@ -221,7 +235,12 @@ static void board_init(void)
 	/* Enable PD MCU interrupt */
 	gpio_enable_interrupt(GPIO_PD_MCU_INT);
 	/* Enable VBUS interrupt */
+#ifdef CONFIG_BOARD_OAK_REV_3
+	gpio_enable_interrupt(GPIO_C0_VBUS_WAKE_L);
+	gpio_enable_interrupt(GPIO_C1_VBUS_WAKE_L);
+#else
 	gpio_enable_interrupt(GPIO_VBUS_WAKE_L);
+#endif
 
 	charge_none.voltage = USB_BC12_CHARGE_VOLTAGE;
 	charge_none.current = 0;
