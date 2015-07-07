@@ -128,7 +128,12 @@ void typec_set_input_current_limit(int port, uint32_t max_ma,
 
 int pd_snk_is_vbus_provided(int port)
 {
+#ifdef CONFIG_BOARD_OAK_REV_3
+	return !gpio_get_level(GPIO_C0_VBUS_WAKE_L) |
+	       !gpio_get_level(GPIO_C1_VBUS_WAKE_L);
+#else
 	return !gpio_get_level(GPIO_VBUS_WAKE_L);
+#endif
 }
 
 int pd_board_checks(void)

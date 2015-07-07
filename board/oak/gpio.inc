@@ -11,7 +11,14 @@ GPIO_INT(POWER_BUTTON_L, PIN(B, 5),  GPIO_INT_BOTH | GPIO_PULL_UP,      power_bu
 GPIO_INT(SOC_POWER_GOOD, PIN(A, 3),  GPIO_INT_BOTH | GPIO_PULL_DOWN,    power_signal_interrupt)
 GPIO_INT(LID_OPEN,       PIN(C, 13), GPIO_INT_BOTH,                     lid_interrupt)          /* LID switch detection */
 GPIO_INT(SUSPEND_L,      PIN(C, 7),  GPIO_INT_BOTH | GPIO_PULL_DOWN,    power_signal_interrupt) /* AP suspend/resume state */
-GPIO_INT(VBUS_WAKE_L,    PIN(E, 1),  GPIO_INT_BOTH,                     vbus_wake_interrupt)    /* VBUS wake: PE 1 */
+
+#ifdef CONFIG_BOARD_OAK_REV_3
+GPIO_INT(C0_VBUS_WAKE_L, PIN(E, 1),  GPIO_INT_BOTH,                     vbus_wake_interrupt)    /* C0 VBUS wake: PE 1 */
+GPIO_INT(C1_VBUS_WAKE_L, PIN(F, 2),  GPIO_INT_BOTH,                     vbus_wake_interrupt)    /* C1 VBUS wake: PF 2 */
+#else
+GPIO_INT(VBUS_WAKE_L,    PIN(E, 1),  GPIO_INT_BOTH,                     vbus_wake_interrupt)    /* rev1/2 VBUS wake: PE 1 */
+#endif
+
 GPIO_INT(PD_MCU_INT,     PIN(E, 0),  GPIO_INT_FALLING | GPIO_INT_DSLEEP,pd_mcu_interrupt)       /* Signal from PD MCU, external pull-up */
 GPIO_INT(SPI1_NSS,       PIN(A, 4),  GPIO_INT_BOTH | GPIO_PULL_UP,      spi_event)              /* SPI Chip Select */
 
