@@ -45,6 +45,53 @@
       "revId": "c0cc29ca1715b125c6ec898bfd37137641eea8a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f356b1ec_5ec739a6",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-07-07T22:22:48Z",
+      "side": 1,
+      "message": "Yes.  This should trigger rescheduling, so the tasks actually get scheduled.  Otherwise, they\u0027ll do their inits in whatever order their interrupts come in.",
+      "parentUuid": "135425e3_aa7f035e",
+      "range": {
+        "startLine": 157,
+        "startChar": 1,
+        "endLine": 157,
+        "endChar": 40
+      },
+      "revId": "c0cc29ca1715b125c6ec898bfd37137641eea8a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f356b1ec_3e535563",
+        "filename": "include/task.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-07-07T22:22:48Z",
+      "side": 1,
+      "message": "This isn\u0027t enforced by the implementations.\n\nIf a HOOK_INIT enables an interrupt handler, and that handler sets an event for a task, that task will run even though this function hasn\u0027t been called.\n\nSo really, this is marking any remaining tasks as ready to run.\n\nAnd, if a task *did* get an interrupt during HOOK_INIT processing, it\u0027s marking that task as ready to run again, even though now it\u0027s gone to sleep waiting for some event or delay.  Most tasks should be tolerant of that.\n\nThat\u0027s probably ok, but we should update the comment.",
+      "range": {
+        "startLine": 187,
+        "startChar": 53,
+        "endLine": 188,
+        "endChar": 24
+      },
+      "revId": "c0cc29ca1715b125c6ec898bfd37137641eea8a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
