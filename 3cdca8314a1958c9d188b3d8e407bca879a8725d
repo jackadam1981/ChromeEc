@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5e6dc2eb_9dfca737",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-07T22:47:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9262c9c_ef13d193",
+      "range": {
+        "startLine": 54,
+        "startChar": 3,
+        "endLine": 54,
+        "endChar": 21
+      },
+      "revId": "3cdca8314a1958c9d188b3d8e407bca879a8725d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "393668c8_ef34b56a",
         "filename": "common/motion_sense.c",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2015-06-18T00:25:52Z",
       "side": 1,
       "message": "parsing error",
+      "range": {
+        "startLine": 55,
+        "startChar": 3,
+        "endLine": 55,
+        "endChar": 17
+      },
+      "revId": "3cdca8314a1958c9d188b3d8e407bca879a8725d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e9c462a_9ea019f2",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-07T22:47:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "393668c8_ef34b56a",
       "range": {
         "startLine": 55,
         "startChar": 3,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "5e6dc2eb_1d1e571f",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-07T22:47:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99203484_87fec87b",
+      "range": {
+        "startLine": 57,
+        "startChar": 13,
+        "endLine": 57,
+        "endChar": 17
+      },
+      "revId": "3cdca8314a1958c9d188b3d8e407bca879a8725d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99203484_e7777c7b",
         "filename": "common/motion_sense.c",
         "patchSetId": 7
@@ -82,6 +154,30 @@
       "writtenOn": "2015-06-18T00:25:52Z",
       "side": 1,
       "message": "strangely I would have called this function \"get_fifo_info\" rather than \"set_fifo_info\"",
+      "range": {
+        "startLine": 124,
+        "startChar": 12,
+        "endLine": 124,
+        "endChar": 38
+      },
+      "revId": "3cdca8314a1958c9d188b3d8e407bca879a8725d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e7adaa8_d7443e1d",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-07T22:47:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99203484_e7777c7b",
       "range": {
         "startLine": 124,
         "startChar": 12,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "7e9c462a_9e7579f5",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-07T22:47:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "192d2477_2b208528",
+      "range": {
+        "startLine": 284,
+        "startChar": 1,
+        "endLine": 284,
+        "endChar": 18
+      },
+      "revId": "3cdca8314a1958c9d188b3d8e407bca879a8725d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be4dde87_65dfe64d",
         "filename": "common/motion_sense.c",
         "patchSetId": 7
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "7e9c462a_41de364f",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-07T22:47:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be4dde87_65dfe64d",
+      "range": {
+        "startLine": 658,
+        "startChar": 2,
+        "endLine": 659,
+        "endChar": 25
+      },
+      "revId": "3cdca8314a1958c9d188b3d8e407bca879a8725d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "192d2477_cbba895f",
         "filename": "include/motion_sense.h",
         "patchSetId": 7
@@ -151,6 +295,30 @@
       "writtenOn": "2015-06-18T00:25:52Z",
       "side": 1,
       "message": "nit: the whitespace here is not consistent with the rest of the struct fields",
+      "range": {
+        "startLine": 60,
+        "startChar": 4,
+        "endLine": 60,
+        "endChar": 8
+      },
+      "revId": "3cdca8314a1958c9d188b3d8e407bca879a8725d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e6dc2eb_1d6c177f",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-07T22:47:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "192d2477_cbba895f",
       "range": {
         "startLine": 60,
         "startChar": 4,
