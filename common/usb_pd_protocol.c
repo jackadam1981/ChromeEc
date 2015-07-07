@@ -128,6 +128,8 @@ static struct pd_protocol {
 	/* Store previously requested voltage request */
 	int prev_request_mv;
 #endif
+	/* retry count for unresponded Sink Capability message */
+	int snk_cap_count;
 
 	/* PD state for Vendor Defined Messages */
 	enum vdm_states vdm_state;
@@ -1570,6 +1572,7 @@ void pd_task(void)
 				/* reset various counters */
 				caps_count = 0;
 				pd[port].msg_id = 0;
+				pd[port].snk_cap_count = 0;
 				set_state_timeout(
 					port,
 #ifdef CONFIG_USBC_BACKWARDS_COMPATIBLE_DFP
@@ -1671,9 +1674,6 @@ void pd_task(void)
 		case PD_STATE_SRC_READY:
 			timeout = PD_T_SOURCE_ACTIVITY;
 
-			if (pd[port].last_state != pd[port].task_state)
-				pd[port].flags |= PD_FLAGS_GET_SNK_CAP_SENT;
-
 			/*
 			 * Don't send any PD traffic if we woke up due to
 			 * incoming packet or if VDO response pending to avoid
@@ -1684,13 +1684,16 @@ void pd_task(void)
 				break;
 
 			/* Send get sink cap if haven't received it yet */
-			if ((pd[port].flags & PD_FLAGS_GET_SNK_CAP_SENT) &&
+			if (pd[port].last_state != pd[port].task_state &&
 			    !(pd[port].flags & PD_FLAGS_SNK_CAP_RECVD)) {
 				/* Get sink cap to know if dual-role device */
-				send_control(port, PD_CTRL_GET_SINK_CAP);
-				set_state(port, PD_STATE_SRC_GET_SINK_CAP);
-				pd[port].flags &= ~PD_FLAGS_GET_SNK_CAP_SENT;
-				break;
+				if (++pd[port].snk_cap_count <= 3) {
+					send_control(port, PD_CTRL_GET_SINK_CAP);
+					set_state(port, PD_STATE_SRC_GET_SINK_CAP);
+					break;
+				}
+				else
+					CPRINTF("ERR SNK_CAP no reply: %d\n", pd[port].snk_cap_count);
 			}
 
 			/* Check power role policy, which may trigger a swap */
