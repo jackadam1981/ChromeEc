@@ -158,8 +158,8 @@ enum power_state power_handle_state(enum power_state state)
 
 	case POWER_S5S3:
 		/* Turn on the USB power */
-		gpio_set_level(GPIO_USB2_PWR_EN, 1);
-		gpio_set_level(GPIO_USB3_PWR_EN, 1);
+		gpio_set_level(GPIO_USB1_ENABLE, 1);
+		gpio_set_level(GPIO_USB2_ENABLE, 1);
 
 		/* Call hooks now that rails are up */
 		hook_notify(HOOK_CHIPSET_STARTUP);
@@ -284,8 +284,8 @@ enum power_state power_handle_state(enum power_state state)
 
 	case POWER_S3S5:
 		/* Turn off the USB power */
-		gpio_set_level(GPIO_USB2_PWR_EN, 0);
-		gpio_set_level(GPIO_USB3_PWR_EN, 0);
+		gpio_set_level(GPIO_USB1_ENABLE, 0);
+		gpio_set_level(GPIO_USB2_ENABLE, 0);
 
 		/* Call hooks before we remove power rails */
 		hook_notify(HOOK_CHIPSET_SHUTDOWN);
