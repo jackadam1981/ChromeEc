@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "736d61b3_6bd6dcba",
+        "filename": "driver/accel_kxcj9.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-07T23:56:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f80dae2c_7a353566",
+      "range": {
+        "startLine": 407,
+        "startChar": 4,
+        "endLine": 407,
+        "endChar": 50
+      },
+      "revId": "2a52cb116a7ec11df5a613059040db184ac57fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f356b1ec_d8842160",
         "filename": "driver/accel_kxcj9.c",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2015-07-07T17:10:41Z",
       "side": 1,
       "message": "should we be setting offsets to 0 here in init?",
+      "revId": "2a52cb116a7ec11df5a613059040db184ac57fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "736d61b3_8bfa5838",
+        "filename": "driver/accel_kxcj9.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-07T23:56:28Z",
+      "side": 1,
+      "message": "data being a global (g_saved_data), it will be done for you.",
+      "parentUuid": "f356b1ec_d8842160",
       "revId": "2a52cb116a7ec11df5a613059040db184ac57fbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
