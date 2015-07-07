@@ -53,4 +53,10 @@
 #define GPIO_PIN(port, index) GPIO_##port, (1 << index)
 #define GPIO_PIN_MASK(port, mask) GPIO_##port, (mask)
 
+/* Num of SPI ports */
+#define SPI_PORT_COUNT 1
+
+/* SPS loopback test: SPI tx --> SPS rx --> SPS tx -->SPI rx */
+/* #define __SPI_SPS_LOOPBACK_TEST__ */
+
 #endif /* __CROS_EC_CONFIG_CHIP_H */
