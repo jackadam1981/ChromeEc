@@ -19,6 +19,8 @@ enum sps_mode {
 	SPS_UNDEF_MODE = 3,
 };
 
+#define SPS_FIFO_THRESHOLD 127
+
 #define SPS_FIFO_SIZE		(1 << 10)
 #define SPS_FIFO_MASK		(SPS_FIFO_SIZE - 1)
 /*
@@ -152,12 +154,11 @@ static void sps_enable(void)
 	GWRITE_FIELD(SPS, FIFO_CTRL, TXFIFO_EN, 1);
 
 	/*
-	 * Wait until we have a few bytes in the FIFO before waking up. Note
-	 * that if the master wants to read bytes from us, it may have to clock
-	 * in at least RXFIFO_THRESHOLD + 1 bytes before we notice that it's
-	 * asking.
+	 * SPS_FIFO_THRESHOLD: means an interrupt is generated
+	 * if SPS_FIFO_THRESHOLD+1 bytes are transferred.
 	 */
-	GREG32(SPS, RXFIFO_THRESHOLD) = 8;
+	GREG32(SPS, RXFIFO_THRESHOLD) = SPS_FIFO_THRESHOLD;
+	GREG32(SPS, TXFIFO_THRESHOLD) = SPS_FIFO_THRESHOLD;
 	GWRITE_FIELD(SPS, ICTRL, RXFIFO_LVL, 1);
 
 	/* Also wake up when the master has finished talking to us, so we can
@@ -247,10 +248,17 @@ void sps_register_rx_handler(rx_handler_fn func)
 	task_enable_irq(GC_IRQNUM_SPS0_CS_DEASSERT_INTR);
 }
 
+#ifdef __SPI_SPS_LOOPBACK_TEST__
+extern void sps_loopback(uint8_t *data,
+		size_t data_size, int cs_status);
+#endif
 /* At reset the SPS module is initialized, but not enabled */
 static void sps_init(void)
 {
 	pmu_clock_en(PERIPH_SPS);
 	sps_unregister_rx_handler();
+#ifdef __SPI_SPS_LOOPBACK_TEST__
+	sps_register_rx_handler(sps_loopback);
+#endif
 }
 DECLARE_HOOK(HOOK_INIT, sps_init, HOOK_PRIO_INIT_CHIPSET);
