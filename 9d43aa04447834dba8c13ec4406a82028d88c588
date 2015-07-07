@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7e9c462a_07c58c9b",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-07T22:47:22Z",
+      "side": 1,
+      "message": "Android will not ask for more than 1000Hz. In case the user asks for no batch and max frequency, we can expect to poll every ms. But 100Hz for accel/gyro is already fast.",
+      "parentUuid": "9e7adaa8_0f0376cc",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 33
+      },
+      "revId": "9d43aa04447834dba8c13ec4406a82028d88c588",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e700ec3_d6a0b5f2",
         "filename": "common/motion_sense.c",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2015-06-19T21:26:41Z",
       "side": 1,
       "message": "that\u0027s a clever trick to prevent people from grepping your TODO. at least for N00Bs",
+      "range": {
+        "startLine": 55,
+        "startChar": 3,
+        "endLine": 55,
+        "endChar": 7
+      },
+      "revId": "9d43aa04447834dba8c13ec4406a82028d88c588",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5efea270_d54baea5",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-07T22:47:22Z",
+      "side": 1,
+      "message": "fixed. no n00bs here anyway.",
+      "parentUuid": "3e700ec3_d6a0b5f2",
       "range": {
         "startLine": 55,
         "startChar": 3,
