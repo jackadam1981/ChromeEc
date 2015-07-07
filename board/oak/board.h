@@ -137,9 +137,9 @@ enum pwm_channel {
 };
 
 enum adc_channel {
-	ADC_VBUS = 0,
-	ADC_PSYS,
-	ADC_AMON_BMON,
+	ADC_PSYS = 0,  /* PC1: STM32_AIN(2) */
+	ADC_AMON_BMON, /* PC0: STM32_AIN(10) */
+	ADC_VBUS,      /* PA2: STM32_AIN(11) */
 	ADC_CH_COUNT
 };
 
