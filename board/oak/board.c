@@ -5,6 +5,7 @@
 
 /* Oak board configuration */
 
+#include "adc.h"
 #include "adc_chip.h"
 #include "battery.h"
 #include "charge_manager.h"
@@ -13,6 +14,7 @@
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
+#include "driver/charger/isl9237.h"
 #include "driver/temp_sensor/tmp432.h"
 #include "extpower.h"
 #include "gpio.h"
@@ -76,8 +78,6 @@ BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 
 /* ADC channels */
 const struct adc_t adc_channels[] = {
-	/* VDC_BOOSTIN_SENSE(PC1): ADC_IN11, output in mV */
-	[ADC_VBUS] = {"VBUS", 33000, 4096, 0, STM32_AIN(11)},
 	/*
 	 * PSYS_MONITOR(PA2): ADC_IN2, 1.44 uA/W on 6.05k Ohm
 	 * output in mW
@@ -85,6 +85,8 @@ const struct adc_t adc_channels[] = {
 	[ADC_PSYS] = {"PSYS", 379415, 4096, 0, STM32_AIN(2)},
 	/* AMON_BMON(PC0): ADC_IN10, output in uV */
 	[ADC_AMON_BMON] = {"AMON_BMON", 183333, 4096, 0, STM32_AIN(10)},
+	/* VDC_BOOSTIN_SENSE(PC1): ADC_IN11, output in mV */
+	[ADC_VBUS] = {"VBUS", 33000, 4096, 0, STM32_AIN(11)},
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
@@ -321,6 +323,55 @@ void board_typec_dp_set(int port, int level)
 
 	mutex_unlock(&dp_hw_lock);
 }
+
+#if BOARD_REV > OAK_REV1
+/**
+ * Get charger AMON and BMON current.
+ */
+static int console_command_amon_bmon(int argc, char **argv)
+{
+	int adc, curr, val, ret;
+
+	ret = i2c_read16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER,
+			 ISL9237_REG_CONTROL1, &val);
+	if (ret)
+		return ret;
+
+	/* Enable monitor */
+	val &= ~ISL9237_C1_DISABLE_MON;
+	if (argc == 1 || (argc >= 2 && argv[1][0] == 'a')) {
+		/* Switch to AMON */
+		val &= ~ISL9237_C1_SELECT_BMON;
+		ret = i2c_write16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER,
+				  ISL9237_REG_CONTROL1, val);
+		if (ret)
+			return ret;
+
+		adc = adc_read_channel(ADC_AMON_BMON);
+		curr = adc / CONFIG_CHARGER_SENSE_RESISTOR_AC;
+		CPRINTF("AMON: %d uV, %d mA\n", adc, curr);
+	}
+
+	if (argc == 1 || (argc >= 2 && argv[1][0] == 'b')) {
+		/* Switch to BMON */
+		val |= ISL9237_C1_SELECT_BMON;
+		ret = i2c_write16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER,
+				  ISL9237_REG_CONTROL1, val);
+		if (ret)
+			return ret;
+
+		adc = adc_read_channel(ADC_AMON_BMON);
+		curr = adc / CONFIG_CHARGER_SENSE_RESISTOR;
+		CPRINTF("BMON: %d uV, %d mA\n", adc, curr);
+	}
+
+	return ret;
+}
+DECLARE_CONSOLE_COMMAND(amonbmon, console_command_amon_bmon,
+			"amonbmon [a|b]",
+			"Get charger AMON/BMON voltage diff, current",
+			NULL);
+#endif /* BOARD_REV > OAK_REV1 */
 
 #ifndef CONFIG_AP_WARM_RESET_INTERRUPT
 /* Using this hook if system doesn't have enough external line. */
