@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "981e7258_d492dc5d",
+        "filename": "common/extpower_kip.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1116180
+      },
+      "writtenOn": "2015-07-07T02:00:10Z",
+      "side": 1,
+      "message": "(system_get_board_version() \u0026 0x4) \u003d 0x4 ?",
+      "revId": "6c4f587700dfaee3e3699ca33fbcb3e870210a85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
