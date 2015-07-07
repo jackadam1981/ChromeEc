@@ -91,6 +91,30 @@
       "revId": "ab0593e8bdfeef2d401bc80f41212b0a5f6548ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "736d61b3_90460571",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1826,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-07-07T23:10:00Z",
+      "side": 1,
+      "message": "Ah, I think what he\u0027s saying is that the temperature is encoded in the value so T \u003d 20 + value * 60 / 0x7fff.\n\nBut yes, it\u0027d be nicer to do the conversion in the EC so this is just degrees; that\u0027s more likely to be portable to other sensors.  Most temp sensors are only accurate to within a degree anyway.  And then define a constant for the unknown value:\n\n#define MOTIONSENSOR_CAL_TEMP_UNKNOWN 0x8000\n\n(or 0x80, if you use int8_t for temperature)",
+      "parentUuid": "135425e3_7f023b3f",
+      "range": {
+        "startLine": 1821,
+        "startChar": 0,
+        "endLine": 1826,
+        "endChar": 16
+      },
+      "revId": "ab0593e8bdfeef2d401bc80f41212b0a5f6548ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
