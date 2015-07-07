@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "135425e3_9f2d1fd3",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-07T16:55:52Z",
+      "side": 1,
+      "message": "if ((in-\u003esensor_offset.flags \u0026 0x1)",
+      "range": {
+        "startLine": 501,
+        "startChar": 3,
+        "endLine": 501,
+        "endChar": 47
+      },
+      "revId": "ab0593e8bdfeef2d401bc80f41212b0a5f6548ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f80dae2c_ba7d0d2a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1817,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-07T16:55:52Z",
+      "side": 1,
+      "message": "suggest making mask macros for various flag bits",
+      "range": {
+        "startLine": 1815,
+        "startChar": 3,
+        "endLine": 1817,
+        "endChar": 6
+      },
+      "revId": "ab0593e8bdfeef2d401bc80f41212b0a5f6548ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "135425e3_2456ea52",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1820,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-07T16:55:52Z",
+      "side": 1,
+      "message": "nit: first line of comment should be empty",
+      "range": {
+        "startLine": 1820,
+        "startChar": 3,
+        "endLine": 1820,
+        "endChar": 32
+      },
+      "revId": "ab0593e8bdfeef2d401bc80f41212b0a5f6548ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "135425e3_7f023b3f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1826,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-07T16:55:52Z",
+      "side": 1,
+      "message": "these discrete temperature values seem pretty random, why do we have to encode various temperatures? can\u0027t we just say this is the temperature in degrees C?\n\ni\u0027m not sure that we really need temperature at all, we typically do calibration once at the factory, which will certainly never by -40C or 80C. seems simpler to assume the calibration is always done ~20C.",
+      "range": {
+        "startLine": 1821,
+        "startChar": 0,
+        "endLine": 1826,
+        "endChar": 16
+      },
+      "revId": "ab0593e8bdfeef2d401bc80f41212b0a5f6548ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
