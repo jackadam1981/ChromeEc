@@ -22,6 +22,30 @@
       "revId": "994c6fa993660614b3857d264f95b87598773248",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93201584_73126a0d",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-07-08T21:54:13Z",
+      "side": 1,
+      "message": "Ah, I see. Thanks for the correction.",
+      "parentUuid": "58e87a65_0b2385e2",
+      "range": {
+        "startLine": 423,
+        "startChar": 1,
+        "endLine": 423,
+        "endChar": 19
+      },
+      "revId": "994c6fa993660614b3857d264f95b87598773248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
