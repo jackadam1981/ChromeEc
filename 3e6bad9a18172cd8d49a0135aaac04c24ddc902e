@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3219987_2eaa4b5d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1688,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-08T14:56:34Z",
+      "side": 1,
+      "message": "you should turn this into a macro, then you can use that macro + 1 on line 1694 and 2175",
+      "range": {
+        "startLine": 1688,
+        "startChar": 27,
+        "endLine": 1688,
+        "endChar": 28
+      },
+      "revId": "3e6bad9a18172cd8d49a0135aaac04c24ddc902e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "58e87a65_68657797",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1694,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-08T14:56:34Z",
+      "side": 1,
+      "message": "nit: style is to put these on same line:\n} else if (...) {",
+      "range": {
+        "startLine": 1693,
+        "startChar": 4,
+        "endLine": 1694,
+        "endChar": 11
+      },
+      "revId": "3e6bad9a18172cd8d49a0135aaac04c24ddc902e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
