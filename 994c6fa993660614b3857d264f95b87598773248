@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58e87a65_0b2385e2",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-08T21:17:08Z",
+      "side": 1,
+      "message": "no : svc_handler is the actual ... SVC handler (aka Software Interrupt routine), it needs to be called in exception context.\nhere you need to do :\n__schedule(0, 0);\nwhich will end up calling svc_handler after triggering the software interrupt.",
+      "range": {
+        "startLine": 423,
+        "startChar": 1,
+        "endLine": 423,
+        "endChar": 19
+      },
+      "revId": "994c6fa993660614b3857d264f95b87598773248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
