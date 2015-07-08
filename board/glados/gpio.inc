@@ -55,7 +55,7 @@ GPIO(ENABLE_TOUCHPAD,       PIN(53),  GPIO_OUT_LOW)
 GPIO(BAT_PRESENT_L,         PIN(56),  GPIO_INPUT | GPIO_PULL_UP)
 GPIO(USB_PD_WAKE,           PIN(60),  GPIO_OUT_LOW)
 /* When asserted, ME does not lock security descriptor */
-GPIO(PCH_SEC_DISABLE_L,     PIN(65),  GPIO_OUT_HIGH)
+GPIO(PCH_SEC_DISABLE_L,     PIN(65),  GPIO_ODR_HIGH)
 GPIO(PCH_WAKE_L,            PIN(66),  GPIO_ODR_HIGH)
 GPIO(EC_FAN1_TTACH,         PIN(105), GPIO_INPUT)
 /* Fan PWM output - NC / testing only */
