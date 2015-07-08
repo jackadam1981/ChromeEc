@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93201584_b384e2e7",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 823,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-07-08T21:03:09Z",
+      "side": 1,
+      "message": "Seems like this should be defined for the ARM boards which accept host commands over SPI.",
+      "range": {
+        "startLine": 823,
+        "startChar": 8,
+        "endLine": 823,
+        "endChar": 25
+      },
+      "revId": "41e66212696277d08f59b734d2b3722d4331c035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
