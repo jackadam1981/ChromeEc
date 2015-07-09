@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "586ddaeb_433e2c79",
+        "filename": "power/braswell.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2015-07-09T21:25:40Z",
+      "side": 1,
+      "message": "If SUSPWRDNACK never asserts then RSMRST will never get asserted now, is that desired or should RSMRST be asserted in both cases?  It should retry every 10 seconds at least but if the system tries to power back up before then will it fail now because RSMRST was never asserted?",
+      "range": {
+        "startLine": 304,
+        "startChar": 3,
+        "endLine": 304,
+        "endChar": 23
+      },
+      "revId": "a31b2a95c14c98b44544b1d9f2e7e1f1a64782a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
