@@ -116,11 +116,13 @@ static int gesture_tap_for_battery(void)
 
 	int history_idx_inner, state_p;
 	int ret = 0;
+	int range;
 
-	/* Get data */
-	x = sensor->xyz[0];
-	y = sensor->xyz[1];
-	z = sensor->xyz[2];
+	/* Get data normalize at 1g == 1024 */
+	sensor->drv->get_range(sensor, &range);
+	x = (sensor->xyz[0] * range) >> 5;
+	y = (sensor->xyz[1] * range) >> 5;
+	z = (sensor->xyz[2] * range) >> 5;
 
 	/*
 	 * Calculate history of change in Z sensor and keeping
