@@ -30,15 +30,13 @@
 
 #define LPC_SYSJUMP_TAG 0x4c50          /* "LP" */
 
-/* Timeout to wait PLTRST is deasserted */
-#define LPC_PLTRST_TIMEOUT_US 800000
-
 /* Super-IO index and register definitions */
 #define SIO_OFFSET      0x4E
 #define INDEX_SID       0x20
 #define INDEX_CHPREV    0x24
 #define INDEX_SRID      0x27
 
+static uint8_t  plt_rst_l;              /* Platform reset assert status */
 static uint32_t host_events;            /* Currently pending SCI/SMI events */
 static uint32_t event_mask[3];          /* Event masks for each type */
 static struct	host_packet lpc_packet;
@@ -82,15 +80,15 @@ static inline void keyboard_irq_assert(void)
 }
 #endif
 
-static void lpc_task_enable_irq(void){
-
+static void lpc_task_enable_irq(void)
+{
 	task_enable_irq(NPCX_IRQ_SHM);
 	task_enable_irq(NPCX_IRQ_KBC_IBF);
 	task_enable_irq(NPCX_IRQ_PM_CHAN_IBF);
 	task_enable_irq(NPCX_IRQ_PORT80);
 }
-static void lpc_task_disable_irq(void){
-
+static void lpc_task_disable_irq(void)
+{
 	task_disable_irq(NPCX_IRQ_SHM);
 	task_disable_irq(NPCX_IRQ_KBC_IBF);
 	task_disable_irq(NPCX_IRQ_PM_CHAN_IBF);
@@ -546,12 +544,6 @@ static void lpc_post_sysjump(void)
 	memcpy(event_mask, prev_mask, sizeof(event_mask));
 }
 
-int lpc_get_pltrst_asserted(void)
-{
-	/* Read PLTRST status */
-	return (NPCX_MSWCTL1 & 0x04) ? 1 : 0;
-}
-
 /* Super-IO read/write function */
 void lpc_sib_write_reg(uint8_t io_offset, uint8_t index_value,
 		uint8_t io_data)
@@ -650,20 +642,17 @@ uint8_t lpc_sib_read_reg(uint8_t io_offset, uint8_t index_value)
 }
 
 /* For LPC host register initial via SIB module */
-void lpc_host_register_init(void){
+void lpc_host_register_init(void)
+{
+	/* enable ACPI*/
+	lpc_sib_write_reg(SIO_OFFSET, 0x07, 0x11);
+	lpc_sib_write_reg(SIO_OFFSET, 0x30, 0x01);
 
-	timestamp_t deadline;
-
-	deadline.val = 0;
-	deadline = get_time();
-	deadline.val += LPC_PLTRST_TIMEOUT_US;
-
-	/* Make sure PLTRST is de-asserted. Or any setting for LPC is useless */
-	while (lpc_get_pltrst_asserted())
-		if (timestamp_expired(deadline, NULL)) {
-			CPRINTS("PLTRST is asserted. LPC settings are ignored");
-			return;
-		}
+	/* enable KBC*/
+	lpc_sib_write_reg(SIO_OFFSET, 0x07, 0x05);
+	lpc_sib_write_reg(SIO_OFFSET, 0x30, 0x01);
+	lpc_sib_write_reg(SIO_OFFSET, 0x07, 0x06);
+	lpc_sib_write_reg(SIO_OFFSET, 0x30, 0x01);
 
 	/* Setting PMC2 */
 	/* LDN register = 0x12(PMC2) */
@@ -696,6 +685,25 @@ void lpc_host_register_init(void){
 	lpc_sib_write_reg(SIO_OFFSET, 0xF8, 0x00);
 	/* enable SHM */
 	lpc_sib_write_reg(SIO_OFFSET, 0x30, 0x01);
+	CPRINTS("Host settings are done!");
+
+}
+
+int lpc_get_pltrst_asserted(void)
+{
+	uint8_t cur_plt_rst_l;
+	/* Read current PLTRST status */
+	cur_plt_rst_l = (NPCX_MSWCTL1 & 0x04) ? 1 : 0;
+
+	/*
+	 * If plt_rst is deasserted for the first time
+	 * Initialization all lpc settings
+	 */
+	if (cur_plt_rst_l == 0 && plt_rst_l == 1)
+		lpc_host_register_init();
+
+	plt_rst_l = cur_plt_rst_l;
+	return plt_rst_l;
 }
 
 static void lpc_init(void)
@@ -771,7 +779,9 @@ static void lpc_init(void)
 	 */
 	NPCX_DP80CTL = 0x29;
 	SET_BIT(NPCX_GLUE_SDP_CTS, 3);
+#if SUPPORT_P80_SEG
 	SET_BIT(NPCX_GLUE_SDP_CTS, 0);
+#endif
 	/* Just turn on IRQE */
 	NPCX_HIPMIE(PM_CHAN_1) = 0x01;
 	lpc_task_enable_irq();
