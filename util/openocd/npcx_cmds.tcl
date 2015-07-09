@@ -10,6 +10,9 @@ source [find mem_helper.tcl]
 proc flash_npcx {image_path image_offset image_size spifw_image} {
 	set UPLOAD_FLAG 0x200C4000;
 
+	echo "*** NPCX Reset and halt CPU first ***"
+	reset halt
+
 	# Clear whole 96KB Code RAM
 	mwb 0x100A8000 0xFF 0x18000
 	# Upload binary image to Code RAM
@@ -34,7 +37,7 @@ proc flash_npcx {image_path image_offset image_size spifw_image} {
 	resume
 
 	# Wait for any pending flash operations to complete
-	while {[expr [mrw $UPLOAD_FLAG] & 0x01] == 0} { sleep 1 }
+	while {[expr [mrw $UPLOAD_FLAG] & 0x01] == 0} { sleep 1000 }
 
 	if {[expr [mrw $UPLOAD_FLAG] & 0x02] == 0} {
 		echo "*** Program Fail ***"
@@ -58,7 +61,6 @@ proc flash_npcx_ro {image_dir image_offset} {
 
 	# Halt CPU first
 	halt
-	adapter_khz 1000
 
 	# diable MPU for Data RAM
 	mww $MPU_RNR  0x1
@@ -91,8 +93,6 @@ proc flash_npcx_all {image_dir image_offset} {
 	# Halt CPU first
 	halt
 
-	adapter_khz 1000
-
 	# diable MPU for Data RAM
 	mww $MPU_RNR  0x1
 	mww $MPU_RASR 0x0
@@ -109,7 +109,7 @@ proc flash_npcx_all {image_dir image_offset} {
 
 }
 
-proc halt_npcx_cpu { } {
-	echo "*** Halt CPU first ***"
-	halt
+proc reset_halt_cpu { } {
+	echo "*** NPCX Reset and halt CPU first ***"
+	reset halt
 }
