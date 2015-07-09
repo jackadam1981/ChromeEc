@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "387026c3_829d2043",
+        "filename": "power/braswell.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2015-07-09T21:04:27Z",
+      "side": 1,
+      "message": "If these are now named with the generic GPIO names I think you can enable CONFIG_USB_PORT_POWER_DUMB and let that module handle the gpio transitions instead of doing it in the chipset power sequence.",
+      "range": {
+        "startLine": 165,
+        "startChar": 2,
+        "endLine": 166,
+        "endChar": 38
+      },
+      "revId": "28d527c6101cf8c77d0847c02b70107bbd5c320a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
