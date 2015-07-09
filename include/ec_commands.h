@@ -3324,6 +3324,17 @@ struct ec_params_pd_write_log_entry {
 
 /*****************************************************************************/
 /*
+ * Reserve a range of host commands for board-specific, experimental, or
+ * special purpose features. These can be (re)used without updating this file.
+ *
+ * CAUTION: Don't go nuts with this. Shipping products should document ALL
+ * their commands for easier development, testing, debugging, and support.
+ */
+#define EC_CMD_BOARD_SPECIFIC_0x000 0x3E00
+#define EC_CMD_BOARD_SPECIFIC_0x1FF 0x3FFF
+
+/*****************************************************************************/
+/*
  * Passthru commands
  *
  * Some platforms have sub-processors chained to each other.  For example.
