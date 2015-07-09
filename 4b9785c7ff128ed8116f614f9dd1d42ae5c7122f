@@ -22,6 +22,30 @@
       "revId": "4b9785c7ff128ed8116f614f9dd1d42ae5c7122f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8970a01_385a3951",
+        "filename": "board/glados/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2015-07-09T22:29:34Z",
+      "side": 1,
+      "message": "Hm it appears the inverter is there in P1, and this should be ok to drive low.  Now I\u0027m not sure why it seemed to be an issue during early bringup...",
+      "parentUuid": "d3260d9c_acfac76c",
+      "range": {
+        "startLine": 84,
+        "startChar": 5,
+        "endLine": 84,
+        "endChar": 15
+      },
+      "revId": "4b9785c7ff128ed8116f614f9dd1d42ae5c7122f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
