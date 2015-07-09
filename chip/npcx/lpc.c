@@ -25,13 +25,15 @@
 #include "system_chip.h"
 
 /* Console output macros */
+#if !(DEBUG_LPC)
+#define CPUTS(...)
+#define CPRINTS(...)
+#else
 #define CPUTS(outstr) cputs(CC_LPC, outstr)
 #define CPRINTS(format, args...) cprints(CC_LPC, format, ## args)
+#endif
 
 #define LPC_SYSJUMP_TAG 0x4c50          /* "LP" */
-
-/* Timeout to wait PLTRST is deasserted */
-#define LPC_PLTRST_TIMEOUT_US 800000
 
 /* Super-IO index and register definitions */
 #define SIO_OFFSET      0x4E
@@ -39,6 +41,7 @@
 #define INDEX_CHPREV    0x24
 #define INDEX_SRID      0x27
 
+static uint8_t  plt_rst_l;              /* Platform reset assert status */
 static uint32_t host_events;            /* Currently pending SCI/SMI events */
 static uint32_t event_mask[3];          /* Event masks for each type */
 static struct	host_packet lpc_packet;
@@ -75,22 +78,26 @@ static void keyboard_irq_assert(void)
 #else
 static inline void keyboard_irq_assert(void)
 {
-	/* Use serirq method. */
-	/* Using manual IRQ for KBC  */
-	SET_BIT(NPCX_HIIRQC, 0); /* set IRQ1B to high */
-	CLEAR_BIT(NPCX_HICTRL, 0); /* set IRQ1 control by IRQB1 */
+	/* Using manual IRQ for KBC in SERIRQ */
+	/* set IRQ1 bit (KB) to high */
+	SET_BIT(NPCX_HIIRQC, NPCX_HIIRQC_IRQ1B);
 }
 #endif
 
-static void lpc_task_enable_irq(void){
+static inline int is_keyboard_irq_manual(void)
+{
+	return !IS_BIT_SET(NPCX_HICTRL, NPCX_HICTRL_OBFKIE);
+}
 
+static void lpc_task_enable_irq(void)
+{
 	task_enable_irq(NPCX_IRQ_SHM);
 	task_enable_irq(NPCX_IRQ_KBC_IBF);
 	task_enable_irq(NPCX_IRQ_PM_CHAN_IBF);
 	task_enable_irq(NPCX_IRQ_PORT80);
 }
-static void lpc_task_disable_irq(void){
-
+static void lpc_task_disable_irq(void)
+{
 	task_disable_irq(NPCX_IRQ_SHM);
 	task_disable_irq(NPCX_IRQ_KBC_IBF);
 	task_disable_irq(NPCX_IRQ_PM_CHAN_IBF);
@@ -240,6 +247,8 @@ void lpc_keyboard_put_char(uint8_t chr, int send_irq)
 {
 	UPDATE_BIT(NPCX_HICTRL, NPCX_HICTRL_OBFKIE, send_irq);
 	NPCX_HIKDO = chr;
+	if (send_irq)
+		keyboard_irq_assert();
 	task_enable_irq(NPCX_IRQ_KBC_OBF);
 }
 
@@ -247,8 +256,8 @@ void lpc_keyboard_clear_buffer(void)
 {
 	/* Make sure the previous TOH and IRQ has been sent out. */
 	udelay(4);
-	/*FW_OBF write 1*/
-	NPCX_HICTRL |= 0x80;
+	/* Clear OBF flag in host STATUS  and HIKMST regs*/
+	SET_BIT(NPCX_HICTRL, NPCX_HICTRL_FW_OBF);
 	/* Ensure there is no TOH set in this period. */
 	udelay(4);
 }
@@ -358,12 +367,12 @@ uint32_t lpc_get_host_event_mask(enum lpc_host_event_type type)
 
 void lpc_set_acpi_status_mask(uint8_t mask)
 {
-	/* TODO (crbug.com/p/38224): Implement */
+	NPCX_HIPMST(PM_CHAN_1) |= mask;
 }
 
 void lpc_clear_acpi_status_mask(uint8_t mask)
 {
-	/* TODO (crbug.com/p/38224): Implement */
+	NPCX_HIPMST(PM_CHAN_1) &= ~mask;
 }
 
 /**
@@ -473,8 +482,8 @@ static void handle_host_write(int is_cmd)
 	host_command_received(&host_cmd_args);
 }
 
-
-void lpc_shm_interrupt(void){
+void lpc_shm_interrupt(void)
+{
 }
 DECLARE_IRQ(NPCX_IRQ_SHM, lpc_shm_interrupt, 2);
 
@@ -483,21 +492,24 @@ void lpc_kbc_ibf_interrupt(void)
 #ifdef CONFIG_KEYBOARD_PROTOCOL_8042
 	/* If "command" input 0, else 1*/
 	keyboard_host_write(NPCX_HIKMDI, (NPCX_HIKMST & 0x08) ? 1 : 0);
+	CPRINTS("kb inbuf full!");
 #endif
 }
 DECLARE_IRQ(NPCX_IRQ_KBC_IBF, lpc_kbc_ibf_interrupt, 2);
 
-void lpc_kbc_obf_interrupt(void){
+void lpc_kbc_obf_interrupt(void)
+{
 	/* reserve for future handle */
-	if (!IS_BIT_SET(NPCX_HICTRL, 0)) {
-		SET_BIT(NPCX_HICTRL, 0);    /* back to H/W control of IRQ1 */
+	if (is_keyboard_irq_manual())
 		CLEAR_BIT(NPCX_HIIRQC, 0);  /* back to default of IRQB1 */
-	}
+
 	task_disable_irq(NPCX_IRQ_KBC_OBF);
+	CPRINTS("kb outbuf empty!");
 }
 DECLARE_IRQ(NPCX_IRQ_KBC_OBF, lpc_kbc_obf_interrupt, 2);
 
-void lpc_pmc_ibf_interrupt(void){
+void lpc_pmc_ibf_interrupt(void)
+{
 	/* Channel-1 for ACPI usage*/
 	/* Channel-2 for Host Command usage , so the argument data had been
 	 * put on the share memory firstly*/
@@ -512,7 +524,8 @@ void lpc_pmc_obf_interrupt(void){
 }
 DECLARE_IRQ(NPCX_IRQ_PM_CHAN_OBF, lpc_pmc_obf_interrupt, 2);
 
-void lpc_port80_interrupt(void){
+void lpc_port80_interrupt(void)
+{
 	port_80_write((NPCX_GLUE_SDPD0<<0) | (NPCX_GLUE_SDPD1<<8));
 	/* No matter what , just clear error status bit */
 	SET_BIT(NPCX_DP80STS, 7);
@@ -544,12 +557,6 @@ static void lpc_post_sysjump(void)
 		return;
 
 	memcpy(event_mask, prev_mask, sizeof(event_mask));
-}
-
-int lpc_get_pltrst_asserted(void)
-{
-	/* Read PLTRST status */
-	return (NPCX_MSWCTL1 & 0x04) ? 1 : 0;
 }
 
 /* Super-IO read/write function */
@@ -650,20 +657,17 @@ uint8_t lpc_sib_read_reg(uint8_t io_offset, uint8_t index_value)
 }
 
 /* For LPC host register initial via SIB module */
-void lpc_host_register_init(void){
+void lpc_host_register_init(void)
+{
+	/* enable ACPI*/
+	lpc_sib_write_reg(SIO_OFFSET, 0x07, 0x11);
+	lpc_sib_write_reg(SIO_OFFSET, 0x30, 0x01);
 
-	timestamp_t deadline;
-
-	deadline.val = 0;
-	deadline = get_time();
-	deadline.val += LPC_PLTRST_TIMEOUT_US;
-
-	/* Make sure PLTRST is de-asserted. Or any setting for LPC is useless */
-	while (lpc_get_pltrst_asserted())
-		if (timestamp_expired(deadline, NULL)) {
-			CPRINTS("PLTRST is asserted. LPC settings are ignored");
-			return;
-		}
+	/* enable KBC*/
+	lpc_sib_write_reg(SIO_OFFSET, 0x07, 0x05);
+	lpc_sib_write_reg(SIO_OFFSET, 0x30, 0x01);
+	lpc_sib_write_reg(SIO_OFFSET, 0x07, 0x06);
+	lpc_sib_write_reg(SIO_OFFSET, 0x30, 0x01);
 
 	/* Setting PMC2 */
 	/* LDN register = 0x12(PMC2) */
@@ -696,6 +700,25 @@ void lpc_host_register_init(void){
 	lpc_sib_write_reg(SIO_OFFSET, 0xF8, 0x00);
 	/* enable SHM */
 	lpc_sib_write_reg(SIO_OFFSET, 0x30, 0x01);
+	CPRINTS("Host settings are done!");
+
+}
+
+int lpc_get_pltrst_asserted(void)
+{
+	uint8_t cur_plt_rst_l;
+	/* Read current PLTRST status */
+	cur_plt_rst_l = (NPCX_MSWCTL1 & 0x04) ? 1 : 0;
+
+	/*
+	 * If plt_rst is deasserted for the first time
+	 * Initialization all lpc settings
+	 */
+	if (cur_plt_rst_l == 0 && plt_rst_l == 1)
+		lpc_host_register_init();
+
+	plt_rst_l = cur_plt_rst_l;
+	return plt_rst_l;
 }
 
 static void lpc_init(void)
@@ -762,6 +785,10 @@ static void lpc_init(void)
 	 * OBF Mouse Full INT enable and OBF KB Full INT enable
 	 */
 	NPCX_HICTRL = 0xFF;
+#ifdef CONFIG_KEYBOARD_IRQ_GPIO
+	/* set IRQ1 control by IRQB1 */
+	CLEAR_BIT(NPCX_HICTRL, NPCX_HICTRL_OBFKIE);
+#endif
 	/* Normally Polarity IRQ1,12,11 type (level + high) setting */
 	NPCX_HIIRQC = 0x00;	/* Make sure to default */
 
@@ -771,7 +798,9 @@ static void lpc_init(void)
 	 */
 	NPCX_DP80CTL = 0x29;
 	SET_BIT(NPCX_GLUE_SDP_CTS, 3);
+#if SUPPORT_P80_SEG
 	SET_BIT(NPCX_GLUE_SDP_CTS, 0);
+#endif
 	/* Just turn on IRQE */
 	NPCX_HIPMIE(PM_CHAN_1) = 0x01;
 	lpc_task_enable_irq();
@@ -785,8 +814,6 @@ static void lpc_init(void)
 			EC_HOST_CMD_FLAG_LPC_ARGS_SUPPORTED |
 			EC_HOST_CMD_FLAG_VERSION_3;
 
-
-
 	/* Restore event masks if needed */
 	lpc_post_sysjump();
 
@@ -794,7 +821,6 @@ static void lpc_init(void)
 	init_done = 1;
 
 	/* Update host events now that we can copy them to memmap */
-
 	update_host_event_status();
 
 	/*
@@ -813,13 +839,13 @@ static void lpc_init(void)
 /* Enable LPC ACPI-EC interrupts */
 void lpc_enable_acpi_interrupts(void)
 {
-	SET_BIT(NPCX_HIPMCTL(PM_CHAN_1), 0);
+	SET_BIT(NPCX_HIPMCTL(PM_CHAN_1), NPCX_HIPMCTL_IBFIE);
 }
 
 /* Disable LPC ACPI-EC interrupts */
 void lpc_disable_acpi_interrupts(void)
 {
-	CLEAR_BIT(NPCX_HIPMCTL(PM_CHAN_1), 0);
+	CLEAR_BIT(NPCX_HIPMCTL(PM_CHAN_1), NPCX_HIPMCTL_IBFIE);
 }
 
 /*
