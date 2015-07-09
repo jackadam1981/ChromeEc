@@ -25,6 +25,47 @@
     },
     {
       "key": {
+        "uuid": "736d61b3_8bcdf858",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-09T01:13:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "135425e3_9f2d1fd3",
+      "range": {
+        "startLine": 501,
+        "startChar": 3,
+        "endLine": 501,
+        "endChar": 47
+      },
+      "revId": "ab0593e8bdfeef2d401bc80f41212b0a5f6548ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f80dae2c_ab26e144",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1762,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-09T01:13:52Z",
+      "side": 1,
+      "message": "unknown value defined here.",
+      "revId": "ab0593e8bdfeef2d401bc80f41212b0a5f6548ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f80dae2c_ba7d0d2a",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -48,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "f356b1ec_a960f188",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1817,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-09T01:13:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f80dae2c_ba7d0d2a",
+      "range": {
+        "startLine": 1815,
+        "startChar": 3,
+        "endLine": 1817,
+        "endChar": 6
+      },
+      "revId": "ab0593e8bdfeef2d401bc80f41212b0a5f6548ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "135425e3_2456ea52",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -59,6 +124,30 @@
       "writtenOn": "2015-07-07T16:55:52Z",
       "side": 1,
       "message": "nit: first line of comment should be empty",
+      "range": {
+        "startLine": 1820,
+        "startChar": 3,
+        "endLine": 1820,
+        "endChar": 32
+      },
+      "revId": "ab0593e8bdfeef2d401bc80f41212b0a5f6548ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "135425e3_d79eabe5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1820,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-09T01:13:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "135425e3_2456ea52",
       "range": {
         "startLine": 1820,
         "startChar": 3,
@@ -106,6 +195,54 @@
       "side": 1,
       "message": "Ah, I think what he\u0027s saying is that the temperature is encoded in the value so T \u003d 20 + value * 60 / 0x7fff.\n\nBut yes, it\u0027d be nicer to do the conversion in the EC so this is just degrees; that\u0027s more likely to be portable to other sensors.  Most temp sensors are only accurate to within a degree anyway.  And then define a constant for the unknown value:\n\n#define MOTIONSENSOR_CAL_TEMP_UNKNOWN 0x8000\n\n(or 0x80, if you use int8_t for temperature)",
       "parentUuid": "135425e3_7f023b3f",
+      "range": {
+        "startLine": 1821,
+        "startChar": 0,
+        "endLine": 1826,
+        "endChar": 16
+      },
+      "revId": "ab0593e8bdfeef2d401bc80f41212b0a5f6548ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f356b1ec_8985ed8e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1826,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-09T01:13:52Z",
+      "side": 1,
+      "message": "Centi-Celcius is the new unit.",
+      "parentUuid": "135425e3_7f023b3f",
+      "range": {
+        "startLine": 1821,
+        "startChar": 0,
+        "endLine": 1826,
+        "endChar": 16
+      },
+      "revId": "ab0593e8bdfeef2d401bc80f41212b0a5f6548ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "736d61b3_ebd3ccfb",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1826,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-09T01:13:52Z",
+      "side": 1,
+      "message": "Invalid temperature defined above.",
+      "parentUuid": "736d61b3_90460571",
       "range": {
         "startLine": 1821,
         "startChar": 0,
