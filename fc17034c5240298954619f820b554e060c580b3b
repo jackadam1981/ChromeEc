@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "387026c3_62c48c09",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3606,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2015-07-09T21:27:23Z",
+      "side": 1,
+      "message": "This has a warning on the chromeos asan bots:\nhttps://uberchromegw.corp.google.com/i/chromiumos.chromium/builders/Chromium%20OS%20%28x86%29%20Asan?numbuilds\u003d50\n\nhttps://uberchromegw.corp.google.com/i/chromiumos.chromium/builders/Chromium%20OS%20%28x86%29%20Asan/builds/7004/steps/BuildPackages/logs/stdio",
+      "range": {
+        "startLine": 3605,
+        "startChar": 2,
+        "endLine": 3606,
+        "endChar": 41
+      },
+      "revId": "fc17034c5240298954619f820b554e060c580b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
