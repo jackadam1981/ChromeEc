@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9833d2f4_f2c16025",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1827,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-09T01:13:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58e87a65_281beffc",
+      "range": {
+        "startLine": 1827,
+        "startChar": 54,
+        "endLine": 1827,
+        "endChar": 59
+      },
+      "revId": "2067f05161d540f47dcbcea8c0e1b24598a5061e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3260d9c_295c09f9",
         "filename": "util/ectool.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-07-08T16:32:37Z",
       "side": 1,
       "message": "Could even get fancy and do\n\n\"%d.%02d C\", resp-\u003esensor_offset.temp/100, resp-\u003esensor_offset.temp%100",
+      "range": {
+        "startLine": 3601,
+        "startChar": 44,
+        "endLine": 3601,
+        "endChar": 58
+      },
+      "revId": "2067f05161d540f47dcbcea8c0e1b24598a5061e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "180b6219_3fdc4852",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3601,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-09T01:13:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3260d9c_295c09f9",
       "range": {
         "startLine": 3601,
         "startChar": 44,
