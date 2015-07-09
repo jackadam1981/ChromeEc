@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "586ddaeb_5d6a8f99",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000229
+      },
+      "writtenOn": "2015-07-09T17:33:53Z",
+      "side": 1,
+      "message": "I don\u0027t get this change: I don\u0027t understand the reason for it, and it looks like it went in completely untested (as opposed to the original code which was tested very thoroughly using the no removed test wrapper).\n\nWhat was the rush to check this in?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "806cc814917209f9bc8eab1d94a78f8d828aa2c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
