@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3260d9c_acfac76c",
+        "filename": "board/glados/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2015-07-09T16:46:57Z",
+      "side": 1,
+      "message": "In P1 this is an active low signal (misnamed in the schematic) and I don\u0027t think the AP will boot if it is driven low.  It looks like this may have been reworked in the P2 schematic but I have not compared closely to see what is different.",
+      "range": {
+        "startLine": 84,
+        "startChar": 5,
+        "endLine": 84,
+        "endChar": 15
+      },
+      "revId": "4b9785c7ff128ed8116f614f9dd1d42ae5c7122f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
