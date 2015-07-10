@@ -186,6 +186,29 @@
     },
     {
       "key": {
+        "uuid": "387026c3_ed096de4",
+        "filename": "chip/mec1322/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-10T00:36:29Z",
+      "side": 1,
+      "message": "this counter is a little misleading. i would move it to if the uart is ready for deepsleep. that\u0027s the only case we really go into deep sleep.",
+      "range": {
+        "startLine": 292,
+        "startChar": 3,
+        "endLine": 292,
+        "endChar": 18
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "789c5e2a_7b3aff56",
         "filename": "chip/mec1322/clock.c",
         "patchSetId": 2
@@ -225,6 +248,29 @@
         "startChar": 3,
         "endLine": 362,
         "endChar": 6
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "586ddaeb_8ea0eb28",
+        "filename": "chip/mec1322/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-10T00:36:29Z",
+      "side": 1,
+      "message": "don\u0027t need to double print this same number. just print it in seconds.",
+      "range": {
+        "startLine": 406,
+        "startChar": 6,
+        "endLine": 406,
+        "endChar": 31
       },
       "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
