@@ -289,6 +289,144 @@
     },
     {
       "key": {
+        "uuid": "789c5e2a_0f8cd5b9",
+        "filename": "chip/mec1322/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-10T00:28:34Z",
+      "side": 1,
+      "message": "i rewrote this function like this and tested that it worked:\n\nvoid uart_enter_dsleep(void)\n{\n\tconst struct gpio_info g \u003d gpio_list[GPIO_UART0_RX];\n\n\t/* Disable the UART interrupt. */\n\ttask_disable_irq(MEC1322_IRQ_UART);  /* NVIC interrupt for UART\u003d13 */\n\n\t/*\n\t * Set the UART0 RX pin to be a generic GPIO with the flags defined\n\t * in the board.c file.\n\t */\n\tgpio_set_flags_by_mask(g.port, g.mask, g.flags);\n\tgpio_set_alternate_function(g.port, g.mask, -1);\n\n\t/* power-down/de-activate UART0 */\n\tMEC1322_UART_ACT \u0026\u003d ~(1 \u003c\u003c 0);\n\n\t/* Clear pending interrupts on UART GPIO. */\n\tMEC1322_INT_SOURCE(8) \u003d (1\u003c\u003c18);\n\n\t/* Enable GPIO interrupts on the UART0 RX pin. */\n\tgpio_enable_interrupt(GPIO_UART0_RX);\n}\n\nusing gpio162 is still hardcoded in the line to clear the pending interrupt. we may need a function or macro to take the pin number and read or clear the interrupt pending bit.",
+      "range": {
+        "startLine": 173,
+        "startChar": 5,
+        "endLine": 173,
+        "endChar": 22
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8970a01_933ecee8",
+        "filename": "chip/mec1322/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-10T00:28:34Z",
+      "side": 1,
+      "message": "don\u0027t think we need to do this, the next line is sufficient to disable the UART interrupt",
+      "range": {
+        "startLine": 178,
+        "startChar": 1,
+        "endLine": 178,
+        "endChar": 67
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "98a11261_2b5ae550",
+        "filename": "chip/mec1322/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-10T00:28:34Z",
+      "side": 1,
+      "message": "wait, we shouldn\u0027t be hard coding the gpio used for this. we need to be using standard gpio functions.",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 33
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "98a11261_4b62d137",
+        "filename": "chip/mec1322/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-10T00:28:34Z",
+      "side": 1,
+      "message": "no, this comment is incorrect and misleading. we can\u0027t disable the interrupt if it has already fired because then the IRQ function will not run at all.",
+      "range": {
+        "startLine": 207,
+        "startChar": 12,
+        "endLine": 208,
+        "endChar": 14
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "789c5e2a_2f1671d6",
+        "filename": "chip/mec1322/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-10T00:28:34Z",
+      "side": 1,
+      "message": "should be \u0026",
+      "range": {
+        "startLine": 210,
+        "startChar": 17,
+        "endLine": 210,
+        "endChar": 19
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "98a11261_8b68d917",
+        "filename": "chip/mec1322/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-10T00:28:34Z",
+      "side": 1,
+      "message": "don\u0027t need this anymore if you remove disabling it from the above function",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 33
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "789c5e2a_9b67cbcb",
         "filename": "core/cortex-m/cpu.h",
         "patchSetId": 2
