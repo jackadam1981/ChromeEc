@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "981e7258_035ed8f2",
+        "filename": "board/oak/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-07-10T09:05:31Z",
+      "side": 1,
+      "message": "KB_IN07 will be overridden by C1_VBUS_WAKE_L because they use the same external interrupt line on EXTI2. \nSo, The keys relate to KB_IN07 may doesn\u0027t works.",
+      "range": {
+        "startLine": 17,
+        "startChar": 9,
+        "endLine": 17,
+        "endChar": 34
+      },
+      "revId": "1eb951330f3399be3ce9d585900dab161cba3079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
