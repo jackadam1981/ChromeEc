@@ -166,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "98cf5247_f2c4e085",
+        "filename": "chip/mec1322/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-11T01:25:29Z",
+      "side": 1,
+      "message": "Sure, probably better to leave it, might cause someone problems some day.",
+      "parentUuid": "98cf5247_efb87d32",
+      "range": {
+        "startLine": 105,
+        "startChar": 2,
+        "endLine": 105,
+        "endChar": 20
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "387026c3_b9f73f50",
         "filename": "chip/mec1322/clock.c",
         "patchSetId": 2
@@ -318,6 +342,30 @@
       "side": 1,
       "message": "According to MEC, ADC_CTRL is unnecessary since ADC_VREF_PD does power down.   I will confirm with MEC again.",
       "parentUuid": "387026c3_39900f9f",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 29
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "98cf5247_52ddb450",
+        "filename": "chip/mec1322/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-11T01:25:29Z",
+      "side": 1,
+      "message": "you\u0027re probably right, I didn\u0027t read it very closely.",
+      "parentUuid": "f8de8ef5_4f498d06",
       "range": {
         "startLine": 180,
         "startChar": 1,
@@ -547,6 +595,24 @@
       "side": 1,
       "message": "dsleep command is confusing. \nWould please confirm if my understanding is correct ? \n\n\u0027on\u0027 means NOT to allow to enter heavy sleep. \n\u0027off\u0027 means to allow to enter heavy sleep mode if possible.",
       "parentUuid": "387026c3_b93dff98",
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8c54a25_11296ec1",
+        "filename": "chip/mec1322/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-11T01:25:29Z",
+      "side": 1,
+      "message": "yes, that is correct. it\u0027s similar to the sleepmask command.",
+      "parentUuid": "78ca9e3a_cba4950b",
       "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
