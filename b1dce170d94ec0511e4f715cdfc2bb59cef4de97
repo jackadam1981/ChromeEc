@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "78ca9e3a_aee7d721",
+        "filename": "chip/mec1322/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-07-11T01:19:24Z",
+      "side": 1,
+      "message": "Yes I will clean",
+      "parentUuid": "387026c3_b9641fc7",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 3
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "387026c3_d9d793b6",
         "filename": "chip/mec1322/clock.c",
         "patchSetId": 2
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "b8c09616_f0c4de85",
+        "filename": "chip/mec1322/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-07-11T01:19:24Z",
+      "side": 1,
+      "message": "I will correct/clean up all.",
+      "parentUuid": "d8246aa6_335fdf41",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 3
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98a11261_1fac07a9",
         "filename": "chip/mec1322/clock.c",
         "patchSetId": 2
@@ -82,6 +130,30 @@
       "writtenOn": "2015-07-09T17:20:47Z",
       "side": 1,
       "message": "I don\u0027t think we ever sit in idle for this long. the hooks task has to run at least every second to run HOOK_SECOND.",
+      "range": {
+        "startLine": 105,
+        "startChar": 2,
+        "endLine": 105,
+        "endChar": 20
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "98cf5247_efb87d32",
+        "filename": "chip/mec1322/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-07-11T01:19:24Z",
+      "side": 1,
+      "message": "Yes, I agree it won\u0027t go beyond 2second. \nThis is generic implementation. Do you still think the case for \u0027\u003e 2sec\u0027 should be removed ?",
+      "parentUuid": "98a11261_1fac07a9",
       "range": {
         "startLine": 105,
         "startChar": 2,
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "d8c54a25_b1009a36",
+        "filename": "chip/mec1322/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-07-11T01:19:24Z",
+      "side": 1,
+      "message": "I will remove.",
+      "parentUuid": "387026c3_b9f73f50",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 41
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "387026c3_194d0b42",
         "filename": "chip/mec1322/clock.c",
         "patchSetId": 2
@@ -128,6 +224,30 @@
       "writtenOn": "2015-07-09T17:20:47Z",
       "side": 1,
       "message": "typo: DeepSleep",
+      "range": {
+        "startLine": 166,
+        "startChar": 4,
+        "endLine": 166,
+        "endChar": 12
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78ca9e3a_6e0b2f60",
+        "filename": "chip/mec1322/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-07-11T01:19:24Z",
+      "side": 1,
+      "message": "will fix it.",
+      "parentUuid": "387026c3_194d0b42",
       "range": {
         "startLine": 166,
         "startChar": 4,
@@ -186,6 +306,30 @@
     },
     {
       "key": {
+        "uuid": "f8de8ef5_4f498d06",
+        "filename": "chip/mec1322/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-07-11T01:19:24Z",
+      "side": 1,
+      "message": "According to MEC, ADC_CTRL is unnecessary since ADC_VREF_PD does power down.   I will confirm with MEC again.",
+      "parentUuid": "387026c3_39900f9f",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 29
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "387026c3_ed096de4",
         "filename": "chip/mec1322/clock.c",
         "patchSetId": 2
@@ -197,6 +341,30 @@
       "writtenOn": "2015-07-10T00:36:29Z",
       "side": 1,
       "message": "this counter is a little misleading. i would move it to if the uart is ready for deepsleep. that\u0027s the only case we really go into deep sleep.",
+      "range": {
+        "startLine": 292,
+        "startChar": 3,
+        "endLine": 292,
+        "endChar": 18
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78ca9e3a_8baf6d1a",
+        "filename": "chip/mec1322/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-07-11T01:19:24Z",
+      "side": 1,
+      "message": "I agree.  I will move to the case of \"if (uart_ready_for_deepsleep) \".",
+      "parentUuid": "387026c3_ed096de4",
       "range": {
         "startLine": 292,
         "startChar": 3,
@@ -232,6 +400,30 @@
     },
     {
       "key": {
+        "uuid": "f8de8ef5_aff7d94f",
+        "filename": "chip/mec1322/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-07-11T01:19:24Z",
+      "side": 1,
+      "message": "Yes, I will move.",
+      "parentUuid": "789c5e2a_7b3aff56",
+      "range": {
+        "startLine": 323,
+        "startChar": 3,
+        "endLine": 327,
+        "endChar": 8
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98a11261_7f6f4ba8",
         "filename": "chip/mec1322/clock.c",
         "patchSetId": 2
@@ -243,6 +435,30 @@
       "writtenOn": "2015-07-09T17:20:47Z",
       "side": 1,
       "message": "incorrect tabbing. also the steps 1-4 are not really helpful, it\u0027s the same as reading the code.",
+      "range": {
+        "startLine": 349,
+        "startChar": 3,
+        "endLine": 362,
+        "endChar": 6
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78ca9e3a_abaca925",
+        "filename": "chip/mec1322/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-07-11T01:19:24Z",
+      "side": 1,
+      "message": "I will fix.",
+      "parentUuid": "98a11261_7f6f4ba8",
       "range": {
         "startLine": 349,
         "startChar": 3,
@@ -278,6 +494,30 @@
     },
     {
       "key": {
+        "uuid": "78ca9e3a_0b95bdc0",
+        "filename": "chip/mec1322/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-07-11T01:19:24Z",
+      "side": 1,
+      "message": "I will fix.",
+      "parentUuid": "586ddaeb_8ea0eb28",
+      "range": {
+        "startLine": 406,
+        "startChar": 6,
+        "endLine": 406,
+        "endChar": 31
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "387026c3_b93dff98",
         "filename": "chip/mec1322/clock.c",
         "patchSetId": 2
@@ -289,6 +529,24 @@
       "writtenOn": "2015-07-09T17:20:47Z",
       "side": 1,
       "message": "should also add the dsleep console command so that the console timeout period can be changed. see chip/lm4/clock.c",
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78ca9e3a_cba4950b",
+        "filename": "chip/mec1322/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-07-11T01:19:24Z",
+      "side": 1,
+      "message": "dsleep command is confusing. \nWould please confirm if my understanding is correct ? \n\n\u0027on\u0027 means NOT to allow to enter heavy sleep. \n\u0027off\u0027 means to allow to enter heavy sleep mode if possible.",
+      "parentUuid": "387026c3_b93dff98",
       "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -404,6 +662,30 @@
     },
     {
       "key": {
+        "uuid": "98cf5247_4f63d13d",
+        "filename": "chip/mec1322/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-07-11T01:19:24Z",
+      "side": 1,
+      "message": "I will change",
+      "parentUuid": "98a11261_2b5ae550",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 33
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98a11261_4b62d137",
         "filename": "chip/mec1322/uart.c",
         "patchSetId": 2
@@ -438,6 +720,30 @@
       "writtenOn": "2015-07-10T00:28:34Z",
       "side": 1,
       "message": "should be \u0026",
+      "range": {
+        "startLine": 210,
+        "startChar": 17,
+        "endLine": 210,
+        "endChar": 19
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8c54a25_512ff6c8",
+        "filename": "chip/mec1322/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-07-11T01:19:24Z",
+      "side": 1,
+      "message": "I will fix it. Thank you",
+      "parentUuid": "789c5e2a_2f1671d6",
       "range": {
         "startLine": 210,
         "startChar": 17,
