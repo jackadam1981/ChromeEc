@@ -330,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "d8f1caa3_0ea08b26",
+        "filename": "chip/mec1322/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-07-12T20:03:29Z",
+      "side": 1,
+      "message": "This is ARM CPU\u0027s system tick clock control.\nhttp://infocenter.arm.com/help/index.jsp?topic\u003d/com.arm.doc.dui0553a/Babieigh.html",
+      "parentUuid": "d8970a01_64b49e23",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 32
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "387026c3_39900f9f",
         "filename": "chip/mec1322/clock.c",
         "patchSetId": 2
@@ -879,6 +903,30 @@
       "writtenOn": "2015-07-09T17:20:47Z",
       "side": 1,
       "message": "should be bit 16?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 39
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1808c262_f02c0050",
+        "filename": "core/cortex-m/cpu.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-07-12T20:03:29Z",
+      "side": 1,
+      "message": "MEC\u0027s sample code was 3 and ARM\u0027s data sheet is 16. \nI will confirm with MEC. Thank you",
+      "parentUuid": "789c5e2a_9b67cbcb",
       "range": {
         "startLine": 20,
         "startChar": 0,
