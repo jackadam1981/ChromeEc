@@ -22,6 +22,30 @@
       "revId": "a31b2a95c14c98b44544b1d9f2e7e1f1a64782a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1808c262_f056c0a0",
+        "filename": "power/braswell.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-07-12T23:18:52Z",
+      "side": 1,
+      "message": "If SUSPWRDNACK from SOC(coreboot) is not asserted, EC \u0027should\u0027 wait for and retry to check every 10sec(with \u0027else\u0027)at S5 until SOC assert SUSPWRDNACK. \nIf system tries to power up again at this moment(RSMRST is still HIGH), then, it will go S5(\u0027else\u0027 case)then, goes S5S3 -\u003e S3 -\u003e......\nFor Power up, RSMRST should be HIGH. \nFor Power down, RSMRST should be LOW.",
+      "parentUuid": "586ddaeb_433e2c79",
+      "range": {
+        "startLine": 304,
+        "startChar": 3,
+        "endLine": 304,
+        "endChar": 23
+      },
+      "revId": "a31b2a95c14c98b44544b1d9f2e7e1f1a64782a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
