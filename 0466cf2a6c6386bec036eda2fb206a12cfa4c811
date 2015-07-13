@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58d23ae8_812ae485",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-13T17:56:25Z",
+      "side": 1,
+      "message": "might as well just put this goto up in the while loop, lines 479 and 474",
+      "range": {
+        "startLine": 483,
+        "startChar": 2,
+        "endLine": 483,
+        "endChar": 25
+      },
+      "revId": "0466cf2a6c6386bec036eda2fb206a12cfa4c811",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
