@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "58d23ae8_014a7477",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-13T17:44:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38d586cf_1a43c1e8",
+      "range": {
+        "startLine": 465,
+        "startChar": 2,
+        "endLine": 465,
+        "endChar": 30
+      },
+      "revId": "66fbdb58d4c406bd4bc389173d0d630c5be97ffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "18dc42fc_8a867fef",
         "filename": "driver/accelgyro_bmi160.c",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2015-07-13T17:04:55Z",
       "side": 1,
       "message": "data rate isn\u0027t restored in this path",
+      "range": {
+        "startLine": 480,
+        "startChar": 1,
+        "endLine": 481,
+        "endChar": 13
+      },
+      "revId": "66fbdb58d4c406bd4bc389173d0d630c5be97ffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "38d586cf_9a29f117",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-13T17:44:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18dc42fc_8a867fef",
       "range": {
         "startLine": 480,
         "startChar": 1,
