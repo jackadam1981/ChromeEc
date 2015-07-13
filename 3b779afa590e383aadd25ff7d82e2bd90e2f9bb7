@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "58d23ae8_c65322af",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1694,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-13T16:16:18Z",
+      "side": 1,
+      "message": "i see, ok, then, leave this if line as is, and change line 2175 as i suggested below. it still won\u0027t print on the power swap because snk_cap_count will be PD_SNK_CAP_RETRIES+1 and will be incremented to PD_SNK_CAP_RETRIES+2 before this line.\n\nstill need to split this line into two since it is too long.",
+      "parentUuid": "78f61e9f_ebf411ff",
+      "range": {
+        "startLine": 1694,
+        "startChar": 0,
+        "endLine": 1694,
+        "endChar": 75
+      },
+      "revId": "3b779afa590e383aadd25ff7d82e2bd90e2f9bb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8f1caa3_11554e22",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
