@@ -799,7 +799,7 @@ static int read(const struct motion_sensor_t *s, vector_3_t v)
 
 static int init(const struct motion_sensor_t *s)
 {
-	int ret = 0, tmp;
+	int ret = 0, tmp, i;
 
 	ret = raw_read8(s->i2c_addr, BMI160_CHIP_ID, &tmp);
 	if (ret)
@@ -896,6 +896,14 @@ static int init(const struct motion_sensor_t *s)
 		 */
 		ret = raw_mag_write8(s->i2c_addr, BMM150_OP_CTRL,
 			BMM150_OP_MODE_FORCED << BMM150_OP_MODE_OFFSET);
+
+		/* DO NO COMMIT - dump all register */
+		CPRINTF("[%T ");
+		for (i = 0x62; i < 0x72; i++) {
+			raw_mag_read8(s->i2c_addr, i, &tmp);
+			CPRINTF("%0x", tmp);
+		}
+		CPRINTF("]\n");
 
 		/* Leave the address for reading the data */
 		raw_write8(s->i2c_addr, BMI160_MAG_I2C_READ_ADDR,
