@@ -46,6 +46,30 @@
       "revId": "a31b2a95c14c98b44544b1d9f2e7e1f1a64782a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8c33659_b592a05c",
+        "filename": "power/braswell.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2015-07-13T23:09:41Z",
+      "side": 1,
+      "message": "What it does in the else case here will depend on the SOC state of SLP_S4, it may not attempt to power back up.. But in theory this shouldn\u0027t be a problem unless something else goes wrong in the sequencing.",
+      "parentUuid": "1808c262_f056c0a0",
+      "range": {
+        "startLine": 304,
+        "startChar": 3,
+        "endLine": 304,
+        "endChar": 23
+      },
+      "revId": "a31b2a95c14c98b44544b1d9f2e7e1f1a64782a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
