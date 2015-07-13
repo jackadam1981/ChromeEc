@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "987af2a8_46939462",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000229
+      },
+      "writtenOn": "2015-07-13T17:11:08Z",
+      "side": 1,
+      "message": "can this be called \u0027cr50: restore spstest command\u0027 or something like that instead?",
+      "range": {
+        "startLine": 7,
+        "startChar": 14,
+        "endLine": 7,
+        "endChar": 19
+      },
+      "revId": "6d27f75b0d314ba10dcdd26d3d41f94a3d56e30d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "987af2a8_a6506833",
         "filename": "chip/g/sps_test.c",
         "patchSetId": 1
