@@ -13,6 +13,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "lid_switch.h"
 #include "power.h"
 #include "system.h"
 #include "task.h"
@@ -269,6 +270,9 @@ void chipset_exit_hard_off(void)
 {
 	/* If not in the hard-off state nor headed there, nothing to do */
 	if (state != POWER_G3 && state != POWER_S5G3)
+		return;
+
+	if (!lid_is_open())
 		return;
 
 	/* Set a flag to leave G3, then wake the task */
