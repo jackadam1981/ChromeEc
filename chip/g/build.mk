@@ -21,6 +21,7 @@ chip-y+= pmu.o
 chip-$(CONFIG_SPI)+= sps.o
 chip-$(CONFIG_SPS_TEST)+=sps_test.o
 chip-$(CONFIG_HOSTCMD_SPI)+=sps_hc.o
+chip-$(CONFIG_TPM_SPI)+=sps_tpm.o
 chip-$(CONFIG_WATCHDOG)+=watchdog.o
 
 chip-$(CONFIG_USB)+=usb.o usb_endpoints.o
