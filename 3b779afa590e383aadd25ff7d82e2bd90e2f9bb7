@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "78f61e9f_ebf411ff",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1694,
+      "author": {
+        "id": 1120324
+      },
+      "writtenOn": "2015-07-13T15:15:09Z",
+      "side": 1,
+      "message": "The intention is, for the case of true no-responding device, we do err-print at 4th time, only once.\n\nOn the other hand, the visit of this SRC_READY state when was from line 2175, purposely set to 99 (any big number), won\u0027t have any err-print.\n\nPerhaps add a #define const for 99, such as\n#define PD_SKIP_SENDING_SNK_CAP_MAGIC  99  /* it\u0027s a magic */\n\nHow do you think?",
+      "parentUuid": "1808c262_7084905f",
+      "range": {
+        "startLine": 1694,
+        "startChar": 0,
+        "endLine": 1694,
+        "endChar": 75
+      },
+      "revId": "3b779afa590e383aadd25ff7d82e2bd90e2f9bb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8f1caa3_11554e22",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
