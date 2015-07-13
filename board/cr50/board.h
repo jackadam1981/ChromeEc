@@ -26,7 +26,7 @@
 
 /* Enable SPI Slave (SPS) module */
 #define CONFIG_SPI
-#define CONFIG_HOSTCMD_SPI
+#define CONFIG_TPM_SPI
 
 /* We don't need to send events to the AP */
 #undef  CONFIG_HOSTCMD_EVENTS
