@@ -354,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "3801063e_511b54fb",
+        "filename": "chip/mec1322/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-13T01:28:28Z",
+      "side": 1,
+      "message": "Yes, I know what it is. I don\u0027t understand what we are using it for though. Why is this needed at all?",
+      "parentUuid": "d8f1caa3_0ea08b26",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 32
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "387026c3_39900f9f",
         "filename": "chip/mec1322/clock.c",
         "patchSetId": 2
