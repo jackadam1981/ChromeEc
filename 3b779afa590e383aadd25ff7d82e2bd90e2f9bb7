@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1808c262_7084905f",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1694,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-13T14:59:32Z",
+      "side": 1,
+      "message": "line \u003e 80 chars.\n\ni think it will fit if you do snk_cap_count \u003e PD_SNK_CAP_RETRIES",
+      "range": {
+        "startLine": 1694,
+        "startChar": 0,
+        "endLine": 1694,
+        "endChar": 75
+      },
+      "revId": "3b779afa590e383aadd25ff7d82e2bd90e2f9bb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8f1caa3_11554e22",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2175,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-13T14:59:32Z",
+      "side": 1,
+      "message": "set to PD_SNK_CAP_RETRIES+1\n\nalso, the line is too long with the comment. move comment to it\u0027s own line, or shorten comment.",
+      "range": {
+        "startLine": 2175,
+        "startChar": 19,
+        "endLine": 2175,
+        "endChar": 21
+      },
+      "revId": "3b779afa590e383aadd25ff7d82e2bd90e2f9bb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
