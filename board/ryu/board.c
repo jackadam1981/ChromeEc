@@ -340,7 +340,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .rot_standard_ref = NULL,
 	 .default_config = {
 		 .odr = 0,
-		 .range = 1,
+		 .range = 1 << 11, /* 16LSB / uT */
 		 .ec_rate = MAX_MOTION_SENSE_WAIT_TIME,
 	 }
 	},
