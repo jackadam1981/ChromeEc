@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "58c15a6b_faf6698a",
+        "filename": "util/iteflash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1109909
+      },
+      "writtenOn": "2015-07-14T05:51:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f356b1ec_497b059f",
+      "range": {
+        "startLine": 506,
+        "startChar": 1,
+        "endLine": 506,
+        "endChar": 29
+      },
+      "revId": "57fbaf9c1a4b9de71d0443da4664dee8347cbb63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "534a1d43_81ca243d",
         "filename": "util/iteflash.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "98b592fa_fc80a9d6",
+        "filename": "util/iteflash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1109909
+      },
+      "writtenOn": "2015-07-14T05:51:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "534a1d43_81ca243d",
+      "range": {
+        "startLine": 542,
+        "startChar": 1,
+        "endLine": 542,
+        "endChar": 34
+      },
+      "revId": "57fbaf9c1a4b9de71d0443da4664dee8347cbb63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f356b1ec_e9067925",
         "filename": "util/iteflash.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2015-07-07T22:56:32Z",
       "side": 1,
       "message": "You could move this fprintf() inside spi_flash_follow_mode:\n\nfprintf(stderr, \"Flash %s enter follow mode FAILED (%d)\\n\",\n\twhat, res);\n\nand then pass one more parameter for what function is calling it:\n\nspi_flash_follow_mode(ftdi, \"erase\");\n\nThat way, each caller doesn\u0027t duplicate the fprintf().  (Same with exiting).",
+      "range": {
+        "startLine": 557,
+        "startChar": 2,
+        "endLine": 558,
+        "endChar": 9
+      },
+      "revId": "57fbaf9c1a4b9de71d0443da4664dee8347cbb63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "58c15a6b_dafba570",
+        "filename": "util/iteflash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1109909
+      },
+      "writtenOn": "2015-07-14T05:51:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f356b1ec_e9067925",
       "range": {
         "startLine": 557,
         "startChar": 2,
