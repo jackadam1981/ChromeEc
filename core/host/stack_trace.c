@@ -70,9 +70,6 @@ static void __attribute__((noinline)) _task_dump_trace_dispatch(int sig)
 
 	if (!pthread_equal(pthread_self(), main_thread)) {
 		need_dispatch = 0;
-	} else if (!task_start_called()) {
-		fprintf(stderr, "Stack trace of main thread:\n");
-		need_dispatch = 0;
 	} else if (in_interrupt_context()) {
 		fprintf(stderr, "Stack trace of ISR:\n");
 	} else {
