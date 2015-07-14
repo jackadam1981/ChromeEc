@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "187d22ed_91f03edc",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-14T18:57:06Z",
+      "side": 0,
+      "message": "this stuff was here for a sysjump to RW. when sysjump to RW, the chipset hooks aren\u0027t run, so we can\u0027t depend on all those hooks above. this could however be moved to a HOOK_INIT.",
+      "range": {
+        "startLine": 338,
+        "startChar": 1,
+        "endLine": 359,
+        "endChar": 2
+      },
+      "revId": "c6c35797add0a2191e8145b395a4fae0d96edfef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
