@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9870321a_4d4391e7",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1034,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-14T16:30:00Z",
+      "side": 1,
+      "message": "Added to charger.h, much better now.",
+      "parentUuid": "589a3a79_753822fb",
+      "range": {
+        "startLine": 1034,
+        "startChar": 6,
+        "endLine": 1034,
+        "endChar": 27
+      },
+      "revId": "37d12e2732f2cd08e0e6798af1207bdb3ec045a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "389d8670_d4e472d1",
         "filename": "include/config.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-07-14T15:34:04Z",
       "side": 1,
       "message": "Board?",
+      "range": {
+        "startLine": 303,
+        "startChar": 3,
+        "endLine": 303,
+        "endChar": 9
+      },
+      "revId": "37d12e2732f2cd08e0e6798af1207bdb3ec045a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78b0de09_e18fe231",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-14T16:30:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "389d8670_d4e472d1",
       "range": {
         "startLine": 303,
         "startChar": 3,
