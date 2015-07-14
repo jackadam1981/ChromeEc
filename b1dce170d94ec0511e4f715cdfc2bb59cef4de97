@@ -95,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "589a3a79_5816f5d6",
+        "filename": "chip/mec1322/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-07-14T21:15:13Z",
+      "side": 1,
+      "message": "While MEC is in heavy sleep-2 mode, CPU main clock is on but gated and CPU stopps. I think it is still good/safe to delay entering heavy sleep at the beginning.",
+      "parentUuid": "387026c3_d9d793b6",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 3
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8246aa6_335fdf41",
         "filename": "chip/mec1322/clock.c",
         "patchSetId": 2
@@ -366,6 +390,30 @@
       "side": 1,
       "message": "Yes, I know what it is. I don\u0027t understand what we are using it for though. Why is this needed at all?",
       "parentUuid": "d8f1caa3_0ea08b26",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 32
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "18a442b9_30f22867",
+        "filename": "chip/mec1322/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-07-14T21:15:13Z",
+      "side": 1,
+      "message": "During the heavy sleep, CPU is down(clock is gated) and no usage for this counter and disable it to save power.",
+      "parentUuid": "3801063e_511b54fb",
       "range": {
         "startLine": 171,
         "startChar": 1,
@@ -707,6 +755,24 @@
     },
     {
       "key": {
+        "uuid": "1808c262_d029fc3d",
+        "filename": "chip/mec1322/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-07-14T21:15:13Z",
+      "side": 1,
+      "message": "Yes, I will",
+      "parentUuid": "586ddaeb_5a3ff576",
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98a11261_5fb4cf22",
         "filename": "chip/mec1322/uart.c",
         "patchSetId": 2
@@ -718,6 +784,30 @@
       "writtenOn": "2015-07-09T17:20:47Z",
       "side": 1,
       "message": "seems like this bit mask is used a lot, probably better to make a macro for it in registers.h",
+      "range": {
+        "startLine": 75,
+        "startChar": 29,
+        "endLine": 75,
+        "endChar": 37
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "18a442b9_d3cba640",
+        "filename": "chip/mec1322/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-07-14T21:15:13Z",
+      "side": 1,
+      "message": "Yes I will.",
+      "parentUuid": "98a11261_5fb4cf22",
       "range": {
         "startLine": 75,
         "startChar": 29,
@@ -753,6 +843,30 @@
     },
     {
       "key": {
+        "uuid": "389d8670_f7ced8a0",
+        "filename": "chip/mec1322/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-07-14T21:15:13Z",
+      "side": 1,
+      "message": "Yes, This code looks better and will take this code. \n\nThe function for clearing pending interrupt seems trick to implement. Can I implement as separate commit ?",
+      "parentUuid": "789c5e2a_0f8cd5b9",
+      "range": {
+        "startLine": 173,
+        "startChar": 5,
+        "endLine": 173,
+        "endChar": 22
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8970a01_933ecee8",
         "filename": "chip/mec1322/uart.c",
         "patchSetId": 2
@@ -764,6 +878,30 @@
       "writtenOn": "2015-07-10T00:28:34Z",
       "side": 1,
       "message": "don\u0027t think we need to do this, the next line is sufficient to disable the UART interrupt",
+      "range": {
+        "startLine": 178,
+        "startChar": 1,
+        "endLine": 178,
+        "endChar": 67
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "389d8670_54e8822d",
+        "filename": "chip/mec1322/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-07-14T21:15:13Z",
+      "side": 1,
+      "message": "It might be redundant but this code controls UART interrupt directly at earlier stage of interrupt path while CPU_NVIC_EN(task_disable_irq()) controls the group where UART interrupt belongs to. (Fig 15-2)\nI think it has no harm to have. What do you think ?",
+      "parentUuid": "d8970a01_933ecee8",
       "range": {
         "startLine": 178,
         "startChar": 1,
@@ -846,6 +984,30 @@
     },
     {
       "key": {
+        "uuid": "58feba70_7295b8c0",
+        "filename": "chip/mec1322/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-07-14T21:15:13Z",
+      "side": 1,
+      "message": "Yes, I will change.",
+      "parentUuid": "98a11261_4b62d137",
+      "range": {
+        "startLine": 207,
+        "startChar": 12,
+        "endLine": 208,
+        "endChar": 14
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "789c5e2a_2f1671d6",
         "filename": "chip/mec1322/uart.c",
         "patchSetId": 2
@@ -904,6 +1066,30 @@
       "writtenOn": "2015-07-10T00:28:34Z",
       "side": 1,
       "message": "don\u0027t need this anymore if you remove disabling it from the above function",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 33
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "18a442b9_d3af2619",
+        "filename": "chip/mec1322/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-07-14T21:15:13Z",
+      "side": 1,
+      "message": "Yes, I will remove.",
+      "parentUuid": "98a11261_8b68d917",
       "range": {
         "startLine": 218,
         "startChar": 0,
