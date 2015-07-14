@@ -27,9 +27,17 @@ const char *__get_prog_name(void)
 	return __prog_name;
 }
 
+void task_register_interrupt(void);
+
 int main(int argc, char **argv)
 {
 	__prog_name = argv[0];
+
+	/*
+	 * In order to properly service IRQs before task switching is enabled,
+	 * we must set up our signal handler for the main thread.
+	 */
+	task_register_interrupt();
 
 	task_register_tracedump();
 
